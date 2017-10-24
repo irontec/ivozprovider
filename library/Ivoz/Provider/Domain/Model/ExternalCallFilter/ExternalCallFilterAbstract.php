@@ -78,6 +78,16 @@ abstract class ExternalCallFilterAbstract
      */
     protected $outOfScheduleVoiceMailUser;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     */
+    protected $holidayNumberCountry;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     */
+    protected $outOfScheduleNumberCountry;
+
 
     /**
      * Changelog tracking purpose
@@ -197,6 +207,8 @@ abstract class ExternalCallFilterAbstract
             ->setOutOfScheduleExtension($dto->getOutOfScheduleExtension())
             ->setHolidayVoiceMailUser($dto->getHolidayVoiceMailUser())
             ->setOutOfScheduleVoiceMailUser($dto->getOutOfScheduleVoiceMailUser())
+            ->setHolidayNumberCountry($dto->getHolidayNumberCountry())
+            ->setOutOfScheduleNumberCountry($dto->getOutOfScheduleNumberCountry())
         ;
     }
 
@@ -224,7 +236,9 @@ abstract class ExternalCallFilterAbstract
             ->setHolidayExtension($dto->getHolidayExtension())
             ->setOutOfScheduleExtension($dto->getOutOfScheduleExtension())
             ->setHolidayVoiceMailUser($dto->getHolidayVoiceMailUser())
-            ->setOutOfScheduleVoiceMailUser($dto->getOutOfScheduleVoiceMailUser());
+            ->setOutOfScheduleVoiceMailUser($dto->getOutOfScheduleVoiceMailUser())
+            ->setHolidayNumberCountry($dto->getHolidayNumberCountry())
+            ->setOutOfScheduleNumberCountry($dto->getOutOfScheduleNumberCountry());
 
 
         return $this;
@@ -248,7 +262,9 @@ abstract class ExternalCallFilterAbstract
             ->setHolidayExtensionId($this->getHolidayExtension() ? $this->getHolidayExtension()->getId() : null)
             ->setOutOfScheduleExtensionId($this->getOutOfScheduleExtension() ? $this->getOutOfScheduleExtension()->getId() : null)
             ->setHolidayVoiceMailUserId($this->getHolidayVoiceMailUser() ? $this->getHolidayVoiceMailUser()->getId() : null)
-            ->setOutOfScheduleVoiceMailUserId($this->getOutOfScheduleVoiceMailUser() ? $this->getOutOfScheduleVoiceMailUser()->getId() : null);
+            ->setOutOfScheduleVoiceMailUserId($this->getOutOfScheduleVoiceMailUser() ? $this->getOutOfScheduleVoiceMailUser()->getId() : null)
+            ->setHolidayNumberCountryId($this->getHolidayNumberCountry() ? $this->getHolidayNumberCountry()->getId() : null)
+            ->setOutOfScheduleNumberCountryId($this->getOutOfScheduleNumberCountry() ? $this->getOutOfScheduleNumberCountry()->getId() : null);
     }
 
     /**
@@ -269,7 +285,9 @@ abstract class ExternalCallFilterAbstract
             'holidayExtensionId' => self::getHolidayExtension() ? self::getHolidayExtension()->getId() : null,
             'outOfScheduleExtensionId' => self::getOutOfScheduleExtension() ? self::getOutOfScheduleExtension()->getId() : null,
             'holidayVoiceMailUserId' => self::getHolidayVoiceMailUser() ? self::getHolidayVoiceMailUser()->getId() : null,
-            'outOfScheduleVoiceMailUserId' => self::getOutOfScheduleVoiceMailUser() ? self::getOutOfScheduleVoiceMailUser()->getId() : null
+            'outOfScheduleVoiceMailUserId' => self::getOutOfScheduleVoiceMailUser() ? self::getOutOfScheduleVoiceMailUser()->getId() : null,
+            'holidayNumberCountryId' => self::getHolidayNumberCountry() ? self::getHolidayNumberCountry()->getId() : null,
+            'outOfScheduleNumberCountryId' => self::getOutOfScheduleNumberCountry() ? self::getOutOfScheduleNumberCountry()->getId() : null
         ];
     }
 
@@ -615,6 +633,54 @@ abstract class ExternalCallFilterAbstract
     public function getOutOfScheduleVoiceMailUser()
     {
         return $this->outOfScheduleVoiceMailUser;
+    }
+
+    /**
+     * Set holidayNumberCountry
+     *
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $holidayNumberCountry
+     *
+     * @return self
+     */
+    public function setHolidayNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $holidayNumberCountry = null)
+    {
+        $this->holidayNumberCountry = $holidayNumberCountry;
+
+        return $this;
+    }
+
+    /**
+     * Get holidayNumberCountry
+     *
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     */
+    public function getHolidayNumberCountry()
+    {
+        return $this->holidayNumberCountry;
+    }
+
+    /**
+     * Set outOfScheduleNumberCountry
+     *
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $outOfScheduleNumberCountry
+     *
+     * @return self
+     */
+    public function setOutOfScheduleNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $outOfScheduleNumberCountry = null)
+    {
+        $this->outOfScheduleNumberCountry = $outOfScheduleNumberCountry;
+
+        return $this;
+    }
+
+    /**
+     * Get outOfScheduleNumberCountry
+     *
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     */
+    public function getOutOfScheduleNumberCountry()
+    {
+        return $this->outOfScheduleNumberCountry;
     }
 
 

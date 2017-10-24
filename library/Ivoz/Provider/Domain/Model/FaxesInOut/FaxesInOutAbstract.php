@@ -52,6 +52,11 @@ abstract class FaxesInOutAbstract
      */
     protected $fax;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     */
+    protected $dstCountry;
+
 
     /**
      * Changelog tracking purpose
@@ -174,6 +179,7 @@ abstract class FaxesInOutAbstract
             ->setPages($dto->getPages())
             ->setStatus($dto->getStatus())
             ->setFax($dto->getFax())
+            ->setDstCountry($dto->getDstCountry())
         ;
     }
 
@@ -202,7 +208,8 @@ abstract class FaxesInOutAbstract
             ->setPages($dto->getPages())
             ->setStatus($dto->getStatus())
             ->setFile($file)
-            ->setFax($dto->getFax());
+            ->setFax($dto->getFax())
+            ->setDstCountry($dto->getDstCountry());
 
 
         return $this;
@@ -223,7 +230,8 @@ abstract class FaxesInOutAbstract
             ->setFileFileSize($this->getFile()->getFileSize())
             ->setFileMimeType($this->getFile()->getMimeType())
             ->setFileBaseName($this->getFile()->getBaseName())
-            ->setFaxId($this->getFax() ? $this->getFax()->getId() : null);
+            ->setFaxId($this->getFax() ? $this->getFax()->getId() : null)
+            ->setDstCountryId($this->getDstCountry() ? $this->getDstCountry()->getId() : null);
     }
 
     /**
@@ -241,7 +249,8 @@ abstract class FaxesInOutAbstract
             'fileFileSize' => self::getFile()->getFileSize(),
             'fileMimeType' => self::getFile()->getMimeType(),
             'fileBaseName' => self::getFile()->getBaseName(),
-            'faxId' => self::getFax() ? self::getFax()->getId() : null
+            'faxId' => self::getFax() ? self::getFax()->getId() : null,
+            'dstCountryId' => self::getDstCountry() ? self::getDstCountry()->getId() : null
         ];
     }
 
@@ -443,6 +452,30 @@ abstract class FaxesInOutAbstract
     public function getFax()
     {
         return $this->fax;
+    }
+
+    /**
+     * Set dstCountry
+     *
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $dstCountry
+     *
+     * @return self
+     */
+    public function setDstCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $dstCountry = null)
+    {
+        $this->dstCountry = $dstCountry;
+
+        return $this;
+    }
+
+    /**
+     * Get dstCountry
+     *
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     */
+    public function getDstCountry()
+    {
+        return $this->dstCountry;
     }
 
     /**

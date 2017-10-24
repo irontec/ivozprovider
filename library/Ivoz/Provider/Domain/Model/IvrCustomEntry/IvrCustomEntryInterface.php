@@ -136,5 +136,21 @@ interface IvrCustomEntryInterface extends LoggableEntityInterface
      */
     public function getTargetConditionalRoute();
 
+    /**
+     * Set targetNumberCountry
+     *
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $targetNumberCountry
+     *
+     * @return self
+     */
+    public function setTargetNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $targetNumberCountry = null);
+
+    /**
+     * Get targetNumberCountry
+     *
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     */
+    public function getTargetNumberCountry();
+
 }
 

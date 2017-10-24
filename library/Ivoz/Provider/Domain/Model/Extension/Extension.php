@@ -45,5 +45,17 @@ class Extension extends ExtensionAbstract implements ExtensionInterface
         return array_shift($users);
     }
 
+    /**
+     * Get the numberValue in E.164 format when routing to 'number'
+     *
+     * @return string
+     */
+    public function getNumberValueE164()
+    {
+        return
+            $this->getNumberCountry()->getCallingCode() .
+            $this->getNumberValue();
+    }
+
 }
 

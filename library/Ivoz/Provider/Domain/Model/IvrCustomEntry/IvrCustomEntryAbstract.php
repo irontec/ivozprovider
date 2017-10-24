@@ -52,6 +52,11 @@ abstract class IvrCustomEntryAbstract
      */
     protected $targetConditionalRoute;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     */
+    protected $targetNumberCountry;
+
 
     /**
      * Changelog tracking purpose
@@ -167,6 +172,7 @@ abstract class IvrCustomEntryAbstract
             ->setTargetExtension($dto->getTargetExtension())
             ->setTargetVoiceMailUser($dto->getTargetVoiceMailUser())
             ->setTargetConditionalRoute($dto->getTargetConditionalRoute())
+            ->setTargetNumberCountry($dto->getTargetNumberCountry())
         ;
     }
 
@@ -189,7 +195,8 @@ abstract class IvrCustomEntryAbstract
             ->setWelcomeLocution($dto->getWelcomeLocution())
             ->setTargetExtension($dto->getTargetExtension())
             ->setTargetVoiceMailUser($dto->getTargetVoiceMailUser())
-            ->setTargetConditionalRoute($dto->getTargetConditionalRoute());
+            ->setTargetConditionalRoute($dto->getTargetConditionalRoute())
+            ->setTargetNumberCountry($dto->getTargetNumberCountry());
 
 
         return $this;
@@ -208,7 +215,8 @@ abstract class IvrCustomEntryAbstract
             ->setWelcomeLocutionId($this->getWelcomeLocution() ? $this->getWelcomeLocution()->getId() : null)
             ->setTargetExtensionId($this->getTargetExtension() ? $this->getTargetExtension()->getId() : null)
             ->setTargetVoiceMailUserId($this->getTargetVoiceMailUser() ? $this->getTargetVoiceMailUser()->getId() : null)
-            ->setTargetConditionalRouteId($this->getTargetConditionalRoute() ? $this->getTargetConditionalRoute()->getId() : null);
+            ->setTargetConditionalRouteId($this->getTargetConditionalRoute() ? $this->getTargetConditionalRoute()->getId() : null)
+            ->setTargetNumberCountryId($this->getTargetNumberCountry() ? $this->getTargetNumberCountry()->getId() : null);
     }
 
     /**
@@ -224,7 +232,8 @@ abstract class IvrCustomEntryAbstract
             'welcomeLocutionId' => self::getWelcomeLocution() ? self::getWelcomeLocution()->getId() : null,
             'targetExtensionId' => self::getTargetExtension() ? self::getTargetExtension()->getId() : null,
             'targetVoiceMailUserId' => self::getTargetVoiceMailUser() ? self::getTargetVoiceMailUser()->getId() : null,
-            'targetConditionalRouteId' => self::getTargetConditionalRoute() ? self::getTargetConditionalRoute()->getId() : null
+            'targetConditionalRouteId' => self::getTargetConditionalRoute() ? self::getTargetConditionalRoute()->getId() : null,
+            'targetNumberCountryId' => self::getTargetNumberCountry() ? self::getTargetNumberCountry()->getId() : null
         ];
     }
 
@@ -437,6 +446,30 @@ abstract class IvrCustomEntryAbstract
     public function getTargetConditionalRoute()
     {
         return $this->targetConditionalRoute;
+    }
+
+    /**
+     * Set targetNumberCountry
+     *
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $targetNumberCountry
+     *
+     * @return self
+     */
+    public function setTargetNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $targetNumberCountry = null)
+    {
+        $this->targetNumberCountry = $targetNumberCountry;
+
+        return $this;
+    }
+
+    /**
+     * Get targetNumberCountry
+     *
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     */
+    public function getTargetNumberCountry()
+    {
+        return $this->targetNumberCountry;
     }
 
 

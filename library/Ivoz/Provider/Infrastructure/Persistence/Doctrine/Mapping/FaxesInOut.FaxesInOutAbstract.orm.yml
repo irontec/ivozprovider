@@ -63,3 +63,14 @@ Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutAbstract:
           nullable: false
           onDelete: cascade
       orphanRemoval: false
+    dstCountry:
+      targetEntity: \Ivoz\Provider\Domain\Model\Country\CountryInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        dstCountryId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false

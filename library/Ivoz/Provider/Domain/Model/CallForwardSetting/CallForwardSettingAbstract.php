@@ -54,6 +54,11 @@ abstract class CallForwardSettingAbstract
      */
     protected $voiceMailUser;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     */
+    protected $numberCountry;
+
 
     /**
      * Changelog tracking purpose
@@ -175,6 +180,7 @@ abstract class CallForwardSettingAbstract
             ->setUser($dto->getUser())
             ->setExtension($dto->getExtension())
             ->setVoiceMailUser($dto->getVoiceMailUser())
+            ->setNumberCountry($dto->getNumberCountry())
         ;
     }
 
@@ -197,7 +203,8 @@ abstract class CallForwardSettingAbstract
             ->setNoAnswerTimeout($dto->getNoAnswerTimeout())
             ->setUser($dto->getUser())
             ->setExtension($dto->getExtension())
-            ->setVoiceMailUser($dto->getVoiceMailUser());
+            ->setVoiceMailUser($dto->getVoiceMailUser())
+            ->setNumberCountry($dto->getNumberCountry());
 
 
         return $this;
@@ -216,7 +223,8 @@ abstract class CallForwardSettingAbstract
             ->setNoAnswerTimeout($this->getNoAnswerTimeout())
             ->setUserId($this->getUser() ? $this->getUser()->getId() : null)
             ->setExtensionId($this->getExtension() ? $this->getExtension()->getId() : null)
-            ->setVoiceMailUserId($this->getVoiceMailUser() ? $this->getVoiceMailUser()->getId() : null);
+            ->setVoiceMailUserId($this->getVoiceMailUser() ? $this->getVoiceMailUser()->getId() : null)
+            ->setNumberCountryId($this->getNumberCountry() ? $this->getNumberCountry()->getId() : null);
     }
 
     /**
@@ -232,7 +240,8 @@ abstract class CallForwardSettingAbstract
             'noAnswerTimeout' => self::getNoAnswerTimeout(),
             'userId' => self::getUser() ? self::getUser()->getId() : null,
             'extensionId' => self::getExtension() ? self::getExtension()->getId() : null,
-            'voiceMailUserId' => self::getVoiceMailUser() ? self::getVoiceMailUser()->getId() : null
+            'voiceMailUserId' => self::getVoiceMailUser() ? self::getVoiceMailUser()->getId() : null,
+            'numberCountryId' => self::getNumberCountry() ? self::getNumberCountry()->getId() : null
         ];
     }
 
@@ -461,6 +470,30 @@ abstract class CallForwardSettingAbstract
     public function getVoiceMailUser()
     {
         return $this->voiceMailUser;
+    }
+
+    /**
+     * Set numberCountry
+     *
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry
+     *
+     * @return self
+     */
+    public function setNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry = null)
+    {
+        $this->numberCountry = $numberCountry;
+
+        return $this;
+    }
+
+    /**
+     * Get numberCountry
+     *
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     */
+    public function getNumberCountry()
+    {
+        return $this->numberCountry;
     }
 
 

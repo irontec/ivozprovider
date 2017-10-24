@@ -330,5 +330,37 @@ interface QueueInterface extends LoggableEntityInterface
      */
     public function getFullVoiceMailUser();
 
+    /**
+     * Set timeoutNumberCountry
+     *
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $timeoutNumberCountry
+     *
+     * @return self
+     */
+    public function setTimeoutNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $timeoutNumberCountry = null);
+
+    /**
+     * Get timeoutNumberCountry
+     *
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     */
+    public function getTimeoutNumberCountry();
+
+    /**
+     * Set fullNumberCountry
+     *
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $fullNumberCountry
+     *
+     * @return self
+     */
+    public function setFullNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $fullNumberCountry = null);
+
+    /**
+     * Get fullNumberCountry
+     *
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     */
+    public function getFullNumberCountry();
+
 }
 

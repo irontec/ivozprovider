@@ -196,7 +196,7 @@ class CheckUniqueness implements CallForwardSettingLifecycleEventHandlerInterfac
      * @param $callForwardType
      * @return Criteria
      */
-    protected function createConditions(CallForwardSetting $entity, $callTypeFilterConditions, $callForwardType)
+    protected function createConditions(CallForwardSetting $entity, $callTypeFilterConditions, $callForwardType = null)
     {
         $criteria = Criteria::create();
         $expressionBuilder = Criteria::expr();
@@ -219,13 +219,17 @@ class CheckUniqueness implements CallForwardSettingLifecycleEventHandlerInterfac
                     'callTypeFilter',
                     $callTypeFilterConditions
                 )
-            )
-            ->andWhere(
-                $expressionBuilder->eq(
-                    'callForwardType',
-                    $callForwardType
-                )
             );
+
+        if ($callForwardType) {
+            $criteria
+                ->andWhere(
+                    $expressionBuilder->eq(
+                        'callForwardType',
+                        $callForwardType
+                    )
+                );
+        }
 
         return $criteria;
     }

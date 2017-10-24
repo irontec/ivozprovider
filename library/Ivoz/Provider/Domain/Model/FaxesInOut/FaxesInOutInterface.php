@@ -121,6 +121,22 @@ interface FaxesInOutInterface extends LoggableEntityInterface
     public function getFax();
 
     /**
+     * Set dstCountry
+     *
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $dstCountry
+     *
+     * @return self
+     */
+    public function setDstCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $dstCountry = null);
+
+    /**
+     * Get dstCountry
+     *
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     */
+    public function getDstCountry();
+
+    /**
      * Set file
      *
      * @param \Ivoz\Provider\Domain\Model\FaxesInOut\File $file

@@ -285,5 +285,37 @@ interface IvrCustomInterface extends LoggableEntityInterface
      */
     public function getErrorVoiceMailUser();
 
+    /**
+     * Set timeoutNumberCountry
+     *
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $timeoutNumberCountry
+     *
+     * @return self
+     */
+    public function setTimeoutNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $timeoutNumberCountry = null);
+
+    /**
+     * Get timeoutNumberCountry
+     *
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     */
+    public function getTimeoutNumberCountry();
+
+    /**
+     * Set errorNumberCountry
+     *
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $errorNumberCountry
+     *
+     * @return self
+     */
+    public function setErrorNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $errorNumberCountry = null);
+
+    /**
+     * Get errorNumberCountry
+     *
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     */
+    public function getErrorNumberCountry();
+
 }
 

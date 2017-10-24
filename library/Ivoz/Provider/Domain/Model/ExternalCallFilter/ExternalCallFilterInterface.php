@@ -242,6 +242,38 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
     public function getOutOfScheduleVoiceMailUser();
 
     /**
+     * Set holidayNumberCountry
+     *
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $holidayNumberCountry
+     *
+     * @return self
+     */
+    public function setHolidayNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $holidayNumberCountry = null);
+
+    /**
+     * Get holidayNumberCountry
+     *
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     */
+    public function getHolidayNumberCountry();
+
+    /**
+     * Set outOfScheduleNumberCountry
+     *
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $outOfScheduleNumberCountry
+     *
+     * @return self
+     */
+    public function setOutOfScheduleNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $outOfScheduleNumberCountry = null);
+
+    /**
+     * Get outOfScheduleNumberCountry
+     *
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     */
+    public function getOutOfScheduleNumberCountry();
+
+    /**
      * Add calendar
      *
      * @param \Ivoz\Provider\Domain\Model\ExternalCallFilterRelCalendar\ExternalCallFilterRelCalendarInterface $calendar
