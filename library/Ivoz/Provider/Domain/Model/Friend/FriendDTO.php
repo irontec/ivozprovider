@@ -785,3 +785,4 @@ class FriendDTO implements DataTransferObjectInterface
     }
 }
 
+

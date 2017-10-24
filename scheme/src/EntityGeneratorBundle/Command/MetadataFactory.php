@@ -25,13 +25,12 @@ class MetadataFactory extends DisconnectedMetadataFactory
         $this->registry = $registry;
     }
 
-
     /**
      * {@inheritDoc}
      */
-    public function getClassMetadata($class, $path = null)
+    public function getClassMetadata($class, $path = null, $disconnectedClassMetadata = false)
     {
-        $metadata = $this->getMetadataForClass($class);
+        $metadata = $this->getMetadataForClass($class, $disconnectedClassMetadata);
         if (!$metadata->getMetadata()) {
             throw MappingException::classIsNotAValidEntityOrMappedSuperClass($class);
         }
@@ -44,7 +43,7 @@ class MetadataFactory extends DisconnectedMetadataFactory
     /**
      * {@inheritDoc}
      */
-    private function getMetadataForClass($entity)
+    private function getMetadataForClass($entity, $disconnectedClassMetadata)
     {
         foreach ($this->registry->getManagers() as $em) {
             $cmf = new ClassMetadataFactory();
@@ -52,16 +51,13 @@ class MetadataFactory extends DisconnectedMetadataFactory
 
             if (!$cmf->isTransient($entity)) {
 
-//                try {
-
+                if ($disconnectedClassMetadata) {
+                    $disconnectedCmf = new DisconnectedClassMetadataFactory();
+                    $disconnectedCmf->setEntityManager($em);
+                    $metadata = array($disconnectedCmf->getMetadataFor($entity));
+                } else {
                     $metadata = array($cmf->getMetadataFor($entity));
-
-//                } catch (\Exception $e) {
-//
-//                    $disconnectedCmf = new DisconnectedClassMetadataFactory();
-//                    $disconnectedCmf->setEntityManager($em);
-//                    $metadata = array($disconnectedCmf->getMetadataFor($entity));
-//                }
+                }
 
                 return new ClassMetadataCollection($metadata);
             }
@@ -73,14 +69,17 @@ class MetadataFactory extends DisconnectedMetadataFactory
     /**
      * {@inheritDoc}
      */
-    public function getNamespaceMetadata($namespace, $path = null)
+    public function getNamespaceMetadata($namespace, $path = null, $disconnectedClassMetadata = false)
     {
-        $metadata = $this->getMetadataForNamespace($namespace);
+        $metadata = $this->getMetadataForNamespace($namespace, $disconnectedClassMetadata);
         if (!$metadata->getMetadata()) {
             throw new \RuntimeException(sprintf('Namespace "%s" does not contain any mapped entities.', $namespace));
         }
 
-        $this->findNamespaceAndPathForMetadata($metadata, $path);
+        $this->findNamespaceAndPathForMetadata(
+            $metadata,
+            $path
+        );
 
         return $metadata;
     }
@@ -88,10 +87,10 @@ class MetadataFactory extends DisconnectedMetadataFactory
     /**
      * {@inheritDoc}
      */
-    private function getMetadataForNamespace($namespace)
+    private function getMetadataForNamespace($namespace, $disconnectedClassMetadata)
     {
         $metadata = array();
-        foreach ($this->getAllMetadata() as $m) {
+        foreach ($this->getAllMetadata($disconnectedClassMetadata) as $m) {
             if (strpos($m->name, $namespace) === 0) {
                 $metadata[] = $m;
             }
@@ -103,25 +102,26 @@ class MetadataFactory extends DisconnectedMetadataFactory
     /**
      * {@inheritDoc}
      */
-    private function getAllMetadata()
+    private function getAllMetadata($disconnectedClassMetadata)
     {
         $metadata = array();
 
-        try {
-
-            $cmf = new ClassMetadataFactory();
-            foreach ($this->registry->getManagers() as $em) {
-                $cmf->setEntityManager($em);
-                foreach ($cmf->getAllMetadata() as $m) {
-                    $metadata[] = $m;
-                }
-            }
-        } catch (\Exception $e) {
+        if ($disconnectedClassMetadata) {
 
             $disconnectedCmf = new DisconnectedClassMetadataFactory();
             foreach ($this->registry->getManagers() as $em) {
                 $disconnectedCmf->setEntityManager($em);
                 foreach ($disconnectedCmf->getAllMetadata() as $m) {
+                    $metadata[] = $m;
+                }
+            }
+
+        } else {
+
+            $cmf = new ClassMetadataFactory();
+            foreach ($this->registry->getManagers() as $em) {
+                $cmf->setEntityManager($em);
+                foreach ($cmf->getAllMetadata() as $m) {
                     $metadata[] = $m;
                 }
             }

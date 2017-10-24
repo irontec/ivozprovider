@@ -16,52 +16,52 @@ production:
             template: '%name%'
           order:
             Company.name: asc
-#    originalFile:
-#      title: ngettext('Uploaded file', 'Uploaded files', 1)
-#      type: file
-#      source:
-#        data: fso
-#        size_limit: 20M
-#        options:
-#          download:
-#            external: true
-#            type: command
-#            target: locutionsOriginalFileDownload_command
-#            icon: ui-silk-bullet-disk
-#            title: _("Download file")
-#            onNull: hide
-#          upload:
-#            type: command
-#            target: locutionsOriginalFileUpload_command
-#            title: _("Upload file")
-#            class: qq-uploader
-#            onNull: show
-#          mediaembed:
-#            type: command
-#            title: _("Listen to MoH")
-#            class: jmedia
-#            onNull: hide
-#            target: locutionsEncodedFileDownload_command
-#    encodedFile:
-#      title: ngettext('File for play', 'Files for play', 1)
-#      type: file
-#      source:
-#        data: fso
-#        size_limit: 20M
-#        options:
-#          download:
-#            external: true
-#            type: command
-#            target: locutionsEncodedFileDownload_command
-#            icon: ui-silk-bullet-disk
-#            title: _("Download file")
-#            onNull: hide
-#          mediaembed:
-#            type: command
-#            title: _("Listen to MoH")
-#            class: jmedia
-#            onNull: hide
-#            target: locutionsEncodedFileDownload_command
+    originalFile:
+      title: ngettext('Uploaded file', 'Uploaded files', 1)
+      type: file
+      source:
+        data: fso
+        size_limit: 20M
+        options:
+          download:
+            external: true
+            type: command
+            target: locutionsOriginalFileDownload_command
+            icon: ui-silk-bullet-disk
+            title: _("Download file")
+            onNull: hide
+          upload:
+            type: command
+            target: locutionsOriginalFileUpload_command
+            title: _("Upload file")
+            class: qq-uploader
+            onNull: show
+          mediaembed:
+            type: command
+            title: _("Listen to MoH")
+            class: jmedia
+            onNull: hide
+            target: locutionsOriginalFileDownload_command
+    encodedFile:
+      title: ngettext('File for play', 'Files for play', 1)
+      type: file
+      source:
+        data: fso
+        size_limit: 20M
+        options:
+          download:
+            external: true
+            type: command
+            target: locutionsEncodedFileDownload_command
+            icon: ui-silk-bullet-disk
+            title: _("Download file")
+            onNull: hide
+          mediaembed:
+            type: command
+            title: _("Listen to MoH")
+            class: jmedia
+            onNull: hide
+            target: locutionsEncodedFileDownload_command
     name:
       title: _('Name')
       type: text

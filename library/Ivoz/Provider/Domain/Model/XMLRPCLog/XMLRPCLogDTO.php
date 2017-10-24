@@ -245,3 +245,4 @@ class XMLRPCLogDTO implements DataTransferObjectInterface
     }
 }
 
+

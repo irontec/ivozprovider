@@ -184,7 +184,7 @@ CREATE TABLE `BrandURLs` (
 
 LOCK TABLES `BrandURLs` WRITE;
 /*!40000 ALTER TABLE `BrandURLs` DISABLE KEYS */;
-INSERT INTO `BrandURLs` VALUES (1,1,'http://example.com','redmond','god','Platform Administration Portal',NULL,NULL,NULL,'default');
+INSERT INTO `BrandURLs` VALUES (1,1,'https://example.com','redmond','god','Platform Administration Portal',NULL,NULL,NULL,'default');
 /*!40000 ALTER TABLE `BrandURLs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -230,7 +230,7 @@ CREATE TABLE `Brands` (
 
 LOCK TABLES `Brands` WRITE;
 /*!40000 ALTER TABLE `Brands` DISABLE KEYS */;
-INSERT INTO `Brands` VALUES (1,'DemoBrand','1234567890','',145,NULL,NULL,NULL,'Demo Postal Address','12345','DemoTown','DemoProvince','DemoCountry','Demo Registry Data',1,NULL,NULL,NULL,NULL);
+INSERT INTO `Brands` VALUES (1,'DemoBrand','1234567890','domain-users.net',145,NULL,NULL,NULL,'Demo Postal Address','12345','DemoTown','DemoProvince','DemoCountry','Demo Registry Data',1,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `Brands` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -3091,7 +3091,7 @@ CREATE TABLE `Terminals` (
 
 LOCK TABLES `Terminals` WRITE;
 /*!40000 ALTER TABLE `Terminals` DISABLE KEYS */;
-INSERT INTO `Terminals` VALUES (1,1,'alice','127.0.0.1','all','alaw',NULL,'invite','alice',1,'',NULL),(2,1,'bob','127.0.0.1','all','alaw',NULL,'invite','bob',1,'',NULL);
+INSERT INTO `Terminals` VALUES (1,1,'alice','127.0.0.1','all','alaw',NULL,'invite','AUfVkn498_',1,'',NULL),(2,1,'bob','127.0.0.1','all','alaw',NULL,'invite','bob',1,'',NULL);
 /*!40000 ALTER TABLE `Terminals` ENABLE KEYS */;
 UNLOCK TABLES;
 

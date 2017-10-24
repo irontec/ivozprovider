@@ -246,3 +246,4 @@ class MatchListPatternDTO implements DataTransferObjectInterface
     }
 }
 
+

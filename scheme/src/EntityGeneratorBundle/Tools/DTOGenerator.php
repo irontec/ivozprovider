@@ -106,9 +106,28 @@ public function <methodName>()
             $this->generateEntityBody($metadata)
         );
 
-        $code = str_replace($placeHolders, $replacements, static::$classTemplate) . "\n";
+        $code = str_replace($placeHolders, $replacements, static::$classTemplate) . "\n\n";
 
         return str_replace('<spaces>', $this->spaces, $code);
+    }
+
+
+    /**
+     * @param ClassMetadataInfo $metadata
+     *
+     * @return string
+     */
+    protected function generateEntityBody(ClassMetadataInfo $metadata)
+    {
+        $response = parent::generateEntityBody($metadata);
+
+        $className = $metadata->getName();
+        if (trait_exists($className . 'Trait')) {
+            $classnameSegments = explode('\\', $className);
+            $response = '<spaces>use ' . end($classnameSegments) . "Trait;\n" . $response;
+        }
+
+        return $response;
     }
 
     /**

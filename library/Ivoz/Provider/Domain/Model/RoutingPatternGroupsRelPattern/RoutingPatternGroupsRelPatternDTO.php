@@ -142,3 +142,4 @@ class RoutingPatternGroupsRelPatternDTO implements DataTransferObjectInterface
     }
 }
 
+

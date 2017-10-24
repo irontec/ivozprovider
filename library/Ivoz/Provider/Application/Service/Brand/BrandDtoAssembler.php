@@ -14,11 +14,12 @@ class BrandDtoAssembler implements CustomDtoAssemblerInterface
     protected $logoPathResolver;
 
     public function __construct(
-        string $localStoragePath
+        string $localStoragePath,
+        string $basePath
     ) {
         $this->logoPathResolver = new CommonStoragePathResolver(
             $localStoragePath,
-            'ivozprovider_model_brands.logo'
+            $basePath
         );
     }
 

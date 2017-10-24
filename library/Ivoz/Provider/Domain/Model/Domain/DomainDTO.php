@@ -246,3 +246,4 @@ class DomainDTO implements DataTransferObjectInterface
     }
 }
 
+

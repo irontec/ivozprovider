@@ -7,6 +7,11 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 interface MusicOnHoldInterface extends EntityInterface
 {
     /**
+     * @return array
+     */
+    public function getFileObjects();
+
+    /**
      * @return string
      */
     public function getOwner();
@@ -90,6 +95,13 @@ interface MusicOnHoldInterface extends EntityInterface
      * @return EncodedFile
      */
     public function getEncodedFile();
+
+    public function addTmpFile(\Ivoz\Core\Domain\Service\TempFile $file);
+
+    /**
+     * @return TempFile[]
+     */
+    public function getTempFiles();
 
 }
 

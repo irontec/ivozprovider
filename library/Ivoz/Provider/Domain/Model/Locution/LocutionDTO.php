@@ -11,6 +11,7 @@ use Ivoz\Core\Application\CollectionTransformerInterface;
  */
 class LocutionDTO implements DataTransferObjectInterface
 {
+    use LocutionDTOTrait;
     /**
      * @var string
      */
@@ -309,4 +310,5 @@ class LocutionDTO implements DataTransferObjectInterface
         return $this->company;
     }
 }
+
 

@@ -66,6 +66,7 @@ class CommonStoragePathResolver implements StoragePathResolverInterface
     public function getFilePath(EntityInterface $entity): string
     {
         $id = $entity->getId();
+        $directoryTree =  $this->buildDirectoryTreeById($id);
 
         if ($this->keepExtension) {
             $id .= '.';
@@ -75,7 +76,7 @@ class CommonStoragePathResolver implements StoragePathResolverInterface
         $pathArray = [
             $this->localStoragePath,
             $this->basePath,
-            $this->buildDirectoryTreeById($id),
+            $directoryTree,
             $id
         ];
 

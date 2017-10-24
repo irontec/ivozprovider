@@ -194,3 +194,4 @@ class HuntGroupsRelUserDTO implements DataTransferObjectInterface
     }
 }
 
+

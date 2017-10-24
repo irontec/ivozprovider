@@ -1,12 +1,26 @@
 <?php
 namespace Ivoz\Provider\Domain\Model\MusicOnHold;
+use Ivoz\Core\Domain\Model\TempFileContainnerTrait;
+use Ivoz\Core\Domain\Service\FileContainerInterface;
 
 /**
  * MusicOnHold
  */
-class MusicOnHold extends MusicOnHoldAbstract implements MusicOnHoldInterface
+class MusicOnHold extends MusicOnHoldAbstract implements MusicOnHoldInterface, FileContainerInterface
 {
     use MusicOnHoldTrait;
+    use TempFileContainnerTrait;
+
+    /**
+     * @return array
+     */
+    public function getFileObjects()
+    {
+        return [
+            'OriginalFile',
+            'EncodedFile'
+        ];
+    }
 
     /**
      * Get id

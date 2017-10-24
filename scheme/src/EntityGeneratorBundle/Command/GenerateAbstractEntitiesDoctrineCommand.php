@@ -22,8 +22,9 @@ class GenerateAbstractEntitiesDoctrineCommand extends ParentCommand
     {
         $this->injectEmbeddedClasses = true;
         $this->skipEntities = true;
+        $this->disconnectedClassMetadata = true;
 
-        return parent::__construct($name = null);
+        return parent::__construct($name);
     }
 
     /**

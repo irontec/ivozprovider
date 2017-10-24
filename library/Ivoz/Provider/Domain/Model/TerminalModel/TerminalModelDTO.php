@@ -284,3 +284,4 @@ class TerminalModelDTO implements DataTransferObjectInterface
     }
 }
 
+

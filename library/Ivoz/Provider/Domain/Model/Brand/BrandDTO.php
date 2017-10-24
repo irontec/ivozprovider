@@ -12,7 +12,6 @@ use Ivoz\Core\Application\CollectionTransformerInterface;
 class BrandDTO implements DataTransferObjectInterface
 {
     use BrandDTOTrait;
-
     /**
      * @var string
      */
@@ -968,4 +967,5 @@ class BrandDTO implements DataTransferObjectInterface
         return $this->outgoingRoutings;
     }
 }
+
 

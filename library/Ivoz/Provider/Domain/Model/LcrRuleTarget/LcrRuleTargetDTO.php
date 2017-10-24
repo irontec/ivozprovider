@@ -260,3 +260,4 @@ class LcrRuleTargetDTO implements DataTransferObjectInterface
     }
 }
 
+

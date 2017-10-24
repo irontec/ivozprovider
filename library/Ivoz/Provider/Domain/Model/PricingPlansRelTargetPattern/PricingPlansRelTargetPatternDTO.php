@@ -260,3 +260,4 @@ class PricingPlansRelTargetPatternDTO implements DataTransferObjectInterface
     }
 }
 
+

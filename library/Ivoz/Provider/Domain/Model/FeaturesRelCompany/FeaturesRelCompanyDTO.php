@@ -142,3 +142,4 @@ class FeaturesRelCompanyDTO implements DataTransferObjectInterface
     }
 }
 
+

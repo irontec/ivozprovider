@@ -444,3 +444,4 @@ class HuntGroupDTO implements DataTransferObjectInterface
     }
 }
 
+

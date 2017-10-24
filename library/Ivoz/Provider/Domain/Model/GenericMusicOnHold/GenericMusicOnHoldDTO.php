@@ -12,7 +12,6 @@ use Ivoz\Core\Application\CollectionTransformerInterface;
 class GenericMusicOnHoldDTO implements DataTransferObjectInterface
 {
     use GenericMusicOnHoldDTOTrait;
-
     /**
      * @var string
      */
@@ -311,4 +310,5 @@ class GenericMusicOnHoldDTO implements DataTransferObjectInterface
         return $this->brand;
     }
 }
+
 

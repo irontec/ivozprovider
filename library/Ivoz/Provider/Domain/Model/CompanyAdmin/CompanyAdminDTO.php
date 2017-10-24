@@ -298,3 +298,4 @@ class CompanyAdminDTO implements DataTransferObjectInterface
     }
 }
 
+

@@ -7,6 +7,11 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 interface RecordingInterface extends EntityInterface
 {
     /**
+     * @return array
+     */
+    public function getFileObjects();
+
+    /**
      * Set callid
      *
      * @param string $callid
@@ -149,6 +154,13 @@ interface RecordingInterface extends EntityInterface
      * @return RecordedFile
      */
     public function getRecordedFile();
+
+    public function addTmpFile(\Ivoz\Core\Domain\Service\TempFile $file);
+
+    /**
+     * @return TempFile[]
+     */
+    public function getTempFiles();
 
 }
 

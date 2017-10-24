@@ -1326,3 +1326,4 @@ class CompanyDTO implements DataTransferObjectInterface
     }
 }
 
+

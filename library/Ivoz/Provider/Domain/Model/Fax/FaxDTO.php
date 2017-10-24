@@ -220,3 +220,4 @@ class FaxDTO implements DataTransferObjectInterface
     }
 }
 
+

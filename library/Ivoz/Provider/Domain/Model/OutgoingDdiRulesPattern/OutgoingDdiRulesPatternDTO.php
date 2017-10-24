@@ -234,3 +234,4 @@ class OutgoingDdiRulesPatternDTO implements DataTransferObjectInterface
     }
 }
 
+

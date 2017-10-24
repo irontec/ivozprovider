@@ -212,7 +212,7 @@ production:
         values:
           'pai': 'P-Asserted-Identity (PAI)'
           'rpid': 'Remote-Party-ID (RPID)'
-    updateCaller:
+    updateCallerId:
       title: _('Update CallerID?')
       type: select
       defaultValue: yes

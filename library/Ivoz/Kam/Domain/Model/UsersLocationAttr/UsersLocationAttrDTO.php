@@ -245,3 +245,4 @@ class UsersLocationAttrDTO implements DataTransferObjectInterface
     }
 }
 
+

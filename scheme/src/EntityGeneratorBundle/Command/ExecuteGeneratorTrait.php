@@ -16,6 +16,7 @@ trait ExecuteGeneratorTrait
     protected $skipEntities;
     protected $mergeEmbeddedClasses;
     protected $injectEmbeddedClasses;
+    protected $disconnectedClassMetadata = false;
 
     /**
      * @var MetadataFactory;
@@ -45,10 +46,18 @@ trait ExecuteGeneratorTrait
 
             if (class_exists($name)) {
                 $output->writeln(sprintf('Generating entity "<info>%s</info>"', $name));
-                $metadata = $manager->getClassMetadata($name, $input->getOption('path'));
+                $metadata = $manager->getClassMetadata(
+                    $name,
+                    $input->getOption('path'),
+                    $this->disconnectedClassMetadata
+                );
             } else {
                 $output->writeln(sprintf('Generating '. self::OUTCOME .' for namespace "<info>%s</info>"', $name));
-                $metadata = $manager->getNamespaceMetadata($name, $input->getOption('path'));
+                $metadata = $manager->getNamespaceMetadata(
+                    $name,
+                    $input->getOption('path'),
+                    $this->disconnectedClassMetadata
+                );
             }
         }
 
@@ -83,7 +92,11 @@ trait ExecuteGeneratorTrait
             }
             // Getting the metadata for the entity class once more to get the correct path if the namespace has multiple occurrences
             try {
-                $entityMetadata = $manager->getClassMetadata($m->getName(), $input->getOption('path'));
+                $entityMetadata = $manager->getClassMetadata(
+                    $m->getName(),
+                    $input->getOption('path'),
+                    $this->disconnectedClassMetadata
+                );
             } catch (\RuntimeException $e) {
                 // fall back to the bundle metadata when no entity class could be found
                 $entityMetadata = $metadata;
@@ -109,7 +122,11 @@ trait ExecuteGeneratorTrait
         if (isset($entity->embeddedClasses)) {
             foreach ($entity->embeddedClasses as $property => $embeddableClass) {
 
-                $embeddableMetadata = $this->manager->getClassMetadata($embeddableClass['class'], $this->input->getOption('path'));
+                $embeddableMetadata = $this->manager->getClassMetadata(
+                    $embeddableClass['class'],
+                    $this->input->getOption('path'),
+                    $this->disconnectedClassMetadata
+                );
                 $classEmbeddableMetadata = $embeddableMetadata->getMetadata();
                 $entity->inlineEmbeddable($property, current($classEmbeddableMetadata));
             }

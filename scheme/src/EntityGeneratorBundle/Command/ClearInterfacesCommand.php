@@ -16,6 +16,13 @@ class ClearInterfacesCommand extends GenerateInterfacesCommand
 {
     const OUTCOME = 'empty interfaces';
 
+    public function __construct($name = null)
+    {
+        $this->disconnectedClassMetadata = true;
+
+        return parent::__construct($name);
+    }
+
     /**
      * {@inheritDoc}
      */

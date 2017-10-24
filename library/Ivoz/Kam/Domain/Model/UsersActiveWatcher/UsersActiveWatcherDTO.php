@@ -739,3 +739,4 @@ class UsersActiveWatcherDTO implements DataTransferObjectInterface
     }
 }
 
+

@@ -6,6 +6,11 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 
 interface LocutionInterface extends EntityInterface
 {
+    /**
+     * @return array
+     */
+    public function getFileObjects();
+
     public function getLocutionPath();
 
     /**
@@ -87,6 +92,13 @@ interface LocutionInterface extends EntityInterface
      * @return OriginalFile
      */
     public function getOriginalFile();
+
+    public function addTmpFile(\Ivoz\Core\Domain\Service\TempFile $file);
+
+    /**
+     * @return TempFile[]
+     */
+    public function getTempFiles();
 
 }
 

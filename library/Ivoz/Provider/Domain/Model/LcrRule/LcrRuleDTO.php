@@ -350,3 +350,4 @@ class LcrRuleDTO implements DataTransferObjectInterface
     }
 }
 
+

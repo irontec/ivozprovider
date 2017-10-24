@@ -6,6 +6,13 @@ trait BrandDTOTrait
 {
     private $logoPath;
 
+    public function getFileObjects()
+    {
+        return [
+            'logo'
+        ];
+    }
+
     /**
      * @return self
      */
@@ -15,20 +22,12 @@ trait BrandDTOTrait
 
         return $this;
     }
-
     /**
      * @return string
      */
     public function getLogoPath()
     {
         return $this->logoPath;
-    }
-
-    public function getFileObjects()
-    {
-        return [
-            'logo'
-        ];
     }
 }
 
