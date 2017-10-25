@@ -142,7 +142,7 @@ interface RecordingInterface extends EntityInterface
     /**
      * Set recordedFile
      *
-     * @param RecordedFile $recordedFile
+     * @param \Ivoz\Provider\Domain\Model\Recording\RecordedFile $recordedFile
      *
      * @return self
      */
@@ -151,7 +151,7 @@ interface RecordingInterface extends EntityInterface
     /**
      * Get recordedFile
      *
-     * @return RecordedFile
+     * @return \Ivoz\Provider\Domain\Model\Recording\RecordedFile
      */
     public function getRecordedFile();
 

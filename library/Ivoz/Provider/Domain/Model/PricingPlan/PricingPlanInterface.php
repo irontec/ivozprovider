@@ -41,7 +41,7 @@ interface PricingPlanInterface extends EntityInterface
     /**
      * Set name
      *
-     * @param Name $name
+     * @param \Ivoz\Provider\Domain\Model\PricingPlan\Name $name
      *
      * @return self
      */
@@ -50,14 +50,14 @@ interface PricingPlanInterface extends EntityInterface
     /**
      * Get name
      *
-     * @return Name
+     * @return \Ivoz\Provider\Domain\Model\PricingPlan\Name
      */
     public function getName();
 
     /**
      * Set description
      *
-     * @param Description $description
+     * @param \Ivoz\Provider\Domain\Model\PricingPlan\Description $description
      *
      * @return self
      */
@@ -66,7 +66,7 @@ interface PricingPlanInterface extends EntityInterface
     /**
      * Get description
      *
-     * @return Description
+     * @return \Ivoz\Provider\Domain\Model\PricingPlan\Description
      */
     public function getDescription();
 

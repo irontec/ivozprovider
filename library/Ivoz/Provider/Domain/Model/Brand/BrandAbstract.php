@@ -40,7 +40,7 @@ abstract class BrandAbstract
     /**
      * @var string
      */
-    protected $recordingslimitemail;
+    protected $recordingsLimitEmail;
 
     /**
      * @var Logo
@@ -170,7 +170,7 @@ abstract class BrandAbstract
             ->setFromName($dto->getFromName())
             ->setFromAddress($dto->getFromAddress())
             ->setRecordingsLimitMB($dto->getRecordingsLimitMB())
-            ->setRecordingslimitemail($dto->getRecordingslimitemail())
+            ->setRecordingsLimitEmail($dto->getRecordingsLimitEmail())
             ->setLanguage($dto->getLanguage())
             ->setDefaultTimezone($dto->getDefaultTimezone())
         ;
@@ -209,7 +209,7 @@ abstract class BrandAbstract
             ->setFromName($dto->getFromName())
             ->setFromAddress($dto->getFromAddress())
             ->setRecordingsLimitMB($dto->getRecordingsLimitMB())
-            ->setRecordingslimitemail($dto->getRecordingslimitemail())
+            ->setRecordingsLimitEmail($dto->getRecordingsLimitEmail())
             ->setLogo($logo)
             ->setInvoice($invoice)
             ->setLanguage($dto->getLanguage())
@@ -230,7 +230,7 @@ abstract class BrandAbstract
             ->setFromName($this->getFromName())
             ->setFromAddress($this->getFromAddress())
             ->setRecordingsLimitMB($this->getRecordingsLimitMB())
-            ->setRecordingslimitemail($this->getRecordingslimitemail())
+            ->setRecordingsLimitEmail($this->getRecordingsLimitEmail())
             ->setLogoFileSize($this->getLogo()->getFileSize())
             ->setLogoMimeType($this->getLogo()->getMimeType())
             ->setLogoBaseName($this->getLogo()->getBaseName())
@@ -256,7 +256,7 @@ abstract class BrandAbstract
             'fromName' => self::getFromName(),
             'fromAddress' => self::getFromAddress(),
             'recordingsLimitMB' => self::getRecordingsLimitMB(),
-            'recordingslimitemail' => self::getRecordingslimitemail(),
+            'recordingsLimitEmail' => self::getRecordingsLimitEmail(),
             'logoFileSize' => self::getLogo()->getFileSize(),
             'logoMimeType' => self::getLogo()->getMimeType(),
             'logoBaseName' => self::getLogo()->getBaseName(),
@@ -417,31 +417,31 @@ abstract class BrandAbstract
     }
 
     /**
-     * Set recordingslimitemail
+     * Set recordingsLimitEmail
      *
-     * @param string $recordingslimitemail
+     * @param string $recordingsLimitEmail
      *
      * @return self
      */
-    public function setRecordingslimitemail($recordingslimitemail = null)
+    public function setRecordingsLimitEmail($recordingsLimitEmail = null)
     {
-        if (!is_null($recordingslimitemail)) {
-            Assertion::maxLength($recordingslimitemail, 250);
+        if (!is_null($recordingsLimitEmail)) {
+            Assertion::maxLength($recordingsLimitEmail, 250);
         }
 
-        $this->recordingslimitemail = $recordingslimitemail;
+        $this->recordingsLimitEmail = $recordingsLimitEmail;
 
         return $this;
     }
 
     /**
-     * Get recordingslimitemail
+     * Get recordingsLimitEmail
      *
      * @return string
      */
-    public function getRecordingslimitemail()
+    public function getRecordingsLimitEmail()
     {
-        return $this->recordingslimitemail;
+        return $this->recordingsLimitEmail;
     }
 
     /**
@@ -495,7 +495,7 @@ abstract class BrandAbstract
     /**
      * Set logo
      *
-     * @param Logo $logo
+     * @param \Ivoz\Provider\Domain\Model\Brand\Logo $logo
      *
      * @return self
      */
@@ -509,7 +509,7 @@ abstract class BrandAbstract
     /**
      * Get logo
      *
-     * @return Logo
+     * @return \Ivoz\Provider\Domain\Model\Brand\Logo
      */
     public function getLogo()
     {
@@ -519,7 +519,7 @@ abstract class BrandAbstract
     /**
      * Set invoice
      *
-     * @param Invoice $invoice
+     * @param \Ivoz\Provider\Domain\Model\Brand\Invoice $invoice
      *
      * @return self
      */
@@ -533,7 +533,7 @@ abstract class BrandAbstract
     /**
      * Get invoice
      *
-     * @return Invoice
+     * @return \Ivoz\Provider\Domain\Model\Brand\Invoice
      */
     public function getInvoice()
     {

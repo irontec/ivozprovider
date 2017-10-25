@@ -1,7 +1,6 @@
 @company
 @huntGroups
 @company14
-@skip
 
 Feature: HuntGroups admin page
   As a main operator

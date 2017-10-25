@@ -4,9 +4,9 @@
 production:
   main:
     module: klearMatrix
-    defaultScreen: IvrCommonList_screen
+    defaultScreen: ivrCommonList_screen
   screens:
-    IvrCommonList_screen: &IvrCommonList_screenLink
+    ivrCommonList_screen: &IvrCommonList_screenLink
       controller: list
       pagination:
         items: 25
@@ -40,17 +40,17 @@ production:
         options:
           title: _("Options")
           screens:
-            IvrCommonEdit_screen: true
+            ivrCommonEdit_screen: true
           dialogs:
-            IvrCommonDel_dialog: true
-          default: IvrCommonEdit_screen
+            ivrCommonDel_dialog: true
+          default: ivrCommonEdit_screen
       options:
         title: _("Options")
         screens:
-          IvrCommonNew_screen: true
+          ivrCommonNew_screen: true
         dialogs:
-          IvrCommonDel_dialog: true
-    IvrCommonNew_screen: &IvrCommonNew_screenLink
+          ivrCommonDel_dialog: true
+    ivrCommonNew_screen: &IvrCommonNew_screenLink
       <<: *IvrCommon
       controller: new
       class: ui-silk-add
@@ -95,7 +95,7 @@ production:
             errorNumberValue: 2
             errorExtensionId: 2
             errorVoiceMailUserId: 2
-    IvrCommonEdit_screen: &IvrCommonEdit_screenLink
+    ivrCommonEdit_screen: &IvrCommonEdit_screenLink
       <<: *IvrCommon
       controller: edit
       class: ui-silk-pencil
@@ -111,7 +111,7 @@ production:
       fixedPositions:
         <<: *IvrCommonFixedPositions_link
   dialogs:
-    IvrCommonDel_dialog: &IvrCommonDel_dialogLink
+    ivrCommonDel_dialog: &IvrCommonDel_dialogLink
       <<: *IvrCommon
       controller: delete
       class: ui-silk-bin

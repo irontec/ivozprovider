@@ -57,7 +57,7 @@ interface ServiceInterface extends EntityInterface
     /**
      * Set name
      *
-     * @param Name $name
+     * @param \Ivoz\Provider\Domain\Model\Service\Name $name
      *
      * @return self
      */
@@ -66,14 +66,14 @@ interface ServiceInterface extends EntityInterface
     /**
      * Get name
      *
-     * @return Name
+     * @return \Ivoz\Provider\Domain\Model\Service\Name
      */
     public function getName();
 
     /**
      * Set description
      *
-     * @param Description $description
+     * @param \Ivoz\Provider\Domain\Model\Service\Description $description
      *
      * @return self
      */
@@ -82,7 +82,7 @@ interface ServiceInterface extends EntityInterface
     /**
      * Get description
      *
-     * @return Description
+     * @return \Ivoz\Provider\Domain\Model\Service\Description
      */
     public function getDescription();
 

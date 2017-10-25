@@ -22,6 +22,6 @@ services:
   ##################################
   ## post_persist
   ##################################
-  Ivoz\Provider\Domain\Service\GenericMusicOnHold\Recoder:
+  Ivoz\Provider\Domain\Service\GenericMusicOnHold\SendRecodingOrder:
     tags:
       - { name: provider.lifecycle.generic_music_on_hold.post_persist, priority: 10}

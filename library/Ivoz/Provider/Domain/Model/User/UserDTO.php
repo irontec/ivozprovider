@@ -748,7 +748,7 @@ class UserDTO implements DataTransferObjectInterface
     }
 
     /**
-     * @return User
+     * @return \Ivoz\Provider\Domain\Model\User\User
      */
     public function getBossAssistant()
     {

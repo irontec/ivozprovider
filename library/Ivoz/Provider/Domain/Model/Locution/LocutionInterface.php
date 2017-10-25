@@ -64,7 +64,7 @@ interface LocutionInterface extends EntityInterface
     /**
      * Set encodedFile
      *
-     * @param EncodedFile $encodedFile
+     * @param \Ivoz\Provider\Domain\Model\Locution\EncodedFile $encodedFile
      *
      * @return self
      */
@@ -73,14 +73,14 @@ interface LocutionInterface extends EntityInterface
     /**
      * Get encodedFile
      *
-     * @return EncodedFile
+     * @return \Ivoz\Provider\Domain\Model\Locution\EncodedFile
      */
     public function getEncodedFile();
 
     /**
      * Set originalFile
      *
-     * @param OriginalFile $originalFile
+     * @param \Ivoz\Provider\Domain\Model\Locution\OriginalFile $originalFile
      *
      * @return self
      */
@@ -89,7 +89,7 @@ interface LocutionInterface extends EntityInterface
     /**
      * Get originalFile
      *
-     * @return OriginalFile
+     * @return \Ivoz\Provider\Domain\Model\Locution\OriginalFile
      */
     public function getOriginalFile();
 

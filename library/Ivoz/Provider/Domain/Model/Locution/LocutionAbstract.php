@@ -305,7 +305,7 @@ abstract class LocutionAbstract
     /**
      * Set encodedFile
      *
-     * @param EncodedFile $encodedFile
+     * @param \Ivoz\Provider\Domain\Model\Locution\EncodedFile $encodedFile
      *
      * @return self
      */
@@ -319,7 +319,7 @@ abstract class LocutionAbstract
     /**
      * Get encodedFile
      *
-     * @return EncodedFile
+     * @return \Ivoz\Provider\Domain\Model\Locution\EncodedFile
      */
     public function getEncodedFile()
     {
@@ -329,7 +329,7 @@ abstract class LocutionAbstract
     /**
      * Set originalFile
      *
-     * @param OriginalFile $originalFile
+     * @param \Ivoz\Provider\Domain\Model\Locution\OriginalFile $originalFile
      *
      * @return self
      */
@@ -343,7 +343,7 @@ abstract class LocutionAbstract
     /**
      * Get originalFile
      *
-     * @return OriginalFile
+     * @return \Ivoz\Provider\Domain\Model\Locution\OriginalFile
      */
     public function getOriginalFile()
     {

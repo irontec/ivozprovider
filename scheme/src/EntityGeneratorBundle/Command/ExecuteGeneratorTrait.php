@@ -102,8 +102,8 @@ trait ExecuteGeneratorTrait
                 $entityMetadata = $metadata;
             }
 
-            $output->writeln(sprintf('  > generating <comment>%s</comment>', $m->name));
             $generator->generate(array($m), $entityMetadata->getPath());
+            $output->writeln(sprintf('  > generated <comment>%s</comment>', $m->name));
 
             if ($m->customRepositoryClassName && false !== strpos($m->customRepositoryClassName, $metadata->getNamespace())) {
                 $repoGenerator->writeEntityRepositoryClass($m->customRepositoryClassName, $metadata->getPath());

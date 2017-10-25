@@ -121,7 +121,7 @@ interface FaxesInOutInterface extends EntityInterface
     /**
      * Set file
      *
-     * @param File $file
+     * @param \Ivoz\Provider\Domain\Model\FaxesInOut\File $file
      *
      * @return self
      */
@@ -130,7 +130,7 @@ interface FaxesInOutInterface extends EntityInterface
     /**
      * Get file
      *
-     * @return File
+     * @return \Ivoz\Provider\Domain\Model\FaxesInOut\File
      */
     public function getFile();
 

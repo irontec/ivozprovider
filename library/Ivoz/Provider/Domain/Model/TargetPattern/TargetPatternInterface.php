@@ -41,7 +41,7 @@ interface TargetPatternInterface extends EntityInterface
     /**
      * Set name
      *
-     * @param Name $name
+     * @param \Ivoz\Provider\Domain\Model\TargetPattern\Name $name
      *
      * @return self
      */
@@ -50,14 +50,14 @@ interface TargetPatternInterface extends EntityInterface
     /**
      * Get name
      *
-     * @return Name
+     * @return \Ivoz\Provider\Domain\Model\TargetPattern\Name
      */
     public function getName();
 
     /**
      * Set description
      *
-     * @param Description $description
+     * @param \Ivoz\Provider\Domain\Model\TargetPattern\Description $description
      *
      * @return self
      */
@@ -66,7 +66,7 @@ interface TargetPatternInterface extends EntityInterface
     /**
      * Get description
      *
-     * @return Description
+     * @return \Ivoz\Provider\Domain\Model\TargetPattern\Description
      */
     public function getDescription();
 

@@ -1,8 +1,12 @@
 <?php
 
 namespace IvozProvider\Klear\Auth;
-use IvozProvider\Model\Brands;
-use IvozProvider\Model\Companies;
+use \Ivoz\Provider\Domain\Model\Brand\Brand;
+use Ivoz\Provider\Domain\Model\Brand\BrandDTO;
+use \Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Provider\Domain\Model\Company\CompanyDTO;
+
+
 class User extends \Klear_Model_UserAdvanced
 {
     public $isMainOperator = false;
@@ -30,19 +34,22 @@ class User extends \Klear_Model_UserAdvanced
         return $this;
     }
 
-    public function setBrand(Brands $brand)
+    public function setBrand(BrandDTO $brand)
     {
-        $this->brandId = $brand->getPrimaryKey();
+        $this->brandId = $brand->getId();
         $this->brandName = $brand->getName();
         $this->brandSetted = true;
-
     }
 
     public function setBrandId($brandId)
     {
+        $dataGateway = \Zend_Registry::get('data_gateway');
 
-        $bMapper = new \IvozProvider\Mapper\Sql\Brands();
-        $brand = $bMapper->find($brandId);
+        $brand = $dataGateway->find(
+            Brand::class,
+            $brandId
+        );
+
         if (!$brand) {
             throw new \Exception("Invalid brand");
         }
@@ -50,14 +57,14 @@ class User extends \Klear_Model_UserAdvanced
     }
 
 
-    public function setCompany(Companies $company)
+    public function setCompany(CompanyDTO $company)
     {
-        $this->companyId = $company->getPrimaryKey();
+        $this->companyId = $company->getId();
         $this->companyCountryId = $company->getCountryId();
         $this->companyName = $company->getName();
         $this->companyType = $company->getType();
-        $this->companyVPBX = $company->getType() === Companies::VPBX;
-        $this->companyRetail = $company->getType() === Companies::RETAIL;
+        $this->companyVPBX = $company->getType() === Company::VPBX;
+        $this->companyRetail = $company->getType() === Company::RETAIL;
     }
 
     public function unsetCompany()
@@ -69,8 +76,13 @@ class User extends \Klear_Model_UserAdvanced
 
     public function setCompanyId($companyId)
     {
-        $cMapper = new \IvozProvider\Mapper\Sql\Companies();
-        $company = $cMapper->find($companyId);
+        $dataGateway = \Zend_Registry::get('data_gateway');
+
+        $company = $dataGateway->find(
+            Company::class,
+            $companyId
+        );
+
         if (!$company) {
             throw new \Exception("Invalid company");
         }

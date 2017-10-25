@@ -25,7 +25,7 @@ interface LanguageInterface extends EntityInterface
     /**
      * Set name
      *
-     * @param Name $name
+     * @param \Ivoz\Provider\Domain\Model\Language\Name $name
      *
      * @return self
      */
@@ -34,7 +34,7 @@ interface LanguageInterface extends EntityInterface
     /**
      * Get name
      *
-     * @return Name
+     * @return \Ivoz\Provider\Domain\Model\Language\Name
      */
     public function getName();
 

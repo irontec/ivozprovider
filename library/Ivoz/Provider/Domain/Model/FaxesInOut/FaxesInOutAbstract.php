@@ -424,7 +424,7 @@ abstract class FaxesInOutAbstract
     /**
      * Set file
      *
-     * @param File $file
+     * @param \Ivoz\Provider\Domain\Model\FaxesInOut\File $file
      *
      * @return self
      */
@@ -438,7 +438,7 @@ abstract class FaxesInOutAbstract
     /**
      * Get file
      *
-     * @return File
+     * @return \Ivoz\Provider\Domain\Model\FaxesInOut\File
      */
     public function getFile()
     {

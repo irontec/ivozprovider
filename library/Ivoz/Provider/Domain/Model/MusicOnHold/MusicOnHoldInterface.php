@@ -67,7 +67,7 @@ interface MusicOnHoldInterface extends EntityInterface
     /**
      * Set originalFile
      *
-     * @param OriginalFile $originalFile
+     * @param \Ivoz\Provider\Domain\Model\MusicOnHold\OriginalFile $originalFile
      *
      * @return self
      */
@@ -76,14 +76,14 @@ interface MusicOnHoldInterface extends EntityInterface
     /**
      * Get originalFile
      *
-     * @return OriginalFile
+     * @return \Ivoz\Provider\Domain\Model\MusicOnHold\OriginalFile
      */
     public function getOriginalFile();
 
     /**
      * Set encodedFile
      *
-     * @param EncodedFile $encodedFile
+     * @param \Ivoz\Provider\Domain\Model\MusicOnHold\EncodedFile $encodedFile
      *
      * @return self
      */
@@ -92,7 +92,7 @@ interface MusicOnHoldInterface extends EntityInterface
     /**
      * Get encodedFile
      *
-     * @return EncodedFile
+     * @return \Ivoz\Provider\Domain\Model\MusicOnHold\EncodedFile
      */
     public function getEncodedFile();
 

@@ -15,32 +15,12 @@ class SanitizeValues implements MusicOnHoldLifecycleEventHandlerInterface
 
     public function execute(MusicOnHoldInterface $entity)
     {
-        /**
-         * @todo
-         */
-        throw new \Exception('FSO not implemented yet');
+        foreach ($entity->getTempFiles() as $tmpFile) {
 
-//        $mustRecode = false;
-//
-//        $fso = $model->fetchOriginalFile(false);
-//
-//        if ($fso instanceof \Iron_Model_Fso && $fso->mustFlush()) {
-//            $mustRecode = true;
-//            // TODO: Set status a pending de reencoder (pending, encoding, ready, error)
-//            $model->setStatus('pending');
-//        }
-//
-//        $response = parent::_save($model,$recursive,$useTransaction,$transactionTag, $forceInsert);
-//
-//        if ($mustRecode) {
-//            $recoderJob = new Recoder();
-//            $recoderJob
-//                ->setId($model->getPrimaryKey())
-//                ->setModelName("MusicOnHold")
-//                ->send();
-//        }
-//
-//        return $response;
-//    }
+            $tmpPath = $tmpFile->getTmpPath();
+            if (!is_null($tmpPath)) {
+                $entity->setStatus('pending');
+            }
+        }
     }
 }

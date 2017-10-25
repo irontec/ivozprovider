@@ -5,9 +5,9 @@
 production:
   main:
     module: klearMatrix
-    defaultScreen: IvrCustomList_screen
+    defaultScreen: ivrCustomList_screen
   screens:
-    IvrCustomList_screen: &IvrCustomList_screenLink
+    ivrCustomList_screen: &IvrCustomList_screenLink
       controller: list
       pagination:
         items: 25
@@ -40,18 +40,18 @@ production:
         options:
           title: _("Options")
           screens:
-            IvrCustomEdit_screen: true
-            IvrCustomEntriesList_screen: true
+            ivrCustomEdit_screen: true
+            ivrCustomEntriesList_screen: true
           dialogs:
-            IvrCustomDel_dialog: true
-          default: IvrCustomEdit_screen
+            ivrCustomDel_dialog: true
+          default: ivrCustomEdit_screen
       options:
         title: _("Options")
         screens:
-          IvrCustomNew_screen: true
+          ivrCustomNew_screen: true
         dialogs:
-          IvrCustomDel_dialog: true
-    IvrCustomNew_screen: &IvrCustomNew_screenLink
+          ivrCustomDel_dialog: true
+    ivrCustomNew_screen: &IvrCustomNew_screenLink
       <<: *IvrCustom
       controller: new
       class: ui-silk-add
@@ -98,7 +98,7 @@ production:
             errorExtensionId: 2
             errorUser: 2
             errorVoiceMailUserId: 2
-    IvrCustomEdit_screen: &IvrCustomEdit_screenLink
+    ivrCustomEdit_screen: &IvrCustomEdit_screenLink
       <<: *IvrCustom
       controller: edit
       class: ui-silk-pencil
@@ -115,19 +115,19 @@ production:
         <<: *IvrCustomFixedPositions_link
     #IVRCustomEntries
     <<: *IvrCustomEntries_screensLink
-    IvrCustomEntriesList_screen:
+    ivrCustomEntriesList_screen:
       <<: *IvrCustomEntriesList_screenLink
       filterField: IvrCustom
       parentOptionCustomizer:
         - recordCount
-    IvrCustomEntriesNew_screen:
+    ivrCustomEntriesNew_screen:
       <<: *IvrCustomEntriesNew_screenLink
       filterField: IvrCustom
-    IvrCustomEntriesEdit_screen:
+    ivrCustomEntriesEdit_screen:
       <<: *IvrCustomEntriesEdit_screenLink
       filterField: IvrCustom
   dialogs:
-    IvrCustomDel_dialog: &IvrCustomDel_dialogLink
+    ivrCustomDel_dialog: &IvrCustomDel_dialogLink
       <<: *IvrCustom
       controller: delete
       class: ui-silk-bin

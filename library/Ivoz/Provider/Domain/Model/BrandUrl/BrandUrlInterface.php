@@ -105,7 +105,7 @@ interface BrandUrlInterface extends EntityInterface
     /**
      * Set logo
      *
-     * @param Logo $logo
+     * @param \Ivoz\Provider\Domain\Model\BrandUrl\Logo $logo
      *
      * @return self
      */
@@ -114,7 +114,7 @@ interface BrandUrlInterface extends EntityInterface
     /**
      * Get logo
      *
-     * @return Logo
+     * @return \Ivoz\Provider\Domain\Model\BrandUrl\Logo
      */
     public function getLogo();
 

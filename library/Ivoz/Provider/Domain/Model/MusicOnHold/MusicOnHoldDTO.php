@@ -11,6 +11,7 @@ use Ivoz\Core\Application\CollectionTransformerInterface;
  */
 class MusicOnHoldDTO implements DataTransferObjectInterface
 {
+    use MusicOnHoldDTOTrait;
     /**
      * @var string
      */

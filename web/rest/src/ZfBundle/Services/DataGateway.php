@@ -7,7 +7,8 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Service\CreateEntityFromDTO;
 use Ivoz\Core\Application\Service\Assembler\DtoAssembler;
 use Ivoz\Core\Application\Service\UpdateEntityFromDTO;
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister;
+use Ivoz\Core\Infrastructure\Domain\Service\Lifecycle\DoctrineEventSubscriber;
 
 /**
  * persistence data gateway for zend framework applications
@@ -27,14 +28,9 @@ class DataGateway
     private $queryBuilderFactory;
 
     /**
-     * @var UpdateEntityFromDTO
+     * @var DoctrineEntityPersister
      */
-    private $entityUpdater;
-
-    /**
-     * @var CreateEntityFromDTO
-     */
-    private $entityFactory;
+    private $entityPersister;
 
     /**
      * @var DtoAssembler
@@ -56,14 +52,12 @@ class DataGateway
     public function __construct(
         EntityManager $entityManager,
         QueryBuilderFactory $queryBuilderFactory,
-        CreateEntityFromDTO $createEntityFromDTO,
-        UpdateEntityFromDTO $entityUpdater,
+        DoctrineEntityPersister $entityPersister,
         DtoAssembler $dtoAssembler
     ) {
         $this->em = $entityManager;
         $this->queryBuilderFactory = $queryBuilderFactory;
-        $this->entityFactory = $createEntityFromDTO;
-        $this->entityUpdater = $entityUpdater;
+        $this->entityPersister = $entityPersister;
         $this->dtoAssembler = $dtoAssembler;
 
         $this->assemblers = [];
@@ -132,12 +126,17 @@ class DataGateway
      * @param string $entityName
      * @param array|null $criteria
      * @param array|null $orderBy
-     * @param integer|null $limit
-     * @param integer|null $offset
-     * @return DataTransferObjectInterface[]
+     * @param int|null $limit
+     * @param int|null $offset
+     * @return DataTransferObjectInterface
      */
-    public function findBy(string $entityName, array $criteria = null, array $orderBy = null, $limit = null, $offset = null)
-    {
+    public function findBy(
+        string $entityName,
+        array $criteria = null,
+        array $orderBy = null,
+        int $limit = null,
+        int $offset = null
+    ) {
         $query = $this
             ->queryBuilderFactory
             ->createFromArguments($entityName, $criteria, $orderBy, $limit, $offset)
@@ -156,10 +155,18 @@ class DataGateway
     /**
      * @param string $entityName
      * @param array|null $criteria
-     * @return DataTransferObjectInterface
+     * @param array|null $orderBy
+     * @param int|null $limit
+     * @param int|null $offset
+     * @return DataTransferObjectInterface[]
      */
-    public function findOneBy(string $entityName, array $criteria = null, array $orderBy = null, $limit = null, $offset = null)
-    {
+    public function findOneBy(
+        string $entityName,
+        array $criteria = null,
+        array $orderBy = null,
+        int $limit = null,
+        int $offset = null
+    ) {
         $response = $this->findBy(
             $entityName,
             $criteria,
@@ -176,7 +183,7 @@ class DataGateway
     /**
      * @param string $entityName
      * @param array|null $criteria
-     * @return array
+     * @return int
      */
     public function countBy(string $entityName, array $criteria = null)
     {
@@ -193,20 +200,30 @@ class DataGateway
         return $query->getSingleScalarResult();
     }
 
+    /**
+     * @param string $entityName
+     * @param DataTransferObjectInterface $dto
+     * @return void
+     */
     public function persist(string $entityName, DataTransferObjectInterface $dto)
     {
-        $entity = $this
-            ->entityFactory
-            ->execute(
-                $entityName, $dto
+        $entity = $this->entityPersister
+            ->persistDto(
+                $dto,
+                null,
+                true
             );
 
-        $this->em->persist($entity);
-        $this->em->flush();
-
-        $dto->setId($entity->getId());
+        $dto->setId(
+            $entity->getId()
+        );
     }
 
+    /**
+     * @param string $entityName
+     * @param DataTransferObjectInterface $dto
+     * @throws \Exception
+     */
     public function update(string $entityName, DataTransferObjectInterface $dto)
     {
         $repository = $this->getRepository($entityName);
@@ -215,15 +232,19 @@ class DataGateway
         if (!$entity) {
             throw new \Exception('Entity not found');
         }
-        $this->entityUpdater->execute($entity, $dto);
 
-        $this->em->persist($entity);
-        $this->em->flush();
+        $this->entityPersister
+            ->persistDto(
+                $dto,
+                $entity,
+                true
+            );
     }
 
     /**
      * @param string $entityName
      * @param array $ids
+     * @return void
      */
     public function remove(string $entityName, array $ids)
     {
@@ -239,6 +260,13 @@ class DataGateway
         $this->em->flush();
     }
 
+    /**
+     * @param string $entityName
+     * @param $id
+     * @param $method
+     * @param array $arguments
+     * @return mixed
+     */
     public function remoteProcedureCall(string $entityName, $id, $method, array $arguments)
     {
         $entity = $this

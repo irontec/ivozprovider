@@ -265,7 +265,7 @@ abstract class TimezoneAbstract
     /**
      * Set label
      *
-     * @param Label $label
+     * @param \Ivoz\Provider\Domain\Model\Timezone\Label $label
      *
      * @return self
      */
@@ -279,7 +279,7 @@ abstract class TimezoneAbstract
     /**
      * Get label
      *
-     * @return Label
+     * @return \Ivoz\Provider\Domain\Model\Timezone\Label
      */
     public function getLabel()
     {

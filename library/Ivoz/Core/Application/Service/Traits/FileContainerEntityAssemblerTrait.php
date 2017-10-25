@@ -22,7 +22,7 @@ trait FileContainerEntityAssemblerTrait
     protected function getPathResolver($objName, $originalFileName = null)
     {
         if (!array_key_exists($objName, $this->pathResolvers)) {
-            throw new \Exception('No path resolver found for ' . $objName);
+            throw new \Exception('No path resolver found for ' . $objName, 1000);
         }
 
         $pathResolver = $this->pathResolvers[$objName];
@@ -133,7 +133,7 @@ trait FileContainerEntityAssemblerTrait
         $baseName = null;
 
         if ($newFilePath && !file_exists($newFilePath)) {
-            throw new \Exception('File not found: ' . $newFilePath);
+            throw new \Exception('File not found: ' . $newFilePath, 2000);
         }
 
         if (file_exists($newFilePath)) {

@@ -194,7 +194,7 @@ abstract class LanguageAbstract
     /**
      * Set name
      *
-     * @param Name $name
+     * @param \Ivoz\Provider\Domain\Model\Language\Name $name
      *
      * @return self
      */
@@ -208,7 +208,7 @@ abstract class LanguageAbstract
     /**
      * Get name
      *
-     * @return Name
+     * @return \Ivoz\Provider\Domain\Model\Language\Name
      */
     public function getName()
     {

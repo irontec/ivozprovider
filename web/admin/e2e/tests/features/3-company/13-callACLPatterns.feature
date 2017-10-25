@@ -1,7 +1,6 @@
 @company
 @callACLPatterns
 @company13
-@skip
 
 Feature: CallACLPatterns admin page
   As a main operator

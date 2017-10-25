@@ -19,3 +19,11 @@ services:
     tags:
       - { name: provider.lifecycle.music_on_hold.pre_persist, priority: 10 }
     arguments: ~
+
+  ##################################
+  ## post_persist
+  ##################################
+  Ivoz\Provider\Domain\Service\MusicOnHold\SendRecodingOrder:
+    tags:
+      - { name: provider.lifecycle.music_on_hold.post_persist, priority: 10 }
+    arguments: ~

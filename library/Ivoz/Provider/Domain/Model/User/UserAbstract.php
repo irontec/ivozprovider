@@ -894,7 +894,7 @@ abstract class UserAbstract
     /**
      * Set bossAssistant
      *
-     * @param UserInterface $bossAssistant
+     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $bossAssistant
      *
      * @return self
      */
@@ -908,7 +908,7 @@ abstract class UserAbstract
     /**
      * Get bossAssistant
      *
-     * @return UserInterface
+     * @return \Ivoz\Provider\Domain\Model\User\UserInterface
      */
     public function getBossAssistant()
     {

@@ -1,16 +1,11 @@
 <?php
 
-/**
- * @author jabi
- * Controlador "klearizado" (commands based), que devuelve información al script customMenu.js para la selección dinámica de brands/companys
- *     - Listado de Empresas
- *     - Modificación de objeto de autenticación (sustitución de empresa).
- */
-
-use IvozProvider\Mapper\Sql\Companies;
-use IvozProvider\Mapper\Sql\Brands;
 use \Ivoz\Provider\Domain\Model\Brand\Brand;
+use \Ivoz\Provider\Domain\Model\Brand\BrandDTO;
 use \Ivoz\Provider\Domain\Model\Company\Company;
+use \Ivoz\Provider\Domain\Model\Brand\CompanyDTO;
+use \Ivoz\Provider\Domain\Model\Feature\Feature;
+use \Ivoz\Provider\Domain\Model\Feature\FeatureDTO;
 
 
 class KlearCustomExtraAuthController extends Zend_Controller_Action
@@ -41,49 +36,6 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
         $this->_mainRouter = $this->getRequest()->getParam("mainRouter");
         $this->_user = Zend_Auth::getInstance()->getIdentity();
     }
-
-
-    public function searchAction()
-    {
-        $type = $this->getRequest()->getParam("namespace");
-
-        $mapper = false;
-        $extraCondition = '';
-        if ($type == 'brand') {
-            if (!$this->_user->canSeeMain) {
-                return $this->_noPermission();
-            }
-            $mapper = new Brands();
-        }
-
-        if ($type == 'company') {
-            if (!$this->_user->canSeeBrand) {
-                return $this->_noPermission();
-            }
-            $mapper = new Companies();
-            if ($this->_user->isMainOperator && !is_null($this->_user->brandId)) {
-                $extraCondition = ' and brandId='. $this->_user->brandId;
-            } elseif ($this->_user->isBrandOperator) {
-                $extraCondition = ' and brandId='. $this->_user->brandId;
-            }
-        }
-        $term = '%' . $this->getRequest()->getParam("term") .'%';
-
-        $items = $mapper->fetchList(array('namer;
-    protected $_pk; like ? ' . $extraCondition, array($term)));
-
-        $response = array();
-        foreach ($items as $item) {
-            $response[] = array('id'=>$item->getPrimaryKey(), 'label'=>$item->getName());
-        }
-
-        // Tenemos que forzar la salida para jquery-ui autocomplete
-        echo json_encode($response);
-        exit;
-
-
-    }
-
 
     public function initialDataAction()
     {
@@ -185,6 +137,8 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
 
         $remoteId = "NONE!";
 
+        $dataGateway = \Zend_Registry::get('data_gateway');
+
         if ($type == 'brand') {
             if ($this->_user->canSeeMain) {
 
@@ -193,11 +147,18 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
                 $brandId = $this->getRequest()->getParam("remoteId");
                 $remoteId = $brandId;
                 $this->_user->setBrandId($brandId);
-                $brandsMapper = new Brands();
-                $this->_enableFeatures($brandsMapper->find($brandId));
+
+                $brand = $dataGateway->find(
+                    Brand::class,
+                    $brandId
+                );
+
+                $this->_enableFeatures($brand);
+
                 if ($oldBrandId != $brandId) {
                     $this->_user->unsetCompany();
                 }
+
             } else {
                 return $this->_noPermission();
             }
@@ -208,8 +169,13 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
                 $companyId = $this->getRequest()->getParam("remoteId");
                 $remoteId = $companyId;
                 $this->_user->setCompanyId($companyId);
-                $companiesMapper = new Companies();
-                $this->_enableFeatures($companiesMapper->find($companyId));
+
+                $company = $dataGateway->find(
+                    Company::class,
+                    $companyId
+                );
+
+                $this->_enableFeatures($company);
 
             } else {
                 return $this->_noPermission();
@@ -327,11 +293,26 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
     {
         // Enable/disable features
         $features = array();
-        $featureMapper = new \IvozProvider\Mapper\Sql\Features;
-        foreach ($featureMapper->fetchList() as $feature) {
+
+        /** <@UNVERIFIED|@var> \ZfBundle\Services\DataGateway $dataGateway */
+        $dataGateway = \Zend_Registry::get('data_gateway');
+
+        /** <@UNVERIFIED|@var> \Ivoz\Provider\Domain\Model\Feature\FeatureDTO[] $featureList */
+        $featureList = $dataGateway->findAll(
+                Feature::class
+        );
+
+        foreach ($featureList as $feature) {
             $featureName = $feature->getIden();
             $featureId = $feature->getId();
-            $enabled = $entity->hasFeature($featureId);
+
+            $enabled = $dataGateway->remoteProcedureCall(
+                substr(get_class($entity), 0,-3),
+                $entity->getId(),
+                "hasFeature",
+                [$featureId]
+            );
+
             $features[$featureName] = array(
                 "enabled" => $enabled,
                 "disabled" => !$enabled
@@ -339,7 +320,7 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
         }
 
         // Brand or company!
-        if ($entity instanceof \IvozProvider\Model\Raw\Brands) {
+        if ($entity instanceof BrandDTO) {
             $this->_user->brand = $features;
         } else {
             $this->_user->company = $features;

@@ -52,7 +52,7 @@ Ivoz\Provider\Domain\Model\Brand\BrandAbstract:
       options:
         unsigned: false
       column: recordingsLimitMB
-    recordingslimitemail:
+    recordingsLimitEmail:
       type: string
       nullable: true
       length: 250

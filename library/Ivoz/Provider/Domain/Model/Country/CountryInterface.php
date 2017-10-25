@@ -113,7 +113,7 @@ interface CountryInterface extends EntityInterface
     /**
      * Set name
      *
-     * @param Name $name
+     * @param \Ivoz\Provider\Domain\Model\Country\Name $name
      *
      * @return self
      */
@@ -122,14 +122,14 @@ interface CountryInterface extends EntityInterface
     /**
      * Get name
      *
-     * @return Name
+     * @return \Ivoz\Provider\Domain\Model\Country\Name
      */
     public function getName();
 
     /**
      * Set zone
      *
-     * @param Zone $zone
+     * @param \Ivoz\Provider\Domain\Model\Country\Zone $zone
      *
      * @return self
      */
@@ -138,7 +138,7 @@ interface CountryInterface extends EntityInterface
     /**
      * Get zone
      *
-     * @return Zone
+     * @return \Ivoz\Provider\Domain\Model\Country\Zone
      */
     public function getZone();
 

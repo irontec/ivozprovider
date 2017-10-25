@@ -539,7 +539,7 @@ abstract class InvoiceAbstract
     /**
      * Set pdf
      *
-     * @param Pdf $pdf
+     * @param \Ivoz\Provider\Domain\Model\Invoice\Pdf $pdf
      *
      * @return self
      */
@@ -553,7 +553,7 @@ abstract class InvoiceAbstract
     /**
      * Get pdf
      *
-     * @return Pdf
+     * @return \Ivoz\Provider\Domain\Model\Invoice\Pdf
      */
     public function getPdf()
     {

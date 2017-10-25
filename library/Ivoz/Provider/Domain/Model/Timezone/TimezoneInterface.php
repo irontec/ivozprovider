@@ -57,7 +57,7 @@ interface TimezoneInterface extends EntityInterface
     /**
      * Set label
      *
-     * @param Label $label
+     * @param \Ivoz\Provider\Domain\Model\Timezone\Label $label
      *
      * @return self
      */
@@ -66,7 +66,7 @@ interface TimezoneInterface extends EntityInterface
     /**
      * Get label
      *
-     * @return Label
+     * @return \Ivoz\Provider\Domain\Model\Timezone\Label
      */
     public function getLabel();
 

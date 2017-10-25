@@ -4,9 +4,9 @@
 production:
   main:
     module: klearMatrix
-    defaultScreen: IvrCustomEntriesList_screen
+    defaultScreen: ivrCustomEntriesList_screen
   screens: &IvrCustomEntries_screensLink
-    IvrCustomEntriesList_screen: &IvrCustomEntriesList_screenLink
+    ivrCustomEntriesList_screen: &IvrCustomEntriesList_screenLink
       controller: list
       class: ui-silk-chart-organisation-add
       pagination:
@@ -27,17 +27,17 @@ production:
         options:
           title: _("Options")
           screens:
-            IvrCustomEntriesEdit_screen: true
+            ivrCustomEntriesEdit_screen: true
           dialogs:
-            IvrCustomEntriesDel_dialog: true
+            ivrCustomEntriesDel_dialog: true
           default: IvrCustomEntriesEdit_screen
       options:
         title: _("Options")
         screens:
-          IvrCustomEntriesNew_screen: true
+          ivrCustomEntriesNew_screen: true
         dialogs:
-          IvrCustomEntriesDel_dialog: true
-    IvrCustomEntriesNew_screen: &IvrCustomEntriesNew_screenLink
+          ivrCustomEntriesDel_dialog: true
+    ivrCustomEntriesNew_screen: &IvrCustomEntriesNew_screenLink
       <<: *IvrCustomEntries
       controller: new
       class: ui-silk-add
@@ -65,7 +65,7 @@ production:
             targetVoiceMailUser: 5
             targetConditionalRoute: 5
 
-    IvrCustomEntriesEdit_screen: &IvrCustomEntriesEdit_screenLink
+    ivrCustomEntriesEdit_screen: &IvrCustomEntriesEdit_screenLink
       <<: *IvrCustomEntries
       controller: edit
       class: ui-silk-pencil
@@ -77,7 +77,7 @@ production:
       fixedPositions:
         <<: *IvrCustomEntriesFixedPositions_link
   dialogs: &IvrCustomEntries_dialogsLink
-    IvrCustomEntriesDel_dialog: &IvrCustomEntriesDel_dialogLink
+    ivrCustomEntriesDel_dialog: &IvrCustomEntriesDel_dialogLink
       <<: *IvrCustomEntries
       controller: delete
       class: ui-silk-bin

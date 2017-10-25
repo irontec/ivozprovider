@@ -45,3 +45,16 @@ services:
       $originalBasePath: 'ivozprovider_model_genericmusiconhold.originalfile'
       $encodedBasePath: 'ivozprovider_model_genericmusiconhold.encodedfile'
 
+
+  Ivoz\Provider\Application\Service\MusicOnHold\MusicOnHoldAssembler:
+    arguments:
+      $localStoragePath: '%local_storage_path%'
+      $originalBasePath: 'ivozprovider_model_musiconhold.originalfile'
+      $encodedBasePath: 'ivozprovider_model_musiconhold.encodedfile'
+
+  Ivoz\Provider\Application\Service\MusicOnHold\MusicOnHoldDtoAssembler:
+    arguments:
+      $localStoragePath: '%local_storage_path%'
+      $originalBasePath: 'ivozprovider_model_musiconhold.originalfile'
+      $encodedBasePath: 'ivozprovider_model_musiconhold.encodedfile'
+

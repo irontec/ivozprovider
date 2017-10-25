@@ -1,9 +1,8 @@
 @company
-@locutions
+@ivrCommon
 @company16
-@skip
 
-Feature: Locutions admin page
+Feature: IvrCommon admin page
   As a main operator
   I want to be able to access locutions admin page
   emulating brand operator
@@ -18,29 +17,29 @@ Background:
     And I emulate the brand at position "1"
     And I click on company emulation button
     And I emulate the company at position "1"
-    And I click on "Locutions" CTA
-   Then I am on "Locutions" list
+    And I click on "IvrCommon" CTA
+   Then I am on "IvrCommon" list
 
-Scenario: I create locutions
+Scenario: I create common IVRs
   When I click on add button
-   And I fill out the form with "company/locutions/new" data fixture
+   And I fill out the form with "company/ivrCommon/new" data fixture
    And I click on save button
   Then I can see confirmation dialog
   When I click on close dialog button
-  Then I am on "Locutions" list
+  Then I am on "IvrCommon" list
 
-Scenario: I can save Locutions
+Scenario: I can save IvrCommon
   Given I can see at least one row
-   When I click on "Locutions" first elements edit button
+   When I click on "IvrCommon" first elements edit button
     And I click on save button
    Then I can see confirmation dialog
    When I click on close dialog button
-   Then I am on "Locutions" list
+   Then I am on "IvrCommon" list
 
 Scenario: I can click on delete user button
   Given I can see at least one row
    When I select element at position "1"
-    And I click on "Locutions" delete button in the footer
+    And I click on "IvrCommon" delete button in the footer
    Then I can see confirmation dialog
    When I click on close dialog button
-   Then I am on "Locutions" list
+   Then I am on "IvrCommon" list

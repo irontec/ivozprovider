@@ -169,7 +169,7 @@ interface InvoiceInterface extends EntityInterface
     /**
      * Set pdf
      *
-     * @param Pdf $pdf
+     * @param \Ivoz\Provider\Domain\Model\Invoice\Pdf $pdf
      *
      * @return self
      */
@@ -178,7 +178,7 @@ interface InvoiceInterface extends EntityInterface
     /**
      * Get pdf
      *
-     * @return Pdf
+     * @return \Ivoz\Provider\Domain\Model\Invoice\Pdf
      */
     public function getPdf();
 

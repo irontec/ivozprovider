@@ -14,9 +14,7 @@ services:
         "@doctrine.orm.entity_manager"
       $queryBuilderFactory:
         "@zf.query_builder_factory"
-      $createEntityFromDTO:
-        "@core.create_entity_from_dto"
-      $entityUpdater:
-        "@core.update_entity_from_dto"
+      $entityPersister:
+        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
       $dtoAssembler:
         '@Ivoz\Core\Application\Service\Assembler\DtoAssembler'

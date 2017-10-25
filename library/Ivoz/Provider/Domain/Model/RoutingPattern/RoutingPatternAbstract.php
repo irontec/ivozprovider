@@ -253,7 +253,7 @@ abstract class RoutingPatternAbstract
     /**
      * Set name
      *
-     * @param Name $name
+     * @param \Ivoz\Provider\Domain\Model\RoutingPattern\Name $name
      *
      * @return self
      */
@@ -267,7 +267,7 @@ abstract class RoutingPatternAbstract
     /**
      * Get name
      *
-     * @return Name
+     * @return \Ivoz\Provider\Domain\Model\RoutingPattern\Name
      */
     public function getName()
     {
@@ -277,7 +277,7 @@ abstract class RoutingPatternAbstract
     /**
      * Set description
      *
-     * @param Description $description
+     * @param \Ivoz\Provider\Domain\Model\RoutingPattern\Description $description
      *
      * @return self
      */
@@ -291,7 +291,7 @@ abstract class RoutingPatternAbstract
     /**
      * Get description
      *
-     * @return Description
+     * @return \Ivoz\Provider\Domain\Model\RoutingPattern\Description
      */
     public function getDescription()
     {

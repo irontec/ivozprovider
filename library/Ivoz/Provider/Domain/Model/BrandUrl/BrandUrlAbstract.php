@@ -387,7 +387,7 @@ abstract class BrandUrlAbstract
     /**
      * Set logo
      *
-     * @param Logo $logo
+     * @param \Ivoz\Provider\Domain\Model\BrandUrl\Logo $logo
      *
      * @return self
      */
@@ -401,7 +401,7 @@ abstract class BrandUrlAbstract
     /**
      * Get logo
      *
-     * @return Logo
+     * @return \Ivoz\Provider\Domain\Model\BrandUrl\Logo
      */
     public function getLogo()
     {

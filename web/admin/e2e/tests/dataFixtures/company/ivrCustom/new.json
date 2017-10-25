@@ -1,0 +1,17 @@
+{
+  "name": "testIvrCustom",
+  "timeout": "6",
+  "maxDigits": "0",
+  "welcomeLocutionId": "1",
+  "successLocutionId": "1",
+  "noAnswerLocutionId": "1",
+  "timeoutTargetType": "number",
+  "timeoutNumberValue": "946002020",
+  "timeoutExtensionId": "__NULL__",
+  "timeoutVoiceMailUserId": "__NULL__",
+  "errorLocutionId": "1",
+  "errorTargetType": "number",
+  "errorNumberValue": "946002021",
+  "errorExtensionId": "__NULL__",
+  "errorVoiceMailUserId": "__NULL__"
+}

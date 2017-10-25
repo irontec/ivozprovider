@@ -373,7 +373,7 @@ abstract class CountryAbstract
     /**
      * Set name
      *
-     * @param Name $name
+     * @param \Ivoz\Provider\Domain\Model\Country\Name $name
      *
      * @return self
      */
@@ -387,7 +387,7 @@ abstract class CountryAbstract
     /**
      * Get name
      *
-     * @return Name
+     * @return \Ivoz\Provider\Domain\Model\Country\Name
      */
     public function getName()
     {
@@ -397,7 +397,7 @@ abstract class CountryAbstract
     /**
      * Set zone
      *
-     * @param Zone $zone
+     * @param \Ivoz\Provider\Domain\Model\Country\Zone $zone
      *
      * @return self
      */
@@ -411,7 +411,7 @@ abstract class CountryAbstract
     /**
      * Get zone
      *
-     * @return Zone
+     * @return \Ivoz\Provider\Domain\Model\Country\Zone
      */
     public function getZone()
     {

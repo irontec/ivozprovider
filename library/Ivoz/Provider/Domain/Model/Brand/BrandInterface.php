@@ -119,20 +119,20 @@ interface BrandInterface extends EntityInterface
     public function getRecordingsLimitMB();
 
     /**
-     * Set recordingslimitemail
+     * Set recordingsLimitEmail
      *
-     * @param string $recordingslimitemail
+     * @param string $recordingsLimitEmail
      *
      * @return self
      */
-    public function setRecordingslimitemail($recordingslimitemail = null);
+    public function setRecordingsLimitEmail($recordingsLimitEmail = null);
 
     /**
-     * Get recordingslimitemail
+     * Get recordingsLimitEmail
      *
      * @return string
      */
-    public function getRecordingslimitemail();
+    public function getRecordingsLimitEmail();
 
     /**
      * Set language
@@ -169,7 +169,7 @@ interface BrandInterface extends EntityInterface
     /**
      * Set logo
      *
-     * @param Logo $logo
+     * @param \Ivoz\Provider\Domain\Model\Brand\Logo $logo
      *
      * @return self
      */
@@ -178,14 +178,14 @@ interface BrandInterface extends EntityInterface
     /**
      * Get logo
      *
-     * @return Logo
+     * @return \Ivoz\Provider\Domain\Model\Brand\Logo
      */
     public function getLogo();
 
     /**
      * Set invoice
      *
-     * @param Invoice $invoice
+     * @param \Ivoz\Provider\Domain\Model\Brand\Invoice $invoice
      *
      * @return self
      */
@@ -194,7 +194,7 @@ interface BrandInterface extends EntityInterface
     /**
      * Get invoice
      *
-     * @return Invoice
+     * @return \Ivoz\Provider\Domain\Model\Brand\Invoice
      */
     public function getInvoice();
 

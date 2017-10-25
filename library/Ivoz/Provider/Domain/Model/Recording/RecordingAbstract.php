@@ -465,7 +465,7 @@ abstract class RecordingAbstract
     /**
      * Set recordedFile
      *
-     * @param RecordedFile $recordedFile
+     * @param \Ivoz\Provider\Domain\Model\Recording\RecordedFile $recordedFile
      *
      * @return self
      */
@@ -479,7 +479,7 @@ abstract class RecordingAbstract
     /**
      * Get recordedFile
      *
-     * @return RecordedFile
+     * @return \Ivoz\Provider\Domain\Model\Recording\RecordedFile
      */
     public function getRecordedFile()
     {

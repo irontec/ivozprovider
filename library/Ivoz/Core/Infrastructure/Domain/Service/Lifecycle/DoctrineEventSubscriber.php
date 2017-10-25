@@ -2,8 +2,6 @@
 
 namespace Ivoz\Core\Infrastructure\Domain\Service\Lifecycle;
 
-use Doctrine\ORM\Event\PostFlushEventArgs;
-use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Domain\Service\CommonLifecycleServiceCollection;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Domain\Service\LifecycleSubscriber;

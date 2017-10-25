@@ -15,19 +15,12 @@ class SanitizeValues implements GenericMusicOnHoldLifecycleEventHandlerInterface
 
     public function execute(GenericMusicOnHoldInterface $entity)
     {
-        /**
-         * @todo
-         */
+        foreach ($entity->getTempFiles() as $tmpFile) {
 
-//        throw new \Exception('Not implemented yet');
-
-//        $mustRecode = false;
-//
-//        $fso = $model->fetchOriginalFile(false);
-//
-//        if ($fso instanceof \Iron_Model_Fso && $fso->mustFlush()) {
-//            $mustRecode = true;
-//            $model->setStatus('pending');
-//        }
+            $tmpPath = $tmpFile->getTmpPath();
+            if (!is_null($tmpPath)) {
+                $entity->setStatus('pending');
+            }
+        }
     }
 }

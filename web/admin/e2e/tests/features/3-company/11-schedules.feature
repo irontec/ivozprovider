@@ -1,9 +1,8 @@
 @company
 @schedule
 @company11
-@skip
 
-Feature: Schedule admin page
+Feature: Schedules admin page
   As a main operator
   I want to be able to access schedules admin page
   emulating brand operator
@@ -18,8 +17,8 @@ Background:
     And I emulate the brand at position "1"
     And I click on company emulation button
     And I emulate the company at position "1"
-    And I click on "Schedule" CTA
-   Then I am on "Schedule" list
+    And I click on "Schedules" CTA
+   Then I am on "Schedules" list
 
 Scenario: I create schedules
   When I click on add button
@@ -27,20 +26,20 @@ Scenario: I create schedules
    And I click on save button
   Then I can see confirmation dialog
   When I click on close dialog button
-  Then I am on "Schedule" list
+  Then I am on "Schedules" list
 
-Scenario: I can save Schedule
+Scenario: I can save schedules
   Given I can see at least one row
-   When I click on "Schedule" first elements edit button
+   When I click on "Schedules" first elements edit button
     And I click on save button
    Then I can see confirmation dialog
    When I click on close dialog button
-   Then I am on "Schedule" list
+   Then I am on "Schedules" list
 
 Scenario: I can click on delete user button
   Given I can see at least one row
    When I select element at position "1"
-    And I click on "Schedule" delete button in the footer
+    And I click on "Schedules" delete button in the footer
    Then I can see confirmation dialog
    When I click on close dialog button
-   Then I am on "Schedule" list
+   Then I am on "Schedules" list

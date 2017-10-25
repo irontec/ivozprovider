@@ -25,7 +25,7 @@ interface FeatureInterface extends EntityInterface
     /**
      * Set name
      *
-     * @param Name $name
+     * @param \Ivoz\Provider\Domain\Model\Feature\Name $name
      *
      * @return self
      */
@@ -34,7 +34,7 @@ interface FeatureInterface extends EntityInterface
     /**
      * Get name
      *
-     * @return Name
+     * @return \Ivoz\Provider\Domain\Model\Feature\Name
      */
     public function getName();
 

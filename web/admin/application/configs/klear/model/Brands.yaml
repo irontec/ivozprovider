@@ -207,7 +207,7 @@ production:
             iden:
               retail:
                 toggle:
-                  - domain_users
+                  - domainUsers
               recordings:
                 toggle:
                   - recordingsLimitMB
@@ -215,12 +215,12 @@ production:
                   - recordingsLimitEmail
               billing:
                 toggle:
-                  - postalAddress
-                  - postalCode
-                  - town
-                  - province
-                  - country
-                  - registryData
+                  - invoicePostalAddress
+                  - invoicePostalCode
+                  - invoiceTown
+                  - invoiceProvince
+                  - invoiceCountry
+                  - invoiceRegistryData
           order:
             Feature.name: asc
 staging:

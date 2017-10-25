@@ -514,18 +514,27 @@ public function <methodName>(<criteriaArgument>)
                 . '$this->'
                 . implode("\n". $this->spaces .'$this->', $requiredSetters);
 
-            $requiredFieldGetters .=
-                "\n"
-                . $spaces
-                . '$dto->'
-                . implode(",\n" . $spaces.'$dto->', $requiredGetters);
+            if (!empty($requiredGetters)) {
+
+                $requiredFieldGetters .=
+                    "\n"
+                    . $spaces
+                    . '$dto->'
+                    . implode(",\n" . $spaces . '$dto->', $requiredGetters);
+            }
 
 
             if (!empty($voContructor)) {
 
                 foreach ($voContructor as $key => $value) {
+
+                    if (!empty($requiredFieldGetters)) {
+                        $requiredFieldGetters .= ",";
+                    }
+
                     $requiredFieldGetters .=
-                        ",\n" . $spaces
+                        "\n"
+                        . $spaces
                         . '$'
                         . $key;
                 }
@@ -720,7 +729,7 @@ public function <methodName>(<criteriaArgument>)
                     $voContructor[$varName][] = $this->getVoConstructor($varName, $metadata->fieldMappings);
                 }
 
-                $toArray[] =$this->embeddedToArrayGetter($segments);
+                $toArray[] = $this->embeddedToArrayGetter($field->columnName, $segments);
                 $setterMethod = 'set' . Inflector::classify($segments[0]);
                 if ($segments[0] !== $segments[1]) {
                     $setterMethod .= Inflector::classify($segments[1]);
@@ -752,7 +761,7 @@ public function <methodName>(<criteriaArgument>)
             } else if (!strpos($fieldName, '.') || $metadata->isMappedSuperclass) {
 
                 if (!isset($field->declared)) {
-                    $toArray[]  = '\''. $attribute .'\' => self::get' . Inflector::classify($fieldName) . '()';
+                    $toArray[]  = '\''. $field->columnName .'\' => self::get' . Inflector::classify($fieldName) . '()';
                     $getters[$attribute] = 'set' . Inflector::classify($fieldName)
                         . '($this->get' . Inflector::classify($fieldName) . '())';
                 }
@@ -825,7 +834,7 @@ public function <methodName>(<criteriaArgument>)
      * @param $toArray
      * @return array
      */
-    protected function embeddedToArrayGetter($segments)
+    protected function embeddedToArrayGetter($columnName, $segments)
     {
         return
             '\''
@@ -1161,7 +1170,7 @@ public function <methodName>(<criteriaArgument>)
         }
 
         $parentResponse = parent::generateEntityStubMethod($metadata, $type, $fieldName, $typeHint,  $defaultValue);
-        $parentResponse = str_replace('\\' . $metadata->namespace . '\\', '', $parentResponse);
+        $parentResponse = str_replace('(\\' . $metadata->namespace . '\\', '(', $parentResponse);
 
         $assertions = [];
 

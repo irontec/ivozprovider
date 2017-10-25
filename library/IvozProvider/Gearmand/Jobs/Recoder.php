@@ -7,12 +7,11 @@ class Recoder extends AbstractJob {
     protected $_modelName;
 
     protected $_mainVariables = array(
-            '_id','_modelName'
+        '_id',
+        '_modelName'
     );
 
-
     protected $_method = "encodeFSOToMp3";
-
 
     public function setId($id)
     {

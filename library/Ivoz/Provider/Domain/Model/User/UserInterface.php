@@ -429,7 +429,7 @@ interface UserInterface extends EntityInterface
     /**
      * Set bossAssistant
      *
-     * @param UserInterface $bossAssistant
+     * @param \Ivoz\Provider\Domain\Model\User\UserInterface $bossAssistant
      *
      * @return self
      */
@@ -438,7 +438,7 @@ interface UserInterface extends EntityInterface
     /**
      * Get bossAssistant
      *
-     * @return UserInterface
+     * @return \Ivoz\Provider\Domain\Model\User\UserInterface
      */
     public function getBossAssistant();
 

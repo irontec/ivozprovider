@@ -40,7 +40,7 @@ production:
       data: mapper
       config:
         entity: \Ivoz\Provider\Domain\Model\CallAclRelPattern\CallAclRelPattern
-        filterField: CallACLRelPattern.callACL
+        filterField: CallAclRelPattern.callAcl
         showAsTable: true
         fieldName:
           fields:

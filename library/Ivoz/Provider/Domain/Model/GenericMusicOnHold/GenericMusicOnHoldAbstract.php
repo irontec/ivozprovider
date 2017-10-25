@@ -305,7 +305,7 @@ abstract class GenericMusicOnHoldAbstract
     /**
      * Set originalFile
      *
-     * @param OriginalFile $originalFile
+     * @param \Ivoz\Provider\Domain\Model\GenericMusicOnHold\OriginalFile $originalFile
      *
      * @return self
      */
@@ -319,7 +319,7 @@ abstract class GenericMusicOnHoldAbstract
     /**
      * Get originalFile
      *
-     * @return OriginalFile
+     * @return \Ivoz\Provider\Domain\Model\GenericMusicOnHold\OriginalFile
      */
     public function getOriginalFile()
     {
@@ -329,7 +329,7 @@ abstract class GenericMusicOnHoldAbstract
     /**
      * Set encodedFile
      *
-     * @param EncodedFile $encodedFile
+     * @param \Ivoz\Provider\Domain\Model\GenericMusicOnHold\EncodedFile $encodedFile
      *
      * @return self
      */
@@ -343,7 +343,7 @@ abstract class GenericMusicOnHoldAbstract
     /**
      * Get encodedFile
      *
-     * @return EncodedFile
+     * @return \Ivoz\Provider\Domain\Model\GenericMusicOnHold\EncodedFile
      */
     public function getEncodedFile()
     {

@@ -3633,16 +3633,6 @@ UNLOCK TABLES;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER start_time_trigger
-BEFORE INSERT ON kam_acc_cdrs
-FOR EACH ROW
-SET new.start_time_utc = FROM_UNIXTIME( UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP(new.end_time) + UNIX_TIMESTAMP(new.start_time) ) */;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `kam_dispatcher`

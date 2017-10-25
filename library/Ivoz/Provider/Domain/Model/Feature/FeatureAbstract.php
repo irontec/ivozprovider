@@ -194,7 +194,7 @@ abstract class FeatureAbstract
     /**
      * Set name
      *
-     * @param Name $name
+     * @param \Ivoz\Provider\Domain\Model\Feature\Name $name
      *
      * @return self
      */
@@ -208,7 +208,7 @@ abstract class FeatureAbstract
     /**
      * Get name
      *
-     * @return Name
+     * @return \Ivoz\Provider\Domain\Model\Feature\Name
      */
     public function getName()
     {

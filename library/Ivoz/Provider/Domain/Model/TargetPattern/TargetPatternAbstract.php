@@ -253,7 +253,7 @@ abstract class TargetPatternAbstract
     /**
      * Set name
      *
-     * @param Name $name
+     * @param \Ivoz\Provider\Domain\Model\TargetPattern\Name $name
      *
      * @return self
      */
@@ -267,7 +267,7 @@ abstract class TargetPatternAbstract
     /**
      * Get name
      *
-     * @return Name
+     * @return \Ivoz\Provider\Domain\Model\TargetPattern\Name
      */
     public function getName()
     {
@@ -277,7 +277,7 @@ abstract class TargetPatternAbstract
     /**
      * Set description
      *
-     * @param Description $description
+     * @param \Ivoz\Provider\Domain\Model\TargetPattern\Description $description
      *
      * @return self
      */
@@ -291,7 +291,7 @@ abstract class TargetPatternAbstract
     /**
      * Get description
      *
-     * @return Description
+     * @return \Ivoz\Provider\Domain\Model\TargetPattern\Description
      */
     public function getDescription()
     {

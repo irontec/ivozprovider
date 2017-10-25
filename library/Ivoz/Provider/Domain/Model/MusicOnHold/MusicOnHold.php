@@ -1,5 +1,7 @@
 <?php
+
 namespace Ivoz\Provider\Domain\Model\MusicOnHold;
+
 use Ivoz\Core\Domain\Model\TempFileContainnerTrait;
 use Ivoz\Core\Domain\Service\FileContainerInterface;
 

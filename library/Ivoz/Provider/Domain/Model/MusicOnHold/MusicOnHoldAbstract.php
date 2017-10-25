@@ -305,7 +305,7 @@ abstract class MusicOnHoldAbstract
     /**
      * Set originalFile
      *
-     * @param OriginalFile $originalFile
+     * @param \Ivoz\Provider\Domain\Model\MusicOnHold\OriginalFile $originalFile
      *
      * @return self
      */
@@ -319,7 +319,7 @@ abstract class MusicOnHoldAbstract
     /**
      * Get originalFile
      *
-     * @return OriginalFile
+     * @return \Ivoz\Provider\Domain\Model\MusicOnHold\OriginalFile
      */
     public function getOriginalFile()
     {
@@ -329,7 +329,7 @@ abstract class MusicOnHoldAbstract
     /**
      * Set encodedFile
      *
-     * @param EncodedFile $encodedFile
+     * @param \Ivoz\Provider\Domain\Model\MusicOnHold\EncodedFile $encodedFile
      *
      * @return self
      */
@@ -343,7 +343,7 @@ abstract class MusicOnHoldAbstract
     /**
      * Get encodedFile
      *
-     * @return EncodedFile
+     * @return \Ivoz\Provider\Domain\Model\MusicOnHold\EncodedFile
      */
     public function getEncodedFile()
     {

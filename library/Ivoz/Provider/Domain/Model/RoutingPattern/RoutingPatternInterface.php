@@ -42,7 +42,7 @@ interface RoutingPatternInterface extends EntityInterface
     /**
      * Set name
      *
-     * @param Name $name
+     * @param \Ivoz\Provider\Domain\Model\RoutingPattern\Name $name
      *
      * @return self
      */
@@ -51,14 +51,14 @@ interface RoutingPatternInterface extends EntityInterface
     /**
      * Get name
      *
-     * @return Name
+     * @return \Ivoz\Provider\Domain\Model\RoutingPattern\Name
      */
     public function getName();
 
     /**
      * Set description
      *
-     * @param Description $description
+     * @param \Ivoz\Provider\Domain\Model\RoutingPattern\Description $description
      *
      * @return self
      */
@@ -67,7 +67,7 @@ interface RoutingPatternInterface extends EntityInterface
     /**
      * Get description
      *
-     * @return Description
+     * @return \Ivoz\Provider\Domain\Model\RoutingPattern\Description
      */
     public function getDescription();
 

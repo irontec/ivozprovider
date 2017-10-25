@@ -256,7 +256,7 @@ abstract class PricingPlanAbstract
     /**
      * Set name
      *
-     * @param Name $name
+     * @param \Ivoz\Provider\Domain\Model\PricingPlan\Name $name
      *
      * @return self
      */
@@ -270,7 +270,7 @@ abstract class PricingPlanAbstract
     /**
      * Get name
      *
-     * @return Name
+     * @return \Ivoz\Provider\Domain\Model\PricingPlan\Name
      */
     public function getName()
     {
@@ -280,7 +280,7 @@ abstract class PricingPlanAbstract
     /**
      * Set description
      *
-     * @param Description $description
+     * @param \Ivoz\Provider\Domain\Model\PricingPlan\Description $description
      *
      * @return self
      */
@@ -294,7 +294,7 @@ abstract class PricingPlanAbstract
     /**
      * Get description
      *
-     * @return Description
+     * @return \Ivoz\Provider\Domain\Model\PricingPlan\Description
      */
     public function getDescription()
     {

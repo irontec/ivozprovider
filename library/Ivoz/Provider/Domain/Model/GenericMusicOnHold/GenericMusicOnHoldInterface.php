@@ -64,7 +64,7 @@ interface GenericMusicOnHoldInterface extends EntityInterface
     /**
      * Set originalFile
      *
-     * @param OriginalFile $originalFile
+     * @param \Ivoz\Provider\Domain\Model\GenericMusicOnHold\OriginalFile $originalFile
      *
      * @return self
      */
@@ -73,14 +73,14 @@ interface GenericMusicOnHoldInterface extends EntityInterface
     /**
      * Get originalFile
      *
-     * @return OriginalFile
+     * @return \Ivoz\Provider\Domain\Model\GenericMusicOnHold\OriginalFile
      */
     public function getOriginalFile();
 
     /**
      * Set encodedFile
      *
-     * @param EncodedFile $encodedFile
+     * @param \Ivoz\Provider\Domain\Model\GenericMusicOnHold\EncodedFile $encodedFile
      *
      * @return self
      */
@@ -89,7 +89,7 @@ interface GenericMusicOnHoldInterface extends EntityInterface
     /**
      * Get encodedFile
      *
-     * @return EncodedFile
+     * @return \Ivoz\Provider\Domain\Model\GenericMusicOnHold\EncodedFile
      */
     public function getEncodedFile();
 

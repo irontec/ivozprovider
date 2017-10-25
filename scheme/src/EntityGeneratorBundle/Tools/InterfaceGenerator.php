@@ -75,7 +75,6 @@ class InterfaceGenerator extends ParentGenerator
         ];
 
         if ($useCollections) {
-//            $response[] = 'use Doctrine\\Common\\Collections\\Criteria;';
             $response[] = 'use Doctrine\\Common\Collections\\Collection;';
         }
 

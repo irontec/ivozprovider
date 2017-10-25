@@ -295,7 +295,7 @@ abstract class ServiceAbstract
     /**
      * Set name
      *
-     * @param Name $name
+     * @param \Ivoz\Provider\Domain\Model\Service\Name $name
      *
      * @return self
      */
@@ -309,7 +309,7 @@ abstract class ServiceAbstract
     /**
      * Get name
      *
-     * @return Name
+     * @return \Ivoz\Provider\Domain\Model\Service\Name
      */
     public function getName()
     {
@@ -319,7 +319,7 @@ abstract class ServiceAbstract
     /**
      * Set description
      *
-     * @param Description $description
+     * @param \Ivoz\Provider\Domain\Model\Service\Description $description
      *
      * @return self
      */
@@ -333,7 +333,7 @@ abstract class ServiceAbstract
     /**
      * Get description
      *
-     * @return Description
+     * @return \Ivoz\Provider\Domain\Model\Service\Description
      */
     public function getDescription()
     {

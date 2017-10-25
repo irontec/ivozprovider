@@ -1,7 +1,6 @@
 @company
 @callACLs
 @company12
-@skip
 
 Feature: Call ACL admin page
   As a main operator

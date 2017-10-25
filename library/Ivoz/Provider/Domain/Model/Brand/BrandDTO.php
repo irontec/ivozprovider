@@ -40,7 +40,7 @@ class BrandDTO implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $recordingslimitemail;
+    private $recordingsLimitEmail;
 
     /**
      * @var integer
@@ -178,7 +178,7 @@ class BrandDTO implements DataTransferObjectInterface
             'fromName' => $this->getFromName(),
             'fromAddress' => $this->getFromAddress(),
             'recordingsLimitMB' => $this->getRecordingsLimitMB(),
-            'recordingslimitemail' => $this->getRecordingslimitemail(),
+            'recordingsLimitEmail' => $this->getRecordingsLimitEmail(),
             'id' => $this->getId(),
             'logoFileSize' => $this->getLogoFileSize(),
             'logoMimeType' => $this->getLogoMimeType(),
@@ -472,13 +472,13 @@ class BrandDTO implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $recordingslimitemail
+     * @param string $recordingsLimitEmail
      *
      * @return BrandDTO
      */
-    public function setRecordingslimitemail($recordingslimitemail = null)
+    public function setRecordingsLimitEmail($recordingsLimitEmail = null)
     {
-        $this->recordingslimitemail = $recordingslimitemail;
+        $this->recordingsLimitEmail = $recordingsLimitEmail;
 
         return $this;
     }
@@ -486,9 +486,9 @@ class BrandDTO implements DataTransferObjectInterface
     /**
      * @return string
      */
-    public function getRecordingslimitemail()
+    public function getRecordingsLimitEmail()
     {
-        return $this->recordingslimitemail;
+        return $this->recordingsLimitEmail;
     }
 
     /**

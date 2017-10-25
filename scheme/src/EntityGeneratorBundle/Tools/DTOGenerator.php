@@ -21,14 +21,6 @@ class DTOGenerator extends ParentGenerator
      */
     protected static $constructorMethodTemplate =
 '/**
- * @return array
- */
-public function __toArray()
-{
-    return [<toArray>];
-}
-
-/**
  * {@inheritDoc}
  */
 public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
@@ -319,7 +311,7 @@ public function <methodName>()
                     $voContructor[$varName][] = $this->getVoConstructor($varName, $metadata->fieldMappings);
                 }
 
-                $toArray[] =$this->embeddedToArrayGetter($segments);
+                $toArray[] =$this->embeddedToArrayGetter($field->columnName, $segments);
                 $setterMethod = 'set' . Inflector::classify($segments[0]);
                 if ($segments[0] !== $segments[1]) {
                     $setterMethod .= Inflector::classify($segments[1]);
@@ -408,23 +400,23 @@ public function <methodName>()
         );
     }
 
-
-    /**
-     * @param $segments
-     * @param $toArray
-     * @return array
-     */
-    protected function embeddedToArrayGetter($segments)
-    {
-        return
-            '\''
-            . $segments[0]
-            . Inflector::classify($segments[1])
-            . '\' => $this->get'
-            . Inflector::classify($segments[0])
-            . Inflector::classify($segments[1])
-            . '()';
-    }
+//
+//    /**
+//     * @param $segments
+//     * @param $toArray
+//     * @return array
+//     */
+//    protected function embeddedToArrayGetter($segments)
+//    {
+//        return
+//            '\''
+//            . $segments[0]
+//            . Inflector::classify($segments[1])
+//            . '\' => $this->get'
+//            . Inflector::classify($segments[0])
+//            . Inflector::classify($segments[1])
+//            . '()';
+//    }
 
     /**
      * {@inheritDoc}
