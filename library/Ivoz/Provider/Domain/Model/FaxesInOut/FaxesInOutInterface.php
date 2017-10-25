@@ -9,6 +9,13 @@ interface FaxesInOutInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * Get the numberValue in E.164 format when routing to 'number'
+     *
+     * @return string
+     */
+    public function getDstE164();
+
+    /**
      * Set calldate
      *
      * @param \DateTime $calldate

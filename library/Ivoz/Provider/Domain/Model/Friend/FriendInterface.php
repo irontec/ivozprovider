@@ -31,26 +31,6 @@ interface FriendInterface extends LoggableEntityInterface
      */
     public function isAllowedToCall($exten);
 
-    /**
-     * @brief Return Friend country or company if null
-     */
-    public function getCountry();
-
-    /**
-     * Convert a user dialed number to E164 form
-     *
-     * param string $number
-     * return string number in E164
-     */
-    public function preferredToE164($prefNumber);
-
-    /**
-     * Convert a received number to User prefered format
-     *
-     * @param unknown $number
-     */
-    public function E164ToPreferred($e164number);
-
     public function getRequestDirectUri($callee);
 
     /**
@@ -199,22 +179,6 @@ interface FriendInterface extends LoggableEntityInterface
     public function getPassword();
 
     /**
-     * Set areaCode
-     *
-     * @param string $areaCode
-     *
-     * @return self
-     */
-    public function setAreaCode($areaCode = null);
-
-    /**
-     * Get areaCode
-     *
-     * @return string
-     */
-    public function getAreaCode();
-
-    /**
      * Set priority
      *
      * @param integer $priority
@@ -359,13 +323,20 @@ interface FriendInterface extends LoggableEntityInterface
     public function getCompany();
 
     /**
-     * Set country
+     * Set transformationRuleSet
      *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $country
+     * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet
      *
      * @return self
      */
-    public function setCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $country = null);
+    public function setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet = null);
+
+    /**
+     * Get transformationRuleSet
+     *
+     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface
+     */
+    public function getTransformationRuleSet();
 
     /**
      * Set callAcl

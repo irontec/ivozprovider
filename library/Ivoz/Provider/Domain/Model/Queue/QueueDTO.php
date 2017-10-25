@@ -119,6 +119,16 @@ class QueueDTO implements DataTransferObjectInterface
     /**
      * @var mixed
      */
+    private $timeoutNumberCountryId;
+
+    /**
+     * @var mixed
+     */
+    private $fullNumberCountryId;
+
+    /**
+     * @var mixed
+     */
     private $company;
 
     /**
@@ -157,6 +167,16 @@ class QueueDTO implements DataTransferObjectInterface
     private $fullVoiceMailUser;
 
     /**
+     * @var mixed
+     */
+    private $timeoutNumberCountry;
+
+    /**
+     * @var mixed
+     */
+    private $fullNumberCountry;
+
+    /**
      * @return array
      */
     public function __toArray()
@@ -182,7 +202,9 @@ class QueueDTO implements DataTransferObjectInterface
             'timeoutVoiceMailUserId' => $this->getTimeoutVoiceMailUserId(),
             'fullLocutionId' => $this->getFullLocutionId(),
             'fullExtensionId' => $this->getFullExtensionId(),
-            'fullVoiceMailUserId' => $this->getFullVoiceMailUserId()
+            'fullVoiceMailUserId' => $this->getFullVoiceMailUserId(),
+            'timeoutNumberCountryId' => $this->getTimeoutNumberCountryId(),
+            'fullNumberCountryId' => $this->getFullNumberCountryId()
         ];
     }
 
@@ -199,6 +221,8 @@ class QueueDTO implements DataTransferObjectInterface
         $this->fullLocution = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Locution\\Locution', $this->getFullLocutionId());
         $this->fullExtension = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Extension\\Extension', $this->getFullExtensionId());
         $this->fullVoiceMailUser = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\User\\User', $this->getFullVoiceMailUserId());
+        $this->timeoutNumberCountry = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Country\\Country', $this->getTimeoutNumberCountryId());
+        $this->fullNumberCountry = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Country\\Country', $this->getFullNumberCountryId());
     }
 
     /**
@@ -691,6 +715,62 @@ class QueueDTO implements DataTransferObjectInterface
     public function getFullVoiceMailUser()
     {
         return $this->fullVoiceMailUser;
+    }
+
+    /**
+     * @param integer $timeoutNumberCountryId
+     *
+     * @return QueueDTO
+     */
+    public function setTimeoutNumberCountryId($timeoutNumberCountryId)
+    {
+        $this->timeoutNumberCountryId = $timeoutNumberCountryId;
+
+        return $this;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getTimeoutNumberCountryId()
+    {
+        return $this->timeoutNumberCountryId;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Country\Country
+     */
+    public function getTimeoutNumberCountry()
+    {
+        return $this->timeoutNumberCountry;
+    }
+
+    /**
+     * @param integer $fullNumberCountryId
+     *
+     * @return QueueDTO
+     */
+    public function setFullNumberCountryId($fullNumberCountryId)
+    {
+        $this->fullNumberCountryId = $fullNumberCountryId;
+
+        return $this;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getFullNumberCountryId()
+    {
+        return $this->fullNumberCountryId;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Country\Country
+     */
+    public function getFullNumberCountry()
+    {
+        return $this->fullNumberCountry;
     }
 }
 

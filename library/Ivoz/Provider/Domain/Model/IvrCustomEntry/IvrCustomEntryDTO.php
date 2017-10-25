@@ -59,6 +59,11 @@ class IvrCustomEntryDTO implements DataTransferObjectInterface
     /**
      * @var mixed
      */
+    private $targetNumberCountryId;
+
+    /**
+     * @var mixed
+     */
     private $ivrCustom;
 
     /**
@@ -82,6 +87,11 @@ class IvrCustomEntryDTO implements DataTransferObjectInterface
     private $targetConditionalRoute;
 
     /**
+     * @var mixed
+     */
+    private $targetNumberCountry;
+
+    /**
      * @return array
      */
     public function __toArray()
@@ -95,7 +105,8 @@ class IvrCustomEntryDTO implements DataTransferObjectInterface
             'welcomeLocutionId' => $this->getWelcomeLocutionId(),
             'targetExtensionId' => $this->getTargetExtensionId(),
             'targetVoiceMailUserId' => $this->getTargetVoiceMailUserId(),
-            'targetConditionalRouteId' => $this->getTargetConditionalRouteId()
+            'targetConditionalRouteId' => $this->getTargetConditionalRouteId(),
+            'targetNumberCountryId' => $this->getTargetNumberCountryId()
         ];
     }
 
@@ -109,6 +120,7 @@ class IvrCustomEntryDTO implements DataTransferObjectInterface
         $this->targetExtension = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Extension\\Extension', $this->getTargetExtensionId());
         $this->targetVoiceMailUser = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\User\\User', $this->getTargetVoiceMailUserId());
         $this->targetConditionalRoute = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\ConditionalRoute\\ConditionalRoute', $this->getTargetConditionalRouteId());
+        $this->targetNumberCountry = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Country\\Country', $this->getTargetNumberCountryId());
     }
 
     /**
@@ -337,6 +349,34 @@ class IvrCustomEntryDTO implements DataTransferObjectInterface
     public function getTargetConditionalRoute()
     {
         return $this->targetConditionalRoute;
+    }
+
+    /**
+     * @param integer $targetNumberCountryId
+     *
+     * @return IvrCustomEntryDTO
+     */
+    public function setTargetNumberCountryId($targetNumberCountryId)
+    {
+        $this->targetNumberCountryId = $targetNumberCountryId;
+
+        return $this;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getTargetNumberCountryId()
+    {
+        return $this->targetNumberCountryId;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Country\Country
+     */
+    public function getTargetNumberCountry()
+    {
+        return $this->targetNumberCountry;
     }
 }
 

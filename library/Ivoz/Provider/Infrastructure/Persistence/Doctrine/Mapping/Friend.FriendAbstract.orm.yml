@@ -4,9 +4,6 @@ Ivoz\Provider\Domain\Model\Friend\FriendAbstract:
     companyId:
       columns:
         - companyId
-    countryId:
-      columns:
-        - countryId
     callAclId:
       columns:
         - callAclId
@@ -80,13 +77,6 @@ Ivoz\Provider\Domain\Model\Friend\FriendAbstract:
       length: 64
       options:
         fixed: false
-    areaCode:
-      type: string
-      nullable: true
-      length: 10
-      options:
-        fixed: false
-      column: areaCode
     priority:
       column: priority
       type: smallint
@@ -166,14 +156,14 @@ Ivoz\Provider\Domain\Model\Friend\FriendAbstract:
           nullable: false
           onDelete: cascade
       orphanRemoval: false
-    country:
-      targetEntity: \Ivoz\Provider\Domain\Model\Country\CountryInterface
+    transformationRuleSet:
+      targetEntity: \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface
       cascade: {  }
       fetch: LAZY
       mappedBy: null
       inversedBy: null
       joinColumns:
-        countryId:
+        transformationRuleSetId:
           referencedColumnName: id
           onDelete: set null
       orphanRemoval: false

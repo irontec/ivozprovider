@@ -32,7 +32,7 @@ class MatchListPattern extends MatchListPatternAbstract implements MatchListPatt
     {
         $callingCode = $this
             ->getNumberCountry()
-            ->getCallingCode();
+            ->getCountryCode();
 
         return
             $callingCode .

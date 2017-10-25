@@ -69,7 +69,17 @@ class FaxesInOutDTO implements DataTransferObjectInterface
     /**
      * @var mixed
      */
+    private $dstCountryId;
+
+    /**
+     * @var mixed
+     */
     private $fax;
+
+    /**
+     * @var mixed
+     */
+    private $dstCountry;
 
     /**
      * @return array
@@ -87,7 +97,8 @@ class FaxesInOutDTO implements DataTransferObjectInterface
             'fileFileSize' => $this->getFileFileSize(),
             'fileMimeType' => $this->getFileMimeType(),
             'fileBaseName' => $this->getFileBaseName(),
-            'faxId' => $this->getFaxId()
+            'faxId' => $this->getFaxId(),
+            'dstCountryId' => $this->getDstCountryId()
         ];
     }
 
@@ -97,6 +108,7 @@ class FaxesInOutDTO implements DataTransferObjectInterface
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
         $this->fax = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Fax\\Fax', $this->getFaxId());
+        $this->dstCountry = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Country\\Country', $this->getDstCountryId());
     }
 
     /**
@@ -333,6 +345,34 @@ class FaxesInOutDTO implements DataTransferObjectInterface
     public function getFax()
     {
         return $this->fax;
+    }
+
+    /**
+     * @param integer $dstCountryId
+     *
+     * @return FaxesInOutDTO
+     */
+    public function setDstCountryId($dstCountryId)
+    {
+        $this->dstCountryId = $dstCountryId;
+
+        return $this;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getDstCountryId()
+    {
+        return $this->dstCountryId;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Country\Country
+     */
+    public function getDstCountry()
+    {
+        return $this->dstCountry;
     }
 }
 

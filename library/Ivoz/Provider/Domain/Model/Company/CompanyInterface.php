@@ -10,13 +10,6 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     *
-     * @param string $exten
-     * @return string
-     */
-    public function getTypeCall($exten);
-
-    /**
      * @param interger $exten
      * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface
      */
@@ -62,40 +55,6 @@ interface CompanyInterface extends LoggableEntityInterface
      * @return bool tarificable
      */
     public function isDstTarificable($number);
-
-    /**
-     * Convert a company dialed number to E164 form
-     *
-     * param string $number
-     * return string number in E164
-     */
-    public function preferredToE164($prefnumber);
-
-    /**
-     * Convert a received number to Company prefered format
-     *
-     * @param unknown $number
-     */
-    public function E164ToPreferred($e164number);
-
-    /**
-     * Gets company area code if company country uses area code
-     *
-     * @return string
-     */
-    public function getAreaCodeValue();
-
-    /**
-     * @param $number
-     * @return string
-     */
-    public function removeOutboundPrefix($number);
-
-    /**
-     * @param $number
-     * @return string
-     */
-    public function addOutboundPrefix($number);
 
     public function getOutgoingRoutings();
 
@@ -286,22 +245,6 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getCountryName();
 
     /**
-     * Set outboundPrefix
-     *
-     * @param string $outboundPrefix
-     *
-     * @return self
-     */
-    public function setOutboundPrefix($outboundPrefix = null);
-
-    /**
-     * Get outboundPrefix
-     *
-     * @return string
-     */
-    public function getOutboundPrefix();
-
-    /**
      * Set ipfilter
      *
      * @param boolean $ipfilter
@@ -348,22 +291,6 @@ interface CompanyInterface extends LoggableEntityInterface
      * @return string
      */
     public function getOnDemandRecordCode();
-
-    /**
-     * Set areaCode
-     *
-     * @param string $areaCode
-     *
-     * @return self
-     */
-    public function setAreaCode($areaCode = null);
-
-    /**
-     * Get areaCode
-     *
-     * @return string
-     */
-    public function getAreaCode();
 
     /**
      * Set externallyextraopts
@@ -508,6 +435,22 @@ interface CompanyInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
      */
     public function getCountry();
+
+    /**
+     * Set transformationRuleSet
+     *
+     * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet
+     *
+     * @return self
+     */
+    public function setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet = null);
+
+    /**
+     * Get transformationRuleSet
+     *
+     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface
+     */
+    public function getTransformationRuleSet();
 
     /**
      * Set outgoingDdi

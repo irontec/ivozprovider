@@ -53,7 +53,7 @@ class Extension extends ExtensionAbstract implements ExtensionInterface
     public function getNumberValueE164()
     {
         return
-            $this->getNumberCountry()->getCallingCode() .
+            $this->getNumberCountry()->getCountryCode() .
             $this->getNumberValue();
     }
 

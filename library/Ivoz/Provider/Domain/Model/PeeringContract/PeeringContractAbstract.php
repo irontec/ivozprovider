@@ -32,9 +32,9 @@ abstract class PeeringContractAbstract
     protected $brand;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\TransformationRulesetGroupsTrunk\TransformationRulesetGroupsTrunkInterface
+     * @var \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface
      */
-    protected $transformationRulesetGroupsTrunk;
+    protected $transformationRuleSet;
 
 
     /**
@@ -147,7 +147,7 @@ abstract class PeeringContractAbstract
         return $self
             ->setExternallyRated($dto->getExternallyRated())
             ->setBrand($dto->getBrand())
-            ->setTransformationRulesetGroupsTrunk($dto->getTransformationRulesetGroupsTrunk())
+            ->setTransformationRuleSet($dto->getTransformationRuleSet())
         ;
     }
 
@@ -167,7 +167,7 @@ abstract class PeeringContractAbstract
             ->setName($dto->getName())
             ->setExternallyRated($dto->getExternallyRated())
             ->setBrand($dto->getBrand())
-            ->setTransformationRulesetGroupsTrunk($dto->getTransformationRulesetGroupsTrunk());
+            ->setTransformationRuleSet($dto->getTransformationRuleSet());
 
 
         return $this;
@@ -183,7 +183,7 @@ abstract class PeeringContractAbstract
             ->setName($this->getName())
             ->setExternallyRated($this->getExternallyRated())
             ->setBrandId($this->getBrand() ? $this->getBrand()->getId() : null)
-            ->setTransformationRulesetGroupsTrunkId($this->getTransformationRulesetGroupsTrunk() ? $this->getTransformationRulesetGroupsTrunk()->getId() : null);
+            ->setTransformationRuleSetId($this->getTransformationRuleSet() ? $this->getTransformationRuleSet()->getId() : null);
     }
 
     /**
@@ -196,7 +196,7 @@ abstract class PeeringContractAbstract
             'name' => self::getName(),
             'externallyRated' => self::getExternallyRated(),
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
-            'transformationRulesetGroupsTrunkId' => self::getTransformationRulesetGroupsTrunk() ? self::getTransformationRulesetGroupsTrunk()->getId() : null
+            'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null
         ];
     }
 
@@ -310,27 +310,27 @@ abstract class PeeringContractAbstract
     }
 
     /**
-     * Set transformationRulesetGroupsTrunk
+     * Set transformationRuleSet
      *
-     * @param \Ivoz\Provider\Domain\Model\TransformationRulesetGroupsTrunk\TransformationRulesetGroupsTrunkInterface $transformationRulesetGroupsTrunk
+     * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet
      *
      * @return self
      */
-    public function setTransformationRulesetGroupsTrunk(\Ivoz\Provider\Domain\Model\TransformationRulesetGroupsTrunk\TransformationRulesetGroupsTrunkInterface $transformationRulesetGroupsTrunk = null)
+    public function setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet = null)
     {
-        $this->transformationRulesetGroupsTrunk = $transformationRulesetGroupsTrunk;
+        $this->transformationRuleSet = $transformationRuleSet;
 
         return $this;
     }
 
     /**
-     * Get transformationRulesetGroupsTrunk
+     * Get transformationRuleSet
      *
-     * @return \Ivoz\Provider\Domain\Model\TransformationRulesetGroupsTrunk\TransformationRulesetGroupsTrunkInterface
+     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface
      */
-    public function getTransformationRulesetGroupsTrunk()
+    public function getTransformationRuleSet()
     {
-        return $this->transformationRulesetGroupsTrunk;
+        return $this->transformationRuleSet;
     }
 
 

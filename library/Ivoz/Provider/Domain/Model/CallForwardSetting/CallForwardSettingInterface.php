@@ -11,6 +11,13 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
     public function toArrayPortal();
 
     /**
+     * Get the numberValue in E.164 format when routing to 'number'
+     *
+     * @return string
+     */
+    public function getNumberValueE164();
+
+    /**
      * Set callTypeFilter
      *
      * @param string $callTypeFilter

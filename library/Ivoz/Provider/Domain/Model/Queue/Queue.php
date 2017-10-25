@@ -34,5 +34,28 @@ class Queue extends QueueAbstract implements QueueInterface
         );
 
     }
+    /**
+     * Get the timeout numberValue in E.164 format when routing to 'number'
+     *
+     * @return string
+     */
+    public function getTimeoutNumberValueE164()
+    {
+        return
+            $this->getTimeoutNumberCountry()->getCountryCode() .
+            $this->getTimeoutNumberValue();
+    }
+
+    /**
+     * Get the full numberValue in E.164 format when routing to 'number'
+     *
+     * @return string
+     */
+    public function getFullNumberValueE164()
+    {
+        return
+            $this->getFullNumberCountry()->getCountryCode() .
+            $this->getFullNumberValue();
+    }
 }
 

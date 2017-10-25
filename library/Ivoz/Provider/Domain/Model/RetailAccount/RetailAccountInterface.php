@@ -31,21 +31,6 @@ interface RetailAccountInterface extends LoggableEntityInterface
     public function getCountries();
 
     /**
-     * Convert a user dialed number to E164 form
-     *
-     * @param string $number
-     * @return string number in E164
-     */
-    public function preferredToE164($prefnumber);
-
-    /**
-     * Convert a received number to User prefered format
-     *
-     * @param number $number
-     */
-    public function E164ToPreferred($e164number);
-
-    /**
      * Obtain content for X-Info-Retail header
      *
      * @param mixed $callee
@@ -206,22 +191,6 @@ interface RetailAccountInterface extends LoggableEntityInterface
     public function getPassword();
 
     /**
-     * Set areaCode
-     *
-     * @param string $areaCode
-     *
-     * @return self
-     */
-    public function setAreaCode($areaCode = null);
-
-    /**
-     * Get areaCode
-     *
-     * @return string
-     */
-    public function getAreaCode();
-
-    /**
      * Set disallow
      *
      * @param string $disallow
@@ -366,13 +335,20 @@ interface RetailAccountInterface extends LoggableEntityInterface
     public function getCompany();
 
     /**
-     * Set country
+     * Set transformationRuleSet
      *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $country
+     * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet
      *
      * @return self
      */
-    public function setCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $country = null);
+    public function setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet = null);
+
+    /**
+     * Get transformationRuleSet
+     *
+     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface
+     */
+    public function getTransformationRuleSet();
 
     /**
      * Set outgoingDdi

@@ -34,6 +34,20 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
     public function isOutOfSchedule();
 
     /**
+     * Get the holiday numberValue in E.164 format when routing to 'number'
+     *
+     * @return string
+     */
+    public function getHolidayNumberValueE164();
+
+    /**
+     * Get the out of schedule numberValue in E.164 format when routing to 'number'
+     *
+     * @return string
+     */
+    public function getOutOfScheduleNumberValueE164();
+
+    /**
      * Set name
      *
      * @param string $name

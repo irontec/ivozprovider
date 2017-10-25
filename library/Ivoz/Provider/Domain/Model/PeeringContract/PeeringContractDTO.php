@@ -39,7 +39,7 @@ class PeeringContractDTO implements DataTransferObjectInterface
     /**
      * @var mixed
      */
-    private $transformationRulesetGroupsTrunkId;
+    private $transformationRuleSetId;
 
     /**
      * @var mixed
@@ -49,7 +49,7 @@ class PeeringContractDTO implements DataTransferObjectInterface
     /**
      * @var mixed
      */
-    private $transformationRulesetGroupsTrunk;
+    private $transformationRuleSet;
 
     /**
      * @var array|null
@@ -72,7 +72,7 @@ class PeeringContractDTO implements DataTransferObjectInterface
             'externallyRated' => $this->getExternallyRated(),
             'id' => $this->getId(),
             'brandId' => $this->getBrandId(),
-            'transformationRulesetGroupsTrunkId' => $this->getTransformationRulesetGroupsTrunkId(),
+            'transformationRuleSetId' => $this->getTransformationRuleSetId(),
             'outgoingRoutings' => $this->getOutgoingRoutings(),
             'peerServers' => $this->getPeerServers()
         ];
@@ -84,7 +84,7 @@ class PeeringContractDTO implements DataTransferObjectInterface
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
         $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
-        $this->transformationRulesetGroupsTrunk = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\TransformationRulesetGroupsTrunk\\TransformationRulesetGroupsTrunk', $this->getTransformationRulesetGroupsTrunkId());
+        $this->transformationRuleSet = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\TransformationRuleSet\\TransformationRuleSet', $this->getTransformationRuleSetId());
         if (!is_null($this->outgoingRoutings)) {
             $items = $this->getOutgoingRoutings();
             $this->outgoingRoutings = [];
@@ -233,13 +233,13 @@ class PeeringContractDTO implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $transformationRulesetGroupsTrunkId
+     * @param integer $transformationRuleSetId
      *
      * @return PeeringContractDTO
      */
-    public function setTransformationRulesetGroupsTrunkId($transformationRulesetGroupsTrunkId)
+    public function setTransformationRuleSetId($transformationRuleSetId)
     {
-        $this->transformationRulesetGroupsTrunkId = $transformationRulesetGroupsTrunkId;
+        $this->transformationRuleSetId = $transformationRuleSetId;
 
         return $this;
     }
@@ -247,17 +247,17 @@ class PeeringContractDTO implements DataTransferObjectInterface
     /**
      * @return integer
      */
-    public function getTransformationRulesetGroupsTrunkId()
+    public function getTransformationRuleSetId()
     {
-        return $this->transformationRulesetGroupsTrunkId;
+        return $this->transformationRuleSetId;
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\TransformationRulesetGroupsTrunk\TransformationRulesetGroupsTrunk
+     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet
      */
-    public function getTransformationRulesetGroupsTrunk()
+    public function getTransformationRuleSet()
     {
-        return $this->transformationRulesetGroupsTrunk;
+        return $this->transformationRuleSet;
     }
 
     /**

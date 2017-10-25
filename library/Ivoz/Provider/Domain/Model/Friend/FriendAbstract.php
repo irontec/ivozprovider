@@ -54,11 +54,6 @@ abstract class FriendAbstract
     protected $password;
 
     /**
-     * @var string
-     */
-    protected $areaCode;
-
-    /**
      * @var integer
      */
     protected $priority = '1';
@@ -112,9 +107,9 @@ abstract class FriendAbstract
     protected $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     * @var \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface
      */
-    protected $country;
+    protected $transformationRuleSet;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface
@@ -273,10 +268,9 @@ abstract class FriendAbstract
             ->setIp($dto->getIp())
             ->setPort($dto->getPort())
             ->setPassword($dto->getPassword())
-            ->setAreaCode($dto->getAreaCode())
             ->setFromDomain($dto->getFromDomain())
             ->setCompany($dto->getCompany())
-            ->setCountry($dto->getCountry())
+            ->setTransformationRuleSet($dto->getTransformationRuleSet())
             ->setCallAcl($dto->getCallAcl())
             ->setOutgoingDdi($dto->getOutgoingDdi())
             ->setLanguage($dto->getLanguage())
@@ -303,7 +297,6 @@ abstract class FriendAbstract
             ->setPort($dto->getPort())
             ->setAuthNeeded($dto->getAuthNeeded())
             ->setPassword($dto->getPassword())
-            ->setAreaCode($dto->getAreaCode())
             ->setPriority($dto->getPriority())
             ->setDisallow($dto->getDisallow())
             ->setAllow($dto->getAllow())
@@ -313,7 +306,7 @@ abstract class FriendAbstract
             ->setFromDomain($dto->getFromDomain())
             ->setDirectConnectivity($dto->getDirectConnectivity())
             ->setCompany($dto->getCompany())
-            ->setCountry($dto->getCountry())
+            ->setTransformationRuleSet($dto->getTransformationRuleSet())
             ->setCallAcl($dto->getCallAcl())
             ->setOutgoingDdi($dto->getOutgoingDdi())
             ->setLanguage($dto->getLanguage());
@@ -336,7 +329,6 @@ abstract class FriendAbstract
             ->setPort($this->getPort())
             ->setAuthNeeded($this->getAuthNeeded())
             ->setPassword($this->getPassword())
-            ->setAreaCode($this->getAreaCode())
             ->setPriority($this->getPriority())
             ->setDisallow($this->getDisallow())
             ->setAllow($this->getAllow())
@@ -346,7 +338,7 @@ abstract class FriendAbstract
             ->setFromDomain($this->getFromDomain())
             ->setDirectConnectivity($this->getDirectConnectivity())
             ->setCompanyId($this->getCompany() ? $this->getCompany()->getId() : null)
-            ->setCountryId($this->getCountry() ? $this->getCountry()->getId() : null)
+            ->setTransformationRuleSetId($this->getTransformationRuleSet() ? $this->getTransformationRuleSet()->getId() : null)
             ->setCallAclId($this->getCallAcl() ? $this->getCallAcl()->getId() : null)
             ->setOutgoingDdiId($this->getOutgoingDdi() ? $this->getOutgoingDdi()->getId() : null)
             ->setLanguageId($this->getLanguage() ? $this->getLanguage()->getId() : null);
@@ -366,7 +358,6 @@ abstract class FriendAbstract
             'port' => self::getPort(),
             'auth_needed' => self::getAuthNeeded(),
             'password' => self::getPassword(),
-            'areaCode' => self::getAreaCode(),
             'priority' => self::getPriority(),
             'disallow' => self::getDisallow(),
             'allow' => self::getAllow(),
@@ -376,7 +367,7 @@ abstract class FriendAbstract
             'from_domain' => self::getFromDomain(),
             'directConnectivity' => self::getDirectConnectivity(),
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
-            'countryId' => self::getCountry() ? self::getCountry()->getId() : null,
+            'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null,
             'callAclId' => self::getCallAcl() ? self::getCallAcl()->getId() : null,
             'outgoingDdiId' => self::getOutgoingDdi() ? self::getOutgoingDdi()->getId() : null,
             'languageId' => self::getLanguage() ? self::getLanguage()->getId() : null
@@ -611,34 +602,6 @@ abstract class FriendAbstract
     public function getPassword()
     {
         return $this->password;
-    }
-
-    /**
-     * Set areaCode
-     *
-     * @param string $areaCode
-     *
-     * @return self
-     */
-    public function setAreaCode($areaCode = null)
-    {
-        if (!is_null($areaCode)) {
-            Assertion::maxLength($areaCode, 10);
-        }
-
-        $this->areaCode = $areaCode;
-
-        return $this;
-    }
-
-    /**
-     * Get areaCode
-     *
-     * @return string
-     */
-    public function getAreaCode()
-    {
-        return $this->areaCode;
     }
 
     /**
@@ -895,27 +858,27 @@ abstract class FriendAbstract
     }
 
     /**
-     * Set country
+     * Set transformationRuleSet
      *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $country
+     * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet
      *
      * @return self
      */
-    public function setCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $country = null)
+    public function setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet = null)
     {
-        $this->country = $country;
+        $this->transformationRuleSet = $transformationRuleSet;
 
         return $this;
     }
 
     /**
-     * Get country
+     * Get transformationRuleSet
      *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface
      */
-    public function getCountry()
+    public function getTransformationRuleSet()
     {
-        return $this->country;
+        return $this->transformationRuleSet;
     }
 
     /**

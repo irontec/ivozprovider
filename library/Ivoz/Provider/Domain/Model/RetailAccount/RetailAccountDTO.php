@@ -54,11 +54,6 @@ class RetailAccountDTO implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $areaCode;
-
-    /**
-     * @var string
-     */
     private $disallow = 'all';
 
     /**
@@ -109,7 +104,7 @@ class RetailAccountDTO implements DataTransferObjectInterface
     /**
      * @var mixed
      */
-    private $countryId;
+    private $transformationRuleSetId;
 
     /**
      * @var mixed
@@ -134,7 +129,7 @@ class RetailAccountDTO implements DataTransferObjectInterface
     /**
      * @var mixed
      */
-    private $country;
+    private $transformationRuleSet;
 
     /**
      * @var mixed
@@ -170,7 +165,6 @@ class RetailAccountDTO implements DataTransferObjectInterface
             'port' => $this->getPort(),
             'authNeeded' => $this->getAuthNeeded(),
             'password' => $this->getPassword(),
-            'areaCode' => $this->getAreaCode(),
             'disallow' => $this->getDisallow(),
             'allow' => $this->getAllow(),
             'directMediaMethod' => $this->getDirectMediaMethod(),
@@ -181,7 +175,7 @@ class RetailAccountDTO implements DataTransferObjectInterface
             'id' => $this->getId(),
             'brandId' => $this->getBrandId(),
             'companyId' => $this->getCompanyId(),
-            'countryId' => $this->getCountryId(),
+            'transformationRuleSetId' => $this->getTransformationRuleSetId(),
             'outgoingDdiId' => $this->getOutgoingDdiId(),
             'languageId' => $this->getLanguageId(),
             'psEndpoints' => $this->getPsEndpoints(),
@@ -196,7 +190,7 @@ class RetailAccountDTO implements DataTransferObjectInterface
     {
         $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
         $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
-        $this->country = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Country\\Country', $this->getCountryId());
+        $this->transformationRuleSet = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\TransformationRuleSet\\TransformationRuleSet', $this->getTransformationRuleSetId());
         $this->outgoingDdi = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Ddi\\Ddi', $this->getOutgoingDdiId());
         $this->language = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Language\\Language', $this->getLanguageId());
         if (!is_null($this->psEndpoints)) {
@@ -396,26 +390,6 @@ class RetailAccountDTO implements DataTransferObjectInterface
     public function getPassword()
     {
         return $this->password;
-    }
-
-    /**
-     * @param string $areaCode
-     *
-     * @return RetailAccountDTO
-     */
-    public function setAreaCode($areaCode = null)
-    {
-        $this->areaCode = $areaCode;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getAreaCode()
-    {
-        return $this->areaCode;
     }
 
     /**
@@ -635,13 +609,13 @@ class RetailAccountDTO implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $countryId
+     * @param integer $transformationRuleSetId
      *
      * @return RetailAccountDTO
      */
-    public function setCountryId($countryId)
+    public function setTransformationRuleSetId($transformationRuleSetId)
     {
-        $this->countryId = $countryId;
+        $this->transformationRuleSetId = $transformationRuleSetId;
 
         return $this;
     }
@@ -649,17 +623,17 @@ class RetailAccountDTO implements DataTransferObjectInterface
     /**
      * @return integer
      */
-    public function getCountryId()
+    public function getTransformationRuleSetId()
     {
-        return $this->countryId;
+        return $this->transformationRuleSetId;
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Country\Country
+     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet
      */
-    public function getCountry()
+    public function getTransformationRuleSet()
     {
-        return $this->country;
+        return $this->transformationRuleSet;
     }
 
     /**

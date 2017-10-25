@@ -107,13 +107,6 @@ Ivoz\Provider\Domain\Model\Company\CompanyAbstract:
       options:
         fixed: false
       column: country
-    outboundPrefix:
-      type: string
-      nullable: true
-      length: 255
-      options:
-        fixed: false
-      column: outbound_prefix
     ipfilter:
       type: boolean
       nullable: true
@@ -133,13 +126,6 @@ Ivoz\Provider\Domain\Model\Company\CompanyAbstract:
       options:
         fixed: false
       column: onDemandRecordCode
-    areaCode:
-      type: string
-      nullable: true
-      length: 10
-      options:
-        fixed: false
-      column: areaCode
     externallyextraopts:
       type: text
       nullable: true
@@ -226,6 +212,17 @@ Ivoz\Provider\Domain\Model\Company\CompanyAbstract:
       inversedBy: null
       joinColumns:
         countryId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false
+    transformationRuleSet:
+      targetEntity: \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        transformationRuleSetId:
           referencedColumnName: id
           onDelete: set null
       orphanRemoval: false

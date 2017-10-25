@@ -21,6 +21,20 @@ interface IvrCommonInterface extends LoggableEntityInterface
     public function getExtension(\Doctrine\Common\Collections\Criteria $criteria = null);
 
     /**
+     * Get the timeout numberValue in E.164 format when routing to 'number'
+     *
+     * @return string
+     */
+    public function getTimeoutNumberValueE164();
+
+    /**
+     * Get the error numberValue in E.164 format when routing to 'number'
+     *
+     * @return string
+     */
+    public function getErrorNumberValueE164();
+
+    /**
      * Set name
      *
      * @param string $name

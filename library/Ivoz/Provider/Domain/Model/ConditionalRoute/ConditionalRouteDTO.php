@@ -89,6 +89,11 @@ class ConditionalRouteDTO implements DataTransferObjectInterface
     /**
      * @var mixed
      */
+    private $numberCountryId;
+
+    /**
+     * @var mixed
+     */
     private $company;
 
     /**
@@ -137,6 +142,11 @@ class ConditionalRouteDTO implements DataTransferObjectInterface
     private $extension;
 
     /**
+     * @var mixed
+     */
+    private $numberCountry;
+
+    /**
      * @return array
      */
     public function __toArray()
@@ -156,7 +166,8 @@ class ConditionalRouteDTO implements DataTransferObjectInterface
             'queueId' => $this->getQueueId(),
             'locutionId' => $this->getLocutionId(),
             'conferenceRoomId' => $this->getConferenceRoomId(),
-            'extensionId' => $this->getExtensionId()
+            'extensionId' => $this->getExtensionId(),
+            'numberCountryId' => $this->getNumberCountryId()
         ];
     }
 
@@ -175,6 +186,7 @@ class ConditionalRouteDTO implements DataTransferObjectInterface
         $this->locution = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Locution\\Locution', $this->getLocutionId());
         $this->conferenceRoom = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\ConferenceRoom\\ConferenceRoom', $this->getConferenceRoomId());
         $this->extension = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Extension\\Extension', $this->getExtensionId());
+        $this->numberCountry = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Country\\Country', $this->getNumberCountryId());
     }
 
     /**
@@ -563,6 +575,34 @@ class ConditionalRouteDTO implements DataTransferObjectInterface
     public function getExtension()
     {
         return $this->extension;
+    }
+
+    /**
+     * @param integer $numberCountryId
+     *
+     * @return ConditionalRouteDTO
+     */
+    public function setNumberCountryId($numberCountryId)
+    {
+        $this->numberCountryId = $numberCountryId;
+
+        return $this;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getNumberCountryId()
+    {
+        return $this->numberCountryId;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Country\Country
+     */
+    public function getNumberCountry()
+    {
+        return $this->numberCountry;
     }
 }
 

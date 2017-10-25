@@ -42,33 +42,30 @@ class SanitizeEmptyValues implements CompanyLifecycleEventHandlerInterface
                 $entity->getBrand()->getDefaultTimezone()->getId()
             );
         }
-        if (!$dto->getCountryId()) {
-            $dto->setCountryId(70);
-        }
+
         if (!$dto->getLanguageId()) {
             $dto->setLanguageId(
                 // @todo create a shortcut
                 $entity->getBrand()->getLanguage()->getId()
             );
         }
-        if (!$dto->getOutboundPrefix()) {
-            $dto->setOutboundPrefix('');
-        }
+
         if (!$dto->getMediaRelaySetsId()) {
             $dto->setMediaRelaySetsId(0);
         }
+
         if (!$dto->getIpFilter()) {
             $dto->setIpFilter(0);
         }
+
         if (!$dto->getOnDemandRecord()) {
             $dto->setOnDemandRecord(0);
         }
+
         if (!$dto->getOnDemandRecordCode()) {
             $dto->setOnDemandRecordCode('');
         }
-        if (!$dto->getAreaCode()) {
-            $dto->setAreaCode('');
-        }
+
 
         $this->entityPersister->persistDto($dto, $entity);
     }

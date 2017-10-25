@@ -11,6 +11,20 @@ interface QueueInterface extends LoggableEntityInterface
     public function getAstQueueName();
 
     /**
+     * Get the timeout numberValue in E.164 format when routing to 'number'
+     *
+     * @return string
+     */
+    public function getTimeoutNumberValueE164();
+
+    /**
+     * Get the full numberValue in E.164 format when routing to 'number'
+     *
+     * @return string
+     */
+    public function getFullNumberValueE164();
+
+    /**
      * Set name
      *
      * @param string $name

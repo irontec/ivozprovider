@@ -164,5 +164,29 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
 
         return $scheduleMatched;
     }
+
+    /**
+     * Get the holiday numberValue in E.164 format when routing to 'number'
+     *
+     * @return string
+     */
+    public function getHolidayNumberValueE164()
+    {
+        return
+            $this->getHolidayNumberCountry()->getCountryCode() .
+            $this->getHolidayNumberValue();
+    }
+
+    /**
+     * Get the out of schedule numberValue in E.164 format when routing to 'number'
+     *
+     * @return string
+     */
+    public function getOutOfScheduleNumberValueE164()
+    {
+        return
+            $this->getOutOfScheduleNumberCountry()->getCountryCode() .
+            $this->getOutOfScheduleNumberValue();
+    }
 }
 

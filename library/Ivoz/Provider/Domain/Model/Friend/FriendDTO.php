@@ -52,11 +52,6 @@ class FriendDTO implements DataTransferObjectInterface
     private $password;
 
     /**
-     * @var string
-     */
-    private $areaCode;
-
-    /**
      * @var integer
      */
     private $priority = '1';
@@ -109,7 +104,7 @@ class FriendDTO implements DataTransferObjectInterface
     /**
      * @var mixed
      */
-    private $countryId;
+    private $transformationRuleSetId;
 
     /**
      * @var mixed
@@ -134,7 +129,7 @@ class FriendDTO implements DataTransferObjectInterface
     /**
      * @var mixed
      */
-    private $country;
+    private $transformationRuleSet;
 
     /**
      * @var mixed
@@ -175,7 +170,6 @@ class FriendDTO implements DataTransferObjectInterface
             'port' => $this->getPort(),
             'authNeeded' => $this->getAuthNeeded(),
             'password' => $this->getPassword(),
-            'areaCode' => $this->getAreaCode(),
             'priority' => $this->getPriority(),
             'disallow' => $this->getDisallow(),
             'allow' => $this->getAllow(),
@@ -186,7 +180,7 @@ class FriendDTO implements DataTransferObjectInterface
             'directConnectivity' => $this->getDirectConnectivity(),
             'id' => $this->getId(),
             'companyId' => $this->getCompanyId(),
-            'countryId' => $this->getCountryId(),
+            'transformationRuleSetId' => $this->getTransformationRuleSetId(),
             'callAclId' => $this->getCallAclId(),
             'outgoingDdiId' => $this->getOutgoingDdiId(),
             'languageId' => $this->getLanguageId(),
@@ -201,7 +195,7 @@ class FriendDTO implements DataTransferObjectInterface
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
         $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
-        $this->country = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Country\\Country', $this->getCountryId());
+        $this->transformationRuleSet = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\TransformationRuleSet\\TransformationRuleSet', $this->getTransformationRuleSetId());
         $this->callAcl = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\CallAcl\\CallAcl', $this->getCallAclId());
         $this->outgoingDdi = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Ddi\\Ddi', $this->getOutgoingDdiId());
         $this->language = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Language\\Language', $this->getLanguageId());
@@ -402,26 +396,6 @@ class FriendDTO implements DataTransferObjectInterface
     public function getPassword()
     {
         return $this->password;
-    }
-
-    /**
-     * @param string $areaCode
-     *
-     * @return FriendDTO
-     */
-    public function setAreaCode($areaCode = null)
-    {
-        $this->areaCode = $areaCode;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getAreaCode()
-    {
-        return $this->areaCode;
     }
 
     /**
@@ -633,13 +607,13 @@ class FriendDTO implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $countryId
+     * @param integer $transformationRuleSetId
      *
      * @return FriendDTO
      */
-    public function setCountryId($countryId)
+    public function setTransformationRuleSetId($transformationRuleSetId)
     {
-        $this->countryId = $countryId;
+        $this->transformationRuleSetId = $transformationRuleSetId;
 
         return $this;
     }
@@ -647,17 +621,17 @@ class FriendDTO implements DataTransferObjectInterface
     /**
      * @return integer
      */
-    public function getCountryId()
+    public function getTransformationRuleSetId()
     {
-        return $this->countryId;
+        return $this->transformationRuleSetId;
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Country\Country
+     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet
      */
-    public function getCountry()
+    public function getTransformationRuleSet()
     {
-        return $this->country;
+        return $this->transformationRuleSet;
     }
 
     /**

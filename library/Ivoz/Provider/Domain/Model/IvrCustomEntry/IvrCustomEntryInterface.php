@@ -9,6 +9,13 @@ interface IvrCustomEntryInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * Get the numberValue in E.164 format when routing to 'number'
+     *
+     * @return string
+     */
+    public function getNumberValueE164();
+
+    /**
      * Set entry
      *
      * @param string $entry

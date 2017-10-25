@@ -22,5 +22,17 @@ class IvrCustomEntry extends IvrCustomEntryAbstract implements IvrCustomEntryInt
     {
         return $this->id;
     }
+
+    /**
+     * Get the numberValue in E.164 format when routing to 'number'
+     *
+     * @return string
+     */
+    public function getNumberValueE164()
+    {
+        return
+            $this->getTargetNumberCountry()->getCountryCode() .
+            $this->getTargetNumberValue();
+    }
 }
 

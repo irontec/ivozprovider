@@ -19,6 +19,13 @@ interface ExtensionInterface extends LoggableEntityInterface
     public function getScreenUser();
 
     /**
+     * Get the numberValue in E.164 format when routing to 'number'
+     *
+     * @return string
+     */
+    public function getNumberValueE164();
+
+    /**
      * Set number
      *
      * @param string $number
@@ -209,6 +216,22 @@ interface ExtensionInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface
      */
     public function getConditionalRoute();
+
+    /**
+     * Set numberCountry
+     *
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry
+     *
+     * @return self
+     */
+    public function setNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry = null);
+
+    /**
+     * Get numberCountry
+     *
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     */
+    public function getNumberCountry();
 
     /**
      * Add user

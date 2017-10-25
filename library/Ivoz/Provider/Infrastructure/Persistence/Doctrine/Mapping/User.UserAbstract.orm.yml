@@ -19,9 +19,6 @@ Ivoz\Provider\Domain\Model\User\UserAbstract:
     bossAssistantId:
       columns:
         - bossAssistantId
-    countryId:
-      columns:
-        - countryId
     languageId:
       columns:
         - languageId
@@ -130,13 +127,6 @@ Ivoz\Provider\Domain\Model\User\UserAbstract:
       options:
         fixed: false
       column: tokenKey
-    areaCode:
-      type: string
-      nullable: true
-      length: 10
-      options:
-        fixed: false
-      column: areaCode
     gsQRCode:
       type: boolean
       nullable: false
@@ -179,14 +169,14 @@ Ivoz\Provider\Domain\Model\User\UserAbstract:
           referencedColumnName: id
           onDelete: set null
       orphanRemoval: false
-    country:
-      targetEntity: \Ivoz\Provider\Domain\Model\Country\CountryInterface
+    transformationRuleSet:
+      targetEntity: \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface
       cascade: {  }
       fetch: LAZY
       mappedBy: null
       inversedBy: null
       joinColumns:
-        countryId:
+        transformationRuleSetId:
           referencedColumnName: id
           onDelete: set null
       orphanRemoval: false

@@ -10,6 +10,13 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * Get the numberValue in E.164 format when routing to 'number'
+     *
+     * @return string
+     */
+    public function getNumberValueE164();
+
+    /**
      * Set priority
      *
      * @param integer $priority
