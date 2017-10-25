@@ -27,24 +27,21 @@ production:
             template: '%name%'
           order:
             Brand.name: asc
-    transformationRulesetGroupsTrunkId:
+    transformationRuleSetId:
       title: _('Numeric transformation')
       type: select
+      required: true
       source:
         data: mapper
-        'null': 'E.164'
         config:
-          entity: \Ivoz\Provider\Domain\Model\TransformationRulesetGroupsTrunk\TransformationRulesetGroupsTrunk
-          filterClass: IvozProvider_Klear_Filter_Brand
+          entity: \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet
+          filterClass: IvozProvider_Klear_Filter_TransformationRuleSets
           fieldName:
             fields:
-              - name
-            template: '%name%'
+              - name${lang}
+            template: '%name${lang}%'
           order:
-            TransformationRulesetGroupsTrunk.name: asc
-      options:
-        screens:
-          transformationRulesetGroupsTrunksList_screen: false
+            TransformationRuleSet.name.${lang}: asc
     externallyRated:
       title: _('Externally rated')
       type: select

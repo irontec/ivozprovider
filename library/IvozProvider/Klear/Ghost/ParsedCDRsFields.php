@@ -67,17 +67,17 @@ class IvozProvider_Klear_Ghost_ParsedCDRsFields extends KlearMatrix_Model_Field_
 
     public function getSrcAdapted (\IvozProvider\Model\ParsedCDRs $model)
     {
-        return $this->stripCompanyCC($model->getSrc(), $model->getCompany()->getCountries()->getCallingCode());
+        return $this->stripCompanyCC($model->getSrc(), $model->getCompany()->getCountries()->getCountryCode());
     }
 
     public function getSrcDialedAdapted (\IvozProvider\Model\ParsedCDRs $model)
     {
-        return $this->stripCompanyCC($model->getSrcDialed(), $model->getCompany()->getCountries()->getCallingCode());
+        return $this->stripCompanyCC($model->getSrcDialed(), $model->getCompany()->getCountries()->getCountryCode());
     }
 
     public function getDstAdapted (\IvozProvider\Model\ParsedCDRs $model)
     {
-        return $this->stripCompanyCC($model->getDst(), $model->getCompany()->getCountries()->getCallingCode());
+        return $this->stripCompanyCC($model->getDst(), $model->getCompany()->getCountries()->getCountryCode());
     }
 
     public function getSmartDuration (\IvozProvider\Model\ParsedCDRs $model)

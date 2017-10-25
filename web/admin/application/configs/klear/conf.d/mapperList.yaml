@@ -439,10 +439,15 @@ mappers:
         modelFile: Terminals,
         entity: 'Ivoz\\Provider\\Domain\\Model\\Terminal\\Terminal'
     }
-  - &TransformationRulesetGroupsTrunks {
-        mapper: \IvozProvider\Mapper\Sql\TransformationRulesetGroupsTrunks,
-        modelFile: TransformationRulesetGroupsTrunks,
-        entity: 'Ivoz\\Provider\\Domain\\Model\\TransformationRulesetGroupsTrunk\\TransformationRulesetGroupsTrunk'
+  - &TransformationRuleSets {
+        mapper: \IvozProvider\Mapper\Sql\TransformationRuleSet,
+        modelFile: TransformationRuleSets,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\TransformationRuleSet\\TransformationRuleSet'
+    }
+  - &TransformationRules {
+        mapper: \IvozProvider\Mapper\Sql\TransformationRule,
+        modelFile: TransformationRules,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\TransformationRule\\TransformationRule'
     }
   - &Users {
         mapper: \IvozProvider\Mapper\Sql\Users,
@@ -529,11 +534,6 @@ mappers:
         modelFile: KamTrunksAddress,
         entity: 'Kam\\Model\\TrunksAddress\\TrunksAddress'
     }
-  - &TrunksDialplan {
-        mapper: \IvozProvider\Mapper\Sql\KamTrunksDialplan,
-        modelFile: KamTrunksDialplan,
-        entity: 'Ivoz\\Provider\\Domain\\Model\\TrunksDialplan\\TrunksDialplan'
-    }
   - &KamTrunksDomain {
         mapper: \IvozProvider\Mapper\Sql\KamTrunksDomain,
         modelFile: KamTrunksDomain,
@@ -544,11 +544,6 @@ mappers:
         modelFile: KamTrunksDomainAttrs,
         entity: 'Kam\\Model\\TrunksDomainAttr\\TrunksDomainAttr'
     }
-#  - &TrunksHtable {
-#        mapper: \IvozProvider\Mapper\Sql\KamTrunksHtable,
-#        modelFile: TrunksHtable,
-#        entity: 'Ivoz\\Kam\\Domain\\Model\\TrunksHtable\\TrunksHtable'
-#    }
   - &KamTrunksUacreg {
         mapper: \IvozProvider\Mapper\Sql\KamTrunksUacreg,
         modelFile: KamTrunksUacreg,

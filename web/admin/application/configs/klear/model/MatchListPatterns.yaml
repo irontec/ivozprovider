@@ -61,8 +61,8 @@ production:
           fieldName:
             fields:
               - name${lang}
-              - callingCode
-            template: '%name${lang}% (%callingCode%)'
+              - countryCode
+            template: '%name${lang}% (%countryCode%)'
           order:
             Country.name.${lang}: asc
     numberValue:

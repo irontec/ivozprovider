@@ -34,7 +34,7 @@ production:
           timeoutNumberValue: true
           timeoutExtensionId: true
           timeoutVoiceMailUserId: true
-          timeoutNumberCountryId: true
+          errorNumberCountryId: true
           errorNumberValue: true
           errorExtensionId: true
           errorVoiceMailUserId: true

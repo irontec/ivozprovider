@@ -118,7 +118,7 @@ production:
           title: ngettext('Peering contract', 'Peering contracts', 0)
           class: ui-silk-connect
           description: _("List of %s", ngettext('Peering contract', 'Peering contracts', 0))
-        TransformationRulesetGroupsTrunksList:
+        TransformationRuleSetsList:
           title: ngettext('Numeric transformation', 'Numeric transformations', 0)
           class: ui-silk-application-side-expand
           description: _("List of %s", ngettext('Numeric transformation', 'Numeric transformations', 0))

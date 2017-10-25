@@ -1,11 +1,10 @@
 production:
-  class: \IvozProvider\Model\TransformationRulesetGroupsTrunks
-  entity: Ivoz\Provider\Domain\Model\TransformationRulesetGroupsTrunk\TransformationRulesetGroupsTrunk
+  class: \IvozProvider\Model\TransformationRuleSet
+  entity: Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet
   fields: 
     brandId:
       title: ngettext('Brand', 'Brands', 1)
       type: select
-      required: true
       source:
         data: mapper
         config:
@@ -21,56 +20,25 @@ production:
       title: _('Name')
       type: text
       trim: both
+      isMultilang: true
       required: true
       maxLength: 100
-    callerIn:
-      title: _('Caller in')
-      type: number
-      source:
-        control: Spinner
-    calleeIn:
-      title: _('Callee in')
-      type: number
-      source:
-        control: Spinner
-    callerOut:
-      title: _('Caller out')
-      type: number
-      source:
-        control: Spinner
-    calleeOut:
-      title: _('Callee out')
-      type: number
-      source:
-        control: Spinner
     description:
       title: _('Description')
       type: text
       trim: both
-      defaultValue:
-      maxLength: 500
-    automatic:
-      title: _('Generate rules?')
-      type: select
-      defaultValue: 0
-      source:
-        data: inline
-        values:
-          '0':
-            title: _("No")
-            visualFilter:
-              show: []
-              hide: ["countryId", "internationalCode"]
-          '1':
-            title: _("Yes")
-            visualFilter:
-              show: ["countryId", "internationalCode"]
-              hide: []
+      maxLength: 250
+    internationalCode:
+      title: _('International Code')
+      type: text
+      pattern: "^[0-9]{2,10}$"
+      maxLength: 5
+      defaultValue: '00'
       info:
         type: box
         position: left
         icon: help
-        text: _("Will create default rules for a given country. This rules can be modified later.")
+        text: _("Code used for internationals calls, usually 00.")
         label: _("Need help?")
     countryId:
       title: _('Country code')
@@ -80,27 +48,36 @@ production:
         data: mapper
         config:
           entity: \Ivoz\Provider\Domain\Model\Country\Country
-          fieldName: 
-            fields: 
+          fieldName:
+            fields:
               - name${lang}
-              - callingCode
-            template: '%name${lang}% (+%callingCode%)'
+              - countryCode
+            template: '%name${lang}% (%countryCode%)'
           order:
             Country.name.${lang}: asc
       defaultValue: 70
-    internationalCode:
-      title: _('International Code')
+    trunkPrefix:
+      title: _('Trunk Prefix')
       type: text
-      pattern: "^[0-9]{2,10}$"
-      maxLength: 10
-      defaultValue: '00'
+      pattern: "^[0-9]+$"
+      maxLength: 5
       info:
         type: box
         position: left
         icon: help
-        text: _("Code used for internationals calls, usually 00.")
+        text: _("Prefix used for national out of area calls.")
         label: _("Need help?")
-    nationalNumLength:
+    areaCode:
+      title: _('Area code')
+      type: text
+      maxLength: 10
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Calling a number within the same Area can omit Area Code")
+        label: _("Need help?")
+    nationalLen:
       title: _('National number length')
       type: number
       defaultValue: 9
@@ -111,6 +88,15 @@ production:
         position: left
         icon: help
         text: _("How long are the normal phone numbers called inside this country?")
+        label: _("Need help?")
+    generateRules:
+      title: _('Generate Transformation Rules automatically')
+      type: checkbox
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Mark this option to regenerate all rules after saving.")
         label: _("Need help?")
 staging:
   _extends: production

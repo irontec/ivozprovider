@@ -56,7 +56,7 @@ production:
           fieldName: 
             fields: 
               - ddie164
-            template: '+%ddie164%'
+            template: '%ddie164%'
           order:
             Ddi.ddie164: asc
         'null': _("Company's default")

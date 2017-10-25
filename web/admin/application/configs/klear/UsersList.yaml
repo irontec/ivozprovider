@@ -36,6 +36,7 @@ production:
           name: true
           lastname: true
           email: true
+          languageId: true
           active: true
           pass: true
           gsQRCode: true
@@ -67,12 +68,11 @@ production:
           isBoss: true
           maxCalls: true
           tokenKey: true
-          countryId: true
-          areaCode: true
           voicemailEnabled: true
           voicemailLocutionId: true
           voicemailAttachSound: true
           voicemailSendMail: true
+          transformationRuleSetId: true
           languageId: true
           externalIpCalls: true
           outgoingDdiRuleId: true
@@ -105,7 +105,7 @@ production:
           pass: true
           gsQRCode: true
           timezoneId: true
-          callACLId: true
+          callACLId: true1
           bossAssistantId: true
           exceptionBoosAssistantRegExp: true
           PickUpRelUsers: true
@@ -113,13 +113,12 @@ production:
           isBoss: true
           maxCalls: true
           tokenKey: true
-          countryId: true
-          areaCode: true
           voicemailEnabled: true
           voicemailLocutionId: true
           voicemailAttachSound: true
           voicemailSendMail: true
           languageId: true
+          transformationRuleSetId: true
           externalIpCalls: true
       fixedPositions: &UsersFixedPositions_link
         group0:
@@ -159,25 +158,28 @@ production:
             name: 4
             lastname: 4
             email: 4
-            countryId: 5
-            areaCode: 5
-            languageId: 5
-            timezoneId: 5
         group1:
+          label: _("Geographic data")
+          colsPerRow: 12
+          fields:
+            languageId: 6
+            timezoneId: 6
+            transformationRuleSetId: 8
+        group2:
           label: _("Login Info")
           colsPerRow: 3
           fields:
             active: 1
             pass: 1
             gsQRCode: 1
-        group2:
+        group3:
           label: _("Boss-Assistant")
           colsPerRow: 12
           fields:
             isBoss: 4
             bossAssistantId: 8
             exceptionBoosAssistantRegExp: 12
-        group3:
+        group4:
           label: _("Basic Configuration")
           colsPerRow: 12
           fields:
@@ -189,7 +191,7 @@ production:
             doNotDisturb: 6
             maxCalls: 6
             externalIpCalls: 6
-        group4:
+        group5:
           label: _("Voicemail")
           colsPerRow: 2
           fields:
@@ -197,7 +199,7 @@ production:
             voicemailLocutionId: 1
             voicemailSendMail: 1
             voicemailAttachSound: 1
-        group5:
+        group6:
           label: _("Group belonging")
           colsPerRow: 3
           fields:

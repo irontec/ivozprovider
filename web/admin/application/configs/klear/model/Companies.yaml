@@ -133,10 +133,6 @@ production:
       trim: both
       required: true
       maxLength: 255
-    outboundPrefix:
-      title: _('Outbound prefix')
-      type: text
-      trim: both
     countryId:
       title: _('Country code')
       type: select
@@ -149,21 +145,26 @@ production:
           fieldName:
             fields:
               - name${lang}
-              - callingCode
-            template: '%name${lang}% (+%callingCode%)'
+              - countryCode
+            template: '%name${lang}% (%countryCode%)'
           order:
             Country.code: asc
-        'null': _("Unassigned")
-    areaCode:
-      title: _('Area code')
-      type: text
-      maxLength: 10
-      info:
-        type: box
-        position: left
-        icon: help
-        text: _("Default Area code for users in this company")
-        label: _("Need help?")
+    transformationRuleSetId:
+      title: _('Numeric Transformation')
+      type: select
+      required: true
+      defaultValue: 70
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet
+          filterClass: IvozProvider_Klear_Filter_TransformationRuleSets
+          fieldName:
+            fields:
+              - name${lang}
+            template: '%name${lang}%'
+          order:
+            TransformationRuleSet.name.${lang}: asc
     outgoingDDIId:
       title: _('Outgoing DDI')
       type: select
@@ -175,7 +176,7 @@ production:
           fieldName:
             fields:
               - ddie164
-            template: '+%ddie164%'
+            template: '%ddie164%'
           order:
             Ddi.ddie164: asc
         'null': _("Unassigned")

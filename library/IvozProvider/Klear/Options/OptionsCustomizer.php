@@ -77,8 +77,23 @@ class IvozProvider_Klear_Options_OptionsCustomizer implements \KlearMatrix_Model
             case "domainsView_screen":
                 $show = !$this->_isEditable();
                 break;
+            case "TransformationRuleSetsEdit_screen":
+            case "TransformationRuleSetsDel_dialog":
+            case "TransformationRulesCallerInList_screen":
+            case "TransformationRulesCalleeInList_screen":
+            case "TransformationRulesCallerOutList_screen":
+            case "TransformationRulesCalleeOutList_screen":
+                $show = $this->_isBrandData();
+                break;
+            case "TransformationRuleSetsView_screen":
+            case "TransformationRulesCallerInView_screen":
+            case "TransformationRulesCalleeInView_screen":
+            case "TransformationRulesCallerOutView_screen":
+            case "TransformationRulesCalleeOutView_screen":
+                $show = !$this->_isBrandData();
+                break;
             default:
-                throw new Klear_Exception_Default("Unsupported dialog");
+                throw new Klear_Exception_Default("Unsupported dialog " . $this->_option->getName());
                 break;
         }
 
@@ -88,7 +103,7 @@ class IvozProvider_Klear_Options_OptionsCustomizer implements \KlearMatrix_Model
             /* Para no mostrarlo iniciamos una respuesta vacía */
             $response = new \KlearMatrix_Model_ParentOptionCustomizer_Response();
             $response->setParentWrapper($this->_resultWrapper)
-            ->setParentCssClass($this->_cssClass);
+                ->setParentCssClass($this->_cssClass);
 
             return $response;
         }
@@ -114,6 +129,13 @@ class IvozProvider_Klear_Options_OptionsCustomizer implements \KlearMatrix_Model
 
         return $isEditable;
     }
+
+    protected function _isBrandData() {
+        $brandId = $this->_parentModel->getBrandId();
+
+        return $brandId != null;
+    }
+
 
     protected function _checkEmulation($type)
     {
