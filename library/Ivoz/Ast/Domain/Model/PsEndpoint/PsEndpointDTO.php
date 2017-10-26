@@ -132,36 +132,6 @@ class PsEndpointDTO implements DataTransferObjectInterface
     private $psAors = null;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'sorceryId' => $this->getSorceryId(),
-            'fromDomain' => $this->getFromDomain(),
-            'aors' => $this->getAors(),
-            'callerid' => $this->getCallerid(),
-            'context' => $this->getContext(),
-            'disallow' => $this->getDisallow(),
-            'allow' => $this->getAllow(),
-            'directMedia' => $this->getDirectMedia(),
-            'directMediaMethod' => $this->getDirectMediaMethod(),
-            'mailboxes' => $this->getMailboxes(),
-            'namedPickupGroup' => $this->getNamedPickupGroup(),
-            'sendDiversion' => $this->getSendDiversion(),
-            'sendPai' => $this->getSendPai(),
-            'oneHundredRel' => $this->getOneHundredRel(),
-            'outboundProxy' => $this->getOutboundProxy(),
-            'trustIdInbound' => $this->getTrustIdInbound(),
-            'id' => $this->getId(),
-            'terminalId' => $this->getTerminalId(),
-            'friendId' => $this->getFriendId(),
-            'retailAccountId' => $this->getRetailAccountId(),
-            'psAorsId' => $this->getPsAorsId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

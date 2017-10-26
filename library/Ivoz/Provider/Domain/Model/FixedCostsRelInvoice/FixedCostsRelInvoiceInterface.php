@@ -7,6 +7,11 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 interface FixedCostsRelInvoiceInterface extends EntityInterface
 {
     /**
+     * @return array
+     */
+    public function getChangeSet();
+
+    /**
      * Set quantity
      *
      * @param integer $quantity

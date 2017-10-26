@@ -32,19 +32,6 @@ class TerminalManufacturerDTO implements DataTransferObjectInterface
     private $id;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'iden' => $this->getIden(),
-            'name' => $this->getName(),
-            'description' => $this->getDescription(),
-            'id' => $this->getId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

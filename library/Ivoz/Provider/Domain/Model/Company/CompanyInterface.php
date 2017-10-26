@@ -117,6 +117,11 @@ interface CompanyInterface extends EntityInterface
     public function getFeatures();
 
     /**
+     * @return array
+     */
+    public function getChangeSet();
+
+    /**
      * Set type
      *
      * @param string $type

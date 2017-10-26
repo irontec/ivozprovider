@@ -82,24 +82,6 @@ class IvrCustomEntryDTO implements DataTransferObjectInterface
     private $targetConditionalRoute;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'entry' => $this->getEntry(),
-            'targetType' => $this->getTargetType(),
-            'targetNumberValue' => $this->getTargetNumberValue(),
-            'id' => $this->getId(),
-            'ivrCustomId' => $this->getIvrCustomId(),
-            'welcomeLocutionId' => $this->getWelcomeLocutionId(),
-            'targetExtensionId' => $this->getTargetExtensionId(),
-            'targetVoiceMailUserId' => $this->getTargetVoiceMailUserId(),
-            'targetConditionalRouteId' => $this->getTargetConditionalRouteId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

@@ -147,42 +147,6 @@ class UsersActiveWatcherDTO implements DataTransferObjectInterface
     private $id;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'presentityUri' => $this->getPresentityUri(),
-            'watcherUsername' => $this->getWatcherUsername(),
-            'watcherDomain' => $this->getWatcherDomain(),
-            'toUser' => $this->getToUser(),
-            'toDomain' => $this->getToDomain(),
-            'event' => $this->getEvent(),
-            'eventId' => $this->getEventId(),
-            'toTag' => $this->getToTag(),
-            'fromTag' => $this->getFromTag(),
-            'callid' => $this->getCallid(),
-            'localCseq' => $this->getLocalCseq(),
-            'remoteCseq' => $this->getRemoteCseq(),
-            'contact' => $this->getContact(),
-            'recordRoute' => $this->getRecordRoute(),
-            'expires' => $this->getExpires(),
-            'status' => $this->getStatus(),
-            'reason' => $this->getReason(),
-            'version' => $this->getVersion(),
-            'socketInfo' => $this->getSocketInfo(),
-            'localContact' => $this->getLocalContact(),
-            'fromUser' => $this->getFromUser(),
-            'fromDomain' => $this->getFromDomain(),
-            'updated' => $this->getUpdated(),
-            'updatedWinfo' => $this->getUpdatedWinfo(),
-            'flags' => $this->getFlags(),
-            'userAgent' => $this->getUserAgent(),
-            'id' => $this->getId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

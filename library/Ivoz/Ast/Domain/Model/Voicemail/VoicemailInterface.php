@@ -7,6 +7,11 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 interface VoicemailInterface extends EntityInterface
 {
     /**
+     * @return array
+     */
+    public function getChangeSet();
+
+    /**
      * Set context
      *
      * @param string $context

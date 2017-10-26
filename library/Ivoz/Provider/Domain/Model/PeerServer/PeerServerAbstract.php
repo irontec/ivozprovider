@@ -154,23 +154,34 @@ abstract class PeerServerAbstract
      * @return mixed
      * @throws \Exception
      */
-    public function hasChanged($fieldName)
+    public function hasChanged($dbFieldName)
     {
-        if (!array_key_exists($fieldName, $this->_initialValues)) {
-            throw new \Exception($fieldName . ' field was not found');
+        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
+            throw new \Exception($dbFieldName . ' field was not found');
         }
         $currentValues = $this->__toArray();
 
-        return $currentValues[$fieldName] != $this->_initialValues[$fieldName];
+        return $currentValues[$dbFieldName] != $this->_initialValues[$dbFieldName];
     }
 
-    public function getInitialValue($fieldName)
+    public function getInitialValue($dbFieldName)
     {
-        if (!array_key_exists($fieldName, $this->_initialValues)) {
-            throw new \Exception($fieldName . ' field was not found');
+        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
+            throw new \Exception($dbFieldName . ' field was not found');
         }
 
-        return $this->_initialValues[$fieldName];
+        return $this->_initialValues[$dbFieldName];
+    }
+
+    /**
+     * @return array
+     */
+    public function getChangeSet()
+    {
+        return array_diff(
+            $this->_initialValues,
+            $this->__toArray()
+        );
     }
 
     /**
@@ -291,19 +302,19 @@ abstract class PeerServerAbstract
             'hostname' => self::getHostname(),
             'port' => self::getPort(),
             'params' => self::getParams(),
-            'uriScheme' => self::getUriScheme(),
+            'uri_scheme' => self::getUriScheme(),
             'transport' => self::getTransport(),
             'strip' => self::getStrip(),
             'prefix' => self::getPrefix(),
             'sendPAI' => self::getSendPAI(),
             'sendRPID' => self::getSendRPID(),
-            'authNeeded' => self::getAuthNeeded(),
-            'authUser' => self::getAuthUser(),
-            'authPassword' => self::getAuthPassword(),
-            'sipProxy' => self::getSipProxy(),
-            'outboundProxy' => self::getOutboundProxy(),
-            'fromUser' => self::getFromUser(),
-            'fromDomain' => self::getFromDomain(),
+            'auth_needed' => self::getAuthNeeded(),
+            'auth_user' => self::getAuthUser(),
+            'auth_password' => self::getAuthPassword(),
+            'sip_proxy' => self::getSipProxy(),
+            'outbound_proxy' => self::getOutboundProxy(),
+            'from_user' => self::getFromUser(),
+            'from_domain' => self::getFromDomain(),
             'peeringContractId' => self::getPeeringContract() ? self::getPeeringContract()->getId() : null,
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null
         ];

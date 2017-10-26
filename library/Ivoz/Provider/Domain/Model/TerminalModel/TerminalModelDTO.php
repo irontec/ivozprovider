@@ -62,24 +62,6 @@ class TerminalModelDTO implements DataTransferObjectInterface
     private $terminalManufacturer;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'iden' => $this->getIden(),
-            'name' => $this->getName(),
-            'description' => $this->getDescription(),
-            'genericTemplate' => $this->getGenericTemplate(),
-            'specificTemplate' => $this->getSpecificTemplate(),
-            'genericUrlPattern' => $this->getGenericUrlPattern(),
-            'specificUrlPattern' => $this->getSpecificUrlPattern(),
-            'id' => $this->getId(),
-            'terminalManufacturerId' => $this->getTerminalManufacturerId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

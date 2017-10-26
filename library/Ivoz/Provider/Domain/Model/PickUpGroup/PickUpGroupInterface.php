@@ -8,6 +8,11 @@ use Doctrine\Common\Collections\Collection;
 interface PickUpGroupInterface extends EntityInterface
 {
     /**
+     * @return array
+     */
+    public function getChangeSet();
+
+    /**
      * Set name
      *
      * @param string $name

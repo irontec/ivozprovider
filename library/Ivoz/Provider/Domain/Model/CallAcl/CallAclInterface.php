@@ -14,6 +14,11 @@ interface CallAclInterface extends EntityInterface
     public function dstIsCallable($dst);
 
     /**
+     * @return array
+     */
+    public function getChangeSet();
+
+    /**
      * Set name
      *
      * @param string $name

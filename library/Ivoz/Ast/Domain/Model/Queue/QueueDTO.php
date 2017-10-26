@@ -77,27 +77,6 @@ class QueueDTO implements DataTransferObjectInterface
     private $queue;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'name' => $this->getName(),
-            'periodicAnnounce' => $this->getPeriodicAnnounce(),
-            'periodicAnnounceFrequency' => $this->getPeriodicAnnounceFrequency(),
-            'timeout' => $this->getTimeout(),
-            'autopause' => $this->getAutopause(),
-            'ringinuse' => $this->getRinginuse(),
-            'wrapuptime' => $this->getWrapuptime(),
-            'maxlen' => $this->getMaxlen(),
-            'strategy' => $this->getStrategy(),
-            'weight' => $this->getWeight(),
-            'id' => $this->getId(),
-            'queueId' => $this->getQueueId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

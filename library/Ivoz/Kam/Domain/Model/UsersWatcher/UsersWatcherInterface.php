@@ -7,6 +7,11 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 interface UsersWatcherInterface extends EntityInterface
 {
     /**
+     * @return array
+     */
+    public function getChangeSet();
+
+    /**
      * Set presentityUri
      *
      * @param string $presentityUri

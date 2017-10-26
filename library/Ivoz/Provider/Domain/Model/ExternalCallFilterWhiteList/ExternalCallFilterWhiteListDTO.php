@@ -37,18 +37,6 @@ class ExternalCallFilterWhiteListDTO implements DataTransferObjectInterface
     private $matchlist;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'id' => $this->getId(),
-            'filterId' => $this->getFilterId(),
-            'matchlistId' => $this->getMatchlistId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

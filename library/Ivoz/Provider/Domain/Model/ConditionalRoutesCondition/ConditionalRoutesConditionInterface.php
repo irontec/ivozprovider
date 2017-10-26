@@ -8,6 +8,11 @@ use Doctrine\Common\Collections\Collection;
 interface ConditionalRoutesConditionInterface extends EntityInterface
 {
     /**
+     * @return array
+     */
+    public function getChangeSet();
+
+    /**
      * Set priority
      *
      * @param integer $priority

@@ -52,22 +52,6 @@ class TargetPatternDTO implements DataTransferObjectInterface
     private $brand;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'regExp' => $this->getRegExp(),
-            'id' => $this->getId(),
-            'nameEn' => $this->getNameEn(),
-            'nameEs' => $this->getNameEs(),
-            'descriptionEn' => $this->getDescriptionEn(),
-            'descriptionEs' => $this->getDescriptionEs(),
-            'brandId' => $this->getBrandId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

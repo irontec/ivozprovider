@@ -37,19 +37,6 @@ class FriendsPatternDTO implements DataTransferObjectInterface
     private $friend;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'name' => $this->getName(),
-            'regExp' => $this->getRegExp(),
-            'id' => $this->getId(),
-            'friendId' => $this->getFriendId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

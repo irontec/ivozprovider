@@ -47,20 +47,6 @@ class HolidayDateDTO implements DataTransferObjectInterface
     private $locution;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'name' => $this->getName(),
-            'eventDate' => $this->getEventDate(),
-            'id' => $this->getId(),
-            'calendarId' => $this->getCalendarId(),
-            'locutionId' => $this->getLocutionId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

@@ -247,54 +247,6 @@ class CompanyDTO implements DataTransferObjectInterface
     private $domains = null;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'type' => $this->getType(),
-            'name' => $this->getName(),
-            'domainUsers' => $this->getDomainUsers(),
-            'nif' => $this->getNif(),
-            'distributeMethod' => $this->getDistributeMethod(),
-            'externalMaxCalls' => $this->getExternalMaxCalls(),
-            'postalAddress' => $this->getPostalAddress(),
-            'postalCode' => $this->getPostalCode(),
-            'town' => $this->getTown(),
-            'province' => $this->getProvince(),
-            'countryName' => $this->getCountryName(),
-            'outboundPrefix' => $this->getOutboundPrefix(),
-            'ipfilter' => $this->getIpfilter(),
-            'onDemandRecord' => $this->getOnDemandRecord(),
-            'onDemandRecordCode' => $this->getOnDemandRecordCode(),
-            'areaCode' => $this->getAreaCode(),
-            'externallyextraopts' => $this->getExternallyextraopts(),
-            'recordingsLimitMB' => $this->getRecordingsLimitMB(),
-            'recordingsLimitEmail' => $this->getRecordingsLimitEmail(),
-            'id' => $this->getId(),
-            'languageId' => $this->getLanguageId(),
-            'mediaRelaySetsId' => $this->getMediaRelaySetsId(),
-            'defaultTimezoneId' => $this->getDefaultTimezoneId(),
-            'brandId' => $this->getBrandId(),
-            'applicationServerId' => $this->getApplicationServerId(),
-            'countryId' => $this->getCountryId(),
-            'outgoingDdiId' => $this->getOutgoingDdiId(),
-            'outgoingDdiRuleId' => $this->getOutgoingDdiRuleId(),
-            'extensionsId' => $this->getExtensionsId(),
-            'ddisId' => $this->getDdisId(),
-            'friendsId' => $this->getFriendsId(),
-            'companyServicesId' => $this->getCompanyServicesId(),
-            'terminalsId' => $this->getTerminalsId(),
-            'relPricingPlansId' => $this->getRelPricingPlansId(),
-            'musicsOnHoldId' => $this->getMusicsOnHoldId(),
-            'recordingsId' => $this->getRecordingsId(),
-            'relFeaturesId' => $this->getRelFeaturesId(),
-            'callAclPatternsId' => $this->getCallAclPatternsId(),
-            'domainsId' => $this->getDomainsId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

@@ -122,23 +122,34 @@ abstract class ConditionalRouteAbstract
      * @return mixed
      * @throws \Exception
      */
-    public function hasChanged($fieldName)
+    public function hasChanged($dbFieldName)
     {
-        if (!array_key_exists($fieldName, $this->_initialValues)) {
-            throw new \Exception($fieldName . ' field was not found');
+        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
+            throw new \Exception($dbFieldName . ' field was not found');
         }
         $currentValues = $this->__toArray();
 
-        return $currentValues[$fieldName] != $this->_initialValues[$fieldName];
+        return $currentValues[$dbFieldName] != $this->_initialValues[$dbFieldName];
     }
 
-    public function getInitialValue($fieldName)
+    public function getInitialValue($dbFieldName)
     {
-        if (!array_key_exists($fieldName, $this->_initialValues)) {
-            throw new \Exception($fieldName . ' field was not found');
+        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
+            throw new \Exception($dbFieldName . ' field was not found');
         }
 
-        return $this->_initialValues[$fieldName];
+        return $this->_initialValues[$dbFieldName];
+    }
+
+    /**
+     * @return array
+     */
+    public function getChangeSet()
+    {
+        return array_diff(
+            $this->_initialValues,
+            $this->__toArray()
+        );
     }
 
     /**
@@ -241,9 +252,9 @@ abstract class ConditionalRouteAbstract
     {
         return [
             'name' => self::getName(),
-            'routetype' => self::getRoutetype(),
-            'numbervalue' => self::getNumbervalue(),
-            'friendvalue' => self::getFriendvalue(),
+            'routeType' => self::getRoutetype(),
+            'numberValue' => self::getNumbervalue(),
+            'friendValue' => self::getFriendvalue(),
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
             'ivrCommonId' => self::getIvrCommon() ? self::getIvrCommon()->getId() : null,
             'ivrCustomId' => self::getIvrCustom() ? self::getIvrCustom()->getId() : null,

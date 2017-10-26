@@ -7,6 +7,11 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 interface UsersAddressInterface extends EntityInterface
 {
     /**
+     * @return array
+     */
+    public function getChangeSet();
+
+    /**
      * Set sourceAddress
      *
      * @param string $sourceAddress

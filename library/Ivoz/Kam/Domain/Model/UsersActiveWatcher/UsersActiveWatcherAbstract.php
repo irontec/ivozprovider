@@ -245,23 +245,34 @@ abstract class UsersActiveWatcherAbstract
      * @return mixed
      * @throws \Exception
      */
-    public function hasChanged($fieldName)
+    public function hasChanged($dbFieldName)
     {
-        if (!array_key_exists($fieldName, $this->_initialValues)) {
-            throw new \Exception($fieldName . ' field was not found');
+        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
+            throw new \Exception($dbFieldName . ' field was not found');
         }
         $currentValues = $this->__toArray();
 
-        return $currentValues[$fieldName] != $this->_initialValues[$fieldName];
+        return $currentValues[$dbFieldName] != $this->_initialValues[$dbFieldName];
     }
 
-    public function getInitialValue($fieldName)
+    public function getInitialValue($dbFieldName)
     {
-        if (!array_key_exists($fieldName, $this->_initialValues)) {
-            throw new \Exception($fieldName . ' field was not found');
+        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
+            throw new \Exception($dbFieldName . ' field was not found');
         }
 
-        return $this->_initialValues[$fieldName];
+        return $this->_initialValues[$dbFieldName];
+    }
+
+    /**
+     * @return array
+     */
+    public function getChangeSet()
+    {
+        return array_diff(
+            $this->_initialValues,
+            $this->__toArray()
+        );
     }
 
     /**
@@ -399,32 +410,32 @@ abstract class UsersActiveWatcherAbstract
     protected function __toArray()
     {
         return [
-            'presentityUri' => self::getPresentityUri(),
-            'watcherUsername' => self::getWatcherUsername(),
-            'watcherDomain' => self::getWatcherDomain(),
-            'toUser' => self::getToUser(),
-            'toDomain' => self::getToDomain(),
+            'presentity_uri' => self::getPresentityUri(),
+            'watcher_username' => self::getWatcherUsername(),
+            'watcher_domain' => self::getWatcherDomain(),
+            'to_user' => self::getToUser(),
+            'to_domain' => self::getToDomain(),
             'event' => self::getEvent(),
-            'eventId' => self::getEventId(),
-            'toTag' => self::getToTag(),
-            'fromTag' => self::getFromTag(),
+            'event_id' => self::getEventId(),
+            'to_tag' => self::getToTag(),
+            'from_tag' => self::getFromTag(),
             'callid' => self::getCallid(),
-            'localCseq' => self::getLocalCseq(),
-            'remoteCseq' => self::getRemoteCseq(),
+            'local_cseq' => self::getLocalCseq(),
+            'remote_cseq' => self::getRemoteCseq(),
             'contact' => self::getContact(),
-            'recordRoute' => self::getRecordRoute(),
+            'record_route' => self::getRecordRoute(),
             'expires' => self::getExpires(),
             'status' => self::getStatus(),
             'reason' => self::getReason(),
             'version' => self::getVersion(),
-            'socketInfo' => self::getSocketInfo(),
-            'localContact' => self::getLocalContact(),
-            'fromUser' => self::getFromUser(),
-            'fromDomain' => self::getFromDomain(),
+            'socket_info' => self::getSocketInfo(),
+            'local_contact' => self::getLocalContact(),
+            'from_user' => self::getFromUser(),
+            'from_domain' => self::getFromDomain(),
             'updated' => self::getUpdated(),
-            'updatedWinfo' => self::getUpdatedWinfo(),
+            'updated_winfo' => self::getUpdatedWinfo(),
             'flags' => self::getFlags(),
-            'userAgent' => self::getUserAgent()
+            'user_agent' => self::getUserAgent()
         ];
     }
 

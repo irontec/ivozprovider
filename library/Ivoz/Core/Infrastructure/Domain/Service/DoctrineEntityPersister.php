@@ -8,6 +8,8 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Doctrine\ORM\EntityManagerInterface;
+use Ramsey\Uuid\Uuid;
+use Ivoz\Core\Domain\Model\DomainEventPublisher;
 
 class DoctrineEntityPersister implements EntityPersisterInterface
 {
@@ -26,6 +28,21 @@ class DoctrineEntityPersister implements EntityPersisterInterface
      */
     protected $entityUpdater;
 
+    /**
+     * @var string
+     */
+    protected $requestId;
+
+    /**
+     * @var bool
+     */
+    protected $rootEntity;
+
+    /**
+     * @var DomainEventPublisher
+     */
+    protected $eventPublisher;
+
     public function __construct
     (
         EntityManagerInterface $em,
@@ -35,6 +52,13 @@ class DoctrineEntityPersister implements EntityPersisterInterface
         $this->em = $em;
         $this->createEntityFromDTO = $createEntityFromDTO;
         $this->entityUpdater = $entityUpdater;
+
+        $this->requestId = Uuid::uuid4()->toString();
+
+        /**
+         * @todo inject this service
+         */
+        $this->eventPublisher = DomainEventPublisher::getInstance();
     }
 
     /**
@@ -52,16 +76,11 @@ class DoctrineEntityPersister implements EntityPersisterInterface
             $entity = $this
                 ->createEntityFromDTO
                 ->execute($entityClass, $dto);
-
-            $this->em->persist($entity);
-
         } else {
             $this->entityUpdater->execute($entity, $dto);
         }
 
-        if ($dispatchImmediately) {
-            $this->em->flush($entity);
-        }
+        $this->persist($entity, $dispatchImmediately);
 
         return $entity;
     }
@@ -74,10 +93,19 @@ class DoctrineEntityPersister implements EntityPersisterInterface
      */
     public function persist(EntityInterface $entity = null, $dispatchImmediately = false)
     {
-        $this->em->persist($entity);
-        if ($dispatchImmediately) {
-            $this->em->flush($entity);
-        }
+        $mustBePersisted = ($this->rootEntity !== $entity);
+        $transaction = function () use ($entity, $dispatchImmediately, $mustBePersisted) {
+
+            if ($mustBePersisted) {
+                $this->em->persist($entity);
+            }
+
+            if ($dispatchImmediately) {
+                $this->em->flush($entity);
+            }
+        };
+
+        $this->transactional($entity, $transaction);
     }
 
     /**
@@ -86,7 +114,32 @@ class DoctrineEntityPersister implements EntityPersisterInterface
      */
     public function remove(EntityInterface $entity)
     {
-        $this->em->remove($entity);
+        $transaction = function () use ($entity) {
+            $this->em->remove($entity);
+        };
 
+        $this->transactional($entity, $transaction);
+    }
+
+    protected function transactional(EntityInterface $entity, callable $transaction)
+    {
+        if ($this->rootEntity instanceof EntityInterface) {
+            $transaction();
+            return;
+        }
+
+        $this->rootEntity = $entity;
+        $connection = $this->em->getConnection();
+        $connection->transactional(function () use ($transaction) {
+            $transaction();
+            /**
+             * Unit of work is recalculated every time flush is called,
+             * so calling it again seems to be the only way to ensure that
+             * there are no pending enqueued queries generated during entity lifecycle
+             */
+            $this->em->flush();
+        });
+
+        $this->rootEntity = null;
     }
 }

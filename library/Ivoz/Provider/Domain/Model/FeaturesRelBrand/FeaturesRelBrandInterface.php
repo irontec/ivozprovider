@@ -7,6 +7,11 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 interface FeaturesRelBrandInterface extends EntityInterface
 {
     /**
+     * @return array
+     */
+    public function getChangeSet();
+
+    /**
      * Set brand
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand

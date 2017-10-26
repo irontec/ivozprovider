@@ -15,6 +15,11 @@ interface PsEndpointInterface extends EntityInterface
     public function updateByUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user);
 
     /**
+     * @return array
+     */
+    public function getChangeSet();
+
+    /**
      * Set sorceryId
      *
      * @param string $sorceryId

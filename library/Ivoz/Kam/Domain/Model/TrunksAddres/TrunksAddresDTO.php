@@ -42,21 +42,6 @@ class TrunksAddresDTO implements DataTransferObjectInterface
     private $id;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'grp' => $this->getGrp(),
-            'ipAddr' => $this->getIpAddr(),
-            'mask' => $this->getMask(),
-            'port' => $this->getPort(),
-            'tag' => $this->getTag(),
-            'id' => $this->getId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

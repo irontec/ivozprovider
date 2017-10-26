@@ -32,6 +32,11 @@ interface ExternalCallFilterInterface extends EntityInterface
     public function isOutOfSchedule();
 
     /**
+     * @return array
+     */
+    public function getChangeSet();
+
+    /**
      * Set name
      *
      * @param string $name

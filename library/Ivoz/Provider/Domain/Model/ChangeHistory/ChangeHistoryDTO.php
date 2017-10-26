@@ -57,24 +57,6 @@ class ChangeHistoryDTO implements DataTransferObjectInterface
     private $id;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'user' => $this->getUser(),
-            'date' => $this->getDate(),
-            'action' => $this->getAction(),
-            'table' => $this->getTable(),
-            'objid' => $this->getObjid(),
-            'field' => $this->getField(),
-            'oldValue' => $this->getOldValue(),
-            'newValue' => $this->getNewValue(),
-            'id' => $this->getId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

@@ -137,30 +137,6 @@ class ConditionalRouteDTO implements DataTransferObjectInterface
     private $extension;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'name' => $this->getName(),
-            'routetype' => $this->getRoutetype(),
-            'numbervalue' => $this->getNumbervalue(),
-            'friendvalue' => $this->getFriendvalue(),
-            'id' => $this->getId(),
-            'companyId' => $this->getCompanyId(),
-            'ivrCommonId' => $this->getIvrCommonId(),
-            'ivrCustomId' => $this->getIvrCustomId(),
-            'huntGroupId' => $this->getHuntGroupId(),
-            'voicemailUserId' => $this->getVoicemailUserId(),
-            'userId' => $this->getUserId(),
-            'queueId' => $this->getQueueId(),
-            'locutionId' => $this->getLocutionId(),
-            'conferenceRoomId' => $this->getConferenceRoomId(),
-            'extensionId' => $this->getExtensionId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

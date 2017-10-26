@@ -77,27 +77,6 @@ class RecordingDTO implements DataTransferObjectInterface
     private $company;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'callid' => $this->getCallid(),
-            'calldate' => $this->getCalldate(),
-            'type' => $this->getType(),
-            'duration' => $this->getDuration(),
-            'caller' => $this->getCaller(),
-            'callee' => $this->getCallee(),
-            'recorder' => $this->getRecorder(),
-            'id' => $this->getId(),
-            'recordedFileFileSize' => $this->getRecordedFileFileSize(),
-            'recordedFileMimeType' => $this->getRecordedFileMimeType(),
-            'recordedFileBaseName' => $this->getRecordedFileBaseName(),
-            'companyId' => $this->getCompanyId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

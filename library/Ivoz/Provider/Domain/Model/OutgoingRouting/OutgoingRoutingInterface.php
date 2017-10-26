@@ -8,6 +8,11 @@ use Doctrine\Common\Collections\Collection;
 interface OutgoingRoutingInterface extends EntityInterface
 {
     /**
+     * @return array
+     */
+    public function getChangeSet();
+
+    /**
      * Set type
      *
      * @param string $type

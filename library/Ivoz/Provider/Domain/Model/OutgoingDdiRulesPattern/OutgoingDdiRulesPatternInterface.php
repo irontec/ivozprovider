@@ -13,6 +13,11 @@ interface OutgoingDdiRulesPatternInterface extends EntityInterface
     public function getForcedDdi();
 
     /**
+     * @return array
+     */
+    public function getChangeSet();
+
+    /**
      * Set action
      *
      * @param string $action

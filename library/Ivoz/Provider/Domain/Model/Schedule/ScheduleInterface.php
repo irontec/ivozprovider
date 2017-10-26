@@ -11,6 +11,11 @@ interface ScheduleInterface extends EntityInterface
     public function isOnSchedule(\DateTime $time);
 
     /**
+     * @return array
+     */
+    public function getChangeSet();
+
+    /**
      * Set name
      *
      * @param string $name

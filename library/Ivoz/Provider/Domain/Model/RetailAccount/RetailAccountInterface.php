@@ -76,6 +76,11 @@ interface RetailAccountInterface extends EntityInterface
     public function getDdi($ddieE164);
 
     /**
+     * @return array
+     */
+    public function getChangeSet();
+
+    /**
      * Set name
      *
      * @param string $name

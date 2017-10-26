@@ -153,7 +153,6 @@ public function <methodName>()
         $fieldName = $field->fieldName;
         if (false !== strpos($fieldName, '.')) {
             $segments = explode('.', $fieldName);
-            $fieldName = $this->getEmbeddedVarName($segments);
         }
 
         if (isset($field->columnName)) {
@@ -400,24 +399,6 @@ public function <methodName>()
         );
     }
 
-//
-//    /**
-//     * @param $segments
-//     * @param $toArray
-//     * @return array
-//     */
-//    protected function embeddedToArrayGetter($segments)
-//    {
-//        return
-//            '\''
-//            . $segments[0]
-//            . Inflector::classify($segments[1])
-//            . '\' => $this->get'
-//            . Inflector::classify($segments[0])
-//            . Inflector::classify($segments[1])
-//            . '()';
-//    }
-
     /**
      * {@inheritDoc}
      */
@@ -651,7 +632,6 @@ public function <methodName>()
         return implode("\n", $lines);
     }
 
-
     /**
      * {@inheritDoc}
      */
@@ -660,12 +640,6 @@ public function <methodName>()
         $methods = array();
         $fieldMappings = array_merge($metadata->fieldMappings, $metadata->associationMappings);
         foreach ($fieldMappings as $fieldMapping) {
-
-//            if (isset($fieldMapping['declaredField']) &&
-//                isset($metadata->embeddedClasses[$fieldMapping['declaredField']])
-//            ) {
-//                continue;
-//            }
 
             $field = (object) $fieldMapping;
             if (isset($field->targetEntity)) {

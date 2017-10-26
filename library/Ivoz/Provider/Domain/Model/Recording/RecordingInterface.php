@@ -12,6 +12,11 @@ interface RecordingInterface extends EntityInterface
     public function getFileObjects();
 
     /**
+     * @return array
+     */
+    public function getChangeSet();
+
+    /**
      * Set callid
      *
      * @param string $callid

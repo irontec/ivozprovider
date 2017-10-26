@@ -19,6 +19,11 @@ interface PeerServerInterface extends EntityInterface
     public function getName();
 
     /**
+     * @return array
+     */
+    public function getChangeSet();
+
+    /**
      * Set ip
      *
      * @param string $ip

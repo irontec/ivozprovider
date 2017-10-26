@@ -37,18 +37,6 @@ class ConditionalRoutesConditionsRelScheduleDTO implements DataTransferObjectInt
     private $schedule;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'id' => $this->getId(),
-            'conditionId' => $this->getConditionId(),
-            'scheduleId' => $this->getScheduleId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

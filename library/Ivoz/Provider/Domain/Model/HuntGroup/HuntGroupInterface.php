@@ -14,6 +14,11 @@ interface HuntGroupInterface extends EntityInterface
     public function getHuntGroupUsersArray();
 
     /**
+     * @return array
+     */
+    public function getChangeSet();
+
+    /**
      * Set name
      *
      * @param string $name

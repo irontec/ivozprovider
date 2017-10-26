@@ -48,6 +48,11 @@ interface BrandInterface extends EntityInterface
     public function hasFeature($featureId);
 
     /**
+     * @return array
+     */
+    public function getChangeSet();
+
+    /**
      * Set name
      *
      * @param string $name

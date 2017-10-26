@@ -84,7 +84,7 @@ trait PsAorTrait
     protected function __toArray()
     {
         return parent::__toArray() + [
-            'id' => self::getId()
+            'sorcery_id' => self::getId()
         ];
     }
 

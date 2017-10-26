@@ -52,22 +52,6 @@ class RtpproxyDTO implements DataTransferObjectInterface
     private $mediaRelaySet;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'setid' => $this->getSetid(),
-            'url' => $this->getUrl(),
-            'flags' => $this->getFlags(),
-            'weight' => $this->getWeight(),
-            'description' => $this->getDescription(),
-            'id' => $this->getId(),
-            'mediaRelaySetId' => $this->getMediaRelaySetId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

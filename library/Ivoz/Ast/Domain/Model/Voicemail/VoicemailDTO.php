@@ -192,50 +192,6 @@ class VoicemailDTO implements DataTransferObjectInterface
     private $user;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'context' => $this->getContext(),
-            'mailbox' => $this->getMailbox(),
-            'password' => $this->getPassword(),
-            'fullname' => $this->getFullname(),
-            'alias' => $this->getAlias(),
-            'email' => $this->getEmail(),
-            'pager' => $this->getPager(),
-            'attach' => $this->getAttach(),
-            'attachfmt' => $this->getAttachfmt(),
-            'serveremail' => $this->getServeremail(),
-            'language' => $this->getLanguage(),
-            'tz' => $this->getTz(),
-            'deleteVoicemail' => $this->getDeleteVoicemail(),
-            'saycid' => $this->getSaycid(),
-            'sendVoicemail' => $this->getSendVoicemail(),
-            'review' => $this->getReview(),
-            'tempgreetwarn' => $this->getTempgreetwarn(),
-            'operator' => $this->getOperator(),
-            'envelope' => $this->getEnvelope(),
-            'sayduration' => $this->getSayduration(),
-            'forcename' => $this->getForcename(),
-            'forcegreetings' => $this->getForcegreetings(),
-            'callback' => $this->getCallback(),
-            'dialout' => $this->getDialout(),
-            'exitcontext' => $this->getExitcontext(),
-            'maxmsg' => $this->getMaxmsg(),
-            'volgain' => $this->getVolgain(),
-            'imapuser' => $this->getImapuser(),
-            'imappassword' => $this->getImappassword(),
-            'imapserver' => $this->getImapserver(),
-            'imapport' => $this->getImapport(),
-            'imapflags' => $this->getImapflags(),
-            'stamp' => $this->getStamp(),
-            'id' => $this->getId(),
-            'userId' => $this->getUserId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

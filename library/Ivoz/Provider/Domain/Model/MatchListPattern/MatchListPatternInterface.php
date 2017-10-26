@@ -13,6 +13,11 @@ interface MatchListPatternInterface extends EntityInterface
     public function getNumberE164($prefix = null);
 
     /**
+     * @return array
+     */
+    public function getChangeSet();
+
+    /**
      * Set description
      *
      * @param string $description

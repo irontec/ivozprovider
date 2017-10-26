@@ -32,19 +32,6 @@ class FeatureDTO implements DataTransferObjectInterface
     private $nameEs = '';
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'iden' => $this->getIden(),
-            'id' => $this->getId(),
-            'nameEn' => $this->getNameEn(),
-            'nameEs' => $this->getNameEs()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

@@ -47,22 +47,6 @@ class PikeTrustedDTO implements DataTransferObjectInterface
     private $id;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'srcIp' => $this->getSrcIp(),
-            'proto' => $this->getProto(),
-            'fromPattern' => $this->getFromPattern(),
-            'ruriPattern' => $this->getRuriPattern(),
-            'tag' => $this->getTag(),
-            'priority' => $this->getPriority(),
-            'id' => $this->getId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

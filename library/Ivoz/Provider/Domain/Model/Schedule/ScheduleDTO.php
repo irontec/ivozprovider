@@ -77,27 +77,6 @@ class ScheduleDTO implements DataTransferObjectInterface
     private $company;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'name' => $this->getName(),
-            'timeIn' => $this->getTimeIn(),
-            'timeout' => $this->getTimeout(),
-            'monday' => $this->getMonday(),
-            'tuesday' => $this->getTuesday(),
-            'wednesday' => $this->getWednesday(),
-            'thursday' => $this->getThursday(),
-            'friday' => $this->getFriday(),
-            'saturday' => $this->getSaturday(),
-            'sunday' => $this->getSunday(),
-            'id' => $this->getId(),
-            'companyId' => $this->getCompanyId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

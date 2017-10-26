@@ -14,6 +14,11 @@ interface LocutionInterface extends EntityInterface
     public function getLocutionPath();
 
     /**
+     * @return array
+     */
+    public function getChangeSet();
+
+    /**
      * Set name
      *
      * @param string $name

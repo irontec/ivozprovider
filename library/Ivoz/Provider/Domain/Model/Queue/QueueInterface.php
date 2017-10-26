@@ -9,6 +9,11 @@ interface QueueInterface extends EntityInterface
     public function getAstQueueName();
 
     /**
+     * @return array
+     */
+    public function getChangeSet();
+
+    /**
      * Set name
      *
      * @param string $name

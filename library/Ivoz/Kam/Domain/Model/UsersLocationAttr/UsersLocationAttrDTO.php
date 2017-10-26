@@ -52,23 +52,6 @@ class UsersLocationAttrDTO implements DataTransferObjectInterface
     private $id;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'ruid' => $this->getRuid(),
-            'username' => $this->getUsername(),
-            'domain' => $this->getDomain(),
-            'aname' => $this->getAname(),
-            'atype' => $this->getAtype(),
-            'avalue' => $this->getAvalue(),
-            'lastModified' => $this->getLastModified(),
-            'id' => $this->getId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

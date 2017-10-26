@@ -52,22 +52,6 @@ class InvoiceTemplateDTO implements DataTransferObjectInterface
     private $brand;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'name' => $this->getName(),
-            'description' => $this->getDescription(),
-            'template' => $this->getTemplate(),
-            'templateHeader' => $this->getTemplateHeader(),
-            'templateFooter' => $this->getTemplateFooter(),
-            'id' => $this->getId(),
-            'brandId' => $this->getBrandId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

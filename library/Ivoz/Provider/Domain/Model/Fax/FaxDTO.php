@@ -52,21 +52,6 @@ class FaxDTO implements DataTransferObjectInterface
     private $outgoingDdi;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'name' => $this->getName(),
-            'email' => $this->getEmail(),
-            'sendByEmail' => $this->getSendByEmail(),
-            'id' => $this->getId(),
-            'companyId' => $this->getCompanyId(),
-            'outgoingDdiId' => $this->getOutgoingDdiId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

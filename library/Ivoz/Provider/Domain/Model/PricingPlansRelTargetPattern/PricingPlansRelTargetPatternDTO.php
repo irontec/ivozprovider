@@ -62,22 +62,6 @@ class PricingPlansRelTargetPatternDTO implements DataTransferObjectInterface
     private $brand;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'connectionCharge' => $this->getConnectionCharge(),
-            'periodTime' => $this->getPeriodTime(),
-            'perPeriodCharge' => $this->getPerPeriodCharge(),
-            'id' => $this->getId(),
-            'pricingPlanId' => $this->getPricingPlanId(),
-            'targetPatternId' => $this->getTargetPatternId(),
-            'brandId' => $this->getBrandId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

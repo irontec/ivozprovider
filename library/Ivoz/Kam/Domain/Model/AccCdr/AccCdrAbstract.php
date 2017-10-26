@@ -231,23 +231,34 @@ abstract class AccCdrAbstract
      * @return mixed
      * @throws \Exception
      */
-    public function hasChanged($fieldName)
+    public function hasChanged($dbFieldName)
     {
-        if (!array_key_exists($fieldName, $this->_initialValues)) {
-            throw new \Exception($fieldName . ' field was not found');
+        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
+            throw new \Exception($dbFieldName . ' field was not found');
         }
         $currentValues = $this->__toArray();
 
-        return $currentValues[$fieldName] != $this->_initialValues[$fieldName];
+        return $currentValues[$dbFieldName] != $this->_initialValues[$dbFieldName];
     }
 
-    public function getInitialValue($fieldName)
+    public function getInitialValue($dbFieldName)
     {
-        if (!array_key_exists($fieldName, $this->_initialValues)) {
-            throw new \Exception($fieldName . ' field was not found');
+        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
+            throw new \Exception($dbFieldName . ' field was not found');
         }
 
-        return $this->_initialValues[$fieldName];
+        return $this->_initialValues[$dbFieldName];
+    }
+
+    /**
+     * @return array
+     */
+    public function getChangeSet()
+    {
+        return array_diff(
+            $this->_initialValues,
+            $this->__toArray()
+        );
     }
 
     /**
@@ -407,17 +418,17 @@ abstract class AccCdrAbstract
     {
         return [
             'proxy' => self::getProxy(),
-            'startTimeUtc' => self::getStartTimeUtc(),
-            'endTimeUtc' => self::getEndTimeUtc(),
-            'startTime' => self::getStartTime(),
-            'endTime' => self::getEndTime(),
+            'start_time_utc' => self::getStartTimeUtc(),
+            'end_time_utc' => self::getEndTimeUtc(),
+            'start_time' => self::getStartTime(),
+            'end_time' => self::getEndTime(),
             'duration' => self::getDuration(),
             'caller' => self::getCaller(),
             'callee' => self::getCallee(),
             'referee' => self::getReferee(),
             'referrer' => self::getReferrer(),
-            'asiden' => self::getAsiden(),
-            'asaddress' => self::getAsaddress(),
+            'asIden' => self::getAsiden(),
+            'asAddress' => self::getAsaddress(),
             'callid' => self::getCallid(),
             'callidHash' => self::getCallidHash(),
             'xcallid' => self::getXcallid(),

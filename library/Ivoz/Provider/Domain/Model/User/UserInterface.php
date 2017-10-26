@@ -139,6 +139,11 @@ interface UserInterface extends EntityInterface
     public function getAreaCodeValue();
 
     /**
+     * @return array
+     */
+    public function getChangeSet();
+
+    /**
      * Set name
      *
      * @param string $name

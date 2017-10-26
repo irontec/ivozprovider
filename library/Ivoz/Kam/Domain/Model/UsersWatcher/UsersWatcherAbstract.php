@@ -101,23 +101,34 @@ abstract class UsersWatcherAbstract
      * @return mixed
      * @throws \Exception
      */
-    public function hasChanged($fieldName)
+    public function hasChanged($dbFieldName)
     {
-        if (!array_key_exists($fieldName, $this->_initialValues)) {
-            throw new \Exception($fieldName . ' field was not found');
+        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
+            throw new \Exception($dbFieldName . ' field was not found');
         }
         $currentValues = $this->__toArray();
 
-        return $currentValues[$fieldName] != $this->_initialValues[$fieldName];
+        return $currentValues[$dbFieldName] != $this->_initialValues[$dbFieldName];
     }
 
-    public function getInitialValue($fieldName)
+    public function getInitialValue($dbFieldName)
     {
-        if (!array_key_exists($fieldName, $this->_initialValues)) {
-            throw new \Exception($fieldName . ' field was not found');
+        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
+            throw new \Exception($dbFieldName . ' field was not found');
         }
 
-        return $this->_initialValues[$fieldName];
+        return $this->_initialValues[$dbFieldName];
+    }
+
+    /**
+     * @return array
+     */
+    public function getChangeSet()
+    {
+        return array_diff(
+            $this->_initialValues,
+            $this->__toArray()
+        );
     }
 
     /**
@@ -198,13 +209,13 @@ abstract class UsersWatcherAbstract
     protected function __toArray()
     {
         return [
-            'presentityUri' => self::getPresentityUri(),
-            'watcherUsername' => self::getWatcherUsername(),
-            'watcherDomain' => self::getWatcherDomain(),
+            'presentity_uri' => self::getPresentityUri(),
+            'watcher_username' => self::getWatcherUsername(),
+            'watcher_domain' => self::getWatcherDomain(),
             'event' => self::getEvent(),
             'status' => self::getStatus(),
             'reason' => self::getReason(),
-            'insertedTime' => self::getInsertedTime()
+            'inserted_time' => self::getInsertedTime()
         ];
     }
 

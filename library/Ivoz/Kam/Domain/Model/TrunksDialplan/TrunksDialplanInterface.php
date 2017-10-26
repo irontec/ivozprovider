@@ -21,6 +21,11 @@ interface TrunksDialplanInterface extends EntityInterface
     public function setDpid($dpid = null);
 
     /**
+     * @return array
+     */
+    public function getChangeSet();
+
+    /**
      * Get dpid
      *
      * @return integer

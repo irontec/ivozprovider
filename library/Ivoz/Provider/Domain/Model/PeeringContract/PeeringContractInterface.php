@@ -8,6 +8,11 @@ use Doctrine\Common\Collections\Collection;
 interface PeeringContractInterface extends EntityInterface
 {
     /**
+     * @return array
+     */
+    public function getChangeSet();
+
+    /**
      * Set description
      *
      * @param string $description

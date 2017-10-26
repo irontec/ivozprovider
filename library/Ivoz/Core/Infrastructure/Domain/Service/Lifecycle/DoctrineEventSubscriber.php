@@ -10,6 +10,10 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
+use Ivoz\Core\Domain\Event\EntityWasCreated;
+use Ivoz\Core\Domain\Event\EntityWasUpdated;
+use Ivoz\Core\Domain\Event\EntityWasDeleted;
+use Ivoz\Core\Domain\Model\DomainEventPublisher;
 
 class DoctrineEventSubscriber implements EventSubscriber
 {
@@ -20,11 +24,25 @@ class DoctrineEventSubscriber implements EventSubscriber
      */
     protected $em;
 
+    /**
+     * @var ContainerInterface
+     */
     protected $serviceContainer;
 
+    /**
+     * @var bool
+     */
     protected $cycleInProgress = false;
 
+    /**
+     * @var array
+     */
     protected $entityQueue = [];
+
+    /**
+     * @var DomainEventPublisher
+     */
+    protected $eventPublisher;
 
     public function __construct(
         ContainerInterface $serviceContainer,
@@ -32,6 +50,11 @@ class DoctrineEventSubscriber implements EventSubscriber
     ) {
         $this->serviceContainer = $serviceContainer;
         $this->em = $em;
+
+        /**
+         * @todo inject this service
+         */
+        $this->eventPublisher = DomainEventPublisher::getInstance();
     }
 
     public function getSubscribedEvents()
@@ -79,45 +102,44 @@ class DoctrineEventSubscriber implements EventSubscriber
 
     protected function run($eventName, LifecycleEventArgs $args, bool $isNew = false)
     {
-        $entity = $args->getObject();
-        $entityClassName = get_class($entity);
-
-        $isTheEndOfCurrentEntityLifecycle = substr($eventName, 0, strlen('post')) === 'post';
-        if (!$isTheEndOfCurrentEntityLifecycle) {
-            $this->cycleInProgress = true;
-            array_unshift($this->entityQueue, $entityClassName);
-            $this->runServices($eventName, $args, $isNew);
-            return;
-        }
-
-        $this->runServices($eventName, $args, $isNew);
-        $key = array_search($entityClassName, $this->entityQueue);
-        if ($key !== false) {
-            unset($this->entityQueue[$key]);
-        }
-
-        $isEndOfCycle = count($this->entityQueue) === 0;
-        if (!$isEndOfCycle) {
-            return;
-        }
-
-        /**
-         * Unit of work is recalculated every time flush is called,
-         * so calling it again seems to be the only way to ensure that
-         * there are no pending enqueued queries generated during any lifecycle
-         */
-        $this->em->flush();
-    }
-
-    /**
-     * @param $eventName
-     * @param LifecycleEventArgs $args
-     * @param bool $isNew
-     */
-    protected function runServices($eventName, LifecycleEventArgs $args, bool $isNew)
-    {
+        $this->triggerDomainEvents($eventName, $args, $isNew);
         $this->runSharedServices($eventName, $args, $isNew);
         $this->runEntityServices($eventName, $args, $isNew);
+    }
+
+    private function triggerDomainEvents($eventName, LifecycleEventArgs $args, bool $isNew)
+    {
+        $entity = $args->getObject();
+        $event = null;
+
+        switch($eventName) {
+            case 'post_remove':
+
+                $event = new EntityWasDeleted(
+                    get_class($entity),
+                    $entity->getId(),
+                    []
+                );
+
+                break;
+            case 'post_persist':
+
+                $eventClass = $isNew
+                    ? EntityWasCreated::class
+                    : EntityWasUpdated::class;
+
+                $event = new $eventClass(
+                    get_class($entity),
+                    $entity->getId(),
+                    $entity->getChangeSet()
+                );
+
+                break;
+        }
+
+        if (!is_null($event)) {
+            $this->eventPublisher->publish($event);
+        }
     }
 
     private function runSharedServices($eventName, LifecycleEventArgs $args, bool $isNew)

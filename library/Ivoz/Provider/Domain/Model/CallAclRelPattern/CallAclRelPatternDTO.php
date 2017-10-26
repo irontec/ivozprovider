@@ -47,20 +47,6 @@ class CallAclRelPatternDTO implements DataTransferObjectInterface
     private $callAclPattern;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'priority' => $this->getPriority(),
-            'policy' => $this->getPolicy(),
-            'id' => $this->getId(),
-            'callAclId' => $this->getCallAclId(),
-            'callAclPatternId' => $this->getCallAclPatternId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

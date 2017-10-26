@@ -19,6 +19,11 @@ interface IvrCommonInterface extends EntityInterface
     public function getExtension(\Doctrine\Common\Collections\Criteria $criteria = null);
 
     /**
+     * @return array
+     */
+    public function getChangeSet();
+
+    /**
      * Set name
      *
      * @param string $name

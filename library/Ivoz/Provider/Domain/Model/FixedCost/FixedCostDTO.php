@@ -42,20 +42,6 @@ class FixedCostDTO implements DataTransferObjectInterface
     private $brand;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'name' => $this->getName(),
-            'description' => $this->getDescription(),
-            'cost' => $this->getCost(),
-            'id' => $this->getId(),
-            'brandId' => $this->getBrandId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

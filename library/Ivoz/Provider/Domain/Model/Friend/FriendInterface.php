@@ -69,6 +69,11 @@ interface FriendInterface extends EntityInterface
     public function getOutgoingDdi();
 
     /**
+     * @return array
+     */
+    public function getChangeSet();
+
+    /**
      * Set name
      *
      * @param string $name

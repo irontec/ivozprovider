@@ -84,7 +84,7 @@ trait QueueMemberTrait
     protected function __toArray()
     {
         return parent::__toArray() + [
-            'id' => self::getId()
+            'uniqueid' => self::getId()
         ];
     }
 

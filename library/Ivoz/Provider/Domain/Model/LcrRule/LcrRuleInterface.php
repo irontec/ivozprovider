@@ -9,6 +9,11 @@ interface LcrRuleInterface extends EntityInterface
     public function setCondition($regexp);
 
     /**
+     * @return array
+     */
+    public function getChangeSet();
+
+    /**
      * Set lcrId
      *
      * @param integer $lcrId

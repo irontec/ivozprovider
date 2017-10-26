@@ -62,22 +62,6 @@ class PricingPlansRelCompanyDTO implements DataTransferObjectInterface
     private $brand;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'validFrom' => $this->getValidFrom(),
-            'validTo' => $this->getValidTo(),
-            'metric' => $this->getMetric(),
-            'id' => $this->getId(),
-            'pricingPlanId' => $this->getPricingPlanId(),
-            'companyId' => $this->getCompanyId(),
-            'brandId' => $this->getBrandId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

@@ -31,6 +31,11 @@ interface CountryInterface extends EntityInterface
     public function hasAreaCode();
 
     /**
+     * @return array
+     */
+    public function getChangeSet();
+
+    /**
      * Set code
      *
      * @param string $code

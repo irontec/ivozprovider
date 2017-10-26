@@ -12,6 +12,11 @@ interface IvrCustomInterface extends EntityInterface
     public function getAllLocutions();
 
     /**
+     * @return array
+     */
+    public function getChangeSet();
+
+    /**
      * Set name
      *
      * @param string $name

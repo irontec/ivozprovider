@@ -183,23 +183,34 @@ abstract class UsersPuaAbstract
      * @return mixed
      * @throws \Exception
      */
-    public function hasChanged($fieldName)
+    public function hasChanged($dbFieldName)
     {
-        if (!array_key_exists($fieldName, $this->_initialValues)) {
-            throw new \Exception($fieldName . ' field was not found');
+        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
+            throw new \Exception($dbFieldName . ' field was not found');
         }
         $currentValues = $this->__toArray();
 
-        return $currentValues[$fieldName] != $this->_initialValues[$fieldName];
+        return $currentValues[$dbFieldName] != $this->_initialValues[$dbFieldName];
     }
 
-    public function getInitialValue($fieldName)
+    public function getInitialValue($dbFieldName)
     {
-        if (!array_key_exists($fieldName, $this->_initialValues)) {
-            throw new \Exception($fieldName . ' field was not found');
+        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
+            throw new \Exception($dbFieldName . ' field was not found');
         }
 
-        return $this->_initialValues[$fieldName];
+        return $this->_initialValues[$dbFieldName];
+    }
+
+    /**
+     * @return array
+     */
+    public function getChangeSet()
+    {
+        return array_diff(
+            $this->_initialValues,
+            $this->__toArray()
+        );
     }
 
     /**
@@ -313,24 +324,24 @@ abstract class UsersPuaAbstract
     protected function __toArray()
     {
         return [
-            'presUri' => self::getPresUri(),
-            'presId' => self::getPresId(),
+            'pres_uri' => self::getPresUri(),
+            'pres_id' => self::getPresId(),
             'event' => self::getEvent(),
             'expires' => self::getExpires(),
-            'desiredExpires' => self::getDesiredExpires(),
+            'desired_expires' => self::getDesiredExpires(),
             'flag' => self::getFlag(),
             'etag' => self::getEtag(),
-            'tupleId' => self::getTupleId(),
-            'watcherUri' => self::getWatcherUri(),
-            'callId' => self::getCallId(),
-            'toTag' => self::getToTag(),
-            'fromTag' => self::getFromTag(),
+            'tuple_id' => self::getTupleId(),
+            'watcher_uri' => self::getWatcherUri(),
+            'call_id' => self::getCallId(),
+            'to_tag' => self::getToTag(),
+            'from_tag' => self::getFromTag(),
             'cseq' => self::getCseq(),
-            'recordRoute' => self::getRecordRoute(),
+            'record_route' => self::getRecordRoute(),
             'contact' => self::getContact(),
-            'remoteContact' => self::getRemoteContact(),
+            'remote_contact' => self::getRemoteContact(),
             'version' => self::getVersion(),
-            'extraHeaders' => self::getExtraHeaders()
+            'extra_headers' => self::getExtraHeaders()
         ];
     }
 

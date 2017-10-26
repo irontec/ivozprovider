@@ -37,18 +37,6 @@ class FeaturesRelBrandDTO implements DataTransferObjectInterface
     private $feature;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'id' => $this->getId(),
-            'brandId' => $this->getBrandId(),
-            'featureId' => $this->getFeatureId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

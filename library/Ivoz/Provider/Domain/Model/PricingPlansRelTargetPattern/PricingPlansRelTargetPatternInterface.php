@@ -9,6 +9,11 @@ interface PricingPlansRelTargetPatternInterface extends EntityInterface
     public function getCost($duration = null);
 
     /**
+     * @return array
+     */
+    public function getChangeSet();
+
+    /**
      * Set connectionCharge
      *
      * @param string $connectionCharge

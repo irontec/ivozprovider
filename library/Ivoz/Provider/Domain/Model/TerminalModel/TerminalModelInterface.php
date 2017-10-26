@@ -17,6 +17,11 @@ interface TerminalModelInterface extends EntityInterface
     public function setSpecificTemplate($specificTemplate = null);
 
     /**
+     * @return array
+     */
+    public function getChangeSet();
+
+    /**
      * Set iden
      *
      * @param string $iden

@@ -13,6 +13,11 @@ interface RoutingPatternGroupInterface extends EntityInterface
     public function getRoutingPatterns();
 
     /**
+     * @return array
+     */
+    public function getChangeSet();
+
+    /**
      * Set name
      *
      * @param string $name

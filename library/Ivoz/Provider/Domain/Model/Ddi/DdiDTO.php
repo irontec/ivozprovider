@@ -202,38 +202,6 @@ class DdiDTO implements DataTransferObjectInterface
     private $conditionalRoute;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'ddi' => $this->getDdi(),
-            'ddie164' => $this->getDdie164(),
-            'recordCalls' => $this->getRecordCalls(),
-            'displayName' => $this->getDisplayName(),
-            'routeType' => $this->getRouteType(),
-            'billInboundCalls' => $this->getBillInboundCalls(),
-            'friendValue' => $this->getFriendValue(),
-            'id' => $this->getId(),
-            'companyId' => $this->getCompanyId(),
-            'brandId' => $this->getBrandId(),
-            'conferenceRoomId' => $this->getConferenceRoomId(),
-            'languageId' => $this->getLanguageId(),
-            'queueId' => $this->getQueueId(),
-            'externalCallFilterId' => $this->getExternalCallFilterId(),
-            'userId' => $this->getUserId(),
-            'ivrCommonId' => $this->getIvrCommonId(),
-            'ivrCustomId' => $this->getIvrCustomId(),
-            'huntGroupId' => $this->getHuntGroupId(),
-            'faxId' => $this->getFaxId(),
-            'peeringContractId' => $this->getPeeringContractId(),
-            'countryId' => $this->getCountryId(),
-            'retailAccountId' => $this->getRetailAccountId(),
-            'conditionalRouteId' => $this->getConditionalRouteId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

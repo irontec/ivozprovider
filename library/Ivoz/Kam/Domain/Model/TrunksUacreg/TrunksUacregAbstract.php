@@ -160,23 +160,34 @@ abstract class TrunksUacregAbstract
      * @return mixed
      * @throws \Exception
      */
-    public function hasChanged($fieldName)
+    public function hasChanged($dbFieldName)
     {
-        if (!array_key_exists($fieldName, $this->_initialValues)) {
-            throw new \Exception($fieldName . ' field was not found');
+        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
+            throw new \Exception($dbFieldName . ' field was not found');
         }
         $currentValues = $this->__toArray();
 
-        return $currentValues[$fieldName] != $this->_initialValues[$fieldName];
+        return $currentValues[$dbFieldName] != $this->_initialValues[$dbFieldName];
     }
 
-    public function getInitialValue($fieldName)
+    public function getInitialValue($dbFieldName)
     {
-        if (!array_key_exists($fieldName, $this->_initialValues)) {
-            throw new \Exception($fieldName . ' field was not found');
+        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
+            throw new \Exception($dbFieldName . ' field was not found');
         }
 
-        return $this->_initialValues[$fieldName];
+        return $this->_initialValues[$dbFieldName];
+    }
+
+    /**
+     * @return array
+     */
+    public function getChangeSet()
+    {
+        return array_diff(
+            $this->_initialValues,
+            $this->__toArray()
+        );
     }
 
     /**
@@ -281,19 +292,19 @@ abstract class TrunksUacregAbstract
     protected function __toArray()
     {
         return [
-            'lUuid' => self::getLUuid(),
-            'lUsername' => self::getLUsername(),
-            'lDomain' => self::getLDomain(),
-            'rUsername' => self::getRUsername(),
-            'rDomain' => self::getRDomain(),
+            'l_uuid' => self::getLUuid(),
+            'l_username' => self::getLUsername(),
+            'l_domain' => self::getLDomain(),
+            'r_username' => self::getRUsername(),
+            'r_domain' => self::getRDomain(),
             'realm' => self::getRealm(),
-            'authUsername' => self::getAuthUsername(),
-            'authPassword' => self::getAuthPassword(),
-            'authProxy' => self::getAuthProxy(),
+            'auth_username' => self::getAuthUsername(),
+            'auth_password' => self::getAuthPassword(),
+            'auth_proxy' => self::getAuthProxy(),
             'expires' => self::getExpires(),
             'flags' => self::getFlags(),
-            'regDelay' => self::getRegDelay(),
-            'multiddi' => self::getMultiddi(),
+            'reg_delay' => self::getRegDelay(),
+            'multiDdi' => self::getMultiddi(),
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
             'peeringContractId' => self::getPeeringContract() ? self::getPeeringContract()->getId() : null
         ];

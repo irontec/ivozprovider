@@ -82,27 +82,6 @@ class TransformationRulesetGroupsTrunkDTO implements DataTransferObjectInterface
     private $country;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'name' => $this->getName(),
-            'callerIn' => $this->getCallerIn(),
-            'calleeIn' => $this->getCalleeIn(),
-            'callerOut' => $this->getCallerOut(),
-            'calleeOut' => $this->getCalleeOut(),
-            'description' => $this->getDescription(),
-            'automatic' => $this->getAutomatic(),
-            'internationalCode' => $this->getInternationalCode(),
-            'nationalNumLength' => $this->getNationalNumLength(),
-            'id' => $this->getId(),
-            'brandId' => $this->getBrandId(),
-            'countryId' => $this->getCountryId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

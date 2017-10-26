@@ -157,36 +157,6 @@ class QueueDTO implements DataTransferObjectInterface
     private $fullVoiceMailUser;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'name' => $this->getName(),
-            'maxWaitTime' => $this->getMaxWaitTime(),
-            'timeoutTargetType' => $this->getTimeoutTargetType(),
-            'timeoutNumberValue' => $this->getTimeoutNumberValue(),
-            'maxlen' => $this->getMaxlen(),
-            'fullTargetType' => $this->getFullTargetType(),
-            'fullNumberValue' => $this->getFullNumberValue(),
-            'periodicAnnounceFrequency' => $this->getPeriodicAnnounceFrequency(),
-            'memberCallRest' => $this->getMemberCallRest(),
-            'memberCallTimeout' => $this->getMemberCallTimeout(),
-            'strategy' => $this->getStrategy(),
-            'weight' => $this->getWeight(),
-            'id' => $this->getId(),
-            'companyId' => $this->getCompanyId(),
-            'periodicAnnounceLocutionId' => $this->getPeriodicAnnounceLocutionId(),
-            'timeoutLocutionId' => $this->getTimeoutLocutionId(),
-            'timeoutExtensionId' => $this->getTimeoutExtensionId(),
-            'timeoutVoiceMailUserId' => $this->getTimeoutVoiceMailUserId(),
-            'fullLocutionId' => $this->getFullLocutionId(),
-            'fullExtensionId' => $this->getFullExtensionId(),
-            'fullVoiceMailUserId' => $this->getFullVoiceMailUserId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

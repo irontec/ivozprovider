@@ -72,26 +72,6 @@ class PsAorDTO implements DataTransferObjectInterface
     private $psEndpoint;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'defaultExpiration' => $this->getDefaultExpiration(),
-            'maxContacts' => $this->getMaxContacts(),
-            'minimumExpiration' => $this->getMinimumExpiration(),
-            'removeExisting' => $this->getRemoveExisting(),
-            'authenticateQualify' => $this->getAuthenticateQualify(),
-            'maximumExpiration' => $this->getMaximumExpiration(),
-            'supportPath' => $this->getSupportPath(),
-            'contact' => $this->getContact(),
-            'qualifyFrequency' => $this->getQualifyFrequency(),
-            'id' => $this->getId(),
-            'psEndpointId' => $this->getPsEndpointId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

@@ -166,23 +166,34 @@ abstract class PsEndpointAbstract
      * @return mixed
      * @throws \Exception
      */
-    public function hasChanged($fieldName)
+    public function hasChanged($dbFieldName)
     {
-        if (!array_key_exists($fieldName, $this->_initialValues)) {
-            throw new \Exception($fieldName . ' field was not found');
+        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
+            throw new \Exception($dbFieldName . ' field was not found');
         }
         $currentValues = $this->__toArray();
 
-        return $currentValues[$fieldName] != $this->_initialValues[$fieldName];
+        return $currentValues[$dbFieldName] != $this->_initialValues[$dbFieldName];
     }
 
-    public function getInitialValue($fieldName)
+    public function getInitialValue($dbFieldName)
     {
-        if (!array_key_exists($fieldName, $this->_initialValues)) {
-            throw new \Exception($fieldName . ' field was not found');
+        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
+            throw new \Exception($dbFieldName . ' field was not found');
         }
 
-        return $this->_initialValues[$fieldName];
+        return $this->_initialValues[$dbFieldName];
+    }
+
+    /**
+     * @return array
+     */
+    public function getChangeSet()
+    {
+        return array_diff(
+            $this->_initialValues,
+            $this->__toArray()
+        );
     }
 
     /**
@@ -299,22 +310,22 @@ abstract class PsEndpointAbstract
     protected function __toArray()
     {
         return [
-            'sorceryId' => self::getSorceryId(),
-            'fromDomain' => self::getFromDomain(),
+            'sorcery_id' => self::getSorceryId(),
+            'from_domain' => self::getFromDomain(),
             'aors' => self::getAors(),
             'callerid' => self::getCallerid(),
             'context' => self::getContext(),
             'disallow' => self::getDisallow(),
             'allow' => self::getAllow(),
-            'directMedia' => self::getDirectMedia(),
-            'directMediaMethod' => self::getDirectMediaMethod(),
+            'direct_media' => self::getDirectMedia(),
+            'direct_media_method' => self::getDirectMediaMethod(),
             'mailboxes' => self::getMailboxes(),
-            'namedPickupGroup' => self::getNamedPickupGroup(),
-            'sendDiversion' => self::getSendDiversion(),
-            'sendPai' => self::getSendPai(),
-            'oneHundredRel' => self::getOneHundredRel(),
-            'outboundProxy' => self::getOutboundProxy(),
-            'trustIdInbound' => self::getTrustIdInbound(),
+            'named_pickup_group' => self::getNamedPickupGroup(),
+            'send_diversion' => self::getSendDiversion(),
+            'send_pai' => self::getSendPai(),
+            '100rel' => self::getOneHundredRel(),
+            'outbound_proxy' => self::getOutboundProxy(),
+            'trust_id_inbound' => self::getTrustIdInbound(),
             'terminalId' => self::getTerminal() ? self::getTerminal()->getId() : null,
             'friendId' => self::getFriend() ? self::getFriend()->getId() : null,
             'retailAccountId' => self::getRetailAccount() ? self::getRetailAccount()->getId() : null

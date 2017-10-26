@@ -52,23 +52,6 @@ class XMLRPCLogDTO implements DataTransferObjectInterface
     private $id;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'proxy' => $this->getProxy(),
-            'module' => $this->getModule(),
-            'method' => $this->getMethod(),
-            'mapperName' => $this->getMapperName(),
-            'startDate' => $this->getStartDate(),
-            'execDate' => $this->getExecDate(),
-            'finishDate' => $this->getFinishDate(),
-            'id' => $this->getId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

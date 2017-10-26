@@ -224,23 +224,34 @@ abstract class VoicemailAbstract
      * @return mixed
      * @throws \Exception
      */
-    public function hasChanged($fieldName)
+    public function hasChanged($dbFieldName)
     {
-        if (!array_key_exists($fieldName, $this->_initialValues)) {
-            throw new \Exception($fieldName . ' field was not found');
+        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
+            throw new \Exception($dbFieldName . ' field was not found');
         }
         $currentValues = $this->__toArray();
 
-        return $currentValues[$fieldName] != $this->_initialValues[$fieldName];
+        return $currentValues[$dbFieldName] != $this->_initialValues[$dbFieldName];
     }
 
-    public function getInitialValue($fieldName)
+    public function getInitialValue($dbFieldName)
     {
-        if (!array_key_exists($fieldName, $this->_initialValues)) {
-            throw new \Exception($fieldName . ' field was not found');
+        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
+            throw new \Exception($dbFieldName . ' field was not found');
         }
 
-        return $this->_initialValues[$fieldName];
+        return $this->_initialValues[$dbFieldName];
+    }
+
+    /**
+     * @return array
+     */
+    public function getChangeSet()
+    {
+        return array_diff(
+            $this->_initialValues,
+            $this->__toArray()
+        );
     }
 
     /**
@@ -414,9 +425,9 @@ abstract class VoicemailAbstract
             'serveremail' => self::getServeremail(),
             'language' => self::getLanguage(),
             'tz' => self::getTz(),
-            'deleteVoicemail' => self::getDeleteVoicemail(),
+            'deleteast_voicemail' => self::getDeleteVoicemail(),
             'saycid' => self::getSaycid(),
-            'sendVoicemail' => self::getSendVoicemail(),
+            'sendast_voicemail' => self::getSendVoicemail(),
             'review' => self::getReview(),
             'tempgreetwarn' => self::getTempgreetwarn(),
             'operator' => self::getOperator(),

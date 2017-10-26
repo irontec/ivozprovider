@@ -20,6 +20,11 @@ interface OutgoingDdiRuleInterface extends EntityInterface
     public function getOutgoingDdi($originalDdi, $e164destination);
 
     /**
+     * @return array
+     */
+    public function getChangeSet();
+
+    /**
      * Set name
      *
      * @param string $name

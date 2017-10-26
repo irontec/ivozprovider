@@ -17,6 +17,11 @@ interface ExtensionInterface extends EntityInterface
     public function getScreenUser();
 
     /**
+     * @return array
+     */
+    public function getChangeSet();
+
+    /**
      * Set number
      *
      * @param string $number

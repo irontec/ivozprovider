@@ -16,6 +16,11 @@ interface MatchListInterface extends EntityInterface
     public function numberMatches($number);
 
     /**
+     * @return array
+     */
+    public function getChangeSet();
+
+    /**
      * Set name
      *
      * @param string $name

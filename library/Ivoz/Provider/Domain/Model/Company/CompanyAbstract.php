@@ -210,23 +210,34 @@ abstract class CompanyAbstract
      * @return mixed
      * @throws \Exception
      */
-    public function hasChanged($fieldName)
+    public function hasChanged($dbFieldName)
     {
-        if (!array_key_exists($fieldName, $this->_initialValues)) {
-            throw new \Exception($fieldName . ' field was not found');
+        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
+            throw new \Exception($dbFieldName . ' field was not found');
         }
         $currentValues = $this->__toArray();
 
-        return $currentValues[$fieldName] != $this->_initialValues[$fieldName];
+        return $currentValues[$dbFieldName] != $this->_initialValues[$dbFieldName];
     }
 
-    public function getInitialValue($fieldName)
+    public function getInitialValue($dbFieldName)
     {
-        if (!array_key_exists($fieldName, $this->_initialValues)) {
-            throw new \Exception($fieldName . ' field was not found');
+        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
+            throw new \Exception($dbFieldName . ' field was not found');
         }
 
-        return $this->_initialValues[$fieldName];
+        return $this->_initialValues[$dbFieldName];
+    }
+
+    /**
+     * @return array
+     */
+    public function getChangeSet()
+    {
+        return array_diff(
+            $this->_initialValues,
+            $this->__toArray()
+        );
     }
 
     /**
@@ -369,7 +380,7 @@ abstract class CompanyAbstract
         return [
             'type' => self::getType(),
             'name' => self::getName(),
-            'domainUsers' => self::getDomainUsers(),
+            'domain_users' => self::getDomainUsers(),
             'nif' => self::getNif(),
             'distributeMethod' => self::getDistributeMethod(),
             'externalMaxCalls' => self::getExternalMaxCalls(),
@@ -377,13 +388,13 @@ abstract class CompanyAbstract
             'postalCode' => self::getPostalCode(),
             'town' => self::getTown(),
             'province' => self::getProvince(),
-            'countryName' => self::getCountryName(),
-            'outboundPrefix' => self::getOutboundPrefix(),
-            'ipfilter' => self::getIpfilter(),
+            'country' => self::getCountryName(),
+            'outbound_prefix' => self::getOutboundPrefix(),
+            'ipFilter' => self::getIpfilter(),
             'onDemandRecord' => self::getOnDemandRecord(),
             'onDemandRecordCode' => self::getOnDemandRecordCode(),
             'areaCode' => self::getAreaCode(),
-            'externallyextraopts' => self::getExternallyextraopts(),
+            'externallyExtraOpts' => self::getExternallyextraopts(),
             'recordingsLimitMB' => self::getRecordingsLimitMB(),
             'recordingsLimitEmail' => self::getRecordingsLimitEmail(),
             'languageId' => self::getLanguage() ? self::getLanguage()->getId() : null,

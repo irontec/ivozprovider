@@ -57,23 +57,6 @@ class DispatcherDTO implements DataTransferObjectInterface
     private $applicationServer;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'setid' => $this->getSetid(),
-            'destination' => $this->getDestination(),
-            'flags' => $this->getFlags(),
-            'priority' => $this->getPriority(),
-            'attrs' => $this->getAttrs(),
-            'description' => $this->getDescription(),
-            'id' => $this->getId(),
-            'applicationServerId' => $this->getApplicationServerId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

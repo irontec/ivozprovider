@@ -42,19 +42,6 @@ class BrandServiceDTO implements DataTransferObjectInterface
     private $service;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'code' => $this->getCode(),
-            'id' => $this->getId(),
-            'brandId' => $this->getBrandId(),
-            'serviceId' => $this->getServiceId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

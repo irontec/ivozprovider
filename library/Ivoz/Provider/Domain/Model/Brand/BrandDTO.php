@@ -168,44 +168,6 @@ class BrandDTO implements DataTransferObjectInterface
     private $outgoingRoutings = null;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'name' => $this->getName(),
-            'domainUsers' => $this->getDomainUsers(),
-            'fromName' => $this->getFromName(),
-            'fromAddress' => $this->getFromAddress(),
-            'recordingsLimitMB' => $this->getRecordingsLimitMB(),
-            'recordingsLimitEmail' => $this->getRecordingsLimitEmail(),
-            'id' => $this->getId(),
-            'logoFileSize' => $this->getLogoFileSize(),
-            'logoMimeType' => $this->getLogoMimeType(),
-            'logoBaseName' => $this->getLogoBaseName(),
-            'invoiceNif' => $this->getInvoiceNif(),
-            'invoicePostalAddress' => $this->getInvoicePostalAddress(),
-            'invoicePostalCode' => $this->getInvoicePostalCode(),
-            'invoiceTown' => $this->getInvoiceTown(),
-            'invoiceProvince' => $this->getInvoiceProvince(),
-            'invoiceCountry' => $this->getInvoiceCountry(),
-            'invoiceRegistryData' => $this->getInvoiceRegistryData(),
-            'languageId' => $this->getLanguageId(),
-            'defaultTimezoneId' => $this->getDefaultTimezoneId(),
-            'companiesId' => $this->getCompaniesId(),
-            'operatorsId' => $this->getOperatorsId(),
-            'servicesId' => $this->getServicesId(),
-            'urlsId' => $this->getUrlsId(),
-            'relFeaturesId' => $this->getRelFeaturesId(),
-            'domainsId' => $this->getDomainsId(),
-            'retailAccountsId' => $this->getRetailAccountsId(),
-            'genericMusicsOnHoldId' => $this->getGenericMusicsOnHoldId(),
-            'genericCallAclPatternsId' => $this->getGenericCallAclPatternsId(),
-            'outgoingRoutingsId' => $this->getOutgoingRoutingsId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

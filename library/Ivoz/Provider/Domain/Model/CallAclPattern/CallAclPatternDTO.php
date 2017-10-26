@@ -37,19 +37,6 @@ class CallAclPatternDTO implements DataTransferObjectInterface
     private $company;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'name' => $this->getName(),
-            'regExp' => $this->getRegExp(),
-            'id' => $this->getId(),
-            'companyId' => $this->getCompanyId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

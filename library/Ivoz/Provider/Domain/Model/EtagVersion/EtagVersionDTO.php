@@ -32,19 +32,6 @@ class EtagVersionDTO implements DataTransferObjectInterface
     private $id;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'table' => $this->getTable(),
-            'etag' => $this->getEtag(),
-            'lastChange' => $this->getLastChange(),
-            'id' => $this->getId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

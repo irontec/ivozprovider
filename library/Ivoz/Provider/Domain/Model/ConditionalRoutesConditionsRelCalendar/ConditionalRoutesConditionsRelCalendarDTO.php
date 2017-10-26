@@ -37,18 +37,6 @@ class ConditionalRoutesConditionsRelCalendarDTO implements DataTransferObjectInt
     private $calendar;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'id' => $this->getId(),
-            'conditionId' => $this->getConditionId(),
-            'calendarId' => $this->getCalendarId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

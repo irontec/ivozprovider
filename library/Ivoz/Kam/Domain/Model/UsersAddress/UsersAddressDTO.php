@@ -57,23 +57,6 @@ class UsersAddressDTO implements DataTransferObjectInterface
     private $company;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'sourceAddress' => $this->getSourceAddress(),
-            'ipAddr' => $this->getIpAddr(),
-            'mask' => $this->getMask(),
-            'port' => $this->getPort(),
-            'tag' => $this->getTag(),
-            'description' => $this->getDescription(),
-            'id' => $this->getId(),
-            'companyId' => $this->getCompanyId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

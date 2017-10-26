@@ -52,22 +52,6 @@ class PricingPlanDTO implements DataTransferObjectInterface
     private $brand;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'createdOn' => $this->getCreatedOn(),
-            'id' => $this->getId(),
-            'nameEn' => $this->getNameEn(),
-            'nameEs' => $this->getNameEs(),
-            'descriptionEn' => $this->getDescriptionEn(),
-            'descriptionEs' => $this->getDescriptionEs(),
-            'brandId' => $this->getBrandId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

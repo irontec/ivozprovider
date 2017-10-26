@@ -57,22 +57,6 @@ class MatchListPatternDTO implements DataTransferObjectInterface
     private $numberCountry;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'description' => $this->getDescription(),
-            'type' => $this->getType(),
-            'regexp' => $this->getRegexp(),
-            'numbervalue' => $this->getNumbervalue(),
-            'id' => $this->getId(),
-            'matchListId' => $this->getMatchListId(),
-            'numberCountryId' => $this->getNumberCountryId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

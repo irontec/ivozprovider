@@ -122,29 +122,6 @@ class ExtensionDTO implements DataTransferObjectInterface
     private $users = null;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'number' => $this->getNumber(),
-            'routeType' => $this->getRouteType(),
-            'numberValue' => $this->getNumberValue(),
-            'friendValue' => $this->getFriendValue(),
-            'id' => $this->getId(),
-            'companyId' => $this->getCompanyId(),
-            'ivrCommonId' => $this->getIvrCommonId(),
-            'ivrCustomId' => $this->getIvrCustomId(),
-            'huntGroupId' => $this->getHuntGroupId(),
-            'conferenceRoomId' => $this->getConferenceRoomId(),
-            'userId' => $this->getUserId(),
-            'queueId' => $this->getQueueId(),
-            'conditionalRouteId' => $this->getConditionalRouteId(),
-            'usersId' => $this->getUsersId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

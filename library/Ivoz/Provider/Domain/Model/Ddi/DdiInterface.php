@@ -16,6 +16,11 @@ interface DdiInterface extends EntityInterface
     public function setRouteType($routeType = null);
 
     /**
+     * @return array
+     */
+    public function getChangeSet();
+
+    /**
      * Set ddi
      *
      * @param string $ddi

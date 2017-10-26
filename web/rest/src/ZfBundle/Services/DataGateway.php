@@ -8,7 +8,6 @@ use Ivoz\Core\Application\Service\CreateEntityFromDTO;
 use Ivoz\Core\Application\Service\Assembler\DtoAssembler;
 use Ivoz\Core\Application\Service\UpdateEntityFromDTO;
 use Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister;
-use Ivoz\Core\Infrastructure\Domain\Service\Lifecycle\DoctrineEventSubscriber;
 
 /**
  * persistence data gateway for zend framework applications

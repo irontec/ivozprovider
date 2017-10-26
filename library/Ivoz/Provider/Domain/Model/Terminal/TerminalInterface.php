@@ -30,6 +30,11 @@ interface TerminalInterface extends EntityInterface
     public function getAstPsEndpoint();
 
     /**
+     * @return array
+     */
+    public function getChangeSet();
+
+    /**
      * Set name
      *
      * @param string $name

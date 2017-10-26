@@ -102,31 +102,6 @@ class TrunksUacregDTO implements DataTransferObjectInterface
     private $peeringContract;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'lUuid' => $this->getLUuid(),
-            'lUsername' => $this->getLUsername(),
-            'lDomain' => $this->getLDomain(),
-            'rUsername' => $this->getRUsername(),
-            'rDomain' => $this->getRDomain(),
-            'realm' => $this->getRealm(),
-            'authUsername' => $this->getAuthUsername(),
-            'authPassword' => $this->getAuthPassword(),
-            'authProxy' => $this->getAuthProxy(),
-            'expires' => $this->getExpires(),
-            'flags' => $this->getFlags(),
-            'regDelay' => $this->getRegDelay(),
-            'multiddi' => $this->getMultiddi(),
-            'id' => $this->getId(),
-            'brandId' => $this->getBrandId(),
-            'peeringContractId' => $this->getPeeringContractId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

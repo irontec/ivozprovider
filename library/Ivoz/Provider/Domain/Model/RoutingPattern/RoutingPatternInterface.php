@@ -8,6 +8,11 @@ use Doctrine\Common\Collections\Collection;
 interface RoutingPatternInterface extends EntityInterface
 {
     /**
+     * @return array
+     */
+    public function getChangeSet();
+
+    /**
      * Set regExp
      *
      * @param string $regExp

@@ -92,30 +92,6 @@ class LcrGatewayDTO implements DataTransferObjectInterface
     private $peerServer;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'lcrId' => $this->getLcrId(),
-            'gwName' => $this->getGwName(),
-            'ip' => $this->getIp(),
-            'hostname' => $this->getHostname(),
-            'port' => $this->getPort(),
-            'params' => $this->getParams(),
-            'uriScheme' => $this->getUriScheme(),
-            'transport' => $this->getTransport(),
-            'strip' => $this->getStrip(),
-            'prefix' => $this->getPrefix(),
-            'tag' => $this->getTag(),
-            'flags' => $this->getFlags(),
-            'defunct' => $this->getDefunct(),
-            'id' => $this->getId(),
-            'peerServerId' => $this->getPeerServerId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

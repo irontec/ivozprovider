@@ -157,39 +157,6 @@ class RetailAccountDTO implements DataTransferObjectInterface
     private $ddis = null;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'name' => $this->getName(),
-            'domain' => $this->getDomain(),
-            'description' => $this->getDescription(),
-            'transport' => $this->getTransport(),
-            'ip' => $this->getIp(),
-            'port' => $this->getPort(),
-            'authNeeded' => $this->getAuthNeeded(),
-            'password' => $this->getPassword(),
-            'areaCode' => $this->getAreaCode(),
-            'disallow' => $this->getDisallow(),
-            'allow' => $this->getAllow(),
-            'directMediaMethod' => $this->getDirectMediaMethod(),
-            'calleridUpdateHeader' => $this->getCalleridUpdateHeader(),
-            'updateCallerid' => $this->getUpdateCallerid(),
-            'fromDomain' => $this->getFromDomain(),
-            'directConnectivity' => $this->getDirectConnectivity(),
-            'id' => $this->getId(),
-            'brandId' => $this->getBrandId(),
-            'companyId' => $this->getCompanyId(),
-            'countryId' => $this->getCountryId(),
-            'outgoingDdiId' => $this->getOutgoingDdiId(),
-            'languageId' => $this->getLanguageId(),
-            'psEndpointsId' => $this->getPsEndpointsId(),
-            'ddisId' => $this->getDdisId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

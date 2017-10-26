@@ -17,6 +17,11 @@ interface MusicOnHoldInterface extends EntityInterface
     public function getOwner();
 
     /**
+     * @return array
+     */
+    public function getChangeSet();
+
+    /**
      * Set name
      *
      * @param string $name

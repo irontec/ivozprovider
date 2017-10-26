@@ -118,23 +118,34 @@ abstract class TerminalAbstract
      * @return mixed
      * @throws \Exception
      */
-    public function hasChanged($fieldName)
+    public function hasChanged($dbFieldName)
     {
-        if (!array_key_exists($fieldName, $this->_initialValues)) {
-            throw new \Exception($fieldName . ' field was not found');
+        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
+            throw new \Exception($dbFieldName . ' field was not found');
         }
         $currentValues = $this->__toArray();
 
-        return $currentValues[$fieldName] != $this->_initialValues[$fieldName];
+        return $currentValues[$dbFieldName] != $this->_initialValues[$dbFieldName];
     }
 
-    public function getInitialValue($fieldName)
+    public function getInitialValue($dbFieldName)
     {
-        if (!array_key_exists($fieldName, $this->_initialValues)) {
-            throw new \Exception($fieldName . ' field was not found');
+        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
+            throw new \Exception($dbFieldName . ' field was not found');
         }
 
-        return $this->_initialValues[$fieldName];
+        return $this->_initialValues[$dbFieldName];
+    }
+
+    /**
+     * @return array
+     */
+    public function getChangeSet()
+    {
+        return array_diff(
+            $this->_initialValues,
+            $this->__toArray()
+        );
     }
 
     /**
@@ -230,9 +241,9 @@ abstract class TerminalAbstract
             'name' => self::getName(),
             'domain' => self::getDomain(),
             'disallow' => self::getDisallow(),
-            'allowAudio' => self::getAllowAudio(),
-            'allowVideo' => self::getAllowVideo(),
-            'directMediaMethod' => self::getDirectMediaMethod(),
+            'allow_audio' => self::getAllowAudio(),
+            'allow_video' => self::getAllowVideo(),
+            'direct_media_method' => self::getDirectMediaMethod(),
             'password' => self::getPassword(),
             'mac' => self::getMac(),
             'lastProvisionDate' => self::getLastProvisionDate(),

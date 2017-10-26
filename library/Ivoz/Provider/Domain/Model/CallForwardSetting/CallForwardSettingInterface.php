@@ -9,6 +9,11 @@ interface CallForwardSettingInterface extends EntityInterface
     public function toArrayPortal();
 
     /**
+     * @return array
+     */
+    public function getChangeSet();
+
+    /**
      * Set callTypeFilter
      *
      * @param string $callTypeFilter

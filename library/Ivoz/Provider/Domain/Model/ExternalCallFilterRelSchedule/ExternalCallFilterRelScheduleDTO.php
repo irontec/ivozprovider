@@ -37,18 +37,6 @@ class ExternalCallFilterRelScheduleDTO implements DataTransferObjectInterface
     private $schedule;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'id' => $this->getId(),
-            'filterId' => $this->getFilterId(),
-            'scheduleId' => $this->getScheduleId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

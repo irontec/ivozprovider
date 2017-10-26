@@ -57,22 +57,6 @@ class DomainDTO implements DataTransferObjectInterface
     private $brand;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'domain' => $this->getDomain(),
-            'scope' => $this->getScope(),
-            'pointsTo' => $this->getPointsTo(),
-            'description' => $this->getDescription(),
-            'id' => $this->getId(),
-            'companyId' => $this->getCompanyId(),
-            'brandId' => $this->getBrandId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

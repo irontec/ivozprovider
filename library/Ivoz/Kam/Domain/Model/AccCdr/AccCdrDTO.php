@@ -207,49 +207,6 @@ class AccCdrDTO implements DataTransferObjectInterface
     private $company;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'proxy' => $this->getProxy(),
-            'startTimeUtc' => $this->getStartTimeUtc(),
-            'endTimeUtc' => $this->getEndTimeUtc(),
-            'startTime' => $this->getStartTime(),
-            'endTime' => $this->getEndTime(),
-            'duration' => $this->getDuration(),
-            'caller' => $this->getCaller(),
-            'callee' => $this->getCallee(),
-            'referee' => $this->getReferee(),
-            'referrer' => $this->getReferrer(),
-            'asiden' => $this->getAsiden(),
-            'asaddress' => $this->getAsaddress(),
-            'callid' => $this->getCallid(),
-            'callidHash' => $this->getCallidHash(),
-            'xcallid' => $this->getXcallid(),
-            'parsed' => $this->getParsed(),
-            'diversion' => $this->getDiversion(),
-            'peeringContractId' => $this->getPeeringContractId(),
-            'bounced' => $this->getBounced(),
-            'externallyRated' => $this->getExternallyRated(),
-            'metered' => $this->getMetered(),
-            'meteringDate' => $this->getMeteringDate(),
-            'pricingPlanName' => $this->getPricingPlanName(),
-            'targetPatternName' => $this->getTargetPatternName(),
-            'price' => $this->getPrice(),
-            'pricingPlanDetails' => $this->getPricingPlanDetails(),
-            'direction' => $this->getDirection(),
-            'reMeteringDate' => $this->getReMeteringDate(),
-            'id' => $this->getId(),
-            'pricingPlanId' => $this->getPricingPlanId(),
-            'targetPatternId' => $this->getTargetPatternId(),
-            'invoiceId' => $this->getInvoiceId(),
-            'brandId' => $this->getBrandId(),
-            'companyId' => $this->getCompanyId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

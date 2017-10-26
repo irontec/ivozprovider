@@ -142,33 +142,6 @@ class ExternalCallFilterDTO implements DataTransferObjectInterface
     private $schedules = null;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'name' => $this->getName(),
-            'holidayTargetType' => $this->getHolidayTargetType(),
-            'holidayNumberValue' => $this->getHolidayNumberValue(),
-            'outOfScheduleTargetType' => $this->getOutOfScheduleTargetType(),
-            'outOfScheduleNumberValue' => $this->getOutOfScheduleNumberValue(),
-            'id' => $this->getId(),
-            'companyId' => $this->getCompanyId(),
-            'welcomeLocutionId' => $this->getWelcomeLocutionId(),
-            'holidayLocutionId' => $this->getHolidayLocutionId(),
-            'outOfScheduleLocutionId' => $this->getOutOfScheduleLocutionId(),
-            'holidayExtensionId' => $this->getHolidayExtensionId(),
-            'outOfScheduleExtensionId' => $this->getOutOfScheduleExtensionId(),
-            'holidayVoiceMailUserId' => $this->getHolidayVoiceMailUserId(),
-            'outOfScheduleVoiceMailUserId' => $this->getOutOfScheduleVoiceMailUserId(),
-            'calendarsId' => $this->getCalendarsId(),
-            'blackListsId' => $this->getBlackListsId(),
-            'whiteListsId' => $this->getWhiteListsId(),
-            'schedulesId' => $this->getSchedulesId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

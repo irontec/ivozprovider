@@ -47,21 +47,6 @@ class ConferenceRoomDTO implements DataTransferObjectInterface
     private $company;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'name' => $this->getName(),
-            'pinProtected' => $this->getPinProtected(),
-            'pinCode' => $this->getPinCode(),
-            'maxMembers' => $this->getMaxMembers(),
-            'id' => $this->getId(),
-            'companyId' => $this->getCompanyId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

@@ -57,23 +57,6 @@ class QueueMemberDTO implements DataTransferObjectInterface
     private $queueMember;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'queueName' => $this->getQueueName(),
-            'interface' => $this->getInterface(),
-            'membername' => $this->getMembername(),
-            'stateInterface' => $this->getStateInterface(),
-            'penalty' => $this->getPenalty(),
-            'paused' => $this->getPaused(),
-            'id' => $this->getId(),
-            'queueMemberId' => $this->getQueueMemberId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

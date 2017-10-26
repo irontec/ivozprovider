@@ -47,21 +47,6 @@ class TimezoneDTO implements DataTransferObjectInterface
     private $country;
 
     /**
-     * @return array
-     */
-    public function __toArray()
-    {
-        return [
-            'tz' => $this->getTz(),
-            'comment' => $this->getComment(),
-            'id' => $this->getId(),
-            'labelEn' => $this->getLabelEn(),
-            'labelEs' => $this->getLabelEs(),
-            'countryId' => $this->getCountryId()
-        ];
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
