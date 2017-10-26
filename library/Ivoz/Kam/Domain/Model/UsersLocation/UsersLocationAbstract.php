@@ -221,10 +221,17 @@ abstract class UsersLocationAbstract
      */
     public function getChangeSet()
     {
-        return array_diff(
-            $this->_initialValues,
-            $this->__toArray()
-        );
+        $changes = [];
+        $currentValues = $this->__toArray();
+        foreach ($currentValues as $key => $value) {
+
+            if ($this->_initialValues[$key] == $currentValues[$key]) {
+                continue;
+            }
+            $changes[$key] = $currentValues[$key];
+        }
+
+        return $changes;
     }
 
     /**

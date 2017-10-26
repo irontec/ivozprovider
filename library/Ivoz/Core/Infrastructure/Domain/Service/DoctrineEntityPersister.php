@@ -10,6 +10,7 @@ use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Ramsey\Uuid\Uuid;
 use Ivoz\Core\Domain\Model\DomainEventPublisher;
+use Doctrine\ORM\UnitOfWork;
 
 class DoctrineEntityPersister implements EntityPersisterInterface
 {
@@ -42,6 +43,11 @@ class DoctrineEntityPersister implements EntityPersisterInterface
      * @var DomainEventPublisher
      */
     protected $eventPublisher;
+
+    /**
+     * @var EntityInterface[]
+     */
+    protected $pendingUpdates = [];
 
     public function __construct
     (
@@ -93,16 +99,32 @@ class DoctrineEntityPersister implements EntityPersisterInterface
      */
     public function persist(EntityInterface $entity = null, $dispatchImmediately = false)
     {
-        $mustBePersisted = ($this->rootEntity !== $entity);
-        $transaction = function () use ($entity, $dispatchImmediately, $mustBePersisted) {
+        $unitOfWork = $this->em->getUnitOfWork();
+        $state = $unitOfWork->getEntityState($entity);
+        if ($state ===  UnitOfWork::STATE_NEW && $dispatchImmediately) {
+            $this->em->persist($entity);
+        }
 
-            if ($mustBePersisted) {
-                $this->em->persist($entity);
+        $transaction = function () use ($entity, $dispatchImmediately, $unitOfWork) {
+
+            $mustBePersisted = $this->rootEntity === $entity;
+            if (!$mustBePersisted) {
+                $oid = spl_object_hash($entity);
+                $this->pendingUpdates[$oid] = $entity;
             }
 
-            if ($dispatchImmediately) {
+            $state = $unitOfWork->getEntityState($entity);
+            $singleComputationValidStates = [
+                UnitOfWork::STATE_MANAGED,
+                UnitOfWork::STATE_REMOVED
+            ];
+
+            if (in_array($state, $singleComputationValidStates)) {
                 $this->em->flush($entity);
+                return ;
             }
+
+            $this->em->flush();
         };
 
         $this->transactional($entity, $transaction);
@@ -132,12 +154,22 @@ class DoctrineEntityPersister implements EntityPersisterInterface
         $connection = $this->em->getConnection();
         $connection->transactional(function () use ($transaction) {
             $transaction();
+
             /**
-             * Unit of work is recalculated every time flush is called,
-             * so calling it again seems to be the only way to ensure that
-             * there are no pending enqueued queries generated during entity lifecycle
+             * Run until every pending insert/update order is applied
              */
-            $this->em->flush();
+            while (true) {
+
+                if (empty($this->pendingUpdates)) {
+                    break;
+                }
+
+                foreach ($this->pendingUpdates as $entity) {
+                    $this->em->persist($entity);
+                }
+                $this->pendingUpdates = [];
+                $this->em->flush();
+            }
         });
 
         $this->rootEntity = null;

@@ -84,5 +84,4 @@ class UpdateByCompany implements CompanyLifecycleEventHandlerInterface
 
         $this->entityPersister->persistDto($domainDto, $domain);
     }
-
 }

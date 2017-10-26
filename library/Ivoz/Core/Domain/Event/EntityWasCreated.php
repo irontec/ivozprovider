@@ -27,7 +27,7 @@ class EntityWasCreated implements DomainEventInterface
     public function __construct(
         string $entityClass,
         /** @todo not nullable */
-        int $id = null,
+        $id = null,
         array $changeSet
     ) {
         $this->entityClass = $entityClass;
