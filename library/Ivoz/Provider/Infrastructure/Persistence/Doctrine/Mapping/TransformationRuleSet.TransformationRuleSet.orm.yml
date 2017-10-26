@@ -11,6 +11,10 @@ Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet:
       id: true
       generator:
         strategy: IDENTITY
+  oneToMany:
+    rules:
+      targetEntity: Ivoz\Provider\Domain\Model\TransformationRule\TransformationRuleInterface
+      mappedBy: transformationRuleSet
   lifecycleCallbacks:
     postLoad:
       - initChangelog

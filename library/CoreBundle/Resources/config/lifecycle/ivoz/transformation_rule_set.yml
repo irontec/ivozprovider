@@ -13,45 +13,14 @@ services:
     '@Ivoz\Provider\Domain\Service\TransformationRuleSet\TransformationRuleSetLifecycleServiceCollection'
 
   ##################################
-  ## pre_persist
-  ##################################
-#  Ivoz\Kam\Domain\Service\TrunksDialplan\AssignDpidByTransformationRuleSet:
-#    tags:
-#      - { name: provider.lifecycle.transformation_rule_set.pre_persist, priority: 10 }
-#    arguments:
-#      $trunksDialplanRepository:
-#        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Kam\\Domain\\Model\\TrunksDialplan\\TrunksDialplan")'
-
-  ##################################
   ## post_persist
   ##################################
-#  Ivoz\Kam\Domain\Service\TrunksDialplan\CreateCalleeOutRules:
-#    tags:
-#      - { name: provider.lifecycle.transformation_rule_set.post_persist, priority: 10 }
-#    arguments:
-#      $entityPersister:
-#        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
-#
-#  Ivoz\Kam\Domain\Service\TrunksDialplan\CreateCallerOutRules:
-#    tags:
-#      - { name: provider.lifecycle.transformation_rule_set.post_persist, priority: 20 }
-#    arguments:
-#      $entityPersister:
-#        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
-#
-#  Ivoz\Kam\Domain\Service\TrunksDialplan\CreateCalleeInRules:
-#    tags:
-#      - { name: provider.lifecycle.transformation_rule_set.post_persist, priority: 30 }
-#    arguments:
-#      $entityPersister:
-#        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
-#
-#  Ivoz\Kam\Domain\Service\TrunksDialplan\CreateCallerInRules:
-#    tags:
-#      - { name: provider.lifecycle.transformation_rule_set.post_persist, priority: 40 }
-#    arguments:
-#      $entityPersister:
-#        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
+  Ivoz\Provider\Domain\Service\TransformationRule\GenerateRules:
+    tags:
+      - { name: provider.lifecycle.transformation_rule_set.post_persist, priority: 10 }
+    arguments:
+      $entityPersister:
+        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
 
   ##################################
   ## post_remove

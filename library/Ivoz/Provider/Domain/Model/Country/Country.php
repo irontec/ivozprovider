@@ -24,11 +24,6 @@ class Country extends CountryAbstract implements CountryInterface
         return $this->id;
     }
 
-    public function getCountryCode()
-    {
-        return sprintf("+%d", parent::getCountryCode());
-    }
-
     /**
      * Check if a country uses Area code
      *

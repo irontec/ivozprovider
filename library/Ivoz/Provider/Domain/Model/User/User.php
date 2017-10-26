@@ -101,7 +101,7 @@ class User extends UserAbstract implements UserInterface
         $ddi = $this->getOutgoingDdi();
         if ($ddi) {
 
-            return $Ddi->getDdiE164();
+            return $ddi->getDdiE164();
         }
 
         return null;

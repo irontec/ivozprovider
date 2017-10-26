@@ -20,8 +20,9 @@ Ivoz\Provider\Domain\Model\Country\CountryAbstract:
         fixed: false
         default: ''
     countryCode:
-      type: integer
+      type: string
       nullable: true
+      length: 10
       options:
-        unsigned: true
+        fixed: false
       column: countryCode

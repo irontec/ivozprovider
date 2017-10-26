@@ -9,6 +9,11 @@ class TransformationRule extends TransformationRuleAbstract implements Transform
 {
     use TransformationRuleTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

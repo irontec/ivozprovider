@@ -48,7 +48,7 @@ Ivoz\Provider\Domain\Model\TransformationRule\TransformationRuleAbstract:
       cascade: {  }
       fetch: LAZY
       mappedBy: null
-      inversedBy: null
+      inversedBy: rules
       joinColumns:
         transformationRuleSetId:
           referencedColumnName: id

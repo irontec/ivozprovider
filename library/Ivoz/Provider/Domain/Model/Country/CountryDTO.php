@@ -17,7 +17,7 @@ class CountryDTO implements DataTransferObjectInterface
     private $code = '';
 
     /**
-     * @var integer
+     * @var string
      */
     private $countryCode;
 
@@ -99,7 +99,7 @@ class CountryDTO implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $countryCode
+     * @param string $countryCode
      *
      * @return CountryDTO
      */
@@ -111,7 +111,7 @@ class CountryDTO implements DataTransferObjectInterface
     }
 
     /**
-     * @return integer
+     * @return string
      */
     public function getCountryCode()
     {

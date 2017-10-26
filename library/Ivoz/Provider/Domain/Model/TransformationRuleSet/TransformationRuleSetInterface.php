@@ -2,11 +2,13 @@
 
 namespace Ivoz\Provider\Domain\Model\TransformationRuleSet;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Doctrine\Common\Collections\Collection;
 
-interface TransformationRuleSetInterface extends EntityInterface
+interface TransformationRuleSetInterface extends LoggableEntityInterface
 {
+    public function getChangeSet();
+
     /**
      * Set description
      *

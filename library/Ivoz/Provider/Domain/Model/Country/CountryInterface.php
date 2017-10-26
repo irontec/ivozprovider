@@ -8,8 +8,6 @@ interface CountryInterface extends LoggableEntityInterface
 {
     public function getChangeSet();
 
-    public function getCountryCode();
-
     /**
      * Check if a country uses Area code
      *
@@ -36,11 +34,18 @@ interface CountryInterface extends LoggableEntityInterface
     /**
      * Set countryCode
      *
-     * @param integer $countryCode
+     * @param string $countryCode
      *
      * @return self
      */
     public function setCountryCode($countryCode = null);
+
+    /**
+     * Get countryCode
+     *
+     * @return string
+     */
+    public function getCountryCode();
 
     /**
      * Set name

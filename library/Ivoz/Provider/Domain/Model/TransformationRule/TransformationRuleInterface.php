@@ -2,10 +2,12 @@
 
 namespace Ivoz\Provider\Domain\Model\TransformationRule;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface TransformationRuleInterface extends EntityInterface
+interface TransformationRuleInterface extends LoggableEntityInterface
 {
+    public function getChangeSet();
+
     /**
      * Set type
      *

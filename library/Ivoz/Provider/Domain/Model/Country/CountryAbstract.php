@@ -17,7 +17,7 @@ abstract class CountryAbstract
     protected $code = '';
 
     /**
-     * @var integer
+     * @var string
      */
     protected $countryCode;
 
@@ -250,17 +250,14 @@ abstract class CountryAbstract
     /**
      * Set countryCode
      *
-     * @param integer $countryCode
+     * @param string $countryCode
      *
      * @return self
      */
     public function setCountryCode($countryCode = null)
     {
         if (!is_null($countryCode)) {
-            if (!is_null($countryCode)) {
-                Assertion::integerish($countryCode);
-                Assertion::greaterOrEqualThan($countryCode, 0);
-            }
+            Assertion::maxLength($countryCode, 10);
         }
 
         $this->countryCode = $countryCode;
@@ -271,7 +268,7 @@ abstract class CountryAbstract
     /**
      * Get countryCode
      *
-     * @return integer
+     * @return string
      */
     public function getCountryCode()
     {

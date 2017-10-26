@@ -67,7 +67,7 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
      */
     public function isWhitelisted($origin)
     {
-        $whiteLists = $this->getWhiteList();
+        $whiteLists = $this->getWhiteLists();
         foreach ($whiteLists as $list) {
             /**
              * @var MatchList $matchList

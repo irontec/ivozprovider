@@ -15,7 +15,6 @@ production:
             template: '%name%'
           order:
             Brand.name: asc
-      default: true
     name:
       title: _('Name')
       type: text
@@ -23,6 +22,7 @@ production:
       isMultilang: true
       required: true
       maxLength: 100
+      default: true
     description:
       title: _('Description')
       type: text
