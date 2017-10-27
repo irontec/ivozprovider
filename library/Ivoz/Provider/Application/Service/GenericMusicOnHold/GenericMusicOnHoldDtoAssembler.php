@@ -50,20 +50,25 @@ class GenericMusicOnHoldDtoAssembler implements CustomDtoAssemblerInterface
         }
 
         /* OriginalFile */
-        $this->originalFilePathResolver->setOriginalFileName(
-            $entity->getOriginalFile()->getBaseName()
-        );
-        $dto->setOriginalFilePath(
-            $this->originalFilePathResolver->getFilePath($entity)
-        );
+        if ($entity->getOriginalFile()->getFileSize()) {
+            $this->originalFilePathResolver->setOriginalFileName(
+                $entity->getOriginalFile()->getBaseName()
+            );
+            $dto->setOriginalFilePath(
+                $this->originalFilePathResolver->getFilePath($entity)
+            );
+        }
+
 
         /* EncodedFile */
-        $this->encodedFilePathResolver->setOriginalFileName(
-            $entity->getEncodedFile()->getBaseName()
-        );
-        $dto->setEncodedFilePath(
-            $this->encodedFilePathResolver->getFilePath($entity)
-        );
+        if ($entity->getEncodedFile()->getFileSize()) {
+            $this->encodedFilePathResolver->setOriginalFileName(
+                $entity->getEncodedFile()->getBaseName()
+            );
+            $dto->setEncodedFilePath(
+                $this->encodedFilePathResolver->getFilePath($entity)
+            );
+        }
 
         return $dto;
     }

@@ -23,6 +23,10 @@ class BrandDtoAssembler implements CustomDtoAssemblerInterface
         );
     }
 
+    /**
+     * @param BrandInterface $entity
+     * @return BrandDTO
+     */
     public function toDTO(EntityInterface $entity)
     {
         Assertion::isInstanceOf($entity, BrandInterface::class);
@@ -35,9 +39,11 @@ class BrandDtoAssembler implements CustomDtoAssemblerInterface
             return $dto;
         }
 
-        $dto->setLogoPath(
-            $this->logoPathResolver->getFilePath($entity)
-        );
+        if ($entity->getLogo()->getFileSize()) {
+            $dto->setLogoPath(
+                $this->logoPathResolver->getFilePath($entity)
+            );
+        }
 
         return $dto;
     }

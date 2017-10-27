@@ -31,7 +31,7 @@ module.exports = {
     "workers" : 2
   },
   "test_settings" : {
-    "default" : {
+    "chromium" : {
       "launch_url" : "https://127.0.0.1/e2e.php",
       "globals" : {
         'user': 'admin',
@@ -56,6 +56,31 @@ module.exports = {
         "on_error" : true,
         "path" : "./screenshots/"
       }
+    },
+    "phantomjs": {
+        "launch_url" : "https://127.0.0.1/e2e.php",
+        "globals" : {
+            'user': 'admin',
+            'password': 'changeme',
+            'waitForConditionTimeout': 20000,
+            'retryAssertionTimeout': 20000
+        },
+        "selenium_port"  : 9515,
+        "selenium_host"  : "localhost",
+        "default_path_prefix" : "",
+        "desiredCapabilities": {
+            "browserName" : "phantomjs",
+            "phantomjs.binary.path" : "/path/to/phantomjs",
+            "phantomjs.cli.args" : [],
+            "javascriptEnabled": true,
+            "acceptSslCerts": true
+        },
+        "screenshots" : {
+            "enabled" : true,
+            "on_failure" : true,
+            "on_error" : true,
+            "path" : "./screenshots/"
+        }
     }
   }
 }

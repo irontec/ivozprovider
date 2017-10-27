@@ -57,19 +57,24 @@ class LocutionDtoAssembler implements CustomDtoAssemblerInterface
             return $dto;
         }
 
-        $this->originalFilePathResolver->setOriginalFileName(
-            $entity->getOriginalFile()->getBaseName()
-        );
-        $dto->setOriginalFilepath(
-            $this->originalFilePathResolver->getFilePath($entity)
-        );
+        if ($entity->getOriginalFile()->getFileSize()) {
+            $this->originalFilePathResolver->setOriginalFileName(
+                $entity->getOriginalFile()->getBaseName()
+            );
+            $dto->setOriginalFilepath(
+                $this->originalFilePathResolver->getFilePath($entity)
+            );
+        }
 
-        $this->encodedFilePathResolver->setOriginalFileName(
-            $entity->getEncodedFile()->getBaseName()
-        );
-        $dto->setEncodedFilepath(
-            $this->encodedFilePathResolver->getFilePath($entity)
-        );
+        if ($entity->getEncodedFile()->getFileSize()) {
+            $this->encodedFilePathResolver->setOriginalFileName(
+                $entity->getEncodedFile()->getBaseName()
+            );
+            $dto->setEncodedFilepath(
+                $this->encodedFilePathResolver->getFilePath($entity)
+            );
+        }
+
 
         return $dto;
     }

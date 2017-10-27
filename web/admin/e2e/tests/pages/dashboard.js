@@ -32,7 +32,7 @@ function dashboard () {
 
   function clickOnBrandEmulatorButton() {
     return this
-      .waitForElementVisible('@brandEmulatorBtn')
+      .waitForElementVisible('@brandEmulatorBtn', 5000)
       .jqueryTrigger(
         this.elements.brandEmulatorBtn.selector,
         'click',

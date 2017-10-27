@@ -111,6 +111,7 @@ class DoctrineEntityPersister implements EntityPersisterInterface
             if (!$mustBePersisted) {
                 $oid = spl_object_hash($entity);
                 $this->pendingUpdates[$oid] = $entity;
+                return;
             }
 
             $state = $unitOfWork->getEntityState($entity);
