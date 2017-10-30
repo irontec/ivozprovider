@@ -1,17 +1,17 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Model\ChangeHistory;
+namespace Ivoz\Provider\Domain\Model\Commandlog;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 
 /**
- * ChangeHistoryTrait
+ * CommandlogTrait
  * @codeCoverageIgnore
  */
-trait ChangeHistoryTrait
+trait CommandlogTrait
 {
     /**
-     * @var integer
+     * @var guid
      */
     protected $id;
 
@@ -26,11 +26,11 @@ trait ChangeHistoryTrait
     }
 
     /**
-     * @return ChangeHistoryDTO
+     * @return CommandlogDTO
      */
     public static function createDTO()
     {
-        return new ChangeHistoryDTO();
+        return new CommandlogDTO();
     }
 
     /**
@@ -41,7 +41,7 @@ trait ChangeHistoryTrait
     public static function fromDTO(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto ChangeHistoryDTO
+         * @var $dto CommandlogDTO
          */
         $self = parent::fromDTO($dto);
 
@@ -60,7 +60,7 @@ trait ChangeHistoryTrait
     public function updateFromDTO(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto ChangeHistoryDTO
+         * @var $dto CommandlogDTO
          */
         parent::updateFromDTO($dto);
 
@@ -68,7 +68,7 @@ trait ChangeHistoryTrait
     }
 
     /**
-     * @return ChangeHistoryDTO
+     * @return CommandlogDTO
      */
     public function toDTO()
     {

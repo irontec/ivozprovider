@@ -1,0 +1,38 @@
+Ivoz\Provider\Domain\Model\Changelog\ChangelogAbstract:
+  type: mappedSuperclass
+  indexes:
+    commandId:
+      columns:
+        - commandId
+  fields:
+    entity:
+      type: string
+      length: 150
+      nullable: false
+    entityId:
+      type: string
+      nullable: false
+      length: 36
+      options:
+        fixed: false
+      column: entityId
+    data:
+      type: json_array
+      nullable: true
+    createdOn:
+      type: datetime
+      nullable: false
+      column: createdOn
+  manyToOne:
+    command:
+      targetEntity: \Ivoz\Provider\Domain\Model\Commandlog\CommandlogInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        commandId:
+          referencedColumnName: id
+          nullable: false
+          onDelete: cascade
+      orphanRemoval: false

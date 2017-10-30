@@ -1,0 +1,11 @@
+Ivoz\Provider\Domain\Model\Changelog\Changelog:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\ApplicationServerDoctrineRepository
+  type: entity
+  table: Changelog
+  id:
+    id:
+      type: guid
+      nullable: false
+      id: true
+      generator:
+        strategy: NONE

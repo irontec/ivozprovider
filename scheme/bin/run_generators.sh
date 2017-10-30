@@ -2,12 +2,12 @@
 
 for target in "$@"
 do
-    php ./bin/console provider:clear:interfaces Ivoz/$target &&
-    php ./bin/console provider:generate:entities:abstract Ivoz/$target && \
-    php ./bin/console provider:generate:traits Ivoz/$target && \
-    php ./bin/console provider:generate:entities Ivoz/$target && \
-    php ./bin/console provider:generate:interfaces Ivoz/$target && \
-    php ./bin/console provider:generate:dtos Ivoz/$target
+    php ./bin/console provider:clear:interfaces -v Ivoz/$target &&
+    php ./bin/console provider:generate:entities:abstract -v Ivoz/$target && \
+    php ./bin/console provider:generate:traits -v Ivoz/$target && \
+    php ./bin/console provider:generate:entities -v Ivoz/$target && \
+    php ./bin/console provider:generate:interfaces -v Ivoz/$target && \
+    php ./bin/console provider:generate:dtos -v Ivoz/$target
 done
 
 pushd /opt/irontec/ivozprovider

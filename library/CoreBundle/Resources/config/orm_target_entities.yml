@@ -35,8 +35,8 @@ doctrine:
         Ivoz\Provider\Domain\Model\CallAclRelPattern\CallAclRelPattern
       Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface:
         Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting
-      Ivoz\Provider\Domain\Model\ChangeHistory\ChangeHistoryInterface:
-        Ivoz\Provider\Domain\Model\ChangeHistory\ChangeHistory
+      Ivoz\Provider\Domain\Model\Commandlog\CommandlogInterface:
+        Ivoz\Provider\Domain\Model\Commandlog\Commandlog
       Ivoz\Provider\Domain\Model\Changelog\ChangelogInterface:
         Ivoz\Provider\Domain\Model\Changelog\Changelog
       Ivoz\Provider\Domain\Model\CompanyAdmin\CompanyAdminInterface:

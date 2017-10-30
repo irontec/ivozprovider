@@ -107,7 +107,7 @@ class DoctrineEntityPersister implements EntityPersisterInterface
 
         $transaction = function () use ($entity, $dispatchImmediately, $unitOfWork) {
 
-            $mustBePersisted = $this->rootEntity === $entity;
+            $mustBePersisted = ($this->rootEntity === $entity) || $dispatchImmediately;
             if (!$mustBePersisted) {
                 $oid = spl_object_hash($entity);
                 $this->pendingUpdates[$oid] = $entity;
