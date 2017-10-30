@@ -2,11 +2,13 @@
 
 namespace Ivoz\Provider\Domain\Model\PeerServer;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Doctrine\Common\Collections\Collection;
 
-interface PeerServerInterface extends EntityInterface
+interface PeerServerInterface extends LoggableEntityInterface
 {
+    public function getChangeSet();
+
     public function getFlags();
 
     /**
@@ -17,11 +19,6 @@ interface PeerServerInterface extends EntityInterface
     public function getLcrGateway();
 
     public function getName();
-
-    /**
-     * @return array
-     */
-    public function getChangeSet();
 
     /**
      * Set ip

@@ -2,13 +2,10 @@
 
 namespace Ivoz\Provider\Domain\Model\LcrRuleTarget;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface LcrRuleTargetInterface extends EntityInterface
+interface LcrRuleTargetInterface extends LoggableEntityInterface
 {
-    /**
-     * @return array
-     */
     public function getChangeSet();
 
     /**

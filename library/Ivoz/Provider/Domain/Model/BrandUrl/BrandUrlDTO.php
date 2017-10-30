@@ -67,6 +67,25 @@ class BrandUrlDTO implements DataTransferObjectInterface
     private $brand;
 
     /**
+     * @return array
+     */
+    public function __toArray()
+    {
+        return [
+            'url' => $this->getUrl(),
+            'klearTheme' => $this->getKlearTheme(),
+            'urlType' => $this->getUrlType(),
+            'name' => $this->getName(),
+            'userTheme' => $this->getUserTheme(),
+            'id' => $this->getId(),
+            'logoFileSize' => $this->getLogoFileSize(),
+            'logoMimeType' => $this->getLogoMimeType(),
+            'logoBaseName' => $this->getLogoBaseName(),
+            'brandId' => $this->getBrandId()
+        ];
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

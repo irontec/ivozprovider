@@ -9,6 +9,12 @@ class CallAclRelPattern extends CallAclRelPatternAbstract implements CallAclRelP
 {
     use CallAclRelPatternTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
+
     /**
      * Get id
      *

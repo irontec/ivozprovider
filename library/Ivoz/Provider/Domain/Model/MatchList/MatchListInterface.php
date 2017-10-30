@@ -2,11 +2,13 @@
 
 namespace Ivoz\Provider\Domain\Model\MatchList;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Doctrine\Common\Collections\Collection;
 
-interface MatchListInterface extends EntityInterface
+interface MatchListInterface extends LoggableEntityInterface
 {
+    public function getChangeSet();
+
     /**
      * Check if the given number matches the list rules
      *
@@ -14,11 +16,6 @@ interface MatchListInterface extends EntityInterface
      * @return true if number matches, false otherwise
      */
     public function numberMatches($number);
-
-    /**
-     * @return array
-     */
-    public function getChangeSet();
 
     /**
      * Set name

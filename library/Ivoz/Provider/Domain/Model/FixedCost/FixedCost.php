@@ -8,6 +8,12 @@ namespace Ivoz\Provider\Domain\Model\FixedCost;
 class FixedCost extends FixedCostAbstract implements FixedCostInterface
 {
     use FixedCostTrait;
+
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

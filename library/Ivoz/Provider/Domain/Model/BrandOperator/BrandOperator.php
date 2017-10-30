@@ -9,6 +9,16 @@ class BrandOperator extends BrandOperatorAbstract implements BrandOperatorInterf
 {
     use BrandOperatorTrait;
 
+    public function getChangeSet()
+    {
+        $changeSet = parent::getChangeSet();
+        if (isset($changeSet['pass'])) {
+            $changeSet['pass'] = '****';
+        }
+
+        return $changeSet;
+    }
+
     /**
      * Get id
      *

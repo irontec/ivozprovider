@@ -7,9 +7,10 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 interface CommandlogInterface extends EntityInterface
 {
     /**
-     * @return array
+     * @param CommandEventInterface $event
+     * @return Commandlog
      */
-    public function getChangeSet();
+    public static function fromEvent(\Ivoz\Core\Application\Event\CommandEventInterface $event);
 
     /**
      * Set requestId

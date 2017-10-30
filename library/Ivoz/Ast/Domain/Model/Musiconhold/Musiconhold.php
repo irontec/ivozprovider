@@ -9,6 +9,11 @@ class Musiconhold extends MusiconholdAbstract implements MusiconholdInterface
 {
     use MusiconholdTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

@@ -9,6 +9,12 @@ class Calendar extends CalendarAbstract implements CalendarInterface
 {
     use CalendarTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
+
     /**
      * Get id
      *

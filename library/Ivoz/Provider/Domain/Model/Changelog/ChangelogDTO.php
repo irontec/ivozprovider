@@ -47,11 +47,26 @@ class ChangelogDTO implements DataTransferObjectInterface
     private $command;
 
     /**
+     * @return array
+     */
+    public function __toArray()
+    {
+        return [
+            'entity' => $this->getEntity(),
+            'entityId' => $this->getEntityId(),
+            'data' => $this->getData(),
+            'createdOn' => $this->getCreatedOn(),
+            'id' => $this->getId(),
+            'commandId' => $this->getCommandId()
+        ];
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
-        $this->command = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Commandlog\\CommandlogInterface', $this->getCommandId());
+        $this->command = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Commandlog\\Commandlog', $this->getCommandId());
     }
 
     /**
@@ -183,7 +198,7 @@ class ChangelogDTO implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Commandlog\CommandlogInterface
+     * @return \Ivoz\Provider\Domain\Model\Commandlog\Commandlog
      */
     public function getCommand()
     {

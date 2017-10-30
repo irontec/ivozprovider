@@ -2,20 +2,17 @@
 
 namespace Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface OutgoingDdiRulesPatternInterface extends EntityInterface
+interface OutgoingDdiRulesPatternInterface extends LoggableEntityInterface
 {
+    public function getChangeSet();
+
     /**
      * Return forced Ddi for this rule pattern
      * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
      */
     public function getForcedDdi();
-
-    /**
-     * @return array
-     */
-    public function getChangeSet();
 
     /**
      * Set action

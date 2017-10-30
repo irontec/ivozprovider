@@ -2,10 +2,12 @@
 
 namespace Ivoz\Provider\Domain\Model\Ddi;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface DdiInterface extends EntityInterface
+interface DdiInterface extends LoggableEntityInterface
 {
+    public function getChangeSet();
+
     /**
      * @return string Domain
      */
@@ -14,11 +16,6 @@ interface DdiInterface extends EntityInterface
     public function getLanguageCode();
 
     public function setRouteType($routeType = null);
-
-    /**
-     * @return array
-     */
-    public function getChangeSet();
 
     /**
      * Set ddi

@@ -2,16 +2,13 @@
 
 namespace Ivoz\Provider\Domain\Model\Queue;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface QueueInterface extends EntityInterface
+interface QueueInterface extends LoggableEntityInterface
 {
-    public function getAstQueueName();
-
-    /**
-     * @return array
-     */
     public function getChangeSet();
+
+    public function getAstQueueName();
 
     /**
      * Set name

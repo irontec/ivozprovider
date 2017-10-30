@@ -9,6 +9,11 @@ class Domain extends DomainAbstract implements DomainInterface
 {
     use DomainTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

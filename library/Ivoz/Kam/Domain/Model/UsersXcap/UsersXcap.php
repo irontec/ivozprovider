@@ -9,6 +9,11 @@ class UsersXcap extends UsersXcapAbstract implements UsersXcapInterface
 {
     use UsersXcapTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

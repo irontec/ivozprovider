@@ -7,9 +7,10 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 interface ChangelogInterface extends EntityInterface
 {
     /**
-     * @return array
+     * @param EntityEventInterface $event
+     * @return Changelog
      */
-    public function getChangeSet();
+    public static function fromEvent(\Ivoz\Core\Domain\Event\EntityEventInterface $event);
 
     /**
      * Set entity

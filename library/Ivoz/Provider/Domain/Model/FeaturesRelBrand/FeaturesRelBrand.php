@@ -9,6 +9,11 @@ class FeaturesRelBrand extends FeaturesRelBrandAbstract implements FeaturesRelBr
 {
     use FeaturesRelBrandTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

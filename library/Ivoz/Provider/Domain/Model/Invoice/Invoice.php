@@ -8,6 +8,11 @@ class Invoice extends InvoiceAbstract implements InvoiceInterface
 {
     use InvoiceTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

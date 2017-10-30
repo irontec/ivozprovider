@@ -8,6 +8,11 @@ class OutgoingRouting extends OutgoingRoutingAbstract implements OutgoingRouting
 {
     use OutgoingRoutingTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

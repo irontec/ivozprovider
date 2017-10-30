@@ -9,6 +9,16 @@ class CompanyAdmin extends CompanyAdminAbstract implements CompanyAdminInterface
 {
     use CompanyAdminTrait;
 
+    public function getChangeSet()
+    {
+        $changeSet = parent::getChangeSet();
+        if (isset($changeSet['pass'])) {
+            $changeSet['pass'] = '****';
+        }
+
+        return $changeSet;
+    }
+
     /**
      * Get id
      *

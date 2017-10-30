@@ -8,6 +8,12 @@ namespace Ivoz\Provider\Domain\Model\GenericCallAclPattern;
 class GenericCallAclPattern extends GenericCallAclPatternAbstract implements GenericCallAclPatternInterface
 {
     use GenericCallAclPatternTrait;
+
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

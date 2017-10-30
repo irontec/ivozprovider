@@ -9,6 +9,12 @@ class CallAclPattern extends CallAclPatternAbstract implements CallAclPatternInt
 {
     use CallAclPatternTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
+
     /**
      * Get id
      *

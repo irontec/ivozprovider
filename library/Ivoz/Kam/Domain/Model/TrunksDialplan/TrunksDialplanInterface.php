@@ -2,10 +2,12 @@
 
 namespace Ivoz\Kam\Domain\Model\TrunksDialplan;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface TrunksDialplanInterface extends EntityInterface
+interface TrunksDialplanInterface extends LoggableEntityInterface
 {
+    public function getChangeSet();
+
     public function getParentReferenceField();
 
     /**
@@ -19,11 +21,6 @@ interface TrunksDialplanInterface extends EntityInterface
      * @return self
      */
     public function setDpid($dpid = null);
-
-    /**
-     * @return array
-     */
-    public function getChangeSet();
 
     /**
      * Get dpid

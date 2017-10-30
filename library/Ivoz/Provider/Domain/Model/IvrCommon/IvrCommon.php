@@ -13,6 +13,11 @@ class IvrCommon extends IvrCommonAbstract implements IvrCommonInterface
 {
     use IvrCommonTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

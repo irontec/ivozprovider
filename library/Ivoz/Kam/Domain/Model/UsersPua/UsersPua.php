@@ -9,6 +9,11 @@ class UsersPua extends UsersPuaAbstract implements UsersPuaInterface
 {
     use UsersPuaTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

@@ -9,6 +9,11 @@ class Schedule extends ScheduleAbstract implements ScheduleInterface
 {
     use ScheduleTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

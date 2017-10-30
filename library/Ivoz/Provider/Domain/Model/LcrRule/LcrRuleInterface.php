@@ -2,16 +2,13 @@
 
 namespace Ivoz\Provider\Domain\Model\LcrRule;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface LcrRuleInterface extends EntityInterface
+interface LcrRuleInterface extends LoggableEntityInterface
 {
-    public function setCondition($regexp);
-
-    /**
-     * @return array
-     */
     public function getChangeSet();
+
+    public function setCondition($regexp);
 
     /**
      * Set lcrId

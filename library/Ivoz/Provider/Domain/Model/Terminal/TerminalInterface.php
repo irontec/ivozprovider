@@ -2,11 +2,13 @@
 
 namespace Ivoz\Provider\Domain\Model\Terminal;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Doctrine\Common\Collections\Collection;
 
-interface TerminalInterface extends EntityInterface
+interface TerminalInterface extends LoggableEntityInterface
 {
+    public function getChangeSet();
+
     public function getUser();
 
     /**
@@ -28,11 +30,6 @@ interface TerminalInterface extends EntityInterface
      * @return PsEndpointInterface
      */
     public function getAstPsEndpoint();
-
-    /**
-     * @return array
-     */
-    public function getChangeSet();
 
     /**
      * Set name

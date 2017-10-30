@@ -9,6 +9,11 @@ class Service extends ServiceAbstract implements ServiceInterface
 {
     use ServiceTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

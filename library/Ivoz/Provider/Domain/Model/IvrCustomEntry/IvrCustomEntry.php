@@ -8,6 +8,11 @@ class IvrCustomEntry extends IvrCustomEntryAbstract implements IvrCustomEntryInt
 {
     use IvrCustomEntryTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

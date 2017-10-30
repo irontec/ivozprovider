@@ -23,11 +23,6 @@ interface AccCdrInterface extends EntityInterface
     public function setPricingPlanDetailsFromArray(array $data);
 
     /**
-     * @return array
-     */
-    public function getChangeSet();
-
-    /**
      * Set proxy
      *
      * @param string $proxy

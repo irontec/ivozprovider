@@ -52,6 +52,21 @@ class OutgoingDdiRuleDTO implements DataTransferObjectInterface
     private $patterns = null;
 
     /**
+     * @return array
+     */
+    public function __toArray()
+    {
+        return [
+            'name' => $this->getName(),
+            'defaultAction' => $this->getDefaultAction(),
+            'id' => $this->getId(),
+            'companyId' => $this->getCompanyId(),
+            'forcedDdiId' => $this->getForcedDdiId(),
+            'patterns' => $this->getPatterns()
+        ];
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

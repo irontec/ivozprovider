@@ -8,6 +8,11 @@ class UsersActiveWatcher extends UsersActiveWatcherAbstract implements UsersActi
 {
     use UsersActiveWatcherTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

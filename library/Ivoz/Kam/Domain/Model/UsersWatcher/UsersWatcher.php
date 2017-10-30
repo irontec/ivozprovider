@@ -9,6 +9,11 @@ class UsersWatcher extends UsersWatcherAbstract implements UsersWatcherInterface
 {
     use UsersWatcherTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

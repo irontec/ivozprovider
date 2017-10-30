@@ -2,13 +2,10 @@
 
 namespace Ivoz\Provider\Domain\Model\CallAclPattern;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface CallAclPatternInterface extends EntityInterface
+interface CallAclPatternInterface extends LoggableEntityInterface
 {
-    /**
-     * @return array
-     */
     public function getChangeSet();
 
     /**

@@ -157,6 +157,35 @@ class IvrCommonDTO implements DataTransferObjectInterface
     private $extensions = null;
 
     /**
+     * @return array
+     */
+    public function __toArray()
+    {
+        return [
+            'name' => $this->getName(),
+            'blackListRegExp' => $this->getBlackListRegExp(),
+            'timeout' => $this->getTimeout(),
+            'maxDigits' => $this->getMaxDigits(),
+            'noAnswerTimeout' => $this->getNoAnswerTimeout(),
+            'timeoutTargetType' => $this->getTimeoutTargetType(),
+            'timeoutNumberValue' => $this->getTimeoutNumberValue(),
+            'errorTargetType' => $this->getErrorTargetType(),
+            'errorNumberValue' => $this->getErrorNumberValue(),
+            'id' => $this->getId(),
+            'companyId' => $this->getCompanyId(),
+            'welcomeLocutionId' => $this->getWelcomeLocutionId(),
+            'noAnswerLocutionId' => $this->getNoAnswerLocutionId(),
+            'errorLocutionId' => $this->getErrorLocutionId(),
+            'successLocutionId' => $this->getSuccessLocutionId(),
+            'timeoutExtensionId' => $this->getTimeoutExtensionId(),
+            'errorExtensionId' => $this->getErrorExtensionId(),
+            'timeoutVoiceMailUserId' => $this->getTimeoutVoiceMailUserId(),
+            'errorVoiceMailUserId' => $this->getErrorVoiceMailUserId(),
+            'extensions' => $this->getExtensions()
+        ];
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

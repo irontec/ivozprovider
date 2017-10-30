@@ -52,6 +52,23 @@ class ServiceDTO implements DataTransferObjectInterface
     private $descriptionEs = '';
 
     /**
+     * @return array
+     */
+    public function __toArray()
+    {
+        return [
+            'iden' => $this->getIden(),
+            'defaultCode' => $this->getDefaultCode(),
+            'extraArgs' => $this->getExtraArgs(),
+            'id' => $this->getId(),
+            'nameEn' => $this->getNameEn(),
+            'nameEs' => $this->getNameEs(),
+            'descriptionEn' => $this->getDescriptionEn(),
+            'descriptionEs' => $this->getDescriptionEs()
+        ];
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

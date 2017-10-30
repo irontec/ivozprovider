@@ -42,6 +42,20 @@ class CallAclDTO implements DataTransferObjectInterface
     private $relPatterns = null;
 
     /**
+     * @return array
+     */
+    public function __toArray()
+    {
+        return [
+            'name' => $this->getName(),
+            'defaultPolicy' => $this->getDefaultPolicy(),
+            'id' => $this->getId(),
+            'companyId' => $this->getCompanyId(),
+            'relPatterns' => $this->getRelPatterns()
+        ];
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

@@ -8,6 +8,11 @@ class LcrGateway extends LcrGatewayAbstract implements LcrGatewayInterface
 {
     use LcrGatewayTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

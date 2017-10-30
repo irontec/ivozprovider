@@ -127,6 +127,38 @@ class UsersLocationDTO implements DataTransferObjectInterface
     private $id;
 
     /**
+     * @return array
+     */
+    public function __toArray()
+    {
+        return [
+            'ruid' => $this->getRuid(),
+            'username' => $this->getUsername(),
+            'domain' => $this->getDomain(),
+            'contact' => $this->getContact(),
+            'received' => $this->getReceived(),
+            'path' => $this->getPath(),
+            'expires' => $this->getExpires(),
+            'q' => $this->getQ(),
+            'callid' => $this->getCallid(),
+            'cseq' => $this->getCseq(),
+            'lastModified' => $this->getLastModified(),
+            'flags' => $this->getFlags(),
+            'cflags' => $this->getCflags(),
+            'userAgent' => $this->getUserAgent(),
+            'socket' => $this->getSocket(),
+            'methods' => $this->getMethods(),
+            'instance' => $this->getInstance(),
+            'regId' => $this->getRegId(),
+            'serverId' => $this->getServerId(),
+            'connectionId' => $this->getConnectionId(),
+            'keepalive' => $this->getKeepalive(),
+            'partition' => $this->getPartition(),
+            'id' => $this->getId()
+        ];
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

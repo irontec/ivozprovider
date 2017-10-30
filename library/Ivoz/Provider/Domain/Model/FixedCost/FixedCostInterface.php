@@ -2,13 +2,10 @@
 
 namespace Ivoz\Provider\Domain\Model\FixedCost;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface FixedCostInterface extends EntityInterface
+interface FixedCostInterface extends LoggableEntityInterface
 {
-    /**
-     * @return array
-     */
     public function getChangeSet();
 
     /**

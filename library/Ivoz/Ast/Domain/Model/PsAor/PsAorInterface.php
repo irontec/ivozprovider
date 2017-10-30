@@ -2,13 +2,10 @@
 
 namespace Ivoz\Ast\Domain\Model\PsAor;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface PsAorInterface extends EntityInterface
+interface PsAorInterface extends LoggableEntityInterface
 {
-    /**
-     * @return array
-     */
     public function getChangeSet();
 
     /**

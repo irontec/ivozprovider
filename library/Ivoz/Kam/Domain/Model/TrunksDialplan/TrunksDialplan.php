@@ -19,6 +19,11 @@ class TrunksDialplan extends TrunksDialplanAbstract implements TrunksDialplanInt
      */
     private $parentReferenceField;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Factory method
      * @param DataTransferObjectInterface $dto

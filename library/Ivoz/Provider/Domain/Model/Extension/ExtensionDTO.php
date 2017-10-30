@@ -44,12 +44,12 @@ class ExtensionDTO implements DataTransferObjectInterface
     /**
      * @var mixed
      */
-    private $IvrCommonId;
+    private $ivrCommonId;
 
     /**
      * @var mixed
      */
-    private $IvrCustomId;
+    private $ivrCustomId;
 
     /**
      * @var mixed
@@ -84,12 +84,12 @@ class ExtensionDTO implements DataTransferObjectInterface
     /**
      * @var mixed
      */
-    private $IvrCommon;
+    private $ivrCommon;
 
     /**
      * @var mixed
      */
-    private $IvrCustom;
+    private $ivrCustom;
 
     /**
      * @var mixed
@@ -120,6 +120,29 @@ class ExtensionDTO implements DataTransferObjectInterface
      * @var array|null
      */
     private $users = null;
+
+    /**
+     * @return array
+     */
+    public function __toArray()
+    {
+        return [
+            'number' => $this->getNumber(),
+            'routeType' => $this->getRouteType(),
+            'numberValue' => $this->getNumberValue(),
+            'friendValue' => $this->getFriendValue(),
+            'id' => $this->getId(),
+            'companyId' => $this->getCompanyId(),
+            'ivrCommonId' => $this->getIvrCommonId(),
+            'ivrCustomId' => $this->getIvrCustomId(),
+            'huntGroupId' => $this->getHuntGroupId(),
+            'conferenceRoomId' => $this->getConferenceRoomId(),
+            'userId' => $this->getUserId(),
+            'queueId' => $this->getQueueId(),
+            'conditionalRouteId' => $this->getConditionalRouteId(),
+            'users' => $this->getUsers()
+        ];
+    }
 
     /**
      * {@inheritDoc}
@@ -293,7 +316,7 @@ class ExtensionDTO implements DataTransferObjectInterface
      */
     public function setIvrCommonId($ivrCommonId)
     {
-        $this->IvrCommonId = $ivrCommonId;
+        $this->ivrCommonId = $ivrCommonId;
 
         return $this;
     }
@@ -303,7 +326,7 @@ class ExtensionDTO implements DataTransferObjectInterface
      */
     public function getIvrCommonId()
     {
-        return $this->IvrCommonId;
+        return $this->ivrCommonId;
     }
 
     /**
@@ -311,7 +334,7 @@ class ExtensionDTO implements DataTransferObjectInterface
      */
     public function getIvrCommon()
     {
-        return $this->IvrCommon;
+        return $this->ivrCommon;
     }
 
     /**
@@ -321,7 +344,7 @@ class ExtensionDTO implements DataTransferObjectInterface
      */
     public function setIvrCustomId($ivrCustomId)
     {
-        $this->IvrCustomId = $ivrCustomId;
+        $this->ivrCustomId = $ivrCustomId;
 
         return $this;
     }
@@ -331,7 +354,7 @@ class ExtensionDTO implements DataTransferObjectInterface
      */
     public function getIvrCustomId()
     {
-        return $this->IvrCustomId;
+        return $this->ivrCustomId;
     }
 
     /**
@@ -339,7 +362,7 @@ class ExtensionDTO implements DataTransferObjectInterface
      */
     public function getIvrCustom()
     {
-        return $this->IvrCustom;
+        return $this->ivrCustom;
     }
 
     /**

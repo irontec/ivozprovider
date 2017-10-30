@@ -127,6 +127,36 @@ class PeerServerDTO implements DataTransferObjectInterface
     private $lcrGateways = null;
 
     /**
+     * @return array
+     */
+    public function __toArray()
+    {
+        return [
+            'ip' => $this->getIp(),
+            'hostname' => $this->getHostname(),
+            'port' => $this->getPort(),
+            'params' => $this->getParams(),
+            'uriScheme' => $this->getUriScheme(),
+            'transport' => $this->getTransport(),
+            'strip' => $this->getStrip(),
+            'prefix' => $this->getPrefix(),
+            'sendPAI' => $this->getSendPAI(),
+            'sendRPID' => $this->getSendRPID(),
+            'authNeeded' => $this->getAuthNeeded(),
+            'authUser' => $this->getAuthUser(),
+            'authPassword' => $this->getAuthPassword(),
+            'sipProxy' => $this->getSipProxy(),
+            'outboundProxy' => $this->getOutboundProxy(),
+            'fromUser' => $this->getFromUser(),
+            'fromDomain' => $this->getFromDomain(),
+            'id' => $this->getId(),
+            'peeringContractId' => $this->getPeeringContractId(),
+            'brandId' => $this->getBrandId(),
+            'lcrGateways' => $this->getLcrGateways()
+        ];
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

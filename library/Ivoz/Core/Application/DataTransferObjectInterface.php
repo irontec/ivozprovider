@@ -5,6 +5,11 @@ namespace Ivoz\Core\Application;
 interface DataTransferObjectInterface
 {
     /**
+     * @return array
+     */
+    public function __toArray();
+
+    /**
      * @param ForeignKeyTransformerInterface $transformer
      * @return null
      */

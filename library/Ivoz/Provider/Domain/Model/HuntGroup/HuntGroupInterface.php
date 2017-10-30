@@ -2,21 +2,18 @@
 
 namespace Ivoz\Provider\Domain\Model\HuntGroup;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Doctrine\Common\Collections\Collection;
 
-interface HuntGroupInterface extends EntityInterface
+interface HuntGroupInterface extends LoggableEntityInterface
 {
+    public function getChangeSet();
+
     /**
      * Get this Hungroup related users
      * @return User[]
      */
     public function getHuntGroupUsersArray();
-
-    /**
-     * @return array
-     */
-    public function getChangeSet();
 
     /**
      * Set name

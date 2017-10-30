@@ -2,13 +2,10 @@
 
 namespace Ivoz\Provider\Domain\Model\PickUpRelUser;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface PickUpRelUserInterface extends EntityInterface
+interface PickUpRelUserInterface extends LoggableEntityInterface
 {
-    /**
-     * @return array
-     */
     public function getChangeSet();
 
     /**

@@ -2,13 +2,10 @@
 
 namespace Ivoz\Provider\Domain\Model\FriendsPattern;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface FriendsPatternInterface extends EntityInterface
+interface FriendsPatternInterface extends LoggableEntityInterface
 {
-    /**
-     * @return array
-     */
     public function getChangeSet();
 
     /**

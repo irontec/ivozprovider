@@ -2,13 +2,10 @@
 
 namespace Ivoz\Provider\Domain\Model\LcrGateway;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface LcrGatewayInterface extends EntityInterface
+interface LcrGatewayInterface extends LoggableEntityInterface
 {
-    /**
-     * @return array
-     */
     public function getChangeSet();
 
     /**

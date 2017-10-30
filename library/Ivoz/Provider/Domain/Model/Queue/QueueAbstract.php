@@ -175,7 +175,7 @@ abstract class QueueAbstract
     /**
      * @return array
      */
-    public function getChangeSet()
+    protected function getChangeSet()
     {
         $changes = [];
         $currentValues = $this->__toArray();
@@ -184,7 +184,13 @@ abstract class QueueAbstract
             if ($this->_initialValues[$key] == $currentValues[$key]) {
                 continue;
             }
-            $changes[$key] = $currentValues[$key];
+
+            $value = $currentValues[$key];
+            if ($value instanceof \DateTime) {
+                $value = $value->format('Y-m-d H:i:s');
+            }
+
+            $changes[$key] = $value;
         }
 
         return $changes;

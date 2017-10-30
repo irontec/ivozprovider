@@ -15,6 +15,16 @@ class Friend extends FriendAbstract implements FriendInterface
 {
     use FriendTrait;
 
+    public function getChangeSet()
+    {
+        $changeSet = parent::getChangeSet();
+        if (isset($changeSet['password'])) {
+            $changeSet['password'] = '****';
+        }
+
+        return $changeSet;
+    }
+
     /**
      * Get id
      *

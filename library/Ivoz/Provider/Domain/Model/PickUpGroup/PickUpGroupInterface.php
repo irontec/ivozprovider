@@ -2,14 +2,11 @@
 
 namespace Ivoz\Provider\Domain\Model\PickUpGroup;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Doctrine\Common\Collections\Collection;
 
-interface PickUpGroupInterface extends EntityInterface
+interface PickUpGroupInterface extends LoggableEntityInterface
 {
-    /**
-     * @return array
-     */
     public function getChangeSet();
 
     /**

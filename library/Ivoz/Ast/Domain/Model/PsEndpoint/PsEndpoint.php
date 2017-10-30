@@ -12,6 +12,11 @@ class PsEndpoint extends PsEndpointAbstract implements PsEndpointInterface
 {
     use PsEndpointTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

@@ -2,13 +2,10 @@
 
 namespace Ivoz\Provider\Domain\Model\HolidayDate;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface HolidayDateInterface extends EntityInterface
+interface HolidayDateInterface extends LoggableEntityInterface
 {
-    /**
-     * @return array
-     */
     public function getChangeSet();
 
     /**

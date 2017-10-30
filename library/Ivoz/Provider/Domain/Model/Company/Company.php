@@ -10,7 +10,6 @@ use Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompany;
  */
 class Company extends CompanyAbstract implements CompanyInterface
 {
-    use CompanyTrait;
     const EMPTY_DOMAIN_EXCEPTION = 2001;
 
     /**
@@ -19,6 +18,13 @@ class Company extends CompanyAbstract implements CompanyInterface
     const VPBX      = 'vpbx';
 
     const RETAIL    = "retail";
+
+    use CompanyTrait;
+
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
 
     /**
      * Get id

@@ -2,13 +2,10 @@
 
 namespace Ivoz\Provider\Domain\Model\Timezone;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface TimezoneInterface extends EntityInterface
+interface TimezoneInterface extends LoggableEntityInterface
 {
-    /**
-     * @return array
-     */
     public function getChangeSet();
 
     /**

@@ -2,11 +2,13 @@
 
 namespace Ivoz\Provider\Domain\Model\Extension;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Doctrine\Common\Collections\Collection;
 
-interface ExtensionInterface extends EntityInterface
+interface ExtensionInterface extends LoggableEntityInterface
 {
+    public function getChangeSet();
+
     public function toArrayPortal();
 
     /**
@@ -15,11 +17,6 @@ interface ExtensionInterface extends EntityInterface
      * @return \Ivoz\Provider\Domain\Model\User\UserInterface|null
      */
     public function getScreenUser();
-
-    /**
-     * @return array
-     */
-    public function getChangeSet();
 
     /**
      * Set number

@@ -2,11 +2,13 @@
 
 namespace Ivoz\Provider\Domain\Model\User;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Doctrine\Common\Collections\Collection;
 
-interface UserInterface extends EntityInterface
+interface UserInterface extends LoggableEntityInterface
 {
+    public function getChangeSet();
+
     /**
      * return associated endpoint with the user
      *
@@ -137,11 +139,6 @@ interface UserInterface extends EntityInterface
      * @return string
      */
     public function getAreaCodeValue();
-
-    /**
-     * @return array
-     */
-    public function getChangeSet();
 
     /**
      * Set name

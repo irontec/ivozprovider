@@ -37,6 +37,19 @@ class CalendarDTO implements DataTransferObjectInterface
     private $holidayDates = null;
 
     /**
+     * @return array
+     */
+    public function __toArray()
+    {
+        return [
+            'name' => $this->getName(),
+            'id' => $this->getId(),
+            'companyId' => $this->getCompanyId(),
+            'holidayDates' => $this->getHolidayDates()
+        ];
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

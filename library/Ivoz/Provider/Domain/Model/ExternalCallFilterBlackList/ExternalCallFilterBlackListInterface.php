@@ -2,13 +2,10 @@
 
 namespace Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface ExternalCallFilterBlackListInterface extends EntityInterface
+interface ExternalCallFilterBlackListInterface extends LoggableEntityInterface
 {
-    /**
-     * @return array
-     */
     public function getChangeSet();
 
     /**

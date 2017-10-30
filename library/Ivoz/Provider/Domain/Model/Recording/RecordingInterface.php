@@ -2,19 +2,16 @@
 
 namespace Ivoz\Provider\Domain\Model\Recording;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface RecordingInterface extends EntityInterface
+interface RecordingInterface extends LoggableEntityInterface
 {
+    public function getChangeSet();
+
     /**
      * @return array
      */
     public function getFileObjects();
-
-    /**
-     * @return array
-     */
-    public function getChangeSet();
 
     /**
      * Set callid

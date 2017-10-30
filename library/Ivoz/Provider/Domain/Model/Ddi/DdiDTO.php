@@ -89,12 +89,12 @@ class DdiDTO implements DataTransferObjectInterface
     /**
      * @var mixed
      */
-    private $IvrCommonId;
+    private $ivrCommonId;
 
     /**
      * @var mixed
      */
-    private $IvrCustomId;
+    private $ivrCustomId;
 
     /**
      * @var mixed
@@ -164,12 +164,12 @@ class DdiDTO implements DataTransferObjectInterface
     /**
      * @var mixed
      */
-    private $IvrCommon;
+    private $ivrCommon;
 
     /**
      * @var mixed
      */
-    private $IvrCustom;
+    private $ivrCustom;
 
     /**
      * @var mixed
@@ -200,6 +200,38 @@ class DdiDTO implements DataTransferObjectInterface
      * @var mixed
      */
     private $conditionalRoute;
+
+    /**
+     * @return array
+     */
+    public function __toArray()
+    {
+        return [
+            'ddi' => $this->getDdi(),
+            'ddie164' => $this->getDdie164(),
+            'recordCalls' => $this->getRecordCalls(),
+            'displayName' => $this->getDisplayName(),
+            'routeType' => $this->getRouteType(),
+            'billInboundCalls' => $this->getBillInboundCalls(),
+            'friendValue' => $this->getFriendValue(),
+            'id' => $this->getId(),
+            'companyId' => $this->getCompanyId(),
+            'brandId' => $this->getBrandId(),
+            'conferenceRoomId' => $this->getConferenceRoomId(),
+            'languageId' => $this->getLanguageId(),
+            'queueId' => $this->getQueueId(),
+            'externalCallFilterId' => $this->getExternalCallFilterId(),
+            'userId' => $this->getUserId(),
+            'ivrCommonId' => $this->getIvrCommonId(),
+            'ivrCustomId' => $this->getIvrCustomId(),
+            'huntGroupId' => $this->getHuntGroupId(),
+            'faxId' => $this->getFaxId(),
+            'peeringContractId' => $this->getPeeringContractId(),
+            'countryId' => $this->getCountryId(),
+            'retailAccountId' => $this->getRetailAccountId(),
+            'conditionalRouteId' => $this->getConditionalRouteId()
+        ];
+    }
 
     /**
      * {@inheritDoc}
@@ -594,7 +626,7 @@ class DdiDTO implements DataTransferObjectInterface
      */
     public function setIvrCommonId($ivrCommonId)
     {
-        $this->IvrCommonId = $ivrCommonId;
+        $this->ivrCommonId = $ivrCommonId;
 
         return $this;
     }
@@ -604,7 +636,7 @@ class DdiDTO implements DataTransferObjectInterface
      */
     public function getIvrCommonId()
     {
-        return $this->IvrCommonId;
+        return $this->ivrCommonId;
     }
 
     /**
@@ -612,7 +644,7 @@ class DdiDTO implements DataTransferObjectInterface
      */
     public function getIvrCommon()
     {
-        return $this->IvrCommon;
+        return $this->ivrCommon;
     }
 
     /**
@@ -622,7 +654,7 @@ class DdiDTO implements DataTransferObjectInterface
      */
     public function setIvrCustomId($ivrCustomId)
     {
-        $this->IvrCustomId = $ivrCustomId;
+        $this->ivrCustomId = $ivrCustomId;
 
         return $this;
     }
@@ -632,7 +664,7 @@ class DdiDTO implements DataTransferObjectInterface
      */
     public function getIvrCustomId()
     {
-        return $this->IvrCustomId;
+        return $this->ivrCustomId;
     }
 
     /**
@@ -640,7 +672,7 @@ class DdiDTO implements DataTransferObjectInterface
      */
     public function getIvrCustom()
     {
-        return $this->IvrCustom;
+        return $this->ivrCustom;
     }
 
     /**

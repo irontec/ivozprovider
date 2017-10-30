@@ -37,6 +37,19 @@ class MatchListDTO implements DataTransferObjectInterface
     private $patterns = null;
 
     /**
+     * @return array
+     */
+    public function __toArray()
+    {
+        return [
+            'name' => $this->getName(),
+            'id' => $this->getId(),
+            'companyId' => $this->getCompanyId(),
+            'patterns' => $this->getPatterns()
+        ];
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

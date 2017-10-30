@@ -68,6 +68,25 @@ class GenericMusicOnHoldDTO implements DataTransferObjectInterface
     private $brand;
 
     /**
+     * @return array
+     */
+    public function __toArray()
+    {
+        return [
+            'name' => $this->getName(),
+            'status' => $this->getStatus(),
+            'id' => $this->getId(),
+            'originalFileFileSize' => $this->getOriginalFileFileSize(),
+            'originalFileMimeType' => $this->getOriginalFileMimeType(),
+            'originalFileBaseName' => $this->getOriginalFileBaseName(),
+            'encodedFileFileSize' => $this->getEncodedFileFileSize(),
+            'encodedFileMimeType' => $this->getEncodedFileMimeType(),
+            'encodedFileBaseName' => $this->getEncodedFileBaseName(),
+            'brandId' => $this->getBrandId()
+        ];
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

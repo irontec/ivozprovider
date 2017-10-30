@@ -9,6 +9,11 @@ class UsersPresentity extends UsersPresentityAbstract implements UsersPresentity
 {
     use UsersPresentityTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

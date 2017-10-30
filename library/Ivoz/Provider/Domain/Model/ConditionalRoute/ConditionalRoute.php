@@ -10,6 +10,11 @@ class ConditionalRoute extends ConditionalRouteAbstract implements ConditionalRo
 {
     use ConditionalRouteTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

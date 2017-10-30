@@ -37,6 +37,18 @@ class ConditionalRoutesConditionsRelMatchlistDTO implements DataTransferObjectIn
     private $matchlist;
 
     /**
+     * @return array
+     */
+    public function __toArray()
+    {
+        return [
+            'id' => $this->getId(),
+            'conditionId' => $this->getConditionId(),
+            'matchlistId' => $this->getMatchlistId()
+        ];
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

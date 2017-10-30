@@ -2,13 +2,10 @@
 
 namespace Ivoz\Provider\Domain\Model\FixedCostsRelInvoice;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface FixedCostsRelInvoiceInterface extends EntityInterface
+interface FixedCostsRelInvoiceInterface extends LoggableEntityInterface
 {
-    /**
-     * @return array
-     */
     public function getChangeSet();
 
     /**

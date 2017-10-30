@@ -2,11 +2,13 @@
 
 namespace Ivoz\Provider\Domain\Model\OutgoingDdiRule;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Doctrine\Common\Collections\Collection;
 
-interface OutgoingDdiRuleInterface extends EntityInterface
+interface OutgoingDdiRuleInterface extends LoggableEntityInterface
 {
+    public function getChangeSet();
+
     /**
      * Return forced Ddi for this rule
      * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
@@ -18,11 +20,6 @@ interface OutgoingDdiRuleInterface extends EntityInterface
      * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
      */
     public function getOutgoingDdi($originalDdi, $e164destination);
-
-    /**
-     * @return array
-     */
-    public function getChangeSet();
 
     /**
      * Set name

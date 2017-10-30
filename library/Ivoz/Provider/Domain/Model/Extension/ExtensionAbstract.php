@@ -40,12 +40,12 @@ abstract class ExtensionAbstract
     /**
      * @var \Ivoz\Provider\Domain\Model\IvrCommon\IvrCommonInterface
      */
-    protected $IvrCommon;
+    protected $ivrCommon;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\IvrCustom\IvrCustomInterface
      */
-    protected $IvrCustom;
+    protected $ivrCustom;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface
@@ -134,7 +134,7 @@ abstract class ExtensionAbstract
     /**
      * @return array
      */
-    public function getChangeSet()
+    protected function getChangeSet()
     {
         $changes = [];
         $currentValues = $this->__toArray();
@@ -143,7 +143,13 @@ abstract class ExtensionAbstract
             if ($this->_initialValues[$key] == $currentValues[$key]) {
                 continue;
             }
-            $changes[$key] = $currentValues[$key];
+
+            $value = $currentValues[$key];
+            if ($value instanceof \DateTime) {
+                $value = $value->format('Y-m-d H:i:s');
+            }
+
+            $changes[$key] = $value;
         }
 
         return $changes;
@@ -416,7 +422,7 @@ abstract class ExtensionAbstract
      */
     public function setIvrCommon(\Ivoz\Provider\Domain\Model\IvrCommon\IvrCommonInterface $ivrCommon = null)
     {
-        $this->IvrCommon = $ivrCommon;
+        $this->ivrCommon = $ivrCommon;
 
         return $this;
     }
@@ -428,7 +434,7 @@ abstract class ExtensionAbstract
      */
     public function getIvrCommon()
     {
-        return $this->IvrCommon;
+        return $this->ivrCommon;
     }
 
     /**
@@ -440,7 +446,7 @@ abstract class ExtensionAbstract
      */
     public function setIvrCustom(\Ivoz\Provider\Domain\Model\IvrCustom\IvrCustomInterface $ivrCustom = null)
     {
-        $this->IvrCustom = $ivrCustom;
+        $this->ivrCustom = $ivrCustom;
 
         return $this;
     }
@@ -452,7 +458,7 @@ abstract class ExtensionAbstract
      */
     public function getIvrCustom()
     {
-        return $this->IvrCustom;
+        return $this->ivrCustom;
     }
 
     /**

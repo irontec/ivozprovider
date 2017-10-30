@@ -37,6 +37,18 @@ class RoutingPatternGroupsRelPatternDTO implements DataTransferObjectInterface
     private $routingPatternGroup;
 
     /**
+     * @return array
+     */
+    public function __toArray()
+    {
+        return [
+            'id' => $this->getId(),
+            'routingPatternId' => $this->getRoutingPatternId(),
+            'routingPatternGroupId' => $this->getRoutingPatternGroupId()
+        ];
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

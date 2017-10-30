@@ -2,21 +2,18 @@
 
 namespace Ivoz\Provider\Domain\Model\CallAcl;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Doctrine\Common\Collections\Collection;
 
-interface CallAclInterface extends EntityInterface
+interface CallAclInterface extends LoggableEntityInterface
 {
+    public function getChangeSet();
+
     /**
      * @param $dst
      * @return bool
      */
     public function dstIsCallable($dst);
-
-    /**
-     * @return array
-     */
-    public function getChangeSet();
 
     /**
      * Set name

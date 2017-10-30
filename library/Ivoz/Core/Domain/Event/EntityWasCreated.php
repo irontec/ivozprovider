@@ -2,8 +2,16 @@
 
 namespace Ivoz\Core\Domain\Event;
 
-class EntityWasCreated implements DomainEventInterface
+use Ramsey\Uuid\Uuid;
+
+class EntityWasCreated implements EntityEventInterface
 {
+
+    /**
+     * @var int
+     */
+    protected $id;
+
     /**
      * @var string
      */
@@ -12,12 +20,12 @@ class EntityWasCreated implements DomainEventInterface
     /**
      * @var int
      */
-    protected $id;
+    protected $entityId;
 
     /**
      * @var array
      */
-    protected $changeSet;
+    protected $data;
 
     /**
      * @var \DateTimeImmutable
@@ -26,23 +34,18 @@ class EntityWasCreated implements DomainEventInterface
 
     public function __construct(
         string $entityClass,
-        /** @todo not nullable */
-        $id = null,
-        array $changeSet
+        $entityId,
+        array $data = null
     ) {
         $this->entityClass = $entityClass;
-        $this->id = $id;
-        $this->changeSet = $changeSet;
+        $this->entityId = $entityId;
+        $this->data = $data;
 
-        $this->occurredOn = new \DateTimeImmutable(
+        $this->id = Uuid::uuid4()->toString();
+        $this->occurredOn = new \DateTime(
             'now',
             new \DateTimeZone('UTC')
         );
-    }
-
-    public function getEntityClass()
-    {
-        return $this->entityClass;
     }
 
     public function getId()
@@ -50,9 +53,19 @@ class EntityWasCreated implements DomainEventInterface
         return $this->id;
     }
 
-    public function getChangeSet()
+    public function getEntityClass()
     {
-        return $this->changeSet;
+        return $this->entityClass;
+    }
+
+    public function getEntityId()
+    {
+        return $this->entityId;
+    }
+
+    public function getData()
+    {
+        return $this->data;
     }
 
     public function getOccurredOn()

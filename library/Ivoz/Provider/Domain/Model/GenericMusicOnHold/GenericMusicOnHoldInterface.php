@@ -2,21 +2,18 @@
 
 namespace Ivoz\Provider\Domain\Model\GenericMusicOnHold;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface GenericMusicOnHoldInterface extends EntityInterface
+interface GenericMusicOnHoldInterface extends LoggableEntityInterface
 {
+    public function getChangeSet();
+
     /**
      * @return array
      */
     public function getFileObjects();
 
     public function getOwner();
-
-    /**
-     * @return array
-     */
-    public function getChangeSet();
 
     /**
      * Set name

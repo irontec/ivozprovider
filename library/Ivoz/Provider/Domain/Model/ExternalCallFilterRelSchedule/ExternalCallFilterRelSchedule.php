@@ -9,6 +9,11 @@ class ExternalCallFilterRelSchedule extends ExternalCallFilterRelScheduleAbstrac
 {
     use ExternalCallFilterRelScheduleTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

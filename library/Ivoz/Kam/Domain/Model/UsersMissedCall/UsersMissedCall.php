@@ -9,6 +9,11 @@ class UsersMissedCall extends UsersMissedCallAbstract implements UsersMissedCall
 {
     use UsersMissedCallTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

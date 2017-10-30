@@ -8,6 +8,11 @@ class HuntGroupsRelUser extends HuntGroupsRelUserAbstract implements HuntGroupsR
 {
     use HuntGroupsRelUserTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

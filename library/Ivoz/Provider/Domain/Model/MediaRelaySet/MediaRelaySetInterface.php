@@ -2,13 +2,10 @@
 
 namespace Ivoz\Provider\Domain\Model\MediaRelaySet;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface MediaRelaySetInterface extends EntityInterface
+interface MediaRelaySetInterface extends LoggableEntityInterface
 {
-    /**
-     * @return array
-     */
     public function getChangeSet();
 
     /**

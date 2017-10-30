@@ -2,10 +2,12 @@
 
 namespace Ivoz\Provider\Domain\Model\TerminalModel;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface TerminalModelInterface extends EntityInterface
+interface TerminalModelInterface extends LoggableEntityInterface
 {
+    public function getChangeSet();
+
     /**
      * {@inheritdoc}
      */
@@ -15,11 +17,6 @@ interface TerminalModelInterface extends EntityInterface
      * {@inheritdoc}
      */
     public function setSpecificTemplate($specificTemplate = null);
-
-    /**
-     * @return array
-     */
-    public function getChangeSet();
 
     /**
      * Set iden

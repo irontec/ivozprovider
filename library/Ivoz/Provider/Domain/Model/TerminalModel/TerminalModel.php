@@ -9,6 +9,11 @@ class TerminalModel extends TerminalModelAbstract implements TerminalModelInterf
 {
     use TerminalModelTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

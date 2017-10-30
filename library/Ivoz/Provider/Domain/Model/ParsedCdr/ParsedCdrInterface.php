@@ -2,13 +2,10 @@
 
 namespace Ivoz\Provider\Domain\Model\ParsedCdr;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface ParsedCdrInterface extends EntityInterface
+interface ParsedCdrInterface extends LoggableEntityInterface
 {
-    /**
-     * @return array
-     */
     public function getChangeSet();
 
     /**

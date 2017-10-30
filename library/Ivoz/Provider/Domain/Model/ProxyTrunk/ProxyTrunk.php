@@ -9,6 +9,11 @@ class ProxyTrunk extends ProxyTrunkAbstract implements ProxyTrunkInterface
 {
     use ProxyTrunkTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

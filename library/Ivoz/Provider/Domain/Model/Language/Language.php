@@ -8,6 +8,11 @@ class Language extends LanguageAbstract implements LanguageInterface
 {
     use LanguageTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

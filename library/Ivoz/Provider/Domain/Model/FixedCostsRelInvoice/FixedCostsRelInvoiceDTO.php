@@ -52,6 +52,20 @@ class FixedCostsRelInvoiceDTO implements DataTransferObjectInterface
     private $invoice;
 
     /**
+     * @return array
+     */
+    public function __toArray()
+    {
+        return [
+            'quantity' => $this->getQuantity(),
+            'id' => $this->getId(),
+            'brandId' => $this->getBrandId(),
+            'fixedCostId' => $this->getFixedCostId(),
+            'invoiceId' => $this->getInvoiceId()
+        ];
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

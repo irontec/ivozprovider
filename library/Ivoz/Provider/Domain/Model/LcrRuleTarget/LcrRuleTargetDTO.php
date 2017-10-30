@@ -62,6 +62,22 @@ class LcrRuleTargetDTO implements DataTransferObjectInterface
     private $outgoingRouting;
 
     /**
+     * @return array
+     */
+    public function __toArray()
+    {
+        return [
+            'lcrId' => $this->getLcrId(),
+            'priority' => $this->getPriority(),
+            'weight' => $this->getWeight(),
+            'id' => $this->getId(),
+            'ruleId' => $this->getRuleId(),
+            'gwId' => $this->getGwId(),
+            'outgoingRoutingId' => $this->getOutgoingRoutingId()
+        ];
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

@@ -2,13 +2,10 @@
 
 namespace Ivoz\Provider\Domain\Model\TargetPattern;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface TargetPatternInterface extends EntityInterface
+interface TargetPatternInterface extends LoggableEntityInterface
 {
-    /**
-     * @return array
-     */
     public function getChangeSet();
 
     /**

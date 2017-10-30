@@ -57,6 +57,23 @@ class MainOperatorDTO implements DataTransferObjectInterface
     private $timezone;
 
     /**
+     * @return array
+     */
+    public function __toArray()
+    {
+        return [
+            'username' => $this->getUsername(),
+            'pass' => $this->getPass(),
+            'email' => $this->getEmail(),
+            'active' => $this->getActive(),
+            'name' => $this->getName(),
+            'lastname' => $this->getLastname(),
+            'id' => $this->getId(),
+            'timezoneId' => $this->getTimezoneId()
+        ];
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

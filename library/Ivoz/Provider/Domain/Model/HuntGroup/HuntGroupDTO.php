@@ -97,6 +97,28 @@ class HuntGroupDTO implements DataTransferObjectInterface
     private $huntGroupsRelUsers = null;
 
     /**
+     * @return array
+     */
+    public function __toArray()
+    {
+        return [
+            'name' => $this->getName(),
+            'description' => $this->getDescription(),
+            'strategy' => $this->getStrategy(),
+            'ringAllTimeout' => $this->getRingAllTimeout(),
+            'nextUserPosition' => $this->getNextUserPosition(),
+            'noAnswerTargetType' => $this->getNoAnswerTargetType(),
+            'noAnswerNumberValue' => $this->getNoAnswerNumberValue(),
+            'id' => $this->getId(),
+            'companyId' => $this->getCompanyId(),
+            'noAnswerLocutionId' => $this->getNoAnswerLocutionId(),
+            'noAnswerExtensionId' => $this->getNoAnswerExtensionId(),
+            'noAnswerVoiceMailUserId' => $this->getNoAnswerVoiceMailUserId(),
+            'huntGroupsRelUsers' => $this->getHuntGroupsRelUsers()
+        ];
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

@@ -9,6 +9,11 @@ class ProxyUser extends ProxyUserAbstract implements ProxyUserInterface
 {
     use ProxyUserTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

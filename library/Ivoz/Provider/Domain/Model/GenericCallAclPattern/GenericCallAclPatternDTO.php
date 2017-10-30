@@ -37,6 +37,19 @@ class GenericCallAclPatternDTO implements DataTransferObjectInterface
     private $brand;
 
     /**
+     * @return array
+     */
+    public function __toArray()
+    {
+        return [
+            'name' => $this->getName(),
+            'regExp' => $this->getRegExp(),
+            'id' => $this->getId(),
+            'brandId' => $this->getBrandId()
+        ];
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

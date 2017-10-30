@@ -2,13 +2,10 @@
 
 namespace Ivoz\Provider\Domain\Model\FeaturesRelCompany;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface FeaturesRelCompanyInterface extends EntityInterface
+interface FeaturesRelCompanyInterface extends LoggableEntityInterface
 {
-    /**
-     * @return array
-     */
     public function getChangeSet();
 
     /**

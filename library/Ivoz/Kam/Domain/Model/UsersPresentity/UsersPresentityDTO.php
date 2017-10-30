@@ -62,6 +62,25 @@ class UsersPresentityDTO implements DataTransferObjectInterface
     private $id;
 
     /**
+     * @return array
+     */
+    public function __toArray()
+    {
+        return [
+            'username' => $this->getUsername(),
+            'domain' => $this->getDomain(),
+            'event' => $this->getEvent(),
+            'etag' => $this->getEtag(),
+            'expires' => $this->getExpires(),
+            'receivedTime' => $this->getReceivedTime(),
+            'body' => $this->getBody(),
+            'sender' => $this->getSender(),
+            'priority' => $this->getPriority(),
+            'id' => $this->getId()
+        ];
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

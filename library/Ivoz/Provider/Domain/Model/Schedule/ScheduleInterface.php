@@ -2,18 +2,15 @@
 
 namespace Ivoz\Provider\Domain\Model\Schedule;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface ScheduleInterface extends EntityInterface
+interface ScheduleInterface extends LoggableEntityInterface
 {
+    public function getChangeSet();
+
     public function checkIsOnTimeRange($dayOfTheWeek, \DateTime $time, \DateTimeZone $timeZone);
 
     public function isOnSchedule(\DateTime $time);
-
-    /**
-     * @return array
-     */
-    public function getChangeSet();
 
     /**
      * Set name

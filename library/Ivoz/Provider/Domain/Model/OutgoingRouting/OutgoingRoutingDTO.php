@@ -87,6 +87,25 @@ class OutgoingRoutingDTO implements DataTransferObjectInterface
     private $lcrRules = null;
 
     /**
+     * @return array
+     */
+    public function __toArray()
+    {
+        return [
+            'type' => $this->getType(),
+            'priority' => $this->getPriority(),
+            'weight' => $this->getWeight(),
+            'id' => $this->getId(),
+            'brandId' => $this->getBrandId(),
+            'companyId' => $this->getCompanyId(),
+            'peeringContractId' => $this->getPeeringContractId(),
+            'routingPatternId' => $this->getRoutingPatternId(),
+            'routingPatternGroupId' => $this->getRoutingPatternGroupId(),
+            'lcrRules' => $this->getLcrRules()
+        ];
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

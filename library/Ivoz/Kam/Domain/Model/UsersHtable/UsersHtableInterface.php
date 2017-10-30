@@ -2,13 +2,10 @@
 
 namespace Ivoz\Kam\Domain\Model\UsersHtable;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface UsersHtableInterface extends EntityInterface
+interface UsersHtableInterface extends LoggableEntityInterface
 {
-    /**
-     * @return array
-     */
     public function getChangeSet();
 
     /**

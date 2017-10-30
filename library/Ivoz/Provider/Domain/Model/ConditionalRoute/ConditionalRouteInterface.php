@@ -2,13 +2,10 @@
 
 namespace Ivoz\Provider\Domain\Model\ConditionalRoute;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface ConditionalRouteInterface extends EntityInterface
+interface ConditionalRouteInterface extends LoggableEntityInterface
 {
-    /**
-     * @return array
-     */
     public function getChangeSet();
 
     /**

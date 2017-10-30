@@ -2,13 +2,10 @@
 
 namespace Ivoz\Provider\Domain\Model\ExternalCallFilterRelCalendar;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface ExternalCallFilterRelCalendarInterface extends EntityInterface
+interface ExternalCallFilterRelCalendarInterface extends LoggableEntityInterface
 {
-    /**
-     * @return array
-     */
     public function getChangeSet();
 
     /**

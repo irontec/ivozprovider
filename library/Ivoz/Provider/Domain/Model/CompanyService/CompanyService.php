@@ -9,6 +9,12 @@ class CompanyService extends CompanyServiceAbstract implements CompanyServiceInt
 {
     use CompanyServiceTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
+
     /**
      * Get id
      *

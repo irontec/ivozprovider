@@ -10,6 +10,11 @@ class ConditionalRoutesConditionsRelSchedule extends ConditionalRoutesConditions
 {
     use ConditionalRoutesConditionsRelScheduleTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

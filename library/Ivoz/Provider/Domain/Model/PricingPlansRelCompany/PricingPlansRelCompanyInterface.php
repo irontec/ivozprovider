@@ -2,13 +2,10 @@
 
 namespace Ivoz\Provider\Domain\Model\PricingPlansRelCompany;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface PricingPlansRelCompanyInterface extends EntityInterface
+interface PricingPlansRelCompanyInterface extends LoggableEntityInterface
 {
-    /**
-     * @return array
-     */
     public function getChangeSet();
 
     /**

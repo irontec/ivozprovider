@@ -2,13 +2,10 @@
 
 namespace Ivoz\Kam\Domain\Model\Rtpproxy;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface RtpproxyInterface extends EntityInterface
+interface RtpproxyInterface extends LoggableEntityInterface
 {
-    /**
-     * @return array
-     */
     public function getChangeSet();
 
     /**

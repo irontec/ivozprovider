@@ -2,22 +2,19 @@
 
 namespace Ivoz\Ast\Domain\Model\PsEndpoint;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Doctrine\Common\Collections\Collection;
 
-interface PsEndpointInterface extends EntityInterface
+interface PsEndpointInterface extends LoggableEntityInterface
 {
+    public function getChangeSet();
+
     public function getPsAor();
 
     /**
      * Update this user endpoint with current model data
      */
     public function updateByUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user);
-
-    /**
-     * @return array
-     */
-    public function getChangeSet();
 
     /**
      * Set sorceryId

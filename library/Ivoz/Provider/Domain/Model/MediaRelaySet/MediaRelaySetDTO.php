@@ -27,6 +27,18 @@ class MediaRelaySetDTO implements DataTransferObjectInterface
     private $id;
 
     /**
+     * @return array
+     */
+    public function __toArray()
+    {
+        return [
+            'name' => $this->getName(),
+            'description' => $this->getDescription(),
+            'id' => $this->getId()
+        ];
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

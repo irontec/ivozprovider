@@ -2,13 +2,10 @@
 
 namespace Ivoz\Provider\Domain\Model\BrandService;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface BrandServiceInterface extends EntityInterface
+interface BrandServiceInterface extends LoggableEntityInterface
 {
-    /**
-     * @return array
-     */
     public function getChangeSet();
 
     /**

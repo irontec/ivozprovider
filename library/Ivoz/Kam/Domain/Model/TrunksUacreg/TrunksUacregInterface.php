@@ -2,13 +2,10 @@
 
 namespace Ivoz\Kam\Domain\Model\TrunksUacreg;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface TrunksUacregInterface extends EntityInterface
+interface TrunksUacregInterface extends LoggableEntityInterface
 {
-    /**
-     * @return array
-     */
     public function getChangeSet();
 
     /**

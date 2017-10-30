@@ -8,6 +8,12 @@ namespace Ivoz\Provider\Domain\Model\HolidayDate;
 class HolidayDate extends HolidayDateAbstract implements HolidayDateInterface
 {
     use HolidayDateTrait;
+
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

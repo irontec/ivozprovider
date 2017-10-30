@@ -9,6 +9,11 @@ class Timezone extends TimezoneAbstract implements TimezoneInterface
 {
     use TimezoneTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

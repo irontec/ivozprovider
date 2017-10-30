@@ -2,11 +2,13 @@
 
 namespace Ivoz\Provider\Domain\Model\RetailAccount;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Doctrine\Common\Collections\Collection;
 
-interface RetailAccountInterface extends EntityInterface
+interface RetailAccountInterface extends LoggableEntityInterface
 {
+    public function getChangeSet();
+
     /**
      * @return string
      */
@@ -74,11 +76,6 @@ interface RetailAccountInterface extends EntityInterface
      * @return DdiInterface
      */
     public function getDdi($ddieE164);
-
-    /**
-     * @return array
-     */
-    public function getChangeSet();
 
     /**
      * Set name

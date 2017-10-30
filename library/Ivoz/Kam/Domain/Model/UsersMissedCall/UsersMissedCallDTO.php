@@ -87,6 +87,30 @@ class UsersMissedCallDTO implements DataTransferObjectInterface
     private $id;
 
     /**
+     * @return array
+     */
+    public function __toArray()
+    {
+        return [
+            'method' => $this->getMethod(),
+            'fromTag' => $this->getFromTag(),
+            'toTag' => $this->getToTag(),
+            'callid' => $this->getCallid(),
+            'sipCode' => $this->getSipCode(),
+            'sipReason' => $this->getSipReason(),
+            'srcIp' => $this->getSrcIp(),
+            'fromUser' => $this->getFromUser(),
+            'fromDomain' => $this->getFromDomain(),
+            'ruriUser' => $this->getRuriUser(),
+            'ruriDomain' => $this->getRuriDomain(),
+            'cseq' => $this->getCseq(),
+            'localtime' => $this->getLocaltime(),
+            'utctime' => $this->getUtctime(),
+            'id' => $this->getId()
+        ];
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

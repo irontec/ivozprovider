@@ -2,19 +2,16 @@
 
 namespace Ivoz\Provider\Domain\Model\Fax;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface FaxInterface extends EntityInterface
+interface FaxInterface extends LoggableEntityInterface
 {
+    public function getChangeSet();
+
     /**
      * {@inheritDoc}
      */
     public function getOutgoingDdi();
-
-    /**
-     * @return array
-     */
-    public function getChangeSet();
 
     /**
      * Set name

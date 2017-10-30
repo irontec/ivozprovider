@@ -9,6 +9,11 @@ class UsersAddress extends UsersAddressAbstract implements UsersAddressInterface
 {
     use UsersAddressTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

@@ -2,16 +2,13 @@
 
 namespace Ivoz\Provider\Domain\Model\CallForwardSetting;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface CallForwardSettingInterface extends EntityInterface
+interface CallForwardSettingInterface extends LoggableEntityInterface
 {
-    public function toArrayPortal();
-
-    /**
-     * @return array
-     */
     public function getChangeSet();
+
+    public function toArrayPortal();
 
     /**
      * Set callTypeFilter

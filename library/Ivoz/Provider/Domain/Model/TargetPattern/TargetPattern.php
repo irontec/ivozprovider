@@ -9,6 +9,11 @@ class TargetPattern extends TargetPatternAbstract implements TargetPatternInterf
 {
     use TargetPatternTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

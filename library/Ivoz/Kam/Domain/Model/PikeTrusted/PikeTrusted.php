@@ -9,6 +9,11 @@ class PikeTrusted extends PikeTrustedAbstract implements PikeTrustedInterface
 {
     use PikeTrustedTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

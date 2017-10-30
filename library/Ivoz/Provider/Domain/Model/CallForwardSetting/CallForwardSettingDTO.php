@@ -72,6 +72,24 @@ class CallForwardSettingDTO implements DataTransferObjectInterface
     private $voiceMailUser;
 
     /**
+     * @return array
+     */
+    public function __toArray()
+    {
+        return [
+            'callTypeFilter' => $this->getCallTypeFilter(),
+            'callForwardType' => $this->getCallForwardType(),
+            'targetType' => $this->getTargetType(),
+            'numberValue' => $this->getNumberValue(),
+            'noAnswerTimeout' => $this->getNoAnswerTimeout(),
+            'id' => $this->getId(),
+            'userId' => $this->getUserId(),
+            'extensionId' => $this->getExtensionId(),
+            'voiceMailUserId' => $this->getVoiceMailUserId()
+        ];
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

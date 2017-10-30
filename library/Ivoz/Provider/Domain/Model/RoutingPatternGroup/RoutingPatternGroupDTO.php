@@ -47,6 +47,21 @@ class RoutingPatternGroupDTO implements DataTransferObjectInterface
     private $outgoingRoutings = null;
 
     /**
+     * @return array
+     */
+    public function __toArray()
+    {
+        return [
+            'name' => $this->getName(),
+            'description' => $this->getDescription(),
+            'id' => $this->getId(),
+            'brandId' => $this->getBrandId(),
+            'relPatterns' => $this->getRelPatterns(),
+            'outgoingRoutings' => $this->getOutgoingRoutings()
+        ];
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

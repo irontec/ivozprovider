@@ -9,6 +9,11 @@ class OutgoingDdiRulesPattern extends OutgoingDdiRulesPatternAbstract implements
 {
     use OutgoingDdiRulesPatternTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

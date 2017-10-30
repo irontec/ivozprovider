@@ -9,6 +9,11 @@ class PsAor extends PsAorAbstract implements PsAorInterface
 {
     use PsAorTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

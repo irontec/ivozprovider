@@ -168,6 +168,44 @@ class BrandDTO implements DataTransferObjectInterface
     private $outgoingRoutings = null;
 
     /**
+     * @return array
+     */
+    public function __toArray()
+    {
+        return [
+            'name' => $this->getName(),
+            'domainUsers' => $this->getDomainUsers(),
+            'fromName' => $this->getFromName(),
+            'fromAddress' => $this->getFromAddress(),
+            'recordingsLimitMB' => $this->getRecordingsLimitMB(),
+            'recordingsLimitEmail' => $this->getRecordingsLimitEmail(),
+            'id' => $this->getId(),
+            'logoFileSize' => $this->getLogoFileSize(),
+            'logoMimeType' => $this->getLogoMimeType(),
+            'logoBaseName' => $this->getLogoBaseName(),
+            'invoiceNif' => $this->getInvoiceNif(),
+            'invoicePostalAddress' => $this->getInvoicePostalAddress(),
+            'invoicePostalCode' => $this->getInvoicePostalCode(),
+            'invoiceTown' => $this->getInvoiceTown(),
+            'invoiceProvince' => $this->getInvoiceProvince(),
+            'invoiceCountry' => $this->getInvoiceCountry(),
+            'invoiceRegistryData' => $this->getInvoiceRegistryData(),
+            'languageId' => $this->getLanguageId(),
+            'defaultTimezoneId' => $this->getDefaultTimezoneId(),
+            'companies' => $this->getCompanies(),
+            'operators' => $this->getOperators(),
+            'services' => $this->getServices(),
+            'urls' => $this->getUrls(),
+            'relFeatures' => $this->getRelFeatures(),
+            'domains' => $this->getDomains(),
+            'retailAccounts' => $this->getRetailAccounts(),
+            'genericMusicsOnHold' => $this->getGenericMusicsOnHold(),
+            'genericCallAclPatterns' => $this->getGenericCallAclPatterns(),
+            'outgoingRoutings' => $this->getOutgoingRoutings()
+        ];
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

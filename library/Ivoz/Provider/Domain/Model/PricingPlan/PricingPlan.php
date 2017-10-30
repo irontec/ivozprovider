@@ -8,6 +8,11 @@ class PricingPlan extends PricingPlanAbstract implements PricingPlanInterface
 {
     use PricingPlanTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

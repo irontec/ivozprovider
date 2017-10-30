@@ -15,6 +15,11 @@ class GenericMusicOnHold
     use GenericMusicOnHoldTrait;
     use TempFileContainnerTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * @return array
      */

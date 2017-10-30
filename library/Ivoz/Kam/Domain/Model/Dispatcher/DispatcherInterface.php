@@ -2,13 +2,10 @@
 
 namespace Ivoz\Kam\Domain\Model\Dispatcher;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface DispatcherInterface extends EntityInterface
+interface DispatcherInterface extends LoggableEntityInterface
 {
-    /**
-     * @return array
-     */
     public function getChangeSet();
 
     /**

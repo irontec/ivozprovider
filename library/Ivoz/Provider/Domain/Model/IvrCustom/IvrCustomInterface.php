@@ -2,19 +2,16 @@
 
 namespace Ivoz\Provider\Domain\Model\IvrCustom;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface IvrCustomInterface extends EntityInterface
+interface IvrCustomInterface extends LoggableEntityInterface
 {
+    public function getChangeSet();
+
     /**
      * @return LocutionInterface[] with key=>value
      */
     public function getAllLocutions();
-
-    /**
-     * @return array
-     */
-    public function getChangeSet();
 
     /**
      * Set name

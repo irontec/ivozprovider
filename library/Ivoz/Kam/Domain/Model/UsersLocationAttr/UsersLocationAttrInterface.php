@@ -2,13 +2,10 @@
 
 namespace Ivoz\Kam\Domain\Model\UsersLocationAttr;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface UsersLocationAttrInterface extends EntityInterface
+interface UsersLocationAttrInterface extends LoggableEntityInterface
 {
-    /**
-     * @return array
-     */
     public function getChangeSet();
 
     /**

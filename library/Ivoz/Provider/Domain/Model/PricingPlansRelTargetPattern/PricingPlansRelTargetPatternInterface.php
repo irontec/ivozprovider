@@ -2,16 +2,13 @@
 
 namespace Ivoz\Provider\Domain\Model\PricingPlansRelTargetPattern;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface PricingPlansRelTargetPatternInterface extends EntityInterface
+interface PricingPlansRelTargetPatternInterface extends LoggableEntityInterface
 {
-    public function getCost($duration = null);
-
-    /**
-     * @return array
-     */
     public function getChangeSet();
+
+    public function getCost($duration = null);
 
     /**
      * Set connectionCharge

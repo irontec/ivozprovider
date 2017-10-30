@@ -167,6 +167,43 @@ class ParsedCdrDTO implements DataTransferObjectInterface
     private $peeringContract;
 
     /**
+     * @return array
+     */
+    public function __toArray()
+    {
+        return [
+            'statId' => $this->getStatId(),
+            'xstatId' => $this->getXstatId(),
+            'statType' => $this->getStatType(),
+            'initialLeg' => $this->getInitialLeg(),
+            'initialLegHash' => $this->getInitialLegHash(),
+            'cid' => $this->getCid(),
+            'cidHash' => $this->getCidHash(),
+            'xcid' => $this->getXcid(),
+            'xcidHash' => $this->getXcidHash(),
+            'proxies' => $this->getProxies(),
+            'type' => $this->getType(),
+            'subtype' => $this->getSubtype(),
+            'calldate' => $this->getCalldate(),
+            'duration' => $this->getDuration(),
+            'aParty' => $this->getAParty(),
+            'bParty' => $this->getBParty(),
+            'caller' => $this->getCaller(),
+            'callee' => $this->getCallee(),
+            'xCaller' => $this->getXCaller(),
+            'xCallee' => $this->getXCallee(),
+            'initialReferrer' => $this->getInitialReferrer(),
+            'referrer' => $this->getReferrer(),
+            'referee' => $this->getReferee(),
+            'lastForwarder' => $this->getLastForwarder(),
+            'id' => $this->getId(),
+            'brandId' => $this->getBrandId(),
+            'companyId' => $this->getCompanyId(),
+            'peeringContractId' => $this->getPeeringContractId()
+        ];
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

@@ -2,13 +2,10 @@
 
 namespace Ivoz\Ast\Domain\Model\Musiconhold;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface MusiconholdInterface extends EntityInterface
+interface MusiconholdInterface extends LoggableEntityInterface
 {
-    /**
-     * @return array
-     */
     public function getChangeSet();
 
     /**

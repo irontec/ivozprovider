@@ -9,6 +9,11 @@ class PricingPlansRelTargetPattern extends PricingPlansRelTargetPatternAbstract 
 {
     use PricingPlansRelTargetPatternTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

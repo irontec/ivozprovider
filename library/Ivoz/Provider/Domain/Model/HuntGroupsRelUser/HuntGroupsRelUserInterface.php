@@ -2,13 +2,10 @@
 
 namespace Ivoz\Provider\Domain\Model\HuntGroupsRelUser;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface HuntGroupsRelUserInterface extends EntityInterface
+interface HuntGroupsRelUserInterface extends LoggableEntityInterface
 {
-    /**
-     * @return array
-     */
     public function getChangeSet();
 
     /**

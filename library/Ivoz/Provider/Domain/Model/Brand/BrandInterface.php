@@ -2,11 +2,13 @@
 
 namespace Ivoz\Provider\Domain\Model\Brand;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Doctrine\Common\Collections\Collection;
 
-interface BrandInterface extends EntityInterface
+interface BrandInterface extends LoggableEntityInterface
 {
+    public function getChangeSet();
+
     /**
      * @return array
      */
@@ -46,11 +48,6 @@ interface BrandInterface extends EntityInterface
      * @return bool
      */
     public function hasFeature($featureId);
-
-    /**
-     * @return array
-     */
-    public function getChangeSet();
 
     /**
      * Set name

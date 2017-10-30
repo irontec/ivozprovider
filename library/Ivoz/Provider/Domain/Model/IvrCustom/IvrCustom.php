@@ -9,6 +9,11 @@ class IvrCustom extends IvrCustomAbstract implements IvrCustomInterface
 {
     use IvrCustomTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

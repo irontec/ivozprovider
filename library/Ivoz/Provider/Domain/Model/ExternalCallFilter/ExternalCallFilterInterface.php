@@ -2,11 +2,13 @@
 
 namespace Ivoz\Provider\Domain\Model\ExternalCallFilter;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Doctrine\Common\Collections\Collection;
 
-interface ExternalCallFilterInterface extends EntityInterface
+interface ExternalCallFilterInterface extends LoggableEntityInterface
 {
+    public function getChangeSet();
+
     /**
      * Check if the given number matches External Filter black list
      * @param string $origin in E164 form
@@ -30,11 +32,6 @@ interface ExternalCallFilterInterface extends EntityInterface
      * @return bool scheduleMatched
      */
     public function isOutOfSchedule();
-
-    /**
-     * @return array
-     */
-    public function getChangeSet();
 
     /**
      * Set name

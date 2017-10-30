@@ -20,7 +20,6 @@ class InterfaceGenerator extends ParentGenerator
         $this->emptyContent = true;
     }
 
-
     protected $codeCoverageIgnoreBlock = false;
 
     /**
@@ -41,7 +40,7 @@ class InterfaceGenerator extends ParentGenerator
      * @var string
      */
     protected static $customMethodTemplate =
-        '<docComment><spaces>public function <methodName>(<methodArguments>);
+        '<docComment><spaces>public <static>function <methodName>(<methodArguments>);
 ';
 
 
@@ -71,7 +70,7 @@ class InterfaceGenerator extends ParentGenerator
         }
 
         $response = [
-            'use Ivoz\\Core\\Domain\\Model\\EntityInterface;'
+            'use Ivoz\\Core\\Domain\\Model\\' . $this->getParentInterface($metadata) . ';'
         ];
 
         if ($useCollections) {
@@ -86,12 +85,36 @@ class InterfaceGenerator extends ParentGenerator
      */
     protected function generateEntityClassName(ClassMetadataInfo $metadata)
     {
+        if ($this->emptyContent) {
+            return
+                'interface '
+                . $this->getClassName($metadata);
+        }
+
         $class =
             'interface '
             . $this->getClassName($metadata)
-            . ' extends EntityInterface';
+            . ' extends '
+            . $this->getParentInterface($metadata);
 
         return $class;
+    }
+
+    private function getParentInterface(ClassMetadataInfo $metadata)
+    {
+        $defaultImplementationClassName = substr(
+            $metadata->name,
+            0,
+            (-1 * strlen('Interface'))
+        );
+
+        $defaultImplementationReflection = new \ReflectionClass($defaultImplementationClassName);
+        $getChangeSetMethod = $defaultImplementationReflection->getMethod('getChangeSet');
+
+        return $getChangeSetMethod->isPublic()
+            ? 'LoggableEntityInterface'
+            : 'EntityInterface';
+
     }
 
     /**
@@ -172,12 +195,15 @@ class InterfaceGenerator extends ParentGenerator
 
                 $methodParameterArray[] = $str;
             }
-
             $methodParameterStr = implode(', ', $methodParameterArray);
 
+            $static = $publicMethod->isStatic()
+                ? 'static '
+                : '';
+
             $response[$methodName] = str_replace(
-                ['<docComment>', '<methodName>', '<methodArguments>'],
-                [$docComment, $methodName, $methodParameterStr],
+                ['<docComment>', '<static>', '<methodName>', '<methodArguments>'],
+                [$docComment, $static, $methodName, $methodParameterStr],
                 self::$customMethodTemplate
             );
         }

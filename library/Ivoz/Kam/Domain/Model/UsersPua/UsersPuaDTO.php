@@ -107,6 +107,34 @@ class UsersPuaDTO implements DataTransferObjectInterface
     private $id;
 
     /**
+     * @return array
+     */
+    public function __toArray()
+    {
+        return [
+            'presUri' => $this->getPresUri(),
+            'presId' => $this->getPresId(),
+            'event' => $this->getEvent(),
+            'expires' => $this->getExpires(),
+            'desiredExpires' => $this->getDesiredExpires(),
+            'flag' => $this->getFlag(),
+            'etag' => $this->getEtag(),
+            'tupleId' => $this->getTupleId(),
+            'watcherUri' => $this->getWatcherUri(),
+            'callId' => $this->getCallId(),
+            'toTag' => $this->getToTag(),
+            'fromTag' => $this->getFromTag(),
+            'cseq' => $this->getCseq(),
+            'recordRoute' => $this->getRecordRoute(),
+            'contact' => $this->getContact(),
+            'remoteContact' => $this->getRemoteContact(),
+            'version' => $this->getVersion(),
+            'extraHeaders' => $this->getExtraHeaders(),
+            'id' => $this->getId()
+        ];
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

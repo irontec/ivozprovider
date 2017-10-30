@@ -2,6 +2,7 @@
 
 namespace Ivoz\Core\Infrastructure\Domain\Service\Lifecycle;
 
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Service\CommonLifecycleServiceCollection;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Domain\Service\LifecycleSubscriber;
@@ -13,7 +14,7 @@ use Doctrine\ORM\Event\PreUpdateEventArgs;
 use Ivoz\Core\Domain\Event\EntityWasCreated;
 use Ivoz\Core\Domain\Event\EntityWasUpdated;
 use Ivoz\Core\Domain\Event\EntityWasDeleted;
-use Ivoz\Core\Domain\Model\DomainEventPublisher;
+use Ivoz\Core\Domain\Service\DomainEventPublisher;
 
 class DoctrineEventSubscriber implements EventSubscriber
 {
@@ -46,20 +47,17 @@ class DoctrineEventSubscriber implements EventSubscriber
 
     public function __construct(
         ContainerInterface $serviceContainer,
-        EntityManagerInterface $em
+        EntityManagerInterface $em,
+        DomainEventPublisher $eventPublisher
     ) {
         $this->serviceContainer = $serviceContainer;
         $this->em = $em;
-
-        /**
-         * @todo inject this service
-         */
-        $this->eventPublisher = DomainEventPublisher::getInstance();
+        $this->eventPublisher = $eventPublisher;
     }
 
     public function getSubscribedEvents()
     {
-        return array(
+        return [
             'prePersist',
             'postPersist',
             'preUpdate',
@@ -67,7 +65,7 @@ class DoctrineEventSubscriber implements EventSubscriber
 
             'preRemove',
             'postRemove'
-        );
+        ];
     }
 
     public function prePersist(LifecycleEventArgs $args)
@@ -110,19 +108,30 @@ class DoctrineEventSubscriber implements EventSubscriber
     private function triggerDomainEvents($eventName, LifecycleEventArgs $args, bool $isNew)
     {
         $entity = $args->getObject();
+        if (!$entity instanceof LoggableEntityInterface) {
+
+            return;
+        }
+
         $event = null;
 
         switch($eventName) {
-            case 'post_remove':
+            case 'pre_remove':
 
                 $event = new EntityWasDeleted(
                     get_class($entity),
                     $entity->getId(),
-                    []
+                    null
                 );
 
                 break;
             case 'post_persist':
+
+                $changeSet = $entity->getChangeSet();
+                if (empty($changeSet)) {
+
+                    return;
+                }
 
                 $eventClass = $isNew
                     ? EntityWasCreated::class

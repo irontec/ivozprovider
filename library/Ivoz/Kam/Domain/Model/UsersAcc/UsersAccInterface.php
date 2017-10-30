@@ -2,13 +2,10 @@
 
 namespace Ivoz\Kam\Domain\Model\UsersAcc;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface UsersAccInterface extends EntityInterface
+interface UsersAccInterface extends LoggableEntityInterface
 {
-    /**
-     * @return array
-     */
     public function getChangeSet();
 
     /**

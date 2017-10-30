@@ -9,6 +9,11 @@ class UsersLocation extends UsersLocationAbstract implements UsersLocationInterf
 {
     use UsersLocationTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

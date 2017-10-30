@@ -37,6 +37,18 @@ class FeaturesRelCompanyDTO implements DataTransferObjectInterface
     private $feature;
 
     /**
+     * @return array
+     */
+    public function __toArray()
+    {
+        return [
+            'id' => $this->getId(),
+            'companyId' => $this->getCompanyId(),
+            'featureId' => $this->getFeatureId()
+        ];
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

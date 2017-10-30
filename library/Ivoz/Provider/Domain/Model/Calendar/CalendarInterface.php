@@ -2,14 +2,11 @@
 
 namespace Ivoz\Provider\Domain\Model\Calendar;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Doctrine\Common\Collections\Collection;
 
-interface CalendarInterface extends EntityInterface
+interface CalendarInterface extends LoggableEntityInterface
 {
-    /**
-     * @return array
-     */
     public function getChangeSet();
 
     /**

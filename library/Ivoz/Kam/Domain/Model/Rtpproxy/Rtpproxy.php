@@ -9,6 +9,11 @@ class Rtpproxy extends RtpproxyAbstract implements RtpproxyInterface
 {
     use RtpproxyTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

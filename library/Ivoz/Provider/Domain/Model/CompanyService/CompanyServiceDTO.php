@@ -42,6 +42,19 @@ class CompanyServiceDTO implements DataTransferObjectInterface
     private $service;
 
     /**
+     * @return array
+     */
+    public function __toArray()
+    {
+        return [
+            'code' => $this->getCode(),
+            'id' => $this->getId(),
+            'companyId' => $this->getCompanyId(),
+            'serviceId' => $this->getServiceId()
+        ];
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

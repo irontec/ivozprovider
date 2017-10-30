@@ -2,14 +2,11 @@
 
 namespace Ivoz\Provider\Domain\Model\PeeringContract;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Doctrine\Common\Collections\Collection;
 
-interface PeeringContractInterface extends EntityInterface
+interface PeeringContractInterface extends LoggableEntityInterface
 {
-    /**
-     * @return array
-     */
     public function getChangeSet();
 
     /**

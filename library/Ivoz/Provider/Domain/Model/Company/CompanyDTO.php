@@ -247,6 +247,54 @@ class CompanyDTO implements DataTransferObjectInterface
     private $domains = null;
 
     /**
+     * @return array
+     */
+    public function __toArray()
+    {
+        return [
+            'type' => $this->getType(),
+            'name' => $this->getName(),
+            'domainUsers' => $this->getDomainUsers(),
+            'nif' => $this->getNif(),
+            'distributeMethod' => $this->getDistributeMethod(),
+            'externalMaxCalls' => $this->getExternalMaxCalls(),
+            'postalAddress' => $this->getPostalAddress(),
+            'postalCode' => $this->getPostalCode(),
+            'town' => $this->getTown(),
+            'province' => $this->getProvince(),
+            'countryName' => $this->getCountryName(),
+            'outboundPrefix' => $this->getOutboundPrefix(),
+            'ipfilter' => $this->getIpfilter(),
+            'onDemandRecord' => $this->getOnDemandRecord(),
+            'onDemandRecordCode' => $this->getOnDemandRecordCode(),
+            'areaCode' => $this->getAreaCode(),
+            'externallyextraopts' => $this->getExternallyextraopts(),
+            'recordingsLimitMB' => $this->getRecordingsLimitMB(),
+            'recordingsLimitEmail' => $this->getRecordingsLimitEmail(),
+            'id' => $this->getId(),
+            'languageId' => $this->getLanguageId(),
+            'mediaRelaySetsId' => $this->getMediaRelaySetsId(),
+            'defaultTimezoneId' => $this->getDefaultTimezoneId(),
+            'brandId' => $this->getBrandId(),
+            'applicationServerId' => $this->getApplicationServerId(),
+            'countryId' => $this->getCountryId(),
+            'outgoingDdiId' => $this->getOutgoingDdiId(),
+            'outgoingDdiRuleId' => $this->getOutgoingDdiRuleId(),
+            'extensions' => $this->getExtensions(),
+            'ddis' => $this->getDdis(),
+            'friends' => $this->getFriends(),
+            'companyServices' => $this->getCompanyServices(),
+            'terminals' => $this->getTerminals(),
+            'relPricingPlans' => $this->getRelPricingPlans(),
+            'musicsOnHold' => $this->getMusicsOnHold(),
+            'recordings' => $this->getRecordings(),
+            'relFeatures' => $this->getRelFeatures(),
+            'callAclPatterns' => $this->getCallAclPatterns(),
+            'domains' => $this->getDomains()
+        ];
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

@@ -9,6 +9,11 @@ class ExternalCallFilterWhiteList extends ExternalCallFilterWhiteListAbstract im
 {
     use ExternalCallFilterWhiteListTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

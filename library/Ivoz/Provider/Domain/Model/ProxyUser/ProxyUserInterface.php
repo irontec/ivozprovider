@@ -2,13 +2,10 @@
 
 namespace Ivoz\Provider\Domain\Model\ProxyUser;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface ProxyUserInterface extends EntityInterface
+interface ProxyUserInterface extends LoggableEntityInterface
 {
-    /**
-     * @return array
-     */
     public function getChangeSet();
 
     /**

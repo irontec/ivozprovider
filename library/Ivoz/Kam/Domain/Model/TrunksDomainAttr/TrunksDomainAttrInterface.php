@@ -2,13 +2,10 @@
 
 namespace Ivoz\Kam\Domain\Model\TrunksDomainAttr;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface TrunksDomainAttrInterface extends EntityInterface
+interface TrunksDomainAttrInterface extends LoggableEntityInterface
 {
-    /**
-     * @return array
-     */
     public function getChangeSet();
 
     /**

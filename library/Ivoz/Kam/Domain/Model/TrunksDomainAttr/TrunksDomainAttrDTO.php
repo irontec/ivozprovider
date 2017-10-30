@@ -42,6 +42,21 @@ class TrunksDomainAttrDTO implements DataTransferObjectInterface
     private $id;
 
     /**
+     * @return array
+     */
+    public function __toArray()
+    {
+        return [
+            'did' => $this->getDid(),
+            'name' => $this->getName(),
+            'type' => $this->getType(),
+            'value' => $this->getValue(),
+            'lastModified' => $this->getLastModified(),
+            'id' => $this->getId()
+        ];
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

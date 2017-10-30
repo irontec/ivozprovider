@@ -9,6 +9,11 @@ class Dispatcher extends DispatcherAbstract implements DispatcherInterface
 {
     use DispatcherTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

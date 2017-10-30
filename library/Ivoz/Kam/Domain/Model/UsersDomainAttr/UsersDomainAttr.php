@@ -9,6 +9,11 @@ class UsersDomainAttr extends UsersDomainAttrAbstract implements UsersDomainAttr
 {
     use UsersDomainAttrTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

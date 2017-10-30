@@ -9,6 +9,11 @@ class TransformationRulesetGroupsTrunk extends TransformationRulesetGroupsTrunkA
 {
     use TransformationRulesetGroupsTrunkTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

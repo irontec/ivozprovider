@@ -9,6 +9,12 @@ class BrandService extends BrandServiceAbstract implements BrandServiceInterface
 {
     use BrandServiceTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
+
     /**
      * Get id
      *

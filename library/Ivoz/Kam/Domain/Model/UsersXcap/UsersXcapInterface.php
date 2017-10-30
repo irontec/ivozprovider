@@ -2,13 +2,10 @@
 
 namespace Ivoz\Kam\Domain\Model\UsersXcap;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface UsersXcapInterface extends EntityInterface
+interface UsersXcapInterface extends LoggableEntityInterface
 {
-    /**
-     * @return array
-     */
     public function getChangeSet();
 
     /**

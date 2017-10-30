@@ -11,6 +11,11 @@ class LcrRule extends LcrRuleAbstract implements LcrRuleInterface
 {
     use LcrRuleTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

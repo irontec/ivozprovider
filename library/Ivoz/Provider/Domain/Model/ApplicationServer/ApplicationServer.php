@@ -9,6 +9,11 @@ class ApplicationServer extends ApplicationServerAbstract implements Application
 {
     use ApplicationServerTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

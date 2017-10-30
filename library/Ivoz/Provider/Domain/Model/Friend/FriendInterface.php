@@ -2,11 +2,13 @@
 
 namespace Ivoz\Provider\Domain\Model\Friend;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Doctrine\Common\Collections\Collection;
 
-interface FriendInterface extends EntityInterface
+interface FriendInterface extends LoggableEntityInterface
 {
+    public function getChangeSet();
+
     /**
      * @return string
      */
@@ -67,11 +69,6 @@ interface FriendInterface extends EntityInterface
      * If no Ddi is assigned, retrieve company's default Ddi
      */
     public function getOutgoingDdi();
-
-    /**
-     * @return array
-     */
-    public function getChangeSet();
 
     /**
      * Set name

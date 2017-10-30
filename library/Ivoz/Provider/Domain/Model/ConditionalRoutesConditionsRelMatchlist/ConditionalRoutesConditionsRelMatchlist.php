@@ -6,6 +6,12 @@ class ConditionalRoutesConditionsRelMatchlist extends ConditionalRoutesCondition
 {
     use ConditionalRoutesConditionsRelMatchlistTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
+
     /**
      * Get id
      *

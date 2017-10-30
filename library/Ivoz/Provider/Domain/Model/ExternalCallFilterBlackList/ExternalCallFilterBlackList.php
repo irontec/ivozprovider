@@ -9,6 +9,11 @@ class ExternalCallFilterBlackList extends ExternalCallFilterBlackListAbstract im
 {
     use ExternalCallFilterBlackListTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

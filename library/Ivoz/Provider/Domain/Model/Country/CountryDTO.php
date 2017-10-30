@@ -62,6 +62,25 @@ class CountryDTO implements DataTransferObjectInterface
     private $zoneEs = '';
 
     /**
+     * @return array
+     */
+    public function __toArray()
+    {
+        return [
+            'code' => $this->getCode(),
+            'callingCode' => $this->getCallingCode(),
+            'intCode' => $this->getIntCode(),
+            'e164Pattern' => $this->getE164Pattern(),
+            'nationalCC' => $this->getNationalCC(),
+            'id' => $this->getId(),
+            'nameEn' => $this->getNameEn(),
+            'nameEs' => $this->getNameEs(),
+            'zoneEn' => $this->getZoneEn(),
+            'zoneEs' => $this->getZoneEs()
+        ];
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

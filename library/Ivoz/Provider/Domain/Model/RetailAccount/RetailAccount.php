@@ -11,6 +11,16 @@ class RetailAccount extends RetailAccountAbstract implements RetailAccountInterf
 {
     use RetailAccountTrait;
 
+    public function getChangeSet()
+    {
+        $changeSet = parent::getChangeSet();
+        if (isset($changeSet['password'])) {
+            $changeSet['password'] = '****';
+        }
+
+        return $changeSet;
+    }
+
     /**
      * Get id
      *

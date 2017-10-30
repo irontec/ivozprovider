@@ -4,10 +4,11 @@ namespace ZfBundle\Services;
 
 use Doctrine\ORM\EntityManager;
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\Service\CreateEntityFromDTO;
+use Ivoz\Core\Application\RequestId;
 use Ivoz\Core\Application\Service\Assembler\DtoAssembler;
-use Ivoz\Core\Application\Service\UpdateEntityFromDTO;
 use Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister;
+use Ivoz\Core\Domain\Service\DomainEventPublisher;
+use Ivoz\Core\Application\Event\CommandWasExecuted;
 
 /**
  * persistence data gateway for zend framework applications
@@ -37,29 +38,38 @@ class DataGateway
     private $dtoAssembler;
 
     /**
-     * @var array
+     * @var DomainEventPublisher
      */
-    private $assemblers;
+    protected $eventPublisher;
+
+    /**
+     * @var string
+     */
+    protected $requestId;
 
     /**
      * DataGateway constructor.
      * @param EntityManager $entityManager
-     * @param \ZfBundle\Services\QueryBuilderFactory $queryBuilderFactory
-     * @param CreateEntityFromDTO $createEntityFromDTO
-     * @param UpdateEntityFromDTO $entityUpdater
+     * @param QueryBuilderFactory $queryBuilderFactory
+     * @param DoctrineEntityPersister $entityPersister
+     * @param DtoAssembler $dtoAssembler
+     * @param DomainEventPublisher $eventPublisher
+     * @param RequestId $requestId
      */
     public function __construct(
         EntityManager $entityManager,
         QueryBuilderFactory $queryBuilderFactory,
         DoctrineEntityPersister $entityPersister,
-        DtoAssembler $dtoAssembler
+        DtoAssembler $dtoAssembler,
+        DomainEventPublisher $eventPublisher,
+        RequestId $requestId
     ) {
         $this->em = $entityManager;
         $this->queryBuilderFactory = $queryBuilderFactory;
         $this->entityPersister = $entityPersister;
         $this->dtoAssembler = $dtoAssembler;
-
-        $this->assemblers = [];
+        $this->eventPublisher = $eventPublisher;
+        $this->requestId = $requestId->toString();
     }
 
     /**
@@ -206,6 +216,8 @@ class DataGateway
      */
     public function persist(string $entityName, DataTransferObjectInterface $dto)
     {
+        $this->triggerEvent(__CLASS__, __FUNCTION__, func_get_args());
+
         $entity = $this->entityPersister
             ->persistDto(
                 $dto,
@@ -231,6 +243,7 @@ class DataGateway
         if (!$entity) {
             throw new \Exception('Entity not found');
         }
+        $this->triggerEvent(__CLASS__, __FUNCTION__, func_get_args());
 
         $this->entityPersister
             ->persistDto(
@@ -243,10 +256,12 @@ class DataGateway
     /**
      * @param string $entityName
      * @param array $ids
-     * @return void
+     * @throws \Exception
      */
     public function remove(string $entityName, array $ids)
     {
+        $this->triggerEvent(__CLASS__, __FUNCTION__, func_get_args());
+
         $repository = $this->getRepository($entityName);
         foreach ($ids as $id) {
             $entity = $repository->find($id);
@@ -254,9 +269,8 @@ class DataGateway
                 throw new \Exception('Entity #'. (string) $id .' not found', $id);
             }
 
-            $this->em->remove($entity);
+            $this->entityPersister->remove($entity);
         }
-        $this->em->flush();
     }
 
     /**
@@ -272,9 +286,32 @@ class DataGateway
             ->em
             ->getReference($entityName, $id);
 
+        $this->triggerEvent(__CLASS__, __FUNCTION__, func_get_args());
+
         return $entity
             ->{$method}(
                 ...$arguments
             );
+    }
+
+    private  function triggerEvent(string $class, string $method, array $arguments)
+    {
+        foreach ($arguments as $key => $value) {
+
+            if ($value instanceof DataTransferObjectInterface) {
+                $arguments[$key] = $value->__toArray();
+            } else if (is_object($value)) {
+                $arguments[$key] = 'object(' . get_class($value) . ')';
+            }
+        }
+
+        $event = new CommandWasExecuted(
+            $this->requestId,
+            $class,
+            $method,
+            $arguments
+        );
+
+        $this->eventPublisher->publish($event);
     }
 }

@@ -97,6 +97,29 @@ class InvoiceDTO implements DataTransferObjectInterface
     private $company;
 
     /**
+     * @return array
+     */
+    public function __toArray()
+    {
+        return [
+            'number' => $this->getNumber(),
+            'inDate' => $this->getInDate(),
+            'outDate' => $this->getOutDate(),
+            'total' => $this->getTotal(),
+            'taxRate' => $this->getTaxRate(),
+            'totalWithTax' => $this->getTotalWithTax(),
+            'status' => $this->getStatus(),
+            'id' => $this->getId(),
+            'pdfFileSize' => $this->getPdfFileSize(),
+            'pdfMimeType' => $this->getPdfMimeType(),
+            'pdfBaseName' => $this->getPdfBaseName(),
+            'invoiceTemplateId' => $this->getInvoiceTemplateId(),
+            'brandId' => $this->getBrandId(),
+            'companyId' => $this->getCompanyId()
+        ];
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

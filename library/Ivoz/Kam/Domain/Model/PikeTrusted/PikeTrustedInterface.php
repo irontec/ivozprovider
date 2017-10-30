@@ -2,13 +2,10 @@
 
 namespace Ivoz\Kam\Domain\Model\PikeTrusted;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface PikeTrustedInterface extends EntityInterface
+interface PikeTrustedInterface extends LoggableEntityInterface
 {
-    /**
-     * @return array
-     */
     public function getChangeSet();
 
     /**

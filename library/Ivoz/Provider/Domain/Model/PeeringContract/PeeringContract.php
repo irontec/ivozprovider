@@ -8,6 +8,11 @@ class PeeringContract extends PeeringContractAbstract implements PeeringContract
 {
     use PeeringContractTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

@@ -11,6 +11,16 @@ class Terminal extends TerminalAbstract implements TerminalInterface
 {
     use TerminalTrait;
 
+    public function getChangeSet()
+    {
+        $changeSet = parent::getChangeSet();
+        if (isset($changeSet['password'])) {
+            $changeSet['password'] = '****';
+        }
+
+        return $changeSet;
+    }
+
     /**
      * Get id
      *

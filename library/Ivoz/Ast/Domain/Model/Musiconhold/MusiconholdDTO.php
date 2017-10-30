@@ -57,6 +57,24 @@ class MusiconholdDTO implements DataTransferObjectInterface
     private $id;
 
     /**
+     * @return array
+     */
+    public function __toArray()
+    {
+        return [
+            'name' => $this->getName(),
+            'mode' => $this->getMode(),
+            'directory' => $this->getDirectory(),
+            'application' => $this->getApplication(),
+            'digit' => $this->getDigit(),
+            'sort' => $this->getSort(),
+            'format' => $this->getFormat(),
+            'stamp' => $this->getStamp(),
+            'id' => $this->getId()
+        ];
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

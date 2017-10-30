@@ -2,14 +2,11 @@
 
 namespace Ivoz\Provider\Domain\Model\OutgoingRouting;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Doctrine\Common\Collections\Collection;
 
-interface OutgoingRoutingInterface extends EntityInterface
+interface OutgoingRoutingInterface extends LoggableEntityInterface
 {
-    /**
-     * @return array
-     */
     public function getChangeSet();
 
     /**

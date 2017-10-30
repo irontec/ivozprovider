@@ -9,6 +9,11 @@ class Fax extends FaxAbstract implements FaxInterface
 {
     use FaxTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

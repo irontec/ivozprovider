@@ -21,6 +21,14 @@ class DTOGenerator extends ParentGenerator
      */
     protected static $constructorMethodTemplate =
 '/**
+ * @return array
+ */
+public function __toArray()
+{
+    return [<toArray>];
+}
+
+/**
  * {@inheritDoc}
  */
 public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
@@ -310,7 +318,7 @@ public function <methodName>()
                     $voContructor[$varName][] = $this->getVoConstructor($varName, $metadata->fieldMappings);
                 }
 
-                $toArray[] =$this->embeddedToArrayGetter($field->columnName, $segments);
+                $toArray[] = $this->embeddedToArrayGetter($field->columnName, $segments);
                 $setterMethod = 'set' . Inflector::classify($segments[0]);
                 if ($segments[0] !== $segments[1]) {
                     $setterMethod .= Inflector::classify($segments[1]);
@@ -400,6 +408,27 @@ public function <methodName>()
     }
 
     /**
+     * @param $segments
+     * @param $toArray
+     * @return array
+     */
+    protected function embeddedToArrayGetter($columnName, $segments)
+    {
+        for($i=1; $i < count($segments); $i++) {
+            $segments[$i] = ucFirst($segments[$i]);
+        }
+
+        $attribute = implode("", $segments);
+
+        return
+            '\''
+            . $attribute
+            . '\' => $this->get'
+            . ucFirst($attribute)
+            . '()';
+    }
+
+    /**
      * {@inheritDoc}
      */
     protected function getFromArrayMethod($attribute, $fieldName, \stdClass $field)
@@ -431,13 +460,17 @@ public function <methodName>()
      */
     protected function getConstructorAssociationFields($attribute, $fieldName, $isOneToMany)
     {
+        $idGetter = $isOneToMany
+            ? ''
+            : 'Id';
+
         $response = [];
         $response[] =
-            '\'' . $attribute .'Id\' => '
-            . '$this->get' . Inflector::classify($fieldName) . 'Id()';
+            '\'' . $attribute . $idGetter . '\' => '
+            . '$this->get' . Inflector::classify($fieldName) . $idGetter . '()';
 
         $response[] =
-            'set' . Inflector::classify($fieldName) . 'Id('
+            'set' . Inflector::classify($fieldName) . $idGetter . '('
             . '$this->get' . Inflector::classify($fieldName) . '()'
             . ' ? '
             . '$this->get' . Inflector::classify($fieldName) . '()->getId()'

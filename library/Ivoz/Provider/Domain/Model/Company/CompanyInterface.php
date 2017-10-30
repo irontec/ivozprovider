@@ -2,11 +2,13 @@
 
 namespace Ivoz\Provider\Domain\Model\Company;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Doctrine\Common\Collections\Collection;
 
-interface CompanyInterface extends EntityInterface
+interface CompanyInterface extends LoggableEntityInterface
 {
+    public function getChangeSet();
+
     /**
      *
      * @param string $exten
@@ -115,11 +117,6 @@ interface CompanyInterface extends EntityInterface
     public function getOnDemandRecordDTMFs();
 
     public function getFeatures();
-
-    /**
-     * @return array
-     */
-    public function getChangeSet();
 
     /**
      * Set type

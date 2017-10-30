@@ -70,7 +70,7 @@ Ivoz\Provider\Domain\Model\Extension\ExtensionAbstract:
           nullable: false
           onDelete: cascade
       orphanRemoval: false
-    IvrCommon:
+    ivrCommon:
       targetEntity: \Ivoz\Provider\Domain\Model\IvrCommon\IvrCommonInterface
       cascade: {  }
       fetch: LAZY
@@ -81,7 +81,7 @@ Ivoz\Provider\Domain\Model\Extension\ExtensionAbstract:
           referencedColumnName: id
           onDelete: set null
       orphanRemoval: false
-    IvrCustom:
+    ivrCustom:
       targetEntity: \Ivoz\Provider\Domain\Model\IvrCustom\IvrCustomInterface
       cascade: {  }
       fetch: LAZY

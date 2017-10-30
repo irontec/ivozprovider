@@ -2,13 +2,10 @@
 
 namespace Ivoz\Provider\Domain\Model\ConferenceRoom;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface ConferenceRoomInterface extends EntityInterface
+interface ConferenceRoomInterface extends LoggableEntityInterface
 {
-    /**
-     * @return array
-     */
     public function getChangeSet();
 
     /**

@@ -2,13 +2,10 @@
 
 namespace Ivoz\Ast\Domain\Model\Voicemail;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface VoicemailInterface extends EntityInterface
+interface VoicemailInterface extends LoggableEntityInterface
 {
-    /**
-     * @return array
-     */
     public function getChangeSet();
 
     /**

@@ -9,6 +9,12 @@ class BrandUrl extends BrandUrlAbstract implements BrandUrlInterface
 {
     use BrandUrlTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
+
     /**
      * Get id
      *

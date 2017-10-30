@@ -47,6 +47,20 @@ class HuntGroupsRelUserDTO implements DataTransferObjectInterface
     private $user;
 
     /**
+     * @return array
+     */
+    public function __toArray()
+    {
+        return [
+            'timeoutTime' => $this->getTimeoutTime(),
+            'priority' => $this->getPriority(),
+            'id' => $this->getId(),
+            'huntGroupId' => $this->getHuntGroupId(),
+            'userId' => $this->getUserId()
+        ];
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

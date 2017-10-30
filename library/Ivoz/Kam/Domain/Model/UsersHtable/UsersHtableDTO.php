@@ -42,6 +42,21 @@ class UsersHtableDTO implements DataTransferObjectInterface
     private $id;
 
     /**
+     * @return array
+     */
+    public function __toArray()
+    {
+        return [
+            'keyName' => $this->getKeyName(),
+            'keyType' => $this->getKeyType(),
+            'valueType' => $this->getValueType(),
+            'keyValue' => $this->getKeyValue(),
+            'expires' => $this->getExpires(),
+            'id' => $this->getId()
+        ];
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

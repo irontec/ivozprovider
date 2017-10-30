@@ -2,13 +2,10 @@
 
 namespace Ivoz\Kam\Domain\Model\UsersMissedCall;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface UsersMissedCallInterface extends EntityInterface
+interface UsersMissedCallInterface extends LoggableEntityInterface
 {
-    /**
-     * @return array
-     */
     public function getChangeSet();
 
     /**

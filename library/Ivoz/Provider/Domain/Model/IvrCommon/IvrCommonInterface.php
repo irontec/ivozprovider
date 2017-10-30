@@ -2,11 +2,13 @@
 
 namespace Ivoz\Provider\Domain\Model\IvrCommon;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Doctrine\Common\Collections\Collection;
 
-interface IvrCommonInterface extends EntityInterface
+interface IvrCommonInterface extends LoggableEntityInterface
 {
+    public function getChangeSet();
+
     /**
      * @return Locution[] with key=>value
      */
@@ -17,11 +19,6 @@ interface IvrCommonInterface extends EntityInterface
      * @return null|Extension
      */
     public function getExtension(\Doctrine\Common\Collections\Criteria $criteria = null);
-
-    /**
-     * @return array
-     */
-    public function getChangeSet();
 
     /**
      * Set name

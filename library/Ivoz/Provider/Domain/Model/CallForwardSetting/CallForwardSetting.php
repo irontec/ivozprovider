@@ -9,6 +9,12 @@ class CallForwardSetting extends CallForwardSettingAbstract implements CallForwa
 {
     use CallForwardSettingTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
+
     /**
      * Get id
      *

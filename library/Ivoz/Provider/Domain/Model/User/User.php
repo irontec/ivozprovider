@@ -10,6 +10,16 @@ class User extends UserAbstract implements UserInterface
 {
     use UserTrait;
 
+    public function getChangeSet()
+    {
+        $changeSet = parent::getChangeSet();
+        if (isset($changeSet['pass'])) {
+            $changeSet['pass'] = '****';
+        }
+
+        return $changeSet;
+    }
+
     /**
      * Get id
      *

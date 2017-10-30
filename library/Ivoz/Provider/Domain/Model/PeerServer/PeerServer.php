@@ -9,6 +9,16 @@ class PeerServer extends PeerServerAbstract implements PeerServerInterface
 {
     use PeerServerTrait;
 
+    public function getChangeSet()
+    {
+        $changeSet = parent::getChangeSet();
+        if (isset($changeSet['auth_password'])) {
+            $changeSet['auth_password'] = '****';
+        }
+
+        return $changeSet;
+    }
+
     /**
      * Get id
      *

@@ -37,6 +37,19 @@ class PickUpGroupDTO implements DataTransferObjectInterface
     private $relUsers = null;
 
     /**
+     * @return array
+     */
+    public function __toArray()
+    {
+        return [
+            'name' => $this->getName(),
+            'id' => $this->getId(),
+            'companyId' => $this->getCompanyId(),
+            'relUsers' => $this->getRelUsers()
+        ];
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

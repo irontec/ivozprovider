@@ -6,6 +6,11 @@ class ConditionalRoutesCondition extends ConditionalRoutesConditionAbstract impl
 {
     use ConditionalRoutesConditionTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

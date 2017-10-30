@@ -1,6 +1,6 @@
 <?php
 
-namespace Ivoz\Core\Domain\Model;
+namespace Ivoz\Core\Domain\Service;
 
 use Ivoz\Core\Domain\Event\DomainEventInterface;
 

@@ -9,6 +9,11 @@ class TrunksHtable extends TrunksHtableAbstract implements TrunksHtableInterface
 {
     use TrunksHtableTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

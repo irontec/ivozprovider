@@ -152,6 +152,33 @@ class ConditionalRoutesConditionDTO implements DataTransferObjectInterface
     private $calendars = null;
 
     /**
+     * @return array
+     */
+    public function __toArray()
+    {
+        return [
+            'priority' => $this->getPriority(),
+            'routeType' => $this->getRouteType(),
+            'numberValue' => $this->getNumberValue(),
+            'friendValue' => $this->getFriendValue(),
+            'id' => $this->getId(),
+            'conditionalRouteId' => $this->getConditionalRouteId(),
+            'ivrCommonId' => $this->getIvrCommonId(),
+            'ivrCustomId' => $this->getIvrCustomId(),
+            'huntGroupId' => $this->getHuntGroupId(),
+            'voicemailUserId' => $this->getVoicemailUserId(),
+            'userId' => $this->getUserId(),
+            'queueId' => $this->getQueueId(),
+            'locutionId' => $this->getLocutionId(),
+            'conferenceRoomId' => $this->getConferenceRoomId(),
+            'extensionId' => $this->getExtensionId(),
+            'matchlists' => $this->getMatchlists(),
+            'schedules' => $this->getSchedules(),
+            'calendars' => $this->getCalendars()
+        ];
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

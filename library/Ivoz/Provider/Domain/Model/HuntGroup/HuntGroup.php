@@ -12,6 +12,11 @@ class HuntGroup extends HuntGroupAbstract implements HuntGroupInterface
 {
     use HuntGroupTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

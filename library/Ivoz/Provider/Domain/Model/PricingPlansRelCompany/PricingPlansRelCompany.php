@@ -9,6 +9,11 @@ class PricingPlansRelCompany extends PricingPlansRelCompanyAbstract implements P
 {
     use PricingPlansRelCompanyTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

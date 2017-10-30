@@ -9,6 +9,11 @@ class UsersAcc extends UsersAccAbstract implements UsersAccInterface
 {
     use UsersAccTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

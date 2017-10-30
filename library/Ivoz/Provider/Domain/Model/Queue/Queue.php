@@ -9,6 +9,11 @@ class Queue extends QueueAbstract implements QueueInterface
 {
     use QueueTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

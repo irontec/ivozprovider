@@ -11,6 +11,11 @@ class RoutingPatternGroup extends RoutingPatternGroupAbstract implements Routing
 {
     use RoutingPatternGroupTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

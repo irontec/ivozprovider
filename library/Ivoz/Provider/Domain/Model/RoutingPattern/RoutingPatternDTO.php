@@ -57,6 +57,23 @@ class RoutingPatternDTO implements DataTransferObjectInterface
     private $lcrRules = null;
 
     /**
+     * @return array
+     */
+    public function __toArray()
+    {
+        return [
+            'regExp' => $this->getRegExp(),
+            'id' => $this->getId(),
+            'nameEn' => $this->getNameEn(),
+            'nameEs' => $this->getNameEs(),
+            'descriptionEn' => $this->getDescriptionEn(),
+            'descriptionEs' => $this->getDescriptionEs(),
+            'brandId' => $this->getBrandId(),
+            'lcrRules' => $this->getLcrRules()
+        ];
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

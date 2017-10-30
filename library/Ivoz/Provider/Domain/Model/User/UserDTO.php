@@ -222,6 +222,46 @@ class UserDTO implements DataTransferObjectInterface
     private $callForwardSettings = null;
 
     /**
+     * @return array
+     */
+    public function __toArray()
+    {
+        return [
+            'name' => $this->getName(),
+            'lastname' => $this->getLastname(),
+            'email' => $this->getEmail(),
+            'pass' => $this->getPass(),
+            'doNotDisturb' => $this->getDoNotDisturb(),
+            'isBoss' => $this->getIsBoss(),
+            'exceptionBoosAssistantRegExp' => $this->getExceptionBoosAssistantRegExp(),
+            'active' => $this->getActive(),
+            'maxCalls' => $this->getMaxCalls(),
+            'externalIpCalls' => $this->getExternalIpCalls(),
+            'voicemailEnabled' => $this->getVoicemailEnabled(),
+            'voicemailSendMail' => $this->getVoicemailSendMail(),
+            'voicemailAttachSound' => $this->getVoicemailAttachSound(),
+            'tokenKey' => $this->getTokenKey(),
+            'areaCode' => $this->getAreaCode(),
+            'gsQRCode' => $this->getGsQRCode(),
+            'id' => $this->getId(),
+            'companyId' => $this->getCompanyId(),
+            'callAclId' => $this->getCallAclId(),
+            'bossAssistantId' => $this->getBossAssistantId(),
+            'countryId' => $this->getCountryId(),
+            'languageId' => $this->getLanguageId(),
+            'terminalId' => $this->getTerminalId(),
+            'extensionId' => $this->getExtensionId(),
+            'timezoneId' => $this->getTimezoneId(),
+            'outgoingDdiId' => $this->getOutgoingDdiId(),
+            'outgoingDdiRuleId' => $this->getOutgoingDdiRuleId(),
+            'voicemailLocutionId' => $this->getVoicemailLocutionId(),
+            'pickUpRelUsers' => $this->getPickUpRelUsers(),
+            'queueMembers' => $this->getQueueMembers(),
+            'callForwardSettings' => $this->getCallForwardSettings()
+        ];
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

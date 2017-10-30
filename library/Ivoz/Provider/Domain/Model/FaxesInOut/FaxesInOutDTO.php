@@ -72,6 +72,26 @@ class FaxesInOutDTO implements DataTransferObjectInterface
     private $fax;
 
     /**
+     * @return array
+     */
+    public function __toArray()
+    {
+        return [
+            'calldate' => $this->getCalldate(),
+            'src' => $this->getSrc(),
+            'dst' => $this->getDst(),
+            'type' => $this->getType(),
+            'pages' => $this->getPages(),
+            'status' => $this->getStatus(),
+            'id' => $this->getId(),
+            'fileFileSize' => $this->getFileFileSize(),
+            'fileMimeType' => $this->getFileMimeType(),
+            'fileBaseName' => $this->getFileBaseName(),
+            'faxId' => $this->getFaxId()
+        ];
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

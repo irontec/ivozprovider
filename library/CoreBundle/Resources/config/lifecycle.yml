@@ -10,7 +10,8 @@ services:
 
   Ivoz\Core\Infrastructure\Domain\Service\Lifecycle\DoctrineEventSubscriber:
       arguments:
-        - "@service_container"
+        $serviceContainer: '@service_container'
+        $eventPublisher: '@Ivoz\Core\Domain\Service\DomainEventPublisher'
       tags:
         - { name: doctrine.event_subscriber }
 

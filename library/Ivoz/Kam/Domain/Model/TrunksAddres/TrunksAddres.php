@@ -9,6 +9,11 @@ class TrunksAddres extends TrunksAddresAbstract implements TrunksAddresInterface
 {
     use TrunksAddresTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

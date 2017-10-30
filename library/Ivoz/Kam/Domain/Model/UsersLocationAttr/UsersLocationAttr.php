@@ -8,6 +8,11 @@ class UsersLocationAttr extends UsersLocationAttrAbstract implements UsersLocati
 {
     use UsersLocationAttrTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

@@ -62,6 +62,23 @@ class PeeringContractDTO implements DataTransferObjectInterface
     private $peerServers = null;
 
     /**
+     * @return array
+     */
+    public function __toArray()
+    {
+        return [
+            'description' => $this->getDescription(),
+            'name' => $this->getName(),
+            'externallyRated' => $this->getExternallyRated(),
+            'id' => $this->getId(),
+            'brandId' => $this->getBrandId(),
+            'transformationRulesetGroupsTrunkId' => $this->getTransformationRulesetGroupsTrunkId(),
+            'outgoingRoutings' => $this->getOutgoingRoutings(),
+            'peerServers' => $this->getPeerServers()
+        ];
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

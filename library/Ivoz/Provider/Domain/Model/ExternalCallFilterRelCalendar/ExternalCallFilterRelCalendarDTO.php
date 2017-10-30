@@ -37,6 +37,18 @@ class ExternalCallFilterRelCalendarDTO implements DataTransferObjectInterface
     private $calendar;
 
     /**
+     * @return array
+     */
+    public function __toArray()
+    {
+        return [
+            'id' => $this->getId(),
+            'filterId' => $this->getFilterId(),
+            'calendarId' => $this->getCalendarId()
+        ];
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

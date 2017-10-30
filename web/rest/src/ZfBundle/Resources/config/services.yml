@@ -18,3 +18,6 @@ services:
         '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
       $dtoAssembler:
         '@Ivoz\Core\Application\Service\Assembler\DtoAssembler'
+      $eventPublisher:
+        '@Ivoz\Core\Domain\Service\DomainEventPublisher'
+

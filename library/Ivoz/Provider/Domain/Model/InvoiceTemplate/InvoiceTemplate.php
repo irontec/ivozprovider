@@ -8,6 +8,11 @@ class InvoiceTemplate extends InvoiceTemplateAbstract implements InvoiceTemplate
 {
     use InvoiceTemplateTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

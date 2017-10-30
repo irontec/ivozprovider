@@ -68,6 +68,25 @@ class TrunksDialplanDTO implements DataTransferObjectInterface
     private $transformationRulesetGroupsTrunk;
 
     /**
+     * @return array
+     */
+    public function __toArray()
+    {
+        return [
+            'dpid' => $this->getDpid(),
+            'pr' => $this->getPr(),
+            'matchOp' => $this->getMatchOp(),
+            'matchExp' => $this->getMatchExp(),
+            'matchLen' => $this->getMatchLen(),
+            'substExp' => $this->getSubstExp(),
+            'replExp' => $this->getReplExp(),
+            'attrs' => $this->getAttrs(),
+            'id' => $this->getId(),
+            'transformationRulesetGroupsTrunkId' => $this->getTransformationRulesetGroupsTrunkId()
+        ];
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

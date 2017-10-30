@@ -8,6 +8,11 @@ class ParsedCdr extends ParsedCdrAbstract implements ParsedCdrInterface
 {
     use ParsedCdrTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

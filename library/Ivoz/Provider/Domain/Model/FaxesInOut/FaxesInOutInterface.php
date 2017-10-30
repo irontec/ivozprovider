@@ -2,13 +2,10 @@
 
 namespace Ivoz\Provider\Domain\Model\FaxesInOut;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface FaxesInOutInterface extends EntityInterface
+interface FaxesInOutInterface extends LoggableEntityInterface
 {
-    /**
-     * @return array
-     */
     public function getChangeSet();
 
     /**

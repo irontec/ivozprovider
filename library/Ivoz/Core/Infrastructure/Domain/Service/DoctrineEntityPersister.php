@@ -8,9 +8,11 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Doctrine\ORM\EntityManagerInterface;
-use Ramsey\Uuid\Uuid;
-use Ivoz\Core\Domain\Model\DomainEventPublisher;
 use Doctrine\ORM\UnitOfWork;
+use Ivoz\Core\Application\Service\CommandEventSubscriber;
+use Ivoz\Core\Domain\Service\EntityEventSubscriber;
+use Ivoz\Provider\Domain\Model\Changelog\Changelog;
+use Ivoz\Provider\Domain\Model\Commandlog\Commandlog;
 
 class DoctrineEntityPersister implements EntityPersisterInterface
 {
@@ -28,21 +30,20 @@ class DoctrineEntityPersister implements EntityPersisterInterface
      * @var UpdateEntityFromDTO
      */
     protected $entityUpdater;
+    /**
+     * @var CommandEventSubscriber
+     */
+    protected $commandEventSubscriber;
 
     /**
-     * @var string
+     * @var EntityEventSubscriber
      */
-    protected $requestId;
+    protected $entityEventSubscriber;
 
     /**
      * @var bool
      */
     protected $rootEntity;
-
-    /**
-     * @var DomainEventPublisher
-     */
-    protected $eventPublisher;
 
     /**
      * @var EntityInterface[]
@@ -53,24 +54,22 @@ class DoctrineEntityPersister implements EntityPersisterInterface
     (
         EntityManagerInterface $em,
         CreateEntityFromDTO $createEntityFromDTO,
-        UpdateEntityFromDTO $entityUpdater
+        UpdateEntityFromDTO $entityUpdater,
+        CommandEventSubscriber $commandEventSubscriber,
+        EntityEventSubscriber $entityEventSubscriber
     ) {
         $this->em = $em;
         $this->createEntityFromDTO = $createEntityFromDTO;
         $this->entityUpdater = $entityUpdater;
-
-        $this->requestId = Uuid::uuid4()->toString();
-
-        /**
-         * @todo inject this service
-         */
-        $this->eventPublisher = DomainEventPublisher::getInstance();
+        $this->commandEventSubscriber = $commandEventSubscriber;
+        $this->entityEventSubscriber = $entityEventSubscriber;
     }
 
     /**
      * @param DataTransferObjectInterface $dto
      * @param EntityInterface|null $entity
-     * @return EntityInterface|mixed
+     * @param bool $dispatchImmediately
+     * @return EntityInterface
      */
     public function persistDto(
         DataTransferObjectInterface $dto,
@@ -122,7 +121,7 @@ class DoctrineEntityPersister implements EntityPersisterInterface
 
             if (in_array($state, $singleComputationValidStates)) {
                 $this->em->flush($entity);
-                return ;
+                return;
             }
 
             $this->em->flush();
@@ -162,6 +161,7 @@ class DoctrineEntityPersister implements EntityPersisterInterface
             while (true) {
 
                 if (empty($this->pendingUpdates)) {
+                    $this->persistEvents();
                     break;
                 }
 
@@ -174,5 +174,31 @@ class DoctrineEntityPersister implements EntityPersisterInterface
         });
 
         $this->rootEntity = null;
+    }
+
+    private function persistEvents()
+    {
+        $command = $this
+            ->commandEventSubscriber
+            ->popEvent();
+
+        if (!$command) {
+            return;
+        }
+
+        $commandlog = Commandlog::fromEvent($command);
+        $this->em->persist($commandlog);
+
+        $entityEvents = $this
+            ->entityEventSubscriber
+            ->getEvents();
+
+        foreach ($entityEvents as $event) {
+            $changeLog = Changelog::fromEvent($event);
+            $changeLog->setCommand($commandlog);
+            $this->em->persist($changeLog);
+        }
+
+        $this->em->flush();
     }
 }

@@ -162,6 +162,40 @@ class FriendDTO implements DataTransferObjectInterface
     private $patterns = null;
 
     /**
+     * @return array
+     */
+    public function __toArray()
+    {
+        return [
+            'name' => $this->getName(),
+            'domain' => $this->getDomain(),
+            'description' => $this->getDescription(),
+            'transport' => $this->getTransport(),
+            'ip' => $this->getIp(),
+            'port' => $this->getPort(),
+            'authNeeded' => $this->getAuthNeeded(),
+            'password' => $this->getPassword(),
+            'areaCode' => $this->getAreaCode(),
+            'priority' => $this->getPriority(),
+            'disallow' => $this->getDisallow(),
+            'allow' => $this->getAllow(),
+            'directMediaMethod' => $this->getDirectMediaMethod(),
+            'calleridUpdateHeader' => $this->getCalleridUpdateHeader(),
+            'updateCallerid' => $this->getUpdateCallerid(),
+            'fromDomain' => $this->getFromDomain(),
+            'directConnectivity' => $this->getDirectConnectivity(),
+            'id' => $this->getId(),
+            'companyId' => $this->getCompanyId(),
+            'countryId' => $this->getCountryId(),
+            'callAclId' => $this->getCallAclId(),
+            'outgoingDdiId' => $this->getOutgoingDdiId(),
+            'languageId' => $this->getLanguageId(),
+            'psEndpoints' => $this->getPsEndpoints(),
+            'patterns' => $this->getPatterns()
+        ];
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

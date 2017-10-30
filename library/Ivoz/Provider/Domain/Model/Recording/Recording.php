@@ -12,6 +12,11 @@ class Recording extends RecordingAbstract implements RecordingInterface, FileCon
     use RecordingTrait;
     use TempFileContainnerTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * @return array
      */

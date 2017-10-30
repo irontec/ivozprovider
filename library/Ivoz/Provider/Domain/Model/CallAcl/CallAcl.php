@@ -9,6 +9,12 @@ class CallAcl extends CallAclAbstract implements CallAclInterface
 {
     use CallAclTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
+
     /**
      * Get id
      *

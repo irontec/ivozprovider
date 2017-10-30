@@ -68,6 +68,25 @@ class LocutionDTO implements DataTransferObjectInterface
     private $company;
 
     /**
+     * @return array
+     */
+    public function __toArray()
+    {
+        return [
+            'name' => $this->getName(),
+            'status' => $this->getStatus(),
+            'id' => $this->getId(),
+            'encodedFileFileSize' => $this->getEncodedFileFileSize(),
+            'encodedFileMimeType' => $this->getEncodedFileMimeType(),
+            'encodedFileBaseName' => $this->getEncodedFileBaseName(),
+            'originalFileFileSize' => $this->getOriginalFileFileSize(),
+            'originalFileMimeType' => $this->getOriginalFileMimeType(),
+            'originalFileBaseName' => $this->getOriginalFileBaseName(),
+            'companyId' => $this->getCompanyId()
+        ];
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

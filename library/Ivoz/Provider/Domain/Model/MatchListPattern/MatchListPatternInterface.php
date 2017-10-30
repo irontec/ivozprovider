@@ -2,20 +2,17 @@
 
 namespace Ivoz\Provider\Domain\Model\MatchListPattern;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface MatchListPatternInterface extends EntityInterface
+interface MatchListPatternInterface extends LoggableEntityInterface
 {
+    public function getChangeSet();
+
     /**
      * Get Number value in E.164 format
      * @param $prefix string
      */
     public function getNumberE164($prefix = null);
-
-    /**
-     * @return array
-     */
-    public function getChangeSet();
 
     /**
      * Set description

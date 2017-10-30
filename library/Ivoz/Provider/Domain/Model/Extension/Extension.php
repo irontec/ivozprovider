@@ -9,6 +9,11 @@ class Extension extends ExtensionAbstract implements ExtensionInterface
 {
     use ExtensionTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

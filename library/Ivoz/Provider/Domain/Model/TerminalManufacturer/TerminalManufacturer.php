@@ -9,6 +9,11 @@ class TerminalManufacturer extends TerminalManufacturerAbstract implements Termi
 {
     use TerminalManufacturerTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

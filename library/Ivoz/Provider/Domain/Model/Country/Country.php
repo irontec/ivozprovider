@@ -9,6 +9,11 @@ class Country extends CountryAbstract implements CountryInterface
 {
     use CountryTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

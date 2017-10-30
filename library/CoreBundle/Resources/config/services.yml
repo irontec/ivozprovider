@@ -4,6 +4,7 @@ imports:
   - { resource: '@CoreBundle/Resources/config/services/doctrine.yml' }
   - { resource: "@CoreBundle/Resources/config/services/assemblers.yml" }
   - { resource: "@CoreBundle/Resources/config/services/domain.yml" }
+  - { resource: "@CoreBundle/Resources/config/services/events.yml" }
   - { resource: '@CoreBundle/Resources/config/lifecycle.yml' }
 
 services:

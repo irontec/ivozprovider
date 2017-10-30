@@ -9,6 +9,11 @@ class Ddi extends DdiAbstract implements DdiInterface
 {
     use DdiTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

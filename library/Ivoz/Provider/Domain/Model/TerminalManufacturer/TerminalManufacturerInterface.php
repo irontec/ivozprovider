@@ -2,13 +2,10 @@
 
 namespace Ivoz\Provider\Domain\Model\TerminalManufacturer;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface TerminalManufacturerInterface extends EntityInterface
+interface TerminalManufacturerInterface extends LoggableEntityInterface
 {
-    /**
-     * @return array
-     */
     public function getChangeSet();
 
     /**

@@ -8,6 +8,11 @@ class MediaRelaySet extends MediaRelaySetAbstract implements MediaRelaySetInterf
 {
     use MediaRelaySetTrait;
 
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
     /**
      * Get id
      *

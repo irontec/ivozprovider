@@ -2,21 +2,18 @@
 
 namespace Ivoz\Provider\Domain\Model\Locution;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface LocutionInterface extends EntityInterface
+interface LocutionInterface extends LoggableEntityInterface
 {
+    public function getChangeSet();
+
     /**
      * @return array
      */
     public function getFileObjects();
 
     public function getLocutionPath();
-
-    /**
-     * @return array
-     */
-    public function getChangeSet();
 
     /**
      * Set name

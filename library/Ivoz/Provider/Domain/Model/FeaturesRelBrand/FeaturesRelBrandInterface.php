@@ -2,13 +2,10 @@
 
 namespace Ivoz\Provider\Domain\Model\FeaturesRelBrand;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface FeaturesRelBrandInterface extends EntityInterface
+interface FeaturesRelBrandInterface extends LoggableEntityInterface
 {
-    /**
-     * @return array
-     */
     public function getChangeSet();
 
     /**

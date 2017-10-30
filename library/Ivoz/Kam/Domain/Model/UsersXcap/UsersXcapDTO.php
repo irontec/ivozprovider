@@ -57,6 +57,24 @@ class UsersXcapDTO implements DataTransferObjectInterface
     private $id;
 
     /**
+     * @return array
+     */
+    public function __toArray()
+    {
+        return [
+            'username' => $this->getUsername(),
+            'domain' => $this->getDomain(),
+            'doc' => $this->getDoc(),
+            'docType' => $this->getDocType(),
+            'etag' => $this->getEtag(),
+            'source' => $this->getSource(),
+            'docUri' => $this->getDocUri(),
+            'port' => $this->getPort(),
+            'id' => $this->getId()
+        ];
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)

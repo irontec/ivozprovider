@@ -2,10 +2,12 @@
 
 namespace Ivoz\Provider\Domain\Model\Country;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface CountryInterface extends EntityInterface
+interface CountryInterface extends LoggableEntityInterface
 {
+    public function getChangeSet();
+
     /**
      * Convert a dialed number to E164 form
      *
@@ -29,11 +31,6 @@ interface CountryInterface extends EntityInterface
      * return true if the country has area code in its e164 pattern
      */
     public function hasAreaCode();
-
-    /**
-     * @return array
-     */
-    public function getChangeSet();
 
     /**
      * Set code

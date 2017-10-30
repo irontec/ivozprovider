@@ -92,6 +92,29 @@ class TerminalDTO implements DataTransferObjectInterface
     private $users = null;
 
     /**
+     * @return array
+     */
+    public function __toArray()
+    {
+        return [
+            'name' => $this->getName(),
+            'domain' => $this->getDomain(),
+            'disallow' => $this->getDisallow(),
+            'allowAudio' => $this->getAllowAudio(),
+            'allowVideo' => $this->getAllowVideo(),
+            'directMediaMethod' => $this->getDirectMediaMethod(),
+            'password' => $this->getPassword(),
+            'mac' => $this->getMac(),
+            'lastProvisionDate' => $this->getLastProvisionDate(),
+            'id' => $this->getId(),
+            'companyId' => $this->getCompanyId(),
+            'terminalModelId' => $this->getTerminalModelId(),
+            'astPsEndpoints' => $this->getAstPsEndpoints(),
+            'users' => $this->getUsers()
+        ];
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
