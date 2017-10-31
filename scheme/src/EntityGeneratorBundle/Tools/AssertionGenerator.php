@@ -11,7 +11,8 @@ class AssertionGenerator
 {
     public static function notNull($fieldName)
     {
-        return 'Assertion::notNull($'. $fieldName .');';
+        $message = $fieldName . ' value "%s" is null, but non null value was expected.';
+        return "Assertion::notNull($". $fieldName .", '". $message ."');";
     }
 
     public static function notNullCondition($fieldName)
@@ -21,31 +22,37 @@ class AssertionGenerator
 
     public static function boolean($fieldName)
     {
-        return 'Assertion::between(intval($'. $fieldName .'), 0, 1);';
+        $message = $fieldName . ' provided "%s" is not a valid boolean value.';
+        return "Assertion::between(intval($". $fieldName ."), 0, 1, '". $message ."');";
     }
 
     public static function integer($fieldName)
     {
-        return 'Assertion::integerish($'. $fieldName .');';
+        $message = $fieldName . ' value "%s" is not an integer or a number castable to integer.';
+        return "Assertion::integerish($". $fieldName . ", '". $message ."');";
     }
 
     public static function float($fieldName)
     {
-        return 'Assertion::numeric($'. $fieldName .');';
+        $message = $fieldName . ' value "%s" is not numeric.';
+        return "Assertion::numeric($". $fieldName .");";
     }
 
     public static function greaterOrEqualThan($fieldName, $limit)
     {
-        return 'Assertion::greaterOrEqualThan($'. $fieldName .', ' . $limit . ');';
+        $message = $fieldName . ' provided "%s" is not greater or equal than "%s".';
+        return "Assertion::greaterOrEqualThan($". $fieldName .", " . $limit . ", '". $message ."');";
     }
 
     public static function maxLength($fieldName, $maxLength)
     {
-        return 'Assertion::maxLength($'. $fieldName .', '. $maxLength .');';
+        $message = $fieldName . ' value "%s" is too long, it should have no more than %d characters, but has %d characters.';
+        return "Assertion::maxLength($" . $fieldName . ", " . $maxLength . ", '". $message ."');";
     }
 
     public static function choice($fieldName, $choices)
     {
-        return 'Assertion::choice($'. $fieldName .', '. var_export($choices, true) .');';
+        $message = $fieldName . 'value "%s" is not an element of the valid values: %s';
+        return "Assertion::choice($". $fieldName .", ". var_export($choices, true) . ", '". $message ."');";
     }
 }

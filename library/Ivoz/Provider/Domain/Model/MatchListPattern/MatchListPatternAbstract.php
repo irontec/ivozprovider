@@ -222,7 +222,7 @@ abstract class MatchListPatternAbstract
     public function setDescription($description = null)
     {
         if (!is_null($description)) {
-            Assertion::maxLength($description, 55);
+            Assertion::maxLength($description, 55, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->description = $description;
@@ -249,12 +249,12 @@ abstract class MatchListPatternAbstract
      */
     public function setType($type)
     {
-        Assertion::notNull($type);
-        Assertion::maxLength($type, 10);
+        Assertion::notNull($type, 'type value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($type, 10, 'type value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($type, array (
           0 => 'number',
           1 => 'regexp',
-        ));
+        ), 'typevalue "%s" is not an element of the valid values: %s');
 
         $this->type = $type;
 
@@ -281,7 +281,7 @@ abstract class MatchListPatternAbstract
     public function setRegexp($regexp = null)
     {
         if (!is_null($regexp)) {
-            Assertion::maxLength($regexp, 255);
+            Assertion::maxLength($regexp, 255, 'regexp value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->regexp = $regexp;
@@ -309,7 +309,7 @@ abstract class MatchListPatternAbstract
     public function setNumbervalue($numbervalue = null)
     {
         if (!is_null($numbervalue)) {
-            Assertion::maxLength($numbervalue, 25);
+            Assertion::maxLength($numbervalue, 25, 'numbervalue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->numbervalue = $numbervalue;

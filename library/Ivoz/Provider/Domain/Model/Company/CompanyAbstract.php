@@ -423,12 +423,12 @@ abstract class CompanyAbstract
      */
     public function setType($type)
     {
-        Assertion::notNull($type);
-        Assertion::maxLength($type, 25);
+        Assertion::notNull($type, 'type value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($type, 25, 'type value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($type, array (
           0 => 'vpbx',
           1 => 'retail',
-        ));
+        ), 'typevalue "%s" is not an element of the valid values: %s');
 
         $this->type = $type;
 
@@ -454,8 +454,8 @@ abstract class CompanyAbstract
      */
     public function setName($name)
     {
-        Assertion::notNull($name);
-        Assertion::maxLength($name, 80);
+        Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($name, 80, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->name = $name;
 
@@ -482,7 +482,7 @@ abstract class CompanyAbstract
     public function setDomainUsers($domainUsers = null)
     {
         if (!is_null($domainUsers)) {
-            Assertion::maxLength($domainUsers, 190);
+            Assertion::maxLength($domainUsers, 190, 'domainUsers value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->domainUsers = $domainUsers;
@@ -509,8 +509,8 @@ abstract class CompanyAbstract
      */
     public function setNif($nif)
     {
-        Assertion::notNull($nif);
-        Assertion::maxLength($nif, 25);
+        Assertion::notNull($nif, 'nif value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($nif, 25, 'nif value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->nif = $nif;
 
@@ -536,13 +536,13 @@ abstract class CompanyAbstract
      */
     public function setDistributeMethod($distributeMethod)
     {
-        Assertion::notNull($distributeMethod);
-        Assertion::maxLength($distributeMethod, 25);
+        Assertion::notNull($distributeMethod, 'distributeMethod value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($distributeMethod, 25, 'distributeMethod value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($distributeMethod, array (
           0 => 'static',
           1 => 'rr',
           2 => 'hash',
-        ));
+        ), 'distributeMethodvalue "%s" is not an element of the valid values: %s');
 
         $this->distributeMethod = $distributeMethod;
 
@@ -568,9 +568,9 @@ abstract class CompanyAbstract
      */
     public function setExternalMaxCalls($externalMaxCalls)
     {
-        Assertion::notNull($externalMaxCalls);
-        Assertion::integerish($externalMaxCalls);
-        Assertion::greaterOrEqualThan($externalMaxCalls, 0);
+        Assertion::notNull($externalMaxCalls, 'externalMaxCalls value "%s" is null, but non null value was expected.');
+        Assertion::integerish($externalMaxCalls, 'externalMaxCalls value "%s" is not an integer or a number castable to integer.');
+        Assertion::greaterOrEqualThan($externalMaxCalls, 0, 'externalMaxCalls provided "%s" is not greater or equal than "%s".');
 
         $this->externalMaxCalls = $externalMaxCalls;
 
@@ -596,8 +596,8 @@ abstract class CompanyAbstract
      */
     public function setPostalAddress($postalAddress)
     {
-        Assertion::notNull($postalAddress);
-        Assertion::maxLength($postalAddress, 255);
+        Assertion::notNull($postalAddress, 'postalAddress value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($postalAddress, 255, 'postalAddress value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->postalAddress = $postalAddress;
 
@@ -623,8 +623,8 @@ abstract class CompanyAbstract
      */
     public function setPostalCode($postalCode)
     {
-        Assertion::notNull($postalCode);
-        Assertion::maxLength($postalCode, 10);
+        Assertion::notNull($postalCode, 'postalCode value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($postalCode, 10, 'postalCode value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->postalCode = $postalCode;
 
@@ -650,8 +650,8 @@ abstract class CompanyAbstract
      */
     public function setTown($town)
     {
-        Assertion::notNull($town);
-        Assertion::maxLength($town, 255);
+        Assertion::notNull($town, 'town value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($town, 255, 'town value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->town = $town;
 
@@ -677,8 +677,8 @@ abstract class CompanyAbstract
      */
     public function setProvince($province)
     {
-        Assertion::notNull($province);
-        Assertion::maxLength($province, 255);
+        Assertion::notNull($province, 'province value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($province, 255, 'province value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->province = $province;
 
@@ -704,8 +704,8 @@ abstract class CompanyAbstract
      */
     public function setCountryName($countryName)
     {
-        Assertion::notNull($countryName);
-        Assertion::maxLength($countryName, 255);
+        Assertion::notNull($countryName, 'countryName value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($countryName, 255, 'countryName value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->countryName = $countryName;
 
@@ -732,7 +732,7 @@ abstract class CompanyAbstract
     public function setIpfilter($ipfilter = null)
     {
         if (!is_null($ipfilter)) {
-            Assertion::between(intval($ipfilter), 0, 1);
+            Assertion::between(intval($ipfilter), 0, 1, 'ipfilter provided "%s" is not a valid boolean value.');
         }
 
         $this->ipfilter = $ipfilter;
@@ -760,7 +760,7 @@ abstract class CompanyAbstract
     public function setOnDemandRecord($onDemandRecord = null)
     {
         if (!is_null($onDemandRecord)) {
-            Assertion::between(intval($onDemandRecord), 0, 1);
+            Assertion::between(intval($onDemandRecord), 0, 1, 'onDemandRecord provided "%s" is not a valid boolean value.');
         }
 
         $this->onDemandRecord = $onDemandRecord;
@@ -788,7 +788,7 @@ abstract class CompanyAbstract
     public function setOnDemandRecordCode($onDemandRecordCode = null)
     {
         if (!is_null($onDemandRecordCode)) {
-            Assertion::maxLength($onDemandRecordCode, 3);
+            Assertion::maxLength($onDemandRecordCode, 3, 'onDemandRecordCode value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->onDemandRecordCode = $onDemandRecordCode;
@@ -816,7 +816,7 @@ abstract class CompanyAbstract
     public function setExternallyextraopts($externallyextraopts = null)
     {
         if (!is_null($externallyextraopts)) {
-            Assertion::maxLength($externallyextraopts, 65535);
+            Assertion::maxLength($externallyextraopts, 65535, 'externallyextraopts value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->externallyextraopts = $externallyextraopts;
@@ -845,7 +845,7 @@ abstract class CompanyAbstract
     {
         if (!is_null($recordingsLimitMB)) {
             if (!is_null($recordingsLimitMB)) {
-                Assertion::integerish($recordingsLimitMB);
+                Assertion::integerish($recordingsLimitMB, 'recordingsLimitMB value "%s" is not an integer or a number castable to integer.');
             }
         }
 
@@ -874,7 +874,7 @@ abstract class CompanyAbstract
     public function setRecordingsLimitEmail($recordingsLimitEmail = null)
     {
         if (!is_null($recordingsLimitEmail)) {
-            Assertion::maxLength($recordingsLimitEmail, 250);
+            Assertion::maxLength($recordingsLimitEmail, 250, 'recordingsLimitEmail value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->recordingsLimitEmail = $recordingsLimitEmail;

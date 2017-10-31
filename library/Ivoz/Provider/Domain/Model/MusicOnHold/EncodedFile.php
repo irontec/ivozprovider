@@ -53,8 +53,8 @@ class EncodedFile
     {
         if (!is_null($fileSize)) {
             if (!is_null($fileSize)) {
-                Assertion::integerish($fileSize);
-                Assertion::greaterOrEqualThan($fileSize, 0);
+                Assertion::integerish($fileSize, 'fileSize value "%s" is not an integer or a number castable to integer.');
+                Assertion::greaterOrEqualThan($fileSize, 0, 'fileSize provided "%s" is not greater or equal than "%s".');
             }
         }
 
@@ -83,7 +83,7 @@ class EncodedFile
     protected function setMimeType($mimeType = null)
     {
         if (!is_null($mimeType)) {
-            Assertion::maxLength($mimeType, 80);
+            Assertion::maxLength($mimeType, 80, 'mimeType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->mimeType = $mimeType;
@@ -111,7 +111,7 @@ class EncodedFile
     protected function setBaseName($baseName = null)
     {
         if (!is_null($baseName)) {
-            Assertion::maxLength($baseName, 255);
+            Assertion::maxLength($baseName, 255, 'baseName value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->baseName = $baseName;

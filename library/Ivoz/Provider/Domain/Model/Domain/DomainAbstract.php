@@ -222,8 +222,8 @@ abstract class DomainAbstract
      */
     public function setDomain($domain)
     {
-        Assertion::notNull($domain);
-        Assertion::maxLength($domain, 190);
+        Assertion::notNull($domain, 'domain value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($domain, 190, 'domain value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->domain = $domain;
 
@@ -249,7 +249,7 @@ abstract class DomainAbstract
      */
     public function setScope($scope)
     {
-        Assertion::notNull($scope);
+        Assertion::notNull($scope, 'scope value "%s" is null, but non null value was expected.');
 
         $this->scope = $scope;
 
@@ -275,7 +275,7 @@ abstract class DomainAbstract
      */
     public function setPointsTo($pointsTo)
     {
-        Assertion::notNull($pointsTo);
+        Assertion::notNull($pointsTo, 'pointsTo value "%s" is null, but non null value was expected.');
 
         $this->pointsTo = $pointsTo;
 
@@ -302,7 +302,7 @@ abstract class DomainAbstract
     public function setDescription($description = null)
     {
         if (!is_null($description)) {
-            Assertion::maxLength($description, 500);
+            Assertion::maxLength($description, 500, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->description = $description;

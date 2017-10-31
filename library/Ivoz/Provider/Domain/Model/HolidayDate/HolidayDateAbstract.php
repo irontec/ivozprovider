@@ -203,8 +203,8 @@ abstract class HolidayDateAbstract
      */
     public function setName($name)
     {
-        Assertion::notNull($name);
-        Assertion::maxLength($name, 50);
+        Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($name, 50, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->name = $name;
 
@@ -230,7 +230,7 @@ abstract class HolidayDateAbstract
      */
     public function setEventDate($eventDate)
     {
-        Assertion::notNull($eventDate);
+        Assertion::notNull($eventDate, 'eventDate value "%s" is null, but non null value was expected.');
 
         $this->eventDate = $eventDate;
 

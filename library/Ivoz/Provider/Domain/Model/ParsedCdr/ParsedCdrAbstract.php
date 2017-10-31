@@ -411,8 +411,8 @@ abstract class ParsedCdrAbstract
     {
         if (!is_null($statId)) {
             if (!is_null($statId)) {
-                Assertion::integerish($statId);
-                Assertion::greaterOrEqualThan($statId, 0);
+                Assertion::integerish($statId, 'statId value "%s" is not an integer or a number castable to integer.');
+                Assertion::greaterOrEqualThan($statId, 0, 'statId provided "%s" is not greater or equal than "%s".');
             }
         }
 
@@ -442,8 +442,8 @@ abstract class ParsedCdrAbstract
     {
         if (!is_null($xstatId)) {
             if (!is_null($xstatId)) {
-                Assertion::integerish($xstatId);
-                Assertion::greaterOrEqualThan($xstatId, 0);
+                Assertion::integerish($xstatId, 'xstatId value "%s" is not an integer or a number castable to integer.');
+                Assertion::greaterOrEqualThan($xstatId, 0, 'xstatId provided "%s" is not greater or equal than "%s".');
             }
         }
 
@@ -472,7 +472,7 @@ abstract class ParsedCdrAbstract
     public function setStatType($statType = null)
     {
         if (!is_null($statType)) {
-            Assertion::maxLength($statType, 256);
+            Assertion::maxLength($statType, 256, 'statType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->statType = $statType;
@@ -500,7 +500,7 @@ abstract class ParsedCdrAbstract
     public function setInitialLeg($initialLeg = null)
     {
         if (!is_null($initialLeg)) {
-            Assertion::maxLength($initialLeg, 255);
+            Assertion::maxLength($initialLeg, 255, 'initialLeg value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->initialLeg = $initialLeg;
@@ -528,7 +528,7 @@ abstract class ParsedCdrAbstract
     public function setInitialLegHash($initialLegHash = null)
     {
         if (!is_null($initialLegHash)) {
-            Assertion::maxLength($initialLegHash, 128);
+            Assertion::maxLength($initialLegHash, 128, 'initialLegHash value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->initialLegHash = $initialLegHash;
@@ -556,7 +556,7 @@ abstract class ParsedCdrAbstract
     public function setCid($cid = null)
     {
         if (!is_null($cid)) {
-            Assertion::maxLength($cid, 255);
+            Assertion::maxLength($cid, 255, 'cid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->cid = $cid;
@@ -584,7 +584,7 @@ abstract class ParsedCdrAbstract
     public function setCidHash($cidHash = null)
     {
         if (!is_null($cidHash)) {
-            Assertion::maxLength($cidHash, 128);
+            Assertion::maxLength($cidHash, 128, 'cidHash value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->cidHash = $cidHash;
@@ -612,7 +612,7 @@ abstract class ParsedCdrAbstract
     public function setXcid($xcid = null)
     {
         if (!is_null($xcid)) {
-            Assertion::maxLength($xcid, 255);
+            Assertion::maxLength($xcid, 255, 'xcid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->xcid = $xcid;
@@ -640,7 +640,7 @@ abstract class ParsedCdrAbstract
     public function setXcidHash($xcidHash = null)
     {
         if (!is_null($xcidHash)) {
-            Assertion::maxLength($xcidHash, 128);
+            Assertion::maxLength($xcidHash, 128, 'xcidHash value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->xcidHash = $xcidHash;
@@ -668,7 +668,7 @@ abstract class ParsedCdrAbstract
     public function setProxies($proxies = null)
     {
         if (!is_null($proxies)) {
-            Assertion::maxLength($proxies, 32);
+            Assertion::maxLength($proxies, 32, 'proxies value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->proxies = $proxies;
@@ -696,7 +696,7 @@ abstract class ParsedCdrAbstract
     public function setType($type = null)
     {
         if (!is_null($type)) {
-            Assertion::maxLength($type, 32);
+            Assertion::maxLength($type, 32, 'type value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->type = $type;
@@ -724,7 +724,7 @@ abstract class ParsedCdrAbstract
     public function setSubtype($subtype = null)
     {
         if (!is_null($subtype)) {
-            Assertion::maxLength($subtype, 64);
+            Assertion::maxLength($subtype, 64, 'subtype value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->subtype = $subtype;
@@ -751,7 +751,7 @@ abstract class ParsedCdrAbstract
      */
     public function setCalldate($calldate)
     {
-        Assertion::notNull($calldate);
+        Assertion::notNull($calldate, 'calldate value "%s" is null, but non null value was expected.');
         $calldate = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
             $calldate,
             'CURRENT_TIMESTAMP'
@@ -783,8 +783,8 @@ abstract class ParsedCdrAbstract
     {
         if (!is_null($duration)) {
             if (!is_null($duration)) {
-                Assertion::integerish($duration);
-                Assertion::greaterOrEqualThan($duration, 0);
+                Assertion::integerish($duration, 'duration value "%s" is not an integer or a number castable to integer.');
+                Assertion::greaterOrEqualThan($duration, 0, 'duration provided "%s" is not greater or equal than "%s".');
             }
         }
 
@@ -813,7 +813,7 @@ abstract class ParsedCdrAbstract
     public function setAParty($aParty = null)
     {
         if (!is_null($aParty)) {
-            Assertion::maxLength($aParty, 128);
+            Assertion::maxLength($aParty, 128, 'aParty value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->aParty = $aParty;
@@ -841,7 +841,7 @@ abstract class ParsedCdrAbstract
     public function setBParty($bParty = null)
     {
         if (!is_null($bParty)) {
-            Assertion::maxLength($bParty, 128);
+            Assertion::maxLength($bParty, 128, 'bParty value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->bParty = $bParty;
@@ -869,7 +869,7 @@ abstract class ParsedCdrAbstract
     public function setCaller($caller = null)
     {
         if (!is_null($caller)) {
-            Assertion::maxLength($caller, 128);
+            Assertion::maxLength($caller, 128, 'caller value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->caller = $caller;
@@ -897,7 +897,7 @@ abstract class ParsedCdrAbstract
     public function setCallee($callee = null)
     {
         if (!is_null($callee)) {
-            Assertion::maxLength($callee, 128);
+            Assertion::maxLength($callee, 128, 'callee value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->callee = $callee;
@@ -925,7 +925,7 @@ abstract class ParsedCdrAbstract
     public function setXCaller($xCaller = null)
     {
         if (!is_null($xCaller)) {
-            Assertion::maxLength($xCaller, 128);
+            Assertion::maxLength($xCaller, 128, 'xCaller value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->xCaller = $xCaller;
@@ -953,7 +953,7 @@ abstract class ParsedCdrAbstract
     public function setXCallee($xCallee = null)
     {
         if (!is_null($xCallee)) {
-            Assertion::maxLength($xCallee, 128);
+            Assertion::maxLength($xCallee, 128, 'xCallee value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->xCallee = $xCallee;
@@ -981,7 +981,7 @@ abstract class ParsedCdrAbstract
     public function setInitialReferrer($initialReferrer = null)
     {
         if (!is_null($initialReferrer)) {
-            Assertion::maxLength($initialReferrer, 128);
+            Assertion::maxLength($initialReferrer, 128, 'initialReferrer value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->initialReferrer = $initialReferrer;
@@ -1009,7 +1009,7 @@ abstract class ParsedCdrAbstract
     public function setReferrer($referrer = null)
     {
         if (!is_null($referrer)) {
-            Assertion::maxLength($referrer, 128);
+            Assertion::maxLength($referrer, 128, 'referrer value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->referrer = $referrer;
@@ -1037,7 +1037,7 @@ abstract class ParsedCdrAbstract
     public function setReferee($referee = null)
     {
         if (!is_null($referee)) {
-            Assertion::maxLength($referee, 128);
+            Assertion::maxLength($referee, 128, 'referee value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->referee = $referee;
@@ -1065,7 +1065,7 @@ abstract class ParsedCdrAbstract
     public function setLastForwarder($lastForwarder = null)
     {
         if (!is_null($lastForwarder)) {
-            Assertion::maxLength($lastForwarder, 32);
+            Assertion::maxLength($lastForwarder, 32, 'lastForwarder value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->lastForwarder = $lastForwarder;

@@ -197,8 +197,8 @@ abstract class FeatureAbstract
      */
     public function setIden($iden)
     {
-        Assertion::notNull($iden);
-        Assertion::maxLength($iden, 100);
+        Assertion::notNull($iden, 'iden value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($iden, 100, 'iden value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->iden = $iden;
 

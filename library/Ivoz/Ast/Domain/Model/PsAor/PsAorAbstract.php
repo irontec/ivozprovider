@@ -266,7 +266,7 @@ abstract class PsAorAbstract
     {
         if (!is_null($defaultExpiration)) {
             if (!is_null($defaultExpiration)) {
-                Assertion::integerish($defaultExpiration);
+                Assertion::integerish($defaultExpiration, 'defaultExpiration value "%s" is not an integer or a number castable to integer.');
             }
         }
 
@@ -296,7 +296,7 @@ abstract class PsAorAbstract
     {
         if (!is_null($maxContacts)) {
             if (!is_null($maxContacts)) {
-                Assertion::integerish($maxContacts);
+                Assertion::integerish($maxContacts, 'maxContacts value "%s" is not an integer or a number castable to integer.');
             }
         }
 
@@ -326,7 +326,7 @@ abstract class PsAorAbstract
     {
         if (!is_null($minimumExpiration)) {
             if (!is_null($minimumExpiration)) {
-                Assertion::integerish($minimumExpiration);
+                Assertion::integerish($minimumExpiration, 'minimumExpiration value "%s" is not an integer or a number castable to integer.');
             }
         }
 
@@ -410,7 +410,7 @@ abstract class PsAorAbstract
     {
         if (!is_null($maximumExpiration)) {
             if (!is_null($maximumExpiration)) {
-                Assertion::integerish($maximumExpiration);
+                Assertion::integerish($maximumExpiration, 'maximumExpiration value "%s" is not an integer or a number castable to integer.');
             }
         }
 
@@ -466,7 +466,7 @@ abstract class PsAorAbstract
     public function setContact($contact = null)
     {
         if (!is_null($contact)) {
-            Assertion::maxLength($contact, 200);
+            Assertion::maxLength($contact, 200, 'contact value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->contact = $contact;
@@ -495,7 +495,7 @@ abstract class PsAorAbstract
     {
         if (!is_null($qualifyFrequency)) {
             if (!is_null($qualifyFrequency)) {
-                Assertion::integerish($qualifyFrequency);
+                Assertion::integerish($qualifyFrequency, 'qualifyFrequency value "%s" is not an integer or a number castable to integer.');
             }
         }
 

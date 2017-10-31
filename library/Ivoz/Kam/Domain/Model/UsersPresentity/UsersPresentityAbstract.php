@@ -264,8 +264,8 @@ abstract class UsersPresentityAbstract
      */
     public function setUsername($username)
     {
-        Assertion::notNull($username);
-        Assertion::maxLength($username, 64);
+        Assertion::notNull($username, 'username value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($username, 64, 'username value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->username = $username;
 
@@ -291,8 +291,8 @@ abstract class UsersPresentityAbstract
      */
     public function setDomain($domain)
     {
-        Assertion::notNull($domain);
-        Assertion::maxLength($domain, 190);
+        Assertion::notNull($domain, 'domain value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($domain, 190, 'domain value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->domain = $domain;
 
@@ -318,8 +318,8 @@ abstract class UsersPresentityAbstract
      */
     public function setEvent($event)
     {
-        Assertion::notNull($event);
-        Assertion::maxLength($event, 64);
+        Assertion::notNull($event, 'event value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($event, 64, 'event value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->event = $event;
 
@@ -345,8 +345,8 @@ abstract class UsersPresentityAbstract
      */
     public function setEtag($etag)
     {
-        Assertion::notNull($etag);
-        Assertion::maxLength($etag, 64);
+        Assertion::notNull($etag, 'etag value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($etag, 64, 'etag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->etag = $etag;
 
@@ -372,8 +372,8 @@ abstract class UsersPresentityAbstract
      */
     public function setExpires($expires)
     {
-        Assertion::notNull($expires);
-        Assertion::integerish($expires);
+        Assertion::notNull($expires, 'expires value "%s" is null, but non null value was expected.');
+        Assertion::integerish($expires, 'expires value "%s" is not an integer or a number castable to integer.');
 
         $this->expires = $expires;
 
@@ -399,8 +399,8 @@ abstract class UsersPresentityAbstract
      */
     public function setReceivedTime($receivedTime)
     {
-        Assertion::notNull($receivedTime);
-        Assertion::integerish($receivedTime);
+        Assertion::notNull($receivedTime, 'receivedTime value "%s" is null, but non null value was expected.');
+        Assertion::integerish($receivedTime, 'receivedTime value "%s" is not an integer or a number castable to integer.');
 
         $this->receivedTime = $receivedTime;
 
@@ -426,7 +426,7 @@ abstract class UsersPresentityAbstract
      */
     public function setBody($body)
     {
-        Assertion::notNull($body);
+        Assertion::notNull($body, 'body value "%s" is null, but non null value was expected.');
 
         $this->body = $body;
 
@@ -452,8 +452,8 @@ abstract class UsersPresentityAbstract
      */
     public function setSender($sender)
     {
-        Assertion::notNull($sender);
-        Assertion::maxLength($sender, 128);
+        Assertion::notNull($sender, 'sender value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($sender, 128, 'sender value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->sender = $sender;
 
@@ -479,8 +479,8 @@ abstract class UsersPresentityAbstract
      */
     public function setPriority($priority)
     {
-        Assertion::notNull($priority);
-        Assertion::integerish($priority);
+        Assertion::notNull($priority, 'priority value "%s" is null, but non null value was expected.');
+        Assertion::integerish($priority, 'priority value "%s" is not an integer or a number castable to integer.');
 
         $this->priority = $priority;
 

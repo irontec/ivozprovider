@@ -249,8 +249,8 @@ abstract class BrandUrlAbstract
      */
     public function setUrl($url)
     {
-        Assertion::notNull($url);
-        Assertion::maxLength($url, 255);
+        Assertion::notNull($url, 'url value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($url, 255, 'url value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->url = $url;
 
@@ -277,7 +277,7 @@ abstract class BrandUrlAbstract
     public function setKlearTheme($klearTheme = null)
     {
         if (!is_null($klearTheme)) {
-            Assertion::maxLength($klearTheme, 200);
+            Assertion::maxLength($klearTheme, 200, 'klearTheme value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->klearTheme = $klearTheme;
@@ -304,14 +304,14 @@ abstract class BrandUrlAbstract
      */
     public function setUrlType($urlType)
     {
-        Assertion::notNull($urlType);
-        Assertion::maxLength($urlType, 25);
+        Assertion::notNull($urlType, 'urlType value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($urlType, 25, 'urlType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($urlType, array (
           0 => 'god',
           1 => 'brand',
           2 => 'admin',
           3 => 'user',
-        ));
+        ), 'urlTypevalue "%s" is not an element of the valid values: %s');
 
         $this->urlType = $urlType;
 
@@ -338,7 +338,7 @@ abstract class BrandUrlAbstract
     public function setName($name = null)
     {
         if (!is_null($name)) {
-            Assertion::maxLength($name, 200);
+            Assertion::maxLength($name, 200, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->name = $name;
@@ -366,7 +366,7 @@ abstract class BrandUrlAbstract
     public function setUserTheme($userTheme = null)
     {
         if (!is_null($userTheme)) {
-            Assertion::maxLength($userTheme, 200);
+            Assertion::maxLength($userTheme, 200, 'userTheme value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->userTheme = $userTheme;

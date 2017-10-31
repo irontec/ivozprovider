@@ -222,7 +222,7 @@ abstract class PricingPlansRelCompanyAbstract
      */
     public function setValidFrom($validFrom)
     {
-        Assertion::notNull($validFrom);
+        Assertion::notNull($validFrom, 'validFrom value "%s" is null, but non null value was expected.');
         $validFrom = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
             $validFrom,
             null
@@ -252,7 +252,7 @@ abstract class PricingPlansRelCompanyAbstract
      */
     public function setValidTo($validTo)
     {
-        Assertion::notNull($validTo);
+        Assertion::notNull($validTo, 'validTo value "%s" is null, but non null value was expected.');
         $validTo = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
             $validTo,
             null
@@ -282,8 +282,8 @@ abstract class PricingPlansRelCompanyAbstract
      */
     public function setMetric($metric)
     {
-        Assertion::notNull($metric);
-        Assertion::integerish($metric);
+        Assertion::notNull($metric, 'metric value "%s" is null, but non null value was expected.');
+        Assertion::integerish($metric, 'metric value "%s" is not an integer or a number castable to integer.');
 
         $this->metric = $metric;
 

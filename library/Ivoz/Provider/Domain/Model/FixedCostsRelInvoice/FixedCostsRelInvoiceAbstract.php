@@ -204,7 +204,7 @@ abstract class FixedCostsRelInvoiceAbstract
     {
         if (!is_null($quantity)) {
             if (!is_null($quantity)) {
-                Assertion::integerish($quantity);
+                Assertion::integerish($quantity, 'quantity value "%s" is not an integer or a number castable to integer.');
             }
         }
 

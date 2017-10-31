@@ -269,8 +269,8 @@ abstract class QueueAbstract
      */
     public function setName($name)
     {
-        Assertion::notNull($name);
-        Assertion::maxLength($name, 128);
+        Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($name, 128, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->name = $name;
 
@@ -297,7 +297,7 @@ abstract class QueueAbstract
     public function setPeriodicAnnounce($periodicAnnounce = null)
     {
         if (!is_null($periodicAnnounce)) {
-            Assertion::maxLength($periodicAnnounce, 128);
+            Assertion::maxLength($periodicAnnounce, 128, 'periodicAnnounce value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->periodicAnnounce = $periodicAnnounce;
@@ -326,7 +326,7 @@ abstract class QueueAbstract
     {
         if (!is_null($periodicAnnounceFrequency)) {
             if (!is_null($periodicAnnounceFrequency)) {
-                Assertion::integerish($periodicAnnounceFrequency);
+                Assertion::integerish($periodicAnnounceFrequency, 'periodicAnnounceFrequency value "%s" is not an integer or a number castable to integer.');
             }
         }
 
@@ -356,7 +356,7 @@ abstract class QueueAbstract
     {
         if (!is_null($timeout)) {
             if (!is_null($timeout)) {
-                Assertion::integerish($timeout);
+                Assertion::integerish($timeout, 'timeout value "%s" is not an integer or a number castable to integer.');
             }
         }
 
@@ -384,7 +384,7 @@ abstract class QueueAbstract
      */
     public function setAutopause($autopause)
     {
-        Assertion::notNull($autopause);
+        Assertion::notNull($autopause, 'autopause value "%s" is null, but non null value was expected.');
 
         $this->autopause = $autopause;
 
@@ -410,7 +410,7 @@ abstract class QueueAbstract
      */
     public function setRinginuse($ringinuse)
     {
-        Assertion::notNull($ringinuse);
+        Assertion::notNull($ringinuse, 'ringinuse value "%s" is null, but non null value was expected.');
 
         $this->ringinuse = $ringinuse;
 
@@ -438,7 +438,7 @@ abstract class QueueAbstract
     {
         if (!is_null($wrapuptime)) {
             if (!is_null($wrapuptime)) {
-                Assertion::integerish($wrapuptime);
+                Assertion::integerish($wrapuptime, 'wrapuptime value "%s" is not an integer or a number castable to integer.');
             }
         }
 
@@ -468,7 +468,7 @@ abstract class QueueAbstract
     {
         if (!is_null($maxlen)) {
             if (!is_null($maxlen)) {
-                Assertion::integerish($maxlen);
+                Assertion::integerish($maxlen, 'maxlen value "%s" is not an integer or a number castable to integer.');
             }
         }
 
@@ -525,7 +525,7 @@ abstract class QueueAbstract
     {
         if (!is_null($weight)) {
             if (!is_null($weight)) {
-                Assertion::integerish($weight);
+                Assertion::integerish($weight, 'weight value "%s" is not an integer or a number castable to integer.');
             }
         }
 

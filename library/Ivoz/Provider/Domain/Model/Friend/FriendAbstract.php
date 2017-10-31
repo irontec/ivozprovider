@@ -386,8 +386,8 @@ abstract class FriendAbstract
      */
     public function setName($name)
     {
-        Assertion::notNull($name);
-        Assertion::maxLength($name, 65);
+        Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($name, 65, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->name = $name;
 
@@ -414,7 +414,7 @@ abstract class FriendAbstract
     public function setDomain($domain = null)
     {
         if (!is_null($domain)) {
-            Assertion::maxLength($domain, 190);
+            Assertion::maxLength($domain, 190, 'domain value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->domain = $domain;
@@ -441,8 +441,8 @@ abstract class FriendAbstract
      */
     public function setDescription($description)
     {
-        Assertion::notNull($description);
-        Assertion::maxLength($description, 500);
+        Assertion::notNull($description, 'description value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($description, 500, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->description = $description;
 
@@ -468,13 +468,13 @@ abstract class FriendAbstract
      */
     public function setTransport($transport)
     {
-        Assertion::notNull($transport);
-        Assertion::maxLength($transport, 25);
+        Assertion::notNull($transport, 'transport value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($transport, 25, 'transport value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($transport, array (
           0 => 'udp',
           1 => 'tcp',
           2 => 'tls',
-        ));
+        ), 'transportvalue "%s" is not an element of the valid values: %s');
 
         $this->transport = $transport;
 
@@ -501,7 +501,7 @@ abstract class FriendAbstract
     public function setIp($ip = null)
     {
         if (!is_null($ip)) {
-            Assertion::maxLength($ip, 50);
+            Assertion::maxLength($ip, 50, 'ip value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->ip = $ip;
@@ -530,8 +530,8 @@ abstract class FriendAbstract
     {
         if (!is_null($port)) {
             if (!is_null($port)) {
-                Assertion::integerish($port);
-                Assertion::greaterOrEqualThan($port, 0);
+                Assertion::integerish($port, 'port value "%s" is not an integer or a number castable to integer.');
+                Assertion::greaterOrEqualThan($port, 0, 'port provided "%s" is not greater or equal than "%s".');
             }
         }
 
@@ -559,7 +559,7 @@ abstract class FriendAbstract
      */
     public function setAuthNeeded($authNeeded)
     {
-        Assertion::notNull($authNeeded);
+        Assertion::notNull($authNeeded, 'authNeeded value "%s" is null, but non null value was expected.');
 
         $this->authNeeded = $authNeeded;
 
@@ -586,7 +586,7 @@ abstract class FriendAbstract
     public function setPassword($password = null)
     {
         if (!is_null($password)) {
-            Assertion::maxLength($password, 64);
+            Assertion::maxLength($password, 64, 'password value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->password = $password;
@@ -613,8 +613,8 @@ abstract class FriendAbstract
      */
     public function setPriority($priority)
     {
-        Assertion::notNull($priority);
-        Assertion::integerish($priority);
+        Assertion::notNull($priority, 'priority value "%s" is null, but non null value was expected.');
+        Assertion::integerish($priority, 'priority value "%s" is not an integer or a number castable to integer.');
 
         $this->priority = $priority;
 
@@ -640,8 +640,8 @@ abstract class FriendAbstract
      */
     public function setDisallow($disallow)
     {
-        Assertion::notNull($disallow);
-        Assertion::maxLength($disallow, 200);
+        Assertion::notNull($disallow, 'disallow value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($disallow, 200, 'disallow value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->disallow = $disallow;
 
@@ -667,8 +667,8 @@ abstract class FriendAbstract
      */
     public function setAllow($allow)
     {
-        Assertion::notNull($allow);
-        Assertion::maxLength($allow, 200);
+        Assertion::notNull($allow, 'allow value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($allow, 200, 'allow value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->allow = $allow;
 
@@ -694,11 +694,11 @@ abstract class FriendAbstract
      */
     public function setDirectMediaMethod($directMediaMethod)
     {
-        Assertion::notNull($directMediaMethod);
+        Assertion::notNull($directMediaMethod, 'directMediaMethod value "%s" is null, but non null value was expected.');
         Assertion::choice($directMediaMethod, array (
           0 => 'invite',
           1 => 'update',
-        ));
+        ), 'directMediaMethodvalue "%s" is not an element of the valid values: %s');
 
         $this->directMediaMethod = $directMediaMethod;
 
@@ -724,11 +724,11 @@ abstract class FriendAbstract
      */
     public function setCalleridUpdateHeader($calleridUpdateHeader)
     {
-        Assertion::notNull($calleridUpdateHeader);
+        Assertion::notNull($calleridUpdateHeader, 'calleridUpdateHeader value "%s" is null, but non null value was expected.');
         Assertion::choice($calleridUpdateHeader, array (
           0 => 'pai',
           1 => 'rpid',
-        ));
+        ), 'calleridUpdateHeadervalue "%s" is not an element of the valid values: %s');
 
         $this->calleridUpdateHeader = $calleridUpdateHeader;
 
@@ -754,11 +754,11 @@ abstract class FriendAbstract
      */
     public function setUpdateCallerid($updateCallerid)
     {
-        Assertion::notNull($updateCallerid);
+        Assertion::notNull($updateCallerid, 'updateCallerid value "%s" is null, but non null value was expected.');
         Assertion::choice($updateCallerid, array (
           0 => 'yes',
           1 => 'no',
-        ));
+        ), 'updateCalleridvalue "%s" is not an element of the valid values: %s');
 
         $this->updateCallerid = $updateCallerid;
 
@@ -785,7 +785,7 @@ abstract class FriendAbstract
     public function setFromDomain($fromDomain = null)
     {
         if (!is_null($fromDomain)) {
-            Assertion::maxLength($fromDomain, 190);
+            Assertion::maxLength($fromDomain, 190, 'fromDomain value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->fromDomain = $fromDomain;
@@ -812,11 +812,11 @@ abstract class FriendAbstract
      */
     public function setDirectConnectivity($directConnectivity)
     {
-        Assertion::notNull($directConnectivity);
+        Assertion::notNull($directConnectivity, 'directConnectivity value "%s" is null, but non null value was expected.');
         Assertion::choice($directConnectivity, array (
           0 => 'yes',
           1 => 'no',
-        ));
+        ), 'directConnectivityvalue "%s" is not an element of the valid values: %s');
 
         $this->directConnectivity = $directConnectivity;
 

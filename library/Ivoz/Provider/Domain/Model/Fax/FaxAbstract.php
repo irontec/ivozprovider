@@ -212,8 +212,8 @@ abstract class FaxAbstract
      */
     public function setName($name)
     {
-        Assertion::notNull($name);
-        Assertion::maxLength($name, 50);
+        Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($name, 50, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->name = $name;
 
@@ -240,7 +240,7 @@ abstract class FaxAbstract
     public function setEmail($email = null)
     {
         if (!is_null($email)) {
-            Assertion::maxLength($email, 255);
+            Assertion::maxLength($email, 255, 'email value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->email = $email;
@@ -267,8 +267,8 @@ abstract class FaxAbstract
      */
     public function setSendByEmail($sendByEmail)
     {
-        Assertion::notNull($sendByEmail);
-        Assertion::between(intval($sendByEmail), 0, 1);
+        Assertion::notNull($sendByEmail, 'sendByEmail value "%s" is null, but non null value was expected.');
+        Assertion::between(intval($sendByEmail), 0, 1, 'sendByEmail provided "%s" is not a valid boolean value.');
 
         $this->sendByEmail = $sendByEmail;
 

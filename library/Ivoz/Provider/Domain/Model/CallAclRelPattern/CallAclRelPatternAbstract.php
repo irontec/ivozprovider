@@ -204,8 +204,8 @@ abstract class CallAclRelPatternAbstract
      */
     public function setPriority($priority)
     {
-        Assertion::notNull($priority);
-        Assertion::integerish($priority);
+        Assertion::notNull($priority, 'priority value "%s" is null, but non null value was expected.');
+        Assertion::integerish($priority, 'priority value "%s" is not an integer or a number castable to integer.');
 
         $this->priority = $priority;
 
@@ -231,12 +231,12 @@ abstract class CallAclRelPatternAbstract
      */
     public function setPolicy($policy)
     {
-        Assertion::notNull($policy);
-        Assertion::maxLength($policy, 25);
+        Assertion::notNull($policy, 'policy value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($policy, 25, 'policy value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($policy, array (
           0 => 'allow',
           1 => 'deny',
-        ));
+        ), 'policyvalue "%s" is not an element of the valid values: %s');
 
         $this->policy = $policy;
 

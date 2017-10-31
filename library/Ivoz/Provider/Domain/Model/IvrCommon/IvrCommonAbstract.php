@@ -350,8 +350,8 @@ abstract class IvrCommonAbstract
      */
     public function setName($name)
     {
-        Assertion::notNull($name);
-        Assertion::maxLength($name, 50);
+        Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($name, 50, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->name = $name;
 
@@ -378,7 +378,7 @@ abstract class IvrCommonAbstract
     public function setBlackListRegExp($blackListRegExp = null)
     {
         if (!is_null($blackListRegExp)) {
-            Assertion::maxLength($blackListRegExp, 255);
+            Assertion::maxLength($blackListRegExp, 255, 'blackListRegExp value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->blackListRegExp = $blackListRegExp;
@@ -405,9 +405,9 @@ abstract class IvrCommonAbstract
      */
     public function setTimeout($timeout)
     {
-        Assertion::notNull($timeout);
-        Assertion::integerish($timeout);
-        Assertion::greaterOrEqualThan($timeout, 0);
+        Assertion::notNull($timeout, 'timeout value "%s" is null, but non null value was expected.');
+        Assertion::integerish($timeout, 'timeout value "%s" is not an integer or a number castable to integer.');
+        Assertion::greaterOrEqualThan($timeout, 0, 'timeout provided "%s" is not greater or equal than "%s".');
 
         $this->timeout = $timeout;
 
@@ -433,9 +433,9 @@ abstract class IvrCommonAbstract
      */
     public function setMaxDigits($maxDigits)
     {
-        Assertion::notNull($maxDigits);
-        Assertion::integerish($maxDigits);
-        Assertion::greaterOrEqualThan($maxDigits, 0);
+        Assertion::notNull($maxDigits, 'maxDigits value "%s" is null, but non null value was expected.');
+        Assertion::integerish($maxDigits, 'maxDigits value "%s" is not an integer or a number castable to integer.');
+        Assertion::greaterOrEqualThan($maxDigits, 0, 'maxDigits provided "%s" is not greater or equal than "%s".');
 
         $this->maxDigits = $maxDigits;
 
@@ -463,7 +463,7 @@ abstract class IvrCommonAbstract
     {
         if (!is_null($noAnswerTimeout)) {
             if (!is_null($noAnswerTimeout)) {
-                Assertion::integerish($noAnswerTimeout);
+                Assertion::integerish($noAnswerTimeout, 'noAnswerTimeout value "%s" is not an integer or a number castable to integer.');
             }
         }
 
@@ -492,12 +492,12 @@ abstract class IvrCommonAbstract
     public function setTimeoutTargetType($timeoutTargetType = null)
     {
         if (!is_null($timeoutTargetType)) {
-            Assertion::maxLength($timeoutTargetType, 25);
+            Assertion::maxLength($timeoutTargetType, 25, 'timeoutTargetType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($timeoutTargetType, array (
           0 => 'number',
           1 => 'extension',
           2 => 'voicemail',
-        ));
+        ), 'timeoutTargetTypevalue "%s" is not an element of the valid values: %s');
         }
 
         $this->timeoutTargetType = $timeoutTargetType;
@@ -525,7 +525,7 @@ abstract class IvrCommonAbstract
     public function setTimeoutNumberValue($timeoutNumberValue = null)
     {
         if (!is_null($timeoutNumberValue)) {
-            Assertion::maxLength($timeoutNumberValue, 25);
+            Assertion::maxLength($timeoutNumberValue, 25, 'timeoutNumberValue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->timeoutNumberValue = $timeoutNumberValue;
@@ -553,12 +553,12 @@ abstract class IvrCommonAbstract
     public function setErrorTargetType($errorTargetType = null)
     {
         if (!is_null($errorTargetType)) {
-            Assertion::maxLength($errorTargetType, 25);
+            Assertion::maxLength($errorTargetType, 25, 'errorTargetType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($errorTargetType, array (
           0 => 'number',
           1 => 'extension',
           2 => 'voicemail',
-        ));
+        ), 'errorTargetTypevalue "%s" is not an element of the valid values: %s');
         }
 
         $this->errorTargetType = $errorTargetType;
@@ -586,7 +586,7 @@ abstract class IvrCommonAbstract
     public function setErrorNumberValue($errorNumberValue = null)
     {
         if (!is_null($errorNumberValue)) {
-            Assertion::maxLength($errorNumberValue, 25);
+            Assertion::maxLength($errorNumberValue, 25, 'errorNumberValue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->errorNumberValue = $errorNumberValue;

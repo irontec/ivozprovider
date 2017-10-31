@@ -254,8 +254,8 @@ abstract class UsersXcapAbstract
      */
     public function setUsername($username)
     {
-        Assertion::notNull($username);
-        Assertion::maxLength($username, 64);
+        Assertion::notNull($username, 'username value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($username, 64, 'username value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->username = $username;
 
@@ -281,8 +281,8 @@ abstract class UsersXcapAbstract
      */
     public function setDomain($domain)
     {
-        Assertion::notNull($domain);
-        Assertion::maxLength($domain, 190);
+        Assertion::notNull($domain, 'domain value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($domain, 190, 'domain value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->domain = $domain;
 
@@ -308,7 +308,7 @@ abstract class UsersXcapAbstract
      */
     public function setDoc($doc)
     {
-        Assertion::notNull($doc);
+        Assertion::notNull($doc, 'doc value "%s" is null, but non null value was expected.');
 
         $this->doc = $doc;
 
@@ -334,8 +334,8 @@ abstract class UsersXcapAbstract
      */
     public function setDocType($docType)
     {
-        Assertion::notNull($docType);
-        Assertion::integerish($docType);
+        Assertion::notNull($docType, 'docType value "%s" is null, but non null value was expected.');
+        Assertion::integerish($docType, 'docType value "%s" is not an integer or a number castable to integer.');
 
         $this->docType = $docType;
 
@@ -361,8 +361,8 @@ abstract class UsersXcapAbstract
      */
     public function setEtag($etag)
     {
-        Assertion::notNull($etag);
-        Assertion::maxLength($etag, 64);
+        Assertion::notNull($etag, 'etag value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($etag, 64, 'etag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->etag = $etag;
 
@@ -388,8 +388,8 @@ abstract class UsersXcapAbstract
      */
     public function setSource($source)
     {
-        Assertion::notNull($source);
-        Assertion::integerish($source);
+        Assertion::notNull($source, 'source value "%s" is null, but non null value was expected.');
+        Assertion::integerish($source, 'source value "%s" is not an integer or a number castable to integer.');
 
         $this->source = $source;
 
@@ -415,8 +415,8 @@ abstract class UsersXcapAbstract
      */
     public function setDocUri($docUri)
     {
-        Assertion::notNull($docUri);
-        Assertion::maxLength($docUri, 255);
+        Assertion::notNull($docUri, 'docUri value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($docUri, 255, 'docUri value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->docUri = $docUri;
 
@@ -442,8 +442,8 @@ abstract class UsersXcapAbstract
      */
     public function setPort($port)
     {
-        Assertion::notNull($port);
-        Assertion::integerish($port);
+        Assertion::notNull($port, 'port value "%s" is null, but non null value was expected.');
+        Assertion::integerish($port, 'port value "%s" is not an integer or a number castable to integer.');
 
         $this->port = $port;
 

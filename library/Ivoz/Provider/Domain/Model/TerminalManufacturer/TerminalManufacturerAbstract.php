@@ -194,8 +194,8 @@ abstract class TerminalManufacturerAbstract
      */
     public function setIden($iden)
     {
-        Assertion::notNull($iden);
-        Assertion::maxLength($iden, 100);
+        Assertion::notNull($iden, 'iden value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($iden, 100, 'iden value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->iden = $iden;
 
@@ -221,8 +221,8 @@ abstract class TerminalManufacturerAbstract
      */
     public function setName($name)
     {
-        Assertion::notNull($name);
-        Assertion::maxLength($name, 100);
+        Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($name, 100, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->name = $name;
 
@@ -248,8 +248,8 @@ abstract class TerminalManufacturerAbstract
      */
     public function setDescription($description)
     {
-        Assertion::notNull($description);
-        Assertion::maxLength($description, 500);
+        Assertion::notNull($description, 'description value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($description, 500, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->description = $description;
 

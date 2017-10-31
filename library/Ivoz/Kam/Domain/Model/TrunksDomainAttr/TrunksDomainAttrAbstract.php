@@ -220,8 +220,8 @@ abstract class TrunksDomainAttrAbstract
      */
     public function setDid($did)
     {
-        Assertion::notNull($did);
-        Assertion::maxLength($did, 190);
+        Assertion::notNull($did, 'did value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($did, 190, 'did value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->did = $did;
 
@@ -247,8 +247,8 @@ abstract class TrunksDomainAttrAbstract
      */
     public function setName($name)
     {
-        Assertion::notNull($name);
-        Assertion::maxLength($name, 32);
+        Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($name, 32, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->name = $name;
 
@@ -274,9 +274,9 @@ abstract class TrunksDomainAttrAbstract
      */
     public function setType($type)
     {
-        Assertion::notNull($type);
-        Assertion::integerish($type);
-        Assertion::greaterOrEqualThan($type, 0);
+        Assertion::notNull($type, 'type value "%s" is null, but non null value was expected.');
+        Assertion::integerish($type, 'type value "%s" is not an integer or a number castable to integer.');
+        Assertion::greaterOrEqualThan($type, 0, 'type provided "%s" is not greater or equal than "%s".');
 
         $this->type = $type;
 
@@ -302,8 +302,8 @@ abstract class TrunksDomainAttrAbstract
      */
     public function setValue($value)
     {
-        Assertion::notNull($value);
-        Assertion::maxLength($value, 255);
+        Assertion::notNull($value, 'value value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($value, 255, 'value value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->value = $value;
 
@@ -329,7 +329,7 @@ abstract class TrunksDomainAttrAbstract
      */
     public function setLastModified($lastModified)
     {
-        Assertion::notNull($lastModified);
+        Assertion::notNull($lastModified, 'lastModified value "%s" is null, but non null value was expected.');
         $lastModified = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
             $lastModified,
             '1900-01-01 00:00:01'

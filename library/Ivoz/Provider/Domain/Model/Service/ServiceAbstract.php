@@ -244,8 +244,8 @@ abstract class ServiceAbstract
      */
     public function setIden($iden)
     {
-        Assertion::notNull($iden);
-        Assertion::maxLength($iden, 50);
+        Assertion::notNull($iden, 'iden value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($iden, 50, 'iden value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->iden = $iden;
 
@@ -271,8 +271,8 @@ abstract class ServiceAbstract
      */
     public function setDefaultCode($defaultCode)
     {
-        Assertion::notNull($defaultCode);
-        Assertion::maxLength($defaultCode, 3);
+        Assertion::notNull($defaultCode, 'defaultCode value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($defaultCode, 3, 'defaultCode value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->defaultCode = $defaultCode;
 
@@ -298,8 +298,8 @@ abstract class ServiceAbstract
      */
     public function setExtraArgs($extraArgs)
     {
-        Assertion::notNull($extraArgs);
-        Assertion::between(intval($extraArgs), 0, 1);
+        Assertion::notNull($extraArgs, 'extraArgs value "%s" is null, but non null value was expected.');
+        Assertion::between(intval($extraArgs), 0, 1, 'extraArgs provided "%s" is not a valid boolean value.');
 
         $this->extraArgs = $extraArgs;
 

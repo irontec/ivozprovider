@@ -249,8 +249,8 @@ abstract class IvrCustomEntryAbstract
      */
     public function setEntry($entry)
     {
-        Assertion::notNull($entry);
-        Assertion::maxLength($entry, 40);
+        Assertion::notNull($entry, 'entry value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($entry, 40, 'entry value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->entry = $entry;
 
@@ -276,14 +276,14 @@ abstract class IvrCustomEntryAbstract
      */
     public function setTargetType($targetType)
     {
-        Assertion::notNull($targetType);
-        Assertion::maxLength($targetType, 25);
+        Assertion::notNull($targetType, 'targetType value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($targetType, 25, 'targetType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($targetType, array (
           0 => 'number',
           1 => 'extension',
           2 => 'voicemail',
           3 => 'conditional',
-        ));
+        ), 'targetTypevalue "%s" is not an element of the valid values: %s');
 
         $this->targetType = $targetType;
 
@@ -310,7 +310,7 @@ abstract class IvrCustomEntryAbstract
     public function setTargetNumberValue($targetNumberValue = null)
     {
         if (!is_null($targetNumberValue)) {
-            Assertion::maxLength($targetNumberValue, 25);
+            Assertion::maxLength($targetNumberValue, 25, 'targetNumberValue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->targetNumberValue = $targetNumberValue;

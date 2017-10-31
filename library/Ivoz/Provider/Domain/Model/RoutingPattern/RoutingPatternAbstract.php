@@ -232,8 +232,8 @@ abstract class RoutingPatternAbstract
      */
     public function setRegExp($regExp)
     {
-        Assertion::notNull($regExp);
-        Assertion::maxLength($regExp, 80);
+        Assertion::notNull($regExp, 'regExp value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($regExp, 80, 'regExp value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->regExp = $regExp;
 

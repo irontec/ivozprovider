@@ -222,14 +222,14 @@ abstract class TransformationRuleAbstract
      */
     public function setType($type)
     {
-        Assertion::notNull($type);
-        Assertion::maxLength($type, 10);
+        Assertion::notNull($type, 'type value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($type, 10, 'type value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($type, array (
           0 => 'callerin',
           1 => 'calleein',
           2 => 'callerout',
           3 => 'calleeout',
-        ));
+        ), 'typevalue "%s" is not an element of the valid values: %s');
 
         $this->type = $type;
 
@@ -255,8 +255,8 @@ abstract class TransformationRuleAbstract
      */
     public function setDescription($description)
     {
-        Assertion::notNull($description);
-        Assertion::maxLength($description, 64);
+        Assertion::notNull($description, 'description value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($description, 64, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->description = $description;
 
@@ -284,8 +284,8 @@ abstract class TransformationRuleAbstract
     {
         if (!is_null($priority)) {
             if (!is_null($priority)) {
-                Assertion::integerish($priority);
-                Assertion::greaterOrEqualThan($priority, 0);
+                Assertion::integerish($priority, 'priority value "%s" is not an integer or a number castable to integer.');
+                Assertion::greaterOrEqualThan($priority, 0, 'priority provided "%s" is not greater or equal than "%s".');
             }
         }
 
@@ -314,7 +314,7 @@ abstract class TransformationRuleAbstract
     public function setMatchExpr($matchExpr = null)
     {
         if (!is_null($matchExpr)) {
-            Assertion::maxLength($matchExpr, 128);
+            Assertion::maxLength($matchExpr, 128, 'matchExpr value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->matchExpr = $matchExpr;
@@ -342,7 +342,7 @@ abstract class TransformationRuleAbstract
     public function setReplaceExpr($replaceExpr = null)
     {
         if (!is_null($replaceExpr)) {
-            Assertion::maxLength($replaceExpr, 128);
+            Assertion::maxLength($replaceExpr, 128, 'replaceExpr value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->replaceExpr = $replaceExpr;

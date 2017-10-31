@@ -213,12 +213,12 @@ abstract class OutgoingDdiRulesPatternAbstract
      */
     public function setAction($action)
     {
-        Assertion::notNull($action);
-        Assertion::maxLength($action, 10);
+        Assertion::notNull($action, 'action value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($action, 10, 'action value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($action, array (
           0 => 'keep',
           1 => 'force',
-        ));
+        ), 'actionvalue "%s" is not an element of the valid values: %s');
 
         $this->action = $action;
 
@@ -244,8 +244,8 @@ abstract class OutgoingDdiRulesPatternAbstract
      */
     public function setPriority($priority)
     {
-        Assertion::notNull($priority);
-        Assertion::integerish($priority);
+        Assertion::notNull($priority, 'priority value "%s" is null, but non null value was expected.');
+        Assertion::integerish($priority, 'priority value "%s" is not an integer or a number castable to integer.');
 
         $this->priority = $priority;
 

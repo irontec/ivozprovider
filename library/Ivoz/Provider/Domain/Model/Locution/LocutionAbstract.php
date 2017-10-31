@@ -250,8 +250,8 @@ abstract class LocutionAbstract
      */
     public function setName($name)
     {
-        Assertion::notNull($name);
-        Assertion::maxLength($name, 50);
+        Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($name, 50, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->name = $name;
 
@@ -278,13 +278,13 @@ abstract class LocutionAbstract
     public function setStatus($status = null)
     {
         if (!is_null($status)) {
-            Assertion::maxLength($status, 20);
+            Assertion::maxLength($status, 20, 'status value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($status, array (
           0 => 'pending',
           1 => 'encoding',
           2 => 'ready',
           3 => 'error',
-        ));
+        ), 'statusvalue "%s" is not an element of the valid values: %s');
         }
 
         $this->status = $status;

@@ -267,8 +267,8 @@ abstract class ScheduleAbstract
      */
     public function setName($name)
     {
-        Assertion::notNull($name);
-        Assertion::maxLength($name, 50);
+        Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($name, 50, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->name = $name;
 
@@ -294,7 +294,7 @@ abstract class ScheduleAbstract
      */
     public function setTimeIn($timeIn)
     {
-        Assertion::notNull($timeIn);
+        Assertion::notNull($timeIn, 'timeIn value "%s" is null, but non null value was expected.');
 
         $this->timeIn = $timeIn;
 
@@ -320,7 +320,7 @@ abstract class ScheduleAbstract
      */
     public function setTimeout($timeout)
     {
-        Assertion::notNull($timeout);
+        Assertion::notNull($timeout, 'timeout value "%s" is null, but non null value was expected.');
 
         $this->timeout = $timeout;
 
@@ -347,7 +347,7 @@ abstract class ScheduleAbstract
     public function setMonday($monday = null)
     {
         if (!is_null($monday)) {
-            Assertion::between(intval($monday), 0, 1);
+            Assertion::between(intval($monday), 0, 1, 'monday provided "%s" is not a valid boolean value.');
         }
 
         $this->monday = $monday;
@@ -375,7 +375,7 @@ abstract class ScheduleAbstract
     public function setTuesday($tuesday = null)
     {
         if (!is_null($tuesday)) {
-            Assertion::between(intval($tuesday), 0, 1);
+            Assertion::between(intval($tuesday), 0, 1, 'tuesday provided "%s" is not a valid boolean value.');
         }
 
         $this->tuesday = $tuesday;
@@ -403,7 +403,7 @@ abstract class ScheduleAbstract
     public function setWednesday($wednesday = null)
     {
         if (!is_null($wednesday)) {
-            Assertion::between(intval($wednesday), 0, 1);
+            Assertion::between(intval($wednesday), 0, 1, 'wednesday provided "%s" is not a valid boolean value.');
         }
 
         $this->wednesday = $wednesday;
@@ -431,7 +431,7 @@ abstract class ScheduleAbstract
     public function setThursday($thursday = null)
     {
         if (!is_null($thursday)) {
-            Assertion::between(intval($thursday), 0, 1);
+            Assertion::between(intval($thursday), 0, 1, 'thursday provided "%s" is not a valid boolean value.');
         }
 
         $this->thursday = $thursday;
@@ -459,7 +459,7 @@ abstract class ScheduleAbstract
     public function setFriday($friday = null)
     {
         if (!is_null($friday)) {
-            Assertion::between(intval($friday), 0, 1);
+            Assertion::between(intval($friday), 0, 1, 'friday provided "%s" is not a valid boolean value.');
         }
 
         $this->friday = $friday;
@@ -487,7 +487,7 @@ abstract class ScheduleAbstract
     public function setSaturday($saturday = null)
     {
         if (!is_null($saturday)) {
-            Assertion::between(intval($saturday), 0, 1);
+            Assertion::between(intval($saturday), 0, 1, 'saturday provided "%s" is not a valid boolean value.');
         }
 
         $this->saturday = $saturday;
@@ -515,7 +515,7 @@ abstract class ScheduleAbstract
     public function setSunday($sunday = null)
     {
         if (!is_null($sunday)) {
-            Assertion::between(intval($sunday), 0, 1);
+            Assertion::between(intval($sunday), 0, 1, 'sunday provided "%s" is not a valid boolean value.');
         }
 
         $this->sunday = $sunday;

@@ -266,7 +266,7 @@ abstract class FaxesInOutAbstract
      */
     public function setCalldate($calldate)
     {
-        Assertion::notNull($calldate);
+        Assertion::notNull($calldate, 'calldate value "%s" is null, but non null value was expected.');
         $calldate = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
             $calldate,
             null
@@ -297,7 +297,7 @@ abstract class FaxesInOutAbstract
     public function setSrc($src = null)
     {
         if (!is_null($src)) {
-            Assertion::maxLength($src, 128);
+            Assertion::maxLength($src, 128, 'src value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->src = $src;
@@ -325,7 +325,7 @@ abstract class FaxesInOutAbstract
     public function setDst($dst = null)
     {
         if (!is_null($dst)) {
-            Assertion::maxLength($dst, 128);
+            Assertion::maxLength($dst, 128, 'dst value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->dst = $dst;
@@ -353,11 +353,11 @@ abstract class FaxesInOutAbstract
     public function setType($type = null)
     {
         if (!is_null($type)) {
-            Assertion::maxLength($type, 20);
+            Assertion::maxLength($type, 20, 'type value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($type, array (
           0 => 'In',
           1 => 'Out',
-        ));
+        ), 'typevalue "%s" is not an element of the valid values: %s');
         }
 
         $this->type = $type;
@@ -385,7 +385,7 @@ abstract class FaxesInOutAbstract
     public function setPages($pages = null)
     {
         if (!is_null($pages)) {
-            Assertion::maxLength($pages, 64);
+            Assertion::maxLength($pages, 64, 'pages value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->pages = $pages;

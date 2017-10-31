@@ -475,8 +475,8 @@ abstract class VoicemailAbstract
      */
     public function setContext($context)
     {
-        Assertion::notNull($context);
-        Assertion::maxLength($context, 80);
+        Assertion::notNull($context, 'context value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($context, 80, 'context value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->context = $context;
 
@@ -502,8 +502,8 @@ abstract class VoicemailAbstract
      */
     public function setMailbox($mailbox)
     {
-        Assertion::notNull($mailbox);
-        Assertion::maxLength($mailbox, 80);
+        Assertion::notNull($mailbox, 'mailbox value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($mailbox, 80, 'mailbox value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->mailbox = $mailbox;
 
@@ -530,7 +530,7 @@ abstract class VoicemailAbstract
     public function setPassword($password = null)
     {
         if (!is_null($password)) {
-            Assertion::maxLength($password, 80);
+            Assertion::maxLength($password, 80, 'password value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->password = $password;
@@ -558,7 +558,7 @@ abstract class VoicemailAbstract
     public function setFullname($fullname = null)
     {
         if (!is_null($fullname)) {
-            Assertion::maxLength($fullname, 80);
+            Assertion::maxLength($fullname, 80, 'fullname value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->fullname = $fullname;
@@ -586,7 +586,7 @@ abstract class VoicemailAbstract
     public function setAlias($alias = null)
     {
         if (!is_null($alias)) {
-            Assertion::maxLength($alias, 80);
+            Assertion::maxLength($alias, 80, 'alias value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->alias = $alias;
@@ -614,7 +614,7 @@ abstract class VoicemailAbstract
     public function setEmail($email = null)
     {
         if (!is_null($email)) {
-            Assertion::maxLength($email, 80);
+            Assertion::maxLength($email, 80, 'email value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->email = $email;
@@ -642,7 +642,7 @@ abstract class VoicemailAbstract
     public function setPager($pager = null)
     {
         if (!is_null($pager)) {
-            Assertion::maxLength($pager, 80);
+            Assertion::maxLength($pager, 80, 'pager value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->pager = $pager;
@@ -697,7 +697,7 @@ abstract class VoicemailAbstract
     public function setAttachfmt($attachfmt = null)
     {
         if (!is_null($attachfmt)) {
-            Assertion::maxLength($attachfmt, 10);
+            Assertion::maxLength($attachfmt, 10, 'attachfmt value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->attachfmt = $attachfmt;
@@ -725,7 +725,7 @@ abstract class VoicemailAbstract
     public function setServeremail($serveremail = null)
     {
         if (!is_null($serveremail)) {
-            Assertion::maxLength($serveremail, 80);
+            Assertion::maxLength($serveremail, 80, 'serveremail value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->serveremail = $serveremail;
@@ -753,7 +753,7 @@ abstract class VoicemailAbstract
     public function setLanguage($language = null)
     {
         if (!is_null($language)) {
-            Assertion::maxLength($language, 20);
+            Assertion::maxLength($language, 20, 'language value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->language = $language;
@@ -781,7 +781,7 @@ abstract class VoicemailAbstract
     public function setTz($tz = null)
     {
         if (!is_null($tz)) {
-            Assertion::maxLength($tz, 30);
+            Assertion::maxLength($tz, 30, 'tz value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->tz = $tz;
@@ -999,7 +999,7 @@ abstract class VoicemailAbstract
     {
         if (!is_null($sayduration)) {
             if (!is_null($sayduration)) {
-                Assertion::integerish($sayduration);
+                Assertion::integerish($sayduration, 'sayduration value "%s" is not an integer or a number castable to integer.');
             }
         }
 
@@ -1082,7 +1082,7 @@ abstract class VoicemailAbstract
     public function setCallback($callback = null)
     {
         if (!is_null($callback)) {
-            Assertion::maxLength($callback, 80);
+            Assertion::maxLength($callback, 80, 'callback value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->callback = $callback;
@@ -1110,7 +1110,7 @@ abstract class VoicemailAbstract
     public function setDialout($dialout = null)
     {
         if (!is_null($dialout)) {
-            Assertion::maxLength($dialout, 80);
+            Assertion::maxLength($dialout, 80, 'dialout value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->dialout = $dialout;
@@ -1138,7 +1138,7 @@ abstract class VoicemailAbstract
     public function setExitcontext($exitcontext = null)
     {
         if (!is_null($exitcontext)) {
-            Assertion::maxLength($exitcontext, 80);
+            Assertion::maxLength($exitcontext, 80, 'exitcontext value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->exitcontext = $exitcontext;
@@ -1167,7 +1167,7 @@ abstract class VoicemailAbstract
     {
         if (!is_null($maxmsg)) {
             if (!is_null($maxmsg)) {
-                Assertion::integerish($maxmsg);
+                Assertion::integerish($maxmsg, 'maxmsg value "%s" is not an integer or a number castable to integer.');
             }
         }
 
@@ -1226,7 +1226,7 @@ abstract class VoicemailAbstract
     public function setImapuser($imapuser = null)
     {
         if (!is_null($imapuser)) {
-            Assertion::maxLength($imapuser, 80);
+            Assertion::maxLength($imapuser, 80, 'imapuser value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->imapuser = $imapuser;
@@ -1254,7 +1254,7 @@ abstract class VoicemailAbstract
     public function setImappassword($imappassword = null)
     {
         if (!is_null($imappassword)) {
-            Assertion::maxLength($imappassword, 80);
+            Assertion::maxLength($imappassword, 80, 'imappassword value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->imappassword = $imappassword;
@@ -1282,7 +1282,7 @@ abstract class VoicemailAbstract
     public function setImapserver($imapserver = null)
     {
         if (!is_null($imapserver)) {
-            Assertion::maxLength($imapserver, 80);
+            Assertion::maxLength($imapserver, 80, 'imapserver value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->imapserver = $imapserver;
@@ -1310,7 +1310,7 @@ abstract class VoicemailAbstract
     public function setImapport($imapport = null)
     {
         if (!is_null($imapport)) {
-            Assertion::maxLength($imapport, 8);
+            Assertion::maxLength($imapport, 8, 'imapport value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->imapport = $imapport;
@@ -1338,7 +1338,7 @@ abstract class VoicemailAbstract
     public function setImapflags($imapflags = null)
     {
         if (!is_null($imapflags)) {
-            Assertion::maxLength($imapflags, 80);
+            Assertion::maxLength($imapflags, 80, 'imapflags value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->imapflags = $imapflags;

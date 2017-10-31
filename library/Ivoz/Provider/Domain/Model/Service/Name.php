@@ -43,8 +43,8 @@ class Name
      */
     protected function setEn($en)
     {
-        Assertion::notNull($en);
-        Assertion::maxLength($en, 50);
+        Assertion::notNull($en, 'en value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($en, 50, 'en value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->en = $en;
 
@@ -70,8 +70,8 @@ class Name
      */
     protected function setEs($es)
     {
-        Assertion::notNull($es);
-        Assertion::maxLength($es, 50);
+        Assertion::notNull($es, 'es value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($es, 50, 'es value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->es = $es;
 

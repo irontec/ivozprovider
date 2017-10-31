@@ -78,8 +78,8 @@ class Invoice
      */
     protected function setNif($nif)
     {
-        Assertion::notNull($nif);
-        Assertion::maxLength($nif, 25);
+        Assertion::notNull($nif, 'nif value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($nif, 25, 'nif value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->nif = $nif;
 
@@ -105,8 +105,8 @@ class Invoice
      */
     protected function setPostalAddress($postalAddress)
     {
-        Assertion::notNull($postalAddress);
-        Assertion::maxLength($postalAddress, 255);
+        Assertion::notNull($postalAddress, 'postalAddress value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($postalAddress, 255, 'postalAddress value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->postalAddress = $postalAddress;
 
@@ -132,8 +132,8 @@ class Invoice
      */
     protected function setPostalCode($postalCode)
     {
-        Assertion::notNull($postalCode);
-        Assertion::maxLength($postalCode, 10);
+        Assertion::notNull($postalCode, 'postalCode value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($postalCode, 10, 'postalCode value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->postalCode = $postalCode;
 
@@ -159,8 +159,8 @@ class Invoice
      */
     protected function setTown($town)
     {
-        Assertion::notNull($town);
-        Assertion::maxLength($town, 255);
+        Assertion::notNull($town, 'town value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($town, 255, 'town value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->town = $town;
 
@@ -186,8 +186,8 @@ class Invoice
      */
     protected function setProvince($province)
     {
-        Assertion::notNull($province);
-        Assertion::maxLength($province, 255);
+        Assertion::notNull($province, 'province value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($province, 255, 'province value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->province = $province;
 
@@ -213,8 +213,8 @@ class Invoice
      */
     protected function setCountry($country)
     {
-        Assertion::notNull($country);
-        Assertion::maxLength($country, 255);
+        Assertion::notNull($country, 'country value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($country, 255, 'country value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->country = $country;
 
@@ -241,7 +241,7 @@ class Invoice
     protected function setRegistryData($registryData = null)
     {
         if (!is_null($registryData)) {
-            Assertion::maxLength($registryData, 1024);
+            Assertion::maxLength($registryData, 1024, 'registryData value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->registryData = $registryData;

@@ -303,8 +303,8 @@ abstract class ExternalCallFilterAbstract
      */
     public function setName($name)
     {
-        Assertion::notNull($name);
-        Assertion::maxLength($name, 50);
+        Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($name, 50, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->name = $name;
 
@@ -331,12 +331,12 @@ abstract class ExternalCallFilterAbstract
     public function setHolidayTargetType($holidayTargetType = null)
     {
         if (!is_null($holidayTargetType)) {
-            Assertion::maxLength($holidayTargetType, 25);
+            Assertion::maxLength($holidayTargetType, 25, 'holidayTargetType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($holidayTargetType, array (
           0 => 'number',
           1 => 'extension',
           2 => 'voicemail',
-        ));
+        ), 'holidayTargetTypevalue "%s" is not an element of the valid values: %s');
         }
 
         $this->holidayTargetType = $holidayTargetType;
@@ -364,7 +364,7 @@ abstract class ExternalCallFilterAbstract
     public function setHolidayNumberValue($holidayNumberValue = null)
     {
         if (!is_null($holidayNumberValue)) {
-            Assertion::maxLength($holidayNumberValue, 25);
+            Assertion::maxLength($holidayNumberValue, 25, 'holidayNumberValue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->holidayNumberValue = $holidayNumberValue;
@@ -392,12 +392,12 @@ abstract class ExternalCallFilterAbstract
     public function setOutOfScheduleTargetType($outOfScheduleTargetType = null)
     {
         if (!is_null($outOfScheduleTargetType)) {
-            Assertion::maxLength($outOfScheduleTargetType, 25);
+            Assertion::maxLength($outOfScheduleTargetType, 25, 'outOfScheduleTargetType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($outOfScheduleTargetType, array (
           0 => 'number',
           1 => 'extension',
           2 => 'voicemail',
-        ));
+        ), 'outOfScheduleTargetTypevalue "%s" is not an element of the valid values: %s');
         }
 
         $this->outOfScheduleTargetType = $outOfScheduleTargetType;
@@ -425,7 +425,7 @@ abstract class ExternalCallFilterAbstract
     public function setOutOfScheduleNumberValue($outOfScheduleNumberValue = null)
     {
         if (!is_null($outOfScheduleNumberValue)) {
-            Assertion::maxLength($outOfScheduleNumberValue, 25);
+            Assertion::maxLength($outOfScheduleNumberValue, 25, 'outOfScheduleNumberValue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->outOfScheduleNumberValue = $outOfScheduleNumberValue;

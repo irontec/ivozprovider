@@ -240,8 +240,8 @@ abstract class DispatcherAbstract
      */
     public function setSetid($setid)
     {
-        Assertion::notNull($setid);
-        Assertion::integerish($setid);
+        Assertion::notNull($setid, 'setid value "%s" is null, but non null value was expected.');
+        Assertion::integerish($setid, 'setid value "%s" is not an integer or a number castable to integer.');
 
         $this->setid = $setid;
 
@@ -267,8 +267,8 @@ abstract class DispatcherAbstract
      */
     public function setDestination($destination)
     {
-        Assertion::notNull($destination);
-        Assertion::maxLength($destination, 192);
+        Assertion::notNull($destination, 'destination value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($destination, 192, 'destination value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->destination = $destination;
 
@@ -294,8 +294,8 @@ abstract class DispatcherAbstract
      */
     public function setFlags($flags)
     {
-        Assertion::notNull($flags);
-        Assertion::integerish($flags);
+        Assertion::notNull($flags, 'flags value "%s" is null, but non null value was expected.');
+        Assertion::integerish($flags, 'flags value "%s" is not an integer or a number castable to integer.');
 
         $this->flags = $flags;
 
@@ -321,8 +321,8 @@ abstract class DispatcherAbstract
      */
     public function setPriority($priority)
     {
-        Assertion::notNull($priority);
-        Assertion::integerish($priority);
+        Assertion::notNull($priority, 'priority value "%s" is null, but non null value was expected.');
+        Assertion::integerish($priority, 'priority value "%s" is not an integer or a number castable to integer.');
 
         $this->priority = $priority;
 
@@ -348,8 +348,8 @@ abstract class DispatcherAbstract
      */
     public function setAttrs($attrs)
     {
-        Assertion::notNull($attrs);
-        Assertion::maxLength($attrs, 128);
+        Assertion::notNull($attrs, 'attrs value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($attrs, 128, 'attrs value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->attrs = $attrs;
 
@@ -375,8 +375,8 @@ abstract class DispatcherAbstract
      */
     public function setDescription($description)
     {
-        Assertion::notNull($description);
-        Assertion::maxLength($description, 64);
+        Assertion::notNull($description, 'description value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($description, 64, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->description = $description;
 

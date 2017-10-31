@@ -214,9 +214,9 @@ abstract class TrunksAddresAbstract
      */
     public function setGrp($grp)
     {
-        Assertion::notNull($grp);
-        Assertion::integerish($grp);
-        Assertion::greaterOrEqualThan($grp, 0);
+        Assertion::notNull($grp, 'grp value "%s" is null, but non null value was expected.');
+        Assertion::integerish($grp, 'grp value "%s" is not an integer or a number castable to integer.');
+        Assertion::greaterOrEqualThan($grp, 0, 'grp provided "%s" is not greater or equal than "%s".');
 
         $this->grp = $grp;
 
@@ -243,7 +243,7 @@ abstract class TrunksAddresAbstract
     public function setIpAddr($ipAddr = null)
     {
         if (!is_null($ipAddr)) {
-            Assertion::maxLength($ipAddr, 50);
+            Assertion::maxLength($ipAddr, 50, 'ipAddr value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->ipAddr = $ipAddr;
@@ -270,8 +270,8 @@ abstract class TrunksAddresAbstract
      */
     public function setMask($mask)
     {
-        Assertion::notNull($mask);
-        Assertion::integerish($mask);
+        Assertion::notNull($mask, 'mask value "%s" is null, but non null value was expected.');
+        Assertion::integerish($mask, 'mask value "%s" is not an integer or a number castable to integer.');
 
         $this->mask = $mask;
 
@@ -297,8 +297,8 @@ abstract class TrunksAddresAbstract
      */
     public function setPort($port)
     {
-        Assertion::notNull($port);
-        Assertion::integerish($port);
+        Assertion::notNull($port, 'port value "%s" is null, but non null value was expected.');
+        Assertion::integerish($port, 'port value "%s" is not an integer or a number castable to integer.');
 
         $this->port = $port;
 
@@ -325,7 +325,7 @@ abstract class TrunksAddresAbstract
     public function setTag($tag = null)
     {
         if (!is_null($tag)) {
-            Assertion::maxLength($tag, 64);
+            Assertion::maxLength($tag, 64, 'tag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->tag = $tag;

@@ -241,8 +241,8 @@ abstract class UsersLocationAttrAbstract
      */
     public function setRuid($ruid)
     {
-        Assertion::notNull($ruid);
-        Assertion::maxLength($ruid, 64);
+        Assertion::notNull($ruid, 'ruid value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($ruid, 64, 'ruid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->ruid = $ruid;
 
@@ -268,8 +268,8 @@ abstract class UsersLocationAttrAbstract
      */
     public function setUsername($username)
     {
-        Assertion::notNull($username);
-        Assertion::maxLength($username, 64);
+        Assertion::notNull($username, 'username value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($username, 64, 'username value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->username = $username;
 
@@ -296,7 +296,7 @@ abstract class UsersLocationAttrAbstract
     public function setDomain($domain = null)
     {
         if (!is_null($domain)) {
-            Assertion::maxLength($domain, 190);
+            Assertion::maxLength($domain, 190, 'domain value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->domain = $domain;
@@ -323,8 +323,8 @@ abstract class UsersLocationAttrAbstract
      */
     public function setAname($aname)
     {
-        Assertion::notNull($aname);
-        Assertion::maxLength($aname, 64);
+        Assertion::notNull($aname, 'aname value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($aname, 64, 'aname value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->aname = $aname;
 
@@ -350,8 +350,8 @@ abstract class UsersLocationAttrAbstract
      */
     public function setAtype($atype)
     {
-        Assertion::notNull($atype);
-        Assertion::integerish($atype);
+        Assertion::notNull($atype, 'atype value "%s" is null, but non null value was expected.');
+        Assertion::integerish($atype, 'atype value "%s" is not an integer or a number castable to integer.');
 
         $this->atype = $atype;
 
@@ -377,8 +377,8 @@ abstract class UsersLocationAttrAbstract
      */
     public function setAvalue($avalue)
     {
-        Assertion::notNull($avalue);
-        Assertion::maxLength($avalue, 255);
+        Assertion::notNull($avalue, 'avalue value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($avalue, 255, 'avalue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->avalue = $avalue;
 
@@ -404,7 +404,7 @@ abstract class UsersLocationAttrAbstract
      */
     public function setLastModified($lastModified)
     {
-        Assertion::notNull($lastModified);
+        Assertion::notNull($lastModified, 'lastModified value "%s" is null, but non null value was expected.');
         $lastModified = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
             $lastModified,
             '1900-01-01 00:00:01'

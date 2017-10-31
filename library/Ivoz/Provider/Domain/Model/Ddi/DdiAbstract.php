@@ -368,8 +368,8 @@ abstract class DdiAbstract
      */
     public function setDdi($ddi)
     {
-        Assertion::notNull($ddi);
-        Assertion::maxLength($ddi, 25);
+        Assertion::notNull($ddi, 'ddi value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($ddi, 25, 'ddi value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->ddi = $ddi;
 
@@ -396,7 +396,7 @@ abstract class DdiAbstract
     public function setDdie164($ddie164 = null)
     {
         if (!is_null($ddie164)) {
-            Assertion::maxLength($ddie164, 25);
+            Assertion::maxLength($ddie164, 25, 'ddie164 value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->ddie164 = $ddie164;
@@ -423,14 +423,14 @@ abstract class DdiAbstract
      */
     public function setRecordCalls($recordCalls)
     {
-        Assertion::notNull($recordCalls);
-        Assertion::maxLength($recordCalls, 25);
+        Assertion::notNull($recordCalls, 'recordCalls value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($recordCalls, 25, 'recordCalls value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($recordCalls, array (
           0 => 'none',
           1 => 'all',
           2 => 'inbound',
           3 => 'outbound',
-        ));
+        ), 'recordCallsvalue "%s" is not an element of the valid values: %s');
 
         $this->recordCalls = $recordCalls;
 
@@ -457,7 +457,7 @@ abstract class DdiAbstract
     public function setDisplayName($displayName = null)
     {
         if (!is_null($displayName)) {
-            Assertion::maxLength($displayName, 50);
+            Assertion::maxLength($displayName, 50, 'displayName value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->displayName = $displayName;
@@ -485,7 +485,7 @@ abstract class DdiAbstract
     public function setRouteType($routeType = null)
     {
         if (!is_null($routeType)) {
-            Assertion::maxLength($routeType, 25);
+            Assertion::maxLength($routeType, 25, 'routeType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($routeType, array (
           0 => 'user',
           1 => 'IVRCommon',
@@ -497,7 +497,7 @@ abstract class DdiAbstract
           7 => 'queue',
           8 => 'retailAccount',
           9 => 'conditional',
-        ));
+        ), 'routeTypevalue "%s" is not an element of the valid values: %s');
         }
 
         $this->routeType = $routeType;
@@ -524,8 +524,8 @@ abstract class DdiAbstract
      */
     public function setBillInboundCalls($billInboundCalls)
     {
-        Assertion::notNull($billInboundCalls);
-        Assertion::between(intval($billInboundCalls), 0, 1);
+        Assertion::notNull($billInboundCalls, 'billInboundCalls value "%s" is null, but non null value was expected.');
+        Assertion::between(intval($billInboundCalls), 0, 1, 'billInboundCalls provided "%s" is not a valid boolean value.');
 
         $this->billInboundCalls = $billInboundCalls;
 
@@ -552,7 +552,7 @@ abstract class DdiAbstract
     public function setFriendValue($friendValue = null)
     {
         if (!is_null($friendValue)) {
-            Assertion::maxLength($friendValue, 25);
+            Assertion::maxLength($friendValue, 25, 'friendValue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->friendValue = $friendValue;

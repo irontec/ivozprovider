@@ -370,8 +370,8 @@ abstract class UsersPuaAbstract
      */
     public function setPresUri($presUri)
     {
-        Assertion::notNull($presUri);
-        Assertion::maxLength($presUri, 128);
+        Assertion::notNull($presUri, 'presUri value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($presUri, 128, 'presUri value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->presUri = $presUri;
 
@@ -397,8 +397,8 @@ abstract class UsersPuaAbstract
      */
     public function setPresId($presId)
     {
-        Assertion::notNull($presId);
-        Assertion::maxLength($presId, 255);
+        Assertion::notNull($presId, 'presId value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($presId, 255, 'presId value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->presId = $presId;
 
@@ -424,8 +424,8 @@ abstract class UsersPuaAbstract
      */
     public function setEvent($event)
     {
-        Assertion::notNull($event);
-        Assertion::integerish($event);
+        Assertion::notNull($event, 'event value "%s" is null, but non null value was expected.');
+        Assertion::integerish($event, 'event value "%s" is not an integer or a number castable to integer.');
 
         $this->event = $event;
 
@@ -451,8 +451,8 @@ abstract class UsersPuaAbstract
      */
     public function setExpires($expires)
     {
-        Assertion::notNull($expires);
-        Assertion::integerish($expires);
+        Assertion::notNull($expires, 'expires value "%s" is null, but non null value was expected.');
+        Assertion::integerish($expires, 'expires value "%s" is not an integer or a number castable to integer.');
 
         $this->expires = $expires;
 
@@ -478,8 +478,8 @@ abstract class UsersPuaAbstract
      */
     public function setDesiredExpires($desiredExpires)
     {
-        Assertion::notNull($desiredExpires);
-        Assertion::integerish($desiredExpires);
+        Assertion::notNull($desiredExpires, 'desiredExpires value "%s" is null, but non null value was expected.');
+        Assertion::integerish($desiredExpires, 'desiredExpires value "%s" is not an integer or a number castable to integer.');
 
         $this->desiredExpires = $desiredExpires;
 
@@ -505,8 +505,8 @@ abstract class UsersPuaAbstract
      */
     public function setFlag($flag)
     {
-        Assertion::notNull($flag);
-        Assertion::integerish($flag);
+        Assertion::notNull($flag, 'flag value "%s" is null, but non null value was expected.');
+        Assertion::integerish($flag, 'flag value "%s" is not an integer or a number castable to integer.');
 
         $this->flag = $flag;
 
@@ -532,8 +532,8 @@ abstract class UsersPuaAbstract
      */
     public function setEtag($etag)
     {
-        Assertion::notNull($etag);
-        Assertion::maxLength($etag, 64);
+        Assertion::notNull($etag, 'etag value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($etag, 64, 'etag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->etag = $etag;
 
@@ -560,7 +560,7 @@ abstract class UsersPuaAbstract
     public function setTupleId($tupleId = null)
     {
         if (!is_null($tupleId)) {
-            Assertion::maxLength($tupleId, 64);
+            Assertion::maxLength($tupleId, 64, 'tupleId value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->tupleId = $tupleId;
@@ -587,8 +587,8 @@ abstract class UsersPuaAbstract
      */
     public function setWatcherUri($watcherUri)
     {
-        Assertion::notNull($watcherUri);
-        Assertion::maxLength($watcherUri, 128);
+        Assertion::notNull($watcherUri, 'watcherUri value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($watcherUri, 128, 'watcherUri value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->watcherUri = $watcherUri;
 
@@ -614,8 +614,8 @@ abstract class UsersPuaAbstract
      */
     public function setCallId($callId)
     {
-        Assertion::notNull($callId);
-        Assertion::maxLength($callId, 255);
+        Assertion::notNull($callId, 'callId value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($callId, 255, 'callId value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->callId = $callId;
 
@@ -641,8 +641,8 @@ abstract class UsersPuaAbstract
      */
     public function setToTag($toTag)
     {
-        Assertion::notNull($toTag);
-        Assertion::maxLength($toTag, 64);
+        Assertion::notNull($toTag, 'toTag value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($toTag, 64, 'toTag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->toTag = $toTag;
 
@@ -668,8 +668,8 @@ abstract class UsersPuaAbstract
      */
     public function setFromTag($fromTag)
     {
-        Assertion::notNull($fromTag);
-        Assertion::maxLength($fromTag, 64);
+        Assertion::notNull($fromTag, 'fromTag value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($fromTag, 64, 'fromTag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->fromTag = $fromTag;
 
@@ -695,8 +695,8 @@ abstract class UsersPuaAbstract
      */
     public function setCseq($cseq)
     {
-        Assertion::notNull($cseq);
-        Assertion::integerish($cseq);
+        Assertion::notNull($cseq, 'cseq value "%s" is null, but non null value was expected.');
+        Assertion::integerish($cseq, 'cseq value "%s" is not an integer or a number castable to integer.');
 
         $this->cseq = $cseq;
 
@@ -723,7 +723,7 @@ abstract class UsersPuaAbstract
     public function setRecordRoute($recordRoute = null)
     {
         if (!is_null($recordRoute)) {
-            Assertion::maxLength($recordRoute, 65535);
+            Assertion::maxLength($recordRoute, 65535, 'recordRoute value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->recordRoute = $recordRoute;
@@ -750,8 +750,8 @@ abstract class UsersPuaAbstract
      */
     public function setContact($contact)
     {
-        Assertion::notNull($contact);
-        Assertion::maxLength($contact, 128);
+        Assertion::notNull($contact, 'contact value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($contact, 128, 'contact value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->contact = $contact;
 
@@ -777,8 +777,8 @@ abstract class UsersPuaAbstract
      */
     public function setRemoteContact($remoteContact)
     {
-        Assertion::notNull($remoteContact);
-        Assertion::maxLength($remoteContact, 128);
+        Assertion::notNull($remoteContact, 'remoteContact value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($remoteContact, 128, 'remoteContact value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->remoteContact = $remoteContact;
 
@@ -804,8 +804,8 @@ abstract class UsersPuaAbstract
      */
     public function setVersion($version)
     {
-        Assertion::notNull($version);
-        Assertion::integerish($version);
+        Assertion::notNull($version, 'version value "%s" is null, but non null value was expected.');
+        Assertion::integerish($version, 'version value "%s" is not an integer or a number castable to integer.');
 
         $this->version = $version;
 
@@ -831,8 +831,8 @@ abstract class UsersPuaAbstract
      */
     public function setExtraHeaders($extraHeaders)
     {
-        Assertion::notNull($extraHeaders);
-        Assertion::maxLength($extraHeaders, 65535);
+        Assertion::notNull($extraHeaders, 'extraHeaders value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($extraHeaders, 65535, 'extraHeaders value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->extraHeaders = $extraHeaders;
 

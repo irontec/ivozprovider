@@ -284,8 +284,8 @@ abstract class InvoiceAbstract
      */
     public function setNumber($number)
     {
-        Assertion::notNull($number);
-        Assertion::maxLength($number, 30);
+        Assertion::notNull($number, 'number value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($number, 30, 'number value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->number = $number;
 
@@ -464,13 +464,13 @@ abstract class InvoiceAbstract
     public function setStatus($status = null)
     {
         if (!is_null($status)) {
-            Assertion::maxLength($status, 25);
+            Assertion::maxLength($status, 25, 'status value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($status, array (
           0 => 'waiting',
           1 => 'processing',
           2 => 'created',
           3 => 'error',
-        ));
+        ), 'statusvalue "%s" is not an element of the valid values: %s');
         }
 
         $this->status = $status;
