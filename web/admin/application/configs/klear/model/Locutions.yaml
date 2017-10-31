@@ -80,6 +80,16 @@ production:
         icon: help
         text: _("You can call this extension from any company terminal to record this locution")
         label: _("Need help?")
+    status:
+      title: _('Status')
+      type: select
+      source:
+        data: inline
+        values:
+          'pending': _('pending')
+          'encoding': _('encoding')
+          'ready': _('ready')
+          'error': _('error')
 staging:
   _extends: production
 testing:

@@ -70,7 +70,7 @@ interface IvrCustomEntryInterface extends LoggableEntityInterface
      *
      * @return self
      */
-    public function setIvrCustom(\Ivoz\Provider\Domain\Model\IvrCustom\IvrCustomInterface $ivrCustom);
+    public function setIvrCustom(\Ivoz\Provider\Domain\Model\IvrCustom\IvrCustomInterface $ivrCustom = null);
 
     /**
      * Get ivrCustom

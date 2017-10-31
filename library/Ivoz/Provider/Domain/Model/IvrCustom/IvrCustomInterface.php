@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\IvrCustom;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Doctrine\Common\Collections\Collection;
 
 interface IvrCustomInterface extends LoggableEntityInterface
 {
@@ -330,6 +331,37 @@ interface IvrCustomInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
      */
     public function getErrorNumberCountry();
+
+    /**
+     * Add entry
+     *
+     * @param \Ivoz\Provider\Domain\Model\IvrCustomEntry\IvrCustomEntryInterface $entry
+     *
+     * @return IvrCustomTrait
+     */
+    public function addEntry(\Ivoz\Provider\Domain\Model\IvrCustomEntry\IvrCustomEntryInterface $entry);
+
+    /**
+     * Remove entry
+     *
+     * @param \Ivoz\Provider\Domain\Model\IvrCustomEntry\IvrCustomEntryInterface $entry
+     */
+    public function removeEntry(\Ivoz\Provider\Domain\Model\IvrCustomEntry\IvrCustomEntryInterface $entry);
+
+    /**
+     * Replace entries
+     *
+     * @param \Ivoz\Provider\Domain\Model\IvrCustomEntry\IvrCustomEntryInterface[] $entries
+     * @return self
+     */
+    public function replaceEntries(Collection $entries);
+
+    /**
+     * Get entries
+     *
+     * @return array
+     */
+    public function getEntries(\Doctrine\Common\Collections\Criteria $criteria = null);
 
 }
 

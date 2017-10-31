@@ -22,7 +22,7 @@ class IVRCommonAction extends IVRAction
         // Play welcome locution if any
         $welcomeLocution = "";
         if (!empty($ivr->getWelcomeLocution())) {
-            $welcomeLocution = $ivr->getWelcomeLocution()->getLocutionPath();
+            $welcomeLocution = $ivr->getWelcomeLocution();
         }
 
         // Play locution and expect user press
@@ -35,7 +35,7 @@ class IVRCommonAction extends IVRAction
 
         // User hasn't pressed anything
         if (empty($userPressed))
-            return $this->processError();
+            return $this->processTimeout();
 
         // Not allowed numbers for this IVR
         $blackList = $ivr->getBlackListRegExp();

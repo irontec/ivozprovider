@@ -41,6 +41,7 @@ services:
       - '@core.doctrine_foreign_key_transformer'
       - '@core.doctrine_collection_transformer'
       - '@Ivoz\Core\Application\Service\Assembler\EntityAssembler'
+    public: true
 
   core.update_entity_from_dto:
     class: Ivoz\Core\Application\Service\UpdateEntityFromDTO

@@ -46,7 +46,7 @@ Ivoz\Provider\Domain\Model\IvrCustomEntry\IvrCustomEntryAbstract:
       cascade: {  }
       fetch: LAZY
       mappedBy: null
-      inversedBy: null
+      inversedBy: entries
       joinColumns:
         IvrCustomId:
           referencedColumnName: id

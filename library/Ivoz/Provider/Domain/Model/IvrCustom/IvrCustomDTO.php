@@ -167,6 +167,11 @@ class IvrCustomDTO implements DataTransferObjectInterface
     private $errorNumberCountry;
 
     /**
+     * @var array|null
+     */
+    private $entries = null;
+
+    /**
      * @return array
      */
     public function __toArray()
@@ -191,7 +196,8 @@ class IvrCustomDTO implements DataTransferObjectInterface
             'timeoutVoiceMailUserId' => $this->getTimeoutVoiceMailUserId(),
             'errorVoiceMailUserId' => $this->getErrorVoiceMailUserId(),
             'timeoutNumberCountryId' => $this->getTimeoutNumberCountryId(),
-            'errorNumberCountryId' => $this->getErrorNumberCountryId()
+            'errorNumberCountryId' => $this->getErrorNumberCountryId(),
+            'entries' => $this->getEntries()
         ];
     }
 
@@ -211,6 +217,17 @@ class IvrCustomDTO implements DataTransferObjectInterface
         $this->errorVoiceMailUser = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\User\\User', $this->getErrorVoiceMailUserId());
         $this->timeoutNumberCountry = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Country\\Country', $this->getTimeoutNumberCountryId());
         $this->errorNumberCountry = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Country\\Country', $this->getErrorNumberCountryId());
+        if (!is_null($this->entries)) {
+            $items = $this->getEntries();
+            $this->entries = [];
+            foreach ($items as $item) {
+                $this->entries[] = $transformer->transform(
+                    'Ivoz\\Provider\\Domain\\Model\\IvrCustomEntry\\IvrCustomEntry',
+                    $item->getId() ?? $item
+                );
+            }
+        }
+
     }
 
     /**
@@ -218,7 +235,10 @@ class IvrCustomDTO implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
+        $this->entries = $transformer->transform(
+            'Ivoz\\Provider\\Domain\\Model\\IvrCustomEntry\\IvrCustomEntry',
+            $this->entries
+        );
     }
 
     /**
@@ -707,6 +727,26 @@ class IvrCustomDTO implements DataTransferObjectInterface
     public function getErrorNumberCountry()
     {
         return $this->errorNumberCountry;
+    }
+
+    /**
+     * @param array $entries
+     *
+     * @return IvrCustomDTO
+     */
+    public function setEntries($entries)
+    {
+        $this->entries = $entries;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getEntries()
+    {
+        return $this->entries;
     }
 }
 

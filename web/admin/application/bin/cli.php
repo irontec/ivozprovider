@@ -1,14 +1,13 @@
 #!/usr/bin/php
 <?php
 
-    defined('__DIR__') || define('__DIR__', dirname(__FILE__));
 
+defined('__DIR__') || define('__DIR__', dirname(__FILE__));
 
-    define('APPLICATION_PATH', realpath(__DIR__ . '/../../application'));
-
+define('APPLICATION_PATH', realpath(__DIR__ . '/../'));
 
     require_once 'Zend/Loader/Autoloader.php';
-    require_once realpath(APPLICATION_PATH . '/../../library/vendor/autoload.php');
+    require_once realpath(APPLICATION_PATH . '/../../../library/vendor/autoload.php');
 
 
     $loader = Zend_Loader_Autoloader::getInstance();

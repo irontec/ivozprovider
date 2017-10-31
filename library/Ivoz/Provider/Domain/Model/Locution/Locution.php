@@ -28,9 +28,7 @@ class Locution extends LocutionAbstract implements LocutionInterface, FileContai
     }
 
     /**
-     * Get id
-     *
-     * @return integer
+     * @return int
      */
     public function getId()
     {

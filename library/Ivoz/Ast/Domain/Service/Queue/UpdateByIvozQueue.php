@@ -3,6 +3,7 @@
 namespace Ivoz\Ast\Domain\Service\Queue;
 
 use Ivoz\Ast\Domain\Model\Queue\Queue;
+use Ivoz\Core\Application\Service\CommonStoragePathResolver;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Provider\Domain\Service\Queue\QueueLifecycleEventHandlerInterface
     as IvozQueueLifecycleEventHandlerInterface;
@@ -21,19 +22,29 @@ class UpdateByIvozQueue implements IvozQueueLifecycleEventHandlerInterface
      */
     protected $astQueueRepository;
 
+    /**
+     * @var CommonStoragePathResolver
+     */
+    protected $storagePathResolver;
+
     public function __construct(
         EntityPersisterInterface $entityPersister,
-        AstQueueRepository $astQueueRepository
+        AstQueueRepository $astQueueRepository,
+        CommonStoragePathResolver $storagePathResolver
     ) {
         $this->entityPersister = $entityPersister;
         $this->astQueueRepository = $astQueueRepository;
+        $this->storagePathResolver = $storagePathResolver;
     }
 
     public function execute(IvozQueueInterface $entity, $isNew)
     {
         $periodicAnnounceLocution = $entity->getPeriodicAnnounceLocution();
         if (!is_null($periodicAnnounceLocution)) {
-            $periodicAnnounceLocution = $periodicAnnounceLocution->getLocutionPath();
+
+            $periodicAnnounceLocution = $this
+                ->storagePathResolver
+                ->getFilePath($periodicAnnounceLocution);
         }
 
         $astQueueName = $entity->getAstQueueName();

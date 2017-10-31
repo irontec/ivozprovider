@@ -11,6 +11,10 @@ Ivoz\Provider\Domain\Model\IvrCustom\IvrCustom:
       id: true
       generator:
         strategy: IDENTITY
+  oneToMany:
+    entries:
+      targetEntity: Ivoz\Provider\Domain\Model\IvrCustomEntry\IvrCustomEntryInterface
+      mappedBy: ivrCustom
   lifecycleCallbacks:
     postLoad:
       - initChangelog

@@ -14,6 +14,8 @@ class Agi_Wrapper
 {
     protected $_fastagi = null;
 
+    protected $_locutionPathResolver;
+
     /**
      * Constructor Agi_Common
      * Se instancian también $fastagi y $_logger
@@ -23,6 +25,11 @@ class Agi_Wrapper
         if (\Zend_Registry::isRegistered("fastagi")) {
             $this->_fastagi = \Zend_Registry::get("fastagi");
         }
+
+        if (\Zend_Registry::isRegistered("locutionPathResolver")) {
+            $this->_locutionPathResolver = \Zend_Registry::get("locutionPathResolver");
+        }
+
     }
 
     public function dump()
@@ -135,20 +142,20 @@ class Agi_Wrapper
 
     public function playback($file, $options = "")
     {
-        // TODO Check file exists?
-        // FIXME Allow PhraseID instead of Filepath?
-        //return $this->_fastagi->exec("Playback", $file);
-
         if (is_null($file) || empty($file)) {
             return;
         }
 
         if ($file instanceof \Ivoz\Provider\Domain\Model\Locution\LocutionInterface) {
-            $file = $file->getLocutionPath();
-        }
+            $file = $this
+                ->_locutionPathResolver
+                ->getFilePath($file);
 
-        if (empty($file))
-            return;
+            if (!file_exists($file)) {
+                $this->error("Locution $file not found in filesystem.");
+                return;
+            }
+        }
 
         return $this->_fastagi->exec("Playback", "$file,$options");
     }
@@ -165,6 +172,17 @@ class Agi_Wrapper
 
     public function read($locution, $timeout = 0, $maxdigits = 0)
     {
+        if ($locution instanceof \Ivoz\Provider\Domain\Model\Locution\LocutionInterface) {
+            $locution = $this
+                ->_locutionPathResolver
+                ->getFilePath($locution);
+
+            if (!file_exists($locution)) {
+                $this->error("Locution $locution not found in filesystem.");
+                $locution = "";
+            }
+        }
+
         $this->_fastagi->exec('Read', "PRESSED,$locution,$maxdigits,,,$timeout");
         if ($this->_fastagi->get_variable("READSTATUS") == "HANGUP") {
             return "HANGUP";

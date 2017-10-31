@@ -13,6 +13,18 @@ $kernel->boot();
     $kernel->getContainer()->get('doctrine.orm.entity_manager')
 );
 
+\Zend_Registry::set(
+    'serviceContainer',
+    $kernel->getContainer()
+);
+
+/** @var \Ivoz\Provider\Application\Service\Locution\LocutionDtoAssembler $locutionDtoAssembler */
+$locutionDtoAssembler = $kernel->getContainer()->get('Ivoz\Provider\Application\Service\Locution\LocutionDtoAssembler');
+\Zend_Registry::set(
+    'locutionPathResolver',
+    $locutionDtoAssembler->getEncodedFilePathResolver()
+);
+
 defined('__DIR__') || define('__DIR__', dirname(__FILE__));
 
 defined('APPLICATION_PATH') ||

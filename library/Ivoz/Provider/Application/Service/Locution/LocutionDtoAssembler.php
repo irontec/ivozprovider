@@ -41,6 +41,11 @@ class LocutionDtoAssembler implements CustomDtoAssemblerInterface
         );
     }
 
+    public function getEncodedFilePathResolver()
+    {
+        return $this->encodedFilePathResolver;
+    }
+
     /**
      * @param LocutionInterface $entity
      * @return LocutionDTO

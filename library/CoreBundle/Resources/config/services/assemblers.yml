@@ -22,6 +22,7 @@ services:
       $basePath: 'ivozprovider_model_brands.logo'
 
   Ivoz\Provider\Application\Service\Locution\LocutionAssembler:
+    public: true
     arguments:
       $localStoragePath: '%local_storage_path%'
       $originalFileBasePath: 'ivozprovider_model_locutions.originalfile'

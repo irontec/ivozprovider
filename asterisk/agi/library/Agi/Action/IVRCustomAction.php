@@ -2,6 +2,8 @@
 
 namespace Agi\Action;
 use Assert\Assertion;
+use Ivoz\Provider\Domain\Model\IvrCustom\IvrCustomInterface;
+use Ivoz\Provider\Domain\Model\IvrCustomEntry\IvrCustomEntryInterface;
 
 
 class IVRCustomAction extends IVRAction
@@ -9,6 +11,7 @@ class IVRCustomAction extends IVRAction
 
     public function process()
     {
+        /** @var IvrCustomInterface $ivr */
         $ivr = $this->_ivr;
         Assertion::notNull(
             $ivr,
@@ -19,15 +22,13 @@ class IVRCustomAction extends IVRAction
         $this->agi->notice("Processing IVRCustom %s [ivrcustom%d]", $ivr->getName(), $ivr->getId());
 
         // Get IVR all Locutions
-        $welcomLocution = $ivr->getWelcomeLocution();
-        if (empty($welcomLocution)) {
-            $welcomLocutionFile = "";
-        } else {
-            $welcomLocutionFile = $welcomLocution->getLocutionPath();
+        $welcomeLocution = "";
+        if (!empty($ivr->getWelcomeLocution())) {
+            $welcomeLocution = $ivr->getWelcomeLocution();
         }
 
         // Play locution and expect user press
-        $userPressed = $this->agi->read($welcomLocutionFile, $ivr->getTimeout(), $ivr->getMaxDigits());
+        $userPressed = $this->agi->read($welcomeLocution, $ivr->getTimeout(), $ivr->getMaxDigits());
         $this->agi->verbose("IVR: User entered: %s", $userPressed);
 
         // User prefer Human interaction
@@ -37,7 +38,7 @@ class IVRCustomAction extends IVRAction
 
         // User hasn't pressed anything
         if (empty($userPressed)) {
-            return $this->processError();
+            return $this->processTimeout();
         }
 
         // Store current IVR data
@@ -45,7 +46,8 @@ class IVRCustomAction extends IVRAction
         $this->agi->setVariable("IVRTYPE", 'CUSTOM');
 
         // Check if the pressed input matches one of the configured extensions
-        $entries = $ivr->getIVRCustomEntries();
+        /** @var IvrCustomEntryInterface[] $entries */
+        $entries = $ivr->getEntries();
         foreach ($entries as $entry) {
             // Found a matching entry
             if (preg_match('/' . $entry->getEntry() . '/', $userPressed)) {
@@ -55,30 +57,13 @@ class IVRCustomAction extends IVRAction
                 // Play entry success (if any)
                 $this->agi->playback($entry->getWelcomeLocution());
 
-                // For extension, use extension routing to apply timeout
-                if ($entry->getTargetType() == 'extension') {
-                    $extension = $entry->getTargetExtension();
-                    // FIXME Routing to extension should be the same as routing to
-                    // any other option...
-                    // !! Route this IVR using th extension parmaters !!
-                    $this->_routeType       = $extension->getRouteType();
-                    $this->_routeUser       = $extension->getUser();
-                    $this->_routeIVRCommon  = $extension->getIVRCommon();
-                    $this->_routeIVRCustom  = $extension->getIVRCustom();
-                    $this->_routeHuntGroup  = $extension->getHuntGroup();
-                    $this->_routeConference = $extension->getConferenceRoom();
-                    $this->_routeExternal   = $extension->getNumberValueE164();
-                    $this->_routeFriend     = $extension->getFriendValue();
-                    $this->_routeQueue      = $extension->getQueue();
-                    $this->_routeConditionalRoute = $extension->getConditionalRoute();
-                } else {
-                    // Route to destination
-                    $this->_routeType       = $entry->getTargetType();
-                    $this->_routeExtension  = $entry->getTargetExtension();
-                    $this->_routeVoiceMail  = $entry->getTargetVoiceMailUser();
-                    $this->_routeExternal   = $entry->getTargetNumberValueE164();
-                    $this->_routeConditionalRoute = $entry->getTargetConditionalRoute();
-                }
+                // Route to destination
+                $this->_routeType       = $entry->getTargetType();
+                $this->_routeExtension  = $entry->getTargetExtension();
+                $this->_routeVoiceMail  = $entry->getTargetVoiceMailUser();
+                $this->_routeExternal   = $entry->getTargetNumberValue();
+                $this->_routeConditionalRoute = $entry->getTargetConditionalRoute();
+
                 // Routed! :)
                 return $this->route();
             }

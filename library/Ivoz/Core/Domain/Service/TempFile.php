@@ -94,7 +94,7 @@ class TempFile
             if (!file_exists($currentDir)) {
                 if (!@mkdir($currentDir, $this->mkdirMode, true)) {
                     if (!file_exists($currentDir)) {
-                        throw new Exception('Could not create dir ' . $currentDir);
+                        throw new \Exception('Could not create dir ' . $currentDir);
                     }
                 } else {
                     chmod($currentDir, $this->mkdirMode);

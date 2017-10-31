@@ -335,7 +335,7 @@ abstract class IvrCustomEntryAbstract
      *
      * @return self
      */
-    public function setIvrCustom(\Ivoz\Provider\Domain\Model\IvrCustom\IvrCustomInterface $ivrCustom)
+    public function setIvrCustom(\Ivoz\Provider\Domain\Model\IvrCustom\IvrCustomInterface $ivrCustom = null)
     {
         $this->ivrCustom = $ivrCustom;
 

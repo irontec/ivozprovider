@@ -2,9 +2,12 @@
 
 namespace Agi\Action;
 
-use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
+use Ivoz\Core\Application\Service\UpdateEntityFromDTO;
+use Ivoz\Provider\Domain\Model\Locution\LocutionDTO;
 use Ivoz\Provider\Domain\Model\Locution\LocutionRepository;
 use Assert\Assertion;
+use Symfony\Component\DependencyInjection\Container;
+use Symfony\Component\DependencyInjection\Tests\LegacyProjectServiceContainer;
 
 
 class ServiceAction extends RouterAction
@@ -180,18 +183,18 @@ class ServiceAction extends RouterAction
         $em = \Zend_Registry::get("em");
 
         /** @var LocutionRepository $locutionRepository */
-        $locutionRepository = $em->getRepository('\Ivoz\Provider\Domain\Model\Locution\Locution');
+        $locutionRepository = $em->getRepository(\Ivoz\Provider\Domain\Model\Locution\Locution::class);
 
         /** @var \Ivoz\Provider\Domain\Model\Locution\LocutionInterface $locution */
         $locution = $locutionRepository->find($locutionId);
 
         // Check if call can record this locution
-        if ($locution->getCompanyId() !== $caller->getCompanyId()) {
+        if ($locution->getCompany()->getId() !== $caller->getCompany()->getId()) {
             return;
         }
 
         // Check if the locution already has sound
-        if ($locution->getOriginalFileFileSize()) {
+        if ($locution->getOriginalFile()->getFileSize()) {
             $this->agi->playback("ivozprovider/record-existing");
         } else {
             $this->agi->playback("ivozprovider/record-new");
@@ -206,11 +209,18 @@ class ServiceAction extends RouterAction
         $this->agi->record($originalFile, ",,ky");
 
         // Set upload the original file of the locution
-        $locution->putOriginalFile($originalFile, $originalFilename);
-        $locution->save();
+        /** @var LocutionDTO $locutionDto */
+        $locutionDto = $locution->toDTO();
+        $locutionDto->setOriginalFilePath($originalFile);
+        $locutionDto->setOriginalFileBaseName($originalFilename);
 
-        // Change file permisions on original file
-        chmod($locution->fetchOriginalFile()->getFilePath(), 0777);
+        /** @var Container $serviceContainer */
+        $serviceContainer = \Zend_Registry::get("serviceContainer");
+        /** @var UpdateEntityFromDTO $locutionAssembler */
+
+        $entityUpdater = $serviceContainer->get('Ivoz\Core\Application\Service\UpdateEntityFromDTO');
+        $entityUpdater->execute($locution, $locutionDto);
+
+        $em->flush($locution);
     }
-
 }
