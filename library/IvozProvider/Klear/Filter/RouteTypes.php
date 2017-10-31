@@ -21,7 +21,7 @@ class IvozProvider_Klear_Filter_RouteTypes implements KlearMatrix_Model_Field_Se
         $user = $auth->getIdentity();
 
         /**
-         * @var \ZfBundle\Services\DataGateway $dataGateway
+         * @var \Ivoz\Core\Application\Service\DataGateway $dataGateway
          */
         $dataGateway = \Zend_Registry::get('data_gateway');
 

@@ -3,17 +3,16 @@ services:
     autowire: true
     public: true
 
-  zf.query_builder_factory:
-    class: ZfBundle\Services\QueryBuilderFactory
+  Ivoz\Core\Application\Service\QueryBuilderFactory:
     arguments:
-      - "@doctrine.orm.entity_manager"
+      $entityManager: "@doctrine.orm.entity_manager"
 
-  ZfBundle\Services\DataGateway:
+  Ivoz\Core\Application\Service\DataGateway:
     arguments:
       $entityManager:
         "@doctrine.orm.entity_manager"
       $queryBuilderFactory:
-        "@zf.query_builder_factory"
+        '@Ivoz\Core\Application\Service\QueryBuilderFactory'
       $entityPersister:
         '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
       $dtoAssembler:

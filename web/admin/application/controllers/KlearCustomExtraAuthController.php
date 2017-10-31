@@ -87,7 +87,6 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
             return $this->_noPermission();
         }
 
-
         if ($type == 'brand' || ($this->_user->canSeeBrand && !is_null($this->_user->brandId))) {
             $html .= '<div class="entitySelectDiv">';
             $html .= '<select id="entitySelect" name="'.$type.'" data-type="'.$type.'" class="" data-size="4">';
@@ -114,7 +113,6 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
             $html .= '</div>';
         }
 
-
         $html .= '<p class="submit"><input type="submit" value="'.$this->view->translate('Enter').'" /></p>';
         $html .= '</form>';
         $this->view->responseType = 'simple';
@@ -128,7 +126,6 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
     {
         $this->view->responseType = 'simple';
         $this->view->data = $this->_getData();
-
     }
 
     protected function _getData()
@@ -202,23 +199,26 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
 
     public function emulateAction()
     {
+        /** @var \Ivoz\Core\Application\Service\DataGateway $dataGateway */
+        $dataGateway = \Zend_Registry::get('data_gateway');
+
         $pk = $this->getRequest()->getParam("pk");
         $file = $this->getRequest()->getParam("file");
         switch ($file) {
             case "BrandsList":
                 $type = "brand";
-                $mapper = new \IvozProvider\Mapper\Sql\Brands();
+                $entity = Brand::class;
                 break;
             case "RetailClientsList":
             case "CompaniesList":
                 $type = "company";
-                $mapper = new \IvozProvider\Mapper\Sql\Companies();
+                $entity = Company::class;
                 break;
             default:
                 $this->_noPermission();
                 break;
         }
-        $model = $mapper->find($pk);
+        $model = $dataGateway->find($entity, $pk);
 
         if ($this->getRequest()->getParam("ok")) {
             $data = $this->_getEmulateOkData($type, $model);
@@ -244,7 +244,7 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
                                 "params" => array(
                                         "ok" => true,
                                         "entityType" => $type,
-                                        "remoteId" => $model->getPrimaryKey()
+                                        "remoteId" => $model->getId()
                                 ),
                         ),
                         _("Cancel") => array(
@@ -294,10 +294,10 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
         // Enable/disable features
         $features = array();
 
-        /** <@UNVERIFIED|@var> \ZfBundle\Services\DataGateway $dataGateway */
+        /** @var \Ivoz\Core\Application\Service\DataGateway $dataGateway */
         $dataGateway = \Zend_Registry::get('data_gateway');
 
-        /** <@UNVERIFIED|@var> \Ivoz\Provider\Domain\Model\Feature\FeatureDTO[] $featureList */
+        /** @var \Ivoz\Provider\Domain\Model\Feature\FeatureDTO[] $featureList */
         $featureList = $dataGateway->findAll(
                 Feature::class
         );
@@ -326,5 +326,4 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
             $this->_user->company = $features;
         }
     }
-
 }

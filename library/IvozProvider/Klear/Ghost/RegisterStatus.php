@@ -104,7 +104,7 @@ class IvozProvider_Klear_Ghost_RegisterStatus extends KlearMatrix_Model_Field_Gh
             "UsersLocation.domain = '" . $model->getDomain() . "'"
         );
 
-        /** @var \ZfBundle\Services\DataGateway $dataGateway */
+        /** @var \Ivoz\Core\Application\Service\DataGateway $dataGateway */
         $dataGateway = \Zend_Registry::get('data_gateway');
 
         /** @var \Ivoz\Kam\Domain\Model\UsersLocation\UsersLocationDTO $location */
@@ -140,7 +140,7 @@ class IvozProvider_Klear_Ghost_RegisterStatus extends KlearMatrix_Model_Field_Gh
             "UsersLocation.domain = '" . $model->getDomain() . "'"
         );
 
-        /** @var \ZfBundle\Services\DataGateway $dataGateway */
+        /** @var \Ivoz\Core\Application\Service\DataGateway $dataGateway */
         $dataGateway = \Zend_Registry::get('data_gateway');
 
         /** @var \Ivoz\Kam\Domain\Model\UsersLocation\UsersLocationDTO[] $location */
