@@ -46,12 +46,10 @@ class SanitizeEmptyValuesSpec extends ObjectBehavior
             ->setDefaultTimezoneId(1)
             ->setCountryId(70)
             ->setLanguageId(1)
-            ->setOutboundPrefix('')
             ->setMediaRelaySetsId(0)
             ->setIpFilter(0)
             ->setOnDemandRecord(0)
-            ->setOnDemandRecordCode(1)
-            ->setAreaCode(1);
+            ->setOnDemandRecordCode(1);
 
         $this
             ->entity
@@ -81,7 +79,7 @@ class SanitizeEmptyValuesSpec extends ObjectBehavior
 
         $this
             ->entityPersister
-            ->persistDto($this->dto, $this->entity, false)
+            ->persistDto($this->dto, $this->entity)
             ->shouldBeCalled();
 
         $this->execute($this->entity, true);
@@ -123,22 +121,6 @@ class SanitizeEmptyValuesSpec extends ObjectBehavior
         }
     }
 
-    function it_sets_country_id_when_empty()
-    {
-        $this->prepareDto();
-        $this
-            ->dto
-            ->setCountryId(null);
-
-        $this->execute($this->entity, true);
-
-        if (!$this->dto->getCountryId()) {
-            throw new FailureException(
-                'Empty country id found'
-            );
-        }
-    }
-
     function it_sets_language_when_empty(
         BrandInterface $brand,
         LanguageInterface $language
@@ -170,22 +152,6 @@ class SanitizeEmptyValuesSpec extends ObjectBehavior
         if (!$this->dto->getLanguageId()) {
             throw new FailureException(
                 'Empty language found'
-            );
-        }
-    }
-
-    function it_sets_outbound_prefix_when_empty()
-    {
-        $this->prepareDto();
-        $this
-            ->dto
-            ->setOutboundPrefix(null);
-
-        $this->execute($this->entity, true);
-
-        if ($this->dto->getOutboundPrefix() !== '') {
-            throw new FailureException(
-                'Empty outbound prefix id found'
             );
         }
     }
@@ -250,22 +216,6 @@ class SanitizeEmptyValuesSpec extends ObjectBehavior
         if ($this->dto->getOnDemandRecordCode() !== '') {
             throw new FailureException(
                 'Unexpected on demand record code value found'
-            );
-        }
-    }
-
-    function it_sets_area_code_when_empty()
-    {
-        $this->prepareDto();
-        $this
-            ->dto
-            ->setAreaCode(null);
-
-        $this->execute($this->entity, true);
-
-        if ($this->dto->getAreaCode() !== '') {
-            throw new FailureException(
-                'Unexpected area code value found'
             );
         }
     }

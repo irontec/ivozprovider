@@ -3,7 +3,6 @@
 namespace Ivoz\Provider\Domain\Service\Company;
 
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
-use Doctrine\ORM\EntityManagerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyDTO;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 

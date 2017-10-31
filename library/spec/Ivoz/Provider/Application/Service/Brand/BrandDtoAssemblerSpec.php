@@ -18,7 +18,8 @@ class BrandDtoAssemblerSpec extends ObjectBehavior
         $this->brand = $brand;
 
         $this->beConstructedWith(
-            '/opt/storage'
+            '/opt/storage',
+            'ivozprovider_model_brands.logo'
         );
     }
 
@@ -58,6 +59,16 @@ class BrandDtoAssemblerSpec extends ObjectBehavior
             ->toDTO()
             ->willReturn($dto);
 
+        $logo = new \Ivoz\Provider\Domain\Model\Brand\Logo(
+            1,
+            'jpeg',
+            'stuff.jpeg'
+        );
+        $this
+            ->brand
+            ->getLogo()
+            ->willReturn($logo);
+
         $this->toDto($this->brand);
         $logoPath = $dto->getLogoPath();
 
@@ -78,6 +89,17 @@ class BrandDtoAssemblerSpec extends ObjectBehavior
             ->brand
             ->toDTO()
             ->willReturn($dto);
+
+        $logo = new \Ivoz\Provider\Domain\Model\Brand\Logo(
+            1,
+            'jpeg',
+            'stuff.jpeg'
+        );
+
+        $this
+            ->brand
+            ->getLogo()
+            ->willReturn($logo);
 
         $this->toDto($this->brand);
         $logoPath = $dto->getLogoPath();
