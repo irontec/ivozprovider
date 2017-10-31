@@ -1886,14 +1886,9 @@
         {
             "name": "symfony/symfony",
             "version": "3.3.10.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/symfony.git",
-                "reference": "cfef3b2d505ae4375b17032bd03ed9a3da4b7b43"
-            },
             "dist": {
                 "type": "path",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/cfef3b2d505ae4375b17032bd03ed9a3da4b7b43",
+                "url": "../library/vendor/symfony/symfony",
                 "reference": "cfef3b2d505ae4375b17032bd03ed9a3da4b7b43",
                 "shasum": null
             },
