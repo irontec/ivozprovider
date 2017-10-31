@@ -278,7 +278,7 @@ abstract class TerminalAbstract
     public function setName($name = null)
     {
         if (!is_null($name)) {
-            Assertion::maxLength($name, 100);
+            Assertion::maxLength($name, 100, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->name = $name;
@@ -306,7 +306,7 @@ abstract class TerminalAbstract
     public function setDomain($domain = null)
     {
         if (!is_null($domain)) {
-            Assertion::maxLength($domain, 190);
+            Assertion::maxLength($domain, 190, 'domain value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->domain = $domain;
@@ -333,8 +333,8 @@ abstract class TerminalAbstract
      */
     public function setDisallow($disallow)
     {
-        Assertion::notNull($disallow);
-        Assertion::maxLength($disallow, 200);
+        Assertion::notNull($disallow, 'disallow value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($disallow, 200, 'disallow value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->disallow = $disallow;
 
@@ -360,8 +360,8 @@ abstract class TerminalAbstract
      */
     public function setAllowAudio($allowAudio)
     {
-        Assertion::notNull($allowAudio);
-        Assertion::maxLength($allowAudio, 200);
+        Assertion::notNull($allowAudio, 'allowAudio value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($allowAudio, 200, 'allowAudio value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->allowAudio = $allowAudio;
 
@@ -388,7 +388,7 @@ abstract class TerminalAbstract
     public function setAllowVideo($allowVideo = null)
     {
         if (!is_null($allowVideo)) {
-            Assertion::maxLength($allowVideo, 200);
+            Assertion::maxLength($allowVideo, 200, 'allowVideo value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->allowVideo = $allowVideo;
@@ -415,12 +415,12 @@ abstract class TerminalAbstract
      */
     public function setDirectMediaMethod($directMediaMethod)
     {
-        Assertion::notNull($directMediaMethod);
+        Assertion::notNull($directMediaMethod, 'directMediaMethod value "%s" is null, but non null value was expected.');
         Assertion::choice($directMediaMethod, array (
           0 => 'update',
           1 => 'invite',
           2 => 'reinvite',
-        ));
+        ), 'directMediaMethodvalue "%s" is not an element of the valid values: %s');
 
         $this->directMediaMethod = $directMediaMethod;
 
@@ -446,8 +446,8 @@ abstract class TerminalAbstract
      */
     public function setPassword($password)
     {
-        Assertion::notNull($password);
-        Assertion::maxLength($password, 25);
+        Assertion::notNull($password, 'password value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($password, 25, 'password value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->password = $password;
 
@@ -474,7 +474,7 @@ abstract class TerminalAbstract
     public function setMac($mac = null)
     {
         if (!is_null($mac)) {
-            Assertion::maxLength($mac, 12);
+            Assertion::maxLength($mac, 12, 'mac value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->mac = $mac;

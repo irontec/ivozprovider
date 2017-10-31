@@ -44,7 +44,7 @@ class Description
     protected function setEn($en = null)
     {
         if (!is_null($en)) {
-            Assertion::maxLength($en, 55);
+            Assertion::maxLength($en, 55, 'en value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->en = $en;
@@ -72,7 +72,7 @@ class Description
     protected function setEs($es = null)
     {
         if (!is_null($es)) {
-            Assertion::maxLength($es, 55);
+            Assertion::maxLength($es, 55, 'es value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->es = $es;

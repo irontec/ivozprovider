@@ -302,8 +302,8 @@ abstract class ConditionalRouteAbstract
      */
     public function setName($name)
     {
-        Assertion::notNull($name);
-        Assertion::maxLength($name, 100);
+        Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($name, 100, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->name = $name;
 
@@ -330,7 +330,7 @@ abstract class ConditionalRouteAbstract
     public function setRoutetype($routetype = null)
     {
         if (!is_null($routetype)) {
-            Assertion::maxLength($routetype, 25);
+            Assertion::maxLength($routetype, 25, 'routetype value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($routetype, array (
           0 => 'user',
           1 => 'number',
@@ -342,7 +342,7 @@ abstract class ConditionalRouteAbstract
           7 => 'queue',
           8 => 'conferenceRoom',
           9 => 'extension',
-        ));
+        ), 'routetypevalue "%s" is not an element of the valid values: %s');
         }
 
         $this->routetype = $routetype;
@@ -370,7 +370,7 @@ abstract class ConditionalRouteAbstract
     public function setNumbervalue($numbervalue = null)
     {
         if (!is_null($numbervalue)) {
-            Assertion::maxLength($numbervalue, 25);
+            Assertion::maxLength($numbervalue, 25, 'numbervalue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->numbervalue = $numbervalue;
@@ -398,7 +398,7 @@ abstract class ConditionalRouteAbstract
     public function setFriendvalue($friendvalue = null)
     {
         if (!is_null($friendvalue)) {
-            Assertion::maxLength($friendvalue, 25);
+            Assertion::maxLength($friendvalue, 25, 'friendvalue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->friendvalue = $friendvalue;

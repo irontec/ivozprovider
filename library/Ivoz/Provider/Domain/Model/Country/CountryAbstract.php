@@ -229,8 +229,8 @@ abstract class CountryAbstract
      */
     public function setCode($code)
     {
-        Assertion::notNull($code);
-        Assertion::maxLength($code, 100);
+        Assertion::notNull($code, 'code value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($code, 100, 'code value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->code = $code;
 
@@ -257,7 +257,7 @@ abstract class CountryAbstract
     public function setCountryCode($countryCode = null)
     {
         if (!is_null($countryCode)) {
-            Assertion::maxLength($countryCode, 10);
+            Assertion::maxLength($countryCode, 10, 'countryCode value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->countryCode = $countryCode;

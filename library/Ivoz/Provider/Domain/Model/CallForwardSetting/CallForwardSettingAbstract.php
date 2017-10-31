@@ -257,13 +257,13 @@ abstract class CallForwardSettingAbstract
      */
     public function setCallTypeFilter($callTypeFilter)
     {
-        Assertion::notNull($callTypeFilter);
-        Assertion::maxLength($callTypeFilter, 25);
+        Assertion::notNull($callTypeFilter, 'callTypeFilter value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($callTypeFilter, 25, 'callTypeFilter value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($callTypeFilter, array (
           0 => 'internal',
           1 => 'external',
           2 => 'both',
-        ));
+        ), 'callTypeFiltervalue "%s" is not an element of the valid values: %s');
 
         $this->callTypeFilter = $callTypeFilter;
 
@@ -289,14 +289,14 @@ abstract class CallForwardSettingAbstract
      */
     public function setCallForwardType($callForwardType)
     {
-        Assertion::notNull($callForwardType);
-        Assertion::maxLength($callForwardType, 25);
+        Assertion::notNull($callForwardType, 'callForwardType value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($callForwardType, 25, 'callForwardType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($callForwardType, array (
           0 => 'inconditional',
           1 => 'noAnswer',
           2 => 'busy',
           3 => 'userNotRegistered',
-        ));
+        ), 'callForwardTypevalue "%s" is not an element of the valid values: %s');
 
         $this->callForwardType = $callForwardType;
 
@@ -322,13 +322,13 @@ abstract class CallForwardSettingAbstract
      */
     public function setTargetType($targetType)
     {
-        Assertion::notNull($targetType);
-        Assertion::maxLength($targetType, 25);
+        Assertion::notNull($targetType, 'targetType value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($targetType, 25, 'targetType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($targetType, array (
           0 => 'number',
           1 => 'extension',
           2 => 'voicemail',
-        ));
+        ), 'targetTypevalue "%s" is not an element of the valid values: %s');
 
         $this->targetType = $targetType;
 
@@ -355,7 +355,7 @@ abstract class CallForwardSettingAbstract
     public function setNumberValue($numberValue = null)
     {
         if (!is_null($numberValue)) {
-            Assertion::maxLength($numberValue, 25);
+            Assertion::maxLength($numberValue, 25, 'numberValue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->numberValue = $numberValue;
@@ -382,8 +382,8 @@ abstract class CallForwardSettingAbstract
      */
     public function setNoAnswerTimeout($noAnswerTimeout)
     {
-        Assertion::notNull($noAnswerTimeout);
-        Assertion::integerish($noAnswerTimeout);
+        Assertion::notNull($noAnswerTimeout, 'noAnswerTimeout value "%s" is null, but non null value was expected.');
+        Assertion::integerish($noAnswerTimeout, 'noAnswerTimeout value "%s" is not an integer or a number castable to integer.');
 
         $this->noAnswerTimeout = $noAnswerTimeout;
 

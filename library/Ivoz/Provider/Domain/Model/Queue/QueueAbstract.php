@@ -367,7 +367,7 @@ abstract class QueueAbstract
     public function setName($name = null)
     {
         if (!is_null($name)) {
-            Assertion::maxLength($name, 128);
+            Assertion::maxLength($name, 128, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->name = $name;
@@ -396,7 +396,7 @@ abstract class QueueAbstract
     {
         if (!is_null($maxWaitTime)) {
             if (!is_null($maxWaitTime)) {
-                Assertion::integerish($maxWaitTime);
+                Assertion::integerish($maxWaitTime, 'maxWaitTime value "%s" is not an integer or a number castable to integer.');
             }
         }
 
@@ -425,12 +425,12 @@ abstract class QueueAbstract
     public function setTimeoutTargetType($timeoutTargetType = null)
     {
         if (!is_null($timeoutTargetType)) {
-            Assertion::maxLength($timeoutTargetType, 25);
+            Assertion::maxLength($timeoutTargetType, 25, 'timeoutTargetType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($timeoutTargetType, array (
           0 => 'number',
           1 => 'extension',
           2 => 'voicemail',
-        ));
+        ), 'timeoutTargetTypevalue "%s" is not an element of the valid values: %s');
         }
 
         $this->timeoutTargetType = $timeoutTargetType;
@@ -458,7 +458,7 @@ abstract class QueueAbstract
     public function setTimeoutNumberValue($timeoutNumberValue = null)
     {
         if (!is_null($timeoutNumberValue)) {
-            Assertion::maxLength($timeoutNumberValue, 25);
+            Assertion::maxLength($timeoutNumberValue, 25, 'timeoutNumberValue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->timeoutNumberValue = $timeoutNumberValue;
@@ -487,7 +487,7 @@ abstract class QueueAbstract
     {
         if (!is_null($maxlen)) {
             if (!is_null($maxlen)) {
-                Assertion::integerish($maxlen);
+                Assertion::integerish($maxlen, 'maxlen value "%s" is not an integer or a number castable to integer.');
             }
         }
 
@@ -516,12 +516,12 @@ abstract class QueueAbstract
     public function setFullTargetType($fullTargetType = null)
     {
         if (!is_null($fullTargetType)) {
-            Assertion::maxLength($fullTargetType, 25);
+            Assertion::maxLength($fullTargetType, 25, 'fullTargetType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($fullTargetType, array (
           0 => 'number',
           1 => 'extension',
           2 => 'voicemail',
-        ));
+        ), 'fullTargetTypevalue "%s" is not an element of the valid values: %s');
         }
 
         $this->fullTargetType = $fullTargetType;
@@ -549,7 +549,7 @@ abstract class QueueAbstract
     public function setFullNumberValue($fullNumberValue = null)
     {
         if (!is_null($fullNumberValue)) {
-            Assertion::maxLength($fullNumberValue, 25);
+            Assertion::maxLength($fullNumberValue, 25, 'fullNumberValue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->fullNumberValue = $fullNumberValue;
@@ -578,7 +578,7 @@ abstract class QueueAbstract
     {
         if (!is_null($periodicAnnounceFrequency)) {
             if (!is_null($periodicAnnounceFrequency)) {
-                Assertion::integerish($periodicAnnounceFrequency);
+                Assertion::integerish($periodicAnnounceFrequency, 'periodicAnnounceFrequency value "%s" is not an integer or a number castable to integer.');
             }
         }
 
@@ -608,7 +608,7 @@ abstract class QueueAbstract
     {
         if (!is_null($memberCallRest)) {
             if (!is_null($memberCallRest)) {
-                Assertion::integerish($memberCallRest);
+                Assertion::integerish($memberCallRest, 'memberCallRest value "%s" is not an integer or a number castable to integer.');
             }
         }
 
@@ -638,7 +638,7 @@ abstract class QueueAbstract
     {
         if (!is_null($memberCallTimeout)) {
             if (!is_null($memberCallTimeout)) {
-                Assertion::integerish($memberCallTimeout);
+                Assertion::integerish($memberCallTimeout, 'memberCallTimeout value "%s" is not an integer or a number castable to integer.');
             }
         }
 
@@ -695,7 +695,7 @@ abstract class QueueAbstract
     {
         if (!is_null($weight)) {
             if (!is_null($weight)) {
-                Assertion::integerish($weight);
+                Assertion::integerish($weight, 'weight value "%s" is not an integer or a number castable to integer.');
             }
         }
 

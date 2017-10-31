@@ -223,9 +223,9 @@ abstract class LcrRuleTargetAbstract
      */
     public function setLcrId($lcrId)
     {
-        Assertion::notNull($lcrId);
-        Assertion::integerish($lcrId);
-        Assertion::greaterOrEqualThan($lcrId, 0);
+        Assertion::notNull($lcrId, 'lcrId value "%s" is null, but non null value was expected.');
+        Assertion::integerish($lcrId, 'lcrId value "%s" is not an integer or a number castable to integer.');
+        Assertion::greaterOrEqualThan($lcrId, 0, 'lcrId provided "%s" is not greater or equal than "%s".');
 
         $this->lcrId = $lcrId;
 
@@ -251,8 +251,8 @@ abstract class LcrRuleTargetAbstract
      */
     public function setPriority($priority)
     {
-        Assertion::notNull($priority);
-        Assertion::between(intval($priority), 0, 1);
+        Assertion::notNull($priority, 'priority value "%s" is null, but non null value was expected.');
+        Assertion::between(intval($priority), 0, 1, 'priority provided "%s" is not a valid boolean value.');
 
         $this->priority = $priority;
 
@@ -278,9 +278,9 @@ abstract class LcrRuleTargetAbstract
      */
     public function setWeight($weight)
     {
-        Assertion::notNull($weight);
-        Assertion::integerish($weight);
-        Assertion::greaterOrEqualThan($weight, 0);
+        Assertion::notNull($weight, 'weight value "%s" is null, but non null value was expected.');
+        Assertion::integerish($weight, 'weight value "%s" is not an integer or a number castable to integer.');
+        Assertion::greaterOrEqualThan($weight, 0, 'weight provided "%s" is not greater or equal than "%s".');
 
         $this->weight = $weight;
 

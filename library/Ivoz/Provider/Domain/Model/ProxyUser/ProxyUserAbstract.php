@@ -185,7 +185,7 @@ abstract class ProxyUserAbstract
     public function setName($name = null)
     {
         if (!is_null($name)) {
-            Assertion::maxLength($name, 100);
+            Assertion::maxLength($name, 100, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->name = $name;
@@ -213,7 +213,7 @@ abstract class ProxyUserAbstract
     public function setIp($ip = null)
     {
         if (!is_null($ip)) {
-            Assertion::maxLength($ip, 50);
+            Assertion::maxLength($ip, 50, 'ip value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->ip = $ip;

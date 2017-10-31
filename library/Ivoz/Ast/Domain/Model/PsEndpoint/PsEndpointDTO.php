@@ -157,7 +157,7 @@ class PsEndpointDTO implements DataTransferObjectInterface
             'terminalId' => $this->getTerminalId(),
             'friendId' => $this->getFriendId(),
             'retailAccountId' => $this->getRetailAccountId(),
-            'psAorsId' => $this->getPsAorsId()
+            'psAors' => $this->getPsAors()
         ];
     }
 

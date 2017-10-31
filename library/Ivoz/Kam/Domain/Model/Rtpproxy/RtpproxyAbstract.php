@@ -223,8 +223,8 @@ abstract class RtpproxyAbstract
      */
     public function setSetid($setid)
     {
-        Assertion::notNull($setid);
-        Assertion::maxLength($setid, 32);
+        Assertion::notNull($setid, 'setid value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($setid, 32, 'setid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->setid = $setid;
 
@@ -250,8 +250,8 @@ abstract class RtpproxyAbstract
      */
     public function setUrl($url)
     {
-        Assertion::notNull($url);
-        Assertion::maxLength($url, 128);
+        Assertion::notNull($url, 'url value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($url, 128, 'url value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->url = $url;
 
@@ -277,9 +277,9 @@ abstract class RtpproxyAbstract
      */
     public function setFlags($flags)
     {
-        Assertion::notNull($flags);
-        Assertion::integerish($flags);
-        Assertion::greaterOrEqualThan($flags, 0);
+        Assertion::notNull($flags, 'flags value "%s" is null, but non null value was expected.');
+        Assertion::integerish($flags, 'flags value "%s" is not an integer or a number castable to integer.');
+        Assertion::greaterOrEqualThan($flags, 0, 'flags provided "%s" is not greater or equal than "%s".');
 
         $this->flags = $flags;
 
@@ -305,9 +305,9 @@ abstract class RtpproxyAbstract
      */
     public function setWeight($weight)
     {
-        Assertion::notNull($weight);
-        Assertion::integerish($weight);
-        Assertion::greaterOrEqualThan($weight, 0);
+        Assertion::notNull($weight, 'weight value "%s" is null, but non null value was expected.');
+        Assertion::integerish($weight, 'weight value "%s" is not an integer or a number castable to integer.');
+        Assertion::greaterOrEqualThan($weight, 0, 'weight provided "%s" is not greater or equal than "%s".');
 
         $this->weight = $weight;
 
@@ -334,7 +334,7 @@ abstract class RtpproxyAbstract
     public function setDescription($description = null)
     {
         if (!is_null($description)) {
-            Assertion::maxLength($description, 200);
+            Assertion::maxLength($description, 200, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->description = $description;

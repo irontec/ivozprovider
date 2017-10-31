@@ -423,8 +423,8 @@ abstract class UserAbstract
      */
     public function setName($name)
     {
-        Assertion::notNull($name);
-        Assertion::maxLength($name, 100);
+        Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($name, 100, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->name = $name;
 
@@ -450,8 +450,8 @@ abstract class UserAbstract
      */
     public function setLastname($lastname)
     {
-        Assertion::notNull($lastname);
-        Assertion::maxLength($lastname, 100);
+        Assertion::notNull($lastname, 'lastname value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($lastname, 100, 'lastname value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->lastname = $lastname;
 
@@ -478,7 +478,7 @@ abstract class UserAbstract
     public function setEmail($email = null)
     {
         if (!is_null($email)) {
-            Assertion::maxLength($email, 100);
+            Assertion::maxLength($email, 100, 'email value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->email = $email;
@@ -506,7 +506,7 @@ abstract class UserAbstract
     public function setPass($pass = null)
     {
         if (!is_null($pass)) {
-            Assertion::maxLength($pass, 80);
+            Assertion::maxLength($pass, 80, 'pass value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->pass = $pass;
@@ -533,8 +533,8 @@ abstract class UserAbstract
      */
     public function setDoNotDisturb($doNotDisturb)
     {
-        Assertion::notNull($doNotDisturb);
-        Assertion::between(intval($doNotDisturb), 0, 1);
+        Assertion::notNull($doNotDisturb, 'doNotDisturb value "%s" is null, but non null value was expected.');
+        Assertion::between(intval($doNotDisturb), 0, 1, 'doNotDisturb provided "%s" is not a valid boolean value.');
 
         $this->doNotDisturb = $doNotDisturb;
 
@@ -560,8 +560,8 @@ abstract class UserAbstract
      */
     public function setIsBoss($isBoss)
     {
-        Assertion::notNull($isBoss);
-        Assertion::between(intval($isBoss), 0, 1);
+        Assertion::notNull($isBoss, 'isBoss value "%s" is null, but non null value was expected.');
+        Assertion::between(intval($isBoss), 0, 1, 'isBoss provided "%s" is not a valid boolean value.');
 
         $this->isBoss = $isBoss;
 
@@ -588,7 +588,7 @@ abstract class UserAbstract
     public function setExceptionBoosAssistantRegExp($exceptionBoosAssistantRegExp = null)
     {
         if (!is_null($exceptionBoosAssistantRegExp)) {
-            Assertion::maxLength($exceptionBoosAssistantRegExp, 255);
+            Assertion::maxLength($exceptionBoosAssistantRegExp, 255, 'exceptionBoosAssistantRegExp value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->exceptionBoosAssistantRegExp = $exceptionBoosAssistantRegExp;
@@ -615,8 +615,8 @@ abstract class UserAbstract
      */
     public function setActive($active)
     {
-        Assertion::notNull($active);
-        Assertion::between(intval($active), 0, 1);
+        Assertion::notNull($active, 'active value "%s" is null, but non null value was expected.');
+        Assertion::between(intval($active), 0, 1, 'active provided "%s" is not a valid boolean value.');
 
         $this->active = $active;
 
@@ -642,9 +642,9 @@ abstract class UserAbstract
      */
     public function setMaxCalls($maxCalls)
     {
-        Assertion::notNull($maxCalls);
-        Assertion::integerish($maxCalls);
-        Assertion::greaterOrEqualThan($maxCalls, 0);
+        Assertion::notNull($maxCalls, 'maxCalls value "%s" is null, but non null value was expected.');
+        Assertion::integerish($maxCalls, 'maxCalls value "%s" is not an integer or a number castable to integer.');
+        Assertion::greaterOrEqualThan($maxCalls, 0, 'maxCalls provided "%s" is not greater or equal than "%s".');
 
         $this->maxCalls = $maxCalls;
 
@@ -670,14 +670,14 @@ abstract class UserAbstract
      */
     public function setExternalIpCalls($externalIpCalls)
     {
-        Assertion::notNull($externalIpCalls);
-        Assertion::between(intval($externalIpCalls), 0, 1);
+        Assertion::notNull($externalIpCalls, 'externalIpCalls value "%s" is null, but non null value was expected.');
+        Assertion::between(intval($externalIpCalls), 0, 1, 'externalIpCalls provided "%s" is not a valid boolean value.');
         Assertion::choice($externalIpCalls, array (
           0 => '0',
           1 => '1',
           2 => '2',
           3 => '3',
-        ));
+        ), 'externalIpCallsvalue "%s" is not an element of the valid values: %s');
 
         $this->externalIpCalls = $externalIpCalls;
 
@@ -703,8 +703,8 @@ abstract class UserAbstract
      */
     public function setVoicemailEnabled($voicemailEnabled)
     {
-        Assertion::notNull($voicemailEnabled);
-        Assertion::between(intval($voicemailEnabled), 0, 1);
+        Assertion::notNull($voicemailEnabled, 'voicemailEnabled value "%s" is null, but non null value was expected.');
+        Assertion::between(intval($voicemailEnabled), 0, 1, 'voicemailEnabled provided "%s" is not a valid boolean value.');
 
         $this->voicemailEnabled = $voicemailEnabled;
 
@@ -730,8 +730,8 @@ abstract class UserAbstract
      */
     public function setVoicemailSendMail($voicemailSendMail)
     {
-        Assertion::notNull($voicemailSendMail);
-        Assertion::between(intval($voicemailSendMail), 0, 1);
+        Assertion::notNull($voicemailSendMail, 'voicemailSendMail value "%s" is null, but non null value was expected.');
+        Assertion::between(intval($voicemailSendMail), 0, 1, 'voicemailSendMail provided "%s" is not a valid boolean value.');
 
         $this->voicemailSendMail = $voicemailSendMail;
 
@@ -757,8 +757,8 @@ abstract class UserAbstract
      */
     public function setVoicemailAttachSound($voicemailAttachSound)
     {
-        Assertion::notNull($voicemailAttachSound);
-        Assertion::between(intval($voicemailAttachSound), 0, 1);
+        Assertion::notNull($voicemailAttachSound, 'voicemailAttachSound value "%s" is null, but non null value was expected.');
+        Assertion::between(intval($voicemailAttachSound), 0, 1, 'voicemailAttachSound provided "%s" is not a valid boolean value.');
 
         $this->voicemailAttachSound = $voicemailAttachSound;
 
@@ -785,7 +785,7 @@ abstract class UserAbstract
     public function setTokenKey($tokenKey = null)
     {
         if (!is_null($tokenKey)) {
-            Assertion::maxLength($tokenKey, 125);
+            Assertion::maxLength($tokenKey, 125, 'tokenKey value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->tokenKey = $tokenKey;
@@ -812,8 +812,8 @@ abstract class UserAbstract
      */
     public function setGsQRCode($gsQRCode)
     {
-        Assertion::notNull($gsQRCode);
-        Assertion::between(intval($gsQRCode), 0, 1);
+        Assertion::notNull($gsQRCode, 'gsQRCode value "%s" is null, but non null value was expected.');
+        Assertion::between(intval($gsQRCode), 0, 1, 'gsQRCode provided "%s" is not a valid boolean value.');
 
         $this->gsQRCode = $gsQRCode;
 

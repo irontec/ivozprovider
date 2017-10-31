@@ -232,7 +232,7 @@ abstract class PricingPlanAbstract
      */
     public function setCreatedOn($createdOn)
     {
-        Assertion::notNull($createdOn);
+        Assertion::notNull($createdOn, 'createdOn value "%s" is null, but non null value was expected.');
         $createdOn = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
             $createdOn,
             'CURRENT_TIMESTAMP'

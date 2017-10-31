@@ -266,9 +266,9 @@ abstract class OutgoingRoutingAbstract
      */
     public function setPriority($priority)
     {
-        Assertion::notNull($priority);
-        Assertion::integerish($priority);
-        Assertion::greaterOrEqualThan($priority, 0);
+        Assertion::notNull($priority, 'priority value "%s" is null, but non null value was expected.');
+        Assertion::integerish($priority, 'priority value "%s" is not an integer or a number castable to integer.');
+        Assertion::greaterOrEqualThan($priority, 0, 'priority provided "%s" is not greater or equal than "%s".');
 
         $this->priority = $priority;
 
@@ -294,9 +294,9 @@ abstract class OutgoingRoutingAbstract
      */
     public function setWeight($weight)
     {
-        Assertion::notNull($weight);
-        Assertion::integerish($weight);
-        Assertion::greaterOrEqualThan($weight, 0);
+        Assertion::notNull($weight, 'weight value "%s" is null, but non null value was expected.');
+        Assertion::integerish($weight, 'weight value "%s" is not an integer or a number castable to integer.');
+        Assertion::greaterOrEqualThan($weight, 0, 'weight provided "%s" is not greater or equal than "%s".');
 
         $this->weight = $weight;
 

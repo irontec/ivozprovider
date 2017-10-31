@@ -221,8 +221,8 @@ abstract class InvoiceTemplateAbstract
      */
     public function setName($name)
     {
-        Assertion::notNull($name);
-        Assertion::maxLength($name, 55);
+        Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($name, 55, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->name = $name;
 
@@ -249,7 +249,7 @@ abstract class InvoiceTemplateAbstract
     public function setDescription($description = null)
     {
         if (!is_null($description)) {
-            Assertion::maxLength($description, 300);
+            Assertion::maxLength($description, 300, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->description = $description;
@@ -276,8 +276,8 @@ abstract class InvoiceTemplateAbstract
      */
     public function setTemplate($template)
     {
-        Assertion::notNull($template);
-        Assertion::maxLength($template, 65535);
+        Assertion::notNull($template, 'template value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($template, 65535, 'template value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->template = $template;
 
@@ -304,7 +304,7 @@ abstract class InvoiceTemplateAbstract
     public function setTemplateHeader($templateHeader = null)
     {
         if (!is_null($templateHeader)) {
-            Assertion::maxLength($templateHeader, 65535);
+            Assertion::maxLength($templateHeader, 65535, 'templateHeader value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->templateHeader = $templateHeader;
@@ -332,7 +332,7 @@ abstract class InvoiceTemplateAbstract
     public function setTemplateFooter($templateFooter = null)
     {
         if (!is_null($templateFooter)) {
-            Assertion::maxLength($templateFooter, 65535);
+            Assertion::maxLength($templateFooter, 65535, 'templateFooter value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->templateFooter = $templateFooter;

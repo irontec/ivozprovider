@@ -302,8 +302,8 @@ abstract class ConditionalRoutesConditionAbstract
      */
     public function setPriority($priority)
     {
-        Assertion::notNull($priority);
-        Assertion::integerish($priority);
+        Assertion::notNull($priority, 'priority value "%s" is null, but non null value was expected.');
+        Assertion::integerish($priority, 'priority value "%s" is not an integer or a number castable to integer.');
 
         $this->priority = $priority;
 
@@ -330,7 +330,7 @@ abstract class ConditionalRoutesConditionAbstract
     public function setRouteType($routeType = null)
     {
         if (!is_null($routeType)) {
-            Assertion::maxLength($routeType, 25);
+            Assertion::maxLength($routeType, 25, 'routeType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($routeType, array (
           0 => 'user',
           1 => 'number',
@@ -342,7 +342,7 @@ abstract class ConditionalRoutesConditionAbstract
           7 => 'queue',
           8 => 'conferenceRoom',
           9 => 'extension',
-        ));
+        ), 'routeTypevalue "%s" is not an element of the valid values: %s');
         }
 
         $this->routeType = $routeType;
@@ -370,7 +370,7 @@ abstract class ConditionalRoutesConditionAbstract
     public function setNumberValue($numberValue = null)
     {
         if (!is_null($numberValue)) {
-            Assertion::maxLength($numberValue, 25);
+            Assertion::maxLength($numberValue, 25, 'numberValue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->numberValue = $numberValue;
@@ -398,7 +398,7 @@ abstract class ConditionalRoutesConditionAbstract
     public function setFriendValue($friendValue = null)
     {
         if (!is_null($friendValue)) {
-            Assertion::maxLength($friendValue, 25);
+            Assertion::maxLength($friendValue, 25, 'friendValue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->friendValue = $friendValue;

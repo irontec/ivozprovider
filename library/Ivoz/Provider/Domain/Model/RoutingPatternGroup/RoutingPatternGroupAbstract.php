@@ -193,8 +193,8 @@ abstract class RoutingPatternGroupAbstract
      */
     public function setName($name)
     {
-        Assertion::notNull($name);
-        Assertion::maxLength($name, 55);
+        Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($name, 55, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->name = $name;
 
@@ -221,7 +221,7 @@ abstract class RoutingPatternGroupAbstract
     public function setDescription($description = null)
     {
         if (!is_null($description)) {
-            Assertion::maxLength($description, 55);
+            Assertion::maxLength($description, 55, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->description = $description;

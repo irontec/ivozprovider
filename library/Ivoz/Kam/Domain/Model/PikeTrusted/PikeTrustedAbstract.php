@@ -224,7 +224,7 @@ abstract class PikeTrustedAbstract
     public function setSrcIp($srcIp = null)
     {
         if (!is_null($srcIp)) {
-            Assertion::maxLength($srcIp, 50);
+            Assertion::maxLength($srcIp, 50, 'srcIp value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->srcIp = $srcIp;
@@ -252,7 +252,7 @@ abstract class PikeTrustedAbstract
     public function setProto($proto = null)
     {
         if (!is_null($proto)) {
-            Assertion::maxLength($proto, 4);
+            Assertion::maxLength($proto, 4, 'proto value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->proto = $proto;
@@ -280,7 +280,7 @@ abstract class PikeTrustedAbstract
     public function setFromPattern($fromPattern = null)
     {
         if (!is_null($fromPattern)) {
-            Assertion::maxLength($fromPattern, 64);
+            Assertion::maxLength($fromPattern, 64, 'fromPattern value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->fromPattern = $fromPattern;
@@ -308,7 +308,7 @@ abstract class PikeTrustedAbstract
     public function setRuriPattern($ruriPattern = null)
     {
         if (!is_null($ruriPattern)) {
-            Assertion::maxLength($ruriPattern, 64);
+            Assertion::maxLength($ruriPattern, 64, 'ruriPattern value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->ruriPattern = $ruriPattern;
@@ -336,7 +336,7 @@ abstract class PikeTrustedAbstract
     public function setTag($tag = null)
     {
         if (!is_null($tag)) {
-            Assertion::maxLength($tag, 64);
+            Assertion::maxLength($tag, 64, 'tag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->tag = $tag;
@@ -363,8 +363,8 @@ abstract class PikeTrustedAbstract
      */
     public function setPriority($priority)
     {
-        Assertion::notNull($priority);
-        Assertion::integerish($priority);
+        Assertion::notNull($priority, 'priority value "%s" is null, but non null value was expected.');
+        Assertion::integerish($priority, 'priority value "%s" is not an integer or a number castable to integer.');
 
         $this->priority = $priority;
 

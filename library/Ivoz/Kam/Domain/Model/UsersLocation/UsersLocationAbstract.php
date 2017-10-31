@@ -400,8 +400,8 @@ abstract class UsersLocationAbstract
      */
     public function setRuid($ruid)
     {
-        Assertion::notNull($ruid);
-        Assertion::maxLength($ruid, 64);
+        Assertion::notNull($ruid, 'ruid value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($ruid, 64, 'ruid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->ruid = $ruid;
 
@@ -427,8 +427,8 @@ abstract class UsersLocationAbstract
      */
     public function setUsername($username)
     {
-        Assertion::notNull($username);
-        Assertion::maxLength($username, 64);
+        Assertion::notNull($username, 'username value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($username, 64, 'username value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->username = $username;
 
@@ -455,7 +455,7 @@ abstract class UsersLocationAbstract
     public function setDomain($domain = null)
     {
         if (!is_null($domain)) {
-            Assertion::maxLength($domain, 190);
+            Assertion::maxLength($domain, 190, 'domain value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->domain = $domain;
@@ -482,8 +482,8 @@ abstract class UsersLocationAbstract
      */
     public function setContact($contact)
     {
-        Assertion::notNull($contact);
-        Assertion::maxLength($contact, 255);
+        Assertion::notNull($contact, 'contact value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($contact, 255, 'contact value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->contact = $contact;
 
@@ -510,7 +510,7 @@ abstract class UsersLocationAbstract
     public function setReceived($received = null)
     {
         if (!is_null($received)) {
-            Assertion::maxLength($received, 128);
+            Assertion::maxLength($received, 128, 'received value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->received = $received;
@@ -538,7 +538,7 @@ abstract class UsersLocationAbstract
     public function setPath($path = null)
     {
         if (!is_null($path)) {
-            Assertion::maxLength($path, 512);
+            Assertion::maxLength($path, 512, 'path value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->path = $path;
@@ -565,7 +565,7 @@ abstract class UsersLocationAbstract
      */
     public function setExpires($expires)
     {
-        Assertion::notNull($expires);
+        Assertion::notNull($expires, 'expires value "%s" is null, but non null value was expected.');
         $expires = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
             $expires,
             '2030-05-28 21:32:15'
@@ -595,7 +595,7 @@ abstract class UsersLocationAbstract
      */
     public function setQ($q)
     {
-        Assertion::notNull($q);
+        Assertion::notNull($q, 'q value "%s" is null, but non null value was expected.');
         Assertion::numeric($q);
 
         $this->q = $q;
@@ -622,8 +622,8 @@ abstract class UsersLocationAbstract
      */
     public function setCallid($callid)
     {
-        Assertion::notNull($callid);
-        Assertion::maxLength($callid, 255);
+        Assertion::notNull($callid, 'callid value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($callid, 255, 'callid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->callid = $callid;
 
@@ -649,8 +649,8 @@ abstract class UsersLocationAbstract
      */
     public function setCseq($cseq)
     {
-        Assertion::notNull($cseq);
-        Assertion::integerish($cseq);
+        Assertion::notNull($cseq, 'cseq value "%s" is null, but non null value was expected.');
+        Assertion::integerish($cseq, 'cseq value "%s" is not an integer or a number castable to integer.');
 
         $this->cseq = $cseq;
 
@@ -676,7 +676,7 @@ abstract class UsersLocationAbstract
      */
     public function setLastModified($lastModified)
     {
-        Assertion::notNull($lastModified);
+        Assertion::notNull($lastModified, 'lastModified value "%s" is null, but non null value was expected.');
         $lastModified = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
             $lastModified,
             '1900-01-01 00:00:01'
@@ -706,8 +706,8 @@ abstract class UsersLocationAbstract
      */
     public function setFlags($flags)
     {
-        Assertion::notNull($flags);
-        Assertion::integerish($flags);
+        Assertion::notNull($flags, 'flags value "%s" is null, but non null value was expected.');
+        Assertion::integerish($flags, 'flags value "%s" is not an integer or a number castable to integer.');
 
         $this->flags = $flags;
 
@@ -733,8 +733,8 @@ abstract class UsersLocationAbstract
      */
     public function setCflags($cflags)
     {
-        Assertion::notNull($cflags);
-        Assertion::integerish($cflags);
+        Assertion::notNull($cflags, 'cflags value "%s" is null, but non null value was expected.');
+        Assertion::integerish($cflags, 'cflags value "%s" is not an integer or a number castable to integer.');
 
         $this->cflags = $cflags;
 
@@ -760,8 +760,8 @@ abstract class UsersLocationAbstract
      */
     public function setUserAgent($userAgent)
     {
-        Assertion::notNull($userAgent);
-        Assertion::maxLength($userAgent, 255);
+        Assertion::notNull($userAgent, 'userAgent value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($userAgent, 255, 'userAgent value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->userAgent = $userAgent;
 
@@ -788,7 +788,7 @@ abstract class UsersLocationAbstract
     public function setSocket($socket = null)
     {
         if (!is_null($socket)) {
-            Assertion::maxLength($socket, 64);
+            Assertion::maxLength($socket, 64, 'socket value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->socket = $socket;
@@ -817,7 +817,7 @@ abstract class UsersLocationAbstract
     {
         if (!is_null($methods)) {
             if (!is_null($methods)) {
-                Assertion::integerish($methods);
+                Assertion::integerish($methods, 'methods value "%s" is not an integer or a number castable to integer.');
             }
         }
 
@@ -846,7 +846,7 @@ abstract class UsersLocationAbstract
     public function setInstance($instance = null)
     {
         if (!is_null($instance)) {
-            Assertion::maxLength($instance, 255);
+            Assertion::maxLength($instance, 255, 'instance value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->instance = $instance;
@@ -873,8 +873,8 @@ abstract class UsersLocationAbstract
      */
     public function setRegId($regId)
     {
-        Assertion::notNull($regId);
-        Assertion::integerish($regId);
+        Assertion::notNull($regId, 'regId value "%s" is null, but non null value was expected.');
+        Assertion::integerish($regId, 'regId value "%s" is not an integer or a number castable to integer.');
 
         $this->regId = $regId;
 
@@ -900,8 +900,8 @@ abstract class UsersLocationAbstract
      */
     public function setServerId($serverId)
     {
-        Assertion::notNull($serverId);
-        Assertion::integerish($serverId);
+        Assertion::notNull($serverId, 'serverId value "%s" is null, but non null value was expected.');
+        Assertion::integerish($serverId, 'serverId value "%s" is not an integer or a number castable to integer.');
 
         $this->serverId = $serverId;
 
@@ -927,8 +927,8 @@ abstract class UsersLocationAbstract
      */
     public function setConnectionId($connectionId)
     {
-        Assertion::notNull($connectionId);
-        Assertion::integerish($connectionId);
+        Assertion::notNull($connectionId, 'connectionId value "%s" is null, but non null value was expected.');
+        Assertion::integerish($connectionId, 'connectionId value "%s" is not an integer or a number castable to integer.');
 
         $this->connectionId = $connectionId;
 
@@ -954,8 +954,8 @@ abstract class UsersLocationAbstract
      */
     public function setKeepalive($keepalive)
     {
-        Assertion::notNull($keepalive);
-        Assertion::integerish($keepalive);
+        Assertion::notNull($keepalive, 'keepalive value "%s" is null, but non null value was expected.');
+        Assertion::integerish($keepalive, 'keepalive value "%s" is not an integer or a number castable to integer.');
 
         $this->keepalive = $keepalive;
 
@@ -981,8 +981,8 @@ abstract class UsersLocationAbstract
      */
     public function setPartition($partition)
     {
-        Assertion::notNull($partition);
-        Assertion::integerish($partition);
+        Assertion::notNull($partition, 'partition value "%s" is null, but non null value was expected.');
+        Assertion::integerish($partition, 'partition value "%s" is not an integer or a number castable to integer.');
 
         $this->partition = $partition;
 

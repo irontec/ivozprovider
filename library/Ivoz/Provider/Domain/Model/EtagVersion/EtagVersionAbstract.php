@@ -194,7 +194,7 @@ abstract class EtagVersionAbstract
     public function setTable($table = null)
     {
         if (!is_null($table)) {
-            Assertion::maxLength($table, 55);
+            Assertion::maxLength($table, 55, 'table value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->table = $table;
@@ -222,7 +222,7 @@ abstract class EtagVersionAbstract
     public function setEtag($etag = null)
     {
         if (!is_null($etag)) {
-            Assertion::maxLength($etag, 255);
+            Assertion::maxLength($etag, 255, 'etag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->etag = $etag;

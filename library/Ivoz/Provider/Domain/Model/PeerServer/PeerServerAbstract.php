@@ -346,7 +346,7 @@ abstract class PeerServerAbstract
     public function setIp($ip = null)
     {
         if (!is_null($ip)) {
-            Assertion::maxLength($ip, 50);
+            Assertion::maxLength($ip, 50, 'ip value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->ip = $ip;
@@ -374,7 +374,7 @@ abstract class PeerServerAbstract
     public function setHostname($hostname = null)
     {
         if (!is_null($hostname)) {
-            Assertion::maxLength($hostname, 64);
+            Assertion::maxLength($hostname, 64, 'hostname value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->hostname = $hostname;
@@ -403,8 +403,8 @@ abstract class PeerServerAbstract
     {
         if (!is_null($port)) {
             if (!is_null($port)) {
-                Assertion::integerish($port);
-                Assertion::greaterOrEqualThan($port, 0);
+                Assertion::integerish($port, 'port value "%s" is not an integer or a number castable to integer.');
+                Assertion::greaterOrEqualThan($port, 0, 'port provided "%s" is not greater or equal than "%s".');
             }
         }
 
@@ -433,7 +433,7 @@ abstract class PeerServerAbstract
     public function setParams($params = null)
     {
         if (!is_null($params)) {
-            Assertion::maxLength($params, 64);
+            Assertion::maxLength($params, 64, 'params value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->params = $params;
@@ -461,7 +461,7 @@ abstract class PeerServerAbstract
     public function setUriScheme($uriScheme = null)
     {
         if (!is_null($uriScheme)) {
-            Assertion::between(intval($uriScheme), 0, 1);
+            Assertion::between(intval($uriScheme), 0, 1, 'uriScheme provided "%s" is not a valid boolean value.');
         }
 
         $this->uriScheme = $uriScheme;
@@ -489,7 +489,7 @@ abstract class PeerServerAbstract
     public function setTransport($transport = null)
     {
         if (!is_null($transport)) {
-            Assertion::between(intval($transport), 0, 1);
+            Assertion::between(intval($transport), 0, 1, 'transport provided "%s" is not a valid boolean value.');
         }
 
         $this->transport = $transport;
@@ -517,7 +517,7 @@ abstract class PeerServerAbstract
     public function setStrip($strip = null)
     {
         if (!is_null($strip)) {
-            Assertion::between(intval($strip), 0, 1);
+            Assertion::between(intval($strip), 0, 1, 'strip provided "%s" is not a valid boolean value.');
         }
 
         $this->strip = $strip;
@@ -545,7 +545,7 @@ abstract class PeerServerAbstract
     public function setPrefix($prefix = null)
     {
         if (!is_null($prefix)) {
-            Assertion::maxLength($prefix, 16);
+            Assertion::maxLength($prefix, 16, 'prefix value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->prefix = $prefix;
@@ -573,7 +573,7 @@ abstract class PeerServerAbstract
     public function setSendPAI($sendPAI = null)
     {
         if (!is_null($sendPAI)) {
-            Assertion::between(intval($sendPAI), 0, 1);
+            Assertion::between(intval($sendPAI), 0, 1, 'sendPAI provided "%s" is not a valid boolean value.');
         }
 
         $this->sendPAI = $sendPAI;
@@ -601,7 +601,7 @@ abstract class PeerServerAbstract
     public function setSendRPID($sendRPID = null)
     {
         if (!is_null($sendRPID)) {
-            Assertion::between(intval($sendRPID), 0, 1);
+            Assertion::between(intval($sendRPID), 0, 1, 'sendRPID provided "%s" is not a valid boolean value.');
         }
 
         $this->sendRPID = $sendRPID;
@@ -628,7 +628,7 @@ abstract class PeerServerAbstract
      */
     public function setAuthNeeded($authNeeded)
     {
-        Assertion::notNull($authNeeded);
+        Assertion::notNull($authNeeded, 'authNeeded value "%s" is null, but non null value was expected.');
 
         $this->authNeeded = $authNeeded;
 
@@ -655,7 +655,7 @@ abstract class PeerServerAbstract
     public function setAuthUser($authUser = null)
     {
         if (!is_null($authUser)) {
-            Assertion::maxLength($authUser, 64);
+            Assertion::maxLength($authUser, 64, 'authUser value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->authUser = $authUser;
@@ -683,7 +683,7 @@ abstract class PeerServerAbstract
     public function setAuthPassword($authPassword = null)
     {
         if (!is_null($authPassword)) {
-            Assertion::maxLength($authPassword, 64);
+            Assertion::maxLength($authPassword, 64, 'authPassword value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->authPassword = $authPassword;
@@ -711,7 +711,7 @@ abstract class PeerServerAbstract
     public function setSipProxy($sipProxy = null)
     {
         if (!is_null($sipProxy)) {
-            Assertion::maxLength($sipProxy, 128);
+            Assertion::maxLength($sipProxy, 128, 'sipProxy value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->sipProxy = $sipProxy;
@@ -739,7 +739,7 @@ abstract class PeerServerAbstract
     public function setOutboundProxy($outboundProxy = null)
     {
         if (!is_null($outboundProxy)) {
-            Assertion::maxLength($outboundProxy, 128);
+            Assertion::maxLength($outboundProxy, 128, 'outboundProxy value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->outboundProxy = $outboundProxy;
@@ -767,7 +767,7 @@ abstract class PeerServerAbstract
     public function setFromUser($fromUser = null)
     {
         if (!is_null($fromUser)) {
-            Assertion::maxLength($fromUser, 64);
+            Assertion::maxLength($fromUser, 64, 'fromUser value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->fromUser = $fromUser;
@@ -795,7 +795,7 @@ abstract class PeerServerAbstract
     public function setFromDomain($fromDomain = null)
     {
         if (!is_null($fromDomain)) {
-            Assertion::maxLength($fromDomain, 190);
+            Assertion::maxLength($fromDomain, 190, 'fromDomain value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->fromDomain = $fromDomain;

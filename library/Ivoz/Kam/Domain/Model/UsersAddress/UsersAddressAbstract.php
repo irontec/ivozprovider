@@ -233,8 +233,8 @@ abstract class UsersAddressAbstract
      */
     public function setSourceAddress($sourceAddress)
     {
-        Assertion::notNull($sourceAddress);
-        Assertion::maxLength($sourceAddress, 100);
+        Assertion::notNull($sourceAddress, 'sourceAddress value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($sourceAddress, 100, 'sourceAddress value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->sourceAddress = $sourceAddress;
 
@@ -261,7 +261,7 @@ abstract class UsersAddressAbstract
     public function setIpAddr($ipAddr = null)
     {
         if (!is_null($ipAddr)) {
-            Assertion::maxLength($ipAddr, 50);
+            Assertion::maxLength($ipAddr, 50, 'ipAddr value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->ipAddr = $ipAddr;
@@ -288,8 +288,8 @@ abstract class UsersAddressAbstract
      */
     public function setMask($mask)
     {
-        Assertion::notNull($mask);
-        Assertion::integerish($mask);
+        Assertion::notNull($mask, 'mask value "%s" is null, but non null value was expected.');
+        Assertion::integerish($mask, 'mask value "%s" is not an integer or a number castable to integer.');
 
         $this->mask = $mask;
 
@@ -315,8 +315,8 @@ abstract class UsersAddressAbstract
      */
     public function setPort($port)
     {
-        Assertion::notNull($port);
-        Assertion::integerish($port);
+        Assertion::notNull($port, 'port value "%s" is null, but non null value was expected.');
+        Assertion::integerish($port, 'port value "%s" is not an integer or a number castable to integer.');
 
         $this->port = $port;
 
@@ -343,7 +343,7 @@ abstract class UsersAddressAbstract
     public function setTag($tag = null)
     {
         if (!is_null($tag)) {
-            Assertion::maxLength($tag, 64);
+            Assertion::maxLength($tag, 64, 'tag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->tag = $tag;
@@ -371,7 +371,7 @@ abstract class UsersAddressAbstract
     public function setDescription($description = null)
     {
         if (!is_null($description)) {
-            Assertion::maxLength($description, 200);
+            Assertion::maxLength($description, 200, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->description = $description;

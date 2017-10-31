@@ -479,7 +479,7 @@ abstract class AccCdrAbstract
     public function setProxy($proxy = null)
     {
         if (!is_null($proxy)) {
-            Assertion::maxLength($proxy, 64);
+            Assertion::maxLength($proxy, 64, 'proxy value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->proxy = $proxy;
@@ -506,7 +506,7 @@ abstract class AccCdrAbstract
      */
     public function setStartTimeUtc($startTimeUtc)
     {
-        Assertion::notNull($startTimeUtc);
+        Assertion::notNull($startTimeUtc, 'startTimeUtc value "%s" is null, but non null value was expected.');
         $startTimeUtc = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
             $startTimeUtc,
             '2000-01-01 00:00:00'
@@ -536,7 +536,7 @@ abstract class AccCdrAbstract
      */
     public function setEndTimeUtc($endTimeUtc)
     {
-        Assertion::notNull($endTimeUtc);
+        Assertion::notNull($endTimeUtc, 'endTimeUtc value "%s" is null, but non null value was expected.');
         $endTimeUtc = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
             $endTimeUtc,
             'CURRENT_TIMESTAMP'
@@ -566,7 +566,7 @@ abstract class AccCdrAbstract
      */
     public function setStartTime($startTime)
     {
-        Assertion::notNull($startTime);
+        Assertion::notNull($startTime, 'startTime value "%s" is null, but non null value was expected.');
         $startTime = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
             $startTime,
             '2000-01-01 00:00:00'
@@ -596,7 +596,7 @@ abstract class AccCdrAbstract
      */
     public function setEndTime($endTime)
     {
-        Assertion::notNull($endTime);
+        Assertion::notNull($endTime, 'endTime value "%s" is null, but non null value was expected.');
         $endTime = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
             $endTime,
             '2000-01-01 00:00:00'
@@ -626,7 +626,7 @@ abstract class AccCdrAbstract
      */
     public function setDuration($duration)
     {
-        Assertion::notNull($duration);
+        Assertion::notNull($duration, 'duration value "%s" is null, but non null value was expected.');
         Assertion::numeric($duration);
 
         $this->duration = $duration;
@@ -654,7 +654,7 @@ abstract class AccCdrAbstract
     public function setCaller($caller = null)
     {
         if (!is_null($caller)) {
-            Assertion::maxLength($caller, 128);
+            Assertion::maxLength($caller, 128, 'caller value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->caller = $caller;
@@ -682,7 +682,7 @@ abstract class AccCdrAbstract
     public function setCallee($callee = null)
     {
         if (!is_null($callee)) {
-            Assertion::maxLength($callee, 128);
+            Assertion::maxLength($callee, 128, 'callee value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->callee = $callee;
@@ -710,7 +710,7 @@ abstract class AccCdrAbstract
     public function setReferee($referee = null)
     {
         if (!is_null($referee)) {
-            Assertion::maxLength($referee, 128);
+            Assertion::maxLength($referee, 128, 'referee value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->referee = $referee;
@@ -738,7 +738,7 @@ abstract class AccCdrAbstract
     public function setReferrer($referrer = null)
     {
         if (!is_null($referrer)) {
-            Assertion::maxLength($referrer, 128);
+            Assertion::maxLength($referrer, 128, 'referrer value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->referrer = $referrer;
@@ -766,7 +766,7 @@ abstract class AccCdrAbstract
     public function setAsiden($asiden = null)
     {
         if (!is_null($asiden)) {
-            Assertion::maxLength($asiden, 64);
+            Assertion::maxLength($asiden, 64, 'asiden value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->asiden = $asiden;
@@ -794,7 +794,7 @@ abstract class AccCdrAbstract
     public function setAsaddress($asaddress = null)
     {
         if (!is_null($asaddress)) {
-            Assertion::maxLength($asaddress, 64);
+            Assertion::maxLength($asaddress, 64, 'asaddress value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->asaddress = $asaddress;
@@ -822,7 +822,7 @@ abstract class AccCdrAbstract
     public function setCallid($callid = null)
     {
         if (!is_null($callid)) {
-            Assertion::maxLength($callid, 255);
+            Assertion::maxLength($callid, 255, 'callid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->callid = $callid;
@@ -850,7 +850,7 @@ abstract class AccCdrAbstract
     public function setCallidHash($callidHash = null)
     {
         if (!is_null($callidHash)) {
-            Assertion::maxLength($callidHash, 128);
+            Assertion::maxLength($callidHash, 128, 'callidHash value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->callidHash = $callidHash;
@@ -878,7 +878,7 @@ abstract class AccCdrAbstract
     public function setXcallid($xcallid = null)
     {
         if (!is_null($xcallid)) {
-            Assertion::maxLength($xcallid, 255);
+            Assertion::maxLength($xcallid, 255, 'xcallid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->xcallid = $xcallid;
@@ -933,7 +933,7 @@ abstract class AccCdrAbstract
     public function setDiversion($diversion = null)
     {
         if (!is_null($diversion)) {
-            Assertion::maxLength($diversion, 64);
+            Assertion::maxLength($diversion, 64, 'diversion value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->diversion = $diversion;
@@ -961,7 +961,7 @@ abstract class AccCdrAbstract
     public function setPeeringContractId($peeringContractId = null)
     {
         if (!is_null($peeringContractId)) {
-            Assertion::maxLength($peeringContractId, 64);
+            Assertion::maxLength($peeringContractId, 64, 'peeringContractId value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->peeringContractId = $peeringContractId;
@@ -988,7 +988,7 @@ abstract class AccCdrAbstract
      */
     public function setBounced($bounced)
     {
-        Assertion::notNull($bounced);
+        Assertion::notNull($bounced, 'bounced value "%s" is null, but non null value was expected.');
 
         $this->bounced = $bounced;
 
@@ -1015,7 +1015,7 @@ abstract class AccCdrAbstract
     public function setExternallyRated($externallyRated = null)
     {
         if (!is_null($externallyRated)) {
-            Assertion::between(intval($externallyRated), 0, 1);
+            Assertion::between(intval($externallyRated), 0, 1, 'externallyRated provided "%s" is not a valid boolean value.');
         }
 
         $this->externallyRated = $externallyRated;
@@ -1043,7 +1043,7 @@ abstract class AccCdrAbstract
     public function setMetered($metered = null)
     {
         if (!is_null($metered)) {
-            Assertion::between(intval($metered), 0, 1);
+            Assertion::between(intval($metered), 0, 1, 'metered provided "%s" is not a valid boolean value.');
         }
 
         $this->metered = $metered;
@@ -1102,7 +1102,7 @@ abstract class AccCdrAbstract
     public function setPricingPlanName($pricingPlanName = null)
     {
         if (!is_null($pricingPlanName)) {
-            Assertion::maxLength($pricingPlanName, 55);
+            Assertion::maxLength($pricingPlanName, 55, 'pricingPlanName value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->pricingPlanName = $pricingPlanName;
@@ -1130,7 +1130,7 @@ abstract class AccCdrAbstract
     public function setTargetPatternName($targetPatternName = null)
     {
         if (!is_null($targetPatternName)) {
-            Assertion::maxLength($targetPatternName, 55);
+            Assertion::maxLength($targetPatternName, 55, 'targetPatternName value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->targetPatternName = $targetPatternName;
@@ -1188,7 +1188,7 @@ abstract class AccCdrAbstract
     public function setPricingPlanDetails($pricingPlanDetails = null)
     {
         if (!is_null($pricingPlanDetails)) {
-            Assertion::maxLength($pricingPlanDetails, 65535);
+            Assertion::maxLength($pricingPlanDetails, 65535, 'pricingPlanDetails value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->pricingPlanDetails = $pricingPlanDetails;

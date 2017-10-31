@@ -308,8 +308,8 @@ abstract class BrandAbstract
      */
     public function setName($name)
     {
-        Assertion::notNull($name);
-        Assertion::maxLength($name, 75);
+        Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($name, 75, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->name = $name;
 
@@ -336,7 +336,7 @@ abstract class BrandAbstract
     public function setDomainUsers($domainUsers = null)
     {
         if (!is_null($domainUsers)) {
-            Assertion::maxLength($domainUsers, 190);
+            Assertion::maxLength($domainUsers, 190, 'domainUsers value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->domainUsers = $domainUsers;
@@ -364,7 +364,7 @@ abstract class BrandAbstract
     public function setFromName($fromName = null)
     {
         if (!is_null($fromName)) {
-            Assertion::maxLength($fromName, 255);
+            Assertion::maxLength($fromName, 255, 'fromName value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->fromName = $fromName;
@@ -392,7 +392,7 @@ abstract class BrandAbstract
     public function setFromAddress($fromAddress = null)
     {
         if (!is_null($fromAddress)) {
-            Assertion::maxLength($fromAddress, 255);
+            Assertion::maxLength($fromAddress, 255, 'fromAddress value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->fromAddress = $fromAddress;
@@ -421,7 +421,7 @@ abstract class BrandAbstract
     {
         if (!is_null($recordingsLimitMB)) {
             if (!is_null($recordingsLimitMB)) {
-                Assertion::integerish($recordingsLimitMB);
+                Assertion::integerish($recordingsLimitMB, 'recordingsLimitMB value "%s" is not an integer or a number castable to integer.');
             }
         }
 
@@ -450,7 +450,7 @@ abstract class BrandAbstract
     public function setRecordingsLimitEmail($recordingsLimitEmail = null)
     {
         if (!is_null($recordingsLimitEmail)) {
-            Assertion::maxLength($recordingsLimitEmail, 250);
+            Assertion::maxLength($recordingsLimitEmail, 250, 'recordingsLimitEmail value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->recordingsLimitEmail = $recordingsLimitEmail;

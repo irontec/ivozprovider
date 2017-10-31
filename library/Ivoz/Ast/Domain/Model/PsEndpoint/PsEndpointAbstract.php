@@ -357,8 +357,8 @@ abstract class PsEndpointAbstract
      */
     public function setSorceryId($sorceryId)
     {
-        Assertion::notNull($sorceryId);
-        Assertion::maxLength($sorceryId, 40);
+        Assertion::notNull($sorceryId, 'sorceryId value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($sorceryId, 40, 'sorceryId value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->sorceryId = $sorceryId;
 
@@ -385,7 +385,7 @@ abstract class PsEndpointAbstract
     public function setFromDomain($fromDomain = null)
     {
         if (!is_null($fromDomain)) {
-            Assertion::maxLength($fromDomain, 190);
+            Assertion::maxLength($fromDomain, 190, 'fromDomain value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->fromDomain = $fromDomain;
@@ -413,7 +413,7 @@ abstract class PsEndpointAbstract
     public function setAors($aors = null)
     {
         if (!is_null($aors)) {
-            Assertion::maxLength($aors, 200);
+            Assertion::maxLength($aors, 200, 'aors value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->aors = $aors;
@@ -441,7 +441,7 @@ abstract class PsEndpointAbstract
     public function setCallerid($callerid = null)
     {
         if (!is_null($callerid)) {
-            Assertion::maxLength($callerid, 100);
+            Assertion::maxLength($callerid, 100, 'callerid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->callerid = $callerid;
@@ -468,8 +468,8 @@ abstract class PsEndpointAbstract
      */
     public function setContext($context)
     {
-        Assertion::notNull($context);
-        Assertion::maxLength($context, 40);
+        Assertion::notNull($context, 'context value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($context, 40, 'context value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->context = $context;
 
@@ -495,8 +495,8 @@ abstract class PsEndpointAbstract
      */
     public function setDisallow($disallow)
     {
-        Assertion::notNull($disallow);
-        Assertion::maxLength($disallow, 200);
+        Assertion::notNull($disallow, 'disallow value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($disallow, 200, 'disallow value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->disallow = $disallow;
 
@@ -522,8 +522,8 @@ abstract class PsEndpointAbstract
      */
     public function setAllow($allow)
     {
-        Assertion::notNull($allow);
-        Assertion::maxLength($allow, 200);
+        Assertion::notNull($allow, 'allow value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($allow, 200, 'allow value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->allow = $allow;
 
@@ -581,7 +581,7 @@ abstract class PsEndpointAbstract
           0 => 'update',
           1 => 'invite',
           2 => 'reinvite',
-        ));
+        ), 'directMediaMethodvalue "%s" is not an element of the valid values: %s');
         }
 
         $this->directMediaMethod = $directMediaMethod;
@@ -609,7 +609,7 @@ abstract class PsEndpointAbstract
     public function setMailboxes($mailboxes = null)
     {
         if (!is_null($mailboxes)) {
-            Assertion::maxLength($mailboxes, 100);
+            Assertion::maxLength($mailboxes, 100, 'mailboxes value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->mailboxes = $mailboxes;
@@ -637,7 +637,7 @@ abstract class PsEndpointAbstract
     public function setNamedPickupGroup($namedPickupGroup = null)
     {
         if (!is_null($namedPickupGroup)) {
-            Assertion::maxLength($namedPickupGroup, 40);
+            Assertion::maxLength($namedPickupGroup, 40, 'namedPickupGroup value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->namedPickupGroup = $namedPickupGroup;
@@ -718,7 +718,7 @@ abstract class PsEndpointAbstract
      */
     public function setOneHundredRel($oneHundredRel)
     {
-        Assertion::notNull($oneHundredRel);
+        Assertion::notNull($oneHundredRel, 'oneHundredRel value "%s" is null, but non null value was expected.');
 
         $this->oneHundredRel = $oneHundredRel;
 
@@ -745,7 +745,7 @@ abstract class PsEndpointAbstract
     public function setOutboundProxy($outboundProxy = null)
     {
         if (!is_null($outboundProxy)) {
-            Assertion::maxLength($outboundProxy, 256);
+            Assertion::maxLength($outboundProxy, 256, 'outboundProxy value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->outboundProxy = $outboundProxy;

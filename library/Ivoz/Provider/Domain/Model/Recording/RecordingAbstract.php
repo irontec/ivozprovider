@@ -273,7 +273,7 @@ abstract class RecordingAbstract
     public function setCallid($callid = null)
     {
         if (!is_null($callid)) {
-            Assertion::maxLength($callid, 255);
+            Assertion::maxLength($callid, 255, 'callid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->callid = $callid;
@@ -300,7 +300,7 @@ abstract class RecordingAbstract
      */
     public function setCalldate($calldate)
     {
-        Assertion::notNull($calldate);
+        Assertion::notNull($calldate, 'calldate value "%s" is null, but non null value was expected.');
         $calldate = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
             $calldate,
             'CURRENT_TIMESTAMP'
@@ -330,11 +330,11 @@ abstract class RecordingAbstract
      */
     public function setType($type)
     {
-        Assertion::notNull($type);
+        Assertion::notNull($type, 'type value "%s" is null, but non null value was expected.');
         Assertion::choice($type, array (
           0 => 'ondemand',
           1 => 'ddi',
-        ));
+        ), 'typevalue "%s" is not an element of the valid values: %s');
 
         $this->type = $type;
 
@@ -360,7 +360,7 @@ abstract class RecordingAbstract
      */
     public function setDuration($duration)
     {
-        Assertion::notNull($duration);
+        Assertion::notNull($duration, 'duration value "%s" is null, but non null value was expected.');
         Assertion::numeric($duration);
 
         $this->duration = $duration;
@@ -388,7 +388,7 @@ abstract class RecordingAbstract
     public function setCaller($caller = null)
     {
         if (!is_null($caller)) {
-            Assertion::maxLength($caller, 128);
+            Assertion::maxLength($caller, 128, 'caller value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->caller = $caller;
@@ -416,7 +416,7 @@ abstract class RecordingAbstract
     public function setCallee($callee = null)
     {
         if (!is_null($callee)) {
-            Assertion::maxLength($callee, 128);
+            Assertion::maxLength($callee, 128, 'callee value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->callee = $callee;
@@ -444,7 +444,7 @@ abstract class RecordingAbstract
     public function setRecorder($recorder = null)
     {
         if (!is_null($recorder)) {
-            Assertion::maxLength($recorder, 128);
+            Assertion::maxLength($recorder, 128, 'recorder value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->recorder = $recorder;

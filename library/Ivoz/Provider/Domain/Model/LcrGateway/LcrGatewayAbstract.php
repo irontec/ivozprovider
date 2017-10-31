@@ -297,9 +297,9 @@ abstract class LcrGatewayAbstract
      */
     public function setLcrId($lcrId)
     {
-        Assertion::notNull($lcrId);
-        Assertion::integerish($lcrId);
-        Assertion::greaterOrEqualThan($lcrId, 0);
+        Assertion::notNull($lcrId, 'lcrId value "%s" is null, but non null value was expected.');
+        Assertion::integerish($lcrId, 'lcrId value "%s" is not an integer or a number castable to integer.');
+        Assertion::greaterOrEqualThan($lcrId, 0, 'lcrId provided "%s" is not greater or equal than "%s".');
 
         $this->lcrId = $lcrId;
 
@@ -325,8 +325,8 @@ abstract class LcrGatewayAbstract
      */
     public function setGwName($gwName)
     {
-        Assertion::notNull($gwName);
-        Assertion::maxLength($gwName, 200);
+        Assertion::notNull($gwName, 'gwName value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($gwName, 200, 'gwName value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->gwName = $gwName;
 
@@ -353,7 +353,7 @@ abstract class LcrGatewayAbstract
     public function setIp($ip = null)
     {
         if (!is_null($ip)) {
-            Assertion::maxLength($ip, 50);
+            Assertion::maxLength($ip, 50, 'ip value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->ip = $ip;
@@ -381,7 +381,7 @@ abstract class LcrGatewayAbstract
     public function setHostname($hostname = null)
     {
         if (!is_null($hostname)) {
-            Assertion::maxLength($hostname, 64);
+            Assertion::maxLength($hostname, 64, 'hostname value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->hostname = $hostname;
@@ -410,8 +410,8 @@ abstract class LcrGatewayAbstract
     {
         if (!is_null($port)) {
             if (!is_null($port)) {
-                Assertion::integerish($port);
-                Assertion::greaterOrEqualThan($port, 0);
+                Assertion::integerish($port, 'port value "%s" is not an integer or a number castable to integer.');
+                Assertion::greaterOrEqualThan($port, 0, 'port provided "%s" is not greater or equal than "%s".');
             }
         }
 
@@ -440,7 +440,7 @@ abstract class LcrGatewayAbstract
     public function setParams($params = null)
     {
         if (!is_null($params)) {
-            Assertion::maxLength($params, 64);
+            Assertion::maxLength($params, 64, 'params value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->params = $params;
@@ -468,7 +468,7 @@ abstract class LcrGatewayAbstract
     public function setUriScheme($uriScheme = null)
     {
         if (!is_null($uriScheme)) {
-            Assertion::between(intval($uriScheme), 0, 1);
+            Assertion::between(intval($uriScheme), 0, 1, 'uriScheme provided "%s" is not a valid boolean value.');
         }
 
         $this->uriScheme = $uriScheme;
@@ -496,7 +496,7 @@ abstract class LcrGatewayAbstract
     public function setTransport($transport = null)
     {
         if (!is_null($transport)) {
-            Assertion::between(intval($transport), 0, 1);
+            Assertion::between(intval($transport), 0, 1, 'transport provided "%s" is not a valid boolean value.');
         }
 
         $this->transport = $transport;
@@ -524,7 +524,7 @@ abstract class LcrGatewayAbstract
     public function setStrip($strip = null)
     {
         if (!is_null($strip)) {
-            Assertion::between(intval($strip), 0, 1);
+            Assertion::between(intval($strip), 0, 1, 'strip provided "%s" is not a valid boolean value.');
         }
 
         $this->strip = $strip;
@@ -552,7 +552,7 @@ abstract class LcrGatewayAbstract
     public function setPrefix($prefix = null)
     {
         if (!is_null($prefix)) {
-            Assertion::maxLength($prefix, 16);
+            Assertion::maxLength($prefix, 16, 'prefix value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->prefix = $prefix;
@@ -580,7 +580,7 @@ abstract class LcrGatewayAbstract
     public function setTag($tag = null)
     {
         if (!is_null($tag)) {
-            Assertion::maxLength($tag, 64);
+            Assertion::maxLength($tag, 64, 'tag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->tag = $tag;
@@ -607,9 +607,9 @@ abstract class LcrGatewayAbstract
      */
     public function setFlags($flags)
     {
-        Assertion::notNull($flags);
-        Assertion::integerish($flags);
-        Assertion::greaterOrEqualThan($flags, 0);
+        Assertion::notNull($flags, 'flags value "%s" is null, but non null value was expected.');
+        Assertion::integerish($flags, 'flags value "%s" is not an integer or a number castable to integer.');
+        Assertion::greaterOrEqualThan($flags, 0, 'flags provided "%s" is not greater or equal than "%s".');
 
         $this->flags = $flags;
 
@@ -637,8 +637,8 @@ abstract class LcrGatewayAbstract
     {
         if (!is_null($defunct)) {
             if (!is_null($defunct)) {
-                Assertion::integerish($defunct);
-                Assertion::greaterOrEqualThan($defunct, 0);
+                Assertion::integerish($defunct, 'defunct value "%s" is not an integer or a number castable to integer.');
+                Assertion::greaterOrEqualThan($defunct, 0, 'defunct provided "%s" is not greater or equal than "%s".');
             }
         }
 

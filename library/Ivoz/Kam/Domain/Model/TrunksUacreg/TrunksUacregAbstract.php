@@ -335,8 +335,8 @@ abstract class TrunksUacregAbstract
      */
     public function setLUuid($lUuid)
     {
-        Assertion::notNull($lUuid);
-        Assertion::maxLength($lUuid, 64);
+        Assertion::notNull($lUuid, 'lUuid value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($lUuid, 64, 'lUuid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->lUuid = $lUuid;
 
@@ -362,8 +362,8 @@ abstract class TrunksUacregAbstract
      */
     public function setLUsername($lUsername)
     {
-        Assertion::notNull($lUsername);
-        Assertion::maxLength($lUsername, 64);
+        Assertion::notNull($lUsername, 'lUsername value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($lUsername, 64, 'lUsername value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->lUsername = $lUsername;
 
@@ -389,8 +389,8 @@ abstract class TrunksUacregAbstract
      */
     public function setLDomain($lDomain)
     {
-        Assertion::notNull($lDomain);
-        Assertion::maxLength($lDomain, 190);
+        Assertion::notNull($lDomain, 'lDomain value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($lDomain, 190, 'lDomain value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->lDomain = $lDomain;
 
@@ -416,8 +416,8 @@ abstract class TrunksUacregAbstract
      */
     public function setRUsername($rUsername)
     {
-        Assertion::notNull($rUsername);
-        Assertion::maxLength($rUsername, 64);
+        Assertion::notNull($rUsername, 'rUsername value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($rUsername, 64, 'rUsername value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->rUsername = $rUsername;
 
@@ -443,8 +443,8 @@ abstract class TrunksUacregAbstract
      */
     public function setRDomain($rDomain)
     {
-        Assertion::notNull($rDomain);
-        Assertion::maxLength($rDomain, 190);
+        Assertion::notNull($rDomain, 'rDomain value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($rDomain, 190, 'rDomain value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->rDomain = $rDomain;
 
@@ -470,8 +470,8 @@ abstract class TrunksUacregAbstract
      */
     public function setRealm($realm)
     {
-        Assertion::notNull($realm);
-        Assertion::maxLength($realm, 64);
+        Assertion::notNull($realm, 'realm value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($realm, 64, 'realm value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->realm = $realm;
 
@@ -497,8 +497,8 @@ abstract class TrunksUacregAbstract
      */
     public function setAuthUsername($authUsername)
     {
-        Assertion::notNull($authUsername);
-        Assertion::maxLength($authUsername, 64);
+        Assertion::notNull($authUsername, 'authUsername value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($authUsername, 64, 'authUsername value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->authUsername = $authUsername;
 
@@ -524,8 +524,8 @@ abstract class TrunksUacregAbstract
      */
     public function setAuthPassword($authPassword)
     {
-        Assertion::notNull($authPassword);
-        Assertion::maxLength($authPassword, 64);
+        Assertion::notNull($authPassword, 'authPassword value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($authPassword, 64, 'authPassword value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->authPassword = $authPassword;
 
@@ -551,8 +551,8 @@ abstract class TrunksUacregAbstract
      */
     public function setAuthProxy($authProxy)
     {
-        Assertion::notNull($authProxy);
-        Assertion::maxLength($authProxy, 64);
+        Assertion::notNull($authProxy, 'authProxy value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($authProxy, 64, 'authProxy value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->authProxy = $authProxy;
 
@@ -578,8 +578,8 @@ abstract class TrunksUacregAbstract
      */
     public function setExpires($expires)
     {
-        Assertion::notNull($expires);
-        Assertion::integerish($expires);
+        Assertion::notNull($expires, 'expires value "%s" is null, but non null value was expected.');
+        Assertion::integerish($expires, 'expires value "%s" is not an integer or a number castable to integer.');
 
         $this->expires = $expires;
 
@@ -605,8 +605,8 @@ abstract class TrunksUacregAbstract
      */
     public function setFlags($flags)
     {
-        Assertion::notNull($flags);
-        Assertion::integerish($flags);
+        Assertion::notNull($flags, 'flags value "%s" is null, but non null value was expected.');
+        Assertion::integerish($flags, 'flags value "%s" is not an integer or a number castable to integer.');
 
         $this->flags = $flags;
 
@@ -632,8 +632,8 @@ abstract class TrunksUacregAbstract
      */
     public function setRegDelay($regDelay)
     {
-        Assertion::notNull($regDelay);
-        Assertion::integerish($regDelay);
+        Assertion::notNull($regDelay, 'regDelay value "%s" is null, but non null value was expected.');
+        Assertion::integerish($regDelay, 'regDelay value "%s" is not an integer or a number castable to integer.');
 
         $this->regDelay = $regDelay;
 
@@ -659,8 +659,8 @@ abstract class TrunksUacregAbstract
      */
     public function setMultiddi($multiddi)
     {
-        Assertion::notNull($multiddi);
-        Assertion::between(intval($multiddi), 0, 1);
+        Assertion::notNull($multiddi, 'multiddi value "%s" is null, but non null value was expected.');
+        Assertion::between(intval($multiddi), 0, 1, 'multiddi provided "%s" is not a valid boolean value.');
 
         $this->multiddi = $multiddi;
 

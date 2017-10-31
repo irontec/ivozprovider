@@ -274,8 +274,8 @@ abstract class HuntGroupAbstract
      */
     public function setName($name)
     {
-        Assertion::notNull($name);
-        Assertion::maxLength($name, 100);
+        Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($name, 100, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->name = $name;
 
@@ -301,8 +301,8 @@ abstract class HuntGroupAbstract
      */
     public function setDescription($description)
     {
-        Assertion::notNull($description);
-        Assertion::maxLength($description, 500);
+        Assertion::notNull($description, 'description value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($description, 500, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->description = $description;
 
@@ -328,14 +328,14 @@ abstract class HuntGroupAbstract
      */
     public function setStrategy($strategy)
     {
-        Assertion::notNull($strategy);
-        Assertion::maxLength($strategy, 25);
+        Assertion::notNull($strategy, 'strategy value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($strategy, 25, 'strategy value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($strategy, array (
           0 => 'ringAll',
           1 => 'linear',
           2 => 'roundRobin',
           3 => 'random',
-        ));
+        ), 'strategyvalue "%s" is not an element of the valid values: %s');
 
         $this->strategy = $strategy;
 
@@ -361,8 +361,8 @@ abstract class HuntGroupAbstract
      */
     public function setRingAllTimeout($ringAllTimeout)
     {
-        Assertion::notNull($ringAllTimeout);
-        Assertion::integerish($ringAllTimeout);
+        Assertion::notNull($ringAllTimeout, 'ringAllTimeout value "%s" is null, but non null value was expected.');
+        Assertion::integerish($ringAllTimeout, 'ringAllTimeout value "%s" is not an integer or a number castable to integer.');
 
         $this->ringAllTimeout = $ringAllTimeout;
 
@@ -390,8 +390,8 @@ abstract class HuntGroupAbstract
     {
         if (!is_null($nextUserPosition)) {
             if (!is_null($nextUserPosition)) {
-                Assertion::integerish($nextUserPosition);
-                Assertion::greaterOrEqualThan($nextUserPosition, 0);
+                Assertion::integerish($nextUserPosition, 'nextUserPosition value "%s" is not an integer or a number castable to integer.');
+                Assertion::greaterOrEqualThan($nextUserPosition, 0, 'nextUserPosition provided "%s" is not greater or equal than "%s".');
             }
         }
 
@@ -420,12 +420,12 @@ abstract class HuntGroupAbstract
     public function setNoAnswerTargetType($noAnswerTargetType = null)
     {
         if (!is_null($noAnswerTargetType)) {
-            Assertion::maxLength($noAnswerTargetType, 25);
+            Assertion::maxLength($noAnswerTargetType, 25, 'noAnswerTargetType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($noAnswerTargetType, array (
           0 => 'number',
           1 => 'extension',
           2 => 'voicemail',
-        ));
+        ), 'noAnswerTargetTypevalue "%s" is not an element of the valid values: %s');
         }
 
         $this->noAnswerTargetType = $noAnswerTargetType;
@@ -453,7 +453,7 @@ abstract class HuntGroupAbstract
     public function setNoAnswerNumberValue($noAnswerNumberValue = null)
     {
         if (!is_null($noAnswerNumberValue)) {
-            Assertion::maxLength($noAnswerNumberValue, 25);
+            Assertion::maxLength($noAnswerNumberValue, 25, 'noAnswerNumberValue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->noAnswerNumberValue = $noAnswerNumberValue;

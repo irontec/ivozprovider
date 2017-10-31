@@ -193,8 +193,8 @@ abstract class CompanyServiceAbstract
      */
     public function setCode($code)
     {
-        Assertion::notNull($code);
-        Assertion::maxLength($code, 3);
+        Assertion::notNull($code, 'code value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($code, 3, 'code value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->code = $code;
 

@@ -238,8 +238,8 @@ abstract class MusiconholdAbstract
      */
     public function setName($name)
     {
-        Assertion::notNull($name);
-        Assertion::maxLength($name, 80);
+        Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($name, 80, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->name = $name;
 
@@ -293,7 +293,7 @@ abstract class MusiconholdAbstract
     public function setDirectory($directory = null)
     {
         if (!is_null($directory)) {
-            Assertion::maxLength($directory, 255);
+            Assertion::maxLength($directory, 255, 'directory value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->directory = $directory;
@@ -321,7 +321,7 @@ abstract class MusiconholdAbstract
     public function setApplication($application = null)
     {
         if (!is_null($application)) {
-            Assertion::maxLength($application, 255);
+            Assertion::maxLength($application, 255, 'application value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->application = $application;
@@ -349,7 +349,7 @@ abstract class MusiconholdAbstract
     public function setDigit($digit = null)
     {
         if (!is_null($digit)) {
-            Assertion::maxLength($digit, 1);
+            Assertion::maxLength($digit, 1, 'digit value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->digit = $digit;
@@ -377,7 +377,7 @@ abstract class MusiconholdAbstract
     public function setSort($sort = null)
     {
         if (!is_null($sort)) {
-            Assertion::maxLength($sort, 10);
+            Assertion::maxLength($sort, 10, 'sort value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->sort = $sort;
@@ -405,7 +405,7 @@ abstract class MusiconholdAbstract
     public function setFormat($format = null)
     {
         if (!is_null($format)) {
-            Assertion::maxLength($format, 10);
+            Assertion::maxLength($format, 10, 'format value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->format = $format;

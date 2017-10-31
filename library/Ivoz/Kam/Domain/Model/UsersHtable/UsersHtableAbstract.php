@@ -223,8 +223,8 @@ abstract class UsersHtableAbstract
      */
     public function setKeyName($keyName)
     {
-        Assertion::notNull($keyName);
-        Assertion::maxLength($keyName, 64);
+        Assertion::notNull($keyName, 'keyName value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($keyName, 64, 'keyName value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->keyName = $keyName;
 
@@ -250,8 +250,8 @@ abstract class UsersHtableAbstract
      */
     public function setKeyType($keyType)
     {
-        Assertion::notNull($keyType);
-        Assertion::integerish($keyType);
+        Assertion::notNull($keyType, 'keyType value "%s" is null, but non null value was expected.');
+        Assertion::integerish($keyType, 'keyType value "%s" is not an integer or a number castable to integer.');
 
         $this->keyType = $keyType;
 
@@ -277,8 +277,8 @@ abstract class UsersHtableAbstract
      */
     public function setValueType($valueType)
     {
-        Assertion::notNull($valueType);
-        Assertion::integerish($valueType);
+        Assertion::notNull($valueType, 'valueType value "%s" is null, but non null value was expected.');
+        Assertion::integerish($valueType, 'valueType value "%s" is not an integer or a number castable to integer.');
 
         $this->valueType = $valueType;
 
@@ -304,8 +304,8 @@ abstract class UsersHtableAbstract
      */
     public function setKeyValue($keyValue)
     {
-        Assertion::notNull($keyValue);
-        Assertion::maxLength($keyValue, 128);
+        Assertion::notNull($keyValue, 'keyValue value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($keyValue, 128, 'keyValue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->keyValue = $keyValue;
 
@@ -331,8 +331,8 @@ abstract class UsersHtableAbstract
      */
     public function setExpires($expires)
     {
-        Assertion::notNull($expires);
-        Assertion::integerish($expires);
+        Assertion::notNull($expires, 'expires value "%s" is null, but non null value was expected.');
+        Assertion::integerish($expires, 'expires value "%s" is not an integer or a number castable to integer.');
 
         $this->expires = $expires;
 

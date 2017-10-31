@@ -261,7 +261,7 @@ abstract class TransformationRuleSetAbstract
     public function setDescription($description = null)
     {
         if (!is_null($description)) {
-            Assertion::maxLength($description, 250);
+            Assertion::maxLength($description, 250, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->description = $description;
@@ -289,7 +289,7 @@ abstract class TransformationRuleSetAbstract
     public function setInternationalCode($internationalCode = null)
     {
         if (!is_null($internationalCode)) {
-            Assertion::maxLength($internationalCode, 10);
+            Assertion::maxLength($internationalCode, 10, 'internationalCode value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->internationalCode = $internationalCode;
@@ -317,7 +317,7 @@ abstract class TransformationRuleSetAbstract
     public function setTrunkPrefix($trunkPrefix = null)
     {
         if (!is_null($trunkPrefix)) {
-            Assertion::maxLength($trunkPrefix, 5);
+            Assertion::maxLength($trunkPrefix, 5, 'trunkPrefix value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->trunkPrefix = $trunkPrefix;
@@ -345,7 +345,7 @@ abstract class TransformationRuleSetAbstract
     public function setAreaCode($areaCode = null)
     {
         if (!is_null($areaCode)) {
-            Assertion::maxLength($areaCode, 5);
+            Assertion::maxLength($areaCode, 5, 'areaCode value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->areaCode = $areaCode;
@@ -374,8 +374,8 @@ abstract class TransformationRuleSetAbstract
     {
         if (!is_null($nationalLen)) {
             if (!is_null($nationalLen)) {
-                Assertion::integerish($nationalLen);
-                Assertion::greaterOrEqualThan($nationalLen, 0);
+                Assertion::integerish($nationalLen, 'nationalLen value "%s" is not an integer or a number castable to integer.');
+                Assertion::greaterOrEqualThan($nationalLen, 0, 'nationalLen provided "%s" is not greater or equal than "%s".');
             }
         }
 
@@ -404,7 +404,7 @@ abstract class TransformationRuleSetAbstract
     public function setGenerateRules($generateRules = null)
     {
         if (!is_null($generateRules)) {
-            Assertion::between(intval($generateRules), 0, 1);
+            Assertion::between(intval($generateRules), 0, 1, 'generateRules provided "%s" is not a valid boolean value.');
         }
 
         $this->generateRules = $generateRules;

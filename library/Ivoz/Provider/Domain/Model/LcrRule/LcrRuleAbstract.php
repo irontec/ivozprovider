@@ -268,9 +268,9 @@ abstract class LcrRuleAbstract
      */
     public function setLcrId($lcrId)
     {
-        Assertion::notNull($lcrId);
-        Assertion::integerish($lcrId);
-        Assertion::greaterOrEqualThan($lcrId, 0);
+        Assertion::notNull($lcrId, 'lcrId value "%s" is null, but non null value was expected.');
+        Assertion::integerish($lcrId, 'lcrId value "%s" is not an integer or a number castable to integer.');
+        Assertion::greaterOrEqualThan($lcrId, 0, 'lcrId provided "%s" is not greater or equal than "%s".');
 
         $this->lcrId = $lcrId;
 
@@ -297,7 +297,7 @@ abstract class LcrRuleAbstract
     public function setPrefix($prefix = null)
     {
         if (!is_null($prefix)) {
-            Assertion::maxLength($prefix, 100);
+            Assertion::maxLength($prefix, 100, 'prefix value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->prefix = $prefix;
@@ -325,7 +325,7 @@ abstract class LcrRuleAbstract
     public function setFromUri($fromUri = null)
     {
         if (!is_null($fromUri)) {
-            Assertion::maxLength($fromUri, 255);
+            Assertion::maxLength($fromUri, 255, 'fromUri value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->fromUri = $fromUri;
@@ -353,7 +353,7 @@ abstract class LcrRuleAbstract
     public function setRequestUri($requestUri = null)
     {
         if (!is_null($requestUri)) {
-            Assertion::maxLength($requestUri, 100);
+            Assertion::maxLength($requestUri, 100, 'requestUri value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->requestUri = $requestUri;
@@ -380,9 +380,9 @@ abstract class LcrRuleAbstract
      */
     public function setStopper($stopper)
     {
-        Assertion::notNull($stopper);
-        Assertion::integerish($stopper);
-        Assertion::greaterOrEqualThan($stopper, 0);
+        Assertion::notNull($stopper, 'stopper value "%s" is null, but non null value was expected.');
+        Assertion::integerish($stopper, 'stopper value "%s" is not an integer or a number castable to integer.');
+        Assertion::greaterOrEqualThan($stopper, 0, 'stopper provided "%s" is not greater or equal than "%s".');
 
         $this->stopper = $stopper;
 
@@ -408,9 +408,9 @@ abstract class LcrRuleAbstract
      */
     public function setEnabled($enabled)
     {
-        Assertion::notNull($enabled);
-        Assertion::integerish($enabled);
-        Assertion::greaterOrEqualThan($enabled, 0);
+        Assertion::notNull($enabled, 'enabled value "%s" is null, but non null value was expected.');
+        Assertion::integerish($enabled, 'enabled value "%s" is not an integer or a number castable to integer.');
+        Assertion::greaterOrEqualThan($enabled, 0, 'enabled provided "%s" is not greater or equal than "%s".');
 
         $this->enabled = $enabled;
 
@@ -436,8 +436,8 @@ abstract class LcrRuleAbstract
      */
     public function setTag($tag)
     {
-        Assertion::notNull($tag);
-        Assertion::maxLength($tag, 55);
+        Assertion::notNull($tag, 'tag value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($tag, 55, 'tag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->tag = $tag;
 
@@ -463,8 +463,8 @@ abstract class LcrRuleAbstract
      */
     public function setDescription($description)
     {
-        Assertion::notNull($description);
-        Assertion::maxLength($description, 500);
+        Assertion::notNull($description, 'description value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($description, 500, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->description = $description;
 

@@ -195,8 +195,8 @@ abstract class CallAclAbstract
      */
     public function setName($name)
     {
-        Assertion::notNull($name);
-        Assertion::maxLength($name, 50);
+        Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($name, 50, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->name = $name;
 
@@ -222,12 +222,12 @@ abstract class CallAclAbstract
      */
     public function setDefaultPolicy($defaultPolicy)
     {
-        Assertion::notNull($defaultPolicy);
-        Assertion::maxLength($defaultPolicy, 10);
+        Assertion::notNull($defaultPolicy, 'defaultPolicy value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($defaultPolicy, 10, 'defaultPolicy value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($defaultPolicy, array (
           0 => 'allow',
           1 => 'deny',
-        ));
+        ), 'defaultPolicyvalue "%s" is not an element of the valid values: %s');
 
         $this->defaultPolicy = $defaultPolicy;
 

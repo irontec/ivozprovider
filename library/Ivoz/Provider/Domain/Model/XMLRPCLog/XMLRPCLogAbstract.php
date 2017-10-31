@@ -238,8 +238,8 @@ abstract class XMLRPCLogAbstract
      */
     public function setProxy($proxy)
     {
-        Assertion::notNull($proxy);
-        Assertion::maxLength($proxy, 10);
+        Assertion::notNull($proxy, 'proxy value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($proxy, 10, 'proxy value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->proxy = $proxy;
 
@@ -265,8 +265,8 @@ abstract class XMLRPCLogAbstract
      */
     public function setModule($module)
     {
-        Assertion::notNull($module);
-        Assertion::maxLength($module, 10);
+        Assertion::notNull($module, 'module value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($module, 10, 'module value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->module = $module;
 
@@ -292,8 +292,8 @@ abstract class XMLRPCLogAbstract
      */
     public function setMethod($method)
     {
-        Assertion::notNull($method);
-        Assertion::maxLength($method, 10);
+        Assertion::notNull($method, 'method value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($method, 10, 'method value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->method = $method;
 
@@ -319,8 +319,8 @@ abstract class XMLRPCLogAbstract
      */
     public function setMapperName($mapperName)
     {
-        Assertion::notNull($mapperName);
-        Assertion::maxLength($mapperName, 20);
+        Assertion::notNull($mapperName, 'mapperName value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($mapperName, 20, 'mapperName value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->mapperName = $mapperName;
 
@@ -346,7 +346,7 @@ abstract class XMLRPCLogAbstract
      */
     public function setStartDate($startDate)
     {
-        Assertion::notNull($startDate);
+        Assertion::notNull($startDate, 'startDate value "%s" is null, but non null value was expected.');
         $startDate = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
             $startDate,
             'CURRENT_TIMESTAMP'

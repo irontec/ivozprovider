@@ -184,8 +184,8 @@ abstract class ApplicationServerAbstract
      */
     public function setIp($ip)
     {
-        Assertion::notNull($ip);
-        Assertion::maxLength($ip, 50);
+        Assertion::notNull($ip, 'ip value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($ip, 50, 'ip value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->ip = $ip;
 
@@ -212,7 +212,7 @@ abstract class ApplicationServerAbstract
     public function setName($name = null)
     {
         if (!is_null($name)) {
-            Assertion::maxLength($name, 64);
+            Assertion::maxLength($name, 64, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->name = $name;

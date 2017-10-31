@@ -212,8 +212,8 @@ abstract class PeeringContractAbstract
      */
     public function setDescription($description)
     {
-        Assertion::notNull($description);
-        Assertion::maxLength($description, 500);
+        Assertion::notNull($description, 'description value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($description, 500, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->description = $description;
 
@@ -239,8 +239,8 @@ abstract class PeeringContractAbstract
      */
     public function setName($name)
     {
-        Assertion::notNull($name);
-        Assertion::maxLength($name, 200);
+        Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($name, 200, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->name = $name;
 
@@ -267,7 +267,7 @@ abstract class PeeringContractAbstract
     public function setExternallyRated($externallyRated = null)
     {
         if (!is_null($externallyRated)) {
-            Assertion::between(intval($externallyRated), 0, 1);
+            Assertion::between(intval($externallyRated), 0, 1, 'externallyRated provided "%s" is not a valid boolean value.');
         }
 
         $this->externallyRated = $externallyRated;

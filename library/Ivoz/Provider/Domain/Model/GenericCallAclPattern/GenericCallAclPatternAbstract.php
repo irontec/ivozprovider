@@ -194,8 +194,8 @@ abstract class GenericCallAclPatternAbstract
      */
     public function setName($name)
     {
-        Assertion::notNull($name);
-        Assertion::maxLength($name, 50);
+        Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($name, 50, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->name = $name;
 
@@ -221,8 +221,8 @@ abstract class GenericCallAclPatternAbstract
      */
     public function setRegExp($regExp)
     {
-        Assertion::notNull($regExp);
-        Assertion::maxLength($regExp, 255);
+        Assertion::notNull($regExp, 'regExp value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($regExp, 255, 'regExp value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->regExp = $regExp;
 

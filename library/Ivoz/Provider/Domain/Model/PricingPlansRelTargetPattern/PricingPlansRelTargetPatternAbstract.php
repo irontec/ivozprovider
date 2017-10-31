@@ -225,7 +225,7 @@ abstract class PricingPlansRelTargetPatternAbstract
      */
     public function setConnectionCharge($connectionCharge)
     {
-        Assertion::notNull($connectionCharge);
+        Assertion::notNull($connectionCharge, 'connectionCharge value "%s" is null, but non null value was expected.');
         Assertion::numeric($connectionCharge);
 
         $this->connectionCharge = $connectionCharge;
@@ -252,8 +252,8 @@ abstract class PricingPlansRelTargetPatternAbstract
      */
     public function setPeriodTime($periodTime)
     {
-        Assertion::notNull($periodTime);
-        Assertion::integerish($periodTime);
+        Assertion::notNull($periodTime, 'periodTime value "%s" is null, but non null value was expected.');
+        Assertion::integerish($periodTime, 'periodTime value "%s" is not an integer or a number castable to integer.');
 
         $this->periodTime = $periodTime;
 
@@ -279,7 +279,7 @@ abstract class PricingPlansRelTargetPatternAbstract
      */
     public function setPerPeriodCharge($perPeriodCharge)
     {
-        Assertion::notNull($perPeriodCharge);
+        Assertion::notNull($perPeriodCharge, 'perPeriodCharge value "%s" is null, but non null value was expected.');
         Assertion::numeric($perPeriodCharge);
 
         $this->perPeriodCharge = $perPeriodCharge;

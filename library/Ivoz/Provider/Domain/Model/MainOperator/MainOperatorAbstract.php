@@ -233,8 +233,8 @@ abstract class MainOperatorAbstract
      */
     public function setUsername($username)
     {
-        Assertion::notNull($username);
-        Assertion::maxLength($username, 65);
+        Assertion::notNull($username, 'username value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($username, 65, 'username value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->username = $username;
 
@@ -260,8 +260,8 @@ abstract class MainOperatorAbstract
      */
     public function setPass($pass)
     {
-        Assertion::notNull($pass);
-        Assertion::maxLength($pass, 80);
+        Assertion::notNull($pass, 'pass value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($pass, 80, 'pass value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->pass = $pass;
 
@@ -287,8 +287,8 @@ abstract class MainOperatorAbstract
      */
     public function setEmail($email)
     {
-        Assertion::notNull($email);
-        Assertion::maxLength($email, 100);
+        Assertion::notNull($email, 'email value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($email, 100, 'email value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->email = $email;
 
@@ -314,8 +314,8 @@ abstract class MainOperatorAbstract
      */
     public function setActive($active)
     {
-        Assertion::notNull($active);
-        Assertion::between(intval($active), 0, 1);
+        Assertion::notNull($active, 'active value "%s" is null, but non null value was expected.');
+        Assertion::between(intval($active), 0, 1, 'active provided "%s" is not a valid boolean value.');
 
         $this->active = $active;
 
@@ -342,7 +342,7 @@ abstract class MainOperatorAbstract
     public function setName($name = null)
     {
         if (!is_null($name)) {
-            Assertion::maxLength($name, 100);
+            Assertion::maxLength($name, 100, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->name = $name;
@@ -370,7 +370,7 @@ abstract class MainOperatorAbstract
     public function setLastname($lastname = null)
     {
         if (!is_null($lastname)) {
-            Assertion::maxLength($lastname, 100);
+            Assertion::maxLength($lastname, 100, 'lastname value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->lastname = $lastname;

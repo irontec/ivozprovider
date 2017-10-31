@@ -213,8 +213,8 @@ abstract class ConferenceRoomAbstract
      */
     public function setName($name)
     {
-        Assertion::notNull($name);
-        Assertion::maxLength($name, 50);
+        Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($name, 50, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->name = $name;
 
@@ -240,8 +240,8 @@ abstract class ConferenceRoomAbstract
      */
     public function setPinProtected($pinProtected)
     {
-        Assertion::notNull($pinProtected);
-        Assertion::between(intval($pinProtected), 0, 1);
+        Assertion::notNull($pinProtected, 'pinProtected value "%s" is null, but non null value was expected.');
+        Assertion::between(intval($pinProtected), 0, 1, 'pinProtected provided "%s" is not a valid boolean value.');
 
         $this->pinProtected = $pinProtected;
 
@@ -268,7 +268,7 @@ abstract class ConferenceRoomAbstract
     public function setPinCode($pinCode = null)
     {
         if (!is_null($pinCode)) {
-            Assertion::maxLength($pinCode, 6);
+            Assertion::maxLength($pinCode, 6, 'pinCode value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->pinCode = $pinCode;
@@ -295,9 +295,9 @@ abstract class ConferenceRoomAbstract
      */
     public function setMaxMembers($maxMembers)
     {
-        Assertion::notNull($maxMembers);
-        Assertion::integerish($maxMembers);
-        Assertion::greaterOrEqualThan($maxMembers, 0);
+        Assertion::notNull($maxMembers, 'maxMembers value "%s" is null, but non null value was expected.');
+        Assertion::integerish($maxMembers, 'maxMembers value "%s" is not an integer or a number castable to integer.');
+        Assertion::greaterOrEqualThan($maxMembers, 0, 'maxMembers provided "%s" is not greater or equal than "%s".');
 
         $this->maxMembers = $maxMembers;
 

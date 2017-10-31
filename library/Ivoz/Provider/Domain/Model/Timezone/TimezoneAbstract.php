@@ -216,8 +216,8 @@ abstract class TimezoneAbstract
      */
     public function setTz($tz)
     {
-        Assertion::notNull($tz);
-        Assertion::maxLength($tz, 255);
+        Assertion::notNull($tz, 'tz value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($tz, 255, 'tz value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->tz = $tz;
 
@@ -244,7 +244,7 @@ abstract class TimezoneAbstract
     public function setComment($comment = null)
     {
         if (!is_null($comment)) {
-            Assertion::maxLength($comment, 150);
+            Assertion::maxLength($comment, 150, 'comment value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->comment = $comment;

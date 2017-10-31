@@ -232,8 +232,8 @@ abstract class QueueMemberAbstract
      */
     public function setQueueName($queueName)
     {
-        Assertion::notNull($queueName);
-        Assertion::maxLength($queueName, 80);
+        Assertion::notNull($queueName, 'queueName value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($queueName, 80, 'queueName value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->queueName = $queueName;
 
@@ -259,8 +259,8 @@ abstract class QueueMemberAbstract
      */
     public function setInterface($interface)
     {
-        Assertion::notNull($interface);
-        Assertion::maxLength($interface, 80);
+        Assertion::notNull($interface, 'interface value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($interface, 80, 'interface value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->interface = $interface;
 
@@ -287,7 +287,7 @@ abstract class QueueMemberAbstract
     public function setMembername($membername = null)
     {
         if (!is_null($membername)) {
-            Assertion::maxLength($membername, 80);
+            Assertion::maxLength($membername, 80, 'membername value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->membername = $membername;
@@ -315,7 +315,7 @@ abstract class QueueMemberAbstract
     public function setStateInterface($stateInterface = null)
     {
         if (!is_null($stateInterface)) {
-            Assertion::maxLength($stateInterface, 80);
+            Assertion::maxLength($stateInterface, 80, 'stateInterface value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->stateInterface = $stateInterface;
@@ -344,7 +344,7 @@ abstract class QueueMemberAbstract
     {
         if (!is_null($penalty)) {
             if (!is_null($penalty)) {
-                Assertion::integerish($penalty);
+                Assertion::integerish($penalty, 'penalty value "%s" is not an integer or a number castable to integer.');
             }
         }
 
@@ -374,7 +374,7 @@ abstract class QueueMemberAbstract
     {
         if (!is_null($paused)) {
             if (!is_null($paused)) {
-                Assertion::integerish($paused);
+                Assertion::integerish($paused, 'paused value "%s" is not an integer or a number castable to integer.');
             }
         }
 

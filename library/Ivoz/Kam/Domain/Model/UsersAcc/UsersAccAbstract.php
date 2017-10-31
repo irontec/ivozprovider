@@ -314,8 +314,8 @@ abstract class UsersAccAbstract
      */
     public function setMethod($method)
     {
-        Assertion::notNull($method);
-        Assertion::maxLength($method, 16);
+        Assertion::notNull($method, 'method value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($method, 16, 'method value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->method = $method;
 
@@ -341,8 +341,8 @@ abstract class UsersAccAbstract
      */
     public function setFromTag($fromTag)
     {
-        Assertion::notNull($fromTag);
-        Assertion::maxLength($fromTag, 64);
+        Assertion::notNull($fromTag, 'fromTag value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($fromTag, 64, 'fromTag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->fromTag = $fromTag;
 
@@ -368,8 +368,8 @@ abstract class UsersAccAbstract
      */
     public function setToTag($toTag)
     {
-        Assertion::notNull($toTag);
-        Assertion::maxLength($toTag, 64);
+        Assertion::notNull($toTag, 'toTag value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($toTag, 64, 'toTag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->toTag = $toTag;
 
@@ -395,8 +395,8 @@ abstract class UsersAccAbstract
      */
     public function setCallid($callid)
     {
-        Assertion::notNull($callid);
-        Assertion::maxLength($callid, 255);
+        Assertion::notNull($callid, 'callid value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($callid, 255, 'callid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->callid = $callid;
 
@@ -422,8 +422,8 @@ abstract class UsersAccAbstract
      */
     public function setSipCode($sipCode)
     {
-        Assertion::notNull($sipCode);
-        Assertion::maxLength($sipCode, 3);
+        Assertion::notNull($sipCode, 'sipCode value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($sipCode, 3, 'sipCode value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->sipCode = $sipCode;
 
@@ -449,8 +449,8 @@ abstract class UsersAccAbstract
      */
     public function setSipReason($sipReason)
     {
-        Assertion::notNull($sipReason);
-        Assertion::maxLength($sipReason, 128);
+        Assertion::notNull($sipReason, 'sipReason value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($sipReason, 128, 'sipReason value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->sipReason = $sipReason;
 
@@ -477,7 +477,7 @@ abstract class UsersAccAbstract
     public function setSrcIp($srcIp = null)
     {
         if (!is_null($srcIp)) {
-            Assertion::maxLength($srcIp, 64);
+            Assertion::maxLength($srcIp, 64, 'srcIp value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->srcIp = $srcIp;
@@ -505,7 +505,7 @@ abstract class UsersAccAbstract
     public function setFromUser($fromUser = null)
     {
         if (!is_null($fromUser)) {
-            Assertion::maxLength($fromUser, 64);
+            Assertion::maxLength($fromUser, 64, 'fromUser value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->fromUser = $fromUser;
@@ -533,7 +533,7 @@ abstract class UsersAccAbstract
     public function setFromDomain($fromDomain = null)
     {
         if (!is_null($fromDomain)) {
-            Assertion::maxLength($fromDomain, 190);
+            Assertion::maxLength($fromDomain, 190, 'fromDomain value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->fromDomain = $fromDomain;
@@ -561,7 +561,7 @@ abstract class UsersAccAbstract
     public function setRuriUser($ruriUser = null)
     {
         if (!is_null($ruriUser)) {
-            Assertion::maxLength($ruriUser, 64);
+            Assertion::maxLength($ruriUser, 64, 'ruriUser value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->ruriUser = $ruriUser;
@@ -589,7 +589,7 @@ abstract class UsersAccAbstract
     public function setRuriDomain($ruriDomain = null)
     {
         if (!is_null($ruriDomain)) {
-            Assertion::maxLength($ruriDomain, 190);
+            Assertion::maxLength($ruriDomain, 190, 'ruriDomain value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->ruriDomain = $ruriDomain;
@@ -618,8 +618,8 @@ abstract class UsersAccAbstract
     {
         if (!is_null($cseq)) {
             if (!is_null($cseq)) {
-                Assertion::integerish($cseq);
-                Assertion::greaterOrEqualThan($cseq, 0);
+                Assertion::integerish($cseq, 'cseq value "%s" is not an integer or a number castable to integer.');
+                Assertion::greaterOrEqualThan($cseq, 0, 'cseq provided "%s" is not greater or equal than "%s".');
             }
         }
 
@@ -647,7 +647,7 @@ abstract class UsersAccAbstract
      */
     public function setLocaltime($localtime)
     {
-        Assertion::notNull($localtime);
+        Assertion::notNull($localtime, 'localtime value "%s" is null, but non null value was expected.');
         $localtime = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
             $localtime,
             null
@@ -678,7 +678,7 @@ abstract class UsersAccAbstract
     public function setUtctime($utctime = null)
     {
         if (!is_null($utctime)) {
-            Assertion::maxLength($utctime, 128);
+            Assertion::maxLength($utctime, 128, 'utctime value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->utctime = $utctime;

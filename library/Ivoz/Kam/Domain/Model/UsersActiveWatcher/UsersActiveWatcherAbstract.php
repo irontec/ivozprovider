@@ -464,8 +464,8 @@ abstract class UsersActiveWatcherAbstract
      */
     public function setPresentityUri($presentityUri)
     {
-        Assertion::notNull($presentityUri);
-        Assertion::maxLength($presentityUri, 128);
+        Assertion::notNull($presentityUri, 'presentityUri value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($presentityUri, 128, 'presentityUri value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->presentityUri = $presentityUri;
 
@@ -491,8 +491,8 @@ abstract class UsersActiveWatcherAbstract
      */
     public function setWatcherUsername($watcherUsername)
     {
-        Assertion::notNull($watcherUsername);
-        Assertion::maxLength($watcherUsername, 64);
+        Assertion::notNull($watcherUsername, 'watcherUsername value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($watcherUsername, 64, 'watcherUsername value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->watcherUsername = $watcherUsername;
 
@@ -518,8 +518,8 @@ abstract class UsersActiveWatcherAbstract
      */
     public function setWatcherDomain($watcherDomain)
     {
-        Assertion::notNull($watcherDomain);
-        Assertion::maxLength($watcherDomain, 64);
+        Assertion::notNull($watcherDomain, 'watcherDomain value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($watcherDomain, 64, 'watcherDomain value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->watcherDomain = $watcherDomain;
 
@@ -545,8 +545,8 @@ abstract class UsersActiveWatcherAbstract
      */
     public function setToUser($toUser)
     {
-        Assertion::notNull($toUser);
-        Assertion::maxLength($toUser, 64);
+        Assertion::notNull($toUser, 'toUser value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($toUser, 64, 'toUser value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->toUser = $toUser;
 
@@ -572,8 +572,8 @@ abstract class UsersActiveWatcherAbstract
      */
     public function setToDomain($toDomain)
     {
-        Assertion::notNull($toDomain);
-        Assertion::maxLength($toDomain, 190);
+        Assertion::notNull($toDomain, 'toDomain value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($toDomain, 190, 'toDomain value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->toDomain = $toDomain;
 
@@ -599,8 +599,8 @@ abstract class UsersActiveWatcherAbstract
      */
     public function setEvent($event)
     {
-        Assertion::notNull($event);
-        Assertion::maxLength($event, 64);
+        Assertion::notNull($event, 'event value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($event, 64, 'event value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->event = $event;
 
@@ -627,7 +627,7 @@ abstract class UsersActiveWatcherAbstract
     public function setEventId($eventId = null)
     {
         if (!is_null($eventId)) {
-            Assertion::maxLength($eventId, 64);
+            Assertion::maxLength($eventId, 64, 'eventId value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->eventId = $eventId;
@@ -654,8 +654,8 @@ abstract class UsersActiveWatcherAbstract
      */
     public function setToTag($toTag)
     {
-        Assertion::notNull($toTag);
-        Assertion::maxLength($toTag, 64);
+        Assertion::notNull($toTag, 'toTag value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($toTag, 64, 'toTag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->toTag = $toTag;
 
@@ -681,8 +681,8 @@ abstract class UsersActiveWatcherAbstract
      */
     public function setFromTag($fromTag)
     {
-        Assertion::notNull($fromTag);
-        Assertion::maxLength($fromTag, 64);
+        Assertion::notNull($fromTag, 'fromTag value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($fromTag, 64, 'fromTag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->fromTag = $fromTag;
 
@@ -708,8 +708,8 @@ abstract class UsersActiveWatcherAbstract
      */
     public function setCallid($callid)
     {
-        Assertion::notNull($callid);
-        Assertion::maxLength($callid, 255);
+        Assertion::notNull($callid, 'callid value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($callid, 255, 'callid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->callid = $callid;
 
@@ -735,8 +735,8 @@ abstract class UsersActiveWatcherAbstract
      */
     public function setLocalCseq($localCseq)
     {
-        Assertion::notNull($localCseq);
-        Assertion::integerish($localCseq);
+        Assertion::notNull($localCseq, 'localCseq value "%s" is null, but non null value was expected.');
+        Assertion::integerish($localCseq, 'localCseq value "%s" is not an integer or a number castable to integer.');
 
         $this->localCseq = $localCseq;
 
@@ -762,8 +762,8 @@ abstract class UsersActiveWatcherAbstract
      */
     public function setRemoteCseq($remoteCseq)
     {
-        Assertion::notNull($remoteCseq);
-        Assertion::integerish($remoteCseq);
+        Assertion::notNull($remoteCseq, 'remoteCseq value "%s" is null, but non null value was expected.');
+        Assertion::integerish($remoteCseq, 'remoteCseq value "%s" is not an integer or a number castable to integer.');
 
         $this->remoteCseq = $remoteCseq;
 
@@ -789,8 +789,8 @@ abstract class UsersActiveWatcherAbstract
      */
     public function setContact($contact)
     {
-        Assertion::notNull($contact);
-        Assertion::maxLength($contact, 128);
+        Assertion::notNull($contact, 'contact value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($contact, 128, 'contact value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->contact = $contact;
 
@@ -817,7 +817,7 @@ abstract class UsersActiveWatcherAbstract
     public function setRecordRoute($recordRoute = null)
     {
         if (!is_null($recordRoute)) {
-            Assertion::maxLength($recordRoute, 65535);
+            Assertion::maxLength($recordRoute, 65535, 'recordRoute value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->recordRoute = $recordRoute;
@@ -844,8 +844,8 @@ abstract class UsersActiveWatcherAbstract
      */
     public function setExpires($expires)
     {
-        Assertion::notNull($expires);
-        Assertion::integerish($expires);
+        Assertion::notNull($expires, 'expires value "%s" is null, but non null value was expected.');
+        Assertion::integerish($expires, 'expires value "%s" is not an integer or a number castable to integer.');
 
         $this->expires = $expires;
 
@@ -871,8 +871,8 @@ abstract class UsersActiveWatcherAbstract
      */
     public function setStatus($status)
     {
-        Assertion::notNull($status);
-        Assertion::integerish($status);
+        Assertion::notNull($status, 'status value "%s" is null, but non null value was expected.');
+        Assertion::integerish($status, 'status value "%s" is not an integer or a number castable to integer.');
 
         $this->status = $status;
 
@@ -898,8 +898,8 @@ abstract class UsersActiveWatcherAbstract
      */
     public function setReason($reason)
     {
-        Assertion::notNull($reason);
-        Assertion::maxLength($reason, 64);
+        Assertion::notNull($reason, 'reason value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($reason, 64, 'reason value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->reason = $reason;
 
@@ -925,8 +925,8 @@ abstract class UsersActiveWatcherAbstract
      */
     public function setVersion($version)
     {
-        Assertion::notNull($version);
-        Assertion::integerish($version);
+        Assertion::notNull($version, 'version value "%s" is null, but non null value was expected.');
+        Assertion::integerish($version, 'version value "%s" is not an integer or a number castable to integer.');
 
         $this->version = $version;
 
@@ -952,8 +952,8 @@ abstract class UsersActiveWatcherAbstract
      */
     public function setSocketInfo($socketInfo)
     {
-        Assertion::notNull($socketInfo);
-        Assertion::maxLength($socketInfo, 64);
+        Assertion::notNull($socketInfo, 'socketInfo value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($socketInfo, 64, 'socketInfo value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->socketInfo = $socketInfo;
 
@@ -979,8 +979,8 @@ abstract class UsersActiveWatcherAbstract
      */
     public function setLocalContact($localContact)
     {
-        Assertion::notNull($localContact);
-        Assertion::maxLength($localContact, 128);
+        Assertion::notNull($localContact, 'localContact value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($localContact, 128, 'localContact value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->localContact = $localContact;
 
@@ -1006,8 +1006,8 @@ abstract class UsersActiveWatcherAbstract
      */
     public function setFromUser($fromUser)
     {
-        Assertion::notNull($fromUser);
-        Assertion::maxLength($fromUser, 64);
+        Assertion::notNull($fromUser, 'fromUser value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($fromUser, 64, 'fromUser value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->fromUser = $fromUser;
 
@@ -1033,8 +1033,8 @@ abstract class UsersActiveWatcherAbstract
      */
     public function setFromDomain($fromDomain)
     {
-        Assertion::notNull($fromDomain);
-        Assertion::maxLength($fromDomain, 190);
+        Assertion::notNull($fromDomain, 'fromDomain value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($fromDomain, 190, 'fromDomain value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->fromDomain = $fromDomain;
 
@@ -1060,8 +1060,8 @@ abstract class UsersActiveWatcherAbstract
      */
     public function setUpdated($updated)
     {
-        Assertion::notNull($updated);
-        Assertion::integerish($updated);
+        Assertion::notNull($updated, 'updated value "%s" is null, but non null value was expected.');
+        Assertion::integerish($updated, 'updated value "%s" is not an integer or a number castable to integer.');
 
         $this->updated = $updated;
 
@@ -1087,8 +1087,8 @@ abstract class UsersActiveWatcherAbstract
      */
     public function setUpdatedWinfo($updatedWinfo)
     {
-        Assertion::notNull($updatedWinfo);
-        Assertion::integerish($updatedWinfo);
+        Assertion::notNull($updatedWinfo, 'updatedWinfo value "%s" is null, but non null value was expected.');
+        Assertion::integerish($updatedWinfo, 'updatedWinfo value "%s" is not an integer or a number castable to integer.');
 
         $this->updatedWinfo = $updatedWinfo;
 
@@ -1114,8 +1114,8 @@ abstract class UsersActiveWatcherAbstract
      */
     public function setFlags($flags)
     {
-        Assertion::notNull($flags);
-        Assertion::integerish($flags);
+        Assertion::notNull($flags, 'flags value "%s" is null, but non null value was expected.');
+        Assertion::integerish($flags, 'flags value "%s" is not an integer or a number castable to integer.');
 
         $this->flags = $flags;
 
@@ -1141,8 +1141,8 @@ abstract class UsersActiveWatcherAbstract
      */
     public function setUserAgent($userAgent)
     {
-        Assertion::notNull($userAgent);
-        Assertion::maxLength($userAgent, 255);
+        Assertion::notNull($userAgent, 'userAgent value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($userAgent, 255, 'userAgent value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->userAgent = $userAgent;
 

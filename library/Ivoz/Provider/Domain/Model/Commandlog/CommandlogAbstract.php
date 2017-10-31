@@ -213,7 +213,7 @@ abstract class CommandlogAbstract
      */
     public function setRequestId($requestId)
     {
-        Assertion::notNull($requestId);
+        Assertion::notNull($requestId, 'requestId value "%s" is null, but non null value was expected.');
 
         $this->requestId = $requestId;
 
@@ -239,8 +239,8 @@ abstract class CommandlogAbstract
      */
     public function setClass($class)
     {
-        Assertion::notNull($class);
-        Assertion::maxLength($class, 50);
+        Assertion::notNull($class, 'class value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($class, 50, 'class value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->class = $class;
 
@@ -267,7 +267,7 @@ abstract class CommandlogAbstract
     public function setMethod($method = null)
     {
         if (!is_null($method)) {
-            Assertion::maxLength($method, 64);
+            Assertion::maxLength($method, 64, 'method value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
         $this->method = $method;
@@ -321,7 +321,7 @@ abstract class CommandlogAbstract
      */
     public function setCreatedOn($createdOn)
     {
-        Assertion::notNull($createdOn);
+        Assertion::notNull($createdOn, 'createdOn value "%s" is null, but non null value was expected.');
         $createdOn = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
             $createdOn,
             null

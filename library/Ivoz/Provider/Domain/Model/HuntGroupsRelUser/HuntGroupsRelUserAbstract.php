@@ -204,7 +204,7 @@ abstract class HuntGroupsRelUserAbstract
     {
         if (!is_null($timeoutTime)) {
             if (!is_null($timeoutTime)) {
-                Assertion::integerish($timeoutTime);
+                Assertion::integerish($timeoutTime, 'timeoutTime value "%s" is not an integer or a number castable to integer.');
             }
         }
 
@@ -234,7 +234,7 @@ abstract class HuntGroupsRelUserAbstract
     {
         if (!is_null($priority)) {
             if (!is_null($priority)) {
-                Assertion::integerish($priority);
+                Assertion::integerish($priority, 'priority value "%s" is not an integer or a number castable to integer.');
             }
         }
 
