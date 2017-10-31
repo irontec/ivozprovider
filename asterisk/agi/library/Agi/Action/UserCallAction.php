@@ -189,13 +189,6 @@ class UserCallAction extends RouterAction
             $options .= "g";
         }
 
-        // Update Called name
-        if ($this->agi->getCallType() == "external") {
-            // Transfor number to User Preferred
-            $preferred = $user->E164ToPreferred($this->agi->getOrigCallerIdNum());
-            $this->agi->setCallerIdNum($preferred);
-        }
-
         // Call the PSJIP endpoint
         $this->agi->setVariable("DIAL_EXT", $extension->getNumber());
         $this->agi->setVariable("DIAL_DST", "PJSIP/$endpointName");

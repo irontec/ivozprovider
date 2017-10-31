@@ -61,12 +61,6 @@ interface UserInterface extends LoggableEntityInterface
     public function getExtensionNumber();
 
     /**
-     * @todo this is probably dead code
-     * @return string or null
-     */
-    public function getDomain();
-
-    /**
      * @param string $exten
      * @return bool canCall
      */
@@ -110,35 +104,6 @@ interface UserInterface extends LoggableEntityInterface
      * @return string
      */
     public function getLanguageCode();
-
-    /**
-     * Get User country
-     * return company country if empty
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
-     */
-    public function getCountry();
-
-    /**
-     * Convert a user dialed number to E164 form
-     *
-     * @param string $prefNumber
-     * @return string number in E164
-     */
-    public function preferredToE164($prefNumber);
-
-    /**
-     * Convert a received number to User prefered format
-     *
-     * @param string $number
-     */
-    public function E164ToPreferred($e164number);
-
-    /**
-     * Gets user Area Code. returns company area code if empty
-     *
-     * @return string
-     */
-    public function getAreaCodeValue();
 
     /**
      * Set name
@@ -365,22 +330,6 @@ interface UserInterface extends LoggableEntityInterface
     public function getTokenKey();
 
     /**
-     * Set areaCode
-     *
-     * @param string $areaCode
-     *
-     * @return self
-     */
-    public function setAreaCode($areaCode = null);
-
-    /**
-     * Get areaCode
-     *
-     * @return string
-     */
-    public function getAreaCode();
-
-    /**
      * Set gsQRCode
      *
      * @param boolean $gsQRCode
@@ -445,13 +394,20 @@ interface UserInterface extends LoggableEntityInterface
     public function getBossAssistant();
 
     /**
-     * Set country
+     * Set transformationRuleSet
      *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $country
+     * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet
      *
      * @return self
      */
-    public function setCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $country = null);
+    public function setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet = null);
+
+    /**
+     * Get transformationRuleSet
+     *
+     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface
+     */
+    public function getTransformationRuleSet();
 
     /**
      * Set language

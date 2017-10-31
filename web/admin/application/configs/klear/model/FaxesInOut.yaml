@@ -30,6 +30,21 @@ production:
       type: text
       trim: both
       maxLength: 128
+    dstCountryId:
+      title: _('Country')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Country\Country
+          fieldName:
+            fields:
+              - name${lang}
+              - countryCode
+            template: '%name${lang}% (%countryCode%)'
+          order:
+            Country.name.${lang}: asc
     dst:
       title: _('Destination')
       type: text

@@ -171,13 +171,6 @@ class HuntGroupAction extends RouterAction
             return;
         }
 
-        // FIXME Set presentation in company preferred format...
-        if ($this->agi->getCallType() == "external") {
-            $preferred = $huntGroup->getCompany()->E164ToPreferred($this->agi->getOrigCallerIdNum());
-            $this->agi->setCallerIdNum($preferred);
-        }
-
-        // Dial Options
         // Cancelled calls are marked as 'answered elsewhere'
         $options = "c";
 
@@ -251,7 +244,7 @@ class HuntGroupAction extends RouterAction
         $this->_routeType       = $huntGroup->getNoAnswerTargetType();
         $this->_routeExtension  = $huntGroup->getNoAnswerExtension();
         $this->_routeVoiceMail  = $huntGroup->getNoAnswerVoiceMailUser();
-        $this->_routeExternal   = $huntGroup->getNoAnswerNumberValue();
+        $this->_routeExternal   = $huntGroup->getNoAnswerNumberValueE164();
 
         // Route to its handler
         if ($this->_routeType) $this->route();

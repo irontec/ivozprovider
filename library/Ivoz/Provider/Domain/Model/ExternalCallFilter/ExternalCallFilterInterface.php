@@ -34,6 +34,20 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
     public function isOutOfSchedule();
 
     /**
+     * Get the holiday numberValue in E.164 format when routing to 'number'
+     *
+     * @return string
+     */
+    public function getHolidayNumberValueE164();
+
+    /**
+     * Get the out of schedule numberValue in E.164 format when routing to 'number'
+     *
+     * @return string
+     */
+    public function getOutOfScheduleNumberValueE164();
+
+    /**
      * Set name
      *
      * @param string $name
@@ -240,6 +254,38 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\User\UserInterface
      */
     public function getOutOfScheduleVoiceMailUser();
+
+    /**
+     * Set holidayNumberCountry
+     *
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $holidayNumberCountry
+     *
+     * @return self
+     */
+    public function setHolidayNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $holidayNumberCountry = null);
+
+    /**
+     * Get holidayNumberCountry
+     *
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     */
+    public function getHolidayNumberCountry();
+
+    /**
+     * Set outOfScheduleNumberCountry
+     *
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $outOfScheduleNumberCountry
+     *
+     * @return self
+     */
+    public function setOutOfScheduleNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $outOfScheduleNumberCountry = null);
+
+    /**
+     * Get outOfScheduleNumberCountry
+     *
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     */
+    public function getOutOfScheduleNumberCountry();
 
     /**
      * Add calendar

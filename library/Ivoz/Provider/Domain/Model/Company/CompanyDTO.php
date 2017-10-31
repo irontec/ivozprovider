@@ -67,11 +67,6 @@ class CompanyDTO implements DataTransferObjectInterface
     private $countryName;
 
     /**
-     * @var string
-     */
-    private $outboundPrefix;
-
-    /**
      * @var boolean
      */
     private $ipfilter = '1';
@@ -85,11 +80,6 @@ class CompanyDTO implements DataTransferObjectInterface
      * @var string
      */
     private $onDemandRecordCode;
-
-    /**
-     * @var string
-     */
-    private $areaCode;
 
     /**
      * @var string
@@ -144,6 +134,11 @@ class CompanyDTO implements DataTransferObjectInterface
     /**
      * @var mixed
      */
+    private $transformationRuleSetId;
+
+    /**
+     * @var mixed
+     */
     private $outgoingDdiId;
 
     /**
@@ -180,6 +175,11 @@ class CompanyDTO implements DataTransferObjectInterface
      * @var mixed
      */
     private $country;
+
+    /**
+     * @var mixed
+     */
+    private $transformationRuleSet;
 
     /**
      * @var mixed
@@ -263,11 +263,9 @@ class CompanyDTO implements DataTransferObjectInterface
             'town' => $this->getTown(),
             'province' => $this->getProvince(),
             'countryName' => $this->getCountryName(),
-            'outboundPrefix' => $this->getOutboundPrefix(),
             'ipfilter' => $this->getIpfilter(),
             'onDemandRecord' => $this->getOnDemandRecord(),
             'onDemandRecordCode' => $this->getOnDemandRecordCode(),
-            'areaCode' => $this->getAreaCode(),
             'externallyextraopts' => $this->getExternallyextraopts(),
             'recordingsLimitMB' => $this->getRecordingsLimitMB(),
             'recordingsLimitEmail' => $this->getRecordingsLimitEmail(),
@@ -278,6 +276,7 @@ class CompanyDTO implements DataTransferObjectInterface
             'brandId' => $this->getBrandId(),
             'applicationServerId' => $this->getApplicationServerId(),
             'countryId' => $this->getCountryId(),
+            'transformationRuleSetId' => $this->getTransformationRuleSetId(),
             'outgoingDdiId' => $this->getOutgoingDdiId(),
             'outgoingDdiRuleId' => $this->getOutgoingDdiRuleId(),
             'extensions' => $this->getExtensions(),
@@ -305,6 +304,7 @@ class CompanyDTO implements DataTransferObjectInterface
         $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
         $this->applicationServer = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\ApplicationServer\\ApplicationServer', $this->getApplicationServerId());
         $this->country = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Country\\Country', $this->getCountryId());
+        $this->transformationRuleSet = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\TransformationRuleSet\\TransformationRuleSet', $this->getTransformationRuleSetId());
         $this->outgoingDdi = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Ddi\\Ddi', $this->getOutgoingDdiId());
         $this->outgoingDdiRule = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\OutgoingDdiRule\\OutgoingDdiRule', $this->getOutgoingDdiRuleId());
         if (!is_null($this->extensions)) {
@@ -702,26 +702,6 @@ class CompanyDTO implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $outboundPrefix
-     *
-     * @return CompanyDTO
-     */
-    public function setOutboundPrefix($outboundPrefix = null)
-    {
-        $this->outboundPrefix = $outboundPrefix;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getOutboundPrefix()
-    {
-        return $this->outboundPrefix;
-    }
-
-    /**
      * @param boolean $ipfilter
      *
      * @return CompanyDTO
@@ -779,26 +759,6 @@ class CompanyDTO implements DataTransferObjectInterface
     public function getOnDemandRecordCode()
     {
         return $this->onDemandRecordCode;
-    }
-
-    /**
-     * @param string $areaCode
-     *
-     * @return CompanyDTO
-     */
-    public function setAreaCode($areaCode = null)
-    {
-        $this->areaCode = $areaCode;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getAreaCode()
-    {
-        return $this->areaCode;
     }
 
     /**
@@ -1047,6 +1007,34 @@ class CompanyDTO implements DataTransferObjectInterface
     public function getCountry()
     {
         return $this->country;
+    }
+
+    /**
+     * @param integer $transformationRuleSetId
+     *
+     * @return CompanyDTO
+     */
+    public function setTransformationRuleSetId($transformationRuleSetId)
+    {
+        $this->transformationRuleSetId = $transformationRuleSetId;
+
+        return $this;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getTransformationRuleSetId()
+    {
+        return $this->transformationRuleSetId;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet
+     */
+    public function getTransformationRuleSet()
+    {
+        return $this->transformationRuleSet;
     }
 
     /**

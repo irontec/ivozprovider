@@ -21,14 +21,14 @@ production:
       maxLength: 300
     regExp:
       title: _('Prefix')
-      pattern: "^[0-9]+$"
+      pattern: "^\\+[0-9]+$"
       required: true
       maxLength: 80
       info:
         type: box
         position: left
         icon: help
-        text: _("Prefix must be numeric-only")
+        text: _("Prefix must be '+' and numeric-only")
         label: _("Need help?")
     brandId:
       title: ngettext('Brand', 'Brands', 1)

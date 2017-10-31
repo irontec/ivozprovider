@@ -20,9 +20,8 @@ define('APPLICATION_PATH', realpath(__DIR__ . '/../'));
 
 // Ensure library/ is on include_path
 set_include_path(implode(PATH_SEPARATOR, array(
-'/opt/irontec/ivozprovider/library',
-realpath(APPLICATION_PATH . '/../library'),
-get_include_path(),
+    realpath(APPLICATION_PATH . '/../library'),
+    get_include_path(),
 )));
 
 

@@ -157,3 +157,25 @@ Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterAbstract:
           referencedColumnName: id
           onDelete: set null
       orphanRemoval: false
+    holidayNumberCountry:
+      targetEntity: \Ivoz\Provider\Domain\Model\Country\CountryInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        holidayNumberCountryId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false
+    outOfScheduleNumberCountry:
+      targetEntity: \Ivoz\Provider\Domain\Model\Country\CountryInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        outOfScheduleNumberCountryId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false

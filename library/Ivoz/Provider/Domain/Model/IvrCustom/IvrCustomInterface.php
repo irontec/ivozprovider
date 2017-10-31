@@ -14,6 +14,20 @@ interface IvrCustomInterface extends LoggableEntityInterface
     public function getAllLocutions();
 
     /**
+     * Get the timeout numberValue in E.164 format when routing to 'number'
+     *
+     * @return string
+     */
+    public function getTimeoutNumberValueE164();
+
+    /**
+     * Get the error numberValue in E.164 format when routing to 'number'
+     *
+     * @return string
+     */
+    public function getErrorNumberValueE164();
+
+    /**
      * Set name
      *
      * @param string $name
@@ -284,6 +298,38 @@ interface IvrCustomInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\User\UserInterface
      */
     public function getErrorVoiceMailUser();
+
+    /**
+     * Set timeoutNumberCountry
+     *
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $timeoutNumberCountry
+     *
+     * @return self
+     */
+    public function setTimeoutNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $timeoutNumberCountry = null);
+
+    /**
+     * Get timeoutNumberCountry
+     *
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     */
+    public function getTimeoutNumberCountry();
+
+    /**
+     * Set errorNumberCountry
+     *
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $errorNumberCountry
+     *
+     * @return self
+     */
+    public function setErrorNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $errorNumberCountry = null);
+
+    /**
+     * Get errorNumberCountry
+     *
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     */
+    public function getErrorNumberCountry();
 
 }
 

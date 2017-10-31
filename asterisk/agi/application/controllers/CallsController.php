@@ -71,9 +71,6 @@ class CallsController extends BaseController
             sprintf("DDI %s not found in database.", $exten)
         );
 
-        // Store Original E164 Number for further transformations
-        $this->agi->setOrigCallerIdNum($this->agi->getCallerIdNum());
-
         // Mark this call as external
         $this->agi->setCallType("external");
 
@@ -683,15 +680,6 @@ class CallsController extends BaseController
             $this->agi->setSIPHeader("X-Info-Conf", $this->agi->getVariable("CONFERENCE_ID"));
             $this->agi->setSIPHeader("X-Info-Conf-Lang", $this->agi->getVariable("CONFERENCE_LANG"));
         }
-    }
-
-    public function updatelineAction()
-    {
-        $user = $this->agi->getChannelCaller();
-        $e164exten = $this->agi->getExtension();
-        $exten = $user->E164toPreferred($e164exten);
-        $this->agi->setConnectedLine('num,i', $exten);
-        $this->agi->setConnectedLine('name', '');
     }
 
     private function getEndpointNameFromContact($contact)

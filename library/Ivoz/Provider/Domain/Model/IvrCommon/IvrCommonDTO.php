@@ -109,6 +109,16 @@ class IvrCommonDTO implements DataTransferObjectInterface
     /**
      * @var mixed
      */
+    private $timeoutNumberCountryId;
+
+    /**
+     * @var mixed
+     */
+    private $errorNumberCountryId;
+
+    /**
+     * @var mixed
+     */
     private $company;
 
     /**
@@ -152,6 +162,16 @@ class IvrCommonDTO implements DataTransferObjectInterface
     private $errorVoiceMailUser;
 
     /**
+     * @var mixed
+     */
+    private $timeoutNumberCountry;
+
+    /**
+     * @var mixed
+     */
+    private $errorNumberCountry;
+
+    /**
      * @var array|null
      */
     private $extensions = null;
@@ -181,6 +201,8 @@ class IvrCommonDTO implements DataTransferObjectInterface
             'errorExtensionId' => $this->getErrorExtensionId(),
             'timeoutVoiceMailUserId' => $this->getTimeoutVoiceMailUserId(),
             'errorVoiceMailUserId' => $this->getErrorVoiceMailUserId(),
+            'timeoutNumberCountryId' => $this->getTimeoutNumberCountryId(),
+            'errorNumberCountryId' => $this->getErrorNumberCountryId(),
             'extensions' => $this->getExtensions()
         ];
     }
@@ -199,6 +221,8 @@ class IvrCommonDTO implements DataTransferObjectInterface
         $this->errorExtension = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Extension\\Extension', $this->getErrorExtensionId());
         $this->timeoutVoiceMailUser = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\User\\User', $this->getTimeoutVoiceMailUserId());
         $this->errorVoiceMailUser = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\User\\User', $this->getErrorVoiceMailUserId());
+        $this->timeoutNumberCountry = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Country\\Country', $this->getTimeoutNumberCountryId());
+        $this->errorNumberCountry = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Country\\Country', $this->getErrorNumberCountryId());
         if (!is_null($this->extensions)) {
             $items = $this->getExtensions();
             $this->extensions = [];
@@ -673,6 +697,62 @@ class IvrCommonDTO implements DataTransferObjectInterface
     public function getErrorVoiceMailUser()
     {
         return $this->errorVoiceMailUser;
+    }
+
+    /**
+     * @param integer $timeoutNumberCountryId
+     *
+     * @return IvrCommonDTO
+     */
+    public function setTimeoutNumberCountryId($timeoutNumberCountryId)
+    {
+        $this->timeoutNumberCountryId = $timeoutNumberCountryId;
+
+        return $this;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getTimeoutNumberCountryId()
+    {
+        return $this->timeoutNumberCountryId;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Country\Country
+     */
+    public function getTimeoutNumberCountry()
+    {
+        return $this->timeoutNumberCountry;
+    }
+
+    /**
+     * @param integer $errorNumberCountryId
+     *
+     * @return IvrCommonDTO
+     */
+    public function setErrorNumberCountryId($errorNumberCountryId)
+    {
+        $this->errorNumberCountryId = $errorNumberCountryId;
+
+        return $this;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getErrorNumberCountryId()
+    {
+        return $this->errorNumberCountryId;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Country\Country
+     */
+    public function getErrorNumberCountry()
+    {
+        return $this->errorNumberCountry;
     }
 
     /**

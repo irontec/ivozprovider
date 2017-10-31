@@ -103,6 +103,16 @@ abstract class IvrCommonAbstract
      */
     protected $errorVoiceMailUser;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     */
+    protected $timeoutNumberCountry;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     */
+    protected $errorNumberCountry;
+
 
     /**
      * Changelog tracking purpose
@@ -229,6 +239,8 @@ abstract class IvrCommonAbstract
             ->setErrorExtension($dto->getErrorExtension())
             ->setTimeoutVoiceMailUser($dto->getTimeoutVoiceMailUser())
             ->setErrorVoiceMailUser($dto->getErrorVoiceMailUser())
+            ->setTimeoutNumberCountry($dto->getTimeoutNumberCountry())
+            ->setErrorNumberCountry($dto->getErrorNumberCountry())
         ;
     }
 
@@ -261,7 +273,9 @@ abstract class IvrCommonAbstract
             ->setTimeoutExtension($dto->getTimeoutExtension())
             ->setErrorExtension($dto->getErrorExtension())
             ->setTimeoutVoiceMailUser($dto->getTimeoutVoiceMailUser())
-            ->setErrorVoiceMailUser($dto->getErrorVoiceMailUser());
+            ->setErrorVoiceMailUser($dto->getErrorVoiceMailUser())
+            ->setTimeoutNumberCountry($dto->getTimeoutNumberCountry())
+            ->setErrorNumberCountry($dto->getErrorNumberCountry());
 
 
         return $this;
@@ -290,7 +304,9 @@ abstract class IvrCommonAbstract
             ->setTimeoutExtensionId($this->getTimeoutExtension() ? $this->getTimeoutExtension()->getId() : null)
             ->setErrorExtensionId($this->getErrorExtension() ? $this->getErrorExtension()->getId() : null)
             ->setTimeoutVoiceMailUserId($this->getTimeoutVoiceMailUser() ? $this->getTimeoutVoiceMailUser()->getId() : null)
-            ->setErrorVoiceMailUserId($this->getErrorVoiceMailUser() ? $this->getErrorVoiceMailUser()->getId() : null);
+            ->setErrorVoiceMailUserId($this->getErrorVoiceMailUser() ? $this->getErrorVoiceMailUser()->getId() : null)
+            ->setTimeoutNumberCountryId($this->getTimeoutNumberCountry() ? $this->getTimeoutNumberCountry()->getId() : null)
+            ->setErrorNumberCountryId($this->getErrorNumberCountry() ? $this->getErrorNumberCountry()->getId() : null);
     }
 
     /**
@@ -316,7 +332,9 @@ abstract class IvrCommonAbstract
             'timeoutExtensionId' => self::getTimeoutExtension() ? self::getTimeoutExtension()->getId() : null,
             'errorExtensionId' => self::getErrorExtension() ? self::getErrorExtension()->getId() : null,
             'timeoutVoiceMailUserId' => self::getTimeoutVoiceMailUser() ? self::getTimeoutVoiceMailUser()->getId() : null,
-            'errorVoiceMailUserId' => self::getErrorVoiceMailUser() ? self::getErrorVoiceMailUser()->getId() : null
+            'errorVoiceMailUserId' => self::getErrorVoiceMailUser() ? self::getErrorVoiceMailUser()->getId() : null,
+            'timeoutNumberCountryId' => self::getTimeoutNumberCountry() ? self::getTimeoutNumberCountry()->getId() : null,
+            'errorNumberCountryId' => self::getErrorNumberCountry() ? self::getErrorNumberCountry()->getId() : null
         ];
     }
 
@@ -800,6 +818,54 @@ abstract class IvrCommonAbstract
     public function getErrorVoiceMailUser()
     {
         return $this->errorVoiceMailUser;
+    }
+
+    /**
+     * Set timeoutNumberCountry
+     *
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $timeoutNumberCountry
+     *
+     * @return self
+     */
+    public function setTimeoutNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $timeoutNumberCountry = null)
+    {
+        $this->timeoutNumberCountry = $timeoutNumberCountry;
+
+        return $this;
+    }
+
+    /**
+     * Get timeoutNumberCountry
+     *
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     */
+    public function getTimeoutNumberCountry()
+    {
+        return $this->timeoutNumberCountry;
+    }
+
+    /**
+     * Set errorNumberCountry
+     *
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $errorNumberCountry
+     *
+     * @return self
+     */
+    public function setErrorNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $errorNumberCountry = null)
+    {
+        $this->errorNumberCountry = $errorNumberCountry;
+
+        return $this;
+    }
+
+    /**
+     * Get errorNumberCountry
+     *
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     */
+    public function getErrorNumberCountry()
+    {
+        return $this->errorNumberCountry;
     }
 
 

@@ -11,6 +11,20 @@ interface QueueInterface extends LoggableEntityInterface
     public function getAstQueueName();
 
     /**
+     * Get the timeout numberValue in E.164 format when routing to 'number'
+     *
+     * @return string
+     */
+    public function getTimeoutNumberValueE164();
+
+    /**
+     * Get the full numberValue in E.164 format when routing to 'number'
+     *
+     * @return string
+     */
+    public function getFullNumberValueE164();
+
+    /**
      * Set name
      *
      * @param string $name
@@ -329,6 +343,38 @@ interface QueueInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\User\UserInterface
      */
     public function getFullVoiceMailUser();
+
+    /**
+     * Set timeoutNumberCountry
+     *
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $timeoutNumberCountry
+     *
+     * @return self
+     */
+    public function setTimeoutNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $timeoutNumberCountry = null);
+
+    /**
+     * Get timeoutNumberCountry
+     *
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     */
+    public function getTimeoutNumberCountry();
+
+    /**
+     * Set fullNumberCountry
+     *
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $fullNumberCountry
+     *
+     * @return self
+     */
+    public function setFullNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $fullNumberCountry = null);
+
+    /**
+     * Get fullNumberCountry
+     *
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     */
+    public function getFullNumberCountry();
 
 }
 

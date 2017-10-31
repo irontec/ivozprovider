@@ -82,6 +82,11 @@ abstract class ConditionalRouteAbstract
      */
     protected $extension;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     */
+    protected $numberCountry;
+
 
     /**
      * Changelog tracking purpose
@@ -202,6 +207,7 @@ abstract class ConditionalRouteAbstract
             ->setLocution($dto->getLocution())
             ->setConferenceRoom($dto->getConferenceRoom())
             ->setExtension($dto->getExtension())
+            ->setNumberCountry($dto->getNumberCountry())
         ;
     }
 
@@ -230,7 +236,8 @@ abstract class ConditionalRouteAbstract
             ->setQueue($dto->getQueue())
             ->setLocution($dto->getLocution())
             ->setConferenceRoom($dto->getConferenceRoom())
-            ->setExtension($dto->getExtension());
+            ->setExtension($dto->getExtension())
+            ->setNumberCountry($dto->getNumberCountry());
 
 
         return $this;
@@ -255,7 +262,8 @@ abstract class ConditionalRouteAbstract
             ->setQueueId($this->getQueue() ? $this->getQueue()->getId() : null)
             ->setLocutionId($this->getLocution() ? $this->getLocution()->getId() : null)
             ->setConferenceRoomId($this->getConferenceRoom() ? $this->getConferenceRoom()->getId() : null)
-            ->setExtensionId($this->getExtension() ? $this->getExtension()->getId() : null);
+            ->setExtensionId($this->getExtension() ? $this->getExtension()->getId() : null)
+            ->setNumberCountryId($this->getNumberCountry() ? $this->getNumberCountry()->getId() : null);
     }
 
     /**
@@ -277,7 +285,8 @@ abstract class ConditionalRouteAbstract
             'queueId' => self::getQueue() ? self::getQueue()->getId() : null,
             'locutionId' => self::getLocution() ? self::getLocution()->getId() : null,
             'conferenceRoomId' => self::getConferenceRoom() ? self::getConferenceRoom()->getId() : null,
-            'extensionId' => self::getExtension() ? self::getExtension()->getId() : null
+            'extensionId' => self::getExtension() ? self::getExtension()->getId() : null,
+            'numberCountryId' => self::getNumberCountry() ? self::getNumberCountry()->getId() : null
         ];
     }
 
@@ -645,6 +654,30 @@ abstract class ConditionalRouteAbstract
     public function getExtension()
     {
         return $this->extension;
+    }
+
+    /**
+     * Set numberCountry
+     *
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry
+     *
+     * @return self
+     */
+    public function setNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry = null)
+    {
+        $this->numberCountry = $numberCountry;
+
+        return $this;
+    }
+
+    /**
+     * Get numberCountry
+     *
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     */
+    public function getNumberCountry()
+    {
+        return $this->numberCountry;
     }
 
 

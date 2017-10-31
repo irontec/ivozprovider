@@ -84,11 +84,6 @@ abstract class UserAbstract
     protected $tokenKey;
 
     /**
-     * @var string
-     */
-    protected $areaCode;
-
-    /**
      * @var boolean
      */
     protected $gsQRCode = '0';
@@ -109,9 +104,9 @@ abstract class UserAbstract
     protected $bossAssistant;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     * @var \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface
      */
-    protected $country;
+    protected $transformationRuleSet;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\Language\LanguageInterface
@@ -290,11 +285,10 @@ abstract class UserAbstract
             ->setPass($dto->getPass())
             ->setExceptionBoosAssistantRegExp($dto->getExceptionBoosAssistantRegExp())
             ->setTokenKey($dto->getTokenKey())
-            ->setAreaCode($dto->getAreaCode())
             ->setCompany($dto->getCompany())
             ->setCallAcl($dto->getCallAcl())
             ->setBossAssistant($dto->getBossAssistant())
-            ->setCountry($dto->getCountry())
+            ->setTransformationRuleSet($dto->getTransformationRuleSet())
             ->setLanguage($dto->getLanguage())
             ->setTerminal($dto->getTerminal())
             ->setExtension($dto->getExtension())
@@ -331,12 +325,11 @@ abstract class UserAbstract
             ->setVoicemailSendMail($dto->getVoicemailSendMail())
             ->setVoicemailAttachSound($dto->getVoicemailAttachSound())
             ->setTokenKey($dto->getTokenKey())
-            ->setAreaCode($dto->getAreaCode())
             ->setGsQRCode($dto->getGsQRCode())
             ->setCompany($dto->getCompany())
             ->setCallAcl($dto->getCallAcl())
             ->setBossAssistant($dto->getBossAssistant())
-            ->setCountry($dto->getCountry())
+            ->setTransformationRuleSet($dto->getTransformationRuleSet())
             ->setLanguage($dto->getLanguage())
             ->setTerminal($dto->getTerminal())
             ->setExtension($dto->getExtension())
@@ -369,12 +362,11 @@ abstract class UserAbstract
             ->setVoicemailSendMail($this->getVoicemailSendMail())
             ->setVoicemailAttachSound($this->getVoicemailAttachSound())
             ->setTokenKey($this->getTokenKey())
-            ->setAreaCode($this->getAreaCode())
             ->setGsQRCode($this->getGsQRCode())
             ->setCompanyId($this->getCompany() ? $this->getCompany()->getId() : null)
             ->setCallAclId($this->getCallAcl() ? $this->getCallAcl()->getId() : null)
             ->setBossAssistantId($this->getBossAssistant() ? $this->getBossAssistant()->getId() : null)
-            ->setCountryId($this->getCountry() ? $this->getCountry()->getId() : null)
+            ->setTransformationRuleSetId($this->getTransformationRuleSet() ? $this->getTransformationRuleSet()->getId() : null)
             ->setLanguageId($this->getLanguage() ? $this->getLanguage()->getId() : null)
             ->setTerminalId($this->getTerminal() ? $this->getTerminal()->getId() : null)
             ->setExtensionId($this->getExtension() ? $this->getExtension()->getId() : null)
@@ -404,12 +396,11 @@ abstract class UserAbstract
             'voicemailSendMail' => self::getVoicemailSendMail(),
             'voicemailAttachSound' => self::getVoicemailAttachSound(),
             'tokenKey' => self::getTokenKey(),
-            'areaCode' => self::getAreaCode(),
             'gsQRCode' => self::getGsQRCode(),
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
             'callAclId' => self::getCallAcl() ? self::getCallAcl()->getId() : null,
             'bossAssistantId' => self::getBossAssistant() ? self::getBossAssistant()->getId() : null,
-            'countryId' => self::getCountry() ? self::getCountry()->getId() : null,
+            'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null,
             'languageId' => self::getLanguage() ? self::getLanguage()->getId() : null,
             'terminalId' => self::getTerminal() ? self::getTerminal()->getId() : null,
             'extensionId' => self::getExtension() ? self::getExtension()->getId() : null,
@@ -813,34 +804,6 @@ abstract class UserAbstract
     }
 
     /**
-     * Set areaCode
-     *
-     * @param string $areaCode
-     *
-     * @return self
-     */
-    public function setAreaCode($areaCode = null)
-    {
-        if (!is_null($areaCode)) {
-            Assertion::maxLength($areaCode, 10);
-        }
-
-        $this->areaCode = $areaCode;
-
-        return $this;
-    }
-
-    /**
-     * Get areaCode
-     *
-     * @return string
-     */
-    public function getAreaCode()
-    {
-        return $this->areaCode;
-    }
-
-    /**
      * Set gsQRCode
      *
      * @param boolean $gsQRCode
@@ -940,27 +903,27 @@ abstract class UserAbstract
     }
 
     /**
-     * Set country
+     * Set transformationRuleSet
      *
-     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $country
+     * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet
      *
      * @return self
      */
-    public function setCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $country = null)
+    public function setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet = null)
     {
-        $this->country = $country;
+        $this->transformationRuleSet = $transformationRuleSet;
 
         return $this;
     }
 
     /**
-     * Get country
+     * Get transformationRuleSet
      *
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface
      */
-    public function getCountry()
+    public function getTransformationRuleSet()
     {
-        return $this->country;
+        return $this->transformationRuleSet;
     }
 
     /**

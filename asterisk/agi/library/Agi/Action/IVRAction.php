@@ -27,7 +27,7 @@ class IVRAction extends RouterAction
         $this->_routeType       = $ivr->getTimeoutTargetType();
         $this->_routeExtension  = $ivr->getTimeoutExtension();
         $this->_routeVoiceMail  = $ivr->getTimeoutVoiceMailUser();
-        $this->_routeExternal   = $ivr->getTimeoutNumberValue();
+        $this->_routeExternal   = $ivr->getTimeoutNumberValueE164();
         $this->route();
     }
 
@@ -43,7 +43,7 @@ class IVRAction extends RouterAction
         $this->_routeType       = $ivr->getErrorTargetType();
         $this->_routeExtension  = $ivr->getErrorExtension();
         $this->_routeVoiceMail  = $ivr->getErrorVoiceMailUser();
-        $this->_routeExternal   = $ivr->getErrorNumberValue();
+        $this->_routeExternal   = $ivr->getErrorNumberValueE164();
         $this->route();
     }
 

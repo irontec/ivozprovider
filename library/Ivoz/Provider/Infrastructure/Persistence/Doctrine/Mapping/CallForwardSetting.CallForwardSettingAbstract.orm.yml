@@ -90,3 +90,14 @@ Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingAbstract:
           referencedColumnName: id
           onDelete: cascade
       orphanRemoval: false
+    numberCountry:
+      targetEntity: \Ivoz\Provider\Domain\Model\Country\CountryInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        numberCountryId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false

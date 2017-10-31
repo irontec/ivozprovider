@@ -28,14 +28,13 @@ class MatchListPattern extends MatchListPatternAbstract implements MatchListPatt
      * Get Number value in E.164 format
      * @param $prefix string
      */
-    public function getNumberE164($prefix = '')
+    public function getNumberE164()
     {
         $callingCode = $this
             ->getNumberCountry()
-            ->getCallingCode();
+            ->getCountryCode();
 
         return
-            $prefix .
             $callingCode .
             $this->getNumberValue();
     }

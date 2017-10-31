@@ -101,5 +101,12 @@ class Ddi extends DdiAbstract implements DdiInterface
 
         return $this;
     }
+
+    public function getDdie164()
+    {
+        return
+            $this->getCountry()->getCountryCode() .
+            $this->getDdi();
+    }
 }
 

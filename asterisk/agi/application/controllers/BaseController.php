@@ -44,7 +44,6 @@ class BaseController extends Zend_Controller_Action
             $line = "0";
         }
 
-        $this->_helper->Logger($uniqueid, $file, $line, "LOG_ALERT", $errors->exception->getMessage());
         $this->agi->error("[$file:$line] " . $errors->exception->getMessage());
         $this->agi->hangup();
         exit(1);

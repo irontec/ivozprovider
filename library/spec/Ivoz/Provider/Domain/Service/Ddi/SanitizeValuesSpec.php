@@ -34,7 +34,7 @@ class SanitizeValuesSpec extends ObjectBehavior
         $this->country = $country;
         $this
             ->country
-            ->getCallingCode()
+            ->getCountryCode()
             ->willReturn(34);
 
         $this

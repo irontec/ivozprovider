@@ -10,6 +10,13 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * Get the numberValue in E.164 format when routing to 'number'
+     *
+     * @return string
+     */
+    public function getNumberValueE164();
+
+    /**
      * Set priority
      *
      * @param integer $priority
@@ -232,6 +239,22 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface
      */
     public function getExtension();
+
+    /**
+     * Set numberCountry
+     *
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry
+     *
+     * @return self
+     */
+    public function setNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry = null);
+
+    /**
+     * Get numberCountry
+     *
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     */
+    public function getNumberCountry();
 
     /**
      * Add matchlist

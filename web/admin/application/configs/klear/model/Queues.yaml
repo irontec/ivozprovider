@@ -68,22 +68,44 @@ production:
           '__null__':
             title:  _("Unassigned")
             visualFilter:
-              hide: ["timeoutNumberValue", "timeoutExtensionId", "timeoutVoiceMailUserId" ]
+              hide: &timeoutFields
+                - timeoutNumberCountryId
+                - timeoutNumberValue
+                - timeoutExtensionId
+                - timeoutVoiceMailUserId
           'number':
             title: _('Number')
             visualFilter:
-              show: ["timeoutNumberValue"]
-              hide: ["timeoutExtensionId", "timeoutVoiceMailUserId" ]
+              show: [ timeoutNumberCountryId, timeoutNumberValue ]
+              hide:
+                <<: *timeoutFields
           'extension':
             title: ngettext('Extension', 'Extensions', 1)
             visualFilter:
-              show: ["timeoutExtensionId"]
-              hide: ["timeoutNumberValue", "timeoutVoiceMailUserId" ]
+              show: [ timeoutExtensionId ]
+              hide:
+                <<: *timeoutFields
           'voicemail':
             title: ngettext('Voicemail', 'Voicemails', 1)
             visualFilter:
-              show: ["timeoutVoiceMailUserId"]
-              hide: ["timeoutExtensionId", "timeoutNumberValue"]
+              show: [ timeoutVoiceMailUserId ]
+              hide:
+                <<: *timeoutFields
+    timeoutNumberCountryId:
+      title: _('Country')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Country\Country
+          fieldName:
+            fields:
+              - name${lang}
+              - countryCode
+            template: '%name${lang}% (%countryCode%)'
+          order:
+            Country.name.${lang}: asc
     timeoutNumberValue:
       title: _('Number')
       type: text
@@ -158,29 +180,53 @@ production:
           '__null__':
             title:  _("Unassigned")
             visualFilter:
-              hide: ["fullNumberValue", "fullExtensionId", "fullVoiceMailUserId" ]
+              hide: &fullFields
+                - fullNumberCountryId
+                - fullNumberValue
+                - fullExtensionId
+                - fullVoiceMailUserId
           'number':
             title: _('Number')
             visualFilter:
-              show: ["fullNumberValue"]
-              hide: ["fullExtensionId", "fullVoiceMailUserId" ]
+              show: [ fullNumberCountryId, fullNumberValue ]
+              hide:
+                <<: *fullFields
           'extension':
             title: ngettext('Extension', 'Extensions', 1)
             visualFilter:
-              show: ["fullExtensionId"]
-              hide: ["fullNumberValue", "fullVoiceMailUserId" ]
+              show: [ fullExtensionId ]
+              hide:
+                <<: *fullFields
           'voicemail':
             title: ngettext('Voicemail', 'Voicemails', 1)
             visualFilter:
-              show: ["fullVoiceMailUserId"]
-              hide: ["fullExtensionId", "fullNumberValue"]
+              show: [ fullVoiceMailUserId ]
+              hide:
+                <<: *fullFields
+    fullNumberCountryId:
+      title: _('Country')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Country\Country
+          fieldName:
+            fields:
+              - name${lang}
+              - countryCode
+            template: '%name${lang}% (%countryCode%)'
+          order:
+            Country.name.${lang}: asc
     fullNumberValue:
       title: _('Number')
       type: text
       maxLength: 25
+      required: true
     fullExtensionId:
       title: ngettext('Extension', 'Extensions', 1)
       type: select
+      required: true
       source:
         data: mapper
         config:
@@ -196,6 +242,7 @@ production:
     fullVoiceMailUserId:
       title: ngettext('Voicemail', 'Voicemails', 1)
       type: select
+      required: true
       source:
         data: mapper
         config:

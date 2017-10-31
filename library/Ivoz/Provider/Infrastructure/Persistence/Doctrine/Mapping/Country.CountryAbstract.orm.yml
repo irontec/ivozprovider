@@ -19,29 +19,10 @@ Ivoz\Provider\Domain\Model\Country\CountryAbstract:
       options:
         fixed: false
         default: ''
-    callingCode:
-      type: integer
-      nullable: true
-      options:
-        unsigned: true
-      column: calling_code
-    intCode:
+    countryCode:
       type: string
       nullable: true
-      length: 5
+      length: 10
       options:
         fixed: false
-      column: intCode
-    e164Pattern:
-      type: string
-      nullable: true
-      length: 250
-      options:
-        fixed: false
-      column: e164Pattern
-    nationalCC:
-      type: boolean
-      nullable: false
-      options:
-        default: '0'
-      column: nationalCC
+      column: countryCode

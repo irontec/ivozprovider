@@ -12,7 +12,7 @@ interface MatchListPatternInterface extends LoggableEntityInterface
      * Get Number value in E.164 format
      * @param $prefix string
      */
-    public function getNumberE164($prefix = null);
+    public function getNumberE164();
 
     /**
      * Set description

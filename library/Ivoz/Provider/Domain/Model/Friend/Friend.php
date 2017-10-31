@@ -99,60 +99,6 @@ class Friend extends FriendAbstract implements FriendInterface
         return $callAcl->dstIsCallable($exten);
     }
 
-    /**
-     * @brief Return Friend country or company if null
-     */
-    public function getCountry()
-    {
-        $country = parent::getCountry();
-        if (is_null($country)) {
-
-            return $this->getCompany()->getCountry();
-        }
-
-        return $country;
-    }
-
-    /**
-     * Convert a user dialed number to E164 form
-     *
-     * param string $number
-     * return string number in E164
-     */
-    public function preferredToE164($prefNumber)
-    {
-        // Remove company outbound prefix
-        /**
-         * @var Company $company
-         */
-        $company = $this->getCompany();
-        $prefNumber = $company->removeOutboundPrefix($prefNumber);
-
-        // Get user country
-        /**
-         * @var Country $country
-         */
-        $country = $this->getCountry();
-        // Return e164 number dialed by this user
-
-        return $country->preferredToE164($prefNumber, $this->getAreaCode());
-    }
-
-    /**
-     * Convert a received number to User prefered format
-     *
-     * @param unknown $number
-     */
-    public function E164ToPreferred($e164number)
-    {
-        // Get User country
-        $country = $this->getCountry();
-        // Convert from E164 to user country preferred format
-        $prefnumber = $country->E164ToPreferred($e164number, $this->getAreaCode());
-        // Add Company outbound prefix
-        return $this->getCompany()->addOutboundPrefix($prefnumber);
-    }
-
     public function getRequestDirectUri($callee)
     {
         $uri = sprintf("sip:%s@%s", $callee, $this->getIp());

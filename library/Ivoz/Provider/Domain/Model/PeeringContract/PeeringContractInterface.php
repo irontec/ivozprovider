@@ -74,20 +74,20 @@ interface PeeringContractInterface extends LoggableEntityInterface
     public function getBrand();
 
     /**
-     * Set transformationRulesetGroupsTrunk
+     * Set transformationRuleSet
      *
-     * @param \Ivoz\Provider\Domain\Model\TransformationRulesetGroupsTrunk\TransformationRulesetGroupsTrunkInterface $transformationRulesetGroupsTrunk
+     * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet
      *
      * @return self
      */
-    public function setTransformationRulesetGroupsTrunk(\Ivoz\Provider\Domain\Model\TransformationRulesetGroupsTrunk\TransformationRulesetGroupsTrunkInterface $transformationRulesetGroupsTrunk = null);
+    public function setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet = null);
 
     /**
-     * Get transformationRulesetGroupsTrunk
+     * Get transformationRuleSet
      *
-     * @return \Ivoz\Provider\Domain\Model\TransformationRulesetGroupsTrunk\TransformationRulesetGroupsTrunkInterface
+     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface
      */
-    public function getTransformationRulesetGroupsTrunk();
+    public function getTransformationRuleSet();
 
     /**
      * Add outgoingRouting

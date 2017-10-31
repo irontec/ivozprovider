@@ -7,9 +7,6 @@ Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountAbstract:
     companyId:
       columns:
       - companyId
-    countryId:
-      columns:
-      - countryId
     outgoingDdiId:
       columns:
       - outgoingDdiId
@@ -73,13 +70,6 @@ Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountAbstract:
       length: 64
       options:
       fixed: false
-    areaCode:
-      type: string
-      nullable: true
-      length: 10
-      options:
-        fixed: false
-      column: areaCode
     disallow:
       type: string
       nullable: false
@@ -162,14 +152,14 @@ Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountAbstract:
           nullable: false
           onDelete: cascade
       orphanRemoval: false
-    country:
-      targetEntity: Ivoz\Provider\Domain\Model\Country\CountryInterface
+    transformationRuleSet:
+      targetEntity: \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface
       cascade: {  }
       fetch: LAZY
       mappedBy: null
       inversedBy: null
       joinColumns:
-        countryId:
+        transformationRuleSetId:
           referencedColumnName: id
           onDelete: set null
       orphanRemoval: false

@@ -71,12 +71,6 @@ abstract class CompanyAbstract
     protected $countryName;
 
     /**
-     * @column outbound_prefix
-     * @var string
-     */
-    protected $outboundPrefix;
-
-    /**
      * @var boolean
      */
     protected $ipfilter = '1';
@@ -90,11 +84,6 @@ abstract class CompanyAbstract
      * @var string
      */
     protected $onDemandRecordCode;
-
-    /**
-     * @var string
-     */
-    protected $areaCode;
 
     /**
      * @var string
@@ -140,6 +129,11 @@ abstract class CompanyAbstract
      * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface
      */
     protected $country;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface
+     */
+    protected $transformationRuleSet;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
@@ -287,11 +281,9 @@ abstract class CompanyAbstract
 
         return $self
             ->setDomainUsers($dto->getDomainUsers())
-            ->setOutboundPrefix($dto->getOutboundPrefix())
             ->setIpfilter($dto->getIpfilter())
             ->setOnDemandRecord($dto->getOnDemandRecord())
             ->setOnDemandRecordCode($dto->getOnDemandRecordCode())
-            ->setAreaCode($dto->getAreaCode())
             ->setExternallyextraopts($dto->getExternallyextraopts())
             ->setRecordingsLimitMB($dto->getRecordingsLimitMB())
             ->setRecordingsLimitEmail($dto->getRecordingsLimitEmail())
@@ -301,6 +293,7 @@ abstract class CompanyAbstract
             ->setBrand($dto->getBrand())
             ->setApplicationServer($dto->getApplicationServer())
             ->setCountry($dto->getCountry())
+            ->setTransformationRuleSet($dto->getTransformationRuleSet())
             ->setOutgoingDdi($dto->getOutgoingDdi())
             ->setOutgoingDdiRule($dto->getOutgoingDdiRule())
         ;
@@ -329,11 +322,9 @@ abstract class CompanyAbstract
             ->setTown($dto->getTown())
             ->setProvince($dto->getProvince())
             ->setCountryName($dto->getCountryName())
-            ->setOutboundPrefix($dto->getOutboundPrefix())
             ->setIpfilter($dto->getIpfilter())
             ->setOnDemandRecord($dto->getOnDemandRecord())
             ->setOnDemandRecordCode($dto->getOnDemandRecordCode())
-            ->setAreaCode($dto->getAreaCode())
             ->setExternallyextraopts($dto->getExternallyextraopts())
             ->setRecordingsLimitMB($dto->getRecordingsLimitMB())
             ->setRecordingsLimitEmail($dto->getRecordingsLimitEmail())
@@ -343,6 +334,7 @@ abstract class CompanyAbstract
             ->setBrand($dto->getBrand())
             ->setApplicationServer($dto->getApplicationServer())
             ->setCountry($dto->getCountry())
+            ->setTransformationRuleSet($dto->getTransformationRuleSet())
             ->setOutgoingDdi($dto->getOutgoingDdi())
             ->setOutgoingDdiRule($dto->getOutgoingDdiRule());
 
@@ -367,11 +359,9 @@ abstract class CompanyAbstract
             ->setTown($this->getTown())
             ->setProvince($this->getProvince())
             ->setCountryName($this->getCountryName())
-            ->setOutboundPrefix($this->getOutboundPrefix())
             ->setIpfilter($this->getIpfilter())
             ->setOnDemandRecord($this->getOnDemandRecord())
             ->setOnDemandRecordCode($this->getOnDemandRecordCode())
-            ->setAreaCode($this->getAreaCode())
             ->setExternallyextraopts($this->getExternallyextraopts())
             ->setRecordingsLimitMB($this->getRecordingsLimitMB())
             ->setRecordingsLimitEmail($this->getRecordingsLimitEmail())
@@ -381,6 +371,7 @@ abstract class CompanyAbstract
             ->setBrandId($this->getBrand() ? $this->getBrand()->getId() : null)
             ->setApplicationServerId($this->getApplicationServer() ? $this->getApplicationServer()->getId() : null)
             ->setCountryId($this->getCountry() ? $this->getCountry()->getId() : null)
+            ->setTransformationRuleSetId($this->getTransformationRuleSet() ? $this->getTransformationRuleSet()->getId() : null)
             ->setOutgoingDdiId($this->getOutgoingDdi() ? $this->getOutgoingDdi()->getId() : null)
             ->setOutgoingDdiRuleId($this->getOutgoingDdiRule() ? $this->getOutgoingDdiRule()->getId() : null);
     }
@@ -402,11 +393,9 @@ abstract class CompanyAbstract
             'town' => self::getTown(),
             'province' => self::getProvince(),
             'country' => self::getCountryName(),
-            'outbound_prefix' => self::getOutboundPrefix(),
             'ipFilter' => self::getIpfilter(),
             'onDemandRecord' => self::getOnDemandRecord(),
             'onDemandRecordCode' => self::getOnDemandRecordCode(),
-            'areaCode' => self::getAreaCode(),
             'externallyExtraOpts' => self::getExternallyextraopts(),
             'recordingsLimitMB' => self::getRecordingsLimitMB(),
             'recordingsLimitEmail' => self::getRecordingsLimitEmail(),
@@ -416,6 +405,7 @@ abstract class CompanyAbstract
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
             'applicationServerId' => self::getApplicationServer() ? self::getApplicationServer()->getId() : null,
             'countryId' => self::getCountry() ? self::getCountry()->getId() : null,
+            'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null,
             'outgoingDdiId' => self::getOutgoingDdi() ? self::getOutgoingDdi()->getId() : null,
             'outgoingDdiRuleId' => self::getOutgoingDdiRule() ? self::getOutgoingDdiRule()->getId() : null
         ];
@@ -733,34 +723,6 @@ abstract class CompanyAbstract
     }
 
     /**
-     * Set outboundPrefix
-     *
-     * @param string $outboundPrefix
-     *
-     * @return self
-     */
-    public function setOutboundPrefix($outboundPrefix = null)
-    {
-        if (!is_null($outboundPrefix)) {
-            Assertion::maxLength($outboundPrefix, 255);
-        }
-
-        $this->outboundPrefix = $outboundPrefix;
-
-        return $this;
-    }
-
-    /**
-     * Get outboundPrefix
-     *
-     * @return string
-     */
-    public function getOutboundPrefix()
-    {
-        return $this->outboundPrefix;
-    }
-
-    /**
      * Set ipfilter
      *
      * @param boolean $ipfilter
@@ -842,34 +804,6 @@ abstract class CompanyAbstract
     public function getOnDemandRecordCode()
     {
         return $this->onDemandRecordCode;
-    }
-
-    /**
-     * Set areaCode
-     *
-     * @param string $areaCode
-     *
-     * @return self
-     */
-    public function setAreaCode($areaCode = null)
-    {
-        if (!is_null($areaCode)) {
-            Assertion::maxLength($areaCode, 10);
-        }
-
-        $this->areaCode = $areaCode;
-
-        return $this;
-    }
-
-    /**
-     * Get areaCode
-     *
-     * @return string
-     */
-    public function getAreaCode()
-    {
-        return $this->areaCode;
     }
 
     /**
@@ -1100,6 +1034,30 @@ abstract class CompanyAbstract
     public function getCountry()
     {
         return $this->country;
+    }
+
+    /**
+     * Set transformationRuleSet
+     *
+     * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet
+     *
+     * @return self
+     */
+    public function setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface $transformationRuleSet = null)
+    {
+        $this->transformationRuleSet = $transformationRuleSet;
+
+        return $this;
+    }
+
+    /**
+     * Get transformationRuleSet
+     *
+     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface
+     */
+    public function getTransformationRuleSet()
+    {
+        return $this->transformationRuleSet;
     }
 
     /**

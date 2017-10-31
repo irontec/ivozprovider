@@ -32,7 +32,7 @@ class ExtensionAction extends RouterAction
         );
 
         // Some feedback for asterisk cli
-        $this->agi->notice("Processing Extension with number \e[0;37m%s [extension%d]\e[0;93m",
+        $this->agi->notice("Processing Extension with number %s",
                         $extension->getNumber(), $extension->getId());
 
         // Route to the extension destination
@@ -42,7 +42,7 @@ class ExtensionAction extends RouterAction
         $this->_routeIVRCustom  = $extension->getIVRCustom();
         $this->_routeHuntGroup  = $extension->getHuntGroup();
         $this->_routeConference = $extension->getConferenceRoom();
-        $this->_routeExternal   = $extension->getNumberValue();
+        $this->_routeExternal   = $extension->getNumberValueE164();
         $this->_routeFriend     = $extension->getFriendValue();
         $this->_routeQueue      = $extension->getQueue();
         $this->_routeConditionalRoute = $extension->getConditionalRoute();

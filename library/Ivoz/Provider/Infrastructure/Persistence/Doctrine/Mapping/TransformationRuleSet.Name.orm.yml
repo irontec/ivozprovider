@@ -1,0 +1,17 @@
+Ivoz\Provider\Domain\Model\TransformationRuleSet\Name:
+  type: embeddable
+  fields:
+    en:
+      type: string
+      nullable: false
+      length: 100
+      options:
+        fixed: false
+      column: name_en
+    es:
+      type: string
+      nullable: false
+      length: 100
+      options:
+        fixed: false
+      column: name_es

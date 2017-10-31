@@ -16,6 +16,7 @@ production:
       forcedValues:
         <<: *forcedCompany
       order:
+          - Ddi.country: asc
           - Ddi.ddi: asc
           - Ddi.routeType: desc
       fields:
@@ -23,8 +24,8 @@ production:
           countryId: true
           DDI: true
           externalCallFilterId: true
-          routeTypeId: true
-          targetId: true
+          routeType: true
+          target: true
         options:
           title: _("Options")
           screens:
@@ -41,7 +42,6 @@ production:
           huntGroupId: true
           conferenceRoomId: true
           friendValue: true
-#          ddie164: true
           brandId: true
           recordCalls: true
           displayName: true
@@ -116,7 +116,6 @@ production:
         blacklist:
           brandId: true
           target: true
-#          ddie164: true
           recordCalls: ${auth.company.recordings.disabled}
       fixedPositions:
         <<: *dDIsFixedPositions_Link
@@ -134,7 +133,6 @@ production:
           <<: *dDIsFieldsOder_Link
         blacklist:
           target: true
-#          ddie164: true
           brandId: true
           recordCalls: ${auth.company.recordings.disabled}
           billInboundCalls: ${auth.brand.billing.disabled}

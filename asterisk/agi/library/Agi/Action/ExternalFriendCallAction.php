@@ -46,23 +46,12 @@ class ExternalFriendCallAction extends ExternalCallAction
         $this->agi->notice("Processing External call from \e[0;36m%s [friend%d]\e[0;93m to %s",
             $friend->getName(), $friend->getId(), $number);
 
-        // Check if dialed number has company's outbound prefix
-        if (!$this->checkCompanyOutboundPrefix($number)) {
-            $this->agi->error("Destination number %s without [company%d] outbound prefix",
-                            $number, $company->getId());
-            $this->agi->decline();
-            return;
-        }
-
-        // Convert to E.164 format
-        $e164number = $friend->preferredToE164($number);
-
         // Check if the diversion header contains a valid number
-        $this->checkDiversionNumber($company, $e164number);
+        $this->checkDiversionNumber($company, $number);
 
         // Check the user has this call allowed in its ACL
-        if ($this->_checkACL && !$friend->isAllowedToCall($e164number)) {
-            $this->agi->error("User is not allowed to call %s", $e164number);
+        if ($this->_checkACL && !$friend->isAllowedToCall($number)) {
+            $this->agi->error("User is not allowed to call %s", $number);
             // Play error notification over progress
             if ($company->hasFeature(Feature::PROGRESS)) {
                 $this->agi->progress("ivozprovider/notAllowed");
@@ -72,8 +61,8 @@ class ExternalFriendCallAction extends ExternalCallAction
         }
 
         // Check if outgoing call can be tarificated
-        if (!$this->checkTarificable($e164number)) {
-            $this->agi->error("Destination %s can not be billed.", $e164number);
+        if (!$this->checkTarificable($number)) {
+            $this->agi->error("Destination %s can not be billed.", $number);
             // Play error notification over progress
             if ($company->hasFeature(Feature::PROGRESS)) {
                 $this->agi->progress("ivozprovider/notBillable");
@@ -82,20 +71,9 @@ class ExternalFriendCallAction extends ExternalCallAction
             return;
         }
 
-        // Check if DDI has valid redirecting number
-        if ($this->agi->getRedirecting('count')) {
-            $diversionNum = $this->agi->getRedirecting('from-num');
-            if(($diversionDDI = $company->getDDI($diversionNum))) {
-                $ddi = $diversionDDI;
-                // Diversion DDI is valid, convert Presented number format
-                $callerIdNum = $friend->preferredToE164($this->agi->getCallerIdNum());
-                $this->agi->setCallerIdNum($callerIdNum);
-            }
-        }
-
         if (!isset($ddi)) {
             // Allow identification from any company DDI
-            $callerIdNum = $friend->preferredToE164($this->agi->getCallerIdNum());
+            $callerIdNum = $this->agi->getCallerIdNum();
             $companyDDIs = $friend->getCompany()->getDDIs();
             foreach ($companyDDIs as $companyDDI) {
                 if ($callerIdNum === $companyDDI->getDDIE164()) {
@@ -128,13 +106,13 @@ class ExternalFriendCallAction extends ExternalCallAction
         // Check if DDI has recordings enabled
         $this->checkDDIRecording($ddi);
         // Check if DDI belong to platform
-        $this->checkDDIBounced($e164number);
+        $this->checkDDIBounced($number);
 
 
         // Call the PSJIP endpoint
-        $this->agi->setVariable("DIAL_DST", "PJSIP/" . $e164number . '@proxytrunks');
+        $this->agi->setVariable("DIAL_DST", "PJSIP/" . $number . '@proxytrunks');
         $this->agi->setVariable("DIAL_OPTS", "");
         $this->agi->setVariable("DIAL_TIMEOUT", "");
-        $this->agi->redirect('call-world', $e164number);
+        $this->agi->redirect('call-world', $number);
     }
 }

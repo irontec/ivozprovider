@@ -23,8 +23,6 @@ production:
           transport: true
           authNeeded: true
           password: true
-          areaCode: true
-          countryId: true
           allow: true
           disallow: true
           directMediaMethod: true
@@ -34,6 +32,7 @@ production:
           directConnectivity: true
           ip: true
           port: true
+          transformationRuleSetId: true
           languageId: true
           status: true
         order:
@@ -89,9 +88,8 @@ production:
           transport: true
           ip: true
           port: true
+          languageId: true
           callACL: true
-          country: true
-          areaCode: true
           outgoingDDI: true
           allow: true
           fromDomain: true
@@ -110,20 +108,23 @@ production:
             ip: 5
             port: 3
         group1:
+          label: _("Geographic Configuration")
+          colsPerRow: 12
+          fields:
+            languageId: 4
+            transformationRuleSetId: 8
+        group2:
           label: _("Outgoing Configuration")
           colsPerRow: 12
           fields:
             callACLId: 5
             outgoingDDIId: 5
-            countryId: 5
-            areaCode: 5
-        group2:
+        group3:
           label: _("Advanced Configuration")
           colsPerRow: 6
           fields:
             allow: 2
             fromDomain: 2
-            languageId: 2
       shortcutOption: N
     friendsEdit_screen: &friendsEdit_screenLink
       <<: *Friends

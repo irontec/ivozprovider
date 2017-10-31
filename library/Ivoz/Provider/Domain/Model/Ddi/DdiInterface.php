@@ -17,6 +17,8 @@ interface DdiInterface extends LoggableEntityInterface
 
     public function setRouteType($routeType = null);
 
+    public function getDdie164();
+
     /**
      * Set ddi
      *
@@ -41,13 +43,6 @@ interface DdiInterface extends LoggableEntityInterface
      * @return self
      */
     public function setDdie164($ddie164 = null);
-
-    /**
-     * Get ddie164
-     *
-     * @return string
-     */
-    public function getDdie164();
 
     /**
      * Set recordCalls

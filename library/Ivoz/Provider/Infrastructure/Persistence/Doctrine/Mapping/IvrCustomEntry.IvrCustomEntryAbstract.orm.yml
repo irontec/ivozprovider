@@ -97,3 +97,14 @@ Ivoz\Provider\Domain\Model\IvrCustomEntry\IvrCustomEntryAbstract:
           referencedColumnName: id
           onDelete: set null
       orphanRemoval: false
+    targetNumberCountry:
+      targetEntity: \Ivoz\Provider\Domain\Model\Country\CountryInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        targetNumberCountryId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false

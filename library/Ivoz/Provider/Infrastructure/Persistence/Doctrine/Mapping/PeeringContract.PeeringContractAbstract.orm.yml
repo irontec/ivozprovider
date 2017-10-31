@@ -4,9 +4,6 @@ Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractAbstract:
     brandId:
       columns:
         - brandId
-    PeeringContracts_ibfk_2:
-      columns:
-        - transformationRulesetGroupsTrunksId
   uniqueConstraints:
     name_per_brand:
       columns:
@@ -45,14 +42,14 @@ Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractAbstract:
           nullable: false
           onDelete: cascade
       orphanRemoval: false
-    transformationRulesetGroupsTrunk:
-      targetEntity: \Ivoz\Provider\Domain\Model\TransformationRulesetGroupsTrunk\TransformationRulesetGroupsTrunkInterface
+    transformationRuleSet:
+      targetEntity: \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface
       cascade: {  }
       fetch: LAZY
       mappedBy: null
       inversedBy: null
       joinColumns:
-        transformationRulesetGroupsTrunksId:
+        transformationRuleSetId:
           referencedColumnName: id
           onDelete: set null
       orphanRemoval: false

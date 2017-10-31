@@ -1,0 +1,30 @@
+services:
+  _defaults:
+    autowire: true
+    public: false
+
+  ##################################
+  ## Service collection
+  ##################################
+  Ivoz\Provider\Domain\Service\TransformationRuleSet\TransformationRuleSetLifecycleServiceCollection:
+    public: true
+
+  provider.lifecycle.transformation_rule_set.service_collection:
+    '@Ivoz\Provider\Domain\Service\TransformationRuleSet\TransformationRuleSetLifecycleServiceCollection'
+
+  ##################################
+  ## post_persist
+  ##################################
+  Ivoz\Provider\Domain\Service\TransformationRule\GenerateRules:
+    tags:
+      - { name: provider.lifecycle.transformation_rule_set.post_persist, priority: 10 }
+    arguments:
+      $entityPersister:
+        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
+
+  ##################################
+  ## post_remove
+  ##################################
+#  Ivoz\Provider\Infrastructure\Domain\Service\TransformationRuleSet\RemovedXmlRpc:
+#    tags:
+#      - { name: provider.lifecycle.peer_server.post_remove, priority: 10 }

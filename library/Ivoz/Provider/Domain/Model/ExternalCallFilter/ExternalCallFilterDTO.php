@@ -84,6 +84,16 @@ class ExternalCallFilterDTO implements DataTransferObjectInterface
     /**
      * @var mixed
      */
+    private $holidayNumberCountryId;
+
+    /**
+     * @var mixed
+     */
+    private $outOfScheduleNumberCountryId;
+
+    /**
+     * @var mixed
+     */
     private $company;
 
     /**
@@ -120,6 +130,16 @@ class ExternalCallFilterDTO implements DataTransferObjectInterface
      * @var mixed
      */
     private $outOfScheduleVoiceMailUser;
+
+    /**
+     * @var mixed
+     */
+    private $holidayNumberCountry;
+
+    /**
+     * @var mixed
+     */
+    private $outOfScheduleNumberCountry;
 
     /**
      * @var array|null
@@ -161,6 +181,8 @@ class ExternalCallFilterDTO implements DataTransferObjectInterface
             'outOfScheduleExtensionId' => $this->getOutOfScheduleExtensionId(),
             'holidayVoiceMailUserId' => $this->getHolidayVoiceMailUserId(),
             'outOfScheduleVoiceMailUserId' => $this->getOutOfScheduleVoiceMailUserId(),
+            'holidayNumberCountryId' => $this->getHolidayNumberCountryId(),
+            'outOfScheduleNumberCountryId' => $this->getOutOfScheduleNumberCountryId(),
             'calendars' => $this->getCalendars(),
             'blackLists' => $this->getBlackLists(),
             'whiteLists' => $this->getWhiteLists(),
@@ -181,6 +203,8 @@ class ExternalCallFilterDTO implements DataTransferObjectInterface
         $this->outOfScheduleExtension = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Extension\\Extension', $this->getOutOfScheduleExtensionId());
         $this->holidayVoiceMailUser = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\User\\User', $this->getHolidayVoiceMailUserId());
         $this->outOfScheduleVoiceMailUser = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\User\\User', $this->getOutOfScheduleVoiceMailUserId());
+        $this->holidayNumberCountry = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Country\\Country', $this->getHolidayNumberCountryId());
+        $this->outOfScheduleNumberCountry = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Country\\Country', $this->getOutOfScheduleNumberCountryId());
         if (!is_null($this->calendars)) {
             $items = $this->getCalendars();
             $this->calendars = [];
@@ -592,6 +616,62 @@ class ExternalCallFilterDTO implements DataTransferObjectInterface
     public function getOutOfScheduleVoiceMailUser()
     {
         return $this->outOfScheduleVoiceMailUser;
+    }
+
+    /**
+     * @param integer $holidayNumberCountryId
+     *
+     * @return ExternalCallFilterDTO
+     */
+    public function setHolidayNumberCountryId($holidayNumberCountryId)
+    {
+        $this->holidayNumberCountryId = $holidayNumberCountryId;
+
+        return $this;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getHolidayNumberCountryId()
+    {
+        return $this->holidayNumberCountryId;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Country\Country
+     */
+    public function getHolidayNumberCountry()
+    {
+        return $this->holidayNumberCountry;
+    }
+
+    /**
+     * @param integer $outOfScheduleNumberCountryId
+     *
+     * @return ExternalCallFilterDTO
+     */
+    public function setOutOfScheduleNumberCountryId($outOfScheduleNumberCountryId)
+    {
+        $this->outOfScheduleNumberCountryId = $outOfScheduleNumberCountryId;
+
+        return $this;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getOutOfScheduleNumberCountryId()
+    {
+        return $this->outOfScheduleNumberCountryId;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Country\Country
+     */
+    public function getOutOfScheduleNumberCountry()
+    {
+        return $this->outOfScheduleNumberCountry;
     }
 
     /**

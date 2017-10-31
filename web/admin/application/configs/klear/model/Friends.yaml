@@ -110,37 +110,22 @@ production:
           order:
             CallAcl.name: asc
         'null': _("Allow all outgoing calls")
-    countryId:
-      title: _('Country code')
+    transformationRuleSetId:
+      title: _('Numeric Transformation')
       type: select
+      defaultValue: 'null'
       source:
         data: mapper
         config:
-          entity: \Ivoz\Provider\Domain\Model\Country\Country
+          entity: \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet
+          filterClass: IvozProvider_Klear_Filter_TransformationRuleSets
           fieldName:
             fields:
               - name${lang}
-              - callingCode
-            template: '%name${lang}% (+%callingCode%)'
+            template: '%name${lang}%'
           order:
-            Country.name.${lang}: asc
+            TransformationRuleSet.name.${lang}: asc
         'null': _("Company's default")
-      info:
-        type: box
-        position: left
-        icon: help
-        text: _("Outgoing calls coming from Friend must have this country format")
-        label: _("Need help?")
-    areaCode:
-      title: _('Area code')
-      type: text
-      maxLength: 10
-      info:
-        type: box
-        position: left
-        icon: help
-        text: _("Outgoing calls coming from Friend must have this area code format")
-        label: _("Need help?")
     outgoingDDIId:
       title: _('Fallback Outgoing DDI')
       type: select
@@ -152,7 +137,7 @@ production:
           fieldName:
             fields:
               - ddie164
-            template: '+%ddie164%'
+            template: '%ddie164%'
           order:
             Ddi.ddie164: asc
         'null': _("Company's default")

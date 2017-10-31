@@ -39,6 +39,7 @@ production:
           peeringContractsNew_screen: true
         dialogs:
           peeringContractsDel_dialog: true
+
     peeringContractsNew_screen: &peeringContractsNew_screenLink
       <<: *PeeringContracts
       controller: new
@@ -54,6 +55,7 @@ production:
           <<: *PeerContractsOrder_Link
         blacklist:
           externallyRated: ${auth.brand.billing.disabled}
+
     peeringContractsEdit_screen: &peeringContractsEdit_screenLink
       <<: *PeeringContracts
       controller: edit
@@ -62,12 +64,12 @@ production:
       title: _("Edit %s %2s", ngettext('Peering contract', 'Peering contracts', 1), "[format| (%item%)]")
       forcedValues:
         <<: *forcedBrand
-
       fields:
         order:
           <<: *PeerContractsOrder_Link
         blacklist:
           externallyRated: ${auth.brand.billing.disabled}
+
     #PeerServers
     <<: *peerServers_screensLink
     peerServersList_screen:
@@ -109,7 +111,7 @@ production:
 
     #PeerServers
     <<: *peerServers_dialogsLink
-    # kamTrunksUacreg dialogs:
+    # kamTrunksUacreg dialogs
     <<: *kamTrunksUacreg_dialogsLink
 
 staging:

@@ -72,6 +72,11 @@ abstract class ExtensionAbstract
      */
     protected $conditionalRoute;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     */
+    protected $numberCountry;
+
 
     /**
      * Changelog tracking purpose
@@ -190,6 +195,7 @@ abstract class ExtensionAbstract
             ->setUser($dto->getUser())
             ->setQueue($dto->getQueue())
             ->setConditionalRoute($dto->getConditionalRoute())
+            ->setNumberCountry($dto->getNumberCountry())
         ;
     }
 
@@ -216,7 +222,8 @@ abstract class ExtensionAbstract
             ->setConferenceRoom($dto->getConferenceRoom())
             ->setUser($dto->getUser())
             ->setQueue($dto->getQueue())
-            ->setConditionalRoute($dto->getConditionalRoute());
+            ->setConditionalRoute($dto->getConditionalRoute())
+            ->setNumberCountry($dto->getNumberCountry());
 
 
         return $this;
@@ -239,7 +246,8 @@ abstract class ExtensionAbstract
             ->setConferenceRoomId($this->getConferenceRoom() ? $this->getConferenceRoom()->getId() : null)
             ->setUserId($this->getUser() ? $this->getUser()->getId() : null)
             ->setQueueId($this->getQueue() ? $this->getQueue()->getId() : null)
-            ->setConditionalRouteId($this->getConditionalRoute() ? $this->getConditionalRoute()->getId() : null);
+            ->setConditionalRouteId($this->getConditionalRoute() ? $this->getConditionalRoute()->getId() : null)
+            ->setNumberCountryId($this->getNumberCountry() ? $this->getNumberCountry()->getId() : null);
     }
 
     /**
@@ -259,7 +267,8 @@ abstract class ExtensionAbstract
             'conferenceRoomId' => self::getConferenceRoom() ? self::getConferenceRoom()->getId() : null,
             'userId' => self::getUser() ? self::getUser()->getId() : null,
             'queueId' => self::getQueue() ? self::getQueue()->getId() : null,
-            'conditionalRouteId' => self::getConditionalRoute() ? self::getConditionalRoute()->getId() : null
+            'conditionalRouteId' => self::getConditionalRoute() ? self::getConditionalRoute()->getId() : null,
+            'numberCountryId' => self::getNumberCountry() ? self::getNumberCountry()->getId() : null
         ];
     }
 
@@ -579,6 +588,30 @@ abstract class ExtensionAbstract
     public function getConditionalRoute()
     {
         return $this->conditionalRoute;
+    }
+
+    /**
+     * Set numberCountry
+     *
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry
+     *
+     * @return self
+     */
+    public function setNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $numberCountry = null)
+    {
+        $this->numberCountry = $numberCountry;
+
+        return $this;
+    }
+
+    /**
+     * Get numberCountry
+     *
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     */
+    public function getNumberCountry()
+    {
+        return $this->numberCountry;
     }
 
 

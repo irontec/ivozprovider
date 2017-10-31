@@ -113,6 +113,16 @@ abstract class QueueAbstract
      */
     protected $fullVoiceMailUser;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     */
+    protected $timeoutNumberCountry;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     */
+    protected $fullNumberCountry;
+
 
     /**
      * Changelog tracking purpose
@@ -239,6 +249,8 @@ abstract class QueueAbstract
             ->setFullLocution($dto->getFullLocution())
             ->setFullExtension($dto->getFullExtension())
             ->setFullVoiceMailUser($dto->getFullVoiceMailUser())
+            ->setTimeoutNumberCountry($dto->getTimeoutNumberCountry())
+            ->setFullNumberCountry($dto->getFullNumberCountry())
         ;
     }
 
@@ -273,7 +285,9 @@ abstract class QueueAbstract
             ->setTimeoutVoiceMailUser($dto->getTimeoutVoiceMailUser())
             ->setFullLocution($dto->getFullLocution())
             ->setFullExtension($dto->getFullExtension())
-            ->setFullVoiceMailUser($dto->getFullVoiceMailUser());
+            ->setFullVoiceMailUser($dto->getFullVoiceMailUser())
+            ->setTimeoutNumberCountry($dto->getTimeoutNumberCountry())
+            ->setFullNumberCountry($dto->getFullNumberCountry());
 
 
         return $this;
@@ -304,7 +318,9 @@ abstract class QueueAbstract
             ->setTimeoutVoiceMailUserId($this->getTimeoutVoiceMailUser() ? $this->getTimeoutVoiceMailUser()->getId() : null)
             ->setFullLocutionId($this->getFullLocution() ? $this->getFullLocution()->getId() : null)
             ->setFullExtensionId($this->getFullExtension() ? $this->getFullExtension()->getId() : null)
-            ->setFullVoiceMailUserId($this->getFullVoiceMailUser() ? $this->getFullVoiceMailUser()->getId() : null);
+            ->setFullVoiceMailUserId($this->getFullVoiceMailUser() ? $this->getFullVoiceMailUser()->getId() : null)
+            ->setTimeoutNumberCountryId($this->getTimeoutNumberCountry() ? $this->getTimeoutNumberCountry()->getId() : null)
+            ->setFullNumberCountryId($this->getFullNumberCountry() ? $this->getFullNumberCountry()->getId() : null);
     }
 
     /**
@@ -332,7 +348,9 @@ abstract class QueueAbstract
             'timeoutVoiceMailUserId' => self::getTimeoutVoiceMailUser() ? self::getTimeoutVoiceMailUser()->getId() : null,
             'fullLocutionId' => self::getFullLocution() ? self::getFullLocution()->getId() : null,
             'fullExtensionId' => self::getFullExtension() ? self::getFullExtension()->getId() : null,
-            'fullVoiceMailUserId' => self::getFullVoiceMailUser() ? self::getFullVoiceMailUser()->getId() : null
+            'fullVoiceMailUserId' => self::getFullVoiceMailUser() ? self::getFullVoiceMailUser()->getId() : null,
+            'timeoutNumberCountryId' => self::getTimeoutNumberCountry() ? self::getTimeoutNumberCountry()->getId() : null,
+            'fullNumberCountryId' => self::getFullNumberCountry() ? self::getFullNumberCountry()->getId() : null
         ];
     }
 
@@ -886,6 +904,54 @@ abstract class QueueAbstract
     public function getFullVoiceMailUser()
     {
         return $this->fullVoiceMailUser;
+    }
+
+    /**
+     * Set timeoutNumberCountry
+     *
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $timeoutNumberCountry
+     *
+     * @return self
+     */
+    public function setTimeoutNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $timeoutNumberCountry = null)
+    {
+        $this->timeoutNumberCountry = $timeoutNumberCountry;
+
+        return $this;
+    }
+
+    /**
+     * Get timeoutNumberCountry
+     *
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     */
+    public function getTimeoutNumberCountry()
+    {
+        return $this->timeoutNumberCountry;
+    }
+
+    /**
+     * Set fullNumberCountry
+     *
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $fullNumberCountry
+     *
+     * @return self
+     */
+    public function setFullNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $fullNumberCountry = null)
+    {
+        $this->fullNumberCountry = $fullNumberCountry;
+
+        return $this;
+    }
+
+    /**
+     * Get fullNumberCountry
+     *
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     */
+    public function getFullNumberCountry()
+    {
+        return $this->fullNumberCountry;
     }
 
 

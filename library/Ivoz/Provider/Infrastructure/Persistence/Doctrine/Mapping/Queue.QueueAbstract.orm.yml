@@ -197,3 +197,25 @@ Ivoz\Provider\Domain\Model\Queue\QueueAbstract:
           referencedColumnName: id
           onDelete: set null
       orphanRemoval: false
+    timeoutNumberCountry:
+      targetEntity: \Ivoz\Provider\Domain\Model\Country\CountryInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        timeoutNumberCountryId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false
+    fullNumberCountry:
+      targetEntity: \Ivoz\Provider\Domain\Model\Country\CountryInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        fullNumberCountryId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false

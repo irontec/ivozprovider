@@ -9,6 +9,13 @@ interface FaxesInOutInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * Get the numberValue in E.164 format when routing to 'number'
+     *
+     * @return string
+     */
+    public function getDstE164();
+
+    /**
      * Set calldate
      *
      * @param \DateTime $calldate
@@ -119,6 +126,22 @@ interface FaxesInOutInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Fax\FaxInterface
      */
     public function getFax();
+
+    /**
+     * Set dstCountry
+     *
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $dstCountry
+     *
+     * @return self
+     */
+    public function setDstCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $dstCountry = null);
+
+    /**
+     * Get dstCountry
+     *
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     */
+    public function getDstCountry();
 
     /**
      * Set file

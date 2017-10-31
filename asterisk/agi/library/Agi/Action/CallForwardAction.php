@@ -72,7 +72,7 @@ class CallForwardAction extends RouterAction
         $this->_routeType       = $cfw->getTargetType();
         $this->_routeExtension  = $cfw->getExtension();
         $this->_routeVoiceMail  = $cfw->getVoiceMailUser();
-        $this->_routeExternal   = $cfw->getNumberValue();
+        $this->_routeExternal   = $cfw->getNumberValueE164();
         $this->route();
     }
 

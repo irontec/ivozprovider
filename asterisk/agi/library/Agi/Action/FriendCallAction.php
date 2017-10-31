@@ -50,13 +50,6 @@ class FriendCallAction extends RouterAction
         $this->agi->notice("Preparing call to %s through friend \e[0;36m%s [friend%d])\e[0m",
                         $number, $friend->getName(), $friend->getId());
 
-        // Update Called name
-        if ($this->agi->getCallType() == "external") {
-            // Transfor number to User Preferred
-            $preferred = $friend->E164ToPreferred($this->agi->getOrigCallerIdNum());
-            $this->agi->setCallerIdNum($preferred);
-        }
-
         // Check if user is available before placing the call
         $endpointName = $friend->getSorcery();
 

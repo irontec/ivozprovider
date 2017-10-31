@@ -197,10 +197,10 @@ doctrine:
         Ivoz\Provider\Domain\Model\Terminal\Terminal
       Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface:
         Ivoz\Provider\Domain\Model\Timezone\Timezone
-      Ivoz\Provider\Domain\Model\TransformationRulesetGroupsTrunk\TransformationRulesetGroupsTrunkInterface:
-        Ivoz\Provider\Domain\Model\TransformationRulesetGroupsTrunk\TransformationRulesetGroupsTrunk
-      Ivoz\Provider\Domain\Model\TrunksDialplan\TrunksDialplanInterface:
-        Ivoz\Provider\Domain\Model\TrunksDialplan\TrunksDialplan
+      Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface:
+        Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet
+      Ivoz\Provider\Domain\Model\TransformationRule\TransformationRuleInterface:
+        Ivoz\Provider\Domain\Model\TransformationRule\TransformationRule
       Ivoz\Provider\Domain\Model\TrunksHtable\TrunksHtableInterface:
         Ivoz\Provider\Domain\Model\TrunksHtable\TrunksHtable
       Ivoz\Provider\Domain\Model\TrunksUacreg\TrunksUacregInterface:

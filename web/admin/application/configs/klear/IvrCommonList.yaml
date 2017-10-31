@@ -30,9 +30,11 @@ production:
           noAnswerLocutionId: true
           errorLocutionId: true
           successLocutionId: true
+          timeoutNumberCountryId: true
           timeoutNumberValue: true
           timeoutExtensionId: true
           timeoutVoiceMailUserId: true
+          errorNumberCountryId: true
           errorNumberValue: true
           errorExtensionId: true
           errorVoiceMailUserId: true
@@ -58,6 +60,9 @@ production:
       multiInstance: true
       title: _("Add %s", ngettext('IVR Common', 'IVRs Common', 1))
       shortcutOption: N
+      defaultValues:
+        timeoutNumberCountryId: ${auth.companyCountryId}
+        errorNumberCountryId: ${auth.companyCountryId}
       forcedValues:
         <<: *forcedCompany
       fields:
@@ -83,6 +88,7 @@ production:
             noAnswerLocutionId: 2
             __empty1: 1
             timeoutTargetType: 1
+            timeoutNumberCountryId: 1
             timeoutNumberValue: 1
             timeoutExtensionId: 1
             timeoutVoiceMailUserId: 1
@@ -92,6 +98,7 @@ production:
           fields:
             errorLocutionId: 5
             errorTargetType: 2
+            errorNumberCountryId: 2
             errorNumberValue: 2
             errorExtensionId: 2
             errorVoiceMailUserId: 2

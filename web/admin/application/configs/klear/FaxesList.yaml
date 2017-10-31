@@ -95,6 +95,7 @@ production:
             faxesInOutFileDownload_command: true
           default: faxesInEdit_screen
         blacklist:
+          dstCountryId: true
           dst: true
       options:
         title: _("Options")
@@ -150,9 +151,17 @@ production:
     faxesOutNew_screen:
       <<: *faxesInOutNew_screenLink
       filterField: Fax
+      defaultValues:
+        dstCountryId: ${auth.companyCountryId}
       forcedValues:
         "self::type": 'Out'
         "self::status": 'pending'
+      fixedPositions:
+        group0:
+          colsPerRow: 2
+          fields:
+            dstCountryId: 1
+            dst: 1
       fields:
         blacklist:
           calldate: true

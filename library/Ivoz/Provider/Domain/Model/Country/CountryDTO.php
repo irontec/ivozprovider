@@ -17,24 +17,9 @@ class CountryDTO implements DataTransferObjectInterface
     private $code = '';
 
     /**
-     * @var integer
-     */
-    private $callingCode;
-
-    /**
      * @var string
      */
-    private $intCode;
-
-    /**
-     * @var string
-     */
-    private $e164Pattern;
-
-    /**
-     * @var boolean
-     */
-    private $nationalCC = '0';
+    private $countryCode;
 
     /**
      * @var integer
@@ -68,10 +53,7 @@ class CountryDTO implements DataTransferObjectInterface
     {
         return [
             'code' => $this->getCode(),
-            'callingCode' => $this->getCallingCode(),
-            'intCode' => $this->getIntCode(),
-            'e164Pattern' => $this->getE164Pattern(),
-            'nationalCC' => $this->getNationalCC(),
+            'countryCode' => $this->getCountryCode(),
             'id' => $this->getId(),
             'nameEn' => $this->getNameEn(),
             'nameEs' => $this->getNameEs(),
@@ -117,33 +99,13 @@ class CountryDTO implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $callingCode
+     * @param string $countryCode
      *
      * @return CountryDTO
      */
-    public function setCallingCode($callingCode = null)
+    public function setCountryCode($countryCode = null)
     {
-        $this->callingCode = $callingCode;
-
-        return $this;
-    }
-
-    /**
-     * @return integer
-     */
-    public function getCallingCode()
-    {
-        return $this->callingCode;
-    }
-
-    /**
-     * @param string $intCode
-     *
-     * @return CountryDTO
-     */
-    public function setIntCode($intCode = null)
-    {
-        $this->intCode = $intCode;
+        $this->countryCode = $countryCode;
 
         return $this;
     }
@@ -151,49 +113,9 @@ class CountryDTO implements DataTransferObjectInterface
     /**
      * @return string
      */
-    public function getIntCode()
+    public function getCountryCode()
     {
-        return $this->intCode;
-    }
-
-    /**
-     * @param string $e164Pattern
-     *
-     * @return CountryDTO
-     */
-    public function setE164Pattern($e164Pattern = null)
-    {
-        $this->e164Pattern = $e164Pattern;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getE164Pattern()
-    {
-        return $this->e164Pattern;
-    }
-
-    /**
-     * @param boolean $nationalCC
-     *
-     * @return CountryDTO
-     */
-    public function setNationalCC($nationalCC)
-    {
-        $this->nationalCC = $nationalCC;
-
-        return $this;
-    }
-
-    /**
-     * @return boolean
-     */
-    public function getNationalCC()
-    {
-        return $this->nationalCC;
+        return $this->countryCode;
     }
 
     /**

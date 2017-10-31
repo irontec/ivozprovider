@@ -37,30 +37,6 @@ class Company extends CompanyAbstract implements CompanyInterface
     }
 
     /**
-     *
-     * @param string $exten
-     * @return string
-     */
-    public function getTypeCall($exten)
-    {
-        /**
-         * @var Company $this
-         */
-
-        /**
-         * @var Extension $extension
-         */
-        $extension = $this->getExtension($exten);
-
-        if (empty($extension)) {
-
-            return "shared-external";
-        }
-
-        return "shared-" . $extension->getRouteType();
-    }
-
-    /**
      * @param interger $exten
      * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface
      */
@@ -306,87 +282,6 @@ class Company extends CompanyAbstract implements CompanyInterface
 //            return $result->getPricingPlan();
 //        }
 //        return null;
-    }
-
-    /**
-     * Convert a company dialed number to E164 form
-     *
-     * param string $number
-     * return string number in E164
-     */
-    public function preferredToE164($prefnumber)
-    {
-        /**
-         * @var Company $this
-         */
-        // Remove company outbound prefix
-        $prefnumber = $this->removeOutboundPrefix($prefnumber);
-        // Get user country
-        $country = $this->getCountry();
-        // Return e164 number dialed by this user
-        return $country->preferredToE164($prefnumber, $this->getAreaCodeValue());
-    }
-
-    /**
-     * Convert a received number to Company prefered format
-     *
-     * @param unknown $number
-     */
-    public function E164ToPreferred($e164number)
-    {
-        /**
-         * @var Company $this
-         */
-        // Get Compnay country
-        $country = $this->getCountry();
-        // Convert from E164 to user country preferred format
-        $prefnumber = $country->E164ToPreferred($e164number, $this->getAreaCodeValue());
-        // Add Company outbound prefix
-        return $this->addOutboundPrefix($prefnumber);
-    }
-
-    /**
-     * Gets company area code if company country uses area code
-     *
-     * @return string
-     */
-    public function getAreaCodeValue()
-    {
-        /**
-         * @var Company $this
-         */
-        if (!$this->getCountry()->hasAreaCode()) {
-            return "";
-        }
-
-        return $this->getAreaCode();
-    }
-
-    /**
-     * @param $number
-     * @return string
-     */
-    public function removeOutboundPrefix($number)
-    {
-        /**
-         * @var Company $this
-         */
-        // Remove company outbound prefix
-        $outboundPrefix = $this->getOutboundPrefix();
-        return preg_replace("/^$outboundPrefix/", "", $number);
-    }
-
-    /**
-     * @param $number
-     * @return string
-     */
-    public function addOutboundPrefix($number)
-    {
-        /**
-         * @var Company $this
-         */
-        // Add Company outbound prefix
-        return $this->getOutboundPrefix() . $number;
     }
 
     public function getOutgoingRoutings()

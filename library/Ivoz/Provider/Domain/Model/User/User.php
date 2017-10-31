@@ -65,10 +65,11 @@ class User extends UserAbstract implements UserInterface
     public function getVoiceMail()
     {
         if (!is_null($this->getVoiceMailUser())) {
-            return
-                $this->getVoiceMailUser()
-                . '@'
-                . $this->getVoiceMailContext();
+
+            return sprintf("%s@%s",
+                $this->getVoiceMailUser(),
+                $this->getVoiceMailContext()
+            );
         }
 
         return '';
@@ -97,10 +98,10 @@ class User extends UserAbstract implements UserInterface
      */
     public function getOutgoingDdiNumber()
     {
-        $Ddi = $this->getOutgoingDdi();
-        if ($Ddi) {
+        $ddi = $this->getOutgoingDdi();
+        if ($ddi) {
 
-            return $Ddi->getDdiE164();
+            return $ddi->getDdiE164();
         }
 
         return null;
@@ -160,29 +161,6 @@ class User extends UserAbstract implements UserInterface
     }
 
     /**
-     * @todo this is probably dead code
-     * @return string or null
-     */
-    public function getDomain()
-    {
-        throw new \Exception('Review required');
-        $company = $this->getCompany();
-        if (!$company) {
-            return null;
-        }
-
-        $brand = $company->getBrand();
-        if (!$brand) {
-            return null;
-        }
-
-        /**
-         * @todo this does not exists
-         */
-        return $brand->getDomain();
-    }
-
-    /**
      * @param string $exten
      * @return bool canCall
      */
@@ -210,7 +188,9 @@ class User extends UserAbstract implements UserInterface
          */
         $pickUpRelUsers = $this->getPickUpRelUsers();
         if (!empty($pickUpRelUsers)) {
+
             foreach ($pickUpRelUsers as $key => $pickUpRelUser) {
+
                 $pickUpGroups[$key] = $pickUpRelUser->getPickUpGroup();
             }
         }
@@ -310,92 +290,6 @@ class User extends UserAbstract implements UserInterface
         return $this
             ->getLanguage()
             ->getIden();
-    }
-
-    /**
-     * Get User country
-     * return company country if empty
-     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
-     */
-    public function getCountry()
-    {
-        $country = parent::getCountry();
-        if (!is_null($country)) {
-
-            return $country;
-        }
-
-        return $this
-            ->getCompany()
-            ->getCountry();
-    }
-
-    /**
-     * Convert a user dialed number to E164 form
-     *
-     * @param string $prefNumber
-     * @return string number in E164
-     */
-    public function preferredToE164($prefNumber)
-    {
-        // Remove company outbound prefix
-        $prefNumber = $this
-            ->getCompany()
-            ->removeOutboundPrefix($prefNumber);
-
-        // Get user country
-        $country = $this->getCountry();
-
-        // Return e164 number dialed by this user
-        return $country
-            ->preferredToE164(
-                $prefNumber,
-                $this->getAreaCodeValue()
-            );
-    }
-
-    /**
-     * Convert a received number to User prefered format
-     *
-     * @param string $number
-     */
-    public function E164ToPreferred($e164number)
-    {
-        // Get User country
-        $country = $this->getCountry();
-
-        // Convert from E164 to user country preferred format
-        $prefNumber = $country
-            ->E164ToPreferred(
-                $e164number,
-                $this->getAreaCodeValue()
-            );
-
-        // Add Company outbound prefix
-        return $this
-            ->getCompany()
-            ->addOutboundPrefix($prefNumber);
-    }
-
-    /**
-     * Gets user Area Code. returns company area code if empty
-     *
-     * @return string
-     */
-    public function getAreaCodeValue()
-    {
-        $hasAreaCode = $this->getCountry()->hasAreaCode();
-        if (!$hasAreaCode) {
-            return '';
-        }
-
-        if (!empty($this->_areaCode)) {
-            return $this->_areaCode;
-        }
-
-        return $this
-            ->getCompany()
-            ->getAreaCodeValue();
     }
 
 }

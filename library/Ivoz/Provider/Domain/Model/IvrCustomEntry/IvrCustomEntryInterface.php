@@ -9,6 +9,13 @@ interface IvrCustomEntryInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * Get the numberValue in E.164 format when routing to 'number'
+     *
+     * @return string
+     */
+    public function getNumberValueE164();
+
+    /**
      * Set entry
      *
      * @param string $entry
@@ -135,6 +142,22 @@ interface IvrCustomEntryInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface
      */
     public function getTargetConditionalRoute();
+
+    /**
+     * Set targetNumberCountry
+     *
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $targetNumberCountry
+     *
+     * @return self
+     */
+    public function setTargetNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $targetNumberCountry = null);
+
+    /**
+     * Get targetNumberCountry
+     *
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     */
+    public function getTargetNumberCountry();
 
 }
 

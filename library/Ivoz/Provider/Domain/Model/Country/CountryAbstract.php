@@ -17,25 +17,9 @@ abstract class CountryAbstract
     protected $code = '';
 
     /**
-     * @column calling_code
-     * @var integer
-     */
-    protected $callingCode;
-
-    /**
      * @var string
      */
-    protected $intCode;
-
-    /**
-     * @var string
-     */
-    protected $e164Pattern;
-
-    /**
-     * @var boolean
-     */
-    protected $nationalCC = '0';
+    protected $countryCode;
 
     /**
      * @var Name
@@ -57,14 +41,9 @@ abstract class CountryAbstract
     /**
      * Constructor
      */
-    public function __construct(
-        $code,
-        $nationalCC,
-        Name $name,
-        Zone $zone
-    ) {
+    public function __construct($code, Name $name, Zone $zone)
+    {
         $this->setCode($code);
-        $this->setNationalCC($nationalCC);
         $this->setName($name);
         $this->setZone($zone);
 
@@ -169,15 +148,12 @@ abstract class CountryAbstract
 
         $self = new static(
             $dto->getCode(),
-            $dto->getNationalCC(),
             $name,
             $zone
         );
 
         return $self
-            ->setCallingCode($dto->getCallingCode())
-            ->setIntCode($dto->getIntCode())
-            ->setE164Pattern($dto->getE164Pattern())
+            ->setCountryCode($dto->getCountryCode())
         ;
     }
 
@@ -204,10 +180,7 @@ abstract class CountryAbstract
 
         $this
             ->setCode($dto->getCode())
-            ->setCallingCode($dto->getCallingCode())
-            ->setIntCode($dto->getIntCode())
-            ->setE164Pattern($dto->getE164Pattern())
-            ->setNationalCC($dto->getNationalCC())
+            ->setCountryCode($dto->getCountryCode())
             ->setName($name)
             ->setZone($zone);
 
@@ -222,10 +195,7 @@ abstract class CountryAbstract
     {
         return self::createDTO()
             ->setCode($this->getCode())
-            ->setCallingCode($this->getCallingCode())
-            ->setIntCode($this->getIntCode())
-            ->setE164Pattern($this->getE164Pattern())
-            ->setNationalCC($this->getNationalCC())
+            ->setCountryCode($this->getCountryCode())
             ->setNameEn($this->getName()->getEn())
             ->setNameEs($this->getName()->getEs())
             ->setZoneEn($this->getZone()->getEn())
@@ -239,10 +209,7 @@ abstract class CountryAbstract
     {
         return [
             'code' => self::getCode(),
-            'calling_code' => self::getCallingCode(),
-            'intCode' => self::getIntCode(),
-            'e164Pattern' => self::getE164Pattern(),
-            'nationalCC' => self::getNationalCC(),
+            'countryCode' => self::getCountryCode(),
             'nameEn' => self::getName()->getEn(),
             'nameEs' => self::getName()->getEs(),
             'zoneEn' => self::getZone()->getEn(),
@@ -281,117 +248,31 @@ abstract class CountryAbstract
     }
 
     /**
-     * Set callingCode
+     * Set countryCode
      *
-     * @param integer $callingCode
+     * @param string $countryCode
      *
      * @return self
      */
-    public function setCallingCode($callingCode = null)
+    public function setCountryCode($countryCode = null)
     {
-        if (!is_null($callingCode)) {
-            if (!is_null($callingCode)) {
-                Assertion::integerish($callingCode);
-                Assertion::greaterOrEqualThan($callingCode, 0);
-            }
+        if (!is_null($countryCode)) {
+            Assertion::maxLength($countryCode, 10);
         }
 
-        $this->callingCode = $callingCode;
+        $this->countryCode = $countryCode;
 
         return $this;
     }
 
     /**
-     * Get callingCode
-     *
-     * @return integer
-     */
-    public function getCallingCode()
-    {
-        return $this->callingCode;
-    }
-
-    /**
-     * Set intCode
-     *
-     * @param string $intCode
-     *
-     * @return self
-     */
-    public function setIntCode($intCode = null)
-    {
-        if (!is_null($intCode)) {
-            Assertion::maxLength($intCode, 5);
-        }
-
-        $this->intCode = $intCode;
-
-        return $this;
-    }
-
-    /**
-     * Get intCode
+     * Get countryCode
      *
      * @return string
      */
-    public function getIntCode()
+    public function getCountryCode()
     {
-        return $this->intCode;
-    }
-
-    /**
-     * Set e164Pattern
-     *
-     * @param string $e164Pattern
-     *
-     * @return self
-     */
-    public function setE164Pattern($e164Pattern = null)
-    {
-        if (!is_null($e164Pattern)) {
-            Assertion::maxLength($e164Pattern, 250);
-        }
-
-        $this->e164Pattern = $e164Pattern;
-
-        return $this;
-    }
-
-    /**
-     * Get e164Pattern
-     *
-     * @return string
-     */
-    public function getE164Pattern()
-    {
-        return $this->e164Pattern;
-    }
-
-    /**
-     * Set nationalCC
-     *
-     * @param boolean $nationalCC
-     *
-     * @return self
-     */
-    public function setNationalCC($nationalCC)
-    {
-        Assertion::notNull($nationalCC);
-        Assertion::between(intval($nationalCC), 0, 1);
-
-        $this->nationalCC = $nationalCC;
-
-        return $this;
-    }
-
-    /**
-     * Get nationalCC
-     *
-     * @return boolean
-     */
-    public function getNationalCC()
-    {
-        return $this->nationalCC;
+        return $this->countryCode;
     }
 
     /**

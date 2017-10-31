@@ -41,7 +41,7 @@ class ConditionalRouteAction extends RouterAction
         $this->_routeIVRCustom  = $route->getIVRCustom();
         $this->_routeHuntGroup  = $route->getHuntGroup();
         $this->_routeVoiceMail  = $route->getVoiceMailUser();
-        $this->_routeExternal   = $route->getNumberValue();
+        $this->_routeExternal   = $route->getNumberValueE164();
         $this->_routeFriend     = $route->getFriendValue();
         $this->_routeQueue      = $route->getQueue();
         $this->_routeConference = $route->getConferenceRoom();
@@ -55,7 +55,7 @@ class ConditionalRouteAction extends RouterAction
 
             // TODO Implement complex matches
             // Check origin matches route condition
-            if (!$condition->matchesOrigin($this->agi->getOrigCallerIdNum())) {
+            if (!$condition->matchesOrigin($this->agi->getCallerIdNum())) {
                 continue;
             }
 
@@ -83,7 +83,7 @@ class ConditionalRouteAction extends RouterAction
             $this->_routeIVRCustom  = $condition->getIVRCustom();
             $this->_routeHuntGroup  = $condition->getHuntGroup();
             $this->_routeVoiceMail  = $condition->getVoiceMailUser();
-            $this->_routeExternal   = $condition->getNumberValue();
+            $this->_routeExternal   = $condition->getNumberValueE164();
             $this->_routeFriend     = $condition->getFriendValue();
             $this->_routeQueue      = $condition->getQueue();
             $this->_routeConference = $condition->getConferenceRoom();

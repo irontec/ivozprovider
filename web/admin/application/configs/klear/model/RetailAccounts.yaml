@@ -95,37 +95,6 @@ production:
       options:
         commands:
           generatePassword_command: true
-    countryId:
-      title: _('Country code')
-      type: select
-      source:
-        data: mapper
-        config:
-          entity: \Ivoz\Provider\Domain\Model\Country\Country
-          fieldName:
-            fields:
-              - name${lang}
-              - callingCode
-            template: '%name${lang}% (+%callingCode%)'
-          order:
-            Country.name.${lang}: asc
-        'null': _("Client's default")
-      info:
-        type: box
-        position: left
-        icon: help
-        text: _("Outgoing calls coming from Friend must have this country format")
-        label: _("Need help?")
-    areaCode:
-      title: _('Area code')
-      type: text
-      maxLength: 10
-      info:
-        type: box
-        position: left
-        icon: help
-        text: _("Outgoing calls coming from Friend must have this area code format")
-        label: _("Need help?")
     outgoingDdiId:
       title: _('Fallback Outgoing DDI')
       type: select
@@ -137,7 +106,7 @@ production:
           fieldName:
             fields:
               - ddie164
-            template: '+%ddie164%'
+            template: '%ddie164%'
           order:
             Ddi.ddie164: asc
         'null': _("Client's default")
@@ -257,6 +226,21 @@ production:
       source:
         class: IvozProvider_Klear_Ghost_RegisterStatus
         method: getRetailAccountStatus
+    transformationRuleSetId:
+      title: _('Numeric Transformation')
+      type: select
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet
+          filterClass: IvozProvider_Klear_Filter_TransformationRuleSets
+          fieldName:
+            fields:
+              - name${lang}
+            template: '%name${lang}%'
+          order:
+            TransformationRuleSet.name.${lang}: asc
+        'null': _("Company's default")
 staging:
   _extends: production
 testing:

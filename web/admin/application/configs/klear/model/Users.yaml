@@ -74,6 +74,22 @@ production:
             template: '%tz%'
           order:
             Timezone.tz: asc
+    transformationRuleSetId:
+      title: _('Numeric Transformation')
+      type: select
+      defaultValue: 'null'
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet
+          filterClass: IvozProvider_Klear_Filter_TransformationRuleSets
+          fieldName:
+            fields:
+              - name${lang}
+            template: '%name${lang}%'
+          order:
+            TransformationRuleSet.name.${lang}: asc
+        'null': _("Company's default")
     terminalId:
       title: _('Terminal')
       type: select
@@ -81,7 +97,7 @@ production:
         data: mapper
         config:
           entity: \Ivoz\Provider\Domain\Model\Terminal\Terminal
-          filterClass: IvozProvider_Klear_Filter_Terminals
+#          filterClass: IvozProvider_Klear_Filter_Terminals
           fieldName:
             fields:
               - name
@@ -115,7 +131,7 @@ production:
           fieldName:
             fields:
               - ddie164
-            template: '+%ddie164%'
+            template: '%ddie164%'
           order:
             Ddi.ddie164: asc
         'null': _("Company's default")
@@ -297,31 +313,6 @@ production:
           related: \Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroup
           relatedFieldName: name
           filterClass: IvozProvider_Klear_Filter_Company
-    countryId:
-      title: _('Country code')
-      type: select
-      source:
-        data: mapper
-        config:
-          entity: \Ivoz\Provider\Domain\Model\Country\Country
-          fieldName:
-            fields:
-              - name${lang}
-              - callingCode
-            template: '%name${lang}% (+%callingCode%)'
-          order:
-            Country.name.${lang}: asc
-        'null': _("Company's default")
-    areaCode:
-      title: _('Area code')
-      type: text
-      maxLength: 10
-      info:
-        type: box
-        position: left
-        icon: help
-        text: _("Calling a number within the same Area can omit Area Code")
-        label: _("Need help?")
     HuntGroupsRelUsers:
       title: ngettext('Hunt Group', 'Hunt Groups', 0)
       searchable: false
@@ -357,7 +348,7 @@ production:
     languageId:
       title: _('Language')
       type: select
-      defaultValue: 1
+      defaultValue: 'null'
       source:
         data: mapper
         config:

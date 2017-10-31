@@ -82,11 +82,6 @@ class UserDTO implements DataTransferObjectInterface
     private $tokenKey;
 
     /**
-     * @var string
-     */
-    private $areaCode;
-
-    /**
      * @var boolean
      */
     private $gsQRCode = '0';
@@ -114,7 +109,7 @@ class UserDTO implements DataTransferObjectInterface
     /**
      * @var mixed
      */
-    private $countryId;
+    private $transformationRuleSetId;
 
     /**
      * @var mixed
@@ -169,7 +164,7 @@ class UserDTO implements DataTransferObjectInterface
     /**
      * @var mixed
      */
-    private $country;
+    private $transformationRuleSet;
 
     /**
      * @var mixed
@@ -241,13 +236,12 @@ class UserDTO implements DataTransferObjectInterface
             'voicemailSendMail' => $this->getVoicemailSendMail(),
             'voicemailAttachSound' => $this->getVoicemailAttachSound(),
             'tokenKey' => $this->getTokenKey(),
-            'areaCode' => $this->getAreaCode(),
             'gsQRCode' => $this->getGsQRCode(),
             'id' => $this->getId(),
             'companyId' => $this->getCompanyId(),
             'callAclId' => $this->getCallAclId(),
             'bossAssistantId' => $this->getBossAssistantId(),
-            'countryId' => $this->getCountryId(),
+            'transformationRuleSetId' => $this->getTransformationRuleSetId(),
             'languageId' => $this->getLanguageId(),
             'terminalId' => $this->getTerminalId(),
             'extensionId' => $this->getExtensionId(),
@@ -269,7 +263,7 @@ class UserDTO implements DataTransferObjectInterface
         $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
         $this->callAcl = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\CallAcl\\CallAcl', $this->getCallAclId());
         $this->bossAssistant = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\User\\User', $this->getBossAssistantId());
-        $this->country = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Country\\Country', $this->getCountryId());
+        $this->transformationRuleSet = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\TransformationRuleSet\\TransformationRuleSet', $this->getTransformationRuleSetId());
         $this->language = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Language\\Language', $this->getLanguageId());
         $this->terminal = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Terminal\\Terminal', $this->getTerminalId());
         $this->extension = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Extension\\Extension', $this->getExtensionId());
@@ -612,26 +606,6 @@ class UserDTO implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $areaCode
-     *
-     * @return UserDTO
-     */
-    public function setAreaCode($areaCode = null)
-    {
-        $this->areaCode = $areaCode;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getAreaCode()
-    {
-        return $this->areaCode;
-    }
-
-    /**
      * @param boolean $gsQRCode
      *
      * @return UserDTO
@@ -756,13 +730,13 @@ class UserDTO implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $countryId
+     * @param integer $transformationRuleSetId
      *
      * @return UserDTO
      */
-    public function setCountryId($countryId)
+    public function setTransformationRuleSetId($transformationRuleSetId)
     {
-        $this->countryId = $countryId;
+        $this->transformationRuleSetId = $transformationRuleSetId;
 
         return $this;
     }
@@ -770,17 +744,17 @@ class UserDTO implements DataTransferObjectInterface
     /**
      * @return integer
      */
-    public function getCountryId()
+    public function getTransformationRuleSetId()
     {
-        return $this->countryId;
+        return $this->transformationRuleSetId;
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Country\Country
+     * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet
      */
-    public function getCountry()
+    public function getTransformationRuleSet()
     {
-        return $this->country;
+        return $this->transformationRuleSet;
     }
 
     /**

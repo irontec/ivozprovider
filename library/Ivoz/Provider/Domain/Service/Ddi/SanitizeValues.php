@@ -30,7 +30,7 @@ class SanitizeValues implements DdiLifecycleEventHandlerInterface
         }
 
         $entity->setDdie164(
-            $country->getCallingCode()
+            $country->getCountryCode()
             . $entity->getDdi()
         );
 

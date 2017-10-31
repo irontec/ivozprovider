@@ -49,7 +49,7 @@ doctrine:
         #   2. Uncomment database_path in parameters.yml.dist
         #   3. Uncomment next line:
         #path: '%database_path%'
-        schema_filter: "/^(?!kam_trunks_acc|kam_version$).*/"
+        schema_filter: "/^(?!kam_trunks_acc|kam_version|changelog$).*/"
         mapping_types:
             enum: string
     orm:

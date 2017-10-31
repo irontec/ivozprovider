@@ -32,14 +32,15 @@ production:
           conferenceRoomId: true
           userId: true
           voiceMailUserId: true
+          numberCountryId: true
           numberValue: true
           friendValue: true
           queueId: true
           conferenceRoomId: true
           extensionId: true
-          ConditionalRoutesConditionsRelMatchLists: true
-          ConditionalRoutesConditionsRelSchedules: true
-          ConditionalRoutesConditionsRelCalendars: true
+          matchlists: true
+          schedules: true
+          calendars: true
         order:
           priority: true
           ConditionMatch: true
@@ -61,13 +62,15 @@ production:
       multiInstance: true
       title: _("Add %s", ngettext('Condition', 'Conditions', 1), "[format| (%parent%)]")
       shortcutOption: N
+      defaultValues:
+        numberCountryId: ${auth.companyCountryId}
       fields:
         blacklist: &conditionalRoutesConditionsBlacklist_link
           target: true
           ConditionMatch: true
         order: &conditionalRoutesConditionsOrder_link
             priority: true
-            ConditionalRoutesConditionsRelMatchLists: true
+            matchlists: true
             locutionId: true
       fixedPositions: &conditionalRoutesConditionsPositions_link
         group0:
@@ -80,21 +83,22 @@ production:
           colsPerRow: 12
           fields:
             type: 5
-            ConditionalRoutesConditionsRelMatchLists: 4
-            ConditionalRoutesConditionsRelSchedules: 4
-            ConditionalRoutesConditionsRelCalendars: 4
+            matchlists: 4
+            schedules: 4
+            calendars: 4
         group2:
           label: _("Matching handler")
           colsPerRow: 6
           fields:
             locutionId: 6
-            routeType: 3
+            routeType: 2
             IVRCommonId: 3
             IVRCustomId: 3
             huntGroupId: 3
             voiceMailUserId: 3
             userId: 3
-            numberValue: 3
+            numberCountryId: 2
+            numberValue: 2
             friendValue: 3
             queueId: 3
             conferenceRoomId: 3

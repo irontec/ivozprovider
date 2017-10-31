@@ -53,23 +53,38 @@ production:
           'number':
             title: _('Number')
             visualFilter:
-              show: ["targetNumberValue"]
-              hide: ["targetExtensionId", "targetVoiceMailUserId", "targetConditionalRouteId"]
+              show: [ targetNumberCountryId, targetNumberValue]
+              hide: [ targetExtensionId, targetVoiceMailUserId, targetConditionalRouteId]
           'extension':
             title: ngettext('Extension', 'Extensions', 1)
             visualFilter:
-              show: ["targetExtensionId"]
-              hide: ["targetNumberValue", "targetVoiceMailUserId", "targetConditionalRouteId"]
+              show: [ targetExtensionId]
+              hide: [ targetNumberCountryId, targetNumberValue, targetVoiceMailUserId, targetConditionalRouteId]
           'voicemail':
             title: ngettext('Voicemail', 'Voicemails', 1)
             visualFilter:
-              show: ["targetVoiceMailUserId"]
-              hide: ["targetExtensionId", "targetNumberValue", "targetConditionalRouteId"]
+              show: [ targetVoiceMailUserId ]
+              hide: [ targetExtensionId, targetNumberCountryId, targetNumberValue, targetConditionalRouteId]
           'conditional':
             title: _('Conditional Route')
             visualFilter:
-              show: ["targetConditionalRouteId"]
-              hide: ["targetExtensionId", "targetVoiceMailUserId", "targetNumberValue"]
+              show: [ targetConditionalRouteId ]
+              hide: [ targetExtensionId, targetVoiceMailUserId, targetNumberCountryId, targetNumberValue ]
+    targetNumberCountryId:
+      title: _('Country')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Country\Country
+          fieldName:
+            fields:
+              - name${lang}
+              - countryCode
+            template: '%name${lang}% (%countryCode%)'
+          order:
+            Country.name.${lang}: asc
     targetNumberValue:
       title: _('Number')
       type: text

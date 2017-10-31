@@ -51,5 +51,29 @@ class IvrCommon extends IvrCommonAbstract implements IvrCommonInterface
             ->getExtensions($criteria)
             ->first();
     }
+
+    /**
+     * Get the timeout numberValue in E.164 format when routing to 'number'
+     *
+     * @return string
+     */
+    public function getTimeoutNumberValueE164()
+    {
+        return
+            $this->getTimeoutNumberCountry()->getCountryCode() .
+            $this->getTimeoutNumberValue();
+    }
+
+    /**
+     * Get the error numberValue in E.164 format when routing to 'number'
+     *
+     * @return string
+     */
+    public function getErrorNumberValueE164()
+    {
+        return
+            $this->getErrorNumberCountry()->getCountryCode() .
+            $this->getErrorNumberValue();
+    }
 }
 
