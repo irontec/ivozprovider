@@ -10,6 +10,6 @@ $kernel->boot();
 
 \Zend_Registry::set(
     'data_gateway',
-    $kernel->getContainer()->get('ZfBundle\Services\DataGateway')
+    $kernel->getContainer()->get(\Ivoz\Core\Application\Service\DataGateway::class)
 );
 require 'zf.php';

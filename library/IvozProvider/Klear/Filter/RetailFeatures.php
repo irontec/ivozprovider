@@ -18,7 +18,7 @@ class IvozProvider_Klear_Filter_RetailFeatures implements KlearMatrix_Model_Fiel
         $currentBrandId = $auth->getIdentity()->brandId;
 
         /**
-         * @var \ZfBundle\Services\DataGateway $dataGateway
+         * @var \Ivoz\Core\Application\Service\DataGateway $dataGateway
          */
         $dataGateway = \Zend_Registry::get('data_gateway');
 

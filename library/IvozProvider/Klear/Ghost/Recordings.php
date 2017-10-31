@@ -27,7 +27,7 @@ class IvozProvider_Klear_Ghost_Recordings extends KlearMatrix_Model_Field_Ghost_
     public function getCompanyDiskUsage($model)
     {
         /**
-         * @var \ZfBundle\Services\DataGateway $dataGateway
+         * @var \Ivoz\Core\Application\Service\DataGateway $dataGateway
          */
         $dataGateway = \Zend_Registry::get('data_gateway');
 

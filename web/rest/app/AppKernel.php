@@ -15,8 +15,6 @@ class AppKernel extends Kernel
 
             /* Core */
             new CoreBundle\CoreBundle(),
-            /* Zf wrapper */
-            new ZfBundle\ZfBundle()
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

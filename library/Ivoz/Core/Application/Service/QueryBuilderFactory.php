@@ -1,6 +1,6 @@
 <?php
 
-namespace ZfBundle\Services;
+namespace Ivoz\Core\Application\Service;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\QueryBuilder;
