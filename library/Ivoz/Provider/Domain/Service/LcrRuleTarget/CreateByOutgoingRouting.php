@@ -1,5 +1,5 @@
 <?php
-namespace Ivoz\Provider\Domain\Service\LcrGateway;
+namespace Ivoz\Provider\Domain\Service\LcrRuleTarget;
 
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayInterface;
@@ -19,9 +19,8 @@ class CreateByOutgoingRouting implements OutgoingRoutingLifecycleEventHandlerInt
      */
     protected $entityPersister;
 
-    public function __construct(
-        EntityPersisterInterface $entityPersister
-    ) {
+    public function __construct(EntityPersisterInterface $entityPersister)
+    {
         $this->entityPersister = $entityPersister;
     }
 

@@ -2,8 +2,6 @@
 
 namespace Ivoz\Provider\Domain\Model\LcrRule;
 
-use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
-
 /**
  * LcrRule
  */
@@ -26,31 +24,6 @@ class LcrRule extends LcrRuleAbstract implements LcrRuleInterface
         return $this->id;
     }
 
-    protected $id;
-
-//    public function setOutgoingRouting(OutgoingRoutingInterface $outgoingRouting)
-//    {
-//        $brandId = $outgoingRouting->getBrand()->getId();
-//        if (!is_null($outgoingRouting->getCompany())) {
-//            $companyId = $outgoingRouting->getCompany()->getId();
-//            $this->setFromUri(
-//                sprintf(
-//                    '^b%dc%d$',
-//                    $brandId,
-//                    $companyId
-//                )
-//            );
-//        } else {
-//            $this->setFromUri(
-//                sprintf(
-//                    '^b%dc[0-9]+$',
-//                    $brandId
-//                )
-//            );
-//        }
-//
-//        return $this;
-//    }
 
     public function setCondition($regexp)
     {

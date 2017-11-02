@@ -26,9 +26,13 @@ class UpdateByOutgoingRouting implements OutgoingRoutingLifecycleEventHandlerInt
         $this->entityPersister = $entityPersister;
     }
 
+    /**
+     * @param OutgoingRoutingInterface $outgoingRouting
+     */
     public function execute(OutgoingRoutingInterface $outgoingRouting)
     {
         // If edit, delete everything and fresh-start
+        /** @var LcrRuleInterface[] $lcrRules */
         $lcrRules = $outgoingRouting->getLcrRules();
         foreach ($lcrRules as $lcrRule) {
             $this->entityPersister->remove($lcrRule);
@@ -38,37 +42,41 @@ class UpdateByOutgoingRouting implements OutgoingRoutingLifecycleEventHandlerInt
         /**
          * @var LcrRuleInterface[] $lcrRules
          */
+        $routingPatterns = $this->getPatterns($outgoingRouting);
+
         $lcrRules = new ArrayCollection();
-        // Create LcrRule for each RoutingPattern
-        if ($outgoingRouting->getType() === 'group') {
-            $patterns = $outgoingRouting->getRoutingPatternGroup()->getRoutingPatterns();
-            foreach ($patterns as $pattern) {
-                $lcrRule = $this->addLcrRulePerPattern(
-                    $outgoingRouting,
-                    $pattern
-                );
-                $lcrRules->add($lcrRule);
-            }
-        } elseif ($outgoingRouting->getType() === 'pattern') {
-            $lcrRule = $this->addLcrRulePerPattern(
-                $outgoingRouting,
-                $outgoingRouting->getRoutingPattern()
-            );
+
+        foreach ($routingPatterns as $routingPattern) {
+            $lcrRule = $this->addLcrRulePerPattern($outgoingRouting, $routingPattern);
             $lcrRules->add($lcrRule);
-        } elseif ($outgoingRouting->getType() === 'fax') {
-            $lcrRule = $this->addLcrRulePerPattern(
-                $outgoingRouting
-            );
-            $lcrRules->add($lcrRule);
-        } else {
-            throw new \Exception('Incorrect Outgoing Routing Type');
         }
 
         $outgoingRouting->replaceLcrRules($lcrRules);
     }
 
     /**
-     * @todo this could be a service itself
+     * @param OutgoingRoutingInterface $outgoingRouting
+     * @return array
+     * @throws \Exception
+     */
+    protected function getPatterns(OutgoingRoutingInterface $outgoingRouting)
+    {
+        $routingPatterns = array();
+
+        if ($outgoingRouting->getType() === 'group') {
+            $patterns = $outgoingRouting->getRoutingPatternGroup()->getRoutingPatterns();
+            $routingPatterns = array_merge($routingPatterns, $patterns);
+        } elseif ($outgoingRouting->getType() === 'pattern') {
+            $routingPatterns[] = $outgoingRouting->getRoutingPattern();
+        } elseif ($outgoingRouting->getType() === 'fax') {
+            $routingPatterns[] = null;
+        } else {
+            throw new \Exception('Incorrect Outgoing Routing Type');
+        }
+
+        return $routingPatterns;
+    }
+    /**
      * @param OutgoingRoutingInterface $entity
      * @param RoutingPatternInterface|null $pattern
      * @return LcrRuleInterface
@@ -96,6 +104,27 @@ class UpdateByOutgoingRouting implements OutgoingRoutingLifecycleEventHandlerInt
                 ->setRoutingPatternId($pattern->getId());
 
             $condition = $pattern->getRegExp();
+        }
+
+        $brandId = $entity->getBrand()->getId();
+
+        // Setting LcrRule FromURI pattern
+        if (!is_null($entity->getCompany())) {
+            $companyId = $entity->getCompany()->getId();
+            $lcrRuleDto->setFromUri(
+                sprintf(
+                    '^b%dc%d$',
+                    $brandId,
+                    $companyId
+                )
+            );
+        } else {
+            $lcrRuleDto->setFromUri(
+                sprintf(
+                    '^b%dc[0-9]+$',
+                    $brandId
+                )
+            );
         }
 
         $lcrRule = LcrRule::fromDTO($lcrRuleDto);
