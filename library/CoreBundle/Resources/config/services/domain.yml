@@ -8,11 +8,6 @@ services:
       $entityPersister:
         '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
 
-  Ivoz\Provider\Domain\Service\LcrGateway\CreateByOutgoingRouting:
-    arguments:
-      $entityPersister:
-        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
-
   Ivoz\Provider\Domain\Service\RoutingPatternGroupsRelPattern\CreateAndPersist:
     arguments:
       $entityPersister:
