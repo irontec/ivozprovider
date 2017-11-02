@@ -14,6 +14,10 @@ Ivoz\Provider\Domain\Model\Friend\FriendAbstract:
       columns:
         - languageId
   uniqueConstraints:
+    name_domain:
+      columns:
+        - name
+        - domainId
     companyPrio:
       columns:
         - companyId
@@ -24,13 +28,6 @@ Ivoz\Provider\Domain\Model\Friend\FriendAbstract:
       type: string
       nullable: false
       length: 65
-      options:
-        fixed: false
-    domain:
-      column: domain
-      type: string
-      nullable: true
-      length: 190
       options:
         fixed: false
     description:
@@ -155,6 +152,18 @@ Ivoz\Provider\Domain\Model\Friend\FriendAbstract:
           referencedColumnName: id
           nullable: false
           onDelete: cascade
+      orphanRemoval: false
+    domain:
+      targetEntity: \Ivoz\Provider\Domain\Model\Domain\DomainInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        domainId:
+          domainId: id
+          nullable: true
+          onDelete: set null
       orphanRemoval: false
     transformationRuleSet:
       targetEntity: \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface

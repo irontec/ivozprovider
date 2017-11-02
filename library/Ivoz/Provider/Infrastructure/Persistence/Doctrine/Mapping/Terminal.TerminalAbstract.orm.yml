@@ -10,23 +10,17 @@ Ivoz\Provider\Domain\Model\Terminal\TerminalAbstract:
     name_domain_idx:
       columns:
         - name
-        - domain
+        - domainId
   uniqueConstraints:
     name_domain:
       columns:
         - name
-        - domain
+        - domainId
   fields:
     name:
       type: string
       nullable: true
       length: 100
-      options:
-        fixed: false
-    domain:
-      type: string
-      nullable: true
-      length: 190
       options:
         fixed: false
     disallow:
@@ -90,6 +84,18 @@ Ivoz\Provider\Domain\Model\Terminal\TerminalAbstract:
           referencedColumnName: id
           nullable: false
           onDelete: cascade
+      orphanRemoval: false
+    domain:
+      targetEntity: \Ivoz\Provider\Domain\Model\Domain\DomainInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        domainId:
+          domainId: id
+          nullable: true
+          onDelete: set null
       orphanRemoval: false
     terminalModel:
       targetEntity: \Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelInterface

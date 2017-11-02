@@ -193,6 +193,18 @@ Ivoz\Provider\Domain\Model\Company\CompanyAbstract:
           nullable: false
           onDelete: cascade
       orphanRemoval: false
+    domain:
+      targetEntity: \Ivoz\Provider\Domain\Model\Domain\DomainInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        domainId:
+          domainId: id
+          nullable: true
+          onDelete: set null
+      orphanRemoval: false
     applicationServer:
       targetEntity: \Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface
       cascade: {  }

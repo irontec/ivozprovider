@@ -25,12 +25,6 @@ Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountAbstract:
       length: 65
       options:
         fixed: false
-    domain:
-      type: string
-      nullable: true
-      length: 190
-      options:
-        fixed: false
     description:
       type: string
       nullable: false
@@ -139,6 +133,18 @@ Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountAbstract:
           referencedColumnName: id
           nullable: false
           onDelete: cascade
+      orphanRemoval: false
+    domain:
+      targetEntity: \Ivoz\Provider\Domain\Model\Domain\DomainInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        domainId:
+          domainId: id
+          nullable: true
+          onDelete: set null
       orphanRemoval: false
     company:
       targetEntity: Ivoz\Provider\Domain\Model\Company\CompanyInterface
