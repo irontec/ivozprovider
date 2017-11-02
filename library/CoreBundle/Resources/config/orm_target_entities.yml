@@ -3,8 +3,6 @@ doctrine:
     resolve_target_entities:
       Ivoz\Ast\Domain\Model\Hint\HintInterface:
         Ivoz\Ast\Domain\Model\Hint\Hint
-      Ivoz\Ast\Domain\Model\PsAor\PsAorInterface:
-        Ivoz\Ast\Domain\Model\PsAor\PsAor
       Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface:
         Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpoint
       Ivoz\Ast\Domain\Model\QueueMember\QueueMemberInterface:

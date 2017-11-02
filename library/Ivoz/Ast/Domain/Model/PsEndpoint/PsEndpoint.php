@@ -27,22 +27,6 @@ class PsEndpoint extends PsEndpointAbstract implements PsEndpointInterface
         return $this->id;
     }
 
-    public function getPsAor()
-    {
-        /**
-         * @var \Ivoz\Ast\Domain\Model\PsAor\PsAorInterface[] $aors
-         */
-        $aors = $this->getPsAors();
-        foreach ($aors as $aor) {
-
-            if ($aor->getId() === $this->getSorceryId()) {
-                return $aor;
-            }
-        }
-
-        return null;
-    }
-
     /**
      * Update this user endpoint with current model data
      */

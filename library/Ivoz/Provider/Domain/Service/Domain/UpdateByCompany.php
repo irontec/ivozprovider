@@ -2,18 +2,12 @@
 
 namespace Ivoz\Provider\Domain\Service\Domain;
 
-use Ivoz\Ast\Domain\Model\PsAor\PsAor;
-use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpoint;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
-use Doctrine\ORM\EntityManagerInterface;
-use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Domain\Domain;
 use Ivoz\Provider\Domain\Model\Domain\DomainDTO;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainRepository;
-use Ivoz\Provider\Domain\Model\Friend\Friend;
-use Ivoz\Provider\Domain\Model\Terminal\Terminal;
 use Ivoz\Provider\Domain\Service\Company\CompanyLifecycleEventHandlerInterface;
 
 /**
@@ -60,10 +54,7 @@ class UpdateByCompany implements CompanyLifecycleEventHandlerInterface
         /**
          * @var DomainInterface $domain
          */
-        $domain = $this->domainRepository->findOneBy([
-            'company' => $id,
-            'pointsTo' => 'proxyusers'
-        ]);
+        $domain = $entity->getDomain();
 
         // If domain field is filled, look for Domain entity or create a new one
         $domainDto = is_null($domain)
@@ -77,11 +68,12 @@ class UpdateByCompany implements CompanyLifecycleEventHandlerInterface
          */
         $domainDto
             ->setDomain($name)
-            ->setScope('company')
-            ->setPointsTo('proxyusers')
-            ->setCompanyId($id)
             ->setDescription($entity->getName() . " proxyusers domain");
 
-        $this->entityPersister->persistDto($domainDto, $domain);
+        $domain = $this->entityPersister->persistDto($domainDto, $domain);
+
+        $entity->setDomain($domain);
+
+
     }
 }

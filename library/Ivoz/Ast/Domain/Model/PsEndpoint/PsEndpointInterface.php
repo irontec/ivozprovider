@@ -8,8 +8,6 @@ interface PsEndpointInterface extends LoggableEntityInterface
 {
     public function getChangeSet();
 
-    public function getPsAor();
-
     /**
      * Update this user endpoint with current model data
      */

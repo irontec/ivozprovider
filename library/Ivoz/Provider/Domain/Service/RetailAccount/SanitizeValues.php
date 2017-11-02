@@ -23,7 +23,7 @@ class SanitizeValues implements RetailAccountLifecycleEventHandlerInterface
             $entity
                 ->getCompany()
                 ->getBrand()
-                ->getDomainUsers()
+                ->getDomain()
         );
     }
 }
