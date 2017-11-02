@@ -45,11 +45,6 @@ interface CompanyInterface extends LoggableEntityInterface
     public function setDomainUsers($domainUsers = null);
 
     /**
-     * Get associated user domain for this company
-     */
-    public function getDomain();
-
-    /**
      *
      * @param string $number
      * @return bool tarificable
@@ -403,6 +398,22 @@ interface CompanyInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
      */
     public function getBrand();
+
+    /**
+     * Set domain
+     *
+     * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain
+     *
+     * @return self
+     */
+    public function setDomain(\Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain = null);
+
+    /**
+     * Get domain
+     *
+     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface
+     */
+    public function getDomain();
 
     /**
      * Set applicationServer

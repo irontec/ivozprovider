@@ -19,11 +19,6 @@ class TerminalDTO implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $domain;
-
-    /**
-     * @var string
-     */
     private $disallow = 'all';
 
     /**
@@ -69,12 +64,22 @@ class TerminalDTO implements DataTransferObjectInterface
     /**
      * @var mixed
      */
+    private $domainId;
+
+    /**
+     * @var mixed
+     */
     private $terminalModelId;
 
     /**
      * @var mixed
      */
     private $company;
+
+    /**
+     * @var mixed
+     */
+    private $domain;
 
     /**
      * @var mixed
@@ -98,7 +103,6 @@ class TerminalDTO implements DataTransferObjectInterface
     {
         return [
             'name' => $this->getName(),
-            'domain' => $this->getDomain(),
             'disallow' => $this->getDisallow(),
             'allowAudio' => $this->getAllowAudio(),
             'allowVideo' => $this->getAllowVideo(),
@@ -108,6 +112,7 @@ class TerminalDTO implements DataTransferObjectInterface
             'lastProvisionDate' => $this->getLastProvisionDate(),
             'id' => $this->getId(),
             'companyId' => $this->getCompanyId(),
+            'domainId' => $this->getDomainId(),
             'terminalModelId' => $this->getTerminalModelId(),
             'astPsEndpoints' => $this->getAstPsEndpoints(),
             'users' => $this->getUsers()
@@ -120,6 +125,7 @@ class TerminalDTO implements DataTransferObjectInterface
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
         $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
+        $this->domain = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Domain\\Domain', $this->getDomainId());
         $this->terminalModel = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\TerminalModel\\TerminalModel', $this->getTerminalModelId());
         if (!is_null($this->astPsEndpoints)) {
             $items = $this->getAstPsEndpoints();
@@ -178,26 +184,6 @@ class TerminalDTO implements DataTransferObjectInterface
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * @param string $domain
-     *
-     * @return TerminalDTO
-     */
-    public function setDomain($domain = null)
-    {
-        $this->domain = $domain;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getDomain()
-    {
-        return $this->domain;
     }
 
     /**
@@ -386,6 +372,34 @@ class TerminalDTO implements DataTransferObjectInterface
     public function getCompany()
     {
         return $this->company;
+    }
+
+    /**
+     * @param integer $domainId
+     *
+     * @return TerminalDTO
+     */
+    public function setDomainId($domainId)
+    {
+        $this->domainId = $domainId;
+
+        return $this;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getDomainId()
+    {
+        return $this->domainId;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Domain\Domain
+     */
+    public function getDomain()
+    {
+        return $this->domain;
     }
 
     /**

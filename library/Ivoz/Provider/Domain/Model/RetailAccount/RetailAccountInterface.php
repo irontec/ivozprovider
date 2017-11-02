@@ -20,17 +20,6 @@ interface RetailAccountInterface extends LoggableEntityInterface
     public function getSorcery();
 
     /**
-     * @brief Return Retail Account country or company if null
-     * @return CountryInterface
-     */
-    public function getCountry();
-
-    /**
-     * @deprecated use getCountry instead
-     */
-    public function getCountries();
-
-    /**
      * Obtain content for X-Info-Retail header
      *
      * @param mixed $callee
@@ -77,22 +66,6 @@ interface RetailAccountInterface extends LoggableEntityInterface
      * @return string
      */
     public function getName();
-
-    /**
-     * Set domain
-     *
-     * @param string $domain
-     *
-     * @return self
-     */
-    public function setDomain($domain = null);
-
-    /**
-     * Get domain
-     *
-     * @return string
-     */
-    public function getDomain();
 
     /**
      * Set description
@@ -317,6 +290,22 @@ interface RetailAccountInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
      */
     public function getBrand();
+
+    /**
+     * Set domain
+     *
+     * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain
+     *
+     * @return self
+     */
+    public function setDomain(\Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain = null);
+
+    /**
+     * Get domain
+     *
+     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface
+     */
+    public function getDomain();
 
     /**
      * Set company

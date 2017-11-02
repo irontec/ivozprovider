@@ -19,11 +19,6 @@ class FriendDTO implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $domain;
-
-    /**
-     * @var string
-     */
     private $description = '';
 
     /**
@@ -104,6 +99,11 @@ class FriendDTO implements DataTransferObjectInterface
     /**
      * @var mixed
      */
+    private $domainId;
+
+    /**
+     * @var mixed
+     */
     private $transformationRuleSetId;
 
     /**
@@ -125,6 +125,11 @@ class FriendDTO implements DataTransferObjectInterface
      * @var mixed
      */
     private $company;
+
+    /**
+     * @var mixed
+     */
+    private $domain;
 
     /**
      * @var mixed
@@ -163,7 +168,6 @@ class FriendDTO implements DataTransferObjectInterface
     {
         return [
             'name' => $this->getName(),
-            'domain' => $this->getDomain(),
             'description' => $this->getDescription(),
             'transport' => $this->getTransport(),
             'ip' => $this->getIp(),
@@ -180,6 +184,7 @@ class FriendDTO implements DataTransferObjectInterface
             'directConnectivity' => $this->getDirectConnectivity(),
             'id' => $this->getId(),
             'companyId' => $this->getCompanyId(),
+            'domainId' => $this->getDomainId(),
             'transformationRuleSetId' => $this->getTransformationRuleSetId(),
             'callAclId' => $this->getCallAclId(),
             'outgoingDdiId' => $this->getOutgoingDdiId(),
@@ -195,6 +200,7 @@ class FriendDTO implements DataTransferObjectInterface
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
         $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
+        $this->domain = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Domain\\Domain', $this->getDomainId());
         $this->transformationRuleSet = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\TransformationRuleSet\\TransformationRuleSet', $this->getTransformationRuleSetId());
         $this->callAcl = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\CallAcl\\CallAcl', $this->getCallAclId());
         $this->outgoingDdi = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Ddi\\Ddi', $this->getOutgoingDdiId());
@@ -256,26 +262,6 @@ class FriendDTO implements DataTransferObjectInterface
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * @param string $domain
-     *
-     * @return FriendDTO
-     */
-    public function setDomain($domain = null)
-    {
-        $this->domain = $domain;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getDomain()
-    {
-        return $this->domain;
     }
 
     /**
@@ -604,6 +590,34 @@ class FriendDTO implements DataTransferObjectInterface
     public function getCompany()
     {
         return $this->company;
+    }
+
+    /**
+     * @param integer $domainId
+     *
+     * @return FriendDTO
+     */
+    public function setDomainId($domainId)
+    {
+        $this->domainId = $domainId;
+
+        return $this;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getDomainId()
+    {
+        return $this->domainId;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Domain\Domain
+     */
+    public function getDomain()
+    {
+        return $this->domain;
     }
 
     /**

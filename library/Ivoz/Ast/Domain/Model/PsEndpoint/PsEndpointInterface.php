@@ -3,7 +3,6 @@
 namespace Ivoz\Ast\Domain\Model\PsEndpoint;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Collection;
 
 interface PsEndpointInterface extends LoggableEntityInterface
 {
@@ -319,37 +318,6 @@ interface PsEndpointInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface
      */
     public function getRetailAccount();
-
-    /**
-     * Add psAor
-     *
-     * @param \Ivoz\Ast\Domain\Model\PsAor\PsAorInterface $psAor
-     *
-     * @return PsEndpointTrait
-     */
-    public function addPsAor(\Ivoz\Ast\Domain\Model\PsAor\PsAorInterface $psAor);
-
-    /**
-     * Remove psAor
-     *
-     * @param \Ivoz\Ast\Domain\Model\PsAor\PsAorInterface $psAor
-     */
-    public function removePsAor(\Ivoz\Ast\Domain\Model\PsAor\PsAorInterface $psAor);
-
-    /**
-     * Replace psAors
-     *
-     * @param \Ivoz\Ast\Domain\Model\PsAor\PsAorInterface[] $psAors
-     * @return self
-     */
-    public function replacePsAors(Collection $psAors);
-
-    /**
-     * Get psAors
-     *
-     * @return array
-     */
-    public function getPsAors(\Doctrine\Common\Collections\Criteria $criteria = null);
 
 }
 

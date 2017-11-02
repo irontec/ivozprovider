@@ -67,22 +67,6 @@ interface FriendInterface extends LoggableEntityInterface
     public function getName();
 
     /**
-     * Set domain
-     *
-     * @param string $domain
-     *
-     * @return self
-     */
-    public function setDomain($domain = null);
-
-    /**
-     * Get domain
-     *
-     * @return string
-     */
-    public function getDomain();
-
-    /**
      * Set description
      *
      * @param string $description
@@ -321,6 +305,22 @@ interface FriendInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
      */
     public function getCompany();
+
+    /**
+     * Set domain
+     *
+     * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain
+     *
+     * @return self
+     */
+    public function setDomain(\Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain = null);
+
+    /**
+     * Get domain
+     *
+     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface
+     */
+    public function getDomain();
 
     /**
      * Set transformationRuleSet

@@ -241,23 +241,6 @@ class Company extends CompanyAbstract implements CompanyInterface
     }
 
     /**
-     * Get associated user domain for this company
-     */
-    public function getDomain()
-    {
-        /**
-         * @var Company $this
-         */
-        if ($this->getType() === self::RETAIL) {
-            // Retail Companies use Brand's Domain
-            return $this->getBrand()->getDomainUsers();
-        } else {
-            // Virtual PBX Companies use Company's Domain
-            return $this->getDomainUsers();
-        }
-    }
-
-    /**
      *
      * @param string $number
      * @return bool tarificable

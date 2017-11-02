@@ -19,11 +19,6 @@ abstract class FriendAbstract
     /**
      * @var string
      */
-    protected $domain;
-
-    /**
-     * @var string
-     */
     protected $description = '';
 
     /**
@@ -105,6 +100,11 @@ abstract class FriendAbstract
      * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
      */
     protected $company;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Domain\DomainInterface
+     */
+    protected $domain;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface
@@ -264,12 +264,12 @@ abstract class FriendAbstract
             $dto->getDirectConnectivity());
 
         return $self
-            ->setDomain($dto->getDomain())
             ->setIp($dto->getIp())
             ->setPort($dto->getPort())
             ->setPassword($dto->getPassword())
             ->setFromDomain($dto->getFromDomain())
             ->setCompany($dto->getCompany())
+            ->setDomain($dto->getDomain())
             ->setTransformationRuleSet($dto->getTransformationRuleSet())
             ->setCallAcl($dto->getCallAcl())
             ->setOutgoingDdi($dto->getOutgoingDdi())
@@ -290,7 +290,6 @@ abstract class FriendAbstract
 
         $this
             ->setName($dto->getName())
-            ->setDomain($dto->getDomain())
             ->setDescription($dto->getDescription())
             ->setTransport($dto->getTransport())
             ->setIp($dto->getIp())
@@ -306,6 +305,7 @@ abstract class FriendAbstract
             ->setFromDomain($dto->getFromDomain())
             ->setDirectConnectivity($dto->getDirectConnectivity())
             ->setCompany($dto->getCompany())
+            ->setDomain($dto->getDomain())
             ->setTransformationRuleSet($dto->getTransformationRuleSet())
             ->setCallAcl($dto->getCallAcl())
             ->setOutgoingDdi($dto->getOutgoingDdi())
@@ -322,7 +322,6 @@ abstract class FriendAbstract
     {
         return self::createDTO()
             ->setName($this->getName())
-            ->setDomain($this->getDomain())
             ->setDescription($this->getDescription())
             ->setTransport($this->getTransport())
             ->setIp($this->getIp())
@@ -338,6 +337,7 @@ abstract class FriendAbstract
             ->setFromDomain($this->getFromDomain())
             ->setDirectConnectivity($this->getDirectConnectivity())
             ->setCompanyId($this->getCompany() ? $this->getCompany()->getId() : null)
+            ->setDomainId($this->getDomain() ? $this->getDomain()->getId() : null)
             ->setTransformationRuleSetId($this->getTransformationRuleSet() ? $this->getTransformationRuleSet()->getId() : null)
             ->setCallAclId($this->getCallAcl() ? $this->getCallAcl()->getId() : null)
             ->setOutgoingDdiId($this->getOutgoingDdi() ? $this->getOutgoingDdi()->getId() : null)
@@ -351,7 +351,6 @@ abstract class FriendAbstract
     {
         return [
             'name' => self::getName(),
-            'domain' => self::getDomain(),
             'description' => self::getDescription(),
             'transport' => self::getTransport(),
             'ip' => self::getIp(),
@@ -367,6 +366,7 @@ abstract class FriendAbstract
             'from_domain' => self::getFromDomain(),
             'directConnectivity' => self::getDirectConnectivity(),
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
+            'domainId' => self::getDomain() ? self::getDomain()->getId() : null,
             'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null,
             'callAclId' => self::getCallAcl() ? self::getCallAcl()->getId() : null,
             'outgoingDdiId' => self::getOutgoingDdi() ? self::getOutgoingDdi()->getId() : null,
@@ -855,6 +855,30 @@ abstract class FriendAbstract
     public function getCompany()
     {
         return $this->company;
+    }
+
+    /**
+     * Set domain
+     *
+     * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain
+     *
+     * @return self
+     */
+    public function setDomain(\Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain = null)
+    {
+        $this->domain = $domain;
+
+        return $this;
+    }
+
+    /**
+     * Get domain
+     *
+     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface
+     */
+    public function getDomain()
+    {
+        return $this->domain;
     }
 
     /**
