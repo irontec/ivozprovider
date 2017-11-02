@@ -33,10 +33,18 @@ production:
         icon: help
         text: _("Allowed characters: a-z, A-Z, 0-9, underscore and '*'")
         label: _("Need help?")
-    domain:
-      title: _('Domain')
-      type: text
-      maxLength: 190
+    domainId:
+      title: ngettext('Domain', 'Domains', 1)
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Domain\Domain
+          fieldName:
+            fields:
+              - domain
+            template: '%domain%'
     disallow:
       title: _('Disallowed audio codecs')
       type: text

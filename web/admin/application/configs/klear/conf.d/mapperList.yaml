@@ -469,11 +469,6 @@ mappers:
         modelFile: Musiconhold,
         entity: 'Ivoz\\Provider\\Domain\\Model\\Musiconhold\\Musiconhold'
     }
-  - &AstPsAors {
-        mapper: \IvozProvider\Mapper\Sql\AstPsAors,
-        modelFile: AstPsAors,
-        entity: 'Ast\\Model\\PsAor\\PsAor'
-    }
   - &AstPsEndpoints {
         mapper: \IvozProvider\Mapper\Sql\AstPsEndpoints,
         modelFile: AstPsEndpoints,

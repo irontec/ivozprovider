@@ -33,7 +33,7 @@ production:
           default: terminalsEdit_screen
         order:
           name: true
-          domain: true
+          domainId: true
           terminalModelId: true
           mac: true
           allowAudio: true
@@ -73,7 +73,7 @@ production:
         blacklist:
           disallow: true
           lastProvisionDate: true
-          domain: true
+          domainId: true
           statusIcon: true
           status: true
       fixedPositions: &TerminalsFixedPositions_link
@@ -114,7 +114,7 @@ production:
         readOnly:
           lastProvisionDate: true
         blacklist:
-          domain: true
+          domainId: true
           disallow: true
           statusIcon: true
         order:
