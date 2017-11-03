@@ -1,7 +1,7 @@
-Ivoz\Provider\Domain\Model\BrandOperator\BrandOperator:
-  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\BrandOperatorDoctrineRepository
+Ivoz\Provider\Domain\Model\Administrator\Administrator:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\AdministratorDoctrineRepository
   type: entity
-  table: BrandOperators
+  table: Administrators
   id:
     id:
       type: integer

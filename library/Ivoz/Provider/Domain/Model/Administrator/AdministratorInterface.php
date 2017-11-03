@@ -1,10 +1,10 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Model\BrandOperator;
+namespace Ivoz\Provider\Domain\Model\Administrator;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface BrandOperatorInterface extends LoggableEntityInterface
+interface AdministratorInterface extends LoggableEntityInterface
 {
     public function getChangeSet();
 
@@ -119,6 +119,22 @@ interface BrandOperatorInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
      */
     public function getBrand();
+
+    /**
+     * Set company
+     *
+     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
+     *
+     * @return self
+     */
+    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null);
+
+    /**
+     * Get company
+     *
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     */
+    public function getCompany();
 
     /**
      * Set timezone

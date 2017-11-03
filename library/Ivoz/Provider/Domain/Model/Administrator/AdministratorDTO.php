@@ -1,6 +1,6 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Model\CompanyAdmin;
+namespace Ivoz\Provider\Domain\Model\Administrator;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
@@ -9,7 +9,7 @@ use Ivoz\Core\Application\CollectionTransformerInterface;
 /**
  * @codeCoverageIgnore
  */
-class CompanyAdminDTO implements DataTransferObjectInterface
+class AdministratorDTO implements DataTransferObjectInterface
 {
     /**
      * @var string
@@ -49,12 +49,22 @@ class CompanyAdminDTO implements DataTransferObjectInterface
     /**
      * @var mixed
      */
+    private $brandId;
+
+    /**
+     * @var mixed
+     */
     private $companyId;
 
     /**
      * @var mixed
      */
     private $timezoneId;
+
+    /**
+     * @var mixed
+     */
+    private $brand;
 
     /**
      * @var mixed
@@ -79,6 +89,7 @@ class CompanyAdminDTO implements DataTransferObjectInterface
             'name' => $this->getName(),
             'lastname' => $this->getLastname(),
             'id' => $this->getId(),
+            'brandId' => $this->getBrandId(),
             'companyId' => $this->getCompanyId(),
             'timezoneId' => $this->getTimezoneId()
         ];
@@ -89,6 +100,7 @@ class CompanyAdminDTO implements DataTransferObjectInterface
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
+        $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
         $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
         $this->timezone = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Timezone\\Timezone', $this->getTimezoneId());
     }
@@ -104,7 +116,7 @@ class CompanyAdminDTO implements DataTransferObjectInterface
     /**
      * @param string $username
      *
-     * @return CompanyAdminDTO
+     * @return AdministratorDTO
      */
     public function setUsername($username)
     {
@@ -124,7 +136,7 @@ class CompanyAdminDTO implements DataTransferObjectInterface
     /**
      * @param string $pass
      *
-     * @return CompanyAdminDTO
+     * @return AdministratorDTO
      */
     public function setPass($pass)
     {
@@ -144,7 +156,7 @@ class CompanyAdminDTO implements DataTransferObjectInterface
     /**
      * @param string $email
      *
-     * @return CompanyAdminDTO
+     * @return AdministratorDTO
      */
     public function setEmail($email)
     {
@@ -164,7 +176,7 @@ class CompanyAdminDTO implements DataTransferObjectInterface
     /**
      * @param boolean $active
      *
-     * @return CompanyAdminDTO
+     * @return AdministratorDTO
      */
     public function setActive($active)
     {
@@ -184,7 +196,7 @@ class CompanyAdminDTO implements DataTransferObjectInterface
     /**
      * @param string $name
      *
-     * @return CompanyAdminDTO
+     * @return AdministratorDTO
      */
     public function setName($name = null)
     {
@@ -204,7 +216,7 @@ class CompanyAdminDTO implements DataTransferObjectInterface
     /**
      * @param string $lastname
      *
-     * @return CompanyAdminDTO
+     * @return AdministratorDTO
      */
     public function setLastname($lastname = null)
     {
@@ -224,7 +236,7 @@ class CompanyAdminDTO implements DataTransferObjectInterface
     /**
      * @param integer $id
      *
-     * @return CompanyAdminDTO
+     * @return AdministratorDTO
      */
     public function setId($id)
     {
@@ -242,9 +254,37 @@ class CompanyAdminDTO implements DataTransferObjectInterface
     }
 
     /**
+     * @param integer $brandId
+     *
+     * @return AdministratorDTO
+     */
+    public function setBrandId($brandId)
+    {
+        $this->brandId = $brandId;
+
+        return $this;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getBrandId()
+    {
+        return $this->brandId;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Brand\Brand
+     */
+    public function getBrand()
+    {
+        return $this->brand;
+    }
+
+    /**
      * @param integer $companyId
      *
-     * @return CompanyAdminDTO
+     * @return AdministratorDTO
      */
     public function setCompanyId($companyId)
     {
@@ -272,7 +312,7 @@ class CompanyAdminDTO implements DataTransferObjectInterface
     /**
      * @param integer $timezoneId
      *
-     * @return CompanyAdminDTO
+     * @return AdministratorDTO
      */
     public function setTimezoneId($timezoneId)
     {

@@ -135,11 +135,6 @@ class BrandDTO implements DataTransferObjectInterface
     /**
      * @var array|null
      */
-    private $operators = null;
-
-    /**
-     * @var array|null
-     */
     private $services = null;
 
     /**
@@ -204,7 +199,6 @@ class BrandDTO implements DataTransferObjectInterface
             'languageId' => $this->getLanguageId(),
             'defaultTimezoneId' => $this->getDefaultTimezoneId(),
             'companies' => $this->getCompanies(),
-            'operators' => $this->getOperators(),
             'services' => $this->getServices(),
             'urls' => $this->getUrls(),
             'relFeatures' => $this->getRelFeatures(),
@@ -230,17 +224,6 @@ class BrandDTO implements DataTransferObjectInterface
             foreach ($items as $item) {
                 $this->companies[] = $transformer->transform(
                     'Ivoz\\Provider\\Domain\\Model\\Company\\Company',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-
-        if (!is_null($this->operators)) {
-            $items = $this->getOperators();
-            $this->operators = [];
-            foreach ($items as $item) {
-                $this->operators[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\BrandOperator\\BrandOperator',
                     $item->getId() ?? $item
                 );
             }
@@ -344,10 +327,6 @@ class BrandDTO implements DataTransferObjectInterface
         $this->companies = $transformer->transform(
             'Ivoz\\Provider\\Domain\\Model\\Company\\Company',
             $this->companies
-        );
-        $this->operators = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\BrandOperator\\BrandOperator',
-            $this->operators
         );
         $this->services = $transformer->transform(
             'Ivoz\\Provider\\Domain\\Model\\BrandService\\BrandService',
@@ -825,26 +804,6 @@ class BrandDTO implements DataTransferObjectInterface
     public function getCompanies()
     {
         return $this->companies;
-    }
-
-    /**
-     * @param array $operators
-     *
-     * @return BrandDTO
-     */
-    public function setOperators($operators)
-    {
-        $this->operators = $operators;
-
-        return $this;
-    }
-
-    /**
-     * @return array
-     */
-    public function getOperators()
-    {
-        return $this->operators;
     }
 
     /**

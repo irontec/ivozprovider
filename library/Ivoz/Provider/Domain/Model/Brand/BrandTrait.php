@@ -26,11 +26,6 @@ trait BrandTrait
     /**
      * @var Collection
      */
-    protected $operators;
-
-    /**
-     * @var Collection
-     */
     protected $services;
 
     /**
@@ -76,7 +71,6 @@ trait BrandTrait
     {
         parent::__construct(...func_get_args());
         $this->companies = new ArrayCollection();
-        $this->operators = new ArrayCollection();
         $this->services = new ArrayCollection();
         $this->urls = new ArrayCollection();
         $this->relFeatures = new ArrayCollection();
@@ -108,10 +102,6 @@ trait BrandTrait
         $self = parent::fromDTO($dto);
         if ($dto->getCompanies()) {
             $self->replaceCompanies($dto->getCompanies());
-        }
-
-        if ($dto->getOperators()) {
-            $self->replaceOperators($dto->getOperators());
         }
 
         if ($dto->getServices()) {
@@ -165,9 +155,6 @@ trait BrandTrait
         parent::updateFromDTO($dto);
         if ($dto->getCompanies()) {
             $this->replaceCompanies($dto->getCompanies());
-        }
-        if ($dto->getOperators()) {
-            $this->replaceOperators($dto->getOperators());
         }
         if ($dto->getServices()) {
             $this->replaceServices($dto->getServices());
@@ -287,78 +274,6 @@ trait BrandTrait
         }
 
         return $this->companies->toArray();
-    }
-
-    /**
-     * Add operator
-     *
-     * @param \Ivoz\Provider\Domain\Model\BrandOperator\BrandOperatorInterface $operator
-     *
-     * @return BrandTrait
-     */
-    public function addOperator(\Ivoz\Provider\Domain\Model\BrandOperator\BrandOperatorInterface $operator)
-    {
-        $this->operators->add($operator);
-
-        return $this;
-    }
-
-    /**
-     * Remove operator
-     *
-     * @param \Ivoz\Provider\Domain\Model\BrandOperator\BrandOperatorInterface $operator
-     */
-    public function removeOperator(\Ivoz\Provider\Domain\Model\BrandOperator\BrandOperatorInterface $operator)
-    {
-        $this->operators->removeElement($operator);
-    }
-
-    /**
-     * Replace operators
-     *
-     * @param \Ivoz\Provider\Domain\Model\BrandOperator\BrandOperatorInterface[] $operators
-     * @return self
-     */
-    public function replaceOperators(Collection $operators)
-    {
-        $updatedEntities = [];
-        $fallBackId = -1;
-        foreach ($operators as $entity) {
-            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
-            $updatedEntities[$index] = $entity;
-            $entity->setBrand($this);
-        }
-        $updatedEntityKeys = array_keys($updatedEntities);
-
-        foreach ($this->operators as $key => $entity) {
-            $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
-                $this->operators->set($key, $updatedEntities[$identity]);
-            } else {
-                $this->operators->remove($key);
-            }
-            unset($updatedEntities[$identity]);
-        }
-
-        foreach ($updatedEntities as $entity) {
-            $this->addOperator($entity);
-        }
-
-        return $this;
-    }
-
-    /**
-     * Get operators
-     *
-     * @return array
-     */
-    public function getOperators(Criteria $criteria = null)
-    {
-        if (!is_null($criteria)) {
-            return $this->operators->matching($criteria)->toArray();
-        }
-
-        return $this->operators->toArray();
     }
 
     /**

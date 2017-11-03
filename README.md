@@ -4,9 +4,9 @@ Ivoz Provider is a multitenant solution for VoIP telephony providers designed fo
 
 ## Features
 #### Multitenancy
-IvozProvider supports multiple management levels, from Global platform administator to final user, each of them having its own web interface with visibility to perform configuration tasks.
+IvozProvider supports multiple management levels, from Global platform administrator to final user, each of them having its own web interface with visibility to perform configuration tasks.
 
- * Global Administator manages multiple Brands
+ * Global Administrator manages multiple Brands
  * Brand Administrators manage multiple Companies
  * Company Administrators manage multiple Users
  * Users manage their preferences
