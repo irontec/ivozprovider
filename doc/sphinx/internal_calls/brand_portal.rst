@@ -125,7 +125,7 @@ These are remaining relevant parameters configured in Companies section:
       Data included in invoices created by this brand.
 
   Outbound prefix
-      Some companies are used to dial an aditional prefix for outgoing calls.
+      Some companies are used to dial an additional prefix for outgoing calls.
 
   Outgoing DDI
       Introduced in 1.3, this setting selects a DDI for outgoing calls
@@ -154,7 +154,7 @@ These are remaining relevant parameters configured in Companies section:
 
 Most of the features are self-explanatory, but **voice notification** deserves
 an explanation: if you enable them, when a call fails, the user will listen a
-locution explaining what ocurred ("you have no permissions to place this call",
+locution explaining what occurred ("you have no permissions to place this call",
 "the call cannot be billed", etc.)
 
 .. warning:: Recordings rotation happens at two levels: brand and company. This
@@ -174,7 +174,8 @@ Administrator.
 
 .. warning:: 'Round-robin' distribute method is reserved for huge companies/retails
               whose calls cannot be handled in a single AS. **Use 'Hash based'
-              for remaining ones**.
+              for remaining ones**, as 'Round-robin' imposes some limitations
+              to company features (no queues, no conferences).
 
 .. _emulate_company:
 
@@ -182,7 +183,7 @@ Emulate Demo company
 ====================
 
 The company emulation process is the same as the brand emulation, with the
-difference that it filters the block ‘Company Configuration’ insted of
+difference that it filters the block ‘Company Configuration’ instead of
 ‘Brand Configuration’.
 
 .. ifconfig:: language == 'en'

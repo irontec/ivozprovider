@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-16 18:26+0200\n"
+"POT-Creation-Date: 2017-11-03 12:10+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 1.3\n"
+"Generated-By: Babel 2.3.4\n"
 
 #: ../../pbx_features/call_captures.rst:5
 msgid "Call pickup"
@@ -899,42 +899,62 @@ msgstr ""
 "pueden configurar en la sección **Configuración de empresa** > **Salas de"
 " conferencias**."
 
-#: ../../pbx_features/conference_rooms.rst:11
+#: ../../pbx_features/conference_rooms.rst:10
+msgid ""
+"**In distributed installations** using Conferences is only compatible "
+"with an static assignment or 'hash based' distribution (see **Distribute "
+"method** :ref:`here <Remaining Parameters>`)."
+msgstr ""
+"En **Instalaciones distribuidas** el uso de conferencias solo es compatible con "
+"una asignación estática o 'basada en hash' (ver **Método de "
+"distribución** :ref:`aquí <Parámetros restantes>`)."
+
+#: ../../pbx_features/conference_rooms.rst:13
+msgid ""
+"Brand operators can choose which Companies have conferences (see "
+"**Features** in :ref:`Brand Configuration` and :ref:`Company "
+"Configuration`)."
+msgstr ""
+"Los operadores de marca pueden elegir que Compañía tiene conferencias (ver "
+"**Features** en :ref:`Configuración de Marca` y :ref:`Configuración de "
+"Compañía`)."
+
+#: ../../pbx_features/conference_rooms.rst:17
 msgid "Create a new audio conference"
 msgstr "Crear una sala de audioconferencias"
 
-#: ../../pbx_features/conference_rooms.rst:12
+#: ../../pbx_features/conference_rooms.rst:18
 msgid "The following image shows the process of creating a new confrence room:"
 msgstr ""
 "La siguiente imagen ilustra el proceso de creación de una sala de "
 "audioconferencias:"
 
-#: ../../pbx_features/conference_rooms.rst:17
+#: ../../pbx_features/conference_rooms.rst:23
 #: ../../pbx_features/external_filters.rst:76 ../../pbx_features/friends.rst:69
 #: ../../pbx_features/ivrs.rst:22 ../../pbx_features/queues.rst:26
 #: ../../pbx_features/terminals.rst:24 ../../pbx_features/users.rst:20
 msgid "Name"
 msgstr "Nombre"
 
-#: ../../pbx_features/conference_rooms.rst:19
+#: ../../pbx_features/conference_rooms.rst:25
 msgid "Name that will used to identify this conference room in other sections"
 msgstr "Nombre por el que se referenciará la sala en otras secciones"
 
-#: ../../pbx_features/conference_rooms.rst:20
+#: ../../pbx_features/conference_rooms.rst:26
 msgid "Max members"
 msgstr "Límite de participantes"
 
-#: ../../pbx_features/conference_rooms.rst:22
+#: ../../pbx_features/conference_rooms.rst:28
 msgid ""
 "Maximum number of participants in the conference. When this limit is "
 "reached, join requests will be rejected."
 msgstr "Apartir del número especificado, no se admitirán más miembros."
 
-#: ../../pbx_features/conference_rooms.rst:24
+#: ../../pbx_features/conference_rooms.rst:30
 msgid "Pin protected"
 msgstr "Protegido con contraseña / Código PIN"
 
-#: ../../pbx_features/conference_rooms.rst:26
+#: ../../pbx_features/conference_rooms.rst:32
 msgid ""
 "Conference rooms can be pin protected. The pin will be requested before "
 "entering and must be numeric."
@@ -942,15 +962,15 @@ msgstr ""
 "Se puede forzar al sistema a pedir un PIN para poder entrar. En caso de "
 "activar, se puede introducir un PIN numérico."
 
-#: ../../pbx_features/conference_rooms.rst:29
+#: ../../pbx_features/conference_rooms.rst:35
 msgid "Member limit can be disabled by setting it to 0."
 msgstr "Para desactivar el límite de participantes, configurar su valor a 0."
 
-#: ../../pbx_features/conference_rooms.rst:32
+#: ../../pbx_features/conference_rooms.rst:38
 msgid "Route an extension or DDI to the conference"
 msgstr "Asociar una extensión o un DDI externo"
 
-#: ../../pbx_features/conference_rooms.rst:33
+#: ../../pbx_features/conference_rooms.rst:39
 msgid ""
 "In order to enter a conference there must be a number that is route to "
 "them:"
@@ -959,7 +979,7 @@ msgstr ""
 "extensión interna a la sala, para poder desvíar a la misma, transferir, "
 "etc.:"
 
-#: ../../pbx_features/conference_rooms.rst:37
+#: ../../pbx_features/conference_rooms.rst:43
 msgid ""
 "In the following section we will see how to configure a :ref:`external "
 "DDI <external_ddis>` to a conference room so it can be used by external "
@@ -969,7 +989,7 @@ msgstr ""
 ":ref:`DDI externo <external_ddis>` a una sala de conferencias, para meter"
 " en la sala a gente externa a la empresa."
 
-#: ../../pbx_features/conference_rooms.rst:40
+#: ../../pbx_features/conference_rooms.rst:46
 msgid ""
 "There are other ways to make external callers join a conference room "
 "without using a DDI: it can be assigned to an Extension. This way, any "
@@ -2384,9 +2404,9 @@ msgid ""
 "static assignment or 'hash based' distribution (see **Distribute method**"
 " :ref:`here <Remaining Parameters>`)."
 msgstr ""
-"En **Instalaciones distribuidas** el uso de colas solo es compatible "
-"con una asignación estática o 'basada en hash' (ver **Método de distribución** "
-":ref:`aquí <Parámetros restantes>`)."
+"En **Instalaciones distribuidas** el uso de colas solo es compatible con "
+"una asignación estática o 'basada en hash' (ver **Método de "
+"distribución** :ref:`aquí <Parámetros restantes>`)."
 
 #: ../../pbx_features/queues.rst:17
 msgid ""
