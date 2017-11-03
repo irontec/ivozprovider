@@ -248,37 +248,6 @@ interface BrandInterface extends LoggableEntityInterface
     public function getCompanies(\Doctrine\Common\Collections\Criteria $criteria = null);
 
     /**
-     * Add operator
-     *
-     * @param \Ivoz\Provider\Domain\Model\BrandOperator\BrandOperatorInterface $operator
-     *
-     * @return BrandTrait
-     */
-    public function addOperator(\Ivoz\Provider\Domain\Model\BrandOperator\BrandOperatorInterface $operator);
-
-    /**
-     * Remove operator
-     *
-     * @param \Ivoz\Provider\Domain\Model\BrandOperator\BrandOperatorInterface $operator
-     */
-    public function removeOperator(\Ivoz\Provider\Domain\Model\BrandOperator\BrandOperatorInterface $operator);
-
-    /**
-     * Replace operators
-     *
-     * @param \Ivoz\Provider\Domain\Model\BrandOperator\BrandOperatorInterface[] $operators
-     * @return self
-     */
-    public function replaceOperators(Collection $operators);
-
-    /**
-     * Get operators
-     *
-     * @return array
-     */
-    public function getOperators(\Doctrine\Common\Collections\Criteria $criteria = null);
-
-    /**
      * Add service
      *
      * @param \Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface $service

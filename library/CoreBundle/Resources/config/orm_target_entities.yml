@@ -7,14 +7,14 @@ doctrine:
         Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpoint
       Ivoz\Ast\Domain\Model\Queue\QueueInterface:
         Ivoz\Ast\Domain\Model\Queue\Queue
+      Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface:
+        Ivoz\Provider\Domain\Model\Administrator\Administrator
       Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface:
         Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServer
       Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface:
         Ivoz\Provider\Domain\Model\BillableCall\BillableCall
       Ivoz\Provider\Domain\Model\Brand\BrandInterface:
         Ivoz\Provider\Domain\Model\Brand\Brand
-      Ivoz\Provider\Domain\Model\BrandOperator\BrandOperatorInterface:
-        Ivoz\Provider\Domain\Model\BrandOperator\BrandOperator
       Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface:
         Ivoz\Provider\Domain\Model\BrandService\BrandService
       Ivoz\Provider\Domain\Model\BrandUrl\BrandUrlInterface:
@@ -35,8 +35,6 @@ doctrine:
         Ivoz\Provider\Domain\Model\Commandlog\Commandlog
       Ivoz\Provider\Domain\Model\Changelog\ChangelogInterface:
         Ivoz\Provider\Domain\Model\Changelog\Changelog
-      Ivoz\Provider\Domain\Model\CompanyAdmin\CompanyAdminInterface:
-        Ivoz\Provider\Domain\Model\CompanyAdmin\CompanyAdmin
       Ivoz\Provider\Domain\Model\Company\CompanyInterface:
         Ivoz\Provider\Domain\Model\Company\Company
       Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface:
@@ -125,8 +123,6 @@ doctrine:
         Ivoz\Provider\Domain\Model\LcrRuleTarget\LcrRuleTarget
       Ivoz\Provider\Domain\Model\Locution\LocutionInterface:
         Ivoz\Provider\Domain\Model\Locution\Locution
-      Ivoz\Provider\Domain\Model\MainOperator\MainOperatorInterface:
-        Ivoz\Provider\Domain\Model\MainOperator\MainOperator
       Ivoz\Provider\Domain\Model\MatchList\MatchListInterface:
         Ivoz\Provider\Domain\Model\MatchList\MatchList
       Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPatternInterface:

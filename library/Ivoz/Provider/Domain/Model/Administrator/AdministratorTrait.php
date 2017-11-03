@@ -1,14 +1,14 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Model\BrandOperator;
+namespace Ivoz\Provider\Domain\Model\Administrator;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 
 /**
- * BrandOperatorTrait
+ * AdministratorTrait
  * @codeCoverageIgnore
  */
-trait BrandOperatorTrait
+trait AdministratorTrait
 {
     /**
      * @var integer
@@ -26,11 +26,11 @@ trait BrandOperatorTrait
     }
 
     /**
-     * @return BrandOperatorDTO
+     * @return AdministratorDTO
      */
     public static function createDTO()
     {
-        return new BrandOperatorDTO();
+        return new AdministratorDTO();
     }
 
     /**
@@ -41,7 +41,7 @@ trait BrandOperatorTrait
     public static function fromDTO(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto BrandOperatorDTO
+         * @var $dto AdministratorDTO
          */
         $self = parent::fromDTO($dto);
 
@@ -60,7 +60,7 @@ trait BrandOperatorTrait
     public function updateFromDTO(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto BrandOperatorDTO
+         * @var $dto AdministratorDTO
          */
         parent::updateFromDTO($dto);
 
@@ -68,7 +68,7 @@ trait BrandOperatorTrait
     }
 
     /**
-     * @return BrandOperatorDTO
+     * @return AdministratorDTO
      */
     public function toDTO()
     {

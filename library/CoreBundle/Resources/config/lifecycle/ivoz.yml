@@ -4,7 +4,6 @@ imports:
   - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/brand_service.yml" }
   - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/call_forward_setting.yml" }
   - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/company.yml" }
-  - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/company_admin.yml" }
   - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/conference_room.yml" }
   - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/ddi.yml" }
   - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/domain.yml" }

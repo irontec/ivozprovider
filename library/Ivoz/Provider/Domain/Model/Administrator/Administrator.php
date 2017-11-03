@@ -1,12 +1,14 @@
 <?php
-namespace Ivoz\Provider\Domain\Model\MainOperator;
+
+namespace Ivoz\Provider\Domain\Model\Administrator;
+
 
 /**
- * MainOperator
+ * Administrator
  */
-class MainOperator extends MainOperatorAbstract implements MainOperatorInterface
+class Administrator extends AdministratorAbstract implements AdministratorInterface
 {
-    use MainOperatorTrait;
+    use AdministratorTrait;
 
     public function getChangeSet()
     {
@@ -27,5 +29,6 @@ class MainOperator extends MainOperatorAbstract implements MainOperatorInterface
     {
         return $this->id;
     }
+
 }
 

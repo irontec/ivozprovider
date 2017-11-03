@@ -1,17 +1,19 @@
-Ivoz\Provider\Domain\Model\BrandOperator\BrandOperatorAbstract:
+Ivoz\Provider\Domain\Model\Administrator\AdministratorAbstract:
   type: mappedSuperclass
+  indexes:
+    companyId:
+      columns:
+        - companyId
   indexes:
     brandId:
       columns:
         - brandId
-    timezoneId:
-      columns:
-        - timezoneId
   uniqueConstraints:
-    MainOperatorsUniqueBrandUsername:
+    username:
       columns:
-        - brandId
         - username
+        - brandId
+        - companyId
   fields:
     username:
       type: string
@@ -56,11 +58,23 @@ Ivoz\Provider\Domain\Model\BrandOperator\BrandOperatorAbstract:
       cascade: {  }
       fetch: LAZY
       mappedBy: null
-      inversedBy: operators
+      inversedBy: null
       joinColumns:
         brandId:
           referencedColumnName: id
-          nullable: false
+          nullable: true
+          onDelete: cascade
+      orphanRemoval: false
+    company:
+      targetEntity: \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        companyId:
+          referencedColumnName: id
+          nullable: true
           onDelete: cascade
       orphanRemoval: false
     timezone:

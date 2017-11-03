@@ -1,15 +1,15 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Model\BrandOperator;
+namespace Ivoz\Provider\Domain\Model\Administrator;
 
 use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 
 /**
- * BrandOperatorAbstract
+ * AdministratorAbstract
  * @codeCoverageIgnore
  */
-abstract class BrandOperatorAbstract
+abstract class AdministratorAbstract
 {
     /**
      * @var string
@@ -46,6 +46,11 @@ abstract class BrandOperatorAbstract
      * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
      */
     protected $brand;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     */
+    protected $company;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface
@@ -139,11 +144,11 @@ abstract class BrandOperatorAbstract
     }
 
     /**
-     * @return BrandOperatorDTO
+     * @return AdministratorDTO
      */
     public static function createDTO()
     {
-        return new BrandOperatorDTO();
+        return new AdministratorDTO();
     }
 
     /**
@@ -154,9 +159,9 @@ abstract class BrandOperatorAbstract
     public static function fromDTO(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto BrandOperatorDTO
+         * @var $dto AdministratorDTO
          */
-        Assertion::isInstanceOf($dto, BrandOperatorDTO::class);
+        Assertion::isInstanceOf($dto, AdministratorDTO::class);
 
         $self = new static(
             $dto->getUsername(),
@@ -168,6 +173,7 @@ abstract class BrandOperatorAbstract
             ->setName($dto->getName())
             ->setLastname($dto->getLastname())
             ->setBrand($dto->getBrand())
+            ->setCompany($dto->getCompany())
             ->setTimezone($dto->getTimezone())
         ;
     }
@@ -179,9 +185,9 @@ abstract class BrandOperatorAbstract
     public function updateFromDTO(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto BrandOperatorDTO
+         * @var $dto AdministratorDTO
          */
-        Assertion::isInstanceOf($dto, BrandOperatorDTO::class);
+        Assertion::isInstanceOf($dto, AdministratorDTO::class);
 
         $this
             ->setUsername($dto->getUsername())
@@ -191,6 +197,7 @@ abstract class BrandOperatorAbstract
             ->setName($dto->getName())
             ->setLastname($dto->getLastname())
             ->setBrand($dto->getBrand())
+            ->setCompany($dto->getCompany())
             ->setTimezone($dto->getTimezone());
 
 
@@ -198,7 +205,7 @@ abstract class BrandOperatorAbstract
     }
 
     /**
-     * @return BrandOperatorDTO
+     * @return AdministratorDTO
      */
     public function toDTO()
     {
@@ -210,6 +217,7 @@ abstract class BrandOperatorAbstract
             ->setName($this->getName())
             ->setLastname($this->getLastname())
             ->setBrandId($this->getBrand() ? $this->getBrand()->getId() : null)
+            ->setCompanyId($this->getCompany() ? $this->getCompany()->getId() : null)
             ->setTimezoneId($this->getTimezone() ? $this->getTimezone()->getId() : null);
     }
 
@@ -226,6 +234,7 @@ abstract class BrandOperatorAbstract
             'name' => self::getName(),
             'lastname' => self::getLastname(),
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
+            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
             'timezoneId' => self::getTimezone() ? self::getTimezone()->getId() : null
         ];
     }
@@ -419,6 +428,30 @@ abstract class BrandOperatorAbstract
     public function getBrand()
     {
         return $this->brand;
+    }
+
+    /**
+     * Set company
+     *
+     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
+     *
+     * @return self
+     */
+    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
+    {
+        $this->company = $company;
+
+        return $this;
+    }
+
+    /**
+     * Get company
+     *
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     */
+    public function getCompany()
+    {
+        return $this->company;
     }
 
     /**

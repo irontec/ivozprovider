@@ -15,9 +15,6 @@ Ivoz\Provider\Domain\Model\Brand\Brand:
     companies:
       targetEntity: Ivoz\Provider\Domain\Model\Company\CompanyInterface
       mappedBy: brand
-    operators:
-      targetEntity: Ivoz\Provider\Domain\Model\BrandOperator\BrandOperatorInterface
-      mappedBy: brand
     services:
       targetEntity: Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface
       mappedBy: brand
