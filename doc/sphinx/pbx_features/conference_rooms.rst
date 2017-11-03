@@ -5,7 +5,13 @@ Conference rooms
 ################
 
 IvozProvider supports Conference rooms that can be configured in the section
-**Company configuration** > **Conference rooms**. 
+**Company configuration** > **Conference rooms**.
+
+**In distributed installations** using Conferences is only compatible with an static
+assignment or 'hash based' distribution (see **Distribute method** :ref:`here <Remaining Parameters>`).
+
+.. hint:: Brand operators can choose which Companies have conferences (see **Features**
+          in :ref:`Brand Configuration` and :ref:`Company Configuration`).
 
 .. rubric:: Create a new audio conference
 
