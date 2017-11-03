@@ -40,6 +40,7 @@ production:
     pinCode:
       title: _('Pin code')
       type: text
+      required: true
       maxLength: 6
     maxMembers:
       title: _('Max member')

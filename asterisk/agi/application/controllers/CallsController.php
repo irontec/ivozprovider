@@ -471,51 +471,6 @@ class CallsController extends BaseController
     }
 
     /**
-     * @brief Incoming calls to conference
-     */
-    public function conferencesAction()
-    {
-        /** @var \Doctrine\ORM\EntityManager $em */
-        $em = \Zend_Registry::get("em");
-
-        /** @var \Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomRepository $conferenceRepository */
-        $conferenceRepository = $em->getRepository('\Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom');
-
-        // Get conference Id from extension
-        $conferenceId = $this->agi->getExtension();
-
-        /** @var \Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface $conference */
-        $conference = $conferenceRepository->find($conferenceId);
-
-        Assertion::notNull(
-            $conference,
-            sprintf("Conference %s does not exist.", $conferenceId)
-        );
-
-        // Get company from conference
-        $company = $conference->getCompany();
-
-        // Set desired channel language
-        $this->agi->setVariable("CHANNEL(language)", $this->agi->getSIPHeader("X-Info-Conf-Lang"));
-
-        // Set user language and music
-        $this->agi->setVariable("CHANNEL(musicclass)", $company->getMusicClass());
-
-        // Check if conference requires pin
-        if ($conference->getPinProtected()) {
-           $this->agi->setConferenceSetting('user,pin', $conference->getPinCode());
-        }
-
-        // Check if conference has max members
-        if ($conference->getMaxMembers()) {
-            $this->agi->setConferenceSetting('bridge,max_members', $conference->getMaxMembers());
-        }
-
-        // Enable video support
-        $this->agi->setConferenceSetting('bridge,video_mode', 'follow_talker');
-    }
-
-    /**
      * @brief Process IVR after call status
      */
     public function ivrstatusAction ()
@@ -680,12 +635,6 @@ class CallsController extends BaseController
         // Set pickups group on outgoing channels
         if ($this->agi->getVariable("CHANNEL(namedpickupgroup)")) {
             $this->agi->setVariable("CHANNEL(namedcallgroup)", $this->agi->getVariable("CHANNEL(namedpickupgroup)"));
-        }
-
-        // Set conference options
-        if ($this->agi->getVariable("CONFERENCE_ID")) {
-            $this->agi->setSIPHeader("X-Info-Conf", $this->agi->getVariable("CONFERENCE_ID"));
-            $this->agi->setSIPHeader("X-Info-Conf-Lang", $this->agi->getVariable("CONFERENCE_LANG"));
         }
     }
 
