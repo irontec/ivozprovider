@@ -32,11 +32,3 @@ services:
       $psEndpointRepository:
         '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Ast\\Domain\\Model\\PsEndpoint\\PsEndpoint")'
 
-  Ivoz\Ast\Domain\Service\PsAor\UpdateByTerminal:
-    tags:
-      - { name: provider.lifecycle.terminal.post_persist, priority: 20 }
-    arguments:
-      $entityPersister:
-        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
-      $psAorRepository:
-        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Ast\\Domain\\Model\\PsAor\\PsAor")'

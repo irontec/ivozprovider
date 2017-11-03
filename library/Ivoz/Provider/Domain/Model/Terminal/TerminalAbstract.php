@@ -19,11 +19,6 @@ abstract class TerminalAbstract
     /**
      * @var string
      */
-    protected $domain;
-
-    /**
-     * @var string
-     */
     protected $disallow = 'all';
 
     /**
@@ -65,6 +60,11 @@ abstract class TerminalAbstract
      * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
      */
     protected $company;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Domain\DomainInterface
+     */
+    protected $domain;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelInterface
@@ -189,11 +189,11 @@ abstract class TerminalAbstract
 
         return $self
             ->setName($dto->getName())
-            ->setDomain($dto->getDomain())
             ->setAllowVideo($dto->getAllowVideo())
             ->setMac($dto->getMac())
             ->setLastProvisionDate($dto->getLastProvisionDate())
             ->setCompany($dto->getCompany())
+            ->setDomain($dto->getDomain())
             ->setTerminalModel($dto->getTerminalModel())
         ;
     }
@@ -211,7 +211,6 @@ abstract class TerminalAbstract
 
         $this
             ->setName($dto->getName())
-            ->setDomain($dto->getDomain())
             ->setDisallow($dto->getDisallow())
             ->setAllowAudio($dto->getAllowAudio())
             ->setAllowVideo($dto->getAllowVideo())
@@ -220,6 +219,7 @@ abstract class TerminalAbstract
             ->setMac($dto->getMac())
             ->setLastProvisionDate($dto->getLastProvisionDate())
             ->setCompany($dto->getCompany())
+            ->setDomain($dto->getDomain())
             ->setTerminalModel($dto->getTerminalModel());
 
 
@@ -233,7 +233,6 @@ abstract class TerminalAbstract
     {
         return self::createDTO()
             ->setName($this->getName())
-            ->setDomain($this->getDomain())
             ->setDisallow($this->getDisallow())
             ->setAllowAudio($this->getAllowAudio())
             ->setAllowVideo($this->getAllowVideo())
@@ -242,6 +241,7 @@ abstract class TerminalAbstract
             ->setMac($this->getMac())
             ->setLastProvisionDate($this->getLastProvisionDate())
             ->setCompanyId($this->getCompany() ? $this->getCompany()->getId() : null)
+            ->setDomainId($this->getDomain() ? $this->getDomain()->getId() : null)
             ->setTerminalModelId($this->getTerminalModel() ? $this->getTerminalModel()->getId() : null);
     }
 
@@ -252,7 +252,6 @@ abstract class TerminalAbstract
     {
         return [
             'name' => self::getName(),
-            'domain' => self::getDomain(),
             'disallow' => self::getDisallow(),
             'allow_audio' => self::getAllowAudio(),
             'allow_video' => self::getAllowVideo(),
@@ -261,6 +260,7 @@ abstract class TerminalAbstract
             'mac' => self::getMac(),
             'lastProvisionDate' => self::getLastProvisionDate(),
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
+            'domainId' => self::getDomain() ? self::getDomain()->getId() : null,
             'terminalModelId' => self::getTerminalModel() ? self::getTerminalModel()->getId() : null
         ];
     }
@@ -545,6 +545,30 @@ abstract class TerminalAbstract
     public function getCompany()
     {
         return $this->company;
+    }
+
+    /**
+     * Set domain
+     *
+     * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain
+     *
+     * @return self
+     */
+    public function setDomain(\Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain = null)
+    {
+        $this->domain = $domain;
+
+        return $this;
+    }
+
+    /**
+     * Get domain
+     *
+     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface
+     */
+    public function getDomain()
+    {
+        return $this->domain;
     }
 
     /**

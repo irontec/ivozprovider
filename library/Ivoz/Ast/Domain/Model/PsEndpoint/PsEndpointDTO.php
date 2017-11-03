@@ -127,11 +127,6 @@ class PsEndpointDTO implements DataTransferObjectInterface
     private $retailAccount;
 
     /**
-     * @var array|null
-     */
-    private $psAors = null;
-
-    /**
      * @return array
      */
     public function __toArray()
@@ -156,8 +151,7 @@ class PsEndpointDTO implements DataTransferObjectInterface
             'id' => $this->getId(),
             'terminalId' => $this->getTerminalId(),
             'friendId' => $this->getFriendId(),
-            'retailAccountId' => $this->getRetailAccountId(),
-            'psAors' => $this->getPsAors()
+            'retailAccountId' => $this->getRetailAccountId()
         ];
     }
 
@@ -169,17 +163,6 @@ class PsEndpointDTO implements DataTransferObjectInterface
         $this->terminal = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Terminal\\Terminal', $this->getTerminalId());
         $this->friend = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Friend\\Friend', $this->getFriendId());
         $this->retailAccount = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\RetailAccount\\RetailAccount', $this->getRetailAccountId());
-        if (!is_null($this->psAors)) {
-            $items = $this->getPsAors();
-            $this->psAors = [];
-            foreach ($items as $item) {
-                $this->psAors[] = $transformer->transform(
-                    'Ivoz\\Ast\\Domain\\Model\\PsAor\\PsAor',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-
     }
 
     /**
@@ -187,10 +170,7 @@ class PsEndpointDTO implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-        $this->psAors = $transformer->transform(
-            'Ivoz\\Ast\\Domain\\Model\\PsAor\\PsAor',
-            $this->psAors
-        );
+
     }
 
     /**
@@ -615,26 +595,6 @@ class PsEndpointDTO implements DataTransferObjectInterface
     public function getRetailAccount()
     {
         return $this->retailAccount;
-    }
-
-    /**
-     * @param array $psAors
-     *
-     * @return PsEndpointDTO
-     */
-    public function setPsAors($psAors)
-    {
-        $this->psAors = $psAors;
-
-        return $this;
-    }
-
-    /**
-     * @return array
-     */
-    public function getPsAors()
-    {
-        return $this->psAors;
     }
 }
 

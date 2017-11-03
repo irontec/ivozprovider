@@ -19,11 +19,6 @@ class DomainDTO implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $scope = 'global';
-
-    /**
-     * @var string
-     */
     private $pointsTo = 'proxyusers';
 
     /**
@@ -37,38 +32,15 @@ class DomainDTO implements DataTransferObjectInterface
     private $id;
 
     /**
-     * @var mixed
-     */
-    private $companyId;
-
-    /**
-     * @var mixed
-     */
-    private $brandId;
-
-    /**
-     * @var mixed
-     */
-    private $company;
-
-    /**
-     * @var mixed
-     */
-    private $brand;
-
-    /**
      * @return array
      */
     public function __toArray()
     {
         return [
             'domain' => $this->getDomain(),
-            'scope' => $this->getScope(),
             'pointsTo' => $this->getPointsTo(),
             'description' => $this->getDescription(),
-            'id' => $this->getId(),
-            'companyId' => $this->getCompanyId(),
-            'brandId' => $this->getBrandId()
+            'id' => $this->getId()
         ];
     }
 
@@ -77,8 +49,7 @@ class DomainDTO implements DataTransferObjectInterface
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
-        $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
-        $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
+
     }
 
     /**
@@ -107,26 +78,6 @@ class DomainDTO implements DataTransferObjectInterface
     public function getDomain()
     {
         return $this->domain;
-    }
-
-    /**
-     * @param string $scope
-     *
-     * @return DomainDTO
-     */
-    public function setScope($scope)
-    {
-        $this->scope = $scope;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getScope()
-    {
-        return $this->scope;
     }
 
     /**
@@ -187,62 +138,6 @@ class DomainDTO implements DataTransferObjectInterface
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * @param integer $companyId
-     *
-     * @return DomainDTO
-     */
-    public function setCompanyId($companyId)
-    {
-        $this->companyId = $companyId;
-
-        return $this;
-    }
-
-    /**
-     * @return integer
-     */
-    public function getCompanyId()
-    {
-        return $this->companyId;
-    }
-
-    /**
-     * @return \Ivoz\Provider\Domain\Model\Company\Company
-     */
-    public function getCompany()
-    {
-        return $this->company;
-    }
-
-    /**
-     * @param integer $brandId
-     *
-     * @return DomainDTO
-     */
-    public function setBrandId($brandId)
-    {
-        $this->brandId = $brandId;
-
-        return $this;
-    }
-
-    /**
-     * @return integer
-     */
-    public function getBrandId()
-    {
-        return $this->brandId;
-    }
-
-    /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\Brand
-     */
-    public function getBrand()
-    {
-        return $this->brand;
     }
 }
 

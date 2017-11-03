@@ -121,6 +121,11 @@ abstract class CompanyAbstract
     protected $brand;
 
     /**
+     * @var \Ivoz\Provider\Domain\Model\Domain\DomainInterface
+     */
+    protected $domain;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface
      */
     protected $applicationServer;
@@ -291,6 +296,7 @@ abstract class CompanyAbstract
             ->setMediaRelaySets($dto->getMediaRelaySets())
             ->setDefaultTimezone($dto->getDefaultTimezone())
             ->setBrand($dto->getBrand())
+            ->setDomain($dto->getDomain())
             ->setApplicationServer($dto->getApplicationServer())
             ->setCountry($dto->getCountry())
             ->setTransformationRuleSet($dto->getTransformationRuleSet())
@@ -332,6 +338,7 @@ abstract class CompanyAbstract
             ->setMediaRelaySets($dto->getMediaRelaySets())
             ->setDefaultTimezone($dto->getDefaultTimezone())
             ->setBrand($dto->getBrand())
+            ->setDomain($dto->getDomain())
             ->setApplicationServer($dto->getApplicationServer())
             ->setCountry($dto->getCountry())
             ->setTransformationRuleSet($dto->getTransformationRuleSet())
@@ -369,6 +376,7 @@ abstract class CompanyAbstract
             ->setMediaRelaySetsId($this->getMediaRelaySets() ? $this->getMediaRelaySets()->getId() : null)
             ->setDefaultTimezoneId($this->getDefaultTimezone() ? $this->getDefaultTimezone()->getId() : null)
             ->setBrandId($this->getBrand() ? $this->getBrand()->getId() : null)
+            ->setDomainId($this->getDomain() ? $this->getDomain()->getId() : null)
             ->setApplicationServerId($this->getApplicationServer() ? $this->getApplicationServer()->getId() : null)
             ->setCountryId($this->getCountry() ? $this->getCountry()->getId() : null)
             ->setTransformationRuleSetId($this->getTransformationRuleSet() ? $this->getTransformationRuleSet()->getId() : null)
@@ -403,6 +411,7 @@ abstract class CompanyAbstract
             'mediaRelaySetsId' => self::getMediaRelaySets() ? self::getMediaRelaySets()->getId() : null,
             'defaultTimezoneId' => self::getDefaultTimezone() ? self::getDefaultTimezone()->getId() : null,
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
+            'domainId' => self::getDomain() ? self::getDomain()->getId() : null,
             'applicationServerId' => self::getApplicationServer() ? self::getApplicationServer()->getId() : null,
             'countryId' => self::getCountry() ? self::getCountry()->getId() : null,
             'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null,
@@ -986,6 +995,30 @@ abstract class CompanyAbstract
     public function getBrand()
     {
         return $this->brand;
+    }
+
+    /**
+     * Set domain
+     *
+     * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain
+     *
+     * @return self
+     */
+    public function setDomain(\Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain = null)
+    {
+        $this->domain = $domain;
+
+        return $this;
+    }
+
+    /**
+     * Get domain
+     *
+     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface
+     */
+    public function getDomain()
+    {
+        return $this->domain;
     }
 
     /**

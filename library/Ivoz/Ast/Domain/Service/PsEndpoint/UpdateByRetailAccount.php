@@ -57,7 +57,7 @@ class UpdateByRetailAccount implements RetailAccountLifecycleEventHandlerInterfa
         $endpointDTO
             ->setRetailAccountId($entity->getId())
             ->setSorceryId($entity->getSorcery())
-            ->setFromDomain($entity->getDomain())
+            ->setFromDomain($entity->getFromDomain())
             ->setAors($entity->getSorcery())
             ->setDisallow($entity->getDisallow())
             ->setAllow($entity->getAllow())

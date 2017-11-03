@@ -100,12 +100,22 @@ class BrandDTO implements DataTransferObjectInterface
     /**
      * @var mixed
      */
+    private $domainId;
+
+    /**
+     * @var mixed
+     */
     private $languageId;
 
     /**
      * @var mixed
      */
     private $defaultTimezoneId;
+
+    /**
+     * @var mixed
+     */
+    private $domain;
 
     /**
      * @var mixed
@@ -190,6 +200,7 @@ class BrandDTO implements DataTransferObjectInterface
             'invoiceProvince' => $this->getInvoiceProvince(),
             'invoiceCountry' => $this->getInvoiceCountry(),
             'invoiceRegistryData' => $this->getInvoiceRegistryData(),
+            'domainId' => $this->getDomainId(),
             'languageId' => $this->getLanguageId(),
             'defaultTimezoneId' => $this->getDefaultTimezoneId(),
             'companies' => $this->getCompanies(),
@@ -210,6 +221,7 @@ class BrandDTO implements DataTransferObjectInterface
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
+        $this->domain = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Domain\\Domain', $this->getDomainId());
         $this->language = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Language\\Language', $this->getLanguageId());
         $this->defaultTimezone = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Timezone\\Timezone', $this->getDefaultTimezoneId());
         if (!is_null($this->companies)) {
@@ -709,6 +721,34 @@ class BrandDTO implements DataTransferObjectInterface
     public function getInvoiceRegistryData()
     {
         return $this->invoiceRegistryData;
+    }
+
+    /**
+     * @param integer $domainId
+     *
+     * @return BrandDTO
+     */
+    public function setDomainId($domainId)
+    {
+        $this->domainId = $domainId;
+
+        return $this;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getDomainId()
+    {
+        return $this->domainId;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Domain\Domain
+     */
+    public function getDomain()
+    {
+        return $this->domain;
     }
 
     /**

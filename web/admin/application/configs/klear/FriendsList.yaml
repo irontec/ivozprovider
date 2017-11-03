@@ -19,14 +19,13 @@ production:
         <<: *forcedCompany
       fields:
         blacklist:
-          domain: true
           transport: true
           authNeeded: true
           password: true
           allow: true
           disallow: true
           directMediaMethod: true
-          updateCaller: true
+          updateCallerid: true
           fromDomain: true
           calleridUpdateHeader: true
           directConnectivity: true
@@ -35,10 +34,12 @@ production:
           transformationRuleSetId: true
           languageId: true
           status: true
+          updateCallerid: true
+          callACLId: true
         order:
           name: true
+          domainId: true
           description: true
-          callACLId: true
           outgoingDDIId: true
           priority: true
           statusIcon: true
@@ -56,6 +57,7 @@ production:
           friendsNew_screen: true
         dialogs:
           friendsDel_dialog: true
+
     friendsNew_screen: &friendsNew_screenLink
       <<: *Friends
       controller: new
@@ -71,9 +73,9 @@ production:
         <<: *forcedCompany
       fields:
         blacklist: &friends_blacklistLink
-          domain: true
+          domainId: true
           directMediaMethod: true
-          updateCaller: true
+          updateCallerid: true
           calleridUpdateHeader: true
           authNeeded: true
           disallow: true
@@ -89,10 +91,11 @@ production:
           ip: true
           port: true
           languageId: true
-          callACL: true
+          callACLId: true
           outgoingDDI: true
           allow: true
           fromDomain: true
+          status: true
       fixedPositions: &friends_FixedPositionsLink
         group0:
           label: _("Basic Configuration")
@@ -126,6 +129,7 @@ production:
             allow: 2
             fromDomain: 2
       shortcutOption: N
+
     friendsEdit_screen: &friendsEdit_screenLink
       <<: *Friends
       controller: edit
@@ -141,7 +145,7 @@ production:
         order:
           <<: *friends_orderLink
         blacklist:
-          domain: true
+          domainId: true
           directMediaMethod: true
           updateCallerid: true
           calleridUpdateHeader: true
@@ -152,6 +156,7 @@ production:
           <<: *friends_FixedPositionsLink
       forcedValues:
         <<: *forcedCompany
+
     #friendsPatterns:
     <<: *friendsPatterns_screensLink
     friendsPatternsList_screen:

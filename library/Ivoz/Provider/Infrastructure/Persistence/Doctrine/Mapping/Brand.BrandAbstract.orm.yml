@@ -60,6 +60,18 @@ Ivoz\Provider\Domain\Model\Brand\BrandAbstract:
         fixed: false
       column: recordingsLimitEmail
   manyToOne:
+    domain:
+      targetEntity: \Ivoz\Provider\Domain\Model\Domain\DomainInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        domainId:
+          domainId: id
+          nullable: true
+          onDelete: set null
+      orphanRemoval: false
     language:
       targetEntity: \Ivoz\Provider\Domain\Model\Language\LanguageInterface
       cascade: {  }

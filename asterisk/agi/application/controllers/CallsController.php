@@ -13,8 +13,10 @@ use Agi\Action\QueueAction;
 use Agi\Action\ServiceAction;
 use Agi\Action\UserCallAction;
 use Assert\Assertion;
+use Ivoz\Provider\Domain\Model\Domain\Domain;
 use Ivoz\Provider\Domain\Model\Ddi\Ddi;
 use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup;
+use Ivoz\Provider\Domain\Model\Terminal\Terminal;
 
 /**
  * @brief Controller for Incoming and Outgoing calls
@@ -120,8 +122,13 @@ class CallsController extends BaseController
          */
         if ($this->agi->getVariable("SIPTRANSFER")) {
             // Asterisk stores the Refered-By header of the transferer
-            $transfererURI = $this->agi->extractURI($this->agi->getVariable("SIPREFERREDBYHDR"), "uri");
-            $endpointName = $this->getEndpointNameFromContact($transfererURI);
+            $transfererHdr = $this->agi->getVariable("SIPREFERREDBYHDR");
+
+            $transfererURI = $this->agi->extractURI($transfererHdr, "uri");
+            $transfererNum = $this->agi->extractURI($transfererHdr, "num");
+            $transfererDomain = $this->agi->extractURI($transfererHdr, "domain");
+
+            $endpointName = $this->getEndpointNameFromContact($transfererNum, $transfererDomain);
 
             // Transferer is the new caller
             $user = $this->getUserFromEndpoint($endpointName);
@@ -682,16 +689,45 @@ class CallsController extends BaseController
         }
     }
 
-    private function getEndpointNameFromContact($contact)
+    private function getEndpointNameFromContact($endpointNum, $endpointDomain)
     {
         /** @var \Doctrine\ORM\EntityManager $em */
         $em = \Zend_Registry::get("em");
 
-        /** @var \Ivoz\Ast\Domain\Model\PsAor\PsAorRepository $aorRepository */
-        $aorRepository = $em->getRepository('Ivoz\Ast\Domain\Model\PsAors\PsAors');
+        /** @var \Ivoz\Provider\Domain\Model\Domain\DomainRepository $domainRepository */
+        $domainRepository = $em->getRepository(Domain::class);
+        /** @var \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain */
+        $domain = $domainRepository->findOneBy([
+            'domain' => $endpointDomain
+        ]);
+
+        Assertion::notNull(
+            $domain,
+            sprintf('No Domain found for "%s".', $endpointDomain)
+        );
+
+        /** @var \Ivoz\Provider\Domain\Model\Terminal\TerminalRepository $terminalRepository */
+        $terminalRepository = $em->getRepository(Terminal::class);
+        /** @var \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface $terminal */
+        $terminal = $terminalRepository->findOneBy([
+            'name' => $endpointNum,
+            'domain' => $domain->getId()
+        ]);
+
+        Assertion::notNull(
+            $terminal,
+            sprintf('No Terminal found for "%s@%s"', $endpointNum, $endpointDomain)
+        );
+
+        /** @var \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface $endpoint */
+        $endpoint = $terminal->getAstPsEndpoint();
+        Assertion::notNull(
+            $endpoint,
+            sprintf('No endpoint found for "%s".', $endpointNum)
+        );
 
         // Get the endpoint name matching the referer contact
-        return $aorRepository->getSorceryByContact($contact);
+        return $endpoint->getSorceryId();
     }
 
 

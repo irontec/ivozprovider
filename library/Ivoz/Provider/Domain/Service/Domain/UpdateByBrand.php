@@ -55,10 +55,7 @@ class UpdateByBrand implements BrandLifecycleEventHandlerInterface
         /**
          * @var DomainInterface $domain
          */
-        $domain = $this->domainRepository->findOneBy([
-            'brand' => $id,
-            'pointsTo' => 'proxyusers'
-        ]);
+        $domain = $entity->getDomain();
 
         // Empty domain field, delete any related domain
         if (!$name) {
@@ -80,11 +77,9 @@ class UpdateByBrand implements BrandLifecycleEventHandlerInterface
          */
         $domainDto
             ->setDomain($name)
-            ->setScope('brand')
-            ->setPointsTo('proxyusers')
-            ->setBrandId($id)
             ->setDescription($entity->getName() . " proxyusers domain");
 
-        $this->entityPersister->persistDto($domainDto, $domain);
+        $domain = $this->entityPersister->persistDto($domainDto, $domain);
+        $entity->setDomain($domain);
     }
 }

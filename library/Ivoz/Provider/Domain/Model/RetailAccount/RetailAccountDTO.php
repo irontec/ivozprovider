@@ -19,11 +19,6 @@ class RetailAccountDTO implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $domain;
-
-    /**
-     * @var string
-     */
     private $description = '';
 
     /**
@@ -99,6 +94,11 @@ class RetailAccountDTO implements DataTransferObjectInterface
     /**
      * @var mixed
      */
+    private $domainId;
+
+    /**
+     * @var mixed
+     */
     private $companyId;
 
     /**
@@ -120,6 +120,11 @@ class RetailAccountDTO implements DataTransferObjectInterface
      * @var mixed
      */
     private $brand;
+
+    /**
+     * @var mixed
+     */
+    private $domain;
 
     /**
      * @var mixed
@@ -158,7 +163,6 @@ class RetailAccountDTO implements DataTransferObjectInterface
     {
         return [
             'name' => $this->getName(),
-            'domain' => $this->getDomain(),
             'description' => $this->getDescription(),
             'transport' => $this->getTransport(),
             'ip' => $this->getIp(),
@@ -174,6 +178,7 @@ class RetailAccountDTO implements DataTransferObjectInterface
             'directConnectivity' => $this->getDirectConnectivity(),
             'id' => $this->getId(),
             'brandId' => $this->getBrandId(),
+            'domainId' => $this->getDomainId(),
             'companyId' => $this->getCompanyId(),
             'transformationRuleSetId' => $this->getTransformationRuleSetId(),
             'outgoingDdiId' => $this->getOutgoingDdiId(),
@@ -189,6 +194,7 @@ class RetailAccountDTO implements DataTransferObjectInterface
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
         $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
+        $this->domain = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Domain\\Domain', $this->getDomainId());
         $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
         $this->transformationRuleSet = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\TransformationRuleSet\\TransformationRuleSet', $this->getTransformationRuleSetId());
         $this->outgoingDdi = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Ddi\\Ddi', $this->getOutgoingDdiId());
@@ -250,26 +256,6 @@ class RetailAccountDTO implements DataTransferObjectInterface
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * @param string $domain
-     *
-     * @return RetailAccountDTO
-     */
-    public function setDomain($domain = null)
-    {
-        $this->domain = $domain;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getDomain()
-    {
-        return $this->domain;
     }
 
     /**
@@ -578,6 +564,34 @@ class RetailAccountDTO implements DataTransferObjectInterface
     public function getBrand()
     {
         return $this->brand;
+    }
+
+    /**
+     * @param integer $domainId
+     *
+     * @return RetailAccountDTO
+     */
+    public function setDomainId($domainId)
+    {
+        $this->domainId = $domainId;
+
+        return $this;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getDomainId()
+    {
+        return $this->domainId;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Domain\Domain
+     */
+    public function getDomain()
+    {
+        return $this->domain;
     }
 
     /**

@@ -11,10 +11,6 @@ Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpoint:
       id: true
       generator:
         strategy: IDENTITY
-  oneToMany:
-    psAors:
-      targetEntity: Ivoz\Ast\Domain\Model\PsAor\PsAorInterface
-      mappedBy: psEndpoint
   lifecycleCallbacks:
     postLoad:
       - initChangelog

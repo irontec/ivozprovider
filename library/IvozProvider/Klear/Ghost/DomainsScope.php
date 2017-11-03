@@ -1,38 +1,39 @@
 <?php
 
+use Doctrine\Common\Collections\Criteria;
+use \Ivoz\Provider\Domain\Model\Company\Company;
+use \Ivoz\Provider\Domain\Model\Brand\Brand;
+
 class IvozProvider_Klear_Ghost_DomainsScope extends KlearMatrix_Model_Field_Ghost_Abstract
 {
     /**
      *
-     * @param $model Domains model
+     * @param \Ivoz\Provider\Domain\Model\Domain\DomainDTO $model
      * @return name of target based on domain scope
      */
     public function getData ($model)
     {
-        $domainScope = $model->getScope();
+        /** @var \ZfBundle\Services\DataGateway $dataGateway */
+        $dataGateway = \Zend_Registry::get('data_gateway');
 
-        if ($domainScope == 'global') {
-            return 'Global';
-        } else if ($domainScope == 'company') {
+        /** @var \Ivoz\Provider\Domain\Model\Company\CompanyDTO $company */
+        $company = $dataGateway->findOneBy(Company::class, [
+                "Company.domain = " . $model->getId()
+        ]);
 
-            $dataGateway = \Zend_Registry::get('data_gateway');
-            $company = $dataGateway->find('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $model->getCompanyId());
-            $companyName = $company->getName() . ' (company)';
-
-            return $companyName;
-
-        } elseif ($domainScope == 'brand') {
-
-            $dataGateway = \Zend_Registry::get('data_gateway');
-            $brand = $dataGateway->find('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $model->getBrandId());
-            $brandName = $brand->getName() . ' (company)';
-
-            return $brandName;
-
-        } else {
-
-            // Outgoing Route with unexpected Type
-            return null;
+        if ($company) {
+            return $company->getName() . ' (company)';
         }
+
+        /** @var \Ivoz\Provider\Domain\Model\Brand\BrandDTO $brand */
+        $brand = $dataGateway->findOneBy(Brand::class, [
+            "Brand.domain = " . $model->getId()
+        ]);
+
+        if ($brand) {
+            return $brand->getName() . ' (brand)';
+        }
+
+        return "Global";
     }
 }

@@ -124,6 +124,11 @@ class CompanyDTO implements DataTransferObjectInterface
     /**
      * @var mixed
      */
+    private $domainId;
+
+    /**
+     * @var mixed
+     */
     private $applicationServerId;
 
     /**
@@ -165,6 +170,11 @@ class CompanyDTO implements DataTransferObjectInterface
      * @var mixed
      */
     private $brand;
+
+    /**
+     * @var mixed
+     */
+    private $domain;
 
     /**
      * @var mixed
@@ -274,6 +284,7 @@ class CompanyDTO implements DataTransferObjectInterface
             'mediaRelaySetsId' => $this->getMediaRelaySetsId(),
             'defaultTimezoneId' => $this->getDefaultTimezoneId(),
             'brandId' => $this->getBrandId(),
+            'domainId' => $this->getDomainId(),
             'applicationServerId' => $this->getApplicationServerId(),
             'countryId' => $this->getCountryId(),
             'transformationRuleSetId' => $this->getTransformationRuleSetId(),
@@ -302,6 +313,7 @@ class CompanyDTO implements DataTransferObjectInterface
         $this->mediaRelaySets = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\MediaRelaySet\\MediaRelaySet', $this->getMediaRelaySetsId());
         $this->defaultTimezone = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Timezone\\Timezone', $this->getDefaultTimezoneId());
         $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
+        $this->domain = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Domain\\Domain', $this->getDomainId());
         $this->applicationServer = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\ApplicationServer\\ApplicationServer', $this->getApplicationServerId());
         $this->country = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Country\\Country', $this->getCountryId());
         $this->transformationRuleSet = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\TransformationRuleSet\\TransformationRuleSet', $this->getTransformationRuleSetId());
@@ -951,6 +963,34 @@ class CompanyDTO implements DataTransferObjectInterface
     public function getBrand()
     {
         return $this->brand;
+    }
+
+    /**
+     * @param integer $domainId
+     *
+     * @return CompanyDTO
+     */
+    public function setDomainId($domainId)
+    {
+        $this->domainId = $domainId;
+
+        return $this;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getDomainId()
+    {
+        return $this->domainId;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Domain\Domain
+     */
+    public function getDomain()
+    {
+        return $this->domain;
     }
 
     /**

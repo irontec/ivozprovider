@@ -18,7 +18,7 @@ class SanitizeValues implements FriendLifecycleEventHandlerInterface
         $entity->setDomain(
             $entity
                 ->getCompany()
-                ->getDomainUsers()
+                ->getDomain()
         );
     }
 }

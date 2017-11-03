@@ -53,6 +53,11 @@ abstract class BrandAbstract
     protected $invoice;
 
     /**
+     * @var \Ivoz\Provider\Domain\Model\Domain\DomainInterface
+     */
+    protected $domain;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Language\LanguageInterface
      */
     protected $language;
@@ -195,6 +200,7 @@ abstract class BrandAbstract
             ->setFromAddress($dto->getFromAddress())
             ->setRecordingsLimitMB($dto->getRecordingsLimitMB())
             ->setRecordingsLimitEmail($dto->getRecordingsLimitEmail())
+            ->setDomain($dto->getDomain())
             ->setLanguage($dto->getLanguage())
             ->setDefaultTimezone($dto->getDefaultTimezone())
         ;
@@ -236,6 +242,7 @@ abstract class BrandAbstract
             ->setRecordingsLimitEmail($dto->getRecordingsLimitEmail())
             ->setLogo($logo)
             ->setInvoice($invoice)
+            ->setDomain($dto->getDomain())
             ->setLanguage($dto->getLanguage())
             ->setDefaultTimezone($dto->getDefaultTimezone());
 
@@ -265,6 +272,7 @@ abstract class BrandAbstract
             ->setInvoiceProvince($this->getInvoice()->getProvince())
             ->setInvoiceCountry($this->getInvoice()->getCountry())
             ->setInvoiceRegistryData($this->getInvoice()->getRegistryData())
+            ->setDomainId($this->getDomain() ? $this->getDomain()->getId() : null)
             ->setLanguageId($this->getLanguage() ? $this->getLanguage()->getId() : null)
             ->setDefaultTimezoneId($this->getDefaultTimezone() ? $this->getDefaultTimezone()->getId() : null);
     }
@@ -291,6 +299,7 @@ abstract class BrandAbstract
             'invoiceProvince' => self::getInvoice()->getProvince(),
             'invoiceCountry' => self::getInvoice()->getCountry(),
             'invoiceRegistryData' => self::getInvoice()->getRegistryData(),
+            'domainId' => self::getDomain() ? self::getDomain()->getId() : null,
             'languageId' => self::getLanguage() ? self::getLanguage()->getId() : null,
             'defaultTimezoneId' => self::getDefaultTimezone() ? self::getDefaultTimezone()->getId() : null
         ];
@@ -466,6 +475,30 @@ abstract class BrandAbstract
     public function getRecordingsLimitEmail()
     {
         return $this->recordingsLimitEmail;
+    }
+
+    /**
+     * Set domain
+     *
+     * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain
+     *
+     * @return self
+     */
+    public function setDomain(\Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain = null)
+    {
+        $this->domain = $domain;
+
+        return $this;
+    }
+
+    /**
+     * Get domain
+     *
+     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface
+     */
+    public function getDomain()
+    {
+        return $this->domain;
     }
 
     /**

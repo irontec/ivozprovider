@@ -34,7 +34,7 @@ class SanitizeValues implements TerminalLifecycleEventHandlerInterface
         $entity->setDomain(
             $entity
                 ->getCompany()
-                ->getDomainUsers()
+                ->getDomain()
         );
     }
 }

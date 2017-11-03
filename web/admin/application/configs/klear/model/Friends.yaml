@@ -33,6 +33,18 @@ production:
         text: _("Allowed characters: a-z, A-Z, 0-9, underscore and '*'")
         label: _("Need help?")
       default: true
+    domainId:
+      title: ngettext('Domain', 'Domains', 1)
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Domain\Domain
+          fieldName:
+            fields:
+              - domain
+            template: '%domain%'
     description:
       title: _('Description')
       type: text
@@ -197,7 +209,7 @@ production:
         values:
           'pai': 'P-Asserted-Identity (PAI)'
           'rpid': 'Remote-Party-ID (RPID)'
-    updateCallerId:
+    updateCallerid:
       title: _('Update CallerID?')
       type: select
       defaultValue: yes

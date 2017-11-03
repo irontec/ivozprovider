@@ -18,27 +18,28 @@ production:
       fields:
         blacklist: &retailAccounts_blacklistLink
           transport: true
-          auth_needed: true
+          authNeeded: true
           password: true
           areaCode: true
           countryId: true
           allow: true
           disallow: true
-          direct_media_method: true
-          update_callerid: true
-          from_domain: true
-          callerid_update_header: true
+          directMediaMethod: true
+          updateCallerid: true
+          fromDomain: true
+          calleridUpdateHeader: true
           directConnectivity: true
+          transformationRuleSetId: true
           ip: true
           port: true
           languageId: true
+          status: true
         order:
           name: true
-          domain: true
+          domainId: true
           description: true
-          companyId: true
-          outgoingDDIId: true
-          status: true
+          outgoingDdiId: true
+          statusIcon: true
 staging:
   _extends: production
 testing:

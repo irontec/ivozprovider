@@ -54,28 +54,6 @@ class RetailAccount extends RetailAccountAbstract implements RetailAccountInterf
     }
 
     /**
-     * @brief Return Retail Account country or company if null
-     * @return CountryInterface
-     */
-    public function getCountry()
-    {
-        $country = parent::getCountry();
-        if (!is_null($country)) {
-            return $country;
-        }
-
-        return $this->getCompany()->getCountry();
-    }
-
-    /**
-     * @deprecated use getCountry instead
-     */
-    public function getCountries()
-    {
-        return $this->getCountry();
-    }
-
-    /**
      * Obtain content for X-Info-Retail header
      *
      * @param mixed $callee

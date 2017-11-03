@@ -19,27 +19,12 @@ abstract class DomainAbstract
     /**
      * @var string
      */
-    protected $scope = 'global';
-
-    /**
-     * @var string
-     */
     protected $pointsTo = 'proxyusers';
 
     /**
      * @var string
      */
     protected $description;
-
-    /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
-     */
-    protected $company;
-
-    /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
-     */
-    protected $brand;
 
 
     /**
@@ -51,10 +36,9 @@ abstract class DomainAbstract
     /**
      * Constructor
      */
-    public function __construct($domain, $scope, $pointsTo)
+    public function __construct($domain, $pointsTo)
     {
         $this->setDomain($domain);
-        $this->setScope($scope);
         $this->setPointsTo($pointsTo);
 
         $this->initChangelog();
@@ -148,13 +132,10 @@ abstract class DomainAbstract
 
         $self = new static(
             $dto->getDomain(),
-            $dto->getScope(),
             $dto->getPointsTo());
 
         return $self
             ->setDescription($dto->getDescription())
-            ->setCompany($dto->getCompany())
-            ->setBrand($dto->getBrand())
         ;
     }
 
@@ -171,11 +152,8 @@ abstract class DomainAbstract
 
         $this
             ->setDomain($dto->getDomain())
-            ->setScope($dto->getScope())
             ->setPointsTo($dto->getPointsTo())
-            ->setDescription($dto->getDescription())
-            ->setCompany($dto->getCompany())
-            ->setBrand($dto->getBrand());
+            ->setDescription($dto->getDescription());
 
 
         return $this;
@@ -188,11 +166,8 @@ abstract class DomainAbstract
     {
         return self::createDTO()
             ->setDomain($this->getDomain())
-            ->setScope($this->getScope())
             ->setPointsTo($this->getPointsTo())
-            ->setDescription($this->getDescription())
-            ->setCompanyId($this->getCompany() ? $this->getCompany()->getId() : null)
-            ->setBrandId($this->getBrand() ? $this->getBrand()->getId() : null);
+            ->setDescription($this->getDescription());
     }
 
     /**
@@ -202,11 +177,8 @@ abstract class DomainAbstract
     {
         return [
             'domain' => self::getDomain(),
-            'scope' => self::getScope(),
             'pointsTo' => self::getPointsTo(),
-            'description' => self::getDescription(),
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null
+            'description' => self::getDescription()
         ];
     }
 
@@ -318,54 +290,6 @@ abstract class DomainAbstract
     public function getDescription()
     {
         return $this->description;
-    }
-
-    /**
-     * Set company
-     *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
-     *
-     * @return self
-     */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
-    {
-        $this->company = $company;
-
-        return $this;
-    }
-
-    /**
-     * Get company
-     *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
-     */
-    public function getCompany()
-    {
-        return $this->company;
-    }
-
-    /**
-     * Set brand
-     *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
-     *
-     * @return self
-     */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null)
-    {
-        $this->brand = $brand;
-
-        return $this;
-    }
-
-    /**
-     * Get brand
-     *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
-     */
-    public function getBrand()
-    {
-        return $this->brand;
     }
 
 

@@ -19,11 +19,6 @@ abstract class RetailAccountAbstract
     /**
      * @var string
      */
-    protected $domain;
-
-    /**
-     * @var string
-     */
     protected $description = '';
 
     /**
@@ -100,6 +95,11 @@ abstract class RetailAccountAbstract
      * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
      */
     protected $brand;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Domain\DomainInterface
+     */
+    protected $domain;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
@@ -256,12 +256,12 @@ abstract class RetailAccountAbstract
             $dto->getDirectConnectivity());
 
         return $self
-            ->setDomain($dto->getDomain())
             ->setIp($dto->getIp())
             ->setPort($dto->getPort())
             ->setPassword($dto->getPassword())
             ->setFromDomain($dto->getFromDomain())
             ->setBrand($dto->getBrand())
+            ->setDomain($dto->getDomain())
             ->setCompany($dto->getCompany())
             ->setTransformationRuleSet($dto->getTransformationRuleSet())
             ->setOutgoingDdi($dto->getOutgoingDdi())
@@ -282,7 +282,6 @@ abstract class RetailAccountAbstract
 
         $this
             ->setName($dto->getName())
-            ->setDomain($dto->getDomain())
             ->setDescription($dto->getDescription())
             ->setTransport($dto->getTransport())
             ->setIp($dto->getIp())
@@ -297,6 +296,7 @@ abstract class RetailAccountAbstract
             ->setFromDomain($dto->getFromDomain())
             ->setDirectConnectivity($dto->getDirectConnectivity())
             ->setBrand($dto->getBrand())
+            ->setDomain($dto->getDomain())
             ->setCompany($dto->getCompany())
             ->setTransformationRuleSet($dto->getTransformationRuleSet())
             ->setOutgoingDdi($dto->getOutgoingDdi())
@@ -313,7 +313,6 @@ abstract class RetailAccountAbstract
     {
         return self::createDTO()
             ->setName($this->getName())
-            ->setDomain($this->getDomain())
             ->setDescription($this->getDescription())
             ->setTransport($this->getTransport())
             ->setIp($this->getIp())
@@ -328,6 +327,7 @@ abstract class RetailAccountAbstract
             ->setFromDomain($this->getFromDomain())
             ->setDirectConnectivity($this->getDirectConnectivity())
             ->setBrandId($this->getBrand() ? $this->getBrand()->getId() : null)
+            ->setDomainId($this->getDomain() ? $this->getDomain()->getId() : null)
             ->setCompanyId($this->getCompany() ? $this->getCompany()->getId() : null)
             ->setTransformationRuleSetId($this->getTransformationRuleSet() ? $this->getTransformationRuleSet()->getId() : null)
             ->setOutgoingDdiId($this->getOutgoingDdi() ? $this->getOutgoingDdi()->getId() : null)
@@ -341,7 +341,6 @@ abstract class RetailAccountAbstract
     {
         return [
             'name' => self::getName(),
-            'domain' => self::getDomain(),
             'description' => self::getDescription(),
             'transport' => self::getTransport(),
             'ip' => self::getIp(),
@@ -356,6 +355,7 @@ abstract class RetailAccountAbstract
             'from_domain' => self::getFromDomain(),
             'directConnectivity' => self::getDirectConnectivity(),
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
+            'domainId' => self::getDomain() ? self::getDomain()->getId() : null,
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
             'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null,
             'outgoingDdiId' => self::getOutgoingDdi() ? self::getOutgoingDdi()->getId() : null,
@@ -817,6 +817,30 @@ abstract class RetailAccountAbstract
     public function getBrand()
     {
         return $this->brand;
+    }
+
+    /**
+     * Set domain
+     *
+     * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain
+     *
+     * @return self
+     */
+    public function setDomain(\Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain = null)
+    {
+        $this->domain = $domain;
+
+        return $this;
+    }
+
+    /**
+     * Get domain
+     *
+     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface
+     */
+    public function getDomain()
+    {
+        return $this->domain;
     }
 
     /**
