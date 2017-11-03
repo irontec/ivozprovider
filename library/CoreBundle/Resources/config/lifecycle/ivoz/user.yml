@@ -58,13 +58,6 @@ services:
       - { name: provider.lifecycle.user.post_persist, priority: 20 }
     arguments: ~
 
-  Ivoz\Ast\Domain\Service\QueueMember\UpdateByUser:
-    tags:
-      - { name: provider.lifecycle.user.post_persist, priority: 30 }
-    arguments:
-      $updateByIvozQueueMember:
-        '@Ivoz\Ast\Domain\Service\QueueMember\UpdateByIvozQueueMember'
-
   Ivoz\Ast\Domain\Service\PsEndpoint\UpdateByUser:
     tags:
       - { name: provider.lifecycle.user.post_persist, priority: 40 }

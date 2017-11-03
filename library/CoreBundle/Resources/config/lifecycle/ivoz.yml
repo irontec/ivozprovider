@@ -28,7 +28,6 @@ imports:
   - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/outgoing_routing.yml" }
   - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/peer_server.yml" }
   - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/pick_up_rel_user.yml" }
-  - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/queue_member.yml" }
   - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/queue.yml" }
   - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/retail_account.yml" }
   - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/routing_pattern_group.yml" }

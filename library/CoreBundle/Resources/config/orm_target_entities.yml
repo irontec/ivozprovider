@@ -5,8 +5,6 @@ doctrine:
         Ivoz\Ast\Domain\Model\Hint\Hint
       Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface:
         Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpoint
-      Ivoz\Ast\Domain\Model\QueueMember\QueueMemberInterface:
-        Ivoz\Ast\Domain\Model\QueueMember\QueueMember
       Ivoz\Ast\Domain\Model\Queue\QueueInterface:
         Ivoz\Ast\Domain\Model\Queue\Queue
       Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface:
