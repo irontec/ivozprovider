@@ -4,24 +4,24 @@
 production:
   main:
     module: klearMatrix
-    defaultScreen: mainOperatorsList_screen
-  screens:
-    mainOperatorsList_screen: &mainOperatorsList_screenLink
+    defaultScreen: administratorsGlobalList_screen
+  screens: &administrators_screensLink
+    administratorsList_screen: &administratorsList_screenLink
       controller: list
       pagination:
         items: 25
-      <<: *MainOperators
+      <<: *Administrators
       class: fa fa-users red
       title: _("List of %s %2s", ngettext('Main operator', 'Main operators', 0), "[format| (%parent%)]")
       fields:
         options:
           title: _("Options")
           screens:
-            mainOperatorsEdit_screen: true
+            administratorsEdit_screen: true
           dialogs:
-            mainOperatorsDel_dialog: true
-          default: mainOperatorsEdit_screen
-        order: &MainOperators_orderLink
+            administratorsDel_dialog: true
+          default: administratorsEdit_screen
+        order: &Administrators_orderLink
           email: true
           username: true
           pass: true
@@ -35,14 +35,23 @@ production:
           name: true
           lastname: true
           timezone: true
+          brandId: true
+          companyId: true
       options: 
         title: _("Options")
         screens:
-          mainOperatorsNew_screen: true
+          administratorsNew_screen: true
         dialogs:
-          mainOperatorsDel_dialog: true
-    mainOperatorsNew_screen: &mainOperatorsNew_screenLink
-      <<: *MainOperators
+          administratorsDel_dialog: true
+
+    administratorsGlobalList_screen:
+      <<: *administratorsList_screenLink
+      forcedValues:
+        "self::brand": null
+        "self::company": null
+
+    administratorsNew_screen: &administratorsNew_screenLink
+      <<: *Administrators
       controller: new
       class: ui-silk-add
       label: true
@@ -52,9 +61,11 @@ production:
       fields:
         blacklist:
           active: true
+          brandId: true
+          companyId: true
         order:
-          <<: *MainOperators_orderLink
-      fixedPositions: &MainOperatorsFixedPositions_link
+          <<: *Administrators_orderLink
+      fixedPositions: &AdministratorsFixedPositions_link
         group0:
           label: _("Login Info")
           colsPerRow: 2
@@ -71,20 +82,25 @@ production:
             name: 1
             lastname: 1
             email: 1
-    mainOperatorsEdit_screen: &mainOperatorsEdit_screenLink
-      <<: *MainOperators
+
+    administratorsEdit_screen: &administratorsEdit_screenLink
+      <<: *Administrators
       controller: edit
       class: ui-silk-pencil
       label: false
       title: _("Edit %s %2s", ngettext('Main operator', 'Main operators', 1), "[format| (%item%)]")
       fields:
         order:
-          <<: *MainOperators_orderLink
+          <<: *Administrators_orderLink
+        blacklist:
+          brandId: true
+          companyId: true
       fixedPositions:
-        <<: *MainOperatorsFixedPositions_link
-  dialogs:
-    mainOperatorsDel_dialog: &mainOperatorsDel_dialogLink
-      <<: *MainOperators
+        <<: *AdministratorsFixedPositions_link
+
+  dialogs: &administrators_dialogsLink
+    administratorsDel_dialog: &administratorsDel_dialogLink
+      <<: *Administrators
       controller: delete
       class: ui-silk-bin
       labelOption: false
@@ -93,6 +109,7 @@ production:
       message: _("%s successfully deleted.", ngettext('Main operator', 'Main operators', 1))
       multiItem: 1
       labelOnList: 1
+
 staging:
   _extends: production
 testing:

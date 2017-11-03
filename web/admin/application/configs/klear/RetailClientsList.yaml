@@ -1,6 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
-#include CompanyAdminsList.yaml
+#include AdministratorsList.yaml
 #include PricingPlansRelCompaniesList.yaml
 #include OutgoingRoutingList.yaml
 #include KamUsersAddressList.yaml
@@ -26,7 +26,7 @@ production:
           screens:
             retailClientsEdit_screen: true
             kamUsersAddressList_screen: true
-            companyAdminsList_screen: true
+            administratorsList_screen: true
             pricingPlansRelCompaniesList_screen: ${auth.brand.billing.enabled}
             outgoingRoutingList_screen: true
           dialogs:
@@ -244,18 +244,24 @@ production:
       title: _("Edit %s %2s", ngettext('Retail Client', 'Retail Clients', 1), "[format| (%item%)]")
       forcedValues:
         <<: *forcedBrand
-    #companyAdmins:
-    companyAdminsList_screen:
-      <<: *companyAdminsList_screenLink
-      filterField: company
+
+    # Administrators
+    <<: *administrators_screensLink
+    administratorsList_screen:
+      <<: *administratorsList_screenLink
+      class: ui-silk-user-gray
+      title: _("List of %s %2s", ngettext('Company admin', 'Company admins', 0), "[format| (%parent%)]")
+      filterField: Company
       parentOptionCustomizer:
         - recordCount
-    companyAdminsNew_screen:
-      <<: *companyAdminsNew_screenLink
-      filterField: company
-    companyAdminsEdit_screen:
-      <<: *companyAdminsEdit_screenLink
-      filterField: company
+    administratorsNew_screen:
+      <<: *administratorsNew_screenLink
+      title: _("Add %s", ngettext('Company admin', 'Company admins', 1), "[format| (%parent%)]")
+      filterField: Company
+    administratorsEdit_screen:
+      <<: *administratorsEdit_screenLink
+      title: _("Edit %s %2s", ngettext('Company admin', 'Company admins', 1), "[format| (%item%)]")
+      filterField: Company
 
     #pricingPlansRelCompanies:
     <<: *pricingPlansRelCompanies_screensLink
@@ -346,8 +352,13 @@ production:
 
     # pricingPlansRelCompanies dialogs:
     <<: *pricingPlansRelCompanies_dialogsLink
-    # companyAdmins dialogs:
-    <<: *companyAdmins_dialogsLink
+    # Administrators dialogs
+    <<: *administrators_dialogsLink
+    administratorsDel_dialog:
+      <<: *administratorsDel_dialogLink
+      title: _("Delete %s", ngettext('Company admin', 'Company admins', 1))
+      description: _("Do you want to delete this %s?", ngettext('Company admin', 'Company admins', 1))
+      message: _("%s successfully deleted.", ngettext('Company admin', 'Company admins', 1))
     # outgoingRouting dialogs:
     <<: *outgoingRouting_dialogsLink
     # kamUsersAddress dialogs:

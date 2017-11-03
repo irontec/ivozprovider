@@ -9,10 +9,10 @@ mappers:
         modelFile: BillableCalls,
         entity: 'Ivoz\\Provider\\Domain\\Model\\BillableCall\\BillableCall'
     }
-  - &BrandOperators {
-        mapper: \IvozProvider\Mapper\Sql\BrandOperators,
-        modelFile: BrandOperators,
-        entity: 'Ivoz\\Provider\\Domain\\Model\\BrandOperator\\BrandOperator'
+  - &Administrators {
+        mapper: \IvozProvider\Mapper\Sql\Administrators,
+        modelFile: Administrators,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\Administrator\\Administrator'
     }
   - &BrandServices {
         mapper: \IvozProvider\Mapper\Sql\BrandServices,
@@ -88,11 +88,6 @@ mappers:
         mapper: \IvozProvider\Mapper\Sql\Companies,
         modelFile: Companies,
         entity: 'Ivoz\\Provider\\Domain\\Model\\Company\\Company'
-    }
-  - &CompanyAdmins {
-        mapper: \IvozProvider\Mapper\Sql\CompanyAdmins,
-        modelFile: CompanyAdmins,
-        entity: 'Ivoz\\Provider\\Domain\\Model\\CompanyAdmin\\CompanyAdmin'
     }
   - &CompanyServices {
         mapper: \IvozProvider\Mapper\Sql\CompanyServices,
@@ -273,11 +268,6 @@ mappers:
         mapper: \IvozProvider\Mapper\Sql\Locutions,
         modelFile: Locutions,
         entity: 'Ivoz\\Provider\\Domain\\Model\\Locution\\Locution'
-    }
-  - &MainOperators {
-        mapper: \IvozProvider\Mapper\Sql\MainOperators,
-        modelFile: MainOperators,
-        entity: 'Ivoz\\Provider\\Domain\\Model\\MainOperator\\MainOperator'
     }
   - &MatchListPatterns {
         mapper: \IvozProvider\Mapper\Sql\MatchListPatterns,
