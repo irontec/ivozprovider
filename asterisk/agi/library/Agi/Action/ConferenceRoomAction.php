@@ -30,14 +30,23 @@ class ConferenceRoomAction extends RouterAction
         $this->agi->notice("Processing Conference Room %s [conferenceRoom%s]",
                         $room->getName(), $room->getId());
 
-        // Send X-Info-Conf to the proxy
-        $this->agi->setVariable("_CONFERENCE_ID", $room->getId());
-        $this->agi->setVariable("_CONFERENCE_LANG", $this->agi->getVariable("CHANNEL(language)"));
-
         // We're connecting this conference
         $this->agi->setConnectedLine('name', $room->getName());
 
+        // Check if conference requires pin
+        if ($room->getPinProtected()) {
+            $this->agi->setConferenceSetting('user,pin', $room->getPinCode());
+        }
+
+        // Check if conference has max members
+        if ($room->getMaxMembers()) {
+            $this->agi->setConferenceSetting('bridge,max_members', $room->getMaxMembers());
+        }
+
+        // Enable video support
+        $this->agi->setConferenceSetting('bridge,video_mode', 'follow_talker');
+
         // Redirect to Conference context
-        $this->agi->redirect('call-conference', $this->agi->getExtension());
+        $this->agi->redirect('call-conference', $room->getId());
     }
 }
