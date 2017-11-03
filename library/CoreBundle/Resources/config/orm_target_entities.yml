@@ -201,8 +201,6 @@ doctrine:
         Ivoz\Provider\Domain\Model\TrunksHtable\TrunksHtable
       Ivoz\Provider\Domain\Model\TrunksUacreg\TrunksUacregInterface:
         Ivoz\Provider\Domain\Model\TrunksUacreg\TrunksUacreg
-      Ivoz\Provider\Domain\Model\UsersAcc\UsersAccInterface:
-        Ivoz\Provider\Domain\Model\UsersAcc\UsersAcc
       Ivoz\Provider\Domain\Model\UsersHtable\UsersHtableInterface:
         Ivoz\Provider\Domain\Model\UsersHtable\UsersHtable
       Ivoz\Provider\Domain\Model\UsersLocation\UsersLocationInterface:
