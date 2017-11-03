@@ -213,32 +213,6 @@ abstract class DomainAbstract
     }
 
     /**
-     * Set scope
-     *
-     * @param string $scope
-     *
-     * @return self
-     */
-    public function setScope($scope)
-    {
-        Assertion::notNull($scope, 'scope value "%s" is null, but non null value was expected.');
-
-        $this->scope = $scope;
-
-        return $this;
-    }
-
-    /**
-     * Get scope
-     *
-     * @return string
-     */
-    public function getScope()
-    {
-        return $this->scope;
-    }
-
-    /**
      * Set pointsTo
      *
      * @param string $pointsTo

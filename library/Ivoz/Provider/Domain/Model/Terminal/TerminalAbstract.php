@@ -297,34 +297,6 @@ abstract class TerminalAbstract
     }
 
     /**
-     * Set domain
-     *
-     * @param string $domain
-     *
-     * @return self
-     */
-    public function setDomain($domain = null)
-    {
-        if (!is_null($domain)) {
-            Assertion::maxLength($domain, 190, 'domain value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        }
-
-        $this->domain = $domain;
-
-        return $this;
-    }
-
-    /**
-     * Get domain
-     *
-     * @return string
-     */
-    public function getDomain()
-    {
-        return $this->domain;
-    }
-
-    /**
      * Set disallow
      *
      * @param string $disallow
