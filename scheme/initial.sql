@@ -230,7 +230,7 @@ CREATE TABLE `Brands` (
 
 LOCK TABLES `Brands` WRITE;
 /*!40000 ALTER TABLE `Brands` DISABLE KEYS */;
-INSERT INTO `Brands` VALUES (1,'DemoBrand','1234567890','domain-users.net',145,NULL,NULL,NULL,'Demo Postal Address','12345','DemoTown','DemoProvince','DemoCountry','Demo Registry Data',1,NULL,NULL,NULL,NULL);
+INSERT INTO `Brands` VALUES (1,'DemoBrand','1234567890','',145,NULL,NULL,NULL,'Demo Postal Address','12345','DemoTown','DemoProvince','DemoCountry','Demo Registry Data',1,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `Brands` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -4565,3 +4565,9 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2017-10-17 18:49:50
+
+-- Add needed users to db
+GRANT USAGE ON *.* TO 'asterisk'@'%' IDENTIFIED BY PASSWORD '*B1745AABE8FF81695592076E0F0D90D3FAB17F67';
+GRANT ALL PRIVILEGES ON `ivozprovider`.* TO 'asterisk'@'%';
+GRANT USAGE ON *.* TO 'kamailio'@'%' IDENTIFIED BY PASSWORD '*B1745AABE8FF81695592076E0F0D90D3FAB17F67';
+GRANT ALL PRIVILEGES ON `ivozprovider`.* TO 'kamailio'@'%';
