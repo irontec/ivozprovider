@@ -104,6 +104,11 @@ class PeerServerDTO implements DataTransferObjectInterface
     /**
      * @var mixed
      */
+    private $lcrGatewayId;
+
+    /**
+     * @var mixed
+     */
     private $peeringContractId;
 
     /**
@@ -114,17 +119,17 @@ class PeerServerDTO implements DataTransferObjectInterface
     /**
      * @var mixed
      */
+    private $lcrGateway;
+
+    /**
+     * @var mixed
+     */
     private $peeringContract;
 
     /**
      * @var mixed
      */
     private $brand;
-
-    /**
-     * @var array|null
-     */
-    private $lcrGateways = null;
 
     /**
      * @return array
@@ -150,9 +155,9 @@ class PeerServerDTO implements DataTransferObjectInterface
             'fromUser' => $this->getFromUser(),
             'fromDomain' => $this->getFromDomain(),
             'id' => $this->getId(),
+            'lcrGatewayId' => $this->getLcrGatewayId(),
             'peeringContractId' => $this->getPeeringContractId(),
-            'brandId' => $this->getBrandId(),
-            'lcrGateways' => $this->getLcrGateways()
+            'brandId' => $this->getBrandId()
         ];
     }
 
@@ -161,19 +166,9 @@ class PeerServerDTO implements DataTransferObjectInterface
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
+        $this->lcrGateway = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\LcrGateway\\LcrGateway', $this->getLcrGatewayId());
         $this->peeringContract = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\PeeringContract\\PeeringContract', $this->getPeeringContractId());
         $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
-        if (!is_null($this->lcrGateways)) {
-            $items = $this->getLcrGateways();
-            $this->lcrGateways = [];
-            foreach ($items as $item) {
-                $this->lcrGateways[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\LcrGateway\\LcrGateway',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-
     }
 
     /**
@@ -181,10 +176,7 @@ class PeerServerDTO implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-        $this->lcrGateways = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\LcrGateway\\LcrGateway',
-            $this->lcrGateways
-        );
+
     }
 
     /**
@@ -548,6 +540,34 @@ class PeerServerDTO implements DataTransferObjectInterface
     }
 
     /**
+     * @param integer $lcrGatewayId
+     *
+     * @return PeerServerDTO
+     */
+    public function setLcrGatewayId($lcrGatewayId)
+    {
+        $this->lcrGatewayId = $lcrGatewayId;
+
+        return $this;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getLcrGatewayId()
+    {
+        return $this->lcrGatewayId;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\LcrGateway\LcrGateway
+     */
+    public function getLcrGateway()
+    {
+        return $this->lcrGateway;
+    }
+
+    /**
      * @param integer $peeringContractId
      *
      * @return PeerServerDTO
@@ -601,26 +621,6 @@ class PeerServerDTO implements DataTransferObjectInterface
     public function getBrand()
     {
         return $this->brand;
-    }
-
-    /**
-     * @param array $lcrGateways
-     *
-     * @return PeerServerDTO
-     */
-    public function setLcrGateways($lcrGateways)
-    {
-        $this->lcrGateways = $lcrGateways;
-
-        return $this;
-    }
-
-    /**
-     * @return array
-     */
-    public function getLcrGateways()
-    {
-        return $this->lcrGateways;
     }
 }
 

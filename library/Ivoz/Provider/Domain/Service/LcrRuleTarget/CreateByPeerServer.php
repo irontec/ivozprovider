@@ -35,7 +35,7 @@ class CreateByPeerServer implements PeerServerLifecycleEventHandlerInterface
         }
 
         /** @var OutgoingRoutingInterface[] $outgoingRoutings */
-        $outgoingRoutings= $entity->getPeeringContract()->getOutgoingRoutings();
+        $outgoingRoutings = $entity->getPeeringContract()->getOutgoingRoutings();
 
         foreach ($outgoingRoutings as $outgoingRouting) {
             /** @var LcrRuleInterface[] $lcrRules */

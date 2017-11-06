@@ -27,7 +27,6 @@ class UpdateByPeerServer implements PeerServerLifecycleEventHandlerInterface
     public function execute(PeerServerInterface $entity, $isNew)
     {
         $lcrGateway = $entity->getLcrGateway();
-        $entity->removeLcrGateway($lcrGateway);
 
         $lcrGatewayDTO = is_null($lcrGateway)
             ? LcrGateway::createDTO()
@@ -46,8 +45,12 @@ class UpdateByPeerServer implements PeerServerLifecycleEventHandlerInterface
             ->setFlags($entity->getFlags())
             ->setPeerServerId($entity->getId());
 
-        $lcrGateway = $this->entityPersister->persistDto($lcrGatewayDTO, $lcrGateway, true);
+        $lcrGateway = $this->entityPersister->persistDto(
+            $lcrGatewayDTO,
+            $lcrGateway,
+            true
+        );
 
-        $entity->addLcrGateway($lcrGateway);
+        $entity->setLcrGateway($lcrGateway);
     }
 }

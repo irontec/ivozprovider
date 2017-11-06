@@ -17,7 +17,7 @@ class LcrRuleTargetDTO implements DataTransferObjectInterface
     private $lcrId = '1';
 
     /**
-     * @var boolean
+     * @var integer
      */
     private $priority;
 
@@ -116,7 +116,7 @@ class LcrRuleTargetDTO implements DataTransferObjectInterface
     }
 
     /**
-     * @param boolean $priority
+     * @param integer $priority
      *
      * @return LcrRuleTargetDTO
      */
@@ -128,7 +128,7 @@ class LcrRuleTargetDTO implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean
+     * @return integer
      */
     public function getPriority()
     {

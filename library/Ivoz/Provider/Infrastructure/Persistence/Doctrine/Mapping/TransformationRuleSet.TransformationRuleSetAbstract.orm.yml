@@ -52,7 +52,7 @@ Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetAbstract:
       nullable: true
       options:
         default: 0
-        unsigned: true
+        unsigned: false
       column: generateRules
   manyToOne:
     brand:

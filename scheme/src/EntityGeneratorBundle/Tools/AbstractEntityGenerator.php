@@ -382,7 +382,7 @@ public function <methodName>(<criteriaArgument>)
         $useCollections = false;
 
         foreach ($metadata->associationMappings as $mapping) {
-             if ($mapping['mappedBy']) {
+             if ($mapping['mappedBy'] && $mapping['type'] !== ClassMetadataInfo::ONE_TO_ONE) {
                  $useCollections = true;
                  break;
              }
@@ -1156,8 +1156,13 @@ public function <methodName>(<criteriaArgument>)
      */
     protected function isAssociationIsNullable($associationMapping)
     {
-        if ($associationMapping['inversedBy']) {
+        $isOneToOne = $associationMapping['type'] === ClassMetadataInfo::ONE_TO_ONE;
+        if ($associationMapping['inversedBy'] && !$isOneToOne) {
             return true;
+        }
+
+        if ($isOneToOne) {
+            return !$associationMapping['isOwningSide'];
         }
 
         return parent::isAssociationIsNullable($associationMapping);

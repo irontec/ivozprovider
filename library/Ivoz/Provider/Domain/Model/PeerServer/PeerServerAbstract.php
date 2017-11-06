@@ -105,6 +105,11 @@ abstract class PeerServerAbstract
     protected $fromDomain;
 
     /**
+     * @var \Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayInterface
+     */
+    protected $lcrGateway;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface
      */
     protected $peeringContract;
@@ -237,6 +242,7 @@ abstract class PeerServerAbstract
             ->setOutboundProxy($dto->getOutboundProxy())
             ->setFromUser($dto->getFromUser())
             ->setFromDomain($dto->getFromDomain())
+            ->setLcrGateway($dto->getLcrGateway())
             ->setPeeringContract($dto->getPeeringContract())
             ->setBrand($dto->getBrand())
         ;
@@ -271,6 +277,7 @@ abstract class PeerServerAbstract
             ->setOutboundProxy($dto->getOutboundProxy())
             ->setFromUser($dto->getFromUser())
             ->setFromDomain($dto->getFromDomain())
+            ->setLcrGateway($dto->getLcrGateway())
             ->setPeeringContract($dto->getPeeringContract())
             ->setBrand($dto->getBrand());
 
@@ -301,6 +308,7 @@ abstract class PeerServerAbstract
             ->setOutboundProxy($this->getOutboundProxy())
             ->setFromUser($this->getFromUser())
             ->setFromDomain($this->getFromDomain())
+            ->setLcrGatewayId($this->getLcrGateway() ? $this->getLcrGateway()->getId() : null)
             ->setPeeringContractId($this->getPeeringContract() ? $this->getPeeringContract()->getId() : null)
             ->setBrandId($this->getBrand() ? $this->getBrand()->getId() : null);
     }
@@ -328,6 +336,7 @@ abstract class PeerServerAbstract
             'outbound_proxy' => self::getOutboundProxy(),
             'from_user' => self::getFromUser(),
             'from_domain' => self::getFromDomain(),
+            'lcrGatewayId' => self::getLcrGateway() ? self::getLcrGateway()->getId() : null,
             'peeringContractId' => self::getPeeringContract() ? self::getPeeringContract()->getId() : null,
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null
         ];
@@ -811,6 +820,30 @@ abstract class PeerServerAbstract
     public function getFromDomain()
     {
         return $this->fromDomain;
+    }
+
+    /**
+     * Set lcrGateway
+     *
+     * @param \Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayInterface $lcrGateway
+     *
+     * @return self
+     */
+    public function setLcrGateway(\Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayInterface $lcrGateway = null)
+    {
+        $this->lcrGateway = $lcrGateway;
+
+        return $this;
+    }
+
+    /**
+     * Get lcrGateway
+     *
+     * @return \Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayInterface
+     */
+    public function getLcrGateway()
+    {
+        return $this->lcrGateway;
     }
 
     /**

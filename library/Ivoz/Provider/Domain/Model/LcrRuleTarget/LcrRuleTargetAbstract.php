@@ -18,7 +18,7 @@ abstract class LcrRuleTargetAbstract
     protected $lcrId = '1';
 
     /**
-     * @var boolean
+     * @var integer
      */
     protected $priority;
 
@@ -245,14 +245,15 @@ abstract class LcrRuleTargetAbstract
     /**
      * Set priority
      *
-     * @param boolean $priority
+     * @param integer $priority
      *
      * @return self
      */
     public function setPriority($priority)
     {
         Assertion::notNull($priority, 'priority value "%s" is null, but non null value was expected.');
-        Assertion::between(intval($priority), 0, 1, 'priority provided "%s" is not a valid boolean value.');
+        Assertion::integerish($priority, 'priority value "%s" is not an integer or a number castable to integer.');
+        Assertion::greaterOrEqualThan($priority, 0, 'priority provided "%s" is not greater or equal than "%s".');
 
         $this->priority = $priority;
 
@@ -262,7 +263,7 @@ abstract class LcrRuleTargetAbstract
     /**
      * Get priority
      *
-     * @return boolean
+     * @return integer
      */
     public function getPriority()
     {

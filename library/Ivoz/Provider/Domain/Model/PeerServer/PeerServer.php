@@ -34,18 +34,6 @@ class PeerServer extends PeerServerAbstract implements PeerServerInterface
         return $this->getSendPAI() + ($this->getSendRPID()*2);
     }
 
-    /**
-     * get first lcrGateways
-     *
-     * @return \Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayInterface
-     */
-    public function getLcrGateway()
-    {
-        $lcrGateways = $this->getLcrGateways();
-
-        return array_shift($lcrGateways);
-    }
-
     public function getName()
     {
         return

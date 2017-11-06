@@ -27,7 +27,7 @@ interface LcrRuleTargetInterface extends LoggableEntityInterface
     /**
      * Set priority
      *
-     * @param boolean $priority
+     * @param integer $priority
      *
      * @return self
      */
@@ -36,7 +36,7 @@ interface LcrRuleTargetInterface extends LoggableEntityInterface
     /**
      * Get priority
      *
-     * @return boolean
+     * @return integer
      */
     public function getPriority();
 
