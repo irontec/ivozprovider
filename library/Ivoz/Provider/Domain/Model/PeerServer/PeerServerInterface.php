@@ -3,20 +3,12 @@
 namespace Ivoz\Provider\Domain\Model\PeerServer;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Doctrine\Common\Collections\Collection;
 
 interface PeerServerInterface extends LoggableEntityInterface
 {
     public function getChangeSet();
 
     public function getFlags();
-
-    /**
-     * get first lcrGateways
-     *
-     * @return \Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayInterface
-     */
-    public function getLcrGateway();
 
     public function getName();
 
@@ -293,6 +285,22 @@ interface PeerServerInterface extends LoggableEntityInterface
     public function getFromDomain();
 
     /**
+     * Set lcrGateway
+     *
+     * @param \Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayInterface $lcrGateway
+     *
+     * @return self
+     */
+    public function setLcrGateway(\Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayInterface $lcrGateway = null);
+
+    /**
+     * Get lcrGateway
+     *
+     * @return \Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayInterface
+     */
+    public function getLcrGateway();
+
+    /**
      * Set peeringContract
      *
      * @param \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface $peeringContract
@@ -323,37 +331,6 @@ interface PeerServerInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
      */
     public function getBrand();
-
-    /**
-     * Add lcrGateway
-     *
-     * @param \Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayInterface $lcrGateway
-     *
-     * @return PeerServerTrait
-     */
-    public function addLcrGateway(\Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayInterface $lcrGateway);
-
-    /**
-     * Remove lcrGateway
-     *
-     * @param \Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayInterface $lcrGateway
-     */
-    public function removeLcrGateway(\Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayInterface $lcrGateway);
-
-    /**
-     * Replace lcrGateways
-     *
-     * @param \Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayInterface[] $lcrGateways
-     * @return self
-     */
-    public function replaceLcrGateways(Collection $lcrGateways);
-
-    /**
-     * Get lcrGateways
-     *
-     * @return array
-     */
-    public function getLcrGateways(\Doctrine\Common\Collections\Criteria $criteria = null);
 
 }
 

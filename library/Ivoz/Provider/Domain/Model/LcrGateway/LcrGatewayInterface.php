@@ -223,7 +223,7 @@ interface LcrGatewayInterface extends LoggableEntityInterface
      *
      * @return self
      */
-    public function setPeerServer(\Ivoz\Provider\Domain\Model\PeerServer\PeerServerInterface $peerServer = null);
+    public function setPeerServer(\Ivoz\Provider\Domain\Model\PeerServer\PeerServerInterface $peerServer);
 
     /**
      * Get peerServer

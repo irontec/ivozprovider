@@ -677,7 +677,7 @@ public function <methodName>()
             $field = (object) $fieldMapping;
             if (isset($field->targetEntity)) {
 
-                if ($fieldMapping['type'] === ClassMetadataInfo::MANY_TO_ONE) {
+                if (in_array($fieldMapping['type'], [ClassMetadataInfo::MANY_TO_ONE, ClassMetadataInfo::ONE_TO_ONE])) {
                     if ($code = $this->generateEntityStubMethod($metadata, 'set', $fieldMapping['fieldName'] . 'Id', 'integer')) {
                         $methods[] = $code;
                     }

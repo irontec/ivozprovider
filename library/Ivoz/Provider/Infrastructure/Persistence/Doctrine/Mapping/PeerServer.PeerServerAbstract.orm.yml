@@ -142,3 +142,9 @@ Ivoz\Provider\Domain\Model\PeerServer\PeerServerAbstract:
           nullable: false
           onDelete: cascade
       orphanRemoval: false
+  oneToOne:
+    lcrGateway:
+      targetEntity: Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayInterface
+      mappedBy: peerServer
+      fetch: LAZY
+

@@ -63,7 +63,8 @@ class InterfaceGenerator extends ParentGenerator
         $useCollections = false;
 
         foreach ($metadata->associationMappings as $mapping) {
-            if ($mapping['mappedBy']) {
+            $isOneToOne = $mapping['type'] === ClassMetadataInfo::ONE_TO_ONE;
+            if ($mapping['mappedBy'] && !$isOneToOne) {
                 $useCollections = true;
                 break;
             }

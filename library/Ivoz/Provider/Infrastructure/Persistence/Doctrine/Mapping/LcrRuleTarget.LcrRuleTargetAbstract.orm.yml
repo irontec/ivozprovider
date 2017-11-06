@@ -22,7 +22,7 @@ Ivoz\Provider\Domain\Model\LcrRuleTarget\LcrRuleTargetAbstract:
         default: '1'
       column: lcr_id
     priority:
-      type: boolean
+      type: smallint
       nullable: false
       options:
         unsigned: true
