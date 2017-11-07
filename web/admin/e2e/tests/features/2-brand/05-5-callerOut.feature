@@ -1,6 +1,6 @@
 @brand
 @callerOut
-@kamTrunksDialplanCallerOut
+@transformationRulesCallerOut
 @brand05
 @brand05-5
 
@@ -15,10 +15,10 @@ Background:
    Then I am logged in
    When I click on brand emulation button
     And I emulate the brand at position "1"
-    And I click on "TransformationRulesetGroupsTrunks" CTA
-   Then I am on "TransformationRulesetGroupsTrunks" list
-   When I click on "TransformationRulesetGroupsTrunks" first elements "kamTrunksDialplan_caller_out" button
-   Then I am on "TransformationRulesetGroupsTrunksList_kamTrunksDialplan_caller_out" subscreen list
+    And I click on "TransformationRuleSets" CTA
+   Then I am on "TransformationRuleSets" list
+   When I click on "TransformationRuleSets" first elements "transformationRulesCallerOut" button
+   Then I am on "TransformationRuleSetsList_transformationRulesCallerOut" subscreen list
 
 Scenario: I can create new caller out
   When I click on add button
@@ -26,19 +26,19 @@ Scenario: I can create new caller out
    And I click on save button
   Then I can see confirmation dialog
   When I click on close dialog button
-  Then I am on "TransformationRulesetGroupsTrunksList_kamTrunksDialplan_caller_out" subscreen list
+  Then I am on "TransformationRuleSetsList_transformationRulesCallerOut" subscreen list
 
 Scenario: I can save caller out
   Given I can see at least one row
-   When I click on "kamTrunksDialplan" first elements edit button
+   When I click on "transformationRules" first elements edit button
     And I click on save button
    Then I can see confirmation dialog
    When I click on close dialog button
-   Then I am on "TransformationRulesetGroupsTrunksList_kamTrunksDialplan_caller_out" subscreen list
+   Then I am on "TransformationRuleSetsList_transformationRulesCallerOut" subscreen list
 
 Scenario: I can click on delete caller out button
   Given I can see at least one row
-   When I click on "kamTrunksDialplan" first elements delete button
+   When I click on "transformationRules" first elements delete button
    Then I can see confirmation dialog
    When I click on close dialog button
-   Then I am on "TransformationRulesetGroupsTrunksList_kamTrunksDialplan_caller_out" subscreen list
+   Then I am on "TransformationRuleSetsList_transformationRulesCallerOut" subscreen list

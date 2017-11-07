@@ -21,7 +21,7 @@ Background:
    When I click on "PeeringContracts" first elements "kamTrunksUacreg" button
    Then I am on "PeeringContractsList_kamTrunksUacreg" subscreen list
 
-Scenario: I see new providers register admin page
+Scenario: I create new providers register admin page
   Given I click on add button
   And I click on close button
   Then I am on "PeeringContractsList_kamTrunksUacreg" subscreen list

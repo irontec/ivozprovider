@@ -15,7 +15,7 @@ Background:
    When I click on "MediaRelaySets" CTA
     And I am on "MediaRelaySets" list
 
-Scenario: I see new brand admin page
+Scenario: I create new brand admin page
   When I click on add button
    And I fill out the form with "platform/mediaRelaySet/new" data fixture
    And I click on save button

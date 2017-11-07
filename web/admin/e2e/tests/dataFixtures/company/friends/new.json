@@ -11,7 +11,5 @@
   "fromDomain": "",
   "languageId": "__NULL__",
   "callACLId": "__NULL__",
-  "outgoingDDIId": "__NULL__",
-  "countryId": "__NULL__",
-  "areaCode": ""
+  "outgoingDDIId": "__NULL__"
 }

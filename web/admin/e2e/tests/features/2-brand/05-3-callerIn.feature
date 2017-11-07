@@ -1,6 +1,6 @@
 @brand
 @callerIn
-@kamTrunksDialplanCallerIn
+@transformationRulesCallerIn
 @brand05
 @brand05-3
 
@@ -15,10 +15,10 @@ Background:
    Then I am logged in
    When I click on brand emulation button
     And I emulate the brand at position "1"
-    And I click on "TransformationRulesetGroupsTrunks" CTA
-   Then I am on "TransformationRulesetGroupsTrunks" list
-   When I click on "TransformationRulesetGroupsTrunks" first elements "kamTrunksDialplan_caller_in" button
-   Then I am on "TransformationRulesetGroupsTrunksList_kamTrunksDialplan_caller_in" subscreen list
+    And I click on "TransformationRuleSets" CTA
+   Then I am on "TransformationRuleSets" list
+   When I click on "TransformationRuleSets" first elements "transformationRulesCallerIn" button
+   Then I am on "TransformationRuleSetsList_transformationRulesCallerIn" subscreen list
 
 Scenario: I can create new caller in
   When I click on add button
@@ -26,19 +26,19 @@ Scenario: I can create new caller in
   When I click on save button
   Then I can see confirmation dialog
   When I click on close dialog button
-  Then I am on "TransformationRulesetGroupsTrunksList_kamTrunksDialplan_caller_in" subscreen list
+  Then I am on "TransformationRuleSetsList_transformationRulesCallerIn" subscreen list
 
 Scenario: I can save caller in
   Given I can see at least one row
-   When I click on "kamTrunksDialplan" first elements edit button
+   When I click on "transformationRules" first elements edit button
     And I click on save button
    Then I can see confirmation dialog
    When I click on close dialog button
-   Then I am on "TransformationRulesetGroupsTrunksList_kamTrunksDialplan_caller_in" subscreen list
+   Then I am on "TransformationRuleSetsList_transformationRulesCallerIn" subscreen list
 
 Scenario: I can click on delete caller in button
   Given I can see at least one row
-   When I click on "kamTrunksDialplan" first elements delete button
+   When I click on "transformationRules" first elements delete button
    Then I can see confirmation dialog
    When I click on close dialog button
-   Then I am on "TransformationRulesetGroupsTrunksList_kamTrunksDialplan_caller_in" subscreen list
+   Then I am on "TransformationRuleSetsList_transformationRulesCallerIn" subscreen list

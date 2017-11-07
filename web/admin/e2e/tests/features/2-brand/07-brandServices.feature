@@ -18,7 +18,7 @@ Background:
    Then I am on "BrandServices" list
 
 @skip
-Scenario: I see new brand services admin page
+Scenario: I create new brand services admin page
    When I click on add button
     And I fill out the form with "brand/brandServices/new" data fixture
     And I click on save button

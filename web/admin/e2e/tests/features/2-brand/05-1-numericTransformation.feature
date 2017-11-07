@@ -15,8 +15,8 @@ Background:
    Then I am logged in
    When I click on brand emulation button
     And I emulate the brand at position "1"
-    And I click on "TransformationRulesetGroupsTrunks" CTA
-   Then I am on "TransformationRulesetGroupsTrunks" list
+    And I click on "TransformationRuleSets" CTA
+   Then I am on "TransformationRuleSets" list
 
 Scenario: I can create new numeric transformation admin
   Given I click on add button
@@ -24,7 +24,7 @@ Scenario: I can create new numeric transformation admin
    When I click on save button
    Then I can see confirmation dialog
    When I click on close dialog button
-   Then I am on "TransformationRulesetGroupsTrunks" list
+   Then I am on "TransformationRuleSets" list
 
 Scenario: I can create new numeric transformation with auto generated rules
   Given I click on add button
@@ -32,19 +32,19 @@ Scenario: I can create new numeric transformation with auto generated rules
    When I click on save button
    Then I can see confirmation dialog
    When I click on close dialog button
-   Then I am on "TransformationRulesetGroupsTrunks" list
+   Then I am on "TransformationRuleSets" list
 
 Scenario: I can edit numeric transformations
   Given I can see at least one row
-   When I click on "TransformationRulesetGroupsTrunks" first elements edit button
+   When I click on "TransformationRuleSets" first elements edit button
     And I click on save button
    Then I can see confirmation dialog
    When I click on close dialog button
-   Then I am on "TransformationRulesetGroupsTrunks" list
+   Then I am on "TransformationRuleSets" list
 
 Scenario: I can click on delete numeric transformation button
   Given I can see at least one row
-   When I click on "TransformationRulesetGroupsTrunks" first elements delete button
+   When I click on "TransformationRuleSets" first elements delete button
    Then I can see confirmation dialog
    When I click on close dialog button
-   Then I am on "TransformationRulesetGroupsTrunks" list
+   Then I am on "TransformationRuleSets" list

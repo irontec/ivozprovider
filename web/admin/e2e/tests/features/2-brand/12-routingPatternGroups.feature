@@ -17,7 +17,7 @@ Background:
     And I click on "RoutingPatternGroups" CTA
    Then I am on "RoutingPatternGroups" list
 
-Scenario: I see new routing pattern group admin page
+Scenario: I create new routing pattern group admin page
   When I click on add button
    And I fill out the form with "brand/routingPatternGroups/new" data fixture
    And I click on save button

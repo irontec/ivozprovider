@@ -1,5 +1,6 @@
 {
-  "name": "Spanish",
+  "nameen": "Spanish",
+  "namees": "Spanish",
   "description": "",
-  "automatic": 0
+  "generateRules": 0
 }
