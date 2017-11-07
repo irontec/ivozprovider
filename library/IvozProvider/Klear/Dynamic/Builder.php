@@ -1,6 +1,11 @@
 <?php
 namespace IvozProvider\Klear\Dynamic;
 
+use Ivoz\Core\Application\Service\DataGateway;
+use Ivoz\Provider\Domain\Model\Brand\Brand;
+use Ivoz\Provider\Domain\Model\Brand\BrandDTO;
+use Ivoz\Provider\Domain\Model\BrandUrl\BrandUrl;
+use Ivoz\Provider\Domain\Model\BrandUrl\BrandUrlDTO;
 use IvozProvider\Klear\Dynamic\Config\MainOperator;
 use IvozProvider\Klear\Dynamic\Config\BrandOperator;
 use IvozProvider\Klear\Dynamic\Config\CompanyAdmin;
@@ -9,12 +14,12 @@ class Builder
 {
     /**
      *
-     * @var \IvozProvider\Model\Brands
+     * @var BrandDTO
      */
     protected static $_brand;
 
     /**
-     * @var  \IvozProvider\Model\BrandURLs
+     * @var BrandUrlDTO
      */
     protected static $_brandURL;
 
@@ -28,7 +33,6 @@ class Builder
         $dynamic = null;
         if ($brandURLType == 'god') {
             $dynamic = new MainOperator();
-
         } elseif ($brandURLType == 'brand') {
             $dynamic = new BrandOperator();
         } elseif ($brandURLType == 'admin') {
@@ -85,11 +89,26 @@ class Builder
 
     protected static function _resolveBrand($urls)
     {
-        $brandURLMapper = new \IvozProvider\Mapper\Sql\BrandURLs();
-        self::$_brandURL = $brandURLMapper->findOneByField('url', $urls);
+        /** @var DataGateway $dataGateway */
+        $dataGateway = \Zend_Registry::get('data_gateway');
 
-        if (!self::$_brandURL instanceof \IvozProvider\Model\BrandURLs) {
-            self::$_brandURL = $brandURLMapper->findOneByField('urlType', 'god');
+        self::$_brandURL = $dataGateway->findOneBy(
+            BrandUrl::class,
+            [
+                "BrandUrl.url = '" . $urls[0] . "'" .
+                " OR " .
+                "BrandUrl.url = '" . $urls[1] . "'",
+            ]
+        );
+
+
+        if (!self::$_brandURL instanceof BrandUrlDTO) {
+            self::$_brandURL = $dataGateway->findOneBy(
+                BrandUrl::class,
+                [
+                    'BrandUrl.urlType = \'god\''
+                ]
+            );
             return false;
         }
 
@@ -97,7 +116,10 @@ class Builder
             return false;
         }
 
-        self::$_brand = self::$_brandURL->getBrand();
+        self::$_brand  = $dataGateway->find(
+            Brand::class,
+            self::$_brandURL->getBrandId()
+        );
     }
 
     public static function _failConfiguration()
@@ -109,7 +131,7 @@ class Builder
     {
         $brandURLLogoBaseName = self::$_brandURL->getLogoBaseName();
         if (!empty($brandURLLogoBaseName)) {
-            return "fso/klearBrandUrl/".self::$_brandURL->getPrimaryKey()."-".$brandURLLogoBaseName;
+            return "fso/klearBrandUrl/".self::$_brandURL->getId()."-".$brandURLLogoBaseName;
         }
 
         if (!self::$_brand) {
@@ -118,7 +140,7 @@ class Builder
 
         $brandLogoBaseName = self::$_brand->getLogoBaseName();
         if (!empty($brandLogoBaseName)) {
-            return "fso/klearBrand/".self::$_brand->getPrimaryKey()."-".$brandLogoBaseName;
+            return "fso/klearBrand/".self::$_brand->getId()."-".$brandLogoBaseName;
         }
 
         return null;

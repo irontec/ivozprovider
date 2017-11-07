@@ -1,7 +1,9 @@
 <?php
 namespace IvozProvider\Klear\Auth;
 
-use IvozProvider\Mapper\Sql\Brands as BrandsMapper;
+use Ivoz\Core\Application\Service\DataGateway;
+use Ivoz\Provider\Domain\Model\Brand\Brand;
+use Ivoz\Provider\Domain\Model\Brand\BrandDTO;
 use IvozProvider\Model\Brands;
 
 class Adapter implements \Klear_Auth_Adapter_KlearAuthInterface
@@ -10,9 +12,24 @@ class Adapter implements \Klear_Auth_Adapter_KlearAuthInterface
     protected $_password;
 
     /**
+     * @var Administrator
+     */
+    protected $administrator;
+
+    /**
      * @var Brands
      */
     protected $_currentBrand;
+
+    /**
+     * @var BrandDTO
+     */
+    protected $_brand;
+
+    /**
+     * @var DataGateway
+     */
+    protected $dataGateway;
 
     /**
      *
@@ -25,15 +42,20 @@ class Adapter implements \Klear_Auth_Adapter_KlearAuthInterface
         $this->_username = $request->getPost('username', '');
         $this->_password = $request->getPost('password', '');
 
+        /** @var DataGateway $dataGateway */
+        $this->dataGateway = \Zend_Registry::get('data_gateway');
+
         if (is_null($authConfig)) {
             return;
         }
 
         if ($authConfig->getProperty("brandId")) {
-            $brandMapper = new BrandsMapper();
-            $this->_brand = $brandMapper->find($authConfig->getProperty("brandId"));
+            $this->_brand = $this->dataGateway->find(
+                Brand::class,
+                $authConfig->getProperty("brandId")
+            );
 
-            if (!$this->_brand instanceof Brands) {
+            if (!$this->_brand instanceof BrandDTO) {
                 throw new \Klear_Exception_Default('Not a valid brand instanciated');
             }
         }
@@ -52,13 +74,13 @@ class Adapter implements \Klear_Auth_Adapter_KlearAuthInterface
             throw new \Klear_Exception_Default('userMapper not configured', 500);
         }
 
-        $this->_userMapper = new $userMapperName;
+        $this->administrator = new $userMapperName;
 
         if (isset($this->_brand)) {
-            $this->_userMapper->setBrand($this->_brand);
+            $this->administrator->setBrand($this->_brand);
         }
 
-        if (!$this->_userMapper instanceof \Klear_Auth_Adapter_Interfaces_BasicUserMapper) {
+        if (!$this->administrator instanceof \Klear_Auth_Adapter_Interfaces_BasicUserMapper) {
             throw new \Klear_Exception_Default('Auth userMapper must implement \Klear_Auth_Adapter_Interfaces_BasicUserMapper');
         }
     }
@@ -67,16 +89,16 @@ class Adapter implements \Klear_Auth_Adapter_KlearAuthInterface
     {
         try {
 
-            $user = $this->_userMapper->findByLogin($this->_username);
+            $user = $this->administrator->findByLoginAndBrand($this->_username, $this->_brand);
 
             if ($this->_userHasValidCredentials($user) ) {
 
                 $this->_user = $user;
                 $authResult = \Zend_Auth_Result::SUCCESS;
-                $authMessage = array("message"=>"Welcome!");
+                $authMessage = array('message' => 'Welcome!');
             } else {
                 $authResult = \Zend_Auth_Result::FAILURE_CREDENTIAL_INVALID;
-                $authMessage = array("message"=>"Usuario o contraseña incorrectos.");
+                $authMessage = array('message' => 'Usuario o contraseña incorrectos.');
             }
             return new \Zend_Auth_Result($authResult, $this->_username, $authMessage);
         } catch (Exception $e) {

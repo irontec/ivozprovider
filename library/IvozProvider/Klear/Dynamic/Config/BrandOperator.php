@@ -8,7 +8,6 @@ class BrandOperator extends Base
     protected $_subTitle = '[brand operator session]';
 
     protected $_sessionName = 'BrandOperatorSession';
-    protected $_userMapper = 'IvozProvider\Klear\Auth\BrandOperators\Mapper';
 
 
     public function postInit()

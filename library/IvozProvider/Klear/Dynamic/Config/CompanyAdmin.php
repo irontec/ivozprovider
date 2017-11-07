@@ -9,7 +9,6 @@ class CompanyAdmin extends Base
     protected $_subTitle = '[admin operator session]';
 
     protected $_sessionName = 'CompanyAdminSession';
-    protected $_userMapper = 'IvozProvider\Klear\Auth\CompanyAdmins\Mapper';
 
     public function postInit()
     {

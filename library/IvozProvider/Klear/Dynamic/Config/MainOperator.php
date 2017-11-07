@@ -7,7 +7,6 @@ class MainOperator extends Base
     protected $_subTitle = '[global operator session]';
 
     protected $_sessionName = 'MainOperatorSession';
-    protected $_userMapper = 'IvozProvider\Klear\Auth\MainOperators\Mapper';
 
     public function postInit()
     {
