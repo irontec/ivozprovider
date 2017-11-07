@@ -11,7 +11,6 @@ use Ivoz\Provider\Domain\Service\Company\CompanyLifecycleEventHandlerInterface;
 
 /**
  * Class PropagateBrandServices
- * @lifecycle post_persist
  */
 class PropagateBrandServices implements CompanyLifecycleEventHandlerInterface
 {

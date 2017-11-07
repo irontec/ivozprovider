@@ -16,7 +16,7 @@ class SanitizeValues implements QueueLifecycleEventHandlerInterface
     public function execute(QueueInterface $entity, $isNew)
     {
         /**
-         * @todo Check whether we can just keep zero valur
+         * @todo Check whether we can just keep zero value
          */
         // Jquery UI Spinner doesn't allow null values
         if ($entity->getMaxWaitTime() == 0) {

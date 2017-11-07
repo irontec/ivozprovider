@@ -8,7 +8,6 @@ use IvozProvider\Gearmand\Jobs\Recoder;
 /**
  * Class RecodingOrder
  * @package Ivoz\Provider\Domain\Service\MusicOnHold
- * @lifecycle post_persist
  */
 class SendRecodingOrder implements MusicOnHoldLifecycleEventHandlerInterface
 {

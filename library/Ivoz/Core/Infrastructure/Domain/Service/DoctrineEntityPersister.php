@@ -143,6 +143,23 @@ class DoctrineEntityPersister implements EntityPersisterInterface
         $this->transactional($entity, $transaction);
     }
 
+    /**
+     * @return void
+     */
+    public function dispatchQueued()
+    {
+        if (empty($this->pendingUpdates)) {
+            return;
+        }
+
+        foreach ($this->pendingUpdates as $entity) {
+            $this->em->persist($entity);
+        }
+        $this->pendingUpdates = [];
+
+        $this->em->flush();
+    }
+
     protected function transactional(EntityInterface $entity, callable $transaction)
     {
         if ($this->rootEntity instanceof EntityInterface) {
@@ -161,7 +178,6 @@ class DoctrineEntityPersister implements EntityPersisterInterface
             while (true) {
 
                 if (empty($this->pendingUpdates)) {
-                    $this->persistEvents();
                     break;
                 }
 
@@ -171,6 +187,8 @@ class DoctrineEntityPersister implements EntityPersisterInterface
                 $this->pendingUpdates = [];
                 $this->em->flush();
             }
+
+            $this->persistEvents();
         });
 
         $this->rootEntity = null;

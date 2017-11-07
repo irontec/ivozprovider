@@ -8,7 +8,6 @@ use IvozProvider\Gearmand\Jobs\Recoder;
 /**
  * Class SendRecodingOrder
  * @package Ivoz\Provider\Domain\Service\GenericMusicOnHold
- * @lifecycle post_persist
  */
 class SendRecodingOrder implements GenericMusicOnHoldLifecycleEventHandlerInterface
 {

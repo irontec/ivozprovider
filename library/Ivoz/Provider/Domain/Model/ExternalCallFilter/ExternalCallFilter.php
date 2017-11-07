@@ -50,7 +50,6 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
              * @var MatchList $matchList
              */
             $matchList = $list->getMatchList();
-            // @todo ensure this method exists
             if ($matchList->numberMatches($origin)) {
 
                 return true;
@@ -149,7 +148,6 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
             $timezones = $company->getDefaultTimezone();
 
             $scheduleMatched = $schedule
-                //@todo ensure this method exists
                 ->checkIsOnTimeRange(
                     $time->format('l'),
                     $time,

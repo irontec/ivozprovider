@@ -18,9 +18,7 @@ services:
   Ivoz\Provider\Domain\Service\Extension\SanitizeValues:
     tags:
       - { name: provider.lifecycle.extension.pre_persist, priority: 10}
-    arguments:
-      $entityPersister:
-        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
+    arguments: ~
 
   ##################################
   ## post_persist

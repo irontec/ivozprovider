@@ -26,4 +26,9 @@ interface EntityPersisterInterface
      * @return void
      */
     public function remove(EntityInterface $entity);
+
+    /**
+     * @return void
+     */
+    public function dispatchQueued();
 }

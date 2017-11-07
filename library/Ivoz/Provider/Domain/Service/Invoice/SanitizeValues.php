@@ -16,7 +16,7 @@ class SanitizeValues implements InvoiceLifecycleEventHandlerInterface
     public function execute(InvoiceInterface $entity)
     {
         if (is_null($entity->getStatus())) {
-            $entity->setStatus("waiting");
+            $entity->setStatus('waiting');
         }
     }
 }

@@ -58,20 +58,14 @@ class PropagateBrandGenericCallAclPatterns implements CompanyLifecycleEventHandl
 
             $callAclPatternDto = CallAclPattern::createDTO();
             $callAclPatternDto
-                /* @todo ensure that this works as expected, this is not the real company id
-                 * because is not persisted yet.
-                 */
                 ->setCompanyId($companyDto->getId())
                 ->setName($genericCallAclPattern->getName())
                 ->setRegExp($genericCallAclPattern->getRegExp());
 
             $callAclPatterns[] = $callAclPatternDto;
+            $this->entityPersister->persistDto($callAclPatternDto);
         }
 
-        if (!empty($callAclPatterns)) {
-            // @todo check whether cascade: ['persist']/ other is necessary
-            $companyDto->setCallAclPatterns($callAclPatterns);
-            $this->entityPersister->persistDto($companyDto, $entity);
-        }
+        $this->entityPersister->dispatchQueued();
     }
 }

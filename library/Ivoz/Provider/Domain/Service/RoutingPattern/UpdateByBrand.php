@@ -13,7 +13,6 @@ use Ivoz\Provider\Domain\Service\RoutingPatternGroup\UpdateByRoutingPatternAndCo
 /**
  * Class UpdateByBrand
  * @package Ivoz\Provider\Domain\Service\RoutingPattern
- * @lifecycle post_persist
  */
 class UpdateByBrand implements BrandLifecycleEventHandlerInterface
 {

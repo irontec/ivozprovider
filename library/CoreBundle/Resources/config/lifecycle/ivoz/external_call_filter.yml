@@ -18,4 +18,3 @@ services:
   Ivoz\Provider\Domain\Service\ExternalCallFilter\SanitizeValues:
     tags:
       - { name: provider.lifecycle.external_call_filter.pre_persist, priority: 10}
-#    arguments: ~

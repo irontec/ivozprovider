@@ -93,13 +93,16 @@ class AccCdrDoctrineRepository extends EntityRepository implements AccCdrReposit
      */
     public function countTarificableByQuery(array $criteria)
     {
+        /**
+         * @todo
+         */
         throw new \Exception('TODO');
         $criteria += $this->getEmptyPeeringContractFilterQueryArguments();
 
         /**
          * @todo ensure that criteria arguments are handled properly
          */
-        $qb = $this->createQueryBuilder(self::ENTITY_ALIAS );
+        $qb = $this->createQueryBuilder(self::ENTITY_ALIAS);
         $qb->select('count(' . self::ENTITY_ALIAS  . ')')
             ->addCriteria(new Criteria($criteria));
 

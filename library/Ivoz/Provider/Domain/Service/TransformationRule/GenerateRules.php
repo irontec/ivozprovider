@@ -10,8 +10,7 @@ use Ivoz\Provider\Domain\Service\TransformationRuleSet\TransformationRuleSetLife
 
 /**
  * Class GenerateRules
- * @package Ivoz\Provider\Domain\Service\TransformationRule;
- * @lifecycle post_persist
+ * @package Ivoz\Provider\Domain\Service\TransformationRule
  */
 class GenerateRules implements TransformationRuleSetLifecycleEventHandlerInterface
 {

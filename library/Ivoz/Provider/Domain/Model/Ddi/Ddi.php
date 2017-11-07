@@ -76,9 +76,6 @@ class Ddi extends DdiAbstract implements DdiInterface
     {
         parent::setRouteType($routeType);
 
-        /**
-         * @todo review this
-         */
         $nullableFields = array(
             'user'          => 'user',
             'IvrCommon'     => 'IvrCommon',

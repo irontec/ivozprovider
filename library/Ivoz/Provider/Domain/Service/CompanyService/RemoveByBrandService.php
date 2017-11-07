@@ -75,7 +75,6 @@ class RemoveByBrandService implements BrandServiceLifecycleEventHandlerInterface
             if ($companyService) {
                 $this->em->remove($companyService);
             }
-
         }
     }
 }

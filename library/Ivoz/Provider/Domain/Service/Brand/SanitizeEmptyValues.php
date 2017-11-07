@@ -1,8 +1,7 @@
 <?php
 namespace Ivoz\Provider\Domain\Service\Brand;
 
-use Ivoz\Core\Domain\Service\EntityPersisterInterface;
-use Doctrine\ORM\EntityManagerInterface;
+use Ivoz\Core\Application\Service\UpdateEntityFromDTO;
 use Ivoz\Provider\Domain\Model\Brand\BrandDTO;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 
@@ -14,14 +13,14 @@ use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 class SanitizeEmptyValues implements BrandLifecycleEventHandlerInterface
 {
     /**
-     * @var EntityPersisterInterface
+     * @var UpdateEntityFromDTO
      */
-    protected $entityPersister;
+    protected $entityUpdater;
 
     public function __construct(
-        EntityPersisterInterface $entityPersister
+        UpdateEntityFromDTO $entityUpdater
     ) {
-        $this->entityPersister = $entityPersister;
+        $this->entityUpdater = $entityUpdater;
     }
 
     /**
@@ -47,6 +46,6 @@ class SanitizeEmptyValues implements BrandLifecycleEventHandlerInterface
             $dto->setLanguageId(1);
         }
 
-        $this->entityPersister->persistDto($dto, $entity);
+        $this->entityUpdater->execute($entity, $dto);
     }
 }
