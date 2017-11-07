@@ -13,7 +13,6 @@ Ivoz\Provider\Domain\Model\Administrator\AdministratorAbstract:
       columns:
         - username
         - brandId
-        - companyId
   fields:
     username:
       type: string

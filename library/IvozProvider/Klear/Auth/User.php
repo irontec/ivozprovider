@@ -1,6 +1,7 @@
 <?php
 
 namespace IvozProvider\Klear\Auth;
+
 use \Ivoz\Provider\Domain\Model\Brand\Brand;
 use Ivoz\Provider\Domain\Model\Brand\BrandDTO;
 use \Ivoz\Provider\Domain\Model\Company\Company;
@@ -17,16 +18,18 @@ class User extends \Klear_Model_UserAdvanced
     public $canSeeBrand = false;
     public $canSeeCompany = false;
 
-    public $brandId = null;
-    public $companyId = null;
+    public $brand;
+    public $brandId;
+    public $company;
+    public $companyId;
 
     public $brandSetted = false;
+    public $brandName;
+    public $companyName;
 
-    public $brandName = null;
-    public $companyName = null;
-
-    public $companyCountryId = null;
-
+    public $companyCountryId;
+    public $brandFeatures = [];
+    public $companyFeatures = [];
 
     public function setUserName($username)
     {
@@ -36,9 +39,15 @@ class User extends \Klear_Model_UserAdvanced
 
     public function setBrand(BrandDTO $brand)
     {
+        $this->brand = $brand;
         $this->brandId = $brand->getId();
         $this->brandName = $brand->getName();
         $this->brandSetted = true;
+    }
+
+    public function getBrand()
+    {
+        return $this->brand;
     }
 
     public function setBrandId($brandId)
@@ -59,12 +68,18 @@ class User extends \Klear_Model_UserAdvanced
 
     public function setCompany(CompanyDTO $company)
     {
+        $this->company = $company;
         $this->companyId = $company->getId();
         $this->companyCountryId = $company->getCountryId();
         $this->companyName = $company->getName();
         $this->companyType = $company->getType();
         $this->companyVPBX = $company->getType() === Company::VPBX;
         $this->companyRetail = $company->getType() === Company::RETAIL;
+    }
+
+    public function getCompany()
+    {
+        return $this->company;
     }
 
     public function unsetCompany()
@@ -92,6 +107,16 @@ class User extends \Klear_Model_UserAdvanced
     public function getUserName()
     {
         return $this->_name;
+    }
+
+    public function setBrandFeatures($features)
+    {
+        $this->brandFeatures = $features;
+    }
+
+    public function setCompanyFeatures($features)
+    {
+        $this->companyFeatures = $features;
     }
 
     public function getUniqueIdenForCache()

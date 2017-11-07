@@ -1,18 +1,21 @@
 <?php
 namespace IvozProvider\Klear\Dynamic\Config;
-use IvozProvider\Model\Brands;
-use IvozProvider\Model\BrandURLs;
+
+use Ivoz\Provider\Domain\Model\Brand\BrandDTO;
+use Ivoz\Provider\Domain\Model\BrandUrl\BrandUrlDTO;
+use Ivoz\Provider\Domain\Model\BrandUrl\BrandUrlInterface;
 use IvozProvider\Klear\Auth\User;
+
 abstract class Base extends \Klear_Model_Settings_Dynamic_Abstract
 {
     /**
      *
-     * @var \IvozProvider\Model\Brands
+     * @var BrandDTO
      */
     protected $_brand;
 
     /**
-     * @var  \IvozProvider\Model\BrandURLs
+     * @var  BrandUrlDTO
      */
     protected $_brandURL;
 
@@ -28,7 +31,7 @@ abstract class Base extends \Klear_Model_Settings_Dynamic_Abstract
     protected $_logo = "images/palmera90.png";
 
     protected $_sessionName = 'BrandOperatorSession';
-    protected $_userMapper = 'IvozProvider\Klear\Auth\BrandOperators\Mapper';
+    protected $_userMapper = 'IvozProvider\Klear\Auth\Administrator';
 
     protected $_timezone;
 
@@ -38,7 +41,7 @@ abstract class Base extends \Klear_Model_Settings_Dynamic_Abstract
      */
     protected $_siteConfig;
 
-    public function setBrand(Brands $brand)
+    public function setBrand(BrandDTO $brand)
     {
         $this->_brand = $brand;
         return $this;
@@ -50,13 +53,13 @@ abstract class Base extends \Klear_Model_Settings_Dynamic_Abstract
         return $this;
     }
 
-    public function setBrandUrl(BrandURLs $brandURL)
+    public function setBrandUrl(BrandUrlDTO $brandURL)
     {
         $this->_brandURL = $brandURL;
         return $this;
     }
 
-    public function setTimezone ($timezone)
+    public function setTimezone($timezone)
     {
         $this->_timezone = $timezone;
         return $this;
@@ -81,7 +84,7 @@ abstract class Base extends \Klear_Model_Settings_Dynamic_Abstract
             return $this->_title;
         }
 
-        return sprintf('[%s]', $this->_brandURL->name);
+        return sprintf('[%s]', $this->_brandURL->getName());
     }
 
     public function processSiteSubName($sitesubname)
@@ -152,7 +155,7 @@ abstract class Base extends \Klear_Model_Settings_Dynamic_Abstract
             return $signature;
         }
 
-        return $this->_brandURL->name;
+        return $this->_brandURL->getName();
     }
 
     public function processAuthConfig($authConfig)
