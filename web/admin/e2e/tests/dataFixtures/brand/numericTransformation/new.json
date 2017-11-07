@@ -1,5 +1,6 @@
 {
-  "name": "Auto",
+  "nameen": "Auto",
+  "namees": "Auto",
   "description": "",
-  "automatic": 1
+  "generateRules": 1
 }

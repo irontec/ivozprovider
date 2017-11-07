@@ -18,7 +18,7 @@ Background:
    When I click on "TerminalManufacturers" first elements "terminalModels" button
    Then I am on "TerminalManufacturersList_terminalModels" subscreen list
 
-Scenario: I see new terminal model admin page
+Scenario: I create new terminal model admin page
   When I click on add button
    And I fill out the form with "platform/terminalModel/new" data fixture
    And I click on save button

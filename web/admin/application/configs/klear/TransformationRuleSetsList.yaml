@@ -5,9 +5,9 @@
 production:
   main:
     module: klearMatrix
-    defaultScreen: TransformationRuleSetsList_screen
-  screens: &TransformationRuleSets_screensLink
-    TransformationRuleSetsList_screen: &TransformationRuleSetsList_screenLink
+    defaultScreen: transformationRuleSetsList_screen
+  screens: &transformationRuleSets_screensLink
+    transformationRuleSetsList_screen: &transformationRuleSetsList_screenLink
       controller: list
       pagination:
         items: 25
@@ -20,22 +20,22 @@ production:
         field:
           - "TransformationRuleSet.brand desc"
           - "TransformationRuleSet.name.${lang} asc"
-      fields: &TransformationRuleSets_fieldsLink
+      fields: &transformationRuleSets_fieldsLink
         options:
           title: _("Options")
           screens:
-            TransformationRuleSetsEdit_screen: true
-            TransformationRuleSetsView_screen: true
-            TransformationRulesCallerInList_screen: true
-            TransformationRulesCalleeInList_screen: true
-            TransformationRulesCallerOutList_screen: true
-            TransformationRulesCalleeOutList_screen: true
-            TransformationRulesCallerInView_screen: true
-            TransformationRulesCalleeInView_screen: true
-            TransformationRulesCallerOutView_screen: true
-            TransformationRulesCalleeOutView_screen: true
+            transformationRuleSetsEdit_screen: true
+            transformationRuleSetsView_screen: true
+            transformationRulesCallerInList_screen: true
+            transformationRulesCalleeInList_screen: true
+            transformationRulesCallerOutList_screen: true
+            transformationRulesCalleeOutList_screen: true
+            transformationRulesCallerInView_screen: true
+            transformationRulesCalleeInView_screen: true
+            transformationRulesCallerOutView_screen: true
+            transformationRulesCalleeOutView_screen: true
           dialogs:
-            TransformationRuleSetsDel_dialog: true
+            transformationRuleSetsDel_dialog: true
         blacklist:
           brandId: true
           trunkPrefix: true
@@ -44,7 +44,7 @@ production:
           countryId: true
           internationalCode: true
           generateRules: true
-        order: &TransformationRuleSets_orderLink
+        order: &transformationRuleSets_orderLink
           brandId: true
           name: true
           description: true
@@ -53,10 +53,10 @@ production:
       options:
         title: _("Options")
         screens:
-          TransformationRuleSetsNew_screen: true
+          transformationRuleSetsNew_screen: true
 
 
-    TransformationRuleSetsNew_screen: &TransformationRuleSetsNew_screenLink
+    transformationRuleSetsNew_screen: &transformationRuleSetsNew_screenLink
       <<: *TransformationRuleSets
       controller: new
       class: ui-silk-add
@@ -70,8 +70,8 @@ production:
         generateRules: 1
       fields:
         order:
-          <<: *TransformationRuleSets_orderLink
-      fixedPositions: &TransformationRuleSetsFixedPositions_Link
+          <<: *transformationRuleSets_orderLink
+      fixedPositions: &transformationRuleSetsFixedPositions_Link
         group0:
           label: _("Basic Configuration")
           colsPerRow: 2
@@ -93,7 +93,7 @@ production:
           fields:
             generateRules: 12
 
-    TransformationRuleSetsEdit_screen: &TransformationRuleSetsEdit_screenLink
+    transformationRuleSetsEdit_screen: &transformationRuleSetsEdit_screenLink
       <<: *TransformationRuleSets
       controller: edit
       class: ui-silk-pencil
@@ -105,12 +105,12 @@ production:
         <<: *forcedBrand
       fields:
         order:
-          <<: *TransformationRuleSets_orderLink
+          <<: *transformationRuleSets_orderLink
       fixedPositions:
-        <<: *TransformationRuleSetsFixedPositions_Link
+        <<: *transformationRuleSetsFixedPositions_Link
 
-    TransformationRuleSetsView_screen:
-      <<: *TransformationRuleSetsEdit_screenLink
+    transformationRuleSetsView_screen:
+      <<: *transformationRuleSetsEdit_screenLink
       class: ui-silk-eye
       label: false
       title: _("View %s %2s", ngettext('Numeric transformation', 'Numeric transformations', 0), "[format| (%item%)]")
@@ -127,94 +127,94 @@ production:
           nationalLen: true
 
     # Transformation Rules Editable Screens
-    <<: *TransformationRules_screensLink
-    TransformationRulesCallerInList_screen:
-      <<: *TransformationRulesList_screenLink
+    <<: *transformationRules_screensLink
+    transformationRulesCallerInList_screen:
+      <<: *transformationRulesList_screenLink
       title: _("Caller In transformations")
       class: ui-silk-shape-rotate-anticlockwise
       forcedValues:
         type: callerin
       options:
-        <<: *TransformationRulesNew_optionsLink
+        <<: *transformationRulesNew_optionsLink
         screens:
-          TransformationRulesCallerInNew_screen: true
-    TransformationRulesCalleeInList_screen:
-      <<: *TransformationRulesList_screenLink
+          transformationRulesCallerInNew_screen: true
+    transformationRulesCalleeInList_screen:
+      <<: *transformationRulesList_screenLink
       title: _("Callee In transformations")
       class: ui-silk-shape-rotate-anticlockwise
       forcedValues:
         type: calleein
       options:
-        <<: *TransformationRulesNew_optionsLink
+        <<: *transformationRulesNew_optionsLink
         screens:
-          TransformationRulesCalleeInNew_screen: true
-    TransformationRulesCallerOutList_screen:
-      <<: *TransformationRulesList_screenLink
+          transformationRulesCalleeInNew_screen: true
+    transformationRulesCallerOutList_screen:
+      <<: *transformationRulesList_screenLink
       title: _("Caller Out transformations")
       class: ui-silk-shape-rotate-clockwise
       forcedValues:
         type: callerout
       options:
-        <<: *TransformationRulesNew_optionsLink
+        <<: *transformationRulesNew_optionsLink
         screens:
-          TransformationRulesCallerOutNew_screen: true
-    TransformationRulesCalleeOutList_screen:
-      <<: *TransformationRulesList_screenLink
+          transformationRulesCallerOutNew_screen: true
+    transformationRulesCalleeOutList_screen:
+      <<: *transformationRulesList_screenLink
       title: _("Callee Out transformations")
       class: ui-silk-shape-rotate-clockwise
       forcedValues:
         type: calleeout
       options:
-        <<: *TransformationRulesNew_optionsLink
+        <<: *transformationRulesNew_optionsLink
         screens:
-          TransformationRulesCalleeOutNew_screen: true
+          transformationRulesCalleeOutNew_screen: true
 
     # Transformation Rules NewRule screens
-    TransformationRulesCallerInNew_screen:
-      <<: *TransformationRulesNew_screenLink
+    transformationRulesCallerInNew_screen:
+      <<: *transformationRulesNew_screenLink
       forcedValues:
         type: callerin
-    TransformationRulesCalleeInNew_screen:
-      <<: *TransformationRulesNew_screenLink
+    transformationRulesCalleeInNew_screen:
+      <<: *transformationRulesNew_screenLink
       forcedValues:
         type: calleein
-    TransformationRulesCallerOutNew_screen:
-      <<: *TransformationRulesNew_screenLink
+    transformationRulesCallerOutNew_screen:
+      <<: *transformationRulesNew_screenLink
       forcedValues:
         type: callerout
-    TransformationRulesCalleeOutNew_screen:
-      <<: *TransformationRulesNew_screenLink
+    transformationRulesCalleeOutNew_screen:
+      <<: *transformationRulesNew_screenLink
       forcedValues:
         type: calleeout
 
     # Transformation Rules ReadOnly Screens
-    TransformationRulesCallerInView_screen:
-      <<: *TransformationRuleSetsView_screenLink
+    transformationRulesCallerInView_screen:
+      <<: *transformationRuleSetsView_screenLink
       title: _("Caller In transformations")
       class: ui-silk-shape-rotate-anticlockwise inherited
       forcedValues:
         type: callerin
-    TransformationRulesCalleeInView_screen:
-      <<: *TransformationRuleSetsView_screenLink
+    transformationRulesCalleeInView_screen:
+      <<: *transformationRuleSetsView_screenLink
       title: _("Callee In transformations")
       class: ui-silk-shape-rotate-anticlockwise
       forcedValues:
         type: calleein
-    TransformationRulesCallerOutView_screen:
-      <<: *TransformationRuleSetsView_screenLink
+    transformationRulesCallerOutView_screen:
+      <<: *transformationRuleSetsView_screenLink
       title: _("Caller Out transformations")
       class: ui-silk-shape-rotate-clockwise
       forcedValues:
         type: callerout
-    TransformationRulesCalleeOutView_screen:
-      <<: *TransformationRuleSetsView_screenLink
+    transformationRulesCalleeOutView_screen:
+      <<: *transformationRuleSetsView_screenLink
       title: _("Callee Out transformations")
       class: ui-silk-shape-rotate-clockwise
       forcedValues:
         type: calleeout
 
-  dialogs: &TransformationRuleSets_dialogsLink
-    TransformationRuleSetsDel_dialog: &TransformationRuleSetsDel_dialogLink
+  dialogs: &transformationRuleSets_dialogsLink
+    transformationRuleSetsDel_dialog: &transformationRuleSetsDel_dialogLink
       <<: *TransformationRuleSets
       controller: delete
       class: ui-silk-bin
@@ -228,9 +228,9 @@ production:
       labelOnList: 1
 
     # Transformation Rules Dialogs
-    <<: *TransformationRules_dialogsLink
-    TransformationRulesDel_dialog:
-      <<: *TransformationRulesDel_dialogLink
+    <<: *transformationRules_dialogsLink
+    transformationRulesDel_dialog:
+      <<: *transformationRulesDel_dialogLink
 
 staging:
   _extends: production

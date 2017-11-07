@@ -77,19 +77,19 @@ class IvozProvider_Klear_Options_OptionsCustomizer implements \KlearMatrix_Model
             case "domainsView_screen":
                 $show = !$this->_isEditable();
                 break;
-            case "TransformationRuleSetsEdit_screen":
-            case "TransformationRuleSetsDel_dialog":
-            case "TransformationRulesCallerInList_screen":
-            case "TransformationRulesCalleeInList_screen":
-            case "TransformationRulesCallerOutList_screen":
-            case "TransformationRulesCalleeOutList_screen":
+            case "transformationRuleSetsEdit_screen":
+            case "transformationRuleSetsDel_dialog":
+            case "transformationRulesCallerInList_screen":
+            case "transformationRulesCalleeInList_screen":
+            case "transformationRulesCallerOutList_screen":
+            case "transformationRulesCalleeOutList_screen":
                 $show = $this->_isBrandData();
                 break;
-            case "TransformationRuleSetsView_screen":
-            case "TransformationRulesCallerInView_screen":
-            case "TransformationRulesCalleeInView_screen":
-            case "TransformationRulesCallerOutView_screen":
-            case "TransformationRulesCalleeOutView_screen":
+            case "transformationRuleSetsView_screen":
+            case "transformationRulesCallerInView_screen":
+            case "transformationRulesCalleeInView_screen":
+            case "transformationRulesCallerOutView_screen":
+            case "transformationRulesCalleeOutView_screen":
                 $show = !$this->_isBrandData();
                 break;
             default:

@@ -4,10 +4,10 @@
 production:
   main:
     module: klearMatrix
-    defaultScreen: TransformationRulesList_screen
+    defaultScreen: transformationRulesList_screen
 
-  screens: &TransformationRules_screensLink
-    TransformationRulesList_screen: &TransformationRulesList_screenLink
+  screens: &transformationRules_screensLink
+    transformationRulesList_screen: &transformationRulesList_screenLink
       controller: list
       pagination:
         items: 25
@@ -19,29 +19,29 @@ production:
         - IvozProvider_Klear_Options_OptionsCustomizer
         - recordCount
       filterField: TransformationRuleSet
-      fields: &TransformationRules_fieldsLink
+      fields: &transformationRules_fieldsLink
         options:
           title: _("Options")
           screens:
-            TransformationRulesEdit_screen: true
+            transformationRulesEdit_screen: true
           dialogs:
-            TransformationRulesDel_dialog: true
-          default: TransformationRulesEdit_screen
-        blacklist: &TransformationRules_blacklistLink
+            transformationRulesDel_dialog: true
+          default: transformationRulesEdit_screen
+        blacklist: &transformationRules_blacklistLink
           type: true
           transformationRuleSetId: true
-        order: &TransformationRules_orderLink
+        order: &transformationRules_orderLink
           name: true
           countryId: true
           internationalCode: true
-      options: &TransformationRulesNew_optionsLink
+      options: &transformationRulesNew_optionsLink
         title: _("Options")
         screens:
-          TransformationRulesNew_screen: true
+          transformationRulesNew_screen: true
         dialogs:
-          TransformationRulesDel_dialog: true
+          transformationRulesDel_dialog: true
 
-    TransformationRulesNew_screen: &TransformationRulesNew_screenLink
+    transformationRulesNew_screen: &transformationRulesNew_screenLink
       <<: *TransformationRules
       controller: new
       class: ui-silk-add
@@ -52,8 +52,8 @@ production:
       filterField: TransformationRuleSet
       fields:
         order:
-          <<: *TransformationRules_orderLink
-      fixedPositions: &TransformationRulesFixedPositions_Link
+          <<: *transformationRules_orderLink
+      fixedPositions: &transformationRulesFixedPositions_Link
         group0:
           colsPerRow: 6
           fields:
@@ -62,7 +62,7 @@ production:
             matchExpr: 3
             replaceExpr: 3
 
-    TransformationRulesEdit_screen: &TransformationRulesEdit_screenLink
+    transformationRulesEdit_screen: &transformationRulesEdit_screenLink
       <<: *TransformationRules
       controller: edit
       class: ui-silk-pencil
@@ -70,14 +70,14 @@ production:
       title: _("Edit %s %2s", ngettext('Transformation Rule', 'Transformation Rules', 0), "[format| (%item%)]")
       fields:
         blacklist:
-          <<: *TransformationRules_blacklistLink
+          <<: *transformationRules_blacklistLink
         order:
-          <<: *TransformationRules_orderLink
+          <<: *transformationRules_orderLink
       fixedPositions:
-        <<: *TransformationRulesFixedPositions_Link
+        <<: *transformationRulesFixedPositions_Link
 
-    TransformationRuleSetsView_screen: &TransformationRuleSetsView_screenLink
-      <<: *TransformationRulesList_screenLink
+    transformationRuleSetsView_screen: &transformationRuleSetsView_screenLink
+      <<: *transformationRulesList_screenLink
       class: ui-silk-eye
       label: false
       title: _("List %s %2s", ngettext('Transformation Rule', 'Transformation Rules', 0), "[format| (%item%)]")
@@ -87,14 +87,14 @@ production:
           priority: 2
           matchExpr: 3
           replaceExpr: 3
-      fields: &TransformationRules_fieldsLink
+      fields: &transformationRules_fieldsLink
         options:
           title: _("Options")
       options:
         title: _("Options")
 
-  dialogs: &TransformationRules_dialogsLink
-    TransformationRulesDel_dialog: &TransformationRulesDel_dialogLink
+  dialogs: &transformationRules_dialogsLink
+    transformationRulesDel_dialog: &transformationRulesDel_dialogLink
       <<: *TransformationRules
       controller: delete
       class: ui-silk-bin

@@ -16,8 +16,8 @@ Background:
     And I emulate the brand at position "1"
     And I click on "Companies" CTA
    Then I am on "Companies" list
-   When I click on "Companies" first elements "companyAdmins" button
-   Then I am on "CompaniesList_companyAdmins" subscreen list
+   When I click on "Companies" first elements "administrators" button
+   Then I am on "CompaniesList_administrators" subscreen list
 
 Scenario: I can create new company admin
   When I click on add button
@@ -25,21 +25,21 @@ Scenario: I can create new company admin
   When I click on save button
   Then I can see confirmation dialog
   When I click on close dialog button
-  Then I am on "CompaniesList_companyAdmins" subscreen list
+  Then I am on "CompaniesList_administrators" subscreen list
 
 Scenario: I can edit authorized sources
   Given I can see at least one row
-   When I click on "companyAdmins" first elements edit button
+   When I click on "administrators" first elements edit button
     And I click on save button
    Then I can see confirmation dialog
    When I click on close dialog button
-   Then I am on "CompaniesList_companyAdmins" subscreen list
+   Then I am on "CompaniesList_administrators" subscreen list
 
 Scenario: I can click on delete authorized sources button
   Given I can see at least one row
    When I select element at position "1"
-    And I click on "companyAdmins" delete button in the footer
+    And I click on "administrators" delete button in the footer
    Then I can see confirmation dialog
    When I click on close dialog button
-   Then I am on "CompaniesList_companyAdmins" subscreen list
+   Then I am on "CompaniesList_administrators" subscreen list
 

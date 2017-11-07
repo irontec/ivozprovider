@@ -11,8 +11,8 @@ Background:
   Given I go to the admin page
    When I send valid admin credentials
    Then I am logged in
-   When I click on "MainOperators" CTA
-   Then I am on "MainOperators" list
+   When I click on "Administrators" CTA
+   Then I am on "Administrators" list
 
 Scenario: I can create main operators
   When I click on add button
@@ -20,19 +20,19 @@ Scenario: I can create main operators
    And I click on save button
   Then I can see confirmation dialog
   When I click on close dialog button
-  Then I am on "MainOperators" list
+  Then I am on "Administrators" list
 
 Scenario: I can edit main operators
   Given I can see at least one row
-   When I click on "MainOperators" first elements edit button
+   When I click on "Administrators" first elements edit button
     And I click on save button
    Then I can see confirmation dialog
    When I click on close dialog button
-   Then I am on "MainOperators" list
+   Then I am on "Administrators" list
 
 Scenario: I can click on delete main operator button
   Given I can see at least one row
-   When I click on "MainOperators" first elements delete button
+   When I click on "Administrators" first elements delete button
    Then I can see confirmation dialog
    When I click on close dialog button
-   Then I am on "MainOperators" list
+   Then I am on "Administrators" list

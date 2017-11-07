@@ -15,28 +15,28 @@ Background:
    When I click on "Brands" CTA
    Then I am on "Brands" list
     And I can see at least one row
-   When I click on "Brands" first elements "brandOperators" button
-   Then I am on "BrandsList_brandOperators" subscreen list
+   When I click on "Brands" first elements "administrators" button
+   Then I am on "BrandsList_administrators" subscreen list
 
-Scenario: I see new brand operator admin page
+Scenario: I create new brand operator admin page
   When I click on add button
    And I fill out the form with "platform/brandOperators/new" data fixture
    And I click on save button
   Then I can see confirmation dialog
   When I click on close dialog button
-  Then I am on "BrandsList_brandOperators" subscreen list
+  Then I am on "BrandsList_administrators" subscreen list
 
 Scenario: I can edit brand operators
   Given I can see at least one row
-   When I click on "BrandOperators" first elements edit button
+   When I click on "administrators" first elements edit button
     And I click on save button
    Then I can see confirmation dialog
    When I click on close dialog button
-   Then I am on "BrandsList_brandOperators" subscreen list
+   Then I am on "BrandsList_administrators" subscreen list
 
 Scenario: I can click on delete brand operator button
   Given I can see at least one row
-   When I click on "BrandOperators" first elements delete button
+   When I click on "administrators" first elements delete button
    Then I can see confirmation dialog
    When I click on close dialog button
-   Then I am on "BrandsList_brandOperators" subscreen list
+   Then I am on "BrandsList_administrators" subscreen list
