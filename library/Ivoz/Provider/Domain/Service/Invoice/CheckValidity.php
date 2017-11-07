@@ -16,16 +16,9 @@ use Ivoz\Kam\Domain\Model\AccCdr\AccCdrRepository;
 class CheckValidity implements InvoiceLifecycleEventHandlerInterface
 {
     const UNMETERED_CALLS = 50001;
-//    const UNBILLED_CALLS_BEFORE_IN_DATE = 50002;
     const INVOICES_FOUND_IN_THE_SAME_RANGE_OF_DATE = 50003;
     const UNBILLED_CALLS_AFTER_OUT_DATE = 50004;
     const SENSELESS_IN_OUT_DATE = 50005;
-//    const INVOICES_IN_FUTURE_DATES_FOUND = 50006;
-
-    /**
-     * @var EntityManagerInterface
-     */
-    protected $em;
 
     /**
      * @var AccCdrRepository
@@ -38,11 +31,9 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
     protected $invoiveRepository;
 
     public function __construct(
-        EntityManagerInterface $em,
         AccCdrRepository $accCdrRepository,
         InvoiceRepository $invoiveRepository
     ) {
-        $this->em = $em;
         $this->accCdrRepository = $accCdrRepository;
         $this->invoiveRepository = $invoiveRepository;
     }

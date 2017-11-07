@@ -8,7 +8,6 @@ use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutInterface;
 /**
  * Class SendFaxFile
  * @package Ivoz\Provider\Domain\Service\FaxesInOut
- * @lifecycle post_persist
  */
 class SendFaxFile implements FaxesInOutLifecycleEventHandlerInterface
 {

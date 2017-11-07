@@ -9,7 +9,6 @@ use Ivoz\Provider\Domain\Model\LcrGateway\LcrGateway;
 /**
  * Class UpdateByPeerServer
  * @package Ivoz\Provider\Domain\Service\LcrGateway
- * @lifecycle post_persist
  */
 class UpdateByPeerServer implements PeerServerLifecycleEventHandlerInterface
 {

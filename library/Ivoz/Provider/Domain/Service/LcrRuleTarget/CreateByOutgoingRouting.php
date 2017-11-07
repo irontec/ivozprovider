@@ -42,7 +42,7 @@ class CreateByOutgoingRouting implements OutgoingRoutingLifecycleEventHandlerInt
          * @var PeerServerInterface $peerServer
          */
         foreach ($peerServers as $peerServer) {
-            $lcrGateways = array_merge($lcrGateways, $peerServer->getLcrGateways());
+            $lcrGateways[] = $peerServer->getLcrGateway();
         }
 
         $lcrRules = $outgoingRouting->getLcrRules();

@@ -17,9 +17,9 @@ class SanitizeValues implements OutgoingRoutingLifecycleEventHandlerInterface
     {
         if ($entity->getType() == 'group') {
             $entity->setRoutingPattern(null);
-        } elseif ($entity->getType() == 'pattern') {
+        } else if ($entity->getType() == 'pattern') {
             $entity->setRoutingPatternGroup(null);
-        } elseif ($entity->getType() == 'fax') {
+        } else if ($entity->getType() == 'fax') {
             $entity->setRoutingPattern(null);
             $entity->setRoutingPatternGroup(null);
         } else {

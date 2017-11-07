@@ -13,7 +13,6 @@ use Ivoz\Provider\Domain\Service\Company\CompanyLifecycleEventHandlerInterface;
 /**
  * Class UpdateByCompany
  * @package Ivoz\Provider\Domain\Service\Domain
- * @lifecycle post_persist
  * @todo this could be partially merged with UpdateByBrand
  */
 class UpdateByCompany implements CompanyLifecycleEventHandlerInterface

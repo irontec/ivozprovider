@@ -17,6 +17,9 @@ services:
   Ivoz\Provider\Domain\Service\Brand\SanitizeEmptyValues:
     tags:
       - { name: provider.lifecycle.brand.pre_persist, priority: 10 }
+    arguments:
+      $entityUpdater:
+        '@Ivoz\Core\Application\Service\UpdateEntityFromDTO'
 
   ##################################
   ## post_persist

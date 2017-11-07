@@ -19,9 +19,9 @@ class SanitizeValues implements ExternalCallFilterLifecycleEventHandlerInterface
     public function execute(ExternalCallFilterInterface $entity)
     {
         $holidayNullableFields = array(
-            "number" => "holidayNumberValue",
-            "extension" => "holidayExtension",
-            "voicemail" => "holidayVoiceMailUser",
+            'number' => 'holidayNumberValue',
+            'extension' => 'holidayExtension',
+            'voicemail' => 'holidayVoiceMailUser',
         );
 
         $routeTypeHoliday = $entity->getHolidayTargetType();
@@ -31,14 +31,14 @@ class SanitizeValues implements ExternalCallFilterLifecycleEventHandlerInterface
                 continue;
             }
 
-            $setter = "set".ucfirst($fieldName);
+            $setter = 'set'.ucfirst($fieldName);
             $entity->{$setter}(null);
         }
 
         $scheduleNullableFields = array(
-            "number" => "outOfScheduleNumberValue",
-            "extension" => "outOfScheduleExtension",
-            "voicemail" => "outOfScheduleVoiceMailUser",
+            'number' => 'outOfScheduleNumberValue',
+            'extension' => 'outOfScheduleExtension',
+            'voicemail' => 'outOfScheduleVoiceMailUser',
         );
 
         $schedulerouteType = $entity->getOutOfScheduleTargetType();
@@ -47,7 +47,7 @@ class SanitizeValues implements ExternalCallFilterLifecycleEventHandlerInterface
             if ($schedulerouteType == $type) {
                 continue;
             }
-            $setter = "set".ucfirst($fieldName);
+            $setter = 'set' . ucfirst($fieldName);
             $entity->{$setter}(null);
         }
     }

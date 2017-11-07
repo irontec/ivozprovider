@@ -18,7 +18,7 @@ class SanitizeValues implements IvrCustomEntryLifecycleEventHandlerInterface
         /**
          * @todo move this into the entity
          */
-        if ($entity->hasChanged("targetType")) {
+        if ($entity->hasChanged('targetType')) {
             switch($entity->getTargetType())
             {
                 case 'number':

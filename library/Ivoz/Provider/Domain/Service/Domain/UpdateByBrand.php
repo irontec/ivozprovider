@@ -14,7 +14,6 @@ use Ivoz\Provider\Domain\Service\Brand\BrandLifecycleEventHandlerInterface;
 /**
  * Class UpdateByBrand
  * @package Ivoz\Provider\Domain\Service\Domain
- * @lifecycle post_persist
  */
 class UpdateByBrand implements BrandLifecycleEventHandlerInterface
 {

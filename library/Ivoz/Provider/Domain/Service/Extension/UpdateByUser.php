@@ -8,7 +8,6 @@ use Ivoz\Provider\Domain\Service\User\UserLifecycleEventHandlerInterface;
 /**
  * Class UpdateByUser
  * @package Ivoz\Provider\Domain\Service\Extension
- * @lifecycle post_persist
  */
 class UpdateByUser implements UserLifecycleEventHandlerInterface
 {

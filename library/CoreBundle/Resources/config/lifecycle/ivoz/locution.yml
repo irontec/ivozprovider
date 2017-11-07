@@ -25,5 +25,5 @@ services:
   ##################################
   Ivoz\Provider\Domain\Service\Locution\SendRecodingOrder:
     tags:
-      - { name: provider.lifecycle.music_on_hold.post_persist, priority: 10 }
+      - { name: provider.lifecycle.locution.post_persist, priority: 10 }
     arguments: ~

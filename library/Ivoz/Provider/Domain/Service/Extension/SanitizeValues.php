@@ -12,16 +12,7 @@ use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
  */
 class SanitizeValues implements ExtensionLifecycleEventHandlerInterface
 {
-    /**
-     * @var EntityPersisterInterface
-     */
-    protected $entityPersister;
-
-    public function __construct(
-        EntityPersisterInterface $entityPersister
-    ) {
-        $this->entityPersister = $entityPersister;
-    }
+    public function __construct() {}
 
     /**
      * @throws \Exception
