@@ -144,6 +144,21 @@ class DoctrineEntityPersister implements EntityPersisterInterface
     }
 
     /**
+     * @param EntityInterface[] $entities
+     * @return void
+     */
+    public function removeFromArray(array $entities)
+    {
+        $transaction = function () use ($entities) {
+            foreach ($entities as $entity) {
+                $this->remove($entity);
+            }
+        };
+
+        $this->transactional($entities[0], $transaction);
+    }
+
+    /**
      * @return void
      */
     public function dispatchQueued()
@@ -189,6 +204,7 @@ class DoctrineEntityPersister implements EntityPersisterInterface
             }
 
             $this->persistEvents();
+            $this->em->flush();
         });
 
         $this->rootEntity = null;
@@ -216,7 +232,5 @@ class DoctrineEntityPersister implements EntityPersisterInterface
             $changeLog->setCommand($commandlog);
             $this->em->persist($changeLog);
         }
-
-        $this->em->flush();
     }
 }

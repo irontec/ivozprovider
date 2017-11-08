@@ -28,6 +28,12 @@ interface EntityPersisterInterface
     public function remove(EntityInterface $entity);
 
     /**
+     * @param EntityInterface[] $entities
+     * @return void
+     */
+    public function removeFromArray(array $entities);
+
+    /**
      * @return void
      */
     public function dispatchQueued();
