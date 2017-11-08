@@ -12,7 +12,7 @@ class IvozProvider_Klear_Filter_OutgoingDDIRules implements KlearMatrix_Model_Fi
         // Only display DDIs belonging to edited company
         if (is_array($pk)) {
             //Avoid multiple choice error on klear
-            $this->_condition[] = ["1=2"];
+            $this->_condition = ["1=2"];
             return true;
         }
 
