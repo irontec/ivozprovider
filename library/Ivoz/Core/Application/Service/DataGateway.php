@@ -263,14 +263,16 @@ class DataGateway
         $this->triggerEvent(__CLASS__, __FUNCTION__, func_get_args());
 
         $repository = $this->getRepository($entityName);
+        $entities = [];
         foreach ($ids as $id) {
             $entity = $repository->find($id);
             if (is_null($entity)) {
                 throw new \Exception('Entity #'. (string) $id .' not found', $id);
             }
-
-            $this->entityPersister->remove($entity);
+            $entities[] = $entity;
         }
+
+        $this->entityPersister->removeFromArray($entities);
     }
 
     /**
