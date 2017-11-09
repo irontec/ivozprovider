@@ -2,35 +2,46 @@
 
 class IvozProvider_Klear_Filter_Terminals extends IvozProvider_Klear_Filter_Company
 {
-    protected $_condition = array();
-
     public function setRouteDispatcher(KlearMatrix_Model_RouteDispatcher $routeDispatcher)
     {
+        // Do not apply filtering in list view
+        if ($routeDispatcher->getControllerName() == "list") {
+            return;
+        }
+
         // Add parent filters
         parent::setRouteDispatcher($routeDispatcher);
 
-        //Get ModelName and your Controller
-        $currentItemName = $routeDispatcher->getCurrentItemName();
-        $unfilteredScreens = ['usersList_screen'];
+        /** @var \Ivoz\Core\Application\Service\DataGateway $dataGateway */
+        $dataGateway = \Zend_Registry::get('data_gateway');
 
-        if (in_array($currentItemName, $unfilteredScreens)) {
-            return true;
+        // Get current company
+        $auth = Zend_Auth::getInstance();
+        $loggedUser = $auth->getIdentity();
+        $currentCompanyId = $loggedUser->companyId;
+
+        // Get used terminals from company users
+        /** @var Ivoz\Provider\Domain\Model\User\UserDTO[] $companyUsers */
+        $companyUsers = $dataGateway->findBy(
+            \Ivoz\Provider\Domain\Model\User\User::class,
+            [
+                "User.company = " . $currentCompanyId
+            ]
+        );
+
+        // Get current edited user (if any)
+        $pk = $routeDispatcher->getParam("pk", false);
+
+        // Remove from the list all used terminals and the currently assigned to the user
+        $terminalIds = [];
+        foreach ($companyUsers as $companyUser) {
+            if ($companyUser->getId() != $pk) {
+                $terminalIds[] = $companyUser->getTerminalId();
+            }
         }
 
-        $pk = $routeDispatcher->getParam("pk", false);
-        if ($pk && !is_array($pk)) {
-
-            $dataGateway = \Zend_Registry::get('data_gateway');
-
-            $ids = $dataGateway->runNamedQuery(
-                \Ivoz\Provider\Domain\Model\User\User::class,
-                'getAssignedTerminalIds',
-                [[$pk]]
-            );
-
-            if (!empty($ids)) {
-                $this->_condition = ['self::id NOT IN ('. implode(',', $ids) .')'];
-            }
+        if (!empty($terminalIds)) {
+            $this->_condition[] = 'self::id NOT IN ('. implode(',', $terminalIds) .')';
         }
 
         return true;
