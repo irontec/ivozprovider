@@ -608,7 +608,7 @@ class CallsController extends BaseController
             }
 
         } else {
-            $this->agi->setSIPHeader("X-Info-CompanyDomain", $company->getDomain());
+            $this->agi->setSIPHeader("X-Info-CompanyDomain", $company->getDomain()->getDomain());
             $this->agi->setSIPHeader("X-Info-MaxCalls",  $company->getExternalMaxCalls());
 
             // Set special headers for Fax outgoing calls
