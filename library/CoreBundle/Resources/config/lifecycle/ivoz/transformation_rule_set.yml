@@ -25,6 +25,16 @@ services:
   ##################################
   ## post_remove
   ##################################
-#  Ivoz\Provider\Infrastructure\Domain\Service\TransformationRuleSet\RemovedXmlRpc:
-#    tags:
-#      - { name: provider.lifecycle.peer_server.post_remove, priority: 10 }
+  Ivoz\Provider\Infrastructure\Domain\Service\TransformationRuleSet\SendUsersDialplanReloadRequest:
+    tags:
+      - { name: provider.lifecycle.transformation_rule_set.post_remove, priority: 10 }
+    arguments:
+      $usersDialplanReload:
+        '@XmlRpc\XmlRpcUsersRequest::DialplanReload'
+
+  Ivoz\Provider\Infrastructure\Domain\Service\TransformationRuleSet\SendTrunksDialplanReloadRequest:
+    tags:
+      - { name: provider.lifecycle.transformation_rule_set.post_remove, priority: 20 }
+    arguments:
+      $trunksDialplanReload:
+        '@XmlRpc\XmlRpcTrunksRequest::DialplanReload'

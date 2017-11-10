@@ -1,0 +1,33 @@
+services:
+  _defaults:
+    autowire: true
+    public: false
+
+  ##################################
+  ## Service collection
+  ##################################
+  Ivoz\Provider\Domain\Service\TransformationRule\TransformationRuleLifecycleServiceCollection:
+    public: true
+
+  provider.lifecycle.transformation_rule.service_collection:
+    '@Ivoz\Provider\Domain\Service\TransformationRule\TransformationRuleLifecycleServiceCollection'
+
+  Ivoz\Provider\Infrastructure\Domain\Service\TransformationRule\SendUsersDialplanReloadRequest:
+    tags:
+      ## post_persist
+      - { name: provider.lifecycle.transformation_rule.post_persist, priority: 10 }
+      ## post_remove
+      - { name: provider.lifecycle.transformation_rule.post_remove, priority: 10 }
+    arguments:
+      $usersDialplanReload:
+        '@XmlRpc\XmlRpcUsersRequest::DialplanReload'
+
+  Ivoz\Provider\Infrastructure\Domain\Service\TransformationRule\SendTrunksDialplanReloadRequest:
+    tags:
+      ## post_persist
+      - { name: provider.lifecycle.transformation_rule.post_persist, priority: 20 }
+      ## post_remove
+      - { name: provider.lifecycle.transformation_rule.post_remove, priority: 20 }
+    arguments:
+      $trunksDialplanReload:
+        '@XmlRpc\XmlRpcTrunksRequest::DialplanReload'

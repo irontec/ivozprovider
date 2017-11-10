@@ -12,17 +12,12 @@ services:
   provider.lifecycle.routing_pattern_group.service_collection:
     '@Ivoz\Provider\Domain\Service\RoutingPatternGroup\RoutingPatternGroupLifecycleServiceCollection'
 
-  ##################################
-  ## post_persist
-  ##################################
-  Ivoz\Provider\Infrastructure\Domain\Service\RoutingPatternGroup\PersistedXmlRpc:
+  Ivoz\Provider\Infrastructure\Domain\Service\RoutingPatternGroup\SendTrunksLcrReloadRequest:
     tags:
-      - { name: provider.lifecycle.routing_pattern_group.post_persist, priority: 20 }
-
-  ##################################
-  ## post_remove
-  ##################################
-
-  Ivoz\Provider\Infrastructure\Domain\Service\RoutingPatternGroup\RemovedXmlRpc:
-    tags:
+      ## post_persist
+      - { name: provider.lifecycle.routing_pattern_group.post_persist, priority: 10 }
+      ## post_remove
       - { name: provider.lifecycle.routing_pattern_group.post_remove, priority: 10 }
+    arguments:
+      $trunksLcrReload:
+        '@XmlRpc\XmlRpcTrunksRequest::DialplanReload'

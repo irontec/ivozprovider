@@ -20,16 +20,12 @@ services:
       - { name: kam.lifecycle.trunks_uacreg.pre_persist, priority: 10 }
     arguments: ~
 
-  ##################################
-  ## post_persist
-  ##################################
-  Ivoz\Kam\Infrastructure\Domain\Service\TrunksUacreg\PersistedXmlRpc:
+  Ivoz\Kam\Infrastructure\Domain\Service\TrunksUacreg\SendTrunksUacregReloadRequest:
     tags:
-      - { name: kam.lifecycle.trunks_uacreg.post_persist, priority: 10 }
-
-  ##################################
-  ## post_remove
-  ##################################
-  Ivoz\Kam\Infrastructure\Domain\Service\TrunksUacreg\RemovedXmlRpc:
-    tags:
-      - { name: kam.lifecycle.trunks_uacreg.post_remove, priority: 20 }
+      ## post_persist
+      - { name: kam.lifecycle.trunks_uacreg.post_persist, priority: 20 }
+      ## post_remove
+      - { name: kam.lifecycle.trunks_uacreg.post_remove, priority: 10 }
+    arguments:
+      $trunksUacregReload:
+        '@XmlRpc\XmlRpcTrunksRequest::UacregReload'

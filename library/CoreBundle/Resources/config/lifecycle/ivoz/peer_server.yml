@@ -42,13 +42,12 @@ services:
       $entityPersister:
         '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
 
-  Ivoz\Provider\Infrastructure\Domain\Service\PeerServer\PersistedXmlRpc:
+  Ivoz\Provider\Infrastructure\Domain\Service\PeerServer\SendTrunksLcrReloadRequest:
     tags:
+      ## post_persist
       - { name: provider.lifecycle.peer_server.post_persist, priority: 30 }
-
-  ##################################
-  ## post_remove
-  ##################################
-  Ivoz\Provider\Infrastructure\PeerServer\Service\PeerServer\RemovedXmlRpc:
-    tags:
+      ## post_remove
       - { name: provider.lifecycle.peer_server.post_remove, priority: 10 }
+    arguments:
+      $trunksLcrReload:
+        '@XmlRpc\XmlRpcTrunksRequest::LcrReload'

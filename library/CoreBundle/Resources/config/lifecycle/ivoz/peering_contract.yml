@@ -1,0 +1,32 @@
+services:
+  _defaults:
+    autowire: true
+    public: false
+
+  ##################################
+  ## Service collection
+  ##################################
+  Ivoz\Provider\Domain\Service\PeeringContract\PeeringContractLifecycleServiceCollection:
+    public: true
+
+  provider.lifecycle.peering_contract.service_collection:
+    '@Ivoz\Provider\Domain\Service\PeeringContract\PeeringContractLifecycleServiceCollection'
+
+  ##################################
+  ## post_remove
+  ##################################
+  Ivoz\Provider\Infrastructure\Domain\Service\PeeringContract\SendTrunksLcrReloadRequest:
+    tags:
+      ## post_remove
+      - { name: provider.lifecycle.peering_contract.post_remove, priority: 10 }
+    arguments:
+      $trunksLcrReload:
+        '@XmlRpc\XmlRpcTrunksRequest::LcrReload'
+
+  Ivoz\Provider\Infrastructure\Domain\Service\PeeringContract\SendTrunksUacRegReloadRequest:
+    tags:
+      ## post_remove
+      - { name: provider.lifecycle.peering_contract.post_remove, priority: 20 }
+    arguments:
+      $trunksUacRegReload:
+        '@XmlRpc\XmlRpcTrunksRequest::UacRegReload'

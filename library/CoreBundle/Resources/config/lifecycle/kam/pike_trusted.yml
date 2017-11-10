@@ -19,16 +19,22 @@ services:
     tags:
       - { name: kam.lifecycle.pike_trusted.pre_persist, priority: 10}
 
-  ##################################
-  ## post_persist
-  ##################################
-  Ivoz\Kam\Infrastructure\Domain\Service\PikeTrusted\PersistedXmlRpc:
+  Ivoz\Kam\Infrastructure\Domain\Service\PikeTrusted\SendUsersPermissionsReloadRequest:
     tags:
+      ## post_persist
       - { name: kam.lifecycle.pike_trusted.post_persist, priority: 10 }
-
-  ##################################
-  ## post_remove
-  ##################################
-  Ivoz\Kam\Infrastructure\Domain\Service\PikeTrusted\RemovedXmlRpc:
-    tags:
+      ## post_remove
       - { name: kam.lifecycle.pike_trusted.post_remove, priority: 10 }
+    arguments:
+      $usersPermissionsReload:
+        '@XmlRpc\XmlRpcUsersRequest::PermissionsTrustedReload'
+
+  Ivoz\Kam\Infrastructure\Domain\Service\PikeTrusted\SendTrunksPermissionsReloadRequest:
+    tags:
+      ## post_persist
+      - { name: kam.lifecycle.pike_trusted.post_persist, priority: 20 }
+      ## post_remove
+      - { name: kam.lifecycle.pike_trusted.post_remove, priority: 20 }
+    arguments:
+      $trunksPermissionsReload:
+        '@XmlRpc\XmlRpcTrunksRequest::PermissionsTrustedReload'
