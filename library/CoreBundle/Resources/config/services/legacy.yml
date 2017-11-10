@@ -1,7 +1,13 @@
 services:
   _defaults:
     autowire: true
-    public: false
+    public: true
 
-  IvozProvider\Gearmand\Jobs\Xmlrpc: ~
+  IvozProvider\Gearmand\Jobs\Xmlrpc:
+    shared: false
+
   IvozProvider\Gearmand\Jobs\Recoder: ~
+
+  Jobs\XmlrpcDelayed:
+    class: IvozProvider\Gearmand\Jobs\Xmlrpc
+    arguments: [ "sendXMLRPCDelayed" ]

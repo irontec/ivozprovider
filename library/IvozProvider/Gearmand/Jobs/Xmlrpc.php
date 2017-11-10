@@ -3,21 +3,55 @@ namespace IvozProvider\Gearmand\Jobs;
 
 class Xmlrpc extends AbstractJob {
 
-    protected $_proxyServers;
+    protected $rpcEntity;
+
+    protected $rpcPort;
+
+    protected $rpcMethod;
+
+    protected $_method;
 
     protected $_mainVariables = array(
-            '_proxyServers'
+        'rpcEntity',
+        'rpcPort',
+        'rpcMethod'
     );
 
-
-    protected $_method = "sendXMLRPC";
-
-    public function setProxyServers($proxyServers) {
-        $this->_proxyServers = $proxyServers;
-    }
-
-    public function getProxyServers()
+    public function __construct($method = "sendXMLRPC")
     {
-        return $this->_proxyServers;
+        $this->_method = $method;
     }
+
+    public function setRpcEntity($rpcEntity) {
+        $this->rpcEntity = $rpcEntity;
+        return $this;
+    }
+
+    public function getRpcEntity()
+    {
+        return $this->rpcEntity;
+    }
+
+    public function setRpcPort($rpcPort)
+    {
+        $this->rpcPort = $rpcPort;
+        return $this;
+    }
+
+    public function getRpcPort()
+    {
+        return $this->rpcPort;
+    }
+
+    public function setRpcMethod($rpcMethod)
+    {
+        $this->rpcMethod = $rpcMethod;
+        return $this;
+    }
+
+    public function getRpcMethod()
+    {
+        return $this->rpcMethod;
+    }
+
 }
