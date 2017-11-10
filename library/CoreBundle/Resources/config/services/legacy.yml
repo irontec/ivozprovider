@@ -1,7 +1,7 @@
 services:
   _defaults:
     autowire: true
-    public: true
+    public: false
 
   IvozProvider\Gearmand\Jobs\Xmlrpc:
     shared: false

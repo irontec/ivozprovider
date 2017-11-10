@@ -10,7 +10,7 @@ use Ivoz\Kam\Domain\Model\UsersAddress\UsersAddressInterface;
  * @package Ivoz\Kam\Domain\Service\UsersAddres
  * @lifecycle pre_persist
  */
-class CheckValidityAndSanitizeValues implements UsersAddresLifecycleEventHandlerInterface
+class CheckValidityAndSanitizeValues implements UsersAddressLifecycleEventHandlerInterface
 {
     public function __construct() {}
 

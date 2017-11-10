@@ -24,13 +24,22 @@ services:
       $dispatcherRepository:
         '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Kam\\Domain\\Model\\Dispatcher\\Dispatcher")'
 
-  Ivoz\Provider\Infrastructure\Domain\Service\ApplicationServer\PersistedXmlRpc:
+  Ivoz\Provider\Infrastructure\Domain\Service\ApplicationServer\SendUsersDispatcherReloadRequest:
     tags:
+      ## post_persist
       - { name: provider.lifecycle.application_server.post_persist, priority: 20 }
-
-  ##################################
-  ## post_remove
-  ##################################
-  Ivoz\Provider\Infrastructure\Domain\Service\ApplicationServer\RemovedXmlRpc:
-    tags:
+      ## post_remove
       - { name: provider.lifecycle.application_server.post_remove, priority: 10 }
+    arguments:
+      $usersDispatcherReload:
+        '@XmlRpc\XmlRpcUsersRequest::DispatcherReload'
+
+  Ivoz\Provider\Infrastructure\Domain\Service\ApplicationServer\SendTrunksDispatcherReloadRequest:
+    tags:
+      ## post_persist
+      - { name: provider.lifecycle.application_server.post_persist, priority: 30 }
+      ## post_remove
+      - { name: provider.lifecycle.application_server.post_remove, priority: 20 }
+    arguments:
+      $trunksDispatcherReload:
+        '@XmlRpc\XmlRpcTrunksRequest::DispatcherReload'

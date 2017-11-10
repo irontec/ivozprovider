@@ -37,13 +37,13 @@ services:
       $entityPersister:
         '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
 
-  Ivoz\Provider\Infrastructure\Domain\Service\OutgoingRouting\PersistedXmlRpc:
+  Ivoz\Provider\Infrastructure\Domain\Service\OutgoingRouting\SendTrunksLcrReloadRequest:
     tags:
+      ## post_persist
       - { name: provider.lifecycle.outgoing_routing.post_persist, priority: 30 }
-
-  ##################################
-  ## post_remove
-  ##################################
-  Ivoz\Provider\Infrastructure\Domain\Service\OutgoingRouting\RemovedXmlRpc:
-    tags:
+      ## post_remove
       - { name: provider.lifecycle.outgoing_routing.post_remove, priority: 10 }
+    arguments:
+      $trunksLcrReload:
+        '@XmlRpc\XmlRpcTrunksRequest::DialplanReload'
+
