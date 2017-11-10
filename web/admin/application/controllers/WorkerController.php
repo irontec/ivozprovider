@@ -21,14 +21,9 @@ class WorkerController extends Zend_Controller_Action
         \Iron_Gearman_Manager::runWorker("Xmlrpc");
     }
 
-    public function xmlrpcdelayedproxytrunksAction()
+    public function xmlrpcdelayedAction()
     {
-        \Iron_Gearman_Manager::runWorker("Xmlrpcdelayedproxytrunks");
-    }
-
-    public function xmlrpcdelayedproxyusersAction()
-    {
-        \Iron_Gearman_Manager::runWorker("Xmlrpcdelayedproxyusers");
+        \Iron_Gearman_Manager::runWorker("Xmlrpcdelayed");
     }
 
     public function amiAction()

@@ -1,14 +1,16 @@
 <?php
 
-class XmlrpcWorker extends Iron_Gearman_Worker
+class XmlrpcDelayedWorker extends Iron_Gearman_Worker
 {
     /** @var  \Ivoz\Core\Application\Service\DataGateway */
     protected $dataGateway;
 
+    protected $retryInterval = 180;
+
     protected function initRegisterFunctions()
     {
         $this->_registerFunction = array(
-            'sendXMLRPC' => 'sendXMLRPC',
+            'sendXMLRPCDelayed' => 'sendXMLRPCDelayed',
         );
     }
 
@@ -19,11 +21,8 @@ class XmlrpcWorker extends Iron_Gearman_Worker
         }
     }
 
-    public function sendXMLRPC(\GearmanJob $serializedJob)
+    public function sendXMLRPCDelayed(\GearmanJob $serializedJob)
     {
-        // Thanks Gearmand, you've done your job
-        $serializedJob->sendComplete("DONE");
-
         /** @var \IvozProvider\Gearmand\Jobs\Xmlrpc $job */
         $job = igbinary_unserialize($serializedJob->workload());
         $rpcEntity = $job->getRpcEntity();
@@ -40,7 +39,7 @@ class XmlrpcWorker extends Iron_Gearman_Worker
                 $client->call($rpcMethod);
 
                 $this->_logger->log(
-                    sprintf("[XMLRPC] Request %s sent to %s [%s:%d]",
+                    sprintf("[XMLRPCDelayed] Request %s sent to %s [%s:%d]",
                         $rpcMethod,
                         $server->getName(),
                         $server->getIp(),
@@ -51,15 +50,26 @@ class XmlrpcWorker extends Iron_Gearman_Worker
 
             } catch (\Exception $e) {
                 $this->_logger->log(
-                    sprintf("[XMLRPC] Unable to send request %s to server %s [%s:%d]",
+                    sprintf("[XMLRPCDelayed] Unable to send request %s to server %s [%s:%d]: Retrying in %d seconds.",
                         $rpcMethod,
                         $server->getName(),
                         $server->getIp(),
-                        $rpcPort
+                        $rpcPort,
+                        $this->retryInterval
                     ),
                     Zend_Log::ERR
                 );
+
+                // Wait before processing the task again
+                sleep($this->retryInterval);
+                exit(1);
             }
         }
+
+        // Job's done
+        $serializedJob->sendComplete("DONE");
+
+        // Job's done!
+        exit(0);
     }
 }

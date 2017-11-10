@@ -16,18 +16,19 @@ abstract class AbstractXmlRpcRequest
     protected $xmlrpc;
 
     public function __construct(
-        Xmlrpc $xmlrpc
+        Xmlrpc $xmlrpc,
+        string $rpcEntity,
+        int $rpcPort,
+        string $rpcMethod
     ) {
         $this->xmlrpc = $xmlrpc;
+        $this->xmlrpc->setRpcEntity($rpcEntity);
+        $this->xmlrpc->setRpcPort($rpcPort);
+        $this->xmlrpc->setRpcMethod($rpcMethod);
     }
-
-    protected abstract function getProxyServers();
 
     public function send()
     {
-        $this->xmlrpc->setProxyServers(
-            $this->getProxyServers()
-        );
         $this->xmlrpc->send();
     }
 }

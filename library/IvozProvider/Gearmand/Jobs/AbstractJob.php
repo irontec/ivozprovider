@@ -12,6 +12,7 @@ abstract class AbstractJob
 
     public function setMethod($methodName)
     {
+        $this->_method = $methodName;
     }
 
     public function __sleep()
