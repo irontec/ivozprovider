@@ -32,4 +32,4 @@ services:
       $astQueueRepository:
         '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Ast\\Domain\\Model\\Queue\\Queue")'
       $storagePathResolver:
-        '@=service("Ivoz\\Provider\\Application\\Service\\Locution\\LocutionDtoAssembler").getEncodedFilePathResolver()'
+        '@Service\CommonStoragePathResolver::LocutionEncodedFile'

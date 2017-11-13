@@ -24,5 +24,5 @@ interface StoragePathResolverInterface
      * @param string|null $fileBaseName
      * @return string
      */
-    public function getFilePath(EntityInterface $entity): string;
+    public function getFilePath(EntityInterface $entity)/* @todo : ?string */;
 }

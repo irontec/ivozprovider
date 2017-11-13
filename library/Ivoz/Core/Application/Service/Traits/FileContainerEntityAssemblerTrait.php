@@ -3,34 +3,28 @@
 namespace Ivoz\Core\Application\Service\Traits;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\Service\StoragePathResolverInterface;
+use Ivoz\Core\Application\Service\StoragePathResolverCollection;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Domain\Service\TempFile;
 
 trait FileContainerEntityAssemblerTrait
 {
     /**
-     * @var StoragePathResolverInterface[]
+     * @var StoragePathResolverCollection
      */
-    protected $pathResolvers = [];
-
-    protected function setPathResolver($objName, StoragePathResolverInterface $storagePathResolver)
-    {
-        $this->pathResolvers[$objName] = $storagePathResolver;
-    }
+    protected $storagePathResolver;
 
     protected function getPathResolver($objName, $originalFileName = null)
     {
-        if (!array_key_exists($objName, $this->pathResolvers)) {
-            throw new \Exception('No path resolver found for ' . $objName, 1000);
-        }
+        $pathResolver = $this
+            ->storagePathResolver
+            ->getPathResolver($objName);
 
-        $pathResolver = $this->pathResolvers[$objName];
         if ($originalFileName) {
             $pathResolver->setOriginalFileName($originalFileName);
         }
 
-        return $this->pathResolvers[$objName];
+        return $pathResolver;
     }
 
     public function handleEntityFiles(
@@ -79,11 +73,29 @@ trait FileContainerEntityAssemblerTrait
             return false;
         }
 
-        $currentFile = $this
-            ->getPathResolver($fieldName, $baseName)
-            ->getFilePath($entity);
+        $currentFile = $this->getFilePath(
+            $entity,
+            $fieldName,
+            $baseName
+        );
 
         return $tmpFilePath !== $currentFile;
+    }
+
+    /**
+     * @param EntityInterface $entity
+     * @param string $fieldName
+     * @param string $baseName
+     * @return string
+     */
+    protected function getFilePath(
+        EntityInterface $entity,
+        string $fieldName,
+        string $baseName = null
+    ) {
+        return $this
+            ->getPathResolver($fieldName, $baseName)
+            ->getFilePath($entity);
     }
 
     /**
@@ -96,17 +108,25 @@ trait FileContainerEntityAssemblerTrait
         EntityInterface $entity,
         $fldName
     ) {
-        $this->updateMetadata($dto, $fldName);
+        $this->updateDtoMetadata($dto, $fldName);
         $entity->updateFromDTO($dto);
 
         $pathGetter = 'get' . ucFirst($fldName) . 'Path';
         $baseNameGetter = 'get' . ucFirst($fldName) . 'BaseName';
         $baseName = $dto->{$baseNameGetter}();
 
+        $prevFilePath = $this->getFilePath(
+            $entity,
+            $fldName,
+            $entity->getInitialValue(lcfirst($fldName) . 'BaseName')
+        );
+        $tmpFilepath = $dto->{$pathGetter}();
+
         $entity->addTmpFile(
             new TempFile(
                 $this->getPathResolver($fldName, $baseName),
-                $dto->{$pathGetter}()
+                $tmpFilepath,
+                $prevFilePath
             )
         );
     }
@@ -116,7 +136,7 @@ trait FileContainerEntityAssemblerTrait
      * @param $fieldName
      * @throws \Exception
      */
-    protected function updateMetadata(
+    protected function updateDtoMetadata(
         DataTransferObjectInterface $dto,
         $fieldName
     ) {

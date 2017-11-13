@@ -34,12 +34,5 @@ class Locution extends LocutionAbstract implements LocutionInterface, FileContai
     {
         return $this->id;
     }
-
-    public function getLocutionPath ()
-    {
-        return 'FSO not implemented yet';
-        throw new \Exception('FSO not implemented yet');
-        return substr($this->fetchEncodedFile()->getFilePath(), 0, - 4);
-    }
 }
 

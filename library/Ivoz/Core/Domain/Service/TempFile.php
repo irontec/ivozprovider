@@ -14,16 +14,25 @@ class TempFile
     protected $tmpPath;
 
     /**
+     * @var string
+     */
+    protected $previousFilePath;
+
+    /**
      * @var StoragePathResolverInterface
      */
     protected $storagePathResolver;
 
     protected $mkdirMode = 0755;
 
-    public function __construct(StoragePathResolverInterface $storagePathResolver, string $tmpPath = null)
-    {
+    public function __construct(
+        StoragePathResolverInterface $storagePathResolver,
+        string $tmpPath = null,
+        string $previousFilePath = null
+    ) {
         $this->tmpPath = $tmpPath;
         $this->storagePathResolver = $storagePathResolver;
+        $this->previousFilePath = $previousFilePath;
     }
 
     public function getTmpPath()
@@ -52,27 +61,24 @@ class TempFile
             $targetPath
         );
 
-        if (true === $copySucceed) {
-            unlink($this->tmpPath);
-        } else {
+        if (!$copySucceed) {
             throw new \Exception("Could not rename file " . $this->tmpPath . " to " . $copySucceed);
+        }
+
+        unlink($this->tmpPath);
+        if ($this->previousFilePath && ($targetPath != $this->previousFilePath)) {
+            unlink($this->previousFilePath);
         }
     }
 
     public function remove(EntityInterface $entity)
     {
-        if (!$entity->getId()) {
-            Throw new \Exception('Entity must be persisted');
+        if ($entity->getId()) {
+            Throw new \Exception('Entity must be removed first');
         }
 
-        $filePath = $this
-            ->storagePathResolver
-            ->getFilePath(
-                $entity
-            );
-
-        if (file_exists($filePath)) {
-            unlink($filePath);
+        if (file_exists($this->tmpPath)) {
+            unlink($this->tmpPath);
         }
     }
 

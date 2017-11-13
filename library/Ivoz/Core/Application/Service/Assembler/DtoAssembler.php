@@ -3,10 +3,13 @@
 namespace Ivoz\Core\Application\Service\Assembler;
 
 use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Infrastructure\Domain\Service\Lifecycle\EntityClassToServiceNameTrait;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class DtoAssembler
 {
+    use EntityClassToServiceNameTrait;
+
     /**
      * @var ContainerInterface
      */
@@ -36,7 +39,7 @@ class DtoAssembler
     private function getAssembler(EntityInterface $entity)
     {
         $assembler = null;
-        $entityClass = get_class($entity);
+        $entityClass = $this->getEntityClass($entity);
 
         if (array_key_exists($entityClass, $this->customAssemblers)) {
             $assembler = $this->customAssemblers[$entityClass];
@@ -54,7 +57,7 @@ class DtoAssembler
      */
     private function create(EntityInterface $targetEntity)
     {
-        $entityClass = get_class($targetEntity);
+        $entityClass = $this->getEntityClass($targetEntity);
         $serviceClassName =
             str_replace(
                 'Domain\\Model',

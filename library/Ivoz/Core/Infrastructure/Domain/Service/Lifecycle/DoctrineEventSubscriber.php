@@ -119,7 +119,7 @@ class DoctrineEventSubscriber implements EventSubscriber
             case 'pre_remove':
                 // We use pre_persist because Id value is gone on post_persist
                 $event = new EntityWasDeleted(
-                    get_class($entity),
+                    $this->getEntityClass($entity),
                     $entity->getId(),
                     null
                 );
@@ -138,7 +138,7 @@ class DoctrineEventSubscriber implements EventSubscriber
                     : EntityWasUpdated::class;
 
                 $event = new $eventClass(
-                    get_class($entity),
+                    $this->getEntityClass($entity),
                     $entity->getId(),
                     $entity->getChangeSet()
                 );
@@ -171,8 +171,7 @@ class DoctrineEventSubscriber implements EventSubscriber
     private function runEntityServices($eventName, LifecycleEventArgs $args, bool $isNew)
     {
         $entity = $args->getObject();
-        $entityClass = get_class($entity);
-        $serviceName = $this->getServiceName($entityClass, $eventName);
+        $serviceName = $this->getServiceName($entity, $eventName);
 
         if (!$this->serviceContainer->has($serviceName)) {
             return;
@@ -187,7 +186,7 @@ class DoctrineEventSubscriber implements EventSubscriber
             $service->execute($entity, $isNew);
         } catch (\Exception $exception) {
 
-            $errorHandlerName = $this->getServiceName($entityClass, 'error_handler');
+            $errorHandlerName = $this->getServiceName($entity, 'error_handler');
             if (!$this->serviceContainer->has($errorHandlerName)) {
                 throw $exception;
             }
