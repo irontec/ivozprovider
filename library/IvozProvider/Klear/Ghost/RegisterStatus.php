@@ -99,13 +99,19 @@ class IvozProvider_Klear_Ghost_RegisterStatus extends KlearMatrix_Model_Field_Gh
      */
     private function getLocationStatusIcon($model)
     {
-        $where = array(
-            "UsersLocation.username = '" . $model->getName() . "'",
-            "UsersLocation.domain = '" . $model->getDomain() . "'"
-        );
-
         /** @var \Ivoz\Core\Application\Service\DataGateway $dataGateway */
         $dataGateway = \Zend_Registry::get('data_gateway');
+
+        /** @var \Ivoz\Provider\Domain\Model\Domain\DomainDTO $domain */
+        $domain = $dataGateway->find(
+            \Ivoz\Provider\Domain\Model\Domain\Domain::class,
+            $model->getDomainId()
+        );
+
+        $where = array(
+            "UsersLocation.username = '" . $model->getName() . "'",
+            "UsersLocation.domain = '" . $domain->getDomain() . "'"
+        );
 
         /** @var \Ivoz\Kam\Domain\Model\UsersLocation\UsersLocationDTO $location */
         $location = $dataGateway->findOneBy(
@@ -135,13 +141,20 @@ class IvozProvider_Klear_Ghost_RegisterStatus extends KlearMatrix_Model_Field_Gh
      */
     private function getLocationStatus($model)
     {
-        $where = array(
-            "UsersLocation.username = '" . $model->getName() . "'",
-            "UsersLocation.domain = '" . $model->getDomain() . "'"
-        );
-
         /** @var \Ivoz\Core\Application\Service\DataGateway $dataGateway */
         $dataGateway = \Zend_Registry::get('data_gateway');
+
+        /** @var \Ivoz\Provider\Domain\Model\Domain\DomainDTO $domain */
+        $domain = $dataGateway->find(
+            \Ivoz\Provider\Domain\Model\Domain\Domain::class,
+            $model->getDomainId()
+        );
+
+        $where = array(
+            "UsersLocation.username = '" . $model->getName() . "'",
+            "UsersLocation.domain = '" . $domain->getDomain() . "'"
+        );
+
 
         /** @var \Ivoz\Kam\Domain\Model\UsersLocation\UsersLocationDTO[] $location */
         $locations = $dataGateway->findBy(
@@ -160,11 +173,15 @@ class IvozProvider_Klear_Ghost_RegisterStatus extends KlearMatrix_Model_Field_Gh
 
 
             foreach ($locations as $location) {
-                $contact = explode('@', $location->getContact());
-                $contactSrc = array_pop($contact);
+                preg_match('/sips?:([^@]+@)?(?P<domain>[^;]+)/', $location->getContact(), $matches);
+                $contactSrc = $matches['domain'];
 
-                $received = explode('sip:', $location->getReceived());
-                $receivedSrc = array_pop($received);
+                $receivedSrc = null;
+                $received = $location->getReceived();
+                if ($received) {
+                    preg_match('/sips?:([^@]+@)?(?P<domain>[^;]+)/', $received, $matches);
+                    $receivedSrc = $matches['domain'];
+                }
 
                 $registerStatus .= sprintf('
                             <tr>
