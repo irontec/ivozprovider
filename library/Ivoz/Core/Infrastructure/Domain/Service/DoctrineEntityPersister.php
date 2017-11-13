@@ -30,6 +30,7 @@ class DoctrineEntityPersister implements EntityPersisterInterface
      * @var UpdateEntityFromDTO
      */
     protected $entityUpdater;
+
     /**
      * @var CommandEventSubscriber
      */

@@ -13,49 +13,33 @@ services:
 
   Ivoz\Provider\Application\Service\Brand\BrandAssembler:
     arguments:
-      $localStoragePath: '%local_storage_path%'
-      $basePath: 'ivozprovider_model_brands.logo'
+      $storagePathResolver: '@Service\StoragePathResolverCollection::Brand'
 
   Ivoz\Provider\Application\Service\Brand\BrandDtoAssembler:
     arguments:
-      $localStoragePath: '%local_storage_path%'
-      $basePath: 'ivozprovider_model_brands.logo'
+      $storagePathResolver: '@Service\StoragePathResolverCollection::Brand'
 
   Ivoz\Provider\Application\Service\Locution\LocutionAssembler:
     public: true
     arguments:
-      $localStoragePath: '%local_storage_path%'
-      $originalFileBasePath: 'ivozprovider_model_locutions.originalfile'
-      $encodedFileBasePath: 'ivozprovider_model_locutions.encodedfile'
+      $storagePathResolver: '@Service\StoragePathResolverCollection::Locution'
 
   Ivoz\Provider\Application\Service\Locution\LocutionDtoAssembler:
     arguments:
-      $localStoragePath: '%local_storage_path%'
-      $originalFileBasePath: 'ivozprovider_model_locutions.originalfile'
-      $encodedFileBasePath: 'ivozprovider_model_locutions.encodedfile'
+      $storagePathResolver: '@Service\StoragePathResolverCollection::Locution'
 
   Ivoz\Provider\Application\Service\GenericMusicOnHold\GenericMusicOnHoldAssembler:
     arguments:
-      $localStoragePath: '%local_storage_path%'
-      $originalBasePath: 'ivozprovider_model_genericmusiconhold.originalfile'
-      $encodedBasePath: 'ivozprovider_model_genericmusiconhold.encodedfile'
+      $storagePathResolver: '@Service\StoragePathResolverCollection::GenericMusicOnHold'
 
   Ivoz\Provider\Application\Service\GenericMusicOnHold\GenericMusicOnHoldDtoAssembler:
     arguments:
-      $localStoragePath: '%local_storage_path%'
-      $originalBasePath: 'ivozprovider_model_genericmusiconhold.originalfile'
-      $encodedBasePath: 'ivozprovider_model_genericmusiconhold.encodedfile'
-
+      $storagePathResolver: '@Service\StoragePathResolverCollection::GenericMusicOnHold'
 
   Ivoz\Provider\Application\Service\MusicOnHold\MusicOnHoldAssembler:
     arguments:
-      $localStoragePath: '%local_storage_path%'
-      $originalBasePath: 'ivozprovider_model_musiconhold.originalfile'
-      $encodedBasePath: 'ivozprovider_model_musiconhold.encodedfile'
+      $storagePathResolver: '@Service\StoragePathResolverCollection::MusicOnHold'
 
   Ivoz\Provider\Application\Service\MusicOnHold\MusicOnHoldDtoAssembler:
     arguments:
-      $localStoragePath: '%local_storage_path%'
-      $originalBasePath: 'ivozprovider_model_musiconhold.originalfile'
-      $encodedBasePath: 'ivozprovider_model_musiconhold.encodedfile'
-
+      $storagePathResolver: '@Service\StoragePathResolverCollection::MusicOnHold'

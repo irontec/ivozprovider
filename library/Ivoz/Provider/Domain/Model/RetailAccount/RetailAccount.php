@@ -1,7 +1,7 @@
 <?php
 
 namespace Ivoz\Provider\Domain\Model\RetailAccount;
-use Ivoz\Provider\Domain\Model\Country\CountryInterface;
+
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 
 /**
@@ -112,7 +112,7 @@ class RetailAccount extends RetailAccountAbstract implements RetailAccountInterf
     /**
      * Get Retail Account outgoingDdi
      * If no Ddi is assigned, retrieve company's default Ddi
-     * @return \Ivoz\Provider\Model\Raw\Ddis or NULL
+     * @return DdiInterface or NULL
      */
     public function getOutgoingDdi()
     {

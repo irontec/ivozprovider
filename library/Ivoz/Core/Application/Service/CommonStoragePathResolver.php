@@ -60,12 +60,16 @@ class CommonStoragePathResolver implements StoragePathResolverInterface
 
     /**
      * @param EntityInterface $entity
-     * @param string|null $fileBaseName
+     * @param string | null $fileBaseName
      * @return string
      */
-    public function getFilePath(EntityInterface $entity): string
+    public function getFilePath(EntityInterface $entity)/* @todo : ?string */
     {
         $id = $entity->getId();
+        if (!$id) {
+            return null;
+        }
+
         $directoryTree =  $this->buildDirectoryTreeById($id);
 
         if ($this->keepExtension) {

@@ -226,9 +226,6 @@ class Company extends CompanyAbstract implements CompanyInterface
      */
     public function setDomainUsers($domainUsers = null)
     {
-        /**
-         * @var Company $this
-         */
         if (is_string($domainUsers)) {
             $domainUsers = trim($domainUsers);
         }

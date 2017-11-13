@@ -2,7 +2,7 @@
 
 namespace Ivoz\Provider\Application\Service\Locution;
 
-use Ivoz\Core\Application\Service\CommonStoragePathResolver;
+use Ivoz\Core\Application\Service\StoragePathResolverCollection;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Application\Service\Assembler\CustomDtoAssemblerInterface;
 use Assert\Assertion;
@@ -12,38 +12,14 @@ use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 class LocutionDtoAssembler implements CustomDtoAssemblerInterface
 {
     /**
-     * @var CommonStoragePathResolver
+     * @var StoragePathResolverCollection
      */
-    protected $originalFilePathResolver;
-
-    /**
-     * @var CommonStoragePathResolver
-     */
-    protected $encodedFilePathResolver;
+    protected $storagePathResolver;
 
     public function __construct(
-        string $localStoragePath,
-        string $originalFileBasePath,
-        string $encodedFileBasePath
+        StoragePathResolverCollection $storagePathResolver
     ) {
-        $this->originalFilePathResolver = new CommonStoragePathResolver(
-            $localStoragePath,
-            $originalFileBasePath,
-            false,
-            true
-        );
-
-        $this->encodedFilePathResolver = new CommonStoragePathResolver(
-            $localStoragePath,
-            $encodedFileBasePath,
-            false,
-            true
-        );
-    }
-
-    public function getEncodedFilePathResolver()
-    {
-        return $this->encodedFilePathResolver;
+        $this->storagePathResolver = $storagePathResolver;
     }
 
     /**
@@ -63,23 +39,32 @@ class LocutionDtoAssembler implements CustomDtoAssemblerInterface
         }
 
         if ($entity->getOriginalFile()->getFileSize()) {
-            $this->originalFilePathResolver->setOriginalFileName(
+
+            $pathResolver = $this
+                ->storagePathResolver
+                ->getPathResolver('OriginalFile');
+
+            $pathResolver->setOriginalFileName(
                 $entity->getOriginalFile()->getBaseName()
             );
             $dto->setOriginalFilepath(
-                $this->originalFilePathResolver->getFilePath($entity)
+                $pathResolver->getFilePath($entity)
             );
         }
 
         if ($entity->getEncodedFile()->getFileSize()) {
-            $this->encodedFilePathResolver->setOriginalFileName(
+
+            $pathResolver = $this
+                ->storagePathResolver
+                ->getPathResolver('EncodedFile');
+
+            $pathResolver->setOriginalFileName(
                 $entity->getEncodedFile()->getBaseName()
             );
             $dto->setEncodedFilepath(
-                $this->encodedFilePathResolver->getFilePath($entity)
+                $pathResolver->getFilePath($entity)
             );
         }
-
 
         return $dto;
     }

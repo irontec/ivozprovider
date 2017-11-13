@@ -3,52 +3,21 @@
 namespace Ivoz\Provider\Application\Service\Locution;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Application\Service\StoragePathResolverCollection;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Application\Service\Assembler\CustomEntityAssemblerInterface;
 use Assert\Assertion;
 use Ivoz\Core\Application\Service\Traits\FileContainerEntityAssemblerTrait;
-use Ivoz\Core\Application\Service\CommonStoragePathResolver;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
-
 
 class LocutionAssembler implements CustomEntityAssemblerInterface
 {
     use FileContainerEntityAssemblerTrait;
 
-    /**
-     * LocutionAssembler constructor.
-     * @param string $localStoragePath
-     * @param string $originalFileBasePath
-     * @param string $encodedFileBasePath
-     */
     public function __construct(
-        string $localStoragePath,
-        string $originalFileBasePath,
-        string $encodedFileBasePath
+        StoragePathResolverCollection $storagePathResolver
     ) {
-        $originalFilePathResolver = new CommonStoragePathResolver(
-            $localStoragePath,
-            $originalFileBasePath,
-            false,
-            true
-        );
-
-        $this->setPathResolver(
-            'OriginalFile',
-            $originalFilePathResolver
-        );
-
-        $encodedFilePathResolver = new CommonStoragePathResolver(
-            $localStoragePath,
-            $originalFileBasePath,
-            false,
-            true
-        );
-
-        $this->setPathResolver(
-            'EncodedFile',
-            $encodedFilePathResolver
-        );
+        $this->storagePathResolver = $storagePathResolver;
     }
 
     /**

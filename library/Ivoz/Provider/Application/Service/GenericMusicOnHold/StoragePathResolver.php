@@ -42,11 +42,15 @@ class StoragePathResolver extends CommonStoragePathResolver
 
     /**
      * @param EntityInterface $entity
-     * @return string
+     * @return null | string
      */
-    public function getFilePath(EntityInterface $entity): string
+    public function getFilePath(EntityInterface $entity)/* @todo : ?string */
     {
         $id = $entity->getId();
+        if (!$id) {
+            return null;
+        }
+
         if ($this->keepExtension) {
             $id .= '.';
             $id .= pathinfo($this->originalFileName, PATHINFO_EXTENSION);
