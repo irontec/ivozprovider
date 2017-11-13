@@ -46,10 +46,14 @@ class Friends extends Raw\Friends
                     ->setSendPai("yes");
             }
 
+            $fromDomain = $model->getFromDomain()
+                ? $model->getFromDomain()
+                : $model->getCompany()->getDomainUsers();
+
             // Update/Insert endpoint data
             $endpoint->setFriendId($response)
                 ->setSorceryId($model->getSorcery())
-                ->setFromDomain($model->getCompany()->getDomainUsers())
+                ->setFromDomain($fromDomain)
                 ->setAors($model->getSorcery())
                 ->setDisallow($model->getDisallow())
                 ->setAllow($model->getAllow())

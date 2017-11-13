@@ -65,10 +65,14 @@ class RetailAccounts extends Raw\RetailAccounts
                     ->setSendPai("yes");
             }
 
+            $fromDomain = $model->getFromDomain()
+                ? $model->getFromDomain()
+                : $model->getDomain();
+
             // Update/Insert endpoint data
             $endpoint->setRetailAccountId($response)
                 ->setSorceryId($model->getSorcery())
-                ->setFromDomain($model->getDomain())
+                ->setFromDomain($fromDomain)
                 ->setAors($model->getSorcery())
                 ->setDisallow($model->getDisallow())
                 ->setAllow($model->getAllow())
