@@ -30,14 +30,19 @@ class KamUsersLocation extends Raw\KamUsersLocation
 
     public function getContactSrc()
     {
-        $src = explode('@', $this->getContact());
-        return array_pop($src);
+        preg_match('/sips?:([^@]+@)?(?P<domain>[^;]+)/', $this->getContact(), $matches);
+        return $matches['domain'];
     }
 
     public function getReceivedSrc()
     {
-        $src = explode('sip:', $this->getReceived());
-        return array_pop($src);
+        $received = $this->getReceived();
+        if ($received) {
+            preg_match('/sips?:([^@]+@)?(?P<domain>[^;]+)/', $received, $matches);
+            return $matches['domain'];
+        }
+
+        return null;
     }
 
 }
