@@ -11,6 +11,9 @@ services:
     arguments:
       $serviceContainer: '@service_container'
 
+  ##########################################
+  ## Brand
+  ##########################################
   Ivoz\Provider\Application\Service\Brand\BrandAssembler:
     arguments:
       $storagePathResolver: '@Service\StoragePathResolverCollection::Brand'
@@ -19,6 +22,20 @@ services:
     arguments:
       $storagePathResolver: '@Service\StoragePathResolverCollection::Brand'
 
+  ##########################################
+  ## BrandUrl
+  ##########################################
+  Ivoz\Provider\Application\Service\BrandUrl\BrandUrlAssembler:
+    arguments:
+      $storagePathResolver: '@Service\StoragePathResolverCollection::BrandUrl'
+
+  Ivoz\Provider\Application\Service\BrandUrl\BrandUrlDtoAssembler:
+    arguments:
+      $storagePathResolver: '@Service\StoragePathResolverCollection::BrandUrl'
+
+  ##########################################
+  ## Locution
+  ##########################################
   Ivoz\Provider\Application\Service\Locution\LocutionAssembler:
     public: true
     arguments:
@@ -28,6 +45,9 @@ services:
     arguments:
       $storagePathResolver: '@Service\StoragePathResolverCollection::Locution'
 
+  ##########################################
+  ## GenericMusicOnHold
+  ##########################################
   Ivoz\Provider\Application\Service\GenericMusicOnHold\GenericMusicOnHoldAssembler:
     arguments:
       $storagePathResolver: '@Service\StoragePathResolverCollection::GenericMusicOnHold'
@@ -36,6 +56,9 @@ services:
     arguments:
       $storagePathResolver: '@Service\StoragePathResolverCollection::GenericMusicOnHold'
 
+  ##########################################
+  ## MusicOnHold
+  ##########################################
   Ivoz\Provider\Application\Service\MusicOnHold\MusicOnHoldAssembler:
     arguments:
       $storagePathResolver: '@Service\StoragePathResolverCollection::MusicOnHold'
