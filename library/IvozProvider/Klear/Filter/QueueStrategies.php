@@ -1,18 +1,23 @@
 <?php
 
-use \IvozProvider\Mapper\Sql as Mapper;
+use Ivoz\Provider\Domain\Model\Queue\Queue;
 
 class IvozProvider_Klear_Filter_QueueStrategies implements KlearMatrix_Model_Field_Select_Filter_Interface
 {
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Queue\QueueDTO
+     */
     private $_queue = null;
 
     public function setRouteDispatcher(KlearMatrix_Model_RouteDispatcher $routeDispatcher)
     {
         $queueId = $routeDispatcher->getParam('pk', false);
+
         if ($queueId) {
-            $queueMapper = new Mapper\Queues;
-            $this->_queue = $queueMapper->find($queueId);
+            $dataGateway = \Zend_Registry::get('data_gateway');
+            $this->_queue = $dataGateway->find(Queue::class, $queueId);
         }
+
         return true;
     }
 

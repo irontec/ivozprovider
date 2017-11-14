@@ -1,6 +1,6 @@
 <?php
 
-use \IvozProvider\Model\Features as Features;
+use Ivoz\Provider\Domain\Model\Feature\Feature as Feature;
 
 class IvozProvider_Klear_Filter_Features implements KlearMatrix_Model_Field_Select_Filter_Interface
 {
@@ -26,9 +26,9 @@ class IvozProvider_Klear_Filter_Features implements KlearMatrix_Model_Field_Sele
         $featureIds = [];
         foreach ($rels as $rel) {
             $featureId = $rel->getFeatureId();
-            if ($featureId == Features::BILLING) continue;
-            if ($featureId == Features::INVOICES) continue;
-            if ($featureId == Features::RETAIL) continue;
+            if ($featureId == Feature::BILLING) continue;
+            if ($featureId == Feature::INVOICES) continue;
+            if ($featureId == Feature::RETAIL) continue;
             $featureIds[] = $featureId;
         }
 
