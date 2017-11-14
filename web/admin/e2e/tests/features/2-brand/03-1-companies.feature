@@ -2,6 +2,10 @@
 @companies
 @brand03
 @brand03-1
+@brand03-2
+@brand03-3
+@brand03-4
+@brand03-5
 
 Feature: Companies admin page
   As a main operator

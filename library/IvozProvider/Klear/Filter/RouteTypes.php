@@ -1,6 +1,5 @@
 <?php
 
-use \IvozProvider\Model\Companies as Companies;
 use \Ivoz\Provider\Domain\Model\Feature\Feature;
 use Ivoz\Provider\Domain\Model\Company\Company;
 
@@ -78,7 +77,7 @@ class IvozProvider_Klear_Filter_RouteTypes implements KlearMatrix_Model_Field_Se
             }
         }
 
-        if ($companyDTO->getType() === Companies::VPBX) {
+        if ($companyDTO->getType() === Company::VPBX) {
             $excludedRoutes[] = 'retailAccount';
         } else {
             $excludedRoutes[] = 'user';
