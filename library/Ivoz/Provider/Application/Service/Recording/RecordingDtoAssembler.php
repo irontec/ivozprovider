@@ -1,15 +1,15 @@
 <?php
 
-namespace Ivoz\Provider\Application\Service\BrandUrl;
+namespace Ivoz\Provider\Application\Service\Recording;
 
 use Ivoz\Core\Application\Service\StoragePathResolverCollection;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Application\Service\Assembler\CustomDtoAssemblerInterface;
-use Ivoz\Provider\Domain\Model\BrandUrl\BrandUrlDTO;
-use Ivoz\Provider\Domain\Model\BrandUrl\BrandUrlInterface;
+use Ivoz\Provider\Domain\Model\Recording\RecordingDTO;
+use Ivoz\Provider\Domain\Model\Recording\RecordingInterface;
 use Assert\Assertion;
 
-class BrandUrlDtoAssembler implements CustomDtoAssemblerInterface
+class RecordingDtoAssembler implements CustomDtoAssemblerInterface
 {
     /**
      * @var StoragePathResolverCollection
@@ -22,16 +22,15 @@ class BrandUrlDtoAssembler implements CustomDtoAssemblerInterface
         $this->storagePathResolver = $storagePathResolver;
     }
 
-
     /**
-     * @param BrandUrlInterface $entity
-     * @return BrandUrlDTO
+     * @param RecordingInterface $entity
+     * @return RecordingDTO
      */
     public function toDTO(EntityInterface $entity)
     {
-        Assertion::isInstanceOf($entity, BrandUrlInterface::class);
+        Assertion::isInstanceOf($entity, RecordingInterface::class);
 
-        /** @var BrandUrlDTO $dto */
+        /** @var RecordingDTO $dto */
         $dto = $entity->toDTO();
         $id = $entity->getId();
 
@@ -42,7 +41,7 @@ class BrandUrlDtoAssembler implements CustomDtoAssemblerInterface
         if ($entity->getLogo()->getFileSize()) {
             $pathResolver = $this
                 ->storagePathResolver
-                ->getPathResolver('Logo');
+                ->getPathResolver('RecordedFile');
 
             $dto->setLogoPath(
                 $pathResolver->getFilePath($entity)

@@ -56,26 +56,26 @@ production:
       source:
         class: IvozProvider_Klear_Ghost_RecordingsType
         method: getData
-#    recordedFile:
-#      title: _('Recorded file')
-#      type: file
-#      source:
-#        data: fso
-#        size_limit: 20M
-#        options:
-#          download:
-#            external: true
-#            type: command
-#            target: recordingsRecordedFileDownload_command
-#            icon: ui-silk-bullet-disk
-#            title: _("Download file")
-#            onNull: hide
-#          mediaembed:
-#            type: command
-#            title: _("Listen to File")
-#            class: jmedia
-#            onNull: hide
-#            target: recordingsRecordedFileDownload_command
+    recordedFile:
+      title: _('Recorded file')
+      type: file
+      source:
+        data: fso
+        size_limit: 20M
+        options:
+          download:
+            external: true
+            type: command
+            target: recordingsRecordedFileDownload_command
+            icon: ui-silk-bullet-disk
+            title: _("Download file")
+            onNull: hide
+          mediaembed:
+            type: command
+            title: _("Listen to File")
+            class: jmedia
+            onNull: hide
+            target: recordingsRecordedFileDownload_command
 staging:
   _extends: production
 testing:
