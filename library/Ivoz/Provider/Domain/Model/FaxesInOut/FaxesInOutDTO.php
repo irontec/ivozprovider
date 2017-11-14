@@ -11,6 +11,8 @@ use Ivoz\Core\Application\CollectionTransformerInterface;
  */
 class FaxesInOutDTO implements DataTransferObjectInterface
 {
+    use FaxesInOutDTOTrait;
+
     /**
      * @var \DateTime
      */

@@ -74,48 +74,48 @@ production:
           'pending': _('Pending')
           'completed': _('Completed')
           'inprogress': _('In Progress')
-#    file:
-#      title: ngettext('PDF File', 'PDF Files', 1)
-#      type: file
-#      required: true
-#      source:
-#        data: fso
-#        size_limit: 20M
-#        options:
-#          download:
-#            external: true
-#            type: command
-#            target: faxesInOutFileDownload_command
-#            icon: ui-silk-bullet-disk
-#            title: _("Download file")
-#            onNull: hide
-#          upload:
-#            type: command
-#            target: faxesInOutFileUpload_command
-#            title: _("Upload file")
-#            class: qq-uploader
-#            onNull: show
-#          preview:
-#            target: faxesInOutFilePreview_command
-#            type: command
-#            class: filePreview
-#            external: 1
-#            props:
-#              width: 150
-#              height: 150
-#              crop: false
-#            onNull: hide
-#          previewList:
-#            target: faxesInOutFilePreview_command
-#            type: command
-#            class: filePreview
-#            listController: 1
-#            external: 1
-#            props:
-#              width: 30
-#              height: 30
-#              crop: false
-#            onNull: hide
+    file:
+      title: ngettext('PDF File', 'PDF Files', 1)
+      type: file
+      required: true
+      source:
+        data: fso
+        size_limit: 20M
+        options:
+          download:
+            external: true
+            type: command
+            target: faxesInOutFileDownload_command
+            icon: ui-silk-bullet-disk
+            title: _("Download file")
+            onNull: hide
+          upload:
+            type: command
+            target: faxesInOutFileUpload_command
+            title: _("Upload file")
+            class: qq-uploader
+            onNull: show
+          preview:
+            target: faxesInOutFilePreview_command
+            type: command
+            class: filePreview
+            external: 1
+            props:
+              width: 150
+              height: 150
+              crop: false
+            onNull: hide
+          previewList:
+            target: faxesInOutFilePreview_command
+            type: command
+            class: filePreview
+            listController: 1
+            external: 1
+            props:
+              width: 30
+              height: 30
+              crop: false
+            onNull: hide
 staging:
   _extends: production
 testing:
