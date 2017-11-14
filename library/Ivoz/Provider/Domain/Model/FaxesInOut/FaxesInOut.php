@@ -2,16 +2,30 @@
 
 namespace Ivoz\Provider\Domain\Model\FaxesInOut;
 
+use Ivoz\Core\Domain\Model\TempFileContainnerTrait;
+use Ivoz\Core\Domain\Service\FileContainerInterface;
+
 /**
  * FaxesInOut
  */
-class FaxesInOut extends FaxesInOutAbstract implements FaxesInOutInterface
+class FaxesInOut extends FaxesInOutAbstract implements FaxesInOutInterface, FileContainerInterface
 {
     use FaxesInOutTrait;
+    use TempFileContainnerTrait;
 
     public function getChangeSet()
     {
         return parent::getChangeSet();
+    }
+
+    /**
+     * @return array
+     */
+    public function getFileObjects()
+    {
+        return [
+            'File'
+        ];
     }
 
     /**

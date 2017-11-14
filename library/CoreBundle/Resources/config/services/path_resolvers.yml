@@ -53,6 +53,20 @@ services:
       $basePath: 'ivozprovider_model_locutions.encodedfile'
 
   ##########################################
+  ## FaxesInOut
+  ##########################################
+  Service\StoragePathResolverCollection::FaxesInOut:
+     class: Ivoz\Core\Application\Service\StoragePathResolverCollection
+     calls:
+      - [addPathResolver, ['File', '@Service\CommonStoragePathResolver::FaxesInOutFile']]
+
+  Service\CommonStoragePathResolver::FaxesInOutFile:
+    class: Ivoz\Core\Application\Service\CommonStoragePathResolver
+    arguments:
+      $localStoragePath: '%local_storage_path%'
+      $basePath: 'ivozprovider_model_faxesinout.file'
+
+  ##########################################
   ## GenericMusicOnHold
   ##########################################
   Service\StoragePathResolverCollection::GenericMusicOnHold:
