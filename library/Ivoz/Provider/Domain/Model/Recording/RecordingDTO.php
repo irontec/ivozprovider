@@ -11,6 +11,8 @@ use Ivoz\Core\Application\CollectionTransformerInterface;
  */
 class RecordingDTO implements DataTransferObjectInterface
 {
+    use RecordingDTOTrait;
+
     /**
      * @var string
      */

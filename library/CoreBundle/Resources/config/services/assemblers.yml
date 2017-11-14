@@ -66,3 +66,14 @@ services:
   Ivoz\Provider\Application\Service\MusicOnHold\MusicOnHoldDtoAssembler:
     arguments:
       $storagePathResolver: '@Service\StoragePathResolverCollection::MusicOnHold'
+
+  ##########################################
+  ## Recording
+  ##########################################
+  Ivoz\Provider\Application\Service\Recording\RecordingAssembler:
+    arguments:
+      $storagePathResolver: '@Service\StoragePathResolverCollection::Recording'
+
+  Ivoz\Provider\Application\Service\Recording\RecordingDtoAssembler:
+    arguments:
+      $storagePathResolver: '@Service\StoragePathResolverCollection::Recording'

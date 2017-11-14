@@ -93,3 +93,17 @@ services:
     arguments:
       $localStoragePath: '%local_storage_path%'
       $basePath: 'ivozprovider_model_musiconhold.encodedfile'
+
+  ##########################################
+  ## Recording
+  ##########################################
+  Service\StoragePathResolverCollection::Recording:
+     class: Ivoz\Core\Application\Service\StoragePathResolverCollection
+     calls:
+      - [addPathResolver, ['RecordedFile', '@Service\CommonStoragePathResolver::RecordingRecordedFile']]
+
+  Service\CommonStoragePathResolver::RecordingRecordedFile:
+    class: Ivoz\Core\Application\Service\CommonStoragePathResolver
+    arguments:
+      $localStoragePath: '%local_storage_path%'
+      $basePath: 'ivozprovider_model_recordings.recordedfile'
