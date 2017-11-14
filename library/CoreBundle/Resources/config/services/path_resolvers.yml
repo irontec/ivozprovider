@@ -18,6 +18,20 @@ services:
       $basePath: 'ivozprovider_model_brands.logo'
 
   ##########################################
+  ## BrandUrl
+  ##########################################
+  Service\StoragePathResolverCollection::BrandUrl:
+     class: Ivoz\Core\Application\Service\StoragePathResolverCollection
+     calls:
+      - [addPathResolver, ['Logo', '@Service\CommonStoragePathResolver::BrandUrlLogo']]
+
+  Service\CommonStoragePathResolver::BrandUrlLogo:
+    class: Ivoz\Core\Application\Service\CommonStoragePathResolver
+    arguments:
+      $localStoragePath: '%local_storage_path%'
+      $basePath: 'ivozprovider_model_brandurls.logo'
+
+  ##########################################
   ## Locution
   ##########################################
   Service\StoragePathResolverCollection::Locution:
