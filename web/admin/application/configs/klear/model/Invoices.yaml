@@ -55,26 +55,26 @@ production:
           'processing': _('Processing')
           'created': _('Created')
           'error': _('Error')
-#    pdfFile:
-#      title: _('Pdf file')
-#      type: file
-#      source:
-#        data: fso
-#        size_limit: 20M
-#        options:
-#          preview:
-#            target: invoicesPdfFilePreview_command
-#            type: command
-#            class: filePreview
-#            external: 1
-#            props:
-#              width: 150
-#              height: 150
-#              crop: false
-#            onNull: hide
-#      options:
-#        commands:
-#          invoicesPdfFileDownload_command: true
+    pdf:
+      title: _('Pdf file')
+      type: file
+      source:
+        data: fso
+        size_limit: 20M
+        options:
+          preview:
+            target: invoicesPdfFilePreview_command
+            type: command
+            class: filePreview
+            external: 1
+            props:
+              width: 150
+              height: 150
+              crop: false
+            onNull: hide
+      options:
+        commands:
+          invoicesPdfFileDownload_command: true
     companyId:
       title: ngettext('Company', 'Companies', 1)
       type: select
