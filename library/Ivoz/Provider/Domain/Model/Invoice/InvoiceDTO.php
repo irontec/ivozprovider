@@ -11,6 +11,8 @@ use Ivoz\Core\Application\CollectionTransformerInterface;
  */
 class InvoiceDTO implements DataTransferObjectInterface
 {
+    use InvoiceDTOTrait;
+
     /**
      * @var string
      */

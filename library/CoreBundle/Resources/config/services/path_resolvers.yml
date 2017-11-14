@@ -88,6 +88,20 @@ services:
       $basePath: 'ivozprovider_model_genericmusiconhold.encodedfile'
 
   ##########################################
+  ## Invoice
+  ##########################################
+  Service\StoragePathResolverCollection::Invoice:
+     class: Ivoz\Core\Application\Service\StoragePathResolverCollection
+     calls:
+      - [addPathResolver, ['Pdf', '@Service\CommonStoragePathResolver::InvoicePdf']]
+
+  Service\CommonStoragePathResolver::InvoicePdf:
+    class: Ivoz\Core\Application\Service\CommonStoragePathResolver
+    arguments:
+      $localStoragePath: '%local_storage_path%'
+      $basePath: 'ivozprovider_model_invoice.pdf'
+
+  ##########################################
   ## MusicOnHold
   ##########################################
   Service\StoragePathResolverCollection::MusicOnHold:

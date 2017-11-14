@@ -57,6 +57,17 @@ services:
       $storagePathResolver: '@Service\StoragePathResolverCollection::GenericMusicOnHold'
 
   ##########################################
+  ## Invoice
+  ##########################################
+  Ivoz\Provider\Application\Service\Invoice\InvoiceAssembler:
+    arguments:
+      $storagePathResolver: '@Service\StoragePathResolverCollection::Invoice'
+
+  Ivoz\Provider\Application\Service\Invoice\InvoiceDtoAssembler:
+    arguments:
+      $storagePathResolver: '@Service\StoragePathResolverCollection::Invoice'
+
+  ##########################################
   ## MusicOnHold
   ##########################################
   Ivoz\Provider\Application\Service\MusicOnHold\MusicOnHoldAssembler:
