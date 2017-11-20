@@ -53,12 +53,17 @@ class UpdateByFriend implements FriendLifecycleEventHandlerInterface
             $endPointDto = $endpoint->toDto();
         }
 
+        // Use company domain if retail from-domain not set
+        $fromDomain = $entity->getFromDomain()
+            ? $entity->getFromDomain()
+            : $entity->getDomain()->getDomain();
+
         // Update/Insert endpoint data
         $domainUsers = $entity->getCompany()->getDomainUsers();
         $endPointDto
             ->setFriendId($entity->getId())
             ->setSorceryId($entity->getSorcery())
-            ->setFromDomain($domainUsers)
+            ->setFromDomain($fromDomain)
             ->setAors($entity->getSorcery())
             ->setDisallow($entity->getDisallow())
             ->setAllow($entity->getAllow())

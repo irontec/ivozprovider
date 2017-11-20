@@ -158,7 +158,7 @@ Ivoz\Provider\Domain\Model\Friend\FriendAbstract:
       cascade: {  }
       fetch: LAZY
       mappedBy: null
-      inversedBy: null
+      inversedBy: friends
       joinColumns:
         domainId:
           domainId: id

@@ -32,6 +32,21 @@ class DomainDTO implements DataTransferObjectInterface
     private $id;
 
     /**
+     * @var array|null
+     */
+    private $friends = null;
+
+    /**
+     * @var array|null
+     */
+    private $retailAccounts = null;
+
+    /**
+     * @var array|null
+     */
+    private $terminals = null;
+
+    /**
      * @return array
      */
     public function __toArray()
@@ -40,7 +55,10 @@ class DomainDTO implements DataTransferObjectInterface
             'domain' => $this->getDomain(),
             'pointsTo' => $this->getPointsTo(),
             'description' => $this->getDescription(),
-            'id' => $this->getId()
+            'id' => $this->getId(),
+            'friends' => $this->getFriends(),
+            'retailAccounts' => $this->getRetailAccounts(),
+            'terminals' => $this->getTerminals()
         ];
     }
 
@@ -49,6 +67,38 @@ class DomainDTO implements DataTransferObjectInterface
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
+        if (!is_null($this->friends)) {
+            $items = $this->getFriends();
+            $this->friends = [];
+            foreach ($items as $item) {
+                $this->friends[] = $transformer->transform(
+                    'Ivoz\\Provider\\Domain\\Model\\Friend\\Friend',
+                    $item->getId() ?? $item
+                );
+            }
+        }
+
+        if (!is_null($this->retailAccounts)) {
+            $items = $this->getRetailAccounts();
+            $this->retailAccounts = [];
+            foreach ($items as $item) {
+                $this->retailAccounts[] = $transformer->transform(
+                    'Ivoz\\Provider\\Domain\\Model\\RetailAccount\\RetailAccount',
+                    $item->getId() ?? $item
+                );
+            }
+        }
+
+        if (!is_null($this->terminals)) {
+            $items = $this->getTerminals();
+            $this->terminals = [];
+            foreach ($items as $item) {
+                $this->terminals[] = $transformer->transform(
+                    'Ivoz\\Provider\\Domain\\Model\\Terminal\\Terminal',
+                    $item->getId() ?? $item
+                );
+            }
+        }
 
     }
 
@@ -57,7 +107,18 @@ class DomainDTO implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
+        $this->friends = $transformer->transform(
+            'Ivoz\\Provider\\Domain\\Model\\Friend\\Friend',
+            $this->friends
+        );
+        $this->retailAccounts = $transformer->transform(
+            'Ivoz\\Provider\\Domain\\Model\\RetailAccount\\RetailAccount',
+            $this->retailAccounts
+        );
+        $this->terminals = $transformer->transform(
+            'Ivoz\\Provider\\Domain\\Model\\Terminal\\Terminal',
+            $this->terminals
+        );
     }
 
     /**
@@ -138,6 +199,66 @@ class DomainDTO implements DataTransferObjectInterface
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @param array $friends
+     *
+     * @return DomainDTO
+     */
+    public function setFriends($friends)
+    {
+        $this->friends = $friends;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getFriends()
+    {
+        return $this->friends;
+    }
+
+    /**
+     * @param array $retailAccounts
+     *
+     * @return DomainDTO
+     */
+    public function setRetailAccounts($retailAccounts)
+    {
+        $this->retailAccounts = $retailAccounts;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getRetailAccounts()
+    {
+        return $this->retailAccounts;
+    }
+
+    /**
+     * @param array $terminals
+     *
+     * @return DomainDTO
+     */
+    public function setTerminals($terminals)
+    {
+        $this->terminals = $terminals;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getTerminals()
+    {
+        return $this->terminals;
     }
 }
 

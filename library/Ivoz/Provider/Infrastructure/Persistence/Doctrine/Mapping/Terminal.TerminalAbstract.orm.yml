@@ -90,7 +90,7 @@ Ivoz\Provider\Domain\Model\Terminal\TerminalAbstract:
       cascade: {  }
       fetch: LAZY
       mappedBy: null
-      inversedBy: null
+      inversedBy: terminals
       joinColumns:
         domainId:
           domainId: id
