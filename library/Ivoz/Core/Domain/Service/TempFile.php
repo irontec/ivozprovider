@@ -23,7 +23,7 @@ class TempFile
      */
     protected $storagePathResolver;
 
-    protected $mkdirMode = 0755;
+    protected $mkdirMode = 0777;
 
     public function __construct(
         StoragePathResolverInterface $storagePathResolver,
@@ -64,6 +64,8 @@ class TempFile
         if (!$copySucceed) {
             throw new \Exception("Could not rename file " . $this->tmpPath . " to " . $copySucceed);
         }
+
+        chmod($targetPath, 0777);
 
         unlink($this->tmpPath);
         if ($this->previousFilePath && ($targetPath != $this->previousFilePath)) {

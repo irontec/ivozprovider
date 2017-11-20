@@ -157,12 +157,18 @@ interface RecordingInterface extends LoggableEntityInterface
      */
     public function getRecordedFile();
 
-    public function addTmpFile(\Ivoz\Core\Domain\Service\TempFile $file);
+    public function addTmpFile($fldName, \Ivoz\Core\Domain\Service\TempFile $file);
 
     /**
      * @return TempFile[]
      */
     public function getTempFiles();
+
+    /**
+     * @var string $fldName
+     * @return null | TempFile
+     */
+    public function getTempFileByFieldName($fldName);
 
 }
 

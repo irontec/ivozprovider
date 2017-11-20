@@ -123,6 +123,7 @@ trait FileContainerEntityAssemblerTrait
         $tmpFilepath = $dto->{$pathGetter}();
 
         $entity->addTmpFile(
+            $fldName,
             new TempFile(
                 $this->getPathResolver($fldName, $baseName),
                 $tmpFilepath,

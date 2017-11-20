@@ -52,6 +52,7 @@ class ScheduleForRemove implements LifecycleEventHandlerInterface
                 );
 
             $entity->addTmpFile(
+                $fldName,
                 new TempFile(
                     $pathResolver,
                     $filePath

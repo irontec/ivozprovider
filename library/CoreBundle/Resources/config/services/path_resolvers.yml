@@ -45,12 +45,14 @@ services:
     arguments:
       $localStoragePath: '%local_storage_path%'
       $basePath: 'ivozprovider_model_locutions.originalfile'
+      $keepExtension: true
 
   Service\CommonStoragePathResolver::LocutionEncodedFile:
     class: Ivoz\Core\Application\Service\CommonStoragePathResolver
     arguments:
       $localStoragePath: '%local_storage_path%'
       $basePath: 'ivozprovider_model_locutions.encodedfile'
+      $keepExtension: true
 
   ##########################################
   ## FaxesInOut

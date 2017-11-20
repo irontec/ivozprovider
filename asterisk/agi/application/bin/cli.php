@@ -19,10 +19,10 @@ $kernel->boot();
 );
 
 /** @var \Ivoz\Provider\Application\Service\Locution\LocutionDtoAssembler $locutionDtoAssembler */
-$locutionDtoAssembler = $kernel->getContainer()->get('Ivoz\Provider\Application\Service\Locution\LocutionDtoAssembler');
+$locutionPathResolver = $kernel->getContainer()->get('Service\CommonStoragePathResolver::LocutionEncodedFile');
 \Zend_Registry::set(
     'locutionPathResolver',
-    $locutionDtoAssembler->getEncodedFilePathResolver()
+    $locutionPathResolver
 );
 
 defined('__DIR__') || define('__DIR__', dirname(__FILE__));
@@ -33,6 +33,7 @@ define('APPLICATION_PATH', realpath(__DIR__ . '/../'));
 // Ensure library/ is on include_path
 set_include_path(implode(PATH_SEPARATOR, array(
     realpath(APPLICATION_PATH . '/../library'),
+    realpath(APPLICATION_PATH . '/../../../library'),
     get_include_path(),
 )));
 

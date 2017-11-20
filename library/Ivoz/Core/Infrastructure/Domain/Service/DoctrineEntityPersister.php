@@ -233,5 +233,7 @@ class DoctrineEntityPersister implements EntityPersisterInterface
             $changeLog->setCommand($commandlog);
             $this->em->persist($changeLog);
         }
+
+        $this->entityEventSubscriber->clearEvents();
     }
 }

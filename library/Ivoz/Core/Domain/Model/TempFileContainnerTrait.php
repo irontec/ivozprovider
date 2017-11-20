@@ -11,9 +11,9 @@ trait TempFileContainnerTrait
      */
     protected $tmpFiles = [];
 
-    public function addTmpFile(TempFile $file)
+    public function addTmpFile($fldName, TempFile $file)
     {
-        $this->tmpFiles[]  = $file;
+        $this->tmpFiles[$fldName]  = $file;
     }
 
     /**
@@ -22,5 +22,18 @@ trait TempFileContainnerTrait
     public function getTempFiles()
     {
         return $this->tmpFiles;
+    }
+
+    /**
+     * @var string $fldName
+     * @return null | TempFile
+     */
+    public function getTempFileByFieldName($fldName)
+    {
+        if (array_key_exists($fldName, $this->tmpFiles)) {
+            return $this->tmpFiles[$fldName];
+        }
+
+        return null;
     }
 }

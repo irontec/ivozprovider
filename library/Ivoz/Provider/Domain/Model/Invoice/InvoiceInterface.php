@@ -9,6 +9,11 @@ interface InvoiceInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @return array
+     */
+    public function getFileObjects();
+
+    /**
      * Set number
      *
      * @param string $number
@@ -183,6 +188,19 @@ interface InvoiceInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Invoice\Pdf
      */
     public function getPdf();
+
+    public function addTmpFile($fldName, \Ivoz\Core\Domain\Service\TempFile $file);
+
+    /**
+     * @return TempFile[]
+     */
+    public function getTempFiles();
+
+    /**
+     * @var string $fldName
+     * @return null | TempFile
+     */
+    public function getTempFileByFieldName($fldName);
 
 }
 

@@ -1,13 +1,14 @@
 <?php
 
+use Symfony\Component\Process\Exception\ProcessFailedException;
+use Symfony\Component\Process\Process;
 
-use IvozProvider\Mapper\Sql\MusicOnHold;
 class MultimediaWorker extends Iron_Gearman_Worker
 {
-    protected $_timeout = 10000; // 1000 = 1 second
-    protected $_mapper;
-    protected $_frontend;
-    protected $_modelName;
+    /**
+     * @var \Ivoz\Core\Application\Service\DataGateway
+     */
+    protected $dataGateway;
 
     protected function initRegisterFunctions()
     {
@@ -18,12 +19,9 @@ class MultimediaWorker extends Iron_Gearman_Worker
 
     protected function init()
     {
-        $this->_mapper = new MusicOnHold();
-    }
-
-    protected function timeout()
-    {
-        $this->_mapper->getDbTable()->getAdapter()->closeConnection();
+        if (\Zend_Registry::isRegistered("data_gateway")) {
+            $this->dataGateway = \Zend_Registry::get("data_gateway");
+        }
     }
 
     public function _encode(\GearmanJob $serializedJob)
@@ -31,95 +29,85 @@ class MultimediaWorker extends Iron_Gearman_Worker
         // Thanks Gearmand, you've done your job
         $serializedJob->sendComplete("DONE");
 
-        $this->_logger->log($this->_modelName . "-  start encode " , Zend_Log::INFO);
+        /** @var \IvozProvider\Gearmand\Jobs\Recoder $job */
         $job = igbinary_unserialize($serializedJob->workload());
 
-        $id = $job->getId();
-        $this->_modelName = $job->getModelName();
+        $entityId = $job->getId();
+        $entityName = $job->getEntityName();
+        $entityNameSegments = explode('\\', $entityName);
+        $entityClass = end($entityNameSegments);
 
-        $mapperRoute = "\\IvozProvider\\Mapper\\Sql\\".$this->_modelName;
-        $mapper = new $mapperRoute();
+        $this->_logger->log($entityName . "-  start encode " , Zend_Log::INFO);
 
-        $model = $mapper->find($id);
+        $entityDto = $this->dataGateway->find(
+            $entityName,
+            $entityId
+        );
 
-        $model->setStatus('encoding')
-              ->save();
+        $entityDto->setStatus('encoding');
+        $this->dataGateway->update($entityName, $entityDto);
 
         try {
-            $originalFile = $model->fetchOriginalFile()->getFilePath();
-            $filename = pathinfo($model->getOriginalFileBaseName(), PATHINFO_FILENAME);
+            $originalFile = $entityDto->getOriginalFilePath();
+            $originalFileNoExt = pathinfo($entityDto->getOriginalFileBaseName(), PATHINFO_FILENAME);
 
-            $path = $this->_getFilePath();
-            $encodedFilePath = $path . DIRECTORY_SEPARATOR . 'tmp';
-            $encodedFile = $encodedFilePath . DIRECTORY_SEPARATOR . $filename .'.dump.wav';
-            $finalWavFile= $encodedFilePath . DIRECTORY_SEPARATOR . $filename .'.wav';
+            // Convert original file to raw wav using avconv
+            $dumpWavFile = sprintf("/tmp/%s%draw.wav", $entityClass, $entityId);
+            $process = new Process([
+                "avconv",
+                "-i", $originalFile,
+                "-b:a", "64k",
+                "-ar", "8000",
+                "-ac", "1",
+                $dumpWavFile
+            ]);
+            $process->mustRun();
 
-            $this->_createFolder($encodedFilePath);
-
-            // 2 Pass decoding. 1st dump audio to wav
-            $cmd = 'avconv -i ' . str_replace(" ", "\ ", "'$originalFile'") . ' -b:a 64k -ar 8000 -ac 1 ' . "'$encodedFile'";
-            $this->_logger->log($this->_modelName . "-  " . $cmd, Zend_Log::INFO);
-            exec($cmd); // Hey?? Checking $retvalue anyone?
-
-            // 2 Pass decoding. 2nd normalize audio for asterisk
-            $cmd = "sox '$encodedFile'  -b 16 -c 1 '$finalWavFile' rate -ql 8000";
-            $this->_logger->log($this->_modelName . "-  " . $cmd, Zend_Log::INFO);
-            exec($cmd); // Hey?? Checking $retvalue anyone?
+            $encodedFile = sprintf("/tmp/%s%d.wav", $entityClass, $entityId);
+            $process = new Process([
+                "sox",
+                $dumpWavFile,
+                "-b", "16",
+                "-c", "1",
+                $encodedFile,
+                "rate", "-ql", "8000"
+            ]);
+            $process->mustRun();
 
             // Remove temp files
-            unlink($encodedFile);
+            unlink($dumpWavFile);
 
-            $model->putEncodedFile($finalWavFile, $filename .'.wav');
-            $model->setStatus("ready")
-                  ->save();
+            $entityDto
+                ->setEncodedFileBaseName($originalFileNoExt . '.wav')
+                ->setEncodedFilePath($encodedFile)
+                ->setStatus('ready');
 
-
-            if ($this->_modelName == "MusicOnHold" || $this->_modelName == "GenericMusicOnHold") {
-                $astMusicOnHoldMapper = new \IvozProvider\Mapper\Sql\AstMusiconhold();
-                $astMusicOnHold = $astMusicOnHoldMapper->findOneByField("name", $model->getOwner());// $model->getOwner() en el MusicOnHold es el companyId y en el GenericMusicOnHold el brandId
-
-                if (is_null($astMusicOnHold)) {
-                    $this->_replicateModelInAstMusicOnHold($model, $model->fetchEncodedFile(false));
-                }
-            }
-            $this->_logger->log($this->_modelName . "-  end encode", Zend_Log::INFO);
-         }
-         catch(\Exception $e){
-             $model->setStatus("error")
-                   ->save();
-             $this->_logger->log($this->_modelName . "-  Error recodering MusicOnHold with id " . $id . "  " . $e->getMessage(), Zend_Log::ERR);
-
-         }
-    }
-
-    protected function _getFilePath(){
-        $bootstrap = \Zend_Controller_Front::getInstance()->getParam('bootstrap');
-        $conf = (Object) $bootstrap->getOptions();
-        $path = $conf->Iron['fso']['localStoragePath'];
-        return $path;
-    }
-
-    protected function _createFolder($encodedFilePath){
-        if (!file_exists($encodedFilePath)) {
-            $old = umask(0);
-            mkdir($encodedFilePath, 0755, true);
-            umask($old);
+        } catch(\Exception $e){
+            $entityDto->setStatus('error');
+            $this->_logger->log(
+                "Failed to encode $entityClass id $entityId: " . $e->getMessage(),
+                Zend_Log::ERR
+            );
+            throw $e;
         }
+
+        try {
+            // Store final status of encoded process
+            $this->dataGateway->update($entityName, $entityDto);
+            $this->_logger->log(
+                "Encoding $entityClass with id $entityId ended with status " . $entityDto->getStatus(),
+                Zend_Log::INFO
+            );
+        } catch(\Exception $e){
+            $this->_logger->log(
+                "Failed to update status of $entityClass id $entityId: " . $e->getMessage(),
+                Zend_Log::INFO
+            );
+            throw $e;
+        }
+
+        // Done!
+        exit(0);
     }
-
-    protected function _replicateModelInAstMusicOnHold($model, $fso)
-    {
-        $filePath = $fso->getFilePath();
-        $folderPath = dirname($filePath);
-
-        $astMusicOnHold = new \IvozProvider\Model\AstMusiconhold();
-        $astMusicOnHold->setName($model->getOwner())
-        ->setMode("files")
-        ->setDirectory($folderPath)
-        ->setFormat("alaw")
-        ->setStamp('CURRENT_TIMESTAMP') // pequeño truco de los modelos
-        ->save();
-    }
-
 
 }

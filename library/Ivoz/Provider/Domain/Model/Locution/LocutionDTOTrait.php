@@ -32,6 +32,7 @@ trait LocutionDTOTrait
     public function setOriginalFilePath(string $originalFilePath = null)
     {
         $this->originalFilePath = $originalFilePath;
+        return $this;
     }
 
     /**
@@ -48,6 +49,7 @@ trait LocutionDTOTrait
     public function setEncodedFilePath(string $encodedFilePath = null)
     {
         $this->encodedFilePath = $encodedFilePath;
+        return $this;
     }
 }
 

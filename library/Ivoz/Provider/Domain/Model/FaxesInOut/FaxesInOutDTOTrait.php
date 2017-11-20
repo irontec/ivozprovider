@@ -1,6 +1,6 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Model\BrandUrl;
+namespace Ivoz\Provider\Domain\Model\FaxesInOut;
 
 trait FaxesInOutDTOTrait
 {

@@ -49,6 +49,14 @@ class CommandEventSubscriber implements DomainEventSubscriberInterface
     }
 
     /**
+     * @return void
+     */
+    public function clearEvents()
+    {
+        $this->events = [];
+    }
+
+    /**
      * @param DomainEventInterface $domainEvent
      * @return boolean
      */
