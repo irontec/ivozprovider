@@ -4,11 +4,11 @@ namespace IvozProvider\Gearmand\Jobs;
 class Recoder extends AbstractJob {
 
     protected $_id;
-    protected $_modelName;
+    protected $_entityName;
 
     protected $_mainVariables = array(
         '_id',
-        '_modelName'
+        '_entityName'
     );
 
     protected $_method = "encodeFSOToMp3";
@@ -19,9 +19,9 @@ class Recoder extends AbstractJob {
         return $this;
     }
 
-    public function setModelName($modelName)
+    public function setEntityName($modelName)
     {
-        $this->_modelName = $modelName;
+        $this->_entityName = $modelName;
         return $this;
     }
 
@@ -30,8 +30,8 @@ class Recoder extends AbstractJob {
         return $this->_id;
     }
 
-    public function getModelName()
+    public function getEntityName()
     {
-        return $this->_modelName;
+        return $this->_entityName;
     }
 }

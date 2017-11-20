@@ -19,6 +19,11 @@ interface DomainEventSubscriberInterface
     public function getEvents();
 
     /**
+     * @return void
+     */
+    public function clearEvents();
+
+    /**
      * @return DomainEventInterface
      */
     public function shiftEvent();

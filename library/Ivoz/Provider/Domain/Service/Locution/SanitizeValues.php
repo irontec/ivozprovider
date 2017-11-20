@@ -15,12 +15,8 @@ class SanitizeValues implements LocutionLifecycleEventHandlerInterface
 
     public function execute(LocutionInterface $entity)
     {
-        foreach ($entity->getTempFiles() as $tmpFile) {
-
-            $tmpPath = $tmpFile->getTmpPath();
-            if (!is_null($tmpPath)) {
-                $entity->setStatus('pending');
-            }
+        if ($entity->getTempFileByFieldName('OriginalFile')) {
+            $entity->setStatus('pending');
         }
     }
 }

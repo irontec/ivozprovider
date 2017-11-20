@@ -9,6 +9,11 @@ interface FaxesInOutInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @return array
+     */
+    public function getFileObjects();
+
+    /**
      * Get the numberValue in E.164 format when routing to 'number'
      *
      * @return string
@@ -158,6 +163,19 @@ interface FaxesInOutInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\FaxesInOut\File
      */
     public function getFile();
+
+    public function addTmpFile($fldName, \Ivoz\Core\Domain\Service\TempFile $file);
+
+    /**
+     * @return TempFile[]
+     */
+    public function getTempFiles();
+
+    /**
+     * @var string $fldName
+     * @return null | TempFile
+     */
+    public function getTempFileByFieldName($fldName);
 
 }
 

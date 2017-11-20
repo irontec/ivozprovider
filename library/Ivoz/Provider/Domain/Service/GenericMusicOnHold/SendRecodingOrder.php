@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\GenericMusicOnHold;
 
+use Ivoz\Provider\Domain\Model\GenericMusicOnHold\GenericMusicOnHold;
 use Ivoz\Provider\Domain\Model\GenericMusicOnHold\GenericMusicOnHoldInterface;
 use IvozProvider\Gearmand\Jobs\Recoder;
 
@@ -23,7 +24,7 @@ class SendRecodingOrder implements GenericMusicOnHoldLifecycleEventHandlerInterf
             $recoderJob = new Recoder();
             $recoderJob
                 ->setId($entity->getId())
-                ->setModelName("GenericMusicOnHold")
+                ->setEntityName(GenericMusicOnHold::class)
                 ->send();
         }
     }

@@ -9,6 +9,11 @@ interface BrandUrlInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @return array
+     */
+    public function getFileObjects();
+
+    /**
      * Set url
      *
      * @param string $url
@@ -119,6 +124,19 @@ interface BrandUrlInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\BrandUrl\Logo
      */
     public function getLogo();
+
+    public function addTmpFile($fldName, \Ivoz\Core\Domain\Service\TempFile $file);
+
+    /**
+     * @return TempFile[]
+     */
+    public function getTempFiles();
+
+    /**
+     * @var string $fldName
+     * @return null | TempFile
+     */
+    public function getTempFileByFieldName($fldName);
 
 }
 

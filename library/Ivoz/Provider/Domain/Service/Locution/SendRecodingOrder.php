@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\Locution;
 
+use Ivoz\Provider\Domain\Model\Locution\Locution;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 use IvozProvider\Gearmand\Jobs\Recoder;
 
@@ -23,7 +24,7 @@ class SendRecodingOrder implements LocutionLifecycleEventHandlerInterface
             $recoderJob = new Recoder();
             $recoderJob
                 ->setId($entity->getId())
-                ->setModelName("Locution")
+                ->setEntityName(Locution::class)
                 ->send();
         }
     }

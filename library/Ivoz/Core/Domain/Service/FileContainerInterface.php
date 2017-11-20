@@ -9,7 +9,6 @@ interface FileContainerInterface
      */
     public function getFileObjects();
 
-    public function addTmpFile(TempFile $file);
 
     /**
      * @return TempFile[]

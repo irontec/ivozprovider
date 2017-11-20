@@ -32,6 +32,14 @@ class EntityEventSubscriber implements DomainEventSubscriberInterface
     }
 
     /**
+     * @return void
+     */
+    public function clearEvents()
+    {
+        $this->events = [];
+    }
+
+    /**
      * @return EntityEventInterface
      */
     public function shiftEvent()
