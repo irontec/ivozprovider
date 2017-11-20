@@ -114,7 +114,7 @@ Ivoz\Provider\Domain\Model\Company\CompanyAbstract:
         default: '1'
       column: ipFilter
     onDemandRecord:
-      type: boolean
+      type: smallint
       nullable: true
       options:
         default: '0'

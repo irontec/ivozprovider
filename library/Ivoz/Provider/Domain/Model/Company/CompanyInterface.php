@@ -258,7 +258,7 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Set onDemandRecord
      *
-     * @param boolean $onDemandRecord
+     * @param integer $onDemandRecord
      *
      * @return self
      */
@@ -267,7 +267,7 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Get onDemandRecord
      *
-     * @return boolean
+     * @return integer
      */
     public function getOnDemandRecord();
 

@@ -72,7 +72,7 @@ class CompanyDTO implements DataTransferObjectInterface
     private $ipfilter = '1';
 
     /**
-     * @var boolean
+     * @var integer
      */
     private $onDemandRecord = '0';
 
@@ -734,7 +734,7 @@ class CompanyDTO implements DataTransferObjectInterface
     }
 
     /**
-     * @param boolean $onDemandRecord
+     * @param integer $onDemandRecord
      *
      * @return CompanyDTO
      */
@@ -746,7 +746,7 @@ class CompanyDTO implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean
+     * @return integer
      */
     public function getOnDemandRecord()
     {

@@ -76,7 +76,7 @@ abstract class CompanyAbstract
     protected $ipfilter = '1';
 
     /**
-     * @var boolean
+     * @var integer
      */
     protected $onDemandRecord = '0';
 
@@ -762,14 +762,16 @@ abstract class CompanyAbstract
     /**
      * Set onDemandRecord
      *
-     * @param boolean $onDemandRecord
+     * @param integer $onDemandRecord
      *
      * @return self
      */
     public function setOnDemandRecord($onDemandRecord = null)
     {
         if (!is_null($onDemandRecord)) {
-            Assertion::between(intval($onDemandRecord), 0, 1, 'onDemandRecord provided "%s" is not a valid boolean value.');
+            if (!is_null($onDemandRecord)) {
+                Assertion::integerish($onDemandRecord, 'onDemandRecord value "%s" is not an integer or a number castable to integer.');
+            }
         }
 
         $this->onDemandRecord = $onDemandRecord;
@@ -780,7 +782,7 @@ abstract class CompanyAbstract
     /**
      * Get onDemandRecord
      *
-     * @return boolean
+     * @return integer
      */
     public function getOnDemandRecord()
     {
