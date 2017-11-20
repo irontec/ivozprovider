@@ -137,3 +137,4 @@ services:
     arguments:
       $localStoragePath: '%local_storage_path%'
       $basePath: 'ivozprovider_model_recordings.recordedfile'
+      $keepExtension: true

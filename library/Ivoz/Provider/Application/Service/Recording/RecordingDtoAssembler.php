@@ -38,12 +38,12 @@ class RecordingDtoAssembler implements CustomDtoAssemblerInterface
             return $dto;
         }
 
-        if ($entity->getLogo()->getFileSize()) {
+        if ($entity->getRecordedFile()->getFileSize()) {
             $pathResolver = $this
                 ->storagePathResolver
                 ->getPathResolver('RecordedFile');
 
-            $dto->setLogoPath(
+            $dto->setRecordedFilePath(
                 $pathResolver->getFilePath($entity)
             );
         }
