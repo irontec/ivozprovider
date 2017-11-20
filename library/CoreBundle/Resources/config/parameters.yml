@@ -14,3 +14,4 @@ parameters:
     ari_password: ivozarisecret
     ari_port: 8088
     local_storage_path: /opt/irontec/ivozprovider/storage
+    raw_recordings_dir: /opt/irontec/ivozprovider/storage/ivozprovider_model_recordings.originalfile/

@@ -1,3 +1,3 @@
-kamailio/recordings/application /opt/irontec/ivozprovider/kamailio/recordings/
-kamailio/recordings/library     /opt/irontec/ivozprovider/kamailio/recordings/
+microservices/recordings/application /opt/irontec/ivozprovider/microservices/recordings/
+microservices/recordings/library     /opt/irontec/ivozprovider/microservices/recordings/
 debian/systemd/ivozprovider-recordings.timer /lib/systemd/system

@@ -1,0 +1,13 @@
+monolog:
+ handlers:
+   filter_for_errors:
+     type: fingers_crossed
+     action_level: error
+     handler: syslog_handler
+
+   syslog_handler:
+     type: syslog
+     level: info
+
+   console:
+     type: console

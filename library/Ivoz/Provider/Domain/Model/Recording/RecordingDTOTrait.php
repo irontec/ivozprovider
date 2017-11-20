@@ -16,9 +16,9 @@ trait RecordingDTOTrait
     /**
      * @return self
      */
-    public function setRecordedFilePath(string $path = null)
+    public function setRecordedFilePath(string $recordedFilePath = null)
     {
-        $this->recordedFile = $path;
+        $this->recordedFile = $recordedFilePath;
 
         return $this;
     }
@@ -26,7 +26,7 @@ trait RecordingDTOTrait
     /**
      * @return string
      */
-    public function getRecordedFile()
+    public function getRecordedFilePath()
     {
         return $this->recordedFile;
     }
