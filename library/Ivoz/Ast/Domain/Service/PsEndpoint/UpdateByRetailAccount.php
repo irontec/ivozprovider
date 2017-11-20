@@ -53,11 +53,16 @@ class UpdateByRetailAccount implements RetailAccountLifecycleEventHandlerInterfa
             $endpointDTO  = $endpoint->toDTO();
         }
 
+        // Use company domain if retail from-domain not set
+        $fromDomain = $entity->getFromDomain()
+            ? $entity->getFromDomain()
+            : $entity->getDomain()->getDomain();
+
         // Update/Insert endpoint data
         $endpointDTO
             ->setRetailAccountId($entity->getId())
             ->setSorceryId($entity->getSorcery())
-            ->setFromDomain($entity->getFromDomain())
+            ->setFromDomain($fromDomain)
             ->setAors($entity->getSorcery())
             ->setDisallow($entity->getDisallow())
             ->setAllow($entity->getAllow())

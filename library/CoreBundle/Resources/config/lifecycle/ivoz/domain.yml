@@ -21,3 +21,10 @@ services:
     arguments:
       $usersDomainReload:
         '@XmlRpc\XmlRpcUsersRequest::DomainReload'
+
+  Ivoz\Ast\Domain\Service\PsEndpoint\UpdateByDomain:
+    tags:
+      - { name: provider.lifecycle.domain.post_persist, priority: 20}
+    arguments:
+      $entityPersister:
+        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'

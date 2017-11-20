@@ -11,6 +11,17 @@ Ivoz\Provider\Domain\Model\Domain\Domain:
       id: true
       generator:
         strategy: IDENTITY
+  oneToMany:
+    friends:
+      targetEntity: Ivoz\Provider\Domain\Model\Friend\Friend
+      mappedBy: domain
+    retailAccounts:
+      targetEntity: Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount
+      mappedBy: domain
+    terminals:
+      targetEntity: Ivoz\Provider\Domain\Model\Terminal\Terminal
+      mappedBy: domain
+
   lifecycleCallbacks:
     postLoad:
       - initChangelog

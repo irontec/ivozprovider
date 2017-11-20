@@ -139,7 +139,7 @@ Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountAbstract:
       cascade: {  }
       fetch: LAZY
       mappedBy: null
-      inversedBy: null
+      inversedBy: retailAccounts
       joinColumns:
         domainId:
           domainId: id
