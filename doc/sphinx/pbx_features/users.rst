@@ -136,13 +136,22 @@ Voicemail
 Boss-Assistant
 **************
 
-.. image:: img/users_edit_boss.png
+.. ifconfig:: language == 'en'
+
+    .. image:: img/en/users_edit_boss.png
+      :align: center
+
+.. ifconfig:: language == 'es'
+
+    .. image:: img/es/users_edit_boss.png
+      :align: center
+
 
 This feature will turn the user into a boss that can only be directly call by:
 
 - The selected assistant.
 
-- Any exception defined in the whitelist regular expression.
+- Any origin that matches the white list.
 
 The rest of the calls to *a bos* will be redirected to the assistant.
 
@@ -154,13 +163,13 @@ The rest of the calls to *a bos* will be redirected to the assistant.
     Assistant
         Who will receive the redirected calls of this boss.
 
-    Whitelist regular expression.
-        Regular expresion to match numbers that are allowed to call directly to 
+    Whitelist
+        :ref:`match_lists` with origins that are allowed to call directly to
         the boss.
 
 With the setup in the image, every call to *Alice* will be redirected to *Bob*, 
-except the ones placed by *Bob* itself and those coming from the number  
-945 945 945.
+except the ones placed by *Bob* itself and those coming from any origin that matches
+*Alice's friends* matchlist.
 
 *******************
 Group Configuration
