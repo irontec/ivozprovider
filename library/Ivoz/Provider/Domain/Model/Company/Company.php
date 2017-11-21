@@ -210,7 +210,7 @@ class Company extends CompanyAbstract implements CompanyInterface
         }
 
         // Brand has music on hold
-        $brandMoH = $this->getBrand()->getGenericMusicsOnHold();
+        $brandMoH = $this->getBrand()->getMusicsOnHold();
         if (!empty($brandMoH)) {
             return $brandMoH[0]->getOwner();
         }

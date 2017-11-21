@@ -32,8 +32,8 @@ Ivoz\Provider\Domain\Model\Brand\Brand:
     retailAccounts:
       targetEntity: Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface
       mappedBy: brand
-    genericMusicsOnHold:
-      targetEntity: Ivoz\Provider\Domain\Model\GenericMusicOnHold\GenericMusicOnHoldInterface
+    musicsOnHold:
+      targetEntity: Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface
       mappedBy: brand
     genericCallAclPatterns:
       targetEntity: Ivoz\Provider\Domain\Model\GenericCallAclPattern\GenericCallAclPatternInterface

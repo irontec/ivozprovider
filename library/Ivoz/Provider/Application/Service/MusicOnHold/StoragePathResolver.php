@@ -1,6 +1,6 @@
 <?php
 
-namespace Ivoz\Provider\Application\Service\GenericMusicOnHold;
+namespace Ivoz\Provider\Application\Service\MusicOnHold;
 
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Application\Service\CommonStoragePathResolver;

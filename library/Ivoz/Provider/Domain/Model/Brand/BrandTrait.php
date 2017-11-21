@@ -51,7 +51,7 @@ trait BrandTrait
     /**
      * @var Collection
      */
-    protected $genericMusicsOnHold;
+    protected $musicsOnHold;
 
     /**
      * @var Collection
@@ -76,7 +76,7 @@ trait BrandTrait
         $this->relFeatures = new ArrayCollection();
         $this->domains = new ArrayCollection();
         $this->retailAccounts = new ArrayCollection();
-        $this->genericMusicsOnHold = new ArrayCollection();
+        $this->musicsOnHold = new ArrayCollection();
         $this->genericCallAclPatterns = new ArrayCollection();
         $this->outgoingRoutings = new ArrayCollection();
     }
@@ -124,8 +124,8 @@ trait BrandTrait
             $self->replaceRetailAccounts($dto->getRetailAccounts());
         }
 
-        if ($dto->getGenericMusicsOnHold()) {
-            $self->replaceGenericMusicsOnHold($dto->getGenericMusicsOnHold());
+        if ($dto->getMusicsOnHold()) {
+            $self->replaceMusicsOnHold($dto->getMusicsOnHold());
         }
 
         if ($dto->getGenericCallAclPatterns()) {
@@ -171,8 +171,8 @@ trait BrandTrait
         if ($dto->getRetailAccounts()) {
             $this->replaceRetailAccounts($dto->getRetailAccounts());
         }
-        if ($dto->getGenericMusicsOnHold()) {
-            $this->replaceGenericMusicsOnHold($dto->getGenericMusicsOnHold());
+        if ($dto->getMusicsOnHold()) {
+            $this->replaceMusicsOnHold($dto->getMusicsOnHold());
         }
         if ($dto->getGenericCallAclPatterns()) {
             $this->replaceGenericCallAclPatterns($dto->getGenericCallAclPatterns());
@@ -637,75 +637,75 @@ trait BrandTrait
     }
 
     /**
-     * Add genericMusicsOnHold
+     * Add musicsOnHold
      *
-     * @param \Ivoz\Provider\Domain\Model\GenericMusicOnHold\GenericMusicOnHoldInterface $genericMusicsOnHold
+     * @param \Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface $musicsOnHold
      *
      * @return BrandTrait
      */
-    public function addGenericMusicsOnHold(\Ivoz\Provider\Domain\Model\GenericMusicOnHold\GenericMusicOnHoldInterface $genericMusicsOnHold)
+    public function addMusicsOnHold(\Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface $musicsOnHold)
     {
-        $this->genericMusicsOnHold->add($genericMusicsOnHold);
+        $this->musicsOnHold->add($musicsOnHold);
 
         return $this;
     }
 
     /**
-     * Remove genericMusicsOnHold
+     * Remove musicsOnHold
      *
-     * @param \Ivoz\Provider\Domain\Model\GenericMusicOnHold\GenericMusicOnHoldInterface $genericMusicsOnHold
+     * @param \Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface $musicsOnHold
      */
-    public function removeGenericMusicsOnHold(\Ivoz\Provider\Domain\Model\GenericMusicOnHold\GenericMusicOnHoldInterface $genericMusicsOnHold)
+    public function removeMusicsOnHold(\Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface $musicsOnHold)
     {
-        $this->genericMusicsOnHold->removeElement($genericMusicsOnHold);
+        $this->musicsOnHold->removeElement($musicsOnHold);
     }
 
     /**
-     * Replace genericMusicsOnHold
+     * Replace musicsOnHold
      *
-     * @param \Ivoz\Provider\Domain\Model\GenericMusicOnHold\GenericMusicOnHoldInterface[] $genericMusicsOnHold
+     * @param \Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface[] $musicsOnHold
      * @return self
      */
-    public function replaceGenericMusicsOnHold(Collection $genericMusicsOnHold)
+    public function replaceMusicsOnHold(Collection $musicsOnHold)
     {
         $updatedEntities = [];
         $fallBackId = -1;
-        foreach ($genericMusicsOnHold as $entity) {
+        foreach ($musicsOnHold as $entity) {
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setBrand($this);
         }
         $updatedEntityKeys = array_keys($updatedEntities);
 
-        foreach ($this->genericMusicsOnHold as $key => $entity) {
+        foreach ($this->musicsOnHold as $key => $entity) {
             $identity = $entity->getId();
             if (in_array($identity, $updatedEntityKeys)) {
-                $this->genericMusicsOnHold->set($key, $updatedEntities[$identity]);
+                $this->musicsOnHold->set($key, $updatedEntities[$identity]);
             } else {
-                $this->genericMusicsOnHold->remove($key);
+                $this->musicsOnHold->remove($key);
             }
             unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
-            $this->addGenericMusicsOnHold($entity);
+            $this->addMusicsOnHold($entity);
         }
 
         return $this;
     }
 
     /**
-     * Get genericMusicsOnHold
+     * Get musicsOnHold
      *
      * @return array
      */
-    public function getGenericMusicsOnHold(Criteria $criteria = null)
+    public function getMusicsOnHold(Criteria $criteria = null)
     {
         if (!is_null($criteria)) {
-            return $this->genericMusicsOnHold->matching($criteria)->toArray();
+            return $this->musicsOnHold->matching($criteria)->toArray();
         }
 
-        return $this->genericMusicsOnHold->toArray();
+        return $this->musicsOnHold->toArray();
     }
 
     /**
