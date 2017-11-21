@@ -63,7 +63,7 @@ class Users extends MapperAbstract
                 'doNotDisturb' => $model->getDoNotDisturb(),
                 'isBoss' => $model->getIsBoss(),
                 'bossAssistantId' => $model->getBossAssistantId(),
-                'exceptionBoosAssistantRegExp' => $model->getExceptionBoosAssistantRegExp(),
+                'bossAssistantWhiteListId' => $model->getBossAssistantWhiteListId(),
                 'active' => $model->getActive(),
                 'maxCalls' => $model->getMaxCalls(),
                 'externalIpCalls' => $model->getExternalIpCalls(),
@@ -910,7 +910,7 @@ class Users extends MapperAbstract
                   ->setDoNotDisturb($data['doNotDisturb'])
                   ->setIsBoss($data['isBoss'])
                   ->setBossAssistantId($data['bossAssistantId'])
-                  ->setExceptionBoosAssistantRegExp($data['exceptionBoosAssistantRegExp'])
+                  ->setBossAssistantWhiteListId($data['bossAssistantWhiteListId'])
                   ->setActive($data['active'])
                   ->setMaxCalls($data['maxCalls'])
                   ->setExternalIpCalls($data['externalIpCalls'])
@@ -939,7 +939,7 @@ class Users extends MapperAbstract
                   ->setDoNotDisturb($data->{'doNotDisturb'})
                   ->setIsBoss($data->{'isBoss'})
                   ->setBossAssistantId($data->{'bossAssistantId'})
-                  ->setExceptionBoosAssistantRegExp($data->{'exceptionBoosAssistantRegExp'})
+                  ->setBossAssistantWhiteListId($data->{'bossAssistantWhiteListId'})
                   ->setActive($data->{'active'})
                   ->setMaxCalls($data->{'maxCalls'})
                   ->setExternalIpCalls($data->{'externalIpCalls'})
@@ -969,7 +969,7 @@ class Users extends MapperAbstract
                   ->setDoNotDisturb($data->getDoNotDisturb())
                   ->setIsBoss($data->getIsBoss())
                   ->setBossAssistantId($data->getBossAssistantId())
-                  ->setExceptionBoosAssistantRegExp($data->getExceptionBoosAssistantRegExp())
+                  ->setBossAssistantWhiteListId($data->getBossAssistantWhiteListId())
                   ->setActive($data->getActive())
                   ->setMaxCalls($data->getMaxCalls())
                   ->setExternalIpCalls($data->getExternalIpCalls())

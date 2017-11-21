@@ -136,11 +136,11 @@ class Users extends ModelAbstract
     protected $_bossAssistantId;
 
     /**
-     * Database var type varchar
+     * Database var type int
      *
-     * @var string
+     * @var int
      */
-    protected $_exceptionBoosAssistantRegExp;
+    protected $_bossAssistantWhiteListId;
 
     /**
      * Database var type tinyint
@@ -304,6 +304,13 @@ class Users extends ModelAbstract
      * @var \IvozProvider\Model\Raw\Locutions
      */
     protected $_VoicemailLocution;
+
+    /**
+     * Parent relation Users_ibfk_16
+     *
+     * @var \IvozProvider\Model\Raw\MatchLists
+     */
+    protected $_BossAssistantWhiteList;
 
 
     /**
@@ -506,7 +513,7 @@ class Users extends ModelAbstract
         'doNotDisturb'=>'doNotDisturb',
         'isBoss'=>'isBoss',
         'bossAssistantId'=>'bossAssistantId',
-        'exceptionBoosAssistantRegExp'=>'exceptionBoosAssistantRegExp',
+        'bossAssistantWhiteListId'=>'bossAssistantWhiteListId',
         'active'=>'active',
         'maxCalls'=>'maxCalls',
         'externalIpCalls'=>'externalIpCalls',
@@ -580,6 +587,10 @@ class Users extends ModelAbstract
             'UsersIbfk15'=> array(
                     'property' => 'VoicemailLocution',
                     'table_name' => 'Locutions',
+                ),
+            'UsersIbfk16'=> array(
+                    'property' => 'BossAssistantWhiteList',
+                    'table_name' => 'MatchLists',
                 ),
         ));
 
@@ -1271,36 +1282,36 @@ class Users extends ModelAbstract
 
     /**
      * Sets column Stored in ISO 8601 format.     *
-     * @param string $data
+     * @param int $data
      * @return \IvozProvider\Model\Raw\Users
      */
-    public function setExceptionBoosAssistantRegExp($data)
+    public function setBossAssistantWhiteListId($data)
     {
 
-        if ($this->_exceptionBoosAssistantRegExp != $data) {
-            $this->_logChange('exceptionBoosAssistantRegExp', $this->_exceptionBoosAssistantRegExp, $data);
+        if ($this->_bossAssistantWhiteListId != $data) {
+            $this->_logChange('bossAssistantWhiteListId', $this->_bossAssistantWhiteListId, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
-            $this->_exceptionBoosAssistantRegExp = $data;
+            $this->_bossAssistantWhiteListId = $data;
 
         } else if (!is_null($data)) {
-            $this->_exceptionBoosAssistantRegExp = (string) $data;
+            $this->_bossAssistantWhiteListId = (int) $data;
 
         } else {
-            $this->_exceptionBoosAssistantRegExp = $data;
+            $this->_bossAssistantWhiteListId = $data;
         }
         return $this;
     }
 
     /**
-     * Gets column exceptionBoosAssistantRegExp
+     * Gets column bossAssistantWhiteListId
      *
-     * @return string
+     * @return int
      */
-    public function getExceptionBoosAssistantRegExp()
+    public function getBossAssistantWhiteListId()
     {
-        return $this->_exceptionBoosAssistantRegExp;
+        return $this->_bossAssistantWhiteListId;
     }
 
     /**
@@ -2273,6 +2284,57 @@ class Users extends ModelAbstract
         }
 
         return $this->_VoicemailLocution;
+    }
+
+    /**
+     * Sets parent relation BossAssistantWhiteList
+     *
+     * @param \IvozProvider\Model\Raw\MatchLists $data
+     * @return \IvozProvider\Model\Raw\Users
+     */
+    public function setBossAssistantWhiteList(\IvozProvider\Model\Raw\MatchLists $data)
+    {
+        $this->_BossAssistantWhiteList = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setBossAssistantWhiteListId($primaryKey);
+        }
+
+        $this->_setLoaded('UsersIbfk16');
+        return $this;
+    }
+
+    /**
+     * Gets parent BossAssistantWhiteList
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\MatchLists
+     */
+    public function getBossAssistantWhiteList($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'UsersIbfk16';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_BossAssistantWhiteList = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_BossAssistantWhiteList;
     }
 
     /**

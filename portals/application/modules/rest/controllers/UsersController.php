@@ -47,7 +47,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
      *     'doNotDisturb': '', 
      *     'isBoss': '', 
      *     'bossAssistantId': '', 
-     *     'exceptionBoosAssistantRegExp': '', 
+     *     'bossAssistantWhiteListId': '', 
      *     'active': '', 
      *     'maxCalls': '', 
      *     'externalIpCalls': '', 
@@ -76,7 +76,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
      *     'doNotDisturb': '', 
      *     'isBoss': '', 
      *     'bossAssistantId': '', 
-     *     'exceptionBoosAssistantRegExp': '', 
+     *     'bossAssistantWhiteListId': '', 
      *     'active': '', 
      *     'maxCalls': '', 
      *     'externalIpCalls': '', 
@@ -121,7 +121,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
                 'doNotDisturb',
                 'isBoss',
                 'bossAssistantId',
-                'exceptionBoosAssistantRegExp',
+                'bossAssistantWhiteListId',
                 'active',
                 'maxCalls',
                 'externalIpCalls',
@@ -222,7 +222,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
      *     'doNotDisturb': '', 
      *     'isBoss': '', 
      *     'bossAssistantId': '', 
-     *     'exceptionBoosAssistantRegExp': '', 
+     *     'bossAssistantWhiteListId': '', 
      *     'active': '', 
      *     'maxCalls': '', 
      *     'externalIpCalls': '', 
@@ -266,7 +266,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
                 'doNotDisturb',
                 'isBoss',
                 'bossAssistantId',
-                'exceptionBoosAssistantRegExp',
+                'bossAssistantWhiteListId',
                 'active',
                 'maxCalls',
                 'externalIpCalls',
@@ -333,7 +333,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="doNotDisturb", nullable=false, type="tinyint", sample="", description="")
      * @ApiParams(name="isBoss", nullable=false, type="tinyint", sample="", description="")
      * @ApiParams(name="bossAssistantId", nullable=true, type="int", sample="", description="")
-     * @ApiParams(name="exceptionBoosAssistantRegExp", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="bossAssistantWhiteListId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="active", nullable=false, type="tinyint", sample="", description="")
      * @ApiParams(name="maxCalls", nullable=false, type="smallint", sample="", description="")
      * @ApiParams(name="externalIpCalls", nullable=false, type="tinyint", sample="", description="[enum:0|1|2|3]")
@@ -395,7 +395,7 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="doNotDisturb", nullable=false, type="tinyint", sample="", description="")
      * @ApiParams(name="isBoss", nullable=false, type="tinyint", sample="", description="")
      * @ApiParams(name="bossAssistantId", nullable=true, type="int", sample="", description="")
-     * @ApiParams(name="exceptionBoosAssistantRegExp", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="bossAssistantWhiteListId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="active", nullable=false, type="tinyint", sample="", description="")
      * @ApiParams(name="maxCalls", nullable=false, type="smallint", sample="", description="")
      * @ApiParams(name="externalIpCalls", nullable=false, type="tinyint", sample="", description="[enum:0|1|2|3]")
@@ -572,8 +572,8 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
                     'required' => false,
                     'comment' => '',
                 ),
-                'exceptionBoosAssistantRegExp' => array(
-                    'type' => "varchar",
+                'bossAssistantWhiteListId' => array(
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),
@@ -718,8 +718,8 @@ class Rest_UsersController extends Iron_Controller_Rest_BaseController
                     'required' => false,
                     'comment' => '',
                 ),
-                'exceptionBoosAssistantRegExp' => array(
-                    'type' => "varchar",
+                'bossAssistantWhiteListId' => array(
+                    'type' => "int",
                     'required' => false,
                     'comment' => '',
                 ),

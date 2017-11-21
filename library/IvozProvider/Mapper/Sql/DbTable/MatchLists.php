@@ -51,7 +51,8 @@ class MatchLists extends TableAbstract
         'IvozProvider\\Mapper\\Sql\\DbTable\\ExternalCallFilterBlackLists',
         'IvozProvider\\Mapper\\Sql\\DbTable\\ExternalCallFilterWhiteLists',
         'IvozProvider\\Mapper\\Sql\\DbTable\\MatchListPatterns',
-        'IvozProvider\\Mapper\\Sql\\DbTable\\OutgoingDDIRulesPatterns'
+        'IvozProvider\\Mapper\\Sql\\DbTable\\OutgoingDDIRulesPatterns',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\Users'
     );
     protected $_metadata = array (
 	  'id' => 
