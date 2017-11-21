@@ -202,22 +202,6 @@ interface UserInterface extends LoggableEntityInterface
     public function getIsBoss();
 
     /**
-     * Set exceptionBoosAssistantRegExp
-     *
-     * @param string $exceptionBoosAssistantRegExp
-     *
-     * @return self
-     */
-    public function setExceptionBoosAssistantRegExp($exceptionBoosAssistantRegExp = null);
-
-    /**
-     * Get exceptionBoosAssistantRegExp
-     *
-     * @return string
-     */
-    public function getExceptionBoosAssistantRegExp();
-
-    /**
      * Set active
      *
      * @param boolean $active
@@ -252,7 +236,7 @@ interface UserInterface extends LoggableEntityInterface
     /**
      * Set externalIpCalls
      *
-     * @param boolean $externalIpCalls
+     * @param string $externalIpCalls
      *
      * @return self
      */
@@ -261,7 +245,7 @@ interface UserInterface extends LoggableEntityInterface
     /**
      * Get externalIpCalls
      *
-     * @return boolean
+     * @return string
      */
     public function getExternalIpCalls();
 
@@ -392,6 +376,22 @@ interface UserInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\User\UserInterface
      */
     public function getBossAssistant();
+
+    /**
+     * Set bossAssistantWhiteList
+     *
+     * @param \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $bossAssistantWhiteList
+     *
+     * @return self
+     */
+    public function setBossAssistantWhiteList(\Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $bossAssistantWhiteList = null);
+
+    /**
+     * Get bossAssistantWhiteList
+     *
+     * @return \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface
+     */
+    public function getBossAssistantWhiteList();
 
     /**
      * Set transformationRuleSet

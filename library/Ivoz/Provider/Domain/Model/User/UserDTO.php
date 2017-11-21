@@ -42,11 +42,6 @@ class UserDTO implements DataTransferObjectInterface
     private $isBoss = '0';
 
     /**
-     * @var string
-     */
-    private $exceptionBoosAssistantRegExp;
-
-    /**
      * @var boolean
      */
     private $active = '0';
@@ -57,7 +52,7 @@ class UserDTO implements DataTransferObjectInterface
     private $maxCalls = '0';
 
     /**
-     * @var boolean
+     * @var string
      */
     private $externalIpCalls = '0';
 
@@ -105,6 +100,11 @@ class UserDTO implements DataTransferObjectInterface
      * @var mixed
      */
     private $bossAssistantId;
+
+    /**
+     * @var mixed
+     */
+    private $bossAssistantWhiteListId;
 
     /**
      * @var mixed
@@ -160,6 +160,11 @@ class UserDTO implements DataTransferObjectInterface
      * @var mixed
      */
     private $bossAssistant;
+
+    /**
+     * @var mixed
+     */
+    private $bossAssistantWhiteList;
 
     /**
      * @var mixed
@@ -228,7 +233,6 @@ class UserDTO implements DataTransferObjectInterface
             'pass' => $this->getPass(),
             'doNotDisturb' => $this->getDoNotDisturb(),
             'isBoss' => $this->getIsBoss(),
-            'exceptionBoosAssistantRegExp' => $this->getExceptionBoosAssistantRegExp(),
             'active' => $this->getActive(),
             'maxCalls' => $this->getMaxCalls(),
             'externalIpCalls' => $this->getExternalIpCalls(),
@@ -241,6 +245,7 @@ class UserDTO implements DataTransferObjectInterface
             'companyId' => $this->getCompanyId(),
             'callAclId' => $this->getCallAclId(),
             'bossAssistantId' => $this->getBossAssistantId(),
+            'bossAssistantWhiteListId' => $this->getBossAssistantWhiteListId(),
             'transformationRuleSetId' => $this->getTransformationRuleSetId(),
             'languageId' => $this->getLanguageId(),
             'terminalId' => $this->getTerminalId(),
@@ -263,6 +268,7 @@ class UserDTO implements DataTransferObjectInterface
         $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
         $this->callAcl = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\CallAcl\\CallAcl', $this->getCallAclId());
         $this->bossAssistant = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\User\\User', $this->getBossAssistantId());
+        $this->bossAssistantWhiteList = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\MatchList\\MatchList', $this->getBossAssistantWhiteListId());
         $this->transformationRuleSet = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\TransformationRuleSet\\TransformationRuleSet', $this->getTransformationRuleSetId());
         $this->language = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Language\\Language', $this->getLanguageId());
         $this->terminal = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Terminal\\Terminal', $this->getTerminalId());
@@ -446,26 +452,6 @@ class UserDTO implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $exceptionBoosAssistantRegExp
-     *
-     * @return UserDTO
-     */
-    public function setExceptionBoosAssistantRegExp($exceptionBoosAssistantRegExp = null)
-    {
-        $this->exceptionBoosAssistantRegExp = $exceptionBoosAssistantRegExp;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getExceptionBoosAssistantRegExp()
-    {
-        return $this->exceptionBoosAssistantRegExp;
-    }
-
-    /**
      * @param boolean $active
      *
      * @return UserDTO
@@ -506,7 +492,7 @@ class UserDTO implements DataTransferObjectInterface
     }
 
     /**
-     * @param boolean $externalIpCalls
+     * @param string $externalIpCalls
      *
      * @return UserDTO
      */
@@ -518,7 +504,7 @@ class UserDTO implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean
+     * @return string
      */
     public function getExternalIpCalls()
     {
@@ -727,6 +713,34 @@ class UserDTO implements DataTransferObjectInterface
     public function getBossAssistant()
     {
         return $this->bossAssistant;
+    }
+
+    /**
+     * @param integer $bossAssistantWhiteListId
+     *
+     * @return UserDTO
+     */
+    public function setBossAssistantWhiteListId($bossAssistantWhiteListId)
+    {
+        $this->bossAssistantWhiteListId = $bossAssistantWhiteListId;
+
+        return $this;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getBossAssistantWhiteListId()
+    {
+        return $this->bossAssistantWhiteListId;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\MatchList\MatchList
+     */
+    public function getBossAssistantWhiteList()
+    {
+        return $this->bossAssistantWhiteList;
     }
 
     /**
