@@ -47,7 +47,7 @@ production:
           voicemailEnabled: true
           isBoss: true
           bossAssistantId: true
-          exceptionBoosAssistantRegExp: true
+          bossAssistantWhiteListId: true
           PickUpRelUsers: true
         blacklist:
           email: true
@@ -59,7 +59,7 @@ production:
           timezoneId: true
           callACLId: true
           bossAssistantId: true
-          exceptionBoosAssistantRegExp: true
+          bossAssistantWhiteListId: true
           HuntGroupsRelUsers: true
           PickUpRelUsers: true
           timeout: true
@@ -106,7 +106,7 @@ production:
           timezoneId: true
           callACLId: true
           bossAssistantId: true
-          exceptionBoosAssistantRegExp: true
+          bossAssistantWhiteListId: true
           HuntGroupsRelUsers: true
           PickUpRelUsers: true
           timeout: true
@@ -176,7 +176,7 @@ production:
           fields:
             isBoss: 4
             bossAssistantId: 8
-            exceptionBoosAssistantRegExp: 12
+            bossAssistantWhiteListId: 12
         group3:
           label: _("Basic Configuration")
           colsPerRow: 12

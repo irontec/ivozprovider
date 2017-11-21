@@ -517,6 +517,20 @@ class MatchLists extends MapperAbstract
                     }
                 }
 
+                if ($model->getUsers(null, null, true) !== null) {
+                    $users = $model->getUsers();
+
+                    if (!is_array($users)) {
+
+                        $users = array($users);
+                    }
+
+                    foreach ($users as $value) {
+                        $value->setBossAssistantWhiteListId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
             }
 
             if ($success === true) {

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-16 18:26+0200\n"
+"POT-Creation-Date: 2017-11-21 15:20+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2384,9 +2384,9 @@ msgid ""
 "static assignment or 'hash based' distribution (see **Distribute method**"
 " :ref:`here <Remaining Parameters>`)."
 msgstr ""
-"En **Instalaciones distribuidas** el uso de colas solo es compatible "
-"con una asignación estática o 'basada en hash' (ver **Método de distribución** "
-":ref:`aquí <Parámetros restantes>`)."
+"En **Instalaciones distribuidas** el uso de colas solo es compatible con "
+"una asignación estática o 'basada en hash' (ver **Método de "
+"distribución** :ref:`aquí <Parámetros restantes>`)."
 
 #: ../../pbx_features/queues.rst:17
 msgid ""
@@ -3209,7 +3209,7 @@ msgstr ""
 msgid "Boss-Assistant"
 msgstr "Jefe-Asistente"
 
-#: ../../pbx_features/users.rst:141
+#: ../../pbx_features/users.rst:150
 msgid ""
 "This feature will turn the user into a boss that can only be directly "
 "call by:"
@@ -3217,59 +3217,61 @@ msgstr ""
 "La funcionalidad jefe-asistente impide que un usuario sea molestado por "
 "nadie que no sea:"
 
-#: ../../pbx_features/users.rst:143
+#: ../../pbx_features/users.rst:152
 msgid "The selected assistant."
 msgstr "Su asistente."
 
-#: ../../pbx_features/users.rst:145
-msgid "Any exception defined in the whitelist regular expression."
-msgstr "Las excepciones que él defina."
+#: ../../pbx_features/users.rst:154
+msgid "Any origin that matches the white list."
+msgstr "Origenes que coincidan con la lista blanca."
 
-#: ../../pbx_features/users.rst:147
+#: ../../pbx_features/users.rst:156
 msgid "The rest of the calls to *a bos* will be redirected to the assistant."
 msgstr "Toda llamada con destino a *un jefe* será desviada al asistente."
 
-#: ../../pbx_features/users.rst:150
+#: ../../pbx_features/users.rst:159
 msgid "Is boss"
 msgstr "Jefe"
 
-#: ../../pbx_features/users.rst:152
+#: ../../pbx_features/users.rst:161
 msgid "Determines if this user is a boss."
 msgstr "Indica que el usuario en cuestión es jefe o no."
 
-#: ../../pbx_features/users.rst:153
+#: ../../pbx_features/users.rst:162
 msgid "Assistant"
 msgstr "Asistente"
 
-#: ../../pbx_features/users.rst:155
+#: ../../pbx_features/users.rst:164
 msgid "Who will receive the redirected calls of this boss."
 msgstr "Si el usuario es jefe, indica quién es su asistente."
 
-#: ../../pbx_features/users.rst:156
-msgid "Whitelist regular expression."
-msgstr "Whitelist jefe/asistente"
-
-#: ../../pbx_features/users.rst:158
-msgid ""
-"Regular expresion to match numbers that are allowed to call directly to "
-"the boss."
-msgstr "Permite indicar utilizando expresiones regulares las excepciones deseadas."
-
-#: ../../pbx_features/users.rst:161
-msgid ""
-"With the setup in the image, every call to *Alice* will be redirected to "
-"*Bob*, except the ones placed by *Bob* itself and those coming from the "
-"number 945 945 945."
-msgstr ""
-"Con la configuración de la imagen, toda llamada a *Alice* acabará en "
-"*Bob*, salvo las que haga el propio *Bob* y el número de teléfono 945 945"
-" 945."
+#: ../../pbx_features/users.rst:165
+msgid "Whitelist"
+msgstr "Lista blanca"
 
 #: ../../pbx_features/users.rst:167
+msgid ""
+":ref:`match_lists` with origins that are allowed to call directly to the "
+"boss."
+msgstr ""
+":ref:`match_lists` con los orígenes que pueden llamar directamente al "
+"jefe."
+
+#: ../../pbx_features/users.rst:170
+msgid ""
+"With the setup in the image, every call to *Alice* will be redirected to "
+"*Bob*, except the ones placed by *Bob* itself and those coming from any "
+"origin that matches *Alice's friends* matchlist."
+msgstr ""
+"Con la configuración de la imagen, toda llamada a *Alice* acabará en "
+"*Bob*, salvo las que haga el propio *Bob* y aquellas cuyo origen "
+"coincida con la lista *Alice's friends*."
+
+#: ../../pbx_features/users.rst:176
 msgid "Group Configuration"
 msgstr "Pertenencia a grupos"
 
-#: ../../pbx_features/users.rst:171
+#: ../../pbx_features/users.rst:180
 msgid ""
 "As described in the sections :ref:`huntgroups` and :ref:`capture_groups`,"
 " the user can be part of one or more huntgroups and pickup groups."
@@ -3278,7 +3280,7 @@ msgstr ""
 ":ref:`capture_groups`, un usuario puede pertenecer a uno o a varios "
 "grupos de captura y grupos de salto."
 
-#: ../../pbx_features/users.rst:174
+#: ../../pbx_features/users.rst:183
 msgid ""
 "Those groups can be configured from the sections :ref:`huntgroups` and "
 ":ref:`capture_groups` or the user's screen if the groups already exists."
@@ -3288,7 +3290,7 @@ msgstr ""
 " estamos editando a los grupos de captura y grupos de salto deseados que "
 "ya existan."
 
-#: ../../pbx_features/users.rst:177
+#: ../../pbx_features/users.rst:186
 msgid ""
 "You can also configure the user's **hunt groups** from the icon in each "
 "user line of the users list."
@@ -3296,17 +3298,17 @@ msgstr ""
 "En el caso de la pertenencia a **grupos de salto**, también se puede "
 "configurar desde el listado general:"
 
-#: ../../pbx_features/users.rst:185
+#: ../../pbx_features/users.rst:194
 msgid "User Call Forward"
 msgstr "Desvíos de llamada"
 
-#: ../../pbx_features/users.rst:187
+#: ../../pbx_features/users.rst:196
 msgid "The user's call forward can be configured in the following button:"
 msgstr ""
 "Los desvíos de las llamadas de un usuario concreto se configura pulsando "
 "el siguiente botón:"
 
-#: ../../pbx_features/users.rst:194
+#: ../../pbx_features/users.rst:203
 msgid ""
 "For example, to forward all external calls that are not answered after 15"
 " seconds, we could configure a call forward like this:"
@@ -3315,15 +3317,15 @@ msgstr ""
 "buzón de voz que acabamos de configurar, por ejemplo, habría que "
 "configurar un desvío tal que:"
 
-#: ../../pbx_features/users.rst:200
+#: ../../pbx_features/users.rst:209
 msgid "These are the fields and available values:"
 msgstr "Estos son los campos y los posibles valores:"
 
-#: ../../pbx_features/users.rst:203
+#: ../../pbx_features/users.rst:212
 msgid "Call Type"
 msgstr "Tipo de llamada"
 
-#: ../../pbx_features/users.rst:205
+#: ../../pbx_features/users.rst:214
 msgid ""
 "Determines if the forward must be applied to external, internal or any "
 "type of call."
@@ -3331,23 +3333,23 @@ msgstr ""
 "Limita el desvío a cierto tipo de llamadas, a elegir entre externa, "
 "interna o ambas"
 
-#: ../../pbx_features/users.rst:207
+#: ../../pbx_features/users.rst:216
 msgid "Forward type"
 msgstr "Tipo de desvío"
 
-#: ../../pbx_features/users.rst:216
+#: ../../pbx_features/users.rst:225
 msgid "When this forward must be applied:"
 msgstr "Indica cuándo aplica el desvío:"
 
-#: ../../pbx_features/users.rst:210
+#: ../../pbx_features/users.rst:219
 msgid "Inconditional: always"
 msgstr "Incondicional: siempre"
 
-#: ../../pbx_features/users.rst:211
+#: ../../pbx_features/users.rst:220
 msgid "No answer: when the call is not answered in X seconds"
 msgstr "Perdida: cuando no se conteste al de X segundos"
 
-#: ../../pbx_features/users.rst:212
+#: ../../pbx_features/users.rst:221
 msgid ""
 "Busy: When the user is talking to someone (and call waiting is disabled),"
 " when *Do not disturb* is enabled or when the user rejects an incoming "
@@ -3356,7 +3358,7 @@ msgstr ""
 "Ocupado: cuando el usuario esté ocupado (hablando o con el *No molestar* "
 "activo)"
 
-#: ../../pbx_features/users.rst:215
+#: ../../pbx_features/users.rst:224
 msgid ""
 "Not registered: when the user SIP terminal is not registered against "
 "IvozProvider."
@@ -3364,27 +3366,27 @@ msgstr ""
 "No registrado: cuando el usuario tenga su terminal sin conectar con "
 "IvozProvider"
 
-#: ../../pbx_features/users.rst:217
+#: ../../pbx_features/users.rst:226
 msgid "Target type"
 msgstr "Tipo de destino"
 
-#: ../../pbx_features/users.rst:221
+#: ../../pbx_features/users.rst:230
 msgid "What route will use the forwarded call."
 msgstr "Indica a dónde se enviará la llamada cuando el desvío aplique:"
 
-#: ../../pbx_features/users.rst:220
+#: ../../pbx_features/users.rst:229
 msgid "VoiceMail"
 msgstr "Buzón de voz"
 
-#: ../../pbx_features/users.rst:221
+#: ../../pbx_features/users.rst:230
 msgid "Number (external)"
 msgstr "Número (externo)"
 
-#: ../../pbx_features/users.rst:222
+#: ../../pbx_features/users.rst:231
 msgid "Extension (internal)"
 msgstr "Extensión (interna)"
 
-#: ../../pbx_features/users.rst:224
+#: ../../pbx_features/users.rst:233
 msgid ""
 "If we want to forward to other process, we can create an extension routed"
 " to that object and use the target type *Extension*."
@@ -3392,4 +3394,5 @@ msgstr ""
 "Si queremos desviar a un grupo de salto, por ejemplo, bastaría con crear "
 "una extensión que apunte al grupo de salto deseado y seleccionar "
 "*Extensión* en el **Tipo de destino**."
+
 

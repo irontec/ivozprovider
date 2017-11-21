@@ -196,13 +196,13 @@ class UserCallAction extends RouterAction
         }
 
         // Check if boss has whitelisted hosts
-        $exceptionRegexp = $boss->getExceptionBoosAssistantRegExp();
-        if (empty($exceptionRegexp)) {
+        $bossWhiteList = $boss->getBossAssistantWhiteList();
+        if (empty($bossWhiteList)) {
             return 0;
         }
 
         // Check if source matches one of the whitelisted patterns
-        if (preg_match("/$exceptionRegexp/", $source) == 1) {
+        if ($bossWhiteList->numberMatches($source)) {
             $this->agi->verbose("%s in in the exception lists of Boss %s.", $source, $boss->getId());
             return 1;
         }

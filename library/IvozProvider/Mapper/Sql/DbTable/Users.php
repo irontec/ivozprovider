@@ -94,6 +94,11 @@ class Users extends TableAbstract
             'columns' => 'voicemailLocutionId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Locutions',
             'refColumns' => 'id'
+        ),
+        'UsersIbfk16' => array(
+            'columns' => 'bossAssistantWhiteListId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\MatchLists',
+            'refColumns' => 'id'
         )
     );
     protected $_dependentTables = array(
@@ -377,19 +382,19 @@ class Users extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
-	  'exceptionBoosAssistantRegExp' => 
+	  'bossAssistantWhiteListId' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'Users',
-	    'COLUMN_NAME' => 'exceptionBoosAssistantRegExp',
+	    'COLUMN_NAME' => 'bossAssistantWhiteListId',
 	    'COLUMN_POSITION' => 16,
-	    'DATA_TYPE' => 'varchar',
+	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,
-	    'LENGTH' => '255',
+	    'LENGTH' => NULL,
 	    'SCALE' => NULL,
 	    'PRECISION' => NULL,
-	    'UNSIGNED' => NULL,
+	    'UNSIGNED' => true,
 	    'PRIMARY' => false,
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,

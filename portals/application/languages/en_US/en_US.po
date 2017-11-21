@@ -204,6 +204,9 @@ msgstr "Black Lists"
 msgid "Black list reg exp"
 msgstr "Black list reg exp"
 
+msgid "Boss Whitelist"
+msgstr "Boss Whitelist"
+
 msgid "Boss-Assistant"
 msgstr "Boss-Assistant"
 
@@ -235,6 +238,9 @@ msgid "Brand service"
 msgid_plural "Brand services"
 msgstr[0] "Brand service"
 msgstr[1] "Brand services"
+
+msgid "Brands with retail feature must have a SIP domain"
+msgstr "Brands with retail feature must have a SIP domain"
 
 msgid "Busy"
 msgstr "Busy"
@@ -503,11 +509,11 @@ msgstr "Disk usage"
 msgid "Disk usage notification email"
 msgstr "Disk usage notification email"
 
-msgid "Dispatch to any AS"
-msgstr "Dispatch to any AS"
-
 msgid "Display name"
 msgstr "Display name"
+
+msgid "Distribute method"
+msgstr "Distribute method"
 
 msgid "Diversion"
 msgstr "Diversion"
@@ -638,9 +644,6 @@ msgstr "Event date"
 
 msgid "Exact URL that will be accessed."
 msgstr "Exact URL that will be accessed."
-
-msgid "Exception boos assistant reg exp"
-msgstr "Exception boss Regular expression"
 
 msgid "Exec"
 msgstr "Exec"
@@ -839,6 +842,9 @@ msgstr "Group belonging"
 
 msgid "Gw name"
 msgstr "Gw name"
+
+msgid "Hash based"
+msgstr "Hash based"
 
 msgid "Help"
 msgstr "Help"
@@ -1445,6 +1451,9 @@ msgstr "Origin"
 msgid "Original caller"
 msgstr "Original caller"
 
+msgid "Origins matching this list will call directly to the user."
+msgstr "Origins matching this list will call directly to the user"
+
 msgid "Out"
 msgstr "Out"
 
@@ -1990,8 +1999,14 @@ msgstr "Stat"
 msgid "Stat type"
 msgstr "Stat type"
 
+msgid "Static"
+msgstr "Static"
+
 msgid "Status"
 msgstr "Status"
+
+msgid "Status information"
+msgstr "Status information"
 
 msgid "Strategy"
 msgstr "Strategy"

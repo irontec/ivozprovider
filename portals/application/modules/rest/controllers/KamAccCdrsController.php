@@ -352,8 +352,8 @@ class Rest_KamAccCdrsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="proxy", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="start_time_utc", nullable=false, type="timestamp", sample="", description="")
      * @ApiParams(name="end_time_utc", nullable=false, type="timestamp", sample="", description="")
-     * @ApiParams(name="start_time", nullable=false, type="datetime", sample="", description="")
-     * @ApiParams(name="end_time", nullable=false, type="datetime", sample="", description="")
+     * @ApiParams(name="start_time", nullable=false, type="timestamp", sample="", description="")
+     * @ApiParams(name="end_time", nullable=false, type="timestamp", sample="", description="")
      * @ApiParams(name="duration", nullable=false, type="float", sample="", description="")
      * @ApiParams(name="caller", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="callee", nullable=true, type="varchar", sample="", description="")
@@ -420,8 +420,8 @@ class Rest_KamAccCdrsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="proxy", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="start_time_utc", nullable=false, type="timestamp", sample="", description="")
      * @ApiParams(name="end_time_utc", nullable=false, type="timestamp", sample="", description="")
-     * @ApiParams(name="start_time", nullable=false, type="datetime", sample="", description="")
-     * @ApiParams(name="end_time", nullable=false, type="datetime", sample="", description="")
+     * @ApiParams(name="start_time", nullable=false, type="timestamp", sample="", description="")
+     * @ApiParams(name="end_time", nullable=false, type="timestamp", sample="", description="")
      * @ApiParams(name="duration", nullable=false, type="float", sample="", description="")
      * @ApiParams(name="caller", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="callee", nullable=true, type="varchar", sample="", description="")
@@ -560,12 +560,12 @@ class Rest_KamAccCdrsController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'start_time' => array(
-                    'type' => "datetime",
+                    'type' => "timestamp",
                     'required' => true,
                     'comment' => '',
                 ),
                 'end_time' => array(
-                    'type' => "datetime",
+                    'type' => "timestamp",
                     'required' => true,
                     'comment' => '',
                 ),
@@ -736,12 +736,12 @@ class Rest_KamAccCdrsController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'start_time' => array(
-                    'type' => "datetime",
+                    'type' => "timestamp",
                     'required' => true,
                     'comment' => '',
                 ),
                 'end_time' => array(
-                    'type' => "datetime",
+                    'type' => "timestamp",
                     'required' => true,
                     'comment' => '',
                 ),

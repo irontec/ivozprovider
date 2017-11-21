@@ -178,6 +178,7 @@ production:
     bossAssistantId:
       title: _('Assistant')
       type: select
+      required: true
       source:
         data: mapper
         config:
@@ -190,11 +191,26 @@ production:
             template: '%name% %lastname%'
           order: name
         'null': _("Unassigned")
-    exceptionBoosAssistantRegExp:
-      title: _('Exception boos assistant reg exp')
-      type: text
-      trim: both
-      maxLength: 255
+    bossAssistantWhiteListId:
+      title: _('Boss Whitelist')
+      type: select
+      source:
+        data: mapper
+        config:
+          mapperName: \IvozProvider\Mapper\Sql\MatchLists
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order: name
+        'null': _("Unassigned")
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Origins matching this list will call directly to the user.")
+        label: _("Need help?")
     username:
       title: _('Username')
       type: text

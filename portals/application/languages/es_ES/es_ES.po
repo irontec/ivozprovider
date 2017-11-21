@@ -209,6 +209,9 @@ msgstr "Listas negras"
 msgid "Black list reg exp"
 msgstr "Expresión regular lista negra"
 
+msgid "Boss Whitelist"
+msgstr "Lista blanca Jefe"
+
 msgid "Boss-Assistant"
 msgstr "Jefe-Asistente"
 
@@ -240,6 +243,9 @@ msgid "Brand service"
 msgid_plural "Brand services"
 msgstr[0] "Servicio de marca"
 msgstr[1] "Servicios de marca"
+
+msgid "Brands with retail feature must have a SIP domain"
+msgstr "Marcas con retail habilitado requieren dominio SIP"
 
 msgid "Busy"
 msgstr "Ocupado"
@@ -514,11 +520,11 @@ msgstr "Uso de disco"
 msgid "Disk usage notification email"
 msgstr "Notificaciones de uso de disco"
 
-msgid "Dispatch to any AS"
-msgstr "Enrutar a cualquier AS"
-
 msgid "Display name"
 msgstr "Texto en pantalla"
+
+msgid "Distribute method"
+msgstr "Método de distribución"
 
 msgid "Diversion"
 msgstr "Enviar Diversion"
@@ -652,9 +658,6 @@ msgstr "Fecha evento"
 
 msgid "Exact URL that will be accessed."
 msgstr "URL exacta con la que se accederá."
-
-msgid "Exception boos assistant reg exp"
-msgstr "Whitelist jefe/asistente"
 
 msgid "Exec"
 msgstr "Ejecutar"
@@ -856,6 +859,9 @@ msgstr "Pertenencia a grupos"
 
 msgid "Gw name"
 msgstr "Nombre"
+
+msgid "Hash based"
+msgstr "Precalculado"
 
 msgid "Help"
 msgstr "Ayuda"
@@ -1463,6 +1469,9 @@ msgstr "Origen"
 msgid "Original caller"
 msgstr "Llamante original"
 
+msgid "Origins matching this list will call directly to the user."
+msgstr "Los orígenes que coincidan en la lista llamarán al usuario directamente."
+
 msgid "Out"
 msgstr "Salida"
 
@@ -2012,8 +2021,14 @@ msgstr "Entrada"
 msgid "Stat type"
 msgstr "Tipo entrada"
 
+msgid "Static"
+msgstr "Estática"
+
 msgid "Status"
 msgstr "Estado"
+
+msgid "Status information"
+msgstr "Información de estado"
 
 msgid "Strategy"
 msgstr "Estrategia"
