@@ -35,7 +35,7 @@ class IvozProvider_Klear_Filter_Terminals extends IvozProvider_Klear_Filter_Comp
         // Remove from the list all used terminals and the currently assigned to the user
         $terminalIds = [];
         foreach ($companyUsers as $companyUser) {
-            if ($companyUser->getId() != $pk) {
+            if ($companyUser->getId() != $pk && $companyUser->getTerminalId()) {
                 $terminalIds[] = $companyUser->getTerminalId();
             }
         }
