@@ -2,6 +2,9 @@
 
 #DEBHELPER#
 
+# Fix GenericMusicOnHold FSO. REMOVE THIS AFTER 2.1.0
+/bin/bash /opt/irontec/ivozprovider/scripts/FSOBrandMusicOnHold.sh
+
 # Source debconf library.
 . /usr/share/debconf/confmodule
 
