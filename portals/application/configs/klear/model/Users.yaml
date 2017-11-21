@@ -169,11 +169,11 @@ production:
             title: _("No")
             visualFilter:
               show: []
-              hide: ["bossAssistantId", "exceptionBoosAssistantRegExp"]
+              hide: ["bossAssistantId", "bossAssistantWhiteListId"]
           '1':
             title: _("Yes")
             visualFilter:
-              show: ["bossAssistantId", "exceptionBoosAssistantRegExp"]
+              show: ["bossAssistantId", "bossAssistantWhiteListId"]
               hide: []
     bossAssistantId:
       title: _('Assistant')
