@@ -18,6 +18,7 @@ scenarios:
           - waitfor: INCOMING
           - busy
           - waitfor: DISCONNCTD
+          - unregister
       - charlie:
           - register:
               <<: *charlie_cred
@@ -26,3 +27,4 @@ scenarios:
           - wait
           - answer
           - waitfor: DISCONNCTD
+          - unregister

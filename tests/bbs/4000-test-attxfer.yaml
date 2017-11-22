@@ -34,6 +34,7 @@ scenarios:
           - waitfor: TRANSFER_ACCEPTED
           - waitfor: TRANSFER_OK
           - waitfor: { call: TO_CHARLIE, name: DISCONNCTD }
+          - unregister
 
       # Charlie: Answer the call from Bob
       - callee_charlie:
@@ -45,3 +46,4 @@ scenarios:
           - wait: 10
           - hangup
           - waitfor: DISCONNCTD
+          - unregister

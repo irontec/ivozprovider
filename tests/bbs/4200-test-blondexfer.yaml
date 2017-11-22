@@ -33,6 +33,7 @@ scenarios:
             - wait
             - hangup
             - waitfor: DISCONNCTD
+            - unregister
 
         # Charlie: Answer the call from Bob
         - charlie:
@@ -46,4 +47,5 @@ scenarios:
             - wait: 5   # Conversation time with Alice
             - hangup
             - waitfor: DISCONNCTD
+            - unregister
 

@@ -23,6 +23,7 @@ scenarios:
           - waitfor: TRANSFER_OK
           - hangup
           - waitfor: DISCONNCTD
+          - unregister
 
       - callee_charlie:
           - register:
@@ -33,3 +34,4 @@ scenarios:
           - wait: 6
           - hangup
           - waitfor: DISCONNCTD
+          - unregister

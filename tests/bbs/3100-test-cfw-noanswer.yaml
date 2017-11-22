@@ -18,6 +18,7 @@ scenarios:
           - waitfor: INCOMING
           - ringing
           - waitfor: DISCONNCTD
+          - unregister
       - bob:
           - register:
               <<: *bob_cred
@@ -26,4 +27,5 @@ scenarios:
           - wait
           - answer
           - waitfor: DISCONNCTD
+          - unregister
 

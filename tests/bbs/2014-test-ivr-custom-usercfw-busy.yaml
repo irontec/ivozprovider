@@ -20,6 +20,7 @@ scenarios:
           - wait
           - busy
           - waitfor: DISCONNCTD
+          - unregister
       - charlie:
           - register:
               <<: *charlie_cred
@@ -30,4 +31,5 @@ scenarios:
           - wait: 5
           - hangup
           - waitfor: DISCONNCTD
+          - unregister
 

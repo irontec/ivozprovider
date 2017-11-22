@@ -20,3 +20,4 @@ scenarios:
           - wait: 5
           - hangup
           - waitfor: DISCONNCTD
+          - unregister

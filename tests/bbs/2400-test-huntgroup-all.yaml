@@ -17,12 +17,14 @@ scenarios:
           - waitfor: INCOMING
           - ringing
           - waitfor: DISCONNCTD
+          - unregister
       - charlie:
           - register:
               <<: *charlie_cred
           - waitfor: INCOMING
           - ringing
           - waitfor: DISCONNCTD
+          - unregister
       - dave:
           - register:
               <<: *dave_cred
@@ -33,3 +35,4 @@ scenarios:
           - wait: 3
           - hangup
           - waitfor: DISCONNCTD
+          - unregister

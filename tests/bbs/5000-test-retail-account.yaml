@@ -27,4 +27,5 @@ scenarios:
           - wait
           - hangup
           - waitfor: DISCONNCTD
+          - unregister
 

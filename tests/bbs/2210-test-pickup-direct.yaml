@@ -19,6 +19,7 @@ scenarios:
           - waitfor: INCOMING
           - ringing
           - waitfor: DISCONNCTD
+          - unregister
       - charlie:
           - wait: 5
           - call:
