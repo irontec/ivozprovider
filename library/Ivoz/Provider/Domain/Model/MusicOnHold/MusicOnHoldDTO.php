@@ -60,7 +60,17 @@ class MusicOnHoldDTO implements DataTransferObjectInterface
     /**
      * @var mixed
      */
+    private $brandId;
+
+    /**
+     * @var mixed
+     */
     private $companyId;
+
+    /**
+     * @var mixed
+     */
+    private $brand;
 
     /**
      * @var mixed
@@ -82,6 +92,7 @@ class MusicOnHoldDTO implements DataTransferObjectInterface
             'encodedFileFileSize' => $this->getEncodedFileFileSize(),
             'encodedFileMimeType' => $this->getEncodedFileMimeType(),
             'encodedFileBaseName' => $this->getEncodedFileBaseName(),
+            'brandId' => $this->getBrandId(),
             'companyId' => $this->getCompanyId()
         ];
     }
@@ -91,6 +102,7 @@ class MusicOnHoldDTO implements DataTransferObjectInterface
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
+        $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
         $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
     }
 
@@ -280,6 +292,34 @@ class MusicOnHoldDTO implements DataTransferObjectInterface
     public function getEncodedFileBaseName()
     {
         return $this->encodedFileBaseName;
+    }
+
+    /**
+     * @param integer $brandId
+     *
+     * @return MusicOnHoldDTO
+     */
+    public function setBrandId($brandId)
+    {
+        $this->brandId = $brandId;
+
+        return $this;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getBrandId()
+    {
+        return $this->brandId;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Brand\Brand
+     */
+    public function getBrand()
+    {
+        return $this->brand;
     }
 
     /**

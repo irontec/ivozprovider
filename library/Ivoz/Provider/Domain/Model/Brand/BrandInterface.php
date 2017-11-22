@@ -403,35 +403,35 @@ interface BrandInterface extends LoggableEntityInterface
     public function getRetailAccounts(\Doctrine\Common\Collections\Criteria $criteria = null);
 
     /**
-     * Add genericMusicsOnHold
+     * Add musicsOnHold
      *
-     * @param \Ivoz\Provider\Domain\Model\GenericMusicOnHold\GenericMusicOnHoldInterface $genericMusicsOnHold
+     * @param \Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface $musicsOnHold
      *
      * @return BrandTrait
      */
-    public function addGenericMusicsOnHold(\Ivoz\Provider\Domain\Model\GenericMusicOnHold\GenericMusicOnHoldInterface $genericMusicsOnHold);
+    public function addMusicsOnHold(\Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface $musicsOnHold);
 
     /**
-     * Remove genericMusicsOnHold
+     * Remove musicsOnHold
      *
-     * @param \Ivoz\Provider\Domain\Model\GenericMusicOnHold\GenericMusicOnHoldInterface $genericMusicsOnHold
+     * @param \Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface $musicsOnHold
      */
-    public function removeGenericMusicsOnHold(\Ivoz\Provider\Domain\Model\GenericMusicOnHold\GenericMusicOnHoldInterface $genericMusicsOnHold);
+    public function removeMusicsOnHold(\Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface $musicsOnHold);
 
     /**
-     * Replace genericMusicsOnHold
+     * Replace musicsOnHold
      *
-     * @param \Ivoz\Provider\Domain\Model\GenericMusicOnHold\GenericMusicOnHoldInterface[] $genericMusicsOnHold
+     * @param \Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface[] $musicsOnHold
      * @return self
      */
-    public function replaceGenericMusicsOnHold(Collection $genericMusicsOnHold);
+    public function replaceMusicsOnHold(Collection $musicsOnHold);
 
     /**
-     * Get genericMusicsOnHold
+     * Get musicsOnHold
      *
      * @return array
      */
-    public function getGenericMusicsOnHold(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getMusicsOnHold(\Doctrine\Common\Collections\Criteria $criteria = null);
 
     /**
      * Add genericCallAclPattern

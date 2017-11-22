@@ -33,6 +33,11 @@ abstract class MusicOnHoldAbstract
     protected $encodedFile;
 
     /**
+     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     */
+    protected $brand;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
      */
     protected $company;
@@ -165,6 +170,7 @@ abstract class MusicOnHoldAbstract
 
         return $self
             ->setStatus($dto->getStatus())
+            ->setBrand($dto->getBrand())
             ->setCompany($dto->getCompany())
         ;
     }
@@ -197,6 +203,7 @@ abstract class MusicOnHoldAbstract
             ->setStatus($dto->getStatus())
             ->setOriginalFile($originalFile)
             ->setEncodedFile($encodedFile)
+            ->setBrand($dto->getBrand())
             ->setCompany($dto->getCompany());
 
 
@@ -217,6 +224,7 @@ abstract class MusicOnHoldAbstract
             ->setEncodedFileFileSize($this->getEncodedFile()->getFileSize())
             ->setEncodedFileMimeType($this->getEncodedFile()->getMimeType())
             ->setEncodedFileBaseName($this->getEncodedFile()->getBaseName())
+            ->setBrandId($this->getBrand() ? $this->getBrand()->getId() : null)
             ->setCompanyId($this->getCompany() ? $this->getCompany()->getId() : null);
     }
 
@@ -234,6 +242,7 @@ abstract class MusicOnHoldAbstract
             'encodedFileFileSize' => self::getEncodedFile()->getFileSize(),
             'encodedFileMimeType' => self::getEncodedFile()->getMimeType(),
             'encodedFileBaseName' => self::getEncodedFile()->getBaseName(),
+            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null
         ];
     }
@@ -300,6 +309,30 @@ abstract class MusicOnHoldAbstract
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * Set brand
+     *
+     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
+     *
+     * @return self
+     */
+    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null)
+    {
+        $this->brand = $brand;
+
+        return $this;
+    }
+
+    /**
+     * Get brand
+     *
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     */
+    public function getBrand()
+    {
+        return $this->brand;
     }
 
     /**

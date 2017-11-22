@@ -44,7 +44,13 @@ class MusicOnHold extends MusicOnHoldAbstract implements MusicOnHoldInterface, F
      */
     public function getOwner()
     {
-        return 'company' . $this->getCompany()->getId();
+        if ($this->getBrand()) {
+            return 'brand' . $this->getBrand()->getId();
+        }
+
+        if ($this->getCompany()) {
+            return 'company' . $this->getCompany()->getId();
+        }
     }
 }
 

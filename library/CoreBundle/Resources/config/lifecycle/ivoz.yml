@@ -12,7 +12,6 @@ imports:
   - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/fax.yml" }
   - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/faxes_in_out.yml" }
   - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/friend.yml" }
-  - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/generic_music_on_hold.yml" }
   - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/hunt_group.yml" }
   - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/invoice.yml" }
   - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/invoice_template.yml" }

@@ -69,27 +69,6 @@ services:
       $basePath: 'ivozprovider_model_faxesinout.file'
 
   ##########################################
-  ## GenericMusicOnHold
-  ##########################################
-  Service\StoragePathResolverCollection::GenericMusicOnHold:
-     class: Ivoz\Core\Application\Service\StoragePathResolverCollection
-     calls:
-      - [addPathResolver, ['originalFile', '@GenericMusicOnHold\StoragePathResolver::GenericMusicOnHoldOriginalFile']]
-      - [addPathResolver, ['encodedFile', '@GenericMusicOnHold\StoragePathResolver::GenericMusicOnHoldEncodedFile']]
-
-  GenericMusicOnHold\StoragePathResolver::GenericMusicOnHoldOriginalFile:
-    class: Ivoz\Provider\Application\Service\GenericMusicOnHold\StoragePathResolver
-    arguments:
-      $localStoragePath: '%local_storage_path%'
-      $basePath: 'ivozprovider_model_genericmusiconhold.originalfile'
-
-  GenericMusicOnHold\StoragePathResolver::GenericMusicOnHoldEncodedFile:
-    class: Ivoz\Provider\Application\Service\GenericMusicOnHold\StoragePathResolver
-    arguments:
-      $localStoragePath: '%local_storage_path%'
-      $basePath: 'ivozprovider_model_genericmusiconhold.encodedfile'
-
-  ##########################################
   ## Invoice
   ##########################################
   Service\StoragePathResolverCollection::Invoice:
@@ -109,17 +88,17 @@ services:
   Service\StoragePathResolverCollection::MusicOnHold:
      class: Ivoz\Core\Application\Service\StoragePathResolverCollection
      calls:
-      - [addPathResolver, ['OriginalFile', '@GenericMusicOnHold\StoragePathResolver::MusicOnHoldOriginalFile']]
-      - [addPathResolver, ['EncodedFile', '@GenericMusicOnHold\StoragePathResolver::MusicOnHoldEncodedFile']]
+      - [addPathResolver, ['OriginalFile', '@MusicOnHold\StoragePathResolver::MusicOnHoldOriginalFile']]
+      - [addPathResolver, ['EncodedFile', '@MusicOnHold\StoragePathResolver::MusicOnHoldEncodedFile']]
 
-  GenericMusicOnHold\StoragePathResolver::MusicOnHoldOriginalFile:
-    class: Ivoz\Provider\Application\Service\GenericMusicOnHold\StoragePathResolver
+  MusicOnHold\StoragePathResolver::MusicOnHoldOriginalFile:
+    class: Ivoz\Provider\Application\Service\MusicOnHold\StoragePathResolver
     arguments:
       $localStoragePath: '%local_storage_path%'
       $basePath: 'ivozprovider_model_musiconhold.originalfile'
 
-  GenericMusicOnHold\StoragePathResolver::MusicOnHoldEncodedFile:
-    class: Ivoz\Provider\Application\Service\GenericMusicOnHold\StoragePathResolver
+  MusicOnHold\StoragePathResolver::MusicOnHoldEncodedFile:
+    class: Ivoz\Provider\Application\Service\MusicOnHold\StoragePathResolver
     arguments:
       $localStoragePath: '%local_storage_path%'
       $basePath: 'ivozprovider_model_musiconhold.encodedfile'

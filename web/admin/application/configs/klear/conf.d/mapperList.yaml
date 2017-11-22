@@ -199,11 +199,6 @@ mappers:
         modelFile: GenericCallAclPatterns,
         entity: 'Ivoz\\Provider\\Domain\\Model\\GenericCallAclPatterns\\GenericCallAclPatterns'
     }
-  - &GenericMusicOnHold {
-        mapper: \IvozProvider\Mapper\Sql\GenericMusicOnHold,
-        modelFile: GenericMusicOnHold,
-        entity: 'Ivoz\\Provider\\Domain\\Model\\GenericMusicOnHold\\GenericMusicOnHold'
-    }
   - &HolidayDates {
         mapper: \IvozProvider\Mapper\Sql\HolidayDates,
         modelFile: HolidayDates,

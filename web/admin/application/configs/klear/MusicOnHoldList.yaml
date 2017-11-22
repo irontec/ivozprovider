@@ -15,6 +15,7 @@ production:
       title: _("List of %s %2s", ngettext('Music on Hold', 'Musics on Hold', 0), "[format| (%parent%)]")
       forcedValues:
         <<: *forcedCompany
+        "self::brand": null
       fields:
         options:
           title: _("Options")
@@ -35,6 +36,7 @@ production:
           musicOnHoldNew_screen: true
         dialogs:
           musicOnHoldDel_dialog: true
+
     musicOnHoldNew_screen: &musicOnHoldNew_screenLink
       <<: *MusicOnHold
       controller: new
@@ -45,6 +47,7 @@ production:
       shortcutOption: N
       forcedValues:
         <<: *forcedCompany
+        "self::brand": null
       fields:
         order:
           <<: *musicOnHold_orderLink
@@ -71,6 +74,7 @@ production:
       title: _("Edit %s %2s", ngettext('Music on Hold', 'Musics on Hold', 1), "[format| (%item%)]")
       forcedValues:
         <<: *forcedCompany
+        "self::brand": null
       fields:
         order:
           <<: *musicOnHold_orderLink
@@ -78,6 +82,7 @@ production:
           status: true
       fixedPositions:
         <<: *musicOnHold_fixedPosLink
+
   dialogs: &musicOnHold_dialogsLink
     musicOnHoldDel_dialog: &musicOnHoldDel_dialogLink
       <<: *MusicOnHold
@@ -89,6 +94,7 @@ production:
       message: _("%s successfully deleted.", ngettext('Music on Hold', 'Musics on Hold', 1))
       multiItem: 1
       labelOnList: 1
+
   commands: &musicOnHold_commandsLink
     musicOnHold_FileDownload_command:
       <<: *MusicOnHold
