@@ -1,0 +1,35 @@
+# ----------------------------------------------------------------------------
+scenarios:
+  - name: Register and unregister
+    timeout: 20
+    sessions:
+      - alice:
+          - register:
+              <<: *alice_cred
+          - wait
+          - unregister
+      - bob:
+          - register:
+              <<: *bob_cred
+          - wait
+          - unregister
+      - charlie:
+          - register:
+              <<: *charlie_cred
+          - wait
+          - unregister
+      - dave:
+          - register:
+              <<: *dave_cred
+          - wait
+          - unregister
+      - eve:
+          - register:
+              <<: *eve_cred
+          - wait
+          - unregister
+      - friend:
+          - register:
+              <<: *friend_cred
+          - wait
+          - unregister
