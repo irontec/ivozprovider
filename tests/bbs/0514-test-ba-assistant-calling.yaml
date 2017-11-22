@@ -1,0 +1,20 @@
+# ----------------------------------------------------------------------------
+scenarios:
+  - name: call from dave (frank's assistant) to frank
+    timeout: 10
+    sessions:
+      - dave:
+          - call:
+              dest: 1006
+              credentials:
+                <<: *dave_cred
+          - waitfor: CONFIRMED
+          - waitfor: DISCONNCTD
+      - frank:
+          - register:
+              <<: *frank_cred
+          - waitfor: INCOMING
+          - answer
+          - wait
+          - hangup
+          - unregister

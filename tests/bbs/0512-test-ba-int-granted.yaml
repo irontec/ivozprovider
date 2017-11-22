@@ -1,0 +1,20 @@
+# ----------------------------------------------------------------------------
+scenarios:
+  - name: internal call from alice to frank (exception in boss-assistant feature)
+    timeout: 10
+    sessions:
+      - alice:
+          - call:
+              dest: 1006
+              credentials:
+                <<: *alice_cred
+          - waitfor: CONFIRMED
+          - waitfor: DISCONNCTD
+      - frank:
+          - register:
+              <<: *frank_cred
+          - waitfor: INCOMING
+          - answer
+          - wait
+          - hangup
+          - unregister

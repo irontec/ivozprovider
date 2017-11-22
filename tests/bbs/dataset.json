@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "IvozProvider - BBS Dataset",
-		"_postman_id": "7ab9ba82-ab4f-069c-9ae9-d83dbad7cad1",
+		"_postman_id": "6d9b8f63-dcd1-30f2-8ae7-d5ef88f35ddb",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -3363,6 +3363,500 @@
 									"key": "userId",
 									"type": "text",
 									"value": "{{eveUserId}}"
+								},
+								{
+									"description": "",
+									"key": "peeringContractId",
+									"type": "text",
+									"value": "{{peeringContractId}}"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Boss/Assistant MatchList",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"tests[\"Object id is valid\"] = id !== 0;",
+									"postman.setGlobalVariable(\"bossAssistantWatchListId\", id);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/match-lists/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "companyId",
+									"type": "text",
+									"value": "{{companyId}}"
+								},
+								{
+									"description": "",
+									"key": "name",
+									"type": "text",
+									"value": "White List for Boss Frank"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Boss/Assistant MatchList Pattern Ext",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"tests[\"Object id is valid\"] = id !== 0;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/match-list-patterns/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "matchListId",
+									"type": "text",
+									"value": "{{bossAssistantWatchListId}}"
+								},
+								{
+									"description": "",
+									"key": "description",
+									"type": "text",
+									"value": "Alice DDI Number"
+								},
+								{
+									"description": "",
+									"key": "type",
+									"type": "text",
+									"value": "number"
+								},
+								{
+									"description": "",
+									"key": "numberCountryId",
+									"type": "text",
+									"value": "70"
+								},
+								{
+									"key": "numberValue",
+									"value": "999661001",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Boss/Assistant MatchList Pattern Int",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"tests[\"Object id is valid\"] = id !== 0;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/match-list-patterns/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "matchListId",
+									"type": "text",
+									"value": "{{bossAssistantWatchListId}}"
+								},
+								{
+									"description": "",
+									"key": "description",
+									"type": "text",
+									"value": "Alice Extension Number"
+								},
+								{
+									"description": "",
+									"key": "type",
+									"type": "text",
+									"value": "regexp"
+								},
+								{
+									"description": "",
+									"key": "regExp",
+									"type": "text",
+									"value": "^1001$"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Frank Terminal",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"tests[\"Object id is valid\"] = id !== 0;",
+									"postman.setGlobalVariable(\"frankTerminalId\", id);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/terminals/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "companyId",
+									"type": "text",
+									"value": "{{companyId}}"
+								},
+								{
+									"key": "terminalModelId",
+									"type": "text",
+									"value": "5"
+								},
+								{
+									"key": "name",
+									"type": "text",
+									"value": "frank"
+								},
+								{
+									"key": "password",
+									"type": "text",
+									"value": "fr4nkp4ssw0rd"
+								},
+								{
+									"key": "direct_media_method",
+									"type": "text",
+									"value": "invite"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Frank User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"tests[\"Object id is valid\"] = id !== 0;",
+									"postman.setGlobalVariable(\"frankUserId\", id);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/users/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "companyId",
+									"type": "text",
+									"value": "{{companyId}}"
+								},
+								{
+									"key": "name",
+									"type": "text",
+									"value": "Frank"
+								},
+								{
+									"key": "lastname",
+									"type": "text",
+									"value": "Frankson"
+								},
+								{
+									"key": "email",
+									"type": "text",
+									"value": "frank@bbs.ivozprovider.local"
+								},
+								{
+									"key": "username",
+									"type": "text",
+									"value": "eve"
+								},
+								{
+									"key": "pass",
+									"type": "text",
+									"value": "fr4nkp4ssw0rd"
+								},
+								{
+									"key": "timezoneId",
+									"type": "text",
+									"value": "1"
+								},
+								{
+									"key": "terminalId",
+									"type": "text",
+									"value": "{{frankTerminalId}}"
+								},
+								{
+									"key": "countryId",
+									"type": "text",
+									"value": "235"
+								},
+								{
+									"key": "area_code",
+									"type": "text",
+									"value": "999"
+								},
+								{
+									"description": "",
+									"key": "isBoss",
+									"type": "text",
+									"value": "1"
+								},
+								{
+									"description": "",
+									"key": "bossAssistantId",
+									"type": "text",
+									"value": "{{daveUserId}}"
+								},
+								{
+									"key": "bossAssistantWhiteListId",
+									"value": "{{bossAssistantWatchListId}}",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Frank Extension",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"tests[\"Object id is valid\"] = id !== 0;",
+									"postman.setGlobalVariable(\"frankExtensionId\", id);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/extensions/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "companyId",
+									"type": "text",
+									"value": "{{companyId}}"
+								},
+								{
+									"key": "routeType",
+									"type": "text",
+									"value": "user"
+								},
+								{
+									"key": "number",
+									"type": "text",
+									"value": "1006"
+								},
+								{
+									"key": "userId",
+									"type": "text",
+									"value": "{{frankUserId}}"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Frank DDI",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"if (Location !== null) {",
+									"    var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"    tests[\"Object id is valid\"] = id !== 0;",
+									"    ",
+									"    // Store ID for further requests",
+									"    postman.setGlobalVariable(\"frankDDIId\", id);",
+									"}",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "{{api_url}}/d-d-is/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "brandId",
+									"type": "text",
+									"value": "{{brandId}}"
+								},
+								{
+									"key": "companyId",
+									"type": "text",
+									"value": "{{companyId}}"
+								},
+								{
+									"key": "countryId",
+									"type": "text",
+									"value": "70"
+								},
+								{
+									"key": "DDI",
+									"type": "text",
+									"value": "999661006"
+								},
+								{
+									"key": "routeType",
+									"type": "text",
+									"value": "user"
+								},
+								{
+									"key": "userId",
+									"type": "text",
+									"value": "{{frankUserId}}"
 								},
 								{
 									"description": "",

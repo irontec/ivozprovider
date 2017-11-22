@@ -1,0 +1,20 @@
+# ----------------------------------------------------------------------------
+scenarios:
+  - name: internal call from eve to frank transfered to his assistant dave
+    timeout: 10
+    sessions:
+      - eve:
+          - call:
+              dest: 1006
+              credentials:
+                <<: *eve_cred
+          - waitfor: CONFIRMED
+          - waitfor: DISCONNCTD
+      - dave:
+          - register:
+              <<: *dave_cred
+          - waitfor: INCOMING
+          - answer
+          - wait
+          - hangup
+          - unregister

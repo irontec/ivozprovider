@@ -3,12 +3,10 @@ users:
         username: alice
         password: 4l1c3p4ssw0rd
         domain: bbs.ivozprovider.local
-
   - bob: &bob_cred
         username: bob
         password: b0bp4ssw0rd
         domain: bbs.ivozprovider.local
-
   - charlie: &charlie_cred
         username: charlie
         password: ch4rl13p4ssw0rd
@@ -17,17 +15,18 @@ users:
         username: dave
         password: d4v3p4ssw0rd
         domain: bbs.ivozprovider.local
-
   - eve: &eve_cred
         username: eve
         password: 3v3p4ssw0rd
         domain: bbs.ivozprovider.local
-
+  - frank: &frank_cred
+        username: frank
+        password: fr4nkp4ssw0rd
+        domain: bbs.ivozprovider.local
   - friend: &friend_cred
         username: friend
         password: fr13ndp4ssw0rd
         domain: bbs.ivozprovider.local
-
   - retail: &retail_cred
         username: "20000"
         password: r3t41lp4ssw0rd

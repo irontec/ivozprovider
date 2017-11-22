@@ -1,0 +1,20 @@
+# ----------------------------------------------------------------------------
+scenarios:
+  - name: external call from eve to frank transfered to his assistant dave
+    timeout: 10
+    sessions:
+      - eve_external:
+          - wait
+          - call:
+              dest: "sip:999661006@trunks.ivozprovider.local"
+              caller: 999661004
+          - waitfor: CONFIRMED
+          - waitfor: DISCONNCTD
+      - dave:
+          - register:
+              <<: *dave_cred
+          - waitfor: INCOMING
+          - answer
+          - wait
+          - hangup
+          - unregister
