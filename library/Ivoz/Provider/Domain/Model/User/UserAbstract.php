@@ -43,11 +43,6 @@ abstract class UserAbstract
     protected $isBoss = '0';
 
     /**
-     * @var string
-     */
-    protected $exceptionBoosAssistantRegExp;
-
-    /**
      * @var boolean
      */
     protected $active = '0';
@@ -59,7 +54,7 @@ abstract class UserAbstract
 
     /**
      * @comment enum:0|1|2|3
-     * @var boolean
+     * @var string
      */
     protected $externalIpCalls = '0';
 
@@ -102,6 +97,11 @@ abstract class UserAbstract
      * @var \Ivoz\Provider\Domain\Model\User\UserInterface
      */
     protected $bossAssistant;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface
+     */
+    protected $bossAssistantWhiteList;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface
@@ -283,11 +283,11 @@ abstract class UserAbstract
         return $self
             ->setEmail($dto->getEmail())
             ->setPass($dto->getPass())
-            ->setExceptionBoosAssistantRegExp($dto->getExceptionBoosAssistantRegExp())
             ->setTokenKey($dto->getTokenKey())
             ->setCompany($dto->getCompany())
             ->setCallAcl($dto->getCallAcl())
             ->setBossAssistant($dto->getBossAssistant())
+            ->setBossAssistantWhiteList($dto->getBossAssistantWhiteList())
             ->setTransformationRuleSet($dto->getTransformationRuleSet())
             ->setLanguage($dto->getLanguage())
             ->setTerminal($dto->getTerminal())
@@ -317,7 +317,6 @@ abstract class UserAbstract
             ->setPass($dto->getPass())
             ->setDoNotDisturb($dto->getDoNotDisturb())
             ->setIsBoss($dto->getIsBoss())
-            ->setExceptionBoosAssistantRegExp($dto->getExceptionBoosAssistantRegExp())
             ->setActive($dto->getActive())
             ->setMaxCalls($dto->getMaxCalls())
             ->setExternalIpCalls($dto->getExternalIpCalls())
@@ -329,6 +328,7 @@ abstract class UserAbstract
             ->setCompany($dto->getCompany())
             ->setCallAcl($dto->getCallAcl())
             ->setBossAssistant($dto->getBossAssistant())
+            ->setBossAssistantWhiteList($dto->getBossAssistantWhiteList())
             ->setTransformationRuleSet($dto->getTransformationRuleSet())
             ->setLanguage($dto->getLanguage())
             ->setTerminal($dto->getTerminal())
@@ -354,7 +354,6 @@ abstract class UserAbstract
             ->setPass($this->getPass())
             ->setDoNotDisturb($this->getDoNotDisturb())
             ->setIsBoss($this->getIsBoss())
-            ->setExceptionBoosAssistantRegExp($this->getExceptionBoosAssistantRegExp())
             ->setActive($this->getActive())
             ->setMaxCalls($this->getMaxCalls())
             ->setExternalIpCalls($this->getExternalIpCalls())
@@ -366,6 +365,7 @@ abstract class UserAbstract
             ->setCompanyId($this->getCompany() ? $this->getCompany()->getId() : null)
             ->setCallAclId($this->getCallAcl() ? $this->getCallAcl()->getId() : null)
             ->setBossAssistantId($this->getBossAssistant() ? $this->getBossAssistant()->getId() : null)
+            ->setBossAssistantWhiteListId($this->getBossAssistantWhiteList() ? $this->getBossAssistantWhiteList()->getId() : null)
             ->setTransformationRuleSetId($this->getTransformationRuleSet() ? $this->getTransformationRuleSet()->getId() : null)
             ->setLanguageId($this->getLanguage() ? $this->getLanguage()->getId() : null)
             ->setTerminalId($this->getTerminal() ? $this->getTerminal()->getId() : null)
@@ -388,7 +388,6 @@ abstract class UserAbstract
             'pass' => self::getPass(),
             'doNotDisturb' => self::getDoNotDisturb(),
             'isBoss' => self::getIsBoss(),
-            'exceptionBoosAssistantRegExp' => self::getExceptionBoosAssistantRegExp(),
             'active' => self::getActive(),
             'maxCalls' => self::getMaxCalls(),
             'externalIpCalls' => self::getExternalIpCalls(),
@@ -400,6 +399,7 @@ abstract class UserAbstract
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
             'callAclId' => self::getCallAcl() ? self::getCallAcl()->getId() : null,
             'bossAssistantId' => self::getBossAssistant() ? self::getBossAssistant()->getId() : null,
+            'bossAssistantWhiteListId' => self::getBossAssistantWhiteList() ? self::getBossAssistantWhiteList()->getId() : null,
             'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null,
             'languageId' => self::getLanguage() ? self::getLanguage()->getId() : null,
             'terminalId' => self::getTerminal() ? self::getTerminal()->getId() : null,
@@ -579,34 +579,6 @@ abstract class UserAbstract
     }
 
     /**
-     * Set exceptionBoosAssistantRegExp
-     *
-     * @param string $exceptionBoosAssistantRegExp
-     *
-     * @return self
-     */
-    public function setExceptionBoosAssistantRegExp($exceptionBoosAssistantRegExp = null)
-    {
-        if (!is_null($exceptionBoosAssistantRegExp)) {
-            Assertion::maxLength($exceptionBoosAssistantRegExp, 255, 'exceptionBoosAssistantRegExp value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        }
-
-        $this->exceptionBoosAssistantRegExp = $exceptionBoosAssistantRegExp;
-
-        return $this;
-    }
-
-    /**
-     * Get exceptionBoosAssistantRegExp
-     *
-     * @return string
-     */
-    public function getExceptionBoosAssistantRegExp()
-    {
-        return $this->exceptionBoosAssistantRegExp;
-    }
-
-    /**
      * Set active
      *
      * @param boolean $active
@@ -664,14 +636,14 @@ abstract class UserAbstract
     /**
      * Set externalIpCalls
      *
-     * @param boolean $externalIpCalls
+     * @param string $externalIpCalls
      *
      * @return self
      */
     public function setExternalIpCalls($externalIpCalls)
     {
         Assertion::notNull($externalIpCalls, 'externalIpCalls value "%s" is null, but non null value was expected.');
-        Assertion::between(intval($externalIpCalls), 0, 1, 'externalIpCalls provided "%s" is not a valid boolean value.');
+        Assertion::maxLength($externalIpCalls, 1, 'externalIpCalls value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($externalIpCalls, array (
           0 => '0',
           1 => '1',
@@ -687,7 +659,7 @@ abstract class UserAbstract
     /**
      * Get externalIpCalls
      *
-     * @return boolean
+     * @return string
      */
     public function getExternalIpCalls()
     {
@@ -900,6 +872,30 @@ abstract class UserAbstract
     public function getBossAssistant()
     {
         return $this->bossAssistant;
+    }
+
+    /**
+     * Set bossAssistantWhiteList
+     *
+     * @param \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $bossAssistantWhiteList
+     *
+     * @return self
+     */
+    public function setBossAssistantWhiteList(\Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $bossAssistantWhiteList = null)
+    {
+        $this->bossAssistantWhiteList = $bossAssistantWhiteList;
+
+        return $this;
+    }
+
+    /**
+     * Get bossAssistantWhiteList
+     *
+     * @return \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface
+     */
+    public function getBossAssistantWhiteList()
+    {
+        return $this->bossAssistantWhiteList;
     }
 
     /**

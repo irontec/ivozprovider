@@ -13,13 +13,13 @@ Ivoz\Provider\Domain\Model\Domain\Domain:
         strategy: IDENTITY
   oneToMany:
     friends:
-      targetEntity: Ivoz\Provider\Domain\Model\Friend\Friend
+      targetEntity: Ivoz\Provider\Domain\Model\Friend\FriendInterface
       mappedBy: domain
     retailAccounts:
-      targetEntity: Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount
+      targetEntity: Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface
       mappedBy: domain
     terminals:
-      targetEntity: Ivoz\Provider\Domain\Model\Terminal\Terminal
+      targetEntity: Ivoz\Provider\Domain\Model\Terminal\TerminalInterface
       mappedBy: domain
 
   lifecycleCallbacks:

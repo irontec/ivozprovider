@@ -67,7 +67,7 @@ production:
               show: ["applicationServerId"]
               hide: []
           'rr':
-            title: _("Round robin")
+            title: _("Round Robin")
             visualFilter:
               show: []
               hide: ["applicationServerId"]

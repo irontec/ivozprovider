@@ -31,20 +31,16 @@ class UnsetBossAssistant implements UserLifecycleEventHandlerInterface
         $hasChangedIsBoss = $entity->hasChanged('isBoss');
 
         if (!$isNew && $hasChangedIsBoss && $isBoss) {
-            $boss = $entity->getBossAssistant();
-            if($boss) {
+            $assistant = $entity->getBossAssistant();
+            if($assistant) {
                 /**
-                 * @var UserDTO $bossDTO
+                 * @var UserDTO $assistantDTO
                  */
-                $bossDTO = $boss->toDTO();
-                $bossDTO->setBossAssistantId(null);
+                $assistantDTO = $assistant->toDTO();
+                $assistantDTO->setIsBoss(false);
+                $assistantDTO->setBossAssistantId(null);
 
-                $this->entityPersister->persistDto($bossDTO, $boss);
-                /**
-                 * @todo implement logger system
-                 */
-                $logMessage = "User unset as Boss Assistant of boss with id = '".$boss->getPrimaryKey()."'";
-                // $this->_logger->log($logMessage, \Zend_Log::INFO);
+                $this->entityPersister->persistDto($assistantDTO, $assistant);
             }
         }
     }

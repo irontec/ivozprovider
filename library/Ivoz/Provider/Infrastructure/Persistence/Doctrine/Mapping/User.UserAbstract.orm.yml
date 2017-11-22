@@ -72,13 +72,6 @@ Ivoz\Provider\Domain\Model\User\UserAbstract:
         default: '0'
         unsigned: true
       column: isBoss
-    exceptionBoosAssistantRegExp:
-      type: string
-      nullable: true
-      length: 255
-      options:
-        fixed: false
-      column: exceptionBoosAssistantRegExp
     active:
       type: boolean
       nullable: false
@@ -93,8 +86,9 @@ Ivoz\Provider\Domain\Model\User\UserAbstract:
         unsigned: true
       column: maxCalls
     externalIpCalls:
-      type: boolean
+      type: string
       nullable: false
+      length: 1
       options:
         comment: '[enum:0|1|2|3]'
         default: '0'
@@ -166,6 +160,17 @@ Ivoz\Provider\Domain\Model\User\UserAbstract:
       inversedBy: null
       joinColumns:
         bossAssistantId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false
+    bossAssistantWhiteList:
+      targetEntity: \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        bossAssistantWhiteListId:
           referencedColumnName: id
           onDelete: set null
       orphanRemoval: false
