@@ -28,4 +28,3 @@ scenarios:
                 <<: *charlie_cred
           - waitfor: CONFIRMED
           - waitfor: DISCONNCTD
-

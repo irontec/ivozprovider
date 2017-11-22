@@ -14,7 +14,6 @@ scenarios:
           - wait: 15
           - hangup
           - waitfor: DISCONNCTD
-
       - conference_bob:
           - call:
               dest: 500
@@ -26,7 +25,6 @@ scenarios:
           - wait: 15
           - hangup
           - waitfor: DISCONNCTD
-
       - conference_charlie:
           - wait: 5
           - call:
@@ -35,4 +33,3 @@ scenarios:
                 <<: *charlie_cred
           - waitfor: CONFIRMED
           - waitfor: DISCONNCTD
-

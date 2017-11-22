@@ -1,10 +1,8 @@
 # ----------------------------------------------------------------------------
-
 scenarios:
   - name: call from alice to bob transfered to charlie
     timeout: 25
     sessions:
-
       # Alice: Call to Bob at 1002
       - caller_alice:
           - call:
@@ -13,7 +11,6 @@ scenarios:
                 <<: *alice_cred
           - waitfor: CONFIRMED
           - waitfor: DISCONNCTD
-
       # Bob: Receive the call from Alice and transfer to Charlie at 1002
       - callee_bob:
           - register:
@@ -35,7 +32,6 @@ scenarios:
           - waitfor: TRANSFER_OK
           - waitfor: { call: TO_CHARLIE, name: DISCONNCTD }
           - unregister
-
       # Charlie: Answer the call from Bob
       - callee_charlie:
           - register:

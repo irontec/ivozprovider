@@ -1,10 +1,8 @@
 # ----------------------------------------------------------------------------
-
 scenarios:
   - name: call from retail account to Alice DDI
     timeout: 25
     sessions:
-
       # Retail: Call to Alice DDI
       - retail:
           - wait
@@ -14,7 +12,6 @@ scenarios:
                 <<: *retail_cred
           - waitfor: CONFIRMED
           - waitfor: DISCONNCTD
-
       # Alice: Wait for call from retail
       - alice:
           - register:
@@ -28,4 +25,3 @@ scenarios:
           - hangup
           - waitfor: DISCONNCTD
           - unregister
-

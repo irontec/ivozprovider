@@ -13,7 +13,6 @@ scenarios:
           - wait: 2
           - hangup
           - waitfor: DISCONNCTD
-
       - friend_callee:
           - register:
               <<: *friend_cred

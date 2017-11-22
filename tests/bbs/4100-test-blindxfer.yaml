@@ -3,7 +3,6 @@ scenarios:
   - name: call from alice to bob blind transfered to charlie
     timeout: 20
     sessions:
-
       - caller_alice:
           - call:
               dest: 1002
@@ -11,7 +10,6 @@ scenarios:
                 <<: *alice_cred
           - waitfor: CONFIRMED
           - waitfor: DISCONNCTD
-
       - callee_bob:
           - register:
               <<: *bob_cred
@@ -24,7 +22,6 @@ scenarios:
           - hangup
           - waitfor: DISCONNCTD
           - unregister
-
       - callee_charlie:
           - register:
               <<: *charlie_cred

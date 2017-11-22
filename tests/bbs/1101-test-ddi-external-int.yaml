@@ -3,7 +3,6 @@ scenarios:
   - name: call from world to bob ddi
     timeout: 20
     sessions:
-
       - external:
           - wait
           - call:
@@ -13,7 +12,6 @@ scenarios:
           - wait: 2
           - hangup
           - waitfor: DISCONNCTD
-
       - dave:
           - register:
               <<: *dave_cred

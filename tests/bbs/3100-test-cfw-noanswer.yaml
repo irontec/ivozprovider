@@ -28,4 +28,3 @@ scenarios:
           - answer
           - waitfor: DISCONNCTD
           - unregister
-

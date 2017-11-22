@@ -1,5 +1,4 @@
 # ----------------------------------------------------------------------------
-
 scenarios:
   - name: call from alice to bob early transfered to charlie
     timeout: 30
@@ -13,7 +12,6 @@ scenarios:
                   <<: *alice_cred
             - waitfor: CONFIRMED
             - waitfor: DISCONNCTD
-
         # Bob: Receive the call from Alice and transfer to Charlie
         - bob:
             - register:
@@ -34,7 +32,6 @@ scenarios:
             - hangup
             - waitfor: DISCONNCTD
             - unregister
-
         # Charlie: Answer the call from Bob
         - charlie:
             - register:
@@ -48,4 +45,3 @@ scenarios:
             - hangup
             - waitfor: DISCONNCTD
             - unregister
-

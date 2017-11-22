@@ -13,7 +13,6 @@ scenarios:
           - wait: 2
           - hangup
           - waitfor: DISCONNCTD
-
       - alice:
           - register:
               <<: *alice_cred

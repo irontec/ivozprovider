@@ -30,4 +30,3 @@ scenarios:
           - hangup
           - waitfor: DISCONNCTD
           - unregister
-
