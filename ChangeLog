@@ -1,3 +1,11 @@
+Wed, 22 Nov 2017 18:58:49 +0100 IvozProvider Team <dev@list-ivozprovider.irontec.com>
+
+    * IvozProvider 1.6.3 released
+
+    * vPBX: Boss-assistant feature uses matchlists to define exceptions
+    * Mappers: Fix From-domain in retailAccounts and Friends
+    * Kamailio: Handle '422 Session Internal Too Small' properly
+
 Tue, 19 Sep 2017 12:40:05 +0200 IvozProvider Team <dev@list-ivozprovider.irontec.com>
 
     * IvozProvider 1.6.2 released
