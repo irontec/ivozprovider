@@ -1,3 +1,2 @@
-microservices/recordings/application /opt/irontec/ivozprovider/microservices/recordings/
-microservices/recordings/library     /opt/irontec/ivozprovider/microservices/recordings/
+microservices/recordings /opt/irontec/ivozprovider/microservices/
 debian/systemd/ivozprovider-recordings.timer /lib/systemd/system
