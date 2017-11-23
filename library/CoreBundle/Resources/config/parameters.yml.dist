@@ -1,26 +1,18 @@
-# This file is a "template" of what your parameters.yml file should look like
-# Set parameters here that may be different on each deployment target of the app, e.g. development, staging, production.
-# http://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
+imports:
+  - { resource: "@CoreBundle/Resources/config/orm_soft_delete.yml" }
+
 parameters:
-    database_host: 127.0.0.1
-    database_port: ~
-    database_name: symfony
+    database_host: data.ivozprovider.local
+    database_port: null
+    database_name: ivozprovider
     database_user: root
     database_password: ~
-    # You should uncomment this if you want to use pdo_sqlite
-    #database_path: '%kernel.root_dir%/../var/data/data.sqlite'
-
-    mailer_transport: smtp
-    mailer_host: 127.0.0.1
-    mailer_user: ~
+    mailer_host: data.ivozprovider.local
+    mailer_user: null
     mailer_password: ~
-
-    # A secret key that's used to generate certain security-related tokens
-    secret: ThisTokenIsNotSoSecretChangeIt
-
+    secret: ~
     ari_user: ivozariuser
-    ari_password: ivozarisecret
+    ari_password: ~
     ari_port: 8088
-
-    # Files
     local_storage_path: /opt/irontec/ivozprovider/storage
+    raw_recordings_dir: /opt/irontec/ivozprovider/storage/ivozprovider_model_recordings.originalfile/

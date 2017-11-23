@@ -1,4 +1,3 @@
 imports:
-    - { resource: config.yml }
-    - { resource: logger_dev.yml }
+  - { resource: config.yml }
 

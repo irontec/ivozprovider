@@ -9,11 +9,11 @@ services:
     public: false
 
   Ivoz\Core\Infrastructure\Domain\Service\Lifecycle\DoctrineEventSubscriber:
-      arguments:
-        $serviceContainer: '@service_container'
-        $eventPublisher: '@Ivoz\Core\Domain\Service\DomainEventPublisher'
-      tags:
-        - { name: doctrine.event_subscriber }
+    arguments:
+      $serviceContainer: '@service_container'
+      $eventPublisher: '@Ivoz\Core\Domain\Service\DomainEventPublisher'
+    tags:
+      - { name: doctrine.event_subscriber }
 
   Ivoz\Core\Domain\Service\PersistErrorHandlerServiceCollection:
     public: true

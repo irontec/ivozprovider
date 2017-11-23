@@ -1,24 +1,8 @@
 imports:
-    - { resource: config.yml }
-    - { resource: logger_dev.yml }
+  - { resource: config.yml }
+  - { resource: logger_dev.yml }
 
 framework:
-    router:
-        resource: '%kernel.root_dir%/config/routing_dev.yml'
-        strict_requirements: true
-#    profiler: { only_exceptions: false }
-
-
-## Twig Configuration
-#twig:
-#    debug: '%kernel.debug%'
-#    strict_variables: '%kernel.debug%'
-#
-#
-#web_profiler:
-#    toolbar: true
-#    intercept_redirects: false
-
-
-#swiftmailer:
-#    delivery_addresses: ['me@example.com']
+  router:
+    resource: '%kernel.root_dir%/config/routing_dev.yml'
+    strict_requirements: true

@@ -68,6 +68,7 @@
     "require": {
         "php": ">=7.0.19",
         "symfony/symfony": "3.3.*",
+        "symfony/monolog-bundle": "^3.0.2",
         "doctrine/orm": "^2.5",
         "doctrine/doctrine-migrations-bundle": "^1.2",
         "incenteev/composer-parameter-handler": "^2.0",
