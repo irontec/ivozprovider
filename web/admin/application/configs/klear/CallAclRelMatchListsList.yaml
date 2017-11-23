@@ -4,46 +4,50 @@
 production:
   main:
     module: klearMatrix
-    defaultScreen: callACLRelPatternsList_screen
-  screens: &callACLRelPatterns_screensLink
-    callACLRelPatternsList_screen: &callACLRelPatternsList_screenLink
+    defaultScreen: callACLRelMatchListsList_screen
+
+  screens: &callACLRelMatchLists_screensLink
+    callACLRelMatchListsList_screen: &callACLRelMatchListsList_screenLink
       controller: list
       pagination:
         items: 25
-      <<: *CallACLRelPatterns
+      <<: *CallAclRelMatchLists
       class: ui-silk-lock-add
       title: _("List of %s %2s", ngettext('Call ACL Pattern', 'Call ACL Patterns', 0), "[format| (%parent%)]")
       fields:
         options:
           title: _("Options")
           screens:
-            callACLRelPatternsEdit_screen: true
+            callACLRelMatchListsEdit_screen: true
           dialogs:
-            callACLRelPatternsDel_dialog: true
-          default: callACLRelPatternsEdit_screen
+            callACLRelMatchListsDel_dialog: true
+          default: callACLRelMatchListsEdit_screen
       options:
         title: _("Options")
         screens:
-          callACLRelPatternsNew_screen: true
+          callACLRelMatchListsNew_screen: true
         dialogs:
-          callACLRelPatternsDel_dialog: true
-    callACLRelPatternsNew_screen: &callACLRelPatternsNew_screenLink
-      <<: *CallACLRelPatterns
+          callACLRelMatchListsDel_dialog: true
+
+    callACLRelMatchListsNew_screen: &callACLRelMatchListsNew_screenLink
+      <<: *CallAclRelMatchLists
       controller: new
       class: ui-silk-add
       label: true
       multiInstance: true
       title: _("Add %s", ngettext('Call ACL Pattern', 'Call ACL Patterns', 1))
       shortcutOption: N
-    callACLRelPatternsEdit_screen: &callACLRelPatternsEdit_screenLink
-      <<: *CallACLRelPatterns
+
+    callACLRelMatchListsEdit_screen: &callACLRelMatchListsEdit_screenLink
+      <<: *CallAclRelMatchLists
       controller: edit
       class: ui-silk-pencil
       label: false
       title: _("Edit %s %2s", ngettext('Call ACL Pattern', 'Call ACL Patterns', 1), "[format| (%item%)]")
-  dialogs: &callACLRelPatterns_dialogsLink
-    callACLRelPatternsDel_dialog: &callACLRelPatternsDel_dialogLink
-      <<: *CallACLRelPatterns
+
+  dialogs: &callACLRelMatchLists_dialogsLink
+    callACLRelMatchListsDel_dialog: &callACLRelMatchListsDel_dialogLink
+      <<: *CallAclRelMatchLists
       controller: delete
       class: ui-silk-bin
       labelOption: false

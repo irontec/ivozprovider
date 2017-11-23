@@ -39,15 +39,10 @@ mappers:
         modelFile: CallAcl,
         entity: 'Ivoz\\Provider\\Domain\\Model\\CallAcl\\CallAcl'
     }
-  - &CallACLPatterns {
-        mapper: \IvozProvider\Mapper\Sql\CallACLPatterns,
-        modelFile: CallAclPatterns,
-        entity: 'Ivoz\\Provider\\Domain\\Model\\CallAclPattern\\CallAclPattern'
-    }
-  - &CallACLRelPatterns {
-        mapper: \IvozProvider\Mapper\Sql\CallACLRelPatterns,
-        modelFile: CallAclRelPatterns,
-        entity: 'Ivoz\\Provider\\Domain\\Model\\CallAclRelPatterns\\CallAclRelPatterns'
+  - &CallAclRelMatchLists {
+        mapper: \IvozProvider\Mapper\Sql\CallAclRelMatchLists,
+        modelFile: CallAclRelMatchLists,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\CallAclRelMatchLists\\CallAclRelMatchLists'
     }
   - &CallForwardSettings {
         mapper: \IvozProvider\Mapper\Sql\CallForwardSettings,
@@ -193,11 +188,6 @@ mappers:
         mapper: \IvozProvider\Mapper\Sql\FriendsPatterns,
         modelFile: FriendsPatterns,
         entity: 'Ivoz\\Provider\\Domain\\Model\\FriendsPattern\\FriendsPattern'
-    }
-  - &GenericCallACLPatterns {
-        mapper: \IvozProvider\Mapper\Sql\GenericCallACLPatterns,
-        modelFile: GenericCallAclPatterns,
-        entity: 'Ivoz\\Provider\\Domain\\Model\\GenericCallAclPatterns\\GenericCallAclPatterns'
     }
   - &HolidayDates {
         mapper: \IvozProvider\Mapper\Sql\HolidayDates,

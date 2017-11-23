@@ -31,23 +31,23 @@ production:
         values:
           'allow': _('allow')
           'deny': _('deny')
-    CallACLRelPatterns:
-      title: ngettext('Call ACL Pattern', 'Call ACL Patterns', 0)
+    CallAclRelMatchLists:
+      title: ngettext('Call ACL MatchList', 'Call ACL MatchList', 0)
       searchable: false
       type: ghost
       source:
         predefined: list
       data: mapper
       config:
-        entity: \Ivoz\Provider\Domain\Model\CallAclRelPattern\CallAclRelPattern
-        filterField: CallAclRelPattern.callAcl
+        entity: \Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchList
+        filterField: CallAclRelMatchList.callAcl
         showAsTable: true
         fieldName:
           fields:
-            CallACLPattern:
+            MatchList:
               title: _("Name")
               isMultilang: false
-              entity: \Ivoz\Provider\Domain\Model\CallAclPattern\CallAclPattern
+              entity: \Ivoz\Provider\Domain\Model\MatchList\MatchList
               field:
                 - name
               pattern: "%name%"
@@ -56,16 +56,16 @@ production:
             policy:
               title: _("Policy")
         order:
-          CallACLRelPattern.priority: asc
+          CallAclRelPattern.priority: asc
         options:
           dialogs:
-            callACLRelPatternsDel_dialog: true
+            callACLRelMatchListsDel_dialog: true
           screens:
-            callACLRelPatternsEdit_screen: true
+            callACLRelMatchListsEdit_screen: true
           default:
       options:
         screens:
-          callACLRelPatternsNew_screen: true
+          callACLRelMatchListsNew_screen: true
 staging:
   _extends: production
 testing:

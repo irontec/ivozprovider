@@ -1,8 +1,8 @@
 production:
-  class: \IvozProvider\Model\CallACLRelPatterns
-  entity: \Ivoz\Provider\Domain\Model\CallAclRelPattern\CallAclRelPattern
+  class: \IvozProvider\Model\CallAclRelMatchLists
+  entity: \Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchList
   fields:
-    CallACL:
+    callACLId:
       title: ngettext('Call ACL', 'Call ACLs', 1)
       type: select
       required: true
@@ -17,21 +17,21 @@ production:
           order:
             CallAcl.name: asc
       default: true
-    CallACLPattern:
-      title: ngettext('Call ACL Pattern', 'Call ACL Patterns', 1)
+    matchListId:
+      title: ngettext('Match List', 'Match Lists', 1)
       type: select
       required: true
       source:
         data: mapper
         config:
-          entity: \Ivoz\Provider\Domain\Model\CallAclPattern\CallAclPattern
-          filterClass: IvozProvider_Klear_Filter_Company
+          entity: \Ivoz\Provider\Domain\Model\MatchList\MatchList
+          filterClass: IvozProvider_Klear_Filter_MatchList
           fieldName:
             fields:
               - name
             template: '%name%'
           order:
-            CallACLPattern.name: asc
+            MatchList.name: asc
     priority:
       title: _('Priority')
       type: number
