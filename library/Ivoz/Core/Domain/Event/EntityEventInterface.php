@@ -13,6 +13,4 @@ interface EntityEventInterface extends DomainEventInterface
     public function getEntityId();
 
     public function getData();
-
-    public function getOccurredOn();
 }

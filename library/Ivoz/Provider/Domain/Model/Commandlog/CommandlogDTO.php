@@ -37,6 +37,11 @@ class CommandlogDTO implements DataTransferObjectInterface
     private $createdOn;
 
     /**
+     * @var integer
+     */
+    private $microtime;
+
+    /**
      * @var guid
      */
     private $id;
@@ -52,6 +57,7 @@ class CommandlogDTO implements DataTransferObjectInterface
             'method' => $this->getMethod(),
             'arguments' => $this->getArguments(),
             'createdOn' => $this->getCreatedOn(),
+            'microtime' => $this->getMicrotime(),
             'id' => $this->getId()
         ];
     }
@@ -170,6 +176,26 @@ class CommandlogDTO implements DataTransferObjectInterface
     public function getCreatedOn()
     {
         return $this->createdOn;
+    }
+
+    /**
+     * @param integer $microtime
+     *
+     * @return CommandlogDTO
+     */
+    public function setMicrotime($microtime)
+    {
+        $this->microtime = $microtime;
+
+        return $this;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getMicrotime()
+    {
+        return $this->microtime;
     }
 
     /**

@@ -4,6 +4,9 @@ Ivoz\Provider\Domain\Model\Changelog\ChangelogAbstract:
     commandId:
       columns:
         - commandId
+    createdOn:
+      columns:
+        - createdOn
   fields:
     entity:
       type: string
@@ -23,6 +26,9 @@ Ivoz\Provider\Domain\Model\Changelog\ChangelogAbstract:
       type: datetime
       nullable: false
       column: createdOn
+    microtime:
+      type: smallint
+      nullable: false
   manyToOne:
     command:
       targetEntity: \Ivoz\Provider\Domain\Model\Commandlog\CommandlogInterface

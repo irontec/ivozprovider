@@ -22,6 +22,4 @@ interface CommandEventInterface extends DomainEventInterface
     public function getMethod();
 
     public function getArguments();
-
-    public function getOccurredOn();
 }

@@ -32,6 +32,11 @@ class EntityWasCreated implements EntityEventInterface
      */
     protected $occurredOn;
 
+    /**
+     * @var int
+     */
+    protected $microtime;
+
     public function __construct(
         string $entityClass,
         $entityId,
@@ -46,6 +51,8 @@ class EntityWasCreated implements EntityEventInterface
             'now',
             new \DateTimeZone('UTC')
         );
+
+        $this->microtime = intval((microtime(true) - time()) * 10000);
     }
 
     public function getId()
@@ -71,5 +78,10 @@ class EntityWasCreated implements EntityEventInterface
     public function getOccurredOn()
     {
         return $this->occurredOn;
+    }
+
+    public function getMicrotime()
+    {
+        return $this->microtime;
     }
 }

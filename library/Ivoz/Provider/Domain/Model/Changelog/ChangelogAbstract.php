@@ -32,6 +32,11 @@ abstract class ChangelogAbstract
     protected $createdOn;
 
     /**
+     * @var integer
+     */
+    protected $microtime;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Commandlog\CommandlogInterface
      */
     protected $command;
@@ -46,11 +51,16 @@ abstract class ChangelogAbstract
     /**
      * Constructor
      */
-    public function __construct($entity, $entityId, $createdOn)
-    {
+    public function __construct(
+        $entity,
+        $entityId,
+        $createdOn,
+        $microtime
+    ) {
         $this->setEntity($entity);
         $this->setEntityId($entityId);
         $this->setCreatedOn($createdOn);
+        $this->setMicrotime($microtime);
 
         $this->initChangelog();
     }
@@ -144,7 +154,8 @@ abstract class ChangelogAbstract
         $self = new static(
             $dto->getEntity(),
             $dto->getEntityId(),
-            $dto->getCreatedOn());
+            $dto->getCreatedOn(),
+            $dto->getMicrotime());
 
         return $self
             ->setData($dto->getData())
@@ -168,6 +179,7 @@ abstract class ChangelogAbstract
             ->setEntityId($dto->getEntityId())
             ->setData($dto->getData())
             ->setCreatedOn($dto->getCreatedOn())
+            ->setMicrotime($dto->getMicrotime())
             ->setCommand($dto->getCommand());
 
 
@@ -184,6 +196,7 @@ abstract class ChangelogAbstract
             ->setEntityId($this->getEntityId())
             ->setData($this->getData())
             ->setCreatedOn($this->getCreatedOn())
+            ->setMicrotime($this->getMicrotime())
             ->setCommandId($this->getCommand() ? $this->getCommand()->getId() : null);
     }
 
@@ -197,6 +210,7 @@ abstract class ChangelogAbstract
             'entityId' => self::getEntityId(),
             'data' => self::getData(),
             'createdOn' => self::getCreatedOn(),
+            'microtime' => self::getMicrotime(),
             'commandId' => self::getCommand() ? self::getCommand()->getId() : null
         ];
     }
@@ -313,6 +327,33 @@ abstract class ChangelogAbstract
     public function getCreatedOn()
     {
         return $this->createdOn;
+    }
+
+    /**
+     * Set microtime
+     *
+     * @param integer $microtime
+     *
+     * @return self
+     */
+    public function setMicrotime($microtime)
+    {
+        Assertion::notNull($microtime, 'microtime value "%s" is null, but non null value was expected.');
+        Assertion::integerish($microtime, 'microtime value "%s" is not an integer or a number castable to integer.');
+
+        $this->microtime = $microtime;
+
+        return $this;
+    }
+
+    /**
+     * Get microtime
+     *
+     * @return integer
+     */
+    public function getMicrotime()
+    {
+        return $this->microtime;
     }
 
     /**

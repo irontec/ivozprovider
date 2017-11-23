@@ -36,6 +36,11 @@ abstract class CommandlogAbstract
      */
     protected $createdOn;
 
+    /**
+     * @var integer
+     */
+    protected $microtime;
+
 
     /**
      * Changelog tracking purpose
@@ -46,11 +51,16 @@ abstract class CommandlogAbstract
     /**
      * Constructor
      */
-    public function __construct($requestId, $class, $createdOn)
-    {
+    public function __construct(
+        $requestId,
+        $class,
+        $createdOn,
+        $microtime
+    ) {
         $this->setRequestId($requestId);
         $this->setClass($class);
         $this->setCreatedOn($createdOn);
+        $this->setMicrotime($microtime);
 
         $this->initChangelog();
     }
@@ -144,7 +154,8 @@ abstract class CommandlogAbstract
         $self = new static(
             $dto->getRequestId(),
             $dto->getClass(),
-            $dto->getCreatedOn());
+            $dto->getCreatedOn(),
+            $dto->getMicrotime());
 
         return $self
             ->setMethod($dto->getMethod())
@@ -168,7 +179,8 @@ abstract class CommandlogAbstract
             ->setClass($dto->getClass())
             ->setMethod($dto->getMethod())
             ->setArguments($dto->getArguments())
-            ->setCreatedOn($dto->getCreatedOn());
+            ->setCreatedOn($dto->getCreatedOn())
+            ->setMicrotime($dto->getMicrotime());
 
 
         return $this;
@@ -184,7 +196,8 @@ abstract class CommandlogAbstract
             ->setClass($this->getClass())
             ->setMethod($this->getMethod())
             ->setArguments($this->getArguments())
-            ->setCreatedOn($this->getCreatedOn());
+            ->setCreatedOn($this->getCreatedOn())
+            ->setMicrotime($this->getMicrotime());
     }
 
     /**
@@ -197,7 +210,8 @@ abstract class CommandlogAbstract
             'class' => self::getClass(),
             'method' => self::getMethod(),
             'arguments' => self::getArguments(),
-            'createdOn' => self::getCreatedOn()
+            'createdOn' => self::getCreatedOn(),
+            'microtime' => self::getMicrotime()
         ];
     }
 
@@ -340,6 +354,33 @@ abstract class CommandlogAbstract
     public function getCreatedOn()
     {
         return $this->createdOn;
+    }
+
+    /**
+     * Set microtime
+     *
+     * @param integer $microtime
+     *
+     * @return self
+     */
+    public function setMicrotime($microtime)
+    {
+        Assertion::notNull($microtime, 'microtime value "%s" is null, but non null value was expected.');
+        Assertion::integerish($microtime, 'microtime value "%s" is not an integer or a number castable to integer.');
+
+        $this->microtime = $microtime;
+
+        return $this;
+    }
+
+    /**
+     * Get microtime
+     *
+     * @return integer
+     */
+    public function getMicrotime()
+    {
+        return $this->microtime;
     }
 
 

@@ -19,7 +19,7 @@ interface EntityPersisterInterface
      * @param boolean $dispatchImmediately
      * @return void
      */
-    public function persist(EntityInterface $entity = null, $dispatchImmediately = false);
+    public function persist(EntityInterface $entity, $dispatchImmediately = false);
 
     /**
      * @param EntityInterface $entity
