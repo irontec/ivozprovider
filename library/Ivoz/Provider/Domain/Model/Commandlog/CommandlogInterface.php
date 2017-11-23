@@ -92,5 +92,21 @@ interface CommandlogInterface extends EntityInterface
      */
     public function getCreatedOn();
 
+    /**
+     * Set microtime
+     *
+     * @param integer $microtime
+     *
+     * @return self
+     */
+    public function setMicrotime($microtime);
+
+    /**
+     * Get microtime
+     *
+     * @return integer
+     */
+    public function getMicrotime();
+
 }
 

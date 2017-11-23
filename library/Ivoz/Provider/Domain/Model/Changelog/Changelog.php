@@ -20,7 +20,8 @@ class Changelog extends ChangelogAbstract implements ChangelogInterface
         $entity = new static(
             $event->getEntityClass(),
             (string) $event->getEntityId(),
-            $event->getOccurredOn()
+            $event->getOccurredOn(),
+            $event->getMicrotime()
         );
 
         $entity->id = $event->getId();

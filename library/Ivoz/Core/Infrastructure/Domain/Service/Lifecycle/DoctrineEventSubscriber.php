@@ -15,11 +15,13 @@ use Ivoz\Core\Domain\Event\EntityWasCreated;
 use Ivoz\Core\Domain\Event\EntityWasUpdated;
 use Ivoz\Core\Domain\Event\EntityWasDeleted;
 use Ivoz\Core\Domain\Service\DomainEventPublisher;
+use Doctrine\ORM\Events;
+use Ivoz\Core\Application\Helper\EntityClassHelper;
+use Ivoz\Core\Application\Helper\LifecycleServiceHelper;
+
 
 class DoctrineEventSubscriber implements EventSubscriber
 {
-    use EntityClassToServiceNameTrait;
-
     /**
      * @var EntityManagerInterface
      */
@@ -58,13 +60,13 @@ class DoctrineEventSubscriber implements EventSubscriber
     public function getSubscribedEvents()
     {
         return [
-            'prePersist',
-            'postPersist',
-            'preUpdate',
-            'postUpdate',
+            Events::prePersist,
+            Events::postPersist,
+            Events::preUpdate,
+            Events::postUpdate,
 
-            'preRemove',
-            'postRemove'
+            Events::preRemove,
+            Events::postRemove
         ];
     }
 
@@ -98,7 +100,7 @@ class DoctrineEventSubscriber implements EventSubscriber
         $this->run('post_remove', $args);
     }
 
-    protected function run($eventName, LifecycleEventArgs $args, bool $isNew = false)
+    private function run($eventName, LifecycleEventArgs $args, bool $isNew = false)
     {
         $this->triggerDomainEvents($eventName, $args, $isNew);
         $this->runSharedServices($eventName, $args, $isNew);
@@ -119,7 +121,7 @@ class DoctrineEventSubscriber implements EventSubscriber
             case 'pre_remove':
                 // We use pre_persist because Id value is gone on post_persist
                 $event = new EntityWasDeleted(
-                    $this->getEntityClass($entity),
+                    EntityClassHelper::getEntityClass($entity),
                     $entity->getId(),
                     null
                 );
@@ -138,7 +140,7 @@ class DoctrineEventSubscriber implements EventSubscriber
                     : EntityWasUpdated::class;
 
                 $event = new $eventClass(
-                    $this->getEntityClass($entity),
+                    EntityClassHelper::getEntityClass($entity),
                     $entity->getId(),
                     $entity->getChangeSet()
                 );
@@ -171,7 +173,7 @@ class DoctrineEventSubscriber implements EventSubscriber
     private function runEntityServices($eventName, LifecycleEventArgs $args, bool $isNew)
     {
         $entity = $args->getObject();
-        $serviceName = $this->getServiceName($entity, $eventName);
+        $serviceName = LifecycleServiceHelper::getServiceName($entity, $eventName);
 
         if (!$this->serviceContainer->has($serviceName)) {
             return;
@@ -186,7 +188,7 @@ class DoctrineEventSubscriber implements EventSubscriber
             $service->execute($entity, $isNew);
         } catch (\Exception $exception) {
 
-            $errorHandlerName = $this->getServiceName($entity, 'error_handler');
+            $errorHandlerName = LifecycleServiceHelper::getServiceName($entity, 'error_handler');
             if (!$this->serviceContainer->has($errorHandlerName)) {
                 throw $exception;
             }

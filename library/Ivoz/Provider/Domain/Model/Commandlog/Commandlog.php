@@ -27,7 +27,8 @@ class Commandlog extends CommandlogAbstract implements CommandlogInterface
         $entity = new self(
             $event->getRequestId(),
             $event->getService(),
-            $event->getOccurredOn()
+            $event->getOccurredOn(),
+            $event->getMicrotime()
         );
 
         $entity->id = $event->getId();

@@ -49,4 +49,7 @@ services:
     class: Ivoz\Core\Application\Service\UpdateEntityFromDTO
 
   Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister:
+    arguments:
+      $softDeleteMap: '%soft_delete%'
     public: true
+

@@ -36,6 +36,11 @@ class CommandWasExecuted implements CommandEventInterface
      */
     protected $occurredOn;
 
+    /**
+     * @var int
+     */
+    protected $microtime;
+
     public function __construct(
         string $requestId,
         string $service,
@@ -52,6 +57,8 @@ class CommandWasExecuted implements CommandEventInterface
             'now',
             new \DateTimeZone('UTC')
         );
+
+        $this->microtime = intval((microtime(true) - time()) * 10000);
     }
 
     public function getId()
@@ -82,5 +89,10 @@ class CommandWasExecuted implements CommandEventInterface
     public function getOccurredOn()
     {
         return $this->occurredOn;
+    }
+
+    public function getMicrotime()
+    {
+        return $this->microtime;
     }
 }

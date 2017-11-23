@@ -4,6 +4,9 @@ Ivoz\Provider\Domain\Model\Commandlog\CommandlogAbstract:
     requestId:
       columns:
         - requestId
+    createdOn:
+      columns:
+        - createdOn
   fields:
     requestId:
       type: guid
@@ -26,3 +29,6 @@ Ivoz\Provider\Domain\Model\Commandlog\CommandlogAbstract:
       type: datetime
       nullable: false
       column: createdOn
+    microtime:
+      type: smallint
+      nullable: false

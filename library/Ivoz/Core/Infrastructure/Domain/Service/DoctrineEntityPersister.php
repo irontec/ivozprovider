@@ -13,6 +13,7 @@ use Ivoz\Core\Application\Service\CommandEventSubscriber;
 use Ivoz\Core\Domain\Service\EntityEventSubscriber;
 use Ivoz\Provider\Domain\Model\Changelog\Changelog;
 use Ivoz\Provider\Domain\Model\Commandlog\Commandlog;
+use Ivoz\Core\Application\Helper\EntityClassHelper;
 
 class DoctrineEntityPersister implements EntityPersisterInterface
 {
@@ -51,19 +52,26 @@ class DoctrineEntityPersister implements EntityPersisterInterface
      */
     protected $pendingUpdates = [];
 
+    /**
+     * @var array
+     */
+    protected $softDeleteMap = [];
+
     public function __construct
     (
         EntityManagerInterface $em,
         CreateEntityFromDTO $createEntityFromDTO,
         UpdateEntityFromDTO $entityUpdater,
         CommandEventSubscriber $commandEventSubscriber,
-        EntityEventSubscriber $entityEventSubscriber
+        EntityEventSubscriber $entityEventSubscriber,
+        array $softDeleteMap
     ) {
         $this->em = $em;
         $this->createEntityFromDTO = $createEntityFromDTO;
         $this->entityUpdater = $entityUpdater;
         $this->commandEventSubscriber = $commandEventSubscriber;
         $this->entityEventSubscriber = $entityEventSubscriber;
+        $this->softDeleteMap = $softDeleteMap;
     }
 
     /**
@@ -93,11 +101,10 @@ class DoctrineEntityPersister implements EntityPersisterInterface
 
     /**
      * @param EntityInterface $entity
-     *
      * @param boolean $dispatchImmediately
      * @return void
      */
-    public function persist(EntityInterface $entity = null, $dispatchImmediately = false)
+    public function persist(EntityInterface $entity, $dispatchImmediately = false)
     {
         $unitOfWork = $this->em->getUnitOfWork();
         $state = $unitOfWork->getEntityState($entity);
@@ -138,6 +145,11 @@ class DoctrineEntityPersister implements EntityPersisterInterface
     public function remove(EntityInterface $entity)
     {
         $transaction = function () use ($entity) {
+
+            $dependantEntities = $this->getDependantEntities($entity);
+            foreach ($dependantEntities as $dependant) {
+                $this->remove($dependant);
+            }
             $this->em->remove($entity);
         };
 
@@ -176,7 +188,7 @@ class DoctrineEntityPersister implements EntityPersisterInterface
         $this->em->flush();
     }
 
-    protected function transactional(EntityInterface $entity, callable $transaction)
+    private function transactional(EntityInterface $entity, callable $transaction)
     {
         if ($this->rootEntity instanceof EntityInterface) {
             $transaction();
@@ -209,6 +221,47 @@ class DoctrineEntityPersister implements EntityPersisterInterface
         });
 
         $this->rootEntity = null;
+    }
+
+    private function getDependantEntities(EntityInterface $entity)
+    {
+        $dependantEntities = [];
+        $entityClass = EntityClassHelper::getEntityClass($entity);
+        if (!array_key_exists($entityClass, $this->softDeleteMap)) {
+            return $dependantEntities;
+        }
+
+        $dependantEntityClasses = $this->softDeleteMap[$entityClass];
+        $metadataFactory = $this
+            ->em
+            ->getMetadataFactory();
+
+        foreach ($dependantEntityClasses as $dependantEntityClass) {
+
+            $entityMetadata = $metadataFactory->getMetadataFor($dependantEntityClass);
+            $associations = $entityMetadata->getAssociationsByTargetClass($entityClass);
+            foreach ($associations as $field => $association) {
+
+                $isDeleteCascade =
+                    isset($association['joinColumns'])
+                    && $association['joinColumns'][0]['onDelete'] === 'cascade';
+
+                if (!$isDeleteCascade) {
+                    continue;
+                }
+
+                $repository = $this->em->getRepository($association['sourceEntity']);
+                $results = $repository->findBy([
+                    "$field" => $entity->getId()
+                ]);
+
+                if (!empty($results)) {
+                    $dependantEntities = array_merge($dependantEntities, $results);
+                }
+            }
+        }
+
+        return $dependantEntities;
     }
 
     private function persistEvents()

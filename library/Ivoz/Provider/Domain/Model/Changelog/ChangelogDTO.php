@@ -32,6 +32,11 @@ class ChangelogDTO implements DataTransferObjectInterface
     private $createdOn;
 
     /**
+     * @var integer
+     */
+    private $microtime;
+
+    /**
      * @var guid
      */
     private $id;
@@ -56,6 +61,7 @@ class ChangelogDTO implements DataTransferObjectInterface
             'entityId' => $this->getEntityId(),
             'data' => $this->getData(),
             'createdOn' => $this->getCreatedOn(),
+            'microtime' => $this->getMicrotime(),
             'id' => $this->getId(),
             'commandId' => $this->getCommandId()
         ];
@@ -155,6 +161,26 @@ class ChangelogDTO implements DataTransferObjectInterface
     public function getCreatedOn()
     {
         return $this->createdOn;
+    }
+
+    /**
+     * @param integer $microtime
+     *
+     * @return ChangelogDTO
+     */
+    public function setMicrotime($microtime)
+    {
+        $this->microtime = $microtime;
+
+        return $this;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getMicrotime()
+    {
+        return $this->microtime;
     }
 
     /**
