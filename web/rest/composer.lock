@@ -9,11 +9,11 @@
     "packages": [
         {
             "name": "beberlei/assert",
-            "version": "2.7.8.0",
+            "version": "2.7.11.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/beberlei/assert",
-                "reference": "be6aa40e3f2d2f0766f159409ab9a80c8db6ca23",
+                "reference": "53991547d6f0b8c81354fb2d098dcb71e81678cb",
                 "shasum": null
             },
             "require": {
@@ -22,7 +22,7 @@
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^2.1.1",
-                "phpunit/phpunit": "^4|^5"
+                "phpunit/phpunit": "^4.8.35|^5.7"
             },
             "type": "library",
             "autoload": {
@@ -79,11 +79,11 @@
         },
         {
             "name": "composer/ca-bundle",
-            "version": "1.0.8.0",
+            "version": "1.0.9.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/composer/ca-bundle",
-                "reference": "9dd73a03951357922d8aee6cc084500de93e2343",
+                "reference": "36344aeffdc37711335563e6108cda86566432a6",
                 "shasum": null
             },
             "require": {
@@ -498,32 +498,36 @@
         },
         {
             "name": "doctrine/doctrine-bundle",
-            "version": "1.6.13.0",
+            "version": "1.8.1.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/doctrine/doctrine-bundle",
-                "reference": "8cd4c2921b6cef14a78d98cd3f0fb81ba6a976f9",
+                "reference": "eb6e4fb904a459be28872765ab6e2d246aac7c87",
                 "shasum": null
             },
             "require": {
-                "doctrine/dbal": "~2.3",
+                "doctrine/dbal": "^2.5.12",
                 "doctrine/doctrine-cache-bundle": "~1.2",
-                "jdorn/sql-formatter": "~1.1",
-                "php": ">=5.5.9",
+                "jdorn/sql-formatter": "^1.2.16",
+                "php": "^5.5.9|^7.0",
                 "symfony/console": "~2.7|~3.0|~4.0",
                 "symfony/dependency-injection": "~2.7|~3.0|~4.0",
                 "symfony/doctrine-bridge": "~2.7|~3.0|~4.0",
                 "symfony/framework-bundle": "~2.7|~3.0|~4.0"
             },
+            "conflict": {
+                "symfony/http-foundation": "<2.6"
+            },
             "require-dev": {
                 "doctrine/orm": "~2.3",
-                "phpunit/phpunit": "~4",
+                "phpunit/phpunit": "^4.8.36|^5.7|^6.4",
                 "satooshi/php-coveralls": "^1.0",
                 "symfony/phpunit-bridge": "~2.7|~3.0|~4.0",
                 "symfony/property-info": "~2.8|~3.0|~4.0",
                 "symfony/validator": "~2.7|~3.0|~4.0",
+                "symfony/web-profiler-bundle": "~2.7|~3.0|~4.0",
                 "symfony/yaml": "~2.7|~3.0|~4.0",
-                "twig/twig": "~1.12|~2.0"
+                "twig/twig": "~1.26|~2.0"
             },
             "suggest": {
                 "doctrine/orm": "The Doctrine ORM integration is optional in the bundle.",
@@ -532,12 +536,17 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.6.x-dev"
+                    "dev-master": "1.8.x-dev"
                 }
             },
             "autoload": {
                 "psr-4": {
                     "Doctrine\\Bundle\\DoctrineBundle\\": ""
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "": "Tests/DependencyInjection"
                 }
             },
             "license": [
@@ -659,26 +668,26 @@
         },
         {
             "name": "doctrine/doctrine-migrations-bundle",
-            "version": "1.2.1.0",
+            "version": "1.3.1.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/doctrine/doctrine-migrations-bundle",
-                "reference": "6276139e0b913a4e5120fc36bb5b0eae8ac549bc",
+                "reference": "a9e506369f931351a2a6dd2aef588a822802b1b7",
                 "shasum": null
             },
             "require": {
                 "doctrine/doctrine-bundle": "~1.0",
                 "doctrine/migrations": "^1.1",
                 "php": ">=5.4.0",
-                "symfony/framework-bundle": "~2.3|~3.0"
+                "symfony/framework-bundle": "~2.7|~3.3|~4.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "~4.8"
+                "phpunit/phpunit": "^4.8.36"
             },
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.2-dev"
+                    "dev-master": "1.3-dev"
                 }
             },
             "autoload": {
@@ -1839,16 +1848,16 @@
         },
         {
             "name": "sensiolabs/security-checker",
-            "version": "4.1.5.0",
+            "version": "4.1.6.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/sensiolabs/security-checker",
-                "reference": "55553c3ad6ae2121c1b1475d4c880d71b31b8f68",
+                "reference": "387b6a3b723ba35588b33d5f8d14e28ed608bd30",
                 "shasum": null
             },
             "require": {
                 "composer/ca-bundle": "^1.0",
-                "symfony/console": "~2.7|~3.0"
+                "symfony/console": "~2.7|~3.0|~4.0"
             },
             "bin": [
                 "security-checker"
@@ -1880,11 +1889,11 @@
         },
         {
             "name": "symfony/monolog-bundle",
-            "version": "3.1.1.0",
+            "version": "3.1.2.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/monolog-bundle",
-                "reference": "80c82d7d41c4eed0bf27e215f27531c05b217c17",
+                "reference": "2b41b8b6d2c6edb1a5494f02f8e4129be2a44784",
                 "shasum": null
             },
             "require": {
@@ -1896,8 +1905,8 @@
                 "symfony/monolog-bridge": "~2.7|~3.0|~4.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^4.8",
                 "symfony/console": "~2.3|~3.0|~4.0",
+                "symfony/phpunit-bridge": "^3.3|^4.0",
                 "symfony/yaml": "~2.3|~3.0|~4.0"
             },
             "type": "symfony-bundle",
@@ -1909,7 +1918,10 @@
             "autoload": {
                 "psr-4": {
                     "Symfony\\Bundle\\MonologBundle\\": ""
-                }
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
             },
             "license": [
                 "MIT"
@@ -2252,12 +2264,17 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "3.3.10.0",
+            "version": "v3.3.13",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/symfony.git",
+                "reference": "9b0226340705f75fd0cebd220746a36050ead8a9"
+            },
             "dist": {
-                "type": "path",
-                "url": "../../library/vendor/symfony/symfony",
-                "reference": "cfef3b2d505ae4375b17032bd03ed9a3da4b7b43",
-                "shasum": null
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/9b0226340705f75fd0cebd220746a36050ead8a9",
+                "reference": "9b0226340705f75fd0cebd220746a36050ead8a9",
+                "shasum": ""
             },
             "require": {
                 "doctrine/common": "~2.4",
@@ -2279,7 +2296,7 @@
             },
             "conflict": {
                 "phpdocumentor/reflection-docblock": "<3.0||>=3.2.0,<3.2.2",
-                "phpdocumentor/type-resolver": "<0.2.0",
+                "phpdocumentor/type-resolver": "<0.2.1",
                 "phpunit/phpunit": "<4.8.35|<5.4.3,>=5.0"
             },
             "provide": {
@@ -2341,6 +2358,7 @@
             },
             "require-dev": {
                 "cache/integration-tests": "dev-master",
+                "doctrine/annotations": "~1.0",
                 "doctrine/cache": "~1.6",
                 "doctrine/data-fixtures": "1.0.*",
                 "doctrine/dbal": "~2.4",
@@ -2377,11 +2395,7 @@
                     "**/Tests/"
                 ]
             },
-            "autoload-dev": {
-                "files": [
-                    "src/Symfony/Component/VarDumper/Resources/functions/dump.php"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2400,9 +2414,7 @@
             "keywords": [
                 "framework"
             ],
-            "transport-options": {
-                "symlink": true
-            }
+            "time": "2017-11-16 18:15:01"
         },
         {
             "name": "twig/twig",
@@ -2920,11 +2932,11 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "1.7.2.0",
+            "version": "1.7.3.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/phpspec/prophecy",
-                "reference": "c9b8c6088acd19d769d4cc0ffa60a9fe34344bd6",
+                "reference": "e4ed002c67da8eceb0eb8ddb8b3847bb53c5c2bf",
                 "shasum": null
             },
             "require": {
@@ -2936,7 +2948,7 @@
             },
             "require-dev": {
                 "phpspec/phpspec": "^2.5|^3.2",
-                "phpunit/phpunit": "^4.8 || ^5.6.5"
+                "phpunit/phpunit": "^4.8.35 || ^5.7"
             },
             "type": "library",
             "extra": {
@@ -2984,11 +2996,11 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "5.2.2.0",
+            "version": "5.2.4.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/phpunit/php-code-coverage",
-                "reference": "8ed1902a57849e117b5651fc1a5c48110946c06b",
+                "reference": "033ec97498cf530cc1be4199264cad568b19be26",
                 "shasum": null
             },
             "require": {
@@ -2997,7 +3009,7 @@
                 "php": "^7.0",
                 "phpunit/php-file-iterator": "^1.4.2",
                 "phpunit/php-text-template": "^1.2.1",
-                "phpunit/php-token-stream": "^1.4.11 || ^2.0",
+                "phpunit/php-token-stream": "^2.0.1",
                 "sebastian/code-unit-reverse-lookup": "^1.0.1",
                 "sebastian/environment": "^3.0",
                 "sebastian/version": "^2.0.1",
@@ -3048,11 +3060,11 @@
         },
         {
             "name": "phpunit/php-file-iterator",
-            "version": "1.4.2.0",
+            "version": "1.4.5.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/phpunit/php-file-iterator",
-                "reference": "3cc8f69b3028d0f96a9078e6295d86e9bf019be5",
+                "reference": "730b01bc3e867237eaac355e06a36b85dd93a8b4",
                 "shasum": null
             },
             "require": {
@@ -3135,11 +3147,11 @@
         },
         {
             "name": "phpunit/php-token-stream",
-            "version": "2.0.1.0",
+            "version": "2.0.2.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/phpunit/php-token-stream",
-                "reference": "9a02332089ac48e704c70f6cefed30c224e3c0b0",
+                "reference": "791198a2c6254db10131eecfe8c06670700904db",
                 "shasum": null
             },
             "require": {
@@ -3224,25 +3236,25 @@
         },
         {
             "name": "sebastian/comparator",
-            "version": "2.0.2.0",
+            "version": "2.1.0.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/sebastian/comparator",
-                "reference": "ae068fede81d06e7bb9bb46a367210a3d3e1fe6a",
+                "reference": "1174d9018191e93cb9d719edec01257fc05f8158",
                 "shasum": null
             },
             "require": {
                 "php": "^7.0",
                 "sebastian/diff": "^2.0",
-                "sebastian/exporter": "^3.0"
+                "sebastian/exporter": "^3.1"
             },
             "require-dev": {
-                "phpunit/phpunit": "^6.0"
+                "phpunit/phpunit": "^6.4"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.0.x-dev"
+                    "dev-master": "2.1.x-dev"
                 }
             },
             "autoload": {
@@ -3277,7 +3289,7 @@
                 }
             ],
             "description": "Provides the functionality to compare PHP values for equality",
-            "homepage": "http://www.github.com/sebastianbergmann/comparator",
+            "homepage": "https://github.com/sebastianbergmann/comparator",
             "keywords": [
                 "comparator",
                 "compare",
@@ -3587,11 +3599,11 @@
         },
         {
             "name": "symfony/phpunit-bridge",
-            "version": "3.3.10.0",
+            "version": "3.3.13.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/phpunit-bridge",
-                "reference": "6e40d1c8bc4037edf3852c0b29fdd2923c4e2133",
+                "reference": "0cbc5e0f8af23dadf270371b9627f1f264cf6021",
                 "shasum": null
             },
             "require": {
