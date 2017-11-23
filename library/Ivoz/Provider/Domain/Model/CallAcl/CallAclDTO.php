@@ -39,7 +39,7 @@ class CallAclDTO implements DataTransferObjectInterface
     /**
      * @var array|null
      */
-    private $relPatterns = null;
+    private $relMatchLists = null;
 
     /**
      * @return array
@@ -51,7 +51,7 @@ class CallAclDTO implements DataTransferObjectInterface
             'defaultPolicy' => $this->getDefaultPolicy(),
             'id' => $this->getId(),
             'companyId' => $this->getCompanyId(),
-            'relPatterns' => $this->getRelPatterns()
+            'relMatchLists' => $this->getRelMatchLists()
         ];
     }
 
@@ -61,12 +61,12 @@ class CallAclDTO implements DataTransferObjectInterface
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
         $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
-        if (!is_null($this->relPatterns)) {
-            $items = $this->getRelPatterns();
-            $this->relPatterns = [];
+        if (!is_null($this->relMatchLists)) {
+            $items = $this->getRelMatchLists();
+            $this->relMatchLists = [];
             foreach ($items as $item) {
-                $this->relPatterns[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\CallAclRelPattern\\CallAclRelPattern',
+                $this->relMatchLists[] = $transformer->transform(
+                    'Ivoz\\Provider\\Domain\\Model\\CallAclRelMatchList\\CallAclRelMatchList',
                     $item->getId() ?? $item
                 );
             }
@@ -79,9 +79,9 @@ class CallAclDTO implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-        $this->relPatterns = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\CallAclRelPattern\\CallAclRelPattern',
-            $this->relPatterns
+        $this->relMatchLists = $transformer->transform(
+            'Ivoz\\Provider\\Domain\\Model\\CallAclRelMatchList\\CallAclRelMatchList',
+            $this->relMatchLists
         );
     }
 
@@ -174,13 +174,13 @@ class CallAclDTO implements DataTransferObjectInterface
     }
 
     /**
-     * @param array $relPatterns
+     * @param array $relMatchLists
      *
      * @return CallAclDTO
      */
-    public function setRelPatterns($relPatterns)
+    public function setRelMatchLists($relMatchLists)
     {
-        $this->relPatterns = $relPatterns;
+        $this->relMatchLists = $relMatchLists;
 
         return $this;
     }
@@ -188,9 +188,9 @@ class CallAclDTO implements DataTransferObjectInterface
     /**
      * @return array
      */
-    public function getRelPatterns()
+    public function getRelMatchLists()
     {
-        return $this->relPatterns;
+        return $this->relMatchLists;
     }
 }
 

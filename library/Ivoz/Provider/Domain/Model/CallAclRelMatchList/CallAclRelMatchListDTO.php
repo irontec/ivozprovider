@@ -1,6 +1,6 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Model\CallAclRelPattern;
+namespace Ivoz\Provider\Domain\Model\CallAclRelMatchList;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
@@ -9,7 +9,7 @@ use Ivoz\Core\Application\CollectionTransformerInterface;
 /**
  * @codeCoverageIgnore
  */
-class CallAclRelPatternDTO implements DataTransferObjectInterface
+class CallAclRelMatchListDTO implements DataTransferObjectInterface
 {
     /**
      * @var integer
@@ -34,7 +34,7 @@ class CallAclRelPatternDTO implements DataTransferObjectInterface
     /**
      * @var mixed
      */
-    private $callAclPatternId;
+    private $matchListId;
 
     /**
      * @var mixed
@@ -44,7 +44,7 @@ class CallAclRelPatternDTO implements DataTransferObjectInterface
     /**
      * @var mixed
      */
-    private $callAclPattern;
+    private $matchList;
 
     /**
      * @return array
@@ -56,7 +56,7 @@ class CallAclRelPatternDTO implements DataTransferObjectInterface
             'policy' => $this->getPolicy(),
             'id' => $this->getId(),
             'callAclId' => $this->getCallAclId(),
-            'callAclPatternId' => $this->getCallAclPatternId()
+            'matchListId' => $this->getMatchListId()
         ];
     }
 
@@ -66,7 +66,7 @@ class CallAclRelPatternDTO implements DataTransferObjectInterface
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
         $this->callAcl = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\CallAcl\\CallAcl', $this->getCallAclId());
-        $this->callAclPattern = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\CallAclPattern\\CallAclPattern', $this->getCallAclPatternId());
+        $this->matchList = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\MatchList\\MatchList', $this->getMatchListId());
     }
 
     /**
@@ -80,7 +80,7 @@ class CallAclRelPatternDTO implements DataTransferObjectInterface
     /**
      * @param integer $priority
      *
-     * @return CallAclRelPatternDTO
+     * @return CallAclRelMatchListDTO
      */
     public function setPriority($priority)
     {
@@ -100,7 +100,7 @@ class CallAclRelPatternDTO implements DataTransferObjectInterface
     /**
      * @param string $policy
      *
-     * @return CallAclRelPatternDTO
+     * @return CallAclRelMatchListDTO
      */
     public function setPolicy($policy)
     {
@@ -120,7 +120,7 @@ class CallAclRelPatternDTO implements DataTransferObjectInterface
     /**
      * @param integer $id
      *
-     * @return CallAclRelPatternDTO
+     * @return CallAclRelMatchListDTO
      */
     public function setId($id)
     {
@@ -140,7 +140,7 @@ class CallAclRelPatternDTO implements DataTransferObjectInterface
     /**
      * @param integer $callAclId
      *
-     * @return CallAclRelPatternDTO
+     * @return CallAclRelMatchListDTO
      */
     public function setCallAclId($callAclId)
     {
@@ -166,13 +166,13 @@ class CallAclRelPatternDTO implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $callAclPatternId
+     * @param integer $matchListId
      *
-     * @return CallAclRelPatternDTO
+     * @return CallAclRelMatchListDTO
      */
-    public function setCallAclPatternId($callAclPatternId)
+    public function setMatchListId($matchListId)
     {
-        $this->callAclPatternId = $callAclPatternId;
+        $this->matchListId = $matchListId;
 
         return $this;
     }
@@ -180,17 +180,17 @@ class CallAclRelPatternDTO implements DataTransferObjectInterface
     /**
      * @return integer
      */
-    public function getCallAclPatternId()
+    public function getMatchListId()
     {
-        return $this->callAclPatternId;
+        return $this->matchListId;
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\CallAclPattern\CallAclPattern
+     * @return \Ivoz\Provider\Domain\Model\MatchList\MatchList
      */
-    public function getCallAclPattern()
+    public function getMatchList()
     {
-        return $this->callAclPattern;
+        return $this->matchList;
     }
 }
 

@@ -21,7 +21,7 @@ trait CallAclTrait
     /**
      * @var Collection
      */
-    protected $relPatterns;
+    protected $relMatchLists;
 
 
     /**
@@ -30,7 +30,7 @@ trait CallAclTrait
     public function __construct()
     {
         parent::__construct(...func_get_args());
-        $this->relPatterns = new ArrayCollection();
+        $this->relMatchLists = new ArrayCollection();
     }
 
     /**
@@ -52,8 +52,8 @@ trait CallAclTrait
          * @var $dto CallAclDTO
          */
         $self = parent::fromDTO($dto);
-        if ($dto->getRelPatterns()) {
-            $self->replaceRelPatterns($dto->getRelPatterns());
+        if ($dto->getRelMatchLists()) {
+            $self->replaceRelMatchLists($dto->getRelMatchLists());
         }
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -73,8 +73,8 @@ trait CallAclTrait
          * @var $dto CallAclDTO
          */
         parent::updateFromDTO($dto);
-        if ($dto->getRelPatterns()) {
-            $this->replaceRelPatterns($dto->getRelPatterns());
+        if ($dto->getRelMatchLists()) {
+            $this->replaceRelMatchLists($dto->getRelMatchLists());
         }
         return $this;
     }
@@ -101,75 +101,75 @@ trait CallAclTrait
 
 
     /**
-     * Add relPattern
+     * Add relMatchList
      *
-     * @param \Ivoz\Provider\Domain\Model\CallAclRelPattern\CallAclRelPatternInterface $relPattern
+     * @param \Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchListInterface $relMatchList
      *
      * @return CallAclTrait
      */
-    public function addRelPattern(\Ivoz\Provider\Domain\Model\CallAclRelPattern\CallAclRelPatternInterface $relPattern)
+    public function addRelMatchList(\Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchListInterface $relMatchList)
     {
-        $this->relPatterns->add($relPattern);
+        $this->relMatchLists->add($relMatchList);
 
         return $this;
     }
 
     /**
-     * Remove relPattern
+     * Remove relMatchList
      *
-     * @param \Ivoz\Provider\Domain\Model\CallAclRelPattern\CallAclRelPatternInterface $relPattern
+     * @param \Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchListInterface $relMatchList
      */
-    public function removeRelPattern(\Ivoz\Provider\Domain\Model\CallAclRelPattern\CallAclRelPatternInterface $relPattern)
+    public function removeRelMatchList(\Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchListInterface $relMatchList)
     {
-        $this->relPatterns->removeElement($relPattern);
+        $this->relMatchLists->removeElement($relMatchList);
     }
 
     /**
-     * Replace relPatterns
+     * Replace relMatchLists
      *
-     * @param \Ivoz\Provider\Domain\Model\CallAclRelPattern\CallAclRelPatternInterface[] $relPatterns
+     * @param \Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchListInterface[] $relMatchLists
      * @return self
      */
-    public function replaceRelPatterns(Collection $relPatterns)
+    public function replaceRelMatchLists(Collection $relMatchLists)
     {
         $updatedEntities = [];
         $fallBackId = -1;
-        foreach ($relPatterns as $entity) {
+        foreach ($relMatchLists as $entity) {
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setCallAcl($this);
         }
         $updatedEntityKeys = array_keys($updatedEntities);
 
-        foreach ($this->relPatterns as $key => $entity) {
+        foreach ($this->relMatchLists as $key => $entity) {
             $identity = $entity->getId();
             if (in_array($identity, $updatedEntityKeys)) {
-                $this->relPatterns->set($key, $updatedEntities[$identity]);
+                $this->relMatchLists->set($key, $updatedEntities[$identity]);
             } else {
-                $this->relPatterns->remove($key);
+                $this->relMatchLists->remove($key);
             }
             unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
-            $this->addRelPattern($entity);
+            $this->addRelMatchList($entity);
         }
 
         return $this;
     }
 
     /**
-     * Get relPatterns
+     * Get relMatchLists
      *
      * @return array
      */
-    public function getRelPatterns(Criteria $criteria = null)
+    public function getRelMatchLists(Criteria $criteria = null)
     {
         if (!is_null($criteria)) {
-            return $this->relPatterns->matching($criteria)->toArray();
+            return $this->relMatchLists->matching($criteria)->toArray();
         }
 
-        return $this->relPatterns->toArray();
+        return $this->relMatchLists->toArray();
     }
 
 

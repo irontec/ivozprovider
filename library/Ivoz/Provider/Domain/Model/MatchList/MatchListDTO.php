@@ -24,7 +24,17 @@ class MatchListDTO implements DataTransferObjectInterface
     /**
      * @var mixed
      */
+    private $brandId;
+
+    /**
+     * @var mixed
+     */
     private $companyId;
+
+    /**
+     * @var mixed
+     */
+    private $brand;
 
     /**
      * @var mixed
@@ -44,6 +54,7 @@ class MatchListDTO implements DataTransferObjectInterface
         return [
             'name' => $this->getName(),
             'id' => $this->getId(),
+            'brandId' => $this->getBrandId(),
             'companyId' => $this->getCompanyId(),
             'patterns' => $this->getPatterns()
         ];
@@ -54,6 +65,7 @@ class MatchListDTO implements DataTransferObjectInterface
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
+        $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
         $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
         if (!is_null($this->patterns)) {
             $items = $this->getPatterns();
@@ -117,6 +129,34 @@ class MatchListDTO implements DataTransferObjectInterface
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @param integer $brandId
+     *
+     * @return MatchListDTO
+     */
+    public function setBrandId($brandId)
+    {
+        $this->brandId = $brandId;
+
+        return $this;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getBrandId()
+    {
+        return $this->brandId;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Brand\Brand
+     */
+    public function getBrand()
+    {
+        return $this->brand;
     }
 
     /**

@@ -1,14 +1,14 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Model\CallAclRelPattern;
+namespace Ivoz\Provider\Domain\Model\CallAclRelMatchList;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 
 /**
- * CallAclRelPatternTrait
+ * CallAclRelMatchListTrait
  * @codeCoverageIgnore
  */
-trait CallAclRelPatternTrait
+trait CallAclRelMatchListTrait
 {
     /**
      * @var integer
@@ -26,11 +26,11 @@ trait CallAclRelPatternTrait
     }
 
     /**
-     * @return CallAclRelPatternDTO
+     * @return CallAclRelMatchListDTO
      */
     public static function createDTO()
     {
-        return new CallAclRelPatternDTO();
+        return new CallAclRelMatchListDTO();
     }
 
     /**
@@ -41,7 +41,7 @@ trait CallAclRelPatternTrait
     public static function fromDTO(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto CallAclRelPatternDTO
+         * @var $dto CallAclRelMatchListDTO
          */
         $self = parent::fromDTO($dto);
 
@@ -60,7 +60,7 @@ trait CallAclRelPatternTrait
     public function updateFromDTO(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto CallAclRelPatternDTO
+         * @var $dto CallAclRelMatchListDTO
          */
         parent::updateFromDTO($dto);
 
@@ -68,7 +68,7 @@ trait CallAclRelPatternTrait
     }
 
     /**
-     * @return CallAclRelPatternDTO
+     * @return CallAclRelMatchListDTO
      */
     public function toDTO()
     {

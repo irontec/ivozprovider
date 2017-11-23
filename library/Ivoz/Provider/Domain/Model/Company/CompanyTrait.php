@@ -66,11 +66,6 @@ trait CompanyTrait
     /**
      * @var Collection
      */
-    protected $callAclPatterns;
-
-    /**
-     * @var Collection
-     */
     protected $domains;
 
 
@@ -89,7 +84,6 @@ trait CompanyTrait
         $this->musicsOnHold = new ArrayCollection();
         $this->recordings = new ArrayCollection();
         $this->relFeatures = new ArrayCollection();
-        $this->callAclPatterns = new ArrayCollection();
         $this->domains = new ArrayCollection();
     }
 
@@ -148,10 +142,6 @@ trait CompanyTrait
             $self->replaceRelFeatures($dto->getRelFeatures());
         }
 
-        if ($dto->getCallAclPatterns()) {
-            $self->replaceCallAclPatterns($dto->getCallAclPatterns());
-        }
-
         if ($dto->getDomains()) {
             $self->replaceDomains($dto->getDomains());
         }
@@ -199,9 +189,6 @@ trait CompanyTrait
         }
         if ($dto->getRelFeatures()) {
             $this->replaceRelFeatures($dto->getRelFeatures());
-        }
-        if ($dto->getCallAclPatterns()) {
-            $this->replaceCallAclPatterns($dto->getCallAclPatterns());
         }
         if ($dto->getDomains()) {
             $this->replaceDomains($dto->getDomains());
@@ -876,78 +863,6 @@ trait CompanyTrait
         }
 
         return $this->relFeatures->toArray();
-    }
-
-    /**
-     * Add callAclPattern
-     *
-     * @param \Ivoz\Provider\Domain\Model\CallAclPattern\CallAclPatternInterface $callAclPattern
-     *
-     * @return CompanyTrait
-     */
-    public function addCallAclPattern(\Ivoz\Provider\Domain\Model\CallAclPattern\CallAclPatternInterface $callAclPattern)
-    {
-        $this->callAclPatterns->add($callAclPattern);
-
-        return $this;
-    }
-
-    /**
-     * Remove callAclPattern
-     *
-     * @param \Ivoz\Provider\Domain\Model\CallAclPattern\CallAclPatternInterface $callAclPattern
-     */
-    public function removeCallAclPattern(\Ivoz\Provider\Domain\Model\CallAclPattern\CallAclPatternInterface $callAclPattern)
-    {
-        $this->callAclPatterns->removeElement($callAclPattern);
-    }
-
-    /**
-     * Replace callAclPatterns
-     *
-     * @param \Ivoz\Provider\Domain\Model\CallAclPattern\CallAclPatternInterface[] $callAclPatterns
-     * @return self
-     */
-    public function replaceCallAclPatterns(Collection $callAclPatterns)
-    {
-        $updatedEntities = [];
-        $fallBackId = -1;
-        foreach ($callAclPatterns as $entity) {
-            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
-            $updatedEntities[$index] = $entity;
-            $entity->setCompany($this);
-        }
-        $updatedEntityKeys = array_keys($updatedEntities);
-
-        foreach ($this->callAclPatterns as $key => $entity) {
-            $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
-                $this->callAclPatterns->set($key, $updatedEntities[$identity]);
-            } else {
-                $this->callAclPatterns->remove($key);
-            }
-            unset($updatedEntities[$identity]);
-        }
-
-        foreach ($updatedEntities as $entity) {
-            $this->addCallAclPattern($entity);
-        }
-
-        return $this;
-    }
-
-    /**
-     * Get callAclPatterns
-     *
-     * @return array
-     */
-    public function getCallAclPatterns(Criteria $criteria = null)
-    {
-        if (!is_null($criteria)) {
-            return $this->callAclPatterns->matching($criteria)->toArray();
-        }
-
-        return $this->callAclPatterns->toArray();
     }
 
     /**

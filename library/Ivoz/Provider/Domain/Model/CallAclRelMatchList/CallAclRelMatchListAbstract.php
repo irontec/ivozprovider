@@ -1,15 +1,15 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Model\CallAclRelPattern;
+namespace Ivoz\Provider\Domain\Model\CallAclRelMatchList;
 
 use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 
 /**
- * CallAclRelPatternAbstract
+ * CallAclRelMatchListAbstract
  * @codeCoverageIgnore
  */
-abstract class CallAclRelPatternAbstract
+abstract class CallAclRelMatchListAbstract
 {
     /**
      * @var integer
@@ -28,9 +28,9 @@ abstract class CallAclRelPatternAbstract
     protected $callAcl;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\CallAclPattern\CallAclPatternInterface
+     * @var \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface
      */
-    protected $callAclPattern;
+    protected $matchList;
 
 
     /**
@@ -117,11 +117,11 @@ abstract class CallAclRelPatternAbstract
     }
 
     /**
-     * @return CallAclRelPatternDTO
+     * @return CallAclRelMatchListDTO
      */
     public static function createDTO()
     {
-        return new CallAclRelPatternDTO();
+        return new CallAclRelMatchListDTO();
     }
 
     /**
@@ -132,9 +132,9 @@ abstract class CallAclRelPatternAbstract
     public static function fromDTO(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto CallAclRelPatternDTO
+         * @var $dto CallAclRelMatchListDTO
          */
-        Assertion::isInstanceOf($dto, CallAclRelPatternDTO::class);
+        Assertion::isInstanceOf($dto, CallAclRelMatchListDTO::class);
 
         $self = new static(
             $dto->getPriority(),
@@ -142,7 +142,7 @@ abstract class CallAclRelPatternAbstract
 
         return $self
             ->setCallAcl($dto->getCallAcl())
-            ->setCallAclPattern($dto->getCallAclPattern())
+            ->setMatchList($dto->getMatchList())
         ;
     }
 
@@ -153,22 +153,22 @@ abstract class CallAclRelPatternAbstract
     public function updateFromDTO(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto CallAclRelPatternDTO
+         * @var $dto CallAclRelMatchListDTO
          */
-        Assertion::isInstanceOf($dto, CallAclRelPatternDTO::class);
+        Assertion::isInstanceOf($dto, CallAclRelMatchListDTO::class);
 
         $this
             ->setPriority($dto->getPriority())
             ->setPolicy($dto->getPolicy())
             ->setCallAcl($dto->getCallAcl())
-            ->setCallAclPattern($dto->getCallAclPattern());
+            ->setMatchList($dto->getMatchList());
 
 
         return $this;
     }
 
     /**
-     * @return CallAclRelPatternDTO
+     * @return CallAclRelMatchListDTO
      */
     public function toDTO()
     {
@@ -176,7 +176,7 @@ abstract class CallAclRelPatternAbstract
             ->setPriority($this->getPriority())
             ->setPolicy($this->getPolicy())
             ->setCallAclId($this->getCallAcl() ? $this->getCallAcl()->getId() : null)
-            ->setCallAclPatternId($this->getCallAclPattern() ? $this->getCallAclPattern()->getId() : null);
+            ->setMatchListId($this->getMatchList() ? $this->getMatchList()->getId() : null);
     }
 
     /**
@@ -188,7 +188,7 @@ abstract class CallAclRelPatternAbstract
             'priority' => self::getPriority(),
             'policy' => self::getPolicy(),
             'callAclId' => self::getCallAcl() ? self::getCallAcl()->getId() : null,
-            'callAclPatternId' => self::getCallAclPattern() ? self::getCallAclPattern()->getId() : null
+            'matchListId' => self::getMatchList() ? self::getMatchList()->getId() : null
         ];
     }
 
@@ -278,27 +278,27 @@ abstract class CallAclRelPatternAbstract
     }
 
     /**
-     * Set callAclPattern
+     * Set matchList
      *
-     * @param \Ivoz\Provider\Domain\Model\CallAclPattern\CallAclPatternInterface $callAclPattern
+     * @param \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchList
      *
      * @return self
      */
-    public function setCallAclPattern(\Ivoz\Provider\Domain\Model\CallAclPattern\CallAclPatternInterface $callAclPattern)
+    public function setMatchList(\Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchList)
     {
-        $this->callAclPattern = $callAclPattern;
+        $this->matchList = $matchList;
 
         return $this;
     }
 
     /**
-     * Get callAclPattern
+     * Get matchList
      *
-     * @return \Ivoz\Provider\Domain\Model\CallAclPattern\CallAclPatternInterface
+     * @return \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface
      */
-    public function getCallAclPattern()
+    public function getMatchList()
     {
-        return $this->callAclPattern;
+        return $this->matchList;
     }
 
 

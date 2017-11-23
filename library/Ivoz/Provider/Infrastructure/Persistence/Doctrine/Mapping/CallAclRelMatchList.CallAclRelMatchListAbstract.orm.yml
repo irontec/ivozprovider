@@ -1,16 +1,16 @@
-Ivoz\Provider\Domain\Model\CallAclRelPattern\CallAclRelPatternAbstract:
+Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchListAbstract:
   type: mappedSuperclass
   indexes:
-    CallAclId:
+    callAclId:
       columns:
-        - CallAclId
-    CallAclPatternId:
+        - callAclId
+    callAclPatternId:
       columns:
-        - CallAclPatternId
+        - matchListId
   uniqueConstraints:
     unique_callAclId_priority:
       columns:
-        - CallAclId
+        - callAclId
         - priority
   fields:
     priority:
@@ -38,14 +38,14 @@ Ivoz\Provider\Domain\Model\CallAclRelPattern\CallAclRelPatternAbstract:
           nullable: false
           onDelete: cascade
       orphanRemoval: false
-    callAclPattern:
-      targetEntity: \Ivoz\Provider\Domain\Model\CallAclPattern\CallAclPatternInterface
+    matchList:
+      targetEntity: \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface
       cascade: {  }
       fetch: LAZY
       mappedBy: null
       inversedBy: null
       joinColumns:
-        CallAclPatternId:
+        matchListId:
           referencedColumnName: id
           nullable: false
           onDelete: cascade

@@ -1,13 +1,13 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Model\CallAclRelPattern;
+namespace Ivoz\Provider\Domain\Model\CallAclRelMatchList;
 
 /**
  * CallAclRelPattern
  */
-class CallAclRelPattern extends CallAclRelPatternAbstract implements CallAclRelPatternInterface
+class CallAclRelMatchList extends CallAclRelMatchListAbstract implements CallAclRelMatchListInterface
 {
-    use CallAclRelPatternTrait;
+    use CallAclRelMatchListTrait;
 
     public function getChangeSet()
     {

@@ -1,10 +1,10 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Model\CallAclRelPattern;
+namespace Ivoz\Provider\Domain\Model\CallAclRelMatchList;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface CallAclRelPatternInterface extends LoggableEntityInterface
+interface CallAclRelMatchListInterface extends LoggableEntityInterface
 {
     public function getChangeSet();
 
@@ -57,20 +57,20 @@ interface CallAclRelPatternInterface extends LoggableEntityInterface
     public function getCallAcl();
 
     /**
-     * Set callAclPattern
+     * Set matchList
      *
-     * @param \Ivoz\Provider\Domain\Model\CallAclPattern\CallAclPatternInterface $callAclPattern
+     * @param \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchList
      *
      * @return self
      */
-    public function setCallAclPattern(\Ivoz\Provider\Domain\Model\CallAclPattern\CallAclPatternInterface $callAclPattern);
+    public function setMatchList(\Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchList);
 
     /**
-     * Get callAclPattern
+     * Get matchList
      *
-     * @return \Ivoz\Provider\Domain\Model\CallAclPattern\CallAclPatternInterface
+     * @return \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface
      */
-    public function getCallAclPattern();
+    public function getMatchList();
 
 }
 

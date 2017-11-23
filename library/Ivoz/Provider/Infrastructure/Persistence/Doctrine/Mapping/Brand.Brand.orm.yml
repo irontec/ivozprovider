@@ -35,8 +35,8 @@ Ivoz\Provider\Domain\Model\Brand\Brand:
     musicsOnHold:
       targetEntity: Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface
       mappedBy: brand
-    genericCallAclPatterns:
-      targetEntity: Ivoz\Provider\Domain\Model\GenericCallAclPattern\GenericCallAclPatternInterface
+    matchLists:
+      targetEntity: Ivoz\Provider\Domain\Model\MatchList\MatchListInterface
       mappedBy: brand
     outgoingRoutings:
       targetEntity: Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface

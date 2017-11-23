@@ -249,11 +249,6 @@ class CompanyDTO implements DataTransferObjectInterface
     /**
      * @var array|null
      */
-    private $callAclPatterns = null;
-
-    /**
-     * @var array|null
-     */
     private $domains = null;
 
     /**
@@ -299,7 +294,6 @@ class CompanyDTO implements DataTransferObjectInterface
             'musicsOnHold' => $this->getMusicsOnHold(),
             'recordings' => $this->getRecordings(),
             'relFeatures' => $this->getRelFeatures(),
-            'callAclPatterns' => $this->getCallAclPatterns(),
             'domains' => $this->getDomains()
         ];
     }
@@ -418,17 +412,6 @@ class CompanyDTO implements DataTransferObjectInterface
             }
         }
 
-        if (!is_null($this->callAclPatterns)) {
-            $items = $this->getCallAclPatterns();
-            $this->callAclPatterns = [];
-            foreach ($items as $item) {
-                $this->callAclPatterns[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\CallAclPattern\\CallAclPattern',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-
         if (!is_null($this->domains)) {
             $items = $this->getDomains();
             $this->domains = [];
@@ -482,10 +465,6 @@ class CompanyDTO implements DataTransferObjectInterface
         $this->relFeatures = $transformer->transform(
             'Ivoz\\Provider\\Domain\\Model\\FeaturesRelCompany\\FeaturesRelCompany',
             $this->relFeatures
-        );
-        $this->callAclPatterns = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\CallAclPattern\\CallAclPattern',
-            $this->callAclPatterns
         );
         $this->domains = $transformer->transform(
             'Ivoz\\Provider\\Domain\\Model\\Domain\\Domain',
@@ -1311,26 +1290,6 @@ class CompanyDTO implements DataTransferObjectInterface
     public function getRelFeatures()
     {
         return $this->relFeatures;
-    }
-
-    /**
-     * @param array $callAclPatterns
-     *
-     * @return CompanyDTO
-     */
-    public function setCallAclPatterns($callAclPatterns)
-    {
-        $this->callAclPatterns = $callAclPatterns;
-
-        return $this;
-    }
-
-    /**
-     * @return array
-     */
-    public function getCallAclPatterns()
-    {
-        return $this->callAclPatterns;
     }
 
     /**

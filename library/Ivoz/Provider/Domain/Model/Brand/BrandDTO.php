@@ -165,7 +165,7 @@ class BrandDTO implements DataTransferObjectInterface
     /**
      * @var array|null
      */
-    private $genericCallAclPatterns = null;
+    private $matchLists = null;
 
     /**
      * @var array|null
@@ -205,7 +205,7 @@ class BrandDTO implements DataTransferObjectInterface
             'domains' => $this->getDomains(),
             'retailAccounts' => $this->getRetailAccounts(),
             'musicsOnHold' => $this->getMusicsOnHold(),
-            'genericCallAclPatterns' => $this->getGenericCallAclPatterns(),
+            'matchLists' => $this->getMatchLists(),
             'outgoingRoutings' => $this->getOutgoingRoutings()
         ];
     }
@@ -295,12 +295,12 @@ class BrandDTO implements DataTransferObjectInterface
             }
         }
 
-        if (!is_null($this->genericCallAclPatterns)) {
-            $items = $this->getGenericCallAclPatterns();
-            $this->genericCallAclPatterns = [];
+        if (!is_null($this->matchLists)) {
+            $items = $this->getMatchLists();
+            $this->matchLists = [];
             foreach ($items as $item) {
-                $this->genericCallAclPatterns[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\GenericCallAclPattern\\GenericCallAclPattern',
+                $this->matchLists[] = $transformer->transform(
+                    'Ivoz\\Provider\\Domain\\Model\\MatchList\\MatchList',
                     $item->getId() ?? $item
                 );
             }
@@ -352,9 +352,9 @@ class BrandDTO implements DataTransferObjectInterface
             'Ivoz\\Provider\\Domain\\Model\\MusicOnHold\\MusicOnHold',
             $this->musicsOnHold
         );
-        $this->genericCallAclPatterns = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\GenericCallAclPattern\\GenericCallAclPattern',
-            $this->genericCallAclPatterns
+        $this->matchLists = $transformer->transform(
+            'Ivoz\\Provider\\Domain\\Model\\MatchList\\MatchList',
+            $this->matchLists
         );
         $this->outgoingRoutings = $transformer->transform(
             'Ivoz\\Provider\\Domain\\Model\\OutgoingRouting\\OutgoingRouting',
@@ -927,13 +927,13 @@ class BrandDTO implements DataTransferObjectInterface
     }
 
     /**
-     * @param array $genericCallAclPatterns
+     * @param array $matchLists
      *
      * @return BrandDTO
      */
-    public function setGenericCallAclPatterns($genericCallAclPatterns)
+    public function setMatchLists($matchLists)
     {
-        $this->genericCallAclPatterns = $genericCallAclPatterns;
+        $this->matchLists = $matchLists;
 
         return $this;
     }
@@ -941,9 +941,9 @@ class BrandDTO implements DataTransferObjectInterface
     /**
      * @return array
      */
-    public function getGenericCallAclPatterns()
+    public function getMatchLists()
     {
-        return $this->genericCallAclPatterns;
+        return $this->matchLists;
     }
 
     /**
