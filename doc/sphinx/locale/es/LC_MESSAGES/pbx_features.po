@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-21 15:20+0100\n"
+"POT-Creation-Date: 2017-11-24 12:51+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.3.4\n"
+"Generated-By: Babel 2.5.1\n"
 
 #: ../../pbx_features/call_captures.rst:5
 msgid "Call pickup"
@@ -166,22 +166,18 @@ msgid "The **Call ACL** setup has two different parts:"
 msgstr "La configuración de **permisos de llamada** tiene 2 partes:"
 
 #: ../../pbx_features/call_permissions.rst:14
-msgid "Classify the call in different types based on **regular expressions**:"
+msgid "Classify the call in different types based on **match lists**:"
 msgstr ""
-"Clasificar las llamadas en determinados tipos utilizando **expresiones "
-"regulares**:"
+"Clasificar las llamadas en determinados tipos utilizando **listas de "
+"coincidencia**:"
 
 #: ../../pbx_features/call_permissions.rst:16
-msgid "Brand level: **Brand Configuration** > **Generic call ACL patterns**"
-msgstr ""
-"A nivel de marca: **Configuración de Marca** > **Patrones de permiso "
-"genéricos**."
+msgid "Brand level: **Brand Configuration** > **Match Lists**"
+msgstr "A nivel de marca en **Configuración de Marca** > **Listas de coincidencia**."
 
 #: ../../pbx_features/call_permissions.rst:18
-msgid "Company level: **Company Configuration** > **Call ACL patterns**"
-msgstr ""
-"A nivel de empresa: **Configuración de Empresa** > **Patrones de permisos"
-" de llamada**."
+msgid "Company level: **Company Configuration** > **Match Lists**"
+msgstr "A nivel de empresa en **Configuración de Empresa** > **Listas de coincidencia**."
 
 #: ../../pbx_features/call_permissions.rst:20
 msgid ""
@@ -192,177 +188,88 @@ msgstr ""
 "Empresa** > **Permisos llamada**"
 
 #: ../../pbx_features/call_permissions.rst:25
-msgid "Call ACL patterns"
-msgstr "Patrones de permiso"
+msgid "Call ACL Matchlits"
+msgstr "Listas de coincidencia para ACLs"
 
 #: ../../pbx_features/call_permissions.rst:27
 msgid ""
-"The destination number is matched against the **Company ACL patterns** to"
-" determine the destination type."
+"The destination number is matched against the **ACL MatchLits** to "
+"determine the call permission."
 msgstr ""
-"La clasificación de llamadas se realiza en las secciones indicadas a "
-"nivel de marca o a nivel de empresa."
+"El destino de la llamadas es comprobado contra la **Lista de coincidencia** para "
+"determinar los permisos de la llamada."
 
 #: ../../pbx_features/call_permissions.rst:30
 msgid ""
-"When a Brand operator creates a new company, all of the **Generic ACL "
-"patterns** defined in the **Brand configuration** are copied to the "
-"**Company configuration** > **Call ACLs**. This way, the brand operator "
-"can define the most common patterns to speed up the company "
-"configuration."
+"Brand matchlists can be used by any of its companies, so most common ACL "
+"Patterns (p.e. country prefixes) can be reused easily."
 msgstr ""
-"Cuando un operador de marca crea una empresa, todos los **Patrones "
-"permiso genéricos** definidos en ese momento a nivel de **Configuración "
-"de Marca** se copian a **Configuración de Empresa** > **Patrones de "
-"permisos de llamada**. De esta forma, el operador de marca puede definir "
-"los más habituales y evitar este trabajo a los administradores de "
-"empresa."
+"Las listas de coincidencia de marca pueden ser empleadas por sus compañías, de tal manera que "
+"los patrones más genéricos (por ej. prefijos de paises) puede ser facilmente reutilizables."
 
-#: ../../pbx_features/call_permissions.rst:35
-msgid "The patterns creation process is quite simple:"
-msgstr "La creación de nuevos patrones es muy simple:"
-
-#: ../../pbx_features/call_permissions.rst:39
+#: ../../pbx_features/call_permissions.rst:33
 msgid ""
-"This new ACL pattern includes the calls starting with the spanish country"
-" prefix followed by 6 or 7 and 8 more digits between 0 and 9. This is the"
-" E.164 format for the spanish mobile numbers."
+"For more information of how MatchLists patterns are created, please refer"
+" to section :ref:`match_lists`."
 msgstr ""
-"Este nuevo patrón de permisos engloba las llamadas que comiencen el "
-"prefijo de país español seguido por 6 o 7 y sigan con 8 dígitos del 0 al "
-"9. Es decir, engloba todas las numeraciones móviles nacionales."
+"Para más información sobre como se crean patrones de listas de coincidencia, ver sección "
+":ref:`match_lists`."
 
-#: ../../pbx_features/call_permissions.rst:43
-msgid "Following this spanish example, other formats will be:"
-msgstr "Otros patrones de permisos que pueden resultar interesantes son:"
-
-#: ../../pbx_features/call_permissions.rst:46
-msgid ""
-"Spanish Landline (including special numbers prefix: 902, etc.): "
-"^34[89][0-9]{8}$"
+#: ../../pbx_features/call_permissions.rst:36
+msgid "**Regular expressions of Match List patterns must be in E.164 format**."
 msgstr ""
-"Fijos nacionales (incluyendo numeraciones especiales: 902, etc.): "
-"^34[89][0-9]{8}$"
-
-#: ../../pbx_features/call_permissions.rst:46
-msgid "34 (Spain country prefix), 8 or 9 followed by 8 digits"
-msgstr "34 (prefijo de país español), un 8 o un 9 seguido de 8 dígitos."
-
-#: ../../pbx_features/call_permissions.rst:49
-msgid ""
-"Spanish Landline (excluding special number prefix: 902, etc.): "
-"^34[89][1-9][0-9]{7}$"
-msgstr ""
-"Fijos nacionales (excluyendo numeraciones especiales: 902, etc.): "
-"^34[89][1-9][0-9]{7}$"
-
-#: ../../pbx_features/call_permissions.rst:49
-msgid ""
-"34 (Spain country prefix), 8 or 9, followed by one digit between 1 and 9,"
-" followed by 7 digits."
-msgstr ""
-"34 (prefijo de país español), un 8 o un 9, seguido de 1 dígito del 1 al "
-"9, seguido de 7 dígitos."
-
-#: ../../pbx_features/call_permissions.rst:52
-msgid "United Kingdom Landline: ^44[0-9]+$"
-msgstr "Fijo Reino Unido: ^44[0-9]+$"
-
-#: ../../pbx_features/call_permissions.rst:52
-msgid "44 (UK country prefix), followed by more digits"
-msgstr "44 (prefijo del Reino Unido), seguido de más dígitos."
-
-#: ../../pbx_features/call_permissions.rst:55
-msgid "External numbers format"
-msgstr "Formato de los números externos"
-
-#: ../../pbx_features/call_permissions.rst:56
-msgid "**Regular expressions of Call ACL patterns must be in E.164 format**."
-msgstr ""
-"**Las expresiones regulares de los patrones de permiso tienen que estar "
+"**Las expresiones regulares de las listas de coincidencia tienen que estar "
 "en formato E.164**"
 
-#: ../../pbx_features/call_permissions.rst:58
-msgid "There are two main reasons for this decision:"
-msgstr "Existen dos razones principales para esta decisión:"
-
-#: ../../pbx_features/call_permissions.rst:60
-msgid ""
-"The same pattern will apply to all the users of the company,  no matter "
-"what country the user is."
-msgstr ""
-"El mismo patrón aplicará para todos los usuarios de la compañía, "
-"independientemente del país del usuario."
-
-#: ../../pbx_features/call_permissions.rst:63
-msgid ""
-"Brand-level ACL patterns will be inherited by all new companies. The only"
-" way this inheritance could be useful was using an standard format, valid"
-" for all the companies countries."
-msgstr ""
-"Los patrones a nivel de marca se heredarán en la creación de nuevas "
-"empresas. La única forma de que esto resulte útil es utilizar un formato "
-"estándar."
-
-#: ../../pbx_features/call_permissions.rst:67
-msgid "Besides, this way it is really easy to avoid (or allow) call to a country."
-msgstr ""
-"Además, con este formato es realmente fácil impedir (o permitir) llamadas"
-" a todo un país."
-
-#: ../../pbx_features/call_permissions.rst:71 ../../pbx_features/friends.rst:89
+#: ../../pbx_features/call_permissions.rst:40 ../../pbx_features/friends.rst:89
 #: ../../pbx_features/users.rst:86
 msgid "Call ACL"
 msgstr "Permisos de llamada"
 
-#: ../../pbx_features/call_permissions.rst:73
+#: ../../pbx_features/call_permissions.rst:42
 msgid "The **Call ACL** configuration is easier to explain with an example:"
 msgstr ""
 "La definición de un **Permiso de llamada** utiliza una lógica más fácil "
 "de describir con un ejemplo."
 
-#: ../../pbx_features/call_permissions.rst:75
-msgid "Imagine the following **CALL ACL patterns**:"
-msgstr "Imaginemos que tenemos los siguientes **patrones de permisos**:"
+#: ../../pbx_features/call_permissions.rst:44
+msgid "Imagine the following **match list** with this patterns:"
+msgstr "Imaginemos que tenemos los siguientes patrones en una **lista de coincidencia**:"
 
-#: ../../pbx_features/call_permissions.rst:79
+#: ../../pbx_features/call_permissions.rst:54
 msgid ""
 "We could create a **Call ACL** that only allow calling to this "
 "destinations:"
 msgstr "Podríamos definir un **Permiso de llamada** como el que sigue:"
 
-#: ../../pbx_features/call_permissions.rst:83
+#: ../../pbx_features/call_permissions.rst:65
 msgid ""
-"The default action determines what to do with the call when the "
-"destination number **does not match any ACL patterns**."
+"The default policy determines what to do with the call when the "
+"destination number **does not match any ACL matchlists**."
 msgstr ""
 "La acción por defecto describe lo que hay que hacer con la llamada una "
 "vez que se han evaluado todas las reglas (permitir/rechazar)."
 
-#: ../../pbx_features/call_permissions.rst:86
+#: ../../pbx_features/call_permissions.rst:68
 msgid "After creating the **Call ACL** we can edit it to add the required rules:"
 msgstr ""
 "Editamos el **permiso de llamada** que acabamos de crear para añadir las "
 "reglas necesarias:"
 
-#: ../../pbx_features/call_permissions.rst:91
+#: ../../pbx_features/call_permissions.rst:78
 msgid ""
-"The **metric** determines the evaulation order of the rules and the "
-"action that"
+"The **metric** determines the evaluation order of the rules and the "
+"action that will be applied if it *matches* the list (allow/deny)."
 msgstr ""
 "La **métrica** determina el orden de evaluación de las reglas y la acción"
 " lo que "
 
-#: ../../pbx_features/call_permissions.rst:91
-msgid "that will be applied if it *matches* the pattern (allow/deny)."
-msgstr "se hará con la llamada en caso de *matchear* (permitir/rechazar)."
-
-#: ../../pbx_features/call_permissions.rst:95
+#: ../../pbx_features/call_permissions.rst:89
 msgid ""
-"Once we have added our two spanish **Call ACL patterns**, our **Call "
-"ACL** will look like this:"
+"Once we have added our spanish **Match List**, our **Call ACL** will look"
+" like this:"
 msgstr ""
-"Una vez hecho lo propio para el otro **patrón de permisos**, nuestro "
+"Una vez añadida nuestra **lista de coincidencia** española, nuestro "
 "**permiso de llamadas** quedará como sigue:"
 
 #: ../../pbx_features/call_permissions.rst:100
@@ -373,7 +280,7 @@ msgstr ""
 "Ya solo faltaría añadírselo a un usuario concreto en la sección "
 "**Configuración de empresa** > **Usuarios**:"
 
-#: ../../pbx_features/call_permissions.rst:105
+#: ../../pbx_features/call_permissions.rst:111
 msgid ""
 "From this moment on, Alice will only be allowed to call internal "
 "extensions (they are always allowed) and spanish numbers."
@@ -905,9 +812,9 @@ msgid ""
 "with an static assignment or 'hash based' distribution (see **Distribute "
 "method** :ref:`here <Remaining Parameters>`)."
 msgstr ""
-"En **Instalaciones distribuidas** el uso de conferencias solo es compatible con "
-"una asignación estática o 'basada en hash' (ver **Método de "
-"distribución** :ref:`aquí <Parámetros restantes>`)."
+"En **Instalaciones distribuidas** el uso de conferencias solo es "
+"compatible con una asignación estática o 'basada en hash' (ver **Método "
+"de distribución** :ref:`aquí <Parámetros restantes>`)."
 
 #: ../../pbx_features/conference_rooms.rst:13
 msgid ""
@@ -915,9 +822,9 @@ msgid ""
 "**Features** in :ref:`Brand Configuration` and :ref:`Company "
 "Configuration`)."
 msgstr ""
-"Los operadores de marca pueden elegir que Compañía tiene conferencias (ver "
-"**Features** en :ref:`Configuración de Marca` y :ref:`Configuración de "
-"Compañía`)."
+"Los operadores de marca pueden elegir que Compañía tiene conferencias "
+"(ver **Features** en :ref:`Configuración de Marca` y :ref:`Configuración "
+"de Compañía`)."
 
 #: ../../pbx_features/conference_rooms.rst:17
 msgid "Create a new audio conference"
@@ -3284,8 +3191,8 @@ msgid ""
 "origin that matches *Alice's friends* matchlist."
 msgstr ""
 "Con la configuración de la imagen, toda llamada a *Alice* acabará en "
-"*Bob*, salvo las que haga el propio *Bob* y aquellas cuyo origen "
-"coincida con la lista *Alice's friends*."
+"*Bob*, salvo las que haga el propio *Bob* y aquellas cuyo origen coincida"
+" con la lista *Alice's friends*."
 
 #: ../../pbx_features/users.rst:176
 msgid "Group Configuration"
@@ -3414,5 +3321,3 @@ msgstr ""
 "Si queremos desviar a un grupo de salto, por ejemplo, bastaría con crear "
 "una extensión que apunte al grupo de salto deseado y seleccionar "
 "*Extensión* en el **Tipo de destino**."
-
-
