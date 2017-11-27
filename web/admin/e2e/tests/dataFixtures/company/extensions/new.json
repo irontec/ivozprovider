@@ -1,8 +1,7 @@
 {
   "number": "12346",
   "routeType": "number",
-  "IvrCommonId": "__NULL__",
-  "IvrCustomId": "__NULL__",
+  "ivrId": "__NULL__",
   "huntGroupId": "__NULL__",
   "conferenceRoomId": "__NULL__",
   "userId": "__NULL__",

@@ -56,7 +56,8 @@ function edit () {
                     'Unexpected response ' + JSON.stringify(response)
                 );
             }
-        );
+        )
+        .api.pause(500);
   }
 
   function uploadAndCleanFilesIfAny(dataFixture)

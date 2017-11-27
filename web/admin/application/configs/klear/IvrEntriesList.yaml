@@ -4,10 +4,10 @@
 production:
   main:
     module: klearMatrix
-    defaultScreen: IvrEntriesList_screen
+    defaultScreen: ivrEntriesList_screen
 
-  screens: &IvrEntries_screensLink
-    IvrEntriesList_screen: &IvrEntriesList_screenLink
+  screens: &ivrEntries_screensLink
+    ivrEntriesList_screen: &ivrEntriesList_screenLink
       controller: list
       class: ui-silk-chart-organisation-add
       pagination:
@@ -29,18 +29,18 @@ production:
         options:
           title: _("Options")
           screens:
-            IvrEntriesEdit_screen: true
+            ivrEntriesEdit_screen: true
           dialogs:
-            IvrEntriesDel_dialog: true
-          default: IvrEntriesEdit_screen
+            ivrEntriesDel_dialog: true
+          default: ivrEntriesEdit_screen
       options:
         title: _("Options")
         screens:
-          IvrEntriesNew_screen: true
+          ivrEntriesNew_screen: true
         dialogs:
-          IvrEntriesDel_dialog: true
+          ivrEntriesDel_dialog: true
 
-    IvrEntriesNew_screen: &IvrEntriesNew_screenLink
+    ivrEntriesNew_screen: &ivrEntriesNew_screenLink
       <<: *IvrEntries
       controller: new
       class: ui-silk-add
@@ -53,7 +53,7 @@ production:
       fields:
         blacklist:
           target: true
-      fixedPositions: &IvrEntriesFixedPositions_link
+      fixedPositions: &ivrEntriesFixedPositions_link
         group0:
           label: _("Entry information")
           colsPerRow: 8
@@ -71,7 +71,7 @@ production:
             voiceMailUserId: 5
             conditionalRouteId: 5
 
-    IvrEntriesEdit_screen: &IvrEntriesEdit_screenLink
+    ivrEntriesEdit_screen: &ivrEntriesEdit_screenLink
       <<: *IvrEntries
       controller: edit
       class: ui-silk-pencil
@@ -81,10 +81,10 @@ production:
         blacklist:
           target: true
       fixedPositions:
-        <<: *IvrEntriesFixedPositions_link
+        <<: *ivrEntriesFixedPositions_link
 
-  dialogs: &IvrEntries_dialogsLink
-    IvrEntriesDel_dialog: &IvrEntriesDel_dialogLink
+  dialogs: &ivrEntries_dialogsLink
+    ivrEntriesDel_dialog: &ivrEntriesDel_dialogLink
       <<: *IvrEntries
       controller: delete
       class: ui-silk-bin

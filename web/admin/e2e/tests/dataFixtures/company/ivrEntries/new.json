@@ -1,0 +1,10 @@
+{
+    "entry": "test",
+    "welcomeLocutionId": "1",
+    "routeType": "number",
+    "numberCountryId": "70",
+    "numberValue": "946002050",
+    "extensionId": "__NULL__",
+    "voiceMailUserId": "__NULL__",
+    "conditionalRouteId": "__NULL__"
+}

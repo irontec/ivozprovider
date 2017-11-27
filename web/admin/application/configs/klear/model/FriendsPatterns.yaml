@@ -9,12 +9,13 @@ production:
       source:
         data: mapper
         config:
+          entity: \Ivoz\Provider\Domain\Model\Friend\Friend
           fieldName:
             fields:
               - name
             template: '%name%'
           order:
-            Friends.name: asc
+            Friend.name: asc
       default: true
     name:
       title: _('Name')

@@ -14,7 +14,8 @@ production:
             fields:
               - name
             template: '%name%'
-          order: name
+          order:
+            OutgoingDdiRule.name: asc
       default: true
     matchListId:
       title: _('Match List')
