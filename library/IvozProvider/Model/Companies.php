@@ -120,7 +120,7 @@ class Companies extends Raw\Companies
         $dateTime = $date->toString('yyyy-MM-dd HH:mm:ss');
 
         $where = "validFrom <= '" . $dateTime . "' AND validTo >= '" . $dateTime .
-                         "'";
+                         "' AND metric > 0";
         $this->_logger->log("[Model][Companies] Condition: " . $where,
                         \Zend_Log::DEBUG);
         $order = "metric asc";
