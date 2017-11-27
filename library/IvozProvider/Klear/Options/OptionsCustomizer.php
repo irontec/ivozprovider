@@ -92,6 +92,19 @@ class IvozProvider_Klear_Options_OptionsCustomizer implements \KlearMatrix_Model
             case "transformationRulesCalleeOutView_screen":
                 $show = !$this->_isBrandData();
                 break;
+            case "matchListsEdit_screen":
+            case "matchListsDel_dialog":
+            case "matchListPatternsList_screen":
+                $show = $this->_isCompanyData();
+                break;
+            case "matchListPatternsView_screen":
+                $show = !$this->_isCompanyData();
+                break;
+            case "genericMatchListsEdit_screen":
+            case "genericMatchListPatternsList_screen":
+            case "genericMatchListsDel_dialog":
+                $show = $this->_isBrandData();
+                break;
             default:
                 throw new Klear_Exception_Default("Unsupported dialog " . $this->_option->getName());
                 break;
@@ -134,6 +147,12 @@ class IvozProvider_Klear_Options_OptionsCustomizer implements \KlearMatrix_Model
         $brandId = $this->_parentModel->getBrandId();
 
         return $brandId != null;
+    }
+
+    protected function _isCompanyData() {
+        $companyId = $this->_parentModel->getCompanyId();
+
+        return $companyId != null;
     }
 
 

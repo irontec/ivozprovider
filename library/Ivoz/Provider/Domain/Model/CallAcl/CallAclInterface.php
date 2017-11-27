@@ -64,35 +64,35 @@ interface CallAclInterface extends LoggableEntityInterface
     public function getCompany();
 
     /**
-     * Add relPattern
+     * Add relMatchList
      *
-     * @param \Ivoz\Provider\Domain\Model\CallAclRelPattern\CallAclRelPatternInterface $relPattern
+     * @param \Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchListInterface $relMatchList
      *
      * @return CallAclTrait
      */
-    public function addRelPattern(\Ivoz\Provider\Domain\Model\CallAclRelPattern\CallAclRelPatternInterface $relPattern);
+    public function addRelMatchList(\Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchListInterface $relMatchList);
 
     /**
-     * Remove relPattern
+     * Remove relMatchList
      *
-     * @param \Ivoz\Provider\Domain\Model\CallAclRelPattern\CallAclRelPatternInterface $relPattern
+     * @param \Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchListInterface $relMatchList
      */
-    public function removeRelPattern(\Ivoz\Provider\Domain\Model\CallAclRelPattern\CallAclRelPatternInterface $relPattern);
+    public function removeRelMatchList(\Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchListInterface $relMatchList);
 
     /**
-     * Replace relPatterns
+     * Replace relMatchLists
      *
-     * @param \Ivoz\Provider\Domain\Model\CallAclRelPattern\CallAclRelPatternInterface[] $relPatterns
+     * @param \Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchListInterface[] $relMatchLists
      * @return self
      */
-    public function replaceRelPatterns(Collection $relPatterns);
+    public function replaceRelMatchLists(Collection $relMatchLists);
 
     /**
-     * Get relPatterns
+     * Get relMatchLists
      *
      * @return array
      */
-    public function getRelPatterns(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getRelMatchLists(\Doctrine\Common\Collections\Criteria $criteria = null);
 
 }
 

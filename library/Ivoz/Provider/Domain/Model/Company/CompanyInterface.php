@@ -775,37 +775,6 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getRelFeatures(\Doctrine\Common\Collections\Criteria $criteria = null);
 
     /**
-     * Add callAclPattern
-     *
-     * @param \Ivoz\Provider\Domain\Model\CallAclPattern\CallAclPatternInterface $callAclPattern
-     *
-     * @return CompanyTrait
-     */
-    public function addCallAclPattern(\Ivoz\Provider\Domain\Model\CallAclPattern\CallAclPatternInterface $callAclPattern);
-
-    /**
-     * Remove callAclPattern
-     *
-     * @param \Ivoz\Provider\Domain\Model\CallAclPattern\CallAclPatternInterface $callAclPattern
-     */
-    public function removeCallAclPattern(\Ivoz\Provider\Domain\Model\CallAclPattern\CallAclPatternInterface $callAclPattern);
-
-    /**
-     * Replace callAclPatterns
-     *
-     * @param \Ivoz\Provider\Domain\Model\CallAclPattern\CallAclPatternInterface[] $callAclPatterns
-     * @return self
-     */
-    public function replaceCallAclPatterns(Collection $callAclPatterns);
-
-    /**
-     * Get callAclPatterns
-     *
-     * @return array
-     */
-    public function getCallAclPatterns(\Doctrine\Common\Collections\Criteria $criteria = null);
-
-    /**
      * Add domain
      *
      * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain

@@ -34,13 +34,29 @@ interface MatchListInterface extends LoggableEntityInterface
     public function getName();
 
     /**
+     * Set brand
+     *
+     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
+     *
+     * @return self
+     */
+    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null);
+
+    /**
+     * Get brand
+     *
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     */
+    public function getBrand();
+
+    /**
      * Set company
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
      * @return self
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company);
+    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null);
 
     /**
      * Get company

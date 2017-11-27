@@ -434,35 +434,35 @@ interface BrandInterface extends LoggableEntityInterface
     public function getMusicsOnHold(\Doctrine\Common\Collections\Criteria $criteria = null);
 
     /**
-     * Add genericCallAclPattern
+     * Add matchList
      *
-     * @param \Ivoz\Provider\Domain\Model\GenericCallAclPattern\GenericCallAclPatternInterface $genericCallAclPattern
+     * @param \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchList
      *
      * @return BrandTrait
      */
-    public function addGenericCallAclPattern(\Ivoz\Provider\Domain\Model\GenericCallAclPattern\GenericCallAclPatternInterface $genericCallAclPattern);
+    public function addMatchList(\Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchList);
 
     /**
-     * Remove genericCallAclPattern
+     * Remove matchList
      *
-     * @param \Ivoz\Provider\Domain\Model\GenericCallAclPattern\GenericCallAclPatternInterface $genericCallAclPattern
+     * @param \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchList
      */
-    public function removeGenericCallAclPattern(\Ivoz\Provider\Domain\Model\GenericCallAclPattern\GenericCallAclPatternInterface $genericCallAclPattern);
+    public function removeMatchList(\Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchList);
 
     /**
-     * Replace genericCallAclPatterns
+     * Replace matchLists
      *
-     * @param \Ivoz\Provider\Domain\Model\GenericCallAclPattern\GenericCallAclPatternInterface[] $genericCallAclPatterns
+     * @param \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface[] $matchLists
      * @return self
      */
-    public function replaceGenericCallAclPatterns(Collection $genericCallAclPatterns);
+    public function replaceMatchLists(Collection $matchLists);
 
     /**
-     * Get genericCallAclPatterns
+     * Get matchLists
      *
      * @return array
      */
-    public function getGenericCallAclPatterns(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getMatchLists(\Doctrine\Common\Collections\Criteria $criteria = null);
 
     /**
      * Add outgoingRouting

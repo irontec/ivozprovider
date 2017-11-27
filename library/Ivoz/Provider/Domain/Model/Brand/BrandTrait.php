@@ -56,7 +56,7 @@ trait BrandTrait
     /**
      * @var Collection
      */
-    protected $genericCallAclPatterns;
+    protected $matchLists;
 
     /**
      * @var Collection
@@ -77,7 +77,7 @@ trait BrandTrait
         $this->domains = new ArrayCollection();
         $this->retailAccounts = new ArrayCollection();
         $this->musicsOnHold = new ArrayCollection();
-        $this->genericCallAclPatterns = new ArrayCollection();
+        $this->matchLists = new ArrayCollection();
         $this->outgoingRoutings = new ArrayCollection();
     }
 
@@ -128,8 +128,8 @@ trait BrandTrait
             $self->replaceMusicsOnHold($dto->getMusicsOnHold());
         }
 
-        if ($dto->getGenericCallAclPatterns()) {
-            $self->replaceGenericCallAclPatterns($dto->getGenericCallAclPatterns());
+        if ($dto->getMatchLists()) {
+            $self->replaceMatchLists($dto->getMatchLists());
         }
 
         if ($dto->getOutgoingRoutings()) {
@@ -174,8 +174,8 @@ trait BrandTrait
         if ($dto->getMusicsOnHold()) {
             $this->replaceMusicsOnHold($dto->getMusicsOnHold());
         }
-        if ($dto->getGenericCallAclPatterns()) {
-            $this->replaceGenericCallAclPatterns($dto->getGenericCallAclPatterns());
+        if ($dto->getMatchLists()) {
+            $this->replaceMatchLists($dto->getMatchLists());
         }
         if ($dto->getOutgoingRoutings()) {
             $this->replaceOutgoingRoutings($dto->getOutgoingRoutings());
@@ -709,75 +709,75 @@ trait BrandTrait
     }
 
     /**
-     * Add genericCallAclPattern
+     * Add matchList
      *
-     * @param \Ivoz\Provider\Domain\Model\GenericCallAclPattern\GenericCallAclPatternInterface $genericCallAclPattern
+     * @param \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchList
      *
      * @return BrandTrait
      */
-    public function addGenericCallAclPattern(\Ivoz\Provider\Domain\Model\GenericCallAclPattern\GenericCallAclPatternInterface $genericCallAclPattern)
+    public function addMatchList(\Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchList)
     {
-        $this->genericCallAclPatterns->add($genericCallAclPattern);
+        $this->matchLists->add($matchList);
 
         return $this;
     }
 
     /**
-     * Remove genericCallAclPattern
+     * Remove matchList
      *
-     * @param \Ivoz\Provider\Domain\Model\GenericCallAclPattern\GenericCallAclPatternInterface $genericCallAclPattern
+     * @param \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchList
      */
-    public function removeGenericCallAclPattern(\Ivoz\Provider\Domain\Model\GenericCallAclPattern\GenericCallAclPatternInterface $genericCallAclPattern)
+    public function removeMatchList(\Ivoz\Provider\Domain\Model\MatchList\MatchListInterface $matchList)
     {
-        $this->genericCallAclPatterns->removeElement($genericCallAclPattern);
+        $this->matchLists->removeElement($matchList);
     }
 
     /**
-     * Replace genericCallAclPatterns
+     * Replace matchLists
      *
-     * @param \Ivoz\Provider\Domain\Model\GenericCallAclPattern\GenericCallAclPatternInterface[] $genericCallAclPatterns
+     * @param \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface[] $matchLists
      * @return self
      */
-    public function replaceGenericCallAclPatterns(Collection $genericCallAclPatterns)
+    public function replaceMatchLists(Collection $matchLists)
     {
         $updatedEntities = [];
         $fallBackId = -1;
-        foreach ($genericCallAclPatterns as $entity) {
+        foreach ($matchLists as $entity) {
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setBrand($this);
         }
         $updatedEntityKeys = array_keys($updatedEntities);
 
-        foreach ($this->genericCallAclPatterns as $key => $entity) {
+        foreach ($this->matchLists as $key => $entity) {
             $identity = $entity->getId();
             if (in_array($identity, $updatedEntityKeys)) {
-                $this->genericCallAclPatterns->set($key, $updatedEntities[$identity]);
+                $this->matchLists->set($key, $updatedEntities[$identity]);
             } else {
-                $this->genericCallAclPatterns->remove($key);
+                $this->matchLists->remove($key);
             }
             unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
-            $this->addGenericCallAclPattern($entity);
+            $this->addMatchList($entity);
         }
 
         return $this;
     }
 
     /**
-     * Get genericCallAclPatterns
+     * Get matchLists
      *
      * @return array
      */
-    public function getGenericCallAclPatterns(Criteria $criteria = null)
+    public function getMatchLists(Criteria $criteria = null)
     {
         if (!is_null($criteria)) {
-            return $this->genericCallAclPatterns->matching($criteria)->toArray();
+            return $this->matchLists->matching($criteria)->toArray();
         }
 
-        return $this->genericCallAclPatterns->toArray();
+        return $this->matchLists->toArray();
     }
 
     /**

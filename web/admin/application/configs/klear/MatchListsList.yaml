@@ -10,28 +10,33 @@ production:
   screens: &matchLists_screensLink
     matchListsList_screen: &matchListsList_screenLink
       controller: list
+      rawCondition: "MatchList.company = '${auth.companyId}' OR MatchList.brand = '${auth.brandId}'"
+      order:
+        field:
+          - "MatchList.brand asc"
+          - "MatchList.name asc"
       pagination:
         items: 25
       <<: *MatchLists
       class: ui-silk-text-list-numbers
       title: _("List of %s %2s", ngettext('Match List', 'Match Lists', 0), "[format| (%parent%)]")
-      forcedValues:
-        <<: *forcedCompany
       fields: &matchLists_fieldsLink
+        blacklist:
+          companyId: true
+          brandId: true
         options:
           title: _("Options")
           screens:
             matchListsEdit_screen: true
             matchListPatternsList_screen: true
+            matchListPatternsView_screen: true
           dialogs:
             matchListsDel_dialog: true
-          default: matchListsEdit_screen
       options:
         title: _("Options")
         screens:
           matchListsNew_screen: true
-        dialogs:
-          matchListsDel_dialog: true
+
     matchListsNew_screen: &matchListsNew_screenLink
       <<: *MatchLists
       controller: new
@@ -42,6 +47,7 @@ production:
       forcedValues:
         <<: *forcedCompany
       shortcutOption: N
+
     matchListsEdit_screen: &matchListsEdit_screenLink
       <<: *MatchLists
       controller: edit
@@ -49,6 +55,8 @@ production:
       label: false
       labelOnPostAction: _("Edit %s %2s", ngettext('Match List', 'Match Lists', 1), "[format| (%item%)]")
       title: _("Edit %s %2s", ngettext('Match List', 'Match Lists', 1), "[format| (%item%)]")
+      parentOptionCustomizer:
+        - IvozProvider_Klear_Options_OptionsCustomizer
       forcedValues:
         <<: *forcedCompany
 
@@ -56,13 +64,17 @@ production:
     matchListPatternsList_screen:
       <<: *matchListPatternsList_screenLink
       filterField: matchList
-      parentOptionCustomizer:
-        - recordCount
+
     matchListPatternsNew_screen:
       <<: *matchListPatternsNew_screenLink
       filterField: matchList
     matchListPatternsEdit_screen:
       <<: *matchListPatternsEdit_screenLink
+      filterField: matchList
+
+    # MatchList Patterns ReadOnly Screens
+    matchListPatternsView_screen:
+      <<: *matchListPatternsView_screenLink
       filterField: matchList
 
   dialogs: &matchLists_dialogsLink
@@ -74,6 +86,8 @@ production:
       title: _("Delete %s", ngettext('Match List', 'Match Lists', 1))
       description: _("Do you want to delete this %s?", ngettext('Match List', 'Match Lists', 1))
       message: _("%s successfully deleted.", ngettext('Match List', 'Match Lists', 1))
+      parentOptionCustomizer:
+        - IvozProvider_Klear_Options_OptionsCustomizer
       multiItem: 1
       labelOnList: 1
 

@@ -1,0 +1,16 @@
+Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchList:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\CallAclRelMatchListDoctrineRepository
+  type: entity
+  table: CallAclRelMatchLists
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  lifecycleCallbacks:
+    postLoad:
+      - initChangelog

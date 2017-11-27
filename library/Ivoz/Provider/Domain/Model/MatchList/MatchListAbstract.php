@@ -17,6 +17,11 @@ abstract class MatchListAbstract
     protected $name;
 
     /**
+     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     */
+    protected $brand;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
      */
     protected $company;
@@ -128,6 +133,7 @@ abstract class MatchListAbstract
             $dto->getName());
 
         return $self
+            ->setBrand($dto->getBrand())
             ->setCompany($dto->getCompany())
         ;
     }
@@ -145,6 +151,7 @@ abstract class MatchListAbstract
 
         $this
             ->setName($dto->getName())
+            ->setBrand($dto->getBrand())
             ->setCompany($dto->getCompany());
 
 
@@ -158,6 +165,7 @@ abstract class MatchListAbstract
     {
         return self::createDTO()
             ->setName($this->getName())
+            ->setBrandId($this->getBrand() ? $this->getBrand()->getId() : null)
             ->setCompanyId($this->getCompany() ? $this->getCompany()->getId() : null);
     }
 
@@ -168,6 +176,7 @@ abstract class MatchListAbstract
     {
         return [
             'name' => self::getName(),
+            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null
         ];
     }
@@ -203,13 +212,37 @@ abstract class MatchListAbstract
     }
 
     /**
+     * Set brand
+     *
+     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
+     *
+     * @return self
+     */
+    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null)
+    {
+        $this->brand = $brand;
+
+        return $this;
+    }
+
+    /**
+     * Get brand
+     *
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     */
+    public function getBrand()
+    {
+        return $this->brand;
+    }
+
+    /**
      * Set company
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
      *
      * @return self
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
+    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
     {
         $this->company = $company;
 

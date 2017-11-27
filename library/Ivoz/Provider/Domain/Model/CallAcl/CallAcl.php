@@ -1,6 +1,8 @@
 <?php
 
 namespace Ivoz\Provider\Domain\Model\CallAcl;
+use Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchList;
+use Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchListInterface;
 
 /**
  * CallAcl
@@ -40,18 +42,16 @@ class CallAcl extends CallAclAbstract implements CallAclInterface
             ::create()
             ->orderBy(['priority' => Criteria::ASC]);
 
-        $aclRelPatterns = $this->getRelPatterns($criteria);
-
         /**
-         * @var CallAclRelPattern $aclRelPattern
+         * @var CallAclRelMatchListInterface[] $aclRelMatchLists
          */
-        foreach($aclRelPatterns as $aclRelPattern) {
-            $aclPattern = $aclRelPattern->getCallAclPattern();
-            $policy = $aclRelPattern->getPolicy();
-            $pattern = $aclPattern->getRegExp();
-            $match = preg_match('/'.$pattern.'/', $dst);
+        $aclRelMatchLists = $this->getRelMatchLists($criteria);
 
-            if($match) {
+        foreach($aclRelMatchLists as $aclRelMatchList) {
+            $policy = $aclRelMatchList->getPolicy();
+            $matchList = $aclRelMatchList->getMatchList();
+
+            if($matchList->numberMatches($dst)) {
                 return 'allow' === $policy;
             }
         }

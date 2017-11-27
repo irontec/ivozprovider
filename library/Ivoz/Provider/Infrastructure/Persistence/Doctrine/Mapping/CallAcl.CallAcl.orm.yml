@@ -12,8 +12,8 @@ Ivoz\Provider\Domain\Model\CallAcl\CallAcl:
       generator:
         strategy: IDENTITY
   oneToMany:
-    relPatterns:
-      targetEntity: Ivoz\Provider\Domain\Model\CallAclRelPattern\CallAclRelPatternInterface
+    relMatchLists:
+      targetEntity: Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchListInterface
       mappedBy: callAcl
       cascade: ['persist']
       orphanRemoval: true

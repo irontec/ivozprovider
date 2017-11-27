@@ -25,10 +25,8 @@ doctrine:
         Ivoz\Provider\Domain\Model\Calendar\Calendar
       Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface:
         Ivoz\Provider\Domain\Model\CallAcl\CallAcl
-      Ivoz\Provider\Domain\Model\CallAclPattern\CallAclPatternInterface:
-        Ivoz\Provider\Domain\Model\CallAclPattern\CallAclPattern
-      Ivoz\Provider\Domain\Model\CallAclRelPattern\CallAclRelPatternInterface:
-        Ivoz\Provider\Domain\Model\CallAclRelPattern\CallAclRelPattern
+      Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchListInterface:
+        Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchList
       Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface:
         Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting
       Ivoz\Provider\Domain\Model\Commandlog\CommandlogInterface:
@@ -89,8 +87,6 @@ doctrine:
         Ivoz\Provider\Domain\Model\Friend\Friend
       Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPatternInterface:
         Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPattern
-      Ivoz\Provider\Domain\Model\GenericCallAclPattern\GenericCallAclPatternInterface:
-        Ivoz\Provider\Domain\Model\GenericCallAclPattern\GenericCallAclPattern
       Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface:
         Ivoz\Provider\Domain\Model\HolidayDate\HolidayDate
       Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface:

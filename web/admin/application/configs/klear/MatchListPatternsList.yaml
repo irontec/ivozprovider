@@ -13,6 +13,9 @@ production:
       <<: *MatchListPatterns
       class: ui-silk-text-list-bullets
       title: _("List of %s %2s", ngettext('Match List Pattern', 'Match List Patterns', 0), "[format| (%parent%)]")
+      parentOptionCustomizer:
+        - IvozProvider_Klear_Options_OptionsCustomizer
+        - recordCount
       fields: &matchListPatterns_fieldsLink
         options:
           title: _("Options")
@@ -20,7 +23,6 @@ production:
             matchListPatternsEdit_screen: true
           dialogs:
             matchListPatternsDel_dialog: true
-          default: matchListPatternsEdit_screen
         order:
           type: true
           matchValue: true
@@ -33,8 +35,7 @@ production:
         title: _("Options")
         screens:
           matchListPatternsNew_screen: true
-        dialogs:
-          matchListPatternsDel_dialog: true
+
 
     matchListPatternsNew_screen: &matchListPatternsNew_screenLink
       <<: *MatchListPatterns
@@ -71,6 +72,18 @@ production:
           matchValue: true
       fixedPositions:
         <<: *matchListPatternsPositions_link
+
+    matchListPatternsView_screen: &matchListPatternsView_screenLink
+      <<: *matchListPatternsList_screenLink
+      class: ui-silk-eye
+      label: false
+      title: _("List %s %2s", ngettext('Match List Pattern', 'Match List Patterns', 0), "[format| (%item%)]")
+      fields:
+        <<: *matchListPatterns_fieldsLink
+        options:
+          title: _("Options")
+      options:
+        title: _("Options")
 
   dialogs: &matchListPatterns_dialogsLink
     matchListPatternsDel_dialog: &matchListPatternsDel_dialogLink

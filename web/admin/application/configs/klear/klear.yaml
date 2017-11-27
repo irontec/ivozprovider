@@ -139,10 +139,10 @@ production:
           class: ui-silk-key
           description: _("List of %s", ngettext('Retail Account', 'Retail Accounts', 0))
           showOnlyIf: ${auth.brand.retail.enabled}
-        GenericCallACLPatternsList:
-          title: ngettext('Generic call ACL pattern', 'Generic call ACL patterns', 0)
-          class: ui-silk-lock-go
-          description: _("List of %s", ngettext('Generic call ACL pattern', 'Generic call ACL patterns', 0))
+        GenericMatchListsList:
+          title: ngettext('Generic Match List', 'Generic Match Lists', 0)
+          class: ui-silk-text-list-numbers
+          description: _("List of %s", ngettext('Generic Match List', 'Generic Match Lists', 0))
         RoutingPatternsList:
           title: ngettext('Routing pattern', 'Routing patterns', 0)
           class: ui-silk-script-go
@@ -263,11 +263,6 @@ production:
           title: ngettext('Call ACL', 'Call ACLs', 0)
           class: ui-silk-lock
           description: _("List of %s", ngettext('Call ACL', 'Call ACLs', 0))
-          showOnlyIf: ${auth.companyVPBX}
-        CallACLPatternsList:
-          title: ngettext('Call ACL Pattern', 'Call ACL Patterns', 0)
-          class: ui-silk-lock-go
-          description: _("List of %s", ngettext('Call ACL Pattern', 'Call ACL Patterns', 0))
           showOnlyIf: ${auth.companyVPBX}
         HuntGroupsList:
           title: ngettext('Hunt Group', 'Hunt Groups', 0)
