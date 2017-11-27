@@ -6,13 +6,6 @@ class IvozProvider_Klear_Filter_HolidayDateSelectLocution implements KlearMatrix
 
     public function setRouteDispatcher(KlearMatrix_Model_RouteDispatcher $routeDispatcher)
     {
-        throw new \Exception('Not implemented yet');
-        //Get Action
-        $currentAction = $routeDispatcher->getActionName();
-
-        //Get Controller
-        $currentController = $routeDispatcher->getControllerName();
-
         //Get ModelName and your Controller
         $currentItemName = $routeDispatcher->getCurrentItemName();
 
@@ -25,27 +18,34 @@ class IvozProvider_Klear_Filter_HolidayDateSelectLocution implements KlearMatrix
                 if ($parentId) {
 
                     /**
-                     * @var \Ivoz\Provider\Domain\Model\Calendar\CalendarInterface $calendarModel
+                     * @var \Ivoz\Provider\Domain\Model\Calendar\CalendarDTO $calendarModel
                      */
                     $calendarModel = $dataGateway->find(
-                        '\Ivoz\Provider\Domain\Model\Calendar\Calendar',
+                        \Ivoz\Provider\Domain\Model\Calendar\Calendar::class,
                         $parentId
                     );
-                    $this->_condition[] = "self::company = '" . $calendarModel->getCompany()->getId() . "'";
+                    $this->_condition[] = "self::company = '" . $calendarModel->getCompanyId() . "'";
                 }
                 break;
             case "holidayDatesEdit_screen":
                 if ($pk) {
                     /**
-                     * @var \Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface $holidayModel
+                     * @var \Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateDTO $holidayModel
                      */
                     $holidayModel = $dataGateway->find(
-                        '\Ivoz\Provider\Domain\Model\HolidayDate\HolidayDate',
+                        \Ivoz\Provider\Domain\Model\HolidayDate\HolidayDate::class,
                         $pk
                     );
 
-                    $calendarModel = $holidayModel->getCalendar();
-                    $companyId = $calendarModel->getCompany()->getId();
+                    /**
+                     * @var \Ivoz\Provider\Domain\Model\Calendar\CalendarDTO $calendarModel
+                     */
+                    $calendarModel = $dataGateway->find(
+                        \Ivoz\Provider\Domain\Model\Calendar\Calendar::class,
+                        $holidayModel->getCalendarId()
+                    );
+
+                    $companyId = $calendarModel->getCompanyId();
                     $this->_condition[] = "self::company = '".$companyId."'";
                 }
                 break;

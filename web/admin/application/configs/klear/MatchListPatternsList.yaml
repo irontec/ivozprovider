@@ -23,6 +23,7 @@ production:
             matchListPatternsEdit_screen: true
           dialogs:
             matchListPatternsDel_dialog: true
+          default: matchListPatternsEdit_screen
         order:
           type: true
           matchValue: true
@@ -35,6 +36,8 @@ production:
         title: _("Options")
         screens:
           matchListPatternsNew_screen: true
+        dialogs:
+          matchListPatternsDel_dialog: true
 
 
     matchListPatternsNew_screen: &matchListPatternsNew_screenLink

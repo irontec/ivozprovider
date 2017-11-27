@@ -21,9 +21,12 @@ Background:
    When I click on "PeeringContracts" first elements "kamTrunksUacreg" button
    Then I am on "PeeringContractsList_kamTrunksUacreg" subscreen list
 
-Scenario: I create new providers register admin page
-  Given I click on add button
-  And I click on close button
+Scenario: I can create peer servers
+  When I click on add button
+   And I fill out the form with "brand/providersRegister/new" data fixture
+   And I click on save button
+  Then I can see confirmation dialog
+  When I click on close dialog button
   Then I am on "PeeringContractsList_kamTrunksUacreg" subscreen list
 
 Scenario: I can save providers registers

@@ -5,9 +5,9 @@
 production:
   main:
     module: klearMatrix
-    defaultScreen: IvrList_screen
+    defaultScreen: ivrList_screen
   screens:
-    IvrList_screen: &IvrList_screenLink
+    ivrList_screen: &ivrList_screenLink
       controller: list
       pagination:
         items: 25
@@ -42,19 +42,19 @@ production:
         options:
           title: _("Options")
           screens:
-            IvrEdit_screen: true
-            IvrEntriesList_screen: true
+            ivrEdit_screen: true
+            ivrEntriesList_screen: true
           dialogs:
-            IvrDel_dialog: true
-          default: IvrEdit_screen
+            ivrDel_dialog: true
+          default: ivrEdit_screen
       options:
         title: _("Options")
         screens:
-          IvrNew_screen: true
+          ivrNew_screen: true
         dialogs:
-          IvrDel_dialog: true
+          ivrDel_dialog: true
 
-    IvrNew_screen: &IvrNew_screenLink
+    ivrNew_screen: &ivrNew_screenLink
       <<: *Ivr
       controller: new
       class: ui-silk-add
@@ -77,7 +77,7 @@ production:
           noInputTarget: true
           errorTarget: true
           noInputTarget : true
-      fixedPositions: &IvrFixedPositions_link
+      fixedPositions: &ivrFixedPositions_link
         group0:
           label: _("Basic Configuration")
           colsPerRow: 12
@@ -115,7 +115,7 @@ production:
             errorExtensionId: 2
             errorUser: 2
             errorVoiceMailUserId: 2
-    IvrEdit_screen: &IvrEdit_screenLink
+    ivrEdit_screen: &ivrEdit_screenLink
       <<: *Ivr
       controller: edit
       class: ui-silk-pencil
@@ -134,24 +134,24 @@ production:
           errorTarget: true
           noInputTarget: true
       fixedPositions:
-        <<: *IvrFixedPositions_link
+        <<: *ivrFixedPositions_link
 
-    #IvrEntries
-    <<: *IvrEntries_screensLink
-    IvrEntriesList_screen:
-      <<: *IvrEntriesList_screenLink
+    #ivrEntries
+    <<: *ivrEntries_screensLink
+    ivrEntriesList_screen:
+      <<: *ivrEntriesList_screenLink
       filterField: Ivr
       parentOptionCustomizer:
         - recordCount
-    IvrEntriesNew_screen:
-      <<: *IvrEntriesNew_screenLink
+    ivrEntriesNew_screen:
+      <<: *ivrEntriesNew_screenLink
       filterField: Ivr
-    IvrEntriesEdit_screen:
-      <<: *IvrEntriesEdit_screenLink
+    ivrEntriesEdit_screen:
+      <<: *ivrEntriesEdit_screenLink
       filterField: Ivr
 
   dialogs:
-    IvrDel_dialog: &IvrDel_dialogLink
+    ivrDel_dialog: &ivrDel_dialogLink
       <<: *Ivr
       controller: delete
       class: ui-silk-bin
@@ -162,8 +162,8 @@ production:
       multiItem: 1
       labelOnList: 1
 
-    #IvrEntries
-    <<: *IvrEntries_dialogsLink
+    #ivrEntries
+    <<: *ivrEntries_dialogsLink
 staging:
   _extends: production
 testing:

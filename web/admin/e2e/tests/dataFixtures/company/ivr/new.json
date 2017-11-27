@@ -1,0 +1,23 @@
+{
+  "name": "testIvrCustom",
+  "timeout": "6",
+  "maxDigits": "0",
+  "welcomeLocutionId": "1",
+  "successLocutionId": "1",
+  "allowExtensions": "0",
+  "excludedExtensions[]": [
+    ""
+  ],
+  "noInputLocutionId": "__NULL__",
+  "noInputRouteType": "number",
+  "noInputNumberCountryId": "70",
+  "noInputNumberValue": "946002020",
+  "noInputExtensionId": "__NULL__",
+  "noInputVoiceMailUserId": "__NULL__",
+  "errorLocutionId": "__NULL__",
+  "errorRouteType": "number",
+  "errorNumberCountryId": "70",
+  "errorNumberValue": "946002021",
+  "errorExtensionId": "__NULL__",
+  "errorVoiceMailUserId": "__NULL__"
+}
