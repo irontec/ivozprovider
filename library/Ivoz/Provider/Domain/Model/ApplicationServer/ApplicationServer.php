@@ -9,6 +9,10 @@ class ApplicationServer extends ApplicationServerAbstract implements Application
 {
     use ApplicationServerTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -16,7 +20,7 @@ class ApplicationServer extends ApplicationServerAbstract implements Application
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

@@ -6,7 +6,17 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 interface DdiInterface extends LoggableEntityInterface
 {
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet();
+
+    /**
+     * @param string $ddi
+     * @return DdiAbstract
+     */
+    public function setDdi($ddi);
 
     /**
      * @return string Domain
@@ -18,15 +28,6 @@ interface DdiInterface extends LoggableEntityInterface
     public function setRouteType($routeType = null);
 
     public function getDdie164();
-
-    /**
-     * Set ddi
-     *
-     * @param string $ddi
-     *
-     * @return self
-     */
-    public function setDdi($ddi);
 
     /**
      * Get ddi

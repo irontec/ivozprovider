@@ -37,13 +37,7 @@ class UpdateByCompany implements CompanyLifecycleEventHandlerInterface
 
     public function execute(CompanyInterface $entity, $isNew)
     {
-        $id = $entity->getId();
         $name = $entity->getDomainUsers();
-
-        /**
-         * @todo trim value on setter
-         */
-        $name = trim($name);
 
         // Empty domain field, do nothing
         if (empty($name)) {
@@ -59,8 +53,6 @@ class UpdateByCompany implements CompanyLifecycleEventHandlerInterface
         $domainDto = is_null($domain)
             ? Domain::createDTO()
             : $domain->toDto();
-
-        $name = $entity->getDomainUsers();
 
         /**
          * @var DomainDTO $domainDto

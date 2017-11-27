@@ -9,6 +9,10 @@ class TargetPattern extends TargetPatternAbstract implements TargetPatternInterf
 {
     use TargetPatternTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -16,7 +20,7 @@ class TargetPattern extends TargetPatternAbstract implements TargetPatternInterf
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

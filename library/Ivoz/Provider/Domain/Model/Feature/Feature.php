@@ -23,6 +23,10 @@ class Feature extends FeatureAbstract implements FeatureInterface
     const PROGRESS          = 8;
     const RETAIL            = 9;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -30,7 +34,7 @@ class Feature extends FeatureAbstract implements FeatureInterface
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

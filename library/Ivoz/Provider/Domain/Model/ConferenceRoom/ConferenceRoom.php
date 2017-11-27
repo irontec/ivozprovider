@@ -9,6 +9,10 @@ class ConferenceRoom extends ConferenceRoomAbstract implements ConferenceRoomInt
 {
     use ConferenceRoomTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -16,7 +20,7 @@ class ConferenceRoom extends ConferenceRoomAbstract implements ConferenceRoomInt
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

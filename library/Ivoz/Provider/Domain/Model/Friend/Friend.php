@@ -2,10 +2,9 @@
 
 namespace Ivoz\Provider\Domain\Model\Friend;
 
+use Assert\Assertion;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\CallAcl\CallAcl;
-use Ivoz\Provider\Domain\Model\Company\Company;
-use Ivoz\Provider\Domain\Model\Country\Country;
 use Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPattern;
 
 /**
@@ -15,6 +14,10 @@ class Friend extends FriendAbstract implements FriendInterface
 {
     use FriendTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         $changeSet = parent::getChangeSet();
@@ -27,12 +30,59 @@ class Friend extends FriendAbstract implements FriendInterface
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setName($name)
+    {
+        Assertion::regex($name, '/^[a-zA-Z0-9_*]+$/');
+        return parent::setName($name);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setIp($ip = null)
+    {
+        if (!empty($ip)) {
+            Assertion::ip($ip);
+        }
+        return parent::setIp($ip);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setPort($port = null)
+    {
+        if (!empty($port)) {
+            Assertion::regex($port, '/^[0-9]+$/');
+            Assertion::lessThan($port, pow(2, 16), 'port provided "%s" is not lower than "%s".');
+        }
+        return parent::setPort($port);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setPassword($password = null)
+    {
+        if (!empty($password)) {
+            Assertion::regex(
+                $password,
+                '/^(?=.*[A-Z].*[A-Z].*[A-Z])(?=.*[+*_-])(?=.*[0-9].*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{10,}$/'
+            );
+        }
+
+        return parent::setPassword($password);
     }
 
     /**

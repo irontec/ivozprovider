@@ -2,6 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\Queue;
 
+use Assert\Assertion;
+
 /**
  * Queue
  */
@@ -9,6 +11,10 @@ class Queue extends QueueAbstract implements QueueInterface
 {
     use QueueTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -16,12 +22,21 @@ class Queue extends QueueAbstract implements QueueInterface
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setName($name = null)
+    {
+        Assertion::regex($name, '/^[a-zA-Z0-9_-]+$/');
+        return parent::setName($name);
     }
 
     public function getAstQueueName()

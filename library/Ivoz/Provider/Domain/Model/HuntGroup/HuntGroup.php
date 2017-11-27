@@ -12,6 +12,10 @@ class HuntGroup extends HuntGroupAbstract implements HuntGroupInterface
 {
     use HuntGroupTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -19,7 +23,7 @@ class HuntGroup extends HuntGroupAbstract implements HuntGroupInterface
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

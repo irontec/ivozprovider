@@ -9,6 +9,10 @@ class MatchListPattern extends MatchListPatternAbstract implements MatchListPatt
 {
     use MatchListPatternTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -16,7 +20,7 @@ class MatchListPattern extends MatchListPatternAbstract implements MatchListPatt
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

@@ -9,6 +9,10 @@ class UsersMissedCall extends UsersMissedCallAbstract implements UsersMissedCall
 {
     use UsersMissedCallTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -16,7 +20,7 @@ class UsersMissedCall extends UsersMissedCallAbstract implements UsersMissedCall
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

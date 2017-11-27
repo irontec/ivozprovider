@@ -1,0 +1,35 @@
+<?php
+
+namespace Ivoz\Provider\Domain\Model\CompanyService;
+
+use Assert\Assertion;
+
+/**
+ * CompanyService
+ */
+class CompanyService extends CompanyServiceAbstract implements CompanyServiceInterface
+{
+    use CompanyServiceTrait;
+
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function setCode($code)
+    {
+        Assertion::regex($code, '/^[0-9]+$/');
+        return parent::setCode($code);
+    }
+}
+

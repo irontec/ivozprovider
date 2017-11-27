@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Model\Terminal;
 
+use Assert\Assertion;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
 
 /**
@@ -11,6 +12,9 @@ class Terminal extends TerminalAbstract implements TerminalInterface
 {
     use TerminalTrait;
 
+    /**
+     * @return array
+     */
     public function getChangeSet()
     {
         $changeSet = parent::getChangeSet();
@@ -23,12 +27,37 @@ class Terminal extends TerminalAbstract implements TerminalInterface
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setName($name = null)
+    {
+        if (!empty($name)) {
+            Assertion::regex($name, '/^[a-zA-Z0-9_*]+$/');
+        }
+
+        return parent::setName($name);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setPassword($password)
+    {
+        Assertion::regex(
+            $password,
+            '/^(?=.*[A-Z].*[A-Z].*[A-Z])(?=.*[+*_-])(?=.*[0-9].*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{10,}$/'
+        );
+
+        return parent::setPassword($password);
     }
 
     public function getUser()

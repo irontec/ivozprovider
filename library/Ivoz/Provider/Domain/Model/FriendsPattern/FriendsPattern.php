@@ -9,6 +9,10 @@ class FriendsPattern extends FriendsPatternAbstract implements FriendsPatternInt
 {
     use FriendsPatternTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -16,7 +20,7 @@ class FriendsPattern extends FriendsPatternAbstract implements FriendsPatternInt
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

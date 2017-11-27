@@ -9,6 +9,10 @@ class TrunksAddres extends TrunksAddresAbstract implements TrunksAddresInterface
 {
     use TrunksAddresTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -16,7 +20,7 @@ class TrunksAddres extends TrunksAddresAbstract implements TrunksAddresInterface
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

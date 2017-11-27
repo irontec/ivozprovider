@@ -9,6 +9,10 @@ class FixedCostsRelInvoice extends FixedCostsRelInvoiceAbstract implements Fixed
 {
     use FixedCostsRelInvoiceTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -16,7 +20,7 @@ class FixedCostsRelInvoice extends FixedCostsRelInvoiceAbstract implements Fixed
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

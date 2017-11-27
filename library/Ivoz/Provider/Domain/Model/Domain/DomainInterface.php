@@ -7,6 +7,10 @@ use Doctrine\Common\Collections\Collection;
 
 interface DomainInterface extends LoggableEntityInterface
 {
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet();
 
     /**

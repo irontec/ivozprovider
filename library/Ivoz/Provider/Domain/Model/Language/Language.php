@@ -8,6 +8,10 @@ class Language extends LanguageAbstract implements LanguageInterface
 {
     use LanguageTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -15,7 +19,7 @@ class Language extends LanguageAbstract implements LanguageInterface
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

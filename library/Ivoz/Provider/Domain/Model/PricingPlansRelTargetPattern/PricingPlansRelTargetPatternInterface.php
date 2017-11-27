@@ -6,18 +6,19 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 interface PricingPlansRelTargetPatternInterface extends LoggableEntityInterface
 {
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet();
 
-    public function getCost($duration = null);
-
     /**
-     * Set connectionCharge
-     *
-     * @param string $connectionCharge
-     *
-     * @return self
+     * @param float $connectionCharge
+     * @return PricingPlansRelTargetPatternAbstract
      */
     public function setConnectionCharge($connectionCharge);
+
+    public function getCost($duration = null);
 
     /**
      * Get connectionCharge

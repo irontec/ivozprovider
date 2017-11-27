@@ -9,6 +9,10 @@ class UsersPua extends UsersPuaAbstract implements UsersPuaInterface
 {
     use UsersPuaTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -16,7 +20,7 @@ class UsersPua extends UsersPuaAbstract implements UsersPuaInterface
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

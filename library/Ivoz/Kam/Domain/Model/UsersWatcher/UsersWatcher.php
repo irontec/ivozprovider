@@ -9,6 +9,10 @@ class UsersWatcher extends UsersWatcherAbstract implements UsersWatcherInterface
 {
     use UsersWatcherTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -16,7 +20,7 @@ class UsersWatcher extends UsersWatcherAbstract implements UsersWatcherInterface
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

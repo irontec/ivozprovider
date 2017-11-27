@@ -6,15 +6,12 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 interface CompanyServiceInterface extends LoggableEntityInterface
 {
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet();
 
-    /**
-     * Set code
-     *
-     * @param string $code
-     *
-     * @return self
-     */
     public function setCode($code);
 
     /**

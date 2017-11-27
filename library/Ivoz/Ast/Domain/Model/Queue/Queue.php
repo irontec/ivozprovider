@@ -9,6 +9,10 @@ class Queue extends QueueAbstract implements QueueInterface
 {
     use QueueTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -16,7 +20,7 @@ class Queue extends QueueAbstract implements QueueInterface
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return string
      */
     public function getId()

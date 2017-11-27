@@ -11,6 +11,10 @@ class Locution extends LocutionAbstract implements LocutionInterface, FileContai
     use LocutionTrait;
     use TempFileContainnerTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -28,6 +32,7 @@ class Locution extends LocutionAbstract implements LocutionInterface, FileContai
     }
 
     /**
+     * @codeCoverageIgnore
      * @return int
      */
     public function getId()

@@ -12,13 +12,13 @@ production:
           '0':
             title: _("No")
             visualFilter:
-              show: ["l_uuid"]
+              show: ["lUuid"]
               hide: []
           '1':
             title: _("Yes")
             visualFilter:
               show: []
-              hide: ["l_uuid"]
+              hide: ["lUuid"]
     lUuid:
       title: _('DDI')
       type: text

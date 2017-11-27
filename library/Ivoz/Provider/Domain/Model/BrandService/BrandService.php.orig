@@ -1,0 +1,35 @@
+<?php
+
+namespace Ivoz\Provider\Domain\Model\BrandService;
+
+use Assert\Assertion;
+
+/**
+ * BrandService
+ */
+class BrandService extends BrandServiceAbstract implements BrandServiceInterface
+{
+    use BrandServiceTrait;
+
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function setCode($code)
+    {
+        Assertion::regex($code, '/^[#0-9*]+$/');
+        return parent::setCode($code);
+    }
+}
+

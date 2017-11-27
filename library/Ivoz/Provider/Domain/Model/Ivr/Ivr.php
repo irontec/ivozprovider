@@ -14,6 +14,10 @@ class Ivr extends IvrAbstract implements IvrInterface
 
     use RoutableTrait { getTarget as protected; }
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -21,7 +25,7 @@ class Ivr extends IvrAbstract implements IvrInterface
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

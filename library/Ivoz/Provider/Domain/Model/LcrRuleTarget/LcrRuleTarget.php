@@ -8,6 +8,10 @@ class LcrRuleTarget extends LcrRuleTargetAbstract implements LcrRuleTargetInterf
 {
     use LcrRuleTargetTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -15,7 +19,7 @@ class LcrRuleTarget extends LcrRuleTargetAbstract implements LcrRuleTargetInterf
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

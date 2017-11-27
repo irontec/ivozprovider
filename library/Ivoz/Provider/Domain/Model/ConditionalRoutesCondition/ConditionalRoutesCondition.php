@@ -7,9 +7,12 @@ use Ivoz\Provider\Domain\Traits\RoutableTrait;
 class ConditionalRoutesCondition extends ConditionalRoutesConditionAbstract implements ConditionalRoutesConditionInterface
 {
     use ConditionalRoutesConditionTrait;
-
     use RoutableTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -17,7 +20,7 @@ class ConditionalRoutesCondition extends ConditionalRoutesConditionAbstract impl
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

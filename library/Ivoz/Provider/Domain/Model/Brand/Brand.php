@@ -14,6 +14,10 @@ class Brand extends BrandAbstract implements BrandInterface, FileContainerInterf
     use BrandTrait;
     use TempFileContainnerTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -31,7 +35,7 @@ class Brand extends BrandAbstract implements BrandInterface, FileContainerInterf
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

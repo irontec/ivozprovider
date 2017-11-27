@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\Extension;
 
 use Ivoz\Provider\Domain\Traits\RoutableTrait;
+use Assert\Assertion;
 
 /**
  * Extension
@@ -10,10 +11,12 @@ use Ivoz\Provider\Domain\Traits\RoutableTrait;
 class Extension extends ExtensionAbstract implements ExtensionInterface
 {
     use ExtensionTrait;
-
     use RoutableTrait;
 
-
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -21,12 +24,32 @@ class Extension extends ExtensionAbstract implements ExtensionInterface
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setNumber($number)
+    {
+        Assertion::regex($number, '/^[0-9].*$/');
+        return parent::setNumber($number);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setNumberValue($numberValue = null)
+    {
+        if (!empty($numberValue)) {
+            Assertion::regex($numberValue, '/^[0-9]+$/');
+        }
+        return parent::setNumberValue($numberValue);
     }
 
     public function toArrayPortal()

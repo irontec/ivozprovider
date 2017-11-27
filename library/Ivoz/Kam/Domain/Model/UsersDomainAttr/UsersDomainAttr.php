@@ -9,6 +9,10 @@ class UsersDomainAttr extends UsersDomainAttrAbstract implements UsersDomainAttr
 {
     use UsersDomainAttrTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -16,7 +20,7 @@ class UsersDomainAttr extends UsersDomainAttrAbstract implements UsersDomainAttr
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

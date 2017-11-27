@@ -2,6 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\TerminalModel;
 
+use Assert\Assertion;
+
 /**
  * TerminalModel
  */
@@ -9,6 +11,10 @@ class TerminalModel extends TerminalModelAbstract implements TerminalModelInterf
 {
     use TerminalModelTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -16,12 +22,21 @@ class TerminalModel extends TerminalModelAbstract implements TerminalModelInterf
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setIden($iden)
+    {
+        Assertion::regex($iden, '/^[a-zA-Z0-9_-]+$/');
+        return parent::setIden($iden);
     }
 
     /**

@@ -9,6 +9,10 @@ class Dispatcher extends DispatcherAbstract implements DispatcherInterface
 {
     use DispatcherTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -16,7 +20,7 @@ class Dispatcher extends DispatcherAbstract implements DispatcherInterface
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

@@ -12,6 +12,10 @@ class Recording extends RecordingAbstract implements RecordingInterface, FileCon
     use RecordingTrait;
     use TempFileContainnerTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -29,7 +33,7 @@ class Recording extends RecordingAbstract implements RecordingInterface, FileCon
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

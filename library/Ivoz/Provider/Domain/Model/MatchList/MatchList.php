@@ -10,6 +10,10 @@ class MatchList extends MatchListAbstract implements MatchListInterface
 {
     use MatchListTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -17,7 +21,7 @@ class MatchList extends MatchListAbstract implements MatchListInterface
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

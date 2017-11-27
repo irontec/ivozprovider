@@ -6,20 +6,26 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 interface PeerServerInterface extends LoggableEntityInterface
 {
+    /**
+     * @return array
+     */
     public function getChangeSet();
+
+    /**
+     * @param null $ip
+     * @return PeerServerAbstract
+     */
+    public function setIp($ip = null);
+
+    /**
+     * @param null $params
+     * @return PeerServerAbstract
+     */
+    public function setParams($params = null);
 
     public function getFlags();
 
     public function getName();
-
-    /**
-     * Set ip
-     *
-     * @param string $ip
-     *
-     * @return self
-     */
-    public function setIp($ip = null);
 
     /**
      * Get ip
@@ -59,15 +65,6 @@ interface PeerServerInterface extends LoggableEntityInterface
      * @return integer
      */
     public function getPort();
-
-    /**
-     * Set params
-     *
-     * @param string $params
-     *
-     * @return self
-     */
-    public function setParams($params = null);
 
     /**
      * Get params

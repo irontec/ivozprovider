@@ -9,6 +9,10 @@ class ProxyTrunk extends ProxyTrunkAbstract implements ProxyTrunkInterface
 {
     use ProxyTrunkTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -16,7 +20,7 @@ class ProxyTrunk extends ProxyTrunkAbstract implements ProxyTrunkInterface
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

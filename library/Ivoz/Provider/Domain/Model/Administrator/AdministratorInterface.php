@@ -6,6 +6,9 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 interface AdministratorInterface extends LoggableEntityInterface
 {
+    /**
+     * @return array
+     */
     public function getChangeSet();
 
     /**

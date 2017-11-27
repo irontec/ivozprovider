@@ -6,7 +6,19 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 interface LcrRuleInterface extends LoggableEntityInterface
 {
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet();
+
+    /**
+     * @param null $requestUri
+     * @return LcrRuleAbstract
+     */
+    public function setRequestUri($requestUri = null);
+
+    public function setTag($tag);
 
     public function setCondition($regexp);
 
@@ -59,15 +71,6 @@ interface LcrRuleInterface extends LoggableEntityInterface
     public function getFromUri();
 
     /**
-     * Set requestUri
-     *
-     * @param string $requestUri
-     *
-     * @return self
-     */
-    public function setRequestUri($requestUri = null);
-
-    /**
      * Get requestUri
      *
      * @return string
@@ -105,15 +108,6 @@ interface LcrRuleInterface extends LoggableEntityInterface
      * @return integer
      */
     public function getEnabled();
-
-    /**
-     * Set tag
-     *
-     * @param string $tag
-     *
-     * @return self
-     */
-    public function setTag($tag);
 
     /**
      * Get tag

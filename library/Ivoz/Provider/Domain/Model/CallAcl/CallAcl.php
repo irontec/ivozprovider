@@ -11,6 +11,10 @@ class CallAcl extends CallAclAbstract implements CallAclInterface
 {
     use CallAclTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -19,7 +23,7 @@ class CallAcl extends CallAclAbstract implements CallAclInterface
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

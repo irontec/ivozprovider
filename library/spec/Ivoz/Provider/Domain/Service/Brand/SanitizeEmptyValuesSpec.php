@@ -2,28 +2,27 @@
 
 namespace spec\Ivoz\Provider\Domain\Service\Brand;
 
-use Ivoz\Core\Domain\Service\EntityPersisterInterface;
+use Ivoz\Core\Application\Service\UpdateEntityFromDTO;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
 use Ivoz\Provider\Domain\Model\Brand\BrandDTO;
 use Ivoz\Provider\Domain\Service\Brand\SanitizeEmptyValues;
 use PhpSpec\ObjectBehavior;
 use PhpSpec\Exception\Example\FailureException;
-use spec\SpecHelperTrait;
 
 class SanitizeEmptyValuesSpec extends ObjectBehavior
 {
-    protected $entityPersister;
+    protected $entityUpdater;
     protected $entity;
     protected $dto;
 
     function let(
-        EntityPersisterInterface $entityPersister,
+        UpdateEntityFromDTO $entityUpdater,
         Brand $entity
     ) {
-        $this->entityPersister = $entityPersister;
+        $this->entityUpdater = $entityUpdater;
         $this->entity = $entity;
 
-        $this->beConstructedWith($entityPersister);
+        $this->beConstructedWith($entityUpdater);
 
         $this->dto = New BrandDTO();
         $this
@@ -55,8 +54,8 @@ class SanitizeEmptyValuesSpec extends ObjectBehavior
     function it_persists_new_entities()
     {
         $this
-            ->entityPersister
-            ->persistDto($this->dto, $this->entity)
+            ->entityUpdater
+            ->execute($this->entity, $this->dto)
             ->shouldBeCalled();
 
         $this->execute($this->entity, true);

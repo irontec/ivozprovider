@@ -7,7 +7,27 @@ use Doctrine\Common\Collections\Collection;
 
 interface CompanyInterface extends LoggableEntityInterface
 {
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet();
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setName($name);
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getDomainUsers();
+
+    /**
+     * @param null $onDemandRecordCode
+     * @return CompanyAbstract
+     */
+    public function setOnDemandRecordCode($onDemandRecordCode = null);
 
     /**
      * @param interger $exten
@@ -89,27 +109,11 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getType();
 
     /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return self
-     */
-    public function setName($name);
-
-    /**
      * Get name
      *
      * @return string
      */
     public function getName();
-
-    /**
-     * Get domainUsers
-     *
-     * @return string
-     */
-    public function getDomainUsers();
 
     /**
      * Set nif
@@ -270,15 +274,6 @@ interface CompanyInterface extends LoggableEntityInterface
      * @return integer
      */
     public function getOnDemandRecord();
-
-    /**
-     * Set onDemandRecordCode
-     *
-     * @param string $onDemandRecordCode
-     *
-     * @return self
-     */
-    public function setOnDemandRecordCode($onDemandRecordCode = null);
 
     /**
      * Get onDemandRecordCode

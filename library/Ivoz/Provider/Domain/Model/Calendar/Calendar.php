@@ -9,6 +9,10 @@ class Calendar extends CalendarAbstract implements CalendarInterface
 {
     use CalendarTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -17,7 +21,7 @@ class Calendar extends CalendarAbstract implements CalendarInterface
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

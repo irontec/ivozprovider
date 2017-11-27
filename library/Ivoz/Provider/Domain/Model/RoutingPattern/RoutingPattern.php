@@ -11,7 +11,7 @@ class RoutingPattern extends RoutingPatternAbstract implements RoutingPatternInt
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

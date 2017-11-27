@@ -9,6 +9,10 @@ class Fax extends FaxAbstract implements FaxInterface
 {
     use FaxTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -16,7 +20,7 @@ class Fax extends FaxAbstract implements FaxInterface
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

@@ -1,9 +1,9 @@
 suites:
 extensions:
   LeanPHP\PhpSpec\CodeCoverage\CodeCoverageExtension:
-    blacklist:
-      - src/EntityGeneratorBundle
     blacklist_files:
-      - src/CoreBundle/CoreBundle.php
+      - CoreBundle/CoreBundle.php
+    whitelist:
+      - Ivoz
     output:
       html: spec/coverage

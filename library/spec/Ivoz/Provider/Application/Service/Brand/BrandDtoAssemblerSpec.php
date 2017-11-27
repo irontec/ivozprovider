@@ -2,6 +2,8 @@
 
 namespace spec\Ivoz\Provider\Application\Service\Brand;
 
+use Ivoz\Core\Application\Service\CommonStoragePathResolver;
+use Ivoz\Core\Application\Service\StoragePathResolverCollection;
 use Ivoz\Provider\Application\Service\Brand\BrandDtoAssembler;
 use Ivoz\Provider\Domain\Model\Brand\BrandDTO;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
@@ -13,13 +15,21 @@ class BrandDtoAssemblerSpec extends ObjectBehavior
     protected $brand;
 
     function let(
-        BrandInterface $brand
+        BrandInterface $brand,
+        StoragePathResolverCollection $storagePathResolverCollection
     ) {
         $this->brand = $brand;
+        $storagePathResolver = new CommonStoragePathResolver(
+            '/opt/storage/',
+            'ivozprovider_model_brands.logo'
+        );
+
+        $storagePathResolverCollection
+            ->getPathResolver('Logo')
+            ->willReturn($storagePathResolver);
 
         $this->beConstructedWith(
-            '/opt/storage',
-            'ivozprovider_model_brands.logo'
+            $storagePathResolverCollection
         );
     }
 

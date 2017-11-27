@@ -8,6 +8,10 @@ class MediaRelaySet extends MediaRelaySetAbstract implements MediaRelaySetInterf
 {
     use MediaRelaySetTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -15,7 +19,7 @@ class MediaRelaySet extends MediaRelaySetAbstract implements MediaRelaySetInterf
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

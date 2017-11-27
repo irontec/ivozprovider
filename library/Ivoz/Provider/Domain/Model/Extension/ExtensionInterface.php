@@ -7,7 +7,23 @@ use Doctrine\Common\Collections\Collection;
 
 interface ExtensionInterface extends LoggableEntityInterface
 {
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet();
+
+    /**
+     * @param string $number
+     * @return ExtensionAbstract
+     */
+    public function setNumber($number);
+
+    /**
+     * @param null $numberValue
+     * @return ExtensionAbstract
+     */
+    public function setNumberValue($numberValue = null);
 
     public function toArrayPortal();
 
@@ -24,15 +40,6 @@ interface ExtensionInterface extends LoggableEntityInterface
      * @return string
      */
     public function getNumberValueE164();
-
-    /**
-     * Set number
-     *
-     * @param string $number
-     *
-     * @return self
-     */
-    public function setNumber($number);
 
     /**
      * Get number
@@ -56,15 +63,6 @@ interface ExtensionInterface extends LoggableEntityInterface
      * @return string
      */
     public function getRouteType();
-
-    /**
-     * Set numberValue
-     *
-     * @param string $numberValue
-     *
-     * @return self
-     */
-    public function setNumberValue($numberValue = null);
 
     /**
      * Get numberValue

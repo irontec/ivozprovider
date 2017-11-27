@@ -8,6 +8,10 @@ class UsersActiveWatcher extends UsersActiveWatcherAbstract implements UsersActi
 {
     use UsersActiveWatcherTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -15,7 +19,7 @@ class UsersActiveWatcher extends UsersActiveWatcherAbstract implements UsersActi
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

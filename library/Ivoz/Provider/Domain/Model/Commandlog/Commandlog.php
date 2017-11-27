@@ -10,7 +10,7 @@ class Commandlog extends CommandlogAbstract implements CommandlogInterface
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

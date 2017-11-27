@@ -2,7 +2,7 @@
 
 namespace spec\Ivoz\Provider\Domain\Service\Company;
 
-use Ivoz\Core\Domain\Service\EntityPersisterInterface;
+use Ivoz\Core\Application\Service\UpdateEntityFromDTO;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Company\CompanyDTO;
@@ -11,11 +11,13 @@ use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
 use Ivoz\Provider\Domain\Service\Company\SanitizeEmptyValues;
 use PhpSpec\Exception\Example\FailureException;
 use PhpSpec\ObjectBehavior;
-use spec\SpecHelperTrait;
 
 class SanitizeEmptyValuesSpec extends ObjectBehavior
 {
-    protected $entityPersister;
+    /**
+     * @var UpdateEntityFromDTO
+     */
+    protected $entityUpdater;
     /**
      * @var CompanyDTO
      */
@@ -23,11 +25,11 @@ class SanitizeEmptyValuesSpec extends ObjectBehavior
     protected $entity;
 
     function let(
-        EntityPersisterInterface $entityPersister,
+        UpdateEntityFromDTO $entityUpdater,
         Company $entity
     ) {
-        $this->entityPersister = $entityPersister;
-        $this->beConstructedWith($entityPersister);
+        $this->entityUpdater = $entityUpdater;
+        $this->beConstructedWith($entityUpdater);
 
         $this->dto = new CompanyDTO();
         $this->entity = $entity;
@@ -78,8 +80,8 @@ class SanitizeEmptyValuesSpec extends ObjectBehavior
         $this->prepareDto();
 
         $this
-            ->entityPersister
-            ->persistDto($this->dto, $this->entity)
+            ->entityUpdater
+            ->execute($this->entity, $this->dto)
             ->shouldBeCalled();
 
         $this->execute($this->entity, true);
