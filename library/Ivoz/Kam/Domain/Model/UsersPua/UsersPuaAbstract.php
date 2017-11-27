@@ -157,6 +157,7 @@ abstract class UsersPuaAbstract
         $this->setVersion($version);
         $this->setExtraHeaders($extraHeaders);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -224,6 +225,14 @@ abstract class UsersPuaAbstract
         }
 
         return $changes;
+    }
+
+    /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
     }
 
     /**
@@ -302,6 +311,8 @@ abstract class UsersPuaAbstract
             ->setExtraHeaders($dto->getExtraHeaders());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

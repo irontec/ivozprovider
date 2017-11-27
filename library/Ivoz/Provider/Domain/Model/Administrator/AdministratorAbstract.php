@@ -74,6 +74,7 @@ abstract class AdministratorAbstract
         $this->setEmail($email);
         $this->setActive($active);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -144,6 +145,14 @@ abstract class AdministratorAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return AdministratorDTO
      */
     public static function createDTO()
@@ -201,6 +210,8 @@ abstract class AdministratorAbstract
             ->setTimezone($dto->getTimezone());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

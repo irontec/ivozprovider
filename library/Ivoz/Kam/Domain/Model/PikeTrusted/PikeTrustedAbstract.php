@@ -58,6 +58,7 @@ abstract class PikeTrustedAbstract
     {
         $this->setPriority($priority);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -128,6 +129,14 @@ abstract class PikeTrustedAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return PikeTrustedDTO
      */
     public static function createDTO()
@@ -179,6 +188,8 @@ abstract class PikeTrustedAbstract
             ->setPriority($dto->getPriority());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

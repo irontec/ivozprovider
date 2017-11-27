@@ -47,6 +47,7 @@ abstract class CallAclRelMatchListAbstract
         $this->setPriority($priority);
         $this->setPolicy($policy);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -117,6 +118,14 @@ abstract class CallAclRelMatchListAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return CallAclRelMatchListDTO
      */
     public static function createDTO()
@@ -164,6 +173,8 @@ abstract class CallAclRelMatchListAbstract
             ->setMatchList($dto->getMatchList());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

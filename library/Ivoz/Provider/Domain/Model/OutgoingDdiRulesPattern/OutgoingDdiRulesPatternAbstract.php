@@ -52,6 +52,7 @@ abstract class OutgoingDdiRulesPatternAbstract
         $this->setAction($action);
         $this->setPriority($priority);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -122,6 +123,14 @@ abstract class OutgoingDdiRulesPatternAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return OutgoingDdiRulesPatternDTO
      */
     public static function createDTO()
@@ -171,6 +180,8 @@ abstract class OutgoingDdiRulesPatternAbstract
             ->setForcedDdi($dto->getForcedDdi());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

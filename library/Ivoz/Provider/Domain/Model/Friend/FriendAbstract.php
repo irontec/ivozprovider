@@ -161,6 +161,7 @@ abstract class FriendAbstract
         $this->setUpdateCallerid($updateCallerid);
         $this->setDirectConnectivity($directConnectivity);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -228,6 +229,14 @@ abstract class FriendAbstract
         }
 
         return $changes;
+    }
+
+    /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
     }
 
     /**
@@ -312,6 +321,8 @@ abstract class FriendAbstract
             ->setLanguage($dto->getLanguage());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

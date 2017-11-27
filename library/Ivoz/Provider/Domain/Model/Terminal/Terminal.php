@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Model\Terminal;
 
+use Assert\Assert;
 use Assert\Assertion;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
 
@@ -33,6 +34,15 @@ class Terminal extends TerminalAbstract implements TerminalInterface
     public function getId()
     {
         return $this->id;
+    }
+
+    protected function sanitizeValues()
+    {
+        $this->setDomain(
+            $this
+                ->getCompany()
+                ->getDomain()
+        );
     }
 
     /**
@@ -117,6 +127,20 @@ class Terminal extends TerminalAbstract implements TerminalInterface
         $astPsEndpoints = $this->getAstPsEndpoints();
 
         return array_shift($astPsEndpoints);
+    }
+
+    public function setMac($mac = null)
+    {
+        if (!is_null($mac)) {
+            $mac = strtolower($mac);
+            $mac = preg_replace(
+                '/[^a-z0-9]/',
+                '',
+                $mac
+            );
+        }
+
+        return parent::setMac($mac);
     }
 }
 

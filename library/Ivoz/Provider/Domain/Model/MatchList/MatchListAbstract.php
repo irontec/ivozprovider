@@ -40,6 +40,7 @@ abstract class MatchListAbstract
     {
         $this->setName($name);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -110,6 +111,14 @@ abstract class MatchListAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return MatchListDTO
      */
     public static function createDTO()
@@ -155,6 +164,8 @@ abstract class MatchListAbstract
             ->setCompany($dto->getCompany());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

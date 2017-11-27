@@ -41,6 +41,7 @@ abstract class DomainAbstract
         $this->setDomain($domain);
         $this->setPointsTo($pointsTo);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -111,6 +112,14 @@ abstract class DomainAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return DomainDTO
      */
     public static function createDTO()
@@ -156,6 +165,8 @@ abstract class DomainAbstract
             ->setDescription($dto->getDescription());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

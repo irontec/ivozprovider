@@ -62,6 +62,7 @@ abstract class CommandlogAbstract
         $this->setCreatedOn($createdOn);
         $this->setMicrotime($microtime);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -132,6 +133,14 @@ abstract class CommandlogAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return CommandlogDTO
      */
     public static function createDTO()
@@ -183,6 +192,8 @@ abstract class CommandlogAbstract
             ->setMicrotime($dto->getMicrotime());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

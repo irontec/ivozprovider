@@ -72,6 +72,7 @@ abstract class IvrEntryAbstract
         $this->setEntry($entry);
         $this->setRouteType($routeType);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -142,7 +143,15 @@ abstract class IvrEntryAbstract
     }
 
     /**
-     * @return IvrEntryDTO
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
+     * @return IvrCustomEntryDTO
      */
     public static function createDTO()
     {
@@ -199,6 +208,8 @@ abstract class IvrEntryAbstract
             ->setNumberCountry($dto->getNumberCountry());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

@@ -27,5 +27,16 @@ class ConferenceRoom extends ConferenceRoomAbstract implements ConferenceRoomInt
     {
         return $this->id;
     }
+
+    /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+        if (!$this->getPinProtected()) {
+            $this->setPinCode(null);
+        }
+    }
 }
 

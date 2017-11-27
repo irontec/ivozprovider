@@ -49,6 +49,35 @@ class Company extends CompanyAbstract implements CompanyInterface
         return $this->id;
     }
 
+    protected function sanitizeValues()
+    {
+        if (!$this->getDefaultTimezone()) {
+            $this->setDefaultTimezone(
+            // @todo create a shortcut
+                $this->getBrand()->getDefaultTimezone()
+            );
+        }
+
+        if (!$this->getLanguage()) {
+            $this->setLanguage(
+            // @todo create a shortcut
+                $this->getBrand()->getLanguage()
+            );
+        }
+
+        if (!$this->getIpFilter()) {
+            $this->setIpFilter(0);
+        }
+
+        if (!$this->getOnDemandRecord()) {
+            $this->setOnDemandRecord(0);
+        }
+
+        if (!$this->getOnDemandRecordCode()) {
+            $this->setOnDemandRecordCode('');
+        }
+    }
+
     /**
      * {@inheritDoc}
      */

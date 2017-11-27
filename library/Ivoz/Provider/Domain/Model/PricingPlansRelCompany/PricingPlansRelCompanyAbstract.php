@@ -57,6 +57,7 @@ abstract class PricingPlansRelCompanyAbstract
         $this->setValidTo($validTo);
         $this->setMetric($metric);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -127,6 +128,14 @@ abstract class PricingPlansRelCompanyAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return PricingPlansRelCompanyDTO
      */
     public static function createDTO()
@@ -178,6 +187,8 @@ abstract class PricingPlansRelCompanyAbstract
             ->setBrand($dto->getBrand());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

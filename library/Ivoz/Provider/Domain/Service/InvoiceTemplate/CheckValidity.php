@@ -18,6 +18,7 @@ class CheckValidity implements InvoiceTemplateLifecycleEventHandlerInterface
      */
     public function execute(InvoiceTemplateInterface $entity)
     {
+        // @todo move this into the entity
         if (empty($entity->getTemplate())) {
             throw new \Exception('Template not null', 80000);
         }

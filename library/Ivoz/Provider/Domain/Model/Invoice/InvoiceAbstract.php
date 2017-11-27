@@ -82,6 +82,7 @@ abstract class InvoiceAbstract
         $this->setNumber($number);
         $this->setPdf($pdf);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -149,6 +150,14 @@ abstract class InvoiceAbstract
         }
 
         return $changes;
+    }
+
+    /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
     }
 
     /**
@@ -226,6 +235,8 @@ abstract class InvoiceAbstract
             ->setCompany($dto->getCompany());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

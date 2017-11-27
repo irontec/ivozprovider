@@ -50,6 +50,7 @@ abstract class TargetPatternAbstract
         $this->setName($name);
         $this->setDescription($description);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -117,6 +118,14 @@ abstract class TargetPatternAbstract
         }
 
         return $changes;
+    }
+
+    /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
     }
 
     /**
@@ -188,6 +197,8 @@ abstract class TargetPatternAbstract
             ->setBrand($dto->getBrand());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

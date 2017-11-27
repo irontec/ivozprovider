@@ -60,6 +60,7 @@ abstract class PricingPlansRelTargetPatternAbstract
         $this->setPeriodTime($periodTime);
         $this->setPerPeriodCharge($perPeriodCharge);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -130,6 +131,14 @@ abstract class PricingPlansRelTargetPatternAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return PricingPlansRelTargetPatternDTO
      */
     public static function createDTO()
@@ -181,6 +190,8 @@ abstract class PricingPlansRelTargetPatternAbstract
             ->setBrand($dto->getBrand());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

@@ -183,6 +183,7 @@ abstract class CompanyAbstract
         $this->setProvince($province);
         $this->setCountryName($countryName);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -250,6 +251,14 @@ abstract class CompanyAbstract
         }
 
         return $changes;
+    }
+
+    /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
     }
 
     /**
@@ -346,6 +355,8 @@ abstract class CompanyAbstract
             ->setOutgoingDdiRule($dto->getOutgoingDdiRule());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

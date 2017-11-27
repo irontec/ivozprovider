@@ -88,6 +88,7 @@ abstract class UsersPresentityAbstract
         $this->setSender($sender);
         $this->setPriority($priority);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -158,6 +159,14 @@ abstract class UsersPresentityAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return UsersPresentityDTO
      */
     public static function createDTO()
@@ -214,6 +223,8 @@ abstract class UsersPresentityAbstract
             ->setPriority($dto->getPriority());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

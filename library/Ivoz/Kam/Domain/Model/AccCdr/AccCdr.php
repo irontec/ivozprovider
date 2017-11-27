@@ -19,6 +19,22 @@ class AccCdr extends AccCdrAbstract implements AccCdrInterface
         return $this->id;
     }
 
+    protected function sanitizeValues()
+    {
+        $pricingPlan = $this->getPricingPlan();
+        if ($pricingPlan) {
+            $this->setPricingPlanName(
+                $pricingPlan->getName()
+            );
+        }
+        $targetPattern = $this->getTargetPattern();
+        if ($targetPattern) {
+            $this->setTargetPatternName(
+                $targetPattern->getName()
+            );
+        }
+    }
+
     /**
      * @todo move this to its own service
      */

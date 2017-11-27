@@ -35,6 +35,7 @@ abstract class FeaturesRelCompanyAbstract
     {
 
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -105,6 +106,14 @@ abstract class FeaturesRelCompanyAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return FeaturesRelCompanyDTO
      */
     public static function createDTO()
@@ -148,6 +157,8 @@ abstract class FeaturesRelCompanyAbstract
             ->setFeature($dto->getFeature());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

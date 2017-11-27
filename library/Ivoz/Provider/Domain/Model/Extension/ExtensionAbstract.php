@@ -86,6 +86,7 @@ abstract class ExtensionAbstract
     {
         $this->setNumber($number);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -156,6 +157,14 @@ abstract class ExtensionAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return ExtensionDTO
      */
     public static function createDTO()
@@ -219,6 +228,8 @@ abstract class ExtensionAbstract
             ->setNumberCountry($dto->getNumberCountry());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

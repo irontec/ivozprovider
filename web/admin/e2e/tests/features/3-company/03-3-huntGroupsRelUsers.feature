@@ -1,8 +1,7 @@
 @company
 @huntGroupsRelUsers
 @company03
-@company03-4
-
+@company03-2
 
 Feature: Users admin page
   As a main operator

@@ -219,6 +219,7 @@ abstract class UsersActiveWatcherAbstract
         $this->setFlags($flags);
         $this->setUserAgent($userAgent);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -286,6 +287,14 @@ abstract class UsersActiveWatcherAbstract
         }
 
         return $changes;
+    }
+
+    /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
     }
 
     /**
@@ -380,6 +389,8 @@ abstract class UsersActiveWatcherAbstract
             ->setUserAgent($dto->getUserAgent());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

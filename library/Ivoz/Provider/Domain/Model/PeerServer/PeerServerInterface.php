@@ -12,14 +12,12 @@ interface PeerServerInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * @param null $ip
-     * @return PeerServerAbstract
+     * {@inheritDoc}
      */
     public function setIp($ip = null);
 
     /**
-     * @param null $params
-     * @return PeerServerAbstract
+     * {@inheritDoc}
      */
     public function setParams($params = null);
 

@@ -40,6 +40,7 @@ abstract class RoutingPatternGroupAbstract
     {
         $this->setName($name);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -110,6 +111,14 @@ abstract class RoutingPatternGroupAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return RoutingPatternGroupDTO
      */
     public static function createDTO()
@@ -155,6 +164,8 @@ abstract class RoutingPatternGroupAbstract
             ->setBrand($dto->getBrand());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

@@ -58,6 +58,8 @@ class CreateByOutgoingRouting implements OutgoingRoutingLifecycleEventHandlerInt
                     ->setWeight($outgoingRouting->getWeight())
                     ->setOutgoingRoutingId($outgoingRouting->getId());
 
+                //@todo double check this condition,
+                //we're creating new entities every time
                 $this->entityPersister->persistDto($lcrRuleTargetDto);
             }
         }

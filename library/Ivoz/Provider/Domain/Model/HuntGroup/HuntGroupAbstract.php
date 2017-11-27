@@ -89,6 +89,7 @@ abstract class HuntGroupAbstract
         $this->setStrategy($strategy);
         $this->setRingAllTimeout($ringAllTimeout);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -159,6 +160,14 @@ abstract class HuntGroupAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return HuntGroupDTO
      */
     public static function createDTO()
@@ -220,6 +229,8 @@ abstract class HuntGroupAbstract
             ->setNoAnswerVoiceMailUser($dto->getNoAnswerVoiceMailUser());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

@@ -51,6 +51,7 @@ abstract class PeeringContractAbstract
         $this->setDescription($description);
         $this->setName($name);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -121,6 +122,14 @@ abstract class PeeringContractAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return PeeringContractDTO
      */
     public static function createDTO()
@@ -170,6 +179,8 @@ abstract class PeeringContractAbstract
             ->setTransformationRuleSet($dto->getTransformationRuleSet());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

@@ -33,6 +33,60 @@ class User extends UserAbstract implements UserInterface
         return $this->id;
     }
 
+    protected function sanitizeValues()
+    {
+        $isNew = !$this->getId();
+        if ($isNew) {
+            $this->sanitizeNew();
+        }
+
+        $canAccessUserweb = ($this->getActive() && $this->getEmail());
+        if ($canAccessUserweb) {
+            // Avoid username/pass/active incoherences
+            if (!$this->getPass()) {
+                $this->setPass("1234");
+            }
+        } else {
+            $this->setActive(0);
+            $this->setPass(null);
+        }
+
+        if (!$this->getEmail()) {
+            // If no mail, no SendMail
+            $this->setVoicemailSendMail(0);
+        }
+    }
+
+    protected function sanitizeNew()
+    {
+        // Sane defaults for hidden fields
+        if (!$this->getTimezone()) {
+            /**
+             * @todo create a shortcut
+             */
+            $brandDefaultTimezone = $this
+                ->getCompany()
+                ->getBrand()
+                ->getDefaultTimezone();
+
+            $this->setTimezone(
+                $brandDefaultTimezone
+            );
+        }
+
+        if (is_null($this->getVoicemailSendMail()) && $this->getEmail()) {
+            $this->setVoicemailSendMail(1);
+        }
+
+        if ($this->getEmail()) {
+            $this->setActive(1);
+            /**
+             * @todo should we move this to the frontend?
+             */
+            $this->setPass("1234");
+        }
+    }
+
     /**
      * return associated endpoint with the user
      *
@@ -293,6 +347,16 @@ class User extends UserAbstract implements UserInterface
         return $this
             ->getLanguage()
             ->getIden();
+    }
+
+    public function setEmail($email = null)
+    {
+        if ($email === '') {
+            // '' is NULL (avoid triggering the UNIQUE KEY)
+            $email = null;
+        }
+
+        return parent::setEmail($email);
     }
 
 }

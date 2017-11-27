@@ -60,6 +60,7 @@ abstract class TrunksDomainAttrAbstract
         $this->setValue($value);
         $this->setLastModified($lastModified);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -130,6 +131,14 @@ abstract class TrunksDomainAttrAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return TrunksDomainAttrDTO
      */
     public static function createDTO()
@@ -178,6 +187,8 @@ abstract class TrunksDomainAttrAbstract
             ->setLastModified($dto->getLastModified());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

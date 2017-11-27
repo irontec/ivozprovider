@@ -40,6 +40,7 @@ abstract class BrandServiceAbstract
     {
         $this->setCode($code);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -110,6 +111,14 @@ abstract class BrandServiceAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return BrandServiceDTO
      */
     public static function createDTO()
@@ -155,6 +164,8 @@ abstract class BrandServiceAbstract
             ->setService($dto->getService());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

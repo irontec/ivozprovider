@@ -12,6 +12,9 @@ interface BrandServiceInterface extends LoggableEntityInterface
      */
     public function getChangeSet();
 
+    /**
+     * {@inheritDoc}
+     */
     public function setCode($code);
 
     /**

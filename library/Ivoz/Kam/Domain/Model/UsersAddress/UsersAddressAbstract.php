@@ -64,6 +64,7 @@ abstract class UsersAddressAbstract
         $this->setMask($mask);
         $this->setPort($port);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -134,6 +135,14 @@ abstract class UsersAddressAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return UsersAddressDTO
      */
     public static function createDTO()
@@ -187,6 +196,8 @@ abstract class UsersAddressAbstract
             ->setCompany($dto->getCompany());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

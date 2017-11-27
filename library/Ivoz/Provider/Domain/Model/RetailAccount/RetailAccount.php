@@ -37,6 +37,16 @@ class RetailAccount extends RetailAccountAbstract implements RetailAccountInterf
         return $this->id;
     }
 
+    protected function sanitizeValues()
+    {
+        $this->setDomain(
+            $this
+                ->getCompany()
+                ->getBrand()
+                ->getDomain()
+        );
+    }
+
     /**
      * {@inheritDoc}
      */

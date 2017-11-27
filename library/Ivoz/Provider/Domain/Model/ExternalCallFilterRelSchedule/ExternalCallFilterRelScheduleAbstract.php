@@ -35,6 +35,7 @@ abstract class ExternalCallFilterRelScheduleAbstract
     {
 
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -105,6 +106,14 @@ abstract class ExternalCallFilterRelScheduleAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return ExternalCallFilterRelScheduleDTO
      */
     public static function createDTO()
@@ -148,6 +157,8 @@ abstract class ExternalCallFilterRelScheduleAbstract
             ->setSchedule($dto->getSchedule());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

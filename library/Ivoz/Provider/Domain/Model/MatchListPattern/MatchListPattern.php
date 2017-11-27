@@ -42,5 +42,23 @@ class MatchListPattern extends MatchListPatternAbstract implements MatchListPatt
             $callingCode .
             $this->getNumberValue();
     }
+
+    protected function sanitizeValues()
+    {
+        {
+            $nullableFields = [
+                'number' => 'numberValue',
+                'regexp' => 'regExp',
+            ];
+            $patternType = $this->getType();
+            foreach ($nullableFields as $type => $fieldName) {
+                if ($patternType == $type) {
+                    continue;
+                }
+                $setter = 'set' . ucfirst($fieldName);
+                $this->{$setter}(null);
+            }
+        }
+    }
 }
 

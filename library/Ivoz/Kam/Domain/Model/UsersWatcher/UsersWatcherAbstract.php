@@ -75,6 +75,7 @@ abstract class UsersWatcherAbstract
         $this->setStatus($status);
         $this->setInsertedTime($insertedTime);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -145,6 +146,14 @@ abstract class UsersWatcherAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return UsersWatcherDTO
      */
     public static function createDTO()
@@ -198,6 +207,8 @@ abstract class UsersWatcherAbstract
             ->setInsertedTime($dto->getInsertedTime());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

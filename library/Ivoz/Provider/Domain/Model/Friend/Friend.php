@@ -38,6 +38,15 @@ class Friend extends FriendAbstract implements FriendInterface
         return $this->id;
     }
 
+    protected function sanitizeValues()
+    {
+        $this->setDomain(
+            $this
+                ->getCompany()
+                ->getDomain()
+        );
+    }
+
     /**
      * {@inheritDoc}
      */

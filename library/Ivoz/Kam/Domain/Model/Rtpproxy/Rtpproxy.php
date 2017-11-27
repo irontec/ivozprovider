@@ -3,7 +3,7 @@
 namespace Ivoz\Kam\Domain\Model\Rtpproxy;
 
 use Assert\Assertion;
-
+use \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface;
 /**
  * Rtpproxy
  */
@@ -28,6 +28,17 @@ class Rtpproxy extends RtpproxyAbstract implements RtpproxyInterface
     public function getId()
     {
         return $this->id;
+    }
+
+    public function setMediaRelaySet(MediaRelaySetInterface $mediaRelaySet = null)
+    {
+        if (!is_null($mediaRelaySet)) {
+            $this->setSetid(
+                (string) $mediaRelaySet->getId()
+            );
+        }
+
+        return parent::setMediaRelaySet($mediaRelaySet);
     }
 }
 

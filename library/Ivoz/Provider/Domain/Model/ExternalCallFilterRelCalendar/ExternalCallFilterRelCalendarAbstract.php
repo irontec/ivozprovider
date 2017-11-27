@@ -35,6 +35,7 @@ abstract class ExternalCallFilterRelCalendarAbstract
     {
 
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -105,6 +106,14 @@ abstract class ExternalCallFilterRelCalendarAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return ExternalCallFilterRelCalendarDTO
      */
     public static function createDTO()
@@ -148,6 +157,8 @@ abstract class ExternalCallFilterRelCalendarAbstract
             ->setCalendar($dto->getCalendar());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

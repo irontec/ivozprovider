@@ -46,6 +46,7 @@ abstract class HolidayDateAbstract
         $this->setName($name);
         $this->setEventDate($eventDate);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -116,6 +117,14 @@ abstract class HolidayDateAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return HolidayDateDTO
      */
     public static function createDTO()
@@ -163,6 +172,8 @@ abstract class HolidayDateAbstract
             ->setLocution($dto->getLocution());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

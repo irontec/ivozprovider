@@ -14,14 +14,12 @@ interface ExtensionInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * @param string $number
-     * @return ExtensionAbstract
+     * {@inheritDoc}
      */
     public function setNumber($number);
 
     /**
-     * @param null $numberValue
-     * @return ExtensionAbstract
+     * {@inheritDoc}
      */
     public function setNumberValue($numberValue = null);
 

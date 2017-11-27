@@ -12,6 +12,11 @@ interface QueueInterface extends LoggableEntityInterface
      */
     public function getChangeSet();
 
+    /**
+     * {@inheritDoc}
+     */
+    public function setName($name = null);
+
     public function getAstQueueName();
 
     /**
@@ -27,15 +32,6 @@ interface QueueInterface extends LoggableEntityInterface
      * @return string
      */
     public function getFullNumberValueE164();
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return self
-     */
-    public function setName($name = null);
 
     /**
      * Get name

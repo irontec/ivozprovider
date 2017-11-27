@@ -13,17 +13,12 @@ services:
     '@Ivoz\Kam\Domain\Service\TrunksUacreg\TrunksUacregLifecycleServiceCollection'
 
   ##################################
-  ## pre_persist
+  ## post_*
   ##################################
-  Ivoz\Kam\Domain\Service\TrunksUacreg\SanitizeValues:
-    tags:
-      - { name: kam.lifecycle.trunks_uacreg.pre_persist, priority: 10 }
-    arguments: ~
-
   Ivoz\Kam\Infrastructure\Domain\Service\TrunksUacreg\SendTrunksUacregReloadRequest:
     tags:
       ## post_persist
-      - { name: kam.lifecycle.trunks_uacreg.post_persist, priority: 20 }
+      - { name: kam.lifecycle.trunks_uacreg.post_persist, priority: 10 }
       ## post_remove
       - { name: kam.lifecycle.trunks_uacreg.post_remove, priority: 10 }
     arguments:

@@ -23,7 +23,7 @@ class UpdateByRoutingPattern implements RoutingPatternLifecycleEventHandlerInter
     public function __construct(
         EntityPersisterInterface $entityPersister
     ) {
-        $this->entityPersister = $this->entityPersister;
+        $this->entityPersister = $entityPersister;
     }
 
     public function execute(RoutingPatternInterface $entity, $isNew)

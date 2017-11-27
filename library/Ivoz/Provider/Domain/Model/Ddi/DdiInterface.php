@@ -13,8 +13,7 @@ interface DdiInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * @param string $ddi
-     * @return DdiAbstract
+     * {@inheritDoc}
      */
     public function setDdi($ddi);
 

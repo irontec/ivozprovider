@@ -13,14 +13,6 @@ services:
     '@Ivoz\Provider\Domain\Service\MusicOnHold\MusicOnHoldLifecycleServiceCollection'
 
   ##################################
-  ## pre_persist
-  ##################################
-  Ivoz\Provider\Domain\Service\MusicOnHold\SanitizeValues:
-    tags:
-      - { name: provider.lifecycle.music_on_hold.pre_persist, priority: 10 }
-    arguments: ~
-
-  ##################################
   ## post_persist
   ##################################
   Ivoz\Provider\Domain\Service\MusicOnHold\SendRecodingOrder:

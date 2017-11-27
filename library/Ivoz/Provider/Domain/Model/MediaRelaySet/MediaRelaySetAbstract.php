@@ -35,6 +35,7 @@ abstract class MediaRelaySetAbstract
     {
         $this->setName($name);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -105,6 +106,14 @@ abstract class MediaRelaySetAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return MediaRelaySetDTO
      */
     public static function createDTO()
@@ -148,6 +157,8 @@ abstract class MediaRelaySetAbstract
             ->setDescription($dto->getDescription());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

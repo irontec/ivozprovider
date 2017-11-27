@@ -14,6 +14,16 @@ interface TransformationRuleSetInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * {@inheritDoc}
+     */
+    public function setInternationalCode($internationalCode = null);
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setTrunkPrefix($trunkPrefix = null);
+
+    /**
      * Set description
      *
      * @param string $description
@@ -30,29 +40,11 @@ interface TransformationRuleSetInterface extends LoggableEntityInterface
     public function getDescription();
 
     /**
-     * Set internationalCode
-     *
-     * @param string $internationalCode
-     *
-     * @return self
-     */
-    public function setInternationalCode($internationalCode = null);
-
-    /**
      * Get internationalCode
      *
      * @return string
      */
     public function getInternationalCode();
-
-    /**
-     * Set trunkPrefix
-     *
-     * @param string $trunkPrefix
-     *
-     * @return self
-     */
-    public function setTrunkPrefix($trunkPrefix = null);
 
     /**
      * Get trunkPrefix

@@ -41,6 +41,7 @@ abstract class FriendsPatternAbstract
         $this->setName($name);
         $this->setRegExp($regExp);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -111,6 +112,14 @@ abstract class FriendsPatternAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return FriendsPatternDTO
      */
     public static function createDTO()
@@ -156,6 +165,8 @@ abstract class FriendsPatternAbstract
             ->setFriend($dto->getFriend());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

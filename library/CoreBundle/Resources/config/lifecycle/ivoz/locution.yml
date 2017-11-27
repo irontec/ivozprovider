@@ -13,14 +13,6 @@ services:
     '@Ivoz\Provider\Domain\Service\Locution\LocutionLifecycleServiceCollection'
 
   ##################################
-  ## pre_persist
-  ##################################
-  Ivoz\Provider\Domain\Service\Locution\SanitizeValues:
-    tags:
-      - { name: provider.lifecycle.locution.pre_persist, priority: 10 }
-    arguments: ~
-
-  ##################################
   ## post_persist
   ##################################
   Ivoz\Provider\Domain\Service\Locution\SendRecodingOrder:

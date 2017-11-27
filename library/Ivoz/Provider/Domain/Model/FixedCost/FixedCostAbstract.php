@@ -45,6 +45,7 @@ abstract class FixedCostAbstract
     {
         $this->setName($name);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -115,6 +116,14 @@ abstract class FixedCostAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return FixedCostDTO
      */
     public static function createDTO()
@@ -162,6 +171,8 @@ abstract class FixedCostAbstract
             ->setBrand($dto->getBrand());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

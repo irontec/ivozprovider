@@ -63,6 +63,7 @@ abstract class TrunksHtableAbstract
         $this->setKeyValue($keyValue);
         $this->setExpires($expires);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -133,6 +134,14 @@ abstract class TrunksHtableAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return TrunksHtableDTO
      */
     public static function createDTO()
@@ -181,6 +190,8 @@ abstract class TrunksHtableAbstract
             ->setExpires($dto->getExpires());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

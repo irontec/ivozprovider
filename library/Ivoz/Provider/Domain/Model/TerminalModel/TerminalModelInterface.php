@@ -13,6 +13,11 @@ interface TerminalModelInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * {@inheritDoc}
+     */
+    public function setIden($iden);
+
+    /**
      * {@inheritdoc}
      */
     public function setGenericTemplate($genericTemplate = null);
@@ -21,15 +26,6 @@ interface TerminalModelInterface extends LoggableEntityInterface
      * {@inheritdoc}
      */
     public function setSpecificTemplate($specificTemplate = null);
-
-    /**
-     * Set iden
-     *
-     * @param string $iden
-     *
-     * @return self
-     */
-    public function setIden($iden);
 
     /**
      * Get iden

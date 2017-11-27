@@ -140,6 +140,7 @@ abstract class PsEndpointAbstract
         $this->setAllow($allow);
         $this->setOneHundredRel($oneHundredRel);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -207,6 +208,14 @@ abstract class PsEndpointAbstract
         }
 
         return $changes;
+    }
+
+    /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
     }
 
     /**
@@ -287,6 +296,8 @@ abstract class PsEndpointAbstract
             ->setRetailAccount($dto->getRetailAccount());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

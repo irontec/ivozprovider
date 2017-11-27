@@ -24,8 +24,7 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getDomainUsers();
 
     /**
-     * @param null $onDemandRecordCode
-     * @return CompanyAbstract
+     * {@inheritDoc}
      */
     public function setOnDemandRecordCode($onDemandRecordCode = null);
 

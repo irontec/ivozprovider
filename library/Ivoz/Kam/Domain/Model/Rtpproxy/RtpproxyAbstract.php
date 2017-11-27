@@ -58,6 +58,7 @@ abstract class RtpproxyAbstract
         $this->setFlags($flags);
         $this->setWeight($weight);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -128,6 +129,14 @@ abstract class RtpproxyAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return RtpproxyDTO
      */
     public static function createDTO()
@@ -179,6 +188,8 @@ abstract class RtpproxyAbstract
             ->setMediaRelaySet($dto->getMediaRelaySet());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

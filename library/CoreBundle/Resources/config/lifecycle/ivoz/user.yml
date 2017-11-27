@@ -21,19 +21,6 @@ services:
     arguments: ~
 
   ##################################
-  ## pre_persist
-  ##################################
-  Ivoz\Provider\Domain\Service\User\SanitizeValues:
-    tags:
-      - { name: provider.lifecycle.user.pre_persist, priority: 10 }
-    arguments: ~
-
-  Ivoz\Provider\Domain\Service\User\CryptPass:
-    tags:
-      - { name: provider.lifecycle.user.pre_persist, priority: 20 }
-    arguments: ~
-
-  ##################################
   ## post_persist
   ##################################
   Ivoz\Ast\Domain\Service\Voicemail\UpdateByUser:

@@ -82,6 +82,7 @@ abstract class UsersXcapAbstract
         $this->setDocUri($docUri);
         $this->setPort($port);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -152,6 +153,14 @@ abstract class UsersXcapAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return UsersXcapDTO
      */
     public static function createDTO()
@@ -206,6 +215,8 @@ abstract class UsersXcapAbstract
             ->setPort($dto->getPort());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

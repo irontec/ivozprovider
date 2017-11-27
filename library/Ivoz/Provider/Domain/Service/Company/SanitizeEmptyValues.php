@@ -34,37 +34,9 @@ class SanitizeEmptyValues implements CompanyLifecycleEventHandlerInterface
          * @var $dto CompanyDTO
          */
         $dto = $entity->toDTO();
-
-        if (!$dto->getDefaultTimezoneId()) {
-            $dto->setDefaultTimezoneId(
-                // @todo create a shortcut
-                $entity->getBrand()->getDefaultTimezone()->getId()
-            );
-        }
-
-        if (!$dto->getLanguageId()) {
-            $dto->setLanguageId(
-                // @todo create a shortcut
-                $entity->getBrand()->getLanguage()->getId()
-            );
-        }
-
         if (!$dto->getMediaRelaySetsId()) {
             $dto->setMediaRelaySetsId(0);
         }
-
-        if (!$dto->getIpFilter()) {
-            $dto->setIpFilter(0);
-        }
-
-        if (!$dto->getOnDemandRecord()) {
-            $dto->setOnDemandRecord(0);
-        }
-
-        if (!$dto->getOnDemandRecordCode()) {
-            $dto->setOnDemandRecordCode('');
-        }
-
 
         $this->entityUpdater->execute($entity, $dto);
     }

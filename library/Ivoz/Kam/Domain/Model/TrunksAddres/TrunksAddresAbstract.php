@@ -53,6 +53,7 @@ abstract class TrunksAddresAbstract
         $this->setMask($mask);
         $this->setPort($port);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -123,6 +124,14 @@ abstract class TrunksAddresAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return TrunksAddresDTO
      */
     public static function createDTO()
@@ -172,6 +181,8 @@ abstract class TrunksAddresAbstract
             ->setTag($dto->getTag());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

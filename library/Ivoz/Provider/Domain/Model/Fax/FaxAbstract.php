@@ -51,6 +51,7 @@ abstract class FaxAbstract
         $this->setName($name);
         $this->setSendByEmail($sendByEmail);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -121,6 +122,14 @@ abstract class FaxAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return FaxDTO
      */
     public static function createDTO()
@@ -170,6 +179,8 @@ abstract class FaxAbstract
             ->setOutgoingDdi($dto->getOutgoingDdi());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

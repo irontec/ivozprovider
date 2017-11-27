@@ -35,6 +35,33 @@ class Extension extends ExtensionAbstract implements ExtensionInterface
     /**
      * {@inheritDoc}
      */
+    protected function sanitizeValues()
+    {
+        $routeType = $this->getRouteType();
+
+        $nullableFields = [
+            'ivr'            => 'ivr',
+            'huntGroup'      => 'huntGroup',
+            'user'           => 'user',
+            'conferenceRoom' => 'conferenceRoom',
+            'number'         => 'numberValue',
+            'friend'         => 'friendValue',
+            'queue'          => 'queue',
+        ];
+
+        foreach ($nullableFields as $type => $fieldName) {
+            if ($routeType == $type) {
+                continue;
+            }
+
+            $setter = 'set' . ucfirst($fieldName);
+            $this->{$setter}(null);
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function setNumber($number)
     {
         Assertion::regex($number, '/^[0-9].*$/');

@@ -13,13 +13,6 @@ services:
     '@Ivoz\Provider\Domain\Service\Friend\FriendLifecycleServiceCollection'
 
   ##################################
-  ## pre_persist
-  ##################################
-  Ivoz\Provider\Domain\Service\Friend\SanitizeValues:
-    tags:
-      - { name: provider.lifecycle.friend.pre_persist, priority: 10}
-
-  ##################################
   ## post_persist
   ##################################
   Ivoz\Ast\Domain\Service\PsEndpoint\UpdateByFriend:

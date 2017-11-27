@@ -13,14 +13,6 @@ services:
     '@Ivoz\Provider\Domain\Service\Queue\QueueLifecycleServiceCollection'
 
   ##################################
-  ## pre_persist
-  ##################################
-  Ivoz\Provider\Domain\Service\Queue\SanitizeValues:
-    tags:
-      - { name: provider.lifecycle.queue.pre_persist, priority: 10 }
-    arguments: ~
-
-  ##################################
   ## post_persist
   ##################################
   Ivoz\Ast\Domain\Service\Queue\UpdateByIvozQueue:

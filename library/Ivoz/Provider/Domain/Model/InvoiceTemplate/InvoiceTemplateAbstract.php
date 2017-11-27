@@ -56,6 +56,7 @@ abstract class InvoiceTemplateAbstract
         $this->setName($name);
         $this->setTemplate($template);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -126,6 +127,14 @@ abstract class InvoiceTemplateAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return InvoiceTemplateDTO
      */
     public static function createDTO()
@@ -177,6 +186,8 @@ abstract class InvoiceTemplateAbstract
             ->setBrand($dto->getBrand());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

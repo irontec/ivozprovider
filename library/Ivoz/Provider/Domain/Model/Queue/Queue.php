@@ -72,5 +72,23 @@ class Queue extends QueueAbstract implements QueueInterface
             $this->getFullNumberCountry()->getCountryCode() .
             $this->getFullNumberValue();
     }
+
+    public function setMaxWaitTime($maxWaitTime = null)
+    {
+        if ($maxWaitTime == 0) {
+            $maxWaitTime = null;
+        }
+
+        return parent::setMaxWaitTime($maxWaitTime);
+    }
+
+    public function setMaxlen($maxlen = null)
+    {
+        if ($maxlen == 0) {
+            $maxlen = null;
+        }
+
+        return parent::setMaxlen($maxlen);
+    }
 }
 

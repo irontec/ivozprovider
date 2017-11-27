@@ -28,6 +28,15 @@ class Fax extends FaxAbstract implements FaxInterface
         return $this->id;
     }
 
+    public function setSendByEmail($sendByEmail)
+    {
+        $response = parent::setSendByEmail($sendByEmail);
+        if ($this->getSendByEmail() == 0) {
+            $this->setEmail(null);
+        }
+        return $response;
+    }
+
     /**
      * {@inheritDoc}
      */

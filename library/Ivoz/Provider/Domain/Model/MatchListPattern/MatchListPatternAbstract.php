@@ -56,6 +56,7 @@ abstract class MatchListPatternAbstract
     {
         $this->setType($type);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -126,6 +127,14 @@ abstract class MatchListPatternAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return MatchListPatternDTO
      */
     public static function createDTO()
@@ -177,6 +186,8 @@ abstract class MatchListPatternAbstract
             ->setNumberCountry($dto->getNumberCountry());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 
