@@ -2,6 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\PricingPlansRelTargetPattern;
 
+use Assert\Assertion;
+
 /**
  * PricingPlansRelTargetPattern
  */
@@ -9,6 +11,10 @@ class PricingPlansRelTargetPattern extends PricingPlansRelTargetPatternAbstract 
 {
     use PricingPlansRelTargetPatternTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -16,12 +22,30 @@ class PricingPlansRelTargetPattern extends PricingPlansRelTargetPatternAbstract 
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setConnectionCharge($connectionCharge)
+    {
+        Assertion::regex((string) $connectionCharge, '/^[0-9]{1,6}[.]{0,1}[0-9]*$/');
+        return parent::setConnectionCharge($connectionCharge);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setPerPeriodCharge($perPeriodCharge)
+    {
+        Assertion::regex((string) $perPeriodCharge, '/^[0-9]{1,6}[.]{0,1}[0-9]*$/');
+        return parent::setPerPeriodCharge($perPeriodCharge);
     }
 
     public function getCost($duration = null)

@@ -12,6 +12,10 @@ class PsEndpoint extends PsEndpointAbstract implements PsEndpointInterface
 {
     use PsEndpointTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -19,7 +23,7 @@ class PsEndpoint extends PsEndpointAbstract implements PsEndpointInterface
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

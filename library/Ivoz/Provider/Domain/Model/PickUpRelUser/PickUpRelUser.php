@@ -8,6 +8,10 @@ class PickUpRelUser extends PickUpRelUserAbstract implements PickUpRelUserInterf
 {
     use PickUpRelUserTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -15,7 +19,7 @@ class PickUpRelUser extends PickUpRelUserAbstract implements PickUpRelUserInterf
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

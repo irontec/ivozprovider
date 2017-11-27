@@ -10,6 +10,9 @@ class Administrator extends AdministratorAbstract implements AdministratorInterf
 {
     use AdministratorTrait;
 
+    /**
+     * @return array
+     */
     public function getChangeSet()
     {
         $changeSet = parent::getChangeSet();
@@ -22,7 +25,7 @@ class Administrator extends AdministratorAbstract implements AdministratorInterf
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

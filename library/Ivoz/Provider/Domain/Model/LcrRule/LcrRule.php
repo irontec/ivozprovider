@@ -2,6 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\LcrRule;
 
+use Assert\Assertion;
+
 /**
  * LcrRule
  */
@@ -9,6 +11,10 @@ class LcrRule extends LcrRuleAbstract implements LcrRuleInterface
 {
     use LcrRuleTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -16,7 +22,7 @@ class LcrRule extends LcrRuleAbstract implements LcrRuleInterface
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()
@@ -24,6 +30,25 @@ class LcrRule extends LcrRuleAbstract implements LcrRuleInterface
         return $this->id;
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    public function setRequestUri($requestUri = null)
+    {
+        if (!empty($requestUri)) {
+            Assertion::regex($requestUri, '/^:.+@$/');
+        }
+        return parent::setRequestUri($requestUri);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setTag($tag)
+    {
+        Assertion::regex($tag, '/^[a-zA-Z0-9_]+$/');
+        return parent::setTag($tag);
+    }
 
     public function setCondition($regexp)
     {

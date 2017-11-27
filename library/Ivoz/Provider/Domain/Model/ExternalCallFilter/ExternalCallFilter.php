@@ -18,6 +18,10 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
 {
     use ExternalCallFilterTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -25,7 +29,7 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

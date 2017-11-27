@@ -8,7 +8,6 @@ use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Domain\Domain;
 use Ivoz\Provider\Domain\Model\Domain\DomainDTO;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
-use Ivoz\Provider\Domain\Model\Domain\DomainRepository;
 use Ivoz\Provider\Domain\Service\Brand\BrandLifecycleEventHandlerInterface;
 
 /**
@@ -34,22 +33,20 @@ class UpdateByBrand implements BrandLifecycleEventHandlerInterface
 
     public function __construct(
         EntityManagerInterface $em,
-        EntityPersisterInterface $entityPersister,
-        DomainRepository $domainRepository
+        EntityPersisterInterface $entityPersister
     ) {
         $this->em = $em;
         $this->entityPersister = $entityPersister;
-        $this->domainRepository = $domainRepository;
     }
 
     public function execute(BrandInterface $entity, $isNew)
     {
         if (!$entity->hasChanged('domain_users')) {
+
             return;
         }
 
-        $id = $entity->getId();
-        $name = $entity->getDomainUsers();
+        $domainUsers = $entity->getDomainUsers();
 
         /**
          * @var DomainInterface $domain
@@ -57,10 +54,9 @@ class UpdateByBrand implements BrandLifecycleEventHandlerInterface
         $domain = $entity->getDomain();
 
         // Empty domain field, delete any related domain
-        if (!$name) {
-            if ($domain) {
-                $this->em->remove($domain);
-            }
+        if (!$domainUsers && $domain) {
+            $this->em->remove($domain);
+
             return;
         }
 
@@ -75,10 +71,13 @@ class UpdateByBrand implements BrandLifecycleEventHandlerInterface
          * @var DomainDTO $domainDto
          */
         $domainDto
-            ->setDomain($name)
+            ->setDomain($domainUsers)
             ->setDescription($entity->getName() . " proxyusers domain");
 
-        $domain = $this->entityPersister->persistDto($domainDto, $domain);
+        $domain = $this
+            ->entityPersister
+            ->persistDto($domainDto, $domain);
+
         $entity->setDomain($domain);
     }
 }

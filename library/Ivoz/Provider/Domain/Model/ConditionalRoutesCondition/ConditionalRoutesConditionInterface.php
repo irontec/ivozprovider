@@ -7,6 +7,10 @@ use Doctrine\Common\Collections\Collection;
 
 interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
 {
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet();
 
     /**

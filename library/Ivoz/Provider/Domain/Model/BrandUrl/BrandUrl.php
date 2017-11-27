@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Model\BrandUrl;
 
+use Assert\Assertion;
 use Ivoz\Core\Domain\Model\TempFileContainnerTrait;
 use Ivoz\Core\Domain\Service\FileContainerInterface;
 
@@ -13,6 +14,10 @@ class BrandUrl extends BrandUrlAbstract implements BrandUrlInterface, FileContai
     use BrandUrlTrait;
     use TempFileContainnerTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -30,12 +35,21 @@ class BrandUrl extends BrandUrlAbstract implements BrandUrlInterface, FileContai
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setUrl($url)
+    {
+        Assertion::regex($url, '#^https://.*$#');
+        return parent::setUrl($url);
     }
 }
 

@@ -5,6 +5,9 @@ namespace Ivoz\Provider\Domain\Service\ConferenceRoom;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
 
+/**
+ * @codeCoverageIgnore
+ */
 class ConferenceRoomLifecycleServiceCollection implements LifecycleServiceCollectionInterface
 {
     use LifecycleServiceCollectionTrait;

@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\Ddi;
 
 use Ivoz\Provider\Domain\Traits\RoutableTrait;
+use Assert\Assertion;
 
 /**
  * Ddi
@@ -10,9 +11,12 @@ use Ivoz\Provider\Domain\Traits\RoutableTrait;
 class Ddi extends DdiAbstract implements DdiInterface
 {
     use DdiTrait;
-
     use RoutableTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -20,12 +24,21 @@ class Ddi extends DdiAbstract implements DdiInterface
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setDdi($ddi)
+    {
+        Assertion::regex($ddi, '/^[0-9]+$/');
+        return parent::setDdi($ddi);
     }
 
     /**

@@ -6,6 +6,10 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 interface OutgoingDdiRulesPatternInterface extends LoggableEntityInterface
 {
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet();
 
     /**

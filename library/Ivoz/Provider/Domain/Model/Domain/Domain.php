@@ -9,6 +9,10 @@ class Domain extends DomainAbstract implements DomainInterface
 {
     use DomainTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -16,7 +20,7 @@ class Domain extends DomainAbstract implements DomainInterface
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

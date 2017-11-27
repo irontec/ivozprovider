@@ -9,6 +9,10 @@ class FeaturesRelCompany extends FeaturesRelCompanyAbstract implements FeaturesR
 {
     use FeaturesRelCompanyTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -16,7 +20,7 @@ class FeaturesRelCompany extends FeaturesRelCompanyAbstract implements FeaturesR
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

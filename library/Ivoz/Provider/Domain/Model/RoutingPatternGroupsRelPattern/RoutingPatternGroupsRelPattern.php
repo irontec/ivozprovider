@@ -11,7 +11,7 @@ class RoutingPatternGroupsRelPattern extends RoutingPatternGroupsRelPatternAbstr
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

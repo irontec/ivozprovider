@@ -8,6 +8,10 @@ class PickUpGroup extends PickUpGroupAbstract implements PickUpGroupInterface
 {
     use PickUpGroupTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -15,7 +19,7 @@ class PickUpGroup extends PickUpGroupAbstract implements PickUpGroupInterface
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

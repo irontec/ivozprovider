@@ -6,6 +6,10 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 interface ScheduleInterface extends LoggableEntityInterface
 {
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet();
 
     public function checkIsOnTimeRange($dayOfTheWeek, \DateTime $time, \DateTimeZone $timeZone);

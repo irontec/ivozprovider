@@ -12,6 +12,10 @@ class Invoice extends InvoiceAbstract implements InvoiceInterface, FileContainer
     use InvoiceTrait;
     use TempFileContainnerTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -29,7 +33,7 @@ class Invoice extends InvoiceAbstract implements InvoiceInterface, FileContainer
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

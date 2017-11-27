@@ -12,6 +12,10 @@ class OutgoingDdiRule extends OutgoingDdiRuleAbstract implements OutgoingDdiRule
 {
     use OutgoingDdiRuleTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -19,7 +23,7 @@ class OutgoingDdiRule extends OutgoingDdiRuleAbstract implements OutgoingDdiRule
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

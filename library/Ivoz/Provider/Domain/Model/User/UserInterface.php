@@ -7,6 +7,9 @@ use Doctrine\Common\Collections\Collection;
 
 interface UserInterface extends LoggableEntityInterface
 {
+    /**
+     * @return array
+     */
     public function getChangeSet();
 
     /**

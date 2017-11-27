@@ -11,7 +11,7 @@ class AccCdr extends AccCdrAbstract implements AccCdrInterface
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

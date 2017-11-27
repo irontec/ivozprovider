@@ -13,6 +13,10 @@ class MusicOnHold extends MusicOnHoldAbstract implements MusicOnHoldInterface, F
     use MusicOnHoldTrait;
     use TempFileContainnerTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -31,7 +35,7 @@ class MusicOnHold extends MusicOnHoldAbstract implements MusicOnHoldInterface, F
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

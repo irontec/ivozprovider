@@ -9,6 +9,10 @@ class TrunksDomainAttr extends TrunksDomainAttrAbstract implements TrunksDomainA
 {
     use TrunksDomainAttrTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -16,7 +20,7 @@ class TrunksDomainAttr extends TrunksDomainAttrAbstract implements TrunksDomainA
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

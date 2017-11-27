@@ -9,6 +9,9 @@ class Voicemail extends VoicemailAbstract implements VoicemailInterface
 {
     use VoicemailTrait;
 
+    /**
+     * @return array
+     */
     public function getChangeSet()
     {
         $changeSet = parent::getChangeSet();
@@ -25,7 +28,7 @@ class Voicemail extends VoicemailAbstract implements VoicemailInterface
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

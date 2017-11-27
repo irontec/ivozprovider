@@ -9,6 +9,10 @@ class ExternalCallFilterBlackList extends ExternalCallFilterBlackListAbstract im
 {
     use ExternalCallFilterBlackListTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -16,7 +20,7 @@ class ExternalCallFilterBlackList extends ExternalCallFilterBlackListAbstract im
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

@@ -61,8 +61,8 @@
         "symfony/symfony": "3.3.*"
     },
     "require-dev": {
-        "leanphp/phpspec-code-coverage": "^3.1",
-        "phpspec/phpspec": "3.4.*",
+        "leanphp/phpspec-code-coverage": "4.0.*",
+        "phpspec/phpspec": "4.2.*",
         "sensio/generator-bundle": "^3.0",
         "symfony/phpunit-bridge": "^3.0"
     }

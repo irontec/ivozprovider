@@ -6,7 +6,17 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 interface CallForwardSettingInterface extends LoggableEntityInterface
 {
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet();
+
+    /**
+     * @param null $numberValue
+     * @return CallForwardSettingAbstract
+     */
+    public function setNumberValue($numberValue = null);
 
     public function toArrayPortal();
 
@@ -64,15 +74,6 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
      * @return string
      */
     public function getTargetType();
-
-    /**
-     * Set numberValue
-     *
-     * @param string $numberValue
-     *
-     * @return self
-     */
-    public function setNumberValue($numberValue = null);
 
     /**
      * Get numberValue

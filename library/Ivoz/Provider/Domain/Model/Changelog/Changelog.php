@@ -34,7 +34,7 @@ class Changelog extends ChangelogAbstract implements ChangelogInterface
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

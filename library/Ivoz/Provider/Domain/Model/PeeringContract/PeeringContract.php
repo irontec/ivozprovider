@@ -8,6 +8,10 @@ class PeeringContract extends PeeringContractAbstract implements PeeringContract
 {
     use PeeringContractTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -15,7 +19,7 @@ class PeeringContract extends PeeringContractAbstract implements PeeringContract
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

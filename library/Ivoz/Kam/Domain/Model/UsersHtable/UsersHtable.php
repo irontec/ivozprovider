@@ -9,6 +9,10 @@ class UsersHtable extends UsersHtableAbstract implements UsersHtableInterface
 {
     use UsersHtableTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -16,7 +20,7 @@ class UsersHtable extends UsersHtableAbstract implements UsersHtableInterface
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

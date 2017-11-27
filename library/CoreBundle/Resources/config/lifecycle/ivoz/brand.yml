@@ -30,8 +30,6 @@ services:
     arguments:
       $entityPersister:
         '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
-      $domainRepository:
-        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\Domain\\Domain")'
 
   Ivoz\Kam\Domain\Service\UsersDomainAttr\UpdateByBrand:
     tags:

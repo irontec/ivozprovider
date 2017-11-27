@@ -11,7 +11,7 @@ class EtagVersion extends EtagVersionAbstract implements EtagVersionInterface
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

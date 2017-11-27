@@ -9,6 +9,10 @@ class FeaturesRelBrand extends FeaturesRelBrandAbstract implements FeaturesRelBr
 {
     use FeaturesRelBrandTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -16,7 +20,7 @@ class FeaturesRelBrand extends FeaturesRelBrandAbstract implements FeaturesRelBr
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

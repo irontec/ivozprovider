@@ -13,6 +13,10 @@ class FaxesInOut extends FaxesInOutAbstract implements FaxesInOutInterface, File
     use FaxesInOutTrait;
     use TempFileContainnerTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -30,7 +34,7 @@ class FaxesInOut extends FaxesInOutAbstract implements FaxesInOutInterface, File
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

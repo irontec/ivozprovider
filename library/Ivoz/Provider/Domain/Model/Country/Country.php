@@ -9,6 +9,10 @@ class Country extends CountryAbstract implements CountryInterface
 {
     use CountryTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -16,7 +20,7 @@ class Country extends CountryAbstract implements CountryInterface
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

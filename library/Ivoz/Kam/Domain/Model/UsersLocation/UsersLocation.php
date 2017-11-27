@@ -9,6 +9,10 @@ class UsersLocation extends UsersLocationAbstract implements UsersLocationInterf
 {
     use UsersLocationTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -16,7 +20,7 @@ class UsersLocation extends UsersLocationAbstract implements UsersLocationInterf
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

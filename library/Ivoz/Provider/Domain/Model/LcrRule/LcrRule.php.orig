@@ -1,0 +1,69 @@
+<?php
+
+namespace Ivoz\Provider\Domain\Model\LcrRule;
+
+use Assert\Assertion;
+
+/**
+ * LcrRule
+ */
+class LcrRule extends LcrRuleAbstract implements LcrRuleInterface
+{
+    use LcrRuleTrait;
+
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param null $requestUri
+     * @return LcrRuleAbstract
+     */
+    public function setRequestUri($requestUri = null)
+    {
+        Assertion::regex($requestUri, '/^:.*@$/');
+        return parent::setRequestUri($requestUri);
+    }
+
+    public function setTag($tag)
+    {
+        Assertion::regex($tag, '/^[a-zA-Z0-9_]+$/');
+        return parent::setTag($tag);
+    }
+
+    public function setCondition($regexp)
+    {
+        if (is_numeric($regexp) || $regexp == 'fax') {
+            $this->setPrefix($regexp);
+            $this->setRequestUri(null);
+
+            return $this;
+        }
+
+        $ruriRegexp = $regexp;
+        if(substr($ruriRegexp, 0, 1) == '^') {
+            $ruriRegexp = ':' . substr($ruriRegexp,1);
+        }
+
+        if(substr($ruriRegexp, -1) == '$') {
+            $ruriRegexp = substr($ruriRegexp, 0, -1) . '@';
+        }
+
+        $this->setRequestUri($ruriRegexp);
+        $this->setPrefix(null);
+
+        return $this;
+    }
+}
+

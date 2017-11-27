@@ -7,7 +7,35 @@ use Doctrine\Common\Collections\Collection;
 
 interface FriendInterface extends LoggableEntityInterface
 {
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet();
+
+    /**
+     * @param string $name
+     * @return FriendAbstract
+     */
+    public function setName($name);
+
+    /**
+     * @param null $ip
+     * @return FriendAbstract
+     */
+    public function setIp($ip = null);
+
+    /**
+     * @param null $port
+     * @return FriendAbstract
+     */
+    public function setPort($port = null);
+
+    /**
+     * @param null $password
+     * @return FriendAbstract
+     */
+    public function setPassword($password = null);
 
     /**
      * @return string
@@ -51,15 +79,6 @@ interface FriendInterface extends LoggableEntityInterface
     public function getOutgoingDdi();
 
     /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return self
-     */
-    public function setName($name);
-
-    /**
      * Get name
      *
      * @return string
@@ -99,29 +118,11 @@ interface FriendInterface extends LoggableEntityInterface
     public function getTransport();
 
     /**
-     * Set ip
-     *
-     * @param string $ip
-     *
-     * @return self
-     */
-    public function setIp($ip = null);
-
-    /**
      * Get ip
      *
      * @return string
      */
     public function getIp();
-
-    /**
-     * Set port
-     *
-     * @param integer $port
-     *
-     * @return self
-     */
-    public function setPort($port = null);
 
     /**
      * Get port
@@ -145,15 +146,6 @@ interface FriendInterface extends LoggableEntityInterface
      * @return string
      */
     public function getAuthNeeded();
-
-    /**
-     * Set password
-     *
-     * @param string $password
-     *
-     * @return self
-     */
-    public function setPassword($password = null);
 
     /**
      * Get password

@@ -10,6 +10,10 @@ class ConditionalRoutesConditionsRelCalendar extends ConditionalRoutesConditions
 {
     use ConditionalRoutesConditionsRelCalendarTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -17,7 +21,7 @@ class ConditionalRoutesConditionsRelCalendar extends ConditionalRoutesConditions
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

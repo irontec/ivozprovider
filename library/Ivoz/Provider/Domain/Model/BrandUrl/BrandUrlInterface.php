@@ -6,6 +6,10 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 interface BrandUrlInterface extends LoggableEntityInterface
 {
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet();
 
     /**
@@ -14,11 +18,8 @@ interface BrandUrlInterface extends LoggableEntityInterface
     public function getFileObjects();
 
     /**
-     * Set url
-     *
      * @param string $url
-     *
-     * @return self
+     * @return BrandUrlAbstract
      */
     public function setUrl($url);
 

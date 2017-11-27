@@ -10,6 +10,9 @@ class User extends UserAbstract implements UserInterface
 {
     use UserTrait;
 
+    /**
+     * @return array
+     */
     public function getChangeSet()
     {
         $changeSet = parent::getChangeSet();
@@ -22,7 +25,7 @@ class User extends UserAbstract implements UserInterface
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

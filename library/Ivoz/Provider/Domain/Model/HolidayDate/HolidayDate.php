@@ -9,6 +9,10 @@ class HolidayDate extends HolidayDateAbstract implements HolidayDateInterface
 {
     use HolidayDateTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -16,7 +20,7 @@ class HolidayDate extends HolidayDateAbstract implements HolidayDateInterface
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

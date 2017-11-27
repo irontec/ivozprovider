@@ -9,6 +9,10 @@ class CallAclRelMatchList extends CallAclRelMatchListAbstract implements CallAcl
 {
     use CallAclRelMatchListTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -17,7 +21,7 @@ class CallAclRelMatchList extends CallAclRelMatchListAbstract implements CallAcl
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

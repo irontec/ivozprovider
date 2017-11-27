@@ -9,6 +9,10 @@ class PikeTrusted extends PikeTrustedAbstract implements PikeTrustedInterface
 {
     use PikeTrustedTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -16,7 +20,7 @@ class PikeTrusted extends PikeTrustedAbstract implements PikeTrustedInterface
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

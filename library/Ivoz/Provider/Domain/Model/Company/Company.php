@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Model\Company;
 
+use Assert\Assertion;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompany;
 
@@ -21,19 +22,42 @@ class Company extends CompanyAbstract implements CompanyInterface
 
     use CompanyTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
     }
 
     /**
+     * {@inheritDoc}
+     */
+    public function setName($name)
+    {
+        return parent::setName(trim($name));
+    }
+
+    /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setOnDemandRecordCode($onDemandRecordCode = null)
+    {
+        if (!empty($onDemandRecordCode)) {
+            Assertion::regex($onDemandRecordCode, '/^[0-9]+$/');
+        }
+        return parent::setOnDemandRecordCode($onDemandRecordCode);
     }
 
     /**

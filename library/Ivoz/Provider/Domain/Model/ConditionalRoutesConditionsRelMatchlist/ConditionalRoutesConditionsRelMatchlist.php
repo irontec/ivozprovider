@@ -6,6 +6,10 @@ class ConditionalRoutesConditionsRelMatchlist extends ConditionalRoutesCondition
 {
     use ConditionalRoutesConditionsRelMatchlistTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -14,7 +18,7 @@ class ConditionalRoutesConditionsRelMatchlist extends ConditionalRoutesCondition
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

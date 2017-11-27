@@ -11,6 +11,10 @@ class RoutingPatternGroup extends RoutingPatternGroupAbstract implements Routing
 {
     use RoutingPatternGroupTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -18,7 +22,7 @@ class RoutingPatternGroup extends RoutingPatternGroupAbstract implements Routing
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

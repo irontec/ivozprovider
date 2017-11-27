@@ -9,6 +9,10 @@ class FixedCost extends FixedCostAbstract implements FixedCostInterface
 {
     use FixedCostTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -16,7 +20,7 @@ class FixedCost extends FixedCostAbstract implements FixedCostInterface
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

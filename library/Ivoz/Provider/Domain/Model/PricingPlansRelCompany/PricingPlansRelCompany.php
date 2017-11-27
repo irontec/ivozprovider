@@ -9,6 +9,10 @@ class PricingPlansRelCompany extends PricingPlansRelCompanyAbstract implements P
 {
     use PricingPlansRelCompanyTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -16,7 +20,7 @@ class PricingPlansRelCompany extends PricingPlansRelCompanyAbstract implements P
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

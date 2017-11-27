@@ -7,6 +7,9 @@ use Doctrine\Common\Collections\Collection;
 
 interface TerminalInterface extends LoggableEntityInterface
 {
+    /**
+     * @return array
+     */
     public function getChangeSet();
 
     public function getUser();

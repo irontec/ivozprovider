@@ -9,6 +9,10 @@ class UsersAddress extends UsersAddressAbstract implements UsersAddressInterface
 {
     use UsersAddressTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -16,7 +20,7 @@ class UsersAddress extends UsersAddressAbstract implements UsersAddressInterface
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()

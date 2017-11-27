@@ -9,6 +9,10 @@ class OutgoingDdiRulesPattern extends OutgoingDdiRulesPatternAbstract implements
 {
     use OutgoingDdiRulesPatternTrait;
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function getChangeSet()
     {
         return parent::getChangeSet();
@@ -16,7 +20,7 @@ class OutgoingDdiRulesPattern extends OutgoingDdiRulesPatternAbstract implements
 
     /**
      * Get id
-     *
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()
