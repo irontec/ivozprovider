@@ -13,10 +13,14 @@ interface PricingPlansRelTargetPatternInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * @param float $connectionCharge
-     * @return PricingPlansRelTargetPatternAbstract
+     * {@inheritDoc}
      */
     public function setConnectionCharge($connectionCharge);
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setPerPeriodCharge($perPeriodCharge);
 
     public function getCost($duration = null);
 
@@ -42,15 +46,6 @@ interface PricingPlansRelTargetPatternInterface extends LoggableEntityInterface
      * @return integer
      */
     public function getPeriodTime();
-
-    /**
-     * Set perPeriodCharge
-     *
-     * @param string $perPeriodCharge
-     *
-     * @return self
-     */
-    public function setPerPeriodCharge($perPeriodCharge);
 
     /**
      * Get perPeriodCharge

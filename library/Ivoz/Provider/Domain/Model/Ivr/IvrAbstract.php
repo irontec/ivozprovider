@@ -129,6 +129,7 @@ abstract class IvrAbstract
         $this->setMaxDigits($maxDigits);
         $this->setAllowExtensions($allowExtensions);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -199,7 +200,15 @@ abstract class IvrAbstract
     }
 
     /**
-     * @return IvrDTO
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
+     * @return IvrCustomDTO
      */
     public static function createDTO()
     {
@@ -276,6 +285,8 @@ abstract class IvrAbstract
             ->setErrorNumberCountry($dto->getErrorNumberCountry());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

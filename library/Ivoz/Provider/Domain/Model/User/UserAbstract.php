@@ -178,6 +178,7 @@ abstract class UserAbstract
         $this->setVoicemailAttachSound($voicemailAttachSound);
         $this->setGsQRCode($gsQRCode);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -245,6 +246,14 @@ abstract class UserAbstract
         }
 
         return $changes;
+    }
+
+    /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
     }
 
     /**
@@ -339,6 +348,8 @@ abstract class UserAbstract
             ->setVoicemailLocution($dto->getVoicemailLocution());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

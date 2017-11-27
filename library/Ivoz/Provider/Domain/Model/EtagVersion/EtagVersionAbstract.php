@@ -40,6 +40,7 @@ abstract class EtagVersionAbstract
     {
 
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -110,6 +111,14 @@ abstract class EtagVersionAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return EtagVersionDTO
      */
     public static function createDTO()
@@ -155,6 +164,8 @@ abstract class EtagVersionAbstract
             ->setLastChange($dto->getLastChange());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

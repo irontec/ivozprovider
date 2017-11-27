@@ -36,6 +36,7 @@ abstract class LanguageAbstract
         $this->setIden($iden);
         $this->setName($name);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -106,6 +107,14 @@ abstract class LanguageAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return LanguageDTO
      */
     public static function createDTO()
@@ -159,6 +168,8 @@ abstract class LanguageAbstract
             ->setName($name);
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

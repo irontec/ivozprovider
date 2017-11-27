@@ -13,8 +13,7 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * @param null $numberValue
-     * @return CallForwardSettingAbstract
+     * {@inheritDoc}
      */
     public function setNumberValue($numberValue = null);
 

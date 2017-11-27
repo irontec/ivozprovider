@@ -35,6 +35,7 @@ abstract class CalendarAbstract
     {
         $this->setName($name);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -105,6 +106,14 @@ abstract class CalendarAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return CalendarDTO
      */
     public static function createDTO()
@@ -148,6 +157,8 @@ abstract class CalendarAbstract
             ->setCompany($dto->getCompany());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

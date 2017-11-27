@@ -102,6 +102,7 @@ abstract class ExternalCallFilterAbstract
     {
         $this->setName($name);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -169,6 +170,14 @@ abstract class ExternalCallFilterAbstract
         }
 
         return $changes;
+    }
+
+    /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
     }
 
     /**
@@ -241,6 +250,8 @@ abstract class ExternalCallFilterAbstract
             ->setOutOfScheduleNumberCountry($dto->getOutOfScheduleNumberCountry());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

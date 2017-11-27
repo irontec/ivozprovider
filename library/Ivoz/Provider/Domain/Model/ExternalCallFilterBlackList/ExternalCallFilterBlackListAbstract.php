@@ -35,6 +35,7 @@ abstract class ExternalCallFilterBlackListAbstract
     {
 
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -105,6 +106,14 @@ abstract class ExternalCallFilterBlackListAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return ExternalCallFilterBlackListDTO
      */
     public static function createDTO()
@@ -148,6 +157,8 @@ abstract class ExternalCallFilterBlackListAbstract
             ->setMatchlist($dto->getMatchlist());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

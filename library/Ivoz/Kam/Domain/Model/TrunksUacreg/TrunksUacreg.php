@@ -34,6 +34,28 @@ class TrunksUacreg extends TrunksUacregAbstract implements TrunksUacregInterface
         return $this->id;
     }
 
+    protected function sanitizeValues()
+    {
+        if (empty($this->getAuthUsername())) {
+            $this->setAuthUsername($this->getRUsername());
+        }
+
+        if (!$this->getAuthProxy()) {
+            $this->setAuthProxy('sip:' . $this->getRDomain());
+        }
+
+        if (!$this->getMultiDdi()) {
+            return;
+        }
+
+        $isNew = !$this->getId();
+        $multiDdi_is_enabled_in_new_item = $isNew; # New item
+        $multiDdi_has_been_enabled = !$isNew && $this->hasChanged('multiDdi'); # Existing item
+        if ($multiDdi_has_been_enabled || $multiDdi_is_enabled_in_new_item) {
+            $this->setLUuid(round(microtime(true) * 1000));
+        }
+    }
+
     /**
      * {@inheritDoc}
      */

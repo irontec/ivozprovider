@@ -35,6 +35,7 @@ abstract class ProxyTrunkAbstract
     {
         $this->setIp($ip);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -105,6 +106,14 @@ abstract class ProxyTrunkAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return ProxyTrunkDTO
      */
     public static function createDTO()
@@ -148,6 +157,8 @@ abstract class ProxyTrunkAbstract
             ->setIp($dto->getIp());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

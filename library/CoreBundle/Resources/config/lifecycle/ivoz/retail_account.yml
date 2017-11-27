@@ -13,14 +13,6 @@ services:
     '@Ivoz\Provider\Domain\Service\RetailAccount\RetailAccountLifecycleServiceCollection'
 
   ##################################
-  ## pre_persist
-  ##################################
-  Ivoz\Provider\Domain\Service\RetailAccount\SanitizeValues:
-    tags:
-      - { name: provider.lifecycle.retail_account.pre_persist, priority: 10 }
-    arguments: ~
-
-  ##################################
   ## post_persist
   ##################################
   Ivoz\Ast\Domain\Service\PsEndpoint\UpdateByRetailAccount:

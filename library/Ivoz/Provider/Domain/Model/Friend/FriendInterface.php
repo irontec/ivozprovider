@@ -14,26 +14,22 @@ interface FriendInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * @param string $name
-     * @return FriendAbstract
+     * {@inheritDoc}
      */
     public function setName($name);
 
     /**
-     * @param null $ip
-     * @return FriendAbstract
+     * {@inheritDoc}
      */
     public function setIp($ip = null);
 
     /**
-     * @param null $port
-     * @return FriendAbstract
+     * {@inheritDoc}
      */
     public function setPort($port = null);
 
     /**
-     * @param null $password
-     * @return FriendAbstract
+     * {@inheritDoc}
      */
     public function setPassword($password = null);
 

@@ -72,6 +72,7 @@ abstract class FaxesInOutAbstract
         $this->setCalldate($calldate);
         $this->setFile($file);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -139,6 +140,14 @@ abstract class FaxesInOutAbstract
         }
 
         return $changes;
+    }
+
+    /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
     }
 
     /**
@@ -212,6 +221,8 @@ abstract class FaxesInOutAbstract
             ->setDstCountry($dto->getDstCountry());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

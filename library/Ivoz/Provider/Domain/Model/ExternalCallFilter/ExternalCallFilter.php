@@ -37,6 +37,50 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
         return $this->id;
     }
 
+    protected function sanitizeValues()
+    {
+        $this->sanitizeHolidayTargetType();
+        $this->sanitizeOutOfScheduleTargetType();
+    }
+
+    protected function sanitizeHolidayTargetType()
+    {
+        $holidayNullableFields = [
+            'number'    => 'holidayNumberValue',
+            'extension' => 'holidayExtension',
+            'voicemail' => 'holidayVoiceMailUser',
+        ];
+
+        $holidayTargetType = $this->getHolidayTargetType();
+        foreach ($holidayNullableFields as $type => $fieldName) {
+            if ($holidayTargetType == $type) {
+                continue;
+            }
+
+            $setter = 'set'.ucfirst($fieldName);
+            $this->{$setter}(null);
+        }
+    }
+
+    protected function sanitizeOutOfScheduleTargetType()
+    {
+        $scheduleNullableFields = [
+            'number'    => 'outOfScheduleNumberValue',
+            'extension' => 'outOfScheduleExtension',
+            'voicemail' => 'outOfScheduleVoiceMailUser',
+        ];
+        $schedulerouteType = $this->getOutOfScheduleTargetType();
+
+        foreach ($scheduleNullableFields as $type => $fieldName) {
+            if ($schedulerouteType == $type) {
+                continue;
+            }
+
+            $setter = 'set' . ucfirst($fieldName);
+            $this->{$setter}(null);
+        }
+    }
+
     /**
      * Check if the given number matches External Filter black list
      * @param string $origin in E164 form

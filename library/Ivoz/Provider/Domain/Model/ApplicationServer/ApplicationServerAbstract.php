@@ -35,6 +35,7 @@ abstract class ApplicationServerAbstract
     {
         $this->setIp($ip);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -105,6 +106,14 @@ abstract class ApplicationServerAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return ApplicationServerDTO
      */
     public static function createDTO()
@@ -148,6 +157,8 @@ abstract class ApplicationServerAbstract
             ->setName($dto->getName());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

@@ -46,6 +46,7 @@ abstract class TimezoneAbstract
         $this->setTz($tz);
         $this->setLabel($label);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -116,6 +117,14 @@ abstract class TimezoneAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return TimezoneDTO
      */
     public static function createDTO()
@@ -174,6 +183,8 @@ abstract class TimezoneAbstract
             ->setCountry($dto->getCountry());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

@@ -62,6 +62,7 @@ abstract class ChangelogAbstract
         $this->setCreatedOn($createdOn);
         $this->setMicrotime($microtime);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -132,6 +133,14 @@ abstract class ChangelogAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return ChangelogDTO
      */
     public static function createDTO()
@@ -183,6 +192,8 @@ abstract class ChangelogAbstract
             ->setCommand($dto->getCommand());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

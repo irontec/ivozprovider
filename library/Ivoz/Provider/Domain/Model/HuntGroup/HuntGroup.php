@@ -31,6 +31,24 @@ class HuntGroup extends HuntGroupAbstract implements HuntGroupInterface
         return $this->id;
     }
 
+    protected function sanitizeValues()
+    {
+        $nullableFields = array(
+            'number'    => 'noAnswerNumberValue',
+            'extension' => 'noAnswerExtension',
+            'voicemail' => 'noAnswerVoiceMailUser'
+        );
+
+        $routeType = $this->getNoAnswerTargetType();
+        foreach ($nullableFields as $type => $fieldName) {
+            if ($routeType == $type) {
+                continue;
+            }
+            $setter = 'set' . ucfirst($fieldName);
+            $this->{$setter}(null);
+        }
+    }
+
     /**
      * Get this Hungroup related users
      * @return User[]

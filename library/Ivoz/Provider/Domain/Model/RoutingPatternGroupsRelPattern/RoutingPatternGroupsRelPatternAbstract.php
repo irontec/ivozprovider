@@ -35,6 +35,7 @@ abstract class RoutingPatternGroupsRelPatternAbstract
     {
 
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -105,6 +106,14 @@ abstract class RoutingPatternGroupsRelPatternAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return RoutingPatternGroupsRelPatternDTO
      */
     public static function createDTO()
@@ -148,6 +157,8 @@ abstract class RoutingPatternGroupsRelPatternAbstract
             ->setRoutingPatternGroup($dto->getRoutingPatternGroup());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

@@ -12,6 +12,16 @@ interface TerminalInterface extends LoggableEntityInterface
      */
     public function getChangeSet();
 
+    /**
+     * {@inheritDoc}
+     */
+    public function setName($name = null);
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setPassword($password);
+
     public function getUser();
 
     /**
@@ -33,15 +43,6 @@ interface TerminalInterface extends LoggableEntityInterface
      * @return PsEndpointInterface
      */
     public function getAstPsEndpoint();
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return self
-     */
-    public function setName($name = null);
 
     /**
      * Get name
@@ -113,15 +114,6 @@ interface TerminalInterface extends LoggableEntityInterface
      * @return string
      */
     public function getDirectMediaMethod();
-
-    /**
-     * Set password
-     *
-     * @param string $password
-     *
-     * @return self
-     */
-    public function setPassword($password);
 
     /**
      * Get password

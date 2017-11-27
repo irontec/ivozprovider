@@ -35,6 +35,7 @@ abstract class PickUpGroupAbstract
     {
         $this->setName($name);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -105,6 +106,14 @@ abstract class PickUpGroupAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return PickUpGroupDTO
      */
     public static function createDTO()
@@ -148,6 +157,8 @@ abstract class PickUpGroupAbstract
             ->setCompany($dto->getCompany());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

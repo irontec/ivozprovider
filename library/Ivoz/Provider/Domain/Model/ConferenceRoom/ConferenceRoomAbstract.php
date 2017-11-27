@@ -52,6 +52,7 @@ abstract class ConferenceRoomAbstract
         $this->setPinProtected($pinProtected);
         $this->setMaxMembers($maxMembers);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -122,6 +123,14 @@ abstract class ConferenceRoomAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return ConferenceRoomDTO
      */
     public static function createDTO()
@@ -171,6 +180,8 @@ abstract class ConferenceRoomAbstract
             ->setCompany($dto->getCompany());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

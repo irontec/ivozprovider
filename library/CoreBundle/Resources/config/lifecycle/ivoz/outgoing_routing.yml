@@ -13,14 +13,6 @@ services:
     '@Ivoz\Provider\Domain\Service\OutgoingRouting\OutgoingRoutingLifecycleServiceCollection'
 
   ##################################
-  ## pre_persist
-  ##################################
-  Ivoz\Provider\Domain\Service\OutgoingRouting\SanitizeValues:
-    tags:
-      - { name: provider.lifecycle.outgoing_routing.pre_persist, priority: 10 }
-    arguments: ~
-
-  ##################################
   ## post_persist
   ##################################
   Ivoz\Provider\Domain\Service\LcrRule\UpdateByOutgoingRouting:

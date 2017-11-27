@@ -205,6 +205,7 @@ abstract class AccCdrAbstract
         $this->setDuration($duration);
         $this->setBounced($bounced);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -272,6 +273,14 @@ abstract class AccCdrAbstract
         }
 
         return $changes;
+    }
+
+    /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
     }
 
     /**
@@ -380,6 +389,8 @@ abstract class AccCdrAbstract
             ->setCompany($dto->getCompany());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

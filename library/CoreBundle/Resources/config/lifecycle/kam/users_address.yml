@@ -13,13 +13,8 @@ services:
     '@Ivoz\Kam\Domain\Service\UsersAddress\UsersAddressLifecycleServiceCollection'
 
   ##################################
-  ## pre_persist
+  ## post_*
   ##################################
-  Ivoz\Kam\Domain\Service\UsersAddress\CheckValidityAndSanitizeValues:
-    tags:
-      - { name: kam.lifecycle.users_address.pre_persist, priority: 10 }
-    arguments: ~
-
   Ivoz\Kam\Infrastructure\Domain\Service\UsersAddress\SendUsersPermissionsReloadRequest:
     tags:
       ## post_persist

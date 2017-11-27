@@ -14,6 +14,23 @@ interface RetailAccountInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * {@inheritDoc}
+     */
+    public function setName($name);
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setIp($ip = null);
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setPassword($password = null);
+
+    public function setPort($port = null);
+
+    /**
      * @return string
      */
     public function getContact();
@@ -56,15 +73,6 @@ interface RetailAccountInterface extends LoggableEntityInterface
     public function getDdi($ddieE164);
 
     /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return self
-     */
-    public function setName($name);
-
-    /**
      * Get name
      *
      * @return string
@@ -104,29 +112,11 @@ interface RetailAccountInterface extends LoggableEntityInterface
     public function getTransport();
 
     /**
-     * Set ip
-     *
-     * @param string $ip
-     *
-     * @return self
-     */
-    public function setIp($ip = null);
-
-    /**
      * Get ip
      *
      * @return string
      */
     public function getIp();
-
-    /**
-     * Set port
-     *
-     * @param integer $port
-     *
-     * @return self
-     */
-    public function setPort($port = null);
 
     /**
      * Get port
@@ -150,15 +140,6 @@ interface RetailAccountInterface extends LoggableEntityInterface
      * @return string
      */
     public function getAuthNeeded();
-
-    /**
-     * Set password
-     *
-     * @param string $password
-     *
-     * @return self
-     */
-    public function setPassword($password = null);
 
     /**
      * Get password

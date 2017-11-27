@@ -18,8 +18,7 @@ interface BrandUrlInterface extends LoggableEntityInterface
     public function getFileObjects();
 
     /**
-     * @param string $url
-     * @return BrandUrlAbstract
+     * {@inheritDoc}
      */
     public function setUrl($url);
 

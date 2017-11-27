@@ -117,6 +117,7 @@ abstract class UsersMissedCallAbstract
         $this->setSipReason($sipReason);
         $this->setLocaltime($localtime);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -187,6 +188,14 @@ abstract class UsersMissedCallAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return UsersMissedCallDTO
      */
     public static function createDTO()
@@ -254,6 +263,8 @@ abstract class UsersMissedCallAbstract
             ->setUtctime($dto->getUtctime());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

@@ -87,6 +87,7 @@ abstract class LcrRuleAbstract
         $this->setTag($tag);
         $this->setDescription($description);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -157,6 +158,14 @@ abstract class LcrRuleAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return LcrRuleDTO
      */
     public static function createDTO()
@@ -216,6 +225,8 @@ abstract class LcrRuleAbstract
             ->setOutgoingRouting($dto->getOutgoingRouting());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

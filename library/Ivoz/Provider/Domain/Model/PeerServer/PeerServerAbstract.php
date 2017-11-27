@@ -133,6 +133,7 @@ abstract class PeerServerAbstract
     {
         $this->setAuthNeeded($authNeeded);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -200,6 +201,14 @@ abstract class PeerServerAbstract
         }
 
         return $changes;
+    }
+
+    /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
     }
 
     /**
@@ -282,6 +291,8 @@ abstract class PeerServerAbstract
             ->setBrand($dto->getBrand());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

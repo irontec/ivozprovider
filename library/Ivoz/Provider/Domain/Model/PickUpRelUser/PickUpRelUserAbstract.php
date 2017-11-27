@@ -35,6 +35,7 @@ abstract class PickUpRelUserAbstract
     {
 
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -105,6 +106,14 @@ abstract class PickUpRelUserAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return PickUpRelUserDTO
      */
     public static function createDTO()
@@ -148,6 +157,8 @@ abstract class PickUpRelUserAbstract
             ->setUser($dto->getUser());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

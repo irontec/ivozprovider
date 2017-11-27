@@ -57,6 +57,7 @@ abstract class TransformationRuleAbstract
         $this->setType($type);
         $this->setDescription($description);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -127,6 +128,14 @@ abstract class TransformationRuleAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return TransformationRuleDTO
      */
     public static function createDTO()
@@ -178,6 +187,8 @@ abstract class TransformationRuleAbstract
             ->setTransformationRuleSet($dto->getTransformationRuleSet());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

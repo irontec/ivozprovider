@@ -92,6 +92,7 @@ abstract class TerminalAbstract
         $this->setDirectMediaMethod($directMediaMethod);
         $this->setPassword($password);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -162,6 +163,14 @@ abstract class TerminalAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return TerminalDTO
      */
     public static function createDTO()
@@ -223,6 +232,8 @@ abstract class TerminalAbstract
             ->setTerminalModel($dto->getTerminalModel());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

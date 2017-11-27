@@ -80,6 +80,7 @@ abstract class CallForwardSettingAbstract
         $this->setTargetType($targetType);
         $this->setNoAnswerTimeout($noAnswerTimeout);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -150,6 +151,14 @@ abstract class CallForwardSettingAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return CallForwardSettingDTO
      */
     public static function createDTO()
@@ -207,6 +216,8 @@ abstract class CallForwardSettingAbstract
             ->setNumberCountry($dto->getNumberCountry());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

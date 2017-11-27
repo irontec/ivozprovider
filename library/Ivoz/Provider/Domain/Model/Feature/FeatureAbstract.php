@@ -36,6 +36,7 @@ abstract class FeatureAbstract
         $this->setIden($iden);
         $this->setName($name);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -106,6 +107,14 @@ abstract class FeatureAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return FeatureDTO
      */
     public static function createDTO()
@@ -159,6 +168,8 @@ abstract class FeatureAbstract
             ->setName($name);
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

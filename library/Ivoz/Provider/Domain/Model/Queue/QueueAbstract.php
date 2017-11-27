@@ -137,6 +137,7 @@ abstract class QueueAbstract
     {
 
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -204,6 +205,14 @@ abstract class QueueAbstract
         }
 
         return $changes;
+    }
+
+    /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
     }
 
     /**
@@ -290,6 +299,8 @@ abstract class QueueAbstract
             ->setFullNumberCountry($dto->getFullNumberCountry());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

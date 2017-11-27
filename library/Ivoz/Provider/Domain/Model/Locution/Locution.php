@@ -39,5 +39,12 @@ class Locution extends LocutionAbstract implements LocutionInterface, FileContai
     {
         return $this->id;
     }
+
+    protected function sanitizeValues()
+    {
+        if ($this->getTempFileByFieldName('OriginalFile')) {
+            $this->setStatus('pending');
+        }
+    }
 }
 

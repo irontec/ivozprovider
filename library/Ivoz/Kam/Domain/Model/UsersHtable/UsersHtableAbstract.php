@@ -63,6 +63,7 @@ abstract class UsersHtableAbstract
         $this->setKeyValue($keyValue);
         $this->setExpires($expires);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -133,6 +134,14 @@ abstract class UsersHtableAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return UsersHtableDTO
      */
     public static function createDTO()
@@ -181,6 +190,8 @@ abstract class UsersHtableAbstract
             ->setExpires($dto->getExpires());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

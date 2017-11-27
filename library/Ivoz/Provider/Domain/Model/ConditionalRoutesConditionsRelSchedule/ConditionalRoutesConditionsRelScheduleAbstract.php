@@ -35,6 +35,7 @@ abstract class ConditionalRoutesConditionsRelScheduleAbstract
     {
 
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -105,6 +106,14 @@ abstract class ConditionalRoutesConditionsRelScheduleAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return ConditionalRoutesConditionsRelScheduleDTO
      */
     public static function createDTO()
@@ -148,6 +157,8 @@ abstract class ConditionalRoutesConditionsRelScheduleAbstract
             ->setSchedule($dto->getSchedule());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

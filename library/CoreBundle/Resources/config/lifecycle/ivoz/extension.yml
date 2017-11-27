@@ -13,14 +13,6 @@ services:
     '@Ivoz\Provider\Domain\Service\Extension\ExtensionLifecycleServiceCollection'
 
   ##################################
-  ## pre_persist
-  ##################################
-  Ivoz\Provider\Domain\Service\Extension\SanitizeValues:
-    tags:
-      - { name: provider.lifecycle.extension.pre_persist, priority: 10}
-    arguments: ~
-
-  ##################################
   ## post_persist
   ##################################
   Ivoz\Provider\Domain\Service\User\UpdateByExtension:

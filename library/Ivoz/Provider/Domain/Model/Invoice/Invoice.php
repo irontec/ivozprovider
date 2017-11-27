@@ -40,5 +40,17 @@ class Invoice extends InvoiceAbstract implements InvoiceInterface, FileContainer
     {
         return $this->id;
     }
+
+    /**
+     * @inheritdoc
+     */
+    public function setStatus($status = null)
+    {
+        if (is_null($status)) {
+            $status = 'waiting';
+        }
+
+        return parent::setStatus($status);
+    }
 }
 

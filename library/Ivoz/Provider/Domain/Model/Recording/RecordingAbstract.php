@@ -78,6 +78,7 @@ abstract class RecordingAbstract
         $this->setDuration($duration);
         $this->setRecordedFile($recordedFile);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -145,6 +146,14 @@ abstract class RecordingAbstract
         }
 
         return $changes;
+    }
+
+    /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
     }
 
     /**
@@ -218,6 +227,8 @@ abstract class RecordingAbstract
             ->setCompany($dto->getCompany());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

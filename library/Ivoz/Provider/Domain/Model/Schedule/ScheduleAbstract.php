@@ -82,6 +82,7 @@ abstract class ScheduleAbstract
         $this->setTimeIn($timeIn);
         $this->setTimeout($timeout);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -152,6 +153,14 @@ abstract class ScheduleAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return ScheduleDTO
      */
     public static function createDTO()
@@ -213,6 +222,8 @@ abstract class ScheduleAbstract
             ->setCompany($dto->getCompany());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

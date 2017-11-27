@@ -35,6 +35,7 @@ abstract class ConditionalRoutesConditionsRelMatchlistAbstract
     {
 
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -105,6 +106,14 @@ abstract class ConditionalRoutesConditionsRelMatchlistAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return ConditionalRoutesConditionsRelMatchlistDTO
      */
     public static function createDTO()
@@ -148,6 +157,8 @@ abstract class ConditionalRoutesConditionsRelMatchlistAbstract
             ->setMatchlist($dto->getMatchlist());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

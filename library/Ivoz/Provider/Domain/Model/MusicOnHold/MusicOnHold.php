@@ -43,6 +43,16 @@ class MusicOnHold extends MusicOnHoldAbstract implements MusicOnHoldInterface, F
         return $this->id;
     }
 
+    protected function sanitizeValues()
+    {
+        foreach ($this->getTempFiles() as $tmpFile) {
+            $tmpPath = $tmpFile->getTmpPath();
+            if (!is_null($tmpPath)) {
+                $this->setStatus('pending');
+            }
+        }
+    }
+
     /**
      * @return string
      */

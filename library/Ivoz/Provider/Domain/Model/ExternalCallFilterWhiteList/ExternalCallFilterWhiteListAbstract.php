@@ -35,6 +35,7 @@ abstract class ExternalCallFilterWhiteListAbstract
     {
 
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -105,6 +106,14 @@ abstract class ExternalCallFilterWhiteListAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return ExternalCallFilterWhiteListDTO
      */
     public static function createDTO()
@@ -148,6 +157,8 @@ abstract class ExternalCallFilterWhiteListAbstract
             ->setMatchlist($dto->getMatchlist());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

@@ -21,6 +21,7 @@ class SendRecodingOrder implements LocutionLifecycleEventHandlerInterface
 
         if ($pendingStatus && $statusHasChanged) {
 
+            //@todo this is not testable
             $recoderJob = new Recoder();
             $recoderJob
                 ->setId($entity->getId())

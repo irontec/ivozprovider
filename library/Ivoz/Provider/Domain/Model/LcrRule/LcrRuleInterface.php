@@ -13,11 +13,13 @@ interface LcrRuleInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * @param null $requestUri
-     * @return LcrRuleAbstract
+     * {@inheritDoc}
      */
     public function setRequestUri($requestUri = null);
 
+    /**
+     * {@inheritDoc}
+     */
     public function setTag($tag);
 
     public function setCondition($regexp);

@@ -72,6 +72,7 @@ abstract class UsersLocationAttrAbstract
         $this->setAvalue($avalue);
         $this->setLastModified($lastModified);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -142,6 +143,14 @@ abstract class UsersLocationAttrAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return UsersLocationAttrDTO
      */
     public static function createDTO()
@@ -195,6 +204,8 @@ abstract class UsersLocationAttrAbstract
             ->setLastModified($dto->getLastModified());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

@@ -13,19 +13,6 @@ services:
     '@Ivoz\Provider\Domain\Service\PeerServer\PeerServerLifecycleServiceCollection'
 
   ##################################
-  ## pre_persist
-  ##################################
-  Ivoz\Provider\Domain\Service\PeerServer\SanitizeValues:
-    tags:
-      - { name: provider.lifecycle.peer_server.pre_persist, priority: 10 }
-    arguments: ~
-
-  Ivoz\Provider\Domain\Service\PeerServer\SetProxyLogic:
-    tags:
-      - { name: provider.lifecycle.peer_server.pre_persist, priority: 20 }
-    arguments: ~
-
-  ##################################
   ## post_persist
   ##################################
   Ivoz\Provider\Domain\Service\LcrGateway\UpdateByPeerServer:

@@ -83,6 +83,7 @@ abstract class BrandAbstract
         $this->setLogo($logo);
         $this->setInvoice($invoice);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -150,6 +151,14 @@ abstract class BrandAbstract
         }
 
         return $changes;
+    }
+
+    /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
     }
 
     /**
@@ -247,6 +256,8 @@ abstract class BrandAbstract
             ->setDefaultTimezone($dto->getDefaultTimezone());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

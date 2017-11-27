@@ -66,6 +66,7 @@ abstract class OutgoingRoutingAbstract
         $this->setPriority($priority);
         $this->setWeight($weight);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -136,6 +137,14 @@ abstract class OutgoingRoutingAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return OutgoingRoutingDTO
      */
     public static function createDTO()
@@ -191,6 +200,8 @@ abstract class OutgoingRoutingAbstract
             ->setRoutingPatternGroup($dto->getRoutingPatternGroup());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

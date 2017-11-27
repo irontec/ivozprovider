@@ -71,6 +71,7 @@ abstract class DispatcherAbstract
         $this->setAttrs($attrs);
         $this->setDescription($description);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -141,6 +142,14 @@ abstract class DispatcherAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return DispatcherDTO
      */
     public static function createDTO()
@@ -194,6 +203,8 @@ abstract class DispatcherAbstract
             ->setApplicationServer($dto->getApplicationServer());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

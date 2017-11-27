@@ -134,6 +134,7 @@ abstract class TrunksUacregAbstract
         $this->setRegDelay($regDelay);
         $this->setMultiddi($multiddi);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -201,6 +202,14 @@ abstract class TrunksUacregAbstract
         }
 
         return $changes;
+    }
+
+    /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
     }
 
     /**
@@ -273,6 +282,8 @@ abstract class TrunksUacregAbstract
             ->setPeeringContract($dto->getPeeringContract());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

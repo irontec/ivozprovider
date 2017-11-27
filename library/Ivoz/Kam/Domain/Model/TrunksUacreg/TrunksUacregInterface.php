@@ -6,7 +6,15 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
 interface TrunksUacregInterface extends LoggableEntityInterface
 {
+    /**
+     * @return array
+     */
     public function getChangeSet();
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setAuthProxy($authProxy);
 
     /**
      * Set lUuid
@@ -135,15 +143,6 @@ interface TrunksUacregInterface extends LoggableEntityInterface
      * @return string
      */
     public function getAuthPassword();
-
-    /**
-     * Set authProxy
-     *
-     * @param string $authProxy
-     *
-     * @return self
-     */
-    public function setAuthProxy($authProxy);
 
     /**
      * Get authProxy

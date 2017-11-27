@@ -84,6 +84,7 @@ abstract class QueueAbstract
         $this->setAutopause($autopause);
         $this->setRinginuse($ringinuse);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -154,6 +155,14 @@ abstract class QueueAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return QueueDTO
      */
     public static function createDTO()
@@ -215,6 +224,8 @@ abstract class QueueAbstract
             ->setQueue($dto->getQueue());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

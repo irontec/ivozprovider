@@ -35,6 +35,7 @@ abstract class FeaturesRelBrandAbstract
     {
 
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -105,6 +106,14 @@ abstract class FeaturesRelBrandAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return FeaturesRelBrandDTO
      */
     public static function createDTO()
@@ -148,6 +157,8 @@ abstract class FeaturesRelBrandAbstract
             ->setFeature($dto->getFeature());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

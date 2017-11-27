@@ -48,6 +48,7 @@ protected $_initialValues = [];
 public function __construct(<requiredFields>)<lineBreak>{
 <requiredFieldsSetters><collections>
 
+    $this->sanitizeValues();
     $this->initChangelog();
 }
 
@@ -118,6 +119,14 @@ protected function getChangeSet()
 }
 
 /**
+ * @return void
+ * @throws \Exception
+ */
+protected function sanitizeValues()
+{
+}
+
+/**
  * @return <dtoClass>
  */
 public static function createDTO()
@@ -154,6 +163,8 @@ public function updateFromDTO(DataTransferObjectInterface $dto)
     Assertion::isInstanceOf($dto, <dtoClass>::class);
 <voContructor>
     <updateFromDTO>
+
+    $this->sanitizeValues();
     return $this;
 }
 

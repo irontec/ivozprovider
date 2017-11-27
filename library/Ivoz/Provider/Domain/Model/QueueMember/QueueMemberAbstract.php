@@ -40,6 +40,7 @@ abstract class QueueMemberAbstract
     {
 
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -110,6 +111,14 @@ abstract class QueueMemberAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return QueueMemberDTO
      */
     public static function createDTO()
@@ -155,6 +164,8 @@ abstract class QueueMemberAbstract
             ->setUser($dto->getUser());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

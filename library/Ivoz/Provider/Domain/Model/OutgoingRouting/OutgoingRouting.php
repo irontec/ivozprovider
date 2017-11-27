@@ -26,5 +26,23 @@ class OutgoingRouting extends OutgoingRoutingAbstract implements OutgoingRouting
     {
         return $this->id;
     }
+
+    protected function sanitizeValues()
+    {
+        switch ($this->getType()) {
+            case 'group':
+                $this->setRoutingPattern(null);
+                break;
+            case 'pattern':
+                $this->setRoutingPatternGroup(null);
+                break;
+            case 'fax':
+                $this->setRoutingPattern(null);
+                $this->setRoutingPatternGroup(null);
+                break;
+            default:
+                throw new \Exception('Incorrect Outgoing Routing Type');
+        }
+    }
 }
 

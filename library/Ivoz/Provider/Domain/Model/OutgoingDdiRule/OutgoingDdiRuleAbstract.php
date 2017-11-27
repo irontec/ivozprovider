@@ -47,6 +47,7 @@ abstract class OutgoingDdiRuleAbstract
         $this->setName($name);
         $this->setDefaultAction($defaultAction);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -117,6 +118,14 @@ abstract class OutgoingDdiRuleAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return OutgoingDdiRuleDTO
      */
     public static function createDTO()
@@ -164,6 +173,8 @@ abstract class OutgoingDdiRuleAbstract
             ->setForcedDdi($dto->getForcedDdi());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

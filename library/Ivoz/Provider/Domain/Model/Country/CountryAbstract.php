@@ -47,6 +47,7 @@ abstract class CountryAbstract
         $this->setName($name);
         $this->setZone($zone);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -114,6 +115,14 @@ abstract class CountryAbstract
         }
 
         return $changes;
+    }
+
+    /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
     }
 
     /**
@@ -185,6 +194,8 @@ abstract class CountryAbstract
             ->setZone($zone);
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

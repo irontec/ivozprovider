@@ -67,6 +67,7 @@ abstract class TerminalModelAbstract
         $this->setName($name);
         $this->setDescription($description);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -137,6 +138,14 @@ abstract class TerminalModelAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return TerminalModelDTO
      */
     public static function createDTO()
@@ -192,6 +201,8 @@ abstract class TerminalModelAbstract
             ->setTerminalManufacturer($dto->getTerminalManufacturer());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

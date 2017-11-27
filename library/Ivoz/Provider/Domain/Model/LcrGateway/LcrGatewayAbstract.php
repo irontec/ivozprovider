@@ -100,6 +100,7 @@ abstract class LcrGatewayAbstract
         $this->setGwName($gwName);
         $this->setFlags($flags);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -170,6 +171,14 @@ abstract class LcrGatewayAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return LcrGatewayDTO
      */
     public static function createDTO()
@@ -237,6 +246,8 @@ abstract class LcrGatewayAbstract
             ->setPeerServer($dto->getPeerServer());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

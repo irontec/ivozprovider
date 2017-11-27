@@ -56,6 +56,7 @@ abstract class LocutionAbstract
         $this->setEncodedFile($encodedFile);
         $this->setOriginalFile($originalFile);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -123,6 +124,14 @@ abstract class LocutionAbstract
         }
 
         return $changes;
+    }
+
+    /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
     }
 
     /**
@@ -200,6 +209,8 @@ abstract class LocutionAbstract
             ->setCompany($dto->getCompany());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

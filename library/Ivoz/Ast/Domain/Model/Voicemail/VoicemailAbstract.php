@@ -198,6 +198,7 @@ abstract class VoicemailAbstract
         $this->setContext($context);
         $this->setMailbox($mailbox);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -265,6 +266,14 @@ abstract class VoicemailAbstract
         }
 
         return $changes;
+    }
+
+    /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
     }
 
     /**
@@ -375,6 +384,8 @@ abstract class VoicemailAbstract
             ->setUser($dto->getUser());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

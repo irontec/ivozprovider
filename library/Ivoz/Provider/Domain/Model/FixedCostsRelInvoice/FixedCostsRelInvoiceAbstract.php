@@ -45,6 +45,7 @@ abstract class FixedCostsRelInvoiceAbstract
     {
 
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -115,6 +116,14 @@ abstract class FixedCostsRelInvoiceAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return FixedCostsRelInvoiceDTO
      */
     public static function createDTO()
@@ -162,6 +171,8 @@ abstract class FixedCostsRelInvoiceAbstract
             ->setInvoice($dto->getInvoice());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

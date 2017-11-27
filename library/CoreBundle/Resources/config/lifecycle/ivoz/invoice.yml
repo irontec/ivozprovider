@@ -24,7 +24,3 @@ services:
       $invoiveRepository:
         '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\Invoice\\Invoice")'
 
-  Ivoz\Provider\Domain\Service\Invoice\SanitizeValues:
-    tags:
-      - { name: provider.lifecycle.invoice.pre_persist, priority: 20 }
-    arguments: ~

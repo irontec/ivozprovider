@@ -63,6 +63,7 @@ abstract class BrandUrlAbstract
         $this->setUrlType($urlType);
         $this->setLogo($logo);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -133,6 +134,14 @@ abstract class BrandUrlAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return BrandUrlDTO
      */
     public static function createDTO()
@@ -199,6 +208,8 @@ abstract class BrandUrlAbstract
             ->setBrand($dto->getBrand());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

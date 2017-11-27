@@ -60,6 +60,7 @@ abstract class UsersDomainAttrAbstract
         $this->setValue($value);
         $this->setLastModified($lastModified);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -130,6 +131,14 @@ abstract class UsersDomainAttrAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return UsersDomainAttrDTO
      */
     public static function createDTO()
@@ -178,6 +187,8 @@ abstract class UsersDomainAttrAbstract
             ->setLastModified($dto->getLastModified());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

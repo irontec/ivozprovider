@@ -28,6 +28,21 @@ class OutgoingDdiRulesPattern extends OutgoingDdiRulesPatternAbstract implements
         return $this->id;
     }
 
+    protected function sanitizeValues()
+    {
+        $nullableFields = [
+            'force' => 'forcedDdi',
+        ];
+        $defaultAction = $this->getAction();
+        foreach ($nullableFields as $type => $fieldName) {
+            if ($defaultAction == $type) {
+                continue;
+            }
+            $setter = 'set' . ucfirst($fieldName);
+            $this->{$setter}(null);
+        }
+    }
+
     /**
      * Return forced Ddi for this rule pattern
      * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface

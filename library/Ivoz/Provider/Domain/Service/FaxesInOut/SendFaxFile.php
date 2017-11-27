@@ -38,6 +38,7 @@ class SendFaxFile implements FaxesInOutLifecycleEventHandlerInterface
         } catch (\Exception $e) {
             $entity->setStatus('error');
 
+            //@todo This will not be persisted...
             throw $e;
         }
     }

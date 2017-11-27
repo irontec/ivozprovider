@@ -32,6 +32,27 @@ class Ddi extends DdiAbstract implements DdiInterface
         return $this->id;
     }
 
+    protected function sanitizeValues()
+    {
+        $country = $this->getCountry();
+
+        $this->setDdie164(
+            $country->getCountryCode()
+            . $this->getDdi()
+        );
+
+        // If billInboundCalls is set, peeringContract must have externallyRated to 1
+        if (
+            $this->getBillInboundCalls()
+            && !$this->getPeeringContract()->getExternallyRated()
+        ) {
+            throw new \Exception(
+                'Inbound Calls cannot be billed as PeeringContract is not externally rated',
+                90000
+            );
+        }
+    }
+
     /**
      * {@inheritDoc}
      */

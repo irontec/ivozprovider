@@ -61,6 +61,7 @@ abstract class MusicOnHoldAbstract
         $this->setOriginalFile($originalFile);
         $this->setEncodedFile($encodedFile);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -128,6 +129,14 @@ abstract class MusicOnHoldAbstract
         }
 
         return $changes;
+    }
+
+    /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
     }
 
     /**
@@ -207,6 +216,8 @@ abstract class MusicOnHoldAbstract
             ->setCompany($dto->getCompany());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

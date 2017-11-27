@@ -13,6 +13,11 @@ interface TransformationRuleInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * {@inheritDoc}
+     */
+    public function setMatchExpr($matchExpr = null);
+
+    /**
      * Set type
      *
      * @param string $type
@@ -59,15 +64,6 @@ interface TransformationRuleInterface extends LoggableEntityInterface
      * @return integer
      */
     public function getPriority();
-
-    /**
-     * Set matchExpr
-     *
-     * @param string $matchExpr
-     *
-     * @return self
-     */
-    public function setMatchExpr($matchExpr = null);
 
     /**
      * Get matchExpr

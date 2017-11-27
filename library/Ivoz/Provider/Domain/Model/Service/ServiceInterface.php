@@ -13,6 +13,11 @@ interface ServiceInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * {@inheritDoc}
+     */
+    public function setDefaultCode($defaultCode);
+
+    /**
      * Set iden
      *
      * @param string $iden
@@ -27,15 +32,6 @@ interface ServiceInterface extends LoggableEntityInterface
      * @return string
      */
     public function getIden();
-
-    /**
-     * Set defaultCode
-     *
-     * @param string $defaultCode
-     *
-     * @return self
-     */
-    public function setDefaultCode($defaultCode);
 
     /**
      * Get defaultCode

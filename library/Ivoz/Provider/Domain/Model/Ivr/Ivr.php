@@ -33,10 +33,51 @@ class Ivr extends IvrAbstract implements IvrInterface
         return $this->id;
     }
 
+    protected function sanitizeValues()
+    {
+        $this->sanitizeNoInputRouteType();
+        $this->sanitizeErrorTargets();
+    }
+
+    protected function sanitizeNoInputRouteType()
+    {
+        $nullableFields =[
+            'number' => 'noInputNumberValue',
+            'extension' => 'noInputExtension',
+            'voicemail' => 'noInputVoiceMailUser'
+        ];
+
+        $routeType = $this->getNoInputRouteType();
+        foreach ($nullableFields as $type => $fieldName) {
+            if ($routeType == $type) {
+                continue;
+            }
+            $setter = 'set' . ucfirst($fieldName);
+            $this->{$setter}(null);
+        }
+    }
+
+    protected function sanitizeErrorTargets()
+    {
+        $nullableErrorFields = [
+            'number' => 'errorNumberValue',
+            'extension' => 'errorExtension',
+            'voicemail' => 'errorVoiceMailUser'
+        ];
+        $routeErrorType = $this->getErrorRouteType();
+        foreach ($nullableErrorFields as $type => $fieldName) {
+            if ($routeErrorType == $type) {
+                continue;
+            }
+            $setter = 'set' . ucfirst($fieldName);
+            $this->{$setter}(null);
+        }
+    }
+
     /**
      * @return LocutionInterface[] with key=>value
      */
-    public function getAllLocutions ()
+    public function getAllLocutions()
     {
         return [
             'welcome' => $this->getWelcomeLocution(),

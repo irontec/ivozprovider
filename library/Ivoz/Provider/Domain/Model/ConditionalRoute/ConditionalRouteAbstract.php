@@ -96,6 +96,7 @@ abstract class ConditionalRouteAbstract
     {
         $this->setName($name);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -166,6 +167,14 @@ abstract class ConditionalRouteAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return ConditionalRouteDTO
      */
     public static function createDTO()
@@ -233,6 +242,8 @@ abstract class ConditionalRouteAbstract
             ->setNumberCountry($dto->getNumberCountry());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

@@ -171,6 +171,7 @@ abstract class UsersLocationAbstract
         $this->setKeepalive($keepalive);
         $this->setPartition($partition);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -238,6 +239,14 @@ abstract class UsersLocationAbstract
         }
 
         return $changes;
+    }
+
+    /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
     }
 
     /**
@@ -324,6 +333,8 @@ abstract class UsersLocationAbstract
             ->setPartition($dto->getPartition());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

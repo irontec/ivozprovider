@@ -160,6 +160,7 @@ abstract class ParsedCdrAbstract
     {
         $this->setCalldate($calldate);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -227,6 +228,14 @@ abstract class ParsedCdrAbstract
         }
 
         return $changes;
+    }
+
+    /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
     }
 
     /**
@@ -323,6 +332,8 @@ abstract class ParsedCdrAbstract
             ->setPeeringContract($dto->getPeeringContract());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

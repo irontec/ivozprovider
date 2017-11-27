@@ -154,6 +154,7 @@ abstract class RetailAccountAbstract
         $this->setUpdateCallerid($updateCallerid);
         $this->setDirectConnectivity($directConnectivity);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -221,6 +222,14 @@ abstract class RetailAccountAbstract
         }
 
         return $changes;
+    }
+
+    /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
     }
 
     /**
@@ -303,6 +312,8 @@ abstract class RetailAccountAbstract
             ->setLanguage($dto->getLanguage());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

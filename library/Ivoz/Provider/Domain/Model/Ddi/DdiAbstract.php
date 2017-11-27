@@ -134,6 +134,7 @@ abstract class DdiAbstract
         $this->setRecordCalls($recordCalls);
         $this->setBillInboundCalls($billInboundCalls);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -201,6 +202,14 @@ abstract class DdiAbstract
         }
 
         return $changes;
+    }
+
+    /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
     }
 
     /**
@@ -285,6 +294,8 @@ abstract class DdiAbstract
             ->setConditionalRoute($dto->getConditionalRoute());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

@@ -224,6 +224,7 @@ Ivoz\Provider\Domain\Model\Ddi\DdiAbstract:
       fetch: LAZY
       mappedBy: null
       inversedBy: null
+      nullable: false
       joinColumns:
         countryId:
           referencedColumnName: id

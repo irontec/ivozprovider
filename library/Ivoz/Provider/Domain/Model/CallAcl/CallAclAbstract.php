@@ -42,6 +42,7 @@ abstract class CallAclAbstract
         $this->setName($name);
         $this->setDefaultPolicy($defaultPolicy);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -112,6 +113,14 @@ abstract class CallAclAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return CallAclDTO
      */
     public static function createDTO()
@@ -157,6 +166,8 @@ abstract class CallAclAbstract
             ->setCompany($dto->getCompany());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

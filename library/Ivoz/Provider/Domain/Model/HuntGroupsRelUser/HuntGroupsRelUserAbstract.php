@@ -45,6 +45,7 @@ abstract class HuntGroupsRelUserAbstract
     {
 
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -115,6 +116,14 @@ abstract class HuntGroupsRelUserAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return HuntGroupsRelUserDTO
      */
     public static function createDTO()
@@ -162,6 +171,8 @@ abstract class HuntGroupsRelUserAbstract
             ->setUser($dto->getUser());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

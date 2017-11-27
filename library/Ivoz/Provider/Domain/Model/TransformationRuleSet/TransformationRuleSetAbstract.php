@@ -70,6 +70,7 @@ abstract class TransformationRuleSetAbstract
     {
         $this->setName($name);
 
+        $this->sanitizeValues();
         $this->initChangelog();
     }
 
@@ -137,6 +138,14 @@ abstract class TransformationRuleSetAbstract
         }
 
         return $changes;
+    }
+
+    /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
     }
 
     /**
@@ -208,6 +217,8 @@ abstract class TransformationRuleSetAbstract
             ->setCountry($dto->getCountry());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 
