@@ -2,9 +2,13 @@
 
 namespace Ivoz\Provider\Domain\Model\ConditionalRoutesCondition;
 
+use Ivoz\Provider\Domain\Traits\RoutableTrait;
+
 class ConditionalRoutesCondition extends ConditionalRoutesConditionAbstract implements ConditionalRoutesConditionInterface
 {
     use ConditionalRoutesConditionTrait;
+
+    use RoutableTrait;
 
     public function getChangeSet()
     {

@@ -15,9 +15,8 @@ imports:
   - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/hunt_group.yml" }
   - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/invoice.yml" }
   - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/invoice_template.yml" }
-  - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/ivr_common.yml" }
-  - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/ivr_custom.yml" }
-  - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/ivr_custom_entry.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/ivr.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/ivr_entry.yml" }
   - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/locution.yml" }
   - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/matchList_pattern.yml" }
   - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz/music_on_hold.yml" }

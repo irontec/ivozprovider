@@ -4,12 +4,6 @@ Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition
     locutionId:
       columns:
         - locutionId
-    IVRCommonId:
-      columns:
-        - IVRCommonId
-    IVRCustomId:
-      columns:
-        - IVRCustomId
     huntGroupId:
       columns:
         - huntGroupId
@@ -49,7 +43,7 @@ Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition
       length: 25
       options:
         fixed: false
-        comment: '[enum:user|number|IVRCommon|IVRCustom|huntGroup|voicemail|friend|queue|conferenceRoom|extension]'
+        comment: '[enum:user|number|ivr|huntGroup|voicemail|friend|queue|conferenceRoom|extension]'
       column: routeType
     numberValue:
       type: string
@@ -78,25 +72,14 @@ Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition
           nullable: false
           onDelete: cascade
       orphanRemoval: false
-    ivrCommon:
-      targetEntity: Ivoz\Provider\Domain\Model\IvrCommon\IvrCommonInterface
+    ivr:
+      targetEntity: Ivoz\Provider\Domain\Model\Ivr\IvrInterface
       cascade: {  }
       fetch: LAZY
       mappedBy: null
       inversedBy: null
       joinColumns:
-        IVRCommonId:
-          referencedColumnName: id
-          onDelete: set null
-      orphanRemoval: false
-    ivrCustom:
-      targetEntity: Ivoz\Provider\Domain\Model\IvrCustom\IvrCustomInterface
-      cascade: {  }
-      fetch: LAZY
-      mappedBy: null
-      inversedBy: null
-      joinColumns:
-        IVRCustomId:
+        ivrId:
           referencedColumnName: id
           onDelete: set null
       orphanRemoval: false

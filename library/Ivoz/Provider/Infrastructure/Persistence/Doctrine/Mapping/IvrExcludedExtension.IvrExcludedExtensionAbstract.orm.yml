@@ -1,0 +1,39 @@
+Ivoz\Provider\Domain\Model\IvrExcludedExtension\IvrExcludedExtensionAbstract:
+  type: mappedSuperclass
+  indexes:
+    ivrId:
+      columns:
+        - ivrId
+    extensionId:
+      columns:
+        - extensionId
+  uniqueConstraints:
+    uniqueExtension:
+      columns:
+        - ivrId
+        - extensionId
+  manyToOne:
+    ivr:
+      targetEntity: \Ivoz\Provider\Domain\Model\Ivr\IvrInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: excludedExtensions
+      joinColumns:
+        ivrId:
+          referencedColumnName: id
+          nullable: false
+          onDelete: cascade
+      orphanRemoval: false
+    extension:
+      targetEntity: \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        extensionId:
+          referencedColumnName: id
+          nullable: false
+          onDelete: cascade
+      orphanRemoval: false

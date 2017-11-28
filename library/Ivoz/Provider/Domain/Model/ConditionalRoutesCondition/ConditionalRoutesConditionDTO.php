@@ -44,12 +44,7 @@ class ConditionalRoutesConditionDTO implements DataTransferObjectInterface
     /**
      * @var mixed
      */
-    private $ivrCommonId;
-
-    /**
-     * @var mixed
-     */
-    private $ivrCustomId;
+    private $ivrId;
 
     /**
      * @var mixed
@@ -99,12 +94,7 @@ class ConditionalRoutesConditionDTO implements DataTransferObjectInterface
     /**
      * @var mixed
      */
-    private $ivrCommon;
-
-    /**
-     * @var mixed
-     */
-    private $ivrCustom;
+    private $ivr;
 
     /**
      * @var mixed
@@ -173,8 +163,7 @@ class ConditionalRoutesConditionDTO implements DataTransferObjectInterface
             'friendValue' => $this->getFriendValue(),
             'id' => $this->getId(),
             'conditionalRouteId' => $this->getConditionalRouteId(),
-            'ivrCommonId' => $this->getIvrCommonId(),
-            'ivrCustomId' => $this->getIvrCustomId(),
+            'ivrId' => $this->getIvrId(),
             'huntGroupId' => $this->getHuntGroupId(),
             'voicemailUserId' => $this->getVoicemailUserId(),
             'userId' => $this->getUserId(),
@@ -195,8 +184,7 @@ class ConditionalRoutesConditionDTO implements DataTransferObjectInterface
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
         $this->conditionalRoute = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\ConditionalRoute\\ConditionalRoute', $this->getConditionalRouteId());
-        $this->ivrCommon = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\IvrCommon\\IvrCommon', $this->getIvrCommonId());
-        $this->ivrCustom = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\IvrCustom\\IvrCustom', $this->getIvrCustomId());
+        $this->ivr = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Ivr\\Ivr', $this->getIvrId());
         $this->huntGroup = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\HuntGroup\\HuntGroup', $this->getHuntGroupId());
         $this->voicemailUser = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\User\\User', $this->getVoicemailUserId());
         $this->user = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\User\\User', $this->getUserId());
@@ -388,13 +376,13 @@ class ConditionalRoutesConditionDTO implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $ivrCommonId
+     * @param integer $ivrId
      *
      * @return ConditionalRoutesConditionDTO
      */
-    public function setIvrCommonId($ivrCommonId)
+    public function setIvrId($ivrId)
     {
-        $this->ivrCommonId = $ivrCommonId;
+        $this->ivrId = $ivrId;
 
         return $this;
     }
@@ -402,45 +390,17 @@ class ConditionalRoutesConditionDTO implements DataTransferObjectInterface
     /**
      * @return integer
      */
-    public function getIvrCommonId()
+    public function getIvrId()
     {
-        return $this->ivrCommonId;
+        return $this->ivrId;
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\IvrCommon\IvrCommon
+     * @return \Ivoz\Provider\Domain\Model\Ivr\Ivr
      */
-    public function getIvrCommon()
+    public function getIvr()
     {
-        return $this->ivrCommon;
-    }
-
-    /**
-     * @param integer $ivrCustomId
-     *
-     * @return ConditionalRoutesConditionDTO
-     */
-    public function setIvrCustomId($ivrCustomId)
-    {
-        $this->ivrCustomId = $ivrCustomId;
-
-        return $this;
-    }
-
-    /**
-     * @return integer
-     */
-    public function getIvrCustomId()
-    {
-        return $this->ivrCustomId;
-    }
-
-    /**
-     * @return \Ivoz\Provider\Domain\Model\IvrCustom\IvrCustom
-     */
-    public function getIvrCustom()
-    {
-        return $this->ivrCustom;
+        return $this->ivr;
     }
 
     /**

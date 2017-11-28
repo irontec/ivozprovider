@@ -33,7 +33,7 @@ abstract class DdiAbstract
     protected $displayName;
 
     /**
-     * @comment enum:user|IVRCommon|IVRCustom|huntGroup|fax|conferenceRoom|friend|queue|retailAccount|conditional
+     * @comment enum:user|ivr|huntGroup|fax|conferenceRoom|friend|queue|retailAccount|conditional
      * @var string
      */
     protected $routeType;
@@ -84,14 +84,9 @@ abstract class DdiAbstract
     protected $user;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\IvrCommon\IvrCommonInterface
+     * @var \Ivoz\Provider\Domain\Model\Ivr\IvrInterface
      */
-    protected $ivrCommon;
-
-    /**
-     * @var \Ivoz\Provider\Domain\Model\IvrCustom\IvrCustomInterface
-     */
-    protected $ivrCustom;
+    protected $ivr;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface
@@ -245,8 +240,7 @@ abstract class DdiAbstract
             ->setQueue($dto->getQueue())
             ->setExternalCallFilter($dto->getExternalCallFilter())
             ->setUser($dto->getUser())
-            ->setIvrCommon($dto->getIvrCommon())
-            ->setIvrCustom($dto->getIvrCustom())
+            ->setIvr($dto->getIvr())
             ->setHuntGroup($dto->getHuntGroup())
             ->setFax($dto->getFax())
             ->setPeeringContract($dto->getPeeringContract())
@@ -282,8 +276,7 @@ abstract class DdiAbstract
             ->setQueue($dto->getQueue())
             ->setExternalCallFilter($dto->getExternalCallFilter())
             ->setUser($dto->getUser())
-            ->setIvrCommon($dto->getIvrCommon())
-            ->setIvrCustom($dto->getIvrCustom())
+            ->setIvr($dto->getIvr())
             ->setHuntGroup($dto->getHuntGroup())
             ->setFax($dto->getFax())
             ->setPeeringContract($dto->getPeeringContract())
@@ -315,8 +308,7 @@ abstract class DdiAbstract
             ->setQueueId($this->getQueue() ? $this->getQueue()->getId() : null)
             ->setExternalCallFilterId($this->getExternalCallFilter() ? $this->getExternalCallFilter()->getId() : null)
             ->setUserId($this->getUser() ? $this->getUser()->getId() : null)
-            ->setIvrCommonId($this->getIvrCommon() ? $this->getIvrCommon()->getId() : null)
-            ->setIvrCustomId($this->getIvrCustom() ? $this->getIvrCustom()->getId() : null)
+            ->setIvrId($this->getIvr() ? $this->getIvr()->getId() : null)
             ->setHuntGroupId($this->getHuntGroup() ? $this->getHuntGroup()->getId() : null)
             ->setFaxId($this->getFax() ? $this->getFax()->getId() : null)
             ->setPeeringContractId($this->getPeeringContract() ? $this->getPeeringContract()->getId() : null)
@@ -345,8 +337,7 @@ abstract class DdiAbstract
             'queueId' => self::getQueue() ? self::getQueue()->getId() : null,
             'externalCallFilterId' => self::getExternalCallFilter() ? self::getExternalCallFilter()->getId() : null,
             'userId' => self::getUser() ? self::getUser()->getId() : null,
-            'ivrCommonId' => self::getIvrCommon() ? self::getIvrCommon()->getId() : null,
-            'ivrCustomId' => self::getIvrCustom() ? self::getIvrCustom()->getId() : null,
+            'ivrId' => self::getIvr() ? self::getIvr()->getId() : null,
             'huntGroupId' => self::getHuntGroup() ? self::getHuntGroup()->getId() : null,
             'faxId' => self::getFax() ? self::getFax()->getId() : null,
             'peeringContractId' => self::getPeeringContract() ? self::getPeeringContract()->getId() : null,
@@ -488,15 +479,14 @@ abstract class DdiAbstract
             Assertion::maxLength($routeType, 25, 'routeType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($routeType, array (
           0 => 'user',
-          1 => 'IVRCommon',
-          2 => 'IVRCustom',
-          3 => 'huntGroup',
-          4 => 'fax',
-          5 => 'conferenceRoom',
-          6 => 'friend',
-          7 => 'queue',
-          8 => 'retailAccount',
-          9 => 'conditional',
+          1 => 'ivr',
+          2 => 'huntGroup',
+          3 => 'fax',
+          4 => 'conferenceRoom',
+          5 => 'friend',
+          6 => 'queue',
+          7 => 'retailAccount',
+          8 => 'conditional',
         ), 'routeTypevalue "%s" is not an element of the valid values: %s');
         }
 
@@ -739,51 +729,27 @@ abstract class DdiAbstract
     }
 
     /**
-     * Set ivrCommon
+     * Set ivr
      *
-     * @param \Ivoz\Provider\Domain\Model\IvrCommon\IvrCommonInterface $ivrCommon
+     * @param \Ivoz\Provider\Domain\Model\Ivr\IvrInterface $ivr
      *
      * @return self
      */
-    public function setIvrCommon(\Ivoz\Provider\Domain\Model\IvrCommon\IvrCommonInterface $ivrCommon = null)
+    public function setIvr(\Ivoz\Provider\Domain\Model\Ivr\IvrInterface $ivr = null)
     {
-        $this->ivrCommon = $ivrCommon;
+        $this->ivr = $ivr;
 
         return $this;
     }
 
     /**
-     * Get ivrCommon
+     * Get ivr
      *
-     * @return \Ivoz\Provider\Domain\Model\IvrCommon\IvrCommonInterface
+     * @return \Ivoz\Provider\Domain\Model\Ivr\IvrInterface
      */
-    public function getIvrCommon()
+    public function getIvr()
     {
-        return $this->ivrCommon;
-    }
-
-    /**
-     * Set ivrCustom
-     *
-     * @param \Ivoz\Provider\Domain\Model\IvrCustom\IvrCustomInterface $ivrCustom
-     *
-     * @return self
-     */
-    public function setIvrCustom(\Ivoz\Provider\Domain\Model\IvrCustom\IvrCustomInterface $ivrCustom = null)
-    {
-        $this->ivrCustom = $ivrCustom;
-
-        return $this;
-    }
-
-    /**
-     * Get ivrCustom
-     *
-     * @return \Ivoz\Provider\Domain\Model\IvrCustom\IvrCustomInterface
-     */
-    public function getIvrCustom()
-    {
-        return $this->ivrCustom;
+        return $this->ivr;
     }
 
     /**

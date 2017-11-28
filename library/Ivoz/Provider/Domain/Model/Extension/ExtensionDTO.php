@@ -44,12 +44,7 @@ class ExtensionDTO implements DataTransferObjectInterface
     /**
      * @var mixed
      */
-    private $ivrCommonId;
-
-    /**
-     * @var mixed
-     */
-    private $ivrCustomId;
+    private $ivrId;
 
     /**
      * @var mixed
@@ -89,12 +84,7 @@ class ExtensionDTO implements DataTransferObjectInterface
     /**
      * @var mixed
      */
-    private $ivrCommon;
-
-    /**
-     * @var mixed
-     */
-    private $ivrCustom;
+    private $ivr;
 
     /**
      * @var mixed
@@ -143,8 +133,7 @@ class ExtensionDTO implements DataTransferObjectInterface
             'friendValue' => $this->getFriendValue(),
             'id' => $this->getId(),
             'companyId' => $this->getCompanyId(),
-            'ivrCommonId' => $this->getIvrCommonId(),
-            'ivrCustomId' => $this->getIvrCustomId(),
+            'ivrId' => $this->getIvrId(),
             'huntGroupId' => $this->getHuntGroupId(),
             'conferenceRoomId' => $this->getConferenceRoomId(),
             'userId' => $this->getUserId(),
@@ -161,8 +150,7 @@ class ExtensionDTO implements DataTransferObjectInterface
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
         $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
-        $this->ivrCommon = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\IvrCommon\\IvrCommon', $this->getIvrCommonId());
-        $this->ivrCustom = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\IvrCustom\\IvrCustom', $this->getIvrCustomId());
+        $this->ivr = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Ivr\\Ivr', $this->getIvrId());
         $this->huntGroup = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\HuntGroup\\HuntGroup', $this->getHuntGroupId());
         $this->conferenceRoom = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\ConferenceRoom\\ConferenceRoom', $this->getConferenceRoomId());
         $this->user = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\User\\User', $this->getUserId());
@@ -322,13 +310,13 @@ class ExtensionDTO implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $ivrCommonId
+     * @param integer $ivrId
      *
      * @return ExtensionDTO
      */
-    public function setIvrCommonId($ivrCommonId)
+    public function setIvrId($ivrId)
     {
-        $this->ivrCommonId = $ivrCommonId;
+        $this->ivrId = $ivrId;
 
         return $this;
     }
@@ -336,45 +324,17 @@ class ExtensionDTO implements DataTransferObjectInterface
     /**
      * @return integer
      */
-    public function getIvrCommonId()
+    public function getIvrId()
     {
-        return $this->ivrCommonId;
+        return $this->ivrId;
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\IvrCommon\IvrCommon
+     * @return \Ivoz\Provider\Domain\Model\Ivr\Ivr
      */
-    public function getIvrCommon()
+    public function getIvr()
     {
-        return $this->ivrCommon;
-    }
-
-    /**
-     * @param integer $ivrCustomId
-     *
-     * @return ExtensionDTO
-     */
-    public function setIvrCustomId($ivrCustomId)
-    {
-        $this->ivrCustomId = $ivrCustomId;
-
-        return $this;
-    }
-
-    /**
-     * @return integer
-     */
-    public function getIvrCustomId()
-    {
-        return $this->ivrCustomId;
-    }
-
-    /**
-     * @return \Ivoz\Provider\Domain\Model\IvrCustom\IvrCustom
-     */
-    public function getIvrCustom()
-    {
-        return $this->ivrCustom;
+        return $this->ivr;
     }
 
     /**

@@ -2,12 +2,16 @@
 
 namespace Ivoz\Provider\Domain\Model\Ddi;
 
+use Ivoz\Provider\Domain\Traits\RoutableTrait;
+
 /**
  * Ddi
  */
 class Ddi extends DdiAbstract implements DdiInterface
 {
     use DdiTrait;
+
+    use RoutableTrait;
 
     public function getChangeSet()
     {
@@ -78,8 +82,7 @@ class Ddi extends DdiAbstract implements DdiInterface
 
         $nullableFields = array(
             'user'          => 'user',
-            'IvrCommon'     => 'IvrCommon',
-            'IvrCustom'     => 'IvrCustom',
+            'ivr'           => 'ivr',
             'huntGroup'     => 'huntGroup',
             'fax'           => 'fax',
             'friend'        => 'friendValue',

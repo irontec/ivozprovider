@@ -185,10 +185,12 @@ class InterfaceGenerator extends ParentGenerator
                     $str = '\\' . $parameterClass->getName() . ' ';
                 } else if ($methodParameter->isArray()) {
                     $str = 'array ';
+                } else if ($methodParameter->hasType()) {
+                    $str = $methodParameter->getType() . ' ';
                 }
 
                 $str .= '$' . $methodParameter->getName();
-                if ($methodParameter->isOptional()  && $methodParameter->getDefaultValue()) {
+                if ($methodParameter->isOptional()  && !is_null($methodParameter->getDefaultValue())) {
                     $str .= " = '" . $methodParameter->getDefaultValue() . "'";
                 } else if ($methodParameter->isOptional()) {
                     $str .= " = null";

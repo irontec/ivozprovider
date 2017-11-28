@@ -10,12 +10,6 @@ Ivoz\Provider\Domain\Model\Ddi\DdiAbstract:
     userId:
       columns:
         - userId
-    IVRCommonId:
-      columns:
-        - IVRCommonId
-    IvrCustomId:
-      columns:
-        - IVRCustomId
     huntGroupId:
       columns:
         - huntGroupId
@@ -85,7 +79,7 @@ Ivoz\Provider\Domain\Model\Ddi\DdiAbstract:
       length: 25
       options:
         fixed: false
-        comment: '[enum:user|IVRCommon|IVRCustom|huntGroup|fax|conferenceRoom|friend|queue|retailAccount|conditional]'
+        comment: '[enum:user|ivr|huntGroup|fax|conferenceRoom|friend|queue|retailAccount|conditional]'
       column: routeType
     billInboundCalls:
       type: boolean
@@ -180,25 +174,14 @@ Ivoz\Provider\Domain\Model\Ddi\DdiAbstract:
           referencedColumnName: id
           onDelete: set null
       orphanRemoval: false
-    ivrCommon:
-      targetEntity: \Ivoz\Provider\Domain\Model\IvrCommon\IvrCommonInterface
+    ivr:
+      targetEntity: \Ivoz\Provider\Domain\Model\Ivr\IvrInterface
       cascade: {  }
       fetch: LAZY
       mappedBy: null
       inversedBy: null
       joinColumns:
-        IVRCommonId:
-          referencedColumnName: id
-          onDelete: set null
-      orphanRemoval: false
-    ivrCustom:
-      targetEntity: \Ivoz\Provider\Domain\Model\IvrCustom\IvrCustomInterface
-      cascade: {  }
-      fetch: LAZY
-      mappedBy: null
-      inversedBy: null
-      joinColumns:
-        IvrCustomId:
+        ivrId:
           referencedColumnName: id
           onDelete: set null
       orphanRemoval: false

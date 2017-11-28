@@ -101,12 +101,12 @@ doctrine:
         Ivoz\Provider\Domain\Model\HuntGroups\HuntGroupsRelUser
       Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUserInterface:
         Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUser
-      Ivoz\Provider\Domain\Model\IvrCommon\IvrCommonInterface:
-        Ivoz\Provider\Domain\Model\IvrCommon\IvrCommon
-      Ivoz\Provider\Domain\Model\IvrCustomEntry\IvrCustomEntryInterface:
-        Ivoz\Provider\Domain\Model\IvrCustomEntry\IvrCustomEntry
-      Ivoz\Provider\Domain\Model\IvrCustom\IvrCustomInterface:
-        Ivoz\Provider\Domain\Model\IvrCustom\IvrCustom
+      Ivoz\Provider\Domain\Model\IvrEntry\IvrEntryInterface:
+        Ivoz\Provider\Domain\Model\IvrEntry\IvrEntry
+      Ivoz\Provider\Domain\Model\Ivr\IvrInterface:
+        Ivoz\Provider\Domain\Model\Ivr\Ivr
+      Ivoz\Provider\Domain\Model\IvrExcludedExtension\IvrExcludedExtensionInterface:
+        Ivoz\Provider\Domain\Model\IvrExcludedExtension\IvrExcludedExtension
       Ivoz\Provider\Domain\Model\Language\LanguageInterface:
         Ivoz\Provider\Domain\Model\Language\Language
       Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayInterface:
