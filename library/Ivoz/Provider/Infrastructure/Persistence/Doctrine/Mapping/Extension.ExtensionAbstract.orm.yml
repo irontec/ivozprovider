@@ -4,12 +4,6 @@ Ivoz\Provider\Domain\Model\Extension\ExtensionAbstract:
     companyId:
       columns:
         - companyId
-    IVRCommonId:
-      columns:
-        - IVRCommonId
-    IvrCustomId:
-      columns:
-        - IVRCustomId
     huntGroupId:
       columns:
         - huntGroupId
@@ -41,7 +35,7 @@ Ivoz\Provider\Domain\Model\Extension\ExtensionAbstract:
       length: 25
       options:
         fixed: false
-        comment: '[enum:user|number|IVRCommon|IVRCustom|huntGroup|conferenceRoom|friend|queue|retailAccount|conditional]'
+        comment: '[enum:user|number|ivr|huntGroup|conferenceRoom|friend|queue|retailAccount|conditional]'
       column: routeType
     numberValue:
       type: string
@@ -70,25 +64,14 @@ Ivoz\Provider\Domain\Model\Extension\ExtensionAbstract:
           nullable: false
           onDelete: cascade
       orphanRemoval: false
-    ivrCommon:
-      targetEntity: \Ivoz\Provider\Domain\Model\IvrCommon\IvrCommonInterface
-      cascade: {  }
-      fetch: LAZY
-      mappedBy: null
-      inversedBy: extensions
-      joinColumns:
-        IVRCommonId:
-          referencedColumnName: id
-          onDelete: set null
-      orphanRemoval: false
-    ivrCustom:
-      targetEntity: \Ivoz\Provider\Domain\Model\IvrCustom\IvrCustomInterface
+    ivr:
+      targetEntity: \Ivoz\Provider\Domain\Model\Ivr\IvrInterface
       cascade: {  }
       fetch: LAZY
       mappedBy: null
       inversedBy: null
       joinColumns:
-        IvrCustomId:
+        ivrId:
           referencedColumnName: id
           onDelete: set null
       orphanRemoval: false

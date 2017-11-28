@@ -2,6 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Model\ConditionalRoute;
 
+use Ivoz\Provider\Domain\Traits\RoutableTrait;
+
 /**
  * ConditionalRoute
  * @codeCoverageIgnore
@@ -9,6 +11,8 @@ namespace Ivoz\Provider\Domain\Model\ConditionalRoute;
 class ConditionalRoute extends ConditionalRouteAbstract implements ConditionalRouteInterface
 {
     use ConditionalRouteTrait;
+
+    use RoutableTrait;
 
     public function getChangeSet()
     {

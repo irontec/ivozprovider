@@ -2,12 +2,17 @@
 
 namespace Ivoz\Provider\Domain\Model\Extension;
 
+use Ivoz\Provider\Domain\Traits\RoutableTrait;
+
 /**
  * Extension
  */
 class Extension extends ExtensionAbstract implements ExtensionInterface
 {
     use ExtensionTrait;
+
+    use RoutableTrait;
+
 
     public function getChangeSet()
     {

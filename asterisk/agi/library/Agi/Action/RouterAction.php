@@ -25,14 +25,9 @@ class RouterAction
     protected $_routeExtension;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\IvrCommon\IvrCommonInterface
+     * @var \Ivoz\Provider\Domain\Model\Ivr\IvrInterface
      */
-    protected $_routeIVRCommon;
-
-    /**
-     * @var \Ivoz\Provider\Domain\Model\IvrCustom\IvrCustomInterface
-     */
-    protected $_routeIVRCustom;
+    protected $_routeIVR;
 
     /**
      * @var \Ivoz\Ast\Domain\Model\Voicemail\VoicemailInterface
@@ -121,11 +116,8 @@ class RouterAction
             case "number":
                 $this->_routeToExternal();
                 break;
-            case "IVRCommon":
-                $this->_routeToIVRCommon();
-                break;
-            case 'IVRCustom':
-                $this->_routeToIVRCustom();
+            case "ivr":
+                $this->_routeToIVR();
                 break;
             case 'voicemail':
                 $this->_routeToVoiceMail();
@@ -201,21 +193,12 @@ class RouterAction
         }
     }
 
-    protected function _routeToIVRCommon()
+    protected function _routeToIVR()
     {
-        // Handle DTMF IVR route
-        $ivrCommonAction = new IVRCommonAction($this);
-        $ivrCommonAction
-            ->setIVR($this->_routeIVRCommon)
-            ->process();
-    }
-
-    protected function _routeToIVRCustom()
-    {
-        // Handle Extension IVR route
-        $ivrCustomAction = new IVRCustomAction($this);
-        $ivrCustomAction
-            ->setIVR($this->_routeIVRCustom)
+        // Handle IVR route
+        $ivrAction = new IVRAction($this);
+        $ivrAction
+            ->setIVR($this->_routeIVR)
             ->process();
     }
 

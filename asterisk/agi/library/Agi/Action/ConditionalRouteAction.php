@@ -37,8 +37,7 @@ class ConditionalRouteAction extends RouterAction
         $locution               = $route->getLocution();
         $this->_routeType       = $route->getRouteType();
         $this->_routeUser       = $route->getUser();
-        $this->_routeIVRCommon  = $route->getIVRCommon();
-        $this->_routeIVRCustom  = $route->getIVRCustom();
+        $this->_routeIVR        = $route->getIvr();
         $this->_routeHuntGroup  = $route->getHuntGroup();
         $this->_routeVoiceMail  = $route->getVoiceMailUser();
         $this->_routeExternal   = $route->getNumberValueE164();
@@ -79,8 +78,7 @@ class ConditionalRouteAction extends RouterAction
             $locution               = $condition->getLocution();
             $this->_routeType       = $condition->getRouteType();
             $this->_routeUser       = $condition->getUser();
-            $this->_routeIVRCommon  = $condition->getIVRCommon();
-            $this->_routeIVRCustom  = $condition->getIVRCustom();
+            $this->_routeIVR        = $condition->getIvr();
             $this->_routeHuntGroup  = $condition->getHuntGroup();
             $this->_routeVoiceMail  = $condition->getVoiceMailUser();
             $this->_routeExternal   = $condition->getNumberValueE164();

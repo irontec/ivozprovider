@@ -204,20 +204,15 @@ mappers:
         modelFile: HuntGroupsRelUsers,
         entity: 'Ivoz\\Provider\\Domain\\Model\\HuntGroupRelUser\\HuntGroupRelUser'
     }
-  - &IvrCommon {
-        mapper: \IvozProvider\Mapper\Sql\IVRCommon,
-        modelFile: IvrCommon,
-        entity: 'Ivoz\\Provider\\Domain\\Model\\IvrCommon\\IvrCommon'
+  - &Ivr {
+        mapper: \IvozProvider\Mapper\Sql\IVR,
+        modelFile: Ivr,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\Ivr\\Ivr'
     }
-  - &IvrCustom {
-        mapper: \IvozProvider\Mapper\Sql\IVRCustom,
-        modelFile: IvrCustom,
-        entity: 'Ivoz\\Provider\\Domain\\Model\\IvrCustom\\IvrCustom'
-    }
-  - &IvrCustomEntries {
-        mapper: \IvozProvider\Mapper\Sql\IVRCustomEntries,
-        modelFile: IvrCustomEntries,
-        entity: 'Ivoz\\Provider\\Domain\\Model\\IvrCustomEntry\\IvrCustomEntry'
+  - &IvrEntries {
+        mapper: \IvozProvider\Mapper\Sql\IVREntries,
+        modelFile: IvrEntries,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\IvrEntry\\IvrEntry'
     }
   - &InvoiceTemplates {
         mapper: \IvozProvider\Mapper\Sql\InvoiceTemplates,

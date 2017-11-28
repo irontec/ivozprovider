@@ -1,0 +1,332 @@
+production:
+  class: \IvozProvider\Model\Ivr
+  entity: Ivoz\Provider\Domain\Model\Ivr\Ivr
+  fields:
+    companyId:
+      title: ngettext('Company', 'Companies', 1)
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Company\Company
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order:
+            Company.name: asc
+    name:
+      title: _('Name')
+      type: text
+      trim: both
+      required: true
+      default: true
+    welcomeLocutionId:
+      title: _('Welcome locution')
+      type: select
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Locution\Locution
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order:
+            Locution.name: asc
+        'null': _("Unassigned")
+    noInputLocutionId:
+      title: _('No input locution')
+      type: select
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Locution\Locution
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order:
+            Locution.name: asc
+        'null': _("Unassigned")
+    errorLocutionId:
+      title: ngettext('Locution', 'Locutions', 1)
+      type: select
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Locution\Locution
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order:
+            Locution.name: asc
+        'null': _("Unassigned")
+    successLocutionId:
+      title: _('Success locution')
+      type: select
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Locution\Locution
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order:
+            Locution.name: asc
+        'null': _("Unassigned")
+    timeout:
+      title: _('Timeout')
+      type: number
+      defaultValue: 6
+      required: true
+      source:
+        control: spinner
+        max: 60
+        min: 1
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Time in seconds the IVR will wait after playing the welcome locution or dialing a digit")
+        label: _("Need help?")
+    maxDigits:
+      title: _('Max digits')
+      type: number
+      required: true
+      defaultValue: 0
+      source:
+        control: Spinner
+        min: 0
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Max number of digits the caller can enter. Set to 0 to disable.")
+        label: _("Need help?")
+    allowExtensions:
+      title: _('Allow dialing extensions')
+      type: select
+      defaultValue: 0
+      source:
+        data: inline
+        values:
+          '0':
+            title: _("No")
+            visualFilter:
+              show: []
+              hide: [ excludedExtensions ]
+          '1':
+            title: _("Yes")
+            visualFilter:
+              show: [ excludedExtensions ]
+              hide: []
+    excludedExtensions:
+      title: ngettext('Excluded Extension', 'Excluded Extensions', 0)
+      type: multiselect
+      source:
+        data: mapper
+        config:
+          relation: \Ivoz\Provider\Domain\Model\IvrExcludedExtension\IvrExcludedExtension
+          relationProperty: ivr
+          relatedProperty: extension
+          related: \Ivoz\Provider\Domain\Model\Extension\Extension
+          filterClass: IvozProvider_Klear_Filter_Company
+          relatedFieldName: number
+    noInputRouteType:
+      title: _('No input target type')
+      type: select
+      source:
+        data: inline
+        values:
+          '__null__':
+            title: _('Unassigned')
+            visualFilter:
+              hide: &noInputFields
+                - noInputNumberCountryId
+                - noInputNumberValue
+                - noInputExtensionId
+                - noInputVoiceMailUserId
+          'number':
+            title: _('Number')
+            visualFilter:
+              show: [ noInputNumberValue, noInputNumberCountryId ]
+              hide:
+                <<: *noInputFields
+          'extension':
+            title: ngettext('Extension', 'Extensions', 1)
+            visualFilter:
+              show: [ noInputExtensionId ]
+              hide:
+                <<: *noInputFields
+          'voicemail':
+            title: ngettext('Voicemail', 'Voicemails', 1)
+            visualFilter:
+              show: [ noInputVoiceMailUserId ]
+              hide:
+                <<: *noInputFields
+    noInputNumberCountryId:
+      title: _('Country')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Country\Country
+          fieldName:
+            fields:
+              - name${lang}
+              - countryCode
+            template: '%name${lang}% (%countryCode%)'
+          order:
+            Country.name.${lang}: asc
+    noInputNumberValue:
+      title: _('Number')
+      type: text
+      trim: both
+      required: true
+    noInputExtensionId:
+      title: ngettext('Extension', 'Extensions', 1)
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Extension\Extension
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
+              - number
+            template: '%number%'
+          order:
+            Extension.number: asc
+        'null': _("Unassigned")
+    noInputVoiceMailUserId:
+      title: ngettext('Voicemail', 'Voicemails', 1)
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\User\User
+          filterClass: IvozProvider_Klear_Filter_Voicemail
+          fieldName:
+            fields:
+              - name
+              - lastname
+            template: '%name% %lastname%'
+          order:
+            User.name: asc
+        'null': _("Unassigned")
+    errorRouteType:
+      title: _('Error target type')
+      type: select
+      source:
+        data: inline
+        values:
+          '__null__':
+            title: _('Unassigned')
+            visualFilter:
+              hide: &errorFields
+                - errorNumberCountryId
+                - errorNumberValue
+                - errorExtensionId
+                - errorVoiceMailUserId
+          'number':
+            title: _('Number')
+            visualFilter:
+              show: [ errorNumberValue, errorNumberCountryId ]
+              hide:
+                <<: *errorFields
+          'extension':
+            title: ngettext('Extension', 'Extensions', 1)
+            visualFilter:
+              show: [ errorExtensionId ]
+              hide:
+                <<: *errorFields
+          'voicemail':
+            title: ngettext('Voicemail', 'Voicemails', 1)
+            visualFilter:
+              show: [ errorVoiceMailUserId ]
+              hide:
+                <<: *errorFields
+    errorNumberCountryId:
+      title: _('Country')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Country\Country
+          fieldName:
+            fields:
+              - name${lang}
+              - countryCode
+            template: '%name${lang}% (%countryCode%)'
+          order:
+            Country.name.${lang}: asc
+    errorNumberValue:
+      title: _('Number')
+      type: text
+      trim: both
+      required: true
+    errorExtensionId:
+      title: ngettext('Extension', 'Extensions', 1)
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Extension\Extension
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
+              - number
+            template: '%number%'
+          order:
+            Extension.number: asc
+        'null': _("Unassigned")
+    errorVoiceMailUserId:
+      title: ngettext('Voicemail', 'Voicemails', 1)
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\User\User
+          filterClass: IvozProvider_Klear_Filter_Voicemail
+          fieldName:
+            fields:
+              - name
+              - lastname
+            template: '%name% %lastname%'
+          order:
+            User.name: asc
+        'null': _("Unassigned")
+    noInputTarget:
+      title: _('No input target')
+      type: ghost
+      source:
+        class: IvozProvider_Klear_Ghost_RouteTarget
+        method: getIvrNoInputTarget
+    errorTarget:
+      title: _('Error target')
+      type: ghost
+      source:
+        class: IvozProvider_Klear_Ghost_RouteTarget
+        method: getIvrErrorTarget
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

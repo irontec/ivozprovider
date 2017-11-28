@@ -17,7 +17,7 @@ abstract class ConditionalRouteAbstract
     protected $name;
 
     /**
-     * @comment enum:user|number|IVRCommon|IVRCustom|huntGroup|voicemail|friend|queue|conferenceRoom|extension
+     * @comment enum:user|number|ivr|huntGroup|voicemail|friend|queue|conferenceRoom|extension
      * @var string
      */
     protected $routetype;
@@ -38,14 +38,9 @@ abstract class ConditionalRouteAbstract
     protected $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\IvrCommon\IvrCommonInterface
+     * @var \Ivoz\Provider\Domain\Model\Ivr\IvrInterface
      */
-    protected $ivrCommon;
-
-    /**
-     * @var \Ivoz\Provider\Domain\Model\IvrCustom\IvrCustomInterface
-     */
-    protected $ivrCustom;
+    protected $ivr;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface
@@ -198,8 +193,7 @@ abstract class ConditionalRouteAbstract
             ->setNumbervalue($dto->getNumbervalue())
             ->setFriendvalue($dto->getFriendvalue())
             ->setCompany($dto->getCompany())
-            ->setIvrCommon($dto->getIvrCommon())
-            ->setIvrCustom($dto->getIvrCustom())
+            ->setIvr($dto->getIvr())
             ->setHuntGroup($dto->getHuntGroup())
             ->setVoicemailUser($dto->getVoicemailUser())
             ->setUser($dto->getUser())
@@ -228,8 +222,7 @@ abstract class ConditionalRouteAbstract
             ->setNumbervalue($dto->getNumbervalue())
             ->setFriendvalue($dto->getFriendvalue())
             ->setCompany($dto->getCompany())
-            ->setIvrCommon($dto->getIvrCommon())
-            ->setIvrCustom($dto->getIvrCustom())
+            ->setIvr($dto->getIvr())
             ->setHuntGroup($dto->getHuntGroup())
             ->setVoicemailUser($dto->getVoicemailUser())
             ->setUser($dto->getUser())
@@ -254,8 +247,7 @@ abstract class ConditionalRouteAbstract
             ->setNumbervalue($this->getNumbervalue())
             ->setFriendvalue($this->getFriendvalue())
             ->setCompanyId($this->getCompany() ? $this->getCompany()->getId() : null)
-            ->setIvrCommonId($this->getIvrCommon() ? $this->getIvrCommon()->getId() : null)
-            ->setIvrCustomId($this->getIvrCustom() ? $this->getIvrCustom()->getId() : null)
+            ->setIvrId($this->getIvr() ? $this->getIvr()->getId() : null)
             ->setHuntGroupId($this->getHuntGroup() ? $this->getHuntGroup()->getId() : null)
             ->setVoicemailUserId($this->getVoicemailUser() ? $this->getVoicemailUser()->getId() : null)
             ->setUserId($this->getUser() ? $this->getUser()->getId() : null)
@@ -277,8 +269,7 @@ abstract class ConditionalRouteAbstract
             'numberValue' => self::getNumbervalue(),
             'friendValue' => self::getFriendvalue(),
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
-            'ivrCommonId' => self::getIvrCommon() ? self::getIvrCommon()->getId() : null,
-            'ivrCustomId' => self::getIvrCustom() ? self::getIvrCustom()->getId() : null,
+            'ivrId' => self::getIvr() ? self::getIvr()->getId() : null,
             'huntGroupId' => self::getHuntGroup() ? self::getHuntGroup()->getId() : null,
             'voicemailUserId' => self::getVoicemailUser() ? self::getVoicemailUser()->getId() : null,
             'userId' => self::getUser() ? self::getUser()->getId() : null,
@@ -334,14 +325,13 @@ abstract class ConditionalRouteAbstract
         Assertion::choice($routetype, array (
           0 => 'user',
           1 => 'number',
-          2 => 'IVRCommon',
-          3 => 'IVRCustom',
-          4 => 'huntGroup',
-          5 => 'voicemail',
-          6 => 'friend',
-          7 => 'queue',
-          8 => 'conferenceRoom',
-          9 => 'extension',
+          2 => 'ivr',
+          3 => 'huntGroup',
+          4 => 'voicemail',
+          5 => 'friend',
+          6 => 'queue',
+          7 => 'conferenceRoom',
+          8 => 'extension',
         ), 'routetypevalue "%s" is not an element of the valid values: %s');
         }
 
@@ -441,51 +431,27 @@ abstract class ConditionalRouteAbstract
     }
 
     /**
-     * Set ivrCommon
+     * Set ivr
      *
-     * @param \Ivoz\Provider\Domain\Model\IvrCommon\IvrCommonInterface $ivrCommon
+     * @param \Ivoz\Provider\Domain\Model\Ivr\IvrInterface $ivr
      *
      * @return self
      */
-    public function setIvrCommon(\Ivoz\Provider\Domain\Model\IvrCommon\IvrCommonInterface $ivrCommon = null)
+    public function setIvr(\Ivoz\Provider\Domain\Model\Ivr\IvrInterface $ivr = null)
     {
-        $this->ivrCommon = $ivrCommon;
+        $this->ivr = $ivr;
 
         return $this;
     }
 
     /**
-     * Get ivrCommon
+     * Get ivr
      *
-     * @return \Ivoz\Provider\Domain\Model\IvrCommon\IvrCommonInterface
+     * @return \Ivoz\Provider\Domain\Model\Ivr\IvrInterface
      */
-    public function getIvrCommon()
+    public function getIvr()
     {
-        return $this->ivrCommon;
-    }
-
-    /**
-     * Set ivrCustom
-     *
-     * @param \Ivoz\Provider\Domain\Model\IvrCustom\IvrCustomInterface $ivrCustom
-     *
-     * @return self
-     */
-    public function setIvrCustom(\Ivoz\Provider\Domain\Model\IvrCustom\IvrCustomInterface $ivrCustom = null)
-    {
-        $this->ivrCustom = $ivrCustom;
-
-        return $this;
-    }
-
-    /**
-     * Get ivrCustom
-     *
-     * @return \Ivoz\Provider\Domain\Model\IvrCustom\IvrCustomInterface
-     */
-    public function getIvrCustom()
-    {
-        return $this->ivrCustom;
+        return $this->ivr;
     }
 
     /**

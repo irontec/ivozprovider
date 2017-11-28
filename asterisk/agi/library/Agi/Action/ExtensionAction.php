@@ -38,8 +38,7 @@ class ExtensionAction extends RouterAction
         // Route to the extension destination
         $this->_routeType       = $extension->getRouteType();
         $this->_routeUser       = $extension->getUser();
-        $this->_routeIVRCommon  = $extension->getIVRCommon();
-        $this->_routeIVRCustom  = $extension->getIVRCustom();
+        $this->_routeIVR        = $extension->getIvr();
         $this->_routeHuntGroup  = $extension->getHuntGroup();
         $this->_routeConference = $extension->getConferenceRoom();
         $this->_routeExternal   = $extension->getNumberValueE164();

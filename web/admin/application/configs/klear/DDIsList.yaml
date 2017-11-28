@@ -37,8 +37,7 @@ production:
         blacklist:
           userId: true
           faxId: true
-          IvrCommonId: true
-          IvrCustomId: true
+          ivrId: true
           huntGroupId: true
           conferenceRoomId: true
           friendValue: true
@@ -78,8 +77,7 @@ production:
             routeType: 1
             userId: 1
             faxId: 1
-            IvrCommonId: 1
-            IvrCustomId: 1
+            ivrId: 1
             huntGroupId: 1
             conferenceRoomId: 1
             friendValue: 1

@@ -27,8 +27,7 @@ production:
             conditionalRoutesDel_dialog: true
           default: conditionalRoutesEdit_screen
         blacklist:
-          IVRCommonId: true
-          IVRCustomId: true
+          ivrId: true
           huntGroupId: true
           conferenceRoomId: true
           userId: true
@@ -78,8 +77,7 @@ production:
           fields:
             locutionId: 6
             routeType: 2
-            IVRCommonId: 3
-            IVRCustomId: 3
+            ivrId: 3
             huntGroupId: 3
             voiceMailUserId: 3
             userId: 3

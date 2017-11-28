@@ -274,15 +274,10 @@ production:
           class: ui-silk-group-link
           description: _("List of %s", ngettext('Pick up group', 'Pick up groups', 0))
           showOnlyIf: ${auth.companyVPBX}
-        IvrCommonList:
-          title: ngettext('IVR Common', 'IVRs Common', 0)
+        IvrList:
+          title: ngettext('IVR', 'IVRs', 0)
           class: ui-silk-chart-organisation
-          description: _("List of %s", ngettext('IVR Common', 'IVR Common', 0))
-          showOnlyIf: ${auth.companyVPBX}
-        IvrCustomList:
-          title: ngettext('IVR Custom', 'IVR Custom', 0)
-          class: ui-silk-chart-organisation
-          description: _("List of %s", ngettext('IVR Custom', 'IVR Custom', 0))
+          description: _("List of %s", ngettext('IVR', 'IVRs', 0))
           showOnlyIf: ${auth.companyVPBX}
         QueuesList:
           title: ngettext('Queue', 'Queues', 0)

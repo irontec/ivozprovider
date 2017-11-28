@@ -6,17 +6,16 @@ IVRs are the most common way to make **audio menus** where the caller must
 choose the destination of the call by **pressing codes** based on the locutions
 instructions that will be played.
 
-.. _generic_ivrs:
+.. ivrs:
 
-************
-Generic IVRs
-************
+***********
+IVRs
+***********
 
-In this type of IVRs, the caller will directly press the extension that must
-previously know (or the welcome locution suggests) and the system will
-automatically connect with that extension:
+IVRs support specifying actions for dialed digits, but also they can be also be used
+to route any existing company extension.
 
-Generic IVRs have the following fields:
+IVRs have the following fields:
 
 .. glossary::
 
@@ -26,12 +25,25 @@ Generic IVRs have the following fields:
     Timeout
         Time that caller has to enter the digits of the target extension.
 
+    Max digits
+        Maximum number of digits allowed in this IVR.
+
     Welcome locution
         This locution will be played as soon as the caller enters the IVR.
 
     Success locution
-        In case the dialed extension exists in the company, this locution will
-        be played (usually something like 'Connecting, please wait...').
+        In case the dialed number matches one of the IVR entries or extension
+        exists in the company (and allow extensions is enabled), this locution
+        will be played (usually something like 'Connecting, please wait...').
+
+    Allow dialing extensions
+        When this setting is enabled, the caller can directly press the extension
+        that must previously know (or the welcome locution suggests) and the system
+        will automatically connect with that extension.
+
+    Excluded Extensions
+        When Allow extensions is enabled, you can exclude some extensions to be
+        directly dialed adding them to the exclusion list.
 
     No input process
         If the caller does not input any digit in the timeout value, the
@@ -39,25 +51,18 @@ Generic IVRs have the following fields:
         redirecting the call to another number, extension or voicemail.
 
     Error process
-        If the dialed extension is invalid, the error process will trigger,
-        playing the configured locution and redirecting the call to another
-        number, extension or voicemail.
-
-.. _custom_ivrs:
+        If the dialed extension does not match any IVR entry, any company extensions
+        (when allow extensions is enabled), or it matches one of the extensions in the
+        excluded Extensions list, the error process will trigger, playing the configured
+        locution and redirecting the call to another number, extension or voicemail.
 
 ***********
-Custom IVRs
+IVR Entries
 ***********
 
-Contrary to the generic IVRs where the caller can only dial internal
-extensions, the custom IVRS can configure options that can be routed
-in different ways.
-
-.. hint:: The most common usage for this IVR is combining them with a welcome
+.. hint:: The most common usage for IVR is combining them with a welcome
    locution that says something like 'Press 1 to contact XXX, Press 2 to
    contact YYY, ..."
-
-Most of the configurable fields are the same that generic IVR uses:
 
 The process of each entry of the IVR can be defined in the following button:
 
@@ -73,18 +78,15 @@ an error and will trigger the **Error process**):
 - 2: Call to the internal extension 101.
 - 3: Route this call to the external number 676 676 676.
 
-.. note:: Each of the Custom IVR entries supports a locution that, if set,
+.. note:: Each of the IVR entries supports a locution that, if set,
    will be played instead of the IVR **success locution**. This way, you can
    configure a generic locution (like 'Connecting....') or a custom one for
    a given entry (like 'Connecting reception department, please wait...').
 
 .. rubric:: Entries are regular expressions
 
-Although on the most typical usage of this IVRs options will be digits from 1
-to 9, **entries are interpreted as regular expressions**. This way, you could
-add an entry like "^2[0-9]{2}$" to group the behaviour of all numbers from 200
-to 299. With this usage, **Max digits** parameter is important too.
+You can specify IVR entries as Regular Expressions. If entry is just
+a numeric value, it will be handled as a sequence of digits, otherwise it
+will be handled a regular expression. This can be handy if you have the
+same behaviour for a group of dialed numbers.
 
-.. error:: To avoid undesired behaviour, **if you use options out of 0-9, use
-           regular expression notation** ('^1$' instead of '1', '^10$' instead
-           of '10' and so on).

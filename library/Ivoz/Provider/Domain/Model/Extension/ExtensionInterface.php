@@ -106,36 +106,20 @@ interface ExtensionInterface extends LoggableEntityInterface
     public function getCompany();
 
     /**
-     * Set ivrCommon
+     * Set ivr
      *
-     * @param \Ivoz\Provider\Domain\Model\IvrCommon\IvrCommonInterface $ivrCommon
-     *
-     * @return self
-     */
-    public function setIvrCommon(\Ivoz\Provider\Domain\Model\IvrCommon\IvrCommonInterface $ivrCommon = null);
-
-    /**
-     * Get ivrCommon
-     *
-     * @return \Ivoz\Provider\Domain\Model\IvrCommon\IvrCommonInterface
-     */
-    public function getIvrCommon();
-
-    /**
-     * Set ivrCustom
-     *
-     * @param \Ivoz\Provider\Domain\Model\IvrCustom\IvrCustomInterface $ivrCustom
+     * @param \Ivoz\Provider\Domain\Model\Ivr\IvrInterface $ivr
      *
      * @return self
      */
-    public function setIvrCustom(\Ivoz\Provider\Domain\Model\IvrCustom\IvrCustomInterface $ivrCustom = null);
+    public function setIvr(\Ivoz\Provider\Domain\Model\Ivr\IvrInterface $ivr = null);
 
     /**
-     * Get ivrCustom
+     * Get ivr
      *
-     * @return \Ivoz\Provider\Domain\Model\IvrCustom\IvrCustomInterface
+     * @return \Ivoz\Provider\Domain\Model\Ivr\IvrInterface
      */
-    public function getIvrCustom();
+    public function getIvr();
 
     /**
      * Set huntGroup
@@ -263,6 +247,12 @@ interface ExtensionInterface extends LoggableEntityInterface
      * @return array
      */
     public function getUsers(\Doctrine\Common\Collections\Criteria $criteria = null);
+
+    /**
+     * @param string $prefix
+     * @return null|string
+     */
+    public function getTarget(string $prefix = '');
 
 }
 

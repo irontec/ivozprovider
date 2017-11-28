@@ -5,6 +5,7 @@ production:
   main:
     module: klearMatrix
     defaultScreen: dDIsList_screen
+
   screens: &dDIs_screenLink
     dDIsList_screen: &dDIsList_screenLink
       controller: list
@@ -28,10 +29,10 @@ production:
           routeType: true
           target: true
         blacklist:
+          displayName: true
           userId: true
           faxId: true
-          IvrCommonId: true
-          IvrCustomId: true
+          ivrId: true
           huntGroupId: true
           ddie164: true
           brand: true
@@ -40,6 +41,9 @@ production:
           billInboundCalls: true
           friendValue: true
           queueId: true
+          retailAccountId: true
+          languageId: true
+          conditionalRouteId: true
       fixedPositions: &dDIsFixedPositions_Link
         group0:
           label: _("Number data")
@@ -60,8 +64,7 @@ production:
             routeType: 1
             userId: 1
             faxId: 1
-            IvrCommonId: 1
-            IvrCustomId: 1
+            ivrId: 1
             huntGroupId: 1
 staging: 
   _extends: production
