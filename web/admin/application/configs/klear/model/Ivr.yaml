@@ -1,6 +1,6 @@
 production:
-  class: \IvozProvider\Model\IVRCustom
-  entity: Ivoz\Provider\Domain\Model\IvrCustom\IvrCustom
+  class: \IvozProvider\Model\Ivr
+  entity: Ivoz\Provider\Domain\Model\Ivr\Ivr
   fields:
     companyId:
       title: ngettext('Company', 'Companies', 1)
@@ -25,7 +25,6 @@ production:
     welcomeLocutionId:
       title: _('Welcome locution')
       type: select
-      required: true
       source:
         data: mapper
         config:
@@ -37,7 +36,8 @@ production:
             template: '%name%'
           order:
             Locution.name: asc
-    noAnswerLocutionId:
+        'null': _("Unassigned")
+    noInputLocutionId:
       title: _('No input locution')
       type: select
       source:
@@ -111,13 +111,36 @@ production:
         icon: help
         text: _("Max number of digits the caller can enter. Set to 0 to disable.")
         label: _("Need help?")
-    noAnswerTimeout:
-      title: _('No input timeout')
-      type: number
-      defaultValue: 10
+    allowExtensions:
+      title: _('Allow dialing extensions')
+      type: select
+      defaultValue: 0
       source:
-        control: Spinner
-    timeoutTargetType:
+        data: inline
+        values:
+          '0':
+            title: _("No")
+            visualFilter:
+              show: []
+              hide: [ excludedExtensions ]
+          '1':
+            title: _("Yes")
+            visualFilter:
+              show: [ excludedExtensions ]
+              hide: []
+    excludedExtensions:
+      title: ngettext('Excluded Extension', 'Excluded Extensions', 0)
+      type: multiselect
+      source:
+        data: mapper
+        config:
+          relation: \Ivoz\Provider\Domain\Model\IvrExcludedExtension\IvrExcludedExtension
+          relationProperty: ivr
+          relatedProperty: extension
+          related: \Ivoz\Provider\Domain\Model\Extension\Extension
+          filterClass: IvozProvider_Klear_Filter_Company
+          relatedFieldName: number
+    noInputRouteType:
       title: _('No input target type')
       type: select
       source:
@@ -126,30 +149,30 @@ production:
           '__null__':
             title: _('Unassigned')
             visualFilter:
-              hide: &timeoutFields
-                - timeoutNumberCountryId
-                - timeoutNumberValue
-                - timeoutExtensionId
-                - timeoutVoiceMailUserId
+              hide: &noInputFields
+                - noInputNumberCountryId
+                - noInputNumberValue
+                - noInputExtensionId
+                - noInputVoiceMailUserId
           'number':
             title: _('Number')
             visualFilter:
-              show: [ timeoutNumberValue, timeoutNumberCountryId ]
+              show: [ noInputNumberValue, noInputNumberCountryId ]
               hide:
-                <<: *timeoutFields
+                <<: *noInputFields
           'extension':
             title: ngettext('Extension', 'Extensions', 1)
             visualFilter:
-              show: [ timeoutExtensionId ]
+              show: [ noInputExtensionId ]
               hide:
-                <<: *timeoutFields
+                <<: *noInputFields
           'voicemail':
             title: ngettext('Voicemail', 'Voicemails', 1)
             visualFilter:
-              show: [ timeoutVoiceMailUserId ]
+              show: [ noInputVoiceMailUserId ]
               hide:
-                <<: *timeoutFields
-    timeoutNumberCountryId:
+                <<: *noInputFields
+    noInputNumberCountryId:
       title: _('Country')
       type: select
       required: true
@@ -164,12 +187,12 @@ production:
             template: '%name${lang}% (%countryCode%)'
           order:
             Country.name.${lang}: asc
-    timeoutNumberValue:
+    noInputNumberValue:
       title: _('Number')
       type: text
       trim: both
       required: true
-    timeoutExtensionId:
+    noInputExtensionId:
       title: ngettext('Extension', 'Extensions', 1)
       type: select
       required: true
@@ -185,7 +208,7 @@ production:
           order:
             Extension.number: asc
         'null': _("Unassigned")
-    timeoutVoiceMailUserId:
+    noInputVoiceMailUserId:
       title: ngettext('Voicemail', 'Voicemails', 1)
       type: select
       required: true
@@ -202,7 +225,7 @@ production:
           order:
             User.name: asc
         'null': _("Unassigned")
-    errorTargetType:
+    errorRouteType:
       title: _('Error target type')
       type: select
       source:
@@ -287,18 +310,18 @@ production:
           order:
             User.name: asc
         'null': _("Unassigned")
-    timeoutTarget:
+    noInputTarget:
       title: _('No input target')
       type: ghost
       source:
-        class: IvozProvider_Klear_Ghost_IVRCustomTarget
-        method: getTimeoutData
+        class: IvozProvider_Klear_Ghost_RouteTarget
+        method: getIvrNoInputTarget
     errorTarget:
       title: _('Error target')
       type: ghost
       source:
-        class: IvozProvider_Klear_Ghost_IVRCustomTarget
-        method: getErrorData
+        class: IvozProvider_Klear_Ghost_RouteTarget
+        method: getIvrErrorTarget
 staging:
   _extends: production
 testing:

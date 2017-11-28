@@ -81,8 +81,7 @@ class IvozProvider_Klear_Filter_RouteTypes implements KlearMatrix_Model_Field_Se
             $excludedRoutes[] = 'retailAccount';
         } else {
             $excludedRoutes[] = 'user';
-            $excludedRoutes[] = 'IVRCommon';
-            $excludedRoutes[] = 'IVRCustom';
+            $excludedRoutes[] = 'ivr';
             $excludedRoutes[] = 'huntGroup';
             $excludedRoutes[] = 'conditional';
         }

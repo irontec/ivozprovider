@@ -1,65 +1,47 @@
 <?php
 
-use \Ivoz\Provider\Domain\Model\Extension\Extension;
-
 class IvozProvider_Klear_Ghost_RouteTarget extends KlearMatrix_Model_Field_Ghost_Abstract
 {
-
-    public function getTarget ($entity)
+    /**
+     * @param \Ivoz\Provider\Domain\Model\Ivr\IvrDTO $model
+     * @return null|string name of target based on route type
+     */
+    public function getIvrNoInputTarget($model)
     {
-        // Get DDI Route Type
-        $routeType = $entity->getRouteType();
-
-        switch ($routeType) {
-            case 'number':
-                return $entity->getNumberValueE164();
-                break;
-
-            case 'user':
-                return sprintf("%s %s",
-                    $entity->getUser()->getName(),
-                    $entity->getUser()->getLastname()
-                );
-                break;
-
-            case 'conditional':
-                return $entity
-                        ->getConditionalRoute()
-                        ->getName();
-                break;
-
-            default:
-                // Get Generic Target Type
-                $targetGetter = 'get' . ucfirst($routeType);
-                $targetEntity = $entity->{$targetGetter}();
-
-                // If Target is assigned, get its name
-                if ($targetEntity) {
-                    return $targetEntity->getName();
-                }
-                break;
-        }
-
-        // Object without routable object assigned
-        return null;
+        return $this->getTarget($model, 'getNoInputTarget');
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionDTO $model
-     * @return name of target based on route type
+     * @param \Ivoz\Provider\Domain\Model\Ivr\IvrDTO $model
+     * @return null|string name of target based on route type
      */
-    public function getExtensionTarget($model)
+    public function getIvrErrorTarget($model)
     {
-        return ucfirst($model->getRouteType()) . " " . $model->get;
+        return $this->getTarget($model, 'getErrorTarget');
+    }
+
+    /**
+     * @param \Ivoz\Core\Application\DataTransferObjectInterface $model
+     * @return null|string name of target based on route type
+     */
+    public function getTarget(
+        \Ivoz\Core\Application\DataTransferObjectInterface $model,
+        string $method = 'getTarget'
+    )
+    {
+        /** @var \Ivoz\Core\Application\Service\DataGateway $dataGateway */
         $dataGateway = \Zend_Registry::get('data_gateway');
 
+        // Get entity name from the DTO
+        $entityName = substr(get_class($model), 0,-3);
 
-        $extension = $dataGateway->find(
-            \Ivoz\Provider\Domain\Model\Extension\Extension::class,
-            $model->getId()
+        return $dataGateway->remoteProcedureCall(
+            $entityName,
+            $model->getId(),
+            $method,
+            []
         );
 
-
-        return $this->getTarget($extension);
     }
+
 }

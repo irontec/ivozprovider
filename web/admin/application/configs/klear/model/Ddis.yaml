@@ -53,8 +53,7 @@ production:
             visualFilter:
               show: [ ]
               hide: &routableFields
-                - IVRCommonId
-                - IVRCustomId
+                - ivrId
                 - huntGroupId
                 - userId
                 - faxId
@@ -69,16 +68,10 @@ production:
               show: [ userId ]
               hide:
                 <<: *routableFields
-          'IVRCommon':
-            title: ngettext('IVR Common', 'IVRs Common', 1)
+          'ivr':
+            title: ngettext('IVR', 'IVRs', 1)
             visualFilter:
-              show: [ IVRCommonId ]
-              hide:
-                <<: *routableFields
-          'IVRCustom':
-            title: ngettext('IVR Custom', 'IVR Custom', 1)
-            visualFilter:
-              show: [ IVRCustomId ]
+              show: [ ivrId ]
               hide:
                 <<: *routableFields
           'huntGroup':
@@ -184,37 +177,21 @@ production:
           order:
             User.name: asc
         'null': _("Unassigned")
-    IvrCommonId:
-      title: ngettext('IVR Common', 'IVRs Common', 1)
+    ivrId:
+      title: ngettext('IVR', 'IVRs', 1)
       type: select
       required: true
       source:
         data: mapper
         config:
-          entity: \Ivoz\Provider\Domain\Model\IvrCommon\IvrCommon
+          entity: \Ivoz\Provider\Domain\Model\Ivr\Ivr
           filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
             fields:
               - name
             template: '%name%'
           order:
-            IvrCommon.name: asc
-        'null': _("Unassigned")
-    IvrCustomId:
-      title: ngettext('IVR Custom', 'IVRs Custom', 1)
-      type: select
-      required: true
-      source:
-        data: mapper
-        config:
-          entity: \Ivoz\Provider\Domain\Model\IvrCustom\IvrCustom
-          filterClass: IvozProvider_Klear_Filter_Company
-          fieldName:
-            fields:
-              - name
-            template: '%name%'
-          order:
-            IvrCustom.name: asc
+            Ivr.name: asc
         'null': _("Unassigned")
     huntGroupId:
       title: ngettext('Hunt Group', 'Hunt Groups', 1)
@@ -285,12 +262,6 @@ production:
       maxLength: 25
       required: true
       <<: *friendValueHelp
-    target:
-      title: _('Target')
-      type: ghost
-      source:
-        class: IvozProvider_Klear_Ghost_DDITarget
-        method: getData
     peeringContractId:
       title: _('Peering contract id')
       type: select
@@ -367,6 +338,12 @@ production:
           order:
             ConditionalRoute.name: asc
         'null': _("Unassigned")
+    target:
+      title: _('Target')
+      type: ghost
+      source:
+        class: IvozProvider_Klear_Ghost_RouteTarget
+        method: getTarget
 staging:
   _extends: production
 testing:

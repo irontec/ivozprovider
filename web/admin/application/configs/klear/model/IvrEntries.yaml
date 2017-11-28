@@ -1,21 +1,21 @@
 production:
-  class: \IvozProvider\Model\IVRCustomEntries
-  entity: Ivoz\Provider\Domain\Model\IvrCustomEntry\IvrCustomEntry
+  class: \IvozProvider\Model\IvrEntries
+  entity: Ivoz\Provider\Domain\Model\IvrEntry\IvrEntry
   fields:
-    IvrCustomId:
-      title: ngettext('IVR Custom', 'IVRs Custom', 1)
+    ivrId:
+      title: ngettext('IVR', 'IVRs', 1)
       type: select
       required: true
       source:
         data: mapper
         config:
-          entity: \Ivoz\Provider\Domain\Model\IvrCustom\IvrCustom
+          entity: \Ivoz\Provider\Domain\Model\Ivr\Ivr
           fieldName:
             fields:
               - name
             template: '%name%'
           order:
-            IvrCustom.name: asc
+            Ivr.name: asc
       default: true
     entry:
       title: _('Entry')
@@ -43,34 +43,47 @@ production:
           order:
             Locution.name: asc
         'null': _("Unassigned")
-    targetType:
+    routeType:
       title: _('Target type')
       type: select
       required: true
       source:
         data: inline
         values:
+          '__null__':
+            title: _('Unassigned')
+            visualFilter:
+              hide: &routableFields
+                - numberCountryId
+                - numberValue
+                - extensionId
+                - voiceMailUserId
+                - conditionalRouteId
           'number':
             title: _('Number')
             visualFilter:
-              show: [ targetNumberCountryId, targetNumberValue]
-              hide: [ targetExtensionId, targetVoiceMailUserId, targetConditionalRouteId]
+              show: [ numberCountryId, numberValue]
+              hide:
+                <<: *routableFields
           'extension':
             title: ngettext('Extension', 'Extensions', 1)
             visualFilter:
-              show: [ targetExtensionId]
-              hide: [ targetNumberCountryId, targetNumberValue, targetVoiceMailUserId, targetConditionalRouteId]
+              show: [ extensionId ]
+              hide:
+                <<: *routableFields
           'voicemail':
             title: ngettext('Voicemail', 'Voicemails', 1)
             visualFilter:
-              show: [ targetVoiceMailUserId ]
-              hide: [ targetExtensionId, targetNumberCountryId, targetNumberValue, targetConditionalRouteId]
+              show: [ voiceMailUserId ]
+              hide:
+                <<: *routableFields
           'conditional':
             title: _('Conditional Route')
             visualFilter:
-              show: [ targetConditionalRouteId ]
-              hide: [ targetExtensionId, targetVoiceMailUserId, targetNumberCountryId, targetNumberValue ]
-    targetNumberCountryId:
+              show: [ conditionalRouteId ]
+              hide:
+                <<: *routableFields
+    numberCountryId:
       title: _('Country')
       type: select
       required: true
@@ -85,12 +98,12 @@ production:
             template: '%name${lang}% (%countryCode%)'
           order:
             Country.name.${lang}: asc
-    targetNumberValue:
+    numberValue:
       title: _('Number')
       type: text
       trim: both
       required: true
-    targetExtensionId:
+    extensionId:
       title: ngettext('Extension', 'Extensions', 1)
       type: select
       required: true
@@ -106,7 +119,7 @@ production:
           order:
             Extension.number: asc
         'null': _("Unassigned")
-    targetVoiceMailUserId:
+    voiceMailUserId:
       title: ngettext('Voicemail', 'Voicemails', 1)
       type: select
       required: true
@@ -123,7 +136,7 @@ production:
           order:
             User.name: asc
         'null': _("Unassigned")
-    targetConditionalRouteId:
+    conditionalRouteId:
       title: ngettext('Conditional Route', 'Conditional Routes', 1)
       type: select
       required: true
@@ -142,8 +155,8 @@ production:
       title: _('Target')
       type: ghost
       source:
-        class: IvozProvider_Klear_Ghost_IVRCustomTarget
-        method: getTargetData
+        class: IvozProvider_Klear_Ghost_RouteTarget
+        method: getTarget
 staging:
   _extends: production
 testing:
