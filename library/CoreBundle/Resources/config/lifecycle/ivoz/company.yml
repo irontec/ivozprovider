@@ -31,16 +31,9 @@ services:
       $domainRepository:
         '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\Domain\\Domain")'
 
-  Ivoz\Kam\Domain\Service\UsersDomainAttr\CreateByCompany:
-    tags:
-      - { name: provider.lifecycle.company.post_persist, priority: 20 }
-    arguments:
-      $entityPersister:
-        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
-
   Ivoz\Provider\Domain\Service\CompanyService\PropagateBrandServices:
     tags:
-      - { name: provider.lifecycle.company.post_persist, priority: 30 }
+      - { name: provider.lifecycle.company.post_persist, priority: 20 }
     arguments:
       $entityPersister:
         '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
