@@ -471,40 +471,6 @@ class CallsController extends BaseController
     }
 
     /**
-     * @brief Process IVR after call status
-     */
-    public function ivrstatusAction ()
-    {
-        $dialStatus = $this->agi->getVariable("DIALSTATUS");
-
-        // Noone picked up
-        if ($dialStatus == "NOANSWER") {
-            $ivrId = $this->agi->getVariable("IVRID");
-            $ivrType = $this->agi->getVariable("IVRTYPE");
-
-            /** @var \Doctrine\ORM\EntityManager $em */
-            $em = \Zend_Registry::get("em");
-
-            if ($ivrType == 'COMMON') {
-                /** @var \Ivoz\Provider\Domain\Model\IvrCommon\IvrCommonRepository $ivrRespository */
-                $ivrRespository = $em->getRepository('\Ivoz\Provider\Domain\Model\IvrCommon\IvrCommon');
-            } else {
-                /** @var \Ivoz\Provider\Domain\Model\IvrCustom\IvrCustomRepository $ivrRespository */
-                $ivrRespository = $em->getRepository('\Ivoz\Provider\Domain\Model\IvrCustom\IvrCustom');
-            }
-
-            // Get IVR data
-            $ivr = $ivrRespository->find($ivrId);
-
-            // Process NoAnswer handler
-            $ivrAction = new IVRAction($this);
-            $ivrAction
-                ->setIvr($ivr)
-                ->processTimeout();
-        }
-    }
-
-    /**
      * @brief Call a user from a Huntgroup
      */
     public  function hgcalluserAction()
