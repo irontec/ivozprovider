@@ -11,10 +11,6 @@ to *Alice* and *Bob*, so we had almost nothing to do with the section
 
 .. rubric:: Create a new extension
 
-The new extension window looks like this:
-
-.. image:: img/extension_add.png
-
 .. glossary::
 
     Number
