@@ -91,10 +91,6 @@ production:
           title: ngettext('Billable call', 'Billable calls', 0)
           class: ui-silk-application-view-list
           description: _("List of %s", ngettext('Billable call', 'Billable calls', 0))
-        ParsedCDRsList:
-          title: ngettext('Parsed CDR', 'Parsed CDRs', 0)
-          class: ui-silk-application-view-list
-          description: _("List of %s", ngettext('Parsed CDR', 'Parsed CDRs', 0))
     Brands:
       title: _("Brand Configuration")
       meta: "[mine:${auth.isBrandOperator}|brand:${auth.brandId}|name:${auth.brandName}]"
@@ -185,10 +181,6 @@ production:
           class: ui-silk-application-view-list
           description: _("List of %s", ngettext('Billable call', 'Billable calls', 0))
           showOnlyIf: ${auth.brand.billing.enabled}
-        ParsedCDRsBrandList:
-          title: ngettext('Parsed CDR', 'Parsed CDRs', 0)
-          class: ui-silk-application-view-list
-          description: _("List of %s", ngettext('Parsed CDR', 'Parsed CDRs', 0))
     Admin:
       title: _("Company Configuration")
       meta: "[mine:${auth.isCompanyAdmin}|company:${auth.companyId}|type:${auth.companyType}|name:${auth.companyName}]"
@@ -315,10 +307,6 @@ production:
           title: ngettext('Fax', 'Faxes', 0)
           class: ui-silk-printer
           description: _("List of %s", ngettext('Fax', 'Faxes', 0))
-        ParsedCDRsCompanyList:
-          title: ngettext('Parsed CDR', 'Parsed CDRs', 0)
-          class: ui-silk-application-view-list
-          description: _("List of %s", ngettext('Parsed CDR', 'Parsed CDRs', 0))
   footerMenu:
     footer:
       title: ''
