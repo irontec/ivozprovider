@@ -50,7 +50,7 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
                     ->setDuration($this->getParam("duration"))
                     ->setBrandId($this->_brandId)
                     ->setCompanyId($companyId)
-                    ->setStartTimeUtc(new \Zend_Date());
+                    ->setStartTime(new \Zend_Date());
                 $result = $call->tarificate();
                 if (is_null($result)) {
                     $this->_helper->log("[Tarificator] Result: null");
@@ -293,7 +293,7 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
 
             foreach($dataArray as $data) {
                 $table[] = array(
-                    "Call date" => $call->getStartTimeUtc(true)->setTimezone(date_default_timezone_get()),
+                    "Call date" => $call->getStartTime(true)->setTimezone(date_default_timezone_get()),
                     "Metering date" => $meteringDate->toString(),
                     "Company" => $data["Company"]["name"],
                     "Plan" => $data["Plan"]["name_es"],

@@ -11,7 +11,7 @@ production:
       csv: true
       order:
         field:
-          - AccCdr.startTimeUtc
+          - AccCdr.startTime
           - AccCdr.brand
           - AccCdr.company
         type: desc
@@ -29,7 +29,6 @@ production:
           default: kamAccCdrsView_screen
         blacklist:
           proxy: true
-          startTime: true
           endTime: true
           referee: true
           referrer: true
@@ -43,7 +42,6 @@ production:
           meteringDate: true
           reMeteringDate: true
           externallyRated: true
-          endTimeUtc: true
           pricingPlanId: true
           targetPatternId: true
           targetPattern: true
@@ -52,7 +50,7 @@ production:
           metered: true
           bounced: true
         order:
-          startTimeUtc: true
+          startTime: true
           brandId: true
           companyId: true
           direction: true
@@ -84,7 +82,6 @@ production:
           meteringDate: true
           reMeteringDate: true
           pricingPlanDetails: true
-          endTimeUtc: true
           pricingPlanId: true
           targetPatternId: true
           #targetPattern: true
@@ -93,7 +90,7 @@ production:
           companyId: 1
           caller: 1
           callee: 1
-          startTimeUtc: 1
+          startTime: 1
           duration: 1
           price: 1
           peeringContractId: 1
@@ -113,7 +110,7 @@ production:
             companyId: 6
             caller: 6
             callee: 6
-            startTimeUtc: 6
+            startTime: 6
             duration: 6
         group1:
           label: _("Billing")

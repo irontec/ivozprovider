@@ -172,12 +172,12 @@ class Generator
             "metered = 1 ",
             "peeringContractId IS NOT NULL",
             "peeringContractId != ''",
-            "start_time_utc >= '".$inDate->toString(self::MYSQL_DATETIME_FORMAT)."'",
-            "start_time_utc <= '".$outDate->toString(self::MYSQL_DATETIME_FORMAT)."'"
+            "start_time >= '".$inDate->toString(self::MYSQL_DATETIME_FORMAT)."'",
+            "start_time <= '".$outDate->toString(self::MYSQL_DATETIME_FORMAT)."'"
         );
 
         $where = implode(" AND ", $wheres);
-        $order = "start_time_utc asc";
+        $order = "start_time asc";
         $limit = 100;
         $offset = 0;
         $continue = true;
@@ -203,7 +203,7 @@ class Generator
             foreach ($calls as $call) {
 
                 $callData = $call->toArray();
-                $callData["calldate"] = $call->getStartTimeUtc(true)->setTimezone($invoiceTz)->toString(self::DATE_TIME_FORMAT);
+                $callData["calldate"] = $call->getStartTime(true)->setTimezone($invoiceTz)->toString(self::DATE_TIME_FORMAT);
                 $callData["dst"] = $call->getCallee();
                 $callData["price"] = $this->roundAndFormat($callData["price"]);
 

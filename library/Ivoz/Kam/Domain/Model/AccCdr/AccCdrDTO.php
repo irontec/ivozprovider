@@ -19,16 +19,6 @@ class AccCdrDTO implements DataTransferObjectInterface
     /**
      * @var \DateTime
      */
-    private $startTimeUtc = '2000-01-01 00:00:00';
-
-    /**
-     * @var \DateTime
-     */
-    private $endTimeUtc = 'CURRENT_TIMESTAMP';
-
-    /**
-     * @var \DateTime
-     */
     private $startTime = '2000-01-01 00:00:00';
 
     /**
@@ -213,8 +203,6 @@ class AccCdrDTO implements DataTransferObjectInterface
     {
         return [
             'proxy' => $this->getProxy(),
-            'startTimeUtc' => $this->getStartTimeUtc(),
-            'endTimeUtc' => $this->getEndTimeUtc(),
             'startTime' => $this->getStartTime(),
             'endTime' => $this->getEndTime(),
             'duration' => $this->getDuration(),
@@ -287,46 +275,6 @@ class AccCdrDTO implements DataTransferObjectInterface
     public function getProxy()
     {
         return $this->proxy;
-    }
-
-    /**
-     * @param \DateTime $startTimeUtc
-     *
-     * @return AccCdrDTO
-     */
-    public function setStartTimeUtc($startTimeUtc)
-    {
-        $this->startTimeUtc = $startTimeUtc;
-
-        return $this;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getStartTimeUtc()
-    {
-        return $this->startTimeUtc;
-    }
-
-    /**
-     * @param \DateTime $endTimeUtc
-     *
-     * @return AccCdrDTO
-     */
-    public function setEndTimeUtc($endTimeUtc)
-    {
-        $this->endTimeUtc = $endTimeUtc;
-
-        return $this;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getEndTimeUtc()
-    {
-        return $this->endTimeUtc;
     }
 
     /**

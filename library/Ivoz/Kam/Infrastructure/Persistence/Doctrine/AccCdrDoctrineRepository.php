@@ -23,13 +23,13 @@ class AccCdrDoctrineRepository extends EntityRepository implements AccCdrReposit
     public function fetchUntarificattedCallNumber(
         int $companyId,
         int $brandId,
-        string $startTimeUtc,
+        string $startTime,
         int $metered
     ) {
         $querySegments = [
             self::ENTITY_ALIAS . '.company = :companyId',
             self::ENTITY_ALIAS . '.brand = :brandId',
-            self::ENTITY_ALIAS . '.startTimeUtc <= :startTimeUtc',
+            self::ENTITY_ALIAS . '.startTime <= :startTime',
             self::ENTITY_ALIAS . '.metered = :metered'
         ];
 
@@ -38,7 +38,7 @@ class AccCdrDoctrineRepository extends EntityRepository implements AccCdrReposit
         $queryArguments = [
             'companyId' => $companyId,
             'brandId' => $brandId,
-            'startTimeUtc' => $startTimeUtc,
+            'startTime' => $startTime,
             'metered' => $metered
         ];
 
@@ -58,14 +58,14 @@ class AccCdrDoctrineRepository extends EntityRepository implements AccCdrReposit
     public function fetchTarificableList(
         int $companyId,
         int $brandId,
-        string $startTimeUtc,
+        string $startTime,
         string $utcNextInvoiceInDate
     ) {
         $querySegments = [
             self::ENTITY_ALIAS . '.company = :companyId',
             self::ENTITY_ALIAS . '.brand = :brandId',
-            self::ENTITY_ALIAS . '.startTimeUtc > :startTimeUtc',
-            self::ENTITY_ALIAS . '.startTimeUtc < :utcNextInvoiceInDate'
+            self::ENTITY_ALIAS . '.startTime > :startTime',
+            self::ENTITY_ALIAS . '.startTime < :utcNextInvoiceInDate'
         ];
 
         $querySegments += $this->getEmptyPeeringContractFilterQueryArguments(self::ENTITY_ALIAS);
@@ -73,7 +73,7 @@ class AccCdrDoctrineRepository extends EntityRepository implements AccCdrReposit
         $queryArguments = [
             'companyId' => $companyId,
             'brandId' => $brandId,
-            'startTimeUtc' => $startTimeUtc,
+            'startTime' => $startTime,
             'utcNextInvoiceInDate' => $utcNextInvoiceInDate
         ];
 

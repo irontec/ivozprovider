@@ -39,38 +39,6 @@ interface AccCdrInterface extends EntityInterface
     public function getProxy();
 
     /**
-     * Set startTimeUtc
-     *
-     * @param \DateTime $startTimeUtc
-     *
-     * @return self
-     */
-    public function setStartTimeUtc($startTimeUtc);
-
-    /**
-     * Get startTimeUtc
-     *
-     * @return \DateTime
-     */
-    public function getStartTimeUtc();
-
-    /**
-     * Set endTimeUtc
-     *
-     * @param \DateTime $endTimeUtc
-     *
-     * @return self
-     */
-    public function setEndTimeUtc($endTimeUtc);
-
-    /**
-     * Get endTimeUtc
-     *
-     * @return \DateTime
-     */
-    public function getEndTimeUtc();
-
-    /**
      * Set startTime
      *
      * @param \DateTime $startTime
