@@ -26,10 +26,6 @@ module.exports = {
       "webdriver.chrome.driver" : "./node_modules/.bin/chromedriver"
     }
   },
-  "test_workers" : {
-    "enabled" : false,
-    "workers" : 2
-  },
   "test_settings" : {
     "chromium" : {
       "launch_url" : "https://127.0.0.1/e2e.php",
@@ -45,7 +41,10 @@ module.exports = {
       "desiredCapabilities": {
         "browserName": "chrome",
         "chromeOptions" : {
-          "args" : ["--no-sandbox"]
+          "args" : [
+              "--no-sandbox",
+              "window-size=1280,720"
+          ]
         },
         "javascriptEnabled": true,
         "acceptSslCerts": true
@@ -54,33 +53,17 @@ module.exports = {
         "enabled" : false,
         "on_failure" : true,
         "on_error" : true,
-        "path" : "./screenshots/"
+        "path" : "./errors/"
+      },
+      "videos": {
+        "enabled": true,
+        "path": "errors",
+        "format": "mp4",
+        "resolution": "1280x720",
+        "fps": 15,
+        "display": ":1",
+        "pixel_format": "yuv420p"
       }
-    },
-    "phantomjs": {
-        "launch_url" : "https://127.0.0.1/e2e.php",
-        "globals" : {
-            'user': 'admin',
-            'password': 'changeme',
-            'waitForConditionTimeout': 20000,
-            'retryAssertionTimeout': 20000
-        },
-        "selenium_port"  : 9515,
-        "selenium_host"  : "localhost",
-        "default_path_prefix" : "",
-        "desiredCapabilities": {
-            "browserName" : "phantomjs",
-            "phantomjs.binary.path" : "/path/to/phantomjs",
-            "phantomjs.cli.args" : [],
-            "javascriptEnabled": true,
-            "acceptSslCerts": true
-        },
-        "screenshots" : {
-            "enabled" : true,
-            "on_failure" : true,
-            "on_error" : true,
-            "path" : "./screenshots/"
-        }
     }
   }
 }
