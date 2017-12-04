@@ -127,7 +127,7 @@ abstract class PsEndpointAbstract
     /**
      * Constructor
      */
-    public function __construct(
+    protected function __construct(
         $sorceryId,
         $context,
         $disallow,
@@ -139,9 +139,6 @@ abstract class PsEndpointAbstract
         $this->setDisallow($disallow);
         $this->setAllow($allow);
         $this->setOneHundredRel($oneHundredRel);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -245,7 +242,7 @@ abstract class PsEndpointAbstract
             $dto->getAllow(),
             $dto->getOneHundredRel());
 
-        return $self
+        $self
             ->setFromDomain($dto->getFromDomain())
             ->setAors($dto->getAors())
             ->setCallerid($dto->getCallerid())
@@ -261,6 +258,11 @@ abstract class PsEndpointAbstract
             ->setFriend($dto->getFriend())
             ->setRetailAccount($dto->getRetailAccount())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

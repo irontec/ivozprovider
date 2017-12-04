@@ -46,7 +46,7 @@ abstract class ServiceAbstract
     /**
      * Constructor
      */
-    public function __construct(
+    protected function __construct(
         $iden,
         $defaultCode,
         $extraArgs,
@@ -58,9 +58,6 @@ abstract class ServiceAbstract
         $this->setExtraArgs($extraArgs);
         $this->setName($name);
         $this->setDescription($description);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -174,6 +171,11 @@ abstract class ServiceAbstract
             $name,
             $description
         );
+
+        $self;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
 
         return $self;
     }

@@ -36,12 +36,9 @@ abstract class QueueMemberAbstract
     /**
      * Constructor
      */
-    public function __construct()
+    protected function __construct()
     {
 
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -140,11 +137,16 @@ abstract class QueueMemberAbstract
 
         $self = new static();
 
-        return $self
+        $self
             ->setPenalty($dto->getPenalty())
             ->setQueue($dto->getQueue())
             ->setUser($dto->getUser())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

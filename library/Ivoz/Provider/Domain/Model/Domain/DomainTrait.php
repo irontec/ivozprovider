@@ -37,7 +37,7 @@ trait DomainTrait
     /**
      * Constructor
      */
-    public function __construct()
+    protected function __construct()
     {
         parent::__construct(...func_get_args());
         $this->friends = new ArrayCollection();

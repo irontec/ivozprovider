@@ -42,13 +42,10 @@ abstract class OutgoingDdiRuleAbstract
     /**
      * Constructor
      */
-    public function __construct($name, $defaultAction)
+    protected function __construct($name, $defaultAction)
     {
         $this->setName($name);
         $this->setDefaultAction($defaultAction);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -149,10 +146,15 @@ abstract class OutgoingDdiRuleAbstract
             $dto->getName(),
             $dto->getDefaultAction());
 
-        return $self
+        $self
             ->setCompany($dto->getCompany())
             ->setForcedDdi($dto->getForcedDdi())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

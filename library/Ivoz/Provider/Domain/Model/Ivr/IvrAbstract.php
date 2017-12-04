@@ -118,7 +118,7 @@ abstract class IvrAbstract
     /**
      * Constructor
      */
-    public function __construct(
+    protected function __construct(
         $name,
         $timeout,
         $maxDigits,
@@ -128,9 +128,6 @@ abstract class IvrAbstract
         $this->setTimeout($timeout);
         $this->setMaxDigits($maxDigits);
         $this->setAllowExtensions($allowExtensions);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -208,7 +205,7 @@ abstract class IvrAbstract
     }
 
     /**
-     * @return IvrCustomDTO
+     * @return IvrDTO
      */
     public static function createDTO()
     {
@@ -233,7 +230,7 @@ abstract class IvrAbstract
             $dto->getMaxDigits(),
             $dto->getAllowExtensions());
 
-        return $self
+        $self
             ->setNoInputRouteType($dto->getNoInputRouteType())
             ->setNoInputNumberValue($dto->getNoInputNumberValue())
             ->setErrorRouteType($dto->getErrorRouteType())
@@ -250,6 +247,11 @@ abstract class IvrAbstract
             ->setNoInputNumberCountry($dto->getNoInputNumberCountry())
             ->setErrorNumberCountry($dto->getErrorNumberCountry())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

@@ -122,7 +122,7 @@ abstract class UsersPuaAbstract
     /**
      * Constructor
      */
-    public function __construct(
+    protected function __construct(
         $presUri,
         $presId,
         $event,
@@ -156,9 +156,6 @@ abstract class UsersPuaAbstract
         $this->setRemoteContact($remoteContact);
         $this->setVersion($version);
         $this->setExtraHeaders($extraHeaders);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -273,10 +270,15 @@ abstract class UsersPuaAbstract
             $dto->getVersion(),
             $dto->getExtraHeaders());
 
-        return $self
+        $self
             ->setTupleId($dto->getTupleId())
             ->setRecordRoute($dto->getRecordRoute())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

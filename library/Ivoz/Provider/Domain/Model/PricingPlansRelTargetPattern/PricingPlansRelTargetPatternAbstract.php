@@ -51,7 +51,7 @@ abstract class PricingPlansRelTargetPatternAbstract
     /**
      * Constructor
      */
-    public function __construct(
+    protected function __construct(
         $connectionCharge,
         $periodTime,
         $perPeriodCharge
@@ -59,9 +59,6 @@ abstract class PricingPlansRelTargetPatternAbstract
         $this->setConnectionCharge($connectionCharge);
         $this->setPeriodTime($periodTime);
         $this->setPerPeriodCharge($perPeriodCharge);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -163,11 +160,16 @@ abstract class PricingPlansRelTargetPatternAbstract
             $dto->getPeriodTime(),
             $dto->getPerPeriodCharge());
 
-        return $self
+        $self
             ->setPricingPlan($dto->getPricingPlan())
             ->setTargetPattern($dto->getTargetPattern())
             ->setBrand($dto->getBrand())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

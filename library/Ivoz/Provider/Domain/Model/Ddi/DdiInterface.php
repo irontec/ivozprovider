@@ -298,7 +298,7 @@ interface DdiInterface extends LoggableEntityInterface
      *
      * @return self
      */
-    public function setCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $country = null);
+    public function setCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $country);
 
     /**
      * Get country
@@ -338,6 +338,12 @@ interface DdiInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface
      */
     public function getConditionalRoute();
+
+    /**
+     * @param string $prefix
+     * @return null|string
+     */
+    public function getTarget(string $prefix = '');
 
 }
 

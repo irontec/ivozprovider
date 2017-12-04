@@ -31,12 +31,9 @@ abstract class ProxyTrunkAbstract
     /**
      * Constructor
      */
-    public function __construct($ip)
+    protected function __construct($ip)
     {
         $this->setIp($ip);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -136,9 +133,14 @@ abstract class ProxyTrunkAbstract
         $self = new static(
             $dto->getIp());
 
-        return $self
+        $self
             ->setName($dto->getName())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

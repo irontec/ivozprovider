@@ -41,12 +41,9 @@ abstract class HuntGroupsRelUserAbstract
     /**
      * Constructor
      */
-    public function __construct()
+    protected function __construct()
     {
 
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -145,12 +142,17 @@ abstract class HuntGroupsRelUserAbstract
 
         $self = new static();
 
-        return $self
+        $self
             ->setTimeoutTime($dto->getTimeoutTime())
             ->setPriority($dto->getPriority())
             ->setHuntGroup($dto->getHuntGroup())
             ->setUser($dto->getUser())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

@@ -92,12 +92,9 @@ abstract class ConditionalRoutesConditionAbstract
     /**
      * Constructor
      */
-    public function __construct($priority)
+    protected function __construct($priority)
     {
         $this->setPriority($priority);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -197,7 +194,7 @@ abstract class ConditionalRoutesConditionAbstract
         $self = new static(
             $dto->getPriority());
 
-        return $self
+        $self
             ->setRouteType($dto->getRouteType())
             ->setNumberValue($dto->getNumberValue())
             ->setFriendValue($dto->getFriendValue())
@@ -212,6 +209,11 @@ abstract class ConditionalRoutesConditionAbstract
             ->setExtension($dto->getExtension())
             ->setNumberCountry($dto->getNumberCountry())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

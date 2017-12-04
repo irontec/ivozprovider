@@ -41,12 +41,9 @@ abstract class FixedCostsRelInvoiceAbstract
     /**
      * Constructor
      */
-    public function __construct()
+    protected function __construct()
     {
 
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -145,12 +142,17 @@ abstract class FixedCostsRelInvoiceAbstract
 
         $self = new static();
 
-        return $self
+        $self
             ->setQuantity($dto->getQuantity())
             ->setBrand($dto->getBrand())
             ->setFixedCost($dto->getFixedCost())
             ->setInvoice($dto->getInvoice())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

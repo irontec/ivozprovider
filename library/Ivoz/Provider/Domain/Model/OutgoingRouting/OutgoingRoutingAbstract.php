@@ -61,13 +61,10 @@ abstract class OutgoingRoutingAbstract
     /**
      * Constructor
      */
-    public function __construct($priority, $weight)
+    protected function __construct($priority, $weight)
     {
         $this->setPriority($priority);
         $this->setWeight($weight);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -168,7 +165,7 @@ abstract class OutgoingRoutingAbstract
             $dto->getPriority(),
             $dto->getWeight());
 
-        return $self
+        $self
             ->setType($dto->getType())
             ->setBrand($dto->getBrand())
             ->setCompany($dto->getCompany())
@@ -176,6 +173,11 @@ abstract class OutgoingRoutingAbstract
             ->setRoutingPattern($dto->getRoutingPattern())
             ->setRoutingPatternGroup($dto->getRoutingPatternGroup())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**
@@ -421,6 +423,16 @@ abstract class OutgoingRoutingAbstract
     }
 
     /**
+     * Get routingPatternGroup
+     *
+     * @return \Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface
+     */
+    public function getRoutingPatternGroup()
+    {
+        return $this->routingPatternGroup;
+    }
+
+    /**
      * Set routingPatternGroup
      *
      * @param \Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface $routingPatternGroup
@@ -432,16 +444,6 @@ abstract class OutgoingRoutingAbstract
         $this->routingPatternGroup = $routingPatternGroup;
 
         return $this;
-    }
-
-    /**
-     * Get routingPatternGroup
-     *
-     * @return \Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface
-     */
-    public function getRoutingPatternGroup()
-    {
-        return $this->routingPatternGroup;
     }
 
 

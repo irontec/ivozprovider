@@ -54,12 +54,9 @@ abstract class PikeTrustedAbstract
     /**
      * Constructor
      */
-    public function __construct($priority)
+    protected function __construct($priority)
     {
         $this->setPriority($priority);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -159,13 +156,18 @@ abstract class PikeTrustedAbstract
         $self = new static(
             $dto->getPriority());
 
-        return $self
+        $self
             ->setSrcIp($dto->getSrcIp())
             ->setProto($dto->getProto())
             ->setFromPattern($dto->getFromPattern())
             ->setRuriPattern($dto->getRuriPattern())
             ->setTag($dto->getTag())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

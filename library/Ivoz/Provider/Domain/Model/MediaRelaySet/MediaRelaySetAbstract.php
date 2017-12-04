@@ -31,12 +31,9 @@ abstract class MediaRelaySetAbstract
     /**
      * Constructor
      */
-    public function __construct($name)
+    protected function __construct($name)
     {
         $this->setName($name);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -136,9 +133,14 @@ abstract class MediaRelaySetAbstract
         $self = new static(
             $dto->getName());
 
-        return $self
+        $self
             ->setDescription($dto->getDescription())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

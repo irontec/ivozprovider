@@ -67,13 +67,10 @@ abstract class FaxesInOutAbstract
     /**
      * Constructor
      */
-    public function __construct($calldate, File $file)
+    protected function __construct($calldate, File $file)
     {
         $this->setCalldate($calldate);
         $this->setFile($file);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -181,7 +178,7 @@ abstract class FaxesInOutAbstract
             $file
         );
 
-        return $self
+        $self
             ->setSrc($dto->getSrc())
             ->setDst($dto->getDst())
             ->setType($dto->getType())
@@ -190,6 +187,11 @@ abstract class FaxesInOutAbstract
             ->setFax($dto->getFax())
             ->setDstCountry($dto->getDstCountry())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

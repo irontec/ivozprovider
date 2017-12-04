@@ -136,7 +136,7 @@ abstract class UsersLocationAbstract
     /**
      * Constructor
      */
-    public function __construct(
+    protected function __construct(
         $ruid,
         $username,
         $contact,
@@ -170,9 +170,6 @@ abstract class UsersLocationAbstract
         $this->setConnectionId($connectionId);
         $this->setKeepalive($keepalive);
         $this->setPartition($partition);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -287,7 +284,7 @@ abstract class UsersLocationAbstract
             $dto->getKeepalive(),
             $dto->getPartition());
 
-        return $self
+        $self
             ->setDomain($dto->getDomain())
             ->setReceived($dto->getReceived())
             ->setPath($dto->getPath())
@@ -295,6 +292,11 @@ abstract class UsersLocationAbstract
             ->setMethods($dto->getMethods())
             ->setInstance($dto->getInstance())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

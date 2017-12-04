@@ -46,13 +46,10 @@ abstract class PeeringContractAbstract
     /**
      * Constructor
      */
-    public function __construct($description, $name)
+    protected function __construct($description, $name)
     {
         $this->setDescription($description);
         $this->setName($name);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -153,11 +150,16 @@ abstract class PeeringContractAbstract
             $dto->getDescription(),
             $dto->getName());
 
-        return $self
+        $self
             ->setExternallyRated($dto->getExternallyRated())
             ->setBrand($dto->getBrand())
             ->setTransformationRuleSet($dto->getTransformationRuleSet())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

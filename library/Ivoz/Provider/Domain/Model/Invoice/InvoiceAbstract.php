@@ -77,13 +77,10 @@ abstract class InvoiceAbstract
     /**
      * Constructor
      */
-    public function __construct($number, Pdf $pdf)
+    protected function __construct($number, Pdf $pdf)
     {
         $this->setNumber($number);
         $this->setPdf($pdf);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -191,7 +188,7 @@ abstract class InvoiceAbstract
             $pdf
         );
 
-        return $self
+        $self
             ->setInDate($dto->getInDate())
             ->setOutDate($dto->getOutDate())
             ->setTotal($dto->getTotal())
@@ -202,6 +199,11 @@ abstract class InvoiceAbstract
             ->setBrand($dto->getBrand())
             ->setCompany($dto->getCompany())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

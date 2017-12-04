@@ -41,12 +41,9 @@ abstract class FixedCostAbstract
     /**
      * Constructor
      */
-    public function __construct($name)
+    protected function __construct($name)
     {
         $this->setName($name);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -146,11 +143,16 @@ abstract class FixedCostAbstract
         $self = new static(
             $dto->getName());
 
-        return $self
+        $self
             ->setDescription($dto->getDescription())
             ->setCost($dto->getCost())
             ->setBrand($dto->getBrand())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

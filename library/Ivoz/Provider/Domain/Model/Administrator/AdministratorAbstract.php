@@ -67,15 +67,12 @@ abstract class AdministratorAbstract
     /**
      * Constructor
      */
-    public function __construct($username, $pass, $email, $active)
+    protected function __construct($username, $pass, $email, $active)
     {
         $this->setUsername($username);
         $this->setPass($pass);
         $this->setEmail($email);
         $this->setActive($active);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -178,13 +175,18 @@ abstract class AdministratorAbstract
             $dto->getEmail(),
             $dto->getActive());
 
-        return $self
+        $self
             ->setName($dto->getName())
             ->setLastname($dto->getLastname())
             ->setBrand($dto->getBrand())
             ->setCompany($dto->getCompany())
             ->setTimezone($dto->getTimezone())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

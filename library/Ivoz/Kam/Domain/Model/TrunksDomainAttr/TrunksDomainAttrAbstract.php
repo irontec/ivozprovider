@@ -47,7 +47,7 @@ abstract class TrunksDomainAttrAbstract
     /**
      * Constructor
      */
-    public function __construct(
+    protected function __construct(
         $did,
         $name,
         $type,
@@ -59,9 +59,6 @@ abstract class TrunksDomainAttrAbstract
         $this->setType($type);
         $this->setValue($value);
         $this->setLastModified($lastModified);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -164,6 +161,11 @@ abstract class TrunksDomainAttrAbstract
             $dto->getType(),
             $dto->getValue(),
             $dto->getLastModified());
+
+        $self;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
 
         return $self;
     }

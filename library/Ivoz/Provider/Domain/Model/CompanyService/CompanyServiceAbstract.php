@@ -36,12 +36,9 @@ abstract class CompanyServiceAbstract
     /**
      * Constructor
      */
-    public function __construct($code)
+    protected function __construct($code)
     {
         $this->setCode($code);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -141,10 +138,15 @@ abstract class CompanyServiceAbstract
         $self = new static(
             $dto->getCode());
 
-        return $self
+        $self
             ->setCompany($dto->getCompany())
             ->setService($dto->getService())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

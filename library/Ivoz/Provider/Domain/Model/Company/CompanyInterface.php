@@ -21,11 +21,6 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * {@inheritDoc}
      */
-    public function getDomainUsers();
-
-    /**
-     * {@inheritDoc}
-     */
     public function setOnDemandRecordCode($onDemandRecordCode = null);
 
     /**
@@ -113,6 +108,13 @@ interface CompanyInterface extends LoggableEntityInterface
      * @return string
      */
     public function getName();
+
+    /**
+     * Get domainUsers
+     *
+     * @return string
+     */
+    public function getDomainUsers();
 
     /**
      * Set nif

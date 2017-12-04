@@ -33,21 +33,16 @@ interface QueueInterface extends LoggableEntityInterface
      */
     public function getFullNumberValueE164();
 
+    public function setMaxWaitTime($maxWaitTime = null);
+
+    public function setMaxlen($maxlen = null);
+
     /**
      * Get name
      *
      * @return string
      */
     public function getName();
-
-    /**
-     * Set maxWaitTime
-     *
-     * @param integer $maxWaitTime
-     *
-     * @return self
-     */
-    public function setMaxWaitTime($maxWaitTime = null);
 
     /**
      * Get maxWaitTime
@@ -87,15 +82,6 @@ interface QueueInterface extends LoggableEntityInterface
      * @return string
      */
     public function getTimeoutNumberValue();
-
-    /**
-     * Set maxlen
-     *
-     * @param integer $maxlen
-     *
-     * @return self
-     */
-    public function setMaxlen($maxlen = null);
 
     /**
      * Get maxlen

@@ -63,7 +63,7 @@ abstract class UsersXcapAbstract
     /**
      * Constructor
      */
-    public function __construct(
+    protected function __construct(
         $username,
         $domain,
         $doc,
@@ -81,9 +81,6 @@ abstract class UsersXcapAbstract
         $this->setSource($source);
         $this->setDocUri($docUri);
         $this->setPort($port);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -189,6 +186,11 @@ abstract class UsersXcapAbstract
             $dto->getSource(),
             $dto->getDocUri(),
             $dto->getPort());
+
+        $self;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
 
         return $self;
     }

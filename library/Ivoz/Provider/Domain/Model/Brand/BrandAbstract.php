@@ -77,14 +77,11 @@ abstract class BrandAbstract
     /**
      * Constructor
      */
-    public function __construct($name, Logo $logo, Invoice $invoice)
+    protected function __construct($name, Logo $logo, Invoice $invoice)
     {
         $this->setName($name);
         $this->setLogo($logo);
         $this->setInvoice($invoice);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -203,7 +200,7 @@ abstract class BrandAbstract
             $invoice
         );
 
-        return $self
+        $self
             ->setDomainUsers($dto->getDomainUsers())
             ->setFromName($dto->getFromName())
             ->setFromAddress($dto->getFromAddress())
@@ -213,6 +210,11 @@ abstract class BrandAbstract
             ->setLanguage($dto->getLanguage())
             ->setDefaultTimezone($dto->getDefaultTimezone())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

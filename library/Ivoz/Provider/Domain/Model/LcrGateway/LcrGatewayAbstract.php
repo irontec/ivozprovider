@@ -94,14 +94,11 @@ abstract class LcrGatewayAbstract
     /**
      * Constructor
      */
-    public function __construct($lcrId, $gwName, $flags)
+    protected function __construct($lcrId, $gwName, $flags)
     {
         $this->setLcrId($lcrId);
         $this->setGwName($gwName);
         $this->setFlags($flags);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -203,7 +200,7 @@ abstract class LcrGatewayAbstract
             $dto->getGwName(),
             $dto->getFlags());
 
-        return $self
+        $self
             ->setIp($dto->getIp())
             ->setHostname($dto->getHostname())
             ->setPort($dto->getPort())
@@ -216,6 +213,11 @@ abstract class LcrGatewayAbstract
             ->setDefunct($dto->getDefunct())
             ->setPeerServer($dto->getPeerServer())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

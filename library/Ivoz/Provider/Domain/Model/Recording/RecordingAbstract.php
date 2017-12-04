@@ -67,7 +67,7 @@ abstract class RecordingAbstract
     /**
      * Constructor
      */
-    public function __construct(
+    protected function __construct(
         $calldate,
         $type,
         $duration,
@@ -77,9 +77,6 @@ abstract class RecordingAbstract
         $this->setType($type);
         $this->setDuration($duration);
         $this->setRecordedFile($recordedFile);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -189,13 +186,18 @@ abstract class RecordingAbstract
             $recordedFile
         );
 
-        return $self
+        $self
             ->setCallid($dto->getCallid())
             ->setCaller($dto->getCaller())
             ->setCallee($dto->getCallee())
             ->setRecorder($dto->getRecorder())
             ->setCompany($dto->getCompany())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

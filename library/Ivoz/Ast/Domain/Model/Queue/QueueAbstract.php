@@ -78,14 +78,11 @@ abstract class QueueAbstract
     /**
      * Constructor
      */
-    public function __construct($name, $autopause, $ringinuse)
+    protected function __construct($name, $autopause, $ringinuse)
     {
         $this->setName($name);
         $this->setAutopause($autopause);
         $this->setRinginuse($ringinuse);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -187,7 +184,7 @@ abstract class QueueAbstract
             $dto->getAutopause(),
             $dto->getRinginuse());
 
-        return $self
+        $self
             ->setPeriodicAnnounce($dto->getPeriodicAnnounce())
             ->setPeriodicAnnounceFrequency($dto->getPeriodicAnnounceFrequency())
             ->setTimeout($dto->getTimeout())
@@ -197,6 +194,11 @@ abstract class QueueAbstract
             ->setWeight($dto->getWeight())
             ->setQueue($dto->getQueue())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

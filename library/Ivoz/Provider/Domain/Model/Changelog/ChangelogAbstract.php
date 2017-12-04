@@ -51,7 +51,7 @@ abstract class ChangelogAbstract
     /**
      * Constructor
      */
-    public function __construct(
+    protected function __construct(
         $entity,
         $entityId,
         $createdOn,
@@ -61,9 +61,6 @@ abstract class ChangelogAbstract
         $this->setEntityId($entityId);
         $this->setCreatedOn($createdOn);
         $this->setMicrotime($microtime);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -166,10 +163,15 @@ abstract class ChangelogAbstract
             $dto->getCreatedOn(),
             $dto->getMicrotime());
 
-        return $self
+        $self
             ->setData($dto->getData())
             ->setCommand($dto->getCommand())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

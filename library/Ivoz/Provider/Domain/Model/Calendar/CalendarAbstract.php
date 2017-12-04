@@ -31,12 +31,9 @@ abstract class CalendarAbstract
     /**
      * Constructor
      */
-    public function __construct($name)
+    protected function __construct($name)
     {
         $this->setName($name);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -136,9 +133,14 @@ abstract class CalendarAbstract
         $self = new static(
             $dto->getName());
 
-        return $self
+        $self
             ->setCompany($dto->getCompany())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

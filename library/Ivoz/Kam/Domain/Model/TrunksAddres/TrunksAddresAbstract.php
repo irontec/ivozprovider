@@ -47,14 +47,11 @@ abstract class TrunksAddresAbstract
     /**
      * Constructor
      */
-    public function __construct($grp, $mask, $port)
+    protected function __construct($grp, $mask, $port)
     {
         $this->setGrp($grp);
         $this->setMask($mask);
         $this->setPort($port);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -156,10 +153,15 @@ abstract class TrunksAddresAbstract
             $dto->getMask(),
             $dto->getPort());
 
-        return $self
+        $self
             ->setIpAddr($dto->getIpAddr())
             ->setTag($dto->getTag())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

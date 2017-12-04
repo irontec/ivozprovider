@@ -168,7 +168,7 @@ abstract class UsersActiveWatcherAbstract
     /**
      * Constructor
      */
-    public function __construct(
+    protected function __construct(
         $presentityUri,
         $watcherUsername,
         $watcherDomain,
@@ -218,9 +218,6 @@ abstract class UsersActiveWatcherAbstract
         $this->setUpdatedWinfo($updatedWinfo);
         $this->setFlags($flags);
         $this->setUserAgent($userAgent);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -343,10 +340,15 @@ abstract class UsersActiveWatcherAbstract
             $dto->getFlags(),
             $dto->getUserAgent());
 
-        return $self
+        $self
             ->setEventId($dto->getEventId())
             ->setRecordRoute($dto->getRecordRoute())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

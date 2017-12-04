@@ -66,12 +66,9 @@ abstract class TransformationRuleSetAbstract
     /**
      * Constructor
      */
-    public function __construct(Name $name)
+    protected function __construct(Name $name)
     {
         $this->setName($name);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -177,7 +174,7 @@ abstract class TransformationRuleSetAbstract
             $name
         );
 
-        return $self
+        $self
             ->setDescription($dto->getDescription())
             ->setInternationalCode($dto->getInternationalCode())
             ->setTrunkPrefix($dto->getTrunkPrefix())
@@ -187,6 +184,11 @@ abstract class TransformationRuleSetAbstract
             ->setBrand($dto->getBrand())
             ->setCountry($dto->getCountry())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

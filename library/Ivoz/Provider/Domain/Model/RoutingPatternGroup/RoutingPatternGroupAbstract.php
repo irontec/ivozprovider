@@ -36,12 +36,9 @@ abstract class RoutingPatternGroupAbstract
     /**
      * Constructor
      */
-    public function __construct($name)
+    protected function __construct($name)
     {
         $this->setName($name);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -141,10 +138,15 @@ abstract class RoutingPatternGroupAbstract
         $self = new static(
             $dto->getName());
 
-        return $self
+        $self
             ->setDescription($dto->getDescription())
             ->setBrand($dto->getBrand())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

@@ -42,13 +42,10 @@ abstract class CallAclRelMatchListAbstract
     /**
      * Constructor
      */
-    public function __construct($priority, $policy)
+    protected function __construct($priority, $policy)
     {
         $this->setPriority($priority);
         $this->setPolicy($policy);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -149,10 +146,15 @@ abstract class CallAclRelMatchListAbstract
             $dto->getPriority(),
             $dto->getPolicy());
 
-        return $self
+        $self
             ->setCallAcl($dto->getCallAcl())
             ->setMatchList($dto->getMatchList())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

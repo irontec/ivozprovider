@@ -31,11 +31,9 @@ abstract class IvrExcludedExtensionAbstract
     /**
      * Constructor
      */
-    public function __construct()
+    protected function __construct()
     {
 
-
-        $this->initChangelog();
     }
 
     /**
@@ -105,6 +103,14 @@ abstract class IvrExcludedExtensionAbstract
     }
 
     /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
      * @return IvrExcludedExtensionDTO
      */
     public static function createDTO()
@@ -126,10 +132,15 @@ abstract class IvrExcludedExtensionAbstract
 
         $self = new static();
 
-        return $self
+        $self
             ->setIvr($dto->getIvr())
             ->setExtension($dto->getExtension())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**
@@ -148,6 +159,8 @@ abstract class IvrExcludedExtensionAbstract
             ->setExtension($dto->getExtension());
 
 
+
+        $this->sanitizeValues();
         return $this;
     }
 

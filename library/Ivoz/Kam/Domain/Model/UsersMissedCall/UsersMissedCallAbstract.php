@@ -100,7 +100,7 @@ abstract class UsersMissedCallAbstract
     /**
      * Constructor
      */
-    public function __construct(
+    protected function __construct(
         $method,
         $fromTag,
         $toTag,
@@ -116,9 +116,6 @@ abstract class UsersMissedCallAbstract
         $this->setSipCode($sipCode);
         $this->setSipReason($sipReason);
         $this->setLocaltime($localtime);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -224,7 +221,7 @@ abstract class UsersMissedCallAbstract
             $dto->getSipReason(),
             $dto->getLocaltime());
 
-        return $self
+        $self
             ->setSrcIp($dto->getSrcIp())
             ->setFromUser($dto->getFromUser())
             ->setFromDomain($dto->getFromDomain())
@@ -233,6 +230,11 @@ abstract class UsersMissedCallAbstract
             ->setCseq($dto->getCseq())
             ->setUtctime($dto->getUtctime())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

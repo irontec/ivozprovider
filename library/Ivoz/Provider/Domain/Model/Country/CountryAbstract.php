@@ -41,14 +41,11 @@ abstract class CountryAbstract
     /**
      * Constructor
      */
-    public function __construct($code, Name $name, Zone $zone)
+    protected function __construct($code, Name $name, Zone $zone)
     {
         $this->setCode($code);
         $this->setName($name);
         $this->setZone($zone);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -161,9 +158,14 @@ abstract class CountryAbstract
             $zone
         );
 
-        return $self
+        $self
             ->setCountryCode($dto->getCountryCode())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

@@ -67,13 +67,10 @@ abstract class IvrEntryAbstract
     /**
      * Constructor
      */
-    public function __construct($entry, $routeType)
+    protected function __construct($entry, $routeType)
     {
         $this->setEntry($entry);
         $this->setRouteType($routeType);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -151,7 +148,7 @@ abstract class IvrEntryAbstract
     }
 
     /**
-     * @return IvrCustomEntryDTO
+     * @return IvrEntryDTO
      */
     public static function createDTO()
     {
@@ -174,7 +171,7 @@ abstract class IvrEntryAbstract
             $dto->getEntry(),
             $dto->getRouteType());
 
-        return $self
+        $self
             ->setNumberValue($dto->getNumberValue())
             ->setIvr($dto->getIvr())
             ->setWelcomeLocution($dto->getWelcomeLocution())
@@ -183,6 +180,11 @@ abstract class IvrEntryAbstract
             ->setConditionalRoute($dto->getConditionalRoute())
             ->setNumberCountry($dto->getNumberCountry())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

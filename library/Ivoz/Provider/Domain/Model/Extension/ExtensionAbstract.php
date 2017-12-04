@@ -82,12 +82,9 @@ abstract class ExtensionAbstract
     /**
      * Constructor
      */
-    public function __construct($number)
+    protected function __construct($number)
     {
         $this->setNumber($number);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -187,7 +184,7 @@ abstract class ExtensionAbstract
         $self = new static(
             $dto->getNumber());
 
-        return $self
+        $self
             ->setRouteType($dto->getRouteType())
             ->setNumberValue($dto->getNumberValue())
             ->setFriendValue($dto->getFriendValue())
@@ -200,6 +197,11 @@ abstract class ExtensionAbstract
             ->setConditionalRoute($dto->getConditionalRoute())
             ->setNumberCountry($dto->getNumberCountry())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

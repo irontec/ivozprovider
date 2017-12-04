@@ -41,13 +41,10 @@ abstract class TimezoneAbstract
     /**
      * Constructor
      */
-    public function __construct($tz, Label $label)
+    protected function __construct($tz, Label $label)
     {
         $this->setTz($tz);
         $this->setLabel($label);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -154,10 +151,15 @@ abstract class TimezoneAbstract
             $label
         );
 
-        return $self
+        $self
             ->setComment($dto->getComment())
             ->setCountry($dto->getCountry())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

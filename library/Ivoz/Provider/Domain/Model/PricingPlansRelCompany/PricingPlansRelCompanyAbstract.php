@@ -51,14 +51,11 @@ abstract class PricingPlansRelCompanyAbstract
     /**
      * Constructor
      */
-    public function __construct($validFrom, $validTo, $metric)
+    protected function __construct($validFrom, $validTo, $metric)
     {
         $this->setValidFrom($validFrom);
         $this->setValidTo($validTo);
         $this->setMetric($metric);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -160,11 +157,16 @@ abstract class PricingPlansRelCompanyAbstract
             $dto->getValidTo(),
             $dto->getMetric());
 
-        return $self
+        $self
             ->setPricingPlan($dto->getPricingPlan())
             ->setCompany($dto->getCompany())
             ->setBrand($dto->getBrand())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

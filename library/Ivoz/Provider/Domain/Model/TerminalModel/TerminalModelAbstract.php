@@ -61,14 +61,11 @@ abstract class TerminalModelAbstract
     /**
      * Constructor
      */
-    public function __construct($iden, $name, $description)
+    protected function __construct($iden, $name, $description)
     {
         $this->setIden($iden);
         $this->setName($name);
         $this->setDescription($description);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -170,13 +167,18 @@ abstract class TerminalModelAbstract
             $dto->getName(),
             $dto->getDescription());
 
-        return $self
+        $self
             ->setGenericTemplate($dto->getGenericTemplate())
             ->setSpecificTemplate($dto->getSpecificTemplate())
             ->setGenericUrlPattern($dto->getGenericUrlPattern())
             ->setSpecificUrlPattern($dto->getSpecificUrlPattern())
             ->setTerminalManufacturer($dto->getTerminalManufacturer())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

@@ -31,13 +31,10 @@ abstract class LanguageAbstract
     /**
      * Constructor
      */
-    public function __construct($iden, Name $name)
+    protected function __construct($iden, Name $name)
     {
         $this->setIden($iden);
         $this->setName($name);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -143,6 +140,11 @@ abstract class LanguageAbstract
             $dto->getIden(),
             $name
         );
+
+        $self;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
 
         return $self;
     }

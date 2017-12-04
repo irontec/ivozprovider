@@ -41,13 +41,10 @@ abstract class HolidayDateAbstract
     /**
      * Constructor
      */
-    public function __construct($name, $eventDate)
+    protected function __construct($name, $eventDate)
     {
         $this->setName($name);
         $this->setEventDate($eventDate);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -148,10 +145,15 @@ abstract class HolidayDateAbstract
             $dto->getName(),
             $dto->getEventDate());
 
-        return $self
+        $self
             ->setCalendar($dto->getCalendar())
             ->setLocution($dto->getLocution())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

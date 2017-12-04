@@ -56,7 +56,7 @@ abstract class DispatcherAbstract
     /**
      * Constructor
      */
-    public function __construct(
+    protected function __construct(
         $setid,
         $destination,
         $flags,
@@ -70,9 +70,6 @@ abstract class DispatcherAbstract
         $this->setPriority($priority);
         $this->setAttrs($attrs);
         $this->setDescription($description);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -177,9 +174,14 @@ abstract class DispatcherAbstract
             $dto->getAttrs(),
             $dto->getDescription());
 
-        return $self
+        $self
             ->setApplicationServer($dto->getApplicationServer())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**
