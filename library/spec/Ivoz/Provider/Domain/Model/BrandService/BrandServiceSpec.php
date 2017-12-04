@@ -3,14 +3,34 @@
 namespace spec\Ivoz\Provider\Domain\Model\BrandService;
 
 use Ivoz\Provider\Domain\Model\BrandService\BrandService;
+use Ivoz\Provider\Domain\Model\BrandService\BrandServiceDTO;
+use Ivoz\Provider\Domain\Model\Service\ServiceInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-
+use spec\HelperTrait;
 
 class BrandServiceSpec extends ObjectBehavior
 {
-    function let() {
-        $this->beConstructedWith('123');
+    use HelperTrait;
+    protected $dto;
+
+    function let(
+        ServiceInterface $service
+    ) {
+        $this->dto = $dto = new BrandServiceDTO();
+        $dto->setCode('123');
+
+        $this->hydrate(
+            $dto,
+            [
+                'service' => $service->getWrappedObject()
+            ]
+        );
+
+        $this->beConstructedThrough(
+            'fromDTO',
+            [$dto]
+        );
     }
 
     function it_is_initializable()

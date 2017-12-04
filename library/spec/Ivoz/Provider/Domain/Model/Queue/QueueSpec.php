@@ -2,12 +2,36 @@
 
 namespace spec\Ivoz\Provider\Domain\Model\Queue;
 
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Queue\Queue;
+use Ivoz\Provider\Domain\Model\Queue\QueueDTO;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
+use spec\HelperTrait;
 
 class QueueSpec extends ObjectBehavior
 {
+    use HelperTrait;
+
+    public function let(
+        CompanyInterface $company
+    ) {
+        $dto = new QueueDTO();
+        $dto->setName('Name');
+
+        $this->hydrate(
+            $dto,
+            [
+                'company' => $company->getWrappedObject()
+            ]
+        );
+
+        $this->beConstructedThrough(
+            'fromDTO',
+            [$dto]
+        );
+    }
+
     function it_is_initializable()
     {
         $this->shouldHaveType(Queue::class);
@@ -33,5 +57,35 @@ class QueueSpec extends ObjectBehavior
         $this
             ->shouldNotThrow('\Exception')
             ->during('setName', ['Some_value_2']);
+    }
+
+    function it_turns_empty_maxWaitTime_to_null()
+    {
+        $this->setMaxWaitTime('');
+
+        $this
+            ->getMaxWaitTime()
+            ->shouldBe(null);
+
+        $this->setMaxWaitTime(0);
+
+        $this
+            ->getMaxWaitTime()
+            ->shouldBe(null);
+    }
+
+    function it_turns_empty_maxlen_to_null()
+    {
+        $this->setMaxlen('');
+
+        $this
+            ->getMaxlen()
+            ->shouldBe(null);
+
+        $this->setMaxlen(0);
+
+        $this
+            ->getMaxlen()
+            ->shouldBe(null);
     }
 }

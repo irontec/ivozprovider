@@ -2,24 +2,66 @@
 
 namespace spec\Ivoz\Provider\Domain\Model\RetailAccount;
 
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount;
+use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDTO;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
+use spec\HelperTrait;
 
 class RetailAccountSpec extends ObjectBehavior
 {
-    function let() {
-        $this->beConstructedWith(
-            'Name',
-            'Desc',
-            'udp',
-            'yes',
-            'none',
-            'all',
-            'invite',
-            'pai',
-            'yes',
-            'yes'
+    use HelperTrait;
+
+    /**
+     * @var RetailAccountDTO
+     */
+    protected $dto;
+
+    /**
+     * @var BrandInterface
+     */
+    protected $brand;
+
+
+    function let(
+        CompanyInterface $company,
+        BrandInterface $brand
+    ) {
+        $this->dto = $dto = new RetailAccountDTO();
+        $this->brand = $brand;
+
+        $dto->setName('Name')
+            ->setDescription('Desc')
+            ->setTransport('udp')
+            ->setAuthNeeded('yes')
+            ->setDisallow('none')
+            ->setAllow('all')
+            ->setDirectMediaMethod('invite')
+            ->setCalleridUpdateHeader('pai')
+            ->setUpdateCallerid('yes')
+            ->setDirectConnectivity('yes');
+
+        $company
+            ->getId()
+            ->willReturn(1);
+
+        $company
+            ->getBrand()
+            ->willReturn($brand);
+
+        $this->hydrate(
+            $dto,
+            [
+                'company' => $company->getWrappedObject()
+            ]
+        );
+
+        $this->beConstructedThrough(
+            'fromDTO',
+            [$dto]
         );
     }
 
@@ -102,5 +144,20 @@ class RetailAccountSpec extends ObjectBehavior
         $this
             ->shouldNotThrow('\Exception')
             ->during('setPassword', ['HZhN5z*j48']);
+    }
+
+    function it_sets_domain(
+        DomainInterface $domain
+    )
+    {
+        $this->brand
+            ->getDomain()
+            ->willReturn($domain);
+
+        $this
+            ->getDomain()
+            ->shouldBe($domain);
+
+
     }
 }

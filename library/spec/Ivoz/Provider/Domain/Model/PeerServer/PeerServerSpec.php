@@ -2,16 +2,49 @@
 
 namespace spec\Ivoz\Provider\Domain\Model\PeerServer;
 
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface;
 use Ivoz\Provider\Domain\Model\PeerServer\PeerServer;
+use Ivoz\Provider\Domain\Model\PeerServer\PeerServerDTO;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
+use spec\HelperTrait;
 
 class PeerServerSpec extends ObjectBehavior
 {
+    use HelperTrait;
 
-    function let() {
-        $this->beConstructedWith(
-            'yes'
+    /**
+     * @var PeerServerDTO
+     */
+    protected $dto;
+
+    function let(
+        BrandInterface $brand,
+        PeeringContractInterface $peeringContract
+    ) {
+        $this->dto = $dto = new PeerServerDTO();
+        $dto->setAuthNeeded('yes');
+
+        $peeringContract
+            ->getId()
+            ->willReturn(1);
+
+        $peeringContract
+            ->getBrand()
+            ->willReturn($brand);
+
+        $this->hydrate(
+            $dto,
+            [
+                'brand' => $brand->getWrappedObject(),
+                'peeringContract' => $peeringContract->getWrappedObject()
+            ]
+        );
+
+        $this->beConstructedThrough(
+            'fromDTO',
+            [$dto]
         );
     }
 
@@ -75,4 +108,116 @@ class PeerServerSpec extends ObjectBehavior
             ->shouldNotThrow('\Exception')
             ->during('setParams', [null]);
     }
+
+    function it_throws_exception_on_empty_peering_contract()
+    {
+        $dto = clone $this->dto;
+        $this->hydrate(
+            $dto,
+            ['peeringContract' => null]
+        );
+
+        $exception = new \Exception('Unknown PeeringContract');
+        $this
+            ->shouldThrow($exception)
+            ->during('updateFromDTO', [$dto]);
+    }
+
+    function it_throws_exception_on_empty_peering_contract_brand(
+        PeeringContractInterface $anotherPeeringContract
+    ) {
+        $dto = clone $this->dto;
+        $this->hydrate(
+            $dto,
+            ['peeringContract' => $anotherPeeringContract->getWrappedObject()]
+        );
+
+        $exception = new \Exception('Unknown Brand');;
+        $this
+            ->shouldThrow($exception)
+            ->during('updateFromDTO', [$dto]);
+    }
+
+    function it_sets_brand_when_not_new_and_changed_peeringContractId(
+        PeeringContractInterface $newPeeringContract,
+        BrandInterface $brand
+    ) {
+        $dto = clone $this->dto;
+
+        $newPeeringContract
+            ->getBrand()
+            ->willReturn($brand);
+
+        $this->hydrate(
+            $dto,
+            ['peeringContract' => $newPeeringContract->getWrappedObject()]
+        );
+
+        $this->hydrate(
+            $this->getWrappedObject(),
+            ['id' => 1]
+        );
+
+        $this
+            ->getbrand()
+            ->shouldBe($brand);
+    }
+
+    function it_resets_auth_values_when_no_auth_needed()
+    {
+        $dto = clone $this->dto;
+        $dto
+            ->setAuthNeeded('no')
+            ->setAuthUser('user')
+            ->setAuthPassword('password');
+
+        $this->updateFromDTO($dto);
+
+        $this
+            ->getAuthUser()
+            ->shouldBe(null);
+        $this
+            ->getAuthPassword()
+            ->shouldBe(null);
+    }
+
+    function it_sets_proxy_values_by_sip_proxy()
+    {
+        $this
+            ->dto
+            ->setSipProxy('myhost.net:489');
+
+        $this
+            ->getHostname()
+            ->shouldBe('myhost.net');
+
+        $this
+            ->getIp()
+            ->shouldBe(null);
+
+        $this
+            ->getPort()
+            ->shouldBe('489');
+    }
+
+    function it_sets_proxy_values_by_outbound_proxy()
+    {
+        $this
+            ->dto
+            ->setSipProxy('myhost.net')
+            ->setOutboundProxy('127.2.3.4');
+
+        $this
+            ->getHostname()
+            ->shouldBe('myhost.net');
+
+        $this
+            ->getIp()
+            ->shouldBe('127.2.3.4');
+
+        $this
+            ->getPort()
+            ->shouldBe(5060);
+    }
 }
+

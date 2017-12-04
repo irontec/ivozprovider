@@ -2,18 +2,55 @@
 
 namespace spec\Ivoz\Provider\Domain\Model\Terminal;
 
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\Terminal\Terminal;
+use Ivoz\Provider\Domain\Model\Terminal\TerminalDTO;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
+use spec\HelperTrait;
 
 class TerminalSpec extends ObjectBehavior
 {
-    function let() {
-        $this->beConstructedWith(
-            'Disallow',
-            'allowAudio',
-            'reinvite', // $directMediaMethod
-            'HZhN5z*j48' //$password
+    use HelperTrait;
+
+    protected $dto;
+    protected $company;
+    protected $domain;
+
+    function let(
+        CompanyInterface $company,
+        DomainInterface $domain
+
+    ) {
+        $this->dto = $dto = new TerminalDTO();
+        $this->company = $company;
+        $this->domain = $domain;
+
+        $dto->setDisallow('Disallow')
+            ->setAllowAudio('allowAudio')
+            ->setDirectMediaMethod('reinvite')
+            ->setPassword('HZhN5z*j48');
+
+        $this->hydrate(
+            $dto,
+            [
+                'company' => $company->getWrappedObject()
+            ]
+        );
+
+        $company
+            ->getId()
+            ->willReturn(1);
+
+
+        $company
+            ->getDomain()
+            ->willReturn($domain);
+
+        $this->beConstructedThrough(
+            'fromDTO',
+            [$dto]
         );
     }
 
@@ -53,4 +90,23 @@ class TerminalSpec extends ObjectBehavior
             ->shouldNotThrow('\Exception')
             ->during('setPassword', ['HZhN5z*j48']);
     }
+
+    function it_sets_domain_by_company()
+    {
+        $dto = clone $this->dto;
+        $this->hydrate(
+            $dto,
+            [
+                'domain' => null,
+                'company' => $this->company->getWrappedObject()
+            ]
+        );
+
+        $this->updateFromDTO($dto);
+
+        $this
+            ->getDomain()
+            ->shouldBe($this->domain);
+    }
+
 }

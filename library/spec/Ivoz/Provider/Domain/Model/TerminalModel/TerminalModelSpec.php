@@ -2,17 +2,35 @@
 
 namespace spec\Ivoz\Provider\Domain\Model\TerminalModel;
 
+use Ivoz\Provider\Domain\Model\TerminalManufacturer\TerminalManufacturerInterface;
 use Ivoz\Provider\Domain\Model\TerminalModel\TerminalModel;
+use Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelDTO;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
+use spec\HelperTrait;
 
 class TerminalModelSpec extends ObjectBehavior
 {
-    function let() {
-        $this->beConstructedWith(
-            'Iden',
-            'Name',
-            'Description'
+    use HelperTrait;
+
+    function let(
+        TerminalManufacturerInterface $terminalManufacturer
+    ) {
+        $dto = new TerminalModelDTO();
+        $dto->setIden('Iden')
+            ->setName('Name')
+            ->setDescription('Description');
+
+        $this->hydrate(
+            $dto,
+            [
+                'terminalManufacturer' => $terminalManufacturer->getWrappedObject()
+            ]
+        );
+
+        $this->beConstructedThrough(
+            'fromDTO',
+            [$dto]
         );
     }
 

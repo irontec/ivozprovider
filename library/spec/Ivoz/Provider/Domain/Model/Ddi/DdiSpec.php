@@ -2,18 +2,60 @@
 
 namespace spec\Ivoz\Provider\Domain\Model\Ddi;
 
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\Ddi\Ddi;
+use Ivoz\Provider\Domain\Model\Ddi\DdiDTO;
+use Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
+use spec\HelperTrait;
 
 class DdiSpec extends ObjectBehavior
 {
-    function let() {
-        $this->beConstructedWith(
-            '123',
-            'none',
-            0
+    use HelperTrait;
+
+    /**
+     * @var DdiDTO
+     */
+    protected $dto;
+
+    /**
+     * @var PeeringContractInterface
+     */
+    protected $peeringContract;
+
+    function let(
+        CountryInterface $country,
+        PeeringContractInterface $peeringContract,
+        BrandInterface $brand
+    ) {
+        $this->peeringContract = $peeringContract;
+
+        $this->dto = $dto = new DdiDTO();
+        $dto
+            ->setDdi('123')
+            ->setRecordCalls('none')
+            ->setBillInboundCalls(0);
+
+        $this->hydrate(
+            $dto,
+            [
+                'country' => $country->getWrappedObject(),
+                'peeringContract' => $peeringContract->getWrappedObject(),
+                'brand' =>  $brand->getWrappedObject()
+            ]
         );
+
+        $country
+            ->getCountryCode()
+            ->willReturn('34');
+
+        $country
+            ->getId()
+            ->willReturn(1);
+
+        $this->beConstructedThrough('fromDTO', [$dto]);
     }
 
     function it_is_initializable()
@@ -45,5 +87,40 @@ class DdiSpec extends ObjectBehavior
         $this
             ->shouldNotThrow('Exception')
             ->during('setDdi', ['999']);
+    }
+
+    function it_sets_standarized_number()
+    {
+        $this
+            ->getDdie164()
+            ->shouldBe('34123');
+    }
+
+    function it_ensures_externally_rated_when_bill_inbound_calls_is_true() {
+        $dto = clone $this->dto;
+        $dto
+            ->setBillInboundCalls(1);
+
+        $this
+            ->peeringContract
+            ->getExternallyRated()
+            ->willReturn(false);
+
+        $this
+            ->peeringContract
+            ->getId()
+            ->willReturn(1);
+
+        $exception = new \Exception(
+            'Inbound Calls cannot be billed as PeeringContract is not externally rated',
+            90000
+        );
+
+        $this
+            ->shouldThrow($exception)
+            ->during(
+                'updateFromDTO',
+                [$dto]
+            );
     }
 }

@@ -3,14 +3,33 @@
 namespace spec\Ivoz\Provider\Domain\Model\CompanyService;
 
 use Ivoz\Provider\Domain\Model\CompanyService\CompanyService;
+use Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceDTO;
+use Ivoz\Provider\Domain\Model\Service\ServiceInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
+use spec\HelperTrait;
 
 class CompanyServiceSpec extends ObjectBehavior
 {
-    function let() {
-        $this->beConstructedWith(
-            '123'
+    use HelperTrait;
+    protected $dto;
+
+    function let(
+        ServiceInterface $service
+    ) {
+        $this->dto = $dto = new CompanyServiceDTO();
+        $dto->setCode('123');
+
+        $this->hydrate(
+            $dto,
+            [
+                'service' => $service->getWrappedObject()
+            ]
+        );
+
+        $this->beConstructedThrough(
+            'fromDTO',
+            [$dto]
         );
     }
 

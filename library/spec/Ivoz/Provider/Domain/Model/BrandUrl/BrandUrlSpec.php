@@ -3,17 +3,28 @@
 namespace spec\Ivoz\Provider\Domain\Model\BrandUrl;
 
 use Ivoz\Provider\Domain\Model\BrandUrl\BrandUrl;
+use Ivoz\Provider\Domain\Model\BrandUrl\BrandUrlDTO;
 use Ivoz\Provider\Domain\Model\BrandUrl\Logo;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 class BrandUrlSpec extends ObjectBehavior
 {
+    protected $dto;
+
     function let() {
-        $this->beConstructedWith(
-            'https://something.net',
-            'user',
-            new Logo(0, '', '')
+
+        $this->dto = $dto = new BrandUrlDTO();
+
+        $dto->setUrl('https://something.net')
+            ->setUrlType( 'user')
+            ->setLogoFileSize(50)
+            ->setLogoMimeType('')
+            ->setLogoBaseName('logo.png');
+
+        $this->beConstructedThrough(
+            'fromDTO',
+            [$dto]
         );
     }
 
