@@ -2,15 +2,33 @@
 
 namespace spec\Ivoz\Provider\Domain\Model\Extension;
 
+use Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface;
 use Ivoz\Provider\Domain\Model\Extension\Extension;
+use Ivoz\Provider\Domain\Model\Extension\ExtensionDTO;
+use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface;
+use Ivoz\Provider\Domain\Model\Queue\QueueInterface;
+use Ivoz\Provider\Domain\Model\User\UserInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
+use spec\HelperTrait;
 
 class ExtensionSpec extends ObjectBehavior
 {
+    use HelperTrait;
+
+    /**
+     * @var ExtensionDTO
+     */
+    protected $dto;
+
     function let() {
-        $this->beConstructedWith(
-            '123'
+
+        $this->dto = $dto = new ExtensionDTO();
+        $dto->setNumber('123');
+
+        $this->beConstructedThrough(
+            'fromDTO',
+            [$dto]
         );
     }
 
@@ -39,5 +57,46 @@ class ExtensionSpec extends ObjectBehavior
         $this
             ->shouldNotThrow('\Exception')
             ->during('setNumber', ['123456789']);
+    }
+
+    function it_resets_routes_but_current(
+        HuntGroupInterface $huntGroup,
+        UserInterface $user,
+        ConferenceRoomInterface $conferenceRoom,
+        QueueInterface $queue
+    ) {
+        $dto = clone $this->dto;
+        $dto->setRouteType('ivr');
+        $dto->setFriendValue('1');
+
+        $this->hydrate(
+            $this->dto,
+            [
+                'huntGroup'      => $huntGroup->getWrappedObject(),
+                'user'           => $user->getWrappedObject(),
+                'conferenceRoom' => $conferenceRoom->getWrappedObject(),
+                'queue'          => $queue->getWrappedObject()
+            ]
+        );
+
+        $this->updateFromDTO($dto);
+
+        $this->getHuntGroup()
+            ->shouldBe(null);
+
+        $this->getUser()
+            ->shouldBe(null);
+
+        $this->getConferenceRoom()
+            ->shouldBe(null);
+
+        $this->getNumberValue()
+            ->shouldBe(null);
+
+        $this->getFriendValue()
+            ->shouldBe(null);
+
+        $this->getQueue()
+            ->shouldBe(null);
     }
 }

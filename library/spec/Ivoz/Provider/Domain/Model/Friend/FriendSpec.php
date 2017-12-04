@@ -2,25 +2,54 @@
 
 namespace spec\Ivoz\Provider\Domain\Model\Friend;
 
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\Friend\Friend;
+use Ivoz\Provider\Domain\Model\Friend\FriendDTO;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
+use spec\HelperTrait;
 
 class FriendSpec extends ObjectBehavior
 {
-    function let() {
-        $this->beConstructedWith(
-            'Name',
-            'Desc',
-            'udp',
-            'yes',
-            1,
-            'all',
-            'none',
-            'invite',
-            'rpid',
-            'yes',
-            'yes'
+    use HelperTrait;
+
+    function let(
+        CompanyInterface $company,
+        DomainInterface $domain
+    ) {
+
+        $dto = new FriendDTO();
+        $dto->setName('Name')
+            ->setDescription('Desc')
+            ->setTransport('udp')
+            ->setAuthNeeded('yes')
+            ->setPriority(1)
+            ->setDisallow('all')
+            ->setAllow('none')
+            ->setDirectMediaMethod('invite')
+            ->setCalleridUpdateHeader('rpid')
+            ->setUpdateCallerid('yes')
+            ->setDirectConnectivity('yes');
+
+        $this->hydrate(
+            $dto,
+            [
+                'company' => $company->getWrappedObject()
+            ]
+        );
+
+        $company
+            ->getId()
+            ->willReturn(1);
+
+        $company
+            ->getDomain()
+            ->willReturn($domain);
+
+        $this->beConstructedThrough(
+            'fromDTO',
+            [$dto]
         );
     }
 

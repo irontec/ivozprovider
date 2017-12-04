@@ -3,15 +3,21 @@
 namespace spec\Ivoz\Provider\Domain\Model\TransformationRule;
 
 use Ivoz\Provider\Domain\Model\TransformationRule\TransformationRule;
+use Ivoz\Provider\Domain\Model\TransformationRule\TransformationRuleDTO;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 class TransformationRuleSpec extends ObjectBehavior
 {
     function let() {
-        $this->beConstructedWith(
-            'callerin',
-            'Description'
+
+        $dto = new TransformationRuleDTO();
+        $dto->setType('callerin')
+            ->setDescription('Description');
+
+        $this->beConstructedThrough(
+            'fromDTO',
+            [$dto]
         );
     }
 

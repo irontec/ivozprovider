@@ -2,18 +2,41 @@
 
 namespace spec\Ivoz\Provider\Domain\Model\PricingPlansRelTargetPattern;
 
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\PricingPlan\PricingPlanInterface;
 use Ivoz\Provider\Domain\Model\PricingPlansRelTargetPattern\PricingPlansRelTargetPattern;
+use Ivoz\Provider\Domain\Model\PricingPlansRelTargetPattern\PricingPlansRelTargetPatternDTO;
+use Ivoz\Provider\Domain\Model\TargetPattern\TargetPatternInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
+use spec\HelperTrait;
 
 class PricingPlansRelTargetPatternSpec extends ObjectBehavior
 {
-    function let()
-    {
-        $this->beConstructedWith(
-            2.10,
-            2,
-            3
+    use HelperTrait;
+
+    function let(
+        PricingPlanInterface $pricingPlan,
+        TargetPatternInterface $targetPattern,
+        BrandInterface $brand
+    ) {
+        $dto = new PricingPlansRelTargetPatternDTO();
+        $dto->setConnectionCharge(2.10)
+            ->setPeriodTime(2)
+            ->setPerPeriodCharge(3);
+
+        $this->hydrate(
+            $dto,
+            [
+                'pricingPlan' => $pricingPlan->getWrappedObject(),
+                'targetPattern' => $targetPattern->getWrappedObject(),
+                'brand' => $brand->getWrappedObject()
+            ]
+        );
+
+        $this->beConstructedThrough(
+            'fromDTO',
+            [$dto]
         );
     }
 

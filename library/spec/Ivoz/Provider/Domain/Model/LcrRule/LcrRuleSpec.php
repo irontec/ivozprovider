@@ -3,18 +3,24 @@
 namespace spec\Ivoz\Provider\Domain\Model\LcrRule;
 
 use Ivoz\Provider\Domain\Model\LcrRule\LcrRule;
+use Ivoz\Provider\Domain\Model\LcrRule\LcrRuleDTO;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 class LcrRuleSpec extends ObjectBehavior
 {
     function let() {
-        $this->beConstructedWith(
-            1,
-            1,
-            1,
-            'tag',
-            'description'
+
+        $dto = new LcrRuleDTO();
+        $dto->setLcrId(1)
+            ->setStopper(1)
+            ->setEnabled(1)
+            ->setTag('tag')
+            ->setDescription('description');
+
+        $this->beConstructedThrough(
+            'fromDTO',
+            [$dto]
         );
     }
 

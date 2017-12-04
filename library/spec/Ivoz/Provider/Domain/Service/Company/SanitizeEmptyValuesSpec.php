@@ -88,76 +88,6 @@ class SanitizeEmptyValuesSpec extends ObjectBehavior
     }
 
 
-    function it_sets_timezone_when_empty(
-        BrandInterface $brand,
-        TimezoneInterface $timezone
-    )
-    {
-        $this
-            ->entity
-            ->getBrand()
-            ->shouldBeCalled()
-            ->willReturn($brand);
-
-        $brand
-            ->getDefaultTimezone()
-            ->shouldBeCalled()
-            ->willReturn($timezone);
-
-        $timezone
-            ->getId()
-            ->shouldBeCalled()
-            ->willReturn(1);
-
-        $this->prepareDto();
-        $this
-            ->dto
-            ->setDefaultTimezoneId(null);
-
-        $this->execute($this->entity, true);
-
-        if (!$this->dto->getDefaultTimezoneId()) {
-            throw new FailureException(
-                'Empty timezone found'
-            );
-        }
-    }
-
-    function it_sets_language_when_empty(
-        BrandInterface $brand,
-        LanguageInterface $language
-    )
-    {
-        $this
-            ->entity
-            ->getBrand()
-            ->shouldBeCalled()
-            ->willReturn($brand);
-
-        $brand
-            ->getLanguage()
-            ->shouldBeCalled()
-            ->willReturn($language);
-
-        $language
-            ->getId()
-            ->shouldBeCalled()
-            ->willReturn(1);
-
-        $this->prepareDto();
-        $this
-            ->dto
-            ->setLanguageId(null);
-
-        $this->execute($this->entity, true);
-
-        if (!$this->dto->getLanguageId()) {
-            throw new FailureException(
-                'Empty language found'
-            );
-        }
-    }
-
     function it_sets_media_relay_sets_when_empty()
     {
         $this->prepareDto();
@@ -170,54 +100,6 @@ class SanitizeEmptyValuesSpec extends ObjectBehavior
         if ($this->dto->getMediaRelaySetsId() !== 0) {
             throw new FailureException(
                 'Unexpected media relay sets id value found'
-            );
-        }
-    }
-
-    function it_sets_ip_filter_when_empty()
-    {
-        $this->prepareDto();
-        $this
-            ->dto
-            ->setIpFilter(null);
-
-        $this->execute($this->entity, true);
-
-        if ($this->dto->getIpFilter() !== 0) {
-            throw new FailureException(
-                'Unexpected ip filter value found'
-            );
-        }
-    }
-
-    function it_sets_on_demand_record_when_empty()
-    {
-        $this->prepareDto();
-        $this
-            ->dto
-            ->setOnDemandRecord(null);
-
-        $this->execute($this->entity, true);
-
-        if ($this->dto->getOnDemandRecord() !== 0) {
-            throw new FailureException(
-                'Unexpected on demand record value found'
-            );
-        }
-    }
-
-    function it_sets_on_demand_record_code_when_empty()
-    {
-        $this->prepareDto();
-        $this
-            ->dto
-            ->setOnDemandRecordCode(null);
-
-        $this->execute($this->entity, true);
-
-        if ($this->dto->getOnDemandRecordCode() !== '') {
-            throw new FailureException(
-                'Unexpected on demand record code value found'
             );
         }
     }
