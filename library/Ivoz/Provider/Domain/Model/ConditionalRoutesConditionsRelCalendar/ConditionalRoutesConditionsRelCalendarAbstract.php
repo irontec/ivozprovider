@@ -31,12 +31,9 @@ abstract class ConditionalRoutesConditionsRelCalendarAbstract
     /**
      * Constructor
      */
-    public function __construct()
+    protected function __construct()
     {
 
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -135,10 +132,15 @@ abstract class ConditionalRoutesConditionsRelCalendarAbstract
 
         $self = new static();
 
-        return $self
+        $self
             ->setCondition($dto->getCondition())
             ->setCalendar($dto->getCalendar())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

@@ -31,12 +31,9 @@ abstract class PickUpRelUserAbstract
     /**
      * Constructor
      */
-    public function __construct()
+    protected function __construct()
     {
 
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -135,10 +132,15 @@ abstract class PickUpRelUserAbstract
 
         $self = new static();
 
-        return $self
+        $self
             ->setPickUpGroup($dto->getPickUpGroup())
             ->setUser($dto->getUser())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

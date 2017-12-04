@@ -31,12 +31,9 @@ abstract class FeaturesRelBrandAbstract
     /**
      * Constructor
      */
-    public function __construct()
+    protected function __construct()
     {
 
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -135,10 +132,15 @@ abstract class FeaturesRelBrandAbstract
 
         $self = new static();
 
-        return $self
+        $self
             ->setBrand($dto->getBrand())
             ->setFeature($dto->getFeature())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

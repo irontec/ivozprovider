@@ -92,12 +92,9 @@ abstract class ConditionalRouteAbstract
     /**
      * Constructor
      */
-    public function __construct($name)
+    protected function __construct($name)
     {
         $this->setName($name);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -197,7 +194,7 @@ abstract class ConditionalRouteAbstract
         $self = new static(
             $dto->getName());
 
-        return $self
+        $self
             ->setRoutetype($dto->getRoutetype())
             ->setNumbervalue($dto->getNumbervalue())
             ->setFriendvalue($dto->getFriendvalue())
@@ -212,6 +209,11 @@ abstract class ConditionalRouteAbstract
             ->setExtension($dto->getExtension())
             ->setNumberCountry($dto->getNumberCountry())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

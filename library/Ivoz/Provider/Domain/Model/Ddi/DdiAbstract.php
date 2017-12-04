@@ -128,14 +128,11 @@ abstract class DdiAbstract
     /**
      * Constructor
      */
-    public function __construct($ddi, $recordCalls, $billInboundCalls)
+    protected function __construct($ddi, $recordCalls, $billInboundCalls)
     {
         $this->setDdi($ddi);
         $this->setRecordCalls($recordCalls);
         $this->setBillInboundCalls($billInboundCalls);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -237,7 +234,7 @@ abstract class DdiAbstract
             $dto->getRecordCalls(),
             $dto->getBillInboundCalls());
 
-        return $self
+        $self
             ->setDdie164($dto->getDdie164())
             ->setDisplayName($dto->getDisplayName())
             ->setRouteType($dto->getRouteType())
@@ -257,6 +254,11 @@ abstract class DdiAbstract
             ->setRetailAccount($dto->getRetailAccount())
             ->setConditionalRoute($dto->getConditionalRoute())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**
@@ -842,7 +844,7 @@ abstract class DdiAbstract
      *
      * @return self
      */
-    public function setCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $country = null)
+    public function setCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $country)
     {
         $this->country = $country;
 

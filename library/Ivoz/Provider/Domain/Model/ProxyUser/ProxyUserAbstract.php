@@ -31,12 +31,9 @@ abstract class ProxyUserAbstract
     /**
      * Constructor
      */
-    public function __construct()
+    protected function __construct()
     {
 
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -135,10 +132,15 @@ abstract class ProxyUserAbstract
 
         $self = new static();
 
-        return $self
+        $self
             ->setName($dto->getName())
             ->setIp($dto->getIp())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

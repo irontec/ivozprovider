@@ -81,7 +81,7 @@ abstract class TerminalAbstract
     /**
      * Constructor
      */
-    public function __construct(
+    protected function __construct(
         $disallow,
         $allowAudio,
         $directMediaMethod,
@@ -91,9 +91,6 @@ abstract class TerminalAbstract
         $this->setAllowAudio($allowAudio);
         $this->setDirectMediaMethod($directMediaMethod);
         $this->setPassword($password);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -196,7 +193,7 @@ abstract class TerminalAbstract
             $dto->getDirectMediaMethod(),
             $dto->getPassword());
 
-        return $self
+        $self
             ->setName($dto->getName())
             ->setAllowVideo($dto->getAllowVideo())
             ->setMac($dto->getMac())
@@ -205,6 +202,11 @@ abstract class TerminalAbstract
             ->setDomain($dto->getDomain())
             ->setTerminalModel($dto->getTerminalModel())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

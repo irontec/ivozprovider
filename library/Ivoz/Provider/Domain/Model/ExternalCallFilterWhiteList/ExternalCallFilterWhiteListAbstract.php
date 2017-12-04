@@ -31,12 +31,9 @@ abstract class ExternalCallFilterWhiteListAbstract
     /**
      * Constructor
      */
-    public function __construct()
+    protected function __construct()
     {
 
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -135,10 +132,15 @@ abstract class ExternalCallFilterWhiteListAbstract
 
         $self = new static();
 
-        return $self
+        $self
             ->setFilter($dto->getFilter())
             ->setMatchlist($dto->getMatchlist())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

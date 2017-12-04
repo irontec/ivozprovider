@@ -131,7 +131,7 @@ abstract class RetailAccountAbstract
     /**
      * Constructor
      */
-    public function __construct(
+    protected function __construct(
         $name,
         $description,
         $transport,
@@ -153,9 +153,6 @@ abstract class RetailAccountAbstract
         $this->setCalleridUpdateHeader($calleridUpdateHeader);
         $this->setUpdateCallerid($updateCallerid);
         $this->setDirectConnectivity($directConnectivity);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -264,7 +261,7 @@ abstract class RetailAccountAbstract
             $dto->getUpdateCallerid(),
             $dto->getDirectConnectivity());
 
-        return $self
+        $self
             ->setIp($dto->getIp())
             ->setPort($dto->getPort())
             ->setPassword($dto->getPassword())
@@ -276,6 +273,11 @@ abstract class RetailAccountAbstract
             ->setOutgoingDdi($dto->getOutgoingDdi())
             ->setLanguage($dto->getLanguage())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

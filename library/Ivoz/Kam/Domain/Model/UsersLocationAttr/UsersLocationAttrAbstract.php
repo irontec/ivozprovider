@@ -57,7 +57,7 @@ abstract class UsersLocationAttrAbstract
     /**
      * Constructor
      */
-    public function __construct(
+    protected function __construct(
         $ruid,
         $username,
         $aname,
@@ -71,9 +71,6 @@ abstract class UsersLocationAttrAbstract
         $this->setAtype($atype);
         $this->setAvalue($avalue);
         $this->setLastModified($lastModified);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -178,9 +175,14 @@ abstract class UsersLocationAttrAbstract
             $dto->getAvalue(),
             $dto->getLastModified());
 
-        return $self
+        $self
             ->setDomain($dto->getDomain())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

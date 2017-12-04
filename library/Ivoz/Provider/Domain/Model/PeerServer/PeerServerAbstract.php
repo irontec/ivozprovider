@@ -129,12 +129,9 @@ abstract class PeerServerAbstract
     /**
      * Constructor
      */
-    public function __construct($authNeeded)
+    protected function __construct($authNeeded)
     {
         $this->setAuthNeeded($authNeeded);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -234,7 +231,7 @@ abstract class PeerServerAbstract
         $self = new static(
             $dto->getAuthNeeded());
 
-        return $self
+        $self
             ->setIp($dto->getIp())
             ->setHostname($dto->getHostname())
             ->setPort($dto->getPort())
@@ -255,6 +252,11 @@ abstract class PeerServerAbstract
             ->setPeeringContract($dto->getPeeringContract())
             ->setBrand($dto->getBrand())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

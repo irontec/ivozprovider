@@ -36,12 +36,9 @@ abstract class EtagVersionAbstract
     /**
      * Constructor
      */
-    public function __construct()
+    protected function __construct()
     {
 
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -140,11 +137,16 @@ abstract class EtagVersionAbstract
 
         $self = new static();
 
-        return $self
+        $self
             ->setTable($dto->getTable())
             ->setEtag($dto->getEtag())
             ->setLastChange($dto->getLastChange())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

@@ -41,7 +41,7 @@ class TraitGenerator extends AbstractEntityGenerator
 /**
  * Constructor
  */
-public function __construct(<requiredFields>)<lineBreak>{
+protected function __construct(<requiredFields>)<lineBreak>{
 <spaces>parent::__construct(...func_get_args());
 <requiredFieldsSetters><collections>
 }

@@ -190,7 +190,7 @@ abstract class AccCdrAbstract
     /**
      * Constructor
      */
-    public function __construct(
+    protected function __construct(
         $startTimeUtc,
         $endTimeUtc,
         $startTime,
@@ -204,9 +204,6 @@ abstract class AccCdrAbstract
         $this->setEndTime($endTime);
         $this->setDuration($duration);
         $this->setBounced($bounced);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -311,7 +308,7 @@ abstract class AccCdrAbstract
             $dto->getDuration(),
             $dto->getBounced());
 
-        return $self
+        $self
             ->setProxy($dto->getProxy())
             ->setCaller($dto->getCaller())
             ->setCallee($dto->getCallee())
@@ -340,6 +337,11 @@ abstract class AccCdrAbstract
             ->setBrand($dto->getBrand())
             ->setCompany($dto->getCompany())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

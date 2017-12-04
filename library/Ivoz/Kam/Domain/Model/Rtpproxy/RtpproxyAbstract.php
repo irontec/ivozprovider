@@ -51,15 +51,12 @@ abstract class RtpproxyAbstract
     /**
      * Constructor
      */
-    public function __construct($setid, $url, $flags, $weight)
+    protected function __construct($setid, $url, $flags, $weight)
     {
         $this->setSetid($setid);
         $this->setUrl($url);
         $this->setFlags($flags);
         $this->setWeight($weight);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -162,10 +159,15 @@ abstract class RtpproxyAbstract
             $dto->getFlags(),
             $dto->getWeight());
 
-        return $self
+        $self
             ->setDescription($dto->getDescription())
             ->setMediaRelaySet($dto->getMediaRelaySet())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

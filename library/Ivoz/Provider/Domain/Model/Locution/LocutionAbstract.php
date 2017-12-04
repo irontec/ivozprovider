@@ -47,7 +47,7 @@ abstract class LocutionAbstract
     /**
      * Constructor
      */
-    public function __construct(
+    protected function __construct(
         $name,
         EncodedFile $encodedFile,
         OriginalFile $originalFile
@@ -55,9 +55,6 @@ abstract class LocutionAbstract
         $this->setName($name);
         $this->setEncodedFile($encodedFile);
         $this->setOriginalFile($originalFile);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -172,10 +169,15 @@ abstract class LocutionAbstract
             $originalFile
         );
 
-        return $self
+        $self
             ->setStatus($dto->getStatus())
             ->setCompany($dto->getCompany())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

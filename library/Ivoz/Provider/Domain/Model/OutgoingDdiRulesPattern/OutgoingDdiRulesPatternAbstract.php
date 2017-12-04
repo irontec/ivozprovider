@@ -47,13 +47,10 @@ abstract class OutgoingDdiRulesPatternAbstract
     /**
      * Constructor
      */
-    public function __construct($action, $priority)
+    protected function __construct($action, $priority)
     {
         $this->setAction($action);
         $this->setPriority($priority);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -154,11 +151,16 @@ abstract class OutgoingDdiRulesPatternAbstract
             $dto->getAction(),
             $dto->getPriority());
 
-        return $self
+        $self
             ->setOutgoingDdiRule($dto->getOutgoingDdiRule())
             ->setMatchList($dto->getMatchList())
             ->setForcedDdi($dto->getForcedDdi())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

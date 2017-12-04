@@ -57,14 +57,11 @@ abstract class BrandUrlAbstract
     /**
      * Constructor
      */
-    public function __construct($url, $urlType, Logo $logo)
+    protected function __construct($url, $urlType, Logo $logo)
     {
         $this->setUrl($url);
         $this->setUrlType($urlType);
         $this->setLogo($logo);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -173,12 +170,17 @@ abstract class BrandUrlAbstract
             $logo
         );
 
-        return $self
+        $self
             ->setKlearTheme($dto->getKlearTheme())
             ->setName($dto->getName())
             ->setUserTheme($dto->getUserTheme())
             ->setBrand($dto->getBrand())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

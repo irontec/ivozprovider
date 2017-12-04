@@ -51,7 +51,7 @@ abstract class CommandlogAbstract
     /**
      * Constructor
      */
-    public function __construct(
+    protected function __construct(
         $requestId,
         $class,
         $createdOn,
@@ -61,9 +61,6 @@ abstract class CommandlogAbstract
         $this->setClass($class);
         $this->setCreatedOn($createdOn);
         $this->setMicrotime($microtime);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -166,10 +163,15 @@ abstract class CommandlogAbstract
             $dto->getCreatedOn(),
             $dto->getMicrotime());
 
-        return $self
+        $self
             ->setMethod($dto->getMethod())
             ->setArguments($dto->getArguments())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

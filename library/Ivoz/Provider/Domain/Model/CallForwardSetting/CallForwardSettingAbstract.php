@@ -69,7 +69,7 @@ abstract class CallForwardSettingAbstract
     /**
      * Constructor
      */
-    public function __construct(
+    protected function __construct(
         $callTypeFilter,
         $callForwardType,
         $targetType,
@@ -79,9 +79,6 @@ abstract class CallForwardSettingAbstract
         $this->setCallForwardType($callForwardType);
         $this->setTargetType($targetType);
         $this->setNoAnswerTimeout($noAnswerTimeout);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -184,13 +181,18 @@ abstract class CallForwardSettingAbstract
             $dto->getTargetType(),
             $dto->getNoAnswerTimeout());
 
-        return $self
+        $self
             ->setNumberValue($dto->getNumberValue())
             ->setUser($dto->getUser())
             ->setExtension($dto->getExtension())
             ->setVoiceMailUser($dto->getVoiceMailUser())
             ->setNumberCountry($dto->getNumberCountry())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

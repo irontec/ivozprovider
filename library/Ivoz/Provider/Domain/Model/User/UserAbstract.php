@@ -153,7 +153,7 @@ abstract class UserAbstract
     /**
      * Constructor
      */
-    public function __construct(
+    protected function __construct(
         $name,
         $lastname,
         $doNotDisturb,
@@ -177,9 +177,6 @@ abstract class UserAbstract
         $this->setVoicemailSendMail($voicemailSendMail);
         $this->setVoicemailAttachSound($voicemailAttachSound);
         $this->setGsQRCode($gsQRCode);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -289,7 +286,7 @@ abstract class UserAbstract
             $dto->getVoicemailAttachSound(),
             $dto->getGsQRCode());
 
-        return $self
+        $self
             ->setEmail($dto->getEmail())
             ->setPass($dto->getPass())
             ->setTokenKey($dto->getTokenKey())
@@ -306,6 +303,11 @@ abstract class UserAbstract
             ->setOutgoingDdiRule($dto->getOutgoingDdiRule())
             ->setVoicemailLocution($dto->getVoicemailLocution())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

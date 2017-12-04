@@ -45,11 +45,8 @@ protected $_initialValues = [];
 /**
  * Constructor
  */
-public function __construct(<requiredFields>)<lineBreak>{
+protected function __construct(<requiredFields>)<lineBreak>{
 <requiredFieldsSetters><collections>
-
-    $this->sanitizeValues();
-    $this->initChangelog();
 }
 
 /**
@@ -148,7 +145,12 @@ public static function fromDTO(DataTransferObjectInterface $dto)
 <voContructor>
     $self = new static(<requiredFieldsGetters>);
 
-    return $self<fromDTO>;
+    $self<fromDTO>;
+
+    $self->sanitizeValues();
+    $self->initChangelog();
+
+    return $self;
 }
 
 /**

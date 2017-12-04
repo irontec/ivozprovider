@@ -193,13 +193,10 @@ abstract class VoicemailAbstract
     /**
      * Constructor
      */
-    public function __construct($context, $mailbox)
+    protected function __construct($context, $mailbox)
     {
         $this->setContext($context);
         $this->setMailbox($mailbox);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -300,7 +297,7 @@ abstract class VoicemailAbstract
             $dto->getContext(),
             $dto->getMailbox());
 
-        return $self
+        $self
             ->setPassword($dto->getPassword())
             ->setFullname($dto->getFullname())
             ->setAlias($dto->getAlias())
@@ -334,6 +331,11 @@ abstract class VoicemailAbstract
             ->setStamp($dto->getStamp())
             ->setUser($dto->getUser())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

@@ -156,12 +156,9 @@ abstract class ParsedCdrAbstract
     /**
      * Constructor
      */
-    public function __construct($calldate)
+    protected function __construct($calldate)
     {
         $this->setCalldate($calldate);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -261,7 +258,7 @@ abstract class ParsedCdrAbstract
         $self = new static(
             $dto->getCalldate());
 
-        return $self
+        $self
             ->setStatId($dto->getStatId())
             ->setXstatId($dto->getXstatId())
             ->setStatType($dto->getStatType())
@@ -289,6 +286,11 @@ abstract class ParsedCdrAbstract
             ->setCompany($dto->getCompany())
             ->setPeeringContract($dto->getPeeringContract())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

@@ -67,7 +67,7 @@ abstract class UsersPresentityAbstract
     /**
      * Constructor
      */
-    public function __construct(
+    protected function __construct(
         $username,
         $domain,
         $event,
@@ -87,9 +87,6 @@ abstract class UsersPresentityAbstract
         $this->setBody($body);
         $this->setSender($sender);
         $this->setPriority($priority);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -196,6 +193,11 @@ abstract class UsersPresentityAbstract
             $dto->getBody(),
             $dto->getSender(),
             $dto->getPriority());
+
+        $self;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
 
         return $self;
     }

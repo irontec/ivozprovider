@@ -46,13 +46,10 @@ abstract class FaxAbstract
     /**
      * Constructor
      */
-    public function __construct($name, $sendByEmail)
+    protected function __construct($name, $sendByEmail)
     {
         $this->setName($name);
         $this->setSendByEmail($sendByEmail);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -153,11 +150,16 @@ abstract class FaxAbstract
             $dto->getName(),
             $dto->getSendByEmail());
 
-        return $self
+        $self
             ->setEmail($dto->getEmail())
             ->setCompany($dto->getCompany())
             ->setOutgoingDdi($dto->getOutgoingDdi())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

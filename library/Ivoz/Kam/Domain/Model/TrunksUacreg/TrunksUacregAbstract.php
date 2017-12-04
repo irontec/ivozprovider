@@ -105,7 +105,7 @@ abstract class TrunksUacregAbstract
     /**
      * Constructor
      */
-    public function __construct(
+    protected function __construct(
         $lUuid,
         $lUsername,
         $lDomain,
@@ -133,9 +133,6 @@ abstract class TrunksUacregAbstract
         $this->setFlags($flags);
         $this->setRegDelay($regDelay);
         $this->setMultiddi($multiddi);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -247,10 +244,15 @@ abstract class TrunksUacregAbstract
             $dto->getRegDelay(),
             $dto->getMultiddi());
 
-        return $self
+        $self
             ->setBrand($dto->getBrand())
             ->setPeeringContract($dto->getPeeringContract())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

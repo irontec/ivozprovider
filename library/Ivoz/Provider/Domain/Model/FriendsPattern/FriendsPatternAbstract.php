@@ -36,13 +36,10 @@ abstract class FriendsPatternAbstract
     /**
      * Constructor
      */
-    public function __construct($name, $regExp)
+    protected function __construct($name, $regExp)
     {
         $this->setName($name);
         $this->setRegExp($regExp);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -143,9 +140,14 @@ abstract class FriendsPatternAbstract
             $dto->getName(),
             $dto->getRegExp());
 
-        return $self
+        $self
             ->setFriend($dto->getFriend())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

@@ -78,7 +78,7 @@ abstract class HuntGroupAbstract
     /**
      * Constructor
      */
-    public function __construct(
+    protected function __construct(
         $name,
         $description,
         $strategy,
@@ -88,9 +88,6 @@ abstract class HuntGroupAbstract
         $this->setDescription($description);
         $this->setStrategy($strategy);
         $this->setRingAllTimeout($ringAllTimeout);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -193,7 +190,7 @@ abstract class HuntGroupAbstract
             $dto->getStrategy(),
             $dto->getRingAllTimeout());
 
-        return $self
+        $self
             ->setNextUserPosition($dto->getNextUserPosition())
             ->setNoAnswerTargetType($dto->getNoAnswerTargetType())
             ->setNoAnswerNumberValue($dto->getNoAnswerNumberValue())
@@ -202,6 +199,11 @@ abstract class HuntGroupAbstract
             ->setNoAnswerExtension($dto->getNoAnswerExtension())
             ->setNoAnswerVoiceMailUser($dto->getNoAnswerVoiceMailUser())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

@@ -36,14 +36,11 @@ abstract class TerminalManufacturerAbstract
     /**
      * Constructor
      */
-    public function __construct($iden, $name, $description)
+    protected function __construct($iden, $name, $description)
     {
         $this->setIden($iden);
         $this->setName($name);
         $this->setDescription($description);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -144,6 +141,11 @@ abstract class TerminalManufacturerAbstract
             $dto->getIden(),
             $dto->getName(),
             $dto->getDescription());
+
+        $self;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
 
         return $self;
     }

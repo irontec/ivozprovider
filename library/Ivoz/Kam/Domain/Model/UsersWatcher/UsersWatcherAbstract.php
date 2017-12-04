@@ -60,7 +60,7 @@ abstract class UsersWatcherAbstract
     /**
      * Constructor
      */
-    public function __construct(
+    protected function __construct(
         $presentityUri,
         $watcherUsername,
         $watcherDomain,
@@ -74,9 +74,6 @@ abstract class UsersWatcherAbstract
         $this->setEvent($event);
         $this->setStatus($status);
         $this->setInsertedTime($insertedTime);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -181,9 +178,14 @@ abstract class UsersWatcherAbstract
             $dto->getStatus(),
             $dto->getInsertedTime());
 
-        return $self
+        $self
             ->setReason($dto->getReason())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

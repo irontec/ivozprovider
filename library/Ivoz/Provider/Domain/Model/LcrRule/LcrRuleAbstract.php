@@ -74,7 +74,7 @@ abstract class LcrRuleAbstract
     /**
      * Constructor
      */
-    public function __construct(
+    protected function __construct(
         $lcrId,
         $stopper,
         $enabled,
@@ -86,9 +86,6 @@ abstract class LcrRuleAbstract
         $this->setEnabled($enabled);
         $this->setTag($tag);
         $this->setDescription($description);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -192,13 +189,18 @@ abstract class LcrRuleAbstract
             $dto->getTag(),
             $dto->getDescription());
 
-        return $self
+        $self
             ->setPrefix($dto->getPrefix())
             ->setFromUri($dto->getFromUri())
             ->setRequestUri($dto->getRequestUri())
             ->setRoutingPattern($dto->getRoutingPattern())
             ->setOutgoingRouting($dto->getOutgoingRouting())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

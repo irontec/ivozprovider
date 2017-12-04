@@ -31,12 +31,9 @@ abstract class FeaturesRelCompanyAbstract
     /**
      * Constructor
      */
-    public function __construct()
+    protected function __construct()
     {
 
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -135,10 +132,15 @@ abstract class FeaturesRelCompanyAbstract
 
         $self = new static();
 
-        return $self
+        $self
             ->setCompany($dto->getCompany())
             ->setFeature($dto->getFeature())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

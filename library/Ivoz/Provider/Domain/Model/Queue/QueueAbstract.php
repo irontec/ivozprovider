@@ -133,12 +133,9 @@ abstract class QueueAbstract
     /**
      * Constructor
      */
-    public function __construct()
+    protected function __construct()
     {
 
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -237,7 +234,7 @@ abstract class QueueAbstract
 
         $self = new static();
 
-        return $self
+        $self
             ->setName($dto->getName())
             ->setMaxWaitTime($dto->getMaxWaitTime())
             ->setTimeoutTargetType($dto->getTimeoutTargetType())
@@ -261,6 +258,11 @@ abstract class QueueAbstract
             ->setTimeoutNumberCountry($dto->getTimeoutNumberCountry())
             ->setFullNumberCountry($dto->getFullNumberCountry())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

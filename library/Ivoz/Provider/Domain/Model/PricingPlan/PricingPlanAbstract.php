@@ -41,7 +41,7 @@ abstract class PricingPlanAbstract
     /**
      * Constructor
      */
-    public function __construct(
+    protected function __construct(
         $createdOn,
         Name $name,
         Description $description
@@ -49,9 +49,6 @@ abstract class PricingPlanAbstract
         $this->setCreatedOn($createdOn);
         $this->setName($name);
         $this->setDescription($description);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -164,9 +161,14 @@ abstract class PricingPlanAbstract
             $description
         );
 
-        return $self
+        $self
             ->setBrand($dto->getBrand())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

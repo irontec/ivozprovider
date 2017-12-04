@@ -37,13 +37,10 @@ abstract class CallAclAbstract
     /**
      * Constructor
      */
-    public function __construct($name, $defaultPolicy)
+    protected function __construct($name, $defaultPolicy)
     {
         $this->setName($name);
         $this->setDefaultPolicy($defaultPolicy);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -144,9 +141,14 @@ abstract class CallAclAbstract
             $dto->getName(),
             $dto->getDefaultPolicy());
 
-        return $self
+        $self
             ->setCompany($dto->getCompany())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

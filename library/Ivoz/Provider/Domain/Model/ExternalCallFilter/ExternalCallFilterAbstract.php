@@ -98,12 +98,9 @@ abstract class ExternalCallFilterAbstract
     /**
      * Constructor
      */
-    public function __construct($name)
+    protected function __construct($name)
     {
         $this->setName($name);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -203,7 +200,7 @@ abstract class ExternalCallFilterAbstract
         $self = new static(
             $dto->getName());
 
-        return $self
+        $self
             ->setHolidayTargetType($dto->getHolidayTargetType())
             ->setHolidayNumberValue($dto->getHolidayNumberValue())
             ->setOutOfScheduleTargetType($dto->getOutOfScheduleTargetType())
@@ -219,6 +216,11 @@ abstract class ExternalCallFilterAbstract
             ->setHolidayNumberCountry($dto->getHolidayNumberCountry())
             ->setOutOfScheduleNumberCountry($dto->getOutOfScheduleNumberCountry())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

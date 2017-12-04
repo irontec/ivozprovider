@@ -51,13 +51,10 @@ abstract class InvoiceTemplateAbstract
     /**
      * Constructor
      */
-    public function __construct($name, $template)
+    protected function __construct($name, $template)
     {
         $this->setName($name);
         $this->setTemplate($template);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -158,12 +155,17 @@ abstract class InvoiceTemplateAbstract
             $dto->getName(),
             $dto->getTemplate());
 
-        return $self
+        $self
             ->setDescription($dto->getDescription())
             ->setTemplateHeader($dto->getTemplateHeader())
             ->setTemplateFooter($dto->getTemplateFooter())
             ->setBrand($dto->getBrand())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

@@ -58,14 +58,11 @@ abstract class UsersAddressAbstract
     /**
      * Constructor
      */
-    public function __construct($sourceAddress, $mask, $port)
+    protected function __construct($sourceAddress, $mask, $port)
     {
         $this->setSourceAddress($sourceAddress);
         $this->setMask($mask);
         $this->setPort($port);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -167,12 +164,17 @@ abstract class UsersAddressAbstract
             $dto->getMask(),
             $dto->getPort());
 
-        return $self
+        $self
             ->setIpAddr($dto->getIpAddr())
             ->setTag($dto->getTag())
             ->setDescription($dto->getDescription())
             ->setCompany($dto->getCompany())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

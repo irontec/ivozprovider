@@ -52,14 +52,11 @@ abstract class LcrRuleTargetAbstract
     /**
      * Constructor
      */
-    public function __construct($lcrId, $priority, $weight)
+    protected function __construct($lcrId, $priority, $weight)
     {
         $this->setLcrId($lcrId);
         $this->setPriority($priority);
         $this->setWeight($weight);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -161,11 +158,16 @@ abstract class LcrRuleTargetAbstract
             $dto->getPriority(),
             $dto->getWeight());
 
-        return $self
+        $self
             ->setRule($dto->getRule())
             ->setGw($dto->getGw())
             ->setOutgoingRouting($dto->getOutgoingRouting())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

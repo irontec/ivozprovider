@@ -52,12 +52,9 @@ abstract class MatchListPatternAbstract
     /**
      * Constructor
      */
-    public function __construct($type)
+    protected function __construct($type)
     {
         $this->setType($type);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -157,13 +154,18 @@ abstract class MatchListPatternAbstract
         $self = new static(
             $dto->getType());
 
-        return $self
+        $self
             ->setDescription($dto->getDescription())
             ->setRegexp($dto->getRegexp())
             ->setNumbervalue($dto->getNumbervalue())
             ->setMatchList($dto->getMatchList())
             ->setNumberCountry($dto->getNumberCountry())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

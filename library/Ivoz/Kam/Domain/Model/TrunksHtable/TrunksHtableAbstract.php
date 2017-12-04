@@ -50,7 +50,7 @@ abstract class TrunksHtableAbstract
     /**
      * Constructor
      */
-    public function __construct(
+    protected function __construct(
         $keyName,
         $keyType,
         $valueType,
@@ -62,9 +62,6 @@ abstract class TrunksHtableAbstract
         $this->setValueType($valueType);
         $this->setKeyValue($keyValue);
         $this->setExpires($expires);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -167,6 +164,11 @@ abstract class TrunksHtableAbstract
             $dto->getValueType(),
             $dto->getKeyValue(),
             $dto->getExpires());
+
+        $self;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
 
         return $self;
     }

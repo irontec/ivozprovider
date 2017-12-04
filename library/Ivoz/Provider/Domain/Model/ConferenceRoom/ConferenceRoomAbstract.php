@@ -46,14 +46,11 @@ abstract class ConferenceRoomAbstract
     /**
      * Constructor
      */
-    public function __construct($name, $pinProtected, $maxMembers)
+    protected function __construct($name, $pinProtected, $maxMembers)
     {
         $this->setName($name);
         $this->setPinProtected($pinProtected);
         $this->setMaxMembers($maxMembers);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -155,10 +152,15 @@ abstract class ConferenceRoomAbstract
             $dto->getPinProtected(),
             $dto->getMaxMembers());
 
-        return $self
+        $self
             ->setPinCode($dto->getPinCode())
             ->setCompany($dto->getCompany())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

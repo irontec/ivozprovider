@@ -31,12 +31,9 @@ abstract class RoutingPatternGroupsRelPatternAbstract
     /**
      * Constructor
      */
-    public function __construct()
+    protected function __construct()
     {
 
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -135,10 +132,15 @@ abstract class RoutingPatternGroupsRelPatternAbstract
 
         $self = new static();
 
-        return $self
+        $self
             ->setRoutingPattern($dto->getRoutingPattern())
             ->setRoutingPatternGroup($dto->getRoutingPatternGroup())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

@@ -36,13 +36,10 @@ abstract class DomainAbstract
     /**
      * Constructor
      */
-    public function __construct($domain, $pointsTo)
+    protected function __construct($domain, $pointsTo)
     {
         $this->setDomain($domain);
         $this->setPointsTo($pointsTo);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -143,9 +140,14 @@ abstract class DomainAbstract
             $dto->getDomain(),
             $dto->getPointsTo());
 
-        return $self
+        $self
             ->setDescription($dto->getDescription())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

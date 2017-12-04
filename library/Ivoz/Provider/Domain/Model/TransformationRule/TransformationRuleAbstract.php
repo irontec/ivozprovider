@@ -52,13 +52,10 @@ abstract class TransformationRuleAbstract
     /**
      * Constructor
      */
-    public function __construct($type, $description)
+    protected function __construct($type, $description)
     {
         $this->setType($type);
         $this->setDescription($description);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -159,12 +156,17 @@ abstract class TransformationRuleAbstract
             $dto->getType(),
             $dto->getDescription());
 
-        return $self
+        $self
             ->setPriority($dto->getPriority())
             ->setMatchExpr($dto->getMatchExpr())
             ->setReplaceExpr($dto->getReplaceExpr())
             ->setTransformationRuleSet($dto->getTransformationRuleSet())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

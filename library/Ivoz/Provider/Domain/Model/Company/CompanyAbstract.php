@@ -160,7 +160,7 @@ abstract class CompanyAbstract
     /**
      * Constructor
      */
-    public function __construct(
+    protected function __construct(
         $type,
         $name,
         $nif,
@@ -182,9 +182,6 @@ abstract class CompanyAbstract
         $this->setTown($town);
         $this->setProvince($province);
         $this->setCountryName($countryName);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -293,7 +290,7 @@ abstract class CompanyAbstract
             $dto->getProvince(),
             $dto->getCountryName());
 
-        return $self
+        $self
             ->setDomainUsers($dto->getDomainUsers())
             ->setIpfilter($dto->getIpfilter())
             ->setOnDemandRecord($dto->getOnDemandRecord())
@@ -312,6 +309,11 @@ abstract class CompanyAbstract
             ->setOutgoingDdi($dto->getOutgoingDdi())
             ->setOutgoingDdiRule($dto->getOutgoingDdiRule())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

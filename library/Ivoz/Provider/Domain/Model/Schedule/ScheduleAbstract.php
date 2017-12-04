@@ -76,14 +76,11 @@ abstract class ScheduleAbstract
     /**
      * Constructor
      */
-    public function __construct($name, $timeIn, $timeout)
+    protected function __construct($name, $timeIn, $timeout)
     {
         $this->setName($name);
         $this->setTimeIn($timeIn);
         $this->setTimeout($timeout);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -185,7 +182,7 @@ abstract class ScheduleAbstract
             $dto->getTimeIn(),
             $dto->getTimeout());
 
-        return $self
+        $self
             ->setMonday($dto->getMonday())
             ->setTuesday($dto->getTuesday())
             ->setWednesday($dto->getWednesday())
@@ -195,6 +192,11 @@ abstract class ScheduleAbstract
             ->setSunday($dto->getSunday())
             ->setCompany($dto->getCompany())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**

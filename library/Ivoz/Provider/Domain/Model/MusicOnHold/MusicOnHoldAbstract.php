@@ -52,7 +52,7 @@ abstract class MusicOnHoldAbstract
     /**
      * Constructor
      */
-    public function __construct(
+    protected function __construct(
         $name,
         OriginalFile $originalFile,
         EncodedFile $encodedFile
@@ -60,9 +60,6 @@ abstract class MusicOnHoldAbstract
         $this->setName($name);
         $this->setOriginalFile($originalFile);
         $this->setEncodedFile($encodedFile);
-
-        $this->sanitizeValues();
-        $this->initChangelog();
     }
 
     /**
@@ -177,11 +174,16 @@ abstract class MusicOnHoldAbstract
             $encodedFile
         );
 
-        return $self
+        $self
             ->setStatus($dto->getStatus())
             ->setBrand($dto->getBrand())
             ->setCompany($dto->getCompany())
         ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
     }
 
     /**
