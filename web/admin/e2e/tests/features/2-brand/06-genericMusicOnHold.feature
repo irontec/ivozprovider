@@ -2,6 +2,7 @@
 @genericMusicOnHold
 @brand06
 
+
 Feature: Generic music on hold admin page
   As a main operator
   I want to be able to access generic music on hold admin page

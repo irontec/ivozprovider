@@ -21,6 +21,7 @@ Background:
     And I click on "Users" CTA
    Then I am on "Users" list
 
+
 Scenario: I create users
   When I click on add button
    And I fill out the form with "company/users/new" data fixture
