@@ -21,6 +21,7 @@ Background:
     And I click on "HuntGroups" CTA
    Then I am on "HuntGroups" list
 
+
 Scenario: I create hunt groups
   When I click on add button
    And I fill out the form with "company/huntGroups/new" data fixture

@@ -28,13 +28,13 @@ Scenario: I see create peer servers
   When I click on close dialog button
   Then I am on "PeeringContractsList_peerServers" subscreen list
 
-  Scenario: I can save peer servers
-    Given I can see at least one row
-    When I click on "peerServers" first elements edit button
+Scenario: I can save peer servers
+  Given I can see at least one row
+   When I click on "peerServers" first elements edit button
     And I click on save button
-    Then I can see confirmation dialog
-    When I click on close dialog button
-    Then I am on "PeeringContractsList_peerServers" subscreen list
+   Then I can see confirmation dialog
+   When I click on close dialog button
+   Then I am on "PeeringContractsList_peerServers" subscreen list
 
 Scenario: I can click on delete peer server button
   Given I can see at least one row
