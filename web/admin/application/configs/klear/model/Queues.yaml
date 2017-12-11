@@ -135,7 +135,7 @@ production:
         data: mapper
         config:
           entity: \Ivoz\Provider\Domain\Model\User\User
-          fitlerclass: IvozProvider_Klear_Filter_Voicemail
+          filterclass: IvozProvider_Klear_Filter_Voicemail
           fieldName:
             fields:
               - name
