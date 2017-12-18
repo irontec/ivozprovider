@@ -307,6 +307,10 @@ production:
           title: ngettext('Fax', 'Faxes', 0)
           class: ui-silk-printer
           description: _("List of %s", ngettext('Fax', 'Faxes', 0))
+        KamUsersCdrsList:
+          title: ngettext('Call History', 'Call Histories', 1)
+          class: ui-silk-application-view-list
+          description: _("List of %s", ngettext('Call', 'Calls', 0))
   footerMenu:
     footer:
       title: ''
