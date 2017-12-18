@@ -21,7 +21,7 @@ class KlearCustomUploadFileController extends Zend_Controller_Action
         
         $data = array(
                 'title' => _("Import file"),
-                'message'=>_("Select file to import") . </br> <input type=\"file\">),
+                'message' => _("Select file to import") . '</br> <input type="file">',
                 'buttons'=>array(
                         _('Cancelar') => array(
                                 'reloadParent' => false,

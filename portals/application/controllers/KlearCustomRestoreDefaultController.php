@@ -39,7 +39,7 @@ class KlearCustomRestoreDefaultController extends Zend_Controller_Action
             $filecontent = fread($file, filesize($filename));
             $data = array(
                     'title' => _("Restore default template"),
-                    'message'=>_("Loading") . "<textarea style=\"display: none\">" . str_replace("<br/>", "\n", $filecontent) . "</textarea>"),
+                    'message'=> _("Loading") . "<textarea style=\"display: none\">" . str_replace("<br/>", "\n", $filecontent) . "</textarea>",
             );
         }
         else{
