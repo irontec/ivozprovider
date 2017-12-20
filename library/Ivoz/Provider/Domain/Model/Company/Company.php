@@ -308,7 +308,7 @@ class Company extends CompanyAbstract implements CompanyInterface
 //        $call->setCallee($number)
 //            ->setCompanyId($this->getId())
 //            ->setBrandId($this->getBrand()->getId())
-//            ->setStartTimeUtc(new \Zend_Date());
+//            ->setStartTime(new \Zend_Date());
 //
 //        $result = $call->tarificate();
 //        if (! is_null($result)) {

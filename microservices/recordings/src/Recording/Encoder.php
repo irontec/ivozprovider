@@ -196,7 +196,7 @@ class Encoder
             $company = $kamAccCdr->getCompany();
 
             $recordingDto->setCompanyId($company->getId())
-                ->setCalldate($kamAccCdr->getStartTimeUtc())
+                ->setCalldate($kamAccCdr->getStartTime())
                 ->setType($type)
                 ->setCallid($kamAccCdr->getCallid())
                 ->setDuration($duration)

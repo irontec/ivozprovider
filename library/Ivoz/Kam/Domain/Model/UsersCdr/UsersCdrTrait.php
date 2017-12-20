@@ -1,14 +1,14 @@
 <?php
 
-namespace Ivoz\Kam\Domain\Model\UsersDomainAttr;
+namespace Ivoz\Kam\Domain\Model\UsersCdr;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 
 /**
- * UsersDomainAttrTrait
+ * UsersCdrTrait
  * @codeCoverageIgnore
  */
-trait UsersDomainAttrTrait
+trait UsersCdrTrait
 {
     /**
      * @var integer
@@ -19,18 +19,18 @@ trait UsersDomainAttrTrait
     /**
      * Constructor
      */
-    protected function __construct()
+    public function __construct()
     {
         parent::__construct(...func_get_args());
 
     }
 
     /**
-     * @return UsersDomainAttrDTO
+     * @return UsersCdrDTO
      */
     public static function createDTO()
     {
-        return new UsersDomainAttrDTO();
+        return new UsersCdrDTO();
     }
 
     /**
@@ -41,7 +41,7 @@ trait UsersDomainAttrTrait
     public static function fromDTO(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto UsersDomainAttrDTO
+         * @var $dto UsersCdrDTO
          */
         $self = parent::fromDTO($dto);
 
@@ -60,7 +60,7 @@ trait UsersDomainAttrTrait
     public function updateFromDTO(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto UsersDomainAttrDTO
+         * @var $dto UsersCdrDTO
          */
         parent::updateFromDTO($dto);
 
@@ -68,7 +68,7 @@ trait UsersDomainAttrTrait
     }
 
     /**
-     * @return UsersDomainAttrDTO
+     * @return UsersCdrDTO
      */
     public function toDTO()
     {

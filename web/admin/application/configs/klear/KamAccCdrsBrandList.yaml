@@ -31,9 +31,8 @@ production:
       <<: *kamAccCdrsView_screenLink
       forcedValues:
         <<: *forcedBrand
-  dialogs:  &parsedCDRs_dialogsLink
+  dialogs:
     tarificateCall_dialog:
-      <<: *ParsedCDRs
       module: default
       title: _("Tarificate %s", ngettext('call', 'calls', 1))
       labelOnList: _("Tarificate %s", ngettext('call', 'calls', 0))

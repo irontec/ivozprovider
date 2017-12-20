@@ -10,28 +10,28 @@ interface AccCdrRepository extends ObjectRepository, Selectable
     /**
      * @param int $companyId
      * @param int $brandId
-     * @param string $startTimeUtc
+     * @param string $startTime
      * @param int $metered
      * @return int
      */
     public function fetchUntarificattedCallNumber(
         int $companyId,
         int $brandId,
-        string $startTimeUtc,
+        string $startTime,
         int $metered
     );
 
     /**
      * @param int $companyId
      * @param int $brandId
-     * @param string $startTimeUtc
+     * @param string $startTime
      * @param string $utcNextInvoiceInDate
      * @return mixed
      */
     public function fetchTarificableList(
         int $companyId,
         int $brandId,
-        string $startTimeUtc,
+        string $startTime,
         string $utcNextInvoiceInDate
     );
 

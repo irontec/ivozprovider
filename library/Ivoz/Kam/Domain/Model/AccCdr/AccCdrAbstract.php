@@ -17,18 +17,6 @@ abstract class AccCdrAbstract
     protected $proxy;
 
     /**
-     * @column start_time_utc
-     * @var \DateTime
-     */
-    protected $startTimeUtc;
-
-    /**
-     * @column end_time_utc
-     * @var \DateTime
-     */
-    protected $endTimeUtc;
-
-    /**
      * @column start_time
      * @var \DateTime
      */
@@ -191,15 +179,11 @@ abstract class AccCdrAbstract
      * Constructor
      */
     protected function __construct(
-        $startTimeUtc,
-        $endTimeUtc,
         $startTime,
         $endTime,
         $duration,
         $bounced
     ) {
-        $this->setStartTimeUtc($startTimeUtc);
-        $this->setEndTimeUtc($endTimeUtc);
         $this->setStartTime($startTime);
         $this->setEndTime($endTime);
         $this->setDuration($duration);
@@ -301,8 +285,6 @@ abstract class AccCdrAbstract
         Assertion::isInstanceOf($dto, AccCdrDTO::class);
 
         $self = new static(
-            $dto->getStartTimeUtc(),
-            $dto->getEndTimeUtc(),
             $dto->getStartTime(),
             $dto->getEndTime(),
             $dto->getDuration(),
@@ -357,8 +339,6 @@ abstract class AccCdrAbstract
 
         $this
             ->setProxy($dto->getProxy())
-            ->setStartTimeUtc($dto->getStartTimeUtc())
-            ->setEndTimeUtc($dto->getEndTimeUtc())
             ->setStartTime($dto->getStartTime())
             ->setEndTime($dto->getEndTime())
             ->setDuration($dto->getDuration())
@@ -403,8 +383,6 @@ abstract class AccCdrAbstract
     {
         return self::createDTO()
             ->setProxy($this->getProxy())
-            ->setStartTimeUtc($this->getStartTimeUtc())
-            ->setEndTimeUtc($this->getEndTimeUtc())
             ->setStartTime($this->getStartTime())
             ->setEndTime($this->getEndTime())
             ->setDuration($this->getDuration())
@@ -444,8 +422,6 @@ abstract class AccCdrAbstract
     {
         return [
             'proxy' => self::getProxy(),
-            'start_time_utc' => self::getStartTimeUtc(),
-            'end_time_utc' => self::getEndTimeUtc(),
             'start_time' => self::getStartTime(),
             'end_time' => self::getEndTime(),
             'duration' => self::getDuration(),
@@ -508,66 +484,6 @@ abstract class AccCdrAbstract
     public function getProxy()
     {
         return $this->proxy;
-    }
-
-    /**
-     * Set startTimeUtc
-     *
-     * @param \DateTime $startTimeUtc
-     *
-     * @return self
-     */
-    public function setStartTimeUtc($startTimeUtc)
-    {
-        Assertion::notNull($startTimeUtc, 'startTimeUtc value "%s" is null, but non null value was expected.');
-        $startTimeUtc = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
-            $startTimeUtc,
-            '2000-01-01 00:00:00'
-        );
-
-        $this->startTimeUtc = $startTimeUtc;
-
-        return $this;
-    }
-
-    /**
-     * Get startTimeUtc
-     *
-     * @return \DateTime
-     */
-    public function getStartTimeUtc()
-    {
-        return $this->startTimeUtc;
-    }
-
-    /**
-     * Set endTimeUtc
-     *
-     * @param \DateTime $endTimeUtc
-     *
-     * @return self
-     */
-    public function setEndTimeUtc($endTimeUtc)
-    {
-        Assertion::notNull($endTimeUtc, 'endTimeUtc value "%s" is null, but non null value was expected.');
-        $endTimeUtc = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
-            $endTimeUtc,
-            'CURRENT_TIMESTAMP'
-        );
-
-        $this->endTimeUtc = $endTimeUtc;
-
-        return $this;
-    }
-
-    /**
-     * Get endTimeUtc
-     *
-     * @return \DateTime
-     */
-    public function getEndTimeUtc()
-    {
-        return $this->endTimeUtc;
     }
 
     /**

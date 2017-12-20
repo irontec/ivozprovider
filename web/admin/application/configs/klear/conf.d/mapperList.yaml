@@ -284,16 +284,6 @@ mappers:
         modelFile: OutgoingRouting,
         entity: 'Ivoz\\Provider\\Domain\\Model\\OutgoingRouting\\OutgoingRouting'
     }
-  - &ParsedCDRs {
-        mapper: \IvozProvider\Mapper\Sql\ParsedCDRs,
-        modelFile: ParsedCdrs,
-        entity: 'Ivoz\\Provider\\Domain\\Model\\ParsedCdr\\ParsedCdr'
-    }
-  - &ParsedCDRsGod {
-        mapper: \IvozProvider\Mapper\Sql\ParsedCDRs,
-        modelFile: ParsedCdrsGod,
-        entity: 'Ivoz\\Provider\\Domain\\Model\\ParsedCdrsGod\\ParsedCdrsGod'
-    }
   - &PeerServers {
         mapper: \IvozProvider\Mapper\Sql\PeerServers,
         modelFile: PeerServers,
@@ -548,6 +538,11 @@ mappers:
         mapper: \IvozProvider\Mapper\Sql\KamUsersLocation,
         modelFile: UsersLocation,
         entity: 'Ivoz\\Provider\\Domain\\Model\\UsersLocation\\UsersLocation'
+    }
+  - &KamUsersCdrs {
+        mapper: \IvozProvider\Mapper\Sql\KamUsersCdrs,
+        modelFile: KamUsersCdrs,
+        entity: 'Ivoz\\Kam\\Model\\UsersCdrs\\UsersCdr'
     }
   - &KamUsersLocationAttrs {
         mapper: \IvozProvider\Mapper\Sql\KamUsersLocationAttrs,
