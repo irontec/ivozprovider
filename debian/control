@@ -162,7 +162,7 @@ Package: ivozprovider-asterisk-agi
 Architecture: all
 Section: php
 Priority: optional
-Depends: ivozprovider-common-library (=${binary:Version})
+Depends: ivozprovider-common-library (=${binary:Version}), php-mailparse
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Asterik - Gateway Interface Zend Application
  .
