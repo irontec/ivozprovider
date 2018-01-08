@@ -48,7 +48,7 @@ class EndpointResolver
 
         Assertion::notNull(
             $user,
-            sprintf('Terminal "%s" has no user associated.', $terminal->getId())
+            sprintf('Terminal "%s" has no user associated.', $terminal)
         );
 
         /** @var \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension */
@@ -56,7 +56,7 @@ class EndpointResolver
 
         Assertion::notNull(
             $extension,
-            sprintf('User "%s" has no extension associated.', $user->getId())
+            sprintf('User "%s" has no extension associated.', $user))
         );
 
         return $user;

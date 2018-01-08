@@ -61,8 +61,7 @@ class ConditionalRouteAction
         }
 
         // Some feedback for asterisk cli
-        $this->agi->notice("Processing conditional route \e[0;37m%s [conditionalRoute%d]\e[0;93m",
-                        $route->getName(), $route->getId());
+        $this->agi->notice("Processing conditional route <white>%s</white>", $route);
 
         // Set Default Route options
         $locution = $route->getLocution();
@@ -104,8 +103,7 @@ class ConditionalRouteAction
             }
 
             // Condition matches, change default route
-            $this->agi->verbose("Conditional route priority %d matches all conditions.",
-                $condition->getPriority());
+            $this->agi->verbose("Conditional route priority %d matches all conditions.", $condition->getPriority());
 
             // All condition matches, route using its configuration
             $locution = $condition->getLocution();

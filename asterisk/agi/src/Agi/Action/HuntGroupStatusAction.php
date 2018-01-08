@@ -83,11 +83,7 @@ class HuntGroupStatusAction
         // No more users to be called
         if (empty($huntGroupEndpoints)) {
 
-            $this->agi->verbose(
-                "Processing Hungroup %s [huntgroup%d] no answer handler.",
-                $huntGroup->getName(),
-                $huntGroup->getId()
-            );
+            $this->agi->verbose("Processing Hungroup %s no answer handler.", $huntGroup);
 
             // Play NoAnswer Locution
             $this->agi->playback($huntGroup->getNoAnswerLocution());

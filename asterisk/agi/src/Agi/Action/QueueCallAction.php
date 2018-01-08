@@ -52,7 +52,7 @@ class QueueCallAction
 
         $user = $queueMember->getUser();
         if (is_null($user)) {
-            $this->agi->error("No user found for queue member %d", $queueMember->getId());
+            $this->agi->error("No user found for queue member %s", $queueMember);
             return;
         }
 

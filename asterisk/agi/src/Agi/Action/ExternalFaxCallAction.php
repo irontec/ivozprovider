@@ -80,7 +80,7 @@ class ExternalFaxCallAction extends ExternalCallAction
         $number = $this->number;
 
         // Some feedback for asterisk cli
-        $this->agi->notice("Processing External call from fax \e[0;32m%s\e[0;93m to %s", $fax, $number);
+        $this->agi->notice("Processing External call from fax <green>%s</green> to %s", $fax, $number);
 
         // Get Ougoing presentation
         $ddi = $fax->getOutgoingDDI();

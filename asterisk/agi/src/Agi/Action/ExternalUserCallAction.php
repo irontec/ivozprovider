@@ -102,8 +102,7 @@ class ExternalUserCallAction extends ExternalCallAction
 
         // Update Origin persentation
         if (!$this->checkValidOrigin($number)) {
-            $this->agi->error("Origin %s [%d] has no outgoingDDI number assigned.",
-                    $origin->getName(), $origin->getId());
+            $this->agi->error("Origin %s has no outgoingDDI number assigned.",  $origin);
             $this->agi->decline();
             return;
         }
@@ -117,7 +116,7 @@ class ExternalUserCallAction extends ExternalCallAction
 
         // We need Outgoing DDI for external call presentation
         if (!$ddi) {
-            $this->agi->error("User %s [user%d] has not OutgoingDDI configured", $user->getName(), $user->getId());
+            $this->agi->error("User <green>%s</green> has not OutgoingDDI configured", $user);
             $this->agi->decline();
             return;
         }
@@ -149,15 +148,11 @@ class ExternalUserCallAction extends ExternalCallAction
         /** @var OutgoingDdiRuleInterface $outgoingDDIRule */
         $outgoingDDIRule = $caller->getOutgoingDDIRule();
         if ($outgoingDDIRule) {
-            $this->agi->verbose("Checking CALLER %s [user%d] outgoingDDI rules %d for destination %s",
-                            $caller->getFullName(), $caller->getId(),
-                            $outgoingDDIRule->getId(), $number);
+            $this->agi->verbose("Checking CALLER %s outgoingDDI rules %s for destination %s",  $caller, $outgoingDDIRule, $number);
 
             $ddi = $outgoingDDIRule->getOutgoingDDI($ddi, $number);
             if ($ddi && $ddi != $caller->getOutgoingDDI()) {
-                $this->agi->notice("Rule %s [outgoingddirule%d] presented DDI to %d [ddi%d]",
-                    $outgoingDDIRule->getName(), $outgoingDDIRule->getId(),
-                    $ddi->getDDIE164(), $ddi->getId());
+                $this->agi->notice("Rule %s changed presented DDI to %s", $outgoingDDIRule, $ddi);
             }
         }
 

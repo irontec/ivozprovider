@@ -65,8 +65,7 @@ class FriendCallAction
         }
 
         // Some verbose dolan pls
-        $this->agi->notice("Preparing call to %s through friend \e[0;36m%s [friend%d])\e[0m",
-                        $number, $friend->getName(), $friend->getId());
+        $this->agi->notice("Preparing call to %s through friend <cyan>%s</cyan>", $number, $friend);
 
         // Check if user is available before placing the call
         $endpointName = $friend->getSorcery();

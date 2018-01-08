@@ -126,7 +126,7 @@ class ServiceAction
             $extension = $company->getExtension($vmExtension);
 
             if (empty($extension)) {
-                $this->agi->error("Extension %s not found for company %s.", $vmExtension, $company->getId());
+                $this->agi->error("Extension %s not found for company %s", $vmExtension, $company);
                 return;
             }
 
@@ -153,7 +153,7 @@ class ServiceAction
         $exten = substr($this->agi->getExtension(), strlen($this->service->getCode()) + 1);
         $extension = $company->getExtension($exten);
         if (empty($extension)) {
-            $this->agi->error("Extension %s not found for company %s.", $exten, $company->getId());
+            $this->agi->error("Extension %s not found for company %s", $exten, $company);
             return;
         }
         $capturedUser = $extension->getUser();
@@ -166,7 +166,7 @@ class ServiceAction
         // Get user terminal
         $capturedTerminal = $capturedUser->getTerminal();
         if (empty($capturedTerminal)) {
-            $this->agi->verbose("User %s has not associated terminal.", $capturedUser->getId());
+            $this->agi->verbose("%s has not associated terminal.", $capturedUser);
             return;
         }
 
@@ -192,7 +192,7 @@ class ServiceAction
         //check if user is in any pickupgroup
         $pickUpGroups = $caller->getPickUpGroups();
         if (empty($pickUpGroups)) {
-            $this->agi->verbose("User %s (%s) has no capture groups.", $caller->getFullName(), $caller->getId());
+            $this->agi->verbose("%s has no capture groups.", $caller);
             return;
         }
 

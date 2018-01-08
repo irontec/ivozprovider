@@ -170,7 +170,7 @@ class UserCallAction
 
         // Check if source matches one of the whitelisted patterns
         if ($bossWhiteList->numberMatches($source)) {
-            $this->agi->verbose("%s is in the exception lists of Boss %s.", $source, $boss->getId());
+            $this->agi->verbose("%s is in the exception lists of Boss %s.", $source, $boss);
             return true;
         }
 

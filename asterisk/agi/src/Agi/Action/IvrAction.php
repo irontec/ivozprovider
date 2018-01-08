@@ -60,7 +60,7 @@ class IvrAction
         }
 
         // Some feedback for asterisk cli
-        $this->agi->notice("Processing IVR %s [ivr%d]", $ivr->getName(), $ivr->getId());
+        $this->agi->notice("Processing IVR %s", $ivr);
 
         // Get IVR all Locutions
         $welcomeLocution = "";
@@ -137,11 +137,7 @@ class IvrAction
                     }
                 }
 
-                $this->agi->notice(
-                    "Entered value %d matches company extension with id %d",
-                    $userPressed,
-                    $extension->getId()
-                );
+                $this->agi->notice("Entered value %d matches company extension %s", $userPressed, $extension);
 
                 // Entered data matched one of company extensions, play success (if any)
                 $this->agi->playback($ivr->getSuccessLocution());

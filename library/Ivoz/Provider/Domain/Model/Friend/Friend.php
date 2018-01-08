@@ -45,9 +45,9 @@ class Friend extends FriendAbstract implements FriendInterface
      */
     public function __toString()
     {
-        return sprintf("%s [friend%d]",
+        return sprintf("%s [%s]",
             $this->getName(),
-            $this->getId()
+            parent::__toString()
         );
     }
 

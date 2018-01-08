@@ -59,12 +59,7 @@ class HuntGroupAction
             return;
         }
 
-        $this->agi->notice(
-            "Processing %s HuntGroup %s [huntgroup%d].",
-            $huntGroup->getStrategy(),
-            $huntGroup->getName(),
-            $huntGroup->getId()
-        );
+        $this->agi->notice("Processing %s HuntGroup %s", $huntGroup->getStrategy(), $huntGroup);
 
         /** @var HuntGroupsRelUserInterface[] $huntGroupEntries */
         $huntGroupEntries = $huntGroup->getHuntGroupsRelUsers(

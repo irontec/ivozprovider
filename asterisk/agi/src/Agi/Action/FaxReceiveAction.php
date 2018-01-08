@@ -52,7 +52,6 @@ class FaxReceiveAction
 
     public function process()
     {
-        /** @var \Ivoz\Provider\Domain\Model\Fax\FaxInterface $fax */
         $fax = $this->fax;
 
         if (is_null($fax)) {

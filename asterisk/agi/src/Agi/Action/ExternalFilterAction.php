@@ -82,49 +82,54 @@ class ExternalFilterAction
 
     public function processHoliday()
     {
-        if (empty($this->filter) || empty($this->ddi)) {
+
+        $filter = $this->filter;
+        $ddi = $this->ddi;
+
+        if (empty($filter) || empty($ddi)) {
             $this->agi->error("ExternalFilter is not properly defined. Check configuration.");
             return;
         }
 
         // Some feedback for the asterisk cli
-        $this->agi->notice("Procesing Holiday External Call filter [externalcallfilter%d] for DDI %s [ddi%d]",
-                        $this->filter->getId(), $this->ddi->getDDI(), $this->ddi->getId());
+        $this->agi->notice("Procesing Holiday filter %s for DDI %s", $filter, $ddi);
 
         // Play holiday locution
         if (!empty($this->eventLocution)) {
             $this->agi->playback($this->eventLocution);
         } else {
-            $this->agi->playback($this->filter->getHolidayLocution());
+            $this->agi->playback($filter->getHolidayLocution());
         }
 
         // Set Diversion information
         $count = $this->agi->getRedirecting('count');
         $this->agi->setRedirecting('count,i', ++$count);
-        $this->agi->setRedirecting('from-name,i', $this->ddi->getCompany()->getName());
-        $this->agi->setRedirecting('from-num,i', $this->ddi->getDDIE164());
+        $this->agi->setRedirecting('from-name,i', $ddi->getCompany()->getName());
+        $this->agi->setRedirecting('from-num,i', $ddi->getDDIE164());
         $this->agi->setRedirecting('reason', 'time_of_day');
 
         // Route to configured destination
         $this->routerAction
-            ->setRouteType($this->filter->getHolidayTargetType())
-            ->setRouteExtension($this->filter->getHolidayExtension())
-            ->setRouteExternal($this->filter->getHolidayNumberValueE164())
-            ->setRouteVoicemail($this->filter->getHolidayVoiceMailUser())
+            ->setRouteType($filter->getHolidayTargetType())
+            ->setRouteExtension($filter->getHolidayExtension())
+            ->setRouteExternal($filter->getHolidayNumberValueE164())
+            ->setRouteVoicemail($filter->getHolidayVoiceMailUser())
             ->route();
 
     }
 
     public function processOutOfSchedule()
     {
-        if (empty($this->filter) || empty($this->ddi)) {
+        $filter = $this->filter;
+        $ddi = $this->ddi;
+
+        if (empty($filter) || empty($ddi)) {
             $this->agi->error("ExternalFilter is not properly defined. Check configuration.");
             return;
         }
 
         // Some feedback for the asterisk cli
-        $this->agi->notice("Procesing OutOfSchedule External Call filter [externalcallfilter%d] for DDI %s [ddi%d]",
-            $this->filter->getId(), $this->ddi->getDDI(), $this->ddi->getId());
+        $this->agi->notice("Procesing OutOfSchedule filter %s for DDI %s", $filter, $ddi);
 
         // Play holiday locution
         $this->agi->playback($this->filter->getOutOfScheduleLocution());
@@ -132,16 +137,16 @@ class ExternalFilterAction
         // Set Diversion information
         $count = $this->agi->getRedirecting('count');
         $this->agi->setRedirecting('count,i', ++$count);
-        $this->agi->setRedirecting('from-name,i', $this->ddi->getCompany()->getName());
-        $this->agi->setRedirecting('from-num,i', $this->ddi->getDDIE164());
+        $this->agi->setRedirecting('from-name,i', $ddi->getCompany()->getName());
+        $this->agi->setRedirecting('from-num,i', $ddi->getDDIE164());
         $this->agi->setRedirecting('reason', 'time_of_day');
 
         // Route to destination
         $this->routerAction
-            ->setRouteType($this->filter->getOutOfScheduleTargetType())
-            ->setRouteExtension($this->filter->getOutOfScheduleExtension())
-            ->setRouteExternal($this->filter->getOutOfScheduleNumberValueE164())
-            ->setRouteVoicemail($this->filter->getOutOfScheduleVoiceMailUser())
+            ->setRouteType($filter->getOutOfScheduleTargetType())
+            ->setRouteExtension($filter->getOutOfScheduleExtension())
+            ->setRouteExternal($filter->getOutOfScheduleNumberValueE164())
+            ->setRouteVoicemail($filter->getOutOfScheduleVoiceMailUser())
             ->route();
 
     }

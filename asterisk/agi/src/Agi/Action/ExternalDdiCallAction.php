@@ -50,20 +50,16 @@ class ExternalDdiCallAction extends ExternalCallAction
         $company = $ddi->getCompany();
 
         // Some feedback for asterisk cli
-        $this->agi->notice("Processing External call from DDI %s to %s",
-                $ddi->getDDI(), $number);
+        $this->agi->notice("Processing External call from DDI %s to %s", $ddi, $number);
 
         // If compnay has OutgoingDDI rules, check if we have to override current DDI
         $outgoingDDIRule = $company->getOutgoingDDIRule();
         if ($outgoingDDIRule) {
-            $this->agi->verbose("Checking outgoingDDI rules %s for destination %s",
-                            $outgoingDDIRule->getName(), $number);
+            $this->agi->verbose("Checking rules %s for destination %s", $outgoingDDIRule, $number);
 
             $ddi = $outgoingDDIRule->getOutgoingDDI($ddi, $number);
             if ($ddi->getDdie164() != $company->getOutgoingDDI()->getDdie164()) {
-                $this->agi->notice("Rule %s [outgoingddirule%d] updated final DDI to %s [ddi%d]",
-                    $outgoingDDIRule->getName(), $outgoingDDIRule->getId(),
-                    $ddi->getDDI(), $ddi->getId());
+                $this->agi->notice("Rule %s updated final DDI to %s", $outgoingDDIRule, $ddi);
             }
         }
 

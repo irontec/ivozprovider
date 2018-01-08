@@ -110,7 +110,7 @@ class FaxReceiveStatusAction
         }
 
         // Some asterisk cli output
-        $this->agi->verbose("Converting Fax [faxInOut%d] [fax%d] TIFF to PDF", $faxIn->getId(), $fax->getId());
+        $this->agi->verbose("Converting file %s of %s TIFF to PDF", $faxIn, $fax);
 
         // Convert TIFF file to PDF before storing
         shell_exec("/usr/bin/tiff2pdf -o $faxPdfPath $faxTIF 2>/dev/null");
@@ -131,11 +131,11 @@ class FaxReceiveStatusAction
 
         $this->entityPersister->persistDto($faxInDto, $faxIn);
 
-        $this->agi->verbose("Fax [faxInOut%d] completed (%d pages)", $faxIn->getId(), $faxIn->getPages());
+        $this->agi->verbose("Fax %s completed (%d pages)", $faxIn, $faxIn->getPages());
 
         // Check if this fax is associated with an email address
         if ($fax->getSendByEmail()) {
-            $this->agi->notice("Sending Fax [faxInOut%d] to %s", $faxIn->getId(), $fax->getEmail());
+            $this->agi->notice("Sending Fax %s to %s", $faxIn, $fax->getEmail());
 
             // Get Fax Company
             $company = $fax->getCompany();
