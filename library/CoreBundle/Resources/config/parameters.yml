@@ -12,6 +12,8 @@ parameters:
     mailer_host: data.ivozprovider.local
     mailer_user: null
     mailer_password: null
+    mailer_default_fromname: 'IvozProvider Notifications'
+    mailer_default_fromaddress: no-replay@ivozprovider
     secret: ThisTokenIsNotSoSecretChangeIt
     ari_user: ivozariuser
     ari_password: ivozarisecret
