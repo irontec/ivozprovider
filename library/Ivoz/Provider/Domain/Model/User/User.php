@@ -33,6 +33,19 @@ class User extends UserAbstract implements UserInterface
         return $this->id;
     }
 
+    /**
+     * Return string representation of this entity
+     * @return string
+     */
+    public function __toString()
+    {
+        return sprintf("%s %s [%s]",
+            $this->getName(),
+            $this->getLastname(),
+            parent::__toString()
+        );
+    }
+
     protected function sanitizeValues()
     {
         $isNew = !$this->getId();

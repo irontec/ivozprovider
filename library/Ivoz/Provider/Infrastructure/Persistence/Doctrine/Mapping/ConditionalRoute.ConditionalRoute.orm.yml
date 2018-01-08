@@ -11,6 +11,10 @@ Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute:
       id: true
       generator:
         strategy: IDENTITY
+  oneToMany:
+    conditions:
+      targetEntity: Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface
+      mappedBy: conditionalRoute
   lifecycleCallbacks:
     postLoad:
       - initChangelog

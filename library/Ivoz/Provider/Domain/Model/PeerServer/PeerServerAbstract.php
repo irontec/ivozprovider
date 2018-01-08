@@ -134,6 +134,16 @@ abstract class PeerServerAbstract
         $this->setAuthNeeded($authNeeded);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "PeerServer",
+            $this->getId()
+        );
+    }
+
     /**
      * @param string $fieldName
      * @return mixed

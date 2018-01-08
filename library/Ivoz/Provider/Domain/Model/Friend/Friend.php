@@ -5,6 +5,7 @@ namespace Ivoz\Provider\Domain\Model\Friend;
 use Assert\Assertion;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\CallAcl\CallAcl;
+use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPattern;
 
 /**
@@ -36,6 +37,18 @@ class Friend extends FriendAbstract implements FriendInterface
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Return string representation of this entity
+     * @return string
+     */
+    public function __toString()
+    {
+        return sprintf("%s [friend%d]",
+            $this->getName(),
+            $this->getId()
+        );
     }
 
     protected function sanitizeValues()
@@ -219,6 +232,8 @@ class Friend extends FriendAbstract implements FriendInterface
     /**
      * Get Friend outgoingDdi
      * If no Ddi is assigned, retrieve company's default Ddi
+     *
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
      */
     public function getOutgoingDdi()
     {

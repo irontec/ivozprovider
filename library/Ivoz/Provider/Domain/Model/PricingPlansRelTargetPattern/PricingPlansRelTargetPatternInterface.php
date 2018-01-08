@@ -24,6 +24,8 @@ interface PricingPlansRelTargetPatternInterface extends LoggableEntityInterface
 
     public function getCost($duration = null);
 
+    public function __toString();
+
     /**
      * Get connectionCharge
      *

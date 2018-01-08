@@ -36,6 +36,16 @@ abstract class FeaturesRelBrandAbstract
 
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "FeaturesRelBrand",
+            $this->getId()
+        );
+    }
+
     /**
      * @param string $fieldName
      * @return mixed

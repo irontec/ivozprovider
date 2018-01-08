@@ -13,6 +13,12 @@ interface TerminalInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * Return string representation of this entity
+     * @return string
+     */
+    public function __toString();
+
+    /**
      * {@inheritDoc}
      */
     public function setName($name = null);
@@ -43,6 +49,8 @@ interface TerminalInterface extends LoggableEntityInterface
      * @return PsEndpointInterface
      */
     public function getAstPsEndpoint();
+
+    public function setMac($mac = null);
 
     /**
      * Get name
@@ -121,15 +129,6 @@ interface TerminalInterface extends LoggableEntityInterface
      * @return string
      */
     public function getPassword();
-
-    /**
-     * Set mac
-     *
-     * @param string $mac
-     *
-     * @return self
-     */
-    public function setMac($mac = null);
 
     /**
      * Get mac

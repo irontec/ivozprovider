@@ -12,6 +12,8 @@ interface QueueMemberInterface extends LoggableEntityInterface
      */
     public function getChangeSet();
 
+    public function __toString();
+
     /**
      * Set penalty
      *

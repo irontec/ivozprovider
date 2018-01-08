@@ -12,6 +12,8 @@ interface ChangelogInterface extends EntityInterface
      */
     public static function fromEvent(\Ivoz\Core\Domain\Event\EntityEventInterface $event);
 
+    public function __toString();
+
     /**
      * Set entity
      *

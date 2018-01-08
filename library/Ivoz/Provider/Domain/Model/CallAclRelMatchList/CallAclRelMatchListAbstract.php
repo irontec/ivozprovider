@@ -48,6 +48,16 @@ abstract class CallAclRelMatchListAbstract
         $this->setPolicy($policy);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "CallAclRelMatchList",
+            $this->getId()
+        );
+    }
+
     /**
      * @param string $fieldName
      * @return mixed

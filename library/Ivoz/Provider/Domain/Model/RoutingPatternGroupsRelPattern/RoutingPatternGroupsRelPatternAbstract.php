@@ -36,6 +36,16 @@ abstract class RoutingPatternGroupsRelPatternAbstract
 
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "RoutingPatternGroupsRelPattern",
+            $this->getId()
+        );
+    }
+
     /**
      * @param string $fieldName
      * @return mixed

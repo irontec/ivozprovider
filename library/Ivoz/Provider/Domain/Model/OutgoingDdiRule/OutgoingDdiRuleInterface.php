@@ -14,6 +14,12 @@ interface OutgoingDdiRuleInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * Return string representation of this entity
+     * @return string
+     */
+    public function __toString();
+
+    /**
      * Return forced Ddi for this rule
      * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
      */

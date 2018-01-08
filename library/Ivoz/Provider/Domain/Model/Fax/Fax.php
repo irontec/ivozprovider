@@ -28,6 +28,18 @@ class Fax extends FaxAbstract implements FaxInterface
         return $this->id;
     }
 
+    /**
+     * Return string representation of this entity
+     * @return string
+     */
+    public function __toString()
+    {
+        return sprintf("%s [fax%d]",
+            $this->getName(),
+            $this->getId()
+        );
+    }
+
     public function setSendByEmail($sendByEmail)
     {
         $response = parent::setSendByEmail($sendByEmail);
@@ -38,7 +50,7 @@ class Fax extends FaxAbstract implements FaxInterface
     }
 
     /**
-     * {@inheritDoc}
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
      */
     public function getOutgoingDdi()
     {

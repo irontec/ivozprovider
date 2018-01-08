@@ -49,6 +49,16 @@ protected function __construct(<requiredFields>)<lineBreak>{
 <requiredFieldsSetters><collections>
 }
 
+abstract public function getId();
+
+public function __toString()
+{
+    return sprintf("%s#%s",
+        "<classTableName>",
+        $this->getId()
+    );
+}
+
 /**
  * @param string $fieldName
  * @return mixed
@@ -482,6 +492,16 @@ public function <methodName>(<criteriaArgument>)
         return implode("\n", $lines);
     }
 
+    /**
+     * Return class name without Abstract suffix
+     *
+     * @return string
+     */
+    protected function getInstanceClassName(ClassMetadataInfo $metadata)
+    {
+        return substr($this->getClassName($metadata), 0, strlen('Abstract') * -1);
+    }
+
     protected function isDateType(string $type)
     {
         return in_array(
@@ -627,6 +647,8 @@ public function <methodName>(<criteriaArgument>)
                 $updateFromDTO =  '$this' . "\n" . $spaces . '->' . $updateFromDTO . ";\n\n";
             }
         }
+
+        $response = str_replace('<classTableName>', $this->getInstanceClassName($metadata), $response);
 
         $response = str_replace('<requiredFields>', $requiredFields, $response);
         $response = str_replace('<requiredFieldsSetters>', $requiredFieldSetters, $response);

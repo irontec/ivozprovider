@@ -20,6 +20,20 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
      */
     public function getNumberValueE164();
 
+    public function getMatchLists();
+
+    public function getSchedules();
+
+    public function getCalendars();
+
+    public function matchesOrigin($number);
+
+    public function matchesSchedule();
+
+    public function matchesCalendar();
+
+    public function __toString();
+
     /**
      * Set priority
      *
@@ -91,7 +105,7 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
      *
      * @return self
      */
-    public function setConditionalRoute(\Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface $conditionalRoute);
+    public function setConditionalRoute(\Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface $conditionalRoute = null);
 
     /**
      * Get conditionalRoute
@@ -245,97 +259,97 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
     public function getNumberCountry();
 
     /**
-     * Add matchlist
+     * Add relMatchlist
      *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistInterface $matchlist
-     *
-     * @return ConditionalRoutesConditionTrait
-     */
-    public function addMatchlist(\Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistInterface $matchlist);
-
-    /**
-     * Remove matchlist
-     *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistInterface $matchlist
-     */
-    public function removeMatchlist(\Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistInterface $matchlist);
-
-    /**
-     * Replace matchlists
-     *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistInterface[] $matchlists
-     * @return self
-     */
-    public function replaceMatchlists(Collection $matchlists);
-
-    /**
-     * Get matchlists
-     *
-     * @return array
-     */
-    public function getMatchlists(\Doctrine\Common\Collections\Criteria $criteria = null);
-
-    /**
-     * Add schedule
-     *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleInterface $schedule
+     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistInterface $relMatchlist
      *
      * @return ConditionalRoutesConditionTrait
      */
-    public function addSchedule(\Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleInterface $schedule);
+    public function addRelMatchlist(\Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistInterface $relMatchlist);
 
     /**
-     * Remove schedule
+     * Remove relMatchlist
      *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleInterface $schedule
+     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistInterface $relMatchlist
      */
-    public function removeSchedule(\Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleInterface $schedule);
+    public function removeRelMatchlist(\Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistInterface $relMatchlist);
 
     /**
-     * Replace schedules
+     * Replace relMatchlists
      *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleInterface[] $schedules
+     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistInterface[] $relMatchlists
      * @return self
      */
-    public function replaceSchedules(Collection $schedules);
+    public function replaceRelMatchlists(Collection $relMatchlists);
 
     /**
-     * Get schedules
+     * Get relMatchlists
      *
      * @return array
      */
-    public function getSchedules(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getRelMatchlists(\Doctrine\Common\Collections\Criteria $criteria = null);
 
     /**
-     * Add calendar
+     * Add relSchedule
      *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarInterface $calendar
+     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleInterface $relSchedule
      *
      * @return ConditionalRoutesConditionTrait
      */
-    public function addCalendar(\Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarInterface $calendar);
+    public function addRelSchedule(\Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleInterface $relSchedule);
 
     /**
-     * Remove calendar
+     * Remove relSchedule
      *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarInterface $calendar
+     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleInterface $relSchedule
      */
-    public function removeCalendar(\Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarInterface $calendar);
+    public function removeRelSchedule(\Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleInterface $relSchedule);
 
     /**
-     * Replace calendars
+     * Replace relSchedules
      *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarInterface[] $calendars
+     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleInterface[] $relSchedules
      * @return self
      */
-    public function replaceCalendars(Collection $calendars);
+    public function replaceRelSchedules(Collection $relSchedules);
 
     /**
-     * Get calendars
+     * Get relSchedules
      *
      * @return array
      */
-    public function getCalendars(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getRelSchedules(\Doctrine\Common\Collections\Criteria $criteria = null);
+
+    /**
+     * Add relCalendar
+     *
+     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarInterface $relCalendar
+     *
+     * @return ConditionalRoutesConditionTrait
+     */
+    public function addRelCalendar(\Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarInterface $relCalendar);
+
+    /**
+     * Remove relCalendar
+     *
+     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarInterface $relCalendar
+     */
+    public function removeRelCalendar(\Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarInterface $relCalendar);
+
+    /**
+     * Replace relCalendars
+     *
+     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarInterface[] $relCalendars
+     * @return self
+     */
+    public function replaceRelCalendars(Collection $relCalendars);
+
+    /**
+     * Get relCalendars
+     *
+     * @return array
+     */
+    public function getRelCalendars(\Doctrine\Common\Collections\Criteria $criteria = null);
 
     /**
      * @param string $prefix

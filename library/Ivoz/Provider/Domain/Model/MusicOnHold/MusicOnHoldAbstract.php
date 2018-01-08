@@ -62,6 +62,16 @@ abstract class MusicOnHoldAbstract
         $this->setEncodedFile($encodedFile);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "MusicOnHold",
+            $this->getId()
+        );
+    }
+
     /**
      * @param string $fieldName
      * @return mixed

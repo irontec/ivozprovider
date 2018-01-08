@@ -138,6 +138,16 @@ abstract class QueueAbstract
 
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "Queue",
+            $this->getId()
+        );
+    }
+
     /**
      * @param string $fieldName
      * @return mixed

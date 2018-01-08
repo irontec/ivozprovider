@@ -95,6 +95,16 @@ abstract class HuntGroupAbstract
         $this->setRingAllTimeout($ringAllTimeout);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "HuntGroup",
+            $this->getId()
+        );
+    }
+
     /**
      * @param string $fieldName
      * @return mixed

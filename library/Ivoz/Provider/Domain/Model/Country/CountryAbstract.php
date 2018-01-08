@@ -48,6 +48,16 @@ abstract class CountryAbstract
         $this->setZone($zone);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "Country",
+            $this->getId()
+        );
+    }
+
     /**
      * @param string $fieldName
      * @return mixed

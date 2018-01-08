@@ -1,23 +1,23 @@
 <?php
 
-namespace Ivoz\Kam\Infrastructure\Domain\Service\TrunksUacreg;
+namespace Ivoz\Kam\Infrastructure\Domain\Service\TrunksUacReg;
 
 use Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\XmlRpcTrunksRequest;
 use Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregInterface;
 use Ivoz\Kam\Domain\Service\TrunksUacreg\TrunksUacregLifecycleEventHandlerInterface;
 
-class SendTrunksUacregReloadRequest implements TrunksUacregLifecycleEventHandlerInterface
+class SendTrunksUacRegReloadRequest implements TrunksUacregLifecycleEventHandlerInterface
 {
-    protected $trunksUacregReload;
+    protected $trunksUacRegReload;
 
     public function __construct(
-        XmlRpcTrunksRequest $trunksUacregReload
+        XmlRpcTrunksRequest $trunksUacRegReload
     ) {
-        $this->trunksUacregReload = $trunksUacregReload;
+        $this->trunksUacRegReload = $trunksUacRegReload;
     }
 
     public function execute(TrunksUacregInterface $entity, $isNew)
     {
-        $this->trunksUacregReload->send();
+        $this->trunksUacRegReload->send();
     }
 }

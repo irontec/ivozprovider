@@ -101,6 +101,16 @@ abstract class LcrGatewayAbstract
         $this->setFlags($flags);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "LcrGateway",
+            $this->getId()
+        );
+    }
+
     /**
      * @param string $fieldName
      * @return mixed

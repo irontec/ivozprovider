@@ -24,6 +24,8 @@ interface FaxesInOutInterface extends LoggableEntityInterface
      */
     public function getDstE164();
 
+    public function __toString();
+
     /**
      * Set calldate
      *

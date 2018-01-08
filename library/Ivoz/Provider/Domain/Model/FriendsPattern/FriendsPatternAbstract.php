@@ -42,6 +42,16 @@ abstract class FriendsPatternAbstract
         $this->setRegExp($regExp);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "FriendsPattern",
+            $this->getId()
+        );
+    }
+
     /**
      * @param string $fieldName
      * @return mixed

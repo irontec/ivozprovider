@@ -47,6 +47,16 @@ abstract class HolidayDateAbstract
         $this->setEventDate($eventDate);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "HolidayDate",
+            $this->getId()
+        );
+    }
+
     /**
      * @param string $fieldName
      * @return mixed

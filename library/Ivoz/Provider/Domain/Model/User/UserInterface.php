@@ -13,6 +13,12 @@ interface UserInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * Return string representation of this entity
+     * @return string
+     */
+    public function __toString();
+
+    /**
      * return associated endpoint with the user
      *
      * @return \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface
@@ -108,6 +114,8 @@ interface UserInterface extends LoggableEntityInterface
      */
     public function getLanguageCode();
 
+    public function setEmail($email = null);
+
     /**
      * Set name
      *
@@ -139,15 +147,6 @@ interface UserInterface extends LoggableEntityInterface
      * @return string
      */
     public function getLastname();
-
-    /**
-     * Set email
-     *
-     * @param string $email
-     *
-     * @return self
-     */
-    public function setEmail($email = null);
 
     /**
      * Get email

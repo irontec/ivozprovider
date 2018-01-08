@@ -51,6 +51,16 @@ abstract class PricingPlanAbstract
         $this->setDescription($description);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "PricingPlan",
+            $this->getId()
+        );
+    }
+
     /**
      * @param string $fieldName
      * @return mixed

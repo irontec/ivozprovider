@@ -36,6 +36,16 @@ abstract class ProxyTrunkAbstract
         $this->setIp($ip);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "ProxyTrunk",
+            $this->getId()
+        );
+    }
+
     /**
      * @param string $fieldName
      * @return mixed

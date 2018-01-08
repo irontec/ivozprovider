@@ -2,8 +2,10 @@
 
 namespace Ivoz\Provider\Domain\Model\HuntGroup;
 
+use Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUserInterface;
 use Ivoz\Provider\Domain\Model\User\User;
 use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\User\UserInterface;
 
 /**
  * HuntGroup
@@ -51,11 +53,13 @@ class HuntGroup extends HuntGroupAbstract implements HuntGroupInterface
 
     /**
      * Get this Hungroup related users
-     * @return User[]
+     * @return UserInterface[]
      */
     public function getHuntGroupUsersArray()
     {
         $huntGroupUsersArray = array();
+
+        /** @var HuntGroupsRelUserInterface[] $huntGroupRelUsers */
         $huntGroupRelUsers = $this->getHuntGroupsRelUsers(
             Criteria::create()->orderBy(['priority' => Criteria::ASC])
         );
@@ -69,6 +73,18 @@ class HuntGroup extends HuntGroupAbstract implements HuntGroupInterface
         }
 
         return $huntGroupUsersArray;
+    }
+
+    /**
+     * Get the timeout numberValue in E.164 format when routing to 'number'
+     *
+     * @return string
+     */
+    public function getNoAnswerNumberValueE164()
+    {
+        return
+           // TODO $this->getNoAnswerNumberCountry()->getCountryCode() .
+            $this->getNoAnswerNumberValue();
     }
 }
 

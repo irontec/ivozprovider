@@ -87,6 +87,16 @@ abstract class ExtensionAbstract
         $this->setNumber($number);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "Extension",
+            $this->getId()
+        );
+    }
+
     /**
      * @param string $fieldName
      * @return mixed

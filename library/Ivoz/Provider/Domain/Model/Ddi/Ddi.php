@@ -32,6 +32,18 @@ class Ddi extends DdiAbstract implements DdiInterface
         return $this->id;
     }
 
+    /**
+     * Return string representation of this entity
+     * @return string
+     */
+    public function __toString()
+    {
+        return sprintf("%s [ddi%d]",
+            $this->getDdie164(),
+            $this->getId()
+        );
+    }
+
     protected function sanitizeValues()
     {
         $country = $this->getCountry();

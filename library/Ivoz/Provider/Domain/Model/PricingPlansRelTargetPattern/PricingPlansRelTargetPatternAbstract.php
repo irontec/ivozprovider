@@ -61,6 +61,16 @@ abstract class PricingPlansRelTargetPatternAbstract
         $this->setPerPeriodCharge($perPeriodCharge);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "PricingPlansRelTargetPattern",
+            $this->getId()
+        );
+    }
+
     /**
      * @param string $fieldName
      * @return mixed

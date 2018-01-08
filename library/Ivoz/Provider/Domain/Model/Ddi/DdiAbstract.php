@@ -135,6 +135,16 @@ abstract class DdiAbstract
         $this->setBillInboundCalls($billInboundCalls);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "Ddi",
+            $this->getId()
+        );
+    }
+
     /**
      * @param string $fieldName
      * @return mixed

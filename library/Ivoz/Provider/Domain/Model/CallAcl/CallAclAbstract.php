@@ -43,6 +43,16 @@ abstract class CallAclAbstract
         $this->setDefaultPolicy($defaultPolicy);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "CallAcl",
+            $this->getId()
+        );
+    }
+
     /**
      * @param string $fieldName
      * @return mixed

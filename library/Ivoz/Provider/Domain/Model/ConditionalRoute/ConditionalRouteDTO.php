@@ -137,6 +137,11 @@ class ConditionalRouteDTO implements DataTransferObjectInterface
     private $numberCountry;
 
     /**
+     * @var array|null
+     */
+    private $conditions = null;
+
+    /**
      * @return array
      */
     public function __toArray()
@@ -156,7 +161,8 @@ class ConditionalRouteDTO implements DataTransferObjectInterface
             'locutionId' => $this->getLocutionId(),
             'conferenceRoomId' => $this->getConferenceRoomId(),
             'extensionId' => $this->getExtensionId(),
-            'numberCountryId' => $this->getNumberCountryId()
+            'numberCountryId' => $this->getNumberCountryId(),
+            'conditions' => $this->getConditions()
         ];
     }
 
@@ -175,6 +181,17 @@ class ConditionalRouteDTO implements DataTransferObjectInterface
         $this->conferenceRoom = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\ConferenceRoom\\ConferenceRoom', $this->getConferenceRoomId());
         $this->extension = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Extension\\Extension', $this->getExtensionId());
         $this->numberCountry = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Country\\Country', $this->getNumberCountryId());
+        if (!is_null($this->conditions)) {
+            $items = $this->getConditions();
+            $this->conditions = [];
+            foreach ($items as $item) {
+                $this->conditions[] = $transformer->transform(
+                    'Ivoz\\Provider\\Domain\\Model\\ConditionalRoutesCondition\\ConditionalRoutesCondition',
+                    $item->getId() ?? $item
+                );
+            }
+        }
+
     }
 
     /**
@@ -182,7 +199,10 @@ class ConditionalRouteDTO implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
+        $this->conditions = $transformer->transform(
+            'Ivoz\\Provider\\Domain\\Model\\ConditionalRoutesCondition\\ConditionalRoutesCondition',
+            $this->conditions
+        );
     }
 
     /**
@@ -563,6 +583,26 @@ class ConditionalRouteDTO implements DataTransferObjectInterface
     public function getNumberCountry()
     {
         return $this->numberCountry;
+    }
+
+    /**
+     * @param array $conditions
+     *
+     * @return ConditionalRouteDTO
+     */
+    public function setConditions($conditions)
+    {
+        $this->conditions = $conditions;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getConditions()
+    {
+        return $this->conditions;
     }
 }
 

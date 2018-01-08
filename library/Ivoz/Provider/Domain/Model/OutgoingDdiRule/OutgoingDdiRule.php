@@ -31,6 +31,18 @@ class OutgoingDdiRule extends OutgoingDdiRuleAbstract implements OutgoingDdiRule
         return $this->id;
     }
 
+    /**
+     * Return string representation of this entity
+     * @return string
+     */
+    public function __toString()
+    {
+        return sprintf("%s[%s]",
+            $this->getName(),
+            parent::__toString()
+        );
+    }
+
     protected function sanitizeValues()
     {
         $nullableFields = [

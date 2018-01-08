@@ -67,6 +67,16 @@ abstract class OutgoingRoutingAbstract
         $this->setWeight($weight);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "OutgoingRouting",
+            $this->getId()
+        );
+    }
+
     /**
      * @param string $fieldName
      * @return mixed
@@ -423,16 +433,6 @@ abstract class OutgoingRoutingAbstract
     }
 
     /**
-     * Get routingPatternGroup
-     *
-     * @return \Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface
-     */
-    public function getRoutingPatternGroup()
-    {
-        return $this->routingPatternGroup;
-    }
-
-    /**
      * Set routingPatternGroup
      *
      * @param \Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface $routingPatternGroup
@@ -444,6 +444,16 @@ abstract class OutgoingRoutingAbstract
         $this->routingPatternGroup = $routingPatternGroup;
 
         return $this;
+    }
+
+    /**
+     * Get routingPatternGroup
+     *
+     * @return \Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface
+     */
+    public function getRoutingPatternGroup()
+    {
+        return $this->routingPatternGroup;
     }
 
 

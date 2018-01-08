@@ -53,6 +53,16 @@ abstract class OutgoingDdiRulesPatternAbstract
         $this->setPriority($priority);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "OutgoingDdiRulesPattern",
+            $this->getId()
+        );
+    }
+
     /**
      * @param string $fieldName
      * @return mixed

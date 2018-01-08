@@ -73,6 +73,16 @@ abstract class IvrEntryAbstract
         $this->setRouteType($routeType);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "IvrEntry",
+            $this->getId()
+        );
+    }
+
     /**
      * @param string $fieldName
      * @return mixed

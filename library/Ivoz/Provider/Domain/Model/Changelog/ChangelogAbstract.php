@@ -63,6 +63,16 @@ abstract class ChangelogAbstract
         $this->setMicrotime($microtime);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "Changelog",
+            $this->getId()
+        );
+    }
+
     /**
      * @param string $fieldName
      * @return mixed

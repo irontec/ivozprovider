@@ -36,6 +36,8 @@ interface IvrInterface extends LoggableEntityInterface
 
     public function getErrorTarget();
 
+    public function __toString();
+
     /**
      * Set name
      *
