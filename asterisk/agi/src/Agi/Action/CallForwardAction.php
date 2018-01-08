@@ -1,6 +1,7 @@
 <?php
 namespace Agi\Action;
 
+use Agi\ChannelInfo;
 use Agi\Wrapper;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
 
@@ -11,6 +12,11 @@ class CallForwardAction
      * @var Wrapper
      */
     protected $agi;
+
+    /**
+     * @var ChannelInfo
+     */
+    protected $channelInfo;
 
     /**
      * Max allowed Call forwards from a channel
@@ -38,16 +44,19 @@ class CallForwardAction
      * CallForwardAction constructor.
      *
      * @param Wrapper $agi
+     * @param ChannelInfo $channelInfo
      * @param RouterAction $routerAction
      * @param VoiceMailAction $voiceMailAction
      */
     public function __construct(
         Wrapper $agi,
+        ChannelInfo $channelInfo,
         RouterAction $routerAction,
         VoiceMailAction $voiceMailAction
     )
     {
         $this->agi = $agi;
+        $this->channelInfo = $channelInfo;
         $this->routerAction = $routerAction;
         $this->voiceMailAction = $voiceMailAction;
     }
@@ -103,10 +112,8 @@ class CallForwardAction
         }
 
         // Use Redirecting user as caller on following routes
-        $this->agi->setChannelCaller($this->cfw->getUser());
-
-        // Get Call forward user
-        $caller = $this->agi->getChannelCaller();
+        $caller = $this->cfw->getUser();
+        $this->channelInfo->setChannelCaller($caller);
 
         if ($this->cfw->getTargetType() == RouterAction::Voicemail) {
             // Set as diversion number the user extension

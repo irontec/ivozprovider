@@ -1,6 +1,7 @@
 <?php
 
 namespace Agi\Action;
+use Agi\ChannelInfo;
 use Agi\Wrapper;
 use Doctrine\ORM\EntityManagerInterface;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
@@ -36,14 +37,16 @@ class ExternalFriendCallAction extends ExternalCallAction
     /**
      * ExternalUserCallAction constructor.
      * @param Wrapper $agi
+     * @param ChannelInfo $channelInfo
      * @param EntityManagerInterface $em
      */
     public function __construct(
         Wrapper $agi,
+        ChannelInfo $channelInfo,
         EntityManagerInterface $em
     )
     {
-        parent::__construct($agi, $em);
+        parent::__construct($agi, $channelInfo, $em);
     }
 
     /**

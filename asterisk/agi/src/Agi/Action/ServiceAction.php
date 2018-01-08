@@ -2,6 +2,7 @@
 
 namespace Agi\Action;
 
+use Agi\ChannelInfo;
 use Agi\Wrapper;
 use Doctrine\ORM\EntityManagerInterface;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
@@ -17,6 +18,11 @@ class ServiceAction
      * @var Wrapper
      */
     protected $agi;
+
+    /**
+     * @var ChannelInfo
+     */
+    protected $channelInfo;
 
     /**
      * @var EntityManagerInterface
@@ -36,16 +42,19 @@ class ServiceAction
     /**
      * ServiceAction constructor.
      * @param Wrapper $agi
+     * @param ChannelInfo $channelInfo
      * @param EntityManagerInterface $em
      * @param EntityPersisterInterface $entityPersister
      */
     public function __construct(
         Wrapper $agi,
+        ChannelInfo $channelInfo,
         EntityManagerInterface $em,
         EntityPersisterInterface $entityPersister
     )
     {
         $this->agi = $agi;
+        $this->channelInfo = $channelInfo;
         $this->em = $em;
         $this->entityPersister = $entityPersister;
     }
@@ -97,7 +106,7 @@ class ServiceAction
     private function processVoiceMail()
     {
         /** @var UserInterface $caller */
-        $caller = $this->agi->getChannelCaller();
+        $caller = $this->channelInfo->getChannelCaller();
         $company = $caller->getCompany();
 
         /**
@@ -138,7 +147,7 @@ class ServiceAction
     protected function processDirectPickUp()
     {
         /** @var UserInterface $caller */
-        $caller = $this->agi->getChannelCaller();
+        $caller = $this->channelInfo->getChannelCaller();
         $company = $caller->getCompany();
 
         $exten = substr($this->agi->getExtension(), strlen($this->service->getCode()) + 1);
@@ -178,7 +187,7 @@ class ServiceAction
     protected function processGroupPickUp()
     {
         // Local variables to improve readability
-        $caller = $this->agi->getChannelCaller();
+        $caller = $this->channelInfo->getChannelCaller();
 
         //check if user is in any pickupgroup
         $pickUpGroups = $caller->getPickUpGroups();
@@ -202,7 +211,7 @@ class ServiceAction
     {
         // Local variables to improve readability
         $service = $this->service;
-        $caller = $this->agi->getChannelCaller();
+        $caller = $this->channelInfo->getChannelCaller();
 
         /**
          * Extract locutionId from dialed number

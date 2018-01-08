@@ -201,8 +201,7 @@ class UserCallAction
         foreach ($cfwSettings as $cfwSetting) {
             $cfwType = $cfwSetting->getCallTypeFilter();
             if ($cfwType == "both" || $cfwType == $this->agi->getCallType()) {
-                $this->agi->verbose("Call Forward No answer enabled [callForwardSettings%d]. Setting call timeout.",
-                    $cfwSetting->getId());
+                $this->agi->verbose("Call Forward No answer enabled [%s]. Setting call timeout.", $cfwSetting);
                 return $cfwSetting->getNoAnswerTimeout();
             }
         }

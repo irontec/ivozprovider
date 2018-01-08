@@ -2,16 +2,8 @@
 
 namespace Agi;
 
-use Doctrine\ORM\EntityManagerInterface;
 use Ivoz\Core\Application\Service\CommonStoragePathResolver;
-use Ivoz\Core\Domain\Model\EntityInterface;
-use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
-use Ivoz\Provider\Domain\Model\Fax\FaxInterface;
-use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
-use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
-use Ivoz\Provider\Domain\Model\User\User;
-use Ivoz\Provider\Domain\Model\User\UserInterface;
 
 /**
  *
@@ -35,11 +27,6 @@ class Wrapper
     protected $locutionPathResolver;
 
     /**
-     * @var EntityManagerInterface
-     */
-    protected $em;
-
-    /**
      * @var Colorizer
      */
     protected $colorizer;
@@ -48,18 +35,15 @@ class Wrapper
      * Wrapper constructor.
      * @param \AGI $fastagi
      * @param CommonStoragePathResolver $locutionPathResolver
-     * @param EntityManagerInterface $em
      * @param Colorizer $colorizer
      */
     public function __construct (
         \AGI $fastagi,
         CommonStoragePathResolver $locutionPathResolver,
-        EntityManagerInterface $em,
         Colorizer $colorizer
     ) {
         $this->fastagi = $fastagi;
         $this->locutionPathResolver = $locutionPathResolver;
-        $this->em = $em;
         $this->colorizer = $colorizer;
     }
 
@@ -377,76 +361,6 @@ class Wrapper
             }
         }
         return "";
-    }
-
-
-    public function setChannelOrigin($origin)
-    {
-        $this->setChannelData("ORIGIN", $origin);
-    }
-
-    public function setChannelCaller($caller)
-    {
-        $this->setChannelData("CALLER", $caller);
-    }
-
-    public function setChannelData($datatype, EntityInterface $data)
-    {
-        $id = $data->getId();
-        $type = "USER";
-
-        if ($data instanceof UserInterface) {
-            $type = "USER";
-        } else if ($data instanceof DdiInterface) {
-            $type = "DDI";
-        } else if ($data instanceof FriendInterface) {
-            $type = "FRIEND";
-        } else if ($data instanceof RetailAccountInterface) {
-            $type = "RETAIL";
-        } else if ($data instanceof FaxInterface) {
-            $type = "FAX";
-        }
-
-        $this->setVariable("_${datatype}_TYPE", $type);
-        $this->setVariable("_${datatype}_ID", $id);
-    }
-
-    public function getChannelCaller()
-    {
-        return $this->getChannelData("CALLER");
-    }
-
-    public function getChannelOrigin()
-    {
-        return $this->getChannelData("ORIGIN");
-    }
-
-    public function getChannelData($datatype)
-    {
-        $type = $this->getVariable("${datatype}_TYPE");
-        $id = $this->getVariable("${datatype}_ID");
-
-        switch ($type) {
-            case "USER":
-                $repository = $this->em->getRepository(User::class);
-                break;
-            case "DDI":
-                $repository = $this->em->getRepository('Ivoz\Provider\Domain\Model\Ddi\Ddi');
-                break;
-            case "FRIEND":
-                $repository = $this->em->getRepository('Ivoz\Provider\Domain\Model\Friend\Friend');
-                break;
-            case "RETAIL":
-                $repository = $this->em->getRepository('Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount');
-                break;
-            case "FAX":
-                $repository = $this->em->getRepository('Ivoz\Provider\Domain\Model\Fax\Fax');
-                break;
-            default:
-                return null;
-        }
-
-        return $repository->find($id);
     }
 
 }

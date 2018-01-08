@@ -1,6 +1,7 @@
 <?php
 namespace Agi\Action;
 
+use Agi\ChannelInfo;
 use Agi\Wrapper;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Queue\QueueInterface;
@@ -38,6 +39,11 @@ class RouterAction
      * @var Wrapper
      */
     protected $agi;
+
+    /**
+     * @var ChannelInfo
+     */
+    protected $channelInfo;
 
     /**
      * @var string
@@ -191,6 +197,7 @@ class RouterAction
 
     public function __construct(
         Wrapper $agi,
+        ChannelInfo $channelInfo,
         ConditionalRouteAction $conditionalRouteAction,
         ConferenceRoomAction $conferenceRoomAction,
         UserCallAction $userCallAction,
@@ -209,6 +216,7 @@ class RouterAction
     )
     {
         $this->agi = $agi;
+        $this->channelInfo = $channelInfo;
         $this->conditionalRouteAction = $conditionalRouteAction;
         $this->conferenceRoomAction = $conferenceRoomAction;
         $this->extensionAction = $extensionAction;
@@ -380,7 +388,7 @@ class RouterAction
     protected function routeToExternal()
     {
         // External Route depends on who is calling
-        $caller = $this->agi->getChannelCaller();
+        $caller = $this->channelInfo->getChannelCaller();
 
         if ($caller instanceof UserInterface) {
             // Handle external call route for users
@@ -450,7 +458,7 @@ class RouterAction
     protected function routeToFriend()
     {
         // Look for the friend that handles this destination
-        $caller = $this->agi->getChannelCaller();
+        $caller = $this->channelInfo->getChannelCaller();
 
         /** @var CompanyInterface $company */
         $company = $caller->getCompany();

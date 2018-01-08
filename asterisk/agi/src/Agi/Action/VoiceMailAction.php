@@ -64,8 +64,7 @@ class VoiceMailAction
         }
 
         // Some feedback for asterisk cli
-        $this->agi->notice("Processing Voicemail of %s [user%d]",
-                        $voicemail->getFullName(), $voicemail->getId());
+        $this->agi->notice("Processing Voicemail of %s", $voicemail);
 
         if ($voicemail->getVoicemailEnabled()) {
             // Run the voicemail

@@ -3,6 +3,7 @@
 namespace Dialplan;
 
 use Agi\Action\DdiAction;
+use Agi\ChannelInfo;
 use Agi\Wrapper;
 use Assert\Assertion;
 use Doctrine\ORM\EntityManagerInterface;
@@ -15,6 +16,11 @@ class Trunks extends RouteHandlerAbstract
      * @var Wrapper
      */
     protected $agi;
+
+    /**
+     * @var ChannelInfo
+     */
+    protected $channelInfo;
 
     /**
      * @var EntityManagerInterface
@@ -30,16 +36,19 @@ class Trunks extends RouteHandlerAbstract
      * Trunks constructor.
      *
      * @param Wrapper $agi
+     * @param ChannelInfo $channelInfo
      * @param EntityManagerInterface $em
      * @param DDIAction $ddiAction
      */
     public function __construct(
         Wrapper $agi,
+        ChannelInfo $channelInfo,
         EntityManagerInterface $em,
         DDIAction $ddiAction
     )
     {
         $this->agi = $agi;
+        $this->channelInfo = $channelInfo;
         $this->em = $em;
         $this->ddiAction = $ddiAction;
     }
@@ -91,7 +100,7 @@ class Trunks extends RouteHandlerAbstract
         }
 
         // Set DDI as the caller
-        $this->agi->setChannelCaller($ddi);
+        $this->channelInfo->setChannelCaller($ddi);
 
         // Process this DDI
         $this->ddiAction

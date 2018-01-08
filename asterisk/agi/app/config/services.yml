@@ -32,6 +32,9 @@ services:
   Agi\Colorizer:
     arguments: ~
 
+  Agi\ChannelInfo:
+    arguments: ~
+
   Helpers\EndpointResolver:
     arguments: ~
 

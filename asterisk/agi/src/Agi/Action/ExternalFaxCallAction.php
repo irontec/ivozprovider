@@ -2,6 +2,7 @@
 
 namespace Agi\Action;
 
+use Agi\ChannelInfo;
 use Agi\Wrapper;
 use Doctrine\ORM\EntityManagerInterface;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
@@ -35,18 +36,20 @@ class ExternalFaxCallAction extends ExternalCallAction
     /**
      * ExternalFaxCallAction constructor.
      * @param Wrapper $agi
+     * @param ChannelInfo $channelInfo
      * @param EntityManagerInterface $em
      * @param EntityPersisterInterface $entityPersister
      */
     public function __construct(
         Wrapper $agi,
+        ChannelInfo $channelInfo,
         EntityManagerInterface $em,
         EntityPersisterInterface $entityPersister
     )
     {
         $this->entityPersister = $entityPersister;
 
-        parent::__construct($agi, $em);
+        parent::__construct($agi, $channelInfo, $em);
     }
 
     /**
@@ -72,7 +75,7 @@ class ExternalFaxCallAction extends ExternalCallAction
     public function process()
     {
         /** @var FaxInterface $fax */
-        $fax = $this->agi->getChannelCaller();
+        $fax = $this->channelInfo->getChannelCaller();
         $faxOut = $this->faxfile;
         $number = $this->number;
 

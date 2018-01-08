@@ -2,6 +2,7 @@
 
 namespace Agi\Action;
 
+use Agi\ChannelInfo;
 use Agi\Wrapper;
 use Doctrine\ORM\EntityManagerInterface;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
@@ -21,6 +22,11 @@ class ExternalCallAction
     protected $agi;
 
     /**
+     * @var ChannelInfo
+     */
+    protected $channelInfo;
+
+    /**
      * @var EntityManagerInterface
      */
     protected $em;
@@ -29,14 +35,17 @@ class ExternalCallAction
      * ExternalCallAction constructor.
      *
      * @param Wrapper $agi
+     * @param ChannelInfo $channelInfo
      * @param EntityManagerInterface $em
      */
     public function __construct(
         Wrapper $agi,
+        ChannelInfo $channelInfo,
         EntityManagerInterface $em
     )
     {
         $this->agi = $agi;
+        $this->channelInfo = $channelInfo;
         $this->em = $em;
     }
 
@@ -138,7 +147,7 @@ class ExternalCallAction
     protected function checkValidOrigin($number)
     {
         // Get call origin
-        $origin = $this->agi->getChannelOrigin();
+        $origin = $this->channelInfo->getChannelOrigin();
 
         if ($origin instanceof UserInterface) {
             // Get default user outgoing DDI

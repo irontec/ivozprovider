@@ -3,6 +3,7 @@
 namespace Dialplan;
 
 use Agi\Action\ExternalFaxCallAction;
+use Agi\ChannelInfo;
 use Agi\Wrapper;
 use Doctrine\ORM\EntityManagerInterface;
 use Ivoz\Core\Application\Service\CommonStoragePathResolver;
@@ -20,6 +21,11 @@ class FaxDial extends RouteHandlerAbstract
      * @var Wrapper
      */
     protected $agi;
+
+    /**
+     * @var ChannelInfo
+     */
+    protected $channelInfo;
 
     /**
      * @var EntityManagerInterface
@@ -44,6 +50,7 @@ class FaxDial extends RouteHandlerAbstract
     /**
      * Dial constructor.
      * @param Wrapper $agi
+     * @param ChannelInfo $channelInfo
      * @param EntityManagerInterface $em
      * @param EntityPersisterInterface $entityPersister
      * @param CommonStoragePathResolver $faxStoragePathResolver
@@ -51,6 +58,7 @@ class FaxDial extends RouteHandlerAbstract
      */
     public function __construct(
         Wrapper $agi,
+        ChannelInfo $channelInfo,
         EntityManagerInterface $em,
         EntityPersisterInterface $entityPersister,
         CommonStoragePathResolver $faxStoragePathResolver,
@@ -58,6 +66,7 @@ class FaxDial extends RouteHandlerAbstract
     )
     {
         $this->agi = $agi;
+        $this->channelInfo = $channelInfo;
         $this->em = $em;
         $this->entityPersister = $entityPersister;
         $this->faxStoragePathResolver = $faxStoragePathResolver;
@@ -116,7 +125,7 @@ class FaxDial extends RouteHandlerAbstract
         }
 
         // Set the virtual fax as caller
-        $this->agi->setChannelCaller($faxOut->getFax());
+        $this->channelInfo->setChannelCaller($faxOut->getFax());
 
         // ProcessDialStatus
         $this->externalFaxCallAction

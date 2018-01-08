@@ -5,6 +5,7 @@ namespace Dialplan;
 use Agi\Action\ExtensionAction;
 use Agi\Action\ExternalFriendCallAction;
 use Agi\Action\FriendCallAction;
+use Agi\ChannelInfo;
 use Agi\Wrapper;
 use Helpers\EndpointResolver;
 use RouteHandlerAbstract;
@@ -15,6 +16,11 @@ class Friends extends RouteHandlerAbstract
      * @var Wrapper
      */
     protected $agi;
+
+    /**
+     * @var ChannelInfo
+     */
+    protected $channelInfo;
 
     /**
      * @var EndpointResolver
@@ -40,6 +46,7 @@ class Friends extends RouteHandlerAbstract
      * Friends constructor.
      *
      * @param Wrapper $agi
+     * @param ChannelInfo $channelInfo
      * @param EndpointResolver $endpointResolver
      * @param ExtensionAction $extensionAction
      * @param FriendCallAction $friendCallAction
@@ -47,6 +54,7 @@ class Friends extends RouteHandlerAbstract
      */
     public function __construct(
         Wrapper $agi,
+        ChannelInfo $channelInfo,
         EndpointResolver $endpointResolver,
         ExtensionAction $extensionAction,
         FriendCallAction $friendCallAction,
@@ -54,6 +62,7 @@ class Friends extends RouteHandlerAbstract
     )
     {
         $this->agi = $agi;
+        $this->channelInfo = $channelInfo;
         $this->endpointResolver = $endpointResolver;
         $this->extensionAction = $extensionAction;
         $this->friendCallAction = $friendCallAction;
@@ -90,8 +99,8 @@ class Friends extends RouteHandlerAbstract
         $this->agi->setVariable("CHANNEL(musicclass)", $company->getMusicClass());
 
         // Set Friend as the caller
-        $this->agi->setChannelCaller($friend);
-        $this->agi->setChannelOrigin($friend);
+        $this->channelInfo->setChannelCaller($friend);
+        $this->channelInfo->setChannelOrigin($friend);
 
         // Some feedback for asterisk cli
         $this->agi->notice("Processing outgoing call from \e[0;36m%s\e[0;93m to number %s", $friend, $exten);

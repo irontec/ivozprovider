@@ -3,6 +3,7 @@
 namespace Dialplan;
 
 use Agi\Action\ExternalRetailCallAction;
+use Agi\ChannelInfo;
 use Agi\Wrapper;
 use Helpers\EndpointResolver;
 use RouteHandlerAbstract;
@@ -13,6 +14,11 @@ class Retailers extends RouteHandlerAbstract
      * @var Wrapper
      */
     protected $agi;
+
+    /**
+     * @var ChannelInfo
+     */
+    protected $channelInfo;
 
     /**
      * @var EndpointResolver
@@ -28,16 +34,19 @@ class Retailers extends RouteHandlerAbstract
      * Retails constructor.
      *
      * @param Wrapper $agi
+     * @param ChannelInfo $channelInfo
      * @param EndpointResolver $endpointResolver
      * @param ExternalRetailCallAction $externalRetailCallAction
      */
     public function __construct(
         Wrapper $agi,
+        ChannelInfo $channelInfo,
         EndpointResolver $endpointResolver,
         ExternalRetailCallAction $externalRetailCallAction
     )
     {
         $this->agi = $agi;
+        $this->channelInfo = $channelInfo;
         $this->endpointResolver = $endpointResolver;
         $this->externalRetailCallAction = $externalRetailCallAction;
     }
@@ -66,7 +75,7 @@ class Retailers extends RouteHandlerAbstract
         $this->agi->setVariable("_CALL_ID", $this->agi->getCallId());
 
         // Set User as the caller
-        $this->agi->setChannelCaller($retail);
+        $this->channelInfo->setChannelCaller($retail);
 
         // Some feedback for asterisk cli
         $this->agi->notice(

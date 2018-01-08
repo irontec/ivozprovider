@@ -2,6 +2,7 @@
 
 namespace Agi\Action;
 
+use Agi\ChannelInfo;
 use Agi\Wrapper;
 use Doctrine\ORM\EntityManagerInterface;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
@@ -17,14 +18,16 @@ class ExternalDdiCallAction extends ExternalCallAction
      * ExternalDDICallAction constructor.
      *
      * @param Wrapper $agi
+     * @param ChannelInfo $channelInfo
      * @param EntityManagerInterface $em
      */
     public function __construct(
         Wrapper $agi,
+        ChannelInfo $channelInfo,
         EntityManagerInterface $em
     )
     {
-        parent::__construct($agi, $em);
+        parent::__construct($agi, $channelInfo, $em);
     }
 
     /**
@@ -40,7 +43,7 @@ class ExternalDdiCallAction extends ExternalCallAction
     public function process()
     {
         /** @var DdiInterface $ddi */
-        $ddi = $this->agi->getChannelCaller();
+        $ddi = $this->channelInfo->getChannelCaller();
         $number = $this->number;
 
         // Get company from the caller

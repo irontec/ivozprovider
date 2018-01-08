@@ -1,6 +1,7 @@
 <?php
 
 namespace Agi\Action;
+use Agi\ChannelInfo;
 use Agi\Wrapper;
 use Doctrine\ORM\EntityManagerInterface;
 use Ivoz\Provider\Domain\Model\Feature\Feature;
@@ -31,14 +32,16 @@ class ExternalUserCallAction extends ExternalCallAction
     /**
      * ExternalUserCallAction constructor.
      * @param Wrapper $agi
+     * @param ChannelInfo $channelInfo
      * @param EntityManagerInterface $em
      */
     public function __construct(
         Wrapper $agi,
+        ChannelInfo $channelInfo,
         EntityManagerInterface $em
     )
     {
-        parent::__construct($agi, $em);
+        parent::__construct($agi, $channelInfo, $em);
     }
 
     /**
@@ -65,8 +68,8 @@ class ExternalUserCallAction extends ExternalCallAction
     {
         // Local variables
         /** @var UserInterface $user */
-        $user = $this->agi->getChannelCaller();
-        $origin = $this->agi->getChannelOrigin();
+        $user = $this->channelInfo->getChannelCaller();
+        $origin = $this->channelInfo->getChannelOrigin();
         $number = $this->number;
 
         // Get company from the caller
@@ -137,7 +140,7 @@ class ExternalUserCallAction extends ExternalCallAction
     public function getCallerOutgoingDDI($number)
     {
         // User making this call
-        $caller = $this->agi->getChannelCaller();
+        $caller = $this->channelInfo->getChannelCaller();
 
         // Get default user outgoing DDI
         $ddi = $caller->getOutgoingDDI();

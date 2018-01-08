@@ -1,6 +1,7 @@
 <?php
 
 namespace Agi\Action;
+use Agi\ChannelInfo;
 use Agi\Wrapper;
 use Doctrine\ORM\EntityManagerInterface;
 
@@ -23,14 +24,16 @@ class ExternalRetailCallAction extends ExternalCallAction
      * ExternalRetailCallAction constructor.
      *
      * @param Wrapper $agi
+     * @param ChannelInfo $channelInfo
      * @param EntityManagerInterface $em
      */
     public function __construct(
         Wrapper $agi,
+        ChannelInfo $channelInfo,
         EntityManagerInterface $em
     )
     {
-        parent::__construct($agi, $em);
+        parent::__construct($agi, $channelInfo, $em);
     }
 
     /**
@@ -46,7 +49,7 @@ class ExternalRetailCallAction extends ExternalCallAction
     public function process()
     {
         /** @var \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retail */
-        $retail = $this->agi->getChannelCaller();
+        $retail = $this->channelInfo->getChannelCaller();
         $number = $this->number;
 
         // Check if the diversion header contains a valid number
