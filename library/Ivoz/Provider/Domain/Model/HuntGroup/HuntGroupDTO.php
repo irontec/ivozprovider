@@ -74,6 +74,11 @@ class HuntGroupDTO implements DataTransferObjectInterface
     /**
      * @var mixed
      */
+    private $noAnswerNumberCountryId;
+
+    /**
+     * @var mixed
+     */
     private $company;
 
     /**
@@ -90,6 +95,11 @@ class HuntGroupDTO implements DataTransferObjectInterface
      * @var mixed
      */
     private $noAnswerVoiceMailUser;
+
+    /**
+     * @var mixed
+     */
+    private $noAnswerNumberCountry;
 
     /**
      * @var array|null
@@ -114,6 +124,7 @@ class HuntGroupDTO implements DataTransferObjectInterface
             'noAnswerLocutionId' => $this->getNoAnswerLocutionId(),
             'noAnswerExtensionId' => $this->getNoAnswerExtensionId(),
             'noAnswerVoiceMailUserId' => $this->getNoAnswerVoiceMailUserId(),
+            'noAnswerNumberCountryId' => $this->getNoAnswerNumberCountryId(),
             'huntGroupsRelUsers' => $this->getHuntGroupsRelUsers()
         ];
     }
@@ -127,6 +138,7 @@ class HuntGroupDTO implements DataTransferObjectInterface
         $this->noAnswerLocution = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Locution\\Locution', $this->getNoAnswerLocutionId());
         $this->noAnswerExtension = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Extension\\Extension', $this->getNoAnswerExtensionId());
         $this->noAnswerVoiceMailUser = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\User\\User', $this->getNoAnswerVoiceMailUserId());
+        $this->noAnswerNumberCountry = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Country\\Country', $this->getNoAnswerNumberCountryId());
         if (!is_null($this->huntGroupsRelUsers)) {
             $items = $this->getHuntGroupsRelUsers();
             $this->huntGroupsRelUsers = [];
@@ -421,6 +433,34 @@ class HuntGroupDTO implements DataTransferObjectInterface
     public function getNoAnswerVoiceMailUser()
     {
         return $this->noAnswerVoiceMailUser;
+    }
+
+    /**
+     * @param integer $noAnswerNumberCountryId
+     *
+     * @return HuntGroupDTO
+     */
+    public function setNoAnswerNumberCountryId($noAnswerNumberCountryId)
+    {
+        $this->noAnswerNumberCountryId = $noAnswerNumberCountryId;
+
+        return $this;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getNoAnswerNumberCountryId()
+    {
+        return $this->noAnswerNumberCountryId;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Country\Country
+     */
+    public function getNoAnswerNumberCountry()
+    {
+        return $this->noAnswerNumberCountry;
     }
 
     /**

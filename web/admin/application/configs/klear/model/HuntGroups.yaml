@@ -36,23 +36,23 @@ production:
           'ringAll':
             title: _('Ring all')
             visualFilter:
-              hide: ['nextUserPosition']
+              hide: []
               show: ['ringAllTimeout']
           'linear':
             title: _('Linear')
             visualFilter:
               hide: ['ringAllTimeout']
-              show: ['nextUserPosition']
+              show: []
           'roundRobin':
             title: _('Round Robin')
             visualFilter:
               hide: ['ringAllTimeout']
-              show: ['nextUserPosition']
+              show: []
           'random':
             title: _('Random')
             visualFilter:
               hide: ['ringAllTimeout']
-              show: ['nextUserPosition']
+              show: []
       info:
         type: box
         position: left
@@ -74,22 +74,29 @@ production:
           '__null__':
             title:  _("Unassigned")
             visualFilter:
-              hide: ["noAnswerNumberValue", "noAnswerExtensionId", "noAnswerVoiceMailUserId" ]
+              hide: &routableFields
+                - noAnswerNumberCountryId
+                - noAnswerNumberValue
+                - noAnswerExtensionId
+                - noAnswerVoiceMailUserId
           'number':
             title: _('Number')
             visualFilter:
-              show: ["noAnswerNumberValue"]
-              hide: ["noAnswerExtensionId", "noAnswerVoiceMailUserId" ]
+              show: [ noAnswerNumberCountryId, noAnswerNumberValue ]
+              hide:
+                <<: *routableFields
           'extension':
             title: ngettext('Extension', 'Extensions', 1)
             visualFilter:
-              show: ["noAnswerExtensionId"]
-              hide: ["noAnswerNumberValue", "noAnswerVoiceMailUserId" ]
+              show: [ noAnswerExtensionId ]
+              hide:
+                <<: *routableFields
           'voicemail':
             title: ngettext('Voicemail', 'Voicemails', 1)
             visualFilter:
-              show: ["noAnswerVoiceMailUserId"]
-              hide: ["noAnswerExtensionId", "noAnswerNumberValue"]
+              show: [ noAnswerVoiceMailUserId ]
+              hide:
+                <<: *routableFields
     noAnswerLocutionId:
       title: _('No answer locution')
       type: select
@@ -105,6 +112,21 @@ production:
           order:
             Locution.name: asc
         'null': _("Unassigned")
+    noAnswerNumberCountryId:
+      title: _('Country')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Country\Country
+          fieldName:
+            fields:
+              - name${lang}
+              - countryCode
+            template: '%name${lang}% (%countryCode%)'
+          order:
+            Country.name.${lang}: asc
     noAnswerNumberValue:
       title: _('Number')
       type: text

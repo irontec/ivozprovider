@@ -68,6 +68,11 @@ abstract class HuntGroupAbstract
      */
     protected $noAnswerVoiceMailUser;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     */
+    protected $noAnswerNumberCountry;
+
 
     /**
      * Changelog tracking purpose
@@ -198,6 +203,7 @@ abstract class HuntGroupAbstract
             ->setNoAnswerLocution($dto->getNoAnswerLocution())
             ->setNoAnswerExtension($dto->getNoAnswerExtension())
             ->setNoAnswerVoiceMailUser($dto->getNoAnswerVoiceMailUser())
+            ->setNoAnswerNumberCountry($dto->getNoAnswerNumberCountry())
         ;
 
         $self->sanitizeValues();
@@ -228,7 +234,8 @@ abstract class HuntGroupAbstract
             ->setCompany($dto->getCompany())
             ->setNoAnswerLocution($dto->getNoAnswerLocution())
             ->setNoAnswerExtension($dto->getNoAnswerExtension())
-            ->setNoAnswerVoiceMailUser($dto->getNoAnswerVoiceMailUser());
+            ->setNoAnswerVoiceMailUser($dto->getNoAnswerVoiceMailUser())
+            ->setNoAnswerNumberCountry($dto->getNoAnswerNumberCountry());
 
 
 
@@ -252,7 +259,8 @@ abstract class HuntGroupAbstract
             ->setCompanyId($this->getCompany() ? $this->getCompany()->getId() : null)
             ->setNoAnswerLocutionId($this->getNoAnswerLocution() ? $this->getNoAnswerLocution()->getId() : null)
             ->setNoAnswerExtensionId($this->getNoAnswerExtension() ? $this->getNoAnswerExtension()->getId() : null)
-            ->setNoAnswerVoiceMailUserId($this->getNoAnswerVoiceMailUser() ? $this->getNoAnswerVoiceMailUser()->getId() : null);
+            ->setNoAnswerVoiceMailUserId($this->getNoAnswerVoiceMailUser() ? $this->getNoAnswerVoiceMailUser()->getId() : null)
+            ->setNoAnswerNumberCountryId($this->getNoAnswerNumberCountry() ? $this->getNoAnswerNumberCountry()->getId() : null);
     }
 
     /**
@@ -271,7 +279,8 @@ abstract class HuntGroupAbstract
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
             'noAnswerLocutionId' => self::getNoAnswerLocution() ? self::getNoAnswerLocution()->getId() : null,
             'noAnswerExtensionId' => self::getNoAnswerExtension() ? self::getNoAnswerExtension()->getId() : null,
-            'noAnswerVoiceMailUserId' => self::getNoAnswerVoiceMailUser() ? self::getNoAnswerVoiceMailUser()->getId() : null
+            'noAnswerVoiceMailUserId' => self::getNoAnswerVoiceMailUser() ? self::getNoAnswerVoiceMailUser()->getId() : null,
+            'noAnswerNumberCountryId' => self::getNoAnswerNumberCountry() ? self::getNoAnswerNumberCountry()->getId() : null
         ];
     }
 
@@ -578,6 +587,30 @@ abstract class HuntGroupAbstract
     public function getNoAnswerVoiceMailUser()
     {
         return $this->noAnswerVoiceMailUser;
+    }
+
+    /**
+     * Set noAnswerNumberCountry
+     *
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $noAnswerNumberCountry
+     *
+     * @return self
+     */
+    public function setNoAnswerNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $noAnswerNumberCountry = null)
+    {
+        $this->noAnswerNumberCountry = $noAnswerNumberCountry;
+
+        return $this;
+    }
+
+    /**
+     * Get noAnswerNumberCountry
+     *
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     */
+    public function getNoAnswerNumberCountry()
+    {
+        return $this->noAnswerNumberCountry;
     }
 
 

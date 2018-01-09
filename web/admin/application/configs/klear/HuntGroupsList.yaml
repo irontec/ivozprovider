@@ -32,6 +32,7 @@ production:
           ringAllTimeout: true
           noAnswerTargetType: true
           noAnswerLocutionId: true
+          noAnswerNumberCountryId: true
           noAnswerNumberValue: true
           noAnswerExtensionId: true
           noAnswerVoiceMailUserId: true
@@ -49,6 +50,8 @@ production:
       multiInstance: true
       title: _("Add %s", ngettext('Hunt Group', 'Hunt Groups', 1))
       shortcutOption: N
+      defaultValues:
+        noAnswerNumberCountryId: ${auth.companyCountryId}
       forcedValues:
         <<: *forcedCompany
       fields:
@@ -64,23 +67,15 @@ production:
             strategy: 1
             ringAllTimeOut: 1
         group1:
-          label: _("Target data")
-          colsPerRow: 3
-          fields:
-            callTypeFilter: 1
-            targetType: 1
-            numberValue: 1
-            extension: 1
-            voiceMailUser: 1
-        group2:
           label: _("No answer configuration")
-          colsPerRow: 3
+          colsPerRow: 6
           fields:
-            noAnswerLocutionId: 3
-            noAnswerTargetType: 1
-            noAnswerNumberValue: 1
-            noAnswerExtensionId: 1
-            noAnswerVoiceMailUserId: 1
+            noAnswerLocutionId: 5
+            noAnswerTargetType: 2
+            noAnswerNumberCountryId: 2
+            noAnswerNumberValue: 2
+            noAnswerExtensionId: 3
+            noAnswerVoiceMailUserId: 3
     huntGroupsEdit_screen: &huntGroupsEdit_screenLink
       <<: *HuntGroups
       controller: edit

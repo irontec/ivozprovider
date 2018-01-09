@@ -196,6 +196,22 @@ interface HuntGroupInterface extends LoggableEntityInterface
     public function getNoAnswerVoiceMailUser();
 
     /**
+     * Set noAnswerNumberCountry
+     *
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $noAnswerNumberCountry
+     *
+     * @return self
+     */
+    public function setNoAnswerNumberCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $noAnswerNumberCountry = null);
+
+    /**
+     * Get noAnswerNumberCountry
+     *
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     */
+    public function getNoAnswerNumberCountry();
+
+    /**
      * Add huntGroupsRelUser
      *
      * @param \Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUserInterface $huntGroupsRelUser

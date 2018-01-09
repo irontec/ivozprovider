@@ -117,3 +117,14 @@ Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupAbstract:
           referencedColumnName: id
           onDelete: set null
       orphanRemoval: false
+    noAnswerNumberCountry:
+      targetEntity: \Ivoz\Provider\Domain\Model\Country\CountryInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        numberCountryId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false
