@@ -61,7 +61,7 @@ class RetailAccount extends RetailAccountAbstract implements RetailAccountInterf
      */
     public function setIp($ip = null)
     {
-        if (!is_null($ip)) {
+        if (!empty($ip)) {
             Assertion::ip($ip);
         }
         return parent::setIp($ip);
