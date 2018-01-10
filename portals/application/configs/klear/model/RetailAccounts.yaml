@@ -50,6 +50,7 @@ production:
       title: _('Destination IP address')
       type: text
       pattern: "^[.0-9]+$"
+      required: true
       trim: both
       info:
         type: box
@@ -60,6 +61,7 @@ production:
     port:
       title: _('Port')
       type: text
+      required: true
       pattern: "^[0-9]+$"
       defaultValue: 5060
     auth_needed:
