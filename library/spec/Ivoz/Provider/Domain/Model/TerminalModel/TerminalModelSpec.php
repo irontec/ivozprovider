@@ -4,7 +4,7 @@ namespace spec\Ivoz\Provider\Domain\Model\TerminalModel;
 
 use Ivoz\Provider\Domain\Model\TerminalManufacturer\TerminalManufacturerInterface;
 use Ivoz\Provider\Domain\Model\TerminalModel\TerminalModel;
-use Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelDTO;
+use Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelDto;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use spec\HelperTrait;
@@ -16,7 +16,7 @@ class TerminalModelSpec extends ObjectBehavior
     function let(
         TerminalManufacturerInterface $terminalManufacturer
     ) {
-        $dto = new TerminalModelDTO();
+        $dto = new TerminalModelDto();
         $dto->setIden('Iden')
             ->setName('Name')
             ->setDescription('Description');
@@ -29,7 +29,7 @@ class TerminalModelSpec extends ObjectBehavior
         );
 
         $this->beConstructedThrough(
-            'fromDTO',
+            'fromDto',
             [$dto]
         );
     }

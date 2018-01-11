@@ -5,7 +5,7 @@ namespace spec\Ivoz\Provider\Domain\Model\PricingPlansRelTargetPattern;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\PricingPlan\PricingPlanInterface;
 use Ivoz\Provider\Domain\Model\PricingPlansRelTargetPattern\PricingPlansRelTargetPattern;
-use Ivoz\Provider\Domain\Model\PricingPlansRelTargetPattern\PricingPlansRelTargetPatternDTO;
+use Ivoz\Provider\Domain\Model\PricingPlansRelTargetPattern\PricingPlansRelTargetPatternDto;
 use Ivoz\Provider\Domain\Model\TargetPattern\TargetPatternInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -20,7 +20,7 @@ class PricingPlansRelTargetPatternSpec extends ObjectBehavior
         TargetPatternInterface $targetPattern,
         BrandInterface $brand
     ) {
-        $dto = new PricingPlansRelTargetPatternDTO();
+        $dto = new PricingPlansRelTargetPatternDto();
         $dto->setConnectionCharge(2.10)
             ->setPeriodTime(2)
             ->setPerPeriodCharge(3);
@@ -35,7 +35,7 @@ class PricingPlansRelTargetPatternSpec extends ObjectBehavior
         );
 
         $this->beConstructedThrough(
-            'fromDTO',
+            'fromDto',
             [$dto]
         );
     }

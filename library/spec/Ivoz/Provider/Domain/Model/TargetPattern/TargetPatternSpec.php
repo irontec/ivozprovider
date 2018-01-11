@@ -4,7 +4,7 @@ namespace spec\Ivoz\Provider\Domain\Model\TargetPattern;
 
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\TargetPattern\TargetPattern;
-use Ivoz\Provider\Domain\Model\TargetPattern\TargetPatternDTO;
+use Ivoz\Provider\Domain\Model\TargetPattern\TargetPatternDto;
 use Ivoz\Provider\Infrastructure\Persistence\Doctrine\TargetPatternDoctrineRepository;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -20,7 +20,7 @@ class TargetPatternSpec extends ObjectBehavior
         BrandInterface $brand
     ) {
 
-        $dto = new TargetPatternDTO();
+        $dto = new TargetPatternDto();
         $dto->setRegExp('0-9')
             ->setNameEn('en')
             ->setNameEs('es')
@@ -35,7 +35,7 @@ class TargetPatternSpec extends ObjectBehavior
         );
 
         $this->beConstructedThrough(
-            'fromDTO',
+            'fromDto',
             [$dto]
         );
     }

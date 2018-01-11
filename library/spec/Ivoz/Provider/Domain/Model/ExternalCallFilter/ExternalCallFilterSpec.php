@@ -4,7 +4,7 @@ namespace spec\Ivoz\Provider\Domain\Model\ExternalCallFilter;
 
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter;
-use Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterDTO;
+use Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterDto;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use PhpSpec\ObjectBehavior;
@@ -17,7 +17,7 @@ class ExternalCallFilterSpec extends ObjectBehavior
     use HelperTrait;
 
     /**
-     * @var ExtensionDTO
+     * @var ExtensionDto
      */
     protected $dto;
 
@@ -26,7 +26,7 @@ class ExternalCallFilterSpec extends ObjectBehavior
 
     ) {
 
-        $this->dto = $dto = new ExternalCallFilterDTO();
+        $this->dto = $dto = new ExternalCallFilterDto();
         $dto->setName('name');
 
         $this->hydrate(
@@ -37,7 +37,7 @@ class ExternalCallFilterSpec extends ObjectBehavior
         );
 
         $this->beConstructedThrough(
-            'fromDTO',
+            'fromDto',
             [$dto]
         );
     }

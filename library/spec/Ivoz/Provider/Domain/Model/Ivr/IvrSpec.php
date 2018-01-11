@@ -5,7 +5,7 @@ namespace spec\Ivoz\Provider\Domain\Model\Ivr;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Ivoz\Provider\Domain\Model\Ivr\Ivr;
-use Ivoz\Provider\Domain\Model\Ivr\IvrDTO;
+use Ivoz\Provider\Domain\Model\Ivr\IvrDto;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -16,14 +16,14 @@ class IvrSpec extends ObjectBehavior
     use HelperTrait;
 
     /**
-     * @var ExtensionDTO
+     * @var ExtensionDto
      */
     protected $dto;
 
     function let(
         CompanyInterface $company
     ) {
-        $this->dto = $dto = new IvrDTO();
+        $this->dto = $dto = new IvrDto();
         $dto
             ->setName('Name')
             ->setTimeout(5)
@@ -38,7 +38,7 @@ class IvrSpec extends ObjectBehavior
         );
 
         $this->beConstructedThrough(
-            'fromDTO',
+            'fromDto',
             [$dto]
         );
     }

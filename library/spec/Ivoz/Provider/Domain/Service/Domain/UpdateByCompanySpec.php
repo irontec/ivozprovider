@@ -4,7 +4,7 @@ namespace spec\Ivoz\Provider\Domain\Service\Domain;
 
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
-use Ivoz\Provider\Domain\Model\Domain\DomainDTO;
+use Ivoz\Provider\Domain\Model\Domain\DomainDto;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainRepository;
 use Ivoz\Provider\Domain\Service\Domain\UpdateByCompany;
@@ -108,10 +108,10 @@ class UpdateByCompanySpec extends ObjectBehavior
             ->shouldBeCalled();
 
 
-        $domainDTO = new DomainDTO();
+        $domainDto = new DomainDto();
         $domain
-            ->toDTO()
-            ->willReturn($domainDTO)
+            ->toDto()
+            ->willReturn($domainDto)
             ->shouldBeCalled();
 
         $this
@@ -135,7 +135,7 @@ class UpdateByCompanySpec extends ObjectBehavior
 
     protected function getDomainDtoAssertion()
     {
-        return function (DomainDTO $dto) {
+        return function (DomainDto $dto) {
 
             $domain = $dto->getDomain();
             $expectedDomain = 'DomainUserValue';

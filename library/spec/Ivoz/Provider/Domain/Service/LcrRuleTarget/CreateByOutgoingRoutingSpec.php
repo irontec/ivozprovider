@@ -5,7 +5,7 @@ namespace spec\Ivoz\Provider\Domain\Service\LcrRuleTarget;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayInterface;
 use Ivoz\Provider\Domain\Model\LcrRule\LcrRuleInterface;
-use Ivoz\Provider\Domain\Model\LcrRuleTarget\LcrRuleTargetDTO;
+use Ivoz\Provider\Domain\Model\LcrRuleTarget\LcrRuleTargetDto;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 use Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface;
 use Ivoz\Provider\Domain\Model\PeerServer\PeerServerInterface;
@@ -80,7 +80,7 @@ class CreateByOutgoingRoutingSpec extends ObjectBehavior
 
         $this
             ->entityPersister
-            ->persistDto(Argument::type(LcrRuleTargetDTO::class))
+            ->persistDto(Argument::type(LcrRuleTargetDto::class))
             ->shouldBeCalled();
 
         $this->execute($outgoingRouting);

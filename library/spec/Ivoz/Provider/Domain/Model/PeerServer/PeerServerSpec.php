@@ -5,7 +5,7 @@ namespace spec\Ivoz\Provider\Domain\Model\PeerServer;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface;
 use Ivoz\Provider\Domain\Model\PeerServer\PeerServer;
-use Ivoz\Provider\Domain\Model\PeerServer\PeerServerDTO;
+use Ivoz\Provider\Domain\Model\PeerServer\PeerServerDto;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use spec\HelperTrait;
@@ -15,7 +15,7 @@ class PeerServerSpec extends ObjectBehavior
     use HelperTrait;
 
     /**
-     * @var PeerServerDTO
+     * @var PeerServerDto
      */
     protected $dto;
 
@@ -23,7 +23,7 @@ class PeerServerSpec extends ObjectBehavior
         BrandInterface $brand,
         PeeringContractInterface $peeringContract
     ) {
-        $this->dto = $dto = new PeerServerDTO();
+        $this->dto = $dto = new PeerServerDto();
         $dto->setAuthNeeded('yes');
 
         $peeringContract
@@ -43,7 +43,7 @@ class PeerServerSpec extends ObjectBehavior
         );
 
         $this->beConstructedThrough(
-            'fromDTO',
+            'fromDto',
             [$dto]
         );
     }
@@ -120,7 +120,7 @@ class PeerServerSpec extends ObjectBehavior
         $exception = new \Exception('Unknown PeeringContract');
         $this
             ->shouldThrow($exception)
-            ->during('updateFromDTO', [$dto]);
+            ->during('updateFromDto', [$dto]);
     }
 
     function it_throws_exception_on_empty_peering_contract_brand(
@@ -135,7 +135,7 @@ class PeerServerSpec extends ObjectBehavior
         $exception = new \Exception('Unknown Brand');;
         $this
             ->shouldThrow($exception)
-            ->during('updateFromDTO', [$dto]);
+            ->during('updateFromDto', [$dto]);
     }
 
     function it_sets_brand_when_not_new_and_changed_peeringContractId(
@@ -171,7 +171,7 @@ class PeerServerSpec extends ObjectBehavior
             ->setAuthUser('user')
             ->setAuthPassword('password');
 
-        $this->updateFromDTO($dto);
+        $this->updateFromDto($dto);
 
         $this
             ->getAuthUser()

@@ -4,7 +4,7 @@ namespace spec\Ivoz\Provider\Domain\Model\Queue;
 
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Queue\Queue;
-use Ivoz\Provider\Domain\Model\Queue\QueueDTO;
+use Ivoz\Provider\Domain\Model\Queue\QueueDto;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use spec\HelperTrait;
@@ -16,7 +16,7 @@ class QueueSpec extends ObjectBehavior
     public function let(
         CompanyInterface $company
     ) {
-        $dto = new QueueDTO();
+        $dto = new QueueDto();
         $dto->setName('Name');
 
         $this->hydrate(
@@ -27,7 +27,7 @@ class QueueSpec extends ObjectBehavior
         );
 
         $this->beConstructedThrough(
-            'fromDTO',
+            'fromDto',
             [$dto]
         );
     }

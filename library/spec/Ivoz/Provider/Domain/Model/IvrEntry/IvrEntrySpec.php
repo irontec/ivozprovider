@@ -6,7 +6,7 @@ use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Ivoz\Provider\Domain\Model\IvrEntry\IvrEntry;
-use Ivoz\Provider\Domain\Model\IvrEntry\IvrEntryDTO;
+use Ivoz\Provider\Domain\Model\IvrEntry\IvrEntryDto;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -17,21 +17,21 @@ class IvrEntrySpec extends ObjectBehavior
     use HelperTrait;
 
     /**
-     * @var IvrEntryDTO
+     * @var IvrEntryDto
      */
     protected $dto;
 
     function let(
         CompanyInterface $company
     ) {
-        $this->dto = $dto = new IvrEntryDTO();
+        $this->dto = $dto = new IvrEntryDto();
         $dto
             ->setEntry('Entry')
             ->setRouteType('number')
             ->setNumberValue('946002020');
 
         $this->beConstructedThrough(
-            'fromDTO',
+            'fromDto',
             [$dto]
         );
     }
@@ -61,7 +61,7 @@ class IvrEntrySpec extends ObjectBehavior
             ]
         );
 
-        $this->updateFromDTO($dto);
+        $this->updateFromDto($dto);
 
         $this
             ->getExtension()

@@ -4,7 +4,7 @@ namespace spec\Ivoz\Provider\Domain\Model\Company;
 
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
-use Ivoz\Provider\Domain\Model\Company\CompanyDTO;
+use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
 use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
 use PhpSpec\ObjectBehavior;
@@ -25,7 +25,7 @@ class CompanySpec extends ObjectBehavior
         TimezoneInterface $timezone,
         LanguageInterface $language
     ) {
-        $this->dto = $dto = new CompanyDTO();
+        $this->dto = $dto = new CompanyDto();
         $this->brand = $brand;
         $this->timezone = $timezone;
         $this->language = $language;
@@ -62,7 +62,7 @@ class CompanySpec extends ObjectBehavior
             ->willReturn($language);
 
         $this->beConstructedThrough(
-            'fromDTO',
+            'fromDto',
             [$dto]
         );
     }
@@ -95,7 +95,7 @@ class CompanySpec extends ObjectBehavior
         $dto = clone $this->dto;
         $dto->setIpFilter(null);
 
-        $this->updateFromDTO($dto);
+        $this->updateFromDto($dto);
 
         $this
             ->getIpFilter()
@@ -107,7 +107,7 @@ class CompanySpec extends ObjectBehavior
         $dto = clone $this->dto;
         $dto->setOnDemandRecord(null);
 
-        $this->updateFromDTO($dto);
+        $this->updateFromDto($dto);
 
         $this
             ->getOnDemandRecord()
@@ -119,7 +119,7 @@ class CompanySpec extends ObjectBehavior
         $dto = clone $this->dto;
         $dto->setOnDemandRecordCode(null);
 
-        $this->updateFromDTO($dto);
+        $this->updateFromDto($dto);
 
         $this
             ->getOnDemandRecordCode()
@@ -133,7 +133,7 @@ class CompanySpec extends ObjectBehavior
             $dto,
             ['language' => null]
         );
-        $this->updateFromDTO($dto);
+        $this->updateFromDto($dto);
 
         $this
             ->getDefaultTimezone()
@@ -147,7 +147,7 @@ class CompanySpec extends ObjectBehavior
             $dto,
             ['language' => null]
         );
-        $this->updateFromDTO($dto);
+        $this->updateFromDto($dto);
 
         $this
             ->getLanguage()

@@ -3,11 +3,8 @@
 namespace spec\Ivoz\Provider\Domain\Service\Company;
 
 use Ivoz\Core\Application\Service\UpdateEntityFromDTO;
-use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
-use Ivoz\Provider\Domain\Model\Company\CompanyDTO;
-use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
-use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
+use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Service\Company\SanitizeEmptyValues;
 use PhpSpec\Exception\Example\FailureException;
 use PhpSpec\ObjectBehavior;
@@ -19,7 +16,7 @@ class SanitizeEmptyValuesSpec extends ObjectBehavior
      */
     protected $entityUpdater;
     /**
-     * @var CompanyDTO
+     * @var CompanyDto
      */
     protected $dto;
     protected $entity;
@@ -31,7 +28,7 @@ class SanitizeEmptyValuesSpec extends ObjectBehavior
         $this->entityUpdater = $entityUpdater;
         $this->beConstructedWith($entityUpdater);
 
-        $this->dto = new CompanyDTO();
+        $this->dto = new CompanyDto();
         $this->entity = $entity;
     }
 
@@ -55,7 +52,7 @@ class SanitizeEmptyValuesSpec extends ObjectBehavior
 
         $this
             ->entity
-            ->toDTO()
+            ->toDto()
             ->shouldBeCalled()
             ->willReturn($this->dto);
     }
@@ -69,7 +66,7 @@ class SanitizeEmptyValuesSpec extends ObjectBehavior
     {
         $this
             ->entity
-            ->toDTO()
+            ->toDto()
             ->shouldNotBeCalled();
 
         $this->execute($this->entity, false);

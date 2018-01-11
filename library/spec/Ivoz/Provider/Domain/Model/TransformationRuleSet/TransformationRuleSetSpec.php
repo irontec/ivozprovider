@@ -4,7 +4,7 @@ namespace spec\Ivoz\Provider\Domain\Model\TransformationRuleSet;
 
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\Name;
-use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDTO;
+use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -12,13 +12,13 @@ class TransformationRuleSetSpec extends ObjectBehavior
 {
     function let()
     {
-        $dto = new TransformationRuleSetDTO();
+        $dto = new TransformationRuleSetDto();
         $dto
             ->setNameEn('en')
             ->setNameEs('es');
 
         $this->beConstructedThrough(
-            'fromDTO',
+            'fromDto',
             [$dto]
         );
     }

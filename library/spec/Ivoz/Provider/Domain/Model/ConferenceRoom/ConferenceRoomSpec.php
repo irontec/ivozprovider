@@ -4,7 +4,7 @@ namespace spec\Ivoz\Provider\Domain\Model\ConferenceRoom;
 
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom;
-use Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomDTO;
+use Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomDto;
 use PhpSpec\Exception\Example\FailureException;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -17,7 +17,7 @@ class ConferenceRoomSpec extends ObjectBehavior
     function let(
         CompanyInterface $company
     ) {
-        $dto = new  ConferenceRoomDTO();
+        $dto = new  ConferenceRoomDto();
         $dto->setName('Name')
             ->setPinProtected(1)
             ->setMaxMembers(1);
@@ -30,7 +30,7 @@ class ConferenceRoomSpec extends ObjectBehavior
         );
 
         $this->beConstructedThrough(
-            'fromDTO',
+            'fromDto',
             [$dto]
         );
     }
@@ -43,8 +43,8 @@ class ConferenceRoomSpec extends ObjectBehavior
     function it_resets_pincode_when_not_pin_protected(
         CompanyInterface $company
     ) {
-        /** @var ConferenceRoomDTO $dto */
-        $dto = $this->toDTO()->getWrappedObject();
+        /** @var ConferenceRoomDto $dto */
+        $dto = $this->toDto()->getWrappedObject();
         $dto
             ->setPinCode((string) 1234)
             ->setPinProtected(0);
@@ -54,7 +54,7 @@ class ConferenceRoomSpec extends ObjectBehavior
             ['company' => $company->getWrappedObject()]
         );
 
-        $this->updateFromDTO($dto);
+        $this->updateFromDto($dto);
         $this
             ->getPinCode()
             ->shouldBe(null);
@@ -65,8 +65,8 @@ class ConferenceRoomSpec extends ObjectBehavior
     ) {
         $pinCode = '1234';
 
-        /** @var ConferenceRoomDTO $dto */
-        $dto = $this->toDTO()->getWrappedObject();
+        /** @var ConferenceRoomDto $dto */
+        $dto = $this->toDto()->getWrappedObject();
         $dto
             ->setPinCode($pinCode)
             ->setPinProtected(1);
@@ -76,7 +76,7 @@ class ConferenceRoomSpec extends ObjectBehavior
             ['company' => $company->getWrappedObject()]
         );
 
-        $this->updateFromDTO($dto);
+        $this->updateFromDto($dto);
         $this
             ->getPinCode()
             ->shouldBe($pinCode);

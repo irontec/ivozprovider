@@ -5,7 +5,7 @@ namespace spec\Ivoz\Provider\Domain\Model\Ddi;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\Ddi\Ddi;
-use Ivoz\Provider\Domain\Model\Ddi\DdiDTO;
+use Ivoz\Provider\Domain\Model\Ddi\DdiDto;
 use Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -16,7 +16,7 @@ class DdiSpec extends ObjectBehavior
     use HelperTrait;
 
     /**
-     * @var DdiDTO
+     * @var DdiDto
      */
     protected $dto;
 
@@ -32,7 +32,7 @@ class DdiSpec extends ObjectBehavior
     ) {
         $this->peeringContract = $peeringContract;
 
-        $this->dto = $dto = new DdiDTO();
+        $this->dto = $dto = new DdiDto();
         $dto
             ->setDdi('123')
             ->setRecordCalls('none')
@@ -55,7 +55,7 @@ class DdiSpec extends ObjectBehavior
             ->getId()
             ->willReturn(1);
 
-        $this->beConstructedThrough('fromDTO', [$dto]);
+        $this->beConstructedThrough('fromDto', [$dto]);
     }
 
     function it_is_initializable()
@@ -119,7 +119,7 @@ class DdiSpec extends ObjectBehavior
         $this
             ->shouldThrow($exception)
             ->during(
-                'updateFromDTO',
+                'updateFromDto',
                 [$dto]
             );
     }

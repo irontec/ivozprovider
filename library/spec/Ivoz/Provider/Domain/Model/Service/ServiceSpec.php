@@ -3,7 +3,7 @@
 namespace spec\Ivoz\Provider\Domain\Model\Service;
 
 use Ivoz\Provider\Domain\Model\Service\Service;
-use Ivoz\Provider\Domain\Model\Service\ServiceDTO;
+use Ivoz\Provider\Domain\Model\Service\ServiceDto;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Ivoz\Provider\Domain\Model\Service\Name;
@@ -13,7 +13,7 @@ class ServiceSpec extends ObjectBehavior
 {
     function let() {
 
-        $dto = new ServiceDTO();
+        $dto = new ServiceDto();
         $dto->setIden('Iden')
             ->setDefaultCode('12')
             ->setExtraArgs(1)
@@ -23,7 +23,7 @@ class ServiceSpec extends ObjectBehavior
             ->setDescriptionEs('es');
 
         $this->beConstructedThrough(
-            'fromDTO',
+            'fromDto',
             [$dto]
         );
     }

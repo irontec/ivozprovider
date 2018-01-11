@@ -7,7 +7,7 @@ use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface;
 use Ivoz\Provider\Domain\Model\BrandService\BrandServiceRepository;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
-use Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceDTO;
+use Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceDto;
 use Ivoz\Provider\Domain\Model\Service\ServiceInterface;
 use Ivoz\Provider\Domain\Service\CompanyService\PropagateBrandServices;
 use PhpSpec\ObjectBehavior;
@@ -127,7 +127,7 @@ class PropagateBrandServicesSpec extends ObjectBehavior
 
         $this
             ->entityPersister
-            ->persistDto(Argument::type(CompanyServiceDTO::class))
+            ->persistDto(Argument::type(CompanyServiceDto::class))
             ->shouldBeCalled();
 
         $this->execute(

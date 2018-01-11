@@ -7,7 +7,7 @@ use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryRepository;
 use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPattern;
-use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternDTO;
+use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternDto;
 use Ivoz\Provider\Domain\Service\RoutingPattern\UpdateByBrand;
 use Ivoz\Provider\Domain\Service\RoutingPatternGroup\UpdateByRoutingPatternAndCountry;
 use PhpSpec\ObjectBehavior;
@@ -91,7 +91,7 @@ class UpdateByBrandSpec extends ObjectBehavior
         $this
             ->entityPersister
             ->persistDto(
-                Argument::type(RoutingPatternDTO::class),
+                Argument::type(RoutingPatternDto::class),
                 null,
                 true
             )->willReturn($routingPattern);

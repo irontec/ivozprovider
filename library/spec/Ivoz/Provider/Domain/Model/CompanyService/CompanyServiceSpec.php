@@ -3,7 +3,7 @@
 namespace spec\Ivoz\Provider\Domain\Model\CompanyService;
 
 use Ivoz\Provider\Domain\Model\CompanyService\CompanyService;
-use Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceDTO;
+use Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceDto;
 use Ivoz\Provider\Domain\Model\Service\ServiceInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -17,7 +17,7 @@ class CompanyServiceSpec extends ObjectBehavior
     function let(
         ServiceInterface $service
     ) {
-        $this->dto = $dto = new CompanyServiceDTO();
+        $this->dto = $dto = new CompanyServiceDto();
         $dto->setCode('123');
 
         $this->hydrate(
@@ -28,7 +28,7 @@ class CompanyServiceSpec extends ObjectBehavior
         );
 
         $this->beConstructedThrough(
-            'fromDTO',
+            'fromDto',
             [$dto]
         );
     }
