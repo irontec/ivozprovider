@@ -3,7 +3,7 @@
 namespace spec\Ivoz\Provider\Domain\Model\CallForwardSetting;
 
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting;
-use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingDTO;
+use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingDto;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -12,7 +12,7 @@ class CallForwardSettingSpec extends ObjectBehavior
     protected $dto;
 
     function let() {
-        $this->dto = $dto = new CallForwardSettingDTO();
+        $this->dto = $dto = new CallForwardSettingDto();
 
         $dto->setCallTypeFilter('internal')
              ->setCallForwardType('inconditional')
@@ -20,7 +20,7 @@ class CallForwardSettingSpec extends ObjectBehavior
              ->setNoAnswerTimeout(10);
 
         $this->beConstructedThrough(
-            'fromDTO',
+            'fromDto',
             [$dto]
         );
     }

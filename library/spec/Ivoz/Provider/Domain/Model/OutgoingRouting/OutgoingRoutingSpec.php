@@ -3,7 +3,7 @@
 namespace spec\Ivoz\Provider\Domain\Model\OutgoingRouting;
 
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting;
-use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDTO;
+use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto;
 use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface;
 use Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface;
 use PhpSpec\ObjectBehavior;
@@ -15,18 +15,18 @@ class OutgoingRoutingSpec extends ObjectBehavior
     use HelperTrait;
 
     /**
-     * @var ExtensionDTO
+     * @var ExtensionDto
      */
     protected $dto;
 
     function let() {
-        $this->dto = $dto = new OutgoingRoutingDTO();
+        $this->dto = $dto = new OutgoingRoutingDto();
 
         $dto->setPriority(1);
         $dto->setWeight(2);
 
         $this->beConstructedThrough(
-            'fromDTO',
+            'fromDto',
             [$dto]
         );
     }
@@ -103,6 +103,6 @@ class OutgoingRoutingSpec extends ObjectBehavior
         $exception = new \Exception('Incorrect Outgoing Routing Type');
         $this
             ->shouldThrow($exception)
-            ->during('updateFromDTO', [$dto]);
+            ->during('updateFromDto', [$dto]);
     }
 }

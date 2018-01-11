@@ -31,10 +31,33 @@ trait HelperTrait
         $reflection = new \ReflectionClass($object);
 
         foreach ($values as $name => $value) {
-            $property = $reflection->getProperty($name);
+            $property = $this->getProperty($reflection, $name);
             $property->setAccessible(true);
             $property->setValue($object, $value);
             $property->setAccessible(false);
         }
+    }
+
+    protected function getProperty(\ReflectionClass $reflection, $propertyName)
+    {
+        $propertyExists = $reflection->hasProperty($propertyName);
+
+        if ($propertyExists) {
+            return $reflection->getProperty($propertyName);
+        }
+
+        if ($reflection->getParentClass()) {
+
+            return $this->getProperty(
+                $reflection->getParentClass(),
+                $propertyName
+            );
+        }
+
+        throw new \Exception(
+            'Property ' . $propertyName . ' does not exist'
+        );
+
+
     }
 }

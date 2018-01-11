@@ -4,7 +4,7 @@ namespace spec\Ivoz\Provider\Domain\Model\HuntGroup;
 
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup;
-use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupDTO;
+use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupDto;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -16,14 +16,14 @@ class HuntGroupSpec extends ObjectBehavior
     use HelperTrait;
 
     /**
-     * @var ExtensionDTO
+     * @var ExtensionDto
      */
     protected $dto;
 
     function let(
         CompanyInterface $company
     ) {
-        $this->dto = $dto = new HuntGroupDTO();
+        $this->dto = $dto = new HuntGroupDto();
         $dto
             ->setName('name')
             ->setDescription('Description')
@@ -38,7 +38,7 @@ class HuntGroupSpec extends ObjectBehavior
         );
 
         $this->beConstructedThrough(
-            'fromDTO',
+            'fromDto',
             [$dto]
         );
     }

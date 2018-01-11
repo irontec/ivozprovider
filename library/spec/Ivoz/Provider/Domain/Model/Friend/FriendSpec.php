@@ -5,7 +5,7 @@ namespace spec\Ivoz\Provider\Domain\Model\Friend;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\Friend\Friend;
-use Ivoz\Provider\Domain\Model\Friend\FriendDTO;
+use Ivoz\Provider\Domain\Model\Friend\FriendDto;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use spec\HelperTrait;
@@ -19,7 +19,7 @@ class FriendSpec extends ObjectBehavior
         DomainInterface $domain
     ) {
 
-        $dto = new FriendDTO();
+        $dto = new FriendDto();
         $dto->setName('Name')
             ->setDescription('Desc')
             ->setTransport('udp')
@@ -48,7 +48,7 @@ class FriendSpec extends ObjectBehavior
             ->willReturn($domain);
 
         $this->beConstructedThrough(
-            'fromDTO',
+            'fromDto',
             [$dto]
         );
     }

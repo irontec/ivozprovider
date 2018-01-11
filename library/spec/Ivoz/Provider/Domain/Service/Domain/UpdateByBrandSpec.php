@@ -5,7 +5,7 @@ namespace spec\Ivoz\Provider\Domain\Service\Domain;
 use Doctrine\ORM\EntityManagerInterface;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
-use Ivoz\Provider\Domain\Model\Domain\DomainDTO;
+use Ivoz\Provider\Domain\Model\Domain\DomainDto;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainRepository;
 use Ivoz\Provider\Domain\Service\Domain\UpdateByBrand;
@@ -92,7 +92,7 @@ class UpdateByBrandSpec extends ObjectBehavior
 
     function it_updates_domains_when_domainUsers_is_empty(
         DomainInterface $domain,
-        DomainDTO $domainDto
+        DomainDto $domainDto
     ) {
         $this->prepareDomain(
             $domain,
@@ -125,7 +125,7 @@ class UpdateByBrandSpec extends ObjectBehavior
 
     function it_creates_a_new_domain_if_no_results(
         DomainInterface $domain,
-        DomainDTO $domainDto
+        DomainDto $domainDto
     ) {
         $this->prepareDomain(null, 'myNewDomain');
 
@@ -135,13 +135,13 @@ class UpdateByBrandSpec extends ObjectBehavior
             ->willReturn('brandName');
 
         $domain
-            ->toDTO()
+            ->toDto()
             ->shouldNotBeCalled();
 
         $this
             ->entityPersister
             ->persistDto(
-                Argument::type(DomainDTO::class),
+                Argument::type(DomainDto::class),
                 null
             )
             ->willReturn($domain)
@@ -182,12 +182,12 @@ class UpdateByBrandSpec extends ObjectBehavior
 
     /**
      * @param DomainInterface $domain
-     * @param DomainDTO $domainDto
+     * @param DomainDto $domainDto
      */
-    private function prepareDtoCallChain(DomainInterface $domain, DomainDTO $domainDto)
+    private function prepareDtoCallChain(DomainInterface $domain, DomainDto $domainDto)
     {
         $domain
-            ->toDTO()
+            ->toDto()
             ->willReturn($domainDto);
 
         $domainDto

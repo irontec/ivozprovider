@@ -5,7 +5,7 @@ namespace spec\Ivoz\Provider\Domain\Model\Invoice;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Invoice\Invoice;
-use Ivoz\Provider\Domain\Model\Invoice\InvoiceDTO;
+use Ivoz\Provider\Domain\Model\Invoice\InvoiceDto;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use spec\HelperTrait;
@@ -15,7 +15,7 @@ class InvoiceSpec extends ObjectBehavior
     use HelperTrait;
 
     /**
-     * @var ExtensionDTO
+     * @var ExtensionDto
      */
     protected $dto;
 
@@ -23,7 +23,7 @@ class InvoiceSpec extends ObjectBehavior
         BrandInterface $brand,
         CompanyInterface $company
     ) {
-        $this->dto = $dto = new InvoiceDTO();
+        $this->dto = $dto = new InvoiceDto();
         $dto
             ->setNumber('123')
             ->setPdfFileSize(560)
@@ -39,7 +39,7 @@ class InvoiceSpec extends ObjectBehavior
         );
 
         $this->beConstructedThrough(
-            'fromDTO',
+            'fromDto',
             [$dto]
         );
     }

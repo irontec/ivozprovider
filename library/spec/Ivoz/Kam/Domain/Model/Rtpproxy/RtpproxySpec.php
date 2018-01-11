@@ -3,7 +3,7 @@
 namespace spec\Ivoz\Kam\Domain\Model\Rtpproxy;
 
 use Ivoz\Kam\Domain\Model\Rtpproxy\Rtpproxy;
-use Ivoz\Kam\Domain\Model\Rtpproxy\RtpproxyDTO;
+use Ivoz\Kam\Domain\Model\Rtpproxy\RtpproxyDto;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -13,7 +13,7 @@ class RtpproxySpec extends ObjectBehavior
 
     function let() {
 
-        $this->dto = $dto = new RtpproxyDTO();
+        $this->dto = $dto = new RtpproxyDto();
 
         $dto->setSetid('123')
             ->setUrl('something')
@@ -21,7 +21,7 @@ class RtpproxySpec extends ObjectBehavior
             ->setWeight(1);
 
         $this->beConstructedThrough(
-            'fromDTO',
+            'fromDto',
             [$dto]
         );
     }

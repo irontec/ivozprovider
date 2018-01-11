@@ -5,7 +5,7 @@ namespace spec\Ivoz\Provider\Application\Service\Brand;
 use Ivoz\Core\Application\Service\CommonStoragePathResolver;
 use Ivoz\Core\Application\Service\StoragePathResolverCollection;
 use Ivoz\Provider\Application\Service\Brand\BrandDtoAssembler;
-use Ivoz\Provider\Domain\Model\Brand\BrandDTO;
+use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use PhpSpec\Exception\Example\FailureException;
 use PhpSpec\ObjectBehavior;
@@ -40,7 +40,7 @@ class BrandDtoAssemblerSpec extends ObjectBehavior
 
     function it_should_do_nothing_with_no_id()
     {
-        $dto = new BrandDTO();
+        $dto = new BrandDto();
         $this
             ->brand
             ->getId()
@@ -48,7 +48,7 @@ class BrandDtoAssemblerSpec extends ObjectBehavior
 
         $this
             ->brand
-            ->toDTO()
+            ->toDto(0)
             ->willReturn($dto);
 
         $this
@@ -58,7 +58,7 @@ class BrandDtoAssemblerSpec extends ObjectBehavior
 
     function it_should_resolve_file_path_by_the_id()
     {
-        $dto = new BrandDTO();
+        $dto = new BrandDto();
         $this
             ->brand
             ->getId()
@@ -66,7 +66,7 @@ class BrandDtoAssemblerSpec extends ObjectBehavior
 
         $this
             ->brand
-            ->toDTO()
+            ->toDto(0)
             ->willReturn($dto);
 
         $logo = new \Ivoz\Provider\Domain\Model\Brand\Logo(
@@ -89,7 +89,7 @@ class BrandDtoAssemblerSpec extends ObjectBehavior
 
     function it_creates_subpaths_for_long_ids()
     {
-        $dto = new BrandDTO();
+        $dto = new BrandDto();
         $this
             ->brand
             ->getId()
@@ -97,7 +97,7 @@ class BrandDtoAssemblerSpec extends ObjectBehavior
 
         $this
             ->brand
-            ->toDTO()
+            ->toDto(0)
             ->willReturn($dto);
 
         $logo = new \Ivoz\Provider\Domain\Model\Brand\Logo(

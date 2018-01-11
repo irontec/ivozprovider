@@ -1,9 +1,9 @@
-suites:
-extensions:
-  LeanPHP\PhpSpec\CodeCoverage\CodeCoverageExtension:
-    blacklist_files:
-      - CoreBundle/CoreBundle.php
-    whitelist:
-      - Ivoz
-    output:
-      html: spec/coverage
+#suites:
+#extensions:
+#  LeanPHP\PhpSpec\CodeCoverage\CodeCoverageExtension:
+#    blacklist_files:
+#      - CoreBundle/CoreBundle.php
+#    whitelist:
+#      - Ivoz
+#    output:
+#      html: spec/coverage

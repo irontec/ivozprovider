@@ -3,7 +3,7 @@
 namespace spec\Ivoz\Provider\Domain\Service\LcrRule;
 
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
-use Ivoz\Provider\Domain\Model\LcrRule\LcrRuleDTO;
+use Ivoz\Provider\Domain\Model\LcrRule\LcrRuleDto;
 use Ivoz\Provider\Domain\Model\LcrRule\LcrRuleInterface;
 use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface;
 use Ivoz\Provider\Domain\Service\LcrRule\UpdateByRoutingPattern;
@@ -59,9 +59,9 @@ class UpdateByRoutingPatternSpec extends ObjectBehavior
             ]
         );
 
-        $lcrRuleDto = new LcrRuleDTO();
+        $lcrRuleDto = new LcrRuleDto();
         $lcrRule
-            ->toDTO()
+            ->toDto()
             ->willReturn($lcrRuleDto);
 
         $lcrRule

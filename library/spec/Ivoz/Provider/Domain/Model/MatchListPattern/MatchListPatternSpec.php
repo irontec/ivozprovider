@@ -3,7 +3,7 @@
 namespace spec\Ivoz\Provider\Domain\Model\MatchListPattern;
 
 use Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPattern;
-use Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPatternDTO;
+use Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPatternDto;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use spec\HelperTrait;
@@ -13,17 +13,17 @@ class MatchListPatternSpec extends ObjectBehavior
     use HelperTrait;
 
     /**
-     * @var ExtensionDTO
+     * @var ExtensionDto
      */
     protected $dto;
 
     function let() {
-        $this->dto = $dto = new MatchListPatternDTO();
+        $this->dto = $dto = new MatchListPatternDto();
         $dto
             ->setType('number');
 
         $this->beConstructedThrough(
-            'fromDTO',
+            'fromDto',
             [$dto]
         );
     }

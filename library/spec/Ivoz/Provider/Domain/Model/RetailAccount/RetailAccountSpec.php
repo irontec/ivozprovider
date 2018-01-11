@@ -6,7 +6,7 @@ use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount;
-use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDTO;
+use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use spec\HelperTrait;
@@ -16,7 +16,7 @@ class RetailAccountSpec extends ObjectBehavior
     use HelperTrait;
 
     /**
-     * @var RetailAccountDTO
+     * @var RetailAccountDto
      */
     protected $dto;
 
@@ -30,7 +30,7 @@ class RetailAccountSpec extends ObjectBehavior
         CompanyInterface $company,
         BrandInterface $brand
     ) {
-        $this->dto = $dto = new RetailAccountDTO();
+        $this->dto = $dto = new RetailAccountDto();
         $this->brand = $brand;
 
         $dto->setName('Name')
@@ -60,7 +60,7 @@ class RetailAccountSpec extends ObjectBehavior
         );
 
         $this->beConstructedThrough(
-            'fromDTO',
+            'fromDto',
             [$dto]
         );
     }

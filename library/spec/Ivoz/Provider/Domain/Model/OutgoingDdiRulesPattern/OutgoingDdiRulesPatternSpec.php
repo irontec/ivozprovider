@@ -8,7 +8,7 @@ use Ivoz\Provider\Domain\Model\MatchList\MatchListInterface;
 use Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule;
 use Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface;
 use Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPattern;
-use Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPatternDTO;
+use Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPatternDto;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use spec\HelperTrait;
@@ -18,14 +18,14 @@ class OutgoingDdiRulesPatternSpec extends ObjectBehavior
     use HelperTrait;
 
     /**
-     * @var ExtensionDTO
+     * @var ExtensionDto
      */
     protected $dto;
 
     function let(
         MatchListInterface $matchList
     ) {
-        $this->dto = $dto = new OutgoingDdiRulesPatternDTO();
+        $this->dto = $dto = new OutgoingDdiRulesPatternDto();
 
         $dto->setAction('force');
         $dto->setPriority(1);
@@ -38,7 +38,7 @@ class OutgoingDdiRulesPatternSpec extends ObjectBehavior
         );
 
         $this->beConstructedThrough(
-            'fromDTO',
+            'fromDto',
             [$dto]
         );
     }

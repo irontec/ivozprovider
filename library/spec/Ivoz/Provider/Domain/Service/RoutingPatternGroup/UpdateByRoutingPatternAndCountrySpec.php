@@ -6,7 +6,7 @@ use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface;
-use Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupDTO;
+use Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupDto;
 use Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface;
 use Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupRepository;
 use Ivoz\Provider\Domain\Service\RoutingPatternGroup\UpdateByRoutingPatternAndCountry;
@@ -129,7 +129,7 @@ class UpdateByRoutingPatternAndCountrySpec extends ObjectBehavior
             ->shouldBeCalled();
 
         $this->entityPersister->persistDto(
-            Argument::type(RoutingPatternGroupDTO::class),
+            Argument::type(RoutingPatternGroupDto::class),
             null,
             true
         )

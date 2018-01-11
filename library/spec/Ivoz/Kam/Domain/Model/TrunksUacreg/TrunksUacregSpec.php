@@ -3,7 +3,7 @@
 namespace spec\Ivoz\Kam\Domain\Model\TrunksUacreg;
 
 use Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacreg;
-use Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregDTO;
+use Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregDto;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface;
 use PhpSpec\ObjectBehavior;
@@ -22,7 +22,7 @@ class TrunksUacregSpec extends ObjectBehavior
     ) {
 
 
-        $this->dto = $dto = new TrunksUacregDTO();
+        $this->dto = $dto = new TrunksUacregDto();
 
         $dto->setLUuid('')
             ->setLUsername('')
@@ -55,7 +55,7 @@ class TrunksUacregSpec extends ObjectBehavior
             ->willReturn(1);
 
         $this->beConstructedThrough(
-            'fromDTO',
+            'fromDto',
             [$dto]
         );
     }

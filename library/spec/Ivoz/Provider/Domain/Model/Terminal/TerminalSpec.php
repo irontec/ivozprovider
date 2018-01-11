@@ -5,7 +5,7 @@ namespace spec\Ivoz\Provider\Domain\Model\Terminal;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\Terminal\Terminal;
-use Ivoz\Provider\Domain\Model\Terminal\TerminalDTO;
+use Ivoz\Provider\Domain\Model\Terminal\TerminalDto;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use spec\HelperTrait;
@@ -23,7 +23,7 @@ class TerminalSpec extends ObjectBehavior
         DomainInterface $domain
 
     ) {
-        $this->dto = $dto = new TerminalDTO();
+        $this->dto = $dto = new TerminalDto();
         $this->company = $company;
         $this->domain = $domain;
 
@@ -49,7 +49,7 @@ class TerminalSpec extends ObjectBehavior
             ->willReturn($domain);
 
         $this->beConstructedThrough(
-            'fromDTO',
+            'fromDto',
             [$dto]
         );
     }
@@ -102,7 +102,7 @@ class TerminalSpec extends ObjectBehavior
             ]
         );
 
-        $this->updateFromDTO($dto);
+        $this->updateFromDto($dto);
 
         $this
             ->getDomain()

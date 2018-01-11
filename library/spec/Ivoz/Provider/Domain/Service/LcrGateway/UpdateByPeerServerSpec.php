@@ -3,7 +3,7 @@
 namespace spec\Ivoz\Provider\Domain\Service\LcrGateway;
 
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
-use Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayDTO;
+use Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayDto;
 use Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayInterface;
 use Ivoz\Provider\Domain\Model\PeerServer\PeerServerInterface;
 use Ivoz\Provider\Domain\Service\LcrGateway\UpdateByPeerServer;
@@ -57,7 +57,7 @@ class UpdateByPeerServerSpec extends ObjectBehavior
         $this
             ->entityPersister
             ->persistDto(
-                Argument::type(LcrGatewayDTO::class),
+                Argument::type(LcrGatewayDto::class),
                 null,
                 true
             )
@@ -91,10 +91,10 @@ class UpdateByPeerServerSpec extends ObjectBehavior
             ]
         );
 
-        $dto = new LcrGatewayDTO();
+        $dto = new LcrGatewayDto();
 
         $lcrGateway
-            ->toDTO()
+            ->toDto()
             ->willReturn($dto)
             ->shouldBeCalled();
 
