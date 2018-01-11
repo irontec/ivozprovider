@@ -1,15 +1,7 @@
 Ivoz\Provider\Domain\Model\Administrator\AdministratorAbstract:
   type: mappedSuperclass
-  indexes:
-    companyId:
-      columns:
-        - companyId
-  indexes:
-    brandId:
-      columns:
-        - brandId
   uniqueConstraints:
-    username:
+    administrator_username_brand:
       columns:
         - username
         - brandId

@@ -1,11 +1,7 @@
 Ivoz\Provider\Domain\Model\CallAcl\CallAclAbstract:
   type: mappedSuperclass
-  indexes:
-    companyId:
-      columns:
-        - companyId
   uniqueConstraints:
-    companyId_2:
+    CallAcl_company_name:
       columns:
         - companyId
         - name

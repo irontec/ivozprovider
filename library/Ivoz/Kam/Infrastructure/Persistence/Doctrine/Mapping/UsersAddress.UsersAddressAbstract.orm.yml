@@ -1,7 +1,7 @@
 Ivoz\Kam\Domain\Model\UsersAddress\UsersAddressAbstract:
   type: mappedSuperclass
   indexes:
-    companyId:
+    usersAddress_companyId:
       columns:
         - companyId
   fields:

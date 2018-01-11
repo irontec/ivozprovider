@@ -1,15 +1,5 @@
 Ivoz\Provider\Domain\Model\PricingPlansRelTargetPattern\PricingPlansRelTargetPatternAbstract:
   type: mappedSuperclass
-  indexes:
-    targetPatternId:
-      columns:
-        - targetPatternId
-    brandId:
-      columns:
-        - brandId
-    IDX_CAD1B6B5EDF37044:
-      columns:
-        - pricingPlanId
   uniqueConstraints:
     pricingPlanId:
       columns:

@@ -1,18 +1,5 @@
 Ivoz\Provider\Domain\Model\Friend\FriendAbstract:
   type: mappedSuperclass
-  indexes:
-    companyId:
-      columns:
-        - companyId
-    callAclId:
-      columns:
-        - callAclId
-    outgoingDdiId:
-      columns:
-        - outgoingDdiId
-    languageId:
-      columns:
-        - languageId
   uniqueConstraints:
     name_domain:
       columns:

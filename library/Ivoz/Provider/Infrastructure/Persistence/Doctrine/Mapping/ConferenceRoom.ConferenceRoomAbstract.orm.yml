@@ -1,9 +1,5 @@
 Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomAbstract:
   type: mappedSuperclass
-  indexes:
-    companyId:
-      columns:
-        - companyId
   uniqueConstraints:
     ConferenceRoomsUniqueCompanyname:
       columns:

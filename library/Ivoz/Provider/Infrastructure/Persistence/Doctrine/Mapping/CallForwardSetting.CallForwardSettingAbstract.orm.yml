@@ -1,15 +1,5 @@
 Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingAbstract:
   type: mappedSuperclass
-  indexes:
-    userId:
-      columns:
-        - userId
-    extensionId:
-      columns:
-        - extensionId
-    voiceMailUserId:
-      columns:
-        - voiceMailUserId
   uniqueConstraints:
     callFwTypeUser:
       columns:

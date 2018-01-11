@@ -1,20 +1,7 @@
 Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountAbstract:
   type: mappedSuperclass
-  indexes:
-    brandId:
-      columns:
-      - brandId
-    companyId:
-      columns:
-      - companyId
-    outgoingDdiId:
-      columns:
-      - outgoingDdiId
-    languageId:
-      columns:
-      - languageId
   uniqueConstraints:
-    nameBrand:
+    retailAccount_name_brand:
       columns:
       - name
       - brandId

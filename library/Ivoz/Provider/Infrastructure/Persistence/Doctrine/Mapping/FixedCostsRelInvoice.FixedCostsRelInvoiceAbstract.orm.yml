@@ -1,15 +1,5 @@
 Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoiceAbstract:
   type: mappedSuperclass
-  indexes:
-    brandId:
-      columns:
-        - brandId
-    fixedCostId:
-      columns:
-        - fixedCostId
-    invoiceId:
-      columns:
-        - invoiceId
   fields:
     quantity:
       column: quantity

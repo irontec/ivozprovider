@@ -1,27 +1,5 @@
 Ivoz\Provider\Domain\Model\User\UserAbstract:
   type: mappedSuperclass
-  indexes:
-    companyId:
-      columns:
-        - companyId
-    timezoneId:
-      columns:
-        - timezoneId
-    terminalId:
-      columns:
-        - terminalId
-    outgoingDdiId:
-      columns:
-        - outgoingDdiId
-    callAclId:
-      columns:
-        - callAclId
-    bossAssistantId:
-      columns:
-        - bossAssistantId
-    languageId:
-      columns:
-        - languageId
   uniqueConstraints:
     uniqueTerminalId:
       columns:

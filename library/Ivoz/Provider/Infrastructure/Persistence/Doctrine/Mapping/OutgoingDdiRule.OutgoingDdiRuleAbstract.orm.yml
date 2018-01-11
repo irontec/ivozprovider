@@ -1,14 +1,7 @@
 Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleAbstract:
   type: mappedSuperclass
-  indexes:
-    companyId:
-      columns:
-        - companyId
-    OutgoingDdiRules_ibfk_2:
-      columns:
-        - forcedDdiId
   uniqueConstraints:
-    ruleName:
+    outgoingDdiRule_company_name:
       columns:
         - companyId
         - name

@@ -20,11 +20,11 @@ class AppKernel extends Kernel
             new EntityGeneratorBundle\EntityGeneratorBundle(),
         ];
 
-        if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
+        if (in_array($this->getEnvironment(), ['dev', 'test', 'test_e2e'], true)) {
             $bundles[] = new Symfony\Bundle\DebugBundle\DebugBundle();
 
-            if ('dev' === $this->getEnvironment()) {
-//                $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
+            if ('test_e2e' === $this->getEnvironment()) {
+                $bundles[] = new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle();
             }
         }
 

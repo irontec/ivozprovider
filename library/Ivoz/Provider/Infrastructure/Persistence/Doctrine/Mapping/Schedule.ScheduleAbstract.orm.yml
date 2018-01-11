@@ -1,11 +1,7 @@
 Ivoz\Provider\Domain\Model\Schedule\ScheduleAbstract:
   type: mappedSuperclass
-  indexes:
-    companyId:
-      columns:
-        - companyId
   uniqueConstraints:
-    nameCompany:
+    schedule_name_company:
       columns:
         - name
         - companyId

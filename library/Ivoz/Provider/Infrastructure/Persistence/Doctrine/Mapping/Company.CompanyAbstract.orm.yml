@@ -1,32 +1,10 @@
 Ivoz\Provider\Domain\Model\Company\CompanyAbstract:
   type: mappedSuperclass
-  indexes:
-    brandId:
-      columns:
-        - brandId
-    defaultTimezoneId:
-      columns:
-        - defaultTimezoneId
-    applicationServerId:
-      columns:
-        - applicationServerId
-    countryId:
-      columns:
-        - countryId
-    languageId:
-      columns:
-        - languageId
-    mediaRelaySetsId:
-      columns:
-        - mediaRelaySetsId
-    outgoingDdiId:
-      columns:
-        - outgoingDdiId
   uniqueConstraints:
     domain_unique:
       columns:
         - domain_users
-    nameBrand:
+    cCompany_name_brand:
       columns:
         - name
         - brandId

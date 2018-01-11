@@ -1,42 +1,5 @@
 Ivoz\Provider\Domain\Model\Ddi\DdiAbstract:
   type: mappedSuperclass
-  indexes:
-    companyId:
-      columns:
-        - companyId
-    externalCallFilterId:
-      columns:
-        - externalCallFilterId
-    userId:
-      columns:
-        - userId
-    huntGroupId:
-      columns:
-        - huntGroupId
-    faxId:
-      columns:
-        - faxId
-    peeringContractId:
-      columns:
-        - peeringContractId
-    countryId:
-      columns:
-        - countryId
-    brandId:
-      columns:
-        - brandId
-    conferenceRoomId:
-      columns:
-        - conferenceRoomId
-    retailAccountId:
-      columns:
-        - retailAccountId
-    languageId:
-      columns:
-        - languageId
-    queueId:
-      columns:
-        - queueId
   uniqueConstraints:
     Ddicountry:
       columns:

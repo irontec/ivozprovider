@@ -1,11 +1,7 @@
 Ivoz\Provider\Domain\Model\Calendar\CalendarAbstract:
   type: mappedSuperclass
-  indexes:
-    companyId:
-      columns:
-        - companyId
   uniqueConstraints:
-    nameCompany:
+    calendar_name_company:
       columns:
         - name
         - companyId

@@ -1,16 +1,7 @@
 Ivoz\Provider\Domain\Model\LcrRuleTarget\LcrRuleTargetAbstract:
   type: mappedSuperclass
   indexes:
-    rule_id:
-      columns:
-        - rule_id
-    gw_id:
-      columns:
-        - gw_id
-    outgoingRoutingId:
-      columns:
-        - outgoingRoutingId
-    lcr_id:
+    lcrRuleTarget_lcr_id:
       columns:
         - lcr_id
   fields:

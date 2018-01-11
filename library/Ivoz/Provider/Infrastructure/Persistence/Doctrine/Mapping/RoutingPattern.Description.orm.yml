@@ -1,13 +1,6 @@
 Ivoz\Provider\Domain\Model\RoutingPattern\Description:
   type: embeddable
   fields:
-#    description:
-#      type: string
-#      nullable: true
-#      length: 55
-#      options:
-#        fixed: false
-#        comment: '[ml]'
     en:
       type: string
       nullable: true

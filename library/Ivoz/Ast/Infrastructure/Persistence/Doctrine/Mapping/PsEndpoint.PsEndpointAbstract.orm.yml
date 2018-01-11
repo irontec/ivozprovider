@@ -11,7 +11,7 @@ Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointAbstract:
       columns:
         - sorcery_id
   uniqueConstraints:
-    id:
+    psEndpoint_id:
       columns:
         - id
   fields:
@@ -115,7 +115,7 @@ Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointAbstract:
       options:
         fixed: false
         default: 'no'
-      column: 100rel
+      column: '`100rel`'
     outboundProxy:
       type: string
       nullable: true

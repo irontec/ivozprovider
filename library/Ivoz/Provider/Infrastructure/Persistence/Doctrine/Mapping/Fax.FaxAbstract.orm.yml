@@ -1,14 +1,7 @@
 Ivoz\Provider\Domain\Model\Fax\FaxAbstract:
   type: mappedSuperclass
-  indexes:
-    companyId:
-      columns:
-        - companyId
-    outgoingDdiId:
-      columns:
-        - outgoingDdiId
   uniqueConstraints:
-    FaxesUniqueCompanyfaxname:
+    Fax_companyId_name:
       columns:
         - companyId
         - name

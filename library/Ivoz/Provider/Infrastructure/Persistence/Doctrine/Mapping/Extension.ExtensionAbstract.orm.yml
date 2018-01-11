@@ -1,23 +1,7 @@
 Ivoz\Provider\Domain\Model\Extension\ExtensionAbstract:
   type: mappedSuperclass
-  indexes:
-    companyId:
-      columns:
-        - companyId
-    huntGroupId:
-      columns:
-        - huntGroupId
-    conferenceRoomId:
-      columns:
-        - conferenceRoomId
-    userId:
-      columns:
-        - userId
-    queueId:
-      columns:
-        - queueId
   uniqueConstraints:
-    companyId_2:
+    extension_company_number:
       columns:
         - companyId
         - number

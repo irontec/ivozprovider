@@ -1,12 +1,5 @@
 Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserAbstract:
   type: mappedSuperclass
-  indexes:
-    pickUpGroupId:
-      columns:
-        - pickUpGroupId
-    userId:
-      columns:
-        - userId
   manyToOne:
     pickUpGroup:
       targetEntity: \Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupInterface

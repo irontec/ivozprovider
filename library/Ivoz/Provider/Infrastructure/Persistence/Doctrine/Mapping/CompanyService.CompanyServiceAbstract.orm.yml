@@ -1,12 +1,5 @@
 Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceAbstract:
   type: mappedSuperclass
-  indexes:
-    companyId:
-      columns:
-        - companyId
-    serviceId:
-      columns:
-        - serviceId
   fields:
     code:
       type: string

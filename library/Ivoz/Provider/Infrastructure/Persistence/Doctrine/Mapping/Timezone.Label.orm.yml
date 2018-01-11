@@ -2,15 +2,6 @@ Ivoz\Provider\Domain\Model\Timezone\Label:
   type: embeddable
   columnPrefix: false
   fields:
-#    label:
-#      type: string
-#      nullable: false
-#      length: 20
-#      options:
-#        fixed: false
-#        comment: '[ml]'
-#        default: ''
-#      column: timeZoneLabel
     en:
       type: string
       nullable: false

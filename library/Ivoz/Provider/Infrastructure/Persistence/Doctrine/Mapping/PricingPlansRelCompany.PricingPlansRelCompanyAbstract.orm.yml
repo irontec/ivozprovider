@@ -1,15 +1,5 @@
 Ivoz\Provider\Domain\Model\PricingPlansRelCompany\PricingPlansRelCompanyAbstract:
   type: mappedSuperclass
-  indexes:
-    brandId:
-      columns:
-        - brandId
-    IDX_78F195D2EDF37044:
-      columns:
-        - pricingPlanId
-    IDX_78F195D22480E723:
-      columns:
-        - companyId
   uniqueConstraints:
     pricingPlanIdCompanyId:
       columns:

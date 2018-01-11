@@ -13,19 +13,19 @@ Ivoz\Kam\Domain\Model\UsersCdr\UsersCdrAbstract:
     xcallid_idx:
       columns:
         - xcallid
-    brandId:
+    usersCdr_brandId:
       columns:
         - brandId
-    companyId:
+    usersCdr_companyId:
       columns:
         - companyId
-    userId:
+    usersCdr_userId:
       columns:
         - userId
-    friendId:
+    usersCdr_friendId:
       columns:
         - friendId
-    retailAccountId:
+    usersCdr_retailAccountId:
       columns:
         - retailAccountId
   fields:

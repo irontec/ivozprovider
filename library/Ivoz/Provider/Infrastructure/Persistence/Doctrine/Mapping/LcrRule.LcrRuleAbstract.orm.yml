@@ -1,15 +1,9 @@
 Ivoz\Provider\Domain\Model\LcrRule\LcrRuleAbstract:
   type: mappedSuperclass
   indexes:
-    routingPatternId:
-      columns:
-        - routingPatternId
-    lcr_id:
+    lcrRule_lcr_id:
       columns:
         - lcr_id
-    outgoingRoutingId:
-      columns:
-        - outgoingRoutingId
   fields:
     lcrId:
       type: integer

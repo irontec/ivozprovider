@@ -1,10 +1,7 @@
 Ivoz\Provider\Domain\Model\Changelog\ChangelogAbstract:
   type: mappedSuperclass
   indexes:
-    commandId:
-      columns:
-        - commandId
-    createdOn:
+    changelog_createdOn:
       columns:
         - createdOn
   fields:

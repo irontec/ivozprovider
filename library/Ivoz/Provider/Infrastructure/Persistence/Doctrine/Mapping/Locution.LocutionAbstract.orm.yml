@@ -1,11 +1,7 @@
 Ivoz\Provider\Domain\Model\Locution\LocutionAbstract:
   type: mappedSuperclass
-  indexes:
-    companyId:
-      columns:
-        - companyId
   uniqueConstraints:
-    nameCompany:
+    locution_name_company:
       columns:
         - name
         - companyId
@@ -23,48 +19,6 @@ Ivoz\Provider\Domain\Model\Locution\LocutionAbstract:
       length: 50
       options:
         fixed: false
-#    originalFileFileSize:
-#      type: integer
-#      nullable: true
-#      options:
-#        unsigned: true
-#        comment: '[FSO:keepExtension]'
-#      column: originalFileFileSize
-#    originalFileMimeType:
-#      type: string
-#      nullable: true
-#      length: 80
-#      options:
-#        fixed: false
-#      column: originalFileMimeType
-#    originalFileBaseName:
-#      type: string
-#      nullable: true
-#      length: 255
-#      options:
-#        fixed: false
-#      column: originalFileBaseName
-#    encodedFileFileSize:
-#      type: integer
-#      nullable: true
-#      options:
-#        unsigned: true
-#        comment: '[FSO:keepExtension]'
-#      column: encodedFileFileSize
-#    encodedFileMimeType:
-#      type: string
-#      nullable: true
-#      length: 80
-#      options:
-#        fixed: false
-#      column: encodedFileMimeType
-#    encodedFileBaseName:
-#      type: string
-#      nullable: true
-#      length: 255
-#      options:
-#        fixed: false
-#      column: encodedFileBaseName
     status:
       type: string
       nullable: true

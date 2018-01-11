@@ -1,12 +1,5 @@
 Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternAbstract:
   type: mappedSuperclass
-  indexes:
-    routingPatternId:
-      columns:
-        - routingPatternId
-    routingPatternGroupId:
-      columns:
-        - routingPatternGroupId
   uniqueConstraints:
     rel:
       columns:
@@ -34,7 +27,6 @@ Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRe
       joinColumns:
         routingPatternGroupId:
           referencedColumnName: id
-#          unsigned: false
           nullable: false
           onDelete: cascade
       orphanRemoval: false

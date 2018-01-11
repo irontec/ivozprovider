@@ -1,7 +1,7 @@
 Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetAbstract:
   type: mappedSuperclass
   uniqueConstraints:
-    name:
+    mediaRelaySet_name:
       columns:
         - name
   fields:

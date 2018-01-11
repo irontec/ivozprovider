@@ -1,12 +1,5 @@
 Ivoz\Provider\Domain\Model\MatchList\MatchListAbstract:
   type: mappedSuperclass
-  indexes:
-    brandId:
-      columns:
-        - brandId
-    companyId:
-      columns:
-        - companyId
   uniqueConstraints:
     listName:
       columns:

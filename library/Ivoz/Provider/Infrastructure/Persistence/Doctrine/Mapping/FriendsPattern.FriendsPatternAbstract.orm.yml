@@ -1,9 +1,5 @@
 Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPatternAbstract:
   type: mappedSuperclass
-  indexes:
-    friendId:
-      columns:
-        - friendId
   fields:
     name:
       column: name

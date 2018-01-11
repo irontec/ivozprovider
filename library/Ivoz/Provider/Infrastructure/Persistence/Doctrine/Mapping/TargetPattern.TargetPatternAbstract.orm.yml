@@ -1,9 +1,5 @@
 Ivoz\Provider\Domain\Model\TargetPattern\TargetPatternAbstract:
   type: mappedSuperclass
-  indexes:
-    brandId:
-      columns:
-        - brandId
   uniqueConstraints:
     regExpBrand:
       columns:

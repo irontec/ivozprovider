@@ -1,21 +1,5 @@
 Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingAbstract:
   type: mappedSuperclass
-  indexes:
-    companyId:
-      columns:
-        - companyId
-    brandId:
-      columns:
-        - brandId
-    peeringContractId:
-      columns:
-        - peeringContractId
-    routingPatternId:
-      columns:
-        - routingPatternId
-    routingPatternGroupId:
-      columns:
-        - routingPatternGroupId
   fields:
     type:
       type: string

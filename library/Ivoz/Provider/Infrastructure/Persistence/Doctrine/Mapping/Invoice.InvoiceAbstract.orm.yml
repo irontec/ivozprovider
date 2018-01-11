@@ -1,17 +1,7 @@
 Ivoz\Provider\Domain\Model\Invoice\InvoiceAbstract:
   type: mappedSuperclass
-  indexes:
-    brandId:
-      columns:
-        - brandId
-    companyId:
-      columns:
-        - companyId
-    invoiceTemplateId:
-      columns:
-        - invoiceTemplateId
   uniqueConstraints:
-    numberBrand:
+    invoice_number_brand:
       columns:
         - number
         - brandId
@@ -58,27 +48,6 @@ Ivoz\Provider\Domain\Model\Invoice\InvoiceAbstract:
       options:
         fixed: false
         comment: '[enum:waiting|processing|created|error]'
-#    pdfFileFileSize:
-#      type: integer
-#      nullable: true
-#      options:
-#        unsigned: true
-#        comment: '[FSO]'
-#      column: pdfFileFileSize
-#    pdfFileMimeType:
-#      type: string
-#      nullable: true
-#      length: 80
-#      options:
-#        fixed: false
-#      column: pdfFileMimeType
-#    pdfFileBaseName:
-#      type: string
-#      nullable: true
-#      length: 255
-#      options:
-#        fixed: false
-#      column: pdfFileBaseName
   manyToOne:
     brand:
       targetEntity: \Ivoz\Provider\Domain\Model\Brand\BrandInterface

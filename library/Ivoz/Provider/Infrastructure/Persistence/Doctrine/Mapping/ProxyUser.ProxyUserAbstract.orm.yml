@@ -1,7 +1,7 @@
 Ivoz\Provider\Domain\Model\ProxyUser\ProxyUserAbstract:
   type: mappedSuperclass
   uniqueConstraints:
-    ip:
+    proxy_users_ip:
       columns:
         - ip
   fields:

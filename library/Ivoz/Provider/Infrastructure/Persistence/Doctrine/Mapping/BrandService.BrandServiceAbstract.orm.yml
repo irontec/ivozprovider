@@ -1,12 +1,5 @@
 Ivoz\Provider\Domain\Model\BrandService\BrandServiceAbstract:
   type: mappedSuperclass
-  indexes:
-    brandId:
-      columns:
-        - brandId
-    serviceId:
-      columns:
-        - serviceId
   fields:
     code:
       type: string

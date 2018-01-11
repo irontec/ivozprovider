@@ -1,9 +1,5 @@
 Ivoz\Provider\Domain\Model\FixedCost\FixedCostAbstract:
   type: mappedSuperclass
-  indexes:
-    brandId:
-      columns:
-        - brandId
   uniqueConstraints:
     descBrand:
       columns:

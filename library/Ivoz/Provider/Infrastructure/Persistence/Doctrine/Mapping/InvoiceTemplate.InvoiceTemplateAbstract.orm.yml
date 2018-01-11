@@ -1,11 +1,7 @@
 Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateAbstract:
   type: mappedSuperclass
-  indexes:
-    brandId:
-      columns:
-        - brandId
   uniqueConstraints:
-    nameBrand:
+    invoiceTemplate_name_brand:
       columns:
         - name
         - brandId
