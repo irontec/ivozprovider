@@ -2,6 +2,7 @@
 @huntGroups
 @company03
 @company03-4
+@company14
 
 Feature: HuntGroups admin page
   As a main operator

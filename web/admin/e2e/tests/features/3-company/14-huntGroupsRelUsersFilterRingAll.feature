@@ -1,7 +1,6 @@
 @company
 @huntGroupsRelUsersFilterRingAll
 @company14
-@company14-2
 
 Feature: Hunt groups rel users filter ring all admin page
   As a main operator
@@ -22,7 +21,6 @@ Background:
    Then I am on "HuntGroups" list
    When I click on "HuntGroups" first elements "huntGroupsRelUsersFilterRingAll" button
    Then I am on "HuntGroupsList_huntGroupsRelUsersFilterRingAll" subscreen list
-
 
 Scenario: I create hunt groups rel users filter ring all
   When I click on add button
