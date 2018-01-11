@@ -33,16 +33,6 @@ class DoctrineEventSubscriber implements EventSubscriber
     protected $serviceContainer;
 
     /**
-     * @var bool
-     */
-    protected $cycleInProgress = false;
-
-    /**
-     * @var array
-     */
-    protected $entityQueue = [];
-
-    /**
      * @var DomainEventPublisher
      */
     protected $eventPublisher;
@@ -62,6 +52,7 @@ class DoctrineEventSubscriber implements EventSubscriber
         return [
             Events::prePersist,
             Events::postPersist,
+
             Events::preUpdate,
             Events::postUpdate,
 
@@ -119,7 +110,7 @@ class DoctrineEventSubscriber implements EventSubscriber
 
         switch($eventName) {
             case 'pre_remove':
-                // We use pre_persist because Id value is gone on post_persist
+                // We use pre_remove because Id value is gone on post_persist
                 $event = new EntityWasDeleted(
                     EntityClassHelper::getEntityClass($entity),
                     $entity->getId(),

@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\Brand;
 
 use Assert\Assertion;
+use Ivoz\Core\Domain\Model\EntityInterface;
 
 /**
  * Logo
@@ -11,20 +12,20 @@ use Assert\Assertion;
 class Logo
 {
     /**
-     * @column logoFileSize
-     * @comment FSO
+     * column: logoFileSize
+     * comment: FSO
      * @var integer
      */
     protected $fileSize;
 
     /**
-     * @column logoMimeType
+     * column: logoMimeType
      * @var string
      */
     protected $mimeType;
 
     /**
-     * @column logoBaseName
+     * column: logoBaseName
      * @var string
      */
     protected $baseName;

@@ -4,6 +4,8 @@ namespace Ivoz\Provider\Domain\Model\PricingPlansRelTargetPattern;
 
 use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\ChangelogTrait;
+use Ivoz\Core\Domain\Model\EntityInterface;
 
 /**
  * PricingPlansRelTargetPatternAbstract
@@ -42,11 +44,7 @@ abstract class PricingPlansRelTargetPatternAbstract
     protected $brand;
 
 
-    /**
-     * Changelog tracking purpose
-     * @var array
-     */
-    protected $_initialValues = [];
+    use ChangelogTrait;
 
     /**
      * Constructor
@@ -72,72 +70,6 @@ abstract class PricingPlansRelTargetPatternAbstract
     }
 
     /**
-     * @param string $fieldName
-     * @return mixed
-     * @throws \Exception
-     */
-    public function initChangelog()
-    {
-        $values = $this->__toArray();
-        if (!$this->getId()) {
-            // Empty values for entities with no Id
-            foreach ($values as $key => $val) {
-                $values[$key] = null;
-            }
-        }
-
-        $this->_initialValues = $values;
-    }
-
-    /**
-     * @param string $fieldName
-     * @return mixed
-     * @throws \Exception
-     */
-    public function hasChanged($dbFieldName)
-    {
-        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
-            throw new \Exception($dbFieldName . ' field was not found');
-        }
-        $currentValues = $this->__toArray();
-
-        return $currentValues[$dbFieldName] != $this->_initialValues[$dbFieldName];
-    }
-
-    public function getInitialValue($dbFieldName)
-    {
-        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
-            throw new \Exception($dbFieldName . ' field was not found');
-        }
-
-        return $this->_initialValues[$dbFieldName];
-    }
-
-    /**
-     * @return array
-     */
-    protected function getChangeSet()
-    {
-        $changes = [];
-        $currentValues = $this->__toArray();
-        foreach ($currentValues as $key => $value) {
-
-            if ($this->_initialValues[$key] == $currentValues[$key]) {
-                continue;
-            }
-
-            $value = $currentValues[$key];
-            if ($value instanceof \DateTime) {
-                $value = $value->format('Y-m-d H:i:s');
-            }
-
-            $changes[$key] = $value;
-        }
-
-        return $changes;
-    }
-
-    /**
      * @return void
      * @throws \Exception
      */
@@ -146,11 +78,36 @@ abstract class PricingPlansRelTargetPatternAbstract
     }
 
     /**
-     * @return PricingPlansRelTargetPatternDTO
+     * @param null $id
+     * @return PricingPlansRelTargetPatternDto
      */
-    public static function createDTO()
+    public static function createDto($id = null)
     {
-        return new PricingPlansRelTargetPatternDTO();
+        return new PricingPlansRelTargetPatternDto($id);
+    }
+
+    /**
+     * @param EntityInterface|null $entity
+     * @param int $depth
+     * @return PricingPlansRelTargetPatternDto|null
+     */
+    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    {
+        if (!$entity) {
+            return null;
+        }
+
+        Assertion::isInstanceOf($entity, PricingPlansRelTargetPatternInterface::class);
+
+        if ($depth < 1) {
+            return static::createDto($entity->getId());
+        }
+
+        if ($entity instanceof \Doctrine\ORM\Proxy\Proxy && !$entity->__isInitialized()) {
+            return static::createDto($entity->getId());
+        }
+
+        return $entity->toDto($depth-1);
     }
 
     /**
@@ -158,12 +115,12 @@ abstract class PricingPlansRelTargetPatternAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDTO(DataTransferObjectInterface $dto)
+    public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto PricingPlansRelTargetPatternDTO
+         * @var $dto PricingPlansRelTargetPatternDto
          */
-        Assertion::isInstanceOf($dto, PricingPlansRelTargetPatternDTO::class);
+        Assertion::isInstanceOf($dto, PricingPlansRelTargetPatternDto::class);
 
         $self = new static(
             $dto->getConnectionCharge(),
@@ -186,12 +143,12 @@ abstract class PricingPlansRelTargetPatternAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDTO(DataTransferObjectInterface $dto)
+    public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto PricingPlansRelTargetPatternDTO
+         * @var $dto PricingPlansRelTargetPatternDto
          */
-        Assertion::isInstanceOf($dto, PricingPlansRelTargetPatternDTO::class);
+        Assertion::isInstanceOf($dto, PricingPlansRelTargetPatternDto::class);
 
         $this
             ->setConnectionCharge($dto->getConnectionCharge())
@@ -208,17 +165,18 @@ abstract class PricingPlansRelTargetPatternAbstract
     }
 
     /**
-     * @return PricingPlansRelTargetPatternDTO
+     * @param int $depth
+     * @return PricingPlansRelTargetPatternDto
      */
-    public function toDTO()
+    public function toDto($depth = 0)
     {
-        return self::createDTO()
+        return self::createDto()
             ->setConnectionCharge($this->getConnectionCharge())
             ->setPeriodTime($this->getPeriodTime())
             ->setPerPeriodCharge($this->getPerPeriodCharge())
-            ->setPricingPlanId($this->getPricingPlan() ? $this->getPricingPlan()->getId() : null)
-            ->setTargetPatternId($this->getTargetPattern() ? $this->getTargetPattern()->getId() : null)
-            ->setBrandId($this->getBrand() ? $this->getBrand()->getId() : null);
+            ->setPricingPlan(\Ivoz\Provider\Domain\Model\PricingPlan\PricingPlan::entityToDto($this->getPricingPlan(), $depth))
+            ->setTargetPattern(\Ivoz\Provider\Domain\Model\TargetPattern\TargetPattern::entityToDto($this->getTargetPattern(), $depth))
+            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto($this->getBrand(), $depth));
     }
 
     /**

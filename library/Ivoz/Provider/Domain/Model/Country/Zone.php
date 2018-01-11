@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\Country;
 
 use Assert\Assertion;
+use Ivoz\Core\Domain\Model\EntityInterface;
 
 /**
  * Zone
@@ -11,13 +12,13 @@ use Assert\Assertion;
 class Zone
 {
     /**
-     * @column zone_en
+     * column: zone_en
      * @var string
      */
     protected $en = '';
 
     /**
-     * @column zone_es
+     * column: zone_es
      * @var string
      */
     protected $es = '';

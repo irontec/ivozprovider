@@ -40,24 +40,16 @@ trait TerminalTrait
     }
 
     /**
-     * @return TerminalDTO
-     */
-    public static function createDTO()
-    {
-        return new TerminalDTO();
-    }
-
-    /**
      * Factory method
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDTO(DataTransferObjectInterface $dto)
+    public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto TerminalDTO
+         * @var $dto TerminalDto
          */
-        $self = parent::fromDTO($dto);
+        $self = parent::fromDto($dto);
         if ($dto->getAstPsEndpoints()) {
             $self->replaceAstPsEndpoints($dto->getAstPsEndpoints());
         }
@@ -77,12 +69,12 @@ trait TerminalTrait
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDTO(DataTransferObjectInterface $dto)
+    public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto TerminalDTO
+         * @var $dto TerminalDto
          */
-        parent::updateFromDTO($dto);
+        parent::updateFromDto($dto);
         if ($dto->getAstPsEndpoints()) {
             $this->replaceAstPsEndpoints($dto->getAstPsEndpoints());
         }
@@ -93,11 +85,12 @@ trait TerminalTrait
     }
 
     /**
-     * @return TerminalDTO
+     * @param int $depth
+     * @return TerminalDto
      */
-    public function toDTO()
+    public function toDto($depth = 0)
     {
-        $dto = parent::toDTO();
+        $dto = parent::toDto($depth);
         return $dto
             ->setId($this->getId());
     }
@@ -174,7 +167,7 @@ trait TerminalTrait
     /**
      * Get astPsEndpoints
      *
-     * @return array
+     * @return \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface[]
      */
     public function getAstPsEndpoints(Criteria $criteria = null)
     {
@@ -246,7 +239,7 @@ trait TerminalTrait
     /**
      * Get users
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\User\UserInterface[]
      */
     public function getUsers(Criteria $criteria = null)
     {

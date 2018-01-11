@@ -4,6 +4,8 @@ namespace Ivoz\Provider\Domain\Model\PeerServer;
 
 use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\ChangelogTrait;
+use Ivoz\Core\Domain\Model\EntityInterface;
 
 /**
  * PeerServerAbstract
@@ -32,7 +34,7 @@ abstract class PeerServerAbstract
     protected $params;
 
     /**
-     * @column uri_scheme
+     * column: uri_scheme
      * @var boolean
      */
     protected $uriScheme;
@@ -63,43 +65,43 @@ abstract class PeerServerAbstract
     protected $sendRPID = 0;
 
     /**
-     * @column auth_needed
+     * column: auth_needed
      * @var string
      */
     protected $authNeeded = 'no';
 
     /**
-     * @column auth_user
+     * column: auth_user
      * @var string
      */
     protected $authUser;
 
     /**
-     * @column auth_password
+     * column: auth_password
      * @var string
      */
     protected $authPassword;
 
     /**
-     * @column sip_proxy
+     * column: sip_proxy
      * @var string
      */
     protected $sipProxy;
 
     /**
-     * @column outbound_proxy
+     * column: outbound_proxy
      * @var string
      */
     protected $outboundProxy;
 
     /**
-     * @column from_user
+     * column: from_user
      * @var string
      */
     protected $fromUser;
 
     /**
-     * @column from_domain
+     * column: from_domain
      * @var string
      */
     protected $fromDomain;
@@ -120,11 +122,7 @@ abstract class PeerServerAbstract
     protected $brand;
 
 
-    /**
-     * Changelog tracking purpose
-     * @var array
-     */
-    protected $_initialValues = [];
+    use ChangelogTrait;
 
     /**
      * Constructor
@@ -145,72 +143,6 @@ abstract class PeerServerAbstract
     }
 
     /**
-     * @param string $fieldName
-     * @return mixed
-     * @throws \Exception
-     */
-    public function initChangelog()
-    {
-        $values = $this->__toArray();
-        if (!$this->getId()) {
-            // Empty values for entities with no Id
-            foreach ($values as $key => $val) {
-                $values[$key] = null;
-            }
-        }
-
-        $this->_initialValues = $values;
-    }
-
-    /**
-     * @param string $fieldName
-     * @return mixed
-     * @throws \Exception
-     */
-    public function hasChanged($dbFieldName)
-    {
-        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
-            throw new \Exception($dbFieldName . ' field was not found');
-        }
-        $currentValues = $this->__toArray();
-
-        return $currentValues[$dbFieldName] != $this->_initialValues[$dbFieldName];
-    }
-
-    public function getInitialValue($dbFieldName)
-    {
-        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
-            throw new \Exception($dbFieldName . ' field was not found');
-        }
-
-        return $this->_initialValues[$dbFieldName];
-    }
-
-    /**
-     * @return array
-     */
-    protected function getChangeSet()
-    {
-        $changes = [];
-        $currentValues = $this->__toArray();
-        foreach ($currentValues as $key => $value) {
-
-            if ($this->_initialValues[$key] == $currentValues[$key]) {
-                continue;
-            }
-
-            $value = $currentValues[$key];
-            if ($value instanceof \DateTime) {
-                $value = $value->format('Y-m-d H:i:s');
-            }
-
-            $changes[$key] = $value;
-        }
-
-        return $changes;
-    }
-
-    /**
      * @return void
      * @throws \Exception
      */
@@ -219,11 +151,36 @@ abstract class PeerServerAbstract
     }
 
     /**
-     * @return PeerServerDTO
+     * @param null $id
+     * @return PeerServerDto
      */
-    public static function createDTO()
+    public static function createDto($id = null)
     {
-        return new PeerServerDTO();
+        return new PeerServerDto($id);
+    }
+
+    /**
+     * @param EntityInterface|null $entity
+     * @param int $depth
+     * @return PeerServerDto|null
+     */
+    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    {
+        if (!$entity) {
+            return null;
+        }
+
+        Assertion::isInstanceOf($entity, PeerServerInterface::class);
+
+        if ($depth < 1) {
+            return static::createDto($entity->getId());
+        }
+
+        if ($entity instanceof \Doctrine\ORM\Proxy\Proxy && !$entity->__isInitialized()) {
+            return static::createDto($entity->getId());
+        }
+
+        return $entity->toDto($depth-1);
     }
 
     /**
@@ -231,12 +188,12 @@ abstract class PeerServerAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDTO(DataTransferObjectInterface $dto)
+    public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto PeerServerDTO
+         * @var $dto PeerServerDto
          */
-        Assertion::isInstanceOf($dto, PeerServerDTO::class);
+        Assertion::isInstanceOf($dto, PeerServerDto::class);
 
         $self = new static(
             $dto->getAuthNeeded());
@@ -258,7 +215,6 @@ abstract class PeerServerAbstract
             ->setOutboundProxy($dto->getOutboundProxy())
             ->setFromUser($dto->getFromUser())
             ->setFromDomain($dto->getFromDomain())
-            ->setLcrGateway($dto->getLcrGateway())
             ->setPeeringContract($dto->getPeeringContract())
             ->setBrand($dto->getBrand())
         ;
@@ -273,12 +229,12 @@ abstract class PeerServerAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDTO(DataTransferObjectInterface $dto)
+    public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto PeerServerDTO
+         * @var $dto PeerServerDto
          */
-        Assertion::isInstanceOf($dto, PeerServerDTO::class);
+        Assertion::isInstanceOf($dto, PeerServerDto::class);
 
         $this
             ->setIp($dto->getIp())
@@ -298,7 +254,6 @@ abstract class PeerServerAbstract
             ->setOutboundProxy($dto->getOutboundProxy())
             ->setFromUser($dto->getFromUser())
             ->setFromDomain($dto->getFromDomain())
-            ->setLcrGateway($dto->getLcrGateway())
             ->setPeeringContract($dto->getPeeringContract())
             ->setBrand($dto->getBrand());
 
@@ -309,11 +264,12 @@ abstract class PeerServerAbstract
     }
 
     /**
-     * @return PeerServerDTO
+     * @param int $depth
+     * @return PeerServerDto
      */
-    public function toDTO()
+    public function toDto($depth = 0)
     {
-        return self::createDTO()
+        return self::createDto()
             ->setIp($this->getIp())
             ->setHostname($this->getHostname())
             ->setPort($this->getPort())
@@ -331,9 +287,8 @@ abstract class PeerServerAbstract
             ->setOutboundProxy($this->getOutboundProxy())
             ->setFromUser($this->getFromUser())
             ->setFromDomain($this->getFromDomain())
-            ->setLcrGatewayId($this->getLcrGateway() ? $this->getLcrGateway()->getId() : null)
-            ->setPeeringContractId($this->getPeeringContract() ? $this->getPeeringContract()->getId() : null)
-            ->setBrandId($this->getBrand() ? $this->getBrand()->getId() : null);
+            ->setPeeringContract(\Ivoz\Provider\Domain\Model\PeeringContract\PeeringContract::entityToDto($this->getPeeringContract(), $depth))
+            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto($this->getBrand(), $depth));
     }
 
     /**
@@ -359,7 +314,6 @@ abstract class PeerServerAbstract
             'outbound_proxy' => self::getOutboundProxy(),
             'from_user' => self::getFromUser(),
             'from_domain' => self::getFromDomain(),
-            'lcrGatewayId' => self::getLcrGateway() ? self::getLcrGateway()->getId() : null,
             'peeringContractId' => self::getPeeringContract() ? self::getPeeringContract()->getId() : null,
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null
         ];

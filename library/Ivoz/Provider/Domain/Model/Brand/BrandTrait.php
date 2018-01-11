@@ -82,24 +82,16 @@ trait BrandTrait
     }
 
     /**
-     * @return BrandDTO
-     */
-    public static function createDTO()
-    {
-        return new BrandDTO();
-    }
-
-    /**
      * Factory method
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDTO(DataTransferObjectInterface $dto)
+    public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto BrandDTO
+         * @var $dto BrandDto
          */
-        $self = parent::fromDTO($dto);
+        $self = parent::fromDto($dto);
         if ($dto->getCompanies()) {
             $self->replaceCompanies($dto->getCompanies());
         }
@@ -147,12 +139,12 @@ trait BrandTrait
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDTO(DataTransferObjectInterface $dto)
+    public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto BrandDTO
+         * @var $dto BrandDto
          */
-        parent::updateFromDTO($dto);
+        parent::updateFromDto($dto);
         if ($dto->getCompanies()) {
             $this->replaceCompanies($dto->getCompanies());
         }
@@ -184,11 +176,12 @@ trait BrandTrait
     }
 
     /**
-     * @return BrandDTO
+     * @param int $depth
+     * @return BrandDto
      */
-    public function toDTO()
+    public function toDto($depth = 0)
     {
-        $dto = parent::toDTO();
+        $dto = parent::toDto($depth);
         return $dto
             ->setId($this->getId());
     }
@@ -265,7 +258,7 @@ trait BrandTrait
     /**
      * Get companies
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface[]
      */
     public function getCompanies(Criteria $criteria = null)
     {
@@ -337,7 +330,7 @@ trait BrandTrait
     /**
      * Get services
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface[]
      */
     public function getServices(Criteria $criteria = null)
     {
@@ -409,7 +402,7 @@ trait BrandTrait
     /**
      * Get urls
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\BrandUrl\BrandUrlInterface[]
      */
     public function getUrls(Criteria $criteria = null)
     {
@@ -481,7 +474,7 @@ trait BrandTrait
     /**
      * Get relFeatures
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrandInterface[]
      */
     public function getRelFeatures(Criteria $criteria = null)
     {
@@ -553,7 +546,7 @@ trait BrandTrait
     /**
      * Get domains
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface[]
      */
     public function getDomains(Criteria $criteria = null)
     {
@@ -625,7 +618,7 @@ trait BrandTrait
     /**
      * Get retailAccounts
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface[]
      */
     public function getRetailAccounts(Criteria $criteria = null)
     {
@@ -697,7 +690,7 @@ trait BrandTrait
     /**
      * Get musicsOnHold
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface[]
      */
     public function getMusicsOnHold(Criteria $criteria = null)
     {
@@ -769,7 +762,7 @@ trait BrandTrait
     /**
      * Get matchLists
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface[]
      */
     public function getMatchLists(Criteria $criteria = null)
     {
@@ -841,7 +834,7 @@ trait BrandTrait
     /**
      * Get outgoingRoutings
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface[]
      */
     public function getOutgoingRoutings(Criteria $criteria = null)
     {

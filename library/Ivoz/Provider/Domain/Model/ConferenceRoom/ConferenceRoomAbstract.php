@@ -4,6 +4,8 @@ namespace Ivoz\Provider\Domain\Model\ConferenceRoom;
 
 use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\ChangelogTrait;
+use Ivoz\Core\Domain\Model\EntityInterface;
 
 /**
  * ConferenceRoomAbstract
@@ -37,11 +39,7 @@ abstract class ConferenceRoomAbstract
     protected $company;
 
 
-    /**
-     * Changelog tracking purpose
-     * @var array
-     */
-    protected $_initialValues = [];
+    use ChangelogTrait;
 
     /**
      * Constructor
@@ -64,72 +62,6 @@ abstract class ConferenceRoomAbstract
     }
 
     /**
-     * @param string $fieldName
-     * @return mixed
-     * @throws \Exception
-     */
-    public function initChangelog()
-    {
-        $values = $this->__toArray();
-        if (!$this->getId()) {
-            // Empty values for entities with no Id
-            foreach ($values as $key => $val) {
-                $values[$key] = null;
-            }
-        }
-
-        $this->_initialValues = $values;
-    }
-
-    /**
-     * @param string $fieldName
-     * @return mixed
-     * @throws \Exception
-     */
-    public function hasChanged($dbFieldName)
-    {
-        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
-            throw new \Exception($dbFieldName . ' field was not found');
-        }
-        $currentValues = $this->__toArray();
-
-        return $currentValues[$dbFieldName] != $this->_initialValues[$dbFieldName];
-    }
-
-    public function getInitialValue($dbFieldName)
-    {
-        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
-            throw new \Exception($dbFieldName . ' field was not found');
-        }
-
-        return $this->_initialValues[$dbFieldName];
-    }
-
-    /**
-     * @return array
-     */
-    protected function getChangeSet()
-    {
-        $changes = [];
-        $currentValues = $this->__toArray();
-        foreach ($currentValues as $key => $value) {
-
-            if ($this->_initialValues[$key] == $currentValues[$key]) {
-                continue;
-            }
-
-            $value = $currentValues[$key];
-            if ($value instanceof \DateTime) {
-                $value = $value->format('Y-m-d H:i:s');
-            }
-
-            $changes[$key] = $value;
-        }
-
-        return $changes;
-    }
-
-    /**
      * @return void
      * @throws \Exception
      */
@@ -138,11 +70,36 @@ abstract class ConferenceRoomAbstract
     }
 
     /**
-     * @return ConferenceRoomDTO
+     * @param null $id
+     * @return ConferenceRoomDto
      */
-    public static function createDTO()
+    public static function createDto($id = null)
     {
-        return new ConferenceRoomDTO();
+        return new ConferenceRoomDto($id);
+    }
+
+    /**
+     * @param EntityInterface|null $entity
+     * @param int $depth
+     * @return ConferenceRoomDto|null
+     */
+    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    {
+        if (!$entity) {
+            return null;
+        }
+
+        Assertion::isInstanceOf($entity, ConferenceRoomInterface::class);
+
+        if ($depth < 1) {
+            return static::createDto($entity->getId());
+        }
+
+        if ($entity instanceof \Doctrine\ORM\Proxy\Proxy && !$entity->__isInitialized()) {
+            return static::createDto($entity->getId());
+        }
+
+        return $entity->toDto($depth-1);
     }
 
     /**
@@ -150,12 +107,12 @@ abstract class ConferenceRoomAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDTO(DataTransferObjectInterface $dto)
+    public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto ConferenceRoomDTO
+         * @var $dto ConferenceRoomDto
          */
-        Assertion::isInstanceOf($dto, ConferenceRoomDTO::class);
+        Assertion::isInstanceOf($dto, ConferenceRoomDto::class);
 
         $self = new static(
             $dto->getName(),
@@ -177,12 +134,12 @@ abstract class ConferenceRoomAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDTO(DataTransferObjectInterface $dto)
+    public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto ConferenceRoomDTO
+         * @var $dto ConferenceRoomDto
          */
-        Assertion::isInstanceOf($dto, ConferenceRoomDTO::class);
+        Assertion::isInstanceOf($dto, ConferenceRoomDto::class);
 
         $this
             ->setName($dto->getName())
@@ -198,16 +155,17 @@ abstract class ConferenceRoomAbstract
     }
 
     /**
-     * @return ConferenceRoomDTO
+     * @param int $depth
+     * @return ConferenceRoomDto
      */
-    public function toDTO()
+    public function toDto($depth = 0)
     {
-        return self::createDTO()
+        return self::createDto()
             ->setName($this->getName())
             ->setPinProtected($this->getPinProtected())
             ->setPinCode($this->getPinCode())
             ->setMaxMembers($this->getMaxMembers())
-            ->setCompanyId($this->getCompany() ? $this->getCompany()->getId() : null);
+            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto($this->getCompany(), $depth));
     }
 
     /**

@@ -12,6 +12,8 @@ interface RtpproxyInterface extends LoggableEntityInterface
      */
     public function getChangeSet();
 
+    public function setMediaRelaySet(\Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface $mediaRelaySet = null);
+
     /**
      * Set setid
      *
@@ -91,15 +93,6 @@ interface RtpproxyInterface extends LoggableEntityInterface
      * @return string
      */
     public function getDescription();
-
-    /**
-     * Set mediaRelaySet
-     *
-     * @param \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface $mediaRelaySet
-     *
-     * @return self
-     */
-    public function setMediaRelaySet(\Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface $mediaRelaySet = null);
 
     /**
      * Get mediaRelaySet

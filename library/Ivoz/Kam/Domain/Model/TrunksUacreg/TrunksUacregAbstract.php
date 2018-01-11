@@ -4,6 +4,8 @@ namespace Ivoz\Kam\Domain\Model\TrunksUacreg;
 
 use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\ChangelogTrait;
+use Ivoz\Core\Domain\Model\EntityInterface;
 
 /**
  * TrunksUacregAbstract
@@ -12,31 +14,31 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 abstract class TrunksUacregAbstract
 {
     /**
-     * @column l_uuid
+     * column: l_uuid
      * @var string
      */
     protected $lUuid = '';
 
     /**
-     * @column l_username
+     * column: l_username
      * @var string
      */
     protected $lUsername = 'unused';
 
     /**
-     * @column l_domain
+     * column: l_domain
      * @var string
      */
     protected $lDomain = 'unused';
 
     /**
-     * @column r_username
+     * column: r_username
      * @var string
      */
     protected $rUsername = '';
 
     /**
-     * @column r_domain
+     * column: r_domain
      * @var string
      */
     protected $rDomain = '';
@@ -47,19 +49,19 @@ abstract class TrunksUacregAbstract
     protected $realm = '';
 
     /**
-     * @column auth_username
+     * column: auth_username
      * @var string
      */
     protected $authUsername = '';
 
     /**
-     * @column auth_password
+     * column: auth_password
      * @var string
      */
     protected $authPassword = '';
 
     /**
-     * @column auth_proxy
+     * column: auth_proxy
      * @var string
      */
     protected $authProxy = '';
@@ -75,7 +77,7 @@ abstract class TrunksUacregAbstract
     protected $flags = '0';
 
     /**
-     * @column reg_delay
+     * column: reg_delay
      * @var integer
      */
     protected $regDelay = '0';
@@ -96,11 +98,7 @@ abstract class TrunksUacregAbstract
     protected $peeringContract;
 
 
-    /**
-     * Changelog tracking purpose
-     * @var array
-     */
-    protected $_initialValues = [];
+    use ChangelogTrait;
 
     /**
      * Constructor
@@ -136,72 +134,6 @@ abstract class TrunksUacregAbstract
     }
 
     /**
-     * @param string $fieldName
-     * @return mixed
-     * @throws \Exception
-     */
-    public function initChangelog()
-    {
-        $values = $this->__toArray();
-        if (!$this->getId()) {
-            // Empty values for entities with no Id
-            foreach ($values as $key => $val) {
-                $values[$key] = null;
-            }
-        }
-
-        $this->_initialValues = $values;
-    }
-
-    /**
-     * @param string $fieldName
-     * @return mixed
-     * @throws \Exception
-     */
-    public function hasChanged($dbFieldName)
-    {
-        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
-            throw new \Exception($dbFieldName . ' field was not found');
-        }
-        $currentValues = $this->__toArray();
-
-        return $currentValues[$dbFieldName] != $this->_initialValues[$dbFieldName];
-    }
-
-    public function getInitialValue($dbFieldName)
-    {
-        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
-            throw new \Exception($dbFieldName . ' field was not found');
-        }
-
-        return $this->_initialValues[$dbFieldName];
-    }
-
-    /**
-     * @return array
-     */
-    protected function getChangeSet()
-    {
-        $changes = [];
-        $currentValues = $this->__toArray();
-        foreach ($currentValues as $key => $value) {
-
-            if ($this->_initialValues[$key] == $currentValues[$key]) {
-                continue;
-            }
-
-            $value = $currentValues[$key];
-            if ($value instanceof \DateTime) {
-                $value = $value->format('Y-m-d H:i:s');
-            }
-
-            $changes[$key] = $value;
-        }
-
-        return $changes;
-    }
-
-    /**
      * @return void
      * @throws \Exception
      */
@@ -210,11 +142,36 @@ abstract class TrunksUacregAbstract
     }
 
     /**
-     * @return TrunksUacregDTO
+     * @param null $id
+     * @return TrunksUacregDto
      */
-    public static function createDTO()
+    public static function createDto($id = null)
     {
-        return new TrunksUacregDTO();
+        return new TrunksUacregDto($id);
+    }
+
+    /**
+     * @param EntityInterface|null $entity
+     * @param int $depth
+     * @return TrunksUacregDto|null
+     */
+    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    {
+        if (!$entity) {
+            return null;
+        }
+
+        Assertion::isInstanceOf($entity, TrunksUacregInterface::class);
+
+        if ($depth < 1) {
+            return static::createDto($entity->getId());
+        }
+
+        if ($entity instanceof \Doctrine\ORM\Proxy\Proxy && !$entity->__isInitialized()) {
+            return static::createDto($entity->getId());
+        }
+
+        return $entity->toDto($depth-1);
     }
 
     /**
@@ -222,12 +179,12 @@ abstract class TrunksUacregAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDTO(DataTransferObjectInterface $dto)
+    public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto TrunksUacregDTO
+         * @var $dto TrunksUacregDto
          */
-        Assertion::isInstanceOf($dto, TrunksUacregDTO::class);
+        Assertion::isInstanceOf($dto, TrunksUacregDto::class);
 
         $self = new static(
             $dto->getLUuid(),
@@ -259,12 +216,12 @@ abstract class TrunksUacregAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDTO(DataTransferObjectInterface $dto)
+    public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto TrunksUacregDTO
+         * @var $dto TrunksUacregDto
          */
-        Assertion::isInstanceOf($dto, TrunksUacregDTO::class);
+        Assertion::isInstanceOf($dto, TrunksUacregDto::class);
 
         $this
             ->setLUuid($dto->getLUuid())
@@ -290,11 +247,12 @@ abstract class TrunksUacregAbstract
     }
 
     /**
-     * @return TrunksUacregDTO
+     * @param int $depth
+     * @return TrunksUacregDto
      */
-    public function toDTO()
+    public function toDto($depth = 0)
     {
-        return self::createDTO()
+        return self::createDto()
             ->setLUuid($this->getLUuid())
             ->setLUsername($this->getLUsername())
             ->setLDomain($this->getLDomain())
@@ -308,8 +266,8 @@ abstract class TrunksUacregAbstract
             ->setFlags($this->getFlags())
             ->setRegDelay($this->getRegDelay())
             ->setMultiddi($this->getMultiddi())
-            ->setBrandId($this->getBrand() ? $this->getBrand()->getId() : null)
-            ->setPeeringContractId($this->getPeeringContract() ? $this->getPeeringContract()->getId() : null);
+            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto($this->getBrand(), $depth))
+            ->setPeeringContract(\Ivoz\Provider\Domain\Model\PeeringContract\PeeringContract::entityToDto($this->getPeeringContract(), $depth));
     }
 
     /**

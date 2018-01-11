@@ -95,7 +95,7 @@ interface RoutingPatternGroupInterface extends LoggableEntityInterface
     /**
      * Get relPatterns
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface[]
      */
     public function getRelPatterns(\Doctrine\Common\Collections\Criteria $criteria = null);
 
@@ -126,7 +126,7 @@ interface RoutingPatternGroupInterface extends LoggableEntityInterface
     /**
      * Get outgoingRoutings
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface[]
      */
     public function getOutgoingRoutings(\Doctrine\Common\Collections\Criteria $criteria = null);
 

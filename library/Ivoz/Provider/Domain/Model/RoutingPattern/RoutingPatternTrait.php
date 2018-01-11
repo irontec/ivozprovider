@@ -34,24 +34,16 @@ trait RoutingPatternTrait
     }
 
     /**
-     * @return RoutingPatternDTO
-     */
-    public static function createDTO()
-    {
-        return new RoutingPatternDTO();
-    }
-
-    /**
      * Factory method
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDTO(DataTransferObjectInterface $dto)
+    public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto RoutingPatternDTO
+         * @var $dto RoutingPatternDto
          */
-        $self = parent::fromDTO($dto);
+        $self = parent::fromDto($dto);
         if ($dto->getLcrRules()) {
             $self->replaceLcrRules($dto->getLcrRules());
         }
@@ -67,12 +59,12 @@ trait RoutingPatternTrait
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDTO(DataTransferObjectInterface $dto)
+    public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto RoutingPatternDTO
+         * @var $dto RoutingPatternDto
          */
-        parent::updateFromDTO($dto);
+        parent::updateFromDto($dto);
         if ($dto->getLcrRules()) {
             $this->replaceLcrRules($dto->getLcrRules());
         }
@@ -80,11 +72,12 @@ trait RoutingPatternTrait
     }
 
     /**
-     * @return RoutingPatternDTO
+     * @param int $depth
+     * @return RoutingPatternDto
      */
-    public function toDTO()
+    public function toDto($depth = 0)
     {
-        $dto = parent::toDTO();
+        $dto = parent::toDto($depth);
         return $dto
             ->setId($this->getId());
     }
@@ -161,7 +154,7 @@ trait RoutingPatternTrait
     /**
      * Get lcrRules
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\LcrRule\LcrRuleInterface[]
      */
     public function getLcrRules(Criteria $criteria = null)
     {

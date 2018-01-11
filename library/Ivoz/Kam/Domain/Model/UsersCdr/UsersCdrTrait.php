@@ -19,18 +19,10 @@ trait UsersCdrTrait
     /**
      * Constructor
      */
-    public function __construct()
+    protected function __construct()
     {
         parent::__construct(...func_get_args());
 
-    }
-
-    /**
-     * @return UsersCdrDTO
-     */
-    public static function createDTO()
-    {
-        return new UsersCdrDTO();
     }
 
     /**
@@ -38,12 +30,12 @@ trait UsersCdrTrait
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDTO(DataTransferObjectInterface $dto)
+    public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto UsersCdrDTO
+         * @var $dto UsersCdrDto
          */
-        $self = parent::fromDTO($dto);
+        $self = parent::fromDto($dto);
 
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -57,22 +49,23 @@ trait UsersCdrTrait
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDTO(DataTransferObjectInterface $dto)
+    public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto UsersCdrDTO
+         * @var $dto UsersCdrDto
          */
-        parent::updateFromDTO($dto);
+        parent::updateFromDto($dto);
 
         return $this;
     }
 
     /**
-     * @return UsersCdrDTO
+     * @param int $depth
+     * @return UsersCdrDto
      */
-    public function toDTO()
+    public function toDto($depth = 0)
     {
-        $dto = parent::toDTO();
+        $dto = parent::toDto($depth);
         return $dto
             ->setId($this->getId());
     }

@@ -46,24 +46,16 @@ trait UserTrait
     }
 
     /**
-     * @return UserDTO
-     */
-    public static function createDTO()
-    {
-        return new UserDTO();
-    }
-
-    /**
      * Factory method
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDTO(DataTransferObjectInterface $dto)
+    public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto UserDTO
+         * @var $dto UserDto
          */
-        $self = parent::fromDTO($dto);
+        $self = parent::fromDto($dto);
         if ($dto->getPickUpRelUsers()) {
             $self->replacePickUpRelUsers($dto->getPickUpRelUsers());
         }
@@ -87,12 +79,12 @@ trait UserTrait
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDTO(DataTransferObjectInterface $dto)
+    public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto UserDTO
+         * @var $dto UserDto
          */
-        parent::updateFromDTO($dto);
+        parent::updateFromDto($dto);
         if ($dto->getPickUpRelUsers()) {
             $this->replacePickUpRelUsers($dto->getPickUpRelUsers());
         }
@@ -106,11 +98,12 @@ trait UserTrait
     }
 
     /**
-     * @return UserDTO
+     * @param int $depth
+     * @return UserDto
      */
-    public function toDTO()
+    public function toDto($depth = 0)
     {
-        $dto = parent::toDTO();
+        $dto = parent::toDto($depth);
         return $dto
             ->setId($this->getId());
     }
@@ -187,7 +180,7 @@ trait UserTrait
     /**
      * Get pickUpRelUsers
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface[]
      */
     public function getPickUpRelUsers(Criteria $criteria = null)
     {
@@ -259,7 +252,7 @@ trait UserTrait
     /**
      * Get queueMembers
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface[]
      */
     public function getQueueMembers(Criteria $criteria = null)
     {
@@ -331,7 +324,7 @@ trait UserTrait
     /**
      * Get callForwardSettings
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface[]
      */
     public function getCallForwardSettings(Criteria $criteria = null)
     {

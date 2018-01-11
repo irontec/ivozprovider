@@ -40,24 +40,16 @@ trait PeeringContractTrait
     }
 
     /**
-     * @return PeeringContractDTO
-     */
-    public static function createDTO()
-    {
-        return new PeeringContractDTO();
-    }
-
-    /**
      * Factory method
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDTO(DataTransferObjectInterface $dto)
+    public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto PeeringContractDTO
+         * @var $dto PeeringContractDto
          */
-        $self = parent::fromDTO($dto);
+        $self = parent::fromDto($dto);
         if ($dto->getOutgoingRoutings()) {
             $self->replaceOutgoingRoutings($dto->getOutgoingRoutings());
         }
@@ -77,12 +69,12 @@ trait PeeringContractTrait
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDTO(DataTransferObjectInterface $dto)
+    public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto PeeringContractDTO
+         * @var $dto PeeringContractDto
          */
-        parent::updateFromDTO($dto);
+        parent::updateFromDto($dto);
         if ($dto->getOutgoingRoutings()) {
             $this->replaceOutgoingRoutings($dto->getOutgoingRoutings());
         }
@@ -93,11 +85,12 @@ trait PeeringContractTrait
     }
 
     /**
-     * @return PeeringContractDTO
+     * @param int $depth
+     * @return PeeringContractDto
      */
-    public function toDTO()
+    public function toDto($depth = 0)
     {
-        $dto = parent::toDTO();
+        $dto = parent::toDto($depth);
         return $dto
             ->setId($this->getId());
     }
@@ -174,7 +167,7 @@ trait PeeringContractTrait
     /**
      * Get outgoingRoutings
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface[]
      */
     public function getOutgoingRoutings(Criteria $criteria = null)
     {
@@ -246,7 +239,7 @@ trait PeeringContractTrait
     /**
      * Get peerServers
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\PeerServer\PeerServerInterface[]
      */
     public function getPeerServers(Criteria $criteria = null)
     {

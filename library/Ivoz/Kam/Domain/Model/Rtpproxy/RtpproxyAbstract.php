@@ -4,6 +4,8 @@ namespace Ivoz\Kam\Domain\Model\Rtpproxy;
 
 use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\ChangelogTrait;
+use Ivoz\Core\Domain\Model\EntityInterface;
 
 /**
  * RtpproxyAbstract
@@ -42,11 +44,7 @@ abstract class RtpproxyAbstract
     protected $mediaRelaySet;
 
 
-    /**
-     * Changelog tracking purpose
-     * @var array
-     */
-    protected $_initialValues = [];
+    use ChangelogTrait;
 
     /**
      * Constructor
@@ -60,72 +58,6 @@ abstract class RtpproxyAbstract
     }
 
     /**
-     * @param string $fieldName
-     * @return mixed
-     * @throws \Exception
-     */
-    public function initChangelog()
-    {
-        $values = $this->__toArray();
-        if (!$this->getId()) {
-            // Empty values for entities with no Id
-            foreach ($values as $key => $val) {
-                $values[$key] = null;
-            }
-        }
-
-        $this->_initialValues = $values;
-    }
-
-    /**
-     * @param string $fieldName
-     * @return mixed
-     * @throws \Exception
-     */
-    public function hasChanged($dbFieldName)
-    {
-        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
-            throw new \Exception($dbFieldName . ' field was not found');
-        }
-        $currentValues = $this->__toArray();
-
-        return $currentValues[$dbFieldName] != $this->_initialValues[$dbFieldName];
-    }
-
-    public function getInitialValue($dbFieldName)
-    {
-        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
-            throw new \Exception($dbFieldName . ' field was not found');
-        }
-
-        return $this->_initialValues[$dbFieldName];
-    }
-
-    /**
-     * @return array
-     */
-    protected function getChangeSet()
-    {
-        $changes = [];
-        $currentValues = $this->__toArray();
-        foreach ($currentValues as $key => $value) {
-
-            if ($this->_initialValues[$key] == $currentValues[$key]) {
-                continue;
-            }
-
-            $value = $currentValues[$key];
-            if ($value instanceof \DateTime) {
-                $value = $value->format('Y-m-d H:i:s');
-            }
-
-            $changes[$key] = $value;
-        }
-
-        return $changes;
-    }
-
-    /**
      * @return void
      * @throws \Exception
      */
@@ -134,11 +66,36 @@ abstract class RtpproxyAbstract
     }
 
     /**
-     * @return RtpproxyDTO
+     * @param null $id
+     * @return RtpproxyDto
      */
-    public static function createDTO()
+    public static function createDto($id = null)
     {
-        return new RtpproxyDTO();
+        return new RtpproxyDto($id);
+    }
+
+    /**
+     * @param EntityInterface|null $entity
+     * @param int $depth
+     * @return RtpproxyDto|null
+     */
+    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    {
+        if (!$entity) {
+            return null;
+        }
+
+        Assertion::isInstanceOf($entity, RtpproxyInterface::class);
+
+        if ($depth < 1) {
+            return static::createDto($entity->getId());
+        }
+
+        if ($entity instanceof \Doctrine\ORM\Proxy\Proxy && !$entity->__isInitialized()) {
+            return static::createDto($entity->getId());
+        }
+
+        return $entity->toDto($depth-1);
     }
 
     /**
@@ -146,12 +103,12 @@ abstract class RtpproxyAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDTO(DataTransferObjectInterface $dto)
+    public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto RtpproxyDTO
+         * @var $dto RtpproxyDto
          */
-        Assertion::isInstanceOf($dto, RtpproxyDTO::class);
+        Assertion::isInstanceOf($dto, RtpproxyDto::class);
 
         $self = new static(
             $dto->getSetid(),
@@ -174,12 +131,12 @@ abstract class RtpproxyAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDTO(DataTransferObjectInterface $dto)
+    public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto RtpproxyDTO
+         * @var $dto RtpproxyDto
          */
-        Assertion::isInstanceOf($dto, RtpproxyDTO::class);
+        Assertion::isInstanceOf($dto, RtpproxyDto::class);
 
         $this
             ->setSetid($dto->getSetid())
@@ -196,17 +153,18 @@ abstract class RtpproxyAbstract
     }
 
     /**
-     * @return RtpproxyDTO
+     * @param int $depth
+     * @return RtpproxyDto
      */
-    public function toDTO()
+    public function toDto($depth = 0)
     {
-        return self::createDTO()
+        return self::createDto()
             ->setSetid($this->getSetid())
             ->setUrl($this->getUrl())
             ->setFlags($this->getFlags())
             ->setWeight($this->getWeight())
             ->setDescription($this->getDescription())
-            ->setMediaRelaySetId($this->getMediaRelaySet() ? $this->getMediaRelaySet()->getId() : null);
+            ->setMediaRelaySet(\Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet::entityToDto($this->getMediaRelaySet(), $depth));
     }
 
     /**

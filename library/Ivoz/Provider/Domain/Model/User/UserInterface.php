@@ -529,7 +529,7 @@ interface UserInterface extends LoggableEntityInterface
     /**
      * Get pickUpRelUsers
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface[]
      */
     public function getPickUpRelUsers(\Doctrine\Common\Collections\Criteria $criteria = null);
 
@@ -560,7 +560,7 @@ interface UserInterface extends LoggableEntityInterface
     /**
      * Get queueMembers
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface[]
      */
     public function getQueueMembers(\Doctrine\Common\Collections\Criteria $criteria = null);
 
@@ -591,7 +591,7 @@ interface UserInterface extends LoggableEntityInterface
     /**
      * Get callForwardSettings
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface[]
      */
     public function getCallForwardSettings(\Doctrine\Common\Collections\Criteria $criteria = null);
 

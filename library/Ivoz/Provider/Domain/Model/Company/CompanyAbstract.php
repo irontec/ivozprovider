@@ -4,6 +4,8 @@ namespace Ivoz\Provider\Domain\Model\Company;
 
 use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\ChangelogTrait;
+use Ivoz\Core\Domain\Model\EntityInterface;
 
 /**
  * CompanyAbstract
@@ -12,7 +14,7 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 abstract class CompanyAbstract
 {
     /**
-     * @comment enum:vpbx|retail
+     * comment: enum:vpbx|retail
      * @var string
      */
     protected $type = 'vpbx';
@@ -23,7 +25,7 @@ abstract class CompanyAbstract
     protected $name;
 
     /**
-     * @column domain_users
+     * column: domain_users
      * @var string
      */
     protected $domainUsers;
@@ -34,7 +36,7 @@ abstract class CompanyAbstract
     protected $nif;
 
     /**
-     * @comment enum:static|rr|hash
+     * comment: enum:static|rr|hash
      * @var string
      */
     protected $distributeMethod = 'hash';
@@ -65,7 +67,7 @@ abstract class CompanyAbstract
     protected $province;
 
     /**
-     * @column country
+     * column: country
      * @var string
      */
     protected $countryName;
@@ -151,11 +153,7 @@ abstract class CompanyAbstract
     protected $outgoingDdiRule;
 
 
-    /**
-     * Changelog tracking purpose
-     * @var array
-     */
-    protected $_initialValues = [];
+    use ChangelogTrait;
 
     /**
      * Constructor
@@ -195,72 +193,6 @@ abstract class CompanyAbstract
     }
 
     /**
-     * @param string $fieldName
-     * @return mixed
-     * @throws \Exception
-     */
-    public function initChangelog()
-    {
-        $values = $this->__toArray();
-        if (!$this->getId()) {
-            // Empty values for entities with no Id
-            foreach ($values as $key => $val) {
-                $values[$key] = null;
-            }
-        }
-
-        $this->_initialValues = $values;
-    }
-
-    /**
-     * @param string $fieldName
-     * @return mixed
-     * @throws \Exception
-     */
-    public function hasChanged($dbFieldName)
-    {
-        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
-            throw new \Exception($dbFieldName . ' field was not found');
-        }
-        $currentValues = $this->__toArray();
-
-        return $currentValues[$dbFieldName] != $this->_initialValues[$dbFieldName];
-    }
-
-    public function getInitialValue($dbFieldName)
-    {
-        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
-            throw new \Exception($dbFieldName . ' field was not found');
-        }
-
-        return $this->_initialValues[$dbFieldName];
-    }
-
-    /**
-     * @return array
-     */
-    protected function getChangeSet()
-    {
-        $changes = [];
-        $currentValues = $this->__toArray();
-        foreach ($currentValues as $key => $value) {
-
-            if ($this->_initialValues[$key] == $currentValues[$key]) {
-                continue;
-            }
-
-            $value = $currentValues[$key];
-            if ($value instanceof \DateTime) {
-                $value = $value->format('Y-m-d H:i:s');
-            }
-
-            $changes[$key] = $value;
-        }
-
-        return $changes;
-    }
-
-    /**
      * @return void
      * @throws \Exception
      */
@@ -269,11 +201,36 @@ abstract class CompanyAbstract
     }
 
     /**
-     * @return CompanyDTO
+     * @param null $id
+     * @return CompanyDto
      */
-    public static function createDTO()
+    public static function createDto($id = null)
     {
-        return new CompanyDTO();
+        return new CompanyDto($id);
+    }
+
+    /**
+     * @param EntityInterface|null $entity
+     * @param int $depth
+     * @return CompanyDto|null
+     */
+    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    {
+        if (!$entity) {
+            return null;
+        }
+
+        Assertion::isInstanceOf($entity, CompanyInterface::class);
+
+        if ($depth < 1) {
+            return static::createDto($entity->getId());
+        }
+
+        if ($entity instanceof \Doctrine\ORM\Proxy\Proxy && !$entity->__isInitialized()) {
+            return static::createDto($entity->getId());
+        }
+
+        return $entity->toDto($depth-1);
     }
 
     /**
@@ -281,12 +238,12 @@ abstract class CompanyAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDTO(DataTransferObjectInterface $dto)
+    public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto CompanyDTO
+         * @var $dto CompanyDto
          */
-        Assertion::isInstanceOf($dto, CompanyDTO::class);
+        Assertion::isInstanceOf($dto, CompanyDto::class);
 
         $self = new static(
             $dto->getType(),
@@ -330,12 +287,12 @@ abstract class CompanyAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDTO(DataTransferObjectInterface $dto)
+    public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto CompanyDTO
+         * @var $dto CompanyDto
          */
-        Assertion::isInstanceOf($dto, CompanyDTO::class);
+        Assertion::isInstanceOf($dto, CompanyDto::class);
 
         $this
             ->setType($dto->getType())
@@ -373,11 +330,12 @@ abstract class CompanyAbstract
     }
 
     /**
-     * @return CompanyDTO
+     * @param int $depth
+     * @return CompanyDto
      */
-    public function toDTO()
+    public function toDto($depth = 0)
     {
-        return self::createDTO()
+        return self::createDto()
             ->setType($this->getType())
             ->setName($this->getName())
             ->setDomainUsers($this->getDomainUsers())
@@ -395,16 +353,16 @@ abstract class CompanyAbstract
             ->setExternallyextraopts($this->getExternallyextraopts())
             ->setRecordingsLimitMB($this->getRecordingsLimitMB())
             ->setRecordingsLimitEmail($this->getRecordingsLimitEmail())
-            ->setLanguageId($this->getLanguage() ? $this->getLanguage()->getId() : null)
-            ->setMediaRelaySetsId($this->getMediaRelaySets() ? $this->getMediaRelaySets()->getId() : null)
-            ->setDefaultTimezoneId($this->getDefaultTimezone() ? $this->getDefaultTimezone()->getId() : null)
-            ->setBrandId($this->getBrand() ? $this->getBrand()->getId() : null)
-            ->setDomainId($this->getDomain() ? $this->getDomain()->getId() : null)
-            ->setApplicationServerId($this->getApplicationServer() ? $this->getApplicationServer()->getId() : null)
-            ->setCountryId($this->getCountry() ? $this->getCountry()->getId() : null)
-            ->setTransformationRuleSetId($this->getTransformationRuleSet() ? $this->getTransformationRuleSet()->getId() : null)
-            ->setOutgoingDdiId($this->getOutgoingDdi() ? $this->getOutgoingDdi()->getId() : null)
-            ->setOutgoingDdiRuleId($this->getOutgoingDdiRule() ? $this->getOutgoingDdiRule()->getId() : null);
+            ->setLanguage(\Ivoz\Provider\Domain\Model\Language\Language::entityToDto($this->getLanguage(), $depth))
+            ->setMediaRelaySets(\Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet::entityToDto($this->getMediaRelaySets(), $depth))
+            ->setDefaultTimezone(\Ivoz\Provider\Domain\Model\Timezone\Timezone::entityToDto($this->getDefaultTimezone(), $depth))
+            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto($this->getBrand(), $depth))
+            ->setDomain(\Ivoz\Provider\Domain\Model\Domain\Domain::entityToDto($this->getDomain(), $depth))
+            ->setApplicationServer(\Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServer::entityToDto($this->getApplicationServer(), $depth))
+            ->setCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto($this->getCountry(), $depth))
+            ->setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet::entityToDto($this->getTransformationRuleSet(), $depth))
+            ->setOutgoingDdi(\Ivoz\Provider\Domain\Model\Ddi\Ddi::entityToDto($this->getOutgoingDdi(), $depth))
+            ->setOutgoingDdiRule(\Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule::entityToDto($this->getOutgoingDdiRule(), $depth));
     }
 
     /**

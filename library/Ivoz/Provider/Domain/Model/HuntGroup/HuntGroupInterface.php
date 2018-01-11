@@ -247,7 +247,7 @@ interface HuntGroupInterface extends LoggableEntityInterface
     /**
      * Get huntGroupsRelUsers
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUserInterface[]
      */
     public function getHuntGroupsRelUsers(\Doctrine\Common\Collections\Criteria $criteria = null);
 

@@ -40,24 +40,16 @@ trait FriendTrait
     }
 
     /**
-     * @return FriendDTO
-     */
-    public static function createDTO()
-    {
-        return new FriendDTO();
-    }
-
-    /**
      * Factory method
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDTO(DataTransferObjectInterface $dto)
+    public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto FriendDTO
+         * @var $dto FriendDto
          */
-        $self = parent::fromDTO($dto);
+        $self = parent::fromDto($dto);
         if ($dto->getPsEndpoints()) {
             $self->replacePsEndpoints($dto->getPsEndpoints());
         }
@@ -77,12 +69,12 @@ trait FriendTrait
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDTO(DataTransferObjectInterface $dto)
+    public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto FriendDTO
+         * @var $dto FriendDto
          */
-        parent::updateFromDTO($dto);
+        parent::updateFromDto($dto);
         if ($dto->getPsEndpoints()) {
             $this->replacePsEndpoints($dto->getPsEndpoints());
         }
@@ -93,11 +85,12 @@ trait FriendTrait
     }
 
     /**
-     * @return FriendDTO
+     * @param int $depth
+     * @return FriendDto
      */
-    public function toDTO()
+    public function toDto($depth = 0)
     {
-        $dto = parent::toDTO();
+        $dto = parent::toDto($depth);
         return $dto
             ->setId($this->getId());
     }
@@ -174,7 +167,7 @@ trait FriendTrait
     /**
      * Get psEndpoints
      *
-     * @return array
+     * @return \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface[]
      */
     public function getPsEndpoints(Criteria $criteria = null)
     {
@@ -246,7 +239,7 @@ trait FriendTrait
     /**
      * Get patterns
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPatternInterface[]
      */
     public function getPatterns(Criteria $criteria = null)
     {

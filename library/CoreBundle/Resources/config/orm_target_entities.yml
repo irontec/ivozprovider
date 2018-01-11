@@ -11,8 +11,6 @@ doctrine:
         Ivoz\Provider\Domain\Model\Administrator\Administrator
       Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface:
         Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServer
-      Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface:
-        Ivoz\Provider\Domain\Model\BillableCall\BillableCall
       Ivoz\Provider\Domain\Model\Brand\BrandInterface:
         Ivoz\Provider\Domain\Model\Brand\Brand
       Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface:
@@ -89,16 +87,12 @@ doctrine:
         Ivoz\Provider\Domain\Model\HolidayDate\HolidayDate
       Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupInterface:
         Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup
-      Ivoz\Provider\Domain\Model\HuntGroupRelUser\HuntGroupRelUserInterface:
-        Ivoz\Provider\Domain\Model\HuntGroupRelUser\HuntGroupRelUser
+      Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUserInterface:
+        Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUser
       Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface:
         Ivoz\Provider\Domain\Model\Invoice\Invoice
       Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface:
         Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplate
-      Ivoz\Provider\Domain\Model\HuntGroups\HuntGroupsInterface:
-        Ivoz\Provider\Domain\Model\HuntGroups\HuntGroupsRelUser
-      Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUserInterface:
-        Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUser
       Ivoz\Provider\Domain\Model\IvrEntry\IvrEntryInterface:
         Ivoz\Provider\Domain\Model\IvrEntry\IvrEntry
       Ivoz\Provider\Domain\Model\Ivr\IvrInterface:
@@ -131,10 +125,6 @@ doctrine:
         Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPattern
       Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface:
         Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting
-      Ivoz\Provider\Domain\Model\ParsedCdr\ParsedCdrInterface:
-        Ivoz\Provider\Domain\Model\ParsedCdr\ParsedCdr
-      Ivoz\Provider\Domain\Model\ParsedCdrsGod\ParsedCdrsGodInterface:
-        Ivoz\Provider\Domain\Model\ParsedCdrsGod\ParsedCdrsGod
       Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface:
         Ivoz\Provider\Domain\Model\PeeringContract\PeeringContract
       Ivoz\Provider\Domain\Model\PeerServer\PeerServerInterface:
@@ -185,20 +175,18 @@ doctrine:
         Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet
       Ivoz\Provider\Domain\Model\TransformationRule\TransformationRuleInterface:
         Ivoz\Provider\Domain\Model\TransformationRule\TransformationRule
-      Ivoz\Provider\Domain\Model\TrunksHtable\TrunksHtableInterface:
-        Ivoz\Provider\Domain\Model\TrunksHtable\TrunksHtable
-      Ivoz\Provider\Domain\Model\TrunksUacreg\TrunksUacregInterface:
-        Ivoz\Provider\Domain\Model\TrunksUacreg\TrunksUacreg
-      Ivoz\Provider\Domain\Model\UsersHtable\UsersHtableInterface:
-        Ivoz\Provider\Domain\Model\UsersHtable\UsersHtable
-      Ivoz\Provider\Domain\Model\UsersLocation\UsersLocationInterface:
-        Ivoz\Provider\Domain\Model\UsersLocation\UsersLocation
+      Ivoz\Kam\Domain\Model\TrunksHtable\TrunksHtableInterface:
+        Ivoz\Kam\Domain\Model\TrunksHtable\TrunksHtable
+      Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregInterface:
+        Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacreg
+      Ivoz\Kam\Domain\Model\UsersHtable\UsersHtableInterface:
+        Ivoz\Kam\Domain\Model\UsersHtable\UsersHtable
+      Ivoz\Kam\Domain\Model\UsersLocation\UsersLocationInterface:
+        Ivoz\Kam\Domain\Model\UsersLocation\UsersLocation
       Ivoz\Provider\Domain\Model\User\UserInterface:
         Ivoz\Provider\Domain\Model\User\User
-      Ivoz\Provider\Domain\Model\Voicemail\VoicemailInterface:
-        Ivoz\Provider\Domain\Model\Voicemail\Voicemail
-      Ivoz\Provider\Domain\Model\XMLRPCLog\XMLRPCLogInterface:
-        Ivoz\Provider\Domain\Model\XMLRPCLog\XMLRPCLog
+      Ivoz\Ast\Domain\Model\Voicemail\VoicemailInterface:
+        Ivoz\Ast\Domain\Model\Voicemail\Voicemail
       Ivoz\Kam\Domain\Model\AccCdr\AccCdrInterface:
         Ivoz\Kam\Domain\Model\AccCdr\AccCdr
       Ivoz\Kam\Domain\Model\AccCdrsBrand\AccCdrsBrandInterface:

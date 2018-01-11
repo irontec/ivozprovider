@@ -4,6 +4,8 @@ namespace Ivoz\Provider\Domain\Model\Changelog;
 
 use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\ChangelogTrait;
+use Ivoz\Core\Domain\Model\EntityInterface;
 
 /**
  * ChangelogAbstract
@@ -42,11 +44,7 @@ abstract class ChangelogAbstract
     protected $command;
 
 
-    /**
-     * Changelog tracking purpose
-     * @var array
-     */
-    protected $_initialValues = [];
+    use ChangelogTrait;
 
     /**
      * Constructor
@@ -74,72 +72,6 @@ abstract class ChangelogAbstract
     }
 
     /**
-     * @param string $fieldName
-     * @return mixed
-     * @throws \Exception
-     */
-    public function initChangelog()
-    {
-        $values = $this->__toArray();
-        if (!$this->getId()) {
-            // Empty values for entities with no Id
-            foreach ($values as $key => $val) {
-                $values[$key] = null;
-            }
-        }
-
-        $this->_initialValues = $values;
-    }
-
-    /**
-     * @param string $fieldName
-     * @return mixed
-     * @throws \Exception
-     */
-    public function hasChanged($dbFieldName)
-    {
-        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
-            throw new \Exception($dbFieldName . ' field was not found');
-        }
-        $currentValues = $this->__toArray();
-
-        return $currentValues[$dbFieldName] != $this->_initialValues[$dbFieldName];
-    }
-
-    public function getInitialValue($dbFieldName)
-    {
-        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
-            throw new \Exception($dbFieldName . ' field was not found');
-        }
-
-        return $this->_initialValues[$dbFieldName];
-    }
-
-    /**
-     * @return array
-     */
-    protected function getChangeSet()
-    {
-        $changes = [];
-        $currentValues = $this->__toArray();
-        foreach ($currentValues as $key => $value) {
-
-            if ($this->_initialValues[$key] == $currentValues[$key]) {
-                continue;
-            }
-
-            $value = $currentValues[$key];
-            if ($value instanceof \DateTime) {
-                $value = $value->format('Y-m-d H:i:s');
-            }
-
-            $changes[$key] = $value;
-        }
-
-        return $changes;
-    }
-
-    /**
      * @return void
      * @throws \Exception
      */
@@ -148,11 +80,36 @@ abstract class ChangelogAbstract
     }
 
     /**
-     * @return ChangelogDTO
+     * @param null $id
+     * @return ChangelogDto
      */
-    public static function createDTO()
+    public static function createDto($id = null)
     {
-        return new ChangelogDTO();
+        return new ChangelogDto($id);
+    }
+
+    /**
+     * @param EntityInterface|null $entity
+     * @param int $depth
+     * @return ChangelogDto|null
+     */
+    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    {
+        if (!$entity) {
+            return null;
+        }
+
+        Assertion::isInstanceOf($entity, ChangelogInterface::class);
+
+        if ($depth < 1) {
+            return static::createDto($entity->getId());
+        }
+
+        if ($entity instanceof \Doctrine\ORM\Proxy\Proxy && !$entity->__isInitialized()) {
+            return static::createDto($entity->getId());
+        }
+
+        return $entity->toDto($depth-1);
     }
 
     /**
@@ -160,12 +117,12 @@ abstract class ChangelogAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDTO(DataTransferObjectInterface $dto)
+    public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto ChangelogDTO
+         * @var $dto ChangelogDto
          */
-        Assertion::isInstanceOf($dto, ChangelogDTO::class);
+        Assertion::isInstanceOf($dto, ChangelogDto::class);
 
         $self = new static(
             $dto->getEntity(),
@@ -188,12 +145,12 @@ abstract class ChangelogAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDTO(DataTransferObjectInterface $dto)
+    public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto ChangelogDTO
+         * @var $dto ChangelogDto
          */
-        Assertion::isInstanceOf($dto, ChangelogDTO::class);
+        Assertion::isInstanceOf($dto, ChangelogDto::class);
 
         $this
             ->setEntity($dto->getEntity())
@@ -210,17 +167,18 @@ abstract class ChangelogAbstract
     }
 
     /**
-     * @return ChangelogDTO
+     * @param int $depth
+     * @return ChangelogDto
      */
-    public function toDTO()
+    public function toDto($depth = 0)
     {
-        return self::createDTO()
+        return self::createDto()
             ->setEntity($this->getEntity())
             ->setEntityId($this->getEntityId())
             ->setData($this->getData())
             ->setCreatedOn($this->getCreatedOn())
             ->setMicrotime($this->getMicrotime())
-            ->setCommandId($this->getCommand() ? $this->getCommand()->getId() : null);
+            ->setCommand(\Ivoz\Provider\Domain\Model\Commandlog\Commandlog::entityToDto($this->getCommand(), $depth));
     }
 
     /**

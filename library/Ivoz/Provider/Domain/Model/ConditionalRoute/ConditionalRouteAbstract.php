@@ -4,6 +4,8 @@ namespace Ivoz\Provider\Domain\Model\ConditionalRoute;
 
 use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\ChangelogTrait;
+use Ivoz\Core\Domain\Model\EntityInterface;
 
 /**
  * ConditionalRouteAbstract
@@ -17,7 +19,7 @@ abstract class ConditionalRouteAbstract
     protected $name;
 
     /**
-     * @comment enum:user|number|ivr|huntGroup|voicemail|friend|queue|conferenceRoom|extension
+     * comment: enum:user|number|ivr|huntGroup|voicemail|friend|queue|conferenceRoom|extension
      * @var string
      */
     protected $routetype;
@@ -83,11 +85,7 @@ abstract class ConditionalRouteAbstract
     protected $numberCountry;
 
 
-    /**
-     * Changelog tracking purpose
-     * @var array
-     */
-    protected $_initialValues = [];
+    use ChangelogTrait;
 
     /**
      * Constructor
@@ -108,72 +106,6 @@ abstract class ConditionalRouteAbstract
     }
 
     /**
-     * @param string $fieldName
-     * @return mixed
-     * @throws \Exception
-     */
-    public function initChangelog()
-    {
-        $values = $this->__toArray();
-        if (!$this->getId()) {
-            // Empty values for entities with no Id
-            foreach ($values as $key => $val) {
-                $values[$key] = null;
-            }
-        }
-
-        $this->_initialValues = $values;
-    }
-
-    /**
-     * @param string $fieldName
-     * @return mixed
-     * @throws \Exception
-     */
-    public function hasChanged($dbFieldName)
-    {
-        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
-            throw new \Exception($dbFieldName . ' field was not found');
-        }
-        $currentValues = $this->__toArray();
-
-        return $currentValues[$dbFieldName] != $this->_initialValues[$dbFieldName];
-    }
-
-    public function getInitialValue($dbFieldName)
-    {
-        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
-            throw new \Exception($dbFieldName . ' field was not found');
-        }
-
-        return $this->_initialValues[$dbFieldName];
-    }
-
-    /**
-     * @return array
-     */
-    protected function getChangeSet()
-    {
-        $changes = [];
-        $currentValues = $this->__toArray();
-        foreach ($currentValues as $key => $value) {
-
-            if ($this->_initialValues[$key] == $currentValues[$key]) {
-                continue;
-            }
-
-            $value = $currentValues[$key];
-            if ($value instanceof \DateTime) {
-                $value = $value->format('Y-m-d H:i:s');
-            }
-
-            $changes[$key] = $value;
-        }
-
-        return $changes;
-    }
-
-    /**
      * @return void
      * @throws \Exception
      */
@@ -182,11 +114,36 @@ abstract class ConditionalRouteAbstract
     }
 
     /**
-     * @return ConditionalRouteDTO
+     * @param null $id
+     * @return ConditionalRouteDto
      */
-    public static function createDTO()
+    public static function createDto($id = null)
     {
-        return new ConditionalRouteDTO();
+        return new ConditionalRouteDto($id);
+    }
+
+    /**
+     * @param EntityInterface|null $entity
+     * @param int $depth
+     * @return ConditionalRouteDto|null
+     */
+    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    {
+        if (!$entity) {
+            return null;
+        }
+
+        Assertion::isInstanceOf($entity, ConditionalRouteInterface::class);
+
+        if ($depth < 1) {
+            return static::createDto($entity->getId());
+        }
+
+        if ($entity instanceof \Doctrine\ORM\Proxy\Proxy && !$entity->__isInitialized()) {
+            return static::createDto($entity->getId());
+        }
+
+        return $entity->toDto($depth-1);
     }
 
     /**
@@ -194,12 +151,12 @@ abstract class ConditionalRouteAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDTO(DataTransferObjectInterface $dto)
+    public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto ConditionalRouteDTO
+         * @var $dto ConditionalRouteDto
          */
-        Assertion::isInstanceOf($dto, ConditionalRouteDTO::class);
+        Assertion::isInstanceOf($dto, ConditionalRouteDto::class);
 
         $self = new static(
             $dto->getName());
@@ -230,12 +187,12 @@ abstract class ConditionalRouteAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDTO(DataTransferObjectInterface $dto)
+    public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto ConditionalRouteDTO
+         * @var $dto ConditionalRouteDto
          */
-        Assertion::isInstanceOf($dto, ConditionalRouteDTO::class);
+        Assertion::isInstanceOf($dto, ConditionalRouteDto::class);
 
         $this
             ->setName($dto->getName())
@@ -260,25 +217,26 @@ abstract class ConditionalRouteAbstract
     }
 
     /**
-     * @return ConditionalRouteDTO
+     * @param int $depth
+     * @return ConditionalRouteDto
      */
-    public function toDTO()
+    public function toDto($depth = 0)
     {
-        return self::createDTO()
+        return self::createDto()
             ->setName($this->getName())
             ->setRoutetype($this->getRoutetype())
             ->setNumbervalue($this->getNumbervalue())
             ->setFriendvalue($this->getFriendvalue())
-            ->setCompanyId($this->getCompany() ? $this->getCompany()->getId() : null)
-            ->setIvrId($this->getIvr() ? $this->getIvr()->getId() : null)
-            ->setHuntGroupId($this->getHuntGroup() ? $this->getHuntGroup()->getId() : null)
-            ->setVoicemailUserId($this->getVoicemailUser() ? $this->getVoicemailUser()->getId() : null)
-            ->setUserId($this->getUser() ? $this->getUser()->getId() : null)
-            ->setQueueId($this->getQueue() ? $this->getQueue()->getId() : null)
-            ->setLocutionId($this->getLocution() ? $this->getLocution()->getId() : null)
-            ->setConferenceRoomId($this->getConferenceRoom() ? $this->getConferenceRoom()->getId() : null)
-            ->setExtensionId($this->getExtension() ? $this->getExtension()->getId() : null)
-            ->setNumberCountryId($this->getNumberCountry() ? $this->getNumberCountry()->getId() : null);
+            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto($this->getCompany(), $depth))
+            ->setIvr(\Ivoz\Provider\Domain\Model\Ivr\Ivr::entityToDto($this->getIvr(), $depth))
+            ->setHuntGroup(\Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup::entityToDto($this->getHuntGroup(), $depth))
+            ->setVoicemailUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto($this->getVoicemailUser(), $depth))
+            ->setUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto($this->getUser(), $depth))
+            ->setQueue(\Ivoz\Provider\Domain\Model\Queue\Queue::entityToDto($this->getQueue(), $depth))
+            ->setLocution(\Ivoz\Provider\Domain\Model\Locution\Locution::entityToDto($this->getLocution(), $depth))
+            ->setConferenceRoom(\Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom::entityToDto($this->getConferenceRoom(), $depth))
+            ->setExtension(\Ivoz\Provider\Domain\Model\Extension\Extension::entityToDto($this->getExtension(), $depth))
+            ->setNumberCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto($this->getNumberCountry(), $depth));
     }
 
     /**

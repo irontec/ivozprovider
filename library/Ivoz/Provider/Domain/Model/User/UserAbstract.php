@@ -4,6 +4,8 @@ namespace Ivoz\Provider\Domain\Model\User;
 
 use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\ChangelogTrait;
+use Ivoz\Core\Domain\Model\EntityInterface;
 
 /**
  * UserAbstract
@@ -27,7 +29,7 @@ abstract class UserAbstract
     protected $email;
 
     /**
-     * @comment password
+     * comment: password
      * @var string
      */
     protected $pass;
@@ -53,7 +55,7 @@ abstract class UserAbstract
     protected $maxCalls = '0';
 
     /**
-     * @comment enum:0|1|2|3
+     * comment: enum:0|1|2|3
      * @var string
      */
     protected $externalIpCalls = '0';
@@ -144,11 +146,7 @@ abstract class UserAbstract
     protected $voicemailLocution;
 
 
-    /**
-     * Changelog tracking purpose
-     * @var array
-     */
-    protected $_initialValues = [];
+    use ChangelogTrait;
 
     /**
      * Constructor
@@ -190,72 +188,6 @@ abstract class UserAbstract
     }
 
     /**
-     * @param string $fieldName
-     * @return mixed
-     * @throws \Exception
-     */
-    public function initChangelog()
-    {
-        $values = $this->__toArray();
-        if (!$this->getId()) {
-            // Empty values for entities with no Id
-            foreach ($values as $key => $val) {
-                $values[$key] = null;
-            }
-        }
-
-        $this->_initialValues = $values;
-    }
-
-    /**
-     * @param string $fieldName
-     * @return mixed
-     * @throws \Exception
-     */
-    public function hasChanged($dbFieldName)
-    {
-        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
-            throw new \Exception($dbFieldName . ' field was not found');
-        }
-        $currentValues = $this->__toArray();
-
-        return $currentValues[$dbFieldName] != $this->_initialValues[$dbFieldName];
-    }
-
-    public function getInitialValue($dbFieldName)
-    {
-        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
-            throw new \Exception($dbFieldName . ' field was not found');
-        }
-
-        return $this->_initialValues[$dbFieldName];
-    }
-
-    /**
-     * @return array
-     */
-    protected function getChangeSet()
-    {
-        $changes = [];
-        $currentValues = $this->__toArray();
-        foreach ($currentValues as $key => $value) {
-
-            if ($this->_initialValues[$key] == $currentValues[$key]) {
-                continue;
-            }
-
-            $value = $currentValues[$key];
-            if ($value instanceof \DateTime) {
-                $value = $value->format('Y-m-d H:i:s');
-            }
-
-            $changes[$key] = $value;
-        }
-
-        return $changes;
-    }
-
-    /**
      * @return void
      * @throws \Exception
      */
@@ -264,11 +196,36 @@ abstract class UserAbstract
     }
 
     /**
-     * @return UserDTO
+     * @param null $id
+     * @return UserDto
      */
-    public static function createDTO()
+    public static function createDto($id = null)
     {
-        return new UserDTO();
+        return new UserDto($id);
+    }
+
+    /**
+     * @param EntityInterface|null $entity
+     * @param int $depth
+     * @return UserDto|null
+     */
+    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    {
+        if (!$entity) {
+            return null;
+        }
+
+        Assertion::isInstanceOf($entity, UserInterface::class);
+
+        if ($depth < 1) {
+            return static::createDto($entity->getId());
+        }
+
+        if ($entity instanceof \Doctrine\ORM\Proxy\Proxy && !$entity->__isInitialized()) {
+            return static::createDto($entity->getId());
+        }
+
+        return $entity->toDto($depth-1);
     }
 
     /**
@@ -276,12 +233,12 @@ abstract class UserAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDTO(DataTransferObjectInterface $dto)
+    public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto UserDTO
+         * @var $dto UserDto
          */
-        Assertion::isInstanceOf($dto, UserDTO::class);
+        Assertion::isInstanceOf($dto, UserDto::class);
 
         $self = new static(
             $dto->getName(),
@@ -324,12 +281,12 @@ abstract class UserAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDTO(DataTransferObjectInterface $dto)
+    public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto UserDTO
+         * @var $dto UserDto
          */
-        Assertion::isInstanceOf($dto, UserDTO::class);
+        Assertion::isInstanceOf($dto, UserDto::class);
 
         $this
             ->setName($dto->getName())
@@ -366,11 +323,12 @@ abstract class UserAbstract
     }
 
     /**
-     * @return UserDTO
+     * @param int $depth
+     * @return UserDto
      */
-    public function toDTO()
+    public function toDto($depth = 0)
     {
-        return self::createDTO()
+        return self::createDto()
             ->setName($this->getName())
             ->setLastname($this->getLastname())
             ->setEmail($this->getEmail())
@@ -385,18 +343,18 @@ abstract class UserAbstract
             ->setVoicemailAttachSound($this->getVoicemailAttachSound())
             ->setTokenKey($this->getTokenKey())
             ->setGsQRCode($this->getGsQRCode())
-            ->setCompanyId($this->getCompany() ? $this->getCompany()->getId() : null)
-            ->setCallAclId($this->getCallAcl() ? $this->getCallAcl()->getId() : null)
-            ->setBossAssistantId($this->getBossAssistant() ? $this->getBossAssistant()->getId() : null)
-            ->setBossAssistantWhiteListId($this->getBossAssistantWhiteList() ? $this->getBossAssistantWhiteList()->getId() : null)
-            ->setTransformationRuleSetId($this->getTransformationRuleSet() ? $this->getTransformationRuleSet()->getId() : null)
-            ->setLanguageId($this->getLanguage() ? $this->getLanguage()->getId() : null)
-            ->setTerminalId($this->getTerminal() ? $this->getTerminal()->getId() : null)
-            ->setExtensionId($this->getExtension() ? $this->getExtension()->getId() : null)
-            ->setTimezoneId($this->getTimezone() ? $this->getTimezone()->getId() : null)
-            ->setOutgoingDdiId($this->getOutgoingDdi() ? $this->getOutgoingDdi()->getId() : null)
-            ->setOutgoingDdiRuleId($this->getOutgoingDdiRule() ? $this->getOutgoingDdiRule()->getId() : null)
-            ->setVoicemailLocutionId($this->getVoicemailLocution() ? $this->getVoicemailLocution()->getId() : null);
+            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto($this->getCompany(), $depth))
+            ->setCallAcl(\Ivoz\Provider\Domain\Model\CallAcl\CallAcl::entityToDto($this->getCallAcl(), $depth))
+            ->setBossAssistant(\Ivoz\Provider\Domain\Model\User\User::entityToDto($this->getBossAssistant(), $depth))
+            ->setBossAssistantWhiteList(\Ivoz\Provider\Domain\Model\MatchList\MatchList::entityToDto($this->getBossAssistantWhiteList(), $depth))
+            ->setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet::entityToDto($this->getTransformationRuleSet(), $depth))
+            ->setLanguage(\Ivoz\Provider\Domain\Model\Language\Language::entityToDto($this->getLanguage(), $depth))
+            ->setTerminal(\Ivoz\Provider\Domain\Model\Terminal\Terminal::entityToDto($this->getTerminal(), $depth))
+            ->setExtension(\Ivoz\Provider\Domain\Model\Extension\Extension::entityToDto($this->getExtension(), $depth))
+            ->setTimezone(\Ivoz\Provider\Domain\Model\Timezone\Timezone::entityToDto($this->getTimezone(), $depth))
+            ->setOutgoingDdi(\Ivoz\Provider\Domain\Model\Ddi\Ddi::entityToDto($this->getOutgoingDdi(), $depth))
+            ->setOutgoingDdiRule(\Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule::entityToDto($this->getOutgoingDdiRule(), $depth))
+            ->setVoicemailLocution(\Ivoz\Provider\Domain\Model\Locution\Locution::entityToDto($this->getVoicemailLocution(), $depth));
     }
 
     /**

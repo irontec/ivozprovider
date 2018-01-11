@@ -4,6 +4,8 @@ namespace Ivoz\Provider\Domain\Model\FaxesInOut;
 
 use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\ChangelogTrait;
+use Ivoz\Core\Domain\Model\EntityInterface;
 
 /**
  * FaxesInOutAbstract
@@ -27,7 +29,7 @@ abstract class FaxesInOutAbstract
     protected $dst;
 
     /**
-     * @comment enum:In|Out
+     * comment: enum:In|Out
      * @var string
      */
     protected $type = 'Out';
@@ -58,11 +60,7 @@ abstract class FaxesInOutAbstract
     protected $dstCountry;
 
 
-    /**
-     * Changelog tracking purpose
-     * @var array
-     */
-    protected $_initialValues = [];
+    use ChangelogTrait;
 
     /**
      * Constructor
@@ -84,72 +82,6 @@ abstract class FaxesInOutAbstract
     }
 
     /**
-     * @param string $fieldName
-     * @return mixed
-     * @throws \Exception
-     */
-    public function initChangelog()
-    {
-        $values = $this->__toArray();
-        if (!$this->getId()) {
-            // Empty values for entities with no Id
-            foreach ($values as $key => $val) {
-                $values[$key] = null;
-            }
-        }
-
-        $this->_initialValues = $values;
-    }
-
-    /**
-     * @param string $fieldName
-     * @return mixed
-     * @throws \Exception
-     */
-    public function hasChanged($dbFieldName)
-    {
-        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
-            throw new \Exception($dbFieldName . ' field was not found');
-        }
-        $currentValues = $this->__toArray();
-
-        return $currentValues[$dbFieldName] != $this->_initialValues[$dbFieldName];
-    }
-
-    public function getInitialValue($dbFieldName)
-    {
-        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
-            throw new \Exception($dbFieldName . ' field was not found');
-        }
-
-        return $this->_initialValues[$dbFieldName];
-    }
-
-    /**
-     * @return array
-     */
-    protected function getChangeSet()
-    {
-        $changes = [];
-        $currentValues = $this->__toArray();
-        foreach ($currentValues as $key => $value) {
-
-            if ($this->_initialValues[$key] == $currentValues[$key]) {
-                continue;
-            }
-
-            $value = $currentValues[$key];
-            if ($value instanceof \DateTime) {
-                $value = $value->format('Y-m-d H:i:s');
-            }
-
-            $changes[$key] = $value;
-        }
-
-        return $changes;
-    }
-
-    /**
      * @return void
      * @throws \Exception
      */
@@ -158,11 +90,36 @@ abstract class FaxesInOutAbstract
     }
 
     /**
-     * @return FaxesInOutDTO
+     * @param null $id
+     * @return FaxesInOutDto
      */
-    public static function createDTO()
+    public static function createDto($id = null)
     {
-        return new FaxesInOutDTO();
+        return new FaxesInOutDto($id);
+    }
+
+    /**
+     * @param EntityInterface|null $entity
+     * @param int $depth
+     * @return FaxesInOutDto|null
+     */
+    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    {
+        if (!$entity) {
+            return null;
+        }
+
+        Assertion::isInstanceOf($entity, FaxesInOutInterface::class);
+
+        if ($depth < 1) {
+            return static::createDto($entity->getId());
+        }
+
+        if ($entity instanceof \Doctrine\ORM\Proxy\Proxy && !$entity->__isInitialized()) {
+            return static::createDto($entity->getId());
+        }
+
+        return $entity->toDto($depth-1);
     }
 
     /**
@@ -170,12 +127,12 @@ abstract class FaxesInOutAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDTO(DataTransferObjectInterface $dto)
+    public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto FaxesInOutDTO
+         * @var $dto FaxesInOutDto
          */
-        Assertion::isInstanceOf($dto, FaxesInOutDTO::class);
+        Assertion::isInstanceOf($dto, FaxesInOutDto::class);
 
         $file = new File(
             $dto->getFileFileSize(),
@@ -208,12 +165,12 @@ abstract class FaxesInOutAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDTO(DataTransferObjectInterface $dto)
+    public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto FaxesInOutDTO
+         * @var $dto FaxesInOutDto
          */
-        Assertion::isInstanceOf($dto, FaxesInOutDTO::class);
+        Assertion::isInstanceOf($dto, FaxesInOutDto::class);
 
         $file = new File(
             $dto->getFileFileSize(),
@@ -239,11 +196,12 @@ abstract class FaxesInOutAbstract
     }
 
     /**
-     * @return FaxesInOutDTO
+     * @param int $depth
+     * @return FaxesInOutDto
      */
-    public function toDTO()
+    public function toDto($depth = 0)
     {
-        return self::createDTO()
+        return self::createDto()
             ->setCalldate($this->getCalldate())
             ->setSrc($this->getSrc())
             ->setDst($this->getDst())
@@ -253,8 +211,8 @@ abstract class FaxesInOutAbstract
             ->setFileFileSize($this->getFile()->getFileSize())
             ->setFileMimeType($this->getFile()->getMimeType())
             ->setFileBaseName($this->getFile()->getBaseName())
-            ->setFaxId($this->getFax() ? $this->getFax()->getId() : null)
-            ->setDstCountryId($this->getDstCountry() ? $this->getDstCountry()->getId() : null);
+            ->setFax(\Ivoz\Provider\Domain\Model\Fax\Fax::entityToDto($this->getFax(), $depth))
+            ->setDstCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto($this->getDstCountry(), $depth));
     }
 
     /**

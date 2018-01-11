@@ -46,7 +46,7 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getLanguageCode();
 
     /**
-     * @brief Get musicclass for given company
+     * brief: Get musicclass for given company
      *
      * If no specific company music on hold is found, brand music will be used.
      * If no specific brand music  on hold is found, dafault music will be sued.
@@ -524,7 +524,7 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Get extensions
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface[]
      */
     public function getExtensions(\Doctrine\Common\Collections\Criteria $criteria = null);
 
@@ -555,7 +555,7 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Get ddis
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface[]
      */
     public function getDdis(\Doctrine\Common\Collections\Criteria $criteria = null);
 
@@ -586,7 +586,7 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Get friends
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\Friend\FriendInterface[]
      */
     public function getFriends(\Doctrine\Common\Collections\Criteria $criteria = null);
 
@@ -617,7 +617,7 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Get companyServices
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface[]
      */
     public function getCompanyServices(\Doctrine\Common\Collections\Criteria $criteria = null);
 
@@ -648,7 +648,7 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Get terminals
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface[]
      */
     public function getTerminals(\Doctrine\Common\Collections\Criteria $criteria = null);
 
@@ -679,7 +679,7 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Get relPricingPlans
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\PricingPlansRelCompany\PricingPlansRelCompanyInterface[]
      */
     public function getRelPricingPlans(\Doctrine\Common\Collections\Criteria $criteria = null);
 
@@ -710,7 +710,7 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Get musicsOnHold
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface[]
      */
     public function getMusicsOnHold(\Doctrine\Common\Collections\Criteria $criteria = null);
 
@@ -741,7 +741,7 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Get recordings
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\Recording\RecordingInterface[]
      */
     public function getRecordings(\Doctrine\Common\Collections\Criteria $criteria = null);
 
@@ -772,7 +772,7 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Get relFeatures
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompanyInterface[]
      */
     public function getRelFeatures(\Doctrine\Common\Collections\Criteria $criteria = null);
 
@@ -803,7 +803,7 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Get domains
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface[]
      */
     public function getDomains(\Doctrine\Common\Collections\Criteria $criteria = null);
 

@@ -369,7 +369,7 @@ interface IvrInterface extends LoggableEntityInterface
     /**
      * Get entries
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\IvrEntry\IvrEntryInterface[]
      */
     public function getEntries(\Doctrine\Common\Collections\Criteria $criteria = null);
 
@@ -400,7 +400,7 @@ interface IvrInterface extends LoggableEntityInterface
     /**
      * Get excludedExtensions
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\IvrExcludedExtension\IvrExcludedExtensionInterface[]
      */
     public function getExcludedExtensions(\Doctrine\Common\Collections\Criteria $criteria = null);
 

@@ -4,6 +4,8 @@ namespace Ivoz\Provider\Domain\Model\LcrRuleTarget;
 
 use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\ChangelogTrait;
+use Ivoz\Core\Domain\Model\EntityInterface;
 
 /**
  * LcrRuleTargetAbstract
@@ -12,7 +14,7 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 abstract class LcrRuleTargetAbstract
 {
     /**
-     * @column lcr_id
+     * column: lcr_id
      * @var integer
      */
     protected $lcrId = '1';
@@ -43,11 +45,7 @@ abstract class LcrRuleTargetAbstract
     protected $outgoingRouting;
 
 
-    /**
-     * Changelog tracking purpose
-     * @var array
-     */
-    protected $_initialValues = [];
+    use ChangelogTrait;
 
     /**
      * Constructor
@@ -70,72 +68,6 @@ abstract class LcrRuleTargetAbstract
     }
 
     /**
-     * @param string $fieldName
-     * @return mixed
-     * @throws \Exception
-     */
-    public function initChangelog()
-    {
-        $values = $this->__toArray();
-        if (!$this->getId()) {
-            // Empty values for entities with no Id
-            foreach ($values as $key => $val) {
-                $values[$key] = null;
-            }
-        }
-
-        $this->_initialValues = $values;
-    }
-
-    /**
-     * @param string $fieldName
-     * @return mixed
-     * @throws \Exception
-     */
-    public function hasChanged($dbFieldName)
-    {
-        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
-            throw new \Exception($dbFieldName . ' field was not found');
-        }
-        $currentValues = $this->__toArray();
-
-        return $currentValues[$dbFieldName] != $this->_initialValues[$dbFieldName];
-    }
-
-    public function getInitialValue($dbFieldName)
-    {
-        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
-            throw new \Exception($dbFieldName . ' field was not found');
-        }
-
-        return $this->_initialValues[$dbFieldName];
-    }
-
-    /**
-     * @return array
-     */
-    protected function getChangeSet()
-    {
-        $changes = [];
-        $currentValues = $this->__toArray();
-        foreach ($currentValues as $key => $value) {
-
-            if ($this->_initialValues[$key] == $currentValues[$key]) {
-                continue;
-            }
-
-            $value = $currentValues[$key];
-            if ($value instanceof \DateTime) {
-                $value = $value->format('Y-m-d H:i:s');
-            }
-
-            $changes[$key] = $value;
-        }
-
-        return $changes;
-    }
-
-    /**
      * @return void
      * @throws \Exception
      */
@@ -144,11 +76,36 @@ abstract class LcrRuleTargetAbstract
     }
 
     /**
-     * @return LcrRuleTargetDTO
+     * @param null $id
+     * @return LcrRuleTargetDto
      */
-    public static function createDTO()
+    public static function createDto($id = null)
     {
-        return new LcrRuleTargetDTO();
+        return new LcrRuleTargetDto($id);
+    }
+
+    /**
+     * @param EntityInterface|null $entity
+     * @param int $depth
+     * @return LcrRuleTargetDto|null
+     */
+    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    {
+        if (!$entity) {
+            return null;
+        }
+
+        Assertion::isInstanceOf($entity, LcrRuleTargetInterface::class);
+
+        if ($depth < 1) {
+            return static::createDto($entity->getId());
+        }
+
+        if ($entity instanceof \Doctrine\ORM\Proxy\Proxy && !$entity->__isInitialized()) {
+            return static::createDto($entity->getId());
+        }
+
+        return $entity->toDto($depth-1);
     }
 
     /**
@@ -156,12 +113,12 @@ abstract class LcrRuleTargetAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDTO(DataTransferObjectInterface $dto)
+    public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto LcrRuleTargetDTO
+         * @var $dto LcrRuleTargetDto
          */
-        Assertion::isInstanceOf($dto, LcrRuleTargetDTO::class);
+        Assertion::isInstanceOf($dto, LcrRuleTargetDto::class);
 
         $self = new static(
             $dto->getLcrId(),
@@ -184,12 +141,12 @@ abstract class LcrRuleTargetAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDTO(DataTransferObjectInterface $dto)
+    public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto LcrRuleTargetDTO
+         * @var $dto LcrRuleTargetDto
          */
-        Assertion::isInstanceOf($dto, LcrRuleTargetDTO::class);
+        Assertion::isInstanceOf($dto, LcrRuleTargetDto::class);
 
         $this
             ->setLcrId($dto->getLcrId())
@@ -206,17 +163,18 @@ abstract class LcrRuleTargetAbstract
     }
 
     /**
-     * @return LcrRuleTargetDTO
+     * @param int $depth
+     * @return LcrRuleTargetDto
      */
-    public function toDTO()
+    public function toDto($depth = 0)
     {
-        return self::createDTO()
+        return self::createDto()
             ->setLcrId($this->getLcrId())
             ->setPriority($this->getPriority())
             ->setWeight($this->getWeight())
-            ->setRuleId($this->getRule() ? $this->getRule()->getId() : null)
-            ->setGwId($this->getGw() ? $this->getGw()->getId() : null)
-            ->setOutgoingRoutingId($this->getOutgoingRouting() ? $this->getOutgoingRouting()->getId() : null);
+            ->setRule(\Ivoz\Provider\Domain\Model\LcrRule\LcrRule::entityToDto($this->getRule(), $depth))
+            ->setGw(\Ivoz\Provider\Domain\Model\LcrGateway\LcrGateway::entityToDto($this->getGw(), $depth))
+            ->setOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting::entityToDto($this->getOutgoingRouting(), $depth));
     }
 
     /**

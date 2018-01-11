@@ -34,24 +34,16 @@ trait HuntGroupTrait
     }
 
     /**
-     * @return HuntGroupDTO
-     */
-    public static function createDTO()
-    {
-        return new HuntGroupDTO();
-    }
-
-    /**
      * Factory method
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDTO(DataTransferObjectInterface $dto)
+    public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto HuntGroupDTO
+         * @var $dto HuntGroupDto
          */
-        $self = parent::fromDTO($dto);
+        $self = parent::fromDto($dto);
         if ($dto->getHuntGroupsRelUsers()) {
             $self->replaceHuntGroupsRelUsers($dto->getHuntGroupsRelUsers());
         }
@@ -67,12 +59,12 @@ trait HuntGroupTrait
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDTO(DataTransferObjectInterface $dto)
+    public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto HuntGroupDTO
+         * @var $dto HuntGroupDto
          */
-        parent::updateFromDTO($dto);
+        parent::updateFromDto($dto);
         if ($dto->getHuntGroupsRelUsers()) {
             $this->replaceHuntGroupsRelUsers($dto->getHuntGroupsRelUsers());
         }
@@ -80,11 +72,12 @@ trait HuntGroupTrait
     }
 
     /**
-     * @return HuntGroupDTO
+     * @param int $depth
+     * @return HuntGroupDto
      */
-    public function toDTO()
+    public function toDto($depth = 0)
     {
-        $dto = parent::toDTO();
+        $dto = parent::toDto($depth);
         return $dto
             ->setId($this->getId());
     }
@@ -161,7 +154,7 @@ trait HuntGroupTrait
     /**
      * Get huntGroupsRelUsers
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUserInterface[]
      */
     public function getHuntGroupsRelUsers(Criteria $criteria = null)
     {

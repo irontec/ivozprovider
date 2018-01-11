@@ -34,24 +34,16 @@ trait CalendarTrait
     }
 
     /**
-     * @return CalendarDTO
-     */
-    public static function createDTO()
-    {
-        return new CalendarDTO();
-    }
-
-    /**
      * Factory method
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDTO(DataTransferObjectInterface $dto)
+    public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto CalendarDTO
+         * @var $dto CalendarDto
          */
-        $self = parent::fromDTO($dto);
+        $self = parent::fromDto($dto);
         if ($dto->getHolidayDates()) {
             $self->replaceHolidayDates($dto->getHolidayDates());
         }
@@ -67,12 +59,12 @@ trait CalendarTrait
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDTO(DataTransferObjectInterface $dto)
+    public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto CalendarDTO
+         * @var $dto CalendarDto
          */
-        parent::updateFromDTO($dto);
+        parent::updateFromDto($dto);
         if ($dto->getHolidayDates()) {
             $this->replaceHolidayDates($dto->getHolidayDates());
         }
@@ -80,11 +72,12 @@ trait CalendarTrait
     }
 
     /**
-     * @return CalendarDTO
+     * @param int $depth
+     * @return CalendarDto
      */
-    public function toDTO()
+    public function toDto($depth = 0)
     {
-        $dto = parent::toDTO();
+        $dto = parent::toDto($depth);
         return $dto
             ->setId($this->getId());
     }
@@ -161,7 +154,7 @@ trait CalendarTrait
     /**
      * Get holidayDates
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface[]
      */
     public function getHolidayDates(Criteria $criteria = null)
     {

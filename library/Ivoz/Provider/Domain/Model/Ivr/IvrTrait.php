@@ -40,24 +40,16 @@ trait IvrTrait
     }
 
     /**
-     * @return IvrDTO
-     */
-    public static function createDTO()
-    {
-        return new IvrDTO();
-    }
-
-    /**
      * Factory method
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDTO(DataTransferObjectInterface $dto)
+    public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto IvrDTO
+         * @var $dto IvrDto
          */
-        $self = parent::fromDTO($dto);
+        $self = parent::fromDto($dto);
         if ($dto->getEntries()) {
             $self->replaceEntries($dto->getEntries());
         }
@@ -77,12 +69,12 @@ trait IvrTrait
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDTO(DataTransferObjectInterface $dto)
+    public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto IvrDTO
+         * @var $dto IvrDto
          */
-        parent::updateFromDTO($dto);
+        parent::updateFromDto($dto);
         if ($dto->getEntries()) {
             $this->replaceEntries($dto->getEntries());
         }
@@ -93,11 +85,12 @@ trait IvrTrait
     }
 
     /**
-     * @return IvrDTO
+     * @param int $depth
+     * @return IvrDto
      */
-    public function toDTO()
+    public function toDto($depth = 0)
     {
-        $dto = parent::toDTO();
+        $dto = parent::toDto($depth);
         return $dto
             ->setId($this->getId());
     }
@@ -174,7 +167,7 @@ trait IvrTrait
     /**
      * Get entries
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\IvrEntry\IvrEntryInterface[]
      */
     public function getEntries(Criteria $criteria = null)
     {
@@ -246,7 +239,7 @@ trait IvrTrait
     /**
      * Get excludedExtensions
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\IvrExcludedExtension\IvrExcludedExtensionInterface[]
      */
     public function getExcludedExtensions(Criteria $criteria = null)
     {

@@ -74,7 +74,7 @@ interface PickUpGroupInterface extends LoggableEntityInterface
     /**
      * Get relUsers
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface[]
      */
     public function getRelUsers(\Doctrine\Common\Collections\Criteria $criteria = null);
 

@@ -1,6 +1,7 @@
 <?php
 
 namespace Ivoz\Provider\Domain\Model\User;
+
 use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface;
 
 /**

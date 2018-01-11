@@ -34,24 +34,16 @@ trait MatchListTrait
     }
 
     /**
-     * @return MatchListDTO
-     */
-    public static function createDTO()
-    {
-        return new MatchListDTO();
-    }
-
-    /**
      * Factory method
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDTO(DataTransferObjectInterface $dto)
+    public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto MatchListDTO
+         * @var $dto MatchListDto
          */
-        $self = parent::fromDTO($dto);
+        $self = parent::fromDto($dto);
         if ($dto->getPatterns()) {
             $self->replacePatterns($dto->getPatterns());
         }
@@ -67,12 +59,12 @@ trait MatchListTrait
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDTO(DataTransferObjectInterface $dto)
+    public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto MatchListDTO
+         * @var $dto MatchListDto
          */
-        parent::updateFromDTO($dto);
+        parent::updateFromDto($dto);
         if ($dto->getPatterns()) {
             $this->replacePatterns($dto->getPatterns());
         }
@@ -80,11 +72,12 @@ trait MatchListTrait
     }
 
     /**
-     * @return MatchListDTO
+     * @param int $depth
+     * @return MatchListDto
      */
-    public function toDTO()
+    public function toDto($depth = 0)
     {
-        $dto = parent::toDTO();
+        $dto = parent::toDto($depth);
         return $dto
             ->setId($this->getId());
     }
@@ -161,7 +154,7 @@ trait MatchListTrait
     /**
      * Get patterns
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPatternInterface[]
      */
     public function getPatterns(Criteria $criteria = null)
     {

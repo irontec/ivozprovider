@@ -96,7 +96,7 @@ interface CallAclInterface extends LoggableEntityInterface
     /**
      * Get relMatchLists
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchListInterface[]
      */
     public function getRelMatchLists(\Doctrine\Common\Collections\Criteria $criteria = null);
 

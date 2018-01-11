@@ -34,24 +34,16 @@ trait CallAclTrait
     }
 
     /**
-     * @return CallAclDTO
-     */
-    public static function createDTO()
-    {
-        return new CallAclDTO();
-    }
-
-    /**
      * Factory method
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDTO(DataTransferObjectInterface $dto)
+    public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto CallAclDTO
+         * @var $dto CallAclDto
          */
-        $self = parent::fromDTO($dto);
+        $self = parent::fromDto($dto);
         if ($dto->getRelMatchLists()) {
             $self->replaceRelMatchLists($dto->getRelMatchLists());
         }
@@ -67,12 +59,12 @@ trait CallAclTrait
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDTO(DataTransferObjectInterface $dto)
+    public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto CallAclDTO
+         * @var $dto CallAclDto
          */
-        parent::updateFromDTO($dto);
+        parent::updateFromDto($dto);
         if ($dto->getRelMatchLists()) {
             $this->replaceRelMatchLists($dto->getRelMatchLists());
         }
@@ -80,11 +72,12 @@ trait CallAclTrait
     }
 
     /**
-     * @return CallAclDTO
+     * @param int $depth
+     * @return CallAclDto
      */
-    public function toDTO()
+    public function toDto($depth = 0)
     {
-        $dto = parent::toDTO();
+        $dto = parent::toDto($depth);
         return $dto
             ->setId($this->getId());
     }
@@ -161,7 +154,7 @@ trait CallAclTrait
     /**
      * Get relMatchLists
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchListInterface[]
      */
     public function getRelMatchLists(Criteria $criteria = null)
     {

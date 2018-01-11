@@ -12,6 +12,10 @@ interface UsersAddressInterface extends LoggableEntityInterface
      */
     public function getChangeSet();
 
+    public function setIpAddr($ipAddr = null);
+
+    public function setMask($mask = null);
+
     /**
      * Set sourceAddress
      *
@@ -29,29 +33,11 @@ interface UsersAddressInterface extends LoggableEntityInterface
     public function getSourceAddress();
 
     /**
-     * Set ipAddr
-     *
-     * @param string $ipAddr
-     *
-     * @return self
-     */
-    public function setIpAddr($ipAddr = null);
-
-    /**
      * Get ipAddr
      *
      * @return string
      */
     public function getIpAddr();
-
-    /**
-     * Set mask
-     *
-     * @param integer $mask
-     *
-     * @return self
-     */
-    public function setMask($mask);
 
     /**
      * Get mask

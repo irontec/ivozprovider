@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\RoutingPattern;
 
 use Assert\Assertion;
+use Ivoz\Core\Domain\Model\EntityInterface;
 
 /**
  * Description
@@ -11,13 +12,13 @@ use Assert\Assertion;
 class Description
 {
     /**
-     * @column description_en
+     * column: description_en
      * @var string
      */
     protected $en;
 
     /**
-     * @column description_es
+     * column: description_es
      * @var string
      */
     protected $es;
