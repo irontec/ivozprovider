@@ -1,12 +1,5 @@
 Ivoz\Provider\Domain\Model\ExternalCallFilterRelSchedule\ExternalCallFilterRelScheduleAbstract:
   type: mappedSuperclass
-  indexes:
-    filterId:
-      columns:
-        - filterId
-    scheduleId:
-      columns:
-        - scheduleId
   manyToOne:
     filter:
       targetEntity: \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface

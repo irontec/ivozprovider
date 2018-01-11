@@ -1,12 +1,5 @@
 Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPatternAbstract:
   type: mappedSuperclass
-  indexes:
-    matchListId:
-      columns:
-        - matchListId
-    MatchListPatternId:
-      columns:
-        - numberCountryId
   fields:
     description:
       type: string

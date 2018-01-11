@@ -1,11 +1,7 @@
 Ivoz\Provider\Domain\Model\Ivr\IvrAbstract:
   type: mappedSuperclass
-  indexes:
-    companyId:
-      columns:
-        - companyId
   uniqueConstraints:
-    nameCompany:
+    ivr_name_company:
       columns:
         - name
         - companyId

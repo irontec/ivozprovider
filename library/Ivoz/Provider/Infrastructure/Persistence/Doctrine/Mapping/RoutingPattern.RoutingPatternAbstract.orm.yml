@@ -1,9 +1,5 @@
 Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternAbstract:
   type: mappedSuperclass
-  indexes:
-    brandId:
-      columns:
-        - brandId
   embedded:
     name:
       class: Name

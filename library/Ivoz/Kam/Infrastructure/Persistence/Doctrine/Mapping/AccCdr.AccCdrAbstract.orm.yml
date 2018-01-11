@@ -16,19 +16,19 @@ Ivoz\Kam\Domain\Model\AccCdr\AccCdrAbstract:
     peeringContractId_idx:
       columns:
         - peeringContractId
-    pricingPlanId:
+    accCdr_pricingPlanId:
       columns:
         - pricingPlanId
-    targetPatternId:
+    accCdr_targetPatternId:
       columns:
         - targetPatternId
-    invoiceId:
+    accCdr_invoiceId:
       columns:
         - invoiceId
-    brandId:
+    accCdr_brandId:
       columns:
         - brandId
-    companyId:
+    accCdr_companyId:
       columns:
         - companyId
   fields:

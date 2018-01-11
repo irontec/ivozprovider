@@ -1,12 +1,5 @@
 Ivoz\Provider\Domain\Model\PeerServer\PeerServerAbstract:
   type: mappedSuperclass
-  indexes:
-    peeringContractId:
-      columns:
-        - peeringContractId
-    brandId:
-      columns:
-        - brandId
   fields:
     ip:
       type: string

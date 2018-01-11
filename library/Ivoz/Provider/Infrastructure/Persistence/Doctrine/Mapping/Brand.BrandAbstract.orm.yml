@@ -1,12 +1,5 @@
 Ivoz\Provider\Domain\Model\Brand\BrandAbstract:
   type: mappedSuperclass
-  indexes:
-    defaultTimezoneId:
-      columns:
-        - defaultTimezoneId
-    languageId:
-      columns:
-        - languageId
   embedded:
     logo:
       class: Logo
@@ -15,7 +8,7 @@ Ivoz\Provider\Domain\Model\Brand\BrandAbstract:
       class: Invoice
       columnPrefix: false
   uniqueConstraints:
-    name:
+    brand_name:
       columns:
         - name
   fields:

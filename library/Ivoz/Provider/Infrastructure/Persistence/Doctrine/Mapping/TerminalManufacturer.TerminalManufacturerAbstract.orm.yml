@@ -1,7 +1,7 @@
 Ivoz\Provider\Domain\Model\TerminalManufacturer\TerminalManufacturerAbstract:
   type: mappedSuperclass
   uniqueConstraints:
-    iden:
+    terminalManufacturer_iden:
       columns:
         - iden
   fields:

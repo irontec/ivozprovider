@@ -1,32 +1,7 @@
 Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterAbstract:
   type: mappedSuperclass
-  indexes:
-    companyId:
-      columns:
-        - companyId
-    welcomeLocutionId:
-      columns:
-        - welcomeLocutionId
-    holidayLocutionId:
-      columns:
-        - holidayLocutionId
-    outOfScheduleLocutionId:
-      columns:
-        - outOfScheduleLocutionId
-    holidayExtensionId:
-      columns:
-        - holidayExtensionId
-    outOfScheduleExtensionId:
-      columns:
-        - outOfScheduleExtensionId
-    holidayVoiceMailUserId:
-      columns:
-        - holidayVoiceMailUserId
-    outOfScheduleVoiceMailUserId:
-      columns:
-        - outOfScheduleVoiceMailUserId
   uniqueConstraints:
-    nameCompany:
+    externalCallFilter_name_company:
       columns:
         - name
         - companyId

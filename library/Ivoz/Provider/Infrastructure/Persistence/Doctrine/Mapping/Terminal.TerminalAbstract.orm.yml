@@ -1,18 +1,12 @@
 Ivoz\Provider\Domain\Model\Terminal\TerminalAbstract:
   type: mappedSuperclass
   indexes:
-    terminalModelId:
-      columns:
-        - TerminalModelId
-    Terminals_CompanyId_ibfk_2:
-      columns:
-        - companyId
     name_domain_idx:
       columns:
         - name
         - domainId
   uniqueConstraints:
-    name_domain:
+    terminal_name_domain:
       columns:
         - name
         - domainId

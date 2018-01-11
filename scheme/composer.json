@@ -7,28 +7,12 @@
             "email": "carlos@irontec.com"
         },
         {
-            "name": "Gaizka Elexpe",
-            "email": "gaizka@irontec.com"
-        },
-        {
-            "name": "Gorka Gorrotxategi",
-            "email": "gorka.g@irontec.com"
-        },
-        {
             "name": "Ivan Alonso",
             "email": "kaian@irontec.com"
         },
         {
-            "name": "Luis Felipe García",
-            "email": "lfgarcia@irontec.com"
-        },
-        {
             "name": "Mikel Madariaga",
             "email": "mikel@irontec.com"
-        },
-        {
-            "name": "Victor Vargas",
-            "email": "victor@irontec.com"
         }
     ],
     "repositories": [
@@ -75,6 +59,8 @@
         "ramsey/uuid": "^3.7"
     },
     "require-dev": {
+        "doctrine/doctrine-fixtures-bundle": "^3.0",
+        "beberlei/assert": "2.7.*",
         "sensio/generator-bundle": "^3.0"
     },
     "scripts": {

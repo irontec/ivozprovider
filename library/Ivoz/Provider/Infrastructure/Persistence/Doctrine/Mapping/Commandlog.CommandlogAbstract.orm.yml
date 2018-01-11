@@ -4,7 +4,7 @@ Ivoz\Provider\Domain\Model\Commandlog\CommandlogAbstract:
     requestId:
       columns:
         - requestId
-    createdOn:
+    commandlog_createdOn:
       columns:
         - createdOn
   fields:

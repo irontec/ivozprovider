@@ -36,11 +36,7 @@ public function __construct(<requiredFields>)<lineBreak>{
      */
     protected static $constructorMethodTemplate =
 '
-/**
- * Changelog tracking purpose
- * @var array
- */
-protected $_initialValues = [];
+use ChangelogTrait;
 
 /**
  * Constructor
@@ -60,72 +56,6 @@ public function __toString()
 }
 
 /**
- * @param string $fieldName
- * @return mixed
- * @throws \Exception
- */
-public function initChangelog()
-{
-    $values = $this->__toArray();
-    if (!$this->getId()) {
-        // Empty values for entities with no Id
-        foreach ($values as $key => $val) {
-            $values[$key] = null;
-        }
-    }
-
-    $this->_initialValues = $values;
-}
-
-/**
- * @param string $fieldName
- * @return mixed
- * @throws \Exception
- */
-public function hasChanged($dbFieldName)
-{
-    if (!array_key_exists($dbFieldName, $this->_initialValues)) {
-        throw new \Exception($dbFieldName . \' field was not found\');
-    }
-    $currentValues = $this->__toArray();
-
-    return $currentValues[$dbFieldName] != $this->_initialValues[$dbFieldName];
-}
-
-public function getInitialValue($dbFieldName)
-{
-    if (!array_key_exists($dbFieldName, $this->_initialValues)) {
-        throw new \Exception($dbFieldName . \' field was not found\');
-    }
-
-    return $this->_initialValues[$dbFieldName];
-}
-
-/**
- * @return array
- */
-protected function getChangeSet()
-{
-    $changes = [];
-    $currentValues = $this->__toArray();
-    foreach ($currentValues as $key => $value) {
-
-        if ($this->_initialValues[$key] == $currentValues[$key]) {
-            continue;
-        }
-
-        $value = $currentValues[$key];
-        if ($value instanceof \DateTime) {
-            $value = $value->format(\'Y-m-d H:i:s\');
-        }
-
-        $changes[$key] = $value;
-    }
-
-    return $changes;
-}
-
-/**
  * @return void
  * @throws \Exception
  */
@@ -134,11 +64,36 @@ protected function sanitizeValues()
 }
 
 /**
+ * @param null $id
  * @return <dtoClass>
  */
-public static function createDTO()
+public static function createDto($id = null)
 {
-    return new <dtoClass>();
+    return new <dtoClass>($id);
+}
+
+/**
+ * @param EntityInterface|null $entity
+ * @param int $depth
+ * @return <dtoClass>|null
+ */
+public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+{
+    if (!$entity) {
+        return null;
+    }
+
+    Assertion::isInstanceOf($entity, <entityClass>Interface::class);
+
+    if ($depth < 1) {
+        return static::createDto($entity->getId());
+    }
+
+    if ($entity instanceof \Doctrine\ORM\Proxy\Proxy && !$entity->__isInitialized()) {
+        return static::createDto($entity->getId());
+    }
+
+    return $entity->toDto($depth-1);
 }
 
 /**
@@ -146,7 +101,7 @@ public static function createDTO()
  * @param DataTransferObjectInterface $dto
  * @return self
  */
-public static function fromDTO(DataTransferObjectInterface $dto)
+public static function fromDto(DataTransferObjectInterface $dto)
 {
     /**
      * @var $dto <dtoClass>
@@ -167,7 +122,7 @@ public static function fromDTO(DataTransferObjectInterface $dto)
  * @param DataTransferObjectInterface $dto
  * @return self
  */
-public function updateFromDTO(DataTransferObjectInterface $dto)
+public function updateFromDto(DataTransferObjectInterface $dto)
 {
     /**
      * @var $dto <dtoClass>
@@ -181,11 +136,12 @@ public function updateFromDTO(DataTransferObjectInterface $dto)
 }
 
 /**
+ * @param int $depth
  * @return <dtoClass>
  */
-public function toDTO()
+public function toDto($depth = 0)
 {
-    return self::createDTO()<toDTO>;
+    return self::createDto()<toDTO>;
 }
 
 /**
@@ -379,7 +335,6 @@ public function <methodName>(<criteriaArgument>)
         return str_replace('<spaces>', $this->spaces, $code);
     }
 
-
     /**
      * @param ClassMetadataInfo $metadata
      *
@@ -398,7 +353,6 @@ public function <methodName>(<criteriaArgument>)
 
         return $class;
     }
-
 
     protected function generateEntityRealUse(ClassMetadata $metadata)
     {
@@ -420,11 +374,17 @@ public function <methodName>(<criteriaArgument>)
             $response[] = 'use Ivoz\\Core\\Application\\DataTransferObjectInterface;';
         }
 
+        if ($metadata->isMappedSuperclass) {
+            $response[] = 'use Ivoz\Core\Domain\Model\ChangelogTrait;';
+        }
+
         if ($useCollections) {
             $response[] = 'use Doctrine\\Common\\Collections\\ArrayCollection;';
             $response[] = 'use Doctrine\\Common\\Collections\\Collection;';
             $response[] = 'use Doctrine\\Common\\Collections\\Criteria;';
         }
+
+        $response[] = "use Ivoz\\Core\\Domain\\Model\\EntityInterface;";
 
         return "\n". implode("\n", $response) ."\n";
     }
@@ -444,12 +404,12 @@ public function <methodName>(<criteriaArgument>)
         $lines[] = $this->spaces . '/**';
 
         if (strtolower($field->fieldName) !== strtolower($field->columnName)) {
-            $lines[] = $this->spaces . ' * @column ' . $field->columnName;
+            $lines[] = $this->spaces . ' * column: ' . $field->columnName;
         }
 
         if (isset($options->comment)) {
             $comment = substr($options->comment, 1, -1);
-            $lines[] = $this->spaces . ' * @comment ' . $comment;
+            $lines[] = $this->spaces . ' * comment: ' . $comment;
         }
 
         $lines[] = $this->spaces . ' * @var ' . $this->getType($fieldMapping['type']);
@@ -561,6 +521,7 @@ public function <methodName>(<criteriaArgument>)
         $updateFromDTO = '';
         $toDTO = '';
         $toArrayGetters = '';
+        $propertyMap = '';
         $lineBreak = "\n";
 
         if (!empty($requiredSetters)) {
@@ -635,6 +596,7 @@ public function <methodName>(<criteriaArgument>)
 
         if (!empty($toArray)) {
             $toArrayGetters = "\n" . $spaces . implode(",\n" . $spaces, $toArray) . "\n" . $this->spaces;
+            $propertyMap = "'" . implode("',\n$spaces'" , array_keys($toArray)) . "'";
         }
 
         if (!empty($updateFrom)) {
@@ -655,8 +617,9 @@ public function <methodName>(<criteriaArgument>)
         $response = str_replace('<requiredFieldsGetters>', $requiredFieldGetters, $response);
 
         $namespaceSegments = explode('\\', $metadata->namespace);
-        $namespace = end($namespaceSegments) . 'DTO';
+        $namespace = end($namespaceSegments) . 'Dto';
         $response = str_replace('<dtoClass>', $namespace, $response);
+        $response = str_replace('<entityClass>', end($namespaceSegments), $response);
 
         $response = str_replace('<voContructor>', $voContructor, $response);
         $response = str_replace('<fromDTO>', $fromDTO, $response);
@@ -666,6 +629,7 @@ public function <methodName>(<criteriaArgument>)
         $response = str_replace('<lineBreak>', $lineBreak, $response);
 
         $response = str_replace('<toArray>', $toArrayGetters, $response);
+        $response = str_replace('<propertyMap>', $propertyMap, $response);
 
         if (!empty($collections)) {
 
@@ -715,6 +679,11 @@ public function <methodName>(<criteriaArgument>)
 
             if (isset($field->targetEntity)) {
 
+                $isOneToOne = ($field->type == ClassMetadataInfo::ONE_TO_ONE);
+                if ($isOneToOne && $field->mappedBy) {
+                    continue;
+                }
+
                 $isOneToMany = ($field->type == ClassMetadataInfo::ONE_TO_MANY);
                 if ($isOneToMany) {
 
@@ -755,19 +724,25 @@ public function <methodName>(<criteriaArgument>)
                     }
                 }
 
-                if (!isset($field->declared)) {
-                    $response = $this
+                if (!isset($field->declared) && !$isOneToMany) {
+                    $associationToArray = $this
                         ->getConstructorAssociationFields($attribute, $fieldName, $isOneToMany);
 
-                    if (empty($response)) {
+                    if (empty($associationToArray)) {
                         continue;
                     }
 
-                    list($associationToArray, $associationGetterAs) = $response;
-                    if (!is_null($associationToArray)) {
-                        $toArray[] = $associationToArray;
-                    }
-                    $getters[$attribute] = $associationGetterAs;
+                    $toArray[] = $associationToArray;
+
+                    $targetEntity = substr($field->targetEntity, 0, -1 * strlen('interface'));
+
+                    $associationGetter =
+                        'set' . Inflector::classify($fieldName) . '('
+                        . '\\' .$targetEntity . '::entityToDto('
+                        . '$this->get' . Inflector::classify($fieldName) . '(), $depth'
+                        . '))';
+
+                    $getters[$attribute] = $associationGetter;
                 }
 
                 continue;
@@ -957,60 +932,16 @@ public function <methodName>(<criteriaArgument>)
     /**
      * @param string $attribute
      * @param string $fieldName
-     * @param stdClass $field
      * @return string
-     * @deprecated
-     *
-    protected function getFromArrayMethod($attribute, $fieldName, \stdClass $field)
-    {
-        if (isset($field->mappedBy)) {
-            return '';
-        }
-
-        return '->set' . ucfirst($attribute) .'('
-            . 'isset($data[\'' . $fieldName . '\'])'
-            . ' ? '
-            . '$data[\'' . $fieldName . '\']'
-            . ' : null)';
-    }
-
-    /**
-     * @param string $attribute
-     * @param string $fieldName
-     * @return array
      */
     protected function getConstructorAssociationFields($attribute, $fieldName, $isOneToMany)
     {
-        $response = [];
-
-        if ($isOneToMany) {
-
-//            $response[] = null;
-//            $response[] =
-//                'set' . Inflector::classify($fieldName) . '('
-//                . '$this->' . $fieldName . '->isInitialized() ? '
-//                . '$this->get' . Inflector::classify($fieldName) . '() : null'
-//                . ')';
-
-            return $response;
-        }
-
-        $response[]  =
+        return
             '\'' . $attribute .'Id\' => '
             . 'self::get' . Inflector::classify($fieldName) . '()'
             . ' ? '
             . 'self::get' . Inflector::classify($fieldName) . '()->getId()'
             . ' : null';
-
-        $response[] =
-            'set' . Inflector::classify($fieldName) . 'Id('
-            . '$this->get' . Inflector::classify($fieldName) . '()'
-            . ' ? '
-            . '$this->get' . Inflector::classify($fieldName) . '()->getId()'
-            . ' : null'
-            . ')';
-
-        return $response;
     }
 
     /**
@@ -1161,7 +1092,6 @@ public function <methodName>(<criteriaArgument>)
                 continue;
             }
 
-            $class = $embeddedClass['class'];
             $classSegments = explode('\\', $embeddedClass['class']);
             $embeddedClass['class'] = end($classSegments);
 

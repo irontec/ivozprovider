@@ -1,7 +1,7 @@
 Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayAbstract:
   type: mappedSuperclass
   indexes:
-    lcr_id:
+    lcrGateway_lcr_id:
       columns:
         - lcr_id
   uniqueConstraints:

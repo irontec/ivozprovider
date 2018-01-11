@@ -1,18 +1,11 @@
 Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldAbstract:
   type: mappedSuperclass
-  indexes:
-    brandId:
-      columns:
-        - brandId
-    companyId:
-      columns:
-        - companyId
   uniqueConstraints:
-    nameBrand:
+    musicOnHold_name_brand:
       columns:
         - name
         - brandId
-    nameCompany:
+    musicOnHold_name_company:
       columns:
         - name
         - companyId

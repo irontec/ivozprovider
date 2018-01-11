@@ -1,15 +1,5 @@
 Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPatternAbstract:
   type: mappedSuperclass
-  indexes:
-    OutgoingDdiRulesPatterns_ibfk_2:
-      columns:
-        - matchListId
-    OutgoingDdiRulesPatterns_ibfk_3:
-      columns:
-        - forcedDdiId
-    IDX_A4399FB2CAA0E202:
-      columns:
-        - outgoingDdiRuleId
   uniqueConstraints:
     patternPriority:
       columns:

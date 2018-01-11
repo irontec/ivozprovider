@@ -1,9 +1,5 @@
 Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutAbstract:
   type: mappedSuperclass
-  indexes:
-    faxId:
-      columns:
-        - faxId
   embedded:
     file:
       class: File

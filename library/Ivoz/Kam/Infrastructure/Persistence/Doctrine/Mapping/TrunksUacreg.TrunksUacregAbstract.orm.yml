@@ -1,7 +1,7 @@
 Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregAbstract:
   type: mappedSuperclass
   indexes:
-    brandId:
+    trunksUacreg_brandId:
       columns:
         - brandId
     peeringContractId:

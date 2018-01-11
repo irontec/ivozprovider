@@ -1,9 +1,5 @@
 Ivoz\Provider\Domain\Model\IvrEntry\IvrEntryAbstract:
   type: mappedSuperclass
-  indexes:
-    ivrId:
-      columns:
-        - ivrId
   uniqueConstraints:
     UniqueIVRCutomIdAndEntry:
       columns:

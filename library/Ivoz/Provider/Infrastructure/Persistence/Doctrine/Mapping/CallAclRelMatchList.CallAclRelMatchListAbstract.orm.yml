@@ -1,12 +1,5 @@
 Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchListAbstract:
   type: mappedSuperclass
-  indexes:
-    callAclId:
-      columns:
-        - callAclId
-    callAclPatternId:
-      columns:
-        - matchListId
   uniqueConstraints:
     unique_callAclId_priority:
       columns:

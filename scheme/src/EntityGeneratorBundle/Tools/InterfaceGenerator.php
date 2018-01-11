@@ -2,7 +2,7 @@
 
 namespace EntityGeneratorBundle\Tools;
 
-use EntityGeneratorBundle\Tools\AbstractEntityGenerator as ParentGenerator;
+use Doctrine\ORM\Tools\EntityGenerator;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\Mapping\ClassMetadataInfo;
 
@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping\ClassMetadataInfo;
  * @codeCoverageIgnore
  * @author Mikel Madariaga <mikel@irontec.com>
  */
-class InterfaceGenerator extends ParentGenerator
+class InterfaceGenerator extends EntityGenerator
 {
     protected $emptyContent = false;
 
@@ -37,6 +37,14 @@ class InterfaceGenerator extends ParentGenerator
 ';
 
     /**
+     * {@inheritDoc}
+     */
+    public function writeEntityClass(ClassMetadataInfo $metadata, $outputDirectory)
+    {
+        return parent::writeEntityClass($this->transformMetadata($metadata), $outputDirectory);
+    }
+
+    /**
      * @var string
      */
     protected static $customMethodTemplate =
@@ -56,6 +64,49 @@ class InterfaceGenerator extends ParentGenerator
         }
 
         return $metadata;
+    }
+
+
+    /**
+     * {@inheritDoc}
+     */
+    public function generateEntityClass(ClassMetadataInfo $metadata)
+    {
+        $placeHolders = array(
+            '<namespace>',
+            '<useStatement>',
+            '<entityAnnotation>',
+            '<entityClassName>',
+            '<entityBody>'
+        );
+
+        $this->setFieldVisibility(self::FIELD_VISIBLE_PROTECTED);
+
+        $replacements = array(
+            $this->generateEntityNamespace($metadata),
+            $this->generateEntityRealUse($metadata),
+            '',
+            $this->generateEntityClassName($metadata),
+            $this->generateEntityBody($metadata)
+        );
+
+        $code = str_replace($placeHolders, $replacements, static::$classTemplate) . "\n";
+        $code = str_replace('\\Doctrine\\Common\\Collections\\Collection', 'Collection', $code);
+        $code = str_replace('\\Doctrine\\Common\\Collections\\ArrayCollection', 'ArrayCollection', $code);
+
+        $classTrait = $metadata->name . 'Trait';
+        if (trait_exists($classTrait)) {
+            if (!class_exists($metadata->name)/* || !in_array($classTrait, class_uses($metadata->name))*/) {
+                $classTraitSegments = explode('\\', $classTrait);
+                $code = str_replace('<entityTrait>', $this->spaces . 'use ' . end($classTraitSegments) . ";\n", $code);
+            }
+        }
+
+        if (strpos($code, '<entityTrait>') !== false) {
+            $code = str_replace('<entityTrait>', '', $code);
+        }
+
+        return str_replace('<spaces>', $this->spaces, $code);
     }
 
     protected function generateEntityRealUse(ClassMetadata $metadata)

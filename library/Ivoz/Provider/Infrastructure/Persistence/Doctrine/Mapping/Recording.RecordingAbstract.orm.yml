@@ -1,9 +1,5 @@
 Ivoz\Provider\Domain\Model\Recording\RecordingAbstract:
   type: mappedSuperclass
-  indexes:
-    companyId:
-      columns:
-        - companyId
   embedded:
     recordedFile:
       class: RecordedFile
@@ -53,27 +49,6 @@ Ivoz\Provider\Domain\Model\Recording\RecordingAbstract:
       length: 128
       options:
         fixed: false
-#    recordedFileFileSize:
-#      type: integer
-#      nullable: true
-#      options:
-#        unsigned: true
-#        comment: '[FSO:keepExtension]'
-#      column: recordedFileFileSize
-#    recordedFileMimeType:
-#      type: string
-#      nullable: true
-#      length: 80
-#      options:
-#        fixed: false
-#      column: recordedFileMimeType
-#    recordedFileBaseName:
-#      type: string
-#      nullable: true
-#      length: 255
-#      options:
-#        fixed: false
-#      column: recordedFileBaseName
   manyToOne:
     company:
       targetEntity: \Ivoz\Provider\Domain\Model\Company\CompanyInterface

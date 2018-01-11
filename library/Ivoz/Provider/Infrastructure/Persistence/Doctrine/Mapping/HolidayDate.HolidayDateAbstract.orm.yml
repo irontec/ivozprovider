@@ -1,12 +1,5 @@
 Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateAbstract:
   type: mappedSuperclass
-  indexes:
-    calendarId:
-      columns:
-        - calendarId
-    locutionId:
-      columns:
-        - locutionId
   uniqueConstraints:
     dateCalendar:
       columns:

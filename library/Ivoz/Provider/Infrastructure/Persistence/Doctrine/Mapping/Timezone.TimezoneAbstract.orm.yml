@@ -1,9 +1,5 @@
 Ivoz\Provider\Domain\Model\Timezone\TimezoneAbstract:
   type: mappedSuperclass
-  indexes:
-    countryId:
-      columns:
-        - countryId
   embedded:
     label:
       class: Label

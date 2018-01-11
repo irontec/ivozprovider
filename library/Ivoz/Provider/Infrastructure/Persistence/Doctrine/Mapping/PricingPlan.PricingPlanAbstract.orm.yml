@@ -1,9 +1,5 @@
 Ivoz\Provider\Domain\Model\PricingPlan\PricingPlanAbstract:
   type: mappedSuperclass
-  indexes:
-    brandId:
-      columns:
-        - brandId
   uniqueConstraints:
     nameEsBrand:
       columns:

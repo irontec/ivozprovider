@@ -1,12 +1,5 @@
 Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUserAbstract:
   type: mappedSuperclass
-  indexes:
-    huntGroupId:
-      columns:
-        - huntGroupId
-    userId:
-      columns:
-        - userId
   uniqueConstraints:
     userHuntgroup:
       columns:

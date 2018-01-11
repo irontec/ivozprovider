@@ -22,6 +22,7 @@ class GenerateEntitiesCommand extends ParentCommand
     {
         $this->skipEmbedded = true;
         $this->skipMappedSuperClass = true;
+        $this->disconnectedClassMetadata = true;
 
         return parent::__construct($name);
     }

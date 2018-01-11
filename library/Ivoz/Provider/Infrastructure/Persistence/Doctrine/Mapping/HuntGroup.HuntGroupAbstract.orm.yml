@@ -1,20 +1,7 @@
 Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupAbstract:
   type: mappedSuperclass
-  indexes:
-    companyId:
-      columns:
-        - companyId
-    noAnswerLocutionId:
-      columns:
-        - noAnswerLocutionId
-    noAnswerExtensionId:
-      columns:
-        - noAnswerExtensionId
-    noAnswerVoiceMailUserId:
-      columns:
-        - noAnswerVoiceMailUserId
   uniqueConstraints:
-    nameCompany:
+    huntGroup_name_company:
       columns:
         - name
         - companyId

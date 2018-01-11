@@ -1,14 +1,6 @@
 Ivoz\Provider\Domain\Model\Service\Description:
   type: embeddable
   fields:
-#    description:
-#      type: string
-#      nullable: false
-#      length: 255
-#      options:
-#        fixed: false
-#        comment: '[ml]'
-#        default: ''
     en:
       type: string
       nullable: false

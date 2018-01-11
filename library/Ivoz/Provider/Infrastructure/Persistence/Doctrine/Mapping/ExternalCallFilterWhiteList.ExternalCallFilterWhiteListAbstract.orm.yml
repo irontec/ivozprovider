@@ -1,12 +1,5 @@
 Ivoz\Provider\Domain\Model\ExternalCallFilterWhiteList\ExternalCallFilterWhiteListAbstract:
   type: mappedSuperclass
-  indexes:
-    filterId:
-      columns:
-        - filterId
-    matchListId:
-      columns:
-        - matchListId
   manyToOne:
     filter:
       targetEntity: \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterInterface

@@ -1,11 +1,7 @@
 Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupAbstract:
   type: mappedSuperclass
-  indexes:
-    companyId:
-      columns:
-        - companyId
   uniqueConstraints:
-    nameCompany:
+    pickUpGroup_name_company:
       columns:
         - name
         - companyId

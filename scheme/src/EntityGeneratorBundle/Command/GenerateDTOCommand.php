@@ -58,9 +58,9 @@ class GenerateDTOCommand extends ParentCommand
     {
         $entityGenerator = new DTOGenerator();
         $entityGenerator->setGenerateAnnotations(false);
-        $entityGenerator->setGenerateStubMethods(true);
-        $entityGenerator->setRegenerateEntityIfExists(true);
-        $entityGenerator->setUpdateEntityIfExists(true);
+        $entityGenerator->setGenerateStubMethods(false);
+        $entityGenerator->setRegenerateEntityIfExists(false);
+        $entityGenerator->setUpdateEntityIfExists(false);
         $entityGenerator->setNumSpaces(4);
         $entityGenerator->setAnnotationPrefix('ORM\\');
 

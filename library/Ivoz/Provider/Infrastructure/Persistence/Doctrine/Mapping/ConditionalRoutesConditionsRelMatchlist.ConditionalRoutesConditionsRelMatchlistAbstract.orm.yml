@@ -1,12 +1,5 @@
 Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistAbstract:
   type: mappedSuperclass
-  indexes:
-    conditionId:
-      columns:
-        - conditionId
-    matchListId:
-      columns:
-        - matchListId
   manyToOne:
     condition:
       targetEntity: Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface

@@ -1,11 +1,7 @@
 Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupAbstract:
   type: mappedSuperclass
-  indexes:
-    brandId:
-      columns:
-        - brandId
   uniqueConstraints:
-    name:
+    routingPatternGroup_name_brand:
       columns:
         - name
         - brandId
