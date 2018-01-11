@@ -4,7 +4,6 @@
 @brand03
 @brand03-2
 
-
 Feature: Authorized sources admin page
   As a main operator
   I want to be able to access authorized sources admin page

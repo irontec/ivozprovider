@@ -1,6 +1,7 @@
 @company
 @outgoingDDIRulesPatterns
 @company06
+@company06-3
 
 Feature: outgoingDDIRulesPatterns admin page
   As a main operator

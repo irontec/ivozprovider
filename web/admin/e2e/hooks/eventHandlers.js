@@ -31,12 +31,19 @@ defineSupportCode(({ Before, After, AfterAll }) => {
             success = false;
         }
 
-        client.execute(`
-            localStorage.clear();
-            sessionStorage.clear();
-        `).deleteCookies().refresh();
+        client
+            .execute(`
+                localStorage.clear();
+                sessionStorage.clear();
+            `)
+            .deleteCookies()
+            .refresh()
+            .acceptAlert(callback);
 
-        callback();
+        setTimeout(() => {
+            //Fallback
+            callback();
+        }, 1000);
     });
 
     AfterAll(() => {

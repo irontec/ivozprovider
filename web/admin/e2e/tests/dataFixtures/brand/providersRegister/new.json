@@ -5,7 +5,7 @@
   "multiDDI": "0",
   "lUuid": "946002021",
   "authUsername": "",
-  "authProxy": "",
+  "authProxy": "sip:127.0.0.1",
   "realm": "",
   "expires": "3600"
 }
