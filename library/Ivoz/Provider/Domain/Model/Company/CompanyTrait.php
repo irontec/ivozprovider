@@ -88,24 +88,16 @@ trait CompanyTrait
     }
 
     /**
-     * @return CompanyDTO
-     */
-    public static function createDTO()
-    {
-        return new CompanyDTO();
-    }
-
-    /**
      * Factory method
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDTO(DataTransferObjectInterface $dto)
+    public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto CompanyDTO
+         * @var $dto CompanyDto
          */
-        $self = parent::fromDTO($dto);
+        $self = parent::fromDto($dto);
         if ($dto->getExtensions()) {
             $self->replaceExtensions($dto->getExtensions());
         }
@@ -157,12 +149,12 @@ trait CompanyTrait
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDTO(DataTransferObjectInterface $dto)
+    public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto CompanyDTO
+         * @var $dto CompanyDto
          */
-        parent::updateFromDTO($dto);
+        parent::updateFromDto($dto);
         if ($dto->getExtensions()) {
             $this->replaceExtensions($dto->getExtensions());
         }
@@ -197,11 +189,12 @@ trait CompanyTrait
     }
 
     /**
-     * @return CompanyDTO
+     * @param int $depth
+     * @return CompanyDto
      */
-    public function toDTO()
+    public function toDto($depth = 0)
     {
-        $dto = parent::toDTO();
+        $dto = parent::toDto($depth);
         return $dto
             ->setId($this->getId());
     }
@@ -278,7 +271,7 @@ trait CompanyTrait
     /**
      * Get extensions
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface[]
      */
     public function getExtensions(Criteria $criteria = null)
     {
@@ -350,7 +343,7 @@ trait CompanyTrait
     /**
      * Get ddis
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface[]
      */
     public function getDdis(Criteria $criteria = null)
     {
@@ -422,7 +415,7 @@ trait CompanyTrait
     /**
      * Get friends
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\Friend\FriendInterface[]
      */
     public function getFriends(Criteria $criteria = null)
     {
@@ -494,7 +487,7 @@ trait CompanyTrait
     /**
      * Get companyServices
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface[]
      */
     public function getCompanyServices(Criteria $criteria = null)
     {
@@ -566,7 +559,7 @@ trait CompanyTrait
     /**
      * Get terminals
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface[]
      */
     public function getTerminals(Criteria $criteria = null)
     {
@@ -638,7 +631,7 @@ trait CompanyTrait
     /**
      * Get relPricingPlans
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\PricingPlansRelCompany\PricingPlansRelCompanyInterface[]
      */
     public function getRelPricingPlans(Criteria $criteria = null)
     {
@@ -710,7 +703,7 @@ trait CompanyTrait
     /**
      * Get musicsOnHold
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface[]
      */
     public function getMusicsOnHold(Criteria $criteria = null)
     {
@@ -782,7 +775,7 @@ trait CompanyTrait
     /**
      * Get recordings
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\Recording\RecordingInterface[]
      */
     public function getRecordings(Criteria $criteria = null)
     {
@@ -854,7 +847,7 @@ trait CompanyTrait
     /**
      * Get relFeatures
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompanyInterface[]
      */
     public function getRelFeatures(Criteria $criteria = null)
     {
@@ -926,7 +919,7 @@ trait CompanyTrait
     /**
      * Get domains
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface[]
      */
     public function getDomains(Criteria $criteria = null)
     {

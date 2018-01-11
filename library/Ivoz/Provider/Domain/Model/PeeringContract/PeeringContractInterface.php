@@ -122,7 +122,7 @@ interface PeeringContractInterface extends LoggableEntityInterface
     /**
      * Get outgoingRoutings
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface[]
      */
     public function getOutgoingRoutings(\Doctrine\Common\Collections\Criteria $criteria = null);
 
@@ -153,7 +153,7 @@ interface PeeringContractInterface extends LoggableEntityInterface
     /**
      * Get peerServers
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\PeerServer\PeerServerInterface[]
      */
     public function getPeerServers(\Doctrine\Common\Collections\Criteria $criteria = null);
 

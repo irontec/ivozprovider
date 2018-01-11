@@ -98,7 +98,7 @@ interface MatchListInterface extends LoggableEntityInterface
     /**
      * Get patterns
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPatternInterface[]
      */
     public function getPatterns(\Doctrine\Common\Collections\Criteria $criteria = null);
 

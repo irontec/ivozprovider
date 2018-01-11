@@ -63,6 +63,6 @@ class DoctrineCollectionTransformer implements CollectionTransformerInterface
             return $entity;
         }
 
-        return $entityReflection->fromDTO($dto);
+        return $entityReflection->fromDto($dto);
     }
 }

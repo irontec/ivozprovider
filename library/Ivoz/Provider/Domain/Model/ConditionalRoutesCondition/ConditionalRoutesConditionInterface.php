@@ -285,7 +285,7 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
     /**
      * Get relMatchlists
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistInterface[]
      */
     public function getRelMatchlists(\Doctrine\Common\Collections\Criteria $criteria = null);
 
@@ -316,7 +316,7 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
     /**
      * Get relSchedules
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleInterface[]
      */
     public function getRelSchedules(\Doctrine\Common\Collections\Criteria $criteria = null);
 
@@ -347,7 +347,7 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
     /**
      * Get relCalendars
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarInterface[]
      */
     public function getRelCalendars(\Doctrine\Common\Collections\Criteria $criteria = null);
 

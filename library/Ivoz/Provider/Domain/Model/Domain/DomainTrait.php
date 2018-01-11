@@ -46,24 +46,16 @@ trait DomainTrait
     }
 
     /**
-     * @return DomainDTO
-     */
-    public static function createDTO()
-    {
-        return new DomainDTO();
-    }
-
-    /**
      * Factory method
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDTO(DataTransferObjectInterface $dto)
+    public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto DomainDTO
+         * @var $dto DomainDto
          */
-        $self = parent::fromDTO($dto);
+        $self = parent::fromDto($dto);
         if ($dto->getFriends()) {
             $self->replaceFriends($dto->getFriends());
         }
@@ -87,12 +79,12 @@ trait DomainTrait
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDTO(DataTransferObjectInterface $dto)
+    public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto DomainDTO
+         * @var $dto DomainDto
          */
-        parent::updateFromDTO($dto);
+        parent::updateFromDto($dto);
         if ($dto->getFriends()) {
             $this->replaceFriends($dto->getFriends());
         }
@@ -106,11 +98,12 @@ trait DomainTrait
     }
 
     /**
-     * @return DomainDTO
+     * @param int $depth
+     * @return DomainDto
      */
-    public function toDTO()
+    public function toDto($depth = 0)
     {
-        $dto = parent::toDTO();
+        $dto = parent::toDto($depth);
         return $dto
             ->setId($this->getId());
     }
@@ -187,7 +180,7 @@ trait DomainTrait
     /**
      * Get friends
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\Friend\FriendInterface[]
      */
     public function getFriends(Criteria $criteria = null)
     {
@@ -259,7 +252,7 @@ trait DomainTrait
     /**
      * Get retailAccounts
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface[]
      */
     public function getRetailAccounts(Criteria $criteria = null)
     {
@@ -331,7 +324,7 @@ trait DomainTrait
     /**
      * Get terminals
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface[]
      */
     public function getTerminals(Criteria $criteria = null)
     {

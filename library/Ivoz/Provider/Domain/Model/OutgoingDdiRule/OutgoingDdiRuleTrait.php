@@ -34,24 +34,16 @@ trait OutgoingDdiRuleTrait
     }
 
     /**
-     * @return OutgoingDdiRuleDTO
-     */
-    public static function createDTO()
-    {
-        return new OutgoingDdiRuleDTO();
-    }
-
-    /**
      * Factory method
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDTO(DataTransferObjectInterface $dto)
+    public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto OutgoingDdiRuleDTO
+         * @var $dto OutgoingDdiRuleDto
          */
-        $self = parent::fromDTO($dto);
+        $self = parent::fromDto($dto);
         if ($dto->getPatterns()) {
             $self->replacePatterns($dto->getPatterns());
         }
@@ -67,12 +59,12 @@ trait OutgoingDdiRuleTrait
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDTO(DataTransferObjectInterface $dto)
+    public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto OutgoingDdiRuleDTO
+         * @var $dto OutgoingDdiRuleDto
          */
-        parent::updateFromDTO($dto);
+        parent::updateFromDto($dto);
         if ($dto->getPatterns()) {
             $this->replacePatterns($dto->getPatterns());
         }
@@ -80,11 +72,12 @@ trait OutgoingDdiRuleTrait
     }
 
     /**
-     * @return OutgoingDdiRuleDTO
+     * @param int $depth
+     * @return OutgoingDdiRuleDto
      */
-    public function toDTO()
+    public function toDto($depth = 0)
     {
-        $dto = parent::toDTO();
+        $dto = parent::toDto($depth);
         return $dto
             ->setId($this->getId());
     }
@@ -161,7 +154,7 @@ trait OutgoingDdiRuleTrait
     /**
      * Get patterns
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPatternInterface[]
      */
     public function getPatterns(Criteria $criteria = null)
     {

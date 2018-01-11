@@ -26,24 +26,16 @@ trait PickUpRelUserTrait
     }
 
     /**
-     * @return PickUpRelUserDTO
-     */
-    public static function createDTO()
-    {
-        return new PickUpRelUserDTO();
-    }
-
-    /**
      * Factory method
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDTO(DataTransferObjectInterface $dto)
+    public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto PickUpRelUserDTO
+         * @var $dto PickUpRelUserDto
          */
-        $self = parent::fromDTO($dto);
+        $self = parent::fromDto($dto);
 
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -57,22 +49,23 @@ trait PickUpRelUserTrait
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDTO(DataTransferObjectInterface $dto)
+    public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto PickUpRelUserDTO
+         * @var $dto PickUpRelUserDto
          */
-        parent::updateFromDTO($dto);
+        parent::updateFromDto($dto);
 
         return $this;
     }
 
     /**
-     * @return PickUpRelUserDTO
+     * @param int $depth
+     * @return PickUpRelUserDto
      */
-    public function toDTO()
+    public function toDto($depth = 0)
     {
-        $dto = parent::toDTO();
+        $dto = parent::toDto($depth);
         return $dto
             ->setId($this->getId());
     }

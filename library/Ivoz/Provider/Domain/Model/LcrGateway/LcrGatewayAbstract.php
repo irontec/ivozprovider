@@ -4,6 +4,8 @@ namespace Ivoz\Provider\Domain\Model\LcrGateway;
 
 use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\ChangelogTrait;
+use Ivoz\Core\Domain\Model\EntityInterface;
 
 /**
  * LcrGatewayAbstract
@@ -12,13 +14,13 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 abstract class LcrGatewayAbstract
 {
     /**
-     * @column lcr_id
+     * column: lcr_id
      * @var integer
      */
     protected $lcrId = '1';
 
     /**
-     * @column gw_name
+     * column: gw_name
      * @var string
      */
     protected $gwName;
@@ -44,7 +46,7 @@ abstract class LcrGatewayAbstract
     protected $params;
 
     /**
-     * @column uri_scheme
+     * column: uri_scheme
      * @var boolean
      */
     protected $uriScheme;
@@ -85,11 +87,7 @@ abstract class LcrGatewayAbstract
     protected $peerServer;
 
 
-    /**
-     * Changelog tracking purpose
-     * @var array
-     */
-    protected $_initialValues = [];
+    use ChangelogTrait;
 
     /**
      * Constructor
@@ -112,72 +110,6 @@ abstract class LcrGatewayAbstract
     }
 
     /**
-     * @param string $fieldName
-     * @return mixed
-     * @throws \Exception
-     */
-    public function initChangelog()
-    {
-        $values = $this->__toArray();
-        if (!$this->getId()) {
-            // Empty values for entities with no Id
-            foreach ($values as $key => $val) {
-                $values[$key] = null;
-            }
-        }
-
-        $this->_initialValues = $values;
-    }
-
-    /**
-     * @param string $fieldName
-     * @return mixed
-     * @throws \Exception
-     */
-    public function hasChanged($dbFieldName)
-    {
-        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
-            throw new \Exception($dbFieldName . ' field was not found');
-        }
-        $currentValues = $this->__toArray();
-
-        return $currentValues[$dbFieldName] != $this->_initialValues[$dbFieldName];
-    }
-
-    public function getInitialValue($dbFieldName)
-    {
-        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
-            throw new \Exception($dbFieldName . ' field was not found');
-        }
-
-        return $this->_initialValues[$dbFieldName];
-    }
-
-    /**
-     * @return array
-     */
-    protected function getChangeSet()
-    {
-        $changes = [];
-        $currentValues = $this->__toArray();
-        foreach ($currentValues as $key => $value) {
-
-            if ($this->_initialValues[$key] == $currentValues[$key]) {
-                continue;
-            }
-
-            $value = $currentValues[$key];
-            if ($value instanceof \DateTime) {
-                $value = $value->format('Y-m-d H:i:s');
-            }
-
-            $changes[$key] = $value;
-        }
-
-        return $changes;
-    }
-
-    /**
      * @return void
      * @throws \Exception
      */
@@ -186,11 +118,36 @@ abstract class LcrGatewayAbstract
     }
 
     /**
-     * @return LcrGatewayDTO
+     * @param null $id
+     * @return LcrGatewayDto
      */
-    public static function createDTO()
+    public static function createDto($id = null)
     {
-        return new LcrGatewayDTO();
+        return new LcrGatewayDto($id);
+    }
+
+    /**
+     * @param EntityInterface|null $entity
+     * @param int $depth
+     * @return LcrGatewayDto|null
+     */
+    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    {
+        if (!$entity) {
+            return null;
+        }
+
+        Assertion::isInstanceOf($entity, LcrGatewayInterface::class);
+
+        if ($depth < 1) {
+            return static::createDto($entity->getId());
+        }
+
+        if ($entity instanceof \Doctrine\ORM\Proxy\Proxy && !$entity->__isInitialized()) {
+            return static::createDto($entity->getId());
+        }
+
+        return $entity->toDto($depth-1);
     }
 
     /**
@@ -198,12 +155,12 @@ abstract class LcrGatewayAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDTO(DataTransferObjectInterface $dto)
+    public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto LcrGatewayDTO
+         * @var $dto LcrGatewayDto
          */
-        Assertion::isInstanceOf($dto, LcrGatewayDTO::class);
+        Assertion::isInstanceOf($dto, LcrGatewayDto::class);
 
         $self = new static(
             $dto->getLcrId(),
@@ -234,12 +191,12 @@ abstract class LcrGatewayAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDTO(DataTransferObjectInterface $dto)
+    public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto LcrGatewayDTO
+         * @var $dto LcrGatewayDto
          */
-        Assertion::isInstanceOf($dto, LcrGatewayDTO::class);
+        Assertion::isInstanceOf($dto, LcrGatewayDto::class);
 
         $this
             ->setLcrId($dto->getLcrId())
@@ -264,11 +221,12 @@ abstract class LcrGatewayAbstract
     }
 
     /**
-     * @return LcrGatewayDTO
+     * @param int $depth
+     * @return LcrGatewayDto
      */
-    public function toDTO()
+    public function toDto($depth = 0)
     {
-        return self::createDTO()
+        return self::createDto()
             ->setLcrId($this->getLcrId())
             ->setGwName($this->getGwName())
             ->setIp($this->getIp())
@@ -282,7 +240,7 @@ abstract class LcrGatewayAbstract
             ->setTag($this->getTag())
             ->setFlags($this->getFlags())
             ->setDefunct($this->getDefunct())
-            ->setPeerServerId($this->getPeerServer() ? $this->getPeerServer()->getId() : null);
+            ->setPeerServer(\Ivoz\Provider\Domain\Model\PeerServer\PeerServer::entityToDto($this->getPeerServer(), $depth));
     }
 
     /**

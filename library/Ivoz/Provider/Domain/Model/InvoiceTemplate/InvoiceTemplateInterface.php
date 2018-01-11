@@ -15,6 +15,11 @@ interface InvoiceTemplateInterface extends LoggableEntityInterface
     public function __toString();
 
     /**
+     * @inheritdoc
+     */
+    public function setTemplate($template);
+
+    /**
      * Set name
      *
      * @param string $name
@@ -45,15 +50,6 @@ interface InvoiceTemplateInterface extends LoggableEntityInterface
      * @return string
      */
     public function getDescription();
-
-    /**
-     * Set template
-     *
-     * @param string $template
-     *
-     * @return self
-     */
-    public function setTemplate($template);
 
     /**
      * Get template

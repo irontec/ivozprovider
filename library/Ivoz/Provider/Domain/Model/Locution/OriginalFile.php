@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\Locution;
 
 use Assert\Assertion;
+use Ivoz\Core\Domain\Model\EntityInterface;
 
 /**
  * OriginalFile
@@ -11,20 +12,20 @@ use Assert\Assertion;
 class OriginalFile
 {
     /**
-     * @column originalFileFileSize
-     * @comment FSO:keepExtension
+     * column: originalFileFileSize
+     * comment: FSO:keepExtension
      * @var integer
      */
     protected $fileSize;
 
     /**
-     * @column originalFileMimeType
+     * column: originalFileMimeType
      * @var string
      */
     protected $mimeType;
 
     /**
-     * @column originalFileBaseName
+     * column: originalFileBaseName
      * @var string
      */
     protected $baseName;

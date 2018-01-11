@@ -26,24 +26,16 @@ trait TrunksHtableTrait
     }
 
     /**
-     * @return TrunksHtableDTO
-     */
-    public static function createDTO()
-    {
-        return new TrunksHtableDTO();
-    }
-
-    /**
      * Factory method
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDTO(DataTransferObjectInterface $dto)
+    public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto TrunksHtableDTO
+         * @var $dto TrunksHtableDto
          */
-        $self = parent::fromDTO($dto);
+        $self = parent::fromDto($dto);
 
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -57,22 +49,23 @@ trait TrunksHtableTrait
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDTO(DataTransferObjectInterface $dto)
+    public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto TrunksHtableDTO
+         * @var $dto TrunksHtableDto
          */
-        parent::updateFromDTO($dto);
+        parent::updateFromDto($dto);
 
         return $this;
     }
 
     /**
-     * @return TrunksHtableDTO
+     * @param int $depth
+     * @return TrunksHtableDto
      */
-    public function toDTO()
+    public function toDto($depth = 0)
     {
-        $dto = parent::toDTO();
+        $dto = parent::toDto($depth);
         return $dto
             ->setId($this->getId());
     }

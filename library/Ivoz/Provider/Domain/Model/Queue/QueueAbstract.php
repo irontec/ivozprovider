@@ -4,6 +4,8 @@ namespace Ivoz\Provider\Domain\Model\Queue;
 
 use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\ChangelogTrait;
+use Ivoz\Core\Domain\Model\EntityInterface;
 
 /**
  * QueueAbstract
@@ -22,7 +24,7 @@ abstract class QueueAbstract
     protected $maxWaitTime;
 
     /**
-     * @comment enum:number|extension|voicemail
+     * comment: enum:number|extension|voicemail
      * @var string
      */
     protected $timeoutTargetType;
@@ -38,7 +40,7 @@ abstract class QueueAbstract
     protected $maxlen;
 
     /**
-     * @comment enum:number|extension|voicemail
+     * comment: enum:number|extension|voicemail
      * @var string
      */
     protected $fullTargetType;
@@ -124,11 +126,7 @@ abstract class QueueAbstract
     protected $fullNumberCountry;
 
 
-    /**
-     * Changelog tracking purpose
-     * @var array
-     */
-    protected $_initialValues = [];
+    use ChangelogTrait;
 
     /**
      * Constructor
@@ -149,72 +147,6 @@ abstract class QueueAbstract
     }
 
     /**
-     * @param string $fieldName
-     * @return mixed
-     * @throws \Exception
-     */
-    public function initChangelog()
-    {
-        $values = $this->__toArray();
-        if (!$this->getId()) {
-            // Empty values for entities with no Id
-            foreach ($values as $key => $val) {
-                $values[$key] = null;
-            }
-        }
-
-        $this->_initialValues = $values;
-    }
-
-    /**
-     * @param string $fieldName
-     * @return mixed
-     * @throws \Exception
-     */
-    public function hasChanged($dbFieldName)
-    {
-        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
-            throw new \Exception($dbFieldName . ' field was not found');
-        }
-        $currentValues = $this->__toArray();
-
-        return $currentValues[$dbFieldName] != $this->_initialValues[$dbFieldName];
-    }
-
-    public function getInitialValue($dbFieldName)
-    {
-        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
-            throw new \Exception($dbFieldName . ' field was not found');
-        }
-
-        return $this->_initialValues[$dbFieldName];
-    }
-
-    /**
-     * @return array
-     */
-    protected function getChangeSet()
-    {
-        $changes = [];
-        $currentValues = $this->__toArray();
-        foreach ($currentValues as $key => $value) {
-
-            if ($this->_initialValues[$key] == $currentValues[$key]) {
-                continue;
-            }
-
-            $value = $currentValues[$key];
-            if ($value instanceof \DateTime) {
-                $value = $value->format('Y-m-d H:i:s');
-            }
-
-            $changes[$key] = $value;
-        }
-
-        return $changes;
-    }
-
-    /**
      * @return void
      * @throws \Exception
      */
@@ -223,11 +155,36 @@ abstract class QueueAbstract
     }
 
     /**
-     * @return QueueDTO
+     * @param null $id
+     * @return QueueDto
      */
-    public static function createDTO()
+    public static function createDto($id = null)
     {
-        return new QueueDTO();
+        return new QueueDto($id);
+    }
+
+    /**
+     * @param EntityInterface|null $entity
+     * @param int $depth
+     * @return QueueDto|null
+     */
+    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    {
+        if (!$entity) {
+            return null;
+        }
+
+        Assertion::isInstanceOf($entity, QueueInterface::class);
+
+        if ($depth < 1) {
+            return static::createDto($entity->getId());
+        }
+
+        if ($entity instanceof \Doctrine\ORM\Proxy\Proxy && !$entity->__isInitialized()) {
+            return static::createDto($entity->getId());
+        }
+
+        return $entity->toDto($depth-1);
     }
 
     /**
@@ -235,12 +192,12 @@ abstract class QueueAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDTO(DataTransferObjectInterface $dto)
+    public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto QueueDTO
+         * @var $dto QueueDto
          */
-        Assertion::isInstanceOf($dto, QueueDTO::class);
+        Assertion::isInstanceOf($dto, QueueDto::class);
 
         $self = new static();
 
@@ -279,12 +236,12 @@ abstract class QueueAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDTO(DataTransferObjectInterface $dto)
+    public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto QueueDTO
+         * @var $dto QueueDto
          */
-        Assertion::isInstanceOf($dto, QueueDTO::class);
+        Assertion::isInstanceOf($dto, QueueDto::class);
 
         $this
             ->setName($dto->getName())
@@ -317,11 +274,12 @@ abstract class QueueAbstract
     }
 
     /**
-     * @return QueueDTO
+     * @param int $depth
+     * @return QueueDto
      */
-    public function toDTO()
+    public function toDto($depth = 0)
     {
-        return self::createDTO()
+        return self::createDto()
             ->setName($this->getName())
             ->setMaxWaitTime($this->getMaxWaitTime())
             ->setTimeoutTargetType($this->getTimeoutTargetType())
@@ -334,16 +292,16 @@ abstract class QueueAbstract
             ->setMemberCallTimeout($this->getMemberCallTimeout())
             ->setStrategy($this->getStrategy())
             ->setWeight($this->getWeight())
-            ->setCompanyId($this->getCompany() ? $this->getCompany()->getId() : null)
-            ->setPeriodicAnnounceLocutionId($this->getPeriodicAnnounceLocution() ? $this->getPeriodicAnnounceLocution()->getId() : null)
-            ->setTimeoutLocutionId($this->getTimeoutLocution() ? $this->getTimeoutLocution()->getId() : null)
-            ->setTimeoutExtensionId($this->getTimeoutExtension() ? $this->getTimeoutExtension()->getId() : null)
-            ->setTimeoutVoiceMailUserId($this->getTimeoutVoiceMailUser() ? $this->getTimeoutVoiceMailUser()->getId() : null)
-            ->setFullLocutionId($this->getFullLocution() ? $this->getFullLocution()->getId() : null)
-            ->setFullExtensionId($this->getFullExtension() ? $this->getFullExtension()->getId() : null)
-            ->setFullVoiceMailUserId($this->getFullVoiceMailUser() ? $this->getFullVoiceMailUser()->getId() : null)
-            ->setTimeoutNumberCountryId($this->getTimeoutNumberCountry() ? $this->getTimeoutNumberCountry()->getId() : null)
-            ->setFullNumberCountryId($this->getFullNumberCountry() ? $this->getFullNumberCountry()->getId() : null);
+            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto($this->getCompany(), $depth))
+            ->setPeriodicAnnounceLocution(\Ivoz\Provider\Domain\Model\Locution\Locution::entityToDto($this->getPeriodicAnnounceLocution(), $depth))
+            ->setTimeoutLocution(\Ivoz\Provider\Domain\Model\Locution\Locution::entityToDto($this->getTimeoutLocution(), $depth))
+            ->setTimeoutExtension(\Ivoz\Provider\Domain\Model\Extension\Extension::entityToDto($this->getTimeoutExtension(), $depth))
+            ->setTimeoutVoiceMailUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto($this->getTimeoutVoiceMailUser(), $depth))
+            ->setFullLocution(\Ivoz\Provider\Domain\Model\Locution\Locution::entityToDto($this->getFullLocution(), $depth))
+            ->setFullExtension(\Ivoz\Provider\Domain\Model\Extension\Extension::entityToDto($this->getFullExtension(), $depth))
+            ->setFullVoiceMailUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto($this->getFullVoiceMailUser(), $depth))
+            ->setTimeoutNumberCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto($this->getTimeoutNumberCountry(), $depth))
+            ->setFullNumberCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto($this->getFullNumberCountry(), $depth));
     }
 
     /**

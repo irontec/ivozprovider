@@ -26,24 +26,16 @@ trait PricingPlanTrait
     }
 
     /**
-     * @return PricingPlanDTO
-     */
-    public static function createDTO()
-    {
-        return new PricingPlanDTO();
-    }
-
-    /**
      * Factory method
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDTO(DataTransferObjectInterface $dto)
+    public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto PricingPlanDTO
+         * @var $dto PricingPlanDto
          */
-        $self = parent::fromDTO($dto);
+        $self = parent::fromDto($dto);
 
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -57,22 +49,23 @@ trait PricingPlanTrait
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDTO(DataTransferObjectInterface $dto)
+    public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto PricingPlanDTO
+         * @var $dto PricingPlanDto
          */
-        parent::updateFromDTO($dto);
+        parent::updateFromDto($dto);
 
         return $this;
     }
 
     /**
-     * @return PricingPlanDTO
+     * @param int $depth
+     * @return PricingPlanDto
      */
-    public function toDTO()
+    public function toDto($depth = 0)
     {
-        $dto = parent::toDTO();
+        $dto = parent::toDto($depth);
         return $dto
             ->setId($this->getId());
     }

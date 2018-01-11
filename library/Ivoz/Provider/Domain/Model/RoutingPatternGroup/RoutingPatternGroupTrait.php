@@ -40,24 +40,16 @@ trait RoutingPatternGroupTrait
     }
 
     /**
-     * @return RoutingPatternGroupDTO
-     */
-    public static function createDTO()
-    {
-        return new RoutingPatternGroupDTO();
-    }
-
-    /**
      * Factory method
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDTO(DataTransferObjectInterface $dto)
+    public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto RoutingPatternGroupDTO
+         * @var $dto RoutingPatternGroupDto
          */
-        $self = parent::fromDTO($dto);
+        $self = parent::fromDto($dto);
         if ($dto->getRelPatterns()) {
             $self->replaceRelPatterns($dto->getRelPatterns());
         }
@@ -77,12 +69,12 @@ trait RoutingPatternGroupTrait
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDTO(DataTransferObjectInterface $dto)
+    public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto RoutingPatternGroupDTO
+         * @var $dto RoutingPatternGroupDto
          */
-        parent::updateFromDTO($dto);
+        parent::updateFromDto($dto);
         if ($dto->getRelPatterns()) {
             $this->replaceRelPatterns($dto->getRelPatterns());
         }
@@ -93,11 +85,12 @@ trait RoutingPatternGroupTrait
     }
 
     /**
-     * @return RoutingPatternGroupDTO
+     * @param int $depth
+     * @return RoutingPatternGroupDto
      */
-    public function toDTO()
+    public function toDto($depth = 0)
     {
-        $dto = parent::toDTO();
+        $dto = parent::toDto($depth);
         return $dto
             ->setId($this->getId());
     }
@@ -174,7 +167,7 @@ trait RoutingPatternGroupTrait
     /**
      * Get relPatterns
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface[]
      */
     public function getRelPatterns(Criteria $criteria = null)
     {
@@ -246,7 +239,7 @@ trait RoutingPatternGroupTrait
     /**
      * Get outgoingRoutings
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface[]
      */
     public function getOutgoingRoutings(Criteria $criteria = null)
     {

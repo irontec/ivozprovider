@@ -12,6 +12,8 @@ interface FaxInterface extends LoggableEntityInterface
      */
     public function getChangeSet();
 
+    public function setSendByEmail($sendByEmail);
+
     /**
      * Return string representation of this entity
      * @return string

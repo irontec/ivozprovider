@@ -378,7 +378,7 @@ interface RetailAccountInterface extends LoggableEntityInterface
     /**
      * Get psEndpoints
      *
-     * @return array
+     * @return \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface[]
      */
     public function getPsEndpoints(\Doctrine\Common\Collections\Criteria $criteria = null);
 
@@ -409,7 +409,7 @@ interface RetailAccountInterface extends LoggableEntityInterface
     /**
      * Get ddis
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface[]
      */
     public function getDdis(\Doctrine\Common\Collections\Criteria $criteria = null);
 

@@ -4,6 +4,8 @@ namespace Ivoz\Provider\Domain\Model\MusicOnHold;
 
 use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\ChangelogTrait;
+use Ivoz\Core\Domain\Model\EntityInterface;
 
 /**
  * MusicOnHoldAbstract
@@ -17,7 +19,7 @@ abstract class MusicOnHoldAbstract
     protected $name;
 
     /**
-     * @comment enum:pending|encoding|ready|error
+     * comment: enum:pending|encoding|ready|error
      * @var string
      */
     protected $status;
@@ -43,11 +45,7 @@ abstract class MusicOnHoldAbstract
     protected $company;
 
 
-    /**
-     * Changelog tracking purpose
-     * @var array
-     */
-    protected $_initialValues = [];
+    use ChangelogTrait;
 
     /**
      * Constructor
@@ -73,72 +71,6 @@ abstract class MusicOnHoldAbstract
     }
 
     /**
-     * @param string $fieldName
-     * @return mixed
-     * @throws \Exception
-     */
-    public function initChangelog()
-    {
-        $values = $this->__toArray();
-        if (!$this->getId()) {
-            // Empty values for entities with no Id
-            foreach ($values as $key => $val) {
-                $values[$key] = null;
-            }
-        }
-
-        $this->_initialValues = $values;
-    }
-
-    /**
-     * @param string $fieldName
-     * @return mixed
-     * @throws \Exception
-     */
-    public function hasChanged($dbFieldName)
-    {
-        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
-            throw new \Exception($dbFieldName . ' field was not found');
-        }
-        $currentValues = $this->__toArray();
-
-        return $currentValues[$dbFieldName] != $this->_initialValues[$dbFieldName];
-    }
-
-    public function getInitialValue($dbFieldName)
-    {
-        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
-            throw new \Exception($dbFieldName . ' field was not found');
-        }
-
-        return $this->_initialValues[$dbFieldName];
-    }
-
-    /**
-     * @return array
-     */
-    protected function getChangeSet()
-    {
-        $changes = [];
-        $currentValues = $this->__toArray();
-        foreach ($currentValues as $key => $value) {
-
-            if ($this->_initialValues[$key] == $currentValues[$key]) {
-                continue;
-            }
-
-            $value = $currentValues[$key];
-            if ($value instanceof \DateTime) {
-                $value = $value->format('Y-m-d H:i:s');
-            }
-
-            $changes[$key] = $value;
-        }
-
-        return $changes;
-    }
-
-    /**
      * @return void
      * @throws \Exception
      */
@@ -147,11 +79,36 @@ abstract class MusicOnHoldAbstract
     }
 
     /**
-     * @return MusicOnHoldDTO
+     * @param null $id
+     * @return MusicOnHoldDto
      */
-    public static function createDTO()
+    public static function createDto($id = null)
     {
-        return new MusicOnHoldDTO();
+        return new MusicOnHoldDto($id);
+    }
+
+    /**
+     * @param EntityInterface|null $entity
+     * @param int $depth
+     * @return MusicOnHoldDto|null
+     */
+    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    {
+        if (!$entity) {
+            return null;
+        }
+
+        Assertion::isInstanceOf($entity, MusicOnHoldInterface::class);
+
+        if ($depth < 1) {
+            return static::createDto($entity->getId());
+        }
+
+        if ($entity instanceof \Doctrine\ORM\Proxy\Proxy && !$entity->__isInitialized()) {
+            return static::createDto($entity->getId());
+        }
+
+        return $entity->toDto($depth-1);
     }
 
     /**
@@ -159,12 +116,12 @@ abstract class MusicOnHoldAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDTO(DataTransferObjectInterface $dto)
+    public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto MusicOnHoldDTO
+         * @var $dto MusicOnHoldDto
          */
-        Assertion::isInstanceOf($dto, MusicOnHoldDTO::class);
+        Assertion::isInstanceOf($dto, MusicOnHoldDto::class);
 
         $originalFile = new OriginalFile(
             $dto->getOriginalFileFileSize(),
@@ -200,12 +157,12 @@ abstract class MusicOnHoldAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDTO(DataTransferObjectInterface $dto)
+    public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto MusicOnHoldDTO
+         * @var $dto MusicOnHoldDto
          */
-        Assertion::isInstanceOf($dto, MusicOnHoldDTO::class);
+        Assertion::isInstanceOf($dto, MusicOnHoldDto::class);
 
         $originalFile = new OriginalFile(
             $dto->getOriginalFileFileSize(),
@@ -234,11 +191,12 @@ abstract class MusicOnHoldAbstract
     }
 
     /**
-     * @return MusicOnHoldDTO
+     * @param int $depth
+     * @return MusicOnHoldDto
      */
-    public function toDTO()
+    public function toDto($depth = 0)
     {
-        return self::createDTO()
+        return self::createDto()
             ->setName($this->getName())
             ->setStatus($this->getStatus())
             ->setOriginalFileFileSize($this->getOriginalFile()->getFileSize())
@@ -247,8 +205,8 @@ abstract class MusicOnHoldAbstract
             ->setEncodedFileFileSize($this->getEncodedFile()->getFileSize())
             ->setEncodedFileMimeType($this->getEncodedFile()->getMimeType())
             ->setEncodedFileBaseName($this->getEncodedFile()->getBaseName())
-            ->setBrandId($this->getBrand() ? $this->getBrand()->getId() : null)
-            ->setCompanyId($this->getCompany() ? $this->getCompany()->getId() : null);
+            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto($this->getBrand(), $depth))
+            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto($this->getCompany(), $depth));
     }
 
     /**

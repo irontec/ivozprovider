@@ -246,7 +246,7 @@ interface ExtensionInterface extends LoggableEntityInterface
     /**
      * Get users
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\User\UserInterface[]
      */
     public function getUsers(\Doctrine\Common\Collections\Criteria $criteria = null);
 

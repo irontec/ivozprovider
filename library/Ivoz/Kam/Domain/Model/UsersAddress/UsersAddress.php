@@ -2,6 +2,8 @@
 
 namespace Ivoz\Kam\Domain\Model\UsersAddress;
 
+use Ivoz\Core\Domain\Assert\Assertion;
+
 /**
  * UsersAddres
  */

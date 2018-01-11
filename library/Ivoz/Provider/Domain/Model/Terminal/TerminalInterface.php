@@ -228,7 +228,7 @@ interface TerminalInterface extends LoggableEntityInterface
     /**
      * Get astPsEndpoints
      *
-     * @return array
+     * @return \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface[]
      */
     public function getAstPsEndpoints(\Doctrine\Common\Collections\Criteria $criteria = null);
 
@@ -259,7 +259,7 @@ interface TerminalInterface extends LoggableEntityInterface
     /**
      * Get users
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\User\UserInterface[]
      */
     public function getUsers(\Doctrine\Common\Collections\Criteria $criteria = null);
 

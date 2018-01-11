@@ -4,6 +4,8 @@ namespace Ivoz\Provider\Domain\Model\Friend;
 
 use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\ChangelogTrait;
+use Ivoz\Core\Domain\Model\EntityInterface;
 
 /**
  * FriendAbstract
@@ -22,7 +24,7 @@ abstract class FriendAbstract
     protected $description = '';
 
     /**
-     * @comment enum:udp|tcp|tls
+     * comment: enum:udp|tcp|tls
      * @var string
      */
     protected $transport;
@@ -38,7 +40,7 @@ abstract class FriendAbstract
     protected $port;
 
     /**
-     * @column auth_needed
+     * column: auth_needed
      * @var string
      */
     protected $authNeeded = 'yes';
@@ -64,34 +66,34 @@ abstract class FriendAbstract
     protected $allow = 'alaw';
 
     /**
-     * @column direct_media_method
-     * @comment enum:invite|update
+     * column: direct_media_method
+     * comment: enum:invite|update
      * @var string
      */
     protected $directMediaMethod = 'update';
 
     /**
-     * @column callerid_update_header
-     * @comment enum:pai|rpid
+     * column: callerid_update_header
+     * comment: enum:pai|rpid
      * @var string
      */
     protected $calleridUpdateHeader = 'pai';
 
     /**
-     * @column update_callerid
-     * @comment enum:yes|no
+     * column: update_callerid
+     * comment: enum:yes|no
      * @var string
      */
     protected $updateCallerid = 'yes';
 
     /**
-     * @column from_domain
+     * column: from_domain
      * @var string
      */
     protected $fromDomain;
 
     /**
-     * @comment enum:yes|no
+     * comment: enum:yes|no
      * @var string
      */
     protected $directConnectivity = 'yes';
@@ -127,11 +129,7 @@ abstract class FriendAbstract
     protected $language;
 
 
-    /**
-     * Changelog tracking purpose
-     * @var array
-     */
-    protected $_initialValues = [];
+    use ChangelogTrait;
 
     /**
      * Constructor
@@ -173,72 +171,6 @@ abstract class FriendAbstract
     }
 
     /**
-     * @param string $fieldName
-     * @return mixed
-     * @throws \Exception
-     */
-    public function initChangelog()
-    {
-        $values = $this->__toArray();
-        if (!$this->getId()) {
-            // Empty values for entities with no Id
-            foreach ($values as $key => $val) {
-                $values[$key] = null;
-            }
-        }
-
-        $this->_initialValues = $values;
-    }
-
-    /**
-     * @param string $fieldName
-     * @return mixed
-     * @throws \Exception
-     */
-    public function hasChanged($dbFieldName)
-    {
-        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
-            throw new \Exception($dbFieldName . ' field was not found');
-        }
-        $currentValues = $this->__toArray();
-
-        return $currentValues[$dbFieldName] != $this->_initialValues[$dbFieldName];
-    }
-
-    public function getInitialValue($dbFieldName)
-    {
-        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
-            throw new \Exception($dbFieldName . ' field was not found');
-        }
-
-        return $this->_initialValues[$dbFieldName];
-    }
-
-    /**
-     * @return array
-     */
-    protected function getChangeSet()
-    {
-        $changes = [];
-        $currentValues = $this->__toArray();
-        foreach ($currentValues as $key => $value) {
-
-            if ($this->_initialValues[$key] == $currentValues[$key]) {
-                continue;
-            }
-
-            $value = $currentValues[$key];
-            if ($value instanceof \DateTime) {
-                $value = $value->format('Y-m-d H:i:s');
-            }
-
-            $changes[$key] = $value;
-        }
-
-        return $changes;
-    }
-
-    /**
      * @return void
      * @throws \Exception
      */
@@ -247,11 +179,36 @@ abstract class FriendAbstract
     }
 
     /**
-     * @return FriendDTO
+     * @param null $id
+     * @return FriendDto
      */
-    public static function createDTO()
+    public static function createDto($id = null)
     {
-        return new FriendDTO();
+        return new FriendDto($id);
+    }
+
+    /**
+     * @param EntityInterface|null $entity
+     * @param int $depth
+     * @return FriendDto|null
+     */
+    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    {
+        if (!$entity) {
+            return null;
+        }
+
+        Assertion::isInstanceOf($entity, FriendInterface::class);
+
+        if ($depth < 1) {
+            return static::createDto($entity->getId());
+        }
+
+        if ($entity instanceof \Doctrine\ORM\Proxy\Proxy && !$entity->__isInitialized()) {
+            return static::createDto($entity->getId());
+        }
+
+        return $entity->toDto($depth-1);
     }
 
     /**
@@ -259,12 +216,12 @@ abstract class FriendAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDTO(DataTransferObjectInterface $dto)
+    public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto FriendDTO
+         * @var $dto FriendDto
          */
-        Assertion::isInstanceOf($dto, FriendDTO::class);
+        Assertion::isInstanceOf($dto, FriendDto::class);
 
         $self = new static(
             $dto->getName(),
@@ -302,12 +259,12 @@ abstract class FriendAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDTO(DataTransferObjectInterface $dto)
+    public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto FriendDTO
+         * @var $dto FriendDto
          */
-        Assertion::isInstanceOf($dto, FriendDTO::class);
+        Assertion::isInstanceOf($dto, FriendDto::class);
 
         $this
             ->setName($dto->getName())
@@ -339,11 +296,12 @@ abstract class FriendAbstract
     }
 
     /**
-     * @return FriendDTO
+     * @param int $depth
+     * @return FriendDto
      */
-    public function toDTO()
+    public function toDto($depth = 0)
     {
-        return self::createDTO()
+        return self::createDto()
             ->setName($this->getName())
             ->setDescription($this->getDescription())
             ->setTransport($this->getTransport())
@@ -359,12 +317,12 @@ abstract class FriendAbstract
             ->setUpdateCallerid($this->getUpdateCallerid())
             ->setFromDomain($this->getFromDomain())
             ->setDirectConnectivity($this->getDirectConnectivity())
-            ->setCompanyId($this->getCompany() ? $this->getCompany()->getId() : null)
-            ->setDomainId($this->getDomain() ? $this->getDomain()->getId() : null)
-            ->setTransformationRuleSetId($this->getTransformationRuleSet() ? $this->getTransformationRuleSet()->getId() : null)
-            ->setCallAclId($this->getCallAcl() ? $this->getCallAcl()->getId() : null)
-            ->setOutgoingDdiId($this->getOutgoingDdi() ? $this->getOutgoingDdi()->getId() : null)
-            ->setLanguageId($this->getLanguage() ? $this->getLanguage()->getId() : null);
+            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto($this->getCompany(), $depth))
+            ->setDomain(\Ivoz\Provider\Domain\Model\Domain\Domain::entityToDto($this->getDomain(), $depth))
+            ->setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet::entityToDto($this->getTransformationRuleSet(), $depth))
+            ->setCallAcl(\Ivoz\Provider\Domain\Model\CallAcl\CallAcl::entityToDto($this->getCallAcl(), $depth))
+            ->setOutgoingDdi(\Ivoz\Provider\Domain\Model\Ddi\Ddi::entityToDto($this->getOutgoingDdi(), $depth))
+            ->setLanguage(\Ivoz\Provider\Domain\Model\Language\Language::entityToDto($this->getLanguage(), $depth));
     }
 
     /**

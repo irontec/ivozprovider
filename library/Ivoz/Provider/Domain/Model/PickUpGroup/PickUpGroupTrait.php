@@ -34,24 +34,16 @@ trait PickUpGroupTrait
     }
 
     /**
-     * @return PickUpGroupDTO
-     */
-    public static function createDTO()
-    {
-        return new PickUpGroupDTO();
-    }
-
-    /**
      * Factory method
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDTO(DataTransferObjectInterface $dto)
+    public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto PickUpGroupDTO
+         * @var $dto PickUpGroupDto
          */
-        $self = parent::fromDTO($dto);
+        $self = parent::fromDto($dto);
         if ($dto->getRelUsers()) {
             $self->replaceRelUsers($dto->getRelUsers());
         }
@@ -67,12 +59,12 @@ trait PickUpGroupTrait
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDTO(DataTransferObjectInterface $dto)
+    public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto PickUpGroupDTO
+         * @var $dto PickUpGroupDto
          */
-        parent::updateFromDTO($dto);
+        parent::updateFromDto($dto);
         if ($dto->getRelUsers()) {
             $this->replaceRelUsers($dto->getRelUsers());
         }
@@ -80,11 +72,12 @@ trait PickUpGroupTrait
     }
 
     /**
-     * @return PickUpGroupDTO
+     * @param int $depth
+     * @return PickUpGroupDto
      */
-    public function toDTO()
+    public function toDto($depth = 0)
     {
-        $dto = parent::toDTO();
+        $dto = parent::toDto($depth);
         return $dto
             ->setId($this->getId());
     }
@@ -161,7 +154,7 @@ trait PickUpGroupTrait
     /**
      * Get relUsers
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface[]
      */
     public function getRelUsers(Criteria $criteria = null)
     {

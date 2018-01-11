@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\Brand;
 
 use Assert\Assertion;
+use Ivoz\Core\Domain\Model\EntityInterface;
 
 /**
  * Invoice

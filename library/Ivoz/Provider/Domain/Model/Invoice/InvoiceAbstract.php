@@ -4,6 +4,8 @@ namespace Ivoz\Provider\Domain\Model\Invoice;
 
 use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\ChangelogTrait;
+use Ivoz\Core\Domain\Model\EntityInterface;
 
 /**
  * InvoiceAbstract
@@ -42,7 +44,7 @@ abstract class InvoiceAbstract
     protected $totalWithTax;
 
     /**
-     * @comment enum:waiting|processing|created|error
+     * comment: enum:waiting|processing|created|error
      * @var string
      */
     protected $status;
@@ -68,11 +70,7 @@ abstract class InvoiceAbstract
     protected $company;
 
 
-    /**
-     * Changelog tracking purpose
-     * @var array
-     */
-    protected $_initialValues = [];
+    use ChangelogTrait;
 
     /**
      * Constructor
@@ -94,72 +92,6 @@ abstract class InvoiceAbstract
     }
 
     /**
-     * @param string $fieldName
-     * @return mixed
-     * @throws \Exception
-     */
-    public function initChangelog()
-    {
-        $values = $this->__toArray();
-        if (!$this->getId()) {
-            // Empty values for entities with no Id
-            foreach ($values as $key => $val) {
-                $values[$key] = null;
-            }
-        }
-
-        $this->_initialValues = $values;
-    }
-
-    /**
-     * @param string $fieldName
-     * @return mixed
-     * @throws \Exception
-     */
-    public function hasChanged($dbFieldName)
-    {
-        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
-            throw new \Exception($dbFieldName . ' field was not found');
-        }
-        $currentValues = $this->__toArray();
-
-        return $currentValues[$dbFieldName] != $this->_initialValues[$dbFieldName];
-    }
-
-    public function getInitialValue($dbFieldName)
-    {
-        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
-            throw new \Exception($dbFieldName . ' field was not found');
-        }
-
-        return $this->_initialValues[$dbFieldName];
-    }
-
-    /**
-     * @return array
-     */
-    protected function getChangeSet()
-    {
-        $changes = [];
-        $currentValues = $this->__toArray();
-        foreach ($currentValues as $key => $value) {
-
-            if ($this->_initialValues[$key] == $currentValues[$key]) {
-                continue;
-            }
-
-            $value = $currentValues[$key];
-            if ($value instanceof \DateTime) {
-                $value = $value->format('Y-m-d H:i:s');
-            }
-
-            $changes[$key] = $value;
-        }
-
-        return $changes;
-    }
-
-    /**
      * @return void
      * @throws \Exception
      */
@@ -168,11 +100,36 @@ abstract class InvoiceAbstract
     }
 
     /**
-     * @return InvoiceDTO
+     * @param null $id
+     * @return InvoiceDto
      */
-    public static function createDTO()
+    public static function createDto($id = null)
     {
-        return new InvoiceDTO();
+        return new InvoiceDto($id);
+    }
+
+    /**
+     * @param EntityInterface|null $entity
+     * @param int $depth
+     * @return InvoiceDto|null
+     */
+    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    {
+        if (!$entity) {
+            return null;
+        }
+
+        Assertion::isInstanceOf($entity, InvoiceInterface::class);
+
+        if ($depth < 1) {
+            return static::createDto($entity->getId());
+        }
+
+        if ($entity instanceof \Doctrine\ORM\Proxy\Proxy && !$entity->__isInitialized()) {
+            return static::createDto($entity->getId());
+        }
+
+        return $entity->toDto($depth-1);
     }
 
     /**
@@ -180,12 +137,12 @@ abstract class InvoiceAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDTO(DataTransferObjectInterface $dto)
+    public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto InvoiceDTO
+         * @var $dto InvoiceDto
          */
-        Assertion::isInstanceOf($dto, InvoiceDTO::class);
+        Assertion::isInstanceOf($dto, InvoiceDto::class);
 
         $pdf = new Pdf(
             $dto->getPdfFileSize(),
@@ -220,12 +177,12 @@ abstract class InvoiceAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDTO(DataTransferObjectInterface $dto)
+    public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto InvoiceDTO
+         * @var $dto InvoiceDto
          */
-        Assertion::isInstanceOf($dto, InvoiceDTO::class);
+        Assertion::isInstanceOf($dto, InvoiceDto::class);
 
         $pdf = new Pdf(
             $dto->getPdfFileSize(),
@@ -253,11 +210,12 @@ abstract class InvoiceAbstract
     }
 
     /**
-     * @return InvoiceDTO
+     * @param int $depth
+     * @return InvoiceDto
      */
-    public function toDTO()
+    public function toDto($depth = 0)
     {
-        return self::createDTO()
+        return self::createDto()
             ->setNumber($this->getNumber())
             ->setInDate($this->getInDate())
             ->setOutDate($this->getOutDate())
@@ -268,9 +226,9 @@ abstract class InvoiceAbstract
             ->setPdfFileSize($this->getPdf()->getFileSize())
             ->setPdfMimeType($this->getPdf()->getMimeType())
             ->setPdfBaseName($this->getPdf()->getBaseName())
-            ->setInvoiceTemplateId($this->getInvoiceTemplate() ? $this->getInvoiceTemplate()->getId() : null)
-            ->setBrandId($this->getBrand() ? $this->getBrand()->getId() : null)
-            ->setCompanyId($this->getCompany() ? $this->getCompany()->getId() : null);
+            ->setInvoiceTemplate(\Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplate::entityToDto($this->getInvoiceTemplate(), $depth))
+            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto($this->getBrand(), $depth))
+            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto($this->getCompany(), $depth));
     }
 
     /**

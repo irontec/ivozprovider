@@ -4,6 +4,8 @@ namespace Ivoz\Provider\Domain\Model\CallForwardSetting;
 
 use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\ChangelogTrait;
+use Ivoz\Core\Domain\Model\EntityInterface;
 
 /**
  * CallForwardSettingAbstract
@@ -12,19 +14,19 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 abstract class CallForwardSettingAbstract
 {
     /**
-     * @comment enum:internal|external|both
+     * comment: enum:internal|external|both
      * @var string
      */
     protected $callTypeFilter;
 
     /**
-     * @comment enum:inconditional|noAnswer|busy|userNotRegistered
+     * comment: enum:inconditional|noAnswer|busy|userNotRegistered
      * @var string
      */
     protected $callForwardType;
 
     /**
-     * @comment enum:number|extension|voicemail
+     * comment: enum:number|extension|voicemail
      * @var string
      */
     protected $targetType;
@@ -60,11 +62,7 @@ abstract class CallForwardSettingAbstract
     protected $numberCountry;
 
 
-    /**
-     * Changelog tracking purpose
-     * @var array
-     */
-    protected $_initialValues = [];
+    use ChangelogTrait;
 
     /**
      * Constructor
@@ -92,72 +90,6 @@ abstract class CallForwardSettingAbstract
     }
 
     /**
-     * @param string $fieldName
-     * @return mixed
-     * @throws \Exception
-     */
-    public function initChangelog()
-    {
-        $values = $this->__toArray();
-        if (!$this->getId()) {
-            // Empty values for entities with no Id
-            foreach ($values as $key => $val) {
-                $values[$key] = null;
-            }
-        }
-
-        $this->_initialValues = $values;
-    }
-
-    /**
-     * @param string $fieldName
-     * @return mixed
-     * @throws \Exception
-     */
-    public function hasChanged($dbFieldName)
-    {
-        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
-            throw new \Exception($dbFieldName . ' field was not found');
-        }
-        $currentValues = $this->__toArray();
-
-        return $currentValues[$dbFieldName] != $this->_initialValues[$dbFieldName];
-    }
-
-    public function getInitialValue($dbFieldName)
-    {
-        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
-            throw new \Exception($dbFieldName . ' field was not found');
-        }
-
-        return $this->_initialValues[$dbFieldName];
-    }
-
-    /**
-     * @return array
-     */
-    protected function getChangeSet()
-    {
-        $changes = [];
-        $currentValues = $this->__toArray();
-        foreach ($currentValues as $key => $value) {
-
-            if ($this->_initialValues[$key] == $currentValues[$key]) {
-                continue;
-            }
-
-            $value = $currentValues[$key];
-            if ($value instanceof \DateTime) {
-                $value = $value->format('Y-m-d H:i:s');
-            }
-
-            $changes[$key] = $value;
-        }
-
-        return $changes;
-    }
-
-    /**
      * @return void
      * @throws \Exception
      */
@@ -166,11 +98,36 @@ abstract class CallForwardSettingAbstract
     }
 
     /**
-     * @return CallForwardSettingDTO
+     * @param null $id
+     * @return CallForwardSettingDto
      */
-    public static function createDTO()
+    public static function createDto($id = null)
     {
-        return new CallForwardSettingDTO();
+        return new CallForwardSettingDto($id);
+    }
+
+    /**
+     * @param EntityInterface|null $entity
+     * @param int $depth
+     * @return CallForwardSettingDto|null
+     */
+    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    {
+        if (!$entity) {
+            return null;
+        }
+
+        Assertion::isInstanceOf($entity, CallForwardSettingInterface::class);
+
+        if ($depth < 1) {
+            return static::createDto($entity->getId());
+        }
+
+        if ($entity instanceof \Doctrine\ORM\Proxy\Proxy && !$entity->__isInitialized()) {
+            return static::createDto($entity->getId());
+        }
+
+        return $entity->toDto($depth-1);
     }
 
     /**
@@ -178,12 +135,12 @@ abstract class CallForwardSettingAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDTO(DataTransferObjectInterface $dto)
+    public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto CallForwardSettingDTO
+         * @var $dto CallForwardSettingDto
          */
-        Assertion::isInstanceOf($dto, CallForwardSettingDTO::class);
+        Assertion::isInstanceOf($dto, CallForwardSettingDto::class);
 
         $self = new static(
             $dto->getCallTypeFilter(),
@@ -209,12 +166,12 @@ abstract class CallForwardSettingAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDTO(DataTransferObjectInterface $dto)
+    public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto CallForwardSettingDTO
+         * @var $dto CallForwardSettingDto
          */
-        Assertion::isInstanceOf($dto, CallForwardSettingDTO::class);
+        Assertion::isInstanceOf($dto, CallForwardSettingDto::class);
 
         $this
             ->setCallTypeFilter($dto->getCallTypeFilter())
@@ -234,20 +191,21 @@ abstract class CallForwardSettingAbstract
     }
 
     /**
-     * @return CallForwardSettingDTO
+     * @param int $depth
+     * @return CallForwardSettingDto
      */
-    public function toDTO()
+    public function toDto($depth = 0)
     {
-        return self::createDTO()
+        return self::createDto()
             ->setCallTypeFilter($this->getCallTypeFilter())
             ->setCallForwardType($this->getCallForwardType())
             ->setTargetType($this->getTargetType())
             ->setNumberValue($this->getNumberValue())
             ->setNoAnswerTimeout($this->getNoAnswerTimeout())
-            ->setUserId($this->getUser() ? $this->getUser()->getId() : null)
-            ->setExtensionId($this->getExtension() ? $this->getExtension()->getId() : null)
-            ->setVoiceMailUserId($this->getVoiceMailUser() ? $this->getVoiceMailUser()->getId() : null)
-            ->setNumberCountryId($this->getNumberCountry() ? $this->getNumberCountry()->getId() : null);
+            ->setUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto($this->getUser(), $depth))
+            ->setExtension(\Ivoz\Provider\Domain\Model\Extension\Extension::entityToDto($this->getExtension(), $depth))
+            ->setVoiceMailUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto($this->getVoiceMailUser(), $depth))
+            ->setNumberCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto($this->getNumberCountry(), $depth));
     }
 
     /**

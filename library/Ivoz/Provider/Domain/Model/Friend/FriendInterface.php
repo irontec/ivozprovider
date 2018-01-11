@@ -402,7 +402,7 @@ interface FriendInterface extends LoggableEntityInterface
     /**
      * Get psEndpoints
      *
-     * @return array
+     * @return \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface[]
      */
     public function getPsEndpoints(\Doctrine\Common\Collections\Criteria $criteria = null);
 
@@ -433,7 +433,7 @@ interface FriendInterface extends LoggableEntityInterface
     /**
      * Get patterns
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPatternInterface[]
      */
     public function getPatterns(\Doctrine\Common\Collections\Criteria $criteria = null);
 

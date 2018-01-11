@@ -250,7 +250,7 @@ class Company extends CompanyAbstract implements CompanyInterface
     }
 
     /**
-     * @brief Get musicclass for given company
+     * brief: Get musicclass for given company
      *
      * If no specific company music on hold is found, brand music will be used.
      * If no specific brand music  on hold is found, dafault music will be sued.

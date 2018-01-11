@@ -4,6 +4,8 @@ namespace Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern;
 
 use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\ChangelogTrait;
+use Ivoz\Core\Domain\Model\EntityInterface;
 
 /**
  * RoutingPatternGroupsRelPatternAbstract
@@ -22,11 +24,7 @@ abstract class RoutingPatternGroupsRelPatternAbstract
     protected $routingPatternGroup;
 
 
-    /**
-     * Changelog tracking purpose
-     * @var array
-     */
-    protected $_initialValues = [];
+    use ChangelogTrait;
 
     /**
      * Constructor
@@ -47,72 +45,6 @@ abstract class RoutingPatternGroupsRelPatternAbstract
     }
 
     /**
-     * @param string $fieldName
-     * @return mixed
-     * @throws \Exception
-     */
-    public function initChangelog()
-    {
-        $values = $this->__toArray();
-        if (!$this->getId()) {
-            // Empty values for entities with no Id
-            foreach ($values as $key => $val) {
-                $values[$key] = null;
-            }
-        }
-
-        $this->_initialValues = $values;
-    }
-
-    /**
-     * @param string $fieldName
-     * @return mixed
-     * @throws \Exception
-     */
-    public function hasChanged($dbFieldName)
-    {
-        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
-            throw new \Exception($dbFieldName . ' field was not found');
-        }
-        $currentValues = $this->__toArray();
-
-        return $currentValues[$dbFieldName] != $this->_initialValues[$dbFieldName];
-    }
-
-    public function getInitialValue($dbFieldName)
-    {
-        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
-            throw new \Exception($dbFieldName . ' field was not found');
-        }
-
-        return $this->_initialValues[$dbFieldName];
-    }
-
-    /**
-     * @return array
-     */
-    protected function getChangeSet()
-    {
-        $changes = [];
-        $currentValues = $this->__toArray();
-        foreach ($currentValues as $key => $value) {
-
-            if ($this->_initialValues[$key] == $currentValues[$key]) {
-                continue;
-            }
-
-            $value = $currentValues[$key];
-            if ($value instanceof \DateTime) {
-                $value = $value->format('Y-m-d H:i:s');
-            }
-
-            $changes[$key] = $value;
-        }
-
-        return $changes;
-    }
-
-    /**
      * @return void
      * @throws \Exception
      */
@@ -121,11 +53,36 @@ abstract class RoutingPatternGroupsRelPatternAbstract
     }
 
     /**
-     * @return RoutingPatternGroupsRelPatternDTO
+     * @param null $id
+     * @return RoutingPatternGroupsRelPatternDto
      */
-    public static function createDTO()
+    public static function createDto($id = null)
     {
-        return new RoutingPatternGroupsRelPatternDTO();
+        return new RoutingPatternGroupsRelPatternDto($id);
+    }
+
+    /**
+     * @param EntityInterface|null $entity
+     * @param int $depth
+     * @return RoutingPatternGroupsRelPatternDto|null
+     */
+    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    {
+        if (!$entity) {
+            return null;
+        }
+
+        Assertion::isInstanceOf($entity, RoutingPatternGroupsRelPatternInterface::class);
+
+        if ($depth < 1) {
+            return static::createDto($entity->getId());
+        }
+
+        if ($entity instanceof \Doctrine\ORM\Proxy\Proxy && !$entity->__isInitialized()) {
+            return static::createDto($entity->getId());
+        }
+
+        return $entity->toDto($depth-1);
     }
 
     /**
@@ -133,12 +90,12 @@ abstract class RoutingPatternGroupsRelPatternAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDTO(DataTransferObjectInterface $dto)
+    public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto RoutingPatternGroupsRelPatternDTO
+         * @var $dto RoutingPatternGroupsRelPatternDto
          */
-        Assertion::isInstanceOf($dto, RoutingPatternGroupsRelPatternDTO::class);
+        Assertion::isInstanceOf($dto, RoutingPatternGroupsRelPatternDto::class);
 
         $self = new static();
 
@@ -157,12 +114,12 @@ abstract class RoutingPatternGroupsRelPatternAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDTO(DataTransferObjectInterface $dto)
+    public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto RoutingPatternGroupsRelPatternDTO
+         * @var $dto RoutingPatternGroupsRelPatternDto
          */
-        Assertion::isInstanceOf($dto, RoutingPatternGroupsRelPatternDTO::class);
+        Assertion::isInstanceOf($dto, RoutingPatternGroupsRelPatternDto::class);
 
         $this
             ->setRoutingPattern($dto->getRoutingPattern())
@@ -175,13 +132,14 @@ abstract class RoutingPatternGroupsRelPatternAbstract
     }
 
     /**
-     * @return RoutingPatternGroupsRelPatternDTO
+     * @param int $depth
+     * @return RoutingPatternGroupsRelPatternDto
      */
-    public function toDTO()
+    public function toDto($depth = 0)
     {
-        return self::createDTO()
-            ->setRoutingPatternId($this->getRoutingPattern() ? $this->getRoutingPattern()->getId() : null)
-            ->setRoutingPatternGroupId($this->getRoutingPatternGroup() ? $this->getRoutingPatternGroup()->getId() : null);
+        return self::createDto()
+            ->setRoutingPattern(\Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPattern::entityToDto($this->getRoutingPattern(), $depth))
+            ->setRoutingPatternGroup(\Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup::entityToDto($this->getRoutingPatternGroup(), $depth));
     }
 
     /**

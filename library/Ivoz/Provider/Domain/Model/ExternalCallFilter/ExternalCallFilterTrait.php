@@ -52,24 +52,16 @@ trait ExternalCallFilterTrait
     }
 
     /**
-     * @return ExternalCallFilterDTO
-     */
-    public static function createDTO()
-    {
-        return new ExternalCallFilterDTO();
-    }
-
-    /**
      * Factory method
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDTO(DataTransferObjectInterface $dto)
+    public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto ExternalCallFilterDTO
+         * @var $dto ExternalCallFilterDto
          */
-        $self = parent::fromDTO($dto);
+        $self = parent::fromDto($dto);
         if ($dto->getCalendars()) {
             $self->replaceCalendars($dto->getCalendars());
         }
@@ -97,12 +89,12 @@ trait ExternalCallFilterTrait
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDTO(DataTransferObjectInterface $dto)
+    public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto ExternalCallFilterDTO
+         * @var $dto ExternalCallFilterDto
          */
-        parent::updateFromDTO($dto);
+        parent::updateFromDto($dto);
         if ($dto->getCalendars()) {
             $this->replaceCalendars($dto->getCalendars());
         }
@@ -119,11 +111,12 @@ trait ExternalCallFilterTrait
     }
 
     /**
-     * @return ExternalCallFilterDTO
+     * @param int $depth
+     * @return ExternalCallFilterDto
      */
-    public function toDTO()
+    public function toDto($depth = 0)
     {
-        $dto = parent::toDTO();
+        $dto = parent::toDto($depth);
         return $dto
             ->setId($this->getId());
     }
@@ -200,7 +193,7 @@ trait ExternalCallFilterTrait
     /**
      * Get calendars
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\ExternalCallFilterRelCalendar\ExternalCallFilterRelCalendarInterface[]
      */
     public function getCalendars(Criteria $criteria = null)
     {
@@ -272,7 +265,7 @@ trait ExternalCallFilterTrait
     /**
      * Get blackLists
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList\ExternalCallFilterBlackListInterface[]
      */
     public function getBlackLists(Criteria $criteria = null)
     {
@@ -344,7 +337,7 @@ trait ExternalCallFilterTrait
     /**
      * Get whiteLists
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\ExternalCallFilterWhiteList\ExternalCallFilterWhiteListInterface[]
      */
     public function getWhiteLists(Criteria $criteria = null)
     {
@@ -416,7 +409,7 @@ trait ExternalCallFilterTrait
     /**
      * Get schedules
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\ExternalCallFilterRelSchedule\ExternalCallFilterRelScheduleInterface[]
      */
     public function getSchedules(Criteria $criteria = null)
     {

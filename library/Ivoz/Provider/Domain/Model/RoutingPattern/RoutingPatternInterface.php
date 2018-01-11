@@ -100,7 +100,7 @@ interface RoutingPatternInterface extends EntityInterface
     /**
      * Get lcrRules
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\LcrRule\LcrRuleInterface[]
      */
     public function getLcrRules(\Doctrine\Common\Collections\Criteria $criteria = null);
 

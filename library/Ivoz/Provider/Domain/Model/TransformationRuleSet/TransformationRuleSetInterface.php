@@ -178,7 +178,7 @@ interface TransformationRuleSetInterface extends LoggableEntityInterface
     /**
      * Get rules
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\TransformationRule\TransformationRuleInterface[]
      */
     public function getRules(\Doctrine\Common\Collections\Criteria $criteria = null);
 

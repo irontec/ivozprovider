@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\Locution;
 
 use Assert\Assertion;
+use Ivoz\Core\Domain\Model\EntityInterface;
 
 /**
  * EncodedFile
@@ -11,20 +12,20 @@ use Assert\Assertion;
 class EncodedFile
 {
     /**
-     * @column encodedFileFileSize
-     * @comment FSO:keepExtension
+     * column: encodedFileFileSize
+     * comment: FSO:keepExtension
      * @var integer
      */
     protected $fileSize;
 
     /**
-     * @column encodedFileMimeType
+     * column: encodedFileMimeType
      * @var string
      */
     protected $mimeType;
 
     /**
-     * @column encodedFileBaseName
+     * column: encodedFileBaseName
      * @var string
      */
     protected $baseName;

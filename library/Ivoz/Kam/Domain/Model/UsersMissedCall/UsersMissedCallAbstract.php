@@ -4,6 +4,8 @@ namespace Ivoz\Kam\Domain\Model\UsersMissedCall;
 
 use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\ChangelogTrait;
+use Ivoz\Core\Domain\Model\EntityInterface;
 
 /**
  * UsersMissedCallAbstract
@@ -17,13 +19,13 @@ abstract class UsersMissedCallAbstract
     protected $method = '';
 
     /**
-     * @column from_tag
+     * column: from_tag
      * @var string
      */
     protected $fromTag = '';
 
     /**
-     * @column to_tag
+     * column: to_tag
      * @var string
      */
     protected $toTag = '';
@@ -34,43 +36,43 @@ abstract class UsersMissedCallAbstract
     protected $callid = '';
 
     /**
-     * @column sip_code
+     * column: sip_code
      * @var string
      */
     protected $sipCode = '';
 
     /**
-     * @column sip_reason
+     * column: sip_reason
      * @var string
      */
     protected $sipReason = '';
 
     /**
-     * @column src_ip
+     * column: src_ip
      * @var string
      */
     protected $srcIp;
 
     /**
-     * @column from_user
+     * column: from_user
      * @var string
      */
     protected $fromUser;
 
     /**
-     * @column from_domain
+     * column: from_domain
      * @var string
      */
     protected $fromDomain;
 
     /**
-     * @column ruri_user
+     * column: ruri_user
      * @var string
      */
     protected $ruriUser;
 
     /**
-     * @column ruri_domain
+     * column: ruri_domain
      * @var string
      */
     protected $ruriDomain;
@@ -91,11 +93,7 @@ abstract class UsersMissedCallAbstract
     protected $utctime;
 
 
-    /**
-     * Changelog tracking purpose
-     * @var array
-     */
-    protected $_initialValues = [];
+    use ChangelogTrait;
 
     /**
      * Constructor
@@ -119,72 +117,6 @@ abstract class UsersMissedCallAbstract
     }
 
     /**
-     * @param string $fieldName
-     * @return mixed
-     * @throws \Exception
-     */
-    public function initChangelog()
-    {
-        $values = $this->__toArray();
-        if (!$this->getId()) {
-            // Empty values for entities with no Id
-            foreach ($values as $key => $val) {
-                $values[$key] = null;
-            }
-        }
-
-        $this->_initialValues = $values;
-    }
-
-    /**
-     * @param string $fieldName
-     * @return mixed
-     * @throws \Exception
-     */
-    public function hasChanged($dbFieldName)
-    {
-        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
-            throw new \Exception($dbFieldName . ' field was not found');
-        }
-        $currentValues = $this->__toArray();
-
-        return $currentValues[$dbFieldName] != $this->_initialValues[$dbFieldName];
-    }
-
-    public function getInitialValue($dbFieldName)
-    {
-        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
-            throw new \Exception($dbFieldName . ' field was not found');
-        }
-
-        return $this->_initialValues[$dbFieldName];
-    }
-
-    /**
-     * @return array
-     */
-    protected function getChangeSet()
-    {
-        $changes = [];
-        $currentValues = $this->__toArray();
-        foreach ($currentValues as $key => $value) {
-
-            if ($this->_initialValues[$key] == $currentValues[$key]) {
-                continue;
-            }
-
-            $value = $currentValues[$key];
-            if ($value instanceof \DateTime) {
-                $value = $value->format('Y-m-d H:i:s');
-            }
-
-            $changes[$key] = $value;
-        }
-
-        return $changes;
-    }
-
-    /**
      * @return void
      * @throws \Exception
      */
@@ -193,11 +125,36 @@ abstract class UsersMissedCallAbstract
     }
 
     /**
-     * @return UsersMissedCallDTO
+     * @param null $id
+     * @return UsersMissedCallDto
      */
-    public static function createDTO()
+    public static function createDto($id = null)
     {
-        return new UsersMissedCallDTO();
+        return new UsersMissedCallDto($id);
+    }
+
+    /**
+     * @param EntityInterface|null $entity
+     * @param int $depth
+     * @return UsersMissedCallDto|null
+     */
+    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    {
+        if (!$entity) {
+            return null;
+        }
+
+        Assertion::isInstanceOf($entity, UsersMissedCallInterface::class);
+
+        if ($depth < 1) {
+            return static::createDto($entity->getId());
+        }
+
+        if ($entity instanceof \Doctrine\ORM\Proxy\Proxy && !$entity->__isInitialized()) {
+            return static::createDto($entity->getId());
+        }
+
+        return $entity->toDto($depth-1);
     }
 
     /**
@@ -205,12 +162,12 @@ abstract class UsersMissedCallAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDTO(DataTransferObjectInterface $dto)
+    public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto UsersMissedCallDTO
+         * @var $dto UsersMissedCallDto
          */
-        Assertion::isInstanceOf($dto, UsersMissedCallDTO::class);
+        Assertion::isInstanceOf($dto, UsersMissedCallDto::class);
 
         $self = new static(
             $dto->getMethod(),
@@ -241,12 +198,12 @@ abstract class UsersMissedCallAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDTO(DataTransferObjectInterface $dto)
+    public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto UsersMissedCallDTO
+         * @var $dto UsersMissedCallDto
          */
-        Assertion::isInstanceOf($dto, UsersMissedCallDTO::class);
+        Assertion::isInstanceOf($dto, UsersMissedCallDto::class);
 
         $this
             ->setMethod($dto->getMethod())
@@ -271,11 +228,12 @@ abstract class UsersMissedCallAbstract
     }
 
     /**
-     * @return UsersMissedCallDTO
+     * @param int $depth
+     * @return UsersMissedCallDto
      */
-    public function toDTO()
+    public function toDto($depth = 0)
     {
-        return self::createDTO()
+        return self::createDto()
             ->setMethod($this->getMethod())
             ->setFromTag($this->getFromTag())
             ->setToTag($this->getToTag())
