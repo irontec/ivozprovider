@@ -3,7 +3,7 @@
 namespace Ivoz\Provider\Domain\Service\LcrRule;
 
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
-use Ivoz\Provider\Domain\Model\LcrRule\LcrRuleDTO;
+use Ivoz\Provider\Domain\Model\LcrRule\LcrRuleDto;
 use Ivoz\Provider\Domain\Model\LcrRule\LcrRuleInterface;
 use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface;
 use Ivoz\Provider\Domain\Service\RoutingPattern\RoutingPatternLifecycleEventHandlerInterface;
@@ -45,7 +45,7 @@ class UpdateByRoutingPattern implements RoutingPatternLifecycleEventHandlerInter
             /**
              * @var LcrRuleDTO $lcrRuleDTO
              */
-            $lcrRuleDTO = $lcrRule->toDTO();
+            $lcrRuleDTO = $lcrRule->toDto();
             $lcrRuleDTO
                 ->setTag($entity->getName())
                 ->setDescription($entity->getDescription());

@@ -3,8 +3,9 @@
 namespace Ivoz\Provider\Domain\Service\User;
 
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
-use Ivoz\Provider\Domain\Model\User\UserDTO;
+use Ivoz\Provider\Domain\Model\User\UserDto;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Model\User\UserRepository;
 
 /**
  * Class UnsetBossAssistant
@@ -19,10 +20,17 @@ class UnsetBossAssistant implements UserLifecycleEventHandlerInterface
      */
     protected $entityPersister;
 
+    /**
+     * @var UserRepository
+     */
+    protected $userRepository;
+
     public function __construct(
-        EntityPersisterInterface $entityPersister
+        EntityPersisterInterface $entityPersister,
+        UserRepository $userRepository
     ) {
         $this->entityPersister = $entityPersister;
+        $this->userRepository = $userRepository;
     }
 
     public function execute(UserInterface $entity, $isNew)
@@ -31,16 +39,19 @@ class UnsetBossAssistant implements UserLifecycleEventHandlerInterface
         $hasChangedIsBoss = $entity->hasChanged('isBoss');
 
         if (!$isNew && $hasChangedIsBoss && $isBoss) {
-            $assistant = $entity->getBossAssistant();
-            if($assistant) {
-                /**
-                 * @var UserDTO $assistantDTO
-                 */
-                $assistantDTO = $assistant->toDTO();
-                $assistantDTO->setIsBoss(false);
-                $assistantDTO->setBossAssistantId(null);
 
-                $this->entityPersister->persistDto($assistantDTO, $assistant);
+            $bosses = $this
+                ->userRepository
+                ->findBy(['bossAssistant' => $entity->getId()]);
+
+            foreach ($bosses as $boss) {
+                /**
+                 * @var UserDTO $bossDto
+                 */
+                $bossDto = $boss->toDto();
+                $bossDto->setBossAssistantId(null);
+
+                $this->entityPersister->persistDto($bossDto, $boss);
             }
         }
     }

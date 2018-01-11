@@ -49,7 +49,7 @@ class PropagateBrandServices implements CompanyLifecycleEventHandlerInterface
          * @var BrandService $service
          */
         foreach ($services as $service) {
-            $companyServiceDto = CompanyService::createDTO();
+            $companyServiceDto = CompanyService::createDto();
 
             $serviceId = $service->getService()->getId();
             $companyServiceDto

@@ -44,13 +44,13 @@ class UpdateByRetailAccount implements RetailAccountLifecycleEventHandlerInterfa
         // If not found create a new one
         if (is_null($endpoint)) {
 
-            $endpointDTO = PsEndpoint::createDTO();
+            $endpointDTO = PsEndpoint::createDto();
             $endpointDTO
                 ->setContext('retail')
                 ->setSendDiversion('yes')
                 ->setSendPai('yes');
         } else {
-            $endpointDTO  = $endpoint->toDTO();
+            $endpointDTO  = $endpoint->toDto();
         }
 
         // Use company domain if retail from-domain not set

@@ -21,6 +21,8 @@ services:
     arguments:
       $entityPersister:
         '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
+      $lcrRuleFactory:
+        '@Ivoz\Provider\Domain\Service\LcrRule\CreateByOutgoingRoutingAndRoutingPattern'
 
   Ivoz\Provider\Domain\Service\LcrRuleTarget\CreateByOutgoingRouting:
     tags:
@@ -38,4 +40,3 @@ services:
     arguments:
       $trunksLcrReload:
         '@XmlRpc\XmlRpcTrunksRequest::DialplanReload'
-

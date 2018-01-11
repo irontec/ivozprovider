@@ -22,3 +22,8 @@ services:
       $createAndPersistRoutingPatternGroupsRelPattern:
         '@Ivoz\Provider\Domain\Service\RoutingPatternGroupsRelPattern\CreateAndPersist'
 
+  Ivoz\Provider\Domain\Service\LcrRule\CreateByOutgoingRoutingAndRoutingPattern:
+    arguments:
+      $entityPersister: '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
+      $createEntityFromDTO: '@Ivoz\Core\Application\Service\CreateEntityFromDTO'
+

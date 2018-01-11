@@ -3,7 +3,7 @@
 namespace Ivoz\Provider\Domain\Service\Company;
 
 use Ivoz\Core\Application\Service\UpdateEntityFromDTO;
-use Ivoz\Provider\Domain\Model\Company\CompanyDTO;
+use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 
 /**
@@ -33,7 +33,7 @@ class SanitizeEmptyValues implements CompanyLifecycleEventHandlerInterface
         /**
          * @var $dto CompanyDTO
          */
-        $dto = $entity->toDTO();
+        $dto = $entity->toDto();
         if (!$dto->getMediaRelaySetsId()) {
             $dto->setMediaRelaySetsId(0);
         }

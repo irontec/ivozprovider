@@ -3,7 +3,7 @@
 namespace Ivoz\Ast\Domain\Service\PsEndpoint;
 
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpoint;
-use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointDTO;
+use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointDto;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointRepository;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Provider\Domain\Model\Friend\Friend;
@@ -44,7 +44,7 @@ class UpdateByFriend implements FriendLifecycleEventHandlerInterface
         ]);
 
         if (is_null($endpoint)) {
-            $endPointDto = new PsEndpointDTO();
+            $endPointDto = new PsEndpointDto();
             $endPointDto
                 ->setContext("friends")
                 ->setSendDiversion("yes")

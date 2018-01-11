@@ -6,7 +6,7 @@ use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Domain\Domain;
-use Ivoz\Provider\Domain\Model\Domain\DomainDTO;
+use Ivoz\Provider\Domain\Model\Domain\DomainDto;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Service\Brand\BrandLifecycleEventHandlerInterface;
 
@@ -62,9 +62,9 @@ class UpdateByBrand implements BrandLifecycleEventHandlerInterface
 
         // If domain field is filled, look for brand domains or create a new one
         if (is_null($domain)) {
-            $domainDto = Domain::createDTO();
+            $domainDto = Domain::createDto();
         } else {
-            $domainDto = $domain->toDTO();
+            $domainDto = $domain->toDto();
         }
 
         /**

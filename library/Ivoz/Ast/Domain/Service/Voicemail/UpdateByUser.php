@@ -5,7 +5,7 @@ namespace Ivoz\Ast\Domain\Service\Voicemail;
 use Ivoz\Ast\Domain\Model\Voicemail\VoicemailRepository;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
-use Ivoz\Ast\Domain\Model\Voicemail\VoicemailDTO;
+use Ivoz\Ast\Domain\Model\Voicemail\VoicemailDto;
 use Ivoz\Provider\Domain\Service\User\UserLifecycleEventHandlerInterface;
 
 class UpdateByUser implements UserLifecycleEventHandlerInterface
@@ -35,8 +35,8 @@ class UpdateByUser implements UserLifecycleEventHandlerInterface
         ]);
 
         $voicemailDTO = is_null($voicemail)
-            ? new VoicemailDTO()
-            : $voicemail->toDTO();
+            ? new VoicemailDto()
+            : $voicemail->toDto();
 
         if ($entity->getVoicemailSendMail()) {
             $voicemailDTO->setEmail(

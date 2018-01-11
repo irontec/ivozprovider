@@ -2,7 +2,7 @@
 
 namespace Ivoz\Ast\Domain\Service\PsEndpoint;
 
-use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointDTO;
+use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointDto;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointRepository;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
@@ -44,7 +44,7 @@ class UpdateByTerminal implements TerminalLifecycleEventHandlerInterface
         ]);
 
         if (is_null($endpoint)) {
-            $endpointDto = new PsEndpointDTO();
+            $endpointDto = new PsEndpointDto();
             $endpointDto
                 ->setContext('users')
                 ->setSendDiversion('yes')

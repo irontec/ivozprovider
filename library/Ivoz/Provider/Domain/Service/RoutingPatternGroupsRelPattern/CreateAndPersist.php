@@ -4,12 +4,12 @@ namespace Ivoz\Provider\Domain\Service\RoutingPatternGroupsRelPattern;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface;
-use Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupDTO;
+use Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupDto;
 use Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup;
 use Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface;
 use Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupRepository;
 use Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPattern;
-use Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternDTO;
+use Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternDto;
 
 /**
  * Class CreateAndPersist
@@ -34,7 +34,7 @@ class CreateAndPersist
         /**
          * @var RoutingPatternGroupsRelPatternDTO $routingPatternGroupsRelPatternDto
          */
-        $routingPatternGroupsRelPatternDto = RoutingPatternGroupsRelPattern::createDTO();
+        $routingPatternGroupsRelPatternDto = RoutingPatternGroupsRelPattern::createDto();
         $routingPatternGroupsRelPatternDto
             ->setRoutingPatternId($routingPattern->getId())
             ->setRoutingPatternGroupid($patternGroup->getId());

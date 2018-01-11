@@ -5,7 +5,7 @@ namespace Ivoz\Provider\Application\Service\FaxesInOut;
 use Ivoz\Core\Application\Service\StoragePathResolverCollection;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Application\Service\Assembler\CustomDtoAssemblerInterface;
-use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutDTO;
+use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutDto;
 use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutInterface;
 use Assert\Assertion;
 
@@ -24,14 +24,15 @@ class FaxesInOutDtoAssembler implements CustomDtoAssemblerInterface
 
     /**
      * @param FaxesInOutInterface $entity
+     * @param integer $depth
      * @return FaxesInOutDTO
      */
-    public function toDTO(EntityInterface $entity)
+    public function toDto(EntityInterface $entity, $depth = 0)
     {
         Assertion::isInstanceOf($entity, FaxesInOutInterface::class);
 
         /** @var FaxesInOutDTO $dto */
-        $dto = $entity->toDTO();
+        $dto = $entity->toDto($depth);
         $id = $entity->getId();
 
         if (!$id) {

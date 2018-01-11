@@ -30,24 +30,35 @@ interface EntityInterface
     public function getInitialValue($fieldName);
 
     /**
+     * @param mixed|null $id
+     * @return EntityInterface
+     */
+    public static function createDto($id = null);
+
+    /**
+     * @param int $depth
+     * @param EntityInterface|null $entity
+     * @return DataTransferObjectInterface|null
+     * @todo move this into dto::fromEntity
+     */
+    public static function entityToDto(EntityInterface $entity = null, $depth = 0);
+
+    /**
      * Factory method
      * @param DataTransferObjectInterface $dto
      */
-    public static function fromDTO(DataTransferObjectInterface $dto);
+    public static function fromDto(DataTransferObjectInterface $dto);
 
     /**
      * @return self
      */
-    public function updateFromDTO(DataTransferObjectInterface $dto);
+    public function updateFromDto(DataTransferObjectInterface $dto);
 
     /**
      * DTO casting
+     * @param int $depth
      * @return DataTransferObjectInterface
+     * @todo move this into dto::fromEntity
      */
-    public function toDTO();
-
-    /**
-     * @return DataTransferObjectInterface
-     */
-    public static function createDTO();
+    public function toDto($depth = 0);
 }

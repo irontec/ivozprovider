@@ -25,10 +25,10 @@ class BrandUrlAssembler implements CustomEntityAssemblerInterface
      * @param DataTransferObjectInterface $dto
      * @param EntityInterface $entity
      */
-    public function fromDTO(DataTransferObjectInterface $dto, EntityInterface $entity)
+    public function fromDto(DataTransferObjectInterface $dto, EntityInterface $entity)
     {
         Assertion::isInstanceOf($entity, BrandUrlInterface::class);
-        $entity->updateFromDTO($dto);
+        $entity->updateFromDto($dto);
         $this->handleEntityFiles($entity, $dto);
     }
 }

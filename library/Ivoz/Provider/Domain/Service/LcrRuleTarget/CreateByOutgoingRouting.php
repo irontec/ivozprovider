@@ -49,7 +49,7 @@ class CreateByOutgoingRouting implements OutgoingRoutingLifecycleEventHandlerInt
         // Create n x m LcrRuleTargets (n LcrRules; m LcrGateways)
         foreach ($lcrRules as $lcrRule) {
             foreach ($lcrGateways as $lcrGateway) {
-                $lcrRuleTargetDto = LcrRuleTarget::createDTO();
+                $lcrRuleTargetDto = LcrRuleTarget::createDto();
 
                 $lcrRuleTargetDto
                     ->setRuleId($lcrRule->getId())
