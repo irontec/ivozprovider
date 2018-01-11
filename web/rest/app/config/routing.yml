@@ -1,0 +1,13 @@
+api:
+  resource: '.'
+  type: 'api_platform'
+
+api_base_path:
+  path: '/'
+
+api_doc:
+  path: api/swagger.json
+
+api_login_check:
+  path: /login_check
+#  defaults: { _controller: ApiBundle:Authentication:loginCheck }

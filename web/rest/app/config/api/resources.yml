@@ -1,0 +1,249 @@
+Ivoz\Provider\Domain\Model\Brand\Brand:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\Brand\Invoice:
+Ivoz\Provider\Domain\Model\Brand\Logo:
+Ivoz\Provider\Domain\Model\Administrator\Administrator:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServer:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\BrandService\BrandService:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\BrandUrl\BrandUrl:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\Calendar\Calendar:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\CallAcl\CallAcl:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchList:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\Company\Company:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\CompanyService\CompanyService:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlist:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelSchedule:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendar:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\Country\Country:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\Ddi\Ddi:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\Domain\Domain:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\Extension\Extension:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList\ExternalCallFilterBlackList:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\ExternalCallFilterRelCalendar\ExternalCallFilterRelCalendar:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\ExternalCallFilterRelSchedule\ExternalCallFilterRelSchedule:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\ExternalCallFilterWhiteList\ExternalCallFilterWhiteList:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOut:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\Fax\Fax:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\Feature\Feature:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrand:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompany:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\FixedCost\FixedCost:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoice:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\Friend\Friend:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPattern:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\HolidayDate\HolidayDate:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUser:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\Invoice\Invoice:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplate:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\IvrEntry\IvrEntry:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\Ivr\Ivr:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\IvrExcludedExtension\IvrExcludedExtension:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\Language\Language:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\Language\Name:
+Ivoz\Provider\Domain\Model\LcrGateway\LcrGateway:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\LcrRule\LcrRule:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\LcrRuleTarget\LcrRuleTarget:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\Locution\Locution:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\MatchList\MatchList:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPattern:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHold:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPattern:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\PeeringContract\PeeringContract:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\PeerServer\PeerServer:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroup:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUser:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\PricingPlan\PricingPlan:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\PricingPlansRelCompany\PricingPlansRelCompany:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\PricingPlansRelTargetPattern\PricingPlansRelTargetPattern:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunk:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\ProxyUser\ProxyUser:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\QueueMember\QueueMember:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\Queue\Queue:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\Recording\Recording:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPattern:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPattern:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\Schedule\Schedule:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\Service\Service:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\TargetPattern\TargetPattern:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\TerminalManufacturer\TerminalManufacturer:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\TerminalModel\TerminalModel:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\Terminal\Terminal:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\Timezone\Timezone:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\TransformationRule\TransformationRule:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Provider\Domain\Model\User\User:
+  attributes:
+    access_control: 'user.isSuperAdmin()'
+Ivoz\Kam\Domain\Model\PikeTrusted\PikeTrusted:
+  attributes:
+    access_control: 'user.isSuperAdmin()'

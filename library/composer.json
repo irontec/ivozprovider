@@ -58,7 +58,8 @@
         "ramsey/uuid": "^3.7",
         "sensio/distribution-bundle": "^5.0",
         "symfony/monolog-bundle": "^3.0.2",
-        "symfony/symfony": "3.3.*"
+        "symfony/symfony": "3.3.*",
+        "twig/twig": "^2.4"
     },
     "require-dev": {
         "leanphp/phpspec-code-coverage": "4.0.*",

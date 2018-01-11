@@ -1,0 +1,62 @@
+## To get started with security, check out the documentation:
+## http://symfony.com/doc/current/security.html
+security:
+  # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+  encoders:
+    Ivoz\Provider\Domain\Model\Administrator\Administrator:
+      algorithm: bcrypt
+      cost: 12
+
+  providers:
+    orm:
+      entity:
+        class: Ivoz\Provider\Domain\Model\Administrator\Administrator
+        property: username
+
+
+  firewalls:
+    # disables authentication for assets and the profiler, adapt it according to your needs
+    dev:
+      pattern: ^/(_(profiler|wdt)|css|images|js)/
+      security: false
+
+    api_docs:
+      pattern: ^/index.[^.{3,6}]/?.*$
+      security: false
+
+    login:
+      pattern:  ^/login
+      stateless: true
+      anonymous: true
+      provider: orm
+      form_login:
+          check_path: /login_check
+          require_previous_session: false
+          username_parameter: username
+          password_parameter: password
+          success_handler: lexik_jwt_authentication.handler.authentication_success
+          failure_handler: lexik_jwt_authentication.handler.authentication_failure
+          require_previous_session: false
+
+    api:
+      pattern:   ^/.+
+      stateless: true
+      guard:
+        authenticators:
+          - lexik_jwt_authentication.jwt_token_authenticator
+
+
+    main:
+      anonymous: ~
+      # activate different ways to authenticate
+
+      # http://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
+      #http_basic: ~
+
+      # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+      #form_login: ~
+
+  access_control:
+    - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/index.html, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/, roles: IS_AUTHENTICATED_FULLY }

@@ -1,4 +1,4 @@
 # Learn more about services, parameters and containers at
 # http://symfony.com/doc/current/service_container.html
 imports:
-    - { resource: "@CoreBundle/Resources/config/services.yml" }
+    - { resource: "@ApiBundle/Resources/config/services.yml" }
