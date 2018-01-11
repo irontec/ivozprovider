@@ -5,7 +5,7 @@ namespace Ivoz\Provider\Application\Service\BrandUrl;
 use Ivoz\Core\Application\Service\StoragePathResolverCollection;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Application\Service\Assembler\CustomDtoAssemblerInterface;
-use Ivoz\Provider\Domain\Model\BrandUrl\BrandUrlDTO;
+use Ivoz\Provider\Domain\Model\BrandUrl\BrandUrlDto;
 use Ivoz\Provider\Domain\Model\BrandUrl\BrandUrlInterface;
 use Assert\Assertion;
 
@@ -25,14 +25,15 @@ class BrandUrlDtoAssembler implements CustomDtoAssemblerInterface
 
     /**
      * @param BrandUrlInterface $entity
+     * @param integer $depth
      * @return BrandUrlDTO
      */
-    public function toDTO(EntityInterface $entity)
+    public function toDto(EntityInterface $entity, $depth = 0)
     {
         Assertion::isInstanceOf($entity, BrandUrlInterface::class);
 
         /** @var BrandUrlDTO $dto */
-        $dto = $entity->toDTO();
+        $dto = $entity->toDto($depth);
         $id = $entity->getId();
 
         if (!$id) {

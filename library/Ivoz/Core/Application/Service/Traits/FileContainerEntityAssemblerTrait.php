@@ -109,7 +109,7 @@ trait FileContainerEntityAssemblerTrait
         $fldName
     ) {
         $this->updateDtoMetadata($dto, $fldName);
-        $entity->updateFromDTO($dto);
+        $entity->updateFromDto($dto);
 
         $pathGetter = 'get' . ucFirst($fldName) . 'Path';
         $baseNameGetter = 'get' . ucFirst($fldName) . 'BaseName';

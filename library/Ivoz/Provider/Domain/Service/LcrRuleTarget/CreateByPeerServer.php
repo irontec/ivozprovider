@@ -42,7 +42,7 @@ class CreateByPeerServer implements PeerServerLifecycleEventHandlerInterface
             $lcrRules = $outgoingRouting->getLcrRules();
 
             foreach ($lcrRules as $lcrRule) {
-                $lcrRuleTargetDto = LcrRuleTarget::createDTO();
+                $lcrRuleTargetDto = LcrRuleTarget::createDto();
 
                 $lcrRuleTargetDto
                     ->setRuleId($lcrRule->getId())

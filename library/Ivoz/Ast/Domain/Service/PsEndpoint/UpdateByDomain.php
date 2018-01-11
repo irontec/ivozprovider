@@ -3,7 +3,7 @@
 namespace Ivoz\Ast\Domain\Service\PsEndpoint;
 
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
-use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointDTO;
+use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointDto;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
@@ -54,7 +54,7 @@ class UpdateByDomain implements DomainLifecycleEventHandlerInterface
     private function updateEndpoint(PsEndpointInterface $endpoint, $fromdomain)
     {
         /** @var PsEndpointDTO $endpointDTO */
-        $endpointDTO = $endpoint->toDTO();
+        $endpointDTO = $endpoint->toDto();
         $endpointDTO->setFromDomain($fromdomain);
 
         $this->entityPersister->persistDto($endpointDTO, $endpoint);

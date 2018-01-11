@@ -1,4 +1,10 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: mikel
+ * Date: 11/12/17
+ * Time: 10:53
+ */
 
 namespace Ivoz\Core\Application\Service;
 
@@ -42,7 +48,7 @@ class UpdateEntityFromDTO
         $dto->transformForeignKeys($this->fkTransformer);
         $dto->transformCollections($this->collectionTransformer);
 
-        $this->entityAssembler->updateFromDTO(
+        $this->entityAssembler->updateFromDto(
             $dto,
             $entity
         );

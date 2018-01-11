@@ -108,7 +108,7 @@ class DataGateway
         $results = $repository->findAll();
 
         foreach ($results as $key => $result) {
-            $results[$key] = $this->dtoAssembler->toDTO($result);
+            $results[$key] = $this->dtoAssembler->toDto($result);
         }
 
         return $results;
@@ -125,7 +125,7 @@ class DataGateway
         $result = $repository->find($id);
 
         if (!is_null($result)) {
-            return $this->dtoAssembler->toDTO($result);
+            return $this->dtoAssembler->toDto($result);
         }
 
         return null;
@@ -155,7 +155,7 @@ class DataGateway
 
         $response = [];
         foreach ($results as $entity) {
-            $response[] = $this->dtoAssembler->toDTO($entity);
+            $response[] = $this->dtoAssembler->toDto($entity);
         }
 
         return $response;
@@ -296,12 +296,12 @@ class DataGateway
             );
     }
 
-    private  function triggerEvent(string $class, string $method, array $arguments)
+    private function triggerEvent(string $class, string $method, array $arguments)
     {
         foreach ($arguments as $key => $value) {
 
             if ($value instanceof DataTransferObjectInterface) {
-                $arguments[$key] = $value->__toArray();
+                $arguments[$key] = $value->toArray();
             } else if (is_object($value)) {
                 $arguments[$key] = 'object(' . get_class($value) . ')';
             }

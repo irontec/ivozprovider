@@ -25,13 +25,12 @@ class DtoAssembler
         $this->customAssemblers = [];
     }
 
-    public function toDTO(EntityInterface $targetEntity)
+    public function toDto(EntityInterface $targetEntity, $depth = 0)
     {
         $assembler = $this->getAssembler($targetEntity);
-
         return $assembler
-            ? $assembler->toDTO($targetEntity)
-            : $targetEntity->toDTO();
+            ? $assembler->toDto($targetEntity, $depth)
+            : $targetEntity->toDto($depth);
     }
 
     private function getAssembler(EntityInterface $entity)
@@ -51,7 +50,7 @@ class DtoAssembler
 
     /**
      * @param EntityInterface $targetEntity
-     * @return null | DtoAssemblerInterface
+     * @return null | CustomDtoAssemblerInterface
      */
     private function create(EntityInterface $targetEntity)
     {

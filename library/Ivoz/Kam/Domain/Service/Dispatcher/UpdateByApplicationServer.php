@@ -44,8 +44,8 @@ class UpdateByApplicationServer implements ApplicationServerLifecycleEventHandle
         ]);
 
         $kamDispatcherDto = $isNew
-            ? KamDispatcher::createDTO()
-            : $kamDispatcher->toDTO();
+            ? KamDispatcher::createDto()
+            : $kamDispatcher->toDto();
 
         $kamDispatcherDto
             ->setApplicationServerId($entity->getId())

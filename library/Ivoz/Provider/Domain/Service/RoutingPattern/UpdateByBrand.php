@@ -5,7 +5,7 @@ use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Country\Country;
 use Ivoz\Provider\Domain\Model\Country\CountryRepository;
-use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternDTO;
+use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternDto;
 use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPattern;
 use Ivoz\Provider\Domain\Service\Brand\BrandLifecycleEventHandlerInterface;
 use Ivoz\Provider\Domain\Service\RoutingPatternGroup\UpdateByRoutingPatternAndCountry;
@@ -57,7 +57,7 @@ class UpdateByBrand implements BrandLifecycleEventHandlerInterface
             /**
              * @var RoutingPatternDTO $routingPattern
              */
-            $routingPatternDto = RoutingPattern::createDTO();
+            $routingPatternDto = RoutingPattern::createDto();
             $routingPatternDto
                 ->setNameEs($country->getName()->getEs())
                 ->setNameEn($country->getName()->getEn())

@@ -7,5 +7,5 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 
 interface CustomEntityAssemblerInterface
 {
-    public function fromDTO(DataTransferObjectInterface $dto, EntityInterface $entity);
+    public function fromDto(DataTransferObjectInterface $dto, EntityInterface $entity);
 }

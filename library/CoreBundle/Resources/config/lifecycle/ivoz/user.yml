@@ -43,6 +43,8 @@ services:
     arguments:
       $entityPersister:
         '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
+      $userRepository:
+        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\User\\User")'
 
   Ivoz\Ast\Domain\Service\PsEndpoint\UpdateByUser:
     tags:

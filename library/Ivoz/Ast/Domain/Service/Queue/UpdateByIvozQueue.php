@@ -57,8 +57,8 @@ class UpdateByIvozQueue implements IvozQueueLifecycleEventHandlerInterface
         ]);
 
         $astQueueDTO = is_null($astQueue)
-            ? Queue::createDTO()
-            : $astQueue->toDTO();
+            ? Queue::createDto()
+            : $astQueue->toDto();
 
         $astQueueDTO
             ->setQueueId($entity->getId())

@@ -10,7 +10,6 @@ use Ivoz\Provider\Domain\Model\Recording\RecordingInterface;
 use Assert\Assertion;
 use Ivoz\Core\Application\Service\Traits\FileContainerEntityAssemblerTrait;
 
-
 class RecordingAssembler implements CustomEntityAssemblerInterface
 {
     use FileContainerEntityAssemblerTrait;
@@ -25,10 +24,10 @@ class RecordingAssembler implements CustomEntityAssemblerInterface
      * @param DataTransferObjectInterface $dto
      * @param EntityInterface $entity
      */
-    public function fromDTO(DataTransferObjectInterface $dto, EntityInterface $entity)
+    public function fromDto(DataTransferObjectInterface $dto, EntityInterface $entity)
     {
         Assertion::isInstanceOf($entity, RecordingInterface::class);
-        $entity->updateFromDTO($dto);
+        $entity->updateFromDto($dto);
         $this->handleEntityFiles($entity, $dto);
     }
 }

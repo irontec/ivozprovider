@@ -28,8 +28,8 @@ class UpdateByPeerServer implements PeerServerLifecycleEventHandlerInterface
         $lcrGateway = $entity->getLcrGateway();
 
         $lcrGatewayDTO = is_null($lcrGateway)
-            ? LcrGateway::createDTO()
-            : $lcrGateway->toDTO();
+            ? LcrGateway::createDto()
+            : $lcrGateway->toDto();
 
         // Update/Create LcrGateway for this PeerServer
         $lcrGatewayDTO

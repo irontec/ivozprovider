@@ -4,10 +4,29 @@ namespace Ivoz\Core\Application;
 
 interface DataTransferObjectInterface
 {
+    const CONTEXT_COLLECTION = 'collection';
+    const CONTEXT_SIMPLE = '';
+    const CONTEXT_DETAILED = 'detailed';
+
     /**
      * @return array
      */
-    public function __toArray();
+    public function normalize(string $context);
+
+    /**
+     * @return void
+     */
+    public function denormalize(array $data, string $context);
+
+    /**
+     * @return array
+     */
+    public static function getPropertyMap(string $context = '');
+
+    /**
+     * @return array
+     */
+    public function toArray();
 
     /**
      * @param ForeignKeyTransformerInterface $transformer

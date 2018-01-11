@@ -30,12 +30,12 @@ class EntityAssembler
      * @param EntityInterface $targetEntity
      * @return EntityInterface
      */
-    public function updateFromDTO(DataTransferObjectInterface $dto, EntityInterface $targetEntity)
+    public function updateFromDto(DataTransferObjectInterface $dto, EntityInterface $targetEntity)
     {
         $assembler = $this->getAssembler($dto);
         $assembler
-            ? $assembler->fromDTO($dto, $targetEntity)
-            : $targetEntity->updateFromDTO($dto);
+            ? $assembler->fromDto($dto, $targetEntity)
+            : $targetEntity->updateFromDto($dto);
 
         return $targetEntity;
     }
@@ -45,12 +45,12 @@ class EntityAssembler
      * @param string $entityName
      * @return EntityInterface
      */
-    public function createFromDTO(DataTransferObjectInterface $dto, string $entityName)
+    public function createFromDto(DataTransferObjectInterface $dto, string $entityName)
     {
         $assembler = $this->getAssembler($dto);
-        $targetEntity = $entityName::fromDTO($dto);
+        $targetEntity = $entityName::fromDto($dto);
         $assembler
-            ? $assembler->fromDTO($dto, $targetEntity)
+            ? $assembler->fromDto($dto, $targetEntity)
             : $targetEntity;
 
         return $targetEntity;
@@ -82,7 +82,7 @@ class EntityAssembler
      */
     private function create(DataTransferObjectInterface $dto)
     {
-        $serviceClassName = $this->getServiceNameByDTO($dto);
+        $serviceClassName = $this->getServiceNameByDto($dto);
         $serviceExists = $this->serviceContainer->has($serviceClassName);
         if (!$serviceExists) {
             return null;
@@ -93,7 +93,7 @@ class EntityAssembler
             ->get($serviceClassName);
     }
 
-    private function getServiceNameByDTO(DataTransferObjectInterface $dto)
+    private function getServiceNameByDto(DataTransferObjectInterface $dto)
     {
         $entityClass = get_class($dto);
         return

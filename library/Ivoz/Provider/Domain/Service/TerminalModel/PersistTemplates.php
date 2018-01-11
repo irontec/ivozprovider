@@ -1,15 +1,28 @@
 <?php
+
 namespace Ivoz\Provider\Domain\Service\TerminalModel;
 
 use Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelInterface;
+use Symfony\Component\Filesystem\Filesystem;
 
 class PersistTemplates implements TerminalModelLifecycleEventHandlerInterface
 {
+    /**
+     * @var string
+     */
     protected $localStoragePath;
 
-    public function __construct(string $localStoragePath)
-    {
+    /**
+     * @var Filesystem
+     */
+    protected $fs;
+
+    public function __construct(
+        string $localStoragePath,
+        Filesystem $fs
+    ) {
         $this->localStoragePath = $localStoragePath;
+        $this->fs = $fs;
     }
 
     public function execute(TerminalModelInterface $entity, $isNew)
@@ -24,40 +37,49 @@ class PersistTemplates implements TerminalModelLifecycleEventHandlerInterface
         $route =
             $this->localStoragePath
             . DIRECTORY_SEPARATOR
-            . "Provision_template"
+            . 'Provision_template'
             . DIRECTORY_SEPARATOR
             . $entity->getId();
 
         if ($genericMustChange) {
             $template = $entity->getGenericTemplate();
             $this->createFolder($route);
-            $file = "generic.phtml";
+            $file = 'generic.phtml';
             $this->saveFiles($file, $route, $template);
         }
 
         if ($specificMustChange) {
             $template = $entity->getSpecificTemplate();
             $this->createFolder($route);
-            $file = "specific.phtml";
+            $file = 'specific.phtml';
             $this->saveFiles($file, $route, $template);
         }
     }
 
     protected function createFolder($route)
     {
-        if (!file_exists($route)) {
-            $old = umask(0);
-            mkdir($route, 0777, true);
-            umask($old);
+        $folderExists = $this->fs->exists($route);
+        if ($folderExists) {
+            return;
         }
+
+        $old = umask(0);
+        $this->fs->mkdir($route, 0777);
+        umask($old);
     }
 
     protected function saveFiles($file, $route, $template)
     {
         $fileRoute = $route . DIRECTORY_SEPARATOR .$file;
-        if( file_exists($fileRoute)) {
-            rename($fileRoute, $fileRoute . ".back");
+        $fileExists = $this->fs->exists($fileRoute);
+
+        if($fileExists) {
+            $this->fs->rename(
+                $fileRoute,
+                $fileRoute . '.back'
+            );
         }
-        file_put_contents($fileRoute, $template);
+
+        $this->fs->dumpFile($fileRoute, $template);
     }
 }

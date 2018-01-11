@@ -21,6 +21,20 @@ services:
     arguments:
       $entityPersister:
         '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
+      $generateInRules:
+        '@Ivoz\Provider\Domain\Service\TransformationRule\GenerateInRules'
+      $generateOutRules:
+        '@Ivoz\Provider\Domain\Service\TransformationRule\GenerateOutRules'
+
+  Ivoz\Provider\Domain\Service\TransformationRule\GenerateInRules:
+    arguments:
+      $entityPersister:
+        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
+
+  Ivoz\Provider\Domain\Service\TransformationRule\GenerateOutRules:
+    arguments:
+      $entityPersister:
+        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
 
   ##################################
   ## post_remove

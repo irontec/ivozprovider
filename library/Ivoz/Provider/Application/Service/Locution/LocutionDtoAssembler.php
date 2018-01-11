@@ -6,7 +6,7 @@ use Ivoz\Core\Application\Service\StoragePathResolverCollection;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Application\Service\Assembler\CustomDtoAssemblerInterface;
 use Assert\Assertion;
-use Ivoz\Provider\Domain\Model\Locution\LocutionDTO;
+use Ivoz\Provider\Domain\Model\Locution\LocutionDto;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
 
 class LocutionDtoAssembler implements CustomDtoAssemblerInterface
@@ -24,14 +24,15 @@ class LocutionDtoAssembler implements CustomDtoAssemblerInterface
 
     /**
      * @param LocutionInterface $entity
+     * @param integer $depth
      * @return LocutionDTO
      */
-    public function toDTO(EntityInterface $entity)
+    public function toDto(EntityInterface $entity, $depth = 0)
     {
         Assertion::isInstanceOf($entity, LocutionInterface::class);
 
         /** @var LocutionDTO $dto */
-        $dto = $entity->toDTO();
+        $dto = $entity->toDto($depth);
         $id = $entity->getId();
 
         if (!$id) {

@@ -5,6 +5,9 @@ namespace Ivoz\Provider\Domain\Service\PeeringContract;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
 
+/**
+ * @codeCoverageIgnore
+ */
 class PeeringContractLifecycleServiceCollection implements LifecycleServiceCollectionInterface
 {
     use LifecycleServiceCollectionTrait;
