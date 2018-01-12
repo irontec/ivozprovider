@@ -70,8 +70,8 @@ abstract class MatchListPatternDtoAbstract implements DataTransferObjectInterfac
             'regexp' => 'regexp',
             'numbervalue' => 'numbervalue',
             'id' => 'id',
-            'matchList' => 'matchList',
-            'numberCountry' => 'numberCountry'
+            'matchListId' => 'matchList',
+            'numberCountryId' => 'numberCountry'
         ];
     }
 

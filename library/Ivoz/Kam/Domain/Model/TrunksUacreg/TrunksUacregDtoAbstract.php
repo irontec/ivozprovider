@@ -124,8 +124,8 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
             'regDelay' => 'regDelay',
             'multiddi' => 'multiddi',
             'id' => 'id',
-            'brand' => 'brand',
-            'peeringContract' => 'peeringContract'
+            'brandId' => 'brand',
+            'peeringContractId' => 'peeringContract'
         ];
     }
 

@@ -63,8 +63,8 @@ abstract class OutgoingDdiRuleDtoAbstract implements DataTransferObjectInterface
             'name' => 'name',
             'defaultAction' => 'defaultAction',
             'id' => 'id',
-            'company' => 'company',
-            'forcedDdi' => 'forcedDdi'
+            'companyId' => 'company',
+            'forcedDdiId' => 'forcedDdi'
         ];
     }
 

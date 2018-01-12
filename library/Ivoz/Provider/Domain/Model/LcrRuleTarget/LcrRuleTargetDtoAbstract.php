@@ -69,9 +69,9 @@ abstract class LcrRuleTargetDtoAbstract implements DataTransferObjectInterface
             'priority' => 'priority',
             'weight' => 'weight',
             'id' => 'id',
-            'rule' => 'rule',
-            'gw' => 'gw',
-            'outgoingRouting' => 'outgoingRouting'
+            'ruleId' => 'rule',
+            'gwId' => 'gw',
+            'outgoingRoutingId' => 'outgoingRouting'
         ];
     }
 

@@ -57,8 +57,8 @@ abstract class MatchListDtoAbstract implements DataTransferObjectInterface
         return [
             'name' => 'name',
             'id' => 'id',
-            'brand' => 'brand',
-            'company' => 'company'
+            'brandId' => 'brand',
+            'companyId' => 'company'
         ];
     }
 

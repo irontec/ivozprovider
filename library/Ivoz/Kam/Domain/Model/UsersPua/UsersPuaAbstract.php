@@ -156,6 +156,16 @@ abstract class UsersPuaAbstract
         $this->setExtraHeaders($extraHeaders);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "UsersPua",
+            $this->getId()
+        );
+    }
+
     /**
      * @return void
      * @throws \Exception

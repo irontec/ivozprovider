@@ -87,6 +87,16 @@ abstract class UsersPresentityAbstract
         $this->setPriority($priority);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "UsersPresentity",
+            $this->getId()
+        );
+    }
+
     /**
      * @return void
      * @throws \Exception

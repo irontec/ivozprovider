@@ -71,6 +71,16 @@ abstract class UsersLocationAttrAbstract
         $this->setLastModified($lastModified);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "UsersLocationAttr",
+            $this->getId()
+        );
+    }
+
     /**
      * @return void
      * @throws \Exception

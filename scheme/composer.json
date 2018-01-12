@@ -27,6 +27,7 @@
     "autoload": {
         "psr-4": {
             "": "src/",
+            "DataFixtures\\": "../library/DataFixtures",
             "Ivoz\\": "../library/Ivoz",
             "CoreBundle\\": "../library/CoreBundle"
         },

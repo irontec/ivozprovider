@@ -14,6 +14,8 @@ interface RtpproxyInterface extends LoggableEntityInterface
 
     public function setMediaRelaySet(\Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface $mediaRelaySet = null);
 
+    public function __toString();
+
     /**
      * Set setid
      *

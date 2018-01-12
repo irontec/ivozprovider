@@ -338,7 +338,7 @@ public function <methodName>Id()
 
             $value = is_array(($value))
                 ? $this->subPropertyMapStringify($value)
-                : "'" . $key . "'";
+                : "'" . $value . "'";
 
             $response[] =
                 "'"
@@ -390,7 +390,7 @@ public function <methodName>Id()
                 }
 
                 if (!$isOneToMany && !is_null($associationToArray)) {
-                    $propertyMap[$fieldName] = $fieldName;
+                    $propertyMap[$fieldName . 'Id'] = $fieldName;
                 }
 
                 $getters[$attribute] = $associationGetterAs;

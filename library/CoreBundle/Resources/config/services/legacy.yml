@@ -3,9 +3,6 @@ services:
     autowire: true
     public: false
 
-  IvozProvider\Gearmand\Jobs\Xmlrpc:
-    shared: false
-
   IvozProvider\Gearmand\Jobs\Recoder: ~
 
   Jobs\XmlrpcDelayed:

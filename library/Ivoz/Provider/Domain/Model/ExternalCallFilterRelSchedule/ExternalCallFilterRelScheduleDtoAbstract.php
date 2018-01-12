@@ -46,8 +46,8 @@ abstract class ExternalCallFilterRelScheduleDtoAbstract implements DataTransferO
 
         return [
             'id' => 'id',
-            'filter' => 'filter',
-            'schedule' => 'schedule'
+            'filterId' => 'filter',
+            'scheduleId' => 'schedule'
         ];
     }
 

@@ -46,8 +46,8 @@ abstract class ExternalCallFilterBlackListDtoAbstract implements DataTransferObj
 
         return [
             'id' => 'id',
-            'filter' => 'filter',
-            'matchlist' => 'matchlist'
+            'filterId' => 'filter',
+            'matchlistId' => 'matchlist'
         ];
     }
 

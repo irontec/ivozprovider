@@ -46,8 +46,8 @@ abstract class FeaturesRelBrandDtoAbstract implements DataTransferObjectInterfac
 
         return [
             'id' => 'id',
-            'brand' => 'brand',
-            'feature' => 'feature'
+            'brandId' => 'brand',
+            'featureId' => 'feature'
         ];
     }
 

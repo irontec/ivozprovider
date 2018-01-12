@@ -58,8 +58,8 @@ abstract class CallAclRelMatchListDtoAbstract implements DataTransferObjectInter
             'priority' => 'priority',
             'policy' => 'policy',
             'id' => 'id',
-            'callAcl' => 'callAcl',
-            'matchList' => 'matchList'
+            'callAclId' => 'callAcl',
+            'matchListId' => 'matchList'
         ];
     }
 

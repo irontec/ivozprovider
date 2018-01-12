@@ -77,7 +77,7 @@ abstract class DispatcherDtoAbstract implements DataTransferObjectInterface
             'attrs' => 'attrs',
             'description' => 'description',
             'id' => 'id',
-            'applicationServer' => 'applicationServer'
+            'applicationServerId' => 'applicationServer'
         ];
     }
 

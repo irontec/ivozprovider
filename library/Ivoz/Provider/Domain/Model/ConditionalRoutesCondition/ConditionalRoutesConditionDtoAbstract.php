@@ -90,17 +90,17 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     /**
      * @var \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistDto[] | null
      */
-    private $matchlists = null;
+    private $relMatchlists = null;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleDto[] | null
      */
-    private $schedules = null;
+    private $relSchedules = null;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarDto[] | null
      */
-    private $calendars = null;
+    private $relCalendars = null;
 
 
     use DtoNormalizer;
@@ -125,16 +125,16 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
             'numberValue' => 'numberValue',
             'friendValue' => 'friendValue',
             'id' => 'id',
-            'conditionalRoute' => 'conditionalRoute',
-            'ivr' => 'ivr',
-            'huntGroup' => 'huntGroup',
-            'voicemailUser' => 'voicemailUser',
-            'user' => 'user',
-            'queue' => 'queue',
-            'locution' => 'locution',
-            'conferenceRoom' => 'conferenceRoom',
-            'extension' => 'extension',
-            'numberCountry' => 'numberCountry'
+            'conditionalRouteId' => 'conditionalRoute',
+            'ivrId' => 'ivr',
+            'huntGroupId' => 'huntGroup',
+            'voicemailUserId' => 'voicemailUser',
+            'userId' => 'user',
+            'queueId' => 'queue',
+            'locutionId' => 'locution',
+            'conferenceRoomId' => 'conferenceRoom',
+            'extensionId' => 'extension',
+            'numberCountryId' => 'numberCountry'
         ];
     }
 
@@ -159,9 +159,9 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
             'conferenceRoom' => $this->getConferenceRoom(),
             'extension' => $this->getExtension(),
             'numberCountry' => $this->getNumberCountry(),
-            'matchlists' => $this->getMatchlists(),
-            'schedules' => $this->getSchedules(),
-            'calendars' => $this->getCalendars()
+            'relMatchlists' => $this->getRelMatchlists(),
+            'relSchedules' => $this->getRelSchedules(),
+            'relCalendars' => $this->getRelCalendars()
         ];
     }
 
@@ -180,33 +180,33 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
         $this->conferenceRoom = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\ConferenceRoom\\ConferenceRoom', $this->getConferenceRoomId());
         $this->extension = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Extension\\Extension', $this->getExtensionId());
         $this->numberCountry = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Country\\Country', $this->getNumberCountryId());
-        if (!is_null($this->matchlists)) {
-            $items = $this->getMatchlists();
-            $this->matchlists = [];
+        if (!is_null($this->relMatchlists)) {
+            $items = $this->getRelMatchlists();
+            $this->relMatchlists = [];
             foreach ($items as $item) {
-                $this->matchlists[] = $transformer->transform(
+                $this->relMatchlists[] = $transformer->transform(
                     'Ivoz\\Provider\\Domain\\Model\\ConditionalRoutesConditionsRelMatchlist\\ConditionalRoutesConditionsRelMatchlist',
                     $item->getId() ?? $item
                 );
             }
         }
 
-        if (!is_null($this->schedules)) {
-            $items = $this->getSchedules();
-            $this->schedules = [];
+        if (!is_null($this->relSchedules)) {
+            $items = $this->getRelSchedules();
+            $this->relSchedules = [];
             foreach ($items as $item) {
-                $this->schedules[] = $transformer->transform(
+                $this->relSchedules[] = $transformer->transform(
                     'Ivoz\\Provider\\Domain\\Model\\ConditionalRoutesConditionsRelSchedule\\ConditionalRoutesConditionsRelSchedule',
                     $item->getId() ?? $item
                 );
             }
         }
 
-        if (!is_null($this->calendars)) {
-            $items = $this->getCalendars();
-            $this->calendars = [];
+        if (!is_null($this->relCalendars)) {
+            $items = $this->getRelCalendars();
+            $this->relCalendars = [];
             foreach ($items as $item) {
-                $this->calendars[] = $transformer->transform(
+                $this->relCalendars[] = $transformer->transform(
                     'Ivoz\\Provider\\Domain\\Model\\ConditionalRoutesConditionsRelCalendar\\ConditionalRoutesConditionsRelCalendar',
                     $item->getId() ?? $item
                 );
@@ -220,17 +220,17 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-        $this->matchlists = $transformer->transform(
+        $this->relMatchlists = $transformer->transform(
             'Ivoz\\Provider\\Domain\\Model\\ConditionalRoutesConditionsRelMatchlist\\ConditionalRoutesConditionsRelMatchlist',
-            $this->matchlists
+            $this->relMatchlists
         );
-        $this->schedules = $transformer->transform(
+        $this->relSchedules = $transformer->transform(
             'Ivoz\\Provider\\Domain\\Model\\ConditionalRoutesConditionsRelSchedule\\ConditionalRoutesConditionsRelSchedule',
-            $this->schedules
+            $this->relSchedules
         );
-        $this->calendars = $transformer->transform(
+        $this->relCalendars = $transformer->transform(
             'Ivoz\\Provider\\Domain\\Model\\ConditionalRoutesConditionsRelCalendar\\ConditionalRoutesConditionsRelCalendar',
-            $this->calendars
+            $this->relCalendars
         );
     }
 
@@ -795,13 +795,13 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
         }
 
     /**
-     * @param array $matchlists
+     * @param array $relMatchlists
      *
      * @return static
      */
-    public function setMatchlists($matchlists = null)
+    public function setRelMatchlists($relMatchlists = null)
     {
-        $this->matchlists = $matchlists;
+        $this->relMatchlists = $relMatchlists;
 
         return $this;
     }
@@ -809,19 +809,19 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     /**
      * @return array
      */
-    public function getMatchlists()
+    public function getRelMatchlists()
     {
-        return $this->matchlists;
+        return $this->relMatchlists;
     }
 
     /**
-     * @param array $schedules
+     * @param array $relSchedules
      *
      * @return static
      */
-    public function setSchedules($schedules = null)
+    public function setRelSchedules($relSchedules = null)
     {
-        $this->schedules = $schedules;
+        $this->relSchedules = $relSchedules;
 
         return $this;
     }
@@ -829,19 +829,19 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     /**
      * @return array
      */
-    public function getSchedules()
+    public function getRelSchedules()
     {
-        return $this->schedules;
+        return $this->relSchedules;
     }
 
     /**
-     * @param array $calendars
+     * @param array $relCalendars
      *
      * @return static
      */
-    public function setCalendars($calendars = null)
+    public function setRelCalendars($relCalendars = null)
     {
-        $this->calendars = $calendars;
+        $this->relCalendars = $relCalendars;
 
         return $this;
     }
@@ -849,9 +849,9 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     /**
      * @return array
      */
-    public function getCalendars()
+    public function getRelCalendars()
     {
-        return $this->calendars;
+        return $this->relCalendars;
     }
 }
 

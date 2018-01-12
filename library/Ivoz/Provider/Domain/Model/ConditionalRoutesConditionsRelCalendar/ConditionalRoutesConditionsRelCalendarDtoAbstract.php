@@ -46,8 +46,8 @@ abstract class ConditionalRoutesConditionsRelCalendarDtoAbstract implements Data
 
         return [
             'id' => 'id',
-            'condition' => 'condition',
-            'calendar' => 'calendar'
+            'conditionId' => 'condition',
+            'calendarId' => 'calendar'
         ];
     }
 

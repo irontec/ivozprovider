@@ -136,16 +136,16 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
             'outOfScheduleTargetType' => 'outOfScheduleTargetType',
             'outOfScheduleNumberValue' => 'outOfScheduleNumberValue',
             'id' => 'id',
-            'company' => 'company',
-            'welcomeLocution' => 'welcomeLocution',
-            'holidayLocution' => 'holidayLocution',
-            'outOfScheduleLocution' => 'outOfScheduleLocution',
-            'holidayExtension' => 'holidayExtension',
-            'outOfScheduleExtension' => 'outOfScheduleExtension',
-            'holidayVoiceMailUser' => 'holidayVoiceMailUser',
-            'outOfScheduleVoiceMailUser' => 'outOfScheduleVoiceMailUser',
-            'holidayNumberCountry' => 'holidayNumberCountry',
-            'outOfScheduleNumberCountry' => 'outOfScheduleNumberCountry'
+            'companyId' => 'company',
+            'welcomeLocutionId' => 'welcomeLocution',
+            'holidayLocutionId' => 'holidayLocution',
+            'outOfScheduleLocutionId' => 'outOfScheduleLocution',
+            'holidayExtensionId' => 'holidayExtension',
+            'outOfScheduleExtensionId' => 'outOfScheduleExtension',
+            'holidayVoiceMailUserId' => 'holidayVoiceMailUser',
+            'outOfScheduleVoiceMailUserId' => 'outOfScheduleVoiceMailUser',
+            'holidayNumberCountryId' => 'holidayNumberCountry',
+            'outOfScheduleNumberCountryId' => 'outOfScheduleNumberCountry'
         ];
     }
 

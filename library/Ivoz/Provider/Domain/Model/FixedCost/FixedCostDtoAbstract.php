@@ -59,7 +59,7 @@ abstract class FixedCostDtoAbstract implements DataTransferObjectInterface
             'description' => 'description',
             'cost' => 'cost',
             'id' => 'id',
-            'brand' => 'brand'
+            'brandId' => 'brand'
         ];
     }
 

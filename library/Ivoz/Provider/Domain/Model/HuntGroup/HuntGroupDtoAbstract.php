@@ -108,11 +108,11 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
             'noAnswerTargetType' => 'noAnswerTargetType',
             'noAnswerNumberValue' => 'noAnswerNumberValue',
             'id' => 'id',
-            'company' => 'company',
-            'noAnswerLocution' => 'noAnswerLocution',
-            'noAnswerExtension' => 'noAnswerExtension',
-            'noAnswerVoiceMailUser' => 'noAnswerVoiceMailUser',
-            'noAnswerNumberCountry' => 'noAnswerNumberCountry'
+            'companyId' => 'company',
+            'noAnswerLocutionId' => 'noAnswerLocution',
+            'noAnswerExtensionId' => 'noAnswerExtension',
+            'noAnswerVoiceMailUserId' => 'noAnswerVoiceMailUser',
+            'noAnswerNumberCountryId' => 'noAnswerNumberCountry'
         ];
     }
 

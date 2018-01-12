@@ -53,7 +53,7 @@ trait DtoNormalizer
                     $methods[$setter] =  $dataPath;
                 }
             } else {
-                $methods = ['set' . ucfirst($value) =>  [$value]];
+                $methods['set' . ucfirst($key)] =  [$value];
             }
         }
 
@@ -72,6 +72,12 @@ trait DtoNormalizer
     {
         $response = $data;
         foreach ($dataPath as $key) {
+
+            if (!isset($response[$key])) {
+                $response = null;
+                continue;
+            }
+
             $response = $response[$key];
         }
 

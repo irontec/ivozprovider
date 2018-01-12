@@ -73,9 +73,6 @@ class EntityDenormalizer implements DenormalizerInterface
         );
     }
 
-    /**
-     * @todo PUT :: update
-     */
     private function denormalizeEntity(array $data, string $class, EntityInterface $entity = null)
     {
         $dtoClass = $class. 'Dto';
@@ -83,7 +80,7 @@ class EntityDenormalizer implements DenormalizerInterface
             ? $this->dtoAssembler->toDto($entity)
             : new $dtoClass;
 
-        $baseData = $dto->normalize('');
+        $baseData = $dto->normalize(DataTransferObjectInterface::CONTEXT_SIMPLE);
         $data = array_replace_recursive($baseData, $data);
         $dto->denormalize(
             $data,

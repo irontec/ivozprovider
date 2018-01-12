@@ -64,8 +64,8 @@ abstract class FaxDtoAbstract implements DataTransferObjectInterface
             'email' => 'email',
             'sendByEmail' => 'sendByEmail',
             'id' => 'id',
-            'company' => 'company',
-            'outgoingDdi' => 'outgoingDdi'
+            'companyId' => 'company',
+            'outgoingDdiId' => 'outgoingDdi'
         ];
     }
 

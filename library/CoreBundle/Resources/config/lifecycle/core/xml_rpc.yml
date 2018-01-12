@@ -10,33 +10,41 @@ services:
     class: Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\XmlRpcTrunksRequest
     arguments:
       $xmlrpc:
-        '@IvozProvider\Gearmand\Jobs\Xmlrpc'
+        '@Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Xmlrpc'
       $rpcMethod:
         'dialplan.reload'
+      $enabled:
+        '@=service("kernel").getEnvironment() != "test"'
 
   XmlRpc\XmlRpcTrunksRequest::DispatcherReload:
     class: Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\XmlRpcTrunksRequest
     arguments:
       $xmlrpc:
-        '@IvozProvider\Gearmand\Jobs\Xmlrpc'
+        '@Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Xmlrpc'
       $rpcMethod:
         'dispatcher.reload'
+      $enabled:
+        '@=service("kernel").getEnvironment() != "test"'
 
   XmlRpc\XmlRpcTrunksRequest::LcrReload:
     class: Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\XmlRpcTrunksRequest
     arguments:
       $xmlrpc:
-        '@IvozProvider\Gearmand\Jobs\Xmlrpc'
+        '@Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Xmlrpc'
       $rpcMethod:
         'lcr.reload'
+      $enabled:
+        '@=service("kernel").getEnvironment() != "test"'
 
   XmlRpc\XmlRpcTrunksRequest::PermissionsTrustedReload:
     class: Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\XmlRpcTrunksRequest
     arguments:
       $xmlrpc:
-        '@IvozProvider\Gearmand\Jobs\Xmlrpc'
+        '@Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Xmlrpc'
       $rpcMethod:
         'permissions.trustedReload'
+      $enabled:
+        '@=service("kernel").getEnvironment() != "test"'
 
   XmlRpc\XmlRpcTrunksRequest::UacRegReload:
     class: Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\XmlRpcTrunksRequest
@@ -45,6 +53,8 @@ services:
         '@Jobs\XmlrpcDelayed'
       $rpcMethod:
         'uac.reg_reload'
+      $enabled:
+        '@=service("kernel").getEnvironment() != "test"'
 
   #########################################################
   ## Users XMLRPC Requests
@@ -53,30 +63,38 @@ services:
     class: Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\XmlRpcUsersRequest
     arguments:
       $xmlrpc:
-        '@IvozProvider\Gearmand\Jobs\Xmlrpc'
+        '@Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Xmlrpc'
       $rpcMethod:
         'dispatcher.reload'
+      $enabled:
+        '@=service("kernel").getEnvironment() != "test"'
 
   XmlRpc\XmlRpcUsersRequest::DomainReload:
     class: Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\XmlRpcUsersRequest
     arguments:
       $xmlrpc:
-        '@IvozProvider\Gearmand\Jobs\Xmlrpc'
+        '@Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Xmlrpc'
       $rpcMethod:
         'domain.reload'
+      $enabled:
+        '@=service("kernel").getEnvironment() != "test"'
 
   XmlRpc\XmlRpcUsersRequest::PermissionsTrustedReload:
     class: Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\XmlRpcUsersRequest
     arguments:
       $xmlrpc:
-        '@IvozProvider\Gearmand\Jobs\Xmlrpc'
+        '@Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Xmlrpc'
       $rpcMethod:
         'permissions.trustedReload'
+      $enabled:
+        '@=service("kernel").getEnvironment() != "test"'
 
   XmlRpc\XmlRpcUsersRequest::DialplanReload:
     class: Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\XmlRpcUsersRequest
     arguments:
       $xmlrpc:
-        '@IvozProvider\Gearmand\Jobs\Xmlrpc'
+        '@Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Xmlrpc'
       $rpcMethod:
         'dialplan.reload'
+      $enabled:
+        '@=service("kernel").getEnvironment() != "test"'

@@ -64,7 +64,7 @@ abstract class TimezoneDtoAbstract implements DataTransferObjectInterface
             'comment' => 'comment',
             'id' => 'id',
             'label' => ['en','es'],
-            'country' => 'country'
+            'countryId' => 'country'
         ];
     }
 

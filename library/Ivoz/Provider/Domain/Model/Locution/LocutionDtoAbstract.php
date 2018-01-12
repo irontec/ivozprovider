@@ -85,7 +85,7 @@ abstract class LocutionDtoAbstract implements DataTransferObjectInterface
             'id' => 'id',
             'encodedFile' => ['fileSize','mimeType','baseName'],
             'originalFile' => ['fileSize','mimeType','baseName'],
-            'company' => 'company'
+            'companyId' => 'company'
         ];
     }
 

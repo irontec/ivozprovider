@@ -84,12 +84,12 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
             'routeType' => 'routeType',
             'numberValue' => 'numberValue',
             'id' => 'id',
-            'ivr' => 'ivr',
-            'welcomeLocution' => 'welcomeLocution',
-            'extension' => 'extension',
-            'voiceMailUser' => 'voiceMailUser',
-            'conditionalRoute' => 'conditionalRoute',
-            'numberCountry' => 'numberCountry'
+            'ivrId' => 'ivr',
+            'welcomeLocutionId' => 'welcomeLocution',
+            'extensionId' => 'extension',
+            'voiceMailUserId' => 'voiceMailUser',
+            'conditionalRouteId' => 'conditionalRoute',
+            'numberCountryId' => 'numberCountry'
         ];
     }
 

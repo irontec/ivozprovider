@@ -217,11 +217,11 @@ abstract class AccCdrDtoAbstract implements DataTransferObjectInterface
             'direction' => 'direction',
             'reMeteringDate' => 'reMeteringDate',
             'id' => 'id',
-            'pricingPlan' => 'pricingPlan',
-            'targetPattern' => 'targetPattern',
-            'invoice' => 'invoice',
-            'brand' => 'brand',
-            'company' => 'company'
+            'pricingPlanId' => 'pricingPlan',
+            'targetPatternId' => 'targetPattern',
+            'invoiceId' => 'invoice',
+            'brandId' => 'brand',
+            'companyId' => 'company'
         ];
     }
 

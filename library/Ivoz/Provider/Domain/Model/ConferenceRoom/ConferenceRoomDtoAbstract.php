@@ -65,7 +65,7 @@ abstract class ConferenceRoomDtoAbstract implements DataTransferObjectInterface
             'pinCode' => 'pinCode',
             'maxMembers' => 'maxMembers',
             'id' => 'id',
-            'company' => 'company'
+            'companyId' => 'company'
         ];
     }
 

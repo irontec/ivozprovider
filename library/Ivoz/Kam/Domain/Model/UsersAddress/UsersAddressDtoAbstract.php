@@ -77,7 +77,7 @@ abstract class UsersAddressDtoAbstract implements DataTransferObjectInterface
             'tag' => 'tag',
             'description' => 'description',
             'id' => 'id',
-            'company' => 'company'
+            'companyId' => 'company'
         ];
     }
 

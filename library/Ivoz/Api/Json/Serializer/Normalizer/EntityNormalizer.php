@@ -58,7 +58,27 @@ class EntityNormalizer implements NormalizerInterface
             Throw new \Exception('Object must implement EntityInterface');
         }
 
+        if (isset($context['item_operation_name']) && $context['item_operation_name'] === 'put') {
+            $object = $this->initializeRelationships($object);
+        }
+
         return $this->normalizeDto($this->dtoAssembler->toDto($object, 1), $format, $context);
+    }
+
+    private function initializeRelationships(EntityInterface $entity)
+    {
+        $reflection = new \ReflectionClass($entity);
+        $properties = $reflection->getProperties();
+
+        foreach ($properties as $property) {
+            $property->setAccessible(true);
+            $propertyValue = $property->getValue($entity);
+            if ($propertyValue instanceof \Doctrine\ORM\Proxy\Proxy && !$propertyValue->__isInitialized()) {
+                $propertyValue->__load();
+            }
+        }
+
+        return $entity;
     }
 
     private function normalizeDto(DataTransferObjectInterface $dto, string $format, array $context, $isSubresource = false)

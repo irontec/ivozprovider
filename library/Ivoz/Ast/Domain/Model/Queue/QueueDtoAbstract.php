@@ -101,7 +101,7 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
             'strategy' => 'strategy',
             'weight' => 'weight',
             'id' => 'id',
-            'queue' => 'queue'
+            'queueId' => 'queue'
         ];
     }
 

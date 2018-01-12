@@ -8,6 +8,8 @@ api_base_path:
 api_doc:
   path: api/swagger.json
 
-api_login_check:
-  path: /login_check
-#  defaults: { _controller: ApiBundle:Authentication:loginCheck }
+api_admin_login:
+  path: admin_login
+
+api_user_login:
+  path: user_login

@@ -46,8 +46,8 @@ abstract class FeaturesRelCompanyDtoAbstract implements DataTransferObjectInterf
 
         return [
             'id' => 'id',
-            'company' => 'company',
-            'feature' => 'feature'
+            'companyId' => 'company',
+            'featureId' => 'feature'
         ];
     }
 

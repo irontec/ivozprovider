@@ -74,7 +74,7 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
             'id' => 'id',
             'name' => ['en','es'],
             'description' => ['en','es'],
-            'brand' => 'brand'
+            'brandId' => 'brand'
         ];
     }
 

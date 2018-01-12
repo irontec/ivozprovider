@@ -116,6 +116,16 @@ abstract class UsersMissedCallAbstract
         $this->setLocaltime($localtime);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "UsersMissedCall",
+            $this->getId()
+        );
+    }
+
     /**
      * @return void
      * @throws \Exception

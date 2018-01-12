@@ -58,8 +58,8 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
             'name' => 'name',
             'eventDate' => 'eventDate',
             'id' => 'id',
-            'calendar' => 'calendar',
-            'locution' => 'locution'
+            'calendarId' => 'calendar',
+            'locutionId' => 'locution'
         ];
     }
 

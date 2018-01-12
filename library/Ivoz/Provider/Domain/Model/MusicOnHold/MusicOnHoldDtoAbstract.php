@@ -90,8 +90,8 @@ abstract class MusicOnHoldDtoAbstract implements DataTransferObjectInterface
             'id' => 'id',
             'originalFile' => ['fileSize','mimeType','baseName'],
             'encodedFile' => ['fileSize','mimeType','baseName'],
-            'brand' => 'brand',
-            'company' => 'company'
+            'brandId' => 'brand',
+            'companyId' => 'company'
         ];
     }
 

@@ -195,18 +195,18 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
             'tokenKey' => 'tokenKey',
             'gsQRCode' => 'gsQRCode',
             'id' => 'id',
-            'company' => 'company',
-            'callAcl' => 'callAcl',
-            'bossAssistant' => 'bossAssistant',
-            'bossAssistantWhiteList' => 'bossAssistantWhiteList',
-            'transformationRuleSet' => 'transformationRuleSet',
-            'language' => 'language',
-            'terminal' => 'terminal',
-            'extension' => 'extension',
-            'timezone' => 'timezone',
-            'outgoingDdi' => 'outgoingDdi',
-            'outgoingDdiRule' => 'outgoingDdiRule',
-            'voicemailLocution' => 'voicemailLocution'
+            'companyId' => 'company',
+            'callAclId' => 'callAcl',
+            'bossAssistantId' => 'bossAssistant',
+            'bossAssistantWhiteListId' => 'bossAssistantWhiteList',
+            'transformationRuleSetId' => 'transformationRuleSet',
+            'languageId' => 'language',
+            'terminalId' => 'terminal',
+            'extensionId' => 'extension',
+            'timezoneId' => 'timezone',
+            'outgoingDdiId' => 'outgoingDdi',
+            'outgoingDdiRuleId' => 'outgoingDdiRule',
+            'voicemailLocutionId' => 'voicemailLocution'
         ];
     }
 

@@ -57,9 +57,9 @@ abstract class FixedCostsRelInvoiceDtoAbstract implements DataTransferObjectInte
         return [
             'quantity' => 'quantity',
             'id' => 'id',
-            'brand' => 'brand',
-            'fixedCost' => 'fixedCost',
-            'invoice' => 'invoice'
+            'brandId' => 'brand',
+            'fixedCostId' => 'fixedCost',
+            'invoiceId' => 'invoice'
         ];
     }
 

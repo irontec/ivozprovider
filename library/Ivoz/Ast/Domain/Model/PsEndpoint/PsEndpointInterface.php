@@ -17,6 +17,8 @@ interface PsEndpointInterface extends LoggableEntityInterface
      */
     public function updateByUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user);
 
+    public function __toString();
+
     /**
      * Set sorceryId
      *

@@ -2,33 +2,25 @@
 
 use Behat\Behat\Context\Context;
 use Behat\Behat\Context\SnippetAcceptingContext;
-use Doctrine\Common\Persistence\ManagerRegistry;
-use Doctrine\ORM\Tools\SchemaTool;
+use Symfony\Component\Filesystem\Filesystem;
+use Behatch\HttpCall\Request;
 
 /**
  * Defines application features from the specific context.
  */
 class FeatureContext implements Context, SnippetAcceptingContext
 {
-    /**
-     * @var ManagerRegistry
-     */
-    private $doctrine;
+    protected $cacheDir;
 
     /**
-     * @var \Doctrine\Common\Persistence\ObjectManager
+     * @var Filesystem
      */
-    private $manager;
+    protected $fs;
 
     /**
-     * @var SchemaTool
+     * @var Request
      */
-    private $schemaTool;
-
-    /**
-     * @var array
-     */
-    private $classes;
+    protected $request;
 
     /**
      * Initializes context.
@@ -37,28 +29,22 @@ class FeatureContext implements Context, SnippetAcceptingContext
      * You can also pass arbitrary arguments to the
      * context constructor through behat.yml.
      */
-    public function __construct(ManagerRegistry $doctrine)
+    public function __construct(\AppKernel $kernel, Request $request)
     {
-        $this->doctrine = $doctrine;
-        $this->manager = $doctrine->getManager();
-        $this->schemaTool = new SchemaTool($this->manager);
-        $this->classes = $this->manager->getMetadataFactory()->getAllMetadata();
+        $this->cacheDir = $kernel->getCacheDir();
+        $this->fs = new Filesystem();
+        $this->request = $request;
     }
 
     /**
      * @BeforeScenario @createSchema
      */
-    public function createDatabase()
+    public function resetDatabase()
     {
-        $createSchemaSql = $this->schemaTool->getCreateSchemaSql($this->classes);
-        $conn = $this->manager->getConnection();
-        foreach ($createSchemaSql as $sql) {
-            try {
-                $conn->executeQuery($sql);
-            } catch (\Exception $e) {
-                echo "Query error: " . "$sql\n" . $e->getMessage() . "\n\n";
-            }
-        }
+        $this->fs->copy(
+            $this->cacheDir . DIRECTORY_SEPARATOR . 'db.sqlite.back',
+            $this->cacheDir . DIRECTORY_SEPARATOR . '/db.sqlite'
+        );
     }
 
     /**
@@ -66,6 +52,27 @@ class FeatureContext implements Context, SnippetAcceptingContext
      */
     public function dropDatabase()
     {
-        $this->schemaTool->dropSchema($this->classes);
+        $this->fs->remove(
+            $this->cacheDir . DIRECTORY_SEPARATOR . 'db.sqlite'
+        );
     }
+
+    /**
+     * @Given I add Authorization header
+     */
+    public function setAuthorizationHeader()
+    {
+        $response = $this->request->send(
+            'POST',
+            'admin_login',
+            [
+                'username' => 'admin',
+                'password' => 'changeme'
+            ]
+        );
+
+        $data = json_decode($response->getContent());
+        $this->request->setHttpHeader('Authorization', 'Bearer ' . ($data->token ?? null));
+    }
+
 }

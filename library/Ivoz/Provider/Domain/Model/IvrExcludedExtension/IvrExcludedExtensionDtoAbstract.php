@@ -46,8 +46,8 @@ abstract class IvrExcludedExtensionDtoAbstract implements DataTransferObjectInte
 
         return [
             'id' => 'id',
-            'ivr' => 'ivr',
-            'extension' => 'extension'
+            'ivrId' => 'ivr',
+            'extensionId' => 'extension'
         ];
     }
 

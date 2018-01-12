@@ -38,47 +38,91 @@ class AuthEndpointDecorator implements NormalizerInterface
         $response = $this->decoratedNormalizer->normalize(...func_get_args());
         $paths = $response['paths']->getArrayCopy();
 
-        $auth = [
-            '/login_check' => [
-                'post' => [
-                    "tags" => [
-                        "Auth"
+        $authAdminDefinition = [
+            'post' => [
+                "tags" => [
+                    "Auth"
+                ],
+                "operationId" => "postAuthenticate",
+                "consumes" => [
+                    "application/x-www-form-urlencoded",
+                ],
+                "produces" => [
+                    "application/json",
+                ],
+                "summary" => "Retrieve JWT token",
+                "parameters" => [
+                    [
+                        "name" => "username",
+                        "in" => "formData",
+                        "type" => 'string',
+                        "required" => true
                     ],
-                    "operationId" => "postAuthenticate",
-                    "consumes" => [
-                        "application/x-www-form-urlencoded",
+                    [
+                        "name" => "password",
+                        "in" => "formData",
+                        "type" => 'string',
+                        "required" => true
+                    ]
+                ],
+                "responses" => [
+                    "200" => [
+                        "description" => "Valid credentials"
                     ],
-                    "produces" => [
-                        "application/json",
+                    "400" => [
+                        "description" => "Invalid input"
                     ],
-                    "summary" => "Retrieve JWT token",
-                    "parameters" => [
-                        [
-                            "name" => "username",
-                            "in" => "formData",
-                            "type" => 'string',
-                            "required" => true
-                        ],
-                        [
-                            "name" => "password",
-                            "in" => "formData",
-                            "type" => 'string',
-                            "required" => true
-                        ]
-                    ],
-                    "responses" => [
-                        "200" => [
-                            "description" => "Valid credentials"
-                        ],
-                        "400" => [
-                            "description" => "Invalid input"
-                        ],
-                        "401" => [
-                            "description" => "Bad credentials"
-                        ]
+                    "401" => [
+                        "description" => "Bad credentials"
                     ]
                 ]
             ]
+        ];
+
+        $authUserDefinition = [
+            'post' => [
+                "tags" => [
+                    "Auth"
+                ],
+                "operationId" => "postAuthenticate",
+                "consumes" => [
+                    "application/x-www-form-urlencoded",
+                ],
+                "produces" => [
+                    "application/json",
+                ],
+                "summary" => "Retrieve JWT token",
+                "parameters" => [
+                    [
+                        "name" => "email",
+                        "in" => "formData",
+                        "type" => 'string',
+                        "required" => true
+                    ],
+                    [
+                        "name" => "password",
+                        "in" => "formData",
+                        "type" => 'string',
+                        "required" => true
+                    ]
+                ],
+                "responses" => [
+                    "200" => [
+                        "description" => "Valid credentials"
+                    ],
+                    "400" => [
+                        "description" => "Invalid input"
+                    ],
+                    "401" => [
+                        "description" => "Bad credentials"
+                    ]
+                ]
+            ]
+        ];
+
+        $auth = [
+            '/admin_login' => $authAdminDefinition,
+            '/user_login' => $authUserDefinition,
         ];
 
         $response['paths'] = array_merge($auth, $paths);

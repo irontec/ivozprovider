@@ -57,6 +57,16 @@ abstract class PikeTrustedAbstract
         $this->setPriority($priority);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "PikeTrusted",
+            $this->getId()
+        );
+    }
+
     /**
      * @return void
      * @throws \Exception

@@ -133,11 +133,11 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
             'callidHash' => 'callidHash',
             'xcallid' => 'xcallid',
             'id' => 'id',
-            'brand' => 'brand',
-            'company' => 'company',
-            'user' => 'user',
-            'friend' => 'friend',
-            'retailAccount' => 'retailAccount'
+            'brandId' => 'brand',
+            'companyId' => 'company',
+            'userId' => 'user',
+            'friendId' => 'friend',
+            'retailAccountId' => 'retailAccount'
         ];
     }
 

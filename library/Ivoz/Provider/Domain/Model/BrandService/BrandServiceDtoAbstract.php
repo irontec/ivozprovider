@@ -52,8 +52,8 @@ abstract class BrandServiceDtoAbstract implements DataTransferObjectInterface
         return [
             'code' => 'code',
             'id' => 'id',
-            'brand' => 'brand',
-            'service' => 'service'
+            'brandId' => 'brand',
+            'serviceId' => 'service'
         ];
     }
 

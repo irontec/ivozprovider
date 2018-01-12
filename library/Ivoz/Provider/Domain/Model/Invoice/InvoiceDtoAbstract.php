@@ -109,9 +109,9 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
             'status' => 'status',
             'id' => 'id',
             'pdf' => ['fileSize','mimeType','baseName'],
-            'invoiceTemplate' => 'invoiceTemplate',
-            'brand' => 'brand',
-            'company' => 'company'
+            'invoiceTemplateId' => 'invoiceTemplate',
+            'brandId' => 'brand',
+            'companyId' => 'company'
         ];
     }
 

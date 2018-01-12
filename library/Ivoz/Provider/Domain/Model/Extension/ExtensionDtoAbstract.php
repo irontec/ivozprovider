@@ -105,14 +105,14 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
             'numberValue' => 'numberValue',
             'friendValue' => 'friendValue',
             'id' => 'id',
-            'company' => 'company',
-            'ivr' => 'ivr',
-            'huntGroup' => 'huntGroup',
-            'conferenceRoom' => 'conferenceRoom',
-            'user' => 'user',
-            'queue' => 'queue',
-            'conditionalRoute' => 'conditionalRoute',
-            'numberCountry' => 'numberCountry'
+            'companyId' => 'company',
+            'ivrId' => 'ivr',
+            'huntGroupId' => 'huntGroup',
+            'conferenceRoomId' => 'conferenceRoom',
+            'userId' => 'user',
+            'queueId' => 'queue',
+            'conditionalRouteId' => 'conditionalRoute',
+            'numberCountryId' => 'numberCountry'
         ];
     }
 

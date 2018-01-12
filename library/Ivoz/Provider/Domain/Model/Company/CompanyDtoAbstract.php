@@ -238,16 +238,16 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'recordingsLimitMB' => 'recordingsLimitMB',
             'recordingsLimitEmail' => 'recordingsLimitEmail',
             'id' => 'id',
-            'language' => 'language',
-            'mediaRelaySets' => 'mediaRelaySets',
-            'defaultTimezone' => 'defaultTimezone',
-            'brand' => 'brand',
-            'domain' => 'domain',
-            'applicationServer' => 'applicationServer',
-            'country' => 'country',
-            'transformationRuleSet' => 'transformationRuleSet',
-            'outgoingDdi' => 'outgoingDdi',
-            'outgoingDdiRule' => 'outgoingDdiRule'
+            'languageId' => 'language',
+            'mediaRelaySetsId' => 'mediaRelaySets',
+            'defaultTimezoneId' => 'defaultTimezone',
+            'brandId' => 'brand',
+            'domainId' => 'domain',
+            'applicationServerId' => 'applicationServer',
+            'countryId' => 'country',
+            'transformationRuleSetId' => 'transformationRuleSet',
+            'outgoingDdiId' => 'outgoingDdi',
+            'outgoingDdiRuleId' => 'outgoingDdiRule'
         ];
     }
 

@@ -59,6 +59,16 @@ abstract class TrunksDomainAttrAbstract
         $this->setLastModified($lastModified);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "TrunksDomainAttr",
+            $this->getId()
+        );
+    }
+
     /**
      * @return void
      * @throws \Exception

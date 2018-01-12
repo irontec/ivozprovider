@@ -71,7 +71,7 @@ abstract class ChangelogDtoAbstract implements DataTransferObjectInterface
             'createdOn' => 'createdOn',
             'microtime' => 'microtime',
             'id' => 'id',
-            'command' => 'command'
+            'commandId' => 'command'
         ];
     }
 

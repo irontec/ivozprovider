@@ -52,6 +52,16 @@ abstract class TrunksAddresAbstract
         $this->setPort($port);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "TrunksAddres",
+            $this->getId()
+        );
+    }
+
     /**
      * @return void
      * @throws \Exception

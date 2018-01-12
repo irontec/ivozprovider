@@ -4,17 +4,18 @@ default:
   suites:
     default:
       contexts:
-        - FeatureContext: { doctrine: "@doctrine" }
+        - FeatureContext: { kernel: "@kernel" }
         - Behat\MinkExtension\Context\MinkContext
         - Behatch\Context\RestContext
         - Behatch\Context\JsonContext
+#        - CoverageContext: {}
   extensions:
     Behat\Symfony2Extension:
       kernel:
         env: "test"
         debug: "true"
     Behat\MinkExtension:
-      base_url: "https://localhost/dev.php"
+      base_url: "https://ivozprovider/"
       sessions:
         default:
           symfony2: ~

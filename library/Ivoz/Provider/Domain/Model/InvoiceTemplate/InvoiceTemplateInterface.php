@@ -12,12 +12,12 @@ interface InvoiceTemplateInterface extends LoggableEntityInterface
      */
     public function getChangeSet();
 
-    public function __toString();
-
     /**
      * @inheritdoc
      */
     public function setTemplate($template);
+
+    public function __toString();
 
     /**
      * Set name

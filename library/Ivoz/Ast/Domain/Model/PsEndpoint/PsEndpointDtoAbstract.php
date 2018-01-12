@@ -147,9 +147,9 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
             'outboundProxy' => 'outboundProxy',
             'trustIdInbound' => 'trustIdInbound',
             'id' => 'id',
-            'terminal' => 'terminal',
-            'friend' => 'friend',
-            'retailAccount' => 'retailAccount'
+            'terminalId' => 'terminal',
+            'friendId' => 'friend',
+            'retailAccountId' => 'retailAccount'
         ];
     }
 

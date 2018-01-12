@@ -70,6 +70,16 @@ abstract class DispatcherAbstract
         $this->setDescription($description);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "Dispatcher",
+            $this->getId()
+        );
+    }
+
     /**
      * @return void
      * @throws \Exception

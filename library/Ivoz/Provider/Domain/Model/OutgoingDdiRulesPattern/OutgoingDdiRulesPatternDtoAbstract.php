@@ -63,9 +63,9 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
             'action' => 'action',
             'priority' => 'priority',
             'id' => 'id',
-            'outgoingDdiRule' => 'outgoingDdiRule',
-            'matchList' => 'matchList',
-            'forcedDdi' => 'forcedDdi'
+            'outgoingDdiRuleId' => 'outgoingDdiRule',
+            'matchListId' => 'matchList',
+            'forcedDdiId' => 'forcedDdi'
         ];
     }
 

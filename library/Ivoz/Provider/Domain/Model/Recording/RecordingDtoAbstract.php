@@ -99,7 +99,7 @@ abstract class RecordingDtoAbstract implements DataTransferObjectInterface
             'recorder' => 'recorder',
             'id' => 'id',
             'recordedFile' => ['fileSize','mimeType','baseName'],
-            'company' => 'company'
+            'companyId' => 'company'
         ];
     }
 

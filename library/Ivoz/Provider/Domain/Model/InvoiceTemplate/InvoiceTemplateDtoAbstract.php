@@ -71,7 +71,7 @@ abstract class InvoiceTemplateDtoAbstract implements DataTransferObjectInterface
             'templateHeader' => 'templateHeader',
             'templateFooter' => 'templateFooter',
             'id' => 'id',
-            'brand' => 'brand'
+            'brandId' => 'brand'
         ];
     }
 

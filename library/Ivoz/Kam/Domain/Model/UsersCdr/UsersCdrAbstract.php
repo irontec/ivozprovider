@@ -113,6 +113,16 @@ abstract class UsersCdrAbstract
         $this->setDuration($duration);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "UsersCdr",
+            $this->getId()
+        );
+    }
+
     /**
      * @return void
      * @throws \Exception

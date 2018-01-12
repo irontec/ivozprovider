@@ -52,7 +52,7 @@ abstract class CalendarDtoAbstract implements DataTransferObjectInterface
         return [
             'name' => 'name',
             'id' => 'id',
-            'company' => 'company'
+            'companyId' => 'company'
         ];
     }
 

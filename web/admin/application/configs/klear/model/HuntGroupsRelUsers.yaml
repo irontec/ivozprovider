@@ -26,7 +26,7 @@ production:
         data: mapper
         config:
           entity: \Ivoz\Provider\Domain\Model\User\User
-          filterClass: IvozProvider_Klear_Filter_Company
+          filterClass: IvozProvider_Klear_Filter_HuntGroupsRelUsers
           fieldName: 
             fields: 
               - name

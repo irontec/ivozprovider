@@ -71,7 +71,7 @@ abstract class RtpproxyDtoAbstract implements DataTransferObjectInterface
             'weight' => 'weight',
             'description' => 'description',
             'id' => 'id',
-            'mediaRelaySet' => 'mediaRelaySet'
+            'mediaRelaySetId' => 'mediaRelaySet'
         ];
     }
 
