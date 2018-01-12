@@ -101,7 +101,7 @@ abstract class ScheduleDtoAbstract implements DataTransferObjectInterface
             'saturday' => 'saturday',
             'sunday' => 'sunday',
             'id' => 'id',
-            'company' => 'company'
+            'companyId' => 'company'
         ];
     }
 

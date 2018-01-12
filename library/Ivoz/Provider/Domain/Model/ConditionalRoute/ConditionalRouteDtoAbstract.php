@@ -87,6 +87,11 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
      */
     private $numberCountry;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionDto[] | null
+     */
+    private $conditions = null;
+
 
     use DtoNormalizer;
 
@@ -110,16 +115,16 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
             'numbervalue' => 'numbervalue',
             'friendvalue' => 'friendvalue',
             'id' => 'id',
-            'company' => 'company',
-            'ivr' => 'ivr',
-            'huntGroup' => 'huntGroup',
-            'voicemailUser' => 'voicemailUser',
-            'user' => 'user',
-            'queue' => 'queue',
-            'locution' => 'locution',
-            'conferenceRoom' => 'conferenceRoom',
-            'extension' => 'extension',
-            'numberCountry' => 'numberCountry'
+            'companyId' => 'company',
+            'ivrId' => 'ivr',
+            'huntGroupId' => 'huntGroup',
+            'voicemailUserId' => 'voicemailUser',
+            'userId' => 'user',
+            'queueId' => 'queue',
+            'locutionId' => 'locution',
+            'conferenceRoomId' => 'conferenceRoom',
+            'extensionId' => 'extension',
+            'numberCountryId' => 'numberCountry'
         ];
     }
 
@@ -143,7 +148,8 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
             'locution' => $this->getLocution(),
             'conferenceRoom' => $this->getConferenceRoom(),
             'extension' => $this->getExtension(),
-            'numberCountry' => $this->getNumberCountry()
+            'numberCountry' => $this->getNumberCountry(),
+            'conditions' => $this->getConditions()
         ];
     }
 
@@ -162,6 +168,17 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
         $this->conferenceRoom = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\ConferenceRoom\\ConferenceRoom', $this->getConferenceRoomId());
         $this->extension = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Extension\\Extension', $this->getExtensionId());
         $this->numberCountry = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Country\\Country', $this->getNumberCountryId());
+        if (!is_null($this->conditions)) {
+            $items = $this->getConditions();
+            $this->conditions = [];
+            foreach ($items as $item) {
+                $this->conditions[] = $transformer->transform(
+                    'Ivoz\\Provider\\Domain\\Model\\ConditionalRoutesCondition\\ConditionalRoutesCondition',
+                    $item->getId() ?? $item
+                );
+            }
+        }
+
     }
 
     /**
@@ -169,7 +186,10 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
+        $this->conditions = $transformer->transform(
+            'Ivoz\\Provider\\Domain\\Model\\ConditionalRoutesCondition\\ConditionalRoutesCondition',
+            $this->conditions
+        );
     }
 
     /**
@@ -731,6 +751,26 @@ abstract class ConditionalRouteDtoAbstract implements DataTransferObjectInterfac
 
             return null;
         }
+
+    /**
+     * @param array $conditions
+     *
+     * @return static
+     */
+    public function setConditions($conditions = null)
+    {
+        $this->conditions = $conditions;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getConditions()
+    {
+        return $this->conditions;
+    }
 }
 
 

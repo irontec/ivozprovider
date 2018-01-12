@@ -18,6 +18,15 @@ interface UserInterface extends LoggableEntityInterface
      */
     public function __toString();
 
+    public function serialize();
+
+    public function unserialize($serialized);
+
+    /**
+     * @inheritdoc
+     */
+    public function setPass($pass = null);
+
     /**
      * return associated endpoint with the user
      *
@@ -154,15 +163,6 @@ interface UserInterface extends LoggableEntityInterface
      * @return string
      */
     public function getEmail();
-
-    /**
-     * Set pass
-     *
-     * @param string $pass
-     *
-     * @return self
-     */
-    public function setPass($pass = null);
 
     /**
      * Get pass
@@ -594,6 +594,51 @@ interface UserInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface[]
      */
     public function getCallForwardSettings(\Doctrine\Common\Collections\Criteria $criteria = null);
+
+    /**
+     * @see AdvancedUserInterface::getRoles()
+     */
+    public function getRoles();
+
+    /**
+     * @see AdvancedUserInterface::getUsername()
+     */
+    public function getUsername();
+
+    /**
+     * @see AdvancedUserInterface::getPassword()
+     */
+    public function getPassword();
+
+    /**
+     * @see AdvancedUserInterface::isAccountNonExpired()
+     */
+    public function isAccountNonExpired();
+
+    /**
+     * @see AdvancedUserInterface::isAccountNonLocked()
+     */
+    public function isAccountNonLocked();
+
+    /**
+     * @see AdvancedUserInterface::isCredentialsNonExpired()
+     */
+    public function isCredentialsNonExpired();
+
+    /**
+     * @see AdvancedUserInterface::isEnabled()
+     */
+    public function isEnabled();
+
+    /**
+     * @see AdvancedUserInterface::getSalt()
+     */
+    public function getSalt();
+
+    /**
+     * @see AdvancedUserInterface::eraseCredentials()
+     */
+    public function eraseCredentials();
 
 }
 

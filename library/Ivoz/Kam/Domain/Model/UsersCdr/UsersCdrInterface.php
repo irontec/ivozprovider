@@ -6,6 +6,8 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 
 interface UsersCdrInterface extends EntityInterface
 {
+    public function __toString();
+
     /**
      * Set startTime
      *

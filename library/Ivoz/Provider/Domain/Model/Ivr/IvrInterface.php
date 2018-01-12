@@ -14,6 +14,12 @@ interface IvrInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * Return string representation of this entity
+     * @return string
+     */
+    public function __toString();
+
+    /**
      * @return LocutionInterface[] with key=>value
      */
     public function getAllLocutions();
@@ -35,8 +41,6 @@ interface IvrInterface extends LoggableEntityInterface
     public function getNoInputTarget();
 
     public function getErrorTarget();
-
-    public function __toString();
 
     /**
      * Set name

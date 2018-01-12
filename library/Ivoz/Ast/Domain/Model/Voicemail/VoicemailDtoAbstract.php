@@ -239,7 +239,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
             'imapflags' => 'imapflags',
             'stamp' => 'stamp',
             'id' => 'id',
-            'user' => 'user'
+            'userId' => 'user'
         ];
     }
 

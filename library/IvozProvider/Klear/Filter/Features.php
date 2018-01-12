@@ -16,7 +16,7 @@ class IvozProvider_Klear_Filter_Features implements KlearMatrix_Model_Field_Sele
 
         $dataGateway = \Zend_Registry::get('data_gateway');
         /**
-         * @var \Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrandInterface[] $rels
+         * @var \Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrandDto[] $rels
          */
         $rels = $dataGateway->findBy(
             'Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrand',

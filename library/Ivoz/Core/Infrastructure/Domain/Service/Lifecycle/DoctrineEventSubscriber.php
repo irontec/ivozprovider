@@ -5,7 +5,6 @@ namespace Ivoz\Core\Infrastructure\Domain\Service\Lifecycle;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Ivoz\Core\Domain\Service\CommonLifecycleServiceCollection;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
-use Ivoz\Core\Domain\Service\LifecycleSubscriber;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Doctrine\Common\EventSubscriber;
@@ -18,7 +17,6 @@ use Ivoz\Core\Domain\Service\DomainEventPublisher;
 use Doctrine\ORM\Events;
 use Ivoz\Core\Application\Helper\EntityClassHelper;
 use Ivoz\Core\Application\Helper\LifecycleServiceHelper;
-
 
 class DoctrineEventSubscriber implements EventSubscriber
 {

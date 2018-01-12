@@ -86,10 +86,10 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
             'numberValue' => 'numberValue',
             'noAnswerTimeout' => 'noAnswerTimeout',
             'id' => 'id',
-            'user' => 'user',
-            'extension' => 'extension',
-            'voiceMailUser' => 'voiceMailUser',
-            'numberCountry' => 'numberCountry'
+            'userId' => 'user',
+            'extensionId' => 'extension',
+            'voiceMailUserId' => 'voiceMailUser',
+            'numberCountryId' => 'numberCountry'
         ];
     }
 

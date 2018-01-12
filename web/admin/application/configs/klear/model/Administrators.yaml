@@ -12,8 +12,8 @@ production:
     pass:
       title: _('Password')
       type: password
+      adapter: PlainText
       required: true
-      adapter: Blowfish
     name:
       title: _('Name')
       type: text

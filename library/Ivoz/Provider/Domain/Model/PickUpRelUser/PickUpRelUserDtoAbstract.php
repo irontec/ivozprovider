@@ -46,8 +46,8 @@ abstract class PickUpRelUserDtoAbstract implements DataTransferObjectInterface
 
         return [
             'id' => 'id',
-            'pickUpGroup' => 'pickUpGroup',
-            'user' => 'user'
+            'pickUpGroupId' => 'pickUpGroup',
+            'userId' => 'user'
         ];
     }
 

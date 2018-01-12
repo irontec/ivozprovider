@@ -149,17 +149,17 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
             'errorRouteType' => 'errorRouteType',
             'errorNumberValue' => 'errorNumberValue',
             'id' => 'id',
-            'company' => 'company',
-            'welcomeLocution' => 'welcomeLocution',
-            'noInputLocution' => 'noInputLocution',
-            'errorLocution' => 'errorLocution',
-            'successLocution' => 'successLocution',
-            'noInputExtension' => 'noInputExtension',
-            'errorExtension' => 'errorExtension',
-            'noInputVoiceMailUser' => 'noInputVoiceMailUser',
-            'errorVoiceMailUser' => 'errorVoiceMailUser',
-            'noInputNumberCountry' => 'noInputNumberCountry',
-            'errorNumberCountry' => 'errorNumberCountry'
+            'companyId' => 'company',
+            'welcomeLocutionId' => 'welcomeLocution',
+            'noInputLocutionId' => 'noInputLocution',
+            'errorLocutionId' => 'errorLocution',
+            'successLocutionId' => 'successLocution',
+            'noInputExtensionId' => 'noInputExtension',
+            'errorExtensionId' => 'errorExtension',
+            'noInputVoiceMailUserId' => 'noInputVoiceMailUser',
+            'errorVoiceMailUserId' => 'errorVoiceMailUser',
+            'noInputNumberCountryId' => 'noInputNumberCountry',
+            'errorNumberCountryId' => 'errorNumberCountry'
         ];
     }
 

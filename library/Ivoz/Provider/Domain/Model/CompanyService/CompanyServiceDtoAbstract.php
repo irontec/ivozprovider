@@ -52,8 +52,8 @@ abstract class CompanyServiceDtoAbstract implements DataTransferObjectInterface
         return [
             'code' => 'code',
             'id' => 'id',
-            'company' => 'company',
-            'service' => 'service'
+            'companyId' => 'company',
+            'serviceId' => 'service'
         ];
     }
 

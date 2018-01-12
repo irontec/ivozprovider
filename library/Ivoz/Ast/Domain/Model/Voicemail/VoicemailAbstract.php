@@ -197,6 +197,16 @@ abstract class VoicemailAbstract
         $this->setMailbox($mailbox);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "Voicemail",
+            $this->getId()
+        );
+    }
+
     /**
      * @return void
      * @throws \Exception

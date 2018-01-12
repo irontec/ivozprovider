@@ -3,13 +3,15 @@
 namespace Ivoz\Provider\Domain\Model\User;
 
 use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface;
+use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 
 /**
  * User
  */
-class User extends UserAbstract implements UserInterface
+class User extends UserAbstract implements UserInterface, AdvancedUserInterface, \Serializable
 {
     use UserTrait;
+    use UserSecurityTrait;
 
     /**
      * @return array
@@ -45,6 +47,25 @@ class User extends UserAbstract implements UserInterface
             $this->getLastname(),
             parent::__toString()
         );
+    }
+
+    public function serialize()
+    {
+        return serialize(array(
+            $this->id,
+            $this->email,
+            $this->pass,
+            $this->active
+        ));
+    }
+    public function unserialize($serialized)
+    {
+        list (
+            $this->id,
+            $this->email,
+            $this->pass,
+            $this->active
+            ) = unserialize($serialized);
     }
 
     protected function sanitizeValues()
@@ -99,6 +120,22 @@ class User extends UserAbstract implements UserInterface
              */
             $this->setPass("1234");
         }
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function setPass($pass = null)
+    {
+        $newToken = md5(md5($pass));
+        $this->setTokenKey($newToken);
+        $salt = substr(md5(mt_rand(), false), 0, 22);
+        $cryptPass = crypt(
+            $pass,
+            '$2a$08$' . $salt . '$' . $salt . '$'
+        );
+
+        return parent::setPass($cryptPass);
     }
 
     /**

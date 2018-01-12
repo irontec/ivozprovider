@@ -158,16 +158,16 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
             'strategy' => 'strategy',
             'weight' => 'weight',
             'id' => 'id',
-            'company' => 'company',
-            'periodicAnnounceLocution' => 'periodicAnnounceLocution',
-            'timeoutLocution' => 'timeoutLocution',
-            'timeoutExtension' => 'timeoutExtension',
-            'timeoutVoiceMailUser' => 'timeoutVoiceMailUser',
-            'fullLocution' => 'fullLocution',
-            'fullExtension' => 'fullExtension',
-            'fullVoiceMailUser' => 'fullVoiceMailUser',
-            'timeoutNumberCountry' => 'timeoutNumberCountry',
-            'fullNumberCountry' => 'fullNumberCountry'
+            'companyId' => 'company',
+            'periodicAnnounceLocutionId' => 'periodicAnnounceLocution',
+            'timeoutLocutionId' => 'timeoutLocution',
+            'timeoutExtensionId' => 'timeoutExtension',
+            'timeoutVoiceMailUserId' => 'timeoutVoiceMailUser',
+            'fullLocutionId' => 'fullLocution',
+            'fullExtensionId' => 'fullExtension',
+            'fullVoiceMailUserId' => 'fullVoiceMailUser',
+            'timeoutNumberCountryId' => 'timeoutNumberCountry',
+            'fullNumberCountryId' => 'fullNumberCountry'
         ];
     }
 

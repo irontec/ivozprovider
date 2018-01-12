@@ -69,9 +69,9 @@ abstract class PricingPlansRelCompanyDtoAbstract implements DataTransferObjectIn
             'validTo' => 'validTo',
             'metric' => 'metric',
             'id' => 'id',
-            'pricingPlan' => 'pricingPlan',
-            'company' => 'company',
-            'brand' => 'brand'
+            'pricingPlanId' => 'pricingPlan',
+            'companyId' => 'company',
+            'brandId' => 'brand'
         ];
     }
 

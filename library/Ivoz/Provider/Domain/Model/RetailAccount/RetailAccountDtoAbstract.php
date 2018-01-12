@@ -160,12 +160,12 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
             'fromDomain' => 'fromDomain',
             'directConnectivity' => 'directConnectivity',
             'id' => 'id',
-            'brand' => 'brand',
-            'domain' => 'domain',
-            'company' => 'company',
-            'transformationRuleSet' => 'transformationRuleSet',
-            'outgoingDdi' => 'outgoingDdi',
-            'language' => 'language'
+            'brandId' => 'brand',
+            'domainId' => 'domain',
+            'companyId' => 'company',
+            'transformationRuleSetId' => 'transformationRuleSet',
+            'outgoingDdiId' => 'outgoingDdi',
+            'languageId' => 'language'
         ];
     }
 

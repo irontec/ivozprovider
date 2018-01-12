@@ -166,12 +166,12 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
             'fromDomain' => 'fromDomain',
             'directConnectivity' => 'directConnectivity',
             'id' => 'id',
-            'company' => 'company',
-            'domain' => 'domain',
-            'transformationRuleSet' => 'transformationRuleSet',
-            'callAcl' => 'callAcl',
-            'outgoingDdi' => 'outgoingDdi',
-            'language' => 'language'
+            'companyId' => 'company',
+            'domainId' => 'domain',
+            'transformationRuleSetId' => 'transformationRuleSet',
+            'callAclId' => 'callAcl',
+            'outgoingDdiId' => 'outgoingDdi',
+            'languageId' => 'language'
         ];
     }
 

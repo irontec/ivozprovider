@@ -84,11 +84,11 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
             'priority' => 'priority',
             'weight' => 'weight',
             'id' => 'id',
-            'brand' => 'brand',
-            'company' => 'company',
-            'peeringContract' => 'peeringContract',
-            'routingPattern' => 'routingPattern',
-            'routingPatternGroup' => 'routingPatternGroup'
+            'brandId' => 'brand',
+            'companyId' => 'company',
+            'peeringContractId' => 'peeringContract',
+            'routingPatternId' => 'routingPattern',
+            'routingPatternGroupId' => 'routingPatternGroup'
         ];
     }
 

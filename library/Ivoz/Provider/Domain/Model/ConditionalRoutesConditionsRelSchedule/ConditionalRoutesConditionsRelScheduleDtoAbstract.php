@@ -46,8 +46,8 @@ abstract class ConditionalRoutesConditionsRelScheduleDtoAbstract implements Data
 
         return [
             'id' => 'id',
-            'condition' => 'condition',
-            'schedule' => 'schedule'
+            'conditionId' => 'condition',
+            'scheduleId' => 'schedule'
         ];
     }
 

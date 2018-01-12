@@ -1,18 +1,26 @@
 ## To get started with security, check out the documentation:
 ## http://symfony.com/doc/current/security.html
 security:
+
+  role_hierarchy:
+    ROLE_ADMIN: ROLE_USER
+    ROLE_BRAND_ADMIN: ROLE_ADMIN
+    ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
   # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
   encoders:
     Ivoz\Provider\Domain\Model\Administrator\Administrator:
       algorithm: bcrypt
       cost: 12
+    Ivoz\Provider\Domain\Model\User\User:
+      algorithm: bcrypt
+      cost: 12
 
   providers:
-    orm:
-      entity:
-        class: Ivoz\Provider\Domain\Model\Administrator\Administrator
-        property: username
-
+    admin_orm:
+      id: 'Security\User\Provider::Administrator'
+    user_orm:
+      id: 'Security\User\Provider::User'
 
   firewalls:
     # disables authentication for assets and the profiler, adapt it according to your needs
@@ -24,17 +32,31 @@ security:
       pattern: ^/index.[^.{3,6}]/?.*$
       security: false
 
-    login:
-      pattern:  ^/login
+    admin_login:
+      pattern:  ^/admin_login
       stateless: true
       anonymous: true
-      provider: orm
+      provider: admin_orm
       form_login:
-          check_path: /login_check
+          check_path: /admin_login
           require_previous_session: false
           username_parameter: username
           password_parameter: password
           success_handler: lexik_jwt_authentication.handler.authentication_success
+          failure_handler: lexik_jwt_authentication.handler.authentication_failure
+          require_previous_session: false
+
+    user_login:
+      pattern:  ^/user_login
+      stateless: true
+      anonymous: true
+      provider: user_orm
+      form_login:
+          check_path: /user_login
+          require_previous_session: false
+          username_parameter: email
+          password_parameter: password
+          success_handler: Jwt\UserAuthenticationSuccessHandler
           failure_handler: lexik_jwt_authentication.handler.authentication_failure
           require_previous_session: false
 
@@ -43,8 +65,7 @@ security:
       stateless: true
       guard:
         authenticators:
-          - lexik_jwt_authentication.jwt_token_authenticator
-
+          - Jwt\TokenAuthenticator
 
     main:
       anonymous: ~
@@ -57,6 +78,7 @@ security:
       #form_login: ~
 
   access_control:
-    - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/admin_login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/user_login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
     - { path: ^/index.html, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-    - { path: ^/, roles: IS_AUTHENTICATED_FULLY }
+    - { path: ^/, roles: ROLE_USER }

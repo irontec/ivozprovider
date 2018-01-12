@@ -58,8 +58,8 @@ abstract class HuntGroupsRelUserDtoAbstract implements DataTransferObjectInterfa
             'timeoutTime' => 'timeoutTime',
             'priority' => 'priority',
             'id' => 'id',
-            'huntGroup' => 'huntGroup',
-            'user' => 'user'
+            'huntGroupId' => 'huntGroup',
+            'userId' => 'user'
         ];
     }
 

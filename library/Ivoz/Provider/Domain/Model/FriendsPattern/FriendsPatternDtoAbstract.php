@@ -53,7 +53,7 @@ abstract class FriendsPatternDtoAbstract implements DataTransferObjectInterface
             'name' => 'name',
             'regExp' => 'regExp',
             'id' => 'id',
-            'friend' => 'friend'
+            'friendId' => 'friend'
         ];
     }
 

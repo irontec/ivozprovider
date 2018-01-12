@@ -81,6 +81,16 @@ abstract class UsersXcapAbstract
         $this->setPort($port);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "UsersXcap",
+            $this->getId()
+        );
+    }
+
     /**
      * @return void
      * @throws \Exception

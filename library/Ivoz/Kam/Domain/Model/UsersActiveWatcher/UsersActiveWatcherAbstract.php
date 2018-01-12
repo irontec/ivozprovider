@@ -218,6 +218,16 @@ abstract class UsersActiveWatcherAbstract
         $this->setUserAgent($userAgent);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "UsersActiveWatcher",
+            $this->getId()
+        );
+    }
+
     /**
      * @return void
      * @throws \Exception

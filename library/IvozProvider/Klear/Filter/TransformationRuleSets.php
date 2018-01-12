@@ -1,5 +1,5 @@
 <?php
-class IvozProvider_Klear_Filter_TransformationRuleSets implements KlearMatrix_Model_Field_Select_Filter_Interface
+class IvozProvider_Klear_Filter_TransformationRuleSets extends IvozProvider_Klear_Filter_Brand
 {
     protected $_condition = array();
 

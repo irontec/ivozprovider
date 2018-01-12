@@ -52,8 +52,8 @@ abstract class QueueMemberDtoAbstract implements DataTransferObjectInterface
         return [
             'penalty' => 'penalty',
             'id' => 'id',
-            'queue' => 'queue',
-            'user' => 'user'
+            'queueId' => 'queue',
+            'userId' => 'user'
         ];
     }
 

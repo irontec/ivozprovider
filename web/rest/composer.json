@@ -7,28 +7,12 @@
             "email": "carlos@irontec.com"
         },
         {
-            "name": "Gaizka Elexpe",
-            "email": "gaizka@irontec.com"
-        },
-        {
-            "name": "Gorka Gorrotxategi",
-            "email": "gorka.g@irontec.com"
-        },
-        {
             "name": "Ivan Alonso",
             "email": "kaian@irontec.com"
         },
         {
-            "name": "Luis Felipe García",
-            "email": "lfgarcia@irontec.com"
-        },
-        {
             "name": "Mikel Madariaga",
             "email": "mikel@irontec.com"
-        },
-        {
-            "name": "Victor Vargas",
-            "email": "victor@irontec.com"
         }
     ],
     "repositories": [
@@ -47,6 +31,7 @@
         "psr-4": {
             "": "src/",
             "Ivoz\\": "../../library/Ivoz",
+            "DataFixtures\\": "../../library/DataFixtures",
             "CoreBundle\\": "../../library/CoreBundle",
             "ApiBundle\\": "../../library/ApiBundle"
         },
@@ -95,7 +80,8 @@
         "behatch/contexts": "^2.5",
         "sensio/generator-bundle": "^3.0",
         "symfony/phpunit-bridge": "^3.0",
-        "api-platform/schema-generator": "^1.0 || ^2.0"
+        "api-platform/schema-generator": "^1.0 || ^2.0",
+        "doctrine/doctrine-fixtures-bundle": "^3.0"
     },
     "scripts": {
         "symfony-scripts": [

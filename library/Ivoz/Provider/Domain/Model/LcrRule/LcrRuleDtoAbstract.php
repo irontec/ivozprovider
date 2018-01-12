@@ -94,8 +94,8 @@ abstract class LcrRuleDtoAbstract implements DataTransferObjectInterface
             'tag' => 'tag',
             'description' => 'description',
             'id' => 'id',
-            'routingPattern' => 'routingPattern',
-            'outgoingRouting' => 'outgoingRouting'
+            'routingPatternId' => 'routingPattern',
+            'outgoingRoutingId' => 'outgoingRouting'
         ];
     }
 

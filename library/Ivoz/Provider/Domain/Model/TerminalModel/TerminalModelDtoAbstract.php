@@ -83,7 +83,7 @@ abstract class TerminalModelDtoAbstract implements DataTransferObjectInterface
             'genericUrlPattern' => 'genericUrlPattern',
             'specificUrlPattern' => 'specificUrlPattern',
             'id' => 'id',
-            'terminalManufacturer' => 'terminalManufacturer'
+            'terminalManufacturerId' => 'terminalManufacturer'
         ];
     }
 

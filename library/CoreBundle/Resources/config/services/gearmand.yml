@@ -1,0 +1,12 @@
+services:
+  _defaults:
+    autowire: true
+    public: false
+
+  Ivoz\Core\Infrastructure\Domain\Service\Gearman\Manager: ~
+
+  Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Xmlrpc:
+    shared: false
+    arguments:
+      $manager: '@Ivoz\Core\Infrastructure\Domain\Service\Gearman\Manager'
+      $settings: '%gearmand%'

@@ -1,7 +1,7 @@
 /build/
 /phpunit.xml
-/spec/coverage
-/spec/coverage/*
+!/features/coverage/.gitkeep
+/features/coverage/*
 **.php~
 /var/*
 !/var/cache

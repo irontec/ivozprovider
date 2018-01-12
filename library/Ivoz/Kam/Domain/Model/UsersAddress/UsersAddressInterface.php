@@ -16,6 +16,8 @@ interface UsersAddressInterface extends LoggableEntityInterface
 
     public function setMask($mask = null);
 
+    public function __toString();
+
     /**
      * Set sourceAddress
      *

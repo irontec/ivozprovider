@@ -69,9 +69,9 @@ abstract class PricingPlansRelTargetPatternDtoAbstract implements DataTransferOb
             'periodTime' => 'periodTime',
             'perPeriodCharge' => 'perPeriodCharge',
             'id' => 'id',
-            'pricingPlan' => 'pricingPlan',
-            'targetPattern' => 'targetPattern',
-            'brand' => 'brand'
+            'pricingPlanId' => 'pricingPlan',
+            'targetPatternId' => 'targetPattern',
+            'brandId' => 'brand'
         ];
     }
 

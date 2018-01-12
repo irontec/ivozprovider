@@ -109,9 +109,9 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
             'mac' => 'mac',
             'lastProvisionDate' => 'lastProvisionDate',
             'id' => 'id',
-            'company' => 'company',
-            'domain' => 'domain',
-            'terminalModel' => 'terminalModel'
+            'companyId' => 'company',
+            'domainId' => 'domain',
+            'terminalModelId' => 'terminalModel'
         ];
     }
 

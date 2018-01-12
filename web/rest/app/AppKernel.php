@@ -5,6 +5,18 @@ use Symfony\Component\Config\Loader\LoaderInterface;
 
 class AppKernel extends Kernel
 {
+    protected $consoleContext;
+
+    /**
+     * @inheritdoc
+     */
+    public function __construct($environment, $debug, bool $consoleContext = false)
+    {
+        $this->consoleContext = $consoleContext;
+
+        return parent::__construct(...func_get_args());
+    }
+
     public function registerBundles()
     {
         $bundles = [
@@ -26,6 +38,7 @@ class AppKernel extends Kernel
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
             $bundles[] = new Symfony\Bundle\DebugBundle\DebugBundle();
+            $bundles[] = new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle();
         }
 
         return $bundles;

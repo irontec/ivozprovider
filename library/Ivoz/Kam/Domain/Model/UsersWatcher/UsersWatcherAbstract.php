@@ -74,6 +74,16 @@ abstract class UsersWatcherAbstract
         $this->setInsertedTime($insertedTime);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "UsersWatcher",
+            $this->getId()
+        );
+    }
+
     /**
      * @return void
      * @throws \Exception

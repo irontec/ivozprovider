@@ -5,7 +5,7 @@
   "password": "SDG3qd2j6+",
   "directConnectivity": "yes",
   "transport": "udp",
-  "ip": "",
+  "ip": "127.0.0.1",
   "port": "5060",
   "allow": "alaw",
   "fromDomain": "",

@@ -14,13 +14,17 @@ interface ConditionalRouteInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * Return string representation of this entity
+     * @return string
+     */
+    public function __toString();
+
+    /**
      * Get the numberValue in E.164 format when routing to 'number'
      *
      * @return string
      */
     public function getNumberValueE164();
-
-    public function __toString();
 
     /**
      * Set name
@@ -273,7 +277,7 @@ interface ConditionalRouteInterface extends LoggableEntityInterface
     /**
      * Get conditions
      *
-     * @return array
+     * @return \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface[]
      */
     public function getConditions(\Doctrine\Common\Collections\Criteria $criteria = null);
 

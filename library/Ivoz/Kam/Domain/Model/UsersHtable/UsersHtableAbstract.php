@@ -62,6 +62,16 @@ abstract class UsersHtableAbstract
         $this->setExpires($expires);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "UsersHtable",
+            $this->getId()
+        );
+    }
+
     /**
      * @return void
      * @throws \Exception

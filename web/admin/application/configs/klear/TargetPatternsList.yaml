@@ -91,20 +91,6 @@ production:
       <<: *pricingPlansRelTargetPatternsEdit_screenLink
       filterField: targetPattern
 
-    #PricingPlans:
-    pricingPlansList_screen:
-      controller: list
-      pagination:
-        items: 25
-      <<: *PricingPlans
-      class: ui-silk-money
-      title: _("List of %s %2s", ngettext('Pricing plan', 'Pricing plans', 0), "[format| (%parent%)]")
-      filterClass: IvozProvider_Klear_Filter_TargetPatternPricingPlans
-      forcedValues:
-        <<: *forcedBrand
-      parentOptionCustomizer:
-        - recordCount
-
   dialogs: &targetPatterns_dialogsLink
     targetPatternsDel_dialog: &targetPatternsDel_dialogLink
       <<: *TargetPatterns

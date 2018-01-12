@@ -87,7 +87,7 @@ abstract class BrandUrlDtoAbstract implements DataTransferObjectInterface
             'userTheme' => 'userTheme',
             'id' => 'id',
             'logo' => ['fileSize','mimeType','baseName'],
-            'brand' => 'brand'
+            'brandId' => 'brand'
         ];
     }
 

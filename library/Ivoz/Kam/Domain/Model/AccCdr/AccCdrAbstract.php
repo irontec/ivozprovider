@@ -188,6 +188,16 @@ abstract class AccCdrAbstract
         $this->setBounced($bounced);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "AccCdr",
+            $this->getId()
+        );
+    }
+
     /**
      * @return void
      * @throws \Exception

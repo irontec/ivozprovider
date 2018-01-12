@@ -58,7 +58,7 @@ abstract class CallAclDtoAbstract implements DataTransferObjectInterface
             'name' => 'name',
             'defaultPolicy' => 'defaultPolicy',
             'id' => 'id',
-            'company' => 'company'
+            'companyId' => 'company'
         ];
     }
 

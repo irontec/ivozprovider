@@ -98,8 +98,8 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
             'generateRules' => 'generateRules',
             'id' => 'id',
             'name' => ['en','es'],
-            'brand' => 'brand',
-            'country' => 'country'
+            'brandId' => 'brand',
+            'countryId' => 'country'
         ];
     }
 

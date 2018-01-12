@@ -74,8 +74,8 @@ abstract class PeeringContractDtoAbstract implements DataTransferObjectInterface
             'name' => 'name',
             'externallyRated' => 'externallyRated',
             'id' => 'id',
-            'brand' => 'brand',
-            'transformationRuleSet' => 'transformationRuleSet'
+            'brandId' => 'brand',
+            'transformationRuleSetId' => 'transformationRuleSet'
         ];
     }
 

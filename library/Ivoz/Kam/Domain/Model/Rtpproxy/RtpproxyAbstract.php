@@ -57,6 +57,16 @@ abstract class RtpproxyAbstract
         $this->setWeight($weight);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "Rtpproxy",
+            $this->getId()
+        );
+    }
+
     /**
      * @return void
      * @throws \Exception

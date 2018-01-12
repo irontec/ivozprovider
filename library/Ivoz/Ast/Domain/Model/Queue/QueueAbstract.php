@@ -83,6 +83,16 @@ abstract class QueueAbstract
         $this->setRinginuse($ringinuse);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "Queue",
+            $this->getId()
+        );
+    }
+
     /**
      * @return void
      * @throws \Exception

@@ -63,7 +63,7 @@ abstract class RoutingPatternGroupDtoAbstract implements DataTransferObjectInter
             'name' => 'name',
             'description' => 'description',
             'id' => 'id',
-            'brand' => 'brand'
+            'brandId' => 'brand'
         ];
     }
 

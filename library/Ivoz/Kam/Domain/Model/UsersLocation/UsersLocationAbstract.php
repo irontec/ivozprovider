@@ -170,6 +170,16 @@ abstract class UsersLocationAbstract
         $this->setPartition($partition);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "UsersLocation",
+            $this->getId()
+        );
+    }
+
     /**
      * @return void
      * @throws \Exception

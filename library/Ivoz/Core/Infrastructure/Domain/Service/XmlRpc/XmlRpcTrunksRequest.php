@@ -3,7 +3,7 @@
 namespace Ivoz\Core\Infrastructure\Domain\Service\XmlRpc;
 
 use Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunk;
-use IvozProvider\Gearmand\Jobs\Xmlrpc;
+use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Xmlrpc;
 
 /**
  * Class XmlRpcTrunksRequest
@@ -13,13 +13,15 @@ class XmlRpcTrunksRequest extends AbstractXmlRpcRequest
 {
     public function __construct(
         Xmlrpc $xmlrpc,
-        string $rpcMethod
+        string $rpcMethod,
+        bool $enabled
     ) {
         parent::__construct(
             $xmlrpc,
             ProxyTrunk::class,
             8001,
-            $rpcMethod
+            $rpcMethod,
+            $enabled
         );
     }
 

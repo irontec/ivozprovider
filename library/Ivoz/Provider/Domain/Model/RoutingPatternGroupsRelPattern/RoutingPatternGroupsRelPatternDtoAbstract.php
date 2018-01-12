@@ -46,8 +46,8 @@ abstract class RoutingPatternGroupsRelPatternDtoAbstract implements DataTransfer
 
         return [
             'id' => 'id',
-            'routingPattern' => 'routingPattern',
-            'routingPatternGroup' => 'routingPatternGroup'
+            'routingPatternId' => 'routingPattern',
+            'routingPatternGroupId' => 'routingPatternGroup'
         ];
     }
 

@@ -46,8 +46,8 @@ abstract class ConditionalRoutesConditionsRelMatchlistDtoAbstract implements Dat
 
         return [
             'id' => 'id',
-            'condition' => 'condition',
-            'matchlist' => 'matchlist'
+            'conditionId' => 'condition',
+            'matchlistId' => 'matchlist'
         ];
     }
 

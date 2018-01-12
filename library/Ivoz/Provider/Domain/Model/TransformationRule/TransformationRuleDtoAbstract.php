@@ -71,7 +71,7 @@ abstract class TransformationRuleDtoAbstract implements DataTransferObjectInterf
             'matchExpr' => 'matchExpr',
             'replaceExpr' => 'replaceExpr',
             'id' => 'id',
-            'transformationRuleSet' => 'transformationRuleSet'
+            'transformationRuleSetId' => 'transformationRuleSet'
         ];
     }
 

@@ -119,7 +119,7 @@ abstract class LcrGatewayDtoAbstract implements DataTransferObjectInterface
             'flags' => 'flags',
             'defunct' => 'defunct',
             'id' => 'id',
-            'peerServer' => 'peerServer'
+            'peerServerId' => 'peerServer'
         ];
     }
 

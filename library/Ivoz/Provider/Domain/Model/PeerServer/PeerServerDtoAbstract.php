@@ -153,9 +153,9 @@ abstract class PeerServerDtoAbstract implements DataTransferObjectInterface
             'fromUser' => 'fromUser',
             'fromDomain' => 'fromDomain',
             'id' => 'id',
-            'lcrGateway' => 'lcrGateway',
-            'peeringContract' => 'peeringContract',
-            'brand' => 'brand'
+            'lcrGatewayId' => 'lcrGateway',
+            'peeringContractId' => 'peeringContract',
+            'brandId' => 'brand'
         ];
     }
 

@@ -69,7 +69,7 @@ abstract class TargetPatternDtoAbstract implements DataTransferObjectInterface
             'id' => 'id',
             'name' => ['en','es'],
             'description' => ['en','es'],
-            'brand' => 'brand'
+            'brandId' => 'brand'
         ];
     }
 

@@ -184,9 +184,9 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
             'id' => 'id',
             'logo' => ['fileSize','mimeType','baseName'],
             'invoice' => ['nif','postalAddress','postalCode','town','province','country','registryData'],
-            'domain' => 'domain',
-            'language' => 'language',
-            'defaultTimezone' => 'defaultTimezone'
+            'domainId' => 'domain',
+            'languageId' => 'language',
+            'defaultTimezoneId' => 'defaultTimezone'
         ];
     }
 

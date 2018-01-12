@@ -87,9 +87,9 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
             'name' => 'name',
             'lastname' => 'lastname',
             'id' => 'id',
-            'brand' => 'brand',
-            'company' => 'company',
-            'timezone' => 'timezone'
+            'brandId' => 'brand',
+            'companyId' => 'company',
+            'timezoneId' => 'timezone'
         ];
     }
 

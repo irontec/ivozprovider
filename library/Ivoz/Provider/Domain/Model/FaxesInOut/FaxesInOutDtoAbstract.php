@@ -98,8 +98,8 @@ abstract class FaxesInOutDtoAbstract implements DataTransferObjectInterface
             'status' => 'status',
             'id' => 'id',
             'file' => ['fileSize','mimeType','baseName'],
-            'fax' => 'fax',
-            'dstCountry' => 'dstCountry'
+            'faxId' => 'fax',
+            'dstCountryId' => 'dstCountry'
         ];
     }
 

@@ -62,6 +62,16 @@ abstract class TrunksHtableAbstract
         $this->setExpires($expires);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "TrunksHtable",
+            $this->getId()
+        );
+    }
+
     /**
      * @return void
      * @throws \Exception

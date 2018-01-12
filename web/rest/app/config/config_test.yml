@@ -1,6 +1,5 @@
 imports:
   - { resource: config.yml }
-  - { resource: security_test.yml }
 
 framework:
   test: ~
@@ -13,3 +12,9 @@ doctrine:
     path: '%kernel.cache_dir%/db.sqlite'
     charset: 'UTF8'
 
+parameters:
+  lexik_jwt_authentication:
+    private_key_path: '%kernel.root_dir%/../var/jwt/private-test.pem'
+    jwt_public_key_path: '%kernel.root_dir%/../var/jwt/public-test.pem'
+    pass_phrase: 'changeme'
+    token_ttl: '600'

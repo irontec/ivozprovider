@@ -2,7 +2,7 @@
 
 namespace Ivoz\Core\Infrastructure\Domain\Service\XmlRpc;
 
-use IvozProvider\Gearmand\Jobs\Xmlrpc;
+use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Xmlrpc;
 
 /**
  * Class AbstractXmlRpcRequest
@@ -15,20 +15,32 @@ abstract class AbstractXmlRpcRequest
      */
     protected $xmlrpc;
 
+    /**
+     * @var bool
+     */
+    protected $enabled;
+
     public function __construct(
         Xmlrpc $xmlrpc,
         string $rpcEntity,
         int $rpcPort,
-        string $rpcMethod
+        string $rpcMethod,
+        bool $enabled
     ) {
         $this->xmlrpc = $xmlrpc;
         $this->xmlrpc->setRpcEntity($rpcEntity);
         $this->xmlrpc->setRpcPort($rpcPort);
         $this->xmlrpc->setRpcMethod($rpcMethod);
+
+        $this->enabled = $enabled;
     }
 
     public function send()
     {
+        if (!$this->enabled) {
+            return;
+        }
+
         $this->xmlrpc->send();
     }
 }

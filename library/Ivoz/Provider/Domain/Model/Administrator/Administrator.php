@@ -10,7 +10,7 @@ use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 class Administrator extends AdministratorAbstract implements AdministratorInterface, AdvancedUserInterface, \Serializable
 {
     use AdministratorTrait;
-    use SecurityTrait;
+    use AdministratorSecurityTrait;
 
     /**
      * @return array
@@ -35,6 +35,23 @@ class Administrator extends AdministratorAbstract implements AdministratorInterf
         return $this->id;
     }
 
+    /**
+     * @inheritdoc
+     */
+    public function setPass($pass = null)
+    {
+        $salt = substr(md5(mt_rand(), false), 0, 22);
+        $cryptPass = crypt(
+            $pass,
+            '$2a$08$' . $salt . '$' . $salt . '$'
+        );
+
+        return parent::setPass($cryptPass);
+    }
+
+    /**
+     * @return bool
+     */
     public function isSuperAdmin()
     {
         $nullBrand = is_null($this->getBrand());
@@ -43,6 +60,9 @@ class Administrator extends AdministratorAbstract implements AdministratorInterf
         return $nullBrand && $nullCompany;
     }
 
+    /**
+     * @return bool
+     */
     public function isBrandAdmin()
     {
         if ($this->isSuperAdmin()) {
@@ -52,6 +72,9 @@ class Administrator extends AdministratorAbstract implements AdministratorInterf
         return !is_null($this->getBrand());
     }
 
+    /**
+     * @return bool
+     */
     public function isCompanyAdmin()
     {
         if ($this->isBrandAdmin()) {
@@ -71,6 +94,7 @@ class Administrator extends AdministratorAbstract implements AdministratorInterf
             $this->active
         ));
     }
+
     public function unserialize($serialized)
     {
         list (

@@ -1,5 +1,5 @@
 imports:
-  - { resource: "@CoreBundle/Resources/config/orm_soft_delete.yml" }
+  - resource: orm_soft_delete.yml
 
 parameters:
     database_host: data.ivozprovider.local
@@ -7,6 +7,7 @@ parameters:
     database_name: ivozprovider
     database_user: root
     database_password: ~
+
     mailer_transport: smtp
     mailer_host: data.ivozprovider.local
     mailer_user: null
@@ -14,13 +15,21 @@ parameters:
     mailer_default_fromname: IvozProvider Notifications
     mailer_default_fromaddress: no-replay@ivozprovider
     secret: ~
+
     ari_user: ivozariuser
     ari_password: ~
     ari_port: 8088
+
     local_storage_path: /opt/irontec/ivozprovider/storage
     raw_recordings_dir: /opt/irontec/ivozprovider/storage/ivozprovider_model_recordings.originalfile/
 
-    jwt_private_key_path: '%kernel.root_dir%/../var/jwt/private.pem' # ssh private key path
-    jwt_public_key_path: '%kernel.root_dir%/../var/jwt/public.pem'  # ssh public key path
-    jwt_key_pass_phrase: 'changeme'                                         # ssh key pass phrase
-    jwt_token_ttl: 3600
+    gearmand:
+      servers:
+        - 'jobs.ivozprovider.local'
+      client:
+        timeout: 5000
+      mail:
+        from: 'no-reply@irontec.com'
+        to:
+          - 'vozip@irontec.com'
+        subject: '[ERROR] XMLRPC'

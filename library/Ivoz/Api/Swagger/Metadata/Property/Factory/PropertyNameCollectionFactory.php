@@ -24,7 +24,7 @@ class PropertyNameCollectionFactory implements PropertyNameCollectionFactoryInte
                 $resourceDtoClass . '::getPropertyMap',
                 $context
             );
-            $attributes = array_keys($propertyMap);
+            $attributes = $this->normalizePropertyMap($propertyMap);
         } else {
             $attributes = $this->inspectAttributes($resourceClass);
         }
@@ -44,5 +44,17 @@ class PropertyNameCollectionFactory implements PropertyNameCollectionFactoryInte
         $classState = $normalizer->normalize($class);
 
         return array_keys($classState);
+    }
+
+    private function normalizePropertyMap(array $propertyMap)
+    {
+        $response = [];
+        foreach ($propertyMap as $key => $value) {
+            $response[] = is_array($value)
+                ? $key
+                : $value;
+        }
+
+        return $response;
     }
 }
