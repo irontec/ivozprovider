@@ -1,0 +1,485 @@
+<?php
+
+namespace Ivoz\Cgr\Domain\Model\TpTiming;
+
+use Assert\Assertion;
+use Ivoz\Core\Application\DataTransferObjectInterface;
+
+/**
+ * TpTimingAbstract
+ * @codeCoverageIgnore
+ */
+abstract class TpTimingAbstract
+{
+    /**
+     * @var string
+     */
+    protected $tpid = 'ivozprovider';
+
+    /**
+     * @var string
+     */
+    protected $tag;
+
+    /**
+     * @var string
+     */
+    protected $years;
+
+    /**
+     * @var string
+     */
+    protected $months;
+
+    /**
+     * @column month_days
+     * @var string
+     */
+    protected $monthDays;
+
+    /**
+     * @column week_days
+     * @var string
+     */
+    protected $weekDays;
+
+    /**
+     * @var string
+     */
+    protected $time = '00:00:00';
+
+    /**
+     * @column created_at
+     * @var \DateTime
+     */
+    protected $createdAt;
+
+
+    /**
+     * Changelog tracking purpose
+     * @var array
+     */
+    protected $_initialValues = [];
+
+    /**
+     * Constructor
+     */
+    protected function __construct(
+        $tpid,
+        $years,
+        $months,
+        $monthDays,
+        $weekDays,
+        $time,
+        $createdAt
+    ) {
+        $this->setTpid($tpid);
+        $this->setYears($years);
+        $this->setMonths($months);
+        $this->setMonthDays($monthDays);
+        $this->setWeekDays($weekDays);
+        $this->setTime($time);
+        $this->setCreatedAt($createdAt);
+    }
+
+    /**
+     * @param string $fieldName
+     * @return mixed
+     * @throws \Exception
+     */
+    public function initChangelog()
+    {
+        $values = $this->__toArray();
+        if (!$this->getId()) {
+            // Empty values for entities with no Id
+            foreach ($values as $key => $val) {
+                $values[$key] = null;
+            }
+        }
+
+        $this->_initialValues = $values;
+    }
+
+    /**
+     * @param string $fieldName
+     * @return mixed
+     * @throws \Exception
+     */
+    public function hasChanged($dbFieldName)
+    {
+        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
+            throw new \Exception($dbFieldName . ' field was not found');
+        }
+        $currentValues = $this->__toArray();
+
+        return $currentValues[$dbFieldName] != $this->_initialValues[$dbFieldName];
+    }
+
+    public function getInitialValue($dbFieldName)
+    {
+        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
+            throw new \Exception($dbFieldName . ' field was not found');
+        }
+
+        return $this->_initialValues[$dbFieldName];
+    }
+
+    /**
+     * @return array
+     */
+    protected function getChangeSet()
+    {
+        $changes = [];
+        $currentValues = $this->__toArray();
+        foreach ($currentValues as $key => $value) {
+
+            if ($this->_initialValues[$key] == $currentValues[$key]) {
+                continue;
+            }
+
+            $value = $currentValues[$key];
+            if ($value instanceof \DateTime) {
+                $value = $value->format('Y-m-d H:i:s');
+            }
+
+            $changes[$key] = $value;
+        }
+
+        return $changes;
+    }
+
+    /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+    }
+
+    /**
+     * @return TpTimingDTO
+     */
+    public static function createDTO()
+    {
+        return new TpTimingDTO();
+    }
+
+    /**
+     * Factory method
+     * @param DataTransferObjectInterface $dto
+     * @return self
+     */
+    public static function fromDTO(DataTransferObjectInterface $dto)
+    {
+        /**
+         * @var $dto TpTimingDTO
+         */
+        Assertion::isInstanceOf($dto, TpTimingDTO::class);
+
+        $self = new static(
+            $dto->getTpid(),
+            $dto->getYears(),
+            $dto->getMonths(),
+            $dto->getMonthDays(),
+            $dto->getWeekDays(),
+            $dto->getTime(),
+            $dto->getCreatedAt());
+
+        $self
+            ->setTag($dto->getTag())
+        ;
+
+        $self->sanitizeValues();
+        $self->initChangelog();
+
+        return $self;
+    }
+
+    /**
+     * @param DataTransferObjectInterface $dto
+     * @return self
+     */
+    public function updateFromDTO(DataTransferObjectInterface $dto)
+    {
+        /**
+         * @var $dto TpTimingDTO
+         */
+        Assertion::isInstanceOf($dto, TpTimingDTO::class);
+
+        $this
+            ->setTpid($dto->getTpid())
+            ->setTag($dto->getTag())
+            ->setYears($dto->getYears())
+            ->setMonths($dto->getMonths())
+            ->setMonthDays($dto->getMonthDays())
+            ->setWeekDays($dto->getWeekDays())
+            ->setTime($dto->getTime())
+            ->setCreatedAt($dto->getCreatedAt());
+
+
+
+        $this->sanitizeValues();
+        return $this;
+    }
+
+    /**
+     * @return TpTimingDTO
+     */
+    public function toDTO()
+    {
+        return self::createDTO()
+            ->setTpid($this->getTpid())
+            ->setTag($this->getTag())
+            ->setYears($this->getYears())
+            ->setMonths($this->getMonths())
+            ->setMonthDays($this->getMonthDays())
+            ->setWeekDays($this->getWeekDays())
+            ->setTime($this->getTime())
+            ->setCreatedAt($this->getCreatedAt());
+    }
+
+    /**
+     * @return array
+     */
+    protected function __toArray()
+    {
+        return [
+            'tpid' => self::getTpid(),
+            'tag' => self::getTag(),
+            'years' => self::getYears(),
+            'months' => self::getMonths(),
+            'month_days' => self::getMonthDays(),
+            'week_days' => self::getWeekDays(),
+            'time' => self::getTime(),
+            'created_at' => self::getCreatedAt()
+        ];
+    }
+
+
+    // @codeCoverageIgnoreStart
+
+    /**
+     * Set tpid
+     *
+     * @param string $tpid
+     *
+     * @return self
+     */
+    public function setTpid($tpid)
+    {
+        Assertion::notNull($tpid, 'tpid value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($tpid, 64, 'tpid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+
+        $this->tpid = $tpid;
+
+        return $this;
+    }
+
+    /**
+     * Get tpid
+     *
+     * @return string
+     */
+    public function getTpid()
+    {
+        return $this->tpid;
+    }
+
+    /**
+     * Set tag
+     *
+     * @param string $tag
+     *
+     * @return self
+     */
+    public function setTag($tag = null)
+    {
+        if (!is_null($tag)) {
+            Assertion::maxLength($tag, 64, 'tag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        }
+
+        $this->tag = $tag;
+
+        return $this;
+    }
+
+    /**
+     * Get tag
+     *
+     * @return string
+     */
+    public function getTag()
+    {
+        return $this->tag;
+    }
+
+    /**
+     * Set years
+     *
+     * @param string $years
+     *
+     * @return self
+     */
+    public function setYears($years)
+    {
+        Assertion::notNull($years, 'years value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($years, 255, 'years value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+
+        $this->years = $years;
+
+        return $this;
+    }
+
+    /**
+     * Get years
+     *
+     * @return string
+     */
+    public function getYears()
+    {
+        return $this->years;
+    }
+
+    /**
+     * Set months
+     *
+     * @param string $months
+     *
+     * @return self
+     */
+    public function setMonths($months)
+    {
+        Assertion::notNull($months, 'months value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($months, 255, 'months value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+
+        $this->months = $months;
+
+        return $this;
+    }
+
+    /**
+     * Get months
+     *
+     * @return string
+     */
+    public function getMonths()
+    {
+        return $this->months;
+    }
+
+    /**
+     * Set monthDays
+     *
+     * @param string $monthDays
+     *
+     * @return self
+     */
+    public function setMonthDays($monthDays)
+    {
+        Assertion::notNull($monthDays, 'monthDays value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($monthDays, 255, 'monthDays value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+
+        $this->monthDays = $monthDays;
+
+        return $this;
+    }
+
+    /**
+     * Get monthDays
+     *
+     * @return string
+     */
+    public function getMonthDays()
+    {
+        return $this->monthDays;
+    }
+
+    /**
+     * Set weekDays
+     *
+     * @param string $weekDays
+     *
+     * @return self
+     */
+    public function setWeekDays($weekDays)
+    {
+        Assertion::notNull($weekDays, 'weekDays value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($weekDays, 255, 'weekDays value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+
+        $this->weekDays = $weekDays;
+
+        return $this;
+    }
+
+    /**
+     * Get weekDays
+     *
+     * @return string
+     */
+    public function getWeekDays()
+    {
+        return $this->weekDays;
+    }
+
+    /**
+     * Set time
+     *
+     * @param string $time
+     *
+     * @return self
+     */
+    public function setTime($time)
+    {
+        Assertion::notNull($time, 'time value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($time, 32, 'time value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+
+        $this->time = $time;
+
+        return $this;
+    }
+
+    /**
+     * Get time
+     *
+     * @return string
+     */
+    public function getTime()
+    {
+        return $this->time;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     *
+     * @return self
+     */
+    public function setCreatedAt($createdAt)
+    {
+        Assertion::notNull($createdAt, 'createdAt value "%s" is null, but non null value was expected.');
+        $createdAt = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
+            $createdAt,
+            'CURRENT_TIMESTAMP'
+        );
+
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+
+
+    // @codeCoverageIgnoreEnd
+}
+
