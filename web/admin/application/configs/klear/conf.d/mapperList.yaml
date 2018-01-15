@@ -109,6 +109,16 @@ mappers:
         modelFile: Ddis,
         entity: 'Ivoz\\Provider\\Domain\\Model\\Ddi\\Ddi'
     }
+  - &DestinationRates {
+        mapper: \IvozProvider\Mapper\Sql\DestinationRates,
+        modelFile: DestinationRates,
+        entity: 'Ivoz\\Cgr\\Domain\\Model\\DestinationRate\\DestinationRate'
+    }
+  - &Destinations {
+        mapper: \IvozProvider\Mapper\Sql\Destinations,
+        modelFile: Destinations,
+        entity: 'Ivoz\\Cgr\\Domain\\Model\\Destination\\Destination'
+    }
   - &Domains {
         mapper: \IvozProvider\Mapper\Sql\Domains,
         modelFile: Domains,
@@ -339,6 +349,11 @@ mappers:
         modelFile: Queues,
         entity: 'Ivoz\\Provider\\Domain\\Model\\Queue\\Queue'
     }
+  - &Rates {
+        mapper: \IvozProvider\Mapper\Sql\Rates,
+        modelFile: Rates,
+        entity: 'Ivoz\\Cgr\\Domain\\Model\\Rate\\Rate'
+    }
   - &Recordings {
         mapper: \IvozProvider\Mapper\Sql\Recordings,
         modelFile: Recordings,
@@ -559,3 +574,24 @@ mappers:
         modelFile: KamVersion,
         entity: 'Kam\\Model\\Version\\Version'
     }
+  - &TpDestinationRates {
+        mapper: \IvozProvider\Mapper\Sql\TpDestinationRates,
+        modelFile: TpDestinationRates,
+        entity: 'Ivoz\\Cgr\\Domain\\Model\\TpDestinationRate\\TpDestinationRate'
+    }
+  - &TpDestinations {
+        mapper: \IvozProvider\Mapper\Sql\TpDestinations,
+        modelFile: TpDestinations,
+        entity: 'Ivoz\\Cgr\\Domain\\Model\\TpDestination\\TpDestination'
+    }
+  - &TpRates {
+        mapper: \IvozProvider\Mapper\Sql\TpRates,
+        modelFile: TpRates,
+        entity: 'Ivoz\\Cgr\\Domain\\Model\\TpRate\\TpRate'
+    }
+  - &TpRatingProfiles {
+        mapper: \IvozProvider\Mapper\Sql\TpRatingProfiles,
+        modelFile: TpRatingProfiles,
+        entity: 'Ivoz\\Cgr\\Domain\\Model\\TpRatingProfile\\TpRatingProfile'
+    }
+

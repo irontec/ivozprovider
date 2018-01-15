@@ -1,0 +1,104 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+#include TpRatesList.yaml
+
+production:
+  main:
+    module: klearMatrix
+    defaultScreen: ratesList_screen
+  screens: &rates_screensLink
+    ratesList_screen: &ratesList_screenLink
+      controller: list
+      pagination:
+        items: 25
+      <<: *Rates
+      class: ui-silk-page-find
+      title: _("List of %s %2s", ngettext('Rate', 'Rates', 0), "[format| (%parent%)]")
+      forcedValues:
+        <<: *forcedBrand
+      fields: &rates_fieldsLink
+        order:
+          tag: true
+          name: true
+          description: true
+        options:
+          title: _("Options")
+          screens:
+            ratesEdit_screen: true
+            tpRatesList_screen: true
+          dialogs:
+            ratesDel_dialog: true
+          default: ratesEdit_screen
+      options:
+        title: _("Options")
+        screens:
+          ratesNew_screen: true
+        dialogs:
+          ratesDel_dialog: true
+
+    ratesNew_screen: &ratesNew_screenLink
+      <<: *Rates
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Rate', 'Rates', 1), "[format| (%parent%)]")
+      forcedValues:
+        <<: *forcedBrand
+      shortcutOption: N
+      fixedPositions: &pratesFixedPositions_Link
+        group1:
+          colsPerRow: 9
+          fields:
+            tag: 4
+            name: 5
+            description: 8
+
+    ratesEdit_screen: &ratesEdit_screenLink
+      <<: *Rates
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      title: _("Edit %s %2s", ngettext('Rate', 'Rates', 1), "[format| (%item%)]")
+      forcedValues:
+        <<: *forcedBrand
+      fixedPositions:
+        <<: *pratesFixedPositions_Link
+
+    # tpRates:
+    <<: *tpRates_screensLink
+    tpRatesList_screen:
+      <<: *tpRatesList_screenLink
+      filterField: rate
+      parentOptionCustomizer:
+        - recordCount
+    tpRatesNew_screen:
+      <<: *tpRatesNew_screenLink
+      filterField: rate
+    tpRatesEdit_screen:
+      <<: *tpRatesEdit_screenLink
+      filterField: rate
+
+  dialogs: &rates_dialogsLink
+    ratesDel_dialog: &ratesDel_dialogLink
+      <<: *Rates
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Rate', 'Rates', 1))
+      description: _("Do you want to delete this %s?", ngettext('Rate', 'Rates', 1))
+      message: _("%s successfully deleted.", ngettext('Rate', 'Rates', 1))
+      multiItem: 1
+      labelOnList: 1
+
+#   tpRates dialogs:
+    <<: *tpRates_dialogsLink
+
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production
