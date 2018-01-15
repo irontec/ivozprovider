@@ -1,0 +1,16 @@
+Ivoz\Cgr\Domain\Model\TpDestination\TpDestination:
+  repositoryClass: Ivoz\Cgr\Infrastructure\Persistence\Doctrine\TpDestinationDoctrineRepository
+  type: entity
+  table: tp_destinations
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  lifecycleCallbacks:
+    postLoad:
+      - initChangelog
