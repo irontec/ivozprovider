@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\ConditionalRoute;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Doctrine\Common\Collections\Collection;
 
 interface ConditionalRouteInterface extends LoggableEntityInterface
 {
@@ -18,6 +19,8 @@ interface ConditionalRouteInterface extends LoggableEntityInterface
      * @return string
      */
     public function getNumberValueE164();
+
+    public function __toString();
 
     /**
      * Set name
@@ -242,6 +245,37 @@ interface ConditionalRouteInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
      */
     public function getNumberCountry();
+
+    /**
+     * Add condition
+     *
+     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface $condition
+     *
+     * @return ConditionalRouteTrait
+     */
+    public function addCondition(\Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface $condition);
+
+    /**
+     * Remove condition
+     *
+     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface $condition
+     */
+    public function removeCondition(\Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface $condition);
+
+    /**
+     * Replace conditions
+     *
+     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface[] $conditions
+     * @return self
+     */
+    public function replaceConditions(Collection $conditions);
+
+    /**
+     * Get conditions
+     *
+     * @return array
+     */
+    public function getConditions(\Doctrine\Common\Collections\Criteria $criteria = null);
 
     /**
      * @param string $prefix

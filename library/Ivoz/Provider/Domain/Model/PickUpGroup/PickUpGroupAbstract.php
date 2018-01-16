@@ -36,6 +36,16 @@ abstract class PickUpGroupAbstract
         $this->setName($name);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "PickUpGroup",
+            $this->getId()
+        );
+    }
+
     /**
      * @param string $fieldName
      * @return mixed

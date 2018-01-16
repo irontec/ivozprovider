@@ -130,6 +130,16 @@ abstract class IvrAbstract
         $this->setAllowExtensions($allowExtensions);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "Ivr",
+            $this->getId()
+        );
+    }
+
     /**
      * @param string $fieldName
      * @return mixed

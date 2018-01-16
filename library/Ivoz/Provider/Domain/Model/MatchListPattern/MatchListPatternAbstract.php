@@ -57,6 +57,16 @@ abstract class MatchListPatternAbstract
         $this->setType($type);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "MatchListPattern",
+            $this->getId()
+        );
+    }
+
     /**
      * @param string $fieldName
      * @return mixed

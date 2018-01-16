@@ -15,9 +15,18 @@ interface HuntGroupInterface extends LoggableEntityInterface
 
     /**
      * Get this Hungroup related users
-     * @return User[]
+     * @return UserInterface[]
      */
     public function getHuntGroupUsersArray();
+
+    /**
+     * Get the timeout numberValue in E.164 format when routing to 'number'
+     *
+     * @return string
+     */
+    public function getNoAnswerNumberValueE164();
+
+    public function __toString();
 
     /**
      * Set name

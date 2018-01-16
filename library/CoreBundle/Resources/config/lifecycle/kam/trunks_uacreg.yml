@@ -6,21 +6,21 @@ services:
   ##################################
   ## Service collection
   ##################################
-  Ivoz\Kam\Domain\Service\TrunksUacreg\TrunksUacregLifecycleServiceCollection:
+  Ivoz\Kam\Domain\Service\TrunksUacReg\TrunksUacRegLifecycleServiceCollection:
     public: true
 
   kam.lifecycle.trunks_uacreg.service_collection:
-    '@Ivoz\Kam\Domain\Service\TrunksUacreg\TrunksUacregLifecycleServiceCollection'
+    '@Ivoz\Kam\Domain\Service\TrunksUacReg\TrunksUacRegLifecycleServiceCollection'
 
   ##################################
   ## post_*
   ##################################
-  Ivoz\Kam\Infrastructure\Domain\Service\TrunksUacreg\SendTrunksUacregReloadRequest:
+  Ivoz\Kam\Infrastructure\Domain\Service\TrunksUacReg\SendTrunksUacRegReloadRequest:
     tags:
       ## post_persist
       - { name: kam.lifecycle.trunks_uacreg.post_persist, priority: 10 }
       ## post_remove
       - { name: kam.lifecycle.trunks_uacreg.post_remove, priority: 10 }
     arguments:
-      $trunksUacregReload:
-        '@XmlRpc\XmlRpcTrunksRequest::UacregReload'
+      $trunksUacRegReload:
+        '@XmlRpc\XmlRpcTrunksRequest::UacRegReload'

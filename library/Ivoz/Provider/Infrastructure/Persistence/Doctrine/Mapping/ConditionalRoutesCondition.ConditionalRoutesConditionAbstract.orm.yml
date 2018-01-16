@@ -65,7 +65,7 @@ Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition
       cascade: {  }
       fetch: LAZY
       mappedBy: null
-      inversedBy: null
+      inversedBy: conditions
       joinColumns:
         conditionalRouteId:
           referencedColumnName: id

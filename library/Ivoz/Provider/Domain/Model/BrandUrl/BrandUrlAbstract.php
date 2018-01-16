@@ -64,6 +64,16 @@ abstract class BrandUrlAbstract
         $this->setLogo($logo);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "BrandUrl",
+            $this->getId()
+        );
+    }
+
     /**
      * @param string $fieldName
      * @return mixed

@@ -36,6 +36,16 @@ abstract class ExternalCallFilterRelCalendarAbstract
 
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "ExternalCallFilterRelCalendar",
+            $this->getId()
+        );
+    }
+
     /**
      * @param string $fieldName
      * @return mixed

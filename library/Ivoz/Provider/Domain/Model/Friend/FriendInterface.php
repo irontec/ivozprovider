@@ -14,6 +14,12 @@ interface FriendInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * Return string representation of this entity
+     * @return string
+     */
+    public function __toString();
+
+    /**
      * {@inheritDoc}
      */
     public function setName($name);
@@ -71,6 +77,8 @@ interface FriendInterface extends LoggableEntityInterface
     /**
      * Get Friend outgoingDdi
      * If no Ddi is assigned, retrieve company's default Ddi
+     *
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface
      */
     public function getOutgoingDdi();
 

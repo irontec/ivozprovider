@@ -21,17 +21,17 @@ trait ConditionalRoutesConditionTrait
     /**
      * @var Collection
      */
-    protected $matchlists;
+    protected $relMatchlists;
 
     /**
      * @var Collection
      */
-    protected $schedules;
+    protected $relSchedules;
 
     /**
      * @var Collection
      */
-    protected $calendars;
+    protected $relCalendars;
 
 
     /**
@@ -40,9 +40,9 @@ trait ConditionalRoutesConditionTrait
     protected function __construct()
     {
         parent::__construct(...func_get_args());
-        $this->matchlists = new ArrayCollection();
-        $this->schedules = new ArrayCollection();
-        $this->calendars = new ArrayCollection();
+        $this->relMatchlists = new ArrayCollection();
+        $this->relSchedules = new ArrayCollection();
+        $this->relCalendars = new ArrayCollection();
     }
 
     /**
@@ -64,16 +64,16 @@ trait ConditionalRoutesConditionTrait
          * @var $dto ConditionalRoutesConditionDTO
          */
         $self = parent::fromDTO($dto);
-        if ($dto->getMatchlists()) {
-            $self->replaceMatchlists($dto->getMatchlists());
+        if ($dto->getRelMatchlists()) {
+            $self->replaceRelMatchlists($dto->getRelMatchlists());
         }
 
-        if ($dto->getSchedules()) {
-            $self->replaceSchedules($dto->getSchedules());
+        if ($dto->getRelSchedules()) {
+            $self->replaceRelSchedules($dto->getRelSchedules());
         }
 
-        if ($dto->getCalendars()) {
-            $self->replaceCalendars($dto->getCalendars());
+        if ($dto->getRelCalendars()) {
+            $self->replaceRelCalendars($dto->getRelCalendars());
         }
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -93,14 +93,14 @@ trait ConditionalRoutesConditionTrait
          * @var $dto ConditionalRoutesConditionDTO
          */
         parent::updateFromDTO($dto);
-        if ($dto->getMatchlists()) {
-            $this->replaceMatchlists($dto->getMatchlists());
+        if ($dto->getRelMatchlists()) {
+            $this->replaceRelMatchlists($dto->getRelMatchlists());
         }
-        if ($dto->getSchedules()) {
-            $this->replaceSchedules($dto->getSchedules());
+        if ($dto->getRelSchedules()) {
+            $this->replaceRelSchedules($dto->getRelSchedules());
         }
-        if ($dto->getCalendars()) {
-            $this->replaceCalendars($dto->getCalendars());
+        if ($dto->getRelCalendars()) {
+            $this->replaceRelCalendars($dto->getRelCalendars());
         }
         return $this;
     }
@@ -127,219 +127,219 @@ trait ConditionalRoutesConditionTrait
 
 
     /**
-     * Add matchlist
+     * Add relMatchlist
      *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistInterface $matchlist
+     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistInterface $relMatchlist
      *
      * @return ConditionalRoutesConditionTrait
      */
-    public function addMatchlist(\Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistInterface $matchlist)
+    public function addRelMatchlist(\Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistInterface $relMatchlist)
     {
-        $this->matchlists->add($matchlist);
+        $this->relMatchlists->add($relMatchlist);
 
         return $this;
     }
 
     /**
-     * Remove matchlist
+     * Remove relMatchlist
      *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistInterface $matchlist
+     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistInterface $relMatchlist
      */
-    public function removeMatchlist(\Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistInterface $matchlist)
+    public function removeRelMatchlist(\Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistInterface $relMatchlist)
     {
-        $this->matchlists->removeElement($matchlist);
+        $this->relMatchlists->removeElement($relMatchlist);
     }
 
     /**
-     * Replace matchlists
+     * Replace relMatchlists
      *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistInterface[] $matchlists
+     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistInterface[] $relMatchlists
      * @return self
      */
-    public function replaceMatchlists(Collection $matchlists)
+    public function replaceRelMatchlists(Collection $relMatchlists)
     {
         $updatedEntities = [];
         $fallBackId = -1;
-        foreach ($matchlists as $entity) {
+        foreach ($relMatchlists as $entity) {
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setCondition($this);
         }
         $updatedEntityKeys = array_keys($updatedEntities);
 
-        foreach ($this->matchlists as $key => $entity) {
+        foreach ($this->relMatchlists as $key => $entity) {
             $identity = $entity->getId();
             if (in_array($identity, $updatedEntityKeys)) {
-                $this->matchlists->set($key, $updatedEntities[$identity]);
+                $this->relMatchlists->set($key, $updatedEntities[$identity]);
             } else {
-                $this->matchlists->remove($key);
+                $this->relMatchlists->remove($key);
             }
             unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
-            $this->addMatchlist($entity);
+            $this->addRelMatchlist($entity);
         }
 
         return $this;
     }
 
     /**
-     * Get matchlists
+     * Get relMatchlists
      *
      * @return array
      */
-    public function getMatchlists(Criteria $criteria = null)
+    public function getRelMatchlists(Criteria $criteria = null)
     {
         if (!is_null($criteria)) {
-            return $this->matchlists->matching($criteria)->toArray();
+            return $this->relMatchlists->matching($criteria)->toArray();
         }
 
-        return $this->matchlists->toArray();
+        return $this->relMatchlists->toArray();
     }
 
     /**
-     * Add schedule
+     * Add relSchedule
      *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleInterface $schedule
+     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleInterface $relSchedule
      *
      * @return ConditionalRoutesConditionTrait
      */
-    public function addSchedule(\Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleInterface $schedule)
+    public function addRelSchedule(\Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleInterface $relSchedule)
     {
-        $this->schedules->add($schedule);
+        $this->relSchedules->add($relSchedule);
 
         return $this;
     }
 
     /**
-     * Remove schedule
+     * Remove relSchedule
      *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleInterface $schedule
+     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleInterface $relSchedule
      */
-    public function removeSchedule(\Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleInterface $schedule)
+    public function removeRelSchedule(\Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleInterface $relSchedule)
     {
-        $this->schedules->removeElement($schedule);
+        $this->relSchedules->removeElement($relSchedule);
     }
 
     /**
-     * Replace schedules
+     * Replace relSchedules
      *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleInterface[] $schedules
+     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleInterface[] $relSchedules
      * @return self
      */
-    public function replaceSchedules(Collection $schedules)
+    public function replaceRelSchedules(Collection $relSchedules)
     {
         $updatedEntities = [];
         $fallBackId = -1;
-        foreach ($schedules as $entity) {
+        foreach ($relSchedules as $entity) {
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setCondition($this);
         }
         $updatedEntityKeys = array_keys($updatedEntities);
 
-        foreach ($this->schedules as $key => $entity) {
+        foreach ($this->relSchedules as $key => $entity) {
             $identity = $entity->getId();
             if (in_array($identity, $updatedEntityKeys)) {
-                $this->schedules->set($key, $updatedEntities[$identity]);
+                $this->relSchedules->set($key, $updatedEntities[$identity]);
             } else {
-                $this->schedules->remove($key);
+                $this->relSchedules->remove($key);
             }
             unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
-            $this->addSchedule($entity);
+            $this->addRelSchedule($entity);
         }
 
         return $this;
     }
 
     /**
-     * Get schedules
+     * Get relSchedules
      *
      * @return array
      */
-    public function getSchedules(Criteria $criteria = null)
+    public function getRelSchedules(Criteria $criteria = null)
     {
         if (!is_null($criteria)) {
-            return $this->schedules->matching($criteria)->toArray();
+            return $this->relSchedules->matching($criteria)->toArray();
         }
 
-        return $this->schedules->toArray();
+        return $this->relSchedules->toArray();
     }
 
     /**
-     * Add calendar
+     * Add relCalendar
      *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarInterface $calendar
+     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarInterface $relCalendar
      *
      * @return ConditionalRoutesConditionTrait
      */
-    public function addCalendar(\Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarInterface $calendar)
+    public function addRelCalendar(\Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarInterface $relCalendar)
     {
-        $this->calendars->add($calendar);
+        $this->relCalendars->add($relCalendar);
 
         return $this;
     }
 
     /**
-     * Remove calendar
+     * Remove relCalendar
      *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarInterface $calendar
+     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarInterface $relCalendar
      */
-    public function removeCalendar(\Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarInterface $calendar)
+    public function removeRelCalendar(\Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarInterface $relCalendar)
     {
-        $this->calendars->removeElement($calendar);
+        $this->relCalendars->removeElement($relCalendar);
     }
 
     /**
-     * Replace calendars
+     * Replace relCalendars
      *
-     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarInterface[] $calendars
+     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarInterface[] $relCalendars
      * @return self
      */
-    public function replaceCalendars(Collection $calendars)
+    public function replaceRelCalendars(Collection $relCalendars)
     {
         $updatedEntities = [];
         $fallBackId = -1;
-        foreach ($calendars as $entity) {
+        foreach ($relCalendars as $entity) {
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setCondition($this);
         }
         $updatedEntityKeys = array_keys($updatedEntities);
 
-        foreach ($this->calendars as $key => $entity) {
+        foreach ($this->relCalendars as $key => $entity) {
             $identity = $entity->getId();
             if (in_array($identity, $updatedEntityKeys)) {
-                $this->calendars->set($key, $updatedEntities[$identity]);
+                $this->relCalendars->set($key, $updatedEntities[$identity]);
             } else {
-                $this->calendars->remove($key);
+                $this->relCalendars->remove($key);
             }
             unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
-            $this->addCalendar($entity);
+            $this->addRelCalendar($entity);
         }
 
         return $this;
     }
 
     /**
-     * Get calendars
+     * Get relCalendars
      *
      * @return array
      */
-    public function getCalendars(Criteria $criteria = null)
+    public function getRelCalendars(Criteria $criteria = null)
     {
         if (!is_null($criteria)) {
-            return $this->calendars->matching($criteria)->toArray();
+            return $this->relCalendars->matching($criteria)->toArray();
         }
 
-        return $this->calendars->toArray();
+        return $this->relCalendars->toArray();
     }
 
 

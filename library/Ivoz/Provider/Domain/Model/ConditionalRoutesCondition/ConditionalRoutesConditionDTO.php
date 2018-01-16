@@ -139,17 +139,17 @@ class ConditionalRoutesConditionDTO implements DataTransferObjectInterface
     /**
      * @var array|null
      */
-    private $matchlists = null;
+    private $relMatchlists = null;
 
     /**
      * @var array|null
      */
-    private $schedules = null;
+    private $relSchedules = null;
 
     /**
      * @var array|null
      */
-    private $calendars = null;
+    private $relCalendars = null;
 
     /**
      * @return array
@@ -172,9 +172,9 @@ class ConditionalRoutesConditionDTO implements DataTransferObjectInterface
             'conferenceRoomId' => $this->getConferenceRoomId(),
             'extensionId' => $this->getExtensionId(),
             'numberCountryId' => $this->getNumberCountryId(),
-            'matchlists' => $this->getMatchlists(),
-            'schedules' => $this->getSchedules(),
-            'calendars' => $this->getCalendars()
+            'relMatchlists' => $this->getRelMatchlists(),
+            'relSchedules' => $this->getRelSchedules(),
+            'relCalendars' => $this->getRelCalendars()
         ];
     }
 
@@ -193,33 +193,33 @@ class ConditionalRoutesConditionDTO implements DataTransferObjectInterface
         $this->conferenceRoom = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\ConferenceRoom\\ConferenceRoom', $this->getConferenceRoomId());
         $this->extension = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Extension\\Extension', $this->getExtensionId());
         $this->numberCountry = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Country\\Country', $this->getNumberCountryId());
-        if (!is_null($this->matchlists)) {
-            $items = $this->getMatchlists();
-            $this->matchlists = [];
+        if (!is_null($this->relMatchlists)) {
+            $items = $this->getRelMatchlists();
+            $this->relMatchlists = [];
             foreach ($items as $item) {
-                $this->matchlists[] = $transformer->transform(
+                $this->relMatchlists[] = $transformer->transform(
                     'Ivoz\\Provider\\Domain\\Model\\ConditionalRoutesConditionsRelMatchlist\\ConditionalRoutesConditionsRelMatchlist',
                     $item->getId() ?? $item
                 );
             }
         }
 
-        if (!is_null($this->schedules)) {
-            $items = $this->getSchedules();
-            $this->schedules = [];
+        if (!is_null($this->relSchedules)) {
+            $items = $this->getRelSchedules();
+            $this->relSchedules = [];
             foreach ($items as $item) {
-                $this->schedules[] = $transformer->transform(
+                $this->relSchedules[] = $transformer->transform(
                     'Ivoz\\Provider\\Domain\\Model\\ConditionalRoutesConditionsRelSchedule\\ConditionalRoutesConditionsRelSchedule',
                     $item->getId() ?? $item
                 );
             }
         }
 
-        if (!is_null($this->calendars)) {
-            $items = $this->getCalendars();
-            $this->calendars = [];
+        if (!is_null($this->relCalendars)) {
+            $items = $this->getRelCalendars();
+            $this->relCalendars = [];
             foreach ($items as $item) {
-                $this->calendars[] = $transformer->transform(
+                $this->relCalendars[] = $transformer->transform(
                     'Ivoz\\Provider\\Domain\\Model\\ConditionalRoutesConditionsRelCalendar\\ConditionalRoutesConditionsRelCalendar',
                     $item->getId() ?? $item
                 );
@@ -233,17 +233,17 @@ class ConditionalRoutesConditionDTO implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-        $this->matchlists = $transformer->transform(
+        $this->relMatchlists = $transformer->transform(
             'Ivoz\\Provider\\Domain\\Model\\ConditionalRoutesConditionsRelMatchlist\\ConditionalRoutesConditionsRelMatchlist',
-            $this->matchlists
+            $this->relMatchlists
         );
-        $this->schedules = $transformer->transform(
+        $this->relSchedules = $transformer->transform(
             'Ivoz\\Provider\\Domain\\Model\\ConditionalRoutesConditionsRelSchedule\\ConditionalRoutesConditionsRelSchedule',
-            $this->schedules
+            $this->relSchedules
         );
-        $this->calendars = $transformer->transform(
+        $this->relCalendars = $transformer->transform(
             'Ivoz\\Provider\\Domain\\Model\\ConditionalRoutesConditionsRelCalendar\\ConditionalRoutesConditionsRelCalendar',
-            $this->calendars
+            $this->relCalendars
         );
     }
 
@@ -628,13 +628,13 @@ class ConditionalRoutesConditionDTO implements DataTransferObjectInterface
     }
 
     /**
-     * @param array $matchlists
+     * @param array $relMatchlists
      *
      * @return ConditionalRoutesConditionDTO
      */
-    public function setMatchlists($matchlists)
+    public function setRelMatchlists($relMatchlists)
     {
-        $this->matchlists = $matchlists;
+        $this->relMatchlists = $relMatchlists;
 
         return $this;
     }
@@ -642,19 +642,19 @@ class ConditionalRoutesConditionDTO implements DataTransferObjectInterface
     /**
      * @return array
      */
-    public function getMatchlists()
+    public function getRelMatchlists()
     {
-        return $this->matchlists;
+        return $this->relMatchlists;
     }
 
     /**
-     * @param array $schedules
+     * @param array $relSchedules
      *
      * @return ConditionalRoutesConditionDTO
      */
-    public function setSchedules($schedules)
+    public function setRelSchedules($relSchedules)
     {
-        $this->schedules = $schedules;
+        $this->relSchedules = $relSchedules;
 
         return $this;
     }
@@ -662,19 +662,19 @@ class ConditionalRoutesConditionDTO implements DataTransferObjectInterface
     /**
      * @return array
      */
-    public function getSchedules()
+    public function getRelSchedules()
     {
-        return $this->schedules;
+        return $this->relSchedules;
     }
 
     /**
-     * @param array $calendars
+     * @param array $relCalendars
      *
      * @return ConditionalRoutesConditionDTO
      */
-    public function setCalendars($calendars)
+    public function setRelCalendars($relCalendars)
     {
-        $this->calendars = $calendars;
+        $this->relCalendars = $relCalendars;
 
         return $this;
     }
@@ -682,9 +682,9 @@ class ConditionalRoutesConditionDTO implements DataTransferObjectInterface
     /**
      * @return array
      */
-    public function getCalendars()
+    public function getRelCalendars()
     {
-        return $this->calendars;
+        return $this->relCalendars;
     }
 }
 

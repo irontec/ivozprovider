@@ -58,6 +58,16 @@ abstract class PricingPlansRelCompanyAbstract
         $this->setMetric($metric);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "PricingPlansRelCompany",
+            $this->getId()
+        );
+    }
+
     /**
      * @param string $fieldName
      * @return mixed

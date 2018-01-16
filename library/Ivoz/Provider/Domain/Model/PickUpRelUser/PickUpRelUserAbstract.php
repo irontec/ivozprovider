@@ -36,6 +36,16 @@ abstract class PickUpRelUserAbstract
 
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "PickUpRelUser",
+            $this->getId()
+        );
+    }
+
     /**
      * @param string $fieldName
      * @return mixed

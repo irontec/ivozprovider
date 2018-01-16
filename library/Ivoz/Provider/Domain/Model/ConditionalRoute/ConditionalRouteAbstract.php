@@ -97,6 +97,16 @@ abstract class ConditionalRouteAbstract
         $this->setName($name);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "ConditionalRoute",
+            $this->getId()
+        );
+    }
+
     /**
      * @param string $fieldName
      * @return mixed

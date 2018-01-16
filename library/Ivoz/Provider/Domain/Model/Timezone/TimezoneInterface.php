@@ -12,6 +12,8 @@ interface TimezoneInterface extends LoggableEntityInterface
      */
     public function getChangeSet();
 
+    public function __toString();
+
     /**
      * Set tz
      *

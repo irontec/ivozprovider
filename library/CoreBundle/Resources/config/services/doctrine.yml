@@ -4,19 +4,8 @@ services:
     autoconfigure: true
     public: false
 
-  Ivoz\Core\Infrastructure\Application\DoctrineForeignKeyTransformer:
-    arguments:
-      - "@doctrine.orm.entity_manager"
-
   core.doctrine_foreign_key_transformer:
     '@Ivoz\Core\Infrastructure\Application\DoctrineForeignKeyTransformer'
 
-  Ivoz\Core\Infrastructure\Application\DoctrineCollectionTransformer:
-    arguments:
-      - "@doctrine.orm.entity_manager"
-
   core.doctrine_collection_transformer:
     '@Ivoz\Core\Infrastructure\Application\DoctrineCollectionTransformer'
-
-  Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister:
-    public: true

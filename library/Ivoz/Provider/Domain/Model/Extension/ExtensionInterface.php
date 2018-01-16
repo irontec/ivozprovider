@@ -14,6 +14,12 @@ interface ExtensionInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * Return string representation of this entity
+     * @return string
+     */
+    public function __toString();
+
+    /**
      * {@inheritDoc}
      */
     public function setNumber($number);

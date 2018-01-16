@@ -29,6 +29,18 @@ class ConferenceRoom extends ConferenceRoomAbstract implements ConferenceRoomInt
     }
 
     /**
+     * Return string representation of this entity
+     * @return string
+     */
+    public function __toString()
+    {
+        return sprintf("%s [%s]",
+            $this->getName(),
+            parent::__toString()
+        );
+    }
+
+    /**
      * @return void
      * @throws \Exception
      */

@@ -8,6 +8,8 @@ interface IvrExcludedExtensionInterface extends LoggableEntityInterface
 {
     public function getChangeSet();
 
+    public function __toString();
+
     /**
      * Set ivr
      *

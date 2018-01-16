@@ -7,9 +7,12 @@ parameters:
     database_name: ivozprovider
     database_user: root
     database_password: ~
+    mailer_transport: smtp
     mailer_host: data.ivozprovider.local
     mailer_user: null
     mailer_password: ~
+    mailer_default_fromname: IvozProvider Notifications
+    mailer_default_fromaddress: no-replay@ivozprovider
     secret: ~
     ari_user: ivozariuser
     ari_password: ~

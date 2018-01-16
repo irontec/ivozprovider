@@ -47,6 +47,16 @@ abstract class TimezoneAbstract
         $this->setLabel($label);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "Timezone",
+            $this->getId()
+        );
+    }
+
     /**
      * @param string $fieldName
      * @return mixed

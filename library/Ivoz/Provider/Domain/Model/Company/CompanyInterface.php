@@ -24,11 +24,15 @@ interface CompanyInterface extends LoggableEntityInterface
     public function setOnDemandRecordCode($onDemandRecordCode = null);
 
     /**
-     * @param interger $exten
+     * @param string $exten
      * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface
      */
     public function getExtension($exten);
 
+    /**
+     * @param $ddieE164
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface|null
+     */
     public function getDdi($ddieE164);
 
     public function getFriend($exten);
@@ -85,6 +89,8 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getOnDemandRecordDTMFs();
 
     public function getFeatures();
+
+    public function __toString();
 
     /**
      * Set type

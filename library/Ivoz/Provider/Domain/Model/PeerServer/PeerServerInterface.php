@@ -25,6 +25,8 @@ interface PeerServerInterface extends LoggableEntityInterface
 
     public function getName();
 
+    public function __toString();
+
     /**
      * Get ip
      *

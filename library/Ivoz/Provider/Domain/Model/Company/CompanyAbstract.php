@@ -184,6 +184,16 @@ abstract class CompanyAbstract
         $this->setCountryName($countryName);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "Company",
+            $this->getId()
+        );
+    }
+
     /**
      * @param string $fieldName
      * @return mixed

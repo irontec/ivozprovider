@@ -53,6 +53,8 @@ interface BrandInterface extends LoggableEntityInterface
      */
     public function hasFeature($featureId);
 
+    public function __toString();
+
     /**
      * Set name
      *

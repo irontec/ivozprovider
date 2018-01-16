@@ -41,6 +41,16 @@ abstract class CompanyServiceAbstract
         $this->setCode($code);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "CompanyService",
+            $this->getId()
+        );
+    }
+
     /**
      * @param string $fieldName
      * @return mixed

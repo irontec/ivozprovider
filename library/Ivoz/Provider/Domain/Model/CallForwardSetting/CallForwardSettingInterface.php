@@ -26,6 +26,8 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
      */
     public function getNumberValueE164();
 
+    public function __toString();
+
     /**
      * Set callTypeFilter
      *

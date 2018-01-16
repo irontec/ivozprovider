@@ -71,6 +71,16 @@ abstract class TransformationRuleSetAbstract
         $this->setName($name);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "TransformationRuleSet",
+            $this->getId()
+        );
+    }
+
     /**
      * @param string $fieldName
      * @return mixed

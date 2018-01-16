@@ -18,6 +18,8 @@ interface OutgoingDdiRulesPatternInterface extends LoggableEntityInterface
      */
     public function getForcedDdi();
 
+    public function __toString();
+
     /**
      * Set action
      *

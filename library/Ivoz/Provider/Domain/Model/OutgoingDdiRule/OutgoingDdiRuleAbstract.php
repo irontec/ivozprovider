@@ -48,6 +48,16 @@ abstract class OutgoingDdiRuleAbstract
         $this->setDefaultAction($defaultAction);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "OutgoingDdiRule",
+            $this->getId()
+        );
+    }
+
     /**
      * @param string $fieldName
      * @return mixed

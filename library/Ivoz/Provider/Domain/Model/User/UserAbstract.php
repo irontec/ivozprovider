@@ -179,6 +179,16 @@ abstract class UserAbstract
         $this->setGsQRCode($gsQRCode);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "User",
+            $this->getId()
+        );
+    }
+
     /**
      * @param string $fieldName
      * @return mixed

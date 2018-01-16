@@ -84,6 +84,16 @@ abstract class BrandAbstract
         $this->setInvoice($invoice);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "Brand",
+            $this->getId()
+        );
+    }
+
     /**
      * @param string $fieldName
      * @return mixed

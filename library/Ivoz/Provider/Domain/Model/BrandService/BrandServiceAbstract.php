@@ -41,6 +41,16 @@ abstract class BrandServiceAbstract
         $this->setCode($code);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "BrandService",
+            $this->getId()
+        );
+    }
+
     /**
      * @param string $fieldName
      * @return mixed

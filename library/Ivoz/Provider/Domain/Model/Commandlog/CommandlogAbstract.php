@@ -63,6 +63,16 @@ abstract class CommandlogAbstract
         $this->setMicrotime($microtime);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "Commandlog",
+            $this->getId()
+        );
+    }
+
     /**
      * @param string $fieldName
      * @return mixed

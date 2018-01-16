@@ -73,6 +73,16 @@ abstract class FaxesInOutAbstract
         $this->setFile($file);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "FaxesInOut",
+            $this->getId()
+        );
+    }
+
     /**
      * @param string $fieldName
      * @return mixed

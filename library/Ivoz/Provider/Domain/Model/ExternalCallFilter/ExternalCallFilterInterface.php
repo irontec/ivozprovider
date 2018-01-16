@@ -14,6 +14,12 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * Return string representation of this entity
+     * @return string
+     */
+    public function __toString();
+
+    /**
      * Check if the given number matches External Filter black list
      * @param string $origin in E164 form
      * @return true if number matches, false otherwise

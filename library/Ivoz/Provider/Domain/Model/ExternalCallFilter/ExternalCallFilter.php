@@ -37,6 +37,18 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
         return $this->id;
     }
 
+    /**
+     * Return string representation of this entity
+     * @return string
+     */
+    public function __toString()
+    {
+        return sprintf("%s [ddi%d]",
+            $this->getName(),
+            $this->getId()
+        );
+    }
+
     protected function sanitizeValues()
     {
         $this->sanitizeHolidayTargetType();

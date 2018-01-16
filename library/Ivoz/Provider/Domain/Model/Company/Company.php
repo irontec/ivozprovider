@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Domain\Model\Company;
 
 use Assert\Assertion;
 use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompany;
 
 /**
@@ -90,7 +91,7 @@ class Company extends CompanyAbstract implements CompanyInterface
     }
 
     /**
-     * @param interger $exten
+     * @param string $exten
      * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface
      */
     public function getExtension($exten)
@@ -107,6 +108,10 @@ class Company extends CompanyAbstract implements CompanyInterface
         return array_shift($extensions);
     }
 
+    /**
+     * @param $ddieE164
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface|null
+     */
     public function getDdi($ddieE164)
     {
         /**

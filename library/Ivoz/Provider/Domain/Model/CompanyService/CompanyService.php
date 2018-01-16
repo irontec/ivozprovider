@@ -31,6 +31,18 @@ class CompanyService extends CompanyServiceAbstract implements CompanyServiceInt
     }
 
     /**
+     * Return string representation of this entity
+     * @return string
+     */
+    public function __toString()
+    {
+        return sprintf("%s [%s]",
+            $this->getService()->getName()->getEn(),
+            parent::__toString()
+        );
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function setCode($code)

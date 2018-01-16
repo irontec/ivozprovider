@@ -38,7 +38,7 @@ services:
       $rpcMethod:
         'permissions.trustedReload'
 
-  XmlRpc\XmlRpcTrunksRequest::UacregReload:
+  XmlRpc\XmlRpcTrunksRequest::UacRegReload:
     class: Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\XmlRpcTrunksRequest
     arguments:
       $xmlrpc:

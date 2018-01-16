@@ -51,6 +51,16 @@ abstract class RoutingPatternAbstract
         $this->setDescription($description);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "RoutingPattern",
+            $this->getId()
+        );
+    }
+
     /**
      * @param string $fieldName
      * @return mixed

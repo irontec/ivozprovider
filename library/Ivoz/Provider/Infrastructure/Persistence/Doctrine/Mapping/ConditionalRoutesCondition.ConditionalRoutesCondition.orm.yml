@@ -12,17 +12,17 @@ Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition
       generator:
         strategy: IDENTITY
   oneToMany:
-    matchlists:
+    relMatchlists:
       targetEntity: Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistInterface
       mappedBy: condition
       cascade: ['persist']
       orphanRemoval: true
-    schedules:
+    relSchedules:
       targetEntity: Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleInterface
       mappedBy: condition
       cascade: ['persist']
       orphanRemoval: true
-    calendars:
+    relCalendars:
       targetEntity: Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarInterface
       mappedBy: condition
       cascade: ['persist']

@@ -7,6 +7,8 @@ use Doctrine\Common\Collections\Collection;
 
 interface RoutingPatternInterface extends EntityInterface
 {
+    public function __toString();
+
     /**
      * Set regExp
      *

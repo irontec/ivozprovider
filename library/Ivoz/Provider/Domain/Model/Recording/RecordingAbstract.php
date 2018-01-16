@@ -79,6 +79,16 @@ abstract class RecordingAbstract
         $this->setRecordedFile($recordedFile);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "Recording",
+            $this->getId()
+        );
+    }
+
     /**
      * @param string $fieldName
      * @return mixed

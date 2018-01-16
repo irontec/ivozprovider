@@ -36,6 +36,16 @@ abstract class ExternalCallFilterBlackListAbstract
 
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "ExternalCallFilterBlackList",
+            $this->getId()
+        );
+    }
+
     /**
      * @param string $fieldName
      * @return mixed

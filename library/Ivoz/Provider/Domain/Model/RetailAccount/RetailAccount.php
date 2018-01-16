@@ -171,7 +171,7 @@ class RetailAccount extends RetailAccountAbstract implements RetailAccountInterf
     /**
      * Get Retail Account outgoingDdi
      * If no Ddi is assigned, retrieve company's default Ddi
-     * @return DdiInterface or NULL
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface or NULL
      */
     public function getOutgoingDdi()
     {

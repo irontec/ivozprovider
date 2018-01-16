@@ -36,6 +36,16 @@ abstract class ConditionalRoutesConditionsRelScheduleAbstract
 
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "ConditionalRoutesConditionsRelSchedule",
+            $this->getId()
+        );
+    }
+
     /**
      * @param string $fieldName
      * @return mixed

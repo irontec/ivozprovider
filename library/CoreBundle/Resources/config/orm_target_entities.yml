@@ -19,8 +19,6 @@ doctrine:
         Ivoz\Provider\Domain\Model\BrandService\BrandService
       Ivoz\Provider\Domain\Model\BrandUrl\BrandUrlInterface:
         Ivoz\Provider\Domain\Model\BrandUrl\BrandUrl
-      Ivoz\Provider\Domain\Model\BrandUrl\BrandUrlInterface:
-        Ivoz\Provider\Domain\Model\BrandUrl\BrandUrl
       Ivoz\Provider\Domain\Model\Calendar\CalendarInterface:
         Ivoz\Provider\Domain\Model\Calendar\Calendar
       Ivoz\Provider\Domain\Model\CallAcl\CallAclInterface:

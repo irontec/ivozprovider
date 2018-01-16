@@ -19,6 +19,8 @@ interface CountryInterface extends LoggableEntityInterface
      */
     public function hasAreaCode();
 
+    public function __toString();
+
     /**
      * Set code
      *

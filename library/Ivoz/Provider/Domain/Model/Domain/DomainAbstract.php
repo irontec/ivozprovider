@@ -42,6 +42,16 @@ abstract class DomainAbstract
         $this->setPointsTo($pointsTo);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "Domain",
+            $this->getId()
+        );
+    }
+
     /**
      * @param string $fieldName
      * @return mixed

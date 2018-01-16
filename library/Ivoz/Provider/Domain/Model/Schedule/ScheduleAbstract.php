@@ -83,6 +83,16 @@ abstract class ScheduleAbstract
         $this->setTimeout($timeout);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "Schedule",
+            $this->getId()
+        );
+    }
+
     /**
      * @param string $fieldName
      * @return mixed

@@ -46,6 +46,16 @@ abstract class FixedCostsRelInvoiceAbstract
 
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "FixedCostsRelInvoice",
+            $this->getId()
+        );
+    }
+
     /**
      * @param string $fieldName
      * @return mixed

@@ -93,6 +93,16 @@ abstract class TerminalAbstract
         $this->setPassword($password);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "Terminal",
+            $this->getId()
+        );
+    }
+
     /**
      * @param string $fieldName
      * @return mixed

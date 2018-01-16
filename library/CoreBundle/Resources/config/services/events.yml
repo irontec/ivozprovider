@@ -5,6 +5,7 @@ services:
     public: false
 
   Ivoz\Core\Application\RequestId:
+    public: true
     arguments: ~
 
   Ivoz\Core\Application\Service\CommandEventSubscriber:

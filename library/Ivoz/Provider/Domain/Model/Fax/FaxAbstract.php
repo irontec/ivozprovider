@@ -52,6 +52,16 @@ abstract class FaxAbstract
         $this->setSendByEmail($sendByEmail);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "Fax",
+            $this->getId()
+        );
+    }
+
     /**
      * @param string $fieldName
      * @return mixed

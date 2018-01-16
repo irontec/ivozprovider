@@ -12,6 +12,8 @@ interface ConditionalRoutesConditionsRelCalendarInterface extends LoggableEntity
      */
     public function getChangeSet();
 
+    public function __toString();
+
     /**
      * Set condition
      *

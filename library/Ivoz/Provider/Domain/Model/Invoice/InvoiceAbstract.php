@@ -83,6 +83,16 @@ abstract class InvoiceAbstract
         $this->setPdf($pdf);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "Invoice",
+            $this->getId()
+        );
+    }
+
     /**
      * @param string $fieldName
      * @return mixed

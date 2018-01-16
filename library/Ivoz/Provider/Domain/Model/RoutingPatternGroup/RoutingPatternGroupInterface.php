@@ -18,6 +18,8 @@ interface RoutingPatternGroupInterface extends LoggableEntityInterface
      */
     public function getRoutingPatterns();
 
+    public function __toString();
+
     /**
      * Set name
      *

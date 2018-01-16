@@ -36,6 +36,16 @@ abstract class MediaRelaySetAbstract
         $this->setName($name);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "MediaRelaySet",
+            $this->getId()
+        );
+    }
+
     /**
      * @param string $fieldName
      * @return mixed

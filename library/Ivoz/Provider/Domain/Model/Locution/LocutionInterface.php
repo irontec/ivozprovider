@@ -17,6 +17,8 @@ interface LocutionInterface extends LoggableEntityInterface
      */
     public function getFileObjects();
 
+    public function __toString();
+
     /**
      * Set name
      *

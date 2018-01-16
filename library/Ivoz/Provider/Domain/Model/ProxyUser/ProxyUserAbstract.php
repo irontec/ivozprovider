@@ -36,6 +36,16 @@ abstract class ProxyUserAbstract
 
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "ProxyUser",
+            $this->getId()
+        );
+    }
+
     /**
      * @param string $fieldName
      * @return mixed

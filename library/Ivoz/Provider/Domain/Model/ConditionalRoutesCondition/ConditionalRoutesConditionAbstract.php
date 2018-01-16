@@ -97,6 +97,16 @@ abstract class ConditionalRoutesConditionAbstract
         $this->setPriority($priority);
     }
 
+    abstract public function getId();
+
+    public function __toString()
+    {
+        return sprintf("%s#%s",
+            "ConditionalRoutesCondition",
+            $this->getId()
+        );
+    }
+
     /**
      * @param string $fieldName
      * @return mixed
@@ -426,7 +436,7 @@ abstract class ConditionalRoutesConditionAbstract
      *
      * @return self
      */
-    public function setConditionalRoute(\Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface $conditionalRoute)
+    public function setConditionalRoute(\Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface $conditionalRoute = null)
     {
         $this->conditionalRoute = $conditionalRoute;
 

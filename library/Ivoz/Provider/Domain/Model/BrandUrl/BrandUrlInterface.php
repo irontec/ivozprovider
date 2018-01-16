@@ -22,6 +22,8 @@ interface BrandUrlInterface extends LoggableEntityInterface
      */
     public function setUrl($url);
 
+    public function __toString();
+
     /**
      * Get url
      *

@@ -33,6 +33,18 @@ class Extension extends ExtensionAbstract implements ExtensionInterface
     }
 
     /**
+     * Return string representation of this entity
+     * @return string
+     */
+    public function __toString()
+    {
+        return sprintf("%s [%s]",
+            $this->getNumber(),
+            parent::__toString()
+        );
+    }
+
+    /**
      * {@inheritDoc}
      */
     protected function sanitizeValues()

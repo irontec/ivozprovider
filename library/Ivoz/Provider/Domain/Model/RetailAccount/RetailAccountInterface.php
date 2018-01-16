@@ -61,7 +61,7 @@ interface RetailAccountInterface extends LoggableEntityInterface
     /**
      * Get Retail Account outgoingDdi
      * If no Ddi is assigned, retrieve company's default Ddi
-     * @return DdiInterface or NULL
+     * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface or NULL
      */
     public function getOutgoingDdi();
 
@@ -71,6 +71,8 @@ interface RetailAccountInterface extends LoggableEntityInterface
      * @return DdiInterface
      */
     public function getDdi($ddieE164);
+
+    public function __toString();
 
     /**
      * Get name

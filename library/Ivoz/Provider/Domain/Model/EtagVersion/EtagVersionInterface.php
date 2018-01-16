@@ -6,6 +6,8 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 
 interface EtagVersionInterface extends EntityInterface
 {
+    public function __toString();
+
     /**
      * Set table
      *
