@@ -2,7 +2,15 @@
 
 #DEBHELPER#
 
-# Enable php5 environment variables
-/bin/sed -i 's/variables_order = "GPCS"/variables_order = "EGPCS"/g' /etc/php5/cli/php.ini
+# Enable php environment variables
+/bin/sed -i 's/variables_order = "GPCS"/variables_order = "EGPCS"/g' /etc/php/7.0/cli/php.ini
+
+APPDIR=/opt/irontec/ivozprovider/microservices/recordings
+
+pushd ${APPDIR} || exit 1
+    # Create project cache
+    bin/console cache:clear --no-warmup -e prod -q -n
+popd
+
 
 :

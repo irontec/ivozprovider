@@ -39,12 +39,12 @@ function setup_portals()
 {
     # Setup portals mysql address
     db_get ivozprovider/mysql_password      || true
-    sed -i -r "s/(resources.db.params.password *= *\").*/\1$RET\"/" /opt/irontec/ivozprovider/portals/application/configs/application.ini
-    sed -i -r "s/(resources.db.params.password *= *\").*/\1$RET\"/" /opt/irontec/ivozprovider/kamailio/recordings/application/configs/application.ini
+    sed -i -r "s/(resources.db.params.password *= *\").*/\1$RET\"/" /opt/irontec/ivozprovider/web/admin/application/configs/application.ini
+    sed -i -r "s/(resources.db.params.password *= *\").*/\1$RET\"/" /opt/irontec/ivozprovider/microservices/recordings/application/configs/application.ini
 
     # Setup portals default language
     db_get ivozprovider/language            || true
-    sed -i -r "s/(lang*: *).*/\1$RET/" /opt/irontec/ivozprovider/portals/application/configs/klear/klear.yaml
+    sed -i -r "s/(lang*: *).*/\1$RET/" /opt/irontec/ivozprovider/web/admin/application/configs/klear/klear.yaml
 }
 
 function setup_proxies()
@@ -64,9 +64,6 @@ function setup_proxies()
     # Update DemoCompany domain to USERS_ADDRESS
     /usr/bin/mysql --user=root --password="$MYSQL_PASSWORD" ivozprovider -e "UPDATE Companies SET domain_users = '$USERS_ADDRESS' WHERE INET_ATON(domain_users) IS NOT NULL"
     /usr/bin/mysql --user=root --password="$MYSQL_PASSWORD" ivozprovider -e "UPDATE Domains SET domain = '$USERS_ADDRESS' WHERE INET_ATON(domain) IS NOT NULL"
-    /usr/bin/mysql --user=root --password="$MYSQL_PASSWORD" ivozprovider -e "UPDATE kam_users_domain_attrs SET did = '$USERS_ADDRESS' WHERE INET_ATON(did) IS NOT NULL"
-    /usr/bin/mysql --user=root --password="$MYSQL_PASSWORD" ivozprovider -e "UPDATE Terminals SET domain = '$USERS_ADDRESS' WHERE INET_ATON(domain) IS NOT NULL"
-    /usr/bin/mysql --user=root --password="$MYSQL_PASSWORD" ivozprovider -e "UPDATE ast_ps_aors SET contact = CONCAT(SUBSTRING_INDEX(contact, '@', 1), '@', '$USERS_ADDRESS') WHERE INET_ATON(SUBSTRING_INDEX(contact, '@', -1)) IS NOT NULL"
 
     # Change ProxyTrunks ports if USERS_ADDRESS == TRUNKS_ADDRESS
     if [ -n "$USERS_ADDRESS" ] && [ "$USERS_ADDRESS" == "$TRUNKS_ADDRESS" ]; then
