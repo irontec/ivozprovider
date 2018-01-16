@@ -367,12 +367,6 @@ production:
     # kamUsersAddress dialogs:
     <<: *kamUsersAddress_dialogsLink
 
-  commands:
-    importCompaniesFreeUpload_command:
-      <<: *Companies
-      controller: File
-      action: free-upload
-    <<: *pricingPlansRelCompanies_commandsLink
 staging:
   _extends: production
 testing:

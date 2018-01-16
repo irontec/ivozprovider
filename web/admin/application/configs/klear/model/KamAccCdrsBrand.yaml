@@ -162,45 +162,40 @@ production:
         control: datetime
         settings:
           disabled: 'false'
-    pricingPlan:
-      title: ngettext('Pricing plan', 'Pricing plans', 1)
+    ratingPlanId:
+      title: ngettext('Rating plan', 'Rating plans', 1)
       type: select
       source:
         data: mapper
         config:
-          entity: \Ivoz\Provider\Domain\Model\PricingPlan\PricingPlan
+          entity: \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlan
           fieldName: 
             fields: 
               - name
             template: '%name%'
           order:
-            PricingPlan.name.${lang}: asc
+            RatingPlan.name.${lang}: asc
         'null': _("Unassigned")
-    targetPatternId:
+    destinationId:
       title: _('Target pattern')
       type: select
       source:
         data: mapper
         config:
-          entity: \Ivoz\Provider\Domain\Model\TargetPattern\TargetPattern
+          entity: \Ivoz\Cgr\Domain\Model\Destination\Destination
           fieldName:
             fields:
               - name
             template: '%name%'
           order:
-            TargetPattern.name.${ang}: asc
+            Destination.name.${ang}: asc
         'null': _("Unassigned")
       decorators:
         autocomplete:
-            command: targetPatternautocomplete_command
+            command: destinationautocomplete_command
     price:
       title: ngettext('Price', 'Prices', 1)
       type: text
-    pricingPlanDetails:
-      title: _('Pricing plan detail')
-      type: textarea
-      prefix: <p align=left>
-      sufix: </p>
     invoice:
       title: ngettext('Invoice', 'Invoices', 1)
       type: select
@@ -216,18 +211,6 @@ production:
           order:
             Invoice.number: asc
         'null': _("Unassigned")
-    pricingPlan:
-      title: _('Pricing plan')
-      type: ghost
-      source:
-        class: IvozProvider_Klear_Ghost_KamAccCdrPricingPlan
-        method: getData
-    targetPattern:
-      title: _('Target pattern')
-      type: ghost
-      source:
-        class: IvozProvider_Klear_Ghost_KamAccCdrTargetPattern
-        method: getData
 staging:
   _extends: production
 testing:

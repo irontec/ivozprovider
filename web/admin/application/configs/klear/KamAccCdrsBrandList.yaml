@@ -41,21 +41,23 @@ production:
       class:  ui-silk-coins-add
       multiItem: true
       alwaysEnabled: false
+
   commands:
-    targetPatternautocomplete_command: &targetPatternautocomplete_commandLink
-      <<: *PricingPlansRelTargetPatterns
+    destinationautocomplete_command: &destinationautocomplete_commandLink
+      <<: *Destinations
       controller: field-decorator
       action: index
       autocomplete:
-        mapperName: \IvozProvider\Mapper\Sql\TargetPatterns
+        mapperName: \IvozProvider\Mapper\Sql\Destination
         filterClass: IvozProvider_Klear_Filter_Brand
         fieldName:
           fields:
-            - name_${lang}
-            - regExp
-          template: '%name_${lang}% (%regExp%)'
+            - name_es
+            - name_en
+          template: '%name_en%'
         limit: 8
         order: name
+
 staging:
   _extends: production
 testing:

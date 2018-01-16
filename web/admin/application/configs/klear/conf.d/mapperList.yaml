@@ -314,21 +314,6 @@ mappers:
         modelFile: PickUpRelUsers,
         entity: 'Ivoz\\Provider\\Domain\\Model\\PickUpRelUser\\PickUpRelUser'
     }
-  - &PricingPlans {
-        mapper: \IvozProvider\Mapper\Sql\PricingPlans,
-        modelFile: PricingPlans,
-        entity: 'Ivoz\\Provider\\Domain\\Model\\PricingPlan\\PricingPlan'
-    }
-  - &PricingPlansRelCompanies {
-        mapper: \IvozProvider\Mapper\Sql\PricingPlansRelCompanies,
-        modelFile: PricingPlansRelCompanies,
-        entity: 'Ivoz\\Provider\\Domain\\Model\\PricingPlansRelCompany\\PricingPlanRelCompany'
-    }
-  - &PricingPlansRelTargetPatterns {
-        mapper: \IvozProvider\Mapper\Sql\PricingPlansRelTargetPatterns,
-        modelFile: PricingPlansRelTargetPatterns,
-        entity: 'Ivoz\\Provider\\Domain\\Model\\PricingPlansRelTargetPattern\\PricingPlansRelTargetPattern'
-    }
   - &ProxyTrunks {
         mapper: \IvozProvider\Mapper\Sql\ProxyTrunks,
         modelFile: ProxyTrunks,
@@ -393,11 +378,6 @@ mappers:
         mapper: \IvozProvider\Mapper\Sql\Services,
         modelFile: Services,
         entity: 'Ivoz\\Provider\\Domain\\Model\\Service\\Service'
-    }
-  - &TargetPatterns {
-        mapper: \IvozProvider\Mapper\Sql\TargetPatterns,
-        modelFile: TargetPatterns,
-        entity: 'Ivoz\\Provider\\Domain\\Model\\TargetPattern\\TargetPattern'
     }
   - &TerminalManufacturers {
         mapper: \IvozProvider\Mapper\Sql\TerminalManufacturers,
