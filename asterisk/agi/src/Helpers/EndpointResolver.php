@@ -56,7 +56,7 @@ class EndpointResolver
 
         Assertion::notNull(
             $extension,
-            sprintf('User "%s" has no extension associated.', $user))
+            sprintf('User "%s" has no extension associated.', $user)
         );
 
         return $user;
