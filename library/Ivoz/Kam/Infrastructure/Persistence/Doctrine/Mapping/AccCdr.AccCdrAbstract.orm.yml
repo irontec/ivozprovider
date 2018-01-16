@@ -16,12 +16,12 @@ Ivoz\Kam\Domain\Model\AccCdr\AccCdrAbstract:
     peeringContractId_idx:
       columns:
         - peeringContractId
-    accCdr_pricingPlanId:
+    accCdr_ratingPlanId:
       columns:
-        - pricingPlanId
-    accCdr_targetPatternId:
+        - ratingPlanId
+    accCdr_destinationId:
       columns:
-        - targetPatternId
+        - destinationId
     accCdr_invoiceId:
       columns:
         - invoiceId
@@ -191,25 +191,25 @@ Ivoz\Kam\Domain\Model\AccCdr\AccCdrAbstract:
       nullable: true
       column: reMeteringDate
   manyToOne:
-    pricingPlan:
-      targetEntity: \Ivoz\Provider\Domain\Model\PricingPlan\PricingPlanInterface
+    ratingPlan:
+      targetEntity: \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanInterface
       cascade: {  }
       fetch: LAZY
       mappedBy: null
       inversedBy: null
       joinColumns:
-        pricingPlanId:
+        ratingPlanId:
           referencedColumnName: id
           onDelete: set null
       orphanRemoval: false
-    targetPattern:
-      targetEntity: \Ivoz\Provider\Domain\Model\TargetPattern\TargetPatternInterface
+    destination:
+      targetEntity: \Ivoz\Cgr\Domain\Model\Destination\DestinationInterface
       cascade: {  }
       fetch: LAZY
       mappedBy: null
       inversedBy: null
       joinColumns:
-        targetPatternId:
+        destinationId:
           referencedColumnName: id
           onDelete: set null
       orphanRemoval: false
