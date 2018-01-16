@@ -1,5 +1,4 @@
 production:
-  class: \IvozProvider\Model\PickUpGroups
   entity: Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroup
   fields: 
     name:

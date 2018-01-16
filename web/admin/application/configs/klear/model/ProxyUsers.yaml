@@ -1,5 +1,4 @@
 production:
-  class: \IvozProvider\Model\ProxyUsers
   entity: Ivoz\Provider\Domain\Model\ProxyUser\ProxyUser
   fields: 
     name:
@@ -9,7 +8,7 @@ production:
       maxLength: 100
       default: true
     ip:
-      title: _('Ip')
+      title: 'IP'
       type: text
       trim: both
       maxLength: 100

@@ -2,11 +2,11 @@
 #include conf.d/actions.yaml
 #include MatchListsList.yaml
 
-
 production:
   main:
     module: klearMatrix
     defaultScreen: genericMatchListsList_screen
+
   screens:
     <<: *matchLists_screensLink
     genericMatchListsList_screen:
@@ -29,9 +29,9 @@ production:
       options:
         title: _("Options")
         screens:
-          matchListsNew_screen: true
+          genericMatchListsNew_screen: true
         dialogs:
-          matchListsDel_dialog: true
+          genericMatchListsDel_dialog: true
 
     genericMatchListsNew_screen:
       <<: *matchListsNew_screenLink
@@ -48,7 +48,7 @@ production:
         <<: *forcedBrand
         "self::company": null
 
-    #matchListPatterns:
+    # matchListPatterns:
     genericMatchListPatternsList_screen:
       <<: *matchListPatternsList_screenLink
       filterField: matchList

@@ -1,5 +1,4 @@
 production:
-  class: \IvozProvider\Model\ConditionalRoutesConditions
   entity: \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition
   fields:
     conditionalRouteId:
@@ -111,7 +110,7 @@ production:
               hide:
                 <<: *routableFields
           'ivrId':
-            title: ngettext('IVR Custom', 'IVRs Custom', 1)
+            title: ngettext('IVR', 'IVRs', 1)
             visualFilter:
               show: [ ivrId ]
               hide:

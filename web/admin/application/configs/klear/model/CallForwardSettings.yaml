@@ -1,5 +1,4 @@
 production:
-  class: \IvozProvider\Model\CallForwardSettings
   entity: \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting
   fields: 
     userId:

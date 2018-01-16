@@ -1,5 +1,4 @@
 production:
-  class: \IvozProvider\Model\AccCdrs
   entity: Ivoz\Kam\Domain\Model\AccCdr\AccCdr
   fields:
     proxy:
@@ -183,14 +182,11 @@ production:
           entity: \Ivoz\Cgr\Domain\Model\Destination\Destination
           fieldName:
             fields:
-              - name
-            template: '%name%'
+              - name${lang}
+            template: '%name${lang}%'
           order:
             Destination.name.${lang}: asc
         'null': _("Unassigned")
-      decorators:
-        autocomplete:
-            command: destinationautocomplete_command
     price:
       title: ngettext('Price', 'Prices', 1)
       type: text

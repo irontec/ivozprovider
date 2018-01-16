@@ -1,5 +1,4 @@
 production:
-  class: \IvozProvider\Model\Ivr
   entity: Ivoz\Provider\Domain\Model\Ivr\Ivr
   fields:
     companyId:

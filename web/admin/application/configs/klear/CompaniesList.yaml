@@ -132,7 +132,7 @@ production:
             ipFilter: 1
         group2:
           colsPerRow: 2
-          label: _("Geographic data")
+          label: _("Geographic Configuration")
           fields:
             defaultTimezoneId: 1
             countryId: 1
@@ -199,7 +199,7 @@ production:
             ipFilter: 1
         group2:
           colsPerRow: 3
-          label: _("Geographic data")
+          label: _("Geographic Configuration")
           fields:
             languageId: 1
             countryId: 1

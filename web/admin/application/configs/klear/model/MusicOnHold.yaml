@@ -1,5 +1,4 @@
 production:
-  class: \IvozProvider\Model\MusicOnHold
   entity: Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHold
   fields:
     brandId:

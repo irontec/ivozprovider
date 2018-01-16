@@ -1,5 +1,4 @@
 production:
-  class: \IvozProvider\Model\FixedCostsRelInvoices
   entity: Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoice
   fields: 
     brand:

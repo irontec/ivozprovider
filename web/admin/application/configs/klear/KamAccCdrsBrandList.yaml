@@ -6,12 +6,12 @@ production:
   main:
     module: klearMatrix
     defaultScreen: kamAccCdrsList_screen
+
   screens:
     <<: *kamAccCdrs_screensLink
     kamAccCdrsList_screen:
       <<: *kamAccCdrsList_screenLink
       csv: true
-      mapper: \IvozProvider\Mapper\Sql\KamAccCdrs
       modelFile: KamAccCdrsBrand
       forcedValues:
         <<: *forcedBrand
@@ -41,22 +41,6 @@ production:
       class:  ui-silk-coins-add
       multiItem: true
       alwaysEnabled: false
-
-  commands:
-    destinationautocomplete_command: &destinationautocomplete_commandLink
-      <<: *Destinations
-      controller: field-decorator
-      action: index
-      autocomplete:
-        mapperName: \IvozProvider\Mapper\Sql\Destination
-        filterClass: IvozProvider_Klear_Filter_Brand
-        fieldName:
-          fields:
-            - name_es
-            - name_en
-          template: '%name_en%'
-        limit: 8
-        order: name
 
 staging:
   _extends: production

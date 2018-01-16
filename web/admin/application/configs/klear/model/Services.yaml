@@ -1,5 +1,4 @@
 production:
-  class: \IvozProvider\Model\Services
   entity: Ivoz\Provider\Domain\Model\Service\Service
   fields:
     iden:

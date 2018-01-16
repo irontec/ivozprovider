@@ -1,7 +1,6 @@
 #include ../conf.d/queuesHelp.yaml
 
 production:
-  class: \IvozProvider\Model\Queues
   entity: Ivoz\Provider\Domain\Model\Queue\Queue
   fields:
     companyId:

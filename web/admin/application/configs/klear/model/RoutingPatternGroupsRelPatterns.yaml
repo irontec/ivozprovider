@@ -1,5 +1,4 @@
 production:
-  class: \IvozProvider\Model\RoutingPatternGroupsRelPatterns
   entity: Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPattern
   fields: 
     routingPatternId:

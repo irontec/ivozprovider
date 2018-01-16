@@ -1,5 +1,4 @@
 production:
-  class: \IvozProvider\Model\ExternalCallFilters
   entity: Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter
   fields:
     companyId:
@@ -296,7 +295,7 @@ production:
           relatedProperty: matchlist
           related: \Ivoz\Provider\Domain\Model\MatchList\MatchList
           relatedFieldName: name
-          filterClass: \IvozProvider_Klear_Filter_Company
+          filterClass: IvozProvider_Klear_Filter_Company
       info:
         type: box
         text: _("Incoming numbers that match this lists will be always ACCEPTED without checking this filter configuration.")

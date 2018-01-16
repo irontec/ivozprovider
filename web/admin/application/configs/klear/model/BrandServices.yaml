@@ -1,5 +1,4 @@
 production:
-  class: \IvozProvider\Model\BrandServices
   entity: \Ivoz\Provider\Domain\Model\BrandService\BrandService
   fields: 
     serviceId:

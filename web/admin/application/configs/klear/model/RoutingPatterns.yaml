@@ -1,5 +1,4 @@
 production:
-  class: \IvozProvider\Model\RoutingPatterns
   entity: Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPattern
   fields: 
     name:

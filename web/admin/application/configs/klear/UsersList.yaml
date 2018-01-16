@@ -159,7 +159,7 @@ production:
             lastname: 4
             email: 4
         group1:
-          label: _("Geographic data")
+          label: _("Geographic Configuration")
           colsPerRow: 12
           fields:
             languageId: 6

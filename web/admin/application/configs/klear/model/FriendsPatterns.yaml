@@ -1,5 +1,4 @@
 production:
-  class: \IvozProvider\Model\FriendsPatterns
   entity: Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPattern
   fields: 
     friendId:

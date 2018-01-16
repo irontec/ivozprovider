@@ -1,5 +1,4 @@
 production:
-  class: \IvozProvider\Model\TpRate
   entity: Ivoz\Cgr\Domain\Model\TpRate\TpRate
   fields: 
     connectFee:

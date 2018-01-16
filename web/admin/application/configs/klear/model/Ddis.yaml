@@ -1,7 +1,6 @@
 #include ../conf.d/friendValueHelp.yaml
 
 production:
-  class: \IvozProvider\Model\DDIs
   entity: \Ivoz\Provider\Domain\Model\Ddi\Ddi
   fields:
     companyId:

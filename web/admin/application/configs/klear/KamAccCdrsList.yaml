@@ -5,6 +5,7 @@ production:
   main:
     module: klearMatrix
     defaultScreen: kamAccCdrsList_screen
+
   screens: &kamAccCdrs_screensLink
     kamAccCdrsList_screen: &kamAccCdrsList_screenLink
       controller: list
@@ -55,6 +56,7 @@ production:
           price: true
           peeringContractId: true
           invoiceId: true
+
     kamAccCdrsView_screen: &kamAccCdrsView_screenLink
       <<: *KamAccCdrs
       controller: edit
@@ -118,21 +120,6 @@ production:
             callid: 6
             xcallid: 6
 
-  commands:
-    destinationautocomplete_command: &destinationautocomplete_commandLink
-      <<: *Destinations
-      controller: field-decorator
-      action: index
-      autocomplete:
-        mapperName: \IvozProvider\Mapper\Sql\Destination
-        filterClass: IvozProvider_Klear_Filter_Brand
-        fieldName:
-          fields:
-            - name_es
-            - name_en
-          template: '%name_en%'
-        limit: 8
-        order: name
 staging:
   _extends: production
 testing:

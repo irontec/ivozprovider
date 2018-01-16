@@ -1,5 +1,4 @@
 production:
-  class: \IvozProvider\Model\TpDestinations
   entity: Ivoz\Cgr\Domain\Model\TpDestination\TpDestination
   fields: 
     prefix:

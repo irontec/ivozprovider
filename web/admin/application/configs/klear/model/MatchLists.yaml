@@ -1,5 +1,4 @@
 production:
-  class: \IvozProvider\Model\MatchLists
   entity: Ivoz\Provider\Domain\Model\MatchList\MatchList
   fields:
     companyId:

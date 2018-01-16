@@ -1,5 +1,4 @@
 production:
-  class: \IvozProvider\Model\CallAclRelMatchLists
   entity: \Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchList
   fields:
     callACLId:

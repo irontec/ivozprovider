@@ -2,7 +2,6 @@
 #include ../conf.d/updateMethodHelp.yaml
 
 production:
-  class: \IvozProvider\Model\Friends
   entity: Ivoz\Provider\Domain\Model\Friend\Friend
   fields:
     companyId:
@@ -57,9 +56,9 @@ production:
       source:
         data: inline
         values:
-          'udp': _('UDP')
-          'tcp': _('TCP')
-          'tls': _('TLS')
+          'udp': 'UDP'
+          'tcp': 'TCP'
+          'tls': 'TLS'
     ip:
       title: _('Destination IP address')
       type: text
@@ -125,7 +124,7 @@ production:
             CallAcl.name: asc
         'null': _("Allow all outgoing calls")
     transformationRuleSetId:
-      title: _('Numeric Transformation')
+      title: ngettext('Numeric transformation', 'Numeric transformations', 1)
       type: select
       defaultValue: 'null'
       source:

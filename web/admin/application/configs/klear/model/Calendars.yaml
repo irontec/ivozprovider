@@ -1,5 +1,4 @@
 production:
-  class: \IvozProvider\Model\Calendars
   entity: \Ivoz\Provider\Domain\Model\Calendar\Calendar
   fields: 
     companyId:

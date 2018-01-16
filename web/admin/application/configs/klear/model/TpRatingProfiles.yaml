@@ -1,5 +1,4 @@
 production:
-  class: \IvozProvider\Model\TpRatingProfile
   entity: Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfile
   fields: 
     id:
@@ -14,7 +13,7 @@ production:
         settings:
           disabled: 'false'
     ratingPlanId:
-      title: ngettext('Destination Rate', 'Destination RateS', 1)
+      title: ngettext('Destination rate', 'Destination rates', 1)
       type: select
       required: true
       source:

@@ -2,7 +2,6 @@
 #include ../conf.d/updateMethodHelp.yaml
 
 production:
-  class: \IvozProvider\Model\Terminals
   entity: Ivoz\Provider\Domain\Model\Terminal\Terminal
   fields:
     terminalModelId:

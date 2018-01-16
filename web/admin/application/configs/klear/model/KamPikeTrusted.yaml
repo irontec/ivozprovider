@@ -1,9 +1,8 @@
 production:
-  class: \IvozProvider\Model\PikeTrusted
   entity: Ivoz\Kam\Domain\Model\PikeTrusted\PikeTrusted
   fields: 
     srcIp:
-      title: _('IP')
+      title: 'IP'
       type: text
       maxLength: 50
       default: true

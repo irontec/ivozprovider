@@ -1,5 +1,4 @@
 production:
-  class: \IvozProvider\Model\Users
   entity: Ivoz\Provider\Domain\Model\User\User
   fields:
     companyId:
@@ -75,7 +74,7 @@ production:
           order:
             Timezone.tz: asc
     transformationRuleSetId:
-      title: _('Numeric Transformation')
+      title: ngettext('Numeric transformation', 'Numeric transformations', 1)
       type: select
       defaultValue: 'null'
       source:

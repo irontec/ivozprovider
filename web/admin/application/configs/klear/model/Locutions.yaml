@@ -1,5 +1,4 @@
 production:
-  class: \IvozProvider\Model\Locutions
   entity: Ivoz\Provider\Domain\Model\Locution\Locution
   fields: 
     companyId:

@@ -1,5 +1,4 @@
 production:
-  class: \IvozProvider\Model\QueueMembers
   entity: Ivoz\Provider\Domain\Model\QueueMember\QueueMember
   fields:
     queueId:

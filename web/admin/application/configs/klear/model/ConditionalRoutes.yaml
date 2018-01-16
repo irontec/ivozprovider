@@ -1,5 +1,4 @@
 production:
-  class: \IvozProvider\Model\ConditionalRoutes
   entity: \Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute
   fields:
     companyId:

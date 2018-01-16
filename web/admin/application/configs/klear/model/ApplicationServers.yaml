@@ -1,5 +1,4 @@
 production:
-  class: \IvozProvider\Model\ApplicationServers
   entity: \Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServer
   fields:
     name:
@@ -8,7 +7,7 @@ production:
       trim: both
       required: true
     ip:
-      title: _('Ip')
+      title: 'IP'
       type: text
       trim: both
       required: true

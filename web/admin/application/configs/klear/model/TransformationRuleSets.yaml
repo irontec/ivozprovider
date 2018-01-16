@@ -1,5 +1,4 @@
 production:
-  class: \IvozProvider\Model\TransformationRuleSet
   entity: Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet
   fields: 
     brandId:

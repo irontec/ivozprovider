@@ -1,7 +1,6 @@
 #include ../conf.d/recordingHelp.yaml
 
 production:
-  class: \IvozProvider\Model\Companies
   entity: Ivoz\Provider\Domain\Model\Company\Company
   fields:
     id:
@@ -138,7 +137,7 @@ production:
           order:
             Country.code: asc
     transformationRuleSetId:
-      title: _('Numeric Transformation')
+      title: ngettext('Numeric transformation', 'Numeric transformations', 1)
       type: select
       required: true
       defaultValue: 70

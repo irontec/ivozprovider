@@ -1,5 +1,4 @@
 production:
-  class: \IvozProvider\Model\Rate
   entity: Ivoz\Cgr\Domain\Model\Rate\Rate
   fields: 
     id:

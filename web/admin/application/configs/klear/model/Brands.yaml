@@ -1,5 +1,4 @@
 production:
-  class: \IvozProvider\Model\Brands
   entity: \Ivoz\Provider\Domain\Model\Brand\Brand
   fields:
     name:

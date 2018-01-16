@@ -1,5 +1,4 @@
 production:
-  class: \IvozProvider\Model\TrunksUacreg
   entity: Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacreg
   fields:
     multiDDI:

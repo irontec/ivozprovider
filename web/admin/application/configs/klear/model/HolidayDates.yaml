@@ -1,5 +1,4 @@
 production:
-  class: \IvozProvider\Model\HolidayDates
   entity: Ivoz\Provider\Domain\Model\HolidayDate\HolidayDate
   fields: 
     calendarId:

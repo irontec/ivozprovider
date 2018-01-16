@@ -1,5 +1,4 @@
 production:
-  class: \IvozProvider\Model\FixedCosts
   entity: Ivoz\Provider\Domain\Model\FixedCost\FixedCost
   fields: 
     brandId:

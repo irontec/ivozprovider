@@ -1,5 +1,4 @@
 production:
-  class: \IvozProvider\Model\PeerServers
   entity: Ivoz\Provider\Domain\Model\PeerServer\PeerServer
   fields: 
     peeringContractId:
@@ -77,9 +76,9 @@ production:
         data: inline
         values:
           '1':
-            title: _('sip')
+            title: 'sip'
           '2':
-            title: _('sips')
+            title: 'sips'
     transport:
       title: _('Transport')
       type: select
@@ -88,11 +87,11 @@ production:
         data: inline
         values:
           '1':
-            title: _('UDP')
+            title: 'UDP'
           '2':
-            title: _('TCP')
+            title: 'TCP'
           '3':
-            title: _('TLS')
+            title: 'TLS'
     strip:
       title: _('Strip')
       type: number

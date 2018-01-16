@@ -1,5 +1,4 @@
 production:
-  class: \IvozProvider\Model\OutgoingDDIRules
   entity: Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule
   fields:
     companyId:

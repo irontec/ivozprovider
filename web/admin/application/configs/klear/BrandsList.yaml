@@ -61,6 +61,7 @@ production:
           brandsNew_screen: true
         dialogs:
           brandsDel_dialog: true
+
     brandsNew_screen: &brandsNew_screenLink
       <<: *Brands
       controller: new
@@ -99,6 +100,7 @@ production:
           recordingsLimitEmail: true
         order:
           <<: *brandsOrder_Link
+
       fixedPositions: &brandsFixedPositions_Link
         group0:
           label: _("Basic Configuration")
@@ -144,6 +146,7 @@ production:
             recordingsLimitMB: 6
             recordingsDiskUsage: 6
             recordingsLimitEmail: 6
+
     brandsEdit_screen: &brandsEdit_screenLink
       <<: *Brands
       controller: edit

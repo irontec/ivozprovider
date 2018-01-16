@@ -1,5 +1,4 @@
 production:
-  class: \IvozProvider\Model\OutgoingRouting
   entity: Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting
   fields:
     type:

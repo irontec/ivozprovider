@@ -1,7 +1,6 @@
 #include ../conf.d/invoiceTemplateHelp.yaml
 
 production:
-  class: \IvozProvider\Model\InvoiceTemplates
   entity: Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplate
   fields: 
     name:

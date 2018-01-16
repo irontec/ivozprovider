@@ -1,5 +1,4 @@
 production:
-  class: \IvozProvider\Model\TerminalModels
   entity: Ivoz\Provider\Domain\Model\TerminalModel\TerminalModel
   fields:
     iden:

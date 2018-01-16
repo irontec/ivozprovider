@@ -79,7 +79,7 @@ production:
             name: 1
             description: 1
         group1:
-          label: _("Geographic configuration")
+          label: _("Geographic Configuration")
           colsPerRow: 12
           fields:
             internationalCode: 5

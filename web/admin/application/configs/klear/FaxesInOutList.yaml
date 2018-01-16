@@ -1,11 +1,11 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
 
-
 production:
   main:
     module: klearMatrix
     defaultScreen: faxesInOutList_screen
+
   screens: &faxesInOut_screensLink
     faxesInOutList_screen: &faxesInOutList_screenLink
       controller: list
@@ -30,6 +30,7 @@ production:
           faxesInOutNew_screen: true
         dialogs:
           faxesInOutDel_dialog: true
+
     faxesInOutNew_screen: &faxesInOutNew_screenLink
       <<: *FaxesInOut
       controller: new
@@ -38,12 +39,14 @@ production:
       multiInstance: true
       title: _("Send new %s", ngettext('Faxfile', 'Faxefiles', 1), "[format| (%parent%)]")
       shortcutOption: N
+
     faxesInOutEdit_screen: &faxesInOutEdit_screenLink
       <<: *FaxesInOut
       controller: edit
       class: ui-silk-pencil
       label: false
       title: _("Edit %s %2s", ngettext('Faxfile', 'Faxefiles', 1), "[format| (%item%)]")
+
   dialogs: &faxesInOut_dialogsLink
     faxesInOutDel_dialog: &faxesInOutDel_dialogLink
       <<: *FaxesInOut
@@ -55,6 +58,7 @@ production:
       message: _("%s successfully deleted.", ngettext('Faxfile', 'Faxfile', 1))
       multiItem: 1
       labelOnList: 1
+
   commands: &faxesInOut_commandsLink
     faxesInOutFileDownload_command: &faxesInOutFileDownload_commandLink
       <<: *FaxesInOut

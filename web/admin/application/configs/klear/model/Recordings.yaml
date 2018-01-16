@@ -1,5 +1,4 @@
 production:
-  class: \IvozProvider\Model\Recordings
   entity: Ivoz\Provider\Domain\Model\Recording\Recording
   fields: 
     companyId:

@@ -1,5 +1,4 @@
 production:
-  class: \IvozProvider\Model\ConferenceRooms
   entity: \Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom
   fields: 
     companyId:

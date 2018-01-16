@@ -1,5 +1,4 @@
 production:
-  class: \IvozProvider\Model\Schedules
   entity: Ivoz\Provider\Domain\Model\Schedule\Schedule
   fields: 
     companyId:

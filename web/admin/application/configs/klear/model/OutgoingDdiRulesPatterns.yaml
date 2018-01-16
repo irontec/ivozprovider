@@ -1,5 +1,4 @@
 production:
-  class: \IvozProvider\Model\OutgoingDDIRulesPatterns
   entity: Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPattern
   fields:
     outgoingDdiRuleId:

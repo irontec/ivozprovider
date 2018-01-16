@@ -1,5 +1,4 @@
 production:
-  class: \IvozProvider\Model\Administrators
   entity: Ivoz\Provider\Domain\Model\Administrator\Administrator
   fields: 
     username:

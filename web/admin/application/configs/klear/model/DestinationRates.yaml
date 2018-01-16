@@ -1,5 +1,4 @@
 production:
-  class: \IvozProvider\Model\DestinationRates
   entity: Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRate
   fields: 
     id:

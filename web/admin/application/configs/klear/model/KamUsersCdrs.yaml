@@ -1,5 +1,4 @@
 production:
-  class: \IvozProvider\Model\KamUsersCdrs
   entity: Ivoz\Kam\Domain\Model\UsersCdr\UsersCdr
   fields:
     brandId:
@@ -63,7 +62,7 @@ production:
       title: _('Callid')
       type: text
     xcallid:
-      title: _('X-Callid')
+      title: _('Xcallid')
       type: text
     callidHash:
       title: _('CallidHash')

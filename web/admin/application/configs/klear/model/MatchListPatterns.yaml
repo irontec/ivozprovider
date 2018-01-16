@@ -1,5 +1,4 @@
 production:
-  class: \IvozProvider\Model\MatchListPatterns
   entity: Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPattern
   fields:
     matchListId:

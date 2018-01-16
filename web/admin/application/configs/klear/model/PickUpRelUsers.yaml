@@ -1,5 +1,4 @@
 production:
-  class: \IvozProvider\Model\PickUpRelUsers
   entity: Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUser
   fields: 
     pickUpGroup:

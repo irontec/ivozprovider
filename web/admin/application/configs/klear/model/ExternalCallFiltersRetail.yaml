@@ -1,5 +1,4 @@
 production:
-  class: \IvozProvider\Model\ExternalCallFilters
   entity: Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter
   fields:
     company:

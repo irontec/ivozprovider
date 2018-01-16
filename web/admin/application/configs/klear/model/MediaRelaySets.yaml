@@ -1,5 +1,4 @@
 production:
-  class: \IvozProvider\Model\MediaRelaySets
   entity: Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet
   fields: 
     name:

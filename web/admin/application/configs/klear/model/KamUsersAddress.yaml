@@ -1,5 +1,4 @@
 production:
-  class: \IvozProvider\Model\UsersAddress
   entity: Ivoz\Kam\Domain\Model\UsersAddress\UsersAddress
   fields: 
     companyId:

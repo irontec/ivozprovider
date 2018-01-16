@@ -1,5 +1,4 @@
 production:
-  class: \IvozProvider\Model\CallACL
   entity: \Ivoz\Provider\Domain\Model\CallAcl\CallAcl
   fields:
     companyId:
@@ -32,7 +31,7 @@ production:
           'allow': _('allow')
           'deny': _('deny')
     CallAclRelMatchLists:
-      title: ngettext('Call ACL MatchList', 'Call ACL MatchList', 0)
+      title: ngettext('Call ACL MatchList', 'Call ACL MatchLists', 0)
       searchable: false
       type: ghost
       source:

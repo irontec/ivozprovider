@@ -1,8 +1,5 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
-#include KamTrunksDomainList.yaml
-#include KamUsersDomainList.yaml
-
 
 production:
   main:

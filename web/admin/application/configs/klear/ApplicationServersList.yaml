@@ -37,6 +37,7 @@ production:
           applicationServersNew_screen: true
         dialogs:
           applicationServersDel_dialog: true
+
     applicationServersNew_screen: &applicationServersNew_screenLink
       <<: *ApplicationServers
       controller: new
@@ -50,6 +51,7 @@ production:
           <<: *applicationServersBlacklist
         order:
           <<: *applicationServersOrder
+
     applicationServersEdit_screen: &applicationServersEdit_screenLink
       <<: *ApplicationServers
       controller: edit
@@ -61,6 +63,7 @@ production:
           <<: *applicationServersBlacklist
         order:
           <<: *applicationServersOrder
+
   dialogs: &applicationServers_dialogsLink
     applicationServersDel_dialog: &applicationServersDel_dialogLink
       <<: *ApplicationServers

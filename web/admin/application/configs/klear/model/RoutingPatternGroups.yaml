@@ -1,5 +1,4 @@
 production:
-  class: \IvozProvider\Model\RoutingPatternGroups
   entity: Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup
   fields: 
     name:
@@ -27,7 +26,7 @@ production:
           order:
             Brand.name: asc
     relPatterns:
-      title: _('Destination patterns')
+      title: ngettext('Routing pattern', 'Routing patterns', 0)
       type: multiselect
       source:
         data: mapper

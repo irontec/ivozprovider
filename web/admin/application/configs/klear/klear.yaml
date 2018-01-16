@@ -162,9 +162,9 @@ production:
           description: _("List of %s", ngettext('Rate', 'Rates', 0))
           showOnlyIf: ${auth.brand.billing.enabled}
         DestinationRatesList:
-          title: ngettext('Destination Rate', 'Destination Rates', 0)
+          title: ngettext('Destination rate', 'Destination rates', 0)
           class: ui-silk-money
-          description: _("List of %s", ngettext('Destination Rate', 'Destination Rates', 0))
+          description: _("List of %s", ngettext('Destination rate', 'Destination rates', 0))
           showOnlyIf: ${auth.brand.billing.enabled}
         InvoiceTemplatesList:
           title: ngettext('Invoice template', 'Invoice templates', 0)
