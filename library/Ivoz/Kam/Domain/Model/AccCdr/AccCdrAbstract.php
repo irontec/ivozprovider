@@ -13,6 +13,10 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class AccCdrAbstract
 {
+    protected $ratingPlan;
+
+    protected $destination;
+
     /**
      * @var string
      */
@@ -145,15 +149,6 @@ abstract class AccCdrAbstract
      */
     protected $reMeteringDate;
 
-    /**
-     * @var \Ivoz\Provider\Domain\Model\PricingPlan\PricingPlanInterface
-     */
-    protected $pricingPlan;
-
-    /**
-     * @var \Ivoz\Provider\Domain\Model\TargetPattern\TargetPatternInterface
-     */
-    protected $targetPattern;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface
@@ -1161,53 +1156,7 @@ abstract class AccCdrAbstract
         return $this->reMeteringDate;
     }
 
-    /**
-     * Set pricingPlan
-     *
-     * @param \Ivoz\Provider\Domain\Model\PricingPlan\PricingPlanInterface $pricingPlan
-     *
-     * @return self
-     */
-    public function setPricingPlan(\Ivoz\Provider\Domain\Model\PricingPlan\PricingPlanInterface $pricingPlan = null)
-    {
-        $this->pricingPlan = $pricingPlan;
 
-        return $this;
-    }
-
-    /**
-     * Get pricingPlan
-     *
-     * @return \Ivoz\Provider\Domain\Model\PricingPlan\PricingPlanInterface
-     */
-    public function getPricingPlan()
-    {
-        return $this->pricingPlan;
-    }
-
-    /**
-     * Set targetPattern
-     *
-     * @param \Ivoz\Provider\Domain\Model\TargetPattern\TargetPatternInterface $targetPattern
-     *
-     * @return self
-     */
-    public function setTargetPattern(\Ivoz\Provider\Domain\Model\TargetPattern\TargetPatternInterface $targetPattern = null)
-    {
-        $this->targetPattern = $targetPattern;
-
-        return $this;
-    }
-
-    /**
-     * Get targetPattern
-     *
-     * @return \Ivoz\Provider\Domain\Model\TargetPattern\TargetPatternInterface
-     */
-    public function getTargetPattern()
-    {
-        return $this->targetPattern;
-    }
 
     /**
      * Set invoice

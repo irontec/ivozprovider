@@ -23,10 +23,6 @@ interface BrandInterface extends LoggableEntityInterface
      */
     public function setDomainUsers($domainUsers = null);
 
-    public function getActivePricingPlans($date = null);
-
-    public function getActivePrincingPlansIds($date = null);
-
     public function getLanguageCode();
 
     public function willUseExternallyRating(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company, $destination = null);

@@ -41,8 +41,6 @@ interface CompanyInterface extends LoggableEntityInterface
 
     public function getTerminal($name);
 
-    public function getCompanyActivePricingPlan($date = null);
-
     public function getLanguageCode();
 
     /**
@@ -653,35 +651,35 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getTerminals(\Doctrine\Common\Collections\Criteria $criteria = null);
 
     /**
-     * Add relPricingPlan
+     * Add ratinProfile
      *
-     * @param \Ivoz\Provider\Domain\Model\PricingPlansRelCompany\PricingPlansRelCompanyInterface $relPricingPlan
+     * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $ratinProfile
      *
      * @return CompanyTrait
      */
-    public function addRelPricingPlan(\Ivoz\Provider\Domain\Model\PricingPlansRelCompany\PricingPlansRelCompanyInterface $relPricingPlan);
+    public function addRatinProfile(\Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $ratinProfile);
 
     /**
-     * Remove relPricingPlan
+     * Remove ratinProfile
      *
-     * @param \Ivoz\Provider\Domain\Model\PricingPlansRelCompany\PricingPlansRelCompanyInterface $relPricingPlan
+     * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $ratinProfile
      */
-    public function removeRelPricingPlan(\Ivoz\Provider\Domain\Model\PricingPlansRelCompany\PricingPlansRelCompanyInterface $relPricingPlan);
+    public function removeRatinProfile(\Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $ratinProfile);
 
     /**
-     * Replace relPricingPlans
+     * Replace ratinProfiles
      *
-     * @param \Ivoz\Provider\Domain\Model\PricingPlansRelCompany\PricingPlansRelCompanyInterface[] $relPricingPlans
+     * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface[] $ratinProfiles
      * @return self
      */
-    public function replaceRelPricingPlans(Collection $relPricingPlans);
+    public function replaceRatinProfiles(Collection $ratinProfiles);
 
     /**
-     * Get relPricingPlans
+     * Get ratinProfiles
      *
      * @return \Ivoz\Provider\Domain\Model\PricingPlansRelCompany\PricingPlansRelCompanyInterface[]
      */
-    public function getRelPricingPlans(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getRatinProfiles(\Doctrine\Common\Collections\Criteria $criteria = null);
 
     /**
      * Add musicsOnHold
