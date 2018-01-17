@@ -203,7 +203,7 @@ Package: ivozprovider-web-rest
 Architecture: all
 Section: php
 Priority: optional
-Depends: ivozprovider-common-library (=${binary:Version})
+Depends: ivozprovider-common-library (=${binary:Version}), apache2, libapache2-mod-php7.0
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Rest API files
  .

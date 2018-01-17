@@ -33,7 +33,7 @@ fi
 
 # Always migrate database
 pushd /opt/irontec/ivozprovider/scheme &>/dev/null
-bin/console doctrine:migrations:migrate --no-interaction
+bin/console doctrine:migrations:migrate --no-interaction --quiet
 RET=$?
 popd &>/dev/null
 
