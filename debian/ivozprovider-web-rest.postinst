@@ -2,17 +2,13 @@
 
 #DEBHELPER#
 
-REST_APPDIR=/opt/irontec/ivozprovider/web/rest
+cd /opt/irontec/ivozprovider/web/rest
 
-pushd -q ${REST_APPDIR} || exit 1
+# Set proper var permissions
+setfacl -dR -m u:www-data:rwX -m u:root:rwX var
+setfacl  -R -m u:www-data:rwX -m u:root:rwX var
 
-	# Set proper var permissions	
-	setfacl -dR -m u:www-data:rwX -m u:root:rwX var
-	setfacl  -R -m u:www-data:rwX -m u:root:rwX var
-
-	# Create project cache
-	bin/console cache:clear --no-warmup -e prod -q -n
-
-popd -q
+# Create project cache
+bin/console cache:clear --no-warmup -e prod -q -n
 
 :

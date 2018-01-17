@@ -5,11 +5,8 @@
 # Enable php environment variables
 /bin/sed -i 's/variables_order = "GPCS"/variables_order = "EGPCS"/g' /etc/php/7.0/cli/php.ini
 
-APPDIR=/opt/irontec/ivozprovider/asterisk/agi
-
-pushd -q ${APPDIR} || exit 1
-    # Create project cache
-    bin/console cache:clear --no-warmup -e prod -q -n
-popd -q
+# Create project cache
+cd /opt/irontec/ivozprovider/asterisk/agi
+bin/console cache:clear --no-warmup -e prod -q -n
 
 :
