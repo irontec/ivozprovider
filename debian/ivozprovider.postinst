@@ -37,11 +37,6 @@ function setup_mysql()
 
 function setup_portals()
 {
-    # Setup portals mysql address
-    db_get ivozprovider/mysql_password      || true
-    sed -i -r "s/(resources.db.params.password *= *\").*/\1$RET\"/" /opt/irontec/ivozprovider/web/admin/application/configs/application.ini
-    sed -i -r "s/(resources.db.params.password *= *\").*/\1$RET\"/" /opt/irontec/ivozprovider/microservices/recordings/application/configs/application.ini
-
     # Setup portals default language
     db_get ivozprovider/language            || true
     sed -i -r "s/(lang*: *).*/\1$RET/" /opt/irontec/ivozprovider/web/admin/application/configs/klear/klear.yaml

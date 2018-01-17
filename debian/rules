@@ -14,6 +14,9 @@ build_doc:
 build_library: composer
 	cd library ; ../composer --no-interaction --no-dev --prefer-dist install
 
+build_agis: composer build_library
+	cd asterisk/agi ; ../../composer --no-interaction --no-dev --prefer-dist install
+
 build_webrest: composer build_library
 	cd web/rest ; SYMFONY_ENV=prod ../../composer --no-interaction --no-dev --prefer-dist install
 	cd web/rest ; ../../composer dump-autoload --optimize --no-dev --classmap-authoritative
