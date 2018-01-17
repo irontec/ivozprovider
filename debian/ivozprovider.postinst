@@ -21,17 +21,17 @@ function setup_bind()
 
 function setup_mysql()
 {
-    # Get debian-sys-main password
-    MYSQL_USER="debian-sys-maint"
-    MYSQL_PASSWORD=$(awk '$1 == "password" { print $3; exit }' /etc/mysql/debian.cnf)
+    # Get mysql password from configuration
+    db_get ivozprovider/mysql_password      || true
+    MYSQL_PASSWORD=$RET
 
     # Change database password
     db_get ivozprovider/mysql_password      || true
-    /usr/bin/mysql --user=$MYSQL_USER --password=$MYSQL_PASSWORD -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('$RET')"
-    /usr/bin/mysql --user=$MYSQL_USER --password=$MYSQL_PASSWORD -e "SET PASSWORD FOR 'root'@'127.0.0.1' = PASSWORD('$RET')"
-    /usr/bin/mysql --user=$MYSQL_USER --password=$MYSQL_PASSWORD -e "SET PASSWORD FOR 'root'@'::1' = PASSWORD('$RET')"
-    /usr/bin/mysql --user=$MYSQL_USER --password=$MYSQL_PASSWORD -e "SET PASSWORD FOR 'root'@'$HOSTNAME' = PASSWORD('$RET')"
-    /usr/bin/mysql --user=$MYSQL_USER --password=$MYSQL_PASSWORD -e "FLUSH PRIVILEGES;"
+    /usr/bin/mysql --user=root --password=$MYSQL_PASSWORD -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('$RET')"
+    /usr/bin/mysql --user=root --password=$MYSQL_PASSWORD -e "SET PASSWORD FOR 'root'@'127.0.0.1' = PASSWORD('$RET')"
+    /usr/bin/mysql --user=root --password=$MYSQL_PASSWORD -e "SET PASSWORD FOR 'root'@'::1' = PASSWORD('$RET')"
+    /usr/bin/mysql --user=root --password=$MYSQL_PASSWORD -e "SET PASSWORD FOR 'root'@'$HOSTNAME' = PASSWORD('$RET')"
+    /usr/bin/mysql --user=root --password=$MYSQL_PASSWORD -e "FLUSH PRIVILEGES;"
 
 }
 
