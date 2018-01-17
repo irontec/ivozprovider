@@ -25,16 +25,16 @@ if [ -z "$2" ]; then
     mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql --user=root --password="$MYSQL_PASSWORD" mysql
 
     # During first time, create database and import initial dump
-    pushd /opt/irontec/ivozprovider/scheme &>/dev/null
+    pushd -q /opt/irontec/ivozprovider/scheme
 		bin/console doctrine:database:create
 		bin/console doctrine:database:import initial.sql
-    popd
+    popd -q
 fi
 
 # Always migrate database
-pushd /opt/irontec/ivozprovider/scheme &>/dev/null
+pushd -q /opt/irontec/ivozprovider/scheme
 bin/console doctrine:migrations:migrate --no-interaction --quiet
 RET=$?
-popd &>/dev/null
+popd -q
 
 exit $RET

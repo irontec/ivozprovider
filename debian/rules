@@ -40,7 +40,7 @@ build_microservices: composer
 build_scheme: composer
 	cd scheme ; ../composer --no-interaction --no-dev --prefer-dist install
 
-override_dh_auto_build: build_doc build_webadmin build_webuser build_webrest build_microservices build_scheme
+override_dh_auto_build: build_doc build_agis build_webadmin build_webuser build_webrest build_microservices build_scheme
 
 override_dh_auto_install:
 	dh_install
