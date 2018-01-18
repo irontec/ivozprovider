@@ -50,13 +50,13 @@ module.exports = {
         "acceptSslCerts": true
       },
       "screenshots" : {
-        "enabled" : false,
+        "enabled" : true,
         "on_failure" : true,
         "on_error" : true,
         "path" : "./errors/"
       },
       "videos": {
-        "enabled": true,
+        "enabled": false,
         "path": "errors",
         "format": "mp4",
         "resolution": "1280x720",

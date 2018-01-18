@@ -40,6 +40,10 @@ class Administrator extends AdministratorAbstract implements AdministratorInterf
      */
     public function setPass($pass = null)
     {
+        if ($pass === $this->getPass()) {
+            return $this;
+        }
+
         $salt = substr(md5(mt_rand(), false), 0, 22);
         $cryptPass = crypt(
             $pass,

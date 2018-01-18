@@ -6,16 +6,16 @@ services:
   ##################################
   ## Service collection
   ##################################
-  Ivoz\Kam\Domain\Service\TrunksUacReg\TrunksUacRegLifecycleServiceCollection:
+  Ivoz\Kam\Domain\Service\TrunksUacreg\TrunksUacregLifecycleServiceCollection:
     public: true
 
   kam.lifecycle.trunks_uacreg.service_collection:
-    '@Ivoz\Kam\Domain\Service\TrunksUacReg\TrunksUacRegLifecycleServiceCollection'
+    '@Ivoz\Kam\Domain\Service\TrunksUacreg\TrunksUacregLifecycleServiceCollection'
 
   ##################################
   ## post_*
   ##################################
-  Ivoz\Kam\Infrastructure\Domain\Service\TrunksUacReg\SendTrunksUacRegReloadRequest:
+  Ivoz\Kam\Infrastructure\Domain\Service\TrunksUacreg\SendTrunksUacRegReloadRequest:
     tags:
       ## post_persist
       - { name: kam.lifecycle.trunks_uacreg.post_persist, priority: 10 }

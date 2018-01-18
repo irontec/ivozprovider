@@ -25,7 +25,7 @@ production:
       maxValue: 100
       source:
         control: Spinner
-    matchlists:
+    relMatchlists:
       title: _('Origin')
       type: multiselect
       source:
@@ -37,7 +37,7 @@ production:
           related: \Ivoz\Provider\Domain\Model\MatchList\MatchList
           relatedFieldName: name
           filterClass: IvozProvider_Klear_Filter_Company
-    schedules:
+    relSchedules:
       title: ngettext('Schedule', 'Schedules', 0)
       type: multiselect
       source:
@@ -49,15 +49,15 @@ production:
           related: \Ivoz\Provider\Domain\Model\Schedule\Schedule
           relatedFieldName: name
           filterClass: IvozProvider_Klear_Filter_Company
-    calendars:
+    relCalendars:
       title: ngettext('Calendar', 'Calendars', 0)
       type: multiselect
       source:
         data: mapper
         config:
           relation: \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendar
-          relationProperty: Calendar
           relationProperty: calendar
+          relatedProperty: calendar
           related: \Ivoz\Provider\Domain\Model\Calendar\Calendar
           relatedFieldName: name
           filterClass: IvozProvider_Klear_Filter_Company

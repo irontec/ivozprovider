@@ -6,7 +6,7 @@ namespace Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule;
  * ConditionalRoutesConditionsRelSchedule
  * @codeCoverageIgnore
  */
-class ConditionalRoutesConditionsRelSchedule extends ConditionalRoutesConditionsRelScheduleAbstract
+class ConditionalRoutesConditionsRelSchedule extends ConditionalRoutesConditionsRelScheduleAbstract implements ConditionalRoutesConditionsRelScheduleInterface
 {
     use ConditionalRoutesConditionsRelScheduleTrait;
 

@@ -1,12 +1,12 @@
 {
     "priority": "1",
-    "matchlists[]": [
+    "relMatchlists[]": [
       ""
     ],
-    "schedules[]": [
+    "relSchedules[]": [
       ""
     ],
-    "calendars[]": [
+    "relCalendars[]": [
       ""
     ],
     "locutionId": "__NULL__",

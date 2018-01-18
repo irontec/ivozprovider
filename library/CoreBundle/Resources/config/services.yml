@@ -1,5 +1,4 @@
 imports:
-  - { resource: '@CoreBundle/Resources/config/services/legacy.yml' }
   - { resource: '@CoreBundle/Resources/config/services/gearmand.yml' }
   - { resource: '@CoreBundle/Resources/config/services/asterisk.yml' }
   - { resource: '@CoreBundle/Resources/config/services/doctrine.yml' }
