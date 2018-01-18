@@ -1,6 +1,6 @@
 <?php
 
-namespace Ivoz\Kam\Infrastructure\Domain\Service\TrunksUacReg;
+namespace Ivoz\Kam\Infrastructure\Domain\Service\TrunksUacreg;
 
 use Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\XmlRpcTrunksRequest;
 use Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregInterface;

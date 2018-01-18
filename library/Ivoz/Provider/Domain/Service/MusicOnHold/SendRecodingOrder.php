@@ -4,7 +4,7 @@ namespace Ivoz\Provider\Domain\Service\MusicOnHold;
 
 use Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHold;
 use Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface;
-use IvozProvider\Gearmand\Jobs\Recoder;
+use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Recoder;
 
 /**
  * Class RecodingOrder
@@ -12,7 +12,16 @@ use IvozProvider\Gearmand\Jobs\Recoder;
  */
 class SendRecodingOrder implements MusicOnHoldLifecycleEventHandlerInterface
 {
-    public function __construct() {}
+    /**
+     * @var Recoder
+     */
+    protected $recoder;
+
+    public function __construct(
+        Recoder $recoder
+    ) {
+        $this->recoder = $recoder;
+    }
 
     public function execute(MusicOnHoldInterface $entity)
     {
@@ -20,9 +29,7 @@ class SendRecodingOrder implements MusicOnHoldLifecycleEventHandlerInterface
         $statusHasChanged = $entity->hasChanged('status');
 
         if ($pendingStatus && $statusHasChanged) {
-            //@todo this is not testable
-            $recoderJob = new Recoder();
-            $recoderJob
+            $this->recoder
                 ->setId($entity->getId())
                 ->setEntityName(MusicOnHold::class)
                 ->send();

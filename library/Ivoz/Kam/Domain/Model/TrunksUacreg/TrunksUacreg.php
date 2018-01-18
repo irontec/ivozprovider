@@ -61,7 +61,10 @@ class TrunksUacreg extends TrunksUacregAbstract implements TrunksUacregInterface
      */
     public function setAuthProxy($authProxy)
     {
-        Assertion::regex($authProxy, '/^sip:.+$|^sips:.+$/');
+        if (!empty($authProxy)) {
+            Assertion::regex($authProxy, '/^sip:.+$|^sips:.+$/');
+        }
+
         return parent::setAuthProxy($authProxy);
     }
 }

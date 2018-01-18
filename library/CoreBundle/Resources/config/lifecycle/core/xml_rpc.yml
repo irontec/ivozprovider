@@ -50,7 +50,7 @@ services:
     class: Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\XmlRpcTrunksRequest
     arguments:
       $xmlrpc:
-        '@Jobs\XmlrpcDelayed'
+        '@Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Xmlrpc::Delayed'
       $rpcMethod:
         'uac.reg_reload'
       $enabled:

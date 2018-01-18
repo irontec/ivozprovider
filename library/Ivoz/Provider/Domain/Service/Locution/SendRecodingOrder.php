@@ -4,7 +4,7 @@ namespace Ivoz\Provider\Domain\Service\Locution;
 
 use Ivoz\Provider\Domain\Model\Locution\Locution;
 use Ivoz\Provider\Domain\Model\Locution\LocutionInterface;
-use IvozProvider\Gearmand\Jobs\Recoder;
+use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Recoder;
 
 /**
  * Class RecodingOrder
@@ -12,7 +12,16 @@ use IvozProvider\Gearmand\Jobs\Recoder;
  */
 class SendRecodingOrder implements LocutionLifecycleEventHandlerInterface
 {
-    public function __construct() {}
+    /**
+     * @var Recoder
+     */
+    protected $recoder;
+
+    public function __construct(
+        Recoder $recoder
+    ) {
+        $this->recoder = $recoder;
+    }
 
     public function execute(LocutionInterface $entity)
     {
@@ -21,9 +30,7 @@ class SendRecodingOrder implements LocutionLifecycleEventHandlerInterface
 
         if ($pendingStatus && $statusHasChanged) {
 
-            //@todo this is not testable
-            $recoderJob = new Recoder();
-            $recoderJob
+            $this->recoder
                 ->setId($entity->getId())
                 ->setEntityName(Locution::class)
                 ->send();

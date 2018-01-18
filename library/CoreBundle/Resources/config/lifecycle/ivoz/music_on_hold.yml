@@ -18,4 +18,5 @@ services:
   Ivoz\Provider\Domain\Service\MusicOnHold\SendRecodingOrder:
     tags:
       - { name: provider.lifecycle.music_on_hold.post_persist, priority: 10 }
-    arguments: ~
+    arguments:
+      $recoder: '@Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Recoder'

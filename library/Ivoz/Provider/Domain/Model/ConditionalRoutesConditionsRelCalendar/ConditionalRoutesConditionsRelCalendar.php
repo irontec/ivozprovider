@@ -6,7 +6,7 @@ namespace Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar;
  * ConditionalRoutesConditionsRelCalendar
  * @codeCoverageIgnore
  */
-class ConditionalRoutesConditionsRelCalendar extends ConditionalRoutesConditionsRelCalendarAbstract
+class ConditionalRoutesConditionsRelCalendar extends ConditionalRoutesConditionsRelCalendarAbstract implements ConditionalRoutesConditionsRelCalendarInterface
 {
     use ConditionalRoutesConditionsRelCalendarTrait;
 

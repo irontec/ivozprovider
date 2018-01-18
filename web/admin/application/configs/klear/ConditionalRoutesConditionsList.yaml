@@ -37,9 +37,9 @@ production:
           queueId: true
           conferenceRoomId: true
           extensionId: true
-          matchlists: true
-          schedules: true
-          calendars: true
+          relMatchlists: true
+          relSchedules: true
+          relCalendars: true
         order:
           priority: true
           ConditionMatch: true
@@ -69,7 +69,7 @@ production:
           ConditionMatch: true
         order: &conditionalRoutesConditionsOrder_link
             priority: true
-            matchlists: true
+            relMatchlists: true
             locutionId: true
       fixedPositions: &conditionalRoutesConditionsPositions_link
         group0:
@@ -82,9 +82,9 @@ production:
           colsPerRow: 12
           fields:
             type: 5
-            matchlists: 4
-            schedules: 4
-            calendars: 4
+            relMatchlists: 4
+            relSchedules: 4
+            relCalendars: 4
         group2:
           label: _("Matching handler")
           colsPerRow: 6
