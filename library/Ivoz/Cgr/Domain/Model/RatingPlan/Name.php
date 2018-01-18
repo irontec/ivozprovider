@@ -3,6 +3,7 @@
 namespace Ivoz\Cgr\Domain\Model\RatingPlan;
 
 use Assert\Assertion;
+use Ivoz\Core\Domain\Model\EntityInterface;
 
 /**
  * Name
@@ -11,13 +12,13 @@ use Assert\Assertion;
 class Name
 {
     /**
-     * @column name_en
+     * column: name_en
      * @var string
      */
     protected $en;
 
     /**
-     * @column name_es
+     * column: name_es
      * @var string
      */
     protected $es;

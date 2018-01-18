@@ -6,6 +6,8 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 
 interface DestinationInterface extends EntityInterface
 {
+    public function __toString();
+
     /**
      * Set tag
      *

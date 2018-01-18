@@ -677,7 +677,7 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Get ratinProfiles
      *
-     * @return \Ivoz\Provider\Domain\Model\PricingPlansRelCompany\PricingPlansRelCompanyInterface[]
+     * @return \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface[]
      */
     public function getRatinProfiles(\Doctrine\Common\Collections\Criteria $criteria = null);
 

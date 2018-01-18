@@ -148,14 +148,14 @@ abstract class AccCdrDtoAbstract implements DataTransferObjectInterface
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\PricingPlan\PricingPlanDto | null
+     * @var \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanDto | null
      */
-    private $pricingPlan;
+    private $ratingPlan;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\TargetPattern\TargetPatternDto | null
+     * @var \Ivoz\Cgr\Domain\Model\Destination\DestinationDto | null
      */
-    private $targetPattern;
+    private $destination;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\Invoice\InvoiceDto | null
@@ -217,8 +217,8 @@ abstract class AccCdrDtoAbstract implements DataTransferObjectInterface
             'direction' => 'direction',
             'reMeteringDate' => 'reMeteringDate',
             'id' => 'id',
-            'pricingPlanId' => 'pricingPlan',
-            'targetPatternId' => 'targetPattern',
+            'ratingPlanId' => 'ratingPlan',
+            'destinationId' => 'destination',
             'invoiceId' => 'invoice',
             'brandId' => 'brand',
             'companyId' => 'company'
@@ -258,8 +258,8 @@ abstract class AccCdrDtoAbstract implements DataTransferObjectInterface
             'direction' => $this->getDirection(),
             'reMeteringDate' => $this->getReMeteringDate(),
             'id' => $this->getId(),
-            'pricingPlan' => $this->getPricingPlan(),
-            'targetPattern' => $this->getTargetPattern(),
+            'ratingPlan' => $this->getRatingPlan(),
+            'destination' => $this->getDestination(),
             'invoice' => $this->getInvoice(),
             'brand' => $this->getBrand(),
             'company' => $this->getCompany()
@@ -271,8 +271,8 @@ abstract class AccCdrDtoAbstract implements DataTransferObjectInterface
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
-        $this->pricingPlan = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\PricingPlan\\PricingPlan', $this->getPricingPlanId());
-        $this->targetPattern = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\TargetPattern\\TargetPattern', $this->getTargetPatternId());
+        $this->ratingPlan = $transformer->transform('Ivoz\\Cgr\\Domain\\Model\\RatingPlan\\RatingPlan', $this->getRatingPlanId());
+        $this->destination = $transformer->transform('Ivoz\\Cgr\\Domain\\Model\\Destination\\Destination', $this->getDestinationId());
         $this->invoice = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Invoice\\Invoice', $this->getInvoiceId());
         $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
         $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
@@ -827,23 +827,23 @@ abstract class AccCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\PricingPlan\PricingPlanDto $pricingPlan
+     * @param \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanDto $ratingPlan
      *
      * @return static
      */
-    public function setPricingPlan(\Ivoz\Provider\Domain\Model\PricingPlan\PricingPlanDto $pricingPlan = null)
+    public function setRatingPlan(\Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanDto $ratingPlan = null)
     {
-        $this->pricingPlan = $pricingPlan;
+        $this->ratingPlan = $ratingPlan;
 
         return $this;
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\PricingPlan\PricingPlanDto
+     * @return \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanDto
      */
-    public function getPricingPlan()
+    public function getRatingPlan()
     {
-        return $this->pricingPlan;
+        return $this->ratingPlan;
     }
 
         /**
@@ -851,21 +851,21 @@ abstract class AccCdrDtoAbstract implements DataTransferObjectInterface
          *
          * @return static
          */
-        public function setPricingPlanId($id)
+        public function setRatingPlanId($id)
         {
             $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\PricingPlan\PricingPlanDto($id)
+                ? new \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanDto($id)
                 : null;
 
-            return $this->setPricingPlan($value);
+            return $this->setRatingPlan($value);
         }
 
         /**
          * @return integer | null
          */
-        public function getPricingPlanId()
+        public function getRatingPlanId()
         {
-            if ($dto = $this->getPricingPlan()) {
+            if ($dto = $this->getRatingPlan()) {
                 return $dto->getId();
             }
 
@@ -873,23 +873,23 @@ abstract class AccCdrDtoAbstract implements DataTransferObjectInterface
         }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\TargetPattern\TargetPatternDto $targetPattern
+     * @param \Ivoz\Cgr\Domain\Model\Destination\DestinationDto $destination
      *
      * @return static
      */
-    public function setTargetPattern(\Ivoz\Provider\Domain\Model\TargetPattern\TargetPatternDto $targetPattern = null)
+    public function setDestination(\Ivoz\Cgr\Domain\Model\Destination\DestinationDto $destination = null)
     {
-        $this->targetPattern = $targetPattern;
+        $this->destination = $destination;
 
         return $this;
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\TargetPattern\TargetPatternDto
+     * @return \Ivoz\Cgr\Domain\Model\Destination\DestinationDto
      */
-    public function getTargetPattern()
+    public function getDestination()
     {
-        return $this->targetPattern;
+        return $this->destination;
     }
 
         /**
@@ -897,21 +897,21 @@ abstract class AccCdrDtoAbstract implements DataTransferObjectInterface
          *
          * @return static
          */
-        public function setTargetPatternId($id)
+        public function setDestinationId($id)
         {
             $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\TargetPattern\TargetPatternDto($id)
+                ? new \Ivoz\Cgr\Domain\Model\Destination\DestinationDto($id)
                 : null;
 
-            return $this->setTargetPattern($value);
+            return $this->setDestination($value);
         }
 
         /**
          * @return integer | null
          */
-        public function getTargetPatternId()
+        public function getDestinationId()
         {
-            if ($dto = $this->getTargetPattern()) {
+            if ($dto = $this->getDestination()) {
                 return $dto->getId();
             }
 

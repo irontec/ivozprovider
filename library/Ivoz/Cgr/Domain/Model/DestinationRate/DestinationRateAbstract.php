@@ -4,6 +4,8 @@ namespace Ivoz\Cgr\Domain\Model\DestinationRate;
 
 use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\ChangelogTrait;
+use Ivoz\Core\Domain\Model\EntityInterface;
 
 /**
  * DestinationRateAbstract
@@ -32,11 +34,7 @@ abstract class DestinationRateAbstract
     protected $brand;
 
 
-    /**
-     * Changelog tracking purpose
-     * @var array
-     */
-    protected $_initialValues = [];
+    use ChangelogTrait;
 
     /**
      * Constructor
@@ -47,70 +45,14 @@ abstract class DestinationRateAbstract
         $this->setDescription($description);
     }
 
-    /**
-     * @param string $fieldName
-     * @return mixed
-     * @throws \Exception
-     */
-    public function initChangelog()
+    abstract public function getId();
+
+    public function __toString()
     {
-        $values = $this->__toArray();
-        if (!$this->getId()) {
-            // Empty values for entities with no Id
-            foreach ($values as $key => $val) {
-                $values[$key] = null;
-            }
-        }
-
-        $this->_initialValues = $values;
-    }
-
-    /**
-     * @param string $fieldName
-     * @return mixed
-     * @throws \Exception
-     */
-    public function hasChanged($dbFieldName)
-    {
-        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
-            throw new \Exception($dbFieldName . ' field was not found');
-        }
-        $currentValues = $this->__toArray();
-
-        return $currentValues[$dbFieldName] != $this->_initialValues[$dbFieldName];
-    }
-
-    public function getInitialValue($dbFieldName)
-    {
-        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
-            throw new \Exception($dbFieldName . ' field was not found');
-        }
-
-        return $this->_initialValues[$dbFieldName];
-    }
-
-    /**
-     * @return array
-     */
-    protected function getChangeSet()
-    {
-        $changes = [];
-        $currentValues = $this->__toArray();
-        foreach ($currentValues as $key => $value) {
-
-            if ($this->_initialValues[$key] == $currentValues[$key]) {
-                continue;
-            }
-
-            $value = $currentValues[$key];
-            if ($value instanceof \DateTime) {
-                $value = $value->format('Y-m-d H:i:s');
-            }
-
-            $changes[$key] = $value;
-        }
-
-        return $changes;
+        return sprintf("%s#%s",
+            "DestinationRate",
+            $this->getId()
+        );
     }
 
     /**
@@ -122,11 +64,36 @@ abstract class DestinationRateAbstract
     }
 
     /**
-     * @return DestinationRateDTO
+     * @param null $id
+     * @return DestinationRateDto
      */
-    public static function createDTO()
+    public static function createDto($id = null)
     {
-        return new DestinationRateDTO();
+        return new DestinationRateDto($id);
+    }
+
+    /**
+     * @param EntityInterface|null $entity
+     * @param int $depth
+     * @return DestinationRateDto|null
+     */
+    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    {
+        if (!$entity) {
+            return null;
+        }
+
+        Assertion::isInstanceOf($entity, DestinationRateInterface::class);
+
+        if ($depth < 1) {
+            return static::createDto($entity->getId());
+        }
+
+        if ($entity instanceof \Doctrine\ORM\Proxy\Proxy && !$entity->__isInitialized()) {
+            return static::createDto($entity->getId());
+        }
+
+        return $entity->toDto($depth-1);
     }
 
     /**
@@ -134,12 +101,12 @@ abstract class DestinationRateAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDTO(DataTransferObjectInterface $dto)
+    public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto DestinationRateDTO
+         * @var $dto DestinationRateDto
          */
-        Assertion::isInstanceOf($dto, DestinationRateDTO::class);
+        Assertion::isInstanceOf($dto, DestinationRateDto::class);
 
         $name = new Name(
             $dto->getNameEn(),
@@ -171,12 +138,12 @@ abstract class DestinationRateAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDTO(DataTransferObjectInterface $dto)
+    public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto DestinationRateDTO
+         * @var $dto DestinationRateDto
          */
-        Assertion::isInstanceOf($dto, DestinationRateDTO::class);
+        Assertion::isInstanceOf($dto, DestinationRateDto::class);
 
         $name = new Name(
             $dto->getNameEn(),
@@ -201,17 +168,18 @@ abstract class DestinationRateAbstract
     }
 
     /**
-     * @return DestinationRateDTO
+     * @param int $depth
+     * @return DestinationRateDto
      */
-    public function toDTO()
+    public function toDto($depth = 0)
     {
-        return self::createDTO()
+        return self::createDto()
             ->setTag($this->getTag())
             ->setNameEn($this->getName()->getEn())
             ->setNameEs($this->getName()->getEs())
             ->setDescriptionEn($this->getDescription()->getEn())
             ->setDescriptionEs($this->getDescription()->getEs())
-            ->setBrandId($this->getBrand() ? $this->getBrand()->getId() : null);
+            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto($this->getBrand(), $depth));
     }
 
     /**

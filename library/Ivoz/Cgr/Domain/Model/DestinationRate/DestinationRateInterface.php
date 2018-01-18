@@ -6,6 +6,8 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 
 interface DestinationRateInterface extends EntityInterface
 {
+    public function __toString();
+
     /**
      * Set tag
      *

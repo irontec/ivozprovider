@@ -4,6 +4,8 @@ namespace Ivoz\Cgr\Domain\Model\TpDestinationRate;
 
 use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Ivoz\Core\Domain\Model\ChangelogTrait;
+use Ivoz\Core\Domain\Model\EntityInterface;
 
 /**
  * TpDestinationRateAbstract
@@ -22,43 +24,43 @@ abstract class TpDestinationRateAbstract
     protected $tag;
 
     /**
-     * @column destinations_tag
+     * column: destinations_tag
      * @var string
      */
     protected $destinationsTag;
 
     /**
-     * @column rates_tag
+     * column: rates_tag
      * @var string
      */
     protected $ratesTag;
 
     /**
-     * @column rounding_method
+     * column: rounding_method
      * @var string
      */
     protected $roundingMethod = '*up';
 
     /**
-     * @column rounding_decimals
+     * column: rounding_decimals
      * @var integer
      */
     protected $roundingDecimals = 4;
 
     /**
-     * @column max_cost
+     * column: max_cost
      * @var string
      */
     protected $maxCost = '0.000';
 
     /**
-     * @column max_cost_strategy
+     * column: max_cost_strategy
      * @var string
      */
     protected $maxCostStrategy = '';
 
     /**
-     * @column created_at
+     * column: created_at
      * @var \DateTime
      */
     protected $createdAt;
@@ -79,11 +81,7 @@ abstract class TpDestinationRateAbstract
     protected $rate;
 
 
-    /**
-     * Changelog tracking purpose
-     * @var array
-     */
-    protected $_initialValues = [];
+    use ChangelogTrait;
 
     /**
      * Constructor
@@ -104,70 +102,14 @@ abstract class TpDestinationRateAbstract
         $this->setCreatedAt($createdAt);
     }
 
-    /**
-     * @param string $fieldName
-     * @return mixed
-     * @throws \Exception
-     */
-    public function initChangelog()
+    abstract public function getId();
+
+    public function __toString()
     {
-        $values = $this->__toArray();
-        if (!$this->getId()) {
-            // Empty values for entities with no Id
-            foreach ($values as $key => $val) {
-                $values[$key] = null;
-            }
-        }
-
-        $this->_initialValues = $values;
-    }
-
-    /**
-     * @param string $fieldName
-     * @return mixed
-     * @throws \Exception
-     */
-    public function hasChanged($dbFieldName)
-    {
-        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
-            throw new \Exception($dbFieldName . ' field was not found');
-        }
-        $currentValues = $this->__toArray();
-
-        return $currentValues[$dbFieldName] != $this->_initialValues[$dbFieldName];
-    }
-
-    public function getInitialValue($dbFieldName)
-    {
-        if (!array_key_exists($dbFieldName, $this->_initialValues)) {
-            throw new \Exception($dbFieldName . ' field was not found');
-        }
-
-        return $this->_initialValues[$dbFieldName];
-    }
-
-    /**
-     * @return array
-     */
-    protected function getChangeSet()
-    {
-        $changes = [];
-        $currentValues = $this->__toArray();
-        foreach ($currentValues as $key => $value) {
-
-            if ($this->_initialValues[$key] == $currentValues[$key]) {
-                continue;
-            }
-
-            $value = $currentValues[$key];
-            if ($value instanceof \DateTime) {
-                $value = $value->format('Y-m-d H:i:s');
-            }
-
-            $changes[$key] = $value;
-        }
-
-        return $changes;
+        return sprintf("%s#%s",
+            "TpDestinationRate",
+            $this->getId()
+        );
     }
 
     /**
@@ -179,11 +121,36 @@ abstract class TpDestinationRateAbstract
     }
 
     /**
-     * @return TpDestinationRateDTO
+     * @param null $id
+     * @return TpDestinationRateDto
      */
-    public static function createDTO()
+    public static function createDto($id = null)
     {
-        return new TpDestinationRateDTO();
+        return new TpDestinationRateDto($id);
+    }
+
+    /**
+     * @param EntityInterface|null $entity
+     * @param int $depth
+     * @return TpDestinationRateDto|null
+     */
+    public static function entityToDto(EntityInterface $entity = null, $depth = 0)
+    {
+        if (!$entity) {
+            return null;
+        }
+
+        Assertion::isInstanceOf($entity, TpDestinationRateInterface::class);
+
+        if ($depth < 1) {
+            return static::createDto($entity->getId());
+        }
+
+        if ($entity instanceof \Doctrine\ORM\Proxy\Proxy && !$entity->__isInitialized()) {
+            return static::createDto($entity->getId());
+        }
+
+        return $entity->toDto($depth-1);
     }
 
     /**
@@ -191,12 +158,12 @@ abstract class TpDestinationRateAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public static function fromDTO(DataTransferObjectInterface $dto)
+    public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto TpDestinationRateDTO
+         * @var $dto TpDestinationRateDto
          */
-        Assertion::isInstanceOf($dto, TpDestinationRateDTO::class);
+        Assertion::isInstanceOf($dto, TpDestinationRateDto::class);
 
         $self = new static(
             $dto->getTpid(),
@@ -225,12 +192,12 @@ abstract class TpDestinationRateAbstract
      * @param DataTransferObjectInterface $dto
      * @return self
      */
-    public function updateFromDTO(DataTransferObjectInterface $dto)
+    public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto TpDestinationRateDTO
+         * @var $dto TpDestinationRateDto
          */
-        Assertion::isInstanceOf($dto, TpDestinationRateDTO::class);
+        Assertion::isInstanceOf($dto, TpDestinationRateDto::class);
 
         $this
             ->setTpid($dto->getTpid())
@@ -253,11 +220,12 @@ abstract class TpDestinationRateAbstract
     }
 
     /**
-     * @return TpDestinationRateDTO
+     * @param int $depth
+     * @return TpDestinationRateDto
      */
-    public function toDTO()
+    public function toDto($depth = 0)
     {
-        return self::createDTO()
+        return self::createDto()
             ->setTpid($this->getTpid())
             ->setTag($this->getTag())
             ->setDestinationsTag($this->getDestinationsTag())
@@ -267,9 +235,9 @@ abstract class TpDestinationRateAbstract
             ->setMaxCost($this->getMaxCost())
             ->setMaxCostStrategy($this->getMaxCostStrategy())
             ->setCreatedAt($this->getCreatedAt())
-            ->setDestinationRateId($this->getDestinationRate() ? $this->getDestinationRate()->getId() : null)
-            ->setDestinationId($this->getDestination() ? $this->getDestination()->getId() : null)
-            ->setRateId($this->getRate() ? $this->getRate()->getId() : null);
+            ->setDestinationRate(\Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRate::entityToDto($this->getDestinationRate(), $depth))
+            ->setDestination(\Ivoz\Cgr\Domain\Model\Destination\Destination::entityToDto($this->getDestination(), $depth))
+            ->setRate(\Ivoz\Cgr\Domain\Model\Rate\Rate::entityToDto($this->getRate(), $depth));
     }
 
     /**

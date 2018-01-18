@@ -7,6 +7,16 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 interface TpRateInterface extends EntityInterface
 {
     /**
+     * Validate RateIncrement has valid unit
+     *
+     * @param string $rateIncrement
+     * @return $this|TpRateAbstract|TpRateInterface
+     */
+    public function setRateIncrement($rateIncrement);
+
+    public function __toString();
+
+    /**
      * Set tpid
      *
      * @param string $tpid
@@ -85,15 +95,6 @@ interface TpRateInterface extends EntityInterface
      * @return string
      */
     public function getRateUnit();
-
-    /**
-     * Set rateIncrement
-     *
-     * @param string $rateIncrement
-     *
-     * @return self
-     */
-    public function setRateIncrement($rateIncrement);
 
     /**
      * Get rateIncrement

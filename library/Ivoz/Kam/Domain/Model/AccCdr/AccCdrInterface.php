@@ -7,20 +7,9 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 interface AccCdrInterface extends EntityInterface
 {
     /**
-     * @todo move this to its own service
-     */
-    public function tarificate($plan = null);
-
-    /**
      * @return bool
      */
     public function isBounced();
-
-    /**
-     * @param array $data
-     * @return AccCdrInterface
-     */
-    public function setPricingPlanDetailsFromArray(array $data);
 
     public function __toString();
 
@@ -441,36 +430,36 @@ interface AccCdrInterface extends EntityInterface
     public function getReMeteringDate();
 
     /**
-     * Set pricingPlan
+     * Set ratingPlan
      *
-     * @param \Ivoz\Provider\Domain\Model\PricingPlan\PricingPlanInterface $pricingPlan
-     *
-     * @return self
-     */
-    public function setPricingPlan(\Ivoz\Provider\Domain\Model\PricingPlan\PricingPlanInterface $pricingPlan = null);
-
-    /**
-     * Get pricingPlan
-     *
-     * @return \Ivoz\Provider\Domain\Model\PricingPlan\PricingPlanInterface
-     */
-    public function getPricingPlan();
-
-    /**
-     * Set targetPattern
-     *
-     * @param \Ivoz\Provider\Domain\Model\TargetPattern\TargetPatternInterface $targetPattern
+     * @param \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan
      *
      * @return self
      */
-    public function setTargetPattern(\Ivoz\Provider\Domain\Model\TargetPattern\TargetPatternInterface $targetPattern = null);
+    public function setRatingPlan(\Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan = null);
 
     /**
-     * Get targetPattern
+     * Get ratingPlan
      *
-     * @return \Ivoz\Provider\Domain\Model\TargetPattern\TargetPatternInterface
+     * @return \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanInterface
      */
-    public function getTargetPattern();
+    public function getRatingPlan();
+
+    /**
+     * Set destination
+     *
+     * @param \Ivoz\Cgr\Domain\Model\Destination\DestinationInterface $destination
+     *
+     * @return self
+     */
+    public function setDestination(\Ivoz\Cgr\Domain\Model\Destination\DestinationInterface $destination = null);
+
+    /**
+     * Get destination
+     *
+     * @return \Ivoz\Cgr\Domain\Model\Destination\DestinationInterface
+     */
+    public function getDestination();
 
     /**
      * Set invoice

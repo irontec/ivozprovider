@@ -13,10 +13,6 @@ use Ivoz\Core\Domain\Model\EntityInterface;
  */
 abstract class AccCdrAbstract
 {
-    protected $ratingPlan;
-
-    protected $destination;
-
     /**
      * @var string
      */
@@ -149,6 +145,15 @@ abstract class AccCdrAbstract
      */
     protected $reMeteringDate;
 
+    /**
+     * @var \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanInterface
+     */
+    protected $ratingPlan;
+
+    /**
+     * @var \Ivoz\Cgr\Domain\Model\Destination\DestinationInterface
+     */
+    protected $destination;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface
@@ -275,8 +280,8 @@ abstract class AccCdrAbstract
             ->setPricingPlanDetails($dto->getPricingPlanDetails())
             ->setDirection($dto->getDirection())
             ->setReMeteringDate($dto->getReMeteringDate())
-            ->setPricingPlan($dto->getPricingPlan())
-            ->setTargetPattern($dto->getTargetPattern())
+            ->setRatingPlan($dto->getRatingPlan())
+            ->setDestination($dto->getDestination())
             ->setInvoice($dto->getInvoice())
             ->setBrand($dto->getBrand())
             ->setCompany($dto->getCompany())
@@ -326,8 +331,8 @@ abstract class AccCdrAbstract
             ->setPricingPlanDetails($dto->getPricingPlanDetails())
             ->setDirection($dto->getDirection())
             ->setReMeteringDate($dto->getReMeteringDate())
-            ->setPricingPlan($dto->getPricingPlan())
-            ->setTargetPattern($dto->getTargetPattern())
+            ->setRatingPlan($dto->getRatingPlan())
+            ->setDestination($dto->getDestination())
             ->setInvoice($dto->getInvoice())
             ->setBrand($dto->getBrand())
             ->setCompany($dto->getCompany());
@@ -371,8 +376,8 @@ abstract class AccCdrAbstract
             ->setPricingPlanDetails($this->getPricingPlanDetails())
             ->setDirection($this->getDirection())
             ->setReMeteringDate($this->getReMeteringDate())
-            ->setPricingPlan(\Ivoz\Provider\Domain\Model\PricingPlan\PricingPlan::entityToDto($this->getPricingPlan(), $depth))
-            ->setTargetPattern(\Ivoz\Provider\Domain\Model\TargetPattern\TargetPattern::entityToDto($this->getTargetPattern(), $depth))
+            ->setRatingPlan(\Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlan::entityToDto($this->getRatingPlan(), $depth))
+            ->setDestination(\Ivoz\Cgr\Domain\Model\Destination\Destination::entityToDto($this->getDestination(), $depth))
             ->setInvoice(\Ivoz\Provider\Domain\Model\Invoice\Invoice::entityToDto($this->getInvoice(), $depth))
             ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto($this->getBrand(), $depth))
             ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto($this->getCompany(), $depth));
@@ -410,8 +415,8 @@ abstract class AccCdrAbstract
             'pricingPlanDetails' => self::getPricingPlanDetails(),
             'direction' => self::getDirection(),
             'reMeteringDate' => self::getReMeteringDate(),
-            'pricingPlanId' => self::getPricingPlan() ? self::getPricingPlan()->getId() : null,
-            'targetPatternId' => self::getTargetPattern() ? self::getTargetPattern()->getId() : null,
+            'ratingPlanId' => self::getRatingPlan() ? self::getRatingPlan()->getId() : null,
+            'destinationId' => self::getDestination() ? self::getDestination()->getId() : null,
             'invoiceId' => self::getInvoice() ? self::getInvoice()->getId() : null,
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null
@@ -1156,7 +1161,53 @@ abstract class AccCdrAbstract
         return $this->reMeteringDate;
     }
 
+    /**
+     * Set ratingPlan
+     *
+     * @param \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan
+     *
+     * @return self
+     */
+    public function setRatingPlan(\Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan = null)
+    {
+        $this->ratingPlan = $ratingPlan;
 
+        return $this;
+    }
+
+    /**
+     * Get ratingPlan
+     *
+     * @return \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanInterface
+     */
+    public function getRatingPlan()
+    {
+        return $this->ratingPlan;
+    }
+
+    /**
+     * Set destination
+     *
+     * @param \Ivoz\Cgr\Domain\Model\Destination\DestinationInterface $destination
+     *
+     * @return self
+     */
+    public function setDestination(\Ivoz\Cgr\Domain\Model\Destination\DestinationInterface $destination = null)
+    {
+        $this->destination = $destination;
+
+        return $this;
+    }
+
+    /**
+     * Get destination
+     *
+     * @return \Ivoz\Cgr\Domain\Model\Destination\DestinationInterface
+     */
+    public function getDestination()
+    {
+        return $this->destination;
+    }
 
     /**
      * Set invoice

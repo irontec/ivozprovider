@@ -178,9 +178,9 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     private $terminals = null;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\PricingPlansRelCompany\PricingPlansRelCompanyDto[] | null
+     * @var \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileDto[] | null
      */
-    private $relPricingPlans = null;
+    private $ratinProfiles = null;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldDto[] | null
@@ -290,7 +290,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'friends' => $this->getFriends(),
             'companyServices' => $this->getCompanyServices(),
             'terminals' => $this->getTerminals(),
-            'relPricingPlans' => $this->getRelPricingPlans(),
+            'ratinProfiles' => $this->getRatinProfiles(),
             'musicsOnHold' => $this->getMusicsOnHold(),
             'recordings' => $this->getRecordings(),
             'relFeatures' => $this->getRelFeatures(),
@@ -368,12 +368,12 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             }
         }
 
-        if (!is_null($this->relPricingPlans)) {
-            $items = $this->getRelPricingPlans();
-            $this->relPricingPlans = [];
+        if (!is_null($this->ratinProfiles)) {
+            $items = $this->getRatinProfiles();
+            $this->ratinProfiles = [];
             foreach ($items as $item) {
-                $this->relPricingPlans[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\PricingPlansRelCompany\\PricingPlansRelCompany',
+                $this->ratinProfiles[] = $transformer->transform(
+                    'Ivoz\\Cgr\\Domain\\Model\\TpRatingProfile\\TpRatingProfile',
                     $item->getId() ?? $item
                 );
             }
@@ -450,9 +450,9 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'Ivoz\\Provider\\Domain\\Model\\Terminal\\Terminal',
             $this->terminals
         );
-        $this->relPricingPlans = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\PricingPlansRelCompany\\PricingPlansRelCompany',
-            $this->relPricingPlans
+        $this->ratinProfiles = $transformer->transform(
+            'Ivoz\\Cgr\\Domain\\Model\\TpRatingProfile\\TpRatingProfile',
+            $this->ratinProfiles
         );
         $this->musicsOnHold = $transformer->transform(
             'Ivoz\\Provider\\Domain\\Model\\MusicOnHold\\MusicOnHold',
@@ -1393,13 +1393,13 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param array $relPricingPlans
+     * @param array $ratinProfiles
      *
      * @return static
      */
-    public function setRelPricingPlans($relPricingPlans = null)
+    public function setRatinProfiles($ratinProfiles = null)
     {
-        $this->relPricingPlans = $relPricingPlans;
+        $this->ratinProfiles = $ratinProfiles;
 
         return $this;
     }
@@ -1407,9 +1407,9 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     /**
      * @return array
      */
-    public function getRelPricingPlans()
+    public function getRatinProfiles()
     {
-        return $this->relPricingPlans;
+        return $this->ratinProfiles;
     }
 
     /**
