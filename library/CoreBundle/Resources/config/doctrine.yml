@@ -43,3 +43,8 @@ doctrine:
         is_bundle: false
         dir: '%kernel.root_dir%/../../../library/Ivoz/Kam/Infrastructure/Persistence/Doctrine/Mapping'
         prefix: Ivoz\Kam\Domain\Model
+      Cgr:
+        type: yml
+        is_bundle: false
+        dir: '%kernel.root_dir%/../../../library/Ivoz/Cgr/Infrastructure/Persistence/Doctrine/Mapping'
+        prefix: Ivoz\Cgr\Domain\Model

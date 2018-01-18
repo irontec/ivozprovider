@@ -1,0 +1,85 @@
+Ivoz\Cgr\Domain\Model\TpRate\TpRateAbstract:
+  type: mappedSuperclass
+  indexes:
+    tpid:
+      columns:
+        - tpid
+    tpid_rtid:
+      columns:
+        - tpid
+        - tag
+  uniqueConstraints:
+    unique_tprate:
+      columns:
+        - tpid
+        - tag
+        - group_interval_start
+        - rateId
+  fields:
+    tpid:
+      type: string
+      nullable: false
+      length: 64
+      options:
+        fixed: false
+        default: 'ivozprovider'
+    tag:
+      type: string
+      nullable: true
+      length: 64
+      options:
+        fixed: false
+    connectFee:
+      type: decimal
+      nullable: false
+      precision: 10
+      scale: 4
+      column: connect_fee
+    rateCost:
+      type: decimal
+      nullable: false
+      precision: 10
+      scale: 4
+      column: rate
+    rateUnit:
+      type: string
+      nullable: false
+      length: 16
+      options:
+        fixed: false
+        default: "60s"
+      column: rate_unit
+    rateIncrement:
+      type: string
+      nullable: false
+      length: 16
+      options:
+        fixed: false
+      column: rate_increment
+    groupIntervalStart:
+      type: string
+      nullable: false
+      length: 16
+      options:
+        fixed: false
+        default: "0s"
+      column: group_interval_start
+    createdAt:
+      type: datetime
+      nullable: false
+      options:
+        default: CURRENT_TIMESTAMP
+      column: created_at
+  manyToOne:
+    rate:
+      targetEntity: \Ivoz\Cgr\Domain\Model\Rate\RateInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        rateId:
+          nullable: false
+          referencedColumnName: id
+          onDelete: cascade
+      orphanRemoval: false

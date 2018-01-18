@@ -202,41 +202,6 @@ class Company extends CompanyAbstract implements CompanyInterface
         return array_shift($terminals);
     }
 
-    public function getCompanyActivePricingPlan($date = null)
-    {
-        /**
-         * @var Company $this
-         */
-        if (is_null($date)) {
-            $date = new \DateTime();
-            $date->setTimezone(new \DateTimeZone('UTC'));
-        }
-        $dateTime = $date->format('Y-m-d H:i:s');
-
-        $criteria = Criteria::create();
-        $criteria
-            ->where(
-                Criteria::expr()->lte('validFrom', $dateTime)
-            )
-            ->andWhere(
-                Criteria::expr()->gte('validTo', $dateTime)
-            )
-            ->orderBy('metric', Criteria::ASC)
-        ;
-
-//        $this->_logger->log("[Model][Companies] Condition: " . $where,
-//            \Zend_Log::DEBUG);
-//        $order = "metric asc";
-        $companyPricingPlans = $this->getRelPricingPlans($criteria);
-
-        if (empty($companyPricingPlans)) {
-//            $this->_logger->log("[Model][Companies] No active Pricing Plan.",
-//                \Zend_Log::WARN);
-            return array();
-        }
-        return $companyPricingPlans;
-    }
-
     public function getLanguageCode()
     {
         /**

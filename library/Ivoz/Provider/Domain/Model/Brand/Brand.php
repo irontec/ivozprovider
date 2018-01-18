@@ -51,34 +51,6 @@ class Brand extends BrandAbstract implements BrandInterface, FileContainerInterf
         return parent::setDomainUsers(trim($domainUsers));
     }
 
-    public function getActivePricingPlans($date = null)
-    {
-        $activePricingPlans = array();
-
-        /**
-         * @var $company CompanyInterface
-         */
-        foreach ($this->getCompanies() as $company) {
-//            $this>_logger>log("[Brands] Company: ".$company>getName(), \Zend_Log::DEBUG);
-            if (!is_null($company->getActivePricingPlan($date))) {
-//                $this>_logger>log("[Brands] Active Pricing Plan is NOT null.", \Zend_Log::DEBUG);
-                $activePricingPlans[] = $company->getActivePricingPlan();
-            }
-        }
-
-        return $activePricingPlans;
-    }
-
-    public function getActivePrincingPlansIds($date = null)
-    {
-        $activePricingPlansIds = array();
-        foreach ($this->getActivePricingPlans($date) as $activePricingPlan) {
-            $activePricingPlansIds[] = $activePricingPlan->getId();
-        }
-
-        return $activePricingPlansIds;
-    }
-
     public function getLanguageCode()
     {
         $language = $this->getLanguage();

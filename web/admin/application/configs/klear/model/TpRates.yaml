@@ -1,0 +1,56 @@
+production:
+  class: \IvozProvider\Model\TpRate
+  entity: Ivoz\Cgr\Domain\Model\TpRate\TpRate
+  fields: 
+    connectFee:
+      title: _('Connection fee')
+      type: text
+      pattern: "^[0-9]{1,6}[.]{0,1}[0-9]*$"
+      trim: both
+      required: true
+      default: true
+      defaultValue: "0.0000"
+      sufix: "€"
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Use point as decimal delimiter - e.g. 0.02")
+        label: _("Need help?")
+    rateCost:
+      title: _('Per minute rate')
+      type: text
+      pattern: "^[0-9]{1,6}[.]{0,1}[0-9]*$"
+      trim: both
+      required: true
+      defaultValue: "0.0000"
+      sufix: "€"
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Use point as decimal delimiter - e.g. 0.02")
+        label: _("Need help?")
+    rateIncrement:
+      title: _('Charge period')
+      type: number
+      defaultValue: 1
+      required: true
+      source:
+        control: Spinner
+        min: 1
+        step: 1
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Interval in seconds to increase call cost.")
+        label: _("Need help?")
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

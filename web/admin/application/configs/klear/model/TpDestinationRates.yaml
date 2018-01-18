@@ -1,0 +1,44 @@
+production:
+  class: \IvozProvider\Model\TpDestinationRates
+  entity: Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRate
+  fields: 
+    id:
+      title: ngettext('Id', 'Ids', 1)
+      required: false 
+    destinationId:
+      title: ngettext('Destination', 'Destination', 1)
+      type: select
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Cgr\Domain\Model\Destination\Destination
+          filterClass: IvozProvider_Klear_Filter_Brand
+          fieldName:
+            fields:
+              - name${lang}
+            template: '%name${lang}%'
+          order:
+            Destination.name.${lang}: asc
+    rateId:
+      title: ngettext('Rate', 'Rates', 1)
+      type: select
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Cgr\Domain\Model\Rate\Rate
+          filterClass: IvozProvider_Klear_Filter_Brand
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order:
+            Rate.name: asc
+
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

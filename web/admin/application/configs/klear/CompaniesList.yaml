@@ -2,6 +2,7 @@
 #include conf.d/actions.yaml
 #include AdministratorsList.yaml
 #include PricingPlansRelCompaniesList.yaml
+#include TpRatingProfilesList.yaml
 #include OutgoingRoutingList.yaml
 #include KamUsersAddressList.yaml
 
@@ -27,7 +28,7 @@ production:
             companiesEdit_screen: true
             kamUsersAddressList_screen: true
             administratorsList_screen: true
-            pricingPlansRelCompaniesList_screen: ${auth.brand.billing.enabled}
+            tpRatingProfilesList_screen: ${auth.brand.billing.enabled}
             outgoingRoutingList_screen: true
           dialogs:
             companiesDel_dialog: false
@@ -263,19 +264,19 @@ production:
       forcedValues:
         <<: *forcedBrand
 
-    #pricingPlansRelCompanies:
-    <<: *pricingPlansRelCompanies_screensLink
-    pricingPlansRelCompaniesList_screen:
-      <<: *pricingPlansRelCompaniesList_screenLink
-      filterField: Company
+    # tpRatingPlan:
+    <<: *tpRatingProfiles_screensLink
+    tpRatingProfilesList_screen:
+      <<: *tpRatingProfilesList_screenLink
+      filterField: company
       parentOptionCustomizer:
         - recordCount
-    pricingPlansRelCompaniesNew_screen:
-      <<: *pricingPlansRelCompaniesNew_screenLink
-      filterField: Company
-    pricingPlansRelCompaniesEdit_screen:
-      <<: *pricingPlansRelCompaniesEdit_screenLink
-      filterField: Company
+    tpRatingProfilesNew_screen:
+      <<: *tpRatingProfilesNew_screenLink
+      filterField: company
+    tpRatingProfilesEdit_screen:
+      <<: *tpRatingProfilesEdit_screenLink
+      filterField: company
 
     # outgoingRouting
     <<: *outgoingRouting_screensLink
@@ -350,8 +351,9 @@ production:
       forcedValues:
         <<: *forcedBrand
 
-    # pricingPlansRelCompanies dialogs:
-    <<: *pricingPlansRelCompanies_dialogsLink
+    # tpRatingProfiles:
+    <<: *tpRatingProfiles_dialogsLink
+
     # Administrators dialogs
     <<: *administrators_dialogsLink
     administratorsDel_dialog:
@@ -365,12 +367,6 @@ production:
     # kamUsersAddress dialogs:
     <<: *kamUsersAddress_dialogsLink
 
-  commands:
-    importCompaniesFreeUpload_command:
-      <<: *Companies
-      controller: File
-      action: free-upload
-    <<: *pricingPlansRelCompanies_commandsLink
 staging:
   _extends: production
 testing:

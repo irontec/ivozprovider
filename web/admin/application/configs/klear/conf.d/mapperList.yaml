@@ -109,6 +109,16 @@ mappers:
         modelFile: Ddis,
         entity: 'Ivoz\\Provider\\Domain\\Model\\Ddi\\Ddi'
     }
+  - &DestinationRates {
+        mapper: \IvozProvider\Mapper\Sql\DestinationRates,
+        modelFile: DestinationRates,
+        entity: 'Ivoz\\Cgr\\Domain\\Model\\DestinationRate\\DestinationRate'
+    }
+  - &Destinations {
+        mapper: \IvozProvider\Mapper\Sql\Destinations,
+        modelFile: Destinations,
+        entity: 'Ivoz\\Cgr\\Domain\\Model\\Destination\\Destination'
+    }
   - &Domains {
         mapper: \IvozProvider\Mapper\Sql\Domains,
         modelFile: Domains,
@@ -304,21 +314,6 @@ mappers:
         modelFile: PickUpRelUsers,
         entity: 'Ivoz\\Provider\\Domain\\Model\\PickUpRelUser\\PickUpRelUser'
     }
-  - &PricingPlans {
-        mapper: \IvozProvider\Mapper\Sql\PricingPlans,
-        modelFile: PricingPlans,
-        entity: 'Ivoz\\Provider\\Domain\\Model\\PricingPlan\\PricingPlan'
-    }
-  - &PricingPlansRelCompanies {
-        mapper: \IvozProvider\Mapper\Sql\PricingPlansRelCompanies,
-        modelFile: PricingPlansRelCompanies,
-        entity: 'Ivoz\\Provider\\Domain\\Model\\PricingPlansRelCompany\\PricingPlanRelCompany'
-    }
-  - &PricingPlansRelTargetPatterns {
-        mapper: \IvozProvider\Mapper\Sql\PricingPlansRelTargetPatterns,
-        modelFile: PricingPlansRelTargetPatterns,
-        entity: 'Ivoz\\Provider\\Domain\\Model\\PricingPlansRelTargetPattern\\PricingPlansRelTargetPattern'
-    }
   - &ProxyTrunks {
         mapper: \IvozProvider\Mapper\Sql\ProxyTrunks,
         modelFile: ProxyTrunks,
@@ -338,6 +333,11 @@ mappers:
         mapper: \IvozProvider\Mapper\Sql\Queues,
         modelFile: Queues,
         entity: 'Ivoz\\Provider\\Domain\\Model\\Queue\\Queue'
+    }
+  - &Rates {
+        mapper: \IvozProvider\Mapper\Sql\Rates,
+        modelFile: Rates,
+        entity: 'Ivoz\\Cgr\\Domain\\Model\\Rate\\Rate'
     }
   - &Recordings {
         mapper: \IvozProvider\Mapper\Sql\Recordings,
@@ -378,11 +378,6 @@ mappers:
         mapper: \IvozProvider\Mapper\Sql\Services,
         modelFile: Services,
         entity: 'Ivoz\\Provider\\Domain\\Model\\Service\\Service'
-    }
-  - &TargetPatterns {
-        mapper: \IvozProvider\Mapper\Sql\TargetPatterns,
-        modelFile: TargetPatterns,
-        entity: 'Ivoz\\Provider\\Domain\\Model\\TargetPattern\\TargetPattern'
     }
   - &TerminalManufacturers {
         mapper: \IvozProvider\Mapper\Sql\TerminalManufacturers,
@@ -559,3 +554,24 @@ mappers:
         modelFile: KamVersion,
         entity: 'Kam\\Model\\Version\\Version'
     }
+  - &TpDestinationRates {
+        mapper: \IvozProvider\Mapper\Sql\TpDestinationRates,
+        modelFile: TpDestinationRates,
+        entity: 'Ivoz\\Cgr\\Domain\\Model\\TpDestinationRate\\TpDestinationRate'
+    }
+  - &TpDestinations {
+        mapper: \IvozProvider\Mapper\Sql\TpDestinations,
+        modelFile: TpDestinations,
+        entity: 'Ivoz\\Cgr\\Domain\\Model\\TpDestination\\TpDestination'
+    }
+  - &TpRates {
+        mapper: \IvozProvider\Mapper\Sql\TpRates,
+        modelFile: TpRates,
+        entity: 'Ivoz\\Cgr\\Domain\\Model\\TpRate\\TpRate'
+    }
+  - &TpRatingProfiles {
+        mapper: \IvozProvider\Mapper\Sql\TpRatingProfiles,
+        modelFile: TpRatingProfiles,
+        entity: 'Ivoz\\Cgr\\Domain\\Model\\TpRatingProfile\\TpRatingProfile'
+    }
+

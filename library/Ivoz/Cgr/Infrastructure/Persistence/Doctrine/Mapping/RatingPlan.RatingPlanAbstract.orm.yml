@@ -1,0 +1,50 @@
+Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanAbstract:
+  type: mappedSuperclass
+  indexes:
+    brandId:
+      columns:
+        - brandId
+  uniqueConstraints:
+    brandTag:
+      columns:
+        - tag
+        - brandId
+  embedded:
+    name:
+      class: Name
+      columnPrefix: false
+    description:
+      class: Description
+      columnPrefix: false
+  fields:
+    tag:
+      type: string
+      nullable: true
+      length: 64
+      options:
+        fixed: false
+  manyToOne:
+    destinationRate:
+      targetEntity: \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        destinationRateId:
+          referencedColumnName: id
+          nullable: false
+          onDelete: cascade
+      orphanRemoval: false
+    brand:
+      targetEntity: \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        brandId:
+          referencedColumnName: id
+          nullable: false
+          onDelete: cascade
+      orphanRemoval: false

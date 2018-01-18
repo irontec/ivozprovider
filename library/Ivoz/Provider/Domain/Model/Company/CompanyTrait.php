@@ -46,7 +46,7 @@ trait CompanyTrait
     /**
      * @var Collection
      */
-    protected $relPricingPlans;
+    protected $ratinProfiles;
 
     /**
      * @var Collection
@@ -80,7 +80,7 @@ trait CompanyTrait
         $this->friends = new ArrayCollection();
         $this->companyServices = new ArrayCollection();
         $this->terminals = new ArrayCollection();
-        $this->relPricingPlans = new ArrayCollection();
+        $this->ratinProfiles = new ArrayCollection();
         $this->musicsOnHold = new ArrayCollection();
         $this->recordings = new ArrayCollection();
         $this->relFeatures = new ArrayCollection();
@@ -118,8 +118,8 @@ trait CompanyTrait
             $self->replaceTerminals($dto->getTerminals());
         }
 
-        if ($dto->getRelPricingPlans()) {
-            $self->replaceRelPricingPlans($dto->getRelPricingPlans());
+        if ($dto->getRatinProfiles()) {
+            $self->replaceRatinProfiles($dto->getRatinProfiles());
         }
 
         if ($dto->getMusicsOnHold()) {
@@ -170,8 +170,8 @@ trait CompanyTrait
         if ($dto->getTerminals()) {
             $this->replaceTerminals($dto->getTerminals());
         }
-        if ($dto->getRelPricingPlans()) {
-            $this->replaceRelPricingPlans($dto->getRelPricingPlans());
+        if ($dto->getRatinProfiles()) {
+            $this->replaceRatinProfiles($dto->getRatinProfiles());
         }
         if ($dto->getMusicsOnHold()) {
             $this->replaceMusicsOnHold($dto->getMusicsOnHold());
@@ -571,75 +571,75 @@ trait CompanyTrait
     }
 
     /**
-     * Add relPricingPlan
+     * Add ratinProfile
      *
-     * @param \Ivoz\Provider\Domain\Model\PricingPlansRelCompany\PricingPlansRelCompanyInterface $relPricingPlan
+     * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $ratinProfile
      *
      * @return CompanyTrait
      */
-    public function addRelPricingPlan(\Ivoz\Provider\Domain\Model\PricingPlansRelCompany\PricingPlansRelCompanyInterface $relPricingPlan)
+    public function addRatinProfile(\Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $ratinProfile)
     {
-        $this->relPricingPlans->add($relPricingPlan);
+        $this->ratinProfiles->add($ratinProfile);
 
         return $this;
     }
 
     /**
-     * Remove relPricingPlan
+     * Remove ratinProfile
      *
-     * @param \Ivoz\Provider\Domain\Model\PricingPlansRelCompany\PricingPlansRelCompanyInterface $relPricingPlan
+     * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $ratinProfile
      */
-    public function removeRelPricingPlan(\Ivoz\Provider\Domain\Model\PricingPlansRelCompany\PricingPlansRelCompanyInterface $relPricingPlan)
+    public function removeRatinProfile(\Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $ratinProfile)
     {
-        $this->relPricingPlans->removeElement($relPricingPlan);
+        $this->ratinProfiles->removeElement($ratinProfile);
     }
 
     /**
-     * Replace relPricingPlans
+     * Replace ratinProfiles
      *
-     * @param \Ivoz\Provider\Domain\Model\PricingPlansRelCompany\PricingPlansRelCompanyInterface[] $relPricingPlans
+     * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface[] $ratinProfiles
      * @return self
      */
-    public function replaceRelPricingPlans(Collection $relPricingPlans)
+    public function replaceRatinProfiles(Collection $ratinProfiles)
     {
         $updatedEntities = [];
         $fallBackId = -1;
-        foreach ($relPricingPlans as $entity) {
+        foreach ($ratinProfiles as $entity) {
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setCompany($this);
         }
         $updatedEntityKeys = array_keys($updatedEntities);
 
-        foreach ($this->relPricingPlans as $key => $entity) {
+        foreach ($this->ratinProfiles as $key => $entity) {
             $identity = $entity->getId();
             if (in_array($identity, $updatedEntityKeys)) {
-                $this->relPricingPlans->set($key, $updatedEntities[$identity]);
+                $this->ratinProfiles->set($key, $updatedEntities[$identity]);
             } else {
-                $this->relPricingPlans->remove($key);
+                $this->ratinProfiles->remove($key);
             }
             unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
-            $this->addRelPricingPlan($entity);
+            $this->addRatinProfile($entity);
         }
 
         return $this;
     }
 
     /**
-     * Get relPricingPlans
+     * Get ratinProfiles
      *
      * @return \Ivoz\Provider\Domain\Model\PricingPlansRelCompany\PricingPlansRelCompanyInterface[]
      */
-    public function getRelPricingPlans(Criteria $criteria = null)
+    public function getRatinProfiles(Criteria $criteria = null)
     {
         if (!is_null($criteria)) {
-            return $this->relPricingPlans->matching($criteria)->toArray();
+            return $this->ratinProfiles->matching($criteria)->toArray();
         }
 
-        return $this->relPricingPlans->toArray();
+        return $this->ratinProfiles->toArray();
     }
 
     /**

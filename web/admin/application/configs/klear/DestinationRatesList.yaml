@@ -1,0 +1,104 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+#include TpDestinationRatesList.yaml
+
+production:
+  main:
+    module: klearMatrix
+    defaultScreen: destinationRatesList_screen
+  screens: &destinationRates_screensLink
+    destinationRatesList_screen: &destinationRatesList_screenLink
+      controller: list
+      pagination:
+        items: 25
+      <<: *DestinationRates
+      class: ui-silk-page-find
+      title: _("List of %s %2s", ngettext('Destination Rate', 'Destination Rates', 0), "[format| (%parent%)]")
+      forcedValues:
+        <<: *forcedBrand
+      fields: &destinationRates_fieldsLink
+        order:
+          tag: true
+          name: true
+          description: true
+        options:
+          title: _("Options")
+          screens:
+            destinationRatesEdit_screen: true
+            tpDestinationRatesList_screen: true
+          dialogs:
+            destinationRatesDel_dialog: true
+          default: destinationRatesEdit_screen
+      options:
+        title: _("Options")
+        screens:
+          destinationRatesNew_screen: true
+        dialogs:
+          destinationRatesDel_dialog: true
+
+    destinationRatesNew_screen: &destinationRatesNew_screenLink
+      <<: *DestinationRates
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Destination Rate', 'Destination Rates', 1), "[format| (%parent%)]")
+      forcedValues:
+        <<: *forcedBrand
+      shortcutOption: N
+      fixedPositions: &pdestinationRatesFixedPositions_Link
+        group1:
+          colsPerRow: 9
+          fields:
+            tag: 4
+            name: 5
+            description: 8
+
+    destinationRatesEdit_screen: &destinationRatesEdit_screenLink
+      <<: *DestinationRates
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      title: _("Edit %s %2s", ngettext('Destination Rate', 'Destination Rates', 1), "[format| (%item%)]")
+      forcedValues:
+        <<: *forcedBrand
+      fixedPositions:
+        <<: *pdestinationRatesFixedPositions_Link
+
+    # tpDestinationRates:
+    <<: *tpDestinationRates_screensLink
+    tpDestinationRatesList_screen:
+      <<: *tpDestinationRatesList_screenLink
+      filterField: destinationRate
+      parentOptionCustomizer:
+        - recordCount
+    tpDestinationRatesNew_screen:
+      <<: *tpDestinationRatesNew_screenLink
+      filterField: destinationRate
+    tpDestinationRatesEdit_screen:
+      <<: *tpDestinationRatesEdit_screenLink
+      filterField: destinationRate
+
+  dialogs: &destinationRates_dialogsLink
+    destinationRatesDel_dialog: &destinationRatesDel_dialogLink
+      <<: *DestinationRates
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Destination Rate', 'Destination Rates', 1))
+      description: _("Do you want to delete this %s?", ngettext('Destination Rate', 'Destination Rates', 1))
+      message: _("%s successfully deleted.", ngettext('Destination Rate', 'Destination Rates', 1))
+      multiItem: 1
+      labelOnList: 1
+
+#   tpDestinationRates dialogs:
+    <<: *tpDestinationRates_dialogsLink
+
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

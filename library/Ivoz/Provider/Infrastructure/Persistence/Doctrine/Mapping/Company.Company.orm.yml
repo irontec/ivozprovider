@@ -27,8 +27,8 @@ Ivoz\Provider\Domain\Model\Company\Company:
     terminals:
       targetEntity: Ivoz\Provider\Domain\Model\Terminal\TerminalInterface
       mappedBy: company
-    relPricingPlans:
-      targetEntity: Ivoz\Provider\Domain\Model\PricingPlansRelCompany\PricingPlansRelCompanyInterface
+    ratinProfiles:
+      targetEntity: Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface
       mappedBy: company
       cascade: ['persist']
       orphanRemoval: true
