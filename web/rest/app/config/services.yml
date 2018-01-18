@@ -9,9 +9,6 @@ services:
     autoconfigure: true
     public: false
 
-  DataFixtures\:
-    resource: '/opt/irontec/ivozprovider/library/DataFixtures/*'
-
   Jwt\UserAuthenticationSuccessHandler:
     arguments:
       - '@lexik_jwt_authentication.jwt_manager'

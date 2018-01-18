@@ -1,6 +1,7 @@
 imports:
   - { resource: config.yml }
   - { resource: logger_dev.yml }
+  - { resource: fixtures.yml }
 
 framework:
   router:
