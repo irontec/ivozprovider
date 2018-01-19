@@ -27,8 +27,8 @@ class Version20180116104428 extends AbstractMigration
         $this->addSql('DROP TABLE PricingPlansRelCompanies');
         $this->addSql('DROP TABLE PricingPlansRelTargetPatterns');
         $this->addSql('DROP TABLE TargetPatterns');
-        $this->addSql('DROP INDEX pricingPlanId ON kam_acc_cdrs');
-        $this->addSql('DROP INDEX targetPatternId ON kam_acc_cdrs');
+        $this->addSql('DROP INDEX accCdr_pricingPlanId ON kam_acc_cdrs');
+        $this->addSql('DROP INDEX accCdr_targetPatternId ON kam_acc_cdrs');
 
         $this->addSql('ALTER TABLE kam_acc_cdrs ADD ratingPlanId INT UNSIGNED DEFAULT NULL, ADD destinationId INT UNSIGNED DEFAULT NULL');
         $this->addSql('UPDATE kam_acc_cdrs SET ratingPlanId = pricingPlanId');
