@@ -29,3 +29,11 @@ services:
         '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\Country\\Country")'
       $routingPatternGroupByRoutingPatternAndCountry:
         '@Ivoz\Provider\Domain\Service\RoutingPatternGroup\UpdateByRoutingPatternAndCountry'
+
+  ##################################
+  ## post_remove
+  ##################################
+  Ivoz\Provider\Domain\Service\Domain\DeleteByBrand:
+    tags:
+      - { name: provider.lifecycle.brand.post_remove, priority: 10 }
+    arguments: ~
