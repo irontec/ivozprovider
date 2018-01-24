@@ -1,22 +1,26 @@
 <?php
 
 use Ivoz\Provider\Domain\Model\CompanyService\CompanyService;
+use Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceDto;
+use Ivoz\Provider\Domain\Model\Locution\LocutionDto;
 use Ivoz\Provider\Domain\Model\Service\Service;
+use Ivoz\Provider\Domain\Model\Service\ServiceDto;
 
 class IvozProvider_Klear_Ghost_RecordLocution extends KlearMatrix_Model_Field_Ghost_Abstract
 {
     /**
-     * @param \Ivoz\Provider\Domain\Model\Locution\LocutionDTO $locutionDTO
+     * @param LocutionDto $locutionDto
      * @return string
+     * @throws Zend_Exception
      */
-    public function getRecordingExtension($locutionDTO)
+    public function getRecordingExtension($locutionDto)
     {
         // Get Locution Service code
-        $companyId = $locutionDTO->getCompanyId();
+        $companyId = $locutionDto->getCompanyId();
         $dataGateway = \Zend_Registry::get('data_gateway');
 
         /**
-         * @var \Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceDTO[] $companyServices
+         * @var CompanyServiceDto[] $companyServices
          */
         $companyServices = $dataGateway->findBy(
             CompanyService::class,
@@ -27,20 +31,22 @@ class IvozProvider_Klear_Ghost_RecordLocution extends KlearMatrix_Model_Field_Gh
         );
 
         // Get Recording number for this locution
-        foreach ($companyServices as $companyServiceDTO) {
+        foreach ($companyServices as $companyServiceDto) {
 
             /**
-             * @var \Ivoz\Provider\Domain\Model\Service\ServiceDTO $service
+             * @var ServiceDto $service
              */
             $service = $dataGateway->find(
                 Service::class,
-                $companyServiceDTO->getServiceId()
+                $companyServiceDto->getServiceId()
             );
 
             if ($service->getIden() === 'RecordLocution') {
-                return '*' . $companyServiceDTO->getCode() . $locutionDTO->getId();
+                return '*' . $companyServiceDto->getCode() . $locutionDto->getId();
             }
         }
+
+        return "";
     }
 
 }

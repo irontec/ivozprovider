@@ -1,28 +1,37 @@
 <?php
 
+use Ivoz\Kam\Domain\Model\UsersCdr\UsersCdrDto;
+use Ivoz\Provider\Domain\Model\Friend\Friend;
+use Ivoz\Provider\Domain\Model\Friend\FriendDto;
+use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount;
+use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto;
+use Ivoz\Provider\Domain\Model\User\User;
+use Ivoz\Provider\Domain\Model\User\UserDto;
+
 class IvozProvider_Klear_Ghost_StatOwner extends KlearMatrix_Model_Field_Ghost_Abstract
 {
     /**
-     * @param $model
+     * @param UsersCdrDto $model
      * @return mixed
+     * @throws Zend_Exception
      */
-    public function getStatOwner(\Ivoz\Kam\Domain\Model\UsersCdr\UsersCdrDTO $model)
+    public function getStatOwner(UsersCdrDto $model)
     {
         $dataGateway = \Zend_Registry::get('data_gateway');
 
         if (!is_null($model->getUserId())) {
-            /** @var \Ivoz\Provider\Domain\Model\User\UserDTO $user */
+            /** @var UserDto $user */
             $user = $dataGateway->find(
-                \Ivoz\Provider\Domain\Model\User\User::class,
+                User::class,
                 $model->getUserId()
             );
             return $user->getName() . " " . $user->getLastname();
         }
 
         if (!is_null($model->getFriendId())) {
-            /** @var \Ivoz\Provider\Domain\Model\Friend\FriendDTO $friend */
+            /** @var FriendDto $friend */
             $friend = $dataGateway->find(
-                \Ivoz\Provider\Domain\Model\Friend\Friend::class,
+                Friend::class,
                 $model->getFriendId()
             );
 
@@ -30,9 +39,9 @@ class IvozProvider_Klear_Ghost_StatOwner extends KlearMatrix_Model_Field_Ghost_A
         }
 
         if (!is_null($model->getRetailAccountId())) {
-            /** @var \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDTO $retailAccount */
+            /** @var RetailAccountDto $retailAccount */
             $retailAccount = $dataGateway->find(
-                \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount::class,
+                RetailAccount::class,
                 $model->getRetailAccountId()
             );
             return $retailAccount->getName();

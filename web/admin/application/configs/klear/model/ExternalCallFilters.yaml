@@ -276,14 +276,14 @@ production:
       title: _('Holiday target')
       type: ghost
       source:
-        class: IvozProvider_Klear_Ghost_ExternalCallFiltersTarget
-        method: getHolidayData
+        class: IvozProvider_Klear_Ghost_RouteTarget
+        method: getExternalCallFilterHolidayTarget
     outOfScheduleTarget:
       title: _('Out of schedule target')
       type: ghost
       source:
-        class: IvozProvider_Klear_Ghost_ExternalCallFiltersTarget
-        method: getOutOfScheduleData
+        class: IvozProvider_Klear_Ghost_RouteTarget
+        method: getExternalCallFilterOutOfScheduleTarget
     whiteLists:
       title: _('White Lists')
       type: multiselect

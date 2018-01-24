@@ -20,17 +20,55 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
      */
     public function getNumberValueE164();
 
+    /**
+     * Return MatchLists associated with this condition
+     *
+     * @return MatchListInterface[]
+     */
     public function getMatchLists();
 
+    /**
+     * Return Schedules associated with this condition
+     *
+     * @return ScheduleInterface[]
+     */
     public function getSchedules();
 
+    /**
+     * Return Calendars associated with this condition
+     *
+     * @return CalendarInterface[]
+     */
     public function getCalendars();
 
+    /**
+     * Checks if this condition mathes the given origin
+     *
+     * @param $number Number in E.164 format
+     * @return bool true if condition matches
+     */
     public function matchesOrigin($number);
 
+    /**
+     * Checks if current time in Company's timezone matches condition schedules
+     *
+     * @return bool true if condition matches
+     */
     public function matchesSchedule();
 
+    /**
+     * Checks if today is holiday in condition calendars
+     *
+     * @return bool true if condition matches
+     */
     public function matchesCalendar();
+
+    /**
+     * Return a string representation of matching conditions
+     *
+     * @return string
+     */
+    public function getMatchData();
 
     public function __toString();
 

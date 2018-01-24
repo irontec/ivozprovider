@@ -58,6 +58,34 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
     public function getOutOfScheduleNumberValueE164();
 
     /**
+     * Get Target destination for Holidays
+     *
+     * @return null|string
+     */
+    public function getHolidayTarget();
+
+    /**
+     * Alias for getHolidayTargetType
+     *
+     * @todo rename holidayTagetType field to holidayRouteType
+     */
+    public function getHolidayRouteType();
+
+    /**
+     * Get Target destination for Out of schedule
+     *
+     * @return null|string
+     */
+    public function getOutOfScheduleTarget();
+
+    /**
+     * Alias for getOutOfScheduleTargetType
+     *
+     * @todo rename outOfScheduleTargetType field to outOfScheduleRouteType
+     */
+    public function getOutOfScheduleRouteType();
+
+    /**
      * Set name
      *
      * @param string $name
@@ -420,6 +448,12 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\ExternalCallFilterRelSchedule\ExternalCallFilterRelScheduleInterface[]
      */
     public function getSchedules(\Doctrine\Common\Collections\Criteria $criteria = null);
+
+    /**
+     * @param string $prefix
+     * @return null|string
+     */
+    public function getTarget(string $prefix = '');
 
 }
 

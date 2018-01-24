@@ -1,7 +1,9 @@
 <?php
 
 namespace Ivoz\Provider\Domain\Model\CallForwardSetting;
+
 use Assert\Assertion;
+use Ivoz\Provider\Domain\Traits\RoutableTrait;
 
 /**
  * CallForwardSetting
@@ -9,6 +11,7 @@ use Assert\Assertion;
 class CallForwardSetting extends CallForwardSettingAbstract implements CallForwardSettingInterface
 {
     use CallForwardSettingTrait;
+    use RoutableTrait;
 
     /**
      * @codeCoverageIgnore
@@ -90,6 +93,16 @@ class CallForwardSetting extends CallForwardSettingAbstract implements CallForwa
         return
             $this->getNumberCountry()->getCountryCode() .
             $this->getNumberValue();
+    }
+
+    /**
+     * Alias for getTargetType
+     *
+     * @todo rename tagetType field to routeType
+     */
+    public function getRouteType()
+    {
+        return $this->getTargetType();
     }
 }
 
