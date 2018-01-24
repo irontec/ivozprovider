@@ -60,13 +60,6 @@ interface CompanyInterface extends LoggableEntityInterface
      */
     public function setDomainUsers($domainUsers = null);
 
-    /**
-     *
-     * @param string $number
-     * @return bool tarificable
-     */
-    public function isDstTarificable($number);
-
     public function getOutgoingRoutings();
 
     /**

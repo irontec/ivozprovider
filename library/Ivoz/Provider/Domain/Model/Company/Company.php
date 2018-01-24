@@ -260,33 +260,6 @@ class Company extends CompanyAbstract implements CompanyInterface
         return parent::setDomainUsers($domainUsers);
     }
 
-    /**
-     *
-     * @param string $number
-     * @return bool tarificable
-     */
-    public function isDstTarificable($number)
-    {
-        /**
-         * @todo this is not migrated yet. Called from ExternalCallAction
-         * This should be a service
-         * @var Company $this
-         */
-        throw new \Exception('Not implemented yet');
-//        $call = new \Ivoz\Provider\Model\KamAccCdrs();
-//
-//        $call->setCallee($number)
-//            ->setCompanyId($this->getId())
-//            ->setBrandId($this->getBrand()->getId())
-//            ->setStartTime(new \Zend_Date());
-//
-//        $result = $call->tarificate();
-//        if (! is_null($result)) {
-//            return $result->getPricingPlan();
-//        }
-//        return null;
-    }
-
     public function getOutgoingRoutings()
     {
         /**

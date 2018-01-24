@@ -133,12 +133,6 @@ doctrine:
         Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroup
       Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface:
         Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUser
-      Ivoz\Provider\Domain\Model\PricingPlan\PricingPlanInterface:
-        Ivoz\Provider\Domain\Model\PricingPlan\PricingPlan
-      Ivoz\Provider\Domain\Model\PricingPlansRelCompany\PricingPlansRelCompanyInterface:
-        Ivoz\Provider\Domain\Model\PricingPlansRelCompany\PricingPlansRelCompany
-      Ivoz\Provider\Domain\Model\PricingPlansRelTargetPattern\PricingPlansRelTargetPatternInterface:
-        Ivoz\Provider\Domain\Model\PricingPlansRelTargetPattern\PricingPlansRelTargetPattern
       Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunkInterface:
         Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunk
       Ivoz\Provider\Domain\Model\ProxyUser\ProxyUserInterface:
@@ -161,8 +155,6 @@ doctrine:
         Ivoz\Provider\Domain\Model\Schedule\Schedule
       Ivoz\Provider\Domain\Model\Service\ServiceInterface:
         Ivoz\Provider\Domain\Model\Service\Service
-      Ivoz\Provider\Domain\Model\TargetPattern\TargetPatternInterface:
-        Ivoz\Provider\Domain\Model\TargetPattern\TargetPattern
       Ivoz\Provider\Domain\Model\TerminalManufacturer\TerminalManufacturerInterface:
         Ivoz\Provider\Domain\Model\TerminalManufacturer\TerminalManufacturer
       Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelInterface:
