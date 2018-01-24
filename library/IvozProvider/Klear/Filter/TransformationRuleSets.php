@@ -1,4 +1,11 @@
 <?php
+
+/**
+ * Class IvozProvider_Klear_Filter_TransformationRuleSets
+ *
+ * Filter TransformationRule Listbox to only display current Brand's Transformation Rules and Global Transformation
+ * rules.
+ */
 class IvozProvider_Klear_Filter_TransformationRuleSets extends IvozProvider_Klear_Filter_Brand
 {
     protected $_condition = array();
@@ -15,10 +22,6 @@ class IvozProvider_Klear_Filter_TransformationRuleSets extends IvozProvider_Klea
 
         $this->_condition[] = "self::brand IS NULL";
         $this->_condition[] = "self::brand = '" . $currentBrandyId . "'";
-
-        if ($routeDispatcher->getParam('file') == 'PricingPlansList') {
-            $this->_filterAutocompletePrincingPlans($routeDispatcher->getParam('term'));
-        }
 
         return true;
     }

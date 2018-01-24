@@ -1,4 +1,14 @@
 <?php
+
+use Ivoz\Provider\Domain\Model\BrandService\BrandService;
+use Ivoz\Provider\Domain\Model\BrandService\BrandServiceDto;
+
+/**
+ * Class IvozProvider_Klear_Filter_CompanyServices
+ *
+ * Filter Service Listbox to avoid displaying Services not present in the Brand
+ * Filter Service Listbox to avoid displaying Services already present in the Company
+ */
 class IvozProvider_Klear_Filter_CompanyServices implements KlearMatrix_Model_Field_Select_Filter_Interface
 {
     protected $_condition = array();
@@ -14,11 +24,10 @@ class IvozProvider_Klear_Filter_CompanyServices implements KlearMatrix_Model_Fie
         $currentBrandyId = $loggedUser->brandId;
 
         $dataGateway = \Zend_Registry::get('data_gateway');
-        /**
-         * @var \Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface[] $brandServices
-         */
+
+        /** @var BrandServiceDto[] $brandServices */
         $brandServices = $dataGateway->findBy(
-            'Ivoz\Provider\Domain\Model\BrandService\BrandService',
+            BrandService::class,
             ["BrandService.brand = " . $currentBrandyId]
         );
 
@@ -41,6 +50,5 @@ class IvozProvider_Klear_Filter_CompanyServices implements KlearMatrix_Model_Fie
         if (count($this->_condition) > 0) {
             return ['(' . implode(" AND ", $this->_condition) . ')'];
         }
-        return;
     }
 }

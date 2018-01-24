@@ -1,4 +1,12 @@
 <?php
+
+/**
+ * Class IvozProvider_Klear_Filter_Brand
+ *
+ * Filter results for the current emulated brand
+ *
+ * @note multiple filters inherit from this one
+ */
 class IvozProvider_Klear_Filter_Brand implements KlearMatrix_Model_Field_Select_Filter_Interface
 {
     protected $_condition = array();
@@ -15,32 +23,7 @@ class IvozProvider_Klear_Filter_Brand implements KlearMatrix_Model_Field_Select_
 
         $this->_condition[] = "self::brand = '" . $currentBrandyId . "'";
 
-        if ($routeDispatcher->getParam('file') == 'PricingPlansList') {
-            $this->_filterAutocompletePrincingPlans($routeDispatcher->getParam('term'));
-        }
-
         return true;
-    }
-
-    protected function _filterAutocompletePrincingPlans($term) {
-        if (is_numeric($term)) {
-            $this->_condition[] =
-                "self::regExp like '%"
-                . $term
-                . "%'";
-        } elseif (substr($term, 0, 1) == '(') {
-            $term = str_replace("(","",$term);
-            $this->_condition[] =
-                "self::regExp like '"
-                . $term
-                . "%'";
-        } else {
-            $this->_condition[] =
-                "(self::name.en LIKE '%"
-                . str_replace(' ','%',$term)
-                . "%' OR self::name.es LIKE '%"
-                . str_replace(' ','%',$term) . "%')";
-        }
     }
 
     public function getCondition()

@@ -1,9 +1,16 @@
 <?php
 
+use Ivoz\Core\Application\Service\DataGateway;
 use Ivoz\Provider\Domain\Model\Feature\Feature;
 use \Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrand;
-use \Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrandDTO;
+use \Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrandDto;
 
+/**
+ * Class IvozProvider_Klear_Filter_Features
+ *
+ * Filter Features Multiselect to avoid selecting Features not enabled by the Brand
+ * Filter Features Multiselect to avoid selecting Features not available to Retail Clients
+ */
 class IvozProvider_Klear_Filter_RetailFeatures implements KlearMatrix_Model_Field_Select_Filter_Interface
 {
     protected $_condition = array();
@@ -17,14 +24,10 @@ class IvozProvider_Klear_Filter_RetailFeatures implements KlearMatrix_Model_Fiel
         }
         $currentBrandId = $auth->getIdentity()->brandId;
 
-        /**
-         * @var \Ivoz\Core\Application\Service\DataGateway $dataGateway
-         */
+        /** @var DataGateway $dataGateway */
         $dataGateway = \Zend_Registry::get('data_gateway');
 
-        /**
-         * @var FeaturesRelBrandDTO[] $rels
-         */
+        /** @var FeaturesRelBrandDto[] $rels */
         $rels = $dataGateway->findBy(
             FeaturesRelBrand::class,
             ['FeaturesRelBrand.brand = ' . $currentBrandId]

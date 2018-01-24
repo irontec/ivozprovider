@@ -1,4 +1,11 @@
 <?php
+
+/**
+ * Class IvozProvider_Klear_Filter_OutgoingDDIRules
+ *
+ * Filter OutgoingDDIRules Listbox to only display rules belonging to edited company/retail
+ * We can not use traditional company filtering here because it only works with emulated company
+ */
 class IvozProvider_Klear_Filter_OutgoingDDIRules implements KlearMatrix_Model_Field_Select_Filter_Interface
 {
     protected $_condition = array();
@@ -6,7 +13,6 @@ class IvozProvider_Klear_Filter_OutgoingDDIRules implements KlearMatrix_Model_Fi
     public function setRouteDispatcher(KlearMatrix_Model_RouteDispatcher $routeDispatcher)
     {
         // Get current object id
-        $currentScreen = $routeDispatcher->getCurrentItemName();
         $pk = $routeDispatcher->getParam("pk", false);
 
         // Only display DDIs belonging to edited company

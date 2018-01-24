@@ -1,4 +1,10 @@
 <?php
+
+/**
+ * Class IvozProvider_Klear_Filter_MatchList
+ *
+ * Filter MatchList Listbox to display both Brand's and Company's match lists
+ */
 class IvozProvider_Klear_Filter_MatchList implements KlearMatrix_Model_Field_Select_Filter_Interface
 {
     protected $_condition = array();

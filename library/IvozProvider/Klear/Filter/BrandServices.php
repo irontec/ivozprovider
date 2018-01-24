@@ -1,16 +1,19 @@
 <?php
+
+use Ivoz\Provider\Domain\Model\BrandService\BrandService;
+use Ivoz\Provider\Domain\Model\BrandService\BrandServiceDto;
+
+/**
+ * Class IvozProvider_Klear_Filter_BrandServices
+ *
+ * Filter Service Listbox to avoid displaying Services already present in the Brand
+ */
 class IvozProvider_Klear_Filter_BrandServices implements KlearMatrix_Model_Field_Select_Filter_Interface
 {
     protected $_condition = array();
 
     public function setRouteDispatcher(KlearMatrix_Model_RouteDispatcher $routeDispatcher)
     {
-        // Get Action
-        $currentAction = $routeDispatcher->getActionName();
-
-        // Get Controller
-        $currentController = $routeDispatcher->getControllerName();
-
         // Get ModelName and your Controller
         $currentItemName = $routeDispatcher->getCurrentItemName();
 
@@ -34,11 +37,9 @@ class IvozProvider_Klear_Filter_BrandServices implements KlearMatrix_Model_Field
         $currentBrandyId = $loggedUser->brandId;
         $dataGateway = \Zend_Registry::get('data_gateway');
 
-        /**
-         * @var \Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface[] $brandServices
-         */
+        /** @var BrandServiceDto[] $brandServices */
         $brandServices = $dataGateway->findBy(
-            'Ivoz\Provider\Domain\Model\BrandService\BrandService',
+            BrandService::class,
             ["BrandService.brand = " . $currentBrandyId]
         );
 
@@ -59,6 +60,5 @@ class IvozProvider_Klear_Filter_BrandServices implements KlearMatrix_Model_Field
         if (count($this->_condition) > 0) {
             return ['(' . implode(" AND ", $this->_condition) . ')'];
         }
-        return;
     }
 }
