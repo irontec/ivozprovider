@@ -14,3 +14,7 @@ Ivoz\Cgr\Domain\Model\Rate\Rate:
   lifecycleCallbacks:
     postLoad:
       - initChangelog
+  oneToMany:
+    tpRates:
+      targetEntity: Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface
+      mappedBy: rate

@@ -3,6 +3,7 @@
 namespace Ivoz\Cgr\Domain\Model\Rate;
 
 use Ivoz\Core\Domain\Model\EntityInterface;
+use Doctrine\Common\Collections\Collection;
 
 interface RateInterface extends EntityInterface
 {
@@ -55,6 +56,37 @@ interface RateInterface extends EntityInterface
      * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
      */
     public function getBrand();
+
+    /**
+     * Add tpRate
+     *
+     * @param \Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface $tpRate
+     *
+     * @return RateTrait
+     */
+    public function addTpRate(\Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface $tpRate);
+
+    /**
+     * Remove tpRate
+     *
+     * @param \Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface $tpRate
+     */
+    public function removeTpRate(\Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface $tpRate);
+
+    /**
+     * Replace tpRates
+     *
+     * @param \Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface[] $tpRates
+     * @return self
+     */
+    public function replaceTpRates(Collection $tpRates);
+
+    /**
+     * Get tpRates
+     *
+     * @return \Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface[]
+     */
+    public function getTpRates(\Doctrine\Common\Collections\Criteria $criteria = null);
 
 }
 

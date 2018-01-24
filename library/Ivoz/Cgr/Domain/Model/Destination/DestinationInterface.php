@@ -3,6 +3,7 @@
 namespace Ivoz\Cgr\Domain\Model\Destination;
 
 use Ivoz\Core\Domain\Model\EntityInterface;
+use Doctrine\Common\Collections\Collection;
 
 interface DestinationInterface extends EntityInterface
 {
@@ -71,6 +72,37 @@ interface DestinationInterface extends EntityInterface
      * @return \Ivoz\Cgr\Domain\Model\Destination\Description
      */
     public function getDescription();
+
+    /**
+     * Add tpDestination
+     *
+     * @param \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface $tpDestination
+     *
+     * @return DestinationTrait
+     */
+    public function addTpDestination(\Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface $tpDestination);
+
+    /**
+     * Remove tpDestination
+     *
+     * @param \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface $tpDestination
+     */
+    public function removeTpDestination(\Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface $tpDestination);
+
+    /**
+     * Replace tpDestination
+     *
+     * @param \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface[] $tpDestination
+     * @return self
+     */
+    public function replaceTpDestination(Collection $tpDestination);
+
+    /**
+     * Get tpDestination
+     *
+     * @return \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface[]
+     */
+    public function getTpDestination(\Doctrine\Common\Collections\Criteria $criteria = null);
 
 }
 

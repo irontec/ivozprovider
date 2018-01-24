@@ -32,6 +32,11 @@ abstract class RateDtoAbstract implements DataTransferObjectInterface
      */
     private $brand;
 
+    /**
+     * @var \Ivoz\Cgr\Domain\Model\TpRate\TpRateDto[] | null
+     */
+    private $tpRates = null;
+
 
     use DtoNormalizer;
 
@@ -66,7 +71,8 @@ abstract class RateDtoAbstract implements DataTransferObjectInterface
             'tag' => $this->getTag(),
             'name' => $this->getName(),
             'id' => $this->getId(),
-            'brand' => $this->getBrand()
+            'brand' => $this->getBrand(),
+            'tpRates' => $this->getTpRates()
         ];
     }
 
@@ -76,6 +82,17 @@ abstract class RateDtoAbstract implements DataTransferObjectInterface
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
         $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
+        if (!is_null($this->tpRates)) {
+            $items = $this->getTpRates();
+            $this->tpRates = [];
+            foreach ($items as $item) {
+                $this->tpRates[] = $transformer->transform(
+                    'Ivoz\\Cgr\\Domain\\Model\\TpRate\\TpRate',
+                    $item->getId() ?? $item
+                );
+            }
+        }
+
     }
 
     /**
@@ -83,7 +100,10 @@ abstract class RateDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
+        $this->tpRates = $transformer->transform(
+            'Ivoz\\Cgr\\Domain\\Model\\TpRate\\TpRate',
+            $this->tpRates
+        );
     }
 
     /**
@@ -191,6 +211,26 @@ abstract class RateDtoAbstract implements DataTransferObjectInterface
 
             return null;
         }
+
+    /**
+     * @param array $tpRates
+     *
+     * @return static
+     */
+    public function setTpRates($tpRates = null)
+    {
+        $this->tpRates = $tpRates;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getTpRates()
+    {
+        return $this->tpRates;
+    }
 }
 
 

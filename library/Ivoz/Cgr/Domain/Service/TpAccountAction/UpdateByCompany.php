@@ -36,6 +36,10 @@ class UpdateByCompany implements CompanyLifecycleEventHandlerInterface
 
     public function execute(CompanyInterface $entity, $isNew)
     {
+        if (!$isNew) {
+            return;
+        }
+
         /** @var CompanyDTO $entityDto */
         $entityDto = $entity->toDTO();
 

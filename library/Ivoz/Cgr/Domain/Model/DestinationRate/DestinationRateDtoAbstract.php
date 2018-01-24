@@ -47,6 +47,11 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
      */
     private $brand;
 
+    /**
+     * @var \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateDto[] | null
+     */
+    private $tpDestinationRates = null;
+
 
     use DtoNormalizer;
 
@@ -89,7 +94,8 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
                 'en' => $this->getDescriptionEn(),
                 'es' => $this->getDescriptionEs()
             ],
-            'brand' => $this->getBrand()
+            'brand' => $this->getBrand(),
+            'tpDestinationRates' => $this->getTpDestinationRates()
         ];
     }
 
@@ -99,6 +105,17 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
         $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
+        if (!is_null($this->tpDestinationRates)) {
+            $items = $this->getTpDestinationRates();
+            $this->tpDestinationRates = [];
+            foreach ($items as $item) {
+                $this->tpDestinationRates[] = $transformer->transform(
+                    'Ivoz\\Cgr\\Domain\\Model\\TpDestinationRate\\TpDestinationRate',
+                    $item->getId() ?? $item
+                );
+            }
+        }
+
     }
 
     /**
@@ -106,7 +123,10 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
+        $this->tpDestinationRates = $transformer->transform(
+            'Ivoz\\Cgr\\Domain\\Model\\TpDestinationRate\\TpDestinationRate',
+            $this->tpDestinationRates
+        );
     }
 
     /**
@@ -274,6 +294,26 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
 
             return null;
         }
+
+    /**
+     * @param array $tpDestinationRates
+     *
+     * @return static
+     */
+    public function setTpDestinationRates($tpDestinationRates = null)
+    {
+        $this->tpDestinationRates = $tpDestinationRates;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getTpDestinationRates()
+    {
+        return $this->tpDestinationRates;
+    }
 }
 
 

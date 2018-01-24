@@ -47,6 +47,11 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
      */
     private $brand;
 
+    /**
+     * @var \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationDto[] | null
+     */
+    private $tpDestination = null;
+
 
     use DtoNormalizer;
 
@@ -89,7 +94,8 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
                 'en' => $this->getDescriptionEn(),
                 'es' => $this->getDescriptionEs()
             ],
-            'brand' => $this->getBrand()
+            'brand' => $this->getBrand(),
+            'tpDestination' => $this->getTpDestination()
         ];
     }
 
@@ -99,6 +105,17 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
         $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
+        if (!is_null($this->tpDestination)) {
+            $items = $this->getTpDestination();
+            $this->tpDestination = [];
+            foreach ($items as $item) {
+                $this->tpDestination[] = $transformer->transform(
+                    'Ivoz\\Cgr\\Domain\\Model\\TpDestination\\TpDestination',
+                    $item->getId() ?? $item
+                );
+            }
+        }
+
     }
 
     /**
@@ -106,7 +123,10 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
+        $this->tpDestination = $transformer->transform(
+            'Ivoz\\Cgr\\Domain\\Model\\TpDestination\\TpDestination',
+            $this->tpDestination
+        );
     }
 
     /**
@@ -274,6 +294,26 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
 
             return null;
         }
+
+    /**
+     * @param array $tpDestination
+     *
+     * @return static
+     */
+    public function setTpDestination($tpDestination = null)
+    {
+        $this->tpDestination = $tpDestination;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getTpDestination()
+    {
+        return $this->tpDestination;
+    }
 }
 
 
