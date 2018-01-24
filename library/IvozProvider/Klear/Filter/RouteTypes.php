@@ -1,8 +1,16 @@
 <?php
 
+use Ivoz\Core\Application\Service\DataGateway;
+use Ivoz\Provider\Domain\Model\Company\CompanyDto;
 use \Ivoz\Provider\Domain\Model\Feature\Feature;
 use Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Provider\Domain\Model\Feature\FeatureDto;
 
+/**
+ * Class IvozProvider_Klear_Filter_RouteTypes
+ *
+ * Filter RouteType Listbox to only show options enabled by active Features in emulated company
+ */
 class IvozProvider_Klear_Filter_RouteTypes implements KlearMatrix_Model_Field_Select_Filter_Interface
 {
     public function setRouteDispatcher(KlearMatrix_Model_RouteDispatcher $routeDispatcher)
@@ -12,39 +20,35 @@ class IvozProvider_Klear_Filter_RouteTypes implements KlearMatrix_Model_Field_Se
 
     /**
      * Get route types to be excluded by company features
+     *
      * @return array
+     * @throws Zend_Exception
      */
     public function getCondition()
     {
         $auth = Zend_Auth::getInstance();
         $user = $auth->getIdentity();
 
-        /**
-         * @var \Ivoz\Core\Application\Service\DataGateway $dataGateway
-         */
+        /** @var DataGateway $dataGateway */
         $dataGateway = \Zend_Registry::get('data_gateway');
 
-        /**
-         * @var \Ivoz\Provider\Domain\Model\Company\CompanyDTO $companyDTO
-         */
-        $companyDTO = $dataGateway->find(
+        /** @var CompanyDto $companyDto */
+        $companyDto = $dataGateway->find(
             Company::class,
             $user->companyId
         );
 
-        if (is_null($companyDTO)) {
+        if (is_null($companyDto)) {
             // No company feature to filter by
             return [];
         }
 
-        /***
-         * @var \Ivoz\Provider\Domain\Model\Feature\FeatureDTO[] $features
-         */
+        /** @var FeatureDto[] $features */
         $features = $dataGateway->findAll(Feature::class);
 
         $excludedRoutes = [];
-        foreach ($features as $featureDTO) {
-            switch ($featureDTO->getNameEn()) {
+        foreach ($features as $featureDto) {
+            switch ($featureDto->getNameEn()) {
                 case 'Queues':
                     $routeType = 'queue';
                     break;
@@ -67,9 +71,9 @@ class IvozProvider_Klear_Filter_RouteTypes implements KlearMatrix_Model_Field_Se
 
             $hasFeature = $dataGateway->remoteProcedureCall(
                 Company::class,
-                $companyDTO->getId(),
+                $companyDto->getId(),
                 'hasFeature',
-                [$featureDTO->getId()]
+                [$featureDto->getId()]
             );
 
             if (!$hasFeature) {
@@ -77,7 +81,7 @@ class IvozProvider_Klear_Filter_RouteTypes implements KlearMatrix_Model_Field_Se
             }
         }
 
-        if ($companyDTO->getType() === Company::VPBX) {
+        if ($companyDto->getType() === Company::VPBX) {
             $excludedRoutes[] = 'retailAccount';
         } else {
             $excludedRoutes[] = 'user';

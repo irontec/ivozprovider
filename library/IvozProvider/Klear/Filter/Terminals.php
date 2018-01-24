@@ -1,5 +1,14 @@
 <?php
 
+use Ivoz\Core\Application\Service\DataGateway;
+use Ivoz\Provider\Domain\Model\User\User;
+use Ivoz\Provider\Domain\Model\User\UserDto;
+
+/**
+ * Class IvozProvider_Klear_Filter_Terminals
+ *
+ * Filter Terminals Listbox to only display not assigned Terminals or Terminals already assigned to the User
+ */
 class IvozProvider_Klear_Filter_Terminals extends IvozProvider_Klear_Filter_Company
 {
     public function setRouteDispatcher(KlearMatrix_Model_RouteDispatcher $routeDispatcher)
@@ -12,7 +21,7 @@ class IvozProvider_Klear_Filter_Terminals extends IvozProvider_Klear_Filter_Comp
         // Add parent filters
         parent::setRouteDispatcher($routeDispatcher);
 
-        /** @var \Ivoz\Core\Application\Service\DataGateway $dataGateway */
+        /** @var DataGateway $dataGateway */
         $dataGateway = \Zend_Registry::get('data_gateway');
 
         // Get current company
@@ -21,9 +30,9 @@ class IvozProvider_Klear_Filter_Terminals extends IvozProvider_Klear_Filter_Comp
         $currentCompanyId = $loggedUser->companyId;
 
         // Get used terminals from company users
-        /** @var Ivoz\Provider\Domain\Model\User\UserDTO[] $companyUsers */
+        /** @var UserDto[] $companyUsers */
         $companyUsers = $dataGateway->findBy(
-            \Ivoz\Provider\Domain\Model\User\User::class,
+            User::class,
             [
                 "User.company = " . $currentCompanyId
             ]

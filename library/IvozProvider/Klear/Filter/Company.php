@@ -1,4 +1,12 @@
 <?php
+
+/**
+ * Class IvozProvider_Klear_Filter_Company
+ *
+ * Filter results for the current emulated company
+ *
+ * @note multiple filters inherit from this one
+ */
 class IvozProvider_Klear_Filter_Company implements KlearMatrix_Model_Field_Select_Filter_Interface
 {
     protected $_condition = array();
@@ -9,6 +17,7 @@ class IvozProvider_Klear_Filter_Company implements KlearMatrix_Model_Field_Selec
         if (!$auth->hasIdentity()) {
             throw new Klear_Exception_Default("No company emulated");
         }
+
         $loggedUser = $auth->getIdentity();
         $currentCompanyId = $loggedUser->companyId;
 
@@ -22,6 +31,5 @@ class IvozProvider_Klear_Filter_Company implements KlearMatrix_Model_Field_Selec
         if (count($this->_condition) > 0) {
             return ['(' . implode(" AND ", $this->_condition) . ')'];
         }
-        return null;
     }
 }

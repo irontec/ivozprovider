@@ -1,5 +1,16 @@
 <?php
 
+use Ivoz\Core\Application\Service\DataGateway;
+use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup;
+use Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupDto;
+use Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUser;
+use Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUserDto;
+
+/**
+ * Class IvozProvider_Klear_Filter_HuntGroupsRelUsers
+ *
+ * Filter Users Listbox to avoid displaying Users already present in the HuntGroup
+ */
 class IvozProvider_Klear_Filter_HuntGroupsRelUsers extends IvozProvider_Klear_Filter_Company
 {
     protected $_condition = array();
@@ -14,11 +25,12 @@ class IvozProvider_Klear_Filter_HuntGroupsRelUsers extends IvozProvider_Klear_Fi
             return true;
         }
 
+        /** @var DataGateway $dataGateway */
         $dataGateway = \Zend_Registry::get('data_gateway');
 
-        /** @var \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupDto $huntGroupDto */
+        /** @var HuntGroupDto $huntGroupDto */
         $huntGroupDto = $dataGateway->find(
-            'Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup',
+            Huntgroup::class,
             $huntGroupId
         );
 
@@ -26,9 +38,9 @@ class IvozProvider_Klear_Filter_HuntGroupsRelUsers extends IvozProvider_Klear_Fi
             return true;
         }
 
-        /** @var Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUserDto[] $existingRelationships */
+        /** @var HuntGroupsRelUserDto[] $existingRelationships */
         $existingRelationships = $dataGateway->findBy(
-            'Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUser',
+            HuntGroupsRelUser::class,
             ["HuntGroupsRelUser.huntGroup = " . $huntGroupId]
         );
 

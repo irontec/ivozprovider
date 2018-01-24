@@ -1,4 +1,11 @@
 <?php
+
+/**
+ * Class IvozProvider_Klear_Filter_RetailDDIs
+ *
+ * Filter DDIs Listbox to only display DDIs assigned to the Retail Account being edited
+ *
+ */
 class IvozProvider_Klear_Filter_RetailDDIs implements KlearMatrix_Model_Field_Select_Filter_Interface
 {
     protected $_condition = array();

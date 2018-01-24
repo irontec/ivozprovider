@@ -1,4 +1,10 @@
 <?php
+
+/**
+ * Class IvozProvider_Klear_Filter_Extensions
+ *
+ * Filter Extension Listbox to only display not assigned Extensions or Extensions already assigned to the User
+ */
 class IvozProvider_Klear_Filter_Extensions extends IvozProvider_Klear_Filter_Company
 {
     protected $_condition = array();
@@ -7,6 +13,7 @@ class IvozProvider_Klear_Filter_Extensions extends IvozProvider_Klear_Filter_Com
     {
         // Add parent filters
         parent::setRouteDispatcher($routeDispatcher);
+
         //Get ModelName and your Controller
         $currentScreen = $routeDispatcher->getCurrentItemName();
         $pk = $routeDispatcher->getParam("pk", false);

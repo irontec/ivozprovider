@@ -1,7 +1,15 @@
 <?php
 
-use Ivoz\Provider\Domain\Model\Feature\Feature as Feature;
+use Ivoz\Core\Application\Service\DataGateway;
+use Ivoz\Provider\Domain\Model\Feature\Feature;
+use Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrand;
+use Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrandDto;
 
+/**
+ * Class IvozProvider_Klear_Filter_Features
+ *
+ * Filter Features Multiselect to avoid selecting Features not enabled by the Brand
+ */
 class IvozProvider_Klear_Filter_Features implements KlearMatrix_Model_Field_Select_Filter_Interface
 {
     protected $_condition = array();
@@ -14,12 +22,12 @@ class IvozProvider_Klear_Filter_Features implements KlearMatrix_Model_Field_Sele
         }
         $currentBrandId = $auth->getIdentity()->brandId;
 
+        /** @var DataGateway $dataGateway */
         $dataGateway = \Zend_Registry::get('data_gateway');
-        /**
-         * @var \Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrandDto[] $rels
-         */
+
+        /** @var FeaturesRelBrandDto[] $rels */
         $rels = $dataGateway->findBy(
-            'Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrand',
+            FeaturesRelBrand::class,
             ["FeaturesRelBrand.brand = '" . $currentBrandId . "'"]
         );
 
@@ -46,6 +54,5 @@ class IvozProvider_Klear_Filter_Features implements KlearMatrix_Model_Field_Sele
         if (count($this->_condition) > 0) {
             return ['(' . implode(" AND ", $this->_condition) . ')'];
         }
-        return;
     }
 }
