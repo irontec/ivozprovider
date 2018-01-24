@@ -1,11 +1,21 @@
 <?php
 
+use Ivoz\Core\Application\Service\DataGateway;
+use Ivoz\Kam\Domain\Model\UsersLocation\UsersLocation;
+use Ivoz\Kam\Domain\Model\UsersLocation\UsersLocationDto;
+use Ivoz\Provider\Domain\Model\Domain\Domain;
+use Ivoz\Provider\Domain\Model\Domain\DomainDto;
+use Ivoz\Provider\Domain\Model\Friend\FriendDto;
+use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto;
+use Ivoz\Provider\Domain\Model\Terminal\TerminalDto;
+
 class IvozProvider_Klear_Ghost_RegisterStatus extends KlearMatrix_Model_Field_Ghost_Abstract
 {
     /**
      * Get Register Status for Terminals
-     * @param Terminal $model
+     * @param TerminalDto $model
      * @return string HTML code to display SIP register status icon
+     * @throws Zend_Exception
      */
     public function getTerminalStatusIcon($model)
     {
@@ -14,8 +24,9 @@ class IvozProvider_Klear_Ghost_RegisterStatus extends KlearMatrix_Model_Field_Gh
 
     /**
      * Get Register Status for Terminals
-     * @param Terminal $model
+     * @param TerminalDto $model
      * @return string HTML code to display SIP register status
+     * @throws Zend_Exception
      */
     public function getTerminalStatus($model)
     {
@@ -24,8 +35,9 @@ class IvozProvider_Klear_Ghost_RegisterStatus extends KlearMatrix_Model_Field_Gh
 
     /**
      * Get Register Status for Friends
-     * @param Friend $model
+     * @param FriendDto $model
      * @return string HTML code to display SIP register status icon
+     * @throws Zend_Exception
      */
     public function getFriendStatusIcon($model)
     {
@@ -38,8 +50,9 @@ class IvozProvider_Klear_Ghost_RegisterStatus extends KlearMatrix_Model_Field_Gh
 
     /**
      * Get Register Status for Friends
-     * @param Friend $model
+     * @param FriendDto $model
      * @return string HTML code to display SIP register status
+     * @throws Zend_Exception
      */
     public function getFriendStatus($model)
     {
@@ -52,8 +65,9 @@ class IvozProvider_Klear_Ghost_RegisterStatus extends KlearMatrix_Model_Field_Gh
 
     /**
      * Get Register Status for Retail Accounts
-     * @param RetailAccount $model
+     * @param RetailAccountDto $model
      * @return string HTML code to display SIP register status icon
+     * @throws Zend_Exception
      */
     public function getRetailAccountStatusIcon($model)
     {
@@ -66,8 +80,9 @@ class IvozProvider_Klear_Ghost_RegisterStatus extends KlearMatrix_Model_Field_Gh
 
     /**
      * Get Register Status for Retail Accounts
-     * @param RetailAccount $model
+     * @param RetailAccountDto $model
      * @return string HTML code to display SIP register status
+     * @throws Zend_Exception
      */
     public function getRetailAccountStatus($model)
     {
@@ -80,7 +95,7 @@ class IvozProvider_Klear_Ghost_RegisterStatus extends KlearMatrix_Model_Field_Gh
 
     /**
      * Check if entity has direct connectivity enabled
-     * @param Friend/RetailAccount $model
+     * @param FriendDto|RetailAccountDto $model
      * @return string HTML code to display SIP register status or empty string
      */
     private function getDirectConnectivityStatus($model)
@@ -94,17 +109,19 @@ class IvozProvider_Klear_Ghost_RegisterStatus extends KlearMatrix_Model_Field_Gh
 
     /**
      * Get Register Status from UsersLocation Table
-     * @param Terminal/Friend/RetailAccount $model
+     *
+     * @param TerminalDto|FriendDto|RetailAccountDto $model
      * @return string HTML code to display SIP register status icon
+     * @throws Zend_Exception
      */
     private function getLocationStatusIcon($model)
     {
-        /** @var \Ivoz\Core\Application\Service\DataGateway $dataGateway */
+        /** @var DataGateway $dataGateway */
         $dataGateway = \Zend_Registry::get('data_gateway');
 
-        /** @var \Ivoz\Provider\Domain\Model\Domain\DomainDTO $domain */
+        /** @var DomainDto $domain */
         $domain = $dataGateway->find(
-            \Ivoz\Provider\Domain\Model\Domain\Domain::class,
+            Domain::class,
             $model->getDomainId()
         );
 
@@ -113,9 +130,9 @@ class IvozProvider_Klear_Ghost_RegisterStatus extends KlearMatrix_Model_Field_Gh
             "UsersLocation.domain = '" . $domain->getDomain() . "'"
         );
 
-        /** @var \Ivoz\Kam\Domain\Model\UsersLocation\UsersLocationDTO $location */
+        /** @var UsersLocationDto $location */
         $location = $dataGateway->findOneBy(
-            \Ivoz\Kam\Domain\Model\UsersLocation\UsersLocation::class,
+            UsersLocation::class,
             [
                 implode(' AND ', $where),
             ],
@@ -136,17 +153,19 @@ class IvozProvider_Klear_Ghost_RegisterStatus extends KlearMatrix_Model_Field_Gh
 
     /**
      * Get Register Status from UsersLocation Table
-     * @param Terminal/Friend/RetailAccount $model
+     *
+     * @param TerminalDto|FriendDto|RetailAccountDto $model
      * @return string HTML code to display SIP register status
+     * @throws Zend_Exception
      */
     private function getLocationStatus($model)
     {
-        /** @var \Ivoz\Core\Application\Service\DataGateway $dataGateway */
+        /** @var DataGateway $dataGateway */
         $dataGateway = \Zend_Registry::get('data_gateway');
 
-        /** @var \Ivoz\Provider\Domain\Model\Domain\DomainDTO $domain */
+        /** @var DomainDto $domain */
         $domain = $dataGateway->find(
-            \Ivoz\Provider\Domain\Model\Domain\Domain::class,
+            Domain::class,
             $model->getDomainId()
         );
 
@@ -156,9 +175,9 @@ class IvozProvider_Klear_Ghost_RegisterStatus extends KlearMatrix_Model_Field_Gh
         );
 
 
-        /** @var \Ivoz\Kam\Domain\Model\UsersLocation\UsersLocationDTO[] $location */
+        /** @var UsersLocationDto[] $location */
         $locations = $dataGateway->findBy(
-            \Ivoz\Kam\Domain\Model\UsersLocation\UsersLocation::class,
+            UsersLocation::class,
             [
                 implode(' AND ', $where),
             ],
@@ -169,8 +188,6 @@ class IvozProvider_Klear_Ghost_RegisterStatus extends KlearMatrix_Model_Field_Gh
 
         if (!empty($locations)) {
             $registerStatus = '<table width="100%" >';
-
-
 
             foreach ($locations as $location) {
                 preg_match('/sips?:([^@]+@)?(?P<domain>[^;]+)/', $location->getContact(), $matches);

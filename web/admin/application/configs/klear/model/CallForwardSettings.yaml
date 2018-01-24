@@ -136,8 +136,8 @@ production:
       title: _('Target type value')
       type: ghost
       source:
-        class: IvozProvider_Klear_Ghost_CallForwardTargetTypeValue
-        method: getValue
+        class: IvozProvider_Klear_Ghost_RouteTarget
+        method: getTarget
 
 staging:
   _extends: production

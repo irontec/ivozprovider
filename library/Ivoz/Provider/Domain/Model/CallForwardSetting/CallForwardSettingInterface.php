@@ -26,6 +26,13 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
      */
     public function getNumberValueE164();
 
+    /**
+     * Alias for getTargetType
+     *
+     * @todo rename tagetType field to routeType
+     */
+    public function getRouteType();
+
     public function __toString();
 
     /**
@@ -162,6 +169,12 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
      */
     public function getNumberCountry();
+
+    /**
+     * @param string $prefix
+     * @return null|string
+     */
+    public function getTarget(string $prefix = '');
 
 }
 

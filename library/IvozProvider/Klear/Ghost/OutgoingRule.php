@@ -1,16 +1,15 @@
 <?php
 
-use Ivoz\Provider\Domain\Model\OutgoingDDIRule\OutgoingDDIRule;
+use Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleDto;
+use Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPatternDto;
 
 class IvozProvider_Klear_Ghost_OutgoingRule extends KlearMatrix_Model_Field_Ghost_Abstract
 {
-    protected $nullDDIValue = "Company's default";
-
-
     /**
      *
-     * @param OutgoingDDIRule $model
-     * @return name Forced DDI text based on action
+     * @param OutgoingDdiRuleDto $model
+     * @return string Forced DDI text based on action
+     * @throws Exception
      */
     public function getOutgoingRuleForcedDDI ($model)
     {
@@ -21,17 +20,19 @@ class IvozProvider_Klear_Ghost_OutgoingRule extends KlearMatrix_Model_Field_Ghos
                         ? $model->getForcedDdi()->getDdiE164()
                         : '';
                 } else {
-                    return Klear_Model_Gettext::gettextCheck('_("' . $this->nullDDIValue . '")');
+                    return Klear_Model_Gettext::gettextCheck('_("Company\'s default")');
                 }
             case 'keep':
+            default:
                 return "";
         }
     }
 
     /**
      *
-     * @param $model OutgoingRulePatterns
-     * @return name Forced DDI text based on action
+     * @param $model OutgoingDdiRulesPatternDto
+     * @return string Forced DDI text based on action
+     * @throws Exception
      */
     public function getOutgoingRulePatternForcedDDI ($model)
     {
@@ -40,9 +41,10 @@ class IvozProvider_Klear_Ghost_OutgoingRule extends KlearMatrix_Model_Field_Ghos
                 if ($model->getForcedDDIId()) {
                     return $model->getForcedDDI()->getDDIE164();
                 } else {
-                    return Klear_Model_Gettext::gettextCheck('_("' . $this->nullDDIValue . '")');
+                    return Klear_Model_Gettext::gettextCheck('_("Company\'s default")');
                 }
             case 'keep':
+            default:
                 return "";
         }
     }

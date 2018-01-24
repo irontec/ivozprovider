@@ -13,6 +13,14 @@ interface CalendarInterface extends LoggableEntityInterface
      */
     public function getChangeSet();
 
+    /**
+     * Check if the given day is registered as Holiday
+     *
+     * @param \DateTime $date
+     * @return bool
+     */
+    public function isHolidayDate($date);
+
     public function __toString();
 
     /**

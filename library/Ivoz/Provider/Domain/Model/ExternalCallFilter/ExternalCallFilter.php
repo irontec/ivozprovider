@@ -10,6 +10,7 @@ use Ivoz\Provider\Domain\Model\ExternalCallFilterRelSchedule\ExternalCallFilterR
 use Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface;
 use Ivoz\Provider\Domain\Model\MatchList\MatchList;
 use Doctrine\Common\Collections\Criteria;
+use Ivoz\Provider\Domain\Traits\RoutableTrait;
 
 /**
  * ExternalCallFilter
@@ -17,6 +18,7 @@ use Doctrine\Common\Collections\Criteria;
 class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalCallFilterInterface
 {
     use ExternalCallFilterTrait;
+    use RoutableTrait;
 
     /**
      * @codeCoverageIgnore
@@ -245,6 +247,46 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
         return
             $this->getOutOfScheduleNumberCountry()->getCountryCode() .
             $this->getOutOfScheduleNumberValue();
+    }
+
+    /**
+     * Get Target destination for Holidays
+     *
+     * @return null|string
+     */
+    public function getHolidayTarget()
+    {
+        return $this->getTarget("Holiday");
+    }
+
+    /**
+     * Alias for getHolidayTargetType
+     *
+     * @todo rename holidayTagetType field to holidayRouteType
+     */
+    public function getHolidayRouteType()
+    {
+        return $this->getHolidayTargetType();
+    }
+
+    /**
+     * Get Target destination for Out of schedule
+     *
+     * @return null|string
+     */
+    public function getOutOfScheduleTarget()
+    {
+        return $this->getTarget("OutOfSchedule");
+    }
+
+    /**
+     * Alias for getOutOfScheduleTargetType
+     *
+     * @todo rename outOfScheduleTargetType field to outOfScheduleRouteType
+     */
+    public function getOutOfScheduleRouteType()
+    {
+        return $this->getOutOfScheduleTargetType();
     }
 }
 

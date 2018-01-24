@@ -2,9 +2,12 @@
 
 namespace Ivoz\Provider\Domain\Model\ConditionalRoutesCondition;
 
+use Ivoz\Provider\Domain\Model\Calendar\CalendarInterface;
 use Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarInterface;
 use Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistInterface;
 use Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleInterface;
+use Ivoz\Provider\Domain\Model\MatchList\MatchListInterface;
+use Ivoz\Provider\Domain\Model\Schedule\ScheduleInterface;
 use Ivoz\Provider\Domain\Traits\RoutableTrait;
 
 class ConditionalRoutesCondition extends ConditionalRoutesConditionAbstract implements ConditionalRoutesConditionInterface
@@ -43,6 +46,11 @@ class ConditionalRoutesCondition extends ConditionalRoutesConditionAbstract impl
             $this->getNumberValue();
     }
 
+    /**
+     * Return MatchLists associated with this condition
+     *
+     * @return MatchListInterface[]
+     */
     public function getMatchLists()
     {
         /** @var ConditionalRoutesConditionsRelMatchlistInterface[] $rels */
@@ -53,6 +61,12 @@ class ConditionalRoutesCondition extends ConditionalRoutesConditionAbstract impl
         }
         return $matchLists;
     }
+
+    /**
+     * Return Schedules associated with this condition
+     *
+     * @return ScheduleInterface[]
+     */
     public function getSchedules()
     {
         /** @var ConditionalRoutesConditionsRelScheduleInterface[] $rels */
@@ -63,6 +77,12 @@ class ConditionalRoutesCondition extends ConditionalRoutesConditionAbstract impl
         }
         return $schedules;
     }
+
+    /**
+     * Return Calendars associated with this condition
+     *
+     * @return CalendarInterface[]
+     */
     public function getCalendars()
     {
         /** @var ConditionalRoutesConditionsRelCalendarInterface[] $rels */
@@ -73,6 +93,13 @@ class ConditionalRoutesCondition extends ConditionalRoutesConditionAbstract impl
         }
         return $calendars;
     }
+
+    /**
+     * Checks if this condition mathes the given origin
+     *
+     * @param $number Number in E.164 format
+     * @return bool true if condition matches
+     */
     public function matchesOrigin($number)
     {
         $matchLists = $this->getMatchLists();
@@ -86,6 +113,12 @@ class ConditionalRoutesCondition extends ConditionalRoutesConditionAbstract impl
         }
         return false;
     }
+
+    /**
+     * Checks if current time in Company's timezone matches condition schedules
+     *
+     * @return bool true if condition matches
+     */
     public function matchesSchedule()
     {
         $schedules = $this->getSchedules();
@@ -105,12 +138,19 @@ class ConditionalRoutesCondition extends ConditionalRoutesConditionAbstract impl
         }
         return false;
     }
+
+    /**
+     * Checks if today is holiday in condition calendars
+     *
+     * @return bool true if condition matches
+     */
     public function matchesCalendar()
     {
         $calendars = $this->getCalendars();
         if (empty($calendars)) {
             return true;
         }
+
         // Current day in company timezone
         $conditionalRoute = $this->getConditionalRoute();
         $company = $conditionalRoute->getCompany();
@@ -118,14 +158,41 @@ class ConditionalRoutesCondition extends ConditionalRoutesConditionAbstract impl
         // Current time in company timezone
         $timezone = $company->getDefaultTimezone();
         $datetime = new \DateTime("now", new \DateTimeZone($timezone->getTz()));
-        $date = $datetime->format('Y-m-d');
+
         foreach ($calendars as $calendar) {
-            if ($calendar->isHolidayDate($date)) {
+            if ($calendar->isHolidayDate($datetime)) {
                 return true;
             }
         }
         return false;
     }
 
+
+    /**
+     * Return a string representation of matching conditions
+     *
+     * @return string
+     */
+    public function getMatchData()
+    {
+        $matchData = [];
+
+        $matchLists = $this->getMatchLists();
+        foreach ($matchLists as $matchList) {
+            $matchData[] = $matchList->getName();
+        }
+
+        $schedules = $this->getSchedules();
+        foreach ($schedules as $schedule) {
+            $matchData[] = $schedule->getName();
+        }
+
+        $calendars = $this->getCalendars();
+        foreach ($calendars as $calendar) {
+            $matchData[] = $calendar->getName();
+        }
+
+        return implode(",", $matchData);
+    }
 }
 
