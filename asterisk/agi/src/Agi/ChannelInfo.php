@@ -72,8 +72,8 @@ class ChannelInfo
      */
     public function setChannelCaller(EntityInterface $caller)
     {
-        if (get_class($caller) == get_class($this->$caller)
-            && ($caller->getId() == $this->$caller->getId()))
+        if (get_class($caller) == get_class($this->caller)
+            && ($caller->getId() == $this->caller->getId()))
         {
             return;
         }

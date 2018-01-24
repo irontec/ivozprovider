@@ -7,7 +7,10 @@ require __DIR__.'/../vendor/autoload.php';
 
 require __DIR__ . '/../app/MicroKernel.php';
 
-$kernel = new MicroKernel('prod', false, $fastagi);
+$env = getenv('SYMFONY_ENV') ?: 'dev';
+$debug = getenv('SYMFONY_DEBUG') !== '0';
+
+$kernel = new MicroKernel($env, $debug, $fastagi);
 
 $request = Request::create($argx['command'], 'GET');
 
