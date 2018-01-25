@@ -19,6 +19,7 @@
 [   -L /etc/apache2/sites-enabled/000-default.conf ] && /usr/sbin/a2dissite 000-default
 [ ! -L /etc/apache2/sites-enabled/020-ivozprovider-portals.conf ] && /usr/sbin/a2ensite 020-ivozprovider-portals.conf
 [ ! -L /etc/apache2/sites-enabled/030-ivozprovider-prov.conf ] && /usr/sbin/a2ensite 030-ivozprovider-prov.conf
+[ ! -L /etc/apache2/sites-enabled/060-ivozprovider-api.conf ] && /usr/sbin/a2ensite 060-ivozprovider-api.conf
 
 # Enable services
 /bin/systemctl enable apache2
