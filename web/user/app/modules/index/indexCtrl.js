@@ -9,14 +9,15 @@ angular
         appConfig,
         $http
     ) {
-    
+
     ngProgress.color('blue');
     ngProgress.start();
-    
+
     $scope.totalCalls = 0;
     $scope.totalDetours = 0;
-    
-    $http.get(appConfig.urlRest + 'index').success(function(data, status) {
+
+    $http.get(appConfig.urlRest + 'my/index').success(function(data, status) {
+
         ngProgress.complete();
         if (status > 400) {
             $scope.totalCalls = 0;
@@ -25,7 +26,7 @@ angular
             $scope.totalCalls = data.calls.total;
             $scope.totalDetours = data.detours.total;
         }
-        
+
     });
-    
+
 });

@@ -61,7 +61,7 @@ class EntityDenormalizer implements DenormalizerInterface
      */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        $context['operation_type'] = DataTransferObjectInterface::CONTEXT_SIMPLE;
+        $context['operation_type'] = $context['operation_normalization_context'] ?? DataTransferObjectInterface::CONTEXT_SIMPLE;
         $entity = array_key_exists('object_to_populate', $context)
             ? $context['object_to_populate']
             : null;
@@ -69,11 +69,12 @@ class EntityDenormalizer implements DenormalizerInterface
         return $this->denormalizeEntity(
             $data,
             $class,
-            $entity
+            $entity,
+            $context['operation_type']
         );
     }
 
-    private function denormalizeEntity(array $data, string $class, EntityInterface $entity = null)
+    private function denormalizeEntity(array $data, string $class, EntityInterface $entity = null, string $normalizationContext)
     {
         $dtoClass = $class. 'Dto';
         $dto = $entity
@@ -84,7 +85,7 @@ class EntityDenormalizer implements DenormalizerInterface
         $data = array_replace_recursive($baseData, $data);
         $dto->denormalize(
             $data,
-            DataTransferObjectInterface::CONTEXT_SIMPLE
+            $normalizationContext
         );
 
         if ($entity) {

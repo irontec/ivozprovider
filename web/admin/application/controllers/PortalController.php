@@ -10,8 +10,15 @@ class PortalController extends Zend_Controller_Action
     {
         /* Initialize action controller here */
         $serverUrl = $this->view->serverUrl();
-        $brandsMap = new Mappers\BrandURLs();
-        $brand = $brandsMap->findOneByField('url', $serverUrl);
+        /** @var \Ivoz\Core\Application\Service\DataGateway $dataGateway */
+        $dataGateway = Zend_Registry::get('data_gateway');
+        $brand = $dataGateway->findOneBy(
+            \Ivoz\Provider\Domain\Model\BrandUrl\BrandUrl::class,
+            [
+                'BrandUrl.url = :url',
+                [':url' => $serverUrl]
+            ]
+        );
 
         if (!$this->_isBrandValid($brand)) {
             throw new Exception('Page not found', 404);

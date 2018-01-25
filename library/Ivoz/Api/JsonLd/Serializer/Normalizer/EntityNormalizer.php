@@ -121,7 +121,9 @@ class EntityNormalizer implements NormalizerInterface
                 ['id' => $dto->getId()]
             );
 
-        $rawData = $dto->normalize($context['operation_type']);
+        $rawData = $dto->normalize(
+            $context['operation_normalization_context'] ?? $context['operation_type']
+        );
 
         foreach ($rawData as $key => $value) {
 

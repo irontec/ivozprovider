@@ -1,237 +1,97 @@
-Ivoz\Provider\Domain\Model\Brand\Brand:
-  attributes:
-    access_control: '"ROLE_SUPER_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\Brand\Invoice:
-Ivoz\Provider\Domain\Model\Brand\Logo:
-Ivoz\Provider\Domain\Model\Administrator\Administrator:
-  attributes:
-    access_control: '"ROLE_SUPER_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServer:
-  attributes:
-    access_control: '"ROLE_SUPER_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\BrandService\BrandService:
-  attributes:
-    access_control: '"ROLE_BRAND_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\BrandUrl\BrandUrl:
-  attributes:
-    access_control: '"ROLE_BRAND_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\Calendar\Calendar:
-  attributes:
-    access_control: '"ROLE_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\CallAcl\CallAcl:
-  attributes:
-    access_control: '"ROLE_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchList:
-  attributes:
-    access_control: '"ROLE_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting:
+########################################
+## Custom operations
+########################################
+Model\UserStatus:
   attributes:
     access_control: '"ROLE_USER" in roles'
-Ivoz\Provider\Domain\Model\Company\Company:
-  attributes:
-    access_control: '"ROLE_BRAND_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\CompanyService\CompanyService:
-  attributes:
-    access_control: '"ROLE_SUPER_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute:
-  attributes:
-    access_control: '"ROLE_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition:
-  attributes:
-    access_control: '"ROLE_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlist:
-  attributes:
-    access_control: '"ROLE_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelSchedule:
-  attributes:
-    access_control: '"ROLE_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendar:
-  attributes:
-    access_control: '"ROLE_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom:
-  attributes:
-    access_control: '"ROLE_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\Country\Country:
-  attributes:
-    access_control: '"ROLE_SUPER_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\Ddi\Ddi:
-  attributes:
-    access_control: '"ROLE_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\Domain\Domain:
-  attributes:
-    access_control: '"ROLE_SUPER_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\Extension\Extension:
-  attributes:
-    access_control: '"ROLE_USER" in roles'
-Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter:
-  attributes:
-    access_control: '"ROLE_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList\ExternalCallFilterBlackList:
-  attributes:
-    access_control: '"ROLE_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\ExternalCallFilterRelCalendar\ExternalCallFilterRelCalendar:
-  attributes:
-    access_control: '"ROLE_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\ExternalCallFilterRelSchedule\ExternalCallFilterRelSchedule:
-  attributes:
-    access_control: '"ROLE_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\ExternalCallFilterWhiteList\ExternalCallFilterWhiteList:
-  attributes:
-    access_control: '"ROLE_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOut:
-  attributes:
-    access_control: '"ROLE_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\Fax\Fax:
-  attributes:
-    access_control: '"ROLE_SUPER_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\Feature\Feature:
-  attributes:
-    access_control: '"ROLE_SUPER_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrand:
-  attributes:
-    access_control: '"ROLE_SUPER_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompany:
-  attributes:
-    access_control: '"ROLE_SUPER_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\FixedCost\FixedCost:
-  attributes:
-    access_control: '"ROLE_BRAND_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoice:
-  attributes:
-    access_control: '"ROLE_BRAND_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\Friend\Friend:
-  attributes:
-    access_control: '"ROLE_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPattern:
-  attributes:
-    access_control: '"ROLE_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\HolidayDate\HolidayDate:
-  attributes:
-    access_control: '"ROLE_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup:
-  attributes:
-    access_control: '"ROLE_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUser:
-  attributes:
-    access_control: '"ROLE_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\Invoice\Invoice:
-  attributes:
-    access_control: '"ROLE_BRAND_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplate:
-  attributes:
-    access_control: '"ROLE_BRAND_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\IvrEntry\IvrEntry:
-  attributes:
-    access_control: '"ROLE_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\Ivr\Ivr:
-  attributes:
-    access_control: '"ROLE_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\IvrExcludedExtension\IvrExcludedExtension:
-  attributes:
-    access_control: '"ROLE_SUPER_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\Language\Language:
-  attributes:
-    access_control: '"ROLE_SUPER_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\Language\Name:
-Ivoz\Provider\Domain\Model\LcrGateway\LcrGateway:
-  attributes:
-    access_control: '"ROLE_SUPER_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\LcrRule\LcrRule:
-  attributes:
-    access_control: '"ROLE_SUPER_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\LcrRuleTarget\LcrRuleTarget:
-  attributes:
-    access_control: '"ROLE_SUPER_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\Locution\Locution:
-  attributes:
-    access_control: '"ROLE_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\MatchList\MatchList:
-  attributes:
-    access_control: '"ROLE_SUPER_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPattern:
-  attributes:
-    access_control: '"ROLE_SUPER_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet:
-  attributes:
-    access_control: '"ROLE_SUPER_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHold:
-  attributes:
-    access_control: '"ROLE_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule:
-  attributes:
-    access_control: '"ROLE_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPattern:
-  attributes:
-    access_control: '"ROLE_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting:
-  attributes:
-    access_control: '"ROLE_BRAND_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\PeeringContract\PeeringContract:
-  attributes:
-    access_control: '"ROLE_BRAND_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\PeerServer\PeerServer:
-  attributes:
-    access_control: '"ROLE_BRAND_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroup:
-  attributes:
-    access_control: '"ROLE_SUPER_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUser:
-  attributes:
-    access_control: '"ROLE_SUPER_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunk:
-  attributes:
-    access_control: '"ROLE_SUPER_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\ProxyUser\ProxyUser:
-  attributes:
-    access_control: '"ROLE_SUPER_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\QueueMember\QueueMember:
-  attributes:
-    access_control: '"ROLE_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\Queue\Queue:
-  attributes:
-    access_control: '"ROLE_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\Recording\Recording:
-  attributes:
-    access_control: '"ROLE_SUPER_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount:
-  attributes:
-    access_control: '"ROLE_SUPER_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup:
-  attributes:
-    access_control: '"ROLE_BRAND_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPattern:
-  attributes:
-    access_control: '"ROLE_BRAND_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPattern:
-  attributes:
-    access_control: '"ROLE_BRAND_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\Schedule\Schedule:
-  attributes:
-    access_control: '"ROLE_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\Service\Service:
-  attributes:
-    access_control: '"ROLE_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\TerminalManufacturer\TerminalManufacturer:
-  attributes:
-    access_control: '"ROLE_SUPER_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\TerminalModel\TerminalModel:
-  attributes:
-    access_control: '"ROLE_SUPER_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\Terminal\Terminal:
-  attributes:
-    access_control: '"ROLE_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\Timezone\Timezone:
-  attributes:
-    access_control: '"ROLE_USER" in roles'
-Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet:
-  attributes:
-    access_control: '"ROLE_BRAND_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\TransformationRule\TransformationRule:
-  attributes:
-    access_control: '"ROLE_SUPER_ADMIN" in roles'
+  itemOperations:
+    get:
+      method: 'GET'
+      path: '/my/status'
+      route_name: 'get_my_status'
+      swagger_context:
+        tags:
+          - My
+        parameters: []
+  collectionOperations: {}
+
+Model\WebTheme:
+  itemOperations:
+    get:
+      method: 'GET'
+      path: '/my/web_theme'
+      route_name: 'get_my_web_theme'
+      swagger_context:
+        tags:
+          - My
+        parameters: []
+  collectionOperations: {}
+
+Model\CallStats:
+  itemOperations:
+    get:
+      method: 'GET'
+      path: '/my/call_stats'
+      route_name: 'get_my_call_stats'
+      swagger_context:
+        tags:
+          - My
+        parameters: []
+  collectionOperations: {}
+
 Ivoz\Provider\Domain\Model\User\User:
-  attributes:
-    access_control: '"ROLE_USER" in roles'
-Ivoz\Kam\Domain\Model\PikeTrusted\PikeTrusted:
-  attributes:
-    access_control: '"ROLE_SUPER_ADMIN" in roles'
+  itemOperations:
+    get_my_profile:
+      method: 'GET'
+      path: '/my/profile'
+      route_name: 'get_my_profile'
+      operation_normalization_context: 'myProfile'
+      normalization_context:
+        groups: ['myProfile']
+      parameters: []
+      swagger_context:
+        tags:
+          - My
+        parameters: []
+    put_my_profile:
+      method: 'PUT'
+      path: '/my/profile'
+      route_name: 'put_my_profile'
+      operation_normalization_context: 'myProfile'
+      normalization_context:
+        groups: ['myProfile']
+      parameters: []
+      swagger_context:
+        tags:
+          - My
+        consumes: ["application/ld+json"]
+        parameters:
+          - name: 'user'
+            in: 'body'
+            description: 'The updated User resource'
+            schema:
+              $ref: '#/definitions/User-myProfile'
+  collectionOperations:
+    my_company_assistants:
+      method: 'GET'
+      path: '/my/company_assistants'
+      route_name: 'get_my_company_assistants'
+      parameters: []
+      swagger_context:
+        tags:
+          - My
+        parameters: []
+
+Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting:
+  collectionOperations:
+    my_call_forward_settings:
+      method: 'GET'
+      path: '/my/call_forward_settings'
+      route_name: 'get_my_call_forward_settings'
+      normalization_context:
+        - collection
+      parameters: []
+      swagger_context:
+        tags:
+          - My
+        parameters: []

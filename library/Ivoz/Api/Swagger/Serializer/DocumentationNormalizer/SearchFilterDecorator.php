@@ -12,7 +12,7 @@ class SearchFilterDecorator implements NormalizerInterface
     protected $decoratedNormalizer;
 
     /**
-     * @var ArrayObject
+     * @var \ArrayObject
      */
     protected $definitions;
 
@@ -53,6 +53,10 @@ class SearchFilterDecorator implements NormalizerInterface
                 continue;
             }
 
+            if (!isset($path['get']['responses']['200']['schema']['items'])) {
+                continue;
+            }
+
             $responseModel = $this->getDefinitionByRef(
                 $path['get']['responses']['200']['schema']['items']['$ref']
             );
@@ -67,7 +71,7 @@ class SearchFilterDecorator implements NormalizerInterface
     }
 
     /**
-     * @param ArrayObject $responses
+     * @param \ArrayObject $responses
      * @return string
      */
     private function cleanRef(string $name)

@@ -61,7 +61,9 @@ api_platform:
     swagger:
         # The swagger api keys.
         api_keys:
-          - { name: 'Authorization', type: 'header' }
+            bearer:
+              name: 'Authorization'
+              type: 'header'
 
     collection:
         # The default order of results.
@@ -75,10 +77,10 @@ api_platform:
             enabled: true
 
             # To allow the client to enable or disable the pagination.
-            client_enabled: false
+            client_enabled: true
 
             # To allow the client to set the number of items per page.
-            client_items_per_page: false
+            client_items_per_page: true
 
             # The default number of items per page.
             items_per_page: 30
@@ -87,13 +89,13 @@ api_platform:
 #            maximum_items_per_page: ~
 
             # The default name of the parameter handling the page number.
-            page_parameter_name: 'page'
+            page_parameter_name: '_page'
 
             # The name of the query parameter to enable or disable pagination.
-            enabled_parameter_name: 'pagination'
+            enabled_parameter_name: '_pagination'
 
             # The name of the query parameter to set the number of items per page.
-            items_per_page_parameter_name: 'itemsPerPage'
+            items_per_page_parameter_name: '_itemsPerPage'
 
     mapping:
         # The list of paths with files or directories where the bundle will look for additional resource files.

@@ -165,7 +165,7 @@ class DoctrineEventSubscriber implements EventSubscriber
 
         switch($eventName) {
             case 'pre_remove':
-                // We use pre_remove because Id value is gone on post_persist
+                // We use pre_remove because Id value is gone on post_remove
                 $event = new EntityWasDeleted(
                     EntityClassHelper::getEntityClass($entity),
                     $entity->getId(),

@@ -92,7 +92,9 @@ class EntityNormalizer implements NormalizerInterface
         // Use resolved resource class instead of given resource class to support multiple inheritance child types
         $context['resource_class'] = $resourceClass;
 
-        $rawData = $dto->normalize($context['operation_type']);
+        $rawData = $dto->normalize(
+            $context['operation_normalization_context'] ?? $context['operation_type']
+        );
 
         foreach ($rawData as $key => $value) {
 

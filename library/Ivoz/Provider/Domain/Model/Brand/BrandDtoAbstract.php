@@ -157,7 +157,6 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
      */
     private $outgoingRoutings = null;
 
-
     use DtoNormalizer;
 
     public function __construct($id = null)

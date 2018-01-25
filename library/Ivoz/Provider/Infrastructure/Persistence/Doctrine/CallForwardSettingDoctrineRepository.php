@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\ORM\EntityRepository;
+use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingRepository;
 
 /**
@@ -13,4 +14,18 @@ use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingRepository;
  */
 class CallForwardSettingDoctrineRepository extends EntityRepository implements CallForwardSettingRepository
 {
+    /**
+     * @param mixed $userId
+     * @return int
+     */
+    public function countByUserId($userId) :int
+    {
+        $qb = $this->createQueryBuilder('self');
+
+        return $qb
+            ->select('count(self.id)')
+            ->where($qb->expr()->eq('self.user', $userId))
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
 }

@@ -7,5 +7,10 @@ use Doctrine\Common\Collections\Selectable;
 
 interface UserRepository extends ObjectRepository, Selectable
 {
+    /**
+     * @param UserInterface $user
+     * @return UserInterface[]
+     */
+    public function getUserAssistantCandidates(UserInterface $user);
 }
 

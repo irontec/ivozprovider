@@ -9,9 +9,9 @@ angular
         $http,
         appConfig
     ) {
-    
+
     var loadData = function() {
-        
+
         if ($rootScope.brand !== undefined) {
             $scope.logo = $rootScope.brand.logo;
             $scope.brandName = $rootScope.brand.brandName;
@@ -21,7 +21,7 @@ angular
             $scope.nombre = localStorage.getItem('userName');
             $scope.brandName = localStorage.getItem('companyName');
 
-            $http.get(appConfig.urlRest + 'index').success(function(data, status) {
+            $http.get(appConfig.urlRest + 'call_stats').success(function(data, status) {
                 if (status > 400) {
                     $scope.totalCalls = 0;
                     $scope.totalDetours = 0;
@@ -33,15 +33,15 @@ angular
         } else {
             $scope.nombre = '';
         }
-        
+
         var statusTerminal = localStorage.getItem('statusTerminal');
-        
+
         if (statusTerminal === true || statusTerminal === 'true') {
             $scope.statusTerminal = true;
         } else {
             $scope.statusTerminal = false;
         }
-        
+
         if (statusTerminal !== null) {
             $scope.userAgent = localStorage.getItem('userAgent');
             $scope.ipRegistered = localStorage.getItem('ipRegistered');
@@ -78,15 +78,13 @@ angular
 
             $scope.gsQRCode = false;
             $scope.QRCode = '';
-
         }
-
     };
-    
+
     loadData();
-    
+
     $rootScope.$on('$locationChangeSuccess', function() {
         loadData();
     });
-    
+
 });
