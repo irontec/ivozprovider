@@ -10,10 +10,10 @@ defined('APPLICATION_ENV')
 
 // Ensure library/ is on include_path
 /** @todo review this carefully */
-//set_include_path(implode(PATH_SEPARATOR, array(
-//    realpath(APPLICATION_PATH . '/../library'),
-//    get_include_path(),
-//)));
+set_include_path(implode(PATH_SEPARATOR, array(
+    realpath(APPLICATION_PATH . '/../library'),
+    get_include_path(),
+)));
 
 require_once realpath(APPLICATION_PATH . '/../vendor/autoload.php');
 
