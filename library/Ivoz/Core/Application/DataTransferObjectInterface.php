@@ -8,6 +8,9 @@ interface DataTransferObjectInterface
     const CONTEXT_SIMPLE = '';
     const CONTEXT_DETAILED = 'detailed';
 
+
+    public function getId();
+
     /**
      * @return array
      */

@@ -178,15 +178,6 @@ Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroup:
 Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUser:
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\PricingPlan\PricingPlan:
-  attributes:
-    access_control: '"ROLE_BRAND_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\PricingPlansRelCompany\PricingPlansRelCompany:
-  attributes:
-    access_control: '"ROLE_BRAND_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\PricingPlansRelTargetPattern\PricingPlansRelTargetPattern:
-  attributes:
-    access_control: '"ROLE_BRAND_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunk:
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles'
@@ -220,9 +211,6 @@ Ivoz\Provider\Domain\Model\Schedule\Schedule:
 Ivoz\Provider\Domain\Model\Service\Service:
   attributes:
     access_control: '"ROLE_ADMIN" in roles'
-Ivoz\Provider\Domain\Model\TargetPattern\TargetPattern:
-  attributes:
-    access_control: '"ROLE_SUPER_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\TerminalManufacturer\TerminalManufacturer:
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles'

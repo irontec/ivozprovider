@@ -2,21 +2,26 @@
 
 namespace Ivoz\Core\Infrastructure\Domain\Service\Lifecycle;
 
-use Ivoz\Core\Domain\Model\LoggableEntityInterface;
-use Ivoz\Core\Domain\Service\CommonLifecycleServiceCollection;
-use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
-use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Event\OnFlushEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
-use Ivoz\Core\Domain\Event\EntityWasCreated;
-use Ivoz\Core\Domain\Event\EntityWasUpdated;
-use Ivoz\Core\Domain\Event\EntityWasDeleted;
-use Ivoz\Core\Domain\Service\DomainEventPublisher;
 use Doctrine\ORM\Events;
+use Doctrine\ORM\PersistentCollection;
 use Ivoz\Core\Application\Helper\EntityClassHelper;
 use Ivoz\Core\Application\Helper\LifecycleServiceHelper;
+use Ivoz\Core\Domain\Event\EntityWasCreated;
+use Ivoz\Core\Domain\Event\EntityWasDeleted;
+use Ivoz\Core\Domain\Event\EntityWasUpdated;
+use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Ivoz\Core\Domain\Service\CommonLifecycleServiceCollection;
+use Ivoz\Core\Domain\Service\DomainEventPublisher;
+use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
+use Ivoz\Core\Infrastructure\Persistence\Doctrine\Events as CustomEvents;
+use Ivoz\Core\Infrastructure\Persistence\Doctrine\OnCommitEventArgs;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class DoctrineEventSubscriber implements EventSubscriber
 {
@@ -34,6 +39,11 @@ class DoctrineEventSubscriber implements EventSubscriber
      * @var DomainEventPublisher
      */
     protected $eventPublisher;
+
+    /**
+     * @var EntityInterface[]
+     */
+    protected $flushedEntities = [];
 
     public function __construct(
         ContainerInterface $serviceContainer,
@@ -55,7 +65,11 @@ class DoctrineEventSubscriber implements EventSubscriber
             Events::postUpdate,
 
             Events::preRemove,
-            Events::postRemove
+            Events::postRemove,
+
+            Events::onFlush,
+
+            CustomEvents::onCommit
         ];
     }
 
@@ -87,6 +101,49 @@ class DoctrineEventSubscriber implements EventSubscriber
     public function postRemove(LifecycleEventArgs $args)
     {
         $this->run('post_remove', $args);
+    }
+
+    public function onCommit(OnCommitEventArgs $args)
+    {
+        foreach ($this->flushedEntities as $entity) {
+            $this->run(
+                'on_commit',
+                new LifecycleEventArgs($entity, $args->getEntityManager())
+            );
+        }
+        $this->flushedEntities = [];
+    }
+
+    public function onFlush(OnFlushEventArgs $eventArgs)
+    {
+        $em = $eventArgs->getEntityManager();
+        $uow = $em->getUnitOfWork();
+
+        foreach ($uow->getScheduledEntityInsertions() as $entity) {
+            $this->flushedEntities[] = $entity;
+        }
+
+        foreach ($uow->getScheduledEntityUpdates() as $entity) {
+            $this->flushedEntities[] = $entity;
+        }
+
+        foreach ($uow->getScheduledEntityDeletions() as $entity) {
+            $this->flushedEntities[] = $entity;
+        }
+
+        /** @var PersistentCollection $col */
+        foreach ($uow->getScheduledCollectionDeletions() as $col) {
+            foreach ($col->unwrap()->toArray() as $entity) {
+                $this->flushedEntities[] = $entity;
+            }
+        }
+
+        /** @var PersistentCollection $col */
+        foreach ($uow->getScheduledCollectionUpdates() as $col) {
+            foreach ($col->unwrap()->toArray() as $entity) {
+                $this->flushedEntities[] = $entity;
+            }
+        }
     }
 
     private function run($eventName, LifecycleEventArgs $args, bool $isNew = false)

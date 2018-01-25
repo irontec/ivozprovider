@@ -2,6 +2,7 @@
 
 namespace Ivoz\Core\Infrastructure\Domain\Service;
 
+use Doctrine\Common\EventArgs;
 use Ivoz\Core\Application\Service\CreateEntityFromDTO;
 use Ivoz\Core\Application\Service\UpdateEntityFromDTO;
 use Ivoz\Core\Application\DataTransferObjectInterface;
@@ -11,9 +12,11 @@ use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\UnitOfWork;
 use Ivoz\Core\Application\Service\CommandEventSubscriber;
 use Ivoz\Core\Domain\Service\EntityEventSubscriber;
+use Ivoz\Core\Infrastructure\Persistence\Doctrine\OnCommitEventArgs;
 use Ivoz\Provider\Domain\Model\Changelog\Changelog;
 use Ivoz\Provider\Domain\Model\Commandlog\Commandlog;
 use Ivoz\Core\Application\Helper\EntityClassHelper;
+use Ivoz\Core\Infrastructure\Persistence\Doctrine\Events as CustomEvents;
 
 class DoctrineEntityPersister implements EntityPersisterInterface
 {
@@ -221,6 +224,11 @@ class DoctrineEntityPersister implements EntityPersisterInterface
         });
 
         $this->rootEntity = null;
+        $eventManager = $this->em->getEventManager();
+        $eventManager->dispatchEvent(
+            CustomEvents::onCommit,
+            new OnCommitEventArgs($this->em)
+        );
     }
 
     private function getDependantEntities(EntityInterface $entity)
