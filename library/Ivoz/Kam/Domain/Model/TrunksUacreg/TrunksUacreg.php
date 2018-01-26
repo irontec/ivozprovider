@@ -52,7 +52,7 @@ class TrunksUacreg extends TrunksUacregAbstract implements TrunksUacregInterface
         $multiDdi_is_enabled_in_new_item = $isNew; # New item
         $multiDdi_has_been_enabled = !$isNew && $this->hasChanged('multiDdi'); # Existing item
         if ($multiDdi_has_been_enabled || $multiDdi_is_enabled_in_new_item) {
-            $this->setLUuid(round(microtime(true) * 1000));
+            $this->setLUuid((string)round(microtime(true) * 1000));
         }
     }
 
