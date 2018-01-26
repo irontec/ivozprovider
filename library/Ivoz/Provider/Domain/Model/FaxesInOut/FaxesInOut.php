@@ -53,5 +53,24 @@ class FaxesInOut extends FaxesInOutAbstract implements FaxesInOutInterface, File
             $this->getDstCountry()->getCountryCode() .
             $this->getDst();
     }
+
+
+
+    /**
+     * Set calldate
+     *
+     * @param \DateTime $calldate
+     *
+     * @return self
+     */
+    public function setCalldate($calldate)
+    {
+        if (!$calldate) {
+            $calldate = new \DateTime();
+        }
+
+        return parent::setCalldate($calldate);
+    }
+
 }
 

@@ -118,11 +118,11 @@ class ARIConnector
 
             // Setup POST body content
             $post = array(
-                    'endpoint'  => 'Local/$destination@faxes',
+                    'endpoint'  => "Local/$destination@faxes",
                     'context'   => 'faxes-send',
                     'extension' => $destination,
                     'variables' => array(
-                            '__LOGTAG'    => 'b' . $company->getBrandId(),
+                            '__LOGTAG'    => 'b' . $company->getBrand()->getId(),
                             '__CID_HASH'  => 'faxout' . $faxFile->getId(),
                             '__FAXFILE_ID' => (string) $faxFile->getId(),
                     )
