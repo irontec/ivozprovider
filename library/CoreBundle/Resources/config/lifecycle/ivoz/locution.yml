@@ -13,10 +13,10 @@ services:
     '@Ivoz\Provider\Domain\Service\Locution\LocutionLifecycleServiceCollection'
 
   ##################################
-  ## post_persist
+  ## on_commit
   ##################################
   Ivoz\Provider\Domain\Service\Locution\SendRecodingOrder:
     tags:
-      - { name: provider.lifecycle.locution.post_persist, priority: 10 }
+      - { name: provider.lifecycle.locution.on_commit, priority: 10 }
     arguments:
       $recoder: '@Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Recoder'

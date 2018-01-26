@@ -31,9 +31,11 @@ services:
       $entityPersister:
         '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
 
+  ##################################
+  ## on_commit
+  ##################################
   Ivoz\Provider\Infrastructure\Domain\Service\OutgoingRouting\SendTrunksLcrReloadRequest:
     tags:
-      ## post_persist
       - { name: provider.lifecycle.outgoing_routing.on_commit, priority: 10 }
     arguments:
       $trunksLcrReload:

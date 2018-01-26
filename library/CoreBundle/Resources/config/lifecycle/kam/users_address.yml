@@ -13,14 +13,11 @@ services:
     '@Ivoz\Kam\Domain\Service\UsersAddress\UsersAddressLifecycleServiceCollection'
 
   ##################################
-  ## post_*
+  ## on_commit
   ##################################
   Ivoz\Kam\Infrastructure\Domain\Service\UsersAddress\SendUsersPermissionsReloadRequest:
     tags:
-      ## post_persist
-      - { name: kam.lifecycle.users_address.post_persist, priority: 10 }
-      ## post_remove
-      - { name: kam.lifecycle.users_address.post_remove, priority: 10 }
+      - { name: kam.lifecycle.users_address.on_commit, priority: 10 }
     arguments:
       $usersPermissionsReload:
         '@XmlRpc\XmlRpcUsersRequest::PermissionsTrustedReload'

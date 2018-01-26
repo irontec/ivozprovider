@@ -29,12 +29,12 @@ services:
       $entityPersister:
         '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
 
+  ##################################
+  ## on_commit
+  ##################################
   Ivoz\Provider\Infrastructure\Domain\Service\PeerServer\SendTrunksLcrReloadRequest:
     tags:
-      ## post_persist
-      - { name: provider.lifecycle.peer_server.post_persist, priority: 30 }
-      ## post_remove
-      - { name: provider.lifecycle.peer_server.post_remove, priority: 10 }
+      - { name: provider.lifecycle.peer_server.on_commit, priority: 10 }
     arguments:
       $trunksLcrReload:
         '@XmlRpc\XmlRpcTrunksRequest::LcrReload'

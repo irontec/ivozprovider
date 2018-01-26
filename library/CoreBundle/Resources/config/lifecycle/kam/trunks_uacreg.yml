@@ -13,14 +13,11 @@ services:
     '@Ivoz\Kam\Domain\Service\TrunksUacreg\TrunksUacregLifecycleServiceCollection'
 
   ##################################
-  ## post_*
+  ## on_commit
   ##################################
   Ivoz\Kam\Infrastructure\Domain\Service\TrunksUacreg\SendTrunksUacRegReloadRequest:
     tags:
-      ## post_persist
-      - { name: kam.lifecycle.trunks_uacreg.post_persist, priority: 10 }
-      ## post_remove
-      - { name: kam.lifecycle.trunks_uacreg.post_remove, priority: 10 }
+      - { name: kam.lifecycle.trunks_uacreg.on_commit, priority: 10 }
     arguments:
       $trunksUacRegReload:
         '@XmlRpc\XmlRpcTrunksRequest::UacRegReload'
