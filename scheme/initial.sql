@@ -3187,7 +3187,7 @@ CREATE TABLE `Users` (
   `doNotDisturb` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `isBoss` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `bossAssistantId` int(10) unsigned DEFAULT NULL,
-  `exceptionBoosAssistantRegExp` varchar(255) DEFAULT NULL,
+  `bossAssistantWhiteListId` int(10) unsigned DEFAULT NULL,
   `active` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `maxCalls` smallint(5) unsigned NOT NULL DEFAULT '0',
   `externalIpCalls` tinyint(1) NOT NULL DEFAULT '0' COMMENT '[enum:0|1|2|3]',
@@ -3213,6 +3213,7 @@ CREATE TABLE `Users` (
   KEY `languageId` (`languageId`),
   KEY `outgoingDDIRuleId` (`outgoingDDIRuleId`),
   KEY `voicemailLocutionId` (`voicemailLocutionId`),
+  KEY `bossAssistantWhiteListId` (`bossAssistantWhiteListId`),
   CONSTRAINT `Users_ibfk_1` FOREIGN KEY (`companyId`) REFERENCES `Companies` (`id`) ON DELETE CASCADE,
   CONSTRAINT `Users_ibfk_10` FOREIGN KEY (`callACLId`) REFERENCES `CallACL` (`id`) ON DELETE SET NULL,
   CONSTRAINT `Users_ibfk_11` FOREIGN KEY (`bossAssistantId`) REFERENCES `Users` (`id`) ON DELETE SET NULL,
@@ -3220,6 +3221,7 @@ CREATE TABLE `Users` (
   CONSTRAINT `Users_ibfk_13` FOREIGN KEY (`languageId`) REFERENCES `Languages` (`id`) ON DELETE SET NULL,
   CONSTRAINT `Users_ibfk_14` FOREIGN KEY (`outgoingDDIRuleId`) REFERENCES `OutgoingDDIRules` (`id`) ON DELETE SET NULL,
   CONSTRAINT `Users_ibfk_15` FOREIGN KEY (`voicemailLocutionId`) REFERENCES `Locutions` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `Users_ibfk_16` FOREIGN KEY (`bossAssistantWhiteListId`) REFERENCES `MatchLists` (`id`) ON DELETE SET NULL,
   CONSTRAINT `Users_ibfk_3` FOREIGN KEY (`terminalId`) REFERENCES `Terminals` (`id`) ON DELETE SET NULL,
   CONSTRAINT `Users_ibfk_7` FOREIGN KEY (`extensionId`) REFERENCES `Extensions` (`id`) ON DELETE SET NULL,
   CONSTRAINT `Users_ibfk_8` FOREIGN KEY (`timezoneId`) REFERENCES `Timezones` (`id`) ON DELETE SET NULL,
@@ -3233,7 +3235,7 @@ CREATE TABLE `Users` (
 
 LOCK TABLES `Users` WRITE;
 /*!40000 ALTER TABLE `Users` DISABLE KEYS */;
-INSERT INTO `Users` VALUES (1,1,'Alice','Allison','alice@democompany.com','$5$rounds=5000$a73b96fd$XGSEyikkLGgFNo8/TV4.IrnkfN6UecTusCVQX6Qjbl8',145,1,1,NULL,NULL,NULL,0,0,NULL,'',1,1,0,1,NULL,1,1,'4c18027290f0c1ed517680bb4bcf2402',NULL,NULL,NULL,0),(2,1,'Bob','Bobson','bob@democompany.com','$5$rounds=5000$b1e18dba$71SpUyDy6TCqe3vg/zeZJPiV.MmF6Ip2Lc0sLeZW8u2',145,2,2,NULL,NULL,NULL,0,0,NULL,'',1,1,0,1,NULL,1,1,'10fd9fbe1c6861fb0a14a57e78f871c5',NULL,NULL,NULL,0);
+INSERT INTO `Users` VALUES (1,1,'Alice','Allison','alice@democompany.com','$5$rounds=5000$a73b96fd$XGSEyikkLGgFNo8/TV4.IrnkfN6UecTusCVQX6Qjbl8',145,1,1,NULL,NULL,NULL,0,0,NULL,NULL,1,1,0,1,NULL,1,1,'4c18027290f0c1ed517680bb4bcf2402',NULL,NULL,NULL,0),(2,1,'Bob','Bobson','bob@democompany.com','$5$rounds=5000$b1e18dba$71SpUyDy6TCqe3vg/zeZJPiV.MmF6Ip2Lc0sLeZW8u2',145,2,2,NULL,NULL,NULL,0,0,NULL,NULL,1,1,0,1,NULL,1,1,'10fd9fbe1c6861fb0a14a57e78f871c5',NULL,NULL,NULL,0);
 /*!40000 ALTER TABLE `Users` ENABLE KEYS */;
 UNLOCK TABLES;
 
