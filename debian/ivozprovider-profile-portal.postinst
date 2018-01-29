@@ -11,6 +11,7 @@
 [ ! -e /etc/ssl/private/cisco.key ]     && /bin/ln -s /etc/ssl/private/ssl-cert-snakeoil.key    /etc/ssl/private/cisco.key
 
 # Enable apache sites and modules
+[ ! -L /etc/apache2/mods-enabled/php7.0.load ] && /usr/sbin/a2enmod php7.0
 [ ! -L /etc/apache2/mods-enabled/headers.load ] && /usr/sbin/a2enmod headers
 [ ! -L /etc/apache2/mods-enabled/rewrite.load ] && /usr/sbin/a2enmod rewrite
 [ ! -L /etc/apache2/mods-enabled/ssl.load ] && /usr/sbin/a2enmod ssl
