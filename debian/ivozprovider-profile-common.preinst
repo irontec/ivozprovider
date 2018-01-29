@@ -2,7 +2,7 @@
 
 # Environment file
 ENVFILE="/etc/systemd/system.conf"
-ENV="production"
+ENV="prod"
 
 ## Set environment
 grep SYMFONY_ENV $ENVFILE &>/dev/null
