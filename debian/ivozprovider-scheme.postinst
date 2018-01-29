@@ -5,6 +5,9 @@
 # Source debconf library.
 . /usr/share/debconf/confmodule
 
+# Set current environment
+export $(systemctl show-environment)
+
 # Setup mysql connection
 db_get ivozprovider/mysql_password || true
 MYSQL_PASSWORD=$RET
@@ -12,7 +15,6 @@ MYSQL_USER=root
 db_stop
 
 # Replace settings in properties
-
 sed -i "s/database_user:.*/database_user: $MYSQL_USER/" /opt/irontec/ivozprovider/library/CoreBundle/Resources/config/parameters.yml
 sed -i "s/database_password:.*/database_password: $MYSQL_PASSWORD/" /opt/irontec/ivozprovider/library/CoreBundle/Resources/config/parameters.yml
 
@@ -32,6 +34,7 @@ fi
 
 # Always migrate database
 cd /opt/irontec/ivozprovider/scheme
+bin/console cache:clear --no-warmup -q -n
 bin/console doctrine:migrations:migrate --no-interaction --quiet
 
 exit $?

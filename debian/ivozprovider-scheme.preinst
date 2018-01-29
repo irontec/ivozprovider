@@ -5,6 +5,9 @@
 # Source debconf library.
 . /usr/share/debconf/confmodule
 
+# Set current environment
+export $(systemctl show-environment)
+
 # Setup mysql connection
 db_get ivozprovider/mysql_password || true
 MYSQL_PASSWORD=$RET

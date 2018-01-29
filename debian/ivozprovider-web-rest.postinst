@@ -2,6 +2,9 @@
 
 #DEBHELPER#
 
+# Set current environment
+export $(systemctl show-environment)
+
 cd /opt/irontec/ivozprovider/web/rest
 
 # Set proper var permissions
@@ -9,6 +12,6 @@ setfacl -dR -m u:www-data:rwX -m u:root:rwX var
 setfacl  -R -m u:www-data:rwX -m u:root:rwX var
 
 # Create project cache
-bin/console cache:clear --no-warmup -e prod -q -n
+bin/console cache:clear --no-warmup -q -n
 
 :
