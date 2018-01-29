@@ -3,7 +3,7 @@ ivozprovider-asterisk:#ARCH#
 ivozprovider-asterisk-agi
 ivozprovider-asterisk-config
 ivozprovider-asterisk-sounds
-ivozprovider-data-library
+ivozprovider-common-library
 ivozprovider-doc
 ivozprovider-kamailio:#ARCH#
 ivozprovider-kamailio-json-modules:#ARCH#
@@ -14,7 +14,6 @@ ivozprovider-kamailio-users
 ivozprovider-kamailio-websocket-modules:#ARCH#
 ivozprovider-kamailio-xml-modules:#ARCH#
 ivozprovider-kamailio-presence-modules:#ARCH#
-ivozprovider-portals
 ivozprovider-profile-as
 ivozprovider-profile-common
 ivozprovider-profile-data
@@ -24,10 +23,10 @@ ivozprovider-recordings
 ivozprovider-rtpproxy:#ARCH#
 ivozprovider-rtpengine:#ARCH#
 ivozprovider-scheme
-ivozprovider-userweb
+ivozprovider-web-admin
+ivozprovider-web-rest
+ivozprovider-web-user
 libbcg729-0:#ARCH#
-nodejs:#ARCH#
-php5-yaml:#ARCH#
 ruby-sass
 sngrep:#ARCH#
 klear
