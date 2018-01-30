@@ -1,5 +1,5 @@
 ########################################
-## Custom operations
+## Custom models
 ########################################
 Model\UserStatus:
   attributes:
@@ -39,6 +39,9 @@ Model\CallStats:
         parameters: []
   collectionOperations: {}
 
+########################################
+## Custom operations
+########################################
 Ivoz\Provider\Domain\Model\User\User:
   itemOperations:
     get_my_profile:
@@ -57,9 +60,9 @@ Ivoz\Provider\Domain\Model\User\User:
       method: 'PUT'
       path: '/my/profile'
       route_name: 'put_my_profile'
-      operation_normalization_context: 'myProfile'
+      operation_normalization_context: 'updateMyProfile'
       normalization_context:
-        groups: ['myProfile']
+        groups: ['updateMyProfile']
       parameters: []
       swagger_context:
         tags:
@@ -70,7 +73,7 @@ Ivoz\Provider\Domain\Model\User\User:
             in: 'body'
             description: 'The updated User resource'
             schema:
-              $ref: '#/definitions/User-myProfile'
+              $ref: '#/definitions/User-updateMyProfile'
   collectionOperations:
     my_company_assistants:
       method: 'GET'

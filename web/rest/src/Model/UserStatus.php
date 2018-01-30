@@ -3,6 +3,7 @@
 namespace Model;
 
 use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Api\Core\Annotation\AttributeDefinition;
 
 /**
  * Class UserStatus
@@ -15,71 +16,74 @@ class UserStatus
 
     /**
      * @var string
+     * @AttributeDefinition(type="string")
      */
     protected $userName;
 
+    /**
+     * @var string
+     * @AttributeDefinition(type="string")
+     */
     protected $companyName;
+
+    /**
+     * @var string
+     * @AttributeDefinition(type="string")
+     */
     protected $companyDomain;
+
+    /**
+     * @var string
+     * @AttributeDefinition(type="string")
+     */
     protected $voiceMail;
+
+    /**
+     * @var string
+     * @AttributeDefinition(type="string")
+     */
     protected $gsQRCode;
 
     // kam_users_location
+
+    /**
+     * @var string
+     * @AttributeDefinition(type="string")
+     */
     protected $userAgent;
+
+    /**
+     * @var string
+     * @AttributeDefinition(type="string")
+     */
     protected $ipRegistered;
 
     // Terminal
+
+    /**
+     * @var string
+     * @AttributeDefinition(type="string")
+     */
     protected $statusTerminal;
+
+    /**
+     * @var string
+     * @AttributeDefinition(type="string")
+     */
     protected $terminalName;
+
+    /**
+     * @var string
+     * @AttributeDefinition(type="string")
+     */
     protected $terminalPassword;
 
     // Extension
+    /**
+     * @var int
+     * @AttributeDefinition(type="int")
+     */
     protected $extensionNumber;
-
-    public static function fromUser(UserInterface $user)
-    {
-        $company = $user->getCompany();
-        $terminal = $user->getTerminal();
-        $extension = $user->getExtension();
-
-        $self = new self();
-        // User
-        $self->setUserName(
-            $user->getName()
-            . ' '
-            . $user->getLastname()
-        );
-        $self->setGsQRCode(
-            $user->getGsQRCode()
-        );
-
-        if ($terminal) {
-            $self
-                ->setTerminalName(
-                    $terminal->getName()
-                )->setTerminalPassword(
-                    $terminal->getPassword()
-                );
-        }
-
-        if ($extension) {
-            $self
-                ->setExtensionNumber(
-                    $extension->getNumber()
-                );
-        }
-
-        if ($company) {
-            $self->setCompanyName(
-                $company->getName()
-            )->setVoiceMail(
-                $company->getServiceCode(self::VOICEMAIL_SERVICE_CODE)
-            )->setCompanyDomain(
-                $company->getDomainUsers()
-            );
-        }
-
-        return $self;
-    }
 
     /**
      * @return mixed

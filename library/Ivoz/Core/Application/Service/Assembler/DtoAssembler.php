@@ -39,7 +39,7 @@ class DtoAssembler
         $entityClass = EntityClassHelper::getEntityClass($entity);
 
         if (array_key_exists($entityClass, $this->customAssemblers)) {
-            return  $this->customAssemblers[$entityClass];
+            return $this->customAssemblers[$entityClass];
         }
 
         $assembler = $this->create($entity);

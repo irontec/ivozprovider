@@ -146,12 +146,10 @@ class Userweb_UsersController extends Iron_Controller_Rest_BaseController
                 409
             );
         }
-
     }
 
     protected function _setParamsAccount($model, $params)
     {
-
         $model->setName($params['name']);
         $model->setLastname($params['lastname']);
         $model->setEmail($params['email']);
@@ -182,17 +180,14 @@ class Userweb_UsersController extends Iron_Controller_Rest_BaseController
             }
 
             $model->setPass($newPass);
-
         }
 
         return $model;
-
     }
+
     protected function _setParamsPreferences($model, $params)
     {
-
         $model->setTimeZoneId($params['timezoneId']);
-
         $model->setDoNotDisturb($params['doNotDisturb']);
         $model->setMaxCalls($params['maxCalls']);
 
@@ -211,7 +206,6 @@ class Userweb_UsersController extends Iron_Controller_Rest_BaseController
 
     protected function _getAuthUser()
     {
-
         $token = $this->getRequest()->getHeader('Authorization', false);
         $requestDate = $this->getRequest()->getHeader('Request-Date', false);
 

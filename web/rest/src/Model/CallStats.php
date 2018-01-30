@@ -2,6 +2,8 @@
 
 namespace Model;
 
+use Ivoz\Api\Core\Annotation\AttributeDefinition;
+
 /**
  * Class CallStats
  * @package Model
@@ -11,11 +13,13 @@ class CallStats
 {
     /**
      * @var integer
+     * @AttributeDefinition(type="int")
      */
     protected $totalCalls;
 
     /**
      * @var integer
+     * @AttributeDefinition(type="int")
      */
     protected $totalDetours;
 

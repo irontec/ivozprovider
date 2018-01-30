@@ -77,3 +77,11 @@ services:
   Ivoz\Provider\Application\Service\Recording\RecordingDtoAssembler:
     arguments:
       $storagePathResolver: '@Service\StoragePathResolverCollection::Recording'
+
+  ##########################################
+  ## User
+  ##########################################
+  Ivoz\Provider\Application\Service\User\UserAssembler:
+    arguments: ~
+
+

@@ -61,6 +61,7 @@ class PutProfileAction
 
         $user = $token->getUser();
         $request = $this->requestStack->getCurrentRequest();
+
         $updatedUser = $this->serializer->deserialize(
             $request->getContent(),
             get_class($user),
@@ -70,8 +71,8 @@ class PutProfileAction
                 'operation_normalization_context' => 'myProfile'
             ]
         );
-        $this->entityPersister->persist($updatedUser);
 
+        $this->entityPersister->persist($updatedUser);
         return $user;
     }
 }

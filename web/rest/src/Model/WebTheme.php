@@ -2,6 +2,8 @@
 
 namespace Model;
 
+use Ivoz\Api\Core\Annotation\AttributeDefinition;
+
 /**
  * Class WebTheme
  * @package Model
@@ -11,16 +13,19 @@ class WebTheme
 {
     /**
      * @var string
+     * @AttributeDefinition(type="string")
      */
     protected $brandName;
 
     /**
      * @var string
+     * @AttributeDefinition(type="string")
      */
     protected $theme;
 
     /**
      * @var string
+     * @AttributeDefinition(type="string")
      */
     protected $logo;
 

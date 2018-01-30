@@ -39,6 +39,8 @@ services:
     public: true
     arguments:
       $tokenStorage: '@security.token_storage'
+      $usersLocationRepository:
+        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Kam\\Domain\\Model\\UsersLocation\\UsersLocation")'
 
   Controller\My\ProfileAction:
     public: true

@@ -120,11 +120,12 @@ services:
     arguments:
       $decorated: '@Ivoz\Api\Swagger\Metadata\Property\Factory\PropertyMetadataLinkFactory.inner'
 
-  Ivoz\Api\Swagger\Metadata\Property\Factory\PropertyMetadataRemoveDescriptionsFactory:
+  Ivoz\Api\Swagger\Metadata\Property\Factory\PropertyMetadataOverwriteFactory:
     decorates: 'api_platform.metadata.property.metadata_factory'
     decoration_priority: 2
     arguments:
-      $decorated: '@Ivoz\Api\Swagger\Metadata\Property\Factory\PropertyMetadataRemoveDescriptionsFactory.inner'
+      $decorated: '@Ivoz\Api\Swagger\Metadata\Property\Factory\PropertyMetadataOverwriteFactory.inner'
+      $reader: '@annotation_reader'
 
   Ivoz\Api\Swagger\Metadata\Property\IdentifiersExtractor:
     decorates: 'api_platform.identifiers_extractor'
