@@ -45,6 +45,7 @@ class Version20171024113642 extends AbstractMigration
 
         // Preload RuleSet from Companies
         $this->addSql('UPDATE Companies SET areaCode = "" WHERE areaCode IS NULL');
+        $this->addSql('UPDATE Companies SET areaCode = "" WHERE areaCode NOT REGEXP \'[[:digit:]]+\'');
         $this->addSql('UPDATE Companies SET transformationRuleSetId = (SELECT id FROM TransformationRuleSets WHERE countryId = Companies.countryId AND areaCode = Companies.areaCode)');
         $this->addSql('INSERT INTO TransformationRuleSets (brandId, name_en, name_es, description, areaCode, countryId) SELECT brandId, CONCAT(name_es, " (Area ", areaCode, ")"), CONCAT(name_en, " (Area ", areaCode, ")"), "Imported from Companies", areaCode, countryId FROM Companies INNER JOIN Countries ON Countries.id = Companies.countryId WHERE transformationRuleSetId IS NULL GROUP BY brandId, countryId, areaCode');
         $this->addSql('UPDATE Companies SET transformationRuleSetId = (SELECT id FROM TransformationRuleSets WHERE countryId = Companies.countryId AND areaCode = Companies.areaCode)');
@@ -52,6 +53,7 @@ class Version20171024113642 extends AbstractMigration
         // Preload RuleSet from Users
         $this->addSql('UPDATE Users SET areaCode = (SELECT areaCode FROM Companies WHERE id = Users.companyId AND countryId = Users.countryId) WHERE Users.areaCode IS NULL OR Users.areaCode = ""');
         $this->addSql('UPDATE Users SET areaCode = "" WHERE areaCode IS NULL');
+        $this->addSql('UPDATE Users SET areaCode = "" WHERE areaCode NOT REGEXP \'[[:digit:]]+\'');
         $this->addSql('UPDATE Users SET countryId = (SELECT countryId FROM Companies WHERE id = Users.companyId) WHERE countryId IS NULL');
         $this->addSql('UPDATE Users SET transformationRuleSetId = (SELECT id FROM TransformationRuleSets WHERE countryId = Users.countryId AND areaCode = Users.areaCode)');
         $this->addSql('INSERT INTO TransformationRuleSets (brandId, name_en, name_es, description, areaCode, countryId) SELECT Companies.brandId, CONCAT(Countries.name_es, " (Area ", Users.areaCode, ")"), CONCAT(name_en, " (Area ", Users.areaCode, ")"), "Imported from Users", Users.areaCode, Users.countryId FROM Users INNER JOIN Companies ON Companies.id =  Users.companyId INNER JOIN Countries ON Countries.id = Users.countryId WHERE Users.transformationRuleSetId IS NULL GROUP BY Companies.brandId, Users.countryId, Users.areaCode');
@@ -60,6 +62,7 @@ class Version20171024113642 extends AbstractMigration
         // Preload RuleSet from Friends
         $this->addSql('UPDATE Friends SET areaCode = (SELECT areaCode FROM Companies WHERE id = Friends.companyId AND countryId = Friends.countryId) WHERE Friends.areaCode IS NULL OR Friends.areaCode = ""');
         $this->addSql('UPDATE Friends SET areaCode = "" WHERE areaCode IS NULL');
+        $this->addSql('UPDATE Friends SET areaCode = "" WHERE areaCode NOT REGEXP \'[[:digit:]]+\'');
         $this->addSql('UPDATE Friends SET countryId = (SELECT countryId FROM Companies WHERE id = Friends.companyId) WHERE countryId IS NULL');
         $this->addSql('UPDATE Friends SET transformationRuleSetId = (SELECT id FROM TransformationRuleSets WHERE countryId = Friends.countryId AND areaCode = Friends.areaCode)');
         $this->addSql('INSERT INTO TransformationRuleSets (brandId, name_en, name_es, description, areaCode, countryId) SELECT Companies.brandId, CONCAT(Countries.name_es, " (Area ", Friends.areaCode, ")"), CONCAT(name_en, " (Area ", Friends.areaCode, ")"), "Imported from Friends", Friends.areaCode, Friends.countryId FROM Friends INNER JOIN Companies ON Companies.id =  Friends.companyId INNER JOIN Countries ON Countries.id = Friends.countryId WHERE Friends.transformationRuleSetId IS NULL GROUP BY Companies.brandId, Friends.countryId, Friends.areaCode');
@@ -68,6 +71,7 @@ class Version20171024113642 extends AbstractMigration
         // Preload RuleSet from RetailAccounts
         $this->addSql('UPDATE RetailAccounts SET areaCode = (SELECT areaCode FROM Companies WHERE id = RetailAccounts.companyId AND countryId = RetailAccounts.countryId) WHERE RetailAccounts.areaCode IS NULL OR RetailAccounts.areaCode = ""');
         $this->addSql('UPDATE RetailAccounts SET areaCode = "" WHERE areaCode IS NULL');
+        $this->addSql('UPDATE RetailAccounts SET areaCode = "" WHERE areaCode NOT REGEXP \'[[:digit:]]+\'');
         $this->addSql('UPDATE RetailAccounts SET countryId = (SELECT countryId FROM Companies WHERE id = RetailAccounts.companyId) WHERE countryId IS NULL');
         $this->addSql('UPDATE RetailAccounts SET transformationRuleSetId = (SELECT id FROM TransformationRuleSets WHERE countryId = RetailAccounts.countryId AND areaCode = RetailAccounts.areaCode)');
         $this->addSql('INSERT INTO TransformationRuleSets (brandId, name_en, name_es, description, areaCode, countryId) SELECT Companies.brandId, CONCAT(Countries.name_es, " (Area ", RetailAccounts.areaCode, ")"), CONCAT(name_en, " (Area ", RetailAccounts.areaCode, ")"), "Imported from RetailAccounts", RetailAccounts.areaCode, RetailAccounts.countryId FROM RetailAccounts INNER JOIN Companies ON Companies.id =  RetailAccounts.companyId INNER JOIN Countries ON Countries.id = RetailAccounts.countryId WHERE RetailAccounts.transformationRuleSetId IS NULL GROUP BY Companies.brandId, RetailAccounts.countryId, RetailAccounts.areaCode');
