@@ -3,8 +3,8 @@
 namespace Recording;
 
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
-use Ivoz\Kam\Domain\Model\AccCdr\AccCdrInterface;
-use Ivoz\Kam\Domain\Model\AccCdr\AccCdrRepository;
+use Ivoz\Kam\Domain\Model\TrunksCdr\AccCdrInterface;
+use Ivoz\Kam\Domain\Model\TrunksCdr\AccCdrRepository;
 use Ivoz\Provider\Domain\Model\Recording\RecordingDTO;
 use IvozProvider\Utils\SizeFormatter;
 use Symfony\Bridge\Monolog\Logger;

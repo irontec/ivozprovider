@@ -1,43 +1,25 @@
-Ivoz\Kam\Domain\Model\AccCdr\AccCdrAbstract:
+Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrAbstract:
   type: mappedSuperclass
   indexes:
-    start_time_idx:
+    trunksCdr_start_time_idx:
       columns:
         - start_time
-    calldate_idx:
+    trunksCdr_end_time_idx:
       columns:
         - end_time
-    callid_idx:
+    trunksCdr_callid_idx:
       columns:
         - callid
-    xcallid_idx:
+    trunksCdr_xcallid_idx:
       columns:
         - xcallid
-    peeringContractId_idx:
+    trunksCdr_direction_idx:
       columns:
-        - peeringContractId
-    accCdr_ratingPlanId:
+        - direction
+    trunksCdr_cgrid_idx:
       columns:
-        - ratingPlanId
-    accCdr_destinationId:
-      columns:
-        - destinationId
-    accCdr_invoiceId:
-      columns:
-        - invoiceId
-    accCdr_brandId:
-      columns:
-        - brandId
-    accCdr_companyId:
-      columns:
-        - companyId
+        - cgrid
   fields:
-    proxy:
-      type: string
-      nullable: true
-      length: 64
-      options:
-        fixed: false
     startTime:
       type: datetime
       nullable: false
@@ -81,20 +63,6 @@ Ivoz\Kam\Domain\Model\AccCdr\AccCdrAbstract:
       length: 128
       options:
         fixed: false
-    asiden:
-      type: string
-      nullable: true
-      length: 64
-      options:
-        fixed: false
-      column: asIden
-    asaddress:
-      type: string
-      nullable: true
-      length: 64
-      options:
-        fixed: false
-      column: asAddress
     callid:
       type: string
       nullable: true
@@ -114,105 +82,41 @@ Ivoz\Kam\Domain\Model\AccCdr\AccCdrAbstract:
       length: 255
       options:
         fixed: false
-    parsed:
-      type: string
-      nullable: true
-      length: null
-      options:
-        fixed: false
-        default: 'no'
     diversion:
       type: string
       nullable: true
       length: 64
       options:
         fixed: false
-    peeringContractId:
-      type: string
-      nullable: true
-      length: 64
-      options:
-        fixed: false
-      column: peeringContractId
     bounced:
-      type: string
-      nullable: false
-      length: null
-      options:
-        fixed: false
-        default: 'no'
-    externallyRated:
       type: boolean
       nullable: true
-      column: externallyRated
-    metered:
-      type: boolean
-      nullable: true
-      options:
-        default: '0'
-    meteringDate:
-      type: datetime
-      nullable: true
-      column: meteringDate
-    pricingPlanName:
-      type: string
-      nullable: true
-      length: 55
-      options:
-        fixed: false
-      column: pricingPlanName
-    targetPatternName:
-      type: string
-      nullable: true
-      length: 55
-      options:
-        fixed: false
-      column: targetPatternName
     price:
       type: decimal
       nullable: true
       precision: 10
       scale: 4
-    pricingPlanDetails:
+    priceDetails:
       type: text
       nullable: true
       length: 65535
       options:
         fixed: false
-      column: pricingPlanDetails
+      column: priceDetails
     direction:
       type: string
       nullable: true
       length: null
       options:
         fixed: false
-    reMeteringDate:
-      type: datetime
+    cgrid:
+      type: string
       nullable: true
-      column: reMeteringDate
+      length: 40
+      options:
+        fixed: false
+      column: cgrid
   manyToOne:
-    ratingPlan:
-      targetEntity: \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanInterface
-      cascade: {  }
-      fetch: LAZY
-      mappedBy: null
-      inversedBy: null
-      joinColumns:
-        ratingPlanId:
-          referencedColumnName: id
-          onDelete: set null
-      orphanRemoval: false
-    destination:
-      targetEntity: \Ivoz\Cgr\Domain\Model\Destination\DestinationInterface
-      cascade: {  }
-      fetch: LAZY
-      mappedBy: null
-      inversedBy: null
-      joinColumns:
-        destinationId:
-          referencedColumnName: id
-          onDelete: set null
-      orphanRemoval: false
     invoice:
       targetEntity: \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface
       cascade: {  }
@@ -245,4 +149,37 @@ Ivoz\Kam\Domain\Model\AccCdr\AccCdrAbstract:
         companyId:
           referencedColumnName: id
           onDelete: cascade
+      orphanRemoval: false
+    peeringContract:
+      targetEntity: \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        peeringContractId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false
+    destination:
+      targetEntity: \Ivoz\Cgr\Domain\Model\Destination\DestinationInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        destinationId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false
+    ratingPlan:
+      targetEntity: \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        ratingPlanId:
+          referencedColumnName: id
+          onDelete: set null
       orphanRemoval: false

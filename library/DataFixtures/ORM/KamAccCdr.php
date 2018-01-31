@@ -5,7 +5,7 @@ namespace DataFixtures\ORM;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\Mapping\ClassMetadata;
-use Ivoz\Kam\Domain\Model\AccCdr\AccCdr;
+use Ivoz\Kam\Domain\Model\TrunksCdr\AccCdr;
 
 class KamAccCdr extends Fixture
 {

@@ -2,7 +2,7 @@
 
 namespace spec\Ivoz\Provider\Domain\Service\Invoice;
 
-use Ivoz\Kam\Domain\Model\AccCdr\AccCdrRepository;
+use Ivoz\Kam\Domain\Model\TrunksCdr\AccCdrRepository;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceRepository;
 use Ivoz\Provider\Domain\Service\Invoice\CheckValidity;
 use PhpSpec\Exception\Example\PendingException;
