@@ -283,13 +283,9 @@ mappers:
         modelFile: Users,
         entity: 'Ivoz\\Provider\\Domain\\Model\\User\\User'
     }
-  - &KamAccCdrsBrand {
-        modelFile: KamAccCdrsBrand,
-        entity: 'Kam\\Model\\AccCdrsBrand\\AccCdrsBrand'
-    }
-  - &KamAccCdrs {
-        modelFile: KamAccCdrs,
-        entity: 'Kam\\Model\\AccCdr\\AccCdr'
+  - &KamTrunksCdrs {
+        modelFile: KamTrunksCdrs,
+        entity: 'Ivoz\\Kam\\Domain\\Model\\TrunksCdr\\TrunksCdr'
     }
   - &PikeTrusted {
         modelFile: KamPikeTrusted,

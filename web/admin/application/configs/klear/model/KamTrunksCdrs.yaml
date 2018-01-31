@@ -1,0 +1,91 @@
+production:
+  entity: Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdr
+  fields:
+    startTime:
+      title: _('Start time')
+      type: picker
+      defaultValue: 2000-01-01 00:00:00
+      source:
+        control: datetime
+        settings:
+          disabled: 'false'
+    callee:
+      title: _('Destination')
+      type: text
+      maxLength: 128
+    companyId:
+      title: ngettext('Company', 'Companies', 1)
+      type: select
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Company\Company
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order:
+            Company.name: asc
+        'null': _("Unassigned")
+    brandId:
+      title: ngettext('Brand', 'Brands', 1)
+      type: select
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Brand\Brand
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order:
+            Brand.name: asc
+        'null': _("Unassigned")
+    peeringContractId:
+      title: _('Peering contract id')
+      type: select
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContract
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order:
+            PeeringContract.name: asc
+        'null': _("Unassigned")
+    invoiceId:
+      title: ngettext('Invoice', 'Invoices', 1)
+      type: select
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Invoice\Invoice
+          fieldName:
+            fields:
+              - number
+            template: '%number%'
+          order:
+            Invoice.number: asc
+        'null': _("Unassigned")
+    price:
+      title: _('Price')
+      type: ghost
+      source:
+        class: IvozProvider_Klear_Ghost_TrunksCdr
+        method: getPrice
+    duration:
+      title: _('Duration')
+      type: ghost
+      source:
+        class: IvozProvider_Klear_Ghost_TrunksCdr
+        method: getDuration
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production
