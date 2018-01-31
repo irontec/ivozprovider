@@ -125,7 +125,8 @@ function enable_services()
     /bin/systemctl enable kamailio@trunks
     /bin/systemctl enable asterisk
     /bin/systemctl enable ivozprovider-recordings.timer
-    /bin/systemctl enable ivozprovider-cgrates
+    /bin/systemctl enable cgrates-loader.timer
+    /bin/systemctl enable cgrates
 }
 
 # Run while reconfigure or first install
