@@ -4,6 +4,7 @@ use Ivoz\Core\Application\Service\DataGateway;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
 use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 use Ivoz\Provider\Domain\Model\Company\CompanyDto;
+use IvozProvider\Utils\SizeFormatter;
 
 class IvozProvider_Klear_Ghost_Recordings extends KlearMatrix_Model_Field_Ghost_Abstract {
 
@@ -14,7 +15,9 @@ class IvozProvider_Klear_Ghost_Recordings extends KlearMatrix_Model_Field_Ghost_
     public function getBrandDiskUsage($model)
     {
         /** @todo Implement used disk value */
-        $used = 'Pending'; //SizeFormatter::sizeToHuman($model->getRecordingsDiskUsage());
+        return 'Not yet implemented';
+
+        $used = SizeFormatter::sizeToHuman($model->getRecordingsDiskUsage());
         $limit = $model->getRecordingsLimitMB();
         if ($limit) {
             $limit = SizeFormatter::sizeToHuman($limit);
@@ -37,7 +40,8 @@ class IvozProvider_Klear_Ghost_Recordings extends KlearMatrix_Model_Field_Ghost_
         $dataGateway = \Zend_Registry::get('data_gateway');
 
         /** @todo Implement used disk value */
-        $used = 'Pending'; //SizeFormatter::sizeToHuman($model->getRecordingsDiskUsage());
+        return 'Not yet implemented';
+        $used = SizeFormatter::sizeToHuman($model->getRecordingsDiskUsage());
         $companyLimit = $model->getRecordingsLimitMB();
 
         /**

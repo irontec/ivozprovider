@@ -55,15 +55,14 @@ production:
           onDemandRecordCode: true
           recordingsLimitMB: true
           recordingsLimitEmail: true
+          recordingsDiskUsage: true
           externallyExtraOpts: true
-          recordingsDiskUsage: ${auth.brand.recordings.disabled}
         order:
           name: true
           languageId: true
           nif: true
           countryId: true
           domainUsers: true
-          recordingsDiskUsage: true
       options:
         title: _("Options")
         screens:
@@ -173,6 +172,9 @@ production:
           town: ${auth.brand.invoices.disabled}
           province: ${auth.brand.invoices.disabled}
           countryId: ${auth.brand.invoices.disabled}
+          recordingsLimitMB: true
+          recordingsLimitEmail: true
+          recordingsDiskUsage: true
         whitelist:
           id: ${auth.isMainOperator}
         order:
@@ -230,9 +232,6 @@ production:
           label: ngettext('Recording', 'Recordings', 0)
           collapsed: true
           fields:
-            recordingsLimitMB: 6
-            recordingsDiskUsage: 6
-            recordingsLimitEmail: 6
             onDemandRecord: 6
             onDemandRecordCode: 6
         group6:

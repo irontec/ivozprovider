@@ -45,6 +45,7 @@ production:
           fromAddress: true
           recordingsLimitMB: true
           recordingsLimitEmail: true
+          recordingsDiskUsage: true
         options:
           title: _("Options")
           screens:
@@ -138,14 +139,6 @@ production:
           fields:
             fromName: 6
             fromAddress: 6
-        group6:
-          colsPerRow: 12
-          label: ngettext('Recording', 'Recordings', 0)
-          collapsed: true
-          fields:
-            recordingsLimitMB: 6
-            recordingsDiskUsage: 6
-            recordingsLimitEmail: 6
 
     brandsEdit_screen: &brandsEdit_screenLink
       <<: *Brands
@@ -154,6 +147,11 @@ production:
       label: false
       title: _("Edit %s %2s", ngettext('Brand', 'Brands', 1), "[format| (%item%)]")
       fields:
+        blacklist:
+          recordingsLimitMB: true
+          recordingsDiskUsage: true
+          recordingsDiskAvailable: true
+          recordingsLimitEmail: true
         order:
           <<: *brandsOrder_Link
       fixedPositions:
