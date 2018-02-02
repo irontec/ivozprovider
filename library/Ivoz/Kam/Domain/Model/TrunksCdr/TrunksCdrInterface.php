@@ -6,21 +6,6 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 
 interface TrunksCdrInterface extends EntityInterface
 {
-    /**
-     * @return bool
-     */
-    public function isBounced();
-
-    /**
-     * @return string
-     */
-    public function getGhostPrice();
-
-    /**
-     * @return string
-     */
-    public function getGhostDuration();
-
     public function __toString();
 
     /**
