@@ -1,7 +1,7 @@
-Ivoz\Kam\Domain\Model\AccCdr\AccCdr:
-  repositoryClass: Ivoz\Kam\Infrastructure\Persistence\Doctrine\AccCdrDoctrineRepository
+Ivoz\Cgr\Domain\Model\TpCdr\TpCdr:
+  repositoryClass: Ivoz\Cgr\Infrastructure\Persistence\Doctrine\TpCdrDoctrineRepository
   type: entity
-  table: kam_acc_cdrs
+  table: tp_cdrs
   id:
     id:
       type: integer

@@ -6,7 +6,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Ivoz\Provider\Domain\Model\Invoice\Invoice;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceRepository;
-use Ivoz\Kam\Domain\Model\AccCdr\AccCdrRepository;
+use Ivoz\Kam\Domain\Model\TrunksCdr\AccCdrRepository;
 
 /**
  * Class CheckValidity

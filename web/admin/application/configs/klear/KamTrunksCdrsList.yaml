@@ -1,0 +1,84 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+
+production:
+  main:
+    module: klearMatrix
+    defaultScreen: kamTrunksCdrsList_screen
+
+  screens: &kamTrunksCdrs_screensLink
+    kamTrunksCdrsList_screen: &kamTrunksCdrsList_screenLink
+      controller: list
+      csv: true
+      order:
+        field:
+          - TrunksCdr.startTime
+          - TrunksCdr.brand
+          - TrunksCdr.company
+        type: desc
+      rawCondition: "TrunksCdr.direction='outbound'"
+      pagination: 
+        items: 25
+      <<: *KamTrunksCdrs
+      class: ui-silk-text-list-bullets
+      title: _("List of %s %2s", ngettext('Billable call', 'Billable calls', 0), "[format| (%parent%)]")
+      fields: &kamTrunksCdrs_fieldsLink
+        options:
+          title: _("Options")
+          screens:
+            kamTrunksCdrsView_screen: true
+          default: kamTrunksCdrsView_screen
+        order:
+          startTime: true
+          brandId: true
+          companyId: true
+          callee: true
+          duration: true
+          price: true
+          peeringContract: true
+          invoice: true
+    kamTrunksCdrsView_screen: &kamTrunksCdrsView_screenLink
+      <<: *KamTrunksCdrs
+      controller: edit
+      class: ui-silk-eye
+      label: false
+      disableSave: true
+      labelOnPostAction: _("View %s %2s", ngettext('Billable call', 'Billable calls', 1), "[format| (%item%)]")
+      title: _("View %s %2s", ngettext('Billable call', 'Billable calls', 1), "[format| (%item%)]")
+      fields:
+        order:
+          startTime: true
+          brand: true
+          company: true
+          callee: true
+          duration: true
+          price: true
+          peeringContract: true
+          invoice: true
+      fixedPositions:
+        group0:
+          label: _("Basic Information")
+          colsPerRow: 12
+          fields:
+            brandId: 6
+            companyId: 6
+            callee: 6
+            startTime: 6
+            duration: 6
+        group1:
+          label: _("Billing Information")
+          colsPerRow: 12
+          fields:
+            price: 6
+            peeringContractId: 6
+            direction: 6
+            invoiceId: 6
+
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

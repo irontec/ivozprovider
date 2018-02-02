@@ -1,6 +1,6 @@
 <?php
 
-namespace Ivoz\Kam\Domain\Model\AccCdr;
+namespace Ivoz\Kam\Domain\Model\TrunksCdr;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
@@ -10,13 +10,8 @@ use Ivoz\Core\Application\Model\DtoNormalizer;
 /**
  * @codeCoverageIgnore
  */
-abstract class AccCdrDtoAbstract implements DataTransferObjectInterface
+abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
 {
-    /**
-     * @var string
-     */
-    private $proxy;
-
     /**
      * @var \DateTime
      */
@@ -55,16 +50,6 @@ abstract class AccCdrDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $asiden;
-
-    /**
-     * @var string
-     */
-    private $asaddress;
-
-    /**
-     * @var string
-     */
     private $callid;
 
     /**
@@ -80,47 +65,12 @@ abstract class AccCdrDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $parsed = 'no';
-
-    /**
-     * @var string
-     */
     private $diversion;
 
     /**
-     * @var string
-     */
-    private $peeringContractId;
-
-    /**
-     * @var string
-     */
-    private $bounced = 'no';
-
-    /**
      * @var boolean
      */
-    private $externallyRated;
-
-    /**
-     * @var boolean
-     */
-    private $metered = '0';
-
-    /**
-     * @var \DateTime
-     */
-    private $meteringDate;
-
-    /**
-     * @var string
-     */
-    private $pricingPlanName;
-
-    /**
-     * @var string
-     */
-    private $targetPatternName;
+    private $bounced;
 
     /**
      * @var string
@@ -130,7 +80,7 @@ abstract class AccCdrDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $pricingPlanDetails;
+    private $priceDetails;
 
     /**
      * @var string
@@ -138,24 +88,14 @@ abstract class AccCdrDtoAbstract implements DataTransferObjectInterface
     private $direction;
 
     /**
-     * @var \DateTime
+     * @var string
      */
-    private $reMeteringDate;
+    private $cgrid;
 
     /**
      * @var integer
      */
     private $id;
-
-    /**
-     * @var \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanDto | null
-     */
-    private $ratingPlan;
-
-    /**
-     * @var \Ivoz\Cgr\Domain\Model\Destination\DestinationDto | null
-     */
-    private $destination;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\Invoice\InvoiceDto | null
@@ -171,6 +111,21 @@ abstract class AccCdrDtoAbstract implements DataTransferObjectInterface
      * @var \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
      */
     private $company;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractDto | null
+     */
+    private $peeringContract;
+
+    /**
+     * @var \Ivoz\Cgr\Domain\Model\Destination\DestinationDto | null
+     */
+    private $destination;
+
+    /**
+     * @var \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanDto | null
+     */
+    private $ratingPlan;
 
 
     use DtoNormalizer;
@@ -190,7 +145,6 @@ abstract class AccCdrDtoAbstract implements DataTransferObjectInterface
         }
 
         return [
-            'proxy' => 'proxy',
             'startTime' => 'startTime',
             'endTime' => 'endTime',
             'duration' => 'duration',
@@ -198,30 +152,22 @@ abstract class AccCdrDtoAbstract implements DataTransferObjectInterface
             'callee' => 'callee',
             'referee' => 'referee',
             'referrer' => 'referrer',
-            'asiden' => 'asiden',
-            'asaddress' => 'asaddress',
             'callid' => 'callid',
             'callidHash' => 'callidHash',
             'xcallid' => 'xcallid',
-            'parsed' => 'parsed',
             'diversion' => 'diversion',
-            'peeringContractId' => 'peeringContractId',
             'bounced' => 'bounced',
-            'externallyRated' => 'externallyRated',
-            'metered' => 'metered',
-            'meteringDate' => 'meteringDate',
-            'pricingPlanName' => 'pricingPlanName',
-            'targetPatternName' => 'targetPatternName',
             'price' => 'price',
-            'pricingPlanDetails' => 'pricingPlanDetails',
+            'priceDetails' => 'priceDetails',
             'direction' => 'direction',
-            'reMeteringDate' => 'reMeteringDate',
+            'cgrid' => 'cgrid',
             'id' => 'id',
-            'ratingPlanId' => 'ratingPlan',
-            'destinationId' => 'destination',
             'invoiceId' => 'invoice',
             'brandId' => 'brand',
-            'companyId' => 'company'
+            'companyId' => 'company',
+            'peeringContractId' => 'peeringContract',
+            'destinationId' => 'destination',
+            'ratingPlanId' => 'ratingPlan'
         ];
     }
 
@@ -231,7 +177,6 @@ abstract class AccCdrDtoAbstract implements DataTransferObjectInterface
     public function toArray()
     {
         return [
-            'proxy' => $this->getProxy(),
             'startTime' => $this->getStartTime(),
             'endTime' => $this->getEndTime(),
             'duration' => $this->getDuration(),
@@ -239,30 +184,22 @@ abstract class AccCdrDtoAbstract implements DataTransferObjectInterface
             'callee' => $this->getCallee(),
             'referee' => $this->getReferee(),
             'referrer' => $this->getReferrer(),
-            'asiden' => $this->getAsiden(),
-            'asaddress' => $this->getAsaddress(),
             'callid' => $this->getCallid(),
             'callidHash' => $this->getCallidHash(),
             'xcallid' => $this->getXcallid(),
-            'parsed' => $this->getParsed(),
             'diversion' => $this->getDiversion(),
-            'peeringContractId' => $this->getPeeringContractId(),
             'bounced' => $this->getBounced(),
-            'externallyRated' => $this->getExternallyRated(),
-            'metered' => $this->getMetered(),
-            'meteringDate' => $this->getMeteringDate(),
-            'pricingPlanName' => $this->getPricingPlanName(),
-            'targetPatternName' => $this->getTargetPatternName(),
             'price' => $this->getPrice(),
-            'pricingPlanDetails' => $this->getPricingPlanDetails(),
+            'priceDetails' => $this->getPriceDetails(),
             'direction' => $this->getDirection(),
-            'reMeteringDate' => $this->getReMeteringDate(),
+            'cgrid' => $this->getCgrid(),
             'id' => $this->getId(),
-            'ratingPlan' => $this->getRatingPlan(),
-            'destination' => $this->getDestination(),
             'invoice' => $this->getInvoice(),
             'brand' => $this->getBrand(),
-            'company' => $this->getCompany()
+            'company' => $this->getCompany(),
+            'peeringContract' => $this->getPeeringContract(),
+            'destination' => $this->getDestination(),
+            'ratingPlan' => $this->getRatingPlan()
         ];
     }
 
@@ -271,11 +208,12 @@ abstract class AccCdrDtoAbstract implements DataTransferObjectInterface
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
-        $this->ratingPlan = $transformer->transform('Ivoz\\Cgr\\Domain\\Model\\RatingPlan\\RatingPlan', $this->getRatingPlanId());
-        $this->destination = $transformer->transform('Ivoz\\Cgr\\Domain\\Model\\Destination\\Destination', $this->getDestinationId());
         $this->invoice = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Invoice\\Invoice', $this->getInvoiceId());
         $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
         $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
+        $this->peeringContract = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\PeeringContract\\PeeringContract', $this->getPeeringContractId());
+        $this->destination = $transformer->transform('Ivoz\\Cgr\\Domain\\Model\\Destination\\Destination', $this->getDestinationId());
+        $this->ratingPlan = $transformer->transform('Ivoz\\Cgr\\Domain\\Model\\RatingPlan\\RatingPlan', $this->getRatingPlanId());
     }
 
     /**
@@ -284,26 +222,6 @@ abstract class AccCdrDtoAbstract implements DataTransferObjectInterface
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
 
-    }
-
-    /**
-     * @param string $proxy
-     *
-     * @return static
-     */
-    public function setProxy($proxy = null)
-    {
-        $this->proxy = $proxy;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getProxy()
-    {
-        return $this->proxy;
     }
 
     /**
@@ -447,46 +365,6 @@ abstract class AccCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $asiden
-     *
-     * @return static
-     */
-    public function setAsiden($asiden = null)
-    {
-        $this->asiden = $asiden;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getAsiden()
-    {
-        return $this->asiden;
-    }
-
-    /**
-     * @param string $asaddress
-     *
-     * @return static
-     */
-    public function setAsaddress($asaddress = null)
-    {
-        $this->asaddress = $asaddress;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getAsaddress()
-    {
-        return $this->asaddress;
-    }
-
-    /**
      * @param string $callid
      *
      * @return static
@@ -547,26 +425,6 @@ abstract class AccCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $parsed
-     *
-     * @return static
-     */
-    public function setParsed($parsed = null)
-    {
-        $this->parsed = $parsed;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getParsed()
-    {
-        return $this->parsed;
-    }
-
-    /**
      * @param string $diversion
      *
      * @return static
@@ -587,27 +445,7 @@ abstract class AccCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $peeringContractId
-     *
-     * @return static
-     */
-    public function setPeeringContractId($peeringContractId = null)
-    {
-        $this->peeringContractId = $peeringContractId;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPeeringContractId()
-    {
-        return $this->peeringContractId;
-    }
-
-    /**
-     * @param string $bounced
+     * @param boolean $bounced
      *
      * @return static
      */
@@ -619,111 +457,11 @@ abstract class AccCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return boolean
      */
     public function getBounced()
     {
         return $this->bounced;
-    }
-
-    /**
-     * @param boolean $externallyRated
-     *
-     * @return static
-     */
-    public function setExternallyRated($externallyRated = null)
-    {
-        $this->externallyRated = $externallyRated;
-
-        return $this;
-    }
-
-    /**
-     * @return boolean
-     */
-    public function getExternallyRated()
-    {
-        return $this->externallyRated;
-    }
-
-    /**
-     * @param boolean $metered
-     *
-     * @return static
-     */
-    public function setMetered($metered = null)
-    {
-        $this->metered = $metered;
-
-        return $this;
-    }
-
-    /**
-     * @return boolean
-     */
-    public function getMetered()
-    {
-        return $this->metered;
-    }
-
-    /**
-     * @param \DateTime $meteringDate
-     *
-     * @return static
-     */
-    public function setMeteringDate($meteringDate = null)
-    {
-        $this->meteringDate = $meteringDate;
-
-        return $this;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getMeteringDate()
-    {
-        return $this->meteringDate;
-    }
-
-    /**
-     * @param string $pricingPlanName
-     *
-     * @return static
-     */
-    public function setPricingPlanName($pricingPlanName = null)
-    {
-        $this->pricingPlanName = $pricingPlanName;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPricingPlanName()
-    {
-        return $this->pricingPlanName;
-    }
-
-    /**
-     * @param string $targetPatternName
-     *
-     * @return static
-     */
-    public function setTargetPatternName($targetPatternName = null)
-    {
-        $this->targetPatternName = $targetPatternName;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTargetPatternName()
-    {
-        return $this->targetPatternName;
     }
 
     /**
@@ -747,13 +485,13 @@ abstract class AccCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $pricingPlanDetails
+     * @param string $priceDetails
      *
      * @return static
      */
-    public function setPricingPlanDetails($pricingPlanDetails = null)
+    public function setPriceDetails($priceDetails = null)
     {
-        $this->pricingPlanDetails = $pricingPlanDetails;
+        $this->priceDetails = $priceDetails;
 
         return $this;
     }
@@ -761,9 +499,9 @@ abstract class AccCdrDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string
      */
-    public function getPricingPlanDetails()
+    public function getPriceDetails()
     {
-        return $this->pricingPlanDetails;
+        return $this->priceDetails;
     }
 
     /**
@@ -787,23 +525,23 @@ abstract class AccCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \DateTime $reMeteringDate
+     * @param string $cgrid
      *
      * @return static
      */
-    public function setReMeteringDate($reMeteringDate = null)
+    public function setCgrid($cgrid = null)
     {
-        $this->reMeteringDate = $reMeteringDate;
+        $this->cgrid = $cgrid;
 
         return $this;
     }
 
     /**
-     * @return \DateTime
+     * @return string
      */
-    public function getReMeteringDate()
+    public function getCgrid()
     {
-        return $this->reMeteringDate;
+        return $this->cgrid;
     }
 
     /**
@@ -825,98 +563,6 @@ abstract class AccCdrDtoAbstract implements DataTransferObjectInterface
     {
         return $this->id;
     }
-
-    /**
-     * @param \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanDto $ratingPlan
-     *
-     * @return static
-     */
-    public function setRatingPlan(\Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanDto $ratingPlan = null)
-    {
-        $this->ratingPlan = $ratingPlan;
-
-        return $this;
-    }
-
-    /**
-     * @return \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanDto
-     */
-    public function getRatingPlan()
-    {
-        return $this->ratingPlan;
-    }
-
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setRatingPlanId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanDto($id)
-                : null;
-
-            return $this->setRatingPlan($value);
-        }
-
-        /**
-         * @return integer | null
-         */
-        public function getRatingPlanId()
-        {
-            if ($dto = $this->getRatingPlan()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
-
-    /**
-     * @param \Ivoz\Cgr\Domain\Model\Destination\DestinationDto $destination
-     *
-     * @return static
-     */
-    public function setDestination(\Ivoz\Cgr\Domain\Model\Destination\DestinationDto $destination = null)
-    {
-        $this->destination = $destination;
-
-        return $this;
-    }
-
-    /**
-     * @return \Ivoz\Cgr\Domain\Model\Destination\DestinationDto
-     */
-    public function getDestination()
-    {
-        return $this->destination;
-    }
-
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setDestinationId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Cgr\Domain\Model\Destination\DestinationDto($id)
-                : null;
-
-            return $this->setDestination($value);
-        }
-
-        /**
-         * @return integer | null
-         */
-        public function getDestinationId()
-        {
-            if ($dto = $this->getDestination()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Invoice\InvoiceDto $invoice
@@ -1050,6 +696,144 @@ abstract class AccCdrDtoAbstract implements DataTransferObjectInterface
         public function getCompanyId()
         {
             if ($dto = $this->getCompany()) {
+                return $dto->getId();
+            }
+
+            return null;
+        }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractDto $peeringContract
+     *
+     * @return static
+     */
+    public function setPeeringContract(\Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractDto $peeringContract = null)
+    {
+        $this->peeringContract = $peeringContract;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractDto
+     */
+    public function getPeeringContract()
+    {
+        return $this->peeringContract;
+    }
+
+        /**
+         * @param integer $id | null
+         *
+         * @return static
+         */
+        public function setPeeringContractId($id)
+        {
+            $value = !is_null($id)
+                ? new \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractDto($id)
+                : null;
+
+            return $this->setPeeringContract($value);
+        }
+
+        /**
+         * @return integer | null
+         */
+        public function getPeeringContractId()
+        {
+            if ($dto = $this->getPeeringContract()) {
+                return $dto->getId();
+            }
+
+            return null;
+        }
+
+    /**
+     * @param \Ivoz\Cgr\Domain\Model\Destination\DestinationDto $destination
+     *
+     * @return static
+     */
+    public function setDestination(\Ivoz\Cgr\Domain\Model\Destination\DestinationDto $destination = null)
+    {
+        $this->destination = $destination;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Cgr\Domain\Model\Destination\DestinationDto
+     */
+    public function getDestination()
+    {
+        return $this->destination;
+    }
+
+        /**
+         * @param integer $id | null
+         *
+         * @return static
+         */
+        public function setDestinationId($id)
+        {
+            $value = !is_null($id)
+                ? new \Ivoz\Cgr\Domain\Model\Destination\DestinationDto($id)
+                : null;
+
+            return $this->setDestination($value);
+        }
+
+        /**
+         * @return integer | null
+         */
+        public function getDestinationId()
+        {
+            if ($dto = $this->getDestination()) {
+                return $dto->getId();
+            }
+
+            return null;
+        }
+
+    /**
+     * @param \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanDto $ratingPlan
+     *
+     * @return static
+     */
+    public function setRatingPlan(\Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanDto $ratingPlan = null)
+    {
+        $this->ratingPlan = $ratingPlan;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanDto
+     */
+    public function getRatingPlan()
+    {
+        return $this->ratingPlan;
+    }
+
+        /**
+         * @param integer $id | null
+         *
+         * @return static
+         */
+        public function setRatingPlanId($id)
+        {
+            $value = !is_null($id)
+                ? new \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanDto($id)
+                : null;
+
+            return $this->setRatingPlan($value);
+        }
+
+        /**
+         * @return integer | null
+         */
+        public function getRatingPlanId()
+        {
+            if ($dto = $this->getRatingPlan()) {
                 return $dto->getId();
             }
 

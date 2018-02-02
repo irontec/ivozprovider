@@ -1,9 +1,10 @@
 [Unit]
-Description=Run Tarificator timer
+Description=Run cgr-loader with database tariff plans
 
 [Timer]
-OnBootSec=5min
+OnBootSec=3min
 OnUnitActiveSec=3min
 
 [Install]
 WantedBy=timers.target
+

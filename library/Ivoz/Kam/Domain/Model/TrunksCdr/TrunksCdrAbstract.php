@@ -1,6 +1,6 @@
 <?php
 
-namespace Ivoz\Kam\Domain\Model\AccCdr;
+namespace Ivoz\Kam\Domain\Model\TrunksCdr;
 
 use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
@@ -8,16 +8,11 @@ use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
 
 /**
- * AccCdrAbstract
+ * TrunksCdrAbstract
  * @codeCoverageIgnore
  */
-abstract class AccCdrAbstract
+abstract class TrunksCdrAbstract
 {
-    /**
-     * @var string
-     */
-    protected $proxy;
-
     /**
      * column: start_time
      * @var \DateTime
@@ -58,16 +53,6 @@ abstract class AccCdrAbstract
     /**
      * @var string
      */
-    protected $asiden;
-
-    /**
-     * @var string
-     */
-    protected $asaddress;
-
-    /**
-     * @var string
-     */
     protected $callid;
 
     /**
@@ -83,47 +68,12 @@ abstract class AccCdrAbstract
     /**
      * @var string
      */
-    protected $parsed = 'no';
-
-    /**
-     * @var string
-     */
     protected $diversion;
 
     /**
-     * @var string
-     */
-    protected $peeringContractId;
-
-    /**
-     * @var string
-     */
-    protected $bounced = 'no';
-
-    /**
      * @var boolean
      */
-    protected $externallyRated;
-
-    /**
-     * @var boolean
-     */
-    protected $metered = '0';
-
-    /**
-     * @var \DateTime
-     */
-    protected $meteringDate;
-
-    /**
-     * @var string
-     */
-    protected $pricingPlanName;
-
-    /**
-     * @var string
-     */
-    protected $targetPatternName;
+    protected $bounced;
 
     /**
      * @var string
@@ -133,7 +83,7 @@ abstract class AccCdrAbstract
     /**
      * @var string
      */
-    protected $pricingPlanDetails;
+    protected $priceDetails;
 
     /**
      * @var string
@@ -141,19 +91,9 @@ abstract class AccCdrAbstract
     protected $direction;
 
     /**
-     * @var \DateTime
+     * @var string
      */
-    protected $reMeteringDate;
-
-    /**
-     * @var \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanInterface
-     */
-    protected $ratingPlan;
-
-    /**
-     * @var \Ivoz\Cgr\Domain\Model\Destination\DestinationInterface
-     */
-    protected $destination;
+    protected $cgrid;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface
@@ -170,22 +110,32 @@ abstract class AccCdrAbstract
      */
     protected $company;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface
+     */
+    protected $peeringContract;
+
+    /**
+     * @var \Ivoz\Cgr\Domain\Model\Destination\DestinationInterface
+     */
+    protected $destination;
+
+    /**
+     * @var \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanInterface
+     */
+    protected $ratingPlan;
+
 
     use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct(
-        $startTime,
-        $endTime,
-        $duration,
-        $bounced
-    ) {
+    protected function __construct($startTime, $endTime, $duration)
+    {
         $this->setStartTime($startTime);
         $this->setEndTime($endTime);
         $this->setDuration($duration);
-        $this->setBounced($bounced);
     }
 
     abstract public function getId();
@@ -193,7 +143,7 @@ abstract class AccCdrAbstract
     public function __toString()
     {
         return sprintf("%s#%s",
-            "AccCdr",
+            "TrunksCdr",
             $this->getId()
         );
     }
@@ -208,17 +158,17 @@ abstract class AccCdrAbstract
 
     /**
      * @param null $id
-     * @return AccCdrDto
+     * @return TrunksCdrDto
      */
     public static function createDto($id = null)
     {
-        return new AccCdrDto($id);
+        return new TrunksCdrDto($id);
     }
 
     /**
      * @param EntityInterface|null $entity
      * @param int $depth
-     * @return AccCdrDto|null
+     * @return TrunksCdrDto|null
      */
     public static function entityToDto(EntityInterface $entity = null, $depth = 0)
     {
@@ -226,7 +176,7 @@ abstract class AccCdrAbstract
             return null;
         }
 
-        Assertion::isInstanceOf($entity, AccCdrInterface::class);
+        Assertion::isInstanceOf($entity, TrunksCdrInterface::class);
 
         if ($depth < 1) {
             return static::createDto($entity->getId());
@@ -247,44 +197,35 @@ abstract class AccCdrAbstract
     public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto AccCdrDto
+         * @var $dto TrunksCdrDto
          */
-        Assertion::isInstanceOf($dto, AccCdrDto::class);
+        Assertion::isInstanceOf($dto, TrunksCdrDto::class);
 
         $self = new static(
             $dto->getStartTime(),
             $dto->getEndTime(),
-            $dto->getDuration(),
-            $dto->getBounced());
+            $dto->getDuration());
 
         $self
-            ->setProxy($dto->getProxy())
             ->setCaller($dto->getCaller())
             ->setCallee($dto->getCallee())
             ->setReferee($dto->getReferee())
             ->setReferrer($dto->getReferrer())
-            ->setAsiden($dto->getAsiden())
-            ->setAsaddress($dto->getAsaddress())
             ->setCallid($dto->getCallid())
             ->setCallidHash($dto->getCallidHash())
             ->setXcallid($dto->getXcallid())
-            ->setParsed($dto->getParsed())
             ->setDiversion($dto->getDiversion())
-            ->setPeeringContractId($dto->getPeeringContractId())
-            ->setExternallyRated($dto->getExternallyRated())
-            ->setMetered($dto->getMetered())
-            ->setMeteringDate($dto->getMeteringDate())
-            ->setPricingPlanName($dto->getPricingPlanName())
-            ->setTargetPatternName($dto->getTargetPatternName())
+            ->setBounced($dto->getBounced())
             ->setPrice($dto->getPrice())
-            ->setPricingPlanDetails($dto->getPricingPlanDetails())
+            ->setPriceDetails($dto->getPriceDetails())
             ->setDirection($dto->getDirection())
-            ->setReMeteringDate($dto->getReMeteringDate())
-            ->setRatingPlan($dto->getRatingPlan())
-            ->setDestination($dto->getDestination())
+            ->setCgrid($dto->getCgrid())
             ->setInvoice($dto->getInvoice())
             ->setBrand($dto->getBrand())
             ->setCompany($dto->getCompany())
+            ->setPeeringContract($dto->getPeeringContract())
+            ->setDestination($dto->getDestination())
+            ->setRatingPlan($dto->getRatingPlan())
         ;
 
         $self->sanitizeValues();
@@ -300,12 +241,11 @@ abstract class AccCdrAbstract
     public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto AccCdrDto
+         * @var $dto TrunksCdrDto
          */
-        Assertion::isInstanceOf($dto, AccCdrDto::class);
+        Assertion::isInstanceOf($dto, TrunksCdrDto::class);
 
         $this
-            ->setProxy($dto->getProxy())
             ->setStartTime($dto->getStartTime())
             ->setEndTime($dto->getEndTime())
             ->setDuration($dto->getDuration())
@@ -313,29 +253,21 @@ abstract class AccCdrAbstract
             ->setCallee($dto->getCallee())
             ->setReferee($dto->getReferee())
             ->setReferrer($dto->getReferrer())
-            ->setAsiden($dto->getAsiden())
-            ->setAsaddress($dto->getAsaddress())
             ->setCallid($dto->getCallid())
             ->setCallidHash($dto->getCallidHash())
             ->setXcallid($dto->getXcallid())
-            ->setParsed($dto->getParsed())
             ->setDiversion($dto->getDiversion())
-            ->setPeeringContractId($dto->getPeeringContractId())
             ->setBounced($dto->getBounced())
-            ->setExternallyRated($dto->getExternallyRated())
-            ->setMetered($dto->getMetered())
-            ->setMeteringDate($dto->getMeteringDate())
-            ->setPricingPlanName($dto->getPricingPlanName())
-            ->setTargetPatternName($dto->getTargetPatternName())
             ->setPrice($dto->getPrice())
-            ->setPricingPlanDetails($dto->getPricingPlanDetails())
+            ->setPriceDetails($dto->getPriceDetails())
             ->setDirection($dto->getDirection())
-            ->setReMeteringDate($dto->getReMeteringDate())
-            ->setRatingPlan($dto->getRatingPlan())
-            ->setDestination($dto->getDestination())
+            ->setCgrid($dto->getCgrid())
             ->setInvoice($dto->getInvoice())
             ->setBrand($dto->getBrand())
-            ->setCompany($dto->getCompany());
+            ->setCompany($dto->getCompany())
+            ->setPeeringContract($dto->getPeeringContract())
+            ->setDestination($dto->getDestination())
+            ->setRatingPlan($dto->getRatingPlan());
 
 
 
@@ -345,12 +277,11 @@ abstract class AccCdrAbstract
 
     /**
      * @param int $depth
-     * @return AccCdrDto
+     * @return TrunksCdrDto
      */
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setProxy($this->getProxy())
             ->setStartTime($this->getStartTime())
             ->setEndTime($this->getEndTime())
             ->setDuration($this->getDuration())
@@ -358,29 +289,21 @@ abstract class AccCdrAbstract
             ->setCallee($this->getCallee())
             ->setReferee($this->getReferee())
             ->setReferrer($this->getReferrer())
-            ->setAsiden($this->getAsiden())
-            ->setAsaddress($this->getAsaddress())
             ->setCallid($this->getCallid())
             ->setCallidHash($this->getCallidHash())
             ->setXcallid($this->getXcallid())
-            ->setParsed($this->getParsed())
             ->setDiversion($this->getDiversion())
-            ->setPeeringContractId($this->getPeeringContractId())
             ->setBounced($this->getBounced())
-            ->setExternallyRated($this->getExternallyRated())
-            ->setMetered($this->getMetered())
-            ->setMeteringDate($this->getMeteringDate())
-            ->setPricingPlanName($this->getPricingPlanName())
-            ->setTargetPatternName($this->getTargetPatternName())
             ->setPrice($this->getPrice())
-            ->setPricingPlanDetails($this->getPricingPlanDetails())
+            ->setPriceDetails($this->getPriceDetails())
             ->setDirection($this->getDirection())
-            ->setReMeteringDate($this->getReMeteringDate())
-            ->setRatingPlan(\Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlan::entityToDto($this->getRatingPlan(), $depth))
-            ->setDestination(\Ivoz\Cgr\Domain\Model\Destination\Destination::entityToDto($this->getDestination(), $depth))
+            ->setCgrid($this->getCgrid())
             ->setInvoice(\Ivoz\Provider\Domain\Model\Invoice\Invoice::entityToDto($this->getInvoice(), $depth))
             ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto($this->getBrand(), $depth))
-            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto($this->getCompany(), $depth));
+            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto($this->getCompany(), $depth))
+            ->setPeeringContract(\Ivoz\Provider\Domain\Model\PeeringContract\PeeringContract::entityToDto($this->getPeeringContract(), $depth))
+            ->setDestination(\Ivoz\Cgr\Domain\Model\Destination\Destination::entityToDto($this->getDestination(), $depth))
+            ->setRatingPlan(\Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlan::entityToDto($this->getRatingPlan(), $depth));
     }
 
     /**
@@ -389,7 +312,6 @@ abstract class AccCdrAbstract
     protected function __toArray()
     {
         return [
-            'proxy' => self::getProxy(),
             'start_time' => self::getStartTime(),
             'end_time' => self::getEndTime(),
             'duration' => self::getDuration(),
@@ -397,62 +319,26 @@ abstract class AccCdrAbstract
             'callee' => self::getCallee(),
             'referee' => self::getReferee(),
             'referrer' => self::getReferrer(),
-            'asIden' => self::getAsiden(),
-            'asAddress' => self::getAsaddress(),
             'callid' => self::getCallid(),
             'callidHash' => self::getCallidHash(),
             'xcallid' => self::getXcallid(),
-            'parsed' => self::getParsed(),
             'diversion' => self::getDiversion(),
-            'peeringContractId' => self::getPeeringContractId(),
             'bounced' => self::getBounced(),
-            'externallyRated' => self::getExternallyRated(),
-            'metered' => self::getMetered(),
-            'meteringDate' => self::getMeteringDate(),
-            'pricingPlanName' => self::getPricingPlanName(),
-            'targetPatternName' => self::getTargetPatternName(),
             'price' => self::getPrice(),
-            'pricingPlanDetails' => self::getPricingPlanDetails(),
+            'priceDetails' => self::getPriceDetails(),
             'direction' => self::getDirection(),
-            'reMeteringDate' => self::getReMeteringDate(),
-            'ratingPlanId' => self::getRatingPlan() ? self::getRatingPlan()->getId() : null,
-            'destinationId' => self::getDestination() ? self::getDestination()->getId() : null,
+            'cgrid' => self::getCgrid(),
             'invoiceId' => self::getInvoice() ? self::getInvoice()->getId() : null,
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null
+            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
+            'peeringContractId' => self::getPeeringContract() ? self::getPeeringContract()->getId() : null,
+            'destinationId' => self::getDestination() ? self::getDestination()->getId() : null,
+            'ratingPlanId' => self::getRatingPlan() ? self::getRatingPlan()->getId() : null
         ];
     }
 
 
     // @codeCoverageIgnoreStart
-
-    /**
-     * Set proxy
-     *
-     * @param string $proxy
-     *
-     * @return self
-     */
-    public function setProxy($proxy = null)
-    {
-        if (!is_null($proxy)) {
-            Assertion::maxLength($proxy, 64, 'proxy value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        }
-
-        $this->proxy = $proxy;
-
-        return $this;
-    }
-
-    /**
-     * Get proxy
-     *
-     * @return string
-     */
-    public function getProxy()
-    {
-        return $this->proxy;
-    }
 
     /**
      * Set startTime
@@ -654,62 +540,6 @@ abstract class AccCdrAbstract
     }
 
     /**
-     * Set asiden
-     *
-     * @param string $asiden
-     *
-     * @return self
-     */
-    public function setAsiden($asiden = null)
-    {
-        if (!is_null($asiden)) {
-            Assertion::maxLength($asiden, 64, 'asiden value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        }
-
-        $this->asiden = $asiden;
-
-        return $this;
-    }
-
-    /**
-     * Get asiden
-     *
-     * @return string
-     */
-    public function getAsiden()
-    {
-        return $this->asiden;
-    }
-
-    /**
-     * Set asaddress
-     *
-     * @param string $asaddress
-     *
-     * @return self
-     */
-    public function setAsaddress($asaddress = null)
-    {
-        if (!is_null($asaddress)) {
-            Assertion::maxLength($asaddress, 64, 'asaddress value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        }
-
-        $this->asaddress = $asaddress;
-
-        return $this;
-    }
-
-    /**
-     * Get asaddress
-     *
-     * @return string
-     */
-    public function getAsaddress()
-    {
-        return $this->asaddress;
-    }
-
-    /**
      * Set callid
      *
      * @param string $callid
@@ -794,33 +624,6 @@ abstract class AccCdrAbstract
     }
 
     /**
-     * Set parsed
-     *
-     * @param string $parsed
-     *
-     * @return self
-     */
-    public function setParsed($parsed = null)
-    {
-        if (!is_null($parsed)) {
-        }
-
-        $this->parsed = $parsed;
-
-        return $this;
-    }
-
-    /**
-     * Get parsed
-     *
-     * @return string
-     */
-    public function getParsed()
-    {
-        return $this->parsed;
-    }
-
-    /**
      * Set diversion
      *
      * @param string $diversion
@@ -849,43 +652,17 @@ abstract class AccCdrAbstract
     }
 
     /**
-     * Set peeringContractId
-     *
-     * @param string $peeringContractId
-     *
-     * @return self
-     */
-    public function setPeeringContractId($peeringContractId = null)
-    {
-        if (!is_null($peeringContractId)) {
-            Assertion::maxLength($peeringContractId, 64, 'peeringContractId value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        }
-
-        $this->peeringContractId = $peeringContractId;
-
-        return $this;
-    }
-
-    /**
-     * Get peeringContractId
-     *
-     * @return string
-     */
-    public function getPeeringContractId()
-    {
-        return $this->peeringContractId;
-    }
-
-    /**
      * Set bounced
      *
-     * @param string $bounced
+     * @param boolean $bounced
      *
      * @return self
      */
-    public function setBounced($bounced)
+    public function setBounced($bounced = null)
     {
-        Assertion::notNull($bounced, 'bounced value "%s" is null, but non null value was expected.');
+        if (!is_null($bounced)) {
+            Assertion::between(intval($bounced), 0, 1, 'bounced provided "%s" is not a valid boolean value.');
+        }
 
         $this->bounced = $bounced;
 
@@ -895,154 +672,11 @@ abstract class AccCdrAbstract
     /**
      * Get bounced
      *
-     * @return string
+     * @return boolean
      */
     public function getBounced()
     {
         return $this->bounced;
-    }
-
-    /**
-     * Set externallyRated
-     *
-     * @param boolean $externallyRated
-     *
-     * @return self
-     */
-    public function setExternallyRated($externallyRated = null)
-    {
-        if (!is_null($externallyRated)) {
-            Assertion::between(intval($externallyRated), 0, 1, 'externallyRated provided "%s" is not a valid boolean value.');
-        }
-
-        $this->externallyRated = $externallyRated;
-
-        return $this;
-    }
-
-    /**
-     * Get externallyRated
-     *
-     * @return boolean
-     */
-    public function getExternallyRated()
-    {
-        return $this->externallyRated;
-    }
-
-    /**
-     * Set metered
-     *
-     * @param boolean $metered
-     *
-     * @return self
-     */
-    public function setMetered($metered = null)
-    {
-        if (!is_null($metered)) {
-            Assertion::between(intval($metered), 0, 1, 'metered provided "%s" is not a valid boolean value.');
-        }
-
-        $this->metered = $metered;
-
-        return $this;
-    }
-
-    /**
-     * Get metered
-     *
-     * @return boolean
-     */
-    public function getMetered()
-    {
-        return $this->metered;
-    }
-
-    /**
-     * Set meteringDate
-     *
-     * @param \DateTime $meteringDate
-     *
-     * @return self
-     */
-    public function setMeteringDate($meteringDate = null)
-    {
-        if (!is_null($meteringDate)) {
-        $meteringDate = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
-            $meteringDate,
-            null
-        );
-        }
-
-        $this->meteringDate = $meteringDate;
-
-        return $this;
-    }
-
-    /**
-     * Get meteringDate
-     *
-     * @return \DateTime
-     */
-    public function getMeteringDate()
-    {
-        return $this->meteringDate;
-    }
-
-    /**
-     * Set pricingPlanName
-     *
-     * @param string $pricingPlanName
-     *
-     * @return self
-     */
-    public function setPricingPlanName($pricingPlanName = null)
-    {
-        if (!is_null($pricingPlanName)) {
-            Assertion::maxLength($pricingPlanName, 55, 'pricingPlanName value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        }
-
-        $this->pricingPlanName = $pricingPlanName;
-
-        return $this;
-    }
-
-    /**
-     * Get pricingPlanName
-     *
-     * @return string
-     */
-    public function getPricingPlanName()
-    {
-        return $this->pricingPlanName;
-    }
-
-    /**
-     * Set targetPatternName
-     *
-     * @param string $targetPatternName
-     *
-     * @return self
-     */
-    public function setTargetPatternName($targetPatternName = null)
-    {
-        if (!is_null($targetPatternName)) {
-            Assertion::maxLength($targetPatternName, 55, 'targetPatternName value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        }
-
-        $this->targetPatternName = $targetPatternName;
-
-        return $this;
-    }
-
-    /**
-     * Get targetPatternName
-     *
-     * @return string
-     */
-    public function getTargetPatternName()
-    {
-        return $this->targetPatternName;
     }
 
     /**
@@ -1076,31 +710,31 @@ abstract class AccCdrAbstract
     }
 
     /**
-     * Set pricingPlanDetails
+     * Set priceDetails
      *
-     * @param string $pricingPlanDetails
+     * @param string $priceDetails
      *
      * @return self
      */
-    public function setPricingPlanDetails($pricingPlanDetails = null)
+    public function setPriceDetails($priceDetails = null)
     {
-        if (!is_null($pricingPlanDetails)) {
-            Assertion::maxLength($pricingPlanDetails, 65535, 'pricingPlanDetails value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        if (!is_null($priceDetails)) {
+            Assertion::maxLength($priceDetails, 65535, 'priceDetails value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
-        $this->pricingPlanDetails = $pricingPlanDetails;
+        $this->priceDetails = $priceDetails;
 
         return $this;
     }
 
     /**
-     * Get pricingPlanDetails
+     * Get priceDetails
      *
      * @return string
      */
-    public function getPricingPlanDetails()
+    public function getPriceDetails()
     {
-        return $this->pricingPlanDetails;
+        return $this->priceDetails;
     }
 
     /**
@@ -1131,82 +765,31 @@ abstract class AccCdrAbstract
     }
 
     /**
-     * Set reMeteringDate
+     * Set cgrid
      *
-     * @param \DateTime $reMeteringDate
+     * @param string $cgrid
      *
      * @return self
      */
-    public function setReMeteringDate($reMeteringDate = null)
+    public function setCgrid($cgrid = null)
     {
-        if (!is_null($reMeteringDate)) {
-        $reMeteringDate = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
-            $reMeteringDate,
-            null
-        );
+        if (!is_null($cgrid)) {
+            Assertion::maxLength($cgrid, 40, 'cgrid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         }
 
-        $this->reMeteringDate = $reMeteringDate;
+        $this->cgrid = $cgrid;
 
         return $this;
     }
 
     /**
-     * Get reMeteringDate
+     * Get cgrid
      *
-     * @return \DateTime
+     * @return string
      */
-    public function getReMeteringDate()
+    public function getCgrid()
     {
-        return $this->reMeteringDate;
-    }
-
-    /**
-     * Set ratingPlan
-     *
-     * @param \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan
-     *
-     * @return self
-     */
-    public function setRatingPlan(\Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan = null)
-    {
-        $this->ratingPlan = $ratingPlan;
-
-        return $this;
-    }
-
-    /**
-     * Get ratingPlan
-     *
-     * @return \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanInterface
-     */
-    public function getRatingPlan()
-    {
-        return $this->ratingPlan;
-    }
-
-    /**
-     * Set destination
-     *
-     * @param \Ivoz\Cgr\Domain\Model\Destination\DestinationInterface $destination
-     *
-     * @return self
-     */
-    public function setDestination(\Ivoz\Cgr\Domain\Model\Destination\DestinationInterface $destination = null)
-    {
-        $this->destination = $destination;
-
-        return $this;
-    }
-
-    /**
-     * Get destination
-     *
-     * @return \Ivoz\Cgr\Domain\Model\Destination\DestinationInterface
-     */
-    public function getDestination()
-    {
-        return $this->destination;
+        return $this->cgrid;
     }
 
     /**
@@ -1279,6 +862,78 @@ abstract class AccCdrAbstract
     public function getCompany()
     {
         return $this->company;
+    }
+
+    /**
+     * Set peeringContract
+     *
+     * @param \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface $peeringContract
+     *
+     * @return self
+     */
+    public function setPeeringContract(\Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface $peeringContract = null)
+    {
+        $this->peeringContract = $peeringContract;
+
+        return $this;
+    }
+
+    /**
+     * Get peeringContract
+     *
+     * @return \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface
+     */
+    public function getPeeringContract()
+    {
+        return $this->peeringContract;
+    }
+
+    /**
+     * Set destination
+     *
+     * @param \Ivoz\Cgr\Domain\Model\Destination\DestinationInterface $destination
+     *
+     * @return self
+     */
+    public function setDestination(\Ivoz\Cgr\Domain\Model\Destination\DestinationInterface $destination = null)
+    {
+        $this->destination = $destination;
+
+        return $this;
+    }
+
+    /**
+     * Get destination
+     *
+     * @return \Ivoz\Cgr\Domain\Model\Destination\DestinationInterface
+     */
+    public function getDestination()
+    {
+        return $this->destination;
+    }
+
+    /**
+     * Set ratingPlan
+     *
+     * @param \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan
+     *
+     * @return self
+     */
+    public function setRatingPlan(\Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan = null)
+    {
+        $this->ratingPlan = $ratingPlan;
+
+        return $this;
+    }
+
+    /**
+     * Get ratingPlan
+     *
+     * @return \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanInterface
+     */
+    public function getRatingPlan()
+    {
+        return $this->ratingPlan;
     }
 
 

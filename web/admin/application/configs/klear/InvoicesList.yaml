@@ -1,6 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
-#include KamAccCdrsList.yaml
+#include KamTrunksCdrsList.yaml
 #include FixedCostsRelInvoicesList.yaml
 
 production:
@@ -23,7 +23,7 @@ production:
           screens:
             invoicesEdit_screen: true
             fixedCostsRelInvoicesList_screen: true
-            kamAccCdrsList_screen: true
+            kamTrunksCdrsList_screen: true
           dialogs:
             generateInvoice_dialog: true
             invoicesDel_dialog: true
@@ -115,21 +115,13 @@ production:
       filterField: Invoice
       parentOptionCustomizer:
         - recordCount
-#    kamAccCdrs:
-    <<: *kamAccCdrs_screensLink
-    kamAccCdrsList_screen:
-      <<: *kamAccCdrsList_screenLink
+    <<: *kamTrunksCdrs_screensLink
+    kamTrunksCdrsList_screen:
+      <<: *kamTrunksCdrsList_screenLink
       class: ui-silk-application-view-list
       filterField: Invoice
       parentOptionCustomizer: 
         - recordCount
-#
-#    kamAccCdrsNew_screen:
-#      <<: *kamAccCdrsNew_screenLink
-#      filterField: invoiceId
-#    kamAccCdrsEdit_screen:
-#      <<: *kamAccCdrsEdit_screenLink
-#      filterField: invoiceId
 
 
   dialogs: &invoices_dialogsLink
@@ -159,8 +151,6 @@ production:
 
 
 
-#  # kamAccCdrs dialogs:
-#    <<: *kamAccCdrs_dialogsLink
     <<: *fixedCostsRelInvoices_dialogsLink
   commands: &invoices_commandsLink
     invoicesPdfFileDownload_command: &invoicesPdfFileDownload_commandLink

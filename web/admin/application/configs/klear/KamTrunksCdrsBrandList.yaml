@@ -1,0 +1,28 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+#include KamTrunksCdrsList.yaml
+
+production:
+  main:
+    module: klearMatrix
+    defaultScreen: kamTrunksCdrsList_screen
+
+  screens:
+    <<: *kamTrunksCdrs_screensLink
+    kamTrunksCdrsList_screen:
+      <<: *kamTrunksCdrsList_screenLink
+      forcedValues:
+        <<: *forcedBrand
+    kamTrunksCdrsView_screen:
+      <<: *kamTrunksCdrsView_screenLink
+      forcedValues:
+        <<: *forcedBrand
+
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

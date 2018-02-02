@@ -1,14 +1,14 @@
 <?php
 
-namespace Ivoz\Kam\Domain\Model\AccCdr;
+namespace Ivoz\Kam\Domain\Model\TrunksCdr;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 
 /**
- * AccCdrTrait
+ * TrunksCdrTrait
  * @codeCoverageIgnore
  */
-trait AccCdrTrait
+trait TrunksCdrTrait
 {
     /**
      * @var integer
@@ -33,7 +33,7 @@ trait AccCdrTrait
     public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto AccCdrDto
+         * @var $dto TrunksCdrDto
          */
         $self = parent::fromDto($dto);
 
@@ -52,7 +52,7 @@ trait AccCdrTrait
     public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto AccCdrDto
+         * @var $dto TrunksCdrDto
          */
         parent::updateFromDto($dto);
 
@@ -61,7 +61,7 @@ trait AccCdrTrait
 
     /**
      * @param int $depth
-     * @return AccCdrDto
+     * @return TrunksCdrDto
      */
     public function toDto($depth = 0)
     {

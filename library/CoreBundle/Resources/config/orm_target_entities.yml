@@ -181,8 +181,8 @@ doctrine:
         Ivoz\Ast\Domain\Model\Voicemail\Voicemail
       Ivoz\Kam\Domain\Model\AccCdr\AccCdrInterface:
         Ivoz\Kam\Domain\Model\AccCdr\AccCdr
-      Ivoz\Kam\Domain\Model\AccCdrsBrand\AccCdrsBrandInterface:
-        Ivoz\Kam\Domain\Model\AccCdrsBrand\AccCdrsBrand
+      Ivoz\Kam\Domain\Model\TrunksCdrsBrand\TrunksCdrsBrandInterface:
+        Ivoz\Kam\Domain\Model\TrunksCdrsBrand\TrunksCdrsBrand
       Ivoz\Kam\Domain\Model\Dispatcher\DispatcherInterface:
         Ivoz\Kam\Domain\Model\Dispatcher\Dispatcher
       Ivoz\Kam\Domain\Model\PikeTrusted\PikeTrustedInterface:
@@ -221,6 +221,8 @@ doctrine:
         Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlan
       Ivoz\Cgr\Domain\Model\TpAccount\TpAccountInterface:
         Ivoz\Cgr\Domain\Model\TpAccount\TpAccount
+      Ivoz\Cgr\Domain\Model\TpCdr\TpCdrInterface:
+        Ivoz\Cgr\Domain\Model\TpCdr\TpCdr
       Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface:
         Ivoz\Cgr\Domain\Model\TpDestination\TpDestination
       Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface:
