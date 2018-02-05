@@ -123,6 +123,7 @@ Depends: ivozprovider-profile-common,
         ivozprovider-kamailio-trunks (=${binary:Version}),
         ivozprovider-kamailio-users (=${binary:Version}),
         ivozprovider-cgrates,
+        redis-server,
         ivozprovider-cgrates-tools
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Profile files for a Proxy Systems
