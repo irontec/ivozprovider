@@ -59,9 +59,6 @@ class Version20171031181245 extends AbstractMigration
         $this->addSql('DROP VIEW kam_users');
         $this->addSql('CREATE VIEW kam_users AS SELECT E.type, E.name, D.domain, E.password, E.companyId, CONCAT(T.id,0) AS caller_in, CONCAT(T.id,1) AS callee_in, CONCAT(T.id,2) AS caller_out, CONCAT(T.id,3) AS callee_out FROM (SELECT "terminal" as type, T.name, T.domainId, T.password, T.companyId, U.transformationRuleSetId FROM Terminals T INNER JOIN Users U ON U.terminalId = T.id UNION SELECT "friend" AS type, name, domainId, password, companyId, transformationRuleSetId FROM Friends UNION SELECT "retail" AS type, name, domainId, password, companyId, transformationRuleSetId FROM RetailAccounts) AS E INNER JOIN Companies C ON C.id = E.companyId INNER JOIN TransformationRuleSets T ON T.id = COALESCE(E.transformationRuleSetId, C.transformationRuleSetId) INNER JOIN Domains D ON D.id = E.domainId');
 
-        $this->addSql('DROP TABLE ast_ps_aors');
-        $this->addSql('CREATE VIEW ast_ps_aors AS SELECT CONCAT("b", C.brandId, "c", C.id, E.type, E.id, "_", E.name) AS sorcery_id, CONCAT("sip:", E.name, "@", D.domain) AS contact FROM (SELECT "t" AS type, T.id, T.name, T.domainId, T.companyId FROM Terminals T UNION SELECT "f" AS type, id, name, domainId, companyId FROM Friends UNION SELECT "r" AS type, id, name, domainId, companyId FROM RetailAccounts) AS E INNER JOIN Companies C ON C.id = E.companyId INNER JOIN Domains D ON D.id = E.domainId');
-
     }
 
     /**
@@ -107,15 +104,8 @@ class Version20171031181245 extends AbstractMigration
         $this->addSql('DROP INDEX IDX_B52899334600F3 ON Companies');
         $this->addSql('ALTER TABLE Companies DROP domainId');
 
-
         $this->addSql('DROP VIEW kam_users');
         $this->addSql('CREATE VIEW kam_users AS SELECT E.type, E.name, E.domain, E.password, E.companyId, CONCAT(T.id,0) AS caller_in, CONCAT(T.id,1) AS callee_in, CONCAT(T.id,2) AS caller_out, CONCAT(T.id,3) AS callee_out FROM (SELECT "terminal" as type, T.name, T.domain, T.password, T.companyId, U.transformationRuleSetId FROM Terminals T INNER JOIN Users U ON U.terminalId = T.id UNION SELECT "friend" AS type, name, domain, password, companyId, transformationRuleSetId FROM Friends UNION SELECT "retail" AS type, name, domain, password, companyId, transformationRuleSetId FROM RetailAccounts) AS E INNER JOIN Companies C ON C.id = E.companyId INNER JOIN TransformationRuleSets T ON T.id = COALESCE(E.transformationRuleSetId, C.transformationRuleSetId)');
 
-        $this->addSql('DROP VIEW ast_ps_aors');
-        $this->addSql('CREATE TABLE ast_ps_aors (sorcery_id VARCHAR(40) NOT NULL, default_expiration INT DEFAULT NULL, max_contacts INT DEFAULT NULL, minimum_expiration INT DEFAULT NULL, remove_existing VARCHAR(255) DEFAULT NULL, authenticate_qualify VARCHAR(255) DEFAULT NULL, maximum_expiration INT DEFAULT NULL, support_path VARCHAR(255) DEFAULT NULL, contact VARCHAR(200) DEFAULT NULL, qualify_frequency INT DEFAULT NULL, psEndpoint INT UNSIGNED NOT NULL, INDEX IDX_96365EB84FBA0BA (psEndpoint), INDEX sorcery_idx (sorcery_id), INDEX contact_idx (contact), PRIMARY KEY(sorcery_id)) DEFAULT CHARACTER SET utf8 ENGINE = InnoDB');
-        $this->addSql('ALTER TABLE ast_ps_aors ADD CONSTRAINT FK_96365EB84FBA0BA FOREIGN KEY (psEndpoint) REFERENCES ast_ps_endpoints (id) ON DELETE CASCADE');
-        $this->addSql('INSERT INTO ast_ps_aors (sorcery_id, contact, psEndpoint) SELECT CONCAT("b", C.brandId, "c", C.id, "t", T.id, "_", T.name), CONCAT("sip:", T.name, "@", C.domain_users), APE.id  FROM Terminals T INNER JOIN Companies C ON C.id = T.companyId INNER JOIN ast_ps_endpoints APE ON APE.terminalId = T.id');
-        $this->addSql('INSERT INTO ast_ps_aors (sorcery_id, contact, psEndpoint) SELECT CONCAT("b", C.brandId, "c", C.id, "r", R.id, "_", R.name), CONCAT("sip:", R.name, "@", C.domain_users), APE.id  FROM RetailAccounts R INNER JOIN Companies C ON C.id = R.companyId INNER JOIN ast_ps_endpoints APE ON APE.retailAccountId = R.id');
-        $this->addSql('INSERT INTO ast_ps_aors (sorcery_id, contact, psEndpoint) SELECT CONCAT("b", C.brandId, "c", C.id, "f", F.id, "_", F.name), CONCAT("sip:", F.name, "@", C.domain_users), APE.id  FROM Friends F INNER JOIN Companies C ON C.id = F.companyId INNER JOIN ast_ps_endpoints APE ON APE.friendId = F.id');
     }
 }
