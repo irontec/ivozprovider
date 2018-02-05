@@ -22,6 +22,8 @@ class Version20171103142714 extends AbstractMigration
         $this->addSql('ALTER TABLE Administrators ADD CONSTRAINT FK_CA5E09B79CBEC244 FOREIGN KEY (brandId) REFERENCES Brands (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE Administrators ADD CONSTRAINT FK_CA5E09B72480E723 FOREIGN KEY (companyId) REFERENCES Companies (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE Administrators ADD CONSTRAINT FK_CA5E09B731D2BA8E FOREIGN KEY (timezoneId) REFERENCES Timezones (id) ON DELETE SET NULL');
+        $this->addSql('DROP INDEX username ON Administrators');
+        $this->addSql('CREATE UNIQUE INDEX username ON Administrators (username, brandId)');
 
         $this->addSql('INSERT INTO Administrators (username, pass, email, active, name, lastname, timezoneId) SELECT username, pass, email, active, name, lastname, timezoneId FROM MainOperators');
         $this->addSql('INSERT INTO Administrators (username, pass, email, active, name, lastname, timezoneId, brandId) SELECT username, pass, email, active, name, lastname, timezoneId, brandId FROM BrandOperators');
