@@ -66,7 +66,7 @@ abstract class CallAclRelMatchListDtoAbstract implements DataTransferObjectInter
     /**
      * @return array
      */
-    public function toArray()
+    public function toArray($hideSensitiveData = false)
     {
         return [
             'priority' => $this->getPriority(),

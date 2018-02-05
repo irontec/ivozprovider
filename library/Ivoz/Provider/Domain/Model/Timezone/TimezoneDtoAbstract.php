@@ -71,7 +71,7 @@ abstract class TimezoneDtoAbstract implements DataTransferObjectInterface
     /**
      * @return array
      */
-    public function toArray()
+    public function toArray($hideSensitiveData = false)
     {
         return [
             'tz' => $this->getTz(),

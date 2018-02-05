@@ -82,7 +82,7 @@ abstract class ServiceDtoAbstract implements DataTransferObjectInterface
     /**
      * @return array
      */
-    public function toArray()
+    public function toArray($hideSensitiveData = false)
     {
         return [
             'iden' => $this->getIden(),

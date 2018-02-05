@@ -84,7 +84,7 @@ abstract class UsersAddressDtoAbstract implements DataTransferObjectInterface
     /**
      * @return array
      */
-    public function toArray()
+    public function toArray($hideSensitiveData = false)
     {
         return [
             'sourceAddress' => $this->getSourceAddress(),

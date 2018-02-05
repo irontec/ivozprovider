@@ -150,7 +150,7 @@ abstract class UsersPuaDtoAbstract implements DataTransferObjectInterface
     /**
      * @return array
      */
-    public function toArray()
+    public function toArray($hideSensitiveData = false)
     {
         return [
             'presUri' => $this->getPresUri(),

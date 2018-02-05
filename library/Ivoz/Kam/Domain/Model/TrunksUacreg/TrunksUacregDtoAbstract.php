@@ -132,7 +132,7 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
     /**
      * @return array
      */
-    public function toArray()
+    public function toArray($hideSensitiveData = false)
     {
         return [
             'lUuid' => $this->getLUuid(),

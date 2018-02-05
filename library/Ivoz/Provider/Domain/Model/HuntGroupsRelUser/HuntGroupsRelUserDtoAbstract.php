@@ -66,7 +66,7 @@ abstract class HuntGroupsRelUserDtoAbstract implements DataTransferObjectInterfa
     /**
      * @return array
      */
-    public function toArray()
+    public function toArray($hideSensitiveData = false)
     {
         return [
             'timeoutTime' => $this->getTimeoutTime(),

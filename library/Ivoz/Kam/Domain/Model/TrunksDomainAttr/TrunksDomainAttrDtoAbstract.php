@@ -72,7 +72,7 @@ abstract class TrunksDomainAttrDtoAbstract implements DataTransferObjectInterfac
     /**
      * @return array
      */
-    public function toArray()
+    public function toArray($hideSensitiveData = false)
     {
         return [
             'did' => $this->getDid(),

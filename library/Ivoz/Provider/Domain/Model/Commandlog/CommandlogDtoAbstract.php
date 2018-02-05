@@ -78,7 +78,7 @@ abstract class CommandlogDtoAbstract implements DataTransferObjectInterface
     /**
      * @return array
      */
-    public function toArray()
+    public function toArray($hideSensitiveData = false)
     {
         return [
             'requestId' => $this->getRequestId(),

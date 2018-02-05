@@ -141,7 +141,7 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     /**
      * @return array
      */
-    public function toArray()
+    public function toArray($hideSensitiveData = false)
     {
         return [
             'priority' => $this->getPriority(),

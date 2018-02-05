@@ -78,7 +78,7 @@ abstract class RtpproxyDtoAbstract implements DataTransferObjectInterface
     /**
      * @return array
      */
-    public function toArray()
+    public function toArray($hideSensitiveData = false)
     {
         return [
             'setid' => $this->getSetid(),

@@ -96,7 +96,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     /**
      * @return array
      */
-    public function toArray()
+    public function toArray($hideSensitiveData = false)
     {
         return [
             'callTypeFilter' => $this->getCallTypeFilter(),

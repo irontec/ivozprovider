@@ -41,6 +41,17 @@ class UserDto extends UserDtoAbstract
         return $this;
     }
 
+    public function toArray($hideSensitiveData = false)
+    {
+        $response = parent::toArray($hideSensitiveData);
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+        $response['pass'] = '****';
+
+        return $response;
+    }
+
     /**
      * @inheritdoc
      */
@@ -58,7 +69,6 @@ class UserDto extends UserDtoAbstract
             return [
                 'id' => 'id',
                 'name' => 'name',
-                'pass' => 'pass',
                 'lastname' => 'lastname',
                 'email' => 'email',
                 'doNotDisturb' => 'doNotDisturb',
@@ -90,7 +100,9 @@ class UserDto extends UserDtoAbstract
     public function normalize(string $context)
     {
         $response = parent::normalize(...func_get_args());
-        $response['pass'] = '*****';
+        if (isset($response['pass'])) {
+            $response['pass'] = '*****';
+        }
 
         return $response;
     }

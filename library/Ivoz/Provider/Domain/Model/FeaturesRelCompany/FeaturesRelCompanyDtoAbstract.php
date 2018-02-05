@@ -54,7 +54,7 @@ abstract class FeaturesRelCompanyDtoAbstract implements DataTransferObjectInterf
     /**
      * @return array
      */
-    public function toArray()
+    public function toArray($hideSensitiveData = false)
     {
         return [
             'id' => $this->getId(),

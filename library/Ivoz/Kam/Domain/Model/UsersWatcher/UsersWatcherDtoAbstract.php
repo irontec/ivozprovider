@@ -84,7 +84,7 @@ abstract class UsersWatcherDtoAbstract implements DataTransferObjectInterface
     /**
      * @return array
      */
-    public function toArray()
+    public function toArray($hideSensitiveData = false)
     {
         return [
             'presentityUri' => $this->getPresentityUri(),

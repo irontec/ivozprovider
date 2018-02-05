@@ -78,7 +78,7 @@ abstract class TransformationRuleDtoAbstract implements DataTransferObjectInterf
     /**
      * @return array
      */
-    public function toArray()
+    public function toArray($hideSensitiveData = false)
     {
         return [
             'type' => $this->getType(),

@@ -254,7 +254,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     /**
      * @return array
      */
-    public function toArray()
+    public function toArray($hideSensitiveData = false)
     {
         return [
             'type' => $this->getType(),

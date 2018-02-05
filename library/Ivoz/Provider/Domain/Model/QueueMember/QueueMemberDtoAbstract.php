@@ -60,7 +60,7 @@ abstract class QueueMemberDtoAbstract implements DataTransferObjectInterface
     /**
      * @return array
      */
-    public function toArray()
+    public function toArray($hideSensitiveData = false)
     {
         return [
             'penalty' => $this->getPenalty(),

@@ -72,7 +72,7 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
     /**
      * @return array
      */
-    public function toArray()
+    public function toArray($hideSensitiveData = false)
     {
         return [
             'action' => $this->getAction(),

@@ -246,7 +246,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     /**
      * @return array
      */
-    public function toArray()
+    public function toArray($hideSensitiveData = false)
     {
         return [
             'context' => $this->getContext(),
