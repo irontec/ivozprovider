@@ -4,8 +4,9 @@ angular
     .module('Detours')
     .controller('DetoursNewController', function(
         $scope, 
-        $rootScope, 
-        Restangular, 
+        $rootScope,
+        appConfig,
+        $http,
         ngProgress
     ) {
         
@@ -15,32 +16,40 @@ angular
     $scope.formAction = false;
     $scope.success = false;
     $scope.error = false;
-    $scope.detour = {};
+    $scope.detour = {
+        noAnswerTimeout: 0
+    };
     
     $scope.callForwardTypeNoAnswer = false;
     $scope.numberValueShow = false;
     $scope.extensionShow = false;
     $scope.voiceMailUserShow = false;
-    
-    Restangular.all('users').getList().then(function(users) {
+
+    $http.get(
+        appConfig.urlRest + 'my/profile',
+        {headers: {accept: 'application/json'}}
+    ).then(function(users) {
         $scope.users = users.data;
-        Restangular.all('extensions').getList().then(function(extensions) {
+        $http.get(
+            appConfig.urlRest + 'my/company_extensions',
+            {headers: {accept: 'application/json'}}
+        ).then(function(extensions) {
             $scope.extensions = extensions.data;
             $scope.loading = false;
             ngProgress.complete();
         });
     });
-    
+
     $scope.$watch('detour.callForwardType', function(type) {
-        
+
         if (type === 'noAnswer') {
             $scope.callForwardTypeNoAnswer = true;
         } else {
             $scope.callForwardTypeNoAnswer = false;
-            $scope.detour.noAnswerTimeout = '';
+            $scope.detour.noAnswerTimeout = 0;
         }
     });
-    
+
     $scope.$watch('detour.targetType', function(type) {
         
         switch (type) {
@@ -74,43 +83,38 @@ angular
                 $scope.voiceMailUserShow = false;
                 break;
         }
-        
     });
-    
+
     $scope.create = function() {
-        
+
         $scope.success = false;
         $scope.error = false;
         $scope.formAction = true;
-        
-        var callForwardSettings = Restangular.all('call-forward-settings');
-        
+
         ngProgress.start();
-        callForwardSettings.post($scope.detour).then(function(resutl) {
-            
-            if (resutl.status === 404) {
-                
-                $scope.formAction = true;
-                $scope.error = true;
-                $scope.errorMessage = resutl.data.error;
-                $scope.formAction = false;
-                
+        $http.post(
+            appConfig.urlRest + 'my/call_forward_settings',
+            $scope.detour,
+            {headers: {accept: 'application/json'}}
+        ).then(
+            SuccessHandler,
+            ErrorHandler
+        );
+
+        function SuccessHandler(resutl) {
+            if (resutl.status >= 400) {
+                ErrorHandler(resutl);
             } else {
-                
                 $scope.success = true;
-                
             }
-            
             ngProgress.complete();
-        }, function(resutl) {
-            
+        }
+
+        function ErrorHandler(resutl) {
             $scope.formAction = true;
             $scope.error = true;
-            $scope.errorMessage = resutl.data.error;
+            $scope.errorMessage = resutl.data.detail;
             $scope.formAction = false;
-            
-        });
-        
+        }
     };
-    
 });

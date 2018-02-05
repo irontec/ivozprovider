@@ -5,15 +5,19 @@ angular
         $scope, 
         $state,
         ngProgress,
-        Restangular
+        appConfig,
+        $http
     ) {
     
     ngProgress.color('blue');
     ngProgress.start();
     $scope.loading = true;
     $scope.user = {};
-    
-    Restangular.all('users').get(1).then(function(response) {
+
+    $http.get(
+        appConfig.urlRest + 'my/profile',
+        {headers: {accept: 'application/json'}}
+    ).then(function(response) {
         $scope.user = response.data;
         $scope.user.formType = 'account';
         $scope.loading = false;
@@ -56,53 +60,68 @@ angular
     });
     
     $scope.save = function() {
+
         $scope.success = false;
         $scope.error = false;
         $scope.formAction = true;
-        
+
         ngProgress.start();
-        $scope.user.put().then(function(response) {
-            
+
+        var data = {};
+        for (var idx in $scope.user) {
+            data[idx] = $scope.user[idx];
+        }
+
+        delete data['pass'];
+
+        if ($scope.user.changePass) {
+            data['pass'] = $scope.user.newPass;
+            data['oldPass'] = $scope.user.currentPass;
+        }
+
+        $http.put(
+            appConfig.urlRest + 'my/profile',
+            data,
+            {headers: {accept: 'application/json'}}
+        ).then(
+            accountUpdateSuccessHandler,
+            accountUpdateErrorHandler
+        );
+
+        function accountUpdateSuccessHandler(response) {
+
             if (response.status > 400) {
 
                 $scope.formAction = true;
                 $scope.error = true;
-                
+
                 var errorMessage = response.statusText;
-                if (response.data.error !== undefined) {
-                    errorMessage = response.data.error;
+                if (response.data.detail !== undefined) {
+                    errorMessage = response.data.detail;
                 }
                 $scope.errorMessage = errorMessage;
                 $scope.formAction = false;
-                
+
             } else {
-                
-                if ($scope.user.changePass) {
-                    
-                    var md5 = CryptoJS.MD5($scope.user.newPass).toString();
-                    var secret = CryptoJS.MD5(md5).toString();
-                    
-                    localStorage.setItem('token-Hmac', secret);
-                    
-                }
-                
-                localStorage.setItem('userName', $scope.user.name + ' ' + $scope.user.lastname);
-                
+
                 $scope.success = true;
                 $state.go('app.account');
-                
+
             }
-            
+
             ngProgress.complete();
-        }, function(response) {
+        }
+
+        function accountUpdateErrorHandler(response) {
+
             $scope.formAction = true;
             $scope.error = true;
             $scope.errorMessage = response.data.error;
             $scope.formAction = false;
             ngProgress.complete();
-        });
+        }
     };
-    
+
     $scope.nameEmpty = false;
     $scope.$watch('user.name', function(data) {
         if (data === '' || data === undefined) {
@@ -111,7 +130,7 @@ angular
             $scope.nameEmpty = false;
         }
     });
-    
+
     $scope.lastNameEmpty = false;
     $scope.$watch('user.lastname', function(data) {
         if (data === '' || data === undefined) {
@@ -120,7 +139,7 @@ angular
             $scope.lastNameEmpty = false;
         }
     });
-    
+
     $scope.emailEmpty = false;
     $scope.$watch('user.email', function(data) {
         if (data === '' || data === undefined) {
@@ -129,5 +148,4 @@ angular
             $scope.emailEmpty = false;
         }
     });
-    
 });

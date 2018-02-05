@@ -21,13 +21,13 @@ angular
             $scope.nombre = localStorage.getItem('userName');
             $scope.brandName = localStorage.getItem('companyName');
 
-            $http.get(appConfig.urlRest + 'call_stats').success(function(data, status) {
+            $http.get(appConfig.urlRest + 'my/call_stats').success(function(data, status) {
                 if (status > 400) {
                     $scope.totalCalls = 0;
                     $scope.totalDetours = 0;
                 } else {
-                    $scope.totalCalls = data.calls.total;
-                    $scope.totalDetours = data.detours.total;
+                    $scope.totalCalls = data.totalCalls;
+                    $scope.totalDetours = data.totalDetours;
                 }
             });
         } else {
@@ -48,8 +48,7 @@ angular
         }
 
         var gsQRCode = localStorage.getItem('gsQRCode');
-
-        if (gsQRCode == 1) {
+        if (gsQRCode == "true") {
 
             var terminalName = localStorage.getItem('terminalName');
             var terminalPassword = localStorage.getItem('terminalPassword');
@@ -60,8 +59,6 @@ angular
             var voiceMail = localStorage.getItem('voiceMail');
 
             $scope.gsQRCode = true;
-
-
             $scope.QRCode = '<?xml version="1.0" encoding="utf-8"?>'
                 + '<AccountConfig version="1"><Account>'
                 + '<RegisterServer>' + companyDomain + '</RegisterServer>'

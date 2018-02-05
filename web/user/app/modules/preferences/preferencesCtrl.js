@@ -22,9 +22,8 @@ angular
     $scope.temp = {};
 
     $http.get(
-      appConfig.urlRest + 'timezones',
+      appConfig.urlRest + 'timezones?_pagination=false',
       {
-        data: {_pagination: false},
         headers: {accept: 'application/json'}
       }
     ).then(function(response) {
@@ -41,35 +40,42 @@ angular
     function requestCompanyUsers() {
 
       $http.get(
-        appConfig.urlRest + 'my/assistants',
+        appConfig.urlRest + 'my/company_assistants',
         {
           headers: {accept: 'application/json'}
         }
-      ).then(function(response) {
-          $scope.assistants = response.data;
-          $http.get(
+      ).then(requestCompanyUsersHandler);
+    }
+
+    function requestCompanyUsersHandler(response) {
+        $scope.assistants = response.data;
+
+        for (var idx in $scope.assistants) {
+
+            $scope.assistants[idx].fullname = $scope.assistants[idx].name + " " + $scope.assistants[idx].lastname;
+        }
+
+        $http.get(
             appConfig.urlRest + 'my/profile',
-            {
-              headers: {accept: 'application/json'}
+            {headers: {accept: 'application/json'}}
+        ).then(function(response) {
+            $scope.user = response.data;
+            $scope.user.formType = 'preferences';
+
+            for (var i = 0; i < $scope.timeZones.length; i++) {
+                if ($scope.timeZones[i].id == $scope.user.timezone.id) {
+
+                    $scope.user.timezoneSelect = $scope.timeZones[i];
+                    break;
+                }
             }
-          ).then(function(response) {
-              $scope.user = response.data;
-              $scope.user.formType = 'preferences';
 
-              for (var i = 0; i < $scope.timeZones.length; i++) {
-                  if ($scope.timeZones[i].id == $scope.user.timezoneId) {
-                      $scope.user.timezoneSelect = $scope.timeZones[i];
-                      break;
-                  }
-              }
+            $scope.user.doNotDisturb = $scope.user.doNotDisturb ?  '1' : '0';
+            $scope.user.maxCalls = Number($scope.user.maxCalls);
 
-              $scope.user.doNotDisturb = String($scope.user.doNotDisturb);
-              $scope.user.maxCalls = Number($scope.user.maxCalls);
-
-              $scope.loading = false;
-              ngProgress.complete();
-          });
-      });
+            $scope.loading = false;
+            ngProgress.complete();
+        });
     }
 
     $scope.$watch('user.bossAssistantId', function(data) {
@@ -85,12 +91,31 @@ angular
         $scope.error = false;
         $scope.formAction = true;
 
-        if ($scope.user.bossAssistantId === 'null') {
+        if ($scope.user.bossAssistantId === '') {
             $scope.user.bossAssistantId = null;
         }
 
         ngProgress.start();
-        $scope.user.put().then(function(response) {
+        var data = {
+            "name": $scope.user.name,
+            "lastname": $scope.user.lastname,
+            "email": $scope.user.email,
+            "doNotDisturb": $scope.user.doNotDisturb,
+            "isBoss": $scope.user.isBoss,
+            "maxCalls": $scope.user.maxCalls,
+            "bossAssistant": $scope.user.bossAssistant.id
+        };
+
+        $http.put(
+            appConfig.urlRest + 'my/profile',
+            data,
+            {headers: {accept: 'application/json'}}
+        ).then(
+            accountUpdateSuccessHandler,
+            accountUpdateErrorHandler
+        );
+
+        function accountUpdateSuccessHandler(response) {
 
             if (response.status > 400) {
 
@@ -98,8 +123,8 @@ angular
                 $scope.error = true;
 
                 var errorMessage = response.statusText;
-                if (response.data.error !== undefined) {
-                    errorMessage = response.data.error;
+                if (response.data.detail !== undefined) {
+                    errorMessage = response.data.detail;
                 }
                 $scope.errorMessage = errorMessage;
                 $scope.formAction = false;
@@ -108,17 +133,19 @@ angular
 
                 $scope.success = true;
                 $state.go('app.preferences');
-
             }
 
             ngProgress.complete();
-        }, function(response) {
+        }
+
+        function accountUpdateErrorHandler(response) {
+
             $scope.formAction = true;
             $scope.error = true;
             $scope.errorMessage = response.data.error;
             $scope.formAction = false;
             ngProgress.complete();
-        });
+        }
     };
 
 });

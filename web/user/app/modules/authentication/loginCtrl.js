@@ -28,6 +28,7 @@ angular
 
         function loginSuccessHandler(response) {
 
+
             ngProgress.complete();
             localStorage.setItem('statusTerminal', response.statusTerminal);
             localStorage.setItem('companyName', response.companyName);

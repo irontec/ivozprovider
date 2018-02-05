@@ -4,7 +4,8 @@ angular
     .module('Detours')
     .controller('DetoursEditController', function(
         $scope,
-        Restangular,
+        appConfig,
+        $http,
         $stateParams,
         ngProgress
     ) {
@@ -23,12 +24,22 @@ angular
     $scope.numberValueShow = true;
     $scope.extensionShow = true;
     $scope.voiceMailUserShow = true;
-    
-    Restangular.all('users').getList({detour: detourId}).then(function(users) {
+
+    $http.get(
+        appConfig.urlRest + 'my/company_voicemails',
+        {headers: {accept: 'application/json'}}
+    ).then(function(users) {
         $scope.users = users.data;
-        Restangular.all('extensions').getList().then(function(extensions) {
+
+        $http.get(
+            appConfig.urlRest + 'my/company_extensions',
+            {headers: {accept: 'application/json'}}
+        ).then(function(extensions) {
             $scope.extensions = extensions.data;
-            Restangular.all('call-forward-settings').get(detourId).then(function(detour) {
+            $http.get(
+                appConfig.urlRest + 'call_forward_settings/' + detourId,
+                {headers: {accept: 'application/json'}}
+            ).then(function(detour) {
                 $scope.detour = detour.data;
                 $scope.formDisabled = false;
                 $scope.loading = false;
@@ -44,32 +55,38 @@ angular
         $scope.formAction = true;
         
         ngProgress.start();
-        $scope.detour.put().then(function(result) {
-            
+        $http.put(
+            appConfig.urlRest + 'call_forward_settings/' + detourId,
+            $scope.detour,
+            {headers: {accept: 'application/json'}}
+        ).then(
+            UpdateSuccessHandler,
+            UpdateErrorHandler
+        );
+
+        function UpdateSuccessHandler (result) {
+
             if (result.status === 404) {
-                
                 $scope.formAction = true;
                 $scope.error = true;
                 $scope.errorMessage = result.data.error;
                 $scope.formAction = false;
-                
             } else {
-                
                 $scope.success = true;
                 $scope.formAction = false;
-                
             }
-            
+
             ngProgress.complete();
-        }, function(result) {
+        }
+
+        function UpdateErrorHandler (result) {
             $scope.formAction = true;
             $scope.error = true;
             $scope.errorMessage = result.data.error;
             $scope.formAction = false;
-        });
-        
+        };
     };
-    
+
     $scope.$watch('detour.callForwardType', function(type) {
         if (type === 'noAnswer') {
             $scope.callForwardTypeNoAnswer = true;
@@ -77,32 +94,30 @@ angular
             $scope.callForwardTypeNoAnswer = false;
         }
     });
-    
+
     $scope.$watch('detour.targetType', function(type) {
-        
+
         switch (type) {
             case 'extension':
                 $scope.extensionShow = true;
                 $scope.numberValueShow = false;
                 $scope.voiceMailUserShow = false;
                 break;
-                
+
             case 'voicemail':
                 $scope.voiceMailUserShow = true;
                 $scope.extensionShow = false;
                 $scope.numberValueShow = false;
                 break;
-                
+
             case 'number':
                 $scope.voiceMailUserShow = false;
                 $scope.numberValueShow = true;
                 $scope.extensionShow = false;
                 break;
-            
+
             default:
                 break;
         }
-        
     });
-
 });

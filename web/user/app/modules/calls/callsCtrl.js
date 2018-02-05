@@ -20,37 +20,46 @@ angular
     $scope.loading = true;
     
     $scope.page = 1;
-    $scope.pageSize = 10;
+    $scope.pageSize = 30;
     
     $scope.callsParams = {
         order: '',
-        search: {},
-        csv: false
+        search: {}
     };
-    
+
     var loadCalls = function (page) {
         ngProgress.start();
-        
-        var params = $scope.callsParams;
-        params.csv = false;
-        
-        var headers;
-        if (page === undefined) {
-            headers = {page: 0};
-        } else {
-            headers = {page: page};
+
+        var params = $scope.callsParams.search;
+
+        page = page || 1;
+        params._page = page;
+
+        var endpoint = 'my/call_history';
+        if ($scope.callsParams._order) {
+            endpoint += '?' + $.param({_order: $scope.callsParams._order});
         }
 
         $http.get(
-            appConfig.urlRest + 'my/call_history',
-            {headers: {accept: 'application/json'}}
+            appConfig.urlRest + endpoint,
+            {headers: {accept: 'application/ld+json'}, params: params}
         ).then(function(calls) {
+
             if (calls.status > 400) {
                 $scope.totalItems = 0;
                 $scope.calls = {};
             } else {
-                $scope.totalItems = calls.headers('totalitems');
-                $scope.calls = calls.data;
+                $scope.totalItems = calls.data['hydra:totalItems'];
+                $scope.calls = calls.data['hydra:member'];
+
+                for (var idx in $scope.calls) {
+                    var item = $scope.calls[idx];
+                    if (item.direction === 'inbound') {
+                        item.interlocutor = item.caller;
+                    } else {
+                        item.interlocutor = item.callee;
+                    }
+                }
             }
 
             ngProgress.complete();
@@ -65,15 +74,19 @@ angular
     loadCalls();
     
     $scope.callsOrder = function(newOrder) {
-        
-        if (newOrder + ' DESC' === $scope.callsParams.order) {
-            
-            $scope.callsParams.order = newOrder + ' ASC';
-        } else {
-            
-            $scope.callsParams.order = newOrder + ' DESC';
+
+        if (!$scope.callsParams._order) {
+            $scope.callsParams._order = {};
         }
-        
+
+        if ('desc' === $scope.callsParams._order[newOrder]) {
+            $scope.callsParams._order = {};
+            $scope.callsParams._order[newOrder] = 'asc';
+        } else {
+            $scope.callsParams._order = {};
+            $scope.callsParams._order[newOrder] = 'desc';
+        }
+
         loadCalls();
     };
 
@@ -90,18 +103,18 @@ angular
     };
 
     $scope.getCallsToCsv = function() {
-        var paramsCsv = $scope.callsParams;
-        paramsCsv.csv = true;
-
         var defered = $q.defer();
         var promise = defered.promise;
+        var params = $scope.callsParams.search;
+        params._pagination = false;
 
-        $http
-            .get(appConfig.urlRest + 'calls', {params: paramsCsv})
-            .then(function (data) {
-                data.data = filterCsvData(data.data);
-                defered.resolve(data);
-            });
+        $http.get(
+            appConfig.urlRest + 'my/call_history',
+            {headers: {accept: 'application/json'}, params: params}
+        ).then(function (data) {
+            data.data = filterCsvData(data.data);
+            defered.resolve(data);
+        });
 
         return {
             //content: [{a: 1, b: 2}, {c:3, d:4}],
@@ -113,13 +126,16 @@ angular
     function filterCsvData(data) {
 
         for(var idx in data) {
+
+            var interlocutor = data[idx].direction == 'inbound'
+                ? data[idx].caller
+                : data[idx].callee;
+
             data[idx] = {
-                date: data[idx].calldate,
-                src: data[idx].aParty,
-                dst: data[idx].bParty,
+                date: data[idx].startTime,
+                interlocutor: interlocutor,
                 duration: data[idx].duration,
-                type: data[idx].type,
-                subtype: data[idx].subtype
+                type: data[idx].direction
             }
         }
 
@@ -135,7 +151,21 @@ angular
     
     $scope.search = function() {
         $scope.page = 1;
-        $scope.callsParams.search = $scope.formData;
+        $scope.callsParams.search = {}
+        for (var idx in $scope.formData) {
+            $scope.callsParams.search[idx] = $scope.formData[idx];
+        }
+
+        if ($scope.formData.startTime) {
+            var date = $scope.formData.startTime.split('-');
+            $scope.callsParams.search.startTime =
+                date[2]
+                + "-"
+                + date[1]
+                + "-"
+                + date[0];
+        }
+
         loadCalls();
     };
     

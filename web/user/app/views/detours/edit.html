@@ -59,7 +59,6 @@
                                 <option value="both" translate="both"></option>
                             </select>
                         </div>
-
                     </div>
 
                     <div class="form-group col-md-12">
@@ -83,13 +82,9 @@
                                 <option value="voicemail" translate="voicemail"></option>
                             </select>
                         </div>
-
                     </div>
 
-
-
                     <div class="form-group col-md-12">
-
                         <label
                                 for="callForwardType"
                                 class="col-sm-4 control-label"
@@ -123,7 +118,7 @@
 
                         <div class="col-sm-8">
                             <input
-                                    type="number"
+                                    type="text"
                                     name="numberValue"
                                     id="numberValue"
                                     class="form-control"
@@ -137,7 +132,7 @@
                     <div class="form-group col-md-12" ng-show="extensionShow">
 
                         <label
-                                for="extensionId"
+                                for="extension"
                                 class="col-sm-4 control-label"
                                 translate="extension"
                         ></label>
@@ -145,11 +140,11 @@
                         <div class="col-sm-8">
                             <select
                                     class="form-control"
-                                    id="extensionId"
-                                    name="extensionId"
-                                    ng-model="detour.extensionId"
+                                    id="extension"
+                                    name="extension"
+                                    ng-model="detour.extension.id"
+                                    ng-options="extension.id as extension.number for extension in extensions"
                             >
-                                <option ng-repeat="extension in extensions" value="{{extension.id}}">{{extension.number}}</option>
                             </select>
 
                         </div>
@@ -159,19 +154,19 @@
                     <div class="form-group col-md-12" ng-show="voiceMailUserShow">
 
                         <label
-                                for="voiceMailUserId"
+                                for="voiceMailUser"
                                 class="col-sm-4 control-label"
                                 translate="voiceMailUser"
                         ></label>
 
                         <div class="col-sm-8">
                             <select
-                                    class="form-control"
-                                    id="voiceMailUserId"
-                                    name="voiceMailUserId"
-                                    ng-model="detour.voiceMailUserId"
+                                class="form-control"
+                                id="voiceMailUser"
+                                name="voiceMailUser"
+                                ng-model="detour.voiceMailUser.id"
+                                ng-options="user.id as user.name for user in users"
                             >
-                                <option ng-repeat="user in users" value="{{user.id}}">{{user.name}}</option>
                             </select>
                         </div>
 
