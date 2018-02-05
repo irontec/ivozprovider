@@ -812,7 +812,7 @@ abstract class DdiAbstract
      *
      * @return self
      */
-    public function setCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $country)
+    public function setCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $country = null)
     {
         $this->country = $country;
 

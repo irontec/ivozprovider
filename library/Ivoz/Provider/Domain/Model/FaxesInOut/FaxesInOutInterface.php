@@ -24,8 +24,6 @@ interface FaxesInOutInterface extends LoggableEntityInterface
      */
     public function getDstE164();
 
-    public function __toString();
-
     /**
      * Set calldate
      *
@@ -34,6 +32,8 @@ interface FaxesInOutInterface extends LoggableEntityInterface
      * @return self
      */
     public function setCalldate($calldate);
+
+    public function __toString();
 
     /**
      * Get calldate
