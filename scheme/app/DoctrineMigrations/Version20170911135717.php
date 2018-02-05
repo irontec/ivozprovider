@@ -23,12 +23,6 @@ class Version20170911135717 extends AbstractMigration
         $this->addSql('ALTER TABLE PricingPlansRelTargetPatterns ADD CONSTRAINT FK_CAD1B6B5EDF37044 FOREIGN KEY (pricingPlanId) REFERENCES PricingPlans (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE PricingPlansRelTargetPatterns ADD CONSTRAINT FK_CAD1B6B54D2CFC16 FOREIGN KEY (targetPatternId) REFERENCES TargetPatterns (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE Languages DROP name');
-        $this->addSql('ALTER TABLE ParsedCDRs DROP FOREIGN KEY ParsedCDRs_ibfk_1');
-        $this->addSql('ALTER TABLE ParsedCDRs DROP FOREIGN KEY ParsedCDRs_ibfk_2');
-        $this->addSql('ALTER TABLE ParsedCDRs DROP FOREIGN KEY parsedCDRs_ibfk_6');
-        $this->addSql('ALTER TABLE ParsedCDRs ADD CONSTRAINT FK_A94BA5799CBEC244 FOREIGN KEY (brandId) REFERENCES Brands (id) ON DELETE CASCADE');
-        $this->addSql('ALTER TABLE ParsedCDRs ADD CONSTRAINT FK_A94BA5792480E723 FOREIGN KEY (companyId) REFERENCES Companies (id) ON DELETE CASCADE');
-        $this->addSql('ALTER TABLE ParsedCDRs ADD CONSTRAINT FK_A94BA5797DB780F8 FOREIGN KEY (peeringContractId) REFERENCES PeeringContracts (id) ON DELETE SET NULL');
         $this->addSql('ALTER TABLE RoutingPatterns DROP name, DROP description');
         $this->addSql('ALTER TABLE ExternalCallFilters DROP FOREIGN KEY ExternalCallFilters_ibfk_3');
         $this->addSql('ALTER TABLE ExternalCallFilters ADD CONSTRAINT FK_528CEED99FB29831 FOREIGN KEY (holidayLocutionId) REFERENCES Locutions (id)');
@@ -139,12 +133,6 @@ class Version20170911135717 extends AbstractMigration
         $this->addSql('ALTER TABLE Languages ADD name VARCHAR(100) DEFAULT \'\' NOT NULL COLLATE utf8_general_ci COMMENT \'[ml]\'');
         $this->addSql('ALTER TABLE MatchListPatterns RENAME INDEX matchlistpatternid TO MatchListPatterns_ibfk_2');
         $this->addSql('ALTER TABLE OutgoingRouting CHANGE priority priority TINYINT(1) NOT NULL');
-        $this->addSql('ALTER TABLE ParsedCDRs DROP FOREIGN KEY FK_A94BA5799CBEC244');
-        $this->addSql('ALTER TABLE ParsedCDRs DROP FOREIGN KEY FK_A94BA5792480E723');
-        $this->addSql('ALTER TABLE ParsedCDRs DROP FOREIGN KEY FK_A94BA5797DB780F8');
-        $this->addSql('ALTER TABLE ParsedCDRs ADD CONSTRAINT ParsedCDRs_ibfk_1 FOREIGN KEY (brandId) REFERENCES Brands (id) ON UPDATE CASCADE ON DELETE CASCADE');
-        $this->addSql('ALTER TABLE ParsedCDRs ADD CONSTRAINT ParsedCDRs_ibfk_2 FOREIGN KEY (companyId) REFERENCES Companies (id) ON UPDATE CASCADE ON DELETE CASCADE');
-        $this->addSql('ALTER TABLE ParsedCDRs ADD CONSTRAINT parsedCDRs_ibfk_6 FOREIGN KEY (peeringContractId) REFERENCES PeeringContracts (id) ON UPDATE CASCADE ON DELETE SET NULL');
         $this->addSql('ALTER TABLE PricingPlans ADD name VARCHAR(55) NOT NULL COLLATE utf8_general_ci COMMENT \'[ml]\', ADD description VARCHAR(55) NOT NULL COLLATE utf8_general_ci COMMENT \'[ml]\'');
         $this->addSql('ALTER TABLE PricingPlansRelCompanies DROP FOREIGN KEY FK_78F195D2EDF37044');
         $this->addSql('ALTER TABLE PricingPlansRelCompanies DROP FOREIGN KEY FK_78F195D22480E723');
