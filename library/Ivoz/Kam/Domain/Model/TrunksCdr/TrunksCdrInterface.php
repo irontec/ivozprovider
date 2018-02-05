@@ -345,20 +345,20 @@ interface TrunksCdrInterface extends EntityInterface
     public function getDestination();
 
     /**
-     * Set ratingPlan
+     * Set destinationRate
      *
-     * @param \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan
+     * @param \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate
      *
      * @return self
      */
-    public function setRatingPlan(\Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan = null);
+    public function setDestinationRate(\Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate = null);
 
     /**
-     * Get ratingPlan
+     * Get destinationRate
      *
-     * @return \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanInterface
+     * @return \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateInterface
      */
-    public function getRatingPlan();
+    public function getDestinationRate();
 
 }
 

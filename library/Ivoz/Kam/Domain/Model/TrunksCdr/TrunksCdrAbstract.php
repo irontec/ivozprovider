@@ -121,9 +121,9 @@ abstract class TrunksCdrAbstract
     protected $destination;
 
     /**
-     * @var \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanInterface
+     * @var \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateInterface
      */
-    protected $ratingPlan;
+    protected $destinationRate;
 
 
     use ChangelogTrait;
@@ -225,7 +225,7 @@ abstract class TrunksCdrAbstract
             ->setCompany($dto->getCompany())
             ->setPeeringContract($dto->getPeeringContract())
             ->setDestination($dto->getDestination())
-            ->setRatingPlan($dto->getRatingPlan())
+            ->setDestinationRate($dto->getDestinationRate())
         ;
 
         $self->sanitizeValues();
@@ -267,7 +267,7 @@ abstract class TrunksCdrAbstract
             ->setCompany($dto->getCompany())
             ->setPeeringContract($dto->getPeeringContract())
             ->setDestination($dto->getDestination())
-            ->setRatingPlan($dto->getRatingPlan());
+            ->setDestinationRate($dto->getDestinationRate());
 
 
 
@@ -303,7 +303,7 @@ abstract class TrunksCdrAbstract
             ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto($this->getCompany(), $depth))
             ->setPeeringContract(\Ivoz\Provider\Domain\Model\PeeringContract\PeeringContract::entityToDto($this->getPeeringContract(), $depth))
             ->setDestination(\Ivoz\Cgr\Domain\Model\Destination\Destination::entityToDto($this->getDestination(), $depth))
-            ->setRatingPlan(\Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlan::entityToDto($this->getRatingPlan(), $depth));
+            ->setDestinationRate(\Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRate::entityToDto($this->getDestinationRate(), $depth));
     }
 
     /**
@@ -333,7 +333,7 @@ abstract class TrunksCdrAbstract
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
             'peeringContractId' => self::getPeeringContract() ? self::getPeeringContract()->getId() : null,
             'destinationId' => self::getDestination() ? self::getDestination()->getId() : null,
-            'ratingPlanId' => self::getRatingPlan() ? self::getRatingPlan()->getId() : null
+            'destinationRateId' => self::getDestinationRate() ? self::getDestinationRate()->getId() : null
         ];
     }
 
@@ -913,27 +913,27 @@ abstract class TrunksCdrAbstract
     }
 
     /**
-     * Set ratingPlan
+     * Set destinationRate
      *
-     * @param \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan
+     * @param \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate
      *
      * @return self
      */
-    public function setRatingPlan(\Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan = null)
+    public function setDestinationRate(\Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate = null)
     {
-        $this->ratingPlan = $ratingPlan;
+        $this->destinationRate = $destinationRate;
 
         return $this;
     }
 
     /**
-     * Get ratingPlan
+     * Get destinationRate
      *
-     * @return \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanInterface
+     * @return \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateInterface
      */
-    public function getRatingPlan()
+    public function getDestinationRate()
     {
-        return $this->ratingPlan;
+        return $this->destinationRate;
     }
 
 

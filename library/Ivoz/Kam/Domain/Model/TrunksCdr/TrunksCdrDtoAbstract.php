@@ -123,9 +123,9 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     private $destination;
 
     /**
-     * @var \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanDto | null
+     * @var \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateDto | null
      */
-    private $ratingPlan;
+    private $destinationRate;
 
 
     use DtoNormalizer;
@@ -167,7 +167,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
             'companyId' => 'company',
             'peeringContractId' => 'peeringContract',
             'destinationId' => 'destination',
-            'ratingPlanId' => 'ratingPlan'
+            'destinationRateId' => 'destinationRate'
         ];
     }
 
@@ -199,7 +199,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
             'company' => $this->getCompany(),
             'peeringContract' => $this->getPeeringContract(),
             'destination' => $this->getDestination(),
-            'ratingPlan' => $this->getRatingPlan()
+            'destinationRate' => $this->getDestinationRate()
         ];
     }
 
@@ -213,7 +213,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
         $this->peeringContract = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\PeeringContract\\PeeringContract', $this->getPeeringContractId());
         $this->destination = $transformer->transform('Ivoz\\Cgr\\Domain\\Model\\Destination\\Destination', $this->getDestinationId());
-        $this->ratingPlan = $transformer->transform('Ivoz\\Cgr\\Domain\\Model\\RatingPlan\\RatingPlan', $this->getRatingPlanId());
+        $this->destinationRate = $transformer->transform('Ivoz\\Cgr\\Domain\\Model\\DestinationRate\\DestinationRate', $this->getDestinationRateId());
     }
 
     /**
@@ -795,23 +795,23 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         }
 
     /**
-     * @param \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanDto $ratingPlan
+     * @param \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateDto $destinationRate
      *
      * @return static
      */
-    public function setRatingPlan(\Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanDto $ratingPlan = null)
+    public function setDestinationRate(\Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateDto $destinationRate = null)
     {
-        $this->ratingPlan = $ratingPlan;
+        $this->destinationRate = $destinationRate;
 
         return $this;
     }
 
     /**
-     * @return \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanDto
+     * @return \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateDto
      */
-    public function getRatingPlan()
+    public function getDestinationRate()
     {
-        return $this->ratingPlan;
+        return $this->destinationRate;
     }
 
         /**
@@ -819,21 +819,21 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
          *
          * @return static
          */
-        public function setRatingPlanId($id)
+        public function setDestinationRateId($id)
         {
             $value = !is_null($id)
-                ? new \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanDto($id)
+                ? new \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateDto($id)
                 : null;
 
-            return $this->setRatingPlan($value);
+            return $this->setDestinationRate($value);
         }
 
         /**
          * @return integer | null
          */
-        public function getRatingPlanId()
+        public function getDestinationRateId()
         {
-            if ($dto = $this->getRatingPlan()) {
+            if ($dto = $this->getDestinationRate()) {
                 return $dto->getId();
             }
 

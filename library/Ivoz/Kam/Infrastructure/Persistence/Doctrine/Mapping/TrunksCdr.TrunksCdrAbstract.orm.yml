@@ -172,14 +172,14 @@ Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrAbstract:
           referencedColumnName: id
           onDelete: set null
       orphanRemoval: false
-    ratingPlan:
-      targetEntity: \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanInterface
+    destinationRate:
+      targetEntity: \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateInterface
       cascade: {  }
       fetch: LAZY
       mappedBy: null
       inversedBy: null
       joinColumns:
-        ratingPlanId:
+        destinationRateId:
           referencedColumnName: id
           onDelete: set null
       orphanRemoval: false

@@ -18,6 +18,7 @@ class Version20170911135717 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
+        $this->addSql('SET FOREIGN_KEY_CHECKS = 0');
         $this->addSql('ALTER TABLE PricingPlansRelTargetPatterns DROP FOREIGN KEY PricingPlansRelTargetPatterns_ibfk_1');
         $this->addSql('ALTER TABLE PricingPlansRelTargetPatterns DROP FOREIGN KEY PricingPlansRelTargetPatterns_ibfk_2');
         $this->addSql('ALTER TABLE PricingPlansRelTargetPatterns ADD CONSTRAINT FK_CAD1B6B5EDF37044 FOREIGN KEY (pricingPlanId) REFERENCES PricingPlans (id) ON DELETE CASCADE');
@@ -77,17 +78,7 @@ class Version20170911135717 extends AbstractMigration
         $this->addSql('ALTER TABLE kam_rtpproxy DROP FOREIGN KEY kam_rtpproxy_ibfk_1');
         $this->addSql('ALTER TABLE kam_rtpproxy ADD CONSTRAINT FK_729D1741C8555117 FOREIGN KEY (mediaRelaySetsId) REFERENCES MediaRelaySets (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE kam_users_domain_attrs DROP FOREIGN KEY kam_users_domain_attrs_ibfk_1');
-        $this->addSql('ALTER TABLE kam_acc_cdrs DROP FOREIGN KEY kam_acc_cdrs_ibfk_1');
-        $this->addSql('ALTER TABLE kam_acc_cdrs DROP FOREIGN KEY kam_acc_cdrs_ibfk_2');
-        $this->addSql('ALTER TABLE kam_acc_cdrs DROP FOREIGN KEY kam_acc_cdrs_ibfk_3');
-        $this->addSql('ALTER TABLE kam_acc_cdrs DROP FOREIGN KEY kam_acc_cdrs_ibfk_4');
-        $this->addSql('ALTER TABLE kam_acc_cdrs DROP FOREIGN KEY kam_acc_cdrs_ibfk_5');
-        $this->addSql('ALTER TABLE kam_acc_cdrs CHANGE start_time_utc start_time_utc DATETIME DEFAULT \'2000-01-01 00:00:00\' NOT NULL');
-        $this->addSql('ALTER TABLE kam_acc_cdrs ADD CONSTRAINT FK_1AC995A6EDF37044 FOREIGN KEY (pricingPlanId) REFERENCES PricingPlans (id) ON DELETE SET NULL');
-        $this->addSql('ALTER TABLE kam_acc_cdrs ADD CONSTRAINT FK_1AC995A64D2CFC16 FOREIGN KEY (targetPatternId) REFERENCES TargetPatterns (id) ON DELETE SET NULL');
-        $this->addSql('ALTER TABLE kam_acc_cdrs ADD CONSTRAINT FK_1AC995A63D7BDC51 FOREIGN KEY (invoiceId) REFERENCES Invoices (id) ON DELETE SET NULL');
-        $this->addSql('ALTER TABLE kam_acc_cdrs ADD CONSTRAINT FK_1AC995A69CBEC244 FOREIGN KEY (brandId) REFERENCES Brands (id) ON DELETE CASCADE');
-        $this->addSql('ALTER TABLE kam_acc_cdrs ADD CONSTRAINT FK_1AC995A62480E723 FOREIGN KEY (companyId) REFERENCES Companies (id) ON DELETE CASCADE');
+        $this->addSql('SET FOREIGN_KEY_CHECKS = 1');
     }
 
     /**
@@ -152,17 +143,6 @@ class Version20170911135717 extends AbstractMigration
         $this->addSql('ALTER TABLE Users RENAME INDEX IDX_D5428AEDFC6BB9C8 TO outgoingDDIRuleId');
         $this->addSql('ALTER TABLE Users RENAME INDEX idx_d5428aedf32b4b65 TO voicemailLocutionId');
         $this->addSql('ALTER TABLE ast_ps_endpoints RENAME INDEX idx_800b60515ea9d64d TO retailAccountId');
-        $this->addSql('ALTER TABLE kam_acc_cdrs DROP FOREIGN KEY FK_1AC995A6EDF37044');
-        $this->addSql('ALTER TABLE kam_acc_cdrs DROP FOREIGN KEY FK_1AC995A64D2CFC16');
-        $this->addSql('ALTER TABLE kam_acc_cdrs DROP FOREIGN KEY FK_1AC995A63D7BDC51');
-        $this->addSql('ALTER TABLE kam_acc_cdrs DROP FOREIGN KEY FK_1AC995A69CBEC244');
-        $this->addSql('ALTER TABLE kam_acc_cdrs DROP FOREIGN KEY FK_1AC995A62480E723');
-        $this->addSql('ALTER TABLE kam_acc_cdrs CHANGE start_time_utc start_time_utc DATETIME DEFAULT \'2000-01-01 01:00:00\' NOT NULL');
-        $this->addSql('ALTER TABLE kam_acc_cdrs ADD CONSTRAINT kam_acc_cdrs_ibfk_1 FOREIGN KEY (pricingPlanId) REFERENCES PricingPlans (id) ON UPDATE CASCADE ON DELETE SET NULL');
-        $this->addSql('ALTER TABLE kam_acc_cdrs ADD CONSTRAINT kam_acc_cdrs_ibfk_2 FOREIGN KEY (targetPatternId) REFERENCES TargetPatterns (id) ON UPDATE CASCADE ON DELETE SET NULL');
-        $this->addSql('ALTER TABLE kam_acc_cdrs ADD CONSTRAINT kam_acc_cdrs_ibfk_3 FOREIGN KEY (invoiceId) REFERENCES Invoices (id) ON UPDATE CASCADE ON DELETE SET NULL');
-        $this->addSql('ALTER TABLE kam_acc_cdrs ADD CONSTRAINT kam_acc_cdrs_ibfk_4 FOREIGN KEY (companyId) REFERENCES Companies (id) ON UPDATE CASCADE ON DELETE CASCADE');
-        $this->addSql('ALTER TABLE kam_acc_cdrs ADD CONSTRAINT kam_acc_cdrs_ibfk_5 FOREIGN KEY (brandId) REFERENCES Brands (id) ON UPDATE CASCADE ON DELETE CASCADE');
         $this->addSql('ALTER TABLE kam_rtpproxy DROP FOREIGN KEY FK_729D1741C8555117');
         $this->addSql('ALTER TABLE kam_rtpproxy ADD CONSTRAINT kam_rtpproxy_ibfk_1 FOREIGN KEY (mediaRelaySetsId) REFERENCES MediaRelaySets (id) ON UPDATE CASCADE ON DELETE CASCADE');
         $this->addSql('ALTER TABLE kam_users_address DROP FOREIGN KEY FK_A53CBBF22480E723');

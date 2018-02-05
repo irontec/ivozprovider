@@ -25,16 +25,6 @@ class Version20180109153627 extends AbstractMigration
         $this->addSql('ALTER TABLE LcrGateways RENAME INDEX lcr_id TO lcrGateway_lcr_id');
         $this->addSql('ALTER TABLE kam_users_address RENAME INDEX companyid TO usersAddress_companyId');
         $this->addSql('ALTER TABLE kam_trunks_uacreg RENAME INDEX brandid TO trunksUacreg_brandId');
-        $this->addSql('ALTER TABLE kam_acc_cdrs RENAME INDEX pricingplanid TO accCdr_pricingPlanId');
-        $this->addSql('ALTER TABLE kam_acc_cdrs RENAME INDEX targetpatternid TO accCdr_targetPatternId');
-        $this->addSql('ALTER TABLE kam_acc_cdrs RENAME INDEX invoiceid TO accCdr_invoiceId');
-        $this->addSql('ALTER TABLE kam_acc_cdrs RENAME INDEX brandid TO accCdr_brandId');
-        $this->addSql('ALTER TABLE kam_acc_cdrs RENAME INDEX companyid TO accCdr_companyId');
-        $this->addSql('ALTER TABLE kam_users_cdrs RENAME INDEX brandid TO usersCdr_brandId');
-        $this->addSql('ALTER TABLE kam_users_cdrs RENAME INDEX companyid TO usersCdr_companyId');
-        $this->addSql('ALTER TABLE kam_users_cdrs RENAME INDEX userid TO usersCdr_userId');
-        $this->addSql('ALTER TABLE kam_users_cdrs RENAME INDEX friendid TO usersCdr_friendId');
-        $this->addSql('ALTER TABLE kam_users_cdrs RENAME INDEX retailaccountid TO usersCdr_retailAccountId');
     }
 
     /**
@@ -50,17 +40,6 @@ class Version20180109153627 extends AbstractMigration
         $this->addSql('ALTER TABLE LcrGateways RENAME INDEX lcrgateway_lcr_id TO lcr_id');
         $this->addSql('ALTER TABLE LcrRuleTargets RENAME INDEX lcrruletarget_lcr_id TO lcr_id');
         $this->addSql('ALTER TABLE LcrRules RENAME INDEX lcrrule_lcr_id TO lcr_id');
-        $this->addSql('ALTER TABLE kam_acc_cdrs RENAME INDEX acccdr_pricingplanid TO pricingPlanId');
-        $this->addSql('ALTER TABLE kam_acc_cdrs RENAME INDEX acccdr_targetpatternid TO targetPatternId');
-        $this->addSql('ALTER TABLE kam_acc_cdrs RENAME INDEX acccdr_invoiceid TO invoiceId');
-        $this->addSql('ALTER TABLE kam_acc_cdrs RENAME INDEX acccdr_brandid TO brandId');
-        $this->addSql('ALTER TABLE kam_acc_cdrs RENAME INDEX acccdr_companyid TO companyId');
         $this->addSql('ALTER TABLE kam_trunks_uacreg RENAME INDEX trunksuacreg_brandid TO brandId');
-        $this->addSql('ALTER TABLE kam_users_address RENAME INDEX usersaddress_companyid TO companyId');
-        $this->addSql('ALTER TABLE kam_users_cdrs RENAME INDEX userscdr_brandid TO brandId');
-        $this->addSql('ALTER TABLE kam_users_cdrs RENAME INDEX userscdr_companyid TO companyId');
-        $this->addSql('ALTER TABLE kam_users_cdrs RENAME INDEX userscdr_userid TO userId');
-        $this->addSql('ALTER TABLE kam_users_cdrs RENAME INDEX userscdr_friendid TO friendId');
-        $this->addSql('ALTER TABLE kam_users_cdrs RENAME INDEX userscdr_retailaccountid TO retailAccountId');
     }
 }

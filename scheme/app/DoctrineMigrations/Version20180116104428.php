@@ -18,26 +18,10 @@ class Version20180116104428 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE PricingPlansRelCompanies DROP FOREIGN KEY FK_78F195D2EDF37044');
-        $this->addSql('ALTER TABLE PricingPlansRelTargetPatterns DROP FOREIGN KEY FK_CAD1B6B5EDF37044');
-        $this->addSql('ALTER TABLE kam_acc_cdrs DROP FOREIGN KEY FK_1AC995A6EDF37044');
-        $this->addSql('ALTER TABLE PricingPlansRelTargetPatterns DROP FOREIGN KEY FK_CAD1B6B54D2CFC16');
-        $this->addSql('ALTER TABLE kam_acc_cdrs DROP FOREIGN KEY FK_1AC995A64D2CFC16');
-        $this->addSql('DROP TABLE PricingPlans');
         $this->addSql('DROP TABLE PricingPlansRelCompanies');
         $this->addSql('DROP TABLE PricingPlansRelTargetPatterns');
+        $this->addSql('DROP TABLE PricingPlans');
         $this->addSql('DROP TABLE TargetPatterns');
-        $this->addSql('DROP INDEX accCdr_pricingPlanId ON kam_acc_cdrs');
-        $this->addSql('DROP INDEX accCdr_targetPatternId ON kam_acc_cdrs');
-
-        $this->addSql('ALTER TABLE kam_acc_cdrs ADD ratingPlanId INT UNSIGNED DEFAULT NULL, ADD destinationId INT UNSIGNED DEFAULT NULL');
-        $this->addSql('UPDATE kam_acc_cdrs SET ratingPlanId = pricingPlanId');
-        $this->addSql('UPDATE kam_acc_cdrs SET destinationId = targetPatternId');
-        $this->addSql('ALTER TABLE kam_acc_cdrs DROP pricingPlanId, DROP targetPatternId');
-        $this->addSql('ALTER TABLE kam_acc_cdrs ADD CONSTRAINT FK_1AC995A65C17F7F9 FOREIGN KEY (ratingPlanId) REFERENCES RatingPlans (id) ON DELETE SET NULL');
-        $this->addSql('ALTER TABLE kam_acc_cdrs ADD CONSTRAINT FK_1AC995A6BF3434FC FOREIGN KEY (destinationId) REFERENCES Destinations (id) ON DELETE SET NULL');
-        $this->addSql('CREATE INDEX accCdr_ratingPlanId ON kam_acc_cdrs (ratingPlanId)');
-        $this->addSql('CREATE INDEX accCdr_destinationId ON kam_acc_cdrs (destinationId)');
     }
 
     /**
@@ -60,14 +44,5 @@ class Version20180116104428 extends AbstractMigration
         $this->addSql('ALTER TABLE PricingPlansRelTargetPatterns ADD CONSTRAINT FK_CAD1B6B5EDF37044 FOREIGN KEY (pricingPlanId) REFERENCES PricingPlans (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE PricingPlansRelTargetPatterns ADD CONSTRAINT PricingPlansRelTargetPatterns_ibfk_3 FOREIGN KEY (brandId) REFERENCES Brands (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE TargetPatterns ADD CONSTRAINT TargetPatterns_ibfk_1 FOREIGN KEY (brandId) REFERENCES Brands (id) ON DELETE CASCADE');
-        $this->addSql('ALTER TABLE kam_acc_cdrs DROP FOREIGN KEY FK_1AC995A65C17F7F9');
-        $this->addSql('ALTER TABLE kam_acc_cdrs DROP FOREIGN KEY FK_1AC995A6BF3434FC');
-        $this->addSql('DROP INDEX accCdr_ratingPlanId ON kam_acc_cdrs');
-        $this->addSql('DROP INDEX accCdr_destinationId ON kam_acc_cdrs');
-        $this->addSql('ALTER TABLE kam_acc_cdrs ADD pricingPlanId INT UNSIGNED DEFAULT NULL, ADD targetPatternId INT UNSIGNED DEFAULT NULL, DROP ratingPlanId, DROP destinationId');
-        $this->addSql('ALTER TABLE kam_acc_cdrs ADD CONSTRAINT FK_1AC995A64D2CFC16 FOREIGN KEY (targetPatternId) REFERENCES TargetPatterns (id) ON DELETE SET NULL');
-        $this->addSql('ALTER TABLE kam_acc_cdrs ADD CONSTRAINT FK_1AC995A6EDF37044 FOREIGN KEY (pricingPlanId) REFERENCES PricingPlans (id) ON DELETE SET NULL');
-        $this->addSql('CREATE INDEX accCdr_pricingPlanId ON kam_acc_cdrs (pricingPlanId)');
-        $this->addSql('CREATE INDEX accCdr_targetPatternId ON kam_acc_cdrs (targetPatternId)');
     }
 }
