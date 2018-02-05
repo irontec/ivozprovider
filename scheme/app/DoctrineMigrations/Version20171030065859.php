@@ -22,6 +22,11 @@ class Version20171030065859 extends AbstractMigration
         $this->addSql('CREATE TABLE Changelog (id CHAR(36) NOT NULL COMMENT \'(DC2Type:guid)\', entity VARCHAR(150) NOT NULL, entityId VARCHAR(36) NOT NULL, data LONGTEXT DEFAULT NULL COMMENT \'(DC2Type:json_array)\', createdOn DATETIME NOT NULL, commandId CHAR(36) NOT NULL COMMENT \'(DC2Type:guid)\', INDEX commandId (commandId), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
         $this->addSql('ALTER TABLE Changelog ADD CONSTRAINT FK_4AB3A4A28F36C645 FOREIGN KEY (commandId) REFERENCES Commandlog (id) ON DELETE CASCADE');
         $this->addSql('DROP TABLE ChangeHistory');
+
+        $this->addSql('ALTER TABLE Commandlog ADD microtime SMALLINT NOT NULL');
+        $this->addSql('CREATE INDEX createdOn ON Commandlog (createdOn)');
+        $this->addSql('ALTER TABLE Changelog ADD microtime SMALLINT NOT NULL');
+        $this->addSql('CREATE INDEX createdOn ON Changelog (createdOn)');
     }
 
     /**
