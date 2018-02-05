@@ -42,9 +42,10 @@ production:
       shortcutOption: N
       fixedPositions:
         group1:
-          colsPerRow: 9
+          colsPerRow: 6
           fields:
             connectFee: 3
+            groupIntervalStart: 3
             rateCost: 3
             rateIncrement: 3
 
@@ -57,12 +58,12 @@ production:
       fields:
         blacklist:
           rateUnit: true
-          groupIntervalStart: true
       fixedPositions:
         group1:
-          colsPerRow: 9
+          colsPerRow: 6
           fields:
             connectFee: 3
+            groupIntervalStart: 3
             rateCost: 3
             rateIncrement: 3
 

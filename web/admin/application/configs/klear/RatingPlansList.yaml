@@ -1,0 +1,104 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+#include TpRatingPlansList.yaml
+
+production:
+  main:
+    module: klearMatrix
+    defaultScreen: ratingPlansList_screen
+  screens: &ratingPlans_screensLink
+    ratingPlansList_screen: &ratingPlansList_screenLink
+      controller: list
+      pagination:
+        items: 25
+      <<: *RatingPlans
+      class: ui-silk-page-find
+      title: _("List of %s %2s", ngettext('Rating plan', 'Rating plans', 0), "[format| (%parent%)]")
+      forcedValues:
+        <<: *forcedBrand
+      fields: &ratingPlans_fieldsLink
+        order:
+          tag: true
+          name: true
+          description: true
+        options:
+          title: _("Options")
+          screens:
+            ratingPlansEdit_screen: true
+            tpRatingPlansList_screen: true
+          dialogs:
+            ratingPlansDel_dialog: true
+          default: ratingPlansEdit_screen
+      options:
+        title: _("Options")
+        screens:
+          ratingPlansNew_screen: true
+        dialogs:
+          ratingPlansDel_dialog: true
+
+    ratingPlansNew_screen: &ratingPlansNew_screenLink
+      <<: *RatingPlans
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Rating plan', 'Rating plans', 1), "[format| (%parent%)]")
+      forcedValues:
+        <<: *forcedBrand
+      shortcutOption: N
+      fixedPositions: &pratingPlansFixedPositions_Link
+        group1:
+          colsPerRow: 9
+          fields:
+            tag: 4
+            name: 5
+            description: 8
+
+    ratingPlansEdit_screen: &ratingPlansEdit_screenLink
+      <<: *RatingPlans
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      title: _("Edit %s %2s", ngettext('Rating plan', 'Rating plans', 1), "[format| (%item%)]")
+      forcedValues:
+        <<: *forcedBrand
+      fixedPositions:
+        <<: *pratingPlansFixedPositions_Link
+
+    # tpRatingPlans:
+    <<: *tpRatingPlans_screensLink
+    tpRatingPlansList_screen:
+      <<: *tpRatingPlansList_screenLink
+      filterField: ratingPlan
+      parentOptionCustomizer:
+        - recordCount
+    tpRatingPlansNew_screen:
+      <<: *tpRatingPlansNew_screenLink
+      filterField: ratingPlan
+    tpRatingPlansEdit_screen:
+      <<: *tpRatingPlansEdit_screenLink
+      filterField: ratingPlan
+
+  dialogs: &ratingPlans_dialogsLink
+    ratingPlansDel_dialog: &ratingPlansDel_dialogLink
+      <<: *RatingPlans
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Rating plan', 'Rating plans', 1))
+      description: _("Do you want to delete this %s?", ngettext('Rating plan', 'Rating plans', 1))
+      message: _("%s successfully deleted.", ngettext('Rating plan', 'Rating plans', 1))
+      multiItem: 1
+      labelOnList: 1
+
+#   tpRatingPlans dialogs:
+    <<: *tpRatingPlans_dialogsLink
+
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

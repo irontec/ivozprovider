@@ -29,11 +29,6 @@ abstract class RatingPlanAbstract
     protected $description;
 
     /**
-     * @var \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateInterface
-     */
-    protected $destinationRate;
-
-    /**
      * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
      */
     protected $brand;
@@ -130,7 +125,6 @@ abstract class RatingPlanAbstract
 
         $self
             ->setTag($dto->getTag())
-            ->setDestinationRate($dto->getDestinationRate())
             ->setBrand($dto->getBrand())
         ;
 
@@ -165,7 +159,6 @@ abstract class RatingPlanAbstract
             ->setTag($dto->getTag())
             ->setName($name)
             ->setDescription($description)
-            ->setDestinationRate($dto->getDestinationRate())
             ->setBrand($dto->getBrand());
 
 
@@ -186,7 +179,6 @@ abstract class RatingPlanAbstract
             ->setNameEs($this->getName()->getEs())
             ->setDescriptionEn($this->getDescription()->getEn())
             ->setDescriptionEs($this->getDescription()->getEs())
-            ->setDestinationRate(\Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRate::entityToDto($this->getDestinationRate(), $depth))
             ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto($this->getBrand(), $depth));
     }
 
@@ -201,7 +193,6 @@ abstract class RatingPlanAbstract
             'nameEs' => self::getName()->getEs(),
             'descriptionEn' => self::getDescription()->getEn(),
             'descriptionEs' => self::getDescription()->getEs(),
-            'destinationRateId' => self::getDestinationRate() ? self::getDestinationRate()->getId() : null,
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null
         ];
     }
@@ -235,30 +226,6 @@ abstract class RatingPlanAbstract
     public function getTag()
     {
         return $this->tag;
-    }
-
-    /**
-     * Set destinationRate
-     *
-     * @param \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate
-     *
-     * @return self
-     */
-    public function setDestinationRate(\Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate)
-    {
-        $this->destinationRate = $destinationRate;
-
-        return $this;
-    }
-
-    /**
-     * Get destinationRate
-     *
-     * @return \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateInterface
-     */
-    public function getDestinationRate()
-    {
-        return $this->destinationRate;
     }
 
     /**

@@ -25,22 +25,6 @@ interface RatingPlanInterface extends EntityInterface
     public function getTag();
 
     /**
-     * Set destinationRate
-     *
-     * @param \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate
-     *
-     * @return self
-     */
-    public function setDestinationRate(\Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate);
-
-    /**
-     * Get destinationRate
-     *
-     * @return \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateInterface
-     */
-    public function getDestinationRate();
-
-    /**
      * Set brand
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand

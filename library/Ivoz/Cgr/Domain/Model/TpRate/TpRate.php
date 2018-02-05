@@ -34,6 +34,20 @@ class TpRate extends TpRateAbstract implements TpRateInterface
         return parent::setRateIncrement($rateIncrement);
     }
 
+    /**
+     * Validate GroupIntervalStart has valid unit
+     *
+     * @param string $groupIntervalStart
+     * @return $this|TpRateAbstract|TpRateInterface
+     */
+    public function setGroupIntervalStart($groupIntervalStart)
+    {
+        if (is_numeric($groupIntervalStart)) {
+            $groupIntervalStart .= "s";
+        }
+
+        return parent::setGroupIntervalStart($groupIntervalStart);
+    }
 
 }
 

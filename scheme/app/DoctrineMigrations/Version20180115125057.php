@@ -18,10 +18,10 @@ class Version20180115125057 extends AbstractMigration
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
         // Account Actions
-        $this->addSql('INSERT INTO tp_account_actions (tenant, account, companyId) SELECT CONCAT("b", brandId), CONCAT("c", id), id FROM Companies;');
+        $this->addSql('INSERT INTO tp_account_actions (tenant, account, companyId) SELECT CONCAT("b", brandId), CONCAT("c", id), id FROM Companies');
 
         // Timings
-        $this->addSql('INSERT INTO tp_timings (tag, years, months, month_days, week_days) VALUES ("ALWAYS", "*any", "*any", "*any", "*any")');
+        $this->addSql('INSERT INTO tp_timings (id, tag, years, months, month_days, week_days) VALUES (1, "ALWAYS", "*any", "*any", "*any", "*any")');
 
         // Destinations
         $this->addSql('INSERT INTO Destinations (id, tag, name_en, name_es, description_en, description_es, brandId) SELECT id, CONCAT("b", brandId, "dst", id), name_en, name_es, description_en, description_es, brandId FROM TargetPatterns');
@@ -46,13 +46,12 @@ class Version20180115125057 extends AbstractMigration
                               INNER JOIN DestinationRates DR ON DR.id = PPRTP.pricingPlanId
                               INNER JOIN Destinations D ON D.id = PPRTP.targetPatternId
                               INNER JOIN Rates R ON R.id = PPRTP.id');
-
         // Rating Plans
-        $this->addSql('INSERT INTO RatingPlans (id, tag, name_en, name_es, description_en, description_es, destinationRateId, brandId) SELECT id, CONCAT("b", brandId, "rp", id), name_en, name_es, description_en, description_es, id, brandId FROM DestinationRates');
-        $this->addSql('INSERT INTO tp_rating_plans (id, tag, destrates_tag, timing_tag, timingId, ratingPlanId, destinationRateId) SELECT DR.id, RP.tag, DR.tag, "ALWAYS", 1, RP.id, DR.id FROM RatingPlans RP INNER JOIN DestinationRates DR ON DR.id = RP.destinationRateId');
+        $this->addSql('INSERT INTO RatingPlans (id, tag, name_en, name_es, description_es, description_en, brandId) SELECT C.id, CONCAT("b", C.brandId, "rp", C.id), LEFT(CONCAT("Plan for ", C.name), 55), LEFT(CONCAT("Plan for ", C.name), 55), CONCAT("Imported from ", C.name), CONCAT("Imported from ", C.name), C.brandId FROM Companies C');
+        $this->addSql('INSERT INTO tp_rating_plans (id, tag, destrates_tag, timing_tag, weight, timingId, ratingPlanId, destinationRateId) SELECT PPRC.id, RP.tag, DR.tag, "ALWAYS", metric, 1, RP.id, DR.id FROM PricingPlansRelCompanies PPRC INNER JOIN DestinationRates DR ON DR.id = PPRC.pricingPlanId INNER JOIN RatingPlans RP ON RP.id = PPRC.companyId WHERE PPRC.validFrom < NOW() AND PPRC.validTo > NOW()');
 
         // Rating Profiles
-        $this->addSql('INSERT INTO tp_rating_profiles (tenant, subject, rating_plan_tag, activation_time, companyId, ratingPlanId) SELECT CONCAT("b", C.brandId), CONCAT("c", C.id) , RP.tag, PPRC.validFrom, C.id, RP.id FROM PricingPlansRelCompanies PPRC INNER JOIN Companies C ON C.id = PPRC.companyId INNER JOIN RatingPlans RP ON RP.id = PPRC.pricingPlanId');
+        $this->addSql('INSERT INTO tp_rating_profiles(id, tenant, subject, activation_time, rating_plan_tag, companyId, ratingPlanId) SELECT C.id, CONCAT("b", C.brandId), CONCAT("c", C.id), NOW(), RP.tag, C.id, RP.id FROM Companies C INNER JOIN RatingPlans RP ON RP.id = C.id');
 
     }
 

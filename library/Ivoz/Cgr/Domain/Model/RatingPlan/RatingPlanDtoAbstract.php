@@ -43,11 +43,6 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     private $descriptionEs;
 
     /**
-     * @var \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateDto | null
-     */
-    private $destinationRate;
-
-    /**
      * @var \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
      */
     private $brand;
@@ -74,7 +69,6 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
             'id' => 'id',
             'name' => ['en','es'],
             'description' => ['en','es'],
-            'destinationRateId' => 'destinationRate',
             'brandId' => 'brand'
         ];
     }
@@ -95,7 +89,6 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
                 'en' => $this->getDescriptionEn(),
                 'es' => $this->getDescriptionEs()
             ],
-            'destinationRate' => $this->getDestinationRate(),
             'brand' => $this->getBrand()
         ];
     }
@@ -105,7 +98,6 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
-        $this->destinationRate = $transformer->transform('Ivoz\\Cgr\\Domain\\Model\\DestinationRate\\DestinationRate', $this->getDestinationRateId());
         $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
     }
 
@@ -236,52 +228,6 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     {
         return $this->descriptionEs;
     }
-
-    /**
-     * @param \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateDto $destinationRate
-     *
-     * @return static
-     */
-    public function setDestinationRate(\Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateDto $destinationRate = null)
-    {
-        $this->destinationRate = $destinationRate;
-
-        return $this;
-    }
-
-    /**
-     * @return \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateDto
-     */
-    public function getDestinationRate()
-    {
-        return $this->destinationRate;
-    }
-
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setDestinationRateId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateDto($id)
-                : null;
-
-            return $this->setDestinationRate($value);
-        }
-
-        /**
-         * @return integer | null
-         */
-        public function getDestinationRateId()
-        {
-            if ($dto = $this->getDestinationRate()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandDto $brand
