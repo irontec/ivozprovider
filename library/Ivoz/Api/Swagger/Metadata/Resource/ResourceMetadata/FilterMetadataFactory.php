@@ -93,7 +93,7 @@ class FilterMetadataFactory implements ResourceMetadataFactoryInterface
                     $filters['ivoz.api.filter.range'][] = $attribute;
                     break;
                 case ClassMetadataInfo::MANY_TO_ONE:
-                    $filters['ivoz.api.filter.numeric'][] = $attribute;
+                    $filters['ivoz.api.filter.search'][] = $attribute;
                     break;
                 case 'boolean':
                     $filters['ivoz.api.filter.boolean'][] = $attribute;

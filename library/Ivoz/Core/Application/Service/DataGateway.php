@@ -301,7 +301,7 @@ class DataGateway
         foreach ($arguments as $key => $value) {
 
             if ($value instanceof DataTransferObjectInterface) {
-                $arguments[$key] = $value->toArray();
+                $arguments[$key] = $value->toArray(true);
             } else if (is_object($value)) {
                 $arguments[$key] = 'object(' . get_class($value) . ')';
             }

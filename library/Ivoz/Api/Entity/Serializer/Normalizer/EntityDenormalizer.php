@@ -8,7 +8,7 @@ use Ivoz\Core\Application\Service\Assembler\DtoAssembler;
 use Ivoz\Core\Application\Service\CreateEntityFromDTO;
 use Ivoz\Core\Application\Service\UpdateEntityFromDTO;
 use Ivoz\Core\Domain\Model\EntityInterface;
-
+use Psr\Log\LoggerInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 
 /**
@@ -31,19 +31,29 @@ class EntityDenormalizer implements DenormalizerInterface
      */
     private $dtoAssembler;
 
+
+    /**
+     * @var LoggerInterface
+     */
+    private $logger;
+
     /**
      * DataGateway constructor.
      * @param CreateEntityFromDTO $createEntityFromDTO
      * @param UpdateEntityFromDTO $updateEntityFromDTO
+     * @param DtoAssembler $dtoAssembler
+     * @param LoggerInterface $logger
      */
     public function __construct(
         CreateEntityFromDTO $createEntityFromDTO,
         UpdateEntityFromDTO $updateEntityFromDTO,
-        DtoAssembler $dtoAssembler
+        DtoAssembler $dtoAssembler,
+        LoggerInterface $logger
     ) {
         $this->createEntityFromDTO = $createEntityFromDTO;
         $this->updateEntityFromDTO = $updateEntityFromDTO;
         $this->dtoAssembler = $dtoAssembler;
+        $this->logger = $logger;
     }
 
     /**
@@ -74,20 +84,36 @@ class EntityDenormalizer implements DenormalizerInterface
         );
     }
 
-    private function denormalizeEntity(array $data, string $class, EntityInterface $entity = null, string $normalizationContext)
+    private function denormalizeEntity(array $input, string $class, EntityInterface $entity = null, string $normalizationContext)
     {
+        $target = $entity ? $entity->__toString() : $class;
+        $this->logger->info(
+            sprintf('Mapping %s into %s', json_encode($input), $target)
+        );
+
         $dtoClass = $class. 'Dto';
         $dto = $entity
             ? $this->dtoAssembler->toDto($entity)
             : new $dtoClass;
 
         $baseData = $dto->normalize(DataTransferObjectInterface::CONTEXT_SIMPLE);
-        $data = array_replace_recursive($baseData, $data);
+        $data = array_replace_recursive($baseData, $input);
         $dto->denormalize(
             $data,
             $normalizationContext
         );
 
+        return $this->mapToEntity($class, $entity, $dto);
+    }
+
+    /**
+     * @param string $class
+     * @param EntityInterface $entity
+     * @param $dto
+     * @return EntityInterface
+     */
+    private function mapToEntity(string $class, EntityInterface $entity = null, DataTransferObjectInterface$dto): EntityInterface
+    {
         if ($entity) {
             $this->updateEntityFromDTO->execute(
                 $entity,

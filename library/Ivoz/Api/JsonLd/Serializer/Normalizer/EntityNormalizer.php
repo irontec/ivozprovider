@@ -4,7 +4,6 @@ namespace Ivoz\Api\JsonLd\Serializer\Normalizer;
 
 use ApiPlatform\Core\Api\IriConverterInterface;
 use ApiPlatform\Core\Api\ResourceClassResolverInterface;
-use ApiPlatform\Core\Exception\InvalidArgumentException;
 use ApiPlatform\Core\JsonLd\ContextBuilderInterface;
 use ApiPlatform\Core\JsonLd\Serializer\JsonLdContextTrait;
 use ApiPlatform\Core\Metadata\Resource\Factory\ResourceMetadataFactoryInterface;
@@ -80,18 +79,32 @@ class EntityNormalizer implements NormalizerInterface
 
         if (isset($context['item_operation_name']) && $context['item_operation_name'] === 'put') {
             $object = $this->initializeRelationships($object);
+        } else if (isset($context['operation_normalization_context']) && $object instanceof EntityInterface) {
+            $dtoClass = get_class($object) . 'Dto';
+            $propertyMap = $dtoClass::getPropertyMap($context['operation_normalization_context']);
+            $this->initializeRelationships($object, array_values($propertyMap));
         }
 
         $this->iriConverter->getIriFromItem($object);
-        return $this->normalizeDto($this->dtoAssembler->toDto($object, 1), $format, $context);
+
+        return $this->normalizeDto(
+            $this->dtoAssembler->toDto($object, 1),
+            $format,
+            $context
+        );
     }
 
-    private function initializeRelationships(EntityInterface $entity)
+    private function initializeRelationships(EntityInterface $entity, array $propertyFilters)
     {
         $reflection = new \ReflectionClass($entity);
         $properties = $reflection->getProperties();
 
         foreach ($properties as $property) {
+
+            if (!empty($propertyFilters) && !in_array($property->getName(), $propertyFilters)) {
+                continue;
+            }
+
             $property->setAccessible(true);
             $propertyValue = $property->getValue($entity);
             if ($propertyValue instanceof \Doctrine\ORM\Proxy\Proxy && !$propertyValue->__isInitialized()) {
@@ -121,15 +134,19 @@ class EntityNormalizer implements NormalizerInterface
                 ['id' => $dto->getId()]
             );
 
-        $rawData = $dto->normalize(
-            $context['operation_normalization_context'] ?? $context['operation_type']
-        );
+        $normalizationContext = $context['operation_normalization_context'] ?? $context['operation_type'];
+        $rawData = $dto->normalize($normalizationContext);
 
         foreach ($rawData as $key => $value) {
 
             if ($value instanceof DataTransferObjectInterface) {
                 if ($isSubresource) {
                     unset($rawData[$key]);
+                    continue;
+                }
+
+                if ($normalizationContext === DataTransferObjectInterface::CONTEXT_COLLECTION) {
+                    $rawData[$key] = $rawData[$key]->getId();
                     continue;
                 }
 

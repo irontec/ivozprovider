@@ -50,7 +50,7 @@ class TokenAuthenticator extends JWTTokenAuthenticator
         }
 
         $payload = $preAuthToken->getPayload();
-        if (in_array('ROLE_USER', $payload['roles'])) {
+        if (in_array('ROLE_COMPANY_USER', $payload['roles'])) {
             $this->jwtManager->setUserIdentityField('email');
         }
 
@@ -71,7 +71,7 @@ class TokenAuthenticator extends JWTTokenAuthenticator
             return parent::loadUser(...func_get_args());
         }
 
-        if (in_array('ROLE_USER', $payload['roles'])) {
+        if (in_array('ROLE_COMPANY_USER', $payload['roles'])) {
             $userProvider
                 ->setEntityClass(User::class)
                 ->setUserIdentityField('email');

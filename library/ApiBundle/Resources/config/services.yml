@@ -65,6 +65,7 @@ services:
     arguments:
       $createEntityFromDTO:
         '@Ivoz\Core\Application\Service\CreateEntityFromDTO'
+      $logger: '@logger'
     tags:
       -  { name: serializer.normalizer, priority: 10 }
 
@@ -137,12 +138,21 @@ services:
   ################################################
   ## Documentation
   ################################################
+  Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\MissingReferenceFixerDecorator:
+    decorates: 'api_platform.swagger.normalizer.documentation'
+    decoration_priority: 11
+    arguments:
+      $decoratedNormalizer: '@Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\MissingReferenceFixerDecorator.inner'
+      $propertyNameCollectionFactory: '@Ivoz\Api\Swagger\Metadata\Property\Factory\PropertyNameCollectionFactory'
+      $resourceMetadataFactory: "@api_platform.metadata.resource.metadata_factory"
+      $propertyMetadataFactory: "@api_platform.metadata.property.metadata_factory"
+      $nameConverter: ~
+
   Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\ReferenceFixerDecorator:
     decorates: 'api_platform.swagger.normalizer.documentation'
     decoration_priority: 10
     arguments:
       $decoratedNormalizer: '@Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\ReferenceFixerDecorator.inner'
-      $propertyNameCollectionFactory: '@Ivoz\Api\Swagger\Metadata\Property\Factory\PropertyNameCollectionFactory'
 
   Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\SearchFilterDecorator:
     decorates: 'api_platform.swagger.normalizer.documentation'
@@ -220,3 +230,4 @@ services:
       - '@serializer.mapping.class_metadata_factory'
     tags:
       - { name: api_platform.doctrine.orm.query_extension.item }
+

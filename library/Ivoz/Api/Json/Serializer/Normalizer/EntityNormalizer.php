@@ -92,15 +92,19 @@ class EntityNormalizer implements NormalizerInterface
         // Use resolved resource class instead of given resource class to support multiple inheritance child types
         $context['resource_class'] = $resourceClass;
 
-        $rawData = $dto->normalize(
-            $context['operation_normalization_context'] ?? $context['operation_type']
-        );
+        $normalizationContext = $context['operation_normalization_context'] ?? $context['operation_type'];
+        $rawData = $dto->normalize($normalizationContext);
 
         foreach ($rawData as $key => $value) {
 
             if ($value instanceof DataTransferObjectInterface) {
                 if ($isSubresource) {
                     unset($rawData[$key]);
+                    continue;
+                }
+
+                if ($normalizationContext === DataTransferObjectInterface::CONTEXT_COLLECTION) {
+                    $rawData[$key] = $rawData[$key]->getId();
                     continue;
                 }
 
