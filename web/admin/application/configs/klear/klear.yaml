@@ -28,6 +28,8 @@ production:
         - "default/js/customMenu.js"
         - "default/js/customTooltip.js"
         - "default/js/customSpinner.js"
+    cssExtended:
+      silkExtendedIconPath: /css/ui-klear/icons
     actionHelpers:
     auth:
       adapter: IvozProvider\Klear\Auth\Adapter
@@ -153,18 +155,23 @@ production:
           description: _("List of %s", ngettext('Outgoing Routing', 'Outgoing Routings', 0))
         DestinationsList:
           title: ngettext('Destination pattern', 'Destination patterns', 0)
-          class: ui-silk-page-refresh
+          class: ui-silk-arrow-right
           description: _("List of %s", ngettext('Destination pattern', 'Destination patterns', 0))
           showOnlyIf: ${auth.brand.billing.enabled}
         RatesList:
           title: ngettext('Rate', 'Rates', 0)
-          class: ui-silk-money-yen
+          class: ui-silk-money-dollar
           description: _("List of %s", ngettext('Rate', 'Rates', 0))
           showOnlyIf: ${auth.brand.billing.enabled}
         DestinationRatesList:
           title: ngettext('Destination rate', 'Destination rates', 0)
-          class: ui-silk-money
+          class: ui-silk-destrate
           description: _("List of %s", ngettext('Destination rate', 'Destination rates', 0))
+          showOnlyIf: ${auth.brand.billing.enabled}
+        RatingPlansList:
+          title: ngettext('Rating plan', 'Rating plans', 0)
+          class: ui-silk-money
+          description: _("List of %s", ngettext('Rating plan', 'Rating plans', 0))
           showOnlyIf: ${auth.brand.billing.enabled}
         InvoiceTemplatesList:
           title: ngettext('Invoice template', 'Invoice templates', 0)

@@ -211,6 +211,10 @@ mappers:
         modelFile: Rates,
         entity: 'Ivoz\\Cgr\\Domain\\Model\\Rate\\Rate'
     }
+  - &RatingPlans {
+        modelFile: RatingPlans,
+        entity: 'Ivoz\\Cgr\\Domain\\Model\\RatingPlan\\RatingPlan'
+    }
   - &Recordings {
         modelFile: Recordings,
         entity: 'Ivoz\\Provider\\Domain\\Model\\Recording\\Recording'
@@ -270,6 +274,10 @@ mappers:
   - &TpRates {
         modelFile: TpRates,
         entity: 'Ivoz\\Cgr\\Domain\\Model\\TpRate\\TpRate'
+    }
+  - &TpRatingPlans {
+        modelFile: TpRatingPlans,
+        entity: 'Ivoz\\Cgr\\Domain\\Model\\TpRatingPlan\\TpRatingPlan'
     }
   - &TpRatingProfiles {
         modelFile: TpRatingProfiles,

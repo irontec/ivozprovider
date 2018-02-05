@@ -1,0 +1,70 @@
+production:
+  entity: Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlan
+  fields:
+    id:
+      title: ngettext('Id', 'Ids', 1)
+      required: false
+    ratingPlanId:
+      title: ngettext('Destination', 'Destination', 1)
+      type: select
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Cgr\Domain\Model\Destination\Destination
+          filterClass: IvozProvider_Klear_Filter_Brand
+          fieldName:
+            fields:
+              - name${lang}
+            template: '%name${lang}%'
+          order:
+            Destination.name.${lang}: asc
+    destinationRateId:
+      title: ngettext('Destination', 'Destination', 1)
+      type: select
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRate
+          filterClass: IvozProvider_Klear_Filter_Brand
+          fieldName:
+            fields:
+              - name${lang}
+            template: '%name${lang}%'
+          order:
+            DestinationRate.name.${lang}: asc
+    timingId:
+      title: ngettext('Timing', 'Timing', 1)
+      type: select
+      defaultValue: 1
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Cgr\Domain\Model\TpTiming\TpTiming
+          fieldName:
+            fields:
+              - tag
+            template: '%tag%'
+    weight:
+      title: _('Weight')
+      type: number
+      defaultValue: 1
+      required: true
+      source:
+        control: Spinner
+        min: 1
+        step: 1
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Interval in seconds to increase call cost.")
+        label: _("Need help?")
+
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production
