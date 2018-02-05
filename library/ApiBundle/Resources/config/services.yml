@@ -42,12 +42,6 @@ services:
   ################################################
   ## Normalizers
   ################################################
-  Ivoz\Api\Json\Serializer\Normalizer\EntityNormalizer:
-    arguments:
-      $resourceClassResolver: "@api_platform.resource_class_resolver"
-      $contextBuilder: "@api_platform.jsonld.context_builder"
-    tags:
-      -  { name: serializer.normalizer, priority: 10 }
 
   Ivoz\Api\JsonLd\Serializer\Normalizer\EntityNormalizer:
     arguments:
@@ -57,6 +51,15 @@ services:
       $contextBuilder: "@api_platform.jsonld.context_builder"
     tags:
       -  { name: serializer.normalizer, priority: 10 }
+
+  Ivoz\Api\Json\Serializer\Normalizer\EntityNormalizer:
+    arguments:
+      $resourceMetadataFactory: "@api_platform.metadata.resource.metadata_factory"
+      $resourceClassResolver: "@api_platform.resource_class_resolver"
+      $contextBuilder: "@api_platform.jsonld.context_builder"
+    tags:
+      -  { name: serializer.normalizer, priority: 10 }
+
 
   ################################################
   ## Denormalizers

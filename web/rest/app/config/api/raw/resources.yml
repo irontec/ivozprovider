@@ -225,7 +225,7 @@ Ivoz\Provider\Domain\Model\Terminal\Terminal:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\Timezone\Timezone:
   attributes:
-    access_control: '"ROLE_COMPANY_USER" in roles'
+    access_control: '("ROLE_COMPANY_ADMIN" in roles) or ("ROLE_COMPANY_USER" in roles)'
 Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
