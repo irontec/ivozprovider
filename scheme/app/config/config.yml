@@ -4,7 +4,7 @@ imports:
 
 doctrine:
   dbal:
-    schema_filter: "/^(?!kam_version|changelog$).*/"
+    schema_filter: "/^(?!kam_version|changelog|tp_versions$).*/"
   orm:
     mappings:
       Provider:
