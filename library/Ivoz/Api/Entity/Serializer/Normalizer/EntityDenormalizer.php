@@ -96,7 +96,7 @@ class EntityDenormalizer implements DenormalizerInterface
             ? $this->dtoAssembler->toDto($entity)
             : new $dtoClass;
 
-        $baseData = $dto->normalize(DataTransferObjectInterface::CONTEXT_SIMPLE);
+        $baseData = $dto->toArray();
         $data = array_replace_recursive($baseData, $input);
         $dto->denormalize(
             $data,

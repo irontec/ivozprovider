@@ -1,20 +1,6 @@
 ########################################
 ## Custom models
 ########################################
-Model\UserStatus:
-  attributes:
-    access_control: '"ROLE_USER" in roles'
-  itemOperations:
-    get:
-      method: 'GET'
-      path: '/my/status'
-      route_name: 'get_my_status'
-      swagger_context:
-        tags:
-          - My
-        parameters: []
-  collectionOperations: {}
-
 Model\WebTheme:
   itemOperations:
     get:
@@ -27,7 +13,23 @@ Model\WebTheme:
         parameters: []
   collectionOperations: {}
 
+Model\UserStatus:
+  attributes:
+    access_control: '"ROLE_COMPANY_USER" in roles'
+  itemOperations:
+    get:
+      method: 'GET'
+      path: '/my/status'
+      route_name: 'get_my_status'
+      swagger_context:
+        tags:
+          - My
+        parameters: []
+  collectionOperations: {}
+
 Model\CallStats:
+  attributes:
+    access_control: '"ROLE_COMPANY_USER" in roles'
   itemOperations:
     get:
       method: 'GET'
@@ -45,6 +47,8 @@ Model\CallStats:
 Ivoz\Provider\Domain\Model\User\User:
   itemOperations:
     get_my_profile:
+      access_control: '"ROLE_COMPANY_USER" in roles'
+      depth: 1
       method: 'GET'
       path: '/my/profile'
       route_name: 'get_my_profile'
@@ -57,12 +61,17 @@ Ivoz\Provider\Domain\Model\User\User:
           - My
         parameters: []
     put_my_profile:
+      access_control: '"ROLE_COMPANY_USER" in roles'
+      attributes:
+        depth: 1
       method: 'PUT'
       path: '/my/profile'
       route_name: 'put_my_profile'
       operation_normalization_context: 'updateMyProfile'
-      normalization_context:
+      denormalization_context:
         groups: ['updateMyProfile']
+      normalization_context:
+        groups: ['myProfile']
       parameters: []
       swagger_context:
         tags:
@@ -76,6 +85,7 @@ Ivoz\Provider\Domain\Model\User\User:
               $ref: '#/definitions/User-updateMyProfile'
   collectionOperations:
     my_company_assistants:
+      access_control: '"ROLE_COMPANY_USER" in roles'
       method: 'GET'
       path: '/my/company_assistants'
       route_name: 'get_my_company_assistants'
@@ -84,13 +94,56 @@ Ivoz\Provider\Domain\Model\User\User:
         tags:
           - My
         parameters: []
+    my_company_voicemails:
+      access_control: '"ROLE_COMPANY_USER" in roles'
+      method: 'GET'
+      path: '/my/company_voicemails'
+      route_name: 'get_my_company_voicemails'
+      parameters: []
+      swagger_context:
+        tags:
+          - My
+        parameters: []
 
 Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting:
   collectionOperations:
-    my_call_forward_settings:
+    get_my_call_forward_settings:
+      access_control: '"ROLE_COMPANY_USER" in roles'
       method: 'GET'
       path: '/my/call_forward_settings'
       route_name: 'get_my_call_forward_settings'
+      parameters: []
+      operation_normalization_context: 'detailedCollection'
+      normalization_context:
+        groups: ['detailedCollection']
+      swagger_context:
+        tags:
+          - My
+        parameters: []
+    post_my_call_forward_settings:
+      access_control: '"ROLE_COMPANY_USER" in roles'
+      method: 'POST'
+      path: '/my/call_forward_settings'
+      route_name: 'post_my_call_forward_settings'
+      parameters: []
+      swagger_context:
+        tags:
+          - My
+        consumes: ["application/ld+json"]
+        parameters:
+          - name: 'CallForwardSetting'
+            in: 'body'
+            description: 'The updated CallForwardSetting resource'
+            schema:
+              $ref: '#/definitions/CallForwardSetting'
+
+Ivoz\Provider\Domain\Model\Extension\Extension:
+  collectionOperations:
+    my_extensions:
+      access_control: '"ROLE_COMPANY_USER" in roles'
+      method: 'GET'
+      path: '/my/extensions'
+      route_name: 'get_my_company_extensions'
       normalization_context:
         - collection
       parameters: []

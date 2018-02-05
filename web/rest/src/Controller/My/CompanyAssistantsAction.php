@@ -40,10 +40,8 @@ class CompanyAssistantsAction
         /** @var CompanyInterface $company */
         $user = $token->getUser();
 
-        $candidates = $this
+        return $this
             ->userRepository
             ->getUserAssistantCandidates($user);
-
-        return $candidates;
     }
 }

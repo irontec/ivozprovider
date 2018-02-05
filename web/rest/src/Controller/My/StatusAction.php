@@ -56,9 +56,7 @@ class StatusAction
 
         $userStatus = new UserStatus();
         $userStatus->setUserName(
-            $user->getName()
-            . ' '
-            . $user->getLastname()
+            $user->getFullName()
         );
         $userStatus->setGsQRCode(
             $user->getGsQRCode()
@@ -109,7 +107,7 @@ class StatusAction
         $userStatus
             ->setStatusTerminal(true)
             ->setIpRegistered($ip[0])
-            ->setUserName($userLocation->getUserAgent());
+            ->setUserAgent($userLocation->getUserAgent());
     }
 
     /**

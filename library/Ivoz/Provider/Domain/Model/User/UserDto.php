@@ -74,6 +74,7 @@ class UserDto extends UserDtoAbstract
                 'doNotDisturb' => 'doNotDisturb',
                 'isBoss' => 'isBoss',
                 'maxCalls' => 'maxCalls',
+                'bossAssistantId' => 'bossAssistant',
                 'timezoneId' => 'timezone'
             ];
         }
@@ -87,7 +88,8 @@ class UserDto extends UserDtoAbstract
                 'email' => 'email',
                 'doNotDisturb' => 'doNotDisturb',
                 'isBoss' => 'isBoss',
-                'maxCalls' => 'maxCalls'
+                'maxCalls' => 'maxCalls',
+                'bossAssistantId' => 'bossAssistant'
             ];
         }
 

@@ -2,14 +2,13 @@
 
 namespace Ivoz\Api\Swagger\Serializer\DocumentationNormalizer;
 
+use ApiPlatform\Core\Api\ResourceClassResolverInterface;
 use ApiPlatform\Core\Documentation\Documentation;
 use ApiPlatform\Core\Metadata\Property\Factory\PropertyMetadataFactoryInterface;
 use ApiPlatform\Core\Metadata\Property\Factory\PropertyNameCollectionFactoryInterface;
 use ApiPlatform\Core\Metadata\Property\PropertyMetadata;
-use Symfony\Component\Serializer\NameConverter\NameConverterInterface;
 use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Ivoz\Core\Application\DataTransferObjectInterface;
 use ApiPlatform\Core\Metadata\Resource\Factory\ResourceMetadataFactoryInterface;
 use ApiPlatform\Core\Metadata\Resource\ResourceMetadata;
 use Symfony\Component\PropertyInfo\Type;
@@ -37,21 +36,21 @@ class MissingReferenceFixerDecorator implements NormalizerInterface
     protected $propertyMetadataFactory;
 
     /**
-     * @var NameConverterInterface
+     * @var ResourceClassResolverInterface
      */
-    protected $nameConverter;
+    protected $resourceClassResolver;
 
     public function __construct(
         NormalizerInterface $decoratedNormalizer,
         PropertyNameCollectionFactoryInterface $propertyNameCollectionFactory,
         ResourceMetadataFactoryInterface $resourceMetadataFactory,
         PropertyMetadataFactoryInterface $propertyMetadataFactory,
-        NameConverterInterface $nameConverter = null
+        ResourceClassResolverInterface $resourceClassResolver
     ) {
         $this->resourceMetadataFactory = $resourceMetadataFactory;
         $this->propertyNameCollectionFactory = $propertyNameCollectionFactory;
         $this->propertyMetadataFactory = $propertyMetadataFactory;
-        $this->nameConverter = $nameConverter;
+        $this->resourceClassResolver = $resourceClassResolver;
 
         $reflection = new \ReflectionClass($decoratedNormalizer);
         $property = $reflection->getProperty('propertyNameCollectionFactory');
@@ -122,6 +121,28 @@ class MissingReferenceFixerDecorator implements NormalizerInterface
         return $definitions;
     }
 
+    /**
+     * Copied from api platform
+     *
+     * @see \ApiPlatform\Core\Swagger\Serializer\DocumentationNormalizer
+     *
+     * @param \ArrayObject     $definitions
+     * @param ResourceMetadata $resourceMetadata
+     * @param string           $resourceClass
+     * @param array|null       $serializerContext
+     *
+     * @return string
+     */
+    private function getDefinition(\ArrayObject $definitions, ResourceMetadata $resourceMetadata, string $resourceClass, array $serializerContext = null): string
+    {
+        $definitionKey = $resourceMetadata->getShortName();
+        if (!isset($definitions[$definitionKey])) {
+            $definitions[$definitionKey] = [];  // Initialize first to prevent infinite loop
+            $definitions[$definitionKey] = $this->getDefinitionSchema($resourceClass, $resourceMetadata, $definitions, $serializerContext);
+        }
+
+        return $definitionKey;
+    }
 
     /**
      * Gets a definition Schema Object, copied from api-platform.
@@ -150,7 +171,7 @@ class MissingReferenceFixerDecorator implements NormalizerInterface
         $options = isset($serializerContext[AbstractNormalizer::GROUPS]) ? ['serializer_groups' => $serializerContext[AbstractNormalizer::GROUPS]] : [];
         foreach ($this->propertyNameCollectionFactory->create($resourceClass, $options) as $propertyName) {
             $propertyMetadata = $this->propertyMetadataFactory->create($resourceClass, $propertyName);
-            $normalizedPropertyName = $this->nameConverter ? $this->nameConverter->normalize($propertyName) : $propertyName;
+            $normalizedPropertyName = $propertyName;
 
             if ($propertyMetadata->isRequired()) {
                 $definitionSchema['required'][] = $normalizedPropertyName;

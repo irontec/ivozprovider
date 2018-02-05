@@ -61,6 +61,10 @@ class SearchFilterDecorator implements NormalizerInterface
                 $path['get']['responses']['200']['schema']['items']['$ref']
             );
 
+            if (!isset($responseModel['properties']) || is_null($responseModel['properties'])) {
+                continue;
+            }
+
             $path['get']['parameters'] = $this->appendPropertiesIntoParameters(
                 $path['get']['parameters'],
                 $responseModel['properties']
@@ -112,6 +116,11 @@ class SearchFilterDecorator implements NormalizerInterface
             });
 
             if (!empty($parameterExists)) {
+                continue;
+            }
+
+
+            if (!isset($values['type']) || is_null($values['type'])) {
                 continue;
             }
 

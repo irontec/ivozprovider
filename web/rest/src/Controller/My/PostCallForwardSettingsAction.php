@@ -3,12 +3,13 @@
 namespace Controller\My;
 
 use ApiPlatform\Core\Exception\ResourceClassNotFoundException;
+use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Serializer\Serializer;
 
-class PutProfileAction
+class PostCallForwardSettingsAction
 {
     /**
      * @var TokenStorage
@@ -58,20 +59,13 @@ class PutProfileAction
             $request->getRequestFormat(),
             []
         );
-
-        if (!isset($data['oldPass'])) {
-            // We cannot set this at domain level because klear doesn't send oldPass
-            unset($data['pass']);
-        }
+        $data['user'] = $user->getid();
 
         return $this->serializer->denormalize(
             $data,
-            get_class($user),
+            CallForwardSetting::class,
             $request->getRequestFormat(),
-            [
-                'object_to_populate' => $user,
-                'operation_normalization_context' => 'updateMyProfile'
-            ]
+            []
         );
     }
 }

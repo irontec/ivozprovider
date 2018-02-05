@@ -146,7 +146,7 @@ services:
       $propertyNameCollectionFactory: '@Ivoz\Api\Swagger\Metadata\Property\Factory\PropertyNameCollectionFactory'
       $resourceMetadataFactory: "@api_platform.metadata.resource.metadata_factory"
       $propertyMetadataFactory: "@api_platform.metadata.property.metadata_factory"
-      $nameConverter: ~
+      $resourceClassResolver: "@api_platform.resource_class_resolver"
 
   Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\ReferenceFixerDecorator:
     decorates: 'api_platform.swagger.normalizer.documentation'

@@ -53,12 +53,26 @@ services:
       $tokenStorage: '@security.token_storage'
       $requestStack: '@request_stack'
 
+  Controller\My\CompanyVoicemailsAction:
+    public: true
+    arguments:
+      $tokenStorage: '@security.token_storage'
+      $userRepository:
+        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\User\\User")'
+
   Controller\My\CompanyAssistantsAction:
     public: true
     arguments:
       $tokenStorage: '@security.token_storage'
       $userRepository:
         '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\User\\User")'
+
+  Controller\My\CompanyExtensionsAction:
+    public: true
+    arguments:
+      $tokenStorage: '@security.token_storage'
+      $extensionRepository:
+        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\Extension\\Extension")'
 
   Controller\My\CallStatsAction:
     public: true
@@ -81,3 +95,9 @@ services:
       $tokenStorage: '@security.token_storage'
       $callForwardSettingRepository:
         '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\CallForwardSetting\\CallForwardSetting")'
+
+  Controller\My\PostCallForwardSettingsAction:
+    public: true
+    arguments:
+      $tokenStorage: '@security.token_storage'
+      $requestStack: '@request_stack'

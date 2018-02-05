@@ -4,10 +4,12 @@ namespace Controller\My;
 
 use ApiPlatform\Core\Exception\ResourceClassNotFoundException;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingRepository;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Extension\ExtensionRepository;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 
-class CallForwardSettingsAction
+class CompanyExtensionsAction
 {
     /**
      * @var TokenStorage
@@ -21,10 +23,10 @@ class CallForwardSettingsAction
 
     public function __construct (
         TokenStorage $tokenStorage,
-        CallForwardSettingRepository $callForwardSettingRepository
+        ExtensionRepository $extensionRepository
     ) {
         $this->tokenStorage = $tokenStorage;
-        $this->callForwardSettingRepository = $callForwardSettingRepository;
+        $this->extensionRepository = $extensionRepository;
     }
 
     public function __invoke()
@@ -36,10 +38,10 @@ class CallForwardSettingsAction
             throw new ResourceClassNotFoundException('User not found');
         }
 
-        $response = $this
-            ->callForwardSettingRepository
-            ->findBy(['user' => $token->getUser()->getId()]);
-
-        return $response;
+        /** @var CompanyInterface $company */
+        $company = $token->getUser()->getCompany();
+        return $this
+            ->extensionRepository
+            ->findBy(['company' => $company->getId()]);
     }
 }
