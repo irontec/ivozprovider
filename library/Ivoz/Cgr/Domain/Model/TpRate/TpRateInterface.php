@@ -14,6 +14,14 @@ interface TpRateInterface extends EntityInterface
      */
     public function setRateIncrement($rateIncrement);
 
+    /**
+     * Validate GroupIntervalStart has valid unit
+     *
+     * @param string $groupIntervalStart
+     * @return $this|TpRateAbstract|TpRateInterface
+     */
+    public function setGroupIntervalStart($groupIntervalStart);
+
     public function __toString();
 
     /**
@@ -102,15 +110,6 @@ interface TpRateInterface extends EntityInterface
      * @return string
      */
     public function getRateIncrement();
-
-    /**
-     * Set groupIntervalStart
-     *
-     * @param string $groupIntervalStart
-     *
-     * @return self
-     */
-    public function setGroupIntervalStart($groupIntervalStart);
 
     /**
      * Get groupIntervalStart

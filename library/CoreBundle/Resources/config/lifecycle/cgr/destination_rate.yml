@@ -19,17 +19,3 @@ services:
     tags:
       - { name: cgr.lifecycle.destination_rate.post_persist, priority: 10}
 
-  ## ----------------------------------------------------------------------------
-  ## In Current Rater implementation one RatingPlan is created for each
-  ## DestinationRate entity. On future enhancements, RatingPlan.destinationRateId
-  ## will be removed and it will become a public entity.
-  ## ----------------------------------------------------------------------------
-  Ivoz\Cgr\Domain\Service\RatingPlan\UpdateByDestinationRate:
-    tags:
-      - { name: cgr.lifecycle.destination_rate.post_persist, priority: 20}
-    arguments:
-      $entityPersister:
-        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
-      $ratingPlanRepository:
-        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Cgr\\Domain\\Model\\RatingPlan\\RatingPlan")'
-
