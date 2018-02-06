@@ -41,7 +41,7 @@ Bear in mind that, while at least one of each profile must be installed for the 
 ![scaling](portals/public/images/horizontalscaling.png)
 
 #### Cloud Service
-IvozProvider is designed to work directly from the Internet. Although it can be used in local environments, being exposed to the public network [has it's advantages](https://irontec.github.io/ivozprovider/es/intro/what_is_ivozprovider.html#expuesta-a-la-red-publica)
+IvozProvider is designed to work directly from the Internet. Although it can be used in local environments, being exposed to the public network [has it's advantages](https://irontec.github.io/ivozprovider/en/intro/what_is_ivozprovider.html#exposed-to-the-public-network)
 
 ## Installation
 
