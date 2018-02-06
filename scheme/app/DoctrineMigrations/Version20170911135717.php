@@ -64,6 +64,7 @@ class Version20170911135717 extends AbstractMigration
         $this->addSql('ALTER TABLE Users CHANGE maxCalls maxCalls INT UNSIGNED DEFAULT 0 NOT NULL');
         $this->addSql('ALTER TABLE Users RENAME INDEX outgoingddiruleid TO IDX_D5428AEDFC6BB9C8');
         $this->addSql('ALTER TABLE Users RENAME INDEX voicemaillocutionid TO IDX_D5428AEDF32B4B65');
+        $this->addSql('ALTER TABLE Users RENAME INDEX bossassistantwhitelistid TO IDX_D5428AED6FA2F8E7');
         $this->addSql('ALTER TABLE Features DROP name');
         $this->addSql('ALTER TABLE Domains DROP FOREIGN KEY Domains_ibfk_1');
         $this->addSql('ALTER TABLE Domains DROP FOREIGN KEY Domains_ibfk_2');
@@ -142,6 +143,7 @@ class Version20170911135717 extends AbstractMigration
         $this->addSql('ALTER TABLE Users CHANGE maxCalls maxCalls SMALLINT UNSIGNED DEFAULT 0 NOT NULL');
         $this->addSql('ALTER TABLE Users RENAME INDEX IDX_D5428AEDFC6BB9C8 TO outgoingDDIRuleId');
         $this->addSql('ALTER TABLE Users RENAME INDEX idx_d5428aedf32b4b65 TO voicemailLocutionId');
+        $this->addSql('ALTER TABLE Users RENAME INDEX IDX_D5428AED6FA2F8E7 TO bossassistantwhitelistid');
         $this->addSql('ALTER TABLE ast_ps_endpoints RENAME INDEX idx_800b60515ea9d64d TO retailAccountId');
         $this->addSql('ALTER TABLE kam_rtpproxy DROP FOREIGN KEY FK_729D1741C8555117');
         $this->addSql('ALTER TABLE kam_rtpproxy ADD CONSTRAINT kam_rtpproxy_ibfk_1 FOREIGN KEY (mediaRelaySetsId) REFERENCES MediaRelaySets (id) ON UPDATE CASCADE ON DELETE CASCADE');
