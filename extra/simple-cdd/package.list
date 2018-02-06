@@ -5,6 +5,8 @@ ivozprovider-asterisk-config
 ivozprovider-asterisk-sounds
 ivozprovider-common-library
 ivozprovider-doc
+ivozprovider-cgrates:#ARCH#
+ivozprovider-cgrates-tools:#ARCH#
 ivozprovider-kamailio:#ARCH#
 ivozprovider-kamailio-json-modules:#ARCH#
 ivozprovider-kamailio-mysql-modules:#ARCH#
@@ -12,6 +14,7 @@ ivozprovider-kamailio-tls-modules:#ARCH#
 ivozprovider-kamailio-trunks
 ivozprovider-kamailio-users
 ivozprovider-kamailio-websocket-modules:#ARCH#
+ivozprovider-kamailio-extra-modules:#ARCH#
 ivozprovider-kamailio-xml-modules:#ARCH#
 ivozprovider-kamailio-presence-modules:#ARCH#
 ivozprovider-profile-as
@@ -39,5 +42,4 @@ mysql-common:#ARCH#
 mysql-community-client:#ARCH#
 mysql-community-server:#ARCH#
 mysql-server:#ARCH#
-sngrep:#ARCH#
-zendframework:#ARCH#
+zendframework
