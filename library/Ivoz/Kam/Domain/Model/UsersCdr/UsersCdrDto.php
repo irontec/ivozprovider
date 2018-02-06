@@ -10,6 +10,22 @@ use Ivoz\Core\Application\CollectionTransformerInterface;
 class UsersCdrDto extends UsersCdrDtoAbstract
 {
 
+    /**
+     * @inheritdoc
+     */
+    public static function getPropertyMap(string $context = '')
+    {
+        if ($context === self::CONTEXT_COLLECTION) {
+            return [
+                'id' => 'id',
+                'startTime' => 'startTime',
+                'endTime' => 'endTime',
+                'duration' => 'duration',
+            ];
+        }
+
+        return parent::getPropertyMap(...func_get_args());
+    }
 }
 
 

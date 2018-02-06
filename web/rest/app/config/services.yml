@@ -101,3 +101,11 @@ services:
     arguments:
       $tokenStorage: '@security.token_storage'
       $requestStack: '@request_stack'
+
+  Controller\My\CallHistoryAction:
+    public: true
+    arguments:
+      $tokenStorage: '@security.token_storage'
+      $requestStack: '@request_stack'
+      $usersCdrRepository:
+        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Kam\\Domain\\Model\\UsersCdr\\UsersCdr")'

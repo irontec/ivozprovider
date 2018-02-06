@@ -107,3 +107,12 @@ post_my_call_forward_settings:
     _api_resource_class: 'Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting'
     _api_item_operation_name: 'post_my_call_forward_settings'
     _api_receive: false
+
+get_my_call_history:
+  path: '/my/call_history'
+  methods: ['GET']
+  defaults:
+    _controller: Controller\My\CallHistoryAction
+    _api_resource_class: 'Ivoz\Kam\Domain\Model\UsersCdr\UsersCdr'
+    _api_collection_operation_name: 'get_my_call_history'
+    _api_receive: false

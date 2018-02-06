@@ -61,6 +61,12 @@ class OperationMetadataFactory implements ResourceMetadataFactoryInterface
      */
     private function setEntityOperationMetadata(ResourceMetadata $resourceMetadata): ResourceMetadata
     {
+        $defaultFormats = [
+            'application/ld+json',
+            'application/json',
+            'text/html'
+        ];
+
         $itemOperations = array_replace_recursive(
             [
                 'get' => [
@@ -69,6 +75,16 @@ class OperationMetadataFactory implements ResourceMetadataFactoryInterface
                         'groups' => [
                             DataTransferObjectInterface::CONTEXT_DETAILED
                         ]
+                    ],
+                    'swagger_context' => [
+                        'produces' => $defaultFormats,
+                    ]
+                ],
+                'put' => [
+                    'method' => 'PUT',
+                    'swagger_context' => [
+                        'consumes' => $defaultFormats,
+                        'produces' => $defaultFormats,
                     ]
                 ]
             ],
@@ -84,14 +100,20 @@ class OperationMetadataFactory implements ResourceMetadataFactoryInterface
                         'groups' => [
                             DataTransferObjectInterface::CONTEXT_COLLECTION
                         ]
+                    ],
+                    'swagger_context' => [
+                        'produces' => $defaultFormats,
                     ]
                 ],
                 'post' => [
-                    'method' => 'POST'
+                    'method' => 'POST',
+                    'swagger_context' => [
+                        'consumes' => $defaultFormats,
+                        'produces' => $defaultFormats,
+                    ]
                 ]
             ],
             $resourceMetadata->getCollectionOperations()
-
         );
         $resourceMetadata = $resourceMetadata->withCollectionOperations($collectionOperations);
         return $this->setOperationtags($resourceMetadata, self::ENTITY_TAG);
@@ -107,9 +129,8 @@ class OperationMetadataFactory implements ResourceMetadataFactoryInterface
         $operations = [];
         foreach ($resourceMetadata->getItemOperations() as $key => $operation) {
             if (!isset($operation['swagger_context']['tags'])) {
-                $operation['swagger_context'] = [
-                    'tags' => [$tag]
-                ];
+                $operation['swagger_context'] = $operation['swagger_context'] ?? [];
+                $operation['swagger_context']['tags'] = [$tag];
             }
             $operations[$key] = $operation;
         }
@@ -118,9 +139,8 @@ class OperationMetadataFactory implements ResourceMetadataFactoryInterface
         $operations = [];
         foreach ($resourceMetadata->getCollectionOperations() as $key => $operation) {
             if (!isset($operation['swagger_context']['tags'])) {
-                $operation['swagger_context'] = [
-                    'tags' => [$tag]
-                ];
+                $operation['swagger_context'] = $operation['swagger_context'] ?? [];
+                $operation['swagger_context']['tags'] = [$tag];
             }
             $operations[$key] = $operation;
         }

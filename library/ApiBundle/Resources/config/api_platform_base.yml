@@ -138,6 +138,10 @@ api_platform:
             mime_types: ['application/ld+json']
         json:
             mime_types: ['application/json']
+        csv:
+          mime_types: ['text/csv']
+        xml:
+          mime_types: ['application/xml', 'text/xml']
         html:
             mime_types: ['text/html']
 

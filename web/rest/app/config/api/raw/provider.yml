@@ -1,5 +1,5 @@
 ########################################
-## Raw operations
+## Raw
 ########################################
 Ivoz\Provider\Domain\Model\Brand\Brand:
   attributes:
@@ -20,13 +20,13 @@ Ivoz\Provider\Domain\Model\BrandUrl\BrandUrl:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\Calendar\Calendar:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\CallAcl\CallAcl:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchList:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting:
   attributes:
     access_control: '"ROLE_COMPANY_USER" in roles'
@@ -38,28 +38,28 @@ Ivoz\Provider\Domain\Model\CompanyService\CompanyService:
     access_control: '"ROLE_SUPER_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlist:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelSchedule:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendar:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\Country\Country:
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\Ddi\Ddi:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\Domain\Domain:
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles'
@@ -68,22 +68,22 @@ Ivoz\Provider\Domain\Model\Extension\Extension:
     access_control: '"ROLE_COMPANY_USER" in roles'
 Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList\ExternalCallFilterBlackList:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\ExternalCallFilterRelCalendar\ExternalCallFilterRelCalendar:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\ExternalCallFilterRelSchedule\ExternalCallFilterRelSchedule:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\ExternalCallFilterWhiteList\ExternalCallFilterWhiteList:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOut:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\Fax\Fax:
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles'
@@ -104,19 +104,19 @@ Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoice:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\Friend\Friend:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPattern:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\HolidayDate\HolidayDate:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUser:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\Invoice\Invoice:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
@@ -125,10 +125,10 @@ Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplate:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\IvrEntry\IvrEntry:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\Ivr\Ivr:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\IvrExcludedExtension\IvrExcludedExtension:
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles'
@@ -147,7 +147,7 @@ Ivoz\Provider\Domain\Model\LcrRuleTarget\LcrRuleTarget:
     access_control: '"ROLE_SUPER_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\Locution\Locution:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\MatchList\MatchList:
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles'
@@ -159,13 +159,13 @@ Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet:
     access_control: '"ROLE_SUPER_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHold:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPattern:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
@@ -189,10 +189,10 @@ Ivoz\Provider\Domain\Model\ProxyUser\ProxyUser:
     access_control: '"ROLE_SUPER_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\QueueMember\QueueMember:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\Queue\Queue:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\Recording\Recording:
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles'
@@ -210,10 +210,10 @@ Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPattern:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\Schedule\Schedule:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\Service\Service:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\TerminalManufacturer\TerminalManufacturer:
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles'
@@ -222,10 +222,10 @@ Ivoz\Provider\Domain\Model\TerminalModel\TerminalModel:
     access_control: '"ROLE_SUPER_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\Terminal\Terminal:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '"ROLE_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\Timezone\Timezone:
   attributes:
-    access_control: '("ROLE_COMPANY_ADMIN" in roles) or ("ROLE_COMPANY_USER" in roles)'
+    access_control: '"ROLE_USER" in roles'
 Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'

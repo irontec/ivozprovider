@@ -30,15 +30,13 @@ final class SerializerContextBuilder implements SerializerContextBuilderInterfac
 
         $context = $this->operationTypeOverwrite(
             $context,
-            $request,
-            $normalization,
             $attributes
         );
 
         return $context;
     }
 
-    private function operationTypeOverwrite(array $context, Request $request, bool $normalization, array $attributes = null)
+    private function operationTypeOverwrite(array $context, array $attributes = null)
     {
         $resourceMetadata = $this->resourceMetadataFactory->create($attributes['resource_class']);
 

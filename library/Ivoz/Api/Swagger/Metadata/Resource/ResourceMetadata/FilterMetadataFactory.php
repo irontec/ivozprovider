@@ -142,7 +142,7 @@ class FilterMetadataFactory implements ResourceMetadataFactoryInterface
         $items += array_filter(
             $metadata->getMetadataValue('associationMappings'),
             function ($fld) {
-                return $fld['type'] == 2;
+                return $fld['type'] == ClassMetadataInfo::MANY_TO_ONE;
             }
         );
 

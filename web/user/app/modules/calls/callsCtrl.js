@@ -40,9 +40,11 @@ angular
         } else {
             headers = {page: page};
         }
-        
-        Restangular.all('calls').getList(params, headers).then(function(calls) {
-            
+
+        $http.get(
+            appConfig.urlRest + 'my/call_history',
+            {headers: {accept: 'application/json'}}
+        ).then(function(calls) {
             if (calls.status > 400) {
                 $scope.totalItems = 0;
                 $scope.calls = {};
@@ -50,7 +52,7 @@ angular
                 $scope.totalItems = calls.headers('totalitems');
                 $scope.calls = calls.data;
             }
-            
+
             ngProgress.complete();
             $scope.loading = false;
         }, function() {
