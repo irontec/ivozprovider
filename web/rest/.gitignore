@@ -1,3 +1,4 @@
+web/swagger.json
 /build/
 /phpunit.xml
 !/features/coverage/.gitkeep
