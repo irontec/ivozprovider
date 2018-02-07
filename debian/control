@@ -123,8 +123,9 @@ Depends: ivozprovider-profile-common,
         ivozprovider-kamailio-trunks (=${binary:Version}),
         ivozprovider-kamailio-users (=${binary:Version}),
         ivozprovider-cgrates,
-        redis-server,
-        ivozprovider-cgrates-tools
+        ivozprovider-cgrates-tools,
+        ivozprovider-cgrates-config,
+        redis-server
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Profile files for a Proxy Systems
  .
@@ -240,3 +241,14 @@ Homepage: http://www.irontec.com
 Description: IVOZ Provider - HTML Documentation
  Generated documentation with sphinx using Read the Docs theme.
  .
+
+Package: ivozprovider-cgrates-config
+Architecture: all
+Section: admin
+Priority: optional
+Homepage: http://www.irontec.com
+Description: IVOZ Provider - CGrateS - Configuration files
+ This package includes all config files found in /etc
+ that will require cgrates to run properly.
+ .
+
