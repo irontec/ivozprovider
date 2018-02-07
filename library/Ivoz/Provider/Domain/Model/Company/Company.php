@@ -77,6 +77,14 @@ class Company extends CompanyAbstract implements CompanyInterface
         if (!$this->getOnDemandRecordCode()) {
             $this->setOnDemandRecordCode('');
         }
+
+        if ($this->getType() == Company::RETAIL) {
+            if (!$this->getDomain()) {
+                $this->setDomain(
+                    $this->getBrand()->getDomain()
+                );
+            }
+        }
     }
 
     /**
