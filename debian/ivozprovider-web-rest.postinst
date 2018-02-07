@@ -13,5 +13,7 @@ setfacl  -R -m u:www-data:rwX -m u:root:rwX var
 
 # Create project cache
 bin/console cache:clear --no-warmup -q -n
+# generate swagger spec
+bin/console api:swagger:export > web/swagger.json
 
 :
