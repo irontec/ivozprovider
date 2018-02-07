@@ -192,9 +192,9 @@ class RetailAccount extends RetailAccountAbstract implements RetailAccountInterf
      */
     public function getDdi($ddieE164)
     {
-        return array_shift(
-            $this->getDdis()
-        );
+        $ddis = $this->getDdis();
+
+        return array_shift($ddis);
     }
 }
 
