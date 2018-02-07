@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Domain\Model\RetailAccount;
 
 use Assert\Assertion;
 
+use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 
 /**
@@ -192,7 +193,19 @@ class RetailAccount extends RetailAccountAbstract implements RetailAccountInterf
      */
     public function getDdi($ddieE164)
     {
-        $ddis = $this->getDdis();
+        $criteria = new Criteria();
+
+        if ($ddieE164) {
+            $criteria->where(
+                Criteria::expr()->eq(
+                    'ddie164',
+                    $ddieE164
+                )
+            );
+        }
+
+        $ddis = $this->getDdis($criteria);
+
 
         return array_shift($ddis);
     }
