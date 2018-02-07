@@ -2,6 +2,7 @@
 
 namespace Ivoz\Api\Doctrine\Orm\Extension;
 
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Extension\QueryCollectionExtensionInterface;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Extension\QueryItemExtensionInterface;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Util\EagerLoadingTrait;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Util\QueryNameGeneratorInterface;
@@ -23,7 +24,7 @@ use Symfony\Component\Serializer\Normalizer\AbstractObjectNormalizer;
  * Class DynamicLoadingExtension
  * Based on ApiPlatform\Core\Bridge\Doctrine\Orm\Extension\EagerLoadingExtension
  */
-final class DynamicLoadingExtension implements QueryItemExtensionInterface
+final class DynamicLoadingExtension implements QueryItemExtensionInterface, QueryCollectionExtensionInterface
 {
     use EagerLoadingTrait;
 
@@ -51,7 +52,6 @@ final class DynamicLoadingExtension implements QueryItemExtensionInterface
 
     /**
      * {@inheritdoc}
-     * The context may contain serialization groups which helps defining joined entities that are readable.
      */
     public function applyToItem(QueryBuilder $queryBuilder, QueryNameGeneratorInterface $queryNameGenerator, string $resourceClass, array $identifiers, string $operationName = null, array $context = [])
     {
@@ -64,6 +64,37 @@ final class DynamicLoadingExtension implements QueryItemExtensionInterface
         $contextType = isset($context['api_denormalize']) ? 'denormalization_context' : 'normalization_context';
         $serializerContext = $this->getSerializerContext($context['resource_class'] ?? $resourceClass, $contextType, $options);
 
+        $this->apply($queryBuilder, $queryNameGenerator, $resourceClass, $context, $options, $serializerContext);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function applyToCollection(QueryBuilder $queryBuilder, QueryNameGeneratorInterface $queryNameGenerator, string $resourceClass, string $operationName = null)
+    {
+        $options = [];
+
+        if (null !== $operationName) {
+            $options = ['collection_operation_name' => $operationName];
+        }
+
+        $contextType = 'normalization_context';
+        $serializerContext = $this->getSerializerContext($resourceClass, $contextType, $options);
+
+        $this->apply($queryBuilder, $queryNameGenerator, $resourceClass, [], $options, $serializerContext);
+    }
+
+
+    /**
+     * @param QueryBuilder $queryBuilder
+     * @param QueryNameGeneratorInterface $queryNameGenerator
+     * @param string $resourceClass
+     * @param array $context
+     * @param $options
+     * @param $serializerContext
+     */
+    private function apply(QueryBuilder $queryBuilder, QueryNameGeneratorInterface $queryNameGenerator, string $resourceClass, array $context, $options, $serializerContext)
+    {
         if (isset($context[AbstractNormalizer::GROUPS])) {
             $groups = ['serializer_groups' => $context[AbstractNormalizer::GROUPS]];
         } else {

@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: mikel
- * Date: 11/12/17
- * Time: 10:53
- */
 
 namespace Ivoz\Core\Application\Service;
 

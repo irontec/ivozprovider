@@ -4,6 +4,7 @@ namespace Ivoz\Api\Json\Serializer\Normalizer;
 
 use ApiPlatform\Core\Api\ResourceClassResolverInterface;
 use ApiPlatform\Core\JsonLd\ContextBuilderInterface;
+use ApiPlatform\Core\Metadata\Resource\Factory\ResourceMetadataFactoryInterface;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Service\Assembler\DtoAssembler;
 use Ivoz\Core\Domain\Model\EntityInterface;
@@ -22,6 +23,11 @@ class EntityNormalizer implements NormalizerInterface
     protected $resourceClassResolver;
 
     /**
+     * @var ResourceMetadataFactoryInterface
+     */
+    private $resourceMetadataFactory;
+
+    /**
      * @var ContextBuilderInterface
      */
     private $contextBuilder;
@@ -29,14 +35,16 @@ class EntityNormalizer implements NormalizerInterface
     /**
      * @var DtoAssembler
      */
-    protected $dtoAssembler;
+    private $dtoAssembler;
 
     public function __construct(
+        ResourceMetadataFactoryInterface $resourceMetadataFactory,
         ResourceClassResolverInterface $resourceClassResolver,
         ContextBuilderInterface $contextBuilder,
         DtoAssembler $dtoAssembler
     ) {
         $this->resourceClassResolver = $resourceClassResolver;
+        $this->resourceMetadataFactory = $resourceMetadataFactory;
         $this->contextBuilder = $contextBuilder;
         $this->dtoAssembler = $dtoAssembler;
     }
@@ -46,7 +54,7 @@ class EntityNormalizer implements NormalizerInterface
      */
     public function supportsNormalization($data, $format = null)
     {
-        return self::FORMAT === $format && ($data instanceof EntityInterface);
+        return static::FORMAT === $format && ($data instanceof EntityInterface);
     }
 
     /**
@@ -59,18 +67,54 @@ class EntityNormalizer implements NormalizerInterface
         }
 
         if (isset($context['item_operation_name']) && $context['item_operation_name'] === 'put') {
-            $object = $this->initializeRelationships($object);
+            $object = $this->initializeRelationships($object, []);
         }
 
-        return $this->normalizeDto($this->dtoAssembler->toDto($object, 1), $format, $context);
+        $data = $this->normalizeEntity(
+            $object,
+            $context
+        );
+
+        return $this->flatten($data);
     }
 
-    private function initializeRelationships(EntityInterface $entity)
+    protected function flatten(array $data = null)
+    {
+        if (!$data) {
+            return $data;
+        }
+
+        foreach ($data as $key => $value) {
+
+            if (!is_object($value)) {
+                continue;
+            }
+
+            $class = get_class($value);
+            switch ($class) {
+                case 'DateTime':
+                    /** @todo this should be done by dto::toArray  $value */
+                    $value = $value->format('Y-m-d H:i:s');
+                    break;
+            }
+
+            $data[$key] = $value;
+        }
+
+        return $data;
+    }
+
+    private function initializeRelationships(EntityInterface $entity, array $propertyFilters)
     {
         $reflection = new \ReflectionClass($entity);
         $properties = $reflection->getProperties();
 
         foreach ($properties as $property) {
+
+            if (!empty($propertyFilters) && !in_array($property->getName(), $propertyFilters)) {
+                continue;
+            }
+
             $property->setAccessible(true);
             $propertyValue = $property->getValue($entity);
             if ($propertyValue instanceof \Doctrine\ORM\Proxy\Proxy && !$propertyValue->__isInitialized()) {
@@ -81,24 +125,63 @@ class EntityNormalizer implements NormalizerInterface
         return $entity;
     }
 
-    private function normalizeDto(DataTransferObjectInterface $dto, string $format, array $context, $isSubresource = false)
-    {
-        $resourceClass = substr(
-            get_class($dto),
-            0,
-            strlen('Dto') * -1
+    private function normalizeEntity(
+        Entityinterface $entity,
+        array $context,
+        $isSubresource = false
+    ) {
+        $resourceClass = $entity instanceof \Doctrine\ORM\Proxy\Proxy
+            ? get_parent_class($entity)
+            : get_class($entity);
+
+        $resourceMetadata = $this->resourceMetadataFactory->create($resourceClass);
+
+        $depth = isset($context['item_operation_name'])
+            ? $resourceMetadata->getItemOperationAttribute($context['item_operation_name'],'depth', 2)
+            : $resourceMetadata->getCollectionOperationAttribute($context['collection_operation_name'], 'depth', 1);
+
+        if ($depth > 0) {
+            $dtoClass = $resourceClass . 'Dto';
+            $normalizationContext = $context['operation_normalization_context'] ?? $context['operation_type'] ?? '';
+            $propertyMap = $dtoClass::getPropertyMap($normalizationContext);
+            $this->initializeRelationships($entity, array_values($propertyMap));
+        }
+        $dto = $this->dtoAssembler->toDto($entity, $depth);
+
+        return $this->normalizeDto(
+            $dto,
+            $context,
+            $isSubresource,
+            $depth,
+            $resourceClass,
+            $resourceMetadata
         );
+    }
 
-        // Use resolved resource class instead of given resource class to support multiple inheritance child types
-        $context['resource_class'] = $resourceClass;
-
-        $rawData = $dto->normalize($context['operation_type']);
+    /**
+     * @param DataTransferObjectInterface $dto
+     * @param array $context
+     * @param $isSubresource
+     * @param $depth
+     * @param $resourceClass
+     * @param $resourceMetadata
+     * @return array
+     */
+    protected function normalizeDto($dto, array $context, $isSubresource, $depth, $resourceClass, $resourceMetadata): array
+    {
+        $normalizationContext = $context['operation_normalization_context'] ?? $context['operation_type'];
+        $rawData = $dto->normalize($normalizationContext);
 
         foreach ($rawData as $key => $value) {
 
             if ($value instanceof DataTransferObjectInterface) {
                 if ($isSubresource) {
                     unset($rawData[$key]);
+                    continue;
+                }
+
+                if ($depth == 0) {
+                    $rawData[$key] = $rawData[$key]->getId();
                     continue;
                 }
 
@@ -109,11 +192,19 @@ class EntityNormalizer implements NormalizerInterface
                 ];
 
                 try {
+
+                    $resourceClass = substr(get_class($value), 0, strlen('dto') * -1);
+                    $resourceMetadata = $this
+                        ->resourceMetadataFactory
+                        ->create($resourceClass);
+
                     $rawData[$key] = $this->normalizeDto(
                         $value,
-                        DataTransferObjectInterface::CONTEXT_COLLECTION,
                         $embeddedContext,
-                        true
+                        true,
+                        $depth - 1,
+                        $resourceClass,
+                        $resourceMetadata
                     );
 
                 } catch (\Exception $e) {

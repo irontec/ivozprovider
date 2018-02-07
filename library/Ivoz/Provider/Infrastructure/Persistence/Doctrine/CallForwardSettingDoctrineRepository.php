@@ -3,7 +3,9 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\ORM\EntityRepository;
+use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingRepository;
+use Ivoz\Provider\Domain\Model\User\UserInterface;
 
 /**
  * CallForwardSettingDoctrineRepository
@@ -13,4 +15,38 @@ use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingRepository;
  */
 class CallForwardSettingDoctrineRepository extends EntityRepository implements CallForwardSettingRepository
 {
+    /**
+     * @param mixed $userId
+     * @return int
+     */
+    public function countByUserId($userId) :int
+    {
+        $qb = $this->createQueryBuilder('self');
+
+        return $qb
+            ->select('count(self.id)')
+            ->where($qb->expr()->eq('self.user', $userId))
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    /**
+     * @param UserInterface $user
+     * @return CallForwardSettingInterface[]
+     */
+    public function findAndJoinByUser(UserInterface $user) :array
+    {
+        $qb = $this->createQueryBuilder('self');
+
+        $query = $qb
+            ->select('self', 'e', 'v')
+            ->where(
+                $qb->expr()->eq('self.user', $user->getId())
+            )
+            ->leftJoin('self.extension', 'e')
+            ->leftJoin('self.voiceMailUser', 'v')
+            ->getQuery();
+
+        return $query->getResult();
+    }
 }

@@ -30,8 +30,8 @@ trait FilterTrait
 
         $fields = $attributes['filterFields'][static::SERVICE_NAME];
         $properties = [];
-        foreach ($fields as $fld) {
-            $properties[$fld] = null;
+        foreach ($fields as $fld => $strategy) {
+            $properties[$fld] = $strategy;
         }
 
         $this->setProperties($properties);

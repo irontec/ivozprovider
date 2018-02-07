@@ -8,6 +8,11 @@ interface DataTransferObjectInterface
     const CONTEXT_SIMPLE = '';
     const CONTEXT_DETAILED = 'detailed';
 
+    const CONTEXT_TYPES = [
+        self::CONTEXT_COLLECTION,
+        self::CONTEXT_SIMPLE,
+        self::CONTEXT_DETAILED
+    ];
 
     public function getId();
 

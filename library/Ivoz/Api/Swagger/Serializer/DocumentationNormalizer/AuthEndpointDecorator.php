@@ -43,7 +43,7 @@ class AuthEndpointDecorator implements NormalizerInterface
                 "tags" => [
                     "Auth"
                 ],
-                "operationId" => "postAuthenticate",
+                "operationId" => "postAdminAuthenticate",
                 "consumes" => [
                     "application/x-www-form-urlencoded",
                 ],
@@ -84,7 +84,7 @@ class AuthEndpointDecorator implements NormalizerInterface
                 "tags" => [
                     "Auth"
                 ],
-                "operationId" => "postAuthenticate",
+                "operationId" => "postUserAuthenticate",
                 "consumes" => [
                     "application/x-www-form-urlencoded",
                 ],

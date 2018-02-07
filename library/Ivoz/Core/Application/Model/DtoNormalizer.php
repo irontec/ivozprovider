@@ -24,10 +24,12 @@ trait DtoNormalizer
 
         return array_filter(
             $response,
-            function ($key) use ($contextProperties) {
-                return in_array($key, $contextProperties);
+            function ($key, $value) use ($contextProperties) {
+                return
+                    in_array($key, $contextProperties)
+                    || in_array($value, $contextProperties);
             },
-            ARRAY_FILTER_USE_KEY
+            ARRAY_FILTER_USE_BOTH
         );
     }
 
@@ -52,7 +54,7 @@ trait DtoNormalizer
                     ];
                     $methods[$setter] =  $dataPath;
                 }
-            } else {
+            } else if (array_key_exists($value, $data)) {
                 $methods['set' . ucfirst($key)] =  [$value];
             }
         }

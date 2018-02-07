@@ -13,7 +13,8 @@ pushd /opt/irontec/ivozprovider/scheme
     done
 popd
 
-pushd /opt/irontec/ivozprovider
-    php web/rest/bin/console cache:clear -e dev
-    php web/rest/bin/console cache:clear -e prod
+pushd /opt/irontec/ivozprovider/web/rest/
+    php bin/console cache:clear -e dev
+    php bin/console cache:clear -e prod
+    php bin/console api:swagger:export -e prod > web/swagger.json
 popd

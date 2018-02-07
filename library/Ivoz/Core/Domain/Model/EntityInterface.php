@@ -11,8 +11,20 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
  */
 interface EntityInterface
 {
+    /**
+     * @return mixed
+     */
     public function getId();
 
+    /**
+     * @return string
+     */
+    public function __toString();
+
+    /**
+     * @return void
+     * @throws \Exception
+     */
     public function initChangelog();
 
     /**

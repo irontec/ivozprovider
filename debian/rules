@@ -20,6 +20,7 @@ build_agis: composer build_library
 build_webrest: composer build_library
 	cd web/rest ; SYMFONY_ENV=prod ../../composer --no-interaction --no-dev --prefer-dist install
 	cd web/rest ; ../../composer dump-autoload --optimize --no-dev --classmap-authoritative
+	cd web/rest ; bin/console api:swagger:export -e prod > web/swagger.json
 
 build_webadmin: composer build_library
 	cd web/admin ; ../../composer --no-interaction --no-dev --prefer-dist install

@@ -78,7 +78,7 @@ abstract class MatchListPatternDtoAbstract implements DataTransferObjectInterfac
     /**
      * @return array
      */
-    public function toArray()
+    public function toArray($hideSensitiveData = false)
     {
         return [
             'description' => $this->getDescription(),

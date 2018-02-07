@@ -54,7 +54,7 @@ abstract class FeaturesRelBrandDtoAbstract implements DataTransferObjectInterfac
     /**
      * @return array
      */
-    public function toArray()
+    public function toArray($hideSensitiveData = false)
     {
         return [
             'id' => $this->getId(),

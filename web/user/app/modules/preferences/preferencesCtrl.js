@@ -3,13 +3,15 @@
 angular
     .module('Preferences')
     .controller('PreferencesCtrl', function (
-        $scope, 
+        $scope,
         $timeout,
         $state,
         ngProgress,
-        Restangular
+        Restangular,
+        appConfig,
+        $http
     ) {
-    
+
     ngProgress.color('blue');
     ngProgress.start();
     $scope.loading = true;
@@ -18,36 +20,64 @@ angular
     $scope.assistants = {};
     $scope.bossAssistantActive = false;
     $scope.temp = {};
-    
-    Restangular.all('time-zones').getList().then(function(response) {
+
+    $http.get(
+      appConfig.urlRest + 'timezones?_pagination=false',
+      {
+        headers: {accept: 'application/json'}
+      }
+    ).then(function(response) {
         for (var i = 0; i < response.data.length; i++) {
             $scope.timeZones[i] = {
                 'id' : response.data[i].id,
                 'tz' : response.data[i].tz
             };
         }
-        Restangular.all('users').getList().then(function(response) {
-            $scope.assistants = response.data;
-            Restangular.all('users').get(1).then(function(response) {
-                $scope.user = response.data;
-                $scope.user.formType = 'preferences';
 
-                for (var i = 0; i < $scope.timeZones.length; i++) {
-                    if ($scope.timeZones[i].id == $scope.user.timezoneId) {
-                        $scope.user.timezoneSelect = $scope.timeZones[i];
-                        break;
-                    }
-                }
-
-                $scope.user.doNotDisturb = String($scope.user.doNotDisturb);
-                $scope.user.maxCalls = Number($scope.user.maxCalls);
-
-                $scope.loading = false;
-                ngProgress.complete();
-            });
-        });
+        requestCompanyUsers();
     });
-    
+
+    function requestCompanyUsers() {
+
+      $http.get(
+        appConfig.urlRest + 'my/company_assistants',
+        {
+          headers: {accept: 'application/json'}
+        }
+      ).then(requestCompanyUsersHandler);
+    }
+
+    function requestCompanyUsersHandler(response) {
+        $scope.assistants = response.data;
+
+        for (var idx in $scope.assistants) {
+
+            $scope.assistants[idx].fullname = $scope.assistants[idx].name + " " + $scope.assistants[idx].lastname;
+        }
+
+        $http.get(
+            appConfig.urlRest + 'my/profile',
+            {headers: {accept: 'application/json'}}
+        ).then(function(response) {
+            $scope.user = response.data;
+            $scope.user.formType = 'preferences';
+
+            for (var i = 0; i < $scope.timeZones.length; i++) {
+                if ($scope.timeZones[i].id == $scope.user.timezone.id) {
+
+                    $scope.user.timezoneSelect = $scope.timeZones[i];
+                    break;
+                }
+            }
+
+            $scope.user.doNotDisturb = $scope.user.doNotDisturb ?  '1' : '0';
+            $scope.user.maxCalls = Number($scope.user.maxCalls);
+
+            $scope.loading = false;
+            ngProgress.complete();
+        });
+    }
+
     $scope.$watch('user.bossAssistantId', function(data) {
         if (data === 'null' || data === null) {
             $scope.bossAssistantActive = false;
@@ -55,46 +85,67 @@ angular
             $scope.bossAssistantActive = true;
         }
     });
-    
+
     $scope.save = function() {
         $scope.success = false;
         $scope.error = false;
         $scope.formAction = true;
-        
-        if ($scope.user.bossAssistantId === 'null') {
+
+        if ($scope.user.bossAssistantId === '') {
             $scope.user.bossAssistantId = null;
         }
-        
+
         ngProgress.start();
-        $scope.user.put().then(function(response) {
-            
-            if (response.status > 400) {
+        var data = {
+            "name": $scope.user.name,
+            "lastname": $scope.user.lastname,
+            "email": $scope.user.email,
+            "doNotDisturb": $scope.user.doNotDisturb,
+            "isBoss": $scope.user.isBoss,
+            "maxCalls": $scope.user.maxCalls,
+            "bossAssistant": $scope.user.bossAssistant.id
+        };
+
+        $http.put(
+            appConfig.urlRest + 'my/profile',
+            data,
+            {headers: {accept: 'application/json'}}
+        ).then(
+            accountUpdateSuccessHandler,
+            accountUpdateErrorHandler
+        );
+
+        function accountUpdateSuccessHandler(response) {
+
+            if (response.status >= 400) {
 
                 $scope.formAction = true;
                 $scope.error = true;
-                
+
                 var errorMessage = response.statusText;
-                if (response.data.error !== undefined) {
-                    errorMessage = response.data.error;
+                if (response.data.detail !== undefined) {
+                    errorMessage = response.data.detail;
                 }
                 $scope.errorMessage = errorMessage;
                 $scope.formAction = false;
-                
+
             } else {
-                
+
                 $scope.success = true;
                 $state.go('app.preferences');
-                
             }
-            
+
             ngProgress.complete();
-        }, function(response) {
+        }
+
+        function accountUpdateErrorHandler(response) {
+
             $scope.formAction = true;
             $scope.error = true;
             $scope.errorMessage = response.data.error;
             $scope.formAction = false;
             ngProgress.complete();
-        });
+        }
     };
-    
+
 });

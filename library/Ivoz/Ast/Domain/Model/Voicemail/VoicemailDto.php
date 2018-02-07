@@ -2,14 +2,19 @@
 
 namespace Ivoz\Ast\Domain\Model\Voicemail;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
-
-
 class VoicemailDto extends VoicemailDtoAbstract
 {
+    public function toArray($hideSensitiveData = false)
+    {
+        $response = parent::toArray($hideSensitiveData);
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+        $response['password'] = '****';
+        $response['imappassword'] = '****';
 
+        return $response;
+    }
 }
 
 

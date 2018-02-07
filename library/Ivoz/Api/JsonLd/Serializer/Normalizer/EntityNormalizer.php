@@ -4,19 +4,18 @@ namespace Ivoz\Api\JsonLd\Serializer\Normalizer;
 
 use ApiPlatform\Core\Api\IriConverterInterface;
 use ApiPlatform\Core\Api\ResourceClassResolverInterface;
-use ApiPlatform\Core\Exception\InvalidArgumentException;
 use ApiPlatform\Core\JsonLd\ContextBuilderInterface;
 use ApiPlatform\Core\JsonLd\Serializer\JsonLdContextTrait;
 use ApiPlatform\Core\Metadata\Resource\Factory\ResourceMetadataFactoryInterface;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Service\Assembler\DtoAssembler;
-use Ivoz\Core\Domain\Model\EntityInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use Ivoz\Api\Json\Serializer\Normalizer\EntityNormalizer as JsonEntityNormalizer;
 
 /**
  * Based on ApiPlatform\Core\JsonLd\Serializer\ItemNormalizer
  */
-class EntityNormalizer implements NormalizerInterface
+class EntityNormalizer extends JsonEntityNormalizer implements NormalizerInterface
 {
     use JsonLdContextTrait;
 
@@ -28,24 +27,9 @@ class EntityNormalizer implements NormalizerInterface
     protected $iriConverter;
 
     /**
-     * @var ResourceClassResolverInterface
-     */
-    protected $resourceClassResolver;
-
-    /**
-     * @var ResourceMetadataFactoryInterface
-     */
-    private $resourceMetadataFactory;
-
-    /**
      * @var ContextBuilderInterface
      */
     private $contextBuilder;
-
-    /**
-     * @var DtoAssembler
-     */
-    private $dtoAssembler;
 
     public function __construct(
         ResourceMetadataFactoryInterface $resourceMetadataFactory,
@@ -55,62 +39,33 @@ class EntityNormalizer implements NormalizerInterface
         DtoAssembler $dtoAssembler
     ) {
         $this->iriConverter = $iriConverter;
-        $this->resourceClassResolver = $resourceClassResolver;
-        $this->resourceMetadataFactory = $resourceMetadataFactory;
         $this->contextBuilder = $contextBuilder;
-        $this->dtoAssembler = $dtoAssembler;
-    }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function supportsNormalization($data, $format = null)
-    {
-        return self::FORMAT === $format && ($data instanceof EntityInterface);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function normalize($object, $format = null, array $context = [])
-    {
-        if (!$object instanceof EntityInterface) {
-            Throw new \Exception('Object must implement EntityInterface');
-        }
-
-        if (isset($context['item_operation_name']) && $context['item_operation_name'] === 'put') {
-            $object = $this->initializeRelationships($object);
-        }
-
-        $this->iriConverter->getIriFromItem($object);
-        return $this->normalizeDto($this->dtoAssembler->toDto($object, 1), $format, $context);
-    }
-
-    private function initializeRelationships(EntityInterface $entity)
-    {
-        $reflection = new \ReflectionClass($entity);
-        $properties = $reflection->getProperties();
-
-        foreach ($properties as $property) {
-            $property->setAccessible(true);
-            $propertyValue = $property->getValue($entity);
-            if ($propertyValue instanceof \Doctrine\ORM\Proxy\Proxy && !$propertyValue->__isInitialized()) {
-                $propertyValue->__load();
-            }
-        }
-
-        return $entity;
-    }
-
-    private function normalizeDto(DataTransferObjectInterface $dto, string $format, array $context, $isSubresource = false)
-    {
-        $resourceClass = substr(
-            get_class($dto),
-            0,
-            strlen('Dto') * -1
+        return parent::__construct(
+            $resourceMetadataFactory,
+            $resourceClassResolver,
+            $contextBuilder,
+            $dtoAssembler
         );
-        $resourceMetadata = $this->resourceMetadataFactory->create($resourceClass);
-        $data = $this->addJsonLdContext($this->contextBuilder, $resourceClass, $context);
+    }
+
+
+    /**
+     * @param DataTransferObjectInterface $dto
+     * @param array $context
+     * @param $isSubresource
+     * @param $depth
+     * @param $resourceClass
+     * @param $resourceMetadata
+     * @return array
+     */
+    protected function normalizeDto($dto, array $context, $isSubresource, $depth, $resourceClass, $resourceMetadata): array
+    {
+        $data = $this->addJsonLdContext(
+            $this->contextBuilder,
+            $resourceClass,
+            $context
+        );
 
         // Use resolved resource class instead of given resource class to support multiple inheritance child types
         $context['resource_class'] = $resourceClass;
@@ -121,35 +76,7 @@ class EntityNormalizer implements NormalizerInterface
                 ['id' => $dto->getId()]
             );
 
-        $rawData = $dto->normalize($context['operation_type']);
-
-        foreach ($rawData as $key => $value) {
-
-            if ($value instanceof DataTransferObjectInterface) {
-                if ($isSubresource) {
-                    unset($rawData[$key]);
-                    continue;
-                }
-
-                $embeddedContext = [
-                    'item_operation_name' => 'get',
-                    'operation_type' => 'item',
-                    'request_uri' => $context['request_uri']
-                ];
-
-                try {
-                    $rawData[$key] = $this->normalizeDto(
-                        $value,
-                        DataTransferObjectInterface::CONTEXT_COLLECTION,
-                        $embeddedContext,
-                        true
-                    );
-
-                } catch (\Exception $e) {
-                    unset($rawData[$key]);
-                }
-            }
-        }
+        $rawData = parent::normalizeDto(...func_get_args());
 
         $data['@id'] = $context['iri'];
         $data['@type'] = $resourceMetadata->getIri() ?: $resourceMetadata->getShortName();

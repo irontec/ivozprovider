@@ -53,7 +53,7 @@
                                     required="required"
                                     ng-model="user.timezoneSelect"
                                     ng-options="timeZone.tz for timeZone in timeZones track by timeZone.id"
-                                    ng-change="user.timezoneId = user.timezoneSelect.id"
+                                    ng-change="user.timezone.id = user.timezoneSelect.id"
                             >
                             </select>
                         </div>
@@ -105,30 +105,14 @@
                                     name="bossAssistantId"
                                     class="form-control"
                                     id="bossAssistantId"
-                                    ng-model="user.bossAssistantId"
+                                    ng-model="user.bossAssistant.id"
+                                    ng-options="assistant.id as assistant.fullname for assistant in assistants"
                             >
-                                <option value="null"></option>
-                                <option ng-repeat="assistant in assistants" value="{{assistant.id}}">{{assistant.name}}</option>
+                                <option value=""></option>
                             </select>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-xs-12 col-sm-6" ng-show="bossAssistantActive">
-                    <div class="form-group">
-                        <label for="exceptionBoosAssistantRegExp" class="col-xs-4 control-label" translate="exceptionBoosAssistantRegExp"></label>
-                        <div class="col-xs-8 input-group">
-                            <input
-                                    type="text"
-                                    class="form-control"
-                                    id="exceptionBoosAssistantRegExp"
-                                    placeholder="{{'exceptionBoosAssistantRegExp' | translate}}"
-                                    ng-model="user.exceptionBoosAssistantRegExp"
-                            />
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
         <div class="panel-footer text-center">

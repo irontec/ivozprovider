@@ -84,7 +84,7 @@ abstract class UsersLocationAttrDtoAbstract implements DataTransferObjectInterfa
     /**
      * @return array
      */
-    public function toArray()
+    public function toArray($hideSensitiveData = false)
     {
         return [
             'ruid' => $this->getRuid(),

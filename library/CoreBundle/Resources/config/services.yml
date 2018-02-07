@@ -53,3 +53,6 @@ services:
       $softDeleteMap: '%soft_delete%'
     public: true
 
+  Ivoz\Core\Infrastructure\Symfony\EventListener\DomainExceptionListener:
+    tags:
+      - { name: kernel.event_listener, event: kernel.exception, priority: 1 }

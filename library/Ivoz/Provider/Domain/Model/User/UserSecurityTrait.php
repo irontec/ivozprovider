@@ -14,7 +14,7 @@ trait UserSecurityTrait
     public function getRoles()
     {
         return [
-            'ROLE_USER'
+            'ROLE_COMPANY_USER'
         ];
     }
 

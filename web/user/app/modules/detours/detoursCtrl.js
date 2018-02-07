@@ -5,16 +5,20 @@ angular
     .controller('DetoursCtrl', function (
         $scope, 
         ngProgress,
-        Restangular
+        appConfig,
+        $http
     ) {
-    
+
     ngProgress.color('blue');
     ngProgress.start();
     $scope.loading = true;
-    
+
     $scope.callsFSCount = 0;
-    
-    Restangular.all('call-forward-settings').getList().then(function(result) {
+
+    $http.get(
+        appConfig.urlRest + 'my/call_forward_settings',
+        {headers: {accept: 'application/json'}}
+    ).then(function(result) {
         $scope.callsFS = result.data;
         $scope.callsFSCount = $scope.callsFS.length;
         ngProgress.complete();
@@ -23,25 +27,29 @@ angular
         ngProgress.complete();
         $scope.loading = false;
     });
-    
-    $scope.detourDestini = function(detour) {
+
+    $scope.detourTarget = function(detour) {
         var type = detour.targetType;
-        var resutl;
+        var result;
         if (type === 'number') {
-            resutl = detour.numberValue;
+            result = detour.numberValue;
         } else if (type === 'extension') {
-            resutl = detour.extension;
+            result = detour.extension.number;
         } else if (type === 'voicemail') {
-            resutl = detour.voiceMailUser;
+            result = detour.voiceMailUser.name;
         } else {
-            resutl = '';
+            result = '';
         }
-        
-        return resutl;
+
+        return result;
     };
     
     $scope.deleteDetour = function(item) {
-        item.remove().then(function() {
+
+        $http.delete(
+            appConfig.urlRest + 'call_forward_settings/' + item.id,
+            {headers: {accept: 'application/json'}}
+        ).then(function() {
             var index = $scope.callsFS.indexOf(item);
             $scope.callsFS.splice(index, 1);
             $scope.callsFSCount = $scope.callsFS.length;

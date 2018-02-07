@@ -119,7 +119,7 @@ abstract class ExtensionDtoAbstract implements DataTransferObjectInterface
     /**
      * @return array
      */
-    public function toArray()
+    public function toArray($hideSensitiveData = false)
     {
         return [
             'number' => $this->getNumber(),

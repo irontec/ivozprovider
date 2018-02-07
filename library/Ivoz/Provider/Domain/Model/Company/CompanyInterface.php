@@ -81,6 +81,12 @@ interface CompanyInterface extends LoggableEntityInterface
 
     public function getFeatures();
 
+    /**
+     * @param string $name
+     * @return string
+     */
+    public function getServiceCode($name);
+
     public function __toString();
 
     /**

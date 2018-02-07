@@ -78,7 +78,7 @@ abstract class PikeTrustedDtoAbstract implements DataTransferObjectInterface
     /**
      * @return array
      */
-    public function toArray()
+    public function toArray($hideSensitiveData = false)
     {
         return [
             'srcIp' => $this->getSrcIp(),

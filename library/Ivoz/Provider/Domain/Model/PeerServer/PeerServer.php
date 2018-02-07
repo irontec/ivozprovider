@@ -50,11 +50,11 @@ class PeerServer extends PeerServerAbstract implements PeerServerInterface
         if ($isNotNewAndPeeringContractHasChanged || !$this->getBrand()->getId()) {
             $peerContract = $this->getPeeringContract();
             if (!$peerContract) {
-                throw new \Exception('Unknown PeeringContract');
+                throw new \DomainException('Unknown PeeringContract');
             }
             $brand = $peerContract->getBrand();
             if (!$brand) {
-                throw new \Exception('Unknown Brand');
+                throw new \DomainException('Unknown Brand');
             }
             $this->setBrand($brand);
         }
@@ -78,7 +78,7 @@ class PeerServer extends PeerServerAbstract implements PeerServerInterface
             $ip = array_shift($outbound_proxy);
             $obPort = array_shift($outbound_proxy);
             if (!is_null($port)) {
-                throw new \Exception('When Outbound Proxy is used, SIP Proxy must not include a port.', 70003);
+                throw new \DomainException('When Outbound Proxy is used, SIP Proxy must not include a port.', 70003);
             }
             $port = $obPort;
         } else {

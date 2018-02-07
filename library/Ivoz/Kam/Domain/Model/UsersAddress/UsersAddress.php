@@ -55,7 +55,7 @@ class UsersAddress extends UsersAddressAbstract implements UsersAddressInterface
         $mask = $mask ?? 32;
 
         if ($mask < 0 || $mask > 32) {
-            throw new \Exception('Wrong mask, discarding value.', 70001);
+            throw new \DomainException('Wrong mask, discarding value.', 70001);
         }
 
         return parent::setMask($mask);

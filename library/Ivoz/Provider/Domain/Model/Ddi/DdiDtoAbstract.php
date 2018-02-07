@@ -168,7 +168,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
     /**
      * @return array
      */
-    public function toArray()
+    public function toArray($hideSensitiveData = false)
     {
         return [
             'ddi' => $this->getDdi(),

@@ -106,7 +106,7 @@ abstract class TransformationRuleSetDtoAbstract implements DataTransferObjectInt
     /**
      * @return array
      */
-    public function toArray()
+    public function toArray($hideSensitiveData = false)
     {
         return [
             'description' => $this->getDescription(),

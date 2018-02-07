@@ -53,11 +53,11 @@ production:
             title: _("No")
             visualFilter:
               show: []
-              hide: ["username", "pass"]
+              hide: ["pass"]
           '1':
             title: _("Yes")
             visualFilter:
-              show: ["username", "pass"]
+              show: ["pass"]
               hide: []
     timezoneId:
       title: _('Timezone')
@@ -235,11 +235,6 @@ production:
         icon: help
         text: _("Origins matching this list will call directly to the user.")
         label: _("Need help?")
-    username:
-      title: _('Username')
-      type: text
-      trim: both
-      maxLength: 65
     maxCalls:
       title: _('Max calls')
       type: number

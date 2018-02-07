@@ -7,6 +7,7 @@ use Lexik\Bundle\JWTAuthenticationBundle\Security\Authentication\Token\PreAuthen
 use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
 use Lexik\Bundle\JWTAuthenticationBundle\TokenExtractor\TokenExtractorInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Ivoz\Provider\Domain\Model\User\User;
 
@@ -17,6 +18,9 @@ class TokenAuthenticator extends JWTTokenAuthenticator
      */
     protected $jwtManager;
 
+
+    protected $tokenStorage;
+
     /**
      * @param JWTTokenManagerInterface $jwtManager
      * @param EventDispatcherInterface $dispatcher
@@ -25,9 +29,11 @@ class TokenAuthenticator extends JWTTokenAuthenticator
     public function __construct(
         JWTTokenManagerInterface $jwtManager,
         EventDispatcherInterface $dispatcher,
-        TokenExtractorInterface $tokenExtractor
+        TokenExtractorInterface $tokenExtractor,
+        TokenStorage $tokenStorage
     ) {
         $this->jwtManager = $jwtManager;
+        $this->tokenStorage = $tokenStorage;
 
         return parent::__construct(...func_get_args());
     }
@@ -44,11 +50,16 @@ class TokenAuthenticator extends JWTTokenAuthenticator
         }
 
         $payload = $preAuthToken->getPayload();
-        if (in_array('ROLE_USER', $payload['roles'])) {
+        if (in_array('ROLE_COMPANY_USER', $payload['roles'])) {
             $this->jwtManager->setUserIdentityField('email');
         }
 
-        return parent::getUser(...func_get_args());
+        $user = parent::getUser(...func_get_args());
+        if ($user) {
+            $this->tokenStorage->setToken($preAuthToken);
+        }
+
+        return $user;
     }
 
     /**
@@ -60,7 +71,7 @@ class TokenAuthenticator extends JWTTokenAuthenticator
             return parent::loadUser(...func_get_args());
         }
 
-        if (in_array('ROLE_USER', $payload['roles'])) {
+        if (in_array('ROLE_COMPANY_USER', $payload['roles'])) {
             $userProvider
                 ->setEntityClass(User::class)
                 ->setUserIdentityField('email');

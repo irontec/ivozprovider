@@ -27,7 +27,7 @@ class PersistErrorHandler implements PersistErrorHandlerInterface
             && strpos($e->getMessage(), self::UNIQUE_EMAIL_CONSTRAINT_NAME);
 
         if ($isDuplicatedEmailError) {
-            throw new \Exception('Email already in use', 2201, $e);
+            throw new \DomainException('Email already in use', 2201, $e);
         }
 
         throw $e;

@@ -106,7 +106,7 @@ abstract class FaxesInOutDtoAbstract implements DataTransferObjectInterface
     /**
      * @return array
      */
-    public function toArray()
+    public function toArray($hideSensitiveData = false)
     {
         return [
             'calldate' => $this->getCalldate(),

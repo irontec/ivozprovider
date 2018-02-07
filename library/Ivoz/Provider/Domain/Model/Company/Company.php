@@ -158,9 +158,6 @@ class Company extends CompanyAbstract implements CompanyInterface
         // Get company services
         $services = $this->getCompanyServices();
 
-        /**
-         * @var CompanyService $service
-         */
         // Look for an exact match in service name
         foreach ($services as $service) {
             if ($service->getService()->getExtraArgs()) {
@@ -254,7 +251,7 @@ class Company extends CompanyAbstract implements CompanyInterface
         }
 
         if ($this->getType() === self::VPBX && empty($domainUsers)) {
-            throw new \Exception("Domain can't be empty", self::EMPTY_DOMAIN_EXCEPTION);
+            throw new \DomainException("Domain can't be empty", self::EMPTY_DOMAIN_EXCEPTION);
         }
 
         return parent::setDomainUsers($domainUsers);
@@ -359,5 +356,23 @@ class Company extends CompanyAbstract implements CompanyInterface
 
         return $features;
     }
+
+    /**
+     * @param string $name
+     * @return string
+     */
+    public function getServiceCode($name)
+    {
+        // Get company services
+        $services = $this->getCompanyServices();
+        // Look for an exact match in service name
+        foreach ($services as $service) {
+            if ($service->getService()->getIden() == $name)
+                return $service->getCode();
+        }
+
+        return '';
+    }
+
 }
 

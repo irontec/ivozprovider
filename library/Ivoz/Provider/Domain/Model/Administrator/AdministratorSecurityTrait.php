@@ -32,7 +32,7 @@ trait AdministratorSecurityTrait
         }
 
         return [
-            'ROLE_ADMIN'
+            'ROLE_COMPANY_ADMIN'
         ];
     }
 

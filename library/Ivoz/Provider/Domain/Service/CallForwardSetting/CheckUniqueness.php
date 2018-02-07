@@ -50,7 +50,7 @@ class CheckUniqueness implements CallForwardSettingLifecycleEventHandlerInterfac
 
         if ($inconditionalCallForwards->count() > 0) {
             $message = "There is an inconditional call forward with that call type. You can't add call forwards";
-            throw new \Exception($message, 30000);
+            throw new \DomainException($message, 30000);
         }
 
         $isInconditional = ($entity->getCallForwardType() === 'inconditional');
@@ -66,7 +66,7 @@ class CheckUniqueness implements CallForwardSettingLifecycleEventHandlerInterfac
 
             if ($callForwards->count() > 0) {
                 $message = "There are already call forwards with that call type. You can't add inconditional call forward";
-                throw new \Exception($message, 30001);
+                throw new \DomainException($message, 30001);
             }
         }
 
@@ -82,7 +82,7 @@ class CheckUniqueness implements CallForwardSettingLifecycleEventHandlerInterfac
 
             if ($busyCallForwards->count() > 0) {
                 $message = "There is already a busy call forward with that call type.";
-                throw new \Exception($message, 30002);
+                throw new \DomainException($message, 30002);
             }
         }
 
@@ -98,7 +98,7 @@ class CheckUniqueness implements CallForwardSettingLifecycleEventHandlerInterfac
 
             if ($noAnswerCallForwards->count() > 0) {
                 $message = "There is already a noAnswer call forward with that call type.";
-                throw new \Exception($message, 30003);
+                throw new \DomainException($message, 30003);
             }
         }
 
@@ -114,7 +114,7 @@ class CheckUniqueness implements CallForwardSettingLifecycleEventHandlerInterfac
 
             if ($userNotRegisteredCallForwards->count() > 0) {
                 $message = "There is already a userNotRegistered call forward with that call type.";
-                throw new \Exception($message, 30004);
+                throw new \DomainException($message, 30004);
             }
         }
     }

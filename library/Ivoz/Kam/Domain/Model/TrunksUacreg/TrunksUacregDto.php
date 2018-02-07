@@ -9,7 +9,16 @@ use Ivoz\Core\Application\CollectionTransformerInterface;
 
 class TrunksUacregDto extends TrunksUacregDtoAbstract
 {
+    public function toArray($hideSensitiveData = false)
+    {
+        $response = parent::toArray($hideSensitiveData);
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+        $response['auth_password'] = '****';
 
+        return $response;
+    }
 }
 
 

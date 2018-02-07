@@ -17,8 +17,22 @@ $(document).ready(function(){setTimeout(function(){$('[data-toggle="tooltip"]').
             </div>
         </div>
         <p class="text-muted text-center" style="margin-bottom: 0;">{{'statusTerminal' | translate}}
-            <i class="fa fa-check-circle" style="color: green;" ng-show="statusTerminal" data-toggle="tooltip" data-placement="bottom" title="{{'terminalOk' | translate}}"></i>
-            <i class="fa fa-exclamation-circle" style="color: red;" ng-show="!statusTerminal" data-toggle="tooltip" data-placement="bottom" title="{{'terminalFail' | translate}}"></i>
+            <i
+                class="fa fa-check-circle"
+                style="color: green;"
+                ng-show="statusTerminal"
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="{{'terminalOk' | translate}}"
+            ></i>
+            <i
+                class="fa fa-exclamation-circle"
+                style="color: red;"
+                ng-show="!statusTerminal"
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="{{'terminalFail' | translate}}"
+            ></i>
         </p>
         <p class="text-muted text-center" style="margin-bottom: 0;">{{userAgent}}</p>
         <p class="text-muted text-center" style="margin-bottom: 0;">{{ipRegistered}}</p>

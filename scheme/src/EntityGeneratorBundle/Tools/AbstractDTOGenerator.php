@@ -45,7 +45,7 @@ public static function getPropertyMap(string $context = \'\')
 /**
  * @return array
  */
-public function toArray()
+public function toArray($hideSensitiveData = false)
 {
     return [<toArray>];
 }

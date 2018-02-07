@@ -9,23 +9,22 @@ angular
         appConfig,
         $http
     ) {
-    
+
     ngProgress.color('blue');
     ngProgress.start();
-    
+
     $scope.totalCalls = 0;
     $scope.totalDetours = 0;
-    
-    $http.get(appConfig.urlRest + 'index').success(function(data, status) {
+
+    $http.get(appConfig.urlRest + 'my/call_stats').success(function(data, status) {
+
         ngProgress.complete();
-        if (status > 400) {
+        if (status >= 400) {
             $scope.totalCalls = 0;
             $scope.totalDetours = 0;
         } else {
-            $scope.totalCalls = data.calls.total;
-            $scope.totalDetours = data.detours.total;
+            $scope.totalCalls = data.totalCalls;
+            $scope.totalDetours = data.totalDetours;
         }
-        
     });
-    
 });

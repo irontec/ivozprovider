@@ -2,7 +2,6 @@
 
 namespace Ivoz\Api\Swagger\Serializer\DocumentationNormalizer;
 
-use ApiPlatform\Core\Metadata\Property\Factory\PropertyNameCollectionFactoryInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 
@@ -14,16 +13,8 @@ class ReferenceFixerDecorator implements NormalizerInterface
     protected $decoratedNormalizer;
 
     public function __construct(
-        NormalizerInterface $decoratedNormalizer,
-        PropertyNameCollectionFactoryInterface $propertyNameCollectionFactory
+        NormalizerInterface $decoratedNormalizer
     ) {
-
-        $reflection = new \ReflectionClass($decoratedNormalizer);
-        $property = $reflection->getProperty('propertyNameCollectionFactory');
-        $property->setAccessible(true);
-        $property->setValue($decoratedNormalizer, $propertyNameCollectionFactory);
-        $property->setAccessible(false);
-
         $this->decoratedNormalizer = $decoratedNormalizer;
     }
 
@@ -118,7 +109,12 @@ class ReferenceFixerDecorator implements NormalizerInterface
 
     private function setContext($property, $context)
     {
-        if ($this->isEntity($property['$ref']) && $context !== DataTransferObjectInterface::CONTEXT_DETAILED) {
+        $noSublevelContexts = [
+            DataTransferObjectInterface::CONTEXT_SIMPLE,
+            DataTransferObjectInterface::CONTEXT_COLLECTION
+        ];
+
+        if ($this->isEntity($property['$ref']) && in_array($context, $noSublevelContexts)) {
             unset($property['$ref']);
             $property['type'] = 'integer';
             return $property;

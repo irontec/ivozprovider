@@ -86,6 +86,27 @@
 
                     </div>
 
+                    <div class="form-group col-md-12" ng-show="callForwardTypeNoAnswer">
+
+                        <label
+                                for="noAnswerTimeout"
+                                class="col-sm-4 control-label"
+                                translate="noAnswerTimeout"
+                        ></label>
+
+                        <div class="col-sm-8">
+                            <input
+                                    type="number"
+                                    name="noAnswerTimeout"
+                                    id="noAnswerTimeout"
+                                    class="form-control"
+                                    placeholder="{{'noAnswerTimeout' | translate}}"
+                                    ng-model="detour.noAnswerTimeout"
+                            />
+                        </div>
+
+                    </div>
+
                     <div class="form-group col-md-12">
 
                         <label
@@ -121,7 +142,7 @@
 
                         <div class="col-sm-8">
                             <input
-                                    type="number"
+                                    type="text"
                                     name="numberValue"
                                     id="numberValue"
                                     class="form-control"
@@ -135,7 +156,7 @@
                     <div class="form-group col-md-12" ng-show="extensionShow">
 
                         <label
-                                for="extensionId"
+                                for="extension"
                                 class="col-sm-4 control-label"
                                 translate="extension"
                         ></label>
@@ -143,9 +164,9 @@
                         <div class="col-sm-8">
                             <select
                                     class="form-control"
-                                    id="extensionId"
-                                    name="extensionId"
-                                    ng-model="detour.extensionId"
+                                    id="extension"
+                                    name="extension"
+                                    ng-model="detour.extension"
                             >
                                 <option ng-repeat="extension in extensions" value="{{extension.id}}">{{extension.number}}</option>
                             </select>
@@ -157,7 +178,7 @@
                     <div class="form-group col-md-12" ng-show="voiceMailUserShow">
 
                         <label
-                                for="voiceMailUserId"
+                                for="voiceMailUser"
                                 class="col-sm-4 control-label"
                                 translate="voiceMailUser"
                         ></label>
@@ -165,9 +186,9 @@
                         <div class="col-sm-8">
                             <select
                                     class="form-control"
-                                    id="voiceMailUserId"
-                                    name="voiceMailUserId"
-                                    ng-model="detour.voiceMailUserId"
+                                    id="voiceMailUser"
+                                    name="voiceMailUser"
+                                    ng-model="detour.voiceMailUser"
                             >
                                 <option ng-repeat="user in users" value="{{user.id}}">{{user.name}}</option>
                             </select>
@@ -175,26 +196,6 @@
 
                     </div>
 
-                    <div class="form-group col-md-12" ng-show="callForwardTypeNoAnswer">
-
-                        <label
-                                for="noAnswerTimeout"
-                                class="col-sm-4 control-label"
-                                translate="noAnswerTimeout"
-                        ></label>
-
-                        <div class="col-sm-8">
-                            <input
-                                    type="number"
-                                    name="noAnswerTimeout"
-                                    id="noAnswerTimeout"
-                                    class="form-control"
-                                    placeholder="{{'noAnswerTimeout' | translate}}"
-                                    ng-model="detour.noAnswerTimeout"
-                            />
-                        </div>
-
-                    </div>
 
                 </div>
             </div>

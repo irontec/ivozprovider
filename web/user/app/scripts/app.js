@@ -53,7 +53,7 @@ angular
             var service = {};
             service.RunConfig = function() {
 
-                return $http.get(appConfig.urlRest + 'config').success(function(data) {
+                return $http.get(appConfig.urlRest + 'my/web_theme').success(function(data) {
                     $rootScope.theme = data.theme;
                     $rootScope.logo = data.logo;
                     $rootScope.brandName = data.name;
@@ -67,7 +67,7 @@ angular
     function retrieveConstants() {
         var location = window.location;
         return {
-            'urlRest': 'https://' + location.hostname + '/userweb/'
+            'urlRest': 'https://' + location.hostname + '/api/'
         };
     }
 
@@ -83,8 +83,9 @@ angular
         $httpProvider.interceptors.push('httpRequestInterceptor');
         $httpProvider.interceptors.push('httpResponseInterceptor');
 
-        AuthenticationConfigProvider.setAuthType('Hmac');
-        AuthenticationConfigProvider.setAuthUrl(appConfig.urlRest + 'auth');
+        AuthenticationConfigProvider.setAuthType('Bearer');
+        AuthenticationConfigProvider.setMyStatusUrl(appConfig.urlRest + 'my/status');
+        AuthenticationConfigProvider.setAuthUrl(appConfig.urlRest + 'user_login');
 
         RestangularProvider.setBaseUrl(appConfig.urlRest);
         RestangularProvider.setFullResponse(true);
@@ -132,31 +133,32 @@ angular
                 url: '/',
                 templateUrl: 'views/index/index.html',
                 controller: 'IndexCtrl'
-            }).state('app.calls', {
-            url: '/calls',
-            templateUrl: 'views/calls/calls.html',
-            controller: 'CallsCtrl'
-        }).state('app.detours', {
-            url: '/detours',
-            templateUrl: 'views/detours/detours.html',
-            controller: 'DetoursCtrl'
-        }).state('app.detoursEdit', {
-            url: '/detours/{detourId}',
-            templateUrl: 'views/detours/edit.html',
-            controller: 'DetoursEditController'
-        }).state('app.detoursNew', {
-            url: '/detour',
-            templateUrl: 'views/detours/new.html',
-            controller: 'DetoursNewController'
-        }).state('app.account', {
-            url: '/account',
-            templateUrl: 'views/account/account.html',
-            controller: 'AccountCtrl'
-        }).state('app.preferences', {
-            url: '/preferences',
-            templateUrl: 'views/preferences/preferences.html',
-            controller: 'PreferencesCtrl'
-        });
+            })
+            .state('app.calls', {
+                url: '/calls',
+                templateUrl: 'views/calls/calls.html',
+                controller: 'CallsCtrl'
+            }).state('app.detours', {
+                url: '/detours',
+                templateUrl: 'views/detours/detours.html',
+                controller: 'DetoursCtrl'
+            }).state('app.detoursEdit', {
+                url: '/detours/{detourId}',
+                templateUrl: 'views/detours/edit.html',
+                controller: 'DetoursEditController'
+            }).state('app.detoursNew', {
+                url: '/detour',
+                templateUrl: 'views/detours/new.html',
+                controller: 'DetoursNewController'
+            }).state('app.account', {
+                url: '/account',
+                templateUrl: 'views/account/account.html',
+                controller: 'AccountCtrl'
+            }).state('app.preferences', {
+                url: '/preferences',
+                templateUrl: 'views/preferences/preferences.html',
+                controller: 'PreferencesCtrl'
+            });
 
         $translateProvider.useStaticFilesLoader({
             prefix: 'languages/locale-',
@@ -177,7 +179,7 @@ angular
             configGlobal.RunConfig();
             var type = localStorage.getItem('auth-type');
 
-            if ($location.path() !== '/login' && localStorage.getItem('token-' + type) === null) {
+            if ($location.path() !== '/login' && localStorage.getItem('auth-token') === null) {
                 $location.path('/login');
             }
 

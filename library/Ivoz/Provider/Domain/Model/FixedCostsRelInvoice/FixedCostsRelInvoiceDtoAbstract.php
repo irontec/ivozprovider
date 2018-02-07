@@ -66,7 +66,7 @@ abstract class FixedCostsRelInvoiceDtoAbstract implements DataTransferObjectInte
     /**
      * @return array
      */
-    public function toArray()
+    public function toArray($hideSensitiveData = false)
     {
         return [
             'quantity' => $this->getQuantity(),

@@ -54,7 +54,7 @@ abstract class IvrExcludedExtensionDtoAbstract implements DataTransferObjectInte
     /**
      * @return array
      */
-    public function toArray()
+    public function toArray($hideSensitiveData = false)
     {
         return [
             'id' => $this->getId(),

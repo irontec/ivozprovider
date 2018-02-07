@@ -53,7 +53,6 @@ production:
           PickUpRelUsers: true
         blacklist:
           email: true
-          username: true
           active: true
           doNotDisturb: true
           pass: true
@@ -99,7 +98,6 @@ production:
         blacklist:
           HuntGroupsRelUsers: true
           tokenKey: true
-          username: true
           active: true
           doNotDisturb: true
           pass: true
@@ -147,7 +145,6 @@ production:
       fields:
         blacklist:
           tokenKey: true
-          username: true
         order:
           <<: *Users_orderLink
       fixedPositions: &UsersFixedPositions_link

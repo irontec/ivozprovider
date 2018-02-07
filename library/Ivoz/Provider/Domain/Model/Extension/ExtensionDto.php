@@ -10,6 +10,20 @@ use Ivoz\Core\Application\CollectionTransformerInterface;
 class ExtensionDto extends ExtensionDtoAbstract
 {
 
+    /**
+     * @inheritdoc
+     */
+    public static function getPropertyMap(string $context = '')
+    {
+        if ($context === self::CONTEXT_COLLECTION) {
+            return [
+                'id' => 'id',
+                'number' => 'number'
+            ];
+        }
+
+        return parent::getPropertyMap(...func_get_args());
+    }
 }
 
 

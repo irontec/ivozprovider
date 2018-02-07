@@ -19,7 +19,7 @@ class CheckValidity implements PikeTrustedLifecycleEventHandlerInterface
 
         // Validate IP
         if (!filter_var($ip, FILTER_VALIDATE_IP, array(FILTER_FLAG_IPV4))) {
-            throw new \Exception('Invalid IP address, discarding value.', 70000);
+            throw new \DomainException('Invalid IP address, discarding value.', 70000);
         }
 
         $entity->setProto('any');

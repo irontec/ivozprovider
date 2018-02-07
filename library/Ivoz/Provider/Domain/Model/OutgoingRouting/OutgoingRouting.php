@@ -41,7 +41,7 @@ class OutgoingRouting extends OutgoingRoutingAbstract implements OutgoingRouting
                 $this->setRoutingPatternGroup(null);
                 break;
             default:
-                throw new \Exception('Incorrect Outgoing Routing Type');
+                throw new \DomainException('Incorrect Outgoing Routing Type');
         }
     }
 }
