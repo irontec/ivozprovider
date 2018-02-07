@@ -234,4 +234,4 @@ Ivoz\Provider\Domain\Model\TransformationRule\TransformationRule:
     access_control: '"ROLE_SUPER_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\User\User:
   attributes:
-    access_control: '"ROLE_COMPANY_USER" in roles'
+    access_control: '"ROLE_COMPANY_USER" in rolesº'

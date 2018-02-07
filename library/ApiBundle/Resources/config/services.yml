@@ -240,3 +240,8 @@ services:
     tags:
       - { name: api_platform.doctrine.orm.query_extension.item }
 
+  Ivoz\Api\Doctrine\Orm\Extension\CollectionExtensionList:
+    calls:
+        - [ addExtension, ['@api_platform.doctrine.orm.query_extension.filter'] ]
+        - [ addExtension, ['@api_platform.doctrine.orm.query_extension.pagination'] ]
+        - [ addExtension, ['@api_platform.doctrine.orm.query_extension.order'] ]

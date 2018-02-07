@@ -76,6 +76,9 @@ Ivoz\Provider\Domain\Model\User\User:
         groups: ['myProfile']
       parameters: []
       swagger_context:
+        produces:
+          - 'application/ld+json'
+          - 'application/json'
         tags:
           - My
         parameters: []
@@ -110,6 +113,9 @@ Ivoz\Provider\Domain\Model\User\User:
       route_name: 'get_my_company_assistants'
       parameters: []
       swagger_context:
+        produces:
+          - 'application/ld+json'
+          - 'application/json'
         tags:
           - My
         parameters: []
@@ -120,6 +126,9 @@ Ivoz\Provider\Domain\Model\User\User:
       route_name: 'get_my_company_voicemails'
       parameters: []
       swagger_context:
+        produces:
+          - 'application/ld+json'
+          - 'application/json'
         tags:
           - My
         parameters: []
@@ -136,6 +145,9 @@ Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting:
       normalization_context:
         groups: ['detailedCollection']
       swagger_context:
+        produces:
+          - 'application/ld+json'
+          - 'application/json'
         tags:
           - My
         parameters: []
@@ -146,9 +158,12 @@ Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting:
       route_name: 'post_my_call_forward_settings'
       parameters: []
       swagger_context:
+        consumes: ["application/ld+json"]
+        produces:
+          - 'application/ld+json'
+          - 'application/json'
         tags:
           - My
-        consumes: ["application/ld+json"]
         parameters:
           - name: 'CallForwardSetting'
             in: 'body'
@@ -167,6 +182,9 @@ Ivoz\Provider\Domain\Model\Extension\Extension:
         - collection
       parameters: []
       swagger_context:
+        produces:
+          - 'application/ld+json'
+          - 'application/json'
         tags:
           - My
         parameters: []

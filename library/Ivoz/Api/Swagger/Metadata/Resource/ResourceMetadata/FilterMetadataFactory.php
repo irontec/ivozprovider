@@ -9,6 +9,7 @@ use Ivoz\Api\Swagger\Metadata\Property\Factory\PropertyNameCollectionFactory;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Symfony\Bridge\Doctrine\ManagerRegistry;
 use Doctrine\ORM\Mapping\ClassMetadata;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter;
 
 class FilterMetadataFactory implements ResourceMetadataFactoryInterface
 {
@@ -80,36 +81,39 @@ class FilterMetadataFactory implements ResourceMetadataFactoryInterface
             $type = $this->getFieldType($resourceClass, $attribute);
             switch($type) {
                 case 'string':
-                case 'text':
                 case 'guid':
-                    $filters['ivoz.api.filter.search'][] = $attribute;
+                    $filters['ivoz.api.filter.search'][$attribute] = Filter\SearchFilter::STRATEGY_START;
+                    break;
+                case 'text':
+                    $filters['ivoz.api.filter.search'][$attribute] = Filter\SearchFilter::STRATEGY_PARTIAL;
                     break;
                 case 'smallint':
                 case 'integer':
                 case 'bigint':
                 case 'decimal':
                 case 'float':
-                    $filters['ivoz.api.filter.numeric'][] = $attribute;
-                    $filters['ivoz.api.filter.range'][] = $attribute;
+                    $filters['ivoz.api.filter.numeric'][$attribute] = null;
+                    $filters['ivoz.api.filter.range'][$attribute] = null;
                     break;
                 case ClassMetadataInfo::MANY_TO_ONE:
-                    $filters['ivoz.api.filter.search'][] = $attribute;
+                    $filters['ivoz.api.filter.search'][$attribute] = Filter\SearchFilter::STRATEGY_EXACT;;
                     break;
                 case 'boolean':
-                    $filters['ivoz.api.filter.boolean'][] = $attribute;
+                    $filters['ivoz.api.filter.boolean'][$attribute] = null;
                     break;
                 case 'date':
                 case 'datetime':
                 case 'datetimetz':
                 case 'time':
-                    $filters['ivoz.api.filter.date'][] = $attribute;
+                    $filters['ivoz.api.filter.search'][$attribute] = Filter\SearchFilter::STRATEGY_START;
+                    $filters['ivoz.api.filter.range'][$attribute] = null;
                     break;
                 default:
                     // Value object and ClassMetadataInfo::ONE_TO_MANY
             }
 
             if (!is_null($type)) {
-                $filters['ivoz.api.filter.order'][] = $attribute;
+                $filters['ivoz.api.filter.order'][$attribute] = Filter\OrderFilter::NULLS_LARGEST;
             }
         }
 

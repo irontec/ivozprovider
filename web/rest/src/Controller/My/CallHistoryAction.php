@@ -2,11 +2,15 @@
 
 namespace Controller\My;
 
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Extension\QueryResultCollectionExtensionInterface;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Util\QueryNameGenerator;
 use ApiPlatform\Core\Exception\ResourceClassNotFoundException;
+use Doctrine\ORM\QueryBuilder;
+use Ivoz\Api\Doctrine\Orm\Extension\CollectionExtensionList;
 use Ivoz\Kam\Domain\Model\UsersCdr\UsersCdrRepository;
+use Ivoz\Kam\Domain\Model\UsersCdr\UsersCdr;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
-use Symfony\Component\HttpFoundation\RequestStack;
 
 class CallHistoryAction
 {
@@ -21,18 +25,18 @@ class CallHistoryAction
     protected $usersCdrRepository;
 
     /**
-     * @var RequestStack
+     * @var CollectionExtensionList
      */
-    protected $requestStack;
+    protected $collectionExtensions;
 
     public function __construct (
         TokenStorage $tokenStorage,
         UsersCdrRepository $usersCdrRepository,
-        RequestStack $requestStack
+        CollectionExtensionList $collectionExtensions
     ) {
         $this->tokenStorage = $tokenStorage;
         $this->usersCdrRepository = $usersCdrRepository;
-        $this->requestStack = $requestStack;
+        $this->collectionExtensions = $collectionExtensions;
     }
 
     public function __invoke()
@@ -45,9 +49,44 @@ class CallHistoryAction
         }
 
         $user = $token->getUser();
-
-        return $this
+        $qb = $this
             ->usersCdrRepository
-            ->findBy(['user' => $user->getId()]);
+            ->createQueryBuilder('o');
+
+        $qb->where(
+            $qb->expr()->eq(
+                'o.user',
+                $user->getId()
+            )
+        );
+
+        return $this->applyCollectionExtensions(
+            $qb,
+            UsersCdr::class,
+            'my_call_history'
+        );
+    }
+
+    protected function applyCollectionExtensions(QueryBuilder $qb, string $entityClass, string $operationName)
+    {
+        $queryNameGenerator = new QueryNameGenerator();
+        foreach ($this->collectionExtensions->get() as $extension) {
+            $extension->applyToCollection(
+                $qb,
+                $queryNameGenerator,
+                $entityClass,
+                $operationName
+            );
+
+            $returnResults =
+                $extension instanceof QueryResultCollectionExtensionInterface
+                && $extension->supportsResult($entityClass, $operationName);
+
+            if ($returnResults) {
+                return $extension->getResult($qb);
+            }
+        }
+
+        return $qb->getQuery()->getResult();
     }
 }

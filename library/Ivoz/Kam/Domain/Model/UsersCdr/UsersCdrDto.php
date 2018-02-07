@@ -21,6 +21,9 @@ class UsersCdrDto extends UsersCdrDtoAbstract
                 'startTime' => 'startTime',
                 'endTime' => 'endTime',
                 'duration' => 'duration',
+                'direction' => 'direction',
+                'caller' => 'caller',
+                'callee' => 'callee'
             ];
         }
 

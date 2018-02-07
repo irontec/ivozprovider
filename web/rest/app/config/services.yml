@@ -106,6 +106,6 @@ services:
     public: true
     arguments:
       $tokenStorage: '@security.token_storage'
-      $requestStack: '@request_stack'
+      $collectionExtensions: '@Ivoz\Api\Doctrine\Orm\Extension\CollectionExtensionList'
       $usersCdrRepository:
         '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Kam\\Domain\\Model\\UsersCdr\\UsersCdr")'

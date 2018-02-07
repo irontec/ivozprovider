@@ -67,13 +67,41 @@ class EntityNormalizer implements NormalizerInterface
         }
 
         if (isset($context['item_operation_name']) && $context['item_operation_name'] === 'put') {
-            $object = $this->initializeRelationships($object);
+            $object = $this->initializeRelationships($object, []);
         }
 
-        return $this->normalizeEntity(
+        $data = $this->normalizeEntity(
             $object,
             $context
         );
+
+        return $this->flatten($data);
+    }
+
+    protected function flatten(array $data = null)
+    {
+        if (!$data) {
+            return $data;
+        }
+
+        foreach ($data as $key => $value) {
+
+            if (!is_object($value)) {
+                continue;
+            }
+
+            $class = get_class($value);
+            switch ($class) {
+                case 'DateTime':
+                    /** @todo this should be done by dto::toArray  $value */
+                    $value = $value->format('Y-m-d H:i:s');
+                    break;
+            }
+
+            $data[$key] = $value;
+        }
+
+        return $data;
     }
 
     private function initializeRelationships(EntityInterface $entity, array $propertyFilters)

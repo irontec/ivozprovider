@@ -63,8 +63,7 @@ class OperationMetadataFactory implements ResourceMetadataFactoryInterface
     {
         $defaultFormats = [
             'application/ld+json',
-            'application/json',
-            'text/html'
+            'application/json'
         ];
 
         $itemOperations = array_replace_recursive(
