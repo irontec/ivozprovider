@@ -117,7 +117,7 @@ angular
 
         function accountUpdateSuccessHandler(response) {
 
-            if (response.status > 400) {
+            if (response.status >= 400) {
 
                 $scope.formAction = true;
                 $scope.error = true;

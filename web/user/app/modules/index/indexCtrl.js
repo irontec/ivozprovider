@@ -19,7 +19,7 @@ angular
     $http.get(appConfig.urlRest + 'my/call_stats').success(function(data, status) {
 
         ngProgress.complete();
-        if (status > 400) {
+        if (status >= 400) {
             $scope.totalCalls = 0;
             $scope.totalDetours = 0;
         } else {

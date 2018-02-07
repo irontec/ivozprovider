@@ -58,7 +58,7 @@ class Ddi extends DdiAbstract implements DdiInterface
             $this->getBillInboundCalls()
             && !$this->getPeeringContract()->getExternallyRated()
         ) {
-            throw new \Exception(
+            throw new \DomainException(
                 'Inbound Calls cannot be billed as PeeringContract is not externally rated',
                 90000
             );

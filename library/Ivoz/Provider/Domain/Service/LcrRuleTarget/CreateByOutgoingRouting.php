@@ -28,7 +28,7 @@ class CreateByOutgoingRouting implements OutgoingRoutingLifecycleEventHandlerInt
     {
         $peeringContract = $outgoingRouting->getPeeringContract();
         if (empty($peeringContract)) {
-            throw new \Exception('Peering Contract not found');
+            throw new \DomainException('Peering Contract not found');
         }
 
         $peerServers = $peeringContract->getPeerServers();

@@ -15,6 +15,13 @@ services:
   ################################################
   ## Listeners
   ################################################
+  Ivoz\Api\Symfony\EventListener\DomainExceptionListener:
+    arguments:
+      $serializer: '@api_platform.serializer'
+      $errorFormats: '%api_platform.error_formats%'
+    tags:
+      - { name: kernel.event_listener, event: kernel.exception, priority: 2 }
+
   Ivoz\Api\EventListener\RegisterCommandListener:
     arguments:
       $eventPublisher: '@Ivoz\Core\Domain\Service\DomainEventPublisher'

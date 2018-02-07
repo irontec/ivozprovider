@@ -33,7 +33,7 @@ class InvoiceTemplate extends InvoiceTemplateAbstract implements InvoiceTemplate
     public function setTemplate($template)
     {
         if (empty($template)) {
-            throw new \Exception('Template cannot be empty', 80000);
+            throw new \DomainException('Template cannot be empty', 80000);
         }
 
         return parent::setTemplate(...func_get_args());

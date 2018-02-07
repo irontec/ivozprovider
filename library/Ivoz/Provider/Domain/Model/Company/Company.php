@@ -251,7 +251,7 @@ class Company extends CompanyAbstract implements CompanyInterface
         }
 
         if ($this->getType() === self::VPBX && empty($domainUsers)) {
-            throw new \Exception("Domain can't be empty", self::EMPTY_DOMAIN_EXCEPTION);
+            throw new \DomainException("Domain can't be empty", self::EMPTY_DOMAIN_EXCEPTION);
         }
 
         return parent::setDomainUsers($domainUsers);

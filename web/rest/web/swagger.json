@@ -1,6 +1,6 @@
 {
     "swagger": "2.0",
-    "basePath": "\/api\/index.php\/",
+    "basePath": "\/api\/",
     "info": {
         "title": "Ivoz Provider",
         "version": "2.0-1.0.0"

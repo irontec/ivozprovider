@@ -45,7 +45,7 @@ angular
             {headers: {accept: 'application/ld+json'}, params: params}
         ).then(function(calls) {
 
-            if (calls.status > 400) {
+            if (calls.status >= 400) {
                 $scope.totalItems = 0;
                 $scope.calls = {};
             } else {
@@ -108,8 +108,14 @@ angular
         var params = $scope.callsParams.search;
         params._pagination = false;
 
+
+        var endpoint = 'my/call_history';
+        if ($scope.callsParams._order) {
+            endpoint += '?' + $.param({_order: $scope.callsParams._order});
+        }
+
         $http.get(
-            appConfig.urlRest + 'my/call_history',
+            appConfig.urlRest + endpoint,
             {headers: {accept: 'application/json'}, params: params}
         ).then(function (data) {
             data.data = filterCsvData(data.data);
@@ -117,7 +123,6 @@ angular
         });
 
         return {
-            //content: [{a: 1, b: 2}, {c:3, d:4}],
             promise: promise,
             title: 'llamadas.csv'
         };

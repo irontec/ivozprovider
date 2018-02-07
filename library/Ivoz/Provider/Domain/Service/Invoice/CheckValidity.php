@@ -82,7 +82,7 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
         );
 
         if ($untarificattedCallNum) {
-            throw new \Exception('', self::UNMETERED_CALLS);
+            throw new \DomainException('', self::UNMETERED_CALLS);
         }
 
         $utcOutDate = $outDate

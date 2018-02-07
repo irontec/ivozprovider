@@ -145,7 +145,7 @@ class ARIConnector
         }
 
         // No Application Server handled our request
-        throw new \Exception(
+        throw new \DomainException(
             'No Application Server available.',
             self::NO_SERVERS_AVAILABLE_EXCEPTION
         );

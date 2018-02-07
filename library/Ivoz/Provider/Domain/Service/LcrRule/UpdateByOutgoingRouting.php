@@ -77,7 +77,7 @@ class UpdateByOutgoingRouting implements OutgoingRoutingLifecycleEventHandlerInt
         } elseif ($outgoingRouting->getType() === 'fax') {
             $routingPatterns[] = null;
         } else {
-            throw new \Exception('Incorrect Outgoing Routing Type');
+            throw new \DomainException('Incorrect Outgoing Routing Type');
         }
 
         return $routingPatterns;
