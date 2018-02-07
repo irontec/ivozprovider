@@ -148,7 +148,7 @@ class ChannelInfo
             case "Friend":
                 $repository = $this->em->getRepository(Friend::class);
                 break;
-            case "Retail":
+            case "RetailAccount":
                 $repository = $this->em->getRepository(RetailAccount::class);
                 break;
             case "Fax":
