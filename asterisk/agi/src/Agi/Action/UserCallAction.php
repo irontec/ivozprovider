@@ -180,10 +180,12 @@ class UserCallAction
     /**
      * If user has NoAnswer Call forward setting, return the dial timeout
      *
-     * @return int
+     * @return string
      */
     private function getDialTimeout()
     {
+        $timeout = null;
+
         // Process inconditional Call Forwards
         $criteria = new Criteria();
         $criteria->where(
@@ -202,11 +204,11 @@ class UserCallAction
             $cfwType = $cfwSetting->getCallTypeFilter();
             if ($cfwType == "both" || $cfwType == $this->agi->getCallType()) {
                 $this->agi->verbose("Call Forward No answer enabled [%s]. Setting call timeout.", $cfwSetting);
-                return $cfwSetting->getNoAnswerTimeout();
+                $timeout = $cfwSetting->getNoAnswerTimeout();
             }
         }
 
-        return 0;
+        return ($timeout)?:"";
     }
 
 }
