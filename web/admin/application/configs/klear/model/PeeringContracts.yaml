@@ -29,6 +29,7 @@ production:
     transformationRuleSetId:
       title: _('Numeric transformation')
       type: select
+      defaultValue: 252
       required: true
       source:
         data: mapper

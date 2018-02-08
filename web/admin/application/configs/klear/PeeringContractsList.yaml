@@ -55,6 +55,19 @@ production:
           <<: *PeerContractsOrder_Link
         blacklist:
           externallyRated: ${auth.brand.billing.disabled}
+      fixedPositions:
+        group0:
+          label: _("Basic Configuration")
+          colsPerRow: 12
+          fields:
+            name: 5
+            description: 7
+        group1:
+          label: _("Extra Configuration")
+          colsPerRow: 6
+          fields:
+            transformationRuleSetId: 3
+            externallyRated: 3
 
     peeringContractsEdit_screen: &peeringContractsEdit_screenLink
       <<: *PeeringContracts
