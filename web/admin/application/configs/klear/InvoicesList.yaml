@@ -38,7 +38,7 @@ production:
           totalWithTax: true
           status: true
           invoiceTemplateId: true
-          pdfFile: true
+          pdf: true
         blacklist:
           FixedCostsRelInvoicesId: true
       options:
@@ -66,7 +66,7 @@ production:
           total: true
           totalWithTax: true
           status: true
-          pdfFile: true
+          pdf: true
           FixedCostsRelInvoicesId: true
       fixedPositions: &invoicesFixedPositions_Link
         group0:
@@ -89,7 +89,7 @@ production:
           colsPerRow: 2
           fields:
             status: 1
-            pdfFile: 1
+            pdf: 1
 
     invoicesEdit_screen: &invoicesEdit_screenLink
       <<: *Invoices
@@ -157,18 +157,18 @@ production:
       <<: *Invoices
       controller: File
       action: force-download
-      mainColumn: pdfFile
+      mainColumn: pdf
       class: ui-silk-bullet-disk
     invoicesPdfFileUpload_command: &invoicesPdfFileUpload_commandLink
       <<: *Invoices
       controller: File
       action: upload
-      mainColumn: pdfFile
+      mainColumn: pdf
     invoicesPdfFilePreview_command: &invoicesPdfFilePreview_commandLink
       <<: *Invoices
       controller: File
       action: preview
-      mainColumn: pdfFile
+      mainColumn: pdf
       arguments:
         cache:
           enabled: true
