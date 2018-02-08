@@ -18,18 +18,13 @@ production:
       fields:
         blacklist:
           lUuid: true
-          lUsername: true
-          lDomain: true
           realm: true
           expires: true
           authUsername: true
           authPassword: true
           authProxy: true
-          flags: true
-          regDelay: true
           multiDDI: true
         order:
-          targetDDI: true
           rUsername: true
           rDomain: true
         options:
@@ -39,24 +34,6 @@ production:
           dialogs:
             kamTrunksUacregDel_dialog: true
           default: kamTrunksUacregEdit_screen
-      fixedPositions: &kamTrunksUacregFixedPositions_link
-        group0:
-          label: _("Main Settings")
-          colsPerRow: 12
-          fields:
-            rUsername: 5
-            rDomain: 5
-            authPassword: 12
-            multiddi: 4
-            lUuid: 8
-        group1:
-          label: _("Optional Settings")
-          colsPerRow: 12
-          fields:
-            authUsername: 5
-            authProxy: 5
-            realm: 6
-            expires: 6
       options:
         title: _("Options")
         screens:
@@ -73,24 +50,41 @@ production:
       forcedValues:
         <<: *forcedBrand
       shortcutOption: N
-      fields:
-        blacklist:
-          targetDDI: true
-          lUsername: true
-          lDomain: true
-          flags: true
-          regDelay: true
+      fields: &kamTrunksUacregFields_link
         order:
           rUsername: true
-          lUuid: true
           rDomain: true
           authPassword: true
+          multiDDI: true
+          lUuid: true
           authUsername: true
           authProxy: true
           realm: true
           expires: true
-      fixedPositions:
-        <<: *kamTrunksUacregFixedPositions_link
+      fixedPositions: &kamTrunksUacregFixedPositions_link
+        group0:
+          label: _("Main Settings")
+          colsPerRow: 12
+          fields:
+            rUsername: 5
+            rDomain: 5
+            authPassword: 12
+        group1:
+          label: _("Contact Settings")
+          colsPerRow: 12
+          collapsed: true
+          fields:
+            multiDDI: 6
+            lUuid: 6
+        group2:
+          label: _("Optional Settings")
+          colsPerRow: 12
+          collapsed: true
+          fields:
+            authUsername: 5
+            authProxy: 5
+            realm: 6
+            expires: 6
     kamTrunksUacregEdit_screen: &kamTrunksUacregEdit_screenLink
       <<: *KamTrunksUacreg
       controller: edit
@@ -100,22 +94,7 @@ production:
       forcedValues:
         <<: *forcedBrand
       fields:
-        blacklist:
-          targetDDI: true
-          lUsername: true
-          lDomain: true
-          flags: true
-          regDelay: true
-        order:
-          rUsername: true
-          multiddi: true
-          lUuid: true
-          rDomain: true
-          authPassword: true
-          authUsername: true
-          authProxy: true
-          realm: true
-          expires: true
+        <<: *kamTrunksUacregFields_link
       fixedPositions:
         <<: *kamTrunksUacregFixedPositions_link
   dialogs: &kamTrunksUacreg_dialogsLink

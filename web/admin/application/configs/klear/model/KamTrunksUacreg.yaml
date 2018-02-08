@@ -2,9 +2,9 @@ production:
   entity: Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacreg
   fields:
     multiDDI:
-      title: _('Multi DDI')
+      title: _('Random Contact Username')
       type: select
-      defaultValue: 0
+      defaultValue: 1
       source:
         data: inline
         values:
@@ -19,7 +19,7 @@ production:
               show: []
               hide: ["lUuid"]
     lUuid:
-      title: _('DDI')
+      title: _('Contact Username')
       type: text
       trim: both
       defaultValue:
@@ -31,15 +31,6 @@ production:
         text: _("Is sent in the username of Contact header in generated REGISTER.")
         label: _("Need help?")
       required: true
-    lUsername:
-      type: text
-      trim: both
-      defaultValue:
-    lDomain:
-      type: text
-      trim: both
-      defaultValue:
-      maxLength: 190
     rUsername:
       title: _('Username')
       type: text
@@ -129,24 +120,6 @@ production:
             template: '%description%'
           order:
             PeeringContract.description: asc
-    flags:
-      title: _('Flag')
-      type: number
-      defaultValue: 0
-      source:
-        control: Spinner
-    regDelay:
-      title: _('Reg delay')
-      type: number
-      defaultValue: 0
-      source:
-        control: Spinner
-    targetDDI:
-      title: _('DDI')
-      type: ghost
-      source:
-        class: IvozProvider_Klear_Ghost_KamTrunksUacRegTargetDDI
-        method: getData
 staging:
   _extends: production
 testing:
