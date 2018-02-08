@@ -21,14 +21,14 @@ class Builder
     /**
      * @var BrandUrlDTO
      */
-    protected static $_brandURL;
+    protected static $_URL;
 
     public static function factory()
     {
-        $currentURLs = self::_loadCurrentURLs();
-        self::_resolveBrand($currentURLs);
+        $currentURL = self::_loadCurrentURL();
+        self::_resolveBrand($currentURL);
 
-        $brandURLType = self::$_brandURL->getUrlType();
+        $brandURLType = self::$_URL->getUrlType();
 
         $dynamic = null;
         if ($brandURLType == 'god') {
@@ -39,7 +39,7 @@ class Builder
             $dynamic = new CompanyAdmin();
         } elseif ($brandURLType == 'user') {
 
-            header("Location: " . $currentURLs[1] . 'portal');
+            header("Location: " . $currentURL . 'portal');
             exit;
 
         } else {
@@ -50,7 +50,7 @@ class Builder
             $dynamic->setBrand(self::$_brand);
         }
 
-        $dynamic->setBrandUrl(self::$_brandURL);
+        $dynamic->setBrandUrl(self::$_URL);
         $dynamic->setLogo(self::_resolveLogo());
 
         return $dynamic;
@@ -60,50 +60,32 @@ class Builder
      * return current REQUEST_URI, both with/without at the end '/'
      * @return array
      */
-    protected static function _loadCurrentURLs()
+    protected static function _loadCurrentURL()
     {
         $front = \Zend_Controller_Front::getInstance();
         $request = $front->getRequest();
 
-        $ret = array();
-
         $curURL = $request->getScheme() . '://'
-                . $request->getHttpHost()
-                . $front->getBaseUrl();
+                . $request->getHttpHost();
 
-        if (substr($curURL,-1) === '/') {
-            $altURL = substr($curURL,0,-1);
-        } else {$front = \Zend_Controller_Front::getInstance();
-        $request = $front->getRequest();
-
-        $ret = array();
-
-        $curURL = $request->getScheme() . '://'
-                . $request->getHttpHost()
-                . $front->getBaseUrl();
-            $altURL = $curURL . '/';
-        }
-
-        return array($curURL, $altURL);
+        return $curURL;
     }
 
-    protected static function _resolveBrand($urls)
+    protected static function _resolveBrand($url)
     {
         /** @var DataGateway $dataGateway */
         $dataGateway = \Zend_Registry::get('data_gateway');
 
-        self::$_brandURL = $dataGateway->findOneBy(
+        self::$_URL = $dataGateway->findOneBy(
             BrandUrl::class,
             [
-                "BrandUrl.url = '" . $urls[0] . "'" .
-                " OR " .
-                "BrandUrl.url = '" . $urls[1] . "'",
+                "BrandUrl.url = '" . $url . "'"
             ]
         );
 
 
-        if (!self::$_brandURL instanceof BrandUrlDTO) {
-            self::$_brandURL = $dataGateway->findOneBy(
+        if (!self::$_URL instanceof BrandUrlDTO) {
+            self::$_URL = $dataGateway->findOneBy(
                 BrandUrl::class,
                 [
                     'BrandUrl.urlType = \'god\''
@@ -112,13 +94,13 @@ class Builder
             return false;
         }
 
-        if (self::$_brandURL->getUrlType() === 'god') {
+        if (self::$_URL->getUrlType() === 'god') {
             return false;
         }
 
         self::$_brand  = $dataGateway->find(
             Brand::class,
-            self::$_brandURL->getBrandId()
+            self::$_URL->getBrandId()
         );
     }
 
@@ -129,9 +111,9 @@ class Builder
 
     protected static function _resolveLogo()
     {
-        $brandURLLogoBaseName = self::$_brandURL->getLogoBaseName();
+        $brandURLLogoBaseName = self::$_URL->getLogoBaseName();
         if (!empty($brandURLLogoBaseName)) {
-            return "fso/klearBrandUrl/".self::$_brandURL->getId()."-".$brandURLLogoBaseName;
+            return "fso/klearBrandUrl/".self::$_URL->getId()."-".$brandURLLogoBaseName;
         }
 
         if (!self::$_brand) {
