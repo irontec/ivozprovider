@@ -34,7 +34,6 @@ production:
           authPassword: true
           sendPAI: true
           sendRPID: true
-          strip: true
           prefix: true
           hostname: true
           ip: true
@@ -65,12 +64,14 @@ production:
           ip: true
           hostname: true
           port: true
-          strip: true
         order: &peerServersOrder_Link
           sipProxy: true
           authNeeded: true
           sendPAI: true
+          fromUser: true
+          fromDomain: true
           prefix: true
+          params: true
       fixedPositions: &peerServersFixedPositions_Link
         group0:
           label: _("Basic Configuration")
@@ -90,21 +91,25 @@ production:
         group2:
           label: _("Source number header")
           colsPerRow: 2
+          collapsed: true
           fields:
             sendPAI: 1
             sendRPID: 1
         group3:
-          label: _("R-URI customization (after numeric transformations)")
-          colsPerRow: 12
-          fields:
-            prefix: 4
-            params: 6
-        group4:
           label: _("From optional customization")
           colsPerRow: 12
+          collapsed: true
           fields:
             fromUser: 6
             fromDomain: 6
+        group4:
+          label: _("R-URI customization (after numeric transformations)")
+          colsPerRow: 12
+          collapsed: true
+          fields:
+            prefix: 4
+            params: 6
+
     peerServersEdit_screen: &peerServersEdit_screenLink
       <<: *PeerServers
       forcedValues:
@@ -118,7 +123,6 @@ production:
           ip: true
           hostname: true
           port: true
-          strip: true
         order:
           <<: *peerServersOrder_Link
       fixedPositions:

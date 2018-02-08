@@ -92,17 +92,6 @@ production:
             title: 'TCP'
           '3':
             title: 'TLS'
-    strip:
-      title: _('Strip')
-      type: number
-      info:
-        type: box
-        position: left
-        icon: help
-        text: _("Strip N digits from the beginning of the callee")
-        label: _("Need help?")
-      source:
-        control: Spinner
     prefix:
       title: _('Prefix')
       type: text
@@ -116,6 +105,7 @@ production:
     sendPAI:
       title: _('Send PAI')
       type: checkbox
+      defaultValue: 1
     sendRPID:
       title: _('Send RPID')
       type: checkbox
