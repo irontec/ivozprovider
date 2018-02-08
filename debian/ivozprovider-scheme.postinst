@@ -18,21 +18,10 @@ db_stop
 sed -i "s/database_user:.*/database_user: $MYSQL_USER/" /opt/irontec/ivozprovider/library/CoreBundle/Resources/config/parameters.yml
 sed -i "s/database_password:.*/database_password: $MYSQL_PASSWORD/" /opt/irontec/ivozprovider/library/CoreBundle/Resources/config/parameters.yml
 
-# Upgrade MySQL if installed version is prior to artemis release
-/usr/bin/dpkg --compare-versions $2 lt 2.0~0
-if [ $? -eq 0 ]; then
-    # Ensure MySQL is running
-    systemctl start mysql || true
 
-    # Load Timezones
-    mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql --user=root --password="$MYSQL_PASSWORD" mysql
-
-    # Upgrade mysql internal tables
-    mysql_upgrade --user=root --password="$MYSQL_PASSWORD" --force
-fi
-
-# Setup password and user in first install (allow changing it later)
 if [ -z "$2" ]; then
+    # Setup password and user in first install (allow changing it later)
+
     # Ensure MySQL is running
     systemctl start mysql || true
 
@@ -43,6 +32,19 @@ if [ -z "$2" ]; then
     cd /opt/irontec/ivozprovider/scheme
 	bin/console doctrine:database:create
 	bin/console doctrine:database:import initial.sql
+else
+    # Upgrade MySQL if installed version is prior to artemis release
+	/usr/bin/dpkg --compare-versions $2 lt 2.0~0
+    if [ $? -eq 0 ]; then
+        # Ensure MySQL is running
+        systemctl start mysql || true
+
+        # Load Timezones
+        mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql --user=root --password="$MYSQL_PASSWORD" mysql
+
+        # Upgrade mysql internal tables
+        mysql_upgrade --user=root --password="$MYSQL_PASSWORD" --force
+    fi
 fi
 
 # Always migrate database
