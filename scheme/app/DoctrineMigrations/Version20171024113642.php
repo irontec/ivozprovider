@@ -86,6 +86,9 @@ class Version20171024113642 extends AbstractMigration
         $this->addSql('UPDATE TransformationRuleSets SET nationalLen=7 WHERE id IN (SELECT id FROM Countries WHERE code in ("AD", "CU"))');
         $this->addSql('UPDATE TransformationRuleSets SET internationalCode=119 WHERE id IN (SELECT id FROM Countries WHERE code in ("CU"))');
 
+        // Add E.164 transformations
+        $this->addSql('INSERT INTO TransformationRuleSets (name_en, name_es, description) VALUES ("E.164", "E.164", "No numeric transformation")');
+
         // Remove deprecated fields in Countries table
         $this->addSql('ALTER TABLE Countries DROP intCode, DROP e164Pattern, DROP nationalCC, CHANGE calling_code countryCode VARCHAR(10) DEFAULT NULL');
 		$this->addSql('UPDATE Countries SET countryCode = CONCAT("\+", countryCode)');
@@ -117,9 +120,6 @@ class Version20171024113642 extends AbstractMigration
         $this->addSql('INSERT INTO TransformationRules (`type`, description, priority, matchExpr, replaceExpr, transformationRuleSetId) SELECT "calleeout", attrs, pr, match_exp, repl_exp, TRS.id FROM kam_trunks_dialplan K INNER JOIN TransformationRulesetGroupsTrunks TRGT ON TRGT.id = K.transformationRulesetGroupsTrunksId  INNER JOIN TransformationRuleSets TRS ON TRS.transformationOldId = TRGT.id WHERE K.dpid IN (SELECT callee_out FROM TransformationRulesetGroupsTrunks)');
         $this->addSql('UPDATE PeeringContracts SET transformationRuleSetId = (SELECT id from TransformationRuleSets WHERE transformationOldId = transformationRulesetGroupsTrunksId)');
         $this->addSql('ALTER TABLE TransformationRuleSets DROP transformationOldId');
-
-        // Add E.164 transformations
-        $this->addSql('INSERT INTO TransformationRuleSets (name_en, name_es, description) VALUES ("E.164", "E.164", "No numeric transformation")');
 
 		// Fix existing Routing Patterns
 		$this->addSql('UPDATE RoutingPatterns SET `regExp` = CONCAT("\+", `regExp`)');
