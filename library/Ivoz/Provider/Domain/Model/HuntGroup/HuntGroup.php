@@ -52,6 +52,22 @@ class HuntGroup extends HuntGroupAbstract implements HuntGroupInterface
     }
 
     /**
+     * Set ringAllTimeout
+     *
+     * @param integer $ringAllTimeout
+     *
+     * @return self
+     */
+    public function setRingAllTimeout($ringAllTimeout)
+    {
+        if (!$ringAllTimeout) {
+            $ringAllTimeout = 0;
+        }
+        return parent::setRingAllTimeout($ringAllTimeout);
+    }
+
+
+    /**
      * Get this Hungroup related users
      * @return UserInterface[]
      */
