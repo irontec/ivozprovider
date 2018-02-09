@@ -18,17 +18,18 @@ production:
         <<: *forcedBrand
       order:
         field:
+          - Ddi.country asc
           - Ddi.ddi asc
-          - Ddi.routeType desc
       fields:
         order: &dDIsFieldsOder_Link
-          companyId: true
           countryId: true
           DDI: true
+          companyId: true
+          peeringContractId: true
+        blacklist:
           externalCallFilterId: true
           routeType: true
           target: true
-        blacklist:
           displayName: true
           userId: true
           faxId: true
@@ -44,28 +45,6 @@ production:
           retailAccountId: true
           languageId: true
           conditionalRouteId: true
-      fixedPositions: &dDIsFixedPositions_Link
-        group0:
-          label: _("Number data")
-          colsPerRow: 3
-          fields:
-            countryId: 1
-            DDI: 1
-            peeringContractId: 1
-        group1:
-          label: _("Filters data")
-          colsPerRow: 2
-          fields:
-            externalCallFilterId: 2
-        group2:
-          label: _("Routing configuration")
-          colsPerRow: 3
-          fields:
-            routeType: 1
-            userId: 1
-            faxId: 1
-            ivrId: 1
-            huntGroupId: 1
 staging: 
   _extends: production
 testing:
