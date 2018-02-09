@@ -5,11 +5,13 @@
 # Source debconf library.
 . /usr/share/debconf/confmodule
 
-# Upgrade MySQL if installed version is prior to artemis release
-/usr/bin/dpkg --compare-versions $2 lt 2.0
-if [ $? -eq 0 ]; then
-    # Remove invalid variable for MySQL 5.7
-    sed -i '/wait_time/d' /etc/mysql/conf.d/ivozprovider.cnf
+if [ ! -z "$2" ]; then
+    # Upgrade MySQL if installed version is prior to artemis release
+    /usr/bin/dpkg --compare-versions $2 lt 2.0
+    if [ $? -eq 0 ]; then
+        # Remove invalid variable for MySQL 5.7
+        sed -i '/wait_time/d' /etc/mysql/conf.d/ivozprovider.cnf
+    fi
 fi
 
-exit $?
+:

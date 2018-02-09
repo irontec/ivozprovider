@@ -30,11 +30,11 @@ if [ -z "$2" ]; then
 
     # During first time, create database and import initial dump
     cd /opt/irontec/ivozprovider/scheme
-	bin/console doctrine:database:create
-	bin/console doctrine:database:import initial.sql
+    bin/console doctrine:database:create
+    bin/console doctrine:database:import initial.sql
 else
     # Upgrade MySQL if installed version is prior to artemis release
-	/usr/bin/dpkg --compare-versions $2 lt 2.0~0
+    /usr/bin/dpkg --compare-versions $2 lt 2.0~0
     if [ $? -eq 0 ]; then
         # Ensure MySQL is running
         systemctl start mysql || true
