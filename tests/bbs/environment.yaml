@@ -1,34 +1,34 @@
 users:
   - alice: &alice_cred
         username: alice
-        password: 4l1c3p4ssw0rd
+        password: 4l1C3P4sSw0rd+
         domain: bbs.ivozprovider.local
 
   - bob: &bob_cred
         username: bob
-        password: b0bp4ssw0rd
+        password: b0bP4sSW0rd+
         domain: bbs.ivozprovider.local
 
   - charlie: &charlie_cred
         username: charlie
-        password: ch4rl13p4ssw0rd
+        password: Ch4rL1Ep4SSword+
         domain: bbs.ivozprovider.local
   - dave: &dave_cred
         username: dave
-        password: d4v3p4ssw0rd
+        password: D4vEp4SSw0rd+
         domain: bbs.ivozprovider.local
 
   - eve: &eve_cred
         username: eve
-        password: 3v3p4ssw0rd
+        password: Ev3p4SSw0rd+
         domain: bbs.ivozprovider.local
 
   - friend: &friend_cred
         username: friend
-        password: fr13ndp4ssw0rd
+        password: fr13ndp4SSW0rd+
         domain: bbs.ivozprovider.local
 
   - retail: &retail_cred
         username: "20000"
-        password: r3t41lp4ssw0rd
+        password: r3t41Lp4sSW0rd+
         domain: retail-bbs.ivozprovider.local
