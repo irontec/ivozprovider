@@ -5,6 +5,7 @@ namespace Ivoz\Api\Symfony\EventListener;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 use ApiPlatform\Core\Util\ErrorFormatGuesser;
+use Assert\InvalidArgumentException;
 use Symfony\Component\Serializer\SerializerInterface;
 
 class DomainExceptionListener
@@ -27,7 +28,13 @@ class DomainExceptionListener
     public function onKernelException(GetResponseForExceptionEvent $event)
     {
         $exception = $event->getException();
-        if (!$exception instanceof \DomainException) {
+        $exceptionClass = get_class($exception);
+        $publicExceptions = [
+            \DomainException::class,
+            InvalidArgumentException::class
+        ];
+
+        if (!in_array($exceptionClass, $publicExceptions)) {
             return;
         }
 

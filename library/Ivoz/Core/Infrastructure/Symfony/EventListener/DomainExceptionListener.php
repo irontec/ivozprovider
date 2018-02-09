@@ -2,6 +2,7 @@
 
 namespace Ivoz\Core\Infrastructure\Symfony\EventListener;
 
+use Assert\InvalidArgumentException;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 
@@ -14,7 +15,13 @@ class DomainExceptionListener
     public function onKernelException(GetResponseForExceptionEvent $event)
     {
         $exception = $event->getException();
-        if (!$exception instanceof \DomainException) {
+        $exceptionClass = get_class($exception);
+        $publicExceptions = [
+            \DomainException::class,
+            InvalidArgumentException::class
+        ];
+
+        if (!in_array($exceptionClass, $publicExceptions)) {
             return;
         }
 
