@@ -37,8 +37,6 @@ interface QueueInterface extends LoggableEntityInterface
 
     public function setMaxlen($maxlen = null);
 
-    public function __toString();
-
     /**
      * Get name
      *

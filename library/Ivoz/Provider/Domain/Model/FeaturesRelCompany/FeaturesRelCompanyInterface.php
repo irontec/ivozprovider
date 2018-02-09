@@ -12,8 +12,6 @@ interface FeaturesRelCompanyInterface extends LoggableEntityInterface
      */
     public function getChangeSet();
 
-    public function __toString();
-
     /**
      * Set company
      *

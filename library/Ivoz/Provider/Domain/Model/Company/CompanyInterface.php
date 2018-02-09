@@ -87,8 +87,6 @@ interface CompanyInterface extends LoggableEntityInterface
      */
     public function getServiceCode($name);
 
-    public function __toString();
-
     /**
      * Set type
      *

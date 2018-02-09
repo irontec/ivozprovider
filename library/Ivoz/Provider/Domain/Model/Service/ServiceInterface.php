@@ -17,8 +17,6 @@ interface ServiceInterface extends LoggableEntityInterface
      */
     public function setDefaultCode($defaultCode);
 
-    public function __toString();
-
     /**
      * Set iden
      *

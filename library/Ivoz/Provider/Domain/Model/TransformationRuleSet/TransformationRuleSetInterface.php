@@ -23,8 +23,6 @@ interface TransformationRuleSetInterface extends LoggableEntityInterface
      */
     public function setTrunkPrefix($trunkPrefix = null);
 
-    public function __toString();
-
     /**
      * Set description
      *

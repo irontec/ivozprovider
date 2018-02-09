@@ -13,12 +13,6 @@ interface ConferenceRoomInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * Return string representation of this entity
-     * @return string
-     */
-    public function __toString();
-
-    /**
      * Set name
      *
      * @param string $name

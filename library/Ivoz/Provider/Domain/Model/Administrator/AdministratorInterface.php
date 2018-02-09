@@ -35,8 +35,6 @@ interface AdministratorInterface extends LoggableEntityInterface
 
     public function unserialize($serialized);
 
-    public function __toString();
-
     /**
      * Set username
      *

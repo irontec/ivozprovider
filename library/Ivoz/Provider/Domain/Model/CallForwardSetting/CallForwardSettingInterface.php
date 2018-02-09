@@ -33,8 +33,6 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
      */
     public function getRouteType();
 
-    public function __toString();
-
     /**
      * Set callTypeFilter
      *

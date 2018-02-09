@@ -17,8 +17,6 @@ interface TransformationRuleInterface extends LoggableEntityInterface
      */
     public function setMatchExpr($matchExpr = null);
 
-    public function __toString();
-
     /**
      * Set type
      *

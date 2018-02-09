@@ -14,12 +14,6 @@ interface ConditionalRouteInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * Return string representation of this entity
-     * @return string
-     */
-    public function __toString();
-
-    /**
      * Get the numberValue in E.164 format when routing to 'number'
      *
      * @return string

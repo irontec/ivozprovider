@@ -24,8 +24,6 @@ interface LcrRuleInterface extends LoggableEntityInterface
 
     public function setCondition($regexp);
 
-    public function __toString();
-
     /**
      * Set lcrId
      *

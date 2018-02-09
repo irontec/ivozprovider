@@ -12,8 +12,6 @@ interface ConditionalRoutesConditionsRelMatchlistInterface extends LoggableEntit
      */
     public function getChangeSet();
 
-    public function __toString();
-
     /**
      * Set condition
      *

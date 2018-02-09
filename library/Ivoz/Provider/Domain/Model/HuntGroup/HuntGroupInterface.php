@@ -14,6 +14,15 @@ interface HuntGroupInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * Set ringAllTimeout
+     *
+     * @param integer $ringAllTimeout
+     *
+     * @return self
+     */
+    public function setRingAllTimeout($ringAllTimeout);
+
+    /**
      * Get this Hungroup related users
      * @return UserInterface[]
      */
@@ -25,8 +34,6 @@ interface HuntGroupInterface extends LoggableEntityInterface
      * @return string
      */
     public function getNoAnswerNumberValueE164();
-
-    public function __toString();
 
     /**
      * Set name
@@ -75,15 +82,6 @@ interface HuntGroupInterface extends LoggableEntityInterface
      * @return string
      */
     public function getStrategy();
-
-    /**
-     * Set ringAllTimeout
-     *
-     * @param integer $ringAllTimeout
-     *
-     * @return self
-     */
-    public function setRingAllTimeout($ringAllTimeout);
 
     /**
      * Get ringAllTimeout

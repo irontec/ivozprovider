@@ -22,8 +22,6 @@ interface MusicOnHoldInterface extends LoggableEntityInterface
      */
     public function getOwner();
 
-    public function __toString();
-
     /**
      * Set name
      *

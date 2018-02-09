@@ -17,8 +17,6 @@ interface InvoiceTemplateInterface extends LoggableEntityInterface
      */
     public function setTemplate($template);
 
-    public function __toString();
-
     /**
      * Set name
      *

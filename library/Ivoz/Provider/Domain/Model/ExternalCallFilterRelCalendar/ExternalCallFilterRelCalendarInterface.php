@@ -12,8 +12,6 @@ interface ExternalCallFilterRelCalendarInterface extends LoggableEntityInterface
      */
     public function getChangeSet();
 
-    public function __toString();
-
     /**
      * Set filter
      *

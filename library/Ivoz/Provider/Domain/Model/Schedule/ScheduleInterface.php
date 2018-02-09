@@ -16,8 +16,6 @@ interface ScheduleInterface extends LoggableEntityInterface
 
     public function isOnSchedule(\DateTime $time);
 
-    public function __toString();
-
     /**
      * Set name
      *

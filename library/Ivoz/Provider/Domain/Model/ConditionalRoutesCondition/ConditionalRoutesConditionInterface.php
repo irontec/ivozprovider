@@ -70,8 +70,6 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
      */
     public function getMatchData();
 
-    public function __toString();
-
     /**
      * Set priority
      *

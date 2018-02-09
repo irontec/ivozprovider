@@ -33,8 +33,6 @@ interface FaxesInOutInterface extends LoggableEntityInterface
      */
     public function setCalldate($calldate);
 
-    public function __toString();
-
     /**
      * Get calldate
      *

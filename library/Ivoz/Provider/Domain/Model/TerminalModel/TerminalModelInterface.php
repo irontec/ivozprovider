@@ -27,8 +27,6 @@ interface TerminalModelInterface extends LoggableEntityInterface
      */
     public function setSpecificTemplate($specificTemplate = null);
 
-    public function __toString();
-
     /**
      * Get iden
      *

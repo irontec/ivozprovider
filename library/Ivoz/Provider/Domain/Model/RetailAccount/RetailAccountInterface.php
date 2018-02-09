@@ -72,8 +72,6 @@ interface RetailAccountInterface extends LoggableEntityInterface
      */
     public function getDdi($ddieE164);
 
-    public function __toString();
-
     /**
      * Get name
      *

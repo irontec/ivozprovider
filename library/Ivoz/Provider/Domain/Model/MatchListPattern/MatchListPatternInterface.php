@@ -18,8 +18,6 @@ interface MatchListPatternInterface extends LoggableEntityInterface
      */
     public function getNumberE164();
 
-    public function __toString();
-
     /**
      * Set description
      *

@@ -17,8 +17,6 @@ interface RecordingInterface extends LoggableEntityInterface
      */
     public function getFileObjects();
 
-    public function __toString();
-
     /**
      * Set callid
      *

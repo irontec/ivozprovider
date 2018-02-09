@@ -17,8 +17,6 @@ interface BrandServiceInterface extends LoggableEntityInterface
      */
     public function setCode($code);
 
-    public function __toString();
-
     /**
      * Get code
      *

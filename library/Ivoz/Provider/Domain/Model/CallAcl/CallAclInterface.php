@@ -19,8 +19,6 @@ interface CallAclInterface extends LoggableEntityInterface
      */
     public function dstIsCallable($dst);
 
-    public function __toString();
-
     /**
      * Set name
      *

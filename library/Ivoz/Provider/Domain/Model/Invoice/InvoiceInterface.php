@@ -22,8 +22,6 @@ interface InvoiceInterface extends LoggableEntityInterface
      */
     public function setStatus($status = null);
 
-    public function __toString();
-
     /**
      * Set number
      *

@@ -12,8 +12,6 @@ interface CallAclRelMatchListInterface extends LoggableEntityInterface
      */
     public function getChangeSet();
 
-    public function __toString();
-
     /**
      * Set priority
      *

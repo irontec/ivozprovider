@@ -12,8 +12,6 @@ interface CommandlogInterface extends EntityInterface
      */
     public static function fromEvent(\Ivoz\Core\Application\Event\CommandEventInterface $event);
 
-    public function __toString();
-
     /**
      * Set requestId
      *
