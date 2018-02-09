@@ -115,6 +115,8 @@ class IvrAction
                     ->setRouteConditional($entry->getConditionalRoute())
                     ->route();
 
+                // Call successfully routed
+                return;
             }
         }
 
@@ -148,6 +150,8 @@ class IvrAction
                     ->setRouteExtension($extension)
                     ->route();
 
+                // Call successfully routed
+                return;
             }
         }
 
