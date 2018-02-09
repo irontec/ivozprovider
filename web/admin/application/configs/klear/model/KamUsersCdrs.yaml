@@ -53,10 +53,10 @@ production:
       title: _('Direction')
       type: text
     caller:
-      title: _('Caller')
+      title: _('Source')
       type: text
     callee:
-      title: _('Callee')
+      title: _('Destination')
       type: text
     callid:
       title: _('Callid')
@@ -114,13 +114,6 @@ production:
           order:
             Friend.name: asc
         'null': _("Unassigned")
-    statOwner:
-      title: _('Owner')
-      type: ghost
-      source:
-        class: IvozProvider_Klear_Ghost_StatOwner
-        method: getStatOwner
-
 staging:
   _extends: production
 testing:
