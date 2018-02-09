@@ -49,26 +49,7 @@ class Extension extends ExtensionAbstract implements ExtensionInterface
      */
     protected function sanitizeValues()
     {
-        $routeType = $this->getRouteType();
-
-        $nullableFields = [
-            'ivr'            => 'ivr',
-            'huntGroup'      => 'huntGroup',
-            'user'           => 'user',
-            'conferenceRoom' => 'conferenceRoom',
-            'number'         => 'numberValue',
-            'friend'         => 'friendValue',
-            'queue'          => 'queue',
-        ];
-
-        foreach ($nullableFields as $type => $fieldName) {
-            if ($routeType == $type) {
-                continue;
-            }
-
-            $setter = 'set' . ucfirst($fieldName);
-            $this->{$setter}(null);
-        }
+        $this->sanitizeRouteValues();
     }
 
     /**
@@ -119,6 +100,10 @@ class Extension extends ExtensionAbstract implements ExtensionInterface
      */
     public function getNumberValueE164()
     {
+        if (!$this->getNumberCountry()) {
+            return "";
+        }
+
         return
             $this->getNumberCountry()->getCountryCode() .
             $this->getNumberValue();

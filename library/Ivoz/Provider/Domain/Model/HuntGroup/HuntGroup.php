@@ -6,6 +6,7 @@ use Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUserInterface;
 use Ivoz\Provider\Domain\Model\User\User;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
+use Ivoz\Provider\Domain\Traits\RoutableTrait;
 
 /**
  * HuntGroup
@@ -13,6 +14,7 @@ use Ivoz\Provider\Domain\Model\User\UserInterface;
 class HuntGroup extends HuntGroupAbstract implements HuntGroupInterface
 {
     use HuntGroupTrait;
+    use RoutableTrait;
 
     /**
      * @codeCoverageIgnore
@@ -35,20 +37,7 @@ class HuntGroup extends HuntGroupAbstract implements HuntGroupInterface
 
     protected function sanitizeValues()
     {
-        $nullableFields = array(
-            'number'    => 'noAnswerNumberValue',
-            'extension' => 'noAnswerExtension',
-            'voicemail' => 'noAnswerVoiceMailUser'
-        );
-
-        $routeType = $this->getNoAnswerTargetType();
-        foreach ($nullableFields as $type => $fieldName) {
-            if ($routeType == $type) {
-                continue;
-            }
-            $setter = 'set' . ucfirst($fieldName);
-            $this->{$setter}(null);
-        }
+        $this->sanitizeRouteValues('NoAnswer');
     }
 
     /**
@@ -92,14 +81,26 @@ class HuntGroup extends HuntGroupAbstract implements HuntGroupInterface
     }
 
     /**
+     * @return string
+     */
+    public function getNoAnswerRouteType()
+    {
+        return $this->getNoAnswerTargetType();
+    }
+
+    /**
      * Get the timeout numberValue in E.164 format when routing to 'number'
      *
      * @return string
      */
     public function getNoAnswerNumberValueE164()
     {
+        if (!$this->getNoAnswerNumberCountry()) {
+            return "";
+        }
+
         return
-           // TODO $this->getNoAnswerNumberCountry()->getCountryCode() .
+            $this->getNoAnswerNumberCountry()->getCountryCode() .
             $this->getNoAnswerNumberValue();
     }
 }

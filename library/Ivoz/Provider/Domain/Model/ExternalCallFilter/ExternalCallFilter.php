@@ -53,46 +53,8 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
 
     protected function sanitizeValues()
     {
-        $this->sanitizeHolidayTargetType();
-        $this->sanitizeOutOfScheduleTargetType();
-    }
-
-    protected function sanitizeHolidayTargetType()
-    {
-        $holidayNullableFields = [
-            'number'    => 'holidayNumberValue',
-            'extension' => 'holidayExtension',
-            'voicemail' => 'holidayVoiceMailUser',
-        ];
-
-        $holidayTargetType = $this->getHolidayTargetType();
-        foreach ($holidayNullableFields as $type => $fieldName) {
-            if ($holidayTargetType == $type) {
-                continue;
-            }
-
-            $setter = 'set'.ucfirst($fieldName);
-            $this->{$setter}(null);
-        }
-    }
-
-    protected function sanitizeOutOfScheduleTargetType()
-    {
-        $scheduleNullableFields = [
-            'number'    => 'outOfScheduleNumberValue',
-            'extension' => 'outOfScheduleExtension',
-            'voicemail' => 'outOfScheduleVoiceMailUser',
-        ];
-        $schedulerouteType = $this->getOutOfScheduleTargetType();
-
-        foreach ($scheduleNullableFields as $type => $fieldName) {
-            if ($schedulerouteType == $type) {
-                continue;
-            }
-
-            $setter = 'set' . ucfirst($fieldName);
-            $this->{$setter}(null);
-        }
+        $this->sanitizeRouteValues('Holiday');
+        $this->sanitizeRouteValues('OutOfSchedule');
     }
 
     /**
@@ -232,6 +194,10 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
      */
     public function getHolidayNumberValueE164()
     {
+        if (!$this->getHolidayNumberCountry()) {
+            return "";
+        }
+
         return
             $this->getHolidayNumberCountry()->getCountryCode() .
             $this->getHolidayNumberValue();
@@ -244,6 +210,10 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
      */
     public function getOutOfScheduleNumberValueE164()
     {
+        if (!$this->getOutOfScheduleNumberCountry()) {
+            return "";
+        }
+
         return
             $this->getOutOfScheduleNumberCountry()->getCountryCode() .
             $this->getOutOfScheduleNumberValue();

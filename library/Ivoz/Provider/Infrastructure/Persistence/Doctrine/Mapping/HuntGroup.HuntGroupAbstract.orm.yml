@@ -111,7 +111,7 @@ Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupAbstract:
       mappedBy: null
       inversedBy: null
       joinColumns:
-        numberCountryId:
+        noAnswerNumberCountryId:
           referencedColumnName: id
           onDelete: set null
       orphanRemoval: false

@@ -49,6 +49,10 @@ class FaxesInOut extends FaxesInOutAbstract implements FaxesInOutInterface, File
      */
     public function getDstE164()
     {
+        if (!$this->getDstCountry()) {
+            return "";
+        }
+
         return
             $this->getDstCountry()->getCountryCode() .
             $this->getDst();
