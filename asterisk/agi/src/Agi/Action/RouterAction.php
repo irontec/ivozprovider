@@ -462,7 +462,7 @@ class RouterAction
 
         /** @var CompanyInterface $company */
         $company = $caller->getCompany();
-        $friend = $company->getFriend($this->routeFriend);
+        $friend = $company->getFriend($this->routeFriendDestination);
 
         $this->friendCallAction
             ->setFriend($friend)
