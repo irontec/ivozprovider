@@ -11,12 +11,32 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 trait RoutableTrait
 {
     /**
+     * Available Route types
+     *
+     * @var array
+     */
+    protected $routeTypes = [
+        'ivr',
+        'huntGroup',
+        'user',
+        'conferenceRoom',
+        'number',
+        'friend',
+        'queue',
+        'voicemail',
+        'extension',
+        'retail',
+        'conditional',
+        'fax'
+    ];
+
+    /**
      * @param string $prefix
      * @return null|string
      */
     public function getTarget (string $prefix = "")
     {
-        // Get DDI Route Type
+        // Get Route Type
         $routeTypeGetter = 'get' . $prefix . 'RouteType';
         $routeType = $this->{$routeTypeGetter}();
 
@@ -69,5 +89,52 @@ trait RoutableTrait
         // Object without routable object assigned
         return null;
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    protected function sanitizeRouteValues(string $prefix = "")
+    {
+        $routeTypeGetter = 'get' . $prefix . 'RouteType';
+        $routeType = $this->{$routeTypeGetter}();
+
+        $nullableFields = [
+            'ivr'            => 'Ivr',
+            'huntGroup'      => 'HuntGroup',
+            'user'           => 'User',
+            'conferenceRoom' => 'ConferenceRoom',
+            'number'         => [ 'NumberValue', 'NumberCountry' ],
+            'friend'         => 'FriendValue',
+            'queue'          => 'Queue',
+            'voicemail'      => 'VoicemailUser',
+            'extension'      => 'Extension',
+            'retail'         => 'RetailAccount',
+            'conditional'    => 'ConditionalRoute',
+            'fax'            => 'Fax'
+        ];
+
+        foreach ($nullableFields as $type => $fieldNames) {
+
+            if ($routeType == $type) {
+                continue;
+            }
+
+            if (!in_array($type, $this->routeTypes)) {
+                continue;
+            }
+
+            $fieldNames = is_array($fieldNames)
+                ? $fieldNames
+                : [$fieldNames];
+
+            foreach ($fieldNames as $fieldName) {
+                $setter = 'set' . $prefix . $fieldName;
+                if (method_exists($this, $setter)) {
+                    $this->{$setter}(null);
+                }
+            }
+        }
+    }
+
 }
 

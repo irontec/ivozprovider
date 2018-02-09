@@ -32,35 +32,15 @@ class IvrEntry extends IvrEntryAbstract implements IvrEntryInterface
 
     protected function sanitizeValues()
     {
-        $mustSanitize =
-            empty($this->_initialValues)
-            || $this->hasChanged('routeType');
+        // Set Routable options to avoid naming collision
+        $this->routeTypes = [
+            'voicemail',
+            'conditionalRoute',
+            'number',
+            'extension'
+        ];
 
-        if ($mustSanitize) {
-            switch($this->getRouteType())
-            {
-                case 'number':
-                    $this->setExtension(null);
-                    $this->setVoiceMailUser(null);
-                    $this->setConditionalRoute(null);
-                    break;
-                case 'extension':
-                    $this->setNumberValue(null);
-                    $this->setVoiceMailUser(null);
-                    $this->setConditionalRoute(null);
-                    break;
-                case 'voicemail':
-                    $this->setNumberValue(null);
-                    $this->setExtension(null);
-                    $this->setConditionalRoute(null);
-                    break;
-                case 'conditional':
-                    $this->setNumberValue(null);
-                    $this->setExtension(null);
-                    $this->setVoiceMailUser(null);
-                    break;
-            }
-        }
+        $this->sanitizeRouteValues();
     }
 
     /**
@@ -70,6 +50,10 @@ class IvrEntry extends IvrEntryAbstract implements IvrEntryInterface
      */
     public function getNumberValueE164()
     {
+        if (!$this->getNumberCountry()) {
+            return "";
+        }
+
         return
             $this->getNumberCountry()->getCountryCode() .
             $this->getNumberValue();

@@ -47,43 +47,8 @@ class Ivr extends IvrAbstract implements IvrInterface
 
     protected function sanitizeValues()
     {
-        $this->sanitizeNoInputRouteType();
-        $this->sanitizeErrorTargets();
-    }
-
-    protected function sanitizeNoInputRouteType()
-    {
-        $nullableFields =[
-            'number' => 'noInputNumberValue',
-            'extension' => 'noInputExtension',
-            'voicemail' => 'noInputVoiceMailUser'
-        ];
-
-        $routeType = $this->getNoInputRouteType();
-        foreach ($nullableFields as $type => $fieldName) {
-            if ($routeType == $type) {
-                continue;
-            }
-            $setter = 'set' . ucfirst($fieldName);
-            $this->{$setter}(null);
-        }
-    }
-
-    protected function sanitizeErrorTargets()
-    {
-        $nullableErrorFields = [
-            'number' => 'errorNumberValue',
-            'extension' => 'errorExtension',
-            'voicemail' => 'errorVoiceMailUser'
-        ];
-        $routeErrorType = $this->getErrorRouteType();
-        foreach ($nullableErrorFields as $type => $fieldName) {
-            if ($routeErrorType == $type) {
-                continue;
-            }
-            $setter = 'set' . ucfirst($fieldName);
-            $this->{$setter}(null);
-        }
+        $this->sanitizeRouteValues('NoInput');
+        $this->sanitizeRouteValues('Error');
     }
 
     /**
@@ -93,7 +58,7 @@ class Ivr extends IvrAbstract implements IvrInterface
     {
         return [
             'welcome' => $this->getWelcomeLocution(),
-            'noanswer' => $this->getNoAnswerLocution(),
+            'noanswer' => $this->getNoInputLocution(),
             'error' => $this->getErrorLocution(),
             'success' => $this->getSuccessLocution()
         ];
@@ -106,6 +71,10 @@ class Ivr extends IvrAbstract implements IvrInterface
      */
     public function getNoInputNumberValueE164()
     {
+        if (!$this->getNoInputNumberCountry()) {
+            return "";
+        }
+
         return
             $this->getNoInputNumberCountry()->getCountryCode() .
             $this->getNoInputNumberValue();
@@ -118,6 +87,10 @@ class Ivr extends IvrAbstract implements IvrInterface
      */
     public function getErrorNumberValueE164()
     {
+        if (!$this->getErrorNumberCountry()) {
+            return "";
+        }
+
         return
             $this->getErrorNumberCountry()->getCountryCode() .
             $this->getErrorNumberValue();

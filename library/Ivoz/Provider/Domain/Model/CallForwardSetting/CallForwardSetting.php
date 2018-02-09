@@ -35,6 +35,21 @@ class CallForwardSetting extends CallForwardSettingAbstract implements CallForwa
     /**
      * {@inheritDoc}
      */
+    protected function sanitizeValues()
+    {
+        // Set Routable options to avoid naming collision
+        $this->routeTypes = [
+            'voicemail',
+            'number',
+            'extension'
+        ];
+
+        $this->sanitizeRouteValues();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function setNumberValue($numberValue = null)
     {
         if (!empty($numberValue)) {
@@ -90,6 +105,10 @@ class CallForwardSetting extends CallForwardSettingAbstract implements CallForwa
      */
     public function getNumberValueE164()
     {
+        if (!$this->getNumberCountry()) {
+            return "";
+        }
+
         return
             $this->getNumberCountry()->getCountryCode() .
             $this->getNumberValue();

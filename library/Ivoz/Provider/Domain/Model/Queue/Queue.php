@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\Queue;
 
 use Assert\Assertion;
+use Ivoz\Provider\Domain\Traits\RoutableTrait;
 
 /**
  * Queue
@@ -10,6 +11,7 @@ use Assert\Assertion;
 class Queue extends QueueAbstract implements QueueInterface
 {
     use QueueTrait;
+    use RoutableTrait;
 
     /**
      * @codeCoverageIgnore
@@ -33,6 +35,16 @@ class Queue extends QueueAbstract implements QueueInterface
     /**
      * {@inheritDoc}
      */
+    protected function sanitizeValues()
+    {
+        $this->sanitizeRouteValues('Timeout');
+        $this->sanitizeRouteValues('Full');
+    }
+
+
+    /**
+     * {@inheritDoc}
+     */
     public function setName($name = null)
     {
         Assertion::regex($name, '/^[a-zA-Z0-9_-]+$/');
@@ -49,6 +61,15 @@ class Queue extends QueueAbstract implements QueueInterface
         );
 
     }
+
+    /**
+     * @return string
+     */
+    public function getTimeoutRouteType()
+    {
+        return $this->getTimeoutTargetType();
+    }
+
     /**
      * Get the timeout numberValue in E.164 format when routing to 'number'
      *
@@ -56,9 +77,21 @@ class Queue extends QueueAbstract implements QueueInterface
      */
     public function getTimeoutNumberValueE164()
     {
+        if (!$this->getTimeoutNumberCountry()) {
+            return "";
+        }
+
         return
             $this->getTimeoutNumberCountry()->getCountryCode() .
             $this->getTimeoutNumberValue();
+    }
+
+    /**
+     * @return string
+     */
+    public function getFullRouteType()
+    {
+        return $this->getFullTargetType();
     }
 
     /**
@@ -68,6 +101,10 @@ class Queue extends QueueAbstract implements QueueInterface
      */
     public function getFullNumberValueE164()
     {
+        if (!$this->getFullNumberCountry()) {
+            return "";
+        }
+
         return
             $this->getFullNumberCountry()->getCountryCode() .
             $this->getFullNumberValue();

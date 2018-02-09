@@ -46,12 +46,24 @@ class ConditionalRoute extends ConditionalRouteAbstract implements ConditionalRo
     }
 
     /**
+     * {@inheritDoc}
+     */
+    protected function sanitizeValues()
+    {
+        $this->sanitizeRouteValues();
+    }
+
+    /**
      * Get the numberValue in E.164 format when routing to 'number'
      *
      * @return string
      */
     public function getNumberValueE164()
     {
+        if (!$this->getNumberCountry()) {
+            return "";
+        }
+
         return
             $this->getNumberCountry()->getCountryCode() .
             $this->getNumberValue();
