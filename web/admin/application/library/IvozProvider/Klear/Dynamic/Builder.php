@@ -39,7 +39,7 @@ class Builder
             $dynamic = new CompanyAdmin();
         } elseif ($brandURLType == 'user') {
 
-            header("Location: " . $currentURL . 'portal');
+            header("Location: " . $currentURL . '/portal');
             exit;
 
         } else {
