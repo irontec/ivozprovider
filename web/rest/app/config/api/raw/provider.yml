@@ -205,6 +205,8 @@ Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup:
 Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPattern:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
+Ivoz\Provider\Domain\Model\RoutingPattern\Name:
+Ivoz\Provider\Domain\Model\RoutingPattern\Description:
 Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPattern:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
@@ -234,4 +236,4 @@ Ivoz\Provider\Domain\Model\TransformationRule\TransformationRule:
     access_control: '"ROLE_SUPER_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\User\User:
   attributes:
-    access_control: '"ROLE_COMPANY_USER" in rolesº'
+    access_control: '"ROLE_COMPANY_USER" in roles'
