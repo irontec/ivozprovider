@@ -86,6 +86,14 @@ services:
       -  { name: serializer.normalizer, priority: 10 }
 
   ################################################
+  ## Metadata Extractor
+  ################################################
+  api_platform.metadata.extractor.yaml:
+    class: Ivoz\Api\Core\Metadata\Extractor\YamlExtractor
+    arguments:
+      $paths: '%api_mapping_paths%'
+
+  ################################################
   ## Resources
   ################################################
   Ivoz\Api\Swagger\Metadata\Resource\ResourceMetadata\FilterMetadataFactory:

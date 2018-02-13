@@ -5,7 +5,3 @@ api_platform:
   title: 'Ivoz Provider'
   description: 'Rest API'
   version: '2.0-1.0.0'
-
-  mapping:
-    paths:
-      - '%kernel.root_dir%/config/api'

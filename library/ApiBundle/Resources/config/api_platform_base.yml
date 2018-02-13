@@ -98,8 +98,8 @@ api_platform:
             items_per_page_parameter_name: '_itemsPerPage'
 
     mapping:
+      paths: '%api_mapping_paths%'
         # The list of paths with files or directories where the bundle will look for additional resource files.
-        paths: []
 
     http_cache:
         # Automatically generate etags for API responses.
