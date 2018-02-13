@@ -1,5 +1,4 @@
 {
-	"variables": [],
 	"info": {
 		"name": "IvozProvider - BBS Dataset",
 		"_postman_id": "6d9b8f63-dcd1-30f2-8ae7-d5ef88f35ddb",
@@ -34,13 +33,11 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/admin_login",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/x-www-form-urlencoded",
-								"description": ""
+								"value": "application/x-www-form-urlencoded"
 							}
 						],
 						"body": {
@@ -60,6 +57,7 @@
 								}
 							]
 						},
+						"url": "{{api_url}}/admin_login",
 						"description": ""
 					},
 					"response": []
@@ -93,24 +91,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/brands",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"name\": \"ZZZ - Test Brand for BBS\",\n  \"domainUsers\": \"retail-bss.ivozprovider.local\",\n  \"language\": 2,\n  \"defaultTimezone\": 145,\n  \"invoice\": {\n    \"nif\": \"string\",\n    \"postalAddress\": \"string\",\n    \"postalCode\": \"string\",\n    \"town\": \"string\",\n    \"province\": \"string\",\n    \"country\": \"string\",\n    \"registryData\": \"string\"\n  }\n}"
 						},
+						"url": "{{api_url}}/brands",
 						"description": ""
 					},
 					"response": []
@@ -135,24 +131,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/features_rel_brands",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"brand\": {{brandId}},\n  \"feature\": 1\n}"
 						},
+						"url": "{{api_url}}/features_rel_brands",
 						"description": ""
 					},
 					"response": []
@@ -177,24 +171,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/features_rel_brands",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"brand\": {{brandId}},\n  \"feature\": 2\n}"
 						},
+						"url": "{{api_url}}/features_rel_brands",
 						"description": ""
 					},
 					"response": []
@@ -219,24 +211,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/features_rel_brands",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"brand\": {{brandId}},\n  \"feature\": 3\n}"
 						},
+						"url": "{{api_url}}/features_rel_brands",
 						"description": ""
 					},
 					"response": []
@@ -261,24 +251,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/features_rel_brands",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"brand\": {{brandId}},\n  \"feature\": 4\n}"
 						},
+						"url": "{{api_url}}/features_rel_brands",
 						"description": ""
 					},
 					"response": []
@@ -303,24 +291,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/features_rel_brands",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"brand\": {{brandId}},\n  \"feature\": 5\n}"
 						},
+						"url": "{{api_url}}/features_rel_brands",
 						"description": ""
 					},
 					"response": []
@@ -345,24 +331,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/features_rel_brands",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"brand\": {{brandId}},\n  \"feature\": 6\n}"
 						},
+						"url": "{{api_url}}/features_rel_brands",
 						"description": ""
 					},
 					"response": []
@@ -387,24 +371,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/features_rel_brands",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"brand\": {{brandId}},\n  \"feature\": 7\n}"
 						},
+						"url": "{{api_url}}/features_rel_brands",
 						"description": ""
 					},
 					"response": []
@@ -429,24 +411,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/features_rel_brands",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"brand\": {{brandId}},\n  \"feature\": 8\n}"
 						},
+						"url": "{{api_url}}/features_rel_brands",
 						"description": ""
 					},
 					"response": []
@@ -471,24 +451,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/features_rel_brands",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"brand\": {{brandId}},\n  \"feature\": 9\n}"
 						},
+						"url": "{{api_url}}/features_rel_brands",
 						"description": ""
 					},
 					"response": []
@@ -516,24 +494,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/transformation_rule_sets",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"description\": \"Spanish\",\n  \"internationalCode\": \"00\",\n  \"trunkPrefix\": \"\",\n  \"areaCode\": \"\",\n  \"nationalLen\": 9,\n  \"generateRules\": true,\n  \"name\": {\n     \"en\": \"Spanish Operator\",\n     \"es\": \"Operador Español\"\n  },\n  \"brand\": {{brandId}},\n  \"country\": 70\n}"
 						},
+						"url": "{{api_url}}/transformation_rule_sets",
 						"description": ""
 					},
 					"response": []
@@ -561,24 +537,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/transformation_rule_sets",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"description\": \"USA (Area 999)\",\n  \"internationalCode\": \"011\",\n  \"trunkPrefix\": \"1\",\n  \"areaCode\": \"999\",\n  \"nationalLen\": 9,\n  \"generateRules\": true,\n  \"name\": {\n     \"en\": \"USA (Area 999)\",\n     \"es\": \"USA (Area 999)\"\n  },\n  \"brand\": {{brandId}},\n  \"country\": 235\n}"
 						},
+						"url": "{{api_url}}/transformation_rule_sets",
 						"description": ""
 					},
 					"response": []
@@ -606,24 +580,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/peering_contracts",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"description\": \"BBS Peering Contract\",\n  \"name\": \"BBS Peering Contract\",\n  \"externallyRated\": false,\n  \"brand\": {{brandId}},\n  \"transformationRuleSet\": 70\n}\n"
 						},
+						"url": "{{api_url}}/peering_contracts",
 						"description": ""
 					},
 					"response": []
@@ -651,24 +623,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/peer_servers",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"ip\": \"127.0.0.1\",\n  \"peeringContract\": {{peeringContractId}},\n  \"brand\": {{brandId}}\n}"
 						},
+						"url": "{{api_url}}/peer_servers",
 						"description": ""
 					},
 					"response": []
@@ -696,24 +666,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/routing_patterns",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"regExp\": \"+34\",\n  \"name\": {\n  \t\"en\": \"Spain\",  \t\n  \t\"es\": \"España\"\n  },\n  \"description\": {\n  \t\"en\": \"BBS - Spain\",  \t\n  \t\"es\": \"BBS - España\"\n  },\n  \"brand\": {{brandId}}\n}"
+							"raw": "{\n  \"regExp\": \"+1\",\n  \"name\": {\n  \t\"en\": \"Spain\",  \t\n  \t\"es\": \"España\"\n  },\n  \"description\": {\n  \t\"en\": \"BBS - Spain\",  \t\n  \t\"es\": \"BBS - España\"\n  },\n  \"brand\": {{brandId}}\n}"
 						},
+						"url": "{{api_url}}/routing_patterns",
 						"description": ""
 					},
 					"response": []
@@ -741,24 +709,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/outgoing_routings",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"type\": \"pattern\",\n  \"priority\": 1,\n  \"brand\": {{brandId}},\n  \"peeringContract\": {{peeringContractId}},\n  \"routingPattern\": {{routingPatternESId}}\n}"
 						},
+						"url": "{{api_url}}/outgoing_routings",
 						"description": ""
 					},
 					"response": []
@@ -786,24 +752,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/routing_patterns",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"regExp\": \"+34\",\n  \"name\": {\n  \t\"en\": \"USA\",  \t\n  \t\"es\": \"Estados Unidos\"\n  },\n  \"description\": {\n  \t\"en\": \"BBS - Usa\",  \t\n  \t\"es\": \"BBS - Estados Unidos\"\n  },\n  \"brand\": {{brandId}}\n}"
+							"raw": "{\n  \"regExp\": \"+1\",\n  \"name\": {\n  \t\"en\": \"USA\",  \t\n  \t\"es\": \"Estados Unidos\"\n  },\n  \"description\": {\n  \t\"en\": \"BBS - Usa\",  \t\n  \t\"es\": \"BBS - Estados Unidos\"\n  },\n  \"brand\": {{brandId}}\n}"
 						},
+						"url": "{{api_url}}/routing_patterns",
 						"description": ""
 					},
 					"response": []
@@ -831,25 +795,586 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/outgoing_routings",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"type\": \"pattern\",\n  \"priority\": 2,\n  \"brand\": {{brandId}},\n  \"peeringContract\": {{peeringContractId}},\n  \"routingPattern\": {{routingPatternUSId}}\n}"
 						},
+						"url": "{{api_url}}/outgoing_routings",
 						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Destination ES",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "33215d11-abbc-43de-9fa0-ed285d960710",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									"postman.setGlobalVariable(\"destinationESId\", jsonData.id);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": {\n  \t\"en\": \"Spain\",\n  \t\"es\": \"España\"\n  },\n  \"description\": {\n  \t\"en\": \"Spain\",\n  \t\"es\": \"España\"\n  },\n  \"brand\": {{brandId}}\n}"
+						},
+						"url": "{{api_url}}/destinations",
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add Pattern to Destination ES",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e811bf36-abf5-48f2-b4b1-087d8e917873",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"prefix\": \"+34\",\n  \"destination\": {{destinationESId}}\n}"
+						},
+						"url": "{{api_url}}/tp_destinations",
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Destination US",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f3e91408-7d38-46bf-bf27-a1b5c5d305c2",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									"postman.setGlobalVariable(\"destinationUSId\", jsonData.id);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": {\n  \t\"en\": \"USA\",\n  \t\"es\": \"EEEUU\"\n  },\n  \"description\": {\n  \t\"en\": \"United States of America\",\n  \t\"es\": \"Estados Unidos de América\"\n  },\n  \"brand\": {{brandId}}\n}"
+						},
+						"url": "{{api_url}}/destinations",
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add Pattern to Destination US",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e811bf36-abf5-48f2-b4b1-087d8e917873",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"prefix\": \"+1\",\n  \"destination\": {{destinationUSId}}\n}"
+						},
+						"url": "{{api_url}}/tp_destinations",
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create National Rate",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8b01386f-10ec-45ea-b067-f7e567aacc5a",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									"postman.setGlobalVariable(\"nationalRateId\", jsonData.id);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"National Calls Rate\",\n  \"brand\": {{brandId}}\n}"
+						},
+						"url": "{{api_url}}/rates",
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add National Costs to Rate",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "427efeed-65aa-4fbd-9d06-0a4921eb586f",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"connectFee\": \"0.001\",\n  \"rateCost\": \"0.3\",\n  \"rateUnit\": \"60s\",\n  \"rateIncrement\": \"1s\",\n  \"groupIntervalStart\": \"0s\",\n  \"rate\": {{nationalRateId}}\n}"
+						},
+						"url": "{{api_url}}/tp_rates",
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "Create National Rate copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "09544a4e-400a-4ac7-907f-4b8e4ded463c",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									"postman.setGlobalVariable(\"internationalRateId\", jsonData.id);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Intenational Calls Rate\",\n  \"brand\": {{brandId}}\n}"
+						},
+						"url": "{{api_url}}/rates",
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add International Costs to Rate",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "427efeed-65aa-4fbd-9d06-0a4921eb586f",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"connectFee\": \"1.500\",\n  \"rateCost\": \"1.2\",\n  \"rateUnit\": \"60s\",\n  \"rateIncrement\": \"1s\",\n  \"groupIntervalStart\": \"0s\",\n  \"rate\": {{internationalRateId}}\n}"
+						},
+						"url": "{{api_url}}/tp_rates",
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "Create Destination Rate",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f14a8e6f-a677-4a81-9333-0d7eebb4ed29",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									"postman.setGlobalVariable(\"destinationRateId\", jsonData.id);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": {\n  \t\"en\": \"Standard\",\n  \t\"es\": \"Estándar\"\n  },\n  \"description\": {\n  \t\"en\": \"\",\n  \t\"es\": \"\"\n  },\n  \"brand\": {{brandId}}\n}"
+						},
+						"url": "{{api_url}}/destination_rates",
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "Add Destination Rate ES",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bc41beb0-8e5c-496d-93a2-ffc1e7a00aee",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"destinationRate\": {{destinationRateId}},\n  \"destination\": {{destinationESId}},\n  \"rate\": {{nationalRateId}}\n}"
+						},
+						"url": "{{api_url}}/tp_destination_rates",
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "Add Destination Rate US",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b2665ea2-81d0-4f6d-ba99-c311166c9f44",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"destinationRate\": {{destinationRateId}},\n  \"destination\": {{destinationUSId}},\n  \"rate\": {{internationalRateId}}\n}"
+						},
+						"url": "{{api_url}}/tp_destination_rates",
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "Create Rating Plan",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0f5b00b1-a78d-4e52-92dc-5b9089e64721",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									"postman.setGlobalVariable(\"ratingPlanId\", jsonData.id);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": {\n  \t\"en\": \"Standard 2017\",\n  \t\"es\": \"Estándar 2017\"\n  },\n  \"description\": {\n  \t\"en\": \"\",\n  \t\"es\": \"\"\n  },\n  \"brand\": {{brandId}}\n}"
+						},
+						"url": "{{api_url}}/rating_plans",
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "Add Rating Plan Destination rate",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a62b51cd-049c-4137-b5f6-0112019e6d5f",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"weight\": \"1\",\n  \"timing\": \"1\",\n  \"ratingPlan\": {{ratingPlanId}},\n  \"destinationRate\": {{destinationRateId}}\n}"
+						},
+						"url": "{{api_url}}/tp_rating_plans",
+						"description": null
 					},
 					"response": []
 				}
@@ -882,24 +1407,65 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/companies",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"type\": \"vpbx\",\n  \"name\": \"BBS - Company for Black Box SIP tests\",\n  \"domainUsers\": \"bbs.ivozprovider.local\",\n  \"nif\": \"09876543210ART\",\n  \"externalMaxCalls\": 2,\n  \"postalAddress\": \"Company address\",\n  \"postalCode\": \"48902\",\n  \"town\": \"Company town\",\n  \"province\": \"Company province\",\n  \"countryName\": \"Company country\",\n  \"ipfilter\": false,\n  \"defaultTimezone\": 1,\n  \"transformationRuleSet\": 70,\n  \"brand\": {{brandId}}\n}"
 						},
+						"url": "{{api_url}}/companies",
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add Company Rating Profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9d423fc8-954b-4358-be3d-a78ca5ddba30",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"activationTime\": \"2018-01-01 00:00:00.000\",\n  \"company\": {{companyId}},\n  \"ratingPlan\": {{ratingPlanId}}\n}"
+						},
+						"url": "{{api_url}}/tp_rating_profiles",
 						"description": ""
 					},
 					"response": []
@@ -925,24 +1491,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/companies/{{companyId}}",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Accept",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"type\": \"vpbx\",\n  \"name\": \"BBS - Company for Black Box SIP tests\",\n  \"domainUsers\": \"bbs.ivozprovider.local\",\n  \"nif\": \"09876543210ART\",\n  \"externalMaxCalls\": 2,\n  \"postalAddress\": \"Company address\",\n  \"postalCode\": \"48902\",\n  \"town\": \"Company town\",\n  \"province\": \"Company province\",\n  \"countryName\": \"Company country\",\n  \"defaultTimezone\": 1,\n  \"brand\": {{brandId}}\n}"
 						},
+						"url": "{{api_url}}/companies/{{companyId}}",
 						"description": ""
 					},
 					"response": []
@@ -969,24 +1533,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/features_rel_companies",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"company\": {{companyId}},\n  \"feature\": 1\n}"
 						},
+						"url": "{{api_url}}/features_rel_companies",
 						"description": ""
 					},
 					"response": []
@@ -1013,24 +1575,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/features_rel_companies",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"company\": {{companyId}},\n  \"feature\": 2\n}"
 						},
+						"url": "{{api_url}}/features_rel_companies",
 						"description": ""
 					},
 					"response": []
@@ -1057,24 +1617,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/features_rel_companies",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"company\": {{companyId}},\n  \"feature\": 3\n}"
 						},
+						"url": "{{api_url}}/features_rel_companies",
 						"description": ""
 					},
 					"response": []
@@ -1101,24 +1659,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/features_rel_companies",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"company\": {{companyId}},\n  \"feature\": 4\n}"
 						},
+						"url": "{{api_url}}/features_rel_companies",
 						"description": ""
 					},
 					"response": []
@@ -1145,24 +1701,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/features_rel_companies",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"company\": {{companyId}},\n  \"feature\": 5\n}"
 						},
+						"url": "{{api_url}}/features_rel_companies",
 						"description": ""
 					},
 					"response": []
@@ -1189,24 +1743,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/features_rel_companies",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"company\": {{companyId}},\n  \"feature\": 8\n}"
 						},
+						"url": "{{api_url}}/features_rel_companies",
 						"description": ""
 					},
 					"response": []
@@ -1234,24 +1786,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/terminals",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"name\": \"alice\",\n  \"directMediaMethod\": \"invite\",\n  \"password\": \"4l1C3P4sSw0rd+\",\n  \"company\": {{companyId}},\n  \"terminalModel\": 5\n}"
 						},
+						"url": "{{api_url}}/terminals",
 						"description": ""
 					},
 					"response": []
@@ -1280,24 +1830,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/users",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"name\": \"Alice\",\n  \"lastname\": \"Allison\",\n  \"email\": \"alice@bbs.ivozprovider.local\",\n  \"pass\": \"4l1c3p4ssw0rd\",\n  \"company\": {{companyId}},\n  \"terminal\": {{aliceTerminalId}},\n  \"transformationRuleSet\": 70,\n  \"timezone\": 70\n}"
 						},
+						"url": "{{api_url}}/users",
 						"description": ""
 					},
 					"response": []
@@ -1325,24 +1873,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/extensions",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"number\": \"1001\",\n  \"routeType\": \"user\",\n  \"company\": {{companyId}},\n  \"user\": {{aliceUserId}}\n}"
 						},
+						"url": "{{api_url}}/extensions",
 						"description": ""
 					},
 					"response": []
@@ -1370,24 +1916,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/ddis",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"ddi\": \"999661001\",\n  \"routeType\": \"user\",\n  \"company\": {{companyId}},\n  \"brand\": {{brandId}},\n  \"user\": {{aliceUserId}},\n  \"peeringContract\": {{peeringContractId}},\n  \"country\": 70\n}"
 						},
+						"url": "{{api_url}}/ddis",
 						"description": ""
 					},
 					"response": []
@@ -1416,24 +1960,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/terminals",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"name\": \"bob\",\n  \"directMediaMethod\": \"invite\",\n  \"password\": \"b0bP4sSW0rd+\",\n  \"company\": {{companyId}},\n  \"terminalModel\": 5\n}"
 						},
+						"url": "{{api_url}}/terminals",
 						"description": ""
 					},
 					"response": []
@@ -1461,24 +2003,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/users",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"name\": \"Bob\",\n  \"lastname\": \"Bobson\",\n  \"email\": \"bob@bbs.ivozprovider.local\",\n  \"pass\": \"b0bp4ssw0rd\",\n  \"company\": {{companyId}},\n  \"terminal\": {{bobTerminalId}},\n  \"transformationRuleSet\": 70,  \n  \"timezone\": 70\n}"
 						},
+						"url": "{{api_url}}/users",
 						"description": ""
 					},
 					"response": []
@@ -1507,24 +2047,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/extensions",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"number\": \"1002\",\n  \"routeType\": \"user\",\n  \"company\": {{companyId}},\n  \"user\": {{bobUserId}}\n}"
 						},
+						"url": "{{api_url}}/extensions",
 						"description": ""
 					},
 					"response": []
@@ -1552,24 +2090,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/ddis",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"ddi\": \"999661002\",\n  \"routeType\": \"user\",\n  \"company\": {{companyId}},\n  \"brand\": {{brandId}},\n  \"user\": {{bobUserId}},\n  \"peeringContract\": {{peeringContractId}},\n  \"country\": 70\n}"
 						},
+						"url": "{{api_url}}/ddis",
 						"description": ""
 					},
 					"response": []
@@ -1598,24 +2134,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/terminals",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"name\": \"charlie\",\n  \"directMediaMethod\": \"invite\",\n  \"password\": \"Ch4rL1Ep4SSword+\",\n  \"company\": {{companyId}},\n  \"terminalModel\": 5\n}"
 						},
+						"url": "{{api_url}}/terminals",
 						"description": ""
 					},
 					"response": []
@@ -1644,24 +2178,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/users",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"name\": \"Charlie\",\n  \"lastname\": \"Charlieson\",\n  \"email\": \"charlie@bbs.ivozprovider.local\",\n  \"pass\": \"ch4rl1ep4ssw0rd\",\n  \"company\": {{companyId}},\n  \"terminal\": {{charlieTerminalId}},\n  \"transformationRuleSet\": 70,  \n  \"timezone\": 70\n}"
 						},
+						"url": "{{api_url}}/users",
 						"description": ""
 					},
 					"response": []
@@ -1690,24 +2222,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/extensions",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"number\": \"1003\",\n  \"routeType\": \"user\",\n  \"company\": {{companyId}},\n  \"user\": {{charlieUserId}}\n}"
 						},
+						"url": "{{api_url}}/extensions",
 						"description": ""
 					},
 					"response": []
@@ -1735,24 +2265,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/ddis",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"ddi\": \"999661003\",\n  \"routeType\": \"user\",\n  \"company\": {{companyId}},\n  \"brand\": {{brandId}},\n  \"user\": {{charlieUserId}},\n  \"peeringContract\": {{peeringContractId}},\n  \"country\": 70\n}"
 						},
+						"url": "{{api_url}}/ddis",
 						"description": ""
 					},
 					"response": []
@@ -1781,24 +2309,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/terminals",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"name\": \"dave\",\n  \"directMediaMethod\": \"invite\",\n  \"password\": \"D4vEp4SSw0rd+\",\n  \"company\": {{companyId}},\n  \"terminalModel\": 5\n}"
 						},
+						"url": "{{api_url}}/terminals",
 						"description": ""
 					},
 					"response": []
@@ -1827,24 +2353,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/users",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"name\": \"Dave\",\n  \"lastname\": \"Daveson\",\n  \"email\": \"deve@bbs.ivozprovider.local\",\n  \"pass\": \"d4v3p4ssw0rd\",\n  \"company\": {{companyId}},\n  \"terminal\": {{daveTerminalId}},\n  \"transformationRuleSet\": {{transformationUSA999}},\n  \"timezone\": 70\n}"
 						},
+						"url": "{{api_url}}/users",
 						"description": ""
 					},
 					"response": []
@@ -1872,24 +2396,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/extensions",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "\n{\n  \"number\": \"1004\",\n  \"routeType\": \"user\",\n  \"company\": {{companyId}},\n  \"user\": {{daveUserId}}\n}"
 						},
+						"url": "{{api_url}}/extensions",
 						"description": ""
 					},
 					"response": []
@@ -1917,24 +2439,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/ddis",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "\n{\n  \"ddi\": \"999661004\",\n  \"routeType\": \"user\",\n  \"company\": {{companyId}},\n  \"brand\": {{brandId}},\n  \"user\": {{daveUserId}},\n  \"peeringContract\": {{peeringContractId}},\n  \"country\": 235\n}"
 						},
+						"url": "{{api_url}}/ddis",
 						"description": ""
 					},
 					"response": []
@@ -1962,24 +2482,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/terminals",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"name\": \"eve\",\n  \"directMediaMethod\": \"invite\",\n  \"password\": \"Ev3p4SSw0rd+\",\n  \"company\": {{companyId}},\n  \"terminalModel\": 5\n}"
 						},
+						"url": "{{api_url}}/terminals",
 						"description": ""
 					},
 					"response": []
@@ -2008,24 +2526,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/users",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"name\": \"Eve\",\n  \"lastname\": \"Eveson\",\n  \"email\": \"eve@bbs.ivozprovider.local\",\n  \"pass\": \"3v3p4ssw0rd\",\n  \"company\": {{companyId}},\n  \"terminal\": {{eveTerminalId}},\n  \"transformationRuleSet\": {{transformationUSA999}},\n  \"timezone\": 70\n}"
 						},
+						"url": "{{api_url}}/users",
 						"description": ""
 					},
 					"response": []
@@ -2054,24 +2570,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/extensions",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"number\": \"1005\",\n  \"routeType\": \"user\",\n  \"company\": {{companyId}},\n  \"user\": {{eveUserId}}\n}"
 						},
+						"url": "{{api_url}}/extensions",
 						"description": ""
 					},
 					"response": []
@@ -2099,24 +2613,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/ddis",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"ddi\": \"999661005\",\n  \"routeType\": \"user\",\n  \"company\": {{companyId}},\n  \"brand\": {{brandId}},\n  \"user\": {{eveUserId}},\n  \"peeringContract\": {{peeringContractId}},\n  \"country\": 235\n}"
 						},
+						"url": "{{api_url}}/ddis",
 						"description": ""
 					},
 					"response": []
@@ -2145,24 +2657,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/match_lists",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"name\": \"White List for Boss Frank\",\n  \"company\": {{companyId}}\n}"
 						},
+						"url": "{{api_url}}/match_lists",
 						"description": ""
 					},
 					"response": []
@@ -2189,24 +2699,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/match_list_patterns",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"description\": \"Alice DDI Number\",\n  \"type\": \"number\",\n  \"numbervalue\": \"999661001\",\n  \"matchList\": {{bossAssistantWatchListId}},\n  \"numberCountry\": 70\n}"
 						},
+						"url": "{{api_url}}/match_list_patterns",
 						"description": ""
 					},
 					"response": []
@@ -2233,24 +2741,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/match_list_patterns",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"description\": \"Alice Extension Number\",\n  \"type\": \"regexp\",\n  \"regexp\": \"^1001$\",\n  \"matchList\": {{bossAssistantWatchListId}}\n}"
 						},
+						"url": "{{api_url}}/match_list_patterns",
 						"description": ""
 					},
 					"response": []
@@ -2278,24 +2784,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/terminals",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"name\": \"frank\",\n  \"directMediaMethod\": \"invite\",\n  \"password\": \"fr4Nkp4SSw0rd+\",\n  \"company\": {{companyId}},\n  \"terminalModel\": 5\n}"
 						},
+						"url": "{{api_url}}/terminals",
 						"description": ""
 					},
 					"response": []
@@ -2323,24 +2827,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/users",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"name\": \"Frank\",\n  \"lastname\": \"Frankson\",\n  \"email\": \"frank@bbs.ivozprovider.local\",\n  \"pass\": \"fr4nkp4ssw0rd\",\n  \"isBoss\": true,\n  \"company\": {{companyId}},\n  \"bossAssistant\": {{daveUserId}},\n  \"bossAssistantWhiteList\": {{bossAssistantWatchListId}},\n  \"transformationRuleSet\": {{transformationUSA999}},\n  \"terminal\": {{frankTerminalId}},\n  \"timezone\": 1\n}"
 						},
+						"url": "{{api_url}}/users",
 						"description": ""
 					},
 					"response": []
@@ -2368,24 +2870,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/extensions",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"number\": \"1006\",\n  \"routeType\": \"user\",\n  \"company\": {{companyId}},\n  \"user\": {{frankUserId}}\n}"
 						},
+						"url": "{{api_url}}/extensions",
 						"description": ""
 					},
 					"response": []
@@ -2413,24 +2913,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/ddis",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "\n{\n  \"ddi\": \"999661006\",\n  \"routeType\": \"user\",\n  \"company\": {{companyId}},\n  \"brand\": {{brandId}},\n  \"user\": {{frankUserId}},\n  \"peeringContract\": {{peeringContractId}},\n  \"country\": 70\n}"
 						},
+						"url": "{{api_url}}/ddis",
 						"description": ""
 					},
 					"response": []
@@ -2438,17 +2936,6 @@
 				{
 					"name": "Set Default Company DDI",
 					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"tests[\"Status code is 200\"] = responseCode.code === 200;",
-									"",
-									"console.log(postman.getGlobalVariable(\"companyDataJson\"));"
-								]
-							}
-						},
 						{
 							"listen": "prerequest",
 							"script": {
@@ -2463,27 +2950,36 @@
 									""
 								]
 							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									"console.log(postman.getGlobalVariable(\"companyDataJson\"));"
+								]
+							}
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/companies/{{companyId}}",
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{{companyData}}"
 						},
+						"url": "{{api_url}}/companies/{{companyId}}",
 						"description": ""
 					},
 					"response": []
@@ -2512,24 +3008,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/friends",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"name\": \"friend\",\n  \"description\": \"BBS - Friend\",\n  \"transport\": \"udp\",\n  \"password\": \"fr13ndp4SSW0rd+\",\n  \"priority\": 1,\n  \"directConnectivity\": \"no\",\n  \"company\": {{companyId}}\n}"
 						},
+						"url": "{{api_url}}/friends",
 						"description": ""
 					},
 					"response": []
@@ -2558,24 +3052,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/friends_patterns",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"name\": \"2XXX Extensions\",\n  \"regExp\": \"^2[0-9]{3}$\",\n  \"friend\": {{friendId}}\n}"
 						},
+						"url": "{{api_url}}/friends_patterns",
 						"description": ""
 					},
 					"response": []
@@ -2603,24 +3095,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/extensions",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"number\": \"2001\",\n  \"routeType\": \"friend\",\n  \"company\": {{companyId}},\n  \"friendValue\": \"2001\"\n}"
 						},
+						"url": "{{api_url}}/extensions",
 						"description": ""
 					},
 					"response": []
@@ -2654,24 +3144,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/companies",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"type\": \"retail\",\n  \"name\": \"BBS - Retail for Black Box SIP tests\",\n  \"nif\": \"09876543210ART\",\n  \"externalMaxCalls\": 2,\n  \"postalAddress\": \"Retail address\",\n  \"postalCode\": \"48902\",\n  \"town\": \"Retail town\",\n  \"province\": \"Retail province\",\n  \"countryName\": \"Retail country\",\n  \"defaultTimezone\": 1,\n  \"brand\": {{brandId}}\n}"
 						},
+						"url": "{{api_url}}/companies",
 						"description": ""
 					},
 					"response": []
@@ -2697,24 +3185,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/companies/{{retailId}}",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Accept",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"type\": \"vpbx\",\n  \"name\": \"BBS - Company for Black Box SIP tests\",\n  \"domainUsers\": \"bbs.ivozprovider.local\",\n  \"nif\": \"09876543210ART\",\n  \"externalMaxCalls\": 2,\n  \"postalAddress\": \"Company address\",\n  \"postalCode\": \"48902\",\n  \"town\": \"Company town\",\n  \"province\": \"Company province\",\n  \"countryName\": \"Company country\",\n  \"defaultTimezone\": 1,\n  \"brand\": {{brandId}}\n}"
 						},
+						"url": "{{api_url}}/companies/{{retailId}}",
 						"description": ""
 					},
 					"response": []
@@ -2741,16 +3227,13 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/features_rel_companies",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							},
 							{
-								"description": "",
 								"key": "Content-Type",
 								"value": "application/json"
 							}
@@ -2759,6 +3242,7 @@
 							"mode": "raw",
 							"raw": "\n{\n  \"company\": {{retailId}},\n  \"feature\": 2\n}"
 						},
+						"url": "{{api_url}}/features_rel_companies",
 						"description": ""
 					},
 					"response": []
@@ -2785,24 +3269,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/features_rel_companies",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"company\": {{retailId}},\n  \"feature\": 3\n}"
 						},
+						"url": "{{api_url}}/features_rel_companies",
 						"description": ""
 					},
 					"response": []
@@ -2829,24 +3311,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/features_rel_companies",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"company\": {{retailId}},\n  \"feature\": 8\n}"
 						},
+						"url": "{{api_url}}/features_rel_companies",
 						"description": ""
 					},
 					"response": []
@@ -2875,24 +3355,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/retail_accounts",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"name\": \"20000\",\n  \"transport\": \"udp\",\n  \"password\": \"r3t41Lp4sSW0rd+\",\n  \"directConnectivity\": \"no\",\n  \"brand\": {{brandId}},\n  \"company\": {{retailId}}\n}"
 						},
+						"url": "{{api_url}}/retail_accounts",
 						"description": ""
 					},
 					"response": []
@@ -2920,24 +3398,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/ddis",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"ddi\": \"999920000\",\n  \"routeType\": \"retailAccount\",\n  \"company\": {{retailId}},\n  \"brand\": {{brandId}},\n  \"retailAccount\": {{retailAccountId}},\n  \"peeringContract\": {{peeringContractId}},\n  \"country\": 235\n}"
 						},
+						"url": "{{api_url}}/ddis",
 						"description": ""
 					},
 					"response": []
@@ -2945,17 +3421,6 @@
 				{
 					"name": "Set Default Retail Client DDI",
 					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"tests[\"Status code is 200\"] = responseCode.code === 200;",
-									"",
-									""
-								]
-							}
-						},
 						{
 							"listen": "prerequest",
 							"script": {
@@ -2970,27 +3435,36 @@
 									""
 								]
 							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									""
+								]
+							}
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/companies/{{retailId}}",
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{{retailData}}"
 						},
+						"url": "{{api_url}}/companies/{{retailId}}",
 						"description": ""
 					},
 					"response": []
@@ -3024,24 +3498,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/ivrs",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"name\": \"BBS Generic IVR\",\n  \"timeout\": 5,\n  \"maxDigits\": 4,\n  \"allowExtensions\": true,\n  \"noInputRouteType\": \"extension\",\n  \"errorRouteType\": \"number\",\n  \"errorNumberValue\": \"999661003\",\n  \"company\": {{companyId}},\n  \"noInputExtension\": {{daveExtensionId}},\n  \"errorNumberCountry\": 70\n}"
 						},
+						"url": "{{api_url}}/ivrs",
 						"description": "POST"
 					},
 					"response": []
@@ -3071,24 +3543,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/extensions",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"number\": \"600\",\n  \"routeType\": \"ivr\",\n  \"company\": {{companyId}},\n  \"ivr\": {{ivrCommonId}}\n}"
 						},
+						"url": "{{api_url}}/extensions",
 						"description": ""
 					},
 					"response": []
@@ -3116,24 +3586,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/ivrs",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"name\": \"BBS Custom IVR\",\n  \"timeout\": 5,\n  \"maxDigits\": 1,\n  \"noInputRouteType\": \"extension\",\n  \"errorRouteType\": \"extension\",\n  \"company\": {{companyId}},\n  \"noInputExtension\": {{daveExtensionId}},\n  \"errorExtension\": {{eveExtensionId}}\n}"
 						},
+						"url": "{{api_url}}/ivrs",
 						"description": "POST"
 					},
 					"response": []
@@ -3162,24 +3630,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/extensions",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"number\": \"601\",\n  \"routeType\": \"ivr\",\n  \"company\": {{companyId}},\n  \"ivr\": {{ivrCustomId}}\n}"
 						},
+						"url": "{{api_url}}/extensions",
 						"description": ""
 					},
 					"response": []
@@ -3206,24 +3672,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/ivr_entries",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"entry\": \"1\",\n  \"routeType\": \"extension\",\n  \"ivr\": {{ivrCustomId}},\n  \"extension\": {{aliceExtensionId}}\n}"
 						},
+						"url": "{{api_url}}/ivr_entries",
 						"description": ""
 					},
 					"response": []
@@ -3249,24 +3713,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/ivr_entries",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"entry\": \"5\",\n  \"routeType\": \"extension\",\n  \"ivr\": {{ivrCustomId}},\n  \"extension\": {{eveExtensionId}}\n}"
 						},
+						"url": "{{api_url}}/ivr_entries",
 						"description": ""
 					},
 					"response": []
@@ -3300,24 +3762,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/pick_up_groups",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"name\": \"BBS Pickup Group\",\n  \"company\": {{companyId}}\n}"
 						},
+						"url": "{{api_url}}/pick_up_groups",
 						"description": "POST"
 					},
 					"response": []
@@ -3344,24 +3804,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/pick_up_rel_users",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"pickUpGroup\": {{pickupGroupId}},\n  \"user\": {{aliceUserId}}\n}"
 						},
+						"url": "{{api_url}}/pick_up_rel_users",
 						"description": "POST"
 					},
 					"response": []
@@ -3388,24 +3846,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/pick_up_rel_users",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"pickUpGroup\": {{pickupGroupId}},\n  \"user\": {{bobUserId}}\n}"
 						},
+						"url": "{{api_url}}/pick_up_rel_users",
 						"description": "POST"
 					},
 					"response": []
@@ -3432,24 +3888,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/pick_up_rel_users",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"pickUpGroup\": {{pickupGroupId}},\n  \"user\": {{charlieUserId}}\n}"
 						},
+						"url": "{{api_url}}/pick_up_rel_users",
 						"description": "POST"
 					},
 					"response": []
@@ -3483,24 +3937,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/conference_rooms",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"name\": \"BBS Conference Room\",\n  \"pinProtected\": true,\n  \"pinCode\": \"1234\",\n  \"maxMembers\": 2,\n  \"company\": {{companyId}}\n}"
 						},
+						"url": "{{api_url}}/conference_rooms",
 						"description": "POST"
 					},
 					"response": []
@@ -3528,24 +3980,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/extensions",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "\n{\n  \"number\": \"500\",\n  \"routeType\": \"conferenceRoom\",\n  \"company\": {{companyId}},\n  \"conferenceRoom\": {{conferenceRoomId}}\n}"
 						},
+						"url": "{{api_url}}/extensions",
 						"description": ""
 					},
 					"response": []
@@ -3579,24 +4029,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/hunt_groups",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"name\": \"BBS RingAll HuntGroup\",\n  \"description\": \"BBS RingAll HuntGroup\",\n  \"strategy\": \"ringAll\",\n  \"ringAllTimeout\": 10,\n  \"noAnswerTargetType\": \"extension\",\n  \"company\": {{companyId}},\n  \"noAnswerExtension\": {{eveExtensionId}}\n}"
 						},
+						"url": "{{api_url}}/hunt_groups",
 						"description": "POST"
 					},
 					"response": []
@@ -3623,24 +4071,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/extensions",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"number\": \"700\",\n  \"routeType\": \"huntGroup\",\n  \"company\": {{companyId}},\n  \"huntGroup\": {{huntGroupRingAllId}}\n}"
 						},
+						"url": "{{api_url}}/extensions",
 						"description": ""
 					},
 					"response": []
@@ -3667,24 +4113,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/hunt_groups_rel_users",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"huntGroup\": {{huntGroupRingAllId}},\n  \"user\": {{bobUserId}}\n}"
 						},
+						"url": "{{api_url}}/hunt_groups_rel_users",
 						"description": ""
 					},
 					"response": []
@@ -3711,24 +4155,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/hunt_groups_rel_users",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"huntGroup\": {{huntGroupRingAllId}},\n  \"user\": {{charlieUserId}}\n}"
 						},
+						"url": "{{api_url}}/hunt_groups_rel_users",
 						"description": ""
 					},
 					"response": []
@@ -3755,24 +4197,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/hunt_groups_rel_users",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"huntGroup\": {{huntGroupRingAllId}},\n  \"user\": {{daveUserId}}\n}"
 						},
+						"url": "{{api_url}}/hunt_groups_rel_users",
 						"description": ""
 					},
 					"response": []
@@ -3800,24 +4240,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/hunt_groups",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"name\": \"BBS RR HuntGroup\",\n  \"description\": \"BBS RR HuntGroup\",\n  \"strategy\": \"roundRobin\",\n  \"noAnswerTargetType\": \"extension\",\n  \"company\": {{companyId}},\n  \"noAnswerExtension\": {{eveExtensionId}}\n}"
 						},
+						"url": "{{api_url}}/hunt_groups",
 						"description": "POST"
 					},
 					"response": []
@@ -3844,24 +4282,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/extensions",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"number\": \"701\",\n  \"routeType\": \"huntGroup\",\n  \"company\": {{companyId}},\n  \"huntGroup\": {{huntGroupRRId}}\n}"
 						},
+						"url": "{{api_url}}/extensions",
 						"description": ""
 					},
 					"response": []
@@ -3888,24 +4324,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/hunt_groups_rel_users",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"timeoutTime\": 3,\n  \"priority\": 1,\n  \"huntGroup\": {{huntGroupRRId}},\n  \"user\": {{bobUserId}}\n}"
 						},
+						"url": "{{api_url}}/hunt_groups_rel_users",
 						"description": ""
 					},
 					"response": []
@@ -3932,24 +4366,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/hunt_groups_rel_users",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"timeoutTime\": 3,\n  \"priority\": 2,\n  \"huntGroup\": {{huntGroupRRId}},\n  \"user\": {{charlieUserId}}\n}"
 						},
+						"url": "{{api_url}}/hunt_groups_rel_users",
 						"description": ""
 					},
 					"response": []
@@ -3976,24 +4408,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/hunt_groups_rel_users",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"timeoutTime\": 3,\n  \"priority\": 3,\n  \"huntGroup\": {{huntGroupRRId}},\n  \"user\": {{daveUserId}}\n}"
 						},
+						"url": "{{api_url}}/hunt_groups_rel_users",
 						"description": ""
 					},
 					"response": []
@@ -4026,24 +4456,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/call_forward_settings",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"callTypeFilter\": \"internal\",\n  \"callForwardType\": \"busy\",\n  \"targetType\": \"extension\",\n  \"user\": {{eveUserId}},\n  \"extension\": {{charlieExtensionId}}\n}"
 						},
+						"url": "{{api_url}}/call_forward_settings",
 						"description": "POST"
 					},
 					"response": []
@@ -4070,24 +4498,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/call_forward_settings",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"callTypeFilter\": \"internal\",\n  \"callForwardType\": \"noAnswer\",\n  \"targetType\": \"extension\",\n  \"noAnswerTimeout\": 5,\n  \"user\": {{eveUserId}},\n  \"extension\": {{bobExtensionId}}\n}"
 						},
+						"url": "{{api_url}}/call_forward_settings",
 						"description": "POST"
 					},
 					"response": []
@@ -4114,24 +4540,22 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/call_forward_settings",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"callTypeFilter\": \"internal\",\n  \"callForwardType\": \"userNotRegistered\",\n  \"targetType\": \"extension\",\n  \"user\": {{eveUserId}},\n  \"extension\": {{daveExtensionId}}\n}"
 						},
+						"url": "{{api_url}}/call_forward_settings",
 						"description": "POST"
 					},
 					"response": []
