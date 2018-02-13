@@ -43,24 +43,6 @@ class FaxesInOut extends FaxesInOutAbstract implements FaxesInOutInterface, File
     }
 
     /**
-     * Get the numberValue in E.164 format when routing to 'number'
-     *
-     * @return string
-     */
-    public function getDstE164()
-    {
-        if (!$this->getDstCountry()) {
-            return "";
-        }
-
-        return
-            $this->getDstCountry()->getCountryCode() .
-            $this->getDst();
-    }
-
-
-
-    /**
      * Set calldate
      *
      * @param \DateTime $calldate
@@ -76,5 +58,20 @@ class FaxesInOut extends FaxesInOutAbstract implements FaxesInOutInterface, File
         return parent::setCalldate($calldate);
     }
 
+    /**
+     * Get the numberValue in E.164 format when routing to 'number'
+     *
+     * @return string
+     */
+    public function getDstE164()
+    {
+        if (!$this->getDstCountry()) {
+            return "";
+        }
+
+        return
+            $this->getDstCountry()->getCountryCode() .
+            $this->getDst();
+    }
 }
 

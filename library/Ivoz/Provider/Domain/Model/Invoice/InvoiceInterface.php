@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\Invoice;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Doctrine\Common\Collections\Collection;
 
 interface InvoiceInterface extends LoggableEntityInterface
 {
@@ -188,6 +189,37 @@ interface InvoiceInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Invoice\Pdf
      */
     public function getPdf();
+
+    /**
+     * Add relFixedCost
+     *
+     * @param \Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoiceInterface $relFixedCost
+     *
+     * @return InvoiceTrait
+     */
+    public function addRelFixedCost(\Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoiceInterface $relFixedCost);
+
+    /**
+     * Remove relFixedCost
+     *
+     * @param \Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoiceInterface $relFixedCost
+     */
+    public function removeRelFixedCost(\Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoiceInterface $relFixedCost);
+
+    /**
+     * Replace relFixedCosts
+     *
+     * @param \Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoiceInterface[] $relFixedCosts
+     * @return self
+     */
+    public function replaceRelFixedCosts(Collection $relFixedCosts);
+
+    /**
+     * Get relFixedCosts
+     *
+     * @return \Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoiceInterface[]
+     */
+    public function getRelFixedCosts(\Doctrine\Common\Collections\Criteria $criteria = null);
 
     public function addTmpFile($fldName, \Ivoz\Core\Domain\Service\TempFile $file);
 

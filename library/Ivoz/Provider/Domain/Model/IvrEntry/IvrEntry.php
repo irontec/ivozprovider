@@ -35,7 +35,7 @@ class IvrEntry extends IvrEntryAbstract implements IvrEntryInterface
         // Set Routable options to avoid naming collision
         $this->routeTypes = [
             'voicemail',
-            'conditionalRoute',
+            'conditional',
             'number',
             'extension'
         ];

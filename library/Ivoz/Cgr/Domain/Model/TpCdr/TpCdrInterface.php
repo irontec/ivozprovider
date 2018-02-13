@@ -6,7 +6,7 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 
 interface TpCdrInterface extends EntityInterface
 {
-    public function __toString();
+    public function getDuration();
 
     /**
      * Set cgrid
@@ -299,7 +299,7 @@ interface TpCdrInterface extends EntityInterface
     /**
      * Set costDetails
      *
-     * @param string $costDetails
+     * @param array $costDetails
      *
      * @return self
      */
@@ -308,7 +308,7 @@ interface TpCdrInterface extends EntityInterface
     /**
      * Get costDetails
      *
-     * @return string
+     * @return array
      */
     public function getCostDetails();
 

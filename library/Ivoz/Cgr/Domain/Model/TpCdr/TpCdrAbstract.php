@@ -113,7 +113,7 @@ abstract class TpCdrAbstract
 
     /**
      * column: cost_details
-     * @var string
+     * @var array
      */
     protected $costDetails;
 
@@ -891,7 +891,7 @@ abstract class TpCdrAbstract
     /**
      * Set costDetails
      *
-     * @param string $costDetails
+     * @param array $costDetails
      *
      * @return self
      */
@@ -907,7 +907,7 @@ abstract class TpCdrAbstract
     /**
      * Get costDetails
      *
-     * @return string
+     * @return array
      */
     public function getCostDetails()
     {

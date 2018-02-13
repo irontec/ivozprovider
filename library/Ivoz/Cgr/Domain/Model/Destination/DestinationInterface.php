@@ -7,8 +7,6 @@ use Doctrine\Common\Collections\Collection;
 
 interface DestinationInterface extends EntityInterface
 {
-    public function __toString();
-
     /**
      * Set tag
      *

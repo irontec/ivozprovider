@@ -82,6 +82,11 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
      */
     private $company;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoiceDto[] | null
+     */
+    private $relFixedCosts = null;
+
 
     use DtoNormalizer;
 
@@ -136,7 +141,8 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
             ],
             'invoiceTemplate' => $this->getInvoiceTemplate(),
             'brand' => $this->getBrand(),
-            'company' => $this->getCompany()
+            'company' => $this->getCompany(),
+            'relFixedCosts' => $this->getRelFixedCosts()
         ];
     }
 
@@ -148,6 +154,17 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
         $this->invoiceTemplate = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\InvoiceTemplate\\InvoiceTemplate', $this->getInvoiceTemplateId());
         $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
         $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
+        if (!is_null($this->relFixedCosts)) {
+            $items = $this->getRelFixedCosts();
+            $this->relFixedCosts = [];
+            foreach ($items as $item) {
+                $this->relFixedCosts[] = $transformer->transform(
+                    'Ivoz\\Provider\\Domain\\Model\\FixedCostsRelInvoice\\FixedCostsRelInvoice',
+                    $item->getId() ?? $item
+                );
+            }
+        }
+
     }
 
     /**
@@ -155,7 +172,10 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
+        $this->relFixedCosts = $transformer->transform(
+            'Ivoz\\Provider\\Domain\\Model\\FixedCostsRelInvoice\\FixedCostsRelInvoice',
+            $this->relFixedCosts
+        );
     }
 
     /**
@@ -515,6 +535,26 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
 
             return null;
         }
+
+    /**
+     * @param array $relFixedCosts
+     *
+     * @return static
+     */
+    public function setRelFixedCosts($relFixedCosts = null)
+    {
+        $this->relFixedCosts = $relFixedCosts;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getRelFixedCosts()
+    {
+        return $this->relFixedCosts;
+    }
 }
 
 

@@ -18,6 +18,14 @@ interface LocutionInterface extends LoggableEntityInterface
     public function getFileObjects();
 
     /**
+     * Add TempFile and set status to pending
+     *
+     * @param $fldName
+     * @param TempFile $file
+     */
+    public function addTmpFile($fldName, \Ivoz\Core\Domain\Service\TempFile $file);
+
+    /**
      * Set name
      *
      * @param string $name
@@ -96,8 +104,6 @@ interface LocutionInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Locution\OriginalFile
      */
     public function getOriginalFile();
-
-    public function addTmpFile($fldName, \Ivoz\Core\Domain\Service\TempFile $file);
 
     /**
      * @return TempFile[]

@@ -76,7 +76,7 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     /**
      * @return array
      */
-    public function toArray()
+    public function toArray($hideSensitiveData = false)
     {
         return [
             'tag' => $this->getTag(),

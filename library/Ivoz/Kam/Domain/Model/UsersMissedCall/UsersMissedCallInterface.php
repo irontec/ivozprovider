@@ -12,8 +12,6 @@ interface UsersMissedCallInterface extends LoggableEntityInterface
      */
     public function getChangeSet();
 
-    public function __toString();
-
     /**
      * Set method
      *

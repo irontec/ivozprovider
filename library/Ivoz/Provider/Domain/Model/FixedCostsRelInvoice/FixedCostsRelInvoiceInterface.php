@@ -67,7 +67,7 @@ interface FixedCostsRelInvoiceInterface extends LoggableEntityInterface
      *
      * @return self
      */
-    public function setInvoice(\Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice);
+    public function setInvoice(\Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice = null);
 
     /**
      * Get invoice

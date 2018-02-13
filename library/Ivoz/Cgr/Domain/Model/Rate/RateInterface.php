@@ -7,8 +7,6 @@ use Doctrine\Common\Collections\Collection;
 
 interface RateInterface extends EntityInterface
 {
-    public function __toString();
-
     /**
      * Set tag
      *

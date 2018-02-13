@@ -22,8 +22,6 @@ interface TpRateInterface extends EntityInterface
      */
     public function setGroupIntervalStart($groupIntervalStart);
 
-    public function __toString();
-
     /**
      * Set tpid
      *

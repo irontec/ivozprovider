@@ -6,8 +6,6 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 
 interface TpTimingInterface extends EntityInterface
 {
-    public function __toString();
-
     /**
      * Set tpid
      *

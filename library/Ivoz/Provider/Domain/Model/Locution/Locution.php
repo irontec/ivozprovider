@@ -2,6 +2,7 @@
 namespace Ivoz\Provider\Domain\Model\Locution;
 use Ivoz\Core\Domain\Model\TempFileContainnerTrait;
 use Ivoz\Core\Domain\Service\FileContainerInterface;
+use Ivoz\Core\Domain\Service\TempFile;
 
 /**
  * Locution
@@ -9,7 +10,7 @@ use Ivoz\Core\Domain\Service\FileContainerInterface;
 class Locution extends LocutionAbstract implements LocutionInterface, FileContainerInterface
 {
     use LocutionTrait;
-    use TempFileContainnerTrait;
+    use TempFileContainnerTrait { addTmpFile as protected _addTmpFile; }
 
     /**
      * @codeCoverageIgnore
@@ -40,11 +41,19 @@ class Locution extends LocutionAbstract implements LocutionInterface, FileContai
         return $this->id;
     }
 
-    protected function sanitizeValues()
+    /**
+     * Add TempFile and set status to pending
+     *
+     * @param $fldName
+     * @param TempFile $file
+     */
+    public function addTmpFile($fldName, TempFile $file)
     {
-        if ($this->getTempFileByFieldName('OriginalFile')) {
+        if ($fldName == 'OriginalFile') {
             $this->setStatus('pending');
         }
+        $this->_addTmpFile($fldName, $file);
     }
+
 }
 

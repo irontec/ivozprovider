@@ -19,6 +19,14 @@ class TpCdr extends TpCdrAbstract implements TpCdrInterface
         return $this->id;
     }
 
+    public function getDuration()
+    {
+        $usage = $this->getUsage();
+        if (!$usage) {
+            return null;
+        }
 
+        return $usage / (1000 * 1000 * 1000);
+    }
 }
 

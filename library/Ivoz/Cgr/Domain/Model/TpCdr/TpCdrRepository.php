@@ -7,6 +7,10 @@ use Doctrine\Common\Collections\Selectable;
 
 interface TpCdrRepository extends ObjectRepository, Selectable
 {
-
+    /**
+     * @param string $cgrid
+     * @return int
+     */
+    public function getOneByCgrid(string $cgrid);
 }
 

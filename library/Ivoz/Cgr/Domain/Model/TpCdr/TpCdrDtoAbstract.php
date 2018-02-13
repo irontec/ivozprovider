@@ -103,7 +103,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
     private $cost;
 
     /**
-     * @var string
+     * @var array
      */
     private $costDetails;
 
@@ -180,7 +180,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
     /**
      * @return array
      */
-    public function toArray()
+    public function toArray($hideSensitiveData = false)
     {
         return [
             'cgrid' => $this->getCgrid(),
@@ -587,7 +587,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $costDetails
+     * @param array $costDetails
      *
      * @return static
      */
@@ -599,7 +599,7 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return string
+     * @return array
      */
     public function getCostDetails()
     {

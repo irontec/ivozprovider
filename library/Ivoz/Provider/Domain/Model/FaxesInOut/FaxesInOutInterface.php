@@ -18,13 +18,6 @@ interface FaxesInOutInterface extends LoggableEntityInterface
     public function getFileObjects();
 
     /**
-     * Get the numberValue in E.164 format when routing to 'number'
-     *
-     * @return string
-     */
-    public function getDstE164();
-
-    /**
      * Set calldate
      *
      * @param \DateTime $calldate
@@ -32,6 +25,13 @@ interface FaxesInOutInterface extends LoggableEntityInterface
      * @return self
      */
     public function setCalldate($calldate);
+
+    /**
+     * Get the numberValue in E.164 format when routing to 'number'
+     *
+     * @return string
+     */
+    public function getDstE164();
 
     /**
      * Get calldate

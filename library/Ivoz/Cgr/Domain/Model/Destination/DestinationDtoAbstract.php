@@ -81,7 +81,7 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
     /**
      * @return array
      */
-    public function toArray()
+    public function toArray($hideSensitiveData = false)
     {
         return [
             'tag' => $this->getTag(),

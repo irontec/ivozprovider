@@ -23,6 +23,14 @@ interface MusicOnHoldInterface extends LoggableEntityInterface
     public function getOwner();
 
     /**
+     * Add TempFile and set status to pending
+     *
+     * @param $fldName
+     * @param TempFile $file
+     */
+    public function addTmpFile($fldName, \Ivoz\Core\Domain\Service\TempFile $file);
+
+    /**
      * Set name
      *
      * @param string $name
@@ -117,8 +125,6 @@ interface MusicOnHoldInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\MusicOnHold\EncodedFile
      */
     public function getEncodedFile();
-
-    public function addTmpFile($fldName, \Ivoz\Core\Domain\Service\TempFile $file);
 
     /**
      * @return TempFile[]

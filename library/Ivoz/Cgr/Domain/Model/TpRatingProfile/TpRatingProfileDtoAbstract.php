@@ -120,7 +120,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     /**
      * @return array
      */
-    public function toArray()
+    public function toArray($hideSensitiveData = false)
     {
         return [
             'tpid' => $this->getTpid(),

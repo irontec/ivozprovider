@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Domain\Model\MusicOnHold;
 
 use Ivoz\Core\Domain\Model\TempFileContainnerTrait;
 use Ivoz\Core\Domain\Service\FileContainerInterface;
+use Ivoz\Core\Domain\Service\TempFile;
 
 /**
  * MusicOnHold
@@ -11,7 +12,7 @@ use Ivoz\Core\Domain\Service\FileContainerInterface;
 class MusicOnHold extends MusicOnHoldAbstract implements MusicOnHoldInterface, FileContainerInterface
 {
     use MusicOnHoldTrait;
-    use TempFileContainnerTrait;
+    use TempFileContainnerTrait { addTmpFile as protected _addTmpFile; }
 
     /**
      * @codeCoverageIgnore
@@ -65,6 +66,21 @@ class MusicOnHold extends MusicOnHoldAbstract implements MusicOnHoldInterface, F
         if ($this->getCompany()) {
             return 'company' . $this->getCompany()->getId();
         }
+    }
+
+
+    /**
+     * Add TempFile and set status to pending
+     *
+     * @param $fldName
+     * @param TempFile $file
+     */
+    public function addTmpFile($fldName, TempFile $file)
+    {
+        if ($fldName == 'OriginalFile') {
+            $this->setStatus('pending');
+        }
+        $this->_addTmpFile($fldName, $file);
     }
 }
 

@@ -16,8 +16,6 @@ interface TrunksUacregInterface extends LoggableEntityInterface
      */
     public function setAuthProxy($authProxy);
 
-    public function __toString();
-
     /**
      * Set lUuid
      *

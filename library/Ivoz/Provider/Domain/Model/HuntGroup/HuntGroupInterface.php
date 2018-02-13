@@ -29,6 +29,11 @@ interface HuntGroupInterface extends LoggableEntityInterface
     public function getHuntGroupUsersArray();
 
     /**
+     * @return string
+     */
+    public function getNoAnswerRouteType();
+
+    /**
      * Get the timeout numberValue in E.164 format when routing to 'number'
      *
      * @return string
@@ -248,6 +253,12 @@ interface HuntGroupInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUserInterface[]
      */
     public function getHuntGroupsRelUsers(\Doctrine\Common\Collections\Criteria $criteria = null);
+
+    /**
+     * @param string $prefix
+     * @return null|string
+     */
+    public function getTarget(string $prefix = '');
 
 }
 

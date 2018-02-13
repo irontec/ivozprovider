@@ -259,7 +259,7 @@ abstract class FixedCostsRelInvoiceAbstract
      *
      * @return self
      */
-    public function setInvoice(\Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice)
+    public function setInvoice(\Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice = null)
     {
         $this->invoice = $invoice;
 

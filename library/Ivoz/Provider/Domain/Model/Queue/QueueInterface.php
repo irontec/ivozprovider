@@ -20,11 +20,21 @@ interface QueueInterface extends LoggableEntityInterface
     public function getAstQueueName();
 
     /**
+     * @return string
+     */
+    public function getTimeoutRouteType();
+
+    /**
      * Get the timeout numberValue in E.164 format when routing to 'number'
      *
      * @return string
      */
     public function getTimeoutNumberValueE164();
+
+    /**
+     * @return string
+     */
+    public function getFullRouteType();
 
     /**
      * Get the full numberValue in E.164 format when routing to 'number'
@@ -361,6 +371,12 @@ interface QueueInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
      */
     public function getFullNumberCountry();
+
+    /**
+     * @param string $prefix
+     * @return null|string
+     */
+    public function getTarget(string $prefix = '');
 
 }
 

@@ -6,8 +6,6 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 
 interface TpAccountActionInterface extends EntityInterface
 {
-    public function __toString();
-
     /**
      * Set tpid
      *

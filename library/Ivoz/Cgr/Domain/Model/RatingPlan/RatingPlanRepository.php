@@ -7,6 +7,10 @@ use Doctrine\Common\Collections\Selectable;
 
 interface RatingPlanRepository extends ObjectRepository, Selectable
 {
-
+    /**
+     * @param string $tag
+     * @return RatingPlanInterface
+     */
+    public function findOneByTag(string $tag);
 }
 
