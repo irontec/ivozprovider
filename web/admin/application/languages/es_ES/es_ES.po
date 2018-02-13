@@ -256,9 +256,9 @@ msgstr[1] "Patrón permisos llamada"
 msgid "Call Details"
 msgstr "Detalles llamada"
 
-msgid "Call History"
-msgid_plural "Call Histories"
-msgstr[0] "Registro de llamada"
+msgid "Call registry"
+msgid_plural "Call registries"
+msgstr[0] "Registro de llamadas"
 msgstr[1] "Registros de llamadas"
 
 msgid "Call destination"
