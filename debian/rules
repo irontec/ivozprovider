@@ -24,7 +24,7 @@ build_webadmin: build_library
 	cd web/admin ; msgfmt -o application/languages/es_ES/es_ES.mo application/languages/es_ES/es_ES.po
 	cd web/admin ; msgfmt -o application/languages/en_US/en_US.mo application/languages/en_US/en_US.po
 
-build_webuser: build_webadmin
+build_webuser: build_library build_webadmin
 	cd web/user ; npm install bower grunt-cli karma grunt-karma
 	cd web/user ; npm install
 	cd web/user ; node_modules/bower/bin/bower install --allow-root
@@ -32,10 +32,10 @@ build_webuser: build_webadmin
 	cd web/user ; rm -f dist/.htaccess
 	cd web/user ; mv dist/index.html ./index.phtml
 
-build_microservices: composer
+build_microservices: build_library
 	cd microservices/recordings; composer --no-interaction --no-dev  --no-progress install
 
-build_scheme: composer
+build_scheme: build_library
 	cd scheme ; composer --no-interaction --no-dev  --no-progress install
 
 override_dh_auto_build: build_doc build_agis build_webadmin build_webrest build_microservices build_scheme build_webuser
