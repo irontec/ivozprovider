@@ -34,6 +34,7 @@ build_webuser: build_library build_webadmin
 
 build_microservices: build_library
 	cd microservices/recordings; composer --no-interaction --no-dev  --no-progress install
+	cd microservices/workers; composer --no-interaction --no-dev  --no-progress install
 
 build_scheme: build_library
 	cd scheme ; composer --no-interaction --no-dev  --no-progress install
