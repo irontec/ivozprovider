@@ -1,13 +1,13 @@
 Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointAbstract:
   type: mappedSuperclass
   indexes:
-    terminalId:
+    psEndpoint_terminalId:
       columns:
         - terminalId
-    friendId:
+    psEndpoint_friendId:
       columns:
         - friendId
-    sorcery_idx:
+    psEndpoint_sorcery_idx:
       columns:
         - sorcery_id
   uniqueConstraints:

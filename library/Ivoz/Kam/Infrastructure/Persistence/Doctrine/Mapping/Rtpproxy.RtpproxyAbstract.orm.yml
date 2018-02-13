@@ -1,7 +1,7 @@
 Ivoz\Kam\Domain\Model\Rtpproxy\RtpproxyAbstract:
   type: mappedSuperclass
   indexes:
-    mediaRelaySetsId:
+    rtpproxy_mediaRelaySetsId:
       columns:
         - mediaRelaySetsId
   fields:

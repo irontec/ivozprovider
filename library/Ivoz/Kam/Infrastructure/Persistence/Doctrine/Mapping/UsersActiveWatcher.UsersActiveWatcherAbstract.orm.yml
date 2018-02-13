@@ -1,17 +1,17 @@
 Ivoz\Kam\Domain\Model\UsersActiveWatcher\UsersActiveWatcherAbstract:
   type: mappedSuperclass
   indexes:
-    kam_users_active_watchers_expires:
+    usersActiveWatcher_expires:
       columns:
         - expires
-    kam_users_active_watchers_pres:
+    usersActiveWatcher_pres:
       columns:
         - presentity_uri
         - event
-    updated_idx:
+    usersActiveWatcher_updated_idx:
       columns:
         - updated
-    updated_winfo_idx:
+    usersActiveWatcher_updated_winfo_idx:
       columns:
         - updated_winfo
         - presentity_uri

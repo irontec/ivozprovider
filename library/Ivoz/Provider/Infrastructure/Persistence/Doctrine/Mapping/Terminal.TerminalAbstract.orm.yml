@@ -1,7 +1,7 @@
 Ivoz\Provider\Domain\Model\Terminal\TerminalAbstract:
   type: mappedSuperclass
   indexes:
-    name_domain_idx:
+    terminal_name_domain_idx:
       columns:
         - name
         - domainId

@@ -1,10 +1,10 @@
 Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanAbstract:
   type: mappedSuperclass
   indexes:
-    tpid:
+    tpRatingPlan_tpid:
       columns:
         - tpid
-    tpid_rpl:
+    tpRatingPlan_tpid_rpl:
       columns:
         - tpid
         - tag

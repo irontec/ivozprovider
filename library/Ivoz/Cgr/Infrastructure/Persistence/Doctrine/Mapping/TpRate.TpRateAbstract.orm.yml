@@ -1,10 +1,10 @@
 Ivoz\Cgr\Domain\Model\TpRate\TpRateAbstract:
   type: mappedSuperclass
   indexes:
-    tpid:
+    tpRate_tpid:
       columns:
         - tpid
-    tpid_rtid:
+    tpRate_tpid_rtid:
       columns:
         - tpid
         - tag

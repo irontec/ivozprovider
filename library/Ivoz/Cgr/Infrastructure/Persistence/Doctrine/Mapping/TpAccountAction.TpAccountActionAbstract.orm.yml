@@ -1,7 +1,7 @@
 Ivoz\Cgr\Domain\Model\TpAccountAction\TpAccountActionAbstract:
   type: mappedSuperclass
   indexes:
-    tpid:
+    tpAccountAction_tpid:
       columns:
         - tpid
   uniqueConstraints:

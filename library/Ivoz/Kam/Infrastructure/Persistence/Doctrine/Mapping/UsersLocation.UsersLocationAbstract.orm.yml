@@ -1,12 +1,12 @@
 Ivoz\Kam\Domain\Model\UsersLocation\UsersLocationAbstract:
   type: mappedSuperclass
   indexes:
-    account_contact_idx:
+    usersLocation_account_contact_idx:
       columns:
         - username
         - domain
         - contact
-    expires_idx:
+    usersLocation_expires_idx:
       columns:
         - expires
   uniqueConstraints:

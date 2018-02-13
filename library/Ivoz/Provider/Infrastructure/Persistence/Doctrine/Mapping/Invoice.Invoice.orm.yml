@@ -11,6 +11,10 @@ Ivoz\Provider\Domain\Model\Invoice\Invoice:
       id: true
       generator:
         strategy: IDENTITY
+  oneToMany:
+    relFixedCosts:
+      targetEntity: Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoice
+      mappedBy: invoice
   lifecycleCallbacks:
     postLoad:
       - initChangelog

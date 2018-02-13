@@ -1,20 +1,20 @@
 Ivoz\Ast\Domain\Model\Voicemail\VoicemailAbstract:
   type: mappedSuperclass
   indexes:
-    ast_voicemail_mailbox:
+    voicemail_mailbox:
       columns:
         - mailbox
-    ast_voicemail_context:
+    voicemail__context:
       columns:
         - context
-    ast_voicemail_mailbox_context:
+    voicemail_mailbox_context:
       columns:
         - mailbox
         - context
-    ast_voicemail_imapuser:
+    voicemail_imapuser:
       columns:
         - imapuser
-    userId:
+    voicemail_userId:
       columns:
         - userId
   fields:

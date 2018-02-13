@@ -36,7 +36,7 @@ class Version20171127124756 extends AbstractMigration
                         maxDigits SMALLINT UNSIGNED NOT NULL,
                         welcomeLocutionId INT UNSIGNED DEFAULT NULL,                                        
                         successLocutionId INT UNSIGNED DEFAULT NULL,                                        
-                        allowExtensions TINYINT(1) DEFAULT \'0\' NOT NULL,                                        
+                        allowExtensions TINYINT(1) UNSIGNED DEFAULT \'0\' NOT NULL,
                         noInputLocutionId INT UNSIGNED DEFAULT NULL,
                         noInputRouteType VARCHAR(25) DEFAULT NULL COMMENT \'[enum:number|extension|voicemail]\',
                         noInputNumberCountryId INT UNSIGNED DEFAULT NULL,                                        

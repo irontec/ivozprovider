@@ -1,10 +1,10 @@
 Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateAbstract:
   type: mappedSuperclass
   indexes:
-    tpid:
+    tpDestinationRate_tpid:
       columns:
         - tpid
-    tpid_drid:
+    tpDestinationRate_tpid_drid:
       columns:
         - tpid
         - tag

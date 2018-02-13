@@ -1,12 +1,12 @@
 Ivoz\Kam\Domain\Model\UsersLocationAttr\UsersLocationAttrAbstract:
   type: mappedSuperclass
   indexes:
-    account_record_idx:
+    usersLocationAttr_account_record_idx:
       columns:
         - username
         - domain
         - ruid
-    last_modified_idx:
+    usersLocationAttr_last_modified_idx:
       columns:
         - last_modified
   fields:

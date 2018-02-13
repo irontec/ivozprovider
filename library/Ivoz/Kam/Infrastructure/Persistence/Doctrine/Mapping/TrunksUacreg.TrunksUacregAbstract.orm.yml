@@ -4,7 +4,7 @@ Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregAbstract:
     trunksUacreg_brandId:
       columns:
         - brandId
-    peeringContractId:
+    trunksUacreg_peeringContractId:
       columns:
         - peeringContractId
   uniqueConstraints:

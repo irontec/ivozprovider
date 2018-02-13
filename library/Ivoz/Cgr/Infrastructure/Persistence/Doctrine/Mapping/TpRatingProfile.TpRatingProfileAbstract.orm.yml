@@ -1,10 +1,10 @@
 Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileAbstract:
   type: mappedSuperclass
   indexes:
-    tpid:
+    tpRatingProfile_tpid:
       columns:
         - tpid
-    tpid_loadid:
+    tpRatingProfile_tpid_loadid:
       columns:
         - tpid
         - loadid

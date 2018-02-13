@@ -1,10 +1,10 @@
 Ivoz\Cgr\Domain\Model\TpTiming\TpTimingAbstract:
   type: mappedSuperclass
   indexes:
-    tpid:
+    tpTiming_tpid:
       columns:
         - tpid
-    tpid_tmid:
+    tpTiming_tpid_tmid:
       columns:
         - tpid
         - tag

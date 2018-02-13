@@ -1,10 +1,10 @@
 Ivoz\Kam\Domain\Model\UsersPresentity\UsersPresentityAbstract:
   type: mappedSuperclass
   indexes:
-    kam_users_presentity_expires:
+    usersPresentity_expires:
       columns:
         - expires
-    account_idx:
+    usersPresentity_account_idx:
       columns:
         - username
         - domain

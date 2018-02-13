@@ -1,10 +1,10 @@
 Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationAbstract:
   type: mappedSuperclass
   indexes:
-    tpid:
+    tpDestination_tpid:
       columns:
         - tpid
-    tpid_dstid:
+    tpDestination_tpid_dstid:
       columns:
         - tpid
         - tag

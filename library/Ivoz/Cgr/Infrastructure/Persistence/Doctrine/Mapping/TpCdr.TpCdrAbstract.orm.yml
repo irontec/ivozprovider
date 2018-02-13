@@ -111,7 +111,7 @@ Ivoz\Cgr\Domain\Model\TpCdr\TpCdrAbstract:
       scale: 4
       nullable: false
     costDetails:
-      type: text
+      type: json_array
       nullable: false
       column: cost_details
     extraInfo:

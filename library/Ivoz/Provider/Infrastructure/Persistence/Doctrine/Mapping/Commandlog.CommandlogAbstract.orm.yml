@@ -1,7 +1,7 @@
 Ivoz\Provider\Domain\Model\Commandlog\CommandlogAbstract:
   type: mappedSuperclass
   indexes:
-    requestId:
+    commandlog_requestId:
       columns:
         - requestId
     commandlog_createdOn:

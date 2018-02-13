@@ -37,7 +37,7 @@ Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoiceAbstract:
       cascade: {  }
       fetch: LAZY
       mappedBy: null
-      inversedBy: null
+      inversedBy: relFixedCosts
       joinColumns:
         invoiceId:
           referencedColumnName: id

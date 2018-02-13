@@ -1,11 +1,11 @@
 Ivoz\Cgr\Domain\Model\Rate\RateAbstract:
   type: mappedSuperclass
   indexes:
-    brandId:
+    rate_brandId:
       columns:
         - brandId
   uniqueConstraints:
-    brandTag:
+    rate_brandTag:
       columns:
         - brandId
         - tag

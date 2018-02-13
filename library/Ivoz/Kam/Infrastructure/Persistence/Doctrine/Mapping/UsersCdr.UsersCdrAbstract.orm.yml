@@ -1,16 +1,16 @@
 Ivoz\Kam\Domain\Model\UsersCdr\UsersCdrAbstract:
   type: mappedSuperclass
   indexes:
-    start_time_idx:
+    usersCdr_start_time_idx:
       columns:
         - start_time
-    end_time_idx:
+    usersCdr_end_time_idx:
       columns:
         - end_time
-    callid_idx:
+    usersCdr_callid_idx:
       columns:
         - callid
-    xcallid_idx:
+    usersCdr_xcallid_idx:
       columns:
         - xcallid
     usersCdr_brandId:

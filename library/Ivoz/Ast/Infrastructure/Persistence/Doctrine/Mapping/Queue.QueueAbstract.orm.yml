@@ -1,7 +1,7 @@
 Ivoz\Ast\Domain\Model\Queue\QueueAbstract:
   type: mappedSuperclass
   indexes:
-    queueId:
+    queue_queueId:
       columns:
         - queueId
   fields:
