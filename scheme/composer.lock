@@ -533,17 +533,12 @@
         },
         {
             "name": "doctrine/doctrine-migrations-bundle",
-            "version": "v1.3.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/doctrine/DoctrineMigrationsBundle.git",
-                "reference": "a9e506369f931351a2a6dd2aef588a822802b1b7"
-            },
+            "version": "1.3.1.0",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineMigrationsBundle/zipball/a9e506369f931351a2a6dd2aef588a822802b1b7",
+                "type": "path",
+                "url": "../library/vendor/doctrine/doctrine-migrations-bundle",
                 "reference": "a9e506369f931351a2a6dd2aef588a822802b1b7",
-                "shasum": ""
+                "shasum": null
             },
             "require": {
                 "doctrine/doctrine-bundle": "~1.0",
@@ -565,32 +560,33 @@
                     "Doctrine\\Bundle\\MigrationsBundle\\": ""
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "authors": [
                 {
-                    "name": "Symfony Community",
-                    "homepage": "http://symfony.com/contributors"
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
                 },
                 {
                     "name": "Doctrine Project",
                     "homepage": "http://www.doctrine-project.org"
                 },
                 {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
                 }
             ],
             "description": "Symfony DoctrineMigrationsBundle",
             "homepage": "http://www.doctrine-project.org",
             "keywords": [
-                "dbal",
-                "migrations",
-                "schema"
+                "DBAL",
+                "Migrations",
+                "Schema"
             ],
-            "time": "2017-11-01T09:13:26+00:00"
+            "transport-options": {
+                "symlink": true
+            }
         },
         {
             "name": "doctrine/inflector",
@@ -769,17 +765,12 @@
         },
         {
             "name": "doctrine/migrations",
-            "version": "v1.5.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/doctrine/migrations.git",
-                "reference": "c81147c0f2938a6566594455367e095150547f72"
-            },
+            "version": "1.5.0.0",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/migrations/zipball/c81147c0f2938a6566594455367e095150547f72",
+                "type": "path",
+                "url": "../library/vendor/doctrine/migrations",
                 "reference": "c81147c0f2938a6566594455367e095150547f72",
-                "shasum": ""
+                "shasum": null
             },
             "require": {
                 "doctrine/dbal": "~2.2",
@@ -815,7 +806,11 @@
                     "Doctrine\\DBAL\\Migrations\\": "lib/Doctrine/DBAL/Migrations"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "Doctrine\\DBAL\\Migrations\\Tests\\": "tests/Doctrine/DBAL/Migrations/Tests"
+                }
+            },
             "license": [
                 "LGPL-2.1"
             ],
@@ -839,7 +834,9 @@
                 "database",
                 "migrations"
             ],
-            "time": "2016-12-25T22:54:00+00:00"
+            "transport-options": {
+                "symlink": true
+            }
         },
         {
             "name": "doctrine/orm",
@@ -990,21 +987,21 @@
         },
         {
             "name": "incenteev/composer-parameter-handler",
-            "version": "2.1.2.0",
+            "version": "2.1.3.0",
             "dist": {
                 "type": "path",
                 "url": "../library/vendor/incenteev/composer-parameter-handler",
-                "reference": "d7ce7f06136109e81d1cb9d57066c4d4a99cf1cc",
+                "reference": "933c45a34814f27f2345c11c37d46b3ca7303550",
                 "shasum": null
             },
             "require": {
                 "php": ">=5.3.3",
-                "symfony/yaml": "~2.3|~3.0"
+                "symfony/yaml": "^2.3 || ^3.0 || ^4.0"
             },
             "require-dev": {
-                "composer/composer": "1.0.*@dev",
-                "phpspec/prophecy-phpunit": "~1.0",
-                "symfony/filesystem": "~2.2"
+                "composer/composer": "^1.0@dev",
+                "symfony/filesystem": "^2.3 || ^3 || ^4",
+                "symfony/phpunit-bridge": "^4.0"
             },
             "type": "library",
             "extra": {
@@ -1168,17 +1165,12 @@
         },
         {
             "name": "ocramius/package-versions",
-            "version": "1.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Ocramius/PackageVersions.git",
-                "reference": "ad8a245decad4897cc6b432743913dad0d69753c"
-            },
+            "version": "1.2.0.0",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Ocramius/PackageVersions/zipball/ad8a245decad4897cc6b432743913dad0d69753c",
+                "type": "path",
+                "url": "../library/vendor/ocramius/package-versions",
                 "reference": "ad8a245decad4897cc6b432743913dad0d69753c",
-                "shasum": ""
+                "shasum": null
             },
             "require": {
                 "composer-plugin-api": "^1.0",
@@ -1202,7 +1194,19 @@
                     "PackageVersions\\": "src/PackageVersions"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "PackageVersionsTest\\": "test/PackageVersionsTest"
+                }
+            },
+            "scripts": {
+                "post-update-cmd": [
+                    "PackageVersions\\Installer::dumpVersionsClass"
+                ],
+                "post-install-cmd": [
+                    "PackageVersions\\Installer::dumpVersionsClass"
+                ]
+            },
             "license": [
                 "MIT"
             ],
@@ -1213,21 +1217,18 @@
                 }
             ],
             "description": "Composer plugin that provides efficient querying for installed package versions (no runtime IO)",
-            "time": "2017-11-24T11:07:03+00:00"
+            "transport-options": {
+                "symlink": true
+            }
         },
         {
             "name": "ocramius/proxy-manager",
-            "version": "2.0.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Ocramius/ProxyManager.git",
-                "reference": "a55d08229f4f614bf335759ed0cf63378feeb2e6"
-            },
+            "version": "2.0.4.0",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Ocramius/ProxyManager/zipball/a55d08229f4f614bf335759ed0cf63378feeb2e6",
+                "type": "path",
+                "url": "../library/vendor/ocramius/proxy-manager",
                 "reference": "a55d08229f4f614bf335759ed0cf63378feeb2e6",
-                "shasum": ""
+                "shasum": null
             },
             "require": {
                 "ocramius/package-versions": "^1.0",
@@ -1258,7 +1259,13 @@
                     "ProxyManager\\": "src"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-0": {
+                    "ProxyManagerBench\\": "tests",
+                    "ProxyManagerTest\\": "tests",
+                    "ProxyManagerTestAsset\\": "tests"
+                }
+            },
             "license": [
                 "MIT"
             ],
@@ -1278,7 +1285,9 @@
                 "proxy pattern",
                 "service proxies"
             ],
-            "time": "2016-11-04T15:53:15+00:00"
+            "transport-options": {
+                "symlink": true
+            }
         },
         {
             "name": "paragonie/random_compat",

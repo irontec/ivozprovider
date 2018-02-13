@@ -44,7 +44,7 @@ override_dh_auto_build: build_doc build_agis build_webadmin build_webrest build_
 override_dh_auto_install:
 	dh_install
 	# Remove .git directiories
-	find debian -type d -name .git -exec rm -fr {} \;
+	-find debian -type d -name .git -prune -exec rm -fr {} \;
 
 # Install systemd unit files
 override_dh_systemd_enable:
