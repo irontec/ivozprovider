@@ -48,7 +48,10 @@ production:
           disabled: 'false'
     duration:
       title: _('Duration')
-      type: text
+      type: ghost
+      source:
+        class: IvozProvider_Klear_Ghost_UsersCdr
+        method: getDuration
     direction:
       title: _('Direction')
       type: text
