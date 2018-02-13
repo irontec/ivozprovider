@@ -4,8 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "42253c744a1e890bb33db46870224388",
-    "content-hash": "7a88d18d00a397a59df84b6e30c22ec3",
+    "content-hash": "5716b51dfada4fc0d3bd055a64ac2a63",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -1056,7 +1055,7 @@
                 "validation",
                 "validator"
             ],
-            "time": "2017-11-15 23:40:40"
+            "time": "2017-11-15T23:40:40+00:00"
         },
         {
             "name": "fig/link-util",
@@ -1421,16 +1420,16 @@
         },
         {
             "name": "php-mime-mail-parser/php-mime-mail-parser",
-            "version": "2.9.4",
+            "version": "2.9.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-mime-mail-parser/php-mime-mail-parser.git",
-                "reference": "1ecdbd4a2efd606cd3e4affa2c3a2b3fdd80466a"
+                "reference": "9e1fb5cfd0becad9948e810db9e0e553a20aab65"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-mime-mail-parser/php-mime-mail-parser/zipball/1ecdbd4a2efd606cd3e4affa2c3a2b3fdd80466a",
-                "reference": "1ecdbd4a2efd606cd3e4affa2c3a2b3fdd80466a",
+                "url": "https://api.github.com/repos/php-mime-mail-parser/php-mime-mail-parser/zipball/9e1fb5cfd0becad9948e810db9e0e553a20aab65",
+                "reference": "9e1fb5cfd0becad9948e810db9e0e553a20aab65",
                 "shasum": ""
             },
             "require": {
@@ -1497,7 +1496,7 @@
                 "mailparse",
                 "mime"
             ],
-            "time": "2017-11-24 06:00:15"
+            "time": "2018-01-29T12:56:40+00:00"
         },
         {
             "name": "psr/cache",
@@ -1720,11 +1719,11 @@
         },
         {
             "name": "ramsey/uuid",
-            "version": "3.7.1.0",
+            "version": "3.7.3.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/ramsey/uuid",
-                "reference": "45cffe822057a09e05f7bd09ec5fb88eeecd2334",
+                "reference": "44abcdad877d9a46685a3a4d221e3b2c4b87cb76",
                 "shasum": null
             },
             "require": {
@@ -1735,17 +1734,15 @@
                 "rhumsaa/uuid": "self.version"
             },
             "require-dev": {
-                "apigen/apigen": "^4.1",
-                "codeception/aspect-mock": "^1.0 | ^2.0",
+                "codeception/aspect-mock": "^1.0 | ~2.0.0",
                 "doctrine/annotations": "~1.2.0",
                 "goaop/framework": "1.0.0-alpha.2 | ^1.0 | ^2.1",
                 "ircmaxell/random-lib": "^1.1",
                 "jakub-onderka/php-parallel-lint": "^0.9.0",
-                "mockery/mockery": "^0.9.4",
+                "mockery/mockery": "^0.9.9",
                 "moontoast/math": "^1.1",
                 "php-mock/php-mock-phpunit": "^0.3|^1.1",
-                "phpunit/phpunit": "^4.7|>=5.0 <5.4",
-                "satooshi/php-coveralls": "^0.6.1",
+                "phpunit/phpunit": "^4.7|^5.0",
                 "squizlabs/php_codesniffer": "^2.3"
             },
             "suggest": {
@@ -1786,9 +1783,6 @@
                     "@lint",
                     "@phpunit",
                     "@phpcs"
-                ],
-                "build-docs": [
-                    "apigen generate --source='src' --destination='build/apidocs' --template-theme='bootstrap' --deprecated --todo"
                 ]
             },
             "license": [
@@ -1877,7 +1871,7 @@
                 "mail",
                 "mailer"
             ],
-            "time": "2017-09-30 22:39:41"
+            "time": "2017-09-30T22:39:41+00:00"
         },
         {
             "name": "symfony/monolog-bundle",
@@ -1940,11 +1934,11 @@
         },
         {
             "name": "symfony/polyfill-apcu",
-            "version": "1.6.0.0",
+            "version": "1.7.0.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-apcu",
-                "reference": "04f62674339602def515bff4bc6901fc1d4951e8",
+                "reference": "e8ae2136ddb53dea314df56fcd88e318ab936c00",
                 "shasum": null
             },
             "require": {
@@ -1953,7 +1947,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.6-dev"
+                    "dev-master": "1.7-dev"
                 }
             },
             "autoload": {
@@ -1992,11 +1986,11 @@
         },
         {
             "name": "symfony/polyfill-intl-icu",
-            "version": "1.6.0.0",
+            "version": "1.7.0.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-intl-icu",
-                "reference": "d2bb2ef00dd8605d6fbd4db53ed4af1395953497",
+                "reference": "254919c03761d46c29291616576ed003f10e91c1",
                 "shasum": null
             },
             "require": {
@@ -2009,7 +2003,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.6-dev"
+                    "dev-master": "1.7-dev"
                 }
             },
             "autoload": {
@@ -2046,11 +2040,11 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "1.6.0.0",
+            "version": "1.7.0.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-mbstring",
-                "reference": "2ec8b39c38cb16674bbf3fea2b6ce5bf117e1296",
+                "reference": "78be803ce01e55d3491c1397cf1c64beb9c1b63b",
                 "shasum": null
             },
             "require": {
@@ -2062,7 +2056,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.6-dev"
+                    "dev-master": "1.7-dev"
                 }
             },
             "autoload": {
@@ -2101,11 +2095,11 @@
         },
         {
             "name": "symfony/polyfill-php56",
-            "version": "1.6.0.0",
+            "version": "1.7.0.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-php56",
-                "reference": "265fc96795492430762c29be291a371494ba3a5b",
+                "reference": "ebc999ce5f14204c5150b9bd15f8f04e621409d8",
                 "shasum": null
             },
             "require": {
@@ -2115,7 +2109,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.6-dev"
+                    "dev-master": "1.7-dev"
                 }
             },
             "autoload": {
@@ -2153,11 +2147,11 @@
         },
         {
             "name": "symfony/polyfill-php70",
-            "version": "1.6.0.0",
+            "version": "1.7.0.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-php70",
-                "reference": "0442b9c0596610bd24ae7b5f0a6cdbbc16d9fcff",
+                "reference": "3532bfcd8f933a7816f3a0a59682fc404776600f",
                 "shasum": null
             },
             "require": {
@@ -2167,7 +2161,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.6-dev"
+                    "dev-master": "1.7-dev"
                 }
             },
             "autoload": {
@@ -2208,11 +2202,11 @@
         },
         {
             "name": "symfony/polyfill-util",
-            "version": "1.6.0.0",
+            "version": "1.7.0.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-util",
-                "reference": "6e719200c8e540e0c0effeb31f96bdb344b94176",
+                "reference": "e17c808ec4228026d4f5a8832afa19be85979563",
                 "shasum": null
             },
             "require": {
@@ -2221,7 +2215,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.6-dev"
+                    "dev-master": "1.7-dev"
                 }
             },
             "autoload": {
@@ -2314,15 +2308,15 @@
             ],
             "description": "Symfony SwiftmailerBundle",
             "homepage": "http://symfony.com",
-            "time": "2017-10-23 15:15:11"
+            "time": "2017-10-23T15:15:11+00:00"
         },
         {
             "name": "symfony/symfony",
-            "version": "3.3.14.0",
+            "version": "3.3.16.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/symfony",
-                "reference": "8e2b473de636a65a018b370d5e88778a260f0e33",
+                "reference": "98e128ccee7afff6313dc3e9cce619f6e1caedbc",
                 "shasum": null
             },
             "require": {
@@ -2340,7 +2334,6 @@
                 "symfony/polyfill-mbstring": "~1.0",
                 "symfony/polyfill-php56": "~1.0",
                 "symfony/polyfill-php70": "~1.0",
-                "symfony/polyfill-util": "~1.0",
                 "twig/twig": "~1.34|~2.4"
             },
             "conflict": {
@@ -2592,7 +2585,7 @@
                 "code",
                 "zf2"
             ],
-            "time": "2016-10-24 13:23:32"
+            "time": "2016-10-24T13:23:32+00:00"
         },
         {
             "name": "zendframework/zend-eventmanager",
@@ -2646,7 +2639,7 @@
                 "events",
                 "zf2"
             ],
-            "time": "2017-07-11 19:17:22"
+            "time": "2017-07-11T19:17:22+00:00"
         }
     ],
     "packages-dev": [],

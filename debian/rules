@@ -2,29 +2,26 @@
 
 export SYMFONY_ENV=prod
 
-composer:
-	git config --global http.sslVerify false
-	curl -sS http://getcomposer.org/installer | php -- --install-dir=. --filename=composer
-
 build_doc:
 	# Build doc using sphinx
-	cd doc/sphinx ; sphinx-build -D"language=en" . ../html/en
-	cd doc/sphinx ; sphinx-build -D"language=es" . ../html/es
-	cd doc/sphinx ; sphinx-build -D"language=es" -bsinglehtml . ../html/essingle
-	cd doc/sphinx ; sphinx-build -D"language=en" -bsinglehtml . ../html/ensingle
+	cd doc/sphinx ; sphinx-build -q -D"language=en" . ../html/en
+	cd doc/sphinx ; sphinx-build -q -D"language=es" . ../html/es
+	cd doc/sphinx ; sphinx-build -q -D"language=es" -bsinglehtml . ../html/essingle
+	cd doc/sphinx ; sphinx-build -q -D"language=en" -bsinglehtml . ../html/ensingle
 
-build_library: composer
-	cd library ; ../composer --no-interaction --no-dev --prefer-dist --no-progress install
+build_library:
+	git config --global http.sslVerify false
+	cd library ; composer --no-interaction --no-dev  --no-progress install
 
-build_agis: composer build_library
-	cd asterisk/agi ; ../../composer --no-interaction --no-dev --prefer-dist --no-progress install
+build_agis: build_library
+	cd asterisk/agi ; composer --no-interaction --no-dev  --no-progress install
 
-build_webrest: composer build_library
-	cd web/rest ; ../../composer --no-interaction --no-dev --prefer-dist --no-progress install
-	cd web/rest ; ../../composer dump-autoload --optimize --no-dev --classmap-authoritative
+build_webrest: build_library
+	cd web/rest ; composer --no-interaction --no-dev  --no-progress install
+	cd web/rest ; composer dump-autoload --optimize --no-dev --classmap-authoritative
 
-build_webadmin: composer build_library
-	cd web/admin ; ../../composer --no-interaction --no-dev --prefer-dist --no-progress install
+build_webadmin: build_library
+	cd web/admin ; composer --no-interaction --no-dev  --no-progress install
 	cd web/admin ; msgfmt -o application/languages/es_ES/es_ES.mo application/languages/es_ES/es_ES.po
 	cd web/admin ; msgfmt -o application/languages/en_US/en_US.mo application/languages/en_US/en_US.po
 
@@ -37,12 +34,12 @@ build_webuser: build_webadmin
 	cd web/user ; mv dist/index.html ./index.phtml
 
 build_microservices: composer
-	cd microservices/recordings; ../../composer --no-interaction --no-dev --prefer-dist --no-progress install
+	cd microservices/recordings; composer --no-interaction --no-dev  --no-progress install
 
 build_scheme: composer
-	cd scheme ; ../composer --no-interaction --no-dev --prefer-dist --no-progress install
+	cd scheme ; composer --no-interaction --no-dev  --no-progress install
 
-override_dh_auto_build: build_doc build_agis build_webadmin build_webuser build_webrest build_microservices build_scheme
+override_dh_auto_build: build_doc build_agis build_webadmin build_webrest build_microservices build_scheme build_webuser
 
 override_dh_auto_install:
 	dh_install

@@ -5,7 +5,7 @@ Build-Depends: debhelper, dh-systemd,
     nodejs, ruby-compass, git, openssh-client, curl, php7.0,
     python, make, python-sphinx-rtd-theme, gettext,
     python-sphinx (>=1.4.6), sphinx-common (>=1.4.6), libjs-sphinxdoc (>=1.4.6),
-    libjs-jquery (>=1.11.3), python-alabaster (>=0.7.8),
+    libjs-jquery (>=1.11.3), python-alabaster (>=0.7.8), composer,
     php7.0-mbstring, php7.0-xml, php7.0-zip, php-mailparse
 Standards-Version: 3.9.6
 Maintainer: Irontec Package Team <packages@irontec.com>
