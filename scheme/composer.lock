@@ -533,12 +533,17 @@
         },
         {
             "name": "doctrine/doctrine-migrations-bundle",
-            "version": "1.3.1.0",
+            "version": "v1.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/DoctrineMigrationsBundle.git",
+                "reference": "a9e506369f931351a2a6dd2aef588a822802b1b7"
+            },
             "dist": {
-                "type": "path",
-                "url": "../library/vendor/doctrine/doctrine-migrations-bundle",
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/DoctrineMigrationsBundle/zipball/a9e506369f931351a2a6dd2aef588a822802b1b7",
                 "reference": "a9e506369f931351a2a6dd2aef588a822802b1b7",
-                "shasum": null
+                "shasum": ""
             },
             "require": {
                 "doctrine/doctrine-bundle": "~1.0",
@@ -560,33 +565,32 @@
                     "Doctrine\\Bundle\\MigrationsBundle\\": ""
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "authors": [
                 {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
                 },
                 {
                     "name": "Doctrine Project",
                     "homepage": "http://www.doctrine-project.org"
                 },
                 {
-                    "name": "Symfony Community",
-                    "homepage": "http://symfony.com/contributors"
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
                 }
             ],
             "description": "Symfony DoctrineMigrationsBundle",
             "homepage": "http://www.doctrine-project.org",
             "keywords": [
-                "DBAL",
-                "Migrations",
-                "Schema"
+                "dbal",
+                "migrations",
+                "schema"
             ],
-            "transport-options": {
-                "symlink": true
-            }
+            "time": "2017-11-01T09:13:26+00:00"
         },
         {
             "name": "doctrine/inflector",
@@ -765,12 +769,17 @@
         },
         {
             "name": "doctrine/migrations",
-            "version": "1.5.0.0",
+            "version": "v1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/migrations.git",
+                "reference": "c81147c0f2938a6566594455367e095150547f72"
+            },
             "dist": {
-                "type": "path",
-                "url": "../library/vendor/doctrine/migrations",
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/migrations/zipball/c81147c0f2938a6566594455367e095150547f72",
                 "reference": "c81147c0f2938a6566594455367e095150547f72",
-                "shasum": null
+                "shasum": ""
             },
             "require": {
                 "doctrine/dbal": "~2.2",
@@ -806,11 +815,7 @@
                     "Doctrine\\DBAL\\Migrations\\": "lib/Doctrine/DBAL/Migrations"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Doctrine\\DBAL\\Migrations\\Tests\\": "tests/Doctrine/DBAL/Migrations/Tests"
-                }
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "LGPL-2.1"
             ],
@@ -834,9 +839,7 @@
                 "database",
                 "migrations"
             ],
-            "transport-options": {
-                "symlink": true
-            }
+            "time": "2016-12-25T22:54:00+00:00"
         },
         {
             "name": "doctrine/orm",
@@ -1165,12 +1168,17 @@
         },
         {
             "name": "ocramius/package-versions",
-            "version": "1.2.0.0",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Ocramius/PackageVersions.git",
+                "reference": "ad8a245decad4897cc6b432743913dad0d69753c"
+            },
             "dist": {
-                "type": "path",
-                "url": "../library/vendor/ocramius/package-versions",
+                "type": "zip",
+                "url": "https://api.github.com/repos/Ocramius/PackageVersions/zipball/ad8a245decad4897cc6b432743913dad0d69753c",
                 "reference": "ad8a245decad4897cc6b432743913dad0d69753c",
-                "shasum": null
+                "shasum": ""
             },
             "require": {
                 "composer-plugin-api": "^1.0",
@@ -1194,19 +1202,7 @@
                     "PackageVersions\\": "src/PackageVersions"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "PackageVersionsTest\\": "test/PackageVersionsTest"
-                }
-            },
-            "scripts": {
-                "post-update-cmd": [
-                    "PackageVersions\\Installer::dumpVersionsClass"
-                ],
-                "post-install-cmd": [
-                    "PackageVersions\\Installer::dumpVersionsClass"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1217,18 +1213,21 @@
                 }
             ],
             "description": "Composer plugin that provides efficient querying for installed package versions (no runtime IO)",
-            "transport-options": {
-                "symlink": true
-            }
+            "time": "2017-11-24T11:07:03+00:00"
         },
         {
             "name": "ocramius/proxy-manager",
-            "version": "2.0.4.0",
+            "version": "2.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Ocramius/ProxyManager.git",
+                "reference": "a55d08229f4f614bf335759ed0cf63378feeb2e6"
+            },
             "dist": {
-                "type": "path",
-                "url": "../library/vendor/ocramius/proxy-manager",
+                "type": "zip",
+                "url": "https://api.github.com/repos/Ocramius/ProxyManager/zipball/a55d08229f4f614bf335759ed0cf63378feeb2e6",
                 "reference": "a55d08229f4f614bf335759ed0cf63378feeb2e6",
-                "shasum": null
+                "shasum": ""
             },
             "require": {
                 "ocramius/package-versions": "^1.0",
@@ -1259,13 +1258,7 @@
                     "ProxyManager\\": "src"
                 }
             },
-            "autoload-dev": {
-                "psr-0": {
-                    "ProxyManagerBench\\": "tests",
-                    "ProxyManagerTest\\": "tests",
-                    "ProxyManagerTestAsset\\": "tests"
-                }
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1285,9 +1278,7 @@
                 "proxy pattern",
                 "service proxies"
             ],
-            "transport-options": {
-                "symlink": true
-            }
+            "time": "2016-11-04T15:53:15+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -2558,17 +2549,12 @@
         },
         {
             "name": "sensio/generator-bundle",
-            "version": "v3.1.7",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/sensiolabs/SensioGeneratorBundle.git",
-                "reference": "28cbaa244bd0816fd8908b93f90380bcd7b67a65"
-            },
+            "version": "3.1.7.0",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioGeneratorBundle/zipball/28cbaa244bd0816fd8908b93f90380bcd7b67a65",
+                "type": "path",
+                "url": "../library/vendor/sensio/generator-bundle",
                 "reference": "28cbaa244bd0816fd8908b93f90380bcd7b67a65",
-                "shasum": ""
+                "shasum": null
             },
             "require": {
                 "symfony/console": "~2.7|~3.0",
@@ -2597,7 +2583,6 @@
                     "/Tests/"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2608,7 +2593,9 @@
                 }
             ],
             "description": "This bundle generates code for you",
-            "time": "2017-12-07T15:36:41+00:00"
+            "transport-options": {
+                "symlink": true
+            }
         }
     ],
     "aliases": [],
