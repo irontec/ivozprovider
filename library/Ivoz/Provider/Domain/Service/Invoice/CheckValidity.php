@@ -2,7 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Service\Invoice;
 
-use Doctrine\ORM\EntityManagerInterface;
+use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdr;
+use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrRepository;
 use Ivoz\Provider\Domain\Model\Invoice\Invoice;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceRepository;
@@ -21,9 +22,9 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
     const SENSELESS_IN_OUT_DATE = 50005;
 
     /**
-     * @var AccCdrRepository
+     * @var TrunksCdrRepository
      */
-    protected $accCdrRepository;
+    protected $trunksCdrRepository;
 
     /**
      * @var InvoiceRepository
@@ -31,15 +32,15 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
     protected $invoiveRepository;
 
     public function __construct(
-        AccCdrRepository $accCdrRepository,
+        TrunksCdrRepository $trunksCdrRepository,
         InvoiceRepository $invoiveRepository
     ) {
-        $this->accCdrRepository = $accCdrRepository;
+        $this->trunksCdrRepository = $trunksCdrRepository;
         $this->invoiveRepository = $invoiveRepository;
     }
 
     /**
-     * @throws \Exception
+     * @throws \DomainExcepion
      */
     public function execute(InvoiceInterface $entity)
     {
@@ -60,7 +61,6 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
          */
         $outDate = $entity->getOutDate();
         $oneSecAgo = new \DateInterval('PT1S');
-        $oneSecAgo->invert = 1;
 
         $outDate
             ->setTimezone($invoiceTz)
@@ -71,17 +71,16 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
          * @todo double check this
          */
         if ($inDate >= $outDate) {
-            throw new \Excepion('', self::SENSELESS_IN_OUT_DATE);
+            throw new \DomainExcepion('', self::SENSELESS_IN_OUT_DATE);
         }
 
-        $untarificattedCallNum = $this->accCdrRepository->fetchUntarificattedCallNumber(
+        $untarificattedCallNum = $this->trunksCdrRepository->countUntarificattedCallsBeforeDate(
             $entity->getCompany()->getId(),
             $entity->getBrand()->getId(),
-            $outDate->format('Y-m-d H:i:s'),
-            '0'
+            $outDate->format('Y-m-d H:i:s')
         );
 
-        if ($untarificattedCallNum) {
+        if ($untarificattedCallNum > 0) {
             throw new \DomainException('', self::UNMETERED_CALLS);
         }
 
@@ -106,15 +105,15 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
             $invoice = $invoices[0];
             $nextInvoiceInDate = $invoice->getInDate();
 
-            $calls = $this->accCdrRepository->fetchTarificableList(
+            $calls = $this->trunksCdrRepository->countUntarificattedCallsInRange(
                 $entity->getCompany()->getId(),
-                $entity->getBrand->getId(),
+                $entity->getBrand()->getId(),
                 $outDate->setTimezone($invoiceTz)->format('Y-m-d H:i:s'),
                 $nextInvoiceInDate->setTimezone($invoiceTz)->format('Y-m-d H:i:s')
             );
 
-            if (!empty($calls)) {
-                throw new \Excepion('', self::UNBILLED_CALLS_AFTER_OUT_DATE);
+            if ($calls > 0) {
+                throw new \DomainExcepion('', self::UNBILLED_CALLS_AFTER_OUT_DATE);
             }
         }
 
@@ -131,7 +130,7 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
         );
 
         if ($invoiceCount) {
-            throw new \Excepion('', self::INVOICES_FOUND_IN_THE_SAME_RANGE_OF_DATE);
+            throw new \DomainExcepion('', self::INVOICES_FOUND_IN_THE_SAME_RANGE_OF_DATE);
         }
     }
 }

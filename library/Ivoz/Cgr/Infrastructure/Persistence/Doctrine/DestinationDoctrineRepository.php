@@ -14,4 +14,19 @@ use Ivoz\Cgr\Domain\Model\Destination\DestinationRepository;
  */
 class DestinationDoctrineRepository extends EntityRepository implements DestinationRepository
 {
+    /**
+     * @param string $tag
+     * @return int
+     */
+    public function findOneByTag(string $tag)
+    {
+        $qb = $this
+            ->createQueryBuilder('self')
+            ->where('self.tag = :tag')
+            ->setParameter('tag', $tag);
+
+        return $qb
+            ->getQuery()
+            ->getSingleResult();
+    }
 }

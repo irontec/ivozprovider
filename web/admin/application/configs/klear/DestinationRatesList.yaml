@@ -91,7 +91,7 @@ production:
       multiItem: 1
       labelOnList: 1
 
-#   tpDestinationRates dialogs:
+    # tpDestinationRates dialogs:
     <<: *tpDestinationRates_dialogsLink
 
 staging:

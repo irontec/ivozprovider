@@ -23,10 +23,3 @@ parameters:
     gearmand:
         servers:
             - jobs.ivozprovider.local
-        client:
-            timeout: 5000
-        mail:
-            from: no-reply@irontec.com
-            to:
-                - vozip@irontec.com
-            subject: '[ERROR] XMLRPC'

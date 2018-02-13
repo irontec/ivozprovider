@@ -2,6 +2,7 @@
 
 use Knp\Snappy\Pdf;
 use Handlebars\Handlebars;
+use \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplate;
 
 class KlearCustomInvoiceTemplateTesterController extends Zend_Controller_Action
 {
@@ -43,9 +44,9 @@ class KlearCustomInvoiceTemplateTesterController extends Zend_Controller_Action
 
     protected function _getDefaultData()
     {
-
-        $templateMapper = new \IvozProvider\Mapper\Sql\InvoiceTemplates();
-        $templateModel = $templateMapper->find($this->_pk);
+        /** @var \Ivoz\Core\Application\Service\DataGateway $dataGateway */
+        $dataGateway = \Zend_Registry::get('data_gateway');
+        $templateModel = $dataGateway->find(InvoiceTemplate::class, $this->_pk);
 
         $variables = $this->_getSampleData();
         $templateEngine = new Handlebars;
@@ -55,7 +56,7 @@ class KlearCustomInvoiceTemplateTesterController extends Zend_Controller_Action
 
         $architecture = (php_uname("m") === 'x86_64') ? 'amd64' : 'i386';
 
-        $snappy = new Pdf(APPLICATION_PATH . '/../../library/vendor/bin/wkhtmltopdf-' . $architecture);
+        $snappy = new Pdf('/opt/irontec/ivozprovider/library/vendor/bin/wkhtmltopdf-' . $architecture);
         $snappy->setOption('header-html', $header);
         $snappy->setOption('header-spacing', 3);
         $snappy->setOption('footer-html', $footer);

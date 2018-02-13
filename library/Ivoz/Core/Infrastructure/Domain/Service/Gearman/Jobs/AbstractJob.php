@@ -6,11 +6,15 @@ use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Manager;
 
 abstract class AbstractJob
 {
-    // Nombre de variables que queremos se serializen
-    protected $_mainVariables = array();
+    /**
+     * @var array
+     */
+    protected $mainVariables = array();
 
-    protected $_method;
-    protected $_bootstrap;
+    /**
+     * @var string
+     */
+    protected $method;
 
     /**
      * @var Manager
@@ -22,29 +26,44 @@ abstract class AbstractJob
      */
     protected $settings;
 
+    /**
+     * AbstractJob constructor.
+     *
+     * @param Manager $manager
+     * @param array $settings
+     */
     public function __construct(Manager $manager, array $settings)
     {
         $this->manager = $manager;
         $this->settings = $settings;
     }
 
+    /**
+     * @param string $methodName
+     */
     public function setMethod($methodName)
     {
-        $this->_method = $methodName;
+        $this->method = $methodName;
     }
 
+    /**
+     * @return array
+     */
     public function __sleep()
     {
-        return $this->_mainVariables;
+        return $this->mainVariables;
     }
 
+    /**
+     * Send Gearman Job request to server
+     */
     public function send()
     {
         $this->manager::setOptions($this->settings);
 
         $gearmandClient = $this->manager::getClient();
         $gearmandClient->doBackground(
-            $this->_method,
+            $this->method,
             igbinary_serialize($this)
         );
     }

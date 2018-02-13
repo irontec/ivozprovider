@@ -4,6 +4,8 @@ namespace Ivoz\Kam\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\ORM\EntityRepository;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrRepository;
+use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
+use Ivoz\Kam\Infrastructure\Persistence\Doctrine\Traits\GetGeneratorByConditionsTrait;
 
 /**
  * TrunksCdrDoctrineRepository
@@ -13,5 +15,102 @@ use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrRepository;
  */
 class TrunksCdrDoctrineRepository extends EntityRepository implements TrunksCdrRepository
 {
+    use GetGeneratorByConditionsTrait;
 
+    /**
+     * @param int $invoiceId
+     */
+    public function resetInvoiceId(int $invoiceId)
+    {
+        $qb = $this
+            ->createQueryBuilder('self')
+            ->update($this->_entityName, 'self')
+            ->set('self.invoice', ':nullValue')
+            ->setParameter(':nullValue', null)
+            ->where('self.invoice = :invoiceId')
+            ->setParameter(':invoiceId', $invoiceId);
+
+        return $qb->getQuery()->execute();
+    }
+
+    /**
+     * @param array $conditions
+     * @param int $invoiceId
+     * @return mixed
+     */
+    public function setInvoiceId(array $conditions, int $invoiceId)
+    {
+        $qb = $this
+            ->createQueryBuilder('self')
+            ->update($this->_entityName, 'self')
+            ->set('self.invoice', ':invoiceId')
+            ->setParameter(':invoiceId', $invoiceId)
+            ->addCriteria(
+                CriteriaHelper::fromArray($conditions)
+            );
+
+        return $qb->getQuery()->execute();
+    }
+
+    /**
+     * @param int $companyId
+     * @param int $brandId
+     * @param string $startTime
+     * @return mixed
+     */
+    public function countUntarificattedCallsBeforeDate(int $companyId, int $brandId, string $startTime)
+    {
+        $qb = $this->createQueryBuilder('self');
+        $conditions = [
+            ['company', 'eq', $companyId],
+            ['brand', 'eq', $brandId],
+            ['startTime', 'lt', $startTime],
+            ['peeringContract', 'neq', null],
+            ['peeringContract', 'neq', ''],
+            ['price', 'isNull'],
+            ['cgrid', 'isNull']
+        ];
+
+        $qb
+            ->select('count(self)')
+            ->addCriteria(
+                CriteriaHelper::fromArray($conditions)
+            )
+            ->getQuery()
+            ->getSingleScalarResult();
+
+        return (int) $qb->getQuery()->getSingleScalarResult();
+    }
+
+    /**
+     * @param int $companyId
+     * @param int $brandId
+     * @param string $startTime
+     * @return mixed
+     */
+    public function countUntarificattedCallsInRange(int $companyId, int $brandId, string $startTime, string $endTime)
+    {
+        $qb = $this->createQueryBuilder('self');
+
+        $conditions = [
+            ['company', 'eq', $companyId],
+            ['brand', 'eq', $brandId],
+            ['startTime', 'gt', $startTime],
+            ['endTime', 'lt', $endTime],
+            ['peeringContract', 'neq', null],
+            ['peeringContract', 'neq', ''],
+            ['price', 'isNull'],
+            ['cgrid', 'isNull']
+        ];
+
+        $qb
+            ->select('count(self)')
+            ->addCriteria(
+                CriteriaHelper::fromArray($conditions)
+            )
+            ->getQuery()
+            ->getSingleScalarResult();
+
+        return (int) $qb->getQuery()->getSingleScalarResult();
+    }
 }

@@ -3,6 +3,7 @@
 namespace Ivoz\Cgr\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\ORM\EntityRepository;
+use Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanInterface;
 use Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanRepository;
 
 
@@ -14,4 +15,19 @@ use Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanRepository;
  */
 class RatingPlanDoctrineRepository extends EntityRepository implements RatingPlanRepository
 {
+    /**
+     * @param string $tag
+     * @return RatingPlanInterface
+     */
+    public function findOneByTag(string $tag)
+    {
+        $qb = $this
+            ->createQueryBuilder('self')
+            ->where('self.tag = :tag')
+            ->setParameter('tag', $tag);
+
+        return $qb
+            ->getQuery()
+            ->getSingleResult();
+    }
 }

@@ -4,33 +4,27 @@ namespace Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs;
 
 use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Manager;
 
-class Recoder extends AbstractJob {
-
+class Invoicer extends AbstractJob
+{
     /**
-     * @var integer
+     * @var string
      */
     protected $id;
 
     /**
      * @var string
      */
-    protected $entityName;
-
-    /**
-     * @var string
-     */
-    protected $method = "WorkerMultimedia~encode";
+    protected $method = "WorkerInvoices~create";
 
     /**
      * @var array
      */
     protected $mainVariables = array(
         'id',
-        'entityName'
     );
 
     /**
-     * Recoder constructor.
+     * Invoicer constructor.
      *
      * @param Manager $manager
      * @param array $settings
@@ -40,25 +34,21 @@ class Recoder extends AbstractJob {
         return parent::__construct($manager, $settings);
     }
 
+    /**
+     * @param string $id
+     * @return $this
+     */
     public function setId($id)
     {
         $this->id = $id;
         return $this;
     }
 
-    public function setEntityName($entityName)
-    {
-        $this->entityName = $entityName;
-        return $this;
-    }
-
+    /**
+     * @return string
+     */
     public function getId()
     {
         return $this->id;
-    }
-
-    public function getEntityName()
-    {
-        return $this->entityName;
     }
 }

@@ -39,12 +39,12 @@ class InvoiceDtoAssembler implements CustomDtoAssemblerInterface
             return $dto;
         }
 
-        if ($entity->getLogo()->getFileSize()) {
+        if ($entity->getPdf()->getFileSize()) {
             $pathResolver = $this
                 ->storagePathResolver
                 ->getPathResolver('Pdf');
 
-            $dto->setLogoPath(
+            $dto->setPdfPath(
                 $pathResolver->getFilePath($entity)
             );
         }
