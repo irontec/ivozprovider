@@ -6,7 +6,7 @@ Build-Depends: debhelper, dh-systemd,
     python, make, python-sphinx-rtd-theme, gettext,
     python-sphinx (>=1.4.6), sphinx-common (>=1.4.6), libjs-sphinxdoc (>=1.4.6),
     libjs-jquery (>=1.11.3), python-alabaster (>=0.7.8), composer,
-    php7.0-mbstring, php7.0-xml, php7.0-zip, php-mailparse
+    php7.0-mbstring, php7.0-xml, php7.0-zip, php-mailparse, php-gearman
 Standards-Version: 3.9.6
 Maintainer: Irontec Package Team <packages@irontec.com>
 
@@ -238,7 +238,7 @@ Description: IVOZ Provider - Recordings - Symfony microservice
 Package: ivozprovider-async-workers
 Architecture: all
 Priority: optional
-Depends: ivozprovider-common-library (=${binary:Version})
+Depends: ivozprovider-common-library (=${binary:Version}), php-mailparse, php-gearman
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Async Workers - Symfony microservice
  .
