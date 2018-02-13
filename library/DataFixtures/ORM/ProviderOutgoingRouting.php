@@ -49,8 +49,7 @@ class ProviderOutgoingRouting extends Fixture implements DependentFixtureInterfa
     {
         return array(
             ProviderBrand::class,
-            ProviderCompany::class,
-            ProviderPricingPlan::class
+            ProviderCompany::class
         );
     }
 }

@@ -21,7 +21,7 @@
    </head>
    <body>
      <p id="registryData">
-        {{brand.registryData}}
+        {{brand.invoice.registryData}}
      </p>
      <div id="footer">
        <p>

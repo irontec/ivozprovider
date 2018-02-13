@@ -40,12 +40,8 @@ class InvoiceDoctrineRepository extends EntityRepository implements InvoiceRepos
         ];
 
         if ($invoiceIdToBeExcluded) {
-            $querySegments += [
-                self::ENTITY_ALIAS . '.id != :invoiceIdToBeExcluded'
-            ];
-            $queryArguments += [
-                'invoiceIdToBeExcluded' => $invoiceIdToBeExcluded
-            ];
+            $querySegments[] = self::ENTITY_ALIAS . '.id != :invoiceIdToBeExcluded';
+            $queryArguments['invoiceIdToBeExcluded'] = $invoiceIdToBeExcluded;
         }
 
         $query = implode(' AND ', $querySegments);
@@ -80,9 +76,7 @@ class InvoiceDoctrineRepository extends EntityRepository implements InvoiceRepos
         ];
 
         if ($invoiceIdToBeExcluded) {
-            $querySegments += [
-                self::ENTITY_ALIAS . '.id != :invoiceIdToBeExcluded'
-            ];
+            $querySegments[] = self::ENTITY_ALIAS . '.id != :invoiceIdToBeExcluded';
             $queryArguments += [
                 'invoiceIdToBeExcluded' => $invoiceIdToBeExcluded
             ];

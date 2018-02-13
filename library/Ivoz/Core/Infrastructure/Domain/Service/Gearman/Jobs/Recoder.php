@@ -6,40 +6,59 @@ use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Manager;
 
 class Recoder extends AbstractJob {
 
-    protected $_id;
-    protected $_entityName;
-    protected $_method = "encodeFSOToMp3";
-    protected $_mainVariables = array(
-        '_id',
-        '_entityName'
+    /**
+     * @var integer
+     */
+    protected $id;
+
+    /**
+     * @var string
+     */
+    protected $entityName;
+
+    /**
+     * @var string
+     */
+    protected $method = "WorkerMultimedia~encode";
+
+    /**
+     * @var array
+     */
+    protected $mainVariables = array(
+        'id',
+        'entityName'
     );
 
-    public function __construct(
-        Manager $manager,
-        array $settings
-    ) {
+    /**
+     * Recoder constructor.
+     *
+     * @param Manager $manager
+     * @param array $settings
+     */
+    public function __construct(Manager $manager, array $settings)
+    {
         return parent::__construct($manager, $settings);
     }
 
     public function setId($id)
     {
-        $this->_id = $id;
+        $this->id = $id;
         return $this;
     }
 
-    public function setEntityName($modelName)
+    public function setEntityName($entityName)
     {
-        $this->_entityName = $modelName;
+        $this->entityName = $entityName;
         return $this;
     }
 
     public function getId()
     {
-        return $this->_id;
+        return $this->id;
     }
 
     public function getEntityName()
     {
-        return $this->_entityName;
+        return $this->entityName;
     }
 }

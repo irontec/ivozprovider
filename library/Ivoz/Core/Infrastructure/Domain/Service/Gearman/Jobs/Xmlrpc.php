@@ -6,56 +6,96 @@ use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Manager;
 
 class Xmlrpc extends AbstractJob {
 
+    /**
+     * @var string
+     */
     protected $rpcEntity;
 
+    /**
+     * @var string
+     */
     protected $rpcPort;
 
+    /**
+     * @var string
+     */
     protected $rpcMethod;
 
-    protected $_method;
+    /**
+     * @var string
+     */
+    protected $method;
 
-    protected $_mainVariables = array(
+    /**
+     * @var array
+     */
+    protected $mainVariables = array(
         'rpcEntity',
         'rpcPort',
         'rpcMethod'
     );
 
-    public function __construct(
-        $method = "sendXMLRPC",
-        Manager $manager,
-        array $settings
-    ) {
-        $this->_method = $method;
+    /**
+     * Xmlrpc constructor.
+     *
+     * @param string $method
+     * @param Manager $manager
+     * @param array $settings
+     */
+    public function __construct($method = "WorkerXmlrpc~immediate", Manager $manager, array $settings)
+    {
+        $this->method = $method;
         return parent::__construct($manager, $settings);
     }
 
+    /**
+     * @param string $rpcEntity
+     * @return $this
+     */
     public function setRpcEntity($rpcEntity) {
         $this->rpcEntity = $rpcEntity;
         return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getRpcEntity()
     {
         return $this->rpcEntity;
     }
 
+    /**
+     * @param string $rpcPort
+     * @return $this
+     */
     public function setRpcPort($rpcPort)
     {
         $this->rpcPort = $rpcPort;
         return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getRpcPort()
     {
         return $this->rpcPort;
     }
 
+    /**
+     * @param string $rpcMethod
+     * @return $this
+     */
     public function setRpcMethod($rpcMethod)
     {
         $this->rpcMethod = $rpcMethod;
         return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getRpcMethod()
     {
         return $this->rpcMethod;

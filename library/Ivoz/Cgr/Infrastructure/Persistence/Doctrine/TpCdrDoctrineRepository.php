@@ -4,6 +4,7 @@ namespace Ivoz\Cgr\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\ORM\EntityRepository;
 use Ivoz\Cgr\Domain\Model\TpCdr\TpCdrRepository;
+use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 
 
 /**
@@ -14,4 +15,23 @@ use Ivoz\Cgr\Domain\Model\TpCdr\TpCdrRepository;
  */
 class TpCdrDoctrineRepository extends EntityRepository implements TpCdrRepository
 {
+    /**
+     * @param string $cgrid
+     * @return int
+     */
+    public function getOneByCgrid(string $cgrid)
+    {
+        $conditions = [
+            ['cgrid', 'eq', $cgrid],
+            ['runId', 'eq', '*default']
+        ];
+
+        $qb = $this
+            ->createQueryBuilder('self')
+            ->addCriteria(CriteriaHelper::fromArray($conditions));
+
+        return $qb
+            ->getQuery()
+            ->getSingleResult();
+    }
 }

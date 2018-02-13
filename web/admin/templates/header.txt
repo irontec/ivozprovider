@@ -42,8 +42,8 @@
         <img src="{{brand.logoPath}}">
         <div>
             <p class="bold">{{brand.name}}</p>
-            <p class="bold">{{brand.postalAddress}}, {{brand.postalCode}} {{brand.town}}, {{brand.province}} </p>
-            <p>NIF / CIF: {{brand.nif}}</p>
+            <p class="bold">{{brand.invoice.postalAddress}}, {{brand.invoice.postalCode}} {{brand.invoice.town}}, {{brand.invoice.province}} </p>
+            <p>NIF / CIF: {{brand.invoice.nif}}</p>
         </div>
         <div class="redLine">
         </div>

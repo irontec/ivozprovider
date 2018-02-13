@@ -19,8 +19,17 @@ services:
     tags:
       - { name: provider.lifecycle.invoice.pre_persist, priority: 10 }
     arguments:
-      $accCdrRepository:
-        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Kam\\Domain\\Model\\AccCdr\\AccCdr")'
+      $trunksCdrRepository:
+        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Kam\\Domain\\Model\\TrunksCdr\\TrunksCdr")'
       $invoiveRepository:
         '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\Invoice\\Invoice")'
 
+  ##################################
+  ## commit
+  ##################################
+  Ivoz\Provider\Domain\Service\Invoice\SendGenerateOrder:
+    tags:
+      - { name: provider.lifecycle.invoice.on_commit, priority: 10 }
+    arguments:
+      $invoicer:
+        '@Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Invoicer'

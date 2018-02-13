@@ -271,14 +271,6 @@
                     <div class="th">Duración total</div>
                     <div class="th">Precio total</div>
                 </div>
-                {{#if callData.inboundCalls.summary.numberOfCalls}}
-                <div class="tr">
-                    <div class="td white">Llamadas entrantes</div>
-                    <div class="td white">{{callData.inboundCalls.summary.numberOfCalls}}</div>
-                    <div class="td white">{{callData.inboundCalls.summary.totalCallsDurationFormatted}}</div>
-                    <div class="td white">{{callData.inboundCalls.summary.totalPrice}} €</div>
-                </div>
-                {{/if}}
                 {{#each callData.callSumary}}
                 <div class="tr">
                     <div class="td white">{{type}}</div>
@@ -296,36 +288,6 @@
             </div>
         </div>
     </div>
-
-    {{#if callData.inboundCalls.summary.numberOfCalls}}
-    <div id="inboundCalls">
-        <div class="tr">
-            <div class="theader">Llamadas entrantes</div>
-        </div>
-        <div class="table">
-            <div class="tbody">
-                <div class="tr">
-                    <div class="th">Fecha</div>
-                    <div class="th">Origen</div>
-                    <div class="th">Destino</div>
-                    <div class="th">Duración</div>
-                    <div class="th">Patrón</div>
-                    <div class="th">Precio</div>
-                </div>
-                {{#each callData.inboundCalls.calls}}
-                <div class="tr">
-                    <div class="td white">{{calldate}}</div>
-                    <div class="td white">{{caller}}</div>
-                    <div class="td white">{{dst}}</div>
-                    <div class="td white">{{durationFormatted}}</div>
-                    <div class="td white">{{targetPattern.name}}</div>
-                    <div class="td white">{{price}} €</div>
-                </div>
-                {{/each}}
-            </div>
-        </div>
-    </div>
-    {{/if}}
 
     {{#each callData.callsPerType}}
     <div id="callsPerType">

@@ -81,6 +81,7 @@ Section: admin
 Priority: optional
 Depends: ivozprovider-profile-common (=${binary:Version}),
     ivozprovider-doc (=${binary:Version}),
+    ivozprovider-async-workers (=${binary:Version}),
     apache2,
     php-gearman,
     php7.0,
@@ -230,8 +231,16 @@ Priority: optional
 Depends: ivozprovider-common-library (=${binary:Version}),
     libav-tools
 Homepage: http://www.irontec.com
-Description: IVOZ Provider - Recordings - Zendframework application
- Recordings Zend Application for uploading recordings to klear
+Description: IVOZ Provider - Recordings - Symfony microservice
+ Recordings Microservice for encoding storage recordings
+ .
+
+Package: ivozprovider-async-workers
+Architecture: all
+Priority: optional
+Depends: ivozprovider-common-library (=${binary:Version})
+Homepage: http://www.irontec.com
+Description: IVOZ Provider - Async Workers - Symfony microservice
  .
 
 Package: ivozprovider-doc
