@@ -25,11 +25,6 @@ pushd /opt/irontec/ivozprovider/scheme
     composer install
 popd
 
-pushd /opt/irontec/ivozprovider/web/admin
-    rm -fr composer.lock vendor
-    composer install
-popd
-
 pushd /opt/irontec/ivozprovider/web/rest
     rm -fr composer.lock vendor
     composer install
