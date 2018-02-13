@@ -21,7 +21,6 @@ build_webrest: build_library
 	cd web/rest ; composer dump-autoload --optimize --no-dev --classmap-authoritative
 
 build_webadmin: build_library
-	cd web/admin ; composer --no-interaction --no-dev  --no-progress install
 	cd web/admin ; msgfmt -o application/languages/es_ES/es_ES.mo application/languages/es_ES/es_ES.po
 	cd web/admin ; msgfmt -o application/languages/en_US/en_US.mo application/languages/en_US/en_US.po
 
