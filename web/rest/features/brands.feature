@@ -86,6 +86,7 @@ Feature: Manage brands
     """
       {
         "name": "api_brand",
+        "recordingsLimitMB": 0,
         "id": 3
       }
     """

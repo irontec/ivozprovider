@@ -18,7 +18,9 @@ class ProviderLcrRuleTarget extends Fixture implements DependentFixtureInterface
     public function load(ObjectManager $manager)
     {
         $this->disableLifecycleEvents($manager);
-        $manager->getClassMetadata(LcrRuleTarget::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
+        $manager
+            ->getClassMetadata(LcrRuleTarget::class)
+            ->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
     
         $item3 = $this->createEntityInstanceWithPublicMethods(LcrRuleTarget::class);
         $item3->setLcrId(1);
