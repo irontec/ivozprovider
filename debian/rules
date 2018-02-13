@@ -1,5 +1,7 @@
 #!/usr/bin/make -f
 
+export SYMFONY_ENV=prod
+
 composer:
 	git config --global http.sslVerify false
 	curl -sS http://getcomposer.org/installer | php -- --install-dir=. --filename=composer
@@ -18,7 +20,7 @@ build_agis: composer build_library
 	cd asterisk/agi ; ../../composer --no-interaction --no-dev --prefer-dist install
 
 build_webrest: composer build_library
-	cd web/rest ; SYMFONY_ENV=prod ../../composer --no-interaction --no-dev --prefer-dist install
+	cd web/rest ; ../../composer --no-interaction --no-dev --prefer-dist install
 	cd web/rest ; ../../composer dump-autoload --optimize --no-dev --classmap-authoritative
 
 build_webadmin: composer build_library
