@@ -39,7 +39,7 @@ angular
         if ($scope.callsParams._order) {
             endpoint += $.param({_order: $scope.callsParams._order});
         } else {
-            endpoint += $.param({_order: {startTime: "asc"}});
+            endpoint += $.param({_order: {startTime: "desc"}});
         }
 
         $http.get(
