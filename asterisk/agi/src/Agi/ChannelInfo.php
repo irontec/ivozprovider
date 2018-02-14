@@ -122,7 +122,7 @@ class ChannelInfo
      */
     public function getChannelOrigin()
     {
-        if (is_null($this->caller)) {
+        if (is_null($this->origin)) {
             $this->origin = $this->getChannelData("ORIGIN");
         }
 
