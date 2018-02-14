@@ -41,7 +41,7 @@ build_scheme: build_library
 
 override_dh_auto_build: build_doc build_agis build_webadmin build_webrest build_microservices build_scheme build_webuser
 
-override_dh_auto_install:
+override_dh_install:
 	dh_install
 	# Remove .git directiories
 	-find debian -type d -name .git -prune -exec rm -fr {} \;
