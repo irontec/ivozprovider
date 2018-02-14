@@ -13,6 +13,7 @@ use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Paginator;
+use Doctrine\ORM\Tools\Pagination\Paginator as DoctrineOrmPaginator;
 
 class CallHistoryAction
 {
@@ -123,8 +124,11 @@ class CallHistoryAction
             }
         }
 
-        return $qb
-            ->getQuery()
-            ->getResult();
+        // With _pagination=false query argument
+        return new Paginator(
+            new DoctrineOrmPaginator(
+                $qb->getQuery()
+            )
+        );
     }
 }
