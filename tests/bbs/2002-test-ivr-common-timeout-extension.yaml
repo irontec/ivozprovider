@@ -10,17 +10,17 @@ scenarios:
               credentials:
                 <<: *alice_cred
           - waitfor: CONFIRMED
-          - dtmf: 1003            # Press Charlie Extension
+          - dtmf: 1005            # Press Charlie Extension
           - waitfor: DISCONNCTD
-      - charlie:
+      - eve:
           - register:
-              <<: *charlie_cred
+              <<: *eve_cred
           - waitfor: INCOMING
           - ringing
           - waitfor: DISCONNCTD  # Wait until call is cancelled
-      - dave:
+      - bob:
           - register:
-              <<: *dave_cred
+              <<: *bob_cred
           - waitfor: INCOMING
           - answer
           - wait: 5
