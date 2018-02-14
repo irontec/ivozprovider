@@ -283,6 +283,7 @@ class DoctrineEntityPersister implements EntityPersisterInterface
         }
 
         $commandlog = Commandlog::fromEvent($command);
+        $this->em->clear();
         $this->em->persist($commandlog);
 
         $entityEvents = $this
