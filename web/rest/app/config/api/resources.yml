@@ -46,7 +46,7 @@ Model\CallStats:
 ########################################
 Ivoz\Kam\Domain\Model\UsersCdr\UsersCdr:
   collectionOperations:
-    my_call_history:
+    get_my_call_history:
       access_control: '"ROLE_COMPANY_USER" in roles'
       method: 'GET'
       path: '/my/call_history'

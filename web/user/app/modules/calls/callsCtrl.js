@@ -35,9 +35,11 @@ angular
         page = page || 1;
         params._page = page;
 
-        var endpoint = 'my/call_history';
+        var endpoint = 'my/call_history?';
         if ($scope.callsParams._order) {
-            endpoint += '?' + $.param({_order: $scope.callsParams._order});
+            endpoint += $.param({_order: $scope.callsParams._order});
+        } else {
+            endpoint += $.param({_order: {startTime: "asc"}});
         }
 
         $http.get(
@@ -54,6 +56,7 @@ angular
 
                 for (var idx in $scope.calls) {
                     var item = $scope.calls[idx];
+                    item.duration = Math.ceil(item.duration);
                     if (item.direction === 'inbound') {
                         item.interlocutor = item.caller;
                     } else {
