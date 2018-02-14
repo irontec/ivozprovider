@@ -9,8 +9,10 @@ use Doctrine\ORM\QueryBuilder;
 use Ivoz\Api\Doctrine\Orm\Extension\CollectionExtensionList;
 use Ivoz\Kam\Domain\Model\UsersCdr\UsersCdrRepository;
 use Ivoz\Kam\Domain\Model\UsersCdr\UsersCdr;
+use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Paginator;
 
 class CallHistoryAction
 {
@@ -60,13 +62,47 @@ class CallHistoryAction
             )
         );
 
-        return $this->applyCollectionExtensions(
+        /** @var Paginator $calls */
+        $calls = $this->applyCollectionExtensions(
             $qb,
             UsersCdr::class,
             'my_call_history'
         );
+
+        return $this->setUserTimezone($user, $calls);
     }
 
+    /**
+     * @param UserInterface $user
+     * @param UsersCdr[] $calls
+     * @return Paginator
+     */
+    protected function setUserTimezone(UserInterface $user, Paginator $calls)
+    {
+        $userTimeZone = $user->getTimezone();
+        $timezone = new \DateTimeZone(
+            $userTimeZone->getTz()
+        );
+
+        foreach ($calls->getIterator() as $call) {
+            $call
+                ->getStartTime()
+                ->setTimezone($timezone);
+
+            $call
+                ->getEndTime()
+                ->setTimezone($timezone);
+        }
+
+        return $calls;
+    }
+
+    /**
+     * @param QueryBuilder $qb
+     * @param string $entityClass
+     * @param string $operationName
+     * @return Paginator
+     */
     protected function applyCollectionExtensions(QueryBuilder $qb, string $entityClass, string $operationName)
     {
         $queryNameGenerator = new QueryNameGenerator();
@@ -87,6 +123,8 @@ class CallHistoryAction
             }
         }
 
-        return $qb->getQuery()->getResult();
+        return $qb
+            ->getQuery()
+            ->getResult();
     }
 }
