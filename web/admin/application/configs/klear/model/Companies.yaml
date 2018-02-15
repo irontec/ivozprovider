@@ -147,7 +147,7 @@ production:
               - countryCode
             template: '%name${lang}% (%countryCode%)'
           order:
-            Country.code: asc
+            Country.name.${lang}: asc
     transformationRuleSetId:
       title: ngettext('Numeric transformation', 'Numeric transformations', 1)
       type: select
