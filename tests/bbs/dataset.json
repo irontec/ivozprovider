@@ -1383,7 +1383,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"type\": \"vpbx\",\n  \"name\": \"BBS - Company for Black Box SIP tests\",\n  \"domainUsers\": \"bbs.ivozprovider.local\",\n  \"nif\": \"09876543210ART\",\n  \"externalMaxCalls\": 2,\n  \"postalAddress\": \"Company address\",\n  \"postalCode\": \"48902\",\n  \"town\": \"Company town\",\n  \"province\": \"Company province\",\n  \"countryName\": \"Company country\",\n  \"ipfilter\": false,\n  \"defaultTimezone\": 1,\n  \"transformationRuleSet\": 70,\n  \"brand\": {{brandId}}\n}"
+							"raw": "{\n  \"type\": \"vpbx\",\n  \"name\": \"BBS - Company for Black Box SIP tests\",\n  \"domainUsers\": \"bbs.ivozprovider.local\",\n  \"nif\": \"09876543210ART\",\n  \"externalMaxCalls\": 2,\n  \"postalAddress\": \"Company address\",\n  \"postalCode\": \"48902\",\n  \"town\": \"Company town\",\n  \"province\": \"Company province\",\n  \"onDemandRecord\": 2,\n  \"onDemandRecordCode\": \"234\",\n  \"countryName\": \"Company country\",\n  \"ipfilter\": false,\n  \"defaultTimezone\": 1,\n  \"transformationRuleSet\": 70,\n  \"brand\": {{brandId}}\n}"
 						},
 						"url": "{{api_url}}/companies"
 					},
@@ -3079,7 +3079,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"type\": \"retail\",\n  \"name\": \"BBS - Retail for Black Box SIP tests\",\n  \"nif\": \"09876543210ART\",\n  \"externalMaxCalls\": 2,\n  \"postalAddress\": \"Retail address\",\n  \"postalCode\": \"48902\",\n  \"town\": \"Retail town\",\n  \"province\": \"Retail province\",\n  \"countryName\": \"Retail country\",\n  \"defaultTimezone\": 1,\n  \"ipfilter\": false,\n  \"transformationRuleSet\": 70,\n  \"brand\": {{brandId}}\n}"
+							"raw": "{\n  \"type\": \"retail\",\n  \"name\": \"BBS - Retail for Black Box SIP tests\",\n  \"nif\": \"09876543210ART\",\n  \"externalMaxCalls\": 2,\n  \"postalAddress\": \"Retail address\",\n  \"postalCode\": \"48902\",\n  \"town\": \"Retail town\",\n  \"province\": \"Retail province\",\n  \"countryName\": \"Retail country\",\n  \"defaultTimezone\": 1,\n  \"onDemandRecord\": 2,\n  \"onDemandRecordCode\": \"234\",\n  \"ipfilter\": false,\n  \"transformationRuleSet\": 70,\n  \"brand\": {{brandId}}\n}"
 						},
 						"url": "{{api_url}}/companies"
 					},
