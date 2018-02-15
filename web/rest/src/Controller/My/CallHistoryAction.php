@@ -13,7 +13,6 @@ use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Paginator;
-use Doctrine\ORM\Tools\Pagination\Paginator as DoctrineOrmPaginator;
 
 class CallHistoryAction
 {
@@ -63,14 +62,18 @@ class CallHistoryAction
             )
         );
 
-        /** @var Paginator $calls */
-        $calls = $this->applyCollectionExtensions(
+        $response = $this->applyCollectionExtensions(
             $qb,
             UsersCdr::class,
             'my_call_history'
         );
 
-        return $this->setUserTimezone($user, $calls);
+        $calls = $response instanceof Paginator
+            ? $response->getIterator()
+            : new \ArrayIterator($response);
+        $this->setUserTimezone($user, $calls);
+
+        return $response;
     }
 
     /**
@@ -78,14 +81,14 @@ class CallHistoryAction
      * @param UsersCdr[] $calls
      * @return Paginator
      */
-    protected function setUserTimezone(UserInterface $user, Paginator $calls)
+    protected function setUserTimezone(UserInterface $user, \Traversable $calls)
     {
         $userTimeZone = $user->getTimezone();
         $timezone = new \DateTimeZone(
             $userTimeZone->getTz()
         );
 
-        foreach ($calls->getIterator() as $call) {
+        foreach ($calls as $call) {
             $call
                 ->getStartTime()
                 ->setTimezone($timezone);
@@ -94,8 +97,6 @@ class CallHistoryAction
                 ->getEndTime()
                 ->setTimezone($timezone);
         }
-
-        return $calls;
     }
 
     /**
@@ -124,11 +125,6 @@ class CallHistoryAction
             }
         }
 
-        // With _pagination=false query argument
-        return new Paginator(
-            new DoctrineOrmPaginator(
-                $qb->getQuery()
-            )
-        );
+        return $qb->getQuery()->getResult();
     }
 }

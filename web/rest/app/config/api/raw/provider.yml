@@ -29,7 +29,7 @@ Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchList:
     access_control: '"ROLE_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting:
   attributes:
-    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    access_control: '("ROLE_COMPANY_ADMIN" in roles) or ("ROLE_COMPANY_USER" in roles)'
 Ivoz\Provider\Domain\Model\Company\Company:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'

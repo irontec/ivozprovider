@@ -10,7 +10,8 @@ angular
         ngProgress,
         $http, 
         appConfig,
-        $q
+        $q,
+        $filter
     ) {
     
     $scope.formData = {};
@@ -56,7 +57,6 @@ angular
 
                 for (var idx in $scope.calls) {
                     var item = $scope.calls[idx];
-                    item.duration = Math.ceil(item.duration);
                     if (item.direction === 'inbound') {
                         item.interlocutor = item.caller;
                     } else {
@@ -111,17 +111,21 @@ angular
         var params = $scope.callsParams.search;
         params._pagination = false;
 
-
-        var endpoint = 'my/call_history';
+        var endpoint = 'my/call_history?';
         if ($scope.callsParams._order) {
-            endpoint += '?' + $.param({_order: $scope.callsParams._order});
+            endpoint += $.param({_order: $scope.callsParams._order});
+        } else {
+            endpoint += $.param({_order: {startTime: "desc"}});
         }
 
         $http.get(
             appConfig.urlRest + endpoint,
             {headers: {accept: 'application/json'}, params: params}
         ).then(function (data) {
+
+            console.log();console.log('data', data);
             data.data = filterCsvData(data.data);
+            console.log('data', data);
             defered.resolve(data);
         });
 
@@ -140,10 +144,10 @@ angular
                 : data[idx].callee;
 
             data[idx] = {
-                date: data[idx].startTime,
+                date: $scope.getFormatDate(data[idx].startTime),
                 interlocutor: interlocutor,
-                duration: data[idx].duration,
-                type: data[idx].direction
+                duration: $scope.getDuration(data[idx].duration),
+                type: $filter('translate')(data[idx].direction)
             }
         }
 
@@ -188,7 +192,7 @@ angular
     };
     
     $scope.getDuration = function(time) {
-        return parseInt(time) + ' s';
+        return parseInt(Math.ceil(time)) + ' s';
     };
     
 });

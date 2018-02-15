@@ -106,7 +106,7 @@ Ivoz\Provider\Domain\Model\User\User:
             schema:
               $ref: '#/definitions/User-updateMyProfile'
   collectionOperations:
-    my_company_assistants:
+    get_my_company_assistants:
       access_control: '"ROLE_COMPANY_USER" in roles'
       method: 'GET'
       path: '/my/company_assistants'
@@ -119,7 +119,7 @@ Ivoz\Provider\Domain\Model\User\User:
         tags:
           - My
         parameters: []
-    my_company_voicemails:
+    get_my_company_voicemails:
       access_control: '"ROLE_COMPANY_USER" in roles'
       method: 'GET'
       path: '/my/company_voicemails'
@@ -134,23 +134,7 @@ Ivoz\Provider\Domain\Model\User\User:
         parameters: []
 
 Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting:
-  collectionOperations:
-    get_my_call_forward_settings:
-      access_control: '"ROLE_COMPANY_USER" in roles'
-      method: 'GET'
-      path: '/my/call_forward_settings'
-      route_name: 'get_my_call_forward_settings'
-      parameters: []
-      operation_normalization_context: 'detailedCollection'
-      normalization_context:
-        groups: ['detailedCollection']
-      swagger_context:
-        produces:
-          - 'application/ld+json'
-          - 'application/json'
-        tags:
-          - My
-        parameters: []
+  itemOperations:
     post_my_call_forward_settings:
       access_control: '"ROLE_COMPANY_USER" in roles'
       method: 'POST'
@@ -170,10 +154,27 @@ Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting:
             description: 'The updated CallForwardSetting resource'
             schema:
               $ref: '#/definitions/CallForwardSetting'
+  collectionOperations:
+    get_my_call_forward_settings:
+      access_control: '"ROLE_COMPANY_USER" in roles'
+      method: 'GET'
+      path: '/my/call_forward_settings'
+      route_name: 'get_my_call_forward_settings'
+      parameters: []
+      operation_normalization_context: 'detailedCollection'
+      normalization_context:
+        groups: ['detailedCollection']
+      swagger_context:
+        produces:
+          - 'application/ld+json'
+          - 'application/json'
+        tags:
+          - My
+        parameters: []
 
 Ivoz\Provider\Domain\Model\Extension\Extension:
   collectionOperations:
-    my_extensions:
+    get_my_company_extensions:
       access_control: '"ROLE_COMPANY_USER" in roles'
       method: 'GET'
       path: '/my/extensions'

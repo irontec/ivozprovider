@@ -31,6 +31,10 @@ angular
     ).then(function(users) {
         $scope.users = users.data;
 
+        for (var idx in $scope.users) {
+            $scope.users[idx].fullName = $scope.users[idx].name + " " + $scope.users[idx].lastname;
+        }
+
         $http.get(
             appConfig.urlRest + 'my/company_extensions',
             {headers: {accept: 'application/json'}}

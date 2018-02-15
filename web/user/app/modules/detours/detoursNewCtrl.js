@@ -26,10 +26,15 @@ angular
     $scope.voiceMailUserShow = false;
 
     $http.get(
-        appConfig.urlRest + 'my/profile',
+        appConfig.urlRest + 'my/company_voicemails',
         {headers: {accept: 'application/json'}}
     ).then(function(users) {
         $scope.users = users.data;
+
+        for (var idx in $scope.users) {
+            $scope.users[idx].fullName = $scope.users[idx].name + " " + $scope.users[idx].lastname;
+        }
+
         $http.get(
             appConfig.urlRest + 'my/company_extensions',
             {headers: {accept: 'application/json'}}
@@ -56,30 +61,29 @@ angular
             case 'extension':
                 $scope.detour.numberValue = '';
                 $scope.numberValueShow = false;
-                $scope.detour.voiceMailUserId = '';
+                $scope.detour.voiceMailUser = null;
                 $scope.voiceMailUserShow = false;
-                
-                $scope.detour.extensionId = '';
+                $scope.detour.extension = null;
                 $scope.extensionShow = true;
                 break;
-                
+
             case 'voicemail':
-                $scope.detour.extensionId = '';
+                $scope.detour.extension = null;
                 $scope.extensionShow = false;
                 $scope.detour.numberValue = '';
                 $scope.numberValueShow = false;
-                
-                $scope.detour.voiceMailUserId = '';
+
+                $scope.detour.voiceMailUser = null;
                 $scope.voiceMailUserShow = true;
                 break;
-                
+
             case 'number':
                 $scope.detour.numberValue = '';
                 $scope.numberValueShow = true;
-                $scope.detour.extensionId = '';
+                $scope.detour.extension = null;
                 $scope.extensionShow = false;
                 
-                $scope.detour.voiceMailUserId = '';
+                $scope.detour.voiceMailUser = null;
                 $scope.voiceMailUserShow = false;
                 break;
         }

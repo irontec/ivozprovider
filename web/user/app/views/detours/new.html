@@ -188,9 +188,9 @@
                                     class="form-control"
                                     id="voiceMailUser"
                                     name="voiceMailUser"
-                                    ng-model="detour.voiceMailUser"
+                                    ng-model="detour.voiceMailUser.id"
+                                    ng-options="user.id as user.fullName for user in users"
                             >
-                                <option ng-repeat="user in users" value="{{user.id}}">{{user.name}}</option>
                             </select>
                         </div>
 

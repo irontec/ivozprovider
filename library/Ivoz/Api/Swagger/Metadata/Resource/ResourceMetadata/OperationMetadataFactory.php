@@ -85,6 +85,9 @@ class OperationMetadataFactory implements ResourceMetadataFactoryInterface
                         'consumes' => $defaultFormats,
                         'produces' => $defaultFormats,
                     ]
+                ],
+                'delete' => [
+                    'method' => 'DELETE'
                 ]
             ],
             $resourceMetadata->getItemOperations()
