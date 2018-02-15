@@ -1,14 +1,13 @@
 {
 	"info": {
 		"name": "IvozProvider - BBS Dataset",
-		"_postman_id": "6d9b8f63-dcd1-30f2-8ae7-d5ef88f35ddb",
+		"_postman_id": "c0280899-2ed9-7b6b-4f85-91ebad1fb670",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "0000 - Authorization",
-			"description": "",
 			"item": [
 				{
 					"name": "Get Authorization Token",
@@ -44,7 +43,6 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"description": "",
 									"key": "username",
 									"type": "text",
 									"value": "{{api_username}}"
@@ -52,13 +50,11 @@
 								{
 									"key": "password",
 									"value": "{{api_password}}",
-									"description": "",
 									"type": "text"
 								}
 							]
 						},
-						"url": "{{api_url}}/admin_login",
-						"description": ""
+						"url": "{{api_url}}/admin_login"
 					},
 					"response": []
 				}
@@ -66,7 +62,6 @@
 		},
 		{
 			"name": "0001 - Brand Data",
-			"description": "",
 			"item": [
 				{
 					"name": "Create BBS Brand",
@@ -104,10 +99,9 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"ZZZ - Test Brand for BBS\",\n  \"domainUsers\": \"retail-bss.ivozprovider.local\",\n  \"language\": 2,\n  \"defaultTimezone\": 145,\n  \"transformationRuleSet\": 70,\n  \"invoice\": {\n    \"nif\": \"string\",\n    \"postalAddress\": \"string\",\n    \"postalCode\": \"string\",\n    \"town\": \"string\",\n    \"province\": \"string\",\n    \"country\": \"string\",\n    \"registryData\": \"string\"\n  }\n}"
+							"raw": "{\n  \"name\": \"ZZZ - Test Brand for BBS\",\n  \"domainUsers\": \"retail-bbs.ivozprovider.local\",\n  \"language\": 2,\n  \"defaultTimezone\": 145,\n  \"transformationRuleSet\": 70,\n  \"invoice\": {\n    \"nif\": \"string\",\n    \"postalAddress\": \"string\",\n    \"postalCode\": \"string\",\n    \"town\": \"string\",\n    \"province\": \"string\",\n    \"country\": \"string\",\n    \"registryData\": \"string\"\n  }\n}"
 						},
-						"url": "{{api_url}}/brands",
-						"description": ""
+						"url": "{{api_url}}/brands"
 					},
 					"response": []
 				},
@@ -146,8 +140,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"brand\": {{brandId}},\n  \"feature\": 1\n}"
 						},
-						"url": "{{api_url}}/features_rel_brands",
-						"description": ""
+						"url": "{{api_url}}/features_rel_brands"
 					},
 					"response": []
 				},
@@ -186,8 +179,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"brand\": {{brandId}},\n  \"feature\": 2\n}"
 						},
-						"url": "{{api_url}}/features_rel_brands",
-						"description": ""
+						"url": "{{api_url}}/features_rel_brands"
 					},
 					"response": []
 				},
@@ -226,8 +218,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"brand\": {{brandId}},\n  \"feature\": 3\n}"
 						},
-						"url": "{{api_url}}/features_rel_brands",
-						"description": ""
+						"url": "{{api_url}}/features_rel_brands"
 					},
 					"response": []
 				},
@@ -266,8 +257,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"brand\": {{brandId}},\n  \"feature\": 4\n}"
 						},
-						"url": "{{api_url}}/features_rel_brands",
-						"description": ""
+						"url": "{{api_url}}/features_rel_brands"
 					},
 					"response": []
 				},
@@ -306,8 +296,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"brand\": {{brandId}},\n  \"feature\": 5\n}"
 						},
-						"url": "{{api_url}}/features_rel_brands",
-						"description": ""
+						"url": "{{api_url}}/features_rel_brands"
 					},
 					"response": []
 				},
@@ -346,8 +335,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"brand\": {{brandId}},\n  \"feature\": 6\n}"
 						},
-						"url": "{{api_url}}/features_rel_brands",
-						"description": ""
+						"url": "{{api_url}}/features_rel_brands"
 					},
 					"response": []
 				},
@@ -386,8 +374,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"brand\": {{brandId}},\n  \"feature\": 7\n}"
 						},
-						"url": "{{api_url}}/features_rel_brands",
-						"description": ""
+						"url": "{{api_url}}/features_rel_brands"
 					},
 					"response": []
 				},
@@ -426,8 +413,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"brand\": {{brandId}},\n  \"feature\": 8\n}"
 						},
-						"url": "{{api_url}}/features_rel_brands",
-						"description": ""
+						"url": "{{api_url}}/features_rel_brands"
 					},
 					"response": []
 				},
@@ -466,8 +452,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"brand\": {{brandId}},\n  \"feature\": 9\n}"
 						},
-						"url": "{{api_url}}/features_rel_brands",
-						"description": ""
+						"url": "{{api_url}}/features_rel_brands"
 					},
 					"response": []
 				},
@@ -509,8 +494,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"description\": \"Spanish\",\n  \"internationalCode\": \"00\",\n  \"trunkPrefix\": \"\",\n  \"areaCode\": \"\",\n  \"nationalLen\": 9,\n  \"generateRules\": true,\n  \"name\": {\n     \"en\": \"Spanish Operator\",\n     \"es\": \"Operador Español\"\n  },\n  \"brand\": {{brandId}},\n  \"country\": 70\n}"
 						},
-						"url": "{{api_url}}/transformation_rule_sets",
-						"description": ""
+						"url": "{{api_url}}/transformation_rule_sets"
 					},
 					"response": []
 				},
@@ -552,8 +536,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"description\": \"USA (Area 999)\",\n  \"internationalCode\": \"011\",\n  \"trunkPrefix\": \"1\",\n  \"areaCode\": \"999\",\n  \"nationalLen\": 9,\n  \"generateRules\": true,\n  \"name\": {\n     \"en\": \"USA (Area 999)\",\n     \"es\": \"USA (Area 999)\"\n  },\n  \"brand\": {{brandId}},\n  \"country\": 235\n}"
 						},
-						"url": "{{api_url}}/transformation_rule_sets",
-						"description": ""
+						"url": "{{api_url}}/transformation_rule_sets"
 					},
 					"response": []
 				},
@@ -595,8 +578,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"description\": \"BBS Peering Contract\",\n  \"name\": \"BBS Peering Contract\",\n  \"externallyRated\": false,\n  \"brand\": {{brandId}},\n  \"transformationRuleSet\": 70\n}\n"
 						},
-						"url": "{{api_url}}/peering_contracts",
-						"description": ""
+						"url": "{{api_url}}/peering_contracts"
 					},
 					"response": []
 				},
@@ -638,8 +620,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"sipProxy\": \"fakepeerserver.com\",\t\n  \"peeringContract\": {{peeringContractId}},\n  \"brand\": {{brandId}}\n}"
 						},
-						"url": "{{api_url}}/peer_servers",
-						"description": ""
+						"url": "{{api_url}}/peer_servers"
 					},
 					"response": []
 				},
@@ -681,8 +662,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"regExp\": \"+34\",\n  \"name\": {\n  \t\"en\": \"Spain\",  \t\n  \t\"es\": \"España\"\n  },\n  \"description\": {\n  \t\"en\": \"BBS - Spain\",  \t\n  \t\"es\": \"BBS - España\"\n  },\n  \"brand\": {{brandId}}\n}"
 						},
-						"url": "{{api_url}}/routing_patterns",
-						"description": ""
+						"url": "{{api_url}}/routing_patterns"
 					},
 					"response": []
 				},
@@ -724,8 +704,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"type\": \"pattern\",\n  \"priority\": 1,\n  \"brand\": {{brandId}},\n  \"peeringContract\": {{peeringContractId}},\n  \"routingPattern\": {{routingPatternESId}}\n}"
 						},
-						"url": "{{api_url}}/outgoing_routings",
-						"description": ""
+						"url": "{{api_url}}/outgoing_routings"
 					},
 					"response": []
 				},
@@ -767,8 +746,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"regExp\": \"+1\",\n  \"name\": {\n  \t\"en\": \"USA\",  \t\n  \t\"es\": \"Estados Unidos\"\n  },\n  \"description\": {\n  \t\"en\": \"BBS - Usa\",  \t\n  \t\"es\": \"BBS - Estados Unidos\"\n  },\n  \"brand\": {{brandId}}\n}"
 						},
-						"url": "{{api_url}}/routing_patterns",
-						"description": ""
+						"url": "{{api_url}}/routing_patterns"
 					},
 					"response": []
 				},
@@ -810,8 +788,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"type\": \"pattern\",\n  \"priority\": 2,\n  \"brand\": {{brandId}},\n  \"peeringContract\": {{peeringContractId}},\n  \"routingPattern\": {{routingPatternUSId}}\n}"
 						},
-						"url": "{{api_url}}/outgoing_routings",
-						"description": ""
+						"url": "{{api_url}}/outgoing_routings"
 					},
 					"response": []
 				},
@@ -854,8 +831,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"name\": {\n  \t\"en\": \"Spain\",\n  \t\"es\": \"España\"\n  },\n  \"description\": {\n  \t\"en\": \"Spain\",\n  \t\"es\": \"España\"\n  },\n  \"brand\": {{brandId}}\n}"
 						},
-						"url": "{{api_url}}/destinations",
-						"description": ""
+						"url": "{{api_url}}/destinations"
 					},
 					"response": []
 				},
@@ -897,8 +873,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"prefix\": \"+34\",\n  \"destination\": {{destinationESId}}\n}"
 						},
-						"url": "{{api_url}}/tp_destinations",
-						"description": ""
+						"url": "{{api_url}}/tp_destinations"
 					},
 					"response": []
 				},
@@ -941,8 +916,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"name\": {\n  \t\"en\": \"USA\",\n  \t\"es\": \"EEEUU\"\n  },\n  \"description\": {\n  \t\"en\": \"United States of America\",\n  \t\"es\": \"Estados Unidos de América\"\n  },\n  \"brand\": {{brandId}}\n}"
 						},
-						"url": "{{api_url}}/destinations",
-						"description": ""
+						"url": "{{api_url}}/destinations"
 					},
 					"response": []
 				},
@@ -984,8 +958,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"prefix\": \"+1\",\n  \"destination\": {{destinationUSId}}\n}"
 						},
-						"url": "{{api_url}}/tp_destinations",
-						"description": ""
+						"url": "{{api_url}}/tp_destinations"
 					},
 					"response": []
 				},
@@ -1028,8 +1001,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"name\": \"National Calls Rate\",\n  \"brand\": {{brandId}}\n}"
 						},
-						"url": "{{api_url}}/rates",
-						"description": ""
+						"url": "{{api_url}}/rates"
 					},
 					"response": []
 				},
@@ -1071,8 +1043,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"connectFee\": \"0.001\",\n  \"rateCost\": \"0.3\",\n  \"rateUnit\": \"60s\",\n  \"rateIncrement\": \"1s\",\n  \"groupIntervalStart\": \"0s\",\n  \"rate\": {{nationalRateId}}\n}"
 						},
-						"url": "{{api_url}}/tp_rates",
-						"description": null
+						"url": "{{api_url}}/tp_rates"
 					},
 					"response": []
 				},
@@ -1115,8 +1086,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"name\": \"Intenational Calls Rate\",\n  \"brand\": {{brandId}}\n}"
 						},
-						"url": "{{api_url}}/rates",
-						"description": ""
+						"url": "{{api_url}}/rates"
 					},
 					"response": []
 				},
@@ -1158,8 +1128,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"connectFee\": \"1.500\",\n  \"rateCost\": \"1.2\",\n  \"rateUnit\": \"60s\",\n  \"rateIncrement\": \"1s\",\n  \"groupIntervalStart\": \"0s\",\n  \"rate\": {{internationalRateId}}\n}"
 						},
-						"url": "{{api_url}}/tp_rates",
-						"description": null
+						"url": "{{api_url}}/tp_rates"
 					},
 					"response": []
 				},
@@ -1202,8 +1171,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"name\": {\n  \t\"en\": \"Standard\",\n  \t\"es\": \"Estándar\"\n  },\n  \"description\": {\n  \t\"en\": \"\",\n  \t\"es\": \"\"\n  },\n  \"brand\": {{brandId}}\n}"
 						},
-						"url": "{{api_url}}/destination_rates",
-						"description": null
+						"url": "{{api_url}}/destination_rates"
 					},
 					"response": []
 				},
@@ -1244,8 +1212,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"destinationRate\": {{destinationRateId}},\n  \"destination\": {{destinationESId}},\n  \"rate\": {{nationalRateId}}\n}"
 						},
-						"url": "{{api_url}}/tp_destination_rates",
-						"description": null
+						"url": "{{api_url}}/tp_destination_rates"
 					},
 					"response": []
 				},
@@ -1286,8 +1253,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"destinationRate\": {{destinationRateId}},\n  \"destination\": {{destinationUSId}},\n  \"rate\": {{internationalRateId}}\n}"
 						},
-						"url": "{{api_url}}/tp_destination_rates",
-						"description": null
+						"url": "{{api_url}}/tp_destination_rates"
 					},
 					"response": []
 				},
@@ -1330,8 +1296,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"name\": {\n  \t\"en\": \"Standard 2017\",\n  \t\"es\": \"Estándar 2017\"\n  },\n  \"description\": {\n  \t\"en\": \"\",\n  \t\"es\": \"\"\n  },\n  \"brand\": {{brandId}}\n}"
 						},
-						"url": "{{api_url}}/rating_plans",
-						"description": null
+						"url": "{{api_url}}/rating_plans"
 					},
 					"response": []
 				},
@@ -1373,8 +1338,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"weight\": \"1\",\n  \"timing\": \"1\",\n  \"ratingPlan\": {{ratingPlanId}},\n  \"destinationRate\": {{destinationRateId}}\n}"
 						},
-						"url": "{{api_url}}/tp_rating_plans",
-						"description": null
+						"url": "{{api_url}}/tp_rating_plans"
 					},
 					"response": []
 				}
@@ -1382,7 +1346,6 @@
 		},
 		{
 			"name": "0010 - Company Data",
-			"description": "",
 			"item": [
 				{
 					"name": "Create BBS Company",
@@ -1422,8 +1385,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"type\": \"vpbx\",\n  \"name\": \"BBS - Company for Black Box SIP tests\",\n  \"domainUsers\": \"bbs.ivozprovider.local\",\n  \"nif\": \"09876543210ART\",\n  \"externalMaxCalls\": 2,\n  \"postalAddress\": \"Company address\",\n  \"postalCode\": \"48902\",\n  \"town\": \"Company town\",\n  \"province\": \"Company province\",\n  \"countryName\": \"Company country\",\n  \"ipfilter\": false,\n  \"defaultTimezone\": 1,\n  \"transformationRuleSet\": 70,\n  \"brand\": {{brandId}}\n}"
 						},
-						"url": "{{api_url}}/companies",
-						"description": ""
+						"url": "{{api_url}}/companies"
 					},
 					"response": []
 				},
@@ -1465,8 +1427,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"activationTime\": \"2018-01-01 00:00:00.000\",\n  \"company\": {{companyId}},\n  \"ratingPlan\": {{ratingPlanId}}\n}"
 						},
-						"url": "{{api_url}}/tp_rating_profiles",
-						"description": ""
+						"url": "{{api_url}}/tp_rating_profiles"
 					},
 					"response": []
 				},
@@ -1506,8 +1467,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"type\": \"vpbx\",\n  \"name\": \"BBS - Company for Black Box SIP tests\",\n  \"domainUsers\": \"bbs.ivozprovider.local\",\n  \"nif\": \"09876543210ART\",\n  \"externalMaxCalls\": 2,\n  \"postalAddress\": \"Company address\",\n  \"postalCode\": \"48902\",\n  \"town\": \"Company town\",\n  \"province\": \"Company province\",\n  \"countryName\": \"Company country\",\n  \"defaultTimezone\": 1,\n  \"brand\": {{brandId}}\n}"
 						},
-						"url": "{{api_url}}/companies/{{companyId}}",
-						"description": ""
+						"url": "{{api_url}}/companies/{{companyId}}"
 					},
 					"response": []
 				},
@@ -1548,8 +1508,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"company\": {{companyId}},\n  \"feature\": 1\n}"
 						},
-						"url": "{{api_url}}/features_rel_companies",
-						"description": ""
+						"url": "{{api_url}}/features_rel_companies"
 					},
 					"response": []
 				},
@@ -1590,8 +1549,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"company\": {{companyId}},\n  \"feature\": 2\n}"
 						},
-						"url": "{{api_url}}/features_rel_companies",
-						"description": ""
+						"url": "{{api_url}}/features_rel_companies"
 					},
 					"response": []
 				},
@@ -1632,8 +1590,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"company\": {{companyId}},\n  \"feature\": 3\n}"
 						},
-						"url": "{{api_url}}/features_rel_companies",
-						"description": ""
+						"url": "{{api_url}}/features_rel_companies"
 					},
 					"response": []
 				},
@@ -1674,8 +1631,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"company\": {{companyId}},\n  \"feature\": 4\n}"
 						},
-						"url": "{{api_url}}/features_rel_companies",
-						"description": ""
+						"url": "{{api_url}}/features_rel_companies"
 					},
 					"response": []
 				},
@@ -1716,8 +1672,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"company\": {{companyId}},\n  \"feature\": 5\n}"
 						},
-						"url": "{{api_url}}/features_rel_companies",
-						"description": ""
+						"url": "{{api_url}}/features_rel_companies"
 					},
 					"response": []
 				},
@@ -1758,8 +1713,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"company\": {{companyId}},\n  \"feature\": 8\n}"
 						},
-						"url": "{{api_url}}/features_rel_companies",
-						"description": ""
+						"url": "{{api_url}}/features_rel_companies"
 					},
 					"response": []
 				},
@@ -1801,8 +1755,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"name\": \"alice\",\n  \"directMediaMethod\": \"invite\",\n  \"password\": \"4l1C3P4sSw0rd+\",\n  \"company\": {{companyId}},\n  \"terminalModel\": 5\n}"
 						},
-						"url": "{{api_url}}/terminals",
-						"description": ""
+						"url": "{{api_url}}/terminals"
 					},
 					"response": []
 				},
@@ -1845,8 +1798,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"name\": \"Alice\",\n  \"lastname\": \"Allison\",\n  \"email\": \"alice@bbs.ivozprovider.local\",\n  \"pass\": \"4l1c3p4ssw0rd\",\n  \"company\": {{companyId}},\n  \"terminal\": {{aliceTerminalId}},\n  \"transformationRuleSet\": 70,\n  \"timezone\": 70\n}"
 						},
-						"url": "{{api_url}}/users",
-						"description": ""
+						"url": "{{api_url}}/users"
 					},
 					"response": []
 				},
@@ -1888,8 +1840,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"number\": \"1001\",\n  \"routeType\": \"user\",\n  \"company\": {{companyId}},\n  \"user\": {{aliceUserId}}\n}"
 						},
-						"url": "{{api_url}}/extensions",
-						"description": ""
+						"url": "{{api_url}}/extensions"
 					},
 					"response": []
 				},
@@ -1931,8 +1882,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"ddi\": \"999661001\",\n  \"routeType\": \"user\",\n  \"company\": {{companyId}},\n  \"brand\": {{brandId}},\n  \"user\": {{aliceUserId}},\n  \"peeringContract\": {{peeringContractId}},\n  \"country\": 70\n}"
 						},
-						"url": "{{api_url}}/ddis",
-						"description": ""
+						"url": "{{api_url}}/ddis"
 					},
 					"response": []
 				},
@@ -1975,8 +1925,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"name\": \"bob\",\n  \"directMediaMethod\": \"invite\",\n  \"password\": \"b0bP4sSW0rd+\",\n  \"company\": {{companyId}},\n  \"terminalModel\": 5\n}"
 						},
-						"url": "{{api_url}}/terminals",
-						"description": ""
+						"url": "{{api_url}}/terminals"
 					},
 					"response": []
 				},
@@ -2018,8 +1967,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"name\": \"Bob\",\n  \"lastname\": \"Bobson\",\n  \"email\": \"bob@bbs.ivozprovider.local\",\n  \"pass\": \"b0bp4ssw0rd\",\n  \"company\": {{companyId}},\n  \"terminal\": {{bobTerminalId}},\n  \"transformationRuleSet\": 70,  \n  \"timezone\": 70\n}"
 						},
-						"url": "{{api_url}}/users",
-						"description": ""
+						"url": "{{api_url}}/users"
 					},
 					"response": []
 				},
@@ -2062,8 +2010,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"number\": \"1002\",\n  \"routeType\": \"user\",\n  \"company\": {{companyId}},\n  \"user\": {{bobUserId}}\n}"
 						},
-						"url": "{{api_url}}/extensions",
-						"description": ""
+						"url": "{{api_url}}/extensions"
 					},
 					"response": []
 				},
@@ -2105,8 +2052,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"ddi\": \"999661002\",\n  \"routeType\": \"user\",\n  \"company\": {{companyId}},\n  \"brand\": {{brandId}},\n  \"user\": {{bobUserId}},\n  \"peeringContract\": {{peeringContractId}},\n  \"country\": 70\n}"
 						},
-						"url": "{{api_url}}/ddis",
-						"description": ""
+						"url": "{{api_url}}/ddis"
 					},
 					"response": []
 				},
@@ -2149,8 +2095,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"name\": \"charlie\",\n  \"directMediaMethod\": \"invite\",\n  \"password\": \"Ch4rL1Ep4SSword+\",\n  \"company\": {{companyId}},\n  \"terminalModel\": 5\n}"
 						},
-						"url": "{{api_url}}/terminals",
-						"description": ""
+						"url": "{{api_url}}/terminals"
 					},
 					"response": []
 				},
@@ -2193,8 +2138,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"name\": \"Charlie\",\n  \"lastname\": \"Charlieson\",\n  \"email\": \"charlie@bbs.ivozprovider.local\",\n  \"pass\": \"ch4rl1ep4ssw0rd\",\n  \"company\": {{companyId}},\n  \"terminal\": {{charlieTerminalId}},\n  \"transformationRuleSet\": 70,  \n  \"timezone\": 70\n}"
 						},
-						"url": "{{api_url}}/users",
-						"description": ""
+						"url": "{{api_url}}/users"
 					},
 					"response": []
 				},
@@ -2237,8 +2181,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"number\": \"1003\",\n  \"routeType\": \"user\",\n  \"company\": {{companyId}},\n  \"user\": {{charlieUserId}}\n}"
 						},
-						"url": "{{api_url}}/extensions",
-						"description": ""
+						"url": "{{api_url}}/extensions"
 					},
 					"response": []
 				},
@@ -2280,8 +2223,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"ddi\": \"999661003\",\n  \"routeType\": \"user\",\n  \"company\": {{companyId}},\n  \"brand\": {{brandId}},\n  \"user\": {{charlieUserId}},\n  \"peeringContract\": {{peeringContractId}},\n  \"country\": 70\n}"
 						},
-						"url": "{{api_url}}/ddis",
-						"description": ""
+						"url": "{{api_url}}/ddis"
 					},
 					"response": []
 				},
@@ -2324,8 +2266,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"name\": \"dave\",\n  \"directMediaMethod\": \"invite\",\n  \"password\": \"D4vEp4SSw0rd+\",\n  \"company\": {{companyId}},\n  \"terminalModel\": 5\n}"
 						},
-						"url": "{{api_url}}/terminals",
-						"description": ""
+						"url": "{{api_url}}/terminals"
 					},
 					"response": []
 				},
@@ -2368,8 +2309,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"name\": \"Dave\",\n  \"lastname\": \"Daveson\",\n  \"email\": \"deve@bbs.ivozprovider.local\",\n  \"pass\": \"d4v3p4ssw0rd\",\n  \"company\": {{companyId}},\n  \"terminal\": {{daveTerminalId}},\n  \"transformationRuleSet\": {{transformationUSA999}},\n  \"timezone\": 70\n}"
 						},
-						"url": "{{api_url}}/users",
-						"description": ""
+						"url": "{{api_url}}/users"
 					},
 					"response": []
 				},
@@ -2411,8 +2351,7 @@
 							"mode": "raw",
 							"raw": "\n{\n  \"number\": \"1004\",\n  \"routeType\": \"user\",\n  \"company\": {{companyId}},\n  \"user\": {{daveUserId}}\n}"
 						},
-						"url": "{{api_url}}/extensions",
-						"description": ""
+						"url": "{{api_url}}/extensions"
 					},
 					"response": []
 				},
@@ -2454,8 +2393,7 @@
 							"mode": "raw",
 							"raw": "\n{\n  \"ddi\": \"999661004\",\n  \"routeType\": \"user\",\n  \"company\": {{companyId}},\n  \"brand\": {{brandId}},\n  \"user\": {{daveUserId}},\n  \"peeringContract\": {{peeringContractId}},\n  \"country\": 235\n}"
 						},
-						"url": "{{api_url}}/ddis",
-						"description": ""
+						"url": "{{api_url}}/ddis"
 					},
 					"response": []
 				},
@@ -2497,8 +2435,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"name\": \"eve\",\n  \"directMediaMethod\": \"invite\",\n  \"password\": \"Ev3p4SSw0rd+\",\n  \"company\": {{companyId}},\n  \"terminalModel\": 5\n}"
 						},
-						"url": "{{api_url}}/terminals",
-						"description": ""
+						"url": "{{api_url}}/terminals"
 					},
 					"response": []
 				},
@@ -2541,8 +2478,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"name\": \"Eve\",\n  \"lastname\": \"Eveson\",\n  \"email\": \"eve@bbs.ivozprovider.local\",\n  \"pass\": \"3v3p4ssw0rd\",\n  \"company\": {{companyId}},\n  \"terminal\": {{eveTerminalId}},\n  \"transformationRuleSet\": {{transformationUSA999}},\n  \"timezone\": 70\n}"
 						},
-						"url": "{{api_url}}/users",
-						"description": ""
+						"url": "{{api_url}}/users"
 					},
 					"response": []
 				},
@@ -2585,8 +2521,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"number\": \"1005\",\n  \"routeType\": \"user\",\n  \"company\": {{companyId}},\n  \"user\": {{eveUserId}}\n}"
 						},
-						"url": "{{api_url}}/extensions",
-						"description": ""
+						"url": "{{api_url}}/extensions"
 					},
 					"response": []
 				},
@@ -2628,8 +2563,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"ddi\": \"999661005\",\n  \"routeType\": \"user\",\n  \"company\": {{companyId}},\n  \"brand\": {{brandId}},\n  \"user\": {{eveUserId}},\n  \"peeringContract\": {{peeringContractId}},\n  \"country\": 235\n}"
 						},
-						"url": "{{api_url}}/ddis",
-						"description": ""
+						"url": "{{api_url}}/ddis"
 					},
 					"response": []
 				},
@@ -2672,8 +2606,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"name\": \"White List for Boss Frank\",\n  \"company\": {{companyId}}\n}"
 						},
-						"url": "{{api_url}}/match_lists",
-						"description": ""
+						"url": "{{api_url}}/match_lists"
 					},
 					"response": []
 				},
@@ -2714,8 +2647,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"description\": \"Alice DDI Number\",\n  \"type\": \"number\",\n  \"numbervalue\": \"999661001\",\n  \"matchList\": {{bossAssistantWatchListId}},\n  \"numberCountry\": 70\n}"
 						},
-						"url": "{{api_url}}/match_list_patterns",
-						"description": ""
+						"url": "{{api_url}}/match_list_patterns"
 					},
 					"response": []
 				},
@@ -2756,8 +2688,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"description\": \"Alice Extension Number\",\n  \"type\": \"regexp\",\n  \"regexp\": \"^1001$\",\n  \"matchList\": {{bossAssistantWatchListId}}\n}"
 						},
-						"url": "{{api_url}}/match_list_patterns",
-						"description": ""
+						"url": "{{api_url}}/match_list_patterns"
 					},
 					"response": []
 				},
@@ -2799,8 +2730,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"name\": \"frank\",\n  \"directMediaMethod\": \"invite\",\n  \"password\": \"fr4Nkp4SSw0rd+\",\n  \"company\": {{companyId}},\n  \"terminalModel\": 5\n}"
 						},
-						"url": "{{api_url}}/terminals",
-						"description": ""
+						"url": "{{api_url}}/terminals"
 					},
 					"response": []
 				},
@@ -2842,8 +2772,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"name\": \"Frank\",\n  \"lastname\": \"Frankson\",\n  \"email\": \"frank@bbs.ivozprovider.local\",\n  \"pass\": \"fr4nkp4ssw0rd\",\n  \"isBoss\": true,\n  \"company\": {{companyId}},\n  \"bossAssistant\": {{daveUserId}},\n  \"bossAssistantWhiteList\": {{bossAssistantWatchListId}},\n  \"transformationRuleSet\": {{transformationUSA999}},\n  \"terminal\": {{frankTerminalId}},\n  \"timezone\": 1\n}"
 						},
-						"url": "{{api_url}}/users",
-						"description": ""
+						"url": "{{api_url}}/users"
 					},
 					"response": []
 				},
@@ -2885,8 +2814,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"number\": \"1006\",\n  \"routeType\": \"user\",\n  \"company\": {{companyId}},\n  \"user\": {{frankUserId}}\n}"
 						},
-						"url": "{{api_url}}/extensions",
-						"description": ""
+						"url": "{{api_url}}/extensions"
 					},
 					"response": []
 				},
@@ -2928,8 +2856,7 @@
 							"mode": "raw",
 							"raw": "\n{\n  \"ddi\": \"999661006\",\n  \"routeType\": \"user\",\n  \"company\": {{companyId}},\n  \"brand\": {{brandId}},\n  \"user\": {{frankUserId}},\n  \"peeringContract\": {{peeringContractId}},\n  \"country\": 70\n}"
 						},
-						"url": "{{api_url}}/ddis",
-						"description": ""
+						"url": "{{api_url}}/ddis"
 					},
 					"response": []
 				},
@@ -2979,8 +2906,7 @@
 							"mode": "raw",
 							"raw": "{{companyData}}"
 						},
-						"url": "{{api_url}}/companies/{{companyId}}",
-						"description": ""
+						"url": "{{api_url}}/companies/{{companyId}}"
 					},
 					"response": []
 				},
@@ -3023,8 +2949,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"name\": \"friend\",\n  \"description\": \"BBS - Friend\",\n  \"transport\": \"udp\",\n  \"password\": \"fr13ndp4SSW0rd+\",\n  \"priority\": 1,\n  \"directConnectivity\": \"no\",\n  \"company\": {{companyId}}\n}"
 						},
-						"url": "{{api_url}}/friends",
-						"description": ""
+						"url": "{{api_url}}/friends"
 					},
 					"response": []
 				},
@@ -3067,8 +2992,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"name\": \"2XXX Extensions\",\n  \"regExp\": \"^2[0-9]{3}$\",\n  \"friend\": {{friendId}}\n}"
 						},
-						"url": "{{api_url}}/friends_patterns",
-						"description": ""
+						"url": "{{api_url}}/friends_patterns"
 					},
 					"response": []
 				},
@@ -3110,8 +3034,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"number\": \"2001\",\n  \"routeType\": \"friend\",\n  \"company\": {{companyId}},\n  \"friendValue\": \"2001\"\n}"
 						},
-						"url": "{{api_url}}/extensions",
-						"description": ""
+						"url": "{{api_url}}/extensions"
 					},
 					"response": []
 				}
@@ -3119,7 +3042,6 @@
 		},
 		{
 			"name": "0020 - Retail Data",
-			"description": "",
 			"item": [
 				{
 					"name": "Create BBS Retail Client",
@@ -3157,10 +3079,51 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"type\": \"retail\",\n  \"name\": \"BBS - Retail for Black Box SIP tests\",\n  \"nif\": \"09876543210ART\",\n  \"externalMaxCalls\": 2,\n  \"postalAddress\": \"Retail address\",\n  \"postalCode\": \"48902\",\n  \"town\": \"Retail town\",\n  \"province\": \"Retail province\",\n  \"countryName\": \"Retail country\",\n  \"defaultTimezone\": 1,\n  \"transformationRuleSet\": 70,\n  \"brand\": {{brandId}}\n}"
+							"raw": "{\n  \"type\": \"retail\",\n  \"name\": \"BBS - Retail for Black Box SIP tests\",\n  \"nif\": \"09876543210ART\",\n  \"externalMaxCalls\": 2,\n  \"postalAddress\": \"Retail address\",\n  \"postalCode\": \"48902\",\n  \"town\": \"Retail town\",\n  \"province\": \"Retail province\",\n  \"countryName\": \"Retail country\",\n  \"defaultTimezone\": 1,\n  \"ipfilter\": false,\n  \"transformationRuleSet\": 70,\n  \"brand\": {{brandId}}\n}"
 						},
-						"url": "{{api_url}}/companies",
-						"description": ""
+						"url": "{{api_url}}/companies"
+					},
+					"response": []
+				},
+				{
+					"name": "Add  Retail Rating Profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9d423fc8-954b-4358-be3d-a78ca5ddba30",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"activationTime\": \"2018-01-01 00:00:00.000\",\n  \"company\": {{retailId}},\n  \"ratingPlan\": {{ratingPlanId}}\n}"
+						},
+						"url": "{{api_url}}/tp_rating_profiles"
 					},
 					"response": []
 				},
@@ -3200,8 +3163,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"type\": \"vpbx\",\n  \"name\": \"BBS - Company for Black Box SIP tests\",\n  \"domainUsers\": \"bbs.ivozprovider.local\",\n  \"nif\": \"09876543210ART\",\n  \"externalMaxCalls\": 2,\n  \"postalAddress\": \"Company address\",\n  \"postalCode\": \"48902\",\n  \"town\": \"Company town\",\n  \"province\": \"Company province\",\n  \"countryName\": \"Company country\",\n  \"defaultTimezone\": 1,\n  \"brand\": {{brandId}}\n}"
 						},
-						"url": "{{api_url}}/companies/{{retailId}}",
-						"description": ""
+						"url": "{{api_url}}/companies/{{retailId}}"
 					},
 					"response": []
 				},
@@ -3242,8 +3204,7 @@
 							"mode": "raw",
 							"raw": "\n{\n  \"company\": {{retailId}},\n  \"feature\": 2\n}"
 						},
-						"url": "{{api_url}}/features_rel_companies",
-						"description": ""
+						"url": "{{api_url}}/features_rel_companies"
 					},
 					"response": []
 				},
@@ -3284,8 +3245,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"company\": {{retailId}},\n  \"feature\": 3\n}"
 						},
-						"url": "{{api_url}}/features_rel_companies",
-						"description": ""
+						"url": "{{api_url}}/features_rel_companies"
 					},
 					"response": []
 				},
@@ -3326,8 +3286,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"company\": {{retailId}},\n  \"feature\": 8\n}"
 						},
-						"url": "{{api_url}}/features_rel_companies",
-						"description": ""
+						"url": "{{api_url}}/features_rel_companies"
 					},
 					"response": []
 				},
@@ -3370,8 +3329,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"name\": \"20000\",\n  \"transport\": \"udp\",\n  \"password\": \"r3t41Lp4sSW0rd+\",\n  \"directConnectivity\": \"no\",\n  \"brand\": {{brandId}},\n  \"company\": {{retailId}}\n}"
 						},
-						"url": "{{api_url}}/retail_accounts",
-						"description": ""
+						"url": "{{api_url}}/retail_accounts"
 					},
 					"response": []
 				},
@@ -3413,8 +3371,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"ddi\": \"999920000\",\n  \"routeType\": \"retailAccount\",\n  \"company\": {{retailId}},\n  \"brand\": {{brandId}},\n  \"retailAccount\": {{retailAccountId}},\n  \"peeringContract\": {{peeringContractId}},\n  \"country\": 235\n}"
 						},
-						"url": "{{api_url}}/ddis",
-						"description": ""
+						"url": "{{api_url}}/ddis"
 					},
 					"response": []
 				},
@@ -3464,8 +3421,7 @@
 							"mode": "raw",
 							"raw": "{{retailData}}"
 						},
-						"url": "{{api_url}}/companies/{{retailId}}",
-						"description": ""
+						"url": "{{api_url}}/companies/{{retailId}}"
 					},
 					"response": []
 				}
@@ -3473,7 +3429,6 @@
 		},
 		{
 			"name": "2000 - IVR",
-			"description": "",
 			"item": [
 				{
 					"name": "Create IVR Generic",
@@ -3558,8 +3513,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"number\": \"600\",\n  \"routeType\": \"ivr\",\n  \"company\": {{companyId}},\n  \"ivr\": {{ivrCommonId}}\n}"
 						},
-						"url": "{{api_url}}/extensions",
-						"description": ""
+						"url": "{{api_url}}/extensions"
 					},
 					"response": []
 				},
@@ -3645,8 +3599,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"number\": \"601\",\n  \"routeType\": \"ivr\",\n  \"company\": {{companyId}},\n  \"ivr\": {{ivrCustomId}}\n}"
 						},
-						"url": "{{api_url}}/extensions",
-						"description": ""
+						"url": "{{api_url}}/extensions"
 					},
 					"response": []
 				},
@@ -3687,8 +3640,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"entry\": \"1\",\n  \"routeType\": \"extension\",\n  \"ivr\": {{ivrCustomId}},\n  \"extension\": {{aliceExtensionId}}\n}"
 						},
-						"url": "{{api_url}}/ivr_entries",
-						"description": ""
+						"url": "{{api_url}}/ivr_entries"
 					},
 					"response": []
 				},
@@ -3728,8 +3680,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"entry\": \"5\",\n  \"routeType\": \"extension\",\n  \"ivr\": {{ivrCustomId}},\n  \"extension\": {{eveExtensionId}}\n}"
 						},
-						"url": "{{api_url}}/ivr_entries",
-						"description": ""
+						"url": "{{api_url}}/ivr_entries"
 					},
 					"response": []
 				}
@@ -3737,7 +3688,6 @@
 		},
 		{
 			"name": "2200 - Pickup",
-			"description": "",
 			"item": [
 				{
 					"name": "Create Pickup Group",
@@ -3912,7 +3862,6 @@
 		},
 		{
 			"name": "2300 - Conference",
-			"description": "",
 			"item": [
 				{
 					"name": "Create Conference Room",
@@ -3995,8 +3944,7 @@
 							"mode": "raw",
 							"raw": "\n{\n  \"number\": \"500\",\n  \"routeType\": \"conferenceRoom\",\n  \"company\": {{companyId}},\n  \"conferenceRoom\": {{conferenceRoomId}}\n}"
 						},
-						"url": "{{api_url}}/extensions",
-						"description": ""
+						"url": "{{api_url}}/extensions"
 					},
 					"response": []
 				}
@@ -4004,7 +3952,6 @@
 		},
 		{
 			"name": "2400 - HuntGroup",
-			"description": "",
 			"item": [
 				{
 					"name": "Create HungGroup RingAll",
@@ -4086,8 +4033,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"number\": \"700\",\n  \"routeType\": \"huntGroup\",\n  \"company\": {{companyId}},\n  \"huntGroup\": {{huntGroupRingAllId}}\n}"
 						},
-						"url": "{{api_url}}/extensions",
-						"description": ""
+						"url": "{{api_url}}/extensions"
 					},
 					"response": []
 				},
@@ -4128,8 +4074,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"huntGroup\": {{huntGroupRingAllId}},\n  \"user\": {{bobUserId}}\n}"
 						},
-						"url": "{{api_url}}/hunt_groups_rel_users",
-						"description": ""
+						"url": "{{api_url}}/hunt_groups_rel_users"
 					},
 					"response": []
 				},
@@ -4170,8 +4115,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"huntGroup\": {{huntGroupRingAllId}},\n  \"user\": {{charlieUserId}}\n}"
 						},
-						"url": "{{api_url}}/hunt_groups_rel_users",
-						"description": ""
+						"url": "{{api_url}}/hunt_groups_rel_users"
 					},
 					"response": []
 				},
@@ -4212,8 +4156,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"huntGroup\": {{huntGroupRingAllId}},\n  \"user\": {{daveUserId}}\n}"
 						},
-						"url": "{{api_url}}/hunt_groups_rel_users",
-						"description": ""
+						"url": "{{api_url}}/hunt_groups_rel_users"
 					},
 					"response": []
 				},
@@ -4297,8 +4240,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"number\": \"701\",\n  \"routeType\": \"huntGroup\",\n  \"company\": {{companyId}},\n  \"huntGroup\": {{huntGroupRRId}}\n}"
 						},
-						"url": "{{api_url}}/extensions",
-						"description": ""
+						"url": "{{api_url}}/extensions"
 					},
 					"response": []
 				},
@@ -4339,8 +4281,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"timeoutTime\": 3,\n  \"priority\": 1,\n  \"huntGroup\": {{huntGroupRRId}},\n  \"user\": {{bobUserId}}\n}"
 						},
-						"url": "{{api_url}}/hunt_groups_rel_users",
-						"description": ""
+						"url": "{{api_url}}/hunt_groups_rel_users"
 					},
 					"response": []
 				},
@@ -4381,8 +4322,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"timeoutTime\": 3,\n  \"priority\": 2,\n  \"huntGroup\": {{huntGroupRRId}},\n  \"user\": {{charlieUserId}}\n}"
 						},
-						"url": "{{api_url}}/hunt_groups_rel_users",
-						"description": ""
+						"url": "{{api_url}}/hunt_groups_rel_users"
 					},
 					"response": []
 				},
@@ -4423,8 +4363,7 @@
 							"mode": "raw",
 							"raw": "{\n  \"timeoutTime\": 3,\n  \"priority\": 3,\n  \"huntGroup\": {{huntGroupRRId}},\n  \"user\": {{daveUserId}}\n}"
 						},
-						"url": "{{api_url}}/hunt_groups_rel_users",
-						"description": ""
+						"url": "{{api_url}}/hunt_groups_rel_users"
 					},
 					"response": []
 				}
@@ -4432,7 +4371,6 @@
 		},
 		{
 			"name": "3000 - Call Forward Settings",
-			"description": "",
 			"item": [
 				{
 					"name": "Call Forward Eve Busy",
