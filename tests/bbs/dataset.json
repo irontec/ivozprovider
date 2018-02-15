@@ -104,7 +104,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"ZZZ - Test Brand for BBS\",\n  \"domainUsers\": \"retail-bss.ivozprovider.local\",\n  \"language\": 2,\n  \"defaultTimezone\": 145,\n  \"invoice\": {\n    \"nif\": \"string\",\n    \"postalAddress\": \"string\",\n    \"postalCode\": \"string\",\n    \"town\": \"string\",\n    \"province\": \"string\",\n    \"country\": \"string\",\n    \"registryData\": \"string\"\n  }\n}"
+							"raw": "{\n  \"name\": \"ZZZ - Test Brand for BBS\",\n  \"domainUsers\": \"retail-bss.ivozprovider.local\",\n  \"language\": 2,\n  \"defaultTimezone\": 145,\n  \"transformationRuleSet\": 70,\n  \"invoice\": {\n    \"nif\": \"string\",\n    \"postalAddress\": \"string\",\n    \"postalCode\": \"string\",\n    \"town\": \"string\",\n    \"province\": \"string\",\n    \"country\": \"string\",\n    \"registryData\": \"string\"\n  }\n}"
 						},
 						"url": "{{api_url}}/brands",
 						"description": ""
@@ -636,7 +636,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"ip\": \"127.0.0.1\",\n  \"peeringContract\": {{peeringContractId}},\n  \"brand\": {{brandId}}\n}"
+							"raw": "{\n  \"sipProxy\": \"fakepeerserver.com\",\t\n  \"peeringContract\": {{peeringContractId}},\n  \"brand\": {{brandId}}\n}"
 						},
 						"url": "{{api_url}}/peer_servers",
 						"description": ""
@@ -679,7 +679,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"regExp\": \"+1\",\n  \"name\": {\n  \t\"en\": \"Spain\",  \t\n  \t\"es\": \"España\"\n  },\n  \"description\": {\n  \t\"en\": \"BBS - Spain\",  \t\n  \t\"es\": \"BBS - España\"\n  },\n  \"brand\": {{brandId}}\n}"
+							"raw": "{\n  \"regExp\": \"+34\",\n  \"name\": {\n  \t\"en\": \"Spain\",  \t\n  \t\"es\": \"España\"\n  },\n  \"description\": {\n  \t\"en\": \"BBS - Spain\",  \t\n  \t\"es\": \"BBS - España\"\n  },\n  \"brand\": {{brandId}}\n}"
 						},
 						"url": "{{api_url}}/routing_patterns",
 						"description": ""
@@ -3157,7 +3157,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"type\": \"retail\",\n  \"name\": \"BBS - Retail for Black Box SIP tests\",\n  \"nif\": \"09876543210ART\",\n  \"externalMaxCalls\": 2,\n  \"postalAddress\": \"Retail address\",\n  \"postalCode\": \"48902\",\n  \"town\": \"Retail town\",\n  \"province\": \"Retail province\",\n  \"countryName\": \"Retail country\",\n  \"defaultTimezone\": 1,\n  \"brand\": {{brandId}}\n}"
+							"raw": "{\n  \"type\": \"retail\",\n  \"name\": \"BBS - Retail for Black Box SIP tests\",\n  \"nif\": \"09876543210ART\",\n  \"externalMaxCalls\": 2,\n  \"postalAddress\": \"Retail address\",\n  \"postalCode\": \"48902\",\n  \"town\": \"Retail town\",\n  \"province\": \"Retail province\",\n  \"countryName\": \"Retail country\",\n  \"defaultTimezone\": 1,\n  \"transformationRuleSet\": 70,\n  \"brand\": {{brandId}}\n}"
 						},
 						"url": "{{api_url}}/companies",
 						"description": ""
