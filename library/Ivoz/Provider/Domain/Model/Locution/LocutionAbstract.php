@@ -190,15 +190,15 @@ abstract class LocutionAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setName($this->getName())
-            ->setStatus($this->getStatus())
-            ->setEncodedFileFileSize($this->getEncodedFile()->getFileSize())
-            ->setEncodedFileMimeType($this->getEncodedFile()->getMimeType())
-            ->setEncodedFileBaseName($this->getEncodedFile()->getBaseName())
-            ->setOriginalFileFileSize($this->getOriginalFile()->getFileSize())
-            ->setOriginalFileMimeType($this->getOriginalFile()->getMimeType())
-            ->setOriginalFileBaseName($this->getOriginalFile()->getBaseName())
-            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto($this->getCompany(), $depth));
+            ->setName(self::getName())
+            ->setStatus(self::getStatus())
+            ->setEncodedFileFileSize(self::getEncodedFile()->getFileSize())
+            ->setEncodedFileMimeType(self::getEncodedFile()->getMimeType())
+            ->setEncodedFileBaseName(self::getEncodedFile()->getBaseName())
+            ->setOriginalFileFileSize(self::getOriginalFile()->getFileSize())
+            ->setOriginalFileMimeType(self::getOriginalFile()->getMimeType())
+            ->setOriginalFileBaseName(self::getOriginalFile()->getBaseName())
+            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth));
     }
 
     /**

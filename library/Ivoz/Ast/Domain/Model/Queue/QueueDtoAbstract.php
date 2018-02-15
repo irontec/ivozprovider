@@ -382,31 +382,31 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this->queue;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setQueueId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Queue\QueueDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setQueueId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Queue\QueueDto($id)
+            : null;
 
-            return $this->setQueue($value);
+        return $this->setQueue($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getQueueId()
+    {
+        if ($dto = $this->getQueue()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getQueueId()
-        {
-            if ($dto = $this->getQueue()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 }
 
 

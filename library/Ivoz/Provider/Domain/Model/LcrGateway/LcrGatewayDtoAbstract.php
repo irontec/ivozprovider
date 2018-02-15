@@ -463,31 +463,31 @@ abstract class LcrGatewayDtoAbstract implements DataTransferObjectInterface
         return $this->peerServer;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setPeerServerId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\PeerServer\PeerServerDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setPeerServerId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\PeerServer\PeerServerDto($id)
+            : null;
 
-            return $this->setPeerServer($value);
+        return $this->setPeerServer($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getPeerServerId()
+    {
+        if ($dto = $this->getPeerServer()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getPeerServerId()
-        {
-            if ($dto = $this->getPeerServer()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 }
 
 

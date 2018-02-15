@@ -138,8 +138,8 @@ abstract class ExternalCallFilterWhiteListAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setFilter(\Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter::entityToDto($this->getFilter(), $depth))
-            ->setMatchlist(\Ivoz\Provider\Domain\Model\MatchList\MatchList::entityToDto($this->getMatchlist(), $depth));
+            ->setFilter(\Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter::entityToDto(self::getFilter(), $depth))
+            ->setMatchlist(\Ivoz\Provider\Domain\Model\MatchList\MatchList::entityToDto(self::getMatchlist(), $depth));
     }
 
     /**

@@ -211,16 +211,16 @@ abstract class TpAccountActionAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setTpid($this->getTpid())
-            ->setLoadid($this->getLoadid())
-            ->setTenant($this->getTenant())
-            ->setAccount($this->getAccount())
-            ->setActionPlanTag($this->getActionPlanTag())
-            ->setActionTriggersTag($this->getActionTriggersTag())
-            ->setAllowNegative($this->getAllowNegative())
-            ->setDisabled($this->getDisabled())
-            ->setCreatedAt($this->getCreatedAt())
-            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto($this->getCompany(), $depth));
+            ->setTpid(self::getTpid())
+            ->setLoadid(self::getLoadid())
+            ->setTenant(self::getTenant())
+            ->setAccount(self::getAccount())
+            ->setActionPlanTag(self::getActionPlanTag())
+            ->setActionTriggersTag(self::getActionTriggersTag())
+            ->setAllowNegative(self::getAllowNegative())
+            ->setDisabled(self::getDisabled())
+            ->setCreatedAt(self::getCreatedAt())
+            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth));
     }
 
     /**

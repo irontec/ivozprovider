@@ -188,13 +188,13 @@ abstract class UsersWatcherAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setPresentityUri($this->getPresentityUri())
-            ->setWatcherUsername($this->getWatcherUsername())
-            ->setWatcherDomain($this->getWatcherDomain())
-            ->setEvent($this->getEvent())
-            ->setStatus($this->getStatus())
-            ->setReason($this->getReason())
-            ->setInsertedTime($this->getInsertedTime());
+            ->setPresentityUri(self::getPresentityUri())
+            ->setWatcherUsername(self::getWatcherUsername())
+            ->setWatcherDomain(self::getWatcherDomain())
+            ->setEvent(self::getEvent())
+            ->setStatus(self::getStatus())
+            ->setReason(self::getReason())
+            ->setInsertedTime(self::getInsertedTime());
     }
 
     /**

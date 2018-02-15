@@ -138,8 +138,8 @@ abstract class CalendarAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setName($this->getName())
-            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto($this->getCompany(), $depth));
+            ->setName(self::getName())
+            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth));
     }
 
     /**

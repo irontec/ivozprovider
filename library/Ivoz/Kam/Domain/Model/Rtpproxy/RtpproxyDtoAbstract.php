@@ -247,31 +247,31 @@ abstract class RtpproxyDtoAbstract implements DataTransferObjectInterface
         return $this->mediaRelaySet;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setMediaRelaySetId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setMediaRelaySetId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetDto($id)
+            : null;
 
-            return $this->setMediaRelaySet($value);
+        return $this->setMediaRelaySet($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getMediaRelaySetId()
+    {
+        if ($dto = $this->getMediaRelaySet()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getMediaRelaySetId()
-        {
-            if ($dto = $this->getMediaRelaySet()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 }
 
 

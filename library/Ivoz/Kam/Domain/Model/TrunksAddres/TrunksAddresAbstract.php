@@ -162,11 +162,11 @@ abstract class TrunksAddresAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setGrp($this->getGrp())
-            ->setIpAddr($this->getIpAddr())
-            ->setMask($this->getMask())
-            ->setPort($this->getPort())
-            ->setTag($this->getTag());
+            ->setGrp(self::getGrp())
+            ->setIpAddr(self::getIpAddr())
+            ->setMask(self::getMask())
+            ->setPort(self::getPort())
+            ->setTag(self::getTag());
     }
 
     /**

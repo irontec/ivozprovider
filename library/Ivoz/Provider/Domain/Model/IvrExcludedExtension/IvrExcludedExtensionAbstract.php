@@ -138,8 +138,8 @@ abstract class IvrExcludedExtensionAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setIvr(\Ivoz\Provider\Domain\Model\Ivr\Ivr::entityToDto($this->getIvr(), $depth))
-            ->setExtension(\Ivoz\Provider\Domain\Model\Extension\Extension::entityToDto($this->getExtension(), $depth));
+            ->setIvr(\Ivoz\Provider\Domain\Model\Ivr\Ivr::entityToDto(self::getIvr(), $depth))
+            ->setExtension(\Ivoz\Provider\Domain\Model\Extension\Extension::entityToDto(self::getExtension(), $depth));
     }
 
     /**

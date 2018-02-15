@@ -147,31 +147,31 @@ abstract class CompanyServiceDtoAbstract implements DataTransferObjectInterface
         return $this->company;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setCompanyId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Company\CompanyDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setCompanyId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Company\CompanyDto($id)
+            : null;
 
-            return $this->setCompany($value);
+        return $this->setCompany($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getCompanyId()
+    {
+        if ($dto = $this->getCompany()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getCompanyId()
-        {
-            if ($dto = $this->getCompany()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Service\ServiceDto $service
@@ -193,31 +193,31 @@ abstract class CompanyServiceDtoAbstract implements DataTransferObjectInterface
         return $this->service;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setServiceId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Service\ServiceDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setServiceId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Service\ServiceDto($id)
+            : null;
 
-            return $this->setService($value);
+        return $this->setService($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getServiceId()
+    {
+        if ($dto = $this->getService()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getServiceId()
-        {
-            if ($dto = $this->getService()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 }
 
 

@@ -402,31 +402,31 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
         return $this->company;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setCompanyId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Company\CompanyDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setCompanyId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Company\CompanyDto($id)
+            : null;
 
-            return $this->setCompany($value);
+        return $this->setCompany($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getCompanyId()
+    {
+        if ($dto = $this->getCompany()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getCompanyId()
-        {
-            if ($dto = $this->getCompany()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Locution\LocutionDto $welcomeLocution
@@ -448,31 +448,31 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
         return $this->welcomeLocution;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setWelcomeLocutionId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Locution\LocutionDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setWelcomeLocutionId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Locution\LocutionDto($id)
+            : null;
 
-            return $this->setWelcomeLocution($value);
+        return $this->setWelcomeLocution($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getWelcomeLocutionId()
+    {
+        if ($dto = $this->getWelcomeLocution()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getWelcomeLocutionId()
-        {
-            if ($dto = $this->getWelcomeLocution()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Locution\LocutionDto $holidayLocution
@@ -494,31 +494,31 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
         return $this->holidayLocution;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setHolidayLocutionId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Locution\LocutionDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setHolidayLocutionId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Locution\LocutionDto($id)
+            : null;
 
-            return $this->setHolidayLocution($value);
+        return $this->setHolidayLocution($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getHolidayLocutionId()
+    {
+        if ($dto = $this->getHolidayLocution()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getHolidayLocutionId()
-        {
-            if ($dto = $this->getHolidayLocution()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Locution\LocutionDto $outOfScheduleLocution
@@ -540,31 +540,31 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
         return $this->outOfScheduleLocution;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setOutOfScheduleLocutionId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Locution\LocutionDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setOutOfScheduleLocutionId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Locution\LocutionDto($id)
+            : null;
 
-            return $this->setOutOfScheduleLocution($value);
+        return $this->setOutOfScheduleLocution($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getOutOfScheduleLocutionId()
+    {
+        if ($dto = $this->getOutOfScheduleLocution()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getOutOfScheduleLocutionId()
-        {
-            if ($dto = $this->getOutOfScheduleLocution()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionDto $holidayExtension
@@ -586,31 +586,31 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
         return $this->holidayExtension;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setHolidayExtensionId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Extension\ExtensionDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setHolidayExtensionId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Extension\ExtensionDto($id)
+            : null;
 
-            return $this->setHolidayExtension($value);
+        return $this->setHolidayExtension($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getHolidayExtensionId()
+    {
+        if ($dto = $this->getHolidayExtension()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getHolidayExtensionId()
-        {
-            if ($dto = $this->getHolidayExtension()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionDto $outOfScheduleExtension
@@ -632,31 +632,31 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
         return $this->outOfScheduleExtension;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setOutOfScheduleExtensionId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Extension\ExtensionDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setOutOfScheduleExtensionId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Extension\ExtensionDto($id)
+            : null;
 
-            return $this->setOutOfScheduleExtension($value);
+        return $this->setOutOfScheduleExtension($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getOutOfScheduleExtensionId()
+    {
+        if ($dto = $this->getOutOfScheduleExtension()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getOutOfScheduleExtensionId()
-        {
-            if ($dto = $this->getOutOfScheduleExtension()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\User\UserDto $holidayVoiceMailUser
@@ -678,31 +678,31 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
         return $this->holidayVoiceMailUser;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setHolidayVoiceMailUserId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\User\UserDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setHolidayVoiceMailUserId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\User\UserDto($id)
+            : null;
 
-            return $this->setHolidayVoiceMailUser($value);
+        return $this->setHolidayVoiceMailUser($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getHolidayVoiceMailUserId()
+    {
+        if ($dto = $this->getHolidayVoiceMailUser()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getHolidayVoiceMailUserId()
-        {
-            if ($dto = $this->getHolidayVoiceMailUser()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\User\UserDto $outOfScheduleVoiceMailUser
@@ -724,31 +724,31 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
         return $this->outOfScheduleVoiceMailUser;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setOutOfScheduleVoiceMailUserId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\User\UserDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setOutOfScheduleVoiceMailUserId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\User\UserDto($id)
+            : null;
 
-            return $this->setOutOfScheduleVoiceMailUser($value);
+        return $this->setOutOfScheduleVoiceMailUser($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getOutOfScheduleVoiceMailUserId()
+    {
+        if ($dto = $this->getOutOfScheduleVoiceMailUser()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getOutOfScheduleVoiceMailUserId()
-        {
-            if ($dto = $this->getOutOfScheduleVoiceMailUser()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Country\CountryDto $holidayNumberCountry
@@ -770,31 +770,31 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
         return $this->holidayNumberCountry;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setHolidayNumberCountryId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Country\CountryDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setHolidayNumberCountryId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Country\CountryDto($id)
+            : null;
 
-            return $this->setHolidayNumberCountry($value);
+        return $this->setHolidayNumberCountry($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getHolidayNumberCountryId()
+    {
+        if ($dto = $this->getHolidayNumberCountry()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getHolidayNumberCountryId()
-        {
-            if ($dto = $this->getHolidayNumberCountry()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Country\CountryDto $outOfScheduleNumberCountry
@@ -816,31 +816,31 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
         return $this->outOfScheduleNumberCountry;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setOutOfScheduleNumberCountryId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Country\CountryDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setOutOfScheduleNumberCountryId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Country\CountryDto($id)
+            : null;
 
-            return $this->setOutOfScheduleNumberCountry($value);
+        return $this->setOutOfScheduleNumberCountry($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getOutOfScheduleNumberCountryId()
+    {
+        if ($dto = $this->getOutOfScheduleNumberCountry()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getOutOfScheduleNumberCountryId()
-        {
-            if ($dto = $this->getOutOfScheduleNumberCountry()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param array $calendars

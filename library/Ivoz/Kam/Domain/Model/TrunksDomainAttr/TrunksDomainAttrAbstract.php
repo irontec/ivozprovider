@@ -168,11 +168,11 @@ abstract class TrunksDomainAttrAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setDid($this->getDid())
-            ->setName($this->getName())
-            ->setType($this->getType())
-            ->setValue($this->getValue())
-            ->setLastModified($this->getLastModified());
+            ->setDid(self::getDid())
+            ->setName(self::getName())
+            ->setType(self::getType())
+            ->setValue(self::getValue())
+            ->setLastModified(self::getLastModified());
     }
 
     /**

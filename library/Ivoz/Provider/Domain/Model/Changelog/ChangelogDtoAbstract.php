@@ -247,31 +247,31 @@ abstract class ChangelogDtoAbstract implements DataTransferObjectInterface
         return $this->command;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setCommandId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Commandlog\CommandlogDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setCommandId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Commandlog\CommandlogDto($id)
+            : null;
 
-            return $this->setCommand($value);
+        return $this->setCommand($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getCommandId()
+    {
+        if ($dto = $this->getCommand()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getCommandId()
-        {
-            if ($dto = $this->getCommand()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 }
 
 

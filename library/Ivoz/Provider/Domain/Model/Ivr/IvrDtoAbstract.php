@@ -449,31 +449,31 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return $this->company;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setCompanyId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Company\CompanyDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setCompanyId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Company\CompanyDto($id)
+            : null;
 
-            return $this->setCompany($value);
+        return $this->setCompany($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getCompanyId()
+    {
+        if ($dto = $this->getCompany()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getCompanyId()
-        {
-            if ($dto = $this->getCompany()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Locution\LocutionDto $welcomeLocution
@@ -495,31 +495,31 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return $this->welcomeLocution;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setWelcomeLocutionId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Locution\LocutionDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setWelcomeLocutionId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Locution\LocutionDto($id)
+            : null;
 
-            return $this->setWelcomeLocution($value);
+        return $this->setWelcomeLocution($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getWelcomeLocutionId()
+    {
+        if ($dto = $this->getWelcomeLocution()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getWelcomeLocutionId()
-        {
-            if ($dto = $this->getWelcomeLocution()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Locution\LocutionDto $noInputLocution
@@ -541,31 +541,31 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return $this->noInputLocution;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setNoInputLocutionId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Locution\LocutionDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setNoInputLocutionId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Locution\LocutionDto($id)
+            : null;
 
-            return $this->setNoInputLocution($value);
+        return $this->setNoInputLocution($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getNoInputLocutionId()
+    {
+        if ($dto = $this->getNoInputLocution()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getNoInputLocutionId()
-        {
-            if ($dto = $this->getNoInputLocution()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Locution\LocutionDto $errorLocution
@@ -587,31 +587,31 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return $this->errorLocution;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setErrorLocutionId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Locution\LocutionDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setErrorLocutionId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Locution\LocutionDto($id)
+            : null;
 
-            return $this->setErrorLocution($value);
+        return $this->setErrorLocution($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getErrorLocutionId()
+    {
+        if ($dto = $this->getErrorLocution()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getErrorLocutionId()
-        {
-            if ($dto = $this->getErrorLocution()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Locution\LocutionDto $successLocution
@@ -633,31 +633,31 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return $this->successLocution;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setSuccessLocutionId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Locution\LocutionDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setSuccessLocutionId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Locution\LocutionDto($id)
+            : null;
 
-            return $this->setSuccessLocution($value);
+        return $this->setSuccessLocution($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getSuccessLocutionId()
+    {
+        if ($dto = $this->getSuccessLocution()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getSuccessLocutionId()
-        {
-            if ($dto = $this->getSuccessLocution()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionDto $noInputExtension
@@ -679,31 +679,31 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return $this->noInputExtension;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setNoInputExtensionId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Extension\ExtensionDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setNoInputExtensionId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Extension\ExtensionDto($id)
+            : null;
 
-            return $this->setNoInputExtension($value);
+        return $this->setNoInputExtension($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getNoInputExtensionId()
+    {
+        if ($dto = $this->getNoInputExtension()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getNoInputExtensionId()
-        {
-            if ($dto = $this->getNoInputExtension()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionDto $errorExtension
@@ -725,31 +725,31 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return $this->errorExtension;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setErrorExtensionId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Extension\ExtensionDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setErrorExtensionId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Extension\ExtensionDto($id)
+            : null;
 
-            return $this->setErrorExtension($value);
+        return $this->setErrorExtension($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getErrorExtensionId()
+    {
+        if ($dto = $this->getErrorExtension()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getErrorExtensionId()
-        {
-            if ($dto = $this->getErrorExtension()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\User\UserDto $noInputVoiceMailUser
@@ -771,31 +771,31 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return $this->noInputVoiceMailUser;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setNoInputVoiceMailUserId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\User\UserDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setNoInputVoiceMailUserId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\User\UserDto($id)
+            : null;
 
-            return $this->setNoInputVoiceMailUser($value);
+        return $this->setNoInputVoiceMailUser($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getNoInputVoiceMailUserId()
+    {
+        if ($dto = $this->getNoInputVoiceMailUser()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getNoInputVoiceMailUserId()
-        {
-            if ($dto = $this->getNoInputVoiceMailUser()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\User\UserDto $errorVoiceMailUser
@@ -817,31 +817,31 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return $this->errorVoiceMailUser;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setErrorVoiceMailUserId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\User\UserDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setErrorVoiceMailUserId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\User\UserDto($id)
+            : null;
 
-            return $this->setErrorVoiceMailUser($value);
+        return $this->setErrorVoiceMailUser($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getErrorVoiceMailUserId()
+    {
+        if ($dto = $this->getErrorVoiceMailUser()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getErrorVoiceMailUserId()
-        {
-            if ($dto = $this->getErrorVoiceMailUser()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Country\CountryDto $noInputNumberCountry
@@ -863,31 +863,31 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return $this->noInputNumberCountry;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setNoInputNumberCountryId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Country\CountryDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setNoInputNumberCountryId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Country\CountryDto($id)
+            : null;
 
-            return $this->setNoInputNumberCountry($value);
+        return $this->setNoInputNumberCountry($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getNoInputNumberCountryId()
+    {
+        if ($dto = $this->getNoInputNumberCountry()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getNoInputNumberCountryId()
-        {
-            if ($dto = $this->getNoInputNumberCountry()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Country\CountryDto $errorNumberCountry
@@ -909,31 +909,31 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return $this->errorNumberCountry;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setErrorNumberCountryId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Country\CountryDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setErrorNumberCountryId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Country\CountryDto($id)
+            : null;
 
-            return $this->setErrorNumberCountry($value);
+        return $this->setErrorNumberCountry($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getErrorNumberCountryId()
+    {
+        if ($dto = $this->getErrorNumberCountry()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getErrorNumberCountryId()
-        {
-            if ($dto = $this->getErrorNumberCountry()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param array $entries

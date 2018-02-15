@@ -508,31 +508,31 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this->company;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setCompanyId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Company\CompanyDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setCompanyId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Company\CompanyDto($id)
+            : null;
 
-            return $this->setCompany($value);
+        return $this->setCompany($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getCompanyId()
+    {
+        if ($dto = $this->getCompany()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getCompanyId()
-        {
-            if ($dto = $this->getCompany()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Locution\LocutionDto $periodicAnnounceLocution
@@ -554,31 +554,31 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this->periodicAnnounceLocution;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setPeriodicAnnounceLocutionId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Locution\LocutionDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setPeriodicAnnounceLocutionId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Locution\LocutionDto($id)
+            : null;
 
-            return $this->setPeriodicAnnounceLocution($value);
+        return $this->setPeriodicAnnounceLocution($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getPeriodicAnnounceLocutionId()
+    {
+        if ($dto = $this->getPeriodicAnnounceLocution()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getPeriodicAnnounceLocutionId()
-        {
-            if ($dto = $this->getPeriodicAnnounceLocution()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Locution\LocutionDto $timeoutLocution
@@ -600,31 +600,31 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this->timeoutLocution;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setTimeoutLocutionId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Locution\LocutionDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setTimeoutLocutionId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Locution\LocutionDto($id)
+            : null;
 
-            return $this->setTimeoutLocution($value);
+        return $this->setTimeoutLocution($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getTimeoutLocutionId()
+    {
+        if ($dto = $this->getTimeoutLocution()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getTimeoutLocutionId()
-        {
-            if ($dto = $this->getTimeoutLocution()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionDto $timeoutExtension
@@ -646,31 +646,31 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this->timeoutExtension;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setTimeoutExtensionId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Extension\ExtensionDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setTimeoutExtensionId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Extension\ExtensionDto($id)
+            : null;
 
-            return $this->setTimeoutExtension($value);
+        return $this->setTimeoutExtension($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getTimeoutExtensionId()
+    {
+        if ($dto = $this->getTimeoutExtension()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getTimeoutExtensionId()
-        {
-            if ($dto = $this->getTimeoutExtension()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\User\UserDto $timeoutVoiceMailUser
@@ -692,31 +692,31 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this->timeoutVoiceMailUser;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setTimeoutVoiceMailUserId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\User\UserDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setTimeoutVoiceMailUserId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\User\UserDto($id)
+            : null;
 
-            return $this->setTimeoutVoiceMailUser($value);
+        return $this->setTimeoutVoiceMailUser($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getTimeoutVoiceMailUserId()
+    {
+        if ($dto = $this->getTimeoutVoiceMailUser()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getTimeoutVoiceMailUserId()
-        {
-            if ($dto = $this->getTimeoutVoiceMailUser()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Locution\LocutionDto $fullLocution
@@ -738,31 +738,31 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this->fullLocution;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setFullLocutionId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Locution\LocutionDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setFullLocutionId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Locution\LocutionDto($id)
+            : null;
 
-            return $this->setFullLocution($value);
+        return $this->setFullLocution($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getFullLocutionId()
+    {
+        if ($dto = $this->getFullLocution()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getFullLocutionId()
-        {
-            if ($dto = $this->getFullLocution()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionDto $fullExtension
@@ -784,31 +784,31 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this->fullExtension;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setFullExtensionId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Extension\ExtensionDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setFullExtensionId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Extension\ExtensionDto($id)
+            : null;
 
-            return $this->setFullExtension($value);
+        return $this->setFullExtension($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getFullExtensionId()
+    {
+        if ($dto = $this->getFullExtension()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getFullExtensionId()
-        {
-            if ($dto = $this->getFullExtension()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\User\UserDto $fullVoiceMailUser
@@ -830,31 +830,31 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this->fullVoiceMailUser;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setFullVoiceMailUserId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\User\UserDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setFullVoiceMailUserId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\User\UserDto($id)
+            : null;
 
-            return $this->setFullVoiceMailUser($value);
+        return $this->setFullVoiceMailUser($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getFullVoiceMailUserId()
+    {
+        if ($dto = $this->getFullVoiceMailUser()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getFullVoiceMailUserId()
-        {
-            if ($dto = $this->getFullVoiceMailUser()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Country\CountryDto $timeoutNumberCountry
@@ -876,31 +876,31 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this->timeoutNumberCountry;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setTimeoutNumberCountryId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Country\CountryDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setTimeoutNumberCountryId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Country\CountryDto($id)
+            : null;
 
-            return $this->setTimeoutNumberCountry($value);
+        return $this->setTimeoutNumberCountry($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getTimeoutNumberCountryId()
+    {
+        if ($dto = $this->getTimeoutNumberCountry()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getTimeoutNumberCountryId()
-        {
-            if ($dto = $this->getTimeoutNumberCountry()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Country\CountryDto $fullNumberCountry
@@ -922,31 +922,31 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return $this->fullNumberCountry;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setFullNumberCountryId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Country\CountryDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setFullNumberCountryId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Country\CountryDto($id)
+            : null;
 
-            return $this->setFullNumberCountry($value);
+        return $this->setFullNumberCountry($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getFullNumberCountryId()
+    {
+        if ($dto = $this->getFullNumberCountry()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getFullNumberCountryId()
-        {
-            if ($dto = $this->getFullNumberCountry()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 }
 
 

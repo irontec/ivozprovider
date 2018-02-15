@@ -120,31 +120,31 @@ abstract class PickUpRelUserDtoAbstract implements DataTransferObjectInterface
         return $this->pickUpGroup;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setPickUpGroupId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setPickUpGroupId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupDto($id)
+            : null;
 
-            return $this->setPickUpGroup($value);
+        return $this->setPickUpGroup($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getPickUpGroupId()
+    {
+        if ($dto = $this->getPickUpGroup()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getPickUpGroupId()
-        {
-            if ($dto = $this->getPickUpGroup()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\User\UserDto $user
@@ -166,31 +166,31 @@ abstract class PickUpRelUserDtoAbstract implements DataTransferObjectInterface
         return $this->user;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setUserId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\User\UserDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setUserId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\User\UserDto($id)
+            : null;
 
-            return $this->setUser($value);
+        return $this->setUser($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getUserId()
+    {
+        if ($dto = $this->getUser()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getUserId()
-        {
-            if ($dto = $this->getUser()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 }
 
 

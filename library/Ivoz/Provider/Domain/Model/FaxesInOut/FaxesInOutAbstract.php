@@ -202,17 +202,17 @@ abstract class FaxesInOutAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setCalldate($this->getCalldate())
-            ->setSrc($this->getSrc())
-            ->setDst($this->getDst())
-            ->setType($this->getType())
-            ->setPages($this->getPages())
-            ->setStatus($this->getStatus())
-            ->setFileFileSize($this->getFile()->getFileSize())
-            ->setFileMimeType($this->getFile()->getMimeType())
-            ->setFileBaseName($this->getFile()->getBaseName())
-            ->setFax(\Ivoz\Provider\Domain\Model\Fax\Fax::entityToDto($this->getFax(), $depth))
-            ->setDstCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto($this->getDstCountry(), $depth));
+            ->setCalldate(self::getCalldate())
+            ->setSrc(self::getSrc())
+            ->setDst(self::getDst())
+            ->setType(self::getType())
+            ->setPages(self::getPages())
+            ->setStatus(self::getStatus())
+            ->setFileFileSize(self::getFile()->getFileSize())
+            ->setFileMimeType(self::getFile()->getMimeType())
+            ->setFileBaseName(self::getFile()->getBaseName())
+            ->setFax(\Ivoz\Provider\Domain\Model\Fax\Fax::entityToDto(self::getFax(), $depth))
+            ->setDstCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto(self::getDstCountry(), $depth));
     }
 
     /**

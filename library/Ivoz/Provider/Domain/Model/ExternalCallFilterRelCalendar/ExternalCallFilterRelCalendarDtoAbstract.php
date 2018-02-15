@@ -120,31 +120,31 @@ abstract class ExternalCallFilterRelCalendarDtoAbstract implements DataTransferO
         return $this->filter;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setFilterId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setFilterId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterDto($id)
+            : null;
 
-            return $this->setFilter($value);
+        return $this->setFilter($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getFilterId()
+    {
+        if ($dto = $this->getFilter()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getFilterId()
-        {
-            if ($dto = $this->getFilter()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Calendar\CalendarDto $calendar
@@ -166,31 +166,31 @@ abstract class ExternalCallFilterRelCalendarDtoAbstract implements DataTransferO
         return $this->calendar;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setCalendarId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Calendar\CalendarDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setCalendarId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Calendar\CalendarDto($id)
+            : null;
 
-            return $this->setCalendar($value);
+        return $this->setCalendar($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getCalendarId()
+    {
+        if ($dto = $this->getCalendar()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getCalendarId()
-        {
-            if ($dto = $this->getCalendar()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 }
 
 

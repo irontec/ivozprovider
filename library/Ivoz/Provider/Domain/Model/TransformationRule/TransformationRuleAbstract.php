@@ -168,12 +168,12 @@ abstract class TransformationRuleAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setType($this->getType())
-            ->setDescription($this->getDescription())
-            ->setPriority($this->getPriority())
-            ->setMatchExpr($this->getMatchExpr())
-            ->setReplaceExpr($this->getReplaceExpr())
-            ->setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet::entityToDto($this->getTransformationRuleSet(), $depth));
+            ->setType(self::getType())
+            ->setDescription(self::getDescription())
+            ->setPriority(self::getPriority())
+            ->setMatchExpr(self::getMatchExpr())
+            ->setReplaceExpr(self::getReplaceExpr())
+            ->setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet::entityToDto(self::getTransformationRuleSet(), $depth));
     }
 
     /**

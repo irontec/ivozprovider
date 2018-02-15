@@ -146,9 +146,9 @@ abstract class DomainAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setDomain($this->getDomain())
-            ->setPointsTo($this->getPointsTo())
-            ->setDescription($this->getDescription());
+            ->setDomain(self::getDomain())
+            ->setPointsTo(self::getPointsTo())
+            ->setDescription(self::getDescription());
     }
 
     /**

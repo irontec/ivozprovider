@@ -138,8 +138,8 @@ abstract class PickUpRelUserAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setPickUpGroup(\Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroup::entityToDto($this->getPickUpGroup(), $depth))
-            ->setUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto($this->getUser(), $depth));
+            ->setPickUpGroup(\Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroup::entityToDto(self::getPickUpGroup(), $depth))
+            ->setUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto(self::getUser(), $depth));
     }
 
     /**

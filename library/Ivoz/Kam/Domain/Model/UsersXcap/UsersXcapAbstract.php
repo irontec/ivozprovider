@@ -196,14 +196,14 @@ abstract class UsersXcapAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setUsername($this->getUsername())
-            ->setDomain($this->getDomain())
-            ->setDoc($this->getDoc())
-            ->setDocType($this->getDocType())
-            ->setEtag($this->getEtag())
-            ->setSource($this->getSource())
-            ->setDocUri($this->getDocUri())
-            ->setPort($this->getPort());
+            ->setUsername(self::getUsername())
+            ->setDomain(self::getDomain())
+            ->setDoc(self::getDoc())
+            ->setDocType(self::getDocType())
+            ->setEtag(self::getEtag())
+            ->setSource(self::getSource())
+            ->setDocUri(self::getDocUri())
+            ->setPort(self::getPort());
     }
 
     /**

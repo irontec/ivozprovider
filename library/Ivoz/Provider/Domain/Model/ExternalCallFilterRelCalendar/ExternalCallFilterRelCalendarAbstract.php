@@ -138,8 +138,8 @@ abstract class ExternalCallFilterRelCalendarAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setFilter(\Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter::entityToDto($this->getFilter(), $depth))
-            ->setCalendar(\Ivoz\Provider\Domain\Model\Calendar\Calendar::entityToDto($this->getCalendar(), $depth));
+            ->setFilter(\Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter::entityToDto(self::getFilter(), $depth))
+            ->setCalendar(\Ivoz\Provider\Domain\Model\Calendar\Calendar::entityToDto(self::getCalendar(), $depth));
     }
 
     /**

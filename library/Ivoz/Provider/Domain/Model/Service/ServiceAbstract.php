@@ -188,13 +188,13 @@ abstract class ServiceAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setIden($this->getIden())
-            ->setDefaultCode($this->getDefaultCode())
-            ->setExtraArgs($this->getExtraArgs())
-            ->setNameEn($this->getName()->getEn())
-            ->setNameEs($this->getName()->getEs())
-            ->setDescriptionEn($this->getDescription()->getEn())
-            ->setDescriptionEs($this->getDescription()->getEs());
+            ->setIden(self::getIden())
+            ->setDefaultCode(self::getDefaultCode())
+            ->setExtraArgs(self::getExtraArgs())
+            ->setNameEn(self::getName()->getEn())
+            ->setNameEs(self::getName()->getEs())
+            ->setDescriptionEn(self::getDescription()->getEn())
+            ->setDescriptionEs(self::getDescription()->getEs());
     }
 
     /**

@@ -227,20 +227,20 @@ abstract class LcrGatewayAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setLcrId($this->getLcrId())
-            ->setGwName($this->getGwName())
-            ->setIp($this->getIp())
-            ->setHostname($this->getHostname())
-            ->setPort($this->getPort())
-            ->setParams($this->getParams())
-            ->setUriScheme($this->getUriScheme())
-            ->setTransport($this->getTransport())
-            ->setStrip($this->getStrip())
-            ->setPrefix($this->getPrefix())
-            ->setTag($this->getTag())
-            ->setFlags($this->getFlags())
-            ->setDefunct($this->getDefunct())
-            ->setPeerServer(\Ivoz\Provider\Domain\Model\PeerServer\PeerServer::entityToDto($this->getPeerServer(), $depth));
+            ->setLcrId(self::getLcrId())
+            ->setGwName(self::getGwName())
+            ->setIp(self::getIp())
+            ->setHostname(self::getHostname())
+            ->setPort(self::getPort())
+            ->setParams(self::getParams())
+            ->setUriScheme(self::getUriScheme())
+            ->setTransport(self::getTransport())
+            ->setStrip(self::getStrip())
+            ->setPrefix(self::getPrefix())
+            ->setTag(self::getTag())
+            ->setFlags(self::getFlags())
+            ->setDefunct(self::getDefunct())
+            ->setPeerServer(\Ivoz\Provider\Domain\Model\PeerServer\PeerServer::entityToDto(self::getPeerServer(), $depth));
     }
 
     /**

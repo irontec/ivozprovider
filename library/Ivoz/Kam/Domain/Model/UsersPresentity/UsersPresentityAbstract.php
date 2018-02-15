@@ -204,15 +204,15 @@ abstract class UsersPresentityAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setUsername($this->getUsername())
-            ->setDomain($this->getDomain())
-            ->setEvent($this->getEvent())
-            ->setEtag($this->getEtag())
-            ->setExpires($this->getExpires())
-            ->setReceivedTime($this->getReceivedTime())
-            ->setBody($this->getBody())
-            ->setSender($this->getSender())
-            ->setPriority($this->getPriority());
+            ->setUsername(self::getUsername())
+            ->setDomain(self::getDomain())
+            ->setEvent(self::getEvent())
+            ->setEtag(self::getEtag())
+            ->setExpires(self::getExpires())
+            ->setReceivedTime(self::getReceivedTime())
+            ->setBody(self::getBody())
+            ->setSender(self::getSender())
+            ->setPriority(self::getPriority());
     }
 
     /**

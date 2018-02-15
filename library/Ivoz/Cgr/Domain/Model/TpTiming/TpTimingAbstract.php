@@ -196,14 +196,14 @@ abstract class TpTimingAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setTpid($this->getTpid())
-            ->setTag($this->getTag())
-            ->setYears($this->getYears())
-            ->setMonths($this->getMonths())
-            ->setMonthDays($this->getMonthDays())
-            ->setWeekDays($this->getWeekDays())
-            ->setTime($this->getTime())
-            ->setCreatedAt($this->getCreatedAt());
+            ->setTpid(self::getTpid())
+            ->setTag(self::getTag())
+            ->setYears(self::getYears())
+            ->setMonths(self::getMonths())
+            ->setMonthDays(self::getMonthDays())
+            ->setWeekDays(self::getWeekDays())
+            ->setTime(self::getTime())
+            ->setCreatedAt(self::getCreatedAt());
     }
 
     /**

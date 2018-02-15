@@ -169,12 +169,12 @@ abstract class RtpproxyAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setSetid($this->getSetid())
-            ->setUrl($this->getUrl())
-            ->setFlags($this->getFlags())
-            ->setWeight($this->getWeight())
-            ->setDescription($this->getDescription())
-            ->setMediaRelaySet(\Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet::entityToDto($this->getMediaRelaySet(), $depth));
+            ->setSetid(self::getSetid())
+            ->setUrl(self::getUrl())
+            ->setFlags(self::getFlags())
+            ->setWeight(self::getWeight())
+            ->setDescription(self::getDescription())
+            ->setMediaRelaySet(\Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet::entityToDto(self::getMediaRelaySet(), $depth));
     }
 
     /**

@@ -206,15 +206,15 @@ abstract class TpRateAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setTpid($this->getTpid())
-            ->setTag($this->getTag())
-            ->setConnectFee($this->getConnectFee())
-            ->setRateCost($this->getRateCost())
-            ->setRateUnit($this->getRateUnit())
-            ->setRateIncrement($this->getRateIncrement())
-            ->setGroupIntervalStart($this->getGroupIntervalStart())
-            ->setCreatedAt($this->getCreatedAt())
-            ->setRate(\Ivoz\Cgr\Domain\Model\Rate\Rate::entityToDto($this->getRate(), $depth));
+            ->setTpid(self::getTpid())
+            ->setTag(self::getTag())
+            ->setConnectFee(self::getConnectFee())
+            ->setRateCost(self::getRateCost())
+            ->setRateUnit(self::getRateUnit())
+            ->setRateIncrement(self::getRateIncrement())
+            ->setGroupIntervalStart(self::getGroupIntervalStart())
+            ->setCreatedAt(self::getCreatedAt())
+            ->setRate(\Ivoz\Cgr\Domain\Model\Rate\Rate::entityToDto(self::getRate(), $depth));
     }
 
     /**

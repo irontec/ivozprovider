@@ -145,9 +145,9 @@ abstract class EtagVersionAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setTable($this->getTable())
-            ->setEtag($this->getEtag())
-            ->setLastChange($this->getLastChange());
+            ->setTable(self::getTable())
+            ->setEtag(self::getEtag())
+            ->setLastChange(self::getLastChange());
     }
 
     /**

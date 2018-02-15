@@ -145,9 +145,9 @@ abstract class CompanyServiceAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setCode($this->getCode())
-            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto($this->getCompany(), $depth))
-            ->setService(\Ivoz\Provider\Domain\Model\Service\Service::entityToDto($this->getService(), $depth));
+            ->setCode(self::getCode())
+            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
+            ->setService(\Ivoz\Provider\Domain\Model\Service\Service::entityToDto(self::getService(), $depth));
     }
 
     /**

@@ -182,14 +182,14 @@ abstract class TerminalModelAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setIden($this->getIden())
-            ->setName($this->getName())
-            ->setDescription($this->getDescription())
-            ->setGenericTemplate($this->getGenericTemplate())
-            ->setSpecificTemplate($this->getSpecificTemplate())
-            ->setGenericUrlPattern($this->getGenericUrlPattern())
-            ->setSpecificUrlPattern($this->getSpecificUrlPattern())
-            ->setTerminalManufacturer(\Ivoz\Provider\Domain\Model\TerminalManufacturer\TerminalManufacturer::entityToDto($this->getTerminalManufacturer(), $depth));
+            ->setIden(self::getIden())
+            ->setName(self::getName())
+            ->setDescription(self::getDescription())
+            ->setGenericTemplate(self::getGenericTemplate())
+            ->setSpecificTemplate(self::getSpecificTemplate())
+            ->setGenericUrlPattern(self::getGenericUrlPattern())
+            ->setSpecificUrlPattern(self::getSpecificUrlPattern())
+            ->setTerminalManufacturer(\Ivoz\Provider\Domain\Model\TerminalManufacturer\TerminalManufacturer::entityToDto(self::getTerminalManufacturer(), $depth));
     }
 
     /**

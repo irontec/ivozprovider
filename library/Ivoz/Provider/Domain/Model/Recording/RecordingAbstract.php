@@ -208,17 +208,17 @@ abstract class RecordingAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setCallid($this->getCallid())
-            ->setCalldate($this->getCalldate())
-            ->setType($this->getType())
-            ->setDuration($this->getDuration())
-            ->setCaller($this->getCaller())
-            ->setCallee($this->getCallee())
-            ->setRecorder($this->getRecorder())
-            ->setRecordedFileFileSize($this->getRecordedFile()->getFileSize())
-            ->setRecordedFileMimeType($this->getRecordedFile()->getMimeType())
-            ->setRecordedFileBaseName($this->getRecordedFile()->getBaseName())
-            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto($this->getCompany(), $depth));
+            ->setCallid(self::getCallid())
+            ->setCalldate(self::getCalldate())
+            ->setType(self::getType())
+            ->setDuration(self::getDuration())
+            ->setCaller(self::getCaller())
+            ->setCallee(self::getCallee())
+            ->setRecorder(self::getRecorder())
+            ->setRecordedFileFileSize(self::getRecordedFile()->getFileSize())
+            ->setRecordedFileMimeType(self::getRecordedFile()->getMimeType())
+            ->setRecordedFileBaseName(self::getRecordedFile()->getBaseName())
+            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth));
     }
 
     /**

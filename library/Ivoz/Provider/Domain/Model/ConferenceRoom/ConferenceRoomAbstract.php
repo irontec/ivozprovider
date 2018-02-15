@@ -161,11 +161,11 @@ abstract class ConferenceRoomAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setName($this->getName())
-            ->setPinProtected($this->getPinProtected())
-            ->setPinCode($this->getPinCode())
-            ->setMaxMembers($this->getMaxMembers())
-            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto($this->getCompany(), $depth));
+            ->setName(self::getName())
+            ->setPinProtected(self::getPinProtected())
+            ->setPinCode(self::getPinCode())
+            ->setMaxMembers(self::getMaxMembers())
+            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth));
     }
 
     /**

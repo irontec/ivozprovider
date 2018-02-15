@@ -120,31 +120,31 @@ abstract class ExternalCallFilterRelScheduleDtoAbstract implements DataTransferO
         return $this->filter;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setFilterId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setFilterId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterDto($id)
+            : null;
 
-            return $this->setFilter($value);
+        return $this->setFilter($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getFilterId()
+    {
+        if ($dto = $this->getFilter()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getFilterId()
-        {
-            if ($dto = $this->getFilter()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Schedule\ScheduleDto $schedule
@@ -166,31 +166,31 @@ abstract class ExternalCallFilterRelScheduleDtoAbstract implements DataTransferO
         return $this->schedule;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setScheduleId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Schedule\ScheduleDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setScheduleId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Schedule\ScheduleDto($id)
+            : null;
 
-            return $this->setSchedule($value);
+        return $this->setSchedule($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getScheduleId()
+    {
+        if ($dto = $this->getSchedule()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getScheduleId()
-        {
-            if ($dto = $this->getSchedule()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 }
 
 

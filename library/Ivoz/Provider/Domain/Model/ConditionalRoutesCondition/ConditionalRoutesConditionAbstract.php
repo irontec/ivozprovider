@@ -223,20 +223,20 @@ abstract class ConditionalRoutesConditionAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setPriority($this->getPriority())
-            ->setRouteType($this->getRouteType())
-            ->setNumberValue($this->getNumberValue())
-            ->setFriendValue($this->getFriendValue())
-            ->setConditionalRoute(\Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute::entityToDto($this->getConditionalRoute(), $depth))
-            ->setIvr(\Ivoz\Provider\Domain\Model\Ivr\Ivr::entityToDto($this->getIvr(), $depth))
-            ->setHuntGroup(\Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup::entityToDto($this->getHuntGroup(), $depth))
-            ->setVoicemailUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto($this->getVoicemailUser(), $depth))
-            ->setUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto($this->getUser(), $depth))
-            ->setQueue(\Ivoz\Provider\Domain\Model\Queue\Queue::entityToDto($this->getQueue(), $depth))
-            ->setLocution(\Ivoz\Provider\Domain\Model\Locution\Locution::entityToDto($this->getLocution(), $depth))
-            ->setConferenceRoom(\Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom::entityToDto($this->getConferenceRoom(), $depth))
-            ->setExtension(\Ivoz\Provider\Domain\Model\Extension\Extension::entityToDto($this->getExtension(), $depth))
-            ->setNumberCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto($this->getNumberCountry(), $depth));
+            ->setPriority(self::getPriority())
+            ->setRouteType(self::getRouteType())
+            ->setNumberValue(self::getNumberValue())
+            ->setFriendValue(self::getFriendValue())
+            ->setConditionalRoute(\Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute::entityToDto(self::getConditionalRoute(), $depth))
+            ->setIvr(\Ivoz\Provider\Domain\Model\Ivr\Ivr::entityToDto(self::getIvr(), $depth))
+            ->setHuntGroup(\Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup::entityToDto(self::getHuntGroup(), $depth))
+            ->setVoicemailUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto(self::getVoicemailUser(), $depth))
+            ->setUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto(self::getUser(), $depth))
+            ->setQueue(\Ivoz\Provider\Domain\Model\Queue\Queue::entityToDto(self::getQueue(), $depth))
+            ->setLocution(\Ivoz\Provider\Domain\Model\Locution\Locution::entityToDto(self::getLocution(), $depth))
+            ->setConferenceRoom(\Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom::entityToDto(self::getConferenceRoom(), $depth))
+            ->setExtension(\Ivoz\Provider\Domain\Model\Extension\Extension::entityToDto(self::getExtension(), $depth))
+            ->setNumberCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto(self::getNumberCountry(), $depth));
     }
 
     /**

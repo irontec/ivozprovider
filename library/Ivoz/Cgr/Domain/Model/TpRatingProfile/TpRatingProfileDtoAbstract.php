@@ -417,31 +417,31 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
         return $this->company;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setCompanyId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Company\CompanyDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setCompanyId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Company\CompanyDto($id)
+            : null;
 
-            return $this->setCompany($value);
+        return $this->setCompany($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getCompanyId()
+    {
+        if ($dto = $this->getCompany()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getCompanyId()
-        {
-            if ($dto = $this->getCompany()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanDto $ratingPlan
@@ -463,31 +463,31 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
         return $this->ratingPlan;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setRatingPlanId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setRatingPlanId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanDto($id)
+            : null;
 
-            return $this->setRatingPlan($value);
+        return $this->setRatingPlan($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getRatingPlanId()
+    {
+        if ($dto = $this->getRatingPlan()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getRatingPlanId()
-        {
-            if ($dto = $this->getRatingPlan()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 }
 
 

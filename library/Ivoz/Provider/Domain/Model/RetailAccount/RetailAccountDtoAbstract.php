@@ -571,31 +571,31 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
         return $this->brand;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setBrandId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Brand\BrandDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setBrandId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Brand\BrandDto($id)
+            : null;
 
-            return $this->setBrand($value);
+        return $this->setBrand($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getBrandId()
+    {
+        if ($dto = $this->getBrand()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getBrandId()
-        {
-            if ($dto = $this->getBrand()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Domain\DomainDto $domain
@@ -617,31 +617,31 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
         return $this->domain;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setDomainId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Domain\DomainDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setDomainId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Domain\DomainDto($id)
+            : null;
 
-            return $this->setDomain($value);
+        return $this->setDomain($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getDomainId()
+    {
+        if ($dto = $this->getDomain()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getDomainId()
-        {
-            if ($dto = $this->getDomain()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyDto $company
@@ -663,31 +663,31 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
         return $this->company;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setCompanyId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Company\CompanyDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setCompanyId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Company\CompanyDto($id)
+            : null;
 
-            return $this->setCompany($value);
+        return $this->setCompany($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getCompanyId()
+    {
+        if ($dto = $this->getCompany()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getCompanyId()
-        {
-            if ($dto = $this->getCompany()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto $transformationRuleSet
@@ -709,31 +709,31 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
         return $this->transformationRuleSet;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setTransformationRuleSetId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setTransformationRuleSetId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto($id)
+            : null;
 
-            return $this->setTransformationRuleSet($value);
+        return $this->setTransformationRuleSet($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getTransformationRuleSetId()
+    {
+        if ($dto = $this->getTransformationRuleSet()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getTransformationRuleSetId()
-        {
-            if ($dto = $this->getTransformationRuleSet()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Ddi\DdiDto $outgoingDdi
@@ -755,31 +755,31 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
         return $this->outgoingDdi;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setOutgoingDdiId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Ddi\DdiDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setOutgoingDdiId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Ddi\DdiDto($id)
+            : null;
 
-            return $this->setOutgoingDdi($value);
+        return $this->setOutgoingDdi($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getOutgoingDdiId()
+    {
+        if ($dto = $this->getOutgoingDdi()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getOutgoingDdiId()
-        {
-            if ($dto = $this->getOutgoingDdi()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Language\LanguageDto $language
@@ -801,31 +801,31 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
         return $this->language;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setLanguageId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Language\LanguageDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setLanguageId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Language\LanguageDto($id)
+            : null;
 
-            return $this->setLanguage($value);
+        return $this->setLanguage($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getLanguageId()
+    {
+        if ($dto = $this->getLanguage()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getLanguageId()
-        {
-            if ($dto = $this->getLanguage()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param array $psEndpoints

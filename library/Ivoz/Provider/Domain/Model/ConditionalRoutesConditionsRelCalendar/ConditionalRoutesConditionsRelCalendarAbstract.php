@@ -138,8 +138,8 @@ abstract class ConditionalRoutesConditionsRelCalendarAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setCondition(\Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition::entityToDto($this->getCondition(), $depth))
-            ->setCalendar(\Ivoz\Provider\Domain\Model\Calendar\Calendar::entityToDto($this->getCalendar(), $depth));
+            ->setCondition(\Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition::entityToDto(self::getCondition(), $depth))
+            ->setCalendar(\Ivoz\Provider\Domain\Model\Calendar\Calendar::entityToDto(self::getCalendar(), $depth));
     }
 
     /**

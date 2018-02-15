@@ -138,8 +138,8 @@ abstract class ApplicationServerAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setIp($this->getIp())
-            ->setName($this->getName());
+            ->setIp(self::getIp())
+            ->setName(self::getName());
     }
 
     /**

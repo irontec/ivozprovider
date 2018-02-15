@@ -138,8 +138,8 @@ abstract class ConditionalRoutesConditionsRelMatchlistAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setCondition(\Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition::entityToDto($this->getCondition(), $depth))
-            ->setMatchlist(\Ivoz\Provider\Domain\Model\MatchList\MatchList::entityToDto($this->getMatchlist(), $depth));
+            ->setCondition(\Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition::entityToDto(self::getCondition(), $depth))
+            ->setMatchlist(\Ivoz\Provider\Domain\Model\MatchList\MatchList::entityToDto(self::getMatchlist(), $depth));
     }
 
     /**

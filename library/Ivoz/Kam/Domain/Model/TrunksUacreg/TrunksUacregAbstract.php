@@ -263,21 +263,21 @@ abstract class TrunksUacregAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setLUuid($this->getLUuid())
-            ->setLUsername($this->getLUsername())
-            ->setLDomain($this->getLDomain())
-            ->setRUsername($this->getRUsername())
-            ->setRDomain($this->getRDomain())
-            ->setRealm($this->getRealm())
-            ->setAuthUsername($this->getAuthUsername())
-            ->setAuthPassword($this->getAuthPassword())
-            ->setAuthProxy($this->getAuthProxy())
-            ->setExpires($this->getExpires())
-            ->setFlags($this->getFlags())
-            ->setRegDelay($this->getRegDelay())
-            ->setMultiddi($this->getMultiddi())
-            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto($this->getBrand(), $depth))
-            ->setPeeringContract(\Ivoz\Provider\Domain\Model\PeeringContract\PeeringContract::entityToDto($this->getPeeringContract(), $depth));
+            ->setLUuid(self::getLUuid())
+            ->setLUsername(self::getLUsername())
+            ->setLDomain(self::getLDomain())
+            ->setRUsername(self::getRUsername())
+            ->setRDomain(self::getRDomain())
+            ->setRealm(self::getRealm())
+            ->setAuthUsername(self::getAuthUsername())
+            ->setAuthPassword(self::getAuthPassword())
+            ->setAuthProxy(self::getAuthProxy())
+            ->setExpires(self::getExpires())
+            ->setFlags(self::getFlags())
+            ->setRegDelay(self::getRegDelay())
+            ->setMultiddi(self::getMultiddi())
+            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
+            ->setPeeringContract(\Ivoz\Provider\Domain\Model\PeeringContract\PeeringContract::entityToDto(self::getPeeringContract(), $depth));
     }
 
     /**

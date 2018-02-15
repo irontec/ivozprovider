@@ -171,11 +171,11 @@ abstract class TrunksHtableAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setKeyName($this->getKeyName())
-            ->setKeyType($this->getKeyType())
-            ->setValueType($this->getValueType())
-            ->setKeyValue($this->getKeyValue())
-            ->setExpires($this->getExpires());
+            ->setKeyName(self::getKeyName())
+            ->setKeyType(self::getKeyType())
+            ->setValueType(self::getValueType())
+            ->setKeyValue(self::getKeyValue())
+            ->setExpires(self::getExpires());
     }
 
     /**

@@ -138,8 +138,8 @@ abstract class FeaturesRelBrandAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto($this->getBrand(), $depth))
-            ->setFeature(\Ivoz\Provider\Domain\Model\Feature\Feature::entityToDto($this->getFeature(), $depth));
+            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
+            ->setFeature(\Ivoz\Provider\Domain\Model\Feature\Feature::entityToDto(self::getFeature(), $depth));
     }
 
     /**

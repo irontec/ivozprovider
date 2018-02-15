@@ -146,9 +146,9 @@ abstract class TerminalManufacturerAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setIden($this->getIden())
-            ->setName($this->getName())
-            ->setDescription($this->getDescription());
+            ->setIden(self::getIden())
+            ->setName(self::getName())
+            ->setDescription(self::getDescription());
     }
 
     /**

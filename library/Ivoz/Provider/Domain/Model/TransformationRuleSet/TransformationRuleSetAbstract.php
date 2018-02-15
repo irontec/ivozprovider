@@ -198,16 +198,16 @@ abstract class TransformationRuleSetAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setDescription($this->getDescription())
-            ->setInternationalCode($this->getInternationalCode())
-            ->setTrunkPrefix($this->getTrunkPrefix())
-            ->setAreaCode($this->getAreaCode())
-            ->setNationalLen($this->getNationalLen())
-            ->setGenerateRules($this->getGenerateRules())
-            ->setNameEn($this->getName()->getEn())
-            ->setNameEs($this->getName()->getEs())
-            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto($this->getBrand(), $depth))
-            ->setCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto($this->getCountry(), $depth));
+            ->setDescription(self::getDescription())
+            ->setInternationalCode(self::getInternationalCode())
+            ->setTrunkPrefix(self::getTrunkPrefix())
+            ->setAreaCode(self::getAreaCode())
+            ->setNationalLen(self::getNationalLen())
+            ->setGenerateRules(self::getGenerateRules())
+            ->setNameEn(self::getName()->getEn())
+            ->setNameEs(self::getName()->getEs())
+            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
+            ->setCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto(self::getCountry(), $depth));
     }
 
     /**

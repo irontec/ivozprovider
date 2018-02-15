@@ -203,17 +203,17 @@ abstract class ScheduleAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setName($this->getName())
-            ->setTimeIn($this->getTimeIn())
-            ->setTimeout($this->getTimeout())
-            ->setMonday($this->getMonday())
-            ->setTuesday($this->getTuesday())
-            ->setWednesday($this->getWednesday())
-            ->setThursday($this->getThursday())
-            ->setFriday($this->getFriday())
-            ->setSaturday($this->getSaturday())
-            ->setSunday($this->getSunday())
-            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto($this->getCompany(), $depth));
+            ->setName(self::getName())
+            ->setTimeIn(self::getTimeIn())
+            ->setTimeout(self::getTimeout())
+            ->setMonday(self::getMonday())
+            ->setTuesday(self::getTuesday())
+            ->setWednesday(self::getWednesday())
+            ->setThursday(self::getThursday())
+            ->setFriday(self::getFriday())
+            ->setSaturday(self::getSaturday())
+            ->setSunday(self::getSunday())
+            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth));
     }
 
     /**

@@ -138,8 +138,8 @@ abstract class ExternalCallFilterRelScheduleAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setFilter(\Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter::entityToDto($this->getFilter(), $depth))
-            ->setSchedule(\Ivoz\Provider\Domain\Model\Schedule\Schedule::entityToDto($this->getSchedule(), $depth));
+            ->setFilter(\Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter::entityToDto(self::getFilter(), $depth))
+            ->setSchedule(\Ivoz\Provider\Domain\Model\Schedule\Schedule::entityToDto(self::getSchedule(), $depth));
     }
 
     /**

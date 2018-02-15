@@ -169,12 +169,12 @@ abstract class PikeTrustedAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setSrcIp($this->getSrcIp())
-            ->setProto($this->getProto())
-            ->setFromPattern($this->getFromPattern())
-            ->setRuriPattern($this->getRuriPattern())
-            ->setTag($this->getTag())
-            ->setPriority($this->getPriority());
+            ->setSrcIp(self::getSrcIp())
+            ->setProto(self::getProto())
+            ->setFromPattern(self::getFromPattern())
+            ->setRuriPattern(self::getRuriPattern())
+            ->setTag(self::getTag())
+            ->setPriority(self::getPriority());
     }
 
     /**

@@ -468,31 +468,31 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
         return $this->brand;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setBrandId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Brand\BrandDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setBrandId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Brand\BrandDto($id)
+            : null;
 
-            return $this->setBrand($value);
+        return $this->setBrand($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getBrandId()
+    {
+        if ($dto = $this->getBrand()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getBrandId()
-        {
-            if ($dto = $this->getBrand()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyDto $company
@@ -514,31 +514,31 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
         return $this->company;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setCompanyId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Company\CompanyDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setCompanyId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Company\CompanyDto($id)
+            : null;
 
-            return $this->setCompany($value);
+        return $this->setCompany($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getCompanyId()
+    {
+        if ($dto = $this->getCompany()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getCompanyId()
-        {
-            if ($dto = $this->getCompany()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\User\UserDto $user
@@ -560,31 +560,31 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
         return $this->user;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setUserId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\User\UserDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setUserId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\User\UserDto($id)
+            : null;
 
-            return $this->setUser($value);
+        return $this->setUser($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getUserId()
+    {
+        if ($dto = $this->getUser()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getUserId()
-        {
-            if ($dto = $this->getUser()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Friend\FriendDto $friend
@@ -606,31 +606,31 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
         return $this->friend;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setFriendId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Friend\FriendDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setFriendId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Friend\FriendDto($id)
+            : null;
 
-            return $this->setFriend($value);
+        return $this->setFriend($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getFriendId()
+    {
+        if ($dto = $this->getFriend()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getFriendId()
-        {
-            if ($dto = $this->getFriend()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto $retailAccount
@@ -652,31 +652,31 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
         return $this->retailAccount;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setRetailAccountId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setRetailAccountId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto($id)
+            : null;
 
-            return $this->setRetailAccount($value);
+        return $this->setRetailAccount($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getRetailAccountId()
+    {
+        if ($dto = $this->getRetailAccount()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getRetailAccountId()
-        {
-            if ($dto = $this->getRetailAccount()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 }
 
 

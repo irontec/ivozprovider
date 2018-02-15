@@ -120,31 +120,31 @@ abstract class FeaturesRelBrandDtoAbstract implements DataTransferObjectInterfac
         return $this->brand;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setBrandId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Brand\BrandDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setBrandId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Brand\BrandDto($id)
+            : null;
 
-            return $this->setBrand($value);
+        return $this->setBrand($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getBrandId()
+    {
+        if ($dto = $this->getBrand()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getBrandId()
-        {
-            if ($dto = $this->getBrand()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Feature\FeatureDto $feature
@@ -166,31 +166,31 @@ abstract class FeaturesRelBrandDtoAbstract implements DataTransferObjectInterfac
         return $this->feature;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setFeatureId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Feature\FeatureDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setFeatureId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Feature\FeatureDto($id)
+            : null;
 
-            return $this->setFeature($value);
+        return $this->setFeature($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getFeatureId()
+    {
+        if ($dto = $this->getFeature()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getFeatureId()
-        {
-            if ($dto = $this->getFeature()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 }
 
 

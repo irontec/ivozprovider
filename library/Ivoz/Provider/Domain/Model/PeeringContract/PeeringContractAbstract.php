@@ -160,11 +160,11 @@ abstract class PeeringContractAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setDescription($this->getDescription())
-            ->setName($this->getName())
-            ->setExternallyRated($this->getExternallyRated())
-            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto($this->getBrand(), $depth))
-            ->setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet::entityToDto($this->getTransformationRuleSet(), $depth));
+            ->setDescription(self::getDescription())
+            ->setName(self::getName())
+            ->setExternallyRated(self::getExternallyRated())
+            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
+            ->setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet::entityToDto(self::getTransformationRuleSet(), $depth));
     }
 
     /**

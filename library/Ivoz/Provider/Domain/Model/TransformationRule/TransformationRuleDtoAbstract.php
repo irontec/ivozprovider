@@ -247,31 +247,31 @@ abstract class TransformationRuleDtoAbstract implements DataTransferObjectInterf
         return $this->transformationRuleSet;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setTransformationRuleSetId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setTransformationRuleSetId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto($id)
+            : null;
 
-            return $this->setTransformationRuleSet($value);
+        return $this->setTransformationRuleSet($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getTransformationRuleSetId()
+    {
+        if ($dto = $this->getTransformationRuleSet()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getTransformationRuleSetId()
-        {
-            if ($dto = $this->getTransformationRuleSet()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 }
 
 

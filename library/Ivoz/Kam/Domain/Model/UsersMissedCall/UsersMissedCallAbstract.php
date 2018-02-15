@@ -244,20 +244,20 @@ abstract class UsersMissedCallAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setMethod($this->getMethod())
-            ->setFromTag($this->getFromTag())
-            ->setToTag($this->getToTag())
-            ->setCallid($this->getCallid())
-            ->setSipCode($this->getSipCode())
-            ->setSipReason($this->getSipReason())
-            ->setSrcIp($this->getSrcIp())
-            ->setFromUser($this->getFromUser())
-            ->setFromDomain($this->getFromDomain())
-            ->setRuriUser($this->getRuriUser())
-            ->setRuriDomain($this->getRuriDomain())
-            ->setCseq($this->getCseq())
-            ->setLocaltime($this->getLocaltime())
-            ->setUtctime($this->getUtctime());
+            ->setMethod(self::getMethod())
+            ->setFromTag(self::getFromTag())
+            ->setToTag(self::getToTag())
+            ->setCallid(self::getCallid())
+            ->setSipCode(self::getSipCode())
+            ->setSipReason(self::getSipReason())
+            ->setSrcIp(self::getSrcIp())
+            ->setFromUser(self::getFromUser())
+            ->setFromDomain(self::getFromDomain())
+            ->setRuriUser(self::getRuriUser())
+            ->setRuriDomain(self::getRuriDomain())
+            ->setCseq(self::getCseq())
+            ->setLocaltime(self::getLocaltime())
+            ->setUtctime(self::getUtctime());
     }
 
     /**

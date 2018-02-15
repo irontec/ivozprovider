@@ -205,17 +205,17 @@ abstract class QueueAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setName($this->getName())
-            ->setPeriodicAnnounce($this->getPeriodicAnnounce())
-            ->setPeriodicAnnounceFrequency($this->getPeriodicAnnounceFrequency())
-            ->setTimeout($this->getTimeout())
-            ->setAutopause($this->getAutopause())
-            ->setRinginuse($this->getRinginuse())
-            ->setWrapuptime($this->getWrapuptime())
-            ->setMaxlen($this->getMaxlen())
-            ->setStrategy($this->getStrategy())
-            ->setWeight($this->getWeight())
-            ->setQueue(\Ivoz\Provider\Domain\Model\Queue\Queue::entityToDto($this->getQueue(), $depth));
+            ->setName(self::getName())
+            ->setPeriodicAnnounce(self::getPeriodicAnnounce())
+            ->setPeriodicAnnounceFrequency(self::getPeriodicAnnounceFrequency())
+            ->setTimeout(self::getTimeout())
+            ->setAutopause(self::getAutopause())
+            ->setRinginuse(self::getRinginuse())
+            ->setWrapuptime(self::getWrapuptime())
+            ->setMaxlen(self::getMaxlen())
+            ->setStrategy(self::getStrategy())
+            ->setWeight(self::getWeight())
+            ->setQueue(\Ivoz\Provider\Domain\Model\Queue\Queue::entityToDto(self::getQueue(), $depth));
     }
 
     /**

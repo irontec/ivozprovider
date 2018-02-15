@@ -120,31 +120,31 @@ abstract class IvrExcludedExtensionDtoAbstract implements DataTransferObjectInte
         return $this->ivr;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setIvrId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Ivr\IvrDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setIvrId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Ivr\IvrDto($id)
+            : null;
 
-            return $this->setIvr($value);
+        return $this->setIvr($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getIvrId()
+    {
+        if ($dto = $this->getIvr()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getIvrId()
-        {
-            if ($dto = $this->getIvr()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionDto $extension
@@ -166,31 +166,31 @@ abstract class IvrExcludedExtensionDtoAbstract implements DataTransferObjectInte
         return $this->extension;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setExtensionId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Extension\ExtensionDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setExtensionId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Extension\ExtensionDto($id)
+            : null;
 
-            return $this->setExtension($value);
+        return $this->setExtension($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getExtensionId()
+    {
+        if ($dto = $this->getExtension()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getExtensionId()
-        {
-            if ($dto = $this->getExtension()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 }
 
 

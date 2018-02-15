@@ -152,10 +152,10 @@ abstract class FixedCostsRelInvoiceAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setQuantity($this->getQuantity())
-            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto($this->getBrand(), $depth))
-            ->setFixedCost(\Ivoz\Provider\Domain\Model\FixedCost\FixedCost::entityToDto($this->getFixedCost(), $depth))
-            ->setInvoice(\Ivoz\Provider\Domain\Model\Invoice\Invoice::entityToDto($this->getInvoice(), $depth));
+            ->setQuantity(self::getQuantity())
+            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
+            ->setFixedCost(\Ivoz\Provider\Domain\Model\FixedCost\FixedCost::entityToDto(self::getFixedCost(), $depth))
+            ->setInvoice(\Ivoz\Provider\Domain\Model\Invoice\Invoice::entityToDto(self::getInvoice(), $depth));
     }
 
     /**

@@ -371,31 +371,31 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
         return $this->destinationRate;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setDestinationRateId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setDestinationRateId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateDto($id)
+            : null;
 
-            return $this->setDestinationRate($value);
+        return $this->setDestinationRate($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getDestinationRateId()
+    {
+        if ($dto = $this->getDestinationRate()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getDestinationRateId()
-        {
-            if ($dto = $this->getDestinationRate()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Cgr\Domain\Model\Destination\DestinationDto $destination
@@ -417,31 +417,31 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
         return $this->destination;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setDestinationId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Cgr\Domain\Model\Destination\DestinationDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setDestinationId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Cgr\Domain\Model\Destination\DestinationDto($id)
+            : null;
 
-            return $this->setDestination($value);
+        return $this->setDestination($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getDestinationId()
+    {
+        if ($dto = $this->getDestination()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getDestinationId()
-        {
-            if ($dto = $this->getDestination()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Cgr\Domain\Model\Rate\RateDto $rate
@@ -463,31 +463,31 @@ abstract class TpDestinationRateDtoAbstract implements DataTransferObjectInterfa
         return $this->rate;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setRateId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Cgr\Domain\Model\Rate\RateDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setRateId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Cgr\Domain\Model\Rate\RateDto($id)
+            : null;
 
-            return $this->setRate($value);
+        return $this->setRate($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getRateId()
+    {
+        if ($dto = $this->getRate()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getRateId()
-        {
-            if ($dto = $this->getRate()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 }
 
 

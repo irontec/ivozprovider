@@ -120,31 +120,31 @@ abstract class ConditionalRoutesConditionsRelMatchlistDtoAbstract implements Dat
         return $this->condition;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setConditionId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setConditionId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionDto($id)
+            : null;
 
-            return $this->setCondition($value);
+        return $this->setCondition($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getConditionId()
+    {
+        if ($dto = $this->getCondition()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getConditionId()
-        {
-            if ($dto = $this->getCondition()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\MatchList\MatchListDto $matchlist
@@ -166,31 +166,31 @@ abstract class ConditionalRoutesConditionsRelMatchlistDtoAbstract implements Dat
         return $this->matchlist;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setMatchlistId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\MatchList\MatchListDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setMatchlistId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\MatchList\MatchListDto($id)
+            : null;
 
-            return $this->setMatchlist($value);
+        return $this->setMatchlist($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getMatchlistId()
+    {
+        if ($dto = $this->getMatchlist()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getMatchlistId()
-        {
-            if ($dto = $this->getMatchlist()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 }
 
 

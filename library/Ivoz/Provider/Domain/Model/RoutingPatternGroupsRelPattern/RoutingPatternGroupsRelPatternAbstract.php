@@ -138,8 +138,8 @@ abstract class RoutingPatternGroupsRelPatternAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setRoutingPattern(\Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPattern::entityToDto($this->getRoutingPattern(), $depth))
-            ->setRoutingPatternGroup(\Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup::entityToDto($this->getRoutingPatternGroup(), $depth));
+            ->setRoutingPattern(\Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPattern::entityToDto(self::getRoutingPattern(), $depth))
+            ->setRoutingPatternGroup(\Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup::entityToDto(self::getRoutingPatternGroup(), $depth));
     }
 
     /**

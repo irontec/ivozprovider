@@ -145,9 +145,9 @@ abstract class RoutingPatternGroupAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setName($this->getName())
-            ->setDescription($this->getDescription())
-            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto($this->getBrand(), $depth));
+            ->setName(self::getName())
+            ->setDescription(self::getDescription())
+            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth));
     }
 
     /**

@@ -217,18 +217,18 @@ abstract class HuntGroupAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setName($this->getName())
-            ->setDescription($this->getDescription())
-            ->setStrategy($this->getStrategy())
-            ->setRingAllTimeout($this->getRingAllTimeout())
-            ->setNextUserPosition($this->getNextUserPosition())
-            ->setNoAnswerTargetType($this->getNoAnswerTargetType())
-            ->setNoAnswerNumberValue($this->getNoAnswerNumberValue())
-            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto($this->getCompany(), $depth))
-            ->setNoAnswerLocution(\Ivoz\Provider\Domain\Model\Locution\Locution::entityToDto($this->getNoAnswerLocution(), $depth))
-            ->setNoAnswerExtension(\Ivoz\Provider\Domain\Model\Extension\Extension::entityToDto($this->getNoAnswerExtension(), $depth))
-            ->setNoAnswerVoiceMailUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto($this->getNoAnswerVoiceMailUser(), $depth))
-            ->setNoAnswerNumberCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto($this->getNoAnswerNumberCountry(), $depth));
+            ->setName(self::getName())
+            ->setDescription(self::getDescription())
+            ->setStrategy(self::getStrategy())
+            ->setRingAllTimeout(self::getRingAllTimeout())
+            ->setNextUserPosition(self::getNextUserPosition())
+            ->setNoAnswerTargetType(self::getNoAnswerTargetType())
+            ->setNoAnswerNumberValue(self::getNoAnswerNumberValue())
+            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
+            ->setNoAnswerLocution(\Ivoz\Provider\Domain\Model\Locution\Locution::entityToDto(self::getNoAnswerLocution(), $depth))
+            ->setNoAnswerExtension(\Ivoz\Provider\Domain\Model\Extension\Extension::entityToDto(self::getNoAnswerExtension(), $depth))
+            ->setNoAnswerVoiceMailUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto(self::getNoAnswerVoiceMailUser(), $depth))
+            ->setNoAnswerNumberCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto(self::getNoAnswerNumberCountry(), $depth));
     }
 
     /**

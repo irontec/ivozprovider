@@ -221,31 +221,31 @@ abstract class TimezoneDtoAbstract implements DataTransferObjectInterface
         return $this->country;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setCountryId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Country\CountryDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setCountryId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Country\CountryDto($id)
+            : null;
 
-            return $this->setCountry($value);
+        return $this->setCountry($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getCountryId()
+    {
+        if ($dto = $this->getCountry()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getCountryId()
-        {
-            if ($dto = $this->getCountry()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 }
 
 

@@ -192,15 +192,15 @@ abstract class TpRatingPlanAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setTpid($this->getTpid())
-            ->setTag($this->getTag())
-            ->setDestratesTag($this->getDestratesTag())
-            ->setTimingTag($this->getTimingTag())
-            ->setWeight($this->getWeight())
-            ->setCreatedAt($this->getCreatedAt())
-            ->setTiming(\Ivoz\Cgr\Domain\Model\TpTiming\TpTiming::entityToDto($this->getTiming(), $depth))
-            ->setRatingPlan(\Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlan::entityToDto($this->getRatingPlan(), $depth))
-            ->setDestinationRate(\Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRate::entityToDto($this->getDestinationRate(), $depth));
+            ->setTpid(self::getTpid())
+            ->setTag(self::getTag())
+            ->setDestratesTag(self::getDestratesTag())
+            ->setTimingTag(self::getTimingTag())
+            ->setWeight(self::getWeight())
+            ->setCreatedAt(self::getCreatedAt())
+            ->setTiming(\Ivoz\Cgr\Domain\Model\TpTiming\TpTiming::entityToDto(self::getTiming(), $depth))
+            ->setRatingPlan(\Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlan::entityToDto(self::getRatingPlan(), $depth))
+            ->setDestinationRate(\Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRate::entityToDto(self::getDestinationRate(), $depth));
     }
 
     /**

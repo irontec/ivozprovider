@@ -145,9 +145,9 @@ abstract class BrandServiceAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setCode($this->getCode())
-            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto($this->getBrand(), $depth))
-            ->setService(\Ivoz\Provider\Domain\Model\Service\Service::entityToDto($this->getService(), $depth));
+            ->setCode(self::getCode())
+            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
+            ->setService(\Ivoz\Provider\Domain\Model\Service\Service::entityToDto(self::getService(), $depth));
     }
 
     /**

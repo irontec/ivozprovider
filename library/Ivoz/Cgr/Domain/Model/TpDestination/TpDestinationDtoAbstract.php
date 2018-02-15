@@ -220,31 +220,31 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
         return $this->destination;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setDestinationId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Cgr\Domain\Model\Destination\DestinationDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setDestinationId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Cgr\Domain\Model\Destination\DestinationDto($id)
+            : null;
 
-            return $this->setDestination($value);
+        return $this->setDestination($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getDestinationId()
+    {
+        if ($dto = $this->getDestination()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getDestinationId()
-        {
-            if ($dto = $this->getDestination()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 }
 
 

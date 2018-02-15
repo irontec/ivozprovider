@@ -154,10 +154,10 @@ abstract class OutgoingDdiRuleAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setName($this->getName())
-            ->setDefaultAction($this->getDefaultAction())
-            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto($this->getCompany(), $depth))
-            ->setForcedDdi(\Ivoz\Provider\Domain\Model\Ddi\Ddi::entityToDto($this->getForcedDdi(), $depth));
+            ->setName(self::getName())
+            ->setDefaultAction(self::getDefaultAction())
+            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
+            ->setForcedDdi(\Ivoz\Provider\Domain\Model\Ddi\Ddi::entityToDto(self::getForcedDdi(), $depth));
     }
 
     /**

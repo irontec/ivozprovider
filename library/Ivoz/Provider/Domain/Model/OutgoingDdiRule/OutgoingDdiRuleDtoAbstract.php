@@ -194,31 +194,31 @@ abstract class OutgoingDdiRuleDtoAbstract implements DataTransferObjectInterface
         return $this->company;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setCompanyId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Company\CompanyDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setCompanyId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Company\CompanyDto($id)
+            : null;
 
-            return $this->setCompany($value);
+        return $this->setCompany($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getCompanyId()
+    {
+        if ($dto = $this->getCompany()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getCompanyId()
-        {
-            if ($dto = $this->getCompany()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Ddi\DdiDto $forcedDdi
@@ -240,31 +240,31 @@ abstract class OutgoingDdiRuleDtoAbstract implements DataTransferObjectInterface
         return $this->forcedDdi;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setForcedDdiId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Ddi\DdiDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setForcedDdiId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Ddi\DdiDto($id)
+            : null;
 
-            return $this->setForcedDdi($value);
+        return $this->setForcedDdi($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getForcedDdiId()
+    {
+        if ($dto = $this->getForcedDdi()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getForcedDdiId()
-        {
-            if ($dto = $this->getForcedDdi()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param array $patterns

@@ -1003,31 +1003,31 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
         return $this->user;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setUserId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\User\UserDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setUserId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\User\UserDto($id)
+            : null;
 
-            return $this->setUser($value);
+        return $this->setUser($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getUserId()
+    {
+        if ($dto = $this->getUser()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getUserId()
-        {
-            if ($dto = $this->getUser()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 }
 
 

@@ -209,18 +209,18 @@ abstract class ExtensionAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setNumber($this->getNumber())
-            ->setRouteType($this->getRouteType())
-            ->setNumberValue($this->getNumberValue())
-            ->setFriendValue($this->getFriendValue())
-            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto($this->getCompany(), $depth))
-            ->setIvr(\Ivoz\Provider\Domain\Model\Ivr\Ivr::entityToDto($this->getIvr(), $depth))
-            ->setHuntGroup(\Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup::entityToDto($this->getHuntGroup(), $depth))
-            ->setConferenceRoom(\Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom::entityToDto($this->getConferenceRoom(), $depth))
-            ->setUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto($this->getUser(), $depth))
-            ->setQueue(\Ivoz\Provider\Domain\Model\Queue\Queue::entityToDto($this->getQueue(), $depth))
-            ->setConditionalRoute(\Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute::entityToDto($this->getConditionalRoute(), $depth))
-            ->setNumberCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto($this->getNumberCountry(), $depth));
+            ->setNumber(self::getNumber())
+            ->setRouteType(self::getRouteType())
+            ->setNumberValue(self::getNumberValue())
+            ->setFriendValue(self::getFriendValue())
+            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
+            ->setIvr(\Ivoz\Provider\Domain\Model\Ivr\Ivr::entityToDto(self::getIvr(), $depth))
+            ->setHuntGroup(\Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup::entityToDto(self::getHuntGroup(), $depth))
+            ->setConferenceRoom(\Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom::entityToDto(self::getConferenceRoom(), $depth))
+            ->setUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto(self::getUser(), $depth))
+            ->setQueue(\Ivoz\Provider\Domain\Model\Queue\Queue::entityToDto(self::getQueue(), $depth))
+            ->setConditionalRoute(\Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute::entityToDto(self::getConditionalRoute(), $depth))
+            ->setNumberCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto(self::getNumberCountry(), $depth));
     }
 
     /**

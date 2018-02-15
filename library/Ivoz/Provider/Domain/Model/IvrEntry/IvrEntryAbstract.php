@@ -189,15 +189,15 @@ abstract class IvrEntryAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setEntry($this->getEntry())
-            ->setRouteType($this->getRouteType())
-            ->setNumberValue($this->getNumberValue())
-            ->setIvr(\Ivoz\Provider\Domain\Model\Ivr\Ivr::entityToDto($this->getIvr(), $depth))
-            ->setWelcomeLocution(\Ivoz\Provider\Domain\Model\Locution\Locution::entityToDto($this->getWelcomeLocution(), $depth))
-            ->setExtension(\Ivoz\Provider\Domain\Model\Extension\Extension::entityToDto($this->getExtension(), $depth))
-            ->setVoiceMailUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto($this->getVoiceMailUser(), $depth))
-            ->setConditionalRoute(\Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute::entityToDto($this->getConditionalRoute(), $depth))
-            ->setNumberCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto($this->getNumberCountry(), $depth));
+            ->setEntry(self::getEntry())
+            ->setRouteType(self::getRouteType())
+            ->setNumberValue(self::getNumberValue())
+            ->setIvr(\Ivoz\Provider\Domain\Model\Ivr\Ivr::entityToDto(self::getIvr(), $depth))
+            ->setWelcomeLocution(\Ivoz\Provider\Domain\Model\Locution\Locution::entityToDto(self::getWelcomeLocution(), $depth))
+            ->setExtension(\Ivoz\Provider\Domain\Model\Extension\Extension::entityToDto(self::getExtension(), $depth))
+            ->setVoiceMailUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto(self::getVoiceMailUser(), $depth))
+            ->setConditionalRoute(\Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute::entityToDto(self::getConditionalRoute(), $depth))
+            ->setNumberCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto(self::getNumberCountry(), $depth));
     }
 
     /**

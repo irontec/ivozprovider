@@ -184,13 +184,13 @@ abstract class DispatcherAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setSetid($this->getSetid())
-            ->setDestination($this->getDestination())
-            ->setFlags($this->getFlags())
-            ->setPriority($this->getPriority())
-            ->setAttrs($this->getAttrs())
-            ->setDescription($this->getDescription())
-            ->setApplicationServer(\Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServer::entityToDto($this->getApplicationServer(), $depth));
+            ->setSetid(self::getSetid())
+            ->setDestination(self::getDestination())
+            ->setFlags(self::getFlags())
+            ->setPriority(self::getPriority())
+            ->setAttrs(self::getAttrs())
+            ->setDescription(self::getDescription())
+            ->setApplicationServer(\Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServer::entityToDto(self::getApplicationServer(), $depth));
     }
 
     /**

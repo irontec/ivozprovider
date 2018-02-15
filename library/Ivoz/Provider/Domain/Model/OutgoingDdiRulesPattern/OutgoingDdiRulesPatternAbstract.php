@@ -161,11 +161,11 @@ abstract class OutgoingDdiRulesPatternAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setAction($this->getAction())
-            ->setPriority($this->getPriority())
-            ->setOutgoingDdiRule(\Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule::entityToDto($this->getOutgoingDdiRule(), $depth))
-            ->setMatchList(\Ivoz\Provider\Domain\Model\MatchList\MatchList::entityToDto($this->getMatchList(), $depth))
-            ->setForcedDdi(\Ivoz\Provider\Domain\Model\Ddi\Ddi::entityToDto($this->getForcedDdi(), $depth));
+            ->setAction(self::getAction())
+            ->setPriority(self::getPriority())
+            ->setOutgoingDdiRule(\Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule::entityToDto(self::getOutgoingDdiRule(), $depth))
+            ->setMatchList(\Ivoz\Provider\Domain\Model\MatchList\MatchList::entityToDto(self::getMatchList(), $depth))
+            ->setForcedDdi(\Ivoz\Provider\Domain\Model\Ddi\Ddi::entityToDto(self::getForcedDdi(), $depth));
     }
 
     /**

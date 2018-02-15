@@ -146,9 +146,9 @@ abstract class FriendsPatternAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setName($this->getName())
-            ->setRegExp($this->getRegExp())
-            ->setFriend(\Ivoz\Provider\Domain\Model\Friend\Friend::entityToDto($this->getFriend(), $depth));
+            ->setName(self::getName())
+            ->setRegExp(self::getRegExp())
+            ->setFriend(\Ivoz\Provider\Domain\Model\Friend\Friend::entityToDto(self::getFriend(), $depth));
     }
 
     /**

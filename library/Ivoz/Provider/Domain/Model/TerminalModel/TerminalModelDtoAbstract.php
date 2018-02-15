@@ -301,31 +301,31 @@ abstract class TerminalModelDtoAbstract implements DataTransferObjectInterface
         return $this->terminalManufacturer;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setTerminalManufacturerId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\TerminalManufacturer\TerminalManufacturerDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setTerminalManufacturerId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\TerminalManufacturer\TerminalManufacturerDto($id)
+            : null;
 
-            return $this->setTerminalManufacturer($value);
+        return $this->setTerminalManufacturer($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getTerminalManufacturerId()
+    {
+        if ($dto = $this->getTerminalManufacturer()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getTerminalManufacturerId()
-        {
-            if ($dto = $this->getTerminalManufacturer()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 }
 
 

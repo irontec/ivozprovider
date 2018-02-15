@@ -120,31 +120,31 @@ abstract class ConditionalRoutesConditionsRelCalendarDtoAbstract implements Data
         return $this->condition;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setConditionId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setConditionId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionDto($id)
+            : null;
 
-            return $this->setCondition($value);
+        return $this->setCondition($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getConditionId()
+    {
+        if ($dto = $this->getCondition()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getConditionId()
-        {
-            if ($dto = $this->getCondition()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Calendar\CalendarDto $calendar
@@ -166,31 +166,31 @@ abstract class ConditionalRoutesConditionsRelCalendarDtoAbstract implements Data
         return $this->calendar;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setCalendarId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Calendar\CalendarDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setCalendarId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Calendar\CalendarDto($id)
+            : null;
 
-            return $this->setCalendar($value);
+        return $this->setCalendar($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getCalendarId()
+    {
+        if ($dto = $this->getCalendar()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getCalendarId()
-        {
-            if ($dto = $this->getCalendar()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 }
 
 

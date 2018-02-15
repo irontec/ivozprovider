@@ -274,31 +274,31 @@ abstract class DispatcherDtoAbstract implements DataTransferObjectInterface
         return $this->applicationServer;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setApplicationServerId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setApplicationServerId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerDto($id)
+            : null;
 
-            return $this->setApplicationServer($value);
+        return $this->setApplicationServer($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getApplicationServerId()
+    {
+        if ($dto = $this->getApplicationServer()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getApplicationServerId()
-        {
-            if ($dto = $this->getApplicationServer()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 }
 
 

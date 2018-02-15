@@ -328,31 +328,31 @@ abstract class TpRateDtoAbstract implements DataTransferObjectInterface
         return $this->rate;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setRateId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Cgr\Domain\Model\Rate\RateDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setRateId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Cgr\Domain\Model\Rate\RateDto($id)
+            : null;
 
-            return $this->setRate($value);
+        return $this->setRate($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getRateId()
+    {
+        if ($dto = $this->getRate()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getRateId()
-        {
-            if ($dto = $this->getRate()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 }
 
 

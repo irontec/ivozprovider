@@ -166,31 +166,31 @@ abstract class FriendsPatternDtoAbstract implements DataTransferObjectInterface
         return $this->friend;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setFriendId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Friend\FriendDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setFriendId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Friend\FriendDto($id)
+            : null;
 
-            return $this->setFriend($value);
+        return $this->setFriend($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getFriendId()
+    {
+        if ($dto = $this->getFriend()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getFriendId()
-        {
-            if ($dto = $this->getFriend()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 }
 
 

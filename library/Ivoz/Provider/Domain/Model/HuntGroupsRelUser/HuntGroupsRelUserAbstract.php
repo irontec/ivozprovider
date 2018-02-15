@@ -152,10 +152,10 @@ abstract class HuntGroupsRelUserAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setTimeoutTime($this->getTimeoutTime())
-            ->setPriority($this->getPriority())
-            ->setHuntGroup(\Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup::entityToDto($this->getHuntGroup(), $depth))
-            ->setUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto($this->getUser(), $depth));
+            ->setTimeoutTime(self::getTimeoutTime())
+            ->setPriority(self::getPriority())
+            ->setHuntGroup(\Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup::entityToDto(self::getHuntGroup(), $depth))
+            ->setUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto(self::getUser(), $depth));
     }
 
     /**

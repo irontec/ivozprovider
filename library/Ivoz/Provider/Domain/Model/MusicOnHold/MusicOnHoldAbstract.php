@@ -197,16 +197,16 @@ abstract class MusicOnHoldAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setName($this->getName())
-            ->setStatus($this->getStatus())
-            ->setOriginalFileFileSize($this->getOriginalFile()->getFileSize())
-            ->setOriginalFileMimeType($this->getOriginalFile()->getMimeType())
-            ->setOriginalFileBaseName($this->getOriginalFile()->getBaseName())
-            ->setEncodedFileFileSize($this->getEncodedFile()->getFileSize())
-            ->setEncodedFileMimeType($this->getEncodedFile()->getMimeType())
-            ->setEncodedFileBaseName($this->getEncodedFile()->getBaseName())
-            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto($this->getBrand(), $depth))
-            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto($this->getCompany(), $depth));
+            ->setName(self::getName())
+            ->setStatus(self::getStatus())
+            ->setOriginalFileFileSize(self::getOriginalFile()->getFileSize())
+            ->setOriginalFileMimeType(self::getOriginalFile()->getMimeType())
+            ->setOriginalFileBaseName(self::getOriginalFile()->getBaseName())
+            ->setEncodedFileFileSize(self::getEncodedFile()->getFileSize())
+            ->setEncodedFileMimeType(self::getEncodedFile()->getMimeType())
+            ->setEncodedFileBaseName(self::getEncodedFile()->getBaseName())
+            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
+            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth));
     }
 
     /**

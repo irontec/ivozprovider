@@ -290,31 +290,31 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
         return $this->timing;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setTimingId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Cgr\Domain\Model\TpTiming\TpTimingDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setTimingId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Cgr\Domain\Model\TpTiming\TpTimingDto($id)
+            : null;
 
-            return $this->setTiming($value);
+        return $this->setTiming($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getTimingId()
+    {
+        if ($dto = $this->getTiming()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getTimingId()
-        {
-            if ($dto = $this->getTiming()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanDto $ratingPlan
@@ -336,31 +336,31 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
         return $this->ratingPlan;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setRatingPlanId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setRatingPlanId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanDto($id)
+            : null;
 
-            return $this->setRatingPlan($value);
+        return $this->setRatingPlan($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getRatingPlanId()
+    {
+        if ($dto = $this->getRatingPlan()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getRatingPlanId()
-        {
-            if ($dto = $this->getRatingPlan()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateDto $destinationRate
@@ -382,31 +382,31 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
         return $this->destinationRate;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setDestinationRateId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setDestinationRateId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateDto($id)
+            : null;
 
-            return $this->setDestinationRate($value);
+        return $this->setDestinationRate($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getDestinationRateId()
+    {
+        if ($dto = $this->getDestinationRate()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getDestinationRateId()
-        {
-            if ($dto = $this->getDestinationRate()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 }
 
 

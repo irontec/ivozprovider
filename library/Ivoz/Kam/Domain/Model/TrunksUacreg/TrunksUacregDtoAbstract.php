@@ -471,31 +471,31 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
         return $this->brand;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setBrandId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Brand\BrandDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setBrandId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Brand\BrandDto($id)
+            : null;
 
-            return $this->setBrand($value);
+        return $this->setBrand($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getBrandId()
+    {
+        if ($dto = $this->getBrand()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getBrandId()
-        {
-            if ($dto = $this->getBrand()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractDto $peeringContract
@@ -517,31 +517,31 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
         return $this->peeringContract;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setPeeringContractId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setPeeringContractId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractDto($id)
+            : null;
 
-            return $this->setPeeringContract($value);
+        return $this->setPeeringContract($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getPeeringContractId()
+    {
+        if ($dto = $this->getPeeringContract()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getPeeringContractId()
-        {
-            if ($dto = $this->getPeeringContract()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 }
 
 

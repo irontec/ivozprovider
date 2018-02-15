@@ -197,15 +197,15 @@ abstract class CallForwardSettingAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setCallTypeFilter($this->getCallTypeFilter())
-            ->setCallForwardType($this->getCallForwardType())
-            ->setTargetType($this->getTargetType())
-            ->setNumberValue($this->getNumberValue())
-            ->setNoAnswerTimeout($this->getNoAnswerTimeout())
-            ->setUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto($this->getUser(), $depth))
-            ->setExtension(\Ivoz\Provider\Domain\Model\Extension\Extension::entityToDto($this->getExtension(), $depth))
-            ->setVoiceMailUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto($this->getVoiceMailUser(), $depth))
-            ->setNumberCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto($this->getNumberCountry(), $depth));
+            ->setCallTypeFilter(self::getCallTypeFilter())
+            ->setCallForwardType(self::getCallForwardType())
+            ->setTargetType(self::getTargetType())
+            ->setNumberValue(self::getNumberValue())
+            ->setNoAnswerTimeout(self::getNoAnswerTimeout())
+            ->setUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto(self::getUser(), $depth))
+            ->setExtension(\Ivoz\Provider\Domain\Model\Extension\Extension::entityToDto(self::getExtension(), $depth))
+            ->setVoiceMailUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto(self::getVoiceMailUser(), $depth))
+            ->setNumberCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto(self::getNumberCountry(), $depth));
     }
 
     /**

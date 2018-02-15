@@ -149,9 +149,9 @@ abstract class LanguageAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setIden($this->getIden())
-            ->setNameEn($this->getName()->getEn())
-            ->setNameEs($this->getName()->getEs());
+            ->setIden(self::getIden())
+            ->setNameEn(self::getName()->getEn())
+            ->setNameEs(self::getName()->getEs());
     }
 
     /**

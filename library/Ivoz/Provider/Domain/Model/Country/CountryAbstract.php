@@ -175,12 +175,12 @@ abstract class CountryAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setCode($this->getCode())
-            ->setCountryCode($this->getCountryCode())
-            ->setNameEn($this->getName()->getEn())
-            ->setNameEs($this->getName()->getEs())
-            ->setZoneEn($this->getZone()->getEn())
-            ->setZoneEs($this->getZone()->getEs());
+            ->setCode(self::getCode())
+            ->setCountryCode(self::getCountryCode())
+            ->setNameEn(self::getName()->getEn())
+            ->setNameEs(self::getName()->getEs())
+            ->setZoneEn(self::getZone()->getEn())
+            ->setZoneEs(self::getZone()->getEs());
     }
 
     /**

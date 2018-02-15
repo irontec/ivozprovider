@@ -191,15 +191,15 @@ abstract class AdministratorAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setUsername($this->getUsername())
-            ->setPass($this->getPass())
-            ->setEmail($this->getEmail())
-            ->setActive($this->getActive())
-            ->setName($this->getName())
-            ->setLastname($this->getLastname())
-            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto($this->getBrand(), $depth))
-            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto($this->getCompany(), $depth))
-            ->setTimezone(\Ivoz\Provider\Domain\Model\Timezone\Timezone::entityToDto($this->getTimezone(), $depth));
+            ->setUsername(self::getUsername())
+            ->setPass(self::getPass())
+            ->setEmail(self::getEmail())
+            ->setActive(self::getActive())
+            ->setName(self::getName())
+            ->setLastname(self::getLastname())
+            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
+            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
+            ->setTimezone(\Ivoz\Provider\Domain\Model\Timezone\Timezone::entityToDto(self::getTimezone(), $depth));
     }
 
     /**

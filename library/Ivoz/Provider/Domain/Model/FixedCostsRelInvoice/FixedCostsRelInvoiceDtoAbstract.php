@@ -155,31 +155,31 @@ abstract class FixedCostsRelInvoiceDtoAbstract implements DataTransferObjectInte
         return $this->brand;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setBrandId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Brand\BrandDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setBrandId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Brand\BrandDto($id)
+            : null;
 
-            return $this->setBrand($value);
+        return $this->setBrand($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getBrandId()
+    {
+        if ($dto = $this->getBrand()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getBrandId()
-        {
-            if ($dto = $this->getBrand()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\FixedCost\FixedCostDto $fixedCost
@@ -201,31 +201,31 @@ abstract class FixedCostsRelInvoiceDtoAbstract implements DataTransferObjectInte
         return $this->fixedCost;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setFixedCostId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\FixedCost\FixedCostDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setFixedCostId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\FixedCost\FixedCostDto($id)
+            : null;
 
-            return $this->setFixedCost($value);
+        return $this->setFixedCost($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getFixedCostId()
+    {
+        if ($dto = $this->getFixedCost()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getFixedCostId()
-        {
-            if ($dto = $this->getFixedCost()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Invoice\InvoiceDto $invoice
@@ -247,31 +247,31 @@ abstract class FixedCostsRelInvoiceDtoAbstract implements DataTransferObjectInte
         return $this->invoice;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setInvoiceId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Invoice\InvoiceDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setInvoiceId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Invoice\InvoiceDto($id)
+            : null;
 
-            return $this->setInvoice($value);
+        return $this->setInvoice($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getInvoiceId()
+    {
+        if ($dto = $this->getInvoice()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getInvoiceId()
-        {
-            if ($dto = $this->getInvoice()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 }
 
 

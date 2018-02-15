@@ -852,31 +852,31 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->language;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setLanguageId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Language\LanguageDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setLanguageId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Language\LanguageDto($id)
+            : null;
 
-            return $this->setLanguage($value);
+        return $this->setLanguage($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getLanguageId()
+    {
+        if ($dto = $this->getLanguage()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getLanguageId()
-        {
-            if ($dto = $this->getLanguage()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetDto $mediaRelaySets
@@ -898,31 +898,31 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->mediaRelaySets;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setMediaRelaySetsId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setMediaRelaySetsId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetDto($id)
+            : null;
 
-            return $this->setMediaRelaySets($value);
+        return $this->setMediaRelaySets($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getMediaRelaySetsId()
+    {
+        if ($dto = $this->getMediaRelaySets()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getMediaRelaySetsId()
-        {
-            if ($dto = $this->getMediaRelaySets()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Timezone\TimezoneDto $defaultTimezone
@@ -944,31 +944,31 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->defaultTimezone;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setDefaultTimezoneId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Timezone\TimezoneDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setDefaultTimezoneId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Timezone\TimezoneDto($id)
+            : null;
 
-            return $this->setDefaultTimezone($value);
+        return $this->setDefaultTimezone($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getDefaultTimezoneId()
+    {
+        if ($dto = $this->getDefaultTimezone()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getDefaultTimezoneId()
-        {
-            if ($dto = $this->getDefaultTimezone()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandDto $brand
@@ -990,31 +990,31 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->brand;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setBrandId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Brand\BrandDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setBrandId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Brand\BrandDto($id)
+            : null;
 
-            return $this->setBrand($value);
+        return $this->setBrand($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getBrandId()
+    {
+        if ($dto = $this->getBrand()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getBrandId()
-        {
-            if ($dto = $this->getBrand()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Domain\DomainDto $domain
@@ -1036,31 +1036,31 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->domain;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setDomainId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Domain\DomainDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setDomainId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Domain\DomainDto($id)
+            : null;
 
-            return $this->setDomain($value);
+        return $this->setDomain($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getDomainId()
+    {
+        if ($dto = $this->getDomain()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getDomainId()
-        {
-            if ($dto = $this->getDomain()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerDto $applicationServer
@@ -1082,31 +1082,31 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->applicationServer;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setApplicationServerId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setApplicationServerId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerDto($id)
+            : null;
 
-            return $this->setApplicationServer($value);
+        return $this->setApplicationServer($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getApplicationServerId()
+    {
+        if ($dto = $this->getApplicationServer()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getApplicationServerId()
-        {
-            if ($dto = $this->getApplicationServer()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Country\CountryDto $country
@@ -1128,31 +1128,31 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->country;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setCountryId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Country\CountryDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setCountryId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Country\CountryDto($id)
+            : null;
 
-            return $this->setCountry($value);
+        return $this->setCountry($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getCountryId()
+    {
+        if ($dto = $this->getCountry()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getCountryId()
-        {
-            if ($dto = $this->getCountry()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto $transformationRuleSet
@@ -1174,31 +1174,31 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->transformationRuleSet;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setTransformationRuleSetId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setTransformationRuleSetId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto($id)
+            : null;
 
-            return $this->setTransformationRuleSet($value);
+        return $this->setTransformationRuleSet($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getTransformationRuleSetId()
+    {
+        if ($dto = $this->getTransformationRuleSet()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getTransformationRuleSetId()
-        {
-            if ($dto = $this->getTransformationRuleSet()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Ddi\DdiDto $outgoingDdi
@@ -1220,31 +1220,31 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->outgoingDdi;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setOutgoingDdiId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Ddi\DdiDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setOutgoingDdiId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Ddi\DdiDto($id)
+            : null;
 
-            return $this->setOutgoingDdi($value);
+        return $this->setOutgoingDdi($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getOutgoingDdiId()
+    {
+        if ($dto = $this->getOutgoingDdi()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getOutgoingDdiId()
-        {
-            if ($dto = $this->getOutgoingDdi()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleDto $outgoingDdiRule
@@ -1266,31 +1266,31 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->outgoingDdiRule;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setOutgoingDdiRuleId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setOutgoingDdiRuleId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleDto($id)
+            : null;
 
-            return $this->setOutgoingDdiRule($value);
+        return $this->setOutgoingDdiRule($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getOutgoingDdiRuleId()
+    {
+        if ($dto = $this->getOutgoingDdiRule()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getOutgoingDdiRuleId()
-        {
-            if ($dto = $this->getOutgoingDdiRule()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param array $extensions

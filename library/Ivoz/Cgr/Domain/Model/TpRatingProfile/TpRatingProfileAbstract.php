@@ -231,19 +231,19 @@ abstract class TpRatingProfileAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setTpid($this->getTpid())
-            ->setLoadid($this->getLoadid())
-            ->setDirection($this->getDirection())
-            ->setTenant($this->getTenant())
-            ->setCategory($this->getCategory())
-            ->setSubject($this->getSubject())
-            ->setActivationTime($this->getActivationTime())
-            ->setRatingPlanTag($this->getRatingPlanTag())
-            ->setFallbackSubjects($this->getFallbackSubjects())
-            ->setCdrStatQueueIds($this->getCdrStatQueueIds())
-            ->setCreatedAt($this->getCreatedAt())
-            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto($this->getCompany(), $depth))
-            ->setRatingPlan(\Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlan::entityToDto($this->getRatingPlan(), $depth));
+            ->setTpid(self::getTpid())
+            ->setLoadid(self::getLoadid())
+            ->setDirection(self::getDirection())
+            ->setTenant(self::getTenant())
+            ->setCategory(self::getCategory())
+            ->setSubject(self::getSubject())
+            ->setActivationTime(self::getActivationTime())
+            ->setRatingPlanTag(self::getRatingPlanTag())
+            ->setFallbackSubjects(self::getFallbackSubjects())
+            ->setCdrStatQueueIds(self::getCdrStatQueueIds())
+            ->setCreatedAt(self::getCreatedAt())
+            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
+            ->setRatingPlan(\Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlan::entityToDto(self::getRatingPlan(), $depth));
     }
 
     /**

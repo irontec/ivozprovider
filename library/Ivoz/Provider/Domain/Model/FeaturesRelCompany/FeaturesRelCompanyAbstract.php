@@ -138,8 +138,8 @@ abstract class FeaturesRelCompanyAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto($this->getCompany(), $depth))
-            ->setFeature(\Ivoz\Provider\Domain\Model\Feature\Feature::entityToDto($this->getFeature(), $depth));
+            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
+            ->setFeature(\Ivoz\Provider\Domain\Model\Feature\Feature::entityToDto(self::getFeature(), $depth));
     }
 
     /**

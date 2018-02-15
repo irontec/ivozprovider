@@ -177,13 +177,13 @@ abstract class UsersAddressAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setSourceAddress($this->getSourceAddress())
-            ->setIpAddr($this->getIpAddr())
-            ->setMask($this->getMask())
-            ->setPort($this->getPort())
-            ->setTag($this->getTag())
-            ->setDescription($this->getDescription())
-            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto($this->getCompany(), $depth));
+            ->setSourceAddress(self::getSourceAddress())
+            ->setIpAddr(self::getIpAddr())
+            ->setMask(self::getMask())
+            ->setPort(self::getPort())
+            ->setTag(self::getTag())
+            ->setDescription(self::getDescription())
+            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth));
     }
 
     /**

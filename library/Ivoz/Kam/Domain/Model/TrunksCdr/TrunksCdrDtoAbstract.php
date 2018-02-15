@@ -584,31 +584,31 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return $this->invoice;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setInvoiceId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Invoice\InvoiceDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setInvoiceId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Invoice\InvoiceDto($id)
+            : null;
 
-            return $this->setInvoice($value);
+        return $this->setInvoice($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getInvoiceId()
+    {
+        if ($dto = $this->getInvoice()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getInvoiceId()
-        {
-            if ($dto = $this->getInvoice()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandDto $brand
@@ -630,31 +630,31 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return $this->brand;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setBrandId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Brand\BrandDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setBrandId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Brand\BrandDto($id)
+            : null;
 
-            return $this->setBrand($value);
+        return $this->setBrand($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getBrandId()
+    {
+        if ($dto = $this->getBrand()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getBrandId()
-        {
-            if ($dto = $this->getBrand()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyDto $company
@@ -676,31 +676,31 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return $this->company;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setCompanyId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Company\CompanyDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setCompanyId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Company\CompanyDto($id)
+            : null;
 
-            return $this->setCompany($value);
+        return $this->setCompany($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getCompanyId()
+    {
+        if ($dto = $this->getCompany()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getCompanyId()
-        {
-            if ($dto = $this->getCompany()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractDto $peeringContract
@@ -722,31 +722,31 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return $this->peeringContract;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setPeeringContractId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setPeeringContractId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractDto($id)
+            : null;
 
-            return $this->setPeeringContract($value);
+        return $this->setPeeringContract($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getPeeringContractId()
+    {
+        if ($dto = $this->getPeeringContract()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getPeeringContractId()
-        {
-            if ($dto = $this->getPeeringContract()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Cgr\Domain\Model\Destination\DestinationDto $destination
@@ -768,31 +768,31 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return $this->destination;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setDestinationId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Cgr\Domain\Model\Destination\DestinationDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setDestinationId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Cgr\Domain\Model\Destination\DestinationDto($id)
+            : null;
 
-            return $this->setDestination($value);
+        return $this->setDestination($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getDestinationId()
+    {
+        if ($dto = $this->getDestination()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getDestinationId()
-        {
-            if ($dto = $this->getDestination()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateDto $destinationRate
@@ -814,31 +814,31 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return $this->destinationRate;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setDestinationRateId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setDestinationRateId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateDto($id)
+            : null;
 
-            return $this->setDestinationRate($value);
+        return $this->setDestinationRate($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getDestinationRateId()
+    {
+        if ($dto = $this->getDestinationRate()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getDestinationRateId()
-        {
-            if ($dto = $this->getDestinationRate()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 }
 
 

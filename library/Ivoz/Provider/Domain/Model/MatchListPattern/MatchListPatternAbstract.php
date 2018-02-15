@@ -167,12 +167,12 @@ abstract class MatchListPatternAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setDescription($this->getDescription())
-            ->setType($this->getType())
-            ->setRegexp($this->getRegexp())
-            ->setNumbervalue($this->getNumbervalue())
-            ->setMatchList(\Ivoz\Provider\Domain\Model\MatchList\MatchList::entityToDto($this->getMatchList(), $depth))
-            ->setNumberCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto($this->getNumberCountry(), $depth));
+            ->setDescription(self::getDescription())
+            ->setType(self::getType())
+            ->setRegexp(self::getRegexp())
+            ->setNumbervalue(self::getNumbervalue())
+            ->setMatchList(\Ivoz\Provider\Domain\Model\MatchList\MatchList::entityToDto(self::getMatchList(), $depth))
+            ->setNumberCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto(self::getNumberCountry(), $depth));
     }
 
     /**

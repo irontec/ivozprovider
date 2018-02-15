@@ -231,21 +231,21 @@ abstract class ExternalCallFilterAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setName($this->getName())
-            ->setHolidayTargetType($this->getHolidayTargetType())
-            ->setHolidayNumberValue($this->getHolidayNumberValue())
-            ->setOutOfScheduleTargetType($this->getOutOfScheduleTargetType())
-            ->setOutOfScheduleNumberValue($this->getOutOfScheduleNumberValue())
-            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto($this->getCompany(), $depth))
-            ->setWelcomeLocution(\Ivoz\Provider\Domain\Model\Locution\Locution::entityToDto($this->getWelcomeLocution(), $depth))
-            ->setHolidayLocution(\Ivoz\Provider\Domain\Model\Locution\Locution::entityToDto($this->getHolidayLocution(), $depth))
-            ->setOutOfScheduleLocution(\Ivoz\Provider\Domain\Model\Locution\Locution::entityToDto($this->getOutOfScheduleLocution(), $depth))
-            ->setHolidayExtension(\Ivoz\Provider\Domain\Model\Extension\Extension::entityToDto($this->getHolidayExtension(), $depth))
-            ->setOutOfScheduleExtension(\Ivoz\Provider\Domain\Model\Extension\Extension::entityToDto($this->getOutOfScheduleExtension(), $depth))
-            ->setHolidayVoiceMailUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto($this->getHolidayVoiceMailUser(), $depth))
-            ->setOutOfScheduleVoiceMailUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto($this->getOutOfScheduleVoiceMailUser(), $depth))
-            ->setHolidayNumberCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto($this->getHolidayNumberCountry(), $depth))
-            ->setOutOfScheduleNumberCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto($this->getOutOfScheduleNumberCountry(), $depth));
+            ->setName(self::getName())
+            ->setHolidayTargetType(self::getHolidayTargetType())
+            ->setHolidayNumberValue(self::getHolidayNumberValue())
+            ->setOutOfScheduleTargetType(self::getOutOfScheduleTargetType())
+            ->setOutOfScheduleNumberValue(self::getOutOfScheduleNumberValue())
+            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
+            ->setWelcomeLocution(\Ivoz\Provider\Domain\Model\Locution\Locution::entityToDto(self::getWelcomeLocution(), $depth))
+            ->setHolidayLocution(\Ivoz\Provider\Domain\Model\Locution\Locution::entityToDto(self::getHolidayLocution(), $depth))
+            ->setOutOfScheduleLocution(\Ivoz\Provider\Domain\Model\Locution\Locution::entityToDto(self::getOutOfScheduleLocution(), $depth))
+            ->setHolidayExtension(\Ivoz\Provider\Domain\Model\Extension\Extension::entityToDto(self::getHolidayExtension(), $depth))
+            ->setOutOfScheduleExtension(\Ivoz\Provider\Domain\Model\Extension\Extension::entityToDto(self::getOutOfScheduleExtension(), $depth))
+            ->setHolidayVoiceMailUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto(self::getHolidayVoiceMailUser(), $depth))
+            ->setOutOfScheduleVoiceMailUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto(self::getOutOfScheduleVoiceMailUser(), $depth))
+            ->setHolidayNumberCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto(self::getHolidayNumberCountry(), $depth))
+            ->setOutOfScheduleNumberCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto(self::getOutOfScheduleNumberCountry(), $depth));
     }
 
     /**

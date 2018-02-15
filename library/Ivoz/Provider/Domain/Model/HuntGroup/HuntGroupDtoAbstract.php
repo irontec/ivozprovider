@@ -353,31 +353,31 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
         return $this->company;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setCompanyId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Company\CompanyDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setCompanyId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Company\CompanyDto($id)
+            : null;
 
-            return $this->setCompany($value);
+        return $this->setCompany($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getCompanyId()
+    {
+        if ($dto = $this->getCompany()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getCompanyId()
-        {
-            if ($dto = $this->getCompany()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Locution\LocutionDto $noAnswerLocution
@@ -399,31 +399,31 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
         return $this->noAnswerLocution;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setNoAnswerLocutionId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Locution\LocutionDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setNoAnswerLocutionId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Locution\LocutionDto($id)
+            : null;
 
-            return $this->setNoAnswerLocution($value);
+        return $this->setNoAnswerLocution($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getNoAnswerLocutionId()
+    {
+        if ($dto = $this->getNoAnswerLocution()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getNoAnswerLocutionId()
-        {
-            if ($dto = $this->getNoAnswerLocution()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionDto $noAnswerExtension
@@ -445,31 +445,31 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
         return $this->noAnswerExtension;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setNoAnswerExtensionId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Extension\ExtensionDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setNoAnswerExtensionId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Extension\ExtensionDto($id)
+            : null;
 
-            return $this->setNoAnswerExtension($value);
+        return $this->setNoAnswerExtension($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getNoAnswerExtensionId()
+    {
+        if ($dto = $this->getNoAnswerExtension()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getNoAnswerExtensionId()
-        {
-            if ($dto = $this->getNoAnswerExtension()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\User\UserDto $noAnswerVoiceMailUser
@@ -491,31 +491,31 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
         return $this->noAnswerVoiceMailUser;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setNoAnswerVoiceMailUserId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\User\UserDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setNoAnswerVoiceMailUserId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\User\UserDto($id)
+            : null;
 
-            return $this->setNoAnswerVoiceMailUser($value);
+        return $this->setNoAnswerVoiceMailUser($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getNoAnswerVoiceMailUserId()
+    {
+        if ($dto = $this->getNoAnswerVoiceMailUser()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getNoAnswerVoiceMailUserId()
-        {
-            if ($dto = $this->getNoAnswerVoiceMailUser()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Country\CountryDto $noAnswerNumberCountry
@@ -537,31 +537,31 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
         return $this->noAnswerNumberCountry;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setNoAnswerNumberCountryId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Country\CountryDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setNoAnswerNumberCountryId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Country\CountryDto($id)
+            : null;
 
-            return $this->setNoAnswerNumberCountry($value);
+        return $this->setNoAnswerNumberCountry($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getNoAnswerNumberCountryId()
+    {
+        if ($dto = $this->getNoAnswerNumberCountry()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getNoAnswerNumberCountryId()
-        {
-            if ($dto = $this->getNoAnswerNumberCountry()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param array $huntGroupsRelUsers

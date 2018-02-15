@@ -271,31 +271,31 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
         return $this->user;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setUserId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\User\UserDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setUserId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\User\UserDto($id)
+            : null;
 
-            return $this->setUser($value);
+        return $this->setUser($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getUserId()
+    {
+        if ($dto = $this->getUser()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getUserId()
-        {
-            if ($dto = $this->getUser()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionDto $extension
@@ -317,31 +317,31 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
         return $this->extension;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setExtensionId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Extension\ExtensionDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setExtensionId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Extension\ExtensionDto($id)
+            : null;
 
-            return $this->setExtension($value);
+        return $this->setExtension($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getExtensionId()
+    {
+        if ($dto = $this->getExtension()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getExtensionId()
-        {
-            if ($dto = $this->getExtension()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\User\UserDto $voiceMailUser
@@ -363,31 +363,31 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
         return $this->voiceMailUser;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setVoiceMailUserId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\User\UserDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setVoiceMailUserId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\User\UserDto($id)
+            : null;
 
-            return $this->setVoiceMailUser($value);
+        return $this->setVoiceMailUser($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getVoiceMailUserId()
+    {
+        if ($dto = $this->getVoiceMailUser()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getVoiceMailUserId()
-        {
-            if ($dto = $this->getVoiceMailUser()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Country\CountryDto $numberCountry
@@ -409,31 +409,31 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
         return $this->numberCountry;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setNumberCountryId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Country\CountryDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setNumberCountryId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Country\CountryDto($id)
+            : null;
 
-            return $this->setNumberCountry($value);
+        return $this->setNumberCountry($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getNumberCountryId()
+    {
+        if ($dto = $this->getNumberCountry()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getNumberCountryId()
-        {
-            if ($dto = $this->getNumberCountry()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 }
 
 

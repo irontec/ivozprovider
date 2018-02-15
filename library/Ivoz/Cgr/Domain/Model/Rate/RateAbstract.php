@@ -145,9 +145,9 @@ abstract class RateAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setTag($this->getTag())
-            ->setName($this->getName())
-            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto($this->getBrand(), $depth));
+            ->setTag(self::getTag())
+            ->setName(self::getName())
+            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth));
     }
 
     /**

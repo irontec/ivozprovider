@@ -174,31 +174,31 @@ abstract class CallAclRelMatchListDtoAbstract implements DataTransferObjectInter
         return $this->callAcl;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setCallAclId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\CallAcl\CallAclDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setCallAclId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\CallAcl\CallAclDto($id)
+            : null;
 
-            return $this->setCallAcl($value);
+        return $this->setCallAcl($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getCallAclId()
+    {
+        if ($dto = $this->getCallAcl()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getCallAclId()
-        {
-            if ($dto = $this->getCallAcl()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\MatchList\MatchListDto $matchList
@@ -220,31 +220,31 @@ abstract class CallAclRelMatchListDtoAbstract implements DataTransferObjectInter
         return $this->matchList;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setMatchListId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\MatchList\MatchListDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setMatchListId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\MatchList\MatchListDto($id)
+            : null;
 
-            return $this->setMatchList($value);
+        return $this->setMatchList($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getMatchListId()
+    {
+        if ($dto = $this->getMatchList()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getMatchListId()
-        {
-            if ($dto = $this->getMatchList()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 }
 
 

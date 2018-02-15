@@ -154,10 +154,10 @@ abstract class CallAclRelMatchListAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setPriority($this->getPriority())
-            ->setPolicy($this->getPolicy())
-            ->setCallAcl(\Ivoz\Provider\Domain\Model\CallAcl\CallAcl::entityToDto($this->getCallAcl(), $depth))
-            ->setMatchList(\Ivoz\Provider\Domain\Model\MatchList\MatchList::entityToDto($this->getMatchList(), $depth));
+            ->setPriority(self::getPriority())
+            ->setPolicy(self::getPolicy())
+            ->setCallAcl(\Ivoz\Provider\Domain\Model\CallAcl\CallAcl::entityToDto(self::getCallAcl(), $depth))
+            ->setMatchList(\Ivoz\Provider\Domain\Model\MatchList\MatchList::entityToDto(self::getMatchList(), $depth));
     }
 
     /**

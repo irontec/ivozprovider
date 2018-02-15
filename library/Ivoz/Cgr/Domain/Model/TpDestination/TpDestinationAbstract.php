@@ -162,11 +162,11 @@ abstract class TpDestinationAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setTpid($this->getTpid())
-            ->setTag($this->getTag())
-            ->setPrefix($this->getPrefix())
-            ->setCreatedAt($this->getCreatedAt())
-            ->setDestination(\Ivoz\Cgr\Domain\Model\Destination\Destination::entityToDto($this->getDestination(), $depth));
+            ->setTpid(self::getTpid())
+            ->setTag(self::getTag())
+            ->setPrefix(self::getPrefix())
+            ->setCreatedAt(self::getCreatedAt())
+            ->setDestination(\Ivoz\Cgr\Domain\Model\Destination\Destination::entityToDto(self::getDestination(), $depth));
     }
 
     /**

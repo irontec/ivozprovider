@@ -226,18 +226,18 @@ abstract class TpDestinationRateAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setTpid($this->getTpid())
-            ->setTag($this->getTag())
-            ->setDestinationsTag($this->getDestinationsTag())
-            ->setRatesTag($this->getRatesTag())
-            ->setRoundingMethod($this->getRoundingMethod())
-            ->setRoundingDecimals($this->getRoundingDecimals())
-            ->setMaxCost($this->getMaxCost())
-            ->setMaxCostStrategy($this->getMaxCostStrategy())
-            ->setCreatedAt($this->getCreatedAt())
-            ->setDestinationRate(\Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRate::entityToDto($this->getDestinationRate(), $depth))
-            ->setDestination(\Ivoz\Cgr\Domain\Model\Destination\Destination::entityToDto($this->getDestination(), $depth))
-            ->setRate(\Ivoz\Cgr\Domain\Model\Rate\Rate::entityToDto($this->getRate(), $depth));
+            ->setTpid(self::getTpid())
+            ->setTag(self::getTag())
+            ->setDestinationsTag(self::getDestinationsTag())
+            ->setRatesTag(self::getRatesTag())
+            ->setRoundingMethod(self::getRoundingMethod())
+            ->setRoundingDecimals(self::getRoundingDecimals())
+            ->setMaxCost(self::getMaxCost())
+            ->setMaxCostStrategy(self::getMaxCostStrategy())
+            ->setCreatedAt(self::getCreatedAt())
+            ->setDestinationRate(\Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRate::entityToDto(self::getDestinationRate(), $depth))
+            ->setDestination(\Ivoz\Cgr\Domain\Model\Destination\Destination::entityToDto(self::getDestination(), $depth))
+            ->setRate(\Ivoz\Cgr\Domain\Model\Rate\Rate::entityToDto(self::getRate(), $depth));
     }
 
     /**

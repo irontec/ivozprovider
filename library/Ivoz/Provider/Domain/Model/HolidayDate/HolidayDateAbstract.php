@@ -153,10 +153,10 @@ abstract class HolidayDateAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setName($this->getName())
-            ->setEventDate($this->getEventDate())
-            ->setCalendar(\Ivoz\Provider\Domain\Model\Calendar\Calendar::entityToDto($this->getCalendar(), $depth))
-            ->setLocution(\Ivoz\Provider\Domain\Model\Locution\Locution::entityToDto($this->getLocution(), $depth));
+            ->setName(self::getName())
+            ->setEventDate(self::getEventDate())
+            ->setCalendar(\Ivoz\Provider\Domain\Model\Calendar\Calendar::entityToDto(self::getCalendar(), $depth))
+            ->setLocution(\Ivoz\Provider\Domain\Model\Locution\Locution::entityToDto(self::getLocution(), $depth));
     }
 
     /**

@@ -228,31 +228,31 @@ abstract class MatchListPatternDtoAbstract implements DataTransferObjectInterfac
         return $this->matchList;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setMatchListId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\MatchList\MatchListDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setMatchListId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\MatchList\MatchListDto($id)
+            : null;
 
-            return $this->setMatchList($value);
+        return $this->setMatchList($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getMatchListId()
+    {
+        if ($dto = $this->getMatchList()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getMatchListId()
-        {
-            if ($dto = $this->getMatchList()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Country\CountryDto $numberCountry
@@ -274,31 +274,31 @@ abstract class MatchListPatternDtoAbstract implements DataTransferObjectInterfac
         return $this->numberCountry;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setNumberCountryId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Country\CountryDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setNumberCountryId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Country\CountryDto($id)
+            : null;
 
-            return $this->setNumberCountry($value);
+        return $this->setNumberCountry($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getNumberCountryId()
+    {
+        if ($dto = $this->getNumberCountry()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getNumberCountryId()
-        {
-            if ($dto = $this->getNumberCountry()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 }
 
 

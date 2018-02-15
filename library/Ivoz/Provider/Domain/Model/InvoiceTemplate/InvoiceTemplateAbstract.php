@@ -167,12 +167,12 @@ abstract class InvoiceTemplateAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setName($this->getName())
-            ->setDescription($this->getDescription())
-            ->setTemplate($this->getTemplate())
-            ->setTemplateHeader($this->getTemplateHeader())
-            ->setTemplateFooter($this->getTemplateFooter())
-            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto($this->getBrand(), $depth));
+            ->setName(self::getName())
+            ->setDescription(self::getDescription())
+            ->setTemplate(self::getTemplate())
+            ->setTemplateHeader(self::getTemplateHeader())
+            ->setTemplateFooter(self::getTemplateFooter())
+            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth));
     }
 
     /**

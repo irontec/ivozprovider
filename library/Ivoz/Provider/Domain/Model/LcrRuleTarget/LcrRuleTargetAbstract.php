@@ -169,12 +169,12 @@ abstract class LcrRuleTargetAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setLcrId($this->getLcrId())
-            ->setPriority($this->getPriority())
-            ->setWeight($this->getWeight())
-            ->setRule(\Ivoz\Provider\Domain\Model\LcrRule\LcrRule::entityToDto($this->getRule(), $depth))
-            ->setGw(\Ivoz\Provider\Domain\Model\LcrGateway\LcrGateway::entityToDto($this->getGw(), $depth))
-            ->setOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting::entityToDto($this->getOutgoingRouting(), $depth));
+            ->setLcrId(self::getLcrId())
+            ->setPriority(self::getPriority())
+            ->setWeight(self::getWeight())
+            ->setRule(\Ivoz\Provider\Domain\Model\LcrRule\LcrRule::entityToDto(self::getRule(), $depth))
+            ->setGw(\Ivoz\Provider\Domain\Model\LcrGateway\LcrGateway::entityToDto(self::getGw(), $depth))
+            ->setOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting::entityToDto(self::getOutgoingRouting(), $depth));
     }
 
     /**

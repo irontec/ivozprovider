@@ -138,8 +138,8 @@ abstract class ProxyUserAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setName($this->getName())
-            ->setIp($this->getIp());
+            ->setName(self::getName())
+            ->setIp(self::getIp());
     }
 
     /**

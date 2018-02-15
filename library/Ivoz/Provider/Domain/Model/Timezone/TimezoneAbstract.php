@@ -164,11 +164,11 @@ abstract class TimezoneAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setTz($this->getTz())
-            ->setComment($this->getComment())
-            ->setLabelEn($this->getLabel()->getEn())
-            ->setLabelEs($this->getLabel()->getEs())
-            ->setCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto($this->getCountry(), $depth));
+            ->setTz(self::getTz())
+            ->setComment(self::getComment())
+            ->setLabelEn(self::getLabel()->getEn())
+            ->setLabelEs(self::getLabel()->getEs())
+            ->setCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto(self::getCountry(), $depth));
     }
 
     /**

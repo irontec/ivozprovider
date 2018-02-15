@@ -138,8 +138,8 @@ abstract class MediaRelaySetAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setName($this->getName())
-            ->setDescription($this->getDescription());
+            ->setName(self::getName())
+            ->setDescription(self::getDescription());
     }
 
     /**

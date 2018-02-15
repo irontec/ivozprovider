@@ -138,8 +138,8 @@ abstract class ConditionalRoutesConditionsRelScheduleAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setCondition(\Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition::entityToDto($this->getCondition(), $depth))
-            ->setSchedule(\Ivoz\Provider\Domain\Model\Schedule\Schedule::entityToDto($this->getSchedule(), $depth));
+            ->setCondition(\Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition::entityToDto(self::getCondition(), $depth))
+            ->setSchedule(\Ivoz\Provider\Domain\Model\Schedule\Schedule::entityToDto(self::getSchedule(), $depth));
     }
 
     /**

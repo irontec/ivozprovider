@@ -206,16 +206,16 @@ abstract class LcrRuleAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setLcrId($this->getLcrId())
-            ->setPrefix($this->getPrefix())
-            ->setFromUri($this->getFromUri())
-            ->setRequestUri($this->getRequestUri())
-            ->setStopper($this->getStopper())
-            ->setEnabled($this->getEnabled())
-            ->setTag($this->getTag())
-            ->setDescription($this->getDescription())
-            ->setRoutingPattern(\Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPattern::entityToDto($this->getRoutingPattern(), $depth))
-            ->setOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting::entityToDto($this->getOutgoingRouting(), $depth));
+            ->setLcrId(self::getLcrId())
+            ->setPrefix(self::getPrefix())
+            ->setFromUri(self::getFromUri())
+            ->setRequestUri(self::getRequestUri())
+            ->setStopper(self::getStopper())
+            ->setEnabled(self::getEnabled())
+            ->setTag(self::getTag())
+            ->setDescription(self::getDescription())
+            ->setRoutingPattern(\Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPattern::entityToDto(self::getRoutingPattern(), $depth))
+            ->setOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting::entityToDto(self::getOutgoingRouting(), $depth));
     }
 
     /**

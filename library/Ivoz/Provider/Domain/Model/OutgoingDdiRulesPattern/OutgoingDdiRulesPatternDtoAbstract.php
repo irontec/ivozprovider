@@ -182,31 +182,31 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
         return $this->outgoingDdiRule;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setOutgoingDdiRuleId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setOutgoingDdiRuleId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleDto($id)
+            : null;
 
-            return $this->setOutgoingDdiRule($value);
+        return $this->setOutgoingDdiRule($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getOutgoingDdiRuleId()
+    {
+        if ($dto = $this->getOutgoingDdiRule()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getOutgoingDdiRuleId()
-        {
-            if ($dto = $this->getOutgoingDdiRule()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\MatchList\MatchListDto $matchList
@@ -228,31 +228,31 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
         return $this->matchList;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setMatchListId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\MatchList\MatchListDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setMatchListId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\MatchList\MatchListDto($id)
+            : null;
 
-            return $this->setMatchList($value);
+        return $this->setMatchList($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getMatchListId()
+    {
+        if ($dto = $this->getMatchList()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getMatchListId()
-        {
-            if ($dto = $this->getMatchList()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Ddi\DdiDto $forcedDdi
@@ -274,31 +274,31 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
         return $this->forcedDdi;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setForcedDdiId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Ddi\DdiDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setForcedDdiId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Ddi\DdiDto($id)
+            : null;
 
-            return $this->setForcedDdi($value);
+        return $this->setForcedDdi($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getForcedDdiId()
+    {
+        if ($dto = $this->getForcedDdi()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getForcedDdiId()
-        {
-            if ($dto = $this->getForcedDdi()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 }
 
 

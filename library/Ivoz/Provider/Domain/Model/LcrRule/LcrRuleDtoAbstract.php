@@ -336,31 +336,31 @@ abstract class LcrRuleDtoAbstract implements DataTransferObjectInterface
         return $this->routingPattern;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setRoutingPatternId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setRoutingPatternId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternDto($id)
+            : null;
 
-            return $this->setRoutingPattern($value);
+        return $this->setRoutingPattern($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getRoutingPatternId()
+    {
+        if ($dto = $this->getRoutingPattern()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getRoutingPatternId()
-        {
-            if ($dto = $this->getRoutingPattern()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto $outgoingRouting
@@ -382,31 +382,31 @@ abstract class LcrRuleDtoAbstract implements DataTransferObjectInterface
         return $this->outgoingRouting;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setOutgoingRoutingId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setOutgoingRoutingId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto($id)
+            : null;
 
-            return $this->setOutgoingRouting($value);
+        return $this->setOutgoingRouting($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getOutgoingRoutingId()
+    {
+        if ($dto = $this->getOutgoingRouting()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getOutgoingRoutingId()
-        {
-            if ($dto = $this->getOutgoingRouting()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 }
 
 

@@ -640,31 +640,31 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->company;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setCompanyId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Company\CompanyDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setCompanyId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Company\CompanyDto($id)
+            : null;
 
-            return $this->setCompany($value);
+        return $this->setCompany($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getCompanyId()
+    {
+        if ($dto = $this->getCompany()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getCompanyId()
-        {
-            if ($dto = $this->getCompany()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\CallAcl\CallAclDto $callAcl
@@ -686,31 +686,31 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->callAcl;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setCallAclId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\CallAcl\CallAclDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setCallAclId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\CallAcl\CallAclDto($id)
+            : null;
 
-            return $this->setCallAcl($value);
+        return $this->setCallAcl($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getCallAclId()
+    {
+        if ($dto = $this->getCallAcl()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getCallAclId()
-        {
-            if ($dto = $this->getCallAcl()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\User\UserDto $bossAssistant
@@ -732,31 +732,31 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->bossAssistant;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setBossAssistantId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\User\UserDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setBossAssistantId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\User\UserDto($id)
+            : null;
 
-            return $this->setBossAssistant($value);
+        return $this->setBossAssistant($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getBossAssistantId()
+    {
+        if ($dto = $this->getBossAssistant()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getBossAssistantId()
-        {
-            if ($dto = $this->getBossAssistant()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\MatchList\MatchListDto $bossAssistantWhiteList
@@ -778,31 +778,31 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->bossAssistantWhiteList;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setBossAssistantWhiteListId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\MatchList\MatchListDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setBossAssistantWhiteListId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\MatchList\MatchListDto($id)
+            : null;
 
-            return $this->setBossAssistantWhiteList($value);
+        return $this->setBossAssistantWhiteList($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getBossAssistantWhiteListId()
+    {
+        if ($dto = $this->getBossAssistantWhiteList()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getBossAssistantWhiteListId()
-        {
-            if ($dto = $this->getBossAssistantWhiteList()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto $transformationRuleSet
@@ -824,31 +824,31 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->transformationRuleSet;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setTransformationRuleSetId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setTransformationRuleSetId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto($id)
+            : null;
 
-            return $this->setTransformationRuleSet($value);
+        return $this->setTransformationRuleSet($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getTransformationRuleSetId()
+    {
+        if ($dto = $this->getTransformationRuleSet()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getTransformationRuleSetId()
-        {
-            if ($dto = $this->getTransformationRuleSet()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Language\LanguageDto $language
@@ -870,31 +870,31 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->language;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setLanguageId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Language\LanguageDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setLanguageId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Language\LanguageDto($id)
+            : null;
 
-            return $this->setLanguage($value);
+        return $this->setLanguage($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getLanguageId()
+    {
+        if ($dto = $this->getLanguage()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getLanguageId()
-        {
-            if ($dto = $this->getLanguage()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Terminal\TerminalDto $terminal
@@ -916,31 +916,31 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->terminal;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setTerminalId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Terminal\TerminalDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setTerminalId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Terminal\TerminalDto($id)
+            : null;
 
-            return $this->setTerminal($value);
+        return $this->setTerminal($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getTerminalId()
+    {
+        if ($dto = $this->getTerminal()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getTerminalId()
-        {
-            if ($dto = $this->getTerminal()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionDto $extension
@@ -962,31 +962,31 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->extension;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setExtensionId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Extension\ExtensionDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setExtensionId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Extension\ExtensionDto($id)
+            : null;
 
-            return $this->setExtension($value);
+        return $this->setExtension($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getExtensionId()
+    {
+        if ($dto = $this->getExtension()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getExtensionId()
-        {
-            if ($dto = $this->getExtension()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Timezone\TimezoneDto $timezone
@@ -1008,31 +1008,31 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->timezone;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setTimezoneId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Timezone\TimezoneDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setTimezoneId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Timezone\TimezoneDto($id)
+            : null;
 
-            return $this->setTimezone($value);
+        return $this->setTimezone($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getTimezoneId()
+    {
+        if ($dto = $this->getTimezone()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getTimezoneId()
-        {
-            if ($dto = $this->getTimezone()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Ddi\DdiDto $outgoingDdi
@@ -1054,31 +1054,31 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->outgoingDdi;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setOutgoingDdiId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Ddi\DdiDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setOutgoingDdiId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Ddi\DdiDto($id)
+            : null;
 
-            return $this->setOutgoingDdi($value);
+        return $this->setOutgoingDdi($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getOutgoingDdiId()
+    {
+        if ($dto = $this->getOutgoingDdi()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getOutgoingDdiId()
-        {
-            if ($dto = $this->getOutgoingDdi()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleDto $outgoingDdiRule
@@ -1100,31 +1100,31 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->outgoingDdiRule;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setOutgoingDdiRuleId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setOutgoingDdiRuleId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleDto($id)
+            : null;
 
-            return $this->setOutgoingDdiRule($value);
+        return $this->setOutgoingDdiRule($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getOutgoingDdiRuleId()
+    {
+        if ($dto = $this->getOutgoingDdiRule()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getOutgoingDdiRuleId()
-        {
-            if ($dto = $this->getOutgoingDdiRule()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\Locution\LocutionDto $voicemailLocution
@@ -1146,31 +1146,31 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->voicemailLocution;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setVoicemailLocutionId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\Locution\LocutionDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setVoicemailLocutionId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Locution\LocutionDto($id)
+            : null;
 
-            return $this->setVoicemailLocution($value);
+        return $this->setVoicemailLocution($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getVoicemailLocutionId()
+    {
+        if ($dto = $this->getVoicemailLocution()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getVoicemailLocutionId()
-        {
-            if ($dto = $this->getVoicemailLocution()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param array $pickUpRelUsers

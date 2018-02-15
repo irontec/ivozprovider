@@ -174,31 +174,31 @@ abstract class HuntGroupsRelUserDtoAbstract implements DataTransferObjectInterfa
         return $this->huntGroup;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setHuntGroupId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setHuntGroupId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupDto($id)
+            : null;
 
-            return $this->setHuntGroup($value);
+        return $this->setHuntGroup($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getHuntGroupId()
+    {
+        if ($dto = $this->getHuntGroup()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getHuntGroupId()
-        {
-            if ($dto = $this->getHuntGroup()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 
     /**
      * @param \Ivoz\Provider\Domain\Model\User\UserDto $user
@@ -220,31 +220,31 @@ abstract class HuntGroupsRelUserDtoAbstract implements DataTransferObjectInterfa
         return $this->user;
     }
 
-        /**
-         * @param integer $id | null
-         *
-         * @return static
-         */
-        public function setUserId($id)
-        {
-            $value = !is_null($id)
-                ? new \Ivoz\Provider\Domain\Model\User\UserDto($id)
-                : null;
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setUserId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\User\UserDto($id)
+            : null;
 
-            return $this->setUser($value);
+        return $this->setUser($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getUserId()
+    {
+        if ($dto = $this->getUser()) {
+            return $dto->getId();
         }
 
-        /**
-         * @return integer | null
-         */
-        public function getUserId()
-        {
-            if ($dto = $this->getUser()) {
-                return $dto->getId();
-            }
-
-            return null;
-        }
+        return null;
+    }
 }
 
 

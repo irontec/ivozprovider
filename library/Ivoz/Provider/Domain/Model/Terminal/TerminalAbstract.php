@@ -213,17 +213,17 @@ abstract class TerminalAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setName($this->getName())
-            ->setDisallow($this->getDisallow())
-            ->setAllowAudio($this->getAllowAudio())
-            ->setAllowVideo($this->getAllowVideo())
-            ->setDirectMediaMethod($this->getDirectMediaMethod())
-            ->setPassword($this->getPassword())
-            ->setMac($this->getMac())
-            ->setLastProvisionDate($this->getLastProvisionDate())
-            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto($this->getCompany(), $depth))
-            ->setDomain(\Ivoz\Provider\Domain\Model\Domain\Domain::entityToDto($this->getDomain(), $depth))
-            ->setTerminalModel(\Ivoz\Provider\Domain\Model\TerminalModel\TerminalModel::entityToDto($this->getTerminalModel(), $depth));
+            ->setName(self::getName())
+            ->setDisallow(self::getDisallow())
+            ->setAllowAudio(self::getAllowAudio())
+            ->setAllowVideo(self::getAllowVideo())
+            ->setDirectMediaMethod(self::getDirectMediaMethod())
+            ->setPassword(self::getPassword())
+            ->setMac(self::getMac())
+            ->setLastProvisionDate(self::getLastProvisionDate())
+            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
+            ->setDomain(\Ivoz\Provider\Domain\Model\Domain\Domain::entityToDto(self::getDomain(), $depth))
+            ->setTerminalModel(\Ivoz\Provider\Domain\Model\TerminalModel\TerminalModel::entityToDto(self::getTerminalModel(), $depth));
     }
 
     /**

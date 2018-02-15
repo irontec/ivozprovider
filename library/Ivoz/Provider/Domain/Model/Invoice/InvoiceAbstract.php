@@ -216,19 +216,19 @@ abstract class InvoiceAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setNumber($this->getNumber())
-            ->setInDate($this->getInDate())
-            ->setOutDate($this->getOutDate())
-            ->setTotal($this->getTotal())
-            ->setTaxRate($this->getTaxRate())
-            ->setTotalWithTax($this->getTotalWithTax())
-            ->setStatus($this->getStatus())
-            ->setPdfFileSize($this->getPdf()->getFileSize())
-            ->setPdfMimeType($this->getPdf()->getMimeType())
-            ->setPdfBaseName($this->getPdf()->getBaseName())
-            ->setInvoiceTemplate(\Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplate::entityToDto($this->getInvoiceTemplate(), $depth))
-            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto($this->getBrand(), $depth))
-            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto($this->getCompany(), $depth));
+            ->setNumber(self::getNumber())
+            ->setInDate(self::getInDate())
+            ->setOutDate(self::getOutDate())
+            ->setTotal(self::getTotal())
+            ->setTaxRate(self::getTaxRate())
+            ->setTotalWithTax(self::getTotalWithTax())
+            ->setStatus(self::getStatus())
+            ->setPdfFileSize(self::getPdf()->getFileSize())
+            ->setPdfMimeType(self::getPdf()->getMimeType())
+            ->setPdfBaseName(self::getPdf()->getBaseName())
+            ->setInvoiceTemplate(\Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplate::entityToDto(self::getInvoiceTemplate(), $depth))
+            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
+            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth));
     }
 
     /**

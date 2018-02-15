@@ -185,13 +185,13 @@ abstract class UsersLocationAttrAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setRuid($this->getRuid())
-            ->setUsername($this->getUsername())
-            ->setDomain($this->getDomain())
-            ->setAname($this->getAname())
-            ->setAtype($this->getAtype())
-            ->setAvalue($this->getAvalue())
-            ->setLastModified($this->getLastModified());
+            ->setRuid(self::getRuid())
+            ->setUsername(self::getUsername())
+            ->setDomain(self::getDomain())
+            ->setAname(self::getAname())
+            ->setAtype(self::getAtype())
+            ->setAvalue(self::getAvalue())
+            ->setLastModified(self::getLastModified());
     }
 
     /**

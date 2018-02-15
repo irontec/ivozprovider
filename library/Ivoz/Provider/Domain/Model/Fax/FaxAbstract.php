@@ -160,11 +160,11 @@ abstract class FaxAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setName($this->getName())
-            ->setEmail($this->getEmail())
-            ->setSendByEmail($this->getSendByEmail())
-            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto($this->getCompany(), $depth))
-            ->setOutgoingDdi(\Ivoz\Provider\Domain\Model\Ddi\Ddi::entityToDto($this->getOutgoingDdi(), $depth));
+            ->setName(self::getName())
+            ->setEmail(self::getEmail())
+            ->setSendByEmail(self::getSendByEmail())
+            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
+            ->setOutgoingDdi(\Ivoz\Provider\Domain\Model\Ddi\Ddi::entityToDto(self::getOutgoingDdi(), $depth));
     }
 
     /**

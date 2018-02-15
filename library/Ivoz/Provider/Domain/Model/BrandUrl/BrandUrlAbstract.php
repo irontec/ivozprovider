@@ -189,15 +189,15 @@ abstract class BrandUrlAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setUrl($this->getUrl())
-            ->setKlearTheme($this->getKlearTheme())
-            ->setUrlType($this->getUrlType())
-            ->setName($this->getName())
-            ->setUserTheme($this->getUserTheme())
-            ->setLogoFileSize($this->getLogo()->getFileSize())
-            ->setLogoMimeType($this->getLogo()->getMimeType())
-            ->setLogoBaseName($this->getLogo()->getBaseName())
-            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto($this->getBrand(), $depth));
+            ->setUrl(self::getUrl())
+            ->setKlearTheme(self::getKlearTheme())
+            ->setUrlType(self::getUrlType())
+            ->setName(self::getName())
+            ->setUserTheme(self::getUserTheme())
+            ->setLogoFileSize(self::getLogo()->getFileSize())
+            ->setLogoMimeType(self::getLogo()->getMimeType())
+            ->setLogoBaseName(self::getLogo()->getBaseName())
+            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth));
     }
 
     /**

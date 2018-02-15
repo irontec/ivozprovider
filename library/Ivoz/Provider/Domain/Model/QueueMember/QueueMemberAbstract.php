@@ -145,9 +145,9 @@ abstract class QueueMemberAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setPenalty($this->getPenalty())
-            ->setQueue(\Ivoz\Provider\Domain\Model\Queue\Queue::entityToDto($this->getQueue(), $depth))
-            ->setUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto($this->getUser(), $depth));
+            ->setPenalty(self::getPenalty())
+            ->setQueue(\Ivoz\Provider\Domain\Model\Queue\Queue::entityToDto(self::getQueue(), $depth))
+            ->setUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto(self::getUser(), $depth));
     }
 
     /**

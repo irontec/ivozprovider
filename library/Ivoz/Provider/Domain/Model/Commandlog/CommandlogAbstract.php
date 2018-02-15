@@ -173,12 +173,12 @@ abstract class CommandlogAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setRequestId($this->getRequestId())
-            ->setClass($this->getClass())
-            ->setMethod($this->getMethod())
-            ->setArguments($this->getArguments())
-            ->setCreatedOn($this->getCreatedOn())
-            ->setMicrotime($this->getMicrotime());
+            ->setRequestId(self::getRequestId())
+            ->setClass(self::getClass())
+            ->setMethod(self::getMethod())
+            ->setArguments(self::getArguments())
+            ->setCreatedOn(self::getCreatedOn())
+            ->setMicrotime(self::getMicrotime());
     }
 
     /**

@@ -173,12 +173,12 @@ abstract class ChangelogAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setEntity($this->getEntity())
-            ->setEntityId($this->getEntityId())
-            ->setData($this->getData())
-            ->setCreatedOn($this->getCreatedOn())
-            ->setMicrotime($this->getMicrotime())
-            ->setCommand(\Ivoz\Provider\Domain\Model\Commandlog\Commandlog::entityToDto($this->getCommand(), $depth));
+            ->setEntity(self::getEntity())
+            ->setEntityId(self::getEntityId())
+            ->setData(self::getData())
+            ->setCreatedOn(self::getCreatedOn())
+            ->setMicrotime(self::getMicrotime())
+            ->setCommand(\Ivoz\Provider\Domain\Model\Commandlog\Commandlog::entityToDto(self::getCommand(), $depth));
     }
 
     /**
