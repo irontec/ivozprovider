@@ -26,6 +26,18 @@ class DoctrineEntityPersister implements EntityPersisterInterface
     protected $em;
 
     /**
+     * @var UnitOfWork
+     * @deprecated
+     */
+    protected $unitOfWork;
+
+    /**
+     * @var ReflectionProperty
+     * @deprecated
+     */
+    protected $entityStateAccessor;
+
+    /**
      * @var CreateEntityFromDTO
      */
     protected $createEntityFromDTO;
@@ -70,6 +82,12 @@ class DoctrineEntityPersister implements EntityPersisterInterface
         array $softDeleteMap
     ) {
         $this->em = $em;
+
+        $this->unitOfWork = $this->em->getUnitOfWork();
+        $unitOfWorkRef = new \ReflectionClass($this->unitOfWork );
+        $this->entityStateAccessor = $unitOfWorkRef->getProperty('entityStates');
+        $this->entityStateAccessor->setAccessible(true);
+
         $this->createEntityFromDTO = $createEntityFromDTO;
         $this->entityUpdater = $entityUpdater;
         $this->commandEventSubscriber = $commandEventSubscriber;
@@ -153,7 +171,16 @@ class DoctrineEntityPersister implements EntityPersisterInterface
             foreach ($dependantEntities as $dependant) {
                 $this->remove($dependant);
             }
+            $oid = spl_object_hash($entity);
             $this->em->remove($entity);
+            $this->em->flush();
+
+            // This is a temporary hack in order to avoid cross reference issues
+            // with doctrine when an entity has been removed
+            // user <-> extension relationship for instance
+            $entityStates = $this->entityStateAccessor->getValue($this->unitOfWork);
+            $entityStates[$oid] = UnitOfWork::STATE_MANAGED;
+            $this->entityStateAccessor->setValue($this->unitOfWork, $entityStates);
         };
 
         $this->transactional($entity, $transaction);
@@ -209,6 +236,8 @@ class DoctrineEntityPersister implements EntityPersisterInterface
             while (true) {
 
                 if (empty($this->pendingUpdates)) {
+                    // Trigger post [persist|remove] events
+                    $this->em->flush();
                     break;
                 }
 
@@ -220,7 +249,6 @@ class DoctrineEntityPersister implements EntityPersisterInterface
             }
 
             $this->persistEvents();
-            $this->em->flush();
         });
 
         $this->rootEntity = null;
@@ -283,7 +311,6 @@ class DoctrineEntityPersister implements EntityPersisterInterface
         }
 
         $commandlog = Commandlog::fromEvent($command);
-        $this->em->clear();
         $this->em->persist($commandlog);
 
         $entityEvents = $this
@@ -297,5 +324,6 @@ class DoctrineEntityPersister implements EntityPersisterInterface
         }
 
         $this->entityEventSubscriber->clearEvents();
+        $this->em->flush();
     }
 }
