@@ -40,7 +40,7 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
     }
 
     /**
-     * @throws \DomainExcepion
+     * @throws \DomainException
      */
     public function execute(InvoiceInterface $entity)
     {
@@ -71,7 +71,7 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
          * @todo double check this
          */
         if ($inDate >= $outDate) {
-            throw new \DomainExcepion('', self::SENSELESS_IN_OUT_DATE);
+            throw new \DomainException('', self::SENSELESS_IN_OUT_DATE);
         }
 
         $untarificattedCallNum = $this->trunksCdrRepository->countUntarificattedCallsBeforeDate(
@@ -113,7 +113,7 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
             );
 
             if ($calls > 0) {
-                throw new \DomainExcepion('', self::UNBILLED_CALLS_AFTER_OUT_DATE);
+                throw new \DomainException('', self::UNBILLED_CALLS_AFTER_OUT_DATE);
             }
         }
 
@@ -130,7 +130,7 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
         );
 
         if ($invoiceCount) {
-            throw new \DomainExcepion('', self::INVOICES_FOUND_IN_THE_SAME_RANGE_OF_DATE);
+            throw new \DomainException('', self::INVOICES_FOUND_IN_THE_SAME_RANGE_OF_DATE);
         }
     }
 }
