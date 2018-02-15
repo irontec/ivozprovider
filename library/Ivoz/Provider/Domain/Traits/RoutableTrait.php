@@ -50,6 +50,9 @@ trait RoutableTrait
 
             case 'user':
                 $userGetter = 'get' . $prefix . 'User';
+                if (!$this->{$userGetter}()) {
+                    return "";
+                }
                 return sprintf("%s %s",
                     $this->{$userGetter}()->getName(),
                     $this->{$userGetter}()->getLastname()
@@ -57,18 +60,30 @@ trait RoutableTrait
 
             case 'conditional':
                 $conditionalGetter = 'get' . $prefix . 'ConditionalRoute';
+                if (!$this->{$conditionalGetter}()) {
+                    return "";
+                }
                 return $this->{$conditionalGetter}()->getName();
 
             case 'extension':
                 $extensionGetter = 'get' . $prefix . 'Extension';
+                if (!$this->{$extensionGetter}()) {
+                    return "";
+                }
                 return $this->{$extensionGetter}()->getNumber();
 
             case 'friend':
                 $friendGetter = 'get' . $prefix . 'FriendValue';
+                if (!$this->{$friendGetter}()) {
+                    return "";
+                }
                 return $this->{$friendGetter}();
 
             case 'voicemail':
                 $voicemailGetter = 'get' . $prefix . 'VoicemailUser';
+                if (!$this->{$voicemailGetter}()) {
+                    return "";
+                }
                 return sprintf("%s %s",
                     $this->{$voicemailGetter}()->getName(),
                     $this->{$voicemailGetter}()->getLastname()
