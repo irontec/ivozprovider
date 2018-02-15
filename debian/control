@@ -21,9 +21,9 @@ Depends: debconf, po-debconf,
     ivozprovider-profile-portal (=${binary:Version}),
     ivozprovider-kamailio-users (=${binary:Version}),
     ivozprovider-kamailio-trunks (=${binary:Version}),
+    ivozprovider-recordings (=${binary:Version}),
     ivozprovider-rtpproxy,
-    ivozprovider-rtpengine,
-    ivozprovider-recordings
+    ivozprovider-rtpengine
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Virtual standalone package
  .
@@ -125,7 +125,7 @@ Depends: ivozprovider-profile-common,
         ivozprovider-kamailio-users (=${binary:Version}),
         ivozprovider-cgrates,
         ivozprovider-cgrates-tools,
-        ivozprovider-cgrates-config,
+        ivozprovider-cgrates-config (=${binary:Version}),
         redis-server
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Profile files for a Proxy Systems
