@@ -119,7 +119,7 @@ production:
           order:
             Extension.number: asc
         'null': _("Unassigned")
-    outgoingDDIId:
+    outgoingDdiId:
       title: _('Outgoing DDI')
       type: select
       source:

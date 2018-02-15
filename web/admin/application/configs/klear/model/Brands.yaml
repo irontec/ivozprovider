@@ -7,7 +7,7 @@ production:
       trim: both
       required: true
       default: true
-    invoice_nif:
+    invoice.nif:
       title: _('Nif')
       type: text
       trim: both
@@ -81,37 +81,37 @@ production:
               height: 30
               crop: false
             onNull: hide
-    invoice_postalAddress:
+    invoice.postalAddress:
       title: _('Postal address')
       type: text
       trim: both
       required: true
       maxLength: 255
-    invoice_postalCode:
+    invoice.postalCode:
       title: ngettext('Postal code', 'Postal codes', 1)
       type: text
       trim: both
       required: true
       maxLength: 10
-    invoice_town:
+    invoice.town:
       title: _('Town')
       type: text
       trim: both
       required: true
       maxLength: 255
-    invoice_province:
+    invoice.province:
       title: ngettext('Province', 'Provinces', 1)
       type: text
       trim: both
       required: true
       maxLength: 255
-    invoice_country:
+    invoice.country:
       title: ngettext('Country', 'Countries', 1)
       type: text
       trim: both
       required: true
       maxLength: 255
-    invoice_registryData:
+    invoice.registryData:
       title: _('Registry data')
       type: text
       trim: both
@@ -214,12 +214,12 @@ production:
                   - recordingsLimitEmail
               billing:
                 toggle:
-                  - invoice_PostalAddress
-                  - invoice_PostalCode
-                  - invoice_Town
-                  - invoice_Province
-                  - invoice_Country
-                  - invoice_RegistryData
+                  - invoice.PostalAddress
+                  - invoice.PostalCode
+                  - invoice.Town
+                  - invoice.Province
+                  - invoice.Country
+                  - invoice.RegistryData
           order:
             Feature.name: asc
 staging:
