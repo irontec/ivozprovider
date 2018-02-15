@@ -47,7 +47,7 @@ class Version20180115125057 extends AbstractMigration
                               INNER JOIN Destinations D ON D.id = PPRTP.targetPatternId
                               INNER JOIN Rates R ON R.id = PPRTP.id');
         // Rating Plans
-        $this->addSql('INSERT INTO RatingPlans (id, tag, name_en, name_es, description_es, description_en, brandId) SELECT C.id, CONCAT("b", C.brandId, "rp", C.id), LEFT(CONCAT("Plan for ", C.name), 55), LEFT(CONCAT("Plan for ", C.name), 55), CONCAT("Imported from ", C.name), CONCAT("Imported from ", C.name), C.brandId FROM Companies C');
+        $this->addSql('INSERT INTO RatingPlans (id, tag, name_en, name_es, description_es, description_en, brandId) SELECT C.id, CONCAT("b", C.brandId, "rp", C.id), LEFT(CONCAT("Plan for ", C.name), 55), LEFT(CONCAT("Plan for ", C.name), 55), CONCAT("Imported from ", C.name), CONCAT("Imported from ", C.name), C.brandId FROM Companies C WHERE id IN (SELECT DISTINCT(companyId) FROM PricingPlansRelCompanies)');
         $this->addSql('INSERT INTO tp_rating_plans (id, tag, destrates_tag, timing_tag, weight, timingId, ratingPlanId, destinationRateId) SELECT PPRC.id, RP.tag, DR.tag, "ALWAYS", metric, 1, RP.id, DR.id FROM PricingPlansRelCompanies PPRC INNER JOIN DestinationRates DR ON DR.id = PPRC.pricingPlanId INNER JOIN RatingPlans RP ON RP.id = PPRC.companyId WHERE PPRC.validFrom < NOW() AND PPRC.validTo > NOW()');
 
         // Rating Profiles
