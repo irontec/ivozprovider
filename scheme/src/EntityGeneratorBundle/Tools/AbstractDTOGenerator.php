@@ -1007,8 +1007,7 @@ public function <methodName>Id()
         );
 
         return $this->prefixCodeWithSpaces(
-            $response,
-            2
+            $response
         );
     }
 
