@@ -49,27 +49,30 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
             ->getDefaultTimezone()
             ->getTz();
         $invoiceTz = new \DateTimeZone($tz);
+        $utcTz = new \DateTimeZone('UTC');
 
         /**
          * @var \Datetime $inDate
          */
-        $inDate = $entity->getInDate();
-        $inDate->setTimezone($invoiceTz);
+        $utcInDate = $entity->getInDate();
+        $inDate = (clone $utcInDate)->setTimezone($invoiceTz);
 
         /**
          * @var \Datetime $outDate
          */
-        $outDate = $entity->getOutDate();
-        $oneSecAgo = new \DateInterval('PT1S');
+        $outDate = clone $entity->getOutDate();
 
-        $outDate
-            ->setTimezone($invoiceTz)
-            ->add(new \DateInterval('P1D'))
-            ->sub($oneSecAgo);
+        if ($entity->hasChanged('outDate')) {
+            $oneSecAgo = new \DateInterval('PT1S');
+            $outDate
+                ->setTimezone($invoiceTz)
+                ->add(new \DateInterval('P1D'))
+                ->sub($oneSecAgo);
 
-        /**
-         * @todo double check this
-         */
+            $entity->setOutDate($outDate);
+        }
+        $utcOutDate = $outDate->setTimezone($utcTz);
+
         if ($inDate >= $outDate) {
             throw new \DomainException('', self::SENSELESS_IN_OUT_DATE);
         }
@@ -77,16 +80,12 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
         $untarificattedCallNum = $this->trunksCdrRepository->countUntarificattedCallsBeforeDate(
             $entity->getCompany()->getId(),
             $entity->getBrand()->getId(),
-            $outDate->format('Y-m-d H:i:s')
+            $utcOutDate->format('Y-m-d H:i:s')
         );
 
         if ($untarificattedCallNum > 0) {
             throw new \DomainException('', self::UNMETERED_CALLS);
         }
-
-        $utcOutDate = $outDate
-            ->setTimezone($invoiceTz)
-            ->format('Y-m-d H:i:s');
 
         /**
          * @var Invoice[] $invoices
@@ -96,7 +95,7 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
             ->getInvoices(
                 $entity->getCompany()->getId(),
                 $entity->getBrand()->getId(),
-                $utcOutDate,
+                $utcOutDate->format('Y-m-d H:i:s'),
                 $entity->getId()
             );
 
@@ -108,8 +107,8 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
             $calls = $this->trunksCdrRepository->countUntarificattedCallsInRange(
                 $entity->getCompany()->getId(),
                 $entity->getBrand()->getId(),
-                $outDate->setTimezone($invoiceTz)->format('Y-m-d H:i:s'),
-                $nextInvoiceInDate->setTimezone($invoiceTz)->format('Y-m-d H:i:s')
+                $utcOutDate->format('Y-m-d H:i:s'),
+                $nextInvoiceInDate->setTimezone($utcTz)->format('Y-m-d H:i:s')
             );
 
             if ($calls > 0) {
@@ -117,15 +116,11 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
             }
         }
 
-        $utcInDate = $inDate
-            ->setTimezone($invoiceTz)
-            ->format('Y-m-d H:i:s');
-
         $invoiceCount = $this->invoiveRepository->fetchInvoiceNumberInRange(
             $entity->getCompany()->getId(),
             $entity->getBrand()->getId(),
-            $utcInDate,
-            $utcOutDate,
+            $utcInDate->format('Y-m-d H:i:s'),
+            $utcOutDate->format('Y-m-d H:i:s'),
             $entity->getId()
         );
 

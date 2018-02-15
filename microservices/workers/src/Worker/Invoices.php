@@ -96,7 +96,7 @@ class Invoices
 
         $invoice = $this->invoiceRepository->find($id);
         $invoice->setStatus("processing");
-        $this->entityPersister->persist($invoice);
+        $this->entityPersister->persist($invoice, true);
 
         $this->logger->info("[INVOICER] Status = processing");
 

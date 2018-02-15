@@ -130,16 +130,11 @@ class Generator
         $invoiceDate = new \DateTime();
         $invoiceDate->setTimezone($invoiceTz);
 
-        $inDate = $invoice->getInDate();
+        $inDate = clone $invoice->getInDate();
         $inDate->setTimezone($invoiceTz);
 
-        $outDate = $invoice->getOutDate();
+        $outDate = clone $invoice->getOutDate();
         $outDate->setTimezone($invoiceTz);
-        $oneDayDiff = new \DateInterval('P1D');
-        $oneSecDiff = new \DateInterval('PT1S');
-        $outDate
-            ->add($oneDayDiff)
-            ->sub($oneSecDiff);
 
         $invoiceDto = $this->dtoAssembler->toDto($invoice);
 
@@ -195,17 +190,13 @@ class Generator
         $invoiceTz = new \DateTimeZone(
             $company->getDefaultTimezone()->getTz()
         );
+        $utcTz = new \DateTimeZone('UTC');
 
-        $inDate = $invoice->getInDate();
-        $inDate->setTimezone($invoiceTz);
+        $inDate = clone $invoice->getInDate();
+        $utcInDate = $inDate->setTimezone($utcTz);
 
-        $outDate = $invoice->getOutDate();
-        $outDate->setTimezone($invoiceTz);
-        $oneDayDiff = new \DateInterval('P1D');
-        $oneSecDiff = new \DateInterval('PT1S');
-        $outDate
-            ->add($oneDayDiff)
-            ->sub($oneSecDiff);
+        $outDate = clone $invoice->getOutDate();
+        $utcOutDate = $outDate->setTimezone($utcTz);
 
         $callsPerType = [];
         $callSumary = [];
@@ -223,8 +214,8 @@ class Generator
             ['brand', 'eq', $brand->getId()],
             ['company', 'eq', $company->getId()],
             ['peeringContract', 'isNotNull'],
-            ['startTime', 'gte', $inDate->format(self::MYSQL_DATETIME_FORMAT)],
-            ['startTime', 'lte', $outDate->format(self::MYSQL_DATETIME_FORMAT)]
+            ['startTime', 'gte', $utcInDate->format(self::MYSQL_DATETIME_FORMAT)],
+            ['startTime', 'lte', $utcOutDate->format(self::MYSQL_DATETIME_FORMAT)]
         ];
         $this->logger->debug('Where: ' . print_r($conditions, true));
 
