@@ -496,6 +496,7 @@ public function <methodName>(<criteriaArgument>)
             $voContructor,
             $requiredSetters,
             $requiredGetters,
+            $selfGetters,
             $setters,
             $getters,
             $toArray,
@@ -590,8 +591,8 @@ public function <methodName>(<criteriaArgument>)
             }
         }
 
-        if (!empty($getters)) {
-            $toDTO = "\n" . $spaces . '->' . implode("\n" . $spaces . '->', $getters);
+        if (!empty($selfGetters)) {
+            $toDTO = "\n" . $spaces . '->' . implode("\n" . $spaces . '->', $selfGetters);
         }
 
         if (!empty($toArray)) {
@@ -659,6 +660,7 @@ public function <methodName>(<criteriaArgument>)
         $voContructor = [];
         $requiredSetters = [];
         $requiredGetters = [];
+        $selfGetters = [];
         $setters = [];
         $getters = [];
         $toArray = [];
@@ -743,6 +745,15 @@ public function <methodName>(<criteriaArgument>)
                         . '))';
 
                     $getters[$attribute] = $associationGetter;
+
+                    $associationSelfGetter =
+                        'set' . Inflector::classify($fieldName) . '('
+                        . '\\' .$targetEntity . '::entityToDto('
+                        . 'self::get' . Inflector::classify($fieldName) . '(), $depth'
+                        . '))';
+
+                    $selfGetters[$attribute] = $associationSelfGetter;
+
                 }
 
                 continue;
@@ -783,6 +794,15 @@ public function <methodName>(<criteriaArgument>)
                     . '()'
                     . ')';
 
+                $selfGetters[$key] =
+                    $setterMethod
+                    . '(self::get'
+                    . Inflector::classify($segments[0])
+                    . '()->get'
+                    . Inflector::classify($segments[1])
+                    . '()'
+                    . ')';
+
                 if ((isset($field->id) && $field->id) || isset($options->defaultValue)) {
                     continue;
                 }
@@ -798,6 +818,8 @@ public function <methodName>(<criteriaArgument>)
                     $toArray[]  = '\''. $field->columnName .'\' => self::get' . Inflector::classify($fieldName) . '()';
                     $getters[$attribute] = 'set' . Inflector::classify($fieldName)
                         . '($this->get' . Inflector::classify($fieldName) . '())';
+                    $selfGetters[$attribute] = 'set' . Inflector::classify($fieldName)
+                        . '(self::get' . Inflector::classify($fieldName) . '())';
                 }
 
                 if ((isset($field->id) && $field->id) || isset($options->defaultValue)) {
@@ -856,6 +878,7 @@ public function <methodName>(<criteriaArgument>)
             $voContructor,
             $requiredSetters,
             $requiredGetters,
+            $selfGetters,
             $setters,
             $getters,
             $toArray,
