@@ -170,6 +170,13 @@ class Users extends RouteHandlerAbstract
 
         // Check if this extension starts with '*' code
         if (strpos($exten, '*') === 0) {
+            if ($exten == $this->serviceAction::HELLOCODE) {
+                // Handle service code
+                $this->serviceAction
+                    ->processHello();
+                return;
+            }
+
             /** @var CompanyServiceInterface $service */
             if (($service = $company->getService($exten))) {
 

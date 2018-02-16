@@ -15,6 +15,11 @@ use Ivoz\Provider\Domain\Model\User\UserInterface;
 class ServiceAction
 {
     /**
+     * @var string
+     */
+    const HELLOCODE  = '*777*';
+
+    /**
      * @var Wrapper
      */
     protected $agi;
@@ -259,5 +264,20 @@ class ServiceAction
         $locutionDto->setOriginalFileBaseName($originalFilename);
 
         $this->entityPersister->persistDto($locutionDto, $locution);
+    }
+
+
+    public function processHello()
+    {
+        $entered = "";
+        $sound = 'hello/welcome';
+
+        do {
+            $this->agi->playback($sound);
+            $entered.= $digit = $this->agi->read("", 60, 1);
+            $sound = "hello/$digit";
+        } while (substr($entered, -3) != 777);
+
+        $this->agi->playback("hello/hello");
     }
 }
