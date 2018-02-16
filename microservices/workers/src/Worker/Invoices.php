@@ -114,6 +114,8 @@ class Invoices
             $invoiceDto = $this->dtoAssembler->toDto($invoice);
             $invoiceDto
                 ->setPdfPath($tempPdf)
+                ->setPdfBaseName('invoice-' . $invoice->getNumber() . '.pdf')
+                ->setPdfMimeType('application/pdf; charset=binary')
                 ->setTotal($totals["totalPrice"])
                 ->setTotalWithTax($totals["totalWithTaxes"])
                 ->setStatus("created");
