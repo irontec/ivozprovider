@@ -4,9 +4,9 @@ Ivoz Provider is a multitenant solution for VoIP telephony providers designed fo
 
 ## Features
 #### Multitenancy
-IvozProvider supports multiple management levels, from Global platform administator to final user, each of them having its own web interface with visibility to perform configuration tasks.
+IvozProvider supports multiple management levels, from Global platform administrator to final user, each of them having its own web interface with visibility to perform configuration tasks.
 
- * Global Administator manages multiple Brands
+ * Global Administrator manages multiple Brands
  * Brand Administrators manage multiple Companies
  * Company Administrators manage multiple Users
  * Users manage their preferences
@@ -53,7 +53,8 @@ If you want to test an [standalone](https://irontec.github.io/ivozprovider/en/in
 | Version  | 64 bits  | 32 bits |
 |----------|:--------:|:-------:|
 |stable (oasis 1.6.3) | [![iso http](portals/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-1.6.3-oasis-amd64.iso)| [![iso http](portals/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-1.6.3-oasis-i386.iso)|
-|experimental (bleeding 2.0.0) | |
+|testing (artemis 2.0.0) | [![iso http](portals/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-2.0~2.0.0-artemis-amd64.iso)| [![iso http](portals/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-2.0~2.0.0-artemis-i386.iso)|
+|experimental (bleeding 2.1.0) | |
 
 
 ## Documentation
