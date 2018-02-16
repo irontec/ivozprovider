@@ -4,6 +4,7 @@
 
 # Set current environment
 export $(systemctl show-environment)
+[ -z "$SYMFONY_ENV" ] && export SYMFONY_ENV=prod
 
 cd /opt/irontec/ivozprovider/microservices/workers
 

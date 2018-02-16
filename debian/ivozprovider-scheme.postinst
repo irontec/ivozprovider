@@ -7,6 +7,7 @@
 
 # Set current environment
 export $(systemctl show-environment)
+[ -z "$SYMFONY_ENV" ] && export SYMFONY_ENV=prod
 
 # Setup mysql connection
 db_get ivozprovider/mysql_password || true
