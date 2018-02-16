@@ -18,27 +18,27 @@ production:
       fields:
         order: &brandsOrder_Link
           name: true
-          invoice_nif: true
+          invoice.nif: true
           logo: true
           defaultTimezoneId: true
           languageId: true
           domain_users: true
           defaultTimezoneId: true
           languageId: true
-          invoice_postalAddress: true
-          invoice_postalCode: true
-          invoice_town: true
-          invoice_province: true
-          invoice_country: true
-          invoice_registryData: true
+          invoice.postalAddress: true
+          invoice.postalCode: true
+          invoice.town: true
+          invoice.province: true
+          invoice.country: true
+          invoice.registryData: true
         blacklist:
           domain_trunks: true
           iden: true
-          invoice_postalAddress: true
-          invoice_province: true
-          invoice_country: true
-          invoice_town: true
-          invoice_registryData: true
+          invoice.postalAddress: true
+          invoice.province: true
+          invoice.country: true
+          invoice.town: true
+          invoice.registryData: true
           languageId: true
           defaultTimezoneId: true
           fromName: true
@@ -74,25 +74,25 @@ production:
       forcedValues:
         defaultTimezoneId: 145
         languageId: 1
-        invoice_nif: '12345678-Z'
-        invoice_postalAddress: 'Postal address'
-        invoice_postalCode: 'ZIP'
-        invoice_town: 'town'
-        invoice_country: 'country'
-        invoice_province: 'province'
-        invoice_registryData: 'registryData'
+        invoice.nif: '12345678-Z'
+        invoice.postalAddress: 'Postal address'
+        invoice.postalCode: 'ZIP'
+        invoice.town: 'town'
+        invoice.country: 'country'
+        invoice.province: 'province'
+        invoice.registryData: 'registryData'
       fields:
         blacklist:
-          invoice_nif: true
+          invoice.nif: true
           logo: true
           defaultTimezoneId: true
           languageId: true
-          invoice_postalAddress: true
-          invoice_postalCode: true
-          invoice_town: true
-          invoice_province: true
-          invoice_country: true
-          invoice_registryData: true
+          invoice.postalAddress: true
+          invoice.postalCode: true
+          invoice.town: true
+          invoice.province: true
+          invoice.country: true
+          invoice.registryData: true
           fromName: true
           fromAddress: true
           recordingsLimitMB: true
@@ -108,7 +108,7 @@ production:
           colsPerRow: 2
           fields:
             name: 1
-            invoice_nif: 1
+            invoice.nif: 1
             logo: 1
             relFeatures: 1
         group2:
@@ -121,12 +121,12 @@ production:
           colsPerRow: 2
           label: _("Invoice data")
           fields:
-            invoice_postalAddress: 2
-            invoice_postalCode: 1
-            invoice_town: 1
-            invoice_province: 1
-            invoice_country: 1
-            invoice_registryData: 2
+            invoice.postalAddress: 2
+            invoice.postalCode: 1
+            invoice.town: 1
+            invoice.province: 1
+            invoice.country: 1
+            invoice.registryData: 2
         group4:
           colsPerRow: 4
           label: _("SIP domain")
