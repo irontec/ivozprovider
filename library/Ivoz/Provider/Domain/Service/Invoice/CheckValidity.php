@@ -20,6 +20,7 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
     const INVOICES_FOUND_IN_THE_SAME_RANGE_OF_DATE = 50003;
     const UNBILLED_CALLS_AFTER_OUT_DATE = 50004;
     const SENSELESS_IN_OUT_DATE = 50005;
+    const FORBIDDEN_FUTURE_DATES = 50006;
 
     /**
      * @var TrunksCdrRepository
@@ -72,6 +73,12 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
             $entity->setOutDate($outDate);
         }
         $utcOutDate = $outDate->setTimezone($utcTz);
+
+        $now = (new \DateTime())->setTimezone($invoiceTz);
+        $today = $now->setTime(0, 0, 0);
+        if ($today < $inDate || $today < $outDate) {
+            throw new \DomainException('', self::FORBIDDEN_FUTURE_DATES);
+        }
 
         if ($inDate >= $outDate) {
             throw new \DomainException('', self::SENSELESS_IN_OUT_DATE);
