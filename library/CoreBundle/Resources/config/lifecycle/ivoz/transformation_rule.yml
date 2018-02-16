@@ -1,0 +1,30 @@
+services:
+  _defaults:
+    autowire: true
+    public: false
+
+  ##################################
+  ## Service collection
+  ##################################
+  Ivoz\Provider\Domain\Service\TransformationRule\TransformationRuleLifecycleServiceCollection:
+    public: true
+
+  provider.lifecycle.transformation_rule.service_collection:
+    '@Ivoz\Provider\Domain\Service\TransformationRule\TransformationRuleLifecycleServiceCollection'
+
+  ##################################
+  ## on_commit
+  ##################################
+  Ivoz\Provider\Infrastructure\Domain\Service\TransformationRule\SendUsersDialplanReloadRequest:
+    tags:
+      - { name: provider.lifecycle.transformation_rule.on_commit, priority: 10 }
+    arguments:
+      $usersDialplanReload:
+        '@XmlRpc\XmlRpcUsersRequest::DialplanReload'
+
+  Ivoz\Provider\Infrastructure\Domain\Service\TransformationRule\SendTrunksDialplanReloadRequest:
+    tags:
+      - { name: provider.lifecycle.transformation_rule.on_commit, priority: 20 }
+    arguments:
+      $trunksDialplanReload:
+        '@XmlRpc\XmlRpcTrunksRequest::DialplanReload'

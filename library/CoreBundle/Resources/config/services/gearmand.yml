@@ -1,0 +1,29 @@
+services:
+  _defaults:
+    autowire: true
+    public: false
+
+  Ivoz\Core\Infrastructure\Domain\Service\Gearman\Manager: ~
+
+  Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Invoicer:
+    arguments:
+      $manager: '@Ivoz\Core\Infrastructure\Domain\Service\Gearman\Manager'
+      $settings: '%gearmand%'
+
+  Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Recoder:
+    arguments:
+      $manager: '@Ivoz\Core\Infrastructure\Domain\Service\Gearman\Manager'
+      $settings: '%gearmand%'
+
+  Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Xmlrpc:
+    shared: false
+    arguments:
+      $manager: '@Ivoz\Core\Infrastructure\Domain\Service\Gearman\Manager'
+      $settings: '%gearmand%'
+
+  Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Xmlrpc::Delayed:
+    class: Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Xmlrpc
+    arguments:
+      $method: 'WorkerXmlrpc~delayed'
+      $manager: '@Ivoz\Core\Infrastructure\Domain\Service\Gearman\Manager'
+      $settings: '%gearmand%'

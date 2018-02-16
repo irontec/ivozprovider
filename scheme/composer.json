@@ -1,0 +1,93 @@
+{
+    "name": "irontec/ivozprovider/scheme",
+    "description": "Multitenant solution for VoIP telephony providers (Migration handler)",
+    "authors": [
+        {
+            "name": "Carlos Cruz",
+            "email": "carlos@irontec.com"
+        },
+        {
+            "name": "Ivan Alonso",
+            "email": "kaian@irontec.com"
+        },
+        {
+            "name": "Mikel Madariaga",
+            "email": "mikel@irontec.com"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../library/vendor/*/*",
+            "options": {
+                "symlink": true
+            }
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "": "src/",
+            "DataFixtures\\": "../library/DataFixtures",
+            "Ivoz\\": "../library/Ivoz",
+            "CoreBundle\\": "../library/CoreBundle"
+        },
+        "classmap": [
+            "app/AppKernel.php",
+            "app/AppCache.php"
+        ]
+    },
+    "autoload-dev": {
+        "files": [
+            "vendor/symfony/symfony/src/Symfony/Component/VarDumper/Resources/functions/dump.php"
+        ]
+    },
+    "config": {
+        "sort-packages": true,
+        "preferred-install": {
+            "*": "git"
+        },
+        "platform": {
+            "php": "7.0.19"
+        }
+    },
+    "require": {
+        "php": ">=7.0.19",
+        "symfony/symfony": "3.3.*",
+        "symfony/monolog-bundle": "^3.0.2",
+        "doctrine/orm": "^2.5",
+        "doctrine/doctrine-migrations-bundle": "^1.2",
+        "incenteev/composer-parameter-handler": "^2.0",
+        "ramsey/uuid": "^3.7"
+    },
+    "require-dev": {
+        "doctrine/doctrine-fixtures-bundle": "^3.0",
+        "beberlei/assert": "2.7.*",
+        "sensio/generator-bundle": "^3.0"
+    },
+    "scripts": {
+        "symfony-scripts": [
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
+        ],
+        "post-install-cmd": [
+            "@symfony-scripts"
+        ],
+        "post-update-cmd": [
+            "@symfony-scripts"
+        ]
+    },
+    "extra": {
+        "symfony-app-dir": "app",
+        "symfony-bin-dir": "bin",
+        "symfony-var-dir": "var",
+        "symfony-web-dir": "web",
+        "symfony-tests-dir": "tests",
+        "symfony-assets-install": "relative",
+        "incenteev-parameters": {
+            "file": "../library/CoreBundle/Resources/config/parameters.yml"
+        },
+        "branch-alias": null
+    }
+}

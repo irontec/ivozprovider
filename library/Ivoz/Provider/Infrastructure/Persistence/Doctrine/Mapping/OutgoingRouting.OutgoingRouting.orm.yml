@@ -1,0 +1,20 @@
+Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\OutgoingRoutingDoctrineRepository
+  type: entity
+  table: OutgoingRouting
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  oneToMany:
+    lcrRules:
+      targetEntity: Ivoz\Provider\Domain\Model\LcrRule\LcrRuleInterface
+      mappedBy: outgoingRouting
+  lifecycleCallbacks:
+    postLoad:
+      - initChangelog

@@ -1,51 +1,67 @@
 #!/usr/bin/make -f
 
+export SYMFONY_ENV=prod
+
 build_doc:
 	# Build doc using sphinx
-	cd doc/sphinx ; sphinx-build -D"language=en" . ../html/en
-	cd doc/sphinx ; sphinx-build -D"language=es" . ../html/es
-	cd doc/sphinx ; sphinx-build -D"language=es" -bsinglehtml . ../html/essingle
-	cd doc/sphinx ; sphinx-build -D"language=en" -bsinglehtml . ../html/ensingle
-
-build_portals:
-	cd portals ; msgfmt -o application/languages/es_ES/es_ES.mo application/languages/es_ES/es_ES.po
-	cd portals ; msgfmt -o application/languages/en_US/en_US.mo application/languages/en_US/en_US.po
-
-build_userweb:
-	# Build with npm
-	cd userweb ; npm install bower grunt-cli karma grunt-karma
-	cd userweb ; npm install
-	cd userweb ; node_modules/bower/bin/bower install --allow-root
-	cd userweb ; node_modules/grunt-cli/bin/grunt build
-	cd userweb ; rm -f dist/.htaccess
-	cd userweb ; mv dist/index.html ./index.phtml
+	cd doc/sphinx ; sphinx-build -q -D"language=en" . ../html/en
+	cd doc/sphinx ; sphinx-build -q -D"language=es" . ../html/es
+	cd doc/sphinx ; sphinx-build -q -D"language=es" -bsinglehtml . ../html/essingle
+	cd doc/sphinx ; sphinx-build -q -D"language=en" -bsinglehtml . ../html/ensingle
 
 build_library:
-	# Build with composer
-	cd library ; git config --global http.sslVerify false
-	cd library ; curl -sS http://getcomposer.org/installer | php -- --install-dir=. --filename=composer
-	cd library ; ./composer --no-interaction install
+	git config --global http.sslVerify false
+	cd library ; composer --no-interaction --no-dev  --no-progress install
 
-override_dh_auto_build: build_doc build_portals build_userweb build_library
+build_agis: build_library
+	cd asterisk/agi ; composer --no-interaction --no-dev  --no-progress install
+
+build_webrest: build_library
+	cd web/rest ; composer --no-interaction --no-dev  --no-progress install
+	cd web/rest ; composer dump-autoload --optimize --no-dev --classmap-authoritative
+
+build_webadmin: build_library
+	cd web/admin ; msgfmt -o application/languages/es_ES/es_ES.mo application/languages/es_ES/es_ES.po
+	cd web/admin ; msgfmt -o application/languages/en_US/en_US.mo application/languages/en_US/en_US.po
+
+build_webuser: build_library build_webadmin
+	cd web/user ; npm install bower grunt-cli karma grunt-karma
+	cd web/user ; npm install
+	cd web/user ; node_modules/bower/bin/bower install --allow-root
+	cd web/user ; node_modules/grunt-cli/bin/grunt build
+	cd web/user ; rm -f dist/.htaccess
+	cd web/user ; mv dist/index.html ./index.phtml
+
+build_microservices: build_library
+	cd microservices/recordings; composer --no-interaction --no-dev  --no-progress install
+	cd microservices/workers; composer --no-interaction --no-dev  --no-progress install
+
+build_scheme: build_library
+	cd scheme ; composer --no-interaction --no-dev  --no-progress install
+
+override_dh_auto_build: build_doc build_agis build_webadmin build_webrest build_microservices build_scheme build_webuser
+
+override_dh_install:
+	dh_install
+	# Remove .git directiories
+	-find debian -type d -name .git -prune -exec rm -fr {} \;
 
 # Install systemd unit files
 override_dh_systemd_enable:
 	dh_systemd_enable -p ivozprovider-asterisk-agi	  --name=fastagi@      fastagi@.service
 	dh_systemd_enable -p ivozprovider-asterisk-agi	  --name=fastagi       fastagi.socket
 	dh_systemd_enable -p ivozprovider-profile-proxy   --name=kamailio@     kamailio@.service --no-enable
-	dh_systemd_enable -p ivozprovider-profile-data	  --name=cdrparser     cdrparser.service  --no-enable
 	dh_systemd_enable -p ivozprovider-profile-portal  --name=gearman-job-server
-	dh_systemd_enable -p ivozprovider-profile-portal  --name=ivozprovider-tarificator      --no-enable
 	dh_systemd_enable -p ivozprovider-recordings      --name=ivozprovider-recordings          --no-enable
+	dh_systemd_enable -p ivozprovider-profile-proxy   --name=cgrates-loader          --no-enable
 
 override_dh_systemd_start:
 	dh_systemd_start  -p ivozprovider-asterisk-agi     --name=fastagi@     fastagi@.service   --no-restart-on-upgrade --no-start
 	dh_systemd_start  -p ivozprovider-asterisk-agi     --name=fastagi      fastagi.socket     --no-restart-on-upgrade --no-start
 	dh_systemd_start  -p ivozprovider-profile-proxy    --name=kamailio@    kamailio@.service  --no-restart-on-upgrade --no-start
-	dh_systemd_start  -p ivozprovider-profile-data	   --name=cdrparser    cdrparser.service  --no-restart-on-upgrade --no-start
 	dh_systemd_start  -p ivozprovider-profile-portal   --name=gearman-job-server              --no-restart-on-upgrade --no-start
-	dh_systemd_start  -p ivozprovider-profile-portal   --name=ivozprovider-tarificator        --no-restart-on-upgrade --no-start
 	dh_systemd_start  -p ivozprovider-recordings	   --name=ivozprovider-recordings         --no-restart-on-upgrade --no-start
+	dh_systemd_start  -p ivozprovider-profile-proxy    --name=cgrates-loader                  --no-restart-on-upgrade --no-start
 
 # Install /etc/default configuration
 override_dh_installinit:

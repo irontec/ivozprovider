@@ -1,0 +1,19 @@
+<?php
+
+namespace Ivoz\Provider\Domain\Model\PeerServer;
+
+class PeerServerDto extends PeerServerDtoAbstract
+{
+    public function toArray($hideSensitiveData = false)
+    {
+        $response = parent::toArray($hideSensitiveData);
+        if (!$hideSensitiveData) {
+            return $response;
+        }
+        $response['auth_password'] = '****';
+
+        return $response;
+    }
+}
+
+

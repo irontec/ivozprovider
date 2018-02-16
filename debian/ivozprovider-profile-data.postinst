@@ -3,4 +3,7 @@
 # Restart Local DNS
 /bin/systemctl restart bind9
 
+# Fix GenericMusicOnHold FSO. REMOVE THIS AFTER 2.1.0
+/bin/bash /opt/irontec/ivozprovider/scripts/FSOBrandMusicOnHold.sh
+
 :

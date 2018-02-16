@@ -1,0 +1,10 @@
+{
+  "callTypeFilter": "internal",
+  "callForwardType": "inconditional",
+  "noAnswerTimeout": "10",
+  "targetType": "number",
+  "numberCountryId": "70",
+  "numberValue": "946002053",
+  "extensionId": "__NULL__",
+  "voiceMailUserId": "__NULL__"
+}

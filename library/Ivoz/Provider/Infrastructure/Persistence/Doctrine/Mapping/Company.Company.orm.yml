@@ -1,0 +1,51 @@
+Ivoz\Provider\Domain\Model\Company\Company:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\CompanyDoctrineRepository
+  type: entity
+  table: Companies
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  oneToMany:
+    extensions:
+      targetEntity: Ivoz\Provider\Domain\Model\Extension\ExtensionInterface
+      mappedBy: company
+    ddis:
+      targetEntity: Ivoz\Provider\Domain\Model\Ddi\DdiInterface
+      mappedBy: company
+    friends:
+      targetEntity: Ivoz\Provider\Domain\Model\Friend\FriendInterface
+      mappedBy: company
+    companyServices:
+      targetEntity: Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface
+      mappedBy: company
+    terminals:
+      targetEntity: Ivoz\Provider\Domain\Model\Terminal\TerminalInterface
+      mappedBy: company
+    ratinProfiles:
+      targetEntity: Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface
+      mappedBy: company
+      cascade: ['persist']
+      orphanRemoval: true
+    musicsOnHold:
+      targetEntity: Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface
+      mappedBy: company
+    recordings:
+      targetEntity: Ivoz\Provider\Domain\Model\Recording\RecordingInterface
+      mappedBy: company
+    relFeatures:
+      targetEntity: Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompanyInterface
+      mappedBy: company
+      cascade: ['persist']
+      orphanRemoval: true
+    domains:
+      targetEntity: Ivoz\Provider\Domain\Model\Domain\DomainInterface
+      mappedBy: company
+  lifecycleCallbacks:
+    postLoad:
+      - initChangelog

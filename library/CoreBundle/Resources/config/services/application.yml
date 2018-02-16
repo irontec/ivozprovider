@@ -1,0 +1,22 @@
+services:
+  _defaults:
+    autowire: true
+    public: true
+
+  Ivoz\Core\Application\Service\QueryBuilderFactory:
+    arguments:
+      $entityManager: "@doctrine.orm.entity_manager"
+
+  Ivoz\Core\Application\Service\DataGateway:
+    arguments:
+      $entityManager:
+        "@doctrine.orm.entity_manager"
+      $queryBuilderFactory:
+        '@Ivoz\Core\Application\Service\QueryBuilderFactory'
+      $entityPersister:
+        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
+      $dtoAssembler:
+        '@Ivoz\Core\Application\Service\Assembler\DtoAssembler'
+      $eventPublisher:
+        '@Ivoz\Core\Domain\Service\DomainEventPublisher'
+

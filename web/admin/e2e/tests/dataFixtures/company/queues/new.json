@@ -1,0 +1,21 @@
+{
+  "name": "testQueue",
+  "weight": "5",
+  "strategy": "rrmemory",
+  "memberCallTimeout": "1",
+  "memberCallRest": "0",
+  "periodicAnnounceLocutionId": "1",
+  "periodicAnnounceFrequency": "7",
+  "maxWaitTime": "20",
+  "timeoutLocutionId": "1",
+  "timeoutTargetType": "number",
+  "timeoutExtensionId": "__NULL__",
+  "timeoutVoiceMailUserId": "__NULL__",
+  "timeoutNumberValue": "946002020",
+  "maxlen": "5",
+  "fullLocutionId": "1",
+  "fullTargetType": "number",
+  "fullExtensionId": "__NULL__",
+  "fullVoiceMailUserId": "__NULL__",
+  "fullNumberValue": "946002021"
+}

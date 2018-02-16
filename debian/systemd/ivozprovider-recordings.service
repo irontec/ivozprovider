@@ -4,4 +4,4 @@ Description=IvozProvider Recordings Parser
 [Service]
 Type=oneshot
 User=root
-ExecStart= /usr/bin/php /opt/irontec/ivozprovider/kamailio/recordings/application/bin/cli.php -a default/recordings/process
+ExecStart=/opt/irontec/ivozprovider/microservices/recordings/bin/recordings-encoder

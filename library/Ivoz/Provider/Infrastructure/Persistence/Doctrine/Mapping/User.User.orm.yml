@@ -1,0 +1,28 @@
+Ivoz\Provider\Domain\Model\User\User:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\UserDoctrineRepository
+  type: entity
+  table: Users
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  oneToMany:
+    pickUpRelUsers:
+      targetEntity: Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface
+      mappedBy: user
+      cascade: ['persist']
+      orphanRemoval: true
+    queueMembers:
+      targetEntity: Ivoz\Provider\Domain\Model\QueueMember\QueueMemberInterface
+      mappedBy: user
+    callForwardSettings:
+      targetEntity: Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface
+      mappedBy: user
+  lifecycleCallbacks:
+    postLoad:
+      - initChangelog

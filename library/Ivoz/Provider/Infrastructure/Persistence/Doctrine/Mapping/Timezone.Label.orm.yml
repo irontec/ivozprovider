@@ -1,0 +1,20 @@
+Ivoz\Provider\Domain\Model\Timezone\Label:
+  type: embeddable
+  columnPrefix: false
+  fields:
+    en:
+      type: string
+      nullable: false
+      length: 20
+      options:
+        fixed: false
+        default: ''
+      column: timeZoneLabel_en
+    es:
+      type: string
+      nullable: false
+      length: 20
+      options:
+        fixed: false
+        default: ''
+      column: timeZoneLabel_es

@@ -3,6 +3,6 @@
 #DEBHELPER#
 
 ## This package contains dialplan data, reload
-/usr/sbin/asterisk -rx 'dialplan reload'
+[ -f /var/run/asterisk/asterisk.ctl ] && /usr/sbin/asterisk -rx 'dialplan reload'
 
 :

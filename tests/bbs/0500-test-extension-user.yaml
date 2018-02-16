@@ -6,7 +6,7 @@ scenarios:
       - alice:
           - wait
           - call:
-              dest: sip:1002@bbs.ivozprovider.local
+              dest: 1002
               credentials:
                 <<: *alice_cred
           - waitfor: CONFIRMED

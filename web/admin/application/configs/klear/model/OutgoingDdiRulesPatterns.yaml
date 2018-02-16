@@ -1,0 +1,85 @@
+production:
+  entity: Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPattern
+  fields:
+    outgoingDdiRuleId:
+      title: _('Outgoing DDI Rule Pattern')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order:
+            OutgoingDdiRule.name: asc
+      default: true
+    matchListId:
+      title: _('Match List')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\MatchList\MatchList
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order:
+            MatchList.name: asc
+    action:
+      title: _('Action')
+      type: select
+      required: true
+      source:
+        data: inline
+        values:
+          'keep':
+            title: _("Keep Original DDI")
+            visualFilter:
+              show: []
+              hide: ["forcedDdiId"]
+          'force':
+            title: _("Force DDI")
+            visualFilter:
+              show: ["forcedDdiId"]
+              hide: []
+    forcedDdiId:
+      title: _('Forced DDI')
+      type: select
+      source:
+        data: mapper
+        config:
+          entity:  \Ivoz\Provider\Domain\Model\Ddi\Ddi
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
+              - ddie164
+            template: '%ddie164%'
+          order:
+            Ddi.ddie164: asc
+        'null': _("Company's default")
+    forcedDDI:
+      title: _('Forced DDI')
+      type: ghost
+      source:
+        class: IvozProvider_Klear_Ghost_OutgoingRule
+        method: getOutgoingRulePatternForcedDDI
+    priority:
+      title: _('Priority')
+      type: number
+      defaultValue: 1
+      source:
+        control: Spinner
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

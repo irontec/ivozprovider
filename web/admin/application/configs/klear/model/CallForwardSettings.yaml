@@ -1,0 +1,149 @@
+production:
+  entity: \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting
+  fields: 
+    userId:
+      title: ngettext('User', 'Users', 1)
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\User\User
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order:
+            User.name: asc
+      default: true
+    callTypeFilter:
+      title: _('Call type')
+      type: select
+      required: true
+      source:
+        data: inline
+        values:
+          'internal': _('Internal')
+          'external': _('External')
+          'both': _('Both')
+    callForwardType:
+      title: _('Call forward type')
+      type: select
+      required: true
+      source:
+        data: inline
+        values:
+          'inconditional':
+            title: _('Inconditional')
+            visualFilter:
+              hide: [ noAnswerTimeout ]
+          'noAnswer':
+            title: _('No Answer')
+            visualFilter:
+              show: [ noAnswerTimeout ]
+          'busy':
+            title: _('Busy')
+            visualFilter:
+              hide: [ noAnswerTimeout]
+          'userNotRegistered':
+            title: _('Not Registered')
+            visualFilter:
+              hide: [ noAnswerTimeout ]
+    targetType:
+      title: _('Target type')
+      type: select
+      required: true
+      source:
+        data: inline
+        values:
+          'number':
+            title: _('Number')
+            visualFilter:
+              show: [ numberCountryId, numberValue ]
+              hide: [ extensionId, voiceMailUserId ]
+          'extension':
+            title: ngettext('Extension', 'Extensions', 1)
+            visualFilter:
+              show: [ extensionId ]
+              hide: [ numberCountryId, numberValue, voiceMailUserId ]
+          'voicemail':
+            title: ngettext('Voicemail', 'Voicemails', 1)
+            visualFilter:
+              show: [ voiceMailUserId ]
+              hide: [ extensionId, numberCountryId, numberValue ]
+    numberCountryId:
+      title: _('Country')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Country\Country
+          fieldName:
+            fields:
+              - name${lang}
+              - countryCode
+            template: '%name${lang}% (%countryCode%)'
+          order:
+            Country.name.${lang}: asc
+    numberValue:
+      title: _('Number')
+      pattern: "^[0-9]+$"
+      type: text
+      trim: both
+      required: true
+    extensionId:
+      title: ngettext('Extension', 'Extensions', 1)
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Extension\Extension
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields: 
+              - number
+            template: '%number%'
+          order:
+            Extension.number: asc
+        'null': _("Unassigned")
+    voiceMailUserId:
+      title: ngettext('Voicemail', 'Voicemails', 1)
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\User\User
+          filterClass: IvozProvider_Klear_Filter_Voicemail
+          fieldName: 
+            fields: 
+              - name
+              - lastname
+            template: '%name% %lastname%'
+          order:
+            User.name: asc
+        'null': _("Unassigned")
+    noAnswerTimeout:
+      title: _('No answer timeout')
+      type: number
+      defaultValue: 10
+      required: true
+      source:
+        control: Spinner
+    targetTypeValue:
+      title: _('Target type value')
+      type: ghost
+      source:
+        class: IvozProvider_Klear_Ghost_RouteTarget
+        method: getTarget
+
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

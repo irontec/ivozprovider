@@ -1,0 +1,56 @@
+Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationAbstract:
+  type: mappedSuperclass
+  indexes:
+    tpDestination_tpid:
+      columns:
+        - tpid
+    tpDestination_tpid_dstid:
+      columns:
+        - tpid
+        - tag
+  uniqueConstraints:
+    tpid_dest_prefix:
+      columns:
+        - tpid
+        - tag
+        - prefix
+        - destinationId
+  fields:
+    tpid:
+      type: string
+      nullable: false
+      length: 64
+      options:
+        fixed: false
+        default: 'ivozprovider'
+    tag:
+      type: string
+      nullable: true
+      length: 64
+      options:
+        fixed: false
+    prefix:
+      type: string
+      nullable: false
+      length: 24
+      options:
+        fixed: false
+    createdAt:
+      type: datetime
+      nullable: false
+      options:
+        default: CURRENT_TIMESTAMP
+      column: created_at
+  manyToOne:
+    destination:
+      targetEntity: \Ivoz\Cgr\Domain\Model\Destination\DestinationInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        destinationId:
+          nullable: false
+          referencedColumnName: id
+          onDelete: cascade
+      orphanRemoval: false

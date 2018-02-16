@@ -1,2 +1,4 @@
 # ... FIXME ...
 profiles/proxy/*        /
+debian/systemd/cgrates-loader.timer /lib/systemd/system
+debian/systemd/cgrates-loader.service /lib/systemd/system

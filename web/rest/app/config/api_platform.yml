@@ -1,0 +1,7 @@
+imports:
+  - { resource: "@ApiBundle/Resources/config/api_platform_base.yml" }
+
+api_platform:
+  title: 'Ivoz Provider'
+  description: 'Rest API'
+  version: '2.0-1.0.0'

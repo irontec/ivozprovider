@@ -1,0 +1,79 @@
+Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingAbstract:
+  type: mappedSuperclass
+  fields:
+    type:
+      type: string
+      nullable: true
+      length: null
+      options:
+        fixed: false
+        default: group
+    priority:
+      type: smallint
+      nullable: false
+      options:
+        unsigned: true
+    weight:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+        default: '1'
+  manyToOne:
+    brand:
+      targetEntity: \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: outgoingRoutings
+      joinColumns:
+        brandId:
+          referencedColumnName: id
+          nullable: false
+          onDelete: cascade
+      orphanRemoval: false
+    company:
+      targetEntity: \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        companyId:
+          referencedColumnName: id
+          onDelete: cascade
+      orphanRemoval: false
+    peeringContract:
+      targetEntity: \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: outgoingRoutings
+      joinColumns:
+        peeringContractId:
+          referencedColumnName: id
+          nullable: false
+          onDelete: cascade
+      orphanRemoval: false
+    routingPattern:
+      targetEntity: \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        routingPatternId:
+          referencedColumnName: id
+          onDelete: cascade
+      orphanRemoval: false
+    routingPatternGroup:
+      targetEntity: \Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: outgoingRoutings
+      joinColumns:
+        routingPatternGroupId:
+          referencedColumnName: id
+          onDelete: cascade
+      orphanRemoval: false

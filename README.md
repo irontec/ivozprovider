@@ -4,9 +4,9 @@ Ivoz Provider is a multitenant solution for VoIP telephony providers designed fo
 
 ## Features
 #### Multitenancy
-IvozProvider supports multiple management levels, from Global platform administator to final user, each of them having its own web interface with visibility to perform configuration tasks.
+IvozProvider supports multiple management levels, from Global platform administrator to final user, each of them having its own web interface with visibility to perform configuration tasks.
 
- * Global Administator manages multiple Brands
+ * Global Administrator manages multiple Brands
  * Brand Administrators manage multiple Companies
  * Company Administrators manage multiple Users
  * Users manage their preferences
@@ -41,7 +41,7 @@ Bear in mind that, while at least one of each profile must be installed for the 
 ![scaling](portals/public/images/horizontalscaling.png)
 
 #### Cloud Service
-IvozProvider is designed to work directly from the Internet. Although it can be used in local environments, being exposed to the public network [has it's advantages](https://irontec.github.io/ivozprovider/es/intro/what_is_ivozprovider.html#expuesta-a-la-red-publica)
+IvozProvider is designed to work directly from the Internet. Although it can be used in local environments, being exposed to the public network [has it's advantages](https://irontec.github.io/ivozprovider/en/intro/what_is_ivozprovider.html#exposed-to-the-public-network)
 
 ## Installation
 
@@ -52,8 +52,9 @@ If you want to test an [standalone](https://irontec.github.io/ivozprovider/en/in
 
 | Version  | 64 bits  | 32 bits |
 |----------|:--------:|:-------:|
-|stable (oasis 1.6) | [![iso http](portals/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-1.6.0-oasis-amd64.iso)| [![iso http](portals/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-1.6.0-oasis-i386.iso)|
-|bleeding (oasis 1.6) | [![iso http](portals/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-1.6.0-bleeding-amd64.iso)| [![iso http](portals/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-1.6.0-bleeding-i386.iso)|
+|stable (oasis 1.6.3) | [![iso http](portals/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-1.6.3-oasis-amd64.iso)| [![iso http](portals/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-1.6.3-oasis-i386.iso)|
+|testing (artemis 2.0.0) | [![iso http](portals/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-2.0~2.0.0-artemis-amd64.iso)| [![iso http](portals/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-2.0~2.0.0-artemis-i386.iso)|
+|experimental (bleeding 2.1.0) | |
 
 
 ## Documentation

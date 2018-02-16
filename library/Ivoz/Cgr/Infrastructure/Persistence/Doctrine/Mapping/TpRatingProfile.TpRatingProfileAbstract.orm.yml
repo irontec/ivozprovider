@@ -1,0 +1,119 @@
+Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileAbstract:
+  type: mappedSuperclass
+  indexes:
+    tpRatingProfile_tpid:
+      columns:
+        - tpid
+    tpRatingProfile_tpid_loadid:
+      columns:
+        - tpid
+        - loadid
+  uniqueConstraints:
+    tpid_loadid_tenant_category_dir_subj_atime:
+      columns:
+        - tpid
+        - loadid
+        - tenant
+        - subject
+        - category
+        - direction
+        - activation_time
+  fields:
+    tpid:
+      type: string
+      nullable: false
+      length: 64
+      options:
+        fixed: false
+        default: 'ivozprovider'
+    loadid:
+      type: string
+      nullable: false
+      length: 64
+      options:
+        fixed: false
+        default: 'DATABASE'
+    direction:
+      type: string
+      nullable: false
+      length: 8
+      options:
+        fixed: false
+        default: '*out'
+    tenant:
+      type: string
+      nullable: true
+      length: 64
+      options:
+        fixed: false
+    category:
+      type: string
+      nullable: false
+      length: 32
+      options:
+        fixed: false
+        default: 'call'
+    subject:
+      type: string
+      nullable: true
+      length: 64
+      options:
+        fixed: false
+    activationTime:
+      type: datetime
+      nullable: false
+      options:
+        default: CURRENT_TIMESTAMP
+      column: activation_time
+    ratingPlanTag:
+      type: string
+      nullable: true
+      length: 64
+      options:
+        fixed: false
+      column: rating_plan_tag
+    fallbackSubjects:
+      type: string
+      nullable: true
+      length: 64
+      options:
+        fixed: false
+      column: fallback_subjects
+    cdrStatQueueIds:
+      type: string
+      nullable: true
+      length: 64
+      options:
+        fixed: false
+      column: cdr_stat_queue_ids
+    createdAt:
+      type: datetime
+      nullable: false
+      options:
+        default: CURRENT_TIMESTAMP
+      column: created_at
+  manyToOne:
+    company:
+      targetEntity: \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        companyId:
+          referencedColumnName: id
+          nullable: false
+          onDelete: cascade
+      orphanRemoval: false
+    ratingPlan:
+      targetEntity: \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        ratingPlanId:
+          referencedColumnName: id
+          nullable: false
+          onDelete: cascade
+      orphanRemoval: false

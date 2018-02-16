@@ -1,0 +1,55 @@
+production:
+  entity: Ivoz\Provider\Domain\Model\HolidayDate\HolidayDate
+  fields: 
+    calendarId:
+      title: _('Calendar')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Calendar\Calendar
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order:
+            Calendar.name: asc
+    name:
+      title: _('Name', 'Names', 1)
+      type: text
+      trim: both
+      required: true
+      default: true
+    eventDate:
+      title: _('Event date')
+      type: picker
+      required: true
+      source:
+        control: date
+        settings:
+          disabled: 'false'
+#          dateFormat: dd-mm
+    locutionId:
+      title: _('Locution')
+      type: select
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Locution\Locution
+          filterClass: IvozProvider_Klear_Filter_HolidayDateSelectLocution
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+#          order:
+#            Locution.encodedFileMimeType: asc
+        'null': _("Unassigned")
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

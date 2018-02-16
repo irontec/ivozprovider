@@ -1,6 +1,59 @@
+Wed, 16 Feb 2018 16:33:21 +0200 IvozProvider Team <dev@list-ivozprovider.irontec.com>
+
+    * IvozProvider 2.0 released
+
+    * Core goals:
+
+      - Migrate from Debian 8 to Debian 9 (PHP 7.0, MySQL 5.7, etc.)
+      - Rewrite core libraries from Zendframework1 to Symfony3
+      - Migrate existing applications to new library: AGIs, async workers, etc.
+      - Create a new restful API based on OpenAPI specification
+      - Billing logic migrated from custom scripts to CGrateS billing engine
+      - Numeric Transformation for number i18n fully rewritten
+        - All transformations are made in Kamailio now: AS only talk E.164 format (with '+')
+      - Remove CDR async worker, making simpler CDRs but unambiguously linked to a user/friend/retailAccount
+
+    * vPBX:
+
+      - Merge IVR common and IVR custom sections
+      - Enable autofill options for queues
+
+    * Kamailio:
+
+      - New default call distribution method (hash based)
+      - Disable DB insert per SIP transaction
+      - Add evapi module for CGrateS and all needed logics
+      - Implement 422 Session Interval Too Small logic
+      - Avoid using invalid SIP credentials more than once
+
+    * Portals:
+
+      - All external number entries have a country prefix selector now
+      - Migrate userportal to new API
+      - Call-User relationship is unique now
+      - Call ACL use matchlists now
+
+    * Scheme:
+
+      - Domain logic reworked to avoid stale references and unnecessary hooks
+      - Remove the existing unique db-trigger
+      - Add cgrates tables
+
+    * Billing:
+
+      - Migration logic from old billing entities to CGrateS ones
+      - Added redis as stordb running on proxy profile
+      - Invoice worker rewritten to retrieve CGrateS billing information
+
+    * Tests:
+
+      - Most of the entities are now tested through e2e test in admin portal
+      - More than of 200 unit tests of entity services
+      - SIP BBS tests enhanced
+
 Wed, 28 Aug 2017 13:57:21 +0200 IvozProvider Team <dev@list-ivozprovider.irontec.com>
 
-    * IvozProvider 1.6 relesed
+    * IvozProvider 1.6 released
 
     * Administration Portal
         - Reviewed english and spanish translations

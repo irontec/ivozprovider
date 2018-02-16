@@ -1,0 +1,16 @@
+Ivoz\Kam\Domain\Model\UsersMissedCall\UsersMissedCall:
+  repositoryClass: Ivoz\Kam\Infrastructure\Persistence\Doctrine\UsersMissedCallDoctrineRepository
+  type: entity
+  table: kam_users_missed_calls
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  lifecycleCallbacks:
+    postLoad:
+      - initChangelog

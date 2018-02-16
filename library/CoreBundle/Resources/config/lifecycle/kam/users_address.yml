@@ -1,0 +1,23 @@
+services:
+  _defaults:
+    autowire: true
+    public: false
+
+  ##################################
+  ## Service collection
+  ##################################
+  Ivoz\Kam\Domain\Service\UsersAddress\UsersAddressLifecycleServiceCollection:
+    public: true
+
+  kam.lifecycle.users_address.service_collection:
+    '@Ivoz\Kam\Domain\Service\UsersAddress\UsersAddressLifecycleServiceCollection'
+
+  ##################################
+  ## on_commit
+  ##################################
+  Ivoz\Kam\Infrastructure\Domain\Service\UsersAddress\SendUsersPermissionsReloadRequest:
+    tags:
+      - { name: kam.lifecycle.users_address.on_commit, priority: 10 }
+    arguments:
+      $usersPermissionsReload:
+        '@XmlRpc\XmlRpcUsersRequest::PermissionsTrustedReload'

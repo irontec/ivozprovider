@@ -1,0 +1,16 @@
+Ivoz\Provider\Domain\Model\IvrExcludedExtension\IvrExcludedExtension:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\IvrExcludedExtensionDoctrineRepository
+  type: entity
+  table: IVRExcludedExtensions
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  lifecycleCallbacks:
+    postLoad:
+      - initChangelog

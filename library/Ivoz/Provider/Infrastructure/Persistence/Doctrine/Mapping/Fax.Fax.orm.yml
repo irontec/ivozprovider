@@ -1,0 +1,16 @@
+Ivoz\Provider\Domain\Model\Fax\Fax:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\FaxDoctrineRepository
+  type: entity
+  table: Faxes
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  lifecycleCallbacks:
+    postLoad:
+      - initChangelog

@@ -1,0 +1,10 @@
+imports:
+    - { resource: config_dev.yml }
+    - { resource: fixtures.yml }
+
+framework:
+    test: ~
+    session:
+        storage_id: session.storage.mock_file
+    profiler:
+        collect: false

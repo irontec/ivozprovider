@@ -1,0 +1,24 @@
+{
+    "priority": "1",
+    "relMatchlists[]": [
+      ""
+    ],
+    "relSchedules[]": [
+      ""
+    ],
+    "relCalendars[]": [
+      ""
+    ],
+    "locutionId": "__NULL__",
+    "routeType": "__NULL__",
+    "ivrId": "__NULL__",
+    "huntGroupId": "__NULL__",
+    "voiceMailUserId": "__NULL__",
+    "userId": "__NULL__",
+    "numberCountryId": "70",
+    "numberValue": "",
+    "friendValue": "",
+    "queueId": "__NULL__",
+    "conferenceRoomId": "__NULL__",
+    "extensionId": "__NULL__"
+}

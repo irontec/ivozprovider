@@ -1,0 +1,326 @@
+mappers:
+  - &Administrators {
+        modelFile: Administrators,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\Administrator\\Administrator'
+    }
+  - &ApplicationServers {
+        modelFile: ApplicationServers,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\ApplicationServer\\ApplicationServer'
+    }
+  - &BrandServices {
+        modelFile: BrandServices,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\BrandService\\BrandService'
+    }
+  - &Brands {
+        modelFile: Brands,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\Brand\\Brand'
+    }
+  - &BrandURLs {
+        modelFile: BrandUrls,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\BrandUrl\\BrandUrl'
+    }
+  - &Calendars {
+        modelFile: Calendars,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\Calendar\\Calendar'
+    }
+  - &CallACL {
+        modelFile: CallAcl,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\CallAcl\\CallAcl'
+    }
+  - &CallAclRelMatchLists {
+        modelFile: CallAclRelMatchLists,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\CallAclRelMatchLists\\CallAclRelMatchLists'
+    }
+  - &CallForwardSettings {
+        modelFile: CallForwardSettings,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\CallForwardSetting\\CallForwardSetting'
+    }
+  - &Companies {
+        modelFile: Companies,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\Company\\Company'
+    }
+  - &CompanyServices {
+        modelFile: CompanyServices,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\CompanyService\\CompanyService'
+    }
+  - &CompanyURLs {
+        modelFile: CompanyUrls,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\BrandUrl\\BrandUrl'
+    }
+  - &ConditionalRoutesConditions {
+        modelFile: ConditionalRoutesConditions,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\ConditionalRoutesCondition\\ConditionalRoutesCondition'
+    }
+  - &ConditionalRoutes {
+        modelFile: ConditionalRoutes,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\ConditionalRoute\\ConditionalRoute'
+    }
+  - &ConferenceRooms {
+        modelFile: ConferenceRoom,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\ConferenceRoom\\ConferenceRoom'
+    }
+  - &ConferenceRooms {
+        modelFile: ConferenceRooms,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\ConferenceRoom\\ConferenceRoom'
+    }
+  - &DDIs {
+        modelFile: Ddis,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\Ddi\\Ddi'
+    }
+  - &DestinationRates {
+        modelFile: DestinationRates,
+        entity: 'Ivoz\\Cgr\\Domain\\Model\\DestinationRate\\DestinationRate'
+    }
+  - &Destinations {
+        modelFile: Destinations,
+        entity: 'Ivoz\\Cgr\\Domain\\Model\\Destination\\Destination'
+    }
+  - &Domains {
+        modelFile: Domains,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\Domain\\Domain'
+    }
+  - &Extensions {
+        modelFile: Extensions,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\Extension\\Extension'
+    }
+  - &ExternalCallFilters {
+        modelFile: ExternalCallFilters,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\ExternalCallFilter\\ExternalCallFilter'
+    }
+  - &ExternalCallFiltersRetail {
+        modelFile: ExternalCallFiltersRetail,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\ExternalCallFilter\\ExternalCallFilter'
+    }
+  - &FaxesInOut {
+        modelFile: FaxesInOut,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\FaxesInOut\\FaxesInOut'
+    }
+  - &Faxes {
+        modelFile: Faxes,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\Fax\\Fax'
+    }
+  - &FixedCosts {
+        modelFile: FixedCosts,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\FixedCosts\\FixedCost'
+    }
+  - &FixedCostsRelInvoices {
+        modelFile: FixedCostsRelInvoices,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\FixedCostsRelInvoice\\FixedCostsRelInvoice'
+    }
+  - &Friends {
+        modelFile: Friends,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\Friend\\Friend'
+    }
+  - &FriendsPatterns {
+        modelFile: FriendsPatterns,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\FriendsPattern\\FriendsPattern'
+    }
+  - &HolidayDates {
+        modelFile: HolidayDates,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\HolidayDate\\HolidayDate'
+    }
+  - &HuntGroups {
+        modelFile: HuntGroups,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\HuntGroup\\HuntGroup'
+    }
+  - &HuntGroupsRelUsers {
+        modelFile: HuntGroupsRelUsers,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\HuntGroupRelUser\\HuntGroupRelUser'
+    }
+  - &Invoices {
+        modelFile: Invoices,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\Invoice\\Invoice'
+    }
+  - &InvoiceTemplates {
+        modelFile: InvoiceTemplates,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\InvoiceTemplate\\InvoiceTemplate'
+    }
+  - &IvrEntries {
+        modelFile: IvrEntries,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\IvrEntry\\IvrEntry'
+    }
+  - &Ivr {
+        modelFile: Ivr,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\Ivr\\Ivr'
+    }
+  - &Locutions {
+        modelFile: Locutions,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\Locution\\Locution'
+    }
+  - &MatchListPatterns {
+        modelFile: MatchListPatterns,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\MatchListPattern\\MatchListPattern'
+    }
+  - &MatchLists {
+        modelFile: MatchLists,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\MatchList\\MatchList'
+    }
+  - &MediaRelaySets {
+        modelFile: MediaRelaySets,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\MediaRelaySet\\MediaRelaySet'
+    }
+  - &MusicOnHold {
+        modelFile: MusicOnHold,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\MusicOnHold\\MusicOnHold'
+    }
+  - &OutgoingDDIRules {
+        modelFile: OutgoingDdiRules,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\OutgoingDdiRule\\OutgoingDdiRule'
+    }
+  - &OutgoingDDIRulesPatterns {
+        modelFile: OutgoingDdiRulesPatterns,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\OutgoingDdiRulesPattern\\OutgoingDdiRulesPattern'
+    }
+  - &OutgoingRouting {
+        modelFile: OutgoingRouting,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\OutgoingRouting\\OutgoingRouting'
+    }
+  - &PeeringContracts {
+        modelFile: PeeringContracts,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\PeeringContract\\PeeringContract'
+    }
+  - &PeerServers {
+        modelFile: PeerServers,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\PeerServer\\PeerServer'
+    }
+  - &PickUpGroups {
+        modelFile: PickUpGroups,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\PickUpGroup\\PickUpGroup'
+    }
+  - &PickUpRelUsers {
+        modelFile: PickUpRelUsers,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\PickUpRelUser\\PickUpRelUser'
+    }
+  - &ProxyTrunks {
+        modelFile: ProxyTrunks,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\ProxyTrunk\\ProxyTrunk'
+    }
+  - &ProxyUsers {
+        modelFile: ProxyUsers,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\ProxyUser\\ProxyUser'
+    }
+  - &QueueMembers {
+        modelFile: QueueMembers,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\QueueMember\\QueueMember'
+    }
+  - &Queues {
+        modelFile: Queues,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\Queue\\Queue'
+    }
+  - &Rates {
+        modelFile: Rates,
+        entity: 'Ivoz\\Cgr\\Domain\\Model\\Rate\\Rate'
+    }
+  - &RatingPlans {
+        modelFile: RatingPlans,
+        entity: 'Ivoz\\Cgr\\Domain\\Model\\RatingPlan\\RatingPlan'
+    }
+  - &Recordings {
+        modelFile: Recordings,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\Recording\\Recording'
+    }
+  - &RetailAccounts {
+        modelFile: RetailAccounts,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\RetailAccount\\RetailAccount'
+    }
+  - &RetailClients {
+        modelFile: RetailClients,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\Company\\Company'
+  }
+  - &RoutingPatternGroups {
+        modelFile: RoutingPatternGroups,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\RoutingPatternGroup\\RoutingPatternGroup'
+    }
+  - &RoutingPatternGroupsRelPatterns {
+        modelFile: RoutingPatternGroupsRelPatterns,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\RoutingPatternGroupsRelPattern\\RoutingPatternGroupsRelPattern'
+    }
+  - &RoutingPatterns {
+        modelFile: RoutingPatterns,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\RoutingPattern\\RoutingPattern'
+    }
+  - &Schedules {
+        modelFile: Schedules,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\Schedule\\Schedule'
+    }
+  - &Services {
+        modelFile: Services,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\Service\\Service'
+    }
+  - &TerminalManufacturers {
+        modelFile: TerminalManufacturers,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\TerminalManufacturer\\TerminalManufacturer'
+    }
+  - &TerminalModels {
+        modelFile: TerminalModels,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\TerminalModel\\TerminalModel'
+    }
+  - &Terminals {
+        modelFile: Terminals,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\Terminal\\Terminal'
+    }
+  - &TransformationRuleSets {
+        modelFile: TransformationRuleSets,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\TransformationRuleSet\\TransformationRuleSet'
+    }
+  - &TpDestinationRates {
+        modelFile: TpDestinationRates,
+        entity: 'Ivoz\\Cgr\\Domain\\Model\\TpDestinationRate\\TpDestinationRate'
+    }
+  - &TpDestinations {
+        modelFile: TpDestinations,
+        entity: 'Ivoz\\Cgr\\Domain\\Model\\TpDestination\\TpDestination'
+    }
+  - &TpRates {
+        modelFile: TpRates,
+        entity: 'Ivoz\\Cgr\\Domain\\Model\\TpRate\\TpRate'
+    }
+  - &TpRatingPlans {
+        modelFile: TpRatingPlans,
+        entity: 'Ivoz\\Cgr\\Domain\\Model\\TpRatingPlan\\TpRatingPlan'
+    }
+  - &TpRatingProfiles {
+        modelFile: TpRatingProfiles,
+        entity: 'Ivoz\\Cgr\\Domain\\Model\\TpRatingProfile\\TpRatingProfile'
+    }
+  - &TransformationRules {
+        modelFile: TransformationRules,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\TransformationRule\\TransformationRule'
+    }
+  - &Users {
+        modelFile: Users,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\User\\User'
+    }
+  - &KamTrunksCdrs {
+        modelFile: KamTrunksCdrs,
+        entity: 'Ivoz\\Kam\\Domain\\Model\\TrunksCdr\\TrunksCdr'
+    }
+  - &PikeTrusted {
+        modelFile: KamPikeTrusted,
+        entity: 'Kam\\Model\\PikeTrusted\\PikeTrusted'
+    }
+  - &Rtpproxy {
+        modelFile: KamRtpproxy,
+        entity: 'Kam\\Model\\Rtpproxy\\Rtpproxy'
+    }
+  - &KamTrunksAcc {
+        modelFile: KamTrunksAcc,
+        entity: 'Kam\\Model\\TrunksAcc\\TrunksAcc'
+    }
+  - &KamTrunksUacreg {
+        modelFile: KamTrunksUacreg,
+        entity: 'Ivoz\\Kam\\Domain\\Model\\TrunksUacreg\\TrunksUacreg'
+    }
+  - &UsersAcc {
+        modelFile: UsersAcc,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\UsersAcc\\UsersAcc'
+    }
+  - &KamUsersAddress {
+        modelFile: KamUsersAddress,
+        entity: 'Kam\\Model\\UsersAddress\\UsersAddress'
+    }
+  - &KamUsersCdrs {
+        modelFile: KamUsersCdrs,
+        entity: 'Ivoz\\Kam\\Model\\UsersCdrs\\UsersCdr'
+    }
+

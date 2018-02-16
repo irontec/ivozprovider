@@ -1,0 +1,119 @@
+production:
+  entity: Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting
+  fields:
+    type:
+      title: _('Type')
+      type: select
+      defaultValue: pattern
+      source:
+        data: inline
+        values:
+          'pattern':
+            title: _('Pattern')
+            visualFilter:
+              show: ["routingPatternId"]
+              hide: ["routingPatternGroupId"]
+          'group':
+            title: _('Group')
+            visualFilter:
+              show: ["routingPatternGroupId" ]
+              hide: ["routingPatternId"]
+          'fax':
+            title: _('Fax')
+            visualFilter:
+              hide: ["routingPatternId","routingPatternGroupId"]
+              show: []
+    routingPatternId:
+      title: _('Select destination pattern')
+      type: select
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPattern
+          filterClass: IvozProvider_Klear_Filter_Brand
+          fieldName:
+            fields:
+              - name${lang}
+              - description${lang}
+              - regExp
+            template: '%name${lang}% %description${lang}% (%regExp%)'
+          order:
+            RoutingPattern.name.${lang}: asc
+    routingPatternGroupId:
+      title: _('Select destination group')
+      type: select
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup
+          filterClass: IvozProvider_Klear_Filter_Brand
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order:
+            RoutingPatternGroup.name: asc
+    peeringContractId:
+      title: _('Peering contract')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContract
+          filterClass: IvozProvider_Klear_Filter_Brand
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order:
+            PeeringContract.name: asc
+    priority:
+      title: _('Priority')
+      type: number
+      defaultValue: 1
+      required: true
+      source:
+        control: Spinner
+        min: 1
+        max: 254
+    weight:
+      title: _('Weight')
+      type: number
+      required: true
+      defaultValue: 1
+      source:
+        control: Spinner
+        min: 1
+        max: 254
+    companyId:
+      title: ngettext('Company', 'Companies', 1)
+      type: select
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Company\Company
+          filterClass: IvozProvider_Klear_Filter_Brand
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order:
+            Company.name: asc
+        'null': _("Apply to all companies")
+      default: true
+    target:
+      title: _('Destination')
+      type: ghost
+      source:
+        class: IvozProvider_Klear_Ghost_OutgoingRouteType
+        method: getData
+
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

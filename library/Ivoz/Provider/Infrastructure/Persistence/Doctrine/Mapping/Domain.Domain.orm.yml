@@ -1,0 +1,27 @@
+Ivoz\Provider\Domain\Model\Domain\Domain:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\DomainDoctrineRepository
+  type: entity
+  table: Domains
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  oneToMany:
+    friends:
+      targetEntity: Ivoz\Provider\Domain\Model\Friend\FriendInterface
+      mappedBy: domain
+    retailAccounts:
+      targetEntity: Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface
+      mappedBy: domain
+    terminals:
+      targetEntity: Ivoz\Provider\Domain\Model\Terminal\TerminalInterface
+      mappedBy: domain
+
+  lifecycleCallbacks:
+    postLoad:
+      - initChangelog

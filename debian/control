@@ -2,10 +2,11 @@ Source: ivozprovider
 Section: php
 Priority: optional
 Build-Depends: debhelper, dh-systemd,
-    nodejs, npm, ruby-compass, git, openssh-client, curl, php5,
+    nodejs, ruby-compass, git, openssh-client, curl, php7.0,
     python, make, python-sphinx-rtd-theme, gettext,
     python-sphinx (>=1.4.6), sphinx-common (>=1.4.6), libjs-sphinxdoc (>=1.4.6),
-    libjs-jquery (>=1.11.3), python-alabaster (>=0.7.8)
+    libjs-jquery (>=1.11.3), python-alabaster (>=0.7.8), composer,
+    php7.0-mbstring, php7.0-xml, php7.0-zip, php-mailparse, php-gearman
 Standards-Version: 3.9.6
 Maintainer: Irontec Package Team <packages@irontec.com>
 
@@ -14,15 +15,15 @@ Architecture: all
 Section: admin
 Priority: optional
 Depends: debconf, po-debconf,
-    ivozprovider-profile-as,
-    ivozprovider-profile-data,
-    ivozprovider-profile-proxy,
-    ivozprovider-profile-portal,
-    ivozprovider-kamailio-users,
-    ivozprovider-kamailio-trunks,
+    ivozprovider-profile-as (=${binary:Version}),
+    ivozprovider-profile-data (=${binary:Version}),
+    ivozprovider-profile-proxy (=${binary:Version}),
+    ivozprovider-profile-portal (=${binary:Version}),
+    ivozprovider-kamailio-users (=${binary:Version}),
+    ivozprovider-kamailio-trunks (=${binary:Version}),
+    ivozprovider-recordings (=${binary:Version}),
     ivozprovider-rtpproxy,
-    ivozprovider-rtpengine,
-    ivozprovider-recordings
+    ivozprovider-rtpengine
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Virtual standalone package
  .
@@ -46,13 +47,13 @@ Architecture: all
 Section: admin
 Priority: optional
 Pre-Depends: libmyodbc, unixodbc
-Depends: ivozprovider-profile-common,
-    ivozprovider-asterisk-agi,
-    ivozprovider-asterisk-config,
+Depends: ivozprovider-profile-common (=${binary:Version}),
+    ivozprovider-asterisk-agi (=${binary:Version}),
+    ivozprovider-asterisk-config (=${binary:Version}),
     ivozprovider-asterisk-sounds,
     ivozprovider-asterisk,
-    php5-igbinary,
-    php5-gearman,
+    php7.0-igbinary,
+    php-gearman,
     sngrep,
     ghostscript,
     libtiff-tools
@@ -64,9 +65,9 @@ Package: ivozprovider-profile-data
 Architecture: all
 Section: admin
 Priority: optional
-Pre-Depends: ivozprovider-profile-common,
+Pre-Depends: ivozprovider-profile-common (=${binary:Version}),
     mysql-server,
-    ivozprovider-scheme,
+    ivozprovider-scheme (=${binary:Version}),
     bind9,
     libstring-crc32-perl,
     libgearman-client-perl
@@ -78,25 +79,26 @@ Package: ivozprovider-profile-portal
 Architecture: all
 Section: admin
 Priority: optional
-Depends: ivozprovider-profile-common,
-    ivozprovider-doc,
+Depends: ivozprovider-profile-common (=${binary:Version}),
+    ivozprovider-doc (=${binary:Version}),
+    ivozprovider-async-workers (=${binary:Version}),
     apache2,
-    php5,
-    php5-igbinary,
-    php5-mysql,
-    php5-imagick,
-    php5-curl,
-    php5-yaml,
-    php5-gearman,
-    php5-gd,
-    ivozprovider-portals,
-    ivozprovider-userweb,
+    php-gearman,
+    php7.0,
+    php-igbinary,
+    php7.0-mysql,
+    php-imagick,
+    php7.0-mbstring,
+    php7.0-curl,
+    php-yaml,
+    php7.0-gd,
+    ivozprovider-web-admin (=${binary:Version}),
+    ivozprovider-web-user (=${binary:Version}),
     gearman-job-server,
     gearman,
     supervisor,
     libav-tools,
     sox,
-    redis-server,
     libsox-fmt-mp3
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Portal System Profile
@@ -117,10 +119,14 @@ Depends: ivozprovider-profile-common,
         ivozprovider-kamailio-tls-modules,
         ivozprovider-kamailio-xml-modules,
         ivozprovider-kamailio-websocket-modules,
-        ivozprovider-kamailio-redis-modules,
         ivozprovider-kamailio-presence-modules,
-        ivozprovider-kamailio-trunks,
-        ivozprovider-kamailio-users
+        ivozprovider-kamailio-extra-modules,
+        ivozprovider-kamailio-trunks (=${binary:Version}),
+        ivozprovider-kamailio-users (=${binary:Version}),
+        ivozprovider-cgrates,
+        ivozprovider-cgrates-tools,
+        ivozprovider-cgrates-config (=${binary:Version}),
+        redis-server
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Profile files for a Proxy Systems
  .
@@ -162,7 +168,7 @@ Package: ivozprovider-asterisk-agi
 Architecture: all
 Section: php
 Priority: optional
-Depends: ivozprovider-data-library
+Depends: ivozprovider-common-library (=${binary:Version}), php-mailparse
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Asterik - Gateway Interface Zend Application
  .
@@ -171,35 +177,49 @@ Package: ivozprovider-scheme
 Architecture: all
 Section: database
 Priority: optional
-Depends: phing, php5-mysql, mysql-server
+Pre-Depends: ivozprovider-common-library (=${binary:Version})
+Depends: php7.0-mysql, php7.0-xml, mysql-server
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Database Scheme
  .
 
-Package: ivozprovider-portals
+Package: ivozprovider-web-admin
 Architecture: all
 Section: php
 Priority: optional
-Depends: klear, ivozprovider-data-library, libxrender1
+Conflicts: ivozprovider-portals
+Depends: klear, ivozprovider-common-library (=${binary:Version}), ivozprovider-web-rest (=${binary:Version}), zendframework, libxrender1
 Homepage: http://www.irontec.com
-Description: IVOZ Provider - Portals - Zendframework application
+Description: IVOZ Provider - Admin Web - Klear based web interface
  Portals using klear and zendframework 1
  .
 
-Package: ivozprovider-userweb
+Package: ivozprovider-web-user
 Architecture: all
 Section: php
 Priority: optional
-Depends: ivozprovider-portals
+Conflicts: ivozprovider-userweb
+Depends: ivozprovider-web-admin (=${binary:Version})
 Homepage: http://www.irontec.com
-Description: IVOZ Provider - User Webapp - Zendframework application
- User webapp using klear and zendframework 1
+Description: IVOZ Provider - User Web - Angular based user web interface
+ User webapp using Angular and Bootstrap
  .
 
-Package: ivozprovider-data-library
+Package: ivozprovider-web-rest
 Architecture: all
 Section: php
-Depends: zendframework, php5-cli, php5-mysql, klear-library
+Priority: optional
+Depends: ivozprovider-common-library (=${binary:Version}), apache2, libapache2-mod-php7.0
+Homepage: http://www.irontec.com
+Description: IVOZ Provider - Rest API files
+ .
+
+Package: ivozprovider-common-library
+Architecture: all
+Section: php
+Depends: php7.0-cli, php7.0-mysql, php7.0-mbstring, php7.0-xml, acl, klear-library
+Provides: ivozprovider-data-library
+Conflicts: ivozprovider-data-library
 Priority: optional
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Mappers and Models for Zend applications
@@ -208,11 +228,19 @@ Description: IVOZ Provider - Mappers and Models for Zend applications
 Package: ivozprovider-recordings
 Architecture: all
 Priority: optional
-Depends: ivozprovider-data-library, 
+Depends: ivozprovider-common-library (=${binary:Version}),
     libav-tools
 Homepage: http://www.irontec.com
-Description: IVOZ Provider - Recordings - Zendframework application
- Recordings Zend Application for uploading recordings to klear
+Description: IVOZ Provider - Recordings - Symfony microservice
+ Recordings Microservice for encoding storage recordings
+ .
+
+Package: ivozprovider-async-workers
+Architecture: all
+Priority: optional
+Depends: ivozprovider-common-library (=${binary:Version}), php-mailparse, php-gearman
+Homepage: http://www.irontec.com
+Description: IVOZ Provider - Async Workers - Symfony microservice
  .
 
 Package: ivozprovider-doc
@@ -222,3 +250,14 @@ Homepage: http://www.irontec.com
 Description: IVOZ Provider - HTML Documentation
  Generated documentation with sphinx using Read the Docs theme.
  .
+
+Package: ivozprovider-cgrates-config
+Architecture: all
+Section: admin
+Priority: optional
+Homepage: http://www.irontec.com
+Description: IVOZ Provider - CGrateS - Configuration files
+ This package includes all config files found in /etc
+ that will require cgrates to run properly.
+ .
+

@@ -1,0 +1,55 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+
+production:
+  main:
+    module: klearMatrix
+    defaultScreen: dDIsList_screen
+
+  screens: &dDIs_screenLink
+    dDIsList_screen: &dDIsList_screenLink
+      controller: list
+      pagination:
+        items: 25
+      <<: *DDIs
+      title: _("List of %s %2s", ngettext('DDI', 'DDIs', 0), "[format| (%parent%)]")
+      class: ui-silk-lightning-go
+      forcedValues:
+        <<: *forcedBrand
+      order:
+        field:
+          - Ddi.country asc
+          - Ddi.ddi asc
+      fields:
+        order: &dDIsFieldsOder_Link
+          countryId: true
+          DDI: true
+          companyId: true
+          peeringContractId: true
+        blacklist:
+          externalCallFilterId: true
+          routeType: true
+          target: true
+          displayName: true
+          userId: true
+          faxId: true
+          ivrId: true
+          huntGroupId: true
+          ddie164: true
+          brand: true
+          conferenceRoomId: true
+          recordCalls: true
+          billInboundCalls: true
+          friendValue: true
+          queueId: true
+          retailAccountId: true
+          languageId: true
+          conditionalRouteId: true
+staging: 
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

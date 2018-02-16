@@ -1,0 +1,16 @@
+Ivoz\Provider\Domain\Model\TransformationRule\TransformationRule:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\TransformationRuleDoctrineRepository
+  type: entity
+  table: TransformationRules
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  lifecycleCallbacks:
+    postLoad:
+      - initChangelog

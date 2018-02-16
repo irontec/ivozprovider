@@ -2,7 +2,15 @@
 
 #DEBHELPER#
 
-# Enable php5 environment variables
-/bin/sed -i 's/variables_order = "GPCS"/variables_order = "EGPCS"/g' /etc/php5/cli/php.ini
+# Set current environment
+export $(systemctl show-environment)
+[ -z "$SYMFONY_ENV" ] && export SYMFONY_ENV=prod
+
+# Enable php environment variables
+/bin/sed -i 's/variables_order = "GPCS"/variables_order = "EGPCS"/g' /etc/php/7.0/cli/php.ini
+
+# Create project cache
+cd /opt/irontec/ivozprovider/microservices/recordings
+bin/console cache:clear --no-warmup -q -n
 
 :

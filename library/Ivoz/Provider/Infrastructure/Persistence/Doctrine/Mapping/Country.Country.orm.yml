@@ -1,0 +1,16 @@
+Ivoz\Provider\Domain\Model\Country\Country:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\CountryDoctrineRepository
+  type: entity
+  table: Countries
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  lifecycleCallbacks:
+    postLoad:
+      - initChangelog

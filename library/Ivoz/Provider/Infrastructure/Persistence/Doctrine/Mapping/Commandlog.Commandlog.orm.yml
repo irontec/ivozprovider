@@ -1,0 +1,11 @@
+Ivoz\Provider\Domain\Model\Commandlog\Commandlog:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\ApplicationServerDoctrineRepository
+  type: entity
+  table: Commandlog
+  id:
+    id:
+      type: guid
+      nullable: false
+      id: true
+      generator:
+        strategy: NONE

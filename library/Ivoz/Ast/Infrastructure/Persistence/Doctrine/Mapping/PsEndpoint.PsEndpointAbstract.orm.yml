@@ -1,0 +1,166 @@
+Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointAbstract:
+  type: mappedSuperclass
+  indexes:
+    psEndpoint_terminalId:
+      columns:
+        - terminalId
+    psEndpoint_friendId:
+      columns:
+        - friendId
+    psEndpoint_sorcery_idx:
+      columns:
+        - sorcery_id
+  uniqueConstraints:
+    psEndpoint_id:
+      columns:
+        - id
+  fields:
+    sorceryId:
+      type: string
+      nullable: false
+      length: 40
+      options:
+        fixed: false
+      column: sorcery_id
+    fromDomain:
+      type: string
+      nullable: true
+      length: 190
+      options:
+        fixed: false
+      column: from_domain
+    aors:
+      type: string
+      nullable: true
+      length: 200
+      options:
+        fixed: false
+    callerid:
+      type: string
+      nullable: true
+      length: 100
+      options:
+        fixed: false
+    context:
+      type: string
+      nullable: false
+      length: 40
+      options:
+        fixed: false
+        default: users
+    disallow:
+      type: string
+      nullable: false
+      length: 200
+      options:
+        fixed: false
+        default: all
+    allow:
+      type: string
+      nullable: false
+      length: 200
+      options:
+        fixed: false
+        default: all
+    directMedia:
+      type: string
+      nullable: true
+      length: null
+      options:
+        fixed: false
+        default: 'yes'
+      column: direct_media
+    directMediaMethod:
+      type: string
+      nullable: true
+      length: null
+      options:
+        fixed: false
+        comment: '[enum:update|invite|reinvite]'
+        default: update
+      column: direct_media_method
+    mailboxes:
+      type: string
+      nullable: true
+      length: 100
+      options:
+        fixed: false
+    namedPickupGroup:
+      type: string
+      nullable: true
+      length: 40
+      options:
+        fixed: false
+      column: named_pickup_group
+    sendDiversion:
+      type: string
+      nullable: true
+      length: null
+      options:
+        fixed: false
+        default: 'yes'
+      column: send_diversion
+    sendPai:
+      type: string
+      nullable: true
+      length: null
+      options:
+        fixed: false
+        default: 'yes'
+      column: send_pai
+    oneHundredRel:
+      type: string
+      nullable: false
+      length: null
+      options:
+        fixed: false
+        default: 'no'
+      column: '`100rel`'
+    outboundProxy:
+      type: string
+      nullable: true
+      length: 256
+      options:
+        fixed: false
+      column: outbound_proxy
+    trustIdInbound:
+      type: string
+      nullable: true
+      length: null
+      options:
+        fixed: false
+      column: trust_id_inbound
+  manyToOne:
+    terminal:
+      targetEntity: \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: astPsEndpoints
+      joinColumns:
+        terminalId:
+          referencedColumnName: id
+          onDelete: cascade
+      orphanRemoval: false
+    friend:
+      targetEntity: \Ivoz\Provider\Domain\Model\Friend\FriendInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: psEndpoints
+      joinColumns:
+        friendId:
+          referencedColumnName: id
+          onDelete: cascade
+      orphanRemoval: false
+    retailAccount:
+      targetEntity: \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: psEndpoints
+      joinColumns:
+        retailAccountId:
+          referencedColumnName: id
+          onDelete: cascade
+      orphanRemoval: false

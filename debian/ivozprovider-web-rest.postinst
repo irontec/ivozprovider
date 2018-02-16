@@ -1,0 +1,23 @@
+#!/bin/bash
+
+#DEBHELPER#
+
+# Set current environment
+export $(systemctl show-environment)
+[ -z "$SYMFONY_ENV" ] && export SYMFONY_ENV=prod
+
+cd /opt/irontec/ivozprovider/web/rest
+
+# Set proper var permissions
+setfacl -dR -m u:www-data:rwX -m u:root:rwX var
+setfacl  -R -m u:www-data:rwX -m u:root:rwX var
+
+# Create project cache
+bin/console cache:clear --no-warmup -q -n
+# generate swagger spec
+bin/console api:swagger:export > web/swagger.json
+
+# Create jwt certificates
+[ ! -e /opt/irontec/ivozprovider/web/rest/var/jwt/private.pem ] && bin/generate_keys --initial
+
+:

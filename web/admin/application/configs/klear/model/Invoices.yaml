@@ -1,0 +1,163 @@
+production:
+  entity: Ivoz\Provider\Domain\Model\Invoice\Invoice
+  fields: 
+    number:
+      title: _('Number')
+      type: text
+      trim: both
+      required: true
+      maxLength: 30
+      default: true
+    inDate:
+      title: _('In date')
+      type: picker
+      required: true
+      source:
+        control: date
+        settings:
+          disabled: 'false'
+          dateFormate: 'dd-mm-yy'
+#          timeFormat: '00:00:00'
+    outDate:
+      title: _('Out date')
+      type: picker
+      required: true
+      source:
+        control: date
+        settings:
+          disabled: 'false'
+          dateFormate: 'dd-mm-yy'
+#          timeFormat: '23:59:59'
+    total:
+      title: _('Total')
+      type: text
+      trim: both
+      sufix: "€"
+    taxRate:
+      title: _('Tax rate')
+      type: text
+      trim: both
+      required: true
+      sufix: "%"
+    totalWithTax:
+      title: _('Total with tax')
+      type: text
+      trim: both
+      sufix: "€"
+    status:
+      title: _('Status')
+      type: select
+      source:
+        data: inline
+        values:
+          'waiting': _('Waiting')
+          'processing': _('Processing')
+          'created': _('Created')
+          'error': _('Error')
+    pdf:
+      title: _('Pdf file')
+      type: file
+      source:
+        data: fso
+        size_limit: 20M
+        options:
+          preview:
+            target: invoicesPdfFilePreview_command
+            type: command
+            class: filePreview
+            external: 1
+            props:
+              width: 150
+              height: 150
+              crop: false
+            onNull: hide
+      options:
+        commands:
+          invoicesPdfFileDownload_command: true
+    companyId:
+      title: ngettext('Company', 'Companies', 1)
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Company\Company
+          filterClass: IvozProvider_Klear_Filter_Brand
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order:
+            Company.name: asc
+        'null': _("Unassigned")
+    brandId:
+      title: ngettext('Brand', 'Brands', 1)
+      type: select
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Brand\Brand
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order:
+            Brand.name: asc
+        'null': _("Unassigned")
+    invoiceTemplateId:
+      title: _('Template')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplate
+          filterClass: IvozProvider_Klear_Filter_Brand
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order:
+            InvoiceTemplate.name: asc
+        'null': _("Unassigned")
+    FixedCostsRelInvoicesId:
+      title: ngettext('Fixed cost', 'Fixed costs', 1)
+      searchable: false
+      type: ghost
+      source:
+        predefined: list
+      data: mapper
+      config:
+        entity: \Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoice
+        entityClass: Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoice
+        filterField: FixedCostsRelInvoice.invoice
+        showAsTable: true
+        fieldName:
+          fields:
+            fixedCost:
+              title: _("Fixed cost")
+              entity: \Ivoz\Provider\Domain\Model\FixedCost\FixedCost
+              entityClass: Ivoz\Provider\Domain\Model\FixedCost\FixedCost
+              field:
+                - name
+                - cost
+              pattern: "%name% - %cost% €"
+            quantity:
+              title: _("Quantity")
+        options:
+          dialogs:
+            fixedCostsRelInvoicesDel_dialog: true
+          screens:
+            fixedCostsRelInvoicesEdit_screen: true
+          default:
+      options:
+        screens:
+          fixedCostsRelInvoicesNew_screen: true
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

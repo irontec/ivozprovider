@@ -1,0 +1,24 @@
+services:
+  _defaults:
+    autowire: true
+    public: false
+
+  ##################################
+  ## Service collection
+  ##################################
+  Ivoz\Provider\Domain\Service\RoutingPatternGroup\RoutingPatternGroupLifecycleServiceCollection:
+    public: true
+
+  provider.lifecycle.routing_pattern_group.service_collection:
+    '@Ivoz\Provider\Domain\Service\RoutingPatternGroup\RoutingPatternGroupLifecycleServiceCollection'
+
+
+  ##################################
+  ## on_commit
+  ##################################
+  Ivoz\Provider\Infrastructure\Domain\Service\RoutingPatternGroup\SendTrunksLcrReloadRequest:
+    tags:
+      - { name: provider.lifecycle.routing_pattern_group.on_commit, priority: 10 }
+    arguments:
+      $trunksLcrReload:
+        '@XmlRpc\XmlRpcTrunksRequest::DialplanReload'

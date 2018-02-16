@@ -2,16 +2,16 @@
 
 # Environment file
 ENVFILE="/etc/systemd/system.conf"
-ENV="production"
+ENV="prod"
 
 ## Set environment
-grep APPLICATION_ENV $ENVFILE &>/dev/null
+grep SYMFONY_ENV $ENVFILE &>/dev/null
 if [ $? -ne 0 ]; then
-    echo "DefaultEnvironment=APPLICATION_ENV=$ENV" >> $ENVFILE
+    echo "DefaultEnvironment=SYMFONY_ENV=$ENV" >> $ENVFILE
 fi
 
 # Set current environment
-systemctl set-environment APPLICATION_ENV=$ENV
+systemctl set-environment SYMFONY_ENV=$ENV
 export $(systemctl show-environment)
 
 :

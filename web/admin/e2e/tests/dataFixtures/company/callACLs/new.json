@@ -1,0 +1,4 @@
+{
+  "name": "testACL",
+  "defaultPolicy": "allow"
+}

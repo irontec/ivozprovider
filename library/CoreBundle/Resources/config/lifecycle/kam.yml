@@ -1,0 +1,4 @@
+imports:
+  - { resource: "@CoreBundle/Resources/config/lifecycle/kam/pike_trusted.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/kam/trunks_uacreg.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/kam/users_address.yml" }

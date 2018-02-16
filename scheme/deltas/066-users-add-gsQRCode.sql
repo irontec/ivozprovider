@@ -1,1 +1,0 @@
-ALTER TABLE `Users` ADD `gsQRCode` tinyint(1) UNSIGNED NOT NULL DEFAULT '0';

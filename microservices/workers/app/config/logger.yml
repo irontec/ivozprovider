@@ -1,0 +1,10 @@
+imports:
+  - { resource: "@CoreBundle/Resources/config/logger.yml" }
+
+monolog:
+  handlers:
+    syslog:
+      type: syslog
+      ident: workers
+      facility: user
+      level: INFO

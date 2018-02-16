@@ -1,6 +1,6 @@
 [Service]
 Type=simple
-ExecStart=/opt/irontec/ivozprovider/asterisk/agi/application/bin/lib/phpagi/phpagi-fastagi.php
+ExecStart=/opt/irontec/ivozprovider/asterisk/agi/phpagi/phpagi-fastagi.php
 User=root
 Group=root
 StandardInput=socket

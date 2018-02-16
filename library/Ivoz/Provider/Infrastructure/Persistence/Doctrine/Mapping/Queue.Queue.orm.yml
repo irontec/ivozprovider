@@ -1,0 +1,16 @@
+Ivoz\Provider\Domain\Model\Queue\Queue:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\QueueDoctrineRepository
+  type: entity
+  table: Queues
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  lifecycleCallbacks:
+    postLoad:
+      - initChangelog

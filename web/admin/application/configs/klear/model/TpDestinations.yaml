@@ -1,0 +1,24 @@
+production:
+  entity: Ivoz\Cgr\Domain\Model\TpDestination\TpDestination
+  fields: 
+    prefix:
+      title: _('Prefix')
+      pattern: "^\\+[0-9]+$"
+      required: true
+      defaultValue: "+"
+      maxLength: 80
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Prefix must be '+' and numeric-only")
+        label: _("Need help?")
+
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

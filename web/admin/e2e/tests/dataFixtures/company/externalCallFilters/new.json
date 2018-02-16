@@ -1,0 +1,26 @@
+{
+  "name": "testFilter",
+  "welcomeLocutionId": "__NULL__",
+  "holidayLocutionId": "__NULL__",
+  "holidayTargetType": "__NULL__",
+  "holidayNumberValue": "",
+  "holidayExtensionId": "__NULL__",
+  "holidayVoiceMailUserId": "__NULL__",
+  "outOfScheduleLocutionId": "__NULL__",
+  "outOfScheduleTargetType": "__NULL__",
+  "outOfScheduleNumberValue": "",
+  "outOfScheduleExtensionId": "__NULL__",
+  "outOfScheduleVoiceMailUserId": "__NULL__",
+  "schedules[]": [
+    ""
+  ],
+  "calendars[]": [
+    ""
+  ],
+  "whiteLists[]": [
+    ""
+  ],
+  "blackLists[]": [
+    ""
+  ]
+}

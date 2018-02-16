@@ -1,0 +1,19 @@
+Ivoz\Provider\Domain\Model\Country\Zone:
+  type: embeddable
+  fields:
+    en:
+      type: string
+      nullable: false
+      length: 55
+      options:
+        fixed: false
+        default: ''
+      column: zone_en
+    es:
+      type: string
+      nullable: false
+      length: 55
+      options:
+        fixed: false
+        default: ''
+      column: zone_es

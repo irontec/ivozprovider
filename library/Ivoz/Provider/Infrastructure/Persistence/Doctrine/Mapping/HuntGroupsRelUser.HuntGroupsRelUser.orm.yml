@@ -1,0 +1,16 @@
+Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUser:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\HuntGroupsRelUserDoctrineRepository
+  type: entity
+  table: HuntGroupsRelUsers
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  lifecycleCallbacks:
+    postLoad:
+      - initChangelog

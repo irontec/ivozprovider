@@ -1,9 +1,0 @@
-[Unit]
-Description=Run CDRparser timer
-
-[Timer]
-OnBootSec=5min
-OnUnitActiveSec=3min
-
-[Install]
-WantedBy=timers.target

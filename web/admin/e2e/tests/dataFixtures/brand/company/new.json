@@ -1,0 +1,13 @@
+{
+  "name": "Irontec Test Company",
+  "domainUsers": "test.irontec.com",
+  "relFeatures[]": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5"
+  ],
+  "externalMaxCalls": "0",
+  "ipFilter": "1"
+}

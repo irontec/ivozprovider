@@ -1,0 +1,90 @@
+Ivoz\Provider\Domain\Model\Brand\BrandAbstract:
+  type: mappedSuperclass
+  embedded:
+    logo:
+      class: Logo
+      columnPrefix: false
+    invoice:
+      class: Invoice
+      columnPrefix: false
+  uniqueConstraints:
+    brand_name:
+      columns:
+        - name
+  fields:
+    name:
+      type: string
+      nullable: false
+      length: 75
+      options:
+        fixed: false
+    domainUsers:
+      type: string
+      nullable: true
+      length: 190
+      options:
+        fixed: false
+      column: domain_users
+    fromName:
+      type: string
+      nullable: true
+      length: 255
+      options:
+        fixed: false
+      column: FromName
+    fromAddress:
+      type: string
+      nullable: true
+      length: 255
+      options:
+        fixed: false
+      column: FromAddress
+    recordingsLimitMB:
+      type: integer
+      nullable: true
+      options:
+        unsigned: false
+      column: recordingsLimitMB
+    recordingsLimitEmail:
+      type: string
+      nullable: true
+      length: 250
+      options:
+        fixed: false
+      column: recordingsLimitEmail
+  manyToOne:
+    domain:
+      targetEntity: \Ivoz\Provider\Domain\Model\Domain\DomainInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        domainId:
+          domainId: id
+          nullable: true
+          onDelete: set null
+      orphanRemoval: false
+    language:
+      targetEntity: \Ivoz\Provider\Domain\Model\Language\LanguageInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        languageId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false
+    defaultTimezone:
+      targetEntity: \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        defaultTimezoneId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false
+

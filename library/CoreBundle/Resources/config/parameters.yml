@@ -1,0 +1,25 @@
+# This file is auto-generated during the composer install
+imports:
+    -
+        resource: '@CoreBundle/Resources/config/orm_soft_delete.yml'
+parameters:
+    database_host: data.ivozprovider.local
+    database_port: null
+    database_name: ivozprovider
+    database_user: root
+    database_password: changeme
+    mailer_transport: smtp
+    mailer_host: data.ivozprovider.local
+    mailer_user: null
+    mailer_password: null
+    mailer_default_fromname: 'IvozProvider Notifications'
+    mailer_default_fromaddress: no-replay@ivozprovider
+    secret: ThisTokenIsNotSoSecretChangeIt
+    ari_user: ivozariuser
+    ari_password: ivozarisecret
+    ari_port: 8088
+    local_storage_path: /opt/irontec/ivozprovider/storage
+    raw_recordings_dir: /opt/irontec/ivozprovider/storage/ivozprovider_model_recordings.originalfile/
+    gearmand:
+        servers:
+            - jobs.ivozprovider.local

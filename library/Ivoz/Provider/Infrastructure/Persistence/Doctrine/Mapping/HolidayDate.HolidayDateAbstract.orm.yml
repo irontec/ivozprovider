@@ -1,0 +1,43 @@
+Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateAbstract:
+  type: mappedSuperclass
+  uniqueConstraints:
+    dateCalendar:
+      columns:
+        - eventDate
+        - calendarId
+  fields:
+    name:
+      column: name
+      type: string
+      nullable: false
+      length: 50
+      options:
+        fixed: false
+    eventDate:
+      type: date
+      nullable: false
+      column: eventDate
+  manyToOne:
+    calendar:
+      targetEntity: \Ivoz\Provider\Domain\Model\Calendar\CalendarInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: holidayDates
+      joinColumns:
+        calendarId:
+          referencedColumnName: id
+          nullable: false
+          onDelete: cascade
+      orphanRemoval: false
+    locution:
+      targetEntity: \Ivoz\Provider\Domain\Model\Locution\LocutionInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        locutionId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false

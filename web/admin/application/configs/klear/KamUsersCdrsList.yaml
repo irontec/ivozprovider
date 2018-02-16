@@ -1,0 +1,104 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+
+production:
+  main:
+    module: klearMatrix
+    defaultScreen: kamUsersCdrsList_screen
+
+  screens: &kamUsersCdrs_screensLink
+    kamUsersCdrsList_screen: &kamUsersCdrsList_screenLink
+      controller: list
+      order:
+        field:
+          - UsersCdr.startTime desc
+      pagination:
+        items: 25
+      <<: *KamUsersCdrs
+      class: ui-silk-text-list-bullets
+      title: _("List of %s %2s", ngettext('Call', 'Calls', 0), "[format| (%parent%)]")
+      forcedValues:
+        <<: *forcedCompany
+      fields: &kamUsersCdrs_fieldsLink
+        blacklist:
+          endTime: true
+          callidHash: true
+          userId: true
+          friendId: true
+          retailAccountId: ${auth.companyVPBX}
+          direction: ${auth.companyVPBX}
+          brandId: true
+          callid: true
+          xcallid: true
+        order:
+          startTime: true
+          retailAccountId: true
+          direction: true
+          caller: true
+          callee: true
+          duration: true
+        options:
+          title: _("Options")
+          screens:
+            kamUsersCdrsView_screen: true
+          default: kamUsersCdrsView_screen
+
+    kamUsersCdrsView_screen: &kamUsersCdrsList_screenLink
+      <<: *KamUsersCdrs
+      controller: edit
+      class: ui-silk-eye
+      label: false
+      disableSave: true
+      labelOnPostAction: _("View %s %2s", ngettext('Call', 'Calls', 1), "[format| (%item%)]")
+      title: _("View %s %2s", ngettext('Call', 'Calls', 1), "[format| (%item%)]")
+      fields:
+        blacklist:
+          callidHash: ${auth.isCompanyOperator}
+          callid: ${auth.isCompanyOperator}
+          xcallid: ${auth.isCompanyOperator}
+          brandId: true
+          userId: true
+          friendId: true
+          retailAccountId: ${auth.companyVPBX}
+          direction: ${auth.companyVPBX}
+          companyId: true
+          endTime: true
+        order:
+          startTime: true
+          duration: true
+          caller: true
+          callee: true
+          retailAccountId: true
+          direction: true
+          callid: true
+          callidHash: true
+          xcallid: true
+      fixedPositions:
+        group0:
+          label: _("Call Details")
+          colsPerRow: 12
+          fields:
+            startTime: 6
+            duration: 6
+            endTime: 6
+            caller: 6
+            callee: 6
+            retailAccountId: 6
+            direction: 6
+        group2:
+          label: _("Identify Call")
+          colsPerRow: 12
+          fields:
+            callid: 12
+            callidHash: 12
+            xcallid: 12
+
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production
+

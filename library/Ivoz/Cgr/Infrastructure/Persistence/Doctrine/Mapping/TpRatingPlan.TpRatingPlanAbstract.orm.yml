@@ -1,0 +1,96 @@
+Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanAbstract:
+  type: mappedSuperclass
+  indexes:
+    tpRatingPlan_tpid:
+      columns:
+        - tpid
+    tpRatingPlan_tpid_rpl:
+      columns:
+        - tpid
+        - tag
+  uniqueConstraints:
+    tpid_rplid_destrates_timings_weight:
+      columns:
+        - tpid
+        - tag
+        - destrates_tag
+        - timing_tag
+  fields:
+    tpid:
+      type: string
+      nullable: false
+      length: 64
+      options:
+        fixed: false
+        default: 'ivozprovider'
+    tag:
+      type: string
+      nullable: true
+      length: 64
+      options:
+        fixed: false
+    destratesTag:
+      type: string
+      nullable: true
+      length: 64
+      options:
+        fixed: false
+      column: destrates_tag
+    timingTag:
+      type: string
+      nullable: true
+      length: 64
+      options:
+        fixed: false
+      column: timing_tag
+    weight:
+      type: decimal
+      nullable: false
+      precision: 8
+      scale: 2
+      options:
+        fixed: false
+        default: 10
+    createdAt:
+      type: datetime
+      nullable: false
+      options:
+        default: CURRENT_TIMESTAMP
+      column: created_at
+  manyToOne:
+    ratingPlan:
+      targetEntity: \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        ratingPlanId:
+          nullable: false
+          referencedColumnName: id
+          onDelete: cascade
+      orphanRemoval: false
+    destinationRate:
+      targetEntity: \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        destinationRateId:
+          nullable: false
+          referencedColumnName: id
+          onDelete: cascade
+      orphanRemoval: false
+    timing:
+      targetEntity: \Ivoz\Cgr\Domain\Model\TpTiming\TpTiming
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        timingId:
+          nullable: false
+          referencedColumnName: id
+          onDelete: cascade
+      orphanRemoval: false

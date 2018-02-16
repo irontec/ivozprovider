@@ -1,0 +1,16 @@
+Ivoz\Provider\Domain\Model\Feature\Feature:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\FeatureDoctrineRepository
+  type: entity
+  table: Features
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  lifecycleCallbacks:
+    postLoad:
+      - initChangelog

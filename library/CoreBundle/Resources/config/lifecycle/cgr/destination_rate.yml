@@ -1,0 +1,21 @@
+services:
+  _defaults:
+    autowire: true
+    public: false
+
+  ##################################
+  ## Service collection
+  ##################################
+  Ivoz\Cgr\Domain\Service\DestinationRate\DestinationRateLifecycleServiceCollection:
+    public: true
+
+  cgr.lifecycle.destination_rate.service_collection:
+    '@Ivoz\Cgr\Domain\Service\DestinationRate\DestinationRateLifecycleServiceCollection'
+
+  ##################################
+  ## post_persist
+  ##################################
+  Ivoz\Cgr\Domain\Service\DestinationRate\UpdateDestinationRateTag:
+    tags:
+      - { name: cgr.lifecycle.destination_rate.post_persist, priority: 10}
+

@@ -1,0 +1,50 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+
+production:
+  main:
+    module: klearMatrix
+    defaultScreen: retailAccountsList_screen
+  screens: &retailAccounts_screensLink
+    retailAccountsList_screen: &retailAccountsList_screenLink
+      controller: list
+      pagination:
+        items: 25
+      <<: *RetailAccounts
+      class: ui-silk-text-list-bullets
+      title: _("List of %s %2s", ngettext('Retail Account', 'Retail Accounts', 0), "[format| (%parent%)]")
+      forcedValues:
+        <<: *forcedBrand
+      fields:
+        blacklist: &retailAccounts_blacklistLink
+          transport: true
+          authNeeded: true
+          password: true
+          areaCode: true
+          countryId: true
+          allow: true
+          disallow: true
+          directMediaMethod: true
+          updateCallerid: true
+          fromDomain: true
+          calleridUpdateHeader: true
+          directConnectivity: true
+          transformationRuleSetId: true
+          ip: true
+          port: true
+          languageId: true
+          status: true
+        order:
+          name: true
+          domainId: true
+          description: true
+          outgoingDdiId: true
+          statusIcon: true
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

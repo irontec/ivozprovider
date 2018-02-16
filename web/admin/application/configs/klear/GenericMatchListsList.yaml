@@ -1,0 +1,74 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+#include MatchListsList.yaml
+
+production:
+  main:
+    module: klearMatrix
+    defaultScreen: genericMatchListsList_screen
+
+  screens:
+    <<: *matchLists_screensLink
+    genericMatchListsList_screen:
+      <<: *matchListsList_screenLink
+      rawCondition: false
+      title: _("List of %s %2s", ngettext('Generic Match List', 'Generic Match Lists', 0), "[format| (%parent%)]")
+      forcedValues:
+        <<: *forcedBrand
+      fields: &matchLists_fieldsLink
+        blacklist:
+          companyId: true
+          brandId: true
+        options:
+          title: _("Options")
+          screens:
+            genericMatchListsEdit_screen: true
+            genericMatchListPatternsList_screen: true
+          dialogs:
+            genericMatchListsDel_dialog: true
+      options:
+        title: _("Options")
+        screens:
+          genericMatchListsNew_screen: true
+        dialogs:
+          genericMatchListsDel_dialog: true
+
+    genericMatchListsNew_screen:
+      <<: *matchListsNew_screenLink
+      title: _("Add %s %2s", ngettext('Generic Match List', 'Generic Match Lists', 1), "[format| (%parent%)]")
+      forcedValues:
+        <<: *forcedBrand
+        "self::company": null
+
+    genericMatchListsEdit_screen:
+      <<: *matchListsEdit_screenLink
+      labelOnPostAction: _("Edit %s %2s", ngettext('Generic Match List', 'Generic Match Lists', 1), "[format| (%item%)]")
+      title: _("Edit %s %2s", ngettext('Generic Match List', 'Generic Match Lists', 1), "[format| (%item%)]")
+      forcedValues:
+        <<: *forcedBrand
+        "self::company": null
+
+    # matchListPatterns:
+    genericMatchListPatternsList_screen:
+      <<: *matchListPatternsList_screenLink
+      filterField: matchList
+
+  dialogs:
+    <<: *matchLists_dialogsLink
+    genericMatchListsDel_dialog:
+      <<: *matchListsDel_dialogLink
+      title: _("Delete %s", ngettext('Generic Match List', 'Generic Match Lists', 1))
+      description: _("Do you want to delete this %s?", ngettext('Generic Match List', 'Generic Match Lists', 1))
+      message: _("%s successfully deleted.", ngettext('Generic Match List', 'Generic Match Lists', 1))
+
+    # matchListPatterns dialogs:
+    <<: *matchListPatterns_dialogsLink
+
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

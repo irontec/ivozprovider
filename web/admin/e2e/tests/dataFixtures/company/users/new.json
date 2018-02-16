@@ -1,0 +1,9 @@
+{
+  "name": "firstName",
+  "lastname": "Lastname",
+  "email": "firstName@irontec.com",
+  "terminalId": "__NULL__",
+  "extensionId": "__NULL__",
+  "outgoingDDIId": "__NULL__",
+  "outgoingDdiRuleId": "__NULL__"
+}

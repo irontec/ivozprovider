@@ -1,0 +1,16 @@
+Ivoz\Provider\Domain\Model\Ddi\Ddi:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\DdiDoctrineRepository
+  type: entity
+  table: DDIs
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  lifecycleCallbacks:
+    postLoad:
+      - initChangelog

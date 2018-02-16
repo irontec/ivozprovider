@@ -1,0 +1,40 @@
+services:
+  _defaults:
+    autowire: true
+    public: false
+
+  ##################################
+  ## Service collection
+  ##################################
+  Ivoz\Provider\Domain\Service\PeerServer\PeerServerLifecycleServiceCollection:
+    public: true
+
+  provider.lifecycle.peer_server.service_collection:
+    '@Ivoz\Provider\Domain\Service\PeerServer\PeerServerLifecycleServiceCollection'
+
+  ##################################
+  ## post_persist
+  ##################################
+  Ivoz\Provider\Domain\Service\LcrGateway\UpdateByPeerServer:
+    tags:
+      - { name: provider.lifecycle.peer_server.post_persist, priority: 10 }
+    arguments:
+      $entityPersister:
+        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
+
+  Ivoz\Provider\Domain\Service\LcrRuleTarget\CreateByPeerServer:
+    tags:
+      - { name: provider.lifecycle.peer_server.post_persist, priority: 20 }
+    arguments:
+      $entityPersister:
+        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
+
+  ##################################
+  ## on_commit
+  ##################################
+  Ivoz\Provider\Infrastructure\Domain\Service\PeerServer\SendTrunksLcrReloadRequest:
+    tags:
+      - { name: provider.lifecycle.peer_server.on_commit, priority: 10 }
+    arguments:
+      $trunksLcrReload:
+        '@XmlRpc\XmlRpcTrunksRequest::LcrReload'

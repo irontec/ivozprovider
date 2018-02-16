@@ -1,0 +1,21 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Ivoz\Core\Application\RequestId:
+    public: true
+    arguments: ~
+
+  Ivoz\Core\Application\Service\CommandEventSubscriber:
+    arguments: ~
+
+  Ivoz\Core\Domain\Service\EntityEventSubscriber:
+    arguments: ~
+
+  Ivoz\Core\Domain\Service\DomainEventPublisher:
+     factory: ['Ivoz\Core\Domain\Service\DomainEventPublisher', getInstance]
+     calls:
+      - [subscribe, ['@Ivoz\Core\Application\Service\CommandEventSubscriber']]
+      - [subscribe, ['@Ivoz\Core\Domain\Service\EntityEventSubscriber']]

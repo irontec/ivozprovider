@@ -1,0 +1,25 @@
+Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\RoutingPatternGroupDoctrineRepository
+  type: entity
+  table: RoutingPatternGroups
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  oneToMany:
+    relPatterns:
+      targetEntity: Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface
+      mappedBy: routingPatternGroup
+      cascade: ['persist']
+      orphanRemoval: true
+    outgoingRoutings:
+      targetEntity: Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface
+      mappedBy: routingPatternGroup
+  lifecycleCallbacks:
+    postLoad:
+      - initChangelog

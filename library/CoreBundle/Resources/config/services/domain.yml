@@ -1,0 +1,38 @@
+services:
+  _defaults:
+    autowire: true
+    public: false
+
+  Ivoz\Provider\Domain\Service\LcrRule\UpdateByOutgoingRouting:
+    arguments:
+      $entityPersister:
+        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
+
+  Ivoz\Provider\Domain\Service\RoutingPatternGroupsRelPattern\CreateAndPersist:
+    arguments:
+      $entityPersister:
+        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
+
+  Ivoz\Provider\Domain\Service\RoutingPatternGroup\UpdateByRoutingPatternAndCountry:
+    arguments:
+      $entityPersister:
+        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
+      $routingPatternGroupRepository:
+        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\RoutingPatternGroup\\RoutingPatternGroup")'
+      $createAndPersistRoutingPatternGroupsRelPattern:
+        '@Ivoz\Provider\Domain\Service\RoutingPatternGroupsRelPattern\CreateAndPersist'
+
+  Ivoz\Provider\Domain\Service\LcrRule\CreateByOutgoingRoutingAndRoutingPattern:
+    arguments:
+      $entityPersister: '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
+      $createEntityFromDTO: '@Ivoz\Core\Application\Service\CreateEntityFromDTO'
+
+  Ivoz\Provider\Domain\Service\Invoice\Generator:
+    arguments:
+      $logger: '@logger'
+      $invoiceRepository: '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\Invoice\\Invoice")'
+      $trunksCdrRepository: '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Kam\\Domain\\Model\\TrunksCdr\\TrunksCdr")'
+      $tpCdrRepository: '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Cgr\\Domain\\Model\\TpCdr\\TpCdr")'
+      $ratingPlanRepository: '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Cgr\\Domain\\Model\\RatingPlan\\RatingPlan")'
+      $destinationRepository: '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Cgr\\Domain\\Model\\Destination\\Destination")'
+      $vendorDir: '%kernel.root_dir%/../vendor/'

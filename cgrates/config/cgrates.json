@@ -1,0 +1,23 @@
+{
+	"general": {
+		"rounding_decimals": 4,
+		"default_request_type": "*postpaid",
+		"default_timezone": "UTC"
+	},
+	"stor_db": {
+		"db_host": "data.ivozprovider.local",
+		"db_name": "ivozprovider",
+		"db_user": "kamailio",
+		"db_password": "ironsecret"
+	},
+	"rals": {
+		"enabled": true
+	},
+	"cdrs": {
+		"enabled": true
+	},
+	"sm_kamailio": {
+		"enabled": true,
+		"create_cdr": true
+	}
+}

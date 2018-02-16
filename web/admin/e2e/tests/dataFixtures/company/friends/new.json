@@ -1,0 +1,15 @@
+{
+  "name": "testFriend",
+  "description": "",
+  "priority": "1",
+  "password": "SDG3qd2j6+",
+  "directConnectivity": "yes",
+  "transport": "udp",
+  "ip": "127.0.0.1",
+  "port": "5060",
+  "allow": "alaw",
+  "fromDomain": "",
+  "languageId": "__NULL__",
+  "callACLId": "__NULL__",
+  "outgoingDDIId": "__NULL__"
+}

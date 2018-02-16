@@ -1,0 +1,11 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  core.doctrine_foreign_key_transformer:
+    '@Ivoz\Core\Infrastructure\Application\DoctrineForeignKeyTransformer'
+
+  core.doctrine_collection_transformer:
+    '@Ivoz\Core\Infrastructure\Application\DoctrineCollectionTransformer'
