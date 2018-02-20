@@ -102,7 +102,7 @@ class Companies extends ModelAbstract
      *
      * @var int
      */
-    protected $_externalMaxCalls;
+    protected $_maxCalls;
 
     /**
      * Database var type varchar
@@ -578,7 +578,7 @@ class Companies extends ModelAbstract
         'defaultTimezoneId'=>'defaultTimezoneId',
         'distributeMethod'=>'distributeMethod',
         'applicationServerId'=>'applicationServerId',
-        'externalMaxCalls'=>'externalMaxCalls',
+        'maxCalls'=>'maxCalls',
         'postalAddress'=>'postalAddress',
         'postalCode'=>'postalCode',
         'town'=>'town',
@@ -803,7 +803,7 @@ class Companies extends ModelAbstract
         $this->_defaultValues = array(
             'type' => 'vpbx',
             'distributeMethod' => 'hash',
-            'externalMaxCalls' => '0',
+            'maxCalls' => '0',
         );
 
         $this->_initFileObjects();
@@ -1163,33 +1163,33 @@ class Companies extends ModelAbstract
      * @param int $data
      * @return \IvozProvider\Model\Raw\Companies
      */
-    public function setExternalMaxCalls($data)
+    public function setMaxCalls($data)
     {
 
-        if ($this->_externalMaxCalls != $data) {
-            $this->_logChange('externalMaxCalls', $this->_externalMaxCalls, $data);
+        if ($this->_maxCalls != $data) {
+            $this->_logChange('maxCalls', $this->_maxCalls, $data);
         }
 
         if ($data instanceof \Zend_Db_Expr) {
-            $this->_externalMaxCalls = $data;
+            $this->_maxCalls = $data;
 
         } else if (!is_null($data)) {
-            $this->_externalMaxCalls = (int) $data;
+            $this->_maxCalls = (int) $data;
 
         } else {
-            $this->_externalMaxCalls = $data;
+            $this->_maxCalls = $data;
         }
         return $this;
     }
 
     /**
-     * Gets column externalMaxCalls
+     * Gets column maxCalls
      *
      * @return int
      */
-    public function getExternalMaxCalls()
+    public function getMaxCalls()
     {
-        return $this->_externalMaxCalls;
+        return $this->_maxCalls;
     }
 
     /**
