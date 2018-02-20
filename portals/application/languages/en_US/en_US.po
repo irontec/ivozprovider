@@ -673,9 +673,6 @@ msgid_plural "External call filters"
 msgstr[0] "External call filter"
 msgstr[1] "External call filters"
 
-msgid "External max call"
-msgstr "External max call"
-
 msgid "Externally rated"
 msgstr "Externally rated"
 
@@ -1115,8 +1112,8 @@ msgstr "Leave empty to send to Host field"
 msgid "Leave empty to use the suggested default"
 msgstr "Leave empty to use the suggested default"
 
-msgid "Limits both incoming and outgoing external calls."
-msgstr "Limits both incoming and outgoing external calls."
+msgid "Limits both internal and external calls (0 for unlimited)."
+msgstr "Limits both internal and external calls (0 for unlimited)."
 
 msgid ""
 "Limits the number of received calls if the user is handling simultaneously "
@@ -1982,6 +1979,9 @@ msgid "Service"
 msgid_plural "Services"
 msgstr[0] "Service"
 msgstr[1] "Services"
+
+msgid "Service Information"
+msgstr "Service Information"
 
 msgid "Service has extra arguments"
 msgstr "Service has extra arguments"

@@ -687,9 +687,6 @@ msgid_plural "External call filters"
 msgstr[0] "Filtro de entrada externo"
 msgstr[1] "Filtros de entrada externo"
 
-msgid "External max call"
-msgstr "Lim. llamadas externas"
-
 msgid "Externally rated"
 msgstr "Tarificación externa"
 
@@ -1129,8 +1126,9 @@ msgstr "Dejar vacío para enviar al campo Host"
 msgid "Leave empty to use the suggested default"
 msgstr "Dejar vacío para emplear la sugerencia por defecto"
 
-msgid "Limits both incoming and outgoing external calls."
-msgstr "Limita llamadas externas tanto entrantes como salientes."
+msgid "Limits both internal and external calls (0 for unlimited)."
+msgstr ""
+"Limita llamadas externas tanto entrantes como salientes (0 para ilimitado)."
 
 msgid ""
 "Limits the number of received calls if the user is handling simultaneously "
@@ -1482,7 +1480,8 @@ msgid "Original caller"
 msgstr "Llamante original"
 
 msgid "Origins matching this list will call directly to the user."
-msgstr "Los orígenes que coincidan en la lista llamarán al usuario directamente."
+msgstr ""
+"Los orígenes que coincidan en la lista llamarán al usuario directamente."
 
 msgid "Out"
 msgstr "Salida"
@@ -2005,6 +2004,9 @@ msgid_plural "Services"
 msgstr[0] "Servicio"
 msgstr[1] "Servicios"
 
+msgid "Service Information"
+msgstr "Información del servicio"
+
 msgid "Service has extra arguments"
 msgstr "El servicio emplea argumentos extra"
 
@@ -2486,11 +2488,13 @@ msgstr "Sí, ¡continúa!"
 msgid ""
 "You can call this extension from any company terminal to close this lock"
 msgstr ""
-"Puede llamar a esta extension desde cualquier terminal de la compañía para cerrar este candado"
+"Puede llamar a esta extension desde cualquier terminal de la compañía para "
+"cerrar este candado"
 
 msgid "You can call this extension from any company terminal to open this lock"
 msgstr ""
-"Puede llamar a esta extension desde cualquier terminal de la compañía para abrir este candado"
+"Puede llamar a esta extension desde cualquier terminal de la compañía para "
+"abrir este candado"
 
 msgid ""
 "You can call this extension from any company terminal to record this locution"
