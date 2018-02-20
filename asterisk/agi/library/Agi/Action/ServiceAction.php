@@ -40,6 +40,15 @@ class ServiceAction extends RouterAction
             case 'RecordLocution':
                 $this->_processRecordLocution();
                 break;
+            case 'OpenLock':
+                $this->_processOpenLock();
+                break;
+            case 'CloseLock':
+                $this->_processCloseLock();
+                break;
+            case 'ToggleLock':
+                $this->_processToggleLock();
+                break;
         }
     }
 
@@ -201,4 +210,86 @@ class ServiceAction extends RouterAction
         chmod($locution->fetchOriginalFile()->getFilePath(), 0777);
     }
 
+    protected function _getRouteLock()
+    {
+        // Local variables to improve readability
+        $service = $this->_service;
+        $caller = $this->agi->getChannelCaller();
+
+        /**
+         * Extract routeLockId from dialed number
+         *
+         *               ServiceCode (up to 3 digits)
+         *                   ┌┴┐
+         *   $dialedExten = *CCCXXXXXXXX
+         *                      └───┬──┘
+         *                      RouteLock ID
+         */
+        $dialedExten = $this->agi->getExtension();
+        $serviceCodeLen = strlen($service->getCode());
+        $routeLockId = substr($dialedExten, $serviceCodeLen + 1);
+
+        if (!$routeLockId) {
+            $this->agi->error("Incomplete lock service without id as argument.");
+            return null;
+        }
+
+        $routeLockMapper = new \IvozProvider\Mapper\Sql\RouteLocks;
+        $routeLock = $routeLockMapper->find($routeLockId);
+
+        // Check if lock actually exists
+        if (!$routeLock) {
+            return null;
+        }
+
+        // Check if call can record this locution
+        if ($routeLock->getCompanyId() !== $caller->getCompanyId()) {
+            return null;
+        }
+
+        return $routeLock;
+    }
+
+    protected function _printRouteLockStatus($routeLock)
+    {
+        if ($routeLock->isOpen()) {
+            $this->agi->setConnectedLine('name', $routeLock->getName() . ' opened');
+            $this->agi->setConnectedLine('num', $this->agi->getExtension());
+        } else {
+            $this->agi->setConnectedLine('name', $routeLock->getName() . ' closed');
+            $this->agi->setConnectedLine('num', $this->agi->getExtension());
+        }
+        $this->agi->playback("beep");
+        sleep(3);
+    }
+
+    protected function _processOpenLock()
+    {
+        $routeLock = $this->_getRouteLock();
+        if ($routeLock) {
+            $routeLock->setOpen(1);
+            $routeLock->save();
+            $this->_printRouteLockStatus($routeLock);
+        }
+    }
+
+    protected function _processCloseLock()
+    {
+        $routeLock = $this->_getRouteLock();
+        if ($routeLock) {
+            $routeLock->setOpen(0);
+            $routeLock->save();
+            $this->_printRouteLockStatus($routeLock);
+        }
+    }
+
+    protected function _processToggleLock()
+    {
+        $routeLock = $this->_getRouteLock();
+        if ($routeLock) {
+            $routeLock->setOpen($routeLock->isOpen() ? 0 : 1);
+            $routeLock->save();
+            $this->_printRouteLockStatus($routeLock);
+        }
+    }
 }
