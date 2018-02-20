@@ -67,6 +67,7 @@ class Brands extends MapperAbstract
                 'FromAddress' => $model->getFromAddress(),
                 'recordingsLimitMB' => $model->getRecordingsLimitMB(),
                 'recordingsLimitEmail' => $model->getRecordingsLimitEmail(),
+                'maxCalls' => $model->getMaxCalls(),
             );
         } else {
             $result = array();
@@ -960,7 +961,8 @@ class Brands extends MapperAbstract
                   ->setFromName($data['FromName'])
                   ->setFromAddress($data['FromAddress'])
                   ->setRecordingsLimitMB($data['recordingsLimitMB'])
-                  ->setRecordingsLimitEmail($data['recordingsLimitEmail']);
+                  ->setRecordingsLimitEmail($data['recordingsLimitEmail'])
+                  ->setMaxCalls($data['maxCalls']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setName($data->{'name'})
@@ -980,7 +982,8 @@ class Brands extends MapperAbstract
                   ->setFromName($data->{'FromName'})
                   ->setFromAddress($data->{'FromAddress'})
                   ->setRecordingsLimitMB($data->{'recordingsLimitMB'})
-                  ->setRecordingsLimitEmail($data->{'recordingsLimitEmail'});
+                  ->setRecordingsLimitEmail($data->{'recordingsLimitEmail'})
+                  ->setMaxCalls($data->{'maxCalls'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\Brands) {
             $entry->setId($data->getId())
@@ -1001,7 +1004,8 @@ class Brands extends MapperAbstract
                   ->setFromName($data->getFromName())
                   ->setFromAddress($data->getFromAddress())
                   ->setRecordingsLimitMB($data->getRecordingsLimitMB())
-                  ->setRecordingsLimitEmail($data->getRecordingsLimitEmail());
+                  ->setRecordingsLimitEmail($data->getRecordingsLimitEmail())
+                  ->setMaxCalls($data->getMaxCalls());
 
         }
 

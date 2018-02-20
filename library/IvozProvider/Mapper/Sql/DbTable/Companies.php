@@ -272,11 +272,11 @@ class Companies extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
-	  'externalMaxCalls' => 
+	  'maxCalls' => 
 	  array (
 	    'SCHEMA_NAME' => NULL,
 	    'TABLE_NAME' => 'Companies',
-	    'COLUMN_NAME' => 'externalMaxCalls',
+	    'COLUMN_NAME' => 'maxCalls',
 	    'COLUMN_POSITION' => 10,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => '0',

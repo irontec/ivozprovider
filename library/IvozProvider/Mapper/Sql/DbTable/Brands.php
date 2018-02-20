@@ -404,6 +404,23 @@ class Brands extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
+	  'maxCalls' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'Brands',
+	    'COLUMN_NAME' => 'maxCalls',
+	    'COLUMN_POSITION' => 20,
+	    'DATA_TYPE' => 'int',
+	    'DEFAULT' => '0',
+	    'NULLABLE' => false,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => true,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
 	);
 
 
