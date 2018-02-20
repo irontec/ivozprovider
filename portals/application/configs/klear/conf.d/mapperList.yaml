@@ -77,6 +77,7 @@ mappers:
   - &Recordings {mapper: \IvozProvider\Mapper\Sql\Recordings, modelFile: Recordings}
   - &RetailAccounts {mapper: \IvozProvider\Mapper\Sql\RetailAccounts, modelFile: RetailAccounts}
   - &RetailClients {mapper: \IvozProvider\Mapper\Sql\Companies, modelFile: RetailClients}
+  - &RouteLocks {mapper: \IvozProvider\Mapper\Sql\RouteLocks, modelFile: RouteLocks}
   - &RoutingPatternGroups {mapper: \IvozProvider\Mapper\Sql\RoutingPatternGroups, modelFile: RoutingPatternGroups}
   - &RoutingPatternGroupsRelPatterns {mapper: \IvozProvider\Mapper\Sql\RoutingPatternGroupsRelPatterns, modelFile: RoutingPatternGroupsRelPatterns}
   - &RoutingPatterns {mapper: \IvozProvider\Mapper\Sql\RoutingPatterns, modelFile: RoutingPatterns}

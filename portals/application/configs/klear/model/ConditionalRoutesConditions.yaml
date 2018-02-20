@@ -56,6 +56,17 @@ production:
           relatedFieldName: name
           relationProperty: Calendar
           filterClass: IvozProvider_Klear_Filter_Company
+    ConditionalRoutesConditionsRelRouteLocks:
+      title: ngettext('Route Lock', 'Route Locks', 0)
+      type: multiselect
+      source:
+        data: mapper
+        config:
+          relationMapper: \IvozProvider\Mapper\Sql\ConditionalRoutesConditionsRelRouteLocks
+          relatedMapperName: \IvozProvider\Mapper\Sql\RouteLocks
+          relatedFieldName: name
+          relationProperty: RouteLock
+          filterClass: IvozProvider_Klear_Filter_Company
     ConditionMatch:
       title: _('Match')
       type: ghost
