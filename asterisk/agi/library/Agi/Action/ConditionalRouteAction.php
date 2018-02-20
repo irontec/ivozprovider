@@ -58,6 +58,11 @@ class ConditionalRouteAction extends RouterAction
                 continue;
             }
 
+            // Check any of the locks is open
+            if (!$condition->matchesRouteLock()) {
+                continue;
+            }
+
             // Condition matches, change default route
             $this->agi->verbose("Conditional route priority %d matches all conditions.",
                 $condition->getPriority());

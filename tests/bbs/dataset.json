@@ -1,15 +1,13 @@
 {
-	"variables": [],
 	"info": {
-		"name": "IvozProvider - BBS Dataset",
-		"_postman_id": "6d9b8f63-dcd1-30f2-8ae7-d5ef88f35ddb",
+		"name": "IvozProvider - BBS Dataset (oasis)",
+		"_postman_id": "e8979e62-3197-1a7c-e054-d57b6107322e",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "0000 - Brand Data",
-			"description": "",
 			"item": [
 				{
 					"name": "Create BBS Brand",
@@ -37,11 +35,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/brands/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -50,68 +46,58 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"description": "",
 									"key": "name",
 									"type": "text",
 									"value": "ZZZ - BBS - Brand for Black Box SIP tests"
 								},
 								{
-									"description": "",
 									"key": "nif",
 									"type": "text",
 									"value": "01234567890AF"
 								},
 								{
-									"description": "",
 									"key": "defaultTimezoneId",
 									"type": "text",
 									"value": "70"
 								},
 								{
-									"description": "",
 									"key": "postalAddress",
 									"type": "text",
 									"value": "Postal address created from REST API"
 								},
 								{
-									"description": "",
 									"key": "postalCode",
 									"type": "text",
 									"value": "48901"
 								},
 								{
-									"description": "",
 									"key": "town",
 									"type": "text",
 									"value": "Rest API town"
 								},
 								{
-									"description": "",
 									"key": "province",
 									"type": "text",
 									"value": "Rest API province"
 								},
 								{
-									"description": "",
 									"key": "country",
 									"type": "text",
 									"value": "Rest API country"
 								},
 								{
-									"description": "",
 									"key": "registryData",
 									"type": "text",
 									"value": "Brand Invoice Footer data"
 								},
 								{
-									"description": "",
 									"key": "domain_users",
 									"type": "text",
 									"value": "retail-bbs.ivozprovider.local"
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/brands/"
 					},
 					"response": []
 				},
@@ -133,11 +119,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/features-rel-brands/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -146,20 +130,18 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"description": "",
 									"key": "brandId",
 									"type": "text",
 									"value": "{{brandId}}"
 								},
 								{
-									"description": "",
 									"key": "featureId",
 									"type": "text",
 									"value": "1"
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/features-rel-brands/"
 					},
 					"response": []
 				},
@@ -181,11 +163,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/features-rel-brands/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -194,20 +174,18 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"description": "",
 									"key": "brandId",
 									"type": "text",
 									"value": "{{brandId}}"
 								},
 								{
-									"description": "",
 									"key": "featureId",
 									"type": "text",
 									"value": "2"
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/features-rel-brands/"
 					},
 					"response": []
 				},
@@ -229,11 +207,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/features-rel-brands/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -242,20 +218,18 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"description": "",
 									"key": "brandId",
 									"type": "text",
 									"value": "{{brandId}}"
 								},
 								{
-									"description": "",
 									"key": "featureId",
 									"type": "text",
 									"value": "3"
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/features-rel-brands/"
 					},
 					"response": []
 				},
@@ -277,11 +251,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/features-rel-brands/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -290,20 +262,18 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"description": "",
 									"key": "brandId",
 									"type": "text",
 									"value": "{{brandId}}"
 								},
 								{
-									"description": "",
 									"key": "featureId",
 									"type": "text",
 									"value": "4"
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/features-rel-brands/"
 					},
 					"response": []
 				},
@@ -325,11 +295,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/features-rel-brands/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -338,20 +306,18 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"description": "",
 									"key": "brandId",
 									"type": "text",
 									"value": "{{brandId}}"
 								},
 								{
-									"description": "",
 									"key": "featureId",
 									"type": "text",
 									"value": "5"
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/features-rel-brands/"
 					},
 					"response": []
 				},
@@ -373,11 +339,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/features-rel-brands/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -386,20 +350,18 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"description": "",
 									"key": "brandId",
 									"type": "text",
 									"value": "{{brandId}}"
 								},
 								{
-									"description": "",
 									"key": "featureId",
 									"type": "text",
 									"value": "6"
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/features-rel-brands/"
 					},
 					"response": []
 				},
@@ -421,11 +383,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/features-rel-brands/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -434,20 +394,18 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"description": "",
 									"key": "brandId",
 									"type": "text",
 									"value": "{{brandId}}"
 								},
 								{
-									"description": "",
 									"key": "featureId",
 									"type": "text",
 									"value": "7"
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/features-rel-brands/"
 					},
 					"response": []
 				},
@@ -469,11 +427,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/features-rel-brands/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -482,20 +438,18 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"description": "",
 									"key": "brandId",
 									"type": "text",
 									"value": "{{brandId}}"
 								},
 								{
-									"description": "",
 									"key": "featureId",
 									"type": "text",
 									"value": "8"
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/features-rel-brands/"
 					},
 					"response": []
 				},
@@ -517,11 +471,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/features-rel-brands/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -530,20 +482,18 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"description": "",
 									"key": "brandId",
 									"type": "text",
 									"value": "{{brandId}}"
 								},
 								{
-									"description": "",
 									"key": "featureId",
 									"type": "text",
 									"value": "9"
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/features-rel-brands/"
 					},
 					"response": []
 				},
@@ -573,11 +523,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/transformation-ruleset-groups-trunks/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -586,44 +534,38 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"description": "",
 									"key": "brandId",
 									"type": "text",
 									"value": "{{brandId}}"
 								},
 								{
-									"description": "",
 									"key": "name",
 									"type": "text",
 									"value": "Spanish Operator"
 								},
 								{
-									"description": "",
 									"key": "automatic",
 									"type": "text",
 									"value": "1"
 								},
 								{
-									"description": "",
 									"key": "internationalCode",
 									"type": "text",
 									"value": "00"
 								},
 								{
-									"description": "",
 									"key": "nationalNumLength",
 									"type": "text",
 									"value": "9"
 								},
 								{
-									"description": "",
 									"key": "countryId",
 									"type": "text",
 									"value": "70"
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/transformation-ruleset-groups-trunks/"
 					},
 					"response": []
 				},
@@ -653,11 +595,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/peering-contracts//",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -666,32 +606,28 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"description": "",
 									"key": "brandId",
 									"type": "text",
 									"value": "{{brandId}}"
 								},
 								{
-									"description": "",
 									"key": "name",
 									"type": "text",
 									"value": "BBS Peering Contract"
 								},
 								{
-									"description": "",
 									"key": "externallyRated",
 									"type": "text",
 									"value": "0"
 								},
 								{
-									"description": "",
 									"key": "transformationRulesetGroupsTrunksId",
 									"type": "text",
 									"value": "{{transformationRulesetId}}"
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/peering-contracts//"
 					},
 					"response": []
 				},
@@ -721,11 +657,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/peer-servers/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -734,26 +668,23 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"description": "",
 									"key": "brandId",
 									"type": "text",
 									"value": "{{brandId}}"
 								},
 								{
-									"description": "",
 									"key": "peeringContractId",
 									"type": "text",
 									"value": "{{peeringContractId}}"
 								},
 								{
-									"description": "",
 									"key": "sip_proxy",
 									"type": "text",
 									"value": "127.0.0.1"
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/peer-servers/"
 					},
 					"response": []
 				},
@@ -783,11 +714,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/routing-patterns/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -796,32 +725,28 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"description": "",
 									"key": "brandId",
 									"type": "text",
 									"value": "{{brandId}}"
 								},
 								{
-									"description": "",
 									"key": "name_es",
 									"type": "text",
 									"value": "BBS - España"
 								},
 								{
-									"description": "",
 									"key": "name_en",
 									"type": "text",
 									"value": "BBS - Spain"
 								},
 								{
-									"description": "",
 									"key": "regExp",
 									"type": "text",
 									"value": "34"
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/routing-patterns/"
 					},
 					"response": []
 				},
@@ -851,11 +776,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/outgoing-routing/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -864,38 +787,33 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"description": "",
 									"key": "brandId",
 									"type": "text",
 									"value": "{{brandId}}"
 								},
 								{
-									"description": "",
 									"key": "routingPatternId",
 									"type": "text",
 									"value": "{{routingPatternESId}}"
 								},
 								{
-									"description": "",
 									"key": "peeringContractId",
 									"type": "text",
 									"value": "{{peeringContractId}}"
 								},
 								{
-									"description": "",
 									"key": "type",
 									"type": "text",
 									"value": "pattern"
 								},
 								{
-									"description": "",
 									"key": "priority",
 									"type": "text",
 									"value": "1"
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/outgoing-routing/"
 					},
 					"response": []
 				},
@@ -925,11 +843,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/routing-patterns/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -938,32 +854,28 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"description": "",
 									"key": "brandId",
 									"type": "text",
 									"value": "{{brandId}}"
 								},
 								{
-									"description": "",
 									"key": "name_es",
 									"type": "text",
 									"value": "BBS - EEUU"
 								},
 								{
-									"description": "",
 									"key": "name_en",
 									"type": "text",
 									"value": "BBS - USA"
 								},
 								{
-									"description": "",
 									"key": "regExp",
 									"type": "text",
 									"value": "1"
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/routing-patterns/"
 					},
 					"response": []
 				},
@@ -993,11 +905,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/outgoing-routing/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -1006,38 +916,33 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"description": "",
 									"key": "brandId",
 									"type": "text",
 									"value": "{{brandId}}"
 								},
 								{
-									"description": "",
 									"key": "routingPatternId",
 									"type": "text",
 									"value": "{{routingPatternUSId}}"
 								},
 								{
-									"description": "",
 									"key": "peeringContractId",
 									"type": "text",
 									"value": "{{peeringContractId}}"
 								},
 								{
-									"description": "",
 									"key": "type",
 									"type": "text",
 									"value": "pattern"
 								},
 								{
-									"description": "",
 									"key": "priority",
 									"type": "text",
 									"value": "2"
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/outgoing-routing/"
 					},
 					"response": []
 				},
@@ -1067,11 +972,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/target-patterns/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -1080,44 +983,38 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"description": "",
 									"key": "brandId",
 									"type": "text",
 									"value": "{{brandId}}"
 								},
 								{
-									"description": "",
 									"key": "name_es",
 									"type": "text",
 									"value": "BBS - España"
 								},
 								{
-									"description": "",
 									"key": "name_en",
 									"type": "text",
 									"value": "BBS - Spain"
 								},
 								{
-									"description": "",
 									"key": "description_es",
 									"type": "text",
 									"value": "BBS - España"
 								},
 								{
-									"description": "",
 									"key": "description_en",
 									"type": "text",
 									"value": "BBS - Spain"
 								},
 								{
-									"description": "",
 									"key": "regExp",
 									"type": "text",
 									"value": "34"
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/target-patterns/"
 					},
 					"response": []
 				},
@@ -1147,11 +1044,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/target-patterns/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -1160,44 +1055,38 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"description": "",
 									"key": "brandId",
 									"type": "text",
 									"value": "{{brandId}}"
 								},
 								{
-									"description": "",
 									"key": "name_es",
 									"type": "text",
 									"value": "BBS - EEUU"
 								},
 								{
-									"description": "",
 									"key": "name_en",
 									"type": "text",
 									"value": "BBS - USA"
 								},
 								{
-									"description": "",
 									"key": "description_es",
 									"type": "text",
 									"value": "BBS - EEUU"
 								},
 								{
-									"description": "",
 									"key": "description_en",
 									"type": "text",
 									"value": "BBS - USA"
 								},
 								{
-									"description": "",
 									"key": "regExp",
 									"type": "text",
 									"value": "1"
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/target-patterns/"
 					},
 					"response": []
 				},
@@ -1227,11 +1116,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/pricing-plans/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -1240,38 +1127,33 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"description": "",
 									"key": "brandId",
 									"type": "text",
 									"value": "{{brandId}}"
 								},
 								{
-									"description": "",
 									"key": "name_es",
 									"type": "text",
 									"value": "BBS - Pruebas"
 								},
 								{
-									"description": "",
 									"key": "name_en",
 									"type": "text",
 									"value": "BBS - Tests"
 								},
 								{
-									"description": "",
 									"key": "description_es",
 									"type": "text",
 									"value": "BBS - Pruebas"
 								},
 								{
-									"description": "",
 									"key": "description_en",
 									"type": "text",
 									"value": "BBS - Tests"
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/pricing-plans/"
 					},
 					"response": []
 				},
@@ -1298,11 +1180,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/pricing-plans-rel-target-patterns/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -1311,44 +1191,38 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"description": "",
 									"key": "brandId",
 									"type": "text",
 									"value": "{{brandId}}"
 								},
 								{
-									"description": "",
 									"key": "pricingPlanId",
 									"type": "text",
 									"value": "{{pricingPlanId}}"
 								},
 								{
-									"description": "",
 									"key": "targetPatternId",
 									"type": "text",
 									"value": "{{targetPatternESId}}"
 								},
 								{
-									"description": "",
 									"key": "connectionCharge",
 									"type": "text",
 									"value": "0.15"
 								},
 								{
-									"description": "",
 									"key": "periodTime",
 									"type": "text",
 									"value": "1"
 								},
 								{
-									"description": "",
 									"key": "perPeriodCharge",
 									"type": "text",
 									"value": "0.20"
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/pricing-plans-rel-target-patterns/"
 					},
 					"response": []
 				},
@@ -1375,11 +1249,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/pricing-plans-rel-target-patterns/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -1388,44 +1260,38 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"description": "",
 									"key": "brandId",
 									"type": "text",
 									"value": "{{brandId}}"
 								},
 								{
-									"description": "",
 									"key": "pricingPlanId",
 									"type": "text",
 									"value": "{{pricingPlanId}}"
 								},
 								{
-									"description": "",
 									"key": "targetPatternId",
 									"type": "text",
 									"value": "{{targetPatternUSId}}"
 								},
 								{
-									"description": "",
 									"key": "connectionCharge",
 									"type": "text",
 									"value": "0.20"
 								},
 								{
-									"description": "",
 									"key": "periodTime",
 									"type": "text",
 									"value": "1"
 								},
 								{
-									"description": "",
 									"key": "perPeriodCharge",
 									"type": "text",
 									"value": "0.25"
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/pricing-plans-rel-target-patterns/"
 					},
 					"response": []
 				}
@@ -1433,7 +1299,6 @@
 		},
 		{
 			"name": "0010 - Company Data",
-			"description": "",
 			"item": [
 				{
 					"name": "Create BBS Company",
@@ -1461,11 +1326,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/companies/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -1529,14 +1392,13 @@
 									"value": "vpbx"
 								},
 								{
-									"description": "",
 									"key": "externalMaxCalls",
 									"type": "text",
 									"value": "2"
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/companies/"
 					},
 					"response": []
 				},
@@ -1563,11 +1425,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/pricing-plans-rel-companies/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -1576,44 +1436,38 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"description": "",
 									"key": "brandId",
 									"type": "text",
 									"value": "{{brandId}}"
 								},
 								{
-									"description": "",
 									"key": "pricingPlanId",
 									"type": "text",
 									"value": "{{pricingPlanId}}"
 								},
 								{
-									"description": "",
 									"key": "companyId",
 									"type": "text",
 									"value": "{{companyId}}"
 								},
 								{
-									"description": "",
 									"key": "validFrom",
 									"type": "text",
 									"value": "2000-01-01"
 								},
 								{
-									"description": "",
 									"key": "validTo",
 									"type": "text",
 									"value": "2099-12-31"
 								},
 								{
-									"description": "",
 									"key": "metric",
 									"type": "text",
 									"value": "1"
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/pricing-plans-rel-companies/"
 					},
 					"response": []
 				},
@@ -1635,11 +1489,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/features-rel-companies/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -1648,20 +1500,18 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"description": "",
 									"key": "companyId",
 									"type": "text",
 									"value": "{{companyId}}"
 								},
 								{
-									"description": "",
 									"key": "featureId",
 									"type": "text",
 									"value": "1"
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/features-rel-companies/"
 					},
 					"response": []
 				},
@@ -1683,11 +1533,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/features-rel-companies/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -1696,20 +1544,18 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"description": "",
 									"key": "companyId",
 									"type": "text",
 									"value": "{{companyId}}"
 								},
 								{
-									"description": "",
 									"key": "featureId",
 									"type": "text",
 									"value": "2"
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/features-rel-companies/"
 					},
 					"response": []
 				},
@@ -1731,11 +1577,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/features-rel-companies/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -1744,20 +1588,18 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"description": "",
 									"key": "companyId",
 									"type": "text",
 									"value": "{{companyId}}"
 								},
 								{
-									"description": "",
 									"key": "featureId",
 									"type": "text",
 									"value": "3"
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/features-rel-companies/"
 					},
 					"response": []
 				},
@@ -1779,11 +1621,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/features-rel-companies/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -1792,20 +1632,18 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"description": "",
 									"key": "companyId",
 									"type": "text",
 									"value": "{{companyId}}"
 								},
 								{
-									"description": "",
 									"key": "featureId",
 									"type": "text",
 									"value": "4"
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/features-rel-companies/"
 					},
 					"response": []
 				},
@@ -1827,11 +1665,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/features-rel-companies/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -1840,20 +1676,18 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"description": "",
 									"key": "companyId",
 									"type": "text",
 									"value": "{{companyId}}"
 								},
 								{
-									"description": "",
 									"key": "featureId",
 									"type": "text",
 									"value": "5"
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/features-rel-companies/"
 					},
 					"response": []
 				},
@@ -1875,11 +1709,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/features-rel-companies/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -1888,20 +1720,18 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"description": "",
 									"key": "companyId",
 									"type": "text",
 									"value": "{{companyId}}"
 								},
 								{
-									"description": "",
 									"key": "featureId",
 									"type": "text",
 									"value": "8"
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/features-rel-companies/"
 					},
 					"response": []
 				},
@@ -1927,11 +1757,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/terminals/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -1966,7 +1794,7 @@
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/terminals/"
 					},
 					"response": []
 				},
@@ -1992,11 +1820,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/users/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -2056,7 +1882,7 @@
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/users/"
 					},
 					"response": []
 				},
@@ -2082,11 +1908,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/extensions/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -2116,7 +1940,7 @@
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/extensions/"
 					},
 					"response": []
 				},
@@ -2146,11 +1970,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/d-d-is/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -2189,14 +2011,13 @@
 									"value": "{{aliceUserId}}"
 								},
 								{
-									"description": "",
 									"key": "peeringContractId",
 									"type": "text",
 									"value": "{{peeringContractId}}"
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/d-d-is/"
 					},
 					"response": []
 				},
@@ -2222,11 +2043,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/terminals/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -2261,7 +2080,7 @@
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/terminals/"
 					},
 					"response": []
 				},
@@ -2287,11 +2106,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/users/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -2346,7 +2163,7 @@
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/users/"
 					},
 					"response": []
 				},
@@ -2372,11 +2189,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/extensions/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -2406,7 +2221,7 @@
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/extensions/"
 					},
 					"response": []
 				},
@@ -2436,11 +2251,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/d-d-is/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -2479,14 +2292,13 @@
 									"value": "{{bobUserId}}"
 								},
 								{
-									"description": "",
 									"key": "peeringContractId",
 									"type": "text",
 									"value": "{{peeringContractId}}"
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/d-d-is/"
 					},
 					"response": []
 				},
@@ -2512,11 +2324,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/terminals/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -2551,7 +2361,7 @@
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/terminals/"
 					},
 					"response": []
 				},
@@ -2577,11 +2387,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/users/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -2636,7 +2444,7 @@
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/users/"
 					},
 					"response": []
 				},
@@ -2662,11 +2470,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/extensions/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -2702,7 +2508,7 @@
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/extensions/"
 					},
 					"response": []
 				},
@@ -2732,11 +2538,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/d-d-is/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -2775,14 +2579,13 @@
 									"value": "{{charlieUserId}}"
 								},
 								{
-									"description": "",
 									"key": "peeringContractId",
 									"type": "text",
 									"value": "{{peeringContractId}}"
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/d-d-is/"
 					},
 					"response": []
 				},
@@ -2808,11 +2611,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/terminals/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -2847,7 +2648,7 @@
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/terminals/"
 					},
 					"response": []
 				},
@@ -2873,11 +2674,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/users/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -2937,7 +2736,7 @@
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/users/"
 					},
 					"response": []
 				},
@@ -2963,11 +2762,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/extensions/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -2997,7 +2794,7 @@
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/extensions/"
 					},
 					"response": []
 				},
@@ -3027,11 +2824,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/d-d-is/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -3070,14 +2865,13 @@
 									"value": "{{daveUserId}}"
 								},
 								{
-									"description": "",
 									"key": "peeringContractId",
 									"type": "text",
 									"value": "{{peeringContractId}}"
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/d-d-is/"
 					},
 					"response": []
 				},
@@ -3103,11 +2897,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/terminals/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -3142,7 +2934,7 @@
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/terminals/"
 					},
 					"response": []
 				},
@@ -3168,11 +2960,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/users/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -3232,7 +3022,7 @@
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/users/"
 					},
 					"response": []
 				},
@@ -3258,11 +3048,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/extensions/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -3292,7 +3080,7 @@
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/extensions/"
 					},
 					"response": []
 				},
@@ -3322,11 +3110,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/d-d-is/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -3365,14 +3151,13 @@
 									"value": "{{eveUserId}}"
 								},
 								{
-									"description": "",
 									"key": "peeringContractId",
 									"type": "text",
 									"value": "{{peeringContractId}}"
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/d-d-is/"
 					},
 					"response": []
 				},
@@ -3398,13 +3183,11 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/match-lists/",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -3416,14 +3199,13 @@
 									"value": "{{companyId}}"
 								},
 								{
-									"description": "",
 									"key": "name",
 									"type": "text",
 									"value": "White List for Boss Frank"
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/match-lists/"
 					},
 					"response": []
 				},
@@ -3448,13 +3230,11 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/match-list-patterns/",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -3466,19 +3246,16 @@
 									"value": "{{bossAssistantWatchListId}}"
 								},
 								{
-									"description": "",
 									"key": "description",
 									"type": "text",
 									"value": "Alice DDI Number"
 								},
 								{
-									"description": "",
 									"key": "type",
 									"type": "text",
 									"value": "number"
 								},
 								{
-									"description": "",
 									"key": "numberCountryId",
 									"type": "text",
 									"value": "70"
@@ -3486,12 +3263,11 @@
 								{
 									"key": "numberValue",
 									"value": "999661001",
-									"description": "",
 									"type": "text"
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/match-list-patterns/"
 					},
 					"response": []
 				},
@@ -3516,13 +3292,11 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/match-list-patterns/",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -3534,26 +3308,23 @@
 									"value": "{{bossAssistantWatchListId}}"
 								},
 								{
-									"description": "",
 									"key": "description",
 									"type": "text",
 									"value": "Alice Extension Number"
 								},
 								{
-									"description": "",
 									"key": "type",
 									"type": "text",
 									"value": "regexp"
 								},
 								{
-									"description": "",
 									"key": "regExp",
 									"type": "text",
 									"value": "^1001$"
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/match-list-patterns/"
 					},
 					"response": []
 				},
@@ -3579,13 +3350,11 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/terminals/",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -3618,7 +3387,7 @@
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/terminals/"
 					},
 					"response": []
 				},
@@ -3644,13 +3413,11 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/users/",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -3707,13 +3474,11 @@
 									"value": "999"
 								},
 								{
-									"description": "",
 									"key": "isBoss",
 									"type": "text",
 									"value": "1"
 								},
 								{
-									"description": "",
 									"key": "bossAssistantId",
 									"type": "text",
 									"value": "{{daveUserId}}"
@@ -3721,12 +3486,11 @@
 								{
 									"key": "bossAssistantWhiteListId",
 									"value": "{{bossAssistantWatchListId}}",
-									"description": "",
 									"type": "text"
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/users/"
 					},
 					"response": []
 				},
@@ -3752,13 +3516,11 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/extensions/",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -3786,7 +3548,7 @@
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/extensions/"
 					},
 					"response": []
 				},
@@ -3816,13 +3578,11 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/d-d-is/",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -3859,14 +3619,13 @@
 									"value": "{{frankUserId}}"
 								},
 								{
-									"description": "",
 									"key": "peeringContractId",
 									"type": "text",
 									"value": "{{peeringContractId}}"
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/d-d-is/"
 					},
 					"response": []
 				},
@@ -3885,11 +3644,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/companies/{{companyId}}",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -3904,7 +3661,7 @@
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/companies/{{companyId}}"
 					},
 					"response": []
 				},
@@ -3930,11 +3687,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/friends/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -3984,7 +3739,7 @@
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/friends/"
 					},
 					"response": []
 				},
@@ -4010,11 +3765,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/friends-patterns/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -4039,7 +3792,7 @@
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/friends-patterns/"
 					},
 					"response": []
 				},
@@ -4065,11 +3818,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/extensions/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -4098,7 +3849,66 @@
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/extensions/"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Route Lock",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ab74710f-ee23-4934-8b1f-40e953078e31",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"tests[\"Object id is valid\"] = id !== 0;",
+									"postman.setGlobalVariable(\"routeLockId\", id);",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "companyId",
+									"type": "text",
+									"value": "{{companyId}}"
+								},
+								{
+									"key": "name",
+									"type": "text",
+									"value": "BBS Route Lock"
+								},
+								{
+									"key": "description",
+									"value": "For testing Conditional Routes"
+								},
+								{
+									"key": "open",
+									"value": "0",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{api_url}}/route-locks/"
 					},
 					"response": []
 				}
@@ -4106,7 +3916,6 @@
 		},
 		{
 			"name": "0020 - Retail Data",
-			"description": "",
 			"item": [
 				{
 					"name": "Create BBS Retail Client",
@@ -4134,11 +3943,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/companies/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -4198,7 +4005,7 @@
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/companies/"
 					},
 					"response": []
 				},
@@ -4225,11 +4032,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/pricing-plans-rel-companies/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -4238,44 +4043,38 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"description": "",
 									"key": "brandId",
 									"type": "text",
 									"value": "{{brandId}}"
 								},
 								{
-									"description": "",
 									"key": "pricingPlanId",
 									"type": "text",
 									"value": "{{pricingPlanId}}"
 								},
 								{
-									"description": "",
 									"key": "companyId",
 									"type": "text",
 									"value": "{{retailId}}"
 								},
 								{
-									"description": "",
 									"key": "validFrom",
 									"type": "text",
 									"value": "2000-01-01"
 								},
 								{
-									"description": "",
 									"key": "validTo",
 									"type": "text",
 									"value": "2099-12-31"
 								},
 								{
-									"description": "",
 									"key": "metric",
 									"type": "text",
 									"value": "1"
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/pricing-plans-rel-companies/"
 					},
 					"response": []
 				},
@@ -4297,11 +4096,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/features-rel-companies/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -4310,20 +4107,18 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"description": "",
 									"key": "companyId",
 									"type": "text",
 									"value": "{{retailId}}"
 								},
 								{
-									"description": "",
 									"key": "featureId",
 									"type": "text",
 									"value": "2"
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/features-rel-companies/"
 					},
 					"response": []
 				},
@@ -4345,11 +4140,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/features-rel-companies/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -4358,20 +4151,18 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"description": "",
 									"key": "companyId",
 									"type": "text",
 									"value": "{{retailId}}"
 								},
 								{
-									"description": "",
 									"key": "featureId",
 									"type": "text",
 									"value": "3"
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/features-rel-companies/"
 					},
 					"response": []
 				},
@@ -4393,11 +4184,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/features-rel-companies/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -4406,20 +4195,18 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"description": "",
 									"key": "companyId",
 									"type": "text",
 									"value": "{{retailId}}"
 								},
 								{
-									"description": "",
 									"key": "featureId",
 									"type": "text",
 									"value": "8"
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/features-rel-companies/"
 					},
 					"response": []
 				},
@@ -4449,11 +4236,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/retail-accounts/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -4462,44 +4247,38 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"description": "",
 									"key": "brandId",
 									"type": "text",
 									"value": "{{brandId}}"
 								},
 								{
-									"description": "",
 									"key": "companyId",
 									"type": "text",
 									"value": "{{retailId}}"
 								},
 								{
-									"description": "",
 									"key": "name",
 									"type": "text",
 									"value": "20000"
 								},
 								{
-									"description": "",
 									"key": "password",
 									"type": "text",
 									"value": "r3t41lp4ssw0rd"
 								},
 								{
-									"description": "",
 									"key": "transport",
 									"type": "text",
 									"value": "udp"
 								},
 								{
-									"description": "",
 									"key": "directConnectivity",
 									"type": "text",
 									"value": "no"
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/retail-accounts/"
 					},
 					"response": []
 				},
@@ -4529,11 +4308,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/d-d-is/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -4573,7 +4350,7 @@
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/d-d-is/"
 					},
 					"response": []
 				},
@@ -4592,11 +4369,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/companies/{{retailId}}",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -4611,7 +4386,7 @@
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/companies/{{retailId}}"
 					},
 					"response": []
 				}
@@ -4619,7 +4394,6 @@
 		},
 		{
 			"name": "2000 - IVR",
-			"description": "",
 			"item": [
 				{
 					"name": "Create IVR Generic",
@@ -4647,13 +4421,11 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/i-v-r-common",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -4680,31 +4452,28 @@
 									"value": "4"
 								},
 								{
-									"description": "",
 									"key": "timeoutTargetType",
 									"type": "text",
 									"value": "extension"
 								},
 								{
-									"description": "",
 									"key": "timeoutExtensionId",
 									"type": "text",
 									"value": "{{daveExtensionId}}"
 								},
 								{
-									"description": "",
 									"key": "errorTargetType",
 									"type": "text",
 									"value": "number"
 								},
 								{
-									"description": "",
 									"key": "errorNumberValue",
 									"type": "text",
 									"value": "0034999661003"
 								}
 							]
 						},
+						"url": "{{api_url}}/i-v-r-common",
 						"description": "POST"
 					},
 					"response": []
@@ -4731,11 +4500,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/extensions/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -4765,7 +4532,7 @@
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/extensions/"
 					},
 					"response": []
 				},
@@ -4795,68 +4562,59 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/i-v-r-custom",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
 							"mode": "urlencoded",
 							"urlencoded": [
 								{
-									"description": "",
 									"key": "companyId",
 									"type": "text",
 									"value": "{{companyId}}"
 								},
 								{
-									"description": "",
 									"key": "name",
 									"type": "text",
 									"value": "BBS Custom IVR"
 								},
 								{
-									"description": "",
 									"key": "timeout",
 									"type": "text",
 									"value": "5"
 								},
 								{
-									"description": "",
 									"key": "maxDigits",
 									"type": "text",
 									"value": "1"
 								},
 								{
-									"description": "",
 									"key": "timeoutTargetType",
 									"type": "text",
 									"value": "extension"
 								},
 								{
-									"description": "",
 									"key": "timeoutExtensionId",
 									"type": "text",
 									"value": "{{daveExtensionId}}"
 								},
 								{
-									"description": "",
 									"key": "errorTargetType",
 									"type": "text",
 									"value": "extension"
 								},
 								{
-									"description": "",
 									"key": "errorExtensionId",
 									"type": "text",
 									"value": "{{eveExtensionId}}"
 								}
 							]
 						},
+						"url": "{{api_url}}/i-v-r-custom",
 						"description": "POST"
 					},
 					"response": []
@@ -4883,13 +4641,11 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/extensions/",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -4917,7 +4673,7 @@
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/extensions/"
 					},
 					"response": []
 				},
@@ -4942,13 +4698,11 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}//i-v-r-custom-entries",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -4976,7 +4730,7 @@
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}//i-v-r-custom-entries"
 					},
 					"response": []
 				},
@@ -5001,13 +4755,11 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}//i-v-r-custom-entries",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{api_auth}}",
-								"description": ""
+								"value": "{{api_auth}}"
 							}
 						],
 						"body": {
@@ -5035,7 +4787,7 @@
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}//i-v-r-custom-entries"
 					},
 					"response": []
 				}
@@ -5043,7 +4795,6 @@
 		},
 		{
 			"name": "2200 - Pickup",
-			"description": "",
 			"item": [
 				{
 					"name": "Create Pickup Group",
@@ -5071,11 +4822,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/pick-up-groups",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -5107,6 +4856,7 @@
 								}
 							]
 						},
+						"url": "{{api_url}}/pick-up-groups",
 						"description": "POST"
 					},
 					"response": []
@@ -5134,11 +4884,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/pick-up-rel-users/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -5170,6 +4918,7 @@
 								}
 							]
 						},
+						"url": "{{api_url}}/pick-up-rel-users/",
 						"description": "POST"
 					},
 					"response": []
@@ -5197,11 +4946,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/pick-up-rel-users/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -5233,6 +4980,7 @@
 								}
 							]
 						},
+						"url": "{{api_url}}/pick-up-rel-users/",
 						"description": "POST"
 					},
 					"response": []
@@ -5260,11 +5008,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/pick-up-rel-users/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -5296,6 +5042,7 @@
 								}
 							]
 						},
+						"url": "{{api_url}}/pick-up-rel-users/",
 						"description": "POST"
 					},
 					"response": []
@@ -5304,7 +5051,6 @@
 		},
 		{
 			"name": "2300 - Conference",
-			"description": "",
 			"item": [
 				{
 					"name": "Create Conference Room",
@@ -5332,11 +5078,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/conference-rooms",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -5371,6 +5115,7 @@
 								}
 							]
 						},
+						"url": "{{api_url}}/conference-rooms",
 						"description": "POST"
 					},
 					"response": []
@@ -5397,11 +5142,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/extensions/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -5431,7 +5174,7 @@
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/extensions/"
 					},
 					"response": []
 				}
@@ -5439,7 +5182,6 @@
 		},
 		{
 			"name": "2400 - HuntGroup",
-			"description": "",
 			"item": [
 				{
 					"name": "Create HungGroup RingAll",
@@ -5467,11 +5209,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/hunt-groups/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -5490,7 +5230,6 @@
 									"value": "BBS RingAll HuntGroup"
 								},
 								{
-									"description": "",
 									"key": "strategy",
 									"type": "text",
 									"value": "ringAll"
@@ -5506,13 +5245,13 @@
 									"value": "extension"
 								},
 								{
-									"description": "",
 									"key": "noAnswerExtensionId",
 									"type": "text",
 									"value": "{{eveExtensionId}}"
 								}
 							]
 						},
+						"url": "{{api_url}}/hunt-groups/",
 						"description": "POST"
 					},
 					"response": []
@@ -5538,11 +5277,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/extensions/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -5572,7 +5309,7 @@
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/extensions/"
 					},
 					"response": []
 				},
@@ -5594,11 +5331,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/hunt-groups-rel-users/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -5618,7 +5353,7 @@
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/hunt-groups-rel-users/"
 					},
 					"response": []
 				},
@@ -5640,11 +5375,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/hunt-groups-rel-users/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -5664,7 +5397,7 @@
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/hunt-groups-rel-users/"
 					},
 					"response": []
 				},
@@ -5686,11 +5419,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/hunt-groups-rel-users/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -5710,7 +5441,7 @@
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/hunt-groups-rel-users/"
 					},
 					"response": []
 				},
@@ -5740,11 +5471,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/hunt-groups/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -5763,7 +5492,6 @@
 									"value": "BBS RR HuntGroup"
 								},
 								{
-									"description": "",
 									"key": "strategy",
 									"type": "text",
 									"value": "roundRobin"
@@ -5774,19 +5502,18 @@
 									"value": "extension"
 								},
 								{
-									"description": "",
 									"key": "noAnswerExtensionId",
 									"type": "text",
 									"value": "{{eveExtensionId}}"
 								},
 								{
-									"description": "",
 									"key": "ringAllTimeout",
 									"type": "text",
 									"value": "0"
 								}
 							]
 						},
+						"url": "{{api_url}}/hunt-groups/",
 						"description": "POST"
 					},
 					"response": []
@@ -5813,11 +5540,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/extensions/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -5847,7 +5572,7 @@
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/extensions/"
 					},
 					"response": []
 				},
@@ -5869,11 +5594,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/hunt-groups-rel-users/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -5892,20 +5615,18 @@
 									"value": "{{bobUserId}}"
 								},
 								{
-									"description": "",
 									"key": "timeoutTime",
 									"type": "text",
 									"value": "3"
 								},
 								{
-									"description": "",
 									"key": "priority",
 									"type": "text",
 									"value": "1"
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/hunt-groups-rel-users/"
 					},
 					"response": []
 				},
@@ -5927,11 +5648,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/hunt-groups-rel-users/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -5950,20 +5669,18 @@
 									"value": "{{charlieUserId}}"
 								},
 								{
-									"description": "",
 									"key": "timeoutTime",
 									"type": "text",
 									"value": "3"
 								},
 								{
-									"description": "",
 									"key": "priority",
 									"type": "text",
 									"value": "2"
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/hunt-groups-rel-users/"
 					},
 					"response": []
 				},
@@ -5985,11 +5702,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/hunt-groups-rel-users/",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -6008,20 +5723,261 @@
 									"value": "{{daveUserId}}"
 								},
 								{
-									"description": "",
 									"key": "timeoutTime",
 									"type": "text",
 									"value": "3"
 								},
 								{
-									"description": "",
 									"key": "priority",
 									"type": "text",
 									"value": "3"
 								}
 							]
 						},
-						"description": ""
+						"url": "{{api_url}}/hunt-groups-rel-users/"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "2600 - Conditional Routes",
+			"description": "",
+			"item": [
+				{
+					"name": "Create Conditional Route",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e8e37ede-e7bf-4865-bcc6-750da7398d02",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"if (Location !== null) {",
+									"    var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"    tests[\"Object id is valid\"] = id !== 0;",
+									"",
+									"    // Store ID for further requests",
+									"    postman.setGlobalVariable(\"conditionalRouteId\", id);",
+									"}",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "companyId",
+									"type": "text",
+									"value": "{{companyId}}"
+								},
+								{
+									"key": "name",
+									"type": "text",
+									"value": "BBS Conditional Route"
+								},
+								{
+									"key": "routeType",
+									"type": "text",
+									"value": "user"
+								},
+								{
+									"key": "userId",
+									"type": "text",
+									"value": "{{daveUserId}}"
+								}
+							]
+						},
+						"url": "{{api_url}}/conditional-routes",
+						"description": "POST"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Conditional Route Extension",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"tests[\"Object id is valid\"] = id !== 0;",
+									"postman.setGlobalVariable(\"ivrCommonExtensionId\", id);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "companyId",
+									"type": "text",
+									"value": "{{companyId}}"
+								},
+								{
+									"key": "routeType",
+									"type": "text",
+									"value": "conditional"
+								},
+								{
+									"key": "number",
+									"type": "text",
+									"value": "800"
+								},
+								{
+									"key": "conditionalRouteId",
+									"type": "text",
+									"value": "{{conditionalRouteId}}"
+								}
+							]
+						},
+						"url": "{{api_url}}/extensions/"
+					},
+					"response": []
+				},
+				{
+					"name": "Add Conditional Route Codition",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "824492d0-9c72-4631-95d0-bbaa44d630ce",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"if (Location !== null) {",
+									"    var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"    tests[\"Object id is valid\"] = id !== 0;",
+									"",
+									"    // Store ID for further requests",
+									"    postman.setGlobalVariable(\"conditionalRouteConditionId\", id);",
+									"}",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "conditionalRouteId",
+									"type": "text",
+									"value": "{{conditionalRouteId}}"
+								},
+								{
+									"key": "priority",
+									"type": "text",
+									"value": "1"
+								},
+								{
+									"key": "routeType",
+									"type": "text",
+									"value": "extension"
+								},
+								{
+									"key": "extensionId",
+									"type": "text",
+									"value": "{{aliceExtensionId}}"
+								}
+							]
+						},
+						"url": "{{api_url}}/conditional-routes-conditions/",
+						"description": "POST"
+					},
+					"response": []
+				},
+				{
+					"name": "Add RouteLock to Condition",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "da2ddd65-1b5f-4589-bc2d-d17d554a1258",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201 Created\"] = responseCode.code === 201;",
+									"",
+									"var Location = postman.getResponseHeader(\"Location\");",
+									"tests[\"Location header is present\"] = Location !== null;",
+									"",
+									"if (Location !== null) {",
+									"    var id = Location.substr(Location.lastIndexOf('/') + 1);",
+									"    tests[\"Object id is valid\"] = id !== 0;",
+									"}",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "conditionId",
+									"type": "text",
+									"value": "{{conditionalRouteConditionId}}"
+								},
+								{
+									"key": "routeLockId",
+									"type": "text",
+									"value": "{{routeLockId}}"
+								}
+							]
+						},
+						"url": "{{api_url}}/conditional-routes-conditions-rel-route-locks/",
+						"description": "POST"
 					},
 					"response": []
 				}
@@ -6029,7 +5985,6 @@
 		},
 		{
 			"name": "3000 - Call Forward Settings",
-			"description": "",
 			"item": [
 				{
 					"name": "Call Forward Eve Busy",
@@ -6054,11 +6009,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/call-forward-settings",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -6093,6 +6046,7 @@
 								}
 							]
 						},
+						"url": "{{api_url}}/call-forward-settings",
 						"description": "POST"
 					},
 					"response": []
@@ -6120,11 +6074,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/call-forward-settings",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -6164,6 +6116,7 @@
 								}
 							]
 						},
+						"url": "{{api_url}}/call-forward-settings",
 						"description": "POST"
 					},
 					"response": []
@@ -6191,11 +6144,9 @@
 						}
 					],
 					"request": {
-						"url": "{{api_url}}/call-forward-settings",
 						"method": "POST",
 						"header": [
 							{
-								"description": "",
 								"key": "Authorization",
 								"value": "{{api_auth}}"
 							}
@@ -6230,6 +6181,7 @@
 								}
 							]
 						},
+						"url": "{{api_url}}/call-forward-settings",
 						"description": "POST"
 					},
 					"response": []

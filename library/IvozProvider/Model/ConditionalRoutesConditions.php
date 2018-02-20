@@ -51,6 +51,16 @@ class ConditionalRoutesConditions extends Raw\ConditionalRoutesConditions
         return $calendars;
     }
 
+    public function getRouteLocks()
+    {
+        $rels = $this->getConditionalRoutesConditionsRelRouteLocks();
+        $routeLocks = [];
+        foreach ($rels as $rel) {
+            $routeLocks[] = $rel->getRouteLock();
+        }
+        return $routeLocks;
+    }
+
     public function matchesOrigin($number)
     {
         $matchLists = $this->getMatchLists();
@@ -109,6 +119,23 @@ class ConditionalRoutesConditions extends Raw\ConditionalRoutesConditions
 
         foreach ($calendars as $calendar) {
             if ($calendar->isHolidayDate($date)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public function matchesRouteLock()
+    {
+        $routeLocks = $this->getRouteLocks();
+
+        if (empty($routeLocks)) {
+            return true;
+        }
+
+        foreach ($routeLocks as $routeLock) {
+            if ($routeLock->isOpen()) {
                 return true;
             }
         }

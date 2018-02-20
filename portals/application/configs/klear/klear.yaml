@@ -259,14 +259,19 @@ production:
           class: ui-silk-clock
           description: _("List of %s", ngettext('Schedule', 'Schedules', 0))
           showOnlyIf: ${auth.companyVPBX}
+        RouteLocksList:
+          title: ngettext('Route Lock', 'Route Locks', 0)
+          class: ui-silk-lock
+          description: _("List of %s", ngettext('Route Lock', 'Route Locks', 0))
+          showOnlyIf: ${auth.companyVPBX}
         CallACLList:
           title: ngettext('Call ACL', 'Call ACLs', 0)
-          class: ui-silk-lock
+          class: ui-silk-telephone-key
           description: _("List of %s", ngettext('Call ACL', 'Call ACLs', 0))
           showOnlyIf: ${auth.companyVPBX}
         CallACLPatternsList:
           title: ngettext('Call ACL Pattern', 'Call ACL Patterns', 0)
-          class: ui-silk-lock-go
+          class: ui-silk-telephone-go
           description: _("List of %s", ngettext('Call ACL Pattern', 'Call ACL Patterns', 0))
           showOnlyIf: ${auth.companyVPBX}
         HuntGroupsList:

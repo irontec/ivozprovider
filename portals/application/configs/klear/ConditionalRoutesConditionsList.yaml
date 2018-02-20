@@ -41,6 +41,7 @@ production:
           ConditionalRoutesConditionsRelMatchLists: true
           ConditionalRoutesConditionsRelSchedules: true
           ConditionalRoutesConditionsRelCalendars: true
+          ConditionalRoutesConditionsRelRouteLocks: true
         order:
           priority: true
           ConditionMatch: true
@@ -78,10 +79,11 @@ production:
             priority: 4
         group1:
           label: _("Matching type")
-          colsPerRow: 12
+          colsPerRow: 8
           fields:
             type: 5
             ConditionalRoutesConditionsRelMatchLists: 4
+            ConditionalRoutesConditionsRelRouteLocks: 4
             ConditionalRoutesConditionsRelSchedules: 4
             ConditionalRoutesConditionsRelCalendars: 4
         group2:

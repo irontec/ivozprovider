@@ -111,6 +111,7 @@ class Companies extends TableAbstract
         'IvozProvider\\Mapper\\Sql\\DbTable\\Queues',
         'IvozProvider\\Mapper\\Sql\\DbTable\\Recordings',
         'IvozProvider\\Mapper\\Sql\\DbTable\\RetailAccounts',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\RouteLocks',
         'IvozProvider\\Mapper\\Sql\\DbTable\\Schedules',
         'IvozProvider\\Mapper\\Sql\\DbTable\\Terminals',
         'IvozProvider\\Mapper\\Sql\\DbTable\\Users',

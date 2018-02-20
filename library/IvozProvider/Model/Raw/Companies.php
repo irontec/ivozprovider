@@ -521,6 +521,14 @@ class Companies extends ModelAbstract
     protected $_RetailAccounts;
 
     /**
+     * Dependent relation ConditionalRoutesLocks_ibfk_1
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\RouteLocks[]
+     */
+    protected $_RouteLocks;
+
+    /**
      * Dependent relation Schedules_ibfk_1
      * Type: One-to-Many relationship
      *
@@ -757,6 +765,10 @@ class Companies extends ModelAbstract
             'RetailAccountsIbfk2' => array(
                     'property' => 'RetailAccounts',
                     'table_name' => 'RetailAccounts',
+                ),
+            'ConditionalRoutesLocksIbfk1' => array(
+                    'property' => 'RouteLocks',
+                    'table_name' => 'RouteLocks',
                 ),
             'SchedulesIbfk1' => array(
                     'property' => 'Schedules',
@@ -4823,6 +4835,96 @@ class Companies extends ModelAbstract
         }
 
         return $this->_RetailAccounts;
+    }
+
+    /**
+     * Sets dependent relations ConditionalRoutesLocks_ibfk_1
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\RouteLocks
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function setRouteLocks(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_RouteLocks === null) {
+
+                $this->getRouteLocks();
+            }
+
+            $oldRelations = $this->_RouteLocks;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_RouteLocks = array();
+
+        foreach ($data as $object) {
+            $this->addRouteLocks($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations ConditionalRoutesLocks_ibfk_1
+     *
+     * @param \IvozProvider\Model\Raw\RouteLocks $data
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function addRouteLocks(\IvozProvider\Model\Raw\RouteLocks $data)
+    {
+        $this->_RouteLocks[] = $data;
+        $this->_setLoaded('ConditionalRoutesLocksIbfk1');
+        return $this;
+    }
+
+    /**
+     * Gets dependent ConditionalRoutesLocks_ibfk_1
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\RouteLocks
+     */
+    public function getRouteLocks($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'ConditionalRoutesLocksIbfk1';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_RouteLocks = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_RouteLocks;
     }
 
     /**

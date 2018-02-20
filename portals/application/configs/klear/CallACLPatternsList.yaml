@@ -12,7 +12,7 @@ production:
       pagination:
         items: 25
       <<: *CallACLPatterns
-      class: ui-silk-lock-go
+      class: ui-silk-telephone-go
       title: _("List of %s %2s", ngettext('Call ACL Pattern', 'Call ACL Patterns', 0), "[format| (%parent%)]")
       forcedValues:
         <<: *forcedCompany

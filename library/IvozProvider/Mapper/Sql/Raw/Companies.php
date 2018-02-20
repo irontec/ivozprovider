@@ -878,6 +878,20 @@ class Companies extends MapperAbstract
                     }
                 }
 
+                if ($model->getRouteLocks(null, null, true) !== null) {
+                    $routeLocks = $model->getRouteLocks();
+
+                    if (!is_array($routeLocks)) {
+
+                        $routeLocks = array($routeLocks);
+                    }
+
+                    foreach ($routeLocks as $value) {
+                        $value->setCompanyId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
                 if ($model->getSchedules(null, null, true) !== null) {
                     $schedules = $model->getSchedules();
 
