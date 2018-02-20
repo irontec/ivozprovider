@@ -94,6 +94,7 @@ class ConditionalRoutesConditions extends TableAbstract
     protected $_dependentTables = array(
         'IvozProvider\\Mapper\\Sql\\DbTable\\ConditionalRoutesConditionsRelCalendars',
         'IvozProvider\\Mapper\\Sql\\DbTable\\ConditionalRoutesConditionsRelMatchLists',
+        'IvozProvider\\Mapper\\Sql\\DbTable\\ConditionalRoutesConditionsRelRouteLocks',
         'IvozProvider\\Mapper\\Sql\\DbTable\\ConditionalRoutesConditionsRelSchedules'
     );
     protected $_metadata = array (

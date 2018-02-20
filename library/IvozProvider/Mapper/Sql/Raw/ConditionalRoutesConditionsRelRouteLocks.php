@@ -11,7 +11,7 @@
  */
 
 /**
- * Data Mapper implementation for IvozProvider\Model\ConditionalRoutesConditions
+ * Data Mapper implementation for IvozProvider\Model\ConditionalRoutesConditionsRelRouteLocks
  *
  * @package IvozProvider\Mapper\Sql
  * @subpackage Raw
@@ -19,9 +19,9 @@
  */
 
 namespace IvozProvider\Mapper\Sql\Raw;
-class ConditionalRoutesConditions extends MapperAbstract
+class ConditionalRoutesConditionsRelRouteLocks extends MapperAbstract
 {
-    protected $_modelName = 'IvozProvider\\Model\\ConditionalRoutesConditions';
+    protected $_modelName = 'IvozProvider\\Model\\ConditionalRoutesConditionsRelRouteLocks';
 
 
     protected $_urlIdentifiers = array();
@@ -29,17 +29,17 @@ class ConditionalRoutesConditions extends MapperAbstract
     /**
      * Returns an array, keys are the field names.
      *
-     * @param IvozProvider\Model\Raw\ConditionalRoutesConditions $model
+     * @param IvozProvider\Model\Raw\ConditionalRoutesConditionsRelRouteLocks $model
      * @return array
      */
     public function toArray($model, $fields = array())
     {
 
-        if (!$model instanceof \IvozProvider\Model\Raw\ConditionalRoutesConditions) {
+        if (!$model instanceof \IvozProvider\Model\Raw\ConditionalRoutesConditionsRelRouteLocks) {
             if (is_object($model)) {
-                $message = get_class($model) . " is not a \IvozProvider\Model\Raw\ConditionalRoutesConditions object in toArray for " . get_class($this);
+                $message = get_class($model) . " is not a \IvozProvider\Model\Raw\ConditionalRoutesConditionsRelRouteLocks object in toArray for " . get_class($this);
             } else {
-                $message = "$model is not a \\IvozProvider\Model\\ConditionalRoutesConditions object in toArray for " . get_class($this);
+                $message = "$model is not a \\IvozProvider\Model\\ConditionalRoutesConditionsRelRouteLocks object in toArray for " . get_class($this);
             }
 
             $this->_logger->log($message, \Zend_Log::ERR);
@@ -49,20 +49,8 @@ class ConditionalRoutesConditions extends MapperAbstract
         if (empty($fields)) {
             $result = array(
                 'id' => $model->getId(),
-                'conditionalRouteId' => $model->getConditionalRouteId(),
-                'priority' => $model->getPriority(),
-                'locutionId' => $model->getLocutionId(),
-                'routeType' => $model->getRouteType(),
-                'IVRCommonId' => $model->getIVRCommonId(),
-                'IVRCustomId' => $model->getIVRCustomId(),
-                'huntGroupId' => $model->getHuntGroupId(),
-                'voiceMailUserId' => $model->getVoiceMailUserId(),
-                'userId' => $model->getUserId(),
-                'numberValue' => $model->getNumberValue(),
-                'friendValue' => $model->getFriendValue(),
-                'queueId' => $model->getQueueId(),
-                'conferenceRoomId' => $model->getConferenceRoomId(),
-                'extensionId' => $model->getExtensionId(),
+                'conditionId' => $model->getConditionId(),
+                'routeLockId' => $model->getRouteLockId(),
             );
         } else {
             $result = array();
@@ -101,12 +89,12 @@ class ConditionalRoutesConditions extends MapperAbstract
     /**
      * Returns the DbTable class associated with this mapper
      *
-     * @return IvozProvider\\Mapper\\Sql\\DbTable\\ConditionalRoutesConditions
+     * @return IvozProvider\\Mapper\\Sql\\DbTable\\ConditionalRoutesConditionsRelRouteLocks
      */
     public function getDbTable()
     {
         if (is_null($this->_dbTable)) {
-            $this->setDbTable('IvozProvider\\Mapper\\Sql\\DbTable\\ConditionalRoutesConditions');
+            $this->setDbTable('IvozProvider\\Mapper\\Sql\\DbTable\\ConditionalRoutesConditionsRelRouteLocks');
         }
 
         return $this->_dbTable;
@@ -115,17 +103,17 @@ class ConditionalRoutesConditions extends MapperAbstract
     /**
      * Deletes the current model
      *
-     * @param IvozProvider\Model\Raw\ConditionalRoutesConditions $model The model to delete
+     * @param IvozProvider\Model\Raw\ConditionalRoutesConditionsRelRouteLocks $model The model to delete
      * @see IvozProvider\Mapper\DbTable\TableAbstract::delete()
      * @return int
      */
     public function delete(\IvozProvider\Model\Raw\ModelAbstract $model)
     {
-        if (!$model instanceof \IvozProvider\Model\Raw\ConditionalRoutesConditions) {
+        if (!$model instanceof \IvozProvider\Model\Raw\ConditionalRoutesConditionsRelRouteLocks) {
             if (is_object($model)) {
-                $message = get_class($model) . " is not a \\IvozProvider\\Model\\ConditionalRoutesConditions object in delete for " . get_class($this);
+                $message = get_class($model) . " is not a \\IvozProvider\\Model\\ConditionalRoutesConditionsRelRouteLocks object in delete for " . get_class($this);
             } else {
-                $message = "$model is not a \\IvozProvider\\Model\\ConditionalRoutesConditions object in delete for " . get_class($this);
+                $message = "$model is not a \\IvozProvider\\Model\\ConditionalRoutesConditionsRelRouteLocks object in delete for " . get_class($this);
             }
 
             $this->_logger->log($message, \Zend_Log::ERR);
@@ -175,7 +163,7 @@ class ConditionalRoutesConditions extends MapperAbstract
                         if ( class_exists($relDbAdapName) && class_exists($depModelName) ) {
 
                             $relDbAdapter = new $relDbAdapName;
-                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\ConditionalRoutesConditions', $capitalizedFk);
+                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\ConditionalRoutesConditionsRelRouteLocks', $capitalizedFk);
 
                             $targetColumn = array_shift($references["columns"]);
                             $where = $relDbAdapter->getAdapter()->quoteInto($targetColumn . ' = ?', $model->getPrimaryKey());
@@ -223,7 +211,7 @@ class ConditionalRoutesConditions extends MapperAbstract
                         if ( class_exists($relDbAdapName) && class_exists($depModelName) ) {
 
                             $relDbAdapter = new $relDbAdapName;
-                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\ConditionalRoutesConditions', $capitalizedFk);
+                            $references = $relDbAdapter->getReference('IvozProvider\\Mapper\\Sql\\DbTable\\ConditionalRoutesConditionsRelRouteLocks', $capitalizedFk);
 
                             $targetColumn = array_shift($references["columns"]);
                             $where = $relDbAdapter->getAdapter()->quoteInto($targetColumn . ' = ?', $model->getPrimaryKey());
@@ -305,7 +293,7 @@ class ConditionalRoutesConditions extends MapperAbstract
      * Saves current row
      * @return integer primary key for autoincrement fields if the save action was successful
      */
-    public function save(\IvozProvider\Model\Raw\ConditionalRoutesConditions $model, $forceInsert = false)
+    public function save(\IvozProvider\Model\Raw\ConditionalRoutesConditionsRelRouteLocks $model, $forceInsert = false)
     {
         return $this->_save($model, false, false, null, $forceInsert);
     }
@@ -313,17 +301,17 @@ class ConditionalRoutesConditions extends MapperAbstract
     /**
      * Saves current and all dependent rows
      *
-     * @param \IvozProvider\Model\Raw\ConditionalRoutesConditions $model
+     * @param \IvozProvider\Model\Raw\ConditionalRoutesConditionsRelRouteLocks $model
      * @param boolean $useTransaction Flag to indicate if save should be done inside a database transaction
      * @return integer primary key for autoincrement fields if the save action was successful
      */
-    public function saveRecursive(\IvozProvider\Model\Raw\ConditionalRoutesConditions $model, $useTransaction = true,
+    public function saveRecursive(\IvozProvider\Model\Raw\ConditionalRoutesConditionsRelRouteLocks $model, $useTransaction = true,
             $transactionTag = null, $forceInsert = false)
     {
         return $this->_save($model, true, $useTransaction, $transactionTag, $forceInsert);
     }
 
-    protected function _save(\IvozProvider\Model\Raw\ConditionalRoutesConditions $model,
+    protected function _save(\IvozProvider\Model\Raw\ConditionalRoutesConditionsRelRouteLocks $model,
         $recursive = false, $useTransaction = true, $transactionTag = null, $forceInsert = false
     )
     {
@@ -458,65 +446,6 @@ class ConditionalRoutesConditions extends MapperAbstract
             }
 
 
-            if ($recursive) {
-                if ($model->getConditionalRoutesConditionsRelCalendars(null, null, true) !== null) {
-                    $conditionalRoutesConditionsRelCalendars = $model->getConditionalRoutesConditionsRelCalendars();
-
-                    if (!is_array($conditionalRoutesConditionsRelCalendars)) {
-
-                        $conditionalRoutesConditionsRelCalendars = array($conditionalRoutesConditionsRelCalendars);
-                    }
-
-                    foreach ($conditionalRoutesConditionsRelCalendars as $value) {
-                        $value->setConditionId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-                if ($model->getConditionalRoutesConditionsRelMatchLists(null, null, true) !== null) {
-                    $conditionalRoutesConditionsRelMatchLists = $model->getConditionalRoutesConditionsRelMatchLists();
-
-                    if (!is_array($conditionalRoutesConditionsRelMatchLists)) {
-
-                        $conditionalRoutesConditionsRelMatchLists = array($conditionalRoutesConditionsRelMatchLists);
-                    }
-
-                    foreach ($conditionalRoutesConditionsRelMatchLists as $value) {
-                        $value->setConditionId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-                if ($model->getConditionalRoutesConditionsRelRouteLocks(null, null, true) !== null) {
-                    $conditionalRoutesConditionsRelRouteLocks = $model->getConditionalRoutesConditionsRelRouteLocks();
-
-                    if (!is_array($conditionalRoutesConditionsRelRouteLocks)) {
-
-                        $conditionalRoutesConditionsRelRouteLocks = array($conditionalRoutesConditionsRelRouteLocks);
-                    }
-
-                    foreach ($conditionalRoutesConditionsRelRouteLocks as $value) {
-                        $value->setConditionId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-                if ($model->getConditionalRoutesConditionsRelSchedules(null, null, true) !== null) {
-                    $conditionalRoutesConditionsRelSchedules = $model->getConditionalRoutesConditionsRelSchedules();
-
-                    if (!is_array($conditionalRoutesConditionsRelSchedules)) {
-
-                        $conditionalRoutesConditionsRelSchedules = array($conditionalRoutesConditionsRelSchedules);
-                    }
-
-                    foreach ($conditionalRoutesConditionsRelSchedules as $value) {
-                        $value->setConditionId($primaryKey)
-                              ->saveRecursive(false, $transactionTag);
-                    }
-                }
-
-            }
-
             if ($success === true) {
 
                 foreach ($model->getOrphans() as $itemToDelete) {
@@ -603,13 +532,13 @@ class ConditionalRoutesConditions extends MapperAbstract
      * Loads the model specific data into the model object
      *
      * @param \Zend_Db_Table_Row_Abstract|array $data The data as returned from a \Zend_Db query
-     * @param IvozProvider\Model\Raw\ConditionalRoutesConditions|null $entry The object to load the data into, or null to have one created
-     * @return IvozProvider\Model\Raw\ConditionalRoutesConditions The model with the data provided
+     * @param IvozProvider\Model\Raw\ConditionalRoutesConditionsRelRouteLocks|null $entry The object to load the data into, or null to have one created
+     * @return IvozProvider\Model\Raw\ConditionalRoutesConditionsRelRouteLocks The model with the data provided
      */
     public function loadModel($data, $entry = null)
     {
         if (!$entry) {
-            $entry = new \IvozProvider\Model\ConditionalRoutesConditions();
+            $entry = new \IvozProvider\Model\ConditionalRoutesConditionsRelRouteLocks();
         }
 
         // We don't need to log changes as we will reset them later...
@@ -617,53 +546,17 @@ class ConditionalRoutesConditions extends MapperAbstract
 
         if (is_array($data)) {
             $entry->setId($data['id'])
-                  ->setConditionalRouteId($data['conditionalRouteId'])
-                  ->setPriority($data['priority'])
-                  ->setLocutionId($data['locutionId'])
-                  ->setRouteType($data['routeType'])
-                  ->setIVRCommonId($data['IVRCommonId'])
-                  ->setIVRCustomId($data['IVRCustomId'])
-                  ->setHuntGroupId($data['huntGroupId'])
-                  ->setVoiceMailUserId($data['voiceMailUserId'])
-                  ->setUserId($data['userId'])
-                  ->setNumberValue($data['numberValue'])
-                  ->setFriendValue($data['friendValue'])
-                  ->setQueueId($data['queueId'])
-                  ->setConferenceRoomId($data['conferenceRoomId'])
-                  ->setExtensionId($data['extensionId']);
+                  ->setConditionId($data['conditionId'])
+                  ->setRouteLockId($data['routeLockId']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
-                  ->setConditionalRouteId($data->{'conditionalRouteId'})
-                  ->setPriority($data->{'priority'})
-                  ->setLocutionId($data->{'locutionId'})
-                  ->setRouteType($data->{'routeType'})
-                  ->setIVRCommonId($data->{'IVRCommonId'})
-                  ->setIVRCustomId($data->{'IVRCustomId'})
-                  ->setHuntGroupId($data->{'huntGroupId'})
-                  ->setVoiceMailUserId($data->{'voiceMailUserId'})
-                  ->setUserId($data->{'userId'})
-                  ->setNumberValue($data->{'numberValue'})
-                  ->setFriendValue($data->{'friendValue'})
-                  ->setQueueId($data->{'queueId'})
-                  ->setConferenceRoomId($data->{'conferenceRoomId'})
-                  ->setExtensionId($data->{'extensionId'});
+                  ->setConditionId($data->{'conditionId'})
+                  ->setRouteLockId($data->{'routeLockId'});
 
-        } else if ($data instanceof \IvozProvider\Model\Raw\ConditionalRoutesConditions) {
+        } else if ($data instanceof \IvozProvider\Model\Raw\ConditionalRoutesConditionsRelRouteLocks) {
             $entry->setId($data->getId())
-                  ->setConditionalRouteId($data->getConditionalRouteId())
-                  ->setPriority($data->getPriority())
-                  ->setLocutionId($data->getLocutionId())
-                  ->setRouteType($data->getRouteType())
-                  ->setIVRCommonId($data->getIVRCommonId())
-                  ->setIVRCustomId($data->getIVRCustomId())
-                  ->setHuntGroupId($data->getHuntGroupId())
-                  ->setVoiceMailUserId($data->getVoiceMailUserId())
-                  ->setUserId($data->getUserId())
-                  ->setNumberValue($data->getNumberValue())
-                  ->setFriendValue($data->getFriendValue())
-                  ->setQueueId($data->getQueueId())
-                  ->setConferenceRoomId($data->getConferenceRoomId())
-                  ->setExtensionId($data->getExtensionId());
+                  ->setConditionId($data->getConditionId())
+                  ->setRouteLockId($data->getRouteLockId());
 
         }
 
@@ -680,11 +573,11 @@ class ConditionalRoutesConditions extends MapperAbstract
         $nowUTC = $date->toString('yyyy-MM-dd HH:mm:ss');
 
         $etags = new \IvozProvider\Mapper\Sql\EtagVersions();
-        $etag = $etags->findOneByField('table', 'ConditionalRoutesConditions');
+        $etag = $etags->findOneByField('table', 'ConditionalRoutesConditionsRelRouteLocks');
 
         if (empty($etag)) {
             $etag = new \IvozProvider\Model\EtagVersions();
-            $etag->setTable('ConditionalRoutesConditions');
+            $etag->setTable('ConditionalRoutesConditionsRelRouteLocks');
         }
 
         $random = substr(
