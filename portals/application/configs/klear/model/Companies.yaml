@@ -87,8 +87,8 @@ production:
             template: '%name%'
           order: name
         'null': _("Unassigned")
-    externalMaxCalls:
-      title: _('External max call')
+    maxCalls:
+      title: _('Max calls')
       type: number
       defaultValue: 10
       source:
@@ -97,7 +97,7 @@ production:
         type: box
         position: left
         icon: help
-        text: _("Limits both incoming and outgoing external calls.")
+        text: _("Limits both internal and external calls (0 for unlimited).")
         label: _("Need help?")
     postalAddress:
       title: _('Postal address')

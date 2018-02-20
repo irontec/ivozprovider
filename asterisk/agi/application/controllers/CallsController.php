@@ -561,22 +561,21 @@ class CallsController extends BaseController
             $terminal = $endpoint->getTerminal();
             if (!is_null($terminal)) {
                 $this->agi->setSIPHeader("X-Info-Callee", $terminal->getUser()->getExtensionNumber());
-                $this->agi->setSIPHeader("X-Info-MaxCalls", $terminal->getUser()->getMaxCalls());
+                $this->agi->setSIPHeader("X-Info-UserMaxCalls", $terminal->getUser()->getMaxCalls());
             }
             $friend = $endpoint->getFriend();
             if (!is_null($friend)) {
                 $exten = $this->agi->getExtension();
                 $this->agi->setSIPHeader("X-Info-Callee", $exten);
                 $this->agi->setSIPHeader("X-Info-Friend", $friend->getRequestURI($exten));
-                $this->agi->setSIPHeader("X-Info-MaxCalls", 0);
+                $this->agi->setSIPHeader("X-Info-UserMaxCalls", 0);
             }
             $retail = $endpoint->getRetailAccount();
             if (!is_null($retail)) {
                 $exten = $this->agi->getExtension();
                 $this->agi->setSIPHeader("X-Info-Callee", $exten);
                 $this->agi->setSIPHeader("X-Info-Retail", $retail->getRequestURI($exten));
-                $this->agi->setSIPHeader("X-Info-MaxCalls", 0);
-
+                $this->agi->setSIPHeader("X-Info-UserMaxCalls", 0);
             }
 
             // Set on-demand recording header (only for proxyusers)
@@ -587,13 +586,16 @@ class CallsController extends BaseController
 
         } else {
             $this->agi->setSIPHeader("X-Info-CompanyDomain", $company->getDomain());
-            $this->agi->setSIPHeader("X-Info-MaxCalls",  $company->getExternalMaxCalls());
 
             // Set special headers for Fax outgoing calls
             if ($this->agi->getVariable("FAXFILE_ID")) {
                 $this->agi->setSIPHeader("X-Info-Special", "fax");
             }
         }
+
+        // Add MaxCalls X-Info headers
+        $this->agi->setSIPHeader("X-Info-CompanyMaxCalls", $company->getMaxCalls());
+        $this->agi->setSIPHeader("X-Info-BrandMaxCalls", $company->getBrand()->getMaxCalls());
 
         // Set Special header for Forwarding
         if ($this->agi->getRedirecting('from-tag')) {

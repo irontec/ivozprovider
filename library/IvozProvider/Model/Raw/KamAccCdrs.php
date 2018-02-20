@@ -65,14 +65,14 @@ class KamAccCdrs extends ModelAbstract
     protected $_endTimeUtc;
 
     /**
-     * Database var type datetime
+     * Database var type timestamp
      *
      * @var string
      */
     protected $_startTime;
 
     /**
-     * Database var type datetime
+     * Database var type timestamp
      *
      * @var string
      */

@@ -57,7 +57,7 @@ class Companies extends MapperAbstract
                 'defaultTimezoneId' => $model->getDefaultTimezoneId(),
                 'distributeMethod' => $model->getDistributeMethod(),
                 'applicationServerId' => $model->getApplicationServerId(),
-                'externalMaxCalls' => $model->getExternalMaxCalls(),
+                'maxCalls' => $model->getMaxCalls(),
                 'postalAddress' => $model->getPostalAddress(),
                 'postalCode' => $model->getPostalCode(),
                 'town' => $model->getTown(),
@@ -1072,7 +1072,7 @@ class Companies extends MapperAbstract
                   ->setDefaultTimezoneId($data['defaultTimezoneId'])
                   ->setDistributeMethod($data['distributeMethod'])
                   ->setApplicationServerId($data['applicationServerId'])
-                  ->setExternalMaxCalls($data['externalMaxCalls'])
+                  ->setMaxCalls($data['maxCalls'])
                   ->setPostalAddress($data['postalAddress'])
                   ->setPostalCode($data['postalCode'])
                   ->setTown($data['town'])
@@ -1101,7 +1101,7 @@ class Companies extends MapperAbstract
                   ->setDefaultTimezoneId($data->{'defaultTimezoneId'})
                   ->setDistributeMethod($data->{'distributeMethod'})
                   ->setApplicationServerId($data->{'applicationServerId'})
-                  ->setExternalMaxCalls($data->{'externalMaxCalls'})
+                  ->setMaxCalls($data->{'maxCalls'})
                   ->setPostalAddress($data->{'postalAddress'})
                   ->setPostalCode($data->{'postalCode'})
                   ->setTown($data->{'town'})
@@ -1131,7 +1131,7 @@ class Companies extends MapperAbstract
                   ->setDefaultTimezoneId($data->getDefaultTimezoneId())
                   ->setDistributeMethod($data->getDistributeMethod())
                   ->setApplicationServerId($data->getApplicationServerId())
-                  ->setExternalMaxCalls($data->getExternalMaxCalls())
+                  ->setMaxCalls($data->getMaxCalls())
                   ->setPostalAddress($data->getPostalAddress())
                   ->setPostalCode($data->getPostalCode())
                   ->setTown($data->getTown())

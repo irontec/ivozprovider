@@ -161,6 +161,13 @@ class Brands extends ModelAbstract
      */
     protected $_recordingsLimitEmail;
 
+    /**
+     * Database var type int
+     *
+     * @var int
+     */
+    protected $_maxCalls;
+
 
     /**
      * Parent relation Brands_ibfk_2
@@ -413,6 +420,7 @@ class Brands extends ModelAbstract
         'FromAddress'=>'FromAddress',
         'recordingsLimitMB'=>'recordingsLimitMB',
         'recordingsLimitEmail'=>'recordingsLimitEmail',
+        'maxCalls'=>'maxCalls',
     );
 
     /**
@@ -560,6 +568,7 @@ class Brands extends ModelAbstract
 
 
         $this->_defaultValues = array(
+            'maxCalls' => '0',
         );
 
         $this->_initFileObjects();
@@ -1347,6 +1356,40 @@ class Brands extends ModelAbstract
     public function getRecordingsLimitEmail()
     {
         return $this->_recordingsLimitEmail;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\Brands
+     */
+    public function setMaxCalls($data)
+    {
+
+        if ($this->_maxCalls != $data) {
+            $this->_logChange('maxCalls', $this->_maxCalls, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_maxCalls = $data;
+
+        } else if (!is_null($data)) {
+            $this->_maxCalls = (int) $data;
+
+        } else {
+            $this->_maxCalls = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column maxCalls
+     *
+     * @return int
+     */
+    public function getMaxCalls()
+    {
+        return $this->_maxCalls;
     }
 
     /**

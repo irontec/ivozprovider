@@ -45,7 +45,7 @@ production:
           outgoingDDIId: true
           outgoingDDIRuleId: true
           registryData: true
-          externalMaxCalls: true
+          maxCalls: true
           defaultTimezoneId: true
           distributeMethod: true
           applicationServerId: true
@@ -108,7 +108,7 @@ production:
           outbound_prefix: true
           distributeMethod: true
           applicationServerId: true
-          externalMaxCalls: false
+          maxCalls: false
           countryId: true
           areaCode: true
           outgoingDDIId: true
@@ -122,7 +122,7 @@ production:
         order: &retailClientsOrder_Link
           id: true
           name: true
-          externalMaxCalls: true
+          maxCalls: true
           defaultTimezoneId: true
           outbound_prefix: true
           invoiceLanguageId: true
@@ -139,7 +139,7 @@ production:
           colsPerRow: 2
           label: _("Security")
           fields:
-            externalMaxCalls: 1
+            maxCalls: 1
             ipFilter: 1
       class: ui-silk-add
       label: true
@@ -187,7 +187,7 @@ production:
           colsPerRow: 2
           label: _("Security")
           fields:
-            externalMaxCalls: 1
+            maxCalls: 1
             ipFilter: 1
         group2:
           colsPerRow: 2

@@ -41,7 +41,7 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
      *     'defaultTimezoneId': '', 
      *     'distributeMethod': '', 
      *     'applicationServerId': '', 
-     *     'externalMaxCalls': '', 
+     *     'maxCalls': '', 
      *     'postalAddress': '', 
      *     'postalCode': '', 
      *     'town': '', 
@@ -70,7 +70,7 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
      *     'defaultTimezoneId': '', 
      *     'distributeMethod': '', 
      *     'applicationServerId': '', 
-     *     'externalMaxCalls': '', 
+     *     'maxCalls': '', 
      *     'postalAddress': '', 
      *     'postalCode': '', 
      *     'town': '', 
@@ -115,7 +115,7 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
                 'defaultTimezoneId',
                 'distributeMethod',
                 'applicationServerId',
-                'externalMaxCalls',
+                'maxCalls',
                 'postalAddress',
                 'postalCode',
                 'town',
@@ -216,7 +216,7 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
      *     'defaultTimezoneId': '', 
      *     'distributeMethod': '', 
      *     'applicationServerId': '', 
-     *     'externalMaxCalls': '', 
+     *     'maxCalls': '', 
      *     'postalAddress': '', 
      *     'postalCode': '', 
      *     'town': '', 
@@ -260,7 +260,7 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
                 'defaultTimezoneId',
                 'distributeMethod',
                 'applicationServerId',
-                'externalMaxCalls',
+                'maxCalls',
                 'postalAddress',
                 'postalCode',
                 'town',
@@ -327,7 +327,7 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="defaultTimezoneId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="distributeMethod", nullable=false, type="varchar", sample="", description="[enum:static|rr|hash]")
      * @ApiParams(name="applicationServerId", nullable=true, type="int", sample="", description="")
-     * @ApiParams(name="externalMaxCalls", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="maxCalls", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="postalAddress", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="postalCode", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="town", nullable=false, type="varchar", sample="", description="")
@@ -389,7 +389,7 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="defaultTimezoneId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="distributeMethod", nullable=false, type="varchar", sample="", description="[enum:static|rr|hash]")
      * @ApiParams(name="applicationServerId", nullable=true, type="int", sample="", description="")
-     * @ApiParams(name="externalMaxCalls", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="maxCalls", nullable=false, type="int", sample="", description="")
      * @ApiParams(name="postalAddress", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="postalCode", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="town", nullable=false, type="varchar", sample="", description="")
@@ -542,7 +542,7 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
                     'required' => false,
                     'comment' => '',
                 ),
-                'externalMaxCalls' => array(
+                'maxCalls' => array(
                     'type' => "int",
                     'required' => true,
                     'comment' => '',
@@ -688,7 +688,7 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
                     'required' => false,
                     'comment' => '',
                 ),
-                'externalMaxCalls' => array(
+                'maxCalls' => array(
                     'type' => "int",
                     'required' => true,
                     'comment' => '',

@@ -48,7 +48,8 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
      *     'FromName': '', 
      *     'FromAddress': '', 
      *     'recordingsLimitMB': '', 
-     *     'recordingsLimitEmail': ''
+     *     'recordingsLimitEmail': '', 
+     *     'maxCalls': ''
      * },{
      *     'id': '', 
      *     'name': '', 
@@ -66,7 +67,8 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
      *     'FromName': '', 
      *     'FromAddress': '', 
      *     'recordingsLimitMB': '', 
-     *     'recordingsLimitEmail': ''
+     *     'recordingsLimitEmail': '', 
+     *     'maxCalls': ''
      * }]")
      */
     public function indexAction()
@@ -101,6 +103,7 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
                 'FromAddress',
                 'recordingsLimitMB',
                 'recordingsLimitEmail',
+                'maxCalls',
             );
         }
 
@@ -190,7 +193,8 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
      *     'FromName': '', 
      *     'FromAddress': '', 
      *     'recordingsLimitMB': '', 
-     *     'recordingsLimitEmail': ''
+     *     'recordingsLimitEmail': '', 
+     *     'maxCalls': ''
      * }")
      */
     public function getAction()
@@ -224,6 +228,7 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
                 'FromAddress',
                 'recordingsLimitMB',
                 'recordingsLimitEmail',
+                'maxCalls',
             );
         }
 
@@ -280,6 +285,7 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="FromAddress", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="recordingsLimitMB", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="recordingsLimitEmail", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="maxCalls", nullable=false, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/brands/{id}")
      * @ApiReturn(type="object", sample="{}")
@@ -336,6 +342,7 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="FromAddress", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="recordingsLimitMB", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="recordingsLimitEmail", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="maxCalls", nullable=false, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -515,6 +522,11 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
                     'required' => false,
                     'comment' => '',
                 ),
+                'maxCalls' => array(
+                    'type' => "int",
+                    'required' => true,
+                    'comment' => '',
+                ),
             )
         );
 
@@ -604,6 +616,11 @@ class Rest_BrandsController extends Iron_Controller_Rest_BaseController
                 'recordingsLimitEmail' => array(
                     'type' => "varchar",
                     'required' => false,
+                    'comment' => '',
+                ),
+                'maxCalls' => array(
+                    'type' => "int",
+                    'required' => true,
                     'comment' => '',
                 ),
             )
