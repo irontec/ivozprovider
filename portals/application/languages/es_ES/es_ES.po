@@ -1711,6 +1711,9 @@ msgstr "Añadir este campo como prefijo del número destino"
 msgid "Presented CID"
 msgstr "CID presentado"
 
+msgid "Prevent missed calls"
+msgstr "Evitar llamadas perdidas"
+
 msgid "Price"
 msgid_plural "Prices"
 msgstr[0] "Precio"
@@ -2452,6 +2455,13 @@ msgstr "Peso"
 
 msgid "Welcome locution"
 msgstr "Locución Bienvenida"
+
+msgid ""
+"When 'Yes', calls will never generate a missed call. When 'No', missed calls "
+"will be prevented only for RingAll huntgroups if someone answers."
+msgstr ""
+"'Sí' evita de forma incondicional la generación de llamadas perdidas. 'No' "
+"evita las llamadas perdidas solo para grupos de salto RingAll si alguien contesta."
 
 msgid "When Outbound Proxy is used, SIP Proxy must not include a port."
 msgstr "Cuando se emplea Proxy de salida, el Proxy SIP no debe incluir puerto."
