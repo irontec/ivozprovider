@@ -593,10 +593,6 @@ class CallsController extends BaseController
             }
         }
 
-        // Add MaxCalls X-Info headers
-        $this->agi->setSIPHeader("X-Info-CompanyMaxCalls", $company->getMaxCalls());
-        $this->agi->setSIPHeader("X-Info-BrandMaxCalls", $company->getBrand()->getMaxCalls());
-
         // Set Special header for Forwarding
         if ($this->agi->getRedirecting('from-tag')) {
             $this->agi->setSIPHeader("X-Info-ForwardExt", $this->agi->getRedirecting('from-tag'));

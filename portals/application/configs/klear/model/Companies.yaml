@@ -97,7 +97,7 @@ production:
         type: box
         position: left
         icon: help
-        text: _("Limits both internal and external calls (0 for unlimited).")
+        text: _("Limits both user generated and external received calls to this value (0 for unlimited).")
         label: _("Need help?")
     postalAddress:
       title: _('Postal address')
