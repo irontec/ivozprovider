@@ -1116,6 +1116,13 @@ msgid "Limits both internal and external calls (0 for unlimited)."
 msgstr "Limits both internal and external calls (0 for unlimited)."
 
 msgid ""
+"Limits both user generated and external received calls to this value (0 for "
+"unlimited)."
+msgstr ""
+"Limits both user generated and external received calls to this value (0 for "
+"unlimited)."
+
+msgid ""
 "Limits the number of received calls if the user is handling simultaneously "
 "(inbound and outbound) more than the number set. Set 0 for unlimited calls."
 msgstr ""
