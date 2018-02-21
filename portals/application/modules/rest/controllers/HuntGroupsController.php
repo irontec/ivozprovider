@@ -43,7 +43,8 @@ class Rest_HuntGroupsController extends Iron_Controller_Rest_BaseController
      *     'noAnswerTargetType': '', 
      *     'noAnswerNumberValue': '', 
      *     'noAnswerExtensionId': '', 
-     *     'noAnswerVoiceMailUserId': ''
+     *     'noAnswerVoiceMailUserId': '', 
+     *     'preventMissedCalls': ''
      * },{
      *     'id': '', 
      *     'name': '', 
@@ -56,7 +57,8 @@ class Rest_HuntGroupsController extends Iron_Controller_Rest_BaseController
      *     'noAnswerTargetType': '', 
      *     'noAnswerNumberValue': '', 
      *     'noAnswerExtensionId': '', 
-     *     'noAnswerVoiceMailUserId': ''
+     *     'noAnswerVoiceMailUserId': '', 
+     *     'preventMissedCalls': ''
      * }]")
      */
     public function indexAction()
@@ -86,6 +88,7 @@ class Rest_HuntGroupsController extends Iron_Controller_Rest_BaseController
                 'noAnswerNumberValue',
                 'noAnswerExtensionId',
                 'noAnswerVoiceMailUserId',
+                'preventMissedCalls',
             );
         }
 
@@ -170,7 +173,8 @@ class Rest_HuntGroupsController extends Iron_Controller_Rest_BaseController
      *     'noAnswerTargetType': '', 
      *     'noAnswerNumberValue': '', 
      *     'noAnswerExtensionId': '', 
-     *     'noAnswerVoiceMailUserId': ''
+     *     'noAnswerVoiceMailUserId': '', 
+     *     'preventMissedCalls': ''
      * }")
      */
     public function getAction()
@@ -199,6 +203,7 @@ class Rest_HuntGroupsController extends Iron_Controller_Rest_BaseController
                 'noAnswerNumberValue',
                 'noAnswerExtensionId',
                 'noAnswerVoiceMailUserId',
+                'preventMissedCalls',
             );
         }
 
@@ -250,6 +255,7 @@ class Rest_HuntGroupsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="noAnswerNumberValue", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="noAnswerExtensionId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="noAnswerVoiceMailUserId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="preventMissedCalls", nullable=false, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/huntgroups/{id}")
      * @ApiReturn(type="object", sample="{}")
@@ -296,6 +302,7 @@ class Rest_HuntGroupsController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="noAnswerNumberValue", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="noAnswerExtensionId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="noAnswerVoiceMailUserId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="preventMissedCalls", nullable=false, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -445,6 +452,11 @@ class Rest_HuntGroupsController extends Iron_Controller_Rest_BaseController
                     'required' => false,
                     'comment' => '',
                 ),
+                'preventMissedCalls' => array(
+                    'type' => "int",
+                    'required' => true,
+                    'comment' => '',
+                ),
             )
         );
 
@@ -509,6 +521,11 @@ class Rest_HuntGroupsController extends Iron_Controller_Rest_BaseController
                 'noAnswerVoiceMailUserId' => array(
                     'type' => "int",
                     'required' => false,
+                    'comment' => '',
+                ),
+                'preventMissedCalls' => array(
+                    'type' => "int",
+                    'required' => true,
                     'comment' => '',
                 ),
             )
