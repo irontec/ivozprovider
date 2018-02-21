@@ -348,4 +348,20 @@ class Users extends Raw\Users
         return $this->getCompany()->getAreaCodeValue();
     }
 
+    /**
+     * Gets enabled dependent CallForwardSettings_ibfk_1
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\CallForwardSettings
+     */
+    public function getEnabledCallForwardSettingsByUser($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $conditions = [];
+        $conditions[] = "enabled = 1";
+        $conditions[] = $where;
+
+        return parent::getCallForwardSettingsByUser(implode(' AND ', $conditions), $orderBy, $avoidLoading);
+    }
 }
