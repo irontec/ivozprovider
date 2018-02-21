@@ -57,6 +57,7 @@ class CallForwardSettings extends MapperAbstract
                 'extensionId' => $model->getExtensionId(),
                 'voiceMailUserId' => $model->getVoiceMailUserId(),
                 'noAnswerTimeout' => $model->getNoAnswerTimeout(),
+                'enabled' => $model->getEnabled(),
             );
         } else {
             $result = array();
@@ -559,7 +560,8 @@ class CallForwardSettings extends MapperAbstract
                   ->setNumberValue($data['numberValue'])
                   ->setExtensionId($data['extensionId'])
                   ->setVoiceMailUserId($data['voiceMailUserId'])
-                  ->setNoAnswerTimeout($data['noAnswerTimeout']);
+                  ->setNoAnswerTimeout($data['noAnswerTimeout'])
+                  ->setEnabled($data['enabled']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setUserId($data->{'userId'})
@@ -569,7 +571,8 @@ class CallForwardSettings extends MapperAbstract
                   ->setNumberValue($data->{'numberValue'})
                   ->setExtensionId($data->{'extensionId'})
                   ->setVoiceMailUserId($data->{'voiceMailUserId'})
-                  ->setNoAnswerTimeout($data->{'noAnswerTimeout'});
+                  ->setNoAnswerTimeout($data->{'noAnswerTimeout'})
+                  ->setEnabled($data->{'enabled'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\CallForwardSettings) {
             $entry->setId($data->getId())
@@ -580,7 +583,8 @@ class CallForwardSettings extends MapperAbstract
                   ->setNumberValue($data->getNumberValue())
                   ->setExtensionId($data->getExtensionId())
                   ->setVoiceMailUserId($data->getVoiceMailUserId())
-                  ->setNoAnswerTimeout($data->getNoAnswerTimeout());
+                  ->setNoAnswerTimeout($data->getNoAnswerTimeout())
+                  ->setEnabled($data->getEnabled());
 
         }
 

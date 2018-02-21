@@ -36,7 +36,7 @@ angular
         } else {
             resutl = '';
         }
-        
+
         return resutl;
     };
     

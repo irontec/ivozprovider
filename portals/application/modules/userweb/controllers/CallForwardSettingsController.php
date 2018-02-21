@@ -185,6 +185,7 @@ class Userweb_CallForwardSettingsController extends Iron_Controller_Rest_BaseCon
         $model->setCallTypeFilter($params['callTypeFilter']);
         $model->setCallForwardType($params['callForwardType']);
         $model->setTargetType($params['targetType']);
+        $model->setEnabled($params['enabled']);
 
         return $model;
 

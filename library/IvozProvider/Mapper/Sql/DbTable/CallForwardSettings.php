@@ -211,6 +211,23 @@ class CallForwardSettings extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
+	  'enabled' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'CallForwardSettings',
+	    'COLUMN_NAME' => 'enabled',
+	    'COLUMN_POSITION' => 10,
+	    'DATA_TYPE' => 'tinyint',
+	    'DEFAULT' => '1',
+	    'NULLABLE' => false,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => true,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
 	);
 
 

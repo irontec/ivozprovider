@@ -24,6 +24,10 @@ class CallForwardSettings extends Raw\CallForwardSettings
             $recursive = false, $useTransaction = true, $transactionTag = null, $forceInsert = false
     )
     {
+        if (!$model->isEnabled()) {
+            return parent::_save($model, $recursive, $useTransaction, $transactionTag, $forceInsert);
+        }
+
         $callTypeFilterConditions = array(
             $model->getCallTypeFilter()
         );
@@ -37,6 +41,7 @@ class CallForwardSettings extends Raw\CallForwardSettings
         $inconditionalCallForwardsConditions = array(
             "id != '".$model->getPrimaryKey()."'",
             "userId = '".$model->getUserId()."'",
+            "enabled = '1'",
             "callTypeFilter in ('".implode("','", $callTypeFilterConditions)."')",
             "callForwardType = 'inconditional'"
         );
@@ -51,6 +56,7 @@ class CallForwardSettings extends Raw\CallForwardSettings
             $callForwardsConditions = array(
                 "id != '".$model->getPrimaryKey()."'",
                 "userId = '".$model->getUserId()."'",
+                "enabled = '1'",
                 "callTypeFilter in ('".implode("','", $callTypeFilterConditions)."')",
             );
             $callForwards = $this->fetchList(implode(" AND ", $callForwardsConditions));
@@ -65,6 +71,7 @@ class CallForwardSettings extends Raw\CallForwardSettings
             $busyCallForwardsConditions = array(
                 "id != '".$model->getPrimaryKey()."'",
                 "userId = '".$model->getUserId()."'",
+                "enabled = '1'",
                 "callTypeFilter in ('".implode("','", $callTypeFilterConditions)."')",
                 "callForwardType = 'busy'"
             );
@@ -80,6 +87,7 @@ class CallForwardSettings extends Raw\CallForwardSettings
             $noAnswerCallForwardsConditions = array(
                 "id != '".$model->getPrimaryKey()."'",
                 "userId = '".$model->getUserId()."'",
+                "enabled = '1'",
                 "callTypeFilter in ('".implode("','", $callTypeFilterConditions)."')",
                 "callForwardType = 'noAnswer'",
             );
@@ -95,6 +103,7 @@ class CallForwardSettings extends Raw\CallForwardSettings
             $userNotRegisteredCallForwardsConditions = array(
                 "id != '".$model->getPrimaryKey()."'",
                 "userId = '".$model->getUserId()."'",
+                "enabled = '1'",
                 "callTypeFilter in ('".implode("','", $callTypeFilterConditions)."')",
                 "callForwardType = 'userNotRegistered'",
             );

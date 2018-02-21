@@ -105,6 +105,13 @@ class CallForwardSettings extends ModelAbstract
      */
     protected $_noAnswerTimeout;
 
+    /**
+     * Database var type tinyint
+     *
+     * @var int
+     */
+    protected $_enabled;
+
 
     /**
      * Parent relation CallForwardSettings_ibfk_1
@@ -138,6 +145,7 @@ class CallForwardSettings extends ModelAbstract
         'extensionId'=>'extensionId',
         'voiceMailUserId'=>'voiceMailUserId',
         'noAnswerTimeout'=>'noAnswerTimeout',
+        'enabled'=>'enabled',
     );
 
     /**
@@ -179,6 +187,7 @@ class CallForwardSettings extends ModelAbstract
 
         $this->_defaultValues = array(
             'noAnswerTimeout' => '10',
+            'enabled' => '1',
         );
 
         $this->_initFileObjects();
@@ -537,6 +546,40 @@ class CallForwardSettings extends ModelAbstract
     public function getNoAnswerTimeout()
     {
         return $this->_noAnswerTimeout;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\CallForwardSettings
+     */
+    public function setEnabled($data)
+    {
+
+        if ($this->_enabled != $data) {
+            $this->_logChange('enabled', $this->_enabled, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_enabled = $data;
+
+        } else if (!is_null($data)) {
+            $this->_enabled = (int) $data;
+
+        } else {
+            $this->_enabled = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column enabled
+     *
+     * @return int
+     */
+    public function getEnabled()
+    {
+        return $this->_enabled;
     }
 
     /**

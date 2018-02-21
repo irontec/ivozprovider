@@ -39,6 +39,7 @@ class CallForwardSettings extends Raw\CallForwardSettings
         $numberValue = $this->getNumberValue();
         settype($numberValue, "integer");
 
+        $model['enabled'] = $this->getEnabled();
         $model['callTypeFilter'] = $this->getCallTypeFilter();
         $model['callForwardType'] = $this->getCallForwardType();
         $model['targetType'] = $this->getTargetType();
@@ -63,6 +64,16 @@ class CallForwardSettings extends Raw\CallForwardSettings
 
         return $model;
 
+    }
+
+    /**
+     * Return in current cfw status is enabled
+     *
+     * @return boolean
+     */
+    public function isEnabled()
+    {
+        return $this->getEnabled() == '1';
     }
 
 }

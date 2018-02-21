@@ -90,7 +90,7 @@ class UserCallAction extends RouterAction
         // Check if user has call forwarding enabled
         if ($this->_allowForwarding) {
             // Process inconditional Call Forwards
-            $cfwSettings = $user->getCallForwardSettingsByUser("callForwardType='inconditional'");
+            $cfwSettings = $user->getEnabledCallForwardSettingsByUser("callForwardType='inconditional'");
             foreach ($cfwSettings as $cfwSetting) {
                 $cfwType = $cfwSetting->getCallTypeFilter();
                 if ($cfwType == "both" || $cfwType == $this->agi->getCallType()) {
@@ -126,7 +126,7 @@ class UserCallAction extends RouterAction
         // If there's no timeout
         if (empty($this->_timeout)) {
             // Get the timeout from the call forward
-            $cfwSettings = $user->getCallForwardSettingsByUser("callForwardType='noAnswer'");
+            $cfwSettings = $user->getEnabledCallForwardSettingsByUser("callForwardType='noAnswer'");
             foreach ($cfwSettings as $cfwSetting) {
                 $cfwType = $cfwSetting->getCallTypeFilter();
                 if ($cfwType == "both" || $cfwType == $this->agi->getCallType()) {
@@ -260,7 +260,7 @@ class UserCallAction extends RouterAction
     private function _processCallForward($user, $type)
     {
         // Process busy Call Forwards
-        $cfwSettings = $user->getCallForwardSettingsByUser("callForwardType='$type'");
+        $cfwSettings = $user->getEnabledCallForwardSettingsByUser("callForwardType='$type'");
         foreach ($cfwSettings as $cfwSetting) {
             $cfwType = $cfwSetting->getCallTypeFilter();
             if ($cfwType == "both" || $cfwType == $this->agi->getCallType()) {

@@ -40,7 +40,8 @@ class Rest_CallForwardSettingsController extends Iron_Controller_Rest_BaseContro
      *     'numberValue': '', 
      *     'extensionId': '', 
      *     'voiceMailUserId': '', 
-     *     'noAnswerTimeout': ''
+     *     'noAnswerTimeout': '', 
+     *     'enabled': ''
      * },{
      *     'id': '', 
      *     'userId': '', 
@@ -50,7 +51,8 @@ class Rest_CallForwardSettingsController extends Iron_Controller_Rest_BaseContro
      *     'numberValue': '', 
      *     'extensionId': '', 
      *     'voiceMailUserId': '', 
-     *     'noAnswerTimeout': ''
+     *     'noAnswerTimeout': '', 
+     *     'enabled': ''
      * }]")
      */
     public function indexAction()
@@ -77,6 +79,7 @@ class Rest_CallForwardSettingsController extends Iron_Controller_Rest_BaseContro
                 'extensionId',
                 'voiceMailUserId',
                 'noAnswerTimeout',
+                'enabled',
             );
         }
 
@@ -158,7 +161,8 @@ class Rest_CallForwardSettingsController extends Iron_Controller_Rest_BaseContro
      *     'numberValue': '', 
      *     'extensionId': '', 
      *     'voiceMailUserId': '', 
-     *     'noAnswerTimeout': ''
+     *     'noAnswerTimeout': '', 
+     *     'enabled': ''
      * }")
      */
     public function getAction()
@@ -184,6 +188,7 @@ class Rest_CallForwardSettingsController extends Iron_Controller_Rest_BaseContro
                 'extensionId',
                 'voiceMailUserId',
                 'noAnswerTimeout',
+                'enabled',
             );
         }
 
@@ -232,6 +237,7 @@ class Rest_CallForwardSettingsController extends Iron_Controller_Rest_BaseContro
      * @ApiParams(name="extensionId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="voiceMailUserId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="noAnswerTimeout", nullable=false, type="smallint", sample="", description="")
+     * @ApiParams(name="enabled", nullable=false, type="tinyint", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/callforwardsettings/{id}")
      * @ApiReturn(type="object", sample="{}")
@@ -275,6 +281,7 @@ class Rest_CallForwardSettingsController extends Iron_Controller_Rest_BaseContro
      * @ApiParams(name="extensionId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="voiceMailUserId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="noAnswerTimeout", nullable=false, type="smallint", sample="", description="")
+     * @ApiParams(name="enabled", nullable=false, type="tinyint", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -409,6 +416,11 @@ class Rest_CallForwardSettingsController extends Iron_Controller_Rest_BaseContro
                     'required' => true,
                     'comment' => '',
                 ),
+                'enabled' => array(
+                    'type' => "tinyint",
+                    'required' => true,
+                    'comment' => '',
+                ),
             )
         );
 
@@ -457,6 +469,11 @@ class Rest_CallForwardSettingsController extends Iron_Controller_Rest_BaseContro
                 ),
                 'noAnswerTimeout' => array(
                     'type' => "smallint",
+                    'required' => true,
+                    'comment' => '',
+                ),
+                'enabled' => array(
+                    'type' => "tinyint",
                     'required' => true,
                     'comment' => '',
                 ),
