@@ -15,6 +15,17 @@ production:
             template: '%name%'
           order: name
       default: true
+    enabled:
+      title: _('Enabled')
+      type: select
+      defaultValue: 1
+      source:
+        data: inline
+        values:
+          '0':
+            title: _("No")
+          '1':
+            title: _("Yes")
     callTypeFilter:
       title: _('Call type')
       type: select
