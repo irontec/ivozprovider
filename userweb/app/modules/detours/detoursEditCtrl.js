@@ -30,6 +30,9 @@ angular
             $scope.extensions = extensions.data;
             Restangular.all('call-forward-settings').get(detourId).then(function(detour) {
                 $scope.detour = detour.data;
+
+                detour.data.enabled = '' + detour.data.enabled;
+
                 $scope.formDisabled = false;
                 $scope.loading = false;
                 ngProgress.complete();

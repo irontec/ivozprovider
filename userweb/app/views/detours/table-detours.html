@@ -1,6 +1,7 @@
 <table class="table table-striped table-calls">
     <thead>
         <tr>
+           <th translate="enabled"></th>
            <th translate="callTypeFilter"></th>
            <th translate="callForwardType"></th>
            <th translate="targetType"></th>
@@ -12,6 +13,11 @@
     <tbody>
         <tr ng-repeat="detour in callsFS">
         
+          <td data-th="{{'enabled' | translate}}">
+              <span ng-show="detour.enabled">{{'yes' | translate}}</span>
+              <span ng-show="!detour.enabled">{{'no' | translate}}</span>
+
+          </td>
           <td data-th="{{'callTypeFilter' | translate}}">{{detour.callTypeFilter | translate}}</td>
           <td data-th="{{'callForwardType' | translate}}">{{detour.callForwardType | translate}}</td>
           <td data-th="{{'targetType' | translate}}">{{detour.targetType | translate}}</td>

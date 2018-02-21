@@ -39,27 +39,53 @@
 
                     <div class="form-group col-md-12">
 
-                        <label
-                                for="callTypeFilter"
-                                class="col-sm-4 control-label"
-                                translate="callTypeFilter"
-                        ></label>
 
-                        <div class="col-sm-8">
-                            <select
-                                    class="form-control"
-                                    id="callTypeFilter"
-                                    name="callTypeFilter"
-                                    ng-model="detour.callTypeFilter"
-                                    required="required"
-                            >
-                                <option value="internal" translate="internal"></option>
-                                <option value="external" translate="external"></option>
-                                <option value="both" translate="both"></option>
-                            </select>
+                        <div class="form-group col-md-12">
+
+                            <label
+                                    for="enabled"
+                                    class="col-sm-4 control-label"
+                                    translate="enabled"
+                            ></label>
+
+                            <div class="col-sm-8">
+                                <select
+                                        class="form-control"
+                                        id="enabled"
+                                        name="enabled"
+                                        ng-model="detour.enabled"
+                                        required="required"
+                                >
+                                    <option value="0" translate="no"></option>
+                                    <option value="1" translate="yes"></option>
+                                </select>
+                            </div>
+
                         </div>
 
-                    </div>
+                        <div class="form-group col-md-12">
+
+                            <label
+                                    for="callTypeFilter"
+                                    class="col-sm-4 control-label"
+                                    translate="callTypeFilter"
+                            ></label>
+
+                            <div class="col-sm-8">
+                                <select
+                                        class="form-control"
+                                        id="callTypeFilter"
+                                        name="callTypeFilter"
+                                        ng-model="detour.callTypeFilter"
+                                        required="required"
+                                >
+                                    <option value="internal" translate="internal"></option>
+                                    <option value="external" translate="external"></option>
+                                    <option value="both" translate="both"></option>
+                                </select>
+                            </div>
+
+                        </div>
 
                     <div class="form-group col-md-12">
 
