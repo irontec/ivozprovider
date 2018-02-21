@@ -55,6 +55,7 @@ class HuntGroupAction extends RouterAction
             return;
 
         $company = $this->_huntgroup->getCompany();
+        $huntgroup = $this->_huntgroup;
         $extension = $company->getExtension($firstExt);
         $user = $extension->getUser();
 
@@ -66,6 +67,7 @@ class HuntGroupAction extends RouterAction
             ->setDialContext('call-huntgroup')
             ->allowForwarding(false)
             ->setProcessDialStatus(false)
+            ->alwaysCancelWithAnsweredElsewhere($huntgroup->getPreventMissedCalls())
             ->call();
 
         //  If call has not been redirected to context, process next
@@ -173,8 +175,8 @@ class HuntGroupAction extends RouterAction
         }
 
         // Dial Options
-        // Cancelled calls are marked as 'answered elsewhere'
-        $options = "c";
+        // Cancelled calls may be marked as 'answered elsewhere'
+        $options = ($huntGroup->getPreventMissedCalls())? "c":"";
 
         // For record asterisk builtin feature code (FIXME Dont use both X's)
         if ($user->getCompany()->getOnDemandRecord() == 2) {
