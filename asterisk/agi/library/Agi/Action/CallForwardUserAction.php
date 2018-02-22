@@ -1,7 +1,7 @@
 <?php
 namespace Agi\Action;
 
-class CallForwardAction extends RouterAction
+class CallForwardUserAction extends RouterAction
 {
     protected $_maxRedirections = 5;
 

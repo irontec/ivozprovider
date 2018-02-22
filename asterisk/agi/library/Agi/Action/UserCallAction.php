@@ -102,7 +102,7 @@ class UserCallAction extends RouterAction
             foreach ($cfwSettings as $cfwSetting) {
                 $cfwType = $cfwSetting->getCallTypeFilter();
                 if ($cfwType == "both" || $cfwType == $this->agi->getCallType()) {
-                    $cfwAction = new CallForwardAction($this);
+                    $cfwAction = new CallForwardUserAction($this);
                     $cfwAction
                         ->setCallForward($cfwSetting)
                         ->process();
@@ -277,7 +277,7 @@ class UserCallAction extends RouterAction
         foreach ($cfwSettings as $cfwSetting) {
             $cfwType = $cfwSetting->getCallTypeFilter();
             if ($cfwType == "both" || $cfwType == $this->agi->getCallType()) {
-                $cfwAction = new CallForwardAction($this);
+                $cfwAction = new CallForwardUserAction($this);
                 $cfwAction
                     ->setCallForward($cfwSetting)
                     ->process();
