@@ -32,6 +32,8 @@ production:
           extensionId: true
           voiceMailUserId: true
           noAnswerTimeout: true
+          userId: true
+          retailAccountId: true
       options:
         title: _("Options")
         screens:
@@ -49,6 +51,8 @@ production:
       fields:
         blacklist:
           targetTypeValue: true
+          userId: true
+          retailAccountId: true
         order:
           <<: *callForwardSettingsOrder_Link
       fixedPositions: &callForwardSettingsFixedPositions_Link
@@ -76,6 +80,8 @@ production:
         blacklist:
           extensionId: true
           targetTypeValue: true
+          userId: true
+          retailAccountId: true
         order:
           <<: *callForwardSettingsOrder_Link
       fixedPositions:

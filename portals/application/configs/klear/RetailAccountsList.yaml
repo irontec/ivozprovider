@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include CallForwardSettingsList.yaml
 
 production:
   main:
@@ -44,6 +45,7 @@ production:
           title: _("Options")
           screens:
             retailAccountsEdit_screen: ${auth.canSeeBrand}
+            callForwardSettingsList_screen: true
           dialogs:
             retailAccountsDel_dialog: ${auth.canSeeBrand}
           default: retailAccountsEdit_screen
@@ -167,6 +169,26 @@ production:
         <<: *forcedCompany
         <<: *forcedBrand
 
+    #callForwardSettings:
+    <<: *callForwardSettings_screensLink
+    callForwardSettingsList_screen:
+      <<: *callForwardSettingsList_screenLink
+      filterField: retailAccountId
+      parentOptionCustomizer:
+        - recordCount
+      forcedValues:
+        callTypeFilter: both
+    callForwardSettingsNew_screen:
+      <<: *callForwardSettingsNew_screenLink
+      filterField: retailAccountId
+      forcedValues:
+        callTypeFilter: both
+    callForwardSettingsEdit_screen:
+      <<: *callForwardSettingsEdit_screenLink
+      filterField: retailAccountId
+      forcedValues:
+        callTypeFilter: both
+
   dialogs: &retailAccounts_dialogsLink
     retailAccountsDel_dialog: &retailAccountsDel_dialogLink
       <<: *RetailAccounts
@@ -178,6 +200,9 @@ production:
       message: _("%s successfully deleted.", ngettext('Retail Account', 'Retail Accounts', 1))
       multiItem: 1
       labelOnList: 1
+
+    # callForwardSettings dialogs:
+    <<: *callForwardSettings_dialogsLink
 
   commands:
     generatePassword_command:
