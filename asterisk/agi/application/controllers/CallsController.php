@@ -8,6 +8,7 @@ use Agi\Action\HuntGroupAction;
 use Agi\Action\IVRAction;
 use Agi\Action\ServiceAction;
 use Agi\Action\FriendCallAction;
+use Agi\Action\RetailCallAction;
 use Agi\Action\ExternalUserCallAction;
 use Agi\Action\ExternalFriendCallAction;
 use Agi\Action\ExternalRetailCallAction;
@@ -256,6 +257,31 @@ class CallsController extends BaseController
         $userAction = new UserCallAction($this);
         $userAction
             ->setUser($user)
+            ->processDialStatus();
+    }
+
+    /**
+     * @brief Process Retail after call status
+     */
+    public function retailstatusAction ()
+    {
+        // Get the called endpoint to check postcall actions
+        $endpointName = $this->agi->getVariable("DIAL_ENDPOINT");
+        // Get retailAccount from the endpoint.
+        $retailAccount = $this->getEntityFromEndpoint($endpointName);
+        // Restore CallerId with original trunks E.164 number
+        $this->agi->setCallerIdNum($this->agi->getOrigCallerIdNum());
+
+        // Get user from the terminal.
+        if (empty($retailAccount)) {
+            $this->agi->error("Endpoint %s has no retail account (BUG?).", $endpointName);
+            return;
+        }
+
+        // ProcessDialStatus
+        $retailAction = new RetailCallAction($this);
+        $retailAction
+            ->setRetailAccount($retailAccount)
             ->processDialStatus();
     }
 
