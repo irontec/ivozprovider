@@ -151,6 +151,18 @@ class RetailAccounts extends Raw\RetailAccounts
     }
 
     /**
+     * @return string
+     */
+    public function getOutgoingDDINumber($valueIfEmpty = "anonimo")
+    {
+        $DDI = $this->getOutgoingDDI();
+        if ($DDI) {
+            return $DDI->getDDIE164();
+        }
+        return $valueIfEmpty;
+    }
+
+    /**
      * Get DDI associated with this retail Account
      *
      * @return \IvozProvider\Model\Raw\DDIs or NULL
@@ -161,5 +173,20 @@ class RetailAccounts extends Raw\RetailAccounts
         return array_shift($ddis);
     }
 
+    /**
+     * Gets enabled dependent CallForwardSettings_ibfk_4
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\CallForwardSettings
+     */
+    public function getEnabledCallForwardSettings($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $conditions = [];
+        $conditions[] = "enabled = 1";
+        $conditions[] = $where;
 
+        return parent::getCallForwardSettings(implode(' AND ', $conditions), $orderBy, $avoidLoading);
+    }
 }
