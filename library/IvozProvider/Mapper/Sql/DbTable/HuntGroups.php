@@ -273,6 +273,23 @@ class HuntGroups extends TableAbstract
 	    'PRIMARY_POSITION' => NULL,
 	    'IDENTITY' => false,
 	  ),
+	  'preventMissedCalls' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'HuntGroups',
+	    'COLUMN_NAME' => 'preventMissedCalls',
+	    'COLUMN_POSITION' => 13,
+	    'DATA_TYPE' => 'int',
+	    'DEFAULT' => '1',
+	    'NULLABLE' => false,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => true,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
 	);
 
 

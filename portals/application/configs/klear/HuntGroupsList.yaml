@@ -35,6 +35,7 @@ production:
           noAnswerNumberValue: true
           noAnswerExtensionId: true
           noAnswerVoiceMailUserId: true
+          preventMissedCalls: true
       options:
         title: _("Options")
         screens:
@@ -57,12 +58,13 @@ production:
       fixedPositions: &huntGroupsFixedPositions_Link
         group0:
           label: _("Basic Configuration")
-          colsPerRow: 2
+          colsPerRow: 12
           fields:
-            name: 1
-            description: 1
-            strategy: 1
-            ringAllTimeOut: 1
+            name: 6
+            description: 6
+            strategy: 4
+            ringAllTimeOut: 4
+            preventMissedCalls: 4
         group1:
           label: _("Target data")
           colsPerRow: 3

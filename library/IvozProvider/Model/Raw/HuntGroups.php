@@ -120,6 +120,13 @@ class HuntGroups extends ModelAbstract
      */
     protected $_noAnswerVoiceMailUserId;
 
+    /**
+     * Database var type int
+     *
+     * @var int
+     */
+    protected $_preventMissedCalls;
+
 
     /**
      * Parent relation HuntGroups_ibfk_1
@@ -203,6 +210,7 @@ class HuntGroups extends ModelAbstract
         'noAnswerNumberValue'=>'noAnswerNumberValue',
         'noAnswerExtensionId'=>'noAnswerExtensionId',
         'noAnswerVoiceMailUserId'=>'noAnswerVoiceMailUserId',
+        'preventMissedCalls'=>'preventMissedCalls',
     );
 
     /**
@@ -274,6 +282,7 @@ class HuntGroups extends ModelAbstract
         $this->_defaultValues = array(
             'name' => '',
             'description' => '',
+            'preventMissedCalls' => '1',
         );
 
         $this->_initFileObjects();
@@ -728,6 +737,40 @@ class HuntGroups extends ModelAbstract
     public function getNoAnswerVoiceMailUserId()
     {
         return $this->_noAnswerVoiceMailUserId;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\HuntGroups
+     */
+    public function setPreventMissedCalls($data)
+    {
+
+        if ($this->_preventMissedCalls != $data) {
+            $this->_logChange('preventMissedCalls', $this->_preventMissedCalls, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_preventMissedCalls = $data;
+
+        } else if (!is_null($data)) {
+            $this->_preventMissedCalls = (int) $data;
+
+        } else {
+            $this->_preventMissedCalls = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column preventMissedCalls
+     *
+     * @return int
+     */
+    public function getPreventMissedCalls()
+    {
+        return $this->_preventMissedCalls;
     }
 
     /**

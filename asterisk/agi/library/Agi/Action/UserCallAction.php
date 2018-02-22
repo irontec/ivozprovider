@@ -14,6 +14,8 @@ class UserCallAction extends RouterAction
 
     protected $_allowForwarding = true;
 
+    protected $_alwaysCancelWithAnsweredElsewhere = false;
+
     protected $_processDialStatus = true;
 
 
@@ -38,6 +40,12 @@ class UserCallAction extends RouterAction
     public function allowForwarding($allow)
     {
         $this->_allowForwarding = $allow;
+        return $this;
+    }
+
+    public function alwaysCancelWithAnsweredElsewhere($cancel)
+    {
+        $this->_alwaysCancelWithAnsweredElsewhere= $cancel;
         return $this;
     }
 
@@ -157,6 +165,11 @@ class UserCallAction extends RouterAction
         if ($this->_processDialStatus) {
             // Process Dialstatus after calling this user (allows call forwards)
             $options .= "g";
+        }
+
+        if ($this->_alwaysCancelWithAnsweredElsewhere) {
+            // Cancel with Answered elsewhere
+            $options .= "c";
         }
 
         // Update Called name

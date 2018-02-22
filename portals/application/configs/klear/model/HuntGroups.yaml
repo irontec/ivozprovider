@@ -57,6 +57,23 @@ production:
         icon: help
         label: _("Need help?")
         text: _("Determines the order users will be called")
+    preventMissedCalls:
+      title: _('Prevent missed calls')
+      type: select
+      defaultValue: 1
+      source:
+        data: inline
+        values:
+          '0':
+            title: _("No")
+          '1':
+            title: _("Yes")
+      info:
+        type: box
+        position: left
+        icon: help
+        label: _("Need help?")
+        text: _("When 'Yes', calls will never generate a missed call. When 'No', missed calls will be prevented only for RingAll huntgroups if someone answers.")
     ringAllTimeout:
       title: _('Ring all timeout')
       type: number

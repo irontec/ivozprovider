@@ -60,6 +60,7 @@ class HuntGroups extends MapperAbstract
                 'noAnswerNumberValue' => $model->getNoAnswerNumberValue(),
                 'noAnswerExtensionId' => $model->getNoAnswerExtensionId(),
                 'noAnswerVoiceMailUserId' => $model->getNoAnswerVoiceMailUserId(),
+                'preventMissedCalls' => $model->getPreventMissedCalls(),
             );
         } else {
             $result = array();
@@ -638,7 +639,8 @@ class HuntGroups extends MapperAbstract
                   ->setNoAnswerTargetType($data['noAnswerTargetType'])
                   ->setNoAnswerNumberValue($data['noAnswerNumberValue'])
                   ->setNoAnswerExtensionId($data['noAnswerExtensionId'])
-                  ->setNoAnswerVoiceMailUserId($data['noAnswerVoiceMailUserId']);
+                  ->setNoAnswerVoiceMailUserId($data['noAnswerVoiceMailUserId'])
+                  ->setPreventMissedCalls($data['preventMissedCalls']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setName($data->{'name'})
@@ -651,7 +653,8 @@ class HuntGroups extends MapperAbstract
                   ->setNoAnswerTargetType($data->{'noAnswerTargetType'})
                   ->setNoAnswerNumberValue($data->{'noAnswerNumberValue'})
                   ->setNoAnswerExtensionId($data->{'noAnswerExtensionId'})
-                  ->setNoAnswerVoiceMailUserId($data->{'noAnswerVoiceMailUserId'});
+                  ->setNoAnswerVoiceMailUserId($data->{'noAnswerVoiceMailUserId'})
+                  ->setPreventMissedCalls($data->{'preventMissedCalls'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\HuntGroups) {
             $entry->setId($data->getId())
@@ -665,7 +668,8 @@ class HuntGroups extends MapperAbstract
                   ->setNoAnswerTargetType($data->getNoAnswerTargetType())
                   ->setNoAnswerNumberValue($data->getNoAnswerNumberValue())
                   ->setNoAnswerExtensionId($data->getNoAnswerExtensionId())
-                  ->setNoAnswerVoiceMailUserId($data->getNoAnswerVoiceMailUserId());
+                  ->setNoAnswerVoiceMailUserId($data->getNoAnswerVoiceMailUserId())
+                  ->setPreventMissedCalls($data->getPreventMissedCalls());
 
         }
 
