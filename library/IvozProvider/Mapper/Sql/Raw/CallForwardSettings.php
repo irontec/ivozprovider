@@ -50,6 +50,7 @@ class CallForwardSettings extends MapperAbstract
             $result = array(
                 'id' => $model->getId(),
                 'userId' => $model->getUserId(),
+                'retailAccountId' => $model->getRetailAccountId(),
                 'callTypeFilter' => $model->getCallTypeFilter(),
                 'callForwardType' => $model->getCallForwardType(),
                 'targetType' => $model->getTargetType(),
@@ -554,6 +555,7 @@ class CallForwardSettings extends MapperAbstract
         if (is_array($data)) {
             $entry->setId($data['id'])
                   ->setUserId($data['userId'])
+                  ->setRetailAccountId($data['retailAccountId'])
                   ->setCallTypeFilter($data['callTypeFilter'])
                   ->setCallForwardType($data['callForwardType'])
                   ->setTargetType($data['targetType'])
@@ -565,6 +567,7 @@ class CallForwardSettings extends MapperAbstract
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setId($data->{'id'})
                   ->setUserId($data->{'userId'})
+                  ->setRetailAccountId($data->{'retailAccountId'})
                   ->setCallTypeFilter($data->{'callTypeFilter'})
                   ->setCallForwardType($data->{'callForwardType'})
                   ->setTargetType($data->{'targetType'})
@@ -577,6 +580,7 @@ class CallForwardSettings extends MapperAbstract
         } else if ($data instanceof \IvozProvider\Model\Raw\CallForwardSettings) {
             $entry->setId($data->getId())
                   ->setUserId($data->getUserId())
+                  ->setRetailAccountId($data->getRetailAccountId())
                   ->setCallTypeFilter($data->getCallTypeFilter())
                   ->setCallForwardType($data->getCallForwardType())
                   ->setTargetType($data->getTargetType())

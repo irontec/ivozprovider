@@ -54,6 +54,13 @@ class CallForwardSettings extends ModelAbstract
     protected $_userId;
 
     /**
+     * Database var type int
+     *
+     * @var int
+     */
+    protected $_retailAccountId;
+
+    /**
      * [enum:internal|external|both]
      * Database var type varchar
      *
@@ -134,10 +141,18 @@ class CallForwardSettings extends ModelAbstract
      */
     protected $_VoiceMailUser;
 
+    /**
+     * Parent relation CallForwardSettings_ibfk_4
+     *
+     * @var \IvozProvider\Model\Raw\RetailAccounts
+     */
+    protected $_RetailAccount;
+
 
     protected $_columnsList = array(
         'id'=>'id',
         'userId'=>'userId',
+        'retailAccountId'=>'retailAccountId',
         'callTypeFilter'=>'callTypeFilter',
         'callForwardType'=>'callForwardType',
         'targetType'=>'targetType',
@@ -176,6 +191,10 @@ class CallForwardSettings extends ModelAbstract
             'CallForwardSettingsIbfk3'=> array(
                     'property' => 'VoiceMailUser',
                     'table_name' => 'Users',
+                ),
+            'CallForwardSettingsIbfk4'=> array(
+                    'property' => 'RetailAccount',
+                    'table_name' => 'RetailAccounts',
                 ),
         ));
 
@@ -263,9 +282,6 @@ class CallForwardSettings extends ModelAbstract
     public function setUserId($data)
     {
 
-        if (is_null($data)) {
-            throw new \InvalidArgumentException(_('Required values cannot be null'));
-        }
         if ($this->_userId != $data) {
             $this->_logChange('userId', $this->_userId, $data);
         }
@@ -290,6 +306,40 @@ class CallForwardSettings extends ModelAbstract
     public function getUserId()
     {
         return $this->_userId;
+    }
+
+    /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\CallForwardSettings
+     */
+    public function setRetailAccountId($data)
+    {
+
+        if ($this->_retailAccountId != $data) {
+            $this->_logChange('retailAccountId', $this->_retailAccountId, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_retailAccountId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_retailAccountId = (int) $data;
+
+        } else {
+            $this->_retailAccountId = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column retailAccountId
+     *
+     * @return int
+     */
+    public function getRetailAccountId()
+    {
+        return $this->_retailAccountId;
     }
 
     /**
@@ -733,6 +783,57 @@ class CallForwardSettings extends ModelAbstract
         }
 
         return $this->_VoiceMailUser;
+    }
+
+    /**
+     * Sets parent relation RetailAccount
+     *
+     * @param \IvozProvider\Model\Raw\RetailAccounts $data
+     * @return \IvozProvider\Model\Raw\CallForwardSettings
+     */
+    public function setRetailAccount(\IvozProvider\Model\Raw\RetailAccounts $data)
+    {
+        $this->_RetailAccount = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setRetailAccountId($primaryKey);
+        }
+
+        $this->_setLoaded('CallForwardSettingsIbfk4');
+        return $this;
+    }
+
+    /**
+     * Gets parent RetailAccount
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\RetailAccounts
+     */
+    public function getRetailAccount($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'CallForwardSettingsIbfk4';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_RetailAccount = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_RetailAccount;
     }
 
     /**

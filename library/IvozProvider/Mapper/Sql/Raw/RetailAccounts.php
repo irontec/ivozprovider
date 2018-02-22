@@ -466,6 +466,20 @@ class RetailAccounts extends MapperAbstract
 
 
             if ($recursive) {
+                if ($model->getCallForwardSettings(null, null, true) !== null) {
+                    $callForwardSettings = $model->getCallForwardSettings();
+
+                    if (!is_array($callForwardSettings)) {
+
+                        $callForwardSettings = array($callForwardSettings);
+                    }
+
+                    foreach ($callForwardSettings as $value) {
+                        $value->setRetailAccountId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
                 if ($model->getDDIs(null, null, true) !== null) {
                     $dDIs = $model->getDDIs();
 
