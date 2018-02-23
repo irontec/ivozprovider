@@ -1,0 +1,5 @@
+Template: ivozprovider/mysql_password
+Type: password
+Default: changeme
+Description: Enter root (administrator) MySQL password:
+Description-es.UTF-8: Introduzca la contraseña MySQL de root (administrador):
