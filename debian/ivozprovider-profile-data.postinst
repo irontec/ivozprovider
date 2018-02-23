@@ -7,20 +7,28 @@
 /bin/bash /opt/irontec/ivozprovider/scripts/FSOBrandMusicOnHold.sh
 
 # Setup local DNS Server
-db_get ivozprovider/users_address
-sed -r -i "s/(users           IN      A      ) .*/\1 $RET/"  /etc/bind/db.ivozprovider.local
-db_get ivozprovider/trunks_address
-sed -r -i "s/(trunks          IN      A      ) .*/\1 $RET/"  /etc/bind/db.ivozprovider.local
-db_get ivozprovider/jobs_address
-sed -r -i "s/(jobs            IN      A      ) .*/\1 $RET/"  /etc/bind/db.ivozprovider.local
-db_get ivozprovider/data_address
-sed -r -i "s/(data            IN      A      ) .*/\1 $RET/"  /etc/bind/db.ivozprovider.local
-db_get ivozprovider/storage_address
-sed -r -i "s/(storage         IN      A      ) .*/\1 $RET/"  /etc/bind/db.ivozprovider.local
-db_get ivozprovider/logs_address
-sed -r -i "s/(logs            IN      A      ) .*/\1 $RET/"  /etc/bind/db.ivozprovider.local
+db_get ivozprovider/users_address           || true
+USERS_ADDRESS=$RET
+db_get ivozprovider/trunks_address          || true
+TRUNKS_ADDRESS=$RET
+db_get ivozprovider/jobs_address            || true
+JOBS_ADDRESS=$RET
+db_get ivozprovider/data_address            || true
+DATA_ADDRESS=$RET
+db_get ivozprovider/storage_address         || true
+STORAGE_ADDRESS=$RET
+db_get ivozprovider/logs_address            || true
+LOGS_ADDRESS=$RET
+db_stop
+
+sed -r -i "s/(users           IN      A      ) .*/\1 $USERS_ADDRESS/"   /etc/bind/db.ivozprovider.local
+sed -r -i "s/(trunks          IN      A      ) .*/\1 $TRUNKS_ADDRESS/"  /etc/bind/db.ivozprovider.local
+sed -r -i "s/(data            IN      A      ) .*/\1 $DATA_ADDRESS/"    /etc/bind/db.ivozprovider.local
+sed -r -i "s/(storage         IN      A      ) .*/\1 $STORAGE_ADDRESS/" /etc/bind/db.ivozprovider.local
+sed -r -i "s/(logs            IN      A      ) .*/\1 $LOGS_ADDRESS/"    /etc/bind/db.ivozprovider.local
+sed -r -i "s/(jobs            IN      A      ) .*/\1 $JOBS_ADDRESS/"    /etc/bind/db.ivozprovider.local
 
 # Restart Local DNS
-/bin/systemctl reload bind9
+/bin/systemctl start bind9
 
 :

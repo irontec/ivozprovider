@@ -1,8 +1,13 @@
+#!/bin/bash
+
 # Source debconf library.
 . /usr/share/debconf/confmodule
 
 # Setup global mysql password
-db_get ivozprovider/mysql_password
-sed -r -i "s/(database_password:) .*/\1 $RET/" /opt/irontec/ivozprovider/library/CoreBundle/Resources/config/parameters.yml
+db_get ivozprovider/mysql_password || true
+MYSQL_PASSWORD=$RET
+db_stop
+
+sed -r -i "s/(database_password:) .*/\1 $MYSQL_PASSWORD/" /opt/irontec/ivozprovider/library/CoreBundle/Resources/config/parameters.yml
 
 :

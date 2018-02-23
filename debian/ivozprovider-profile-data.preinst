@@ -10,9 +10,4 @@ case "$1" in
     ;;
 esac
 
-# Setup mysql configuration
-db_get ivozprovider/mysql_password
-db_set mysql-server/root_password $RET
-db_set mysql-server/root_password_again $RET
-
 :
