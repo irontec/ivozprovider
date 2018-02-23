@@ -32,7 +32,7 @@ Package: ivozprovider-profile-common
 Architecture: all
 Section: admin
 Priority: optional
-Pre-Depends: po-debconf, vim, sudo, htop, vlan, tcpdump, ngrep, screen, ssh, tree, conntrack
+Depends: po-debconf, vim, sudo, htop, vlan, tcpdump, ngrep, screen, ssh, tree, conntrack
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Common configuration files
  Files includes in this package are common to all IVOZ Provider systems
@@ -46,8 +46,9 @@ Package: ivozprovider-profile-as
 Architecture: all
 Section: admin
 Priority: optional
-Pre-Depends: libmyodbc, unixodbc
-Depends: ivozprovider-profile-common (=${binary:Version}),
+Depends: libmyodbc,
+    unixodbc,
+    ivozprovider-profile-common (=${binary:Version}),
     ivozprovider-asterisk-agi (=${binary:Version}),
     ivozprovider-asterisk-config (=${binary:Version}),
     ivozprovider-asterisk-sounds,
@@ -65,7 +66,7 @@ Package: ivozprovider-profile-data
 Architecture: all
 Section: admin
 Priority: optional
-Pre-Depends: ivozprovider-profile-common (=${binary:Version}),
+Depends: ivozprovider-profile-common (=${binary:Version}),
     mysql-server,
     ivozprovider-scheme (=${binary:Version}),
     bind9,
@@ -177,8 +178,7 @@ Package: ivozprovider-scheme
 Architecture: all
 Section: database
 Priority: optional
-Pre-Depends: ivozprovider-common-library (=${binary:Version})
-Depends: php7.0-mysql, php7.0-xml, mysql-server
+Depends: ivozprovider-common-library (=${binary:Version}), bind9, php7.0-mysql, php7.0-xml, mysql-server
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Database Scheme
  .
@@ -217,7 +217,7 @@ Description: IVOZ Provider - Rest API files
 Package: ivozprovider-common-library
 Architecture: all
 Section: php
-Depends: php7.0-cli, php7.0-mysql, php7.0-mbstring, php7.0-xml, acl, klear-library
+Depends: ivozprovider-profile-common (=${binary:Version}), php7.0-cli, php7.0-mysql, php7.0-mbstring, php7.0-xml, acl, klear-library
 Provides: ivozprovider-data-library
 Conflicts: ivozprovider-data-library
 Priority: optional

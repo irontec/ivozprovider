@@ -1,9 +1,7 @@
 #!/bin/bash
 
-### This function will be used to fix that files that are owned by another packages
-### We'll move original files and will be replaces symlinks to our package files. 
-### That would grant proper update files without regenerating links.
-### We'll be super-safers and move original files to .noivozng backups
+# Source debconf library.
+. /usr/share/debconf/confmodule
 
 case "$1" in
     install|upgrade)
@@ -12,3 +10,9 @@ case "$1" in
     ;;
 esac
 
+# Setup mysql configuration
+db_get ivozprovider/mysql_password
+db_set mysql-server/root_password $RET
+db_set mysql-server/root_password_again $RET
+
+:
