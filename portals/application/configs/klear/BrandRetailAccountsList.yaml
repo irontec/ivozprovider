@@ -32,13 +32,14 @@ production:
           ip: true
           port: true
           languageId: true
+          status: true
         order:
           name: true
           domain: true
           description: true
           companyId: true
           outgoingDDIId: true
-          status: true
+          statusIcon: true
 staging:
   _extends: production
 testing:
