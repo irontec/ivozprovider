@@ -66,10 +66,10 @@ Package: ivozprovider-profile-data
 Architecture: all
 Section: admin
 Priority: optional
+Pre-Depends: bind9
 Depends: ivozprovider-profile-common (=${binary:Version}),
     mysql-server,
     ivozprovider-scheme (=${binary:Version}),
-    bind9,
     libstring-crc32-perl,
     libgearman-client-perl
 Homepage: http://www.irontec.com
@@ -178,7 +178,7 @@ Package: ivozprovider-scheme
 Architecture: all
 Section: database
 Priority: optional
-Depends: ivozprovider-common-library (=${binary:Version}), bind9, php7.0-mysql, php7.0-xml, mysql-server
+Pre-Depends: ivozprovider-common-library (=${binary:Version}), bind9, php7.0-mysql, php7.0-xml, mysql-server
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Database Scheme
  .
@@ -260,4 +260,3 @@ Description: IVOZ Provider - CGrateS - Configuration files
  This package includes all config files found in /etc
  that will require cgrates to run properly.
  .
-

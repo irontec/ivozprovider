@@ -8,17 +8,17 @@
 
 # Setup local DNS Server
 db_get ivozprovider/users_address
-sed -i "s/(users           IN      A      ) .*/\1 $RET/"  /etc/bind/db.ivozprovider.local
+sed -r -i "s/(users           IN      A      ) .*/\1 $RET/"  /etc/bind/db.ivozprovider.local
 db_get ivozprovider/trunks_address
-sed -i "s/(trunks          IN      A      ) .*/\1 $RET/"  /etc/bind/db.ivozprovider.local
+sed -r -i "s/(trunks          IN      A      ) .*/\1 $RET/"  /etc/bind/db.ivozprovider.local
 db_get ivozprovider/jobs_address
-sed -i "s/(jobs            IN      A      ) .*/\1 $RET/"  /etc/bind/db.ivozprovider.local
+sed -r -i "s/(jobs            IN      A      ) .*/\1 $RET/"  /etc/bind/db.ivozprovider.local
 db_get ivozprovider/data_address
-sed -i "s/(data            IN      A      ) .*/\1 $RET/"  /etc/bind/db.ivozprovider.local
+sed -r -i "s/(data            IN      A      ) .*/\1 $RET/"  /etc/bind/db.ivozprovider.local
 db_get ivozprovider/storage_address
-sed -i "s/(storage         IN      A      ) .*/\1 $RET/"  /etc/bind/db.ivozprovider.local
+sed -r -i "s/(storage         IN      A      ) .*/\1 $RET/"  /etc/bind/db.ivozprovider.local
 db_get ivozprovider/logs_address
-sed -i "s/(logs            IN      A      ) .*/\1 $RET/"  /etc/bind/db.ivozprovider.local
+sed -r -i "s/(logs            IN      A      ) .*/\1 $RET/"  /etc/bind/db.ivozprovider.local
 
 # Restart Local DNS
 /bin/systemctl reload bind9
