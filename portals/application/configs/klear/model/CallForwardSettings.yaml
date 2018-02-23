@@ -65,6 +65,7 @@ production:
       required: true
       source:
         data: inline
+        filterClass: IvozProvider_Klear_Filter_TargetTypes
         values:
           'number':
             title: _('Number')

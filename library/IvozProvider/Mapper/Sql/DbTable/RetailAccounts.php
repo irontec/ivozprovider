@@ -67,6 +67,7 @@ class RetailAccounts extends TableAbstract
         )
     );
     protected $_dependentTables = array(
+        'IvozProvider\\Mapper\\Sql\\DbTable\\CallForwardSettings',
         'IvozProvider\\Mapper\\Sql\\DbTable\\DDIs',
         'IvozProvider\\Mapper\\Sql\\DbTable\\AstPsEndpoints'
     );

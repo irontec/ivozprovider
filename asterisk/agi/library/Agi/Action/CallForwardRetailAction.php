@@ -1,7 +1,7 @@
 <?php
 namespace Agi\Action;
 
-class CallForwardAction extends RouterAction
+class CallForwardRetailAction extends RouterAction
 {
     protected $_maxRedirections = 5;
 
@@ -54,47 +54,13 @@ class CallForwardAction extends RouterAction
             return;
         }
 
-        // Use Redirecting user as caller on following routes
-        $this->agi->setChannelCaller($cfw->getUser());
+        // Use Redirecting retail account as caller on following routes
+        $this->agi->setChannelCaller($cfw->getRetailAccount());
 
         // Route to destination
         $this->_routeType       = $cfw->getTargetType();
-        $this->_routeExtension  = $cfw->getExtension();
-        $this->_routeVoiceMail  = $cfw->getVoiceMailUser();
         $this->_routeExternal   = $cfw->getNumberValue();
         $this->route();
-    }
-
-    protected function _routeToVoiceMail()
-    {
-        // Get Call forward user
-        $caller = $this->agi->getChannelCaller();
-
-        // Set as diversion number the user extension
-        $this->agi->setRedirecting('from-num,i', $caller->getExtensionNumber());
-        $this->agi->setRedirecting('from-tag,i', $caller->getExtensionNumber());
-        $this->agi->setRedirecting('from-name',  $caller->getFullName());
-
-        // Enable unavailable user banner
-        $voicemailAction = new VoiceMailAction($this);
-        $voicemailAction
-            ->setPlayBanner(true)
-            ->setVoiceMail($this->_routeVoiceMail)
-            ->process();
-    }
-
-    protected function _routeToExtension()
-    {
-        // Get Call forward user
-        $caller = $this->agi->getChannelCaller();
-
-        // Set as diversion number the user extension
-         $this->agi->setRedirecting('from-num,i', $caller->getExtensionNumber());
-         $this->agi->setRedirecting('from-tag,i', $caller->getExtensionNumber());
-         $this->agi->setRedirecting('from-name',  $caller->getFullName());
-
-        // Use default route function
-        parent::_routeToExtension();
     }
 
     protected function _routeToExternal()
@@ -103,12 +69,9 @@ class CallForwardAction extends RouterAction
         $caller = $this->agi->getChannelCaller();
 
         // Set as diversion number the user Outgoing DDI
-        $this->agi->setRedirecting('from-num,i', $caller->getOutgoingDDINumber());
-        $this->agi->setRedirecting('from-tag,i', $caller->getExtensionNumber());
-        $this->agi->setRedirecting('from-name',  $caller->getFullName());
+        $this->agi->setRedirecting('from-num', $caller->getOutgoingDDINumber());
 
-
-        $externalAction = new ExternalUserCallAction($this);
+        $externalAction = new ExternalRetailCallAction($this);
         $externalAction
             ->setDestination($this->_routeExternal)
             ->process();

@@ -34,6 +34,7 @@ class Rest_CallForwardSettingsController extends Iron_Controller_Rest_BaseContro
      * @ApiReturn(type="object", sample="[{
      *     'id': '', 
      *     'userId': '', 
+     *     'retailAccountId': '', 
      *     'callTypeFilter': '', 
      *     'callForwardType': '', 
      *     'targetType': '', 
@@ -45,6 +46,7 @@ class Rest_CallForwardSettingsController extends Iron_Controller_Rest_BaseContro
      * },{
      *     'id': '', 
      *     'userId': '', 
+     *     'retailAccountId': '', 
      *     'callTypeFilter': '', 
      *     'callForwardType': '', 
      *     'targetType': '', 
@@ -72,6 +74,7 @@ class Rest_CallForwardSettingsController extends Iron_Controller_Rest_BaseContro
             $fields = array(
                 'id',
                 'userId',
+                'retailAccountId',
                 'callTypeFilter',
                 'callForwardType',
                 'targetType',
@@ -155,6 +158,7 @@ class Rest_CallForwardSettingsController extends Iron_Controller_Rest_BaseContro
      * @ApiReturn(type="object", sample="{
      *     'id': '', 
      *     'userId': '', 
+     *     'retailAccountId': '', 
      *     'callTypeFilter': '', 
      *     'callForwardType': '', 
      *     'targetType': '', 
@@ -181,6 +185,7 @@ class Rest_CallForwardSettingsController extends Iron_Controller_Rest_BaseContro
             $fields = array(
                 'id',
                 'userId',
+                'retailAccountId',
                 'callTypeFilter',
                 'callForwardType',
                 'targetType',
@@ -229,7 +234,8 @@ class Rest_CallForwardSettingsController extends Iron_Controller_Rest_BaseContro
      * @ApiDescription(section="CallForwardSettings", description="Create's a new CallForwardSettings")
      * @ApiMethod(type="post")
      * @ApiRoute(name="/rest/call-forward-settings/")
-     * @ApiParams(name="userId", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="userId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="retailAccountId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="callTypeFilter", nullable=false, type="varchar", sample="", description="[enum:internal|external|both]")
      * @ApiParams(name="callForwardType", nullable=false, type="varchar", sample="", description="[enum:inconditional|noAnswer|busy|userNotRegistered]")
      * @ApiParams(name="targetType", nullable=false, type="varchar", sample="", description="[enum:number|extension|voicemail]")
@@ -273,7 +279,8 @@ class Rest_CallForwardSettingsController extends Iron_Controller_Rest_BaseContro
      * @ApiMethod(type="put")
      * @ApiRoute(name="/rest/call-forward-settings/")
      * @ApiParams(name="id", nullable=false, type="int", sample="", description="")
-     * @ApiParams(name="userId", nullable=false, type="int", sample="", description="")
+     * @ApiParams(name="userId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="retailAccountId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="callTypeFilter", nullable=false, type="varchar", sample="", description="[enum:internal|external|both]")
      * @ApiParams(name="callForwardType", nullable=false, type="varchar", sample="", description="[enum:inconditional|noAnswer|busy|userNotRegistered]")
      * @ApiParams(name="targetType", nullable=false, type="varchar", sample="", description="[enum:number|extension|voicemail]")
@@ -378,7 +385,12 @@ class Rest_CallForwardSettingsController extends Iron_Controller_Rest_BaseContro
             'params' => array(
                 'userId' => array(
                     'type' => "int",
-                    'required' => true,
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'retailAccountId' => array(
+                    'type' => "int",
+                    'required' => false,
                     'comment' => '',
                 ),
                 'callTypeFilter' => array(
@@ -434,7 +446,12 @@ class Rest_CallForwardSettingsController extends Iron_Controller_Rest_BaseContro
                 ),
                 'userId' => array(
                     'type' => "int",
-                    'required' => true,
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'retailAccountId' => array(
+                    'type' => "int",
+                    'required' => false,
                     'comment' => '',
                 ),
                 'callTypeFilter' => array(

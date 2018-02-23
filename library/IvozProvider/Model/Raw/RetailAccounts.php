@@ -245,6 +245,14 @@ class RetailAccounts extends ModelAbstract
 
 
     /**
+     * Dependent relation CallForwardSettings_ibfk_4
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\CallForwardSettings[]
+     */
+    protected $_CallForwardSettings;
+
+    /**
      * Dependent relation DDIs_ibfk_14
      * Type: One-to-Many relationship
      *
@@ -327,6 +335,10 @@ class RetailAccounts extends ModelAbstract
         ));
 
         $this->setDependentList(array(
+            'CallForwardSettingsIbfk4' => array(
+                    'property' => 'CallForwardSettings',
+                    'table_name' => 'CallForwardSettings',
+                ),
             'DDIsIbfk14' => array(
                     'property' => 'DDIs',
                     'table_name' => 'DDIs',
@@ -337,6 +349,9 @@ class RetailAccounts extends ModelAbstract
                 ),
         ));
 
+        $this->setOnDeleteCascadeRelationships(array(
+            'CallForwardSettings_ibfk_4'
+        ));
 
         $this->setOnDeleteSetNullRelationships(array(
             'DDIs_ibfk_14'
@@ -1416,6 +1431,96 @@ class RetailAccounts extends ModelAbstract
         }
 
         return $this->_Language;
+    }
+
+    /**
+     * Sets dependent relations CallForwardSettings_ibfk_4
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\CallForwardSettings
+     * @return \IvozProvider\Model\Raw\RetailAccounts
+     */
+    public function setCallForwardSettings(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_CallForwardSettings === null) {
+
+                $this->getCallForwardSettings();
+            }
+
+            $oldRelations = $this->_CallForwardSettings;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_CallForwardSettings = array();
+
+        foreach ($data as $object) {
+            $this->addCallForwardSettings($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations CallForwardSettings_ibfk_4
+     *
+     * @param \IvozProvider\Model\Raw\CallForwardSettings $data
+     * @return \IvozProvider\Model\Raw\RetailAccounts
+     */
+    public function addCallForwardSettings(\IvozProvider\Model\Raw\CallForwardSettings $data)
+    {
+        $this->_CallForwardSettings[] = $data;
+        $this->_setLoaded('CallForwardSettingsIbfk4');
+        return $this;
+    }
+
+    /**
+     * Gets dependent CallForwardSettings_ibfk_4
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\CallForwardSettings
+     */
+    public function getCallForwardSettings($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'CallForwardSettingsIbfk4';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_CallForwardSettings = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_CallForwardSettings;
     }
 
     /**

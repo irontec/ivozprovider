@@ -28,6 +28,17 @@ class CallForwardSettings extends Raw\CallForwardSettings
             return parent::_save($model, $recursive, $useTransaction, $transactionTag, $forceInsert);
         }
 
+        // Avoid incompatible type of cfw settings
+        if ($model->getUserId()) {
+            // User cfw
+            $objectId = $model->getUserId();
+            $objectName = 'userId';
+        } else {
+            // RetailAccount cfw
+            $objectId = $model->getRetailAccountId();
+            $objectName = 'retailAccountId';
+        }
+
         $callTypeFilterConditions = array(
             $model->getCallTypeFilter()
         );
@@ -40,7 +51,7 @@ class CallForwardSettings extends Raw\CallForwardSettings
         }
         $inconditionalCallForwardsConditions = array(
             "id != '".$model->getPrimaryKey()."'",
-            "userId = '".$model->getUserId()."'",
+            "$objectName = $objectId",
             "enabled = '1'",
             "callTypeFilter in ('".implode("','", $callTypeFilterConditions)."')",
             "callForwardType = 'inconditional'"
@@ -55,7 +66,7 @@ class CallForwardSettings extends Raw\CallForwardSettings
         if ($isInconditional) {
             $callForwardsConditions = array(
                 "id != '".$model->getPrimaryKey()."'",
-                "userId = '".$model->getUserId()."'",
+                "$objectName = $objectId",
                 "enabled = '1'",
                 "callTypeFilter in ('".implode("','", $callTypeFilterConditions)."')",
             );
@@ -70,7 +81,7 @@ class CallForwardSettings extends Raw\CallForwardSettings
         if ($isBusy) {
             $busyCallForwardsConditions = array(
                 "id != '".$model->getPrimaryKey()."'",
-                "userId = '".$model->getUserId()."'",
+                "$objectName = $objectId",
                 "enabled = '1'",
                 "callTypeFilter in ('".implode("','", $callTypeFilterConditions)."')",
                 "callForwardType = 'busy'"
@@ -86,7 +97,7 @@ class CallForwardSettings extends Raw\CallForwardSettings
         if ($isNoAnswer) {
             $noAnswerCallForwardsConditions = array(
                 "id != '".$model->getPrimaryKey()."'",
-                "userId = '".$model->getUserId()."'",
+                "$objectName = $objectId",
                 "enabled = '1'",
                 "callTypeFilter in ('".implode("','", $callTypeFilterConditions)."')",
                 "callForwardType = 'noAnswer'",
@@ -102,7 +113,7 @@ class CallForwardSettings extends Raw\CallForwardSettings
         if ($isUserNotRegistered) {
             $userNotRegisteredCallForwardsConditions = array(
                 "id != '".$model->getPrimaryKey()."'",
-                "userId = '".$model->getUserId()."'",
+                "$objectName = $objectId",
                 "enabled = '1'",
                 "callTypeFilter in ('".implode("','", $callTypeFilterConditions)."')",
                 "callForwardType = 'userNotRegistered'",
