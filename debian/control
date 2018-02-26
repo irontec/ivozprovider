@@ -127,6 +127,8 @@ Depends: ivozprovider-profile-common,
         ivozprovider-cgrates,
         ivozprovider-cgrates-tools,
         ivozprovider-cgrates-config (=${binary:Version}),
+        ivozprovider-rtpengine,
+        ivozprovider-rtpproxy,
         redis-server
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Profile files for a Proxy Systems

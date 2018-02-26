@@ -20,7 +20,7 @@ export $(systemctl show-environment)
 function setup_dns_resolv()
 {
     # Setup local dns server
-    db_get ivozprovider/data_address || true
+    db_get ivozprovider/dns_address  || true
     DNS_ADDRESS=$RET
     db_stop
 
@@ -28,6 +28,7 @@ function setup_dns_resolv()
     /usr/bin/chattr -i /etc/resolv.conf
 
     /bin/cat > /etc/resolv.conf <<- EOM
+# THIS FILE IS AUTO-GENERATED. DO NOT EDIT MANUALLY.
 domain ivozprovider.local
 search ivozprovider.local
 nameserver $DNS_ADDRESS

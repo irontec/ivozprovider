@@ -1,0 +1,29 @@
+#!/bin/bash
+
+#DEBHELPER#
+
+function setup_rtpproxy()
+{
+    db_get ivozprovider/media_relay_address            || true
+    MEDIA_RELAY_ADDRESS=$RET
+    db_stop
+
+    sed -r -i "s/(AUDIO_SOCK)=.*/\1=$MEDIA_RELAY_ADDRESS/"    /etc/default/rtpproxy
+}
+
+function setup_rtpengine()
+{
+    db_get ivozprovider/media_relay_address            || true
+    MEDIA_RELAY_ADDRESS=$RET
+    db_stop
+
+    sed -r -i "s/(IP)=.*/\1=$MEDIA_RELAY_ADDRESS/"    /etc/default/rtpengine
+}
+
+# Setup dns on first install and reconfigure
+if [ -z "$2" ] || [ "$1" == "reconfigure" ]; then
+    setup_rtpproxy
+    setup_rtpengine
+fi
+
+:
