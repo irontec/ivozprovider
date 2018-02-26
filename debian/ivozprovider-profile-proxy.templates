@@ -21,7 +21,7 @@ Description-es.UTF-8:
 
 Template: ivozprovider/media_relay_address
 Type: string
-Default: 127.0.0.1
+Default: 0.0.0.0
 Description:
  Proxy nodes has a local media relay configured with the node public IP address.
  .

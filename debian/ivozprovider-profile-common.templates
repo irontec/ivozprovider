@@ -28,12 +28,6 @@ Description-es.UTF-8:
  Introduzca la IP donde escucha el servidor DNS:
  .
 
-Template: ivozprovider/language
-Type: select
-Default: en
-Choices: en, es
-Choices-en.UTF8: English, Spanish
-Choices-es.UTF8: Inglés, Español
 
 Template: ivozprovider/invalid_ip
 Type: error

@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Source debconf library.
+. /usr/share/debconf/confmodule
+
 #DEBHELPER#
 
 # Create certificate links if required
@@ -26,5 +29,14 @@
 # Enable services
 /bin/systemctl enable apache2
 /bin/systemctl reload apache2
+
+# Get default language from debconf
+db_get ivozprovider/language            || true
+LANGUAGE=$RET
+db_stop
+
+# Setup portals default language
+sed -i -r "s/(lang*: *).*/\1$LANGUAGE/" /opt/irontec/ivozprovider/web/admin/application/configs/klear/klear.yaml
+
 
 :
