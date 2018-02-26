@@ -3,32 +3,52 @@
 # Source debconf library.
 . /usr/share/debconf/confmodule
 
-# Fix GenericMusicOnHold FSO. REMOVE THIS AFTER 2.1.0
-/bin/bash /opt/irontec/ivozprovider/scripts/FSOBrandMusicOnHold.sh
+function fix_storage_moh()
+{
+    # Fix GenericMusicOnHold FSO. REMOVE THIS AFTER 2.1.0
+    /bin/bash /opt/irontec/ivozprovider/scripts/FSOBrandMusicOnHold.sh
+}
 
-# Setup local DNS Server
-db_get ivozprovider/users_address           || true
-USERS_ADDRESS=$RET
-db_get ivozprovider/trunks_address          || true
-TRUNKS_ADDRESS=$RET
-db_get ivozprovider/jobs_address            || true
-JOBS_ADDRESS=$RET
-db_get ivozprovider/data_address            || true
-DATA_ADDRESS=$RET
-db_get ivozprovider/storage_address         || true
-STORAGE_ADDRESS=$RET
-db_get ivozprovider/logs_address            || true
-LOGS_ADDRESS=$RET
-db_stop
+function setup_dns_server()
+{
+    # Setup local DNS Server
+    db_get ivozprovider/users_address           || true
+    USERS_ADDRESS=$RET
+    db_get ivozprovider/trunks_address          || true
+    TRUNKS_ADDRESS=$RET
+    db_get ivozprovider/jobs_address            || true
+    JOBS_ADDRESS=$RET
+    db_get ivozprovider/data_address            || true
+    DATA_ADDRESS=$RET
+    db_get ivozprovider/storage_address         || true
+    STORAGE_ADDRESS=$RET
+    db_get ivozprovider/logs_address            || true
+    LOGS_ADDRESS=$RET
+    db_stop
 
-sed -r -i "s/(users           IN      A      ) .*/\1 $USERS_ADDRESS/"   /etc/bind/db.ivozprovider.local
-sed -r -i "s/(trunks          IN      A      ) .*/\1 $TRUNKS_ADDRESS/"  /etc/bind/db.ivozprovider.local
-sed -r -i "s/(data            IN      A      ) .*/\1 $DATA_ADDRESS/"    /etc/bind/db.ivozprovider.local
-sed -r -i "s/(storage         IN      A      ) .*/\1 $STORAGE_ADDRESS/" /etc/bind/db.ivozprovider.local
-sed -r -i "s/(logs            IN      A      ) .*/\1 $LOGS_ADDRESS/"    /etc/bind/db.ivozprovider.local
-sed -r -i "s/(jobs            IN      A      ) .*/\1 $JOBS_ADDRESS/"    /etc/bind/db.ivozprovider.local
+    sed -r -i "s/(users           IN      A      ) .*/\1 $USERS_ADDRESS/"   /etc/bind/db.ivozprovider.local
+    sed -r -i "s/(trunks          IN      A      ) .*/\1 $TRUNKS_ADDRESS/"  /etc/bind/db.ivozprovider.local
+    sed -r -i "s/(data            IN      A      ) .*/\1 $DATA_ADDRESS/"    /etc/bind/db.ivozprovider.local
+    sed -r -i "s/(storage         IN      A      ) .*/\1 $STORAGE_ADDRESS/" /etc/bind/db.ivozprovider.local
+    sed -r -i "s/(logs            IN      A      ) .*/\1 $LOGS_ADDRESS/"    /etc/bind/db.ivozprovider.local
+    sed -r -i "s/(jobs            IN      A      ) .*/\1 $JOBS_ADDRESS/"    /etc/bind/db.ivozprovider.local
 
-# Restart Local DNS
-/bin/systemctl start bind9
+    # Restart Local DNS
+    /bin/systemctl start bind9
+}
+
+
+# Fixing storage paths is only required if we're migrating from Oasis
+if [ -n "$2" ]; then
+    /usr/bin/dpkg --compare-versions "$2" lt 2.0~0
+    if [ $? -eq 0 ]; then
+        fix_storage_moh
+    fi
+fi
+
+# Setup dns on first install and reconfigure
+if [ -z "$2" ] || [ "$1" == "reconfigure" ]; then
+    setup_dns_server
+fi
 
 :

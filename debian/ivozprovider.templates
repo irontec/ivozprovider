@@ -1,3 +1,8 @@
+Template: ivozprovider/preseed
+Type: boolean
+Default: true
+Description: Determine if debconf options are preseeded
+
 Template: ivozprovider/menu
 Type: select
 Choices: configure_users_address, configure_trunks_address, configure_mysql_password, configure_language, configure_finish

@@ -10,41 +10,23 @@ Default: changeme
 Description: Renter root (administrator) MySQL password:
 Description-es.UTF-8: Vuelva a introducir la contraseña MySQL de root (administrador):
 
-Template: ivozprovider/users_address
+Template: ivozprovider/dns_address
 Type: string
 Default: 127.0.0.1
-Description: Enter Users SIP proxy listen IP address:
-Description-es.UTF-8: Introduzca la IP para proxy SIP de Usuarios:
-
-Template: ivozprovider/trunks_address
-Type: string
-Default: 127.0.0.1
-Description: Enter Providers SIP proxy listen IP address:
-Description-es.UTF-8: Introduzca la IP para proxy SIP de Proveedores:
-
-Template: ivozprovider/jobs_address
-Type: string
-Default: 127.0.0.1
-Description: Enter Async jobs listen IP address:
-Description-es.UTF-8: Introduzca la IP para servidor de jobs asíncronos:
-
-Template: ivozprovider/data_address
-Type: string
-Default: 127.0.0.1
-Description: Enter MySQL Database listen IP address:
-Description-es.UTF-8: Introduzca la IP para base de datos MySQL:
-
-Template: ivozprovider/storage_address
-Type: string
-Default: 127.0.0.1
-Description: Enter Shared Storage server listen IP address:
-Description-es.UTF-8: Introduzca la IP para servidor de ficheros compartidos:
-
-Template: ivozprovider/logs_address
-Type: string
-Default: 127.0.0.1
-Description: Enter Logs server listen IP address:
-Description-es.UTF-8: Introduzca la IP para servidor de logs:
+Description:
+ All platform nodes share a «.local» DNS server to determine where services are running.
+ .
+ This DNS Server is configured in data profiles and usually is load balanced.
+ .
+ Enter Platform DNS Server listen IP address:
+ .
+Description-es.UTF-8:
+ Todos los nodos de la plataforma comparten un servidor DNS «.local» para determinar donde están ejecutandose los servicios.
+ .
+ Este servidor de DNS se configura en los perfiles data y generalmente está balanceado.
+ .
+ Introduzca la IP donde escucha el servidor DNS:
+ .
 
 Template: ivozprovider/language
 Type: select

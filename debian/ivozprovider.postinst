@@ -130,7 +130,7 @@ function enable_services()
 }
 
 # Run only on first install or on dpkg-reconfigure
-if [ -z "$2" ] || [ "$DEBCONF_RECONFIGURE" == "1" ]; then
+if [ -z "$2" ] || [ "$1" == "reconfigure" ]; then
     # Setup local DNS server
     setup_bind
     # Setup mysql password

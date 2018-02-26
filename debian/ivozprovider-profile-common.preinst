@@ -16,13 +16,16 @@ fi
 systemctl set-environment SYMFONY_ENV=$ENV
 export $(systemctl show-environment)
 
-# Setup local dns server
-db_get ivozprovider/data_address || true
-DNS_ADDRESS=$RET
-db_stop
 
-# Make resolv editable
-/usr/bin/chattr -i /etc/resolv.conf
+function setup_dns_resolv()
+{
+    # Setup local dns server
+    db_get ivozprovider/data_address || true
+    DNS_ADDRESS=$RET
+    db_stop
+
+    # Make resolv editable
+    /usr/bin/chattr -i /etc/resolv.conf
 
     /bin/cat > /etc/resolv.conf <<- EOM
 domain ivozprovider.local
@@ -30,8 +33,11 @@ search ivozprovider.local
 nameserver $DNS_ADDRESS
 EOM
 
-# Avoid overwriting the resolv.conf file
-/usr/bin/chattr +i /etc/resolv.conf
+    # Avoid overwriting the resolv.conf file
+    /usr/bin/chattr +i /etc/resolv.conf
+}
 
+
+setup_dns_resolv
 
 :
