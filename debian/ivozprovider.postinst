@@ -13,7 +13,6 @@ function setup_mysql()
     sed -i "s/(bind =) .*/\1 127.0.0.1" /etc/mysql/mysql.conf.d/ivozprovider.cnf
 
     # Change database password
-    db_get ivozprovider/mysql_password      || true
     /usr/bin/mysql --user=root --password=$MYSQL_PASSWORD -e "GRANT ALL ON ivozprovider.* TO 'root'@'localhost' IDENTIFIED BY '$MYSQL_PASSWORD'";
     /usr/bin/mysql --user=root --password=$MYSQL_PASSWORD -e "GRANT ALL ON ivozprovider.* TO 'root'@'127.0.0.1' IDENTIFIED BY '$MYSQL_PASSWORD'";
     /usr/bin/mysql --user=root --password=$MYSQL_PASSWORD -e "GRANT ALL ON ivozprovider.* TO 'root'@'::1' IDENTIFIED BY '$MYSQL_PASSWORD'";

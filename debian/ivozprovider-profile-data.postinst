@@ -25,7 +25,7 @@ db_get ivozprovider/storage_address         || true
 STORAGE_ADDRESS=$RET
 db_get ivozprovider/logs_address            || true
 LOGS_ADDRESS=$RET
-db_stop
+
 
 sed -r -i "s/(users           IN      A      ) .*/\1 $USERS_ADDRESS/"   /etc/bind/db.ivozprovider.local
 sed -r -i "s/(trunks          IN      A      ) .*/\1 $TRUNKS_ADDRESS/"  /etc/bind/db.ivozprovider.local
@@ -37,4 +37,11 @@ sed -r -i "s/(jobs            IN      A      ) .*/\1 $JOBS_ADDRESS/"    /etc/bin
 # Restart Local DNS
 /bin/systemctl start bind9
 
+# Allow root access from all hosts
+db_get ivozprovider/mysql_password      || true
+MYSQL_PASSWORD=$RET
+/usr/bin/mysql --user=root --password="$MYSQL_PASSWORD" -e "GRANT ALL ON ivozprovider.* TO 'root'@'%' IDENTIFIED BY '$MYSQL_PASSWORD'";
+/usr/bin/mysql --user=root --password="$MYSQL_PASSWORD" -e "FLUSH PRIVILEGES;"
+
+db_stop
 :
