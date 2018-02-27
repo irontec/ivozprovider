@@ -1,12 +1,13 @@
 #!/bin/bash
 
-# Source debconf library.
-. /usr/share/debconf/confmodule
+#DEBHELPER#
 
 case "$1" in
     install|upgrade)
-        dpkg-divert --quiet --package $DPKG_MAINTSCRIPT_PACKAGE --add --rename --divert /etc/bind/named.conf.local.divert   /etc/bind/named.conf.local
-        dpkg-divert --quiet --package $DPKG_MAINTSCRIPT_PACKAGE --add --rename --divert /etc/bind/named.conf.options.divert /etc/bind/named.conf.options
+        dpkg-divert --quiet --package $DPKG_MAINTSCRIPT_PACKAGE --add --rename \
+            --divert /etc/bind/named.conf.local.divert   /etc/bind/named.conf.local
+        dpkg-divert --quiet --package $DPKG_MAINTSCRIPT_PACKAGE --add --rename \
+            --divert /etc/bind/named.conf.options.divert /etc/bind/named.conf.options
     ;;
 esac
 
