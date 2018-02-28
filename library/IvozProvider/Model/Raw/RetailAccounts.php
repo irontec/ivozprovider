@@ -268,6 +268,14 @@ class RetailAccounts extends ModelAbstract
      */
     protected $_AstPsEndpoints;
 
+    /**
+     * Dependent relation ast_voicemail_ibfk_2
+     * Type: One-to-Many relationship
+     *
+     * @var \IvozProvider\Model\Raw\AstVoicemail[]
+     */
+    protected $_AstVoicemail;
+
     protected $_columnsList = array(
         'id'=>'id',
         'brandId'=>'brandId',
@@ -346,6 +354,10 @@ class RetailAccounts extends ModelAbstract
             'AstPsEndpointsIbfk3' => array(
                     'property' => 'AstPsEndpoints',
                     'table_name' => 'ast_ps_endpoints',
+                ),
+            'AstVoicemailIbfk2' => array(
+                    'property' => 'AstVoicemail',
+                    'table_name' => 'ast_voicemail',
                 ),
         ));
 
@@ -1701,6 +1713,96 @@ class RetailAccounts extends ModelAbstract
         }
 
         return $this->_AstPsEndpoints;
+    }
+
+    /**
+     * Sets dependent relations ast_voicemail_ibfk_2
+     *
+     * @param array $data An array of \IvozProvider\Model\Raw\AstVoicemail
+     * @return \IvozProvider\Model\Raw\RetailAccounts
+     */
+    public function setAstVoicemail(array $data, $deleteOrphans = false)
+    {
+        if ($deleteOrphans === true) {
+
+            if ($this->_AstVoicemail === null) {
+
+                $this->getAstVoicemail();
+            }
+
+            $oldRelations = $this->_AstVoicemail;
+
+            if (is_array($oldRelations)) {
+
+                $dataPKs = array();
+
+                foreach ($data as $newItem) {
+
+                    $pk = $newItem->getPrimaryKey();
+                    if (!empty($pk)) {
+                        $dataPKs[] = $pk;
+                    }
+                }
+
+                foreach ($oldRelations as $oldItem) {
+
+                    if (!in_array($oldItem->getPrimaryKey(), $dataPKs)) {
+
+                        $this->_orphans[] = $oldItem;
+                    }
+                }
+            }
+        }
+
+        $this->_AstVoicemail = array();
+
+        foreach ($data as $object) {
+            $this->addAstVoicemail($object);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Sets dependent relations ast_voicemail_ibfk_2
+     *
+     * @param \IvozProvider\Model\Raw\AstVoicemail $data
+     * @return \IvozProvider\Model\Raw\RetailAccounts
+     */
+    public function addAstVoicemail(\IvozProvider\Model\Raw\AstVoicemail $data)
+    {
+        $this->_AstVoicemail[] = $data;
+        $this->_setLoaded('AstVoicemailIbfk2');
+        return $this;
+    }
+
+    /**
+     * Gets dependent ast_voicemail_ibfk_2
+     *
+     * @param string or array $where
+     * @param string or array $orderBy
+     * @param boolean $avoidLoading skip data loading if it is not already
+     * @return array The array of \IvozProvider\Model\Raw\AstVoicemail
+     */
+    public function getAstVoicemail($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'AstVoicemailIbfk2';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('dependent', $fkName, $this, $where, $orderBy);
+            $this->_AstVoicemail = $related;
+            $this->_setLoaded($fkName);
+        }
+
+        return $this->_AstVoicemail;
     }
 
     /**

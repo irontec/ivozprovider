@@ -44,6 +44,11 @@ class AstVoicemail extends TableAbstract
             'columns' => 'userId',
             'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\Users',
             'refColumns' => 'id'
+        ),
+        'AstVoicemailIbfk2' => array(
+            'columns' => 'retailAccountId',
+            'refTableClass' => 'IvozProvider\\Mapper\\Sql\\DbTable\\RetailAccounts',
+            'refColumns' => 'id'
         )
     );
     
@@ -632,6 +637,23 @@ class AstVoicemail extends TableAbstract
 	    'TABLE_NAME' => 'ast_voicemail',
 	    'COLUMN_NAME' => 'userId',
 	    'COLUMN_POSITION' => 35,
+	    'DATA_TYPE' => 'int',
+	    'DEFAULT' => NULL,
+	    'NULLABLE' => true,
+	    'LENGTH' => NULL,
+	    'SCALE' => NULL,
+	    'PRECISION' => NULL,
+	    'UNSIGNED' => true,
+	    'PRIMARY' => false,
+	    'PRIMARY_POSITION' => NULL,
+	    'IDENTITY' => false,
+	  ),
+	  'retailAccountId' => 
+	  array (
+	    'SCHEMA_NAME' => NULL,
+	    'TABLE_NAME' => 'ast_voicemail',
+	    'COLUMN_NAME' => 'retailAccountId',
+	    'COLUMN_POSITION' => 36,
 	    'DATA_TYPE' => 'int',
 	    'DEFAULT' => NULL,
 	    'NULLABLE' => true,

@@ -83,6 +83,7 @@ class AstVoicemail extends MapperAbstract
                 'imapflags' => $model->getImapflags(),
                 'stamp' => $model->getStamp(),
                 'userId' => $model->getUserId(),
+                'retailAccountId' => $model->getRetailAccountId(),
             );
         } else {
             $result = array();
@@ -611,7 +612,8 @@ class AstVoicemail extends MapperAbstract
                   ->setImapport($data['imapport'])
                   ->setImapflags($data['imapflags'])
                   ->setStamp($data['stamp'])
-                  ->setUserId($data['userId']);
+                  ->setUserId($data['userId'])
+                  ->setRetailAccountId($data['retailAccountId']);
         } else if ($data instanceof \Zend_Db_Table_Row_Abstract || $data instanceof \stdClass) {
             $entry->setUniqueid($data->{'uniqueid'})
                   ->setContext($data->{'context'})
@@ -647,7 +649,8 @@ class AstVoicemail extends MapperAbstract
                   ->setImapport($data->{'imapport'})
                   ->setImapflags($data->{'imapflags'})
                   ->setStamp($data->{'stamp'})
-                  ->setUserId($data->{'userId'});
+                  ->setUserId($data->{'userId'})
+                  ->setRetailAccountId($data->{'retailAccountId'});
 
         } else if ($data instanceof \IvozProvider\Model\Raw\AstVoicemail) {
             $entry->setUniqueid($data->getUniqueid())
@@ -684,7 +687,8 @@ class AstVoicemail extends MapperAbstract
                   ->setImapport($data->getImapport())
                   ->setImapflags($data->getImapflags())
                   ->setStamp($data->getStamp())
-                  ->setUserId($data->getUserId());
+                  ->setUserId($data->getUserId())
+                  ->setRetailAccountId($data->getRetailAccountId());
 
         }
 

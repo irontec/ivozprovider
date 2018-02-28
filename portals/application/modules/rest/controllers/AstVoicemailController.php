@@ -66,7 +66,8 @@ class Rest_AstVoicemailController extends Iron_Controller_Rest_BaseController
      *     'imapport': '', 
      *     'imapflags': '', 
      *     'stamp': '', 
-     *     'userId': ''
+     *     'userId': '', 
+     *     'retailAccountId': ''
      * },{
      *     'uniqueid': '', 
      *     'context': '', 
@@ -102,7 +103,8 @@ class Rest_AstVoicemailController extends Iron_Controller_Rest_BaseController
      *     'imapport': '', 
      *     'imapflags': '', 
      *     'stamp': '', 
-     *     'userId': ''
+     *     'userId': '', 
+     *     'retailAccountId': ''
      * }]")
      */
     public function indexAction()
@@ -155,6 +157,7 @@ class Rest_AstVoicemailController extends Iron_Controller_Rest_BaseController
                 'imapflags',
                 'stamp',
                 'userId',
+                'retailAccountId',
             );
         }
 
@@ -262,7 +265,8 @@ class Rest_AstVoicemailController extends Iron_Controller_Rest_BaseController
      *     'imapport': '', 
      *     'imapflags': '', 
      *     'stamp': '', 
-     *     'userId': ''
+     *     'userId': '', 
+     *     'retailAccountId': ''
      * }")
      */
     public function getAction()
@@ -314,6 +318,7 @@ class Rest_AstVoicemailController extends Iron_Controller_Rest_BaseController
                 'imapflags',
                 'stamp',
                 'userId',
+                'retailAccountId',
             );
         }
 
@@ -388,6 +393,7 @@ class Rest_AstVoicemailController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="imapflags", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="stamp", nullable=true, type="datetime", sample="", description="")
      * @ApiParams(name="userId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="retailAccountId", nullable=true, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 201")
      * @ApiReturnHeaders(sample="Location: /rest/astvoicemail/{uniqueid}")
      * @ApiReturn(type="object", sample="{}")
@@ -457,6 +463,7 @@ class Rest_AstVoicemailController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="imapflags", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="stamp", nullable=true, type="datetime", sample="", description="")
      * @ApiParams(name="userId", nullable=true, type="int", sample="", description="")
+     * @ApiParams(name="retailAccountId", nullable=true, type="int", sample="", description="")
      * @ApiReturnHeaders(sample="HTTP 200")
      * @ApiReturn(type="object", sample="{}")
      */
@@ -721,6 +728,11 @@ class Rest_AstVoicemailController extends Iron_Controller_Rest_BaseController
                     'required' => false,
                     'comment' => '',
                 ),
+                'retailAccountId' => array(
+                    'type' => "int",
+                    'required' => false,
+                    'comment' => '',
+                ),
             )
         );
 
@@ -898,6 +910,11 @@ class Rest_AstVoicemailController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'userId' => array(
+                    'type' => "int",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'retailAccountId' => array(
                     'type' => "int",
                     'required' => false,
                     'comment' => '',

@@ -308,6 +308,13 @@ class AstVoicemail extends ModelAbstract
      */
     protected $_userId;
 
+    /**
+     * Database var type int
+     *
+     * @var int
+     */
+    protected $_retailAccountId;
+
 
     /**
      * Parent relation ast_voicemail_ibfk_1
@@ -315,6 +322,13 @@ class AstVoicemail extends ModelAbstract
      * @var \IvozProvider\Model\Raw\Users
      */
     protected $_User;
+
+    /**
+     * Parent relation ast_voicemail_ibfk_2
+     *
+     * @var \IvozProvider\Model\Raw\RetailAccounts
+     */
+    protected $_RetailAccount;
 
 
     protected $_columnsList = array(
@@ -353,6 +367,7 @@ class AstVoicemail extends ModelAbstract
         'imapflags'=>'imapflags',
         'stamp'=>'stamp',
         'userId'=>'userId',
+        'retailAccountId'=>'retailAccountId',
     );
 
     /**
@@ -372,6 +387,10 @@ class AstVoicemail extends ModelAbstract
             'AstVoicemailIbfk1'=> array(
                     'property' => 'User',
                     'table_name' => 'Users',
+                ),
+            'AstVoicemailIbfk2'=> array(
+                    'property' => 'RetailAccount',
+                    'table_name' => 'RetailAccounts',
                 ),
         ));
 
@@ -1664,6 +1683,40 @@ class AstVoicemail extends ModelAbstract
     }
 
     /**
+     * Sets column Stored in ISO 8601 format.     *
+     * @param int $data
+     * @return \IvozProvider\Model\Raw\AstVoicemail
+     */
+    public function setRetailAccountId($data)
+    {
+
+        if ($this->_retailAccountId != $data) {
+            $this->_logChange('retailAccountId', $this->_retailAccountId, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_retailAccountId = $data;
+
+        } else if (!is_null($data)) {
+            $this->_retailAccountId = (int) $data;
+
+        } else {
+            $this->_retailAccountId = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column retailAccountId
+     *
+     * @return int
+     */
+    public function getRetailAccountId()
+    {
+        return $this->_retailAccountId;
+    }
+
+    /**
      * Sets parent relation User
      *
      * @param \IvozProvider\Model\Raw\Users $data
@@ -1712,6 +1765,57 @@ class AstVoicemail extends ModelAbstract
         }
 
         return $this->_User;
+    }
+
+    /**
+     * Sets parent relation RetailAccount
+     *
+     * @param \IvozProvider\Model\Raw\RetailAccounts $data
+     * @return \IvozProvider\Model\Raw\AstVoicemail
+     */
+    public function setRetailAccount(\IvozProvider\Model\Raw\RetailAccounts $data)
+    {
+        $this->_RetailAccount = $data;
+
+        $primaryKey = $data->getPrimaryKey();
+        if (is_array($primaryKey)) {
+            $primaryKey = $primaryKey['id'];
+        }
+
+        if (!is_null($primaryKey)) {
+            $this->setRetailAccountId($primaryKey);
+        }
+
+        $this->_setLoaded('AstVoicemailIbfk2');
+        return $this;
+    }
+
+    /**
+     * Gets parent RetailAccount
+     * TODO: Mejorar esto para los casos en que la relación no exista. Ahora mismo siempre se pediría el padre
+     * @return \IvozProvider\Model\Raw\RetailAccounts
+     */
+    public function getRetailAccount($where = null, $orderBy = null, $avoidLoading = false)
+    {
+        $fkName = 'AstVoicemailIbfk2';
+
+        $usingDefaultArguments = is_null($where) && is_null($orderBy);
+        if (!$usingDefaultArguments) {
+            $this->setNotLoaded($fkName);
+        }
+
+        $dontSkipLoading = !($avoidLoading);
+        $notLoadedYet = !($this->_isLoaded($fkName));
+
+        if ($dontSkipLoading && $notLoadedYet) {
+            $related = $this->getMapper()->loadRelated('parent', $fkName, $this, $where, $orderBy);
+            $this->_RetailAccount = array_shift($related);
+            if ($usingDefaultArguments) {
+                $this->_setLoaded($fkName);
+            }
+        }
+
+        return $this->_RetailAccount;
     }
 
     /**
