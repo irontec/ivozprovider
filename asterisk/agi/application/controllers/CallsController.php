@@ -445,6 +445,7 @@ class CallsController extends BaseController
         // Set Company/Brand/Generic Music class
         $company = $retail->getCompany();
         $this->agi->setVariable("__COMPANYID", $company->getId());
+        $this->agi->setVariable("CHANNEL(language)", $company->getLanguageCode());
 
         // Get call destination
         $exten = $this->agi->getExtension();
@@ -455,14 +456,36 @@ class CallsController extends BaseController
         // Set User as the caller
         $this->setChannelOwner($retail);
 
-        // Some feedback for asterisk cli
-        $this->agi->notice("Processing outgoing call from Retail account \e[0;36m%s [retail%d]\e[0;93m to number %s",
-                        $retail->getName(), $retail->getId(), $exten);
-        // Otherwise, handle this call as external
-        $externalCallAction = new ExternalRetailCallAction($this);
-        $externalCallAction
-            ->setDestination($exten)
-            ->process();
+        // Check if this extension starts with '*' code
+        if (strpos($exten, '*') === 0) {
+            if (($service = $company->getBrand()->getVoicemailService())) {
+                if ($service->getCode() == substr($exten, 1)) {
+                    $this->agi->verbose("Number %s belongs to a brand service [service%d].", $exten, $service->getId());
+
+                    // Handle service code
+                    $serviceAction = new ServiceAction($this);
+                    $serviceAction
+                        ->setService($service)
+                        ->process();
+
+                    return;
+                }
+            }
+
+            // Decline this call if not matching service is found
+            $this->agi->verbose("Invalid Service code %s for brand %d", $exten, $company->getBrandId());
+            $this->agi->hangup();
+        } else {
+            // Some feedback for asterisk cli
+            $this->agi->notice("Processing outgoing call from Retail account \e[0;36m%s [retail%d]\e[0;93m to number %s",
+                $retail->getName(), $retail->getId(), $exten);
+
+            // Otherwise, handle this call as external
+            $externalCallAction = new ExternalRetailCallAction($this);
+            $externalCallAction
+                ->setDestination($exten)
+                ->process();
+        }
     }
 
     /**

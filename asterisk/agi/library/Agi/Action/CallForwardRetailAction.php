@@ -76,4 +76,13 @@ class CallForwardRetailAction extends RouterAction
             ->setDestination($this->_routeExternal)
             ->process();
     }
+
+    protected function _routeToVoiceMail()
+    {
+        // Handle voicemail route
+        $voicemailAction = new VoiceMailAction($this);
+        $voicemailAction
+            ->processRetailVoicemail();
+    }
+
 }
