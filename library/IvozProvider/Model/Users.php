@@ -89,11 +89,7 @@ class Users extends Raw\Users
      */
     public function getVoiceMail()
     {
-        if (!is_null($this->getVoiceMailUser())) {
-            return $this->getVoiceMailUser() . '@' . $this->getVoiceMailContext();
-        } else {
-            return "";
-        }
+        return $this->getVoiceMailUser() . '@' . $this->getVoiceMailContext();
     }
 
     /**
@@ -101,12 +97,7 @@ class Users extends Raw\Users
      */
     public function getVoiceMailUser()
     {
-        $exten = $this->getExtensionNumber();
-        if (!empty($exten)) {
-            return $exten;
-        } else {
-            return "";
-        }
+        return "user" . $this->getId();
     }
 
     /**
