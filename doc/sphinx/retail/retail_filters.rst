@@ -22,5 +22,7 @@ This are the configurable settings of *Retail external filters*:
 
 
 .. attention:: Calls forwarded by a filter will keep the original
-    caller identification, adding the fordwarding info in a SIP
+    caller identification, adding the forwarding info in a SIP
     *Diversion* header.
+
+.. error:: Retail DDI filters have precedence over retail account call forward settings (as they apply before).

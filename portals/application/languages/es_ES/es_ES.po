@@ -2290,7 +2290,7 @@ msgid "Timezone"
 msgstr "Zona Horaria"
 
 msgid "Toggle extension"
-msgstr "Código slternar"
+msgstr "Código conmutar"
 
 msgid "Total"
 msgstr "Total"
