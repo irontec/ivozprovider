@@ -72,6 +72,45 @@ These are the configurable settings of *Retail accounts*:
         the From header.
 
 
+Voicemail service
+-----------------
+
+Each retail account has a separate voicemail mailbox to forward received calls using Call Forward Settings below.
+
+.. important:: They can use **Voicemail service code** defined at brand level to listen to messages and to
+                record a greeting locution different from the standard one.
+
+
+Call Forward Settings
+---------------------
+
+Call forward settings can be configured per retail account. These are the fields and available values:
+
+.. glossary::
+
+    Enabled
+        Determines if the forward must be applied or not. This way, you can have
+        most used call forward configured and toggle if they apply or not.
+
+    Call Forward type
+        When this forward must be applied:
+
+          - Inconditional: always.
+          - No answer: when the call is not answered in X seconds.
+          - Busy: When the retail account is busy (486 response code).
+          - Not registered: when the retail account is not registered
+            against IvozProvider.
+
+    Target type
+        What route will use the forwarded call.
+
+            - Retail account voicemail
+            - Number (external)
+
+.. attention:: Calls forwarded to an external number by a call forward setting will keep the original
+               caller identification, adding the forwarding info in a SIP *Diversion* header.
+
+
 Asterisk as an account client
 =============================
 

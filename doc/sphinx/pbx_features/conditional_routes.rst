@@ -9,6 +9,7 @@ Conditional routes allows changing a call logic depending on:
 - Who is calling.
 - What time is calling.
 - What day is calling.
+- Route lock status
 
 These routes are electable in three sections:
 
@@ -52,12 +53,14 @@ With this example rules, our example conditional route will look like this:
 
 .. image:: img/conditional_route_rules.png
 
+.. note:: Since IvozProvider 1.7 **Route locks** (see :ref:`route_locks`) can be used as a criteria too.
+
 Some notes about this example:
 
 - Rules are evaluated following the metric parameter. Once a rule matches, its 
   logic is applied.
 
-- Rules may have from 1 to 3 criteria:
+- Rules may have from 1 to 4 criteria:
 
   - None, one or more matchlist (pre-created, see :ref:`match_lists`)
 
@@ -65,7 +68,11 @@ Some notes about this example:
 
   - None, one or more calendar (pre-created, see :ref:`calendars`)
 
-- These 3 criteria are combined (applying an AND logic).
+  - None, one or more route locks (pre-created, see :ref:`route_locks`)
+
+- These 4 criteria are combined (applying an AND logic).
+
+.. important:: When adding more than one route lock, if any of them is Opened, this criteria will be considered as fulfilled.
 
 Using a conditional route
 =========================

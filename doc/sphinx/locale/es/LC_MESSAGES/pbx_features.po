@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-21 15:20+0100\n"
+"POT-Creation-Date: 2018-03-05 12:08+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -716,24 +716,28 @@ msgstr "A qué hora está llamando."
 msgid "What day is calling."
 msgstr "Qué día está llamando."
 
-#: ../../pbx_features/conditional_routes.rst:13
+#: ../../pbx_features/conditional_routes.rst:12
+msgid "Route lock status"
+msgstr "Estado de candado(s)"
+
+#: ../../pbx_features/conditional_routes.rst:14
 msgid "These routes are electable in three sections:"
 msgstr "Las rutas condicionales se pueden elegir en tres secciones:"
 
-#: ../../pbx_features/conditional_routes.rst:15
+#: ../../pbx_features/conditional_routes.rst:16
 msgid "DDIs"
 msgstr "DDIs"
 
-#: ../../pbx_features/conditional_routes.rst:17
+#: ../../pbx_features/conditional_routes.rst:18
 #: ../../pbx_features/extensions.rst:3
 msgid "Extensions"
 msgstr "Extensiones"
 
-#: ../../pbx_features/conditional_routes.rst:19
+#: ../../pbx_features/conditional_routes.rst:20
 msgid "IVR custom options"
 msgstr "Opciones de IVR a medida"
 
-#: ../../pbx_features/conditional_routes.rst:21
+#: ../../pbx_features/conditional_routes.rst:22
 msgid ""
 "Remaining sections could use conditional routes creating an extension "
 "that point to a conditional route first, and routing to this extension."
@@ -741,17 +745,17 @@ msgstr ""
 "El resto de secciones pueden utilizar rutas condicionales por medio de "
 "una extensión que apunte a una ruta condicional."
 
-#: ../../pbx_features/conditional_routes.rst:25
+#: ../../pbx_features/conditional_routes.rst:26
 msgid "Creating a conditional route"
 msgstr "Crear un ruta condicional"
 
-#: ../../pbx_features/conditional_routes.rst:27
+#: ../../pbx_features/conditional_routes.rst:28
 msgid ""
 "First of all we create a conditional route in **Conditional routes** "
 "section:"
 msgstr "El primer paso es crear una ruta condicioal en **Rutas condicionales**:"
 
-#: ../../pbx_features/conditional_routes.rst:31
+#: ../../pbx_features/conditional_routes.rst:32
 msgid ""
 "On creation we define what should be done with a call that does not "
 "satisfy any of the rules described below."
@@ -759,39 +763,47 @@ msgstr ""
 "En la creación definimos cuál será el comportamiento por defecto en caso "
 "de que ninguna regla aplique."
 
-#: ../../pbx_features/conditional_routes.rst:35
+#: ../../pbx_features/conditional_routes.rst:36
 msgid "Adding rules"
 msgstr "Añadir reglas"
 
-#: ../../pbx_features/conditional_routes.rst:37
+#: ../../pbx_features/conditional_routes.rst:38
 msgid "Once created, we need to add rules, for example:"
 msgstr "Una vez creada, necesitamos añadir reglas, por ejemplo:"
 
-#: ../../pbx_features/conditional_routes.rst:40
+#: ../../pbx_features/conditional_routes.rst:41
 msgid "Calls from Japan and Germany received in the morning to an specific user"
 msgstr ""
 "Llamadas desde Japón y Alemania recibidas por la mañana, a un usuario "
 "concreto"
 
-#: ../../pbx_features/conditional_routes.rst:44
+#: ../../pbx_features/conditional_routes.rst:45
 msgid "Calls from Japan and Germany received in the afternoon to another user"
 msgstr "Llamadas desde Japón y Alemania recibidas por la tarde, a otro usuario"
 
-#: ../../pbx_features/conditional_routes.rst:48
+#: ../../pbx_features/conditional_routes.rst:49
 msgid "Override the reception IVR for summer days"
 msgstr "Utilizar un IVR distinto para los días de verano"
 
-#: ../../pbx_features/conditional_routes.rst:51
+#: ../../pbx_features/conditional_routes.rst:52
 msgid ""
 "With this example rules, our example conditional route will look like "
 "this:"
 msgstr "Con estas reglas de ejemplo, nuestra ruta condicional tendrá este aspecto"
 
-#: ../../pbx_features/conditional_routes.rst:55
+#: ../../pbx_features/conditional_routes.rst:56
+msgid ""
+"Since IvozProvider 1.7 **Route locks** (see :ref:`route_locks`) can be "
+"used as a criteria too."
+msgstr ""
+"Desde la versión 1.7 de IvozProvider se pueden utilizar **Candados** (ver "
+":ref:`route_locks`) como un criterio más."
+
+#: ../../pbx_features/conditional_routes.rst:58
 msgid "Some notes about this example:"
 msgstr "Notas sobre este ejemplo"
 
-#: ../../pbx_features/conditional_routes.rst:57
+#: ../../pbx_features/conditional_routes.rst:60
 msgid ""
 "Rules are evaluated following the metric parameter. Once a rule matches, "
 "its logic is applied."
@@ -799,35 +811,50 @@ msgstr ""
 "Las reglas se aplican en orden de métrica, de menor a mayor. Una vez que "
 "una regla se cumple, se aplica su lógica."
 
-#: ../../pbx_features/conditional_routes.rst:60
-msgid "Rules may have from 1 to 3 criteria:"
-msgstr "Las reglas pueden tener desde 1 hasta 3 criterios:"
+#: ../../pbx_features/conditional_routes.rst:63
+#, fuzzy
+msgid "Rules may have from 1 to 4 criteria:"
+msgstr "Las reglas pueden tener desde 1 hasta 4 criterios:"
 
-#: ../../pbx_features/conditional_routes.rst:62
+#: ../../pbx_features/conditional_routes.rst:65
 msgid "None, one or more matchlist (pre-created, see :ref:`match_lists`)"
 msgstr ""
 "Ninguno, uno o más listas de coincidencia (pre-creadas, ver "
 ":ref:`match_lists`)"
 
-#: ../../pbx_features/conditional_routes.rst:64
+#: ../../pbx_features/conditional_routes.rst:67
 msgid "None, one or more schedules (pre-created, see :ref:`schedules`)"
 msgstr "Ninguno, uno o más listas de horarios (pre-creadas, ver :ref:`Horarios`)"
 
-#: ../../pbx_features/conditional_routes.rst:66
+#: ../../pbx_features/conditional_routes.rst:69
 msgid "None, one or more calendar (pre-created, see :ref:`calendars`)"
 msgstr ""
 "Ninguno, uno o más listas de calendarios (pre-creadas, ver "
 ":ref:`Calendarios`)"
 
-#: ../../pbx_features/conditional_routes.rst:68
-msgid "These 3 criteria are combined (applying an AND logic)."
-msgstr "Estos 3 criterios se combinan (con una lógica AND)."
-
 #: ../../pbx_features/conditional_routes.rst:71
+#, fuzzy
+msgid "None, one or more route locks (pre-created, see :ref:`route_locks`)"
+msgstr "Ninguno, uno o más candados (pre-creadas, ver :ref:`route_locks`)"
+
+#: ../../pbx_features/conditional_routes.rst:73
+#, fuzzy
+msgid "These 4 criteria are combined (applying an AND logic)."
+msgstr "Estos 4 criterios se combinan (con una lógica AND)."
+
+#: ../../pbx_features/conditional_routes.rst:75
+msgid ""
+"When adding more than one route lock, if any of them is Opened, this "
+"criteria will be considered as fulfilled."
+msgstr ""
+"Cuando se añade más de un candado, basta con que uno de ellos esté "
+"abierto para que el criterio se considere válido."
+
+#: ../../pbx_features/conditional_routes.rst:78
 msgid "Using a conditional route"
 msgstr "Utilizar una ruta condicional"
 
-#: ../../pbx_features/conditional_routes.rst:73
+#: ../../pbx_features/conditional_routes.rst:80
 msgid ""
 "The behaviour when an IVR option or an extension is routed to a "
 "conditional route is easy to understand, but using conditional routes "
@@ -837,11 +864,11 @@ msgstr ""
 "una ruta condicional es fácil de entender, pero su utilización con DDIs "
 "merece una explicación adicional."
 
-#: ../../pbx_features/conditional_routes.rst:77
+#: ../../pbx_features/conditional_routes.rst:84
 msgid "Imagine this scenario:"
 msgstr "Imagina este escenario:"
 
-#: ../../pbx_features/conditional_routes.rst:81
+#: ../../pbx_features/conditional_routes.rst:88
 msgid ""
 "DDI has an external call filter and is routed to the new conditional "
 "route."
@@ -849,27 +876,27 @@ msgstr ""
 "El DDI tiene un filtro de entrada externo y se enruta a nuestra nueva "
 "ruta condicional"
 
-#: ../../pbx_features/conditional_routes.rst:83
+#: ../../pbx_features/conditional_routes.rst:90
 msgid "When a call is received:"
 msgstr "Cuando se recibe una llamada:"
 
-#: ../../pbx_features/conditional_routes.rst:85
+#: ../../pbx_features/conditional_routes.rst:92
 msgid "External call filter is evaluated:"
 msgstr "Se evalúa el filtro de entrada externo:"
 
-#: ../../pbx_features/conditional_routes.rst:87
+#: ../../pbx_features/conditional_routes.rst:94
 msgid "If current day is marked in any calendar, the holiday logic applies."
 msgstr ""
 "Si el día actual está marcado en alguno de sus calendarios, se aplica la "
 "lógica de festivo."
 
-#: ../../pbx_features/conditional_routes.rst:89
+#: ../../pbx_features/conditional_routes.rst:96
 msgid "If current time is not inside any time-gap, out-of-schedule logic applies."
 msgstr ""
 "Si la hora actual no está incluida en ninguno de los horarios "
 "seleccionados, se aplica la lógica de fuera horario."
 
-#: ../../pbx_features/conditional_routes.rst:91
+#: ../../pbx_features/conditional_routes.rst:98
 msgid ""
 "If external call filter logics have not applied, conditional route is "
 "evaluated."
@@ -877,7 +904,7 @@ msgstr ""
 "Si ninguna de las anteriores lógicas del filtro de entrada externo "
 "aplica, se evalúa la ruta condicional."
 
-#: ../../pbx_features/conditional_routes.rst:93
+#: ../../pbx_features/conditional_routes.rst:100
 msgid ""
 "Conditional route is not intented as an external call filter replacement."
 " Filter is evaluated first, conditional route afterwards."
@@ -912,7 +939,8 @@ msgstr ""
 #: ../../pbx_features/conference_rooms.rst:17
 #: ../../pbx_features/external_filters.rst:76 ../../pbx_features/friends.rst:69
 #: ../../pbx_features/ivrs.rst:22 ../../pbx_features/queues.rst:26
-#: ../../pbx_features/terminals.rst:24 ../../pbx_features/users.rst:20
+#: ../../pbx_features/route_locks.rst:21 ../../pbx_features/terminals.rst:24
+#: ../../pbx_features/users.rst:20
 msgid "Name"
 msgstr "Nombre"
 
@@ -1554,7 +1582,7 @@ msgstr ""
 "Nombre del **Amigo**, equivalente al nombre del **Terminal**. Se utiliza "
 "en los mensajes SIP (**From User** enviado)."
 
-#: ../../pbx_features/friends.rst:73
+#: ../../pbx_features/friends.rst:73 ../../pbx_features/route_locks.rst:24
 msgid "Description"
 msgstr "Descripción"
 
@@ -1879,6 +1907,41 @@ msgstr ""
 #: ../../pbx_features/huntgroups.rst:62
 msgid "Let's create a new extension that routes to this hunt group:"
 msgstr "Creemos la extensión 200 que apunte a este grupo de salto:"
+
+#: ../../pbx_features/huntgroups.rst:66
+msgid ""
+"When configuring a huntgroup, you can prevent missed calls on called "
+"members with **Prevent missed calls** setting:"
+msgstr ""
+"Al configurar un grupo de salto, puedes evitar que las llamadas generen "
+"llamadas perdidas en los miembros con el parámetro **Evitar llamadas "
+"perdidas**:"
+
+#: ../../pbx_features/huntgroups.rst:68
+msgid ""
+"**Yes**: calls generated by the huntgroup will never generate missed "
+"calls on called members."
+msgstr "**Sí**: las llamadas del grupo de salto no generarán perdidas nunca."
+
+#: ../../pbx_features/huntgroups.rst:70
+msgid "**No**: The behaviour of this setting depends on the huntgroup type:"
+msgstr "**No**: El comportamiento dependerá del tipo de grupo de salto:"
+
+#: ../../pbx_features/huntgroups.rst:72
+msgid ""
+"**RingAll**: calls generated by the huntgroup will generate missed calls "
+"on called members only if none of them answers the call."
+msgstr ""
+"**RingAll**: las llamadas generarán perdida solo si no contesta ninguno "
+"de los miembros."
+
+#: ../../pbx_features/huntgroups.rst:74
+msgid ""
+"**Remaining types**: calls generated by the huntgroup will generate "
+"missed calls on every called member that does not answer the call."
+msgstr ""
+"**Resto de tipos**: las llamadas generarán perdida en los miembros que no"
+" contesten."
 
 #: ../../pbx_features/index.rst:3
 msgid "PBX Features"
@@ -2588,6 +2651,115 @@ msgstr ""
 "La llamada *saltará* de un miembro a otro en un orden predefinido en base"
 " a la fecha de creación de cada miembro."
 
+#: ../../pbx_features/route_locks.rst:5
+msgid "Route locks"
+msgstr "Candados"
+
+#: ../../pbx_features/route_locks.rst:7
+msgid ""
+"Route locks are a simple but powerful way to fork route logics when "
+"delivering calls. This fork is done depending on the state of the lock on"
+" a particular moment:"
+msgstr ""
+"Los candados son una forma simple pero poderosa the crear bifurcaciones a"
+" la hora de entregar llamadas. Esta bifurcación se hará en función del "
+"estado de los candados en un momento concreto."
+
+#: ../../pbx_features/route_locks.rst:10
+msgid "**Opened**: green light, go ahead."
+msgstr "**Abierto**: luz verde, adelante."
+
+#: ../../pbx_features/route_locks.rst:11
+msgid "**Closed**: red light, no trespassing allowed."
+msgstr "**Cerrado**: luz roja, paso prohibido."
+
+#: ../../pbx_features/route_locks.rst:13
+msgid ""
+"They are used as conditional route rule criteria (see how in "
+":ref:`conditional_routes`)."
+msgstr ""
+"Se utilizan como un criterio más en las reglas de rutas condicionales "
+"(ver cómo en :ref:`conditional_routes`)."
+
+#: ../../pbx_features/route_locks.rst:16
+msgid "Route lock creation"
+msgstr "Creación de candados"
+
+#: ../../pbx_features/route_locks.rst:18
+msgid ""
+"When you add a new route lock in **Route Locks** section, you are asked "
+"for the following fields:"
+msgstr ""
+"Cuando creas un nuevo candado en la sección **Candados**, se te presentan"
+" los siguientes campos:"
+
+#: ../../pbx_features/route_locks.rst:23
+msgid "This name will be used in conditional routes to identify the lock."
+msgstr "Nombre identificativo del candado."
+
+#: ../../pbx_features/route_locks.rst:26
+msgid "Just a description."
+msgstr "Una simple descripción."
+
+#: ../../pbx_features/route_locks.rst:27
+msgid "Status"
+msgstr "Estado"
+
+#: ../../pbx_features/route_locks.rst:29
+msgid "Set the initial status of the lock: opened or closed."
+msgstr "Estado inicial del candado: abierto o cerrado."
+
+#: ../../pbx_features/route_locks.rst:32
+msgid "Route locks service codes"
+msgstr "Códigos de servicios de candados"
+
+#: ../../pbx_features/route_locks.rst:34
+msgid ""
+"Although you can set the initial lock status on creation and change it "
+"using the admin portal too, the usual way to handle the status changes of"
+" a lock is to use the service codes listed in **Route locks** section."
+msgstr ""
+"Aunque en la creación se pueda indicar el estado inicial del candado y "
+"éste pueda ser modificado editando el candado, la forma más habitual de "
+"interactuar con los candados es usando los códigos de servicio listado en"
+" la sección **Candados**."
+
+#: ../../pbx_features/route_locks.rst:37
+msgid "These services codes have two parts:"
+msgstr "Estos códigos tienen dos partes:"
+
+#: ../../pbx_features/route_locks.rst:39
+msgid "**Service code**: configured in **Services** section per brand/company."
+msgstr "**Código de servicio**: configurado en la sección **Servicios**."
+
+#: ../../pbx_features/route_locks.rst:41
+msgid "**Lock id**: inmutable numeric id assigned to each lock."
+msgstr ""
+"**Id de candado**: identificador numérico inmutable asignado a cada "
+"candado."
+
+#: ../../pbx_features/route_locks.rst:43
+msgid "There are 3 service codes available for most common operations on locks:"
+msgstr ""
+"Existen 3 códigos de servicios disponibles para las operaciones más "
+"comunes:"
+
+#: ../../pbx_features/route_locks.rst:45 ../../pbx_features/services.rst:51
+msgid "Open Lock"
+msgstr "Abrir Candado"
+
+#: ../../pbx_features/route_locks.rst:47 ../../pbx_features/services.rst:54
+msgid "Close Lock"
+msgstr "Cerrar Candado"
+
+#: ../../pbx_features/route_locks.rst:49
+msgid "Toggle Lock."
+msgstr "Conmutar Candado"
+
+#: ../../pbx_features/route_locks.rst:51
+msgid "Read :ref:`services` for further details."
+msgstr "Leer :ref:`services` para más detalles."
+
 #: ../../pbx_features/services.rst:5
 msgid "Additional services"
 msgstr "Servicios adicionales"
@@ -2674,7 +2846,35 @@ msgstr ""
 "terminal de cualquier usuario a un código especial. Las instrucciones se "
 "mostrarán en el idioma del usuario."
 
-#: ../../pbx_features/services.rst:52
+#: ../../pbx_features/services.rst:53
+msgid ""
+"Calling this service code will set route lock status to 'Opened' (see "
+":ref:`route_locks`)."
+msgstr ""
+"Al llamar a este código de servicio se abrirá el candado (ver "
+":ref:`route_locks`)."
+
+#: ../../pbx_features/services.rst:56
+msgid ""
+"Calling this service code will set route lock status to 'Closed' (see "
+":ref:`route_locks`)."
+msgstr ""
+"Al llamar a este código de servicio se cerrará el candado (ver "
+":ref:`route_locks`)."
+
+#: ../../pbx_features/services.rst:57
+msgid "Toggle Lock"
+msgstr "Conmutar Candado"
+
+#: ../../pbx_features/services.rst:59
+msgid ""
+"Calling this service code will change the current status of the lock (see"
+" :ref:`route_locks`)."
+msgstr ""
+"Al llamar a este código de servicio se conmutará el estado del candado "
+"(ver :ref:`route_locks`)."
+
+#: ../../pbx_features/services.rst:61
 msgid ""
 "As soon as new services are implemented into IvozProvider, they will be "
 "listed in this section."
@@ -2683,7 +2883,7 @@ msgstr ""
 "aparecerán en este listado para que el operador global sepa de su "
 "existencia y lo comunique a sus operadores de marca."
 
-#: ../../pbx_features/services.rst:55
+#: ../../pbx_features/services.rst:64
 msgid ""
 "This section lists the available services and the default codes when a "
 "**new brand** is created."
@@ -2691,17 +2891,17 @@ msgstr ""
 "Este listado determina los servicios disponibles y los códigos por "
 "defecto de las **nuevas marcas**."
 
-#: ../../pbx_features/services.rst:58
+#: ../../pbx_features/services.rst:67
 msgid ""
 "Changing the default code in this section will only affect new created "
 "brands."
 msgstr "Cambiar un código solo afecta a las marcas que se creen tras el cambio."
 
-#: ../../pbx_features/services.rst:63
+#: ../../pbx_features/services.rst:72
 msgid "Services and codes for Brands"
 msgstr "Definición de servicios y códigos a nivel de marca"
 
-#: ../../pbx_features/services.rst:65
+#: ../../pbx_features/services.rst:74
 msgid ""
 "The section **Brand configuration** > **Services** allows the brand "
 "operator to:"
@@ -2709,7 +2909,7 @@ msgstr ""
 "La sección **Configuración de Marca > Servicios** permite al operador de "
 "marca:"
 
-#: ../../pbx_features/services.rst:67
+#: ../../pbx_features/services.rst:76
 msgid ""
 "Change the default service code for all the brand companies (assuming the"
 " company hasn't already customized the code)"
@@ -2717,11 +2917,11 @@ msgstr ""
 "Redefinir el código de acceso por defecto a dichos servicios para las "
 "empresas que a su vez no lo redefinan."
 
-#: ../../pbx_features/services.rst:70
+#: ../../pbx_features/services.rst:79
 msgid "Delete services so it won't be available for the companies."
 msgstr "Borrar servicios que no quieran que puedan utilizar sus empresas."
 
-#: ../../pbx_features/services.rst:72
+#: ../../pbx_features/services.rst:81
 msgid ""
 "By default this list has all the services and codes from the global "
 "configuration:"
@@ -2729,7 +2929,7 @@ msgstr ""
 "Por defecto este listado aparece con todas los servicios y los códigos "
 "configurados a nivel Global:"
 
-#: ../../pbx_features/services.rst:75
+#: ../../pbx_features/services.rst:84
 msgid ""
 "This section lists the available services and the default codes when a "
 "**new company** is created."
@@ -2737,7 +2937,7 @@ msgstr ""
 "Este listado determina los servicios disponibles y los códigos por "
 "defecto de las **nuevas empresas**."
 
-#: ../../pbx_features/services.rst:78
+#: ../../pbx_features/services.rst:87
 msgid ""
 "Changing the default code in this section will only affect new created "
 "companies."
@@ -2746,11 +2946,11 @@ msgstr ""
 " Borrar un servicio hace que no esté disponible para ninguna empresa de "
 "la marca."
 
-#: ../../pbx_features/services.rst:83
+#: ../../pbx_features/services.rst:92
 msgid "Services and codes for Companies"
 msgstr "Definición de códigos a nivel de empresa"
 
-#: ../../pbx_features/services.rst:85
+#: ../../pbx_features/services.rst:94
 msgid ""
 "Each company can *customize* the default values assigned by the *brand "
 "operator* using the section **Company configuration** > **Services** and "
@@ -2760,11 +2960,11 @@ msgstr ""
 "*operador de marca* accediendo a **Configuración de Empresa** > "
 "**Servicios** y cambiando el código asignado."
 
-#: ../../pbx_features/services.rst:90
+#: ../../pbx_features/services.rst:99
 msgid "Company that wants to capture using \\*\\* instead of the default \\*95:"
 msgstr "Empresa que quiere capturar con \\*\\* en lugar de con \\*95:"
 
-#: ../../pbx_features/services.rst:99
+#: ../../pbx_features/services.rst:108
 msgid "Services deleted by the *company admin* will not available to users."
 msgstr ""
 "Los servicios que el *administrador de empresa* borre no podrán ser "
@@ -3264,8 +3464,8 @@ msgid ""
 "origin that matches *Alice's friends* matchlist."
 msgstr ""
 "Con la configuración de la imagen, toda llamada a *Alice* acabará en "
-"*Bob*, salvo las que haga el propio *Bob* y aquellas cuyo origen "
-"coincida con la lista *Alice's friends*."
+"*Bob*, salvo las que haga el propio *Bob* y aquellas cuyo origen coincida"
+" con la lista *Alice's friends*."
 
 #: ../../pbx_features/users.rst:176
 msgid "Group Configuration"
@@ -3309,23 +3509,27 @@ msgstr ""
 "el siguiente botón:"
 
 #: ../../pbx_features/users.rst:203
-msgid ""
-"For example, to forward all external calls that are not answered after 15"
-" seconds, we could configure a call forward like this:"
-msgstr ""
-"Para desviar las llamadas externas que no se contesten en 15 segundos al "
-"buzón de voz que acabamos de configurar, por ejemplo, habría que "
-"configurar un desvío tal que:"
-
-#: ../../pbx_features/users.rst:209
 msgid "These are the fields and available values:"
 msgstr "Estos son los campos y los posibles valores:"
 
-#: ../../pbx_features/users.rst:212
+#: ../../pbx_features/users.rst:206
+msgid "Enabled"
+msgstr "Activado"
+
+#: ../../pbx_features/users.rst:208
+msgid ""
+"Determines if the forward must be applied or not. This way, you can have "
+"most used call forward configured and toggle if they apply or not."
+msgstr ""
+"Determina si el desvío debe aplicarse o no. De esta forma, un usuario "
+"puede configurar los desvíos que más utilice e ir activándolos y "
+"desactivándolos."
+
+#: ../../pbx_features/users.rst:210
 msgid "Call Type"
 msgstr "Tipo de llamada"
 
-#: ../../pbx_features/users.rst:214
+#: ../../pbx_features/users.rst:212
 msgid ""
 "Determines if the forward must be applied to external, internal or any "
 "type of call."
@@ -3333,23 +3537,23 @@ msgstr ""
 "Limita el desvío a cierto tipo de llamadas, a elegir entre externa, "
 "interna o ambas"
 
-#: ../../pbx_features/users.rst:216
+#: ../../pbx_features/users.rst:214
 msgid "Forward type"
 msgstr "Tipo de desvío"
 
-#: ../../pbx_features/users.rst:225
+#: ../../pbx_features/users.rst:223
 msgid "When this forward must be applied:"
 msgstr "Indica cuándo aplica el desvío:"
 
-#: ../../pbx_features/users.rst:219
+#: ../../pbx_features/users.rst:217
 msgid "Inconditional: always"
 msgstr "Incondicional: siempre"
 
-#: ../../pbx_features/users.rst:220
+#: ../../pbx_features/users.rst:218
 msgid "No answer: when the call is not answered in X seconds"
 msgstr "Perdida: cuando no se conteste al de X segundos"
 
-#: ../../pbx_features/users.rst:221
+#: ../../pbx_features/users.rst:219
 msgid ""
 "Busy: When the user is talking to someone (and call waiting is disabled),"
 " when *Do not disturb* is enabled or when the user rejects an incoming "
@@ -3358,7 +3562,7 @@ msgstr ""
 "Ocupado: cuando el usuario esté ocupado (hablando o con el *No molestar* "
 "activo)"
 
-#: ../../pbx_features/users.rst:224
+#: ../../pbx_features/users.rst:222
 msgid ""
 "Not registered: when the user SIP terminal is not registered against "
 "IvozProvider."
@@ -3366,27 +3570,27 @@ msgstr ""
 "No registrado: cuando el usuario tenga su terminal sin conectar con "
 "IvozProvider"
 
-#: ../../pbx_features/users.rst:226
+#: ../../pbx_features/users.rst:224
 msgid "Target type"
 msgstr "Tipo de destino"
 
-#: ../../pbx_features/users.rst:230
+#: ../../pbx_features/users.rst:228
 msgid "What route will use the forwarded call."
 msgstr "Indica a dónde se enviará la llamada cuando el desvío aplique:"
 
-#: ../../pbx_features/users.rst:229
+#: ../../pbx_features/users.rst:227
 msgid "VoiceMail"
 msgstr "Buzón de voz"
 
-#: ../../pbx_features/users.rst:230
+#: ../../pbx_features/users.rst:228
 msgid "Number (external)"
 msgstr "Número (externo)"
 
-#: ../../pbx_features/users.rst:231
+#: ../../pbx_features/users.rst:229
 msgid "Extension (internal)"
 msgstr "Extensión (interna)"
 
-#: ../../pbx_features/users.rst:233
+#: ../../pbx_features/users.rst:231
 msgid ""
 "If we want to forward to other process, we can create an extension routed"
 " to that object and use the target type *Extension*."
@@ -3394,5 +3598,4 @@ msgstr ""
 "Si queremos desviar a un grupo de salto, por ejemplo, bastaría con crear "
 "una extensión que apunte al grupo de salto deseado y seleccionar "
 "*Extensión* en el **Tipo de destino**."
-
 

@@ -200,15 +200,13 @@ The user's call forward can be configured in the following button:
 
 .. _fwd_to_vm:
 
-For example, to forward all external calls that are not answered after 15 
-seconds, we could configure a call forward like this:
-
-.. image:: img/users_call_fwd2.png
-    :align: center
-
 These are the fields and available values:
 
 .. glossary::
+
+    Enabled
+        Determines if the forward must be applied or not. This way, you can have
+        most used call forward configured and toggle if they apply or not.
 
     Call Type
         Determines if the forward must be applied to external, internal or any 
@@ -216,6 +214,7 @@ These are the fields and available values:
 
     Forward type
         When this forward must be applied:
+
             - Inconditional: always
             - No answer: when the call is not answered in X seconds
             - Busy: When the user is talking to someone (and call waiting is 
@@ -226,6 +225,7 @@ These are the fields and available values:
 
     Target type
         What route will use the forwarded call.
+
             - VoiceMail
             - Number (external)
             - Extension (internal)

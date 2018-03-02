@@ -1,12 +1,14 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) 2016, Irontec
-# This file is distributed under the same license as the IvozProvider
-# package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
+# Translations template for PROJECT.
+# Copyright (C) 2018 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2018.
 #
-"Project-Id-Version: IvozProvider 1.4\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-09 12:45+0200\n"
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2018-03-05 15:53+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -151,7 +153,6 @@ msgid "Name"
 msgstr "Nombre"
 
 #: ../../retail/retail_accounts.rst:45
-#, fuzzy
 msgid ""
 "Name of the **retail account**. This name must be unique in the whole "
 "brand so it's recommended to use some kind of secuential identifier. This"
@@ -159,12 +160,12 @@ msgid ""
 msgstr ""
 "Nombre de la **cuenta retail**. Este nombre ha de ser único en toda la "
 "marca por lo que se recomienda emplear algun identificador secuencial. "
-"También se empleará en los mensajes SIP (enviado como usuaro en la "
+"También se empleará en los mensajes SIP (enviado como usuario en la "
 "cabecera **From**)."
 
 #: ../../retail/retail_accounts.rst:48
 msgid "Description"
-msgstr "Descripcion"
+msgstr "Descripción"
 
 #: ../../retail/retail_accounts.rst:50
 msgid "Optional. Extra information for this *retail account*."
@@ -193,8 +194,8 @@ msgid ""
 "If you choose 'Yes' here, you'll have to fill the protocol, address and "
 "port where this *retail account* can be contacted."
 msgstr ""
-"Si elijes 'Sí' aquí, tendras que informar el protocol, dirección y "
-"puerto donde se enviarán las peticiones de esta *cuenta retail*."
+"Si elijes 'Sí' aquí, tendras que informar el protocol, dirección y puerto"
+" donde se enviarán las peticiones de esta *cuenta retail*."
 
 #: ../../retail/retail_accounts.rst:59
 msgid "Fallback Outgoing DDI"
@@ -206,8 +207,8 @@ msgid ""
 "DDI, **unless the source presented matches a DDI belonging to the "
 "account**."
 msgstr ""
-"Las llamadas externas de esta *cuenta retail* presentarán este DDI, "
-"**a no ser que el DDI presentado sea uno de los asociados a la cuenta**."
+"Las llamadas externas de esta *cuenta retail* presentarán este DDI, **a "
+"no ser que el DDI presentado sea uno de los asociados a la cuenta**."
 
 #: ../../retail/retail_accounts.rst:63
 msgid "Country and Area code"
@@ -223,7 +224,9 @@ msgstr "Codecs permitidos"
 
 #: ../../retail/retail_accounts.rst:68
 msgid "Like a other SIP entities, *retail accounts* will talk the selected codec."
-msgstr "Como otras entidades SIP, las *cuentas retail* hablarán en el códec seleccionado."
+msgstr ""
+"Como otras entidades SIP, las *cuentas retail* hablarán en el códec "
+"seleccionado."
 
 #: ../../retail/retail_accounts.rst:69
 msgid "From domain"
@@ -238,48 +241,149 @@ msgstr ""
 " la cabecera From."
 
 #: ../../retail/retail_accounts.rst:76
-msgid "Asterisk as an account client"
-msgstr "Asterisk como cliente de cuenta retail""
+msgid "Voicemail service"
+msgstr "Servicio de buzón de voz"
 
 #: ../../retail/retail_accounts.rst:78
+msgid ""
+"Each retail account has a separate voicemail mailbox to forward received "
+"calls using Call Forward Settings below."
+msgstr ""
+"Cada cuenta retail tiene un buzón de voz al que poder desvíar las "
+"llamadas entrantes a través de los Desvíos de llamadas que se explican a "
+"continuación."
+
+#: ../../retail/retail_accounts.rst:80
+msgid ""
+"They can use **Voicemail service code** defined at brand level to listen "
+"to messages and to record a greeting locution different from the standard"
+" one."
+msgstr ""
+"Se puede utilizar el **Código de servicio de buzón de voz** definido a "
+"nivel de marca para escuchar los mensajes de voz y para grabar una "
+"locución de buzón distinta a la estándar."
+
+#: ../../retail/retail_accounts.rst:85
+msgid "Call Forward Settings"
+msgstr "Desvíos de llamada"
+
+#: ../../retail/retail_accounts.rst:87
+msgid ""
+"Call forward settings can be configured per retail account. These are the"
+" fields and available values:"
+msgstr ""
+"Se pueden configurar desvíos de llamadas a nivel de cuenta retail. Estos "
+"son los campos disponibles:"
+
+#: ../../retail/retail_accounts.rst:90
+msgid "Enabled"
+msgstr "Activado"
+
+#: ../../retail/retail_accounts.rst:92
+msgid ""
+"Determines if the forward must be applied or not. This way, you can have "
+"most used call forward configured and toggle if they apply or not."
+msgstr ""
+"Determina si el desvío debe aplicarse o no. De esta forma, un usuario "
+"puede configurar los desvíos que más utilice e ir activándolos y "
+"desactivándolos."
+
+#: ../../retail/retail_accounts.rst:94
+msgid "Call Forward type"
+msgstr "Tipo de desvío"
+
+#: ../../retail/retail_accounts.rst:96
+msgid "When this forward must be applied:"
+msgstr "Indica cuándo aplica el desvío:"
+
+#: ../../retail/retail_accounts.rst:98
+msgid "Inconditional: always."
+msgstr "Incondicional: siempre."
+
+#: ../../retail/retail_accounts.rst:99
+msgid "No answer: when the call is not answered in X seconds."
+msgstr "No contesta: cuando la llamada no se contesta en X segundos."
+
+#: ../../retail/retail_accounts.rst:100
+msgid "Busy: When the retail account is busy (486 response code)."
+msgstr "Ocupado: Cuando la cuenta retail está ocupada (código de respuesta 486)."
+
+#: ../../retail/retail_accounts.rst:101
+msgid ""
+"Not registered: when the retail account is not registered against "
+"IvozProvider."
+msgstr ""
+"No registrada: cuando la cuenta retail no está registrada contra "
+"IvozProvider."
+
+#: ../../retail/retail_accounts.rst:103
+msgid "Target type"
+msgstr "Tipo de destino"
+
+#: ../../retail/retail_accounts.rst:105
+msgid "What route will use the forwarded call."
+msgstr "Indica a dónde se enviará la llamada cuando el desvío aplique."
+
+#: ../../retail/retail_accounts.rst:107
+msgid "Retail account voicemail"
+msgstr "Buzón de voz de la cuenta retail"
+
+#: ../../retail/retail_accounts.rst:108
+msgid "Number (external)"
+msgstr "Número externo"
+
+#: ../../retail/retail_accounts.rst:110
+msgid ""
+"Calls forwarded to an external number by a call forward setting will keep"
+" the original caller identification, adding the forwarding info in a SIP "
+"*Diversion* header."
+msgstr ""
+"Las llamadas desviadas por un desvío mantendrán la identificación "
+"original del llamante, añadiendo los datos del desviador en una cabecera "
+"SIP *Diversion*."
+
+#: ../../retail/retail_accounts.rst:115
+msgid "Asterisk as an account client"
+msgstr "Asterisk como cliente de cuenta retail"
+
+#: ../../retail/retail_accounts.rst:117
 msgid ""
 "At the other end of a account can be any kind of SIP entity. This section"
 " takes as example an Asterisk PBX system using SIP channel driver that "
 "wants to connect to IvozProvider."
 msgstr ""
-"En el otro extremo de una cuenta puede haber cualquier entidad. Esta seccion"
-" toma como ejemplo una PBX Asterisk usando su driver de canal SIP que "
-"deseamos conectar a IvozProvider"
+"En el otro extremo de una cuenta puede haber cualquier entidad. Esta "
+"sección toma como ejemplo una PBX Asterisk usando su driver de canal SIP "
+"que deseamos conectar a IvozProvider"
 
-#: ../../retail/retail_accounts.rst:83
+#: ../../retail/retail_accounts.rst:122
 msgid "Account register"
 msgstr "register cuenta"
 
-#: ../../retail/retail_accounts.rst:85
+#: ../../retail/retail_accounts.rst:124
 msgid ""
 "If the system can not be directly access, Asterisk will have to register "
 "in the platform (like a terminal will do)."
 msgstr ""
-"En caso de no estar directamente visible, el Asterisk tendrá que registrarse "
-"en IvozProvider (al igual que hacen los terminales)."
+"En caso de no estar directamente visible, el Asterisk tendrá que "
+"registrarse en IvozProvider (al igual que hacen los terminales)."
 
-#: ../../retail/retail_accounts.rst:88
+#: ../../retail/retail_accounts.rst:127
 msgid "Configuration will be something like this:"
 msgstr "La configuración sería tal que:"
 
-#: ../../retail/retail_accounts.rst:95
+#: ../../retail/retail_accounts.rst:134
 msgid "Account peer"
 msgstr "peer cuenta"
 
-#: ../../retail/retail_accounts.rst:110
+#: ../../retail/retail_accounts.rst:149
 msgid ""
 "*Account clients* MUST NOT challenge IvozProvider. That's why the "
 "*insecure* setting is used here."
 msgstr ""
-"Los clientes tras cuentas no pueden desafiar a IvozProvider, al igual "
-"que un terminal no desafía a IvozProvider cuando éste le llama. "
-"De ahí el insecure."
-
+"Los clientes tras cuentas no pueden desafiar a IvozProvider, al igual que"
+" un terminal no desafía a IvozProvider cuando éste le llama. De ahí el "
+"insecure."
 
 #: ../../retail/retail_ddis.rst:5
 msgid "Retail DDIs"
@@ -304,15 +408,14 @@ msgid ""
 "Retail DDIs filters only allow static redirection to another external "
 "number."
 msgstr ""
-"Podemos asignar un **filtro de entrada** configurado en :ref:`la anterior "
-"sección <retail_filters>`. Al contrario que los filtros externos disponibles "
-"en las PBX Virtuales, los filtros de los DDI de Retail tan solo proporcionan "
-"un desvío estático a un número externo."
-
+"Podemos asignar un **filtro de entrada** configurado en :ref:`la anterior"
+" sección <retail_filters>`. Al contrario que los filtros externos "
+"disponibles en las PBX Virtuales, los filtros de los DDI de Retail tan "
+"solo proporcionan un desvío estático a un número externo."
 
 #: ../../retail/retail_ddis.rst:21
 msgid "Retail DDI routes"
-msgstr "Rutas de DDI Retail""
+msgstr "Rutas de DDI Retail"
 
 #: ../../retail/retail_ddis.rst:23
 msgid ""
@@ -327,8 +430,8 @@ msgid ""
 "Routing a DDI through a Retail account will allow to place external calls"
 " from that account presenting that DDI as origin."
 msgstr ""
-"Enrutar un DDI a través de una Cuenta Retail permitirá realizar llamadas externas"
-" desde esa cuenta presentando dicho DDI como origen."
+"Enrutar un DDI a través de una Cuenta Retail permitirá realizar llamadas "
+"externas desde esa cuenta presentando dicho DDI como origen."
 
 #: ../../retail/retail_ddis.rst:31
 msgid "Recordings"
@@ -339,8 +442,8 @@ msgid ""
 "If Retail Client has *Recordings* feature enabled, DDIs can also record "
 "incoming and/or outgoing calls."
 msgstr ""
-"Si el Cliente Retail tiene la feature *Grabaciones* habilitada, los DDIs también "
-"podrán grabar las llamadas salientes y/o entrantes·"
+"Si el Cliente Retail tiene la feature *Grabaciones* habilitada, los DDIs "
+"también podrán grabar las llamadas salientes y/o entrantes·"
 
 #: ../../retail/retail_filters.rst:5
 msgid "Retail DDI filters"
@@ -377,7 +480,16 @@ msgstr "Destino externo para este filtro."
 #: ../../retail/retail_filters.rst:24
 msgid ""
 "Calls forwarded by a filter will keep the original caller identification,"
-" adding the fordwarding info in a SIP *Diversion* header."
+" adding the forwarding info in a SIP *Diversion* header."
 msgstr ""
-"Las llamadas desviadas por un filtro mantendrán la identificación original del"
-" llamante, añadiendo los datos del desviador en una cabecera SIP *Diversion*."
+"Las llamadas desviadas por un filtro mantendrán la identificación "
+"original del llamante, añadiendo los datos del desviador en una cabecera "
+"SIP *Diversion*."
+
+#: ../../retail/retail_filters.rst:28
+msgid ""
+"Retail DDI filters have precedence over retail account call forward "
+"settings (as they apply before)."
+msgstr ""
+"Los filtros tienen prevalencia sobre los desvíos definidos a nivel de cuenta, ya que aplican antes."
+
