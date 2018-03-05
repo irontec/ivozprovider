@@ -5,13 +5,22 @@
 
 #DEBHELPER#
 
-# Get Media relay public IP from debconf
-db_get ivozprovider/media_relay_address            || true
-MEDIA_RELAY_ADDRESS=$RET
-db_stop
+#######################################################################################################################
+#######################################################################################################################
+function setup_media_relays()
+{
+    # Get Media relay public IP from debconf
+    db_get ivozprovider/media_relay_address            || true
+    MEDIA_RELAY_ADDRESS=$RET
 
-# Configure Media relay IPs
-sed -i -r "s/(IP *= *).*/\1$MEDIA_RELAY_ADDRESS/"         /etc/default/rtpengine
-sed -i -r "s/(AUDIO_SOCK *= *).*/\1$MEDIA_RELAY_ADDRESS/" /etc/default/rtpproxy
+    # Configure Media relay IPs
+    sed -i -r "s/(IP *= *).*/\1$MEDIA_RELAY_ADDRESS/"         /etc/default/rtpengine
+    sed -i -r "s/(AUDIO_SOCK *= *).*/\1$MEDIA_RELAY_ADDRESS/" /etc/default/rtpproxy
+}
+
+#######################################################################################################################
+#######################################################################################################################
+setup_media_relays
+db_stop
 
 :
