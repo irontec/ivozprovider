@@ -51,6 +51,25 @@ class RetailAccounts extends Raw\RetailAccounts
         }
 
         if ($response) {
+
+            // Update Asterisk Voicemail
+            $vmMapper = new \IvozProvider\Mapper\Sql\AstVoicemail();
+            $voicemail = $vmMapper->findOneByField("retailAccountId", $model->getPrimaryKey());
+
+            // If not found create a new one
+            if (is_null($voicemail)) {
+                $voicemail = new \IvozProvider\Model\AstVoicemail();
+            }
+
+            $voicemail
+                ->setEmail(null)
+                ->setAttach('no')
+                ->setRetailAccountId($model->getId())
+                ->setMailbox($model->getVoiceMailUser())
+                ->setContext($model->getVoiceMailContext())
+                ->setTz($model->getCompany()->getDefaultTimezone()->getTz())
+                ->save();
+
             // Replicate Account into ast_ps_endpoint
             $endpointMapper = new \IvozProvider\Mapper\Sql\AstPsEndpoints();
             $endpoint = $endpointMapper->findOneByField("retailAccountId", $response);
@@ -80,6 +99,7 @@ class RetailAccounts extends Raw\RetailAccounts
                 ->setTrustIdInbound('yes')
                 ->setOutboundProxy('sip:users.ivozprovider.local^3Blr')
                 ->setDirectMediaMethod('invite')
+                ->setMailboxes($model->getVoiceMail())
                 ->save($forceInsert);
 
             // Replicate Account into ast_ps_aors

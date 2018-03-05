@@ -126,4 +126,18 @@ class Brands extends Raw\Brands
 
         return $features;
     }
+
+    public function getVoicemailService()
+    {
+        /** @var BrandServices[] $brandServices */
+        $brandServices = $this->getBrandServices();
+
+        foreach ($brandServices as $brandService) {
+            if ($brandService->getService()->getIden() == 'Voicemail') {
+                return $brandService;
+            }
+        }
+
+        return null;
+    }
 }

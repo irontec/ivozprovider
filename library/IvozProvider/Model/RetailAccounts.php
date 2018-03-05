@@ -189,4 +189,29 @@ class RetailAccounts extends Raw\RetailAccounts
 
         return parent::getCallForwardSettings(implode(' AND ', $conditions), $orderBy, $avoidLoading);
     }
+
+    /**
+     * @return string with the voicemail
+     */
+    public function getVoiceMail()
+    {
+        return $this->getVoiceMailUser() . '@' . $this->getVoiceMailContext();
+    }
+
+    /**
+     * @return string with the voicemail retail
+     */
+    public function getVoiceMailUser()
+    {
+        return "retail" . $this->getId();
+    }
+
+    /**
+     * @return string with the voicemail context
+     */
+    public function getVoiceMailContext()
+    {
+        return 'company' . $this->getCompany()->getId();
+    }
+
 }

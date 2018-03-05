@@ -508,6 +508,20 @@ class RetailAccounts extends MapperAbstract
                     }
                 }
 
+                if ($model->getAstVoicemail(null, null, true) !== null) {
+                    $astVoicemail = $model->getAstVoicemail();
+
+                    if (!is_array($astVoicemail)) {
+
+                        $astVoicemail = array($astVoicemail);
+                    }
+
+                    foreach ($astVoicemail as $value) {
+                        $value->setRetailAccountId($primaryKey)
+                              ->saveRecursive(false, $transactionTag);
+                    }
+                }
+
             }
 
             if ($success === true) {

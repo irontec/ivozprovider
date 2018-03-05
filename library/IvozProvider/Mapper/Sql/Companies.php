@@ -95,7 +95,8 @@ class Companies extends Raw\Companies
             $this->_updateDomains($model);
         }
 
-        if ($isNew) {
+        // Only Create Domain Attributes and Services for VPBX
+        if ($isNew && $model->getType() == $model::VPBX) {
             $this->_createDomainAttrs($model);
             $this->_propagateServices($model);
         }
@@ -112,11 +113,6 @@ class Companies extends Raw\Companies
 
     protected function _createDomainAttrs($model)
     {
-        // Only Create Domain Attributes if company has domain
-        if ($model->getType() !== $model::VPBX) {
-            return;
-        }
-
         $domainAttr = new \IvozProvider\Model\KamUsersDomainAttrs();
 
         $domainAttr->setDid($model->getDomainUsers())

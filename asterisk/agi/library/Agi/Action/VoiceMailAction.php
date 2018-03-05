@@ -2,6 +2,8 @@
 
 namespace Agi\Action;
 
+use IvozProvider\Model\RetailAccounts;
+
 class VoiceMailAction extends RouterAction
 {
     protected $_voicemail;
@@ -59,5 +61,19 @@ class VoiceMailAction extends RouterAction
             $this->agi->busy();
         }
     }
+
+    public function processRetailVoicemail()
+    {
+        /** @var RetailAccounts $retail */
+        $retail = $this->agi->getChannelCaller();
+
+        // Update CallerIdName to preferred format
+        $preferred = $retail->E164ToPreferred($this->agi->getOrigCallerIdNum());
+        $this->agi->setCallerIdNum($preferred);
+
+        // Run Voicemail Application
+        $this->agi->voicemail($retail->getVoiceMail(), "");
+    }
+
 
 }
