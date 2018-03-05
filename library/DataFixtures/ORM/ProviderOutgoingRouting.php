@@ -29,6 +29,7 @@ class ProviderOutgoingRouting extends Fixture implements DependentFixtureInterfa
         $item1->setPeeringContract($this->getReference('_reference_ProviderPeeringContract1'));
         $item1->setRoutingPattern($this->getReference('_reference_ProviderRoutingPatternRoutingPattern68'));
         $this->addReference('_reference_ProviderOutgoingRouting1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
         $item2 = $this->createEntityInstanceWithPublicMethods(OutgoingRouting::class);
@@ -39,6 +40,7 @@ class ProviderOutgoingRouting extends Fixture implements DependentFixtureInterfa
         $item2->setPeeringContract($this->getReference('_reference_ProviderPeeringContract1'));
         $item2->setRoutingPattern($this->getReference('_reference_ProviderRoutingPatternRoutingPattern68'));
         $this->addReference('_reference_ProviderOutgoingRouting2', $item2);
+        $this->sanitizeEntityValues($item2);
         $manager->persist($item2);
 
     

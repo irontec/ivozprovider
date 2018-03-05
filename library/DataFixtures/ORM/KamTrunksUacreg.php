@@ -34,6 +34,7 @@ class KamTrunksUacreg extends Fixture implements DependentFixtureInterface
         $item1->setBrand($this->getReference('_reference_ProviderBrand1'));
         $item1->setPeeringContract($this->getReference('_reference_ProviderPeeringContract1'));
         $this->addReference('_reference_ProviderRetailAccountKamDomainModelTrunksUacregTrunksUacreg1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
     

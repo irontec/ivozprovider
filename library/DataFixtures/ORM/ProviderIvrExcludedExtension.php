@@ -29,6 +29,7 @@ class ProviderIvrExcludedExtension extends Fixture implements DependentFixtureIn
             $this->getReference('_reference_ProviderExtension1')
         );
         $this->addReference('_reference_ProviderIvrExcludedExtension1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
         $manager->flush();

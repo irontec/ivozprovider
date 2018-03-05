@@ -39,6 +39,7 @@ class ProviderRecording extends Fixture implements DependentFixtureInterface
             '7602fd7f-4153-4475-9100-d89ff70cdf76.0.mp3'
         ));
         $this->addReference('_reference_ProviderRecording1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
         $manager->flush();

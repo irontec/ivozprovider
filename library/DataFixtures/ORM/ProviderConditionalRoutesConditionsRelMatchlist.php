@@ -31,6 +31,7 @@ class ProviderConditionalRoutesConditionsRelMatchlist extends Fixture implements
             $this->getReference('_reference_ProviderMatchList1')
         );
         $this->addReference('_reference_ProviderConditionalRoutesConditionsRelMatchlist1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
         $manager->flush();

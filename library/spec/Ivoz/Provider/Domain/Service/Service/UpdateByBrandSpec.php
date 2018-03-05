@@ -5,6 +5,7 @@ namespace spec\Ivoz\Provider\Domain\Service\Service;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\BrandService\BrandServiceDto;
+use Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface;
 use Ivoz\Provider\Domain\Model\Service\ServiceInterface;
 use Ivoz\Provider\Domain\Model\Service\ServiceRepository;
 use Ivoz\Provider\Domain\Service\Service\UpdateByBrand;
@@ -51,7 +52,8 @@ class UpdateByBrandSpec extends ObjectBehavior
 
     function it_creates_brand_services(
         BrandInterface $entity,
-        ServiceInterface $service
+        ServiceInterface $service,
+        BrandServiceInterface $brandService
     ) {
         $this
             ->serviceRepository
@@ -61,7 +63,8 @@ class UpdateByBrandSpec extends ObjectBehavior
         $this
             ->entityPersister
             ->persistDto(Argument::type(BrandServiceDto::class))
-            ->shouldBeCalled();
+            ->shouldBeCalled()
+            ->willReturn($brandService);
 
         $this->execute($entity, true);
     }

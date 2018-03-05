@@ -26,6 +26,7 @@ class ProviderExternalCallFilter extends Fixture implements DependentFixtureInte
         $item1->setHolidayNumberCountry($this->getReference('_reference_ProviderCountry70'));
         $item1->setOutOfScheduleNumberCountry($this->getReference('_reference_ProviderCountry70'));
         $this->addReference('_reference_ProviderExternalCallFilter1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
     

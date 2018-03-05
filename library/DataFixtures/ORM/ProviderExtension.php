@@ -27,6 +27,7 @@ class ProviderExtension extends Fixture implements DependentFixtureInterface
         $item1->setUser($this->getReference('_reference_ProviderUser1'));
         $item1->setNumberCountry($this->getReference('_reference_ProviderCountry70'));
         $this->addReference('_reference_ProviderExtension1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
         $item2 = $this->createEntityInstanceWithPublicMethods(Extension::class);
@@ -36,6 +37,7 @@ class ProviderExtension extends Fixture implements DependentFixtureInterface
         $item2->setUser($this->getReference('_reference_ProviderUser2'));
         $item2->setNumberCountry($this->getReference('_reference_ProviderCountry70'));
         $this->addReference('_reference_ProviderExtension2', $item2);
+        $this->sanitizeEntityValues($item2);
         $manager->persist($item2);
 
         $item3 = $this->createEntityInstanceWithPublicMethods(Extension::class);
@@ -45,6 +47,7 @@ class ProviderExtension extends Fixture implements DependentFixtureInterface
         $item3->setCompany($this->getReference('_reference_ProviderCompany1'));
         $item3->setNumberCountry($this->getReference('_reference_ProviderCountry70'));
         $this->addReference('_reference_ProviderExtension3', $item3);
+        $this->sanitizeEntityValues($item3);
         $manager->persist($item3);
 
     

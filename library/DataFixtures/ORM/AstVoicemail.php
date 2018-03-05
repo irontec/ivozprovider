@@ -29,6 +29,7 @@ class AstVoicemail extends Fixture implements DependentFixtureInterface
         $item1->setTz("Europe/Madrid");
         $item1->setUser($this->getReference('_reference_ProviderUser1'));
         $this->addReference('_reference_AstVoicemail1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
         $item2 = $this->createEntityInstanceWithPublicMethods(Voicemail::class);
@@ -40,6 +41,7 @@ class AstVoicemail extends Fixture implements DependentFixtureInterface
         $item2->setTz("Europe/Madrid");
         $item2->setUser($this->getReference('_reference_ProviderUser2'));
         $this->addReference('_reference_AstVoicemail2', $item2);
+        $this->sanitizeEntityValues($item2);
         $manager->persist($item2);
 
         $item3 = $this->createEntityInstanceWithPublicMethods(Voicemail::class);
@@ -51,6 +53,7 @@ class AstVoicemail extends Fixture implements DependentFixtureInterface
         $item3->setTz("Europe/Madrid");
         $item3->setUser($this->getReference('_reference_ProviderUser1'));
         $this->addReference('_reference_AstVoicemail3', $item3);
+        $this->sanitizeEntityValues($item3);
         $manager->persist($item3);
 
         $manager->flush();

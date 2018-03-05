@@ -27,6 +27,7 @@ class ProviderCountry extends Fixture
         $item70->setName(new Name('Spain', 'España'));
         $item70->setZone(new Zone('Europe', 'Europa'));
         $this->addReference('_reference_ProviderCountry70', $item70);
+        $this->sanitizeEntityValues($item70);
         $manager->persist($item70);
 
         $item79 = $this->createEntityInstanceWithPublicMethods(Country::class);
@@ -35,6 +36,7 @@ class ProviderCountry extends Fixture
         $item79->setName(new Name('United Kingdom', 'Reino Unido'));
         $item79->setZone(new Zone('Europe', 'Europa'));
         $this->addReference('_reference_ProviderCountry79', $item79);
+        $this->sanitizeEntityValues($item79);
         $manager->persist($item79);
 
         $item116 = $this->createEntityInstanceWithPublicMethods(Country::class);
@@ -43,6 +45,7 @@ class ProviderCountry extends Fixture
         $item116->setName(new Name('Japan', 'Japón'));
         $item116->setZone(new Zone('Asia', 'Asia'));
         $this->addReference('_reference_ProviderCountry116', $item116);
+        $this->sanitizeEntityValues($item116);
         $manager->persist($item116);
 
         $manager->flush();

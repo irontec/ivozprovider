@@ -28,6 +28,7 @@ class ProviderMusicOnHold extends Fixture implements DependentFixtureInterface
         $item1->setEncodedFile(new EncodedFile(null, null, null));
         $item1->setBrand($this->getReference('_reference_ProviderBrand1'));
         $this->addReference('_reference_ProviderMusicOnHold1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
         $item2 = $this->createEntityInstanceWithPublicMethods(MusicOnHold::class);
@@ -36,6 +37,7 @@ class ProviderMusicOnHold extends Fixture implements DependentFixtureInterface
         $item2->setEncodedFile(new EncodedFile(null, null, null));
         $item2->setCompany($this->getReference('_reference_ProviderCompany1'));
         $this->addReference('_reference_ProviderMusicOnHold2', $item2);
+        $this->sanitizeEntityValues($item2);
         $manager->persist($item2);
 
     

@@ -27,6 +27,7 @@ class ProviderPeeringContract extends Fixture implements DependentFixtureInterfa
         $item1->setBrand($this->getReference('_reference_ProviderBrand1'));
         $item1->setTransformationRuleSet($this->getReference('_reference_ProviderTransformationRuleSet70'));
         $this->addReference('_reference_ProviderPeeringContract1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
     

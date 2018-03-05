@@ -39,10 +39,8 @@ class ProviderRetailAccount extends Fixture implements DependentFixtureInterface
         $item1->setCompany(
             $this->getReference('_reference_ProviderCompany3')
         );
-        $item1->setDomain(
-            $this->getReference('_reference_ProviderDomain6')
-        );
         $this->addReference('_reference_ProviderRetailAccount1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
         $manager->flush();

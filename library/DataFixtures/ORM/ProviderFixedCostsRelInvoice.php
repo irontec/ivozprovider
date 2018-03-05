@@ -34,6 +34,7 @@ class ProviderFixedCostsRelInvoice extends Fixture implements DependentFixtureIn
         $item1->setQuantity(1);
 
         $this->addReference('_reference_ProviderFixedCostsRelInvoice1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
         $manager->flush();

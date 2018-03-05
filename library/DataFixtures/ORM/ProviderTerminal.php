@@ -29,6 +29,7 @@ class ProviderTerminal extends Fixture implements DependentFixtureInterface
         $item1->setDomain($this->getReference('_reference_ProviderDomain3'));
         $item1->setTerminalModel($this->getReference('_reference_ProviderTerminalModel1'));
         $this->addReference('_reference_ProviderTerminal1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
         $item2 = $this->createEntityInstanceWithPublicMethods(Terminal::class);
@@ -40,6 +41,7 @@ class ProviderTerminal extends Fixture implements DependentFixtureInterface
         $item2->setDomain($this->getReference('_reference_ProviderDomain3'));
         $item2->setTerminalModel($this->getReference('_reference_ProviderTerminalModel1'));
         $this->addReference('_reference_ProviderTerminal2', $item2);
+        $this->sanitizeEntityValues($item2);
         $manager->persist($item2);
 
         $item3 = $this->createEntityInstanceWithPublicMethods(Terminal::class);

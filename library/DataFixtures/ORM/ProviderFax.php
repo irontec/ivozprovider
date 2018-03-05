@@ -25,6 +25,7 @@ class ProviderFax extends Fixture implements DependentFixtureInterface
         $item1->setSendByEmail(false);
         $item1->setCompany($this->getReference('_reference_ProviderCompany1'));
         $this->addReference('_reference_ProviderFax1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
 

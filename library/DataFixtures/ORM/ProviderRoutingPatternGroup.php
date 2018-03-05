@@ -25,6 +25,7 @@ class ProviderRoutingPatternGroup extends Fixture implements DependentFixtureInt
         $item7->setDescription("");
         $item7->setBrand($this->getReference('_reference_ProviderBrand1'));
         $this->addReference('_reference_ProviderRoutingPatternGroup7', $item7);
+        $this->sanitizeEntityValues($item7);
         $manager->persist($item7);
 
         $item21 = $this->createEntityInstanceWithPublicMethods(RoutingPatternGroup::class);
@@ -32,6 +33,7 @@ class ProviderRoutingPatternGroup extends Fixture implements DependentFixtureInt
         $item21->setDescription("Empty");
         $item21->setBrand($this->getReference('_reference_ProviderBrand1'));
         $this->addReference('_reference_ProviderRoutingPatternGroup21', $item21);
+        $this->sanitizeEntityValues($item21);
         $manager->persist($item21);
 
     

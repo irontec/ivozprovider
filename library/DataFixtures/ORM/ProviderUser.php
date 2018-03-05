@@ -40,6 +40,7 @@ class ProviderUser extends Fixture implements DependentFixtureInterface
 //        $item1->setExtension($this->getReference('_reference_ProviderExtension1'));
         $item1->setTimezone($this->getReference('_reference_ProviderTimezone145'));
         $this->addReference('_reference_ProviderUser1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
         $item2 = $this->createEntityInstanceWithPublicMethods(User::class);
@@ -62,6 +63,7 @@ class ProviderUser extends Fixture implements DependentFixtureInterface
 //        $item2->setExtension($this->getReference('_reference_ProviderExtension2'));
         $item2->setTimezone($this->getReference('_reference_ProviderTimezone145'));
         $this->addReference('_reference_ProviderUser2', $item2);
+        $this->sanitizeEntityValues($item2);
         $manager->persist($item2);
 
     

@@ -35,6 +35,7 @@ class ProviderIvr extends Fixture implements DependentFixtureInterface
         $item1->setNoInputNumberCountry($this->getReference('_reference_ProviderCountry70'));
         $item1->setErrorNumberCountry($this->getReference('_reference_ProviderCountry70'));
         $this->addReference('_reference_ProviderIvrIvr1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
     

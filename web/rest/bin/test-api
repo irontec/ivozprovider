@@ -10,5 +10,6 @@ pushd /opt/irontec/ivozprovider/web/rest
         openssl rsa  -passin pass:changeme -pubout -in var/jwt/private-test.pem -out var/jwt/public-test.pem
         chmod o+r -R var/jwt
     fi
+
     vendor/bin/behat
 popd

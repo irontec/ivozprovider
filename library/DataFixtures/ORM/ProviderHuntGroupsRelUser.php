@@ -26,6 +26,7 @@ class ProviderHuntGroupsRelUser extends Fixture implements DependentFixtureInter
         $item1->setHuntGroup($this->getReference('_reference_ProviderHuntGroup1'));
         $item1->setUser($this->getReference('_reference_ProviderUser1'));
         $this->addReference('_reference_ProviderHuntGroupsRelUser1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
     

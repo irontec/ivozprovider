@@ -31,6 +31,7 @@ class AstPsEndpoint extends Fixture implements DependentFixtureInterface
         $item1->setNamedPickupGroup("");
         $item1->setTerminal($this->getReference('_reference_ProviderTerminal1'));
         $this->addReference('_reference_AstPsEndpoint1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
         $item2 = $this->createEntityInstanceWithPublicMethods(PsEndpoint::class);
@@ -44,6 +45,7 @@ class AstPsEndpoint extends Fixture implements DependentFixtureInterface
         $item2->setNamedPickupGroup("");
         $item2->setTerminal($this->getReference('_reference_ProviderTerminal2'));
         $this->addReference('_reference_AstPsEndpoint2', $item2);
+        $this->sanitizeEntityValues($item2);
         $manager->persist($item2);
 
         $item3 = $this->createEntityInstanceWithPublicMethods(PsEndpoint::class);
@@ -55,6 +57,7 @@ class AstPsEndpoint extends Fixture implements DependentFixtureInterface
         $item3->setOutboundProxy("sip:users.ivozprovider.local^3Blr");
         $item3->setTerminal($this->getReference('_reference_ProviderTerminal3'));
         $this->addReference('_reference_AstPsEndpoint3', $item3);
+        $this->sanitizeEntityValues($item3);
         $manager->persist($item3);
 
         $item4 = $this->createEntityInstanceWithPublicMethods(PsEndpoint::class);
@@ -68,6 +71,7 @@ class AstPsEndpoint extends Fixture implements DependentFixtureInterface
         $item4->setTrustIdInbound("yes");
         $item4->setFriend($this->getReference('_reference_ProviderFriend1'));
         $this->addReference('_reference_AstPsEndpoint4', $item4);
+        $this->sanitizeEntityValues($item4);
         $manager->persist($item4);
 
 
@@ -83,6 +87,7 @@ class AstPsEndpoint extends Fixture implements DependentFixtureInterface
         $item5->setTrustIdInbound("yes");
         $item5->setRetailAccount($this->getReference('_reference_ProviderRetailAccount1'));
         $this->addReference('_reference_AstPsEndpoint5', $item5);
+        $this->sanitizeEntityValues($item5);
         $manager->persist($item5);
 
         $manager->flush();

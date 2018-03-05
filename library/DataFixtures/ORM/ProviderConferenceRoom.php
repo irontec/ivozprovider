@@ -27,6 +27,7 @@ class ProviderConferenceRoom extends Fixture implements DependentFixtureInterfac
         $item1->setMaxMembers(1);
         $item1->setCompany($this->getReference('_reference_ProviderCompany1'));
         $this->addReference('_reference_ProviderConferenceRoomConferenceRoom1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
     

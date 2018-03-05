@@ -27,6 +27,7 @@ class ProviderTimezone extends Fixture implements DependentFixtureInterface
         $item145->setLabel(new Label('en', 'es'));
         $item145->setCountry($this->getReference('_reference_ProviderCountry70'));
         $this->addReference('_reference_ProviderTimezone145', $item145);
+        $this->sanitizeEntityValues($item145);
         $manager->persist($item145);
 
         $item158 = $this->createEntityInstanceWithPublicMethods(Timezone::class);
@@ -35,6 +36,7 @@ class ProviderTimezone extends Fixture implements DependentFixtureInterface
         $item158->setLabel(new Label('en', 'es'));
         $item158->setCountry($this->getReference('_reference_ProviderCountry79'));
         $this->addReference('_reference_ProviderTimezone158', $item158);
+        $this->sanitizeEntityValues($item158);
         $manager->persist($item158);
 
         $manager->flush();

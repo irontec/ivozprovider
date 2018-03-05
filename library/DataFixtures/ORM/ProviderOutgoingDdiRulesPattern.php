@@ -34,6 +34,7 @@ class ProviderOutgoingDdiRulesPattern extends Fixture implements DependentFixtur
             $this->getReference('_reference_ProviderDdi1')
         );
         $this->addReference('_reference_ProviderOutgoingDdiRulesPattern1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
         $manager->flush();

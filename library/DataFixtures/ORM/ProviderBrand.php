@@ -30,9 +30,11 @@ class ProviderBrand extends Fixture implements DependentFixtureInterface
         $item1->setRecordingsLimitEmail("");
         $item1->setLogo(new Logo(null, null, null));
         $item1->setInvoice(new Invoice('', '', '', '', '', '', ''));
+        $item1->setDomain($this->getReference('_reference_ProviderDomain6'));
         $item1->setLanguage($this->getReference('_reference_ProviderLanguage1'));
         $item1->setDefaultTimezone($this->getReference('_reference_ProviderTimezone145'));
         $this->addReference('_reference_ProviderBrand1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
         $item2 = $this->createEntityInstanceWithPublicMethods(Brand::class);
@@ -44,6 +46,7 @@ class ProviderBrand extends Fixture implements DependentFixtureInterface
         $item2->setLanguage($this->getReference('_reference_ProviderLanguage1'));
         $item2->setDefaultTimezone($this->getReference('_reference_ProviderTimezone145'));
         $this->addReference('_reference_ProviderBrand2', $item2);
+        $this->sanitizeEntityValues($item2);
         $manager->persist($item2);
 
     

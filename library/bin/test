@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Stop on first non-zero exit code
+set -e
+
+pushd /opt/irontec/ivozprovider/scheme
+    bin/console doctrine:schema:validate
+popd
+
+pushd /opt/irontec/ivozprovider/library
+    ./bin/phpspec run
+popd
+
+pushd /opt/irontec/ivozprovider/web/rest
+    ./bin/test-orm
+    ./bin/test-api
+popd

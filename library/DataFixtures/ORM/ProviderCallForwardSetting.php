@@ -28,6 +28,7 @@ class ProviderCallForwardSetting extends Fixture implements DependentFixtureInte
         $item1->setUser($this->getReference('_reference_ProviderUser1'));
         $item1->setNumberCountry($this->getReference('_reference_ProviderCountry70'));
         $this->addReference('_reference_ProviderCallForwardSetting1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
         $item2 = $this->createEntityInstanceWithPublicMethods(CallForwardSetting::class);
@@ -39,6 +40,7 @@ class ProviderCallForwardSetting extends Fixture implements DependentFixtureInte
         $item2->setUser($this->getReference('_reference_ProviderUser1'));
         $item2->setNumberCountry($this->getReference('_reference_ProviderCountry70'));
         $this->addReference('_reference_ProviderCallForwardSetting2', $item2);
+        $this->sanitizeEntityValues($item2);
         $manager->persist($item2);
 
         $item3 = $this->createEntityInstanceWithPublicMethods(CallForwardSetting::class);
@@ -49,6 +51,7 @@ class ProviderCallForwardSetting extends Fixture implements DependentFixtureInte
         $item3->setUser($this->getReference('_reference_ProviderUser1'));
         $item3->setNumberCountry($this->getReference('_reference_ProviderCountry70'));
         $this->addReference('_reference_ProviderCallForwardSetting3', $item3);
+        $this->sanitizeEntityValues($item3);
         $manager->persist($item3);
 
         $item4 = $this->createEntityInstanceWithPublicMethods(CallForwardSetting::class);
@@ -59,6 +62,7 @@ class ProviderCallForwardSetting extends Fixture implements DependentFixtureInte
         $item4->setUser($this->getReference('_reference_ProviderUser1'));
         $item4->setNumberCountry($this->getReference('_reference_ProviderCountry70'));
         $this->addReference('_reference_ProviderCallForwardSetting4', $item4);
+        $this->sanitizeEntityValues($item4);
         $manager->persist($item4);
 
         $manager->flush();
