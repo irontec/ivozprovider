@@ -29,7 +29,12 @@ class TerminalDto extends TerminalDtoAbstract
             ];
         }
 
-        return parent::getPropertyMap(...func_get_args());
+        $response = parent::getPropertyMap(...func_get_args());
+        if (array_key_exists('domainId', $response)) {
+            unset($response['domainId']);
+        }
+
+        return $response;
     }
 }
 

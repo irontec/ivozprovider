@@ -22,18 +22,7 @@ class FaxesInOutDto extends FaxesInOutDtoAbstract
             ];
         }
 
-        return [
-            'calldate' => 'calldate',
-            'src' => 'src',
-            'dst' => 'dst',
-            'type' => 'type',
-            'pages' => 'pages',
-            'status' => 'status',
-            'id' => 'id',
-            'file' => ['fileSize','mimeType','baseName'],
-            'faxId' => 'fax',
-            'dstCountryId' => 'dstCountry'
-        ];
+        return parent::getPropertyMap(...func_get_args());
     }
 
     public function getFileObjects()

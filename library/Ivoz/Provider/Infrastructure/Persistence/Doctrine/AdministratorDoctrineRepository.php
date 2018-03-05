@@ -3,8 +3,8 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\ORM\EntityRepository;
+use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorRepository;
-
 
 /**
  * AdministratorDoctrineRepository

@@ -22,19 +22,6 @@ class AdministratorDto extends AdministratorDtoAbstract
         return parent::getPropertyMap(...func_get_args());
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function normalize(string $context)
-    {
-        $response = parent::normalize(...func_get_args());
-        if (isset($response['pass'])) {
-            $response['pass'] = '*****';
-        }
-
-        return $response;
-    }
-
     public function toArray($hideSensitiveData = false)
     {
         $response = parent::toArray($hideSensitiveData);

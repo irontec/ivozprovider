@@ -33,6 +33,7 @@ class DeleteByCompany implements CompanyLifecycleEventHandlerInterface
 
         if ($domain) {
             $this->em->remove($domain);
+            $entity->setDomain(null);
         }
     }
 }
