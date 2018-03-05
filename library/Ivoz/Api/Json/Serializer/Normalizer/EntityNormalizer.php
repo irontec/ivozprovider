@@ -86,6 +86,11 @@ class EntityNormalizer implements NormalizerInterface
 
         foreach ($data as $key => $value) {
 
+            if (is_array($value)) {
+                $data[$key] = $this->flatten($value);
+                continue;
+            }
+
             if (!is_object($value)) {
                 continue;
             }
@@ -93,7 +98,7 @@ class EntityNormalizer implements NormalizerInterface
             $class = get_class($value);
             switch ($class) {
                 case 'DateTime':
-                    /** @todo this should be done by dto::toArray  $value */
+                    /** @todo this should be done by dto::toArray $value */
                     $value = $value->format('Y-m-d H:i:s');
                     break;
             }
@@ -137,7 +142,7 @@ class EntityNormalizer implements NormalizerInterface
         $resourceMetadata = $this->resourceMetadataFactory->create($resourceClass);
 
         $depth = isset($context['item_operation_name'])
-            ? $resourceMetadata->getItemOperationAttribute($context['item_operation_name'],'depth', 2)
+            ? $resourceMetadata->getItemOperationAttribute($context['item_operation_name'],'depth', 1)
             : $resourceMetadata->getCollectionOperationAttribute($context['collection_operation_name'], 'depth', 1);
 
         if ($depth > 0) {
@@ -175,10 +180,6 @@ class EntityNormalizer implements NormalizerInterface
         foreach ($rawData as $key => $value) {
 
             if ($value instanceof DataTransferObjectInterface) {
-                if ($isSubresource) {
-                    unset($rawData[$key]);
-                    continue;
-                }
 
                 if ($depth == 0) {
                     $rawData[$key] = $rawData[$key]->getId();
