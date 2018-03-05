@@ -6,5 +6,5 @@ use Doctrine\Common\Persistence\ObjectRepository;
 use Doctrine\Common\Collections\Selectable;
 
 
-interface ConditionalRouteRepository extends ObjectRepository, Selectable {}
+interface ConditionalRoutesConditionsRelScheduleRepository extends ObjectRepository, Selectable {}
 

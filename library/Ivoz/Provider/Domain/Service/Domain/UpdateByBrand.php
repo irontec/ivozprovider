@@ -26,11 +26,6 @@ class UpdateByBrand implements BrandLifecycleEventHandlerInterface
      */
     protected $entityPersister;
 
-    /**
-     * @var DomainRepository
-     */
-    protected $domainRepository;
-
     public function __construct(
         EntityManagerInterface $em,
         EntityPersisterInterface $entityPersister
