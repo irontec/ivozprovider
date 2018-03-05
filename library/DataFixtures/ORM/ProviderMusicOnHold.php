@@ -26,16 +26,16 @@ class ProviderMusicOnHold extends Fixture implements DependentFixtureInterface
         $item1->setName("Something good");
         $item1->setOriginalFile(new OriginalFile(null, null, null));
         $item1->setEncodedFile(new EncodedFile(null, null, null));
-        $item1->setBrand($this->getReference('_reference_IvozProviderDomainModelBrandBrand1'));
-        $this->addReference('_reference_IvozProviderDomainModelMusicOnHoldMusicOnHold1', $item1);
+        $item1->setBrand($this->getReference('_reference_ProviderBrand1'));
+        $this->addReference('_reference_ProviderMusicOnHold1', $item1);
         $manager->persist($item1);
 
         $item2 = $this->createEntityInstanceWithPublicMethods(MusicOnHold::class);
         $item2->setName("Something good");
         $item2->setOriginalFile(new OriginalFile(null, null, null));
         $item2->setEncodedFile(new EncodedFile(null, null, null));
-        $item2->setCompany($this->getReference('_reference_IvozProviderDomainModelCompanyCompany1'));
-        $this->addReference('_reference_IvozProviderDomainModelMusicOnHoldMusicOnHold2', $item2);
+        $item2->setCompany($this->getReference('_reference_ProviderCompany1'));
+        $this->addReference('_reference_ProviderMusicOnHold2', $item2);
         $manager->persist($item2);
 
     

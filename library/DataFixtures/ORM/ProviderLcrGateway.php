@@ -23,15 +23,16 @@ class ProviderLcrGateway extends Fixture implements DependentFixtureInterface
         $item1 = $this->createEntityInstanceWithPublicMethods(LcrGateway::class);
         $item1->setLcrId(1);
         $item1->setGwName("b1p1s1");
-        $item1->setHostname("127.0.0.1");
+        $item1->setIp("127.0.0.1");
+        $item1->setHostname("hostname.net");
         $item1->setPort(5060);
         $item1->setParams("");
         $item1->setUriScheme(true);
         $item1->setTransport(true);
         $item1->setTag("1");
         $item1->setFlags(0);
-        $item1->setPeerServer($this->getReference('_reference_IvozProviderDomainModelPeerServerPeerServer1'));
-        $this->addReference('_reference_IvozProviderDomainModelLcrGatewayLcrGateway1', $item1);
+        $item1->setPeerServer($this->getReference('_reference_ProviderPeerServer1'));
+        $this->addReference('_reference_ProviderLcrGateway1', $item1);
         $manager->persist($item1);
 
     

@@ -23,11 +23,10 @@ class ProviderCallAcl extends Fixture implements DependentFixtureInterface
         $item1 = $this->createEntityInstanceWithPublicMethods(CallAcl::class);
         $item1->setName("testACL");
         $item1->setDefaultPolicy("allow");
-        $item1->setCompany($this->getReference('_reference_IvozProviderDomainModelCompanyCompany1'));
-        $this->addReference('_reference_IvozProviderDomainModelCallAclCallAcl1', $item1);
+        $item1->setCompany($this->getReference('_reference_ProviderCompany1'));
+        $this->addReference('_reference_ProviderCallAcl1', $item1);
         $manager->persist($item1);
 
-    
         $manager->flush();
     }
 

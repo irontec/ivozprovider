@@ -3,11 +3,12 @@
 namespace DataFixtures\ORM;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchList;
 
-class ProviderCallAclRelMatchList extends Fixture
+class ProviderCallAclRelMatchList extends Fixture implements DependentFixtureInterface
 {
     use \DataFixtures\FixtureHelperTrait;
 
@@ -18,9 +19,28 @@ class ProviderCallAclRelMatchList extends Fixture
     {
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(CallAclRelMatchList::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
-    
-    
+
+        /** @var CallAclRelMatchList $item1 */
+        $item1 = $this->createEntityInstanceWithPublicMethods(CallAclRelMatchList::class);
+        $item1->setPriority(1);
+        $item1->setPolicy("allow");
+        $item1->setCallAcl(
+            $this->getReference('_reference_ProviderCallAcl1')
+        );
+        $item1->setMatchList(
+            $this->getReference('_reference_ProviderMatchList1')
+        );
+        $this->addReference('_reference_ProviderCallAclRelMatchListCallAclRelMatchList1', $item1);
+        $manager->persist($item1);
+
         $manager->flush();
     }
 
+    public function getDependencies()
+    {
+        return array(
+            ProviderCallAcl::class,
+            ProviderMatchList::class
+        );
+    }
 }

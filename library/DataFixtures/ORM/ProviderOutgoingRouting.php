@@ -24,21 +24,21 @@ class ProviderOutgoingRouting extends Fixture implements DependentFixtureInterfa
         $item1->setType("pattern");
         $item1->setPriority(1);
         $item1->setWeight(1);
-        $item1->setBrand($this->getReference('_reference_IvozProviderDomainModelBrandBrand1'));
-        $item1->setCompany($this->getReference('_reference_IvozProviderDomainModelCompanyCompany1'));
-        $item1->setPeeringContract($this->getReference('_reference_IvozProviderDomainModelPeeringContractPeeringContract1'));
-        $item1->setRoutingPattern($this->getReference('_reference_IvozProviderDomainModelRoutingPatternRoutingPattern68'));
-        $this->addReference('_reference_IvozProviderDomainModelOutgoingRoutingOutgoingRouting1', $item1);
+        $item1->setBrand($this->getReference('_reference_ProviderBrand1'));
+        $item1->setCompany($this->getReference('_reference_ProviderCompany1'));
+        $item1->setPeeringContract($this->getReference('_reference_ProviderPeeringContract1'));
+        $item1->setRoutingPattern($this->getReference('_reference_ProviderRoutingPatternRoutingPattern68'));
+        $this->addReference('_reference_ProviderOutgoingRouting1', $item1);
         $manager->persist($item1);
 
         $item2 = $this->createEntityInstanceWithPublicMethods(OutgoingRouting::class);
         $item2->setType("pattern");
         $item2->setPriority(11);
         $item2->setWeight(6);
-        $item2->setBrand($this->getReference('_reference_IvozProviderDomainModelBrandBrand1'));
-        $item2->setPeeringContract($this->getReference('_reference_IvozProviderDomainModelPeeringContractPeeringContract1'));
-        $item2->setRoutingPattern($this->getReference('_reference_IvozProviderDomainModelRoutingPatternRoutingPattern68'));
-        $this->addReference('_reference_IvozProviderDomainModelOutgoingRoutingOutgoingRouting2', $item2);
+        $item2->setBrand($this->getReference('_reference_ProviderBrand1'));
+        $item2->setPeeringContract($this->getReference('_reference_ProviderPeeringContract1'));
+        $item2->setRoutingPattern($this->getReference('_reference_ProviderRoutingPatternRoutingPattern68'));
+        $this->addReference('_reference_ProviderOutgoingRouting2', $item2);
         $manager->persist($item2);
 
     

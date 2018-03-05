@@ -23,9 +23,9 @@ class ProviderHuntGroupsRelUser extends Fixture implements DependentFixtureInter
         $item1 = $this->createEntityInstanceWithPublicMethods(HuntGroupsRelUser::class);
         $item1->setTimeoutTime(1);
         $item1->setPriority(1);
-        $item1->setHuntGroup($this->getReference('_reference_IvozProviderDomainModelHuntGroupHuntGroup1'));
-        $item1->setUser($this->getReference('_reference_IvozProviderDomainModelUserUser1'));
-        $this->addReference('_reference_IvozProviderDomainModelHuntGroupsRelUserHuntGroupsRelUser1', $item1);
+        $item1->setHuntGroup($this->getReference('_reference_ProviderHuntGroup1'));
+        $item1->setUser($this->getReference('_reference_ProviderUser1'));
+        $this->addReference('_reference_ProviderHuntGroupsRelUser1', $item1);
         $manager->persist($item1);
 
     

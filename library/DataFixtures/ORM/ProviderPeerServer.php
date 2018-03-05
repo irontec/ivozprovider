@@ -32,10 +32,10 @@ class ProviderPeerServer extends Fixture implements DependentFixtureInterface
         $item1->setSipProxy("127.0.0.1");
         $item1->setFromUser("");
         $item1->setFromDomain("");
-//        $item1->setLcrGateway($this->getReference('_reference_IvozProviderDomainModelLcrGatewayLcrGateway1'));
-        $item1->setPeeringContract($this->getReference('_reference_IvozProviderDomainModelPeeringContractPeeringContract1'));
-        $item1->setBrand($this->getReference('_reference_IvozProviderDomainModelBrandBrand1'));
-        $this->addReference('_reference_IvozProviderDomainModelPeerServerPeerServer1', $item1);
+//        $item1->setLcrGateway($this->getReference('_reference_ProviderLcrGateway1'));
+        $item1->setPeeringContract($this->getReference('_reference_ProviderPeeringContract1'));
+        $item1->setBrand($this->getReference('_reference_ProviderBrand1'));
+        $this->addReference('_reference_ProviderPeerServer1', $item1);
         $manager->persist($item1);
 
     

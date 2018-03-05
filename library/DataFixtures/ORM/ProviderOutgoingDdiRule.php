@@ -23,8 +23,8 @@ class ProviderOutgoingDdiRule extends Fixture implements DependentFixtureInterfa
         $item1 = $this->createEntityInstanceWithPublicMethods(OutgoingDdiRule::class);
         $item1->setName("testRule");
         $item1->setDefaultAction("keep");
-        $item1->setCompany($this->getReference('_reference_IvozProviderDomainModelCompanyCompany1'));
-        $this->addReference('_reference_IvozProviderDomainModelOutgoingDdiRuleOutgoingDdiRule1', $item1);
+        $item1->setCompany($this->getReference('_reference_ProviderCompany1'));
+        $this->addReference('_reference_ProviderOutgoingDdiRule1', $item1);
         $manager->persist($item1);
 
     

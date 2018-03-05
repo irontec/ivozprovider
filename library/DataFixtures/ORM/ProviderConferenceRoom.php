@@ -25,8 +25,8 @@ class ProviderConferenceRoom extends Fixture implements DependentFixtureInterfac
         $item1->setPinProtected(true);
         $item1->setPinCode("4321");
         $item1->setMaxMembers(1);
-        $item1->setCompany($this->getReference('_reference_IvozProviderDomainModelCompanyCompany1'));
-        $this->addReference('_reference_IvozProviderDomainModelConferenceRoomConferenceRoom1', $item1);
+        $item1->setCompany($this->getReference('_reference_ProviderCompany1'));
+        $this->addReference('_reference_ProviderConferenceRoomConferenceRoom1', $item1);
         $manager->persist($item1);
 
     

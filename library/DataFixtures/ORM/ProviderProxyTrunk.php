@@ -23,7 +23,7 @@ class ProviderProxyTrunk extends Fixture
         $item1 = $this->createEntityInstanceWithPublicMethods(ProxyTrunk::class);
         $item1->setName("proxytrunks");
         $item1->setIp("127.0.0.1");
-        $this->addReference('_reference_IvozProviderDomainModelProxyTrunkProxyTrunk1', $item1);
+        $this->addReference('_reference_ProviderProxyTrunk1', $item1);
         $manager->persist($item1);
 
     

@@ -22,13 +22,13 @@ class ProviderApplicationServer extends Fixture
         $item1 = $this->createEntityInstanceWithPublicMethods(ApplicationServer::class);
         $item1->setIp("127.0.0.1");
         $item1->setName("as001");
-        $this->addReference('_reference_IvozProviderDomainModelApplicationServerApplicationServer1', $item1);
+        $this->addReference('_reference_ProviderApplicationServer1', $item1);
         $manager->persist($item1);
 
         $item2 = $this->createEntityInstanceWithPublicMethods(ApplicationServer::class);
         $item2->setIp("127.1.1.1");
         $item2->setName("test001");
-        $this->addReference('_reference_IvozProviderDomainModelApplicationServerApplicationServer2', $item2);
+        $this->addReference('_reference_ProviderApplicationServer2', $item2);
         $manager->persist($item2);
 
     
