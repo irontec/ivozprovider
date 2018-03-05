@@ -30,6 +30,7 @@ class ProviderTerminalModel extends Fixture implements DependentFixtureInterface
         $item1->setSpecificUrlPattern("");
         $item1->setTerminalManufacturer($this->getReference('_reference_ProviderTerminalManufacturerTerminalManufacturer1'));
         $this->addReference('_reference_ProviderTerminalModel1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
         $item2 = $this->createEntityInstanceWithPublicMethods(TerminalModel::class);
@@ -39,6 +40,7 @@ class ProviderTerminalModel extends Fixture implements DependentFixtureInterface
         $item2->setSpecificUrlPattern("{mac}");
         $item2->setTerminalManufacturer($this->getReference('_reference_ProviderTerminalManufacturerTerminalManufacturer2'));
         $this->addReference('_reference_ProviderTerminalModel2', $item2);
+        $this->sanitizeEntityValues($item2);
         $manager->persist($item2);
 
         $manager->flush();

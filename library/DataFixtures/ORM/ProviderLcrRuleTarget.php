@@ -30,6 +30,7 @@ class ProviderLcrRuleTarget extends Fixture implements DependentFixtureInterface
         $item3->setGw($this->getReference('_reference_ProviderLcrGateway1'));
         $item3->setOutgoingRouting($this->getReference('_reference_ProviderOutgoingRouting2'));
         $this->addReference('_reference_ProviderLcrRuleTarget3', $item3);
+        $this->sanitizeEntityValues($item3);
         $manager->persist($item3);
 
         $item4 = $this->createEntityInstanceWithPublicMethods(LcrRuleTarget::class);
@@ -40,6 +41,7 @@ class ProviderLcrRuleTarget extends Fixture implements DependentFixtureInterface
         $item4->setGw($this->getReference('_reference_ProviderLcrGateway1'));
         $item4->setOutgoingRouting($this->getReference('_reference_ProviderOutgoingRouting1'));
         $this->addReference('_reference_ProviderLcrRuleTarget4', $item4);
+        $this->sanitizeEntityValues($item4);
         $manager->persist($item4);
 
     

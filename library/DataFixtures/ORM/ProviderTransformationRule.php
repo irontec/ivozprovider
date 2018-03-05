@@ -28,6 +28,7 @@ class ProviderTransformationRule extends Fixture implements DependentFixtureInte
         $item195->setReplaceExpr("\1");
         $item195->setTransformationRuleSet($this->getReference('_reference_ProviderTransformationRuleSet70'));
         $this->addReference('_reference_ProviderTransformationRule195', $item195);
+        $this->sanitizeEntityValues($item195);
         $manager->persist($item195);
 
         $item832 = $this->createEntityInstanceWithPublicMethods(TransformationRule::class);
@@ -38,6 +39,7 @@ class ProviderTransformationRule extends Fixture implements DependentFixtureInte
         $item832->setReplaceExpr("\1");
         $item832->setTransformationRuleSet($this->getReference('_reference_ProviderTransformationRuleSet70'));
         $this->addReference('_reference_ProviderTransformationRule832', $item832);
+        $this->sanitizeEntityValues($item832);
         $manager->persist($item832);
 
         $item1724 = $this->createEntityInstanceWithPublicMethods(TransformationRule::class);
@@ -48,6 +50,7 @@ class ProviderTransformationRule extends Fixture implements DependentFixtureInte
         $item1724->setReplaceExpr("+34\1");
         $item1724->setTransformationRuleSet($this->getReference('_reference_ProviderTransformationRuleSet70'));
         $this->addReference('_reference_ProviderTransformationRule1724', $item1724);
+        $this->sanitizeEntityValues($item1724);
         $manager->persist($item1724);
 
         $item2361 = $this->createEntityInstanceWithPublicMethods(TransformationRule::class);
@@ -58,6 +61,7 @@ class ProviderTransformationRule extends Fixture implements DependentFixtureInte
         $item2361->setReplaceExpr("+34\1");
         $item2361->setTransformationRuleSet($this->getReference('_reference_ProviderTransformationRuleSet70'));
         $this->addReference('_reference_ProviderTransformationRule2361', $item2361);
+        $this->sanitizeEntityValues($item2361);
         $manager->persist($item2361);
 
         $item2550 = $this->createEntityInstanceWithPublicMethods(TransformationRule::class);
@@ -68,6 +72,7 @@ class ProviderTransformationRule extends Fixture implements DependentFixtureInte
         $item2550->setReplaceExpr("+34\1");
         $item2550->setTransformationRuleSet($this->getReference('_reference_ProviderTransformationRuleSet253'));
         $this->addReference('_reference_ProviderTransformationRule2550', $item2550);
+        $this->sanitizeEntityValues($item2550);
         $manager->persist($item2550);
 
         $item2552 = $this->createEntityInstanceWithPublicMethods(TransformationRule::class);
@@ -78,6 +83,7 @@ class ProviderTransformationRule extends Fixture implements DependentFixtureInte
         $item2552->setReplaceExpr("+34\1");
         $item2552->setTransformationRuleSet($this->getReference('_reference_ProviderTransformationRuleSet253'));
         $this->addReference('_reference_ProviderTransformationRule2552', $item2552);
+        $this->sanitizeEntityValues($item2552);
         $manager->persist($item2552);
 
         $item2553 = $this->createEntityInstanceWithPublicMethods(TransformationRule::class);
@@ -88,6 +94,7 @@ class ProviderTransformationRule extends Fixture implements DependentFixtureInte
         $item2553->setReplaceExpr("\1");
         $item2553->setTransformationRuleSet($this->getReference('_reference_ProviderTransformationRuleSet253'));
         $this->addReference('_reference_ProviderTransformationRule2553', $item2553);
+        $this->sanitizeEntityValues($item2553);
         $manager->persist($item2553);
 
         $item2555 = $this->createEntityInstanceWithPublicMethods(TransformationRule::class);
@@ -98,6 +105,7 @@ class ProviderTransformationRule extends Fixture implements DependentFixtureInte
         $item2555->setReplaceExpr("\1");
         $item2555->setTransformationRuleSet($this->getReference('_reference_ProviderTransformationRuleSet253'));
         $this->addReference('_reference_ProviderTransformationRule2555', $item2555);
+        $this->sanitizeEntityValues($item2555);
         $manager->persist($item2555);
 
         $manager->flush();

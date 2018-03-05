@@ -41,6 +41,7 @@ class FeatureContext implements Context, SnippetAcceptingContext
      */
     public function resetDatabase()
     {
+        $this->dropDatabase();
         $this->fs->copy(
             $this->cacheDir . DIRECTORY_SEPARATOR . 'db.sqlite.back',
             $this->cacheDir . DIRECTORY_SEPARATOR . '/db.sqlite'

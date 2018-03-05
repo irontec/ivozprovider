@@ -28,6 +28,7 @@ class ProviderRoutingPattern extends Fixture implements DependentFixtureInterfac
         $item68->setDescription(new Description('en', 'es'));
         $item68->setBrand($this->getReference('_reference_ProviderBrand1'));
         $this->addReference('_reference_ProviderRoutingPatternRoutingPattern68', $item68);
+        $this->sanitizeEntityValues($item68);
         $manager->persist($item68);
 
         $manager->flush();

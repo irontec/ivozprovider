@@ -43,6 +43,8 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
         $item1->setCountry($this->getReference('_reference_ProviderCountry70'));
         $item1->setTransformationRuleSet($this->getReference('_reference_ProviderTransformationRuleSet70'));
         $this->addReference('_reference_ProviderCompany1', $item1);
+
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
         $item2 = $this->createEntityInstanceWithPublicMethods(Company::class);
@@ -66,6 +68,7 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
         $item2->setCountry($this->getReference('_reference_ProviderCountry70'));
         $item2->setTransformationRuleSet($this->getReference('_reference_ProviderTransformationRuleSet70'));
         $this->addReference('_reference_ProviderCompany2', $item2);
+        $this->sanitizeEntityValues($item2);
         $manager->persist($item2);
 
         $item3 = $this->createEntityInstanceWithPublicMethods(Company::class);
@@ -89,6 +92,7 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
         $item3->setCountry($this->getReference('_reference_ProviderCountry70'));
         $item3->setTransformationRuleSet($this->getReference('_reference_ProviderTransformationRuleSet70'));
         $this->addReference('_reference_ProviderCompany3', $item3);
+        $this->sanitizeEntityValues($item3);
         $manager->persist($item3);
 
     

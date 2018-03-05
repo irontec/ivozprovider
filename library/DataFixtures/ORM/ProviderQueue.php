@@ -40,6 +40,7 @@ class ProviderQueue extends Fixture implements DependentFixtureInterface
         $item1->setTimeoutNumberCountry($this->getReference('_reference_ProviderCountry70'));
         $item1->setFullNumberCountry($this->getReference('_reference_ProviderCountry70'));
         $this->addReference('_reference_ProviderQueue1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
     

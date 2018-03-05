@@ -27,6 +27,7 @@ class ProviderConditionalRoutesCondition extends Fixture implements DependentFix
         $item1->setConditionalRoute($this->getReference('_reference_ProviderConditionalRouteConditionalRoute1'));
         $item1->setNumberCountry($this->getReference('_reference_ProviderCountry70'));
         $this->addReference('_reference_ProviderConditionalRoutesCondition1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
     

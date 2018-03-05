@@ -29,6 +29,7 @@ class ProviderAdministrator extends Fixture implements DependentFixtureInterface
         $item1->setLastname("ivozprovider");
         $item1->setTimezone($this->getReference('_reference_ProviderTimezone145'));
         $this->addReference('_reference_ProviderAdministrator1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
         $item2 = $this->createEntityInstanceWithPublicMethods(Administrator::class);
@@ -41,6 +42,7 @@ class ProviderAdministrator extends Fixture implements DependentFixtureInterface
         $item2->setBrand($this->getReference('_reference_ProviderBrand1'));
         $item2->setTimezone($this->getReference('_reference_ProviderTimezone145'));
         $this->addReference('_reference_ProviderAdministrator2', $item2);
+        $this->sanitizeEntityValues($item2);
         $manager->persist($item2);
 
         $item3 = $this->createEntityInstanceWithPublicMethods(Administrator::class);
@@ -52,6 +54,7 @@ class ProviderAdministrator extends Fixture implements DependentFixtureInterface
         $item3->setLastname("ivozprovider");
         $item3->setTimezone($this->getReference('_reference_ProviderTimezone145'));
         $this->addReference('_reference_ProviderAdministrator3', $item3);
+        $this->sanitizeEntityValues($item3);
         $manager->persist($item3);
 
         $item4 = $this->createEntityInstanceWithPublicMethods(Administrator::class);
@@ -65,6 +68,7 @@ class ProviderAdministrator extends Fixture implements DependentFixtureInterface
         $item4->setCompany($this->getReference('_reference_ProviderCompany1'));
         $item4->setTimezone($this->getReference('_reference_ProviderTimezone145'));
         $this->addReference('_reference_ProviderAdministrator4', $item4);
+        $this->sanitizeEntityValues($item4);
         $manager->persist($item4);
 
     

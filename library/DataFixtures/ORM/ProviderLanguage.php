@@ -24,12 +24,14 @@ class ProviderLanguage extends Fixture
         $item1->setIden("es");
         $item1->setName(new Name('es', 'es'));
         $this->addReference('_reference_ProviderLanguage1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
         $item2 = $this->createEntityInstanceWithPublicMethods(Language::class);
         $item2->setIden("en");
         $item2->setName(new Name('en', 'en'));
         $this->addReference('_reference_ProviderLanguage2', $item2);
+        $this->sanitizeEntityValues($item2);
         $manager->persist($item2);
 
     

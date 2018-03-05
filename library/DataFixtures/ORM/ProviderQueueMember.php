@@ -25,6 +25,7 @@ class ProviderQueueMember extends Fixture implements DependentFixtureInterface
         $item1->setQueue($this->getReference('_reference_ProviderQueue1'));
         $item1->setUser($this->getReference('_reference_ProviderUser1'));
         $this->addReference('_reference_ProviderQueueMemberQueueMember1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
     

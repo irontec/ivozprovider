@@ -28,6 +28,7 @@ class ProviderLocution extends Fixture implements DependentFixtureInterface
         $item1->setOriginalFile(new OriginalFile(null, null, null));
         $item1->setCompany($this->getReference('_reference_ProviderCompany1'));
         $this->addReference('_reference_ProviderLocution1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
     

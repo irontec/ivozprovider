@@ -23,6 +23,7 @@ class ProviderProxyUser extends Fixture
         $item1->setName("proxyusers");
         $item1->setIp("127.0.0.1");
         $this->addReference('_reference_ProviderProxyUserProxyUser1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
     

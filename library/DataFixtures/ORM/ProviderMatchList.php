@@ -24,9 +24,16 @@ class ProviderMatchList extends Fixture implements DependentFixtureInterface
         $item1->setName("testMatchlist");
         $item1->setCompany($this->getReference('_reference_ProviderCompany1'));
         $this->addReference('_reference_ProviderMatchList1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
-    
+        $item2 = $this->createEntityInstanceWithPublicMethods(MatchList::class);
+        $item2->setName("testMatchlist2");
+        $item2->setCompany($this->getReference('_reference_ProviderCompany1'));
+        $this->addReference('_reference_ProviderMatchList2', $item2);
+        $this->sanitizeEntityValues($item2);
+        $manager->persist($item2);
+
         $manager->flush();
     }
 

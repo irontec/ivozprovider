@@ -33,6 +33,7 @@ class ProviderLcrGateway extends Fixture implements DependentFixtureInterface
         $item1->setFlags(0);
         $item1->setPeerServer($this->getReference('_reference_ProviderPeerServer1'));
         $this->addReference('_reference_ProviderLcrGateway1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
     

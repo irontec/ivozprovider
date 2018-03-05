@@ -31,6 +31,7 @@ class ProviderFriend extends Fixture implements DependentFixtureInterface
         $item1->setCompany($this->getReference('_reference_ProviderCompany1'));
         $item1->setDomain($this->getReference('_reference_ProviderDomain3'));
         $this->addReference('_reference_ProviderFriend1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
         $manager->flush();

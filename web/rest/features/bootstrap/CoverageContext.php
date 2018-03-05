@@ -5,6 +5,7 @@ use Behat\Behat\Hook\Scope\BeforeScenarioScope;
 use SebastianBergmann\CodeCoverage\CodeCoverage;
 use SebastianBergmann\CodeCoverage\Filter;
 use SebastianBergmann\CodeCoverage\Report\Html\Facade;
+use SebastianBergmann\CodeCoverage\Report\PHP;
 
 class CoverageContext implements Context
 {
@@ -30,6 +31,7 @@ class CoverageContext implements Context
     {
         $feature = getenv('FEATURE') ?: 'behat';
         (new Facade())->process(self::$coverage, __DIR__."/../../features/coverage/");
+        (new PHP())->process(self::$coverage, __DIR__."/../../features/coverage/coverage.php");
     }
 
     /**

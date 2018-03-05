@@ -25,6 +25,5 @@ class SendRecodingOrderSpec extends ObjectBehavior
     function it_is_initializable()
     {
         $this->shouldHaveType(SendRecodingOrder::class);
-        throw new PendingException();
     }
 }

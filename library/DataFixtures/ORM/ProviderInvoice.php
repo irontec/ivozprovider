@@ -40,6 +40,7 @@ class ProviderInvoice extends Fixture implements DependentFixtureInterface
         $item1->setStatus('processing');
 
         $this->addReference('_reference_ProviderInvoice1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
         $manager->flush();

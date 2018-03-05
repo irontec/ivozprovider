@@ -27,6 +27,7 @@ class ProviderMatchListPattern extends Fixture implements DependentFixtureInterf
         $item1->setMatchList($this->getReference('_reference_ProviderMatchList1'));
         $item1->setNumberCountry($this->getReference('_reference_ProviderCountry70'));
         $this->addReference('_reference_ProviderMatchListPatternMatchListPattern1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
     

@@ -31,6 +31,7 @@ class ProviderFaxesInOut extends Fixture implements DependentFixtureInterface
         $item1->setType('In');
         $item1->setStatus('error');
         $this->addReference('_reference_ProviderFaxesInOut1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
         $manager->flush();
