@@ -6,7 +6,7 @@
 scheme/build.properties.development
 
 vendor
-library/spec/coverage/
+**/coverage/
 storage/*
 mount-storage.sh
 
