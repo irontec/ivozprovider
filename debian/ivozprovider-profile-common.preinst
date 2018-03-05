@@ -1,20 +1,14 @@
 #!/bin/bash
 
+#DEBHELPER#
+
 . /usr/share/debconf/confmodule
 
-# Environment file
-ENVFILE="/etc/systemd/system.conf"
-ENV="prod"
-
 ## Set environment
-grep SYMFONY_ENV $ENVFILE &>/dev/null
+grep -q SYMFONY_ENV /etc/systemd/system.conf
 if [ $? -ne 0 ]; then
-    echo "DefaultEnvironment=SYMFONY_ENV=$ENV" >> $ENVFILE
+    echo "DefaultEnvironment=SYMFONY_ENV=prod" >> /etc/systemd/system.conf
 fi
-
-# Set current environment
-systemctl set-environment SYMFONY_ENV=$ENV
-export $(systemctl show-environment)
 
 # Setup local dns server
 db_get ivozprovider/dns_address  || true

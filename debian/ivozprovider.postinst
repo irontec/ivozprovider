@@ -98,9 +98,6 @@ if [ -z "$2" ] || [ "$1" == "reconfigure" ]; then
     setup_mysql
     # Setup proxy addresses
     setup_proxies
-    # Setu Media relay address
-    setup_rtpproxy
-    setup_rtpengine
     # Setup pbx system
     setup_pbx
     # Setup ssh daemon
