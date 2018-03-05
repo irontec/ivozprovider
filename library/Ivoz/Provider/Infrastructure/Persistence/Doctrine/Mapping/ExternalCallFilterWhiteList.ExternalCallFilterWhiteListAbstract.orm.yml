@@ -6,7 +6,7 @@ Ivoz\Provider\Domain\Model\ExternalCallFilterWhiteList\ExternalCallFilterWhiteLi
       cascade: {  }
       fetch: LAZY
       mappedBy: null
-      inversedBy: whiteList
+      inversedBy: whiteLists
       joinColumns:
         filterId:
           referencedColumnName: id

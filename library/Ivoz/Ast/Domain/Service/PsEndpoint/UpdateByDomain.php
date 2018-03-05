@@ -34,11 +34,12 @@ class UpdateByDomain implements DomainLifecycleEventHandlerInterface
         }
 
         /** @var RetailAccountInterface[] $retailAccounts */
-        $retailAccounts= $entity->getRetailAccounts();
+        $retailAccounts = $entity->getRetailAccounts();
 
         foreach ($retailAccounts as $retailAccount) {
             if (!$retailAccount->getFromDomain()) {
-                $this->updateEndpoint($retailAccount->getAstPsEndpoint(), $entity->getDomain());            }
+                $this->updateEndpoint($retailAccount->getAstPsEndpoint(), $entity->getDomain());
+            }
         }
 
         /** @var TerminalInterface[] $terminals */

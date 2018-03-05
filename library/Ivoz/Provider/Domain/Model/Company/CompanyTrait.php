@@ -63,11 +63,6 @@ trait CompanyTrait
      */
     protected $relFeatures;
 
-    /**
-     * @var Collection
-     */
-    protected $domains;
-
 
     /**
      * Constructor
@@ -84,7 +79,6 @@ trait CompanyTrait
         $this->musicsOnHold = new ArrayCollection();
         $this->recordings = new ArrayCollection();
         $this->relFeatures = new ArrayCollection();
-        $this->domains = new ArrayCollection();
     }
 
     /**
@@ -133,10 +127,6 @@ trait CompanyTrait
         if ($dto->getRelFeatures()) {
             $self->replaceRelFeatures($dto->getRelFeatures());
         }
-
-        if ($dto->getDomains()) {
-            $self->replaceDomains($dto->getDomains());
-        }
         if ($dto->getId()) {
             $self->id = $dto->getId();
             $self->initChangelog();
@@ -181,9 +171,6 @@ trait CompanyTrait
         }
         if ($dto->getRelFeatures()) {
             $this->replaceRelFeatures($dto->getRelFeatures());
-        }
-        if ($dto->getDomains()) {
-            $this->replaceDomains($dto->getDomains());
         }
         return $this;
     }
@@ -856,78 +843,6 @@ trait CompanyTrait
         }
 
         return $this->relFeatures->toArray();
-    }
-
-    /**
-     * Add domain
-     *
-     * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain
-     *
-     * @return CompanyTrait
-     */
-    public function addDomain(\Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain)
-    {
-        $this->domains->add($domain);
-
-        return $this;
-    }
-
-    /**
-     * Remove domain
-     *
-     * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain
-     */
-    public function removeDomain(\Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain)
-    {
-        $this->domains->removeElement($domain);
-    }
-
-    /**
-     * Replace domains
-     *
-     * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface[] $domains
-     * @return self
-     */
-    public function replaceDomains(Collection $domains)
-    {
-        $updatedEntities = [];
-        $fallBackId = -1;
-        foreach ($domains as $entity) {
-            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
-            $updatedEntities[$index] = $entity;
-            $entity->setCompany($this);
-        }
-        $updatedEntityKeys = array_keys($updatedEntities);
-
-        foreach ($this->domains as $key => $entity) {
-            $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
-                $this->domains->set($key, $updatedEntities[$identity]);
-            } else {
-                $this->domains->remove($key);
-            }
-            unset($updatedEntities[$identity]);
-        }
-
-        foreach ($updatedEntities as $entity) {
-            $this->addDomain($entity);
-        }
-
-        return $this;
-    }
-
-    /**
-     * Get domains
-     *
-     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface[]
-     */
-    public function getDomains(Criteria $criteria = null)
-    {
-        if (!is_null($criteria)) {
-            return $this->domains->matching($criteria)->toArray();
-        }
-
-        return $this->domains->toArray();
     }
 
 

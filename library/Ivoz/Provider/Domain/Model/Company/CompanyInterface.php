@@ -771,36 +771,5 @@ interface CompanyInterface extends LoggableEntityInterface
      */
     public function getRelFeatures(\Doctrine\Common\Collections\Criteria $criteria = null);
 
-    /**
-     * Add domain
-     *
-     * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain
-     *
-     * @return CompanyTrait
-     */
-    public function addDomain(\Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain);
-
-    /**
-     * Remove domain
-     *
-     * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain
-     */
-    public function removeDomain(\Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain);
-
-    /**
-     * Replace domains
-     *
-     * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface[] $domains
-     * @return self
-     */
-    public function replaceDomains(Collection $domains);
-
-    /**
-     * Get domains
-     *
-     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface[]
-     */
-    public function getDomains(\Doctrine\Common\Collections\Criteria $criteria = null);
-
 }
 

@@ -19,7 +19,7 @@ Ivoz\Provider\Domain\Model\MatchList\MatchListAbstract:
       cascade: {  }
       fetch: LAZY
       mappedBy: null
-      inversedBy: null
+      inversedBy: matchLists
       joinColumns:
         brandId:
           referencedColumnName: id

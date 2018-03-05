@@ -43,9 +43,6 @@ Ivoz\Provider\Domain\Model\Company\Company:
       mappedBy: company
       cascade: ['persist']
       orphanRemoval: true
-    domains:
-      targetEntity: Ivoz\Provider\Domain\Model\Domain\DomainInterface
-      mappedBy: company
   lifecycleCallbacks:
     postLoad:
       - initChangelog

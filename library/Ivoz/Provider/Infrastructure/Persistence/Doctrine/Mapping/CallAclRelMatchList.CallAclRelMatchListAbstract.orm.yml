@@ -24,7 +24,7 @@ Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchListAbstract:
       cascade: {  }
       fetch: LAZY
       mappedBy: null
-      inversedBy: relPatterns
+      inversedBy: relMatchLists
       joinColumns:
         CallAclId:
           referencedColumnName: id

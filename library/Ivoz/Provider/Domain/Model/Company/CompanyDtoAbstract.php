@@ -197,11 +197,6 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
      */
     private $relFeatures = null;
 
-    /**
-     * @var \Ivoz\Provider\Domain\Model\Domain\DomainDto[] | null
-     */
-    private $domains = null;
-
 
     use DtoNormalizer;
 
@@ -293,8 +288,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'ratinProfiles' => $this->getRatinProfiles(),
             'musicsOnHold' => $this->getMusicsOnHold(),
             'recordings' => $this->getRecordings(),
-            'relFeatures' => $this->getRelFeatures(),
-            'domains' => $this->getDomains()
+            'relFeatures' => $this->getRelFeatures()
         ];
     }
 
@@ -412,17 +406,6 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             }
         }
 
-        if (!is_null($this->domains)) {
-            $items = $this->getDomains();
-            $this->domains = [];
-            foreach ($items as $item) {
-                $this->domains[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\Domain\\Domain',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-
     }
 
     /**
@@ -465,10 +448,6 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         $this->relFeatures = $transformer->transform(
             'Ivoz\\Provider\\Domain\\Model\\FeaturesRelCompany\\FeaturesRelCompany',
             $this->relFeatures
-        );
-        $this->domains = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\Domain\\Domain',
-            $this->domains
         );
     }
 
@@ -1470,26 +1449,6 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     public function getRelFeatures()
     {
         return $this->relFeatures;
-    }
-
-    /**
-     * @param array $domains
-     *
-     * @return static
-     */
-    public function setDomains($domains = null)
-    {
-        $this->domains = $domains;
-
-        return $this;
-    }
-
-    /**
-     * @return array
-     */
-    public function getDomains()
-    {
-        return $this->domains;
     }
 }
 

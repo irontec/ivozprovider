@@ -75,7 +75,7 @@ Ivoz\Cgr\Domain\Model\TpAccountAction\TpAccountActionAbstract:
       targetEntity: \Ivoz\Provider\Domain\Model\Company\CompanyInterface
       fetch: LAZY
       mappedBy: null
-      inversedBy: accountAction
+      inversedBy: null
       joinColumn:
         name: companyId
         referencedColumnName: id

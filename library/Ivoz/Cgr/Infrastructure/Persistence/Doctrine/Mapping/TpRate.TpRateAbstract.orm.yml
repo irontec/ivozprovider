@@ -76,7 +76,7 @@ Ivoz\Cgr\Domain\Model\TpRate\TpRateAbstract:
       cascade: {  }
       fetch: LAZY
       mappedBy: null
-      inversedBy: null
+      inversedBy: tpRates
       joinColumns:
         rateId:
           nullable: false
