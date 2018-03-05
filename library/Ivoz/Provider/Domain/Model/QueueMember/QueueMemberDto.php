@@ -2,14 +2,24 @@
 
 namespace Ivoz\Provider\Domain\Model\QueueMember;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
-
-
 class QueueMemberDto extends QueueMemberDtoAbstract
 {
+    /**
+     * @inheritdoc
+     */
+    public static function getPropertyMap(string $context = '')
+    {
+        if ($context === self::CONTEXT_COLLECTION) {
+            return [
+                'penalty' => 'penalty',
+                'id' => 'id',
+                'queueId' => 'queue',
+                'userId' => 'user'
+            ];
+        }
 
+        return parent::getPropertyMap(...func_get_args());
+    }
 }
 
 

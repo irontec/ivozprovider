@@ -2,13 +2,24 @@
 
 namespace Ivoz\Provider\Domain\Model\Fax;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
-
-
 class FaxDto extends FaxDtoAbstract
 {
+    /**
+     * @inheritdoc
+     */
+    public static function getPropertyMap(string $context = '')
+    {
+        if ($context === self::CONTEXT_COLLECTION) {
+            return [
+                'id' => 'id',
+                'name' => 'name',
+                'email' => 'email',
+                'sendByEmail' => 'sendByEmail'
+            ];
+        }
+
+        return parent::getPropertyMap(...func_get_args());
+    }
 
 }
 

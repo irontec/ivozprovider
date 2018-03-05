@@ -10,6 +10,14 @@ class CompanyDto extends CompanyDtoAbstract
      */
     public static function getPropertyMap(string $context = self::CONTEXT_SIMPLE)
     {
+        if ($context === self::CONTEXT_COLLECTION) {
+            return [
+                'id' => 'id',
+                'name' => 'name',
+                'nif' => 'nif'
+            ];
+        }
+
         return parent::getPropertyMap($context);
     }
 }

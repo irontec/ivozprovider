@@ -2,14 +2,25 @@
 
 namespace Ivoz\Provider\Domain\Model\MatchListPattern;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
-
-
 class MatchListPatternDto extends MatchListPatternDtoAbstract
 {
+    /**
+     * @inheritdoc
+     */
+    public static function getPropertyMap(string $context = '')
+    {
+        if ($context === self::CONTEXT_COLLECTION) {
+            return [
+                'id' => 'id',
+                'description' => 'description',
+                'type' => 'type',
+                'regexp' => 'regexp',
+                'numbervalue' => 'numbervalue'
+            ];
+        }
 
+        return parent::getPropertyMap(...func_get_args());
+    }
 }
 
 
