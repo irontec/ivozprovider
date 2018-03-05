@@ -2,14 +2,24 @@
 
 namespace Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
-
-
 class ExternalCallFilterBlackListDto extends ExternalCallFilterBlackListDtoAbstract
 {
 
+    /**
+     * @inheritdoc
+     */
+    public static function getPropertyMap(string $context = '')
+    {
+        if ($context === self::CONTEXT_COLLECTION) {
+            return  [
+                'id' => 'id',
+                'filterId' => 'filter',
+                'matchlistId' => 'matchlist'
+            ];
+        }
+
+        return parent::getPropertyMap(...func_get_args());
+    }
 }
 
 

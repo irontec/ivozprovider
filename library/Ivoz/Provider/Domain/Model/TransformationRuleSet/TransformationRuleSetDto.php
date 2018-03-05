@@ -2,14 +2,26 @@
 
 namespace Ivoz\Provider\Domain\Model\TransformationRuleSet;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
-
-
 class TransformationRuleSetDto extends TransformationRuleSetDtoAbstract
 {
+    /**
+     * @inheritdoc
+     */
+    public static function getPropertyMap(string $context = '')
+    {
+        if ($context === self::CONTEXT_COLLECTION) {
+            return [
+                'description' => 'description',
+                'internationalCode' => 'internationalCode',
+                'trunkPrefix' => 'trunkPrefix',
+                'areaCode' => 'areaCode',
+                'nationalLen' => 'nationalLen',
+                'id' => 'id'
+            ];
+        }
 
+        return parent::getPropertyMap(...func_get_args());
+    }
 }
 
 

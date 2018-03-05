@@ -14,6 +14,23 @@ class RetailAccountDto extends RetailAccountDtoAbstract
 
         return $response;
     }
+
+    /**
+     * @inheritdoc
+     */
+    public static function getPropertyMap(string $context = '')
+    {
+        if ($context === self::CONTEXT_COLLECTION) {
+            return [
+                'id' => 'id',
+                'name' => 'name',
+                'transport' => 'transport',
+                'authNeeded' => 'authNeeded'
+            ];
+        }
+
+        return parent::getPropertyMap(...func_get_args());
+    }
 }
 
 
