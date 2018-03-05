@@ -23,15 +23,15 @@ class ProviderRoutingPatternGroup extends Fixture implements DependentFixtureInt
         $item7 = $this->createEntityInstanceWithPublicMethods(RoutingPatternGroup::class);
         $item7->setName("Europe");
         $item7->setDescription("");
-        $item7->setBrand($this->getReference('_reference_IvozProviderDomainModelBrandBrand1'));
-        $this->addReference('_reference_IvozProviderDomainModelRoutingPatternGroupRoutingPatternGroup7', $item7);
+        $item7->setBrand($this->getReference('_reference_ProviderBrand1'));
+        $this->addReference('_reference_ProviderRoutingPatternGroup7', $item7);
         $manager->persist($item7);
 
         $item21 = $this->createEntityInstanceWithPublicMethods(RoutingPatternGroup::class);
         $item21->setName("Empty");
         $item21->setDescription("Empty");
-        $item21->setBrand($this->getReference('_reference_IvozProviderDomainModelBrandBrand1'));
-        $this->addReference('_reference_IvozProviderDomainModelRoutingPatternGroupRoutingPatternGroup21', $item21);
+        $item21->setBrand($this->getReference('_reference_ProviderBrand1'));
+        $this->addReference('_reference_ProviderRoutingPatternGroup21', $item21);
         $manager->persist($item21);
 
     

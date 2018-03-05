@@ -26,8 +26,8 @@ class ProviderHuntGroup extends Fixture implements DependentFixtureInterface
         $item1->setStrategy("ringAll");
         $item1->setRingAllTimeout(10);
         $item1->setNextUserPosition(0);
-        $item1->setCompany($this->getReference('_reference_IvozProviderDomainModelCompanyCompany1'));
-        $this->addReference('_reference_IvozProviderDomainModelHuntGroupHuntGroup1', $item1);
+        $item1->setCompany($this->getReference('_reference_ProviderCompany1'));
+        $this->addReference('_reference_ProviderHuntGroup1', $item1);
         $manager->persist($item1);
 
     

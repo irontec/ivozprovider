@@ -29,12 +29,12 @@ class ProviderIvr extends Fixture implements DependentFixtureInterface
         $item1->setNoInputNumberValue("946002020");
         $item1->setErrorRouteType("number");
         $item1->setErrorNumberValue("946002021");
-        $item1->setCompany($this->getReference('_reference_IvozProviderDomainModelCompanyCompany1'));
-        $item1->setWelcomeLocution($this->getReference('_reference_IvozProviderDomainModelLocutionLocution1'));
-        $item1->setSuccessLocution($this->getReference('_reference_IvozProviderDomainModelLocutionLocution1'));
-        $item1->setNoInputNumberCountry($this->getReference('_reference_IvozProviderDomainModelCountryCountry70'));
-        $item1->setErrorNumberCountry($this->getReference('_reference_IvozProviderDomainModelCountryCountry70'));
-        $this->addReference('_reference_IvozProviderDomainModelIvrIvr1', $item1);
+        $item1->setCompany($this->getReference('_reference_ProviderCompany1'));
+        $item1->setWelcomeLocution($this->getReference('_reference_ProviderLocution1'));
+        $item1->setSuccessLocution($this->getReference('_reference_ProviderLocution1'));
+        $item1->setNoInputNumberCountry($this->getReference('_reference_ProviderCountry70'));
+        $item1->setErrorNumberCountry($this->getReference('_reference_ProviderCountry70'));
+        $this->addReference('_reference_ProviderIvrIvr1', $item1);
         $manager->persist($item1);
 
     

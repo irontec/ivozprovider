@@ -33,13 +33,13 @@ class ProviderQueue extends Fixture implements DependentFixtureInterface
         $item1->setMemberCallTimeout(1);
         $item1->setStrategy("rrmemory");
         $item1->setWeight(5);
-        $item1->setCompany($this->getReference('_reference_IvozProviderDomainModelCompanyCompany1'));
-        $item1->setPeriodicAnnounceLocution($this->getReference('_reference_IvozProviderDomainModelLocutionLocution1'));
-        $item1->setTimeoutLocution($this->getReference('_reference_IvozProviderDomainModelLocutionLocution1'));
-        $item1->setFullLocution($this->getReference('_reference_IvozProviderDomainModelLocutionLocution1'));
-        $item1->setTimeoutNumberCountry($this->getReference('_reference_IvozProviderDomainModelCountryCountry70'));
-        $item1->setFullNumberCountry($this->getReference('_reference_IvozProviderDomainModelCountryCountry70'));
-        $this->addReference('_reference_IvozProviderDomainModelQueueQueue1', $item1);
+        $item1->setCompany($this->getReference('_reference_ProviderCompany1'));
+        $item1->setPeriodicAnnounceLocution($this->getReference('_reference_ProviderLocution1'));
+        $item1->setTimeoutLocution($this->getReference('_reference_ProviderLocution1'));
+        $item1->setFullLocution($this->getReference('_reference_ProviderLocution1'));
+        $item1->setTimeoutNumberCountry($this->getReference('_reference_ProviderCountry70'));
+        $item1->setFullNumberCountry($this->getReference('_reference_ProviderCountry70'));
+        $this->addReference('_reference_ProviderQueue1', $item1);
         $manager->persist($item1);
 
     

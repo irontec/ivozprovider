@@ -25,10 +25,10 @@ class ProviderConditionalRoute extends Fixture implements DependentFixtureInterf
         $item1->setRoutetype("user");
         $item1->setNumbervalue("");
         $item1->setFriendvalue("");
-        $item1->setCompany($this->getReference('_reference_IvozProviderDomainModelCompanyCompany1'));
-        $item1->setUser($this->getReference('_reference_IvozProviderDomainModelUserUser1'));
-        $item1->setNumberCountry($this->getReference('_reference_IvozProviderDomainModelCountryCountry70'));
-        $this->addReference('_reference_IvozProviderDomainModelConditionalRouteConditionalRoute1', $item1);
+        $item1->setCompany($this->getReference('_reference_ProviderCompany1'));
+        $item1->setUser($this->getReference('_reference_ProviderUser1'));
+        $item1->setNumberCountry($this->getReference('_reference_ProviderCountry70'));
+        $this->addReference('_reference_ProviderConditionalRouteConditionalRoute1', $item1);
         $manager->persist($item1);
 
     

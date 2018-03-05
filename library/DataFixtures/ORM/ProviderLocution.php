@@ -26,8 +26,8 @@ class ProviderLocution extends Fixture implements DependentFixtureInterface
         $item1->setName("testLocution");
         $item1->setEncodedFile(new EncodedFile(null, null, null));
         $item1->setOriginalFile(new OriginalFile(null, null, null));
-        $item1->setCompany($this->getReference('_reference_IvozProviderDomainModelCompanyCompany1'));
-        $this->addReference('_reference_IvozProviderDomainModelLocutionLocution1', $item1);
+        $item1->setCompany($this->getReference('_reference_ProviderCompany1'));
+        $this->addReference('_reference_ProviderLocution1', $item1);
         $manager->persist($item1);
 
     

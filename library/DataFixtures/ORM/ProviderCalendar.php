@@ -22,8 +22,8 @@ class ProviderCalendar extends Fixture implements DependentFixtureInterface
     
         $item1 = $this->createEntityInstanceWithPublicMethods(Calendar::class);
         $item1->setName("testCalendar");
-        $item1->setCompany($this->getReference('_reference_IvozProviderDomainModelCompanyCompany1'));
-        $this->addReference('_reference_IvozProviderDomainModelCalendarCalendar1', $item1);
+        $item1->setCompany($this->getReference('_reference_ProviderCompany1'));
+        $this->addReference('_reference_ProviderCalendar1', $item1);
         $manager->persist($item1);
 
     

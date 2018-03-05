@@ -24,9 +24,9 @@ class ProviderPeeringContract extends Fixture implements DependentFixtureInterfa
         $item1->setDescription("Artemis-Dev");
         $item1->setName("Artemis-Dev");
         $item1->setExternallyRated(false);
-        $item1->setBrand($this->getReference('_reference_IvozProviderDomainModelBrandBrand1'));
-        $item1->setTransformationRuleSet($this->getReference('_reference_IvozProviderDomainModelTransformationRuleSetTransformationRuleSet70'));
-        $this->addReference('_reference_IvozProviderDomainModelPeeringContractPeeringContract1', $item1);
+        $item1->setBrand($this->getReference('_reference_ProviderBrand1'));
+        $item1->setTransformationRuleSet($this->getReference('_reference_ProviderTransformationRuleSet70'));
+        $this->addReference('_reference_ProviderPeeringContract1', $item1);
         $manager->persist($item1);
 
     
