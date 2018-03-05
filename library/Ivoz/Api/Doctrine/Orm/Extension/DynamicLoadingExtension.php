@@ -141,7 +141,7 @@ final class DynamicLoadingExtension implements QueryItemExtensionInterface, Quer
         $currentDepth = $currentDepth > 0 ? $currentDepth - 1 : $currentDepth;
         $entityManager = $queryBuilder->getEntityManager();
         $classMetadata = $entityManager->getClassMetadata($resourceClass);
-        $targetProperties = $this->getTargetProperties($resourceClass);
+        $targetProperties = $this->getTargetPropertiesByContext($resourceClass, $context);
 
         foreach ($classMetadata->associationMappings as $association => $mapping) {
 
@@ -289,14 +289,19 @@ final class DynamicLoadingExtension implements QueryItemExtensionInterface, Quer
     }
 
     /**
-     * @param string $resourceClass
+     * @param array $resourceClass
      */
-    private function getTargetProperties(string $resourceClass)
+    private function getTargetPropertiesByContext(string $resourceClass, array $context)
     {
+
+        if (!isset($context['groups'])) {
+            return [];
+        }
+
+        $contextGroup = $context['groups'][0];
+
         $targetPropertyOptions = [
-            'serializer_groups' => [
-                DataTransferObjectInterface::CONTEXT_DETAILED
-            ]
+            'serializer_groups' => [$contextGroup]
         ];
         $targetProperties = $this
             ->propertyNameCollectionFactory

@@ -2,6 +2,7 @@
 
 namespace Ivoz\Api\Symfony\EventListener;
 
+use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 use ApiPlatform\Core\Util\ErrorFormatGuesser;
@@ -13,9 +14,13 @@ class DomainExceptionListener
     private $serializer;
     private $errorFormats;
 
-    public function __construct(SerializerInterface $serializer, array $errorFormats)
-    {
+    public function __construct(
+        SerializerInterface $serializer,
+        LoggerInterface $logger,
+        array $errorFormats
+    ) {
         $this->serializer = $serializer;
+        $this->logger = $logger;
         $this->errorFormats = $errorFormats;
     }
 
@@ -52,5 +57,7 @@ class DomainExceptionListener
             ]
         ));
         $event->stopPropagation();
+
+        $this->logger->error($exception->getMessage());
     }
 }

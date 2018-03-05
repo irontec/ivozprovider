@@ -11,16 +11,24 @@ services:
   ## Dependencies
   ################################################
   Symfony\Component\Finder\Finder: ~
+  Ivoz\Api\Core\Security\DataAccessControlParser:
+    arguments:
+      $requestStack: '@request_stack'
+      $tokenStorage: '@security.token_storage'
+      $entityManager: '@doctrine.orm.entity_manager'
+      $companyRepository:
+        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\Company\\Company")'
+      $userRepository:
+        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\User\\User")'
 
   ################################################
   ## Listeners
   ################################################
-  Ivoz\Api\Symfony\EventListener\DomainExceptionListener:
-    arguments:
-      $serializer: '@api_platform.serializer'
-      $errorFormats: '%api_platform.error_formats%'
+  # Check access_control before any database is hit
+  api_platform.security.listener.request.deny_access:
+    class: ApiPlatform\Core\Security\EventListener\DenyAccessListener
     tags:
-      - { name: kernel.event_listener, event: kernel.exception, priority: 2 }
+      - { name: kernel.event_listener, event: kernel.request, priority: 7 }
 
   Ivoz\Api\EventListener\RegisterCommandListener:
     arguments:
@@ -29,10 +37,20 @@ services:
     tags:
       - { name: kernel.event_listener, event: kernel.request, priority: 7 }
 
+  Ivoz\Api\Symfony\EventListener\DomainExceptionListener:
+    arguments:
+      $serializer: '@api_platform.serializer'
+      $errorFormats: '%api_platform.error_formats%'
+      $logger: '@logger'
+    tags:
+      - { name: kernel.event_listener, event: kernel.exception, priority: 2 }
+
   api_platform.doctrine.listener.view.write:
     class: Ivoz\Api\EventListener\WriteListener
     arguments:
       $entityPersister: '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
+      $dataAccessControlParser: '@Ivoz\Api\Core\Security\DataAccessControlParser'
+      $dtoAssembler: '@Ivoz\Core\Application\Service\Assembler\DtoAssembler'
     tags:
       - { name: kernel.event_listener, event: kernel.view, priority: 32 }
 
@@ -74,13 +92,19 @@ services:
     tags:
       -  { name: serializer.normalizer, priority: 10 }
 
+  Ivoz\Api\Core\Hydra\Serializer\CollectionFilterMappingsNormalizer:
+    decorates: "api_platform.hydra.normalizer.collection"
+    decoration_priority: -1
+    arguments:
+      $collectionNormalizer: '@Ivoz\Api\Core\Hydra\Serializer\CollectionFilterMappingsNormalizer.inner'
+
   ################################################
   ## Denormalizers
   ################################################
   Ivoz\Api\Entity\Serializer\Normalizer\EntityDenormalizer:
     arguments:
-      $createEntityFromDTO:
-        '@Ivoz\Core\Application\Service\CreateEntityFromDTO'
+      $createEntityFromDTO: '@Ivoz\Core\Application\Service\CreateEntityFromDTO'
+      $propertyMetadataFactory: '@api_platform.metadata.property.metadata_factory'
       $logger: '@logger'
     tags:
       -  { name: serializer.normalizer, priority: 10 }
@@ -253,7 +277,15 @@ services:
       - '@api_platform.serializer.context_builder'
       - '@serializer.mapping.class_metadata_factory'
     tags:
-      - { name: api_platform.doctrine.orm.query_extension.item }
+      - { name: api_platform.doctrine.orm.query_extension.collection, priority: 10 }
+      - { name: api_platform.doctrine.orm.query_extension.item, priority: 10 }
+
+  Ivoz\Api\Doctrine\Orm\Extension\SecurityFilterExtension:
+    arguments:
+      $dataAccessControlParser: '@Ivoz\Api\Core\Security\DataAccessControlParser'
+    tags:
+      - { name: api_platform.doctrine.orm.query_extension.collection, priority: 11 }
+      - { name: api_platform.doctrine.orm.query_extension.item, priority: 11 }
 
   Ivoz\Api\Doctrine\Orm\Extension\CollectionExtensionList:
     calls:

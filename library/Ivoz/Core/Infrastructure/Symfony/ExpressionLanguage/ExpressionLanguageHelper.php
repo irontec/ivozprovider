@@ -1,15 +1,10 @@
 <?php
 
-namespace Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper;
+namespace Ivoz\Core\Infrastructure\Symfony\ExpressionLanguage;
 
-use Doctrine\Common\Collections\Criteria;
-use Ivoz\Core\Domain\Model\Helper\CriteriaHelperInterface;
-use Doctrine\Common\Collections\Expr\Comparison;
-use Doctrine\Common\Collections\Expr\Value;
-use Doctrine\Common\Collections\Expr\CompositeExpression;
-use Doctrine\Common\Collections\Expr\Expression;
+use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 
-class CriteriaHelper implements  CriteriaHelperInterface
+class ExpressionLanguageHelper implements  CriteriaHelperInterface
 {
     /**
      * @param array $conditions
@@ -46,7 +41,7 @@ class CriteriaHelper implements  CriteriaHelperInterface
 
     /**
      * @param array $conditions
-     * @return Expression[]
+     * @return \Doctrine\Common\Collections\Expr\Comparison|\Doctrine\Common\Collections\Expr\CompositeExpression
      */
     private static function arrayToExpressions(array $conditions)
     {
@@ -77,12 +72,6 @@ class CriteriaHelper implements  CriteriaHelperInterface
         return $expressions;
     }
 
-    /**
-     * @param string $field
-     * @param string $operator
-     * @param null $value
-     * @return Comparison
-     */
     private static function createExpression(string $field, string $operator, $value = null)
     {
         $expr = Criteria::expr();
