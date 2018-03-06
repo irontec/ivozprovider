@@ -28,7 +28,6 @@ scenarios:
              name: CONFIRMED
           - wait: 3
           - attxfer: TO_CHARLIE
-          - waitfor: TRANSFER_ACCEPTED
           - waitfor: TRANSFER_OK
           - waitfor: { call: TO_CHARLIE, name: DISCONNCTD }
           - unregister
