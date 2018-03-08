@@ -21,8 +21,8 @@ msgstr "'Fecha fin' debe ser igual o mayor que 'fecha inicio'."
 msgid "'Valid From' must be earlier than 'Valid to'"
 msgstr "'Válido desde' debe ser anterior a 'Válido hasta'"
 
-msgid "'https://' URLs valid only"
-msgstr "Solo se permiten URLS 'https://'"
+msgid "'https://' URLs valid only (without trailing '/')"
+msgstr "Solo se permiten URLS 'https://' (sin '/' al final)"
 
 msgid ""
 "0 disables if more available, 2 gets double calls than 1, 3 gets triple "
@@ -171,6 +171,9 @@ msgstr "Configuración Básica"
 msgid "Basic Info"
 msgstr "Configuración Básica"
 
+msgid "Basic Information"
+msgstr "Información Básica"
+
 msgid "Bill inbound call"
 msgstr "Tarificación llamadas entrantes"
 
@@ -179,8 +182,8 @@ msgid_plural "Billable calls"
 msgstr[0] "Llamada facturable"
 msgstr[1] "Llamadas facturables"
 
-msgid "Billing"
-msgstr "Tarificación"
+msgid "Billing Information"
+msgstr "Información de tarificación"
 
 msgid "Black Lists"
 msgstr "Listas negras"
@@ -256,11 +259,6 @@ msgstr[1] "Patrón permisos llamada"
 msgid "Call Details"
 msgstr "Detalles llamada"
 
-msgid "Call registry"
-msgid_plural "Call registries"
-msgstr[0] "Registro de llamadas"
-msgstr[1] "Registros de llamadas"
-
 msgid "Call destination"
 msgstr "Destino llamada"
 
@@ -271,6 +269,11 @@ msgstr[1] "Opciones de desvío"
 
 msgid "Call forward type"
 msgstr "Tipo desvío"
+
+msgid "Call registry"
+msgid_plural "Call registries"
+msgstr[0] "Registro de llamadas"
+msgstr[1] "Registros de llamadas"
 
 msgid "Call type"
 msgstr "Tipo de llamada"
@@ -310,9 +313,6 @@ msgstr "CallidHash"
 
 msgid "Calling a number within the same Area can omit Area Code"
 msgstr "Las llamadas en la misma área pueden omitir este código"
-
-msgid "Calling code"
-msgstr "Codigo páis"
 
 msgid "Calls from non-granted IPs"
 msgstr "Llamadas desde IPs no autorizadas"
@@ -381,6 +381,12 @@ msgstr "Configuración de conexión"
 
 msgid "Connection fee"
 msgstr "Coste de conexión"
+
+msgid "Contact Settings"
+msgstr "Configuraciones de Contacto"
+
+msgid "Contact Username"
+msgstr "Nombre de usuario de Contacto"
 
 msgid "Control Panel"
 msgstr "Panel de control"
@@ -638,6 +644,9 @@ msgstr "Tarificación externa"
 
 msgid "Externally rater custom options"
 msgstr "Opciones adicionales tarificación externa"
+
+msgid "Extra Configuration"
+msgstr "Configuración adicional"
 
 msgid "Failover and load-balancing"
 msgstr "Contingencia y balanceo de carga"
@@ -898,6 +907,9 @@ msgstr "Código de llamada internacional"
 
 msgid "Interval in seconds to increase call cost."
 msgstr "Intervalo en segundos para incrementar el coste de la llamada."
+
+msgid "Interval start"
+msgstr "Comienzo de intervalo"
 
 msgid "Invalid IP address, discarding value."
 msgstr "Dirección IP inválida: el valor será ignorado."
@@ -1172,9 +1184,6 @@ msgstr "Longitud mínima: 2"
 msgid "Monday"
 msgstr "Lunes"
 
-msgid "Multi DDI"
-msgstr "Multi DDI"
-
 msgid "Music on Hold"
 msgid_plural "Musics on Hold"
 msgstr[0] "Música en espera"
@@ -1184,9 +1193,7 @@ msgid "Must start with sip or sips followed by colon"
 msgstr "Debe comenzar con sip o sips seguido de dos puntos"
 
 msgid "Name"
-msgid_plural "Names"
-msgstr[0] "Nombre"
-msgstr[1] "Nombres"
+msgstr "Nombre"
 
 msgid ""
 "Name shown as source when sending mails (e.g. IvozProvider Notifications). "
@@ -1337,9 +1344,6 @@ msgid "Outgoing routing"
 msgid_plural "Outgoing routings"
 msgstr[0] "Ruta saliente"
 msgstr[1] "Rutas salientes"
-
-msgid "Owner"
-msgstr "Propietario"
 
 msgid "PDF File"
 msgid_plural "PDF Files"
@@ -1524,6 +1528,9 @@ msgstr "Patrón R-URI"
 msgid "Random"
 msgstr "Aleatoriamente"
 
+msgid "Random Contact Username"
+msgstr "Nombre de usuario de contacto aleatorio"
+
 msgid "Rate"
 msgid_plural "Rates"
 msgstr[0] "Precio"
@@ -1567,9 +1574,6 @@ msgstr "Referee"
 
 msgid "Referrer"
 msgstr "Referrer"
-
-msgid "Reg delay"
-msgstr "Retraso registro"
 
 msgid "Reg exp / Prefix"
 msgstr "Expr. Regular / Prefijo"
@@ -1650,6 +1654,11 @@ msgstr ""
 msgid "Run template"
 msgstr "Ejecutar plantilla"
 
+msgid "SIP Domain"
+msgid_plural "SIP Domains"
+msgstr[0] "Dominio SIP"
+msgstr[1] "Dominios SIP"
+
 msgid "SIP Domain can't be empty"
 msgstr "El dominio SIP no puede estar vacío"
 
@@ -1672,6 +1681,11 @@ msgstr "Ámbito"
 
 msgid "Screen Extension"
 msgstr "Extensión a mostrar"
+
+msgid ""
+"Seconds from the beginning of the call when this rate will be activated."
+msgstr ""
+"Segundos desde el comienzo de la llamada a partir del cual aplicará este precio."
 
 msgid "Security"
 msgstr "Seguridad"
@@ -1736,12 +1750,6 @@ msgstr "Estado"
 msgid "Strategy"
 msgstr "Estrategia"
 
-msgid "Strip"
-msgstr "Eliminar"
-
-msgid "Strip N digits from the beginning of the callee"
-msgstr "Quitar N dígitos del número destino"
-
 msgid "Success locution"
 msgstr "Locución Éxito"
 
@@ -1762,10 +1770,6 @@ msgstr "Tipo de ruta"
 
 msgid "Target type value"
 msgstr "Tipo destino"
-
-#, python-format
-msgid "Tarificate %s"
-msgstr "Tarificar %s"
 
 msgid "Tax rate"
 msgstr "Impuesto"
@@ -1910,6 +1914,11 @@ msgstr "Timeout"
 msgid "Timezone"
 msgstr "Zona Horaria"
 
+msgid "Timing"
+msgid_plural "Timings"
+msgstr[0] "Timing"
+msgstr[1] "Timings"
+
 msgid "Total"
 msgstr "Total"
 
@@ -1932,9 +1941,6 @@ msgstr[1] "Transformaciones numéricas"
 
 msgid "Transport"
 msgstr "Transporte"
-
-msgid "Troubleshooting details"
-msgstr "Detalles solución de problemas"
 
 msgid "Trunk Prefix"
 msgstr "Prefijo trunk"
@@ -2112,16 +2118,8 @@ msgstr ""
 msgid "You can't create a pricing plan that starts in de past"
 msgstr "No es posible crear un Plan de precios en el pasado"
 
-msgid "Zone"
-msgstr "Zona"
-
 msgid "allow"
 msgstr "permitir"
-
-msgid "call"
-msgid_plural "calls"
-msgstr[0] "llamada"
-msgstr[1] "llamadas"
 
 msgid "deny"
 msgstr "Rechazar"

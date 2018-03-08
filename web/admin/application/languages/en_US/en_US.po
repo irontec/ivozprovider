@@ -21,8 +21,8 @@ msgstr "'Out date' must be equal or greater than 'In date'."
 msgid "'Valid From' must be earlier than 'Valid to'"
 msgstr "'Valid From' must be earlier than 'Valid to'"
 
-msgid "'https://' URLs valid only"
-msgstr "'https://' URLs valid only"
+msgid "'https://' URLs valid only (without trailing '/')"
+msgstr "'https://' URLs valid only (without trailing '/')"
 
 msgid ""
 "0 disables if more available, 2 gets double calls than 1, 3 gets triple "
@@ -167,6 +167,9 @@ msgstr "Basic Configuration"
 msgid "Basic Info"
 msgstr "Basic Info"
 
+msgid "Basic Information"
+msgstr "Basic Information"
+
 msgid "Bill inbound call"
 msgstr "Bill inbound call"
 
@@ -175,8 +178,8 @@ msgid_plural "Billable calls"
 msgstr[0] "Billable call"
 msgstr[1] "Billable calls"
 
-msgid "Billing"
-msgstr "Billing"
+msgid "Billing Information"
+msgstr "Billing Information"
 
 msgid "Black Lists"
 msgstr "Black Lists"
@@ -250,11 +253,6 @@ msgstr[1] "Call ACL Patterns"
 msgid "Call Details"
 msgstr "Call Details"
 
-msgid "Call registry"
-msgid_plural "Call registries"
-msgstr[0] "Call registry"
-msgstr[1] "Call registries"
-
 msgid "Call destination"
 msgstr "Call destination"
 
@@ -265,6 +263,11 @@ msgstr[1] "Call forward settings"
 
 msgid "Call forward type"
 msgstr "Call forward type"
+
+msgid "Call registry"
+msgid_plural "Call registries"
+msgstr[0] "Call registry"
+msgstr[1] "Call registries"
 
 msgid "Call type"
 msgstr "Call type"
@@ -304,9 +307,6 @@ msgstr "CallidHash"
 
 msgid "Calling a number within the same Area can omit Area Code"
 msgstr "Calling a number within the same Area can omit Area Code"
-
-msgid "Calling code"
-msgstr "Calling code"
 
 msgid "Calls from non-granted IPs"
 msgstr "Calls from non-granted IPs"
@@ -375,6 +375,12 @@ msgstr "Connection Info"
 
 msgid "Connection fee"
 msgstr "Connection fee"
+
+msgid "Contact Settings"
+msgstr "Contact Settings"
+
+msgid "Contact Username"
+msgstr "Contact Username"
 
 msgid "Control Panel"
 msgstr "Control Panel"
@@ -626,6 +632,9 @@ msgstr "Externally rated options"
 
 msgid "Externally rater custom options"
 msgstr "Externally rater custom options"
+
+msgid "Extra Configuration"
+msgstr "Extra Configuration"
 
 msgid "Failover and load-balancing"
 msgstr "Failover and load-balancing"
@@ -884,6 +893,9 @@ msgstr "International Code"
 
 msgid "Interval in seconds to increase call cost."
 msgstr "Interval in seconds to increase call cost."
+
+msgid "Interval start"
+msgstr "Interval start"
 
 msgid "Invalid IP address, discarding value."
 msgstr "Invalid IP address, discarding value."
@@ -1154,9 +1166,6 @@ msgstr "Minimal length: 2"
 msgid "Monday"
 msgstr "Monday"
 
-msgid "Multi DDI"
-msgstr "Multi DDI"
-
 msgid "Music on Hold"
 msgid_plural "Musics on Hold"
 msgstr[0] "Music on Hold"
@@ -1166,9 +1175,7 @@ msgid "Must start with sip or sips followed by colon"
 msgstr "Must start with sip or sips followed by colon"
 
 msgid "Name"
-msgid_plural "Names"
-msgstr[0] "Name"
-msgstr[1] "Names"
+msgstr "Name"
 
 msgid ""
 "Name shown as source when sending mails (e.g. IvozProvider Notifications). "
@@ -1318,9 +1325,6 @@ msgid "Outgoing routing"
 msgid_plural "Outgoing routings"
 msgstr[0] "Outgoing routing"
 msgstr[1] "Outgoing routings"
-
-msgid "Owner"
-msgstr "Owner"
 
 msgid "PDF File"
 msgid_plural "PDF Files"
@@ -1505,6 +1509,9 @@ msgstr "R-URI pattern"
 msgid "Random"
 msgstr "Random"
 
+msgid "Random Contact Username"
+msgstr "Random Contact Username"
+
 msgid "Rate"
 msgid_plural "Rates"
 msgstr[0] "Rate"
@@ -1548,9 +1555,6 @@ msgstr "Referee"
 
 msgid "Referrer"
 msgstr "Referrer"
-
-msgid "Reg delay"
-msgstr "Reg delay"
 
 msgid "Reg exp / Prefix"
 msgstr "Reg exp / Prefix"
@@ -1630,6 +1634,11 @@ msgstr ""
 msgid "Run template"
 msgstr "Run template"
 
+msgid "SIP Domain"
+msgid_plural "SIP Domains"
+msgstr[0] "SIP domain"
+msgstr[1] "SIP domains"
+
 msgid "SIP Domain can't be empty"
 msgstr "SIP Domain can't be empty"
 
@@ -1652,6 +1661,11 @@ msgstr "Scope"
 
 msgid "Screen Extension"
 msgstr "Screen Extension"
+
+msgid ""
+"Seconds from the beginning of the call when this rate will be activated."
+msgstr ""
+"Seconds from the beginning of the call when this rate will be activated."
 
 msgid "Security"
 msgstr "Security"
@@ -1716,12 +1730,6 @@ msgstr "Status"
 msgid "Strategy"
 msgstr "Strategy"
 
-msgid "Strip"
-msgstr "Strip"
-
-msgid "Strip N digits from the beginning of the callee"
-msgstr "Strip N digits from the beginning of the callee"
-
 msgid "Success locution"
 msgstr "Success locution"
 
@@ -1742,10 +1750,6 @@ msgstr "Target type"
 
 msgid "Target type value"
 msgstr "Target type value"
-
-#, python-format
-msgid "Tarificate %s"
-msgstr "Tarificate %s"
 
 msgid "Tax rate"
 msgstr "Tax rate"
@@ -1889,6 +1893,11 @@ msgstr "Timeout time"
 msgid "Timezone"
 msgstr "Timezone"
 
+msgid "Timing"
+msgid_plural "Timings"
+msgstr[0] "Timing"
+msgstr[1] "Timings"
+
 msgid "Total"
 msgstr "Total"
 
@@ -1914,9 +1923,6 @@ msgstr[1] "Transformation Rules"
 
 msgid "Transport"
 msgstr "Transport"
-
-msgid "Troubleshooting details"
-msgstr "Troubleshooting details"
 
 msgid "Trunk Prefix"
 msgstr "Trunk Prefix"
@@ -2088,16 +2094,8 @@ msgstr ""
 msgid "You can't create a pricing plan that starts in de past"
 msgstr "You can't create a pricing plan that starts in de past"
 
-msgid "Zone"
-msgstr "Zone"
-
 msgid "allow"
 msgstr "allow"
-
-msgid "call"
-msgid_plural "calls"
-msgstr[0] "call"
-msgstr[1] "calls"
 
 msgid "deny"
 msgstr "deny"
@@ -2119,8 +2117,3 @@ msgstr "Pending"
 
 msgid "ready"
 msgstr "ready"
-
-#~ msgid "Destination Rate"
-#~ msgid_plural "Destination Rates"
-#~ msgstr[0] "Destination Rate"
-#~ msgstr[1] "Destination Rates"
