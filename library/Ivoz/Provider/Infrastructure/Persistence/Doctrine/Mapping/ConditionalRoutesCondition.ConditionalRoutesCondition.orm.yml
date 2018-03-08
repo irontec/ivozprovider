@@ -27,6 +27,11 @@ Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition
       mappedBy: condition
       cascade: ['persist']
       orphanRemoval: true
+    relRouteLocks:
+      targetEntity: Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLockInterface
+      mappedBy: condition
+      cascade: ['persist']
+      orphanRemoval: true
   lifecycleCallbacks:
     postLoad:
       - initChangelog

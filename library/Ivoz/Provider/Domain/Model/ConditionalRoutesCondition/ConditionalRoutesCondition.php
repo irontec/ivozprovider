@@ -5,8 +5,10 @@ namespace Ivoz\Provider\Domain\Model\ConditionalRoutesCondition;
 use Ivoz\Provider\Domain\Model\Calendar\CalendarInterface;
 use Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarInterface;
 use Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistInterface;
+use Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLockInterface;
 use Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelScheduleInterface;
 use Ivoz\Provider\Domain\Model\MatchList\MatchListInterface;
+use Ivoz\Provider\Domain\Model\RouteLock\RouteLockInterface;
 use Ivoz\Provider\Domain\Model\Schedule\ScheduleInterface;
 use Ivoz\Provider\Domain\Traits\RoutableTrait;
 
@@ -120,6 +122,22 @@ class ConditionalRoutesCondition extends ConditionalRoutesConditionAbstract impl
     }
 
     /**
+     * Return Route Locks associated with this condition
+     *
+     * @return RouteLockInterface[]
+     */
+    public function getRouteLocks()
+    {
+        /** @var ConditionalRoutesConditionsRelRouteLockInterface[] $rels */
+        $rels = $this->getRelRouteLocks();
+        $routeLocks = [];
+        foreach ($rels as $rel) {
+            $routeLocks[] = $rel->getRouteLock();
+        }
+        return $routeLocks;
+    }
+
+    /**
      * Checks if this condition mathes the given origin
      *
      * @param $number Number in E.164 format
@@ -192,6 +210,27 @@ class ConditionalRoutesCondition extends ConditionalRoutesConditionAbstract impl
         return false;
     }
 
+    /**
+     * Checks if any of the Locks is open
+     *
+     * @return bool true if condition matches
+     */
+    public function matchesRouteLock()
+    {
+        $routeLocks = $this->getRouteLocks();
+
+        if (empty($routeLocks)) {
+            return true;
+        }
+
+        foreach ($routeLocks as $routeLock) {
+            if ($routeLock->isOpen()) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 
     /**
      * Return a string representation of matching conditions
@@ -215,6 +254,11 @@ class ConditionalRoutesCondition extends ConditionalRoutesConditionAbstract impl
         $calendars = $this->getCalendars();
         foreach ($calendars as $calendar) {
             $matchData[] = $calendar->getName();
+        }
+
+        $routeLocks = $this->getRouteLocks();
+        foreach ($routeLocks as $routeLock) {
+            $matchData[] = $routeLock->getName();
         }
 
         return implode(",", $matchData);
