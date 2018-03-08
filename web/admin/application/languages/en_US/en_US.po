@@ -320,6 +320,12 @@ msgstr "Charge period"
 msgid "Client's default"
 msgstr "Client's default"
 
+msgid "Close extension"
+msgstr "Close extension"
+
+msgid "Closed"
+msgstr "Closed"
+
 msgid "Code"
 msgstr "Code"
 
@@ -1256,6 +1262,12 @@ msgstr "On-demand call recording"
 msgid "Only if it's different from the Username"
 msgstr "Only if it's different from the Username"
 
+msgid "Open extension"
+msgstr "Open extension"
+
+msgid "Opened"
+msgstr "Opened"
+
 msgid "Optional Settings"
 msgstr "Optional Settings"
 
@@ -1603,6 +1615,11 @@ msgstr "Round Robin"
 msgid "Round Robin memory"
 msgstr "Round Robin memory"
 
+msgid "Route Lock"
+msgid_plural "Route Locks"
+msgstr[0] "Route Lock"
+msgstr[1] "Route Locks"
+
 msgid "Route type"
 msgstr "Route type"
 
@@ -1902,6 +1919,9 @@ msgid_plural "Timings"
 msgstr[0] "Timing"
 msgstr[1] "Timings"
 
+msgid "Toggle extension"
+msgstr "Toggle extension"
+
 msgid "Total"
 msgstr "Total"
 
@@ -2082,9 +2102,25 @@ msgid "Yes"
 msgstr "Yes"
 
 msgid ""
+"You can call this extension from any company terminal to close this lock"
+msgstr ""
+"You can call this extension from any company terminal to close this lock"
+
+msgid "You can call this extension from any company terminal to open this lock"
+msgstr ""
+"You can call this extension from any company terminal to open this lock"
+
+msgid ""
 "You can call this extension from any company terminal to record this locution"
 msgstr ""
 "You can call this extension from any company terminal to record this locution"
+
+msgid ""
+"You can call this extension from any company terminal to toggle this lock "
+"status"
+msgstr ""
+"You can call this extension from any company terminal to toggle this lock "
+"status"
 
 #, python-brace-format
 msgid ""
