@@ -22,6 +22,8 @@ Scenario: I can create brands
   Then I can see confirmation dialog
   When I click on close dialog button
   Then I am on "Brands" list
+  When I click on "Brands" last elements edit button
+  Then I compare the form data with "platform/brand/new" data fixture
 
 Scenario: I can edit brands
   Given I can see at least one row

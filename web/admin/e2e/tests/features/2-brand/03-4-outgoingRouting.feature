@@ -28,6 +28,8 @@ Scenario: I can create new outgoing routings
    Then I can see confirmation dialog
    When I click on close dialog button
    Then I am on "CompaniesList_outgoingRouting" subscreen list
+  When I click on "outgoingRouting" last elements edit button
+  Then I compare the form data with "brand/companyOutgoingRouting/new" data fixture
 
 Scenario: I can edit outgoing routing
   Given I can see at least one row

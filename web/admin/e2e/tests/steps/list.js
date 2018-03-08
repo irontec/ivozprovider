@@ -23,6 +23,10 @@ defineSupportCode(({Given, Then, When}) => {
     return list.clickOnFirstEditButton(entity);
   });
 
+  When(/^I click on "([^"]*)" last elements edit button$/, (entity) => {
+      return list.clickOnLastEditButton(entity);
+  });
+
   When(/^I click on "([^"]*)" first elements delete button$/, (entity) => {
     return list.clickOnFirstDeleteButton(entity);
   });

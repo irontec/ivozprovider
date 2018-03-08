@@ -28,6 +28,8 @@ Scenario: I create custom IVRs
   Then I can see confirmation dialog
   When I click on close dialog button
   Then I am on "Ivr" list
+  When I click on "Ivr" last elements edit button
+  Then I compare the form data with "company/ivr/new" data fixture
 
 Scenario: I can save Ivr
   Given I can see at least one row

@@ -15,13 +15,15 @@ Background:
    When I click on "KamPikeTrusted" CTA
    Then I am on "KamPikeTrusted" list
 
-Scenario: I see create antiflood trusted IPs
+Scenario: I can create antiflood trusted IPs
   When I click on add button
    And I fill out the form with "platform/antifloodTrustedIPs/new" data fixture
    And I click on save button
   Then I can see confirmation dialog
   When I click on close dialog button
   Then I am on "KamPikeTrusted" list
+  When I click on "KamPikeTrusted" last elements edit button
+  Then I compare the form data with "platform/antifloodTrustedIPs/new" data fixture
 
 Scenario: I can save antiflood trusted IPs
   Given I can see at least one row

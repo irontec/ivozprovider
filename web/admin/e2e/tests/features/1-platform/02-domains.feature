@@ -17,6 +17,4 @@ Background:
 
 Scenario: I can see domains
   Given I can see at least one row
-   When I click on "Domains" first elements view button
-    And I click on close button
-   Then I am on "Domains" list
+

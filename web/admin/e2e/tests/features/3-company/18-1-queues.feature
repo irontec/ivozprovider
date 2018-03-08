@@ -28,6 +28,8 @@ Scenario: I create queues
   Then I can see confirmation dialog
   When I click on close dialog button
   Then I am on "Queues" list
+  When I click on "Queues" last elements edit button
+  Then I compare the form data with "company/queues/new" data fixture
 
 Scenario: I can save queues
   Given I can see at least one row

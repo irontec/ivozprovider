@@ -30,6 +30,8 @@ Scenario: I create conditional routes conditions
   Then I can see confirmation dialog
   When I click on close dialog button
   Then I am on "ConditionalRoutesList_conditionalRoutesConditions" subscreen list
+  When I click on "conditionalRoutesConditions" last elements edit button
+  Then I compare the form data with "company/conditionalRoutesConditions/new" data fixture
 
 Scenario: I can save conditional routes conditions
   Given I can see at least one row

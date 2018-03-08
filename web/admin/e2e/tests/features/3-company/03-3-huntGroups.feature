@@ -29,6 +29,8 @@ Scenario: I create hunt groups
   Then I can see confirmation dialog
   When I click on close dialog button
   Then I am on "HuntGroups" list
+  When I click on "HuntGroups" last elements edit button
+  Then I compare the form data with "company/huntGroups/new" data fixture
 
 Scenario: I can save HuntGroups
   Given I can see at least one row

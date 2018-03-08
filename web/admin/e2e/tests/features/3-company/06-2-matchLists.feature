@@ -29,6 +29,8 @@ Scenario: I create match lists
   Then I can see confirmation dialog
   When I click on close dialog button
   Then I am on "MatchLists" list
+  When I click on "MatchLists" last elements edit button
+  Then I compare the form data with "company/matchLists/new" data fixture
 
 Scenario: I can save MatchLists
   Given I can see at least one row

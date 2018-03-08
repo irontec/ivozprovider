@@ -25,6 +25,8 @@ Scenario: I create new terminal model admin page
   Then I can see confirmation dialog
   When I click on close dialog button
   Then I am on "TerminalManufacturersList_terminalModels" subscreen list
+  When I click on "terminalModels" last elements edit button
+  Then I compare the form data with "platform/terminalModel/new" data fixture
 
 Scenario: I can edit terminal models
   Given I can see at least one row

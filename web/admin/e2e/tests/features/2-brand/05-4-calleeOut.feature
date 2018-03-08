@@ -27,6 +27,8 @@ Scenario: I can create new callee out
   Then I can see confirmation dialog
   When I click on close dialog button
   Then I am on "TransformationRuleSetsList_transformationRulesCalleeOut" subscreen list
+  When I click on "transformationRulesCalleeOut" last elements edit button
+  Then I compare the form data with "brand/calleeOut/new" data fixture
 
 Scenario: I can edit callee out
   Given I can see at least one row

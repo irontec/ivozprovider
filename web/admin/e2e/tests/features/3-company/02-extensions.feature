@@ -28,6 +28,8 @@ Scenario: I create termimals
   Then I can see confirmation dialog
   When I click on close dialog button
   Then I am on "Extensions" list
+  When I click on "Extensions" last elements edit button
+  Then I compare the form data with "company/extensions/new" data fixture
 
 Scenario: I can edit extensions
   Given I can see at least one row

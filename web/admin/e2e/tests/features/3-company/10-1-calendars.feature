@@ -27,6 +27,8 @@ Scenario: I create calendars
   Then I can see confirmation dialog
   When I click on close dialog button
   Then I am on "Calendars" list
+  When I click on "Calendars" last elements edit button
+  Then I compare the form data with "company/calendars/new" data fixture
 
 Scenario: I can save Calendars
   Given I can see at least one row

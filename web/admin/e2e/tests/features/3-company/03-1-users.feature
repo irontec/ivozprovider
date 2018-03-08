@@ -21,7 +21,6 @@ Background:
     And I click on "Users" CTA
    Then I am on "Users" list
 
-
 Scenario: I create users
   When I click on add button
    And I fill out the form with "company/users/new" data fixture
@@ -29,6 +28,8 @@ Scenario: I create users
   Then I can see confirmation dialog
   When I click on close dialog button
   Then I am on "Users" list
+  When I click on "Users" last elements edit button
+  Then I compare the form data with "company/users/new" data fixture
 
 Scenario: I can save Users
   Given I can see at least one row

@@ -4,6 +4,7 @@ function edit () {
 
   this.save = save;
   this.fillOutFormByFixture = fillOutFormByFixture;
+  this.compareFormDataWithFixture = compareFormDataWithFixture;
   this.assertConfirmationDialog = assertConfirmationDialog;
   this.close = close;
   this.closeDialog = closeDialog;
@@ -59,6 +60,46 @@ function edit () {
         )
         .api.pause(500);
   }
+
+    function compareFormDataWithFixture(fixture) {
+
+        let fs = require('fs');
+        let path = require('path');
+        let filePath = path.join(
+            __dirname,
+            `../dataFixtures/${fixture}.json`
+        );
+
+        let formData = JSON.parse(
+            fs.readFileSync(filePath, 'utf8')
+        );
+
+        return this
+            .waitForElementVisible('@save', 20000)
+            .waitForElementVisible('@close', 5000)
+            .jqueryCompareWithForm(
+                formData,
+                (response) => {
+
+                    if (!response) {
+                        throw 'Unexpected response';
+                    }
+
+                    this.assert.deepEqual(
+                        response.missingFields,
+                        [],
+                        'Unexpected response ' + JSON.stringify(response)
+                    );
+
+                    this.assert.deepEqual(
+                        response.diffValueFields,
+                        [],
+                        'Unexpected response ' + JSON.stringify(response)
+                    );
+                }
+            )
+            .api.pause(500);
+    }
 
   function uploadAndCleanFilesIfAny(dataFixture)
   {

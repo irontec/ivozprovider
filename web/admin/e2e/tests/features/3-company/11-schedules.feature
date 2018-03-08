@@ -27,6 +27,8 @@ Scenario: I create schedules
   Then I can see confirmation dialog
   When I click on close dialog button
   Then I am on "Schedules" list
+  When I click on "Schedules" last elements edit button
+  Then I compare the form data with "company/schedules/new" data fixture
 
 Scenario: I can save schedules
   Given I can see at least one row
