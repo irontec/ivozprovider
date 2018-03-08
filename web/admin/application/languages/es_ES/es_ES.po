@@ -326,6 +326,12 @@ msgstr "Período de facturación"
 msgid "Client's default"
 msgstr "Usar configuración cliente"
 
+msgid "Close extension"
+msgstr "Código cerrar"
+
+msgid "Closed"
+msgstr "Cerrado"
+
 msgid "Code"
 msgstr "Código"
 
@@ -1273,6 +1279,12 @@ msgstr "Grabación bajo demanda"
 msgid "Only if it's different from the Username"
 msgstr "Solo si es diferente a Usuario"
 
+msgid "Open extension"
+msgstr "Código abrir"
+
+msgid "Opened"
+msgstr "Abierto"
+
 msgid "Optional Settings"
 msgstr "Configuraciones Opcionales"
 
@@ -1621,6 +1633,11 @@ msgstr "Secuencialmente (∞)"
 msgid "Round Robin memory"
 msgstr "Secuencialmente (memoria)"
 
+msgid "Route Lock"
+msgid_plural "Route Locks"
+msgstr[0] "Candado"
+msgstr[1] "Candados"
+
 msgid "Route type"
 msgstr "Enrutar"
 
@@ -1923,6 +1940,9 @@ msgid_plural "Timings"
 msgstr[0] "Timing"
 msgstr[1] "Timings"
 
+msgid "Toggle extension"
+msgstr "Código conmutar"
+
 msgid "Total"
 msgstr "Total"
 
@@ -2105,10 +2125,26 @@ msgid "Yes"
 msgstr "Si"
 
 msgid ""
+"You can call this extension from any company terminal to close this lock"
+msgstr ""
+"Puede llamar a esta extension desde cualquier terminal de la compañía para cerrar este candado"
+
+msgid "You can call this extension from any company terminal to open this lock"
+msgstr ""
+"Puede llamar a esta extension desde cualquier terminal de la compañía para abrir este candado"
+
+msgid ""
 "You can call this extension from any company terminal to record this locution"
 msgstr ""
 "Puede llamar a esta extensión para grabar está locución desde cualquier "
 "terminal de la compañía"
+
+msgid ""
+"You can call this extension from any company terminal to toggle this lock "
+"status"
+msgstr ""
+"Puede llamar a esta extension desde cualquier terminal de la compañía para "
+"conmutar este candado"
 
 #, python-brace-format
 msgid ""
