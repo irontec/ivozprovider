@@ -35,11 +35,6 @@ abstract class HuntGroupAbstract
     protected $ringAllTimeout;
 
     /**
-     * @var integer
-     */
-    protected $nextUserPosition = '0';
-
-    /**
      * comment: enum:number|extension|voicemail
      * @var string
      */
@@ -163,7 +158,6 @@ abstract class HuntGroupAbstract
             $dto->getRingAllTimeout());
 
         $self
-            ->setNextUserPosition($dto->getNextUserPosition())
             ->setNoAnswerTargetType($dto->getNoAnswerTargetType())
             ->setNoAnswerNumberValue($dto->getNoAnswerNumberValue())
             ->setCompany($dto->getCompany())
@@ -195,7 +189,6 @@ abstract class HuntGroupAbstract
             ->setDescription($dto->getDescription())
             ->setStrategy($dto->getStrategy())
             ->setRingAllTimeout($dto->getRingAllTimeout())
-            ->setNextUserPosition($dto->getNextUserPosition())
             ->setNoAnswerTargetType($dto->getNoAnswerTargetType())
             ->setNoAnswerNumberValue($dto->getNoAnswerNumberValue())
             ->setCompany($dto->getCompany())
@@ -221,7 +214,6 @@ abstract class HuntGroupAbstract
             ->setDescription(self::getDescription())
             ->setStrategy(self::getStrategy())
             ->setRingAllTimeout(self::getRingAllTimeout())
-            ->setNextUserPosition(self::getNextUserPosition())
             ->setNoAnswerTargetType(self::getNoAnswerTargetType())
             ->setNoAnswerNumberValue(self::getNoAnswerNumberValue())
             ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
@@ -241,7 +233,6 @@ abstract class HuntGroupAbstract
             'description' => self::getDescription(),
             'strategy' => self::getStrategy(),
             'ringAllTimeout' => self::getRingAllTimeout(),
-            'nextUserPosition' => self::getNextUserPosition(),
             'noAnswerTargetType' => self::getNoAnswerTargetType(),
             'noAnswerNumberValue' => self::getNoAnswerNumberValue(),
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
@@ -367,37 +358,6 @@ abstract class HuntGroupAbstract
     public function getRingAllTimeout()
     {
         return $this->ringAllTimeout;
-    }
-
-    /**
-     * Set nextUserPosition
-     *
-     * @param integer $nextUserPosition
-     *
-     * @return self
-     */
-    public function setNextUserPosition($nextUserPosition = null)
-    {
-        if (!is_null($nextUserPosition)) {
-            if (!is_null($nextUserPosition)) {
-                Assertion::integerish($nextUserPosition, 'nextUserPosition value "%s" is not an integer or a number castable to integer.');
-                Assertion::greaterOrEqualThan($nextUserPosition, 0, 'nextUserPosition provided "%s" is not greater or equal than "%s".');
-            }
-        }
-
-        $this->nextUserPosition = $nextUserPosition;
-
-        return $this;
-    }
-
-    /**
-     * Get nextUserPosition
-     *
-     * @return integer
-     */
-    public function getNextUserPosition()
-    {
-        return $this->nextUserPosition;
     }
 
     /**

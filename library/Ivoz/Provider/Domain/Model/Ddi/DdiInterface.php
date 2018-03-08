@@ -298,7 +298,7 @@ interface DdiInterface extends LoggableEntityInterface
      *
      * @return self
      */
-    public function setCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $country = null);
+    public function setCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $country);
 
     /**
      * Get country

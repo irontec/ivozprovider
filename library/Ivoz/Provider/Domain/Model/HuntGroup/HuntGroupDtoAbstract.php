@@ -33,11 +33,6 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
     private $ringAllTimeout;
 
     /**
-     * @var integer
-     */
-    private $nextUserPosition = '0';
-
-    /**
      * @var string
      */
     private $noAnswerTargetType;
@@ -104,7 +99,6 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
             'description' => 'description',
             'strategy' => 'strategy',
             'ringAllTimeout' => 'ringAllTimeout',
-            'nextUserPosition' => 'nextUserPosition',
             'noAnswerTargetType' => 'noAnswerTargetType',
             'noAnswerNumberValue' => 'noAnswerNumberValue',
             'id' => 'id',
@@ -126,7 +120,6 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
             'description' => $this->getDescription(),
             'strategy' => $this->getStrategy(),
             'ringAllTimeout' => $this->getRingAllTimeout(),
-            'nextUserPosition' => $this->getNextUserPosition(),
             'noAnswerTargetType' => $this->getNoAnswerTargetType(),
             'noAnswerNumberValue' => $this->getNoAnswerNumberValue(),
             'id' => $this->getId(),
@@ -251,26 +244,6 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
     public function getRingAllTimeout()
     {
         return $this->ringAllTimeout;
-    }
-
-    /**
-     * @param integer $nextUserPosition
-     *
-     * @return static
-     */
-    public function setNextUserPosition($nextUserPosition = null)
-    {
-        $this->nextUserPosition = $nextUserPosition;
-
-        return $this;
-    }
-
-    /**
-     * @return integer
-     */
-    public function getNextUserPosition()
-    {
-        return $this->nextUserPosition;
     }
 
     /**

@@ -36,13 +36,6 @@ Ivoz\Provider\Domain\Model\HuntGroup\HuntGroupAbstract:
       options:
         unsigned: false
       column: ringAllTimeout
-    nextUserPosition:
-      type: smallint
-      nullable: true
-      options:
-        unsigned: true
-        default: '0'
-      column: nextUserPosition
     noAnswerTargetType:
       type: string
       nullable: true
