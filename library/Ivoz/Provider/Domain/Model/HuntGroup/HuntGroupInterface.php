@@ -96,22 +96,6 @@ interface HuntGroupInterface extends LoggableEntityInterface
     public function getRingAllTimeout();
 
     /**
-     * Set nextUserPosition
-     *
-     * @param integer $nextUserPosition
-     *
-     * @return self
-     */
-    public function setNextUserPosition($nextUserPosition = null);
-
-    /**
-     * Get nextUserPosition
-     *
-     * @return integer
-     */
-    public function getNextUserPosition();
-
-    /**
      * Set noAnswerTargetType
      *
      * @param string $noAnswerTargetType

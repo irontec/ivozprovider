@@ -28,7 +28,6 @@ production:
             huntGroupsDel_dialog: true
           default: huntGroupsEdit_screen
         blacklist:
-          nextUserPosition: true
           ringAllTimeout: true
           noAnswerTargetType: true
           noAnswerLocutionId: true
@@ -57,7 +56,6 @@ production:
         <<: *forcedCompany
       fields:
         blacklist: &huntGroupsBlacklist_Link
-          nextUserPosition: true
       fixedPositions: &huntGroupsFixedPositions_Link
         group0:
           label: _("Basic Configuration")

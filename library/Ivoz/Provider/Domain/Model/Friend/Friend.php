@@ -5,7 +5,6 @@ namespace Ivoz\Provider\Domain\Model\Friend;
 use Assert\Assertion;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\CallAcl\CallAcl;
-use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 use Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPattern;
 
 /**
@@ -65,7 +64,11 @@ class Friend extends FriendAbstract implements FriendInterface
      */
     public function setName($name)
     {
-        Assertion::regex($name, '/^[a-zA-Z0-9_*]+$/');
+        Assertion::regex(
+            $name,
+            '/^[a-zA-Z0-9_*]+$/',
+            'Friend.name value "%s" does not match expression.'
+        );
         return parent::setName($name);
     }
 
@@ -87,7 +90,7 @@ class Friend extends FriendAbstract implements FriendInterface
     {
         if (!empty($port)) {
             Assertion::regex($port, '/^[0-9]+$/');
-            Assertion::lessThan($port, pow(2, 16), 'port provided "%s" is not lower than "%s".');
+            Assertion::lessThan($port, pow(2, 16), 'Friend.port provided "%s" is not lower than "%s".');
         }
         return parent::setPort($port);
     }
@@ -100,7 +103,8 @@ class Friend extends FriendAbstract implements FriendInterface
         if (!empty($password)) {
             Assertion::regex(
                 $password,
-                '/^(?=.*[A-Z].*[A-Z].*[A-Z])(?=.*[+*_-])(?=.*[0-9].*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{10,}$/'
+                '/^(?=.*[A-Z].*[A-Z].*[A-Z])(?=.*[+*_-])(?=.*[0-9].*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{10,}$/',
+                'Friend.password value "%s" does not match expression.'
             );
         }
 

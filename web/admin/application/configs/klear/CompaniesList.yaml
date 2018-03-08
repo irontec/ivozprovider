@@ -191,8 +191,8 @@ production:
           fields:
             name: 4
             nif: 4
-            domainUsers: 5
-            relFeatures: 2
+            domainUsers: 4
+            relFeatures: 6
         group1:
           colsPerRow: 2
           label: _("Security")
