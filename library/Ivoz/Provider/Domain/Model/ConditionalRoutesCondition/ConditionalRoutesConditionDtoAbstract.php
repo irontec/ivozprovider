@@ -102,6 +102,11 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
      */
     private $relCalendars = null;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLockDto[] | null
+     */
+    private $relRouteLocks = null;
+
 
     use DtoNormalizer;
 
@@ -161,7 +166,8 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
             'numberCountry' => $this->getNumberCountry(),
             'relMatchlists' => $this->getRelMatchlists(),
             'relSchedules' => $this->getRelSchedules(),
-            'relCalendars' => $this->getRelCalendars()
+            'relCalendars' => $this->getRelCalendars(),
+            'relRouteLocks' => $this->getRelRouteLocks()
         ];
     }
 
@@ -213,6 +219,17 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
             }
         }
 
+        if (!is_null($this->relRouteLocks)) {
+            $items = $this->getRelRouteLocks();
+            $this->relRouteLocks = [];
+            foreach ($items as $item) {
+                $this->relRouteLocks[] = $transformer->transform(
+                    'Ivoz\\Provider\\Domain\\Model\\ConditionalRoutesConditionsRelRouteLock\\ConditionalRoutesConditionsRelRouteLock',
+                    $item->getId() ?? $item
+                );
+            }
+        }
+
     }
 
     /**
@@ -231,6 +248,10 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
         $this->relCalendars = $transformer->transform(
             'Ivoz\\Provider\\Domain\\Model\\ConditionalRoutesConditionsRelCalendar\\ConditionalRoutesConditionsRelCalendar',
             $this->relCalendars
+        );
+        $this->relRouteLocks = $transformer->transform(
+            'Ivoz\\Provider\\Domain\\Model\\ConditionalRoutesConditionsRelRouteLock\\ConditionalRoutesConditionsRelRouteLock',
+            $this->relRouteLocks
         );
     }
 
@@ -852,6 +873,26 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
     public function getRelCalendars()
     {
         return $this->relCalendars;
+    }
+
+    /**
+     * @param array $relRouteLocks
+     *
+     * @return static
+     */
+    public function setRelRouteLocks($relRouteLocks = null)
+    {
+        $this->relRouteLocks = $relRouteLocks;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getRelRouteLocks()
+    {
+        return $this->relRouteLocks;
     }
 }
 
