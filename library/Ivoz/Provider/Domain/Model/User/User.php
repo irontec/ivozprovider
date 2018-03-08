@@ -176,15 +176,7 @@ class User extends UserAbstract implements UserInterface, AdvancedUserInterface,
      */
     public function getVoiceMail()
     {
-        if (!is_null($this->getVoiceMailUser())) {
-
-            return sprintf("%s@%s",
-                $this->getVoiceMailUser(),
-                $this->getVoiceMailContext()
-            );
-        }
-
-        return '';
+        return $this->getVoiceMailUser() . '@' . $this->getVoiceMailContext();
     }
 
     /**
@@ -192,7 +184,7 @@ class User extends UserAbstract implements UserInterface, AdvancedUserInterface,
      */
     public function getVoiceMailUser()
     {
-        return $this->getExtensionNumber();
+        return "user" . $this->getId();
     }
 
     /**
