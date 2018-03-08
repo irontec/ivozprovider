@@ -43,6 +43,8 @@ doctrine:
         Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelSchedule
       Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarInterface:
         Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendar
+      Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLockInterface:
+        Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLock
       Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface:
         Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom
       Ivoz\Provider\Domain\Model\Country\CountryInterface:
@@ -145,6 +147,8 @@ doctrine:
         Ivoz\Provider\Domain\Model\Recording\Recording
       Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface:
         Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount
+      Ivoz\Provider\Domain\Model\RouteLock\RouteLockInterface:
+        Ivoz\Provider\Domain\Model\RouteLock\RouteLock
       Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface:
         Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup
       Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface:
