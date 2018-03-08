@@ -19,6 +19,18 @@ production:
       trim: both
       maxLength: 190 
       required: true
+    maxCalls:
+      title: _('Max calls')
+      type: number
+      defaultValue: 2
+      source:
+        control: Spinner
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Limits both user generated and external received calls to this value (0 for unlimited).")
+        label: _("Need help?")
     defaultTimezoneId:
       title: _('Default timezone')
       type: select

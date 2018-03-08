@@ -44,7 +44,7 @@ production:
           outgoingDDIId: true
           outgoingDdiRuleId: true
           registryData: true
-          externalMaxCalls: true
+          maxCalls: true
           defaultTimezoneId: true
           distributeMethod: true
           applicationServerId: true
@@ -105,7 +105,7 @@ production:
           outboundPrefix: true
           distributeMethod: true
           applicationServerId: true
-          externalMaxCalls: false
+          maxCalls: false
           outgoingDDIId: true
           outgoingDdiRuleId: true
           externallyExtraOpts: true
@@ -116,7 +116,7 @@ production:
           id: true
           name: true
           languageId: true
-          externalMaxCalls: true
+          maxCalls: true
           defaultTimezoneId: true
           recordingsLimitMB: true
           externallyExtraOpts: true
@@ -139,7 +139,7 @@ production:
           colsPerRow: 2
           label: _("Security")
           fields:
-            externalMaxCalls: 1
+            maxCalls: 1
             ipFilter: 1
       class: ui-silk-add
       label: true
@@ -202,7 +202,7 @@ production:
           colsPerRow: 2
           label: _("Security")
           fields:
-            externalMaxCalls: 1
+            maxCalls: 1
             ipFilter: 1
         group3:
           colsPerRow: 12
