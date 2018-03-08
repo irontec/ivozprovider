@@ -27,7 +27,7 @@ Ivoz\Provider\Domain\Model\Company\Company:
     terminals:
       targetEntity: Ivoz\Provider\Domain\Model\Terminal\TerminalInterface
       mappedBy: company
-    ratinProfiles:
+    ratingProfiles:
       targetEntity: Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface
       mappedBy: company
       cascade: ['persist']

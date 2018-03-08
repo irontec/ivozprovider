@@ -46,7 +46,7 @@ trait CompanyTrait
     /**
      * @var Collection
      */
-    protected $ratinProfiles;
+    protected $ratingProfiles;
 
     /**
      * @var Collection
@@ -75,7 +75,7 @@ trait CompanyTrait
         $this->friends = new ArrayCollection();
         $this->companyServices = new ArrayCollection();
         $this->terminals = new ArrayCollection();
-        $this->ratinProfiles = new ArrayCollection();
+        $this->ratingProfiles = new ArrayCollection();
         $this->musicsOnHold = new ArrayCollection();
         $this->recordings = new ArrayCollection();
         $this->relFeatures = new ArrayCollection();
@@ -112,8 +112,8 @@ trait CompanyTrait
             $self->replaceTerminals($dto->getTerminals());
         }
 
-        if ($dto->getRatinProfiles()) {
-            $self->replaceRatinProfiles($dto->getRatinProfiles());
+        if ($dto->getRatingProfiles()) {
+            $self->replaceRatingProfiles($dto->getRatingProfiles());
         }
 
         if ($dto->getMusicsOnHold()) {
@@ -160,8 +160,8 @@ trait CompanyTrait
         if ($dto->getTerminals()) {
             $this->replaceTerminals($dto->getTerminals());
         }
-        if ($dto->getRatinProfiles()) {
-            $this->replaceRatinProfiles($dto->getRatinProfiles());
+        if ($dto->getRatingProfiles()) {
+            $this->replaceRatingProfiles($dto->getRatingProfiles());
         }
         if ($dto->getMusicsOnHold()) {
             $this->replaceMusicsOnHold($dto->getMusicsOnHold());
@@ -558,75 +558,75 @@ trait CompanyTrait
     }
 
     /**
-     * Add ratinProfile
+     * Add ratingProfile
      *
-     * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $ratinProfile
+     * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $ratingProfile
      *
      * @return CompanyTrait
      */
-    public function addRatinProfile(\Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $ratinProfile)
+    public function addRatingProfile(\Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $ratingProfile)
     {
-        $this->ratinProfiles->add($ratinProfile);
+        $this->ratingProfiles->add($ratingProfile);
 
         return $this;
     }
 
     /**
-     * Remove ratinProfile
+     * Remove ratingProfile
      *
-     * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $ratinProfile
+     * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $ratingProfile
      */
-    public function removeRatinProfile(\Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $ratinProfile)
+    public function removeRatingProfile(\Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $ratingProfile)
     {
-        $this->ratinProfiles->removeElement($ratinProfile);
+        $this->ratingProfiles->removeElement($ratingProfile);
     }
 
     /**
-     * Replace ratinProfiles
+     * Replace ratingProfiles
      *
-     * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface[] $ratinProfiles
+     * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface[] $ratingProfiles
      * @return self
      */
-    public function replaceRatinProfiles(Collection $ratinProfiles)
+    public function replaceRatingProfiles(Collection $ratingProfiles)
     {
         $updatedEntities = [];
         $fallBackId = -1;
-        foreach ($ratinProfiles as $entity) {
+        foreach ($ratingProfiles as $entity) {
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setCompany($this);
         }
         $updatedEntityKeys = array_keys($updatedEntities);
 
-        foreach ($this->ratinProfiles as $key => $entity) {
+        foreach ($this->ratingProfiles as $key => $entity) {
             $identity = $entity->getId();
             if (in_array($identity, $updatedEntityKeys)) {
-                $this->ratinProfiles->set($key, $updatedEntities[$identity]);
+                $this->ratingProfiles->set($key, $updatedEntities[$identity]);
             } else {
-                $this->ratinProfiles->remove($key);
+                $this->ratingProfiles->remove($key);
             }
             unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
-            $this->addRatinProfile($entity);
+            $this->addRatingProfile($entity);
         }
 
         return $this;
     }
 
     /**
-     * Get ratinProfiles
+     * Get ratingProfiles
      *
      * @return \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface[]
      */
-    public function getRatinProfiles(Criteria $criteria = null)
+    public function getRatingProfiles(Criteria $criteria = null)
     {
         if (!is_null($criteria)) {
-            return $this->ratinProfiles->matching($criteria)->toArray();
+            return $this->ratingProfiles->matching($criteria)->toArray();
         }
 
-        return $this->ratinProfiles->toArray();
+        return $this->ratingProfiles->toArray();
     }
 
     /**

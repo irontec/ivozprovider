@@ -155,7 +155,8 @@ class DataAccessControlParser
                 continue;
             }
 
-            $criteria = $this->dataAccessControlToCriteria($dataAccessControl);
+            $parsedDataAccessControl = $this->parseDataAccessControl($dataAccessControl);
+            $criteria = $this->dataAccessControlToCriteria($parsedDataAccessControl);
             $inheritedAccessControl[$field]['in'] = $this->getEntityIdsByCriteria($resource, $criteria);
         }
 
@@ -218,7 +219,9 @@ class DataAccessControlParser
             return Criteria::create();
         }
 
-        return CriteriaHelper::fromArray($dataAccessControl);
+        return CriteriaHelper::fromArray(
+            $this->accessControlToArrayCriteria($dataAccessControl)
+        );
     }
 
     /**
