@@ -185,6 +185,11 @@ Ivoz\Provider\Domain\Model\Ddi\Ddi:
         company:
           in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
 Ivoz\Provider\Domain\Model\Domain\Domain:
+  itemOperations:
+    put: ~
+    delete: ~
+  collectionOperations:
+    post: ~
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\Extension\Extension:
@@ -668,7 +673,10 @@ Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet:
           eq: "user.getBrand().getId()"
 Ivoz\Provider\Domain\Model\TransformationRule\TransformationRule:
   attributes:
-    access_control: '"ROLE_SUPER_ADMIN" in roles'
+    access_control: '"ROLE_BRAND_ADMIN" in roles'
+    read_access_control:
+      inherited:
+        transformationRuleSet: 'Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet'
 Ivoz\Provider\Domain\Model\User\User:
   attributes:
     access_control: '("ROLE_COMPANY_ADMIN" in roles) or ("ROLE_COMPANY_USER" in roles)'

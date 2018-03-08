@@ -180,7 +180,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     /**
      * @var \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileDto[] | null
      */
-    private $ratinProfiles = null;
+    private $ratingProfiles = null;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldDto[] | null
@@ -285,7 +285,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'friends' => $this->getFriends(),
             'companyServices' => $this->getCompanyServices(),
             'terminals' => $this->getTerminals(),
-            'ratinProfiles' => $this->getRatinProfiles(),
+            'ratingProfiles' => $this->getRatingProfiles(),
             'musicsOnHold' => $this->getMusicsOnHold(),
             'recordings' => $this->getRecordings(),
             'relFeatures' => $this->getRelFeatures()
@@ -362,11 +362,11 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             }
         }
 
-        if (!is_null($this->ratinProfiles)) {
-            $items = $this->getRatinProfiles();
-            $this->ratinProfiles = [];
+        if (!is_null($this->ratingProfiles)) {
+            $items = $this->getRatingProfiles();
+            $this->ratingProfiles = [];
             foreach ($items as $item) {
-                $this->ratinProfiles[] = $transformer->transform(
+                $this->ratingProfiles[] = $transformer->transform(
                     'Ivoz\\Cgr\\Domain\\Model\\TpRatingProfile\\TpRatingProfile',
                     $item->getId() ?? $item
                 );
@@ -433,9 +433,9 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'Ivoz\\Provider\\Domain\\Model\\Terminal\\Terminal',
             $this->terminals
         );
-        $this->ratinProfiles = $transformer->transform(
+        $this->ratingProfiles = $transformer->transform(
             'Ivoz\\Cgr\\Domain\\Model\\TpRatingProfile\\TpRatingProfile',
-            $this->ratinProfiles
+            $this->ratingProfiles
         );
         $this->musicsOnHold = $transformer->transform(
             'Ivoz\\Provider\\Domain\\Model\\MusicOnHold\\MusicOnHold',
@@ -1372,13 +1372,13 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param array $ratinProfiles
+     * @param array $ratingProfiles
      *
      * @return static
      */
-    public function setRatinProfiles($ratinProfiles = null)
+    public function setRatingProfiles($ratingProfiles = null)
     {
-        $this->ratinProfiles = $ratinProfiles;
+        $this->ratingProfiles = $ratingProfiles;
 
         return $this;
     }
@@ -1386,9 +1386,9 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     /**
      * @return array
      */
-    public function getRatinProfiles()
+    public function getRatingProfiles()
     {
-        return $this->ratinProfiles;
+        return $this->ratingProfiles;
     }
 
     /**

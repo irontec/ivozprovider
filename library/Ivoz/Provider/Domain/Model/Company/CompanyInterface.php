@@ -648,35 +648,35 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getTerminals(\Doctrine\Common\Collections\Criteria $criteria = null);
 
     /**
-     * Add ratinProfile
+     * Add ratingProfile
      *
-     * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $ratinProfile
+     * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $ratingProfile
      *
      * @return CompanyTrait
      */
-    public function addRatinProfile(\Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $ratinProfile);
+    public function addRatingProfile(\Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $ratingProfile);
 
     /**
-     * Remove ratinProfile
+     * Remove ratingProfile
      *
-     * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $ratinProfile
+     * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $ratingProfile
      */
-    public function removeRatinProfile(\Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $ratinProfile);
+    public function removeRatingProfile(\Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $ratingProfile);
 
     /**
-     * Replace ratinProfiles
+     * Replace ratingProfiles
      *
-     * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface[] $ratinProfiles
+     * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface[] $ratingProfiles
      * @return self
      */
-    public function replaceRatinProfiles(Collection $ratinProfiles);
+    public function replaceRatingProfiles(Collection $ratingProfiles);
 
     /**
-     * Get ratinProfiles
+     * Get ratingProfiles
      *
      * @return \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface[]
      */
-    public function getRatinProfiles(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getRatingProfiles(\Doctrine\Common\Collections\Criteria $criteria = null);
 
     /**
      * Add musicsOnHold

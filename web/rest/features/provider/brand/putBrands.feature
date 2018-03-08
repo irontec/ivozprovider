@@ -18,9 +18,9 @@ Feature: Manage brands
         "recordingsLimitMB": 0,
         "recordingsLimitEmail": "",
         "invoice": {
-          "nif": "123",
+          "nif": "1234",
           "postalAddress": "",
-          "postalCode": "",
+          "postalCode": "48960",
           "town": "",
           "province": "",
           "country": "",
@@ -50,9 +50,9 @@ Feature: Manage brands
               "baseName": null
           },
           "invoice": {
-              "nif": "123",
+              "nif": "1234",
               "postalAddress": "",
-              "postalCode": "",
+              "postalCode": "48960",
               "town": "",
               "province": "",
               "country": "",
