@@ -27,6 +27,8 @@ Scenario: I can create new authorized sources
   Then I can see confirmation dialog
   When I click on close dialog button
   Then I am on "CompaniesList_kamUsersAddress" subscreen list
+  When I click on "kamUsersAddress" last elements edit button
+  Then I compare the form data with "brand/authorizedSources/new" data fixture
 
 Scenario: I can edit authorized sources
   Given I can see at least one row

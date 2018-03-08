@@ -25,6 +25,8 @@ Scenario: I create new brand services admin page
    Then I can see confirmation dialog
    When I click on close button
    Then I am on "BrandServices" list
+   When I click on "BrandServices" last elements edit button
+   Then I compare the form data with "brand/brandServices/new" data fixture
 
 Scenario: I can edit brand service
   Given I can see at least one row

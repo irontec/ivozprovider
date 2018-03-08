@@ -30,6 +30,8 @@ Scenario: I create match lists
   Then I can see confirmation dialog
   When I click on close dialog button
   Then I am on "MatchListsList_matchListPatterns" subscreen list
+  When I click on "matchListPatterns" last elements edit button
+  Then I compare the form data with "company/matchListPatterns/new" data fixture
 
 Scenario: I can save match lists
   Given I can see at least one row

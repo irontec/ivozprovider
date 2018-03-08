@@ -25,6 +25,8 @@ Scenario: I can create new generic music on hol
    Then I can see confirmation dialog
    When I click on close dialog button
    Then I am on "GenericMusicOnHold" list
+  When I click on "GenericMusicOnHold" last elements edit button
+  Then I compare the form data with "brand/genericMusicOnHold/new" data fixture
 
 Scenario: I can edit generic music on hold
   Given I can see at least one row

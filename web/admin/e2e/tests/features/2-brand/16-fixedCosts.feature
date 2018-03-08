@@ -24,6 +24,8 @@ Scenario: I can create fixed cost admin page
   Then I can see confirmation dialog
   When I click on close dialog button
   Then I am on "FixedCosts" list
+  When I click on "FixedCosts" last elements edit button
+  Then I compare the form data with "brand/fixedCosts/new" data fixture
 
 Scenario: I can save fixed costs
   Given I can see at least one row

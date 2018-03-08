@@ -25,6 +25,8 @@ Scenario: I create new brand operator admin page
   Then I can see confirmation dialog
   When I click on close dialog button
   Then I am on "BrandsList_administrators" subscreen list
+  When I click on "administrators" last elements edit button
+  Then I compare the form data with "platform/brandOperators/new" data fixture
 
 Scenario: I can edit brand operators
   Given I can see at least one row

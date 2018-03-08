@@ -25,6 +25,8 @@ Scenario: I can create media relays
    Then I can see confirmation dialog
    When I click on close dialog button
    Then I am on "MediaRelaySetsList_kamRtpproxy" subscreen list
+  When I click on "kamRtpproxy" last elements edit button
+  Then I compare the form data with "platform/mediaRelay/new" data fixture
 
 Scenario: I can edit media relay
   Given I can see at least one row

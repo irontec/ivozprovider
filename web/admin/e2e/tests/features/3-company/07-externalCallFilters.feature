@@ -27,6 +27,8 @@ Scenario: I create external call filters
   Then I can see confirmation dialog
   When I click on close dialog button
   Then I am on "ExternalCallFilters" list
+  When I click on "ExternalCallFilters" last elements edit button
+  Then I compare the form data with "company/externalCallFilters/new" data fixture
 
 Scenario: I can save ExternalCallFilters
   Given I can see at least one row

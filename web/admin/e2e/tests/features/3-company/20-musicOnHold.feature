@@ -20,13 +20,15 @@ Background:
     And I click on "MusicOnHold" CTA
    Then I am on "MusicOnHold" list
 
-Scenario: I add music on hold
+Scenario: I can create music on hold
   When I click on add button
    And I fill out the form with "company/musicOnHold/new" data fixture
    And I click on save button
   Then I can see confirmation dialog
   When I click on close dialog button
   Then I am on "MusicOnHold" list
+  When I click on "MusicOnHold" last elements edit button
+  Then I compare the form data with "company/musicOnHold/new" data fixture
 
 Scenario: I can edit music on hold
   Given I can see at least one row

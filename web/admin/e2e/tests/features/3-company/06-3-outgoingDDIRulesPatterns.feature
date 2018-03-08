@@ -30,6 +30,8 @@ Scenario: I create outgoing DDI Rules
   Then I can see confirmation dialog
   When I click on close dialog button
   Then I am on "OutgoingDDIRulesList_outgoingDDIRulesPatterns" subscreen list
+  When I click on "outgoingDDIRulesPatterns" last elements edit button
+  Then I compare the form data with "company/outgoingDDIRulesPatterns/new" data fixture
 
 Scenario: I can save outgoing DDI Rules
   Given I can see at least one row

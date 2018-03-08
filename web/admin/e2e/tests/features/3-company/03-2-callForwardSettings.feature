@@ -30,6 +30,8 @@ Scenario: I create call forward settings
   Then I can see confirmation dialog
   When I click on close dialog button
   Then I am on "UsersList_callForwardSettings" subscreen list
+  When I click on "callForwardSettings" last elements edit button
+  Then I compare the form data with "company/callForwardSettings/new" data fixture
 
 Scenario: I can save call forward settings
   Given I can see at least one row

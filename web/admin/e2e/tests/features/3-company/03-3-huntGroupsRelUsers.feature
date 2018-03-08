@@ -30,6 +30,8 @@ Scenario: I create hunt groups rel users
   Then I can see confirmation dialog
   When I click on close dialog button
   Then I am on "UsersList_huntGroupsRelUsers" subscreen list
+  When I click on "huntGroupsRelUsers" last elements edit button
+  Then I compare the form data with "company/huntGroupsRelUsers/new" data fixture
 
 Scenario: I can save hunt groups rel users
   Given I can see at least one row

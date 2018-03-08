@@ -2,7 +2,6 @@
 @outgoingRouting
 @brand13
 
-
 Feature: Outgoing routing admin page
   As a main operator
   I want to be able to access outgoing routing admin page
@@ -25,6 +24,8 @@ Scenario: I can create new outgoing routings
    Then I can see confirmation dialog
    When I click on close dialog button
    Then I am on "OutgoingRouting" list
+   When I click on "OutgoingRouting" last elements edit button
+   Then I compare the form data with "brand/outgoingRouting/new2" data fixture
 
 Scenario: I can edit outgoing routing
   Given I can see at least one row

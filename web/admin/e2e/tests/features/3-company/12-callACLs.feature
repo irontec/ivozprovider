@@ -27,6 +27,8 @@ Scenario: I create call ACLs
   Then I can see confirmation dialog
   When I click on close dialog button
   Then I am on "CallACL" list
+  When I click on "CallACL" last elements edit button
+  Then I compare the form data with "company/callACLs/new" data fixture
 
 Scenario: I can save CallACL
   Given I can see at least one row

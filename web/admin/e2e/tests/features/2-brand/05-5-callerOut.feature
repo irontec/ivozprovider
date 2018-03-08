@@ -27,6 +27,8 @@ Scenario: I can create new caller out
   Then I can see confirmation dialog
   When I click on close dialog button
   Then I am on "TransformationRuleSetsList_transformationRulesCallerOut" subscreen list
+  When I click on "transformationRulesCallerOut" last elements edit button
+  Then I compare the form data with "brand/callerOut/new" data fixture
 
 Scenario: I can save caller out
   Given I can see at least one row

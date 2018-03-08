@@ -20,13 +20,15 @@ Background:
     And I click on "Faxes" CTA
    Then I am on "Faxes" list
 
-Scenario: I add company faxes
+Scenario: I can create company faxes
   When I click on add button
    And I fill out the form with "company/faxes/new" data fixture
    And I click on save button
   Then I can see confirmation dialog
   When I click on close dialog button
   Then I am on "Faxes" list
+  When I click on "Faxes" last elements edit button
+  Then I compare the form data with "company/faxes/new" data fixture
 
 Scenario: I can edit company faxes
   Given I can see at least one row
