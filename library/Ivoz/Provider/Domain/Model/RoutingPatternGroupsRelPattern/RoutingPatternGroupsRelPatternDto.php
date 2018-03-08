@@ -2,13 +2,23 @@
 
 namespace Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
-
-
 class RoutingPatternGroupsRelPatternDto extends RoutingPatternGroupsRelPatternDtoAbstract
 {
+    /**
+     * @inheritdoc
+     */
+    public static function getPropertyMap(string $context = '')
+    {
+        if ($context === self::CONTEXT_COLLECTION) {
+            return [
+                'id' => 'id',
+                'routingPatternId' => 'routingPattern',
+                'routingPatternGroupId' => 'routingPatternGroup'
+            ];
+        }
+
+        return parent::getPropertyMap(...func_get_args());
+    }
 
 }
 

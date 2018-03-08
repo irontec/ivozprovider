@@ -2,13 +2,23 @@
 
 namespace Ivoz\Provider\Domain\Model\CallAclRelMatchList;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
-
-
 class CallAclRelMatchListDto extends CallAclRelMatchListDtoAbstract
 {
+    /**
+     * @inheritdoc
+     */
+    public static function getPropertyMap(string $context = '')
+    {
+        if ($context === self::CONTEXT_COLLECTION) {
+            return [
+                'id' => 'id',
+                'priority' => 'priority',
+                'policy' => 'policy'
+            ];
+        }
+
+        return parent::getPropertyMap(...func_get_args());
+    }
 
 }
 

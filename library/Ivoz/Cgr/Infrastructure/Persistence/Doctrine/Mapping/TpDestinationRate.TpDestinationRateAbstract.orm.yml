@@ -86,7 +86,7 @@ Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateAbstract:
       cascade: {  }
       fetch: LAZY
       mappedBy: null
-      inversedBy: null
+      inversedBy: tpDestinationRates
       joinColumns:
         destinationRateId:
           nullable: false
@@ -98,7 +98,7 @@ Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateAbstract:
       cascade: {  }
       fetch: LAZY
       mappedBy: null
-      inversedBy: null
+      inversedBy: tpDestination
       joinColumns:
         destinationId:
           nullable: false

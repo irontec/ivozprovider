@@ -23,28 +23,31 @@ class ProviderExtension extends Fixture implements DependentFixtureInterface
         $item1 = $this->createEntityInstanceWithPublicMethods(Extension::class);
         $item1->setNumber("101");
         $item1->setRouteType("user");
-        $item1->setCompany($this->getReference('_reference_IvozProviderDomainModelCompanyCompany1'));
-        $item1->setUser($this->getReference('_reference_IvozProviderDomainModelUserUser1'));
-        $item1->setNumberCountry($this->getReference('_reference_IvozProviderDomainModelCountryCountry70'));
-        $this->addReference('_reference_IvozProviderDomainModelExtensionExtension1', $item1);
+        $item1->setCompany($this->getReference('_reference_ProviderCompany1'));
+        $item1->setUser($this->getReference('_reference_ProviderUser1'));
+        $item1->setNumberCountry($this->getReference('_reference_ProviderCountry70'));
+        $this->addReference('_reference_ProviderExtension1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
         $item2 = $this->createEntityInstanceWithPublicMethods(Extension::class);
         $item2->setNumber("102");
         $item2->setRouteType("user");
-        $item2->setCompany($this->getReference('_reference_IvozProviderDomainModelCompanyCompany1'));
-        $item2->setUser($this->getReference('_reference_IvozProviderDomainModelUserUser2'));
-        $item2->setNumberCountry($this->getReference('_reference_IvozProviderDomainModelCountryCountry70'));
-        $this->addReference('_reference_IvozProviderDomainModelExtensionExtension2', $item2);
+        $item2->setCompany($this->getReference('_reference_ProviderCompany1'));
+        $item2->setUser($this->getReference('_reference_ProviderUser2'));
+        $item2->setNumberCountry($this->getReference('_reference_ProviderCountry70'));
+        $this->addReference('_reference_ProviderExtension2', $item2);
+        $this->sanitizeEntityValues($item2);
         $manager->persist($item2);
 
         $item3 = $this->createEntityInstanceWithPublicMethods(Extension::class);
         $item3->setNumber("12346");
         $item3->setRouteType("number");
         $item3->setNumberValue("946006060");
-        $item3->setCompany($this->getReference('_reference_IvozProviderDomainModelCompanyCompany1'));
-        $item3->setNumberCountry($this->getReference('_reference_IvozProviderDomainModelCountryCountry70'));
-        $this->addReference('_reference_IvozProviderDomainModelExtensionExtension3', $item3);
+        $item3->setCompany($this->getReference('_reference_ProviderCompany1'));
+        $item3->setNumberCountry($this->getReference('_reference_ProviderCountry70'));
+        $this->addReference('_reference_ProviderExtension3', $item3);
+        $this->sanitizeEntityValues($item3);
         $manager->persist($item3);
 
     

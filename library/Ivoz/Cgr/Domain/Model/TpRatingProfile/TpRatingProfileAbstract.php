@@ -586,7 +586,7 @@ abstract class TpRatingProfileAbstract
      *
      * @return self
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
+    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
     {
         $this->company = $company;
 

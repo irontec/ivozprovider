@@ -80,10 +80,4 @@ class PrepareDatabaseCommand extends ContainerAwareCommand
             }
         }
     }
-
-
-    protected function loadFixtures()
-    {
-
-    }
 }

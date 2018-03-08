@@ -28,9 +28,10 @@ class ProviderFriend extends Fixture implements DependentFixtureInterface
         $item1->setPassword("SDG3qd2j6+");
         $item1->setPriority(1);
         $item1->setFromDomain("");
-        $item1->setCompany($this->getReference('_reference_IvozProviderDomainModelCompanyCompany1'));
-        $item1->setDomain($this->getReference('_reference_IvozProviderDomainModelDomainDomain3'));
-        $this->addReference('_reference_IvozProviderDomainModelFriendFriend1', $item1);
+        $item1->setCompany($this->getReference('_reference_ProviderCompany1'));
+        $item1->setDomain($this->getReference('_reference_ProviderDomain3'));
+        $this->addReference('_reference_ProviderFriend1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
         $manager->flush();

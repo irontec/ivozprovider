@@ -27,7 +27,8 @@ class ProviderService extends Fixture
         $item1->setExtraArgs(true);
         $item1->setName(new Name('en', 'en'));
         $item1->setDescription(new Description('en', 'en'));
-        $this->addReference('_reference_IvozProviderDomainModelServiceService1', $item1);
+        $this->addReference('_reference_ProviderService1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
         $item2 = $this->createEntityInstanceWithPublicMethods(Service::class);
@@ -36,7 +37,8 @@ class ProviderService extends Fixture
         $item2->setExtraArgs(false);
         $item2->setName(new Name('en', 'en'));
         $item2->setDescription(new Description('en', 'en'));
-        $this->addReference('_reference_IvozProviderDomainModelServiceService2', $item2);
+        $this->addReference('_reference_ProviderService2', $item2);
+        $this->sanitizeEntityValues($item2);
         $manager->persist($item2);
 
         $item3 = $this->createEntityInstanceWithPublicMethods(Service::class);
@@ -45,7 +47,8 @@ class ProviderService extends Fixture
         $item3->setExtraArgs(true);
         $item3->setName(new Name('en', 'en'));
         $item3->setDescription(new Description('en', 'en'));
-        $this->addReference('_reference_IvozProviderDomainModelServiceService3', $item3);
+        $this->addReference('_reference_ProviderService3', $item3);
+        $this->sanitizeEntityValues($item3);
         $manager->persist($item3);
 
         $item4 = $this->createEntityInstanceWithPublicMethods(Service::class);
@@ -54,7 +57,8 @@ class ProviderService extends Fixture
         $item4->setExtraArgs(true);
         $item4->setName(new Name('en', 'en'));
         $item4->setDescription(new Description('en', 'en'));
-        $this->addReference('_reference_IvozProviderDomainModelServiceService4', $item4);
+        $this->addReference('_reference_ProviderService4', $item4);
+        $this->sanitizeEntityValues($item4);
         $manager->persist($item4);
 
     

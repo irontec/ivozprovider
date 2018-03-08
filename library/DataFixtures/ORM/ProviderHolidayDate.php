@@ -23,8 +23,9 @@ class ProviderHolidayDate extends Fixture implements DependentFixtureInterface
         $item1 = $this->createEntityInstanceWithPublicMethods(HolidayDate::class);
         $item1->setName("Name");
         $item1->setEventDate(new \DateTime("2021-12-21 00:00:00"));
-        $item1->setCalendar($this->getReference('_reference_IvozProviderDomainModelCalendarCalendar1'));
-        $this->addReference('_reference_IvozProviderDomainModelHolidayDateHolidayDate1', $item1);
+        $item1->setCalendar($this->getReference('_reference_ProviderCalendar1'));
+        $this->addReference('_reference_ProviderHolidayDateHolidayDate1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
     

@@ -30,9 +30,11 @@ class ProviderBrand extends Fixture implements DependentFixtureInterface
         $item1->setRecordingsLimitEmail("");
         $item1->setLogo(new Logo(null, null, null));
         $item1->setInvoice(new Invoice('', '', '', '', '', '', ''));
-        $item1->setLanguage($this->getReference('_reference_IvozProviderDomainModelLanguageLanguage1'));
-        $item1->setDefaultTimezone($this->getReference('_reference_IvozProviderDomainModelTimezoneTimezone145'));
-        $this->addReference('_reference_IvozProviderDomainModelBrandBrand1', $item1);
+        $item1->setDomain($this->getReference('_reference_ProviderDomain6'));
+        $item1->setLanguage($this->getReference('_reference_ProviderLanguage1'));
+        $item1->setDefaultTimezone($this->getReference('_reference_ProviderTimezone145'));
+        $this->addReference('_reference_ProviderBrand1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
         $item2 = $this->createEntityInstanceWithPublicMethods(Brand::class);
@@ -40,10 +42,11 @@ class ProviderBrand extends Fixture implements DependentFixtureInterface
         $item2->setDomainUsers("sip.irontec.com");
         $item2->setLogo(new Logo(null, null, null));
         $item2->setInvoice(new Invoice('', '', '', '', '', '', ''));
-        $item2->setDomain($this->getReference('_reference_IvozProviderDomainModelDomainDomain4'));
-        $item2->setLanguage($this->getReference('_reference_IvozProviderDomainModelLanguageLanguage1'));
-        $item2->setDefaultTimezone($this->getReference('_reference_IvozProviderDomainModelTimezoneTimezone145'));
-        $this->addReference('_reference_IvozProviderDomainModelBrandBrand2', $item2);
+        $item2->setDomain($this->getReference('_reference_ProviderDomain4'));
+        $item2->setLanguage($this->getReference('_reference_ProviderLanguage1'));
+        $item2->setDefaultTimezone($this->getReference('_reference_ProviderTimezone145'));
+        $this->addReference('_reference_ProviderBrand2', $item2);
+        $this->sanitizeEntityValues($item2);
         $manager->persist($item2);
 
     

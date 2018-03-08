@@ -1,13 +1,20 @@
 monolog:
+ channels: ['changelog']
  handlers:
    filter_for_errors:
      type: fingers_crossed
      action_level: error
      handler: syslog_handler
+     channels: !changelog
 
    syslog_handler:
      type: syslog
      level: info
+
+   changelog_handler:
+     type: syslog
+     level: info
+     channels: changelog
 
    console:
      type: console

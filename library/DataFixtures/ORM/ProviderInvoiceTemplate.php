@@ -26,8 +26,9 @@ class ProviderInvoiceTemplate extends Fixture implements DependentFixtureInterfa
         $item1->setTemplate("Template");
         $item1->setTemplateHeader("Template header");
         $item1->setTemplateFooter("Template footer");
-        $item1->setBrand($this->getReference('_reference_IvozProviderDomainModelBrandBrand1'));
-        $this->addReference('_reference_IvozProviderDomainModelInvoiceTemplateInvoiceTemplate1', $item1);
+        $item1->setBrand($this->getReference('_reference_ProviderBrand1'));
+        $this->addReference('_reference_ProviderInvoiceTemplate1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
     

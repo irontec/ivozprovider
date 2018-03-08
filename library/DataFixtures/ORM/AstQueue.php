@@ -29,8 +29,9 @@ class AstQueue extends Fixture implements DependentFixtureInterface
         $item1->setMaxlen(5);
         $item1->setStrategy("rrmemory");
         $item1->setWeight(5);
-        $item1->setQueue($this->getReference('_reference_IvozProviderDomainModelQueueQueue1'));
-        $this->addReference('_reference_IvozAstDomainModelQueueQueue1', $item1);
+        $item1->setQueue($this->getReference('_reference_ProviderQueue1'));
+        $this->addReference('_reference_AstQueue1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
     

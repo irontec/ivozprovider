@@ -3,6 +3,8 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\ORM\EntityRepository;
+use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
+use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Ivoz\Provider\Domain\Model\User\UserRepository;
 
@@ -14,6 +16,30 @@ use Ivoz\Provider\Domain\Model\User\UserRepository;
  */
 class UserDoctrineRepository extends EntityRepository implements UserRepository
 {
+    /**
+     * @param AdministratorInterface $admin
+     * @return array
+     */
+    public function getSupervisedUserIdsByAdmin(AdministratorInterface $admin)
+    {
+        $companyIds = $admin->isBrandAdmin()
+            ? $this->getCompanyIdsByBrandAdmin($admin)
+            : [ $admin->getCompany()->getId() ];
+
+        $qb = $this->createQueryBuilder('self');
+        $expression = $qb->expr();
+
+        $qb
+            ->select('self.id')
+            ->where(
+                $expression->in('self.company', $companyIds)
+            );
+
+        $result = $qb->getQuery()->getScalarResult();
+
+        return array_column($result, 'id');
+    }
+
     /**
      * @param UserInterface $user
      * @return UserInterface[]
@@ -56,5 +82,25 @@ class UserDoctrineRepository extends EntityRepository implements UserRepository
             )->getQuery();
 
         return $query->getResult();
+    }
+
+    /**
+     * @param AdministratorInterface $admin
+     * @return array
+     */
+    protected function getCompanyIdsByBrandAdmin(AdministratorInterface $admin): array
+    {
+        $qb = $this->_em
+            ->createQueryBuilder()
+            ->select('self.id')
+            ->from(Company::class, 'self');
+        $expression = $qb->expr();
+
+        $qb->where(
+            $expression->eq('self.brand', $admin->getBrand()->getId())
+        );
+        $result = $qb->getQuery()->getScalarResult();
+
+        return array_column($result, 'id');
     }
 }

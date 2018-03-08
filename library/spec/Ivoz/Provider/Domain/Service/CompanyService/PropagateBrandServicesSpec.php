@@ -8,6 +8,7 @@ use Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface;
 use Ivoz\Provider\Domain\Model\BrandService\BrandServiceRepository;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceDto;
+use Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface;
 use Ivoz\Provider\Domain\Model\Service\ServiceInterface;
 use Ivoz\Provider\Domain\Service\CompanyService\PropagateBrandServices;
 use PhpSpec\ObjectBehavior;
@@ -95,6 +96,7 @@ class PropagateBrandServicesSpec extends ObjectBehavior
 
     function it_creates_company_services_by_brand_Services(
         BrandServiceInterface $brandService,
+        CompanyServiceInterface $companyService,
         ServiceInterface $service
     ) {
 
@@ -120,15 +122,22 @@ class PropagateBrandServicesSpec extends ObjectBehavior
             ->shouldBeCalled();
 
         $this
+            ->entityPersister
+            ->persistDto(Argument::type(CompanyServiceDto::class))
+            ->shouldBeCalled()
+            ->willReturn($companyService);
+
+        $this
             ->company
             ->getId()
             ->willReturn(3)
             ->shouldBeCalled();
 
         $this
-            ->entityPersister
-            ->persistDto(Argument::type(CompanyServiceDto::class))
+            ->company
+            ->addCompanyService(Argument::type(CompanyServiceInterface::class))
             ->shouldBeCalled();
+
 
         $this->execute(
             $this->company,

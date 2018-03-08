@@ -2,14 +2,25 @@
 
 namespace Ivoz\Provider\Domain\Model\BrandUrl;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
-
-
 class BrandUrlDto extends BrandUrlDtoAbstract
 {
     private $logoPath;
+
+    /**
+     * @inheritdoc
+     */
+    public static function getPropertyMap(string $context = '')
+    {
+        if ($context === self::CONTEXT_COLLECTION) {
+            return [
+                'id' => 'id',
+                'url' => 'url',
+                'name' => 'name'
+            ];
+        }
+
+        return parent::getPropertyMap(...func_get_args());
+    }
 
     public function getFileObjects()
     {

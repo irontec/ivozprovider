@@ -24,6 +24,17 @@ trait FixtureHelperTrait
         return $reflectionClass->newInstanceWithoutConstructor();
     }
 
+    protected function sanitizeEntityValues(EntityInterface $entity)
+    {
+        $sanitizer = function () {
+            $this->sanitizeValues();
+        };
+
+        $sanitizer->call($entity);
+
+        return $entity;
+    }
+
     protected function disableLifecycleEvents(EntityManagerInterface $em)
     {
         $eventManager = $em->getEventManager();

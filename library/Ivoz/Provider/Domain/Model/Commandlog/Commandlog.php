@@ -24,7 +24,7 @@ class Commandlog extends CommandlogAbstract implements CommandlogInterface
      */
     public static function fromEvent(CommandEventInterface $event)
     {
-        $entity = new self(
+        $entity = new static(
             $event->getRequestId(),
             $event->getService(),
             $event->getOccurredOn(),

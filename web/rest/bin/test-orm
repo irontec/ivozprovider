@@ -1,0 +1,9 @@
+#!/bin/bash
+pushd /opt/irontec/ivozprovider/web/rest
+    bin/console cache:clear -e test
+    bin/console api:prepare:database -e test
+    bin/console doctrine:fixtures:load -e test --no-interaction -v
+    mv var/cache/test/db.sqlite var/cache/test/db.sqlite.back
+
+    vendor/bin/simple-phpunit # --coverage-html tests/coverage --coverage-php tests/coverage/coverage.php
+popd

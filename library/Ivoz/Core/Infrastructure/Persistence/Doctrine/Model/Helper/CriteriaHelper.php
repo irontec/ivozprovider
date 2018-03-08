@@ -7,6 +7,7 @@ use Ivoz\Core\Domain\Model\Helper\CriteriaHelperInterface;
 use Doctrine\Common\Collections\Expr\Comparison;
 use Doctrine\Common\Collections\Expr\Value;
 use Doctrine\Common\Collections\Expr\CompositeExpression;
+use Doctrine\Common\Collections\Expr\Expression;
 
 class CriteriaHelper implements  CriteriaHelperInterface
 {
@@ -45,7 +46,7 @@ class CriteriaHelper implements  CriteriaHelperInterface
 
     /**
      * @param array $conditions
-     * @return \Doctrine\Common\Collections\Expr\Comparison|\Doctrine\Common\Collections\Expr\CompositeExpression
+     * @return Expression[]
      */
     private static function arrayToExpressions(array $conditions)
     {
@@ -56,13 +57,15 @@ class CriteriaHelper implements  CriteriaHelperInterface
 
             switch ($operator) {
                 case 'or':
+                    $subExpressions = self::arrayToExpressions($value);
                     $expressions[] = Criteria::expr()->orX(
-                        self::arrayToExpressions($comparison)
+                        ...$subExpressions
                     );
                     break;
                 case 'and':
+                    $subExpressions = self::arrayToExpressions($value);
                     $expressions[] = Criteria::expr()->andX(
-                        self::arrayToExpressions($comparison)
+                        ...$subExpressions
                     );
                     break;
                 default:
@@ -74,6 +77,12 @@ class CriteriaHelper implements  CriteriaHelperInterface
         return $expressions;
     }
 
+    /**
+     * @param string $field
+     * @param string $operator
+     * @param null $value
+     * @return Comparison
+     */
     private static function createExpression(string $field, string $operator, $value = null)
     {
         $expr = Criteria::expr();

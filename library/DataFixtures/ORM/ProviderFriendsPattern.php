@@ -23,8 +23,9 @@ class ProviderFriendsPattern extends Fixture implements DependentFixtureInterfac
         $item1 = $this->createEntityInstanceWithPublicMethods(FriendsPattern::class);
         $item1->setName("Spain");
         $item1->setRegExp("+34");
-        $item1->setFriend($this->getReference('_reference_IvozProviderDomainModelFriendFriend1'));
-        $this->addReference('_reference_IvozProviderDomainModelFriendsPatternFriendsPattern1', $item1);
+        $item1->setFriend($this->getReference('_reference_ProviderFriend1'));
+        $this->addReference('_reference_ProviderFriendsPattern1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
     

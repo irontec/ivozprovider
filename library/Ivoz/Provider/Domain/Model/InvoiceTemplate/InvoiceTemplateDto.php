@@ -2,14 +2,23 @@
 
 namespace Ivoz\Provider\Domain\Model\InvoiceTemplate;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
-
-
 class InvoiceTemplateDto extends InvoiceTemplateDtoAbstract
 {
 
+    /**
+     * @inheritdoc
+     */
+    public static function getPropertyMap(string $context = '')
+    {
+        if ($context === self::CONTEXT_COLLECTION) {
+            return [
+                'id' => 'id',
+                'name' => 'name'
+            ];
+        }
+
+        return parent::getPropertyMap(...func_get_args());
+    }
 }
 
 

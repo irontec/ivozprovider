@@ -305,7 +305,7 @@ abstract class TpDestinationAbstract
      *
      * @return self
      */
-    public function setDestination(\Ivoz\Cgr\Domain\Model\Destination\DestinationInterface $destination)
+    public function setDestination(\Ivoz\Cgr\Domain\Model\Destination\DestinationInterface $destination = null)
     {
         $this->destination = $destination;
 

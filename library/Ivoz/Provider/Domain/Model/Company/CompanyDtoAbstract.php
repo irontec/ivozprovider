@@ -180,7 +180,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     /**
      * @var \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileDto[] | null
      */
-    private $ratinProfiles = null;
+    private $ratingProfiles = null;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldDto[] | null
@@ -196,11 +196,6 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
      * @var \Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompanyDto[] | null
      */
     private $relFeatures = null;
-
-    /**
-     * @var \Ivoz\Provider\Domain\Model\Domain\DomainDto[] | null
-     */
-    private $domains = null;
 
 
     use DtoNormalizer;
@@ -290,11 +285,10 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'friends' => $this->getFriends(),
             'companyServices' => $this->getCompanyServices(),
             'terminals' => $this->getTerminals(),
-            'ratinProfiles' => $this->getRatinProfiles(),
+            'ratingProfiles' => $this->getRatingProfiles(),
             'musicsOnHold' => $this->getMusicsOnHold(),
             'recordings' => $this->getRecordings(),
-            'relFeatures' => $this->getRelFeatures(),
-            'domains' => $this->getDomains()
+            'relFeatures' => $this->getRelFeatures()
         ];
     }
 
@@ -368,11 +362,11 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             }
         }
 
-        if (!is_null($this->ratinProfiles)) {
-            $items = $this->getRatinProfiles();
-            $this->ratinProfiles = [];
+        if (!is_null($this->ratingProfiles)) {
+            $items = $this->getRatingProfiles();
+            $this->ratingProfiles = [];
             foreach ($items as $item) {
-                $this->ratinProfiles[] = $transformer->transform(
+                $this->ratingProfiles[] = $transformer->transform(
                     'Ivoz\\Cgr\\Domain\\Model\\TpRatingProfile\\TpRatingProfile',
                     $item->getId() ?? $item
                 );
@@ -412,17 +406,6 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             }
         }
 
-        if (!is_null($this->domains)) {
-            $items = $this->getDomains();
-            $this->domains = [];
-            foreach ($items as $item) {
-                $this->domains[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\Domain\\Domain',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-
     }
 
     /**
@@ -450,9 +433,9 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'Ivoz\\Provider\\Domain\\Model\\Terminal\\Terminal',
             $this->terminals
         );
-        $this->ratinProfiles = $transformer->transform(
+        $this->ratingProfiles = $transformer->transform(
             'Ivoz\\Cgr\\Domain\\Model\\TpRatingProfile\\TpRatingProfile',
-            $this->ratinProfiles
+            $this->ratingProfiles
         );
         $this->musicsOnHold = $transformer->transform(
             'Ivoz\\Provider\\Domain\\Model\\MusicOnHold\\MusicOnHold',
@@ -465,10 +448,6 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         $this->relFeatures = $transformer->transform(
             'Ivoz\\Provider\\Domain\\Model\\FeaturesRelCompany\\FeaturesRelCompany',
             $this->relFeatures
-        );
-        $this->domains = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\Domain\\Domain',
-            $this->domains
         );
     }
 
@@ -1393,13 +1372,13 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param array $ratinProfiles
+     * @param array $ratingProfiles
      *
      * @return static
      */
-    public function setRatinProfiles($ratinProfiles = null)
+    public function setRatingProfiles($ratingProfiles = null)
     {
-        $this->ratinProfiles = $ratinProfiles;
+        $this->ratingProfiles = $ratingProfiles;
 
         return $this;
     }
@@ -1407,9 +1386,9 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     /**
      * @return array
      */
-    public function getRatinProfiles()
+    public function getRatingProfiles()
     {
-        return $this->ratinProfiles;
+        return $this->ratingProfiles;
     }
 
     /**
@@ -1470,26 +1449,6 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     public function getRelFeatures()
     {
         return $this->relFeatures;
-    }
-
-    /**
-     * @param array $domains
-     *
-     * @return static
-     */
-    public function setDomains($domains = null)
-    {
-        $this->domains = $domains;
-
-        return $this;
-    }
-
-    /**
-     * @return array
-     */
-    public function getDomains()
-    {
-        return $this->domains;
     }
 }
 

@@ -45,13 +45,5 @@ class BrandDto extends BrandDtoAbstract
 
         return parent::getPropertyMap($context);
     }
-
-    /**
-     * @return array
-     */
-    public function normalize(string $context = self::CONTEXT_COLLECTION)
-    {
-        return parent::normalize($context);
-    }
 }
 

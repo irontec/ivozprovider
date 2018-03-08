@@ -189,7 +189,7 @@ interface TpRatingProfileInterface extends EntityInterface
      *
      * @return self
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company);
+    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null);
 
     /**
      * Get company

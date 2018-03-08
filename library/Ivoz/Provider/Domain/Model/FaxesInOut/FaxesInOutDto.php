@@ -2,13 +2,28 @@
 
 namespace Ivoz\Provider\Domain\Model\FaxesInOut;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
-
 class FaxesInOutDto extends FaxesInOutDtoAbstract
 {
     private $filePath;
+
+    /**
+     * @inheritdoc
+     */
+    public static function getPropertyMap(string $context = '')
+    {
+        if ($context === self::CONTEXT_COLLECTION) {
+            return [
+                'id' => 'id',
+                'calldate' => 'calldate',
+                'src' => 'src',
+                'dst' => 'dst',
+                'type' => 'type',
+                'status' => 'status'
+            ];
+        }
+
+        return parent::getPropertyMap(...func_get_args());
+    }
 
     public function getFileObjects()
     {

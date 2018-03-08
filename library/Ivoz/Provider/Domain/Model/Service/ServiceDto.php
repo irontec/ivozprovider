@@ -2,14 +2,25 @@
 
 namespace Ivoz\Provider\Domain\Model\Service;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
-
-
 class ServiceDto extends ServiceDtoAbstract
 {
 
+    /**
+     * @inheritdoc
+     */
+    public static function getPropertyMap(string $context = '')
+    {
+        if ($context === self::CONTEXT_COLLECTION) {
+            return [
+                'iden' => 'iden',
+                'defaultCode' => 'defaultCode',
+                'extraArgs' => 'extraArgs',
+                'id' => 'id'
+            ];
+        }
+
+        return parent::getPropertyMap(...func_get_args());
+    }
 }
 
 

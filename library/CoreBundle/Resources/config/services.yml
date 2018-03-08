@@ -51,6 +51,7 @@ services:
   Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister:
     arguments:
       $softDeleteMap: '%soft_delete%'
+      $logger: '@monolog.logger.changelog'
     public: true
 
   Ivoz\Core\Infrastructure\Symfony\EventListener\DomainExceptionListener:

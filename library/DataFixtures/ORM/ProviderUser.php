@@ -34,12 +34,13 @@ class ProviderUser extends Fixture implements DependentFixtureInterface
         $item1->setVoicemailAttachSound(true);
         $item1->setTokenKey("4c18027290f0c1ed517680bb4bcf2402");
         $item1->setGsQRCode(false);
-        $item1->setCompany($this->getReference('_reference_IvozProviderDomainModelCompanyCompany1'));
-        $item1->setTransformationRuleSet($this->getReference('_reference_IvozProviderDomainModelTransformationRuleSetTransformationRuleSet70'));
-        $item1->setTerminal($this->getReference('_reference_IvozProviderDomainModelTerminalTerminal1'));
-//        $item1->setExtension($this->getReference('_reference_IvozProviderDomainModelExtensionExtension1'));
-        $item1->setTimezone($this->getReference('_reference_IvozProviderDomainModelTimezoneTimezone145'));
-        $this->addReference('_reference_IvozProviderDomainModelUserUser1', $item1);
+        $item1->setCompany($this->getReference('_reference_ProviderCompany1'));
+        $item1->setTransformationRuleSet($this->getReference('_reference_ProviderTransformationRuleSet70'));
+        $item1->setTerminal($this->getReference('_reference_ProviderTerminal1'));
+//        $item1->setExtension($this->getReference('_reference_ProviderExtension1'));
+        $item1->setTimezone($this->getReference('_reference_ProviderTimezone145'));
+        $this->addReference('_reference_ProviderUser1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
         $item2 = $this->createEntityInstanceWithPublicMethods(User::class);
@@ -56,12 +57,13 @@ class ProviderUser extends Fixture implements DependentFixtureInterface
         $item2->setVoicemailAttachSound(true);
         $item2->setTokenKey("10fd9fbe1c6861fb0a14a57e78f871c5");
         $item2->setGsQRCode(false);
-        $item2->setCompany($this->getReference('_reference_IvozProviderDomainModelCompanyCompany1'));
-        $item2->setTransformationRuleSet($this->getReference('_reference_IvozProviderDomainModelTransformationRuleSetTransformationRuleSet70'));
-        $item2->setTerminal($this->getReference('_reference_IvozProviderDomainModelTerminalTerminal2'));
-//        $item2->setExtension($this->getReference('_reference_IvozProviderDomainModelExtensionExtension2'));
-        $item2->setTimezone($this->getReference('_reference_IvozProviderDomainModelTimezoneTimezone145'));
-        $this->addReference('_reference_IvozProviderDomainModelUserUser2', $item2);
+        $item2->setCompany($this->getReference('_reference_ProviderCompany1'));
+        $item2->setTransformationRuleSet($this->getReference('_reference_ProviderTransformationRuleSet70'));
+        $item2->setTerminal($this->getReference('_reference_ProviderTerminal2'));
+//        $item2->setExtension($this->getReference('_reference_ProviderExtension2'));
+        $item2->setTimezone($this->getReference('_reference_ProviderTimezone145'));
+        $this->addReference('_reference_ProviderUser2', $item2);
+        $this->sanitizeEntityValues($item2);
         $manager->persist($item2);
 
     

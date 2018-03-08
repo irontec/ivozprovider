@@ -26,20 +26,22 @@ class ProviderLcrRuleTarget extends Fixture implements DependentFixtureInterface
         $item3->setLcrId(1);
         $item3->setPriority(11);
         $item3->setWeight(6);
-        $item3->setRule($this->getReference('_reference_IvozProviderDomainModelLcrRuleLcrRule3'));
-        $item3->setGw($this->getReference('_reference_IvozProviderDomainModelLcrGatewayLcrGateway1'));
-        $item3->setOutgoingRouting($this->getReference('_reference_IvozProviderDomainModelOutgoingRoutingOutgoingRouting2'));
-        $this->addReference('_reference_IvozProviderDomainModelLcrRuleTargetLcrRuleTarget3', $item3);
+        $item3->setRule($this->getReference('_reference_ProviderLcrRule3'));
+        $item3->setGw($this->getReference('_reference_ProviderLcrGateway1'));
+        $item3->setOutgoingRouting($this->getReference('_reference_ProviderOutgoingRouting2'));
+        $this->addReference('_reference_ProviderLcrRuleTarget3', $item3);
+        $this->sanitizeEntityValues($item3);
         $manager->persist($item3);
 
         $item4 = $this->createEntityInstanceWithPublicMethods(LcrRuleTarget::class);
         $item4->setLcrId(1);
         $item4->setPriority(1);
         $item4->setWeight(1);
-        $item4->setRule($this->getReference('_reference_IvozProviderDomainModelLcrRuleLcrRule4'));
-        $item4->setGw($this->getReference('_reference_IvozProviderDomainModelLcrGatewayLcrGateway1'));
-        $item4->setOutgoingRouting($this->getReference('_reference_IvozProviderDomainModelOutgoingRoutingOutgoingRouting1'));
-        $this->addReference('_reference_IvozProviderDomainModelLcrRuleTargetLcrRuleTarget4', $item4);
+        $item4->setRule($this->getReference('_reference_ProviderLcrRule4'));
+        $item4->setGw($this->getReference('_reference_ProviderLcrGateway1'));
+        $item4->setOutgoingRouting($this->getReference('_reference_ProviderOutgoingRouting1'));
+        $this->addReference('_reference_ProviderLcrRuleTarget4', $item4);
+        $this->sanitizeEntityValues($item4);
         $manager->persist($item4);
 
     

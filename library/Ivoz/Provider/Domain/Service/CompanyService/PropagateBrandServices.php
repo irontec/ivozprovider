@@ -57,7 +57,8 @@ class PropagateBrandServices implements CompanyLifecycleEventHandlerInterface
                 ->setCode($service->getCode())
                 ->setCompanyId($entity->getId());
 
-            $this->entityPersister->persistDto($companyServiceDto);
+            $companyService = $this->entityPersister->persistDto($companyServiceDto);
+            $entity->addCompanyService($companyService);
         }
     }
 }

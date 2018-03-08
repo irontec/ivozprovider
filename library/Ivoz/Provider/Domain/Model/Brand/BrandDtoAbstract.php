@@ -133,11 +133,6 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     private $relFeatures = null;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Domain\DomainDto[] | null
-     */
-    private $domains = null;
-
-    /**
      * @var \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto[] | null
      */
     private $retailAccounts = null;
@@ -224,7 +219,6 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
             'services' => $this->getServices(),
             'urls' => $this->getUrls(),
             'relFeatures' => $this->getRelFeatures(),
-            'domains' => $this->getDomains(),
             'retailAccounts' => $this->getRetailAccounts(),
             'musicsOnHold' => $this->getMusicsOnHold(),
             'matchLists' => $this->getMatchLists(),
@@ -279,17 +273,6 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
             foreach ($items as $item) {
                 $this->relFeatures[] = $transformer->transform(
                     'Ivoz\\Provider\\Domain\\Model\\FeaturesRelBrand\\FeaturesRelBrand',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-
-        if (!is_null($this->domains)) {
-            $items = $this->getDomains();
-            $this->domains = [];
-            foreach ($items as $item) {
-                $this->domains[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\Domain\\Domain',
                     $item->getId() ?? $item
                 );
             }
@@ -361,10 +344,6 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         $this->relFeatures = $transformer->transform(
             'Ivoz\\Provider\\Domain\\Model\\FeaturesRelBrand\\FeaturesRelBrand',
             $this->relFeatures
-        );
-        $this->domains = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\Domain\\Domain',
-            $this->domains
         );
         $this->retailAccounts = $transformer->transform(
             'Ivoz\\Provider\\Domain\\Model\\RetailAccount\\RetailAccount',
@@ -940,26 +919,6 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     public function getRelFeatures()
     {
         return $this->relFeatures;
-    }
-
-    /**
-     * @param array $domains
-     *
-     * @return static
-     */
-    public function setDomains($domains = null)
-    {
-        $this->domains = $domains;
-
-        return $this;
-    }
-
-    /**
-     * @return array
-     */
-    public function getDomains()
-    {
-        return $this->domains;
     }
 
     /**

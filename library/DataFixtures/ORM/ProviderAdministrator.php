@@ -27,8 +27,9 @@ class ProviderAdministrator extends Fixture implements DependentFixtureInterface
         $item1->setActive(true);
         $item1->setName("admin");
         $item1->setLastname("ivozprovider");
-        $item1->setTimezone($this->getReference('_reference_IvozProviderDomainModelTimezoneTimezone145'));
-        $this->addReference('_reference_IvozProviderDomainModelAdministratorAdministrator1', $item1);
+        $item1->setTimezone($this->getReference('_reference_ProviderTimezone145'));
+        $this->addReference('_reference_ProviderAdministrator1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
         $item2 = $this->createEntityInstanceWithPublicMethods(Administrator::class);
@@ -38,9 +39,10 @@ class ProviderAdministrator extends Fixture implements DependentFixtureInterface
         $item2->setActive(true);
         $item2->setName("night");
         $item2->setLastname("watch");
-        $item2->setBrand($this->getReference('_reference_IvozProviderDomainModelBrandBrand1'));
-        $item2->setTimezone($this->getReference('_reference_IvozProviderDomainModelTimezoneTimezone145'));
-        $this->addReference('_reference_IvozProviderDomainModelAdministratorAdministrator2', $item2);
+        $item2->setBrand($this->getReference('_reference_ProviderBrand1'));
+        $item2->setTimezone($this->getReference('_reference_ProviderTimezone145'));
+        $this->addReference('_reference_ProviderAdministrator2', $item2);
+        $this->sanitizeEntityValues($item2);
         $manager->persist($item2);
 
         $item3 = $this->createEntityInstanceWithPublicMethods(Administrator::class);
@@ -50,8 +52,9 @@ class ProviderAdministrator extends Fixture implements DependentFixtureInterface
         $item3->setActive(true);
         $item3->setName("irontec");
         $item3->setLastname("ivozprovider");
-        $item3->setTimezone($this->getReference('_reference_IvozProviderDomainModelTimezoneTimezone145'));
-        $this->addReference('_reference_IvozProviderDomainModelAdministratorAdministrator3', $item3);
+        $item3->setTimezone($this->getReference('_reference_ProviderTimezone145'));
+        $this->addReference('_reference_ProviderAdministrator3', $item3);
+        $this->sanitizeEntityValues($item3);
         $manager->persist($item3);
 
         $item4 = $this->createEntityInstanceWithPublicMethods(Administrator::class);
@@ -61,10 +64,11 @@ class ProviderAdministrator extends Fixture implements DependentFixtureInterface
         $item4->setActive(true);
         $item4->setName("Admin Name");
         $item4->setLastname("Admin Lastname");
-        $item4->setBrand($this->getReference('_reference_IvozProviderDomainModelBrandBrand1'));
-        $item4->setCompany($this->getReference('_reference_IvozProviderDomainModelCompanyCompany1'));
-        $item4->setTimezone($this->getReference('_reference_IvozProviderDomainModelTimezoneTimezone145'));
-        $this->addReference('_reference_IvozProviderDomainModelAdministratorAdministrator4', $item4);
+        $item4->setBrand($this->getReference('_reference_ProviderBrand1'));
+        $item4->setCompany($this->getReference('_reference_ProviderCompany1'));
+        $item4->setTimezone($this->getReference('_reference_ProviderTimezone145'));
+        $this->addReference('_reference_ProviderAdministrator4', $item4);
+        $this->sanitizeEntityValues($item4);
         $manager->persist($item4);
 
     

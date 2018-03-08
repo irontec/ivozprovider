@@ -23,13 +23,15 @@ class ProviderMediaRelaySet extends Fixture
         $item0 = $this->createEntityInstanceWithPublicMethods(MediaRelaySet::class);
         $item0->setName("Default");
         $item0->setDescription("Default media relay set");
-        $this->addReference('_reference_IvozProviderDomainModelMediaRelaySetMediaRelaySet0', $item0);
+        $this->addReference('_reference_ProviderMediaRelaySetMediaRelaySet0', $item0);
+        $this->sanitizeEntityValues($item0);
         $manager->persist($item0);
 
         $item1 = $this->createEntityInstanceWithPublicMethods(MediaRelaySet::class);
         $item1->setName("Test");
         $item1->setDescription("Test media relay set");
-        $this->addReference('_reference_IvozProviderDomainModelMediaRelaySetMediaRelaySet1', $item1);
+        $this->addReference('_reference_ProviderMediaRelaySetMediaRelaySet1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
     

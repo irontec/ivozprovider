@@ -139,7 +139,7 @@ interface TpRateInterface extends EntityInterface
      *
      * @return self
      */
-    public function setRate(\Ivoz\Cgr\Domain\Model\Rate\RateInterface $rate);
+    public function setRate(\Ivoz\Cgr\Domain\Model\Rate\RateInterface $rate = null);
 
     /**
      * Get rate

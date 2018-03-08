@@ -2,14 +2,25 @@
 
 namespace Ivoz\Provider\Domain\Model\LcrRule;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
-
-
 class LcrRuleDto extends LcrRuleDtoAbstract
 {
 
+    /**
+     * @inheritdoc
+     */
+    public static function getPropertyMap(string $context = '')
+    {
+        if ($context === self::CONTEXT_COLLECTION) {
+            return [
+                'id' => 'id',
+                'prefix' => 'prefix',
+                'fromUri' => 'fromUri',
+                'tag' => 'tag',
+            ];
+        }
+
+        return parent::getPropertyMap(...func_get_args());
+    }
 }
 
 

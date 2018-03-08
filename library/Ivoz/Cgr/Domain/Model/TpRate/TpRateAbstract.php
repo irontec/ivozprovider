@@ -465,7 +465,7 @@ abstract class TpRateAbstract
      *
      * @return self
      */
-    public function setRate(\Ivoz\Cgr\Domain\Model\Rate\RateInterface $rate)
+    public function setRate(\Ivoz\Cgr\Domain\Model\Rate\RateInterface $rate = null)
     {
         $this->rate = $rate;
 

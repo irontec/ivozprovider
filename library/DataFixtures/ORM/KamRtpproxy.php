@@ -25,8 +25,9 @@ class KamRtpproxy extends Fixture implements DependentFixtureInterface
         $item0->setFlags(0);
         $item0->setWeight(1);
         $item0->setDescription("Local media relay");
-        $item0->setMediaRelaySet($this->getReference('_reference_IvozProviderDomainModelMediaRelaySetMediaRelaySet0'));
-        $this->addReference('_reference_IvozKamDomainModelRtpproxyRtpproxy0', $item0);
+        $item0->setMediaRelaySet($this->getReference('_reference_ProviderMediaRelaySetMediaRelaySet0'));
+        $this->addReference('_reference_ProviderRetailAccountKamDomainModelRtpproxyRtpproxy0', $item0);
+        $this->sanitizeEntityValues($item0);
         $manager->persist($item0);
 
         $item1 = $this->createEntityInstanceWithPublicMethods(Rtpproxy::class);
@@ -34,8 +35,10 @@ class KamRtpproxy extends Fixture implements DependentFixtureInterface
         $item1->setFlags(0);
         $item1->setWeight(1);
         $item1->setDescription("Local media relay");
-        $item1->setMediaRelaySet($this->getReference('_reference_IvozProviderDomainModelMediaRelaySetMediaRelaySet0'));
-        $this->addReference('_reference_IvozKamDomainModelRtpproxyRtpproxy1', $item1);
+        $item1->setMediaRelaySet($this->getReference('_reference_ProviderMediaRelaySetMediaRelaySet0'));
+        $this->addReference('_reference_ProviderRetailAccountKamDomainModelRtpproxyRtpproxy1', $item1);
+        $this->sanitizeEntityValues($item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
     

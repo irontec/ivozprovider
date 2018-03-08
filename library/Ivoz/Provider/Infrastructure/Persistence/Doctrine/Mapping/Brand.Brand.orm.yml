@@ -26,9 +26,6 @@ Ivoz\Provider\Domain\Model\Brand\Brand:
       mappedBy: brand
       cascade: ['persist']
       orphanRemoval: true
-    domains:
-      targetEntity: Ivoz\Provider\Domain\Model\Domain\DomainInterface
-      mappedBy: brand
     retailAccounts:
       targetEntity: Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface
       mappedBy: brand
