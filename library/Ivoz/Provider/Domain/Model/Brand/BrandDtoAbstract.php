@@ -45,6 +45,11 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     /**
      * @var integer
      */
+    private $maxCalls = '0';
+
+    /**
+     * @var integer
+     */
     private $id;
 
     /**
@@ -176,6 +181,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
             'fromAddress' => 'fromAddress',
             'recordingsLimitMB' => 'recordingsLimitMB',
             'recordingsLimitEmail' => 'recordingsLimitEmail',
+            'maxCalls' => 'maxCalls',
             'id' => 'id',
             'logo' => ['fileSize','mimeType','baseName'],
             'invoice' => ['nif','postalAddress','postalCode','town','province','country','registryData'],
@@ -197,6 +203,7 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
             'fromAddress' => $this->getFromAddress(),
             'recordingsLimitMB' => $this->getRecordingsLimitMB(),
             'recordingsLimitEmail' => $this->getRecordingsLimitEmail(),
+            'maxCalls' => $this->getMaxCalls(),
             'id' => $this->getId(),
             'logo' => [
                 'fileSize' => $this->getLogoFileSize(),
@@ -481,6 +488,26 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     public function getRecordingsLimitEmail()
     {
         return $this->recordingsLimitEmail;
+    }
+
+    /**
+     * @param integer $maxCalls
+     *
+     * @return static
+     */
+    public function setMaxCalls($maxCalls = null)
+    {
+        $this->maxCalls = $maxCalls;
+
+        return $this;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getMaxCalls()
+    {
+        return $this->maxCalls;
     }
 
     /**

@@ -42,9 +42,10 @@ abstract class CompanyAbstract
     protected $distributeMethod = 'hash';
 
     /**
+     * column: max_calls
      * @var integer
      */
-    protected $externalMaxCalls = '0';
+    protected $maxCalls = '0';
 
     /**
      * @var string
@@ -163,7 +164,7 @@ abstract class CompanyAbstract
         $name,
         $nif,
         $distributeMethod,
-        $externalMaxCalls,
+        $maxCalls,
         $postalAddress,
         $postalCode,
         $town,
@@ -174,7 +175,7 @@ abstract class CompanyAbstract
         $this->setName($name);
         $this->setNif($nif);
         $this->setDistributeMethod($distributeMethod);
-        $this->setExternalMaxCalls($externalMaxCalls);
+        $this->setMaxCalls($maxCalls);
         $this->setPostalAddress($postalAddress);
         $this->setPostalCode($postalCode);
         $this->setTown($town);
@@ -250,7 +251,7 @@ abstract class CompanyAbstract
             $dto->getName(),
             $dto->getNif(),
             $dto->getDistributeMethod(),
-            $dto->getExternalMaxCalls(),
+            $dto->getMaxCalls(),
             $dto->getPostalAddress(),
             $dto->getPostalCode(),
             $dto->getTown(),
@@ -300,7 +301,7 @@ abstract class CompanyAbstract
             ->setDomainUsers($dto->getDomainUsers())
             ->setNif($dto->getNif())
             ->setDistributeMethod($dto->getDistributeMethod())
-            ->setExternalMaxCalls($dto->getExternalMaxCalls())
+            ->setMaxCalls($dto->getMaxCalls())
             ->setPostalAddress($dto->getPostalAddress())
             ->setPostalCode($dto->getPostalCode())
             ->setTown($dto->getTown())
@@ -341,7 +342,7 @@ abstract class CompanyAbstract
             ->setDomainUsers(self::getDomainUsers())
             ->setNif(self::getNif())
             ->setDistributeMethod(self::getDistributeMethod())
-            ->setExternalMaxCalls(self::getExternalMaxCalls())
+            ->setMaxCalls(self::getMaxCalls())
             ->setPostalAddress(self::getPostalAddress())
             ->setPostalCode(self::getPostalCode())
             ->setTown(self::getTown())
@@ -376,7 +377,7 @@ abstract class CompanyAbstract
             'domain_users' => self::getDomainUsers(),
             'nif' => self::getNif(),
             'distributeMethod' => self::getDistributeMethod(),
-            'externalMaxCalls' => self::getExternalMaxCalls(),
+            'max_calls' => self::getMaxCalls(),
             'postalAddress' => self::getPostalAddress(),
             'postalCode' => self::getPostalCode(),
             'town' => self::getTown(),
@@ -550,31 +551,31 @@ abstract class CompanyAbstract
     }
 
     /**
-     * Set externalMaxCalls
+     * Set maxCalls
      *
-     * @param integer $externalMaxCalls
+     * @param integer $maxCalls
      *
      * @return self
      */
-    public function setExternalMaxCalls($externalMaxCalls)
+    public function setMaxCalls($maxCalls)
     {
-        Assertion::notNull($externalMaxCalls, 'externalMaxCalls value "%s" is null, but non null value was expected.');
-        Assertion::integerish($externalMaxCalls, 'externalMaxCalls value "%s" is not an integer or a number castable to integer.');
-        Assertion::greaterOrEqualThan($externalMaxCalls, 0, 'externalMaxCalls provided "%s" is not greater or equal than "%s".');
+        Assertion::notNull($maxCalls, 'maxCalls value "%s" is null, but non null value was expected.');
+        Assertion::integerish($maxCalls, 'maxCalls value "%s" is not an integer or a number castable to integer.');
+        Assertion::greaterOrEqualThan($maxCalls, 0, 'maxCalls provided "%s" is not greater or equal than "%s".');
 
-        $this->externalMaxCalls = $externalMaxCalls;
+        $this->maxCalls = $maxCalls;
 
         return $this;
     }
 
     /**
-     * Get externalMaxCalls
+     * Get maxCalls
      *
      * @return integer
      */
-    public function getExternalMaxCalls()
+    public function getMaxCalls()
     {
-        return $this->externalMaxCalls;
+        return $this->maxCalls;
     }
 
     /**

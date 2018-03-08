@@ -45,6 +45,12 @@ abstract class BrandAbstract
     protected $recordingsLimitEmail;
 
     /**
+     * column: max_calls
+     * @var integer
+     */
+    protected $maxCalls = '0';
+
+    /**
      * @var Logo
      */
     protected $logo;
@@ -75,9 +81,14 @@ abstract class BrandAbstract
     /**
      * Constructor
      */
-    protected function __construct($name, Logo $logo, Invoice $invoice)
-    {
+    protected function __construct(
+        $name,
+        $maxCalls,
+        Logo $logo,
+        Invoice $invoice
+    ) {
         $this->setName($name);
+        $this->setMaxCalls($maxCalls);
         $this->setLogo($logo);
         $this->setInvoice($invoice);
     }
@@ -163,6 +174,7 @@ abstract class BrandAbstract
 
         $self = new static(
             $dto->getName(),
+            $dto->getMaxCalls(),
             $logo,
             $invoice
         );
@@ -218,6 +230,7 @@ abstract class BrandAbstract
             ->setFromAddress($dto->getFromAddress())
             ->setRecordingsLimitMB($dto->getRecordingsLimitMB())
             ->setRecordingsLimitEmail($dto->getRecordingsLimitEmail())
+            ->setMaxCalls($dto->getMaxCalls())
             ->setLogo($logo)
             ->setInvoice($invoice)
             ->setDomain($dto->getDomain())
@@ -243,6 +256,7 @@ abstract class BrandAbstract
             ->setFromAddress(self::getFromAddress())
             ->setRecordingsLimitMB(self::getRecordingsLimitMB())
             ->setRecordingsLimitEmail(self::getRecordingsLimitEmail())
+            ->setMaxCalls(self::getMaxCalls())
             ->setLogoFileSize(self::getLogo()->getFileSize())
             ->setLogoMimeType(self::getLogo()->getMimeType())
             ->setLogoBaseName(self::getLogo()->getBaseName())
@@ -270,6 +284,7 @@ abstract class BrandAbstract
             'FromAddress' => self::getFromAddress(),
             'recordingsLimitMB' => self::getRecordingsLimitMB(),
             'recordingsLimitEmail' => self::getRecordingsLimitEmail(),
+            'max_calls' => self::getMaxCalls(),
             'logoFileSize' => self::getLogo()->getFileSize(),
             'logoMimeType' => self::getLogo()->getMimeType(),
             'logoBaseName' => self::getLogo()->getBaseName(),
@@ -456,6 +471,34 @@ abstract class BrandAbstract
     public function getRecordingsLimitEmail()
     {
         return $this->recordingsLimitEmail;
+    }
+
+    /**
+     * Set maxCalls
+     *
+     * @param integer $maxCalls
+     *
+     * @return self
+     */
+    public function setMaxCalls($maxCalls)
+    {
+        Assertion::notNull($maxCalls, 'maxCalls value "%s" is null, but non null value was expected.');
+        Assertion::integerish($maxCalls, 'maxCalls value "%s" is not an integer or a number castable to integer.');
+        Assertion::greaterOrEqualThan($maxCalls, 0, 'maxCalls provided "%s" is not greater or equal than "%s".');
+
+        $this->maxCalls = $maxCalls;
+
+        return $this;
+    }
+
+    /**
+     * Get maxCalls
+     *
+     * @return integer
+     */
+    public function getMaxCalls()
+    {
+        return $this->maxCalls;
     }
 
     /**

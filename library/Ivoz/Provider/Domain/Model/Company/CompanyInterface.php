@@ -150,20 +150,20 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getDistributeMethod();
 
     /**
-     * Set externalMaxCalls
+     * Set maxCalls
      *
-     * @param integer $externalMaxCalls
+     * @param integer $maxCalls
      *
      * @return self
      */
-    public function setExternalMaxCalls($externalMaxCalls);
+    public function setMaxCalls($maxCalls);
 
     /**
-     * Get externalMaxCalls
+     * Get maxCalls
      *
      * @return integer
      */
-    public function getExternalMaxCalls();
+    public function getMaxCalls();
 
     /**
      * Set postalAddress

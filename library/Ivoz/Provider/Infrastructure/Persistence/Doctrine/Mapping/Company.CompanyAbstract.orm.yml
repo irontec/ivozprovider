@@ -45,13 +45,12 @@ Ivoz\Provider\Domain\Model\Company\CompanyAbstract:
         comment: '[enum:static|rr|hash]'
         default: hash
       column: distributeMethod
-    externalMaxCalls:
+    maxCalls:
       type: integer
       nullable: false
       options:
         unsigned: true
         default: '0'
-      column: externalMaxCalls
     postalAddress:
       type: string
       nullable: false

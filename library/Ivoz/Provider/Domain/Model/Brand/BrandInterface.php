@@ -137,6 +137,22 @@ interface BrandInterface extends LoggableEntityInterface
     public function getRecordingsLimitEmail();
 
     /**
+     * Set maxCalls
+     *
+     * @param integer $maxCalls
+     *
+     * @return self
+     */
+    public function setMaxCalls($maxCalls);
+
+    /**
+     * Get maxCalls
+     *
+     * @return integer
+     */
+    public function getMaxCalls();
+
+    /**
      * Set domain
      *
      * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain
