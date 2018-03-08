@@ -1,0 +1,26 @@
+# ----------------------------------------------------------------------------
+scenarios:
+  - name: call from bob to alice using open conditional route
+    type: simple
+    timeout: 20
+    sessions:
+      - alice:
+          - register:
+              <<: *alice_cred
+          - waitfor: INCOMING
+          - ringing
+          - wait
+          - answer
+          - waitfor: CONFIRMED
+          - wait: 3
+          - hangup
+          - waitfor: DISCONNCTD
+          - unregister
+      - bob:
+          - wait
+          - call:
+              dest: 800             # Conditional route extension
+              credentials:
+                <<: *bob_cred
+          - waitfor: CONFIRMED
+          - waitfor: DISCONNCTD
