@@ -144,6 +144,22 @@ interface HuntGroupInterface extends LoggableEntityInterface
     public function getNoAnswerNumberValue();
 
     /**
+     * Set preventMissedCalls
+     *
+     * @param integer $preventMissedCalls
+     *
+     * @return self
+     */
+    public function setPreventMissedCalls($preventMissedCalls);
+
+    /**
+     * Get preventMissedCalls
+     *
+     * @return integer
+     */
+    public function getPreventMissedCalls();
+
+    /**
      * Set company
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
