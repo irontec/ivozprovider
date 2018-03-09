@@ -50,6 +50,11 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
     /**
      * @var integer
      */
+    private $preventMissedCalls = '1';
+
+    /**
+     * @var integer
+     */
     private $id;
 
     /**
@@ -107,6 +112,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
             'nextUserPosition' => 'nextUserPosition',
             'noAnswerTargetType' => 'noAnswerTargetType',
             'noAnswerNumberValue' => 'noAnswerNumberValue',
+            'preventMissedCalls' => 'preventMissedCalls',
             'id' => 'id',
             'companyId' => 'company',
             'noAnswerLocutionId' => 'noAnswerLocution',
@@ -129,6 +135,7 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
             'nextUserPosition' => $this->getNextUserPosition(),
             'noAnswerTargetType' => $this->getNoAnswerTargetType(),
             'noAnswerNumberValue' => $this->getNoAnswerNumberValue(),
+            'preventMissedCalls' => $this->getPreventMissedCalls(),
             'id' => $this->getId(),
             'company' => $this->getCompany(),
             'noAnswerLocution' => $this->getNoAnswerLocution(),
@@ -311,6 +318,26 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
     public function getNoAnswerNumberValue()
     {
         return $this->noAnswerNumberValue;
+    }
+
+    /**
+     * @param integer $preventMissedCalls
+     *
+     * @return static
+     */
+    public function setPreventMissedCalls($preventMissedCalls = null)
+    {
+        $this->preventMissedCalls = $preventMissedCalls;
+
+        return $this;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getPreventMissedCalls()
+    {
+        return $this->preventMissedCalls;
     }
 
     /**

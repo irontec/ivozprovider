@@ -1455,6 +1455,9 @@ msgstr "Prefijo empleado para llamadas nacionales fuera del area."
 msgid "Prepend this field to callee"
 msgstr "Añadir este campo como prefijo del número destino"
 
+msgid "Prevent missed calls"
+msgstr "Evitar llamadas perdidas"
+
 msgid "Price"
 msgid_plural "Prices"
 msgstr[0] "Precio"
@@ -1685,7 +1688,8 @@ msgstr "Extensión a mostrar"
 msgid ""
 "Seconds from the beginning of the call when this rate will be activated."
 msgstr ""
-"Segundos desde el comienzo de la llamada a partir del cual aplicará este precio."
+"Segundos desde el comienzo de la llamada a partir del cual aplicará este "
+"precio."
 
 msgid "Security"
 msgstr "Seguridad"
@@ -2067,6 +2071,13 @@ msgstr "Peso"
 
 msgid "Welcome locution"
 msgstr "Locución Bienvenida"
+
+msgid ""
+"When 'Yes', calls will never generate a missed call. When 'No', missed calls "
+"will be prevented only for RingAll huntgroups if someone answers."
+msgstr ""
+"'Sí' evita de forma incondicional la generación de llamadas perdidas. 'No' "
+"evita las llamadas perdidas solo para grupos de salto RingAll si alguien contesta."
 
 msgid "When Outbound Proxy is used, SIP Proxy must not include a port."
 msgstr "Cuando se emplea Proxy de salida, el Proxy SIP no debe incluir puerto."

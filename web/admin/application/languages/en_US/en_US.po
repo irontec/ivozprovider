@@ -1436,6 +1436,9 @@ msgstr "Prefix used for national out of area calls."
 msgid "Prepend this field to callee"
 msgstr "Prepend this field to callee"
 
+msgid "Prevent missed calls"
+msgstr "Prevent missed calls"
+
 msgid "Price"
 msgid_plural "Prices"
 msgstr[0] "Price"
@@ -2044,6 +2047,13 @@ msgstr "Weight"
 
 msgid "Welcome locution"
 msgstr "Welcome locution"
+
+msgid ""
+"When 'Yes', calls will never generate a missed call. When 'No', missed calls "
+"will be prevented only for RingAll huntgroups if someone answers."
+msgstr ""
+"When 'Yes', calls will never generate a missed call. When 'No', missed calls "
+"will be prevented only for RingAll huntgroups if someone answers."
 
 msgid "When Outbound Proxy is used, SIP Proxy must not include a port."
 msgstr "When Outbound Proxy is used, SIP Proxy must not include a port."
