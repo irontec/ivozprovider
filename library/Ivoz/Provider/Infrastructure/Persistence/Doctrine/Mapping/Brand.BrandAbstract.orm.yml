@@ -58,6 +58,7 @@ Ivoz\Provider\Domain\Model\Brand\BrandAbstract:
       options:
         unsigned: true
         default: '0'
+      column: maxCalls
   manyToOne:
     domain:
       targetEntity: \Ivoz\Provider\Domain\Model\Domain\DomainInterface

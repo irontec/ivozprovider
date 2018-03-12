@@ -45,7 +45,6 @@ abstract class BrandAbstract
     protected $recordingsLimitEmail;
 
     /**
-     * column: max_calls
      * @var integer
      */
     protected $maxCalls = '0';
@@ -284,7 +283,7 @@ abstract class BrandAbstract
             'FromAddress' => self::getFromAddress(),
             'recordingsLimitMB' => self::getRecordingsLimitMB(),
             'recordingsLimitEmail' => self::getRecordingsLimitEmail(),
-            'max_calls' => self::getMaxCalls(),
+            'maxCalls' => self::getMaxCalls(),
             'logoFileSize' => self::getLogo()->getFileSize(),
             'logoMimeType' => self::getLogo()->getMimeType(),
             'logoBaseName' => self::getLogo()->getBaseName(),

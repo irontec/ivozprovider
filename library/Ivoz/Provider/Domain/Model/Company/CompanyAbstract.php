@@ -42,7 +42,6 @@ abstract class CompanyAbstract
     protected $distributeMethod = 'hash';
 
     /**
-     * column: max_calls
      * @var integer
      */
     protected $maxCalls = '0';
@@ -377,7 +376,7 @@ abstract class CompanyAbstract
             'domain_users' => self::getDomainUsers(),
             'nif' => self::getNif(),
             'distributeMethod' => self::getDistributeMethod(),
-            'max_calls' => self::getMaxCalls(),
+            'maxCalls' => self::getMaxCalls(),
             'postalAddress' => self::getPostalAddress(),
             'postalCode' => self::getPostalCode(),
             'town' => self::getTown(),

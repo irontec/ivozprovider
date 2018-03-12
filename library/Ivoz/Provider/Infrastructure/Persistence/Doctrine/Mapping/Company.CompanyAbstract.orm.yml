@@ -51,6 +51,7 @@ Ivoz\Provider\Domain\Model\Company\CompanyAbstract:
       options:
         unsigned: true
         default: '0'
+      column: maxCalls
     postalAddress:
       type: string
       nullable: false
