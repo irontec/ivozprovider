@@ -69,21 +69,21 @@ class Headers extends RouteHandlerAbstract
                 /** @var UserInterface $user */
                 $user = $terminal->getUser();
                 $this->agi->setSIPHeader("X-Info-Callee", $user->getExtensionNumber());
-                $this->agi->setSIPHeader("X-Info-MaxCalls", $user->getMaxCalls());
+                $this->agi->setSIPHeader("X-Info-UserMaxCalls", $user->getMaxCalls());
             }
             $friend = $endpoint->getFriend();
             if (!is_null($friend)) {
                 $exten = $this->agi->getExtension();
                 $this->agi->setSIPHeader("X-Info-Callee", $exten);
                 $this->agi->setSIPHeader("X-Info-Friend", $friend->getRequestURI($exten));
-                $this->agi->setSIPHeader("X-Info-MaxCalls", 0);
+                $this->agi->setSIPHeader("X-Info-UserMaxCalls", 0);
             }
             $retail = $endpoint->getRetailAccount();
             if (!is_null($retail)) {
                 $exten = $this->agi->getExtension();
                 $this->agi->setSIPHeader("X-Info-Callee", $exten);
                 $this->agi->setSIPHeader("X-Info-Retail", $retail->getRequestURI($exten));
-                $this->agi->setSIPHeader("X-Info-MaxCalls", 0);
+                $this->agi->setSIPHeader("X-Info-UserMaxCalls", 0);
 
             }
 
@@ -95,7 +95,6 @@ class Headers extends RouteHandlerAbstract
 
         } else {
             $this->agi->setSIPHeader("X-Info-CompanyDomain", $company->getDomain()->getDomain());
-            $this->agi->setSIPHeader("X-Info-MaxCalls",  $company->getExternalMaxCalls());
 
             // Set special headers for Fax outgoing calls
             if ($this->agi->getVariable("FAXFILE_ID")) {

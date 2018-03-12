@@ -46,6 +46,7 @@ production:
           recordingsLimitMB: true
           recordingsLimitEmail: true
           recordingsDiskUsage: true
+          maxCalls: true
         options:
           title: _("Options")
           screens:
@@ -111,6 +112,7 @@ production:
             invoice.nif: 1
             logo: 1
             relFeatures: 1
+            maxCalls: 1
         group2:
           label: _("Locales")
           colsPerRow: 2

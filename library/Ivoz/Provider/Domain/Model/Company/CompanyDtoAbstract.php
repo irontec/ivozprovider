@@ -40,7 +40,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     /**
      * @var integer
      */
-    private $externalMaxCalls = '0';
+    private $maxCalls = '0';
 
     /**
      * @var string
@@ -220,7 +220,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'domainUsers' => 'domainUsers',
             'nif' => 'nif',
             'distributeMethod' => 'distributeMethod',
-            'externalMaxCalls' => 'externalMaxCalls',
+            'maxCalls' => 'maxCalls',
             'postalAddress' => 'postalAddress',
             'postalCode' => 'postalCode',
             'town' => 'town',
@@ -257,7 +257,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'domainUsers' => $this->getDomainUsers(),
             'nif' => $this->getNif(),
             'distributeMethod' => $this->getDistributeMethod(),
-            'externalMaxCalls' => $this->getExternalMaxCalls(),
+            'maxCalls' => $this->getMaxCalls(),
             'postalAddress' => $this->getPostalAddress(),
             'postalCode' => $this->getPostalCode(),
             'town' => $this->getTown(),
@@ -552,13 +552,13 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $externalMaxCalls
+     * @param integer $maxCalls
      *
      * @return static
      */
-    public function setExternalMaxCalls($externalMaxCalls = null)
+    public function setMaxCalls($maxCalls = null)
     {
-        $this->externalMaxCalls = $externalMaxCalls;
+        $this->maxCalls = $maxCalls;
 
         return $this;
     }
@@ -566,9 +566,9 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     /**
      * @return integer
      */
-    public function getExternalMaxCalls()
+    public function getMaxCalls()
     {
-        return $this->externalMaxCalls;
+        return $this->maxCalls;
     }
 
     /**

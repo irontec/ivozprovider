@@ -52,6 +52,12 @@ Ivoz\Provider\Domain\Model\Brand\BrandAbstract:
       options:
         fixed: false
       column: recordingsLimitEmail
+    maxCalls:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+        default: '0'
   manyToOne:
     domain:
       targetEntity: \Ivoz\Provider\Domain\Model\Domain\DomainInterface

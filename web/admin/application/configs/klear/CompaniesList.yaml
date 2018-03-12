@@ -44,7 +44,7 @@ production:
           outgoingDDIId: true
           outgoingDdiRuleId: true
           registryData: true
-          externalMaxCalls: true
+          maxCalls: true
           defaultTimezoneId: true
           distributeMethod: true
           applicationServerId: true
@@ -110,7 +110,7 @@ production:
           id: true
           name: true
           languageId: true
-          externalMaxCalls: true
+          maxCalls: true
           contryId: true
           postalAddress: true
           recordingsLimitMB: true
@@ -127,7 +127,7 @@ production:
           colsPerRow: 2
           label: _("Security")
           fields:
-            externalMaxCalls: 1
+            maxCalls: 1
             ipFilter: 1
         group2:
           colsPerRow: 2
@@ -197,7 +197,7 @@ production:
           colsPerRow: 2
           label: _("Security")
           fields:
-            externalMaxCalls: 1
+            maxCalls: 1
             ipFilter: 1
         group2:
           colsPerRow: 3
