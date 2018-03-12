@@ -332,6 +332,7 @@ production:
                   - recordingsDiskUsage
                   - recordingsLimitEmail
                   - onDemandRecord
+                  - onDemandRecordCode
           order: name
 staging:
   _extends: production
