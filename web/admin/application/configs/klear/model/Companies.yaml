@@ -180,6 +180,7 @@ production:
             Ddi.ddie164: asc
         'null': _("Unassigned")
     outgoingDdiRuleId:
+      title: ngettext('Outgoing DDI Rule', 'Outgoing DDI Rules', 1)
       type: select
       source:
         data: mapper
