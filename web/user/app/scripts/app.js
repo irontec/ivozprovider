@@ -56,7 +56,9 @@ angular
                 return $http.get(appConfig.urlRest + 'my/web_theme').success(function(data) {
                     $rootScope.theme = data.theme;
                     $rootScope.logo = data.logo;
-                    $rootScope.brandName = data.name;
+                    $rootScope.portalTitle = data.name
+                        ? data.name
+                        : 'Ivoz Provider (Artemis)';
                 });
             };
 
