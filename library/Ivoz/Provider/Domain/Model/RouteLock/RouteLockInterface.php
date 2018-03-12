@@ -59,7 +59,7 @@ interface RouteLockInterface extends LoggableEntityInterface
      *
      * @return self
      */
-    public function setOpen($open = null);
+    public function setOpen($open);
 
     /**
      * Get open

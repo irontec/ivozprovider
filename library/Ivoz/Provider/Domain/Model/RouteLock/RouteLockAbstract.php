@@ -39,10 +39,11 @@ abstract class RouteLockAbstract
     /**
      * Constructor
      */
-    protected function __construct($name, $description)
+    protected function __construct($name, $description, $open)
     {
         $this->setName($name);
         $this->setDescription($description);
+        $this->setOpen($open);
     }
 
     abstract public function getId();
@@ -110,10 +111,10 @@ abstract class RouteLockAbstract
 
         $self = new static(
             $dto->getName(),
-            $dto->getDescription());
+            $dto->getDescription(),
+            $dto->getOpen());
 
         $self
-            ->setOpen($dto->getOpen())
             ->setCompany($dto->getCompany())
         ;
 
@@ -236,11 +237,10 @@ abstract class RouteLockAbstract
      *
      * @return self
      */
-    public function setOpen($open = null)
+    public function setOpen($open)
     {
-        if (!is_null($open)) {
-            Assertion::between(intval($open), 0, 1, 'open provided "%s" is not a valid boolean value.');
-        }
+        Assertion::notNull($open, 'open value "%s" is null, but non null value was expected.');
+        Assertion::between(intval($open), 0, 1, 'open provided "%s" is not a valid boolean value.');
 
         $this->open = $open;
 
