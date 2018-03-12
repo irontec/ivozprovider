@@ -41,15 +41,6 @@ class LcrRule extends LcrRuleAbstract implements LcrRuleInterface
         return parent::setRequestUri($requestUri);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function setTag($tag)
-    {
-        Assertion::regex($tag, '/^[a-zA-Z0-9_]+$/');
-        return parent::setTag($tag);
-    }
-
     public function setCondition($regexp)
     {
         if (is_numeric($regexp) || $regexp == 'fax') {
