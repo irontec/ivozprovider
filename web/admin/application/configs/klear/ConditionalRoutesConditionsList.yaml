@@ -40,6 +40,7 @@ production:
           relMatchlists: true
           relSchedules: true
           relCalendars: true
+          relRouteLocks: true
         order:
           priority: true
           ConditionMatch: true
@@ -79,10 +80,11 @@ production:
             priority: 4
         group1:
           label: _("Matching type")
-          colsPerRow: 12
+          colsPerRow: 8
           fields:
             type: 5
             relMatchlists: 4
+            relRouteLocks: 4
             relSchedules: 4
             relCalendars: 4
         group2:

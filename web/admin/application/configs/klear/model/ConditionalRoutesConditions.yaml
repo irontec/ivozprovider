@@ -60,6 +60,18 @@ production:
           related: \Ivoz\Provider\Domain\Model\Calendar\Calendar
           relatedFieldName: name
           filterClass: IvozProvider_Klear_Filter_Company
+    relRouteLocks:
+      title: ngettext('Route Lock', 'Route Locks', 0)
+      type: multiselect
+      source:
+        data: mapper
+        config:
+          relation: \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLock
+          relationProperty: routeLock
+          relatedProperty: routeLock
+          related: \Ivoz\Provider\Domain\Model\RouteLock\RouteLock
+          relatedFieldName: name
+          filterClass: IvozProvider_Klear_Filter_Company
     ConditionMatch:
       title: _('Match')
       type: ghost

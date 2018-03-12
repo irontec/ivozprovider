@@ -154,6 +154,17 @@ Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRou
     read_access_control:
       inherited:
         calendar: 'Ivoz\Provider\Domain\Model\Calendar\Calendar'
+Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLock:
+  collectionOperations:
+    get:
+      operation_normalization_context: 'detailedCollection'
+      normalization_context:
+        groups: ['detailedCollection']
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      inherited:
+        routeLock: 'Ivoz\Provider\Domain\Model\RouteLock\RouteLock'
 Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
@@ -600,6 +611,16 @@ Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount:
               eq: "user.getBrand().getId()"
           - company:
               in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+Ivoz\Provider\Domain\Model\RouteLock\RouteLock:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+      ROLE_BRAND_ADMIN:
+        company:
+          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
 Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'

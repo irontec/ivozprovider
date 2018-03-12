@@ -239,6 +239,10 @@ mappers:
         modelFile: RoutingPatterns,
         entity: 'Ivoz\\Provider\\Domain\\Model\\RoutingPattern\\RoutingPattern'
     }
+  - &RouteLocks {
+        modelFile: RouteLocks,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\RouteLock\\RouteLock'
+    }
   - &Schedules {
         modelFile: Schedules,
         entity: 'Ivoz\\Provider\\Domain\\Model\\Schedule\\Schedule'

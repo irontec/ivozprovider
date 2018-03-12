@@ -10,6 +10,10 @@ use Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface;
 use Ivoz\Provider\Domain\Model\Locution\Locution;
 use Ivoz\Provider\Domain\Model\Locution\LocutionDTO;
 use Ivoz\Provider\Domain\Model\Locution\LocutionRepository;
+use Ivoz\Provider\Domain\Model\RouteLock\RouteLock;
+use Ivoz\Provider\Domain\Model\RouteLock\RouteLockDto;
+use Ivoz\Provider\Domain\Model\RouteLock\RouteLockInterface;
+use Ivoz\Provider\Domain\Model\RouteLock\RouteLockRepository;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 
 class ServiceAction
@@ -101,6 +105,15 @@ class ServiceAction
                 break;
             case 'RecordLocution':
                 $this->processRecordLocution();
+                break;
+            case 'OpenLock':
+                $this->processOpenLock();
+                break;
+            case 'CloseLock':
+                $this->processCloseLock();
+                break;
+            case 'ToggleLock':
+                $this->processToggleLock();
                 break;
         }
     }
@@ -266,6 +279,95 @@ class ServiceAction
         $this->entityPersister->persistDto($locutionDto, $locution);
     }
 
+    protected function getRouteLock()
+    {
+        // Local variables to improve readability
+        $service = $this->service;
+        $caller = $this->channelInfo->getChannelCaller();
+
+        /**
+         * Extract routeLockId from dialed number
+         *
+         *               ServiceCode (up to 3 digits)
+         *                   ┌┴┐
+         *   $dialedExten = *CCCXXXXXXXX
+         *                      └───┬──┘
+         *                      RouteLock ID
+         */
+        $dialedExten = $this->agi->getExtension();
+        $serviceCodeLen = strlen($service->getCode());
+        $routeLockId = substr($dialedExten, $serviceCodeLen + 1);
+
+        if (!$routeLockId) {
+            $this->agi->error("Incomplete lock service without id as argument.");
+            return null;
+        }
+
+        /** @var RouteLockRepository $routeLockRepository */
+        $routeLockRepository = $this->em->getRepository(RouteLock::class);
+        /** @var RouteLockInterface $routeLock */
+        $routeLock = $routeLockRepository->find($routeLockId);
+
+        // Check if lock actually exists
+        if (!$routeLock) {
+            $this->agi->error("No route lock found with id %d.", $routeLockId);
+            return null;
+        }
+
+        // Check if call can record this locution
+        if ($routeLock->getCompany()->getId() !== $caller->getCompany()->getId()) {
+            $this->agi->error("Route lock %s does not belong to %s.", $routeLock, $caller->getCompany());
+            return null;
+        }
+
+        return $routeLock;
+    }
+
+    /**
+     * @param RouteLockInterface $routeLock
+     */
+    protected function printRouteLockStatus($routeLock)
+    {
+        if ($routeLock->getOpen() == '1') {
+            $this->agi->setConnectedLine('name', $routeLock->getName() . ' opened');
+            $this->agi->setConnectedLine('num', $this->agi->getExtension());
+        } else {
+            $this->agi->setConnectedLine('name', $routeLock->getName() . ' closed');
+            $this->agi->setConnectedLine('num', $this->agi->getExtension());
+        }
+        $this->agi->playback("beep");
+        sleep(3);
+    }
+
+    protected function processOpenLock()
+    {
+        $routeLock = $this->getRouteLock();
+        if ($routeLock) {
+            $routeLock->setOpen(1);
+            $this->entityPersister->persist($routeLock);
+            $this->printRouteLockStatus($routeLock);
+        }
+    }
+
+    protected function processCloseLock()
+    {
+        $routeLock = $this->getRouteLock();
+        if ($routeLock) {
+            $routeLock->setOpen(0);
+            $this->entityPersister->persist($routeLock);
+            $this->printRouteLockStatus($routeLock);
+        }
+    }
+
+    protected function processToggleLock()
+    {
+        $routeLock = $this->getRouteLock();
+        if ($routeLock) {
+            $routeLock->setOpen($routeLock->isOpen() ? 0 : 1);
+            $this->entityPersister->persist($routeLock);
+            $this->printRouteLockStatus($routeLock);
+        }
+    }
 
     public function processHello()
     {
