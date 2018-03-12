@@ -1,0 +1,24 @@
+#!/bin/bash
+
+pushd /opt/irontec/ivozprovider
+    git fetch origin '+refs/pull/*:refs/remotes/origin/pr/*'
+    git checkout -b tests
+    git reset --hard $1
+    library/bin/composer_install.sh
+popd
+
+# Stop on first non-zero exit code
+set -e
+
+#pushd /opt/irontec/ivozprovider/scheme
+#    bin/console doctrine:schema:validate
+#popd
+
+pushd /opt/irontec/ivozprovider/library
+    ./bin/phpspec run
+popd
+
+pushd /opt/irontec/ivozprovider/web/rest
+    ./bin/test-orm
+#    ./bin/test-api
+popd
