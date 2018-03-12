@@ -166,6 +166,8 @@ production:
       class: ui-silk-user-suit
       title: _("List of %s %2s", ngettext('Brand operator', 'Brand operators', 0), "[format| (%parent%)]")
       filterField: Brand
+      forcedValues:
+        "self::company": null
       parentOptionCustomizer:
         - recordCount
     administratorsNew_screen:
