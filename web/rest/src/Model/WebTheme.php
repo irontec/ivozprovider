@@ -15,7 +15,7 @@ class WebTheme
      * @var string
      * @AttributeDefinition(type="string")
      */
-    protected $brandName;
+    protected $name;
 
     /**
      * @var string
@@ -31,7 +31,7 @@ class WebTheme
 
     public function __construct($brandName, $theme, $logo)
     {
-        $this->brandName = $brandName;
+        $this->name = $brandName;
         $this->theme = $theme;
         $this->logo = $logo;
     }
@@ -39,18 +39,18 @@ class WebTheme
     /**
      * @return string
      */
-    public function getBrandName(): string
+    public function getName(): string
     {
-        return $this->brandName;
+        return $this->name;
     }
 
     /**
-     * @param string $brandName
+     * @param string $name
      * @return WebTheme
      */
-    public function setBrandName(string $brandName): WebTheme
+    public function setName(string $name): WebTheme
     {
-        $this->brandName = $brandName;
+        $this->name = $name;
         return $this;
     }
 

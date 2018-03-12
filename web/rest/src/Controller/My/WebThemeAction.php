@@ -50,7 +50,6 @@ class WebThemeAction
         if (!$brandUrl) {
             throw new ResourceClassNotFoundException('BrandUrl not found');
         }
-        $brand = $brandUrl->getBrand();
 
         /** @var BrandUrlDto $brandUrlDto */
         $brandUrlDto = $this->dtoAssembler->toDto($brandUrl);
@@ -64,7 +63,7 @@ class WebThemeAction
             . $brandUrlDto->getLogoBaseName();
 
         return new WebTheme(
-            $brand->getName(),
+            $brandUrlDto->getName(),
             $brandUrlDto->getUserTheme(),
             $publicLogoUrl
         );
