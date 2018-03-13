@@ -6,7 +6,7 @@ Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRo
       cascade: {  }
       fetch: LAZY
       mappedBy: null
-      inversedBy: calendars
+      inversedBy: relRouteLocks
       joinColumns:
         conditionId:
           referencedColumnName: id

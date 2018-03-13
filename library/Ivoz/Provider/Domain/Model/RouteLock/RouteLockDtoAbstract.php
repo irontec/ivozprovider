@@ -37,16 +37,6 @@ abstract class RouteLockDtoAbstract implements DataTransferObjectInterface
      */
     private $company;
 
-    /**
-     * @var \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointDto[] | null
-     */
-    private $psEndpoints = null;
-
-    /**
-     * @var \Ivoz\Provider\Domain\Model\Ddi\DdiDto[] | null
-     */
-    private $ddis = null;
-
 
     use DtoNormalizer;
 
@@ -83,9 +73,7 @@ abstract class RouteLockDtoAbstract implements DataTransferObjectInterface
             'description' => $this->getDescription(),
             'open' => $this->getOpen(),
             'id' => $this->getId(),
-            'company' => $this->getCompany(),
-            'psEndpoints' => $this->getPsEndpoints(),
-            'ddis' => $this->getDdis()
+            'company' => $this->getCompany()
         ];
     }
 
@@ -95,28 +83,6 @@ abstract class RouteLockDtoAbstract implements DataTransferObjectInterface
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
         $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
-        if (!is_null($this->psEndpoints)) {
-            $items = $this->getPsEndpoints();
-            $this->psEndpoints = [];
-            foreach ($items as $item) {
-                $this->psEndpoints[] = $transformer->transform(
-                    'Ivoz\\Ast\\Domain\\Model\\PsEndpoint\\PsEndpoint',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-
-        if (!is_null($this->ddis)) {
-            $items = $this->getDdis();
-            $this->ddis = [];
-            foreach ($items as $item) {
-                $this->ddis[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\Ddi\\Ddi',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-
     }
 
     /**
@@ -124,14 +90,7 @@ abstract class RouteLockDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-        $this->psEndpoints = $transformer->transform(
-            'Ivoz\\Ast\\Domain\\Model\\PsEndpoint\\PsEndpoint',
-            $this->psEndpoints
-        );
-        $this->ddis = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\Ddi\\Ddi',
-            $this->ddis
-        );
+
     }
 
     /**
@@ -258,46 +217,6 @@ abstract class RouteLockDtoAbstract implements DataTransferObjectInterface
         }
 
         return null;
-    }
-
-    /**
-     * @param array $psEndpoints
-     *
-     * @return static
-     */
-    public function setPsEndpoints($psEndpoints = null)
-    {
-        $this->psEndpoints = $psEndpoints;
-
-        return $this;
-    }
-
-    /**
-     * @return array
-     */
-    public function getPsEndpoints()
-    {
-        return $this->psEndpoints;
-    }
-
-    /**
-     * @param array $ddis
-     *
-     * @return static
-     */
-    public function setDdis($ddis = null)
-    {
-        $this->ddis = $ddis;
-
-        return $this;
-    }
-
-    /**
-     * @return array
-     */
-    public function getDdis()
-    {
-        return $this->ddis;
     }
 }
 

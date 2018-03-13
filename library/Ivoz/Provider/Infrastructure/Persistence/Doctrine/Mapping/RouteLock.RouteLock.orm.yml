@@ -11,13 +11,6 @@ Ivoz\Provider\Domain\Model\RouteLock\RouteLock:
       id: true
       generator:
         strategy: IDENTITY
-  oneToMany:
-    psEndpoints:
-      targetEntity: Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface
-      mappedBy: routeLock
-    ddis:
-      targetEntity: Ivoz\Provider\Domain\Model\Ddi\DdiInterface
-      mappedBy: routeLock
   lifecycleCallbacks:
     postLoad:
       - initChangelog
