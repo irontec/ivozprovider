@@ -73,6 +73,11 @@ class FeatureContext implements Context, SnippetAcceptingContext
         );
 
         $data = json_decode($response->getContent());
+
+        if (!$data) {
+            throw new \Exception('Could not retrieve a token');
+        }
+
         $this->request->setHttpHeader('Authorization', 'Bearer ' . ($data->token ?? null));
     }
 
