@@ -29,7 +29,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 # Base project
 RUN mkdir -p /opt/irontec
-RUN git clone -b run-tests-in-ci https://github.com/irontec/ivozprovider /opt/irontec/ivozprovider
+RUN git clone -b bleeding https://github.com/irontec/ivozprovider /opt/irontec/ivozprovider
 
 # Get dependencies
 RUN /opt/irontec/ivozprovider/library/bin/composer_install.sh --prefer-dist --no-progress
