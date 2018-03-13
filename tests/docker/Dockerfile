@@ -34,3 +34,4 @@ RUN git clone -b run-tests-in-ci https://github.com/irontec/ivozprovider /opt/ir
 # Get dependencies
 RUN /opt/irontec/ivozprovider/library/bin/composer_install.sh --prefer-dist --no-progress
 
+ENTRYPOINT [ "/opt/irontec/ivozprovider/tests/docker/bin/prepare-and-run" ]

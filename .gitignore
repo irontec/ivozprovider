@@ -9,6 +9,7 @@ vendor
 **/coverage/
 storage/*
 mount-storage.sh
+**.phplint-cache
 
 web/admin/storage
 web/admin/application/cache/*
