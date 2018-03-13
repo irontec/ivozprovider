@@ -1,25 +1,25 @@
 #!/bin/bash
 
 pushd /opt/irontec/ivozprovider/library
-    composer install
+    composer install $*
 popd
 
 pushd /opt/irontec/ivozprovider/asterisk/agi
-    composer install
+    composer install $*
 popd
 
 pushd /opt/irontec/ivozprovider/microservices/recordings
-    composer install
+    composer install $*
 popd
 
 pushd /opt/irontec/ivozprovider/microservices/workers
-    composer install
+    composer install $*
 popd
 
 pushd /opt/irontec/ivozprovider/scheme
-    composer install
+    composer install $*
 popd
 
 pushd /opt/irontec/ivozprovider/web/rest
-    composer install
+    composer install $*
 popd
