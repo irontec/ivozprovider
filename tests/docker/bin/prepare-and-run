@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Update composer dependencies
+/opt/irontec/ivozprovider/library/bin/composer_install.sh --prefer-dist --no-progress
+
+# Run requested command
+exec $*
+

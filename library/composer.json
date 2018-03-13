@@ -66,6 +66,7 @@
     },
     "require-dev": {
         "leanphp/phpspec-code-coverage": "4.0.*",
+        "overtrue/phplint": "^1.0",
         "phpspec/phpspec": "4.2.*",
         "sensio/generator-bundle": "^3.0",
         "symfony/phpunit-bridge": "^3.0"
