@@ -19,7 +19,7 @@ class ProviderLcrGateway extends Fixture implements DependentFixtureInterface
     {
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(LcrGateway::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
-    
+
         $item1 = $this->createEntityInstanceWithPublicMethods(LcrGateway::class);
         $item1->setLcrId(1);
         $item1->setGwName("b1p1s1");
@@ -36,7 +36,6 @@ class ProviderLcrGateway extends Fixture implements DependentFixtureInterface
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
-    
         $manager->flush();
     }
 

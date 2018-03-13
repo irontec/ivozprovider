@@ -24,7 +24,7 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
         $item1->setName("DemoCompany");
         $item1->setDomainUsers("127.0.0.1");
         $item1->setNif("12345678A");
-        $item1->setExternalMaxCalls(0);
+        $item1->setMaxCalls(0);
         $item1->setPostalAddress("Company Address");
         $item1->setPostalCode("54321");
         $item1->setTown("Company Town");
@@ -51,7 +51,7 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
         $item2->setName("Irontec Test Company");
         $item2->setDomainUsers("test.irontec.com");
         $item2->setNif("12345678-Z");
-        $item2->setExternalMaxCalls(0);
+        $item2->setMaxCalls(0);
         $item2->setPostalAddress("Postal address");
         $item2->setPostalCode("PC");
         $item2->setTown("Town");
@@ -76,7 +76,7 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
         $item3->setType("retail");
         $item3->setDomainUsers("retail.irontec.com");
         $item3->setNif("12345679-Z");
-        $item3->setExternalMaxCalls(0);
+        $item3->setMaxCalls(0);
         $item3->setPostalAddress("");
         $item3->setPostalCode("");
         $item3->setTown("");
