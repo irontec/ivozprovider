@@ -1,0 +1,29 @@
+#!/bin/bash
+
+set -e
+
+PHPLINT_BIN=/opt/irontec/ivozprovider/library/vendor/bin/phplint
+
+pushd /opt/irontec/ivozprovider/library
+    $PHPLINT_BIN . --exclude=vendor --exclude=var
+popd
+
+pushd /opt/irontec/ivozprovider/asterisk/agi
+    $PHPLINT_BIN . --exclude=vendor --exclude=var
+popd
+
+pushd /opt/irontec/ivozprovider/microservices/recordings
+    $PHPLINT_BIN . --exclude=vendor --exclude=var
+popd
+
+pushd /opt/irontec/ivozprovider/microservices/workers
+    $PHPLINT_BIN . --exclude=vendor --exclude=var
+popd
+
+pushd /opt/irontec/ivozprovider/scheme
+    $PHPLINT_BIN . --exclude=vendor --exclude=var
+popd
+
+pushd /opt/irontec/ivozprovider/web/rest
+    $PHPLINT_BIN . --exclude=vendor --exclude=var
+popd

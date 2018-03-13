@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "67db7ddaa90282c369f578e901f14b1e",
+    "content-hash": "0c20a04620276fd6c54fdcdd4fd6fd18",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -2824,6 +2824,55 @@
                 "tests"
             ],
             "time": "2017-10-17T14:34:12+00:00"
+        },
+        {
+            "name": "overtrue/phplint",
+            "version": "1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/overtrue/phplint.git",
+                "reference": "b17148ea11e51217a8cc9fc7bfd85b49ecc78484"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/overtrue/phplint/zipball/b17148ea11e51217a8cc9fc7bfd85b49ecc78484",
+                "reference": "b17148ea11e51217a8cc9fc7bfd85b49ecc78484",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9",
+                "symfony/console": "^3.0|^4.0",
+                "symfony/finder": "^3.0|^4.0",
+                "symfony/process": "^3.0|^4.0",
+                "symfony/yaml": "^3.0|^4.0"
+            },
+            "bin": [
+                "bin/phplint"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Overtrue\\PHPLint\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "overtrue",
+                    "email": "anzhengchao@gmail.com"
+                }
+            ],
+            "description": "a php syntax check tool.",
+            "keywords": [
+                "check",
+                "lint",
+                "phplint",
+                "syntax"
+            ],
+            "time": "2018-02-24T01:37:22+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
