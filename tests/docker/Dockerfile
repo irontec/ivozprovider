@@ -26,13 +26,11 @@ RUN apt-get update && apt-get install -y \
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-RUN composer --version
 
+# Base project
 RUN mkdir -p /opt/irontec
-RUN git clone -b bleeding https://github.com/irontec/ivozprovider /opt/irontec/ivozprovider
-RUN /opt/irontec/ivozprovider/library/bin/composer_install.sh
+RUN git clone -b run-tests-in-ci https://github.com/irontec/ivozprovider /opt/irontec/ivozprovider
 
-COPY bin/test /opt/irontec/test
+# Get dependencies
+RUN /opt/irontec/ivozprovider/library/bin/composer_install.sh --prefer-dist --no-progress
 
-WORKDIR /opt/irontec/ivozprovider
-ENTRYPOINT ["/opt/irontec/test"]
