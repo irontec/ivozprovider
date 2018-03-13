@@ -47,6 +47,7 @@ Feature: Retrieve routing pattern groups
               "fromAddress": "",
               "recordingsLimitMB": null,
               "recordingsLimitEmail": "",
+              "maxCalls": 0,
               "id": 1,
               "logo": {
                   "fileSize": null,

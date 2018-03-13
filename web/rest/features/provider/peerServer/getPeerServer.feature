@@ -52,7 +52,6 @@ Feature: Retrieve peer servers
           "fromUser": "",
           "fromDomain": "",
           "id": 1,
-          "lcrGateway": null,
           "peeringContract": {
               "description": "Artemis-Dev",
               "name": "Artemis-Dev",
@@ -68,6 +67,7 @@ Feature: Retrieve peer servers
               "fromAddress": "",
               "recordingsLimitMB": null,
               "recordingsLimitEmail": "",
+              "maxCalls": 0,
               "id": 1,
               "logo": {
                   "fileSize": null,

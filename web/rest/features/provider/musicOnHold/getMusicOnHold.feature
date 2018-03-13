@@ -57,6 +57,7 @@ Feature: Retrieve music on holds
               "fromAddress": "",
               "recordingsLimitMB": null,
               "recordingsLimitEmail": "",
+              "maxCalls": 0,
               "id": 1,
               "logo": {
                   "fileSize": null,

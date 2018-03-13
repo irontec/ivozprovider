@@ -55,6 +55,7 @@ Feature: Manage brands
           "fromAddress": "test-notifications@irontec.com",
           "recordingsLimitMB": 10,
           "recordingsLimitEmail": "mikel@irontec.com",
+          "maxCalls": 0,
           "id": 3,
           "logo": {
               "fileSize": null,

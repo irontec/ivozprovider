@@ -43,6 +43,7 @@ Feature: Manage brands
           "fromAddress": "",
           "recordingsLimitMB": 0,
           "recordingsLimitEmail": "",
+          "maxCalls": 0,
           "id": 2,
           "logo": {
               "fileSize": null,

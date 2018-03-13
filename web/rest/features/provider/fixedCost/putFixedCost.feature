@@ -34,6 +34,7 @@ Feature: Update fixed costs
               "fromAddress": null,
               "recordingsLimitMB": null,
               "recordingsLimitEmail": null,
+              "maxCalls": 0,
               "id": 2,
               "logo": {
                   "fileSize": null,

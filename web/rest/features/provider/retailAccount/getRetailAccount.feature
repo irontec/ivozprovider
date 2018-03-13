@@ -55,6 +55,7 @@ Feature: Retrieve retail accounts
               "fromAddress": "",
               "recordingsLimitMB": null,
               "recordingsLimitEmail": "",
+              "maxCalls": 0,
               "id": 1,
               "logo": {
                   "fileSize": null,
@@ -80,7 +81,7 @@ Feature: Retrieve retail accounts
               "domainUsers": "retail.irontec.com",
               "nif": "12345679-Z",
               "distributeMethod": "hash",
-              "externalMaxCalls": 0,
+              "maxCalls": 0,
               "postalAddress": "",
               "postalCode": "",
               "town": "",

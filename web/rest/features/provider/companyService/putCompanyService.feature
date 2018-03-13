@@ -30,7 +30,7 @@ Feature: Update company services
               "domainUsers": "test.irontec.com",
               "nif": "12345678-Z",
               "distributeMethod": "hash",
-              "externalMaxCalls": 0,
+              "maxCalls": 0,
               "postalAddress": "Postal address",
               "postalCode": "PC",
               "town": "Town",

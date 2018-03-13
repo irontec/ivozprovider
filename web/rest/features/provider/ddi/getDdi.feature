@@ -47,7 +47,7 @@ Feature: Retrieve Ddis
               "domainUsers": "127.0.0.1",
               "nif": "12345678A",
               "distributeMethod": "hash",
-              "externalMaxCalls": 0,
+              "maxCalls": 0,
               "postalAddress": "Company Address",
               "postalCode": "54321",
               "town": "Company Town",
@@ -78,6 +78,7 @@ Feature: Retrieve Ddis
               "fromAddress": "",
               "recordingsLimitMB": null,
               "recordingsLimitEmail": "",
+              "maxCalls": 0,
               "id": 1,
               "logo": {
                   "fileSize": null,

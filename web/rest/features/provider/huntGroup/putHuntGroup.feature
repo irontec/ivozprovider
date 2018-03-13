@@ -36,6 +36,7 @@ Feature: Update hunt groups
           "ringAllTimeout": 10,
           "noAnswerTargetType": "voicemail",
           "noAnswerNumberValue": null,
+          "preventMissedCalls": 1,
           "id": 1,
           "company": {
               "type": "vpbx",
@@ -43,7 +44,7 @@ Feature: Update hunt groups
               "domainUsers": "test.irontec.com",
               "nif": "12345678-Z",
               "distributeMethod": "hash",
-              "externalMaxCalls": 0,
+              "maxCalls": 0,
               "postalAddress": "Postal address",
               "postalCode": "PC",
               "town": "Town",

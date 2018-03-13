@@ -23,7 +23,7 @@ Feature: Update hunt groups rel users
      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
      And the JSON should be equal to:
     """
-      {
+     {
           "timeoutTime": 2,
           "priority": 2,
           "id": 1,
@@ -34,6 +34,7 @@ Feature: Update hunt groups rel users
               "ringAllTimeout": 10,
               "noAnswerTargetType": null,
               "noAnswerNumberValue": null,
+              "preventMissedCalls": 1,
               "id": 1,
               "company": 1,
               "noAnswerLocution": null,

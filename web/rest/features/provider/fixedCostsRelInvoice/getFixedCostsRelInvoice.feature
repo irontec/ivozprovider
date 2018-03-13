@@ -24,6 +24,7 @@ Feature: Retrieve fixed costs rel invoices
                   "fromAddress": "",
                   "recordingsLimitMB": null,
                   "recordingsLimitEmail": "",
+                  "maxCalls": 0,
                   "id": 1,
                   "logo": {
                       "fileSize": null,
@@ -91,6 +92,7 @@ Feature: Retrieve fixed costs rel invoices
               "fromAddress": "",
               "recordingsLimitMB": null,
               "recordingsLimitEmail": "",
+              "maxCalls": 0,
               "id": 1,
               "logo": {
                   "fileSize": null,
