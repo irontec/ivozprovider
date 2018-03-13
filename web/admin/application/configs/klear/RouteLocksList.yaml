@@ -21,8 +21,8 @@ production:
           status: true
           name: true
           description: true
-          openExtension: true
           closeExtension: true
+          openExtension: true
         blacklist:
           open: true
         options:
@@ -97,8 +97,8 @@ production:
           colsPerRow: 12
           label: _("Service Information")
           fields:
-            openExtension: 4
             closeExtension: 4
+            openExtension: 4
             toggleExtension: 4
 
   dialogs: &routeLocks_dialogsLink
