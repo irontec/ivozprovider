@@ -34,7 +34,7 @@ class CompanySpec extends ObjectBehavior
             ->setName('')
             ->setNif('')
             ->setDistributeMethod('static')
-            ->setExternalMaxCalls(0)
+            ->setMaxCalls(0)
             ->setPostalAddress('')
             ->setPostalCode('')
             ->setTown('')
