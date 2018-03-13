@@ -19,7 +19,12 @@ class PeerServerDto extends PeerServerDtoAbstract
             ];
         }
 
-        return parent::getPropertyMap(...func_get_args());
+        $response = parent::getPropertyMap(...func_get_args());
+        if (array_key_exists('lcrGatewayId', $response)) {
+            unset($response['lcrGatewayId']);
+        }
+
+        return $response;
     }
 
     public function toArray($hideSensitiveData = false)
