@@ -18,5 +18,5 @@ pushd /opt/irontec/ivozprovider/web/rest
     chmod o+r -R var/jwt
 
     # Run tests
-    vendor/bin/behat -f junit -o results
+    vendor/bin/behat -f progress -o std -f junit -o results
 popd
