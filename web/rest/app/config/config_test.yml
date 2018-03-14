@@ -1,6 +1,7 @@
 imports:
   - { resource: config.yml }
   - { resource: fixtures.yml }
+  - { resource: logger_test.yml }
 
 framework:
   test: ~
