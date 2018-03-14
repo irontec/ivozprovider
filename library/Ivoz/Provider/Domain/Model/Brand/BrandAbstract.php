@@ -25,16 +25,6 @@ abstract class BrandAbstract
     protected $domainUsers;
 
     /**
-     * @var string
-     */
-    protected $fromName;
-
-    /**
-     * @var string
-     */
-    protected $fromAddress;
-
-    /**
      * @var integer
      */
     protected $recordingsLimitMB;
@@ -180,8 +170,6 @@ abstract class BrandAbstract
 
         $self
             ->setDomainUsers($dto->getDomainUsers())
-            ->setFromName($dto->getFromName())
-            ->setFromAddress($dto->getFromAddress())
             ->setRecordingsLimitMB($dto->getRecordingsLimitMB())
             ->setRecordingsLimitEmail($dto->getRecordingsLimitEmail())
             ->setDomain($dto->getDomain())
@@ -225,8 +213,6 @@ abstract class BrandAbstract
         $this
             ->setName($dto->getName())
             ->setDomainUsers($dto->getDomainUsers())
-            ->setFromName($dto->getFromName())
-            ->setFromAddress($dto->getFromAddress())
             ->setRecordingsLimitMB($dto->getRecordingsLimitMB())
             ->setRecordingsLimitEmail($dto->getRecordingsLimitEmail())
             ->setMaxCalls($dto->getMaxCalls())
@@ -251,8 +237,6 @@ abstract class BrandAbstract
         return self::createDto()
             ->setName(self::getName())
             ->setDomainUsers(self::getDomainUsers())
-            ->setFromName(self::getFromName())
-            ->setFromAddress(self::getFromAddress())
             ->setRecordingsLimitMB(self::getRecordingsLimitMB())
             ->setRecordingsLimitEmail(self::getRecordingsLimitEmail())
             ->setMaxCalls(self::getMaxCalls())
@@ -279,8 +263,6 @@ abstract class BrandAbstract
         return [
             'name' => self::getName(),
             'domain_users' => self::getDomainUsers(),
-            'FromName' => self::getFromName(),
-            'FromAddress' => self::getFromAddress(),
             'recordingsLimitMB' => self::getRecordingsLimitMB(),
             'recordingsLimitEmail' => self::getRecordingsLimitEmail(),
             'maxCalls' => self::getMaxCalls(),
@@ -356,62 +338,6 @@ abstract class BrandAbstract
     public function getDomainUsers()
     {
         return $this->domainUsers;
-    }
-
-    /**
-     * Set fromName
-     *
-     * @param string $fromName
-     *
-     * @return self
-     */
-    public function setFromName($fromName = null)
-    {
-        if (!is_null($fromName)) {
-            Assertion::maxLength($fromName, 255, 'fromName value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        }
-
-        $this->fromName = $fromName;
-
-        return $this;
-    }
-
-    /**
-     * Get fromName
-     *
-     * @return string
-     */
-    public function getFromName()
-    {
-        return $this->fromName;
-    }
-
-    /**
-     * Set fromAddress
-     *
-     * @param string $fromAddress
-     *
-     * @return self
-     */
-    public function setFromAddress($fromAddress = null)
-    {
-        if (!is_null($fromAddress)) {
-            Assertion::maxLength($fromAddress, 255, 'fromAddress value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        }
-
-        $this->fromAddress = $fromAddress;
-
-        return $this;
-    }
-
-    /**
-     * Get fromAddress
-     *
-     * @return string
-     */
-    public function getFromAddress()
-    {
-        return $this->fromAddress;
     }
 
     /**
