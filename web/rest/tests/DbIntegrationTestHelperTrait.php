@@ -66,29 +66,6 @@ trait DbIntegrationTestHelperTrait
 
         $this->resetDatabase();
         $this->enableChangelog();
-        $this->disableInfraestructureServices();
-    }
-
-
-    protected function disableInfraestructureServices($expectedCallNumber = null)
-    {
-        $kernel = self::$kernel;
-        $serviceContainer = $kernel->getContainer();
-
-        $manager = new class() extends Manager {
-            public static function getClient() {
-                return new class() extends \GearmanClient {
-                    public function doBackground($function_name, $workload, $unique = null) {}
-                };
-            }
-        };
-
-        $serviceContainer->set(
-            'Ivoz\Core\Infrastructure\Domain\Service\Gearman\Manager',
-            $manager
-        );
-
-        return $this;
     }
 
     /**
