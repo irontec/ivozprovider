@@ -25,20 +25,6 @@ Ivoz\Provider\Domain\Model\Brand\BrandAbstract:
       options:
         fixed: false
       column: domain_users
-    fromName:
-      type: string
-      nullable: true
-      length: 255
-      options:
-        fixed: false
-      column: FromName
-    fromAddress:
-      type: string
-      nullable: true
-      length: 255
-      options:
-        fixed: false
-      column: FromAddress
     recordingsLimitMB:
       type: integer
       nullable: true
