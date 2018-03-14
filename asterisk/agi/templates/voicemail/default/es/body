@@ -1,9 +1,0 @@
-Hola ${VM_NAME}!
-
-    ${VM_CIDNAME} (${VM_CIDNUM}) te ha dejado un mensaje en tú buzón de voz.
-    
-    Día: ${VM_DATE}
-    Duración: ${VM_DUR}
-
-Un saludo,
-IvozProvider Mailbox System

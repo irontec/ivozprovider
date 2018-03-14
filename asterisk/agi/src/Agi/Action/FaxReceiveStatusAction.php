@@ -2,9 +2,11 @@
 namespace Agi\Action;
 
 use Agi\Wrapper;
+use Doctrine\ORM\EntityManagerInterface;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutDTO;
 use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutInterface;
+use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate;
 
 
 class FaxReceiveStatusAction
@@ -13,6 +15,11 @@ class FaxReceiveStatusAction
      * @var Wrapper
      */
     protected $agi;
+
+    /**
+     * @var EntityManagerInterface
+     */
+    protected $em;
 
     /**
      * @var EntityPersisterInterface
@@ -25,16 +32,6 @@ class FaxReceiveStatusAction
     protected $mailer;
 
     /**
-     * @var string
-     */
-    protected $fromName;
-
-    /**
-     * @var string
-     */
-    protected $fromAdress;
-
-    /**
      * @var FaxesInOutInterface
      */
     protected $faxInOut;
@@ -42,17 +39,15 @@ class FaxReceiveStatusAction
 
     public function __construct(
         Wrapper $agi,
+        EntityManagerInterface $em,
         EntityPersisterInterface $entityPersister,
-        \Swift_Mailer $mailer,
-        string $fromName,
-        string $fromAdress
+        \Swift_Mailer $mailer
     )
     {
         $this->agi = $agi;
+        $this->em = $em;
         $this->entityPersister = $entityPersister;
         $this->mailer = $mailer;
-        $this->fromName = $fromName;
-        $this->fromAdress = $fromAdress;
     }
 
     /**
@@ -143,18 +138,6 @@ class FaxReceiveStatusAction
             // Create attachment for PDF file
             $attach = \Swift_Attachment::fromPath($faxPdfPath, 'application/pdf');
 
-            // Override default FromName
-            $fromName = $company->getBrand()->getFromName();
-            if (!empty($fromName)) {
-                $this->fromName = $fromName;
-            }
-
-            // Override default FromAdress
-            $fromAddress = $company->getBrand()->getFromAddress();
-            if (!empty($fromAddress)) {
-                $this->fromAdress = $fromAddress;
-            }
-
             // Get faxdata values for mail message body and subject
             $substitution = array(
                     '${FAX_NAME}'       => $fax->getName(),
@@ -165,10 +148,36 @@ class FaxReceiveStatusAction
                     '${FAX_PAGES}'      => $faxIn->getPages(),
             );
 
-            // Read configured template
-            $templateDir = APPLICATION_PATH . "/../templates/faxmail/default/" . $company->getLanguageCode() . "/";
-            $body = file_get_contents($templateDir . "body");
-            $subject = file_get_contents($templateDir . "subject");
+
+            // Get Company Notification Template for faxes
+            $faxNotificationTemplate = $company->getFaxNotificationTemplate();
+
+            // Get Generic Notification Template for faxes
+            $notificationTemplateRepository = $this->em->getRepository(NotificationTemplate::class);
+            $genericFaxlNotificationTemplate = $notificationTemplateRepository->findOneBy([
+                "brand" => null,
+                "type" => "fax"
+            ]);
+
+
+            // If no template is associated, fallback to generic notification template for voicemails
+            if (!$faxNotificationTemplate) {
+                $faxNotificationTemplate = $genericFaxlNotificationTemplate;
+            }
+
+            // Get Notification contents for required language
+            $notificationTemplateContent = $faxNotificationTemplate->getContentsByLanguage($company->getLanguage());
+            if (!$notificationTemplateContent) {
+                // Fallback to generic template language content
+                $notificationTemplateContent = $genericFaxlNotificationTemplate->getContentsByLanguage($company->getLanguage());
+            }
+
+            // Get data from template
+            $fromName = $notificationTemplateContent->getFromName();
+            $fromAddress = $notificationTemplateContent->getFromAddress();
+            $body = $notificationTemplateContent->getBody();
+            $subject = $notificationTemplateContent->getSubject();
+
 
             foreach ($substitution as $search => $replace) {
                 $body = str_replace($search, $replace, $body);
@@ -177,9 +186,9 @@ class FaxReceiveStatusAction
 
             // Create a new mail and attach the PDF file
             $mail = new \Swift_Message();
-            $mail->setBody($body)
+            $mail->setBody($body, 'text/html')
                 ->setSubject($subject)
-                ->setFrom($this->fromAdress, $this->fromName)
+                ->setFrom($fromAddress, $fromName)
                 ->setTo($fax->getEmail())
                 ->attach($attach);
 

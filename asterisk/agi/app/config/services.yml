@@ -42,9 +42,6 @@ services:
     arguments:
       $parser: '@PhpMimeMailParser\Parser'
       $mailer: '@mailer'
-      $templatesDir: '%kernel.root_dir%/../templates'
-      $fromName: '%mailer_default_fromname%'
-      $fromAdress: '%mailer_default_fromaddress%'
 
   ##################################
   ## Handlers
@@ -134,8 +131,6 @@ services:
     arguments:
       $entityPersister: '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
       $mailer: '@mailer'
-      $fromName: '%mailer_default_fromname%'
-      $fromAdress: '%mailer_default_fromaddress%'
 
   Agi\Action\FriendCallAction:
     lazy: true
