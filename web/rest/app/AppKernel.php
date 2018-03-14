@@ -42,6 +42,10 @@ class AppKernel extends Kernel
             $bundles[] = new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle();
         }
 
+        if ($this->getEnvironment() === 'test') {
+            $bundles[] = new \DocteurKlein\TestDoubleBundle();
+        }
+
         return $bundles;
     }
 

@@ -3,7 +3,11 @@ services:
     autowire: true
     public: false
 
-  Ivoz\Core\Infrastructure\Domain\Service\Gearman\Manager: ~
+  Ivoz\Core\Infrastructure\Domain\Service\Gearman\Manager:
+    tags:
+      - { name: test_double, fake: 'Ivoz\Core\Infrastructure\Domain\Service\Gearman\FakeManager' }
+
+  Ivoz\Core\Infrastructure\Domain\Service\Gearman\FakeManager: ~
 
   Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Invoicer:
     arguments:
