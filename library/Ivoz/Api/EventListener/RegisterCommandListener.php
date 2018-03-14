@@ -5,10 +5,13 @@ namespace Ivoz\Api\EventListener;
 use Ivoz\Core\Application\Event\CommandWasExecuted;
 use Ivoz\Core\Application\RequestId;
 use Ivoz\Core\Domain\Service\DomainEventPublisher;
+use Lexik\Bundle\JWTAuthenticationBundle\Security\Guard\JWTTokenAuthenticator;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
+use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
 use Symfony\Component\HttpKernel\Exception\NotAcceptableHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Lexik\Bundle\JWTAuthenticationBundle\Security\Authentication\Token\PreAuthenticationJWTUserToken;
 
 final class RegisterCommandListener
 {
@@ -22,12 +25,19 @@ final class RegisterCommandListener
      */
     protected $requestId;
 
+    /**
+     * @var JWTTokenAuthenticator
+     */
+    protected $jwtTokenAuthenticator;
+
     public function __construct(
         DomainEventPublisher $eventPublisher,
-        RequestId $requestId
+        RequestId $requestId,
+        JWTTokenAuthenticator $jwtTokenAuthenticator
     ) {
         $this->eventPublisher = $eventPublisher;
         $this->requestId = $requestId->toString();
+        $this->jwtTokenAuthenticator = $jwtTokenAuthenticator;
     }
 
     /**
@@ -38,7 +48,7 @@ final class RegisterCommandListener
      * @throws NotFoundHttpException
      * @throws NotAcceptableHttpException
      */
-    public function onKernelRequest(GetResponseEvent $event)
+    public function onKernelView(GetResponseForControllerResultEvent $event)
     {
         /** @var Request $request */
         $request = $event->getRequest();
@@ -51,13 +61,21 @@ final class RegisterCommandListener
         }
 
         $routeParams = $attributes['_route_params'];
-        $this->triggerEvent($request->getMethod(), $routeParams, $body);
+        $credentials = $this->jwtTokenAuthenticator->getCredentials($request);
+        $this->triggerEvent(
+            $routeParams,
+            $body,
+            $credentials
+        );
 
         return;
     }
 
-    private function triggerEvent(string $method, array $routeParams, array $body = null)
-    {
+    private function triggerEvent(
+        array $routeParams,
+        array $body = null,
+        PreAuthenticationJWTUserToken $credentials = null
+    ) {
         if (array_key_exists('_api_collection_operation_name', $routeParams)) {
             $action = $routeParams['_api_collection_operation_name'];
         } else if(array_key_exists('_api_item_operation_name', $routeParams)) {
@@ -66,16 +84,21 @@ final class RegisterCommandListener
             return;
         }
 
+        $auth = $credentials
+            ? $credentials->getPayload()
+            : null;
+
         $event = new CommandWasExecuted(
             $this->requestId,
             'API',
             $action,
             [
-                'params' => $routeParams,
-                'body' => $body
+                'auth' => $auth,
+                'operation' => $routeParams
             ]
         );
 
         $this->eventPublisher->publish($event);
     }
+
 }

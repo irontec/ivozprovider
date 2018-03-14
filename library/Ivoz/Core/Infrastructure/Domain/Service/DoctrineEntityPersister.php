@@ -322,10 +322,11 @@ class DoctrineEntityPersister implements EntityPersisterInterface
         $this->em->persist($commandlog);
         $this->logger->info(
             sprintf(
-                '%s > %s::%s',
+                '%s > %s::%s(%s)',
                 (new \ReflectionClass($command))->getShortName(),
                 $commandlog->getClass(),
-                $commandlog->getMethod()
+                $commandlog->getMethod(),
+                json_encode($commandlog->getArguments())
             )
         );
 

@@ -30,13 +30,6 @@ services:
     tags:
       - { name: kernel.event_listener, event: kernel.request, priority: 7 }
 
-  Ivoz\Api\EventListener\RegisterCommandListener:
-    arguments:
-      $eventPublisher: '@Ivoz\Core\Domain\Service\DomainEventPublisher'
-      $requestId: '@Ivoz\Core\Application\RequestId'
-    tags:
-      - { name: kernel.event_listener, event: kernel.request, priority: 7 }
-
   Ivoz\Api\Symfony\EventListener\DomainExceptionListener:
     arguments:
       $serializer: '@api_platform.serializer'
@@ -44,6 +37,14 @@ services:
       $logger: '@logger'
     tags:
       - { name: kernel.event_listener, event: kernel.exception, priority: 2 }
+
+  Ivoz\Api\EventListener\RegisterCommandListener:
+    arguments:
+      $eventPublisher: '@Ivoz\Core\Domain\Service\DomainEventPublisher'
+      $requestId: '@Ivoz\Core\Application\RequestId'
+      $jwtTokenAuthenticator: '@lexik_jwt_authentication.security.guard.jwt_token_authenticator'
+    tags:
+      - { name: kernel.event_listener, event: kernel.view, priority: 33 }
 
   api_platform.doctrine.listener.view.write:
     class: Ivoz\Api\EventListener\WriteListener
