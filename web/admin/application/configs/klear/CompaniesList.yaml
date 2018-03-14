@@ -57,6 +57,8 @@ production:
           recordingsLimitEmail: true
           recordingsDiskUsage: true
           externallyExtraOpts: true
+          voicemailNotificationTemplateId: true
+          faxNotificationTemplateId: true
         order:
           name: true
           languageId: true
@@ -106,6 +108,8 @@ production:
           recordingsLimitMB: true
           recordingsLimitEmail: true
           recordingsDiskUsage: true
+          voicemailNotificationTemplateId: true
+          faxNotificationTemplateId: true
         order: &companiesOrder_Link
           id: true
           name: true
@@ -115,6 +119,7 @@ production:
           postalAddress: true
           recordingsLimitMB: true
           externallyExtraOpts: true
+          voicemailNotificationTemplateId: true
       fixedPositions:
         group0:
           colsPerRow: 12
@@ -240,6 +245,13 @@ production:
           label: _("Externally rated options")
           fields:
             externallyExtraOpts: 1
+        group7:
+          colsPerRow: 2
+          collapsed: true
+          label: _("Notification options")
+          fields:
+            voicemailNotificationTemplateId: 1
+            faxNotificationTemplateId: 1
 
     # Administrators
     <<: *administrators_screensLink

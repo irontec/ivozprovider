@@ -41,8 +41,6 @@ production:
           invoice.registryData: true
           languageId: true
           defaultTimezoneId: true
-          fromName: true
-          fromAddress: true
           recordingsLimitMB: true
           recordingsLimitEmail: true
           recordingsDiskUsage: true
@@ -94,8 +92,6 @@ production:
           invoice.province: true
           invoice.country: true
           invoice.registryData: true
-          fromName: true
-          fromAddress: true
           recordingsLimitMB: true
           recordingsDiskUsage: true
           recordingsDiskAvailable: true
@@ -134,13 +130,6 @@ production:
           label: _("SIP domain")
           fields:
             domain_users: 2
-        group5:
-          colsPerRow: 12
-          label: _("Mail data")
-          collapsed: true
-          fields:
-            fromName: 6
-            fromAddress: 6
 
     brandsEdit_screen: &brandsEdit_screenLink
       <<: *Brands

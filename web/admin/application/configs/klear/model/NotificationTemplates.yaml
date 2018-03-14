@@ -1,0 +1,39 @@
+production:
+  entity: Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate
+  fields:
+    brandId:
+      title: ngettext('Brand', 'Brands', 1)
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Brand\Brand
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+    name:
+      title: _('Name')
+      type: text
+      trim: both
+      required: true
+      maxLength: 55
+      default: true
+    type:
+      title: _('Template Type')
+      type: select
+      source:
+        data: inline
+        values:
+          'voicemail': ngettext('Voicemail', 'Voicemails', 1)
+          'fax': ngettext('Fax', 'Faxes', 1)
+#          'limit': ngettext('Limit', 'Limits', 1)
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

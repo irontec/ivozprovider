@@ -11,6 +11,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
+#, fuzzy, php-format
+msgid "%s emulated"
+msgstr "Template"
+
 #, python-format
 msgid "%s successfully deleted."
 msgstr "%s successfully deleted."
@@ -33,6 +37,9 @@ msgstr ""
 
 msgid "ACL data"
 msgstr "ACL data"
+
+msgid "Accept"
+msgstr ""
 
 msgid "Access denied"
 msgstr "Access denied"
@@ -110,6 +117,12 @@ msgstr "Allowed characters: a-z, A-Z, 0-9, underscore and '-'"
 msgid "Allowed video codecs"
 msgstr "Allowed video codecs"
 
+msgid "An error occurred"
+msgstr ""
+
+msgid "An error occurred: check files format and content."
+msgstr ""
+
 msgid "Announce"
 msgstr "Announce"
 
@@ -125,6 +138,14 @@ msgstr[1] "Application Servers"
 
 msgid "Apply to all companies"
 msgstr "Apply to all companies"
+
+#, fuzzy, php-format
+msgid "Are you sure that you want to emulate the %s \"%2s\"?"
+msgstr "Do you want to delete this %s?"
+
+#, fuzzy
+msgid "Are you sure you want to generate the invoice?"
+msgstr "Do you want to delete this %s?"
 
 msgid "Area code"
 msgstr "Area code"
@@ -183,6 +204,9 @@ msgstr "Billing Information"
 
 msgid "Black Lists"
 msgstr "Black Lists"
+
+msgid "Body"
+msgstr ""
 
 msgid "Boss Whitelist"
 msgstr "Boss Whitelist"
@@ -311,6 +335,12 @@ msgstr "Calling a number within the same Area can omit Area Code"
 msgid "Calls from non-granted IPs"
 msgstr "Calls from non-granted IPs"
 
+msgid "Cancel"
+msgstr ""
+
+msgid "Cancelar"
+msgstr ""
+
 msgid "Cannot invoice calls from today in the future."
 msgstr "Cannot invoice calls from today in the future."
 
@@ -319,6 +349,10 @@ msgstr "Charge period"
 
 msgid "Client's default"
 msgstr "Client's default"
+
+#, fuzzy
+msgid "Close"
+msgstr "Closed"
 
 msgid "Close extension"
 msgstr "Close extension"
@@ -387,6 +421,12 @@ msgstr "Contact Settings"
 
 msgid "Contact Username"
 msgstr "Contact Username"
+
+msgid "Contents configuration"
+msgstr "Contents configuration"
+
+msgid "Continue"
+msgstr ""
 
 msgid "Control Panel"
 msgstr "Control Panel"
@@ -503,6 +543,10 @@ msgid_plural "Domains"
 msgstr[0] "Domain"
 msgstr[1] "Domains"
 
+#, fuzzy
+msgid "Download"
+msgstr "Download file"
+
 msgid "Download file"
 msgstr "Download file"
 
@@ -541,6 +585,10 @@ msgstr ""
 msgid "Email already in use"
 msgstr "Email already in use"
 
+#, fuzzy, php-format
+msgid "Emulate %s"
+msgstr "Emulate Brand %s"
+
 #, python-format
 msgid "Emulate Brand %s"
 msgstr "Emulate Brand %s"
@@ -564,6 +612,13 @@ msgstr ""
 
 msgid "End time"
 msgstr "End time"
+
+msgid "Ensure the preview below is right before you proceed"
+msgstr ""
+
+#, fuzzy
+msgid "Enter"
+msgstr "Internal"
 
 msgid "Enter number patterns in E.164 format."
 msgstr "Enter number patterns in E.164 format."
@@ -599,6 +654,9 @@ msgid "Excluded Extension"
 msgid_plural "Excluded Extensions"
 msgstr[0] "Excluded Extension"
 msgstr[1] "Excluded Extensions"
+
+msgid "Exec"
+msgstr ""
 
 msgid "Expire"
 msgstr "Expire"
@@ -650,6 +708,14 @@ msgid_plural "Faxes"
 msgstr[0] "Fax"
 msgstr[1] "Faxes"
 
+msgid "Fax Notification"
+msgid_plural "Fax Notifications"
+msgstr[0] "Fax Notification"
+msgstr[1] "Fax Notifications"
+
+msgid "Fax resent"
+msgstr ""
+
 msgid "Faxfile"
 msgid_plural "Faxfiles"
 msgstr[0] "Faxfile"
@@ -661,10 +727,20 @@ msgstr "Features"
 msgid "Fewest calls"
 msgstr "Fewest Calls"
 
+msgid "Fields with * are required"
+msgstr ""
+
+#, fuzzy
+msgid "File"
+msgstr "PDF File"
+
 msgid "File for play"
 msgid_plural "Files for play"
 msgstr[0] "File for play"
 msgstr[1] "Files for play"
+
+msgid "File imported"
+msgstr ""
 
 msgid "Filter by IP address"
 msgstr "Filter by IP address"
@@ -682,6 +758,9 @@ msgstr[1] "Fixed costs"
 
 msgid "Flag"
 msgstr "Flag"
+
+msgid "For instance:"
+msgstr ""
 
 msgid "Force DDI"
 msgstr "Force DDI"
@@ -710,6 +789,9 @@ msgstr "Friend value"
 
 msgid "From address"
 msgstr "From address"
+
+msgid "From configuration"
+msgstr "From configuration"
 
 msgid "From domain"
 msgstr "From domain"
@@ -744,6 +826,10 @@ msgstr "Generate %s"
 
 msgid "Generate Transformation Rules automatically"
 msgstr "Generate Transformation Rules automatically"
+
+#, fuzzy
+msgid "Generate invoice"
+msgstr "Generate %s"
 
 msgid "Generic Match List"
 msgid_plural "Generic Match Lists"
@@ -780,6 +866,10 @@ msgid "Holiday date"
 msgid_plural "Holiday dates"
 msgstr[0] "Holiday date"
 msgstr[1] "Holiday dates"
+
+#, fuzzy
+msgid "Holiday importer system"
+msgstr "Holiday target type"
 
 msgid "Holiday locution"
 msgstr "Holiday locution"
@@ -844,8 +934,19 @@ msgstr ""
 "If you want a prefix, use only digits. Otherwise, define your regular "
 "expresion."
 
+msgid "Ignore first line."
+msgstr ""
+
 #, python-format
 msgid "Import %s"
+msgstr "Import %s"
+
+#, fuzzy
+msgid "Import file"
+msgstr "Import %s"
+
+#, fuzzy
+msgid "Import system"
 msgstr "Import %s"
 
 msgid "In"
@@ -911,10 +1012,23 @@ msgstr[1] "Invoices"
 msgid "Invoice data"
 msgstr "Invoice data"
 
+msgid "Invoice has been enqueued. It will be generated as soon as posible."
+msgstr ""
+
 msgid "Invoice template"
 msgid_plural "Invoice templates"
 msgstr[0] "Invoice template"
 msgstr[1] "Invoice templates"
+
+#, fuzzy
+msgid "Invoice template tester"
+msgstr "Invoice template"
+
+msgid "Invoice(s) enqueued"
+msgstr ""
+
+msgid "Invoices have been enqueued. They will be generated as soon as posible."
+msgstr ""
 
 msgid "Ip addr"
 msgstr "IP address"
@@ -996,6 +1110,10 @@ msgstr "Listen to MoH"
 msgid "Load file"
 msgstr "Load file"
 
+#, fuzzy
+msgid "Loading"
+msgstr "encoding"
+
 msgid ""
 "Local legislation may enforce to announce the call recording to both "
 "parties, act responsibly"
@@ -1027,9 +1145,6 @@ msgid ""
 "Mail address shown as source when sending mails. MTA must allow this value."
 msgstr ""
 "Mail address shown as source when sending mails. MTA must allow this value."
-
-msgid "Mail data"
-msgstr "Mail data"
 
 msgid "Main Settings"
 msgstr "Main Settings"
@@ -1185,11 +1300,9 @@ msgid "Name"
 msgstr "Name"
 
 msgid ""
-"Name shown as source when sending mails (e.g. IvozProvider Notifications). "
-"Leave empty to disable."
+"Name shown as source when sending mails (e.g. IvozProvider Notifications)"
 msgstr ""
-"Name shown as source when sending mails (e.g. IvozProvider Notifications). "
-"Leave empty to disable."
+"Name shown as source when sending mails (e.g. IvozProvider Notifications)"
 
 msgid "National number length"
 msgstr "National number length"
@@ -1239,6 +1352,19 @@ msgstr "None"
 msgid "Not Registered"
 msgstr "Not Registered"
 
+msgid "Notification content"
+msgid_plural "Notification contents"
+msgstr[0] "Notification content"
+msgstr[1] "Notification contents"
+
+msgid "Notification options"
+msgstr "Notification options"
+
+msgid "Notification template"
+msgid_plural "Notification templates"
+msgstr[0] "Notification template"
+msgstr[1] "Notification templates"
+
 msgid "Number"
 msgstr "Number"
 
@@ -1252,6 +1378,9 @@ msgstr[1] "Numeric transformations"
 
 msgid "Numeric value"
 msgstr "Numeric value"
+
+msgid "Ok"
+msgstr ""
 
 msgid "On-demand"
 msgstr "On-demand"
@@ -1347,6 +1476,9 @@ msgstr[1] "PDF Files"
 msgid "Page"
 msgstr "Page"
 
+msgid "Parse file and import"
+msgstr ""
+
 msgid "Parsed"
 msgstr "Parsed"
 
@@ -1414,6 +1546,9 @@ msgstr "Pin protected"
 
 msgid "Platform Configuration"
 msgstr "Platform Configuration"
+
+msgid "Please, choose a file to import"
+msgstr ""
 
 msgid "Points to"
 msgstr "Points to"
@@ -1587,6 +1722,19 @@ msgstr "Regular Expression"
 msgid "Replace expr"
 msgstr "Replace expr"
 
+msgid "Resend"
+msgstr ""
+
+msgid "Resend fax"
+msgstr ""
+
+msgid "Resend to"
+msgstr ""
+
+#, fuzzy
+msgid "Restore backup"
+msgstr "Restore last backup"
+
 msgid "Restore default template"
 msgstr "Restore default template"
 
@@ -1691,11 +1839,27 @@ msgstr ""
 msgid "Security"
 msgstr "Security"
 
+msgid "Select Brand"
+msgstr ""
+
+#, fuzzy
+msgid "Select Company"
+msgstr "Company"
+
 msgid "Select destination group"
 msgstr "Select destination group"
 
 msgid "Select destination pattern"
 msgstr "Select destination pattern"
+
+msgid "Select file to import"
+msgstr ""
+
+msgid "Select the brand you want to emulate."
+msgstr ""
+
+msgid "Select the company you want to emulate"
+msgstr ""
 
 msgid "Send PAI"
 msgstr "Send PAI"
@@ -1721,8 +1885,16 @@ msgid_plural "Services"
 msgstr[0] "Service"
 msgstr[1] "Services"
 
+#, fuzzy
+msgid "Service Information"
+msgstr "Basic Information"
+
 msgid "Service has extra arguments"
 msgstr "Service has extra arguments"
+
+#, fuzzy
+msgid "Set column configuration and continue."
+msgstr "Outbound configuration"
 
 msgid "Setid"
 msgstr "Setid"
@@ -1750,6 +1922,12 @@ msgstr "Status"
 
 msgid "Strategy"
 msgstr "Strategy"
+
+msgid "Subject"
+msgstr ""
+
+msgid "Substitution variables"
+msgstr ""
 
 msgid "Success locution"
 msgstr "Success locution"
@@ -1779,6 +1957,9 @@ msgid "Template"
 msgid_plural "Templates"
 msgstr[0] "Template"
 msgstr[1] "Templates"
+
+msgid "Template Type"
+msgstr "Template Type"
 
 msgid "Template field can not be null."
 msgstr "Template field can not be null."
@@ -1812,6 +1993,12 @@ msgid "Terminal model"
 msgid_plural "Terminal models"
 msgstr[0] "Terminal model"
 msgstr[1] "Terminal models"
+
+msgid "Test the code"
+msgstr ""
+
+msgid "The terminal model must be saved before you can test the code"
+msgstr ""
 
 msgid "Theme"
 msgid_plural "Themes"
@@ -1866,8 +2053,18 @@ msgstr ""
 "This DDI will be used if friend presented DDI doesn't match any of the "
 "company DDIs"
 
+msgid ""
+"This importer expects values to be within quotation marks and separated by "
+"semicolons."
+msgstr ""
+
 msgid "This setting needs external tarification module"
 msgstr "This setting needs external tarification module"
+
+msgid ""
+"This template is going to be tested<br /><textarea name=\"currentCode\" rows="
+"\"8\" cols=\"80\" readonly></textarea>"
+msgstr ""
 
 msgid "This value will be displayed in the called terminals"
 msgstr "This value will be displayed in the called terminals"
@@ -1914,8 +2111,9 @@ msgstr "Timeout time"
 msgid "Timezone"
 msgstr "Timezone"
 
+#, fuzzy
 msgid "Timing"
-msgid_plural "Timings"
+msgid_plural "Timing"
 msgstr[0] "Timing"
 msgstr[1] "Timings"
 
@@ -1979,6 +2177,10 @@ msgstr "Unassigned"
 msgid "Update CallerID?"
 msgstr "Update CallerID?"
 
+#, fuzzy
+msgid "Update values."
+msgstr "Update CallerID?"
+
 msgid "Upload file"
 msgstr "Upload file"
 
@@ -2001,6 +2203,9 @@ msgstr "Use <strong>$this->terminalModel</strong> to access the model data."
 
 msgid "Use address or hostname"
 msgstr "Use address or hostname"
+
+msgid "Use generic template"
+msgstr "Use generic template"
 
 msgid "Use point as decimal delimiter - e.g. 0.02"
 msgstr "Use point as decimal delimiter - e.g. 0.02"
@@ -2047,6 +2252,11 @@ msgstr[1] "Voicemails"
 
 msgid "Voicemail Locution"
 msgstr "Voicemail Locution"
+
+msgid "Voicemail Notification"
+msgid_plural "Voicemail Notifications"
+msgstr[0] "Voicemail Notification"
+msgstr[1] "Voicemail Notifications"
 
 msgid "Voicemail attach sound"
 msgstr "Voicemail attach sound"
@@ -2101,6 +2311,9 @@ msgstr "Xcallid"
 msgid "Yes"
 msgstr "Yes"
 
+msgid "Yes, continue!"
+msgstr ""
+
 msgid ""
 "You can call this extension from any company terminal to close this lock"
 msgstr ""
@@ -2141,8 +2354,14 @@ msgstr ""
 msgid "You can't create a pricing plan that starts in de past"
 msgstr "You can't create a pricing plan that starts in de past"
 
+msgid "You have to emulate a brand to be able to emulate a company"
+msgstr ""
+
 msgid "allow"
 msgstr "allow"
+
+msgid "but following errors ocurred"
+msgstr ""
 
 msgid "deny"
 msgstr "deny"
@@ -2159,8 +2378,28 @@ msgstr "encoding"
 msgid "error"
 msgstr "error"
 
+msgid "ignore"
+msgstr ""
+
+msgid "is a required field"
+msgstr ""
+
+msgid "oversized"
+msgstr ""
+
 msgid "pending"
 msgstr "Pending"
 
 msgid "ready"
 msgstr "ready"
+
+msgid "shared"
+msgstr ""
+
+msgid "unlimited"
+msgstr ""
+
+#~ msgid "Notificaction template"
+#~ msgid_plural "Notificaction templates"
+#~ msgstr[0] "Notificaction template"
+#~ msgstr[1] "Notificaction templates"
