@@ -58,7 +58,6 @@ class Headers extends RouteHandlerAbstract
         $this->agi->setSIPHeader("X-Call-Id",            $this->agi->getVariable("CALL_ID"));
         $this->agi->setSIPHeader("X-Info-BrandId",       $company->getBrand()->getId());
         $this->agi->setSIPHeader("X-Info-CompanyId",     $company->getId());
-        $this->agi->setSIPHeader("X-Info-CompanyName",   $company->getName());
         $this->agi->setSIPHeader("X-Info-MediaRelaySet", $company->getMediaRelaySets()->getId());
 
         // Get Calle data, take if from called endpoint
