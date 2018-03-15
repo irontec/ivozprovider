@@ -1,36 +1,38 @@
-Feature: Update IVRs
-  In order to manage IVRs
+Feature: Update queues
+  In order to manage queues
   As an super admin
   I need to be able to update them through the API.
 
   @createSchema
-  Scenario: Update an IVR
+  Scenario: Update a queue
     Given I add Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
-      And I send a "PUT" request to "/ivrs/1" with body:
+      And I send a "PUT" request to "/queues/1" with body:
     """
       {
-          "name": "testIvrCustom",
-          "timeout": 6,
-          "maxDigits": 0,
-          "allowExtensions": false,
-          "noInputRouteType": "number",
-          "noInputNumberValue": "946002020",
-          "errorRouteType": "number",
-          "errorNumberValue": "946002021",
-          "id": 1,
+          "name": "updatedQueue",
+          "maxWaitTime": 10,
+          "timeoutTargetType": "number",
+          "timeoutNumberValue": "946002222",
+          "maxlen": 5,
+          "fullTargetType": "number",
+          "fullNumberValue": "946003333",
+          "periodicAnnounceFrequency": 7,
+          "memberCallRest": 0,
+          "memberCallTimeout": 1,
+          "strategy": "rrmemory",
+          "weight": 5,
           "company": 1,
-          "welcomeLocution": 1,
-          "noInputLocution": null,
-          "errorLocution": null,
-          "successLocution": 1,
-          "noInputExtension": null,
-          "errorExtension": null,
-          "noInputVoiceMailUser": null,
-          "errorVoiceMailUser": null,
-          "noInputNumberCountry": 1,
-          "errorNumberCountry": 1
+          "periodicAnnounceLocution": 1,
+          "timeoutLocution": 1,
+          "timeoutExtension": null,
+          "timeoutVoiceMailUser": null,
+          "fullLocution": 1,
+          "fullExtension": null,
+          "fullVoiceMailUser": null,
+          "timeoutNumberCountry": 1,
+          "fullNumberCountry": 1
       }
     """
     Then the response status code should be 200
@@ -38,15 +40,19 @@ Feature: Update IVRs
      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
      And the JSON should be equal to:
     """
-     {
-          "name": "testIvrCustom",
-          "timeout": 6,
-          "maxDigits": 0,
-          "allowExtensions": false,
-          "noInputRouteType": "number",
-          "noInputNumberValue": "946002020",
-          "errorRouteType": "number",
-          "errorNumberValue": "946002021",
+      {
+          "name": "updatedQueue",
+          "maxWaitTime": 10,
+          "timeoutTargetType": "number",
+          "timeoutNumberValue": "946002222",
+          "maxlen": 5,
+          "fullTargetType": "number",
+          "fullNumberValue": "946003333",
+          "periodicAnnounceFrequency": 7,
+          "memberCallRest": 0,
+          "memberCallTimeout": 1,
+          "strategy": "rrmemory",
+          "weight": 5,
           "id": 1,
           "company": {
               "type": "vpbx",
@@ -78,7 +84,7 @@ Feature: Update IVRs
               "outgoingDdi": null,
               "outgoingDdiRule": null
           },
-          "welcomeLocution": {
+          "periodicAnnounceLocution": {
               "name": "testLocution",
               "status": null,
               "id": 1,
@@ -94,9 +100,7 @@ Feature: Update IVRs
               },
               "company": 1
           },
-          "noInputLocution": null,
-          "errorLocution": null,
-          "successLocution": {
+          "timeoutLocution": {
               "name": "testLocution",
               "status": null,
               "id": 1,
@@ -112,11 +116,27 @@ Feature: Update IVRs
               },
               "company": 1
           },
-          "noInputExtension": null,
-          "errorExtension": null,
-          "noInputVoiceMailUser": null,
-          "errorVoiceMailUser": null,
-          "noInputNumberCountry": {
+          "timeoutExtension": null,
+          "timeoutVoiceMailUser": null,
+          "fullLocution": {
+              "name": "testLocution",
+              "status": null,
+              "id": 1,
+              "encodedFile": {
+                  "fileSize": null,
+                  "mimeType": null,
+                  "baseName": null
+              },
+              "originalFile": {
+                  "fileSize": null,
+                  "mimeType": null,
+                  "baseName": null
+              },
+              "company": 1
+          },
+          "fullExtension": null,
+          "fullVoiceMailUser": null,
+          "timeoutNumberCountry": {
               "code": "ES",
               "countryCode": "+34",
               "id": 1,
@@ -129,7 +149,7 @@ Feature: Update IVRs
                   "es": "Europa"
               }
           },
-          "errorNumberCountry": {
+          "fullNumberCountry": {
               "code": "ES",
               "countryCode": "+34",
               "id": 1,
