@@ -580,6 +580,10 @@ Ivoz\Provider\Domain\Model\Queue\Queue:
         company:
           in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
 Ivoz\Provider\Domain\Model\Recording\Recording:
+  itemOperations:
+    put: ~
+  collectionOperations:
+    post: ~
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
@@ -650,6 +654,10 @@ Ivoz\Provider\Domain\Model\Schedule\Schedule:
         company:
           in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
 Ivoz\Provider\Domain\Model\Service\Service:
+  itemOperations:
+    delete: ~
+  collectionOperations:
+    post: ~
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\TerminalManufacturer\TerminalManufacturer:

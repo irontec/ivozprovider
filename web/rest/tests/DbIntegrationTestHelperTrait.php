@@ -11,8 +11,6 @@ use Ivoz\Provider\Domain\Model\Changelog\Changelog;
 use Ivoz\Provider\Domain\Model\Changelog\ChangelogRepository;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpKernel\KernelInterface;
-use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Xmlrpc;
-use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Manager;
 
 trait DbIntegrationTestHelperTrait
 {

@@ -47,8 +47,8 @@ class UpdateByRoutingPattern implements RoutingPatternLifecycleEventHandlerInter
              */
             $lcrRuleDTO = $lcrRule->toDto();
             $lcrRuleDTO
-                ->setTag($entity->getName())
-                ->setDescription($entity->getDescription());
+                ->setTag($entity->getName()->getEn())
+                ->setDescription($entity->getDescription()->getEn());
 
             return $this
                 ->entityPersister

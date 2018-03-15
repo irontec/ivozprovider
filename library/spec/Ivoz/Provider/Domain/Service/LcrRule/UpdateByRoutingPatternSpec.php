@@ -6,6 +6,8 @@ use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Provider\Domain\Model\LcrRule\LcrRuleDto;
 use Ivoz\Provider\Domain\Model\LcrRule\LcrRuleInterface;
 use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface;
+use Ivoz\Provider\Domain\Model\RoutingPattern\Name;
+use Ivoz\Provider\Domain\Model\RoutingPattern\Description;
 use Ivoz\Provider\Domain\Service\LcrRule\UpdateByRoutingPattern;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -54,8 +56,8 @@ class UpdateByRoutingPatternSpec extends ObjectBehavior
             [
                 'getLcrRules' => [$lcrRule],
                 'getRegExp' => $regExp,
-                'getName' => 'Name',
-                'getDescription' => 'Description'
+                'getName' => new Name('en', 'es'),
+                'getDescription' => new Description('en', 'es')
             ]
         );
 
