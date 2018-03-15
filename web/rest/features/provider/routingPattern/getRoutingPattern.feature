@@ -56,8 +56,6 @@ Feature: Retrieve routing patterns
           "brand": {
               "name": "DemoBrand",
               "domainUsers": "",
-              "fromName": "",
-              "fromAddress": "",
               "recordingsLimitMB": null,
               "recordingsLimitEmail": "",
               "maxCalls": 0,

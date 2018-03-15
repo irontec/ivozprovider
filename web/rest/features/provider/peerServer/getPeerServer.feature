@@ -63,8 +63,6 @@ Feature: Retrieve peer servers
           "brand": {
               "name": "DemoBrand",
               "domainUsers": "",
-              "fromName": "",
-              "fromAddress": "",
               "recordingsLimitMB": null,
               "recordingsLimitEmail": "",
               "maxCalls": 0,

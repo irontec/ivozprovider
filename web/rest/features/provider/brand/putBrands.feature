@@ -13,8 +13,6 @@ Feature: Manage brands
       {
         "name": "api_brand_modified",
         "domainUsers": "sip-api.irontec.com",
-        "fromName": "",
-        "fromAddress": "",
         "recordingsLimitMB": 0,
         "recordingsLimitEmail": "",
         "invoice": {
@@ -39,8 +37,6 @@ Feature: Manage brands
       {
           "name": "api_brand_modified",
           "domainUsers": "sip-api.irontec.com",
-          "fromName": "",
-          "fromAddress": "",
           "recordingsLimitMB": 0,
           "recordingsLimitEmail": "",
           "maxCalls": 0,

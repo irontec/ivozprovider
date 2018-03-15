@@ -73,7 +73,9 @@ Feature: Retrieve locutions
               "country": 1,
               "transformationRuleSet": 1,
               "outgoingDdi": null,
-              "outgoingDdiRule": null
+              "outgoingDdiRule": null,
+              "voicemailNotificationTemplate": 1,
+              "faxNotificationTemplate": null
           }
       }
     """

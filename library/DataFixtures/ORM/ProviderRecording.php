@@ -28,7 +28,7 @@ class ProviderRecording extends Fixture implements DependentFixtureInterface
             $this->getReference('_reference_ProviderCompany1')
         );
         $item1->setCallid('7602fd7f-4153-4475-9100-d89ff70cdf76');
-        $item1->setCalldate(new \DateTime('2017-01-05 00:15:15'));
+        $item1->setCalldate(new \DateTime('2017-01-05 00:15:15', new \DateTimeZone('UTC')));
         $item1->setType('ondemand');
         $item1->setDuration(3);
         $item1->setCaller('34946002020');

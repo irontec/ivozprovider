@@ -22,7 +22,7 @@ class ProviderFaxesInOut extends Fixture implements DependentFixtureInterface
 
         /** @var FaxesInOut $item1 */
         $item1 = $this->createEntityInstanceWithPublicMethods(FaxesInOut::class);
-        $item1->setCalldate(new \DateTime('2018-01-01'));
+        $item1->setCalldate(new \DateTime('2018-01-01', new \DateTimeZone('UTC')));
         $item1->setFax(
             $this->getReference('_reference_ProviderFax1')
         );

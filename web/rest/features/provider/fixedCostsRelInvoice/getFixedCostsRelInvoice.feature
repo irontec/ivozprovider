@@ -20,8 +20,6 @@ Feature: Retrieve fixed costs rel invoices
               "brand": {
                   "name": "DemoBrand",
                   "domainUsers": "",
-                  "fromName": "",
-                  "fromAddress": "",
                   "recordingsLimitMB": null,
                   "recordingsLimitEmail": "",
                   "maxCalls": 0,
@@ -88,8 +86,6 @@ Feature: Retrieve fixed costs rel invoices
           "brand": {
               "name": "DemoBrand",
               "domainUsers": "",
-              "fromName": "",
-              "fromAddress": "",
               "recordingsLimitMB": null,
               "recordingsLimitEmail": "",
               "maxCalls": 0,

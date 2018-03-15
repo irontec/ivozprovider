@@ -23,52 +23,50 @@ Feature: Update peering contracts
      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
      And the JSON should be equal to:
     """
-      {
-          "description": "Artemis-Updated",
-          "name": "Artemis-Updated",
-          "externallyRated": true,
-          "id": 1,
-          "brand": {
-              "name": "Irontec_e2e",
-              "domainUsers": "sip.irontec.com",
-              "fromName": null,
-              "fromAddress": null,
-              "recordingsLimitMB": null,
-              "recordingsLimitEmail": null,
-              "maxCalls": 0,
-              "id": 2,
-              "logo": {
-                  "fileSize": null,
-                  "mimeType": null,
-                  "baseName": null
-              },
-              "invoice": {
-                  "nif": "",
-                  "postalAddress": "",
-                  "postalCode": "",
-                  "town": "",
-                  "province": "",
-                  "country": "",
-                  "registryData": ""
-              },
-              "domain": 4,
-              "language": 1,
-              "defaultTimezone": 1
-          },
-          "transformationRuleSet": {
-              "description": "",
-              "internationalCode": "00",
-              "trunkPrefix": "",
-              "areaCode": "",
-              "nationalLen": 9,
-              "generateRules": false,
-              "id": 2,
-              "name": {
-                  "en": "en",
-                  "es": "es"
-              },
-              "brand": 1,
-              "country": 1
-          }
-      }
+        {
+            "description": "Artemis-Updated",
+            "name": "Artemis-Updated",
+            "externallyRated": true,
+            "id": 1,
+            "brand": {
+                "name": "Irontec_e2e",
+                "domainUsers": "sip.irontec.com",
+                "recordingsLimitMB": null,
+                "recordingsLimitEmail": null,
+                "maxCalls": 0,
+                "id": 2,
+                "logo": {
+                    "fileSize": null,
+                    "mimeType": null,
+                    "baseName": null
+                },
+                "invoice": {
+                    "nif": "",
+                    "postalAddress": "",
+                    "postalCode": "",
+                    "town": "",
+                    "province": "",
+                    "country": "",
+                    "registryData": ""
+                },
+                "domain": 4,
+                "language": 1,
+                "defaultTimezone": 1
+            },
+            "transformationRuleSet": {
+                "description": "",
+                "internationalCode": "00",
+                "trunkPrefix": "",
+                "areaCode": "",
+                "nationalLen": 9,
+                "generateRules": false,
+                "id": 2,
+                "name": {
+                    "en": "en",
+                    "es": "es"
+                },
+                "brand": 1,
+                "country": 1
+            }
+        }
     """

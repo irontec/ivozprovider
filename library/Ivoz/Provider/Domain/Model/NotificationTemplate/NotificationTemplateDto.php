@@ -13,7 +13,8 @@ class NotificationTemplateDto extends NotificationTemplateDtoAbstract
         if ($context === self::CONTEXT_COLLECTION) {
             return [
                 'id' => 'id',
-                'name' => 'name'
+                'name' => 'name',
+                'type' => 'type',
             ];
         }
 

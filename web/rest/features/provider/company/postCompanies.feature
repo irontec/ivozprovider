@@ -37,7 +37,9 @@ Feature: Create companies
         "country": 1,
         "transformationRuleSet": 1,
         "outgoingDdi": 1,
-        "outgoingDdiRule": 1
+        "outgoingDdiRule": 1,
+        "voicemailNotificationTemplate": 1,
+        "faxNotificationTemplate": null
       }
     """
     Then the response status code should be 201
@@ -102,8 +104,6 @@ Feature: Create companies
           "brand": {
               "name": "DemoBrand",
               "domainUsers": "",
-              "fromName": "",
-              "fromAddress": "",
               "recordingsLimitMB": null,
               "recordingsLimitEmail": "",
               "maxCalls": 0,
@@ -195,6 +195,13 @@ Feature: Create companies
               "id": 1,
               "company": 1,
               "forcedDdi": null
-          }
+          },
+          "voicemailNotificationTemplate": {
+              "name": "Voicemail notification",
+              "type": "voicemail",
+              "id": 1,
+              "brand": 1
+          },
+          "faxNotificationTemplate": null
       }
     """

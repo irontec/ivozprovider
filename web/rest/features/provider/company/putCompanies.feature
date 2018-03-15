@@ -38,7 +38,9 @@ Feature: Update company
           "country": 1,
           "transformationRuleSet": 1,
           "outgoingDdi": null,
-          "outgoingDdiRule": null
+          "outgoingDdiRule": null,
+          "voicemailNotificationTemplate": 1,
+          "faxNotificationTemplate": null
       }
     """
     Then the response status code should be 200
@@ -91,8 +93,6 @@ Feature: Update company
           "brand": {
               "name": "DemoBrand",
               "domainUsers": "",
-              "fromName": "",
-              "fromAddress": "",
               "recordingsLimitMB": null,
               "recordingsLimitEmail": "",
               "maxCalls": 0,
@@ -151,6 +151,13 @@ Feature: Update company
               "country": 1
           },
           "outgoingDdi": null,
-          "outgoingDdiRule": null
+          "outgoingDdiRule": null,
+          "voicemailNotificationTemplate": {
+              "name": "Voicemail notification",
+              "type": "voicemail",
+              "id": 1,
+              "brand": 1
+          },
+          "faxNotificationTemplate": null
       }
     """

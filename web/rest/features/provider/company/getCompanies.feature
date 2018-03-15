@@ -86,8 +86,6 @@ Feature: Retrieve companies
           "brand": {
               "name": "DemoBrand",
               "domainUsers": "",
-              "fromName": "",
-              "fromAddress": "",
               "recordingsLimitMB": null,
               "recordingsLimitEmail": "",
               "maxCalls": 0,
@@ -146,6 +144,13 @@ Feature: Retrieve companies
               "country": 1
           },
           "outgoingDdi": null,
-          "outgoingDdiRule": null
+          "outgoingDdiRule": null,
+          "voicemailNotificationTemplate": {
+              "name": "Voicemail notification",
+              "type": "voicemail",
+              "id": 1,
+              "brand": 1
+          },
+          "faxNotificationTemplate": null
       }
     """

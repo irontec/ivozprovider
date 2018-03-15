@@ -486,6 +486,19 @@ Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHold:
               eq: "user.getBrand().getId()"
           - company:
               in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate:
+  attributes:
+    access_control: '"ROLE_BRAND_ADMIN" in roles'
+    read_access_control:
+      ROLE_BRAND_ADMIN:
+        brand:
+          eq: "user.getBrand().getId()"
+Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContent:
+  attributes:
+    access_control: '"ROLE_BRAND_ADMIN" in roles'
+    read_access_control:
+      inherited:
+        notificationTemplate: 'Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate'
 Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
