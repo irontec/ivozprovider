@@ -22,14 +22,24 @@ class ProviderRoutingPattern extends Fixture implements DependentFixtureInterfac
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(RoutingPattern::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
-        $item68 = $this->createEntityInstanceWithPublicMethods(RoutingPattern::class);
-        $item68->setRegExp("+34");
-        $item68->setName(new Name('en', 'es'));
-        $item68->setDescription(new Description('en', 'es'));
-        $item68->setBrand($this->getReference('_reference_ProviderBrand1'));
-        $this->addReference('_reference_ProviderRoutingPatternRoutingPattern68', $item68);
-        $this->sanitizeEntityValues($item68);
-        $manager->persist($item68);
+        $item1 = $this->createEntityInstanceWithPublicMethods(RoutingPattern::class);
+        $item1->setRegExp("+34");
+        $item1->setName(new Name('en', 'es'));
+        $item1->setDescription(new Description('en', 'es'));
+        $item1->setBrand($this->getReference('_reference_ProviderBrand1'));
+        $this->addReference('_reference_ProviderRoutingPatternRoutingPattern68', $item1);
+        $this->sanitizeEntityValues($item1);
+        $manager->persist($item1);
+
+
+        $item2 = $this->createEntityInstanceWithPublicMethods(RoutingPattern::class);
+        $item2->setRegExp("+35");
+        $item2->setName(new Name('en', 'es'));
+        $item2->setDescription(new Description('en', 'es'));
+        $item2->setBrand($this->getReference('_reference_ProviderBrand1'));
+        $this->addReference('_reference_ProviderRoutingPatternRoutingPattern2', $item2);
+        $this->sanitizeEntityValues($item2);
+        $manager->persist($item2);
 
         $manager->flush();
     }

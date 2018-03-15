@@ -1,21 +1,26 @@
-Feature: Create invoice templates
-  In order to manage invoice templates
+Feature: Create routing patterns
+  In order to manage routing patterns
   As an super admin
   I need to be able to create them through the API.
 
   @createSchema
-  Scenario: Create an invoice template
+  Scenario: Create a routing patterns
     Given I add Authorization header
     When I add "Content-Type" header equal to "application/json"
     And I add "Accept" header equal to "application/json"
-    And I send a "POST" request to "/invoice_templates" with body:
+    And I send a "POST" request to "/routing_patterns" with body:
     """
       {
-          "name": "New",
-          "description": "Description",
-          "template": "body",
-          "templateHeader": "header",
-          "templateFooter": "footer",
+          "regExp": "+349",
+          "id": 1,
+          "name": {
+              "en": "Spain",
+              "es": "España"
+          },
+          "description": {
+              "en": "desc en",
+              "es": "desc es"
+          },
           "brand": 1
       }
     """
@@ -25,27 +30,35 @@ Feature: Create invoice templates
     And the JSON should be equal to:
     """
       {
-          "name": "New",
-          "id": 2
+          "regExp": "+349",
+          "id": 3,
+          "name": {
+              "en": "Spain",
+              "es": "España"
+          }
       }
     """
 
-  Scenario: Retrieve created invoice templates
+  Scenario: Retrieve created routing pattern
     Given I add Authorization header
     When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "invoice_templates/2"
+    And I send a "GET" request to "routing_patterns/3"
     Then the response status code should be 200
     And the response should be in JSON
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the JSON should be equal to:
     """
       {
-          "name": "New",
-          "description": "Description",
-          "template": "body",
-          "templateHeader": "header",
-          "templateFooter": "footer",
-          "id": 2,
+          "regExp": "+349",
+          "id": 3,
+          "name": {
+              "en": "Spain",
+              "es": "España"
+          },
+          "description": {
+              "en": "desc en",
+              "es": "desc es"
+          },
           "brand": {
               "name": "DemoBrand",
               "domainUsers": "",

@@ -1,30 +1,21 @@
-Feature: Create music on holds
-  In order to manage music on holds
+Feature: Create peering contracts
+  In order to manage peering contracts
   As an super admin
   I need to be able to create them through the API.
 
   @createSchema
-  Scenario: Create a music on hold
+  Scenario: Create a peering contracts
     Given I add Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
-      And I send a "POST" request to "/music_on_holds" with body:
+      And I send a "POST" request to "/peering_contracts" with body:
     """
       {
-          "name": "Something new",
-          "status": null,
-          "originalFile": {
-              "fileSize": null,
-              "mimeType": null,
-              "baseName": null
-          },
-          "encodedFile": {
-              "fileSize": null,
-              "mimeType": null,
-              "baseName": null
-          },
-          "brand": 2,
-          "company": null
+          "description": "Artemis-New",
+          "name": "Artemis-New",
+          "externallyRated": false,
+          "brand": 1,
+          "transformationRuleSet": 1
       }
     """
     Then the response status code should be 201
@@ -33,44 +24,36 @@ Feature: Create music on holds
      And the JSON should be equal to:
     """
       {
-          "name": "Something new",
-          "status": null,
-          "id": 3
+          "description": "Artemis-New",
+          "name": "Artemis-New",
+          "externallyRated": false,
+          "id": 2
       }
     """
 
-  Scenario: Retrieve created music on holds
+  Scenario: Retrieve created peering contract
     Given I add Authorization header
      When I add "Accept" header equal to "application/json"
-      And I send a "GET" request to "music_on_holds/3"
+      And I send a "GET" request to "/peering_contracts/2"
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
     """
       {
-          "name": "Something new",
-          "status": null,
-          "id": 3,
-          "originalFile": {
-              "fileSize": null,
-              "mimeType": null,
-              "baseName": null
-          },
-          "encodedFile": {
-              "fileSize": null,
-              "mimeType": null,
-              "baseName": null
-          },
+          "description": "Artemis-New",
+          "name": "Artemis-New",
+          "externallyRated": false,
+          "id": 2,
           "brand": {
-              "name": "Irontec_e2e",
-              "domainUsers": "sip.irontec.com",
-              "fromName": null,
-              "fromAddress": null,
+              "name": "DemoBrand",
+              "domainUsers": "",
+              "fromName": "",
+              "fromAddress": "",
               "recordingsLimitMB": null,
-              "recordingsLimitEmail": null,
+              "recordingsLimitEmail": "",
               "maxCalls": 0,
-              "id": 2,
+              "id": 1,
               "logo": {
                   "fileSize": null,
                   "mimeType": null,
@@ -85,10 +68,24 @@ Feature: Create music on holds
                   "country": "",
                   "registryData": ""
               },
-              "domain": 4,
+              "domain": 6,
               "language": 1,
               "defaultTimezone": 1
           },
-          "company": null
+          "transformationRuleSet": {
+              "description": "Generic transformation for Spain",
+              "internationalCode": "00",
+              "trunkPrefix": "",
+              "areaCode": "",
+              "nationalLen": 9,
+              "generateRules": false,
+              "id": 1,
+              "name": {
+                  "en": "en",
+                  "es": "es"
+              },
+              "brand": null,
+              "country": 1
+          }
       }
     """

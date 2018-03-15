@@ -1,30 +1,35 @@
-Feature: Create music on holds
-  In order to manage music on holds
+Feature: Create peer servers
+  In order to manage peer servers
   As an super admin
   I need to be able to create them through the API.
 
   @createSchema
-  Scenario: Create a music on hold
+  Scenario: Create a peer servers
     Given I add Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
-      And I send a "POST" request to "/music_on_holds" with body:
+      And I send a "POST" request to "/peer_servers" with body:
     """
       {
-          "name": "Something new",
-          "status": null,
-          "originalFile": {
-              "fileSize": null,
-              "mimeType": null,
-              "baseName": null
-          },
-          "encodedFile": {
-              "fileSize": null,
-              "mimeType": null,
-              "baseName": null
-          },
-          "brand": 2,
-          "company": null
+          "ip": "127.0.0.2",
+          "hostname": "newhost.net",
+          "port": 5060,
+          "params": "",
+          "uriScheme": true,
+          "transport": true,
+          "strip": null,
+          "prefix": "",
+          "sendPAI": false,
+          "sendRPID": false,
+          "authNeeded": "no",
+          "authUser": null,
+          "authPassword": null,
+          "sipProxy": "127.0.0.3",
+          "outboundProxy": null,
+          "fromUser": "",
+          "fromDomain": "",
+          "peeringContract": 1,
+          "brand": 2
       }
     """
     Then the response status code should be 201
@@ -33,34 +38,49 @@ Feature: Create music on holds
      And the JSON should be equal to:
     """
       {
-          "name": "Something new",
-          "status": null,
-          "id": 3
+          "ip": null,
+          "hostname": "127.0.0.3",
+          "authNeeded": "no",
+          "sipProxy": "127.0.0.3",
+          "id": 2
       }
     """
 
-  Scenario: Retrieve created music on holds
+  Scenario: Retrieve created peer server
     Given I add Authorization header
      When I add "Accept" header equal to "application/json"
-      And I send a "GET" request to "music_on_holds/3"
+      And I send a "GET" request to "peer_servers/2"
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
     """
       {
-          "name": "Something new",
-          "status": null,
-          "id": 3,
-          "originalFile": {
-              "fileSize": null,
-              "mimeType": null,
-              "baseName": null
-          },
-          "encodedFile": {
-              "fileSize": null,
-              "mimeType": null,
-              "baseName": null
+          "ip": null,
+          "hostname": "127.0.0.3",
+          "port": 5060,
+          "params": "",
+          "uriScheme": true,
+          "transport": true,
+          "strip": null,
+          "prefix": "",
+          "sendPAI": false,
+          "sendRPID": false,
+          "authNeeded": "no",
+          "authUser": null,
+          "authPassword": null,
+          "sipProxy": "127.0.0.3",
+          "outboundProxy": null,
+          "fromUser": "",
+          "fromDomain": "",
+          "id": 2,
+          "peeringContract": {
+              "description": "Artemis-Dev",
+              "name": "Artemis-Dev",
+              "externallyRated": false,
+              "id": 1,
+              "brand": 1,
+              "transformationRuleSet": 1
           },
           "brand": {
               "name": "Irontec_e2e",
@@ -88,7 +108,6 @@ Feature: Create music on holds
               "domain": 4,
               "language": 1,
               "defaultTimezone": 1
-          },
-          "company": null
+          }
       }
     """

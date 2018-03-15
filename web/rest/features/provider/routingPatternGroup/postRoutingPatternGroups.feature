@@ -1,30 +1,19 @@
-Feature: Create music on holds
-  In order to manage music on holds
+Feature: Create routing pattern groups
+  In order to manage routing pattern groups
   As an super admin
   I need to be able to create them through the API.
 
   @createSchema
-  Scenario: Create a music on hold
+  Scenario: Create a routing pattern group
     Given I add Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
-      And I send a "POST" request to "/music_on_holds" with body:
+      And I send a "POST" request to "/routing_pattern_groups" with body:
     """
       {
-          "name": "Something new",
-          "status": null,
-          "originalFile": {
-              "fileSize": null,
-              "mimeType": null,
-              "baseName": null
-          },
-          "encodedFile": {
-              "fileSize": null,
-              "mimeType": null,
-              "baseName": null
-          },
-          "brand": 2,
-          "company": null
+          "name": "Usansolocity",
+          "description": "Usansolocity",
+          "brand": 2
       }
     """
     Then the response status code should be 201
@@ -33,35 +22,25 @@ Feature: Create music on holds
      And the JSON should be equal to:
     """
       {
-          "name": "Something new",
-          "status": null,
+          "name": "Usansolocity",
+          "description": "Usansolocity",
           "id": 3
-      }
+      } 
     """
 
-  Scenario: Retrieve created music on holds
+  Scenario: Retrieve created routing pattern group
     Given I add Authorization header
      When I add "Accept" header equal to "application/json"
-      And I send a "GET" request to "music_on_holds/3"
+      And I send a "GET" request to "/routing_pattern_groups/3"
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
       And the JSON should be equal to:
     """
       {
-          "name": "Something new",
-          "status": null,
+          "name": "Usansolocity",
+          "description": "Usansolocity",
           "id": 3,
-          "originalFile": {
-              "fileSize": null,
-              "mimeType": null,
-              "baseName": null
-          },
-          "encodedFile": {
-              "fileSize": null,
-              "mimeType": null,
-              "baseName": null
-          },
           "brand": {
               "name": "Irontec_e2e",
               "domainUsers": "sip.irontec.com",
@@ -88,7 +67,6 @@ Feature: Create music on holds
               "domain": 4,
               "language": 1,
               "defaultTimezone": 1
-          },
-          "company": null
+          }
       }
     """

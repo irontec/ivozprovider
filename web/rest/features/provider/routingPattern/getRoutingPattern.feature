@@ -21,6 +21,14 @@ Feature: Retrieve routing patterns
                   "en": "en",
                   "es": "es"
               }
+          },
+          {
+              "regExp": "+35",
+              "id": 2,
+              "name": {
+                  "en": "en",
+                  "es": "es"
+              }
           }
       ]
     """

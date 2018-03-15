@@ -63,7 +63,7 @@ Feature: Create IVR excluded extensions
       }
     """
 
-  Scenario: Retrieve created XX
+  Scenario: Retrieve created IVR excluded extensions
     Given I add Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "ivr_excluded_extensions/2"
