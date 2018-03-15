@@ -1,0 +1,212 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016-2017, Irontec
+# This file is distributed under the same license as the IvozProvider
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2018.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: IvozProvider 2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-03-15 13:49+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.5.1\n"
+
+#: ../../notifications/index.rst:5
+msgid "Notification Templates"
+msgstr "Plantillas de Notificationes"
+
+#: ../../notifications/index.rst:7
+msgid "Brand administators can configure the notifications sent by IvozProvider:"
+msgstr ""
+"Los administradores de marca pueden configurar las notificaciones "
+"enviadas por IvozProvider:"
+
+#: ../../notifications/index.rst:9
+msgid "Email sent when a new voicemail is received"
+msgstr "Correos electrónicos enviados cuando se recibe un buzón de voz nuevo."
+
+#: ../../notifications/index.rst:11
+msgid "Email sent when a new fax is received"
+msgstr "Correos electrónicos enviados cuando se recibe un fax nuevo."
+
+#: ../../notifications/index.rst:13
+msgid "When no custom notification is configured, default ones will be used"
+msgstr "Si no se configuran notificaciones, se emplearán notificaciones genéricas"
+
+#: ../../notifications/index.rst:15
+msgid ""
+"Notifications are created in two steps: Create a notification type and "
+"add contents to the notification for each required language."
+msgstr ""
+"Las plantillas de notificaciones son creadas en dos pasos: Crear una tipo"
+" de notificación y añadir contenido a la notificación para cada lenguaje "
+"necesario."
+
+#: ../../notifications/index.rst:20
+msgid "Creating a new notification"
+msgstr "Crear una nueva notificación"
+
+#: ../../notifications/index.rst:22
+msgid ""
+"Brand administrators can create new notification templates in **Brand "
+"configuration** > **Notification templates**:"
+msgstr ""
+"Los administradores de marca puede crear nuevas plantillas de "
+"notificacion en **Configuración de marca** > **Plantillas de "
+"notificación**"
+
+#: ../../notifications/index.rst:24
+msgid "Fields are nearly self-explanatory:"
+msgstr "Los campos son auto-explicativos"
+
+#: ../../notifications/index.rst:27
+msgid "Name"
+msgstr "Nombre"
+
+#: ../../notifications/index.rst:29
+msgid "Used to identify this notification template"
+msgstr "Empleado para identificar esta plantilla de notificación"
+
+#: ../../notifications/index.rst:30
+msgid "Type"
+msgstr "Tipo"
+
+#: ../../notifications/index.rst:32
+msgid ""
+"Determine the notification type. Each notification type has its own "
+"substitution variables avaiable to replace the contents of the subject "
+"and body."
+msgstr ""
+"Determina el tipo de notificación. Cada tipo de notificación tiene sus "
+"propias variables de sustitución disponibles para poder replazar en los "
+"contenidos del asunto y cuerpo."
+
+#: ../../notifications/index.rst:37
+msgid "Adding Notification contents"
+msgstr "Añadiendo contenidos a la notificación"
+
+#: ../../notifications/index.rst:39
+msgid ""
+"Once the notification has been created, you can add different language "
+"contents. IvozProvider will automatically use the proper language based "
+"on the destination:"
+msgstr ""
+"Una vez la notificación ha sido creada, se pueden añadir contenidos para "
+"los diferentes languages. IvozProvider eligirá automáticamente el "
+"lenguaje en función del destino:"
+
+#: ../../notifications/index.rst:42
+msgid "For Voicemails, the user language will be used"
+msgstr "Para buzones de voz, el lenguaje del usuario del buzón será empleado"
+
+#: ../../notifications/index.rst:44
+msgid "For Faxes, the company language will be used."
+msgstr "Para faxes, el lenguaje de la compañía será empleado."
+
+#: ../../notifications/index.rst:46
+msgid "Configurable fields of each content:"
+msgstr "Campos configurables para cada contenido:"
+
+#: ../../notifications/index.rst:49
+msgid "Language"
+msgstr "Lenguaje"
+
+#: ../../notifications/index.rst:51
+msgid "Language of the contents."
+msgstr "Lenguaje de los contenidos"
+
+#: ../../notifications/index.rst:52
+msgid "From Name"
+msgstr "Nombre origen"
+
+#: ../../notifications/index.rst:54
+msgid ""
+"The from name used while sending emails (p.e. IvozProvider Voicemail "
+"Notifications)"
+msgstr ""
+"Nombre mostar al enviar correos electrónicos (p.e. Notificaciones Buzón "
+"de voz IvozProvider)"
+
+#: ../../notifications/index.rst:55
+msgid "From Address"
+msgstr "Dirección origen"
+
+#: ../../notifications/index.rst:57
+msgid ""
+"The from address used while sending emails (p.e. no-"
+"replay@ivozprovider.com)"
+msgstr ""
+"Dirección origen mostrado al enviar corros electrónicos (p.e. no-"
+"replay@ivozprovider.com)"
+
+#: ../../notifications/index.rst:58
+msgid "Substitution variables"
+msgstr "Sustitución de variables"
+
+#: ../../notifications/index.rst:60
+msgid ""
+"Avaialble variables that can be used in subject and body that will be "
+"replaced before sending the email. Each notification type has its own "
+"variables."
+msgstr ""
+"Variables disponibles que pueden emplearse en el asunto y cuero y serán "
+"remplazadas antes de enviar el correo electrónico. Cada notificacion "
+"cuenta con sus propias variables de sustitución."
+
+#: ../../notifications/index.rst:62
+msgid "Subject"
+msgstr "Asunto"
+
+#: ../../notifications/index.rst:64
+msgid ""
+"Subject of the email to be sent. You can include Substitution variables "
+"here."
+msgstr ""
+"Asunto del email que se enviará. Puede emplear variables de sustitución "
+"aquí."
+
+#: ../../notifications/index.rst:65
+msgid "Body"
+msgstr "Cuerpo"
+
+#: ../../notifications/index.rst:67
+msgid ""
+"HTML Body of the email to be sent. You can include Substitution variables"
+" here."
+msgstr ""
+"Cuerpo HTML del email que se enviará. Puede emplear variables de "
+"sustitución aquí."
+
+#: ../../notifications/index.rst:69
+msgid ""
+"There is no need to create all content languages. If custom notification "
+"has some languages not defined the default contents will be used for that"
+" notification type."
+msgstr ""
+"No es neceario crear contenidos para todos los lenguajes. Si una "
+"notificación no tiene un lenguaje definido, se emplearán los contenidos "
+"por defecto para ese lenguaje y tipo de notificación."
+
+#: ../../notifications/index.rst:75
+msgid "Assigning templates to companies"
+msgstr "Asignar plantillas a compañías."
+
+#: ../../notifications/index.rst:77
+msgid ""
+"Once the notification has been configured for the desired languages, "
+"Brand administrator must assign it to the Company or Retail Client that "
+"will use it. This can be done in the Notification configuration section "
+"of Company and Retail Client edit screen."
+msgstr ""
+"Una vez configurada la notificación para los idiomas deseados, los "
+"administradores de Marca deben asignarlas a las Compañias o Clientes "
+"Retail que las emplearán. Esta asignación se realiza en la sección "
+"Configuración de Notificaciones de las pantallas de edición de Compañía y"
+" Cliente Retail."
+
