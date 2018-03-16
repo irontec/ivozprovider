@@ -1,5 +1,10 @@
 <?php
 
+\Zend_Registry::set(
+    'rates_importer_job',
+    $kernel->getContainer()->get(Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\RatesImporter::class)
+);
+
 // Define path to application directory
 defined('APPLICATION_PATH')
     || define('APPLICATION_PATH', realpath(dirname(__FILE__) . '/../application'));
