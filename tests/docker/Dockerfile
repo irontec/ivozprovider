@@ -27,7 +27,16 @@ RUN apt-get update && apt-get install -y \
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
+# Create jenkins user (configurable)
+ARG UNAME=jenkins
+ARG UID=108
+ARG GID=117
+RUN groupadd -g $GID $UNAME
+RUN useradd -m -u $UID -g $GID -s /bin/bash $UNAME
+RUN chown jenkins.jenkins /opt/
+
 # Base project
+USER $UNAME
 RUN mkdir -p /opt/irontec
 RUN git clone -b bleeding https://github.com/irontec/ivozprovider /opt/irontec/ivozprovider
 
