@@ -15,6 +15,12 @@ services:
       $entityPersister: '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
       $logger: '@logger'
 
+  Worker\Rates:
+    public: true
+    arguments:
+      $em: '@=service("doctrine.orm.entity_manager")'
+      $logger: '@logger'
+
   Worker\Invoices:
     public: true
     arguments:
