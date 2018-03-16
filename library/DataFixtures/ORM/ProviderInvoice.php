@@ -32,8 +32,8 @@ class ProviderInvoice extends Fixture implements DependentFixtureInterface
             $this->getReference('_reference_ProviderInvoiceTemplate1')
         );
         $item1->setNumber('1');
-        $item1->setInDate(new \DateTime('2018-01-01'));
-        $item1->setOutDate(new \DateTime('2018-01-31'));
+        $item1->setInDate(new \DateTime('2018-01-01', new \DateTimeZone('UTC')));
+        $item1->setOutDate(new \DateTime('2018-01-31', new \DateTimeZone('UTC')));
         $item1->setTotal(0.272);
         $item1->setTaxRate(21.0);
         $item1->setTotalWithTax(0.330);

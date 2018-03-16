@@ -73,38 +73,6 @@ interface BrandInterface extends LoggableEntityInterface
     public function getDomainUsers();
 
     /**
-     * Set fromName
-     *
-     * @param string $fromName
-     *
-     * @return self
-     */
-    public function setFromName($fromName = null);
-
-    /**
-     * Get fromName
-     *
-     * @return string
-     */
-    public function getFromName();
-
-    /**
-     * Set fromAddress
-     *
-     * @param string $fromAddress
-     *
-     * @return self
-     */
-    public function setFromAddress($fromAddress = null);
-
-    /**
-     * Get fromAddress
-     *
-     * @return string
-     */
-    public function getFromAddress();
-
-    /**
      * Set recordingsLimitMB
      *
      * @param integer $recordingsLimitMB

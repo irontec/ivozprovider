@@ -37,8 +37,6 @@ Feature: Manage brands
       {
           "name": "DemoBrand",
           "domainUsers": "",
-          "fromName": "",
-          "fromAddress": "",
           "recordingsLimitMB": null,
           "recordingsLimitEmail": "",
           "maxCalls": 0,

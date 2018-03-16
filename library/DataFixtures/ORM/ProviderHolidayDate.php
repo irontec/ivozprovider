@@ -19,10 +19,11 @@ class ProviderHolidayDate extends Fixture implements DependentFixtureInterface
     {
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(HolidayDate::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
-    
+
+        /** @var HolidayDate $item1 */
         $item1 = $this->createEntityInstanceWithPublicMethods(HolidayDate::class);
         $item1->setName("Name");
-        $item1->setEventDate(new \DateTime("2021-12-21 00:00:00"));
+        $item1->setEventDate(new \DateTime("2021-12-21 00:00:00", new \DateTimeZone('UTC')));
         $item1->setCalendar($this->getReference('_reference_ProviderCalendar1'));
         $this->addReference('_reference_ProviderHolidayDateHolidayDate1', $item1);
         $this->sanitizeEntityValues($item1);

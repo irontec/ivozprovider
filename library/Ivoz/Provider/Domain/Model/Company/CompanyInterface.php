@@ -493,6 +493,38 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getOutgoingDdiRule();
 
     /**
+     * Set voicemailNotificationTemplate
+     *
+     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $voicemailNotificationTemplate
+     *
+     * @return self
+     */
+    public function setVoicemailNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $voicemailNotificationTemplate = null);
+
+    /**
+     * Get voicemailNotificationTemplate
+     *
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
+     */
+    public function getVoicemailNotificationTemplate();
+
+    /**
+     * Set faxNotificationTemplate
+     *
+     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $faxNotificationTemplate
+     *
+     * @return self
+     */
+    public function setFaxNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $faxNotificationTemplate = null);
+
+    /**
+     * Get faxNotificationTemplate
+     *
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
+     */
+    public function getFaxNotificationTemplate();
+
+    /**
      * Add extension
      *
      * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension

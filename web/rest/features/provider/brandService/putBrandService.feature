@@ -27,8 +27,6 @@ Feature: Update brand services
           "brand": {
               "name": "Irontec_e2e",
               "domainUsers": "sip.irontec.com",
-              "fromName": null,
-              "fromAddress": null,
               "recordingsLimitMB": null,
               "recordingsLimitEmail": null,
               "maxCalls": 0,

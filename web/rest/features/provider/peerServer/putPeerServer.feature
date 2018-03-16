@@ -37,59 +37,57 @@ Feature: Update peer servers
      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
      And the JSON should be equal to:
     """
-      {
-          "ip": null,
-          "hostname": "127.0.0.1",
-          "port": 5060,
-          "params": "",
-          "uriScheme": true,
-          "transport": true,
-          "strip": null,
-          "prefix": "",
-          "sendPAI": false,
-          "sendRPID": false,
-          "authNeeded": "no",
-          "authUser": null,
-          "authPassword": null,
-          "sipProxy": "127.0.0.1",
-          "outboundProxy": null,
-          "fromUser": "",
-          "fromDomain": "",
-          "id": 1,
-          "peeringContract": {
-              "description": "Artemis-Dev",
-              "name": "Artemis-Dev",
-              "externallyRated": false,
-              "id": 1,
-              "brand": 1,
-              "transformationRuleSet": 1
-          },
-          "brand": {
-              "name": "Irontec_e2e",
-              "domainUsers": "sip.irontec.com",
-              "fromName": null,
-              "fromAddress": null,
-              "recordingsLimitMB": null,
-              "recordingsLimitEmail": null,
-              "maxCalls": 0,
-              "id": 2,
-              "logo": {
-                  "fileSize": null,
-                  "mimeType": null,
-                  "baseName": null
-              },
-              "invoice": {
-                  "nif": "",
-                  "postalAddress": "",
-                  "postalCode": "",
-                  "town": "",
-                  "province": "",
-                  "country": "",
-                  "registryData": ""
-              },
-              "domain": 4,
-              "language": 1,
-              "defaultTimezone": 1
-          }
-      }
+        {
+            "ip": null,
+            "hostname": "127.0.0.1",
+            "port": 5060,
+            "params": "",
+            "uriScheme": true,
+            "transport": true,
+            "strip": null,
+            "prefix": "",
+            "sendPAI": false,
+            "sendRPID": false,
+            "authNeeded": "no",
+            "authUser": null,
+            "authPassword": null,
+            "sipProxy": "127.0.0.1",
+            "outboundProxy": null,
+            "fromUser": "",
+            "fromDomain": "",
+            "id": 1,
+            "peeringContract": {
+                "description": "Artemis-Dev",
+                "name": "Artemis-Dev",
+                "externallyRated": false,
+                "id": 1,
+                "brand": 1,
+                "transformationRuleSet": 1
+            },
+            "brand": {
+                "name": "Irontec_e2e",
+                "domainUsers": "sip.irontec.com",
+                "recordingsLimitMB": null,
+                "recordingsLimitEmail": null,
+                "maxCalls": 0,
+                "id": 2,
+                "logo": {
+                    "fileSize": null,
+                    "mimeType": null,
+                    "baseName": null
+                },
+                "invoice": {
+                    "nif": "",
+                    "postalAddress": "",
+                    "postalCode": "",
+                    "town": "",
+                    "province": "",
+                    "country": "",
+                    "registryData": ""
+                },
+                "domain": 4,
+                "language": 1,
+                "defaultTimezone": 1
+            }
+        }
     """

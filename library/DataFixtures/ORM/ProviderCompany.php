@@ -7,6 +7,7 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 
 class ProviderCompany extends Fixture implements DependentFixtureInterface
 {
@@ -19,7 +20,8 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
     {
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(Company::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
-    
+
+        /** @var CompanyInterface $item1 */
         $item1 = $this->createEntityInstanceWithPublicMethods(Company::class);
         $item1->setName("DemoCompany");
         $item1->setDomainUsers("127.0.0.1");
@@ -42,6 +44,7 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
         $item1->setDomain($this->getReference('_reference_ProviderDomain3'));
         $item1->setCountry($this->getReference('_reference_ProviderCountry70'));
         $item1->setTransformationRuleSet($this->getReference('_reference_ProviderTransformationRuleSet70'));
+        $item1->setVoicemailNotificationTemplate($this->getReference('_reference_ProviderNotificationTemplate1'));
         $this->addReference('_reference_ProviderCompany1', $item1);
 
         $this->sanitizeEntityValues($item1);
@@ -67,6 +70,7 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
         $item2->setDomain($this->getReference('_reference_ProviderDomain5'));
         $item2->setCountry($this->getReference('_reference_ProviderCountry70'));
         $item2->setTransformationRuleSet($this->getReference('_reference_ProviderTransformationRuleSet70'));
+        $item2->setVoicemailNotificationTemplate($this->getReference('_reference_ProviderNotificationTemplate1'));
         $this->addReference('_reference_ProviderCompany2', $item2);
         $this->sanitizeEntityValues($item2);
         $manager->persist($item2);
@@ -91,6 +95,7 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
         $item3->setBrand($this->getReference('_reference_ProviderBrand1'));
         $item3->setCountry($this->getReference('_reference_ProviderCountry70'));
         $item3->setTransformationRuleSet($this->getReference('_reference_ProviderTransformationRuleSet70'));
+        $item3->setVoicemailNotificationTemplate($this->getReference('_reference_ProviderNotificationTemplate1'));
         $this->addReference('_reference_ProviderCompany3', $item3);
         $this->sanitizeEntityValues($item3);
         $manager->persist($item3);
@@ -108,7 +113,8 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
             ProviderBrand::class,
             ProviderDomain::class,
             ProviderCountry::class,
-            ProviderTransformationRuleSet::class
+            ProviderTransformationRuleSet::class,
+            ProviderNotificationTemplate::class
         );
     }
 }

@@ -25,8 +25,6 @@ class ProviderBrand extends Fixture implements DependentFixtureInterface
         $item1 = $this->createEntityInstanceWithPublicMethods(Brand::class);
         $item1->setName("DemoBrand");
         $item1->setDomainUsers("");
-        $item1->setFromName("");
-        $item1->setFromAddress("");
         $item1->setRecordingsLimitEmail("");
         $item1->setLogo(new Logo(null, null, null));
         $item1->setInvoice(new Invoice('', '', '', '', '', '', ''));

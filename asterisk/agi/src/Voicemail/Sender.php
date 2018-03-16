@@ -3,8 +3,10 @@
 namespace Voicemail;
 
 use Assert\Assertion;
+use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\EntityManagerInterface;
 use Ivoz\Ast\Domain\Model\Voicemail\Voicemail;
+use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate;
 use PhpMimeMailParser\Parser;
 use RouteHandlerAbstract;
 
@@ -33,21 +35,6 @@ class Sender extends RouteHandlerAbstract
     protected $mailer;
 
     /**
-     * @var string
-     */
-    protected $fromName;
-
-    /**
-     * @var string
-     */
-    protected $fromAdress;
-
-    /**
-     * @var string
-     */
-    protected $templatesDir;
-
-    /**
      * @var Parser
      */
     protected $parser;
@@ -57,25 +44,16 @@ class Sender extends RouteHandlerAbstract
      * @param EntityManagerInterface $em
      * @param Parser $parser
      * @param \Swift_Mailer $mailer
-     * @param string $templatesDir
-     * @param string $fromName
-     * @param string $fromAdress
      */
     public function __construct(
         EntityManagerInterface $em,
         Parser $parser,
-        \Swift_Mailer $mailer,
-        string $templatesDir,
-        string $fromName,
-        string $fromAdress
+        \Swift_Mailer $mailer
     )
     {
         $this->em = $em;
         $this->parser = $parser;
         $this->mailer = $mailer;
-        $this->templatesDir = $templatesDir;
-        $this->fromName = $fromName;
-        $this->fromAdress = $fromAdress;
     }
 
     /**
@@ -118,19 +96,6 @@ class Sender extends RouteHandlerAbstract
 
         // Assume user has company and brand
         $company = $user->getCompany();
-        $brand = $company->getBrand();
-
-        // Use Brand's configured From name or default
-        $fromName = $brand->getFromName();
-        if (!empty($fromName)) {
-            $this->fromName = $fromName;
-        }
-
-        // Use Brand's configured From address or default
-        $fromAddress = $brand->getFromAddress();
-        if (!empty($fromAddress)) {
-            $this->fromAdress = $fromAddress;
-        }
 
         $substitution = array(
             '${VM_CATEGORY}' => $vmdata[self::VM_CATEGORY],
@@ -145,9 +110,34 @@ class Sender extends RouteHandlerAbstract
             '${VM_DATE}' => $vmdata[self::VM_DATE],
         );
 
-        $templateDir = $this->templatesDir . "/voicemail/default/" . $user->getLanguageCode() . "/";
-        $body = file_get_contents($templateDir . "body");
-        $subject = file_get_contents($templateDir . "subject");
+
+        // Get Company Notification Template for voicemails
+        $vmNotificationTemplate = $company->getVoicemailNotificationTemplate();
+
+        // Get Generic Notification Template for voicemails
+        $notificationTemplateRepository = $this->em->getRepository(NotificationTemplate::class);
+        $genericVoicemailNotificationTemplate = $notificationTemplateRepository->findOneBy([
+            "brand" => null,
+            "type" => "voicemail"
+        ]);
+
+        // If no template is associated, fallback to generic notification template for voicemails
+        if (!$vmNotificationTemplate) {
+            $vmNotificationTemplate = $genericVoicemailNotificationTemplate;
+        }
+
+        // Get Notification contents for required language
+        $notificationTemplateContent = $vmNotificationTemplate->getContentsByLanguage($user->getLanguage());
+        if (!$notificationTemplateContent) {
+            // Fallback to generic template language content
+            $notificationTemplateContent = $genericVoicemailNotificationTemplate->getContentsByLanguage($user->getLanguage());
+        }
+
+        // Get data from template
+        $fromName = $notificationTemplateContent->getFromName();
+        $fromAddress = $notificationTemplateContent->getFromAddress();
+        $body = $notificationTemplateContent->getBody();
+        $subject = $notificationTemplateContent->getSubject();
 
         foreach ($substitution as $search => $replace) {
             $body = str_replace($search, $replace, $body);
@@ -156,9 +146,9 @@ class Sender extends RouteHandlerAbstract
 
         // Create a new mail and attach the PDF file
         $mail = new \Swift_Message();
-        $mail->setBody($body)
+        $mail->setBody($body, 'text/html')
             ->setSubject($subject)
-            ->setFrom($this->fromAdress, $this->fromName)
+            ->setFrom($fromAddress, $fromName)
             ->setTo($vm->getEmail());
 
         /** @var \PhpMimeMailParser\Attachment[] $attachments */

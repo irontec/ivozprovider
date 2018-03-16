@@ -27,8 +27,6 @@ Feature: Update match lists
           "brand": {
               "name": "DemoBrand",
               "domainUsers": "",
-              "fromName": "",
-              "fromAddress": "",
               "recordingsLimitMB": null,
               "recordingsLimitEmail": "",
               "maxCalls": 0,

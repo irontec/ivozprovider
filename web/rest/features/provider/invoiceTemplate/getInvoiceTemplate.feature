@@ -40,8 +40,6 @@ Feature: Retrieve invoice templates
           "brand": {
               "name": "DemoBrand",
               "domainUsers": "",
-              "fromName": "",
-              "fromAddress": "",
               "recordingsLimitMB": null,
               "recordingsLimitEmail": "",
               "maxCalls": 0,

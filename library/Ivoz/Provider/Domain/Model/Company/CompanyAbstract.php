@@ -152,6 +152,16 @@ abstract class CompanyAbstract
      */
     protected $outgoingDdiRule;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
+     */
+    protected $voicemailNotificationTemplate;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
+     */
+    protected $faxNotificationTemplate;
+
 
     use ChangelogTrait;
 
@@ -275,6 +285,8 @@ abstract class CompanyAbstract
             ->setTransformationRuleSet($dto->getTransformationRuleSet())
             ->setOutgoingDdi($dto->getOutgoingDdi())
             ->setOutgoingDdiRule($dto->getOutgoingDdiRule())
+            ->setVoicemailNotificationTemplate($dto->getVoicemailNotificationTemplate())
+            ->setFaxNotificationTemplate($dto->getFaxNotificationTemplate())
         ;
 
         $self->sanitizeValues();
@@ -321,7 +333,9 @@ abstract class CompanyAbstract
             ->setCountry($dto->getCountry())
             ->setTransformationRuleSet($dto->getTransformationRuleSet())
             ->setOutgoingDdi($dto->getOutgoingDdi())
-            ->setOutgoingDdiRule($dto->getOutgoingDdiRule());
+            ->setOutgoingDdiRule($dto->getOutgoingDdiRule())
+            ->setVoicemailNotificationTemplate($dto->getVoicemailNotificationTemplate())
+            ->setFaxNotificationTemplate($dto->getFaxNotificationTemplate());
 
 
 
@@ -362,7 +376,9 @@ abstract class CompanyAbstract
             ->setCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto(self::getCountry(), $depth))
             ->setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet::entityToDto(self::getTransformationRuleSet(), $depth))
             ->setOutgoingDdi(\Ivoz\Provider\Domain\Model\Ddi\Ddi::entityToDto(self::getOutgoingDdi(), $depth))
-            ->setOutgoingDdiRule(\Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule::entityToDto(self::getOutgoingDdiRule(), $depth));
+            ->setOutgoingDdiRule(\Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule::entityToDto(self::getOutgoingDdiRule(), $depth))
+            ->setVoicemailNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate::entityToDto(self::getVoicemailNotificationTemplate(), $depth))
+            ->setFaxNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate::entityToDto(self::getFaxNotificationTemplate(), $depth));
     }
 
     /**
@@ -397,7 +413,9 @@ abstract class CompanyAbstract
             'countryId' => self::getCountry() ? self::getCountry()->getId() : null,
             'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null,
             'outgoingDdiId' => self::getOutgoingDdi() ? self::getOutgoingDdi()->getId() : null,
-            'outgoingDdiRuleId' => self::getOutgoingDdiRule() ? self::getOutgoingDdiRule()->getId() : null
+            'outgoingDdiRuleId' => self::getOutgoingDdiRule() ? self::getOutgoingDdiRule()->getId() : null,
+            'voicemailNotificationTemplateId' => self::getVoicemailNotificationTemplate() ? self::getVoicemailNotificationTemplate()->getId() : null,
+            'faxNotificationTemplateId' => self::getFaxNotificationTemplate() ? self::getFaxNotificationTemplate()->getId() : null
         ];
     }
 
@@ -1122,6 +1140,54 @@ abstract class CompanyAbstract
     public function getOutgoingDdiRule()
     {
         return $this->outgoingDdiRule;
+    }
+
+    /**
+     * Set voicemailNotificationTemplate
+     *
+     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $voicemailNotificationTemplate
+     *
+     * @return self
+     */
+    public function setVoicemailNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $voicemailNotificationTemplate = null)
+    {
+        $this->voicemailNotificationTemplate = $voicemailNotificationTemplate;
+
+        return $this;
+    }
+
+    /**
+     * Get voicemailNotificationTemplate
+     *
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
+     */
+    public function getVoicemailNotificationTemplate()
+    {
+        return $this->voicemailNotificationTemplate;
+    }
+
+    /**
+     * Set faxNotificationTemplate
+     *
+     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $faxNotificationTemplate
+     *
+     * @return self
+     */
+    public function setFaxNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $faxNotificationTemplate = null)
+    {
+        $this->faxNotificationTemplate = $faxNotificationTemplate;
+
+        return $this;
+    }
+
+    /**
+     * Get faxNotificationTemplate
+     *
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
+     */
+    public function getFaxNotificationTemplate()
+    {
+        return $this->faxNotificationTemplate;
     }
 
 

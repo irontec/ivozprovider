@@ -153,6 +153,16 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     private $outgoingDdiRule;
 
     /**
+     * @var \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto | null
+     */
+    private $voicemailNotificationTemplate;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto | null
+     */
+    private $faxNotificationTemplate;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Extension\ExtensionDto[] | null
      */
     private $extensions = null;
@@ -242,7 +252,9 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'countryId' => 'country',
             'transformationRuleSetId' => 'transformationRuleSet',
             'outgoingDdiId' => 'outgoingDdi',
-            'outgoingDdiRuleId' => 'outgoingDdiRule'
+            'outgoingDdiRuleId' => 'outgoingDdiRule',
+            'voicemailNotificationTemplateId' => 'voicemailNotificationTemplate',
+            'faxNotificationTemplateId' => 'faxNotificationTemplate'
         ];
     }
 
@@ -280,6 +292,8 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'transformationRuleSet' => $this->getTransformationRuleSet(),
             'outgoingDdi' => $this->getOutgoingDdi(),
             'outgoingDdiRule' => $this->getOutgoingDdiRule(),
+            'voicemailNotificationTemplate' => $this->getVoicemailNotificationTemplate(),
+            'faxNotificationTemplate' => $this->getFaxNotificationTemplate(),
             'extensions' => $this->getExtensions(),
             'ddis' => $this->getDdis(),
             'friends' => $this->getFriends(),
@@ -307,6 +321,8 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         $this->transformationRuleSet = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\TransformationRuleSet\\TransformationRuleSet', $this->getTransformationRuleSetId());
         $this->outgoingDdi = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Ddi\\Ddi', $this->getOutgoingDdiId());
         $this->outgoingDdiRule = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\OutgoingDdiRule\\OutgoingDdiRule', $this->getOutgoingDdiRuleId());
+        $this->voicemailNotificationTemplate = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\NotificationTemplate\\NotificationTemplate', $this->getVoicemailNotificationTemplateId());
+        $this->faxNotificationTemplate = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\NotificationTemplate\\NotificationTemplate', $this->getFaxNotificationTemplateId());
         if (!is_null($this->extensions)) {
             $items = $this->getExtensions();
             $this->extensions = [];
@@ -1265,6 +1281,98 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     public function getOutgoingDdiRuleId()
     {
         if ($dto = $this->getOutgoingDdiRule()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto $voicemailNotificationTemplate
+     *
+     * @return static
+     */
+    public function setVoicemailNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto $voicemailNotificationTemplate = null)
+    {
+        $this->voicemailNotificationTemplate = $voicemailNotificationTemplate;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto
+     */
+    public function getVoicemailNotificationTemplate()
+    {
+        return $this->voicemailNotificationTemplate;
+    }
+
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setVoicemailNotificationTemplateId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto($id)
+            : null;
+
+        return $this->setVoicemailNotificationTemplate($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getVoicemailNotificationTemplateId()
+    {
+        if ($dto = $this->getVoicemailNotificationTemplate()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto $faxNotificationTemplate
+     *
+     * @return static
+     */
+    public function setFaxNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto $faxNotificationTemplate = null)
+    {
+        $this->faxNotificationTemplate = $faxNotificationTemplate;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto
+     */
+    public function getFaxNotificationTemplate()
+    {
+        return $this->faxNotificationTemplate;
+    }
+
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setFaxNotificationTemplateId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateDto($id)
+            : null;
+
+        return $this->setFaxNotificationTemplate($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getFaxNotificationTemplateId()
+    {
+        if ($dto = $this->getFaxNotificationTemplate()) {
             return $dto->getId();
         }
 

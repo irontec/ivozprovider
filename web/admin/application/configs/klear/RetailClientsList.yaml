@@ -239,6 +239,13 @@ production:
           label: _("Externally rated options")
           fields:
             externallyExtraOpts: 1
+        group7:
+          colsPerRow: 2
+          collapsed: true
+          label: _("Notification options")
+          fields:
+            voicemailNotificationTemplateId: 1
+            faxNotificationTemplateId: 1
       class: ui-silk-pencil
       label: false
       title: _("Edit %s %2s", ngettext('Retail Client', 'Retail Clients', 1), "[format| (%item%)]")

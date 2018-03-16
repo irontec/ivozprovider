@@ -1,0 +1,20 @@
+Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\NotificationTemplateDoctrineRepository
+  type: entity
+  table: NotificationTemplates
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  lifecycleCallbacks:
+      postLoad:
+        - initChangelog
+  oneToMany:
+    contents:
+      targetEntity: Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContentInterface
+      mappedBy: notificationTemplate

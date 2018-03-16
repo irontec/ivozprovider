@@ -23,16 +23,6 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     private $domainUsers;
 
     /**
-     * @var string
-     */
-    private $fromName;
-
-    /**
-     * @var string
-     */
-    private $fromAddress;
-
-    /**
      * @var integer
      */
     private $recordingsLimitMB;
@@ -177,8 +167,6 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return [
             'name' => 'name',
             'domainUsers' => 'domainUsers',
-            'fromName' => 'fromName',
-            'fromAddress' => 'fromAddress',
             'recordingsLimitMB' => 'recordingsLimitMB',
             'recordingsLimitEmail' => 'recordingsLimitEmail',
             'maxCalls' => 'maxCalls',
@@ -199,8 +187,6 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return [
             'name' => $this->getName(),
             'domainUsers' => $this->getDomainUsers(),
-            'fromName' => $this->getFromName(),
-            'fromAddress' => $this->getFromAddress(),
             'recordingsLimitMB' => $this->getRecordingsLimitMB(),
             'recordingsLimitEmail' => $this->getRecordingsLimitEmail(),
             'maxCalls' => $this->getMaxCalls(),
@@ -408,46 +394,6 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     public function getDomainUsers()
     {
         return $this->domainUsers;
-    }
-
-    /**
-     * @param string $fromName
-     *
-     * @return static
-     */
-    public function setFromName($fromName = null)
-    {
-        $this->fromName = $fromName;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getFromName()
-    {
-        return $this->fromName;
-    }
-
-    /**
-     * @param string $fromAddress
-     *
-     * @return static
-     */
-    public function setFromAddress($fromAddress = null)
-    {
-        $this->fromAddress = $fromAddress;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getFromAddress()
-    {
-        return $this->fromAddress;
     }
 
     /**

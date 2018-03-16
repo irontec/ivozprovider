@@ -73,8 +73,6 @@ Feature: Create retail accounts
           "brand": {
               "name": "DemoBrand",
               "domainUsers": "",
-              "fromName": "",
-              "fromAddress": "",
               "recordingsLimitMB": null,
               "recordingsLimitEmail": "",
               "maxCalls": 0,
@@ -125,7 +123,9 @@ Feature: Create retail accounts
               "country": 1,
               "transformationRuleSet": 1,
               "outgoingDdi": null,
-              "outgoingDdiRule": null
+              "outgoingDdiRule": null,
+              "voicemailNotificationTemplate": 1,
+              "faxNotificationTemplate": null
           },
           "transformationRuleSet": null,
           "outgoingDdi": null,

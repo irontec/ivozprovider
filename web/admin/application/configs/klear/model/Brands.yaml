@@ -148,27 +148,6 @@ production:
             template: '%name${lang}%'
           order:
             Language.name.${lang}: asc
-    fromName:
-      title: _('From name')
-      trim: both
-      maxLength: 255
-      info:
-        type: box
-        position: left
-        icon: help
-        text: _("Name shown as source when sending mails (e.g. IvozProvider Notifications). Leave empty to disable.")
-        label: _("Need help?")
-    fromAddress:
-      title: _('From address')
-      type: text
-      trim: both
-      maxLength: 255
-      info:
-        type: box
-        position: left
-        icon: help
-        text: _("Mail address shown as source when sending mails. MTA must allow this value.")
-        label: _("Need help?")
     recordingsLimitMB:
       title: _("Max disk usage (in MB)")
       type: number

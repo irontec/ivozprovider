@@ -121,6 +121,10 @@ doctrine:
         Ivoz\Provider\Domain\Model\Musiconhold\Musiconhold
       Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface:
         Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHold
+      Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface:
+        Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate
+      Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContentInterface:
+        Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContent
       Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface:
         Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule
       Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPatternInterface:

@@ -13,8 +13,6 @@ Feature: Manage brands
       {
         "name": "api_brand",
         "domainUsers": "sip-api.irontec.com",
-        "fromName": "IvozProvider Notifications",
-        "fromAddress": "test-notifications@irontec.com",
         "recordingsLimitMB": 10,
         "recordingsLimitEmail": "mikel@irontec.com",
         "invoice": {
@@ -51,8 +49,6 @@ Feature: Manage brands
       {
           "name": "api_brand",
           "domainUsers": "sip-api.irontec.com",
-          "fromName": "IvozProvider Notifications",
-          "fromAddress": "test-notifications@irontec.com",
           "recordingsLimitMB": 10,
           "recordingsLimitEmail": "mikel@irontec.com",
           "maxCalls": 0,
