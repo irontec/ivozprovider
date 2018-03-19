@@ -11,9 +11,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#, fuzzy, php-format
+#, php-format
 msgid "%s emulated"
-msgstr "Template"
+msgstr "%s emulated"
 
 #, python-format
 msgid "%s successfully deleted."
@@ -39,7 +39,7 @@ msgid "ACL data"
 msgstr "ACL data"
 
 msgid "Accept"
-msgstr ""
+msgstr "Accept"
 
 msgid "Access denied"
 msgstr "Access denied"
@@ -48,7 +48,7 @@ msgid "Action"
 msgstr "Action"
 
 msgid "Action Configuration"
-msgstr "Action configuration"
+msgstr "Action Configuration"
 
 msgid "Activation time"
 msgstr "Activation time"
@@ -118,10 +118,10 @@ msgid "Allowed video codecs"
 msgstr "Allowed video codecs"
 
 msgid "An error occurred"
-msgstr ""
+msgstr "An error occurred"
 
 msgid "An error occurred: check files format and content."
-msgstr ""
+msgstr "An error occurred: check files format and content."
 
 msgid "Announce"
 msgstr "Announce"
@@ -139,13 +139,12 @@ msgstr[1] "Application Servers"
 msgid "Apply to all companies"
 msgstr "Apply to all companies"
 
-#, fuzzy, php-format
+#, php-format
 msgid "Are you sure that you want to emulate the %s \"%2s\"?"
-msgstr "Do you want to delete this %s?"
+msgstr "Are you sure that you want to emulate the %s \"%2s\"?"
 
-#, fuzzy
 msgid "Are you sure you want to generate the invoice?"
-msgstr "Do you want to delete this %s?"
+msgstr "Are you sure you want to generate the invoice?"
 
 msgid "Area code"
 msgstr "Area code"
@@ -206,7 +205,7 @@ msgid "Black Lists"
 msgstr "Black Lists"
 
 msgid "Body"
-msgstr ""
+msgstr "Body"
 
 msgid "Boss Whitelist"
 msgstr "Boss Whitelist"
@@ -336,10 +335,7 @@ msgid "Calls from non-granted IPs"
 msgstr "Calls from non-granted IPs"
 
 msgid "Cancel"
-msgstr ""
-
-msgid "Cancelar"
-msgstr ""
+msgstr "Cancel"
 
 msgid "Cannot invoice calls from today in the future."
 msgstr "Cannot invoice calls from today in the future."
@@ -350,9 +346,8 @@ msgstr "Charge period"
 msgid "Client's default"
 msgstr "Client's default"
 
-#, fuzzy
 msgid "Close"
-msgstr "Closed"
+msgstr "Close"
 
 msgid "Close extension"
 msgstr "Close extension"
@@ -426,7 +421,7 @@ msgid "Contents configuration"
 msgstr "Contents configuration"
 
 msgid "Continue"
-msgstr ""
+msgstr "Continue"
 
 msgid "Control Panel"
 msgstr "Control Panel"
@@ -543,9 +538,8 @@ msgid_plural "Domains"
 msgstr[0] "Domain"
 msgstr[1] "Domains"
 
-#, fuzzy
 msgid "Download"
-msgstr "Download file"
+msgstr "Download"
 
 msgid "Download file"
 msgstr "Download file"
@@ -585,9 +579,9 @@ msgstr ""
 msgid "Email already in use"
 msgstr "Email already in use"
 
-#, fuzzy, php-format
+#, php-format
 msgid "Emulate %s"
-msgstr "Emulate Brand %s"
+msgstr "Emulate %s"
 
 #, python-format
 msgid "Emulate Brand %s"
@@ -614,11 +608,7 @@ msgid "End time"
 msgstr "End time"
 
 msgid "Ensure the preview below is right before you proceed"
-msgstr ""
-
-#, fuzzy
-msgid "Enter"
-msgstr "Internal"
+msgstr "Ensure the preview below is right before you proceed"
 
 msgid "Enter number patterns in E.164 format."
 msgstr "Enter number patterns in E.164 format."
@@ -656,7 +646,7 @@ msgstr[0] "Excluded Extension"
 msgstr[1] "Excluded Extensions"
 
 msgid "Exec"
-msgstr ""
+msgstr "Exec"
 
 msgid "Expire"
 msgstr "Expire"
@@ -714,7 +704,7 @@ msgstr[0] "Fax Notification"
 msgstr[1] "Fax Notifications"
 
 msgid "Fax resent"
-msgstr ""
+msgstr "Fax resent"
 
 msgid "Faxfile"
 msgid_plural "Faxfiles"
@@ -728,11 +718,10 @@ msgid "Fewest calls"
 msgstr "Fewest Calls"
 
 msgid "Fields with * are required"
-msgstr ""
+msgstr "Fields with * are required"
 
-#, fuzzy
 msgid "File"
-msgstr "PDF File"
+msgstr "File"
 
 msgid "File for play"
 msgid_plural "Files for play"
@@ -740,7 +729,7 @@ msgstr[0] "File for play"
 msgstr[1] "Files for play"
 
 msgid "File imported"
-msgstr ""
+msgstr "File imported"
 
 msgid "Filter by IP address"
 msgstr "Filter by IP address"
@@ -760,7 +749,7 @@ msgid "Flag"
 msgstr "Flag"
 
 msgid "For instance:"
-msgstr ""
+msgstr "For instance:"
 
 msgid "Force DDI"
 msgstr "Force DDI"
@@ -827,9 +816,8 @@ msgstr "Generate %s"
 msgid "Generate Transformation Rules automatically"
 msgstr "Generate Transformation Rules automatically"
 
-#, fuzzy
 msgid "Generate invoice"
-msgstr "Generate %s"
+msgstr "Generate invoice"
 
 msgid "Generic Match List"
 msgid_plural "Generic Match Lists"
@@ -867,9 +855,8 @@ msgid_plural "Holiday dates"
 msgstr[0] "Holiday date"
 msgstr[1] "Holiday dates"
 
-#, fuzzy
 msgid "Holiday importer system"
-msgstr "Holiday target type"
+msgstr "Holiday importer system"
 
 msgid "Holiday locution"
 msgstr "Holiday locution"
@@ -934,20 +921,21 @@ msgstr ""
 "If you want a prefix, use only digits. Otherwise, define your regular "
 "expresion."
 
+msgid "Ignore"
+msgstr "Ignore"
+
 msgid "Ignore first line."
-msgstr ""
+msgstr "Ignore first line."
 
 #, python-format
 msgid "Import %s"
 msgstr "Import %s"
 
-#, fuzzy
 msgid "Import file"
-msgstr "Import %s"
+msgstr "Import file"
 
-#, fuzzy
-msgid "Import system"
-msgstr "Import %s"
+msgid "Import process enqueued"
+msgstr "Import process enqueued"
 
 msgid "In"
 msgstr "In"
@@ -1013,22 +1001,22 @@ msgid "Invoice data"
 msgstr "Invoice data"
 
 msgid "Invoice has been enqueued. It will be generated as soon as posible."
-msgstr ""
+msgstr "Invoice has been enqueued. It will be generated as soon as posible."
 
 msgid "Invoice template"
 msgid_plural "Invoice templates"
 msgstr[0] "Invoice template"
 msgstr[1] "Invoice templates"
 
-#, fuzzy
 msgid "Invoice template tester"
-msgstr "Invoice template"
+msgstr "Invoice template tester"
 
 msgid "Invoice(s) enqueued"
-msgstr ""
+msgstr "Invoice(s) enqueued"
 
 msgid "Invoices have been enqueued. They will be generated as soon as posible."
 msgstr ""
+"Invoices have been enqueued. They will be generated as soon as posible."
 
 msgid "Ip addr"
 msgstr "IP address"
@@ -1110,9 +1098,8 @@ msgstr "Listen to MoH"
 msgid "Load file"
 msgstr "Load file"
 
-#, fuzzy
 msgid "Loading"
-msgstr "encoding"
+msgstr "Loading"
 
 msgid ""
 "Local legislation may enforce to announce the call recording to both "
@@ -1379,9 +1366,6 @@ msgstr[1] "Numeric transformations"
 msgid "Numeric value"
 msgstr "Numeric value"
 
-msgid "Ok"
-msgstr ""
-
 msgid "On-demand"
 msgstr "On-demand"
 
@@ -1477,7 +1461,7 @@ msgid "Page"
 msgstr "Page"
 
 msgid "Parse file and import"
-msgstr ""
+msgstr "Parse file and import"
 
 msgid "Parsed"
 msgstr "Parsed"
@@ -1723,17 +1707,16 @@ msgid "Replace expr"
 msgstr "Replace expr"
 
 msgid "Resend"
-msgstr ""
+msgstr "Resend"
 
 msgid "Resend fax"
-msgstr ""
+msgstr "Resend fax"
 
 msgid "Resend to"
-msgstr ""
+msgstr "Resend to"
 
-#, fuzzy
 msgid "Restore backup"
-msgstr "Restore last backup"
+msgstr "Restore backup"
 
 msgid "Restore default template"
 msgstr "Restore default template"
@@ -1784,16 +1767,10 @@ msgid_plural "Routing pattern groups"
 msgstr[0] "Routing pattern group"
 msgstr[1] "Routing pattern groups"
 
-msgid "Routing pattern group id"
-msgstr "Routing pattern group"
-
 msgid "Routing pattern groups rel pattern"
 msgid_plural "Routing pattern groups rel patterns"
 msgstr[0] "Routing pattern groups rel pattern"
 msgstr[1] "Routing pattern groups rel patterns"
-
-msgid "Routing pattern id"
-msgstr "Routing pattern"
 
 msgid ""
 "Rules to manipulate outgoingDDI when user directly calls to external numbers."
@@ -1840,11 +1817,10 @@ msgid "Security"
 msgstr "Security"
 
 msgid "Select Brand"
-msgstr ""
+msgstr "Select Brand"
 
-#, fuzzy
 msgid "Select Company"
-msgstr "Company"
+msgstr "Select Company"
 
 msgid "Select destination group"
 msgstr "Select destination group"
@@ -1853,13 +1829,13 @@ msgid "Select destination pattern"
 msgstr "Select destination pattern"
 
 msgid "Select file to import"
-msgstr ""
+msgstr "Select file to import"
 
 msgid "Select the brand you want to emulate."
-msgstr ""
+msgstr "Select the brand you want to emulate."
 
 msgid "Select the company you want to emulate"
-msgstr ""
+msgstr "Select the company you want to emulate"
 
 msgid "Send PAI"
 msgstr "Send PAI"
@@ -1885,16 +1861,14 @@ msgid_plural "Services"
 msgstr[0] "Service"
 msgstr[1] "Services"
 
-#, fuzzy
 msgid "Service Information"
-msgstr "Basic Information"
+msgstr "Service Information"
 
 msgid "Service has extra arguments"
 msgstr "Service has extra arguments"
 
-#, fuzzy
 msgid "Set column configuration and continue."
-msgstr "Outbound configuration"
+msgstr "Set column configuration and continue."
 
 msgid "Setid"
 msgstr "Setid"
@@ -1924,10 +1898,10 @@ msgid "Strategy"
 msgstr "Strategy"
 
 msgid "Subject"
-msgstr ""
+msgstr "Subject"
 
 msgid "Substitution variables"
-msgstr ""
+msgstr "Substitution variables"
 
 msgid "Success locution"
 msgstr "Success locution"
@@ -1995,10 +1969,10 @@ msgstr[0] "Terminal model"
 msgstr[1] "Terminal models"
 
 msgid "Test the code"
-msgstr ""
+msgstr "Test the code"
 
 msgid "The terminal model must be saved before you can test the code"
-msgstr ""
+msgstr "The terminal model must be saved before you can test the code"
 
 msgid "Theme"
 msgid_plural "Themes"
@@ -2111,7 +2085,6 @@ msgstr "Timeout time"
 msgid "Timezone"
 msgstr "Timezone"
 
-#, fuzzy
 msgid "Timing"
 msgid_plural "Timing"
 msgstr[0] "Timing"
@@ -2177,9 +2150,8 @@ msgstr "Unassigned"
 msgid "Update CallerID?"
 msgstr "Update CallerID?"
 
-#, fuzzy
 msgid "Update values."
-msgstr "Update CallerID?"
+msgstr "Update values."
 
 msgid "Upload file"
 msgstr "Upload file"
@@ -2312,7 +2284,7 @@ msgid "Yes"
 msgstr "Yes"
 
 msgid "Yes, continue!"
-msgstr ""
+msgstr "Yes, continue!"
 
 msgid ""
 "You can call this extension from any company terminal to close this lock"
@@ -2355,13 +2327,13 @@ msgid "You can't create a pricing plan that starts in de past"
 msgstr "You can't create a pricing plan that starts in de past"
 
 msgid "You have to emulate a brand to be able to emulate a company"
-msgstr ""
+msgstr "You have to emulate a brand to be able to emulate a company"
 
 msgid "allow"
 msgstr "allow"
 
 msgid "but following errors ocurred"
-msgstr ""
+msgstr "but following errors ocurred"
 
 msgid "deny"
 msgstr "deny"
@@ -2379,13 +2351,13 @@ msgid "error"
 msgstr "error"
 
 msgid "ignore"
-msgstr ""
+msgstr "ignore"
 
 msgid "is a required field"
-msgstr ""
+msgstr "is a required field"
 
 msgid "oversized"
-msgstr ""
+msgstr "oversized"
 
 msgid "pending"
 msgstr "Pending"
@@ -2394,12 +2366,7 @@ msgid "ready"
 msgstr "ready"
 
 msgid "shared"
-msgstr ""
+msgstr "shared"
 
 msgid "unlimited"
-msgstr ""
-
-#~ msgid "Notificaction template"
-#~ msgid_plural "Notificaction templates"
-#~ msgstr[0] "Notificaction template"
-#~ msgstr[1] "Notificaction templates"
+msgstr "unlimited"
