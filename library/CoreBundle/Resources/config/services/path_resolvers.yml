@@ -63,7 +63,7 @@ services:
   Service\StoragePathResolverCollection::FaxesInOut:
      class: Ivoz\Core\Application\Service\StoragePathResolverCollection
      calls:
-      - [addPathResolver, ['File', '@Service\CommonStoragePathResolver::FaxesInOutFile']]
+      - [addPathResolver, ['file', '@Service\CommonStoragePathResolver::FaxesInOutFile']]
      public: true
 
   Service\CommonStoragePathResolver::FaxesInOutFile:

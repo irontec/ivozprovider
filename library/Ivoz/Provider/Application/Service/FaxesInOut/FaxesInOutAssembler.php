@@ -10,7 +10,6 @@ use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutInterface;
 use Assert\Assertion;
 use Ivoz\Core\Application\Service\Traits\FileContainerEntityAssemblerTrait;
 
-
 class FaxesInOutAssembler implements CustomEntityAssemblerInterface
 {
     use FileContainerEntityAssemblerTrait;

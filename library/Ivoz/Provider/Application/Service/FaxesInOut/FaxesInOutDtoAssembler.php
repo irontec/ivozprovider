@@ -39,12 +39,12 @@ class FaxesInOutDtoAssembler implements CustomDtoAssemblerInterface
             return $dto;
         }
 
-        if ($entity->getLogo()->getFileSize()) {
+        if ($entity->getFile()->getFileSize()) {
             $pathResolver = $this
                 ->storagePathResolver
                 ->getPathResolver('file');
 
-            $dto->setLogoPath(
+            $dto->setFilePath(
                 $pathResolver->getFilePath($entity)
             );
         }
