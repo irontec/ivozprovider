@@ -26,23 +26,33 @@ class KlearCustomRestoreDefaultController extends Zend_Controller_Action
         $this->restoreDefault('specific');
     }
 
-    private function restoreDefault($file){
-        $tmMapper = new \IvozProvider\Mapper\Sql\TerminalModels();
+    private function restoreDefault($file)
+    {
+        $dataGateway = Zend_Registry::get('data_gateway');
         $id = $this->_mainRouter->getParam('pk');
-        $terminalModel = $tmMapper->find($id);
+
+        /** @var \Ivoz\Provider\Domain\Model\TerminalModel\TerminalModel $terminalModel */
+        $terminalModel = $dataGateway->find(
+            \Ivoz\Provider\Domain\Model\TerminalModel\TerminalModel::class,
+            $id
+        );
+
         $iden = $terminalModel->getIden();
-        $filename = "/opt/irontec/ivozprovider/portals/templates/provisioning/$iden/$file.cfg";
+        $filename = "/opt/irontec/ivozprovider/web/admin/templates/provisioning/$iden/$file.cfg";
 
         if ($this->getRequest()->getParam("backup")) {
             $this->_helper->viewRenderer->setNoRender(true);
             $file = fopen($filename, "r");
             $filecontent = fread($file, filesize($filename));
             $data = array(
-                    'title' => _("Restore default template"),
-                    'message'=>_("Loading") . "<textarea style=\"display: none\">" . str_replace("<br/>", "\n", $filecontent) . "</textarea>"),
+                'title' => _("Restore default template"),
+                'message' =>
+                    _("Loading")
+                    . "<textarea style=\"display: none\">"
+                    . str_replace("<br/>", "\n", $filecontent)
+                    . "</textarea>"
             );
-        }
-        else{
+        } else {
             $existsBackup = file_exists($filename);
             if($existsBackup){
                 $message = "Reset default template? ($filename)";

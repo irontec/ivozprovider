@@ -7,6 +7,9 @@ class KlearCustomRunCodeController extends Zend_Controller_Action
 
     protected $_logger;
 
+    /** @var  \Ivoz\Core\Application\Service\DataGateway */
+    protected $dataGateway;
+
     public function init()
     {
         if ((!$this->_mainRouter = $this->getRequest()->getUserParam("mainRouter")) || (!is_object($this->_mainRouter)) ) {
@@ -19,6 +22,8 @@ class KlearCustomRunCodeController extends Zend_Controller_Action
         ->initContext('json');
 
         $this->_helper->layout->disableLayout();
+
+        $this->dataGateway = Zend_Registry::get('data_gateway');
 
         $this->_template = APPLICATION_PATH."/bin/template.php";
     }
@@ -34,20 +39,45 @@ class KlearCustomRunCodeController extends Zend_Controller_Action
         $inputMac = '<br/> Mac:<input type="text" name="mac" />';
         if ($this->getParam("exec")) {
             if($this->getParam("mac")){
-                $terminalMapper = new IvozProvider\Mapper\Sql\Terminals();
-                $terminalModel = $terminalMapper->findOneByField('mac', $this->getParam("mac"));
+
+                $terminalModel = $this->dataGateway->findOneBy(
+                    \Ivoz\Provider\Domain\Model\Terminal\Terminal::class,
+                    [
+                        'Terminal.mac = :mac',
+                        ['mac' => $this->getParam("mac")]
+                    ]
+                );
                 if($terminalModel){
                     $this->view->terminal = $terminalModel;
 
-                    $userMapper = new \IvozProvider\Mapper\Sql\Users();
-                    $userModel = $userMapper->findOneByField('terminalId', $terminalModel->getId() );
+                    $userModel = $this->dataGateway->findOneBy(
+                        \Ivoz\Provider\Domain\Model\User\User::class,
+                        ["User.terminal = '" . $terminalModel->getId() . "'"]
+                    );
                     $this->view->user = $userModel;
 
-                    $companyModel = $terminalModel->getCompany();
+                    /** @var \Ivoz\Provider\Domain\Model\Language\LanguageDto $language */
+                    $language = $this->dataGateway->remoteProcedureCall(
+                        \Ivoz\Provider\Domain\Model\User\User::class,
+                        $userModel->getId(),
+                        'getLanguage',
+                        []
+                    );
+                    $this->view->language = $language->toDto();
+
+
+                    $companyModel = $this->dataGateway->findOneBy(
+                        \Ivoz\Provider\Domain\Model\Company\Company::class,
+                        ["Company.id = '" . $terminalModel->getCompanyId() . "'"]
+                    );
                     $this->view->company = $companyModel;
 
-                    $brandModel = $companyModel->getBrand();
+                    $brandModel = $this->dataGateway->findOneBy(
+                        \Ivoz\Provider\Domain\Model\Brand\Brand::class,
+                        ["Brand.id = '" . $companyModel->getBrandId() . "'"]
+                    );
                     $this->view->brand = $brandModel;
+
                 } else {
                     $error = "Mac does not exist";
                 }
@@ -66,8 +96,10 @@ class KlearCustomRunCodeController extends Zend_Controller_Action
         $id = $this->_mainRouter->getParam('pk', false);
 
         if ($id) {
-            $terminalModelsMapper = new \IvozProvider\Mapper\Sql\TerminalModels();
-            $terminalModelsModel = $terminalModelsMapper->find($id);
+            $terminalModelsModel = $this->dataGateway->find(
+                \Ivoz\Provider\Domain\Model\TerminalModel\TerminalModel::class,
+                $id
+            );
 
             if (($this->getParam("exec")) && !$error) {
                 $path = $this->_getFilePath();
