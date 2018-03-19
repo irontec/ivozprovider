@@ -131,7 +131,7 @@ class Provision_IndexController extends Zend_Controller_Action
         $this->render($template, 'page', true);
 
         if (!is_null($terminal)) {
-            $now = new \DateTime(null, new DateTimeZone('UTC'));
+            $now = new \DateTime(null, new \DateTimeZone('UTC'));
             $terminal->setLastProvisionDate($now->format('Y-m-d H:i:s'));
             $this->dataGateway->update(
                 \Ivoz\Provider\Domain\Model\Terminal\Terminal::class,

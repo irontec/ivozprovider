@@ -65,6 +65,11 @@ class KlearCustomRunCodeController extends Zend_Controller_Action
                     );
                     $this->view->language = $language->toDto();
 
+                    /**
+                     * For backward compatibility reasons
+                     * @deprecated this will be remove in ivozprovider 3.0
+                     */
+                    $this->view->user->setLanguage($this->view->language);
 
                     $companyModel = $this->dataGateway->findOneBy(
                         \Ivoz\Provider\Domain\Model\Company\Company::class,

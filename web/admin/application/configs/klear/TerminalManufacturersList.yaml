@@ -51,7 +51,7 @@ production:
     <<: *terminalModels_screensLink
     terminalModelsList_screen:
       <<: *terminalModelsList_screenLink
-      filterField: terminalManufacturerId
+      filterField: terminalManufacturer
       parentOptionCustomizer:
         - recordCount
     terminalModelsNew_screen:
