@@ -199,7 +199,7 @@ class ImportCustomFileController extends Zend_Controller_Action
     ';
 
         $help = '<div class="parseHelp">';
-        $help.= '<p>'.$this->_helper->translate("Import system").". ".$this->_helper->translate("Set column configuration and continue.").'</p>';
+        $help.= '<p>'.$this->_helper->translate("Import file").". ".$this->_helper->translate("Set column configuration and continue.").'</p>';
         $help.= '<p>'.$this->_helper->translate("Fields with * are required").'.</p><br/>';
         $help.= '<ul>';
 

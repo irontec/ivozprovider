@@ -12,7 +12,7 @@ class GenericForm extends AbstractFormBuilder
         $form = $this->_styles;
 
         $help = '<div class="parseHelp">';
-        $help.= '<p>'.$this->_translator->translate("Import system").";
+        $help.= '<p>'.$this->_translator->translate("Import file").";
         $help.= ".$this->_translator->translate("Set column configuration and continue.").'</p>';
         $help.= '<p>'.$this->_translator->translate("Fields with * are required").'.</p><br/>';
         $help.= '<ul style="max-height: 150px; overflow-y: auto;">';

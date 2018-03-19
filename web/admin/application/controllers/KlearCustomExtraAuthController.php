@@ -113,7 +113,7 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
             $html .= '</div>';
         }
 
-        $html .= '<p class="submit"><input type="submit" value="'.$this->view->translate('Enter').'" /></p>';
+        $html .= '<p class="submit"><input type="submit" value="'.$this->view->translate('Continue').'" /></p>';
         $html .= '</form>';
         $this->view->responseType = 'simple';
         $this->view->data = array(
@@ -238,7 +238,7 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
                 "message" => $message,
                 "options" => array('width'=>'300px'),
                 "buttons" => array(
-                        _("Ok") => array(
+                        _("Accept") => array(
                                 "recall" => true,
                                 "reloadParent" => false,
                                 "params" => array(
@@ -268,7 +268,7 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
                 "message" => $message,
                 "options" => array('width'=>'300px'),
                 "buttons" => array(
-//                         _("Ok") => array(
+//                         _("Accept") => array(
 //                                 "recall" => false,
 //                                 "reloadParent" => true
 //                         )

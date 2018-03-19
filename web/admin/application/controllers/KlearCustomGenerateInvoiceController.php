@@ -49,7 +49,7 @@ class KlearCustomGenerateInvoiceController extends Zend_Controller_Action
     {
         $title = $this->_helper->translate("Generate invoice");
         $message = $this->_helper->translate("Are you sure you want to generate the invoice?");
-        $okButton = $this->_helper->translate("Ok");
+        $okButton = $this->_helper->translate("Accept");
         $closeButton = $this->_helper->translate("Close");
 
         $data = array(
