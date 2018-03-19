@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include conf.d/importPricesHelp.yaml
 #include TpDestinationRatesList.yaml
 
 production:
@@ -35,6 +36,20 @@ production:
           destinationRatesNew_screen: true
         dialogs:
           destinationRatesDel_dialog: true
+          importDestinationRates_dialog: true
+      csv:
+        active: false
+        filename: "Prices"
+        headers: true
+        enclosure: '"'
+        separator: ";"
+        nameklear: false
+        rawValues: true
+        ignoreBlackList: true
+        newLine: "\r\n"
+        encoding: "utf-8"
+        executionSeconds: ""
+      <<: *importPricesHelp
 
     destinationRatesNew_screen: &destinationRatesNew_screenLink
       <<: *DestinationRates
@@ -91,8 +106,34 @@ production:
       multiItem: 1
       labelOnList: 1
 
+    importDestinationRates_dialog:
+      <<: *DestinationRates
+      module: default
+      title: _("Import %s", ngettext('Destination rate', 'Destination rates', 0))
+      label: false
+      labelOnEdit: true
+      labelOnList: true
+      labelOnOption: true
+      labelOnEntityPostSave: true
+      controller: import-custom-file
+      action: import
+      class:  ui-silk-page-gear
+      freeUploadCommand: importDestinationRatesFreeUpload_command
+      delimiter: ","
+      enclosure: '"'
+      escape: "\\"
+      forcedValues:
+        brandId: ${auth.brandId}
+
+
     # tpDestinationRates dialogs:
     <<: *tpDestinationRates_dialogsLink
+
+  commands: &destinationRates_commandsLink
+    importDestinationRatesFreeUpload_command:
+      <<: *DestinationRates
+      controller: File
+      action: free-upload
 
 staging:
   _extends: production

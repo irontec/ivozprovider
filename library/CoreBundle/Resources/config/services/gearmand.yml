@@ -14,6 +14,12 @@ services:
       $manager: '@Ivoz\Core\Infrastructure\Domain\Service\Gearman\Manager'
       $settings: '%gearmand%'
 
+  Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\RatesImporter:
+    arguments:
+      $manager: '@Ivoz\Core\Infrastructure\Domain\Service\Gearman\Manager'
+      $settings: '%gearmand%'
+    public: true
+
   Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Recoder:
     arguments:
       $manager: '@Ivoz\Core\Infrastructure\Domain\Service\Gearman\Manager'
