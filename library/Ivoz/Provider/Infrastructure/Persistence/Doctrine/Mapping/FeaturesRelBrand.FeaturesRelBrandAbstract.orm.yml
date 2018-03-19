@@ -1,5 +1,10 @@
 Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrandAbstract:
   type: mappedSuperclass
+  uniqueConstraints:
+    featureRelBrand_feature_brand:
+      columns:
+        - featureId
+        - brandId
   manyToOne:
     brand:
       targetEntity: \Ivoz\Provider\Domain\Model\Brand\BrandInterface
