@@ -1,8 +1,16 @@
 <?php
 
 \Zend_Registry::set(
+    'data_gateway',
+    $kernel->getContainer()->get(\Ivoz\Core\Application\Service\DataGateway::class)
+);
+\Zend_Registry::set(
     'rates_importer_job',
     $kernel->getContainer()->get(Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\RatesImporter::class)
+);
+\Zend_Registry::set(
+    'logger',
+    $kernel->getContainer()->get('monolog.logger.provisioning')
 );
 
 // Define path to application directory
