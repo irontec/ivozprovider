@@ -2,17 +2,22 @@
 
 class Provision_IndexController extends Zend_Controller_Action
 {
+    /**
+     * @var \Psr\Log\LoggerInterface
+     */
     public $logger;
+
+    /**
+     * @var \Ivoz\Core\Application\Service\DataGateway
+     */
+    public $dataGateway;
 
     public function init()
     {
-        /* Initialize action controller here */
-        $bootstrap = $this->_invokeArgs['bootstrap'];
-
-        $this->logger = $bootstrap->getResource('log');
+        $this->logger = Zend_Registry::get('logger');
+        $this->dataGateway = Zend_Registry::get('data_gateway');
 
         $this->_logRequest();
-
     }
 
     public function indexAction()
@@ -28,8 +33,7 @@ class Provision_IndexController extends Zend_Controller_Action
         }
         $terminalUrl = $this->getRequest()->getParam('requested_url');
         $path = $this->_getFilePath();
-        $terminalModelMapper = new \IvozProvider\Mapper\Sql\TerminalModels();
-        $terminalModel = $this->_searchGenericPattern($terminalModelMapper, $terminalUrl);
+        $terminalModel = $this->_searchGenericPattern($terminalUrl);
 
         if ($terminalModel) {
             // Generic Template requests must be served over HTTP
@@ -54,13 +58,38 @@ class Provision_IndexController extends Zend_Controller_Action
             return $this->_error(404, 'TerminalModel not found');
         }
 
-        $this->view->user = $terminal->getUser();
+        /** @var \Ivoz\Provider\Domain\Model\User\UserDto user */
+        $this->view->user = $this->dataGateway->findOneBy(
+            \Ivoz\Provider\Domain\Model\User\User::class,
+            ['User.terminal = ' . $terminal->getId()]
+        );
 
-        $companyModel = $terminal->getCompany();
-        $this->view->company = $companyModel;
+        /** @var \Ivoz\Provider\Domain\Model\Language\LanguageDto $language */
+        $language = $this->dataGateway->remoteProcedureCall(
+            \Ivoz\Provider\Domain\Model\User\User::class,
+            $this->view->user->getId(),
+            'getLanguage',
+            []
+        );
+        $this->view->language = $language->toDto();
 
-        $brandModel = $companyModel->getBrand();
-        $this->view->brand = $brandModel;
+        /**
+         * For backward compatibility reasons
+         * @deprecated this will be remove in ivozprovider 3.0
+         */
+        $this->view->user->setLanguage($this->view->language);
+
+        /** @var \Ivoz\Provider\Domain\Model\Company\CompanyDto company */
+        $this->view->company = $this->dataGateway->find(
+            \Ivoz\Provider\Domain\Model\Company\Company::class,
+            $terminal->getCompanyId()
+        );
+
+        /** @var \Ivoz\Provider\Domain\Model\Brand\BrandDto brand */
+        $this->view->brand = $this->dataGateway->find(
+            \Ivoz\Provider\Domain\Model\Brand\Brand::class,
+            $this->view->company->getBrandId()
+        );
         $this->view->terminal = $terminal;
 
         $this->_renderPage('specific', $path, $terminalModel);
@@ -69,7 +98,7 @@ class Provision_IndexController extends Zend_Controller_Action
     protected function _error($errorNumber, $logMessage = null)
     {
         if ($logMessage) {
-            $this->logger->log($logMessage, Zend_Log::ERR);
+            $this->logger->error($logMessage);
         }
 
         $this->getResponse()
@@ -80,11 +109,18 @@ class Provision_IndexController extends Zend_Controller_Action
 
     protected function _renderPage($template, $path, $terminalModel)
     {
-        $route = $path . DIRECTORY_SEPARATOR . "Provision_template" . DIRECTORY_SEPARATOR . $terminalModel->getId();
+        $route =
+            $path
+            . DIRECTORY_SEPARATOR
+            . "Provision_template"
+            . DIRECTORY_SEPARATOR
+            . $terminalModel->getId();
+
         $this->view->setScriptPath($route);
         $this->view->terminalModel = $terminalModel;
         $brand = $this->view->brand;
         $terminal = $this->view->terminal;
+
         if (!is_null($brand) && !is_null($terminal)) {
             $this->logger->debug('[b' . $brand->getId() . '] ' . $terminal->getMac() . ' ' . $template . ' url match found');
             $this->logger->debug('[b' . $brand->getId() . '] ' . $terminal->getMac() . " Response: \n" . $this->view->render($template . '.phtml'));
@@ -94,22 +130,40 @@ class Provision_IndexController extends Zend_Controller_Action
         }
         $this->render($template, 'page', true);
 
-        if ($terminal instanceof IvozProvider\Model\Terminals) {
-            $now = \Zend_Date::now()->setTimezone('UTC');
-            $terminal->setLastProvisionDate($now->toString('dd-MM-yyyy HH:mm:ss'));
-            $terminal->save();
+        if (!is_null($terminal)) {
+            $now = new \DateTime(null, new DateTimeZone('UTC'));
+            $terminal->setLastProvisionDate($now->format('Y-m-d H:i:s'));
+            $this->dataGateway->update(
+                \Ivoz\Provider\Domain\Model\Terminal\Terminal::class,
+                $terminal
+            );
         }
     }
 
-    protected function _searchGenericPattern(\IvozProvider\Mapper\Sql\TerminalModels $terminalMapper, $terminalUrl){
-        $terminalModel = $terminalMapper->findOneByField('genericUrlPattern', $terminalUrl );
+    protected function _searchGenericPattern($terminalUrl)
+    {
+        $criteriaTemplate = "TerminalModel.genericUrlPattern = '%s'";
+
+        $criteria = [ sprintf($criteriaTemplate, "/$terminalUrl") ];
+        $terminalModel = $this->dataGateway->findOneBy(
+            \Ivoz\Provider\Domain\Model\TerminalModel\TerminalModel::class,
+            $criteria
+        );
 
         if ( $terminalModel == null ) {
-            $terminalModel = $terminalMapper->findOneByField('genericUrlPattern', '/' . $terminalUrl );
+            $criteria = [ sprintf($criteriaTemplate, "$terminalUrl") ];
+            $terminalModel = $this->dataGateway->findOneBy(
+                \Ivoz\Provider\Domain\Model\TerminalModel\TerminalModel::class,
+                $criteria
+            );
         }
 
         if ( $terminalModel == null ) {
-            $terminalModel = $terminalMapper->findOneByField('genericUrlPattern', preg_replace("/^\//", "", $terminalUrl));
+            $criteria = [ sprintf($criteriaTemplate, preg_replace("/^\//", "", $terminalUrl)) ];
+            $terminalModel = $this->dataGateway->findOneBy(
+                \Ivoz\Provider\Domain\Model\TerminalModel\TerminalModel::class,
+                $criteria
+            );
         }
 
         return $terminalModel;
@@ -117,7 +171,7 @@ class Provision_IndexController extends Zend_Controller_Action
 
     /**
      * @param string $terminalUrl
-     * @return \IvozProvider\Model\Terminals|null
+     * @return \Ivoz\Provider\Domain\Model\Terminal\TerminalDto|null
      */
     protected function _getTerminalByUrl($terminalUrl)
     {
@@ -128,7 +182,6 @@ class Provision_IndexController extends Zend_Controller_Action
             return null;
         }
 
-        $terminalMapper = new \IvozProvider\Mapper\Sql\Terminals();
         $macRegExp = '/(?=(([0-9a-f]{2}[:-]{0,1}){5}([0-9a-f]){2}))/i';
         preg_match_all($macRegExp, $fileName, $matches);
         $macCandidates = array_key_exists(1, $matches)
@@ -146,15 +199,25 @@ class Provision_IndexController extends Zend_Controller_Action
         }
 
         /**
-         * @var IvozProvider\Model\Terminals[] $terminals
+         * @var \Ivoz\Provider\Domain\Model\Terminal\TerminalDto[] $terminals
          */
-        $terminals = $terminalMapper->fetchList('mac in ("'. implode('","', $macCandidates) .'")');
+        $terminals = $this->dataGateway->findBy(
+            \Ivoz\Provider\Domain\Model\Terminal\Terminal::class,
+            ["Terminal.mac IN ('". implode("','", $macCandidates) ."')"]
+        );
+
         foreach ($terminals as $candidate) {
 
-            /**
-             * @var IvozProvider\Model\TerminalModels $terminalModel
-             */
-            $terminalModel = $candidate->getTerminalModel();
+            $terminalModelId = $candidate->getTerminalModelId();
+            if (!$terminalModelId) {
+                continue;
+            }
+
+            /** @var \Ivoz\Provider\Domain\Model\TerminalModel\TerminalModelDto $terminalModel */
+            $terminalModel = $this->dataGateway->find(
+                \Ivoz\Provider\Domain\Model\TerminalModel\TerminalModel::class,
+                $terminalModelId
+            );
             if (!$terminalModel) {
                 continue;
             }
