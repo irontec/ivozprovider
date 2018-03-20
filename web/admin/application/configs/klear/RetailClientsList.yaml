@@ -58,6 +58,8 @@ production:
           externallyExtraOpts: true
           type: true
           recordingsDiskUsage: ${auth.brand.recordings.disabled}
+          billingMethod: true
+          balance: true
         order:
           name: true
           nif: true
@@ -112,6 +114,7 @@ production:
           recordingsLimitMB: true
           recordingsLimitEmail: true
           recordingsDiskUsage: true
+          balance: true
         order: &retailClientsOrder_Link
           id: true
           name: true
@@ -127,6 +130,7 @@ production:
           fields:
             name: 3
             FeaturesRelCompany: 3
+            billingMethod: 3
         group1:
           colsPerRow: 12
           label: _("Geographic Configuration")
@@ -178,6 +182,7 @@ production:
           province: ${auth.brand.invoices.disabled}
           countryName: ${auth.brand.invoices.disabled}
           outgoingDdiRuleId: true
+          balance: true
         whitelist:
           id: ${auth.isMainOperator}
         order:
@@ -190,6 +195,7 @@ production:
             name: 4
             nif: 2
             FeaturesRelCompany: 6
+            billingMethod: 3
         group1:
           colsPerRow: 12
           label: _("Geographic Configuration")
