@@ -43,4 +43,7 @@ RUN git clone -b bleeding https://github.com/irontec/ivozprovider /opt/irontec/i
 # Get dependencies
 RUN /opt/irontec/ivozprovider/library/bin/composer_install.sh --prefer-dist --no-progress
 
+# Store the main project vendor
+RUN cp -r /opt/irontec/ivozprovider/library/vendor/	/opt/library-vendor
+
 ENTRYPOINT [ "/opt/irontec/ivozprovider/tests/docker/bin/prepare-and-run" ]
