@@ -94,6 +94,7 @@ class Headers extends RouteHandlerAbstract
 
         } else {
             $this->agi->setSIPHeader("X-Info-CompanyDomain", $company->getDomain()->getDomain());
+            $this->agi->setSIPHeader("X-Info-BillingMethod", $company->getBillingMethod());
 
             // Set special headers for Fax outgoing calls
             if ($this->agi->getVariable("FAXFILE_ID")) {
