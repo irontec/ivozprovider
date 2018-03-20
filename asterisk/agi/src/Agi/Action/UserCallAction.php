@@ -4,6 +4,7 @@ namespace Agi\Action;
 
 use Agi\Wrapper;
 use Doctrine\Common\Collections\Criteria;
+use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 
@@ -127,7 +128,11 @@ class UserCallAction
 
         // Configure Dial options
         $timeout = $this->getDialTimeout();
-        $options = "ig";
+        $options = "i";
+
+        if ($this->getUserStatusRequired()) {
+            $options .= "g";
+        }
 
         // For record asterisk builtin feature code (FIXME Dont use both X's)
         if ($user->getCompany()->getOnDemandRecord() == 2) {
@@ -209,6 +214,38 @@ class UserCallAction
         }
 
         return ($timeout)?:"";
+    }
+
+    /**
+     * Determine if we must check call status after dialing the user
+     *
+     * @return boolean
+     */
+    private function getUserStatusRequired()
+    {
+        // internal or external call
+        $callType = $this->agi->getCallType();
+
+        // Build the criteria to look for call forward settings
+        $criteria = [
+            'or' => array(
+                array('callForwardType', 'eq', 'noAnswer'),
+                array('callForwardType', 'eq', 'busy'),
+                array('callForwardType', 'eq', 'userNotRegistered'),
+            ),
+            'or' => array(
+                array('callTypeFilter', 'eq', 'both'),
+                array('callTypeFilter', 'eq', $callType),
+            ),
+            // array('enabled', 'eq', '1'),     // TODO pending #400 migration to artemis
+        ];
+
+        /** @var CallForwardSettingInterface[] $cfwSettings */
+        $cfwSettings = $this->user->getCallForwardSettings(CriteriaHelper::fromArray($criteria));
+
+        // Return true if any of the requested Call forwards exist
+        $settingNotEmpty = !empty($cfwSettings);
+        return $settingNotEmpty;
     }
 
 }
