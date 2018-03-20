@@ -63,17 +63,11 @@ You can browse online documentation in different formats:
 
 | Language | HTML | LaTeX | PDF | EPUB |
 |----------|:----:|:-----:|:---:|:----:|
-| Spanish  | [![badge html](portals/public/images/doc-html-green.png)](https://irontec.github.io/ivozprovider/es) [![badge singlehtml](portals/public/images/doc-singlehtml-green.png)](https://irontec.github.io/ivozprovider/essingle) | [![badge latex](portals/public/images/doc-latex-ff69b4.png)](https://irontec.github.io/ivozprovider/eslatex/IvozProvider-1.6-oasis-es.tex) | [![badge pdf](portals/public/images/doc-pdf-blue.png)](https://irontec.github.io/ivozprovider/eslatex/IvozProvider-1.6-oasis-es.pdf) | [![badge epub](portals/public/images/doc-epub-orange.png)](https://irontec.github.io/ivozprovider/esepub/IvozProvider-1.6-oasis-es.epub) |
-| English  | [![badge html](portals/public/images/doc-html-green.png)](https://irontec.github.io/ivozprovider/en) [![badge singlehtml](portals/public/images/doc-singlehtml-green.png)](https://irontec.github.io/ivozprovider/ensingle) | [![badge latex](portals/public/images/doc-latex-ff69b4.png)](https://irontec.github.io/ivozprovider/enlatex/IvozProvider-1.6-oasis-en.tex) | [![badge pdf](portals/public/images/doc-pdf-blue.png)](https://irontec.github.io/ivozprovider/enlatex/IvozProvider-1.6-oasis-en.pdf) | [![badge epub](portals/public/images/doc-epub-orange.png)](https://irontec.github.io/ivozprovider/esepub/IvozProvider-1.6-oasis-en.epub) |
+| Spanish  | [![badge html](portals/public/images/doc-html-green.png)](https://irontec.github.io/ivozprovider/es/oasis) [![badge singlehtml](portals/public/images/doc-singlehtml-green.png)](https://irontec.github.io/ivozprovider/essingle/oasis) | [![badge latex](portals/public/images/doc-latex-ff69b4.png)](https://irontec.github.io/ivozprovider/eslatex/oasis/IvozProvider.tex) | [![badge pdf](portals/public/images/doc-pdf-blue.png)](https://irontec.github.io/ivozprovider/eslatex/oasis/IvozProvider.pdf) | [![badge epub](portals/public/images/doc-epub-orange.png)](https://irontec.github.io/ivozprovider/esepub/oasis/IvozProvider.epub) |
+| English  | [![badge html](portals/public/images/doc-html-green.png)](https://irontec.github.io/ivozprovider/en/oasis) [![badge singlehtml](portals/public/images/doc-singlehtml-green.png)](https://irontec.github.io/ivozprovider/ensingle/oasis) | [![badge latex](portals/public/images/doc-latex-ff69b4.png)](https://irontec.github.io/ivozprovider/enlatex/oasis/IvozProvider.tex) | [![badge pdf](portals/public/images/doc-pdf-blue.png)](https://irontec.github.io/ivozprovider/enlatex/oasis/IvozProvider.pdf) | [![badge epub](portals/public/images/doc-epub-orange.png)](https://irontec.github.io/ivozprovider/esepub/oasis/IvozProvider.epub) |
 
 
 ## Feedback & Questions
-
-Feel free to subscribe to ivozprovider mailing lists for users or developers for any question
-or suggestion.
-
- - [users@lists-ivozprovider.irontec.com](http://lists-ivozprovider.irontec.com/cgi-bin/mailman/listinfo/users)
- - [dev@list-ivozprovider.irontec.com](http://lists-ivozprovider.irontec.com/cgi-bin/mailman/listinfo/dev)
 
 Any feedback is also welcomed at [#ivozprovider irc channel](https://webchat.freenode.net/?channels=ivozprovider) at irc.freenode.net
 
