@@ -2,28 +2,21 @@
 
 set -e
 
-PHPLINT_BIN=/opt/irontec/ivozprovider/library/vendor/bin/phplint
+APP_PATHS=()
+APP_PATHS+=(/opt/irontec/ivozprovider/library)
+APP_PATHS+=(/opt/irontec/ivozprovider/asterisk/agi)
+APP_PATHS+=(/opt/irontec/ivozprovider/microservices/recordings)
+APP_PATHS+=(/opt/irontec/ivozprovider/microservices/workers)
+APP_PATHS+=(/opt/irontec/ivozprovider/scheme)
+APP_PATHS+=(/opt/irontec/ivozprovider/web/rest)
 
-pushd /opt/irontec/ivozprovider/library
-    $PHPLINT_BIN . --exclude=vendor --exclude=var
-popd
 
-pushd /opt/irontec/ivozprovider/asterisk/agi
-    $PHPLINT_BIN . --exclude=vendor --exclude=var
-popd
+for APPLICATION_PATH in ${APP_PATHS[@]}; do
+    pushd $APPLICATION_PATH
+        # basic phplint in source code
+        /opt/irontec/ivozprovider/library/vendor/bin/phplint . --exclude=vendor --exclude=var
+        # basic console check
+        [ -x bin/console ] && bin/console -q
+    popd
+done
 
-pushd /opt/irontec/ivozprovider/microservices/recordings
-    $PHPLINT_BIN . --exclude=vendor --exclude=var
-popd
-
-pushd /opt/irontec/ivozprovider/microservices/workers
-    $PHPLINT_BIN . --exclude=vendor --exclude=var
-popd
-
-pushd /opt/irontec/ivozprovider/scheme
-    $PHPLINT_BIN . --exclude=vendor --exclude=var
-popd
-
-pushd /opt/irontec/ivozprovider/web/rest
-    $PHPLINT_BIN . --exclude=vendor --exclude=var
-popd

@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # Restore main vendor directory (improves composer install)
-rm /opt/irontec/ivozprovider/library/vendor/
 mv /opt/library-vendor /opt/irontec/ivozprovider/library/vendor
 
 # Update composer dependencies
