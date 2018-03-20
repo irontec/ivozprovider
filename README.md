@@ -1,4 +1,4 @@
-![IvozProvider Logo](portals/public/images/logoprovider.png) ![stable](portals/public/images/stable-1.6-blue.png) ![release](portals/public/images/release-oasis-14b9bc.png)
+![IvozProvider Logo](web/admin/public/images/logoprovider.png) ![stable](web/admin/public/images/stable-1.7-blue.png) ![release](web/admin/public/images/release-oasis-14b9bc.png)
 
 Ivoz Provider is a multitenant solution for VoIP telephony providers designed for horizontal scaling and load balancing.
 
@@ -38,7 +38,7 @@ And [many others](https://irontec.github.io/ivozprovider/en/intro/what_is_inside
 
 Bear in mind that, while at least one of each profile must be installed for the platform to work, there can be multiple machines of each profile and all of them can also be installed in the same machine (a.k.a. standalone installation).
 
-![scaling](portals/public/images/horizontalscaling.png)
+![scaling](web/admin/public/images/horizontalscaling.png)
 
 #### Cloud Service
 IvozProvider is designed to work directly from the Internet. Although it can be used in local environments, being exposed to the public network [has it's advantages](https://irontec.github.io/ivozprovider/en/intro/what_is_ivozprovider.html#exposed-to-the-public-network)
@@ -52,8 +52,8 @@ If you want to test an [standalone](https://irontec.github.io/ivozprovider/en/in
 
 | Version  | 64 bits  | 32 bits |
 |----------|:--------:|:-------:|
-|stable (oasis 1.6.3) | [![iso http](portals/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-1.6.3-oasis-amd64.iso)| [![iso http](portals/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-1.6.3-oasis-i386.iso)|
-|testing (artemis 2.0.0) | [![iso http](portals/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-2.0~2.0.0-artemis-amd64.iso)| [![iso http](portals/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-2.0~2.0.0-artemis-i386.iso)|
+|stable (oasis 1.7) | [![iso http](portals/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-1.7.0-oasis-amd64.iso)| [![iso http](portals/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-1.7.0-oasis-i386.iso)|
+|testing (artemis 2.0.0) | [![iso http](web/admin/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-2.0~2.0.0-artemis-amd64.iso)| [![iso http](web/admin/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-2.0~2.0.0-artemis-i386.iso)|
 |experimental (bleeding 2.1.0) | |
 
 
@@ -63,17 +63,11 @@ You can browse online documentation in different formats:
 
 | Language | HTML | LaTeX | PDF | EPUB |
 |----------|:----:|:-----:|:---:|:----:|
-| Spanish  | [![badge html](portals/public/images/doc-html-green.png)](https://irontec.github.io/ivozprovider/es) [![badge singlehtml](portals/public/images/doc-singlehtml-green.png)](https://irontec.github.io/ivozprovider/essingle) | [![badge latex](portals/public/images/doc-latex-ff69b4.png)](https://irontec.github.io/ivozprovider/eslatex/IvozProvider-1.6-oasis-es.tex) | [![badge pdf](portals/public/images/doc-pdf-blue.png)](https://irontec.github.io/ivozprovider/eslatex/IvozProvider-1.6-oasis-es.pdf) | [![badge epub](portals/public/images/doc-epub-orange.png)](https://irontec.github.io/ivozprovider/esepub/IvozProvider-1.6-oasis-es.epub) |
-| English  | [![badge html](portals/public/images/doc-html-green.png)](https://irontec.github.io/ivozprovider/en) [![badge singlehtml](portals/public/images/doc-singlehtml-green.png)](https://irontec.github.io/ivozprovider/ensingle) | [![badge latex](portals/public/images/doc-latex-ff69b4.png)](https://irontec.github.io/ivozprovider/enlatex/IvozProvider-1.6-oasis-en.tex) | [![badge pdf](portals/public/images/doc-pdf-blue.png)](https://irontec.github.io/ivozprovider/enlatex/IvozProvider-1.6-oasis-en.pdf) | [![badge epub](portals/public/images/doc-epub-orange.png)](https://irontec.github.io/ivozprovider/esepub/IvozProvider-1.6-oasis-en.epub) |
+| Spanish  | [![badge html](web/admin/public/images/doc-html-green.png)](https://irontec.github.io/ivozprovider/es) [![badge singlehtml](web/admin/public/images/doc-singlehtml-green.png)](https://irontec.github.io/ivozprovider/essingle) | [![badge latex](web/admin/public/images/doc-latex-ff69b4.png)](https://irontec.github.io/ivozprovider/eslatex/artemis/IvozProvider.tex) | [![badge pdf](web/admin/public/images/doc-pdf-blue.png)](https://irontec.github.io/ivozprovider/artemis/bleeding/IvozProvider.pdf) | [![badge epub](web/admin/public/images/doc-epub-orange.png)](https://irontec.github.io/ivozprovider/esepub/artemis/IvozProvider.epub) |
+| English  | [![badge html](web/admin/public/images/doc-html-green.png)](https://irontec.github.io/ivozprovider/en) [![badge singlehtml](web/admin/public/images/doc-singlehtml-green.png)](https://irontec.github.io/ivozprovider/ensingle) | [![badge latex](web/admin/public/images/doc-latex-ff69b4.png)](https://irontec.github.io/ivozprovider/enlatex/artemis/IvozProvider.tex) | [![badge pdf](web/admin/public/images/doc-pdf-blue.png)](https://irontec.github.io/ivozprovider/artemis/bleeding/IvozProvider.pdf) | [![badge epub](web/admin/public/images/doc-epub-orange.png)](https://irontec.github.io/ivozprovider/esepub/artemis/IvozProvider.epub) |
 
 
 ## Feedback & Questions
-
-Feel free to subscribe to ivozprovider mailing lists for users or developers for any question
-or suggestion.
-
- - [users@lists-ivozprovider.irontec.com](http://lists-ivozprovider.irontec.com/cgi-bin/mailman/listinfo/users)
- - [dev@list-ivozprovider.irontec.com](http://lists-ivozprovider.irontec.com/cgi-bin/mailman/listinfo/dev)
 
 Any feedback is also welcomed at [#ivozprovider irc channel](https://webchat.freenode.net/?channels=ivozprovider) at irc.freenode.net
 
