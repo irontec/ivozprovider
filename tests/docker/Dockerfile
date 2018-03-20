@@ -3,7 +3,28 @@ FROM debian:stretch
 
 MAINTAINER Mikel Madariaga <mikel@irontec.com>
 
+RUN apt-get update && apt-get -y install gnupg wget
+
+RUN echo deb http://packages.irontec.com/debian bleeding main extra >> \
+	/etc/apt/sources.list
+
+RUN wget http://packages.irontec.com/public.key -q -O - | apt-key add -
+
 RUN apt-get update && apt-get install -y \
+	dpkg-dev \
+	debhelper \
+	dh-systemd \
+	nodejs \
+	ruby-compass \
+	python \
+	python-sphinx-rtd-theme \
+	gettext \
+	python-sphinx \
+	sphinx-common \
+	libjs-sphinxdoc \
+	libjs-jquery \
+	python-alabaster \
+	composer \
     git \
     unzip \
     curl \
@@ -38,7 +59,7 @@ RUN chown jenkins.jenkins /opt/
 # Base project
 USER $UNAME
 RUN mkdir -p /opt/irontec
-RUN git clone -b bleeding https://github.com/irontec/ivozprovider /opt/irontec/ivozprovider
+RUN git clone -b bleeding --depth 1 https://github.com/irontec/ivozprovider /opt/irontec/ivozprovider
 
 # Get dependencies
 RUN /opt/irontec/ivozprovider/library/bin/composer_install.sh --prefer-dist --no-progress
@@ -46,4 +67,5 @@ RUN /opt/irontec/ivozprovider/library/bin/composer_install.sh --prefer-dist --no
 # Store the main project vendor
 RUN cp -r /opt/irontec/ivozprovider/library/vendor/	/opt/library-vendor
 
+WORKDIR /opt/irontec/ivozprovider/
 ENTRYPOINT [ "/opt/irontec/ivozprovider/tests/docker/bin/prepare-and-run" ]
