@@ -105,7 +105,7 @@ interface UserInterface extends LoggableEntityInterface
 
     /**
      * Get user language
-     * returns company language if wmpty
+     * returns company language if empty
      * @return \Ivoz\Provider\Domain\Model\Language\LanguageInterface
      */
     public function getLanguage();
