@@ -51,25 +51,28 @@ class CriteriaHelper implements  CriteriaHelperInterface
     private static function arrayToExpressions(array $conditions)
     {
         $expressions = [];
-        foreach ($conditions as $comparison) {
-            list($field, $operator) = $comparison;
-            $value = $comparison[2] ?? null;
+        foreach ($conditions as $key => $comparison) {
 
-            switch ($operator) {
+            if (!in_array($key, ['or', 'and'], true)) {
+                list($field, $operator) = $comparison;
+                $value = $comparison[2] ?? null;
+
+                $expressions[] = self::createExpression($field, $operator, $value);
+                continue;
+            }
+
+            switch ($key) {
                 case 'or':
-                    $subExpressions = self::arrayToExpressions($value);
+                    $subExpressions = self::arrayToExpressions($comparison);
                     $expressions[] = Criteria::expr()->orX(
                         ...$subExpressions
                     );
                     break;
                 case 'and':
-                    $subExpressions = self::arrayToExpressions($value);
+                    $subExpressions = self::arrayToExpressions($comparison);
                     $expressions[] = Criteria::expr()->andX(
                         ...$subExpressions
                     );
-                    break;
-                default:
-                    $expressions[] = self::createExpression($field, $operator, $value);
                     break;
             }
         }
