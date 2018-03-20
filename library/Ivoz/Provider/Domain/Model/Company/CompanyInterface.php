@@ -333,6 +333,38 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getRecordingsLimitEmail();
 
     /**
+     * Set billingMethod
+     *
+     * @param string $billingMethod
+     *
+     * @return self
+     */
+    public function setBillingMethod($billingMethod);
+
+    /**
+     * Get billingMethod
+     *
+     * @return string
+     */
+    public function getBillingMethod();
+
+    /**
+     * Set balance
+     *
+     * @param string $balance
+     *
+     * @return self
+     */
+    public function setBalance($balance = null);
+
+    /**
+     * Get balance
+     *
+     * @return string
+     */
+    public function getBalance();
+
+    /**
      * Set language
      *
      * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language

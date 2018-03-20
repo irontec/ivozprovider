@@ -98,6 +98,16 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     private $recordingsLimitEmail;
 
     /**
+     * @var string
+     */
+    private $billingMethod = 'postpaid';
+
+    /**
+     * @var string
+     */
+    private $balance = 0;
+
+    /**
      * @var integer
      */
     private $id;
@@ -242,6 +252,8 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'externallyextraopts' => 'externallyextraopts',
             'recordingsLimitMB' => 'recordingsLimitMB',
             'recordingsLimitEmail' => 'recordingsLimitEmail',
+            'billingMethod' => 'billingMethod',
+            'balance' => 'balance',
             'id' => 'id',
             'languageId' => 'language',
             'mediaRelaySetsId' => 'mediaRelaySets',
@@ -281,6 +293,8 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'externallyextraopts' => $this->getExternallyextraopts(),
             'recordingsLimitMB' => $this->getRecordingsLimitMB(),
             'recordingsLimitEmail' => $this->getRecordingsLimitEmail(),
+            'billingMethod' => $this->getBillingMethod(),
+            'balance' => $this->getBalance(),
             'id' => $this->getId(),
             'language' => $this->getLanguage(),
             'mediaRelaySets' => $this->getMediaRelaySets(),
@@ -805,6 +819,46 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     public function getRecordingsLimitEmail()
     {
         return $this->recordingsLimitEmail;
+    }
+
+    /**
+     * @param string $billingMethod
+     *
+     * @return static
+     */
+    public function setBillingMethod($billingMethod = null)
+    {
+        $this->billingMethod = $billingMethod;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBillingMethod()
+    {
+        return $this->billingMethod;
+    }
+
+    /**
+     * @param string $balance
+     *
+     * @return static
+     */
+    public function setBalance($balance = null)
+    {
+        $this->balance = $balance;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBalance()
+    {
+        return $this->balance;
     }
 
     /**
