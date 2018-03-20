@@ -241,7 +241,7 @@ class DataAccessControlParser
                     $subCriteria[] = current($parsedValue);
                 }
 
-                $arrayCriteria[] =  [0, $key, $subCriteria];
+                $arrayCriteria[$key] =  $subCriteria;
                 continue;
             }
 
