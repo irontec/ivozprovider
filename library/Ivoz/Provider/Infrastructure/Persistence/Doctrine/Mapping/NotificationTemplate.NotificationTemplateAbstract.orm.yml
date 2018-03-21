@@ -18,7 +18,7 @@ Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateAbstract:
       length: 25
       options:
         fixed: false
-        comment: '[enum:voicemail|fax|limit]'
+        comment: '[enum:voicemail|fax|limit|lowbalance]'
   manyToOne:
     brand:
       targetEntity: \Ivoz\Provider\Domain\Model\Brand\BrandInterface
