@@ -103,6 +103,17 @@ abstract class CompanyAbstract
     protected $recordingsLimitEmail;
 
     /**
+     * comment: enum:postpaid|prepaid|pseudoprepaid
+     * @var string
+     */
+    protected $billingMethod = 'postpaid';
+
+    /**
+     * @var string
+     */
+    protected $balance = 0;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Language\LanguageInterface
      */
     protected $language;
@@ -178,7 +189,8 @@ abstract class CompanyAbstract
         $postalCode,
         $town,
         $province,
-        $countryName
+        $countryName,
+        $billingMethod
     ) {
         $this->setType($type);
         $this->setName($name);
@@ -190,6 +202,7 @@ abstract class CompanyAbstract
         $this->setTown($town);
         $this->setProvince($province);
         $this->setCountryName($countryName);
+        $this->setBillingMethod($billingMethod);
     }
 
     abstract public function getId();
@@ -265,7 +278,8 @@ abstract class CompanyAbstract
             $dto->getPostalCode(),
             $dto->getTown(),
             $dto->getProvince(),
-            $dto->getCountryName());
+            $dto->getCountryName(),
+            $dto->getBillingMethod());
 
         $self
             ->setDomainUsers($dto->getDomainUsers())
@@ -275,6 +289,7 @@ abstract class CompanyAbstract
             ->setExternallyextraopts($dto->getExternallyextraopts())
             ->setRecordingsLimitMB($dto->getRecordingsLimitMB())
             ->setRecordingsLimitEmail($dto->getRecordingsLimitEmail())
+            ->setBalance($dto->getBalance())
             ->setLanguage($dto->getLanguage())
             ->setMediaRelaySets($dto->getMediaRelaySets())
             ->setDefaultTimezone($dto->getDefaultTimezone())
@@ -324,6 +339,8 @@ abstract class CompanyAbstract
             ->setExternallyextraopts($dto->getExternallyextraopts())
             ->setRecordingsLimitMB($dto->getRecordingsLimitMB())
             ->setRecordingsLimitEmail($dto->getRecordingsLimitEmail())
+            ->setBillingMethod($dto->getBillingMethod())
+            ->setBalance($dto->getBalance())
             ->setLanguage($dto->getLanguage())
             ->setMediaRelaySets($dto->getMediaRelaySets())
             ->setDefaultTimezone($dto->getDefaultTimezone())
@@ -367,6 +384,8 @@ abstract class CompanyAbstract
             ->setExternallyextraopts(self::getExternallyextraopts())
             ->setRecordingsLimitMB(self::getRecordingsLimitMB())
             ->setRecordingsLimitEmail(self::getRecordingsLimitEmail())
+            ->setBillingMethod(self::getBillingMethod())
+            ->setBalance(self::getBalance())
             ->setLanguage(\Ivoz\Provider\Domain\Model\Language\Language::entityToDto(self::getLanguage(), $depth))
             ->setMediaRelaySets(\Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet::entityToDto(self::getMediaRelaySets(), $depth))
             ->setDefaultTimezone(\Ivoz\Provider\Domain\Model\Timezone\Timezone::entityToDto(self::getDefaultTimezone(), $depth))
@@ -404,6 +423,8 @@ abstract class CompanyAbstract
             'externallyExtraOpts' => self::getExternallyextraopts(),
             'recordingsLimitMB' => self::getRecordingsLimitMB(),
             'recordingsLimitEmail' => self::getRecordingsLimitEmail(),
+            'billingMethod' => self::getBillingMethod(),
+            'balance' => self::getBalance(),
             'languageId' => self::getLanguage() ? self::getLanguage()->getId() : null,
             'mediaRelaySetsId' => self::getMediaRelaySets() ? self::getMediaRelaySets()->getId() : null,
             'defaultTimezoneId' => self::getDefaultTimezone() ? self::getDefaultTimezone()->getId() : null,
@@ -900,6 +921,68 @@ abstract class CompanyAbstract
     public function getRecordingsLimitEmail()
     {
         return $this->recordingsLimitEmail;
+    }
+
+    /**
+     * Set billingMethod
+     *
+     * @param string $billingMethod
+     *
+     * @return self
+     */
+    public function setBillingMethod($billingMethod)
+    {
+        Assertion::notNull($billingMethod, 'billingMethod value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($billingMethod, 25, 'billingMethod value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        Assertion::choice($billingMethod, array (
+          0 => 'postpaid',
+          1 => 'prepaid',
+          2 => 'pseudoprepaid',
+        ), 'billingMethodvalue "%s" is not an element of the valid values: %s');
+
+        $this->billingMethod = $billingMethod;
+
+        return $this;
+    }
+
+    /**
+     * Get billingMethod
+     *
+     * @return string
+     */
+    public function getBillingMethod()
+    {
+        return $this->billingMethod;
+    }
+
+    /**
+     * Set balance
+     *
+     * @param string $balance
+     *
+     * @return self
+     */
+    public function setBalance($balance = null)
+    {
+        if (!is_null($balance)) {
+            if (!is_null($balance)) {
+                Assertion::numeric($balance);
+            }
+        }
+
+        $this->balance = $balance;
+
+        return $this;
+    }
+
+    /**
+     * Get balance
+     *
+     * @return string
+     */
+    public function getBalance()
+    {
+        return $this->balance;
     }
 
     /**

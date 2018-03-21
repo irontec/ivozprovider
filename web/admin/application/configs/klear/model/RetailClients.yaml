@@ -342,6 +342,19 @@ production:
               - name
             template: '%name%'
         'null': _("Use generic template")
+    billingMethod:
+      title: _('Billing method')
+      type: select
+      defaultValue: postpaid
+      source:
+        data: inline
+        values:
+          'postpaid':
+            title: _("Postpaid")
+          'prepaid':
+            title: _("Prepaid")
+          'pseudoprepaid':
+            title: _("Pseudo-prepaid")
 staging:
   _extends: production
 testing:
