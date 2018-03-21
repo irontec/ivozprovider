@@ -8,11 +8,11 @@
     "packages": [
         {
             "name": "beberlei/assert",
-            "version": "2.9.2.0",
+            "version": "2.9.3.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/beberlei/assert",
-                "reference": "2d555f72f3f4ff9e72a7bc17cb8a53c86737c8a0",
+                "reference": "7d8108458bbe3d063dc3315278b2001a7156fade",
                 "shasum": null
             },
             "require": {
@@ -1420,16 +1420,16 @@
         },
         {
             "name": "php-mime-mail-parser/php-mime-mail-parser",
-            "version": "2.9.6",
+            "version": "2.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-mime-mail-parser/php-mime-mail-parser.git",
-                "reference": "9e1fb5cfd0becad9948e810db9e0e553a20aab65"
+                "reference": "98e8a013e6c502b927a346f26982653c9f5efaa8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-mime-mail-parser/php-mime-mail-parser/zipball/9e1fb5cfd0becad9948e810db9e0e553a20aab65",
-                "reference": "9e1fb5cfd0becad9948e810db9e0e553a20aab65",
+                "url": "https://api.github.com/repos/php-mime-mail-parser/php-mime-mail-parser/zipball/98e8a013e6c502b927a346f26982653c9f5efaa8",
+                "reference": "98e8a013e6c502b927a346f26982653c9f5efaa8",
                 "shasum": ""
             },
             "require": {
@@ -1496,7 +1496,7 @@
                 "mailparse",
                 "mime"
             ],
-            "time": "2018-01-29T12:56:40+00:00"
+            "time": "2018-03-15T12:29:09+00:00"
         },
         {
             "name": "psr/cache",
@@ -1675,11 +1675,11 @@
         },
         {
             "name": "psr/simple-cache",
-            "version": "1.0.0.0",
+            "version": "1.0.1.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/psr/simple-cache",
-                "reference": "753fa598e8f3b9966c886fe13f370baa45ef0e24",
+                "reference": "408d5eafb83c57f6365a3ca330ff23aa4a5fa39b",
                 "shasum": null
             },
             "require": {
@@ -2250,16 +2250,16 @@
         },
         {
             "name": "symfony/swiftmailer-bundle",
-            "version": "v3.1.6",
+            "version": "v3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/swiftmailer-bundle.git",
-                "reference": "9728097df87e76e2db71fc41fd7d211c06daea3e"
+                "reference": "20e71c247a5a43ceb655db9712394d08c09b33ef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/swiftmailer-bundle/zipball/9728097df87e76e2db71fc41fd7d211c06daea3e",
-                "reference": "9728097df87e76e2db71fc41fd7d211c06daea3e",
+                "url": "https://api.github.com/repos/symfony/swiftmailer-bundle/zipball/20e71c247a5a43ceb655db9712394d08c09b33ef",
+                "reference": "20e71c247a5a43ceb655db9712394d08c09b33ef",
                 "shasum": ""
             },
             "require": {
@@ -2281,7 +2281,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.1-dev"
+                    "dev-master": "3.2-dev"
                 }
             },
             "autoload": {
@@ -2308,15 +2308,15 @@
             ],
             "description": "Symfony SwiftmailerBundle",
             "homepage": "http://symfony.com",
-            "time": "2017-10-23T15:15:11+00:00"
+            "time": "2018-03-08T16:39:26+00:00"
         },
         {
             "name": "symfony/symfony",
-            "version": "3.4.4.0",
+            "version": "3.4.6.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/symfony",
-                "reference": "5220b6f9fcdee261c6fdd3e096f3b204fba5d906",
+                "reference": "874d4d659774d7bab90538072c83ed532dd17dc5",
                 "shasum": null
             },
             "require": {
@@ -2467,11 +2467,11 @@
         },
         {
             "name": "twig/twig",
-            "version": "2.4.4.0",
+            "version": "2.4.7.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/twig/twig",
-                "reference": "eddb97148ad779f27e670e1e3f19fb323aedafeb",
+                "reference": "69aacd44dbbaa3199d5afb68605c996d577896fc",
                 "shasum": null
             },
             "require": {
@@ -2480,8 +2480,8 @@
             },
             "require-dev": {
                 "psr/container": "^1.0",
-                "symfony/debug": "~2.7",
-                "symfony/phpunit-bridge": "~3.3@dev"
+                "symfony/debug": "^2.7",
+                "symfony/phpunit-bridge": "^3.3"
             },
             "type": "library",
             "extra": {

@@ -14,6 +14,10 @@ use Ivoz\Provider\Domain\Model\Company\CompanyRepository;
  */
 class CompanyDoctrineRepository extends EntityRepository implements CompanyRepository
 {
+    /**
+     * @inheritdoc
+     * @see \Ivoz\Provider\Domain\Model\Company\CompanyRepository:getSupervisedCompanyIdsByAdmin
+     */
     public function getSupervisedCompanyIdsByAdmin(AdministratorInterface $admin)
     {
         if (!$admin->isBrandAdmin()) {
@@ -32,5 +36,23 @@ class CompanyDoctrineRepository extends EntityRepository implements CompanyRepos
         $result = $qb->getQuery()->getScalarResult();
 
         return array_column($result, 'id');
+    }
+
+    /**
+     * @inheritdoc
+     * @see \Ivoz\Provider\Domain\Model\Company\CompanyRepository:getPrepaidCompanies
+     */
+    public function getPrepaidCompanies()
+    {
+        $qb = $this->createQueryBuilder('c');
+
+        $query = $qb
+            ->select('c')
+            ->where(
+                $qb->expr()->in('c.billingMethod', ['prepaid', 'pseudoprepaid'])
+            )
+            ->getQuery();
+
+        return $query->getResult();
     }
 }

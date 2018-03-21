@@ -76,7 +76,8 @@
         "knplabs/knp-snappy": "0.4.3",
         "xamin/handlebars.php": "^0.10.4",
         "h4cc/wkhtmltopdf-amd64": "0.12.3",
-        "h4cc/wkhtmltopdf-i386": "0.12.3"
+        "h4cc/wkhtmltopdf-i386": "0.12.3",
+        "graze/guzzle-jsonrpc": "3.2.*"
     },
     "require-dev": {
         "ext-pcntl": "*",
