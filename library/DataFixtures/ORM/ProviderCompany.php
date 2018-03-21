@@ -37,6 +37,8 @@ class ProviderCompany extends Fixture implements DependentFixtureInterface
         $item1->setOnDemandRecordCode("");
         $item1->setExternallyextraopts("");
         $item1->setRecordingsLimitEmail("");
+        $item1->setBillingMethod("prepaid");
+        $item1->setBalance(1.2);
         $item1->setLanguage($this->getReference('_reference_ProviderLanguage1'));
         $item1->setMediaRelaySets($this->getReference('_reference_ProviderMediaRelaySetMediaRelaySet0'));
         $item1->setDefaultTimezone($this->getReference('_reference_ProviderTimezone145'));

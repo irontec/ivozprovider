@@ -56,6 +56,8 @@ Feature: Create pick up groups
               "externallyextraopts": null,
               "recordingsLimitMB": null,
               "recordingsLimitEmail": null,
+              "billingMethod": "postpaid",
+              "balance": "0",
               "id": 2,
               "language": 1,
               "mediaRelaySets": 1,
