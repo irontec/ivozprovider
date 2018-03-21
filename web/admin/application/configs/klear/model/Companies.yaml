@@ -376,6 +376,10 @@ production:
             title: _("Prepaid")
           'pseudoprepaid':
             title: _("Pseudo-prepaid")
+    balance:
+      title: _('Balance')
+      type: text
+      readonly: true
 staging:
   _extends: production
 testing:
