@@ -1,0 +1,71 @@
+production:
+  entity: \Ivoz\Provider\Domain\Model\BalanceNotification\BalanceNotification
+  fields: 
+    companyId:
+      title: ngettext('Company', 'Companies', 1)
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Company\Company
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order:
+            Company.name: asc
+    notificationTemplateId:
+      title: ngettext('Notification Template', 'Notifications Templates', 1)
+      type: select
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate
+          filterClass: IvozProvider_Klear_Filter_NotificationTemplateLowBalance
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+        'null': _("Use generic template")
+    toAddress:
+      title: _('To address')
+      type: text
+      trim: both
+      maxLength: 255
+      required: true
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Mail address where this notification will be sent")
+        label: _("Need help?")
+    threshold:
+      title: _('Notification Threshold')
+      type: text
+      pattern: "^[0-9]{1,6}[.]{0,1}[0-9]*$"
+      trim: both
+      required: true
+      defaultValue: "0.0000"
+      sufix: "€"
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Notification will be sent when the current balance is less that this value.")
+        label: _("Need help?")
+    lastSent:
+      title: _('Last notification sent on')
+      type: picker
+      readonly: true
+      source:
+        control: datetime
+
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

@@ -181,6 +181,11 @@ msgstr[1] "Authorized sources"
 msgid "Automatic creation of rules"
 msgstr "Automatic creation of rules"
 
+msgid "Balance Notification"
+msgid_plural "Balance Notifications"
+msgstr[0] "Balance Notification"
+msgstr[1] "Balance Notifications"
+
 msgid "Basic Configuration"
 msgstr "Basic Configuration"
 
@@ -200,6 +205,9 @@ msgstr[1] "Billable calls"
 
 msgid "Billing Information"
 msgstr "Billing Information"
+
+msgid "Billing method"
+msgstr "Billing method"
 
 msgid "Black Lists"
 msgstr "Black Lists"
@@ -1037,6 +1045,9 @@ msgstr "Keep Original DDI"
 msgid "Language"
 msgstr "Language"
 
+msgid "Last notification sent on"
+msgstr "Last notification sent on"
+
 msgid "Last provision date"
 msgstr "Last provision date"
 
@@ -1125,6 +1136,9 @@ msgstr "Login Info"
 msgid "Logo"
 msgstr "Logo"
 
+msgid "Low balance"
+msgstr "Low balance"
+
 msgid "MAC"
 msgstr "MAC"
 
@@ -1132,6 +1146,9 @@ msgid ""
 "Mail address shown as source when sending mails. MTA must allow this value."
 msgstr ""
 "Mail address shown as source when sending mails. MTA must allow this value."
+
+msgid "Mail address where this notification will be sent"
+msgstr ""
 
 msgid "Main Settings"
 msgstr "Main Settings"
@@ -1339,6 +1356,15 @@ msgstr "None"
 msgid "Not Registered"
 msgstr "Not Registered"
 
+msgid "Notification Template"
+msgid_plural "Notifications Templates"
+msgstr[0] "Notification template"
+msgstr[1] "Notification templates"
+
+
+msgid "Notification Threshold"
+msgstr "Notification Threshold"
+
 msgid "Notification content"
 msgid_plural "Notification contents"
 msgstr[0] "Notification content"
@@ -1351,6 +1377,11 @@ msgid "Notification template"
 msgid_plural "Notification templates"
 msgstr[0] "Notification template"
 msgstr[1] "Notification templates"
+
+msgid ""
+"Notification will be sent when the current balance is less that this value."
+msgstr ""
+"Notification will be sent when the current balance is less that this value."
 
 msgid "Number"
 msgstr "Number"
@@ -1556,6 +1587,9 @@ msgid_plural "Postal codes"
 msgstr[0] "Postal code"
 msgstr[1] "Postal codes"
 
+msgid "Postpaid"
+msgstr "Postpaid"
+
 msgid "Prefix"
 msgstr "Prefix"
 
@@ -1564,6 +1598,9 @@ msgstr "Prefix must be '+' and numeric-only"
 
 msgid "Prefix used for national out of area calls."
 msgstr "Prefix used for national out of area calls."
+
+msgid "Prepaid"
+msgstr "Prepaid"
 
 msgid "Prepend this field to callee"
 msgstr "Prepend this field to callee"
@@ -1613,6 +1650,9 @@ msgid "Proxy Users"
 msgid_plural "Proxies Users"
 msgstr[0] "Proxy Users"
 msgstr[1] "Proxies Users"
+
+msgid "Pseudo-prepaid"
+msgstr "Pseudo-prepaid"
 
 msgid "QR Code"
 msgstr "QR Code"
@@ -2089,6 +2129,9 @@ msgid "Timing"
 msgid_plural "Timing"
 msgstr[0] "Timing"
 msgstr[1] "Timings"
+
+msgid "To address"
+msgstr "To address"
 
 msgid "Toggle extension"
 msgstr "Toggle extension"

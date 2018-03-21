@@ -107,6 +107,10 @@ production:
           title: ngettext('Retail Client', 'Retail Clients', 0)
           class: ui-silk-basket
           description: _("List of %s", ngettext('Retail Client', 'Retail Clients', 0))
+        CompanyBalancesList:
+          title: ngettext('Prepaid Balance', 'Prepaid Balances', 0)
+          class: ui-silk-money-yen
+          description: _("List of %s", ngettext('Company', 'Companies', 0))
           showOnlyIf: ${auth.brand.retail.enabled}
         CompanyBalancesList:
           title: ngettext('Prepaid Balances', 'Prepaid Balances', 0)

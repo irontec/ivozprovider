@@ -380,6 +380,14 @@ production:
       title: _('Balance')
       type: text
       readonly: true
+    typeIcon:
+      title: _('Type')
+      type: ghost
+      dirty: true
+      source:
+        class: IvozProvider_Klear_Ghost_Companies
+        method: getTypeIcon
+
 staging:
   _extends: production
 testing:

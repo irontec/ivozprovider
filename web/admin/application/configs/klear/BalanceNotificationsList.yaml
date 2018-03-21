@@ -1,0 +1,79 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+
+production:
+  main:
+    module: klearMatrix
+    defaultScreen: balanceNotificationList_screen
+  screens: &balanceNotification_screensLink
+    balanceNotificationList_screen: &balanceNotificationList_screenLink
+      controller: list
+      pagination:
+        items: 25
+      <<: *BalanceNotifications
+      class: ui-silk-email
+      title: _("List of %s %2s", ngettext('Balance Notification', 'Balance Notifications', 0), "[format| (%parent%)]")
+      fields:
+        options:
+          title: _("Options")
+          screens:
+            balanceNotificationEdit_screen: true
+          dialogs:
+            balanceNotificationDel_dialog: true
+          default: balanceNotificationEdit_screen
+      options:
+        title: _("Options")
+        screens:
+          balanceNotificationNew_screen: true
+        dialogs:
+          balanceNotificationDel_dialog: true
+
+    balanceNotificationNew_screen: &balanceNotificationNew_screenLink
+      <<: *BalanceNotifications
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s %2s", ngettext('Balance Notification', 'Balance Notifications', 1), "[format| (%parent%)]")
+      shortcutOption: N
+      fields:
+        blacklist:
+          lastSent: true
+      fixedPositions: &balanceNotificationFixedPositions_Link
+        group0:
+          colsPerRow: 2
+          label: _('Notification options')
+          fields:
+            notificationTemplateId: 1
+            toAddress: 1
+            threshold: 1
+
+    balanceNotificationEdit_screen: &balanceNotificationEdit_screenLink
+      <<: *BalanceNotifications
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      title: _("Edit %s %2s", ngettext('Balance Notification', 'Balance Notifications', 1), "[format| (%item%)]")
+      fixedPositions:
+        <<: *balanceNotificationFixedPositions_Link
+
+  dialogs: &balanceNotification_dialogsLink
+    balanceNotificationDel_dialog: &balanceNotificationDel_dialogLink
+      <<: *BalanceNotifications
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Balance Notification', 'Balance Notifications', 1))
+      description: _("Do you want to delete this %s?", ngettext('Balance Notification', 'Balance Notifications', 1))
+      message: _("%s successfully deleted.", ngettext('Balance Notification', 'Balance Notifications', 1))
+      multiItem: 1
+      labelOnList: 1
+
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

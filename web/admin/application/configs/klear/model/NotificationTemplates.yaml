@@ -28,6 +28,7 @@ production:
         values:
           'voicemail': ngettext('Voicemail', 'Voicemails', 1)
           'fax': ngettext('Fax', 'Faxes', 1)
+          'lowbalance': _('Low balance')
 #          'limit': ngettext('Limit', 'Limits', 1)
 staging:
   _extends: production

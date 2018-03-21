@@ -186,6 +186,11 @@ msgstr[1] "Redes autorizadas"
 msgid "Automatic creation of rules"
 msgstr "Creación automática de reglas"
 
+msgid "Balance Notification"
+msgid_plural "Balance Notifications"
+msgstr[0] "Notificación Saldo"
+msgstr[1] "Notificaciones Saldo"
+
 msgid "Basic Configuration"
 msgstr "Configuración Básica"
 
@@ -205,6 +210,9 @@ msgstr[1] "Llamadas facturables"
 
 msgid "Billing Information"
 msgstr "Información de tarificación"
+
+msgid "Billing method"
+msgstr "Método tarificación"
 
 msgid "Black Lists"
 msgstr "Listas negras"
@@ -1051,6 +1059,9 @@ msgstr "Mantener DDI original"
 msgid "Language"
 msgstr "Lenguaje"
 
+msgid "Last notification sent on"
+msgstr "Último envío"
+
 msgid "Last provision date"
 msgstr "Última provisión"
 
@@ -1140,6 +1151,9 @@ msgstr "Información de login"
 msgid "Logo"
 msgstr "Logo"
 
+msgid "Low balance"
+msgstr "Saldo bajo"
+
 msgid "MAC"
 msgstr "MAC"
 
@@ -1148,6 +1162,9 @@ msgid ""
 msgstr ""
 "Dirección origen mostrada en los correos salientes. El MTA tiene que "
 "permitir este valor."
+
+msgid "Mail address where this notification will be sent"
+msgstr ""
 
 msgid "Main Settings"
 msgstr "Configuración principal"
@@ -1358,10 +1375,18 @@ msgstr "Ninguna"
 msgid "Not Registered"
 msgstr "No registrado"
 
+msgid "Notification Template"
+msgid_plural "Notifications Templates"
+msgstr[0] "Plantilla de notificación"
+msgstr[1] "Plantillas de notificación"
+
+msgid "Notification Threshold"
+msgstr "Límite de notificación"
+
 msgid "Notification content"
 msgid_plural "Notification contents"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Contenido de notificación"
+msgstr[1] "Contenidos de notificaciones"
 
 msgid "Notification options"
 msgstr "Opciones de notificación"
@@ -1370,6 +1395,11 @@ msgid "Notification template"
 msgid_plural "Notification templates"
 msgstr[0] "Plantilla de notificación"
 msgstr[1] "Plantillas de notificación"
+
+msgid ""
+"Notification will be sent when the current balance is less that this value."
+msgstr ""
+"Se enviará la notificación cuando el saldo actual sea inferior a este valor."
 
 msgid "Number"
 msgstr "Número"
@@ -1576,6 +1606,9 @@ msgid_plural "Postal codes"
 msgstr[0] "Código postal"
 msgstr[1] "Códigos postales"
 
+msgid "Postpaid"
+msgstr "Postpago"
+
 msgid "Prefix"
 msgstr "Prefijo"
 
@@ -1584,6 +1617,9 @@ msgstr "El prefijo debe ser '+' y numérico"
 
 msgid "Prefix used for national out of area calls."
 msgstr "Prefijo empleado para llamadas nacionales fuera del area."
+
+msgid "Prepaid"
+msgstr "Prepago"
 
 msgid "Prepend this field to callee"
 msgstr "Añadir este campo como prefijo del número destino"
@@ -1633,6 +1669,9 @@ msgid "Proxy Users"
 msgid_plural "Proxies Users"
 msgstr[0] "Proxy de Usuarios"
 msgstr[1] "Proxies de Usuarios"
+
+msgid "Pseudo-prepaid"
+msgstr "Pseudo-prepago"
 
 msgid "QR Code"
 msgstr "Código QR"
@@ -2112,6 +2151,9 @@ msgid "Timing"
 msgid_plural "Timing"
 msgstr[0] "Timing"
 msgstr[1] "Timings"
+
+msgid "To address"
+msgstr "Dirección destino"
 
 msgid "Toggle extension"
 msgstr "Código conmutar"

@@ -1,5 +1,7 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include BalanceNotificationsList.yaml
+#include KamTrunksCdrsList.yaml
 
 production:
   main:
@@ -13,13 +15,15 @@ production:
         items: 25
       <<: *Companies
       class: ui-silk-building
-      title: _("List of %s %2s", ngettext('Prepaid Company Balance', 'Prepaid Companies Balance', 0), "[format| (%parent%)]")
+      title: _("List of %s %2s", ngettext('Prepaid Balance', 'Prepaid Balances', 0), "[format| (%parent%)]")
       forcedValues:
         <<: *forcedBrand
       fields:
         options:
           title: _("Options")
           screens:
+            kamTrunksCdrsList_screen: true
+            balanceNotificationList_screen: true
           dialogs:
             addToBalance_dialog: true
           default: companiesEdit_screen
@@ -54,24 +58,50 @@ production:
           domainUsers: true
           relFeatures: true
         order:
+          typeIcon: true
           name: true
           billingMethod: true
           balance: true
-#      options:
-#        title: _("Options")
-#        screens:
-#          companiesNew_screen: true
-#        dialogs:
-#          addToBalance_dialog: true
+
+    # balanceNotification
+    <<: *balanceNotification_screensLink
+    balanceNotificationList_screen:
+      <<: *balanceNotificationList_screenLink
+      filterField: Company
+      parentOptionCustomizer:
+        - recordCount
+    balanceNotificationNew_screen:
+      <<: *balanceNotificationNew_screenLink
+      filterField: Company
+    balanceNotificationEdit_screen:
+      <<: *balanceNotificationEdit_screenLink
+      filterField: Company
+      
+    # kamTrunksCdrs
+    <<: *kamTrunksCdrs_screensLink
+    kamTrunksCdrsList_screen:
+      <<: *kamTrunksCdrsList_screenLink
+      class: ui-silk-application-view-list
+      filterField: Company
+      fields:
+        <<: *kamTrunksCdrs_fieldsLink
+        blacklist:
+          brandId: true
+          invoiceId: true
+      parentOptionCustomizer:
+        - recordCount
 
   dialogs: &companyBalances_dialogsLink
    addToBalance_dialog: &addToBalance_dialogLink
-    title: _("Increment balance")
-    module: default
-    controller: klear-custom-increment-balance
-    labelOnEdit: true
-    action: add-to-balance
-    class: ui-silk-money-add
+     title: _("Increment balance")
+     module: default
+     controller: klear-custom-increment-balance
+     labelOnEdit: true
+     action: add-to-balance
+     class: ui-silk-money-add
+
+   # balanceNotification dialogs:
+   <<: *balanceNotification_dialogsLink
 
 staging:
   _extends: production

@@ -34,6 +34,7 @@ production:
             emulateCompany_dialog: true
           default: retailClientsEdit_screen
         blacklist:
+          typeIcon: true
           domainUsers: true
           transformationRuleSetId: true
           postalAddress: true
@@ -95,6 +96,7 @@ production:
           domainUsers: true
           nif: true
           type: true
+          typeIcon: true
           postalAddress: true
           postalCode: true
           town: true
@@ -166,6 +168,7 @@ production:
       fields:
         blacklist:
           type: true
+          typeIcon: true
           domainUsers: true
           distributeMethod: ${auth.isNotMainOperator}
           applicationServerId: ${auth.isNotMainOperator}
