@@ -11,6 +11,8 @@ doctrine:
         Ivoz\Provider\Domain\Model\Administrator\Administrator
       Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface:
         Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServer
+      Ivoz\Provider\Domain\Model\BalanceNotification\BalanceNotificationInterface:
+        Ivoz\Provider\Domain\Model\BalanceNotification\BalanceNotification
       Ivoz\Provider\Domain\Model\Brand\BrandInterface:
         Ivoz\Provider\Domain\Model\Brand\Brand
       Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface:

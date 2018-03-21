@@ -19,7 +19,7 @@ abstract class NotificationTemplateAbstract
     protected $name;
 
     /**
-     * comment: enum:voicemail|fax|limit
+     * comment: enum:voicemail|fax|limit|lowbalance
      * @var string
      */
     protected $type;
@@ -209,6 +209,7 @@ abstract class NotificationTemplateAbstract
           0 => 'voicemail',
           1 => 'fax',
           2 => 'limit',
+          3 => 'lowbalance',
         ), 'typevalue "%s" is not an element of the valid values: %s');
 
         $this->type = $type;
