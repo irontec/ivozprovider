@@ -255,11 +255,12 @@ class ServiceAction extends RouterAction
         if ($routeLock->isOpen()) {
             $this->agi->setConnectedLine('name', $routeLock->getName() . ' opened');
             $this->agi->setConnectedLine('num', $this->agi->getExtension());
+            $this->agi->playback('enabled');
         } else {
             $this->agi->setConnectedLine('name', $routeLock->getName() . ' closed');
             $this->agi->setConnectedLine('num', $this->agi->getExtension());
+            $this->agi->playback('disabled');
         }
-        $this->agi->playback("beep");
         sleep(3);
     }
 
