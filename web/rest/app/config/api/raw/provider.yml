@@ -26,6 +26,13 @@ Ivoz\Provider\Domain\Model\Administrator\Administrator:
 Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServer:
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles'
+Ivoz\Provider\Domain\Model\BalanceNotification\BalanceNotification:
+  attributes:
+    access_control: '"ROLE_BRAND_ADMIN" in roles'
+    read_access_control:
+      ROLE_BRAND_ADMIN:
+        company:
+          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
 Ivoz\Provider\Domain\Model\BrandService\BrandService:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
