@@ -16,5 +16,8 @@ pushd /opt/irontec/ivozprovider/scheme
 
     # Check no changes are pending to be mapped
     bin/console doctrine:schema:update -vv --dump-sql | grep 'Nothing to update'
+
+    # Check no changes are generated
+    bin/console doctrine:migrations:diff | grep 'No changes detected'
 popd
 
