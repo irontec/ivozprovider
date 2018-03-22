@@ -70,6 +70,9 @@ msgstr "Add IPs or network if enabled. Otherwise all calls will be rejected."
 msgid "Add QR Code to user portal to provision GS Wave mobile softphone"
 msgstr "Add QR Code to user portal to provision GS Wave mobile softphone"
 
+msgid "Add balance"
+msgstr "Add balance"
+
 #, python-format
 msgid "Add of %s %2s"
 msgstr "Add of %s %2s"
@@ -180,6 +183,14 @@ msgstr[1] "Authorized sources"
 
 msgid "Automatic creation of rules"
 msgstr "Automatic creation of rules"
+
+msgid "Balance"
+msgstr "Balance"
+
+msgid "Balance Movement"
+msgid_plural "Balance Movements"
+msgstr[0] "Balance Movement"
+msgstr[1] "Balance Movements"
 
 msgid "Balance Notification"
 msgid_plural "Balance Notifications"
@@ -475,6 +486,9 @@ msgstr "Delete %s"
 msgid "Delete file"
 msgstr "Delete file"
 
+msgid "Movement amount"
+msgstr "Movement amount"
+
 msgid "Description"
 msgstr "Description"
 
@@ -545,6 +559,9 @@ msgid "Domain"
 msgid_plural "Domains"
 msgstr[0] "Domain"
 msgstr[1] "Domains"
+
+msgid "Done"
+msgstr "Done"
 
 msgid "Download"
 msgstr "Download"
@@ -907,6 +924,9 @@ msgid_plural "Ids"
 msgstr[0] "Id"
 msgstr[1] "Ids"
 
+msgid "Id not found"
+msgstr "Id not found"
+
 msgid "Iden"
 msgid_plural "Idens"
 msgstr[0] "Iden"
@@ -981,6 +1001,13 @@ msgstr ""
 
 msgid "Inconditional"
 msgstr "Inconditional"
+
+msgid "Increment balance"
+msgstr "Increment balance"
+
+#, php-format
+msgid "Increment balance of <strong>%s</strong>"
+msgstr "Increment balance of <strong>%s</strong>"
 
 msgid "Insert your username"
 msgstr "Insert your username"
@@ -1361,7 +1388,6 @@ msgid_plural "Notifications Templates"
 msgstr[0] "Notification template"
 msgstr[1] "Notification templates"
 
-
 msgid "Notification Threshold"
 msgstr "Notification Threshold"
 
@@ -1601,6 +1627,11 @@ msgstr "Prefix used for national out of area calls."
 
 msgid "Prepaid"
 msgstr "Prepaid"
+
+msgid "Prepaid Balance"
+msgid_plural "Prepaid Balances"
+msgstr[0] "Prepaid Balance"
+msgstr[1] "Prepaid Balances"
 
 msgid "Prepend this field to callee"
 msgstr "Prepend this field to callee"
@@ -1877,6 +1908,9 @@ msgstr "Select the brand you want to emulate."
 msgid "Select the company you want to emulate"
 msgstr "Select the company you want to emulate"
 
+msgid "Send"
+msgstr "Send"
+
 msgid "Send PAI"
 msgstr "Send PAI"
 
@@ -2059,6 +2093,10 @@ msgid ""
 msgstr ""
 "There is an inconditional call forward with that call type. You can't add "
 "call forwards"
+
+#, php-format
+msgid "There was an error: %s"
+msgstr "There was an error: %s"
 
 msgid ""
 "This DDI will be used if friend presented DDI doesn't match any of the "

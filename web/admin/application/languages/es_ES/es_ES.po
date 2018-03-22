@@ -74,6 +74,9 @@ msgstr ""
 "Insertar un código QR al portal de usuario para aprovisionar el softphone GS "
 "Wave para dispositivos móviles"
 
+msgid "Add balance"
+msgstr "Añadir saldo"
+
 #, python-format
 msgid "Add of %s %2s"
 msgstr "Añadir %s %2s"
@@ -185,6 +188,14 @@ msgstr[1] "Redes autorizadas"
 
 msgid "Automatic creation of rules"
 msgstr "Creación automática de reglas"
+
+msgid "Balance"
+msgstr "Saldo"
+
+msgid "Balance Movement"
+msgid_plural "Balance Movements"
+msgstr[0] "Ingreso"
+msgstr[1] "Ingresos"
 
 msgid "Balance Notification"
 msgid_plural "Balance Notifications"
@@ -486,6 +497,9 @@ msgstr "Borrar %s"
 msgid "Delete file"
 msgstr "Borrar fichero"
 
+msgid "Movement amount"
+msgstr "Cantidad"
+
 msgid "Description"
 msgstr "Descripción"
 
@@ -556,6 +570,9 @@ msgid "Domain"
 msgid_plural "Domains"
 msgstr[0] "Dominio"
 msgstr[1] "Dominios"
+
+msgid "Done"
+msgstr "Completo"
 
 msgid "Download"
 msgstr "Descargar"
@@ -922,6 +939,9 @@ msgid_plural "Ids"
 msgstr[0] "Id"
 msgstr[1] "Ids"
 
+msgid "Id not found"
+msgstr "Id no encontrado"
+
 msgid "Iden"
 msgid_plural "Idens"
 msgstr[0] "Iden"
@@ -996,6 +1016,13 @@ msgstr ""
 
 msgid "Inconditional"
 msgstr "Incondicional"
+
+msgid "Increment balance"
+msgstr "Incrementar saldo"
+
+#, php-format
+msgid "Increment balance of <strong>%s</strong>"
+msgstr "Incrementar saldo de <strong>%s</strong>"
 
 msgid "Insert your username"
 msgstr "Introduce tu nombre de usuario"
@@ -1621,6 +1648,11 @@ msgstr "Prefijo empleado para llamadas nacionales fuera del area."
 msgid "Prepaid"
 msgstr "Prepago"
 
+msgid "Prepaid Balance"
+msgid_plural "Prepaid Balances"
+msgstr[0] "Saldo prepago"
+msgstr[1] "Saldos prepago"
+
 msgid "Prepend this field to callee"
 msgstr "Añadir este campo como prefijo del número destino"
 
@@ -1898,6 +1930,9 @@ msgstr "Seleccione la marca que desea emular."
 msgid "Select the company you want to emulate"
 msgstr "Seleccione la empresa que desea emular"
 
+msgid "Send"
+msgstr "Enviar"
+
 msgid "Send PAI"
 msgstr "Enviar PAI"
 
@@ -2080,6 +2115,10 @@ msgid ""
 msgstr ""
 "Existe un desvío incondicional con ese tipo de llamada. No puedes añadir "
 "desvíos."
+
+#, php-format
+msgid "There was an error: %s"
+msgstr "Ocurrió un error: %s"
 
 msgid ""
 "This DDI will be used if friend presented DDI doesn't match any of the "

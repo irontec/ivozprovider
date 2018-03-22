@@ -7,6 +7,10 @@ mappers:
         modelFile: ApplicationServers,
         entity: 'Ivoz\\Provider\\Domain\\Model\\ApplicationServer\\ApplicationServer'
     }
+  - &BalanceMovements {
+        modelFile: BalanceMovements,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\BalanceMovement\\BalanceMovement'
+    }    
   - &BalanceNotifications {
         modelFile: BalanceNotifications,
         entity: 'Ivoz\\Provider\\Domain\\Model\\BalanceNotification\\BalanceNotification'

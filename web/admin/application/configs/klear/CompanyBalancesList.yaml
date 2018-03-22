@@ -1,6 +1,7 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
 #include BalanceNotificationsList.yaml
+#include BalanceMovementsList.yaml
 #include KamTrunksCdrsList.yaml
 
 production:
@@ -10,7 +11,7 @@ production:
   screens: &companyBalances_screensLink
     companyBalancesList_screen: &companyBalancesList_screenLink
       controller: list
-      rawCondition: "Company.billingMethod in ('prepaid', 'postpaid')"
+      rawCondition: "Company.billingMethod in ('prepaid', 'pseudoprepaid')"
       pagination:
         items: 25
       <<: *Companies
@@ -22,6 +23,7 @@ production:
         options:
           title: _("Options")
           screens:
+            balanceMovementList_screen: true
             kamTrunksCdrsList_screen: true
             balanceNotificationList_screen: true
           dialogs:
@@ -76,11 +78,20 @@ production:
     balanceNotificationEdit_screen:
       <<: *balanceNotificationEdit_screenLink
       filterField: Company
-      
+
+    # balanceMovements
+    <<: *balanceMovements_screensLink
+    balanceMovementsList_screen:
+      <<: *balanceMovementsList_screenLink
+      filterField: Company
+      parentOptionCustomizer:
+        - recordCount
+
     # kamTrunksCdrs
     <<: *kamTrunksCdrs_screensLink
     kamTrunksCdrsList_screen:
       <<: *kamTrunksCdrsList_screenLink
+      rawCondition: "TrunksCdr.invoice IS NULL"
       class: ui-silk-application-view-list
       filterField: Company
       fields:
