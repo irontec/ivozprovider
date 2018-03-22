@@ -4,6 +4,11 @@
 		"default_request_type": "*postpaid",
 		"default_timezone": "UTC"
 	},
+	"listen": {
+		"rpc_json": "trunks.ivozprovider.local:2012",
+		"rpc_gob": "trunks.ivozprovider.local:2013",
+		"http": "trunks.ivozprovider.local:2080"
+	},
 	"stor_db": {
 		"db_host": "data.ivozprovider.local",
 		"db_name": "ivozprovider",
