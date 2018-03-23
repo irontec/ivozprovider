@@ -10,10 +10,20 @@
 		"http": "trunks.ivozprovider.local:2080"
 	},
 	"stor_db": {
+		"db_type": "mysql",
 		"db_host": "data.ivozprovider.local",
+		"db_port": 3306,
 		"db_name": "ivozprovider",
 		"db_user": "kamailio",
 		"db_password": "ironsecret"
+	},
+	"data_db": {
+		"db_type": "redis",
+		"db_host": "data.ivozprovider.local",
+		"db_port": 6379,
+		"db_name": "10",
+		"db_user": "cgrates",
+		"db_password": ""
 	},
 	"rals": {
 		"enabled": true
