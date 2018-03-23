@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\ORM\EntityRepository;
+use Ivoz\Provider\Domain\Model\BalanceNotification\BalanceNotificationInterface;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateRepository;
 
 /**
@@ -13,4 +14,21 @@ use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateReposito
  */
 class NotificationTemplateDoctrineRepository extends EntityRepository implements NotificationTemplateRepository
 {
+    /**
+     * @inheritdoc
+     * @see NotificationTemplateRepository::findTemplateByBalanceNotification
+     */
+    public function findTemplateByBalanceNotification(BalanceNotificationInterface $balanceNotification)
+    {
+        $notificationTemplate = $balanceNotification->getNotificationTemplate();
+        if ($notificationTemplate) {
+            return $notificationTemplate;
+        }
+
+        return $this->findOneBy([
+            "brand" => null,
+            "type" => "lowbalance"
+        ]);
+    }
+
 }

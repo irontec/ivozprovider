@@ -7,7 +7,7 @@ use Ivoz\Core\Domain\Event\EntityEventInterface;
 
 class EntityEventSubscriber implements DomainEventSubscriberInterface
 {
-    protected $events = [];
+    use DomainEventSubscriberTrait;
 
     /**
      * @param DomainEventInterface $domainEvent
@@ -21,38 +21,6 @@ class EntityEventSubscriber implements DomainEventSubscriberInterface
         }
 
         $this->events[] = $domainEvent;
-    }
-
-    /**
-     * @return EntityEventInterface[]
-     */
-    public function getEvents()
-    {
-        return $this->events;
-    }
-
-    /**
-     * @return void
-     */
-    public function clearEvents()
-    {
-        $this->events = [];
-    }
-
-    /**
-     * @return EntityEventInterface
-     */
-    public function shiftEvent()
-    {
-        return array_shift($this->events);
-    }
-
-    /**
-     * @return CommandEventInterface
-     */
-    public function popEvent()
-    {
-        return array_pop($this->events);
     }
 
     /**
