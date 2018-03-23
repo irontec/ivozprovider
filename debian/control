@@ -71,7 +71,8 @@ Depends: ivozprovider-profile-common (=${binary:Version}),
     mysql-server,
     ivozprovider-scheme (=${binary:Version}),
     libstring-crc32-perl,
-    libgearman-client-perl
+    libgearman-client-perl,
+    redis-server
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Data System Profile
  .
@@ -130,8 +131,7 @@ Depends: ivozprovider-profile-common,
         ivozprovider-cgrates-tools,
         ivozprovider-cgrates-config (=${binary:Version}),
         ivozprovider-rtpengine,
-        ivozprovider-rtpproxy,
-        redis-server
+        ivozprovider-rtpproxy
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Profile files for a Proxy Systems
  .
