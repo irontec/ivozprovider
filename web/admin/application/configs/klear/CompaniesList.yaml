@@ -35,6 +35,7 @@ production:
             emulateCompany_dialog: true
           default: companiesEdit_screen
         blacklist:
+          typeIcon: true
           transformationRuleSetId: true
           postalAddress: true
           postalCode: true
@@ -94,6 +95,7 @@ production:
         blacklist:
           nif: true
           type: true
+          typeIcon: true
           postalAddress: true
           postalCode: true
           town: true
@@ -167,6 +169,7 @@ production:
       fields:
         blacklist:
           type: true
+          typeIcon: true
           distributeMethod: ${auth.isNotMainOperator}
           applicationServerId: ${auth.isNotMainOperator}
           mediaRelaySet: ${auth.isNotMainOperator}

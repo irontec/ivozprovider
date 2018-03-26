@@ -24,6 +24,7 @@ production:
             notificationTemplatesEdit_screen: true
             notificationTemplatesContentsVoicemailList_screen: true
             notificationTemplatesContentsFaxList_screen: true
+            notificationTemplatesContentsLowBalanceList_screen: true
           dialogs:
             notificationTemplatesDel_dialog: true
           default: notificationTemplatesEdit_screen
@@ -90,6 +91,19 @@ production:
       <<: *notificationTemplatesContentsFaxEdit_screenLink
       filterField: notificationTemplate
 
+    # notificationTemplatesLowBalanceContents screens:
+    notificationTemplatesContentsLowBalanceList_screen:
+      <<: *notificationTemplatesContentsLowBalanceList_screenLink
+      filterField: notificationTemplate
+      parentOptionCustomizer:
+        - IvozProvider_Klear_Options_OptionsCustomizerFilterForNotificationLowBalance
+        - recordCount
+    notificationTemplatesContentsLowBalanceNew_screen:
+      <<: *notificationTemplatesContentsLowBalanceNew_screenLink
+      filterField: notificationTemplate
+    notificationTemplatesContentsLowBalanceEdit_screen:
+      <<: *notificationTemplatesContentsLowBalanceEdit_screenLink
+      filterField: notificationTemplate
 
   dialogs: &notificationTemplates_dialogsLink
     notificationTemplatesDel_dialog: &notificationTemplatesDel_dialogLink

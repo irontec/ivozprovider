@@ -20,6 +20,7 @@ production:
           body: true
           voicemailVariables: true
           faxVariables: true
+          lowBalanceVariables: true
         options:
           title: _("Options")
           screens:
@@ -48,6 +49,7 @@ production:
           fromAddress: true
           voicemailVariables: true
           faxVariables: true
+          lowBalanceVariables: true
           subject: true
           body: true
       fixedPositions: &notificationTemplatesContentsFixedPositions_Link
@@ -68,6 +70,7 @@ production:
           fields:
             voicemailVariables: 1
             faxVariables: 1
+            lowBalanceVariables: 1
             subject: 1
             body: 1
     notificationTemplatesContentsEdit_screen: &notificationTemplatesContentsEdit_screenLink
@@ -108,6 +111,7 @@ production:
           <<: *notificationTemplatesContentsFieldsOrderPositions_Link
         blacklist:
           faxVariables: true
+          lowBalanceVariables: true
     notificationTemplatesContentsVoicemailEdit_screen: &notificationTemplatesContentsVoicemailEdit_screenLink
       <<: *notificationTemplatesContentsEdit_screenLink
       fields:
@@ -115,6 +119,7 @@ production:
           <<: *notificationTemplatesContentsFieldsOrderPositions_Link
         blacklist:
           faxVariables: true
+          lowBalanceVariables: true
 
     ###################################################################################################################
     # Screens for Fax Notification templates
@@ -144,6 +149,7 @@ production:
           <<: *notificationTemplatesContentsFieldsOrderPositions_Link
         blacklist:
           voicemailVariables: true
+          lowBalanceVariables: true
     notificationTemplatesContentsFaxEdit_screen: &notificationTemplatesContentsFaxEdit_screenLink
       <<: *notificationTemplatesContentsEdit_screenLink
       fields:
@@ -151,6 +157,45 @@ production:
           <<: *notificationTemplatesContentsFieldsOrderPositions_Link
         blacklist:
           voicemailVariables: true
+          lowBalanceVariables: true
+
+    ###################################################################################################################
+    # Screens for LowBalance Notification templates
+    # This screens is like the generic one but hidding the other substitution variables helpers
+    ###################################################################################################################
+    notificationTemplatesContentsLowBalanceList_screen: &notificationTemplatesContentsLowBalanceList_screenLink
+      <<: *notificationTemplatesContentsList_screenLink
+      fields:
+        <<: *notificationTemplatesContents_fieldsLink
+        options:
+          title: _("Options")
+          screens:
+            notificationTemplatesContentsLowBalanceEdit_screen: true
+          dialogs:
+            notificationTemplatesContentsDel_dialog: true
+          default: notificationTemplatesContentsLowBalanceEdit_screen
+      options:
+        title: _("Options")
+        screens:
+          notificationTemplatesContentsLowBalanceNew_screen: true
+        dialogs:
+          notificationTemplatesContentsDel_dialog: true
+    notificationTemplatesContentsLowBalanceNew_screen: &notificationTemplatesContentsLowBalanceNew_screenLink
+      <<: *notificationTemplatesContentsNew_screenLink
+      fields:
+        order:
+          <<: *notificationTemplatesContentsFieldsOrderPositions_Link
+        blacklist:
+          voicemailVariables: true
+          faxVariables: true
+    notificationTemplatesContentsLowBalanceEdit_screen: &notificationTemplatesContentsLowBalanceEdit_screenLink
+      <<: *notificationTemplatesContentsEdit_screenLink
+      fields:
+        order:
+          <<: *notificationTemplatesContentsFieldsOrderPositions_Link
+        blacklist:
+          voicemailVariables: true
+          faxVariables: true
 
   dialogs: &notificationTemplatesContents_dialogsLink
     notificationTemplatesContentsDel_dialog: &notificationTemplatesContentsDel_dialogLink

@@ -70,6 +70,9 @@ msgstr "Add IPs or network if enabled. Otherwise all calls will be rejected."
 msgid "Add QR Code to user portal to provision GS Wave mobile softphone"
 msgstr "Add QR Code to user portal to provision GS Wave mobile softphone"
 
+msgid "Add balance"
+msgstr "Add balance"
+
 #, python-format
 msgid "Add of %s %2s"
 msgstr "Add of %s %2s"
@@ -181,6 +184,19 @@ msgstr[1] "Authorized sources"
 msgid "Automatic creation of rules"
 msgstr "Automatic creation of rules"
 
+msgid "Balance"
+msgstr "Balance"
+
+msgid "Balance Movement"
+msgid_plural "Balance Movements"
+msgstr[0] "Balance Movement"
+msgstr[1] "Balance Movements"
+
+msgid "Balance Notification"
+msgid_plural "Balance Notifications"
+msgstr[0] "Balance Notification"
+msgstr[1] "Balance Notifications"
+
 msgid "Basic Configuration"
 msgstr "Basic Configuration"
 
@@ -200,6 +216,9 @@ msgstr[1] "Billable calls"
 
 msgid "Billing Information"
 msgstr "Billing Information"
+
+msgid "Billing method"
+msgstr "Billing method"
 
 msgid "Black Lists"
 msgstr "Black Lists"
@@ -467,6 +486,9 @@ msgstr "Delete %s"
 msgid "Delete file"
 msgstr "Delete file"
 
+msgid "Movement amount"
+msgstr "Movement amount"
+
 msgid "Description"
 msgstr "Description"
 
@@ -537,6 +559,9 @@ msgid "Domain"
 msgid_plural "Domains"
 msgstr[0] "Domain"
 msgstr[1] "Domains"
+
+msgid "Done"
+msgstr "Done"
 
 msgid "Download"
 msgstr "Download"
@@ -899,6 +924,9 @@ msgid_plural "Ids"
 msgstr[0] "Id"
 msgstr[1] "Ids"
 
+msgid "Id not found"
+msgstr "Id not found"
+
 msgid "Iden"
 msgid_plural "Idens"
 msgstr[0] "Iden"
@@ -974,6 +1002,13 @@ msgstr ""
 msgid "Inconditional"
 msgstr "Inconditional"
 
+msgid "Increment balance"
+msgstr "Increment balance"
+
+#, php-format
+msgid "Increment balance of <strong>%s</strong>"
+msgstr "Increment balance of <strong>%s</strong>"
+
 msgid "Insert your username"
 msgstr "Insert your username"
 
@@ -1036,6 +1071,9 @@ msgstr "Keep Original DDI"
 
 msgid "Language"
 msgstr "Language"
+
+msgid "Last notification sent on"
+msgstr "Last notification sent on"
 
 msgid "Last provision date"
 msgstr "Last provision date"
@@ -1125,6 +1163,9 @@ msgstr "Login Info"
 msgid "Logo"
 msgstr "Logo"
 
+msgid "Low balance"
+msgstr "Low balance"
+
 msgid "MAC"
 msgstr "MAC"
 
@@ -1132,6 +1173,9 @@ msgid ""
 "Mail address shown as source when sending mails. MTA must allow this value."
 msgstr ""
 "Mail address shown as source when sending mails. MTA must allow this value."
+
+msgid "Mail address where this notification will be sent"
+msgstr ""
 
 msgid "Main Settings"
 msgstr "Main Settings"
@@ -1339,6 +1383,14 @@ msgstr "None"
 msgid "Not Registered"
 msgstr "Not Registered"
 
+msgid "Notification Template"
+msgid_plural "Notifications Templates"
+msgstr[0] "Notification template"
+msgstr[1] "Notification templates"
+
+msgid "Notification Threshold"
+msgstr "Notification Threshold"
+
 msgid "Notification content"
 msgid_plural "Notification contents"
 msgstr[0] "Notification content"
@@ -1351,6 +1403,11 @@ msgid "Notification template"
 msgid_plural "Notification templates"
 msgstr[0] "Notification template"
 msgstr[1] "Notification templates"
+
+msgid ""
+"Notification will be sent when the current balance is less that this value."
+msgstr ""
+"Notification will be sent when the current balance is less that this value."
 
 msgid "Number"
 msgstr "Number"
@@ -1556,6 +1613,9 @@ msgid_plural "Postal codes"
 msgstr[0] "Postal code"
 msgstr[1] "Postal codes"
 
+msgid "Postpaid"
+msgstr "Postpaid"
+
 msgid "Prefix"
 msgstr "Prefix"
 
@@ -1564,6 +1624,14 @@ msgstr "Prefix must be '+' and numeric-only"
 
 msgid "Prefix used for national out of area calls."
 msgstr "Prefix used for national out of area calls."
+
+msgid "Prepaid"
+msgstr "Prepaid"
+
+msgid "Prepaid Balance"
+msgid_plural "Prepaid Balances"
+msgstr[0] "Prepaid Balance"
+msgstr[1] "Prepaid Balances"
 
 msgid "Prepend this field to callee"
 msgstr "Prepend this field to callee"
@@ -1613,6 +1681,9 @@ msgid "Proxy Users"
 msgid_plural "Proxies Users"
 msgstr[0] "Proxy Users"
 msgstr[1] "Proxies Users"
+
+msgid "Pseudo-prepaid"
+msgstr "Pseudo-prepaid"
 
 msgid "QR Code"
 msgstr "QR Code"
@@ -1837,6 +1908,9 @@ msgstr "Select the brand you want to emulate."
 msgid "Select the company you want to emulate"
 msgstr "Select the company you want to emulate"
 
+msgid "Send"
+msgstr "Send"
+
 msgid "Send PAI"
 msgstr "Send PAI"
 
@@ -2020,6 +2094,10 @@ msgstr ""
 "There is an inconditional call forward with that call type. You can't add "
 "call forwards"
 
+#, php-format
+msgid "There was an error: %s"
+msgstr "There was an error: %s"
+
 msgid ""
 "This DDI will be used if friend presented DDI doesn't match any of the "
 "company DDIs"
@@ -2089,6 +2167,9 @@ msgid "Timing"
 msgid_plural "Timing"
 msgstr[0] "Timing"
 msgstr[1] "Timings"
+
+msgid "To address"
+msgstr "To address"
 
 msgid "Toggle extension"
 msgstr "Toggle extension"

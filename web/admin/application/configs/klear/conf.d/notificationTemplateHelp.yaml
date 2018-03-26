@@ -29,3 +29,16 @@ faxVariablesHelp: &faxVariablesHelp
                <b>&#36;{FAX_DST}</b>     <i>Received DDI number</i><br/>
                <b>&#36;{FAX_DATE}</b>    <i>Received Date </i><br/>
             </pre>'
+
+
+lowBalanceVariablesHelp: &lowBalanceVariablesHelp
+    info:
+      type: box
+      position: left
+      icon: help
+      label: _("Need help?")
+      text: 'You can use these balance variables in subject and body:<br/>
+            <pre>
+               <b>&#36;{BALANCE_COMPANY}</b> <i>Company name</i><br/>
+               <b>&#36;{BALANCE_AMOUNT}</b>  <i>Current balance amount</i><br/>
+            </pre>'

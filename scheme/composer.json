@@ -57,7 +57,8 @@
         "doctrine/orm": "^2.5",
         "doctrine/doctrine-migrations-bundle": "^1.2",
         "incenteev/composer-parameter-handler": "^2.0",
-        "ramsey/uuid": "^3.7"
+        "ramsey/uuid": "^3.7",
+        "symfony/swiftmailer-bundle": "^3.1"
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.0",

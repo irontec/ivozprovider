@@ -59,7 +59,7 @@ production:
       readonly: true
       source:
         class: IvozProvider_Klear_Ghost_NotificationTemplate
-        method: getVoicemailVariables
+        method: getVariables
       <<: *voicemailVariablesHelp
     faxVariables:
       title: _('Substitution variables')
@@ -68,8 +68,17 @@ production:
       readonly: true
       source:
         class: IvozProvider_Klear_Ghost_NotificationTemplate
-        method: getFaxVariables
+        method: getVariables
       <<: *faxVariablesHelp
+    lowBalanceVariables:
+      title: _('Substitution variables')
+      type: ghost
+      maxLength: 255
+      readonly: true
+      source:
+        class: IvozProvider_Klear_Ghost_NotificationTemplate
+        method: getVariables
+      <<: *lowBalanceVariablesHelp
     subject:
       title: _('Subject')
       trim: both

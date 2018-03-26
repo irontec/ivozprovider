@@ -1,0 +1,16 @@
+Ivoz\Provider\Domain\Model\BalanceMovement\BalanceMovement:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\BalanceMovementDoctrineRepository
+  type: entity
+  table: BalanceMovements
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  lifecycleCallbacks:
+    postLoad:
+      - initChangelog

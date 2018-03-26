@@ -1,0 +1,16 @@
+Ivoz\Provider\Domain\Model\BalanceNotification\BalanceNotification:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\BalanceNotificationDoctrineRepository
+  type: entity
+  table: BalanceNotifications
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  lifecycleCallbacks:
+    postLoad:
+      - initChangelog

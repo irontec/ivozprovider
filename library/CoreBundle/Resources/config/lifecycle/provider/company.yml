@@ -56,3 +56,15 @@ services:
     tags:
       - { name: provider.lifecycle.company.post_remove, priority: 10 }
     arguments: ~
+
+  ##################################
+  ## on_commit
+  ##################################
+  Ivoz\Provider\Domain\Service\Company\SearchBrokenThresholds:
+    tags:
+      - { name: provider.lifecycle.company.on_commit, priority: 10 }
+    arguments:
+      $balanceNotificationRepository:
+        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\BalanceNotification\\BalanceNotification")'
+      $domainEventPublisher:
+        '@Ivoz\Core\Domain\Service\DomainEventPublisher'

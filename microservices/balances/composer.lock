@@ -4,15 +4,15 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "99043bbef1a14e8beebc76b4f8595b87",
+    "content-hash": "f8f3923ee9c1fec41c243943bec720e7",
     "packages": [
         {
             "name": "beberlei/assert",
-            "version": "2.9.2.0",
+            "version": "2.9.3.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/beberlei/assert",
-                "reference": "2d555f72f3f4ff9e72a7bc17cb8a53c86737c8a0",
+                "reference": "7d8108458bbe3d063dc3315278b2001a7156fade",
                 "shasum": null
             },
             "require": {
@@ -1001,6 +1001,59 @@
             }
         },
         {
+            "name": "egulias/email-validator",
+            "version": "2.1.3.0",
+            "dist": {
+                "type": "path",
+                "url": "../../library/vendor/egulias/email-validator",
+                "reference": "1bec00a10039b823cc94eef4eddd47dcd3b2ca04",
+                "shasum": null
+            },
+            "require": {
+                "doctrine/lexer": "^1.0.1",
+                "php": ">= 5.5"
+            },
+            "require-dev": {
+                "dominicsayers/isemail": "dev-master",
+                "phpunit/phpunit": "^4.8.35",
+                "satooshi/php-coveralls": "^1.0.1"
+            },
+            "suggest": {
+                "ext-intl": "PHP Internationalization Libraries are required to use the SpoofChecking validation"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Egulias\\EmailValidator\\": "EmailValidator"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eduardo Gulias Davis"
+                }
+            ],
+            "description": "A library for validating emails against several RFCs",
+            "homepage": "https://github.com/egulias/EmailValidator",
+            "keywords": [
+                "email",
+                "emailvalidation",
+                "emailvalidator",
+                "validation",
+                "validator"
+            ],
+            "transport-options": {
+                "symlink": true
+            }
+        },
+        {
             "name": "fig/link-util",
             "version": "1.0.0.0",
             "dist": {
@@ -1057,17 +1110,12 @@
         },
         {
             "name": "graze/guzzle-jsonrpc",
-            "version": "3.2.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/graze/guzzle-jsonrpc.git",
-                "reference": "c4513b7659534792b906723158a8388f54275a61"
-            },
+            "version": "3.2.1.0",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/graze/guzzle-jsonrpc/zipball/c4513b7659534792b906723158a8388f54275a61",
+                "type": "path",
+                "url": "../../library/vendor/graze/guzzle-jsonrpc",
                 "reference": "c4513b7659534792b906723158a8388f54275a61",
-                "shasum": ""
+                "shasum": null
             },
             "require": {
                 "guzzlehttp/guzzle": "^6.0",
@@ -1090,7 +1138,11 @@
                     "Graze\\GuzzleHttp\\JsonRpc\\": "src"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "Graze\\GuzzleHttp\\JsonRpc\\Test\\": "test/src"
+                }
+            },
             "license": [
                 "MIT"
             ],
@@ -1103,7 +1155,7 @@
             "description": "JSON-RPC 2.0 client for Guzzle",
             "homepage": "https://github.com/graze/guzzle-jsonrpc",
             "keywords": [
-                "Guzzle",
+                "guzzle",
                 "guzzlehttp",
                 "http",
                 "json",
@@ -1112,21 +1164,18 @@
                 "ring",
                 "rpc"
             ],
-            "time": "2016-02-16T15:18:21+00:00"
+            "transport-options": {
+                "symlink": true
+            }
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "6.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "f4db5a78a5ea468d4831de7f0bf9d9415e348699"
-            },
+            "version": "6.3.0.0",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/f4db5a78a5ea468d4831de7f0bf9d9415e348699",
+                "type": "path",
+                "url": "../../library/vendor/guzzlehttp/guzzle",
                 "reference": "f4db5a78a5ea468d4831de7f0bf9d9415e348699",
-                "shasum": ""
+                "shasum": null
             },
             "require": {
                 "guzzlehttp/promises": "^1.0",
@@ -1155,7 +1204,11 @@
                     "GuzzleHttp\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "GuzzleHttp\\Tests\\": "tests/"
+                }
+            },
             "license": [
                 "MIT"
             ],
@@ -1169,29 +1222,26 @@
             "description": "Guzzle is a PHP HTTP client library",
             "homepage": "http://guzzlephp.org/",
             "keywords": [
+                "HTTP client",
                 "client",
                 "curl",
                 "framework",
                 "http",
-                "http client",
                 "rest",
                 "web service"
             ],
-            "time": "2017-06-22T18:50:49+00:00"
+            "transport-options": {
+                "symlink": true
+            }
         },
         {
             "name": "guzzlehttp/promises",
-            "version": "v1.3.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/guzzle/promises.git",
-                "reference": "a59da6cf61d80060647ff4d3eb2c03a2bc694646"
-            },
+            "version": "1.3.1.0",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/promises/zipball/a59da6cf61d80060647ff4d3eb2c03a2bc694646",
+                "type": "path",
+                "url": "../../library/vendor/guzzlehttp/promises",
                 "reference": "a59da6cf61d80060647ff4d3eb2c03a2bc694646",
-                "shasum": ""
+                "shasum": null
             },
             "require": {
                 "php": ">=5.5.0"
@@ -1213,7 +1263,14 @@
                     "src/functions_include.php"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "scripts": {
+                "test": [
+                    "vendor/bin/phpunit"
+                ],
+                "test-ci": [
+                    "vendor/bin/phpunit --coverage-text"
+                ]
+            },
             "license": [
                 "MIT"
             ],
@@ -1228,21 +1285,18 @@
             "keywords": [
                 "promise"
             ],
-            "time": "2016-12-20T10:07:11+00:00"
+            "transport-options": {
+                "symlink": true
+            }
         },
         {
             "name": "guzzlehttp/psr7",
-            "version": "1.4.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/guzzle/psr7.git",
-                "reference": "f5b8a8512e2b58b0071a7280e39f14f72e05d87c"
-            },
+            "version": "1.4.2.0",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/f5b8a8512e2b58b0071a7280e39f14f72e05d87c",
+                "type": "path",
+                "url": "../../library/vendor/guzzlehttp/psr7",
                 "reference": "f5b8a8512e2b58b0071a7280e39f14f72e05d87c",
-                "shasum": ""
+                "shasum": null
             },
             "require": {
                 "php": ">=5.4.0",
@@ -1268,7 +1322,6 @@
                     "src/functions_include.php"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1293,7 +1346,9 @@
                 "uri",
                 "url"
             ],
-            "time": "2017-03-20T17:10:46+00:00"
+            "transport-options": {
+                "symlink": true
+            }
         },
         {
             "name": "jdorn/sql-formatter",
@@ -1690,17 +1745,12 @@
         },
         {
             "name": "psr/http-message",
-            "version": "1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-fig/http-message.git",
-                "reference": "f6561bf28d520154e4b0ec72be95418abe6d9363"
-            },
+            "version": "1.0.1.0",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/http-message/zipball/f6561bf28d520154e4b0ec72be95418abe6d9363",
+                "type": "path",
+                "url": "../../library/vendor/psr/http-message",
                 "reference": "f6561bf28d520154e4b0ec72be95418abe6d9363",
-                "shasum": ""
+                "shasum": null
             },
             "require": {
                 "php": ">=5.3.0"
@@ -1716,7 +1766,6 @@
                     "Psr\\Http\\Message\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1736,7 +1785,9 @@
                 "request",
                 "response"
             ],
-            "time": "2016-08-06T14:39:51+00:00"
+            "transport-options": {
+                "symlink": true
+            }
         },
         {
             "name": "psr/link",
@@ -1828,12 +1879,17 @@
         },
         {
             "name": "psr/simple-cache",
-            "version": "1.0.1.0",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/simple-cache.git",
+                "reference": "408d5eafb83c57f6365a3ca330ff23aa4a5fa39b"
+            },
             "dist": {
-                "type": "path",
-                "url": "../../library/vendor/psr/simple-cache",
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/simple-cache/zipball/408d5eafb83c57f6365a3ca330ff23aa4a5fa39b",
                 "reference": "408d5eafb83c57f6365a3ca330ff23aa4a5fa39b",
-                "shasum": null
+                "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0"
@@ -1849,6 +1905,7 @@
                     "Psr\\SimpleCache\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1866,9 +1923,7 @@
                 "psr-16",
                 "simple-cache"
             ],
-            "transport-options": {
-                "symlink": true
-            }
+            "time": "2017-10-23T01:57:42+00:00"
         },
         {
             "name": "ramsey/uuid",
@@ -1967,6 +2022,62 @@
                 "issues": "https://github.com/ramsey/uuid/issues",
                 "source": "https://github.com/ramsey/uuid"
             },
+            "transport-options": {
+                "symlink": true
+            }
+        },
+        {
+            "name": "swiftmailer/swiftmailer",
+            "version": "6.0.2.0",
+            "dist": {
+                "type": "path",
+                "url": "../../library/vendor/swiftmailer/swiftmailer",
+                "reference": "412333372fb6c8ffb65496a2bbd7321af75733fc",
+                "shasum": null
+            },
+            "require": {
+                "egulias/email-validator": "~2.0",
+                "php": ">=7.0.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9.1",
+                "symfony/phpunit-bridge": "~3.3@dev"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "6.0-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "lib/swift_required.php"
+                ]
+            },
+            "autoload-dev": {
+                "psr-0": {
+                    "Swift_": "tests/unit"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Chris Corbyn"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Swiftmailer, free feature-rich PHP mailer",
+            "homepage": "http://swiftmailer.symfony.com",
+            "keywords": [
+                "email",
+                "mail",
+                "mailer"
+            ],
             "transport-options": {
                 "symlink": true
             }
@@ -2347,6 +2458,64 @@
             }
         },
         {
+            "name": "symfony/swiftmailer-bundle",
+            "version": "3.2.1.0",
+            "dist": {
+                "type": "path",
+                "url": "../../library/vendor/symfony/swiftmailer-bundle",
+                "reference": "20e71c247a5a43ceb655db9712394d08c09b33ef",
+                "shasum": null
+            },
+            "require": {
+                "php": ">=7.0.0",
+                "swiftmailer/swiftmailer": "^6.0.1",
+                "symfony/config": "~2.8|~3.3|~4.0",
+                "symfony/dependency-injection": "~2.7|~3.3|~4.0",
+                "symfony/http-kernel": "~2.7|~3.3|~4.0"
+            },
+            "require-dev": {
+                "symfony/console": "~2.7|~3.3|~4.0",
+                "symfony/framework-bundle": "~2.7|~3.3|~4.0",
+                "symfony/phpunit-bridge": "~3.3|~4.0",
+                "symfony/yaml": "~2.7|~3.3|~4.0"
+            },
+            "suggest": {
+                "psr/log": "Allows logging"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Bundle\\SwiftmailerBundle\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony SwiftmailerBundle",
+            "homepage": "http://symfony.com",
+            "transport-options": {
+                "symlink": true
+            }
+        },
+        {
             "name": "symfony/symfony",
             "version": "3.4.6.0",
             "dist": {
@@ -2503,11 +2672,11 @@
         },
         {
             "name": "twig/twig",
-            "version": "2.4.6.0",
+            "version": "2.4.7.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/twig/twig",
-                "reference": "d2117ec118c1ff3d28ccddca8212d82787a4809f",
+                "reference": "69aacd44dbbaa3199d5afb68605c996d577896fc",
                 "shasum": null
             },
             "require": {
@@ -2516,8 +2685,8 @@
             },
             "require-dev": {
                 "psr/container": "^1.0",
-                "symfony/debug": "~2.7",
-                "symfony/phpunit-bridge": "~3.3@dev"
+                "symfony/debug": "^2.7",
+                "symfony/phpunit-bridge": "^3.3"
             },
             "type": "library",
             "extra": {
