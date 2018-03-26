@@ -1,0 +1,11 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Graze\GuzzleHttp\JsonRpc\Client:
+    factory: ['Graze\GuzzleHttp\JsonRpc\Client', 'factory']
+    arguments: ['trunks.ivozprovider.local:2080/jsonrpc']
+
+

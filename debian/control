@@ -70,6 +70,7 @@ Pre-Depends: bind9
 Depends: ivozprovider-profile-common (=${binary:Version}),
     mysql-server,
     ivozprovider-scheme (=${binary:Version}),
+    ivozprovider-balances (=${binary:Version}),
     libstring-crc32-perl,
     libgearman-client-perl,
     redis-server
@@ -173,7 +174,7 @@ Package: ivozprovider-asterisk-agi
 Architecture: all
 Section: php
 Priority: optional
-Depends: ivozprovider-common-library (=${binary:Version}), php-mailparse
+Depends: ivozprovider-common-library (=${binary:Version})
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Asterik - Gateway Interface Zend Application
  .
@@ -221,7 +222,7 @@ Description: IVOZ Provider - Rest API files
 Package: ivozprovider-common-library
 Architecture: all
 Section: php
-Depends: php7.0-cli, php7.0-mysql, php7.0-mbstring, php7.0-xml, acl, klear-library
+Depends: php7.0-cli, php7.0-mysql, php7.0-mbstring, php7.0-xml, acl, klear-library, php-mailparse
 Provides: ivozprovider-data-library
 Conflicts: ivozprovider-data-library
 Priority: optional
@@ -242,10 +243,18 @@ Description: IVOZ Provider - Recordings - Symfony microservice
 Package: ivozprovider-async-workers
 Architecture: all
 Priority: optional
-Depends: ivozprovider-common-library (=${binary:Version}), php-mailparse, php-gearman
+Depends: ivozprovider-common-library (=${binary:Version}), php-gearman
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Async Workers - Symfony microservice
  .
+
+Package: ivozprovider-balances
+Architecture: all
+Priority: optional
+Depends: ivozprovider-common-library (=${binary:Version}), php-gearman
+Homepage: http://www.irontec.com
+Description: IVOZ Provider - Rating updater - Symfony microservice
+  .
 
 Package: ivozprovider-doc
 Architecture: all

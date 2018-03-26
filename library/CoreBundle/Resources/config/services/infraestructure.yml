@@ -1,0 +1,6 @@
+imports:
+  - { resource: '@CoreBundle/Resources/config/services/infraestructure/gearmand.yml' }
+  - { resource: '@CoreBundle/Resources/config/services/infraestructure/asterisk.yml' }
+  - { resource: '@CoreBundle/Resources/config/services/infraestructure/doctrine.yml' }
+  - { resource: '@CoreBundle/Resources/config/services/infraestructure/http.yml' }
+  - { resource: '@CoreBundle/Resources/config/services/infraestructure/cgrates.yml' }

@@ -20,3 +20,8 @@ pushd /opt/irontec/ivozprovider/microservices/workers
     php bin/console cache:clear -e prod
     php bin/console cache:clear -e dev --no-warmup
 popd
+
+pushd /opt/irontec/ivozprovider/microservices/balances
+    php bin/console cache:clear -e prod
+    php bin/console cache:clear -e dev --no-warmup
+popd

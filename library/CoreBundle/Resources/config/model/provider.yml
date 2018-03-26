@@ -1,0 +1,2 @@
+imports:
+  - { resource: "@CoreBundle/Resources/config/model/provider/company.yml" }

@@ -1,0 +1,31 @@
+imports:
+  - { resource: "@CoreBundle/Resources/config/lifecycle/provider/application_server.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/provider/brand.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/provider/brand_service.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/provider/call_forward_setting.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/provider/company.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/provider/domain.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/provider/extension.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/provider/faxes_in_out.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/provider/friend.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/provider/invoice.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/provider/locution.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/provider/music_on_hold.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/provider/outgoing_routing.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/provider/peering_contract.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/provider/peer_server.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/provider/pick_up_rel_user.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/provider/queue.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/provider/retail_account.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/provider/routing_pattern_group.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/provider/routing_pattern.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/provider/terminal_model.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/provider/terminal.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/provider/transformation_rule_set.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/provider/transformation_rule.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/provider/user.yml" }
+
+services:
+  _defaults:
+    autowire: true
+    public: false

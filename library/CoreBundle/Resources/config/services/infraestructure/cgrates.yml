@@ -1,0 +1,10 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Ivoz\Core\Infrastructure\Service\Cgrates\JsonRcpClient:
+    arguments:
+      $client: '@Graze\GuzzleHttp\JsonRpc\Client'
+

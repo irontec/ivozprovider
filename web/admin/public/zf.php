@@ -12,6 +12,12 @@
     'logger',
     $kernel->getContainer()->get('monolog.logger.provisioning')
 );
+\Zend_Registry::set(
+    'container',
+    $kernel->getContainer()
+);
+
+
 
 // Define path to application directory
 defined('APPLICATION_PATH')

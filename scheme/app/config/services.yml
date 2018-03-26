@@ -1,5 +1,3 @@
-imports:
-  - { resource: "@CoreBundle/Resources/config/services/doctrine.yml" }
 
 services:
   _defaults:

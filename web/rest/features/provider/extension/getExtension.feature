@@ -63,6 +63,8 @@ Feature: Retrieve extensions
               "externallyextraopts": "",
               "recordingsLimitMB": null,
               "recordingsLimitEmail": "",
+              "billingMethod": "prepaid",
+              "balance": "1.2",
               "id": 1,
               "language": 1,
               "mediaRelaySets": 1,

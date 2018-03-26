@@ -1,0 +1,83 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+
+production:
+  main:
+    module: klearMatrix
+    defaultScreen: companyBalancesList_screen
+  screens: &companyBalances_screensLink
+    companyBalancesList_screen: &companyBalancesList_screenLink
+      controller: list
+      rawCondition: "Company.billingMethod in ('prepaid', 'postpaid')"
+      pagination:
+        items: 25
+      <<: *Companies
+      class: ui-silk-building
+      title: _("List of %s %2s", ngettext('Prepaid Company Balance', 'Prepaid Companies Balance', 0), "[format| (%parent%)]")
+      forcedValues:
+        <<: *forcedBrand
+      fields:
+        options:
+          title: _("Options")
+          screens:
+          dialogs:
+            addToBalance_dialog: true
+          default: companiesEdit_screen
+        blacklist:
+          transformationRuleSetId: true
+          postalAddress: true
+          postalCode: true
+          town: true
+          province: true
+          countryName: true
+          outgoingDDIId: true
+          outgoingDdiRuleId: true
+          registryData: true
+          maxCalls: true
+          defaultTimezoneId: true
+          distributeMethod: true
+          applicationServerId: true
+          mediaRelaySetsId: true
+          ipFilter: true
+          languageId: true
+          onDemandRecord: true
+          onDemandRecordCode: true
+          recordingsLimitMB: true
+          recordingsLimitEmail: true
+          recordingsDiskUsage: true
+          externallyExtraOpts: true
+          voicemailNotificationTemplateId: true
+          faxNotificationTemplateId: true
+          languageId: true
+          nif: true
+          countryId: true
+          domainUsers: true
+          relFeatures: true
+        order:
+          name: true
+          billingMethod: true
+          balance: true
+#      options:
+#        title: _("Options")
+#        screens:
+#          companiesNew_screen: true
+#        dialogs:
+#          addToBalance_dialog: true
+
+  dialogs: &companyBalances_dialogsLink
+   addToBalance_dialog: &addToBalance_dialogLink
+    title: _("Increment balance")
+    module: default
+    controller: klear-custom-increment-balance
+    labelOnEdit: true
+    action: add-to-balance
+    class: ui-silk-money-add
+
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

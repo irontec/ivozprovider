@@ -91,6 +91,8 @@ Feature: Retrieve retail accounts
               "externallyextraopts": null,
               "recordingsLimitMB": null,
               "recordingsLimitEmail": null,
+              "billingMethod": "postpaid",
+              "balance": "0",
               "id": 3,
               "language": 1,
               "mediaRelaySets": 1,

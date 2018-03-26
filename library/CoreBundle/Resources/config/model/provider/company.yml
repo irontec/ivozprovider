@@ -1,0 +1,21 @@
+services:
+  _defaults:
+    autowire: true
+    public: false
+
+  Ivoz\Provider\Domain\Service\Company\SyncBalances:
+    public: true
+    arguments:
+      $logger: '@logger'
+      $client: '@Ivoz\Core\Infrastructure\Service\Cgrates\JsonRcpClient'
+      $companyRepository:
+        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\Company\\Company")'
+
+  Ivoz\Provider\Domain\Service\Company\IncrementBalance:
+    public: true
+    arguments:
+      $logger: '@logger'
+      $client: '@Ivoz\Core\Infrastructure\Service\Cgrates\JsonRcpClient'
+      $syncBalanceService: '@Ivoz\Provider\Domain\Service\Company\SyncBalances'
+      $companyRepository:
+        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\Company\\Company")'

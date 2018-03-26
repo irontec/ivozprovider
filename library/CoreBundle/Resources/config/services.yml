@@ -1,13 +1,14 @@
 imports:
-  - { resource: '@CoreBundle/Resources/config/services/gearmand.yml' }
-  - { resource: '@CoreBundle/Resources/config/services/asterisk.yml' }
-  - { resource: '@CoreBundle/Resources/config/services/doctrine.yml' }
+  - { resource: '@CoreBundle/Resources/config/services/infraestructure.yml' }
   - { resource: "@CoreBundle/Resources/config/services/path_resolvers.yml" }
   - { resource: "@CoreBundle/Resources/config/services/assemblers.yml" }
   - { resource: "@CoreBundle/Resources/config/services/domain.yml" }
   - { resource: "@CoreBundle/Resources/config/services/events.yml" }
   - { resource: "@CoreBundle/Resources/config/services/application.yml" }
   - { resource: '@CoreBundle/Resources/config/lifecycle.yml' }
+  - { resource: '@CoreBundle/Resources/config/lifecycle.yml' }
+  - { resource: '@CoreBundle/Resources/config/model.yml' }
+
 
 services:
   _defaults:

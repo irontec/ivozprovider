@@ -73,6 +73,8 @@ Feature: Create hunt groups
               "externallyextraopts": null,
               "recordingsLimitMB": null,
               "recordingsLimitEmail": null,
+              "billingMethod": "postpaid",
+              "balance": "0",
               "id": 2,
               "language": 1,
               "mediaRelaySets": 1,

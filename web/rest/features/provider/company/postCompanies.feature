@@ -81,6 +81,8 @@ Feature: Create companies
           "externallyextraopts": "",
           "recordingsLimitMB": 0,
           "recordingsLimitEmail": "",
+          "billingMethod": "postpaid",
+          "balance": "0",
           "id": 4,
           "language": {
               "iden": "es",
@@ -92,7 +94,7 @@ Feature: Create companies
           },
           "mediaRelaySets": null,
           "defaultTimezone": {
-              "tz": "Europe/Madrid",
+              "tz": "Europe\/Madrid",
               "comment": "mainland",
               "id": 1,
               "label": {
@@ -143,7 +145,7 @@ Feature: Create companies
               "id": 1,
               "name": {
                   "en": "Spain",
-                  "es": "España"
+                  "es": "Espa\u00f1a"
               },
               "zone": {
                   "en": "Europe",

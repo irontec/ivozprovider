@@ -8,11 +8,11 @@
     "packages": [
         {
             "name": "beberlei/assert",
-            "version": "2.9.2.0",
+            "version": "2.9.3.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/beberlei/assert",
-                "reference": "2d555f72f3f4ff9e72a7bc17cb8a53c86737c8a0",
+                "reference": "7d8108458bbe3d063dc3315278b2001a7156fade",
                 "shasum": null
             },
             "require": {
@@ -1792,11 +1792,11 @@
         },
         {
             "name": "psr/simple-cache",
-            "version": "1.0.0.0",
+            "version": "1.0.1.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/psr/simple-cache",
-                "reference": "753fa598e8f3b9966c886fe13f370baa45ef0e24",
+                "reference": "408d5eafb83c57f6365a3ca330ff23aa4a5fa39b",
                 "shasum": null
             },
             "require": {
@@ -2312,11 +2312,11 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "3.4.4.0",
+            "version": "3.4.6.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/symfony",
-                "reference": "5220b6f9fcdee261c6fdd3e096f3b204fba5d906",
+                "reference": "874d4d659774d7bab90538072c83ed532dd17dc5",
                 "shasum": null
             },
             "require": {
@@ -2467,11 +2467,11 @@
         },
         {
             "name": "twig/twig",
-            "version": "2.4.4.0",
+            "version": "2.4.7.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/twig/twig",
-                "reference": "eddb97148ad779f27e670e1e3f19fb323aedafeb",
+                "reference": "69aacd44dbbaa3199d5afb68605c996d577896fc",
                 "shasum": null
             },
             "require": {
@@ -2480,8 +2480,8 @@
             },
             "require-dev": {
                 "psr/container": "^1.0",
-                "symfony/debug": "~2.7",
-                "symfony/phpunit-bridge": "~3.3@dev"
+                "symfony/debug": "^2.7",
+                "symfony/phpunit-bridge": "^3.3"
             },
             "type": "library",
             "extra": {
