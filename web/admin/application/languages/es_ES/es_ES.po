@@ -202,6 +202,9 @@ msgid_plural "Balance Notifications"
 msgstr[0] "Notificación Saldo"
 msgstr[1] "Notificaciones Saldo"
 
+msgid "Balance increased successfully"
+msgstr "Saldo incrementado con éxito"
+
 msgid "Basic Configuration"
 msgstr "Configuración Básica"
 
@@ -497,9 +500,6 @@ msgstr "Borrar %s"
 msgid "Delete file"
 msgstr "Borrar fichero"
 
-msgid "Movement amount"
-msgstr "Cantidad"
-
 msgid "Description"
 msgstr "Descripción"
 
@@ -570,9 +570,6 @@ msgid "Domain"
 msgid_plural "Domains"
 msgstr[0] "Dominio"
 msgstr[1] "Dominios"
-
-msgid "Done"
-msgstr "Completo"
 
 msgid "Download"
 msgstr "Descargar"
@@ -1336,6 +1333,9 @@ msgstr "Longitud mínima: 2"
 
 msgid "Monday"
 msgstr "Lunes"
+
+msgid "Movement amount"
+msgstr "Cantidad"
 
 msgid "Music on Hold"
 msgid_plural "Musics on Hold"

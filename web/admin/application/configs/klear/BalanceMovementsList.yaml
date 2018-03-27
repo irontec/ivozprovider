@@ -5,15 +5,16 @@ production:
   main:
     module: klearMatrix
   screens: &balanceMovements_screensLink
-    balanceMovementList_screen: &balanceMovementsList_screenLink
+    balanceMovementsList_screen: &balanceMovementsList_screenLink
       controller: list
+      order:
+        field:
+          - BalanceMovement.createdOn desc
       pagination:
         items: 25
       <<: *BalanceMovements
       class: ui-silk-chart-curve
       title: _("List of %s %2s", ngettext('Balance Movement', 'Balance Movements', 0), "[format| (%parent%)]")
-      parentOptionCustomizer:
-        - recordCount
       fields:
         order:
           createdOn: true

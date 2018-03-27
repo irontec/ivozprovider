@@ -19,4 +19,11 @@ interface CompanyBalanceServiceClientInterface
      * @return \stdClass
      */
     public function getBalances($brandId, array $companyIds);
+
+    /**
+     * @param $brandId
+     * @param $companyId
+     * @return mixed
+     */
+    public function getBalance($brandId, $companyId);
 }

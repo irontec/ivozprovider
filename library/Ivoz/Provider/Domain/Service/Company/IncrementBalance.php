@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Domain\Service\Company;
 
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister;
+use Ivoz\Provider\Domain\Model\BalanceMovement\BalanceMovement;
 use Symfony\Bridge\Monolog\Logger;
 use Ivoz\Provider\Domain\Model\Company\CompanyRepository;
 
@@ -39,6 +40,15 @@ class IncrementBalance
      */
     protected $lastError;
 
+    /**
+     * IncrementBalance constructor.
+     *
+     * @param DoctrineEntityPersister $entityPersister
+     * @param Logger $logger
+     * @param CompanyBalanceServiceClientInterface $client
+     * @param CompanyRepository $companyRepository
+     * @param SyncBalances $syncBalanceService
+     */
     public function __construct(
         DoctrineEntityPersister $entityPersister,
         Logger $logger,
@@ -68,6 +78,7 @@ class IncrementBalance
             $this->lastError = $response['error'];
             $this->logger->error('Could not increment balance: ' . $response['error']);
         }
+
         $success = $response['success'];
 
         if ($success) {
@@ -75,6 +86,18 @@ class IncrementBalance
             $companyIds = [$company->getId()];
 
             $this->syncBalanceService->updateCompanies($brandId, $companyIds);
+
+            // Get current balance status
+            $balance = $this->client->getBalance($brandId, $companyId);
+
+            // Store this transaction in a BalanceMovement
+            $balanceMovementDto = BalanceMovement::createDto();
+            $balanceMovementDto
+                ->setCompanyId($companyId)
+                ->setAmount($amount)
+                ->setBalance($balance);
+
+            $this->entityPersister->persistDto($balanceMovementDto, null, true);
         }
 
         return $success;

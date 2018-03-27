@@ -64,7 +64,7 @@ class KlearCustomIncrementBalanceController extends Zend_Controller_Action
             );
 
             $reponseMessage = $success
-                ? _('Done')
+                ? _('Balance increased successfully')
                 : sprintf(_('There was an error: %s'), $incrementBalanceService->getLastError());
 
             return $this->_dispatch( $reponseMessage, $buttons);

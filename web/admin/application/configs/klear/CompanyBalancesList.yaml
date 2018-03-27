@@ -23,7 +23,7 @@ production:
         options:
           title: _("Options")
           screens:
-            balanceMovementList_screen: true
+            balanceMovementsList_screen: true
             kamTrunksCdrsList_screen: true
             balanceNotificationList_screen: true
           dialogs:

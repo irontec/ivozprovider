@@ -86,6 +86,16 @@ class JsonRcpClient implements CompanyBalanceServiceClientInterface
         return $payload;
     }
 
+
+    public function getBalance($brandId, $companyId)
+    {
+        $companyIds = [$companyId];
+        $payload = $this->getBalances($brandId, $companyIds);
+
+        return $payload->result[$companyId];
+    }
+
+
     private function getAddBalancePayload(CompanyInterface $company, $amount)
     {
         $brand = $company->getBrand();
