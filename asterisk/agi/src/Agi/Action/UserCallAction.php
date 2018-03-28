@@ -3,7 +3,6 @@
 namespace Agi\Action;
 
 use Agi\Wrapper;
-use Doctrine\Common\Collections\Criteria;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
@@ -191,19 +190,16 @@ class UserCallAction
     {
         $timeout = null;
 
-        // Process inconditional Call Forwards
-        $criteria = new Criteria();
-        $criteria->where(
-            Criteria::expr()->eq(
-                'callForwardType',
-                'noAnswer'
-            )
-        );
+        // Get active NoAnswer call forwards
+        $criteria = [
+            array('callForwardType', 'eq', 'noAnswer'),
+            array('enabled', 'eq', '1'),
+        ];
 
         /**
          * @var CallForwardSettingInterface[] $cfwSettings
          */
-        $cfwSettings = $this->user->getCallForwardSettings($criteria);
+        $cfwSettings = $this->user->getCallForwardSettings(CriteriaHelper::fromArray($criteria));
 
         foreach ($cfwSettings as $cfwSetting) {
             $cfwType = $cfwSetting->getCallTypeFilter();
@@ -237,7 +233,7 @@ class UserCallAction
                 array('callTypeFilter', 'eq', 'both'),
                 array('callTypeFilter', 'eq', $callType),
             ),
-            // array('enabled', 'eq', '1'),     // TODO pending #400 migration to artemis
+            array('enabled', 'eq', '1')
         ];
 
         /** @var CallForwardSettingInterface[] $cfwSettings */
