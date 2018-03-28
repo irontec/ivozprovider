@@ -56,6 +56,7 @@ Feature: Retrieve callForwardSetting
           "targetType": "number",
           "numberValue": "946002053",
           "noAnswerTimeout": 10,
+          "enabled": true,
           "id": 1,
           "user": {
               "name": "Alice",

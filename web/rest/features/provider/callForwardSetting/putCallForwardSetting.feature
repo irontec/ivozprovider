@@ -16,6 +16,7 @@ Feature: Update application servers
         "targetType": "number",
         "numberValue": "946002021",
         "noAnswerTimeout": 0,
+        "enabled": true,
         "user": 1,
         "extension": null,
         "voiceMailUser": null,
@@ -33,6 +34,7 @@ Feature: Update application servers
           "targetType": "number",
           "numberValue": "946002021",
           "noAnswerTimeout": 0,
+          "enabled": true,
           "id": 1,
           "user": {
               "name": "Alice",

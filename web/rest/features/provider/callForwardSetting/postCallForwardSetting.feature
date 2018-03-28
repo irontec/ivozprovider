@@ -50,6 +50,7 @@ Feature: Create application servers
           "targetType": "number",
           "numberValue": "946002020",
           "noAnswerTimeout": 0,
+          "enabled": true,
           "id": 5,
           "user": {
               "name": "Bob",
