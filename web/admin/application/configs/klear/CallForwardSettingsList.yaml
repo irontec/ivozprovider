@@ -15,6 +15,7 @@ production:
       title: _("List of %s %2s", ngettext('Call forward setting', 'Call forward settings', 0), "[format| (%parent%)]")
       fields:
         order:
+          enabled: true
           callTypeFilter: true
           callForwardType: true
           targetType: true
@@ -52,10 +53,14 @@ production:
       fields:
         blacklist:
           targetTypeValue: true
+        order: &callForwardSettingsOrder_Link
+          enabled: true
+          targetType: true
       fixedPositions: &callForwardSettingsFixedPositions_Link
         group0:
-          colsPerRow: 3
+          colsPerRow: 4
           fields:
+            enabled: 1
             callTypeFilter: 1
             callForwardType: 1
             noAnswerTimeout: 1
@@ -75,8 +80,9 @@ production:
       title: _("Edit %s %2s", ngettext('Call forward setting', 'Call forward settings', 1), "[format| (%item%)]")
       fields:
         blacklist:
-          extensionId: true
           targetTypeValue: true
+        order:
+          <<: *callForwardSettingsOrder_Link
       fixedPositions:
         <<: *callForwardSettingsFixedPositions_Link
 
