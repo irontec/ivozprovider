@@ -638,6 +638,9 @@ msgstr ""
 "número ilimitado de llamadas siempre y cuando se cumpla la política de "
 "restricción de IPs de la empresa."
 
+msgid "Enabled"
+msgstr "Activado"
+
 msgid "End time"
 msgstr "Fecha fin"
 
