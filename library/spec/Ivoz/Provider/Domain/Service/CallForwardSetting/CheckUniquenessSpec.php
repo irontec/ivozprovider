@@ -39,6 +39,11 @@ class CheckUniquenessSpec extends ObjectBehavior
 
         $this
             ->entity
+            ->getEnabled()
+            ->willReturn(1);
+
+        $this
+            ->entity
             ->getUser()
             ->willReturn($this->user);
     }

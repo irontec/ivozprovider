@@ -35,6 +35,11 @@ class CheckUniqueness implements CallForwardSettingLifecycleEventHandlerInterfac
      */
     public function execute(CallForwardSettingInterface $entity, $isNew)
     {
+        // Skip checks for disabled call forward setting
+        if ($entity->getEnabled() == 0) {
+            return;
+        }
+
         $callTypeFilterConditions = array(
             $entity->getCallTypeFilter()
         );
@@ -223,6 +228,12 @@ class CheckUniqueness implements CallForwardSettingLifecycleEventHandlerInterfac
                 $expressionBuilder->in(
                     'callTypeFilter',
                     $callTypeFilterConditions
+                )
+            )
+            ->andWhere(
+                $expressionBuilder->eq(
+                    'enabled',
+                    1
                 )
             );
 
