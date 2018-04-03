@@ -18,24 +18,28 @@ Feature: Retrieve callForwardSetting
               "callTypeFilter": "internal",
               "callForwardType": "inconditional",
               "targetType": "number",
+              "enabled": true,
               "id": 1
           },
           {
               "callTypeFilter": "external",
               "callForwardType": "noAnswer",
               "targetType": "number",
+              "enabled": true,
               "id": 2
           },
           {
               "callTypeFilter": "external",
               "callForwardType": "busy",
               "targetType": "number",
+              "enabled": true,
               "id": 3
           },
           {
               "callTypeFilter": "external",
               "callForwardType": "userNotRegistered",
               "targetType": "number",
+              "enabled": true,
               "id": 4
           }
       ]
