@@ -38,9 +38,9 @@ class Userweb_AuthController extends Iron_Controller_Rest_BaseController
 
             $dbAdapter = Zend_Db_Table::getDefaultAdapter();
             $terminalName = $terminal->getName();
+            $companyDomain = $terminal->getCompany()->getDomain();
 
-            $query = "SELECT user_agent, contact FROM kam_users_location";
-            $query .= " WHERE username LIKE '" . $terminalName . "%'";
+            $query = "SELECT user_agent, contact FROM kam_users_location WHERE username='$terminalName' AND domain='$companyDomain'";
 
             $resultQuery = $dbAdapter->fetchAll($query);
             $restult = reset($resultQuery);
