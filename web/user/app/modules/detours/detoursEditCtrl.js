@@ -44,8 +44,12 @@ angular
                 appConfig.urlRest + 'call_forward_settings/' + detourId,
                 {headers: {accept: 'application/json'}}
             ).then(function(detour) {
+
+                detour.data.enabled = detour.data.enabled
+                    ? '1'
+                    : '0';
+
                 $scope.detour = detour.data;
-                detour.data.enabled = '' + detour.data.enabled;
                 $scope.formDisabled = false;
                 $scope.loading = false;
                 ngProgress.complete();
@@ -71,10 +75,10 @@ angular
 
         function UpdateSuccessHandler (result) {
 
-            if (result.status === 404) {
+            if (result.status >= 400) {
                 $scope.formAction = true;
                 $scope.error = true;
-                $scope.errorMessage = result.data.error;
+                $scope.errorMessage = result.data.detail;
                 $scope.formAction = false;
             } else {
                 $scope.success = true;

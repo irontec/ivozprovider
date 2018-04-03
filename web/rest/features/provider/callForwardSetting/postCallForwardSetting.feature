@@ -19,7 +19,8 @@ Feature: Create application servers
         "user": 2,
         "extension": null,
         "voiceMailUser": null,
-        "numberCountry": 1
+        "numberCountry": 1,
+        "enabled": true
       }
     """
     Then the response status code should be 201
@@ -31,6 +32,7 @@ Feature: Create application servers
           "callTypeFilter": "internal",
           "callForwardType": "inconditional",
           "targetType": "number",
+          "enabled": true,
           "id": 5
       }
     """

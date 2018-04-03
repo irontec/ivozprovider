@@ -24,7 +24,8 @@ class CallForwardSettingDto extends CallForwardSettingDtoAbstract
                 'callTypeFilter' => 'callTypeFilter',
                 'callForwardType' => 'callForwardType',
                 'targetType' => 'targetType',
-                'id' => 'id'
+                'id' => 'id',
+                'enabled' => 'enabled'
             ];
         }
 
@@ -36,6 +37,7 @@ class CallForwardSettingDto extends CallForwardSettingDtoAbstract
                 'numberValue' => 'numberValue',
                 'noAnswerTimeout' => 'noAnswerTimeout',
                 'id' => 'id',
+                'enabled' => 'enabled',
                 'userId' => 'user',
                 'extensionId' => 'extension',
                 'voiceMailUserId' => 'voiceMailUser',
