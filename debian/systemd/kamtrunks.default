@@ -1,5 +1,5 @@
 # Specify the shared memory size in MB
-SH_MEM=64
+SH_MEM=256
 
 # Specify the private memory size in MB
 PRIV_MEM=256
