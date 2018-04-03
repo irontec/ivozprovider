@@ -51,6 +51,7 @@ IvozProvider Official Documentation
 
     billing_and_invoices/index
     provisioning/index
+    notifications/index
     faxing/index
     userportal/index
 

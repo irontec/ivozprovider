@@ -26,6 +26,8 @@ Scenario: I can create new company admin
   Then I can see confirmation dialog
   When I click on close dialog button
   Then I am on "CompaniesList_administrators" subscreen list
+  When I click on "administrators" last elements edit button
+  Then I compare the form data with "brand/companyAdmins/new" data fixture
 
 Scenario: I can edit authorized sources
   Given I can see at least one row

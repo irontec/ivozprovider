@@ -24,10 +24,11 @@ class ProviderIvrEntry extends Fixture implements DependentFixtureInterface
         $item1->setEntry("test");
         $item1->setRouteType("number");
         $item1->setNumberValue("946002050");
-        $item1->setIvr($this->getReference('_reference_IvozProviderDomainModelIvrIvr1'));
-        $item1->setWelcomeLocution($this->getReference('_reference_IvozProviderDomainModelLocutionLocution1'));
-        $item1->setNumberCountry($this->getReference('_reference_IvozProviderDomainModelCountryCountry70'));
-        $this->addReference('_reference_IvozProviderDomainModelIvrEntryIvrEntry1', $item1);
+        $item1->setIvr($this->getReference('_reference_ProviderIvrIvr1'));
+        $item1->setWelcomeLocution($this->getReference('_reference_ProviderLocution1'));
+        $item1->setNumberCountry($this->getReference('_reference_ProviderCountry70'));
+        $this->addReference('_reference_ProviderIvrEntry1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
     

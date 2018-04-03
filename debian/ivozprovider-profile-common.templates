@@ -1,0 +1,35 @@
+Template: ivozprovider/mysql_password
+Type: password
+Default: changeme
+Description: Enter root (administrator) MySQL password:
+Description-es.UTF-8: Introduzca la contraseña MySQL de root (administrador):
+
+Template: ivozprovider/mysql_password_confirm
+Type: password
+Default: changeme
+Description: Renter root (administrator) MySQL password:
+Description-es.UTF-8: Vuelva a introducir la contraseña MySQL de root (administrador):
+
+Template: ivozprovider/dns_address
+Type: string
+Default: 127.0.0.1
+Description:
+ All platform nodes share a «.local» DNS server to determine where services are running.
+ .
+ This DNS Server is configured in data profiles and usually is load balanced.
+ .
+ Enter Platform DNS Server listen IP address:
+ .
+Description-es.UTF-8:
+ Todos los nodos de la plataforma comparten un servidor DNS «.local» para determinar donde están ejecutandose los servicios.
+ .
+ Este servidor de DNS se configura en los perfiles data y generalmente está balanceado.
+ .
+ Introduzca la IP donde escucha el servidor DNS:
+ .
+
+
+Template: ivozprovider/invalid_ip
+Type: error
+Description: Entered IP address doesn't seems a valid IPv4 address. Please select again the configuration option.
+Description-es.UTF-8: La IP introducida no parece una IPv4 válida.

@@ -11,6 +11,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
+#, php-format
+msgid "%s emulated"
+msgstr "%s emulada"
+
 #, python-format
 msgid "%s successfully deleted."
 msgstr "%s borrado satisfactoriamente. "
@@ -21,8 +25,8 @@ msgstr "'Fecha fin' debe ser igual o mayor que 'fecha inicio'."
 msgid "'Valid From' must be earlier than 'Valid to'"
 msgstr "'Válido desde' debe ser anterior a 'Válido hasta'"
 
-msgid "'https://' URLs valid only"
-msgstr "Solo se permiten URLS 'https://'"
+msgid "'https://' URLs valid only (without trailing '/')"
+msgstr "Solo se permiten URLS 'https://' (sin '/' al final)"
 
 msgid ""
 "0 disables if more available, 2 gets double calls than 1, 3 gets triple "
@@ -33,6 +37,9 @@ msgstr ""
 
 msgid "ACL data"
 msgstr "Datos permisos"
+
+msgid "Accept"
+msgstr "Aceptar"
 
 msgid "Access denied"
 msgstr "Acceso denegado"
@@ -66,6 +73,9 @@ msgid "Add QR Code to user portal to provision GS Wave mobile softphone"
 msgstr ""
 "Insertar un código QR al portal de usuario para aprovisionar el softphone GS "
 "Wave para dispositivos móviles"
+
+msgid "Add balance"
+msgstr "Añadir saldo"
 
 #, python-format
 msgid "Add of %s %2s"
@@ -114,6 +124,13 @@ msgstr "Los carácteres permitidos son a-z, A-Z, 0-9, guión bajo y '-'"
 msgid "Allowed video codecs"
 msgstr "Codecs video permitidos"
 
+msgid "An error occurred"
+msgstr "Ha ocurrido un error"
+
+msgid "An error occurred: check files format and content."
+msgstr ""
+"Ha ocurrido un error: compruebe el formato y contenido de los ficheros."
+
 msgid "Announce"
 msgstr "Anuncio"
 
@@ -129,6 +146,13 @@ msgstr[1] "Servidores de Aplicación"
 
 msgid "Apply to all companies"
 msgstr "Aplicar a todas las compañías"
+
+#, php-format
+msgid "Are you sure that you want to emulate the %s \"%2s\"?"
+msgstr "¿Desea emular la %s \"%2s\"?"
+
+msgid "Are you sure you want to generate the invoice?"
+msgstr "¿Desea generar la factura?"
 
 msgid "Area code"
 msgstr "Código de Area"
@@ -165,11 +189,30 @@ msgstr[1] "Redes autorizadas"
 msgid "Automatic creation of rules"
 msgstr "Creación automática de reglas"
 
+msgid "Balance"
+msgstr "Saldo"
+
+msgid "Balance Movement"
+msgid_plural "Balance Movements"
+msgstr[0] "Ingreso"
+msgstr[1] "Ingresos"
+
+msgid "Balance Notification"
+msgid_plural "Balance Notifications"
+msgstr[0] "Notificación Saldo"
+msgstr[1] "Notificaciones Saldo"
+
+msgid "Balance increased successfully"
+msgstr "Saldo incrementado con éxito"
+
 msgid "Basic Configuration"
 msgstr "Configuración Básica"
 
 msgid "Basic Info"
 msgstr "Configuración Básica"
+
+msgid "Basic Information"
+msgstr "Información Básica"
 
 msgid "Bill inbound call"
 msgstr "Tarificación llamadas entrantes"
@@ -179,11 +222,17 @@ msgid_plural "Billable calls"
 msgstr[0] "Llamada facturable"
 msgstr[1] "Llamadas facturables"
 
-msgid "Billing"
-msgstr "Tarificación"
+msgid "Billing Information"
+msgstr "Información de tarificación"
+
+msgid "Billing method"
+msgstr "Método tarificación"
 
 msgid "Black Lists"
 msgstr "Listas negras"
+
+msgid "Body"
+msgstr "Cuerpo"
 
 msgid "Boss Whitelist"
 msgstr "Listas blanca jefe"
@@ -256,11 +305,6 @@ msgstr[1] "Patrón permisos llamada"
 msgid "Call Details"
 msgstr "Detalles llamada"
 
-msgid "Call registry"
-msgid_plural "Call registries"
-msgstr[0] "Registro de llamadas"
-msgstr[1] "Registros de llamadas"
-
 msgid "Call destination"
 msgstr "Destino llamada"
 
@@ -271,6 +315,11 @@ msgstr[1] "Opciones de desvío"
 
 msgid "Call forward type"
 msgstr "Tipo desvío"
+
+msgid "Call registry"
+msgid_plural "Call registries"
+msgstr[0] "Registro de llamadas"
+msgstr[1] "Registros de llamadas"
 
 msgid "Call type"
 msgstr "Tipo de llamada"
@@ -311,11 +360,11 @@ msgstr "CallidHash"
 msgid "Calling a number within the same Area can omit Area Code"
 msgstr "Las llamadas en la misma área pueden omitir este código"
 
-msgid "Calling code"
-msgstr "Codigo páis"
-
 msgid "Calls from non-granted IPs"
 msgstr "Llamadas desde IPs no autorizadas"
+
+msgid "Cancel"
+msgstr "Cancelar"
 
 msgid "Cannot invoice calls from today in the future."
 msgstr "No se pueden crear facturas en el dia actual o futuro."
@@ -325,6 +374,15 @@ msgstr "Período de facturación"
 
 msgid "Client's default"
 msgstr "Usar configuración cliente"
+
+msgid "Close"
+msgstr "Cerrar"
+
+msgid "Close extension"
+msgstr "Código cerrar"
+
+msgid "Closed"
+msgstr "Cerrado"
 
 msgid "Code"
 msgstr "Código"
@@ -381,6 +439,18 @@ msgstr "Configuración de conexión"
 
 msgid "Connection fee"
 msgstr "Coste de conexión"
+
+msgid "Contact Settings"
+msgstr "Configuraciones de Contacto"
+
+msgid "Contact Username"
+msgstr "Nombre de usuario de Contacto"
+
+msgid "Contents configuration"
+msgstr "Configuración de contenido"
+
+msgid "Continue"
+msgstr "Continuar"
 
 msgid "Control Panel"
 msgstr "Panel de control"
@@ -444,7 +514,7 @@ msgstr "Dirección IP destino"
 msgid "Destination pattern"
 msgid_plural "Destination patterns"
 msgstr[0] "Patron de destino"
-msgstr[1] "Patrones de destinos"
+msgstr[1] "Patrones de destino"
 
 msgid "Destination prefix"
 msgid_plural "Destination prefixes"
@@ -501,6 +571,9 @@ msgid_plural "Domains"
 msgstr[0] "Dominio"
 msgstr[1] "Dominios"
 
+msgid "Download"
+msgstr "Descargar"
+
 msgid "Download file"
 msgstr "Descargar fichero"
 
@@ -539,6 +612,10 @@ msgstr ""
 msgid "Email already in use"
 msgstr "Email ya en uso"
 
+#, php-format
+msgid "Emulate %s"
+msgstr "Emular %s"
+
 #, python-format
 msgid "Emulate Brand %s"
 msgstr "Emular Marca %s"
@@ -561,8 +638,14 @@ msgstr ""
 "número ilimitado de llamadas siempre y cuando se cumpla la política de "
 "restricción de IPs de la empresa."
 
+msgid "Enabled"
+msgstr "Activado"
+
 msgid "End time"
 msgstr "Fecha fin"
+
+msgid "Ensure the preview below is right before you proceed"
+msgstr "Compruebe que la previsualización es correcta antes de continuar."
 
 msgid "Enter number patterns in E.164 format."
 msgstr "Introduzca patrones de números en formato E.164."
@@ -599,6 +682,9 @@ msgid_plural "Excluded Extensions"
 msgstr[0] "Extensión excluida"
 msgstr[1] "Extensiones excluidas"
 
+msgid "Exec"
+msgstr "Ejecutar"
+
 msgid "Expire"
 msgstr "Expiración"
 
@@ -621,9 +707,6 @@ msgid_plural "External call filters"
 msgstr[0] "Filtro de entrada externo"
 msgstr[1] "Filtros de entrada externo"
 
-msgid "External max call"
-msgstr "Lim. llamadas externas"
-
 msgid "Externally rated"
 msgstr "Tarificación externa"
 
@@ -639,6 +722,9 @@ msgstr "Tarificación externa"
 msgid "Externally rater custom options"
 msgstr "Opciones adicionales tarificación externa"
 
+msgid "Extra Configuration"
+msgstr "Configuración adicional"
+
 msgid "Failover and load-balancing"
 msgstr "Contingencia y balanceo de carga"
 
@@ -649,6 +735,14 @@ msgid "Fax"
 msgid_plural "Faxes"
 msgstr[0] "Fax Virtual"
 msgstr[1] "Faxes Virtuales"
+
+msgid "Fax Notification"
+msgid_plural "Fax Notifications"
+msgstr[0] "Notificación Fax"
+msgstr[1] "Notificaciones Fax"
+
+msgid "Fax resent"
+msgstr "Fax reenviado"
 
 msgid "Faxfile"
 msgid_plural "Faxfiles"
@@ -661,10 +755,19 @@ msgstr "Funcionalidades"
 msgid "Fewest calls"
 msgstr "Menos atendidas"
 
+msgid "Fields with * are required"
+msgstr "Los campos con * son obligatorios"
+
+msgid "File"
+msgstr "Fichero"
+
 msgid "File for play"
 msgid_plural "Files for play"
 msgstr[0] "Fichero convertido"
 msgstr[1] "Ficheros convertidos"
+
+msgid "File imported"
+msgstr "Fichero importado"
 
 msgid "Filter by IP address"
 msgstr "Filtrado por IP"
@@ -682,6 +785,9 @@ msgstr[1] "Costes fijos"
 
 msgid "Flag"
 msgstr "Flag"
+
+msgid "For instance:"
+msgstr "Por ejemplo:"
 
 msgid "Force DDI"
 msgstr "Forzar DDI"
@@ -710,6 +816,9 @@ msgstr "Número friend"
 
 msgid "From address"
 msgstr "Dirección origen"
+
+msgid "From configuration"
+msgstr "Configuración Origen"
 
 msgid "From domain"
 msgstr "Dominio From"
@@ -747,6 +856,9 @@ msgstr "Generar %s"
 msgid "Generate Transformation Rules automatically"
 msgstr "Generar reglas de transformación automáticamente"
 
+msgid "Generate invoice"
+msgstr "Generar factura"
+
 msgid "Generic Match List"
 msgid_plural "Generic Match Lists"
 msgstr[0] "Lista de coincidencia genérica"
@@ -782,6 +894,9 @@ msgid "Holiday date"
 msgid_plural "Holiday dates"
 msgstr[0] "Festivo"
 msgstr[1] "Festivos"
+
+msgid "Holiday importer system"
+msgstr "Importar festivos"
 
 msgid "Holiday locution"
 msgstr "Locución Festivo"
@@ -824,6 +939,9 @@ msgid_plural "Ids"
 msgstr[0] "Id"
 msgstr[1] "Ids"
 
+msgid "Id not found"
+msgstr "Id no encontrado"
+
 msgid "Iden"
 msgid_plural "Idens"
 msgstr[0] "Iden"
@@ -845,9 +963,21 @@ msgid ""
 msgstr ""
 "Si desea un prefijo, use solo dígitos. Si no, defina una expresión regular."
 
+msgid "Ignore"
+msgstr "Ignorar"
+
+msgid "Ignore first line."
+msgstr "Ignorar primera linea."
+
 #, python-format
 msgid "Import %s"
 msgstr "Importar %s"
+
+msgid "Import file"
+msgstr "Importar fichero"
+
+msgid "Import process enqueued"
+msgstr "Proceso de importación encolado"
 
 msgid "In"
 msgstr "Entrada"
@@ -887,6 +1017,13 @@ msgstr ""
 msgid "Inconditional"
 msgstr "Incondicional"
 
+msgid "Increment balance"
+msgstr "Incrementar saldo"
+
+#, php-format
+msgid "Increment balance of <strong>%s</strong>"
+msgstr "Incrementar saldo de <strong>%s</strong>"
+
 msgid "Insert your username"
 msgstr "Introduce tu nombre de usuario"
 
@@ -899,6 +1036,9 @@ msgstr "Código de llamada internacional"
 msgid "Interval in seconds to increase call cost."
 msgstr "Intervalo en segundos para incrementar el coste de la llamada."
 
+msgid "Interval start"
+msgstr "Comienzo de intervalo"
+
 msgid "Invalid IP address, discarding value."
 msgstr "Dirección IP inválida: el valor será ignorado."
 
@@ -910,10 +1050,22 @@ msgstr[1] "Facturas"
 msgid "Invoice data"
 msgstr "Datos de facturación"
 
+msgid "Invoice has been enqueued. It will be generated as soon as posible."
+msgstr "Factura encolada. Se generará lo antes posible."
+
 msgid "Invoice template"
 msgid_plural "Invoice templates"
 msgstr[0] "Plantilla de factura"
 msgstr[1] "Plantillas de facturas"
+
+msgid "Invoice template tester"
+msgstr "Probador de plantillas de factura"
+
+msgid "Invoice(s) enqueued"
+msgstr "Factura encolada."
+
+msgid "Invoices have been enqueued. They will be generated as soon as posible."
+msgstr "Facturas encoladas. Se generarán lo antes posible."
 
 msgid "Ip addr"
 msgstr "Dirección IP"
@@ -934,6 +1086,9 @@ msgstr "Mantener DDI original"
 msgid "Language"
 msgstr "Lenguaje"
 
+msgid "Last notification sent on"
+msgstr "Último envío"
+
 msgid "Last provision date"
 msgstr "Última provisión"
 
@@ -949,8 +1104,12 @@ msgstr "Dejar vacío para enviar al campo Host"
 msgid "Leave empty to use the suggested default"
 msgstr "Dejar vacío para emplear la sugerencia por defecto"
 
-msgid "Limits both incoming and outgoing external calls."
-msgstr "Limita llamadas externas tanto entrantes como salientes."
+msgid ""
+"Limits both user generated and external received calls to this value (0 for "
+"unlimited)."
+msgstr ""
+"Limita tanto las llamadas generadas por los usuarios como las llamadas "
+"recibidas desde el exterior a este valor (0 para ilimitado)."
 
 msgid ""
 "Limits the number of received calls if the user is handling simultaneously "
@@ -991,6 +1150,9 @@ msgstr "Escuchar Música"
 msgid "Load file"
 msgstr "Cargar fichero"
 
+msgid "Loading"
+msgstr "Cargando"
+
 msgid ""
 "Local legislation may enforce to announce the call recording to both "
 "parties, act responsibly"
@@ -1016,6 +1178,9 @@ msgstr "Información de login"
 msgid "Logo"
 msgstr "Logo"
 
+msgid "Low balance"
+msgstr "Saldo bajo"
+
 msgid "MAC"
 msgstr "MAC"
 
@@ -1025,8 +1190,8 @@ msgstr ""
 "Dirección origen mostrada en los correos salientes. El MTA tiene que "
 "permitir este valor."
 
-msgid "Mail data"
-msgstr "Configuración mail"
+msgid "Mail address where this notification will be sent"
+msgstr ""
 
 msgid "Main Settings"
 msgstr "Configuración principal"
@@ -1172,8 +1337,8 @@ msgstr "Longitud mínima: 2"
 msgid "Monday"
 msgstr "Lunes"
 
-msgid "Multi DDI"
-msgstr "Multi DDI"
+msgid "Movement amount"
+msgstr "Cantidad"
 
 msgid "Music on Hold"
 msgid_plural "Musics on Hold"
@@ -1184,15 +1349,12 @@ msgid "Must start with sip or sips followed by colon"
 msgstr "Debe comenzar con sip o sips seguido de dos puntos"
 
 msgid "Name"
-msgid_plural "Names"
-msgstr[0] "Nombre"
-msgstr[1] "Nombres"
+msgstr "Nombre"
 
 msgid ""
-"Name shown as source when sending mails (e.g. IvozProvider Notifications). "
-"Leave empty to disable."
+"Name shown as source when sending mails (e.g. IvozProvider Notifications)"
 msgstr ""
-"Nombre mostrado como origen en los correos salientes (e.g. Notificaciones "
+"Nombre mostrado como origen en los correos enviados (e.g. Notificaciones "
 "IvozProvider). "
 
 msgid "National number length"
@@ -1243,6 +1405,32 @@ msgstr "Ninguna"
 msgid "Not Registered"
 msgstr "No registrado"
 
+msgid "Notification Template"
+msgid_plural "Notifications Templates"
+msgstr[0] "Plantilla de notificación"
+msgstr[1] "Plantillas de notificación"
+
+msgid "Notification Threshold"
+msgstr "Límite de notificación"
+
+msgid "Notification content"
+msgid_plural "Notification contents"
+msgstr[0] "Contenido de notificación"
+msgstr[1] "Contenidos de notificaciones"
+
+msgid "Notification options"
+msgstr "Opciones de notificación"
+
+msgid "Notification template"
+msgid_plural "Notification templates"
+msgstr[0] "Plantilla de notificación"
+msgstr[1] "Plantillas de notificación"
+
+msgid ""
+"Notification will be sent when the current balance is less that this value."
+msgstr ""
+"Se enviará la notificación cuando el saldo actual sea inferior a este valor."
+
 msgid "Number"
 msgstr "Número"
 
@@ -1265,6 +1453,12 @@ msgstr "Grabación bajo demanda"
 
 msgid "Only if it's different from the Username"
 msgstr "Solo si es diferente a Usuario"
+
+msgid "Open extension"
+msgstr "Código abrir"
+
+msgid "Opened"
+msgstr "Abierto"
 
 msgid "Optional Settings"
 msgstr "Configuraciones Opcionales"
@@ -1338,9 +1532,6 @@ msgid_plural "Outgoing routings"
 msgstr[0] "Ruta saliente"
 msgstr[1] "Rutas salientes"
 
-msgid "Owner"
-msgstr "Propietario"
-
 msgid "PDF File"
 msgid_plural "PDF Files"
 msgstr[0] "Fichero PDF"
@@ -1348,6 +1539,9 @@ msgstr[1] "Ficheros PDF"
 
 msgid "Page"
 msgstr "Páginas"
+
+msgid "Parse file and import"
+msgstr "Analizar fichero e importar"
 
 msgid "Parsed"
 msgstr "Parseada"
@@ -1417,6 +1611,9 @@ msgstr "Con contraseña"
 msgid "Platform Configuration"
 msgstr "Configuración de Plataforma"
 
+msgid "Please, choose a file to import"
+msgstr "Por favor, seleccione fichero a importar"
+
 msgid "Points to"
 msgstr "Apunta a"
 
@@ -1439,6 +1636,9 @@ msgid_plural "Postal codes"
 msgstr[0] "Código postal"
 msgstr[1] "Códigos postales"
 
+msgid "Postpaid"
+msgstr "Postpago"
+
 msgid "Prefix"
 msgstr "Prefijo"
 
@@ -1448,8 +1648,19 @@ msgstr "El prefijo debe ser '+' y numérico"
 msgid "Prefix used for national out of area calls."
 msgstr "Prefijo empleado para llamadas nacionales fuera del area."
 
+msgid "Prepaid"
+msgstr "Prepago"
+
+msgid "Prepaid Balance"
+msgid_plural "Prepaid Balances"
+msgstr[0] "Saldo prepago"
+msgstr[1] "Saldos prepago"
+
 msgid "Prepend this field to callee"
 msgstr "Añadir este campo como prefijo del número destino"
+
+msgid "Prevent missed calls"
+msgstr "Evitar llamadas perdidas"
 
 msgid "Price"
 msgid_plural "Prices"
@@ -1494,6 +1705,9 @@ msgid_plural "Proxies Users"
 msgstr[0] "Proxy de Usuarios"
 msgstr[1] "Proxies de Usuarios"
 
+msgid "Pseudo-prepaid"
+msgstr "Pseudo-prepago"
+
 msgid "QR Code"
 msgstr "Código QR"
 
@@ -1523,6 +1737,9 @@ msgstr "Patrón R-URI"
 
 msgid "Random"
 msgstr "Aleatoriamente"
+
+msgid "Random Contact Username"
+msgstr "Nombre de usuario de contacto aleatorio"
 
 msgid "Rate"
 msgid_plural "Rates"
@@ -1568,9 +1785,6 @@ msgstr "Referee"
 msgid "Referrer"
 msgstr "Referrer"
 
-msgid "Reg delay"
-msgstr "Retraso registro"
-
 msgid "Reg exp / Prefix"
 msgstr "Expr. Regular / Prefijo"
 
@@ -1585,6 +1799,18 @@ msgstr "Expresión regular"
 
 msgid "Replace expr"
 msgstr "Expr. Reemplazar"
+
+msgid "Resend"
+msgstr "Reenviar"
+
+msgid "Resend fax"
+msgstr "Reenviar fax"
+
+msgid "Resend to"
+msgstr "Reenviar a"
+
+msgid "Restore backup"
+msgstr "Restaurar backup"
 
 msgid "Restore default template"
 msgstr "Restaurar plantilla por defecto"
@@ -1614,6 +1840,11 @@ msgstr "Secuencialmente (∞)"
 msgid "Round Robin memory"
 msgstr "Secuencialmente (memoria)"
 
+msgid "Route Lock"
+msgid_plural "Route Locks"
+msgstr[0] "Candado"
+msgstr[1] "Candados"
+
 msgid "Route type"
 msgstr "Enrutar"
 
@@ -1622,24 +1853,18 @@ msgstr "Configuración de enrutado"
 
 msgid "Routing pattern"
 msgid_plural "Routing patterns"
-msgstr[0] "Patrón de destino"
-msgstr[1] "Patrones de destino"
+msgstr[0] "Patrón de ruta"
+msgstr[1] "Patrones de ruta"
 
 msgid "Routing pattern group"
 msgid_plural "Routing pattern groups"
-msgstr[0] "Grupo de patrones de destino"
-msgstr[1] "Grupos de patrones de destino"
-
-msgid "Routing pattern group id"
-msgstr "Grupo de patrones"
+msgstr[0] "Grupo de patrones de ruta"
+msgstr[1] "Grupos de patrones de ruta"
 
 msgid "Routing pattern groups rel pattern"
 msgid_plural "Routing pattern groups rel patterns"
 msgstr[0] "Patrón de destino"
 msgstr[1] "Patrones de destino"
-
-msgid "Routing pattern id"
-msgstr "Patrón enrutado"
 
 msgid ""
 "Rules to manipulate outgoingDDI when user directly calls to external numbers."
@@ -1649,6 +1874,11 @@ msgstr ""
 
 msgid "Run template"
 msgstr "Ejecutar plantilla"
+
+msgid "SIP Domain"
+msgid_plural "SIP Domains"
+msgstr[0] "Dominio SIP"
+msgstr[1] "Dominios SIP"
 
 msgid "SIP Domain can't be empty"
 msgstr "El dominio SIP no puede estar vacío"
@@ -1673,14 +1903,38 @@ msgstr "Ámbito"
 msgid "Screen Extension"
 msgstr "Extensión a mostrar"
 
+msgid ""
+"Seconds from the beginning of the call when this rate will be activated."
+msgstr ""
+"Segundos desde el comienzo de la llamada a partir del cual aplicará este "
+"precio."
+
 msgid "Security"
 msgstr "Seguridad"
+
+msgid "Select Brand"
+msgstr "Seleccionar Marca"
+
+msgid "Select Company"
+msgstr "Seleccionar Compañía"
 
 msgid "Select destination group"
 msgstr "Grupo patrones destino"
 
 msgid "Select destination pattern"
 msgstr "Patrón destino"
+
+msgid "Select file to import"
+msgstr "Seleccione fichero a importar"
+
+msgid "Select the brand you want to emulate."
+msgstr "Seleccione la marca que desea emular."
+
+msgid "Select the company you want to emulate"
+msgstr "Seleccione la empresa que desea emular"
+
+msgid "Send"
+msgstr "Enviar"
 
 msgid "Send PAI"
 msgstr "Enviar PAI"
@@ -1706,8 +1960,14 @@ msgid_plural "Services"
 msgstr[0] "Servicio"
 msgstr[1] "Servicios"
 
+msgid "Service Information"
+msgstr "Información de Servicios"
+
 msgid "Service has extra arguments"
 msgstr "El servicio emplea argumentos extra"
+
+msgid "Set column configuration and continue."
+msgstr "Seleccione la configuración de columna y continuar"
 
 msgid "Setid"
 msgstr "Setid"
@@ -1736,11 +1996,11 @@ msgstr "Estado"
 msgid "Strategy"
 msgstr "Estrategia"
 
-msgid "Strip"
-msgstr "Eliminar"
+msgid "Subject"
+msgstr "Asunto"
 
-msgid "Strip N digits from the beginning of the callee"
-msgstr "Quitar N dígitos del número destino"
+msgid "Substitution variables"
+msgstr "Sustitución de variables"
 
 msgid "Success locution"
 msgstr "Locución Éxito"
@@ -1763,10 +2023,6 @@ msgstr "Tipo de ruta"
 msgid "Target type value"
 msgstr "Tipo destino"
 
-#, python-format
-msgid "Tarificate %s"
-msgstr "Tarificar %s"
-
 msgid "Tax rate"
 msgstr "Impuesto"
 
@@ -1774,6 +2030,9 @@ msgid "Template"
 msgid_plural "Templates"
 msgstr[0] "Plantilla"
 msgstr[1] "Plantillas"
+
+msgid "Template Type"
+msgstr "Tipo de plantilla"
 
 msgid "Template field can not be null."
 msgstr "El campo plantilla no puede estar vacio."
@@ -1807,6 +2066,12 @@ msgid "Terminal model"
 msgid_plural "Terminal models"
 msgstr[0] "Modelo de Terminales"
 msgstr[1] "Modelos de Terminales"
+
+msgid "Test the code"
+msgstr "Probar el código"
+
+msgid "The terminal model must be saved before you can test the code"
+msgstr "Guarde el modelo de terminal antes de probar el código"
 
 msgid "Theme"
 msgid_plural "Themes"
@@ -1854,6 +2119,10 @@ msgstr ""
 "Existe un desvío incondicional con ese tipo de llamada. No puedes añadir "
 "desvíos."
 
+#, php-format
+msgid "There was an error: %s"
+msgstr "Ocurrió un error: %s"
+
 msgid ""
 "This DDI will be used if friend presented DDI doesn't match any of the "
 "company DDIs"
@@ -1861,8 +2130,18 @@ msgstr ""
 "Este DDI se empleará si el mostrado por el friend no coincide con ninguno de "
 "la compañía."
 
+msgid ""
+"This importer expects values to be within quotation marks and separated by "
+"semicolons."
+msgstr ""
+
 msgid "This setting needs external tarification module"
 msgstr "Esta opción requiere un módulo de tarificación externa"
+
+msgid ""
+"This template is going to be tested<br /><textarea name=\"currentCode\" rows="
+"\"8\" cols=\"80\" readonly></textarea>"
+msgstr ""
 
 msgid "This value will be displayed in the called terminals"
 msgstr "Valor que se mostrará en el terminal llamado"
@@ -1910,6 +2189,17 @@ msgstr "Timeout"
 msgid "Timezone"
 msgstr "Zona Horaria"
 
+msgid "Timing"
+msgid_plural "Timing"
+msgstr[0] "Timing"
+msgstr[1] "Timings"
+
+msgid "To address"
+msgstr "Dirección destino"
+
+msgid "Toggle extension"
+msgstr "Código conmutar"
+
 msgid "Total"
 msgstr "Total"
 
@@ -1932,9 +2222,6 @@ msgstr[1] "Transformaciones numéricas"
 
 msgid "Transport"
 msgstr "Transporte"
-
-msgid "Troubleshooting details"
-msgstr "Detalles solución de problemas"
 
 msgid "Trunk Prefix"
 msgstr "Prefijo trunk"
@@ -1967,6 +2254,9 @@ msgstr "Sin asignar"
 msgid "Update CallerID?"
 msgstr "¿Actualización Pantalla?"
 
+msgid "Update values."
+msgstr "Actualizar valores."
+
 msgid "Upload file"
 msgstr "Subir fichero"
 
@@ -1994,6 +2284,9 @@ msgstr ""
 
 msgid "Use address or hostname"
 msgstr "Emplear dirección o nombre host"
+
+msgid "Use generic template"
+msgstr "Emplear plantilla genérica"
 
 msgid "Use point as decimal delimiter - e.g. 0.02"
 msgstr "Emplear punto como separador decimal - p.ej. 0.02"
@@ -2041,6 +2334,11 @@ msgstr[1] "Buzones de voz"
 msgid "Voicemail Locution"
 msgstr "Locución de buzón"
 
+msgid "Voicemail Notification"
+msgid_plural "Voicemail Notifications"
+msgstr[0] "Notificación de buzón de voz"
+msgstr[1] "Notificaciones de buzón de voz"
+
 msgid "Voicemail attach sound"
 msgstr "Adjuntar audio del mensaje"
 
@@ -2061,6 +2359,14 @@ msgstr "Peso"
 
 msgid "Welcome locution"
 msgstr "Locución Bienvenida"
+
+msgid ""
+"When 'Yes', calls will never generate a missed call. When 'No', missed calls "
+"will be prevented only for RingAll huntgroups if someone answers."
+msgstr ""
+"'Sí' evita de forma incondicional la generación de llamadas perdidas. 'No' "
+"evita las llamadas perdidas solo para grupos de salto RingAll si alguien "
+"contesta."
 
 msgid "When Outbound Proxy is used, SIP Proxy must not include a port."
 msgstr "Cuando se emplea Proxy de salida, el Proxy SIP no debe incluir puerto."
@@ -2087,11 +2393,32 @@ msgstr "X-CallId"
 msgid "Yes"
 msgstr "Si"
 
+msgid "Yes, continue!"
+msgstr "Si, continuar."
+
+msgid ""
+"You can call this extension from any company terminal to close this lock"
+msgstr ""
+"Puede llamar a esta extension desde cualquier terminal de la compañía para "
+"cerrar este candado"
+
+msgid "You can call this extension from any company terminal to open this lock"
+msgstr ""
+"Puede llamar a esta extension desde cualquier terminal de la compañía para "
+"abrir este candado"
+
 msgid ""
 "You can call this extension from any company terminal to record this locution"
 msgstr ""
 "Puede llamar a esta extensión para grabar está locución desde cualquier "
 "terminal de la compañía"
+
+msgid ""
+"You can call this extension from any company terminal to toggle this lock "
+"status"
+msgstr ""
+"Puede llamar a esta extension desde cualquier terminal de la compañía para "
+"conmutar este candado"
 
 #, python-brace-format
 msgid ""
@@ -2112,16 +2439,14 @@ msgstr ""
 msgid "You can't create a pricing plan that starts in de past"
 msgstr "No es posible crear un Plan de precios en el pasado"
 
-msgid "Zone"
-msgstr "Zona"
+msgid "You have to emulate a brand to be able to emulate a company"
+msgstr "Debe emular una marca antes de emular una compañía"
 
 msgid "allow"
 msgstr "permitir"
 
-msgid "call"
-msgid_plural "calls"
-msgstr[0] "llamada"
-msgstr[1] "llamadas"
+msgid "but following errors ocurred"
+msgstr ""
 
 msgid "deny"
 msgstr "Rechazar"
@@ -2138,8 +2463,23 @@ msgstr "Codificando"
 msgid "error"
 msgstr "Error"
 
+msgid "ignore"
+msgstr "ignorar"
+
+msgid "is a required field"
+msgstr "es un campo obligatorio"
+
+msgid "oversized"
+msgstr "sobre-dimensionado"
+
 msgid "pending"
 msgstr "Pendiente"
 
 msgid "ready"
 msgstr "Listo"
+
+msgid "shared"
+msgstr "compartido"
+
+msgid "unlimited"
+msgstr "ilimitado"

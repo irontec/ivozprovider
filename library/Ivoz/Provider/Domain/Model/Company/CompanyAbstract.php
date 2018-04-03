@@ -44,7 +44,7 @@ abstract class CompanyAbstract
     /**
      * @var integer
      */
-    protected $externalMaxCalls = '0';
+    protected $maxCalls = '0';
 
     /**
      * @var string
@@ -103,6 +103,17 @@ abstract class CompanyAbstract
     protected $recordingsLimitEmail;
 
     /**
+     * comment: enum:postpaid|prepaid|pseudoprepaid
+     * @var string
+     */
+    protected $billingMethod = 'postpaid';
+
+    /**
+     * @var string
+     */
+    protected $balance = 0;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Language\LanguageInterface
      */
     protected $language;
@@ -152,6 +163,16 @@ abstract class CompanyAbstract
      */
     protected $outgoingDdiRule;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
+     */
+    protected $voicemailNotificationTemplate;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
+     */
+    protected $faxNotificationTemplate;
+
 
     use ChangelogTrait;
 
@@ -163,23 +184,25 @@ abstract class CompanyAbstract
         $name,
         $nif,
         $distributeMethod,
-        $externalMaxCalls,
+        $maxCalls,
         $postalAddress,
         $postalCode,
         $town,
         $province,
-        $countryName
+        $countryName,
+        $billingMethod
     ) {
         $this->setType($type);
         $this->setName($name);
         $this->setNif($nif);
         $this->setDistributeMethod($distributeMethod);
-        $this->setExternalMaxCalls($externalMaxCalls);
+        $this->setMaxCalls($maxCalls);
         $this->setPostalAddress($postalAddress);
         $this->setPostalCode($postalCode);
         $this->setTown($town);
         $this->setProvince($province);
         $this->setCountryName($countryName);
+        $this->setBillingMethod($billingMethod);
     }
 
     abstract public function getId();
@@ -250,12 +273,13 @@ abstract class CompanyAbstract
             $dto->getName(),
             $dto->getNif(),
             $dto->getDistributeMethod(),
-            $dto->getExternalMaxCalls(),
+            $dto->getMaxCalls(),
             $dto->getPostalAddress(),
             $dto->getPostalCode(),
             $dto->getTown(),
             $dto->getProvince(),
-            $dto->getCountryName());
+            $dto->getCountryName(),
+            $dto->getBillingMethod());
 
         $self
             ->setDomainUsers($dto->getDomainUsers())
@@ -265,6 +289,7 @@ abstract class CompanyAbstract
             ->setExternallyextraopts($dto->getExternallyextraopts())
             ->setRecordingsLimitMB($dto->getRecordingsLimitMB())
             ->setRecordingsLimitEmail($dto->getRecordingsLimitEmail())
+            ->setBalance($dto->getBalance())
             ->setLanguage($dto->getLanguage())
             ->setMediaRelaySets($dto->getMediaRelaySets())
             ->setDefaultTimezone($dto->getDefaultTimezone())
@@ -275,6 +300,8 @@ abstract class CompanyAbstract
             ->setTransformationRuleSet($dto->getTransformationRuleSet())
             ->setOutgoingDdi($dto->getOutgoingDdi())
             ->setOutgoingDdiRule($dto->getOutgoingDdiRule())
+            ->setVoicemailNotificationTemplate($dto->getVoicemailNotificationTemplate())
+            ->setFaxNotificationTemplate($dto->getFaxNotificationTemplate())
         ;
 
         $self->sanitizeValues();
@@ -300,7 +327,7 @@ abstract class CompanyAbstract
             ->setDomainUsers($dto->getDomainUsers())
             ->setNif($dto->getNif())
             ->setDistributeMethod($dto->getDistributeMethod())
-            ->setExternalMaxCalls($dto->getExternalMaxCalls())
+            ->setMaxCalls($dto->getMaxCalls())
             ->setPostalAddress($dto->getPostalAddress())
             ->setPostalCode($dto->getPostalCode())
             ->setTown($dto->getTown())
@@ -312,6 +339,8 @@ abstract class CompanyAbstract
             ->setExternallyextraopts($dto->getExternallyextraopts())
             ->setRecordingsLimitMB($dto->getRecordingsLimitMB())
             ->setRecordingsLimitEmail($dto->getRecordingsLimitEmail())
+            ->setBillingMethod($dto->getBillingMethod())
+            ->setBalance($dto->getBalance())
             ->setLanguage($dto->getLanguage())
             ->setMediaRelaySets($dto->getMediaRelaySets())
             ->setDefaultTimezone($dto->getDefaultTimezone())
@@ -321,7 +350,9 @@ abstract class CompanyAbstract
             ->setCountry($dto->getCountry())
             ->setTransformationRuleSet($dto->getTransformationRuleSet())
             ->setOutgoingDdi($dto->getOutgoingDdi())
-            ->setOutgoingDdiRule($dto->getOutgoingDdiRule());
+            ->setOutgoingDdiRule($dto->getOutgoingDdiRule())
+            ->setVoicemailNotificationTemplate($dto->getVoicemailNotificationTemplate())
+            ->setFaxNotificationTemplate($dto->getFaxNotificationTemplate());
 
 
 
@@ -341,7 +372,7 @@ abstract class CompanyAbstract
             ->setDomainUsers(self::getDomainUsers())
             ->setNif(self::getNif())
             ->setDistributeMethod(self::getDistributeMethod())
-            ->setExternalMaxCalls(self::getExternalMaxCalls())
+            ->setMaxCalls(self::getMaxCalls())
             ->setPostalAddress(self::getPostalAddress())
             ->setPostalCode(self::getPostalCode())
             ->setTown(self::getTown())
@@ -353,6 +384,8 @@ abstract class CompanyAbstract
             ->setExternallyextraopts(self::getExternallyextraopts())
             ->setRecordingsLimitMB(self::getRecordingsLimitMB())
             ->setRecordingsLimitEmail(self::getRecordingsLimitEmail())
+            ->setBillingMethod(self::getBillingMethod())
+            ->setBalance(self::getBalance())
             ->setLanguage(\Ivoz\Provider\Domain\Model\Language\Language::entityToDto(self::getLanguage(), $depth))
             ->setMediaRelaySets(\Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet::entityToDto(self::getMediaRelaySets(), $depth))
             ->setDefaultTimezone(\Ivoz\Provider\Domain\Model\Timezone\Timezone::entityToDto(self::getDefaultTimezone(), $depth))
@@ -362,7 +395,9 @@ abstract class CompanyAbstract
             ->setCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto(self::getCountry(), $depth))
             ->setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet::entityToDto(self::getTransformationRuleSet(), $depth))
             ->setOutgoingDdi(\Ivoz\Provider\Domain\Model\Ddi\Ddi::entityToDto(self::getOutgoingDdi(), $depth))
-            ->setOutgoingDdiRule(\Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule::entityToDto(self::getOutgoingDdiRule(), $depth));
+            ->setOutgoingDdiRule(\Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule::entityToDto(self::getOutgoingDdiRule(), $depth))
+            ->setVoicemailNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate::entityToDto(self::getVoicemailNotificationTemplate(), $depth))
+            ->setFaxNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate::entityToDto(self::getFaxNotificationTemplate(), $depth));
     }
 
     /**
@@ -376,7 +411,7 @@ abstract class CompanyAbstract
             'domain_users' => self::getDomainUsers(),
             'nif' => self::getNif(),
             'distributeMethod' => self::getDistributeMethod(),
-            'externalMaxCalls' => self::getExternalMaxCalls(),
+            'maxCalls' => self::getMaxCalls(),
             'postalAddress' => self::getPostalAddress(),
             'postalCode' => self::getPostalCode(),
             'town' => self::getTown(),
@@ -388,6 +423,8 @@ abstract class CompanyAbstract
             'externallyExtraOpts' => self::getExternallyextraopts(),
             'recordingsLimitMB' => self::getRecordingsLimitMB(),
             'recordingsLimitEmail' => self::getRecordingsLimitEmail(),
+            'billingMethod' => self::getBillingMethod(),
+            'balance' => self::getBalance(),
             'languageId' => self::getLanguage() ? self::getLanguage()->getId() : null,
             'mediaRelaySetsId' => self::getMediaRelaySets() ? self::getMediaRelaySets()->getId() : null,
             'defaultTimezoneId' => self::getDefaultTimezone() ? self::getDefaultTimezone()->getId() : null,
@@ -397,7 +434,9 @@ abstract class CompanyAbstract
             'countryId' => self::getCountry() ? self::getCountry()->getId() : null,
             'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null,
             'outgoingDdiId' => self::getOutgoingDdi() ? self::getOutgoingDdi()->getId() : null,
-            'outgoingDdiRuleId' => self::getOutgoingDdiRule() ? self::getOutgoingDdiRule()->getId() : null
+            'outgoingDdiRuleId' => self::getOutgoingDdiRule() ? self::getOutgoingDdiRule()->getId() : null,
+            'voicemailNotificationTemplateId' => self::getVoicemailNotificationTemplate() ? self::getVoicemailNotificationTemplate()->getId() : null,
+            'faxNotificationTemplateId' => self::getFaxNotificationTemplate() ? self::getFaxNotificationTemplate()->getId() : null
         ];
     }
 
@@ -550,31 +589,31 @@ abstract class CompanyAbstract
     }
 
     /**
-     * Set externalMaxCalls
+     * Set maxCalls
      *
-     * @param integer $externalMaxCalls
+     * @param integer $maxCalls
      *
      * @return self
      */
-    public function setExternalMaxCalls($externalMaxCalls)
+    public function setMaxCalls($maxCalls)
     {
-        Assertion::notNull($externalMaxCalls, 'externalMaxCalls value "%s" is null, but non null value was expected.');
-        Assertion::integerish($externalMaxCalls, 'externalMaxCalls value "%s" is not an integer or a number castable to integer.');
-        Assertion::greaterOrEqualThan($externalMaxCalls, 0, 'externalMaxCalls provided "%s" is not greater or equal than "%s".');
+        Assertion::notNull($maxCalls, 'maxCalls value "%s" is null, but non null value was expected.');
+        Assertion::integerish($maxCalls, 'maxCalls value "%s" is not an integer or a number castable to integer.');
+        Assertion::greaterOrEqualThan($maxCalls, 0, 'maxCalls provided "%s" is not greater or equal than "%s".');
 
-        $this->externalMaxCalls = $externalMaxCalls;
+        $this->maxCalls = $maxCalls;
 
         return $this;
     }
 
     /**
-     * Get externalMaxCalls
+     * Get maxCalls
      *
      * @return integer
      */
-    public function getExternalMaxCalls()
+    public function getMaxCalls()
     {
-        return $this->externalMaxCalls;
+        return $this->maxCalls;
     }
 
     /**
@@ -885,6 +924,68 @@ abstract class CompanyAbstract
     }
 
     /**
+     * Set billingMethod
+     *
+     * @param string $billingMethod
+     *
+     * @return self
+     */
+    public function setBillingMethod($billingMethod)
+    {
+        Assertion::notNull($billingMethod, 'billingMethod value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($billingMethod, 25, 'billingMethod value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        Assertion::choice($billingMethod, array (
+          0 => 'postpaid',
+          1 => 'prepaid',
+          2 => 'pseudoprepaid',
+        ), 'billingMethodvalue "%s" is not an element of the valid values: %s');
+
+        $this->billingMethod = $billingMethod;
+
+        return $this;
+    }
+
+    /**
+     * Get billingMethod
+     *
+     * @return string
+     */
+    public function getBillingMethod()
+    {
+        return $this->billingMethod;
+    }
+
+    /**
+     * Set balance
+     *
+     * @param string $balance
+     *
+     * @return self
+     */
+    public function setBalance($balance = null)
+    {
+        if (!is_null($balance)) {
+            if (!is_null($balance)) {
+                Assertion::numeric($balance);
+            }
+        }
+
+        $this->balance = $balance;
+
+        return $this;
+    }
+
+    /**
+     * Get balance
+     *
+     * @return string
+     */
+    public function getBalance()
+    {
+        return $this->balance;
+    }
+
+    /**
      * Set language
      *
      * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language
@@ -1122,6 +1223,54 @@ abstract class CompanyAbstract
     public function getOutgoingDdiRule()
     {
         return $this->outgoingDdiRule;
+    }
+
+    /**
+     * Set voicemailNotificationTemplate
+     *
+     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $voicemailNotificationTemplate
+     *
+     * @return self
+     */
+    public function setVoicemailNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $voicemailNotificationTemplate = null)
+    {
+        $this->voicemailNotificationTemplate = $voicemailNotificationTemplate;
+
+        return $this;
+    }
+
+    /**
+     * Get voicemailNotificationTemplate
+     *
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
+     */
+    public function getVoicemailNotificationTemplate()
+    {
+        return $this->voicemailNotificationTemplate;
+    }
+
+    /**
+     * Set faxNotificationTemplate
+     *
+     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $faxNotificationTemplate
+     *
+     * @return self
+     */
+    public function setFaxNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $faxNotificationTemplate = null)
+    {
+        $this->faxNotificationTemplate = $faxNotificationTemplate;
+
+        return $this;
+    }
+
+    /**
+     * Get faxNotificationTemplate
+     *
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
+     */
+    public function getFaxNotificationTemplate()
+    {
+        return $this->faxNotificationTemplate;
     }
 
 

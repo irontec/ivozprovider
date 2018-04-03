@@ -30,6 +30,8 @@ Scenario: I create queue members
   Then I can see confirmation dialog
   When I click on close dialog button
   Then I am on "QueuesList_queueMembers" subscreen list
+  When I click on "queueMembers" last elements edit button
+  Then I compare the form data with "company/queueMembers/new" data fixture
 
 Scenario: I can save queue members
   Given I can see at least one row

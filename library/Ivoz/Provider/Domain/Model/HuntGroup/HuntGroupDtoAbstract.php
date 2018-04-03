@@ -33,11 +33,6 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
     private $ringAllTimeout;
 
     /**
-     * @var integer
-     */
-    private $nextUserPosition = '0';
-
-    /**
      * @var string
      */
     private $noAnswerTargetType;
@@ -46,6 +41,11 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
      * @var string
      */
     private $noAnswerNumberValue;
+
+    /**
+     * @var integer
+     */
+    private $preventMissedCalls = '1';
 
     /**
      * @var integer
@@ -104,9 +104,9 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
             'description' => 'description',
             'strategy' => 'strategy',
             'ringAllTimeout' => 'ringAllTimeout',
-            'nextUserPosition' => 'nextUserPosition',
             'noAnswerTargetType' => 'noAnswerTargetType',
             'noAnswerNumberValue' => 'noAnswerNumberValue',
+            'preventMissedCalls' => 'preventMissedCalls',
             'id' => 'id',
             'companyId' => 'company',
             'noAnswerLocutionId' => 'noAnswerLocution',
@@ -126,9 +126,9 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
             'description' => $this->getDescription(),
             'strategy' => $this->getStrategy(),
             'ringAllTimeout' => $this->getRingAllTimeout(),
-            'nextUserPosition' => $this->getNextUserPosition(),
             'noAnswerTargetType' => $this->getNoAnswerTargetType(),
             'noAnswerNumberValue' => $this->getNoAnswerNumberValue(),
+            'preventMissedCalls' => $this->getPreventMissedCalls(),
             'id' => $this->getId(),
             'company' => $this->getCompany(),
             'noAnswerLocution' => $this->getNoAnswerLocution(),
@@ -254,26 +254,6 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param integer $nextUserPosition
-     *
-     * @return static
-     */
-    public function setNextUserPosition($nextUserPosition = null)
-    {
-        $this->nextUserPosition = $nextUserPosition;
-
-        return $this;
-    }
-
-    /**
-     * @return integer
-     */
-    public function getNextUserPosition()
-    {
-        return $this->nextUserPosition;
-    }
-
-    /**
      * @param string $noAnswerTargetType
      *
      * @return static
@@ -311,6 +291,26 @@ abstract class HuntGroupDtoAbstract implements DataTransferObjectInterface
     public function getNoAnswerNumberValue()
     {
         return $this->noAnswerNumberValue;
+    }
+
+    /**
+     * @param integer $preventMissedCalls
+     *
+     * @return static
+     */
+    public function setPreventMissedCalls($preventMissedCalls = null)
+    {
+        $this->preventMissedCalls = $preventMissedCalls;
+
+        return $this;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getPreventMissedCalls()
+    {
+        return $this->preventMissedCalls;
     }
 
     /**

@@ -17,6 +17,7 @@ use Ivoz\Provider\Domain\Model\Changelog\Changelog;
 use Ivoz\Provider\Domain\Model\Commandlog\Commandlog;
 use Ivoz\Core\Application\Helper\EntityClassHelper;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Events as CustomEvents;
+use Psr\Log\LoggerInterface;
 
 class DoctrineEntityPersister implements EntityPersisterInterface
 {
@@ -68,6 +69,11 @@ class DoctrineEntityPersister implements EntityPersisterInterface
     protected $pendingUpdates = [];
 
     /**
+     * @var LoggerInterface
+     */
+    protected $logger;
+
+    /**
      * @var array
      */
     protected $softDeleteMap = [];
@@ -79,12 +85,13 @@ class DoctrineEntityPersister implements EntityPersisterInterface
         UpdateEntityFromDTO $entityUpdater,
         CommandEventSubscriber $commandEventSubscriber,
         EntityEventSubscriber $entityEventSubscriber,
+        LoggerInterface $logger,
         array $softDeleteMap
     ) {
         $this->em = $em;
 
         $this->unitOfWork = $this->em->getUnitOfWork();
-        $unitOfWorkRef = new \ReflectionClass($this->unitOfWork );
+        $unitOfWorkRef = new \ReflectionClass($this->unitOfWork);
         $this->entityStateAccessor = $unitOfWorkRef->getProperty('entityStates');
         $this->entityStateAccessor->setAccessible(true);
 
@@ -92,6 +99,7 @@ class DoctrineEntityPersister implements EntityPersisterInterface
         $this->entityUpdater = $entityUpdater;
         $this->commandEventSubscriber = $commandEventSubscriber;
         $this->entityEventSubscriber = $entityEventSubscriber;
+        $this->logger = $logger;
         $this->softDeleteMap = $softDeleteMap;
     }
 
@@ -312,6 +320,15 @@ class DoctrineEntityPersister implements EntityPersisterInterface
 
         $commandlog = Commandlog::fromEvent($command);
         $this->em->persist($commandlog);
+        $this->logger->info(
+            sprintf(
+                '%s > %s::%s(%s)',
+                (new \ReflectionClass($command))->getShortName(),
+                $commandlog->getClass(),
+                $commandlog->getMethod(),
+                json_encode($commandlog->getArguments())
+            )
+        );
 
         $entityEvents = $this
             ->entityEventSubscriber
@@ -321,6 +338,16 @@ class DoctrineEntityPersister implements EntityPersisterInterface
             $changeLog = Changelog::fromEvent($event);
             $changeLog->setCommand($commandlog);
             $this->em->persist($changeLog);
+
+            $this->logger->info(
+                sprintf(
+                    '%s > %s#%s > %s',
+                    (new \ReflectionClass($event))->getShortName(),
+                    $changeLog->getEntity(),
+                    $changeLog->getEntityId(),
+                    json_encode($changeLog->getData())
+                )
+            );
         }
 
         $this->entityEventSubscriber->clearEvents();

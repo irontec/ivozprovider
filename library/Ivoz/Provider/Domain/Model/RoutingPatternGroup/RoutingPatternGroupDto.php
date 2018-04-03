@@ -2,14 +2,24 @@
 
 namespace Ivoz\Provider\Domain\Model\RoutingPatternGroup;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
-
-
 class RoutingPatternGroupDto extends RoutingPatternGroupDtoAbstract
 {
 
+    /**
+     * @inheritdoc
+     */
+    public static function getPropertyMap(string $context = '')
+    {
+        if ($context === self::CONTEXT_COLLECTION) {
+            return [
+                'name' => 'name',
+                'description' => 'description',
+                'id' => 'id'
+            ];
+        }
+
+        return parent::getPropertyMap(...func_get_args());
+    }
 }
 
 

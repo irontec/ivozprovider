@@ -1,0 +1,22 @@
+#!/bin/bash
+
+set -e
+
+APP_PATHS=()
+APP_PATHS+=(/opt/irontec/ivozprovider/library)
+APP_PATHS+=(/opt/irontec/ivozprovider/asterisk/agi)
+APP_PATHS+=(/opt/irontec/ivozprovider/microservices/recordings)
+APP_PATHS+=(/opt/irontec/ivozprovider/microservices/workers)
+APP_PATHS+=(/opt/irontec/ivozprovider/scheme)
+APP_PATHS+=(/opt/irontec/ivozprovider/web/rest)
+
+
+for APPLICATION_PATH in ${APP_PATHS[@]}; do
+    pushd $APPLICATION_PATH
+        # basic phplint in source code
+        /opt/irontec/ivozprovider/library/vendor/bin/phplint . --exclude=vendor --exclude=var
+        # basic console check
+        [ -x bin/console ] && bin/console -q
+    popd
+done
+

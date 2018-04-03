@@ -5,5 +5,9 @@
 #      - CoreBundle/CoreBundle.php
 #    whitelist:
 #      - Ivoz
+#    format:
+#      - php
+#      - html
 #    output:
+#      php: spec/coverage/coverage.php
 #      html: spec/coverage

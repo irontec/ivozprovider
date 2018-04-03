@@ -34,6 +34,18 @@ services:
       $storagePathResolver: '@Service\StoragePathResolverCollection::BrandUrl'
 
   ##########################################
+  ## FaxesInOut
+  ##########################################
+  Ivoz\Provider\Application\Service\FaxesInOut\FaxesInOutAssembler:
+    public: true
+    arguments:
+      $storagePathResolver: '@Service\StoragePathResolverCollection::FaxesInOut'
+
+  Ivoz\Provider\Application\Service\FaxesInOut\FaxesInOutDtoAssembler:
+    arguments:
+      $storagePathResolver: '@Service\StoragePathResolverCollection::FaxesInOut'
+
+  ##########################################
   ## Locution
   ##########################################
   Ivoz\Provider\Application\Service\Locution\LocutionAssembler:

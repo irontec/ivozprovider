@@ -74,8 +74,6 @@ class VoiceMailAction
                     $this->agi->verbose("Playing custom user Voicemail Locution.");
                     $this->agi->playback($voicemail->getVoiceMailLocution());
                     $vmopts .= "s";     // Skip welcome message
-                } else {
-                    $vmopts .= "u";     // Play unavailable message
                 }
             } else {
                 $vmopts .= "s";         // Skip welcome message

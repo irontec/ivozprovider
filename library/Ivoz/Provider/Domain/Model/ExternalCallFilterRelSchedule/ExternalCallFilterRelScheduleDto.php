@@ -2,14 +2,23 @@
 
 namespace Ivoz\Provider\Domain\Model\ExternalCallFilterRelSchedule;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
-
-
 class ExternalCallFilterRelScheduleDto extends ExternalCallFilterRelScheduleDtoAbstract
 {
+    /**
+     * @inheritdoc
+     */
+    public static function getPropertyMap(string $context = '')
+    {
+        if ($context === self::CONTEXT_COLLECTION) {
+            return [
+                'id' => 'id',
+                'filterId' => 'filter',
+                'scheduleId' => 'schedule'
+            ];
+        }
 
+        return parent::getPropertyMap(...func_get_args());
+    }
 }
 
 

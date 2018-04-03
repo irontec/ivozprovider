@@ -2,7 +2,7 @@ production:
   entity: Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPattern
   fields: 
     routingPatternId:
-      title: _('Routing pattern id')
+      title: ngettext('Routing pattern', 'Routing patterns', 0)
       type: select
       required: true
       source:
@@ -17,7 +17,7 @@ production:
             RoutingPattern.name.${lang}: asc
       default: true
     routingPatternGroupId:
-      title: _('Routing pattern group id')
+      title: ngettext('Routing pattern group', 'Routing pattern groups', 0)
       type: select
       required: true
       source:

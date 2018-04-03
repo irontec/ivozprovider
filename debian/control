@@ -32,7 +32,7 @@ Package: ivozprovider-profile-common
 Architecture: all
 Section: admin
 Priority: optional
-Pre-Depends: po-debconf, vim, sudo, htop, vlan, tcpdump, ngrep, screen, ssh, tree, conntrack
+Depends: po-debconf, vim, sudo, htop, vlan, tcpdump, ngrep, screen, ssh, tree, conntrack
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Common configuration files
  Files includes in this package are common to all IVOZ Provider systems
@@ -46,8 +46,9 @@ Package: ivozprovider-profile-as
 Architecture: all
 Section: admin
 Priority: optional
-Pre-Depends: libmyodbc, unixodbc
-Depends: ivozprovider-profile-common (=${binary:Version}),
+Depends: libmyodbc,
+    unixodbc,
+    ivozprovider-profile-common (=${binary:Version}),
     ivozprovider-asterisk-agi (=${binary:Version}),
     ivozprovider-asterisk-config (=${binary:Version}),
     ivozprovider-asterisk-sounds,
@@ -65,12 +66,14 @@ Package: ivozprovider-profile-data
 Architecture: all
 Section: admin
 Priority: optional
-Pre-Depends: ivozprovider-profile-common (=${binary:Version}),
+Pre-Depends: bind9
+Depends: ivozprovider-profile-common (=${binary:Version}),
     mysql-server,
     ivozprovider-scheme (=${binary:Version}),
-    bind9,
+    ivozprovider-balances (=${binary:Version}),
     libstring-crc32-perl,
-    libgearman-client-perl
+    libgearman-client-perl,
+    redis-server
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Data System Profile
  .
@@ -83,6 +86,7 @@ Depends: ivozprovider-profile-common (=${binary:Version}),
     ivozprovider-doc (=${binary:Version}),
     ivozprovider-async-workers (=${binary:Version}),
     apache2,
+    ssl-cert,
     php-gearman,
     php7.0,
     php-igbinary,
@@ -123,10 +127,12 @@ Depends: ivozprovider-profile-common,
         ivozprovider-kamailio-extra-modules,
         ivozprovider-kamailio-trunks (=${binary:Version}),
         ivozprovider-kamailio-users (=${binary:Version}),
+        ivozprovider-recordings,
         ivozprovider-cgrates,
         ivozprovider-cgrates-tools,
         ivozprovider-cgrates-config (=${binary:Version}),
-        redis-server
+        ivozprovider-rtpengine,
+        ivozprovider-rtpproxy
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Profile files for a Proxy Systems
  .
@@ -168,7 +174,7 @@ Package: ivozprovider-asterisk-agi
 Architecture: all
 Section: php
 Priority: optional
-Depends: ivozprovider-common-library (=${binary:Version}), php-mailparse
+Depends: ivozprovider-common-library (=${binary:Version})
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Asterik - Gateway Interface Zend Application
  .
@@ -177,8 +183,7 @@ Package: ivozprovider-scheme
 Architecture: all
 Section: database
 Priority: optional
-Pre-Depends: ivozprovider-common-library (=${binary:Version})
-Depends: php7.0-mysql, php7.0-xml, mysql-server
+Pre-Depends: ivozprovider-common-library (=${binary:Version}), bind9, php7.0-mysql, php7.0-xml, mysql-server
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Database Scheme
  .
@@ -217,7 +222,7 @@ Description: IVOZ Provider - Rest API files
 Package: ivozprovider-common-library
 Architecture: all
 Section: php
-Depends: php7.0-cli, php7.0-mysql, php7.0-mbstring, php7.0-xml, acl, klear-library
+Depends: php7.0-cli, php7.0-mysql, php7.0-mbstring, php7.0-xml, acl, klear-library, php-mailparse
 Provides: ivozprovider-data-library
 Conflicts: ivozprovider-data-library
 Priority: optional
@@ -238,10 +243,18 @@ Description: IVOZ Provider - Recordings - Symfony microservice
 Package: ivozprovider-async-workers
 Architecture: all
 Priority: optional
-Depends: ivozprovider-common-library (=${binary:Version}), php-mailparse, php-gearman
+Depends: ivozprovider-common-library (=${binary:Version}), php-gearman
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Async Workers - Symfony microservice
  .
+
+Package: ivozprovider-balances
+Architecture: all
+Priority: optional
+Depends: ivozprovider-common-library (=${binary:Version}), php-gearman
+Homepage: http://www.irontec.com
+Description: IVOZ Provider - Rating updater - Symfony microservice
+  .
 
 Package: ivozprovider-doc
 Architecture: all
@@ -260,4 +273,3 @@ Description: IVOZ Provider - CGrateS - Configuration files
  This package includes all config files found in /etc
  that will require cgrates to run properly.
  .
-

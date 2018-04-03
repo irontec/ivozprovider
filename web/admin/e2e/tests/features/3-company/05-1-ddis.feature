@@ -28,6 +28,8 @@ Scenario: I create ddis
   Then I can see confirmation dialog
   When I click on close dialog button
   Then I am on "DDIs" list
+  When I click on "DDIs" last elements edit button
+  Then I compare the form data with "company/ddis/new" data fixture
 
 Scenario: I can save DDIs
   Given I can see at least one row

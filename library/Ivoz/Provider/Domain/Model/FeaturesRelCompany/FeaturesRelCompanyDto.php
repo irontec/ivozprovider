@@ -2,14 +2,23 @@
 
 namespace Ivoz\Provider\Domain\Model\FeaturesRelCompany;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
-
-
 class FeaturesRelCompanyDto extends FeaturesRelCompanyDtoAbstract
 {
+    /**
+     * @inheritdoc
+     */
+    public static function getPropertyMap(string $context = '')
+    {
+        if ($context === self::CONTEXT_COLLECTION) {
+            return [
+                'id' => 'id',
+                'companyId' => 'company',
+                'featureId' => 'feature'
+            ];
+        }
 
+        return parent::getPropertyMap(...func_get_args());
+    }
 }
 
 

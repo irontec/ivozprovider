@@ -24,8 +24,9 @@ class ProviderFixedCost extends Fixture implements DependentFixtureInterface
         $item1->setName("Monitoring");
         $item1->setDescription("Something");
         $item1->setCost("1.0000");
-        $item1->setBrand($this->getReference('_reference_IvozProviderDomainModelBrandBrand1'));
-        $this->addReference('_reference_IvozProviderDomainModelFixedCostFixedCost1', $item1);
+        $item1->setBrand($this->getReference('_reference_ProviderBrand1'));
+        $this->addReference('_reference_ProviderFixedCost1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
     

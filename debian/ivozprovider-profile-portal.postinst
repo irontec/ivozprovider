@@ -1,30 +1,75 @@
 #!/bin/bash
 
+# Source debconf library.
+. /usr/share/debconf/confmodule
+
 #DEBHELPER#
 
-# Create certificate links if required
-[ ! -e /etc/ssl/certs/ivozprovider-portals.pem ]    && /bin/ln -s /etc/ssl/certs/ssl-cert-snakeoil.pem   /etc/ssl/certs/ivozprovider-portals.pem
-[ ! -e /etc/ssl/private/ivozprovider-portals.key ]  && /bin/ln -s /etc/ssl/private/ssl-cert-snakeoil.key /etc/ssl/private/ivozprovider-portals.key
-[ ! -e /etc/ssl/certs/yealink.crt ]     && /bin/ln -s /etc/ssl/certs/ssl-cert-snakeoil.pem      /etc/ssl/certs/yealink.crt
-[ ! -e /etc/ssl/private/yealink.key ]   && /bin/ln -s /etc/ssl/private/ssl-cert-snakeoil.key    /etc/ssl/private/yealink.key
-[ ! -e /etc/ssl/certs/cisco.crt ]       && /bin/ln -s /etc/ssl/certs/ssl-cert-snakeoil.pem      /etc/ssl/certs/cisco.crt
-[ ! -e /etc/ssl/private/cisco.key ]     && /bin/ln -s /etc/ssl/private/ssl-cert-snakeoil.key    /etc/ssl/private/cisco.key
+#######################################################################################################################
+#######################################################################################################################
+function remove_diverted_files()
+{
+    ### This function will be used to restore files that are owned by another packages
+    ### We'll move original files to their original names
+    for file in `dpkg-divert --list $DPKG_MAINTSCRIPT_PACKAGE | cut -d" " -f3`; do
+            dpkg-divert --package $DPKG_MAINTSCRIPT_PACKAGE --remove --rename $file
+    done
+}
 
-# Enable apache sites and modules
-[   -L /etc/apache2/mods-enabled/php5.load ] && /usr/sbin/a2dismod php5
-[ ! -L /etc/apache2/mods-enabled/php7.0.load ] && /usr/sbin/a2enmod php7.0
-[ ! -L /etc/apache2/mods-enabled/headers.load ] && /usr/sbin/a2enmod headers
-[ ! -L /etc/apache2/mods-enabled/rewrite.load ] && /usr/sbin/a2enmod rewrite
-[ ! -L /etc/apache2/mods-enabled/ssl.load ] && /usr/sbin/a2enmod ssl
-[ ! -L /etc/apache2/mods-enabled/mpm_prefork.load ] && /usr/sbin/a2enmod mpm_prefork
-[   -L /etc/apache2/mods-enabled/mpm_event.load ] && /usr/sbin/a2dismod mpm_event
-[   -L /etc/apache2/sites-enabled/000-default.conf ] && /usr/sbin/a2dissite 000-default
-[ ! -L /etc/apache2/sites-enabled/020-ivozprovider-portals.conf ] && /usr/sbin/a2ensite 020-ivozprovider-portals.conf
-[ ! -L /etc/apache2/sites-enabled/030-ivozprovider-prov.conf ] && /usr/sbin/a2ensite 030-ivozprovider-prov.conf
-[ ! -L /etc/apache2/sites-enabled/060-ivozprovider-api.conf ] && /usr/sbin/a2ensite 060-ivozprovider-api.conf
+function setup_apache_certificates()
+{
+    # Create certificate links if required
+    [ ! -e /etc/ssl/certs/ivozprovider-portals.pem ]    && /bin/ln -s /etc/ssl/certs/ssl-cert-snakeoil.pem   /etc/ssl/certs/ivozprovider-portals.pem
+    [ ! -e /etc/ssl/private/ivozprovider-portals.key ]  && /bin/ln -s /etc/ssl/private/ssl-cert-snakeoil.key /etc/ssl/private/ivozprovider-portals.key
+    [ ! -e /etc/ssl/certs/yealink.crt ]     && /bin/ln -s /etc/ssl/certs/ssl-cert-snakeoil.pem      /etc/ssl/certs/yealink.crt
+    [ ! -e /etc/ssl/private/yealink.key ]   && /bin/ln -s /etc/ssl/private/ssl-cert-snakeoil.key    /etc/ssl/private/yealink.key
+    [ ! -e /etc/ssl/certs/cisco.crt ]       && /bin/ln -s /etc/ssl/certs/ssl-cert-snakeoil.pem      /etc/ssl/certs/cisco.crt
+    [ ! -e /etc/ssl/private/cisco.key ]     && /bin/ln -s /etc/ssl/private/ssl-cert-snakeoil.key    /etc/ssl/private/cisco.key
+}
 
-# Enable services
-/bin/systemctl enable apache2
-/bin/systemctl reload apache2
+function setup_apache_config()
+{
+
+    # Enable apache sites and modules
+    [   -L /etc/apache2/mods-enabled/php5.load ] && /usr/sbin/a2dismod php5
+    [ ! -L /etc/apache2/mods-enabled/php7.0.load ] && /usr/sbin/a2enmod php7.0
+    [ ! -L /etc/apache2/mods-enabled/headers.load ] && /usr/sbin/a2enmod headers
+    [ ! -L /etc/apache2/mods-enabled/rewrite.load ] && /usr/sbin/a2enmod rewrite
+    [ ! -L /etc/apache2/mods-enabled/ssl.load ] && /usr/sbin/a2enmod ssl
+    [ ! -L /etc/apache2/mods-enabled/mpm_prefork.load ] && /usr/sbin/a2enmod mpm_prefork
+    [   -L /etc/apache2/mods-enabled/mpm_event.load ] && /usr/sbin/a2dismod mpm_event
+    [   -L /etc/apache2/sites-enabled/000-default.conf ] && /usr/sbin/a2dissite 000-default
+    [ ! -L /etc/apache2/sites-enabled/020-ivozprovider-portals.conf ] && /usr/sbin/a2ensite 020-ivozprovider-portals.conf
+    [ ! -L /etc/apache2/sites-enabled/030-ivozprovider-prov.conf ] && /usr/sbin/a2ensite 030-ivozprovider-prov.conf
+    [ ! -L /etc/apache2/sites-enabled/060-ivozprovider-api.conf ] && /usr/sbin/a2ensite 060-ivozprovider-api.conf
+
+    # Enable services
+    /bin/systemctl enable apache2
+    /bin/systemctl reload apache2
+}
+
+function setup_gearman_job_server()
+{
+    sed -i -r 's/"(--listen=).*"/"\10.0.0.0"/' /etc/default/gearman-job-server
+}
+
+function setup_klear()
+{
+    # Get default language from debconf
+    db_get ivozprovider/language            || true
+    LANGUAGE=$RET
+    db_stop
+
+    # Setup portals default language
+    sed -i -r "s/(lang*: *).*/\1$LANGUAGE/" /opt/irontec/ivozprovider/web/admin/application/configs/klear/klear.yaml
+}
+
+#######################################################################################################################
+#######################################################################################################################
+remove_diverted_files
+setup_apache_certificates
+setup_apache_config
+setup_gearman_job_server
+setup_klear
 
 :

@@ -17,11 +17,6 @@ interface LcrRuleInterface extends LoggableEntityInterface
      */
     public function setRequestUri($requestUri = null);
 
-    /**
-     * {@inheritDoc}
-     */
-    public function setTag($tag);
-
     public function setCondition($regexp);
 
     /**
@@ -110,6 +105,15 @@ interface LcrRuleInterface extends LoggableEntityInterface
      * @return integer
      */
     public function getEnabled();
+
+    /**
+     * Set tag
+     *
+     * @param string $tag
+     *
+     * @return self
+     */
+    public function setTag($tag);
 
     /**
      * Get tag

@@ -98,7 +98,7 @@ Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileAbstract:
       cascade: {  }
       fetch: LAZY
       mappedBy: null
-      inversedBy: null
+      inversedBy: ratingProfiles
       joinColumns:
         companyId:
           referencedColumnName: id

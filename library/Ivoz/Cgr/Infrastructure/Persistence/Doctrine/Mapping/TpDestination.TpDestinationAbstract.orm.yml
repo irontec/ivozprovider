@@ -47,7 +47,7 @@ Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationAbstract:
       cascade: {  }
       fetch: LAZY
       mappedBy: null
-      inversedBy: null
+      inversedBy: tpDestination
       joinColumns:
         destinationId:
           nullable: false

@@ -2,7 +2,7 @@ imports:
   - { resource: parameters.yml }
   - { resource: services.yml }
   - { resource: doctrine.yml }
-#  - { resource: logger.yml }
+  - { resource: logger.yml }
 #  - { resource: doctrine_cache.yml }
 
 # Put parameters here that don't need to change on each machine where the app is deployed

@@ -1,0 +1,34 @@
+Template: ivozprovider/menu_proxy
+Type: select
+Choices: configure_dns_address, configure_mysql_password, configure_media_relay_address, configure_finish
+Choices-es.UTF-8: Configurar dirección DNS local, Configurar password de MySQL, Configurar Servidor de Media, >> Finalizar configuración
+Choices-en.UTF-8: Configure local DNS address, Configure MySQL root password, Configure Media Relay, >> Finish configurating
+Default: configure_dns_address
+Description:
+ Welcome to IVOZ Provider Proxy Node setup.
+ .
+ You can access to this menu anytime by running "dpkg-reconfigure ivozprovider-profile-proxy"
+ .
+ Please, configure the minimum required data in order to setup this profile required services:
+ .
+Description-es.UTF-8:
+ Bienvenido a la instación de nodo Proxy de IVOZ Provider.
+ .
+ Puede acceder a este menu en cualquier momento ejecutando "dpkg-reconfigure ivozprovider-profile-proxy"
+ .
+ Por favor, introduzca los minimos datos requereidos para configurar los servicios de este perfil:
+ .
+
+Template: ivozprovider/media_relay_address
+Type: string
+Default: 0.0.0.0
+Description:
+ Proxy nodes has a local media relay configured with the node public IP address.
+ .
+ Enter Public Media relay IP address:
+ .
+Description-es.UTF-8:
+ Los nodos de Proxy cuentan con un Servidor de Media local configurado con la IP pública del nodo.
+ .
+ Introduzca la IP publica para el Servidor de Media:
+ .

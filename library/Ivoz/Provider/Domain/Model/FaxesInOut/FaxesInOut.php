@@ -28,7 +28,7 @@ class FaxesInOut extends FaxesInOutAbstract implements FaxesInOutInterface, File
     public function getFileObjects()
     {
         return [
-            'File'
+            'file'
         ];
     }
 

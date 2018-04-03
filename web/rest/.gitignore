@@ -1,3 +1,4 @@
+.ppm/
 web/swagger.json
 /build/
 /phpunit.xml
@@ -16,3 +17,4 @@ web/swagger.json
 !var/sessions/.gitkeep
 !var/SymfonyRequirements.php
 /vendor/
+/results/

@@ -54,26 +54,4 @@ class LcrRuleSpec extends ObjectBehavior
             ->shouldNotThrow('\Exception')
             ->during('setRequestUri', [':something@']);
     }
-
-    function it_throws_exception_on_non_numeric_tag()
-    {
-        $this
-            ->shouldThrow('\Exception')
-            ->during('setTag', ['$something']);
-
-        $this
-            ->shouldThrow('\Exception')
-            ->during('setTag', ['some reason']);
-    }
-
-    function it_accepts_numeric_tag()
-    {
-        $this
-            ->shouldNotThrow('\Exception')
-            ->during('setTag', ['something']);
-
-        $this
-            ->shouldNotThrow('\Exception')
-            ->during('setTag', ['someReason']);
-    }
 }

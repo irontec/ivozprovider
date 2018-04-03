@@ -6,52 +6,64 @@
 . /usr/share/debconf/confmodule
 
 # Set current environment
-export $(systemctl show-environment)
-[ -z "$SYMFONY_ENV" ] && export SYMFONY_ENV=prod
+export SYMFONY_ENV=prod
 
-# Setup mysql connection
-db_get ivozprovider/mysql_password || true
-MYSQL_PASSWORD=$RET
-MYSQL_USER=root
-db_stop
+#######################################################################################################################
+#######################################################################################################################
 
-# Replace settings in properties
-sed -i "s/database_user:.*/database_user: $MYSQL_USER/" /opt/irontec/ivozprovider/library/CoreBundle/Resources/config/parameters.yml
-sed -i "s/database_password:.*/database_password: $MYSQL_PASSWORD/" /opt/irontec/ivozprovider/library/CoreBundle/Resources/config/parameters.yml
-
-
-if [ -z "$2" ]; then
-    # Setup password and user in first install (allow changing it later)
+function scheme_initialize()
+{
+    # On first run, create an static resolution
+    getent hosts data.ivozprovider.local &>/dev/null
+    [ $? -ne 0 ] && echo "127.0.0.1 data.ivozprovider.local" >> /etc/hosts
 
     # Ensure MySQL is running
     /etc/init.d/mysql start
 
     # Load Timezones
-    mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql --user=root --password="$MYSQL_PASSWORD" mysql
+    db_get ivozprovider/mysql_password                     || true
+    mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql --user=root --password="$RET" mysql
 
     # During first time, create database and import initial dump
     cd /opt/irontec/ivozprovider/scheme
     bin/console doctrine:database:create
     bin/console doctrine:database:import initial.sql
+}
+
+function mysql_upgrade()
+{
+    # Ensure MySQL is running
+    /etc/init.d/mysql start
+
+    # Load Timezones
+    db_get ivozprovider/mysql_password                     || true
+    mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql --user=root --password="$RET" mysql
+
+    # Upgrade mysql internal tables
+    mysql_upgrade --user=root --password="$RET" --force
+}
+
+function scheme_migrations()
+{
+    # Always migrate database
+    cd /opt/irontec/ivozprovider/scheme
+    bin/console cache:clear --no-warmup -q -n
+    bin/console doctrine:migrations:status
+    bin/console doctrine:migrations:migrate --no-interaction --quiet
+}
+
+#######################################################################################################################
+#######################################################################################################################
+if [ -z "$2" ]; then
+    scheme_initialize
 else
     # Upgrade MySQL if installed version is prior to artemis release
     /usr/bin/dpkg --compare-versions $2 lt 2.0~0
     if [ $? -eq 0 ]; then
-        # Ensure MySQL is running
-        /etc/init.d/mysql start
-
-        # Load Timezones
-        mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql --user=root --password="$MYSQL_PASSWORD" mysql
-
-        # Upgrade mysql internal tables
-        mysql_upgrade --user=root --password="$MYSQL_PASSWORD" --force
+        mysql_upgrade
     fi
 fi
 
-# Always migrate database
-cd /opt/irontec/ivozprovider/scheme
-bin/console cache:clear --no-warmup -q -n
-bin/console doctrine:migrations:status
-bin/console doctrine:migrations:migrate --no-interaction --quiet
+scheme_migrations
 
-exit $?
+:

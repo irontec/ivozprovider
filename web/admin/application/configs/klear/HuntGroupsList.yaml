@@ -28,7 +28,6 @@ production:
             huntGroupsDel_dialog: true
           default: huntGroupsEdit_screen
         blacklist:
-          nextUserPosition: true
           ringAllTimeout: true
           noAnswerTargetType: true
           noAnswerLocutionId: true
@@ -36,6 +35,7 @@ production:
           noAnswerNumberValue: true
           noAnswerExtensionId: true
           noAnswerVoiceMailUserId: true
+          preventMissedCalls: true
       options:
         title: _("Options")
         screens:
@@ -56,16 +56,16 @@ production:
         <<: *forcedCompany
       fields:
         blacklist: &huntGroupsBlacklist_Link
-          nextUserPosition: true
       fixedPositions: &huntGroupsFixedPositions_Link
         group0:
           label: _("Basic Configuration")
-          colsPerRow: 2
+          colsPerRow: 12
           fields:
-            name: 1
-            description: 1
-            strategy: 1
-            ringAllTimeOut: 1
+            name: 6
+            description: 6
+            strategy: 4
+            ringAllTimeOut: 4
+            preventMissedCalls: 4
         group1:
           label: _("No answer configuration")
           colsPerRow: 6

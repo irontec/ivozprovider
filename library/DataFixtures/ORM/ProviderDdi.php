@@ -26,11 +26,12 @@ class ProviderDdi extends Fixture implements DependentFixtureInterface
         $item1->setDisplayName("");
         $item1->setBillInboundCalls(false);
         $item1->setFriendValue("");
-        $item1->setCompany($this->getReference('_reference_IvozProviderDomainModelCompanyCompany1'));
-        $item1->setBrand($this->getReference('_reference_IvozProviderDomainModelBrandBrand1'));
-        $item1->setPeeringContract($this->getReference('_reference_IvozProviderDomainModelPeeringContractPeeringContract1'));
-        $item1->setCountry($this->getReference('_reference_IvozProviderDomainModelCountryCountry70'));
-        $this->addReference('_reference_IvozProviderDomainModelDdiDdi1', $item1);
+        $item1->setCompany($this->getReference('_reference_ProviderCompany1'));
+        $item1->setBrand($this->getReference('_reference_ProviderBrand1'));
+        $item1->setPeeringContract($this->getReference('_reference_ProviderPeeringContract1'));
+        $item1->setCountry($this->getReference('_reference_ProviderCountry70'));
+        $this->addReference('_reference_ProviderDdi1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
     

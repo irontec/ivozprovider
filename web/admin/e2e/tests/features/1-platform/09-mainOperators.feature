@@ -21,6 +21,8 @@ Scenario: I can create main operators
   Then I can see confirmation dialog
   When I click on close dialog button
   Then I am on "Administrators" list
+  When I click on "Administrators" last elements edit button
+  Then I compare the form data with "platform/mainOperators/new" data fixture
 
 Scenario: I can edit main operators
   Given I can see at least one row

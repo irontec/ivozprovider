@@ -59,7 +59,5 @@ class UpdateByCompany implements CompanyLifecycleEventHandlerInterface
             ->setAccount(sprintf("c%d", $entityDto->getId()));
 
         $this->entityPersister->persistDto($accountActionDto, $accountAction);
-
     }
-
 }

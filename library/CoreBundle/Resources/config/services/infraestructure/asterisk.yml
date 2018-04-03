@@ -1,0 +1,24 @@
+services:
+
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Ivoz\Core\Infrastructure\Service\Asterisk\ARI\ARIConnector:
+    arguments:
+      $applicationServerRepository:
+        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\ApplicationServer\\ApplicationServer")'
+      $userName: '%ari_user%'
+      $password: '%ari_password%'
+      $port: '%ari_port%'
+    tags:
+      - { name: test_double, fake: 'Ivoz\Core\Infrastructure\Service\Asterisk\ARI\FakeARIConnector' }
+
+  Ivoz\Core\Infrastructure\Service\Asterisk\ARI\FakeARIConnector:
+    arguments:
+      $applicationServerRepository:
+        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\ApplicationServer\\ApplicationServer")'
+      $userName: ''
+      $password: ''
+      $port: ''

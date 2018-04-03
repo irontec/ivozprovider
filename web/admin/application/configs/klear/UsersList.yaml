@@ -233,9 +233,6 @@ production:
     callForwardSettingsEdit_screen:
       <<: *callForwardSettingsEdit_screenLink
       filterField: User
-      fields:
-        blacklist:
-          targetTypeValue: true
 
   dialogs: &users_dialogsLink
     usersDel_dialog: &usersDel_dialogLink

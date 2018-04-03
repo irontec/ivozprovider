@@ -47,7 +47,8 @@ class UpdateByBrand implements BrandLifecycleEventHandlerInterface
                 ->setCode($service->getDefaultCode())
                 ->setBrandId($entity->getId());
 
-            $this->entityPersister->persistDto($brandServiceDto);
+            $brandService = $this->entityPersister->persistDto($brandServiceDto);
+            $entity->addService($brandService);
         }
     }
 }

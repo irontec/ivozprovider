@@ -7,6 +7,7 @@ use Ivoz\Core\Domain\Model\Helper\CriteriaHelperInterface;
 use Doctrine\Common\Collections\Expr\Comparison;
 use Doctrine\Common\Collections\Expr\Value;
 use Doctrine\Common\Collections\Expr\CompositeExpression;
+use Doctrine\Common\Collections\Expr\Expression;
 
 class CriteriaHelper implements  CriteriaHelperInterface
 {
@@ -45,28 +46,33 @@ class CriteriaHelper implements  CriteriaHelperInterface
 
     /**
      * @param array $conditions
-     * @return \Doctrine\Common\Collections\Expr\Comparison|\Doctrine\Common\Collections\Expr\CompositeExpression
+     * @return Expression[]
      */
     private static function arrayToExpressions(array $conditions)
     {
         $expressions = [];
-        foreach ($conditions as $comparison) {
-            list($field, $operator) = $comparison;
-            $value = $comparison[2] ?? null;
+        foreach ($conditions as $key => $comparison) {
 
-            switch ($operator) {
+            if (!in_array($key, ['or', 'and'], true)) {
+                list($field, $operator) = $comparison;
+                $value = $comparison[2] ?? null;
+
+                $expressions[] = self::createExpression($field, $operator, $value);
+                continue;
+            }
+
+            switch ($key) {
                 case 'or':
+                    $subExpressions = self::arrayToExpressions($comparison);
                     $expressions[] = Criteria::expr()->orX(
-                        self::arrayToExpressions($comparison)
+                        ...$subExpressions
                     );
                     break;
                 case 'and':
+                    $subExpressions = self::arrayToExpressions($comparison);
                     $expressions[] = Criteria::expr()->andX(
-                        self::arrayToExpressions($comparison)
+                        ...$subExpressions
                     );
-                    break;
-                default:
-                    $expressions[] = self::createExpression($field, $operator, $value);
                     break;
             }
         }
@@ -74,6 +80,12 @@ class CriteriaHelper implements  CriteriaHelperInterface
         return $expressions;
     }
 
+    /**
+     * @param string $field
+     * @param string $operator
+     * @param null $value
+     * @return Comparison
+     */
     private static function createExpression(string $field, string $operator, $value = null)
     {
         $expr = Criteria::expr();

@@ -3,5 +3,5 @@ Description=Run cgr-loader with database tariff plans
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/cgr-loader -stordb_host data.ivozprovider.local -stordb_name ivozprovider -stordb_user kamailio -stordb_passwd ironsecret -verbose -flushdb -from_stordb -tpid ivozprovider
+ExecStart=/usr/bin/cgr-loader -from_stordb -validate -flushdb -verbose
 

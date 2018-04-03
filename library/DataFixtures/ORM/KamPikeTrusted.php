@@ -25,7 +25,8 @@ class KamPikeTrusted extends Fixture
         $item1->setProto("any");
         $item1->setTag("Sarenet");
         $item1->setPriority(0);
-        $this->addReference('_reference_IvozKamDomainModelPikeTrustedPikeTrusted1', $item1);
+        $this->addReference('_reference_KamPikeTrusted1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
     

@@ -42,6 +42,13 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
     public function getCalendars();
 
     /**
+     * Return Route Locks associated with this condition
+     *
+     * @return RouteLockInterface[]
+     */
+    public function getRouteLocks();
+
+    /**
      * Checks if this condition mathes the given origin
      *
      * @param $number Number in E.164 format
@@ -62,6 +69,13 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
      * @return bool true if condition matches
      */
     public function matchesCalendar();
+
+    /**
+     * Checks if any of the Locks is open
+     *
+     * @return bool true if condition matches
+     */
+    public function matchesRouteLock();
 
     /**
      * Return a string representation of matching conditions
@@ -386,6 +400,37 @@ interface ConditionalRoutesConditionInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarInterface[]
      */
     public function getRelCalendars(\Doctrine\Common\Collections\Criteria $criteria = null);
+
+    /**
+     * Add relRouteLock
+     *
+     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLockInterface $relRouteLock
+     *
+     * @return ConditionalRoutesConditionTrait
+     */
+    public function addRelRouteLock(\Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLockInterface $relRouteLock);
+
+    /**
+     * Remove relRouteLock
+     *
+     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLockInterface $relRouteLock
+     */
+    public function removeRelRouteLock(\Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLockInterface $relRouteLock);
+
+    /**
+     * Replace relRouteLocks
+     *
+     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLockInterface[] $relRouteLocks
+     * @return self
+     */
+    public function replaceRelRouteLocks(Collection $relRouteLocks);
+
+    /**
+     * Get relRouteLocks
+     *
+     * @return \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLockInterface[]
+     */
+    public function getRelRouteLocks(\Doctrine\Common\Collections\Criteria $criteria = null);
 
     /**
      * @param string $prefix

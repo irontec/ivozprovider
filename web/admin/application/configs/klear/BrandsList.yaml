@@ -41,11 +41,10 @@ production:
           invoice.registryData: true
           languageId: true
           defaultTimezoneId: true
-          fromName: true
-          fromAddress: true
           recordingsLimitMB: true
           recordingsLimitEmail: true
           recordingsDiskUsage: true
+          maxCalls: true
         options:
           title: _("Options")
           screens:
@@ -93,8 +92,6 @@ production:
           invoice.province: true
           invoice.country: true
           invoice.registryData: true
-          fromName: true
-          fromAddress: true
           recordingsLimitMB: true
           recordingsDiskUsage: true
           recordingsDiskAvailable: true
@@ -111,6 +108,7 @@ production:
             invoice.nif: 1
             logo: 1
             relFeatures: 1
+            maxCalls: 1
         group2:
           label: _("Locales")
           colsPerRow: 2
@@ -132,13 +130,6 @@ production:
           label: _("SIP domain")
           fields:
             domain_users: 2
-        group5:
-          colsPerRow: 12
-          label: _("Mail data")
-          collapsed: true
-          fields:
-            fromName: 6
-            fromAddress: 6
 
     brandsEdit_screen: &brandsEdit_screenLink
       <<: *Brands
@@ -164,6 +155,8 @@ production:
       class: ui-silk-user-suit
       title: _("List of %s %2s", ngettext('Brand operator', 'Brand operators', 0), "[format| (%parent%)]")
       filterField: Brand
+      forcedValues:
+        "self::company": null
       parentOptionCustomizer:
         - recordCount
     administratorsNew_screen:

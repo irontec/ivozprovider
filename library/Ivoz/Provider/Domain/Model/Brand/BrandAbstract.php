@@ -25,16 +25,6 @@ abstract class BrandAbstract
     protected $domainUsers;
 
     /**
-     * @var string
-     */
-    protected $fromName;
-
-    /**
-     * @var string
-     */
-    protected $fromAddress;
-
-    /**
      * @var integer
      */
     protected $recordingsLimitMB;
@@ -43,6 +33,11 @@ abstract class BrandAbstract
      * @var string
      */
     protected $recordingsLimitEmail;
+
+    /**
+     * @var integer
+     */
+    protected $maxCalls = '0';
 
     /**
      * @var Logo
@@ -75,9 +70,14 @@ abstract class BrandAbstract
     /**
      * Constructor
      */
-    protected function __construct($name, Logo $logo, Invoice $invoice)
-    {
+    protected function __construct(
+        $name,
+        $maxCalls,
+        Logo $logo,
+        Invoice $invoice
+    ) {
         $this->setName($name);
+        $this->setMaxCalls($maxCalls);
         $this->setLogo($logo);
         $this->setInvoice($invoice);
     }
@@ -163,14 +163,13 @@ abstract class BrandAbstract
 
         $self = new static(
             $dto->getName(),
+            $dto->getMaxCalls(),
             $logo,
             $invoice
         );
 
         $self
             ->setDomainUsers($dto->getDomainUsers())
-            ->setFromName($dto->getFromName())
-            ->setFromAddress($dto->getFromAddress())
             ->setRecordingsLimitMB($dto->getRecordingsLimitMB())
             ->setRecordingsLimitEmail($dto->getRecordingsLimitEmail())
             ->setDomain($dto->getDomain())
@@ -214,10 +213,9 @@ abstract class BrandAbstract
         $this
             ->setName($dto->getName())
             ->setDomainUsers($dto->getDomainUsers())
-            ->setFromName($dto->getFromName())
-            ->setFromAddress($dto->getFromAddress())
             ->setRecordingsLimitMB($dto->getRecordingsLimitMB())
             ->setRecordingsLimitEmail($dto->getRecordingsLimitEmail())
+            ->setMaxCalls($dto->getMaxCalls())
             ->setLogo($logo)
             ->setInvoice($invoice)
             ->setDomain($dto->getDomain())
@@ -239,10 +237,9 @@ abstract class BrandAbstract
         return self::createDto()
             ->setName(self::getName())
             ->setDomainUsers(self::getDomainUsers())
-            ->setFromName(self::getFromName())
-            ->setFromAddress(self::getFromAddress())
             ->setRecordingsLimitMB(self::getRecordingsLimitMB())
             ->setRecordingsLimitEmail(self::getRecordingsLimitEmail())
+            ->setMaxCalls(self::getMaxCalls())
             ->setLogoFileSize(self::getLogo()->getFileSize())
             ->setLogoMimeType(self::getLogo()->getMimeType())
             ->setLogoBaseName(self::getLogo()->getBaseName())
@@ -266,10 +263,9 @@ abstract class BrandAbstract
         return [
             'name' => self::getName(),
             'domain_users' => self::getDomainUsers(),
-            'FromName' => self::getFromName(),
-            'FromAddress' => self::getFromAddress(),
             'recordingsLimitMB' => self::getRecordingsLimitMB(),
             'recordingsLimitEmail' => self::getRecordingsLimitEmail(),
+            'maxCalls' => self::getMaxCalls(),
             'logoFileSize' => self::getLogo()->getFileSize(),
             'logoMimeType' => self::getLogo()->getMimeType(),
             'logoBaseName' => self::getLogo()->getBaseName(),
@@ -345,62 +341,6 @@ abstract class BrandAbstract
     }
 
     /**
-     * Set fromName
-     *
-     * @param string $fromName
-     *
-     * @return self
-     */
-    public function setFromName($fromName = null)
-    {
-        if (!is_null($fromName)) {
-            Assertion::maxLength($fromName, 255, 'fromName value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        }
-
-        $this->fromName = $fromName;
-
-        return $this;
-    }
-
-    /**
-     * Get fromName
-     *
-     * @return string
-     */
-    public function getFromName()
-    {
-        return $this->fromName;
-    }
-
-    /**
-     * Set fromAddress
-     *
-     * @param string $fromAddress
-     *
-     * @return self
-     */
-    public function setFromAddress($fromAddress = null)
-    {
-        if (!is_null($fromAddress)) {
-            Assertion::maxLength($fromAddress, 255, 'fromAddress value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        }
-
-        $this->fromAddress = $fromAddress;
-
-        return $this;
-    }
-
-    /**
-     * Get fromAddress
-     *
-     * @return string
-     */
-    public function getFromAddress()
-    {
-        return $this->fromAddress;
-    }
-
-    /**
      * Set recordingsLimitMB
      *
      * @param integer $recordingsLimitMB
@@ -456,6 +396,34 @@ abstract class BrandAbstract
     public function getRecordingsLimitEmail()
     {
         return $this->recordingsLimitEmail;
+    }
+
+    /**
+     * Set maxCalls
+     *
+     * @param integer $maxCalls
+     *
+     * @return self
+     */
+    public function setMaxCalls($maxCalls)
+    {
+        Assertion::notNull($maxCalls, 'maxCalls value "%s" is null, but non null value was expected.');
+        Assertion::integerish($maxCalls, 'maxCalls value "%s" is not an integer or a number castable to integer.');
+        Assertion::greaterOrEqualThan($maxCalls, 0, 'maxCalls provided "%s" is not greater or equal than "%s".');
+
+        $this->maxCalls = $maxCalls;
+
+        return $this;
+    }
+
+    /**
+     * Get maxCalls
+     *
+     * @return integer
+     */
+    public function getMaxCalls()
+    {
+        return $this->maxCalls;
     }
 
     /**

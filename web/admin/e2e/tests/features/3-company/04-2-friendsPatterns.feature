@@ -31,6 +31,8 @@ Scenario: I create friend pattern
   Then I can see confirmation dialog
   When I click on close dialog button
   Then I am on "FriendsList_friendsPatterns" subscreen list
+  When I click on "friendsPatterns" last elements edit button
+  Then I compare the form data with "company/friendsPatterns/new" data fixture
 
 Scenario: I can save friends patterns
   Given I can see at least one row

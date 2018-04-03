@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Restore main vendor directory (improves composer install)
+mv /opt/library-vendor /opt/irontec/ivozprovider/library/vendor
+
+# Update composer dependencies
+/opt/irontec/ivozprovider/library/bin/composer_install.sh --prefer-dist --no-progress
+
+# Run requested command
+exec $*

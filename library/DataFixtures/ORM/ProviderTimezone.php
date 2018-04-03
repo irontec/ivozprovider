@@ -25,16 +25,18 @@ class ProviderTimezone extends Fixture implements DependentFixtureInterface
         $item145->setTz("Europe/Madrid");
         $item145->setComment("mainland");
         $item145->setLabel(new Label('en', 'es'));
-        $item145->setCountry($this->getReference('_reference_IvozProviderDomainModelCountryCountry70'));
-        $this->addReference('_reference_IvozProviderDomainModelTimezoneTimezone145', $item145);
+        $item145->setCountry($this->getReference('_reference_ProviderCountry70'));
+        $this->addReference('_reference_ProviderTimezone145', $item145);
+        $this->sanitizeEntityValues($item145);
         $manager->persist($item145);
 
         $item158 = $this->createEntityInstanceWithPublicMethods(Timezone::class);
         $item158->setTz("Europe/London");
         $item158->setComment(NULL);
         $item158->setLabel(new Label('en', 'es'));
-        $item158->setCountry($this->getReference('_reference_IvozProviderDomainModelCountryCountry79'));
-        $this->addReference('_reference_IvozProviderDomainModelTimezoneTimezone158', $item158);
+        $item158->setCountry($this->getReference('_reference_ProviderCountry79'));
+        $this->addReference('_reference_ProviderTimezone158', $item158);
+        $this->sanitizeEntityValues($item158);
         $manager->persist($item158);
 
         $manager->flush();

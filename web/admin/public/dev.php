@@ -8,8 +8,4 @@ Symfony\Component\Debug\Debug::enable();
 $kernel = new AppKernel('dev', true);
 $kernel->boot();
 
-\Zend_Registry::set(
-    'data_gateway',
-    $kernel->getContainer()->get(\Ivoz\Core\Application\Service\DataGateway::class)
-);
 require 'zf.php';

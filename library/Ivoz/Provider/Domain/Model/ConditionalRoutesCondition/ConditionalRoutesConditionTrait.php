@@ -33,6 +33,11 @@ trait ConditionalRoutesConditionTrait
      */
     protected $relCalendars;
 
+    /**
+     * @var Collection
+     */
+    protected $relRouteLocks;
+
 
     /**
      * Constructor
@@ -43,6 +48,7 @@ trait ConditionalRoutesConditionTrait
         $this->relMatchlists = new ArrayCollection();
         $this->relSchedules = new ArrayCollection();
         $this->relCalendars = new ArrayCollection();
+        $this->relRouteLocks = new ArrayCollection();
     }
 
     /**
@@ -66,6 +72,10 @@ trait ConditionalRoutesConditionTrait
 
         if ($dto->getRelCalendars()) {
             $self->replaceRelCalendars($dto->getRelCalendars());
+        }
+
+        if ($dto->getRelRouteLocks()) {
+            $self->replaceRelRouteLocks($dto->getRelRouteLocks());
         }
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -93,6 +103,9 @@ trait ConditionalRoutesConditionTrait
         }
         if ($dto->getRelCalendars()) {
             $this->replaceRelCalendars($dto->getRelCalendars());
+        }
+        if ($dto->getRelRouteLocks()) {
+            $this->replaceRelRouteLocks($dto->getRelRouteLocks());
         }
         return $this;
     }
@@ -333,6 +346,78 @@ trait ConditionalRoutesConditionTrait
         }
 
         return $this->relCalendars->toArray();
+    }
+
+    /**
+     * Add relRouteLock
+     *
+     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLockInterface $relRouteLock
+     *
+     * @return ConditionalRoutesConditionTrait
+     */
+    public function addRelRouteLock(\Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLockInterface $relRouteLock)
+    {
+        $this->relRouteLocks->add($relRouteLock);
+
+        return $this;
+    }
+
+    /**
+     * Remove relRouteLock
+     *
+     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLockInterface $relRouteLock
+     */
+    public function removeRelRouteLock(\Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLockInterface $relRouteLock)
+    {
+        $this->relRouteLocks->removeElement($relRouteLock);
+    }
+
+    /**
+     * Replace relRouteLocks
+     *
+     * @param \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLockInterface[] $relRouteLocks
+     * @return self
+     */
+    public function replaceRelRouteLocks(Collection $relRouteLocks)
+    {
+        $updatedEntities = [];
+        $fallBackId = -1;
+        foreach ($relRouteLocks as $entity) {
+            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
+            $updatedEntities[$index] = $entity;
+            $entity->setCondition($this);
+        }
+        $updatedEntityKeys = array_keys($updatedEntities);
+
+        foreach ($this->relRouteLocks as $key => $entity) {
+            $identity = $entity->getId();
+            if (in_array($identity, $updatedEntityKeys)) {
+                $this->relRouteLocks->set($key, $updatedEntities[$identity]);
+            } else {
+                $this->relRouteLocks->remove($key);
+            }
+            unset($updatedEntities[$identity]);
+        }
+
+        foreach ($updatedEntities as $entity) {
+            $this->addRelRouteLock($entity);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get relRouteLocks
+     *
+     * @return \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLockInterface[]
+     */
+    public function getRelRouteLocks(Criteria $criteria = null)
+    {
+        if (!is_null($criteria)) {
+            return $this->relRouteLocks->matching($criteria)->toArray();
+        }
+
+        return $this->relRouteLocks->toArray();
     }
 
 

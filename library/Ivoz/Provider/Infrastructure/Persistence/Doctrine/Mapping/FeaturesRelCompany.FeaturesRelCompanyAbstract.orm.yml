@@ -1,5 +1,10 @@
 Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompanyAbstract:
   type: mappedSuperclass
+  uniqueConstraints:
+    featureRelCompany_feature_brand:
+      columns:
+        - featureId
+        - companyId
   manyToOne:
     company:
       targetEntity: \Ivoz\Provider\Domain\Model\Company\CompanyInterface

@@ -1,10 +1,11 @@
 imports:
-  - { resource: "@CoreBundle/Resources/config/parameters.yml" }
-  - { resource: "@CoreBundle/Resources/config/doctrine.yml" }
+  - { resource: "@CoreBundle/Resources/config/config.yml" }
+  - { resource: '@CoreBundle/Resources/config/doctrine.yml' }
+  - { resource: services.yml }
 
 doctrine:
   dbal:
-    schema_filter: "/^(?!kam_version|changelog|tp_versions$).*/"
+    schema_filter: "/^(?!kam_version|changelog|sm_costs|tp_versions$).*/"
 
 doctrine_migrations:
   dir_name: "%kernel.root_dir%/DoctrineMigrations"

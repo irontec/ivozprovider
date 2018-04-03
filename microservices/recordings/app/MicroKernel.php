@@ -19,6 +19,7 @@ class MicroKernel extends Kernel
             new Symfony\Bundle\MonologBundle\MonologBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new \Doctrine\Bundle\DoctrineCacheBundle\DoctrineCacheBundle(),
+            new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
 
             /* Core */
             new CoreBundle\CoreBundle(),

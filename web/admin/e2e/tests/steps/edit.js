@@ -8,6 +8,10 @@ defineSupportCode(({Given, Then, When}) => {
       return edit.fillOutFormByFixture(fixture);
   });
 
+  When(/^I compare the form data with "([^"]*)" data fixture$/, (fixture) => {
+      return edit.compareFormDataWithFixture(fixture);
+  });
+
   When(/^I click on save button$/, () => {
     return edit.save();
   });

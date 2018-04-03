@@ -20,7 +20,7 @@ production:
       pagination: 
         items: 25
       <<: *KamTrunksCdrs
-      class: ui-silk-text-list-bullets
+      class: ui-silk-application-view-list
       title: _("List of %s %2s", ngettext('Billable call', 'Billable calls', 0), "[format| (%parent%)]")
       fields: &kamTrunksCdrs_fieldsLink
         options:

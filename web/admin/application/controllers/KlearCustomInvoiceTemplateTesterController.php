@@ -99,7 +99,7 @@ class KlearCustomInvoiceTemplateTesterController extends Zend_Controller_Action
             "message" => $message,
             "options" => array('width'=>'300px'),
             "buttons" => array(
-                _("Ok") => array(
+                _("Accept") => array(
                     "recall" => false,
                     "reloadParent" => true
                 )

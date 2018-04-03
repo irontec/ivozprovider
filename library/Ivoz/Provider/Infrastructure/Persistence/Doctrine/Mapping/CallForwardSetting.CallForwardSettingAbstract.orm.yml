@@ -1,11 +1,5 @@
 Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingAbstract:
   type: mappedSuperclass
-  uniqueConstraints:
-    callFwTypeUser:
-      columns:
-        - callForwardType
-        - userId
-        - callTypeFilter
   fields:
     callTypeFilter:
       type: string
@@ -45,6 +39,12 @@ Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingAbstract:
         unsigned: false
         default: '10'
       column: noAnswerTimeout
+    enabled:
+      type: boolean
+      nullable: false
+      options:
+        default: '1'
+        unsigned: true
   manyToOne:
     user:
       targetEntity: \Ivoz\Provider\Domain\Model\User\UserInterface

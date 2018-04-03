@@ -18,7 +18,17 @@ class CallForwardSettingDto extends CallForwardSettingDtoAbstract
      */
     public static function getPropertyMap(string $context = '')
     {
-        if (in_array($context, [self::CONTEXT_COLLECTION, self::CONTEXT_DETAILED_COLLECTION])) {
+
+        if ($context === self::CONTEXT_COLLECTION) {
+            return [
+                'callTypeFilter' => 'callTypeFilter',
+                'callForwardType' => 'callForwardType',
+                'targetType' => 'targetType',
+                'id' => 'id'
+            ];
+        }
+
+        if ($context === self::CONTEXT_DETAILED_COLLECTION) {
             return [
                 'callTypeFilter' => 'callTypeFilter',
                 'callForwardType' => 'callForwardType',
@@ -35,7 +45,6 @@ class CallForwardSettingDto extends CallForwardSettingDtoAbstract
 
         return parent::getPropertyMap($context);
     }
-
 }
 
 

@@ -1,0 +1,14 @@
+# ----------------------------------------------------------------------------
+scenarios:
+  - name: call from bob to open conditional lock
+    type: simple
+    timeout: 20
+    sessions:
+      - bob:
+          - wait
+          - call:
+              dest: '*701'
+              credentials:
+                <<: *bob_cred
+          - waitfor: CONFIRMED
+          - waitfor: DISCONNCTD

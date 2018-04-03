@@ -1,6 +1,6 @@
 imports:
   - { resource: "@CoreBundle/Resources/config/lifecycle/core/xml_rpc.yml" }
-  - { resource: "@CoreBundle/Resources/config/lifecycle/ivoz.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/provider.yml" }
   - { resource: "@CoreBundle/Resources/config/lifecycle/kam.yml" }
   - { resource: "@CoreBundle/Resources/config/lifecycle/cgr.yml" }
 

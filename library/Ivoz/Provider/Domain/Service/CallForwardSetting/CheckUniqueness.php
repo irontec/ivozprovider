@@ -6,6 +6,7 @@ use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingRepository;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting;
 use Doctrine\Common\Collections\Criteria;
+use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 
 /**
  * Class CheckValidity
@@ -14,6 +15,12 @@ use Doctrine\Common\Collections\Criteria;
  */
 class CheckUniqueness implements CallForwardSettingLifecycleEventHandlerInterface
 {
+    const INCONDITIONAL_CALL_FORWARD_EXCEPTION = 30000;
+    const CALL_FORWARDS_WITH_THAT_TYPE_EXCEPTION = 30001;
+    const BUSY_CALL_FORWARD_EXCEPTION = 30002;
+    const NO_ANSWER_CALL_FORWARD_EXCEPTION = 30003;
+    const USER_NOT_REGISTERED_CALL_FORWARD_EXCEPTION = 30004;
+
     /**
      * @var CallForwardSettingRepository
      */
@@ -29,6 +36,11 @@ class CheckUniqueness implements CallForwardSettingLifecycleEventHandlerInterfac
      */
     public function execute(CallForwardSettingInterface $entity, $isNew)
     {
+        // Skip checks for disabled call forward setting
+        if ($entity->getEnabled() == 0) {
+            return;
+        }
+
         $callTypeFilterConditions = array(
             $entity->getCallTypeFilter()
         );
@@ -50,12 +62,11 @@ class CheckUniqueness implements CallForwardSettingLifecycleEventHandlerInterfac
 
         if ($inconditionalCallForwards->count() > 0) {
             $message = "There is an inconditional call forward with that call type. You can't add call forwards";
-            throw new \DomainException($message, 30000);
+            throw new \DomainException($message, self::INCONDITIONAL_CALL_FORWARD_EXCEPTION);
         }
 
         $isInconditional = ($entity->getCallForwardType() === 'inconditional');
         if ($isInconditional) {
-            //@todo this looks like duplicated code
             $callForwardsConditions = $this->getCallForwardsCondition(
                 $entity,
                 $callTypeFilterConditions
@@ -66,7 +77,7 @@ class CheckUniqueness implements CallForwardSettingLifecycleEventHandlerInterfac
 
             if ($callForwards->count() > 0) {
                 $message = "There are already call forwards with that call type. You can't add inconditional call forward";
-                throw new \DomainException($message, 30001);
+                throw new \DomainException($message, self::CALL_FORWARDS_WITH_THAT_TYPE_EXCEPTION);
             }
         }
 
@@ -82,7 +93,7 @@ class CheckUniqueness implements CallForwardSettingLifecycleEventHandlerInterfac
 
             if ($busyCallForwards->count() > 0) {
                 $message = "There is already a busy call forward with that call type.";
-                throw new \DomainException($message, 30002);
+                throw new \DomainException($message, self::BUSY_CALL_FORWARD_EXCEPTION);
             }
         }
 
@@ -98,7 +109,7 @@ class CheckUniqueness implements CallForwardSettingLifecycleEventHandlerInterfac
 
             if ($noAnswerCallForwards->count() > 0) {
                 $message = "There is already a noAnswer call forward with that call type.";
-                throw new \DomainException($message, 30003);
+                throw new \DomainException($message, self::NO_ANSWER_CALL_FORWARD_EXCEPTION);
             }
         }
 
@@ -114,7 +125,7 @@ class CheckUniqueness implements CallForwardSettingLifecycleEventHandlerInterfac
 
             if ($userNotRegisteredCallForwards->count() > 0) {
                 $message = "There is already a userNotRegistered call forward with that call type.";
-                throw new \DomainException($message, 30004);
+                throw new \DomainException($message, self::USER_NOT_REGISTERED_CALL_FORWARD_EXCEPTION);
             }
         }
     }
@@ -198,39 +209,20 @@ class CheckUniqueness implements CallForwardSettingLifecycleEventHandlerInterfac
      */
     protected function createConditions(CallForwardSetting $entity, $callTypeFilterConditions, $callForwardType = null)
     {
-        $criteria = Criteria::create();
-        $expressionBuilder = Criteria::expr();
 
-        $criteria
-            ->where(
-                $expressionBuilder->neq(
-                    'id',
-                    $entity->getId()
-                )
-            )
-            ->andWhere(
-                $expressionBuilder->eq(
-                    'user',
-                    $entity->getUser()
-                )
-            )
-            ->andWhere(
-                $expressionBuilder->in(
-                    'callTypeFilter',
-                    $callTypeFilterConditions
-                )
-            );
+        $criteria = [
+            ['id', 'neq', $entity->getId()],
+            ['user', 'eq', $entity->getUser()],
+            ['callTypeFilter', 'in', $callTypeFilterConditions],
+            ['enabled', 'eq', 1]
+        ];
 
         if ($callForwardType) {
-            $criteria
-                ->andWhere(
-                    $expressionBuilder->eq(
-                        'callForwardType',
-                        $callForwardType
-                    )
-                );
+            $criteria[] = [
+                'callForwardType', 'eq', $callForwardType
+            ];
         }
 
-        return $criteria;
+        return CriteriaHelper::fromArray($criteria);
     }
 }

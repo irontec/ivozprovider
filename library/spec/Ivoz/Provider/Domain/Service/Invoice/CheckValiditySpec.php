@@ -35,6 +35,5 @@ class CheckValiditySpec extends ObjectBehavior
     function it_is_initializable()
     {
         $this->shouldHaveType(CheckValidity::class);
-        throw new PendingException();
     }
 }

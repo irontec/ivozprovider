@@ -22,9 +22,10 @@ class ProviderQueueMember extends Fixture implements DependentFixtureInterface
     
         $item1 = $this->createEntityInstanceWithPublicMethods(QueueMember::class);
         $item1->setPenalty(1);
-        $item1->setQueue($this->getReference('_reference_IvozProviderDomainModelQueueQueue1'));
-        $item1->setUser($this->getReference('_reference_IvozProviderDomainModelUserUser1'));
-        $this->addReference('_reference_IvozProviderDomainModelQueueMemberQueueMember1', $item1);
+        $item1->setQueue($this->getReference('_reference_ProviderQueue1'));
+        $item1->setUser($this->getReference('_reference_ProviderUser1'));
+        $this->addReference('_reference_ProviderQueueMemberQueueMember1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
     

@@ -1,0 +1,7 @@
+[Unit]
+Description=Ivozprovider Balances updater
+
+[Service]
+Type=oneshot
+User=root
+ExecStart=/opt/irontec/ivozprovider/microservices/balances/bin/sync

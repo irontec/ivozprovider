@@ -22,6 +22,8 @@ Scenario: I create terminal manufacturers
   Then I can see confirmation dialog
   When I click on close dialog button
   Then I am on "TerminalManufacturers" list
+  When I click on "TerminalManufacturers" last elements edit button
+  Then I compare the form data with "platform/terminalManufacturer/new" data fixture
 
 Scenario: I can edit terminal manufacturers
   Given I can see at least one row

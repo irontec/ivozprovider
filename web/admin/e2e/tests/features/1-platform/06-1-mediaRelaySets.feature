@@ -22,3 +22,5 @@ Scenario: I create new brand admin page
   Then I can see confirmation dialog
   When I click on close dialog button
   Then I am on "MediaRelaySets" list
+  When I click on "MediaRelaySets" last elements edit button
+  Then I compare the form data with "platform/mediaRelaySet/new" data fixture

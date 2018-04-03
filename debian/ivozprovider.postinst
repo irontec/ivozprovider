@@ -3,43 +3,22 @@
 # Source debconf library.
 . /usr/share/debconf/confmodule
 
-function setup_bind()
-{
-    # Configure local domain
-    sed -i "/users /d"    /etc/bind/db.ivozprovider.local
-    db_get ivozprovider/users_address       || true
-    echo "users           IN      A       $RET"           >> /etc/bind/db.ivozprovider.local
-
-
-    sed -i "/trunks /d"    /etc/bind/db.ivozprovider.local
-    db_get ivozprovider/trunks_address      || true
-    echo "trunks          IN      A       $RET"          >> /etc/bind/db.ivozprovider.local
-
-    # Restart DNS server
-    /bin/systemctl restart bind9
-}
-
 function setup_mysql()
 {
     # Get mysql password from configuration
     db_get ivozprovider/mysql_password      || true
     MYSQL_PASSWORD=$RET
 
+    # Change database bind address
+    sed -i "s/(bind =) .*/\1 127.0.0.1" /etc/mysql/mysql.conf.d/ivozprovider.cnf
+
     # Change database password
-    db_get ivozprovider/mysql_password      || true
     /usr/bin/mysql --user=root --password=$MYSQL_PASSWORD -e "GRANT ALL ON ivozprovider.* TO 'root'@'localhost' IDENTIFIED BY '$MYSQL_PASSWORD'";
     /usr/bin/mysql --user=root --password=$MYSQL_PASSWORD -e "GRANT ALL ON ivozprovider.* TO 'root'@'127.0.0.1' IDENTIFIED BY '$MYSQL_PASSWORD'";
     /usr/bin/mysql --user=root --password=$MYSQL_PASSWORD -e "GRANT ALL ON ivozprovider.* TO 'root'@'::1' IDENTIFIED BY '$MYSQL_PASSWORD'";
     /usr/bin/mysql --user=root --password=$MYSQL_PASSWORD -e "GRANT ALL ON ivozprovider.* TO 'root'@'$HOSTNAME' IDENTIFIED BY '$MYSQL_PASSWORD'";
     /usr/bin/mysql --user=root --password=$MYSQL_PASSWORD -e "FLUSH PRIVILEGES;"
 
-}
-
-function setup_portals()
-{
-    # Setup portals default language
-    db_get ivozprovider/language            || true
-    sed -i -r "s/(lang*: *).*/\1$RET/" /opt/irontec/ivozprovider/web/admin/application/configs/klear/klear.yaml
 }
 
 function setup_proxies()
@@ -79,22 +58,6 @@ function setup_pbx()
     sed -i "s/bindaddr = 0.0.0.0/bindaddr = 127.0.0.1/g" /etc/asterisk/manager.conf
 }
 
-function setup_rtpproxy()
-{
-    db_get ivozprovider/users_address       || true
-    USERS_ADDRESS=$RET
-    # Update rtpproxy listen address
-    sed -i -r "s/(AUDIO_SOCK *= *).*/\1$RET/" /etc/default/rtpproxy
-}
-
-function setup_rtpengine()
-{
-    db_get ivozprovider/users_address       || true
-    USERS_ADDRESS=$RET
-    # Update rtpengine listen address
-    sed -i -r "s/(IP *= *).*/\1$RET/" /etc/default/rtpengine
-}
-
 function setup_sshd()
 {
     # Allow root login using password
@@ -130,18 +93,11 @@ function enable_services()
 }
 
 # Run only on first install or on dpkg-reconfigure
-if [ -z "$2" ] || [ "$DEBCONF_RECONFIGURE" == "1" ]; then
-    # Setup local DNS server
-    setup_bind
+if [ -z "$2" ] || [ "$1" == "reconfigure" ]; then
     # Setup mysql password
     setup_mysql
-    # Setup web portals
-    setup_portals
     # Setup proxy addresses
     setup_proxies
-    # Setu Media relay address
-    setup_rtpproxy
-    setup_rtpengine
     # Setup pbx system
     setup_pbx
     # Setup ssh daemon

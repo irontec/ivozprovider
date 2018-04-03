@@ -27,6 +27,8 @@ Scenario: I can create peer servers
   Then I can see confirmation dialog
   When I click on close dialog button
   Then I am on "PeeringContractsList_kamTrunksUacreg" subscreen list
+  When I click on "kamTrunksUacreg" last elements edit button
+  Then I compare the form data with "brand/providersRegister/compare" data fixture
 
 Scenario: I can save providers registers
   Given I can see at least one row

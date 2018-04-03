@@ -2,28 +2,12 @@
 
 namespace Worker;
 
+use Doctrine\DBAL\DBALException;
 use Doctrine\ORM\EntityManagerInterface;
 use GearmanJob;
-use Ivoz\Cgr\Domain\Model\Destination\Destination;
-use Ivoz\Cgr\Domain\Model\Destination\DestinationDto;
-use Ivoz\Cgr\Domain\Model\Destination\DestinationInterface;
-use Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRate;
-use Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateDto;
-use Ivoz\Cgr\Domain\Model\Rate\Rate;
-use Ivoz\Cgr\Domain\Model\Rate\RateDto;
-use Ivoz\Cgr\Domain\Model\Rate\RateInterface;
-use Ivoz\Cgr\Domain\Model\TpDestination\TpDestination;
-use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationDto;
-use Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRate;
-use Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateDto;
-use Ivoz\Cgr\Domain\Model\TpRate\TpRate;
-use Ivoz\Cgr\Domain\Model\TpRate\TpRateDto;
-use Ivoz\Core\Application\Service\Assembler\EntityAssembler;
 use Ivoz\Core\Application\Service\CreateEntityFromDTO;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
-use Ivoz\Provider\Domain\Model\Brand\Brand;
 use Mmoreram\GearmanBundle\Driver\Gearman;
-use PhpMimeMailParser\Exception;
 use Symfony\Bridge\Monolog\Logger;
 use Symfony\Component\Serializer\Encoder\CsvEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
@@ -63,19 +47,14 @@ class Rates
      * Rates constructor.
      *
      * @param EntityManagerInterface $em
-     * @param EntityPersisterInterface $entityPersister
      * @param Logger $logger
      */
     public function __construct(
         EntityManagerInterface $em,
-        EntityPersisterInterface $entityPersister,
-        CreateEntityFromDTO $createEntityFromDTO,
         Logger $logger
     ) {
         $this->em = $em;
-        $this->entityPersister = $entityPersister;
         $this->logger = $logger;
-        $this->createEntityFromDTO = $createEntityFromDTO;
     }
 
     /**
@@ -98,86 +77,160 @@ class Rates
 
         $serializer = new Serializer([new ObjectNormalizer()], [new CsvEncoder()]);
         $csvLines = $serializer->decode(file_get_contents($params['filePath']), 'csv');
+        unlink($params['filePath']);
 
-        $rates = [];
+        // TODO Maybe this is already created if we store import file inside ??
+        $destinationRateName = sprintf("Imported on %s", date("Y-m-d H:i:s"));
+
         $destinations = [];
+        $destinationsCache = [];
+        $tpDestinations = [];
+        $rates = [];
+        $ratesCache = [];
+        $tpRates = [];
+        $tpDestinationRates = [];
 
-        $brandRepository = $this->em->getRepository(Brand::class);
-        $brand = $brandRepository->find($brandId);
-        $brandDto = $brand->toDto();
 
-//        $destinationRateDto = new DestinationRateDto();
-//        $destinationRateDto
-//            ->setBrand($brandDto)
-//            ->setNameEn("Imported from CSV")
-//            ->setNameEs("Imported from CSV")
-//            ->setDescriptionEn("Imported from CSV")
-//            ->setDescriptionEs("Imported from CSV");
-//
-//        $destinationRate = DestinationRate::fromDto($destinationRateDto);
-
-        foreach ($csvLines as $line) {
-//            $dstKey = $line['Prefix'];
-//            $rateKey = sprintf("%s-%s-%s",
-//                $line["Per minute charge"],
-//                $line["Connection charge"],
-//                $line["Charge period"]
-//            );
-//
-//            if (array_key_exists($dstKey, $destinations)) {
-//                $tpDesinationDto = $destinations[$dstKey];
-//            } else {
-                $destinationDto = new DestinationDto();
-                $destinationDto
-                    ->setBrandId($brand->getId())
-                    ->setNameEn($line['Target Pattern Name'])
-                    ->setNameEs($line['Target Pattern Name'])
-                    ->setDescriptionEn($line['Target Pattern Description'])
-                    ->setDescriptionEs($line['Target Pattern Description']);
-
-                /** @var DestinationInterface $destination */
-                $destination = $this->createEntityFromDTO->execute(Destination::class, $destinationDto);
-                $this->entityPersister->queue($destination);
-
-                $tpDestination = new TpDestination('ivozprovider', $line['Prefix'], new \Datetime());
-                $this->entityPersister->queue($tpDestination);
-
-                $destination->addTpDestination($tpDestination);
-
-//                $destinations[$dstKey] = $tpDesinationDto;
-//            }
-
-//            if (array_key_exists($rateKey, $rates)) {
-//                $rateDto = $rates[$rateKey];
-//            } else {
-//                $rateDto = new RateDto();
-//                $rateDto
-//                    ->setBrand($brandDto)
-//                    ->setName($rateKey);
-//
-//                $rate = Rate::fromDto($rateDto);
-//
-//                $tpRateDto = new TpRateDto();
-//                $tpRateDto
-//                    ->setConnectFee($line["Connection charge"])
-//                    ->setRateCost($line["Per minute charge"])
-//                    ->setRateIncrement($line["Charge period"]);
-//
-//                $rate->addTpRate(TpRate::fromDto($tpRateDto));;
-//
-//                $rates[$rateKey] = $rateDto;
-//            }
-//
-//            $tpDestinationRateDto = new TpDestinationRateDto();
-//            $tpDestinationRateDto
-//                ->setDestinationRate($destinationRateDto)
-//                ->setDestination($destinationDto)
-//                ->setRate($rateDto);
-//
-//            $destinationRate->addTpDestinationRate(TpDestinationRate::fromDto($tpDestinationRateDto));
+        // Preload Caches
+        $existingDestinations = [];
+        $existingDestinationsRows = $this->em->getConnection()->fetchAll("SELECT name_en FROM Destinations");
+        foreach ($existingDestinationsRows as $existingDestinationsRow) {
+            $existingDestinations[$existingDestinationsRow['name_en']] = true;
         }
 
-        $this->entityPersister->persist($destination);
+        $existingRates = [];
+        $existingRatesRows = $this->em->getConnection()->fetchAll("SELECT name FROM Rates");
+        foreach ($existingRatesRows as $existingRatesRow) {
+            $existingRates[$existingRatesRow['name']] = true;
+        }
+
+        // Parse every CSV line
+        foreach ($csvLines as $line) {
+
+            $line["Per minute charge"]  = sprintf("%.4f", $line["Per minute charge"]);
+            $line["Connection charge"]  = sprintf("%.4f", $line["Connection charge"]);
+
+            $rateName = sprintf("%s €/min", $line["Per minute charge"]);
+
+            if ($line["Connection charge"] > 0) {
+                $rateName .= sprintf(" (+ %s€)", $line["Connection charge"]);
+            }
+
+            if ($line["Charge period"] != 1) {
+                $rateName .= sprintf("(per %ss)", $line["Charge period"]);
+            }
+
+            $destinationName = $line['Destination Name'];
+
+            if (!array_key_exists($destinationName, $destinationsCache)) {
+                if (!array_key_exists($destinationName, $existingDestinations)) {
+                    $destinations[] = sprintf('("%s", "%s", "%s", "%s", %d)',
+                        $destinationName,
+                        $destinationName,
+                        $line['Destination Description'],
+                        $line['Destination Description'],
+                        $brandId
+                    );
+                }
+
+                $destinationsCache[$destinationName] = true;
+
+                $tpDestinationRates[] =
+                    sprintf("(%s, %s, %s, %s, %s, %s)",
+                        sprintf('(SELECT tag FROM Destinations WHERE name_en = "%s" LIMIT 1)', $destinationName),
+                        sprintf('(SELECT id FROM Destinations WHERE name_en = "%s" LIMIT 1)', $destinationName),
+                        sprintf('(SELECT tag FROM Rates WHERE name = "%s" LIMIT 1)', $rateName),
+                        sprintf('(SELECT id FROM Rates WHERE name = "%s" LIMIT 1)', $rateName),
+                        sprintf('(SELECT tag FROM DestinationRates WHERE name_en = "%s" LIMIT 1)', $destinationRateName),
+                        sprintf('(SELECT id FROM DestinationRates WHERE name_en = "%s" LIMIT 1)', $destinationRateName)
+                    );
+            }
+
+            $tpDestinations[] = sprintf('("%s", %s, %s)',
+                $line['Prefix'],
+                sprintf('(SELECT tag FROM Destinations WHERE name_en = "%s" LIMIT 1)', $destinationName),
+                sprintf('(SELECT id FROM Destinations WHERE name_en = "%s" LIMIT 1)', $destinationName)
+            );
+
+            if (!array_key_exists($rateName, $ratesCache)) {
+                if (!array_key_exists($rateName, $existingRates)) {
+                    $rates[] = sprintf('("%s", %d)',
+                        $rateName,
+                        $brandId
+                    );
+
+                    $tpRates[] = sprintf('("%s", "%s", "%ss", %s, %s)',
+                        $line["Connection charge"],
+                        $line["Per minute charge"],
+                        $line["Charge period"],
+                        sprintf('(SELECT tag FROM Rates WHERE name = "%s" LIMIT 1)', $rateName),
+                        sprintf('(SELECT id FROM Rates WHERE name = "%s" LIMIT 1)', $rateName)
+                    );
+
+                    $ratesCache[$rateName] = true;
+                }
+            }
+
+        }
+
+        try {
+            $this->em->getConnection()->beginTransaction();
+
+            if (!empty($destinations)) {
+                $this->em->getConnection()->executeQuery(
+                    'INSERT IGNORE INTO Destinations (name_en, name_es, description_en, description_es, brandId) VALUES ' . implode(",", $destinations)
+                );
+
+                $this->em->getConnection()->executeQuery(
+                    'UPDATE Destinations SET tag = CONCAT("b", brandId, "dst", id)'
+                );
+            }
+
+            if (!empty($tpDestinations)) {
+                $this->em->getConnection()->executeQuery(
+                    'INSERT IGNORE INTO tp_destinations (prefix, tag, destinationId) VALUES ' . implode(",", $tpDestinations)
+                );
+            }
+
+            if (!empty($rates)) {
+                $this->em->getConnection()->executeQuery(
+                    'INSERT IGNORE INTO Rates (name, brandId) VALUES ' . implode(",", $rates)
+                );
+
+
+                $this->em->getConnection()->executeQuery(
+                    'UPDATE IGNORE Rates SET tag = CONCAT("b", brandId, "rt", id)'
+                );
+            }
+
+            if (!empty($tpRates)) {
+                $this->em->getConnection()->executeQuery(
+                    'INSERT IGNORE INTO tp_rates (connect_fee, rate, rate_increment, tag, rateId ) VALUES ' . implode(",", $tpRates)
+                );
+            }
+
+            $this->em->getConnection()->executeQuery(
+                "INSERT INTO DestinationRates (name_en, name_es, description_es, description_en, brandId) VALUES ('$destinationRateName', '$destinationRateName', 'Imported From CSV', 'Imported From CSV', $brandId)"
+            );
+
+            $this->em->getConnection()->executeQuery(
+                'UPDATE DestinationRates SET tag = CONCAT("b", brandId, "dr", id)'
+            );
+
+            $this->em->getConnection()->executeQuery(
+                'INSERT INTO tp_destination_rates (destinations_tag, destinationId, rates_tag, rateId, tag, destinationRateId) VALUES ' . implode(",", $tpDestinationRates)
+            );
+
+
+            $this->em->getConnection()->commit();
+        } catch (DBALException $exception) {
+
+            $this->em->close();
+            $this->em->getConnection()->rollback();
+
+            echo $exception->getMessage();
+        }
+
         return true;
 
     }

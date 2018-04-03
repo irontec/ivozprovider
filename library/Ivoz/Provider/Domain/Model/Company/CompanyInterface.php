@@ -150,20 +150,20 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getDistributeMethod();
 
     /**
-     * Set externalMaxCalls
+     * Set maxCalls
      *
-     * @param integer $externalMaxCalls
+     * @param integer $maxCalls
      *
      * @return self
      */
-    public function setExternalMaxCalls($externalMaxCalls);
+    public function setMaxCalls($maxCalls);
 
     /**
-     * Get externalMaxCalls
+     * Get maxCalls
      *
      * @return integer
      */
-    public function getExternalMaxCalls();
+    public function getMaxCalls();
 
     /**
      * Set postalAddress
@@ -333,6 +333,38 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getRecordingsLimitEmail();
 
     /**
+     * Set billingMethod
+     *
+     * @param string $billingMethod
+     *
+     * @return self
+     */
+    public function setBillingMethod($billingMethod);
+
+    /**
+     * Get billingMethod
+     *
+     * @return string
+     */
+    public function getBillingMethod();
+
+    /**
+     * Set balance
+     *
+     * @param string $balance
+     *
+     * @return self
+     */
+    public function setBalance($balance = null);
+
+    /**
+     * Get balance
+     *
+     * @return string
+     */
+    public function getBalance();
+
+    /**
      * Set language
      *
      * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language
@@ -493,6 +525,38 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getOutgoingDdiRule();
 
     /**
+     * Set voicemailNotificationTemplate
+     *
+     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $voicemailNotificationTemplate
+     *
+     * @return self
+     */
+    public function setVoicemailNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $voicemailNotificationTemplate = null);
+
+    /**
+     * Get voicemailNotificationTemplate
+     *
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
+     */
+    public function getVoicemailNotificationTemplate();
+
+    /**
+     * Set faxNotificationTemplate
+     *
+     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $faxNotificationTemplate
+     *
+     * @return self
+     */
+    public function setFaxNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $faxNotificationTemplate = null);
+
+    /**
+     * Get faxNotificationTemplate
+     *
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
+     */
+    public function getFaxNotificationTemplate();
+
+    /**
      * Add extension
      *
      * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension
@@ -648,35 +712,35 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getTerminals(\Doctrine\Common\Collections\Criteria $criteria = null);
 
     /**
-     * Add ratinProfile
+     * Add ratingProfile
      *
-     * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $ratinProfile
+     * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $ratingProfile
      *
      * @return CompanyTrait
      */
-    public function addRatinProfile(\Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $ratinProfile);
+    public function addRatingProfile(\Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $ratingProfile);
 
     /**
-     * Remove ratinProfile
+     * Remove ratingProfile
      *
-     * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $ratinProfile
+     * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $ratingProfile
      */
-    public function removeRatinProfile(\Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $ratinProfile);
+    public function removeRatingProfile(\Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $ratingProfile);
 
     /**
-     * Replace ratinProfiles
+     * Replace ratingProfiles
      *
-     * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface[] $ratinProfiles
+     * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface[] $ratingProfiles
      * @return self
      */
-    public function replaceRatinProfiles(Collection $ratinProfiles);
+    public function replaceRatingProfiles(Collection $ratingProfiles);
 
     /**
-     * Get ratinProfiles
+     * Get ratingProfiles
      *
      * @return \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface[]
      */
-    public function getRatinProfiles(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getRatingProfiles(\Doctrine\Common\Collections\Criteria $criteria = null);
 
     /**
      * Add musicsOnHold
@@ -770,37 +834,6 @@ interface CompanyInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompanyInterface[]
      */
     public function getRelFeatures(\Doctrine\Common\Collections\Criteria $criteria = null);
-
-    /**
-     * Add domain
-     *
-     * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain
-     *
-     * @return CompanyTrait
-     */
-    public function addDomain(\Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain);
-
-    /**
-     * Remove domain
-     *
-     * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain
-     */
-    public function removeDomain(\Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain);
-
-    /**
-     * Replace domains
-     *
-     * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface[] $domains
-     * @return self
-     */
-    public function replaceDomains(Collection $domains);
-
-    /**
-     * Get domains
-     *
-     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface[]
-     */
-    public function getDomains(\Doctrine\Common\Collections\Criteria $criteria = null);
 
 }
 

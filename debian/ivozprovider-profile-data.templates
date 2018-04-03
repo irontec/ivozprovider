@@ -1,0 +1,77 @@
+Template: ivozprovider/menu_data
+Type: select
+Choices: configure_dns_address, configure_dns_menu, configure_mysql_password, configure_mysql_server_id, configure_finish
+Choices-es.UTF-8: Configurar dirección DNS local, Configurar IPs DNS local, Configurar password de MySQL, Configurar server-id MySQL, >> Finalizar configuración
+Choices-en.UTF-8: Configure local DNS address, Configure local DNS IPs, Configure MySQL root password, Configure MySQL server-id, >> Finish configurating
+Default: configure_dns_address
+Description:
+ Welcome to IVOZ Provider Data Node setup.
+ .
+ You can access to this menu anytime by running "dpkg-reconfigure ivozprovider-profile-data"
+ .
+ Please, configure the minimum required data in order to setup this profile required services:
+ .
+Description-es.UTF-8:
+ Bienvenido a la instación de nodo Data de IVOZ Provider.
+ .
+ Puede acceder a este menu en cualquier momento ejecutando "dpkg-reconfigure ivozprovider-profile-data"
+ .
+ Por favor, introduzca los minimos datos requereidos para configurar los servicios de este perfil:
+ .
+
+Template: ivozprovider/menu_dns_server
+Type: select
+Choices: configure_users_address, configure_trunks_address, configure_jobs_address, configure_data_address, configure_storage_address, configure_logs_address, configure_back
+Choices-es.UTF-8: users.ivozprovider.local, trunks.ivozprovider.local, jobs.ivozprovider.local, data.ivozprovider.local, storage.ivozprovider.local, logs.ivozprovider.local, << Atrás
+Choices-en.UTF-8: users.ivozprovider.local, trunks.ivozprovider.local, jobs.ivozprovider.local, data.ivozprovider.local, storage.ivozprovider.local, logs.ivozprovider.local, << Back
+Default: configure_dns_address
+Description: Configure DNS server resolution for .local domain
+Description-es.UTF-8: Configure las entradas DNS para el dominio .local
+
+Template: ivozprovider/mysql_server_id
+Type: string
+Default: 0
+Description: Enter serverid of current node for MySQL replication:
+Description-es.UTF-8: Introduzca el serverid de el nodo actual para replicación MySQL:
+
+Template: ivozprovider/mysql_server_id_invalid
+Type: error
+Description: Invalid value for Replication Server ID. Choose unique number between 1-32 for this node.
+Description-es.UTF-8: Valor inválido para ID de Replicacion. Elija un número entre 1-32 para este nodo.
+
+Template: ivozprovider/users_address
+Type: string
+Default: 127.0.0.1
+Description: Enter Users SIP proxy listen IP address:
+Description-es.UTF-8: Introduzca la IP para proxy SIP de Usuarios:
+
+Template: ivozprovider/trunks_address
+Type: string
+Default: 127.0.0.1
+Description: Enter Providers SIP proxy listen IP address:
+Description-es.UTF-8: Introduzca la IP para proxy SIP de Proveedores:
+
+Template: ivozprovider/jobs_address
+Type: string
+Default: 127.0.0.1
+Description: Enter Async jobs listen IP address:
+Description-es.UTF-8: Introduzca la IP para servidor de jobs asíncronos:
+
+Template: ivozprovider/data_address
+Type: string
+Default: 127.0.0.1
+Description: Enter MySQL Database listen IP address:
+Description-es.UTF-8: Introduzca la IP para base de datos MySQL:
+
+Template: ivozprovider/storage_address
+Type: string
+Default: 127.0.0.1
+Description: Enter Shared Storage server listen IP address:
+Description-es.UTF-8: Introduzca la IP para servidor de ficheros compartidos:
+
+Template: ivozprovider/logs_address
+Type: string
+Default: 127.0.0.1
+Description: Enter Logs server listen IP address:
+Description-es.UTF-8: Introduzca la IP para servidor de logs:
+

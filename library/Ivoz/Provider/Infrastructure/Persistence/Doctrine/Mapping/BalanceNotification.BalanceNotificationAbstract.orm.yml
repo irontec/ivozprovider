@@ -1,0 +1,47 @@
+Ivoz\Provider\Domain\Model\BalanceNotification\BalanceNotificationAbstract:
+  type: mappedSuperclass
+  fields:
+    toAddress:
+      type: string
+      nullable: true
+      length: 255
+      options:
+        fixed: false
+      column: toAddress
+    threshold:
+      type: decimal
+      nullable: true
+      precision: 10
+      scale: 4
+      options:
+        default: 0
+      column: threshold
+    lastSent:
+      type: datetime
+      nullable: true
+      column: lastSent
+  manyToOne:
+    company:
+      targetEntity: \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        companyId:
+          referencedColumnName: id
+          nullable: false
+          onDelete: cascade
+      orphanRemoval: false
+    notificationTemplate:
+      targetEntity: \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        notificationTemplateId:
+          referencedColumnName: id
+          nullable: true
+          onDelete: set null
+      orphanRemoval: false

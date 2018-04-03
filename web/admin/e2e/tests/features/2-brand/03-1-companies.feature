@@ -29,6 +29,8 @@ Scenario: I create new companies
   Then I can see confirmation dialog
   When I click on close dialog button
   Then I am on "Companies" list
+  When I click on "Companies" last elements edit button
+  Then I compare the form data with "brand/company/new" data fixture
 
 Scenario: I can edit companies
   Given I can see at least one row

@@ -24,9 +24,10 @@ class ProviderMatchListPattern extends Fixture implements DependentFixtureInterf
         $item1->setDescription("test desc");
         $item1->setType("number");
         $item1->setNumbervalue("946002050");
-        $item1->setMatchList($this->getReference('_reference_IvozProviderDomainModelMatchListMatchList1'));
-        $item1->setNumberCountry($this->getReference('_reference_IvozProviderDomainModelCountryCountry70'));
-        $this->addReference('_reference_IvozProviderDomainModelMatchListPatternMatchListPattern1', $item1);
+        $item1->setMatchList($this->getReference('_reference_ProviderMatchList1'));
+        $item1->setNumberCountry($this->getReference('_reference_ProviderCountry70'));
+        $this->addReference('_reference_ProviderMatchListPatternMatchListPattern1', $item1);
+        $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
     

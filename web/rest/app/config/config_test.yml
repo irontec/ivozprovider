@@ -1,6 +1,7 @@
 imports:
   - { resource: config.yml }
   - { resource: fixtures.yml }
+  - { resource: logger_test.yml }
 
 framework:
   test: ~
@@ -14,8 +15,6 @@ doctrine:
     charset: 'UTF8'
 
 parameters:
-  lexik_jwt_authentication:
-    private_key_path: '%kernel.root_dir%/../var/jwt/private-test.pem'
-    jwt_public_key_path: '%kernel.root_dir%/../var/jwt/public-test.pem'
-    pass_phrase: 'changeme'
-    token_ttl: '600'
+  jwt_private_key_path: '%kernel.root_dir%/../var/jwt/private-test.pem'
+  jwt_public_key_path: '%kernel.root_dir%/../var/jwt/public-test.pem'
+

@@ -2,14 +2,22 @@
 
 namespace Ivoz\Provider\Domain\Model\Ivr;
 
-use Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Core\Application\ForeignKeyTransformerInterface;
-use Ivoz\Core\Application\CollectionTransformerInterface;
-
-
 class IvrDto extends IvrDtoAbstract
 {
+    /**
+     * @inheritdoc
+     */
+    public static function getPropertyMap(string $context = '')
+    {
+        if ($context === self::CONTEXT_COLLECTION) {
+            return [
+                'id' => 'id',
+                'name' => 'name'
+            ];
+        }
 
+        return parent::getPropertyMap(...func_get_args());
+    }
 }
 
 

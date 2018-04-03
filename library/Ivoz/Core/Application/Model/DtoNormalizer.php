@@ -19,18 +19,24 @@ trait DtoNormalizer
      */
     public function normalize(string $context)
     {
-        $response = $this->toArray();
+        $response = $this->toArray(true);
         $contextProperties = $this->getPropertyMap($context);
 
-        return array_filter(
+        $response = array_filter(
             $response,
-            function ($key, $value) use ($contextProperties) {
+            function ($value, $key) use ($contextProperties) {
+
+                $isEmbedded = is_array($value);
+
                 return
-                    in_array($key, $contextProperties)
-                    || in_array($value, $contextProperties);
+                    in_array($key, $contextProperties, true)
+                    || (!$isEmbedded && in_array($value, $contextProperties, true))
+                    || ($isEmbedded && in_array($key, array_keys($contextProperties), true));
             },
             ARRAY_FILTER_USE_BOTH
         );
+
+        return $response;
     }
 
     /**

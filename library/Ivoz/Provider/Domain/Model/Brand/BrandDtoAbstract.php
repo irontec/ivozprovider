@@ -23,16 +23,6 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     private $domainUsers;
 
     /**
-     * @var string
-     */
-    private $fromName;
-
-    /**
-     * @var string
-     */
-    private $fromAddress;
-
-    /**
      * @var integer
      */
     private $recordingsLimitMB;
@@ -41,6 +31,11 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
      * @var string
      */
     private $recordingsLimitEmail;
+
+    /**
+     * @var integer
+     */
+    private $maxCalls = '0';
 
     /**
      * @var integer
@@ -133,11 +128,6 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     private $relFeatures = null;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Domain\DomainDto[] | null
-     */
-    private $domains = null;
-
-    /**
      * @var \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto[] | null
      */
     private $retailAccounts = null;
@@ -177,10 +167,9 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return [
             'name' => 'name',
             'domainUsers' => 'domainUsers',
-            'fromName' => 'fromName',
-            'fromAddress' => 'fromAddress',
             'recordingsLimitMB' => 'recordingsLimitMB',
             'recordingsLimitEmail' => 'recordingsLimitEmail',
+            'maxCalls' => 'maxCalls',
             'id' => 'id',
             'logo' => ['fileSize','mimeType','baseName'],
             'invoice' => ['nif','postalAddress','postalCode','town','province','country','registryData'],
@@ -198,10 +187,9 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return [
             'name' => $this->getName(),
             'domainUsers' => $this->getDomainUsers(),
-            'fromName' => $this->getFromName(),
-            'fromAddress' => $this->getFromAddress(),
             'recordingsLimitMB' => $this->getRecordingsLimitMB(),
             'recordingsLimitEmail' => $this->getRecordingsLimitEmail(),
+            'maxCalls' => $this->getMaxCalls(),
             'id' => $this->getId(),
             'logo' => [
                 'fileSize' => $this->getLogoFileSize(),
@@ -224,7 +212,6 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
             'services' => $this->getServices(),
             'urls' => $this->getUrls(),
             'relFeatures' => $this->getRelFeatures(),
-            'domains' => $this->getDomains(),
             'retailAccounts' => $this->getRetailAccounts(),
             'musicsOnHold' => $this->getMusicsOnHold(),
             'matchLists' => $this->getMatchLists(),
@@ -279,17 +266,6 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
             foreach ($items as $item) {
                 $this->relFeatures[] = $transformer->transform(
                     'Ivoz\\Provider\\Domain\\Model\\FeaturesRelBrand\\FeaturesRelBrand',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-
-        if (!is_null($this->domains)) {
-            $items = $this->getDomains();
-            $this->domains = [];
-            foreach ($items as $item) {
-                $this->domains[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\Domain\\Domain',
                     $item->getId() ?? $item
                 );
             }
@@ -362,10 +338,6 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
             'Ivoz\\Provider\\Domain\\Model\\FeaturesRelBrand\\FeaturesRelBrand',
             $this->relFeatures
         );
-        $this->domains = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\Domain\\Domain',
-            $this->domains
-        );
         $this->retailAccounts = $transformer->transform(
             'Ivoz\\Provider\\Domain\\Model\\RetailAccount\\RetailAccount',
             $this->retailAccounts
@@ -425,46 +397,6 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $fromName
-     *
-     * @return static
-     */
-    public function setFromName($fromName = null)
-    {
-        $this->fromName = $fromName;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getFromName()
-    {
-        return $this->fromName;
-    }
-
-    /**
-     * @param string $fromAddress
-     *
-     * @return static
-     */
-    public function setFromAddress($fromAddress = null)
-    {
-        $this->fromAddress = $fromAddress;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getFromAddress()
-    {
-        return $this->fromAddress;
-    }
-
-    /**
      * @param integer $recordingsLimitMB
      *
      * @return static
@@ -502,6 +434,26 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     public function getRecordingsLimitEmail()
     {
         return $this->recordingsLimitEmail;
+    }
+
+    /**
+     * @param integer $maxCalls
+     *
+     * @return static
+     */
+    public function setMaxCalls($maxCalls = null)
+    {
+        $this->maxCalls = $maxCalls;
+
+        return $this;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getMaxCalls()
+    {
+        return $this->maxCalls;
     }
 
     /**
@@ -940,26 +892,6 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
     public function getRelFeatures()
     {
         return $this->relFeatures;
-    }
-
-    /**
-     * @param array $domains
-     *
-     * @return static
-     */
-    public function setDomains($domains = null)
-    {
-        $this->domains = $domains;
-
-        return $this;
-    }
-
-    /**
-     * @return array
-     */
-    public function getDomains()
-    {
-        return $this->domains;
     }
 
     /**

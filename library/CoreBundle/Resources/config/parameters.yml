@@ -3,6 +3,7 @@ imports:
     -
         resource: '@CoreBundle/Resources/config/orm_soft_delete.yml'
 parameters:
+    doctrine.orm.entity_manager.class: Ivoz\Core\Infrastructure\Persistence\Doctrine\ORM\EntityManager
     database_host: data.ivozprovider.local
     database_port: null
     database_name: ivozprovider

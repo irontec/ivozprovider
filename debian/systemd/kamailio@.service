@@ -7,6 +7,8 @@ After=multi-user.target
 Type=forking
 User=root
 Group=root
+LimitCORE=infinity
+LimitNOFILE=65535
 PIDFile=/var/run/kamailio-%i.pid
 EnvironmentFile=/etc/default/kam%i
 ExecStart=/usr/sbin/kamailio -A IP=%i -f /etc/kamailio/proxy%i/kamailio.cfg -m ${SH_MEM} -M ${PRIV_MEM} -P /var/run/kamailio-%i.pid

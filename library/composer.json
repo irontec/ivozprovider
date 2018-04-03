@@ -49,23 +49,26 @@
     },
     "require": {
         "php": ">=7.0.19",
-        "beberlei/assert": "2.7.*",
+        "beberlei/assert": "2.9.*",
         "doctrine/doctrine-bundle": "^1.6",
         "doctrine/doctrine-cache-bundle": "^1.3",
         "doctrine/orm": "^2.5",
         "doctrine/doctrine-migrations-bundle": "^1.2",
         "incenteev/composer-parameter-handler": "^2.0",
         "ramsey/uuid": "^3.7",
-        "sensio/distribution-bundle": "^5.0",
-        "symfony/monolog-bundle": "^3.0.2",
-        "symfony/symfony": "3.3.*",
+        "sensio/distribution-bundle": "5.0.*",
+        "symfony/monolog-bundle": "3.1.*",
+        "symfony/symfony": "3.4.*",
         "knplabs/knp-snappy": "0.4.3",
         "xamin/handlebars.php": "^0.10.4",
         "h4cc/wkhtmltopdf-amd64": "0.12.3",
-        "h4cc/wkhtmltopdf-i386": "0.12.3"
+        "h4cc/wkhtmltopdf-i386": "0.12.3",
+        "graze/guzzle-jsonrpc": "3.2.*",
+        "symfony/swiftmailer-bundle": "^3.1"
     },
     "require-dev": {
         "leanphp/phpspec-code-coverage": "4.0.*",
+        "overtrue/phplint": "^1.0",
         "phpspec/phpspec": "4.2.*",
         "sensio/generator-bundle": "^3.0",
         "symfony/phpunit-bridge": "^3.0"

@@ -27,6 +27,8 @@ Scenario: I create conference rooms
   Then I can see confirmation dialog
   When I click on close dialog button
   Then I am on "ConferenceRooms" list
+  When I click on "ConferenceRooms" last elements edit button
+  Then I compare the form data with "company/conferenceRooms/new" data fixture
 
 Scenario: I can save conference rooms
   Given I can see at least one row

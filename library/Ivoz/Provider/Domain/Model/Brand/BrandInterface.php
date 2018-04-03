@@ -73,38 +73,6 @@ interface BrandInterface extends LoggableEntityInterface
     public function getDomainUsers();
 
     /**
-     * Set fromName
-     *
-     * @param string $fromName
-     *
-     * @return self
-     */
-    public function setFromName($fromName = null);
-
-    /**
-     * Get fromName
-     *
-     * @return string
-     */
-    public function getFromName();
-
-    /**
-     * Set fromAddress
-     *
-     * @param string $fromAddress
-     *
-     * @return self
-     */
-    public function setFromAddress($fromAddress = null);
-
-    /**
-     * Get fromAddress
-     *
-     * @return string
-     */
-    public function getFromAddress();
-
-    /**
      * Set recordingsLimitMB
      *
      * @param integer $recordingsLimitMB
@@ -135,6 +103,22 @@ interface BrandInterface extends LoggableEntityInterface
      * @return string
      */
     public function getRecordingsLimitEmail();
+
+    /**
+     * Set maxCalls
+     *
+     * @param integer $maxCalls
+     *
+     * @return self
+     */
+    public function setMaxCalls($maxCalls);
+
+    /**
+     * Get maxCalls
+     *
+     * @return integer
+     */
+    public function getMaxCalls();
 
     /**
      * Set domain
@@ -339,37 +323,6 @@ interface BrandInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrandInterface[]
      */
     public function getRelFeatures(\Doctrine\Common\Collections\Criteria $criteria = null);
-
-    /**
-     * Add domain
-     *
-     * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain
-     *
-     * @return BrandTrait
-     */
-    public function addDomain(\Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain);
-
-    /**
-     * Remove domain
-     *
-     * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain
-     */
-    public function removeDomain(\Ivoz\Provider\Domain\Model\Domain\DomainInterface $domain);
-
-    /**
-     * Replace domains
-     *
-     * @param \Ivoz\Provider\Domain\Model\Domain\DomainInterface[] $domains
-     * @return self
-     */
-    public function replaceDomains(Collection $domains);
-
-    /**
-     * Get domains
-     *
-     * @return \Ivoz\Provider\Domain\Model\Domain\DomainInterface[]
-     */
-    public function getDomains(\Doctrine\Common\Collections\Criteria $criteria = null);
 
     /**
      * Add retailAccount

@@ -1,3 +1,8 @@
+Template: ivozprovider/preseed
+Type: boolean
+Default: true
+Description: Determine if debconf options are preseeded
+
 Template: ivozprovider/menu
 Type: select
 Choices: configure_users_address, configure_trunks_address, configure_mysql_password, configure_language, configure_finish
@@ -18,45 +23,6 @@ Description-es.UTF-8:
  .
  Por favor, introduzca los minimos datos requereidos para configurar los servicios:
  .
-
-Template: ivozprovider/users_address
-Type: string
-Description: Enter Users SIP proxy listen IP address:
-Description-es.UTF-8: Introduzca la IP para proxy SIP de Usuarios:
-
-Template: ivozprovider/trunks_address
-Type: string
-Description: Enter Providers SIP proxy listen IP address:
-Description-es.UTF-8: Introduzca la IP para proxy SIP de Proveedores:
-
-Template: ivozprovider/mysql_password
-Type: password
-Default: changeme
-Description: Enter root (administrator) MySQL password:
-Description-es.UTF-8: Introduzca la contraseña MySQL de root (administrador):
-
-Template: ivozprovider/mysql_password_confirm
-Type: password
-Default: changeme
-Description: Renter root (administrator) MySQL password:
-Description-es.UTF-8: Vuelva a introducir la contraseña MySQL de root (administrador):
-
-Template: ivozprovider/mysql_password_error
-Type: error
-Description: Entered passwords does not match. Please select again the option to configure MySQL password.
-Description-es.UTF-8: Las contraseñas introducidas no coinciden. Por favor, reconfigure la contraseña de MySQL.
-
-Template: ivozprovider/language
-Type: select
-Default: en
-Choices: en, es
-Choices-en.UTF8: English, Spanish
-Choices-es.UTF8: Inglés, Español
-
-Template: ivozprovider/invalid_ip
-Type: error
-Description: Entered IP address doesn't seems a valid IPv4 address. Please select again the configuration option.
-Description-es.UTF-8: La IP introducida no parece una IPv4 válida.
 
 Template: ivozprovider/incomplete_config
 Type: boolean

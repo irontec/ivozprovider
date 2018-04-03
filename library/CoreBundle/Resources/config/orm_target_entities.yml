@@ -11,6 +11,10 @@ doctrine:
         Ivoz\Provider\Domain\Model\Administrator\Administrator
       Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface:
         Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServer
+      Ivoz\Provider\Domain\Model\BalanceMovement\BalanceMovementInterface:
+        Ivoz\Provider\Domain\Model\BalanceMovement\BalanceMovement
+      Ivoz\Provider\Domain\Model\BalanceNotification\BalanceNotificationInterface:
+        Ivoz\Provider\Domain\Model\BalanceNotification\BalanceNotification
       Ivoz\Provider\Domain\Model\Brand\BrandInterface:
         Ivoz\Provider\Domain\Model\Brand\Brand
       Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface:
@@ -43,6 +47,8 @@ doctrine:
         Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelSchedule
       Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendarInterface:
         Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendar
+      Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLockInterface:
+        Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLock
       Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoomInterface:
         Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom
       Ivoz\Provider\Domain\Model\Country\CountryInterface:
@@ -119,6 +125,10 @@ doctrine:
         Ivoz\Provider\Domain\Model\Musiconhold\Musiconhold
       Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface:
         Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHold
+      Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface:
+        Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate
+      Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContentInterface:
+        Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContent
       Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRuleInterface:
         Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule
       Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPatternInterface:
@@ -145,6 +155,8 @@ doctrine:
         Ivoz\Provider\Domain\Model\Recording\Recording
       Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface:
         Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount
+      Ivoz\Provider\Domain\Model\RouteLock\RouteLockInterface:
+        Ivoz\Provider\Domain\Model\RouteLock\RouteLock
       Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface:
         Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup
       Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface:

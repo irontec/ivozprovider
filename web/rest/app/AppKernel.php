@@ -29,6 +29,7 @@ class AppKernel extends Kernel
             new Nelmio\CorsBundle\NelmioCorsBundle(),
             new Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle(),
             new ApiPlatform\Core\Bridge\Symfony\Bundle\ApiPlatformBundle(),
+            new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
 
             /* CoreBundle */
             new CoreBundle\CoreBundle(),
@@ -40,6 +41,10 @@ class AppKernel extends Kernel
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
             $bundles[] = new Symfony\Bundle\DebugBundle\DebugBundle();
             $bundles[] = new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle();
+        }
+
+        if ($this->getEnvironment() === 'test') {
+            $bundles[] = new \DocteurKlein\TestDoubleBundle();
         }
 
         return $bundles;

@@ -39,7 +39,12 @@ class OperationMetadataFactory implements ResourceMetadataFactoryInterface
         $resourceMetadata = $this->decorated->create($resourceClass);
         $isEntity = in_array(EntityInterface::class, class_implements($resourceClass));
         if ($isEntity) {
-            return $this->setEntityOperationMetadata($resourceMetadata);
+            $resourceClassSegments = explode('\\', $resourceClass);
+
+            return $this->setEntityOperationMetadata(
+                $resourceMetadata,
+                $resourceClassSegments[1]
+            );
         }
 
         $manager = $this->managerRegistry->getManagerForClass($resourceClass);
@@ -59,7 +64,7 @@ class OperationMetadataFactory implements ResourceMetadataFactoryInterface
      * @param ResourceMetadata $resourceMetadata
      * @return ResourceMetadata
      */
-    private function setEntityOperationMetadata(ResourceMetadata $resourceMetadata): ResourceMetadata
+    private function setEntityOperationMetadata(ResourceMetadata $resourceMetadata, string $tag = ''): ResourceMetadata
     {
         $defaultFormats = [
             'application/ld+json',
@@ -92,6 +97,9 @@ class OperationMetadataFactory implements ResourceMetadataFactoryInterface
             ],
             $resourceMetadata->getItemOperations()
         );
+        $itemOperations = array_filter($itemOperations, function ($value) {
+            return !is_null($value);
+        });
         $resourceMetadata = $resourceMetadata->withItemOperations($itemOperations);
 
         $collectionOperations = array_replace_recursive(
@@ -117,8 +125,15 @@ class OperationMetadataFactory implements ResourceMetadataFactoryInterface
             ],
             $resourceMetadata->getCollectionOperations()
         );
+        $collectionOperations = array_filter($collectionOperations, function ($value) {
+            return !is_null($value);
+        });
         $resourceMetadata = $resourceMetadata->withCollectionOperations($collectionOperations);
-        return $this->setOperationtags($resourceMetadata, self::ENTITY_TAG);
+
+        return $this->setOperationtags(
+            $resourceMetadata,
+            $tag ?? self::ENTITY_TAG
+        );
     }
 
     /**

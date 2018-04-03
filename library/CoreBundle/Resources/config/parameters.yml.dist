@@ -1,28 +1,25 @@
 imports:
-  - resource: orm_soft_delete.yml
+    - resource: '@CoreBundle/Resources/config/orm_soft_delete.yml'
 
 parameters:
+    doctrine.orm.entity_manager.class: 'Ivoz\Core\Infrastructure\Persistence\Doctrine\ORM\EntityManager'
     database_host: data.ivozprovider.local
     database_port: null
     database_name: ivozprovider
     database_user: root
     database_password: ~
-
     mailer_transport: smtp
     mailer_host: data.ivozprovider.local
     mailer_user: null
     mailer_password: ~
-    mailer_default_fromname: IvozProvider Notifications
+    mailer_default_fromname: 'IvozProvider Notifications'
     mailer_default_fromaddress: no-replay@ivozprovider
     secret: ~
-
     ari_user: ivozariuser
     ari_password: ~
     ari_port: 8088
-
     local_storage_path: /opt/irontec/ivozprovider/storage
     raw_recordings_dir: /opt/irontec/ivozprovider/storage/ivozprovider_model_recordings.originalfile/
-
     gearmand:
       servers:
         - jobs.ivozprovider.local

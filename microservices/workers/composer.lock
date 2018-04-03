@@ -4,15 +4,15 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "9efdf4c3cf496c94b2fd17082735a257",
+    "content-hash": "2b5bd3243db01f99de67b4ff08458785",
     "packages": [
         {
             "name": "beberlei/assert",
-            "version": "2.7.11.0",
+            "version": "2.9.3.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/beberlei/assert",
-                "reference": "53991547d6f0b8c81354fb2d098dcb71e81678cb",
+                "reference": "7d8108458bbe3d063dc3315278b2001a7156fade",
                 "shasum": null
             },
             "require": {
@@ -1001,6 +1001,59 @@
             }
         },
         {
+            "name": "egulias/email-validator",
+            "version": "2.1.3.0",
+            "dist": {
+                "type": "path",
+                "url": "../../library/vendor/egulias/email-validator",
+                "reference": "1bec00a10039b823cc94eef4eddd47dcd3b2ca04",
+                "shasum": null
+            },
+            "require": {
+                "doctrine/lexer": "^1.0.1",
+                "php": ">= 5.5"
+            },
+            "require-dev": {
+                "dominicsayers/isemail": "dev-master",
+                "phpunit/phpunit": "^4.8.35",
+                "satooshi/php-coveralls": "^1.0.1"
+            },
+            "suggest": {
+                "ext-intl": "PHP Internationalization Libraries are required to use the SpoofChecking validation"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Egulias\\EmailValidator\\": "EmailValidator"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eduardo Gulias Davis"
+                }
+            ],
+            "description": "A library for validating emails against several RFCs",
+            "homepage": "https://github.com/egulias/EmailValidator",
+            "keywords": [
+                "email",
+                "emailvalidation",
+                "emailvalidator",
+                "validation",
+                "validator"
+            ],
+            "transport-options": {
+                "symlink": true
+            }
+        },
+        {
             "name": "fig/link-util",
             "version": "1.0.0.0",
             "dist": {
@@ -1792,12 +1845,17 @@
         },
         {
             "name": "psr/simple-cache",
-            "version": "1.0.0.0",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/simple-cache.git",
+                "reference": "408d5eafb83c57f6365a3ca330ff23aa4a5fa39b"
+            },
             "dist": {
-                "type": "path",
-                "url": "../../library/vendor/psr/simple-cache",
-                "reference": "753fa598e8f3b9966c886fe13f370baa45ef0e24",
-                "shasum": null
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/simple-cache/zipball/408d5eafb83c57f6365a3ca330ff23aa4a5fa39b",
+                "reference": "408d5eafb83c57f6365a3ca330ff23aa4a5fa39b",
+                "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0"
@@ -1813,6 +1871,7 @@
                     "Psr\\SimpleCache\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1830,9 +1889,7 @@
                 "psr-16",
                 "simple-cache"
             ],
-            "transport-options": {
-                "symlink": true
-            }
+            "time": "2017-10-23T01:57:42+00:00"
         },
         {
             "name": "ramsey/uuid",
@@ -1931,6 +1988,62 @@
                 "issues": "https://github.com/ramsey/uuid/issues",
                 "source": "https://github.com/ramsey/uuid"
             },
+            "transport-options": {
+                "symlink": true
+            }
+        },
+        {
+            "name": "swiftmailer/swiftmailer",
+            "version": "6.0.2.0",
+            "dist": {
+                "type": "path",
+                "url": "../../library/vendor/swiftmailer/swiftmailer",
+                "reference": "412333372fb6c8ffb65496a2bbd7321af75733fc",
+                "shasum": null
+            },
+            "require": {
+                "egulias/email-validator": "~2.0",
+                "php": ">=7.0.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9.1",
+                "symfony/phpunit-bridge": "~3.3@dev"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "6.0-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "lib/swift_required.php"
+                ]
+            },
+            "autoload-dev": {
+                "psr-0": {
+                    "Swift_": "tests/unit"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Chris Corbyn"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Swiftmailer, free feature-rich PHP mailer",
+            "homepage": "http://swiftmailer.symfony.com",
+            "keywords": [
+                "email",
+                "mail",
+                "mailer"
+            ],
             "transport-options": {
                 "symlink": true
             }
@@ -2311,12 +2424,70 @@
             }
         },
         {
+            "name": "symfony/swiftmailer-bundle",
+            "version": "3.2.1.0",
+            "dist": {
+                "type": "path",
+                "url": "../../library/vendor/symfony/swiftmailer-bundle",
+                "reference": "20e71c247a5a43ceb655db9712394d08c09b33ef",
+                "shasum": null
+            },
+            "require": {
+                "php": ">=7.0.0",
+                "swiftmailer/swiftmailer": "^6.0.1",
+                "symfony/config": "~2.8|~3.3|~4.0",
+                "symfony/dependency-injection": "~2.7|~3.3|~4.0",
+                "symfony/http-kernel": "~2.7|~3.3|~4.0"
+            },
+            "require-dev": {
+                "symfony/console": "~2.7|~3.3|~4.0",
+                "symfony/framework-bundle": "~2.7|~3.3|~4.0",
+                "symfony/phpunit-bridge": "~3.3|~4.0",
+                "symfony/yaml": "~2.7|~3.3|~4.0"
+            },
+            "suggest": {
+                "psr/log": "Allows logging"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Bundle\\SwiftmailerBundle\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony SwiftmailerBundle",
+            "homepage": "http://symfony.com",
+            "transport-options": {
+                "symlink": true
+            }
+        },
+        {
             "name": "symfony/symfony",
-            "version": "3.3.16.0",
+            "version": "3.4.6.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/symfony",
-                "reference": "98e128ccee7afff6313dc3e9cce619f6e1caedbc",
+                "reference": "874d4d659774d7bab90538072c83ed532dd17dc5",
                 "shasum": null
             },
             "require": {
@@ -2333,8 +2504,8 @@
                 "symfony/polyfill-intl-icu": "~1.0",
                 "symfony/polyfill-mbstring": "~1.0",
                 "symfony/polyfill-php56": "~1.0",
-                "symfony/polyfill-php70": "~1.0",
-                "twig/twig": "~1.34|~2.4"
+                "symfony/polyfill-php70": "~1.6",
+                "twig/twig": "^1.35|^2.4.4"
             },
             "conflict": {
                 "phpdocumentor/reflection-docblock": "<3.0||>=3.2.0,<3.2.2",
@@ -2344,6 +2515,7 @@
             "provide": {
                 "psr/cache-implementation": "1.0",
                 "psr/container-implementation": "1.0",
+                "psr/log-implementation": "1.0",
                 "psr/simple-cache-implementation": "1.0"
             },
             "replace": {
@@ -2371,6 +2543,7 @@
                 "symfony/inflector": "self.version",
                 "symfony/intl": "self.version",
                 "symfony/ldap": "self.version",
+                "symfony/lock": "self.version",
                 "symfony/monolog-bridge": "self.version",
                 "symfony/options-resolver": "self.version",
                 "symfony/process": "self.version",
@@ -2411,14 +2584,13 @@
                 "ocramius/proxy-manager": "~0.4|~1.0|~2.0",
                 "phpdocumentor/reflection-docblock": "^3.0|^4.0",
                 "predis/predis": "~1.0",
-                "sensio/framework-extra-bundle": "^3.0.2",
                 "symfony/phpunit-bridge": "~3.4|~4.0",
                 "symfony/security-acl": "~2.8|~3.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.3-dev"
+                    "dev-master": "3.4-dev"
                 }
             },
             "autoload": {
@@ -2466,11 +2638,11 @@
         },
         {
             "name": "twig/twig",
-            "version": "2.4.4.0",
+            "version": "2.4.7.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/twig/twig",
-                "reference": "eddb97148ad779f27e670e1e3f19fb323aedafeb",
+                "reference": "69aacd44dbbaa3199d5afb68605c996d577896fc",
                 "shasum": null
             },
             "require": {
@@ -2479,8 +2651,8 @@
             },
             "require-dev": {
                 "psr/container": "^1.0",
-                "symfony/debug": "~2.7",
-                "symfony/phpunit-bridge": "~3.3@dev"
+                "symfony/debug": "^2.7",
+                "symfony/phpunit-bridge": "^3.3"
             },
             "type": "library",
             "extra": {

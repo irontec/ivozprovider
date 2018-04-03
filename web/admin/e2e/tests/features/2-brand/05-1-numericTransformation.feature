@@ -25,6 +25,8 @@ Scenario: I can create new numeric transformation admin
    Then I can see confirmation dialog
    When I click on close dialog button
    Then I am on "TransformationRuleSets" list
+  When I click on "TransformationRuleSets" last elements edit button
+  Then I compare the form data with "brand/numericTransformation/compareNew" data fixture
 
 Scenario: I can create new numeric transformation with auto generated rules
   Given I click on add button
@@ -33,6 +35,8 @@ Scenario: I can create new numeric transformation with auto generated rules
    Then I can see confirmation dialog
    When I click on close dialog button
    Then I am on "TransformationRuleSets" list
+  When I click on "TransformationRuleSets" last elements edit button
+  Then I compare the form data with "brand/numericTransformation/compareAuto" data fixture
 
 Scenario: I can edit numeric transformations
   Given I can see at least one row

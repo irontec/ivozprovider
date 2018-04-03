@@ -1,13 +1,24 @@
 monolog:
+ channels: ['changelog', 'provisioning']
  handlers:
    filter_for_errors:
      type: fingers_crossed
      action_level: error
-     handler: syslog_handler
+     handler: fingers_crossed_handler
+     channels:
+      - !changelog
+      - !provisioning
 
-   syslog_handler:
+   fingers_crossed_handler:
      type: syslog
      level: info
 
-   console:
-     type: console
+   changelog_handler:
+     type: syslog
+     level: info
+     channels: changelog
+
+   provisioning_handler:
+     type: syslog
+     level: info
+     channels: provisioning

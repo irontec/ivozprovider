@@ -35,11 +35,6 @@ abstract class HuntGroupAbstract
     protected $ringAllTimeout;
 
     /**
-     * @var integer
-     */
-    protected $nextUserPosition = '0';
-
-    /**
      * comment: enum:number|extension|voicemail
      * @var string
      */
@@ -49,6 +44,11 @@ abstract class HuntGroupAbstract
      * @var string
      */
     protected $noAnswerNumberValue;
+
+    /**
+     * @var integer
+     */
+    protected $preventMissedCalls = '1';
 
     /**
      * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
@@ -85,12 +85,14 @@ abstract class HuntGroupAbstract
         $name,
         $description,
         $strategy,
-        $ringAllTimeout
+        $ringAllTimeout,
+        $preventMissedCalls
     ) {
         $this->setName($name);
         $this->setDescription($description);
         $this->setStrategy($strategy);
         $this->setRingAllTimeout($ringAllTimeout);
+        $this->setPreventMissedCalls($preventMissedCalls);
     }
 
     abstract public function getId();
@@ -160,10 +162,10 @@ abstract class HuntGroupAbstract
             $dto->getName(),
             $dto->getDescription(),
             $dto->getStrategy(),
-            $dto->getRingAllTimeout());
+            $dto->getRingAllTimeout(),
+            $dto->getPreventMissedCalls());
 
         $self
-            ->setNextUserPosition($dto->getNextUserPosition())
             ->setNoAnswerTargetType($dto->getNoAnswerTargetType())
             ->setNoAnswerNumberValue($dto->getNoAnswerNumberValue())
             ->setCompany($dto->getCompany())
@@ -195,9 +197,9 @@ abstract class HuntGroupAbstract
             ->setDescription($dto->getDescription())
             ->setStrategy($dto->getStrategy())
             ->setRingAllTimeout($dto->getRingAllTimeout())
-            ->setNextUserPosition($dto->getNextUserPosition())
             ->setNoAnswerTargetType($dto->getNoAnswerTargetType())
             ->setNoAnswerNumberValue($dto->getNoAnswerNumberValue())
+            ->setPreventMissedCalls($dto->getPreventMissedCalls())
             ->setCompany($dto->getCompany())
             ->setNoAnswerLocution($dto->getNoAnswerLocution())
             ->setNoAnswerExtension($dto->getNoAnswerExtension())
@@ -221,9 +223,9 @@ abstract class HuntGroupAbstract
             ->setDescription(self::getDescription())
             ->setStrategy(self::getStrategy())
             ->setRingAllTimeout(self::getRingAllTimeout())
-            ->setNextUserPosition(self::getNextUserPosition())
             ->setNoAnswerTargetType(self::getNoAnswerTargetType())
             ->setNoAnswerNumberValue(self::getNoAnswerNumberValue())
+            ->setPreventMissedCalls(self::getPreventMissedCalls())
             ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
             ->setNoAnswerLocution(\Ivoz\Provider\Domain\Model\Locution\Locution::entityToDto(self::getNoAnswerLocution(), $depth))
             ->setNoAnswerExtension(\Ivoz\Provider\Domain\Model\Extension\Extension::entityToDto(self::getNoAnswerExtension(), $depth))
@@ -241,9 +243,9 @@ abstract class HuntGroupAbstract
             'description' => self::getDescription(),
             'strategy' => self::getStrategy(),
             'ringAllTimeout' => self::getRingAllTimeout(),
-            'nextUserPosition' => self::getNextUserPosition(),
             'noAnswerTargetType' => self::getNoAnswerTargetType(),
             'noAnswerNumberValue' => self::getNoAnswerNumberValue(),
+            'preventMissedCalls' => self::getPreventMissedCalls(),
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
             'noAnswerLocutionId' => self::getNoAnswerLocution() ? self::getNoAnswerLocution()->getId() : null,
             'noAnswerExtensionId' => self::getNoAnswerExtension() ? self::getNoAnswerExtension()->getId() : null,
@@ -370,37 +372,6 @@ abstract class HuntGroupAbstract
     }
 
     /**
-     * Set nextUserPosition
-     *
-     * @param integer $nextUserPosition
-     *
-     * @return self
-     */
-    public function setNextUserPosition($nextUserPosition = null)
-    {
-        if (!is_null($nextUserPosition)) {
-            if (!is_null($nextUserPosition)) {
-                Assertion::integerish($nextUserPosition, 'nextUserPosition value "%s" is not an integer or a number castable to integer.');
-                Assertion::greaterOrEqualThan($nextUserPosition, 0, 'nextUserPosition provided "%s" is not greater or equal than "%s".');
-            }
-        }
-
-        $this->nextUserPosition = $nextUserPosition;
-
-        return $this;
-    }
-
-    /**
-     * Get nextUserPosition
-     *
-     * @return integer
-     */
-    public function getNextUserPosition()
-    {
-        return $this->nextUserPosition;
-    }
-
-    /**
      * Set noAnswerTargetType
      *
      * @param string $noAnswerTargetType
@@ -459,6 +430,34 @@ abstract class HuntGroupAbstract
     public function getNoAnswerNumberValue()
     {
         return $this->noAnswerNumberValue;
+    }
+
+    /**
+     * Set preventMissedCalls
+     *
+     * @param integer $preventMissedCalls
+     *
+     * @return self
+     */
+    public function setPreventMissedCalls($preventMissedCalls)
+    {
+        Assertion::notNull($preventMissedCalls, 'preventMissedCalls value "%s" is null, but non null value was expected.');
+        Assertion::integerish($preventMissedCalls, 'preventMissedCalls value "%s" is not an integer or a number castable to integer.');
+        Assertion::greaterOrEqualThan($preventMissedCalls, 0, 'preventMissedCalls provided "%s" is not greater or equal than "%s".');
+
+        $this->preventMissedCalls = $preventMissedCalls;
+
+        return $this;
+    }
+
+    /**
+     * Get preventMissedCalls
+     *
+     * @return integer
+     */
+    public function getPreventMissedCalls()
+    {
+        return $this->preventMissedCalls;
     }
 
     /**

@@ -3,7 +3,7 @@
 namespace Agi\Action;
 
 use Agi\Wrapper;
-use Doctrine\Common\Collections\Criteria;
+use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 
@@ -114,19 +114,16 @@ class UserStatusAction
      */
     private function processCallForward($type)
     {
-        // Process inconditional Call Forwards
-        $criteria = new Criteria();
-        $criteria->where(
-            Criteria::expr()->eq(
-                'callForwardType',
-                $type
-            )
-        );
+        // Get active call forwards
+        $criteria = [
+            array('callForwardType', 'eq', $type),
+            array('enabled', 'eq', '1'),
+        ];
 
         /**
          * @var CallForwardSettingInterface[] $cfwSettings
          */
-        $cfwSettings = $this->user->getCallForwardSettings($criteria);
+        $cfwSettings = $this->user->getCallForwardSettings(CriteriaHelper::fromArray($criteria));
 
         // Process busy Call Forwards
         foreach ($cfwSettings as $cfwSetting) {

@@ -24,6 +24,9 @@ Scenario: I create new routing patterns
    Then I can see confirmation dialog
    When I click on close dialog button
    Then I am on "RoutingPatterns" list
+#   Todo I go to the last pagination page
+#   When I click on "RoutingPatterns" last elements edit button
+#   Then I compare the form data with "brand/routingPatterns/new" data fixture
 
 Scenario: I can save routing patterns
   Given I can see at least one row

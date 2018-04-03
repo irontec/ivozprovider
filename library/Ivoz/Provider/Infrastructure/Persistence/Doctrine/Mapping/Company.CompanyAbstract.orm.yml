@@ -45,13 +45,13 @@ Ivoz\Provider\Domain\Model\Company\CompanyAbstract:
         comment: '[enum:static|rr|hash]'
         default: hash
       column: distributeMethod
-    externalMaxCalls:
+    maxCalls:
       type: integer
       nullable: false
       options:
         unsigned: true
         default: '0'
-      column: externalMaxCalls
+      column: maxCalls
     postalAddress:
       type: string
       nullable: false
@@ -124,6 +124,22 @@ Ivoz\Provider\Domain\Model\Company\CompanyAbstract:
       options:
         fixed: false
       column: recordingsLimitEmail
+    billingMethod:
+      type: string
+      nullable: false
+      length: 25
+      options:
+        fixed: false
+        comment: '[enum:postpaid|prepaid|pseudoprepaid]'
+        default: postpaid
+      column: billingMethod
+    balance:
+      type: decimal
+      nullable: true
+      precision: 10
+      scale: 4
+      options:
+        default: 0
   manyToOne:
     language:
       targetEntity: \Ivoz\Provider\Domain\Model\Language\LanguageInterface
@@ -235,6 +251,30 @@ Ivoz\Provider\Domain\Model\Company\CompanyAbstract:
       inversedBy: null
       joinColumns:
         outgoingDdiRuleId:
+          referencedColumnName: id
+          nullable: true
+          onDelete: set null
+      orphanRemoval: false
+    voicemailNotificationTemplate:
+      targetEntity: \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        vmNotificationTemplateId:
+          referencedColumnName: id
+          nullable: true
+          onDelete: set null
+      orphanRemoval: false
+    faxNotificationTemplate:
+      targetEntity: \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        faxNotificationTemplateId:
           referencedColumnName: id
           nullable: true
           onDelete: set null

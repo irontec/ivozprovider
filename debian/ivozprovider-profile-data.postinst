@@ -1,9 +1,62 @@
 #!/bin/bash
 
-# Restart Local DNS
-/bin/systemctl restart bind9
+#DEBHELPER#
 
-# Fix GenericMusicOnHold FSO. REMOVE THIS AFTER 2.1.0
-/bin/bash /opt/irontec/ivozprovider/scripts/FSOBrandMusicOnHold.sh
+# Source debconf library.
+. /usr/share/debconf/confmodule
+
+#######################################################################################################################
+#######################################################################################################################
+function storage_fix_moh()
+{
+    # Fix GenericMusicOnHold FSO. REMOVE THIS AFTER 2.1.0
+    /bin/bash /opt/irontec/ivozprovider/scripts/FSOBrandMusicOnHold.sh
+}
+
+function setup_bind()
+{
+    # Setup local DNS Server entries
+    db_get ivozprovider/users_address           || true
+    sed -r -i "s/(users           IN      A      ) .*/\1 $RET/"     /etc/bind/db.ivozprovider.local
+    db_get ivozprovider/trunks_address          || true
+    sed -r -i "s/(trunks          IN      A      ) .*/\1 $RET/"     /etc/bind/db.ivozprovider.local
+    db_get ivozprovider/data_address            || true
+    sed -r -i "s/(data            IN      A      ) .*/\1 $RET/"     /etc/bind/db.ivozprovider.local
+    db_get ivozprovider/storage_address         || true
+    sed -r -i "s/(storage         IN      A      ) .*/\1 $RET/"     /etc/bind/db.ivozprovider.local
+    db_get ivozprovider/logs_address            || true
+    sed -r -i "s/(logs            IN      A      ) .*/\1 $RET/"     /etc/bind/db.ivozprovider.local
+    db_get ivozprovider/jobs_address            || true
+    sed -r -i "s/(jobs            IN      A      ) .*/\1 $RET/"     /etc/bind/db.ivozprovider.local
+
+    # Restart Local DNS
+    /bin/systemctl start bind9
+}
+
+function setup_mysql_access()
+{
+    # Allow root access from all hosts
+    db_get ivozprovider/mysql_password          || true
+    /usr/bin/mysql --user=root --password="$RET" -e "GRANT ALL ON *.* TO 'root'@'%' IDENTIFIED BY '$RET'";
+    /usr/bin/mysql --user=root --password="$RET" -e "FLUSH PRIVILEGES;"
+}
+
+function setup_mysql_replication()
+{
+    # Configure this node server-id
+    db_get ivozprovider/mysql_server_id         || true
+    if [ $RET -gt 0 ]; then
+        sed -r -i "s/(server-id       =) .*/\1 $RET/"       /etc/mysql/conf.d/ivozprovider-replication.cnf
+        sed -r -i "s/(bind-address	=) .*/\1 0.0.0.0/"      /etc/mysql/mysql.conf.d/mysqld.cnf
+    fi
+}
+
+#######################################################################################################################
+#######################################################################################################################
+storage_fix_moh
+setup_bind
+setup_mysql_access
+setup_mysql_replication
+db_stop
 
 :

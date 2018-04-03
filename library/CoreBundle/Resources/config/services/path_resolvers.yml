@@ -10,6 +10,7 @@ services:
      class: Ivoz\Core\Application\Service\StoragePathResolverCollection
      calls:
       - [addPathResolver, ['Logo', '@Service\CommonStoragePathResolver::BrandLogo']]
+     public: true
 
   Service\CommonStoragePathResolver::BrandLogo:
     class: Ivoz\Core\Application\Service\CommonStoragePathResolver
@@ -24,6 +25,7 @@ services:
      class: Ivoz\Core\Application\Service\StoragePathResolverCollection
      calls:
       - [addPathResolver, ['Logo', '@Service\CommonStoragePathResolver::BrandUrlLogo']]
+     public: true
 
   Service\CommonStoragePathResolver::BrandUrlLogo:
     class: Ivoz\Core\Application\Service\CommonStoragePathResolver
@@ -39,6 +41,7 @@ services:
      calls:
       - [addPathResolver, ['OriginalFile', '@Service\CommonStoragePathResolver::LocutionOriginalFile']]
       - [addPathResolver, ['EncodedFile', '@Service\CommonStoragePathResolver::LocutionEncodedFile']]
+     public: true
 
   Service\CommonStoragePathResolver::LocutionOriginalFile:
     class: Ivoz\Core\Application\Service\CommonStoragePathResolver
@@ -60,7 +63,8 @@ services:
   Service\StoragePathResolverCollection::FaxesInOut:
      class: Ivoz\Core\Application\Service\StoragePathResolverCollection
      calls:
-      - [addPathResolver, ['File', '@Service\CommonStoragePathResolver::FaxesInOutFile']]
+      - [addPathResolver, ['file', '@Service\CommonStoragePathResolver::FaxesInOutFile']]
+     public: true
 
   Service\CommonStoragePathResolver::FaxesInOutFile:
     class: Ivoz\Core\Application\Service\CommonStoragePathResolver
@@ -75,6 +79,7 @@ services:
      class: Ivoz\Core\Application\Service\StoragePathResolverCollection
      calls:
       - [addPathResolver, ['Pdf', '@Service\CommonStoragePathResolver::InvoicePdf']]
+     public: true
 
   Service\CommonStoragePathResolver::InvoicePdf:
     class: Ivoz\Core\Application\Service\CommonStoragePathResolver
@@ -90,6 +95,7 @@ services:
      calls:
       - [addPathResolver, ['OriginalFile', '@MusicOnHold\StoragePathResolver::MusicOnHoldOriginalFile']]
       - [addPathResolver, ['EncodedFile', '@MusicOnHold\StoragePathResolver::MusicOnHoldEncodedFile']]
+     public: true
 
   MusicOnHold\StoragePathResolver::MusicOnHoldOriginalFile:
     class: Ivoz\Provider\Application\Service\MusicOnHold\StoragePathResolver
@@ -110,6 +116,7 @@ services:
      class: Ivoz\Core\Application\Service\StoragePathResolverCollection
      calls:
       - [addPathResolver, ['RecordedFile', '@Service\CommonStoragePathResolver::RecordingRecordedFile']]
+     public: true
 
   Service\CommonStoragePathResolver::RecordingRecordedFile:
     class: Ivoz\Core\Application\Service\CommonStoragePathResolver

@@ -1,4 +1,35 @@
-Wed, 16 Feb 2018 16:33:21 +0200 IvozProvider Team <dev@list-ivozprovider.irontec.com>
+Wed, 28 Mar 2018 18:41:49 +0100 IvozProvider Team <dev@list-ivozprovider.irontec.com>
+
+    * IvozProvider 2.1 released
+
+    * Billing:
+
+      - Prepaid/Pseudoprepaid billing
+      - Basic CSV price importer
+      - Low balance notifications
+      - New section: Balances (list and increase balances)
+
+    * vPBX:
+
+      - Add route-locks as conditional route criteria
+      - Avoid missed calls setting for huntgroups
+      - Fix user-extension-mailbox trigger and logics
+      - User cfw settings can now be enabled/disabled
+
+    * Portals:
+
+      - Brand Notification templates for Voicemail/Faxes/LowBalances
+
+    * Proxies:
+
+      - Limit voice channel per brand
+      - Avoid crash when malformed request was received
+
+    * Provisioning
+
+      - Terminal provisioning services migrated to symfony
+
+Wed, 22 Nov 2017 18:58:49 +0100 IvozProvider Team <dev@list-ivozprovider.irontec.com>
 
     * IvozProvider 2.0 released
 
@@ -50,6 +81,20 @@ Wed, 16 Feb 2018 16:33:21 +0200 IvozProvider Team <dev@list-ivozprovider.irontec
       - Most of the entities are now tested through e2e test in admin portal
       - More than of 200 unit tests of entity services
       - SIP BBS tests enhanced
+
+Wed, 05 Mar 2018 18:52:49 +0100 IvozProvider Team <dev@list-ivozprovider.irontec.com>
+
+    * IvozProvider 1.7 released
+
+    * vPBX: Add route-locks as conditional route criteria
+    * vPBX: Avoid missed calls setting for huntgroups
+    * vPBX: fix user-extension-mailbox trigger and logics
+    * retail: Add call forward settings per retail account
+    * retail: Add voicemail per retail account
+    * Portals: Add enable/disable toggle for user cfw settings
+    * Portals: Limit voice channel per brand
+    * Kam: Avoid crash when malformed request was received
+    * Kam: Disable DB insert per transaction
 
 Wed, 28 Aug 2017 13:57:21 +0200 IvozProvider Team <dev@list-ivozprovider.irontec.com>
 

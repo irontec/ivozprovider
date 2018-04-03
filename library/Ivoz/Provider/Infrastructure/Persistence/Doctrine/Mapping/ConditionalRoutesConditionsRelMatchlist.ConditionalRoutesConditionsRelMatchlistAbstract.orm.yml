@@ -6,7 +6,7 @@ Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRo
       cascade: {  }
       fetch: LAZY
       mappedBy: null
-      inversedBy: matchlists
+      inversedBy: relMatchlists
       joinColumns:
         conditionId:
           referencedColumnName: id

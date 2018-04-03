@@ -105,6 +105,22 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
     public function getNoAnswerTimeout();
 
     /**
+     * Set enabled
+     *
+     * @param boolean $enabled
+     *
+     * @return self
+     */
+    public function setEnabled($enabled);
+
+    /**
+     * Get enabled
+     *
+     * @return boolean
+     */
+    public function getEnabled();
+
+    /**
      * Set user
      *
      * @param \Ivoz\Provider\Domain\Model\User\UserInterface $user

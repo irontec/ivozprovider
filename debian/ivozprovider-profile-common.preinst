@@ -1,17 +1,32 @@
 #!/bin/bash
 
-# Environment file
-ENVFILE="/etc/systemd/system.conf"
-ENV="prod"
+#DEBHELPER#
+
+. /usr/share/debconf/confmodule
 
 ## Set environment
-grep SYMFONY_ENV $ENVFILE &>/dev/null
+grep -q SYMFONY_ENV /etc/systemd/system.conf
 if [ $? -ne 0 ]; then
-    echo "DefaultEnvironment=SYMFONY_ENV=$ENV" >> $ENVFILE
+    echo "DefaultEnvironment=SYMFONY_ENV=prod" >> /etc/systemd/system.conf
 fi
 
-# Set current environment
-systemctl set-environment SYMFONY_ENV=$ENV
-export $(systemctl show-environment)
+# Setup local dns server
+db_get ivozprovider/dns_address  || true
+DNS_ADDRESS=$RET
+db_stop
+
+# Make resolv editable
+/usr/bin/chattr -i /etc/resolv.conf
+
+/bin/cat > /etc/resolv.conf <<- EOM
+# THIS FILE IS AUTO-GENERATED. DO NOT EDIT MANUALLY.
+domain ivozprovider.local
+search ivozprovider.local
+nameserver $DNS_ADDRESS
+EOM
+
+# Avoid overwriting the resolv.conf file
+/usr/bin/chattr +i /etc/resolv.conf
+
 
 :

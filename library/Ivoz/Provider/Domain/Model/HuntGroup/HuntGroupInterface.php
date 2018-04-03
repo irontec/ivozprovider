@@ -96,22 +96,6 @@ interface HuntGroupInterface extends LoggableEntityInterface
     public function getRingAllTimeout();
 
     /**
-     * Set nextUserPosition
-     *
-     * @param integer $nextUserPosition
-     *
-     * @return self
-     */
-    public function setNextUserPosition($nextUserPosition = null);
-
-    /**
-     * Get nextUserPosition
-     *
-     * @return integer
-     */
-    public function getNextUserPosition();
-
-    /**
      * Set noAnswerTargetType
      *
      * @param string $noAnswerTargetType
@@ -142,6 +126,22 @@ interface HuntGroupInterface extends LoggableEntityInterface
      * @return string
      */
     public function getNoAnswerNumberValue();
+
+    /**
+     * Set preventMissedCalls
+     *
+     * @param integer $preventMissedCalls
+     *
+     * @return self
+     */
+    public function setPreventMissedCalls($preventMissedCalls);
+
+    /**
+     * Get preventMissedCalls
+     *
+     * @return integer
+     */
+    public function getPreventMissedCalls();
 
     /**
      * Set company

@@ -4,6 +4,7 @@ function list () {
 
   this.selectElementAtPosition = selectElementAtPosition;
   this.clickOnFirstEditButton = clickOnFirstEditButton;
+  this.clickOnLastEditButton = clickOnLastEditButton;
   this.clickOnFirstDeleteButton = clickOnFirstDeleteButton;
   this.clickOnFooterDeleteButton = clickOnFooterDeleteButton;
   this.clickOnFirstViewButton = clickOnFirstViewButton;
@@ -56,6 +57,30 @@ function list () {
       ['mousedown', 'mouseup']
     );
   }
+
+
+  function clickOnFirstEditButton(entity) {
+    entity = sanitizeEntityName(entity);
+    var jqSelector = 'a[data-screen='+ entity +'Edit_screen]:visible:eq(0)';
+
+    return clickOnOptionButton.call(
+        this,
+        jqSelector,
+        ['mousedown', 'mouseup']
+    );
+  }
+
+    function clickOnLastEditButton(entity) {
+        entity = sanitizeEntityName(entity);
+        var jqSelector = 'a[data-screen='+ entity +'Edit_screen]:visible:last';
+
+        return clickOnOptionButton.call(
+            this,
+            jqSelector,
+            ['mousedown', 'mouseup']
+        );
+    }
+
 
   function clickOnFirstViewButton(entity) {
     entity = sanitizeEntityName(entity);
