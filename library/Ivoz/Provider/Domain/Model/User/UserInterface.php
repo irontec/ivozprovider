@@ -120,6 +120,11 @@ interface UserInterface extends LoggableEntityInterface
     public function setEmail($email = null);
 
     /**
+     * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface
+     */
+    public function getTimezone();
+
+    /**
      * Set name
      *
      * @param string $name
@@ -454,13 +459,6 @@ interface UserInterface extends LoggableEntityInterface
      * @return self
      */
     public function setTimezone(\Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface $timezone = null);
-
-    /**
-     * Get timezone
-     *
-     * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface
-     */
-    public function getTimezone();
 
     /**
      * Set outgoingDdi

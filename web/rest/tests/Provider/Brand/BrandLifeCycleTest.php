@@ -34,7 +34,8 @@ class BrandLifeCycleTest extends KernelTestCase
             ->setInvoicePostalCode('48960')
             ->setInvoiceTown('InvoiceTown')
             ->setInvoiceProvince('InvoiceProvince')
-            ->setInvoiceCountry('InvoiceCountry');
+            ->setInvoiceCountry('InvoiceCountry')
+            ->setDefaultTimezoneId(1);
 
         /** @var Brand $brand */
         $brand = $this->entityPersister

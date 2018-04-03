@@ -78,6 +78,7 @@ Ivoz\Provider\Domain\Model\Brand\BrandAbstract:
       joinColumns:
         defaultTimezoneId:
           referencedColumnName: id
-          onDelete: set null
+          nullable: false
+          onDelete: cascade
       orphanRemoval: false
 
