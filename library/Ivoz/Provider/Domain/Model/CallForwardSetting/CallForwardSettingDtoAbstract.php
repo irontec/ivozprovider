@@ -38,6 +38,11 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     private $noAnswerTimeout = '10';
 
     /**
+     * @var boolean
+     */
+    private $enabled = '1';
+
+    /**
      * @var integer
      */
     private $id;
@@ -85,6 +90,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
             'targetType' => 'targetType',
             'numberValue' => 'numberValue',
             'noAnswerTimeout' => 'noAnswerTimeout',
+            'enabled' => 'enabled',
             'id' => 'id',
             'userId' => 'user',
             'extensionId' => 'extension',
@@ -104,6 +110,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
             'targetType' => $this->getTargetType(),
             'numberValue' => $this->getNumberValue(),
             'noAnswerTimeout' => $this->getNoAnswerTimeout(),
+            'enabled' => $this->getEnabled(),
             'id' => $this->getId(),
             'user' => $this->getUser(),
             'extension' => $this->getExtension(),
@@ -229,6 +236,26 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     public function getNoAnswerTimeout()
     {
         return $this->noAnswerTimeout;
+    }
+
+    /**
+     * @param boolean $enabled
+     *
+     * @return static
+     */
+    public function setEnabled($enabled = null)
+    {
+        $this->enabled = $enabled;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getEnabled()
+    {
+        return $this->enabled;
     }
 
     /**

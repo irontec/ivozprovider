@@ -6,6 +6,7 @@ use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingRepository;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting;
 use Doctrine\Common\Collections\Criteria;
+use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 
 /**
  * Class CheckValidity
@@ -35,6 +36,11 @@ class CheckUniqueness implements CallForwardSettingLifecycleEventHandlerInterfac
      */
     public function execute(CallForwardSettingInterface $entity, $isNew)
     {
+        // Skip checks for disabled call forward setting
+        if ($entity->getEnabled() == 0) {
+            return;
+        }
+
         $callTypeFilterConditions = array(
             $entity->getCallTypeFilter()
         );
@@ -203,39 +209,20 @@ class CheckUniqueness implements CallForwardSettingLifecycleEventHandlerInterfac
      */
     protected function createConditions(CallForwardSetting $entity, $callTypeFilterConditions, $callForwardType = null)
     {
-        $criteria = Criteria::create();
-        $expressionBuilder = Criteria::expr();
 
-        $criteria
-            ->where(
-                $expressionBuilder->neq(
-                    'id',
-                    $entity->getId()
-                )
-            )
-            ->andWhere(
-                $expressionBuilder->eq(
-                    'user',
-                    $entity->getUser()
-                )
-            )
-            ->andWhere(
-                $expressionBuilder->in(
-                    'callTypeFilter',
-                    $callTypeFilterConditions
-                )
-            );
+        $criteria = [
+            ['id', 'neq', $entity->getId()],
+            ['user', 'eq', $entity->getUser()],
+            ['callTypeFilter', 'in', $callTypeFilterConditions],
+            ['enabled', 'eq', 1]
+        ];
 
         if ($callForwardType) {
-            $criteria
-                ->andWhere(
-                    $expressionBuilder->eq(
-                        'callForwardType',
-                        $callForwardType
-                    )
-                );
+            $criteria[] = [
+                'callForwardType', 'eq', $callForwardType
+            ];
         }
 
-        return $criteria;
+        return CriteriaHelper::fromArray($criteria);
     }
 }

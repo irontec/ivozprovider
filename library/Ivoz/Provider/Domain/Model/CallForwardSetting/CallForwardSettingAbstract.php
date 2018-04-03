@@ -42,6 +42,11 @@ abstract class CallForwardSettingAbstract
     protected $noAnswerTimeout = '10';
 
     /**
+     * @var boolean
+     */
+    protected $enabled = '1';
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\User\UserInterface
      */
     protected $user;
@@ -71,12 +76,14 @@ abstract class CallForwardSettingAbstract
         $callTypeFilter,
         $callForwardType,
         $targetType,
-        $noAnswerTimeout
+        $noAnswerTimeout,
+        $enabled
     ) {
         $this->setCallTypeFilter($callTypeFilter);
         $this->setCallForwardType($callForwardType);
         $this->setTargetType($targetType);
         $this->setNoAnswerTimeout($noAnswerTimeout);
+        $this->setEnabled($enabled);
     }
 
     abstract public function getId();
@@ -146,7 +153,8 @@ abstract class CallForwardSettingAbstract
             $dto->getCallTypeFilter(),
             $dto->getCallForwardType(),
             $dto->getTargetType(),
-            $dto->getNoAnswerTimeout());
+            $dto->getNoAnswerTimeout(),
+            $dto->getEnabled());
 
         $self
             ->setNumberValue($dto->getNumberValue())
@@ -179,6 +187,7 @@ abstract class CallForwardSettingAbstract
             ->setTargetType($dto->getTargetType())
             ->setNumberValue($dto->getNumberValue())
             ->setNoAnswerTimeout($dto->getNoAnswerTimeout())
+            ->setEnabled($dto->getEnabled())
             ->setUser($dto->getUser())
             ->setExtension($dto->getExtension())
             ->setVoiceMailUser($dto->getVoiceMailUser())
@@ -202,6 +211,7 @@ abstract class CallForwardSettingAbstract
             ->setTargetType(self::getTargetType())
             ->setNumberValue(self::getNumberValue())
             ->setNoAnswerTimeout(self::getNoAnswerTimeout())
+            ->setEnabled(self::getEnabled())
             ->setUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto(self::getUser(), $depth))
             ->setExtension(\Ivoz\Provider\Domain\Model\Extension\Extension::entityToDto(self::getExtension(), $depth))
             ->setVoiceMailUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto(self::getVoiceMailUser(), $depth))
@@ -219,6 +229,7 @@ abstract class CallForwardSettingAbstract
             'targetType' => self::getTargetType(),
             'numberValue' => self::getNumberValue(),
             'noAnswerTimeout' => self::getNoAnswerTimeout(),
+            'enabled' => self::getEnabled(),
             'userId' => self::getUser() ? self::getUser()->getId() : null,
             'extensionId' => self::getExtension() ? self::getExtension()->getId() : null,
             'voiceMailUserId' => self::getVoiceMailUser() ? self::getVoiceMailUser()->getId() : null,
@@ -379,6 +390,33 @@ abstract class CallForwardSettingAbstract
     public function getNoAnswerTimeout()
     {
         return $this->noAnswerTimeout;
+    }
+
+    /**
+     * Set enabled
+     *
+     * @param boolean $enabled
+     *
+     * @return self
+     */
+    public function setEnabled($enabled)
+    {
+        Assertion::notNull($enabled, 'enabled value "%s" is null, but non null value was expected.');
+        Assertion::between(intval($enabled), 0, 1, 'enabled provided "%s" is not a valid boolean value.');
+
+        $this->enabled = $enabled;
+
+        return $this;
+    }
+
+    /**
+     * Get enabled
+     *
+     * @return boolean
+     */
+    public function getEnabled()
+    {
+        return $this->enabled;
     }
 
     /**

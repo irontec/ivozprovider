@@ -138,6 +138,17 @@ production:
       source:
         class: IvozProvider_Klear_Ghost_RouteTarget
         method: getTarget
+    enabled:
+      title: _('Enabled')
+      type: select
+      defaultValue: 1
+      source:
+        data: inline
+        values:
+          '0':
+            title: _("No")
+          '1':
+            title: _("Yes")
 
 staging:
   _extends: production
