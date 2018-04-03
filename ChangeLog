@@ -1,3 +1,34 @@
+Wed, 28 Mar 2018 18:41:49 +0100 IvozProvider Team <dev@list-ivozprovider.irontec.com>
+
+    * IvozProvider 2.1 released
+
+    * Billing:
+
+      - Prepaid/Pseudoprepaid billing
+      - Basic CSV price importer
+      - Low balance notifications
+      - New section: Balances (list and increase balances)
+
+    * vPBX:
+
+      - Add route-locks as conditional route criteria
+      - Avoid missed calls setting for huntgroups
+      - Fix user-extension-mailbox trigger and logics
+      - User cfw settings can now be enabled/disabled
+
+    * Portals:
+
+      - Brand Notification templates for Voicemail/Faxes/LowBalances
+
+    * Proxies:
+
+      - Limit voice channel per brand
+      - Avoid crash when malformed request was received
+
+    * Provisioning
+
+      - Terminal provisioning services migrated to symfony
+
 Wed, 22 Nov 2017 18:58:49 +0100 IvozProvider Team <dev@list-ivozprovider.irontec.com>
 
     * IvozProvider 2.0 released
