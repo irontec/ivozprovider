@@ -161,10 +161,13 @@ class FaxCallAction extends RouterAction
                     '${FAX_PAGES}'      => $faxIn->getPages(),
             );
 
-            $templateDir = APPLICATION_PATH . "/../templates/faxmail/$template/" . $company->getLanguageCode() . "/";
+            $templateDir = APPLICATION_PATH . "/../templates/faxmail/brand" . $company->getBrandId() . "/" . $company->getLanguageCode();
+            if (!is_dir($templateDir)) {
+                $templateDir = APPLICATION_PATH . "/../templates/faxmail/$template/" . $company->getLanguageCode();
+            }
 
-            $body = file_get_contents($templateDir . "body");
-            $subject = file_get_contents($templateDir . "subject");
+            $body = file_get_contents($templateDir . "/body");
+            $subject = file_get_contents($templateDir . "/subject");
 
             foreach ($substitution as $search => $replace) {
                 $body = str_replace($search, $replace, $body);
