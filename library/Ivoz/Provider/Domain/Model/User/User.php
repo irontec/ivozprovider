@@ -406,5 +406,18 @@ class User extends UserAbstract implements UserInterface, AdvancedUserInterface,
         return parent::setEmail($email);
     }
 
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface
+     */
+    public function getTimezone()
+    {
+        $timeZone = parent::getTimezone();
+        if (!empty($timeZone)) {
+
+            return $timeZone;
+        }
+
+        return $this->getCompany()->getDefaultTimezone();
+    }
 }
 
