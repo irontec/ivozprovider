@@ -3,6 +3,7 @@ ivozprovider-asterisk:#ARCH#
 ivozprovider-asterisk-agi
 ivozprovider-asterisk-config
 ivozprovider-asterisk-sounds
+ivozprovider-balances
 ivozprovider-common-library
 ivozprovider-async-workers
 ivozprovider-doc
