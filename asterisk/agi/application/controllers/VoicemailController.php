@@ -97,9 +97,13 @@ class VoicemailController extends Zend_Controller_Action
                 '${VM_DATE}'        => $vmdata[self::VM_DATE],
             );
 
-            $templateDir = APPLICATION_PATH . "/../templates/voicemail/$template/" . $user->getLanguageCode() . "/";
-            $body = file_get_contents($templateDir . "body");
-            $subject = file_get_contents($templateDir . "subject");
+            $templateDir = APPLICATION_PATH . "/../templates/voicemail/brand" . $brand->getId() . "/" . $user->getLanguageCode();
+            if (!is_dir($templateDir)) {
+                $templateDir = APPLICATION_PATH . "/../templates/voicemail/$template/" . $user->getLanguageCode();
+            }
+
+            $body = file_get_contents($templateDir . "/body");
+            $subject = file_get_contents($templateDir . "/subject");
 
             foreach ($substitution as $search => $replace) {
                 $body = str_replace($search, $replace, $body);
