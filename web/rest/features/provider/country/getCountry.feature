@@ -35,7 +35,7 @@ Feature: Retrieve countries
               "id": 3,
               "name": {
                   "en": "Japan",
-                  "es": "Jap\u00f3n"
+                  "es": "Japón"
               }
           }
       ]

@@ -16,7 +16,7 @@ Feature: Retrieve recordings
       [
           {
               "callid": "7602fd7f-4153-4475-9100-d89ff70cdf76",
-              "calldate": "2017-01-05 00:15:15",
+              "calldate": "2017-01-05 01:15:15",
               "type": "ondemand",
               "duration": 3,
               "caller": "34946002020",
@@ -33,11 +33,11 @@ Feature: Retrieve recordings
     Then the response status code should be 200
     And the response should be in JSON
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
+    And the JSON should be like:
     """
       {
           "callid": "7602fd7f-4153-4475-9100-d89ff70cdf76",
-          "calldate": "2017-01-05 00:15:15",
+          "calldate": "2017-01-05 01:15:15",
           "type": "ondemand",
           "duration": 3,
           "caller": "34946002020",
@@ -49,39 +49,6 @@ Feature: Retrieve recordings
               "mimeType": "audio/mpeg; charset=binary",
               "baseName": "7602fd7f-4153-4475-9100-d89ff70cdf76.0.mp3"
           },
-          "company": {
-              "type": "vpbx",
-              "name": "DemoCompany",
-              "domainUsers": "127.0.0.1",
-              "nif": "12345678A",
-              "distributeMethod": "hash",
-              "maxCalls": 0,
-              "postalAddress": "Company Address",
-              "postalCode": "54321",
-              "town": "Company Town",
-              "province": "Company Province",
-              "countryName": "Company Country",
-              "ipfilter": false,
-              "onDemandRecord": 0,
-              "onDemandRecordCode": "",
-              "externallyextraopts": "",
-              "recordingsLimitMB": null,
-              "recordingsLimitEmail": "",
-              "billingMethod": "prepaid",
-              "balance": "1.2",
-              "id": 1,
-              "language": 1,
-              "mediaRelaySets": 1,
-              "defaultTimezone": 1,
-              "brand": 1,
-              "domain": 3,
-              "applicationServer": null,
-              "country": 1,
-              "transformationRuleSet": 1,
-              "outgoingDdi": null,
-              "outgoingDdiRule": null,
-              "voicemailNotificationTemplate": 1,
-              "faxNotificationTemplate": null
-          }
+          "company": "~"
       }
     """

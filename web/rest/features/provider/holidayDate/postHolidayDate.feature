@@ -12,7 +12,7 @@ Feature: Create holiday dates
     """
       {
           "name": "New",
-          "eventDate": "2017-12-21 00:00:00",
+          "eventDate": "2017-12-21",
           "calendar": 1,
           "locution": 1
       }
@@ -24,7 +24,7 @@ Feature: Create holiday dates
     """
       {
           "name": "New",
-          "eventDate": "2017-12-21 00:00:00",
+          "eventDate": "2017-12-21",
           "id": 2
       }
     """
@@ -40,7 +40,7 @@ Feature: Create holiday dates
     """
       {
           "name": "New",
-          "eventDate": "2017-12-21 00:00:00",
+          "eventDate": "2017-12-21",
           "id": 2,
           "calendar": {
               "name": "testCalendar",

@@ -32,7 +32,7 @@ Feature: Manage brands
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-      And the JSON should be like:
+      And the JSON should be equal to:
     """
       {
           "name": "DemoBrand",
@@ -55,8 +55,29 @@ Feature: Manage brands
               "country": "",
               "registryData": ""
           },
-          "domain": "~",
-          "language": "~",
-          "defaultTimezone": "~"
+          "domain": {
+              "domain": "retail.irontec.com",
+              "pointsTo": "proxyusers",
+              "description": "Irontec Test Company retail domain",
+              "id": 6
+          },
+          "language": {
+              "iden": "es",
+              "id": 1,
+              "name": {
+                  "en": "es",
+                  "es": "es"
+              }
+          },
+          "defaultTimezone": {
+              "tz": "Europe/Madrid",
+              "comment": "mainland",
+              "id": 1,
+              "label": {
+                  "en": "en",
+                  "es": "es"
+              },
+              "country": 1
+          }
       }
     """

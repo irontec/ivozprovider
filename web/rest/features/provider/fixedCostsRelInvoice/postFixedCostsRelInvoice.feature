@@ -34,8 +34,8 @@ Feature: Create fixed costs rel invoices
           },
           "invoice": {
               "number": "1",
-              "inDate": "2018-01-01 00:00:00",
-              "outDate": "2018-01-31 00:00:00",
+              "inDate": "2018-01-01 01:00:00",
+              "outDate": "2018-01-31 01:00:00",
               "total": "0.272",
               "taxRate": "21",
               "totalWithTax": "0.33",
@@ -60,36 +60,12 @@ Feature: Create fixed costs rel invoices
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-      And the JSON should be equal to:
+      And the JSON should be like:
     """
       {
           "quantity": 1,
           "id": 2,
-          "brand": {
-              "name": "Irontec_e2e",
-              "domainUsers": "sip.irontec.com",
-              "recordingsLimitMB": null,
-              "recordingsLimitEmail": null,
-              "maxCalls": 0,
-              "id": 2,
-              "logo": {
-                  "fileSize": null,
-                  "mimeType": null,
-                  "baseName": null
-              },
-              "invoice": {
-                  "nif": "",
-                  "postalAddress": "",
-                  "postalCode": "",
-                  "town": "",
-                  "province": "",
-                  "country": "",
-                  "registryData": ""
-              },
-              "domain": 4,
-              "language": 1,
-              "defaultTimezone": 1
-          },
+          "brand": "~",
           "fixedCost": {
               "name": "Monitoring",
               "description": "Something",
@@ -99,8 +75,8 @@ Feature: Create fixed costs rel invoices
           },
           "invoice": {
               "number": "1",
-              "inDate": "2018-01-01 00:00:00",
-              "outDate": "2018-01-31 00:00:00",
+              "inDate": "2018-01-01 01:00:00",
+              "outDate": "2018-01-31 01:00:00",
               "total": "0.272",
               "taxRate": "21",
               "totalWithTax": "0.33",
