@@ -50,7 +50,7 @@ class StatusAction
         if ($terminal) {
             $userLocation  = $this->usersLocationRepository->findOneBy([
                 'username' => $terminal->getName(),
-                'domain' => $company->getDomain()->getName()
+                'domain' => $company->getDomain()->getDomain()
             ]);
         }
         $extension = $user->getExtension();
