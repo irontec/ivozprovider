@@ -33,7 +33,7 @@ abstract class TpRatingPlanAbstract
      * column: timing_tag
      * @var string
      */
-    protected $timingTag;
+    protected $timingTag = '*any';
 
     /**
      * @var string
@@ -67,9 +67,10 @@ abstract class TpRatingPlanAbstract
     /**
      * Constructor
      */
-    protected function __construct($tpid, $weight, $createdAt)
+    protected function __construct($tpid, $timingTag, $weight, $createdAt)
     {
         $this->setTpid($tpid);
+        $this->setTimingTag($timingTag);
         $this->setWeight($weight);
         $this->setCreatedAt($createdAt);
     }
@@ -139,13 +140,13 @@ abstract class TpRatingPlanAbstract
 
         $self = new static(
             $dto->getTpid(),
+            $dto->getTimingTag(),
             $dto->getWeight(),
             $dto->getCreatedAt());
 
         $self
             ->setTag($dto->getTag())
             ->setDestratesTag($dto->getDestratesTag())
-            ->setTimingTag($dto->getTimingTag())
             ->setTiming($dto->getTiming())
             ->setRatingPlan($dto->getRatingPlan())
             ->setDestinationRate($dto->getDestinationRate())
@@ -314,11 +315,10 @@ abstract class TpRatingPlanAbstract
      *
      * @return self
      */
-    public function setTimingTag($timingTag = null)
+    public function setTimingTag($timingTag)
     {
-        if (!is_null($timingTag)) {
-            Assertion::maxLength($timingTag, 64, 'timingTag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        }
+        Assertion::notNull($timingTag, 'timingTag value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($timingTag, 64, 'timingTag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->timingTag = $timingTag;
 
@@ -399,7 +399,7 @@ abstract class TpRatingPlanAbstract
      *
      * @return self
      */
-    public function setTiming(\Ivoz\Cgr\Domain\Model\TpTiming\TpTimingInterface $timing)
+    public function setTiming(\Ivoz\Cgr\Domain\Model\TpTiming\TpTimingInterface $timing = null)
     {
         $this->timing = $timing;
 
