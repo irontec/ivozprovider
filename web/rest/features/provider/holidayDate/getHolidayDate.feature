@@ -16,7 +16,7 @@ Feature: Retrieve holiday dates
       [
           {
               "name": "Name",
-              "eventDate": "2021-12-21 00:00:00",
+              "eventDate": "2021-12-21",
               "id": 1
           }
       ]
@@ -33,7 +33,7 @@ Feature: Retrieve holiday dates
     """
       {
           "name": "Name",
-          "eventDate": "2021-12-21 00:00:00",
+          "eventDate": "2021-12-21",
           "id": 1,
           "calendar": {
               "name": "testCalendar",

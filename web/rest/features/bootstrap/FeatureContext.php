@@ -37,28 +37,6 @@ class FeatureContext implements Context, SnippetAcceptingContext
     }
 
     /**
-     * @BeforeScenario @createSchema
-     */
-    public function resetDatabase()
-    {
-        $this->dropDatabase();
-        $this->fs->copy(
-            $this->cacheDir . DIRECTORY_SEPARATOR . 'db.sqlite.back',
-            $this->cacheDir . DIRECTORY_SEPARATOR . '/db.sqlite'
-        );
-    }
-
-    /**
-     * @AfterScenario @dropSchema
-     */
-    public function dropDatabase()
-    {
-        $this->fs->remove(
-            $this->cacheDir . DIRECTORY_SEPARATOR . 'db.sqlite'
-        );
-    }
-
-    /**
      * @Given I add Authorization header
      */
     public function setAuthorizationHeader()
@@ -81,4 +59,25 @@ class FeatureContext implements Context, SnippetAcceptingContext
         $this->request->setHttpHeader('Authorization', 'Bearer ' . ($data->token ?? null));
     }
 
+    /**
+     * @BeforeScenario @createSchema
+     */
+    public function resetDatabase()
+    {
+        $this->dropDatabase();
+        $this->fs->copy(
+            $this->cacheDir . DIRECTORY_SEPARATOR . 'db.sqlite.back',
+            $this->cacheDir . DIRECTORY_SEPARATOR . '/db.sqlite'
+        );
+    }
+
+    /**
+     * @AfterScenario @dropSchema
+     */
+    public function dropDatabase()
+    {
+        $this->fs->remove(
+            $this->cacheDir . DIRECTORY_SEPARATOR . 'db.sqlite'
+        );
+    }
 }

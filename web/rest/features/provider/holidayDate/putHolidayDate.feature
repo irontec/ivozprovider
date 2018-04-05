@@ -12,7 +12,7 @@ Feature: Update holiday dates
     """
       {
           "name": "UpdatedName",
-          "eventDate": "2021-12-22 00:00:00",
+          "eventDate": "2021-12-22",
           "calendar": 2,
           "locution": 1
       }
@@ -24,7 +24,7 @@ Feature: Update holiday dates
     """
       {
           "name": "UpdatedName",
-          "eventDate": "2021-12-22 00:00:00",
+          "eventDate": "2021-12-22",
           "id": 1,
           "calendar": {
               "name": "testCalendar2",

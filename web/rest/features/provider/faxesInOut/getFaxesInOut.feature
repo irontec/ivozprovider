@@ -15,7 +15,7 @@ Feature: Retrieve faxes in outs
     """
       [
           {
-              "calldate": "2018-01-01 00:00:00",
+              "calldate": "2018-01-01 01:00:00",
               "src": "34688888888",
               "dst": "34688888881",
               "type": "In",
@@ -35,7 +35,7 @@ Feature: Retrieve faxes in outs
     And the JSON should be equal to:
     """
       {
-          "calldate": "2018-01-01 00:00:00",
+          "calldate": "2018-01-01 01:00:00",
           "src": "34688888888",
           "dst": "34688888881",
           "type": "In",

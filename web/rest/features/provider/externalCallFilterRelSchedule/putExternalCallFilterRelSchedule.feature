@@ -42,8 +42,8 @@ Feature: Update external call filter rel schedules
           },
           "schedule": {
               "name": "anotherSchedule",
-              "timeIn": "1970-01-01 08:00:00",
-              "timeout": "1970-01-01 16:00:00",
+              "timeIn": "08:00:00",
+              "timeout": "16:00:00",
               "monday": true,
               "tuesday": true,
               "wednesday": true,

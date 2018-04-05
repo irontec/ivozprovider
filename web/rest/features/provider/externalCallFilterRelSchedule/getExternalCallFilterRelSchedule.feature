@@ -36,8 +36,8 @@ Feature: Retrieve external call filter rel schedules
               },
               "schedule": {
                   "name": "aSchedule",
-                  "timeIn": "1970-01-01 08:00:00",
-                  "timeout": "1970-01-01 16:00:00",
+                  "timeIn": "08:00:00",
+                  "timeout": "16:00:00",
                   "monday": true,
                   "tuesday": true,
                   "wednesday": true,
@@ -49,7 +49,7 @@ Feature: Retrieve external call filter rel schedules
                   "company": 1
               }
           }
-       ]
+      ]
     """
 
   Scenario: Retrieve certain external call filter rel schedule json
@@ -83,8 +83,8 @@ Feature: Retrieve external call filter rel schedules
           },
           "schedule": {
               "name": "aSchedule",
-              "timeIn": "1970-01-01 08:00:00",
-              "timeout": "1970-01-01 16:00:00",
+              "timeIn": "08:00:00",
+              "timeout": "16:00:00",
               "monday": true,
               "tuesday": true,
               "wednesday": true,

@@ -159,7 +159,7 @@ interface BrandInterface extends LoggableEntityInterface
      *
      * @return self
      */
-    public function setDefaultTimezone(\Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface $defaultTimezone = null);
+    public function setDefaultTimezone(\Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface $defaultTimezone);
 
     /**
      * Get defaultTimezone

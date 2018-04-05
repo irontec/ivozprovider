@@ -23,7 +23,8 @@ Feature: Manage brands
           "province": "Bizkaia",
           "country": "Spain",
           "registryData": "registryData"
-        }
+        },
+        "defaultTimezone": 1
       }
     """
     Then the response status code should be 201
@@ -74,6 +75,15 @@ Feature: Manage brands
               "id": 7
           },
           "language": null,
-          "defaultTimezone": null
+          "defaultTimezone": {
+              "tz": "Europe/Madrid",
+              "comment": "mainland",
+              "id": 1,
+              "label": {
+                  "en": "en",
+                  "es": "es"
+              },
+              "country": 1
+          }
       }
     """

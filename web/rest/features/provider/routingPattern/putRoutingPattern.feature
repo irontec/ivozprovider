@@ -33,7 +33,7 @@ Feature: Update routing patterns
           "id": 1,
           "name": {
               "en": "englishName",
-              "es": "nombreEspa\u00f1ol"
+              "es": "nombreEspañol"
           },
           "description": {
               "en": "en",

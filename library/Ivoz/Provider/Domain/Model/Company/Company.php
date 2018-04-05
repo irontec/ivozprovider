@@ -382,5 +382,19 @@ class Company extends CompanyAbstract implements CompanyInterface
         return '';
     }
 
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface
+     */
+    public function getDefaultTimezone()
+    {
+        $timeZone = parent::getDefaultTimezone();
+        if (!empty($timeZone)) {
+
+            return $timeZone;
+        }
+
+        return $this->getBrand()->getDefaultTimezone();
+    }
 }
 

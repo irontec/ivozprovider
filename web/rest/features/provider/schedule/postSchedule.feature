@@ -12,8 +12,8 @@ Feature: Create schedules
     """
       {
           "name": "schedule 3",
-          "timeIn": "1986-01-01 08:00:00",
-          "timeout": "1986-01-01 16:00:00",
+          "timeIn": "09:00:00",
+          "timeout": "17:00:00",
           "monday": true,
           "tuesday": true,
           "wednesday": true,
@@ -31,8 +31,8 @@ Feature: Create schedules
     """
       {
           "name": "schedule 3",
-          "timeIn": "1986-01-01 08:00:00",
-          "timeout": "1986-01-01 16:00:00",
+          "timeIn": "09:00:00",
+          "timeout": "17:00:00",
           "monday": true,
           "tuesday": true,
           "wednesday": true,
@@ -51,12 +51,12 @@ Feature: Create schedules
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-      And the JSON should be equal to:
+      And the JSON should be like:
     """
       {
           "name": "schedule 3",
-          "timeIn": "1970-01-01 08:00:00",
-          "timeout": "1970-01-01 16:00:00",
+          "timeIn": "09:00:00",
+          "timeout": "17:00:00",
           "monday": true,
           "tuesday": true,
           "wednesday": true,
@@ -65,39 +65,6 @@ Feature: Create schedules
           "saturday": false,
           "sunday": false,
           "id": 3,
-          "company": {
-              "type": "vpbx",
-              "name": "Irontec Test Company",
-              "domainUsers": "test.irontec.com",
-              "nif": "12345678-Z",
-              "distributeMethod": "hash",
-              "maxCalls": 0,
-              "postalAddress": "Postal address",
-              "postalCode": "PC",
-              "town": "Town",
-              "province": "Province",
-              "countryName": "Country",
-              "ipfilter": true,
-              "onDemandRecord": 0,
-              "onDemandRecordCode": "",
-              "externallyextraopts": null,
-              "recordingsLimitMB": null,
-              "recordingsLimitEmail": null,
-              "billingMethod": "postpaid",
-              "balance": "0",
-              "id": 2,
-              "language": 1,
-              "mediaRelaySets": 1,
-              "defaultTimezone": 1,
-              "brand": 1,
-              "domain": 5,
-              "applicationServer": null,
-              "country": 1,
-              "transformationRuleSet": 1,
-              "outgoingDdi": null,
-              "outgoingDdiRule": null,
-              "voicemailNotificationTemplate": 1,
-              "faxNotificationTemplate": null
-          }
+          "company": "~"
       }
     """
