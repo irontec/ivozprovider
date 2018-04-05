@@ -18,7 +18,7 @@ production:
           tag: true
           name: true
           description: true
-        blacklist:
+        blacklist: &tpRatingPlans_blacklistLink
           timingId: true
         options:
           title: _("Options")
@@ -42,13 +42,15 @@ production:
       multiInstance: true
       title: _("Add %s", ngettext('Rating plan', 'Rating plans', 1), "[format| (%parent%)]")
       shortcutOption: N
-      fixedPositions:
+      fields:
+        blacklist:
+          <<: *tpRatingPlans_blacklistLink
+      fixedPositions: &tpRatingPlans_fixedPositionsLink
         group1:
-          colsPerRow: 9
+          colsPerRow: 4
           fields:
             destinationRateId: 3
-            weight: 3
-            timingId: 3
+            weight: 1
 
     tpRatingPlansEdit_screen: &tpRatingPlansEdit_screenLink
       <<: *TpRatingPlans
@@ -56,13 +58,11 @@ production:
       class: ui-silk-pencil
       label: false
       title: _("Edit %s %2s", ngettext('Rating plan', 'Rating plans', 1), "[format| (%item%)]")
+      fields:
+        blacklist:
+          <<: *tpRatingPlans_blacklistLink
       fixedPositions:
-        group1:
-          colsPerRow: 9
-          fields:
-            destinationRateId: 3
-            weight: 3
-            timingId: 3
+        <<: *tpRatingPlans_fixedPositionsLink
 
   dialogs: &tpRatingPlans_dialogsLink
     tpRatingPlansDel_dialog: &tpRatingPlansDel_dialogLink
