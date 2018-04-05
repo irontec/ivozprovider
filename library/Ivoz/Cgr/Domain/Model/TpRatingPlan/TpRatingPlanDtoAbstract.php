@@ -30,7 +30,7 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $timingTag;
+    private $timingTag = '*any';
 
     /**
      * @var string

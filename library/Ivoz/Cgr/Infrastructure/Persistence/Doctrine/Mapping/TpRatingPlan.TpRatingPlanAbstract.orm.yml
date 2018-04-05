@@ -38,10 +38,11 @@ Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanAbstract:
       column: destrates_tag
     timingTag:
       type: string
-      nullable: true
+      nullable: false
       length: 64
       options:
         fixed: false
+        default: '*any'
       column: timing_tag
     weight:
       type: decimal
@@ -90,7 +91,7 @@ Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanAbstract:
       inversedBy: null
       joinColumns:
         timingId:
-          nullable: false
+          nullable: true
           referencedColumnName: id
-          onDelete: cascade
+          onDelete: set null
       orphanRemoval: false
