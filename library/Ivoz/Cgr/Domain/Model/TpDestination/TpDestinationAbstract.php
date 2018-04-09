@@ -29,15 +29,20 @@ abstract class TpDestinationAbstract
     protected $prefix;
 
     /**
+     * @var string
+     */
+    protected $name;
+
+    /**
      * column: created_at
      * @var \DateTime
      */
     protected $createdAt;
 
     /**
-     * @var \Ivoz\Cgr\Domain\Model\Destination\DestinationInterface
+     * @var \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface
      */
-    protected $destination;
+    protected $tpDestinationRate;
 
 
     use ChangelogTrait;
@@ -122,7 +127,8 @@ abstract class TpDestinationAbstract
 
         $self
             ->setTag($dto->getTag())
-            ->setDestination($dto->getDestination())
+            ->setName($dto->getName())
+            ->setTpDestinationRate($dto->getTpDestinationRate())
         ;
 
         $self->sanitizeValues();
@@ -146,8 +152,9 @@ abstract class TpDestinationAbstract
             ->setTpid($dto->getTpid())
             ->setTag($dto->getTag())
             ->setPrefix($dto->getPrefix())
+            ->setName($dto->getName())
             ->setCreatedAt($dto->getCreatedAt())
-            ->setDestination($dto->getDestination());
+            ->setTpDestinationRate($dto->getTpDestinationRate());
 
 
 
@@ -165,8 +172,9 @@ abstract class TpDestinationAbstract
             ->setTpid(self::getTpid())
             ->setTag(self::getTag())
             ->setPrefix(self::getPrefix())
+            ->setName(self::getName())
             ->setCreatedAt(self::getCreatedAt())
-            ->setDestination(\Ivoz\Cgr\Domain\Model\Destination\Destination::entityToDto(self::getDestination(), $depth));
+            ->setTpDestinationRate(\Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRate::entityToDto(self::getTpDestinationRate(), $depth));
     }
 
     /**
@@ -178,8 +186,9 @@ abstract class TpDestinationAbstract
             'tpid' => self::getTpid(),
             'tag' => self::getTag(),
             'prefix' => self::getPrefix(),
+            'name' => self::getName(),
             'created_at' => self::getCreatedAt(),
-            'destinationId' => self::getDestination() ? self::getDestination()->getId() : null
+            'tpDestinationRateId' => self::getTpDestinationRate() ? self::getTpDestinationRate()->getId() : null
         ];
     }
 
@@ -269,6 +278,34 @@ abstract class TpDestinationAbstract
     }
 
     /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return self
+     */
+    public function setName($name = null)
+    {
+        if (!is_null($name)) {
+            Assertion::maxLength($name, 64, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        }
+
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
      * Set createdAt
      *
      * @param \DateTime $createdAt
@@ -299,27 +336,27 @@ abstract class TpDestinationAbstract
     }
 
     /**
-     * Set destination
+     * Set tpDestinationRate
      *
-     * @param \Ivoz\Cgr\Domain\Model\Destination\DestinationInterface $destination
+     * @param \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface $tpDestinationRate
      *
      * @return self
      */
-    public function setDestination(\Ivoz\Cgr\Domain\Model\Destination\DestinationInterface $destination = null)
+    public function setTpDestinationRate(\Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface $tpDestinationRate)
     {
-        $this->destination = $destination;
+        $this->tpDestinationRate = $tpDestinationRate;
 
         return $this;
     }
 
     /**
-     * Get destination
+     * Get tpDestinationRate
      *
-     * @return \Ivoz\Cgr\Domain\Model\Destination\DestinationInterface
+     * @return \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface
      */
-    public function getDestination()
+    public function getTpDestinationRate()
     {
-        return $this->destination;
+        return $this->tpDestinationRate;
     }
 
 
