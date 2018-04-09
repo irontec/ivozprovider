@@ -2,12 +2,12 @@
 
 namespace Ivoz\Provider\Domain\Service\Invoice;
 
-use Ivoz\Cgr\Domain\Model\Destination\DestinationRepository;
 use Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanDto;
 use Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanRepository;
 use Ivoz\Cgr\Domain\Model\TpCdr\TpCdr;
 use Ivoz\Cgr\Domain\Model\TpCdr\TpCdrInterface;
 use Ivoz\Cgr\Domain\Model\TpCdr\TpCdrRepository;
+use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationRepository;
 use Ivoz\Core\Application\Service\Assembler\DtoAssembler;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrRepository;
@@ -48,9 +48,9 @@ class Generator
     protected $ratingPlanRepository;
 
     /**
-     * @var DestinationRepository
+     * @var TpDestinationRepository
      */
-    protected $destinationRepository;
+    protected $tpDestinationRepository;
 
     /**
      * @var DtoAssembler
@@ -93,7 +93,7 @@ class Generator
         $this->trunksCdrRepository = $trunksCdrRepository;
         $this->tpCdrRepository = $tpCdrRepository;
         $this->ratingPlanRepository = $ratingPlanRepository;
-        $this->destinationRepository = $destinationRepository;
+        $this->tpDestinationRepository = $destinationRepository;
         $this->dtoAssembler = $dtoAssembler;
         $this->logger = $logger;
         $this->vendorDir = $vendorDir;
@@ -299,12 +299,12 @@ class Generator
                     // -----------------
 
                     $matchedDestTag = $timespan['MatchedDestId'];
-                    $destination = $this->destinationRepository->findOneByTag($matchedDestTag);
+                    $destination = $this->tpDestinationRepository->findOneByTag($matchedDestTag);
                     $destinationDto = $this->dtoAssembler->toDto($destination);
 
                     $callData['targetPattern'] = $destinationDto->toArray();
-                    $callData['targetPattern']['name'] = $destination->getName()->{'get' . $lang}();
-                    $callData['targetPattern']['description'] = $destination->getDescription()->{'get' . $lang}();
+                    $callData['targetPattern']['name'] = $destination->getName();
+                    $callData['targetPattern']['description'] = $destination->getName();
 
                 }  else if ($call->getDestinationRate()) {
 
@@ -322,8 +322,8 @@ class Generator
                     $destinationDto = $this->dtoAssembler->toDto($destination);
 
                     $callData['targetPattern'] = $destinationDto->toArray();
-                    $callData['targetPattern']['name'] = $destination->getName()->{'get' . $lang}();
-                    $callData['targetPattern']['description'] = $destination->getDescription()->{'get' . $lang}();
+                    $callData['targetPattern']['name'] = $destination->getName();
+                    $callData['targetPattern']['description'] = $destination->getName();
 
                 } else {
 
