@@ -1,7 +1,9 @@
 <?php
-class ImportCustomFileController extends Zend_Controller_Action
-{
 
+use \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRate;
+
+class ImportTpDestinationRatesCustomFileController extends Zend_Controller_Action
+{
     protected $_mainRouter;
     protected $_item;
     protected $_pk;
@@ -23,11 +25,6 @@ class ImportCustomFileController extends Zend_Controller_Action
             "title" => "Destination Name",
             "required" => true,
             "help" => "Rate Name",
-        ),
-        "destinationDescription" => array(
-            "title" => "Destination Description",
-            "required" => true,
-            "help" => "",
         ),
         "destinationPrefix" => array(
             "title" => "Prefix",
@@ -224,7 +221,6 @@ class ImportCustomFileController extends Zend_Controller_Action
         $help.= '</ul></div>';
         $table = $help . '<div class="tableBox"><table class="kMatrix parsedValues">';
         $table.= "<tr>";
-        $idx = 0;
 
         $lineLength = count($lines[0]);
         $availableFieldsKeys = array_keys($this->_availableFields);
@@ -279,10 +275,6 @@ class ImportCustomFileController extends Zend_Controller_Action
         }
         $form .= '<label><input type="checkbox" name="ingoreFirst" '.$checked.'/> ' . $this->_helper->translate("Ignore first line.").'</label>';
         $update = $this->getRequest()->getParam("update", null);
-        $checked = '';
-        if (!is_null($update) && $update == "on") {
-            $checked = 'checked="checked"';
-        }
         $form .= '';
 
         return $form;
@@ -300,6 +292,17 @@ class ImportCustomFileController extends Zend_Controller_Action
             return;
         }
 
+
+        $tempFileSystemNamespace = new Zend_Session_Namespace('File_Controller');
+        $tempFileIterator = $tempFileSystemNamespace->getIterator();
+
+        $uploadedFileInfo = $tempFileIterator->offsetGet(basename($filePath));
+
+        if (!array_key_exists('basename', $uploadedFileInfo)) {
+            throw new \Exception('File basename not found');
+        }
+
+
         $form = $this->_buildForm($lines);
         $data = array(
             'title' => $this->_helper->translate("Import file"),
@@ -313,7 +316,8 @@ class ImportCustomFileController extends Zend_Controller_Action
                     'recall' => true,
                     'params' => array(
                         "step" => 'process_confirm',
-                        "filePath" => $filePath
+                        "filePath" => $filePath,
+                        "fileName" => $uploadedFileInfo['basename']
                     )
                 ),
             )
@@ -323,20 +327,43 @@ class ImportCustomFileController extends Zend_Controller_Action
 
     protected function _enqueImport()
     {
-        $jobData = $this->getRequest()->getParams();
-        $dstFilePath = "/opt/irontec/ivozprovider/storage" . $jobData['filePath'];
-        copy($jobData['filePath'], $dstFilePath);
-        $jobData["filePath"] = $dstFilePath;
-        $jobData["delimiter"] = $this->_delimiter;
-        $jobData["enclosure"] = $this->_enclosure;
-        $jobData["scape"] = $this->_scape;
-        $jobData["forcedValues"] = $this->_forcedValues;
+        /** @var \Ivoz\Core\Application\Service\DataGateway $dataGateway */
+        $dataGateway = Zend_Registry::get('data_gateway');
 
-        $importJob = \Zend_Registry::get("rates_importer_job");
-        $importJob->setParams($jobData)->send();
+        /** @var \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateDto $destinationRateDto */
+        $destinationRateDto = $dataGateway->find(
+            DestinationRate::class,
+            $this->getRequest()->getParam("pk")
+        );
+
+        if (!$destinationRateDto) {
+            throw new \Exception('Destination rate not found');
+        }
+
+        $importerArguments = [];
+        $importerArguments["ignoreFirst"] = $this->getRequest()->getParam('ingoreFirst') == 'on';
+        $importerArguments["delimiter"] = $this->_delimiter;
+        $importerArguments["enclosure"] = $this->_enclosure;
+        $importerArguments["scape"] = $this->_scape;
+        $importerArguments["columns"] = $this->getColumns();
+
+        $destinationRateDto
+            ->setFilePath(
+                $this->getRequest()->getParam('filePath')
+            )
+            ->setFileBaseName(
+                $this->getRequest()->getParam('fileName')
+            )
+            ->setFileImporterArguments(
+                $importerArguments
+            );
+
+        $dataGateway->update(
+            DestinationRate::class,
+            $destinationRateDto
+        );
 
         $mess = $this->_helper->translate("Import process enqueued");
-        //$message = sprintf($mess, $jobToken);
 
         $data = array (
             'title' => $this->_helper->translate("Import file"),
@@ -351,13 +378,26 @@ class ImportCustomFileController extends Zend_Controller_Action
         $this->_dispatch($data);
     }
 
+    private function getColumns()
+    {
+        $reqParams = $this->_request->getParams();
+        $columnPrefix = 'field_';
+        $columns = [];
+
+        foreach ($reqParams as $name => $value) {
+            if ($columnPrefix !== substr($name, 0, strlen($columnPrefix))) {
+                continue;
+            }
+
+            $columns[] = $value;
+        }
+
+        return $columns;
+    }
+
     protected function _checkFields()
     {
-        $error = array();
-        $success = array();
         $filePath = $this->getRequest()->getParam('filePath');
-        $ignoreFirst = $this->getRequest()->getParam('ingoreFirst');
-        $conf = array();
 
         $lines = $this->_parseFile($filePath, 1);
         $fileFields = count($lines[0]);

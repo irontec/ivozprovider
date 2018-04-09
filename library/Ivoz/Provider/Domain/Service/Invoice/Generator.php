@@ -67,12 +67,24 @@ class Generator
      */
     protected $vendorDir;
 
+    /**
+     * Generator constructor.
+     *
+     * @param InvoiceRepository $invoiceRepository
+     * @param TrunksCdrRepository $trunksCdrRepository
+     * @param TpCdrRepository $tpCdrRepository
+     * @param RatingPlanRepository $ratingPlanRepository
+     * @param TpDestinationRepository $destinationRepository
+     * @param DtoAssembler $dtoAssembler
+     * @param Logger $logger
+     * @param string $vendorDir
+     */
     public function __construct(
         InvoiceRepository $invoiceRepository,
         TrunksCdrRepository $trunksCdrRepository,
         TpCdrRepository $tpCdrRepository,
         RatingPlanRepository $ratingPlanRepository,
-        DestinationRepository $destinationRepository,
+        TpDestinationRepository $destinationRepository,
         DtoAssembler $dtoAssembler,
         Logger $logger,
         string $vendorDir
