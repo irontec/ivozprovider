@@ -24,8 +24,8 @@ class Version20180308171319 extends AbstractMigration
             $this->connection->query('DELETE FROM changelog WHERE change_number = 78')->execute();
             return;
         }
-        $this->addSql("ALTER TABLE Brands ADD max_calls int(10) unsigned NOT NULL DEFAULT '0'");
-        $this->addSql("ALTER TABLE Companies CHANGE externalmaxcalls max_calls int(10) unsigned NOT NULL DEFAULT '0'");
+        $this->addSql("ALTER TABLE Brands ADD maxCalls int(10) unsigned NOT NULL DEFAULT '0'");
+        $this->addSql("ALTER TABLE Companies CHANGE externalmaxcalls maxCalls int(10) unsigned NOT NULL DEFAULT '0'");
     }
 
     /**
@@ -36,7 +36,7 @@ class Version20180308171319 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE Brands DROP max_calls');
-        $this->addSql('ALTER TABLE Companies CHANGE max_calls externalMaxCalls INT UNSIGNED DEFAULT 0 NOT NULL');
+        $this->addSql('ALTER TABLE Brands DROP maxCalls');
+        $this->addSql('ALTER TABLE Companies CHANGE maxCalls externalMaxCalls INT UNSIGNED DEFAULT 0 NOT NULL');
     }
 }
