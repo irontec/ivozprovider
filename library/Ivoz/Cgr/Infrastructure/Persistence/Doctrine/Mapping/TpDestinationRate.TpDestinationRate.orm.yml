@@ -11,6 +11,13 @@ Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRate:
       id: true
       generator:
         strategy: IDENTITY
+  oneToOne:
+    tpDestination:
+      targetEntity: Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface
+      mappedBy: tpDestinationRate
+    tpRate:
+      targetEntity: Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface
+      mappedBy: tpDestinationRate
   lifecycleCallbacks:
     postLoad:
       - initChangelog
