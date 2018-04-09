@@ -32,6 +32,44 @@ production:
             template: '%name%'
           order:
             Brand.name: asc
+    file:
+      title: _('Imported file')
+      type: file
+      source:
+        data: fso
+        size_limit: 20M
+        options:
+          hiddenName: false
+          download:
+            external: true
+            type: command
+            target: destinationRatesFileDownload_command
+            icon: ui-silk-bullet-disk
+            title: _("Download file")
+            onNull: hide
+          delete:
+            type: setNullFso
+            icon: ui-silk-bin
+            title: _("Delete file")
+            onNull: hide
+      options:
+        commands:
+          destinationRatesFileDownload_command: true
+    status:
+      title: _('Importer status')
+      type: select
+      readonly: true
+      source:
+        data: inline
+        values:
+          'waiting':
+            title: _("Waiting")
+          'inProgress':
+            title: _("In progress")
+          'imported':
+            title: _("Imported")
+          'error':
+            title: _("Error")
 staging: 
   _extends: production
 testing:

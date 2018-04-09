@@ -11,7 +11,7 @@ production:
       pagination:
         items: 25
       <<: *TpDestinationRates
-      class: ui-silk-page-find
+      class: ui-silk-money-euro
       title: _("List of %s %2s", ngettext('Destination rate', 'Destination rates', 0), "[format| (%parent%)]")
       fields: &tpDestinationRates_fieldsLink
         order:
@@ -40,12 +40,19 @@ production:
       multiInstance: true
       title: _("Add %s", ngettext('Destination rate', 'Destination rates', 1), "[format| (%parent%)]")
       shortcutOption: N
-      fixedPositions:
+      fixedPositions: &tpDestinationRates_fixedPositionsLink
         group1:
           colsPerRow: 9
           fields:
-            destinationId: 4
-            rateId: 5
+            destination.prefix: 4
+            destination.prefixName: 5
+        group2:
+          colsPerRow: 6
+          fields:
+            rate.connectFee: 3
+            rate.groupIntervalStart: 3
+            rate.cost: 3
+            rate.rateIncrement: 3
 
     tpDestinationRatesEdit_screen: &tpDestinationRatesEdit_screenLink
       <<: *TpDestinationRates
@@ -54,11 +61,7 @@ production:
       label: false
       title: _("Edit %s %2s", ngettext('Destination rate', 'Destination rates', 1), "[format| (%item%)]")
       fixedPositions:
-        group1:
-          colsPerRow: 9
-          fields:
-            destinationId: 4
-            rateId: 5
+        <<: *tpDestinationRates_fixedPositionsLink
 
   dialogs: &tpDestinationRates_dialogsLink
     tpDestinationRatesDel_dialog: &tpDestinationRatesDel_dialogLink
