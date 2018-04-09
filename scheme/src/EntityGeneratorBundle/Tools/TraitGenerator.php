@@ -828,6 +828,16 @@ public function <methodName>(<criteriaArgument>)
                     );
                 }
             }
+
+            if ($associationMapping['type'] & ClassMetadataInfo::TO_ONE) {
+                if ($code = $this->generateEntityStubMethod($metadata, 'set', $associationMapping['fieldName'], $associationMapping['targetEntity'])) {
+                    $methods[] = $code;
+                }
+
+                if ($code = $this->generateEntityStubMethod($metadata, 'get', $associationMapping['fieldName'], $associationMapping['targetEntity'])) {
+                    $methods[] = $code;
+                }
+            }
         }
 
         $response = array_merge($methods, $parentMethods);
@@ -910,7 +920,7 @@ public function <methodName>(<criteriaArgument>)
             }
 
             if ($associationMapping['type'] & ClassMetadataInfo::TO_ONE) {
-                $nullable = $this->isAssociationIsNullable($associationMapping) ? 'null' : null;
+                $nullable = $this->isAssociationNullable($associationMapping) ? 'null' : null;
 
                 if ($code = $this->generateEntityStubMethod($metadata, 'set', $associationMapping['fieldName'], $associationMapping['targetEntity'], $nullable)) {
                     $methods[] = $code;
@@ -956,9 +966,9 @@ public function <methodName>(<criteriaArgument>)
             ? 'protected'
             : 'public';
 
-        if (array_key_exists($fieldName, $metadata->fieldMappings)) {
-            $currentField = (object) $metadata->fieldMappings[$fieldName];
-            $isNullable = isset($currentField->nullable) && $currentField->nullable;
+        if (array_key_exists($fieldName, $metadata->associationMappings)) {
+            $currentField = (object) $metadata->associationMappings[$fieldName];
+            $isNullable = !$currentField->isOwningSide;
         }
 
         if (is_null($defaultValue) && $isNullable) {
@@ -978,117 +988,11 @@ public function <methodName>(<criteriaArgument>)
         $parentResponse = parent::generateEntityStubMethod($metadata, $type, $fieldName, $typeHint,  $defaultValue);
         $parentResponse = str_replace('(\\' . $metadata->namespace . '\\', '(', $parentResponse);
 
-        $assertions = [];
-
-        if ($currentField) {
-            $comment = '';
-            if (isset($currentField->options) && isset($currentField->options['comment'])) {
-                $comment = $currentField->options['comment'];
-            }
-
-            $spaces = '';
-            if ($isNullable) {
-                $spaces = str_repeat(' ', 4);
-            }
-
-            if (!$isNullable) {
-                $assertions[] = $spaces . AssertionGenerator::notNull($fieldName);
-            } else {
-                $assertions[] = 'if (!is_null($' . $fieldName . ')) {';
-            }
-
-            if (in_array($currentField->type, ['boolean'])) {
-                $assertions = array_merge(
-                    $assertions,
-                    [$spaces . AssertionGenerator::boolean($currentField->fieldName)]
-                );
-            }
-
-            $arraySpacerFn = function ($value) use ($spaces) {
-                return str_repeat($spaces, 1) . $value;
-            };
-
-            if (in_array($currentField->type, ['datetime'])) {
-
-                $integerAssertions = array_map(
-                    $arraySpacerFn,
-                    $this->getIntegerAssertions($currentField)
-                );
-
-                $call = '$var = \\Ivoz\\Core\\Domain\\Model\Helper\\DateTimeHelper::createOrFix('
-                    . "\n" . $this->spaces
-                    .'$var,'
-                    . "\n" . $this->spaces
-                    . '$default'
-                    . "\n"
-                    .');';
-
-                $defaultValue = (isset($currentField->options) && \array_key_exists('default', $currentField->options))
-                    ? var_export($currentField->options['default'], true)
-                    : "null";
-
-                $assertions[] = str_replace(
-                    ['$var', '$default'],
-                    ['$' . $currentField->fieldName, $defaultValue],
-                    $call
-                );
-            }
-
-            if (in_array($currentField->type, ['smallint', 'integer', 'bigint'])) {
-
-                $integerAssertions = $this->getIntegerAssertions($currentField);
-                $integerAssertions = array_map($arraySpacerFn, $integerAssertions);
-
-                $assertions = array_merge(
-                    $assertions,
-                    $integerAssertions
-                );
-            }
-
-            if (in_array($currentField->type, ['decimal', 'float'])) {
-                $floatAssertions = $this->getFloatAssertions($currentField);
-                $floatAssertions = array_map($arraySpacerFn, $floatAssertions);
-
-                $assertions = array_merge(
-                    $assertions,
-                    $floatAssertions
-                );
-            }
-
-            if (in_array($currentField->type, ['string', 'text'])) {
-                $stringAssertions = $this->getStringAssertions($currentField);
-                $stringAssertions = array_map($arraySpacerFn, $stringAssertions);
-                $assertions = array_merge(
-                    $assertions,
-                    $stringAssertions
-                );
-            }
-
-            if (preg_match('/\[enum:(?P<fieldValues>.+)\]/', $comment, $matches)) {
-                $acceptedValues = explode('|', $matches['fieldValues']);
-
-                $assertions[] = AssertionGenerator::choice(
-                    $currentField->fieldName,
-                    $acceptedValues
-                );
-            }
-
-            if ($isNullable) {
-                $assertions[] = '}';
-            }
-        }
-
-        if (!empty($assertions)) {
-            $assertions = $this->prefixCodeWithSpaces(implode("\n", $assertions), 2);
-            $assertions = $assertions . "\n\n". str_repeat($this->spaces, 2);
-        } else {
-            $assertions =  str_repeat($this->spaces, 2);
-        }
-
         $replacements = array(
-            $this->spaces . '<assertions>' => $assertions,
+            '<assertions>' => $this->spaces,
             '<visibility>' => $visibility
         );
+
 
         if ($type == 'replace') {
             $replacements['<addRel>'] = Inflector::singularize(
