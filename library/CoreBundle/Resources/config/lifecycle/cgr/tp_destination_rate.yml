@@ -19,3 +19,16 @@ services:
     tags:
       - { name: cgr.lifecycle.tp_destination_rate.post_persist, priority: 10}
 
+  Ivoz\Cgr\Domain\Service\TpDestination\CreatedByTpDestinationRate:
+    tags:
+      - { name: cgr.lifecycle.tp_destination_rate.post_persist, priority: 20}
+    arguments:
+      $entityPersister:
+        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
+
+  Ivoz\Cgr\Domain\Service\TpRate\CreatedByTpDestinationRate:
+    tags:
+      - { name: cgr.lifecycle.tp_destination_rate.post_persist, priority: 30}
+    arguments:
+      $entityPersister:
+        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'

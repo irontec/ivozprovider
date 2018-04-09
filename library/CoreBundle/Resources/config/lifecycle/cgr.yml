@@ -1,10 +1,6 @@
 imports:
-  - { resource: "@CoreBundle/Resources/config/lifecycle/cgr/destination.yml" }
   - { resource: "@CoreBundle/Resources/config/lifecycle/cgr/destination_rate.yml" }
-  - { resource: "@CoreBundle/Resources/config/lifecycle/cgr/rate.yml" }
   - { resource: "@CoreBundle/Resources/config/lifecycle/cgr/rating_plan.yml" }
-  - { resource: "@CoreBundle/Resources/config/lifecycle/cgr/tp_destination.yml" }
   - { resource: "@CoreBundle/Resources/config/lifecycle/cgr/tp_destination_rate.yml" }
-  - { resource: "@CoreBundle/Resources/config/lifecycle/cgr/tp_rate.yml" }
   - { resource: "@CoreBundle/Resources/config/lifecycle/cgr/tp_rating_plan.yml" }
   - { resource: "@CoreBundle/Resources/config/lifecycle/cgr/tp_rating_profile.yml" }

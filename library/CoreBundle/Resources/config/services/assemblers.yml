@@ -96,4 +96,13 @@ services:
   Ivoz\Provider\Application\Service\User\UserAssembler:
     arguments: ~
 
+  ##########################################
+  ## DestinationRate
+  ##########################################
+  Ivoz\Cgr\Application\Service\DestinationRate\DestinationRateAssembler:
+    arguments:
+      $storagePathResolver: '@Service\StoragePathResolverCollection::DestinationRate'
 
+  Ivoz\Cgr\Application\Service\DestinationRate\DestinationRateDtoAssembler:
+      arguments:
+        $storagePathResolver: '@Service\StoragePathResolverCollection::DestinationRate'

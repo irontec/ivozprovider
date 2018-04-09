@@ -124,3 +124,19 @@ services:
       $localStoragePath: '%local_storage_path%'
       $basePath: 'ivozprovider_model_recordings.recordedfile'
       $keepExtension: true
+
+  ##########################################
+  ## DestinationRate
+  ##########################################
+  Service\StoragePathResolverCollection::DestinationRate:
+     class: Ivoz\Core\Application\Service\StoragePathResolverCollection
+     calls:
+      - [addPathResolver, ['File', '@Service\CommonStoragePathResolver::DestinationRateFile']]
+     public: true
+
+  Service\CommonStoragePathResolver::DestinationRateFile:
+    class: Ivoz\Core\Application\Service\CommonStoragePathResolver
+    arguments:
+      $localStoragePath: '%local_storage_path%'
+      $basePath: 'ivozprovider_model_destination_rates.file'
+      $keepExtension: true
