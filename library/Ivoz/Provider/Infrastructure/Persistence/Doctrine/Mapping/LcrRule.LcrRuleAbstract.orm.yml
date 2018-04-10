@@ -32,6 +32,13 @@ Ivoz\Provider\Domain\Model\LcrRule\LcrRuleAbstract:
       options:
         fixed: false
       column: request_uri
+    mtTvalue:
+      type: string
+      nullable: true
+      length: 128
+      options:
+        fixed: false
+      column: mt_tvalue
     stopper:
       type: integer
       nullable: false

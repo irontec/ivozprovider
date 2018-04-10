@@ -75,6 +75,22 @@ interface LcrRuleInterface extends LoggableEntityInterface
     public function getRequestUri();
 
     /**
+     * Set mtTvalue
+     *
+     * @param string $mtTvalue
+     *
+     * @return self
+     */
+    public function setMtTvalue($mtTvalue = null);
+
+    /**
+     * Get mtTvalue
+     *
+     * @return string
+     */
+    public function getMtTvalue();
+
+    /**
      * Set stopper
      *
      * @param integer $stopper
