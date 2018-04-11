@@ -5,7 +5,6 @@ Ivoz\Kam\Domain\Model\TrunksDomainAttr\TrunksDomainAttrAbstract:
       columns:
         - did
         - name
-        - value
   fields:
     did:
       type: string

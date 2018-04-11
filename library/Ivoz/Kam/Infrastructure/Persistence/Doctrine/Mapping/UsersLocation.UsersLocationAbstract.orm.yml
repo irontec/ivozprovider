@@ -37,7 +37,7 @@ Ivoz\Kam\Domain\Model\UsersLocation\UsersLocationAbstract:
     contact:
       type: string
       nullable: false
-      length: 255
+      length: 512
       options:
         fixed: false
         default: ''

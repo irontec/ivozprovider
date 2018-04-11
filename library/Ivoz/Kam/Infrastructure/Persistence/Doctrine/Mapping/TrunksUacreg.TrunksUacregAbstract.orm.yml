@@ -109,6 +109,14 @@ Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregAbstract:
         default: '0'
         unsigned: true
       column: multiDdi
+    authHa1:
+      type: string
+      nullable: false
+      length: 128
+      options:
+        fixed: false
+        default: ''
+      column: auth_ha1
   manyToOne:
     brand:
       targetEntity: \Ivoz\Provider\Domain\Model\Brand\BrandInterface

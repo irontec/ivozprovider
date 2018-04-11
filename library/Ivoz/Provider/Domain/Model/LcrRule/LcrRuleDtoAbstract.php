@@ -33,6 +33,11 @@ abstract class LcrRuleDtoAbstract implements DataTransferObjectInterface
     private $requestUri;
 
     /**
+     * @var string
+     */
+    private $mtTvalue;
+
+    /**
      * @var integer
      */
     private $stopper = '0';
@@ -89,6 +94,7 @@ abstract class LcrRuleDtoAbstract implements DataTransferObjectInterface
             'prefix' => 'prefix',
             'fromUri' => 'fromUri',
             'requestUri' => 'requestUri',
+            'mtTvalue' => 'mtTvalue',
             'stopper' => 'stopper',
             'enabled' => 'enabled',
             'tag' => 'tag',
@@ -109,6 +115,7 @@ abstract class LcrRuleDtoAbstract implements DataTransferObjectInterface
             'prefix' => $this->getPrefix(),
             'fromUri' => $this->getFromUri(),
             'requestUri' => $this->getRequestUri(),
+            'mtTvalue' => $this->getMtTvalue(),
             'stopper' => $this->getStopper(),
             'enabled' => $this->getEnabled(),
             'tag' => $this->getTag(),
@@ -214,6 +221,26 @@ abstract class LcrRuleDtoAbstract implements DataTransferObjectInterface
     public function getRequestUri()
     {
         return $this->requestUri;
+    }
+
+    /**
+     * @param string $mtTvalue
+     *
+     * @return static
+     */
+    public function setMtTvalue($mtTvalue = null)
+    {
+        $this->mtTvalue = $mtTvalue;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMtTvalue()
+    {
+        return $this->mtTvalue;
     }
 
     /**

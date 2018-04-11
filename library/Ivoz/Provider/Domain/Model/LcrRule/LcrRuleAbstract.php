@@ -37,6 +37,12 @@ abstract class LcrRuleAbstract
     protected $requestUri;
 
     /**
+     * column: mt_tvalue
+     * @var string
+     */
+    protected $mtTvalue;
+
+    /**
      * @var integer
      */
     protected $stopper = '0';
@@ -160,6 +166,7 @@ abstract class LcrRuleAbstract
             ->setPrefix($dto->getPrefix())
             ->setFromUri($dto->getFromUri())
             ->setRequestUri($dto->getRequestUri())
+            ->setMtTvalue($dto->getMtTvalue())
             ->setRoutingPattern($dto->getRoutingPattern())
             ->setOutgoingRouting($dto->getOutgoingRouting())
         ;
@@ -186,6 +193,7 @@ abstract class LcrRuleAbstract
             ->setPrefix($dto->getPrefix())
             ->setFromUri($dto->getFromUri())
             ->setRequestUri($dto->getRequestUri())
+            ->setMtTvalue($dto->getMtTvalue())
             ->setStopper($dto->getStopper())
             ->setEnabled($dto->getEnabled())
             ->setTag($dto->getTag())
@@ -210,6 +218,7 @@ abstract class LcrRuleAbstract
             ->setPrefix(self::getPrefix())
             ->setFromUri(self::getFromUri())
             ->setRequestUri(self::getRequestUri())
+            ->setMtTvalue(self::getMtTvalue())
             ->setStopper(self::getStopper())
             ->setEnabled(self::getEnabled())
             ->setTag(self::getTag())
@@ -228,6 +237,7 @@ abstract class LcrRuleAbstract
             'prefix' => self::getPrefix(),
             'from_uri' => self::getFromUri(),
             'request_uri' => self::getRequestUri(),
+            'mt_tvalue' => self::getMtTvalue(),
             'stopper' => self::getStopper(),
             'enabled' => self::getEnabled(),
             'tag' => self::getTag(),
@@ -350,6 +360,34 @@ abstract class LcrRuleAbstract
     public function getRequestUri()
     {
         return $this->requestUri;
+    }
+
+    /**
+     * Set mtTvalue
+     *
+     * @param string $mtTvalue
+     *
+     * @return self
+     */
+    public function setMtTvalue($mtTvalue = null)
+    {
+        if (!is_null($mtTvalue)) {
+            Assertion::maxLength($mtTvalue, 128, 'mtTvalue value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        }
+
+        $this->mtTvalue = $mtTvalue;
+
+        return $this;
+    }
+
+    /**
+     * Get mtTvalue
+     *
+     * @return string
+     */
+    public function getMtTvalue()
+    {
+        return $this->mtTvalue;
     }
 
     /**

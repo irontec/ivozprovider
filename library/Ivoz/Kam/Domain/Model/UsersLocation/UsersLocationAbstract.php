@@ -464,7 +464,7 @@ abstract class UsersLocationAbstract
     public function setContact($contact)
     {
         Assertion::notNull($contact, 'contact value "%s" is null, but non null value was expected.');
-        Assertion::maxLength($contact, 255, 'contact value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        Assertion::maxLength($contact, 512, 'contact value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
         $this->contact = $contact;
 

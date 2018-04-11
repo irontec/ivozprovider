@@ -129,7 +129,7 @@ Ivoz\Kam\Domain\Model\UsersActiveWatcher\UsersActiveWatcherAbstract:
         default: '2'
     reason:
       type: string
-      nullable: false
+      nullable: true
       length: 64
       options:
         fixed: false
