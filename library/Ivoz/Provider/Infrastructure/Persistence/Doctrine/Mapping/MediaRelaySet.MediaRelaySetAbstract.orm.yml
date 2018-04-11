@@ -25,3 +25,4 @@ Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetAbstract:
       options:
         fixed: false
         comment: '[enum:rtpengine|rtpproxy]'
+        default: rtpproxy
