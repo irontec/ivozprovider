@@ -165,16 +165,6 @@ production:
           title: ngettext('Outgoing Routing', 'Outgoing Routings', 0)
           class: ui-silk-arrow-divide
           description: _("List of %s", ngettext('Outgoing Routing', 'Outgoing Routings', 0))
-        DestinationsList:
-          title: ngettext('Destination pattern', 'Destination patterns', 0)
-          class: ui-silk-arrow-right
-          description: _("List of %s", ngettext('Destination pattern', 'Destination patterns', 0))
-          showOnlyIf: ${auth.brand.billing.enabled}
-        RatesList:
-          title: ngettext('Rate', 'Rates', 0)
-          class: ui-silk-money-dollar
-          description: _("List of %s", ngettext('Rate', 'Rates', 0))
-          showOnlyIf: ${auth.brand.billing.enabled}
         DestinationRatesList:
           title: ngettext('Destination rate', 'Destination rates', 0)
           class: ui-silk-destrate

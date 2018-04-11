@@ -8,6 +8,19 @@ use Doctrine\Common\Collections\Collection;
 interface DestinationRateInterface extends EntityInterface
 {
     /**
+     * @return array
+     */
+    public function getFileObjects();
+
+    /**
+     * Add TempFile and set status to pending
+     *
+     * @param $fldName
+     * @param TempFile $file
+     */
+    public function addTmpFile($fldName, \Ivoz\Core\Domain\Service\TempFile $file);
+
+    /**
      * Set tag
      *
      * @param string $tag
@@ -22,6 +35,22 @@ interface DestinationRateInterface extends EntityInterface
      * @return string
      */
     public function getTag();
+
+    /**
+     * Set status
+     *
+     * @param string $status
+     *
+     * @return self
+     */
+    public function setStatus($status = null);
+
+    /**
+     * Get status
+     *
+     * @return string
+     */
+    public function getStatus();
 
     /**
      * Set brand
@@ -72,6 +101,22 @@ interface DestinationRateInterface extends EntityInterface
     public function getDescription();
 
     /**
+     * Set file
+     *
+     * @param \Ivoz\Cgr\Domain\Model\DestinationRate\File $file
+     *
+     * @return self
+     */
+    public function setFile(\Ivoz\Cgr\Domain\Model\DestinationRate\File $file);
+
+    /**
+     * Get file
+     *
+     * @return \Ivoz\Cgr\Domain\Model\DestinationRate\File
+     */
+    public function getFile();
+
+    /**
      * Add tpDestinationRate
      *
      * @param \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface $tpDestinationRate
@@ -101,6 +146,17 @@ interface DestinationRateInterface extends EntityInterface
      * @return \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface[]
      */
     public function getTpDestinationRates(\Doctrine\Common\Collections\Criteria $criteria = null);
+
+    /**
+     * @return TempFile[]
+     */
+    public function getTempFiles();
+
+    /**
+     * @var string $fldName
+     * @return null | TempFile
+     */
+    public function getTempFileByFieldName($fldName);
 
 }
 

@@ -504,22 +504,10 @@ msgid "Description"
 msgstr "Descripción"
 
 msgid "Destination"
-msgid_plural "Destinations"
-msgstr[0] "Destino"
-msgstr[1] "Destinos"
+msgstr "Destino"
 
 msgid "Destination IP address"
 msgstr "Dirección IP destino"
-
-msgid "Destination pattern"
-msgid_plural "Destination patterns"
-msgstr[0] "Patron de destino"
-msgstr[1] "Patrones de destino"
-
-msgid "Destination prefix"
-msgid_plural "Destination prefixes"
-msgstr[0] "Prefijo de destino"
-msgstr[1] "Prefijos de destinos"
 
 msgid "Destination rate"
 msgid_plural "Destination rates"
@@ -979,6 +967,15 @@ msgstr "Importar fichero"
 msgid "Import process enqueued"
 msgstr "Proceso de importación encolado"
 
+msgid "Imported"
+msgstr "Importado"
+
+msgid "Imported file"
+msgstr "Fichero importado"
+
+msgid "Importer status"
+msgstr "Estado de importación"
+
 msgid "In"
 msgstr "Entrada"
 
@@ -987,6 +984,9 @@ msgstr "En curso"
 
 msgid "In date"
 msgstr "Fecha inicio"
+
+msgid "In progress"
+msgstr "En curso"
 
 msgid "Inbound"
 msgstr "Entrante"
@@ -1740,11 +1740,6 @@ msgstr "Aleatoriamente"
 
 msgid "Random Contact Username"
 msgstr "Nombre de usuario de contacto aleatorio"
-
-msgid "Rate"
-msgid_plural "Rates"
-msgstr[0] "Precio"
-msgstr[1] "Precios"
 
 msgid "Rating Profile"
 msgid_plural "Rating Profiles"

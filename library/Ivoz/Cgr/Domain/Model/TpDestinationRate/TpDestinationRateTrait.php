@@ -15,6 +15,16 @@ trait TpDestinationRateTrait
      */
     protected $id;
 
+    /**
+     * @var \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface
+     */
+    protected $tpDestination;
+
+    /**
+     * @var \Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface
+     */
+    protected $tpRate;
+
 
     /**
      * Constructor
@@ -78,6 +88,55 @@ trait TpDestinationRateTrait
         return parent::__toArray() + [
             'id' => self::getId()
         ];
+    }
+
+
+    /**
+     * Set tpDestination
+     *
+     * @param \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface $tpDestination
+     *
+     * @return self
+     */
+    public function setTpDestination(\Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface $tpDestination = null)
+    {
+        $this->tpDestination = $tpDestination;
+
+        return $this;
+    }
+
+    /**
+     * Get tpDestination
+     *
+     * @return \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface
+     */
+    public function getTpDestination()
+    {
+        return $this->tpDestination;
+    }
+
+    /**
+     * Set tpRate
+     *
+     * @param \Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface $tpRate
+     *
+     * @return self
+     */
+    public function setTpRate(\Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface $tpRate = null)
+    {
+        $this->tpRate = $tpRate;
+
+        return $this;
+    }
+
+    /**
+     * Get tpRate
+     *
+     * @return \Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface
+     */
+    public function getTpRate()
+    {
+        return $this->tpRate;
     }
 
 

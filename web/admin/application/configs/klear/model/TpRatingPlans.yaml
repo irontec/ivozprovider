@@ -5,12 +5,12 @@ production:
       title: ngettext('Id', 'Ids', 1)
       required: false
     ratingPlanId:
-      title: ngettext('Destination', 'Destination', 1)
+      title: ngettext('Rating plan', 'Rating plans', 1)
       type: select
       source:
         data: mapper
         config:
-          entity: \Ivoz\Cgr\Domain\Model\Destination\Destination
+          entity: \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlan
           filterClass: IvozProvider_Klear_Filter_Brand
           fieldName:
             fields:
@@ -19,7 +19,7 @@ production:
           order:
             Destination.name.${lang}: asc
     destinationRateId:
-      title: ngettext('Destination', 'Destination', 1)
+      title: ngettext('Destination rate', 'Destination rates', 1)
       type: select
       source:
         data: mapper
@@ -59,7 +59,6 @@ production:
         icon: help
         text: _("Interval in seconds to increase call cost.")
         label: _("Need help?")
-
 staging:
   _extends: production
 testing:

@@ -1,0 +1,30 @@
+Ivoz\Cgr\Domain\Model\TpDestinationRate\Rate:
+  type: embeddable
+  fields:
+    cost:
+      type: decimal
+      nullable: false
+      precision: 10
+      scale: 4
+      column: rate
+    connectFee:
+      type: decimal
+      nullable: false
+      precision: 10
+      scale: 4
+      column: connect_fee
+    rateIncrement:
+      type: string
+      nullable: false
+      length: 16
+      options:
+        fixed: false
+      column: rate_increment
+    groupIntervalStart:
+      type: string
+      nullable: false
+      length: 16
+      options:
+        fixed: false
+        default: "0s"
+      column: group_interval_start

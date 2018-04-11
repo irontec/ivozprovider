@@ -161,14 +161,14 @@ Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrAbstract:
           referencedColumnName: id
           onDelete: set null
       orphanRemoval: false
-    destination:
-      targetEntity: \Ivoz\Cgr\Domain\Model\Destination\DestinationInterface
+    tpDestination:
+      targetEntity: \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface
       cascade: {  }
       fetch: LAZY
       mappedBy: null
       inversedBy: null
       joinColumns:
-        destinationId:
+        tpDestinationId:
           referencedColumnName: id
           onDelete: set null
       orphanRemoval: false
