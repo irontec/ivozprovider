@@ -26,15 +26,15 @@ production:
             extensionsDel_dialog: true
           default: extensionsEdit_screen
         blacklist:
-          ivrId: true
-          huntGroupId: true
-          userId: true
-          conferenceRoomId: true
-          numberCountryId: true
+          ivr: true
+          huntGroup: true
+          user: true
+          conferenceRoom: true
+          numberCountry: true
           numberValue: true
           friendValue: true
-          queueId: true
-          conditionalRouteId: true
+          queue: true
+          conditionalRoute: true
         order:
           number: true
           routeType: true
@@ -58,7 +58,7 @@ production:
         <<: *forcedCompany
       shortcutOption: N
       defaultValues:
-        numberCountryId: ${auth.companyCountryId}
+        numberCountry: ${auth.companyCountryId}
       fields:
         blacklist:
           target: true
@@ -71,15 +71,15 @@ production:
           colsPerRow: 6
           fields:
             routeType: 2
-            ivrId: 3
-            huntGroupId: 3
-            conferenceRoomId: 3
-            userId: 3
-            numberCountryId: 2
+            ivr: 3
+            huntGroup: 3
+            conferenceRoom: 3
+            user: 3
+            numberCountry: 2
             numberValue: 2
             friendValue: 3
-            queueId: 3
-            conditionalRouteId: 3
+            queue: 3
+            conditionalRoute: 3
 
     extensionsEdit_screen: &extensionsEdit_screenLink
       <<: *Extensions

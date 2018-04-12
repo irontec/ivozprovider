@@ -74,7 +74,7 @@ production:
       options:
         commands:
           invoicesPdfFileDownload_command: true
-    companyId:
+    company:
       title: ngettext('Company', 'Companies', 1)
       type: select
       required: true
@@ -90,7 +90,7 @@ production:
           order:
             Company.name: asc
         'null': _("Unassigned")
-    brandId:
+    brand:
       title: ngettext('Brand', 'Brands', 1)
       type: select
       source:
@@ -104,7 +104,7 @@ production:
           order:
             Brand.name: asc
         'null': _("Unassigned")
-    invoiceTemplateId:
+    invoiceTemplate:
       title: _('Template')
       type: select
       required: true
@@ -120,7 +120,7 @@ production:
           order:
             InvoiceTemplate.name: asc
         'null': _("Unassigned")
-    FixedCostsRelInvoicesId:
+    FixedCostsRelInvoices:
       title: ngettext('Fixed cost', 'Fixed costs', 1)
       searchable: false
       type: ghost

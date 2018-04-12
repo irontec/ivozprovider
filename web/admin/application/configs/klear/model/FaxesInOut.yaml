@@ -9,7 +9,7 @@ production:
         control: datetime
         settings:
           disabled: 'false'
-    faxId:
+    fax:
       title: ngettext('Fax', 'Faxes', 1)
       type: select
       required: true
@@ -29,7 +29,7 @@ production:
       type: text
       trim: both
       maxLength: 128
-    dstCountryId:
+    dstCountry:
       title: _('Country')
       type: select
       required: true

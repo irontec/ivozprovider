@@ -24,7 +24,7 @@ production:
         icon: help
         text: _("If you want a prefix, use only digits. Otherwise, define your regular expresion.")
         label: _("Need help?")
-    brandId:
+    brand:
       title: ngettext('Brand', 'Brands', 1)
       type: select
       required: true

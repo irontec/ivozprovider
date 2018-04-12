@@ -1,7 +1,7 @@
 production:
   entity: \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting
   fields: 
-    userId:
+    user:
       title: ngettext('User', 'Users', 1)
       type: select
       required: true
@@ -59,19 +59,19 @@ production:
           'number':
             title: _('Number')
             visualFilter:
-              show: [ numberCountryId, numberValue ]
-              hide: [ extensionId, voiceMailUserId ]
+              show: [ numberCountry, numberValue ]
+              hide: [ extension, voiceMailUser ]
           'extension':
             title: ngettext('Extension', 'Extensions', 1)
             visualFilter:
-              show: [ extensionId ]
-              hide: [ numberCountryId, numberValue, voiceMailUserId ]
+              show: [ extension ]
+              hide: [ numberCountry, numberValue, voiceMailUser ]
           'voicemail':
             title: ngettext('Voicemail', 'Voicemails', 1)
             visualFilter:
-              show: [ voiceMailUserId ]
-              hide: [ extensionId, numberCountryId, numberValue ]
-    numberCountryId:
+              show: [ voiceMailUser ]
+              hide: [ extension, numberCountry, numberValue ]
+    numberCountry:
       title: _('Country')
       type: select
       required: true
@@ -92,7 +92,7 @@ production:
       type: text
       trim: both
       required: true
-    extensionId:
+    extension:
       title: ngettext('Extension', 'Extensions', 1)
       type: select
       required: true
@@ -108,7 +108,7 @@ production:
           order:
             Extension.number: asc
         'null': _("Unassigned")
-    voiceMailUserId:
+    voiceMailUser:
       title: ngettext('Voicemail', 'Voicemails', 1)
       type: select
       required: true

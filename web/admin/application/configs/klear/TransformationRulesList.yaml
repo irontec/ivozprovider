@@ -29,10 +29,10 @@ production:
           default: transformationRulesEdit_screen
         blacklist: &transformationRules_blacklistLink
           type: true
-          transformationRuleSetId: true
+          transformationRuleSet: true
         order: &transformationRules_orderLink
           name: true
-          countryId: true
+          country: true
           internationalCode: true
       options: &transformationRulesNew_optionsLink
         title: _("Options")

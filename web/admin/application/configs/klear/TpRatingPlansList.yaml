@@ -19,7 +19,7 @@ production:
           name: true
           description: true
         blacklist: &tpRatingPlans_blacklistLink
-          timingId: true
+          timing: true
         options:
           title: _("Options")
           screens:
@@ -49,7 +49,7 @@ production:
         group1:
           colsPerRow: 4
           fields:
-            destinationRateId: 3
+            destinationRate: 3
             weight: 1
 
     tpRatingPlansEdit_screen: &tpRatingPlansEdit_screenLink

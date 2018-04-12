@@ -1,7 +1,7 @@
 production:
   entity: Ivoz\Provider\Domain\Model\HolidayDate\HolidayDate
   fields: 
-    calendarId:
+    calendar:
       title: _('Calendar')
       type: select
       required: true
@@ -29,8 +29,7 @@ production:
         control: date
         settings:
           disabled: 'false'
-#          dateFormat: dd-mm
-    locutionId:
+    locution:
       title: _('Locution')
       type: select
       source:
@@ -42,8 +41,6 @@ production:
             fields: 
               - name
             template: '%name%'
-#          order:
-#            Locution.encodedFileMimeType: asc
         'null': _("Unassigned")
 staging:
   _extends: production

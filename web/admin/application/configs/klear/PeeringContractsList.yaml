@@ -66,7 +66,7 @@ production:
           label: _("Extra Configuration")
           colsPerRow: 6
           fields:
-            transformationRuleSetId: 3
+            transformationRuleSet: 3
             externallyRated: 3
 
     peeringContractsEdit_screen: &peeringContractsEdit_screenLink

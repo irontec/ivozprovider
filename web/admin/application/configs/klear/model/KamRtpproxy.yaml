@@ -50,7 +50,7 @@ production:
       type: text
       trim: both
       maxLength: 200
-    mediaRelaySetId:
+    mediaRelaySet:
       title: ngettext('Media relay set', 'Media relay sets', 1)
       type: select
       source:

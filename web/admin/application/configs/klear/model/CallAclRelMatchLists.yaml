@@ -1,7 +1,7 @@
 production:
   entity: \Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchList
   fields:
-    callACLId:
+    callACL:
       title: ngettext('Call ACL', 'Call ACLs', 1)
       type: select
       required: true
@@ -16,7 +16,7 @@ production:
           order:
             CallAcl.name: asc
       default: true
-    matchListId:
+    matchList:
       title: ngettext('Match List', 'Match Lists', 1)
       type: select
       required: true

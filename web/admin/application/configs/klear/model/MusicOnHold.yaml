@@ -1,7 +1,7 @@
 production:
   entity: Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHold
   fields:
-    brandId:
+    brand:
       title: ngettext('Brand', 'Brands', 1)
       type: select
       required: true
@@ -15,7 +15,7 @@ production:
             template: '%name%'
           order:
             Brand.name: asc
-    companyId:
+    company:
       title: ngettext('Company', 'Companies', 1)
       type: select
       required: true

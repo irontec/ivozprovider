@@ -22,7 +22,7 @@ production:
           authNeeded: true
           password: true
           areaCode: true
-          countryId: true
+          country: true
           allow: true
           disallow: true
           directMediaMethod: true
@@ -30,16 +30,16 @@ production:
           fromDomain: true
           calleridUpdateHeader: true
           directConnectivity: true
-          transformationRuleSetId: true
+          transformationRuleSet: true
           ip: true
           port: true
-          languageId: true
+          language: true
           status: true
         order:
           name: true
-          domainId: true
+          domain: true
           description: true
-          outgoingDdiId: true
+          outgoingDdi: true
           statusIcon: true
         options:
           title: _("Options")
@@ -71,7 +71,7 @@ production:
         <<: *forcedBrand
       fields:
         blacklist: &retailAccounts_blacklistLink
-          domainId: true
+          domain: true
           directMediaMethod: true
           updateCallerid: true
           calleridUpdateHeader: true
@@ -88,8 +88,8 @@ production:
           transport: true
           ip: true
           port: true
-          languageId: true
-          outgoingDdiId: true
+          language: true
+          outgoingDdi: true
           allow: true
           fromDomain: true
           status: true
@@ -111,13 +111,13 @@ production:
           label: _("Geographic Configuration")
           colsPerRow: 12
           fields:
-            languageId: 4
-            transformationRuleSetId: 8
+            language: 4
+            transformationRuleSet: 8
         group2:
           label: _("Outgoing Configuration")
           colsPerRow: 12
           fields:
-            outgoingDdiId: 5
+            outgoingDdi: 5
         group3:
           label: _("Advanced Configuration")
           colsPerRow: 6
@@ -140,7 +140,7 @@ production:
         order:
           <<: *retailAccounts_orderLink
         blacklist:
-          domainId: true
+          domain: true
           directMediaMethod: true
           updateCallerid: true
           calleridUpdateHeader: true

@@ -27,18 +27,18 @@ production:
         blacklist:
           maxDigits: true
           excludedExtensions: true
-          welcomeLocutionId: true
-          noInputLocutionId: true
-          errorLocutionId: true
-          successLocutionId: true
-          noInputNumberCountryId: true
+          welcomeLocution: true
+          noInputLocution: true
+          errorLocution: true
+          successLocution: true
+          noInputNumberCountry: true
           noInputNumberValue: true
-          noInputExtensionId: true
-          noInputVoiceMailUserId: true
-          errorNumberCountryId: true
+          noInputExtension: true
+          noInputVoiceMailUser: true
+          errorNumberCountry: true
           errorNumberValue: true
-          errorExtensionId: true
-          errorVoiceMailUserId: true
+          errorExtension: true
+          errorVoiceMailUser: true
         options:
           title: _("Options")
           screens:
@@ -63,16 +63,16 @@ production:
       title: _("Add %s", ngettext('IVR', 'IVRs', 1))
       shortcutOption: N
       defaultValues:
-        noInputNumberCountryId: ${auth.companyCountryId}
-        errorNumberCountryId: ${auth.companyCountryId}
+        noInputNumberCountry: ${auth.companyCountryId}
+        errorNumberCountry: ${auth.companyCountryId}
       forcedValues:
         <<: *forcedCompany
       fields:
         order:
           name: true
           allowExtensions: true
-          noInputLocutionId: true
-          errorLocutionId: true
+          noInputLocution: true
+          errorLocution: true
         blacklist:
           noInputTarget: true
           errorTarget: true
@@ -85,8 +85,8 @@ production:
             name: 4
             timeout: 4
             maxDigits: 4
-            welcomeLocutionId: 6
-            successLocutionId: 6
+            welcomeLocution: 6
+            successLocution: 6
         group1:
           label: _("Extension dialing")
           colsPerRow: 3
@@ -97,24 +97,24 @@ production:
           label: _("No input configuration")
           colsPerRow: 3
           fields:
-            noInputLocutionId: 2
+            noInputLocution: 2
             __empty1: 1
             noInputRouteType: 1
-            noInputNumberCountryId: 1
+            noInputNumberCountry: 1
             noInputNumberValue: 1
-            noInputExtensionId: 1
-            noInputVoiceMailUserId: 1
+            noInputExtension: 1
+            noInputVoiceMailUser: 1
         group3:
           label: _("Error configuration")
           colsPerRow: 6
           fields:
-            errorLocutionId: 5
+            errorLocution: 5
             errorRouteType: 2
-            errorNumberCountryId: 2
+            errorNumberCountry: 2
             errorNumberValue: 2
-            errorExtensionId: 2
+            errorExtension: 2
             errorUser: 2
-            errorVoiceMailUserId: 2
+            errorVoiceMailUser: 2
     ivrEdit_screen: &ivrEdit_screenLink
       <<: *Ivr
       controller: edit
@@ -127,8 +127,8 @@ production:
         order:
           name: true
           allowExtensions: true
-          noInputLocutionId: true
-          errorLocutionId: true
+          noInputLocution: true
+          errorLocution: true
         blacklist:
           noInputTarget: true
           errorTarget: true

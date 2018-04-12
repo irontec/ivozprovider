@@ -1,7 +1,7 @@
 production:
   entity: Ivoz\Provider\Domain\Model\QueueMember\QueueMember
   fields:
-    queueId:
+    queue:
       title: ngettext('Queue', 'Queues', 1)
       type: select
       source:
@@ -16,7 +16,7 @@ production:
             Queue.name: asc
         'null': _("Unassigned")
       default: true
-    userId:
+    user:
       title: _('User')
       type: select
       required: true

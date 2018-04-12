@@ -1,7 +1,7 @@
 production:
   entity: Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPattern
   fields:
-    matchListId:
+    matchList:
       type: select
       required: true
       source:
@@ -30,13 +30,13 @@ production:
           'number':
             title: _("Number")
             visualFilter:
-              show: ["numberCountryId", "numberValue"]
+              show: ["numberCountry", "numberValue"]
               hide: ["regExp"]
           'regexp':
             title: _("Regular Expression")
             visualFilter:
               show: ["regExp"]
-              hide: ["numberCountryId", "numberValue"]
+              hide: ["numberCountry", "numberValue"]
     regExp:
       title: _('Regular Expression')
       type: text
@@ -49,7 +49,7 @@ production:
         ￼icon: help
         text: _("Enter number patterns in E.164 format.")
         label: _("Need help?")
-    numberCountryId:
+    numberCountry:
       title: _('Country')
       type: select
       required: true

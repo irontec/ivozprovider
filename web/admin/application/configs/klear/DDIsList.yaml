@@ -21,9 +21,9 @@ production:
           - Ddi.routeType: desc
       fields:
         order: &dDIsFieldsOder_Link
-          countryId: true
+          country: true
           DDI: true
-          externalCallFilterId: true
+          externalCallFilter: true
           routeType: true
           target: true
         options:
@@ -35,36 +35,36 @@ production:
             dDIsDel_dialog: ${auth.isNotCompanyOperator}
           default: dDIsEdit_screen
         blacklist:
-          userId: true
-          faxId: true
-          ivrId: true
-          huntGroupId: true
-          conferenceRoomId: true
+          user: true
+          fax: true
+          ivr: true
+          huntGroup: true
+          conferenceRoom: true
           friendValue: true
-          brandId: true
+          brand: true
           recordCalls: true
           displayName: true
           billInboundCalls: true
-          peeringContractId: ${auth.isCompanyOperator}
-          languageId: true
-          queueId: true
-          retailAccountId: true
-          conditionalRouteId: true
+          peeringContract: ${auth.isCompanyOperator}
+          language: true
+          queue: true
+          retailAccount: true
+          conditionalRoute: true
       fixedPositions: &dDIsFixedPositions_Link
         group0:
           label: _("Number data")
           colsPerRow: 3
           fields:
-            countryId: 1
+            country: 1
             DDI: 1
-            peeringContractId: 1
+            peeringContract: 1
             displayName: 2
-            languageId: 1
+            language: 1
         group1:
           label: _("Filters data")
           colsPerRow: 2
           fields:
-            externalCallFilterId: 2
+            externalCallFilter: 2
         group2:
           label: _("Recording data")
           colsPerRow: 12
@@ -75,15 +75,15 @@ production:
           colsPerRow: 3
           fields:
             routeType: 1
-            userId: 1
-            faxId: 1
-            ivrId: 1
-            huntGroupId: 1
-            conferenceRoomId: 1
+            user: 1
+            fax: 1
+            ivr: 1
+            huntGroup: 1
+            conferenceRoom: 1
             friendValue: 1
-            queueId: 1
-            retailAccountId: 1
-            conditionalRouteId: 1
+            queue: 1
+            retailAccount: 1
+            conditionalRoute: 1
         group4:
           label: _("Additional configuration")
           colsPerRow: 12
@@ -103,7 +103,7 @@ production:
       label: true
       multiInstance: true
       defaultValues:
-        countryId: ${auth.companyCountryId}
+        country: ${auth.companyCountryId}
       forcedValues:
         <<: *forcedBrand
         <<: *forcedCompany
@@ -112,7 +112,7 @@ production:
         order:
           <<: *dDIsFieldsOder_Link
         blacklist:
-          brandId: true
+          brand: true
           target: true
           recordCalls: ${auth.company.recordings.disabled}
       fixedPositions:
@@ -131,7 +131,7 @@ production:
           <<: *dDIsFieldsOder_Link
         blacklist:
           target: true
-          brandId: true
+          brand: true
           recordCalls: ${auth.company.recordings.disabled}
           billInboundCalls: ${auth.brand.billing.disabled}
       fixedPositions:
@@ -150,8 +150,8 @@ production:
         blacklist:
           target: true
 #          ddie164: true
-          peeringContractId: true
-          brandId: true
+          peeringContract: true
+          brand: true
           billInboundCalls: true
           recordCalls: ${auth.company.recordings.disabled}
         readOnly:

@@ -92,7 +92,7 @@ production:
       source:
         control: Spinner
       required: true
-    brandId:
+    brand:
       title: ngettext('Brand', 'Brands', 1)
       type: select
       required: true
@@ -106,7 +106,7 @@ production:
             template: '%name%'
           order:
             Brand.name: asc
-    peeringContractId:
+    peeringContract:
       title: _('Peering contract id')
       type: select
       required: true

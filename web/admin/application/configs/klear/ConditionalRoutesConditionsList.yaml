@@ -26,17 +26,17 @@ production:
             conditionalRoutesConditionsDel_dialog: true
           default: conditionalRoutesConditionsEdit_screen
         blacklist:
-          ivrId: true
-          huntGroupId: true
-          conferenceRoomId: true
-          userId: true
-          voiceMailUserId: true
-          numberCountryId: true
+          ivr: true
+          huntGroup: true
+          conferenceRoom: true
+          user: true
+          voiceMailUser: true
+          numberCountry: true
           numberValue: true
           friendValue: true
-          queueId: true
-          conferenceRoomId: true
-          extensionId: true
+          queue: true
+          conferenceRoom: true
+          extension: true
           relMatchlists: true
           relSchedules: true
           relCalendars: true
@@ -44,7 +44,7 @@ production:
         order:
           priority: true
           ConditionMatch: true
-          locutionId: true
+          locution: true
           routeType: true
           target: true
       options:
@@ -63,7 +63,7 @@ production:
       title: _("Add %s", ngettext('Condition', 'Conditions', 1), "[format| (%parent%)]")
       shortcutOption: N
       defaultValues:
-        numberCountryId: ${auth.companyCountryId}
+        numberCountry: ${auth.companyCountryId}
       fields:
         blacklist: &conditionalRoutesConditionsBlacklist_link
           target: true
@@ -71,7 +71,7 @@ production:
         order: &conditionalRoutesConditionsOrder_link
             priority: true
             relMatchlists: true
-            locutionId: true
+            locution: true
       fixedPositions: &conditionalRoutesConditionsPositions_link
         group0:
           label: _("Matching priority")
@@ -91,18 +91,18 @@ production:
           label: _("Matching handler")
           colsPerRow: 6
           fields:
-            locutionId: 6
+            locution: 6
             routeType: 2
-            ivrId: 3
-            huntGroupId: 3
-            voiceMailUserId: 3
-            userId: 3
-            numberCountryId: 2
+            ivr: 3
+            huntGroup: 3
+            voiceMailUser: 3
+            user: 3
+            numberCountry: 2
             numberValue: 2
             friendValue: 3
-            queueId: 3
-            conferenceRoomId: 3
-            extensionId: 3
+            queue: 3
+            conferenceRoom: 3
+            extension: 3
 
     conditionalRoutesConditionsEdit_screen: &conditionalRoutesConditionsEdit_screenLink
       <<: *ConditionalRoutesConditions

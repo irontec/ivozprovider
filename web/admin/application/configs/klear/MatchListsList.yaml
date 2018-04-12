@@ -22,8 +22,8 @@ production:
       title: _("List of %s %2s", ngettext('Match List', 'Match Lists', 0), "[format| (%parent%)]")
       fields: &matchLists_fieldsLink
         blacklist:
-          companyId: true
-          brandId: true
+          company: true
+          brand: true
         options:
           title: _("Options")
           screens:

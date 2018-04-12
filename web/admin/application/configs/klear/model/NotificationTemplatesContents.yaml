@@ -3,7 +3,7 @@
 production:
   entity: Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContent
   fields:
-    notificationTemplateId:
+    notificationTemplate:
       title: ngettext('Notification template', 'Notification templates', 1)
       type: select
       required: true
@@ -15,7 +15,7 @@ production:
             fields:
               - name
             template: '%name%'
-    languageId:
+    language:
       title: _('Language')
       type: select
       required: true

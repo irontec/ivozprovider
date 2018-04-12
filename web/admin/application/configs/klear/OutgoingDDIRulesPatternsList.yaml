@@ -20,10 +20,10 @@ production:
         type: asc
       fields: &outgoingDDIRulesPatterns_fieldsLink
         blacklist:
-          forcedDdiId: true
+          forcedDdi: true
         order:
           priority: true
-          matchListId: true
+          matchList: true
           action: true
           forcedDDI: true
         options:
@@ -56,14 +56,14 @@ production:
           label: _("Basic Configuration")
           colsPerRow: 12
           fields:
-            matchListId: 9
+            matchList: 9
             priority: 3
         group1:
           label: _("Action Configuration")
           colsPerRow: 12
           fields:
             action: 6
-            forcedDdiId: 6
+            forcedDdi: 6
 
     outgoingDDIRulesPatternsEdit_screen: &outgoingDDIRulesPatternsEdit_screenLink
       <<: *OutgoingDDIRulesPatterns

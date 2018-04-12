@@ -7,7 +7,7 @@ production:
       title: ngettext('Id', 'Ids', 1)
       required: false
       readonly: true
-    brandId:
+    brand:
       title: ngettext('Brand', 'Brands', 1)
       type: select
       required: true
@@ -38,7 +38,7 @@ production:
       type: text
       trim: both
       required: true
-    defaultTimezoneId:
+    defaultTimezone:
       title: _('Default timezone')
       type: select
       defaultValue: 145
@@ -63,19 +63,19 @@ production:
           'static':
             title: _("Static")
             visualFilter:
-              show: ["applicationServerId"]
+              show: ["applicationServer"]
               hide: []
           'rr':
             title: _("Round Robin")
             visualFilter:
               show: []
-              hide: ["applicationServerId"]
+              hide: ["applicationServer"]
           'hash':
             title: _("Hash based")
             visualFilter:
               show: []
-              hide: ["applicationServerId"]
-    applicationServerId:
+              hide: ["applicationServer"]
+    applicationServer:
       title: ngettext('Application Server', 'Application Servers', 1)
       type: select
       required: true
@@ -132,7 +132,7 @@ production:
       trim: both
       required: true
       maxLength: 255
-    countryId:
+    country:
       title: _('Country code')
       type: select
       defaultValue: 70
@@ -148,7 +148,7 @@ production:
             template: '%name${lang}% (%countryCode%)'
           order:
             Country.name.${lang}: asc
-    transformationRuleSetId:
+    transformationRuleSet:
       title: ngettext('Numeric transformation', 'Numeric transformations', 1)
       type: select
       required: true
@@ -164,7 +164,7 @@ production:
             template: '%name${lang}%'
           order:
             TransformationRuleSet.name.${lang}: asc
-    outgoingDDIId:
+    outgoingDDI:
       title: _('Outgoing DDI')
       type: select
       source:
@@ -179,7 +179,7 @@ production:
           order:
             Ddi.ddie164: asc
         'null': _("Unassigned")
-    outgoingDdiRuleId:
+    outgoingDdiRule:
       title: ngettext('Outgoing DDI Rule', 'Outgoing DDI Rules', 1)
       type: select
       source:
@@ -200,7 +200,7 @@ production:
         icon: help
         text: _("Default outgoing DDI. This can be overriden in caller's edit screen.")
         label: _("Need help?")
-    languageId:
+    language:
       title: _('Language')
       type: select
       defaultValue: 1
@@ -214,7 +214,7 @@ production:
             template: '%name${lang}%'
           order:
             Language.name.${lang}: asc
-    mediaRelaySetsId:
+    mediaRelaySets:
       title: _('Media relay Set')
       type: select
       source:
@@ -335,9 +335,9 @@ production:
                   - onDemandRecordCode
               faxes:
                 toggle:
-                  - faxNotificationTemplateId
+                  - faxNotificationTemplate
           order: name
-    voicemailNotificationTemplateId:
+    voicemailNotificationTemplate:
       title: ngettext('Voicemail Notification', 'Voicemail Notifications', 1)
       type: select
       source:
@@ -350,7 +350,7 @@ production:
               - name
             template: '%name%'
         'null': _("Use generic template")
-    faxNotificationTemplateId:
+    faxNotificationTemplate:
       title: ngettext('Fax Notification', 'Fax Notifications', 1)
       type: select
       source:

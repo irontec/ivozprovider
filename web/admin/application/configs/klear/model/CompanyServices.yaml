@@ -1,7 +1,7 @@
 production:
   entity: \Ivoz\Provider\Domain\Model\CompanyService\CompanyService
   fields: 
-    serviceId:
+    service:
       title: ngettext('Service', 'Services', 1)
       type: select
       required: true
@@ -17,7 +17,7 @@ production:
           order:
             Service.name.${lang}: asc
       default: true
-    companyId:
+    company:
       title: ngettext('Company', 'Companies', 1)
       type: select
       required: true

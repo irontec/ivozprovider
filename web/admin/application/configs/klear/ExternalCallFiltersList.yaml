@@ -25,42 +25,42 @@ production:
             externalCallFiltersDel_dialog: true
           default: externalCallFiltersEdit_screen
         blacklist:
-          companyId: false
+          company: false
           name: false
-          welcomeLocutionId: true
-          holidayLocutionId: true
-          outOfScheduleLocutionId: true
+          welcomeLocution: true
+          holidayLocution: true
+          outOfScheduleLocution: true
           holidayTargetType: false
-          holidayNumberCountryId: true
+          holidayNumberCountry: true
           holidayNumberValue: true
-          holidayExtensionId: true
-          holidayVoiceMailUserId: true
+          holidayExtension: true
+          holidayVoiceMailUser: true
           outOfScheduleTargetType: false
-          outOfScheduleNumberCountryId: true
+          outOfScheduleNumberCountry: true
           outOfScheduleNumberValue: true
-          outOfScheduleExtensionId: true
-          outOfScheduleVoiceMailUserId: true
+          outOfScheduleExtension: true
+          outOfScheduleVoiceMailUser: true
           whiteLists: true
           blackLists: true
         order: &externalCallFilters_orderLink
           name: true
-          welcomeLocutionId: true
+          welcomeLocution: true
           whiteLists: true
           blackLists: true
-          holidayLocutionId: true
+          holidayLocution: true
           holidayTargetType: true
           holidayTarget: true
-          holidayNumberCountryId: true
+          holidayNumberCountry: true
           holidayNumberValue: true
-          holidayExtensionId: true
-          holidayVoiceMailUserId: true
-          outOfScheduleLocutionId: true
+          holidayExtension: true
+          holidayVoiceMailUser: true
+          outOfScheduleLocution: true
           outOfScheduleTargetType: true
           outOfScheduleTarget: true
-          outOfScheduleNumberCountryId: true
+          outOfScheduleNumberCountry: true
           outOfScheduleNumberValue: true
-          outOfScheduleExtensionId: true
-          outOfScheduleVoiceMailUserId: true
+          outOfScheduleExtension: true
+          outOfScheduleVoiceMailUser: true
           calendars: true
           schedules: true
       options:
@@ -79,8 +79,8 @@ production:
       title: _("Add %s", ngettext('External call filter', 'External call filters', 1))
       shortcutOption: N
       defaultValues:
-        holidayNumberCountryId: ${auth.companyCountryId}
-        outOfScheduleNumberCountryId: ${auth.companyCountryId}
+        holidayNumberCountry: ${auth.companyCountryId}
+        outOfScheduleNumberCountry: ${auth.companyCountryId}
       forcedValues:
         <<: *forcedCompany
       fields:
@@ -94,9 +94,9 @@ production:
           label: _("Basic Info")
           colsPerRow: 2
           fields:
-            companyId: 1
+            company: 1
             name: 1
-            welcomeLocutionId: 1
+            welcomeLocution: 1
         group1:
           label: _("Filtering info")
           colsPerRow: 12
@@ -108,23 +108,23 @@ production:
           label: _("Holidays configuration")
           fields:
             calendars: 3
-            holidayLocutionId: 3
+            holidayLocution: 3
             holidayTargetType: 2
-            holidayNumberCountryId: 2
+            holidayNumberCountry: 2
             holidayNumberValue: 2
-            holidayExtensionId: 3
-            holidayVoiceMailUserId: 3
+            holidayExtension: 3
+            holidayVoiceMailUser: 3
         group4:
           colsPerRow: 6
           label: _("Out of schedule configuration")
           fields:
             schedules: 3
-            outOfScheduleLocutionId: 3
+            outOfScheduleLocution: 3
             outOfScheduleTargetType: 2
-            outOfScheduleNumberCountryId: 2
+            outOfScheduleNumberCountry: 2
             outOfScheduleNumberValue: 2
-            outOfScheduleExtensionId: 3
-            outOfScheduleVoiceMailUserId: 3
+            outOfScheduleExtension: 3
+            outOfScheduleVoiceMailUser: 3
 
     externalCallFiltersEdit_screen: &externalCallFiltersEdit_screenLink
       <<: *ExternalCallFilters

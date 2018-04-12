@@ -36,37 +36,37 @@ production:
           default: companiesEdit_screen
         blacklist:
           typeIcon: true
-          transformationRuleSetId: true
+          transformationRuleSet: true
           postalAddress: true
           postalCode: true
           town: true
           province: true
           countryName: true
-          outgoingDDIId: true
-          outgoingDdiRuleId: true
+          outgoingDDI: true
+          outgoingDdiRule: true
           registryData: true
           maxCalls: true
-          defaultTimezoneId: true
+          defaultTimezone: true
           distributeMethod: true
-          applicationServerId: true
-          mediaRelaySetsId: true
+          applicationServer: true
+          mediaRelaySets: true
           ipFilter: true
-          languageId: true
+          language: true
           onDemandRecord: true
           onDemandRecordCode: true
           recordingsLimitMB: true
           recordingsLimitEmail: true
           recordingsDiskUsage: true
           externallyExtraOpts: true
-          voicemailNotificationTemplateId: true
-          faxNotificationTemplateId: true
+          voicemailNotificationTemplate: true
+          faxNotificationTemplate: true
           billingMethod: true
           balance: true
         order:
           name: true
-          languageId: true
+          language: true
           nif: true
-          countryId: true
+          country: true
           domainUsers: true
       options:
         title: _("Options")
@@ -102,29 +102,29 @@ production:
           province: true
           onDemandRecord: true
           onDemandRecordCode: true
-          mediaRelaySetsId: true
+          mediaRelaySets: true
           distributeMethod: true
-          applicationServerId: true
+          applicationServer: true
           countryName: true
-          outgoingDDIId: true
-          outgoingDdiRuleId: true
+          outgoingDDI: true
+          outgoingDdiRule: true
           externallyExtraOpts: true
           recordingsLimitMB: true
           recordingsLimitEmail: true
           recordingsDiskUsage: true
-          voicemailNotificationTemplateId: true
-          faxNotificationTemplateId: true
+          voicemailNotificationTemplate: true
+          faxNotificationTemplate: true
           balance: true
         order: &companiesOrder_Link
           id: true
           name: true
-          languageId: true
+          language: true
           maxCalls: true
-          contryId: true
+          contry: true
           postalAddress: true
           recordingsLimitMB: true
           externallyExtraOpts: true
-          voicemailNotificationTemplateId: true
+          voicemailNotificationTemplate: true
       fixedPositions:
         group0:
           colsPerRow: 6
@@ -144,10 +144,10 @@ production:
           colsPerRow: 2
           label: _("Geographic Configuration")
           fields:
-            defaultTimezoneId: 1
-            countryId: 1
-            languageId: 1
-            transformationRuleSetId: 1
+            defaultTimezone: 1
+            country: 1
+            language: 1
+            transformationRuleSet: 1
       class: ui-silk-add
       label: true
       multiInstance: true
@@ -171,7 +171,7 @@ production:
           type: true
           typeIcon: true
           distributeMethod: ${auth.isNotMainOperator}
-          applicationServerId: ${auth.isNotMainOperator}
+          applicationServer: ${auth.isNotMainOperator}
           mediaRelaySet: ${auth.isNotMainOperator}
           recordingsLimitMB: ${auth.brand.recordings.disabled}
           recordingsLimitEmail: ${auth.brand.recordings.disabled}
@@ -183,7 +183,7 @@ production:
           postalCode: ${auth.brand.invoices.disabled}
           town: ${auth.brand.invoices.disabled}
           province: ${auth.brand.invoices.disabled}
-          countryId: ${auth.brand.invoices.disabled}
+          countryName: ${auth.brand.invoices.disabled}
           recordingsLimitMB: true
           recordingsLimitEmail: true
           recordingsDiskUsage: true
@@ -216,20 +216,20 @@ production:
           colsPerRow: 3
           label: _("Geographic Configuration")
           fields:
-            languageId: 1
-            countryId: 1
-            defaultTimezoneId: 1
-            transformationRuleSetId: 3
+            language: 1
+            country: 1
+            defaultTimezone: 1
+            transformationRuleSet: 3
         group3:
           colsPerRow: 12
           label: _("Server data")
           fields:
-            outgoingDDIId: 6
-            outgoingDDIRuleId: 6
+            outgoingDDI: 6
+            outgoingDDIRule: 6
             domain_users: 9
-            mediaRelaySetsId: 4
+            mediaRelaySets: 4
             distributeMethod: 4
-            applicationServerId: 4
+            applicationServer: 4
         group4:
           colsPerRow: 2
           label: _("Invoice data")
@@ -240,6 +240,7 @@ production:
             province: 1
             countryName: 1
             registryData: 2
+            nif: 1
         group5:
           colsPerRow: 12
           label: ngettext('Recording', 'Recordings', 0)
@@ -258,8 +259,8 @@ production:
           collapsed: true
           label: _("Notification options")
           fields:
-            voicemailNotificationTemplateId: 1
-            faxNotificationTemplateId: 1
+            voicemailNotificationTemplate: 1
+            faxNotificationTemplate: 1
 
     # Administrators
     <<: *administrators_screensLink

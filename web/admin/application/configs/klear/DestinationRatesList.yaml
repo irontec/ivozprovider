@@ -131,7 +131,7 @@ production:
       enclosure: '"'
       escape: "\\"
       forcedValues:
-        brandId: ${auth.brandId}
+        brand: ${auth.brandId}
 
     # tpDestinationRates dialogs:
     <<: *tpDestinationRates_dialogsLink

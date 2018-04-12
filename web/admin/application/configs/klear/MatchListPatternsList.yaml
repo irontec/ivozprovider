@@ -29,7 +29,7 @@ production:
           matchValue: true
           description: true
         blacklist:
-          numberCountryId: true
+          numberCountry: true
           numberValue: true
           regExp: true
       options:
@@ -49,7 +49,7 @@ production:
       title: _("Add %s", ngettext('Match List Pattern', 'Match List Patterns', 1), "[format| (%parent%)]")
       shortcutOption: N
       defaultValues:
-        numberCountryId: ${auth.companyCountryId}
+        numberCountry: ${auth.companyCountryId}
       fields:
         blacklist:
           matchValue: true
@@ -59,7 +59,7 @@ production:
           fields:
             type: 4
             regExp: 8
-            numberCountryId: 4
+            numberCountry: 4
             numberValue: 4
             description: 10
 

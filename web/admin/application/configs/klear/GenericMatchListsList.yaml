@@ -17,8 +17,8 @@ production:
         <<: *forcedBrand
       fields: &matchLists_fieldsLink
         blacklist:
-          companyId: true
-          brandId: true
+          company: true
+          brand: true
         options:
           title: _("Options")
           screens:

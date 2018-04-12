@@ -28,10 +28,10 @@ production:
             callForwardSettingsDel_dialog: true
           default: callForwardSettingsEdit_screen
         blacklist:
-          numberCountryId: true
+          numberCountry: true
           numberValue: true
-          extensionId: true
-          voiceMailUserId: true
+          extension: true
+          voiceMailUser: true
           noAnswerTimeout: true
       options:
         title: _("Options")
@@ -49,7 +49,7 @@ production:
       title: _("Add %s %2s", ngettext('Call forward setting', 'Call forward settings', 1), "[format| (%parent%)]")
       shortcutOption: N
       defaultValues:
-        numberCountryId: ${auth.companyCountryId}
+        numberCountry: ${auth.companyCountryId}
       fields:
         blacklist:
           targetTypeValue: true
@@ -68,10 +68,10 @@ production:
           colsPerRow: 6
           fields:
             targetType: 2
-            numberCountryId: 2
+            numberCountry: 2
             numberValue: 2
-            extensionId: 3
-            voiceMailUserId: 3
+            extension: 3
+            voiceMailUser: 3
     callForwardSettingsEdit_screen: &callForwardSettingsEdit_screenLink 
       <<: *CallForwardSettings
       controller: edit

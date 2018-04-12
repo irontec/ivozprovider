@@ -20,11 +20,9 @@ production:
           name: true
           invoice.nif: true
           logo: true
-          defaultTimezoneId: true
-          languageId: true
+          defaultTimezone: true
+          language: true
           domain_users: true
-          defaultTimezoneId: true
-          languageId: true
           invoice.postalAddress: true
           invoice.postalCode: true
           invoice.town: true
@@ -39,8 +37,8 @@ production:
           invoice.country: true
           invoice.town: true
           invoice.registryData: true
-          languageId: true
-          defaultTimezoneId: true
+          language: true
+          defaultTimezone: true
           recordingsLimitMB: true
           recordingsLimitEmail: true
           recordingsDiskUsage: true
@@ -71,8 +69,8 @@ production:
       title: _("Add %s", ngettext('Brand', 'Brands', 1))
       shortcutOption: N
       forcedValues:
-        defaultTimezoneId: 145
-        languageId: 1
+        defaultTimezone: 145
+        language: 1
         invoice.nif: '12345678-Z'
         invoice.postalAddress: 'Postal address'
         invoice.postalCode: 'ZIP'
@@ -84,8 +82,8 @@ production:
         blacklist:
           invoice.nif: true
           logo: true
-          defaultTimezoneId: true
-          languageId: true
+          defaultTimezone: true
+          language: true
           invoice.postalAddress: true
           invoice.postalCode: true
           invoice.town: true
@@ -113,8 +111,8 @@ production:
           label: _("Locales")
           colsPerRow: 2
           fields:
-            defaultTimezoneId: 1
-            languageId: 1
+            defaultTimezone: 1
+            language: 1
         group3:
           colsPerRow: 2
           label: _("Invoice data")

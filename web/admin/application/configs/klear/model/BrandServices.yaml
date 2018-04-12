@@ -1,7 +1,7 @@
 production:
   entity: \Ivoz\Provider\Domain\Model\BrandService\BrandService
   fields: 
-    serviceId:
+    service:
       title: ngettext('Service', 'Services', 1)
       type: select
       required: true
@@ -17,7 +17,7 @@ production:
           order:
             Service.name.${lang}: asc
       default: true
-    brandId:
+    brand:
       title: ngettext('Brand', 'Brands', 1)
       type: select
       required: true
