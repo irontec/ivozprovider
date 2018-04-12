@@ -16,7 +16,7 @@ exports.command = function(formData, callback) {
 
             let fieldType = null;
             if (element.length > 1) {
-                element = element.filter(':eq(0)');
+                element = element.filter('select:eq(0)');
                 fieldType = 'select';
             }
 
@@ -32,6 +32,19 @@ exports.command = function(formData, callback) {
                     }
 
                     for (let value of values) {
+
+                        if (value === null) {
+                            continue;
+                        }
+
+                        let option = element
+                            .find(`option[value='${value}']`);
+
+                        if (option.length < 1) {
+                            missingFields.push(`${name} option[value='${value}']`);
+                            continue;
+                        }
+
                         element
                             .find(`option[value='${value}']`)
                             .prop('selected', true);
