@@ -1,6 +1,6 @@
 {
-  "matchListId": "1",
+  "matchList": "1",
   "priority": "1",
   "action": "keep",
-  "forcedDdiId": "__NULL__"
+  "forcedDdi": "__NULL__"
 }

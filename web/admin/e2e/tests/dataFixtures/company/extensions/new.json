@@ -1,12 +1,12 @@
 {
   "number": "12346",
   "routeType": "number",
-  "ivrId": "__NULL__",
-  "huntGroupId": "__NULL__",
-  "conferenceRoomId": "__NULL__",
-  "userId": "__NULL__",
+  "ivr": "__NULL__",
+  "huntGroup": "__NULL__",
+  "conferenceRoom": "__NULL__",
+  "user": "__NULL__",
   "numberValue": "946006060",
   "friendValue": "",
-  "queueId": "__NULL__",
-  "conditionalRouteId": "__NULL__"
+  "queue": "__NULL__",
+  "conditionalRoute": "__NULL__"
 }

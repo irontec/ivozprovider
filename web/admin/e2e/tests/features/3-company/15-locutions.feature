@@ -12,9 +12,7 @@ Feature: Locutions admin page
   In order to check and manage them
 
 Background:
-  Given I go to the admin page
-   When I send valid admin credentials
-   Then I am logged in
+  Given I am on the Dashboard
    When I click on brand emulation button
     And I emulate the brand at position "1"
     And I click on company emulation button
@@ -30,7 +28,7 @@ Scenario: I create locutions
   When I click on close dialog button
   Then I am on "Locutions" list
   When I click on "Locutions" last elements edit button
-  Then I compare the form data with "company/locutions/new" data fixture
+  Then I compare the form data with "company/locutions/compareNew" data fixture
 
 Scenario: I can save Locutions
   Given I can see at least one row

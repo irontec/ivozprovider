@@ -10,9 +10,7 @@ Feature: MusicOnHold admin page
   In order to check and manage them
 
 Background:
-  Given I go to the admin page
-   When I send valid admin credentials
-   Then I am logged in
+  Given I am on the Dashboard
    When I click on brand emulation button
     And I emulate the brand at position "1"
     And I click on company emulation button
@@ -28,7 +26,7 @@ Scenario: I can create music on hold
   When I click on close dialog button
   Then I am on "MusicOnHold" list
   When I click on "MusicOnHold" last elements edit button
-  Then I compare the form data with "company/musicOnHold/new" data fixture
+  Then I compare the form data with "company/musicOnHold/compareNew" data fixture
 
 Scenario: I can edit music on hold
   Given I can see at least one row

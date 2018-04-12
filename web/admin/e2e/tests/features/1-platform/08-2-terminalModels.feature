@@ -9,9 +9,7 @@ Feature: Terminal models operator admin page
   In order to check and manage them
 
 Background:
-  Given I go to the admin page
-   When I send valid admin credentials
-   Then I am logged in
+  Given I am on the Dashboard
    When I click on "TerminalManufacturers" CTA
    Then I am on "TerminalManufacturers" list
     And I can see at least one row

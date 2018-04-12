@@ -3,8 +3,8 @@
   "callForwardType": "inconditional",
   "noAnswerTimeout": "10",
   "targetType": "number",
-  "numberCountryId": "70",
+  "numberCountry": "70",
   "numberValue": "946002053",
-  "extensionId": "__NULL__",
-  "voiceMailUserId": "__NULL__"
+  "extension": "__NULL__",
+  "voiceMailUser": "__NULL__"
 }

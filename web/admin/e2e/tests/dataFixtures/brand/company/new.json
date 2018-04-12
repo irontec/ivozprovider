@@ -8,6 +8,6 @@
     "4",
     "5"
   ],
-  "externalMaxCalls": "0",
+  "maxCalls": "0",
   "ipFilter": "1"
 }
