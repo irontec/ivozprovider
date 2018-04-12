@@ -15,6 +15,7 @@ function dashboard () {
     var jqSelector = context + ' #target-' + entity + 'List';
 
     return this
+      .waitForElementVisible('@dashboardCta')
       .click('@dashboardCta')
       .waitForElementVisible('@dashboardElements')
       .jqueryTrigger(
