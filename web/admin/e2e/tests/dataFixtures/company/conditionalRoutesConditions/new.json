@@ -1,24 +1,18 @@
 {
     "priority": "1",
-    "relMatchlists[]": [
-      ""
-    ],
-    "relSchedules[]": [
-      ""
-    ],
-    "relCalendars[]": [
-      ""
-    ],
-    "locutionId": "__NULL__",
-    "routeType": "__NULL__",
-    "ivrId": "__NULL__",
-    "huntGroupId": "__NULL__",
-    "voiceMailUserId": "__NULL__",
-    "userId": "__NULL__",
-    "numberCountryId": "70",
-    "numberValue": "",
+    "relMatchlists[]": [],
+    "relSchedules[]": [],
+    "relCalendars[]": [],
+    "locution": "__NULL__",
+    "routeType": "number",
+    "ivr": "__NULL__",
+    "huntGroup": "__NULL__",
+    "voiceMailUser": "__NULL__",
+    "user": "__NULL__",
+    "numberCountry": "70",
+    "numberValue": "946002020",
     "friendValue": "",
-    "queueId": "__NULL__",
-    "conferenceRoomId": "__NULL__",
-    "extensionId": "__NULL__"
+    "queue": "__NULL__",
+    "conferenceRoom": "__NULL__",
+    "extension": "__NULL__"
 }

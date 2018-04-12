@@ -1,14 +1,14 @@
 {
   "name": "testConditional",
-  "locutionId": "__NULL__",
+  "locution": "__NULL__",
   "routeType": "user",
-  "ivrId": "__NULL__",
-  "huntGroupId": "__NULL__",
-  "voiceMailUserId": "__NULL__",
-  "userId": "1",
+  "ivr": "__NULL__",
+  "huntGroup": "__NULL__",
+  "voiceMailUser": "__NULL__",
+  "user": "1",
   "numberValue": "",
   "friendValue": "",
-  "queueId": "__NULL__",
-  "conferenceRoomId": "__NULL__",
-  "extensionId": "__NULL__"
+  "queue": "__NULL__",
+  "conferenceRoom": "__NULL__",
+  "extension": "__NULL__"
 }

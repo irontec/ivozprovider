@@ -10,9 +10,7 @@ Feature: Caller in admin page
   In order to check and manage them
 
 Background:
-  Given I go to the admin page
-   When I send valid admin credentials
-   Then I am logged in
+  Given I am on the Dashboard
    When I click on brand emulation button
     And I emulate the brand at position "1"
     And I click on "TransformationRuleSets" CTA
@@ -27,7 +25,7 @@ Scenario: I can create new caller in
   Then I can see confirmation dialog
   When I click on close dialog button
   Then I am on "TransformationRuleSetsList_transformationRulesCallerIn" subscreen list
-  When I click on "transformationRulesCallerIn" last elements edit button
+  When I click on "transformationRules" last elements edit button
   Then I compare the form data with "brand/callerIn/new" data fixture
 
 Scenario: I can save caller in

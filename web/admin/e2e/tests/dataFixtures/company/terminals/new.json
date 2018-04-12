@@ -4,6 +4,6 @@
   "allowAudio": "alaw",
   "allowVideo": "__NULL__",
   "directMediaMethod": "invite",
-  "terminalModelId": "1",
+  "terminalModel": "1",
   "mac": "0011223344aa"
 }

@@ -1,5 +1,5 @@
 {
-  "companyId": "__NULL__",
+  "company": "__NULL__",
   "type": "pattern",
   "priority": "10",
   "weight": "5"
