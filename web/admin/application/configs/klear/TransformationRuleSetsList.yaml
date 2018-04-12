@@ -37,18 +37,18 @@ production:
           dialogs:
             transformationRuleSetsDel_dialog: true
         blacklist:
-          brandId: true
+          brand: true
           trunkPrefix: true
           areaCode: true
           nationalLen: true
-          countryId: true
+          country: true
           internationalCode: true
           generateRules: true
         order: &transformationRuleSets_orderLink
-          brandId: true
+          brand: true
           name: true
           description: true
-          countryId: true
+          country: true
           internationalCode: true
       options:
         title: _("Options")
@@ -83,7 +83,7 @@ production:
           colsPerRow: 12
           fields:
             internationalCode: 5
-            countryId: 5
+            country: 5
             trunkPrefix: 3
             areaCode: 3
             nationalLen: 4
@@ -121,7 +121,7 @@ production:
           name: true
           description: true
           internationalCode: true
-          countryId: true
+          country: true
           trunkPrefix: true
           areaCode: true
           nationalLen: true

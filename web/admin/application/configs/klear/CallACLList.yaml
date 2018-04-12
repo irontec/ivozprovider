@@ -76,14 +76,14 @@ production:
     callACLRelMatchListsList_screen:
       <<: *callACLRelMatchListsList_screenLink
       title: _("List of %s %2s", ngettext('Call ACL MatchList', 'Call ACL MatchLists', 0), "[format| (%parent%)]")
-      filterField: callACLId
+      filterField: callACL
     callACLRelMatchListsNew_screen:
       <<: *callACLRelMatchListsNew_screenLink
       title: _("Add pattern to %2s", "[format| %parent%]")
-      filterField: callACLId
+      filterField: callACL
     callACLRelMatchListsEdit_screen:
       <<: *callACLRelMatchListsEdit_screenLink
-      filterField: callACLId
+      filterField: callACL
       title: _("Edit pattern of %s", ngettext('Call ACL MatchList', 'Call ACL MatchLists', 1))
 
   dialogs: &callACL_dialogsLink

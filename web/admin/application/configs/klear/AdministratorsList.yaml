@@ -35,8 +35,8 @@ production:
           name: true
           lastname: true
           timezone: true
-          brandId: true
-          companyId: true
+          brand: true
+          company: true
       options: 
         title: _("Options")
         screens:
@@ -61,8 +61,8 @@ production:
       fields:
         blacklist:
           active: true
-          brandId: true
-          companyId: true
+          brand: true
+          company: true
         order:
           <<: *Administrators_orderLink
       fixedPositions: &AdministratorsFixedPositions_link
@@ -73,7 +73,7 @@ production:
             username: 1
             pass: 1
             active: 1
-            timezoneId: 1
+            timezone: 1
         group1:
           label: _("Personal data")
           colsPerRow: 3
@@ -93,8 +93,8 @@ production:
         order:
           <<: *Administrators_orderLink
         blacklist:
-          brandId: true
-          companyId: true
+          brand: true
+          company: true
       fixedPositions:
         <<: *AdministratorsFixedPositions_link
 

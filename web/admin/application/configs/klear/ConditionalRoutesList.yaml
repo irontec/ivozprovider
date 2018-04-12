@@ -27,20 +27,20 @@ production:
             conditionalRoutesDel_dialog: true
           default: conditionalRoutesEdit_screen
         blacklist:
-          ivrId: true
-          huntGroupId: true
-          conferenceRoomId: true
-          userId: true
-          voiceMailUserId: true
-          numberCountryId: true
+          ivr: true
+          huntGroup: true
+          conferenceRoom: true
+          user: true
+          voiceMailUser: true
+          numberCountry: true
           numberValue: true
           friendValue: true
-          queueId: true
-          conferenceRoomId: true
-          extensionId: true
+          queue: true
+          conferenceRoom: true
+          extension: true
         order:
           name: true
-          locutionId: true
+          locution: true
           routeType: true
           target: true
       options:
@@ -61,7 +61,7 @@ production:
         <<: *forcedCompany
       shortcutOption: N
       defaultValues:
-        numberCountryId: ${auth.companyCountryId}
+        numberCountry: ${auth.companyCountryId}
       fields:
         blacklist: &conditionalRoutesBlacklist_link
           target: true
@@ -75,18 +75,18 @@ production:
           label: _("No matching condition handler")
           colsPerRow: 6
           fields:
-            locutionId: 6
+            locution: 6
             routeType: 2
-            ivrId: 3
-            huntGroupId: 3
-            voiceMailUserId: 3
-            userId: 3
-            numberCountryId: 2
+            ivr: 3
+            huntGroup: 3
+            voiceMailUser: 3
+            user: 3
+            numberCountry: 2
             numberValue: 2
             friendValue: 3
-            queueId: 3
-            conferenceRoomId: 3
-            extensionId: 3
+            queue: 3
+            conferenceRoom: 3
+            extension: 3
 
     conditionalRoutesEdit_screen: &conditionalRoutesEdit_screenLink
       <<: *ConditionalRoutes

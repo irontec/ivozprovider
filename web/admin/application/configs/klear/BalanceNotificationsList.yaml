@@ -44,7 +44,7 @@ production:
           colsPerRow: 2
           label: _('Notification options')
           fields:
-            notificationTemplateId: 1
+            notificationTemplate: 1
             toAddress: 1
             threshold: 1
 

@@ -51,7 +51,7 @@ production:
         group0:
           colsPerRow: 2
           fields:
-            companyId: 1
+            company: 1
             name: 1
         group1:
           colsPerRow: 2

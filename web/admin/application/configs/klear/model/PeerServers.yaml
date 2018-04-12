@@ -1,7 +1,7 @@
 production:
   entity: Ivoz\Provider\Domain\Model\PeerServer\PeerServer
   fields: 
-    peeringContractId:
+    peeringContract:
       title: _('Peering contract')
       type: select
       required: true
@@ -27,7 +27,7 @@ production:
         icon: help
         text: _("Leave empty to send to Host field")
         label: _("Need help?")
-    brandId:
+    brand:
       title: ngettext('Brand', 'Brands', 1)
       type: select
       required: true

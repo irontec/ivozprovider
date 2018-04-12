@@ -1,7 +1,7 @@
 production:
   entity: Ivoz\Kam\Domain\Model\UsersCdr\UsersCdr
   fields:
-    brandId:
+    brand:
       title: ngettext('Brand', 'Brands', 1)
       type: select
       required: true
@@ -15,7 +15,7 @@ production:
             template: '%name%'
           order:
             Brand.name: asc
-    companyId:
+    company:
       title: ngettext('Company', 'Companies', 1)
       type: select
       required: true
@@ -70,7 +70,7 @@ production:
     callidHash:
       title: _('CallidHash')
       type: text
-    userId:
+    user:
       title: _('User')
       type: select
       required: true
@@ -87,7 +87,7 @@ production:
           order:
             User.name: asc
         'null': _("Unassigned")
-    retailAccountId:
+    retailAccount:
       title: _('Retail Account')
       type: select
       source:
@@ -102,7 +102,7 @@ production:
           order:
             RetailAccount.name: asc
         'null': _("Unassigned")
-    friendId:
+    friend:
       title: _('Friend')
       type: select
       source:

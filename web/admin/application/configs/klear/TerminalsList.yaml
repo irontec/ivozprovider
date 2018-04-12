@@ -33,8 +33,8 @@ production:
           default: terminalsEdit_screen
         order:
           name: true
-          domainId: true
-          terminalModelId: true
+          domain: true
+          terminalModel: true
           mac: true
           allowAudio: true
           allowVideo: true
@@ -67,13 +67,13 @@ production:
           allowAudio: true
           allowVideo: true
           directMediaMethod: true
-          terminalModelId: true
+          terminalModel: true
           mac: true
           lastProvisionDate: true
         blacklist:
           disallow: true
           lastProvisionDate: true
-          domainId: true
+          domain: true
           statusIcon: true
           status: true
       fixedPositions: &TerminalsFixedPositions_link
@@ -95,7 +95,7 @@ production:
           label: _("Provisioning Info")
           colsPerRow: 12
           fields:
-            terminalModelId: 6
+            terminalModel: 6
             mac: 6
             lastProvisionDate: 6
     terminalsEdit_screen: &terminalsEdit_screenLink
@@ -114,7 +114,7 @@ production:
         readOnly:
           lastProvisionDate: true
         blacklist:
-          domainId: true
+          domain: true
           disallow: true
           statusIcon: true
         order:
@@ -123,7 +123,7 @@ production:
           allowAudio: true
           allowVideo: true
           directMediaMethod: true
-          terminalModelId: true
+          terminalModel: true
           mac: true
           lastProvisionDate: true
       fixedPositions:
@@ -157,7 +157,7 @@ production:
       enclosure: '"'
       escape: "\\"
       forcedValues:
-        companyId: *forcedCompany
+        company: *forcedCompany
 
   commands:
     importTerminalsFreeUpload_command:

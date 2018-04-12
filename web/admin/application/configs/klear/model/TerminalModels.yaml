@@ -18,7 +18,7 @@ production:
       type: text
       trim: both
       defaultValue:
-    terminalManufacturerId:
+    terminalManufacturer:
       title: _('Terminal manufacturer')
       type: select
       required: true

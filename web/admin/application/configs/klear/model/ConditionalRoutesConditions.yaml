@@ -1,7 +1,7 @@
 production:
   entity: \Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition
   fields:
-    conditionalRouteId:
+    conditionalRoute:
       title: _('Conditional Route')
       type: select
       required: true
@@ -78,7 +78,7 @@ production:
       source:
         class: IvozProvider_Klear_Ghost_ConditionalRoutes
         method: getMatchData
-    locutionId:
+    locution:
       title: ngettext('Locution', 'Locutions', 1)
       type: select
       source:
@@ -105,44 +105,44 @@ production:
             visualFilter:
               show: [ ]
               hide: &routableFields
-                - numberCountryId
+                - numberCountry
                 - numberValue
-                - ivrId
-                - userId
-                - huntGroupId
-                - voiceMailUserId
+                - ivr
+                - user
+                - huntGroup
+                - voiceMailUser
                 - friendValue
-                - queueId
-                - conferenceRoomId
-                - extensionId
+                - queue
+                - conferenceRoom
+                - extension
           'user':
             title: ngettext('User', 'Users', 1)
             visualFilter:
-              show: [ userId ]
+              show: [ user ]
               hide:
                 <<: *routableFields
-          'ivrId':
+          'ivr':
             title: ngettext('IVR', 'IVRs', 1)
             visualFilter:
-              show: [ ivrId ]
+              show: [ ivr ]
               hide:
                 <<: *routableFields
           'huntGroup':
             title: ngettext('Hunt Group', 'Hunt Groups', 1)
             visualFilter:
-              show: [ huntGroupId ]
+              show: [ huntGroup ]
               hide:
                 <<: *routableFields
           'voicemail':
             title: ngettext('Voicemail', 'Voicemails', 1)
             visualFilter:
-              show: [ voiceMailUserId ]
+              show: [ voiceMailUser ]
               hide:
                 <<: *routableFields
           'number':
             title: _('Number')
             visualFilter:
-              show: [ numberCountryId, numberValue ]
+              show: [ numberCountry, numberValue ]
               hide:
                 <<: *routableFields
           'friend':
@@ -154,22 +154,22 @@ production:
           'queue':
             title: ngettext('Queue', 'Queues', 1)
             visualFilter:
-              show: [ queueId ]
+              show: [ queue ]
               hide:
                 <<: *routableFields
           'conferenceRoom':
             title: ngettext('Conference room', 'Conference rooms', 1)
             visualFilter:
-              show: [ conferenceRoomId ]
+              show: [ conferenceRoom ]
               hide:
                 <<: *routableFields
           'extension':
             title: _('Extension')
             visualFilter:
-              show: [ extensionId ]
+              show: [ extension ]
               hide:
                 <<: *routableFields
-    ivrId:
+    ivr:
       title: ngettext('IVR', 'IVRs', 1)
       type: select
       required: true
@@ -185,7 +185,7 @@ production:
           order:
             Ivr.name: asc
         'null': _("Unassigned")
-    huntGroupId:
+    huntGroup:
       title: ngettext('Hunt Group', 'Hunt Groups', 1)
       type: select
       required: true
@@ -201,7 +201,7 @@ production:
           order:
             HuntGroup.name: asc
         'null': _("Unassigned")
-    voiceMailUserId:
+    voiceMailUser:
       title: ngettext('Voicemail', 'Voicemails', 1)
       type: select
       required: true
@@ -216,7 +216,7 @@ production:
           order:
             User.name: asc
         'null': _("Unassigned")
-    userId:
+    user:
       title: _('User')
       type: select
       required: true
@@ -231,7 +231,7 @@ production:
           order:
             User.name: asc
         'null': _("Unassigned")
-    numberCountryId:
+    numberCountry:
       title: _('Country')
       type: select
       required: true
@@ -256,7 +256,7 @@ production:
       type: text
       required: true
       maxLength: 25
-    queueId:
+    queue:
       title: ngettext('Queue', 'Queues', 1)
       type: select
       required: true
@@ -272,7 +272,7 @@ production:
           order:
             Queue.name: asc
         'null': _("Unassigned")
-    conferenceRoomId:
+    conferenceRoom:
       title: ngettext('Conference room', 'Conference rooms', 1)
       type: select
       required: true
@@ -288,7 +288,7 @@ production:
           order:
             ConferenceRoom.name: asc
         'null': _("Unassigned")
-    extensionId:
+    extension:
       title: _('Extension')
       type: select
       required: true

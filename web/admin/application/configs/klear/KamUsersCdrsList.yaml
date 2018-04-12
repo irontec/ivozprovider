@@ -23,16 +23,16 @@ production:
         blacklist:
           endTime: true
           callidHash: true
-          userId: true
-          friendId: true
-          retailAccountId: ${auth.companyVPBX}
+          user: true
+          friend: true
+          retailAccount: ${auth.companyVPBX}
           direction: ${auth.companyVPBX}
-          brandId: true
+          brand: true
           callid: true
           xcallid: true
         order:
           startTime: true
-          retailAccountId: true
+          retailAccount: true
           direction: true
           caller: true
           callee: true
@@ -56,19 +56,19 @@ production:
           callidHash: ${auth.isCompanyOperator}
           callid: ${auth.isCompanyOperator}
           xcallid: ${auth.isCompanyOperator}
-          brandId: true
-          userId: true
-          friendId: true
-          retailAccountId: ${auth.companyVPBX}
+          brand: true
+          user: true
+          friend: true
+          retailAccount: ${auth.companyVPBX}
           direction: ${auth.companyVPBX}
-          companyId: true
+          company: true
           endTime: true
         order:
           startTime: true
           duration: true
           caller: true
           callee: true
-          retailAccountId: true
+          retailAccount: true
           direction: true
           callid: true
           callidHash: true
@@ -83,7 +83,7 @@ production:
             endTime: 6
             caller: 6
             callee: 6
-            retailAccountId: 6
+            retailAccount: 6
             direction: 6
         group2:
           label: _("Identify Call")

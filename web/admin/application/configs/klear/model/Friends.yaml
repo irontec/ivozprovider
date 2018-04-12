@@ -4,7 +4,7 @@
 production:
   entity: Ivoz\Provider\Domain\Model\Friend\Friend
   fields:
-    companyId:
+    company:
       title: ngettext('Company', 'Companies', 1)
       type: select
       required: true
@@ -32,7 +32,7 @@ production:
         text: _("Allowed characters: a-z, A-Z, 0-9, underscore and '*'")
         label: _("Need help?")
       default: true
-    domainId:
+    domain:
       title: ngettext('Domain', 'Domains', 1)
       type: select
       required: true
@@ -108,7 +108,7 @@ production:
       options:
         commands:
           generatePassword_command: true
-    callACLId:
+    callACL:
       title: _('Call ACL')
       type: select
       source:
@@ -123,7 +123,7 @@ production:
           order:
             CallAcl.name: asc
         'null': _("Allow all outgoing calls")
-    transformationRuleSetId:
+    transformationRuleSet:
       title: ngettext('Numeric transformation', 'Numeric transformations', 1)
       type: select
       defaultValue: 'null'
@@ -139,7 +139,7 @@ production:
           order:
             TransformationRuleSet.name.${lang}: asc
         'null': _("Company's default")
-    outgoingDDIId:
+    outgoingDDI:
       title: _('Fallback Outgoing DDI')
       type: select
       source:
@@ -248,7 +248,7 @@ production:
             visualFilter:
               hide: ["ip", "port", "transport", "auth_needed"]
               show: ["password"]
-    languageId:
+    language:
       title: _('Language')
       type: select
       source:

@@ -22,29 +22,29 @@ production:
           - Ddi.ddi asc
       fields:
         order: &dDIsFieldsOder_Link
-          countryId: true
+          country: true
           DDI: true
-          companyId: true
-          peeringContractId: true
+          company: true
+          peeringContract: true
         blacklist:
-          externalCallFilterId: true
+          externalCallFilter: true
           routeType: true
           target: true
           displayName: true
-          userId: true
-          faxId: true
-          ivrId: true
-          huntGroupId: true
+          user: true
+          fax: true
+          ivr: true
+          huntGroup: true
           ddie164: true
           brand: true
-          conferenceRoomId: true
+          conferenceRoom: true
           recordCalls: true
           billInboundCalls: true
           friendValue: true
-          queueId: true
-          retailAccountId: true
-          languageId: true
-          conditionalRouteId: true
+          queue: true
+          retailAccount: true
+          language: true
+          conditionalRoute: true
 staging: 
   _extends: production
 testing:

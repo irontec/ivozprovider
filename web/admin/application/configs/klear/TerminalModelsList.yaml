@@ -25,7 +25,7 @@ production:
             terminalModelsDel_dialog: true
           default: terminalModelsEdit_screen
         order: &terminalModels_orderLink
-          TerminalManufacturerId: true
+          terminalManufacturer: true
           iden: true
           name: true
           description: true

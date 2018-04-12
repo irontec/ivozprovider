@@ -30,8 +30,8 @@ production:
           default: kamTrunksCdrsView_screen
         order:
           startTime: true
-          brandId: true
-          companyId: true
+          brand: true
+          company: true
           callee: true
           duration: true
           price: true
@@ -60,8 +60,8 @@ production:
           label: _("Basic Information")
           colsPerRow: 12
           fields:
-            brandId: 6
-            companyId: 6
+            brand: 6
+            company: 6
             callee: 6
             startTime: 6
             duration: 6
@@ -70,9 +70,9 @@ production:
           colsPerRow: 12
           fields:
             price: 6
-            peeringContractId: 6
+            peeringContract: 6
             direction: 6
-            invoiceId: 6
+            invoice: 6
 
 staging:
   _extends: production

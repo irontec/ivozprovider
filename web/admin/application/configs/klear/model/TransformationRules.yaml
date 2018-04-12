@@ -11,7 +11,7 @@ production:
       type: text
       required: true
       maxLength: 64
-    transformationRuleSetId:
+    transformationRuleSet:
       title: ngettext('Numeric transformation', 'Numeric transformations', 0)
       type: select
       required: true

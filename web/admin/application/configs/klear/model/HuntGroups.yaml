@@ -11,7 +11,7 @@ production:
       title: _('Description')
       type: text
       trim: both
-    companyId:
+    company:
       title: ngettext('Company', 'Companies', 1)
       type: select
       required: true
@@ -90,29 +90,29 @@ production:
             title:  _("Unassigned")
             visualFilter:
               hide: &routableFields
-                - noAnswerNumberCountryId
+                - noAnswerNumberCountry
                 - noAnswerNumberValue
-                - noAnswerExtensionId
-                - noAnswerVoiceMailUserId
+                - noAnswerExtension
+                - noAnswerVoiceMailUser
           'number':
             title: _('Number')
             visualFilter:
-              show: [ noAnswerNumberCountryId, noAnswerNumberValue ]
+              show: [ noAnswerNumberCountry, noAnswerNumberValue ]
               hide:
                 <<: *routableFields
           'extension':
             title: ngettext('Extension', 'Extensions', 1)
             visualFilter:
-              show: [ noAnswerExtensionId ]
+              show: [ noAnswerExtension ]
               hide:
                 <<: *routableFields
           'voicemail':
             title: ngettext('Voicemail', 'Voicemails', 1)
             visualFilter:
-              show: [ noAnswerVoiceMailUserId ]
+              show: [ noAnswerVoiceMailUser ]
               hide:
                 <<: *routableFields
-    noAnswerLocutionId:
+    noAnswerLocution:
       title: _('No answer locution')
       type: select
       source:
@@ -127,7 +127,7 @@ production:
           order:
             Locution.name: asc
         'null': _("Unassigned")
-    noAnswerNumberCountryId:
+    noAnswerNumberCountry:
       title: _('Country')
       type: select
       required: true
@@ -147,7 +147,7 @@ production:
       type: text
       required: true
       maxLength: 25
-    noAnswerExtensionId:
+    noAnswerExtension:
       title: ngettext('Extension', 'Extensions', 1)
       type: select
       required: true
@@ -163,7 +163,7 @@ production:
           order:
             Extension.number: asc
         'null': _("Unassigned")
-    noAnswerVoiceMailUserId:
+    noAnswerVoiceMailUser:
       title: ngettext('Voicemail', 'Voicemails', 1)
       type: select
       required: true

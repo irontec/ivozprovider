@@ -19,7 +19,7 @@ production:
         <<: *forcedCompany
       fields: &outgoingDDIRules_fieldsLink
         blacklist:
-          forcedDdiId: true
+          forcedDdi: true
         order:
           name: true
           defaultAction: true
@@ -62,7 +62,7 @@ production:
           colsPerRow: 12
           fields:
             defaultAction: 6
-            forcedDdiId: 6
+            forcedDdi: 6
       shortcutOption: N
 
     outgoingDDIRulesEdit_screen: &outgoingDDIRulesEdit_screenLink
@@ -89,10 +89,10 @@ production:
         - recordCount
     outgoingDDIRulesPatternsNew_screen:
       <<: *outgoingDDIRulesPatternsNew_screenLink
-      filterField: outgoingDdiRuleId
+      filterField: outgoingDdiRule
     outgoingDDIRulesPatternsEdit_screen:
       <<: *outgoingDDIRulesPatternsEdit_screenLink
-      filterField: outgoingDdiRuleId
+      filterField: outgoingDdiRule
 
   dialogs: &outgoingDDIRules_dialogsLink
     outgoingDDIRulesDel_dialog: &outgoingDDIRulesDel_dialogLink

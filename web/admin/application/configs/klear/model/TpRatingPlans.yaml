@@ -4,7 +4,7 @@ production:
     id:
       title: ngettext('Id', 'Ids', 1)
       required: false
-    ratingPlanId:
+    ratingPlan:
       title: ngettext('Rating plan', 'Rating plans', 1)
       type: select
       source:
@@ -18,7 +18,7 @@ production:
             template: '%name${lang}%'
           order:
             Destination.name.${lang}: asc
-    destinationRateId:
+    destinationRate:
       title: ngettext('Destination rate', 'Destination rates', 1)
       type: select
       source:
@@ -32,7 +32,7 @@ production:
             template: '%name${lang}%'
           order:
             DestinationRate.name.${lang}: asc
-    timingId:
+    timing:
       title: ngettext('Timing', 'Timing', 1)
       type: select
       defaultValue: 1

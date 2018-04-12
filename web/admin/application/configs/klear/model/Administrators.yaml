@@ -38,7 +38,7 @@ production:
             title: _("No")
           '1':
             title: _("Yes")
-    brandId:
+    brand:
       title: ngettext('Brand', 'Brands', 1)
       type: select
       required: true
@@ -52,7 +52,7 @@ production:
             template: '%name%'
           order:
             Brand.name: asc
-    companyId:
+    company:
       title: ngettext('Company', 'Companies', 1)
       type: select
       required: true
@@ -67,7 +67,7 @@ production:
           order:
             Company.name: asc
         'null': _("Unassigned")
-    timezoneId:
+    timezone:
       title: _('Timezone')
       type: select
       defaultValue: 145

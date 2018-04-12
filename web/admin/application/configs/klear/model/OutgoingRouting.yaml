@@ -11,19 +11,19 @@ production:
           'pattern':
             title: _('Pattern')
             visualFilter:
-              show: ["routingPatternId"]
-              hide: ["routingPatternGroupId"]
+              show: ["routingPattern"]
+              hide: ["routingPatternGroup"]
           'group':
             title: _('Group')
             visualFilter:
-              show: ["routingPatternGroupId" ]
-              hide: ["routingPatternId"]
+              show: ["routingPatternGroup" ]
+              hide: ["routingPattern"]
           'fax':
             title: _('Fax')
             visualFilter:
-              hide: ["routingPatternId","routingPatternGroupId"]
+              hide: ["routingPattern","routingPatternGroup"]
               show: []
-    routingPatternId:
+    routingPattern:
       title: _('Select destination pattern')
       type: select
       source:
@@ -39,7 +39,7 @@ production:
             template: '%name${lang}% %description${lang}% (%regExp%)'
           order:
             RoutingPattern.name.${lang}: asc
-    routingPatternGroupId:
+    routingPatternGroup:
       title: _('Select destination group')
       type: select
       source:
@@ -53,7 +53,7 @@ production:
             template: '%name%'
           order:
             RoutingPatternGroup.name: asc
-    peeringContractId:
+    peeringContract:
       title: _('Peering contract')
       type: select
       required: true
@@ -86,7 +86,7 @@ production:
         control: Spinner
         min: 1
         max: 254
-    companyId:
+    company:
       title: ngettext('Company', 'Companies', 1)
       type: select
       source:

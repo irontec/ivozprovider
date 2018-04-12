@@ -4,7 +4,7 @@
 production:
   entity: Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount
   fields:
-    companyId:
+    company:
       title: ngettext('Company', 'Companies', 1)
       type: select
       required: true
@@ -32,7 +32,7 @@ production:
         text: _("Allowed characters: a-z, A-Z, 0-9, underscore and '*'")
         label: _("Need help?")
       default: true
-    domainId:
+    domain:
       title: ngettext('Domain', 'Domains', 1)
       type: select
       required: true
@@ -100,7 +100,7 @@ production:
       options:
         commands:
           generatePassword_command: true
-    outgoingDdiId:
+    outgoingDdi:
       title: _('Fallback Outgoing DDI')
       type: select
       source:
@@ -203,7 +203,7 @@ production:
             visualFilter:
               hide: ["ip", "port", "transport", "auth_needed"]
               show: []
-    languageId:
+    language:
       title: _('Language')
       type: select
       source:
@@ -231,7 +231,7 @@ production:
       source:
         class: IvozProvider_Klear_Ghost_RegisterStatus
         method: getRetailAccountStatus
-    transformationRuleSetId:
+    transformationRuleSet:
       title: ngettext('Numeric transformation', 'Numeric transformations', 1)
       type: select
       source:

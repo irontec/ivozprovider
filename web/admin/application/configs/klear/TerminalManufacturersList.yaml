@@ -56,10 +56,10 @@ production:
         - recordCount
     terminalModelsNew_screen:
       <<: *terminalModelsNew_screenLink
-      filterField: terminalManufacturerId
+      filterField: terminalManufacturer
     terminalModelsEdit_screen:
       <<: *terminalModelsEdit_screenLink
-      filterField: terminalManufacturerId
+      filterField: terminalManufacturer
       fields:
         order:
           <<: *terminalModels_orderLink

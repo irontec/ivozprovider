@@ -1,7 +1,7 @@
 production:
   entity: Ivoz\Provider\Domain\Model\Schedule\Schedule
   fields: 
-    companyId:
+    company:
       title: ngettext('Company', 'Companies', 1)
       type: select
       required: true

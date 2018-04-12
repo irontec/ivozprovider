@@ -18,7 +18,7 @@ production:
       isMultilang: true
       trim: both
       maxLength: 255
-    brandId:
+    brand:
       title: ngettext('Brand', 'Brands', 1)
       type: select
       required: true

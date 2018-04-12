@@ -1,7 +1,7 @@
 production:
   entity: Ivoz\Provider\Domain\Model\IvrEntry\IvrEntry
   fields:
-    ivrId:
+    ivr:
       title: ngettext('IVR', 'IVRs', 1)
       type: select
       required: true
@@ -27,7 +27,7 @@ production:
         icon: help
         text: _("You can use regular expressions to define values this entry will match.")
         label: _("Need help?")
-    welcomeLocutionId:
+    welcomeLocution:
       title: _('Welcome locution')
       type: select
       source:
@@ -53,36 +53,36 @@ production:
             title: _('Unassigned')
             visualFilter:
               hide: &routableFields
-                - numberCountryId
+                - numberCountry
                 - numberValue
-                - extensionId
-                - voiceMailUserId
-                - conditionalRouteId
+                - extension
+                - voiceMailUser
+                - conditionalRoute
           'number':
             title: _('Number')
             visualFilter:
-              show: [ numberCountryId, numberValue]
+              show: [ numberCountry, numberValue]
               hide:
                 <<: *routableFields
           'extension':
             title: ngettext('Extension', 'Extensions', 1)
             visualFilter:
-              show: [ extensionId ]
+              show: [ extension ]
               hide:
                 <<: *routableFields
           'voicemail':
             title: ngettext('Voicemail', 'Voicemails', 1)
             visualFilter:
-              show: [ voiceMailUserId ]
+              show: [ voiceMailUser ]
               hide:
                 <<: *routableFields
           'conditional':
             title: _('Conditional Route')
             visualFilter:
-              show: [ conditionalRouteId ]
+              show: [ conditionalRoute ]
               hide:
                 <<: *routableFields
-    numberCountryId:
+    numberCountry:
       title: _('Country')
       type: select
       required: true
@@ -102,7 +102,7 @@ production:
       type: text
       trim: both
       required: true
-    extensionId:
+    extension:
       title: ngettext('Extension', 'Extensions', 1)
       type: select
       required: true
@@ -118,7 +118,7 @@ production:
           order:
             Extension.number: asc
         'null': _("Unassigned")
-    voiceMailUserId:
+    voiceMailUser:
       title: ngettext('Voicemail', 'Voicemails', 1)
       type: select
       required: true
@@ -135,7 +135,7 @@ production:
           order:
             User.name: asc
         'null': _("Unassigned")
-    conditionalRouteId:
+    conditionalRoute:
       title: ngettext('Conditional Route', 'Conditional Routes', 1)
       type: select
       required: true

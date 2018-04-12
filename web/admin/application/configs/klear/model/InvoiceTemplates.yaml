@@ -52,7 +52,7 @@ production:
           lineNumbers: true
           matchBrackets: true
       <<: *invoiceTemplateFooterHeaderHelp
-    brandId:
+    brand:
       title: ngettext('Brand', 'Brands', 1)
       type: select
       required: true

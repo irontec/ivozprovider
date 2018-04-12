@@ -25,17 +25,17 @@ production:
             externalCallFiltersRetailDel_dialog: true
           default: externalCallFiltersRetailEdit_screen
         blacklist: &externalCallFiltersRetail_blacklistLink
-          companyId: false
-          welcomeLocutionId: true
-          holidayLocutionId: true
-          outOfScheduleLocutionId: true
+          company: false
+          welcomeLocution: true
+          holidayLocution: true
+          outOfScheduleLocution: true
           holidayTargetType: false
           holidayNumberValue: true
-          holidayExtensionId: true
-          holidayVoiceMailUserId: true
+          holidayExtension: true
+          holidayVoiceMailUser: true
           outOfScheduleTargetType: false
-          outOfScheduleExtensionId: true
-          outOfScheduleVoiceMailUserId: true
+          outOfScheduleExtension: true
+          outOfScheduleVoiceMailUser: true
           blackListRegExp: true
           whiteListRegExp: true
           holidayTargetType: true
@@ -47,7 +47,7 @@ production:
           ExternalCallFilterWhiteLists: true
           ExternalCallFilterBlackLists: true
         order: &externalCallFiltersRetail_orderLink
-          companyId: true
+          company: true
           name: true
       options:
         title: _("Options")
