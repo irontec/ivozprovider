@@ -135,6 +135,11 @@ class Rates
         );
         $tpDestinationRates = [];
 
+        if (current($csvLines) && !is_array(current($csvLines))) {
+            // We require an array of arrays
+            $csvLines = [$csvLines];
+        }
+
         // Parse every CSV line
         foreach ($csvLines as $line) {
 
@@ -224,7 +229,6 @@ class Rates
                 ->persistDto($destinationRateDto, $destinationRate, true);
 
             $this->em->close();
-
 
             throw $exception;
         }
