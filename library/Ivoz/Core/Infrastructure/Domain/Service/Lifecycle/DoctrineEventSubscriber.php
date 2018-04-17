@@ -69,8 +69,14 @@ class DoctrineEventSubscriber implements EventSubscriber
 
             Events::onFlush,
 
+            Events::postLoad,
             CustomEvents::onCommit
         ];
+    }
+
+    public function postLoad(LifecycleEventArgs $args)
+    {
+        $args->getObject()->initChangelog();
     }
 
     public function prePersist(LifecycleEventArgs $args)
@@ -103,17 +109,6 @@ class DoctrineEventSubscriber implements EventSubscriber
         $this->run('post_remove', $args);
     }
 
-    public function onCommit(OnCommitEventArgs $args)
-    {
-        foreach ($this->flushedEntities as $entity) {
-            $this->run(
-                'on_commit',
-                new LifecycleEventArgs($entity, $args->getEntityManager())
-            );
-        }
-        $this->flushedEntities = [];
-    }
-
     public function onFlush(OnFlushEventArgs $eventArgs)
     {
         $em = $eventArgs->getEntityManager();
@@ -144,6 +139,22 @@ class DoctrineEventSubscriber implements EventSubscriber
                 $this->flushedEntities[] = $entity;
             }
         }
+    }
+
+    public function onCommit(OnCommitEventArgs $args)
+    {
+        foreach ($this->flushedEntities as $entity) {
+            $this->run(
+                'on_commit',
+                new LifecycleEventArgs($entity, $args->getEntityManager())
+            );
+        }
+
+        foreach ($this->flushedEntities as $entity) {
+            $entity->initChangelog();
+        }
+
+        $this->flushedEntities = [];
     }
 
     private function run($eventName, LifecycleEventArgs $args, bool $isNew = false)
