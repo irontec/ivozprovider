@@ -20,6 +20,3 @@ Ivoz\Provider\Domain\Model\Ivr\Ivr:
       mappedBy: ivr
       cascade: ['persist']
       orphanRemoval: true
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

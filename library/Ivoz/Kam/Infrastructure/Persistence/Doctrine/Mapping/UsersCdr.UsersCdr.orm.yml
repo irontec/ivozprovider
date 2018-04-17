@@ -11,6 +11,3 @@ Ivoz\Kam\Domain\Model\UsersCdr\UsersCdr:
       id: true
       generator:
         strategy: IDENTITY
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

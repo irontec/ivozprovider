@@ -15,6 +15,3 @@ Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule:
     patterns:
       targetEntity: Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPatternInterface
       mappedBy: outgoingDdiRule
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

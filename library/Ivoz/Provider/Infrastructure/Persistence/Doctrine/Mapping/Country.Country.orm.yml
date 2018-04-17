@@ -11,6 +11,3 @@ Ivoz\Provider\Domain\Model\Country\Country:
       id: true
       generator:
         strategy: IDENTITY
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

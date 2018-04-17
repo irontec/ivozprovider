@@ -18,6 +18,3 @@ Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount:
     ddis:
       targetEntity: Ivoz\Provider\Domain\Model\Ddi\DdiInterface
       mappedBy: retailAccount
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

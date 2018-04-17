@@ -11,6 +11,3 @@ Ivoz\Provider\Domain\Model\Locution\Locution:
       id: true
       generator:
         strategy: IDENTITY
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

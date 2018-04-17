@@ -11,6 +11,3 @@ Ivoz\Cgr\Domain\Model\TpDestination\TpDestination:
       id: true
       generator:
         strategy: IDENTITY
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

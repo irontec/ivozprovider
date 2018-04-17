@@ -15,6 +15,3 @@ Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPattern:
     lcrRules:
       targetEntity: Ivoz\Provider\Domain\Model\LcrRule\LcrRuleInterface
       mappedBy: routingPattern
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

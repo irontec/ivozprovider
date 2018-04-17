@@ -11,6 +11,3 @@ Ivoz\Kam\Domain\Model\UsersPua\UsersPua:
       id: true
       generator:
         strategy: IDENTITY
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

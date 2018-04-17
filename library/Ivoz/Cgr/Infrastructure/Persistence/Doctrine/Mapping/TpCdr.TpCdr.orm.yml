@@ -11,6 +11,3 @@ Ivoz\Cgr\Domain\Model\TpCdr\TpCdr:
       id: true
       generator:
         strategy: IDENTITY
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

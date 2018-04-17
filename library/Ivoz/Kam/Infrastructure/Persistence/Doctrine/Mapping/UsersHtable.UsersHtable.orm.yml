@@ -11,6 +11,3 @@ Ivoz\Kam\Domain\Model\UsersHtable\UsersHtable:
       id: true
       generator:
         strategy: IDENTITY
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

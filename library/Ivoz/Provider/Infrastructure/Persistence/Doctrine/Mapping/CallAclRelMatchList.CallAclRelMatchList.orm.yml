@@ -11,6 +11,3 @@ Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchList:
       id: true
       generator:
         strategy: IDENTITY
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

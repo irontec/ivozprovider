@@ -25,6 +25,3 @@ Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRo
           nullable: false
           onDelete: cascade
       orphanRemoval: false
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

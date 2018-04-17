@@ -11,6 +11,3 @@ Ivoz\Kam\Domain\Model\Dispatcher\Dispatcher:
       id: true
       generator:
         strategy: IDENTITY
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog
