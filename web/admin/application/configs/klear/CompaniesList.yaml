@@ -373,6 +373,7 @@ production:
 
     # tpRatingProfiles:
     <<: *tpRatingProfiles_dialogsLink
+    <<: *simulateCall_dialogLink
 
     # Administrators dialogs
     <<: *administrators_dialogsLink

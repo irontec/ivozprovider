@@ -56,6 +56,9 @@ msgstr "Activation time"
 msgid "Active"
 msgstr "Active"
 
+msgid "Active pricing plan does not allow to call introduced phone number"
+msgstr "Active pricing plan does not allow to call introduced phone number"
+
 #, python-format
 msgid "Add %s"
 msgstr "Add %s"
@@ -743,6 +746,9 @@ msgstr[1] "Files for play"
 
 msgid "File imported"
 msgstr "File imported"
+
+msgid "File partially imported"
+msgstr "File partially imported"
 
 msgid "Filter by IP address"
 msgstr "Filter by IP address"
@@ -1566,6 +1572,9 @@ msgstr "Periodic Announce Frequency"
 msgid "Personal data"
 msgstr "Personal data"
 
+msgid "Phone number"
+msgstr "Phone number"
+
 msgid "Pick Up Groups"
 msgstr "Pick Up Groups"
 
@@ -1592,7 +1601,13 @@ msgid "Platform Configuration"
 msgstr "Platform Configuration"
 
 msgid "Please, choose a file to import"
-msgstr ""
+msgstr "Please, choose a file to import"
+
+msgid "Please, type a duration in seconds"
+msgstr "Please, type a duration in seconds"
+
+msgid "Please, type a phone number"
+msgstr "Please, type a phone number"
 
 msgid "Points to"
 msgstr "Points to"
@@ -1726,6 +1741,9 @@ msgid_plural "Rating Profiles"
 msgstr[0] "Rating Profile"
 msgstr[1] "Rating Profiles"
 
+msgid "Rating Profile Tester"
+msgstr "Rating Profile Tester"
+
 msgid "Rating plan"
 msgid_plural "Rating plans"
 msgstr[0] "Rating plan"
@@ -1792,6 +1810,9 @@ msgstr "Restore default template"
 
 msgid "Restore last backup"
 msgstr "Restore last backup"
+
+msgid "Results"
+msgstr "Results"
 
 msgid "Retail Account"
 msgid_plural "Retail Accounts"
@@ -1945,6 +1966,9 @@ msgstr "Set column configuration and continue."
 msgid "Setid"
 msgstr "Setid"
 
+msgid "Simulate a call"
+msgstr "Simulate a call"
+
 msgid "Source"
 msgstr "Source"
 
@@ -2039,6 +2063,9 @@ msgid "Terminal model"
 msgid_plural "Terminal models"
 msgstr[0] "Terminal model"
 msgstr[1] "Terminal models"
+
+msgid "Test"
+msgstr "Test"
 
 msgid "Test the code"
 msgstr "Test the code"
@@ -2411,9 +2438,6 @@ msgstr "You have to emulate a brand to be able to emulate a company"
 msgid "allow"
 msgstr "allow"
 
-msgid "but following errors ocurred"
-msgstr "but following errors ocurred"
-
 msgid "deny"
 msgstr "deny"
 
@@ -2443,6 +2467,9 @@ msgstr "Pending"
 
 msgid "ready"
 msgstr "ready"
+
+msgid "seconds"
+msgstr "seconds"
 
 msgid "shared"
 msgstr "shared"
