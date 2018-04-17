@@ -21,7 +21,7 @@ class IncrementBalance
     protected $logger;
 
     /**
-     * @var CompanyBalanceServiceClientInterface
+     * @var CompanyBalanceServiceInterface
      */
     protected $client;
 
@@ -52,7 +52,7 @@ class IncrementBalance
     public function __construct(
         DoctrineEntityPersister $entityPersister,
         Logger $logger,
-        CompanyBalanceServiceClientInterface $client,
+        CompanyBalanceServiceInterface $client,
         CompanyRepository $companyRepository,
         SyncBalances $syncBalanceService
     ) {

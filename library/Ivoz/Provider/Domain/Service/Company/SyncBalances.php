@@ -21,7 +21,7 @@ class SyncBalances
     protected $logger;
 
     /**
-     * @var CompanyBalanceServiceClientInterface
+     * @var CompanyBalanceServiceInterface
      */
     protected $client;
 
@@ -33,7 +33,7 @@ class SyncBalances
     public function __construct(
         DoctrineEntityPersister $entityPersister,
         Logger $logger,
-        CompanyBalanceServiceClientInterface $client,
+        CompanyBalanceServiceInterface $client,
         CompanyRepository $companyRepository
     ) {
         $this->entityPersister = $entityPersister;
@@ -70,10 +70,12 @@ class SyncBalances
             }
 
             $this->persistBalances($response->result);
+
             return true;
 
         } catch (\Exception $exception) {
             $this->logger->error($exception->getMessage());
+
             return false;
         }
     }
