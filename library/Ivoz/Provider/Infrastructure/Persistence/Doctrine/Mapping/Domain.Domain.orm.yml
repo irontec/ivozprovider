@@ -21,7 +21,3 @@ Ivoz\Provider\Domain\Model\Domain\Domain:
     terminals:
       targetEntity: Ivoz\Provider\Domain\Model\Terminal\TerminalInterface
       mappedBy: domain
-
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

@@ -11,6 +11,3 @@ Ivoz\Provider\Domain\Model\Timezone\Timezone:
       id: true
       generator:
         strategy: IDENTITY
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

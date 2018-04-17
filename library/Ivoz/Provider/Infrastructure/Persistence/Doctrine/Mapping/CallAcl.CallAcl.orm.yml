@@ -17,6 +17,3 @@ Ivoz\Provider\Domain\Model\CallAcl\CallAcl:
       mappedBy: callAcl
       cascade: ['persist']
       orphanRemoval: true
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

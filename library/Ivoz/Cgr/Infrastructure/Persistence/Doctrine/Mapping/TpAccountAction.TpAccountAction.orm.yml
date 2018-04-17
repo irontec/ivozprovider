@@ -11,6 +11,3 @@ Ivoz\Cgr\Domain\Model\TpAccountAction\TpAccountAction:
       id: true
       generator:
         strategy: IDENTITY
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

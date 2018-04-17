@@ -17,6 +17,3 @@ Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup:
       mappedBy: huntGroup
       cascade: ['persist']
       orphanRemoval: true
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

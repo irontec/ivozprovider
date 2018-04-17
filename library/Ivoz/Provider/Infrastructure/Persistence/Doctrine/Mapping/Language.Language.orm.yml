@@ -11,6 +11,3 @@ Ivoz\Provider\Domain\Model\Language\Language:
       id: true
       generator:
         strategy: IDENTITY
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

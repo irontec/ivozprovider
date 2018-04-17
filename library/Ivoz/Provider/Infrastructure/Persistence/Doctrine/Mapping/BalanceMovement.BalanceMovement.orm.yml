@@ -11,6 +11,3 @@ Ivoz\Provider\Domain\Model\BalanceMovement\BalanceMovement:
       id: true
       generator:
         strategy: IDENTITY
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

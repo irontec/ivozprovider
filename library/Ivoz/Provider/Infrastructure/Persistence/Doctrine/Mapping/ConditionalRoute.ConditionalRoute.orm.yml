@@ -15,6 +15,3 @@ Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute:
     conditions:
       targetEntity: Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesConditionInterface
       mappedBy: conditionalRoute
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

@@ -11,6 +11,3 @@ Ivoz\Kam\Domain\Model\TrunksHtable\TrunksHtable:
       id: true
       generator:
         strategy: IDENTITY
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

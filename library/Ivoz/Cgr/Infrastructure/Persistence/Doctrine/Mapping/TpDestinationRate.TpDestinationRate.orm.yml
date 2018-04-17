@@ -18,6 +18,3 @@ Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRate:
     tpRate:
       targetEntity: Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface
       mappedBy: tpDestinationRate
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

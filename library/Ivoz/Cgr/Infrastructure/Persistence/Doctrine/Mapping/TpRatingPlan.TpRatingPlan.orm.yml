@@ -11,6 +11,3 @@ Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlan:
       id: true
       generator:
         strategy: IDENTITY
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

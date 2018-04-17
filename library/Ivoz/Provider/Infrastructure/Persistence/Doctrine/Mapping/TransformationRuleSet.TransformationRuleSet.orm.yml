@@ -15,6 +15,3 @@ Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet:
     rules:
       targetEntity: Ivoz\Provider\Domain\Model\TransformationRule\TransformationRuleInterface
       mappedBy: transformationRuleSet
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

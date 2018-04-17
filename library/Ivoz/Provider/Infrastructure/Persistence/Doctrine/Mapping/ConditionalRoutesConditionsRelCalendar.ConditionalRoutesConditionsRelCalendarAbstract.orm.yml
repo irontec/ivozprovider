@@ -25,6 +25,3 @@ Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRou
           nullable: false
           onDelete: cascade
       orphanRemoval: false
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

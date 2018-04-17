@@ -11,6 +11,3 @@ Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet:
       id: true
       generator:
         strategy: IDENTITY
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

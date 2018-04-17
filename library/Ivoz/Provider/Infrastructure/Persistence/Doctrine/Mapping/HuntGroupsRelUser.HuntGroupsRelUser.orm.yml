@@ -11,6 +11,3 @@ Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUser:
       id: true
       generator:
         strategy: IDENTITY
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

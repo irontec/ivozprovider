@@ -15,6 +15,3 @@ Ivoz\Provider\Domain\Model\Extension\Extension:
     users:
       targetEntity: Ivoz\Provider\Domain\Model\User\UserInterface
       mappedBy: extension
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

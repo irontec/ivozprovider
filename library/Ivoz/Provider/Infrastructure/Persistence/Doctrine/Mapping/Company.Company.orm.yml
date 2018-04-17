@@ -43,6 +43,3 @@ Ivoz\Provider\Domain\Model\Company\Company:
       mappedBy: company
       cascade: ['persist']
       orphanRemoval: true
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

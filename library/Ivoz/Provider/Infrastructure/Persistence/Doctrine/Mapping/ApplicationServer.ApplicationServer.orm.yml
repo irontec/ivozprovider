@@ -11,6 +11,3 @@ Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServer:
       id: true
       generator:
         strategy: IDENTITY
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

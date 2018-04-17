@@ -11,6 +11,3 @@ Ivoz\Provider\Domain\Model\QueueMember\QueueMember:
       id: true
       generator:
         strategy: IDENTITY
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

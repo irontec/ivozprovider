@@ -11,6 +11,3 @@ Ivoz\Kam\Domain\Model\TrunksDomainAttr\TrunksDomainAttr:
       id: true
       generator:
         strategy: IDENTITY
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

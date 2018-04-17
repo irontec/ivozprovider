@@ -11,6 +11,3 @@ Ivoz\Kam\Domain\Model\PikeTrusted\PikeTrusted:
       id: true
       generator:
         strategy: IDENTITY
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

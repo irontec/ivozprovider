@@ -15,6 +15,3 @@ Ivoz\Provider\Domain\Model\Invoice\Invoice:
     relFixedCosts:
       targetEntity: Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoice
       mappedBy: invoice
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

@@ -11,6 +11,3 @@ Ivoz\Provider\Domain\Model\Recording\Recording:
       id: true
       generator:
         strategy: IDENTITY
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

@@ -38,6 +38,3 @@ Ivoz\Provider\Domain\Model\Brand\Brand:
     outgoingRoutings:
       targetEntity: Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface
       mappedBy: brand
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

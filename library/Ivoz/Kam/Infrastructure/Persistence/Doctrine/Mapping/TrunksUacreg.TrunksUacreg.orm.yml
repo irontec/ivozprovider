@@ -11,6 +11,3 @@ Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacreg:
       id: true
       generator:
         strategy: IDENTITY
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

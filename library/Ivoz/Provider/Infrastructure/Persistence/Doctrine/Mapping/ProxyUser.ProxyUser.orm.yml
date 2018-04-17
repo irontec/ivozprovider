@@ -11,6 +11,3 @@ Ivoz\Provider\Domain\Model\ProxyUser\ProxyUser:
       id: true
       generator:
         strategy: IDENTITY
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog
