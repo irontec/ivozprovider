@@ -1,12 +1,12 @@
 <?php
 
-namespace Ivoz\Core\Infrastructure\Service\Cgrates;
+namespace Ivoz\Core\Infrastructure\Domain\Service\Cgrates;
 
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
-use Ivoz\Provider\Domain\Service\Company\CompanyBalanceServiceClientInterface;
+use Ivoz\Provider\Domain\Service\Company\CompanyBalanceServiceInterface;
 use Graze\GuzzleHttp\JsonRpc\Client;
 
-class JsonRcpClient implements CompanyBalanceServiceClientInterface
+class CompanyBalanceService implements CompanyBalanceServiceInterface
 {
     /**
      * @var Client

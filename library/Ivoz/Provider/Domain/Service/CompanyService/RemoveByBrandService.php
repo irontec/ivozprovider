@@ -38,12 +38,10 @@ class RemoveByBrandService implements BrandServiceLifecycleEventHandlerInterface
 
     function __construct(
         EntityManagerInterface $em,
-        EntityPersisterInterface $entityPersister,
         CompanyRepository $companyRepository,
         CompanyServiceRepository $companyServiceRepository
     ) {
         $this->em = $em;
-        $this->entityPersister = $entityPersister;
         $this->companyRepository = $companyRepository;
         $this->companyServiceRepository = $companyServiceRepository;
     }

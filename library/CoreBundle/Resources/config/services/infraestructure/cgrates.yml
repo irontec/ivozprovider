@@ -4,7 +4,12 @@ services:
     autoconfigure: true
     public: false
 
-  Ivoz\Core\Infrastructure\Service\Cgrates\JsonRcpClient:
+  Ivoz\Core\Infrastructure\Domain\Service\Cgrates\CompanyBalanceService:
+    arguments:
+      $client: '@Graze\GuzzleHttp\JsonRpc\Client'
+
+  Ivoz\Core\Infrastructure\Domain\Service\Cgrates\BillingService:
+    public: true
     arguments:
       $client: '@Graze\GuzzleHttp\JsonRpc\Client'
 
