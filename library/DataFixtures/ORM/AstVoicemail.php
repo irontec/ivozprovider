@@ -22,7 +22,7 @@ class AstVoicemail extends Fixture implements DependentFixtureInterface
     
         $item1 = $this->createEntityInstanceWithPublicMethods(Voicemail::class);
         $item1->setContext("company1");
-        $item1->setMailbox("");
+        $item1->setMailbox("user1");
         $item1->setFullname("Alice Allison");
         $item1->setEmail("alice@democompany.com");
         $item1->setAttach("yes");
@@ -34,7 +34,7 @@ class AstVoicemail extends Fixture implements DependentFixtureInterface
 
         $item2 = $this->createEntityInstanceWithPublicMethods(Voicemail::class);
         $item2->setContext("company1");
-        $item2->setMailbox("102");
+        $item2->setMailbox("user2");
         $item2->setFullname("Bob ");
         $item2->setEmail("bob@democompany.com");
         $item2->setAttach("yes");
