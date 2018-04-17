@@ -361,13 +361,13 @@ trait ImporterControllerTrait
                     }
 
                     $this->_log($e->getMessage());
-                    $errors[] = $e->getMessage();
+                    $errors = $e->getMessage();
                     break;
 
                 } catch (\Exception $e) {
 
                     $this->_log($e->getMessage());
-                    $errors[] = $e->getMessage();
+                    $errors = $e->getMessage();
                     break;
                 }
             }
@@ -378,23 +378,14 @@ trait ImporterControllerTrait
             $message =
                 $this->_helper->translate("File partially imported")
                 . ". "
-                . $this->_helper->translate("There was an error on"). ":<ul>";
-
-            for ($i = 0; $i < count($errors); $i++) {
-                if ($i > 3) {
-                    $message .= "<li>... </li>";
-                    break;
-                }
-
-                $error = $errors[$i];
-                $message .= "<li>".$this->_helper->translate($error)."</li>";
-            }
-
-            $message .= "</ul>";
+                . sprintf(
+                    $this->_helper->translate("There was an error: %s"),
+                    $this->_helper->translate($error)
+                );
         } else {
-
             $message = $this->_helper->translate("File imported");
         }
+
         return array ("error" => false, "message" => $message);
     }
 

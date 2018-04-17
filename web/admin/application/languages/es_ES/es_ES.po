@@ -56,6 +56,9 @@ msgstr "Activado desde"
 msgid "Active"
 msgstr "Activo"
 
+msgid "Active pricing plan does not allow to call introduced phone number"
+msgstr "El plan de precios activo no permite llamar al destino introducido"
+
 #, python-format
 msgid "Add %s"
 msgstr "Añadir %s"
@@ -756,6 +759,9 @@ msgstr[1] "Ficheros convertidos"
 
 msgid "File imported"
 msgstr "Fichero importado"
+
+msgid "File partially imported"
+msgstr "Fichero parcialmente importado"
 
 msgid "Filter by IP address"
 msgstr "Filtrado por IP"
@@ -1586,6 +1592,9 @@ msgstr "Frecuencia locución periódica"
 msgid "Personal data"
 msgstr "Datos personales"
 
+msgid "Phone number"
+msgstr "Número de teléfono"
+
 msgid "Pick Up Groups"
 msgstr "Grupos de captura"
 
@@ -1613,6 +1622,12 @@ msgstr "Configuración de Plataforma"
 
 msgid "Please, choose a file to import"
 msgstr "Por favor, seleccione fichero a importar"
+
+msgid "Please, type a duration in seconds"
+msgstr "Introduzca la duración en segundos"
+
+msgid "Please, type a phone number"
+msgstr "Introduzca un número de teléfono"
 
 msgid "Points to"
 msgstr "Apunta a"
@@ -1746,6 +1761,9 @@ msgid_plural "Rating Profiles"
 msgstr[0] "Perfil de precio"
 msgstr[1] "Perfiles de precio"
 
+msgid "Rating Profile Tester"
+msgstr "Tester de perfiles de precio"
+
 msgid "Rating plan"
 msgid_plural "Rating plans"
 msgstr[0] "Plan de precio"
@@ -1812,6 +1830,9 @@ msgstr "Restaurar plantilla por defecto"
 
 msgid "Restore last backup"
 msgstr "Restaurar último backup"
+
+msgid "Results"
+msgstr "Resultados"
 
 msgid "Retail Account"
 msgid_plural "Retail Accounts"
@@ -1967,6 +1988,9 @@ msgstr "Seleccione la configuración de columna y continuar"
 msgid "Setid"
 msgstr "Setid"
 
+msgid "Simulate a call"
+msgstr "Simular llamada"
+
 msgid "Source"
 msgstr "Origen"
 
@@ -2061,6 +2085,9 @@ msgid "Terminal model"
 msgid_plural "Terminal models"
 msgstr[0] "Modelo de Terminales"
 msgstr[1] "Modelos de Terminales"
+
+msgid "Test"
+msgstr "Probar"
 
 msgid "Test the code"
 msgstr "Probar el código"
@@ -2440,9 +2467,6 @@ msgstr "Debe emular una marca antes de emular una compañía"
 msgid "allow"
 msgstr "permitir"
 
-msgid "but following errors ocurred"
-msgstr ""
-
 msgid "deny"
 msgstr "Rechazar"
 
@@ -2472,6 +2496,9 @@ msgstr "Pendiente"
 
 msgid "ready"
 msgstr "Listo"
+
+msgid "seconds"
+msgstr "segundos"
 
 msgid "shared"
 msgstr "compartido"
