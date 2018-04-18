@@ -31,11 +31,3 @@ services:
       $entityPersister:
         '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
 
-  Ivoz\Ast\Domain\Service\Voicemail\UpdateByExtension:
-    tags:
-      - { name: provider.lifecycle.extension.post_persist, priority: 30 }
-    arguments:
-      $entityPersister:
-        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
-      $voicemailRepository:
-        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Ast\\Domain\\Model\\Voicemail\\Voicemail")'
