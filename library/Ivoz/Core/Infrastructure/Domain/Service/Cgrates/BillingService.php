@@ -35,6 +35,7 @@ class BillingService implements BillingServiceInterface
      * @param string $subject
      * @param int $durationSeconds
      *
+     * @throws \DomainException
      * @return SimulatedCall
      */
     public function simulateCall(string $tenant, string $subject, string $destination, int $durationSeconds)
@@ -52,6 +53,48 @@ class BillingService implements BillingServiceInterface
             'Usage' => "${durationSeconds}s"
         ];
 
+        return $this->sendRequest(
+            $payload
+        );
+    }
+
+    /**
+     * Simulate call and get billing details
+     *
+     * @param string $tenant
+     * @param string $subject
+     * @param int $durationSeconds
+     *
+     * @throws \DomainException
+     * @return SimulatedCall
+     */
+    public function simulateCallByRatingPlan(string $tenant, string $ratingPlan, string $destination, int $durationSeconds)
+    {
+        $answerDateTime = new \DateTime();
+        $answerDateTime->setTimestamp(time());
+        $answerDateTime->setTimezone(new \DateTimeZone(date_default_timezone_get()));
+
+        $payload = [
+            'Tenant' => $tenant,
+            'RatingPlanId' => $ratingPlan,
+            'Category' => 'call',
+            'AnswerTime' => $answerDateTime->format('Y-m-d\TH:i:s\Z'),
+            'Destination' => $destination,
+            'Usage' => "${durationSeconds}s"
+        ];
+
+        return $this->sendRequest(
+            $payload
+        );
+    }
+
+    /**
+     * @param $payload
+     * @throws \DomainException
+     * @return SimulatedCall
+     */
+    private function sendRequest(array $payload)
+    {
         /** @var \Graze\GuzzleHttp\JsonRpc\Message\Response $request */
         $request = $this->client
             ->request(
@@ -61,17 +104,22 @@ class BillingService implements BillingServiceInterface
             );
 
         $response = $this->client->send($request);
+        $stringResponse = $response->getBody()->__toString();
 
-        return $this->normalizeResponse(
-            $response->getBody()->__toString()
-        );
-    }
+        try {
 
-    private function normalizeResponse(string $response)
-    {
-        return SimulatedCall::fromCgRatesResponse(
-            $response,
-            $this->entityTools
-        );
+            return SimulatedCall::fromCgRatesResponse(
+                $stringResponse,
+                substr($payload['Usage'], 0, -1),
+                $this->entityTools
+            );
+        } catch (\RuntimeException $e) {
+
+            return SimulatedCall::fromErrorResponse(
+                $e->getMessage(),
+                $payload['RatingPlanId'],
+                $this->entityTools
+            );
+        }
     }
 }

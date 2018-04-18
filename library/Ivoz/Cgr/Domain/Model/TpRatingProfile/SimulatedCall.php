@@ -2,7 +2,9 @@
 
 namespace Ivoz\Cgr\Domain\Model\TpRatingProfile;
 
+use Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlan;
 use Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanDto;
+use Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanRepository;
 use Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRate;
 use Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateRepository;
 use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlan;
@@ -14,6 +16,17 @@ use Ivoz\Core\Application\Service\EntityTools;
  */
 class SimulatedCall
 {
+    const ERROR_UNAUTHORIZED_DESTINATION = 1;
+    const ERROR_NO_RATING_PLAN = 2;
+    const FALLBACK_ERROR_MSG = 'There was a problem';
+
+    protected $errorCode;
+
+    /**
+     * @var string
+     */
+    protected $errorMessage;
+
     /**
      * @var \DateTime
      */
@@ -40,6 +53,11 @@ class SimulatedCall
     protected $prefix;
 
     /**
+     * @var string
+     */
+    protected $intervalStart;
+
+    /**
      * @var float
      */
     protected $connectionFee;
@@ -61,72 +79,149 @@ class SimulatedCall
 
     private function __construct() {}
 
+    /**
+     * @param string $response
+     * @param EntityTools $entityTools
+     * @throws \RuntimeException | \DomainException
+     * @return static
+     */
     public static function fromCgRatesResponse(
         string $response,
+        int $duration,
         EntityTools $entityTools
     ) {
+        $response = json_decode($response);
+
         /** @var TpRatingPlanRepository $tpRatingPlanRepository */
         $tpRatingPlanRepository = $entityTools->getRepository(TpRatingPlan::class);
         /** @var TpDestinationRateRepository $tpDestinationRateRepository */
         $tpDestinationRateRepository = $entityTools->getRepository(TpDestinationRate::class);
 
-        $instance = new static();
-        $response = json_decode($response);
-
         if ($response->error) {
-            throw new \DomainException($response->error);
+            throw new \RuntimeException($response->error);
         }
 
-        try {
-            $result = $response->result;
-            $instance->callDate = \DateTime::createFromFormat(
-                'Y-m-d\TH:i:s\Z',
-                $result->StartTime,
-                new \DateTimeZone('UTC')
-            );
-            $instance->callDuration = substr($result->Usage, 0, -9);
+        $instance = new static();
+        $instance->callDuration = $duration;
 
-            $ratingId = $result->Charges[0]->RatingID;
-            $rateId = $result->Rating->{$ratingId}->RatesID;
-            $ratingFilterId = $result->Rating->{$ratingId}->RatingFiltersID;
+        $result = $response->result;
+        $instance->callDate = \DateTime::createFromFormat(
+            'Y-m-d\TH:i:s\Z',
+            $result->StartTime,
+            new \DateTimeZone('UTC')
+        );
 
-            $instance->connectionFee = $result->Rating->{$ratingId}->ConnectFee;
-            $instance->prefix = $result->RatingFilters->{$ratingFilterId}->DestinationPrefix;
-            $instance->chargePeriod = substr($result->Charges[0]->Increments[0]->Usage, 0, -9);
-            $instance->rate = $result->Charges[0]->Increments[0]->Cost;
-            $instance->cost = $result->Cost;
+        $ratingId = $result->Charges[0]->RatingID;
+        $rateId = $result->Rating->{$ratingId}->RatesID;
+        $ratingFilterId = $result->Rating->{$ratingId}->RatingFiltersID;
 
-            /** @var TpRatingPlan $tpRatingPlan */
-            $tpRatingPlan = $tpRatingPlanRepository->findOneBy([
-                'tag' => $result->RatingFilters->{$ratingFilterId}->RatingPlanID
-            ]);
+        $instance->connectionFee = $result->Rating->{$ratingId}->ConnectFee;
+        $instance->prefix = $result->RatingFilters->{$ratingFilterId}->DestinationPrefix;
 
-            /** @var RatingPlanDto ratingPlan */
-            $instance->ratingPlan = $entityTools->entityToDto(
-                $tpRatingPlan->getRatingPlan()
-            );
+        $charge = end($result->Charges);
+        $instance->chargePeriod = isset($charge->Increments)
+            ? substr($charge->Increments[0]->Usage, 0, -9)
+            : 0;
 
-            $destinationTag = $result->RatingFilters->{$ratingFilterId}->DestinationID;
+        $rates = $result->Rates->{$rateId};
 
-            /** @var TpDestinationRate $tpDestinationRate */
-            $tpDestinationRate = $tpDestinationRateRepository->findOneBy([
-                'destinationsTag' => $destinationTag
-            ]);
+        $interval = $rates[0]->GroupIntervalStart > 0
+            ? substr($rates[0]->GroupIntervalStart, 0, -9)
+            : '0';
+        $instance->intervalStart = $interval;
 
-            $instance->patternName = $tpDestinationRate
-                ->getDestination()
-                ->getPrefixName();
+        $instance->rate = isset($charge->Increments)
+            ? $charge->Increments[0]->Cost
+            : 0;
 
+        $instance->cost = $result->Cost;
+
+        $tag = $result->RatingFilters->{$ratingFilterId}->RatingPlanID;
+        /** @var TpRatingPlan $tpRatingPlan */
+        $tpRatingPlan = $tpRatingPlanRepository->findOneBy([
+            'tag' => $tag
+        ]);
+
+        if (!$tpRatingPlan) {
+            throw new \DomainException(self::FALLBACK_ERROR_MSG);
+        }
+
+        /** @var RatingPlanDto ratingPlan */
+        $instance->ratingPlan = $entityTools->entityToDto(
+            $tpRatingPlan->getRatingPlan()
+        );
+
+        $destinationTag = $result->RatingFilters->{$ratingFilterId}->DestinationID;
+
+        /** @var TpDestinationRate $tpDestinationRate */
+        $tpDestinationRate = $tpDestinationRateRepository->findOneBy([
+            'destinationsTag' => $destinationTag
+        ]);
+
+        if (!$tpDestinationRate) {
+            throw new \DomainException(self::FALLBACK_ERROR_MSG);
+        }
+
+        $instance->patternName = $tpDestinationRate
+            ->getDestination()
+            ->getPrefixName();
+
+        return $instance;
+    }
+
+    /**
+     * @param string $errorMsg
+     * @throws \DomainException
+     * @return static
+     */
+    public static function fromErrorResponse(
+        string $errorMsg,
+        string $ratingPlanTag,
+        EntityTools $entityTools
+    ) {
+        $instance = new static();
+
+        $instance->errorMessage = $errorMsg;
+
+        /** @var RatingPlanRepository $ratingPlansRepository */
+        $ratingPlansRepository = $entityTools->getRepository(RatingPlan::class);
+
+        /** @var RatingPlan $ratingPlan */
+        $ratingPlan = $ratingPlansRepository->findOneBy([
+            'tag' => $ratingPlanTag
+        ]);
+
+        /** @var RatingPlanDto ratingPlan */
+        $instance->ratingPlan = $entityTools->entityToDto($ratingPlan);
+
+        if ($errorMsg === 'SERVER_ERROR: UNAUTHORIZED_DESTINATION') {
+            $instance->errorCode = self::ERROR_UNAUTHORIZED_DESTINATION;
             return $instance;
-
-        } catch (\Exception $e) {
-
-            throw new \DomainException(
-                $e->getMessage(),
-                $e->getCode(),
-                $e
-            );
         }
+
+        $emptyDestinationRateMsg = 'NOT_FOUND:RatingPlanId:';
+        if (substr($errorMsg, 0, strlen($emptyDestinationRateMsg)) === $emptyDestinationRateMsg) {
+            $instance->errorCode = self::ERROR_NO_RATING_PLAN;
+            return $instance;
+        }
+
+        throw new \Exception(self::FALLBACK_ERROR_MSG);
+    }
+
+    /**
+     * @return int | null
+     */
+    public function getErrorCode()
+    {
+        return $this->errorCode;
+    }
+
+    /**
+     * @return string | null
+     */
+    public function getErrorMessage()
+    {
+        return $this->errorMessage;
     }
 
     /**
@@ -146,9 +241,9 @@ class SimulatedCall
     }
 
     /**
-     * @return RatingPlanDto
+     * @return RatingPlanDto | null
      */
-    public function getRatingPlan(): RatingPlanDto
+    public function getRatingPlan()
     {
         return $this->ratingPlan;
     }
@@ -167,6 +262,14 @@ class SimulatedCall
     public function getPrefix(): string
     {
         return $this->prefix;
+    }
+
+    /**
+     * @return string
+     */
+    public function getIntervalStart() :string
+    {
+        return $this->intervalStart;
     }
 
     /**

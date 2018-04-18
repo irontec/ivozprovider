@@ -23,6 +23,8 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
 
         $this->_helper->ContextSwitch()
             ->addActionContext("test-company-plans", "json")
+            ->addActionContext("test-brand-plans", "json")
+            ->addActionContext("test-rating-plan", "json")
             ->initContext("json");
 
         $this->_helper->layout->disableLayout();
@@ -37,72 +39,177 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
 
     public function testCompanyPlansAction ()
     {
-        if ($this->getParam("tarificate")) {
-            $errors = $this->_getFormErrors();
-            if (!is_null($errors)) {
-                $this->_confirmDialog($errors);
-            } else {
+        $argumentsResolver = function () {
+            /** @var DataGateway $dataGateway */
+            $dataGateway = \Zend_Registry::get('data_gateway');
 
-                $container = \Zend_Registry::get('container');
+            /** @var \Ivoz\Provider\Domain\Model\Company\CompanyDto $companyDto */
+            $companyDto = $dataGateway->find(
+                \Ivoz\Provider\Domain\Model\Company\Company::class,
+                $this->getParam("parentId")
+            );
 
-                /** @var DataGateway $dataGateway */
-                $dataGateway = $container->get(DataGateway::class);
-
-                /** @var CompanyBillingService $billingService */
-                $billingService = $container->get(BillingService::class);
-
-                /** @var \Ivoz\Provider\Domain\Model\Company\CompanyDto $companyDto */
-                $companyDto = $dataGateway->find(
-                    \Ivoz\Provider\Domain\Model\Company\Company::class,
-                    $this->getParam("parentId")
-                );
-
-                $callDuration = $this->getParam('duration');
-                $callDuration = max(1, $callDuration);
-
-                try {
-                    $response = $billingService->simulateCall(
-                        'b' . $companyDto->getBrandId(),
-                        'c' . $companyDto->getId(),
-                        $this->getParam('number'),
-                        $callDuration
-                    );
-
-                    $message = $this->_getTarificationInfo($response);
-
-                } catch (\Exception $e) {
-
-                    $message = $e->getMessage();
-                    if ($message === 'SERVER_ERROR: UNAUTHORIZED_DESTINATION') {
-
-                        $message = $this->_helper->translate(
-                            'Active pricing plan does not allow to call introduced phone number'
-                        );
-                    }
-                    $this->_helper->log("[Tarificator] Result: error " . $message);
-                }
-
-                $title = $this->_helper->translate("Results");
-                $this->_showDialog(
-                    $title,
-                    $message,
-                    false,
-                    "Close",
-                    false,
-                    '80%'
-                );
+            $callDuration = $this->getParam('duration');
+            if ($callDuration < 1) {
+                $callDuration = 60;
             }
 
-        } else {
-            $this->_confirmDialog();
-        }
+            return [
+                [
+                    $callDuration,
+                    'b' . $companyDto->getBrandId(),
+                    'c' . $companyDto->getId()
+                ]
+            ];
+        };
+
+        $this->testPlans(
+            'simulateCall',
+            $argumentsResolver
+        );
     }
 
+    public function testBrandPlansAction()
+    {
+        $argumentsResolver = function () {
+
+            $auth = Zend_Auth::getInstance();
+            if (!$auth->hasIdentity()) {
+                throw new \Klear_Exception_Default("No brand emulated");
+            }
+            $loggedUser = $auth->getIdentity();
+            $brandId = $loggedUser->brandId;
+
+            $callDuration = $this->getParam('duration');
+            if ($callDuration < 1) {
+                $callDuration = 60;
+            }
+
+            /** @var DataGateway $dataGateway */
+            $dataGateway = \Zend_Registry::get('data_gateway');
+
+            /** @var \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanDto[] $ratingPlans */
+            $ratingPlans = $dataGateway->findBy(
+                \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlan::class,
+                [
+                    'RatingPlan.brand = :brand',
+                    ['brand' => $brandId]
+                ]
+            );
+
+            $arguments = [];
+            foreach ($ratingPlans as $ratingPlan) {
+                $arguments[] = [
+                    $callDuration,
+                    'b' . $brandId,
+                    $ratingPlan->getTag()
+                ];
+            }
+
+            return $arguments;
+        };
+
+        $this->testPlans(
+            'simulateCallByRatingPlan',
+            $argumentsResolver
+        );
+    }
+
+    public function testRatingPlanAction()
+    {
+        $argumentsResolver = function () {
+
+            $auth = Zend_Auth::getInstance();
+            if (!$auth->hasIdentity()) {
+                throw new \Klear_Exception_Default("No brand emulated");
+            }
+            $loggedUser = $auth->getIdentity();
+            $brandId = $loggedUser->brandId;
+
+            $callDuration = $this->getParam('duration');
+            if ($callDuration < 1) {
+                $callDuration = 60;
+            }
+
+            /** @var DataGateway $dataGateway */
+            $dataGateway = \Zend_Registry::get('data_gateway');
+
+            /** @var \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanDto[] $ratingPlans */
+            $ratingPlan = $dataGateway->find(
+                \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlan::class,
+                $this->getParam('parentId')
+            );
+
+            return [
+                [
+                    $callDuration,
+                    'b' . $brandId,
+                    $ratingPlan->getTag()
+                ]
+            ];
+        };
+
+        $this->testPlans(
+            'simulateCallByRatingPlan',
+            $argumentsResolver
+        );
+    }
+
+    protected function testPlans(string $handler, callable $callArgumentsResolver)
+    {
+        if (!$this->getParam("tarificate")) {
+            return $this->_confirmDialog();
+        }
+
+        $errors = $this->_getFormErrors();
+        if (!is_null($errors)) {
+            return $this->_confirmDialog($errors);
+        }
+
+        try {
+
+            $number = $this->getParam('number');
+            if ($number[0] !== '+') {
+                $errorMsg = $this->_helper->translate(
+                    'Phone number must be in E.164 format (prefixed by "+" symbol)'
+                );
+                throw new \DomainException($errorMsg);
+            }
+
+            $responses = [];
+            foreach ($callArgumentsResolver() as $simulateCallArgument) {
+                $responses[] = $this->{$handler}(
+                    ...$simulateCallArgument
+                );
+            }
+            $message = $this->_getTarificationInfo($responses);
+
+        } catch (\DomainException $e) {
+            $message = $e->getMessage();
+            $this->_helper->log("[Tarificator] domain error " . $message);
+        }  catch (\Exception $e) {
+            $message = $this->_helper->translate(
+                'There was an error'
+            );
+            $this->_helper->log("[Tarificator] error " . $message);
+        }
+
+        $title = $this->_helper->translate("Results");
+        $this->_showDialog(
+            $title,
+            $message,
+            false,
+            "Close",
+            false,
+            '80%'
+        );
+    }
 
     protected function _confirmDialog ($errorMessage = "")
     {
         $title = $this->_helper->translate("Rating Profile Tester");
         $message = $errorMessage;
+        $message .= "<form>";
         $message .= "<table class='kMatrix'>";
         $message .=     "<tr>";
         $message .=         "<th class='ui-widget-header multiItem notSortable'>";
@@ -117,8 +224,8 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
         $message .=     "</tr>";
         $message .=     "<tr>";
         $message .=         "<td class='ui-widget-content'>";
-        $message .=             '<input type="text" name="number" placeholder="+34123456789" class="ui-widget ui-state-default ui-corner-all"';
-        $message .=                 ' value="'.$this->getParam("number").'">';
+        $message .=             '<input type="text" id="number" name="number" placeholder="+34123456789" class="ui-widget ui-state-default ui-corner-all" pattern="\\+[0-9]+"';
+        $message .=                 'required value="'.$this->getParam("number").'">';
         $message .=         "</td>";
         $message .=         "<td class='ui-widget-content'>";
         $message .=             '<input type="number" name="duration" value="60" min="1" placeholder="value in seconds" class="ui-widget ui-state-default ui-corner-all"';
@@ -126,6 +233,7 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
         $message .=         "</td>";
         $message .=     "</tr>";
         $message .= "</table>";
+        $message .= "</form>";
 
         $this->_showDialog($title, $message, $this->_helper->translate("Test"), "Close", false, "auto");
     }
@@ -155,35 +263,81 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
         }
     }
 
-    protected function _getTarificationInfo(SimulatedCall $response)
+    /**
+     * @param SimulatedCall[] $response
+     * @return string
+     */
+    protected function _getTarificationInfo(array $responses)
     {
-        $ratingPlanName = $response->getRatingPlan()->getNameEn();
-        $chargePeriod = $response->getChargePeriod();
-        $rate = $response->getRate();
-        $cost = $response->getCost() + $response->getConnectionFee();
-
-        $table = [
-            "Call date" => $response->getCallDate()->format('Y-m-d H:i:s'),
-            "Duration" => $response->getCallDuration() . ' ' . $this->_helper->translate('seconds'),
-            "Plan" => $ratingPlanName,
-            "Pattern Name" => $response->getPatternName() . ' (' . $response->getPrefix() . ')',
-            "Con. Charge" => $response->getConnectionFee(),
-            "Rate" => $rate . ' / ' . $chargePeriod . ' ' . $this->_helper->translate('seconds'),
-            "Total cost" => $cost,
+        $headers = [
+            'Plan',
+            'Call date',
+            'Duration',
+            'Pattern Name',
+            'Con. Charge',
+            'Interval start',
+            'Rate',
+            'Total cost',
         ];
+        $rows = [];
+
+        foreach ($responses as $response) {
+
+            $ratingPlanName = $response->getRatingPlan()->getNameEn();
+
+            if ($response->getErrorMessage()) {
+                $errorMsg = '';
+                switch ($response->getErrorCode()) {
+                    case SimulatedCall::ERROR_UNAUTHORIZED_DESTINATION:
+                        $errorMsg = $this->_helper->translate(
+                            'Active pricing plan does not allow to call introduced phone number'
+                        );
+                        break;
+                    case SimulatedCall::ERROR_NO_RATING_PLAN;
+                        $errorMsg = $this->_helper->translate(
+                            'Destination rate not found'
+                        );
+                        break;
+                }
+
+                $rows[] = [
+                    'Plan' => $ratingPlanName,
+                    'error' => $errorMsg
+                ];
+                continue;
+            }
+
+            $chargePeriod = $response->getChargePeriod();
+            $rate = $response->getRate()
+                ? $response->getRate() . ' / ' . $chargePeriod . ' ' . $this->_helper->translate('seconds')
+                : '';
+
+            $cost = $response->getCost() + $response->getConnectionFee();
+
+            $rows[] = [
+                'Plan' => $ratingPlanName,
+                'Call date' => $response->getCallDate()->format('Y-m-d H:i:s'),
+                'Duration' => $response->getCallDuration() . ' ' . $this->_helper->translate('seconds'),
+                'Pattern Name' => $response->getPatternName() . ' (' . $response->getPrefix() . ')',
+                'Con. Charge' => $response->getConnectionFee(),
+                'Interval start' => $response->getIntervalStart(),
+                'Rate' => $rate,
+                'Total cost' => $cost,
+            ];
+        }
+
 
         $info = $this->_drawTable(
-            [$table],
-            $this->getParam("number")
+            $headers,
+            $rows,
+            $this->getParam('number')
         );
 
         return $info;
     }
 
-    protected function _drawTable($array, $dest=null, $duration = null)
+    protected function _drawTable($fieldNames, $array, $dest=null, $duration = null)
     {
-        $fieldNames = array_keys($array[0]);
-
         $table = '<table class="kMatrix" style="min-width: 850px;">';
         if (!is_null($dest)) {
             $table .= '<caption class="ui-state-active ui-priority-primary">'.$dest;
@@ -202,8 +356,13 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
 
         foreach ($array as $row) {
             $table .= "<tr>";
-            foreach ($row as $field) {
-                $table .= "<td class='ui-widget-content tarificator' style='width: 10%; text-align: center;'>";
+            foreach ($row as $key => $field) {
+
+                $colspan = $key === 'error'
+                    ? count($fieldNames) - count(array_keys($row)) + 1
+                    : 1;
+
+                $table .= "<td colspan='$colspan' class='ui-widget-content tarificator' style='width: 10%; text-align: center;'>";
                 $table .= $field;
                 $table .= "</td>";
             }
@@ -264,11 +423,53 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
     protected function _dispatch (array $data)
     {
         $jsonResponse = new Klear_Model_DispatchResponse();
-        $jsonResponse->setModule('klearMatrix');
-        $jsonResponse->setPlugin('klearMatrixGenericDialog');
-        $jsonResponse->addJsFile(
-            '/js/plugins/jquery.klearmatrix.genericdialog.js');
+        $jsonResponse->setModule('default');
+        $jsonResponse->setPlugin('customTarificator');
+        $jsonResponse->addJsFile("/../klearMatrix/js/plugins/jquery.klearmatrix.genericdialog.js");
+        $jsonResponse->addJsFile("/js/customTarificator.js");
         $jsonResponse->setData($data);
         $jsonResponse->attachView($this->view);
+    }
+
+    /**
+     * @param $callDuration
+     * @param $tenant
+     * @param $subject
+     * @return SimulatedCall
+     */
+    private function simulateCall($callDuration, $tenant, $subject)
+    {
+        $container = \Zend_Registry::get('container');
+
+        /** @var CompanyBillingService $billingService */
+        $billingService = $container->get(BillingService::class);
+
+        return $billingService->simulateCall(
+            $tenant,
+            $subject,
+            $this->getParam('number'),
+            $callDuration
+        );
+    }
+
+    /**
+     * @param $callDuration
+     * @param $tenant
+     * @param $ratingPlanId
+     * @return SimulatedCall
+     */
+    private function simulateCallByRatingPlan($callDuration, $tenant, $ratingPlanId)
+    {
+        $container = \Zend_Registry::get('container');
+
+        /** @var CompanyBillingService $billingService */
+        $billingService = $container->get(BillingService::class);
+
+        return $billingService->simulateCallByRatingPlan(
+            $tenant,
+            $ratingPlanId,
+            $this->getParam('number'),
+            $callDuration
+        );
     }
 }
