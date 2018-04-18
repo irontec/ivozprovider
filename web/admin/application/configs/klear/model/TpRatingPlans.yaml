@@ -17,7 +17,7 @@ production:
               - name${lang}
             template: '%name${lang}%'
           order:
-            Destination.name.${lang}: asc
+            RatingPlan.name.${lang}: asc
     destinationRate:
       title: ngettext('Destination rate', 'Destination rates', 1)
       type: select

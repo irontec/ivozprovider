@@ -39,6 +39,7 @@ production:
           ratingPlansNew_screen: true
         dialogs:
           ratingPlansDel_dialog: true
+          simulateBrandPlansCall_dialog: true
 
     ratingPlansNew_screen: &ratingPlansNew_screenLink
       <<: *RatingPlans
@@ -94,6 +95,19 @@ production:
       message: _("%s successfully deleted.", ngettext('Rating plan', 'Rating plans', 1))
       multiItem: 1
       labelOnList: 1
+
+    simulateBrandPlansCall_dialog: &simulateBrandPlansCall_dialogLink
+      <<: *DestinationRates
+      module: default
+      title: _("Simulate a call")
+      label: false
+      labelOnEdit: false
+      labelOnList: true
+      labelOption: false
+      labelOnEntityPostSave: false
+      controller: klear-custom-tarificator
+      action: test-brand-plans
+      class:  ui-silk-telephone
 
 #   tpRatingPlans dialogs:
     <<: *tpRatingPlans_dialogsLink
