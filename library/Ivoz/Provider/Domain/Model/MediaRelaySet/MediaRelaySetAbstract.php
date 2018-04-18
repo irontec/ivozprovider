@@ -23,15 +23,22 @@ abstract class MediaRelaySetAbstract
      */
     protected $description;
 
+    /**
+     * comment: enum:rtpengine|rtpproxy
+     * @var string
+     */
+    protected $type = 'rtpproxy';
+
 
     use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct($name)
+    protected function __construct($name, $type)
     {
         $this->setName($name);
+        $this->setType($type);
     }
 
     abstract public function getId();
@@ -98,7 +105,8 @@ abstract class MediaRelaySetAbstract
         Assertion::isInstanceOf($dto, MediaRelaySetDto::class);
 
         $self = new static(
-            $dto->getName());
+            $dto->getName(),
+            $dto->getType());
 
         $self
             ->setDescription($dto->getDescription())
@@ -123,7 +131,8 @@ abstract class MediaRelaySetAbstract
 
         $this
             ->setName($dto->getName())
-            ->setDescription($dto->getDescription());
+            ->setDescription($dto->getDescription())
+            ->setType($dto->getType());
 
 
 
@@ -139,7 +148,8 @@ abstract class MediaRelaySetAbstract
     {
         return self::createDto()
             ->setName(self::getName())
-            ->setDescription(self::getDescription());
+            ->setDescription(self::getDescription())
+            ->setType(self::getType());
     }
 
     /**
@@ -149,7 +159,8 @@ abstract class MediaRelaySetAbstract
     {
         return [
             'name' => self::getName(),
-            'description' => self::getDescription()
+            'description' => self::getDescription(),
+            'type' => self::getType()
         ];
     }
 
@@ -209,6 +220,37 @@ abstract class MediaRelaySetAbstract
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        Assertion::notNull($type, 'type value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($type, 64, 'type value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        Assertion::choice($type, array (
+          0 => 'rtpengine',
+          1 => 'rtpproxy',
+        ), 'typevalue "%s" is not an element of the valid values: %s');
+
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 
 

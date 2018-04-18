@@ -1,5 +1,5 @@
 production:
-  entity: Ivoz\Kam\Domain\Model\Rtpproxy\Rtpproxy
+  entity: Ivoz\Kam\Domain\Model\Rtpengine\Rtpengine
   fields: 
     url:
       title: ngettext('URL', 'URLs', 1)
@@ -11,7 +11,7 @@ production:
         type: box
         position: left
         icon: help
-        text: _("e.g. udp:127.0.0.1:22222")
+        text: _("e.g. udp:127.0.0.1:22223")
         label: _("Need help?")
     weight:
       title: _('Weight')
@@ -32,6 +32,17 @@ production:
       type: text
       trim: both
       maxLength: 200
+    disabled:
+      title: _('Disabled')
+      type: select
+      defaultValue: 0
+      source:
+        data: inline
+        values:
+          '0':
+            title: _("No")
+          '1':
+            title: _("Yes")
 staging:
   _extends: production
 testing:

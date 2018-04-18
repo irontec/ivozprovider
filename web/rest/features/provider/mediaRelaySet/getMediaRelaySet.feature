@@ -17,11 +17,13 @@ Feature: Retrieve media relay sets
           {
               "name": "Default",
               "description": "Default media relay set",
+              "type": "rtpproxy",
               "id": 1
           },
           {
               "name": "Test",
               "description": "Test media relay set",
+              "type": "rtpproxy",
               "id": 2
           }
       ]
@@ -39,6 +41,7 @@ Feature: Retrieve media relay sets
       {
           "name": "Default",
           "description": "Default media relay set",
+          "type": "rtpproxy",
           "id": 1
       }
     """

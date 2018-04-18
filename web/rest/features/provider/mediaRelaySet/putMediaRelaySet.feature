@@ -12,17 +12,19 @@ Feature: Update media relay sets
     """
       {
           "name": "Updated",
+          "type": "rtpengine",
           "description": "Updated media relay set"
       }
     """
     Then the response status code should be 200
-     And the response should be in JSON
-     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
-    """
+    And the response should be in JSON
+    And the header "Content-Type" should be equal to "application/json; charset=utf-8"
+    And the JSON should be equal to:
+  """
      {
           "name": "Updated",
           "description": "Updated media relay set",
+          "type": "rtpengine",
           "id": 1
      }
     """

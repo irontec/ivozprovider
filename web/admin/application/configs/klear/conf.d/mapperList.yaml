@@ -315,6 +315,10 @@ mappers:
         modelFile: KamRtpproxy,
         entity: 'Kam\\Model\\Rtpproxy\\Rtpproxy'
     }
+  - &Rtpengine {
+        modelFile: KamRtpengine,
+        entity: 'Kam\\Model\\Rtpengine\\Rtpengine'
+    }
   - &KamTrunksAcc {
         modelFile: KamTrunksAcc,
         entity: 'Kam\\Model\\TrunksAcc\\TrunksAcc'
