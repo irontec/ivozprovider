@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
 #include BrandServicesList.yaml
 #include CompanyServicesList.yaml
 
@@ -19,6 +20,9 @@ production:
       <<: *Services
       class: ui-silk-text-list-bullets
       title: _("List of %s %2s", ngettext('Service', 'Services', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/platform/services.html"
       fields: &services_fieldsLink
         options:
           title: _("Options")

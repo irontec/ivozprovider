@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
 #include TransformationRulesList.yaml
 
 production:
@@ -15,6 +16,9 @@ production:
       <<: *TransformationRuleSets
       class: ui-silk-text-list-bullets
       title: _("List of %s %2s", ngettext('Numeric transformation', 'Numeric transformations', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/brand/transformations/index.html"
       rawCondition: "TransformationRuleSet.brand IS NULL OR TransformationRuleSet.brand = '${auth.brandId}'"
       order:
         field:

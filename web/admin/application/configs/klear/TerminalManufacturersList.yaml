@@ -1,7 +1,9 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
-#include TerminalModelsList.yaml
+#include conf.d/documentationLink.yaml
 #include conf.d/terminalManufacturersHelp.yaml:
+#include TerminalModelsList.yaml
+
 production:
   main:
     module: klearMatrix
@@ -14,6 +16,9 @@ production:
       <<: *TerminalManufacturers
       class: ui-silk-telephone-link
       title: _("List of %s %2s", ngettext('Terminal manufacturer', 'Terminal manufacturers', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/platform/terminal_provisioning.html"
       fields:
         options:
           title: _("Options")

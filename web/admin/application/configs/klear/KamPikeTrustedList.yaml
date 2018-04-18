@@ -1,6 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
-
+#include conf.d/documentationLink.yaml
 
 production:
   main:
@@ -14,6 +14,9 @@ production:
       <<: *PikeTrusted
       class: ui-silk-text-list-bullets
       title: _("List of %s %2s", ngettext('Trusted IP address', 'Trusted IP address(es)', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/platform/antiflood.html"
       fields: &kamPikeTrusted_fieldsLink
         options:
           title: _("Options")

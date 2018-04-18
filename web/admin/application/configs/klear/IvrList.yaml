@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
 #include IvrEntriesList.yaml
 
 production:
@@ -13,6 +14,9 @@ production:
         items: 25
       <<: *Ivr
       title: _("List of %s %2s", ngettext('IVR', 'IVRs', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/company/ivrs.html"
       forcedValues:
         <<: *forcedCompany
       fields:

@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
 
 production:
   main:
@@ -12,6 +13,9 @@ production:
         items: 25
       <<: *ProxyTrunks
       title: _("List of %s %2s", ngettext('Proxy Trunks', 'Proxies Trunks', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/platform/proxy_trunks.html"
       fields:
         options:
           title: _("Options")

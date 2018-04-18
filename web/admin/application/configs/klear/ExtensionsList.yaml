@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
 
 production:
   main:
@@ -14,6 +15,9 @@ production:
           number: true
       <<: *Extensions
       title: _("List of %s %2s", ngettext('Extension', 'Extensions', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/company/extensions.html"
       class: ui-silk-book-open
       forcedValues:
         <<: *forcedCompany

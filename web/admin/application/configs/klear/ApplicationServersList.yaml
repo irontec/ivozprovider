@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
 
 production:
   applicationServersBlacklist: &applicationServersBlacklist
@@ -18,6 +19,9 @@ production:
       <<: *ApplicationServers
       class: ui-silk-asterisk-yellow
       title: _("List of %s %2s", ngettext('Application Server', 'Application Servers', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/platform/application_servers.html"
       fields:
         blacklist:
           <<: *applicationServersBlacklist

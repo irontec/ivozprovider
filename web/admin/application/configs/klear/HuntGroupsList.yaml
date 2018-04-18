@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
 #include HuntGroupsRelUsersList.yaml
 
 production:
@@ -14,6 +15,9 @@ production:
       <<: *HuntGroups
       class: ui-silk-group-go
       title: _("List of %s %2s", ngettext('Hunt Group', 'Hunt Groups', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/company/huntgroups.html"
       forcedValues:
         <<: *forcedCompany
       fields:

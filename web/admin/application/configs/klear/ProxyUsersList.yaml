@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
 
 
 production:
@@ -14,6 +15,9 @@ production:
       <<: *ProxyUsers
       class: ui-silk-text-list-bullets
       title: _("List of %s %2s", ngettext('Proxy Users', 'Proxies Users', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/platform/proxy_users.html"
       fields: &proxyUsers_fieldsLink
         options:
           title: _("Options")

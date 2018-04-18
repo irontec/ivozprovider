@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
 #include AdministratorsList.yaml
 #include TpRatingProfilesList.yaml
 #include OutgoingRoutingList.yaml
@@ -17,6 +18,9 @@ production:
       <<: *RetailClients
       class: ui-silk-building
       title: _("List of %s %2s", ngettext('Retail Client', 'Retail Clients', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/brand/retail.html"
       forcedValues:
         type: 'retail'
         <<: *forcedBrand

@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
 #include AdministratorsList.yaml
 #include BrandURLsList.yaml
 
@@ -15,6 +16,9 @@ production:
       <<: *Brands
       class: ui-silk-world
       title: _("List of %s %2s", ngettext('Brand', 'Brands', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/platform/brands.html"
       fields:
         order: &brandsOrder_Link
           name: true

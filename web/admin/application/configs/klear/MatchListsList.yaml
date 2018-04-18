@@ -1,7 +1,7 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
 #include MatchListPatternsList.yaml
-
 
 production:
   main:
@@ -20,6 +20,9 @@ production:
       <<: *MatchLists
       class: ui-silk-text-list-numbers
       title: _("List of %s %2s", ngettext('Match List', 'Match Lists', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/company/match_lists.html"
       fields: &matchLists_fieldsLink
         blacklist:
           company: true

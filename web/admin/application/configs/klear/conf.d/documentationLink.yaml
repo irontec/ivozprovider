@@ -1,0 +1,4 @@
+info: &documentationLink
+  type: boxinfo
+  label: _("Check documentation for this section")
+  target: "_blank"

@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
 #include NotificationTemplatesContentsList.yaml
 
 production:
@@ -15,6 +16,9 @@ production:
       <<: *NotificationTemplates
       class: ui-silk-email
       title: _("List of %s %2s", ngettext('Notification template', 'Notification templates', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/brand/notifications.html"
       forcedValues:
         <<: *forcedBrand
       fields: &notificationTemplates_fieldsLink

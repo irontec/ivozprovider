@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
 #include PeerServesRelNumericTransformRulesList.yaml
 
 production:
@@ -16,6 +17,9 @@ production:
       forcedValues:
         <<: *forcedBrand
       title: _("List of %s %2s", ngettext('Peer server', 'Peer servers', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/brand/peering/peer_servers.html"
       fields:
         options:
           title: _("Options")

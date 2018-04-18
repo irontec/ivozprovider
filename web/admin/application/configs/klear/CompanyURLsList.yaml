@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
 #include BrandURLsList.yaml
 
 # This yaml handles CompanyURLs screens
@@ -22,6 +23,9 @@ production:
       <<: *CompanyURLs
       class: ui-silk-world-link
       title: _("List of %s %2s", ngettext('Company URL', 'Company URLs', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/brand/portal_urls.html"
       fields: &companyURLs_fieldsLink
         options:
           title: _("Options")

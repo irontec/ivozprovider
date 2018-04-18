@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
 
 production:
   main:
@@ -22,6 +23,9 @@ production:
       <<: *KamTrunksCdrs
       class: ui-silk-application-view-list
       title: _("List of %s %2s", ngettext('Billable call', 'Billable calls', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/brand/billing/billable_calls.html"
       fields: &kamTrunksCdrs_fieldsLink
         options:
           title: _("Options")

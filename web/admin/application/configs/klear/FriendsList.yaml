@@ -1,7 +1,7 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
 #include FriendsPatternsList.yaml
-
 
 production:
   main:
@@ -15,6 +15,9 @@ production:
       <<: *Friends
       class: ui-silk-text-list-bullets
       title: _("List of %s %2s", ngettext('Friend', 'Friends', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/company/friends.html"
       forcedValues:
         <<: *forcedCompany
       fields:

@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
 #include CallAclRelMatchListsList.yaml
 
 production:
@@ -14,6 +15,9 @@ production:
       <<: *CallACL
       class: ui-silk-telephone-key
       title: _("List of %s %2s", ngettext('Call ACL', 'Call ACLs', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/company/call_permissions.html"
       forcedValues:
         <<: *forcedCompany
       fields:

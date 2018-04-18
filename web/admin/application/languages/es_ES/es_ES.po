@@ -375,6 +375,9 @@ msgstr "No se pueden crear facturas en el dia actual o futuro."
 msgid "Charge period"
 msgstr "Período de facturación"
 
+msgid "Check documentation for this section"
+msgstr "Ver documentación de esta sección"
+
 msgid "Client's default"
 msgstr "Usar configuración cliente"
 
@@ -2140,6 +2143,9 @@ msgid ""
 msgstr ""
 "Existe un desvío incondicional con ese tipo de llamada. No puedes añadir "
 "desvíos."
+
+msgid "There was an error on"
+msgstr "Ocurrió un error en"
 
 #, php-format
 msgid "There was an error: %s"
