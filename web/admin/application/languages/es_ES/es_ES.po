@@ -991,6 +991,12 @@ msgstr "Entrada"
 msgid "In Progress"
 msgstr "En curso"
 
+msgid ""
+"In case of colliding prefixes, destination rate with highest weight will be "
+"used."
+msgstr ""
+"En caso de prefijos compartidos, se utilizará la vinculación de mayor peso."
+
 msgid "In date"
 msgstr "Fecha inicio"
 

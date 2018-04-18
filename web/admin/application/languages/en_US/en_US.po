@@ -977,6 +977,13 @@ msgstr "In"
 msgid "In Progress"
 msgstr "In Progress"
 
+msgid ""
+"In case of colliding prefixes, destination rate with highest weight will be "
+"used."
+msgstr ""
+"In case of colliding prefixes, destination rate with highest weight will be "
+"used."
+
 msgid "In date"
 msgstr "In date"
 

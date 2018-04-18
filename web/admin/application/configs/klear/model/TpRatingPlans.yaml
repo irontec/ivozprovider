@@ -57,7 +57,7 @@ production:
         type: box
         position: left
         icon: help
-        text: _("Interval in seconds to increase call cost.")
+        text: _("In case of colliding prefixes, destination rate with highest weight will be used.")
         label: _("Need help?")
 staging:
   _extends: production
