@@ -516,6 +516,9 @@ msgid_plural "Destination rates"
 msgstr[0] "Destination rate"
 msgstr[1] "Destination rates"
 
+msgid "Destination rate not found"
+msgstr "Destination rate not found"
+
 msgid "Determines the order current priority members will be called"
 msgstr "Determines the order current priority members will be called"
 
@@ -773,9 +776,6 @@ msgid "Fixed cost"
 msgid_plural "Fixed costs"
 msgstr[0] "Fixed cost"
 msgstr[1] "Fixed costs"
-
-msgid "Flag"
-msgstr "Flag"
 
 msgid "For instance:"
 msgstr "For instance:"
@@ -1439,9 +1439,6 @@ msgid_plural "Numeric transformations"
 msgstr[0] "Numeric transformation"
 msgstr[1] "Numeric transformations"
 
-msgid "Numeric value"
-msgstr "Numeric value"
-
 msgid "On-demand"
 msgstr "On-demand"
 
@@ -1584,6 +1581,9 @@ msgstr "Personal data"
 
 msgid "Phone number"
 msgstr "Phone number"
+
+msgid "Phone number must be in E.164 format (prefixed by \"+\" symbol)"
+msgstr "Phone number must be in E.164 format (prefixed by \"+\" symbol)"
 
 msgid "Pick Up Groups"
 msgstr "Pick Up Groups"
@@ -1973,9 +1973,6 @@ msgstr "Service has extra arguments"
 msgid "Set column configuration and continue."
 msgstr "Set column configuration and continue."
 
-msgid "Setid"
-msgstr "Setid"
-
 msgid "Simulate a call"
 msgstr "Simulate a call"
 
@@ -2129,8 +2126,8 @@ msgstr ""
 "There is an inconditional call forward with that call type. You can't add "
 "call forwards"
 
-msgid "There was an error on"
-msgstr "There was an error on"
+msgid "There was an error"
+msgstr "There was an error"
 
 #, php-format
 msgid "There was an error: %s"
@@ -2459,6 +2456,9 @@ msgstr "e.g. 8.8.8.8"
 
 msgid "e.g. udp:127.0.0.1:22222"
 msgstr "e.g. udp:127.0.0.1:22222"
+
+msgid "e.g. udp:127.0.0.1:22223"
+msgstr "e.g. udp:127.0.0.1:22223"
 
 msgid "encoding"
 msgstr "encoding"

@@ -19,9 +19,9 @@ production:
         data: inline
         values:
           rtpproxy:
-            title:  _("rtpproxy")
+            title:  rtpproxy
           rtpengine:
-            title: _('rtpengine')
+            title: rtpengine
 staging:
   _extends: production
 testing:

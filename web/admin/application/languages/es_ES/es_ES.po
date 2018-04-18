@@ -527,6 +527,9 @@ msgid_plural "Destination rates"
 msgstr[0] "Precio destino"
 msgstr[1] "Precios destinos"
 
+msgid "Destination rate not found"
+msgstr "Precio destino no encontrado"
+
 msgid "Determines the order current priority members will be called"
 msgstr "Determina el order en que los miembros de la prioridad serán llamados"
 
@@ -786,9 +789,6 @@ msgid "Fixed cost"
 msgid_plural "Fixed costs"
 msgstr[0] "Coste fijo"
 msgstr[1] "Costes fijos"
-
-msgid "Flag"
-msgstr "Flag"
 
 msgid "For instance:"
 msgstr "Por ejemplo:"
@@ -1457,9 +1457,6 @@ msgid_plural "Numeric transformations"
 msgstr[0] "Transformación numérica"
 msgstr[1] "Transformaciones numéricas"
 
-msgid "Numeric value"
-msgstr "Valor numérico"
-
 msgid "On-demand"
 msgstr "Bajo demanda"
 
@@ -1603,6 +1600,11 @@ msgstr "Datos personales"
 
 msgid "Phone number"
 msgstr "Número de teléfono"
+
+msgid "Phone number must be in E.164 format (prefixed by \"+\" symbol)"
+msgstr ""
+"El número de teléfono debe estar en formato E.164 (precedido por el simbolo "
+"\"+\")"
 
 msgid "Pick Up Groups"
 msgstr "Grupos de captura"
@@ -1994,9 +1996,6 @@ msgstr "El servicio emplea argumentos extra"
 msgid "Set column configuration and continue."
 msgstr "Seleccione la configuración de columna y continuar"
 
-msgid "Setid"
-msgstr "Setid"
-
 msgid "Simulate a call"
 msgstr "Simular llamada"
 
@@ -2150,8 +2149,8 @@ msgstr ""
 "Existe un desvío incondicional con ese tipo de llamada. No puedes añadir "
 "desvíos."
 
-msgid "There was an error on"
-msgstr "Ocurrió un error en"
+msgid "There was an error"
+msgstr "Ocurrió un error"
 
 #, php-format
 msgid "There was an error: %s"
@@ -2487,6 +2486,9 @@ msgstr "por. ej. 8.8.8.8"
 
 msgid "e.g. udp:127.0.0.1:22222"
 msgstr "p.ej. udp:127.0.0.1:22222"
+
+msgid "e.g. udp:127.0.0.1:22223"
+msgstr "p.ej. udp:127.0.0.1:22223"
 
 msgid "encoding"
 msgstr "Codificando"
