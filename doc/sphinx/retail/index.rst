@@ -1,6 +1,6 @@
-##############
-Retail Clients
-##############
+####################
+Retail Configuration
+####################
 
 Retail clients are a special type of company that only provide a connectivity
 service with contract peerings through retail accounts.
@@ -18,13 +18,13 @@ associated with Retail clients included in IvozProvider.
     :maxdepth: 1
     :caption: Retail concepts
 
-    retail_accounts
-    retail_filters
-    retail_ddis
+    accounts
+    filters
+    ddis
 
 .. toctree::
     :maxdepth: 1
     :caption: Additional retail features
 
-    /pbx_features/call_recording
-    /faxing/index
+    /company/call_recording
+    /company/faxing
