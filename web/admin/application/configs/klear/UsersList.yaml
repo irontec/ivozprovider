@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
 #include HuntGroupsRelUsersList.yaml
 #include CallForwardSettingsList.yaml
 #include DDIsList.yaml
@@ -19,6 +20,9 @@ production:
       <<: *Users
       class: ui-silk-user
       title: _("List of %s %2s", ngettext('User', 'Users', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/company/users.html"
       forcedValues:
         <<: *forcedCompany
       fields:

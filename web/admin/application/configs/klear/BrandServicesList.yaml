@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
 
 
 production:
@@ -16,6 +17,9 @@ production:
         <<: *forcedBrand
       class: ui-silk-page-white-wrench
       title: _("List of %s %2s", ngettext('Brand service', 'Brand services', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/brand/services.html"
       fields: &brandServices_fieldsLink
         options:
           title: _("Options")

@@ -1,6 +1,7 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
 #include conf.d/importPricesHelp.yaml
+#include conf.d/documentationLink.yaml
 #include TpDestinationRatesList.yaml
 
 production:
@@ -15,6 +16,9 @@ production:
       <<: *DestinationRates
       class: ui-silk-page-find
       title: _("List of %s %2s", ngettext('Destination rate', 'Destination rates', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/brand/billing/pricing_plans.html"
       forcedValues:
         <<: *forcedBrand
       fields: &destinationRates_fieldsLink

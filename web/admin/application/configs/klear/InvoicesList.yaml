@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
 #include KamTrunksCdrsList.yaml
 #include FixedCostsRelInvoicesList.yaml
 
@@ -15,6 +16,9 @@ production:
       <<: *Invoices
       class: ui-silk-report
       title: _("List of %s %2s", ngettext('Invoice', 'Invoices', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/brand/invoices/invoices.html"
       forcedValues:
         <<: *forcedBrand
       fields: &invoices_fieldsLink

@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
 
 # ************************ ExternalCallFiltersList.yaml ************************
 production:
@@ -14,6 +15,9 @@ production:
       <<: *ExternalCallFiltersRetail
       class: ui-silk-arrow-branch
       title: _("List of %s %2s", ngettext('External call filter', 'External call filters', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/retail/filters.html"
       forcedValues:
         <<: *forcedCompany
       fields:

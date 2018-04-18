@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
 #include AdministratorsList.yaml
 #include PricingPlansRelCompaniesList.yaml
 #include TpRatingProfilesList.yaml
@@ -18,6 +19,9 @@ production:
       <<: *Companies
       class: ui-silk-building
       title: _("List of %s %2s", ngettext('Company', 'Companies', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/brand/companies.html"
       forcedValues:
         type: 'vpbx'
         <<: *forcedBrand

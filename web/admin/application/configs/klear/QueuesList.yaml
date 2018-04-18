@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
 #include QueueMembersList.yaml
 #include CompaniesList.yaml
 
@@ -15,6 +16,9 @@ production:
       <<: *Queues
       class: ui-silk-text-list-bullets
       title: _("List of %s %2s", ngettext('Queue', 'Queues', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/company/queues.html"
       forcedValues:
         <<: *forcedCompany
       fields: &queues_fieldsLink

@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
 #include FaxesInOutList.yaml
 
 
@@ -17,6 +18,9 @@ production:
         <<: *forcedCompany
       class: ui-silk-text-list-bullets
       title: _("List of %s %2s", ngettext('Fax', 'Faxes', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/company/faxing.html"
       fields: &faxes_fieldsLink
         order: &faxes_orderLink
           name: true

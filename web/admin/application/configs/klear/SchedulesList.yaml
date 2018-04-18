@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
 
 production:
   main:
@@ -13,6 +14,9 @@ production:
       <<: *Schedules
       class: ui-silk-clock
       title: _("List of %s %2s", ngettext('Schedule', 'Schedules', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/company/schedules.html"
       forcedValues:
         <<: *forcedCompany
       fields:

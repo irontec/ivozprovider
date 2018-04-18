@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
 #include BalanceNotificationsList.yaml
 #include BalanceMovementsList.yaml
 #include KamTrunksCdrsList.yaml
@@ -17,6 +18,9 @@ production:
       <<: *Companies
       class: ui-silk-building
       title: _("List of %s %2s", ngettext('Prepaid Balance', 'Prepaid Balances', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/brand/balances.html"
       forcedValues:
         <<: *forcedBrand
       fields:

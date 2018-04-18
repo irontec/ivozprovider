@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
 #include MusicOnHoldList.yaml
 
 production:
@@ -11,6 +12,9 @@ production:
     musicOnHoldList_screen:
       <<: *musicOnHoldList_screenLink
       title: _("List of %s %2s", ngettext('Generic Music on Hold', 'Generic Musics on Hold', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/brand/music_on_hold.html"
       forcedValues:
         <<: *forcedBrand
         "self::company": null

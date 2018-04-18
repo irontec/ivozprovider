@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
 #include ConditionalRoutesConditionsList.yaml
 
 production:
@@ -15,6 +16,9 @@ production:
       <<: *ConditionalRoutes
       class: ui-silk-arrow-divide
       title: _("List of %s %2s", ngettext('Conditional Route', 'Conditional Routes', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/company/conditional_routes.html"
       forcedValues:
         <<: *forcedCompany
       fields: &conditionalRoutes_fieldsLink

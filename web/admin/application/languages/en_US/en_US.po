@@ -368,6 +368,9 @@ msgstr "Cannot invoice calls from today in the future."
 msgid "Charge period"
 msgstr "Charge period"
 
+msgid "Check documentation for this section"
+msgstr "Check documentation for this section"
+
 msgid "Client's default"
 msgstr "Client's default"
 
@@ -2118,6 +2121,9 @@ msgid ""
 msgstr ""
 "There is an inconditional call forward with that call type. You can't add "
 "call forwards"
+
+msgid "There was an error on"
+msgstr "There was an error on"
 
 #, php-format
 msgid "There was an error: %s"
