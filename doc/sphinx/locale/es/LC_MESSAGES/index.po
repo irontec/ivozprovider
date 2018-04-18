@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) 2016, Irontec
+# Copyright (C) 2016-2017, Irontec
 # This file is distributed under the same license as the IvozProvider
 # package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+# Irontec IvozProvider Team <ivozprovider@irontec.com>, 2018.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: IvozProvider 1.0\n"
+"Project-Id-Version: IvozProvider 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-28 12:32+0100\n"
+"POT-Creation-Date: 2018-03-27 19:30+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,15 +25,19 @@ msgstr "Documentación oficial de IvozProvider"
 msgid "Basic Concepts"
 msgstr "Conceptos básicos"
 
-#: ../../index.rst:27
-msgid "Minimum Configuration"
-msgstr "Configuración mínima"
+#: ../../index.rst:33
+msgid "Getting Started"
+msgstr "Comenzando"
 
-#: ../../index.rst:41
-msgid "Advanced Configuration"
-msgstr "Configuración avanzada"
+#: ../../index.rst:43
+msgid "Administation portal"
+msgstr "Portal de administración"
 
-#: ../../index.rst:57
+#: ../../index.rst:52
+msgid "User portal"
+msgstr "Portal de usuario"
+
+#: ../../index.rst:59
 msgid "Security and Maintenance"
 msgstr "Mantenimiento y seguridad"
 
