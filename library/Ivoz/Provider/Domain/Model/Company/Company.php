@@ -21,6 +21,8 @@ class Company extends CompanyAbstract implements CompanyInterface
 
     const RETAIL    = "retail";
 
+    const WHOLESALE = "wholesale";
+
     use CompanyTrait;
 
     /**
