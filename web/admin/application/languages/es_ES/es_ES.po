@@ -80,6 +80,10 @@ msgstr ""
 msgid "Add balance"
 msgstr "Añadir saldo"
 
+#, php-format
+msgid "Add balance operation to <strong>%s</strong>"
+msgstr "Añadir operación de salgo a <strong>%s</strong>"
+
 #, python-format
 msgid "Add of %s %2s"
 msgstr "Añadir %s %2s"
@@ -205,8 +209,11 @@ msgid_plural "Balance Notifications"
 msgstr[0] "Notificación Saldo"
 msgstr[1] "Notificaciones Saldo"
 
-msgid "Balance increased successfully"
-msgstr "Saldo incrementado con éxito"
+msgid "Balance modified successfully"
+msgstr "Saldo modificado con éxito"
+
+msgid "Balance operations"
+msgstr "Operaciones de saldo"
 
 msgid "Basic Configuration"
 msgstr "Configuración Básica"
@@ -1031,13 +1038,6 @@ msgstr ""
 
 msgid "Inconditional"
 msgstr "Incondicional"
-
-msgid "Increment balance"
-msgstr "Incrementar saldo"
-
-#, php-format
-msgid "Increment balance of <strong>%s</strong>"
-msgstr "Incrementar saldo de <strong>%s</strong>"
 
 msgid "Insert your username"
 msgstr "Introduce tu nombre de usuario"
@@ -2517,3 +2517,4 @@ msgstr "compartido"
 
 msgid "unlimited"
 msgstr "ilimitado"
+
