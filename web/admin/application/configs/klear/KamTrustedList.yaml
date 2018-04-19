@@ -5,26 +5,26 @@
 production:
   main:
     module: klearMatrix
-    defaultScreen: kamPikeTrustedList_screen
-  screens: &kamPikeTrusted_screensLink
-    kamPikeTrustedList_screen: &kamPikeTrustedList_screenLink
+    defaultScreen: kamTrustedList_screen
+  screens: &kamTrusted_screensLink
+    kamTrustedList_screen: &kamTrustedList_screenLink
       controller: list
       pagination:
         items: 25
-      <<: *PikeTrusted
+      <<: *Trusted
       class: ui-silk-text-list-bullets
       title: _("List of %s %2s", ngettext('Trusted IP address', 'Trusted IP address(es)', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
         href: "/doc/${lang}/platform/antiflood.html"
-      fields: &kamPikeTrusted_fieldsLink
+      fields: &kamTrusted_fieldsLink
         options:
           title: _("Options")
           screens:
-            kamPikeTrustedEdit_screen: true
+            kamTrustedEdit_screen: true
           dialogs:
-            kamPikeTrustedDel_dialog: true
-          default: kamPikeTrustedEdit_screen
+            kamTrustedDel_dialog: true
+          default: kamTrustedEdit_screen
         blacklist:
           proto: true
           fromPattern: true
@@ -33,11 +33,11 @@ production:
       options:
         title: _("Options")
         screens:
-          kamPikeTrustedNew_screen: true
+          kamTrustedNew_screen: true
         dialogs:
-          kamPikeTrustedDel_dialog: true
-    kamPikeTrustedNew_screen: &kamPikeTrustedNew_screenLink
-      <<: *PikeTrusted
+          kamTrustedDel_dialog: true
+    kamTrustedNew_screen: &kamTrustedNew_screenLink
+      <<: *Trusted
       controller: new
       class: ui-silk-add
       label: true
@@ -50,8 +50,8 @@ production:
           fromPattern: true
           ruriPattern: true
           priority: true
-    kamPikeTrustedEdit_screen: &kamPikeTrustedEdit_screenLink
-      <<: *PikeTrusted
+    kamTrustedEdit_screen: &kamTrustedEdit_screenLink
+      <<: *Trusted
       controller: edit
       class: ui-silk-pencil
       fields:
@@ -63,9 +63,9 @@ production:
       label: false
       labelOnPostAction: _("Edit %s %2s", ngettext('Trusted IP address', 'Trusted IP address(es)', 1), "[format| (%item%)]")
       title: _("Edit %s %2s", ngettext('Trusted IP address', 'Trusted IP address(es)', 1), "[format| (%item%)]")
-  dialogs: &kamPikeTrusted_dialogsLink
-    kamPikeTrustedDel_dialog: &kamPikeTrustedDel_dialogLink 
-      <<: *PikeTrusted
+  dialogs: &kamTrusted_dialogsLink
+    kamTrustedDel_dialog: &kamTrustedDel_dialogLink 
+      <<: *Trusted
       controller: delete
       class: ui-silk-bin
       labelOption: false
