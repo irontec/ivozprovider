@@ -1,0 +1,320 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+#include TpRatingProfilesList.yaml
+#include AdministratorsList.yaml
+#include KamTrustedList.yaml
+
+production:
+  main:
+    module: klearMatrix
+    defaultScreen: wholesaleClientsList_screen
+  screens: &wholesaleClients_screensLink
+    wholesaleClientsList_screen: &wholesaleClientsList_screenLink
+      controller: list
+      pagination:
+        items: 25
+      <<: *WholesaleClients
+      class: ui-silk-cart
+      title: _("List of %s %2s", ngettext('Wholesale Client', 'Wholesale Clients', 0), "[format| (%parent%)]")
+      forcedValues:
+        type: 'wholesale'
+        <<: *forcedBrand
+      fields:
+        options:
+          title: _("Options")
+          screens:
+            wholesaleClientsEdit_screen: true
+            kamTrustedList_screen: true
+            administratorsList_screen: true
+            tpRatingProfilesList_screen: true
+          dialogs:
+            wholesaleClientsDel_dialog: false
+            emulateCompany_dialog: true
+          default: wholesaleClientsEdit_screen
+        blacklist:
+          typeIcon: true
+          transformationRuleSet: true
+          postalAddress: true
+          postalCode: true
+          town: true
+          province: true
+          countryName: true
+          registryData: true
+          defaultTimezone: true
+          mediaRelaySets: true
+          language: true
+        order:
+          name: true
+          nif: true
+          billingMethod: true
+          balance: true
+          maxCalls: true
+          language: true
+          transformationRuleSet: true
+          domainUsers: true
+          recordingsDiskUsage: true
+      options:
+        title: _("Options")
+        screens:
+          wholesaleClientsNew_screen: true
+        dialogs:
+          wholesaleClientsDel_dialog: true
+      csv:
+        active: false
+        filename: "WholesaleClients"
+        headers: true
+        enclosure: '"'
+        separator: ";"
+        nameklear: false
+        rawValues: true
+        ignoreBlackList: true
+        newLine: "\r\n"
+        encoding: "utf-8"
+        executionSeconds: ""
+
+    wholesaleClientsNew_screen: &wholesaleClientsNew_screenLink
+      <<: *WholesaleClients
+      controller: new
+      fields:
+        blacklist:
+          nif: true
+          type: true
+          typeIcon: true
+          postalAddress: true
+          postalCode: true
+          town: true
+          province: true
+          countryName: true
+          mediaRelaySets: true
+          maxCalls: false
+        order: &wholesaleClientsOrder_Link
+          id: true
+          name: true
+          language: true
+          maxCalls: true
+          defaultTimezone: true
+      fixedPositions: &wholesaleClientsFixedPositions_Link
+        group0:
+          colsPerRow: 6
+          label: _("Basic Configuration")
+          fields:
+            name: 3
+            billingMethod: 3
+        group1:
+          colsPerRow: 12
+          label: _("Geographic Configuration")
+          fields:
+            language: 4
+            country: 4
+            defaultTimezone: 4
+        group2:
+          colsPerRow: 2
+          label: _("Security")
+          fields:
+            maxCalls: 1
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Wholesale Client', 'Wholesale Clients', 1))
+      shortcutOption: N
+      forcedValues:
+        type: "wholesale"
+        <<: *forcedBrand
+        nif: '12345678-Z'
+        postalAddress: 'Postal address'
+        postalCode: 'PC'
+        town: 'Town'
+        countryName: 'Country'
+        province: 'Province'
+
+    wholesaleClientsEdit_screen: &wholesaleClientsEdit_screenLink
+      <<: *WholesaleClients
+      controller: edit
+      fields:
+        blacklist:
+          type: true
+          typeIcon: true
+          mediaRelaySets: ${auth.isNotMainOperator}
+          nif: ${auth.brand.invoices.disabled}
+          postalAddress: ${auth.brand.invoices.disabled}
+          postalCode: ${auth.brand.invoices.disabled}
+          town: ${auth.brand.invoices.disabled}
+          province: ${auth.brand.invoices.disabled}
+          countryName: ${auth.brand.invoices.disabled}
+        whitelist:
+          id: ${auth.isMainOperator}
+        order:
+          <<: *wholesaleClientsOrder_Link
+      fixedPositions:
+        group0:
+          colsPerRow: 6
+          label: _("Basic Configuration")
+          fields:
+            name: 4
+            nif: 2
+            billingMethod: 3
+        group1:
+          colsPerRow: 12
+          label: _("Geographic Configuration")
+          fields:
+            language: 4
+            country: 4
+            defaultTimezone: 4
+            transformationRuleSet: 8
+        group2:
+          colsPerRow: 2
+          label: _("Security")
+          fields:
+            maxCalls: 1
+            ipFilter: 1
+        group3:
+          colsPerRow: 12
+          label: _("Server data")
+          fields:
+            mediaRelaySets: 4
+        group4:
+          colsPerRow: 2
+          label: _("Invoice data")
+          fields:
+            invoiceLanguage: 1
+            postalAddress: 2
+            postalCode: 1
+            town: 1
+            province: 1
+            countryName: 1
+            registryData: 2
+        group5:
+          colsPerRow: 12
+          label: ngettext('Recording', 'Recordings', 0)
+          collapsed: true
+          fields:
+            recordingsLimitMB: 6
+            recordingsDiskUsage: 6
+            recordingsLimitEmail: 6
+            onDemandRecord: 6
+            onDemandRecordCode: 6
+        group6:
+          colsPerRow: 1
+          collapsed: true
+          label: _("Externally rated options")
+          fields:
+            externallyExtraOpts: 1
+        group7:
+          colsPerRow: 2
+          collapsed: true
+          label: _("Notification options")
+          fields:
+            voicemailNotificationTemplate: 1
+            faxNotificationTemplate: 1
+      class: ui-silk-pencil
+      label: false
+      title: _("Edit %s %2s", ngettext('Wholesale Client', 'Wholesale Clients', 1), "[format| (%item%)]")
+      forcedValues:
+        <<: *forcedBrand
+
+    # Administrators screens
+    <<: *administrators_screensLink
+    administratorsList_screen:
+      <<: *administratorsList_screenLink
+      class: ui-silk-user-gray
+      title: _("List of %s %2s", ngettext('Company admin', 'Company admins', 0), "[format| (%parent%)]")
+      filterField: Company
+      parentOptionCustomizer:
+        - recordCount
+    administratorsNew_screen:
+      <<: *administratorsNew_screenLink
+      title: _("Add %s", ngettext('Company admin', 'Company admins', 1), "[format| (%parent%)]")
+      filterField: Company
+    administratorsEdit_screen:
+      <<: *administratorsEdit_screenLink
+      title: _("Edit %s %2s", ngettext('Company admin', 'Company admins', 1), "[format| (%item%)]")
+      filterField: Company
+
+    # KamTrusted Address screens
+    <<: *kamTrusted_screensLink
+    kamTrustedList_screen:
+      <<: *kamTrustedList_screenLink
+      class: ui-silk-door-in
+      title: _("List of %s %2s", ngettext('Wholesale Address', 'Wholesale Addresses', 0), "[format| (%parent%)]")
+      info:         # Disable info box @TODO
+      rawCondition: # Disable raw condtion filtering @TODO
+      filterField: Company
+      parentOptionCustomizer:
+        - recordCount
+    kamTrustedNew_screen:
+      <<: *kamTrustedNew_screenLink
+      title: _("Add %s", ngettext('Wholesale Address', 'Wholesale Addresses', 1), "[format| (%parent%)]")
+      filterField: Company
+    kamTrustedEdit_screen:
+      <<: *kamTrustedEdit_screenLink
+      title: _("Edit %s %2s", ngettext('Wholesale Address', 'Wholesale Addresses', 1), "[format| (%item%)]")
+      filterField: Company
+
+    # tpRatingPlan:
+    <<: *tpRatingProfiles_screensLink
+    tpRatingProfilesList_screen:
+      <<: *tpRatingProfilesList_screenLink
+      filterField: company
+      parentOptionCustomizer:
+        - recordCount
+    tpRatingProfilesNew_screen:
+      <<: *tpRatingProfilesNew_screenLink
+      filterField: company
+    tpRatingProfilesEdit_screen:
+      <<: *tpRatingProfilesEdit_screenLink
+      filterField: company
+
+  dialogs: &wholesaleClients_dialogsLink
+    wholesaleClientsDel_dialog: &wholesaleClientsDel_dialogLink
+      <<: *WholesaleClients
+      controller: delete
+      secureDelete: true
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Wholesale Client', 'Wholesale Clients', 1))
+      description: _("Do you want to delete this %s?", ngettext('Wholesale Client', 'Wholesale Clients', 1))
+      message: _("%s successfully deleted.", ngettext('Wholesale Client', 'Wholesale Clients', 1))
+      multiItem: 1
+      labelOnList: 1
+
+    emulateCompany_dialog:
+      title: _("Emulate Wholesale Client %s", "[format| (%item%)]")
+      module: default
+      controller: klear-custom-extra-auth
+      action: emulate
+      class: ui-silk-cart-add
+      label: false
+      labelOnEdit: false
+      labelOnList: false
+      labelOnEntityPostSave: false
+      multiItem: false
+      parentOptionCustomizer:
+        - IvozProvider_Klear_Options_OptionsCustomizer
+
+    # Administrators dialogs
+    <<: *administrators_dialogsLink
+    administratorsDel_dialog:
+      <<: *administratorsDel_dialogLink
+      title: _("Delete %s", ngettext('Wholesale admin', 'Wholesale admins', 1))
+      description: _("Do you want to delete this %s?", ngettext('Wholesale admin', 'Wholesale admins', 1))
+      message: _("%s successfully deleted.", ngettext('Wholesale admin', 'Wholesale admins', 1))
+
+    # KamTrusted dialogs
+    <<: *kamTrusted_dialogsLink
+    kamTrustedDel_dialog:
+      <<: *kamTrustedDel_dialogLink
+      title: _("Delete %s", ngettext('Wholesale admin', 'Wholesale admins', 1))
+      description: _("Do you want to delete this %s?", ngettext('Wholesale admin', 'Wholesale admins', 1))
+      message: _("%s successfully deleted.", ngettext('Wholesale admin', 'Wholesale admins', 1))
+
+    # tpRatingProfiles:
+    <<: *tpRatingProfiles_dialogsLink
+
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

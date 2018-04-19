@@ -303,6 +303,10 @@ mappers:
         modelFile: Users,
         entity: 'Ivoz\\Provider\\Domain\\Model\\User\\User'
     }
+  - &WholesaleClients {
+        modelFile: WholesaleClients,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\Company\\Company'
+    }
   - &KamTrunksCdrs {
         modelFile: KamTrunksCdrs,
         entity: 'Ivoz\\Kam\\Domain\\Model\\TrunksCdr\\TrunksCdr'

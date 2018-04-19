@@ -621,6 +621,10 @@ msgstr "Emulate Company %s"
 msgid "Emulate Retail Client %s"
 msgstr "Emulate Retail Client %s"
 
+#, python-format
+msgid "Emulate Wholesale Client %s"
+msgstr "Emulate Wholesale Client %s"
+
 msgid ""
 "Enable calling from non-granted IP addresses for this user. It limits the "
 "number of outgoing calls to avoid toll-fraud. 'None' value makes outgoing "
@@ -1824,6 +1828,11 @@ msgstr "Restore last backup"
 msgid "Results"
 msgstr "Results"
 
+msgid "Retail"
+msgid_plural "Retail"
+msgstr[0] "Retail Client"
+msgstr[1] "Retail Clients"
+
 msgid "Retail Account"
 msgid_plural "Retail Accounts"
 msgstr[0] "Retail Account"
@@ -2333,6 +2342,11 @@ msgstr "View Incoming %s %s"
 msgid "View Outgoing %s %s"
 msgstr "View Outgoing %s %s"
 
+msgid "Virtual PBX"
+msgid_plural "Virtual PBXs"
+msgstr[0] ""
+msgstr[1] ""
+
 msgid "Voicemail"
 msgid_plural "Voicemails"
 msgstr[0] "Voicemail"
@@ -2386,6 +2400,26 @@ msgstr ""
 
 msgid "White Lists"
 msgstr "White Lists"
+
+msgid "Wholesale"
+msgid_plural "Wholesale"
+msgstr[0] "Wholesale"
+msgstr[1] "Wholesale"
+
+msgid "Wholesale Address"
+msgid_plural "Wholesale Addresses"
+msgstr[0] "Wholesale Address"
+msgstr[1] "Wholesale Addresses"
+
+msgid "Wholesale Client"
+msgid_plural "Wholesale Clients"
+msgstr[0] "Wholesale Client"
+msgstr[1] "Wholesale Clients"
+
+msgid "Wholesale admin"
+msgid_plural "Wholesale admins"
+msgstr[0] "Wholesale admin"
+msgstr[1] "Wholesale admins"
 
 msgid "Will be shown on page footer"
 msgstr "Will be shown on page footer"

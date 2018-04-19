@@ -40,6 +40,7 @@ class IvozProvider_Klear_Filter_RetailFeatures implements KlearMatrix_Model_Fiel
             Feature::BILLING,
             Feature::INVOICES,
             Feature::RETAIL,
+            Feature::WHOLESALE,
         );
 
         $featureIds = [];
