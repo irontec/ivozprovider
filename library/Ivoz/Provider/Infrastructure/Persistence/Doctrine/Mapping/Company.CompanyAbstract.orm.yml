@@ -15,7 +15,7 @@ Ivoz\Provider\Domain\Model\Company\CompanyAbstract:
       length: 25
       options:
         fixed: false
-        comment: '[enum:vpbx|retail]'
+        comment: '[enum:vpbx|retail|wholesale]'
         default: vpbx
     name:
       type: string
