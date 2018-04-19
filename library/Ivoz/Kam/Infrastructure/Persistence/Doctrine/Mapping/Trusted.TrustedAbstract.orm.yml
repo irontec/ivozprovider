@@ -1,5 +1,13 @@
-Ivoz\Kam\Domain\Model\PikeTrusted\PikeTrustedAbstract:
+Ivoz\Kam\Domain\Model\Trusted\TrustedAbstract:
   type: mappedSuperclass
+  indexes:
+    trusted_companyId:
+      columns:
+        - companyId
+  uniqueConstraints:
+    src_ip:
+      columns:
+        - src_ip
   fields:
     srcIp:
       type: string
@@ -34,9 +42,28 @@ Ivoz\Kam\Domain\Model\PikeTrusted\PikeTrustedAbstract:
       length: 64
       options:
         fixed: false
+    description:
+      type: string
+      nullable: true
+      length: 200
+      options:
+        fixed: false
     priority:
       type: integer
       nullable: false
       options:
         unsigned: false
         default: '0'
+  manyToOne:
+    company:
+      targetEntity: \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        companyId:
+          referencedColumnName: id
+          nullable: true
+          onDelete: cascade
+      orphanRemoval: false
