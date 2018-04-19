@@ -73,7 +73,7 @@ production:
           title: ngettext('Application Server', 'Application Servers', 0)
           class: ui-silk-asterisk-yellow
           description: _("List of %s", ngettext('Application Server', 'Application Servers', 0))
-        KamPikeTrustedList:
+        KamTrustedList:
           title: ngettext('Antiflood trusted IP', 'Antiflood trusted IPs', 0)
           class: ui-silk-application-view-list
           description: _("List of %s", ngettext('Trusted IP address', 'Trusted IP addresses', 0))

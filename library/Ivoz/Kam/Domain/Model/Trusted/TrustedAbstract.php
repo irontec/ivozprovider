@@ -1,6 +1,6 @@
 <?php
 
-namespace Ivoz\Kam\Domain\Model\PikeTrusted;
+namespace Ivoz\Kam\Domain\Model\Trusted;
 
 use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
@@ -8,10 +8,10 @@ use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
 
 /**
- * PikeTrustedAbstract
+ * TrustedAbstract
  * @codeCoverageIgnore
  */
-abstract class PikeTrustedAbstract
+abstract class TrustedAbstract
 {
     /**
      * column: src_ip
@@ -42,9 +42,19 @@ abstract class PikeTrustedAbstract
     protected $tag;
 
     /**
+     * @var string
+     */
+    protected $description;
+
+    /**
      * @var integer
      */
     protected $priority = '0';
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     */
+    protected $company;
 
 
     use ChangelogTrait;
@@ -62,7 +72,7 @@ abstract class PikeTrustedAbstract
     public function __toString()
     {
         return sprintf("%s#%s",
-            "PikeTrusted",
+            "Trusted",
             $this->getId()
         );
     }
@@ -77,17 +87,17 @@ abstract class PikeTrustedAbstract
 
     /**
      * @param null $id
-     * @return PikeTrustedDto
+     * @return TrustedDto
      */
     public static function createDto($id = null)
     {
-        return new PikeTrustedDto($id);
+        return new TrustedDto($id);
     }
 
     /**
      * @param EntityInterface|null $entity
      * @param int $depth
-     * @return PikeTrustedDto|null
+     * @return TrustedDto|null
      */
     public static function entityToDto(EntityInterface $entity = null, $depth = 0)
     {
@@ -95,7 +105,7 @@ abstract class PikeTrustedAbstract
             return null;
         }
 
-        Assertion::isInstanceOf($entity, PikeTrustedInterface::class);
+        Assertion::isInstanceOf($entity, TrustedInterface::class);
 
         if ($depth < 1) {
             return static::createDto($entity->getId());
@@ -116,9 +126,9 @@ abstract class PikeTrustedAbstract
     public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto PikeTrustedDto
+         * @var $dto TrustedDto
          */
-        Assertion::isInstanceOf($dto, PikeTrustedDto::class);
+        Assertion::isInstanceOf($dto, TrustedDto::class);
 
         $self = new static(
             $dto->getPriority());
@@ -129,6 +139,8 @@ abstract class PikeTrustedAbstract
             ->setFromPattern($dto->getFromPattern())
             ->setRuriPattern($dto->getRuriPattern())
             ->setTag($dto->getTag())
+            ->setDescription($dto->getDescription())
+            ->setCompany($dto->getCompany())
         ;
 
         $self->sanitizeValues();
@@ -144,9 +156,9 @@ abstract class PikeTrustedAbstract
     public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto PikeTrustedDto
+         * @var $dto TrustedDto
          */
-        Assertion::isInstanceOf($dto, PikeTrustedDto::class);
+        Assertion::isInstanceOf($dto, TrustedDto::class);
 
         $this
             ->setSrcIp($dto->getSrcIp())
@@ -154,7 +166,9 @@ abstract class PikeTrustedAbstract
             ->setFromPattern($dto->getFromPattern())
             ->setRuriPattern($dto->getRuriPattern())
             ->setTag($dto->getTag())
-            ->setPriority($dto->getPriority());
+            ->setDescription($dto->getDescription())
+            ->setPriority($dto->getPriority())
+            ->setCompany($dto->getCompany());
 
 
 
@@ -164,7 +178,7 @@ abstract class PikeTrustedAbstract
 
     /**
      * @param int $depth
-     * @return PikeTrustedDto
+     * @return TrustedDto
      */
     public function toDto($depth = 0)
     {
@@ -174,7 +188,9 @@ abstract class PikeTrustedAbstract
             ->setFromPattern(self::getFromPattern())
             ->setRuriPattern(self::getRuriPattern())
             ->setTag(self::getTag())
-            ->setPriority(self::getPriority());
+            ->setDescription(self::getDescription())
+            ->setPriority(self::getPriority())
+            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth));
     }
 
     /**
@@ -188,7 +204,9 @@ abstract class PikeTrustedAbstract
             'from_pattern' => self::getFromPattern(),
             'ruri_pattern' => self::getRuriPattern(),
             'tag' => self::getTag(),
-            'priority' => self::getPriority()
+            'description' => self::getDescription(),
+            'priority' => self::getPriority(),
+            'companyId' => self::getCompany() ? self::getCompany()->getId() : null
         ];
     }
 
@@ -336,6 +354,34 @@ abstract class PikeTrustedAbstract
     }
 
     /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return self
+     */
+    public function setDescription($description = null)
+    {
+        if (!is_null($description)) {
+            Assertion::maxLength($description, 200, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        }
+
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
      * Set priority
      *
      * @param integer $priority
@@ -360,6 +406,30 @@ abstract class PikeTrustedAbstract
     public function getPriority()
     {
         return $this->priority;
+    }
+
+    /**
+     * Set company
+     *
+     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
+     *
+     * @return self
+     */
+    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
+    {
+        $this->company = $company;
+
+        return $this;
+    }
+
+    /**
+     * Get company
+     *
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     */
+    public function getCompany()
+    {
+        return $this->company;
     }
 
 

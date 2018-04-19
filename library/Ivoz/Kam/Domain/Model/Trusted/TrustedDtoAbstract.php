@@ -1,6 +1,6 @@
 <?php
 
-namespace Ivoz\Kam\Domain\Model\PikeTrusted;
+namespace Ivoz\Kam\Domain\Model\Trusted;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
@@ -10,7 +10,7 @@ use Ivoz\Core\Application\Model\DtoNormalizer;
 /**
  * @codeCoverageIgnore
  */
-abstract class PikeTrustedDtoAbstract implements DataTransferObjectInterface
+abstract class TrustedDtoAbstract implements DataTransferObjectInterface
 {
     /**
      * @var string
@@ -38,6 +38,11 @@ abstract class PikeTrustedDtoAbstract implements DataTransferObjectInterface
     private $tag;
 
     /**
+     * @var string
+     */
+    private $description;
+
+    /**
      * @var integer
      */
     private $priority = '0';
@@ -46,6 +51,11 @@ abstract class PikeTrustedDtoAbstract implements DataTransferObjectInterface
      * @var integer
      */
     private $id;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
+     */
+    private $company;
 
 
     use DtoNormalizer;
@@ -70,8 +80,10 @@ abstract class PikeTrustedDtoAbstract implements DataTransferObjectInterface
             'fromPattern' => 'fromPattern',
             'ruriPattern' => 'ruriPattern',
             'tag' => 'tag',
+            'description' => 'description',
             'priority' => 'priority',
-            'id' => 'id'
+            'id' => 'id',
+            'companyId' => 'company'
         ];
     }
 
@@ -86,8 +98,10 @@ abstract class PikeTrustedDtoAbstract implements DataTransferObjectInterface
             'fromPattern' => $this->getFromPattern(),
             'ruriPattern' => $this->getRuriPattern(),
             'tag' => $this->getTag(),
+            'description' => $this->getDescription(),
             'priority' => $this->getPriority(),
-            'id' => $this->getId()
+            'id' => $this->getId(),
+            'company' => $this->getCompany()
         ];
     }
 
@@ -96,7 +110,7 @@ abstract class PikeTrustedDtoAbstract implements DataTransferObjectInterface
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
-
+        $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
     }
 
     /**
@@ -208,6 +222,26 @@ abstract class PikeTrustedDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
+     * @param string $description
+     *
+     * @return static
+     */
+    public function setDescription($description = null)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
      * @param integer $priority
      *
      * @return static
@@ -245,6 +279,52 @@ abstract class PikeTrustedDtoAbstract implements DataTransferObjectInterface
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\Company\CompanyDto $company
+     *
+     * @return static
+     */
+    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyDto $company = null)
+    {
+        $this->company = $company;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto
+     */
+    public function getCompany()
+    {
+        return $this->company;
+    }
+
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setCompanyId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Company\CompanyDto($id)
+            : null;
+
+        return $this->setCompany($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getCompanyId()
+    {
+        if ($dto = $this->getCompany()) {
+            return $dto->getId();
+        }
+
+        return null;
     }
 }
 

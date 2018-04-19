@@ -1,6 +1,6 @@
 <?php
 
-namespace Ivoz\Kam\Domain\Service\PikeTrusted;
+namespace Ivoz\Kam\Domain\Service\Trusted;
 
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
@@ -8,11 +8,11 @@ use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
 /**
  * @codeCoverageIgnore
  */
-class PikeTrustedLifecycleServiceCollection implements LifecycleServiceCollectionInterface
+class TrustedLifecycleServiceCollection implements LifecycleServiceCollectionInterface
 {
     use LifecycleServiceCollectionTrait;
 
-    protected function addService(PikeTrustedLifecycleEventHandlerInterface $service)
+    protected function addService(TrustedLifecycleEventHandlerInterface $service)
     {
         $this->services[] = $service;
     }

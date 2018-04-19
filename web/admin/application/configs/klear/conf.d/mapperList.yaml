@@ -307,9 +307,9 @@ mappers:
         modelFile: KamTrunksCdrs,
         entity: 'Ivoz\\Kam\\Domain\\Model\\TrunksCdr\\TrunksCdr'
     }
-  - &PikeTrusted {
-        modelFile: KamPikeTrusted,
-        entity: 'Kam\\Model\\PikeTrusted\\PikeTrusted'
+  - &Trusted {
+        modelFile: KamTrusted,
+        entity: 'Kam\\Model\\Trusted\\Trusted'
     }
   - &Rtpproxy {
         modelFile: KamRtpproxy,

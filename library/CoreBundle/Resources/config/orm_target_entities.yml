@@ -197,8 +197,8 @@ doctrine:
         Ivoz\Kam\Domain\Model\TrunksCdrsBrand\TrunksCdrsBrand
       Ivoz\Kam\Domain\Model\Dispatcher\DispatcherInterface:
         Ivoz\Kam\Domain\Model\Dispatcher\Dispatcher
-      Ivoz\Kam\Domain\Model\PikeTrusted\PikeTrustedInterface:
-        Ivoz\Kam\Domain\Model\PikeTrusted\PikeTrusted
+      Ivoz\Kam\Domain\Model\Trusted\TrustedInterface:
+        Ivoz\Kam\Domain\Model\Trusted\Trusted
       Ivoz\Kam\Domain\Model\Rtpproxy\RtpproxyInterface:
         Ivoz\Kam\Domain\Model\Rtpproxy\Rtpproxy
       Ivoz\Kam\Domain\Model\TrunksAcc\TrunksAccInterface:
