@@ -1,6 +1,8 @@
 <?php
 
 use Ivoz\Provider\Domain\Service\Company\IncrementBalance;
+use Ivoz\Provider\Domain\Service\Company\DecrementBalance;
+use Ivoz\Provider\Domain\Service\Company\AbstractBalanceOperation;
 
 class KlearCustomIncrementBalanceController extends Zend_Controller_Action
 {
@@ -53,22 +55,64 @@ class KlearCustomIncrementBalanceController extends Zend_Controller_Action
 
         if (($this->getParam("sent"))) {
 
-            /** @var IncrementBalance $incrementBalanceService */
-            $incrementBalanceService = $this->container->get(
-                IncrementBalance::class
+            $targetService = $this->getParam("operation") === 'add'
+                ? IncrementBalance::class
+                : DecrementBalance::class;
+
+            /** @var AbstractBalanceOperation $balanceService */
+            $balanceService = $this->container->get(
+                $targetService
             );
 
-            $success = $incrementBalanceService->execute(
+            $success = $balanceService->execute(
                 $id,
                 $this->getParam("amount")
             );
 
             $reponseMessage = $success
-                ? _('Balance increased successfully')
-                : sprintf(_('There was an error: %s'), $incrementBalanceService->getLastError());
+                ? _('Balance modified successfully')
+                : sprintf(_('There was an error: %s'), $balanceService->getLastError());
 
             return $this->_dispatch( $reponseMessage, $buttons);
         }
+
+        $styles = '
+            <style>
+                .ui-widget.ui-dialog-content.ui-widget-content {
+                    z-index: 1;
+                }
+                p.updateable-item .selectboxit-container {
+                    margin-left: 7px;
+                }
+                p.updateable-item .selectboxit-container,
+                p.updateable-item .selectboxit-container .selectboxit-options {
+                    width: 50px;
+                    line-height: 18px;
+                }
+                p.updateable-item .selectboxit-container span {
+                    max-height: 18px;
+                    line-height: 18px;
+                }
+                p.updateable-item .selectboxit-container i {
+                    top: 2px!important;
+                }
+                p.updateable-item .selectboxit-container ul.selectboxit-options {
+                    /*overflow: hidden;*/
+                }
+                p.updateable-item .selectboxit-container ul.selectboxit-options li,
+                p.updateable-item .selectboxit-container ul.selectboxit-options li a {
+                    max-height: 20px;
+                    line-height: 18px;
+                }
+            </style>
+        ';
+
+        $operationSelector = '
+            <select name="operation">
+                <option value="add" selected>+</option>
+                <option value="debit">-</option>
+            </select>
+        ';
 
         $inputFld = '<input
             id="amount"
@@ -81,19 +125,21 @@ class KlearCustomIncrementBalanceController extends Zend_Controller_Action
             required="required"
             title="Invalid format"
             pattern="[0-9]{1,6}([\.][0-9]{1,2})?"
-            class"ui-widget ui-corner-all"
-            style="text-align: right; margin-left: 7px;"
+            class="ui-widget ui-state-default ui-corner-all"
+            style="text-align: right; margin-left: 0px;"
             />';
 
-        $message = '<form>'
+        $message = '<form style="z-index: 9999999;">'
+            . $styles
             . '<p class="updateable-item" style="font-size: 0.8em;">'
             . sprintf(
-                _('Increment balance of <strong>%s</strong>'),
+                _('Add balance operation to <strong>%s</strong>'),
                 $company->getName(),
                 $company->getId()
             )
             . '</p>'
-            . '<p class="updateable-item" style="font-size: 0.8em;"><label for="amount">Amount</label>'
+            . '<p class="updateable-item" style="font-size: 0.8em;z-index: 9999999;"><label for="amount">Amount</label>'
+            . $operationSelector
             . $inputFld
             . ' €'
             . '</p>'
