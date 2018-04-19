@@ -76,6 +76,10 @@ msgstr "Add QR Code to user portal to provision GS Wave mobile softphone"
 msgid "Add balance"
 msgstr "Add balance"
 
+#, php-format
+msgid "Add balance operation to <strong>%s</strong>"
+msgstr "Add balance operation to <strong>%s</strong>"
+
 #, python-format
 msgid "Add of %s %2s"
 msgstr "Add of %s %2s"
@@ -200,8 +204,11 @@ msgid_plural "Balance Notifications"
 msgstr[0] "Balance Notification"
 msgstr[1] "Balance Notifications"
 
-msgid "Balance increased successfully"
-msgstr "Balance increased successfully"
+msgid "Balance modified successfully"
+msgstr "Balance modified successfully"
+
+msgid "Balance operations"
+msgstr "Balance operations"
 
 msgid "Basic Configuration"
 msgstr "Basic Configuration"
@@ -1017,13 +1024,6 @@ msgstr ""
 
 msgid "Inconditional"
 msgstr "Inconditional"
-
-msgid "Increment balance"
-msgstr "Increment balance"
-
-#, php-format
-msgid "Increment balance of <strong>%s</strong>"
-msgstr "Increment balance of <strong>%s</strong>"
 
 msgid "Insert your username"
 msgstr "Insert your username"
