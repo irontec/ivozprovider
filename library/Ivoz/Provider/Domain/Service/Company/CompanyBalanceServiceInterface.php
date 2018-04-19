@@ -14,6 +14,13 @@ interface CompanyBalanceServiceInterface
     public function incrementBalance(CompanyInterface $company, float $amount);
 
     /**
+     * @param CompanyInterface $company
+     * @param float $amount
+     * @return array
+     */
+    public function decrementBalance(CompanyInterface $company, float $amount);
+
+    /**
      * @param $brandId
      * @param array $companyIds
      * @return \stdClass

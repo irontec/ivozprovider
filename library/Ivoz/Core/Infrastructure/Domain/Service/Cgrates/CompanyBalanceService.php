@@ -20,18 +20,40 @@ class CompanyBalanceService implements CompanyBalanceServiceInterface
     }
 
     /**
-     * @see \Ivoz\Provider\Domain\Service\Company\CompanyBalanceServiceClientInterface::incrementBalance
+     * @see \Ivoz\Provider\Domain\Service\Company\CompanyBalanceServiceInterface::incrementBalance
      * @inheritdoc
      */
     public function incrementBalance(CompanyInterface $company, float $amount)
     {
-        $payload = $this->getAddBalancePayload($company, $amount);
+        $payload = $this->getBalancePayload($company, $amount);
 
+        return $this->sendRequest(
+            'ApierV1.AddBalance',
+            $payload
+        );
+    }
+
+    /**
+     * @see \Ivoz\Provider\Domain\Service\Company\CompanyBalanceServiceInterface::decrementBalance
+     * @inheritdoc
+     */
+    public function decrementBalance(CompanyInterface $company, float $amount)
+    {
+        $payload = $this->getBalancePayload($company, $amount);
+
+        return $this->sendRequest(
+            'ApierV1.DebitBalance',
+            $payload
+        );
+    }
+
+    protected function sendRequest($method, $payload)
+    {
         /** @var \Graze\GuzzleHttp\JsonRpc\Message\Response $request */
         $request = $this->client
             ->request(
                 1,
-                'ApierV1.AddBalance',
+                $method,
                 [$payload]
             );
 
@@ -96,7 +118,7 @@ class CompanyBalanceService implements CompanyBalanceServiceInterface
     }
 
 
-    private function getAddBalancePayload(CompanyInterface $company, $amount)
+    private function getBalancePayload(CompanyInterface $company, $amount)
     {
         $brand = $company->getBrand();
 

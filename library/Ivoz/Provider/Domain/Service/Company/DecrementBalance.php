@@ -2,7 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\Company;
 
-class IncrementBalance extends AbstractBalanceOperation
+class DecrementBalance extends AbstractBalanceOperation
 {
     /**
      * @param $companyId
@@ -11,12 +11,12 @@ class IncrementBalance extends AbstractBalanceOperation
      */
     public function execute($companyId, float $amount)
     {
-        $this->logger->info('Company#%s\'s balance will be incremented by ' . $amount);
+        $this->logger->info('Company#%s\'s balance will be decreased by ' . $amount);
         $company = $this->companyRepository->find($companyId);
-        $response = $this->client->incrementBalance($company, $amount);
+        $response = $this->client->decrementBalance($company, $amount);
 
         return $this->handleResponse(
-            $amount,
+            ($amount * -1),
             $response,
             $company
         );
