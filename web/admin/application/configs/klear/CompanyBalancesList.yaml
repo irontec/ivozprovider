@@ -108,7 +108,7 @@ production:
 
   dialogs: &companyBalances_dialogsLink
    addToBalance_dialog: &addToBalance_dialogLink
-     title: _("Increment balance")
+     title: _("Balance operations")
      module: default
      controller: klear-custom-increment-balance
      labelOnEdit: true
