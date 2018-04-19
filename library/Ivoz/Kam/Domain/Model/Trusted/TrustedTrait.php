@@ -1,14 +1,14 @@
 <?php
 
-namespace Ivoz\Kam\Domain\Model\PikeTrusted;
+namespace Ivoz\Kam\Domain\Model\Trusted;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 
 /**
- * PikeTrustedTrait
+ * TrustedTrait
  * @codeCoverageIgnore
  */
-trait PikeTrustedTrait
+trait TrustedTrait
 {
     /**
      * @var integer
@@ -33,7 +33,7 @@ trait PikeTrustedTrait
     public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto PikeTrustedDto
+         * @var $dto TrustedDto
          */
         $self = parent::fromDto($dto);
 
@@ -52,7 +52,7 @@ trait PikeTrustedTrait
     public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto PikeTrustedDto
+         * @var $dto TrustedDto
          */
         parent::updateFromDto($dto);
 
@@ -61,7 +61,7 @@ trait PikeTrustedTrait
 
     /**
      * @param int $depth
-     * @return PikeTrustedDto
+     * @return TrustedDto
      */
     public function toDto($depth = 0)
     {

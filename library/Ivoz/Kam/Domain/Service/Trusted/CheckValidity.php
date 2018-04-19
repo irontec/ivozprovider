@@ -1,19 +1,19 @@
 <?php
 
-namespace Ivoz\Kam\Domain\Service\PikeTrusted;
+namespace Ivoz\Kam\Domain\Service\Trusted;
 
 use Ivoz\Core\Domain\Service\LifecycleEventHandlerInterface;
-use Ivoz\Kam\Domain\Model\PikeTrusted\PikeTrustedInterface;
+use Ivoz\Kam\Domain\Model\Trusted\TrustedInterface;
 
 /**
  * Class SanitizeValues
  * @lifecycle pre_persist
  */
-class CheckValidity implements PikeTrustedLifecycleEventHandlerInterface
+class CheckValidity implements TrustedLifecycleEventHandlerInterface
 {
     public function __construct() {}
 
-    public function execute(PikeTrustedInterface $entity)
+    public function execute(TrustedInterface $entity)
     {
         $ip = $entity->getSrcIp();
 

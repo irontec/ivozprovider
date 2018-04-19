@@ -1,10 +1,10 @@
 <?php
 
-namespace Ivoz\Kam\Domain\Model\PikeTrusted;
+namespace Ivoz\Kam\Domain\Model\Trusted;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface PikeTrustedInterface extends LoggableEntityInterface
+interface TrustedInterface extends LoggableEntityInterface
 {
     /**
      * @codeCoverageIgnore
@@ -93,6 +93,22 @@ interface PikeTrustedInterface extends LoggableEntityInterface
     public function getTag();
 
     /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return self
+     */
+    public function setDescription($description = null);
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription();
+
+    /**
      * Set priority
      *
      * @param integer $priority
@@ -107,6 +123,22 @@ interface PikeTrustedInterface extends LoggableEntityInterface
      * @return integer
      */
     public function getPriority();
+
+    /**
+     * Set company
+     *
+     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
+     *
+     * @return self
+     */
+    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null);
+
+    /**
+     * Get company
+     *
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     */
+    public function getCompany();
 
 }
 

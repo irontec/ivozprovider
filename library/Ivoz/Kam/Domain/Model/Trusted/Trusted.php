@@ -1,13 +1,13 @@
 <?php
 
-namespace Ivoz\Kam\Domain\Model\PikeTrusted;
+namespace Ivoz\Kam\Domain\Model\Trusted;
 
 /**
- * PikeTrusted
+ * Trusted
  */
-class PikeTrusted extends PikeTrustedAbstract implements PikeTrustedInterface
+class Trusted extends TrustedAbstract implements TrustedInterface
 {
-    use PikeTrustedTrait;
+    use TrustedTrait;
 
     /**
      * @codeCoverageIgnore

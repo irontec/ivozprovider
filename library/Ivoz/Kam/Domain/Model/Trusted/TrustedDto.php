@@ -1,13 +1,13 @@
 <?php
 
-namespace Ivoz\Kam\Domain\Model\PikeTrusted;
+namespace Ivoz\Kam\Domain\Model\Trusted;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Core\Application\CollectionTransformerInterface;
 
 
-class PikeTrustedDto extends PikeTrustedDtoAbstract
+class TrustedDto extends TrustedDtoAbstract
 {
 
 }
