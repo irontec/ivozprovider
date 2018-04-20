@@ -39,4 +39,4 @@ services:
       - { name: provider.lifecycle.outgoing_routing.on_commit, priority: 10 }
     arguments:
       $trunksLcrReload:
-        '@XmlRpc\XmlRpcTrunksRequest::DialplanReload'
+        '@XmlRpc\XmlRpcTrunksRequest::LcrReload'
