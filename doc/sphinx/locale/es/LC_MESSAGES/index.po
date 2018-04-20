@@ -8,36 +8,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-27 19:30+0200\n"
+"POT-Creation-Date: 2018-04-20 13:02+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.5.1\n"
+"Generated-By: Babel 2.4.0\n"
 
 #: ../../index.rst:8
 msgid "IvozProvider Official Documentation"
 msgstr "Documentación oficial de IvozProvider"
-
-#: ../../index.rst:10
-msgid "Basic Concepts"
-msgstr "Conceptos básicos"
-
-#: ../../index.rst:33
-msgid "Getting Started"
-msgstr "Comenzando"
-
-#: ../../index.rst:43
-msgid "Administation portal"
-msgstr "Portal de administración"
-
-#: ../../index.rst:52
-msgid "User portal"
-msgstr "Portal de usuario"
-
-#: ../../index.rst:59
-msgid "Security and Maintenance"
-msgstr "Mantenimiento y seguridad"
 

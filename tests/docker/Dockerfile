@@ -21,7 +21,7 @@ RUN apt-get update && apt-get install -y \
     gettext \
     python-sphinx \
     sphinx-common \
-    python-pip \
+    sphinx-intl \
     libjs-sphinxdoc \
     libjs-jquery \
     python-alabaster \
@@ -48,9 +48,6 @@ RUN apt-get update && apt-get install -y \
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
-# Install latest sphinx-intl (newer than debian sid package)
-RUN pip install sphinx-intl babel
 
 # Create jenkins user (configurable)
 ARG UNAME=jenkins
