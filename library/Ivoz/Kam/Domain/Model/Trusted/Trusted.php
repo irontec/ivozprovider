@@ -27,5 +27,20 @@ class Trusted extends TrustedAbstract implements TrustedInterface
     {
         return $this->id;
     }
+
+
+    /**
+     * @return void
+     * @throws \Exception
+     */
+    protected function sanitizeValues()
+    {
+        // Set tag with companyId value
+        $company = $this->getCompany();
+        if ($company) {
+            $this->setTag((string) $company->getId());
+        }
+    }
+
 }
 

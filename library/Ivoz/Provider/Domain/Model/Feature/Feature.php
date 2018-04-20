@@ -13,7 +13,6 @@ class Feature extends FeatureAbstract implements FeatureInterface
      * Available features Ids
      */
     const QUEUES            = 1;
-
     const RECORDINGS        = 2;
     const FAXES             = 3;
     const FRIENDS           = 4;
@@ -22,6 +21,7 @@ class Feature extends FeatureAbstract implements FeatureInterface
     const INVOICES          = 7;
     const PROGRESS          = 8;
     const RETAIL            = 9;
+    const WHOLESALE         = 10;
 
     /**
      * @codeCoverageIgnore

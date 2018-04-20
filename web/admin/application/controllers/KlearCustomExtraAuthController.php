@@ -98,10 +98,10 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
                 if ($type == 'brand') {
                     $html .= '<option value="'.$option->getId().'" '.$selected.'>'.$option->getName().'</option>';
                 } else if ($type == 'company') {
-                    if ($option->getType() == 'vpbx') {
-                        $icon = "building";
-                    } else {
-                        $icon = "basket";
+                    switch($option->getType()) {
+                        case 'vpbx': $icon = "building"; break;
+                        case 'retail': $icon = "basket"; break;
+                        case 'wholesale': $icon = "cart"; break;
                     }
                     $html .= '<option data-subtype="'.$option->getType()
                     .'" data-icon="ui-silk inline ui-silk-'.$icon
@@ -211,6 +211,7 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
                 break;
             case "RetailClientsList":
             case "CompaniesList":
+            case "WholesaleClientsList":
                 $type = "company";
                 $entity = Company::class;
                 break;

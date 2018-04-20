@@ -20,6 +20,8 @@ class IvozProvider_Klear_Ghost_Companies extends KlearMatrix_Model_Field_Ghost_A
                 return '<span class="ui-silk inline ui-silk-building" title="Company"></span>';
             case Company::RETAIL:
                 return '<span class="ui-silk inline ui-silk-basket" title="Retail"></span>';
+            case Company::WHOLESALE:
+                return '<span class="ui-silk inline ui-silk-cart" title="Wholesale"></span>';
             default:
                 return $model->getType();
         }

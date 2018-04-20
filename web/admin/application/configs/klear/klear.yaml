@@ -100,18 +100,23 @@ production:
       showOnlyIf: ${auth.canSeeBrand}
       submenus:
         CompaniesList:
-          title: ngettext('Company', 'Companies', 0)
+          title: ngettext('Virtual PBX', 'Virtual PBXs', 0)
           class: ui-silk-building
-          description: _("List of %s", ngettext('Company', 'Companies', 0))
+          description: _("List of %s", ngettext('Virtual PBX', 'Virtual PBXs', 0))
         RetailClientsList:
-          title: ngettext('Retail Client', 'Retail Clients', 0)
+          title: ngettext('Retail', 'Retail', 0)
           class: ui-silk-basket
-          description: _("List of %s", ngettext('Retail Client', 'Retail Clients', 0))
+          description: _("List of %s", ngettext('Retail', 'Retail', 0))
+          showOnlyIf: ${auth.brand.retail.enabled}
+        WholesaleClientsList:
+          title: ngettext('Wholesale', 'Wholesale', 0)
+          class: ui-silk-cart
+          description: _("List of %s", ngettext('Wholesale', 'Wholesale', 0))
+          showOnlyIf: ${auth.brand.wholesale.enabled}
         CompanyBalancesList:
           title: ngettext('Prepaid Balance', 'Prepaid Balances', 0)
           class: ui-silk-money-yen
           description: _("List of %s", ngettext('Company', 'Companies', 0))
-          showOnlyIf: ${auth.brand.retail.enabled}
         CompanyBalancesList:
           title: ngettext('Prepaid Balance', 'Prepaid Balances', 0)
           class: ui-silk-money-yen
@@ -230,6 +235,12 @@ production:
           title: ngettext('DDI', 'DDIs', 0)
           class: ui-silk-lightning-go
           description: _("List of %s", ngettext('DDI', 'DDIs', 0))
+          showOnlyIf: ${auth.companyVPBX}
+        RetailDDIsList:
+          title: ngettext('DDI', 'DDIs', 0)
+          class: ui-silk-lightning-go
+          description: _("List of %s", ngettext('DDI', 'DDIs', 0))
+          showOnlyIf: ${auth.companyRetail}
         OutgoingDDIRulesList:
           title: ngettext('Outgoing DDI Rule', 'Outgoing DDI Rules', 0)
           class: ui-silk-script-lightning
@@ -330,6 +341,17 @@ production:
           title: ngettext('Call registry', 'Call registries', 1)
           class: ui-silk-application-view-list
           description: _("List of %s", ngettext('Call', 'Calls', 0))
+          showOnlyIf: ${auth.companyVPBX}
+        KamUsersCdrsRetailList:
+          title: ngettext('Call registry', 'Call registries', 1)
+          class: ui-silk-application-view-list
+          description: _("List of %s", ngettext('Call', 'Calls', 0))
+          showOnlyIf: ${auth.companyRetail}
+        KamTrunksCdrsWholesaleList:
+          title: ngettext('Call registry', 'Call registries', 1)
+          class: ui-silk-application-view-list
+          description: _("List of %s", ngettext('Call registry', 'Call registries', 1))
+          showOnlyIf: ${auth.companyWholesale}
   footerMenu:
     footer:
       title: ''
