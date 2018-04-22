@@ -25,8 +25,6 @@ services:
     tags:
       - { name: provider.lifecycle.brand.post_persist, priority: 20 }
     arguments:
-      $countryRepository:
-        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\Country\\Country")'
       $routingPatternGroupByRoutingPatternAndCountry:
         '@Ivoz\Provider\Domain\Service\RoutingPatternGroup\UpdateByRoutingPatternAndCountry'
 
@@ -36,8 +34,6 @@ services:
     arguments:
       $entityPersister:
         '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
-      $serviceRepository:
-        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\Service\\Service")'
 
   ##################################
   ## post_remove

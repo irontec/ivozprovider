@@ -17,8 +17,6 @@ services:
     arguments:
       $entityPersister:
         '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
-      $routingPatternGroupRepository:
-        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\RoutingPatternGroup\\RoutingPatternGroup")'
       $createAndPersistRoutingPatternGroupsRelPattern:
         '@Ivoz\Provider\Domain\Service\RoutingPatternGroupsRelPattern\CreateAndPersist'
 
@@ -30,9 +28,4 @@ services:
   Ivoz\Provider\Domain\Service\Invoice\Generator:
     arguments:
       $logger: '@logger'
-      $invoiceRepository: '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\Invoice\\Invoice")'
-      $trunksCdrRepository: '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Kam\\Domain\\Model\\TrunksCdr\\TrunksCdr")'
-      $tpCdrRepository: '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Cgr\\Domain\\Model\\TpCdr\\TpCdr")'
-      $ratingPlanRepository: '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Cgr\\Domain\\Model\\RatingPlan\\RatingPlan")'
-      $destinationRepository: '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Cgr\\Domain\\Model\\TpDestination\\TpDestination")'
       $vendorDir: '%kernel.root_dir%/../vendor/'

@@ -28,8 +28,6 @@ services:
     arguments:
       $entityPersister:
         '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
-      $domainRepository:
-        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\Domain\\Domain")'
 
   Ivoz\Cgr\Domain\Service\TpAccountAction\CreateByCompany:
     tags:
@@ -44,8 +42,6 @@ services:
     arguments:
       $entityPersister:
         '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
-      $brandServiceRepository:
-        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\BrandService\\BrandService")'
 
   ##################################
   ## post_remove
@@ -62,7 +58,5 @@ services:
     tags:
       - { name: provider.lifecycle.company.on_commit, priority: 10 }
     arguments:
-      $balanceNotificationRepository:
-        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\BalanceNotification\\BalanceNotification")'
       $domainEventPublisher:
         '@Ivoz\Core\Domain\Service\DomainEventPublisher'

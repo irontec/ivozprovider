@@ -21,6 +21,3 @@ services:
     arguments:
       $entityPersister:
         '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
-      $psEndpointRepository:
-        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Ast\\Domain\\Model\\PsEndpoint\\PsEndpoint")'
-

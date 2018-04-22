@@ -19,5 +19,3 @@ services:
     tags:
       - { name: provider.lifecycle.call_forward_setting.pre_persist, priority: 10 }
     arguments:
-      $callForwardSettingRepository:
-        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\CallForwardSetting\\CallForwardSetting")'
