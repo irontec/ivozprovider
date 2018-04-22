@@ -26,6 +26,10 @@ trait LifecycleCompilerTrait
             $this->getErrorHandlerServices(),
             PersistErrorHandlerServiceCollection::class
         );
+
+        $this->setRepositoryAliases(
+            $this->container->findTaggedServiceIds('domain.repository')
+        );
     }
 
     protected function buildService(array $serviceCollection, $collectionClassName = null)
@@ -56,6 +60,27 @@ trait LifecycleCompilerTrait
         $definition = $this->container->findDefinition($collectionAlias);
 
         return $definition->getClass();
+    }
+
+    /**
+     * @param Definition[] $services
+     */
+    protected function setRepositoryAliases(array $services)
+    {
+
+        foreach ($services as $fqdn => $value) {
+
+            $repositoryInterface = preg_replace(
+                '/(.*)Infrastructure\\\\Persistence\\\\Doctrine\\\\(.*)DoctrineRepository/',
+                '${1}Domain\Model\\\\${2}\\\\${2}Repository',
+                $fqdn
+            );
+
+            $this->container->setAlias(
+                $repositoryInterface,
+                $fqdn
+            );
+        }
     }
 
     protected function getLifecycleServices()
