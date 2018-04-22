@@ -26,9 +26,6 @@ services:
   Ivoz\Ast\Domain\Service\Voicemail\UpdateByUser:
     tags:
       - { name: provider.lifecycle.user.post_persist, priority: 10 }
-    arguments:
-      $entityPersister:
-        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
 
   Ivoz\Provider\Domain\Service\Extension\UpdateByUser:
     tags:
@@ -38,9 +35,6 @@ services:
   Ivoz\Provider\Domain\Service\User\UnsetBossAssistant:
     tags:
       - { name: provider.lifecycle.user.post_persist, priority: 30 }
-    arguments:
-      $entityPersister:
-        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
 
   Ivoz\Ast\Domain\Service\PsEndpoint\UpdateByUser:
     tags:
@@ -48,6 +42,3 @@ services:
       - { name: provider.lifecycle.user.post_persist, priority: 40 }
       ## post_remove
       - { name: provider.lifecycle.user.pre_remove, priority: 10 }
-    arguments:
-      $entityPersister:
-        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'

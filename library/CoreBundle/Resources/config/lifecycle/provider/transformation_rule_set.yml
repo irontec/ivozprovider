@@ -19,22 +19,14 @@ services:
     tags:
       - { name: provider.lifecycle.transformation_rule_set.post_persist, priority: 10 }
     arguments:
-      $entityPersister:
-        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
       $generateInRules:
         '@Ivoz\Provider\Domain\Service\TransformationRule\GenerateInRules'
       $generateOutRules:
         '@Ivoz\Provider\Domain\Service\TransformationRule\GenerateOutRules'
 
-  Ivoz\Provider\Domain\Service\TransformationRule\GenerateInRules:
-    arguments:
-      $entityPersister:
-        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
+  Ivoz\Provider\Domain\Service\TransformationRule\GenerateInRules: ~
 
-  Ivoz\Provider\Domain\Service\TransformationRule\GenerateOutRules:
-    arguments:
-      $entityPersister:
-        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
+  Ivoz\Provider\Domain\Service\TransformationRule\GenerateOutRules: ~
 
   ##################################
   ## on_commit

@@ -18,9 +18,6 @@ services:
   Ivoz\Kam\Domain\Service\Dispatcher\UpdateByApplicationServer:
     tags:
       - { name: provider.lifecycle.application_server.post_persist, priority: 10}
-    arguments:
-      $entityPersister:
-        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
 
   ##################################
   ## on_commit

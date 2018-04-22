@@ -3,26 +3,17 @@ services:
     autowire: true
     public: false
 
-  Ivoz\Provider\Domain\Service\LcrRule\UpdateByOutgoingRouting:
-    arguments:
-      $entityPersister:
-        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
+  Ivoz\Provider\Domain\Service\LcrRule\UpdateByOutgoingRouting: ~
 
-  Ivoz\Provider\Domain\Service\RoutingPatternGroupsRelPattern\CreateAndPersist:
-    arguments:
-      $entityPersister:
-        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
+  Ivoz\Provider\Domain\Service\RoutingPatternGroupsRelPattern\CreateAndPersist: ~
 
   Ivoz\Provider\Domain\Service\RoutingPatternGroup\UpdateByRoutingPatternAndCountry:
     arguments:
-      $entityPersister:
-        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
       $createAndPersistRoutingPatternGroupsRelPattern:
         '@Ivoz\Provider\Domain\Service\RoutingPatternGroupsRelPattern\CreateAndPersist'
 
   Ivoz\Provider\Domain\Service\LcrRule\CreateByOutgoingRoutingAndRoutingPattern:
     arguments:
-      $entityPersister: '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
       $createEntityFromDTO: '@Ivoz\Core\Application\Service\CreateEntityFromDTO'
 
   Ivoz\Provider\Domain\Service\Invoice\Generator:
