@@ -18,4 +18,3 @@ services:
   Ivoz\Provider\Domain\Service\CallForwardSetting\CheckUniqueness:
     tags:
       - { name: provider.lifecycle.call_forward_setting.pre_persist, priority: 10 }
-    arguments:

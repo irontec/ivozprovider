@@ -54,6 +54,9 @@ services:
       $logger: '@monolog.logger.changelog'
     public: true
 
+  Ivoz\Core\Domain\Service\EntityPersisterInterface:
+    '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
+
   Ivoz\Core\Application\Service\EntityTools:
     arguments:
         $entityManager: '@doctrine.orm.entity_manager'
