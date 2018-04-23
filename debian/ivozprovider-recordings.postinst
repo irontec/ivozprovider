@@ -10,6 +10,11 @@ export SYMFONY_ENV=prod
 
 # Create project cache
 cd /opt/irontec/ivozprovider/microservices/recordings
+
+# Set proper var permissions
+setfacl -dR -m u:www-data:rwX -m u:root:rwX var
+setfacl  -R -m u:www-data:rwX -m u:root:rwX var
+
 bin/console cache:clear --no-warmup -q -n
 
 :
