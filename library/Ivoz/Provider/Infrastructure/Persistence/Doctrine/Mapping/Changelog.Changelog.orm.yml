@@ -1,5 +1,5 @@
 Ivoz\Provider\Domain\Model\Changelog\Changelog:
-  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\ApplicationServerDoctrineRepository
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\ChangelogDoctrineRepository
   type: entity
   table: Changelog
   id:
