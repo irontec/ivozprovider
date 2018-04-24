@@ -18,11 +18,6 @@ services:
   Ivoz\Provider\Domain\Service\TransformationRule\GenerateRules:
     tags:
       - { name: provider.lifecycle.transformation_rule_set.post_persist, priority: 10 }
-    arguments:
-      $generateInRules:
-        '@Ivoz\Provider\Domain\Service\TransformationRule\GenerateInRules'
-      $generateOutRules:
-        '@Ivoz\Provider\Domain\Service\TransformationRule\GenerateOutRules'
 
   Ivoz\Provider\Domain\Service\TransformationRule\GenerateInRules: ~
 

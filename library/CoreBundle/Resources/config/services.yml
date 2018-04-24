@@ -29,20 +29,11 @@ services:
   core.doctrine_collection_transformer:
     '@Ivoz\Core\Infrastructure\Application\DoctrineCollectionTransformer'
 
-  Ivoz\Core\Application\Service\CreateEntityFromDTO:
-    arguments:
-      - '@core.doctrine_foreign_key_transformer'
-      - '@core.doctrine_collection_transformer'
-      - '@Ivoz\Core\Application\Service\Assembler\EntityAssembler'
+  Ivoz\Core\Application\Service\CreateEntityFromDTO: ~
 
-  core.create_entity_from_dto:
-    class: Ivoz\Core\Application\Service\CreateEntityFromDTO
+  core.create_entity_from_dto: '@Ivoz\Core\Application\Service\CreateEntityFromDTO'
 
   Ivoz\Core\Application\Service\UpdateEntityFromDTO:
-    arguments:
-      - '@core.doctrine_foreign_key_transformer'
-      - '@core.doctrine_collection_transformer'
-      - '@Ivoz\Core\Application\Service\Assembler\EntityAssembler'
     public: true
 
   core.update_entity_from_dto:
@@ -60,8 +51,6 @@ services:
   Ivoz\Core\Application\Service\EntityTools:
     arguments:
         $entityManager: '@doctrine.orm.entity_manager'
-        $entityAssembler: '@Ivoz\Core\Application\Service\Assembler\EntityAssembler'
-        $dtoAssembler: '@Ivoz\Core\Application\Service\Assembler\DtoAssembler'
     public: true
 
   Ivoz\Core\Infrastructure\Symfony\EventListener\DomainExceptionListener:

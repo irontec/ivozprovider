@@ -21,9 +21,6 @@ services:
   Ivoz\Provider\Domain\Service\RoutingPattern\UpdateByBrand:
     tags:
       - { name: provider.lifecycle.brand.post_persist, priority: 20 }
-    arguments:
-      $routingPatternGroupByRoutingPatternAndCountry:
-        '@Ivoz\Provider\Domain\Service\RoutingPatternGroup\UpdateByRoutingPatternAndCountry'
 
   Ivoz\Provider\Domain\Service\Service\UpdateByBrand:
     tags:

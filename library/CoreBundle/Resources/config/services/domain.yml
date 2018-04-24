@@ -7,14 +7,9 @@ services:
 
   Ivoz\Provider\Domain\Service\RoutingPatternGroupsRelPattern\CreateAndPersist: ~
 
-  Ivoz\Provider\Domain\Service\RoutingPatternGroup\UpdateByRoutingPatternAndCountry:
-    arguments:
-      $createAndPersistRoutingPatternGroupsRelPattern:
-        '@Ivoz\Provider\Domain\Service\RoutingPatternGroupsRelPattern\CreateAndPersist'
+  Ivoz\Provider\Domain\Service\RoutingPatternGroup\UpdateByRoutingPatternAndCountry: ~
 
-  Ivoz\Provider\Domain\Service\LcrRule\CreateByOutgoingRoutingAndRoutingPattern:
-    arguments:
-      $createEntityFromDTO: '@Ivoz\Core\Application\Service\CreateEntityFromDTO'
+  Ivoz\Provider\Domain\Service\LcrRule\CreateByOutgoingRoutingAndRoutingPattern: ~
 
   Ivoz\Provider\Domain\Service\Invoice\Generator:
     arguments:

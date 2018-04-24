@@ -25,6 +25,3 @@ services:
   Ivoz\Provider\Domain\Service\Invoice\SendGenerateOrder:
     tags:
       - { name: provider.lifecycle.invoice.on_commit, priority: 10 }
-    arguments:
-      $invoicer:
-        '@Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Invoicer'

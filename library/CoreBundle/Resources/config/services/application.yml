@@ -11,10 +11,3 @@ services:
     arguments:
       $entityManager:
         "@doctrine.orm.entity_manager"
-      $queryBuilderFactory:
-        '@Ivoz\Core\Application\Service\QueryBuilderFactory'
-      $dtoAssembler:
-        '@Ivoz\Core\Application\Service\Assembler\DtoAssembler'
-      $eventPublisher:
-        '@Ivoz\Core\Domain\Service\DomainEventPublisher'
-

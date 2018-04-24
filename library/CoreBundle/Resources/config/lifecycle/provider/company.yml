@@ -48,6 +48,3 @@ services:
   Ivoz\Provider\Domain\Service\Company\SearchBrokenThresholds:
     tags:
       - { name: provider.lifecycle.company.on_commit, priority: 10 }
-    arguments:
-      $domainEventPublisher:
-        '@Ivoz\Core\Domain\Service\DomainEventPublisher'
