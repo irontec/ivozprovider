@@ -76,8 +76,8 @@ class Generator
         $inDate = $invoice->getInDate(true);
         $inDate->setTimezone($invoiceTz);
         $outDate = $invoice->getOutDate(true);
-        $outDate->setTimezone($invoiceTz);
         $outDate->addDay(1)->subSecond(1);
+        $outDate->setTimezone($invoiceTz);
 
         $invoiceArray = $invoice->toArray();
         $invoiceArray["invoiceDate"] = $invoiceDate->toString(self::DATE_FORMAT);
@@ -131,11 +131,25 @@ class Generator
         $company = $invoice->getCompany();
         $lang = $company->getLanguageCode();
         $invoiceTz = $company->getDefaultTimezone()->getTz();
-        $inDate = $invoice->getInDate(true);
-        $inDate->setTimezone($invoiceTz);
-        $outDate = $invoice->getOutDate(true);
-        $outDate->setTimezone($invoiceTz);
-        $outDate->addDay(1)->subSecond(1);
+
+        $inDateTime = new \DateTime(
+            $invoice->getInDate(),
+            new \DateTimeZone($invoiceTz)
+        );
+        $inDateTime->setTimezone(new \DateTimeZone('UTC'));
+
+        $inDate = new \Zend_Date($inDateTime->getTimestamp(), \Zend_Date::TIMESTAMP);
+        $inDate->setTimeZone('UTC');
+
+        $outDateTime = new \DateTime(
+            $invoice->getOutDate(),
+            new \DateTimeZone($invoiceTz)
+        );
+        $outDateTime->setTime(23, 59, 59);
+        $outDateTime->setTimezone(new \DateTimeZone('UTC'));
+
+        $outDate = new \Zend_Date($outDateTime->getTimestamp(), \Zend_Date::TIMESTAMP);
+        $outDate->setTimeZone('UTC');
 
         $callsMapper = new \IvozProvider\Mapper\Sql\KamAccCdrs();
 
@@ -175,6 +189,7 @@ class Generator
             "start_time_utc >= '".$inDate->toString(self::MYSQL_DATETIME_FORMAT)."'",
             "start_time_utc <= '".$outDate->toString(self::MYSQL_DATETIME_FORMAT)."'"
         );
+
 
         $where = implode(" AND ", $wheres);
         $order = "start_time_utc asc";
