@@ -12,16 +12,16 @@ services:
   cgr.lifecycle.tp_rating_profile.service_collection:
     '@Ivoz\Cgr\Domain\Service\TpRatingProfile\TpRatingProfileLifecycleServiceCollection'
 
-  ##################################
-  ## pre_persist
-  ##################################
-  Ivoz\Cgr\Domain\Service\TpRatingProfile\UpdateRatingProfileTag:
-    tags:
-      - { name: cgr.lifecycle.tp_rating_profile.pre_persist, priority: 10}
-
-  ##################################
-  ## on_commit
-  ##################################
-  Ivoz\Cgr\Domain\Service\TpRatingProfile\UpdatedTpRatingProfileNotificator:
-    tags:
-      - { name: cgr.lifecycle.tp_rating_profile.on_commit, priority: 10}
+#  ##################################
+#  ## pre_persist
+#  ##################################
+#  Ivoz\Cgr\Domain\Service\TpRatingProfile\UpdateRatingProfileTag:
+#    tags:
+#      - { name: cgr.lifecycle.tp_rating_profile.pre_persist, priority: 10}
+#
+#  ##################################
+#  ## on_commit
+#  ##################################
+#  Ivoz\Cgr\Domain\Service\TpRatingProfile\UpdatedTpRatingProfileNotificator:
+#    tags:
+#      - { name: cgr.lifecycle.tp_rating_profile.on_commit, priority: 10}

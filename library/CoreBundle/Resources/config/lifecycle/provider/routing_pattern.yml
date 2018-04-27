@@ -12,19 +12,18 @@ services:
   provider.lifecycle.routing_pattern.service_collection:
     '@Ivoz\Provider\Domain\Service\RoutingPattern\RoutingPatternLifecycleServiceCollection'
 
-  ##################################
-  ## post_persist
-  ##################################
-  Ivoz\Provider\Domain\Service\LcrRule\UpdateByRoutingPattern:
-    tags:
-      - { name: provider.lifecycle.routing_pattern.post_persist, priority: 10}
-
-  ##################################
-  ## on_commit
-  ##################################
+#  ##################################
+#  ## post_persist
+#  ##################################
+#  Ivoz\Provider\Domain\Service\LcrRule\UpdateByRoutingPattern:
+#    tags:
+#      - { name: provider.lifecycle.routing_pattern.post_persist, priority: 10}
+#
+#  ##################################
+#  ## on_commit
+#  ##################################
   Ivoz\Provider\Infrastructure\Domain\Service\RoutingPattern\SendTrunksLcrReloadRequest:
-    tags:
-      - { name: provider.lifecycle.routing_pattern.on_commit, priority: 10 }
+    tags: [{ name: 'domain.service'}]
     arguments:
       $trunksLcrReload:
         '@XmlRpc\XmlRpcTrunksRequest::LcrReload'

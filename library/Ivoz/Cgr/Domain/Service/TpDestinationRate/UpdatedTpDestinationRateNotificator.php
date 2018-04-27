@@ -14,6 +14,13 @@ class UpdatedTpDestinationRateNotificator implements TpDestinationRateLifecycleE
         $this->client = $client;
     }
 
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_ON_COMMIT => 10
+        ];
+    }
+
     public function execute(TpDestinationRateInterface $entity)
     {
         $this->client->scheduleFullReload();

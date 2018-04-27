@@ -22,6 +22,13 @@ class SendGenerateOrder implements InvoiceLifecycleEventHandlerInterface
         $this->invoicer = $invoicer;
     }
 
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_ON_COMMIT => 10
+        ];
+    }
+
     public function execute(InvoiceInterface $entity)
     {
         $pendingStatus = $entity->getStatus() === 'waiting';

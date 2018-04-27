@@ -11,10 +11,10 @@ services:
 
   provider.lifecycle.locution.service_collection:
     '@Ivoz\Provider\Domain\Service\Locution\LocutionLifecycleServiceCollection'
-
-  ##################################
-  ## on_commit
-  ##################################
-  Ivoz\Provider\Domain\Service\Locution\SendRecodingOrder:
-    tags:
-      - { name: provider.lifecycle.locution.on_commit, priority: 10 }
+#
+#  ##################################
+#  ## on_commit
+#  ##################################
+#  Ivoz\Provider\Domain\Service\Locution\SendRecodingOrder:
+#    tags:
+#      - { name: provider.lifecycle.locution.on_commit, priority: 10 }

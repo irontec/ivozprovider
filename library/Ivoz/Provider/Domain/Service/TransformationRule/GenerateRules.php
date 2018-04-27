@@ -38,6 +38,13 @@ class GenerateRules implements TransformationRuleSetLifecycleEventHandlerInterfa
         $this->generateOutRules = $generateOutRules;
     }
 
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_POST_PERSIST => 10
+        ];
+    }
+
     public function execute(TransformationRuleSetInterface $entity, $isNew)
     {
         // Only if requested to autogenerate rules

@@ -33,6 +33,13 @@ class UpdateByOutgoingRouting implements OutgoingRoutingLifecycleEventHandlerInt
         $this->lcrRuleFactory = $lcrRuleFactory;
     }
 
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_POST_PERSIST => 10
+        ];
+    }
+
     /**
      * @param OutgoingRoutingInterface $outgoingRouting
      */

@@ -13,12 +13,11 @@ services:
     '@Ivoz\Provider\Domain\Service\RoutingPatternGroup\RoutingPatternGroupLifecycleServiceCollection'
 
 
-  ##################################
-  ## on_commit
-  ##################################
+#  ##################################
+#  ## on_commit
+#  ##################################
   Ivoz\Provider\Infrastructure\Domain\Service\RoutingPatternGroup\SendTrunksLcrReloadRequest:
-    tags:
-      - { name: provider.lifecycle.routing_pattern_group.on_commit, priority: 10 }
+    tags: [{ name: 'domain.service'}]
     arguments:
       $trunksLcrReload:
         '@XmlRpc\XmlRpcTrunksRequest::LcrReload'

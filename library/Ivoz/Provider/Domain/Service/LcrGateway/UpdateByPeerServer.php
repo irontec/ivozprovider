@@ -23,6 +23,13 @@ class UpdateByPeerServer implements PeerServerLifecycleEventHandlerInterface
         $this->entityPersister = $entityPersister;
     }
 
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_POST_PERSIST => 10
+        ];
+    }
+
     public function execute(PeerServerInterface $entity, $isNew)
     {
         $lcrGateway = $entity->getLcrGateway();

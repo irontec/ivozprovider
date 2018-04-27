@@ -11,10 +11,10 @@ services:
 
   provider.lifecycle.music_on_hold.service_collection:
     '@Ivoz\Provider\Domain\Service\MusicOnHold\MusicOnHoldLifecycleServiceCollection'
-
-  ##################################
-  ## on_commit
-  ##################################
-  Ivoz\Provider\Domain\Service\MusicOnHold\SendRecodingOrder:
-    tags:
-      - { name: provider.lifecycle.music_on_hold.on_commit, priority: 10 }
+#
+#  ##################################
+#  ## on_commit
+#  ##################################
+#  Ivoz\Provider\Domain\Service\MusicOnHold\SendRecodingOrder:
+#    tags:
+#      - { name: provider.lifecycle.music_on_hold.on_commit, priority: 10 }

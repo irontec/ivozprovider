@@ -12,13 +12,13 @@ services:
   provider.lifecycle.extension.service_collection:
     '@Ivoz\Provider\Domain\Service\Extension\ExtensionLifecycleServiceCollection'
 
-  ##################################
-  ## post_persist
-  ##################################
-  Ivoz\Provider\Domain\Service\User\UpdateByExtension:
-    tags:
-      - { name: provider.lifecycle.extension.post_persist, priority: 10}
-
-  Ivoz\Ast\Domain\Service\PsEndpoint\UpdateByExtension:
-    tags:
-      - { name: provider.lifecycle.extension.post_persist, priority: 20}
+#  ##################################
+#  ## post_persist
+#  ##################################
+#  Ivoz\Provider\Domain\Service\User\UpdateByExtension:
+#    tags:
+#      - { name: provider.lifecycle.extension.post_persist, priority: 10}
+#
+#  Ivoz\Ast\Domain\Service\PsEndpoint\UpdateByExtension:
+#    tags:
+#      - { name: provider.lifecycle.extension.post_persist, priority: 20}

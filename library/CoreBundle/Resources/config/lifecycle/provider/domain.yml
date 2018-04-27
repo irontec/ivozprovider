@@ -12,19 +12,18 @@ services:
   provider.lifecycle.domain.service_collection:
     '@Ivoz\Provider\Domain\Service\Domain\DomainLifecycleServiceCollection'
 
-  ##################################
-  ## post_persist
-  ##################################
-  Ivoz\Ast\Domain\Service\PsEndpoint\UpdateByDomain:
-    tags:
-      - { name: provider.lifecycle.domain.post_persist, priority: 10}
-
-  ##################################
-  ## on_commit
-  ##################################
+#  ##################################
+#  ## post_persist
+#  ##################################
+#  Ivoz\Ast\Domain\Service\PsEndpoint\UpdateByDomain:
+#    tags:
+#      - { name: provider.lifecycle.domain.post_persist, priority: 10}
+#
+#  ##################################
+#  ## on_commit
+#  ##################################
   Ivoz\Provider\Infrastructure\Domain\Service\Domain\SendUsersDomainReloadRequest:
-    tags:
-      - { name: provider.lifecycle.domain.on_commit, priority: 10 }
+    tags: [{ name: 'domain.service'}]
     arguments:
       $usersDomainReload:
         '@XmlRpc\XmlRpcUsersRequest::DomainReload'

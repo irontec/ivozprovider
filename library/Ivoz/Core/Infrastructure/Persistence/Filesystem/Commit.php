@@ -4,9 +4,9 @@ namespace Ivoz\Core\Infrastructure\Persistence\Filesystem;
 
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Domain\Service\FileContainerInterface;
-use Ivoz\Core\Domain\Service\LifecycleEventHandlerInterface;
+use Ivoz\Core\Domain\Service\GenericLifecycleEventHandlerInterface;
 
-class Commit implements LifecycleEventHandlerInterface
+class Commit implements GenericLifecycleEventHandlerInterface
 {
     public function handle(EntityInterface $entity, $isNew)
     {

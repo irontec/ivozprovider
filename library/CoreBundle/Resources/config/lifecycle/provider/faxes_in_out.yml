@@ -12,9 +12,9 @@ services:
   provider.lifecycle.faxes_in_out.service_collection:
     '@Ivoz\Provider\Domain\Service\FaxesInOut\FaxesInOutLifecycleServiceCollection'
 
-  ##################################
-  ## post_persist
-  ##################################
-  Ivoz\Provider\Domain\Service\FaxesInOut\SendFaxFile:
-    tags:
-      - { name: provider.lifecycle.faxes_in_out.post_persist, priority: 10}
+#  ##################################
+#  ## post_persist
+#  ##################################
+#  Ivoz\Provider\Domain\Service\FaxesInOut\SendFaxFile:
+#    tags:
+#      - { name: provider.lifecycle.faxes_in_out.post_persist, priority: 10}

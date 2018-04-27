@@ -12,12 +12,11 @@ services:
   provider.lifecycle.queue.service_collection:
     '@Ivoz\Provider\Domain\Service\Queue\QueueLifecycleServiceCollection'
 
-  ##################################
-  ## post_persist
-  ##################################
+#  ##################################
+#  ## post_persist
+#  ##################################
   Ivoz\Ast\Domain\Service\Queue\UpdateByIvozQueue:
-    tags:
-      - { name: provider.lifecycle.queue.post_persist, priority: 10 }
+    tags: [{ name: 'domain.service'}]
     arguments:
       $storagePathResolver:
         '@Service\CommonStoragePathResolver::LocutionEncodedFile'

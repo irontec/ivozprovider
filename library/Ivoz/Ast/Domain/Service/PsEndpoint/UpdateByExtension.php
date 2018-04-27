@@ -25,6 +25,13 @@ class UpdateByExtension implements ExtensionLifecycleEventHandlerInterface
         $this->entityPersister = $entityPersister;
     }
 
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_POST_PERSIST => 20
+        ];
+    }
+
     /**
      * @param ExtensionInterface $entity
      * @param $isNew

@@ -16,8 +16,7 @@ services:
   ## on_commit
   ##################################
   Ivoz\Kam\Infrastructure\Domain\Service\UsersAddress\SendUsersPermissionsReloadRequest:
-    tags:
-      - { name: kam.lifecycle.users_address.on_commit, priority: 10 }
+    tags: [{ name: 'domain.service'}]
     arguments:
       $usersPermissionsReload:
         '@XmlRpc\XmlRpcUsersRequest::PermissionsTrustedReload'

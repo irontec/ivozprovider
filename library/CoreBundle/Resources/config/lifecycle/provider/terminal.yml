@@ -12,9 +12,9 @@ services:
   provider.lifecycle.terminal.service_collection:
     '@Ivoz\Provider\Domain\Service\Terminal\TerminalLifecycleServiceCollection'
 
-  ##################################
-  ## post_persist
-  ##################################
-  Ivoz\Ast\Domain\Service\PsEndpoint\UpdateByTerminal:
-    tags:
-      - { name: provider.lifecycle.terminal.post_persist, priority: 10 }
+#  ##################################
+#  ## post_persist
+#  ##################################
+#  Ivoz\Ast\Domain\Service\PsEndpoint\UpdateByTerminal:
+#    tags:
+#      - { name: provider.lifecycle.terminal.post_persist, priority: 10 }

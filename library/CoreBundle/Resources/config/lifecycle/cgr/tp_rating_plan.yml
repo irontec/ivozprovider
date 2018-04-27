@@ -12,16 +12,16 @@ services:
   cgr.lifecycle.tp_rating_plan.service_collection:
     '@Ivoz\Cgr\Domain\Service\TpRatingPlan\TpRatingPlanLifecycleServiceCollection'
 
-  ##################################
-  ## post_persist
-  ##################################
-  Ivoz\Cgr\Domain\Service\TpRatingPlan\InheritRatingPlanTag:
-    tags:
-      - { name: cgr.lifecycle.tp_rating_plan.post_persist, priority: 10}
-
-  ##################################
-  ## on_commit
-  ##################################
-  Ivoz\Cgr\Domain\Service\TpRatingPlan\UpdatedTpRatingPlanNotificator:
-    tags:
-      - { name: cgr.lifecycle.tp_rating_plan.on_commit, priority: 10}
+#  ##################################
+#  ## post_persist
+#  ##################################
+#  Ivoz\Cgr\Domain\Service\TpRatingPlan\InheritRatingPlanTag:
+#    tags:
+#      - { name: cgr.lifecycle.tp_rating_plan.post_persist, priority: 10}
+#
+#  ##################################
+#  ## on_commit
+#  ##################################
+#  Ivoz\Cgr\Domain\Service\TpRatingPlan\UpdatedTpRatingPlanNotificator:
+#    tags:
+#      - { name: cgr.lifecycle.tp_rating_plan.on_commit, priority: 10}

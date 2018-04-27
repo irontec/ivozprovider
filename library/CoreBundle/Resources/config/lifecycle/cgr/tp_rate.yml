@@ -15,6 +15,6 @@ services:
   ##################################
   ## on_commit
   ##################################
-  Ivoz\Cgr\Domain\Service\TpRate\UpdatedTpRateNotificator:
-    tags:
-      - { name: cgr.lifecycle.tp_rate.on_commit, priority: 10}
+#  Ivoz\Cgr\Domain\Service\TpRate\UpdatedTpRateNotificator:
+#    tags:
+#      - { name: cgr.lifecycle.tp_rate.on_commit, priority: 10}

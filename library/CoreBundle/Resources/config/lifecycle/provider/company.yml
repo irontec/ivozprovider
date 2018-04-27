@@ -12,39 +12,40 @@ services:
   provider.lifecycle.company.service_collection:
     '@Ivoz\Provider\Domain\Service\Company\CompanyLifecycleServiceCollection'
 
-  ##################################
-  ## pre_persist
-  ##################################
-  Ivoz\Provider\Domain\Service\Company\SanitizeEmptyValues:
-    tags:
-      - { name: provider.lifecycle.company.pre_persist, priority: 10 }
-
-  ##################################
-  ## post_persist
-  ##################################
-  Ivoz\Provider\Domain\Service\Domain\UpdateByCompany:
-    tags:
-      - { name: provider.lifecycle.company.post_persist, priority: 10 }
-
-  Ivoz\Cgr\Domain\Service\TpAccountAction\CreateByCompany:
-    tags:
-      - { name: provider.lifecycle.company.post_persist, priority: 20 }
-
-  Ivoz\Provider\Domain\Service\CompanyService\PropagateBrandServices:
-    tags:
-      - { name: provider.lifecycle.company.post_persist, priority: 30 }
-
-  ##################################
-  ## post_remove
-  ##################################
-  Ivoz\Provider\Domain\Service\Domain\DeleteByCompany:
-    tags:
-      - { name: provider.lifecycle.company.post_remove, priority: 10 }
-    arguments: ~
-
-  ##################################
-  ## on_commit
-  ##################################
-  Ivoz\Provider\Domain\Service\Company\SearchBrokenThresholds:
-    tags:
-      - { name: provider.lifecycle.company.on_commit, priority: 10 }
+#  ##################################
+#  ## pre_persist
+#  ##################################
+#  Ivoz\Provider\Domain\Service\Company\SanitizeEmptyValues:
+#    tags:
+#      - { name: provider.lifecycle.company.pre_persist, priority: 10 }
+#
+#  ##################################
+#  ## post_persist
+#  ##################################
+#  Ivoz\Provider\Domain\Service\Domain\UpdateByCompany:
+#    tags:
+#      - { name: provider.lifecycle.company.post_persist, priority: 10 }
+#
+#  Ivoz\Cgr\Domain\Service\TpAccountAction\CreateByCompany:
+#    tags:
+#      - { name: provider.lifecycle.company.post_persist, priority: 20 }
+#
+#  Ivoz\Provider\Domain\Service\CompanyService\PropagateBrandServices:
+#    tags:
+#      - { name: provider.lifecycle.company.post_persist, priority: 30 }
+#
+#  ##################################
+#  ## post_remove
+#  ##################################
+#  Ivoz\Provider\Domain\Service\Domain\DeleteByCompany:
+#    tags:
+#      - { name: provider.lifecycle.company.post_remove, priority: 10 }
+#    arguments: ~
+#
+#  ##################################
+#  ## on_commit
+#  ##################################
+#  Ivoz\Provider\Domain\Service\Company\SearchBrokenThresholds:
+#    tags:
+#      - { name: provider.lifecycle.company.on_commit, priority: 10 }
+#

@@ -11,10 +11,10 @@ services:
 
   provider.lifecycle.call_forward_setting.service_collection:
     '@Ivoz\Provider\Domain\Service\CallForwardSetting\CallForwardSettingLifecycleServiceCollection'
-
-  ##################################
-  ## pre_persist
-  ##################################
-  Ivoz\Provider\Domain\Service\CallForwardSetting\CheckUniqueness:
-    tags:
-      - { name: provider.lifecycle.call_forward_setting.pre_persist, priority: 10 }
+#
+#  ##################################
+#  ## pre_persist
+#  ##################################
+#  Ivoz\Provider\Domain\Service\CallForwardSetting\CheckUniqueness:
+#    tags:
+#      - { name: provider.lifecycle.call_forward_setting.pre_persist, priority: 10 }

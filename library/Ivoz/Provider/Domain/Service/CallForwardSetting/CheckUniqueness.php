@@ -31,6 +31,13 @@ class CheckUniqueness implements CallForwardSettingLifecycleEventHandlerInterfac
         $this->callForwardSettingRepository = $callForwardSettingRepository;
     }
 
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_PRE_PERSIST => 10
+        ];
+    }
+
     /**
      * @throws \Exception
      */

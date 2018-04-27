@@ -24,6 +24,13 @@ class CreateByPeerServer implements PeerServerLifecycleEventHandlerInterface
         $this->entityPersister = $entityPersister;
     }
 
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_POST_PERSIST => 20
+        ];
+    }
+
     /**
      * @param PeerServerInterface $entity
      * @param $isNew

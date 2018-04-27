@@ -22,6 +22,13 @@ class UpdateByDomain implements DomainLifecycleEventHandlerInterface
         $this->entityPersister = $entityPersister;
     }
 
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_POST_PERSIST => 10
+        ];
+    }
+
     public function execute(DomainInterface $entity)
     {
         /** @var FriendInterface[] $friends */

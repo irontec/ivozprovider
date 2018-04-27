@@ -11,13 +11,12 @@ services:
 
   kam.lifecycle.trunks_uacreg.service_collection:
     '@Ivoz\Kam\Domain\Service\TrunksUacreg\TrunksUacregLifecycleServiceCollection'
-
-  ##################################
-  ## on_commit
-  ##################################
+#
+#  ##################################
+#  ## on_commit
+#  ##################################
   Ivoz\Kam\Infrastructure\Domain\Service\TrunksUacreg\SendTrunksUacRegReloadRequest:
-    tags:
-      - { name: kam.lifecycle.trunks_uacreg.on_commit, priority: 10 }
+    tags: [{ name: 'domain.service'}]
     arguments:
       $trunksUacRegReload:
         '@XmlRpc\XmlRpcTrunksRequest::UacRegReload'

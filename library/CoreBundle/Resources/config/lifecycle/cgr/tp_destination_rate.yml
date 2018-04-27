@@ -15,21 +15,22 @@ services:
   ##################################
   ## post_persist
   ##################################
-  Ivoz\Cgr\Domain\Service\TpDestinationRate\InheritDestinationRateTag:
-    tags:
-      - { name: cgr.lifecycle.tp_destination_rate.post_persist, priority: 10}
-
-  Ivoz\Cgr\Domain\Service\TpDestination\CreatedByTpDestinationRate:
-    tags:
-      - { name: cgr.lifecycle.tp_destination_rate.post_persist, priority: 20}
-
-  Ivoz\Cgr\Domain\Service\TpRate\CreatedByTpDestinationRate:
-    tags:
-      - { name: cgr.lifecycle.tp_destination_rate.post_persist, priority: 30}
+#  Ivoz\Cgr\Domain\Service\TpDestinationRate\InheritDestinationRateTag:
+#    tags:
+#      - { name: cgr.lifecycle.tp_destination_rate.post_persist, priority: 10}
+#
+#  Ivoz\Cgr\Domain\Service\TpDestination\CreatedByTpDestinationRate:
+#    tags:
+#      - { name: cgr.lifecycle.tp_destination_rate.post_persist, priority: 20}
+#
+#  Ivoz\Cgr\Domain\Service\TpRate\CreatedByTpDestinationRate:
+#    tags:
+#      - { name: cgr.lifecycle.tp_destination_rate.post_persist, priority: 30}
 
   ##################################
   ## on_commit
   ##################################
-  Ivoz\Cgr\Domain\Service\TpDestinationRate\UpdatedTpDestinationRateNotificator:
-    tags:
-      - { name: cgr.lifecycle.tp_destination_rate.on_commit, priority: 10}
+#  Ivoz\Cgr\Domain\Service\TpDestinationRate\UpdatedTpDestinationRateNotificator:
+#    tags:
+#      - { name: cgr.lifecycle.tp_destination_rate.on_commit, priority: 10}
+

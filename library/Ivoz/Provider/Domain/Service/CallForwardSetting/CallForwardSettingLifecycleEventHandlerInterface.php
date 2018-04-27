@@ -2,10 +2,10 @@
 
 namespace Ivoz\Provider\Domain\Service\CallForwardSetting;
 
-use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Core\Domain\Service\LifecycleEventHandlerInterface;
 use Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface;
 
-interface CallForwardSettingLifecycleEventHandlerInterface
+interface CallForwardSettingLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
     public function execute(CallForwardSettingInterface $entity, $isNew);
 }

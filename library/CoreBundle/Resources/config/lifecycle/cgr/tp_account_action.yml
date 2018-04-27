@@ -15,8 +15,8 @@ services:
   ##################################
   ## on_commit
   ##################################
-  Ivoz\Cgr\Domain\Service\TpAccountAction\UpdatedTpAccountActionNotificator:
-    tags:
-      - { name: cgr.lifecycle.tp_account_action.on_commit, priority: 10}
+#  Ivoz\Cgr\Domain\Service\TpAccountAction\UpdatedTpAccountActionNotificator:
+#    tags:
+#      - { name: cgr.lifecycle.tp_account_action.on_commit, priority: 10}
 
 

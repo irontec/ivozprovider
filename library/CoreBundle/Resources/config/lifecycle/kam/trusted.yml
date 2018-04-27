@@ -9,29 +9,26 @@ services:
   Ivoz\Kam\Domain\Service\Trusted\TrustedLifecycleServiceCollection:
     public: true
 
-  kam.lifecycle.trusted.service_collection:
-    '@Ivoz\Kam\Domain\Service\Trusted\TrustedLifecycleServiceCollection'
+  kam.lifecycle.trusted.service_collection: '@Ivoz\Kam\Domain\Service\Trusted\TrustedLifecycleServiceCollection'
 
-  ##################################
-  ## pre_persist
-  ##################################
-  Ivoz\Kam\Domain\Service\Trusted\CheckValidity:
-    tags:
-      - { name: kam.lifecycle.trusted.pre_persist, priority: 10}
+#  ##################################
+#  ## pre_persist
+#  ##################################
+#  Ivoz\Kam\Domain\Service\Trusted\CheckValidity:
+#    tags:
+#      - { name: kam.lifecycle.trusted.pre_persist, priority: 10}
 
   ##################################
   ## on_commit
   ##################################
   Ivoz\Kam\Infrastructure\Domain\Service\Trusted\SendUsersPermissionsReloadRequest:
-    tags:
-      - { name: kam.lifecycle.trusted.on_commit, priority: 10 }
+    tags: [{ name: 'domain.service'}]
     arguments:
       $usersPermissionsReload:
         '@XmlRpc\XmlRpcUsersRequest::PermissionsTrustedReload'
 
   Ivoz\Kam\Infrastructure\Domain\Service\Trusted\SendTrunksPermissionsReloadRequest:
-    tags:
-      - { name: kam.lifecycle.trusted.on_commit, priority: 20 }
+    tags: [{ name: 'domain.service'}]
     arguments:
       $trunksPermissionsReload:
         '@XmlRpc\XmlRpcTrunksRequest::PermissionsTrustedReload'

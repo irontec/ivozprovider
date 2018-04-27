@@ -24,6 +24,13 @@ class UpdatedTpAccountActionNotificator implements TpAccountActionLifecycleEvent
         $this->removeTpAccount = $removeService;
     }
 
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_ON_COMMIT => 10
+        ];
+    }
+
     public function execute(TpAccountActionInterface $entity)
     {
         $wasRemoved = is_null($entity->getId());

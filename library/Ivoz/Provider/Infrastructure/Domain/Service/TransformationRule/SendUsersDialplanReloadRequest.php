@@ -16,6 +16,13 @@ class SendUsersDialplanReloadRequest implements TransformationRuleLifecycleEvent
         $this->usersDialplanReload = $usersDialplanReload;
     }
 
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_ON_COMMIT => 10
+        ];
+    }
+
     public function execute(TransformationRuleInterface $entity, $isNew)
     {
         $this->usersDialplanReload->send();

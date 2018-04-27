@@ -12,30 +12,28 @@ services:
   provider.lifecycle.transformation_rule_set.service_collection:
     '@Ivoz\Provider\Domain\Service\TransformationRuleSet\TransformationRuleSetLifecycleServiceCollection'
 
-  ##################################
-  ## post_persist
-  ##################################
-  Ivoz\Provider\Domain\Service\TransformationRule\GenerateRules:
-    tags:
-      - { name: provider.lifecycle.transformation_rule_set.post_persist, priority: 10 }
-
-  Ivoz\Provider\Domain\Service\TransformationRule\GenerateInRules: ~
-
-  Ivoz\Provider\Domain\Service\TransformationRule\GenerateOutRules: ~
-
-  ##################################
-  ## on_commit
-  ##################################
+#  ##################################
+#  ## post_persist
+#  ##################################
+#  Ivoz\Provider\Domain\Service\TransformationRule\GenerateRules:
+#    tags:
+#      - { name: provider.lifecycle.transformation_rule_set.post_persist, priority: 10 }
+#
+#  Ivoz\Provider\Domain\Service\TransformationRule\GenerateInRules: ~
+#
+#  Ivoz\Provider\Domain\Service\TransformationRule\GenerateOutRules: ~
+#
+#  ##################################
+#  ## on_commit
+#  ##################################
   Ivoz\Provider\Infrastructure\Domain\Service\TransformationRuleSet\SendUsersDialplanReloadRequest:
-    tags:
-      - { name: provider.lifecycle.transformation_rule_set.on_commit, priority: 10 }
+    tags: [{ name: 'domain.service'}]
     arguments:
       $usersDialplanReload:
         '@XmlRpc\XmlRpcUsersRequest::DialplanReload'
 
   Ivoz\Provider\Infrastructure\Domain\Service\TransformationRuleSet\SendTrunksDialplanReloadRequest:
-    tags:
-      - { name: provider.lifecycle.transformation_rule_set.on_commit, priority: 20 }
+    tags: [{ name: 'domain.service'}]
     arguments:
       $trunksDialplanReload:
         '@XmlRpc\XmlRpcTrunksRequest::DialplanReload'

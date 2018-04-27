@@ -11,11 +11,11 @@ services:
 
   provider.lifecycle.pick_up_rel_user.service_collection:
     '@Ivoz\Provider\Domain\Service\PickUpRelUser\PickUpRelUserLifecycleServiceCollection'
-
-  ##################################
-  ## post_persist & post_remove
-  ##################################
-  Ivoz\Ast\Domain\Service\PsEndpoint\UpdateByPickUpRelUser:
-    tags:
-      - { name: provider.lifecycle.pick_up_rel_user.post_persist, priority: 10 }
-      - { name: provider.lifecycle.pick_up_rel_user.post_remove, priority: 10 }
+#
+#  ##################################
+#  ## post_persist & post_remove
+#  ##################################
+#  Ivoz\Ast\Domain\Service\PsEndpoint\UpdateByPickUpRelUser:
+#    tags:
+#      - { name: provider.lifecycle.pick_up_rel_user.post_persist, priority: 10 }
+#      - { name: provider.lifecycle.pick_up_rel_user.post_remove, priority: 10 }

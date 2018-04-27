@@ -28,6 +28,13 @@ class UpdateByUser implements UserLifecycleEventHandlerInterface
         $this->voicemailRepository = $voicemailRepository;
     }
 
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_POST_PERSIST => 10
+        ];
+    }
+
     public function execute(UserInterface $entity, $isNew)
     {
         $voicemail = $this->voicemailRepository->findOneBy([

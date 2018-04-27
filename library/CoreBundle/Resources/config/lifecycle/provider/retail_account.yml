@@ -11,10 +11,10 @@ services:
 
   provider.lifecycle.retail_account.service_collection:
     '@Ivoz\Provider\Domain\Service\RetailAccount\RetailAccountLifecycleServiceCollection'
-
-  ##################################
-  ## post_persist
-  ##################################
-  Ivoz\Ast\Domain\Service\PsEndpoint\UpdateByRetailAccount:
-    tags:
-      - { name: provider.lifecycle.retail_account.post_persist, priority: 10 }
+#
+#  ##################################
+#  ## post_persist
+#  ##################################
+#  Ivoz\Ast\Domain\Service\PsEndpoint\UpdateByRetailAccount:
+#    tags:
+#      - { name: provider.lifecycle.retail_account.post_persist, priority: 10 }

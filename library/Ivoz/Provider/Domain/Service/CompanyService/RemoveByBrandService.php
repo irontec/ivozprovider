@@ -46,6 +46,13 @@ class RemoveByBrandService implements BrandServiceLifecycleEventHandlerInterface
         $this->companyServiceRepository = $companyServiceRepository;
     }
 
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_POST_REMOVE => 10
+        ];
+    }
+
     public function execute(BrandServiceInterface $entity, $isNew)
     {
         /**

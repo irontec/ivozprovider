@@ -40,6 +40,13 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
         $this->invoiveRepository = $invoiveRepository;
     }
 
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_PRE_PERSIST => 10
+        ];
+    }
+
     /**
      * @throws \DomainException
      */
