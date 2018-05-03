@@ -10,5 +10,7 @@ parameters:
       - Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHold
       - Ivoz\Provider\Domain\Model\Recording\Recording
       - Ivoz\Provider\Domain\Model\Fax\Fax
+      - Ivoz\Cgr\Domain\Model\TpAccountAction\TpAccountAction
+      - Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfile
     Ivoz\Provider\Domain\Model\Fax\Fax:
       - Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOut

@@ -3,13 +3,12 @@
 namespace Ivoz\Cgr\Domain\Service\TpAccountAction;
 
 use Ivoz\Cgr\Domain\Model\TpAccountAction\TpAccountAction;
-use Ivoz\Cgr\Infrastructure\Persistence\Doctrine\TpAccountActionDoctrineRepository;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyDTO;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Service\Company\CompanyLifecycleEventHandlerInterface;
 
-class UpdateByCompany implements CompanyLifecycleEventHandlerInterface
+class CreateByCompany implements CompanyLifecycleEventHandlerInterface
 {
     /**
      * @var EntityPersisterInterface
@@ -17,21 +16,13 @@ class UpdateByCompany implements CompanyLifecycleEventHandlerInterface
     protected $entityPersister;
 
     /**
-     * @var TpAccountActionDoctrineRepository
-     */
-    protected $tpAccountActionRepository;
-
-    /**
      * UpdateByDestinationTpAccountAction constructor.
      * @param EntityPersisterInterface $entityPersister
-     * @param TpAccountActionDoctrineRepository $tpAccountActionRepository
      */
     public function __construct(
-        EntityPersisterInterface $entityPersister,
-        TpAccountActionDoctrineRepository $tpAccountActionRepository
+        EntityPersisterInterface $entityPersister
     ) {
         $this->entityPersister = $entityPersister;
-        $this->tpAccountActionRepository = $tpAccountActionRepository;
     }
 
     public function execute(CompanyInterface $entity, $isNew)
@@ -43,14 +34,7 @@ class UpdateByCompany implements CompanyLifecycleEventHandlerInterface
         /** @var CompanyDTO $entityDto */
         $entityDto = $entity->toDTO();
 
-        // Find associated account for company
-        $accountAction = $this->tpAccountActionRepository->findOneBy([
-            'company' => $entity->getId()
-        ]);
-
-        $accountActionDto = is_null($accountAction)
-            ? TpAccountAction::createDTO()
-            : $accountAction->toDTO();
+        $accountActionDto = TpAccountAction::createDTO();
 
         // Fill all rating plan fields
         $accountActionDto
@@ -58,6 +42,6 @@ class UpdateByCompany implements CompanyLifecycleEventHandlerInterface
             ->setTenant(sprintf("b%d", $entityDto->getBrandId()))
             ->setAccount(sprintf("c%d", $entityDto->getId()));
 
-        $this->entityPersister->persistDto($accountActionDto, $accountAction);
+        $this->entityPersister->persistDto($accountActionDto, null);
     }
 }

@@ -19,6 +19,13 @@ class TpAccountAction extends TpAccountActionAbstract implements TpAccountAction
         return $this->id;
     }
 
-
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
 }
 

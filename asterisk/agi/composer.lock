@@ -4,16 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "eb5929637ccfeb84b127f28d54dbd05a",
+    "content-hash": "c22fb8c7f2dee8af6f54c11a4b5b4ab1",
     "packages": [
         {
             "name": "beberlei/assert",
-            "version": "2.9.3.0",
+            "version": "v2.9.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/beberlei/assert.git",
+                "reference": "7d8108458bbe3d063dc3315278b2001a7156fade"
+            },
             "dist": {
-                "type": "path",
-                "url": "../../library/vendor/beberlei/assert",
+                "type": "zip",
+                "url": "https://api.github.com/repos/beberlei/assert/zipball/7d8108458bbe3d063dc3315278b2001a7156fade",
                 "reference": "7d8108458bbe3d063dc3315278b2001a7156fade",
-                "shasum": null
+                "shasum": ""
             },
             "require": {
                 "ext-mbstring": "*",
@@ -32,25 +37,7 @@
                     "lib/Assert/functions.php"
                 ]
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Assert\\Tests\\": "tests/Assert/Tests"
-                },
-                "files": [
-                    "tests/Assert/Tests/Fixtures/functions.php"
-                ]
-            },
-            "scripts": {
-                "assert:generate-docs": [
-                    "php bin/generate_method_docs.php"
-                ],
-                "assert:cs-lint": [
-                    "php-cs-fixer fix --diff -vvv --dry-run"
-                ],
-                "assert:cs-fix": [
-                    "php-cs-fixer fix . -vvv || true"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-2-Clause"
             ],
@@ -72,9 +59,7 @@
                 "assertion",
                 "validation"
             ],
-            "transport-options": {
-                "symlink": true
-            }
+            "time": "2018-03-16T17:46:00+00:00"
         },
         {
             "name": "doctrine/annotations",
@@ -433,12 +418,17 @@
         },
         {
             "name": "doctrine/doctrine-bundle",
-            "version": "1.8.1.0",
+            "version": "1.8.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/DoctrineBundle.git",
+                "reference": "eb6e4fb904a459be28872765ab6e2d246aac7c87"
+            },
             "dist": {
-                "type": "path",
-                "url": "../../library/vendor/doctrine/doctrine-bundle",
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/eb6e4fb904a459be28872765ab6e2d246aac7c87",
                 "reference": "eb6e4fb904a459be28872765ab6e2d246aac7c87",
-                "shasum": null
+                "shasum": ""
             },
             "require": {
                 "doctrine/dbal": "^2.5.12",
@@ -479,52 +469,51 @@
                     "Doctrine\\Bundle\\DoctrineBundle\\": ""
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "": "Tests/DependencyInjection"
-                }
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "authors": [
                 {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
                 },
                 {
                     "name": "Benjamin Eberlei",
                     "email": "kontakt@beberlei.de"
                 },
                 {
-                    "name": "Symfony Community",
-                    "homepage": "http://symfony.com/contributors"
-                },
-                {
                     "name": "Doctrine Project",
                     "homepage": "http://www.doctrine-project.org/"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
                 }
             ],
             "description": "Symfony DoctrineBundle",
             "homepage": "http://www.doctrine-project.org",
             "keywords": [
-                "DBAL",
-                "Database",
-                "ORM",
-                "Persistence"
+                "database",
+                "dbal",
+                "orm",
+                "persistence"
             ],
-            "transport-options": {
-                "symlink": true
-            }
+            "time": "2017-11-24T13:09:19+00:00"
         },
         {
             "name": "doctrine/doctrine-cache-bundle",
-            "version": "1.3.2.0",
+            "version": "1.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/DoctrineCacheBundle.git",
+                "reference": "9baecbd6bfdd1123b0cf8c1b88fee0170a84ddd1"
+            },
             "dist": {
-                "type": "path",
-                "url": "../../library/vendor/doctrine/doctrine-cache-bundle",
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/DoctrineCacheBundle/zipball/9baecbd6bfdd1123b0cf8c1b88fee0170a84ddd1",
                 "reference": "9baecbd6bfdd1123b0cf8c1b88fee0170a84ddd1",
-                "shasum": null
+                "shasum": ""
             },
             "require": {
                 "doctrine/cache": "^1.4.2",
@@ -562,13 +551,14 @@
                     "Doctrine\\Bundle\\DoctrineCacheBundle\\": ""
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "authors": [
                 {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
                 },
                 {
                     "name": "Benjamin Eberlei",
@@ -583,12 +573,12 @@
                     "email": "guilhermeblanco@hotmail.com"
                 },
                 {
-                    "name": "Symfony Community",
-                    "homepage": "http://symfony.com/contributors"
-                },
-                {
                     "name": "Doctrine Project",
                     "homepage": "http://www.doctrine-project.org/"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
                 }
             ],
             "description": "Symfony Bundle for Doctrine Cache",
@@ -597,9 +587,7 @@
                 "cache",
                 "caching"
             ],
-            "transport-options": {
-                "symlink": true
-            }
+            "time": "2017-10-12T17:23:29+00:00"
         },
         {
             "name": "doctrine/doctrine-migrations-bundle",
@@ -1002,12 +990,17 @@
         },
         {
             "name": "egulias/email-validator",
-            "version": "2.1.3.0",
+            "version": "2.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/egulias/EmailValidator.git",
+                "reference": "1bec00a10039b823cc94eef4eddd47dcd3b2ca04"
+            },
             "dist": {
-                "type": "path",
-                "url": "../../library/vendor/egulias/email-validator",
+                "type": "zip",
+                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/1bec00a10039b823cc94eef4eddd47dcd3b2ca04",
                 "reference": "1bec00a10039b823cc94eef4eddd47dcd3b2ca04",
-                "shasum": null
+                "shasum": ""
             },
             "require": {
                 "doctrine/lexer": "^1.0.1",
@@ -1032,6 +1025,7 @@
                     "Egulias\\EmailValidator\\": "EmailValidator"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1049,9 +1043,7 @@
                 "validation",
                 "validator"
             ],
-            "transport-options": {
-                "symlink": true
-            }
+            "time": "2017-11-15T23:40:40+00:00"
         },
         {
             "name": "fig/link-util",
@@ -1367,12 +1359,17 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "2.0.11.0",
+            "version": "v2.0.11",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/paragonie/random_compat.git",
+                "reference": "5da4d3c796c275c55f057af5a643ae297d96b4d8"
+            },
             "dist": {
-                "type": "path",
-                "url": "../../library/vendor/paragonie/random_compat",
+                "type": "zip",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/5da4d3c796c275c55f057af5a643ae297d96b4d8",
                 "reference": "5da4d3c796c275c55f057af5a643ae297d96b4d8",
-                "shasum": null
+                "shasum": ""
             },
             "require": {
                 "php": ">=5.2.0"
@@ -1389,6 +1386,7 @@
                     "lib/random.php"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1405,14 +1403,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "support": {
-                "issues": "https://github.com/paragonie/random_compat/issues",
-                "email": "info@paragonie.com",
-                "source": "https://github.com/paragonie/random_compat"
-            },
-            "transport-options": {
-                "symlink": true
-            }
+            "time": "2017-09-27T21:40:39+00:00"
         },
         {
             "name": "php-mime-mail-parser/php-mime-mail-parser",
@@ -1493,6 +1484,55 @@
                 "mime"
             ],
             "time": "2018-03-15T12:29:09+00:00"
+        },
+        {
+            "name": "predis/predis",
+            "version": "1.1.1.0",
+            "dist": {
+                "type": "path",
+                "url": "../../library/vendor/predis/predis",
+                "reference": "f0210e38881631afeafb56ab43405a92cafd9fd1",
+                "shasum": null
+            },
+            "require": {
+                "php": ">=5.3.9"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.8"
+            },
+            "suggest": {
+                "ext-curl": "Allows access to Webdis when paired with phpiredis",
+                "ext-phpiredis": "Allows faster serialization and deserialization of the Redis protocol"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Predis\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Daniele Alessandri",
+                    "email": "suppakilla@gmail.com",
+                    "homepage": "http://clorophilla.net"
+                }
+            ],
+            "description": "Flexible and feature-complete Redis client for PHP and HHVM",
+            "homepage": "http://github.com/nrk/predis",
+            "keywords": [
+                "nosql",
+                "predis",
+                "redis"
+            ],
+            "support": {
+                "issues": "https://github.com/nrk/predis/issues"
+            },
+            "transport-options": {
+                "symlink": true
+            }
         },
         {
             "name": "psr/cache",
@@ -1671,17 +1711,12 @@
         },
         {
             "name": "psr/simple-cache",
-            "version": "1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-fig/simple-cache.git",
-                "reference": "408d5eafb83c57f6365a3ca330ff23aa4a5fa39b"
-            },
+            "version": "1.0.1.0",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/simple-cache/zipball/408d5eafb83c57f6365a3ca330ff23aa4a5fa39b",
+                "type": "path",
+                "url": "../../library/vendor/psr/simple-cache",
                 "reference": "408d5eafb83c57f6365a3ca330ff23aa4a5fa39b",
-                "shasum": ""
+                "shasum": null
             },
             "require": {
                 "php": ">=5.3.0"
@@ -1697,7 +1732,6 @@
                     "Psr\\SimpleCache\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1715,7 +1749,9 @@
                 "psr-16",
                 "simple-cache"
             ],
-            "time": "2017-10-23T01:57:42+00:00"
+            "transport-options": {
+                "symlink": true
+            }
         },
         {
             "name": "ramsey/uuid",
@@ -2251,12 +2287,17 @@
         },
         {
             "name": "symfony/swiftmailer-bundle",
-            "version": "3.2.1.0",
+            "version": "v3.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/swiftmailer-bundle.git",
+                "reference": "20e71c247a5a43ceb655db9712394d08c09b33ef"
+            },
             "dist": {
-                "type": "path",
-                "url": "../../library/vendor/symfony/swiftmailer-bundle",
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/swiftmailer-bundle/zipball/20e71c247a5a43ceb655db9712394d08c09b33ef",
                 "reference": "20e71c247a5a43ceb655db9712394d08c09b33ef",
-                "shasum": null
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.0.0",
@@ -2288,33 +2329,37 @@
                     "/Tests/"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "authors": [
                 {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
                     "name": "Symfony Community",
                     "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
                 }
             ],
             "description": "Symfony SwiftmailerBundle",
             "homepage": "http://symfony.com",
-            "transport-options": {
-                "symlink": true
-            }
+            "time": "2018-03-08T16:39:26+00:00"
         },
         {
             "name": "symfony/symfony",
-            "version": "3.4.6.0",
+            "version": "v3.4.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/symfony.git",
+                "reference": "874d4d659774d7bab90538072c83ed532dd17dc5"
+            },
             "dist": {
-                "type": "path",
-                "url": "../../library/vendor/symfony/symfony",
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/874d4d659774d7bab90538072c83ed532dd17dc5",
                 "reference": "874d4d659774d7bab90538072c83ed532dd17dc5",
-                "shasum": null
+                "shasum": ""
             },
             "require": {
                 "doctrine/common": "~2.4",
@@ -2435,11 +2480,7 @@
                     "**/Tests/"
                 ]
             },
-            "autoload-dev": {
-                "files": [
-                    "src/Symfony/Component/VarDumper/Resources/functions/dump.php"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2458,18 +2499,21 @@
             "keywords": [
                 "framework"
             ],
-            "transport-options": {
-                "symlink": true
-            }
+            "time": "2018-03-05T20:02:01+00:00"
         },
         {
             "name": "twig/twig",
-            "version": "2.4.7.0",
+            "version": "v2.4.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/twigphp/Twig.git",
+                "reference": "69aacd44dbbaa3199d5afb68605c996d577896fc"
+            },
             "dist": {
-                "type": "path",
-                "url": "../../library/vendor/twig/twig",
+                "type": "zip",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/69aacd44dbbaa3199d5afb68605c996d577896fc",
                 "reference": "69aacd44dbbaa3199d5afb68605c996d577896fc",
-                "shasum": null
+                "shasum": ""
             },
             "require": {
                 "php": "^7.0",
@@ -2494,11 +2538,7 @@
                     "Twig\\": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-0": {
-                    "Twig_Tests_": "test/"
-                }
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -2510,14 +2550,14 @@
                     "role": "Lead Developer"
                 },
                 {
-                    "name": "Twig Team",
-                    "homepage": "http://twig.sensiolabs.org/contributors",
-                    "role": "Contributors"
-                },
-                {
                     "name": "Armin Ronacher",
                     "email": "armin.ronacher@active-4.com",
                     "role": "Project Founder"
+                },
+                {
+                    "name": "Twig Team",
+                    "homepage": "http://twig.sensiolabs.org/contributors",
+                    "role": "Contributors"
                 }
             ],
             "description": "Twig, the flexible, fast, and secure template language for PHP",
@@ -2525,12 +2565,7 @@
             "keywords": [
                 "templating"
             ],
-            "support": {
-                "forum": "https://groups.google.com/forum/#!forum/twig-users"
-            },
-            "transport-options": {
-                "symlink": true
-            }
+            "time": "2018-03-20T04:31:17+00:00"
         },
         {
             "name": "zendframework/zend-code",

@@ -14,6 +14,7 @@ use Symfony\Bridge\Monolog\Logger;
 use Symfony\Component\Serializer\Encoder\CsvEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
+use Ivoz\Core\Infrastructure\Domain\Service\Redis\Client;
 
 /**
  * @Gearman\Work(
@@ -50,24 +51,35 @@ class Rates
      */
     protected $dtoAssembler;
 
+
+    /**
+     * @var Client
+     */
+    protected $redisClient;
+
     /**
      * Rates constructor.
-     *
      * @param EntityManagerInterface $em
+     * @param DestinationRateRepository $destinationRateRepository
+     * @param DtoAssembler $dtoAssembler
+     * @param EntityPersisterInterface $entityPersister
      * @param Logger $logger
+     * @param Client $redisClient
      */
     public function __construct(
         EntityManagerInterface $em,
         DestinationRateRepository $destinationRateRepository,
         DtoAssembler $dtoAssembler,
         EntityPersisterInterface $entityPersister,
-        Logger $logger
+        Logger $logger,
+        Client $redisClient
     ) {
         $this->em = $em;
         $this->destinationRateRepository = $destinationRateRepository;
         $this->dtoAssembler = $dtoAssembler;
         $this->entityPersister = $entityPersister;
         $this->logger = $logger;
+        $this->redisClient = $redisClient;
     }
 
     /**
@@ -216,6 +228,7 @@ class Rates
                 ->entityPersister
                 ->persistDto($destinationRateDto, $destinationRate, true);
 
+            $this->redisClient->scheduleFullReload();
             $this->logger->debug('Importer finished successfuly');
 
         } catch (\Exception $exception) {

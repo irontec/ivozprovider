@@ -2,9 +2,9 @@
 
 namespace Ivoz\Cgr\Domain\Model\TpAccountAction;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface TpAccountActionInterface extends EntityInterface
+interface TpAccountActionInterface extends LoggableEntityInterface
 {
     /**
      * Set tpid

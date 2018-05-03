@@ -32,3 +32,10 @@ services:
     arguments:
       $entityPersister:
         '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
+
+  ##################################
+  ## on_commit
+  ##################################
+  Ivoz\Cgr\Domain\Service\TpDestinationRate\UpdatedTpDestinationRateNotificator:
+    tags:
+      - { name: cgr.lifecycle.tp_destination_rate.on_commit, priority: 10}

@@ -2,9 +2,9 @@
 
 namespace Ivoz\Cgr\Domain\Model\TpRatingProfile;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface TpRatingProfileInterface extends EntityInterface
+interface TpRatingProfileInterface extends LoggableEntityInterface
 {
     /**
      * Set tpid
