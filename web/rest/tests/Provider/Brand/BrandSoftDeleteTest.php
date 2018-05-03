@@ -1,172 +1,127 @@
 <?php
 
-namespace Tests\Provider\Company;
+namespace Tests\Provider\Brand;
 
+use Ivoz\Provider\Domain\Model\Brand\Brand;
+use Ivoz\Provider\Domain\Model\Invoice\Invoice;
+use Ivoz\Provider\Domain\Model\BrandUrl\BrandUrl;
 use Ivoz\Provider\Domain\Model\Company\Company;
-use Ivoz\Provider\Domain\Model\Company\CompanyDto;
-use Ivoz\Provider\Domain\Model\CompanyService\CompanyService;
-use Ivoz\Provider\Domain\Model\Domain\Domain;
 use Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHold;
-use Ivoz\Provider\Domain\Model\Service\Service;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Tests\DbIntegrationTestHelperTrait;
-use Ivoz\Provider\Domain\Model\Locution\Locution;
 use Ivoz\Provider\Domain\Model\Recording\Recording;
-use Ivoz\Provider\Domain\Model\Fax\Fax;
-use Ivoz\Cgr\Domain\Model\TpAccountAction\TpAccountAction;
-use Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfile;
 
-
-
-class CompanySoftDeleteTest extends KernelTestCase
+class BrandSoftDeleteTest extends KernelTestCase
 {
     use DbIntegrationTestHelperTrait;
 
-    protected function removeCompany($companyId)
+    protected function removeBrand($brandId)
     {
-        $companyRepository = $this->em
-            ->getRepository(Company::class);
+        $brandRepository = $this->em
+            ->getRepository(Brand::class);
 
-        $company = $companyRepository->find($companyId);
+        $brand = $brandRepository->find($brandId);
 
-        $this->entityTools->remove($company);
+        $this->entityTools->remove($brand);
     }
 
     /**
      * @test
      */
-    public function it_removes_companies()
+    public function it_removes_brand()
     {
-        $companyRepository = $this->em
-            ->getRepository(Company::class);
+        $brandRepository = $this->em
+            ->getRepository(Brand::class);
 
-        $fixtureCompanies = $companyRepository->findAll();
-        $this->assertCount(3, $fixtureCompanies);
+        $fixtureBrands = $brandRepository->findAll();
+        $this->assertCount(2, $fixtureBrands);
 
-        $this->removeCompany(1);
+        $this->removeBrand(1);
 
-        $companies = $companyRepository->findAll();
-        $this->assertCount(2, $companies);
+        $brands = $brandRepository->findAll();
+        $this->assertCount(1, $brands);
     }
 
     /**
      * @test
      */
-    public function removes_company_locutions()
+    public function removes_brand_brandUrls()
     {
-
-        $this->removeCompany(1);
+        $this->removeBrand(1);
 
         $changelog = $this->getChangelogByClass(
-            Locution::class
+            BrandUrl::class
         );
 
-        $this->assertCount(1, $changelog);
+        $this->assertCount(3, $changelog);
 
-        $this->assertEquals(
-            $changelog[0]->getData(),
-            null
-        );
+        for ($i = 0; $i < 3 ; $i++) {
+            $this->assertEquals(
+                $changelog[$i]->getData(),
+                null
+            );
+        }
     }
 
     /**
      * @test
      */
-    public function removes_company_music_on_hold()
+    public function removes_brand_musicsOnHold()
     {
-        $this->removeCompany(1);
+
+        $this->removeBrand(1);
 
         $changelog = $this->getChangelogByClass(
             MusicOnHold::class
         );
 
-        $this->assertCount(1, $changelog);
-
-        $this->assertEquals(
-            $changelog[0]->getData(),
-            null
-        );
-
-    }
-
-    /**
-     * @test
-     */
-    public function removes_company_recording()
-    {
-        $this->removeCompany(1);
-
-        $changelog = $this->getChangelogByClass(
-            Recording::class
-        );
-
-        $this->assertCount(1, $changelog);
-
-        $this->assertEquals(
-            $changelog[0]->getData(),
-            null
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function removes_company_fax()
-    {
-        $this->removeCompany(1);
-
-        $changelog = $this->getChangelogByClass(
-            Fax::class
-        );
-
-        $this->assertCount(1, $changelog);
-
-        $this->assertEquals(
-            $changelog[0]->getData(),
-            null
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function removes_company_tp_account_action()
-    {
-        $this->removeCompany(1);
-
-        $changelog = $this->getChangelogByClass(
-            TpAccountAction::class
-        );
-
-        $this->assertCount(1, $changelog);
-
-        $this->assertEquals(
-            $changelog[0]->getData(),
-            null
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function removes_company_tp_rating_profile()
-    {
-        $this->removeCompany(1);
-
-        $changelog = $this->getChangelogByClass(
-            TpRatingProfile::class
-        );
-
         $this->assertCount(2, $changelog);
 
+        for ($i = 0; $i < 2 ; $i++) {
+            $this->assertEquals(
+                $changelog[$i]->getData(),
+                null
+            );
+        }
+    }
+
+    /**
+     * @test
+     */
+    public function removes_brand_invoices()
+    {
+        $this->removeBrand(1);
+
+        $changelog = $this->getChangelogByClass(
+            Invoice::class
+        );
+
+        $this->assertCount(1, $changelog);
+
         $this->assertEquals(
             $changelog[0]->getData(),
             null
         );
+    }
 
-        $this->assertEquals(
-            $changelog[1]->getData(),
-            null
+    /**
+     * @test
+     */
+    public function removes_brand_companies()
+    {
+        $this->removeBrand(1);
+
+        $changelog = $this->getChangelogByClass(
+            Company::class
         );
+
+        $this->assertCount(3, $changelog);
+
+        for ($i = 0; $i < 3 ; $i++) {
+            $this->assertEquals(
+                $changelog[$i]->getData(),
+                null
+            );
+        }
     }
 }

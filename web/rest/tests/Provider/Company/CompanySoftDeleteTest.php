@@ -2,58 +2,36 @@
 
 namespace Tests\Provider\Company;
 
-use Ivoz\Cgr\Domain\Model\TpAccountAction\TpAccountAction;
 use Ivoz\Provider\Domain\Model\Company\Company;
-use Ivoz\Provider\Domain\Model\Company\CompanyDto;
-use Ivoz\Provider\Domain\Model\CompanyService\CompanyService;
-use Ivoz\Provider\Domain\Model\Domain\Domain;
-use Ivoz\Provider\Domain\Model\Service\Service;
+use Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHold;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Tests\DbIntegrationTestHelperTrait;
+use Ivoz\Provider\Domain\Model\Locution\Locution;
+use Ivoz\Provider\Domain\Model\Recording\Recording;
+use Ivoz\Provider\Domain\Model\Fax\Fax;
+use Ivoz\Cgr\Domain\Model\TpAccountAction\TpAccountAction;
+use Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfile;
 
-class CompanyLifeCycleTest extends KernelTestCase
+
+
+class CompanySoftDeleteTest extends KernelTestCase
 {
     use DbIntegrationTestHelperTrait;
 
-    /**
-     * @return Company
-     */
-    protected function addCompany()
+    protected function removeCompany($companyId)
     {
-        $companyDto = new CompanyDto();
-        $companyDto
-            ->setName('ACompany')
-            ->setDomainUsers('127.3.0.1')
-            ->setNif('12345678B')
-            ->setMaxCalls(0)
-            ->setPostalAddress('An address')
-            ->setPostalCode('54321')
-            ->setTown('')
-            ->setProvince('')
-            ->setCountryName('')
-            ->setIpfilter(false)
-            ->setOnDemandRecord(0)
-            ->setOnDemandRecordCode('')
-            ->setExternallyextraopts('')
-            ->setRecordingsLimitEmail('')
-            ->setLanguageId(1)
-            ->setMediaRelaySetsId(0)
-            ->setDefaultTimezoneId(1)
-            ->setBrandId(1)
-            ->setDomainId(1)
-            ->setCountryId(1);
+        $companyRepository = $this->em
+            ->getRepository(Company::class);
 
-        /** @var Company $as */
-        $company = $this->entityPersister
-            ->persistDto($companyDto, null, true);
+        $company = $companyRepository->find($companyId);
 
-        return $company;
+        $this->entityTools->remove($company);
     }
 
     /**
      * @test
      */
-    public function it_persists_companies()
+    public function it_removes_companies()
     {
         $companyRepository = $this->em
             ->getRepository(Company::class);
@@ -61,155 +39,130 @@ class CompanyLifeCycleTest extends KernelTestCase
         $fixtureCompanies = $companyRepository->findAll();
         $this->assertCount(3, $fixtureCompanies);
 
-        $this->addCompany();
+        $this->removeCompany(1);
 
         $companies = $companyRepository->findAll();
-        $this->assertCount(4, $companies);
+        $this->assertCount(2, $companies);
     }
 
     /**
      * @test
      */
-    public function added_company_has_default_mediaRelaySetsId()
+    public function removes_company_locutions()
     {
-        $companyDto = new CompanyDto();
-        $companyDto
-            ->setName('ACompany')
-            ->setDomainUsers('127.3.0.1')
-            ->setNif('12345678B')
-            ->setMaxCalls(0)
-            ->setPostalAddress('An address')
-            ->setPostalCode('54321')
-            ->setTown('')
-            ->setProvince('')
-            ->setCountryName('')
-            ->setIpfilter(false)
-            ->setOnDemandRecord(0)
-            ->setOnDemandRecordCode('')
-            ->setExternallyextraopts('')
-            ->setRecordingsLimitEmail('')
-            ->setLanguageId(1)
-            ->setMediaRelaySetsId(null)
-            ->setDefaultTimezoneId(1)
-            ->setBrandId(1)
-            ->setDomainId(1)
-            ->setCountryId(1);
 
-        /** @var Company $as */
-        $company = $this->entityPersister
-            ->persistDto($companyDto, null, true);
+        $this->removeCompany(1);
+
+        $changelog = $this->getChangelogByClass(
+            Locution::class
+        );
+
+        $this->assertCount(1, $changelog);
 
         $this->assertEquals(
-            0,
-            $company->getMediaRelaySets()->getId()
+            $changelog[0]->getData(),
+            null
         );
     }
 
     /**
      * @test
      */
-    public function added_company_has_a_domain()
+    public function removes_company_music_on_hold()
     {
-        $company = $this->addCompany();
-        $domain = $company->getDomain();
+        $this->removeCompany(1);
 
-        $this->assertInstanceOf(
-            Domain::class,
-            $domain
+        $changelog = $this->getChangelogByClass(
+            MusicOnHold::class
+        );
+
+        $this->assertCount(1, $changelog);
+
+        $this->assertEquals(
+            $changelog[0]->getData(),
+            null
+        );
+
+    }
+
+    /**
+     * @test
+     */
+    public function removes_company_recording()
+    {
+        $this->removeCompany(1);
+
+        $changelog = $this->getChangelogByClass(
+            Recording::class
+        );
+
+        $this->assertCount(1, $changelog);
+
+        $this->assertEquals(
+            $changelog[0]->getData(),
+            null
         );
     }
 
     /**
      * @test
      */
-    public function updating_company_updates_domain()
+    public function removes_company_fax()
     {
-        $company = $this->addCompany();
-        $domain = $company->getDomain();
+        $this->removeCompany(1);
 
-        $this->assertEquals(
-            $company->getDomainUsers(),
-            $domain->getDomain()
+        $changelog = $this->getChangelogByClass(
+            Fax::class
         );
 
-        $this->assertEquals(
-            $company->getName() . ' proxyusers domain',
-            $domain->getDescription()
-        );
-
-        $this->assertInstanceOf(
-            Domain::class,
-            $domain
-        );
-
-        $company
-            ->setName('UpdatedName')
-            ->setDomainUsers('UpdatedValue');
-        $this->entityPersister->persist($company, true);
+        $this->assertCount(1, $changelog);
 
         $this->assertEquals(
-            'UpdatedValue',
-            $domain->getDomain()
-        );
-
-        $this->assertEquals(
-            'UpdatedName proxyusers domain',
-            $domain->getDescription()
+            $changelog[0]->getData(),
+            null
         );
     }
 
     /**
      * @test
      */
-    public function added_company_has_a_tpAccountAction()
+    public function removes_company_tp_account_action()
     {
-        $company = $this->addCompany();
-        $tpAccountActionRepository = $this->em
-            ->getRepository(TpAccountAction::class);
+        $this->removeCompany(1);
 
-        $tpAccountAction = $tpAccountActionRepository->findOneBy([
-            'company' => $company->getId()
-        ]);
-
-        $this->assertInstanceOf(
-            TpAccountAction::class,
-            $tpAccountAction
+        $changelog = $this->getChangelogByClass(
+            TpAccountAction::class
         );
-    }
 
-    /**
-     * @test
-     */
-    public function added_company_has_a_companyServices()
-    {
-        $serviceRepository = $this->em
-            ->getRepository(Service::class);
-        $services = $serviceRepository->findAll();
-
-        $company = $this->addCompany();
-        $companyServices = $company->getCompanyServices();
+        $this->assertCount(1, $changelog);
 
         $this->assertEquals(
-            count($services),
-            count($companyServices)
+            $changelog[0]->getData(),
+            null
         );
     }
 
     /**
      * @test
      */
-    public function removing_company_removes_domain()
+    public function removes_company_tp_rating_profile()
     {
-        $companyRepository = $this->em
-            ->getRepository(Company::class);
-        $company = $companyRepository->find(1);
-        $domain = $company->getDomain();
-        $this->assertInstanceOf(
-            Domain::class,
-            $domain
+        $this->removeCompany(1);
+
+        $changelog = $this->getChangelogByClass(
+            TpRatingProfile::class
         );
 
-        $this->entityPersister->remove($company);
-        $this->assertNull($company->getDomain());
+        $this->assertCount(2, $changelog);
+
+        $this->assertEquals(
+            $changelog[0]->getData(),
+            null
+        );
+
+        $this->assertEquals(
+            $changelog[1]->getData(),
+            null
+        );
     }
 }
