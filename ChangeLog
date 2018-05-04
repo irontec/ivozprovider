@@ -1,3 +1,33 @@
+Fri, 04 May 2018 15:38:00 +0200 IvozProvider Team <dev@list-ivozprovider.irontec.com>
+
+   * IvozProvider 2.2 released
+
+   * Wholesale:
+
+     - New client type without features
+       - IP authenticated only (no register, no SIP auth)
+       - No Application Server in signalling/media path
+       - Outgoing calls only
+
+   * Billing:
+
+     - Merge CGrateS rating tables into DestinationRates
+     - Allow download of latest imported rates CSV from DestinationRates
+     - Added support to decrease Prepaid balances
+     - Added a call pricing simulators in Company and Rating Plan sections
+     - Improve CGrates reloading logic
+
+   * Proxies:
+
+     - Upgrade Kamailio version to 5.1.2
+     - Added support for rtpengine media relay sets
+
+   * Documentation:
+
+     - Reorder documentation to match the menu format from administration portal
+     - Added a link to documentation in each portal screen
+
+
 Wed, 28 Mar 2018 18:41:49 +0100 IvozProvider Team <dev@list-ivozprovider.irontec.com>
 
     * IvozProvider 2.1 released
