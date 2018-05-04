@@ -61,7 +61,7 @@ Feature: Create companies
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-      And the JSON should be equal to:
+      And the JSON should be like:
     """
       {
           "type": "vpbx",
@@ -94,7 +94,7 @@ Feature: Create companies
           },
           "mediaRelaySets": null,
           "defaultTimezone": {
-              "tz": "Europe\/Madrid",
+              "tz": "Europe/Madrid",
               "comment": "mainland",
               "id": 1,
               "label": {
@@ -103,31 +103,7 @@ Feature: Create companies
               },
               "country": 1
           },
-          "brand": {
-              "name": "DemoBrand",
-              "domainUsers": "",
-              "recordingsLimitMB": null,
-              "recordingsLimitEmail": "",
-              "maxCalls": 0,
-              "id": 1,
-              "logo": {
-                  "fileSize": null,
-                  "mimeType": null,
-                  "baseName": null
-              },
-              "invoice": {
-                  "nif": "",
-                  "postalAddress": "",
-                  "postalCode": "",
-                  "town": "",
-                  "province": "",
-                  "country": "",
-                  "registryData": ""
-              },
-              "domain": 6,
-              "language": 1,
-              "defaultTimezone": 1
-          },
+          "brand": "~",
           "domain": {
               "domain": "api.irontec.com",
               "pointsTo": "proxyusers",
@@ -145,7 +121,7 @@ Feature: Create companies
               "id": 1,
               "name": {
                   "en": "Spain",
-                  "es": "Espa\u00f1a"
+                  "es": "España"
               },
               "zone": {
                   "en": "Europe",

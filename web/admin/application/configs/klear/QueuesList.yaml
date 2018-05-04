@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
 #include QueueMembersList.yaml
 #include CompaniesList.yaml
 
@@ -15,6 +16,9 @@ production:
       <<: *Queues
       class: ui-silk-text-list-bullets
       title: _("List of %s %2s", ngettext('Queue', 'Queues', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/company/queues.html"
       forcedValues:
         <<: *forcedCompany
       fields: &queues_fieldsLink
@@ -32,23 +36,23 @@ production:
           weight: true
           memberCallTimeout: true
           memberCallRest: true
-          periodicAnnounceLocutionId: true
+          periodicAnnounceLocution: true
           maxWaitTime: true
           maxlen: true
         blacklist:
-          timeoutLocutionId: true
+          timeoutLocution: true
           timeoutTargetType: true
-          timeoutVoiceMailUserId: true
-          timeoutExtensionId: true
-          timeoutNumberCountryId: true
+          timeoutVoiceMailUser: true
+          timeoutExtension: true
+          timeoutNumberCountry: true
           timeoutNumberValue: true
-          fullLocutionId: true
+          fullLocution: true
           fullTargetType: true
-          fullExtensionId: true
-          fullNumberCountryId: true
+          fullExtension: true
+          fullNumberCountry: true
           fullNumberValue: true
-          fullVoiceMailUserId: true
-          periodicAnnounceLocutionId: true
+          fullVoiceMailUser: true
+          periodicAnnounceLocution: true
           periodicAnnounceFrequency: true
       options:
         title: _("Options")
@@ -66,8 +70,8 @@ production:
       title: _("Add %s", ngettext('Queue', 'Queues', 1), "[format| (%parent%)]")
       shortcutOption: N
       defaultValues:
-        timeoutNumberCountryId: ${auth.companyCountryId}
-        fullNumberCountryId: ${auth.companyCountryId}
+        timeoutNumberCountry: ${auth.companyCountryId}
+        fullNumberCountry: ${auth.companyCountryId}
       forcedValues:
         <<: *forcedCompany
       fields:
@@ -85,7 +89,7 @@ production:
           label: _('Announce')
           colsPerRow: 12
           fields:
-            periodicAnnounceLocutionId: 6
+            periodicAnnounceLocution: 6
             periodicAnnounceFrequency: 6
         group3:
           label: _('Members configuration')
@@ -98,22 +102,22 @@ production:
           colsPerRow: 12
           fields:
             maxWaitTime: 6
-            timeoutLocutionId: 6
+            timeoutLocution: 6
             timeoutTargetType: 4
-            timeoutExtensionId: 6
-            timeoutVoiceMailUserId: 6
-            timeoutNumberCountryId: 4
+            timeoutExtension: 6
+            timeoutVoiceMailUser: 6
+            timeoutNumberCountry: 4
             timeoutNumberValue: 4
         group5:
           label: _('Full Queue configuration')
           colsPerRow: 12
           fields:
             maxlen: 6
-            fullLocutionId: 6
+            fullLocution: 6
             fullTargetType: 4
-            fullExtensionId: 6
-            fullVoiceMailUserId: 6
-            fullNumberCountryId: 4
+            fullExtension: 6
+            fullVoiceMailUser: 6
+            fullNumberCountry: 4
             fullNumberValue: 4
     queuesEdit_screen: &queuesEdit_screenLink
       <<: *Queues

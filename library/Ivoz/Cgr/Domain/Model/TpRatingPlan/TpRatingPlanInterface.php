@@ -61,7 +61,7 @@ interface TpRatingPlanInterface extends EntityInterface
      *
      * @return self
      */
-    public function setTimingTag($timingTag = null);
+    public function setTimingTag($timingTag);
 
     /**
      * Get timingTag
@@ -109,7 +109,7 @@ interface TpRatingPlanInterface extends EntityInterface
      *
      * @return self
      */
-    public function setTiming(\Ivoz\Cgr\Domain\Model\TpTiming\TpTimingInterface $timing);
+    public function setTiming(\Ivoz\Cgr\Domain\Model\TpTiming\TpTimingInterface $timing = null);
 
     /**
      * Get timing

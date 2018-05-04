@@ -327,20 +327,20 @@ interface TrunksCdrInterface extends EntityInterface
     public function getPeeringContract();
 
     /**
-     * Set destination
+     * Set tpDestination
      *
-     * @param \Ivoz\Cgr\Domain\Model\Destination\DestinationInterface $destination
+     * @param \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface $tpDestination
      *
      * @return self
      */
-    public function setDestination(\Ivoz\Cgr\Domain\Model\Destination\DestinationInterface $destination = null);
+    public function setTpDestination(\Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface $tpDestination = null);
 
     /**
-     * Get destination
+     * Get tpDestination
      *
-     * @return \Ivoz\Cgr\Domain\Model\Destination\DestinationInterface
+     * @return \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface
      */
-    public function getDestination();
+    public function getTpDestination();
 
     /**
      * Set destinationRate

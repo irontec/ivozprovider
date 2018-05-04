@@ -17,6 +17,3 @@ Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroup:
       mappedBy: pickUpGroup
       cascade: ['persist']
       orphanRemoval: true
-  lifecycleCallbacks:
-      postLoad:
-        - initChangelog

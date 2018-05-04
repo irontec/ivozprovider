@@ -10,6 +10,3 @@ Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList\ExternalCallFilterBlackLi
       id: true
       generator:
         strategy: IDENTITY
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

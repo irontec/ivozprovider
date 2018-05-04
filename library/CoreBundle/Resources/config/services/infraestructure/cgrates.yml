@@ -4,7 +4,23 @@ services:
     autoconfigure: true
     public: false
 
-  Ivoz\Core\Infrastructure\Service\Cgrates\JsonRcpClient:
-    arguments:
-      $client: '@Graze\GuzzleHttp\JsonRpc\Client'
+  Ivoz\Core\Infrastructure\Domain\Service\Cgrates\CompanyBalanceService: ~
 
+  Ivoz\Core\Infrastructure\Domain\Service\Cgrates\BillingService:
+    public: true
+
+  Ivoz\Core\Infrastructure\Domain\Service\Cgrates\LoadTpAccountAction:  ~
+  Ivoz\Cgr\Domain\Service\TpAccountAction\LoadTpAccountActionInterface:
+    '@Ivoz\Core\Infrastructure\Domain\Service\Cgrates\LoadTpAccountAction'
+
+  Ivoz\Core\Infrastructure\Domain\Service\Cgrates\RemoveTpAccountAction:  ~
+  Ivoz\Cgr\Domain\Service\TpAccountAction\RemoveTpAccountActionInterface:
+    '@Ivoz\Core\Infrastructure\Domain\Service\Cgrates\RemoveTpAccountAction'
+
+  Ivoz\Core\Infrastructure\Domain\Service\Cgrates\LoadTpRatingProfile:  ~
+  Ivoz\Cgr\Domain\Service\TpRatingProfile\LoadTpRatingProfileInterface:
+    '@Ivoz\Core\Infrastructure\Domain\Service\Cgrates\LoadTpRatingProfile'
+
+  Ivoz\Core\Infrastructure\Domain\Service\Cgrates\RemoveTpRatingProfile:  ~
+  Ivoz\Cgr\Domain\Service\TpRatingProfile\RemoveTpRatingProfileInterface:
+    '@Ivoz\Core\Infrastructure\Domain\Service\Cgrates\RemoveTpRatingProfile'

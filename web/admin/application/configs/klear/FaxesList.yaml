@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
 #include FaxesInOutList.yaml
 
 
@@ -17,10 +18,13 @@ production:
         <<: *forcedCompany
       class: ui-silk-text-list-bullets
       title: _("List of %s %2s", ngettext('Fax', 'Faxes', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/company/faxing.html"
       fields: &faxes_fieldsLink
         order: &faxes_orderLink
           name: true
-          outgoingDDIId: true
+          outgoingDDI: true
           sendByEmail: true
           email: true
         options:
@@ -57,7 +61,7 @@ production:
           colsPerRow: 12
           fields:
             name: 6
-            outgoingDDIId: 6
+            outgoingDDI: 6
         group1:
           label: _("Inbound configuration")
           colsPerRow: 12
@@ -95,7 +99,7 @@ production:
             faxesInOutFileDownload_command: true
           default: faxesInEdit_screen
         blacklist:
-          dstCountryId: true
+          dstCountry: true
           dst: true
       options:
         title: _("Options")
@@ -144,7 +148,7 @@ production:
       parentOptionCustomizer:
         - IvozProvider_Klear_Options_OptionsCustomizerFilterForFax
       title: _("View Outgoing %s %s", ngettext('Faxfile', 'Faxefiles', 0), "[format| (%item%)]")
-      filterField: faxId
+      filterField: fax
       class: ui-silk-eye
       disableSave: true
 
@@ -152,7 +156,7 @@ production:
       <<: *faxesInOutNew_screenLink
       filterField: Fax
       defaultValues:
-        dstCountryId: ${auth.companyCountryId}
+        dstCountry: ${auth.companyCountryId}
       forcedValues:
         "self::type": 'Out'
         "self::status": 'pending'
@@ -160,7 +164,7 @@ production:
         group0:
           colsPerRow: 2
           fields:
-            dstCountryId: 1
+            dstCountry: 1
             dst: 1
       fields:
         blacklist:

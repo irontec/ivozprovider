@@ -8,7 +8,7 @@ Build-Depends: debhelper, dh-systemd,
     libjs-jquery (>=1.11.3), python-alabaster (>=0.7.8), composer,
     php7.0-mbstring, php7.0-xml, php7.0-zip, php-mailparse, php-gearman
 Standards-Version: 3.9.6
-Maintainer: Irontec Package Team <packages@irontec.com>
+Maintainer: Irontec IvozProvider Team <ivozprovider@irontec.com>
 
 Package: ivozprovider
 Architecture: all
@@ -46,9 +46,8 @@ Package: ivozprovider-profile-as
 Architecture: all
 Section: admin
 Priority: optional
-Depends: libmyodbc,
-    unixodbc,
-    ivozprovider-profile-common (=${binary:Version}),
+Pre-Depends: libmyodbc, unixodbc
+Depends: ivozprovider-profile-common (=${binary:Version}),
     ivozprovider-asterisk-agi (=${binary:Version}),
     ivozprovider-asterisk-config (=${binary:Version}),
     ivozprovider-asterisk-sounds,

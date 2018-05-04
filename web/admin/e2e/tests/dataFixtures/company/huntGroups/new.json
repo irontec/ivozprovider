@@ -3,9 +3,9 @@
   "description": "desc",
   "strategy": "ringAll",
   "ringAllTimeout": "10",
-  "noAnswerLocutionId": "__NULL__",
+  "noAnswerLocution": "__NULL__",
   "noAnswerTargetType": "__NULL__",
   "noAnswerNumberValue": "",
-  "noAnswerExtensionId": "__NULL__",
-  "noAnswerVoiceMailUserId": "__NULL__"
+  "noAnswerExtension": "__NULL__",
+  "noAnswerVoiceMailUser": "__NULL__"
 }

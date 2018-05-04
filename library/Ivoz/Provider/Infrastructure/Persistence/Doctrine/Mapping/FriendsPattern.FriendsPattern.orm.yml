@@ -11,6 +11,3 @@ Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPattern:
       id: true
       generator:
         strategy: IDENTITY
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

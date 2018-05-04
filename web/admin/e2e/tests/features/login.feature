@@ -1,4 +1,5 @@
 @login
+@platform
 
 Feature: Login
   As an admin user

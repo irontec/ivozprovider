@@ -20,6 +20,3 @@ Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup:
     outgoingRoutings:
       targetEntity: Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface
       mappedBy: routingPatternGroup
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

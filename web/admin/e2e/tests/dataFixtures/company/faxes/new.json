@@ -1,6 +1,6 @@
 {
   "name": "Test Fax",
-  "outgoingDDIId": "__NULL__",
+  "outgoingDDI": "__NULL__",
   "sendByEmail": "0",
   "email": ""
 }

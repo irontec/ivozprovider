@@ -19,3 +19,15 @@ services:
     tags:
       - { name: cgr.lifecycle.destination_rate.post_persist, priority: 10}
 
+  ##################################
+  ## on_commit
+  ##################################
+  Ivoz\Cgr\Domain\Service\DestinationRate\SendImporterOrder:
+    arguments:
+      $importer: '@Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\RatesImporter'
+    tags:
+      - { name: cgr.lifecycle.destination_rate.on_commit, priority: 10}
+
+  Ivoz\Cgr\Domain\Service\DestinationRate\UpdatedDestinationRateNotificator:
+      tags:
+          - { name: cgr.lifecycle.destination_rate.on_commit, priority: 20}

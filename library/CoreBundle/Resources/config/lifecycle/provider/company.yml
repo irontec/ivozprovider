@@ -31,14 +31,12 @@ services:
       $domainRepository:
         '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\Domain\\Domain")'
 
-  Ivoz\Cgr\Domain\Service\TpAccountAction\UpdateByCompany:
+  Ivoz\Cgr\Domain\Service\TpAccountAction\CreateByCompany:
     tags:
       - { name: provider.lifecycle.company.post_persist, priority: 20 }
     arguments:
       $entityPersister:
         '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
-      $tpAccountActionRepository:
-        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Cgr\\Domain\\Model\\TpAccountAction\\TpAccountAction")'
 
   Ivoz\Provider\Domain\Service\CompanyService\PropagateBrandServices:
     tags:

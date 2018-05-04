@@ -1,6 +1,7 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
 #include conf.d/importPricesHelp.yaml
+#include conf.d/documentationLink.yaml
 #include TpDestinationRatesList.yaml
 
 production:
@@ -15,6 +16,9 @@ production:
       <<: *DestinationRates
       class: ui-silk-page-find
       title: _("List of %s %2s", ngettext('Destination rate', 'Destination rates', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/brand/billing/pricing_plans.html"
       forcedValues:
         <<: *forcedBrand
       fields: &destinationRates_fieldsLink
@@ -28,6 +32,7 @@ production:
             destinationRatesEdit_screen: true
             tpDestinationRatesList_screen: true
           dialogs:
+            importTpDestinationRates_dialog: true
             destinationRatesDel_dialog: true
           default: destinationRatesEdit_screen
       options:
@@ -36,7 +41,6 @@ production:
           destinationRatesNew_screen: true
         dialogs:
           destinationRatesDel_dialog: true
-          importDestinationRates_dialog: true
       csv:
         active: false
         filename: "Prices"
@@ -61,13 +65,21 @@ production:
       forcedValues:
         <<: *forcedBrand
       shortcutOption: N
+      fields:
+        blacklist:
+          file: true
+          status: true
       fixedPositions: &pdestinationRatesFixedPositions_Link
         group1:
           colsPerRow: 9
           fields:
-            tag: 4
-            name: 5
-            description: 8
+            name: 4
+            description: 5
+        group2:
+          colsPerRow: 8
+          fields:
+            file: 6
+            status: 2
 
     destinationRatesEdit_screen: &destinationRatesEdit_screenLink
       <<: *DestinationRates
@@ -106,7 +118,7 @@ production:
       multiItem: 1
       labelOnList: 1
 
-    importDestinationRates_dialog:
+    importTpDestinationRates_dialog: &importTpDestinationRates_dialogLink
       <<: *DestinationRates
       module: default
       title: _("Import %s", ngettext('Destination rate', 'Destination rates', 0))
@@ -115,22 +127,32 @@ production:
       labelOnList: true
       labelOnOption: true
       labelOnEntityPostSave: true
-      controller: import-custom-file
+      controller: import-tp-destination-rates-custom-file
       action: import
-      class:  ui-silk-page-gear
-      freeUploadCommand: importDestinationRatesFreeUpload_command
+      class:  ui-silk-page-white-get
+      freeUploadCommand: importTpDestinationRatesFreeUpload_command
       delimiter: ","
       enclosure: '"'
       escape: "\\"
       forcedValues:
-        brandId: ${auth.brandId}
-
+        brand: ${auth.brandId}
 
     # tpDestinationRates dialogs:
     <<: *tpDestinationRates_dialogsLink
 
   commands: &destinationRates_commandsLink
-    importDestinationRatesFreeUpload_command:
+    destinationRatesFileDownload_command: &destinationRatesFileDownload_command
+      <<: *DestinationRates
+      controller: File
+      action: force-download
+      mainColumn: File
+      class: ui-silk-bullet-disk
+    destinationRatesFileUpload_command: &destinationRatesFileUpload_command
+      <<: *DestinationRates
+      controller: File
+      action: upload
+      mainColumn: File
+    importTpDestinationRatesFreeUpload_command:
       <<: *DestinationRates
       controller: File
       action: free-upload

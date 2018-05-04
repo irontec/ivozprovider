@@ -14,13 +14,12 @@ class InheritDestinationRateTag implements TpDestinationRateLifecycleEventHandle
         );
 
         $entity->setDestinationsTag(
-            $entity->getDestination()->getTag()
+            $entity->getDestinationRate()->getTag() . 'dst' . $entity->getId()
         );
 
         $entity->setRatesTag(
-            $entity->getRate()->getTag()
+            $entity->getDestinationRate()->getTag() . 'rt' . $entity->getId()
         );
-
     }
 
 }

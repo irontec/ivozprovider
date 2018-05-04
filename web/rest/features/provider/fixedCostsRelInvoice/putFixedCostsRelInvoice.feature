@@ -60,8 +60,8 @@ Feature: Update fixed costs rel invoices
           },
           "invoice": {
               "number": "1",
-              "inDate": "2018-01-01 00:00:00",
-              "outDate": "2018-01-31 00:00:00",
+              "inDate": "2018-01-01 01:00:00",
+              "outDate": "2018-01-31 01:00:00",
               "total": "0.272",
               "taxRate": "21",
               "totalWithTax": "0.33",

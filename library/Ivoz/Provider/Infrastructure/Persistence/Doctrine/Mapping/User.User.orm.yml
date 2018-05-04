@@ -23,6 +23,3 @@ Ivoz\Provider\Domain\Model\User\User:
     callForwardSettings:
       targetEntity: Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface
       mappedBy: user
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

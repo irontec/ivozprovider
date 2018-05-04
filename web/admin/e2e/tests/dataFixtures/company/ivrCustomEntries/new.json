@@ -1,11 +1,11 @@
 {
-    "IvrCustomId": "1",
+    "IvrCustom": "1",
     "entry": "test",
-    "welcomeLocutionId": "__NULL__",
+    "welcomeLocution": "__NULL__",
     "targetType": "number",
-    "targetNumberCountryId": "70",
+    "targetNumberCountry": "70",
     "targetNumberValue": "946002050",
-    "targetExtensionId": "__NULL__",
-    "targetVoiceMailUserId": "__NULL__",
-    "targetConditionalRouteId": "__NULL__"
+    "targetExtension": "__NULL__",
+    "targetVoiceMailUser": "__NULL__",
+    "targetConditionalRoute": "__NULL__"
 }

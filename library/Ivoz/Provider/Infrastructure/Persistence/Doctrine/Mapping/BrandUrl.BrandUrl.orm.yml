@@ -11,6 +11,3 @@ Ivoz\Provider\Domain\Model\BrandUrl\BrandUrl:
       id: true
       generator:
         strategy: IDENTITY
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

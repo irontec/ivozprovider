@@ -12,47 +12,48 @@ IvozProvider Official Documentation
     :caption: Basic Concepts
     :name: concepts
 
-    intro/index
+    basics/intro/index
 
 .. toctree::
     :maxdepth: 1
 
-    architecture/index
+    basics/architecture/index
 
 .. toctree::
     :maxdepth: 2
 
-    operation_roles/index
+    basics/installation/index
 
 .. toctree::
     :maxdepth: 2
-    :caption: Minimum Configuration
+
+    basics/operation_roles/index
+
+
+.. toctree::
+    :maxdepth: 1
+    :caption: Getting Started
     :name: installation
 
-    installation/index
+    getting_started/internal_calls/index
+    getting_started/external_incoming_calls/index
+    getting_started/external_outgoing_calls/index
+
 
 .. toctree::
-    :maxdepth: 1
-
-    internal_calls/index
-    external_incoming_calls/index
-    external_outgoing_calls/index
-
-.. toctree::
-    :maxdepth: 2
-    :caption: Advanced Configuration
+    :caption: Administation portal
     :name: advanced
 
-    pbx_features/index
+    platform/index
+    brand/index
+    company/index
     retail/index
 
 .. toctree::
     :maxdepth: 1
+    :caption: User portal
+    :name: user
 
-    billing_and_invoices/index
-    provisioning/index
-    notifications/index
-    faxing/index
     userportal/index
 
 .. toctree::
@@ -62,4 +63,3 @@ IvozProvider Official Documentation
 
     security/index
     maintenance/index
-

@@ -18,6 +18,11 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
     private $tag;
 
     /**
+     * @var string
+     */
+    private $status;
+
+    /**
      * @var integer
      */
     private $id;
@@ -41,6 +46,26 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
      * @var string
      */
     private $descriptionEs;
+
+    /**
+     * @var integer
+     */
+    private $fileFileSize;
+
+    /**
+     * @var string
+     */
+    private $fileMimeType;
+
+    /**
+     * @var string
+     */
+    private $fileBaseName;
+
+    /**
+     * @var array
+     */
+    private $fileImporterArguments;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
@@ -71,9 +96,11 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
 
         return [
             'tag' => 'tag',
+            'status' => 'status',
             'id' => 'id',
             'name' => ['en','es'],
             'description' => ['en','es'],
+            'file' => ['fileSize','mimeType','baseName','importerArguments'],
             'brandId' => 'brand'
         ];
     }
@@ -85,6 +112,7 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
     {
         return [
             'tag' => $this->getTag(),
+            'status' => $this->getStatus(),
             'id' => $this->getId(),
             'name' => [
                 'en' => $this->getNameEn(),
@@ -93,6 +121,12 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
             'description' => [
                 'en' => $this->getDescriptionEn(),
                 'es' => $this->getDescriptionEs()
+            ],
+            'file' => [
+                'fileSize' => $this->getFileFileSize(),
+                'mimeType' => $this->getFileMimeType(),
+                'baseName' => $this->getFileBaseName(),
+                'importerArguments' => $this->getFileImporterArguments()
             ],
             'brand' => $this->getBrand(),
             'tpDestinationRates' => $this->getTpDestinationRates()
@@ -147,6 +181,26 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
     public function getTag()
     {
         return $this->tag;
+    }
+
+    /**
+     * @param string $status
+     *
+     * @return static
+     */
+    public function setStatus($status = null)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 
     /**
@@ -247,6 +301,86 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
     public function getDescriptionEs()
     {
         return $this->descriptionEs;
+    }
+
+    /**
+     * @param integer $fileFileSize
+     *
+     * @return static
+     */
+    public function setFileFileSize($fileFileSize = null)
+    {
+        $this->fileFileSize = $fileFileSize;
+
+        return $this;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getFileFileSize()
+    {
+        return $this->fileFileSize;
+    }
+
+    /**
+     * @param string $fileMimeType
+     *
+     * @return static
+     */
+    public function setFileMimeType($fileMimeType = null)
+    {
+        $this->fileMimeType = $fileMimeType;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFileMimeType()
+    {
+        return $this->fileMimeType;
+    }
+
+    /**
+     * @param string $fileBaseName
+     *
+     * @return static
+     */
+    public function setFileBaseName($fileBaseName = null)
+    {
+        $this->fileBaseName = $fileBaseName;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFileBaseName()
+    {
+        return $this->fileBaseName;
+    }
+
+    /**
+     * @param array $fileImporterArguments
+     *
+     * @return static
+     */
+    public function setFileImporterArguments($fileImporterArguments = null)
+    {
+        $this->fileImporterArguments = $fileImporterArguments;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getFileImporterArguments()
+    {
+        return $this->fileImporterArguments;
     }
 
     /**

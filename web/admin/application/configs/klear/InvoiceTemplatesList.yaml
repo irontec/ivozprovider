@@ -1,7 +1,7 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
-#include InvoicesList.yaml
 #include conf.d/invoiceTemplateHelp.yaml
+#include InvoicesList.yaml
 
 production:
   main:
@@ -22,7 +22,6 @@ production:
           title: _("Options")
           screens:
             invoiceTemplatesEdit_screen: true
-#            invoicesList_screen: true
           dialogs:
             invoiceTemplateTest_dialog: true
             invoiceTemplatesDel_dialog: true

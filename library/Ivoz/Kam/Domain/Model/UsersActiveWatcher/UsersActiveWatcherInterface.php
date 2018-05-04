@@ -275,7 +275,7 @@ interface UsersActiveWatcherInterface extends LoggableEntityInterface
      *
      * @return self
      */
-    public function setReason($reason);
+    public function setReason($reason = null);
 
     /**
      * Get reason

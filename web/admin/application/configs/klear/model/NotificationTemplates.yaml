@@ -1,7 +1,7 @@
 production:
   entity: Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate
   fields:
-    brandId:
+    brand:
       title: ngettext('Brand', 'Brands', 1)
       type: select
       required: true

@@ -21,7 +21,9 @@
     color: yellow;
 }
 
-
+.info-link {
+    text-decoration: none;
+}
 
 .changeMenuStatus {
     float:right;

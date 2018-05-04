@@ -9,7 +9,7 @@
   "port": "5060",
   "allow": "alaw",
   "fromDomain": "",
-  "languageId": "__NULL__",
-  "callACLId": "__NULL__",
-  "outgoingDDIId": "__NULL__"
+  "language": "__NULL__",
+  "callACL": "__NULL__",
+  "outgoingDDI": "__NULL__"
 }

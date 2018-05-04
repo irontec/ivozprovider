@@ -1,0 +1,31 @@
+#!/bin/bash
+
+set -e
+
+# check Documentation translations
+pushd /opt/irontec/ivozprovider/doc/sphinx
+    # Gather all documentation strings
+    make gettext
+    # Update .po files for all sections
+    sphinx-intl update
+
+    # Check there is no pending files to be commited
+    if [ -n "$(git status -s .)" ]; then
+        echo "These translation changes have not been commited."
+        git --no-pager diff
+        exit 1
+    fi
+popd
+
+# check Administration portal translations
+pushd /opt/irontec/ivozprovider/web/admin
+    # Update .po files with changed/new strings
+    make gettext
+
+    # Check there is no pending files to be commited
+    if [ -n "$(git status -s .)" ]; then
+        echo "These translation changes have not been commited."
+        git --no-pager diff
+        exit 1
+    fi
+popd

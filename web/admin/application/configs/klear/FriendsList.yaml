@@ -1,7 +1,7 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
 #include FriendsPatternsList.yaml
-
 
 production:
   main:
@@ -15,6 +15,9 @@ production:
       <<: *Friends
       class: ui-silk-text-list-bullets
       title: _("List of %s %2s", ngettext('Friend', 'Friends', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/company/friends.html"
       forcedValues:
         <<: *forcedCompany
       fields:
@@ -31,16 +34,16 @@ production:
           directConnectivity: true
           ip: true
           port: true
-          transformationRuleSetId: true
-          languageId: true
+          transformationRuleSet: true
+          language: true
           status: true
           updateCallerid: true
-          callACLId: true
+          callACL: true
         order:
           name: true
-          domainId: true
+          domain: true
           description: true
-          outgoingDDIId: true
+          outgoingDDI: true
           priority: true
           statusIcon: true
         options:
@@ -73,7 +76,7 @@ production:
         <<: *forcedCompany
       fields:
         blacklist: &friends_blacklistLink
-          domainId: true
+          domain: true
           directMediaMethod: true
           updateCallerid: true
           calleridUpdateHeader: true
@@ -90,8 +93,8 @@ production:
           transport: true
           ip: true
           port: true
-          languageId: true
-          callACLId: true
+          language: true
+          callACL: true
           outgoingDDI: true
           allow: true
           fromDomain: true
@@ -114,14 +117,14 @@ production:
           label: _("Geographic Configuration")
           colsPerRow: 12
           fields:
-            languageId: 4
-            transformationRuleSetId: 8
+            language: 4
+            transformationRuleSet: 8
         group2:
           label: _("Outgoing Configuration")
           colsPerRow: 12
           fields:
-            callACLId: 5
-            outgoingDDIId: 5
+            callACL: 5
+            outgoingDDI: 5
         group3:
           label: _("Advanced Configuration")
           colsPerRow: 6
@@ -145,7 +148,7 @@ production:
         order:
           <<: *friends_orderLink
         blacklist:
-          domainId: true
+          domain: true
           directMediaMethod: true
           updateCallerid: true
           calleridUpdateHeader: true

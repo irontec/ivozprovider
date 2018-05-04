@@ -1,7 +1,7 @@
 production:
   entity: Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet
   fields: 
-    brandId:
+    brand:
       title: ngettext('Brand', 'Brands', 1)
       type: select
       source:
@@ -39,7 +39,7 @@ production:
         icon: help
         text: _("Code used for internationals calls, usually 00.")
         label: _("Need help?")
-    countryId:
+    country:
       title: _('Country code')
       type: select
       required: true

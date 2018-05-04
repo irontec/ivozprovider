@@ -20,15 +20,23 @@ exports.command = function(formData, callback) {
                 continue;
             }
 
-            if (expectedData[name] != element.val()) {
+            if (element.length > 1) {
+                element = element.filter('select:eq(0)');
+            }
+
+            let currentValue = element.val()
+                ? String(element.val())
+                : '';
+
+            if (String(expectedData[name]) != currentValue) {
                 diffValueFields.push(
                     'expected '
                     + name
-                    + ' value was '
-                    + expectedData[name]
-                    + ', '
-                    + element.val()
-                    + ' found'
+                    + ' value was `'
+                    + String(expectedData[name])
+                    + '`, `'
+                    + String(element.val())
+                    + '` found'
                 );
             }
         }

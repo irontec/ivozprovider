@@ -4,7 +4,7 @@
 production:
   entity: Ivoz\Provider\Domain\Model\Terminal\Terminal
   fields:
-    terminalModelId:
+    terminalModel:
       title: ngettext('Terminal model', 'Terminal models', 1)
       type: select
       required: true
@@ -32,7 +32,7 @@ production:
         icon: help
         text: _("Allowed characters: a-z, A-Z, 0-9, underscore and '*'")
         label: _("Need help?")
-    domainId:
+    domain:
       title: ngettext('Domain', 'Domains', 1)
       type: select
       required: true
@@ -104,7 +104,7 @@ production:
       options:
         commands:
           generatePassword_command: true
-    companyId:
+    company:
       title: ngettext('Company', 'Companies', 1)
       type: select
       required: true

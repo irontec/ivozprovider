@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
 #include MatchListsList.yaml
 
 production:
@@ -13,12 +14,15 @@ production:
       <<: *matchListsList_screenLink
       rawCondition: false
       title: _("List of %s %2s", ngettext('Generic Match List', 'Generic Match Lists', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/brand/match_lists.html"
       forcedValues:
         <<: *forcedBrand
       fields: &matchLists_fieldsLink
         blacklist:
-          companyId: true
-          brandId: true
+          company: true
+          brand: true
         options:
           title: _("Options")
           screens:

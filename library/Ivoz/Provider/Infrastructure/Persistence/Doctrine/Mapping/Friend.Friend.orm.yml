@@ -18,6 +18,3 @@ Ivoz\Provider\Domain\Model\Friend\Friend:
     patterns:
       targetEntity: Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPatternInterface
       mappedBy: friend
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

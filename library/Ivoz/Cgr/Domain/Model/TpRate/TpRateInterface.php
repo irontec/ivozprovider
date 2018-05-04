@@ -133,20 +133,20 @@ interface TpRateInterface extends EntityInterface
     public function getCreatedAt();
 
     /**
-     * Set rate
+     * Set tpDestinationRate
      *
-     * @param \Ivoz\Cgr\Domain\Model\Rate\RateInterface $rate
+     * @param \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface $tpDestinationRate
      *
      * @return self
      */
-    public function setRate(\Ivoz\Cgr\Domain\Model\Rate\RateInterface $rate = null);
+    public function setTpDestinationRate(\Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface $tpDestinationRate);
 
     /**
-     * Get rate
+     * Get tpDestinationRate
      *
-     * @return \Ivoz\Cgr\Domain\Model\Rate\RateInterface
+     * @return \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface
      */
-    public function getRate();
+    public function getTpDestinationRate();
 
 }
 

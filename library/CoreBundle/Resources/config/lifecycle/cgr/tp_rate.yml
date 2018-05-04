@@ -13,9 +13,8 @@ services:
     '@Ivoz\Cgr\Domain\Service\TpRate\TpRateLifecycleServiceCollection'
 
   ##################################
-  ## post_persist
+  ## on_commit
   ##################################
-  Ivoz\Cgr\Domain\Service\TpRate\InheritRateTag:
+  Ivoz\Cgr\Domain\Service\TpRate\UpdatedTpRateNotificator:
     tags:
-      - { name: cgr.lifecycle.tp_rate.post_persist, priority: 10}
-
+      - { name: cgr.lifecycle.tp_rate.on_commit, priority: 10}

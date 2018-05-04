@@ -83,7 +83,7 @@
                 }
 
                 var inputFld = $(e.target);
-                if (inputFld.val() < inputFld.attr("min")) {
+                if (Number(inputFld.val()) < Number(inputFld.attr("min"))) {
                     self._addErrorStatus($(e.target));
                     return self._disableSubmitButton(sendButton);
                 }

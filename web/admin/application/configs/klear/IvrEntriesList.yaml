@@ -17,15 +17,15 @@ production:
       fields:
         order:
           entry: true
-          welcomeLocutionId: true
+          welcomeLocution: true
           routeType: true
           target: true
         blacklist:
-          numberCountryId: true
+          numberCountry: true
           numberValue: true
-          extensionId: true
-          voiceMailUserId: true
-          conditionalRouteId: true
+          extension: true
+          voiceMailUser: true
+          conditionalRoute: true
         options:
           title: _("Options")
           screens:
@@ -49,7 +49,7 @@ production:
       title: _("Add %s", ngettext('IVR entry', 'IVR entries', 1))
       shortcutOption: N
       defaultValues:
-        numberCountryId: ${auth.companyCountryId}
+        numberCountry: ${auth.companyCountryId}
       fields:
         blacklist:
           target: true
@@ -59,17 +59,17 @@ production:
           colsPerRow: 8
           fields:
             entry: 4
-            welcomeLocutionId: 4
+            welcomeLocution: 4
         group1:
           label: _("Routing configuration")
           colsPerRow: 12
           fields:
             routeType: 4
-            numberCountryId: 4
+            numberCountry: 4
             numberValue: 4
-            extensionId: 4
-            voiceMailUserId: 5
-            conditionalRouteId: 5
+            extension: 4
+            voiceMailUser: 5
+            conditionalRoute: 5
 
     ivrEntriesEdit_screen: &ivrEntriesEdit_screenLink
       <<: *IvrEntries

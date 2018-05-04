@@ -227,8 +227,10 @@
                 entity = 'Empresa';
                 if (config.getSubType() == 'vpbx') {
                     icon = 'building';
-                } else {
+                } else if (config.getSubType() == 'retail') {
                     icon = 'basket';
+                } else if (config.getSubType() == 'wholesale') {
+                    icon = 'cart';
                 }
             } else if (config.getType() == 'brand') {
                icon = 'world';

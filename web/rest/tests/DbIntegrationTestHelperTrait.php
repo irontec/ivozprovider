@@ -11,6 +11,7 @@ use Ivoz\Provider\Domain\Model\Changelog\Changelog;
 use Ivoz\Provider\Domain\Model\Changelog\ChangelogRepository;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpKernel\KernelInterface;
+use Ivoz\Core\Application\Service\EntityTools;
 
 trait DbIntegrationTestHelperTrait
 {
@@ -28,6 +29,12 @@ trait DbIntegrationTestHelperTrait
      * @var DoctrineEntityPersister
      */
     protected $entityPersister;
+
+
+    /**
+     * @var EntityTools
+     */
+    protected $entityTools;
 
     /**
      * @var DomainEventPublisher
@@ -62,6 +69,9 @@ trait DbIntegrationTestHelperTrait
         $this->eventPublisher = $serviceContainer
             ->get(DomainEventPublisher::class);
 
+        $this->entityTools = $serviceContainer
+            ->get(EntityTools::class);
+
         $this->resetDatabase();
         $this->enableChangelog();
     }
@@ -89,6 +99,17 @@ trait DbIntegrationTestHelperTrait
             ->getRepository(Changelog::class);
 
         return $this;
+    }
+
+    /**
+     * @param string $entityClass
+     * @return Changelog[]
+     */
+    protected function getChangelog()
+    {
+        return $this
+            ->changelogRepository
+            ->findBy(['command' => $this->commandId]);
     }
 
     /**

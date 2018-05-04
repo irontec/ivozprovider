@@ -78,6 +78,11 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
     private $multiddi = '0';
 
     /**
+     * @var string
+     */
+    private $authHa1 = '';
+
+    /**
      * @var integer
      */
     private $id;
@@ -123,6 +128,7 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
             'flags' => 'flags',
             'regDelay' => 'regDelay',
             'multiddi' => 'multiddi',
+            'authHa1' => 'authHa1',
             'id' => 'id',
             'brandId' => 'brand',
             'peeringContractId' => 'peeringContract'
@@ -148,6 +154,7 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
             'flags' => $this->getFlags(),
             'regDelay' => $this->getRegDelay(),
             'multiddi' => $this->getMultiddi(),
+            'authHa1' => $this->getAuthHa1(),
             'id' => $this->getId(),
             'brand' => $this->getBrand(),
             'peeringContract' => $this->getPeeringContract()
@@ -429,6 +436,26 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
     public function getMultiddi()
     {
         return $this->multiddi;
+    }
+
+    /**
+     * @param string $authHa1
+     *
+     * @return static
+     */
+    public function setAuthHa1($authHa1 = null)
+    {
+        $this->authHa1 = $authHa1;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAuthHa1()
+    {
+        return $this->authHa1;
     }
 
     /**

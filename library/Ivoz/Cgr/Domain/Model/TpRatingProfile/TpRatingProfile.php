@@ -20,6 +20,14 @@ class TpRatingProfile extends TpRatingProfileAbstract implements TpRatingProfile
     }
 
 
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
 
 }
 

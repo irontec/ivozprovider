@@ -1,5 +1,5 @@
 {
   "name": "testRule",
   "defaultAction": "keep",
-  "forcedDdiId": "__NULL__"
+  "forcedDdi": "__NULL__"
 }

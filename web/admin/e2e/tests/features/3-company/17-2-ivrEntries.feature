@@ -3,7 +3,7 @@
 @company17
 @company17-2
 
-Feature: Ivr admin page
+Feature: Ivr entries admin page
   As a main operator
   I want to be able to access custom IVRs admin page
   emulating brand operator
@@ -11,9 +11,7 @@ Feature: Ivr admin page
   In order to check and manage them
 
 Background:
-  Given I go to the admin page
-   When I send valid admin credentials
-   Then I am logged in
+  Given I am on the Dashboard
    When I click on brand emulation button
     And I emulate the brand at position "1"
     And I click on company emulation button
@@ -23,7 +21,7 @@ Background:
    When I click on "Ivr" first elements "ivrEntries" button
    Then I am on "IvrList_ivrEntries" subscreen list
 
-Scenario: I create custom IVRs
+Scenario: I create custom IVR entries
   When I click on add button
    And I fill out the form with "company/ivrEntries/new" data fixture
    And I click on save button
@@ -33,7 +31,7 @@ Scenario: I create custom IVRs
   When I click on "ivrEntries" last elements edit button
   Then I compare the form data with "company/ivrEntries/new" data fixture
 
-Scenario: I can save Ivr
+Scenario: I can save Ivr entry
   Given I can see at least one row
    When I click on "ivrEntries" first elements edit button
     And I click on save button

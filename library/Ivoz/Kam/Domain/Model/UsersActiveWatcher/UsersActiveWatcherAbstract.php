@@ -181,7 +181,6 @@ abstract class UsersActiveWatcherAbstract
         $contact,
         $expires,
         $status,
-        $reason,
         $version,
         $socketInfo,
         $localContact,
@@ -206,7 +205,6 @@ abstract class UsersActiveWatcherAbstract
         $this->setContact($contact);
         $this->setExpires($expires);
         $this->setStatus($status);
-        $this->setReason($reason);
         $this->setVersion($version);
         $this->setSocketInfo($socketInfo);
         $this->setLocalContact($localContact);
@@ -296,7 +294,6 @@ abstract class UsersActiveWatcherAbstract
             $dto->getContact(),
             $dto->getExpires(),
             $dto->getStatus(),
-            $dto->getReason(),
             $dto->getVersion(),
             $dto->getSocketInfo(),
             $dto->getLocalContact(),
@@ -310,6 +307,7 @@ abstract class UsersActiveWatcherAbstract
         $self
             ->setEventId($dto->getEventId())
             ->setRecordRoute($dto->getRecordRoute())
+            ->setReason($dto->getReason())
         ;
 
         $self->sanitizeValues();
@@ -877,10 +875,11 @@ abstract class UsersActiveWatcherAbstract
      *
      * @return self
      */
-    public function setReason($reason)
+    public function setReason($reason = null)
     {
-        Assertion::notNull($reason, 'reason value "%s" is null, but non null value was expected.');
-        Assertion::maxLength($reason, 64, 'reason value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        if (!is_null($reason)) {
+            Assertion::maxLength($reason, 64, 'reason value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        }
 
         $this->reason = $reason;
 

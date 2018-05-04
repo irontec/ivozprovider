@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
 #include PeerServersList.yaml
 #include KamTrunksUacregList.yaml
 
@@ -15,6 +16,9 @@ production:
       <<: *PeeringContracts
       class: ui-silk-connect
       title: _("List of %s %2s", ngettext('Peering contract', 'Peering contracts', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/brand/peering/peering_contracts.html"
       forcedValues:
         <<: *forcedBrand
       fields:
@@ -66,7 +70,7 @@ production:
           label: _("Extra Configuration")
           colsPerRow: 6
           fields:
-            transformationRuleSetId: 3
+            transformationRuleSet: 3
             externallyRated: 3
 
     peeringContractsEdit_screen: &peeringContractsEdit_screenLink

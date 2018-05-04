@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
 #include KamTrunksCdrsList.yaml
 #include FixedCostsRelInvoicesList.yaml
 
@@ -15,6 +16,9 @@ production:
       <<: *Invoices
       class: ui-silk-report
       title: _("List of %s %2s", ngettext('Invoice', 'Invoices', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/brand/invoices/invoices.html"
       forcedValues:
         <<: *forcedBrand
       fields: &invoices_fieldsLink
@@ -29,7 +33,7 @@ production:
             invoicesDel_dialog: true
           default: invoicesEdit_screen
         order: &invoicesOrder_Link
-          companyId: true
+          company: true
           number: true
           inDate: true
           outDate: true
@@ -37,10 +41,10 @@ production:
           taxRate: true
           totalWithTax: true
           status: true
-          invoiceTemplateId: true
+          invoiceTemplate: true
           pdf: true
         blacklist:
-          FixedCostsRelInvoicesId: true
+          FixedCostsRelInvoices: true
       options:
         title: _("Options")
         screens:
@@ -68,13 +72,13 @@ production:
           totalWithTax: true
           status: true
           pdf: true
-          FixedCostsRelInvoicesId: true
+          FixedCostsRelInvoices: true
       fixedPositions: &invoicesFixedPositions_Link
         group0:
           colsPerRow: 2
           fields:
             number: 1
-            companyId: 1
+            company: 1
         group1:
           colsPerRow: 2
           fields:

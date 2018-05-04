@@ -11,9 +11,6 @@ Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRate:
       id: true
       generator:
         strategy: IDENTITY
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog
   oneToMany:
     tpDestinationRates:
       targetEntity: Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface

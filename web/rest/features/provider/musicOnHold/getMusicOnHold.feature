@@ -34,7 +34,7 @@ Feature: Retrieve music on holds
     Then the response status code should be 200
     And the response should be in JSON
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-    And the JSON should be equal to:
+    And the JSON should be like:
     """
       {
           "name": "Something good",
@@ -50,31 +50,7 @@ Feature: Retrieve music on holds
               "mimeType": null,
               "baseName": null
           },
-          "brand": {
-              "name": "DemoBrand",
-              "domainUsers": "",
-              "recordingsLimitMB": null,
-              "recordingsLimitEmail": "",
-              "maxCalls": 0,
-              "id": 1,
-              "logo": {
-                  "fileSize": null,
-                  "mimeType": null,
-                  "baseName": null
-              },
-              "invoice": {
-                  "nif": "",
-                  "postalAddress": "",
-                  "postalCode": "",
-                  "town": "",
-                  "province": "",
-                  "country": "",
-                  "registryData": ""
-              },
-              "domain": 6,
-              "language": 1,
-              "defaultTimezone": 1
-          },
+          "brand": "~",
           "company": null
       }
     """

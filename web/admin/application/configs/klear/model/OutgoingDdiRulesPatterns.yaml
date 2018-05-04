@@ -1,7 +1,7 @@
 production:
   entity: Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPattern
   fields:
-    outgoingDdiRuleId:
+    outgoingDdiRule:
       title: _('Outgoing DDI Rule Pattern')
       type: select
       required: true
@@ -16,7 +16,7 @@ production:
           order:
             OutgoingDdiRule.name: asc
       default: true
-    matchListId:
+    matchList:
       title: _('Match List')
       type: select
       required: true
@@ -42,13 +42,13 @@ production:
             title: _("Keep Original DDI")
             visualFilter:
               show: []
-              hide: ["forcedDdiId"]
+              hide: ["forcedDdi"]
           'force':
             title: _("Force DDI")
             visualFilter:
-              show: ["forcedDdiId"]
+              show: ["forcedDdi"]
               hide: []
-    forcedDdiId:
+    forcedDdi:
       title: _('Forced DDI')
       type: select
       source:

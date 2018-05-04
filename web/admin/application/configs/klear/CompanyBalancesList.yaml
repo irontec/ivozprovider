@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
 #include BalanceNotificationsList.yaml
 #include BalanceMovementsList.yaml
 #include KamTrunksCdrsList.yaml
@@ -17,6 +18,9 @@ production:
       <<: *Companies
       class: ui-silk-building
       title: _("List of %s %2s", ngettext('Prepaid Balance', 'Prepaid Balances', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/brand/balances.html"
       forcedValues:
         <<: *forcedBrand
       fields:
@@ -30,33 +34,33 @@ production:
             addToBalance_dialog: true
           default: companiesEdit_screen
         blacklist:
-          transformationRuleSetId: true
+          transformationRuleSet: true
           postalAddress: true
           postalCode: true
           town: true
           province: true
           countryName: true
-          outgoingDDIId: true
-          outgoingDdiRuleId: true
+          outgoingDDI: true
+          outgoingDdiRule: true
           registryData: true
           maxCalls: true
-          defaultTimezoneId: true
+          defaultTimezone: true
           distributeMethod: true
-          applicationServerId: true
-          mediaRelaySetsId: true
+          applicationServer: true
+          mediaRelaySets: true
           ipFilter: true
-          languageId: true
+          language: true
           onDemandRecord: true
           onDemandRecordCode: true
           recordingsLimitMB: true
           recordingsLimitEmail: true
           recordingsDiskUsage: true
           externallyExtraOpts: true
-          voicemailNotificationTemplateId: true
-          faxNotificationTemplateId: true
-          languageId: true
+          voicemailNotificationTemplate: true
+          faxNotificationTemplate: true
+          language: true
           nif: true
-          countryId: true
+          country: true
           domainUsers: true
           relFeatures: true
         order:
@@ -97,14 +101,14 @@ production:
       fields:
         <<: *kamTrunksCdrs_fieldsLink
         blacklist:
-          brandId: true
-          invoiceId: true
+          brand: true
+          invoice: true
       parentOptionCustomizer:
         - recordCount
 
   dialogs: &companyBalances_dialogsLink
    addToBalance_dialog: &addToBalance_dialogLink
-     title: _("Increment balance")
+     title: _("Balance operations")
      module: default
      controller: klear-custom-increment-balance
      labelOnEdit: true

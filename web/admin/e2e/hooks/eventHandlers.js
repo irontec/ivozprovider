@@ -25,27 +25,6 @@ defineSupportCode(({ Before, After, AfterAll }) => {
         }
     });
 
-    After((testCase, callback) => {
-
-        if (testCase.result.status === 'failed') {
-            success = false;
-        }
-
-        client
-            .execute(`
-                localStorage.clear();
-                sessionStorage.clear();
-            `)
-            .deleteCookies()
-            .refresh()
-            .acceptAlert(callback);
-
-        setTimeout(() => {
-            //Fallback
-            callback();
-        }, 1000);
-    });
-
     AfterAll(() => {
 
         let videoRecorder = require('./video-recorder');

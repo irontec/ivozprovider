@@ -11,6 +11,3 @@ Ivoz\Cgr\Domain\Model\TpTiming\TpTiming:
       id: true
       generator:
         strategy: IDENTITY
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

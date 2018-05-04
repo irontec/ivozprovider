@@ -5,6 +5,7 @@ namespace Ivoz\Api\Json\Serializer\Normalizer;
 use ApiPlatform\Core\Api\ResourceClassResolverInterface;
 use ApiPlatform\Core\JsonLd\ContextBuilderInterface;
 use ApiPlatform\Core\Metadata\Resource\Factory\ResourceMetadataFactoryInterface;
+use Ivoz\Api\Entity\Serializer\Normalizer\DateTimeNormalizer;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Service\Assembler\DtoAssembler;
 use Ivoz\Core\Domain\Model\EntityInterface;
@@ -37,16 +38,23 @@ class EntityNormalizer implements NormalizerInterface
      */
     private $dtoAssembler;
 
+    /**
+     * @var DateTimeNormalizer
+     */
+    private $dateTimeNormalizer;
+
     public function __construct(
         ResourceMetadataFactoryInterface $resourceMetadataFactory,
         ResourceClassResolverInterface $resourceClassResolver,
         ContextBuilderInterface $contextBuilder,
-        DtoAssembler $dtoAssembler
+        DtoAssembler $dtoAssembler,
+        DateTimeNormalizer $dateTimeNormalizer
     ) {
         $this->resourceClassResolver = $resourceClassResolver;
         $this->resourceMetadataFactory = $resourceMetadataFactory;
         $this->contextBuilder = $contextBuilder;
         $this->dtoAssembler = $dtoAssembler;
+        $this->dateTimeNormalizer = $dateTimeNormalizer;
     }
 
     /**
@@ -70,43 +78,10 @@ class EntityNormalizer implements NormalizerInterface
             $object = $this->initializeRelationships($object, []);
         }
 
-        $data = $this->normalizeEntity(
+        return $this->normalizeEntity(
             $object,
             $context
         );
-
-        return $this->flatten($data);
-    }
-
-    protected function flatten(array $data = null)
-    {
-        if (!$data) {
-            return $data;
-        }
-
-        foreach ($data as $key => $value) {
-
-            if (is_array($value)) {
-                $data[$key] = $this->flatten($value);
-                continue;
-            }
-
-            if (!is_object($value)) {
-                continue;
-            }
-
-            $class = get_class($value);
-            switch ($class) {
-                case 'DateTime':
-                    /** @todo this should be done by dto::toArray $value */
-                    $value = $value->format('Y-m-d H:i:s');
-                    break;
-            }
-
-            $data[$key] = $value;
-        }
-
-        return $data;
     }
 
     private function initializeRelationships(EntityInterface $entity, array $propertyFilters)
@@ -172,6 +147,7 @@ class EntityNormalizer implements NormalizerInterface
      * @param $resourceMetadata
      * @return array
      */
+
     protected function normalizeDto($dto, array $context, $isSubresource, $depth, $resourceClass, $resourceMetadata): array
     {
         $normalizationContext = $context['operation_normalization_context'] ?? $context['operation_type'];
@@ -211,6 +187,13 @@ class EntityNormalizer implements NormalizerInterface
                 } catch (\Exception $e) {
                     unset($rawData[$key]);
                 }
+            } else if ($value instanceof \DateTimeInterface) {
+
+                $rawData[$key] = $this->dateTimeNormalizer->normalize(
+                    $resourceClass,
+                    $key,
+                    $value
+                );
             }
         }
 

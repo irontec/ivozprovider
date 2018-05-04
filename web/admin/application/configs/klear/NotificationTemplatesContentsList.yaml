@@ -44,7 +44,7 @@ production:
       fullWidth: true
       fields:
         order: &notificationTemplatesContentsFieldsOrderPositions_Link
-          languageId: true
+          language: true
           fromName: true
           fromAddress: true
           voicemailVariables: true
@@ -57,7 +57,7 @@ production:
           label:
           colsPerRow: 2
           fields:
-            languageId: 1
+            language: 1
         group1:
           label: _("From configuration")
           colsPerRow: 3

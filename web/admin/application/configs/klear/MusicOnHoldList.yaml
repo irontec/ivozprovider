@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
 
 production:
   main:
@@ -13,6 +14,9 @@ production:
       <<: *MusicOnHold
       class: ui-silk-music
       title: _("List of %s %2s", ngettext('Music on Hold', 'Musics on Hold', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/company/music_on_hold.html"
       forcedValues:
         <<: *forcedCompany
         "self::brand": null

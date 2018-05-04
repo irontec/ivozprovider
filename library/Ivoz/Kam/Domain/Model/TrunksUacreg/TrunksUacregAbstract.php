@@ -88,6 +88,12 @@ abstract class TrunksUacregAbstract
     protected $multiddi = '0';
 
     /**
+     * column: auth_ha1
+     * @var string
+     */
+    protected $authHa1 = '';
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
      */
     protected $brand;
@@ -116,7 +122,8 @@ abstract class TrunksUacregAbstract
         $expires,
         $flags,
         $regDelay,
-        $multiddi
+        $multiddi,
+        $authHa1
     ) {
         $this->setLUuid($lUuid);
         $this->setLUsername($lUsername);
@@ -131,6 +138,7 @@ abstract class TrunksUacregAbstract
         $this->setFlags($flags);
         $this->setRegDelay($regDelay);
         $this->setMultiddi($multiddi);
+        $this->setAuthHa1($authHa1);
     }
 
     abstract public function getId();
@@ -209,7 +217,8 @@ abstract class TrunksUacregAbstract
             $dto->getExpires(),
             $dto->getFlags(),
             $dto->getRegDelay(),
-            $dto->getMultiddi());
+            $dto->getMultiddi(),
+            $dto->getAuthHa1());
 
         $self
             ->setBrand($dto->getBrand())
@@ -247,6 +256,7 @@ abstract class TrunksUacregAbstract
             ->setFlags($dto->getFlags())
             ->setRegDelay($dto->getRegDelay())
             ->setMultiddi($dto->getMultiddi())
+            ->setAuthHa1($dto->getAuthHa1())
             ->setBrand($dto->getBrand())
             ->setPeeringContract($dto->getPeeringContract());
 
@@ -276,6 +286,7 @@ abstract class TrunksUacregAbstract
             ->setFlags(self::getFlags())
             ->setRegDelay(self::getRegDelay())
             ->setMultiddi(self::getMultiddi())
+            ->setAuthHa1(self::getAuthHa1())
             ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
             ->setPeeringContract(\Ivoz\Provider\Domain\Model\PeeringContract\PeeringContract::entityToDto(self::getPeeringContract(), $depth));
     }
@@ -299,6 +310,7 @@ abstract class TrunksUacregAbstract
             'flags' => self::getFlags(),
             'reg_delay' => self::getRegDelay(),
             'multiDdi' => self::getMultiddi(),
+            'auth_ha1' => self::getAuthHa1(),
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
             'peeringContractId' => self::getPeeringContract() ? self::getPeeringContract()->getId() : null
         ];
@@ -656,6 +668,33 @@ abstract class TrunksUacregAbstract
     public function getMultiddi()
     {
         return $this->multiddi;
+    }
+
+    /**
+     * Set authHa1
+     *
+     * @param string $authHa1
+     *
+     * @return self
+     */
+    public function setAuthHa1($authHa1)
+    {
+        Assertion::notNull($authHa1, 'authHa1 value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($authHa1, 128, 'authHa1 value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+
+        $this->authHa1 = $authHa1;
+
+        return $this;
+    }
+
+    /**
+     * Get authHa1
+     *
+     * @return string
+     */
+    public function getAuthHa1()
+    {
+        return $this->authHa1;
     }
 
     /**

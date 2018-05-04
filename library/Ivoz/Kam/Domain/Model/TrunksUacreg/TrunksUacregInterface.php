@@ -216,6 +216,22 @@ interface TrunksUacregInterface extends LoggableEntityInterface
     public function getMultiddi();
 
     /**
+     * Set authHa1
+     *
+     * @param string $authHa1
+     *
+     * @return self
+     */
+    public function setAuthHa1($authHa1);
+
+    /**
+     * Get authHa1
+     *
+     * @return string
+     */
+    public function getAuthHa1();
+
+    /**
      * Set brand
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand

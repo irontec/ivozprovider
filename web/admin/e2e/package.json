@@ -5,7 +5,7 @@
   "scripts": {
     "headless": "npm run xvfbStart; npm run clearEnv; npm run prepareDatabase && DISPLAY=:1 npm test; npm run reports2junit; npm run xvfbStop",
     "retry": "npm run xvfbStart; DISPLAY=:1 node ./node_modules/nightwatch/bin/nightwatch -e chromium --tag retry; npm run xvfbStop",
-    "platform": "npm run xvfbStart; DISPLAY=:1 node ./node_modules/nightwatch/bin/nightwatch -e chromium --tag platform; npm run xvfbStop",
+    "platform": "npm run xvfbStart; npm run prepareDatabase && DISPLAY=:1 node ./node_modules/nightwatch/bin/nightwatch -e chromium --tag platform; npm run xvfbStop",
     "brand": "npm run xvfbStart; DISPLAY=:1 node ./node_modules/nightwatch/bin/nightwatch -e chromium --tag brand; npm run xvfbStop",
     "company": "npm run xvfbStart; DISPLAY=:1 node ./node_modules/nightwatch/bin/nightwatch -e chromium --tag company; npm run xvfbStop",
     "xvfbStart": "Xvfb :1 -screen 0 1280x720x24 &",

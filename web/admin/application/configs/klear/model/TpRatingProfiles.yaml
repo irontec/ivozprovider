@@ -12,7 +12,7 @@ production:
         control: datetime
         settings:
           disabled: 'false'
-    ratingPlanId:
+    ratingPlan:
       title: ngettext('Destination rate', 'Destination rates', 1)
       type: select
       required: true
@@ -28,7 +28,7 @@ production:
           order:
             RatingPlan.name.${lang}: asc
       default: true
-    companyId:
+    company:
       title: ngettext('Company', 'Companies', 1)
       type: select
       required: true

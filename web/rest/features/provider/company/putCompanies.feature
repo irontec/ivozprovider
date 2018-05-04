@@ -82,6 +82,7 @@ Feature: Update company
           "mediaRelaySets": {
               "name": "Default",
               "description": "Default media relay set",
+              "type": "rtpproxy",
               "id": 1
           },
           "defaultTimezone": {

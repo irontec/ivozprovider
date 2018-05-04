@@ -56,6 +56,9 @@ msgstr "Activado desde"
 msgid "Active"
 msgstr "Activo"
 
+msgid "Active pricing plan does not allow to call introduced phone number"
+msgstr "El plan de precios activo no permite llamar al destino introducido"
+
 #, python-format
 msgid "Add %s"
 msgstr "Añadir %s"
@@ -76,6 +79,10 @@ msgstr ""
 
 msgid "Add balance"
 msgstr "Añadir saldo"
+
+#, php-format
+msgid "Add balance operation to <strong>%s</strong>"
+msgstr "Añadir operación de salgo a <strong>%s</strong>"
 
 #, python-format
 msgid "Add of %s %2s"
@@ -202,8 +209,11 @@ msgid_plural "Balance Notifications"
 msgstr[0] "Notificación Saldo"
 msgstr[1] "Notificaciones Saldo"
 
-msgid "Balance increased successfully"
-msgstr "Saldo incrementado con éxito"
+msgid "Balance modified successfully"
+msgstr "Saldo modificado con éxito"
+
+msgid "Balance operations"
+msgstr "Operaciones de saldo"
 
 msgid "Basic Configuration"
 msgstr "Configuración Básica"
@@ -372,6 +382,9 @@ msgstr "No se pueden crear facturas en el dia actual o futuro."
 msgid "Charge period"
 msgstr "Período de facturación"
 
+msgid "Check documentation for this section"
+msgstr "Ver documentación de esta sección"
+
 msgid "Client's default"
 msgstr "Usar configuración cliente"
 
@@ -504,27 +517,18 @@ msgid "Description"
 msgstr "Descripción"
 
 msgid "Destination"
-msgid_plural "Destinations"
-msgstr[0] "Destino"
-msgstr[1] "Destinos"
+msgstr "Destino"
 
 msgid "Destination IP address"
 msgstr "Dirección IP destino"
-
-msgid "Destination pattern"
-msgid_plural "Destination patterns"
-msgstr[0] "Patron de destino"
-msgstr[1] "Patrones de destino"
-
-msgid "Destination prefix"
-msgid_plural "Destination prefixes"
-msgstr[0] "Prefijo de destino"
-msgstr[1] "Prefijos de destinos"
 
 msgid "Destination rate"
 msgid_plural "Destination rates"
 msgstr[0] "Precio destino"
 msgstr[1] "Precios destinos"
+
+msgid "Destination rate not found"
+msgstr "Precio destino no encontrado"
 
 msgid "Determines the order current priority members will be called"
 msgstr "Determina el order en que los miembros de la prioridad serán llamados"
@@ -627,6 +631,10 @@ msgstr "Emular Compañía %s"
 #, python-format
 msgid "Emulate Retail Client %s"
 msgstr "Emular Cliente Retail %s"
+
+#, python-format
+msgid "Emulate Wholesale Client %s"
+msgstr "Emular Cliente Wholesale %s"
 
 msgid ""
 "Enable calling from non-granted IP addresses for this user. It limits the "
@@ -769,6 +777,9 @@ msgstr[1] "Ficheros convertidos"
 msgid "File imported"
 msgstr "Fichero importado"
 
+msgid "File partially imported"
+msgstr "Fichero parcialmente importado"
+
 msgid "Filter by IP address"
 msgstr "Filtrado por IP"
 
@@ -782,9 +793,6 @@ msgid "Fixed cost"
 msgid_plural "Fixed costs"
 msgstr[0] "Coste fijo"
 msgstr[1] "Costes fijos"
-
-msgid "Flag"
-msgstr "Flag"
 
 msgid "For instance:"
 msgstr "Por ejemplo:"
@@ -979,14 +987,32 @@ msgstr "Importar fichero"
 msgid "Import process enqueued"
 msgstr "Proceso de importación encolado"
 
+msgid "Imported"
+msgstr "Importado"
+
+msgid "Imported file"
+msgstr "Fichero importado"
+
+msgid "Importer status"
+msgstr "Estado de importación"
+
 msgid "In"
 msgstr "Entrada"
 
 msgid "In Progress"
 msgstr "En curso"
 
+msgid ""
+"In case of colliding prefixes, destination rate with highest weight will be "
+"used."
+msgstr ""
+"En caso de prefijos compartidos, se utilizará la vinculación de mayor peso."
+
 msgid "In date"
 msgstr "Fecha inicio"
+
+msgid "In progress"
+msgstr "En curso"
 
 msgid "Inbound"
 msgstr "Entrante"
@@ -1016,13 +1042,6 @@ msgstr ""
 
 msgid "Inconditional"
 msgstr "Incondicional"
-
-msgid "Increment balance"
-msgstr "Incrementar saldo"
-
-#, php-format
-msgid "Increment balance of <strong>%s</strong>"
-msgstr "Incrementar saldo de <strong>%s</strong>"
 
 msgid "Insert your username"
 msgstr "Introduce tu nombre de usuario"
@@ -1442,9 +1461,6 @@ msgid_plural "Numeric transformations"
 msgstr[0] "Transformación numérica"
 msgstr[1] "Transformaciones numéricas"
 
-msgid "Numeric value"
-msgstr "Valor numérico"
-
 msgid "On-demand"
 msgstr "Bajo demanda"
 
@@ -1586,6 +1602,14 @@ msgstr "Frecuencia locución periódica"
 msgid "Personal data"
 msgstr "Datos personales"
 
+msgid "Phone number"
+msgstr "Número de teléfono"
+
+msgid "Phone number must be in E.164 format (prefixed by \"+\" symbol)"
+msgstr ""
+"El número de teléfono debe estar en formato E.164 (precedido por el simbolo "
+"\"+\")"
+
 msgid "Pick Up Groups"
 msgstr "Grupos de captura"
 
@@ -1613,6 +1637,12 @@ msgstr "Configuración de Plataforma"
 
 msgid "Please, choose a file to import"
 msgstr "Por favor, seleccione fichero a importar"
+
+msgid "Please, type a duration in seconds"
+msgstr "Introduzca la duración en segundos"
+
+msgid "Please, type a phone number"
+msgstr "Introduzca un número de teléfono"
 
 msgid "Points to"
 msgstr "Apunta a"
@@ -1741,15 +1771,13 @@ msgstr "Aleatoriamente"
 msgid "Random Contact Username"
 msgstr "Nombre de usuario de contacto aleatorio"
 
-msgid "Rate"
-msgid_plural "Rates"
-msgstr[0] "Precio"
-msgstr[1] "Precios"
-
 msgid "Rating Profile"
 msgid_plural "Rating Profiles"
 msgstr[0] "Perfil de precio"
 msgstr[1] "Perfiles de precio"
+
+msgid "Rating Profile Tester"
+msgstr "Tester de perfiles de precio"
 
 msgid "Rating plan"
 msgid_plural "Rating plans"
@@ -1817,6 +1845,14 @@ msgstr "Restaurar plantilla por defecto"
 
 msgid "Restore last backup"
 msgstr "Restaurar último backup"
+
+msgid "Results"
+msgstr "Resultados"
+
+msgid "Retail"
+msgid_plural "Retail"
+msgstr[0] "Cliente Retail"
+msgstr[1] "Clientes Retail"
 
 msgid "Retail Account"
 msgid_plural "Retail Accounts"
@@ -1969,8 +2005,8 @@ msgstr "El servicio emplea argumentos extra"
 msgid "Set column configuration and continue."
 msgstr "Seleccione la configuración de columna y continuar"
 
-msgid "Setid"
-msgstr "Setid"
+msgid "Simulate a call"
+msgstr "Simular llamada"
 
 msgid "Source"
 msgstr "Origen"
@@ -2067,6 +2103,9 @@ msgid_plural "Terminal models"
 msgstr[0] "Modelo de Terminales"
 msgstr[1] "Modelos de Terminales"
 
+msgid "Test"
+msgstr "Probar"
+
 msgid "Test the code"
 msgstr "Probar el código"
 
@@ -2118,6 +2157,9 @@ msgid ""
 msgstr ""
 "Existe un desvío incondicional con ese tipo de llamada. No puedes añadir "
 "desvíos."
+
+msgid "There was an error"
+msgstr "Ocurrió un error"
 
 #, php-format
 msgid "There was an error: %s"
@@ -2326,6 +2368,11 @@ msgstr "Ver entrantes %s %s"
 msgid "View Outgoing %s %s"
 msgstr "Ver salientes %s %s"
 
+msgid "Virtual PBX"
+msgid_plural "Virtual PBXs"
+msgstr[0] "PBX Virtual"
+msgstr[1] "PBXs Virtuales"
+
 msgid "Voicemail"
 msgid_plural "Voicemails"
 msgstr[0] "Buzón de voz"
@@ -2380,6 +2427,26 @@ msgstr ""
 
 msgid "White Lists"
 msgstr "Listas blancas"
+
+msgid "Wholesale"
+msgid_plural "Wholesale"
+msgstr[0] "Wholesale"
+msgstr[1] "Wholesale"
+
+msgid "Wholesale Address"
+msgid_plural "Wholesale Addresses"
+msgstr[0] "Dirección IP wholesale"
+msgstr[1] "Direcciones IP wholesale"
+
+msgid "Wholesale Client"
+msgid_plural "Wholesale Clients"
+msgstr[0] "Cliente Wholesale"
+msgstr[1] "Clientes Wholesale"
+
+msgid "Wholesale admin"
+msgid_plural "Wholesale admins"
+msgstr[0] "Administrador Wholesale"
+msgstr[1] "Administradores Wholesale"
 
 msgid "Will be shown on page footer"
 msgstr "Se mostrará en el pie de página"
@@ -2445,9 +2512,6 @@ msgstr "Debe emular una marca antes de emular una compañía"
 msgid "allow"
 msgstr "permitir"
 
-msgid "but following errors ocurred"
-msgstr ""
-
 msgid "deny"
 msgstr "Rechazar"
 
@@ -2456,6 +2520,9 @@ msgstr "por. ej. 8.8.8.8"
 
 msgid "e.g. udp:127.0.0.1:22222"
 msgstr "p.ej. udp:127.0.0.1:22222"
+
+msgid "e.g. udp:127.0.0.1:22223"
+msgstr "p.ej. udp:127.0.0.1:22223"
 
 msgid "encoding"
 msgstr "Codificando"
@@ -2477,6 +2544,9 @@ msgstr "Pendiente"
 
 msgid "ready"
 msgstr "Listo"
+
+msgid "seconds"
+msgstr "segundos"
 
 msgid "shared"
 msgstr "compartido"

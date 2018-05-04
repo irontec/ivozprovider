@@ -1,7 +1,4 @@
 {
   "name": "Empty",
-  "description": "Empty",
-  "relPatterns[]": [
-    ""
-  ]
+  "description": "Empty"
 }

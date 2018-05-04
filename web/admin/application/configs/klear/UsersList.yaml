@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
 #include HuntGroupsRelUsersList.yaml
 #include CallForwardSettingsList.yaml
 #include DDIsList.yaml
@@ -19,6 +20,9 @@ production:
       <<: *Users
       class: ui-silk-user
       title: _("List of %s %2s", ngettext('User', 'Users', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/company/users.html"
       forcedValues:
         <<: *forcedCompany
       fields:
@@ -32,24 +36,24 @@ production:
             usersDel_dialog: true
           default: usersEdit_screen
         order: &Users_orderLink
-          companyId: true
+          company: true
           name: true
           lastname: true
           email: true
-          languageId: true
+          language: true
           active: true
           pass: true
           gsQRCode: true
           doNotDisturb: true
-          timezoneId: true
-          extensionId: true
-          terminalId: true
-          outgoingDDIId: true
-          callACLId: true
+          timezone: true
+          extension: true
+          terminal: true
+          outgoingDDI: true
+          callACL: true
           voicemailEnabled: true
           isBoss: true
-          bossAssistantId: true
-          bossAssistantWhiteListId: true
+          bossAssistant: true
+          bossAssistantWhiteList: true
           PickUpRelUsers: true
         blacklist:
           email: true
@@ -57,10 +61,10 @@ production:
           doNotDisturb: true
           pass: true
           gsQRCode: true
-          timezoneId: true
-          callACLId: true
-          bossAssistantId: true
-          bossAssistantWhiteListId: true
+          timezone: true
+          callACL: true
+          bossAssistant: true
+          bossAssistantWhiteList: true
           HuntGroupsRelUsers: true
           PickUpRelUsers: true
           timeout: true
@@ -68,13 +72,13 @@ production:
           maxCalls: true
           tokenKey: true
           voicemailEnabled: true
-          voicemailLocutionId: true
+          voicemailLocution: true
           voicemailAttachSound: true
           voicemailSendMail: true
-          transformationRuleSetId: true
-          languageId: true
+          transformationRuleSet: true
+          language: true
           externalIpCalls: true
-          outgoingDdiRuleId: true
+          outgoingDdiRule: true
       options:
         title: _("Options")
         screens:
@@ -102,21 +106,21 @@ production:
           doNotDisturb: true
           pass: true
           gsQRCode: true
-          timezoneId: true
-          callACLId: true1
-          bossAssistantId: true
-          bossAssistantWhiteListId: true
+          timezone: true
+          callACL: true1
+          bossAssistant: true
+          bossAssistantWhiteList: true
           PickUpRelUsers: true
           timeout: true
           isBoss: true
           maxCalls: true
           tokenKey: true
           voicemailEnabled: true
-          voicemailLocutionId: true
+          voicemailLocution: true
           voicemailAttachSound: true
           voicemailSendMail: true
-          languageId: true
-          transformationRuleSetId: true
+          language: true
+          transformationRuleSet: true
           externalIpCalls: true
       fixedPositions: &UsersFixedPositions_link
         group0:
@@ -130,10 +134,10 @@ production:
           label: _("Basic Configuration")
           colsPerRow: 6
           fields:
-            terminalId: 2
-            extensionId: 2
-            outgoingDDIId: 3
-            outgoingDdiRuleId: 3
+            terminal: 2
+            extension: 2
+            outgoingDDI: 3
+            outgoingDdiRule: 3
     usersEdit_screen: &usersEdit_screenLink
       <<: *Users
       controller: edit
@@ -159,9 +163,9 @@ production:
           label: _("Geographic Configuration")
           colsPerRow: 12
           fields:
-            languageId: 6
-            timezoneId: 6
-            transformationRuleSetId: 8
+            language: 6
+            timezone: 6
+            transformationRuleSet: 8
         group2:
           label: _("Login Info")
           colsPerRow: 3
@@ -174,17 +178,17 @@ production:
           colsPerRow: 12
           fields:
             isBoss: 4
-            bossAssistantId: 8
-            bossAssistantWhiteListId: 12
+            bossAssistant: 8
+            bossAssistantWhiteList: 12
         group4:
           label: _("Basic Configuration")
           colsPerRow: 12
           fields:
-            terminalId: 6
-            extensionId: 6
-            outgoingDDIId: 6
-            outgoingDdiRuleId: 6
-            callACLId: 6
+            terminal: 6
+            extension: 6
+            outgoingDDI: 6
+            outgoingDdiRule: 6
+            callACL: 6
             doNotDisturb: 6
             maxCalls: 6
             externalIpCalls: 6
@@ -193,7 +197,7 @@ production:
           colsPerRow: 2
           fields:
             voicemailEnabled: 1
-            voicemailLocutionId: 1
+            voicemailLocution: 1
             voicemailSendMail: 1
             voicemailAttachSound: 1
         group6:

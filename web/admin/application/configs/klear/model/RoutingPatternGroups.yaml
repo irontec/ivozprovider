@@ -11,7 +11,7 @@ production:
       title: _('Description')
       type: text
       maxLength: 55
-    brandId:
+    brand:
       title: ngettext('Brand', 'Brands', 1)
       type: select
       required: true

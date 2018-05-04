@@ -18,6 +18,3 @@ Ivoz\Provider\Domain\Model\PeeringContract\PeeringContract:
     peerServers:
       targetEntity: Ivoz\Provider\Domain\Model\PeerServer\PeerServerInterface
       mappedBy: peeringContract
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

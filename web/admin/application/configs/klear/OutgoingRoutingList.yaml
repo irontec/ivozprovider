@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
 
 production:
   main:
@@ -13,19 +14,22 @@ production:
       <<: *OutgoingRouting
       class: ui-silk-arrow-divide
       title: _("List of %s %2s", ngettext('Outgoing routing', 'Outgoing routings', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/brand/routing/outgoing_routing.html"
       fields: &outgoingRouting_fieldsLink
         order: &outgoingRouting_fieldsOrder
-          companyId: true
+          company: true
           type: true
           target: true
-          routingPatternId: true
-          routingPatternGroupId: true
-          peeringContractId: true
+          routingPattern: true
+          routingPatternGroup: true
+          peeringContract: true
           priority: true
           weight: true
         blacklist:
-          routingPatternId: true
-          routingPatternGroupId: true
+          routingPattern: true
+          routingPatternGroup: true
         options:
           title: _("Options")
           screens:
@@ -55,19 +59,19 @@ production:
         group0:
           colsPerRow: 12
           fields:
-            companyId: 12
+            company: 12
         group1:
           colsPerRow: 12
           label: _("Call destination")
           fields:
             type: 5
-            routingPatternId: 5
-            routingPatternGroupId: 5
+            routingPattern: 5
+            routingPatternGroup: 5
         group2:
           colsPerRow: 12
           label: _("Outgoing route")
           fields:
-            peeringContractId: 12
+            peeringContract: 12
         group3:
           colsPerRow: 2
           label: _("Failover and load-balancing")

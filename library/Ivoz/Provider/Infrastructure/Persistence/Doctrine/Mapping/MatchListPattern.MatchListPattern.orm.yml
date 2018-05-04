@@ -10,6 +10,3 @@ Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPattern:
       id: true
       generator:
         strategy: IDENTITY
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

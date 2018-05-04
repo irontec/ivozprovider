@@ -36,6 +36,11 @@ interface AdministratorInterface extends LoggableEntityInterface
     public function unserialize($serialized);
 
     /**
+     * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface
+     */
+    public function getTimezone();
+
+    /**
      * Set username
      *
      * @param string $username
@@ -162,13 +167,6 @@ interface AdministratorInterface extends LoggableEntityInterface
      * @return self
      */
     public function setTimezone(\Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface $timezone = null);
-
-    /**
-     * Get timezone
-     *
-     * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface
-     */
-    public function getTimezone();
 
     /**
      * @see AdvancedUserInterface::getRoles()

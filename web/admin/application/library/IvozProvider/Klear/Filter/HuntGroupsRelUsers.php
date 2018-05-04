@@ -37,11 +37,17 @@ class IvozProvider_Klear_Filter_HuntGroupsRelUsers extends IvozProvider_Klear_Fi
         if ($huntGroupDto->getStrategy() !== 'ringAll') {
             return true;
         }
+        $condition = "HuntGroupsRelUser.huntGroup = " . $huntGroupId;
+        $currentPk = $routeDispatcher->getParam("pk", false);
+        $isEditScreen = $routeDispatcher->getControllerName() === 'edit';
+        if ($isEditScreen && $currentPk) {
+            $condition .= ' AND HuntGroupsRelUser.id != ' . $currentPk;
+        }
 
         /** @var HuntGroupsRelUserDto[] $existingRelationships */
         $existingRelationships = $dataGateway->findBy(
             HuntGroupsRelUser::class,
-            ["HuntGroupsRelUser.huntGroup = " . $huntGroupId]
+            [$condition]
         );
 
         if (empty($existingRelationships)) {

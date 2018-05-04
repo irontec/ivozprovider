@@ -11,6 +11,3 @@ Ivoz\Provider\Domain\Model\TerminalModel\TerminalModel:
       id: true
       generator:
         strategy: IDENTITY
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

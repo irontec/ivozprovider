@@ -21,4 +21,4 @@ services:
       - { name: provider.lifecycle.routing_pattern_group.on_commit, priority: 10 }
     arguments:
       $trunksLcrReload:
-        '@XmlRpc\XmlRpcTrunksRequest::DialplanReload'
+        '@XmlRpc\XmlRpcTrunksRequest::LcrReload'

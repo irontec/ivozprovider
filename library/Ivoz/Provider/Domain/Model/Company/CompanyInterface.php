@@ -88,6 +88,11 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getServiceCode($name);
 
     /**
+     * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface
+     */
+    public function getDefaultTimezone();
+
+    /**
      * Set type
      *
      * @param string $type
@@ -404,13 +409,6 @@ interface CompanyInterface extends LoggableEntityInterface
      * @return self
      */
     public function setDefaultTimezone(\Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface $defaultTimezone = null);
-
-    /**
-     * Get defaultTimezone
-     *
-     * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface
-     */
-    public function getDefaultTimezone();
 
     /**
      * Set brand

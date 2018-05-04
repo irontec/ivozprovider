@@ -146,6 +146,3 @@ Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition
           referencedColumnName: id
           onDelete: set null
       orphanRemoval: false
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

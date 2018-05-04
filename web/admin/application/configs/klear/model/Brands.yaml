@@ -31,7 +31,7 @@ production:
         icon: help
         text: _("Limits both user generated and external received calls to this value (0 for unlimited).")
         label: _("Need help?")
-    defaultTimezoneId:
+    defaultTimezone:
       title: _('Default timezone')
       type: select
       defaultValue: 145
@@ -134,7 +134,7 @@ production:
         icon: help
         text: _("Trademark registration information of the mark that is included in the invoices issued: eg 'registered in the commercial register of bizkaia, tome xxxx, book and, folio zzz, sheet aa-bbbb'")
         label: _("Need help?")
-    languageId:
+    language:
       title: _('Language')
       type: select
       defaultValue: 1

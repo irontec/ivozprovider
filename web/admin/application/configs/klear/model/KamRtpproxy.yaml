@@ -1,18 +1,6 @@
 production:
   entity: Ivoz\Kam\Domain\Model\Rtpproxy\Rtpproxy
   fields: 
-    id:
-      title: _('Setid')
-      type: text
-      trim: both
-      defaultValue: 0
-      required: true
-      info:
-        type: box
-        position: left
-        icon: help
-        text: _("Numeric value")
-        label: _("Need help?")
     url:
       title: ngettext('URL', 'URLs', 1)
       type: text
@@ -25,12 +13,6 @@ production:
         icon: help
         text: _("e.g. udp:127.0.0.1:22222")
         label: _("Need help?")
-    flags:
-      title: _('Flag')
-      type: number
-      defaultValue: 0
-      source:
-        control: Spinner
     weight:
       title: _('Weight')
       type: number
@@ -50,20 +32,6 @@ production:
       type: text
       trim: both
       maxLength: 200
-    mediaRelaySetId:
-      title: ngettext('Media relay set', 'Media relay sets', 1)
-      type: select
-      source:
-        data: mapper
-        config:
-          entity: \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet
-          fieldName: 
-            fields: 
-              - name
-            template: '%name%'
-          order:
-            MediaRelaySet.name: asc
-        'null': _("Unassigned")
 staging:
   _extends: production
 testing:

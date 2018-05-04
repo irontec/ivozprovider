@@ -68,11 +68,20 @@ services:
   ################################################
   ## Normalizers
   ################################################
+  Ivoz\Api\Entity\Serializer\Normalizer\DateTimeNormalizer:
+    arguments:
+      $tokenStorage: '@security.token_storage'
+      $classMetadataFactory: '@doctrine.orm.default_entity_manager.metadata_factory'
+      $propertyMetadataFactory: '@api_platform.metadata.property.metadata_factory'
+    tags:
+      -  { name: serializer.normalizer, priority: 10 }
+
   Ivoz\Api\Json\Serializer\Normalizer\EntityNormalizer:
     arguments:
       $resourceMetadataFactory: "@api_platform.metadata.resource.metadata_factory"
       $resourceClassResolver: "@api_platform.resource_class_resolver"
       $contextBuilder: "@api_platform.jsonld.context_builder"
+      $dateTimeNormalizer: '@Ivoz\Api\Entity\Serializer\Normalizer\DateTimeNormalizer'
     tags:
       -  { name: serializer.normalizer, priority: 10 }
 
@@ -82,6 +91,7 @@ services:
       $iriConverter: "@api_platform.iri_converter"
       $resourceClassResolver: "@api_platform.resource_class_resolver"
       $contextBuilder: "@api_platform.jsonld.context_builder"
+      $dateTimeNormalizer: '@Ivoz\Api\Entity\Serializer\Normalizer\DateTimeNormalizer'
     tags:
       -  { name: serializer.normalizer, priority: 10 }
 
@@ -107,6 +117,7 @@ services:
       $createEntityFromDTO: '@Ivoz\Core\Application\Service\CreateEntityFromDTO'
       $propertyMetadataFactory: '@api_platform.metadata.property.metadata_factory'
       $logger: '@logger'
+      $dateTimeNormalizer: '@Ivoz\Api\Entity\Serializer\Normalizer\DateTimeNormalizer'
     tags:
       -  { name: serializer.normalizer, priority: 10 }
 

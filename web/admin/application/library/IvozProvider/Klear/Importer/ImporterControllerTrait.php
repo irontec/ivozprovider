@@ -1,5 +1,8 @@
 <?php
+
 namespace IvozProvider\Klear\Importer;
+
+use Doctrine\DBAL\DBALException;
 
 trait ImporterControllerTrait
 {
@@ -15,7 +18,7 @@ trait ImporterControllerTrait
     protected $_mapper;
     protected $_modelName;
     protected $_model;
-    protected $_availableFields;
+    protected $_availableFields = [];
     protected $_multilangFields;
     protected $_availableLangs;
     protected $_config;
@@ -28,6 +31,9 @@ trait ImporterControllerTrait
 
     public function init()
     {
+        $front = \Zend_Controller_Front::getInstance();
+        $this->_bootstrap = $front->getParam('bootstrap');
+
         /**
          * Initialize action controller here
          */
@@ -36,41 +42,26 @@ trait ImporterControllerTrait
             throw new \Zend_Exception("", Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ACTION);
         }
 
-        $this->_item    = $this->_mainRouter->getCurrentItem();
-        $this->_config = $this->_item->getConfig();
-        $this->_buildCsvParser();
-
-        $this->_mapperName = $this->_config->getProperty("mapper");
-        $this->_freeUploadCommand = $this->_config->getProperty("freeUploadCommand");
-
-        $this->_mapper = new $this->_mapperName;
-
         $this->_pk = $this->getRequest()->getParam("pk");
         $this->_parentPk = $this->getRequest()->getParam("parentId");
 
-        $this->_model = $this->_item->getModelSpec()->getInstance();
-        $this->_modelName = $this->_item->getModelSpec()->getClassName();
-        $availableFields = $this->_item->getModelSpec()->getFields();
+        $this->_item    = $this->_mainRouter->getCurrentItem();
+        $this->_config = $this->_item->getConfig();
+        $this->_freeUploadCommand = $this->_config->getProperty("freeUploadCommand");
 
-        $this->_multilangFields = $this->_model->getMultiLangColumnsList();
-        $this->_availableLangs = $this->_model->getAvailableLangs();
-        asort($this->_availableLangs);
+        $delimiter = $this->_config->getProperty("delimiter");
+        if (!is_null($delimiter)) {
+            $this->_delimiter = $delimiter;
+        }
 
+        $this->_enclosure = $this->_config->getProperty("enclosure");
+        $this->_scape = $this->_config->getProperty("scape");
         $this->_forcedValues = $this->_config->getProperty("forcedValues")->toArray();
-
         $this->_availableFields = array();
 
+        $availableFields = $this->_item->getModelSpec()->getFields();
         foreach ($availableFields as $key => $field) {
             $this->_availableFields[$key] = $field;
-            if (isset($this->_multilangFields[$key])) {
-                $title = \Klear_Model_Gettext::gettextCheck($field->get("title"));
-                foreach ($this->_availableLangs as $lang) {
-                    $newField = $field->toArray();
-                    $newField["title"] = $title." ".ucfirst($lang);
-                    $newFieldConfig = new \Zend_Config($newField);
-                    $this->_availableFields[$key."_".$lang] = $newFieldConfig;
-                }
-            }
         }
 
         $selectableFields = array_diff_key($this->_availableFields, $this->_forcedValues);
@@ -79,6 +70,11 @@ trait ImporterControllerTrait
             $this->_getFilteredPostValues(),
             $this->_helper->translate
         );
+        $this->_buildCsvParser();
+
+        $this->_helper->ContextSwitch()
+            ->addActionContext("import", "json")
+            ->initContext("json");
 
         $this->_helper->layout->disableLayout();
     }
@@ -105,7 +101,6 @@ trait ImporterControllerTrait
 
     protected function _loadFile($message = null)
     {
-
         if (!$message) {
             $message .= "<p>".$this->_helper->translate("Please, choose a file to import")."</p>";
         }
@@ -228,11 +223,7 @@ trait ImporterControllerTrait
     protected function _import()
     {
         $this->_log("Importing file");
-        $error = array();
-        $success = array();
         $filePath = $this->getRequest()->getParam('filePath');
-        $ignoreFirst = $this->getRequest()->getParam('ingoreFirst');
-        $conf = array();
 
         $lines = $this->_parseFile($filePath, 1);
         $fileFields = count($lines[0]);
@@ -287,7 +278,6 @@ trait ImporterControllerTrait
         }
 
         $calculateHighestPk = false;
-        $message = $this->_helper->translate("File imported");
         $this->_log("Opening file..");
         $firstLine = true;
         $handle = fopen($filePath, "r");
@@ -333,6 +323,7 @@ trait ImporterControllerTrait
                 if (isset($data["id"])) {
                     $conditions["id"] = $data["id"];
                 }
+
                 foreach ($this->_forcedValues as $field => $value) {
                     if ($value == "%parent%") {
                         $value = $this->_parentPk;
@@ -342,6 +333,7 @@ trait ImporterControllerTrait
                 }
 
                 try {
+
                     if ($this->getRequest()->getParam("update", false) && isset($data["id"])) {
                         $model = $this->_mapper->findOneByField(array_keys($conditions), array_values($conditions));
                         if (!is_null($model)) {
@@ -350,49 +342,135 @@ trait ImporterControllerTrait
                         } else {
                             $wheres = array();
                             foreach ($conditions as $key => $value) {
-                                $wheres[] = $key." = '".$value."'";
+                                $wheres[] = $key . " = '" . $value . "'";
                             }
-                            $error = "No model found. where ".implode(" AND ", $wheres);
+                            $error = "No model found. where " . implode(" AND ", $wheres);
                             $this->_log($error);
                             $errors[] = $error;
                         }
                     } else {
-                        $model = new $this->_modelName();
-                        $model->populateFromArray($data);
-                        $model->save(true);
+
+                        $modelSpec = $this->_item->getModelSpec();
+                        $model = clone $modelSpec->getInstance();
+                        $this->persist($model, $data);
                     }
-                } catch (\Exception $e) {
-                    if ($e->getCode() == $this->MYSQL_DUPLICATE_ENTRY_ERROR_CODE) {
-                        $calculateHighestPk = true;
+                }  catch (DBALException $e) {
+
+                    if ($e->getPrevious()) {
+                        $e = $e->getPrevious();
                     }
+
                     $this->_log($e->getMessage());
-                    $errors[] = $e->getMessage();
+                    $errors = $e->getMessage();
+                    break;
+
+                } catch (\Exception $e) {
+
+                    $this->_log($e->getMessage());
+                    $errors = $e->getMessage();
+                    break;
                 }
             }
         }
         fclose($handle);
 
-        if ($calculateHighestPk) {
-            $maxIdModel = $this->_mapper->fetchOne(null, "id desc");
-            $errors[] = "Highest id is '".$maxIdModel->getPrimaryKey()."'";
-        }
         if (!empty($errors)) {
-            $message .= " " . $this->_helper->translate("but following errors ocurred"). ":<ul>";
-
-            for ($i = 0; $i < count($errors); $i++) {
-                if ($i > 3) {
-                    $message .= "<li>... </li>";
-                    break;
-                }
-
-                $error = $errors[$i];
-                $message .= "<li>".$this->_helper->translate($error)."</li>";
-            }
-
-            $message .= "</ul>";
+            $message =
+                $this->_helper->translate("File partially imported")
+                . ". "
+                . sprintf(
+                    $this->_helper->translate("There was an error: %s"),
+                    $this->_helper->translate($error)
+                );
+        } else {
+            $message = $this->_helper->translate("File imported");
         }
+
         return array ("error" => false, "message" => $message);
     }
+
+    /**
+     * @return mixed
+     */
+    private function persist($model, array $data, $id = null)
+    {
+        /** @var \Ivoz\Core\Application\Service\DataGateway $dataGateway */
+        $dataGateway = \Zend_Registry::get('data_gateway');
+
+        /** @var \KlearMatrix_Model_ColumnCollection $columns */
+        $columns = $this->_item->getVisibleColumns(true, $model);
+
+        foreach ($data as $columnName => $value) {
+
+            $setter = 'set' . ucfirst($columnName);
+            /** @var \KlearMatrix_Model_Column $column */
+            $column = $columns->getColFromDbName($columnName);
+
+            if (is_null($column)) {
+                continue;
+            }
+
+            if ($column->isSelectMapperFieldType()) {
+                $setter .= 'Id';
+            } else if ($column->getType() == 'picker') {
+                $value = $this->stringToDateTime($column, $value);
+            }
+
+            $model->{$setter}($value);
+        }
+
+        if ($model->getId()) {
+            return $dataGateway->update(
+                $this->_item->getEntityClassName(),
+                $model
+            );
+        }
+
+        return $dataGateway->persist(
+            $this->_item->getEntityClassName(),
+            $model
+        );
+    }
+
+    protected function stringToDateTime(\KlearMatrix_Model_Column $column, $value)
+    {
+        /** @var \KlearMatrix_Model_Field_Picker $fieldModel */
+        $fieldModel = $column->getFieldConfig();
+        $adapterClass = get_class($fieldModel->getAdapter());
+
+        switch ($adapterClass) {
+
+            case \KlearMatrix_Model_Field_Picker_Date::class:
+                $dateTime = \DateTime::createFromFormat(
+                    'Y-m-d',
+                    $value
+                );
+                $dateTime->setTime(
+                    0,
+                    0,
+                    0
+                );
+
+                return $dateTime;
+
+            case \KlearMatrix_Model_Field_Picker_Time::class:
+                return \DateTime::createFromFormat(
+                    'H:i:s',
+                    $value
+                );
+
+            case \KlearMatrix_Model_Field_Picker_DateTime::class:
+                return \DateTime::createFromFormat(
+                    'Y-m-d H:i:s',
+                    $value
+                );
+
+            default:
+                die(get_class($fieldModel));
+                return $value;
+        }
+    }
+
 
     protected function _generalError()
     {

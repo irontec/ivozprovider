@@ -116,9 +116,9 @@ abstract class TrunksCdrAbstract
     protected $peeringContract;
 
     /**
-     * @var \Ivoz\Cgr\Domain\Model\Destination\DestinationInterface
+     * @var \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface
      */
-    protected $destination;
+    protected $tpDestination;
 
     /**
      * @var \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateInterface
@@ -224,7 +224,7 @@ abstract class TrunksCdrAbstract
             ->setBrand($dto->getBrand())
             ->setCompany($dto->getCompany())
             ->setPeeringContract($dto->getPeeringContract())
-            ->setDestination($dto->getDestination())
+            ->setTpDestination($dto->getTpDestination())
             ->setDestinationRate($dto->getDestinationRate())
         ;
 
@@ -266,7 +266,7 @@ abstract class TrunksCdrAbstract
             ->setBrand($dto->getBrand())
             ->setCompany($dto->getCompany())
             ->setPeeringContract($dto->getPeeringContract())
-            ->setDestination($dto->getDestination())
+            ->setTpDestination($dto->getTpDestination())
             ->setDestinationRate($dto->getDestinationRate());
 
 
@@ -302,7 +302,7 @@ abstract class TrunksCdrAbstract
             ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
             ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
             ->setPeeringContract(\Ivoz\Provider\Domain\Model\PeeringContract\PeeringContract::entityToDto(self::getPeeringContract(), $depth))
-            ->setDestination(\Ivoz\Cgr\Domain\Model\Destination\Destination::entityToDto(self::getDestination(), $depth))
+            ->setTpDestination(\Ivoz\Cgr\Domain\Model\TpDestination\TpDestination::entityToDto(self::getTpDestination(), $depth))
             ->setDestinationRate(\Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRate::entityToDto(self::getDestinationRate(), $depth));
     }
 
@@ -332,7 +332,7 @@ abstract class TrunksCdrAbstract
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
             'peeringContractId' => self::getPeeringContract() ? self::getPeeringContract()->getId() : null,
-            'destinationId' => self::getDestination() ? self::getDestination()->getId() : null,
+            'tpDestinationId' => self::getTpDestination() ? self::getTpDestination()->getId() : null,
             'destinationRateId' => self::getDestinationRate() ? self::getDestinationRate()->getId() : null
         ];
     }
@@ -889,27 +889,27 @@ abstract class TrunksCdrAbstract
     }
 
     /**
-     * Set destination
+     * Set tpDestination
      *
-     * @param \Ivoz\Cgr\Domain\Model\Destination\DestinationInterface $destination
+     * @param \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface $tpDestination
      *
      * @return self
      */
-    public function setDestination(\Ivoz\Cgr\Domain\Model\Destination\DestinationInterface $destination = null)
+    public function setTpDestination(\Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface $tpDestination = null)
     {
-        $this->destination = $destination;
+        $this->tpDestination = $tpDestination;
 
         return $this;
     }
 
     /**
-     * Get destination
+     * Get tpDestination
      *
-     * @return \Ivoz\Cgr\Domain\Model\Destination\DestinationInterface
+     * @return \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface
      */
-    public function getDestination()
+    public function getTpDestination()
     {
-        return $this->destination;
+        return $this->tpDestination;
     }
 
     /**

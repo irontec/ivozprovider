@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
 #include HuntGroupsRelUsersList.yaml
 
 production:
@@ -14,6 +15,9 @@ production:
       <<: *HuntGroups
       class: ui-silk-group-go
       title: _("List of %s %2s", ngettext('Hunt Group', 'Hunt Groups', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/company/huntgroups.html"
       forcedValues:
         <<: *forcedCompany
       fields:
@@ -30,11 +34,11 @@ production:
         blacklist:
           ringAllTimeout: true
           noAnswerTargetType: true
-          noAnswerLocutionId: true
-          noAnswerNumberCountryId: true
+          noAnswerLocution: true
+          noAnswerNumberCountry: true
           noAnswerNumberValue: true
-          noAnswerExtensionId: true
-          noAnswerVoiceMailUserId: true
+          noAnswerExtension: true
+          noAnswerVoiceMailUser: true
           preventMissedCalls: true
       options:
         title: _("Options")
@@ -51,7 +55,7 @@ production:
       title: _("Add %s", ngettext('Hunt Group', 'Hunt Groups', 1))
       shortcutOption: N
       defaultValues:
-        noAnswerNumberCountryId: ${auth.companyCountryId}
+        noAnswerNumberCountry: ${auth.companyCountryId}
       forcedValues:
         <<: *forcedCompany
       fields:
@@ -70,12 +74,12 @@ production:
           label: _("No answer configuration")
           colsPerRow: 6
           fields:
-            noAnswerLocutionId: 5
+            noAnswerLocution: 5
             noAnswerTargetType: 2
-            noAnswerNumberCountryId: 2
+            noAnswerNumberCountry: 2
             noAnswerNumberValue: 2
-            noAnswerExtensionId: 3
-            noAnswerVoiceMailUserId: 3
+            noAnswerExtension: 3
+            noAnswerVoiceMailUser: 3
     huntGroupsEdit_screen: &huntGroupsEdit_screenLink
       <<: *HuntGroups
       controller: edit

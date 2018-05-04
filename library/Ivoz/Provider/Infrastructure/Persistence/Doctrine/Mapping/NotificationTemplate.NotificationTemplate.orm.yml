@@ -11,9 +11,6 @@ Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate:
       id: true
       generator:
         strategy: IDENTITY
-  lifecycleCallbacks:
-      postLoad:
-        - initChangelog
   oneToMany:
     contents:
       targetEntity: Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContentInterface

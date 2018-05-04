@@ -11,6 +11,3 @@ Ivoz\Kam\Domain\Model\UsersPresentity\UsersPresentity:
       id: true
       generator:
         strategy: IDENTITY
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

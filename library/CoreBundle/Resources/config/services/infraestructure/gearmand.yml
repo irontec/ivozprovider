@@ -18,7 +18,6 @@ services:
     arguments:
       $manager: '@Ivoz\Core\Infrastructure\Domain\Service\Gearman\Manager'
       $settings: '%gearmand%'
-    public: true
 
   Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Recoder:
     arguments:

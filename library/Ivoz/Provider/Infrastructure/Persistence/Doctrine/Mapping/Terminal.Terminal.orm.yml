@@ -18,6 +18,3 @@ Ivoz\Provider\Domain\Model\Terminal\Terminal:
     users:
       targetEntity: Ivoz\Provider\Domain\Model\User\UserInterface
       mappedBy: terminal
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

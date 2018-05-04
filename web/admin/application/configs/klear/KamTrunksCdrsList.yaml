@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
 
 production:
   main:
@@ -22,6 +23,9 @@ production:
       <<: *KamTrunksCdrs
       class: ui-silk-application-view-list
       title: _("List of %s %2s", ngettext('Billable call', 'Billable calls', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/brand/billing/billable_calls.html"
       fields: &kamTrunksCdrs_fieldsLink
         options:
           title: _("Options")
@@ -30,8 +34,8 @@ production:
           default: kamTrunksCdrsView_screen
         order:
           startTime: true
-          brandId: true
-          companyId: true
+          brand: true
+          company: true
           callee: true
           duration: true
           price: true
@@ -60,8 +64,8 @@ production:
           label: _("Basic Information")
           colsPerRow: 12
           fields:
-            brandId: 6
-            companyId: 6
+            brand: 6
+            company: 6
             callee: 6
             startTime: 6
             duration: 6
@@ -70,9 +74,9 @@ production:
           colsPerRow: 12
           fields:
             price: 6
-            peeringContractId: 6
+            peeringContract: 6
             direction: 6
-            invoiceId: 6
+            invoice: 6
 
 staging:
   _extends: production

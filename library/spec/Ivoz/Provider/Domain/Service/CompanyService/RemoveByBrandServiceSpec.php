@@ -66,7 +66,6 @@ class RemoveByBrandServiceSpec extends ObjectBehavior
 
         $this->beConstructedWith(
             $this->em,
-            $this->entityPersister,
             $this->companyRepository,
             $this->companyServiceRepository
         );

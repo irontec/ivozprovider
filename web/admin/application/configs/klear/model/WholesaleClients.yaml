@@ -1,0 +1,154 @@
+production:
+  entity: Ivoz\Provider\Domain\Model\Company\Company
+  fields:
+    id:
+      title: ngettext('Id', 'Ids', 1)
+      required: false
+      readonly: true
+    brand:
+      title: ngettext('Brand', 'Brands', 1)
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Brand\Brand
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order:
+            Brand.name: asc
+    name:
+      title: _('Name')
+      type: text
+      trim: both
+      required: true
+      default: true
+    nif:
+      title: _('Nif')
+      type: text
+      trim: both
+      required: true
+    defaultTimezone:
+      title: _('Default timezone')
+      type: select
+      defaultValue: 145
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Timezone\Timezone
+          fieldName:
+            fields:
+              - tz
+            template: '%tz%'
+          order:
+            Timezone.tz: asc
+    maxCalls:
+      title: _('Max calls')
+      type: number
+      defaultValue: 2
+      source:
+        control: Spinner
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Limits both user generated and external received calls to this value (0 for unlimited).")
+        label: _("Need help?")
+    postalAddress:
+      title: _('Postal address')
+      type: text
+      trim: both
+      required: true
+      maxLength: 255
+    postalCode:
+      title: ngettext('Postal code', 'Postal codes', 1)
+      type: text
+      trim: both
+      required: true
+      maxLength: 10
+    town:
+      title: _('Town')
+      type: text
+      trim: both
+      required: true
+      maxLength: 255
+    province:
+      title: ngettext('Province', 'Provinces', 1)
+      type: text
+      trim: both
+      required: true
+      maxLength: 255
+    countryName:
+      title: ngettext('Country', 'Countries', 1)
+      type: text
+      trim: both
+      required: true
+      maxLength: 255
+    language:
+      title: _('Language')
+      type: select
+      defaultValue: 1
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Language\Language
+          fieldName:
+            fields:
+              - name${lang}
+            template: '%name${lang}%'
+          order:
+            Language.name.${lang}: asc
+    mediaRelaySets:
+      title: _('Media relay Set')
+      type: select
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order:
+            MediaRelaySet.name: asc
+    billingMethod:
+      title: _('Billing method')
+      type: select
+      defaultValue: postpaid
+      source:
+        data: inline
+        values:
+          'postpaid':
+            title: _("Postpaid")
+          'prepaid':
+            title: _("Prepaid")
+          'pseudoprepaid':
+            title: _("Pseudo-prepaid")
+    transformationRuleSet:
+      title: ngettext('Numeric transformation', 'Numeric transformations', 1)
+      type: select
+      required: true
+      defaultValue: 70
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet
+          filterClass: IvozProvider_Klear_Filter_TransformationRuleSets
+          fieldName:
+            fields:
+              - name${lang}
+            template: '%name${lang}%'
+          order:
+            TransformationRuleSet.name.${lang}: asc
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

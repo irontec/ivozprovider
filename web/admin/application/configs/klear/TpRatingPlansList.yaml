@@ -18,8 +18,8 @@ production:
           tag: true
           name: true
           description: true
-        blacklist:
-          timingId: true
+        blacklist: &tpRatingPlans_blacklistLink
+          timing: true
         options:
           title: _("Options")
           screens:
@@ -33,6 +33,7 @@ production:
           tpRatingPlansNew_screen: true
         dialogs:
           tpRatingPlansDel_dialog: true
+          simulateRatingPlanCall_dialog: true
 
     tpRatingPlansNew_screen: &tpRatingPlansNew_screenLink
       <<: *TpRatingPlans
@@ -42,13 +43,15 @@ production:
       multiInstance: true
       title: _("Add %s", ngettext('Rating plan', 'Rating plans', 1), "[format| (%parent%)]")
       shortcutOption: N
-      fixedPositions:
+      fields:
+        blacklist:
+          <<: *tpRatingPlans_blacklistLink
+      fixedPositions: &tpRatingPlans_fixedPositionsLink
         group1:
-          colsPerRow: 9
+          colsPerRow: 4
           fields:
-            destinationRateId: 3
-            weight: 3
-            timingId: 3
+            destinationRate: 3
+            weight: 1
 
     tpRatingPlansEdit_screen: &tpRatingPlansEdit_screenLink
       <<: *TpRatingPlans
@@ -56,13 +59,11 @@ production:
       class: ui-silk-pencil
       label: false
       title: _("Edit %s %2s", ngettext('Rating plan', 'Rating plans', 1), "[format| (%item%)]")
+      fields:
+        blacklist:
+          <<: *tpRatingPlans_blacklistLink
       fixedPositions:
-        group1:
-          colsPerRow: 9
-          fields:
-            destinationRateId: 3
-            weight: 3
-            timingId: 3
+        <<: *tpRatingPlans_fixedPositionsLink
 
   dialogs: &tpRatingPlans_dialogsLink
     tpRatingPlansDel_dialog: &tpRatingPlansDel_dialogLink
@@ -75,6 +76,19 @@ production:
       message: _("%s successfully deleted.", ngettext('Rating plan', 'Rating plans', 1))
       multiItem: 1
       labelOnList: 1
+
+    simulateRatingPlanCall_dialog: &simulateRatingPlanCall_dialogLink
+      <<: *DestinationRates
+      module: default
+      title: _("Simulate a call")
+      label: false
+      labelOnEdit: false
+      labelOnList: true
+      labelOption: false
+      labelOnEntityPostSave: false
+      controller: klear-custom-tarificator
+      action: test-rating-plan
+      class:  ui-silk-telephone
 
 staging:
   _extends: production

@@ -1,7 +1,8 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
 #include KamRtpproxyList.yaml
-
+#include KamRtpengineList.yaml
 
 production:
   main:
@@ -15,12 +16,16 @@ production:
       <<: *MediaRelaySets
       class: ui-silk-text-list-bullets
       title: _("List of %s %2s", ngettext('Media relay set', 'Media relay sets', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/platform/media_relays.html"
       fields: &mediaRelaySets_fieldsLink
         options:
           title: _("Options")
           screens:
             mediaRelaySetsEdit_screen: true
             kamRtpproxyList_screen: true
+            kamRtpengineList_screen: true
           dialogs:
             mediaRelaySetsDel_dialog: true
       options:
@@ -35,6 +40,13 @@ production:
       multiInstance: true
       title: _("Add %s", ngettext('Media relay set', 'Media relay sets', 1), "[format| (%parent%)]")
       shortcutOption: N
+      fixedPositions: &mediaRelaySetsFixedPositionLink
+        group0:
+          colsPerRow: 2
+          fields:
+            name: 1
+            type: 1
+            description: 2
     mediaRelaySetsEdit_screen: &mediaRelaySetsEdit_screenLink
       <<: *MediaRelaySets
       controller: edit
@@ -44,9 +56,16 @@ production:
       label: false
       labelOnPostAction: _("Edit %s %2s", ngettext('Media relay set', 'Media relay sets', 1), "[format| (%item%)]")
       title: _("Edit %s %2s", ngettext('Media relay set', 'Media relay sets', 1), "[format| (%item%)]")
+      fixedPositions:
+        <<: *mediaRelaySetsFixedPositionLink
+      fields:
+        readOnly:
+          type: true
     #kamRtpproxy:
     <<: *kamRtpproxy_screensLink
     kamRtpproxyList_screen:
+      parentOptionCustomizer:
+        - IvozProvider_Klear_Options_OptionsCustomizer
       <<: *kamRtpproxyList_screenLink
       filterField: MediaRelaySet
     kamRtpproxyNew_screen:
@@ -54,6 +73,19 @@ production:
       filterField: MediaRelaySet
     kamRtpproxyEdit_screen:
       <<: *kamRtpproxyEdit_screenLink
+      filterField: MediaRelaySet
+    #kamRtpengine:
+    <<: *kamRtpengine_screensLink
+    kamRtpengineList_screen:
+      parentOptionCustomizer:
+        - IvozProvider_Klear_Options_OptionsCustomizer
+      <<: *kamRtpengineList_screenLink
+      filterField: MediaRelaySet
+    kamRtpengineNew_screen:
+      <<: *kamRtpengineNew_screenLink
+      filterField: MediaRelaySet
+    kamRtpengineEdit_screen:
+      <<: *kamRtpengineEdit_screenLink
       filterField: MediaRelaySet
 
   dialogs: &mediaRelaySets_dialogsLink
@@ -71,6 +103,8 @@ production:
       labelOnList: 1
   # kamRtpproxy dialogs:
     <<: *kamRtpproxy_dialogsLink
+  # kamRtpengine dialogs:
+    <<: *kamRtpengine_dialogsLink
 staging:
   _extends: production
 testing:

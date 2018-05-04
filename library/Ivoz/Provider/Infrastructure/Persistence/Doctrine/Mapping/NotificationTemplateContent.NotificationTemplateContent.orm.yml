@@ -11,6 +11,3 @@ Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateConte
       id: true
       generator:
         strategy: IDENTITY
-  lifecycleCallbacks:
-      postLoad:
-        - initChangelog

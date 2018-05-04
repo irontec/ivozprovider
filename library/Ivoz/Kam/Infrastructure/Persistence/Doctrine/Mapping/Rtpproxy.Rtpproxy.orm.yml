@@ -11,6 +11,3 @@ Ivoz\Kam\Domain\Model\Rtpproxy\Rtpproxy:
       id: true
       generator:
         strategy: IDENTITY
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

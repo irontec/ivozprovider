@@ -14,9 +14,7 @@ Feature: Companies admin page
   In order to check and manage them
 
 Background:
-  Given I go to the admin page
-   When I send valid admin credentials
-   Then I am logged in
+  Given I am on the Dashboard
    When I click on brand emulation button
     And I emulate the brand at position "1"
     And I click on "Companies" CTA

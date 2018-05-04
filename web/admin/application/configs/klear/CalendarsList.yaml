@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
 #include HolidayDatesList.yaml
 
 production:
@@ -14,6 +15,9 @@ production:
       <<: *Calendars
       class: ui-silk-calendar
       title: _("List of %s %2s", ngettext('Calendar', 'Calendars', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/company/calendars.html"
       forcedValues:
         <<: *forcedCompany
       fields:

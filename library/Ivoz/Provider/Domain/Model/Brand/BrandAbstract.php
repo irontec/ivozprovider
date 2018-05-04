@@ -481,7 +481,7 @@ abstract class BrandAbstract
      *
      * @return self
      */
-    public function setDefaultTimezone(\Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface $defaultTimezone = null)
+    public function setDefaultTimezone(\Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface $defaultTimezone)
     {
         $this->defaultTimezone = $defaultTimezone;
 

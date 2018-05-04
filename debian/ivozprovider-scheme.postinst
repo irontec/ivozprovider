@@ -23,6 +23,7 @@ function scheme_initialize()
     # Load Timezones
     db_get ivozprovider/mysql_password                     || true
     mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql --user=root --password="$RET" mysql
+    db_stop
 
     # During first time, create database and import initial dump
     cd /opt/irontec/ivozprovider/scheme
@@ -38,6 +39,7 @@ function mysql_upgrade()
     # Load Timezones
     db_get ivozprovider/mysql_password                     || true
     mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql --user=root --password="$RET" mysql
+    db_stop
 
     # Upgrade mysql internal tables
     mysql_upgrade --user=root --password="$RET" --force

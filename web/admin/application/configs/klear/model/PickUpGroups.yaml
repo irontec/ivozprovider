@@ -7,7 +7,7 @@ production:
       trim: both
       required: true
       default: true
-    companyId:
+    company:
       title: ngettext('Company', 'Companies', 0)
       type: select
       required: true

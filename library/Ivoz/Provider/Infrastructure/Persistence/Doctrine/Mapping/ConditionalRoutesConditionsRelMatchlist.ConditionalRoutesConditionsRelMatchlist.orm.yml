@@ -11,6 +11,3 @@ Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRo
       id: true
       generator:
         strategy: IDENTITY
-  lifecycleCallbacks:
-    postLoad:
-      - initChangelog

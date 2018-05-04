@@ -35,36 +35,12 @@ Feature: Create routing pattern groups
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-      And the JSON should be equal to:
+      And the JSON should be like:
     """
       {
           "name": "Usansolocity",
           "description": "Usansolocity",
           "id": 3,
-          "brand": {
-              "name": "Irontec_e2e",
-              "domainUsers": "sip.irontec.com",
-              "recordingsLimitMB": null,
-              "recordingsLimitEmail": null,
-              "maxCalls": 0,
-              "id": 2,
-              "logo": {
-                  "fileSize": null,
-                  "mimeType": null,
-                  "baseName": null
-              },
-              "invoice": {
-                  "nif": "",
-                  "postalAddress": "",
-                  "postalCode": "",
-                  "town": "",
-                  "province": "",
-                  "country": "",
-                  "registryData": ""
-              },
-              "domain": 4,
-              "language": 1,
-              "defaultTimezone": 1
-          }
+          "brand": "~"
       }
     """

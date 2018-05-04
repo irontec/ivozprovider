@@ -1,7 +1,7 @@
 production:
   entity: Ivoz\Provider\Domain\Model\Ivr\Ivr
   fields:
-    companyId:
+    company:
       title: ngettext('Company', 'Companies', 1)
       type: select
       required: true
@@ -21,7 +21,7 @@ production:
       trim: both
       required: true
       default: true
-    welcomeLocutionId:
+    welcomeLocution:
       title: _('Welcome locution')
       type: select
       source:
@@ -36,7 +36,7 @@ production:
           order:
             Locution.name: asc
         'null': _("Unassigned")
-    noInputLocutionId:
+    noInputLocution:
       title: _('No input locution')
       type: select
       source:
@@ -51,7 +51,7 @@ production:
           order:
             Locution.name: asc
         'null': _("Unassigned")
-    errorLocutionId:
+    errorLocution:
       title: ngettext('Locution', 'Locutions', 1)
       type: select
       source:
@@ -66,7 +66,7 @@ production:
           order:
             Locution.name: asc
         'null': _("Unassigned")
-    successLocutionId:
+    successLocution:
       title: _('Success locution')
       type: select
       source:
@@ -149,29 +149,29 @@ production:
             title: _('Unassigned')
             visualFilter:
               hide: &noInputFields
-                - noInputNumberCountryId
+                - noInputNumberCountry
                 - noInputNumberValue
-                - noInputExtensionId
-                - noInputVoiceMailUserId
+                - noInputExtension
+                - noInputVoiceMailUser
           'number':
             title: _('Number')
             visualFilter:
-              show: [ noInputNumberValue, noInputNumberCountryId ]
+              show: [ noInputNumberValue, noInputNumberCountry ]
               hide:
                 <<: *noInputFields
           'extension':
             title: ngettext('Extension', 'Extensions', 1)
             visualFilter:
-              show: [ noInputExtensionId ]
+              show: [ noInputExtension ]
               hide:
                 <<: *noInputFields
           'voicemail':
             title: ngettext('Voicemail', 'Voicemails', 1)
             visualFilter:
-              show: [ noInputVoiceMailUserId ]
+              show: [ noInputVoiceMailUser ]
               hide:
                 <<: *noInputFields
-    noInputNumberCountryId:
+    noInputNumberCountry:
       title: _('Country')
       type: select
       required: true
@@ -191,7 +191,7 @@ production:
       type: text
       trim: both
       required: true
-    noInputExtensionId:
+    noInputExtension:
       title: ngettext('Extension', 'Extensions', 1)
       type: select
       required: true
@@ -207,7 +207,7 @@ production:
           order:
             Extension.number: asc
         'null': _("Unassigned")
-    noInputVoiceMailUserId:
+    noInputVoiceMailUser:
       title: ngettext('Voicemail', 'Voicemails', 1)
       type: select
       required: true
@@ -234,29 +234,29 @@ production:
             title: _('Unassigned')
             visualFilter:
               hide: &errorFields
-                - errorNumberCountryId
+                - errorNumberCountry
                 - errorNumberValue
-                - errorExtensionId
-                - errorVoiceMailUserId
+                - errorExtension
+                - errorVoiceMailUser
           'number':
             title: _('Number')
             visualFilter:
-              show: [ errorNumberValue, errorNumberCountryId ]
+              show: [ errorNumberValue, errorNumberCountry ]
               hide:
                 <<: *errorFields
           'extension':
             title: ngettext('Extension', 'Extensions', 1)
             visualFilter:
-              show: [ errorExtensionId ]
+              show: [ errorExtension ]
               hide:
                 <<: *errorFields
           'voicemail':
             title: ngettext('Voicemail', 'Voicemails', 1)
             visualFilter:
-              show: [ errorVoiceMailUserId ]
+              show: [ errorVoiceMailUser ]
               hide:
                 <<: *errorFields
-    errorNumberCountryId:
+    errorNumberCountry:
       title: _('Country')
       type: select
       required: true
@@ -276,7 +276,7 @@ production:
       type: text
       trim: both
       required: true
-    errorExtensionId:
+    errorExtension:
       title: ngettext('Extension', 'Extensions', 1)
       type: select
       required: true
@@ -292,7 +292,7 @@ production:
           order:
             Extension.number: asc
         'null': _("Unassigned")
-    errorVoiceMailUserId:
+    errorVoiceMailUser:
       title: ngettext('Voicemail', 'Voicemails', 1)
       type: select
       required: true

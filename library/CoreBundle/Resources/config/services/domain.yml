@@ -34,5 +34,5 @@ services:
       $trunksCdrRepository: '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Kam\\Domain\\Model\\TrunksCdr\\TrunksCdr")'
       $tpCdrRepository: '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Cgr\\Domain\\Model\\TpCdr\\TpCdr")'
       $ratingPlanRepository: '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Cgr\\Domain\\Model\\RatingPlan\\RatingPlan")'
-      $destinationRepository: '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Cgr\\Domain\\Model\\Destination\\Destination")'
+      $destinationRepository: '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Cgr\\Domain\\Model\\TpDestination\\TpDestination")'
       $vendorDir: '%kernel.root_dir%/../vendor/'

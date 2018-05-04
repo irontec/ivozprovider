@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
 #include TpRatingPlansList.yaml
 
 production:
@@ -14,6 +15,9 @@ production:
       <<: *RatingPlans
       class: ui-silk-page-find
       title: _("List of %s %2s", ngettext('Rating plan', 'Rating plans', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/brand/billing/pricing_plans.html"
       forcedValues:
         <<: *forcedBrand
       fields: &ratingPlans_fieldsLink
@@ -35,6 +39,7 @@ production:
           ratingPlansNew_screen: true
         dialogs:
           ratingPlansDel_dialog: true
+          simulateBrandPlansCall_dialog: true
 
     ratingPlansNew_screen: &ratingPlansNew_screenLink
       <<: *RatingPlans
@@ -90,6 +95,19 @@ production:
       message: _("%s successfully deleted.", ngettext('Rating plan', 'Rating plans', 1))
       multiItem: 1
       labelOnList: 1
+
+    simulateBrandPlansCall_dialog: &simulateBrandPlansCall_dialogLink
+      <<: *DestinationRates
+      module: default
+      title: _("Simulate a call")
+      label: false
+      labelOnEdit: false
+      labelOnList: true
+      labelOption: false
+      labelOnEntityPostSave: false
+      controller: klear-custom-tarificator
+      action: test-brand-plans
+      class:  ui-silk-telephone
 
 #   tpRatingPlans dialogs:
     <<: *tpRatingPlans_dialogsLink

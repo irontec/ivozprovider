@@ -15,9 +15,6 @@ production:
       class: ui-silk-bell-link
       title: _("List of %s %2s", ngettext('Media relay', 'Media relays', 0), "[format| (%parent%)]")
       fields: &kamRtpproxy_fieldsLink
-        blacklist:
-          setid: true
-          flags: true
         options:
           title: _("Options")
           screens:
@@ -36,10 +33,13 @@ production:
       <<: *Rtpproxy
       controller: new
       class: ui-silk-add
-      fields:
-        blacklist:
-          flags: true
-          setid: true
+      fixedPositions: &kamRtpproxy_fixedPosition
+        group0:
+          colsPerRow: 12
+          fields:
+            url: 9
+            weight: 3
+            description: 8
       label: true
       multiInstance: true
       title: _("Add %s", ngettext('Media relay', 'Media relays', 1), "[format| (%parent%)]")
@@ -49,10 +49,8 @@ production:
       <<: *Rtpproxy
       controller: edit
       class: ui-silk-pencil
-      fields:
-        blacklist:
-          flags: true
-          setid: true
+      fixedPositions:
+        <<: *kamRtpproxy_fixedPosition
       label: false
       labelOnPostAction: _("Edit %s %2s", ngettext('Media relay', 'Media relays', 1), "[format| (%item%)]")
       title: _("Edit %s %2s", ngettext('Media relay', 'Media relays', 1), "[format| (%item%)]")

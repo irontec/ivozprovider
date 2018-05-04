@@ -1,0 +1,89 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
+
+production:
+  main:
+    module: klearMatrix
+    defaultScreen: kamTrunksCdrsList_screen
+
+  screens: &kamTrunksCdrs_screensLink
+    kamTrunksCdrsList_screen: &kamTrunksCdrsList_screenLink
+      controller: list
+      csv: true
+      order:
+        field:
+          - TrunksCdr.startTime
+          - TrunksCdr.brand
+          - TrunksCdr.company
+        type: desc
+      rawCondition: "TrunksCdr.direction='outbound'"
+      pagination:
+        items: 25
+      <<: *KamTrunksCdrs
+      class: ui-silk-application-view-list
+      title: _("List of %s %2s", ngettext('Call registry', 'Call registries', 1), "[format| (%parent%)]")
+      forcedValues:
+        <<: *forcedBrand
+        <<: *forcedCompany
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/brand/billing/billable_calls.html"
+      fields: &kamTrunksCdrs_fieldsLink
+        options:
+          title: _("Options")
+          screens:
+            kamTrunksCdrsView_screen: true
+          default: kamTrunksCdrsView_screen
+        blacklist:
+          brand: true
+          company: true
+          peeringContract: true
+          invoice: true
+        order:
+          startTime: true
+          callee: true
+          duration: true
+          price: true
+    kamTrunksCdrsView_screen: &kamTrunksCdrsView_screenLink
+      <<: *KamTrunksCdrs
+      controller: edit
+      class: ui-silk-eye
+      label: false
+      disableSave: true
+      labelOnPostAction: _("View %s %2s", ngettext('Call registry', 'Call registries', 1), "[format| (%item%)]")
+      title: _("View %s %2s", ngettext('Call registry', 'Call registries', 1), "[format| (%item%)]")
+      fields:
+        blacklist:
+          brand: true
+          company: true
+          peeringContract: true
+          invoice: true
+        order:
+          startTime: true
+          callee: true
+          duration: true
+          price: true
+      fixedPositions:
+        group0:
+          label: _("Basic Information")
+          colsPerRow: 12
+          fields:
+            callee: 6
+            startTime: 6
+            duration: 6
+        group1:
+          label: _("Billing Information")
+          colsPerRow: 12
+          fields:
+            price: 6
+            direction: 6
+
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

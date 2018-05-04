@@ -79,10 +79,6 @@ mappers:
         modelFile: DestinationRates,
         entity: 'Ivoz\\Cgr\\Domain\\Model\\DestinationRate\\DestinationRate'
     }
-  - &Destinations {
-        modelFile: Destinations,
-        entity: 'Ivoz\\Cgr\\Domain\\Model\\Destination\\Destination'
-    }
   - &Domains {
         modelFile: Domains,
         entity: 'Ivoz\\Provider\\Domain\\Model\\Domain\\Domain'
@@ -223,10 +219,6 @@ mappers:
         modelFile: Queues,
         entity: 'Ivoz\\Provider\\Domain\\Model\\Queue\\Queue'
     }
-  - &Rates {
-        modelFile: Rates,
-        entity: 'Ivoz\\Cgr\\Domain\\Model\\Rate\\Rate'
-    }
   - &RatingPlans {
         modelFile: RatingPlans,
         entity: 'Ivoz\\Cgr\\Domain\\Model\\RatingPlan\\RatingPlan'
@@ -311,17 +303,25 @@ mappers:
         modelFile: Users,
         entity: 'Ivoz\\Provider\\Domain\\Model\\User\\User'
     }
+  - &WholesaleClients {
+        modelFile: WholesaleClients,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\Company\\Company'
+    }
   - &KamTrunksCdrs {
         modelFile: KamTrunksCdrs,
         entity: 'Ivoz\\Kam\\Domain\\Model\\TrunksCdr\\TrunksCdr'
     }
-  - &PikeTrusted {
-        modelFile: KamPikeTrusted,
-        entity: 'Kam\\Model\\PikeTrusted\\PikeTrusted'
+  - &Trusted {
+        modelFile: KamTrusted,
+        entity: 'Kam\\Model\\Trusted\\Trusted'
     }
   - &Rtpproxy {
         modelFile: KamRtpproxy,
         entity: 'Kam\\Model\\Rtpproxy\\Rtpproxy'
+    }
+  - &Rtpengine {
+        modelFile: KamRtpengine,
+        entity: 'Kam\\Model\\Rtpengine\\Rtpengine'
     }
   - &KamTrunksAcc {
         modelFile: KamTrunksAcc,

@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
 
 # ************************ ExternalCallFiltersList.yaml ************************
 production:
@@ -14,6 +15,9 @@ production:
       <<: *ExternalCallFiltersRetail
       class: ui-silk-arrow-branch
       title: _("List of %s %2s", ngettext('External call filter', 'External call filters', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/retail/filters.html"
       forcedValues:
         <<: *forcedCompany
       fields:
@@ -25,17 +29,17 @@ production:
             externalCallFiltersRetailDel_dialog: true
           default: externalCallFiltersRetailEdit_screen
         blacklist: &externalCallFiltersRetail_blacklistLink
-          companyId: false
-          welcomeLocutionId: true
-          holidayLocutionId: true
-          outOfScheduleLocutionId: true
+          company: false
+          welcomeLocution: true
+          holidayLocution: true
+          outOfScheduleLocution: true
           holidayTargetType: false
           holidayNumberValue: true
-          holidayExtensionId: true
-          holidayVoiceMailUserId: true
+          holidayExtension: true
+          holidayVoiceMailUser: true
           outOfScheduleTargetType: false
-          outOfScheduleExtensionId: true
-          outOfScheduleVoiceMailUserId: true
+          outOfScheduleExtension: true
+          outOfScheduleVoiceMailUser: true
           blackListRegExp: true
           whiteListRegExp: true
           holidayTargetType: true
@@ -47,7 +51,7 @@ production:
           ExternalCallFilterWhiteLists: true
           ExternalCallFilterBlackLists: true
         order: &externalCallFiltersRetail_orderLink
-          companyId: true
+          company: true
           name: true
       options:
         title: _("Options")

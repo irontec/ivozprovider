@@ -6,17 +6,15 @@ use Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface;
 
 class UpdateRatingProfileTag implements TpRatingProfileLifecycleEventHandlerInterface
 {
-    public function execute(TpRatingProfileInterface $entity)
+    public function execute(TpRatingProfileInterface $tpRatingProfile)
     {
-        $compay = $entity->getCompany();
+        $compay = $tpRatingProfile->getCompany();
         $brand = $compay->getBrand();
-        $ratingPlan = $entity->getRatingPlan();
+        $ratingPlan = $tpRatingProfile->getRatingPlan();
 
-        $entity
+        $tpRatingProfile
             ->setTenant(sprintf("b%d", $brand->getId()))
             ->setSubject(sprintf("c%d", $compay->getId()))
             ->setRatingPlanTag($ratingPlan->getTag());
-
     }
-
 }

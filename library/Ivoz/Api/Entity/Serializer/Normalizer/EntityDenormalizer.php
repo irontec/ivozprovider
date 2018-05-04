@@ -12,7 +12,6 @@ use Psr\Log\LoggerInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use ApiPlatform\Core\Metadata\Property\Factory\PropertyMetadataFactoryInterface;
 
-
 /**
  * Based on ApiPlatform\Core\JsonLd\Serializer\ItemNormalizer
  */
@@ -44,6 +43,11 @@ class EntityDenormalizer implements DenormalizerInterface
     private $logger;
 
     /**
+     * @var DateTimeNormalizer
+     */
+    private $dateTimeNormalizer;
+
+    /**
      * EntityDenormalizer constructor.
      * @param CreateEntityFromDTO $createEntityFromDTO
      * @param UpdateEntityFromDTO $updateEntityFromDTO
@@ -56,13 +60,15 @@ class EntityDenormalizer implements DenormalizerInterface
         UpdateEntityFromDTO $updateEntityFromDTO,
         DtoAssembler $dtoAssembler,
         PropertyMetadataFactoryInterface $propertyMetadataFactory,
-        LoggerInterface $logger
+        LoggerInterface $logger,
+        DateTimeNormalizer $dateTimeNormalizer
     ) {
         $this->createEntityFromDTO = $createEntityFromDTO;
         $this->updateEntityFromDTO = $updateEntityFromDTO;
         $this->dtoAssembler = $dtoAssembler;
         $this->propertyMetadataFactory = $propertyMetadataFactory;
         $this->logger = $logger;
+        $this->dateTimeNormalizer = $dateTimeNormalizer;
     }
 
     /**
@@ -80,7 +86,7 @@ class EntityDenormalizer implements DenormalizerInterface
      */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        $data = $this->denormalizeNativeClasses($data, $class);
+        $data = $this->denormalizeDateTimes($data, $class);
 
         $context['operation_type'] = $context['operation_normalization_context'] ?? DataTransferObjectInterface::CONTEXT_SIMPLE;
         $entity = array_key_exists('object_to_populate', $context)
@@ -99,36 +105,19 @@ class EntityDenormalizer implements DenormalizerInterface
      * @param $data
      * @param $class
      */
-    protected function denormalizeNativeClasses($data, $class)
+    protected function denormalizeDateTimes($data, $class)
     {
         $response = [];
         foreach ($data as $fieldName => $value) {
-            $targetClass = $this->getPropertyMappedClass($class, $fieldName);
 
-            if ($targetClass === 'DateTime') {
-                $response[$fieldName] = new \DateTime(
-                    $value,
-                    new \DateTimeZone('UTC')
-                );
-                continue;
-            }
-
-            $response[$fieldName] = $value;
+            $response[$fieldName] = $this->dateTimeNormalizer->denormalize(
+                $class,
+                $fieldName,
+                $value
+            );
         }
 
         return $response;
-    }
-
-    protected function getPropertyMappedClass($class, $fieldName)
-    {
-        $propertyMetadata = $this->propertyMetadataFactory->create($class, $fieldName);
-        $fieldType = $propertyMetadata->getType();
-        if (is_null($fieldType)) {
-
-            return;
-        }
-
-        return $fieldType->getClassName();
     }
 
     private function denormalizeEntity(array $input, string $class, EntityInterface $entity = null, string $normalizationContext)

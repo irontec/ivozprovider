@@ -21,7 +21,7 @@ production:
           authNeeded: true
           password: true
           areaCode: true
-          countryId: true
+          country: true
           allow: true
           disallow: true
           directMediaMethod: true
@@ -29,16 +29,16 @@ production:
           fromDomain: true
           calleridUpdateHeader: true
           directConnectivity: true
-          transformationRuleSetId: true
+          transformationRuleSet: true
           ip: true
           port: true
-          languageId: true
+          language: true
           status: true
         order:
           name: true
-          domainId: true
+          domain: true
           description: true
-          outgoingDdiId: true
+          outgoingDdi: true
           statusIcon: true
 staging:
   _extends: production

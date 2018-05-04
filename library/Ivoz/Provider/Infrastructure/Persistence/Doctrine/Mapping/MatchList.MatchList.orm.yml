@@ -14,6 +14,3 @@ Ivoz\Provider\Domain\Model\MatchList\MatchList:
     patterns:
       targetEntity: Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPatternInterface
       mappedBy: matchList
-  lifecycleCallbacks:
-      postLoad:
-        - initChangelog

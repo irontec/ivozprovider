@@ -19,6 +19,12 @@ abstract class DestinationRateAbstract
     protected $tag;
 
     /**
+     * comment: enum:waiting|inProgress|imported|error
+     * @var string
+     */
+    protected $status;
+
+    /**
      * @var Name
      */
     protected $name;
@@ -27,6 +33,11 @@ abstract class DestinationRateAbstract
      * @var Description
      */
     protected $description;
+
+    /**
+     * @var File
+     */
+    protected $file;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
@@ -39,10 +50,14 @@ abstract class DestinationRateAbstract
     /**
      * Constructor
      */
-    protected function __construct(Name $name, Description $description)
-    {
+    protected function __construct(
+        Name $name,
+        Description $description,
+        File $file
+    ) {
         $this->setName($name);
         $this->setDescription($description);
+        $this->setFile($file);
     }
 
     abstract public function getId();
@@ -118,13 +133,22 @@ abstract class DestinationRateAbstract
             $dto->getDescriptionEs()
         );
 
+        $file = new File(
+            $dto->getFileFileSize(),
+            $dto->getFileMimeType(),
+            $dto->getFileBaseName(),
+            $dto->getFileImporterArguments()
+        );
+
         $self = new static(
             $name,
-            $description
+            $description,
+            $file
         );
 
         $self
             ->setTag($dto->getTag())
+            ->setStatus($dto->getStatus())
             ->setBrand($dto->getBrand())
         ;
 
@@ -155,10 +179,19 @@ abstract class DestinationRateAbstract
             $dto->getDescriptionEs()
         );
 
+        $file = new File(
+            $dto->getFileFileSize(),
+            $dto->getFileMimeType(),
+            $dto->getFileBaseName(),
+            $dto->getFileImporterArguments()
+        );
+
         $this
             ->setTag($dto->getTag())
+            ->setStatus($dto->getStatus())
             ->setName($name)
             ->setDescription($description)
+            ->setFile($file)
             ->setBrand($dto->getBrand());
 
 
@@ -175,10 +208,15 @@ abstract class DestinationRateAbstract
     {
         return self::createDto()
             ->setTag(self::getTag())
+            ->setStatus(self::getStatus())
             ->setNameEn(self::getName()->getEn())
             ->setNameEs(self::getName()->getEs())
             ->setDescriptionEn(self::getDescription()->getEn())
             ->setDescriptionEs(self::getDescription()->getEs())
+            ->setFileFileSize(self::getFile()->getFileSize())
+            ->setFileMimeType(self::getFile()->getMimeType())
+            ->setFileBaseName(self::getFile()->getBaseName())
+            ->setFileImporterArguments(self::getFile()->getImporterArguments())
             ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth));
     }
 
@@ -189,10 +227,15 @@ abstract class DestinationRateAbstract
     {
         return [
             'tag' => self::getTag(),
+            'status' => self::getStatus(),
             'nameEn' => self::getName()->getEn(),
             'nameEs' => self::getName()->getEs(),
             'descriptionEn' => self::getDescription()->getEn(),
             'descriptionEs' => self::getDescription()->getEs(),
+            'fileFileSize' => self::getFile()->getFileSize(),
+            'fileMimeType' => self::getFile()->getMimeType(),
+            'fileBaseName' => self::getFile()->getBaseName(),
+            'fileImporterArguments' => self::getFile()->getImporterArguments(),
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null
         ];
     }
@@ -226,6 +269,40 @@ abstract class DestinationRateAbstract
     public function getTag()
     {
         return $this->tag;
+    }
+
+    /**
+     * Set status
+     *
+     * @param string $status
+     *
+     * @return self
+     */
+    public function setStatus($status = null)
+    {
+        if (!is_null($status)) {
+            Assertion::maxLength($status, 20, 'status value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        Assertion::choice($status, array (
+          0 => 'waiting',
+          1 => 'inProgress',
+          2 => 'imported',
+          3 => 'error',
+        ), 'statusvalue "%s" is not an element of the valid values: %s');
+        }
+
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 
     /**
@@ -298,6 +375,30 @@ abstract class DestinationRateAbstract
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set file
+     *
+     * @param \Ivoz\Cgr\Domain\Model\DestinationRate\File $file
+     *
+     * @return self
+     */
+    public function setFile(File $file)
+    {
+        $this->file = $file;
+
+        return $this;
+    }
+
+    /**
+     * Get file
+     *
+     * @return \Ivoz\Cgr\Domain\Model\DestinationRate\File
+     */
+    public function getFile()
+    {
+        return $this->file;
     }
 
     // @codeCoverageIgnoreEnd

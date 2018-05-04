@@ -23,6 +23,11 @@ abstract class MediaRelaySetDtoAbstract implements DataTransferObjectInterface
     private $description;
 
     /**
+     * @var string
+     */
+    private $type = 'rtpproxy';
+
+    /**
      * @var integer
      */
     private $id;
@@ -47,6 +52,7 @@ abstract class MediaRelaySetDtoAbstract implements DataTransferObjectInterface
         return [
             'name' => 'name',
             'description' => 'description',
+            'type' => 'type',
             'id' => 'id'
         ];
     }
@@ -59,6 +65,7 @@ abstract class MediaRelaySetDtoAbstract implements DataTransferObjectInterface
         return [
             'name' => $this->getName(),
             'description' => $this->getDescription(),
+            'type' => $this->getType(),
             'id' => $this->getId()
         ];
     }
@@ -117,6 +124,26 @@ abstract class MediaRelaySetDtoAbstract implements DataTransferObjectInterface
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * @param string $type
+     *
+     * @return static
+     */
+    public function setType($type = null)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 
     /**
