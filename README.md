@@ -34,20 +34,20 @@ From its beginning, IvozProvider was designed to be installed distributed betwee
    - Provides database and shared storage for the rest of machines
    - Powered by [MySQL 5.5 Server](http://www.mysql.com/)
 
-And [many others](https://irontec.github.io/ivozprovider/en/intro/what_is_inside.html) open source projects.
+And [many others](https://irontec.github.io/ivozprovider/en/oasis/intro/what_is_inside.html) open source projects.
 
 Bear in mind that, while at least one of each profile must be installed for the platform to work, there can be multiple machines of each profile and all of them can also be installed in the same machine (a.k.a. standalone installation).
 
 ![scaling](portals/public/images/horizontalscaling.png)
 
 #### Cloud Service
-IvozProvider is designed to work directly from the Internet. Although it can be used in local environments, being exposed to the public network [has it's advantages](https://irontec.github.io/ivozprovider/en/intro/what_is_ivozprovider.html#exposed-to-the-public-network)
+IvozProvider is designed to work directly from the Internet. Although it can be used in local environments, being exposed to the public network [has it's advantages](https://irontec.github.io/ivozprovider/en/oasis/intro/what_is_ivozprovider.html#exposed-to-the-public-network)
 
 ## Installation
 
-There are [several ways](https://irontec.github.io/ivozprovider/en/installation) to install IvozProvider.
+There are [several ways](https://irontec.github.io/ivozprovider/en/oasis/installation) to install IvozProvider.
 
-If you want to test an [standalone](https://irontec.github.io/ivozprovider/en/installation/install_types.html#instalacion-standalone) installation, we recommend using one of auto-install CDs based on Debian Jessie 8.0 amd64.
+If you want to test an [standalone](https://irontec.github.io/ivozprovider/en/oasis/installation/install_types.html#instalacion-standalone) installation, we recommend using one of auto-install CDs based on Debian Jessie 8.0 amd64.
 
 
 | Version  | 64 bits  | 32 bits |
