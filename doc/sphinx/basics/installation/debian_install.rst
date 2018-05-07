@@ -4,10 +4,10 @@ Debian packages install
 
 IvozProvider is designed to be installed and updated using Debian packages.
 More exactly, the current release is ready to be installed on
-`Debian Jessie 8 <https://www.debian.org/releases/jessie>`_.
+`Debian Stretch 9 <https://www.debian.org/releases/stretch>`_.
 
 It's recommended to use one of the `official installation guides
-<https://www.debian.org/releases/jessie/installmanual>`_ to install the minimum
+<https://www.debian.org/releases/stretch/installmanual>`_ to install the minimum
 base system. The rest of required  dependencies will be installed automatically
 with IvozProvider meta packages.
 
@@ -25,8 +25,8 @@ release (called oasis) and it's frontend Klear release (called chloe).
 .. code-block:: console
 
     cd /etc/apt/sources.list.d
-    echo deb http://packages.irontec.com/debian oasis main extra > ivozprovider.list
-    echo deb http://packages.irontec.com/debian chloe main > klear.list
+    echo deb http://packages.irontec.com/debian artemis main extra > ivozprovider.list
+    echo deb http://packages.irontec.com/debian tayler main > klear.list
 
 Optionally, we can add the repository key to check signed packages:
 
