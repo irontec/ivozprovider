@@ -230,7 +230,7 @@ class DoctrineEventSubscriber implements EventSubscriber
     private function runEntityServices($eventName, LifecycleEventArgs $args, bool $isNew)
     {
         $entity = $args->getObject();
-        $serviceName = LifecycleServiceHelper::getServiceName($entity, $eventName);
+        $serviceName = LifecycleServiceHelper::getServiceNameByEntity($entity, $eventName);
 
         if (!$this->serviceContainer->has($serviceName)) {
             return;
@@ -245,7 +245,7 @@ class DoctrineEventSubscriber implements EventSubscriber
             $service->execute($entity, $isNew);
         } catch (\Exception $exception) {
 
-            $errorHandlerName = LifecycleServiceHelper::getServiceName($entity, 'error_handler');
+            $errorHandlerName = LifecycleServiceHelper::getServiceNameByEntity($entity, 'error_handler');
             if (!$this->serviceContainer->has($errorHandlerName)) {
                 throw $exception;
             }

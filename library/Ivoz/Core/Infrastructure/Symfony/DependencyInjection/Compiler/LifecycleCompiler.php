@@ -6,8 +6,10 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
 use Ivoz\Core\Domain\Service\PersistErrorHandlerServiceCollection;
+use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use Ivoz\Core\Domain\Service\LifecycleEventHandlerInterface;
 
-trait LifecycleCompilerTrait
+class LifecycleCompiler implements CompilerPassInterface
 {
     /**
      * @var ContainerBuilder
@@ -26,28 +28,50 @@ trait LifecycleCompilerTrait
             $this->getErrorHandlerServices(),
             PersistErrorHandlerServiceCollection::class
         );
-
-        $this->setRepositoryAliases(
-            $this->container->findTaggedServiceIds('domain.repository')
-        );
     }
 
     protected function buildService(array $serviceCollection, $collectionClassName = null)
     {
         foreach ($serviceCollection as $tag => $services) {
 
+            $event = substr(
+                $tag,
+                strrpos($tag, '.') + 1
+            );
             $tagCollectionClassName = !empty($collectionClassName)
                 ? $collectionClassName
                 : $this->getLifeCycleCollectionClass($tag);
 
-            $collection = $this->container->autowire($tag, $tagCollectionClassName);
-            $collection->setPublic(true);
+            $collection = $this->container->getDefinition($tagCollectionClassName);
+
+            $eventCollection = $this->container->register($tag, $tagCollectionClassName);
+            $this->container->setAlias(
+                $tagCollectionClassName . '.' . $event,
+                $tag
+            );
+            $eventCollection->setPublic(true);
 
             foreach ($services as $key => $class) {
+
+                $tagProperties = is_subclass_of($class, LifecycleEventHandlerInterface::class)
+                    ? $class::getSubscribedEvents()
+                    : [];
+
+                if (!$collection->hasTag($class)) {
+                    $collection->addTag(
+                        $class,
+                        $tagProperties
+                    );
+                }
+
+                $eventCollection->addTag(
+                    $class,
+                    $tagProperties
+                );
                 $services[$key] = new Reference($class);
             }
 
-            $collection->addMethodCall('setServices', [$services]);
+            $eventCollection->addMethodCall('setServices', [$services]);
         }
     }
 
@@ -60,27 +84,6 @@ trait LifecycleCompilerTrait
         $definition = $this->container->findDefinition($collectionAlias);
 
         return $definition->getClass();
-    }
-
-    /**
-     * @param Definition[] $services
-     */
-    protected function setRepositoryAliases(array $services)
-    {
-
-        foreach ($services as $fqdn => $value) {
-
-            $repositoryInterface = preg_replace(
-                '/(.*)Infrastructure\\\\Persistence\\\\Doctrine\\\\(.*)DoctrineRepository/',
-                '${1}Domain\Model\\\\${2}\\\\${2}Repository',
-                $fqdn
-            );
-
-            $this->container->setAlias(
-                $repositoryInterface,
-                $fqdn
-            );
-        }
     }
 
     protected function getLifecycleServices()
