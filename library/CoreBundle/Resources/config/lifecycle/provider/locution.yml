@@ -18,5 +18,3 @@ services:
   Ivoz\Provider\Domain\Service\Locution\SendRecodingOrder:
     tags:
       - { name: provider.lifecycle.locution.on_commit, priority: 10 }
-    arguments:
-      $recoder: '@Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Recoder'

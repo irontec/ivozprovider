@@ -17,27 +17,14 @@ services:
   Ivoz\Provider\Domain\Service\Domain\UpdateByBrand:
     tags:
       - { name: provider.lifecycle.brand.post_persist, priority: 10 }
-    arguments:
-      $entityPersister:
-        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
 
   Ivoz\Provider\Domain\Service\RoutingPattern\UpdateByBrand:
     tags:
       - { name: provider.lifecycle.brand.post_persist, priority: 20 }
-    arguments:
-      $countryRepository:
-        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\Country\\Country")'
-      $routingPatternGroupByRoutingPatternAndCountry:
-        '@Ivoz\Provider\Domain\Service\RoutingPatternGroup\UpdateByRoutingPatternAndCountry'
 
   Ivoz\Provider\Domain\Service\Service\UpdateByBrand:
     tags:
       - { name: provider.lifecycle.brand.post_persist, priority: 30 }
-    arguments:
-      $entityPersister:
-        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
-      $serviceRepository:
-        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\Service\\Service")'
 
   ##################################
   ## post_remove
