@@ -6,11 +6,11 @@ services:
   ##################################
   ## Service collection
   ##################################
-  Ivoz\Cgr\Domain\Service\DestinationRate\DestinationRateLifecycleServiceCollection:
-    public: true
-
-  cgr.lifecycle.destination_rate.service_collection:
-    '@Ivoz\Cgr\Domain\Service\DestinationRate\DestinationRateLifecycleServiceCollection'
+#  Ivoz\Cgr\Domain\Service\DestinationRate\DestinationRateLifecycleServiceCollection:
+#    public: true
+#
+#  cgr.lifecycle.destination_rate.service_collection:
+#    '@Ivoz\Cgr\Domain\Service\DestinationRate\DestinationRateLifecycleServiceCollection'
 
 #  ##################################
 #  ## post_persist

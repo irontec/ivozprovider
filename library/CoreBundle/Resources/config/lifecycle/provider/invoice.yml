@@ -6,11 +6,11 @@ services:
   ##################################
   ## Service collection
   ##################################
-  Ivoz\Provider\Domain\Service\Invoice\InvoiceLifecycleServiceCollection:
-    public: true
-
-  provider.lifecycle.invoice.service_collection:
-    '@Ivoz\Provider\Domain\Service\Invoice\InvoiceLifecycleServiceCollection'
+#  Ivoz\Provider\Domain\Service\Invoice\InvoiceLifecycleServiceCollection:
+#    public: true
+#
+#  provider.lifecycle.invoice.service_collection:
+#    '@Ivoz\Provider\Domain\Service\Invoice\InvoiceLifecycleServiceCollection'
 
 #  ##################################
 #  ## pre_persist

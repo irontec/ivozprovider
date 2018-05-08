@@ -6,11 +6,11 @@ services:
   ##################################
   ## Service collection
   ##################################
-  Ivoz\Provider\Domain\Service\Extension\ExtensionLifecycleServiceCollection:
-    public: true
-
-  provider.lifecycle.extension.service_collection:
-    '@Ivoz\Provider\Domain\Service\Extension\ExtensionLifecycleServiceCollection'
+#  Ivoz\Provider\Domain\Service\Extension\ExtensionLifecycleServiceCollection:
+#    public: true
+#
+#  provider.lifecycle.extension.service_collection:
+#    '@Ivoz\Provider\Domain\Service\Extension\ExtensionLifecycleServiceCollection'
 
 #  ##################################
 #  ## post_persist

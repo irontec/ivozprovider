@@ -6,11 +6,11 @@ services:
   ##################################
   ## Service collection
   ##################################
-  Ivoz\Provider\Domain\Service\PickUpRelUser\PickUpRelUserLifecycleServiceCollection:
-    public: true
-
-  provider.lifecycle.pick_up_rel_user.service_collection:
-    '@Ivoz\Provider\Domain\Service\PickUpRelUser\PickUpRelUserLifecycleServiceCollection'
+#  Ivoz\Provider\Domain\Service\PickUpRelUser\PickUpRelUserLifecycleServiceCollection:
+#    public: true
+#
+#  provider.lifecycle.pick_up_rel_user.service_collection:
+#    '@Ivoz\Provider\Domain\Service\PickUpRelUser\PickUpRelUserLifecycleServiceCollection'
 #
 #  ##################################
 #  ## post_persist & post_remove

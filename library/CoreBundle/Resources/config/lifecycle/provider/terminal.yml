@@ -6,11 +6,11 @@ services:
   ##################################
   ## Service collection
   ##################################
-  Ivoz\Provider\Domain\Service\Terminal\TerminalLifecycleServiceCollection:
-    public: true
-
-  provider.lifecycle.terminal.service_collection:
-    '@Ivoz\Provider\Domain\Service\Terminal\TerminalLifecycleServiceCollection'
+#  Ivoz\Provider\Domain\Service\Terminal\TerminalLifecycleServiceCollection:
+#    public: true
+#
+#  provider.lifecycle.terminal.service_collection:
+#    '@Ivoz\Provider\Domain\Service\Terminal\TerminalLifecycleServiceCollection'
 
 #  ##################################
 #  ## post_persist

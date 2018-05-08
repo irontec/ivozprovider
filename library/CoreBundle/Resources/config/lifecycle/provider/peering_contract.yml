@@ -6,11 +6,11 @@ services:
   ##################################
   ## Service collection
   ##################################
-  Ivoz\Provider\Domain\Service\PeeringContract\PeeringContractLifecycleServiceCollection:
-    public: true
-
-  provider.lifecycle.peering_contract.service_collection:
-    '@Ivoz\Provider\Domain\Service\PeeringContract\PeeringContractLifecycleServiceCollection'
+#  Ivoz\Provider\Domain\Service\PeeringContract\PeeringContractLifecycleServiceCollection:
+#    public: true
+#
+#  provider.lifecycle.peering_contract.service_collection:
+#    '@Ivoz\Provider\Domain\Service\PeeringContract\PeeringContractLifecycleServiceCollection'
 
 #  ##################################
 #  ## on_commit

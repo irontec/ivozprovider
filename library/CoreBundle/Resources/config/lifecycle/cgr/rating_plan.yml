@@ -6,11 +6,11 @@ services:
   ##################################
   ## Service collection
   ##################################
-  Ivoz\Cgr\Domain\Service\RatingPlan\RatingPlanLifecycleServiceCollection:
-    public: true
-
-  cgr.lifecycle.rating_plan.service_collection:
-    '@Ivoz\Cgr\Domain\Service\RatingPlan\RatingPlanLifecycleServiceCollection'
+#  Ivoz\Cgr\Domain\Service\RatingPlan\RatingPlanLifecycleServiceCollection:
+#    public: true
+#
+#  cgr.lifecycle.rating_plan.service_collection:
+#    '@Ivoz\Cgr\Domain\Service\RatingPlan\RatingPlanLifecycleServiceCollection'
 
 #  ##################################
 #  ## post_persist

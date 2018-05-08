@@ -6,12 +6,12 @@ services:
   ##################################
   ## Service collection
   ##################################
-  Ivoz\Provider\Domain\Service\RoutingPatternGroup\RoutingPatternGroupLifecycleServiceCollection:
-    public: true
-
-  provider.lifecycle.routing_pattern_group.service_collection:
-    '@Ivoz\Provider\Domain\Service\RoutingPatternGroup\RoutingPatternGroupLifecycleServiceCollection'
-
+#  Ivoz\Provider\Domain\Service\RoutingPatternGroup\RoutingPatternGroupLifecycleServiceCollection:
+#    public: true
+#
+#  provider.lifecycle.routing_pattern_group.service_collection:
+#    '@Ivoz\Provider\Domain\Service\RoutingPatternGroup\RoutingPatternGroupLifecycleServiceCollection'
+#
 
 #  ##################################
 #  ## on_commit

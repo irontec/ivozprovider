@@ -6,11 +6,11 @@ services:
   ##################################
   ## Service collection
   ##################################
-  Ivoz\Provider\Domain\Service\BrandService\BrandServiceLifecycleServiceCollection:
-    public: true
-
-  provider.lifecycle.brand_service.service_collection:
-    '@Ivoz\Provider\Domain\Service\BrandService\BrandServiceLifecycleServiceCollection'
+#  Ivoz\Provider\Domain\Service\BrandService\BrandServiceLifecycleServiceCollection:
+#    public: true
+#
+#  provider.lifecycle.brand_service.service_collection:
+#    '@Ivoz\Provider\Domain\Service\BrandService\BrandServiceLifecycleServiceCollection'
 
 #  ##################################
 #  ## post_remove

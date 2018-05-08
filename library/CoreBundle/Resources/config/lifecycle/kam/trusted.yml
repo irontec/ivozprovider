@@ -6,10 +6,10 @@ services:
   ##################################
   ## Service collection
   ##################################
-  Ivoz\Kam\Domain\Service\Trusted\TrustedLifecycleServiceCollection:
-    public: true
-
-  kam.lifecycle.trusted.service_collection: '@Ivoz\Kam\Domain\Service\Trusted\TrustedLifecycleServiceCollection'
+#  Ivoz\Kam\Domain\Service\Trusted\TrustedLifecycleServiceCollection:
+#    public: true
+#
+#  kam.lifecycle.trusted.service_collection: '@Ivoz\Kam\Domain\Service\Trusted\TrustedLifecycleServiceCollection'
 
 #  ##################################
 #  ## pre_persist

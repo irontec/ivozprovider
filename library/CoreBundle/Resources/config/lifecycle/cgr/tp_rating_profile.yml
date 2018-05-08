@@ -6,11 +6,11 @@ services:
   ##################################
   ## Service collection
   ##################################
-  Ivoz\Cgr\Domain\Service\TpRatingProfile\TpRatingProfileLifecycleServiceCollection:
-    public: true
-
-  cgr.lifecycle.tp_rating_profile.service_collection:
-    '@Ivoz\Cgr\Domain\Service\TpRatingProfile\TpRatingProfileLifecycleServiceCollection'
+#  Ivoz\Cgr\Domain\Service\TpRatingProfile\TpRatingProfileLifecycleServiceCollection:
+#    public: true
+#
+#  cgr.lifecycle.tp_rating_profile.service_collection:
+#    '@Ivoz\Cgr\Domain\Service\TpRatingProfile\TpRatingProfileLifecycleServiceCollection'
 
 #  ##################################
 #  ## pre_persist

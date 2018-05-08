@@ -6,11 +6,11 @@ services:
   ##################################
   ## Service collection
   ##################################
-  Ivoz\Provider\Domain\Service\FaxesInOut\FaxesInOutLifecycleServiceCollection:
-    public: true
-
-  provider.lifecycle.faxes_in_out.service_collection:
-    '@Ivoz\Provider\Domain\Service\FaxesInOut\FaxesInOutLifecycleServiceCollection'
+#  Ivoz\Provider\Domain\Service\FaxesInOut\FaxesInOutLifecycleServiceCollection:
+#    public: true
+#
+#  provider.lifecycle.faxes_in_out.service_collection:
+#    '@Ivoz\Provider\Domain\Service\FaxesInOut\FaxesInOutLifecycleServiceCollection'
 
 #  ##################################
 #  ## post_persist

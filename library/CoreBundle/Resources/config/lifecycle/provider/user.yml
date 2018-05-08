@@ -6,11 +6,11 @@ services:
   ##################################
   ## Service collection
   ##################################
-  Ivoz\Provider\Domain\Service\User\UserLifecycleServiceCollection:
-    public: true
-
-  provider.lifecycle.user.service_collection:
-    '@Ivoz\Provider\Domain\Service\User\UserLifecycleServiceCollection'
+#  Ivoz\Provider\Domain\Service\User\UserLifecycleServiceCollection:
+#    public: true
+#
+#  provider.lifecycle.user.service_collection:
+#    '@Ivoz\Provider\Domain\Service\User\UserLifecycleServiceCollection'
 
   ##################################
   ## error_handler

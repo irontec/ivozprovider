@@ -6,12 +6,12 @@ services:
   ##################################
   ## Service collection
   ##################################
-  Ivoz\Provider\Domain\Service\CallForwardSetting\CallForwardSettingLifecycleServiceCollection:
-    public: true
-
-  provider.lifecycle.call_forward_setting.service_collection:
-    '@Ivoz\Provider\Domain\Service\CallForwardSetting\CallForwardSettingLifecycleServiceCollection'
+#  Ivoz\Provider\Domain\Service\CallForwardSetting\CallForwardSettingLifecycleServiceCollection:
+#    public: true
 #
+#  provider.lifecycle.call_forward_setting.service_collection:
+#    '@Ivoz\Provider\Domain\Service\CallForwardSetting\CallForwardSettingLifecycleServiceCollection'
+##
 #  ##################################
 #  ## pre_persist
 #  ##################################

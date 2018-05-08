@@ -6,11 +6,11 @@ services:
   ##################################
   ## Service collection
   ##################################
-  Ivoz\Cgr\Domain\Service\TpRatingPlan\TpRatingPlanLifecycleServiceCollection:
-    public: true
-
-  cgr.lifecycle.tp_rating_plan.service_collection:
-    '@Ivoz\Cgr\Domain\Service\TpRatingPlan\TpRatingPlanLifecycleServiceCollection'
+#  Ivoz\Cgr\Domain\Service\TpRatingPlan\TpRatingPlanLifecycleServiceCollection:
+#    public: true
+#
+#  cgr.lifecycle.tp_rating_plan.service_collection:
+#    '@Ivoz\Cgr\Domain\Service\TpRatingPlan\TpRatingPlanLifecycleServiceCollection'
 
 #  ##################################
 #  ## post_persist

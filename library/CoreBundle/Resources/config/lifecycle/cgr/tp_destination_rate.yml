@@ -6,11 +6,11 @@ services:
   ##################################
   ## Service collection
   ##################################
-  Ivoz\Cgr\Domain\Service\TpDestinationRate\TpDestinationRateLifecycleServiceCollection:
-    public: true
-
-  cgr.lifecycle.tp_destination_rate.service_collection:
-    '@Ivoz\Cgr\Domain\Service\TpDestinationRate\TpDestinationRateLifecycleServiceCollection'
+#  Ivoz\Cgr\Domain\Service\TpDestinationRate\TpDestinationRateLifecycleServiceCollection:
+#    public: true
+#
+#  cgr.lifecycle.tp_destination_rate.service_collection:
+#    '@Ivoz\Cgr\Domain\Service\TpDestinationRate\TpDestinationRateLifecycleServiceCollection'
 
   ##################################
   ## post_persist

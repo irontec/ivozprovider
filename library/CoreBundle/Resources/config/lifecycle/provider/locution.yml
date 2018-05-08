@@ -6,11 +6,11 @@ services:
   ##################################
   ## Service collection
   ##################################
-  Ivoz\Provider\Domain\Service\Locution\LocutionLifecycleServiceCollection:
-    public: true
-
-  provider.lifecycle.locution.service_collection:
-    '@Ivoz\Provider\Domain\Service\Locution\LocutionLifecycleServiceCollection'
+#  Ivoz\Provider\Domain\Service\Locution\LocutionLifecycleServiceCollection:
+#    public: true
+#
+#  provider.lifecycle.locution.service_collection:
+#    '@Ivoz\Provider\Domain\Service\Locution\LocutionLifecycleServiceCollection'
 #
 #  ##################################
 #  ## on_commit

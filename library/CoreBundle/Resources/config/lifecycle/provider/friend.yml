@@ -6,11 +6,11 @@ services:
   ##################################
   ## Service collection
   ##################################
-  Ivoz\Provider\Domain\Service\Friend\FriendLifecycleServiceCollection:
-    public: true
-
-  provider.lifecycle.friend.service_collection:
-    '@Ivoz\Provider\Domain\Service\Friend\FriendLifecycleServiceCollection'
+#  Ivoz\Provider\Domain\Service\Friend\FriendLifecycleServiceCollection:
+#    public: true
+#
+#  provider.lifecycle.friend.service_collection:
+#    '@Ivoz\Provider\Domain\Service\Friend\FriendLifecycleServiceCollection'
 #
 #  ##################################
 #  ## post_persist

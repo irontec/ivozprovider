@@ -6,12 +6,12 @@ services:
   ##################################
   ## Service collection
   ##################################
-  Ivoz\Kam\Domain\Service\TrunksUacreg\TrunksUacregLifecycleServiceCollection:
-    public: true
-
-  kam.lifecycle.trunks_uacreg.service_collection:
-    '@Ivoz\Kam\Domain\Service\TrunksUacreg\TrunksUacregLifecycleServiceCollection'
+#  Ivoz\Kam\Domain\Service\TrunksUacreg\TrunksUacregLifecycleServiceCollection:
+#    public: true
 #
+#  kam.lifecycle.trunks_uacreg.service_collection:
+#    '@Ivoz\Kam\Domain\Service\TrunksUacreg\TrunksUacregLifecycleServiceCollection'
+##
 #  ##################################
 #  ## on_commit
 #  ##################################

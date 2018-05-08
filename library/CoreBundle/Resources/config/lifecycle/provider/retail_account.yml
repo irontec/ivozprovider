@@ -6,11 +6,11 @@ services:
   ##################################
   ## Service collection
   ##################################
-  Ivoz\Provider\Domain\Service\RetailAccount\RetailAccountLifecycleServiceCollection:
-    public: true
-
-  provider.lifecycle.retail_account.service_collection:
-    '@Ivoz\Provider\Domain\Service\RetailAccount\RetailAccountLifecycleServiceCollection'
+#  Ivoz\Provider\Domain\Service\RetailAccount\RetailAccountLifecycleServiceCollection:
+#    public: true
+#
+#  provider.lifecycle.retail_account.service_collection:
+#    '@Ivoz\Provider\Domain\Service\RetailAccount\RetailAccountLifecycleServiceCollection'
 #
 #  ##################################
 #  ## post_persist

@@ -6,11 +6,11 @@ services:
   ##################################
   ## Service collection
   ##################################
-  Ivoz\Cgr\Domain\Service\TpRate\TpRateLifecycleServiceCollection:
-    public: true
-
-  cgr.lifecycle.tp_rate.service_collection:
-    '@Ivoz\Cgr\Domain\Service\TpRate\TpRateLifecycleServiceCollection'
+#  Ivoz\Cgr\Domain\Service\TpRate\TpRateLifecycleServiceCollection:
+#    public: true
+#
+#  cgr.lifecycle.tp_rate.service_collection:
+#    '@Ivoz\Cgr\Domain\Service\TpRate\TpRateLifecycleServiceCollection'
 
   ##################################
   ## on_commit

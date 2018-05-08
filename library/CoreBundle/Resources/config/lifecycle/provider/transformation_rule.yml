@@ -6,11 +6,11 @@ services:
   ##################################
   ## Service collection
   ##################################
-  Ivoz\Provider\Domain\Service\TransformationRule\TransformationRuleLifecycleServiceCollection:
-    public: true
-
-  provider.lifecycle.transformation_rule.service_collection:
-    '@Ivoz\Provider\Domain\Service\TransformationRule\TransformationRuleLifecycleServiceCollection'
+#  Ivoz\Provider\Domain\Service\TransformationRule\TransformationRuleLifecycleServiceCollection:
+#    public: true
+#
+#  provider.lifecycle.transformation_rule.service_collection:
+#    '@Ivoz\Provider\Domain\Service\TransformationRule\TransformationRuleLifecycleServiceCollection'
 
 #  ##################################
 #  ## on_commit

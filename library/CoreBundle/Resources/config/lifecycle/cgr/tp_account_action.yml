@@ -6,11 +6,11 @@ services:
   ##################################
   ## Service collection
   ##################################
-  Ivoz\Cgr\Domain\Service\TpAccountAction\TpAccountActionLifecycleServiceCollection:
-    public: true
-
-  cgr.lifecycle.tp_account_action.service_collection:
-    '@Ivoz\Cgr\Domain\Service\TpAccountAction\TpAccountActionLifecycleServiceCollection'
+#  Ivoz\Cgr\Domain\Service\TpAccountAction\TpAccountActionLifecycleServiceCollection:
+#    public: true
+#
+#  cgr.lifecycle.tp_account_action.service_collection:
+#    '@Ivoz\Cgr\Domain\Service\TpAccountAction\TpAccountActionLifecycleServiceCollection'
 
   ##################################
   ## on_commit
