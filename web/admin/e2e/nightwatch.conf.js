@@ -23,7 +23,7 @@ module.exports = {
     "log_path" : "",
     "port" : 4444,
     "cli_args" : {
-      "webdriver.chrome.driver" : "./node_modules/.bin/chromedriver"
+      "webdriver.chrome.driver" : "/usr/bin/chromedriver"
     }
   },
   "test_settings" : {

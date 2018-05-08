@@ -44,10 +44,19 @@ RUN apt-get update && apt-get install -y \
     php7.0-curl \
     php-yaml \
     php7.0-gd \
-    php-zip
+    php-zip \
+    openjdk-8-jre \
+    xvfb \
+    chromium \
+    chromium-driver
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# Install Selenium server
+RUN mkdir /opt/selenium/ && mkdir -p /opt/selenium/ && \
+	curl -SS http://selenium-release.storage.googleapis.com/3.5/selenium-server-standalone-3.5.3.jar \
+		-o /opt/selenium/selenium-server-standalone-3.5.3.jar
 
 # Create jenkins user (configurable)
 ARG UNAME=jenkins
@@ -67,6 +76,9 @@ RUN /opt/irontec/ivozprovider/library/bin/composer_install.sh --prefer-dist --no
 
 # Store the main project vendor
 RUN cp -r /opt/irontec/ivozprovider/library/vendor/    /opt/library-vendor
+
+# Install Node version manager in jenkins $HOME
+RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 
 WORKDIR /opt/irontec/ivozprovider/
 ENTRYPOINT [ "/opt/irontec/ivozprovider/tests/docker/bin/prepare-and-run" ]
