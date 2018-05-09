@@ -3091,7 +3091,7 @@ CREATE TABLE `Terminals` (
 
 LOCK TABLES `Terminals` WRITE;
 /*!40000 ALTER TABLE `Terminals` DISABLE KEYS */;
-INSERT INTO `Terminals` VALUES (1,1,'alice','127.0.0.1','all','alaw',NULL,'invite','AUfVkn498_',1,'',NULL),(2,1,'bob','127.0.0.1','all','alaw',NULL,'invite','bob',1,'',NULL);
+INSERT INTO `Terminals` VALUES (1,1,'alice','127.0.0.1','all','alaw',NULL,'invite','alice',1,'',NULL),(2,1,'bob','127.0.0.1','all','alaw',NULL,'invite','bob',1,'',NULL);
 /*!40000 ALTER TABLE `Terminals` ENABLE KEYS */;
 UNLOCK TABLES;
 
