@@ -31,10 +31,14 @@ doctrine:
         Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting
       Ivoz\Provider\Domain\Model\Commandlog\CommandlogInterface:
         Ivoz\Provider\Domain\Model\Commandlog\Commandlog
+      Ivoz\Provider\Domain\Model\Codec\CodecInterface:
+        Ivoz\Provider\Domain\Model\Codec\Codec
       Ivoz\Provider\Domain\Model\Changelog\ChangelogInterface:
         Ivoz\Provider\Domain\Model\Changelog\Changelog
       Ivoz\Provider\Domain\Model\Company\CompanyInterface:
         Ivoz\Provider\Domain\Model\Company\Company
+      Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecInterface:
+        Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodec
       Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface:
         Ivoz\Provider\Domain\Model\CompanyService\CompanyService
       Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface:
