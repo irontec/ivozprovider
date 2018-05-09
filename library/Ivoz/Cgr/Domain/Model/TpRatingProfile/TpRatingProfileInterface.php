@@ -7,6 +7,12 @@ use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 interface TpRatingProfileInterface extends LoggableEntityInterface
 {
     /**
+     * @codeCoverageIgnore
+     * @return array
+     */
+    public function getChangeSet();
+
+    /**
      * Set tpid
      *
      * @param string $tpid
