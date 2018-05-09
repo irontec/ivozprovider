@@ -833,5 +833,36 @@ interface CompanyInterface extends LoggableEntityInterface
      */
     public function getRelFeatures(\Doctrine\Common\Collections\Criteria $criteria = null);
 
+    /**
+     * Add relCodec
+     *
+     * @param \Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecInterface $relCodec
+     *
+     * @return CompanyTrait
+     */
+    public function addRelCodec(\Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecInterface $relCodec);
+
+    /**
+     * Remove relCodec
+     *
+     * @param \Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecInterface $relCodec
+     */
+    public function removeRelCodec(\Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecInterface $relCodec);
+
+    /**
+     * Replace relCodecs
+     *
+     * @param \Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecInterface[] $relCodecs
+     * @return self
+     */
+    public function replaceRelCodecs(Collection $relCodecs);
+
+    /**
+     * Get relCodecs
+     *
+     * @return \Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecInterface[]
+     */
+    public function getRelCodecs(\Doctrine\Common\Collections\Criteria $criteria = null);
+
 }
 
