@@ -27,7 +27,7 @@ manualmente.
 Para evitar errores, existe un pequeño script de shell que ejecuta los distintos generados en un orden concreto
 que busca minimizar errores:
 
-    irontec@artemis-dev-alt:/opt/irontec/ivozprovider/scheme$ bin/run_generators.sh Ast kam Provider
+    irontec@artemis-dev-alt:/opt/irontec/ivozprovider/scheme$ bin/run-generators Ast Kam Cgr Provider
 
 Este script requiere al menos un argumento.
 

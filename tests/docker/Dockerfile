@@ -72,7 +72,7 @@ RUN mkdir -p /opt/irontec
 RUN git clone -b bleeding --depth 1 https://github.com/irontec/ivozprovider /opt/irontec/ivozprovider
 
 # Get dependencies
-RUN /opt/irontec/ivozprovider/library/bin/composer_install.sh --prefer-dist --no-progress
+RUN /opt/irontec/ivozprovider/library/bin/composer-install --prefer-dist --no-progress
 
 # Store the main project vendor
 RUN cp -r /opt/irontec/ivozprovider/library/vendor/    /opt/library-vendor
