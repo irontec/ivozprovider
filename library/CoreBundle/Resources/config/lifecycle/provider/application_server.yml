@@ -4,24 +4,8 @@ services:
     public: false
 
   ##################################
-  ## Service collection
+  ## on_commit
   ##################################
-#  Ivoz\Provider\Domain\Service\ApplicationServer\ApplicationServerLifecycleServiceCollection:
-#    public: true
-#
-#  provider.lifecycle.application_server.service_collection:
-#    '@Ivoz\Provider\Domain\Service\ApplicationServer\ApplicationServerLifecycleServiceCollection'
-
-#  ##################################
-#  ## post_persist
-#  ##################################
-#  Ivoz\Kam\Domain\Service\Dispatcher\UpdateByApplicationServer:
-#    tags:
-#      - { name: provider.lifecycle.application_server.post_persist, priority: 10}
-#
-#  ##################################
-#  ## on_commit
-#  ##################################
   Ivoz\Provider\Infrastructure\Domain\Service\ApplicationServer\SendUsersDispatcherReloadRequest:
     tags: [{ name: 'domain.service'}]
     arguments:

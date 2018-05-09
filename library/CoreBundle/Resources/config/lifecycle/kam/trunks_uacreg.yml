@@ -4,17 +4,8 @@ services:
     public: false
 
   ##################################
-  ## Service collection
+  ## on_commit
   ##################################
-#  Ivoz\Kam\Domain\Service\TrunksUacreg\TrunksUacregLifecycleServiceCollection:
-#    public: true
-#
-#  kam.lifecycle.trunks_uacreg.service_collection:
-#    '@Ivoz\Kam\Domain\Service\TrunksUacreg\TrunksUacregLifecycleServiceCollection'
-##
-#  ##################################
-#  ## on_commit
-#  ##################################
   Ivoz\Kam\Infrastructure\Domain\Service\TrunksUacreg\SendTrunksUacRegReloadRequest:
     tags: [{ name: 'domain.service'}]
     arguments:

@@ -4,17 +4,8 @@ services:
     public: false
 
   ##################################
-  ## Service collection
+  ## on_commit
   ##################################
-#  Ivoz\Provider\Domain\Service\TransformationRule\TransformationRuleLifecycleServiceCollection:
-#    public: true
-#
-#  provider.lifecycle.transformation_rule.service_collection:
-#    '@Ivoz\Provider\Domain\Service\TransformationRule\TransformationRuleLifecycleServiceCollection'
-
-#  ##################################
-#  ## on_commit
-#  ##################################
   Ivoz\Provider\Infrastructure\Domain\Service\TransformationRule\SendUsersDialplanReloadRequest:
     tags: [{ name: 'domain.service'}]
     arguments:

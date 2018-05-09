@@ -4,15 +4,6 @@ services:
     public: false
 
   ##################################
-  ## Service collection
-  ##################################
-#  Ivoz\Provider\Domain\Service\TerminalModel\TerminalModelLifecycleServiceCollection:
-#    public: true
-#
-#  provider.lifecycle.terminal_model.service_collection:
-#    '@Ivoz\Provider\Domain\Service\TerminalModel\TerminalModelLifecycleServiceCollection'
-
-  ##################################
   ## post_persist
   ##################################
   Ivoz\Provider\Domain\Service\TerminalModel\PersistTemplates:

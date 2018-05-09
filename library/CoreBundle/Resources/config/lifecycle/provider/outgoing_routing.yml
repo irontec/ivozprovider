@@ -4,31 +4,8 @@ services:
     public: false
 
   ##################################
-  ## Service collection
+  ## on_commit
   ##################################
-#  Ivoz\Provider\Domain\Service\OutgoingRouting\OutgoingRoutingLifecycleServiceCollection:
-#    public: true
-#
-#  provider.lifecycle.outgoing_routing.service_collection:
-#    '@Ivoz\Provider\Domain\Service\OutgoingRouting\OutgoingRoutingLifecycleServiceCollection'
-
-#  ##################################
-#  ## post_persist
-#  ##################################
-#  Ivoz\Provider\Domain\Service\LcrRule\UpdateByOutgoingRouting:
-#    tags:
-#      - { name: provider.lifecycle.outgoing_routing.post_persist, priority: 10 }
-#    arguments:
-#      $lcrRuleFactory:
-#        '@Ivoz\Provider\Domain\Service\LcrRule\CreateByOutgoingRoutingAndRoutingPattern'
-#
-#  Ivoz\Provider\Domain\Service\LcrRuleTarget\CreateByOutgoingRouting:
-#    tags:
-#      - { name: provider.lifecycle.outgoing_routing.post_persist, priority: 20 }
-#
-#  ##################################
-#  ## on_commit
-#  ##################################
   Ivoz\Provider\Infrastructure\Domain\Service\OutgoingRouting\SendTrunksLcrReloadRequest:
     tags: [{ name: 'domain.service'}]
     arguments:

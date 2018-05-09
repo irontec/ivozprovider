@@ -4,18 +4,8 @@ services:
     public: false
 
   ##################################
-  ## Service collection
+  ## on_commit
   ##################################
-#  Ivoz\Provider\Domain\Service\RoutingPatternGroup\RoutingPatternGroupLifecycleServiceCollection:
-#    public: true
-#
-#  provider.lifecycle.routing_pattern_group.service_collection:
-#    '@Ivoz\Provider\Domain\Service\RoutingPatternGroup\RoutingPatternGroupLifecycleServiceCollection'
-#
-
-#  ##################################
-#  ## on_commit
-#  ##################################
   Ivoz\Provider\Infrastructure\Domain\Service\RoutingPatternGroup\SendTrunksLcrReloadRequest:
     tags: [{ name: 'domain.service'}]
     arguments:

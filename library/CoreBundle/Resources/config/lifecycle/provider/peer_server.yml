@@ -4,28 +4,8 @@ services:
     public: false
 
   ##################################
-  ## Service collection
+  ## on_commit
   ##################################
-#  Ivoz\Provider\Domain\Service\PeerServer\PeerServerLifecycleServiceCollection:
-#    public: true
-#
-#  provider.lifecycle.peer_server.service_collection:
-#    '@Ivoz\Provider\Domain\Service\PeerServer\PeerServerLifecycleServiceCollection'
-
-#  ##################################
-#  ## post_persist
-#  ##################################
-#  Ivoz\Provider\Domain\Service\LcrGateway\UpdateByPeerServer:
-#    tags:
-#      - { name: provider.lifecycle.peer_server.post_persist, priority: 10 }
-#
-#  Ivoz\Provider\Domain\Service\LcrRuleTarget\CreateByPeerServer:
-#    tags:
-#      - { name: provider.lifecycle.peer_server.post_persist, priority: 20 }
-#
-#  ##################################
-#  ## on_commit
-#  ##################################
   Ivoz\Provider\Infrastructure\Domain\Service\PeerServer\SendTrunksLcrReloadRequest:
     tags: [{ name: 'domain.service'}]
     arguments:

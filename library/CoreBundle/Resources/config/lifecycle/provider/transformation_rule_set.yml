@@ -4,28 +4,8 @@ services:
     public: false
 
   ##################################
-  ## Service collection
+  ## on_commit
   ##################################
-#  Ivoz\Provider\Domain\Service\TransformationRuleSet\TransformationRuleSetLifecycleServiceCollection:
-#    public: true
-#
-#  provider.lifecycle.transformation_rule_set.service_collection:
-#    '@Ivoz\Provider\Domain\Service\TransformationRuleSet\TransformationRuleSetLifecycleServiceCollection'
-
-#  ##################################
-#  ## post_persist
-#  ##################################
-#  Ivoz\Provider\Domain\Service\TransformationRule\GenerateRules:
-#    tags:
-#      - { name: provider.lifecycle.transformation_rule_set.post_persist, priority: 10 }
-#
-#  Ivoz\Provider\Domain\Service\TransformationRule\GenerateInRules: ~
-#
-#  Ivoz\Provider\Domain\Service\TransformationRule\GenerateOutRules: ~
-#
-#  ##################################
-#  ## on_commit
-#  ##################################
   Ivoz\Provider\Infrastructure\Domain\Service\TransformationRuleSet\SendUsersDialplanReloadRequest:
     tags: [{ name: 'domain.service'}]
     arguments:

@@ -4,19 +4,9 @@ services:
     public: false
 
   ##################################
-  ## Service collection
+  ## on_commit
   ##################################
-#  Ivoz\Provider\Domain\Service\PeeringContract\PeeringContractLifecycleServiceCollection:
-#    public: true
-#
-#  provider.lifecycle.peering_contract.service_collection:
-#    '@Ivoz\Provider\Domain\Service\PeeringContract\PeeringContractLifecycleServiceCollection'
-
-#  ##################################
-#  ## on_commit
-#  ##################################
   Ivoz\Provider\Infrastructure\Domain\Service\PeeringContract\SendTrunksLcrReloadRequest:
-    tags:
     tags: [{ name: 'domain.service'}]
     arguments:
       $trunksLcrReload:

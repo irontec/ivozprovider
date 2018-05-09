@@ -4,41 +4,9 @@ services:
     public: false
 
   ##################################
-  ## Service collection
-  ##################################
-#  Ivoz\Provider\Domain\Service\User\UserLifecycleServiceCollection:
-#    public: true
-#
-#  provider.lifecycle.user.service_collection:
-#    '@Ivoz\Provider\Domain\Service\User\UserLifecycleServiceCollection'
-
-  ##################################
   ## error_handler
   ##################################
   Ivoz\Provider\Domain\Service\User\PersistErrorHandler:
     tags:
       - { name: provider.lifecycle.user.error_handler, priority: 10 }
     arguments: ~
-
-#  ##################################
-#  ## post_persist
-#  ##################################
-#  Ivoz\Ast\Domain\Service\Voicemail\UpdateByUser:
-#    tags:
-#      - { name: provider.lifecycle.user.post_persist, priority: 10 }
-#
-#  Ivoz\Provider\Domain\Service\Extension\UpdateByUser:
-#    tags:
-#      - { name: provider.lifecycle.user.post_persist, priority: 20 }
-#    arguments: ~
-#
-#  Ivoz\Provider\Domain\Service\User\UnsetBossAssistant:
-#    tags:
-#      - { name: provider.lifecycle.user.post_persist, priority: 30 }
-#
-#  Ivoz\Ast\Domain\Service\PsEndpoint\UpdateByUser:
-#    tags:
-#      ## post_persist
-#      - { name: provider.lifecycle.user.post_persist, priority: 40 }
-#      ## post_remove
-#      - { name: provider.lifecycle.user.pre_remove, priority: 10 }

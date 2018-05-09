@@ -4,21 +4,6 @@ services:
     public: false
 
   ##################################
-  ## Service collection
-  ##################################
-#  Ivoz\Kam\Domain\Service\Trusted\TrustedLifecycleServiceCollection:
-#    public: true
-#
-#  kam.lifecycle.trusted.service_collection: '@Ivoz\Kam\Domain\Service\Trusted\TrustedLifecycleServiceCollection'
-
-#  ##################################
-#  ## pre_persist
-#  ##################################
-#  Ivoz\Kam\Domain\Service\Trusted\CheckValidity:
-#    tags:
-#      - { name: kam.lifecycle.trusted.pre_persist, priority: 10}
-
-  ##################################
   ## on_commit
   ##################################
   Ivoz\Kam\Infrastructure\Domain\Service\Trusted\SendUsersPermissionsReloadRequest:

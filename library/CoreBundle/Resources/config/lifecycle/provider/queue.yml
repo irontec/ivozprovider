@@ -4,17 +4,8 @@ services:
     public: false
 
   ##################################
-  ## Service collection
+  ## post_persist
   ##################################
-#  Ivoz\Provider\Domain\Service\Queue\QueueLifecycleServiceCollection:
-#    public: true
-#
-#  provider.lifecycle.queue.service_collection:
-#    '@Ivoz\Provider\Domain\Service\Queue\QueueLifecycleServiceCollection'
-
-#  ##################################
-#  ## post_persist
-#  ##################################
   Ivoz\Ast\Domain\Service\Queue\UpdateByIvozQueue:
     tags: [{ name: 'domain.service'}]
     arguments:

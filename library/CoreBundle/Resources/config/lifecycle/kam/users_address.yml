@@ -4,15 +4,6 @@ services:
     public: false
 
   ##################################
-  ## Service collection
-  ##################################
-#  Ivoz\Kam\Domain\Service\UsersAddress\UsersAddressLifecycleServiceCollection:
-#    public: true
-#
-#  kam.lifecycle.users_address.service_collection:
-#    '@Ivoz\Kam\Domain\Service\UsersAddress\UsersAddressLifecycleServiceCollection'
-
-  ##################################
   ## on_commit
   ##################################
   Ivoz\Kam\Infrastructure\Domain\Service\UsersAddress\SendUsersPermissionsReloadRequest:
