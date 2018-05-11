@@ -4,6 +4,8 @@ use v5.10;
 no warnings;
 no strict;
 
+my $verbose = 0;
+
 my $xgettext_bin="/usr/bin/xgettext";
 my $xgettext_args="--no-location --force-po --sort-by-file";
 my $msgmerge_bin="/usr/bin/msgmerge";
@@ -54,6 +56,7 @@ sub extract_strings
     $find_cmd .= "-name '*.$extension'";
     $find_cmd .= " > /tmp/files_$extension.txt";
     system($find_cmd);
+    system("cat /tmp/files_$extension.txt") if $verbose;
 
     $xgettext_cmd = $xgettext_bin . " " . $xgettext_args;
     $xgettext_cmd .= " --language=$language ";

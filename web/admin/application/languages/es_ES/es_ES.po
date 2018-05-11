@@ -173,6 +173,9 @@ msgstr "Identificador Servidor de Aplicación"
 msgid "Assistant"
 msgstr "Asistente"
 
+msgid "Audio Transcoding"
+msgstr "Audio Transcoding"
+
 msgid "Auth needed"
 msgstr "Requiere autenticación"
 

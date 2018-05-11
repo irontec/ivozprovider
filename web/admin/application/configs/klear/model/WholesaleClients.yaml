@@ -109,6 +109,7 @@ production:
         data: mapper
         config:
           entity: \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet
+          filterClass: IvozProvider_Klear_Filter_WholesaleMediaRelaySets
           fieldName:
             fields:
               - name

@@ -168,6 +168,9 @@ msgstr "AS iden"
 msgid "Assistant"
 msgstr "Assistant"
 
+msgid "Audio Transcoding"
+msgstr "Audio Transcoding"
+
 msgid "Auth needed"
 msgstr "Auth needed"
 
