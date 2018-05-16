@@ -69,31 +69,6 @@ class ExternalCallAction
     }
 
     /**
-     * @brief Check if the dialed external number belongs to our platform
-     *
-     * If outgoing number belongs to our platform we will mark it with a header
-     * before placing the call to proxytrunks. This will allow to handle it as
-     * an incoming call with a new callid.
-     *
-     * @param string $number dialed number in E.164 format
-     */
-    protected function checkDDIBounced($number)
-    {
-        /** @var  \Ivoz\Provider\Domain\Model\Ddi\DdiRepository $ddiRepository */
-        $ddiRepository = $this->em->getRepository('Ivoz\Provider\Domain\Model\DDi\Ddi');
-
-        /** @var \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $internalDDI */
-        $internalDDI = $ddiRepository->findOneBy([
-            "ddie164" => $number
-        ]);
-
-        if (!empty($internalDDI)) {
-            $this->agi->notice("DDI $number belongs to us, request bounce back this call");
-            $this->agi->setVariable("_BOUNCEME", "yes");
-        }
-    }
-
-    /**
      * @brief Check if the diversion header contains a valid number
      *
      * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company

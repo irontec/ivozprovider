@@ -99,9 +99,6 @@ class ExternalFaxCallAction extends ExternalCallAction
             return;
         }
 
-        // Check if DDI belong to platform
-        $this->checkDDIBounced($number);
-
         // Set Caller name
         $this->agi->setCallerIDNum($ddi->getDdie164());
 

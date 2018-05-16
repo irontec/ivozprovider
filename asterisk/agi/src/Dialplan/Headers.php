@@ -113,11 +113,6 @@ class Headers extends RouteHandlerAbstract
             $this->agi->setSIPHeader("X-Info-Record", $this->agi->getVariable("RECORD"));
         }
 
-        // Request intra DDI bounce
-        if ($this->agi->getVariable("BOUNCEME")) {
-            $this->agi->setSIPHeader("X-Info-BounceMe", $this->agi->getVariable("BOUNCEME"));
-        }
-
         // Set pickups group on outgoing channels
         if ($this->agi->getVariable("CHANNEL(namedpickupgroup)")) {
             $this->agi->setVariable("CHANNEL(namedcallgroup)", $this->agi->getVariable("CHANNEL(namedpickupgroup)"));
