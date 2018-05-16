@@ -63,6 +63,11 @@ trait CompanyTrait
      */
     protected $relFeatures;
 
+    /**
+     * @var Collection
+     */
+    protected $relCodecs;
+
 
     /**
      * Constructor
@@ -79,6 +84,7 @@ trait CompanyTrait
         $this->musicsOnHold = new ArrayCollection();
         $this->recordings = new ArrayCollection();
         $this->relFeatures = new ArrayCollection();
+        $this->relCodecs = new ArrayCollection();
     }
 
     /**
@@ -127,6 +133,10 @@ trait CompanyTrait
         if ($dto->getRelFeatures()) {
             $self->replaceRelFeatures($dto->getRelFeatures());
         }
+
+        if ($dto->getRelCodecs()) {
+            $self->replaceRelCodecs($dto->getRelCodecs());
+        }
         if ($dto->getId()) {
             $self->id = $dto->getId();
             $self->initChangelog();
@@ -171,6 +181,9 @@ trait CompanyTrait
         }
         if ($dto->getRelFeatures()) {
             $this->replaceRelFeatures($dto->getRelFeatures());
+        }
+        if ($dto->getRelCodecs()) {
+            $this->replaceRelCodecs($dto->getRelCodecs());
         }
         return $this;
     }
@@ -843,6 +856,78 @@ trait CompanyTrait
         }
 
         return $this->relFeatures->toArray();
+    }
+
+    /**
+     * Add relCodec
+     *
+     * @param \Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecInterface $relCodec
+     *
+     * @return CompanyTrait
+     */
+    public function addRelCodec(\Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecInterface $relCodec)
+    {
+        $this->relCodecs->add($relCodec);
+
+        return $this;
+    }
+
+    /**
+     * Remove relCodec
+     *
+     * @param \Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecInterface $relCodec
+     */
+    public function removeRelCodec(\Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecInterface $relCodec)
+    {
+        $this->relCodecs->removeElement($relCodec);
+    }
+
+    /**
+     * Replace relCodecs
+     *
+     * @param \Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecInterface[] $relCodecs
+     * @return self
+     */
+    public function replaceRelCodecs(Collection $relCodecs)
+    {
+        $updatedEntities = [];
+        $fallBackId = -1;
+        foreach ($relCodecs as $entity) {
+            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
+            $updatedEntities[$index] = $entity;
+            $entity->setCompany($this);
+        }
+        $updatedEntityKeys = array_keys($updatedEntities);
+
+        foreach ($this->relCodecs as $key => $entity) {
+            $identity = $entity->getId();
+            if (in_array($identity, $updatedEntityKeys)) {
+                $this->relCodecs->set($key, $updatedEntities[$identity]);
+            } else {
+                $this->relCodecs->remove($key);
+            }
+            unset($updatedEntities[$identity]);
+        }
+
+        foreach ($updatedEntities as $entity) {
+            $this->addRelCodec($entity);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get relCodecs
+     *
+     * @return \Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecInterface[]
+     */
+    public function getRelCodecs(Criteria $criteria = null)
+    {
+        if (!is_null($criteria)) {
+            return $this->relCodecs->matching($criteria)->toArray();
+        }
+
+        return $this->relCodecs->toArray();
     }
 
 

@@ -1,0 +1,13 @@
+Ivoz\Provider\Domain\Model\Codec\Codec:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\CodecDoctrineRepository
+  type: entity
+  table: Codecs
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY

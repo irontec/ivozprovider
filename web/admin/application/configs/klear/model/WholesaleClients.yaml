@@ -109,6 +109,7 @@ production:
         data: mapper
         config:
           entity: \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet
+          filterClass: IvozProvider_Klear_Filter_WholesaleMediaRelaySets
           fieldName:
             fields:
               - name
@@ -144,6 +145,20 @@ production:
             template: '%name${lang}%'
           order:
             TransformationRuleSet.name.${lang}: asc
+    relCodecs:
+      title: _('Audio Transcoding')
+      type: multiselect
+      source:
+        data: mapper
+        config:
+          relation: \Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodec
+          relationProperty: company
+          relatedProperty: codec
+          related: \Ivoz\Provider\Domain\Model\Codec\Codec
+          relatedFieldName:
+            fields:
+              - iden
+            template: '%iden%'
 staging:
   _extends: production
 testing:

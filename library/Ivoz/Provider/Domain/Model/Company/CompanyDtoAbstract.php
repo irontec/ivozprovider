@@ -217,6 +217,11 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
      */
     private $relFeatures = null;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecDto[] | null
+     */
+    private $relCodecs = null;
+
 
     use DtoNormalizer;
 
@@ -316,7 +321,8 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'ratingProfiles' => $this->getRatingProfiles(),
             'musicsOnHold' => $this->getMusicsOnHold(),
             'recordings' => $this->getRecordings(),
-            'relFeatures' => $this->getRelFeatures()
+            'relFeatures' => $this->getRelFeatures(),
+            'relCodecs' => $this->getRelCodecs()
         ];
     }
 
@@ -436,6 +442,17 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             }
         }
 
+        if (!is_null($this->relCodecs)) {
+            $items = $this->getRelCodecs();
+            $this->relCodecs = [];
+            foreach ($items as $item) {
+                $this->relCodecs[] = $transformer->transform(
+                    'Ivoz\\Provider\\Domain\\Model\\CompanyRelCodec\\CompanyRelCodec',
+                    $item->getId() ?? $item
+                );
+            }
+        }
+
     }
 
     /**
@@ -478,6 +495,10 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         $this->relFeatures = $transformer->transform(
             'Ivoz\\Provider\\Domain\\Model\\FeaturesRelCompany\\FeaturesRelCompany',
             $this->relFeatures
+        );
+        $this->relCodecs = $transformer->transform(
+            'Ivoz\\Provider\\Domain\\Model\\CompanyRelCodec\\CompanyRelCodec',
+            $this->relCodecs
         );
     }
 
@@ -1611,6 +1632,26 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     public function getRelFeatures()
     {
         return $this->relFeatures;
+    }
+
+    /**
+     * @param array $relCodecs
+     *
+     * @return static
+     */
+    public function setRelCodecs($relCodecs = null)
+    {
+        $this->relCodecs = $relCodecs;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getRelCodecs()
+    {
+        return $this->relCodecs;
     }
 }
 
