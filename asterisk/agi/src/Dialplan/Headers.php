@@ -58,7 +58,7 @@ class Headers extends RouteHandlerAbstract
         $this->agi->setSIPHeader("X-Call-Id",            $this->agi->getVariable("CALL_ID"));
         $this->agi->setSIPHeader("X-Info-BrandId",       $company->getBrand()->getId());
         $this->agi->setSIPHeader("X-Info-CompanyId",     $company->getId());
-        $this->agi->setSIPHeader("X-Info-MediaRelaySet", $company->getMediaRelaySets()->getId());
+        $this->agi->setSIPHeader("X-Info-Type",          $company->getType());
 
         // Get Calle data, take if from called endpoint
         $endpoint = $this->endpointResolver->getEndpointFromName($this->agi->getEndpoint());
@@ -68,44 +68,29 @@ class Headers extends RouteHandlerAbstract
                 /** @var UserInterface $user */
                 $user = $terminal->getUser();
                 $this->agi->setSIPHeader("X-Info-Callee", $user->getExtensionNumber());
-                $this->agi->setSIPHeader("X-Info-UserMaxCalls", $user->getMaxCalls());
             }
             $friend = $endpoint->getFriend();
             if (!is_null($friend)) {
-                $exten = $this->agi->getExtension();
-                $this->agi->setSIPHeader("X-Info-Callee", $exten);
-                $this->agi->setSIPHeader("X-Info-Friend", $friend->getRequestURI($exten));
-                $this->agi->setSIPHeader("X-Info-UserMaxCalls", 0);
+                $this->agi->setSIPHeader("X-Info-Callee", $this->agi->getExtension());
+                $this->agi->setSIPHeader("X-Info-Location", $friend->getRequestURI($exten));
             }
             $retail = $endpoint->getRetailAccount();
             if (!is_null($retail)) {
-                $exten = $this->agi->getExtension();
-                $this->agi->setSIPHeader("X-Info-Callee", $exten);
-                $this->agi->setSIPHeader("X-Info-Retail", $retail->getRequestURI($exten));
-                $this->agi->setSIPHeader("X-Info-UserMaxCalls", 0);
+                $this->agi->setSIPHeader("X-Info-Callee", $this->agi->getExtension());
+                $this->agi->setSIPHeader("X-Info-Location", $retail->getRequestURI($exten));
 
             }
 
             // Set on-demand recording header (only for proxyusers)
             if ($company->getOnDemandRecord()) {
-                $this->agi->setSIPHeader("X-Info-RecordCode", $company->getOnDemandRecordCode());
                 $this->agi->setVariable("FEATUREMAP(automixmon)", $company->getOnDemandRecordDTMFs());
             }
 
         } else {
-            $this->agi->setSIPHeader("X-Info-CompanyDomain", $company->getDomain()->getDomain());
-            $this->agi->setSIPHeader("X-Info-Type", $company->getType());
-            $this->agi->setSIPHeader("X-Info-BillingMethod", $company->getBillingMethod());
-
             // Set special headers for Fax outgoing calls
             if ($this->agi->getVariable("FAXFILE_ID")) {
                 $this->agi->setSIPHeader("X-Info-Special", "fax");
             }
-        }
-
-        // Set Special header for Forwarding
-        if ($this->agi->getRedirecting('from-tag')) {
-            $this->agi->setSIPHeader("X-Info-ForwardExt", $this->agi->getRedirecting('from-tag'));
         }
 
         // Set recording header
