@@ -114,7 +114,7 @@ class RetailAccount extends RetailAccountAbstract implements RetailAccountInterf
     }
 
     /**
-     * Obtain content for X-Info-Retail header
+     * Obtain content for X-Info-Location header
      *
      * @param mixed $callee
      * @return string
