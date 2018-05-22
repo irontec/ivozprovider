@@ -41,7 +41,7 @@ interface RetailAccountInterface extends LoggableEntityInterface
     public function getSorcery();
 
     /**
-     * Obtain content for X-Info-Retail header
+     * Obtain content for X-Info-Location header
      *
      * @param mixed $callee
      * @return string
