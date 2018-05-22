@@ -111,8 +111,6 @@ class ExternalUserCallAction extends ExternalCallAction
         $this->checkDiversionNumber($company, $number);
         // Check if DDI has recordings enabled
         $this->checkDDIRecording($ddi);
-        // Check if DDI belong to platform
-        $this->checkDDIBounced($number);
 
         // We need Outgoing DDI for external call presentation
         if (!$ddi) {

@@ -94,6 +94,7 @@ class Headers extends RouteHandlerAbstract
 
         } else {
             $this->agi->setSIPHeader("X-Info-CompanyDomain", $company->getDomain()->getDomain());
+            $this->agi->setSIPHeader("X-Info-Type", $company->getType());
             $this->agi->setSIPHeader("X-Info-BillingMethod", $company->getBillingMethod());
 
             // Set special headers for Fax outgoing calls
@@ -110,11 +111,6 @@ class Headers extends RouteHandlerAbstract
         // Set recording header
         if ($this->agi->getVariable("RECORD")) {
             $this->agi->setSIPHeader("X-Info-Record", $this->agi->getVariable("RECORD"));
-        }
-
-        // Request intra DDI bounce
-        if ($this->agi->getVariable("BOUNCEME")) {
-            $this->agi->setSIPHeader("X-Info-BounceMe", $this->agi->getVariable("BOUNCEME"));
         }
 
         // Set pickups group on outgoing channels

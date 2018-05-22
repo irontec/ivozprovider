@@ -150,9 +150,6 @@ class ExternalFriendCallAction extends ExternalCallAction
         // Check if DDI has recordings enabled
         $this->checkDDIRecording($ddi);
 
-        // Check if DDI belong to platform
-        $this->checkDDIBounced($number);
-
         // Call the PSJIP endpoint
         $this->agi->setVariable("DIAL_DST", "PJSIP/" . $number . '@proxytrunks');
         $this->agi->setVariable("DIAL_OPTS", "");
