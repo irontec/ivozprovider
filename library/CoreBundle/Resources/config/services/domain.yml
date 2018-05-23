@@ -3,8 +3,6 @@ services:
     autowire: true
     public: false
 
-  Ivoz\Provider\Domain\Service\LcrRule\UpdateByOutgoingRouting: ~
-
   Ivoz\Provider\Domain\Service\RoutingPatternGroupsRelPattern\CreateAndPersist: ~
 
   Ivoz\Provider\Domain\Service\RoutingPatternGroup\UpdateByRoutingPatternAndCountry: ~

@@ -16,6 +16,13 @@ class SendTrunksLcrReloadRequest implements RoutingPatternGroupLifecycleEventHan
         $this->trunksLcrReload = $trunksLcrReload;
     }
 
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_ON_COMMIT => 10
+        ];
+    }
+
     public function execute(RoutingPatternGroupInterface $entity, $isNew)
     {
         $this->trunksLcrReload->send();

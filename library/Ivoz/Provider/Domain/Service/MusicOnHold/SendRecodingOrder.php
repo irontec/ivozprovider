@@ -23,6 +23,13 @@ class SendRecodingOrder implements MusicOnHoldLifecycleEventHandlerInterface
         $this->recoder = $recoder;
     }
 
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_POST_PERSIST => 10
+        ];
+    }
+
     public function execute(MusicOnHoldInterface $entity)
     {
         $pendingStatus = $entity->getStatus() === 'pending';

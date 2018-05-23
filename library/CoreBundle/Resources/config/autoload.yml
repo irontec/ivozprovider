@@ -1,0 +1,23 @@
+services:
+  _defaults:
+    autowire: true
+    public: false
+
+  #####################################################
+  ## Domain Services
+  #####################################################
+  Ivoz\Ast\Domain\Service\:
+    resource: '/opt/irontec/ivozprovider/library/Ivoz/Ast/Domain/Service/*/*'
+    tags: [{ name: 'domain.service'}]
+
+  Ivoz\Cgr\Domain\Service\:
+    resource: '/opt/irontec/ivozprovider/library/Ivoz/Cgr/Domain/Service/*/*'
+    tags: [{ name: 'domain.service'}]
+
+  Ivoz\Kam\Domain\Service\:
+    resource: '/opt/irontec/ivozprovider/library/Ivoz/Kam/Domain/Service/*/*'
+    tags: [{ name: 'domain.service'}]
+
+  Ivoz\Provider\Domain\Service\:
+    resource: '/opt/irontec/ivozprovider/library/Ivoz/Provider/Domain/Service/*/*'
+    tags: [{ name: 'domain.service'}]

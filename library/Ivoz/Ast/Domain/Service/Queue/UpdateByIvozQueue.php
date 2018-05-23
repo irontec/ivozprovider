@@ -37,6 +37,13 @@ class UpdateByIvozQueue implements IvozQueueLifecycleEventHandlerInterface
         $this->storagePathResolver = $storagePathResolver;
     }
 
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_POST_PERSIST => 10
+        ];
+    }
+
     public function execute(IvozQueueInterface $entity, $isNew)
     {
         $periodicAnnounceLocution = $entity->getPeriodicAnnounceLocution();

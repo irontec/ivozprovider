@@ -16,6 +16,13 @@ class SendUsersDispatcherReloadRequest implements ApplicationServerLifecycleEven
         $this->usersDispatcherReload = $usersDispatcherReload;
     }
 
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_ON_COMMIT => 10
+        ];
+    }
+
     public function execute(ApplicationServerInterface $entity, $isNew)
     {
         $this->usersDispatcherReload->send();

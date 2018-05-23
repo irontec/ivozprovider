@@ -1,4 +1,5 @@
 imports:
+  - { resource: "@CoreBundle/Resources/config/autoload.yml" }
   - { resource: '@CoreBundle/Resources/config/services/infraestructure.yml' }
   - { resource: "@CoreBundle/Resources/config/services/path_resolvers.yml" }
   - { resource: "@CoreBundle/Resources/config/services/assemblers.yml" }

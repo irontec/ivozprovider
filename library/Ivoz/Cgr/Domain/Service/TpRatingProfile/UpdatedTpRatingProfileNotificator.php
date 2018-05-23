@@ -24,6 +24,13 @@ class UpdatedTpRatingProfileNotificator implements TpRatingProfileLifecycleEvent
         $this->removeTpRatingProfile = $removeTpRatingProfile;
     }
 
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_ON_COMMIT => 10
+        ];
+    }
+
     public function execute(TpRatingProfileInterface $tpRatingProfile)
     {
         $wasRemoved = is_null($tpRatingProfile->getId());

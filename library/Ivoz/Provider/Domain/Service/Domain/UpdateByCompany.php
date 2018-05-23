@@ -35,6 +35,13 @@ class UpdateByCompany implements CompanyLifecycleEventHandlerInterface
         $this->domainRepository = $domainRepository;
     }
 
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_POST_PERSIST => 10
+        ];
+    }
+
     public function execute(CompanyInterface $entity, $isNew)
     {
         $name = $entity->getDomainUsers();
@@ -43,7 +50,6 @@ class UpdateByCompany implements CompanyLifecycleEventHandlerInterface
         if (empty($name)) {
             return;
         }
-
         /**
          * @var DomainInterface $domain
          */
@@ -64,7 +70,5 @@ class UpdateByCompany implements CompanyLifecycleEventHandlerInterface
         $domain = $this->entityPersister->persistDto($domainDto, $domain);
 
         $entity->setDomain($domain);
-
-
     }
 }

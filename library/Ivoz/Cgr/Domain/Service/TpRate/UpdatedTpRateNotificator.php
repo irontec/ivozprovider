@@ -14,6 +14,13 @@ class UpdatedTpRateNotificator implements TpRateLifecycleEventHandlerInterface
         $this->client = $client;
     }
 
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_ON_COMMIT => 10
+        ];
+    }
+
     public function execute(TpRateInterface $entity)
     {
         $this->client->scheduleFullReload();

@@ -24,6 +24,13 @@ class SanitizeEmptyValues implements CompanyLifecycleEventHandlerInterface
         $this->entityUpdater = $entityUpdater;
     }
 
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_PRE_PERSIST => 10
+        ];
+    }
+
     public function execute(CompanyInterface $entity, $isNew)
     {
         if (!$isNew) {

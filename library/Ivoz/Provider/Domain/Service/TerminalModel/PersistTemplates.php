@@ -25,6 +25,13 @@ class PersistTemplates implements TerminalModelLifecycleEventHandlerInterface
         $this->fs = $fs;
     }
 
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_POST_PERSIST => 10
+        ];
+    }
+
     public function execute(TerminalModelInterface $entity, $isNew)
     {
         $genericMustChange = $entity->hasChanged('genericTemplate');

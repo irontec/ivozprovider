@@ -16,6 +16,13 @@ class SendTrunksUacRegReloadRequest implements PeeringContractLifecycleEventHand
         $this->trunksUacRegReload = $trunksUacRegReload;
     }
 
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_ON_COMMIT => 20
+        ];
+    }
+
     public function execute(PeeringContractInterface $entity, $isNew)
     {
         $this->trunksUacRegReload->send();

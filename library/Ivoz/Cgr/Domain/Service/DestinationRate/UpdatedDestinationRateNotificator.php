@@ -14,6 +14,13 @@ class UpdatedDestinationRateNotificator implements DestinationRateLifecycleEvent
         $this->client = $client;
     }
 
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_ON_COMMIT => 20
+        ];
+    }
+
     public function execute(DestinationRateInterface $entity)
     {
         $wasDeleted = is_null($entity->getId());

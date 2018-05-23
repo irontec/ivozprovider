@@ -25,6 +25,13 @@ class CreatedByTpDestinationRate implements TpDestinationRateLifecycleEventHandl
         $this->entityPersister = $entityPersister;
     }
 
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_POST_PERSIST => 30
+        ];
+    }
+
     public function execute(TpDestinationRateInterface $entity)
     {
         // Replicate Terminal into ast_ps_endpoint

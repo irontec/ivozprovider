@@ -27,6 +27,13 @@ class SearchBrokenThresholds implements CompanyLifecycleEventHandlerInterface
         $this->domainEventPublisher = $domainEventPublisher;
     }
 
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_ON_COMMIT => 10
+        ];
+    }
+
     public function execute(CompanyInterface $entity, $isNew)
     {
         // Skip new created company

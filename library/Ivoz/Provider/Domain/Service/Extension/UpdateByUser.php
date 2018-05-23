@@ -13,6 +13,13 @@ class UpdateByUser implements UserLifecycleEventHandlerInterface
 {
     public function __construct() {}
 
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_POST_PERSIST => 20
+        ];
+    }
+
     public function execute(UserInterface $entity, $isNew)
     {
         $hasChangedExtension = $entity->hasChanged("extensionId");

@@ -14,6 +14,13 @@ class UpdatedRatingPlanNotificator implements RatingPlanLifecycleEventHandlerInt
         $this->client = $client;
     }
 
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_ON_COMMIT => 10
+        ];
+    }
+
     public function execute(RatingPlanInterface $entity)
     {
         $wasDeleted = is_null($entity->getId());

@@ -26,6 +26,13 @@ class UpdateByRoutingPattern implements RoutingPatternLifecycleEventHandlerInter
         $this->entityPersister = $entityPersister;
     }
 
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_POST_PERSIST => 10
+        ];
+    }
+
     public function execute(RoutingPatternInterface $entity, $isNew)
     {
         // If any LcrRule uses this Pattern, update accordingly

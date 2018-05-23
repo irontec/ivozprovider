@@ -41,6 +41,13 @@ class UpdateByBrand implements BrandLifecycleEventHandlerInterface
         $this->routingPatternGroupByRoutingPatternAndCountry = $routingPatternGroupByRoutingPatternAndCountry;
     }
 
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_POST_PERSIST => 20
+        ];
+    }
+
     public function execute(BrandInterface $entity, $isNew)
     {
         if (!$isNew) {

@@ -27,6 +27,13 @@ class DeleteByBrand implements BrandLifecycleEventHandlerInterface
         $this->em = $em;
     }
 
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_POST_REMOVE => 10
+        ];
+    }
+
     public function execute(BrandInterface $entity, $isNew)
     {
         $domain = $entity->getDomain();

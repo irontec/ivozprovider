@@ -24,7 +24,7 @@ class CommonLifecycleServiceCollection implements LifecycleServiceCollectionInte
         }
     }
 
-    protected function addService(LifecycleEventHandlerInterface $service)
+    protected function addService(CommonLifecycleEventHandlerInterface $service)
     {
         $this->services[] = $service;
     }

@@ -19,6 +19,13 @@ class SendFaxFile implements FaxesInOutLifecycleEventHandlerInterface
         $this->ariConnector = $ariConnector;
     }
 
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_POST_PERSIST => 10
+        ];
+    }
+
     /**
      * @throws \Exception
      */
