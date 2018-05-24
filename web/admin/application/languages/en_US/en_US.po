@@ -953,13 +953,6 @@ msgstr ""
 "If no queue member answers before time this seconds, the timeout queue logic "
 "will be activated. Leave empty to disable."
 
-msgid ""
-"If you want a prefix, use only digits. Otherwise, define your regular "
-"expresion."
-msgstr ""
-"If you want a prefix, use only digits. Otherwise, define your regular "
-"expresion."
-
 msgid "Ignore"
 msgstr "Ignore"
 
@@ -1349,6 +1342,9 @@ msgid "Music on Hold"
 msgid_plural "Musics on Hold"
 msgstr[0] "Music on Hold"
 msgstr[1] "Musics on Hold"
+
+msgid "Must start with '+' followed by zero or more digits."
+msgstr "Must start with '+' followed by zero or more digits."
 
 msgid "Must start with sip or sips followed by colon"
 msgstr "Must start with sip or sips followed by colon"
@@ -1794,9 +1790,6 @@ msgstr "Referee"
 
 msgid "Referrer"
 msgstr "Referrer"
-
-msgid "Reg exp / Prefix"
-msgstr "Reg exp / Prefix"
 
 msgid "Registrar Server URI"
 msgstr "Registrar Server URI"
