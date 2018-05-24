@@ -44,7 +44,6 @@ class UpdateByPeerServer implements PeerServerLifecycleEventHandlerInterface
             ->setIp($entity->getIp())
             ->setHostname($entity->getHostname())
             ->setPort($entity->getPort())
-            ->setParams($entity->getParams())
             ->setUriScheme($entity->getUriScheme())
             ->setTransport($entity->getTransport())
             ->setTag((string) $entity->getId())
