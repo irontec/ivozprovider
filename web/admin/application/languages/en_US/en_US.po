@@ -88,9 +88,6 @@ msgstr "Add of %s %2s"
 msgid "Add pattern to %2s"
 msgstr "Add pattern to %2s"
 
-msgid "Add this params to R-URI (must start with ';')"
-msgstr "Add this params to R-URI (must start with ';')"
-
 msgid "Additional configuration"
 msgstr "Additional configuration"
 
@@ -1664,9 +1661,6 @@ msgid_plural "Prepaid Balances"
 msgstr[0] "Prepaid Balance"
 msgstr[1] "Prepaid Balances"
 
-msgid "Prepend this field to callee"
-msgstr "Prepend this field to callee"
-
 msgid "Prevent missed calls"
 msgstr "Prevent missed calls"
 
@@ -1733,12 +1727,6 @@ msgid "Queue Member"
 msgid_plural "Queue Members"
 msgstr[0] "Queue Member"
 msgstr[1] "Queue Members"
-
-msgid "R-URI customization (after numeric transformations)"
-msgstr "R-URI customization (after numeric transformations)"
-
-msgid "R-URI params"
-msgstr "R-URI params"
 
 msgid "R-URI pattern"
 msgstr "R-URI pattern"

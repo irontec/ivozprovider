@@ -28,11 +28,6 @@ abstract class PeerServerDtoAbstract implements DataTransferObjectInterface
     private $port;
 
     /**
-     * @var string
-     */
-    private $params;
-
-    /**
      * @var boolean
      */
     private $uriScheme;
@@ -41,16 +36,6 @@ abstract class PeerServerDtoAbstract implements DataTransferObjectInterface
      * @var boolean
      */
     private $transport;
-
-    /**
-     * @var boolean
-     */
-    private $strip;
-
-    /**
-     * @var string
-     */
-    private $prefix;
 
     /**
      * @var boolean
@@ -138,11 +123,8 @@ abstract class PeerServerDtoAbstract implements DataTransferObjectInterface
             'ip' => 'ip',
             'hostname' => 'hostname',
             'port' => 'port',
-            'params' => 'params',
             'uriScheme' => 'uriScheme',
             'transport' => 'transport',
-            'strip' => 'strip',
-            'prefix' => 'prefix',
             'sendPAI' => 'sendPAI',
             'sendRPID' => 'sendRPID',
             'authNeeded' => 'authNeeded',
@@ -168,11 +150,8 @@ abstract class PeerServerDtoAbstract implements DataTransferObjectInterface
             'ip' => $this->getIp(),
             'hostname' => $this->getHostname(),
             'port' => $this->getPort(),
-            'params' => $this->getParams(),
             'uriScheme' => $this->getUriScheme(),
             'transport' => $this->getTransport(),
-            'strip' => $this->getStrip(),
-            'prefix' => $this->getPrefix(),
             'sendPAI' => $this->getSendPAI(),
             'sendRPID' => $this->getSendRPID(),
             'authNeeded' => $this->getAuthNeeded(),
@@ -268,26 +247,6 @@ abstract class PeerServerDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $params
-     *
-     * @return static
-     */
-    public function setParams($params = null)
-    {
-        $this->params = $params;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getParams()
-    {
-        return $this->params;
-    }
-
-    /**
      * @param boolean $uriScheme
      *
      * @return static
@@ -325,46 +284,6 @@ abstract class PeerServerDtoAbstract implements DataTransferObjectInterface
     public function getTransport()
     {
         return $this->transport;
-    }
-
-    /**
-     * @param boolean $strip
-     *
-     * @return static
-     */
-    public function setStrip($strip = null)
-    {
-        $this->strip = $strip;
-
-        return $this;
-    }
-
-    /**
-     * @return boolean
-     */
-    public function getStrip()
-    {
-        return $this->strip;
-    }
-
-    /**
-     * @param string $prefix
-     *
-     * @return static
-     */
-    public function setPrefix($prefix = null)
-    {
-        $this->prefix = $prefix;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPrefix()
-    {
-        return $this->prefix;
     }
 
     /**

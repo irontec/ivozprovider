@@ -57,17 +57,6 @@ production:
       defaultValue: 5060
       source:
         control: Spinner
-    params:
-      title: _('R-URI params')
-      type: text
-      pattern: "^;.*$"
-      trim: both
-      info:
-        type: box
-        position: left
-        icon: help
-        text: _("Add this params to R-URI (must start with ';')")
-        label: _("Need help?")
     uriScheme:
       title: _('URI scheme')
       type: select
@@ -92,16 +81,6 @@ production:
             title: 'TCP'
           '3':
             title: 'TLS'
-    prefix:
-      title: _('Prefix')
-      type: text
-      trim: both
-      info:
-        type: box
-        position: left
-        icon: help
-        text: _("Prepend this field to callee")
-        label: _("Need help?")
     sendPAI:
       title: _('Send PAI')
       type: checkbox
