@@ -11,7 +11,7 @@ Feature: Update routing patterns
       And I send a "PUT" request to "/routing_patterns/1" with body:
     """
       {
-          "regExp": "+349",
+          "prefix": "+349",
           "name": {
               "en": "englishName",
               "es": "nombreEspañol"
@@ -29,7 +29,7 @@ Feature: Update routing patterns
      And the JSON should be equal to:
     """
       {
-          "regExp": "+349",
+          "prefix": "+349",
           "id": 1,
           "name": {
               "en": "englishName",
