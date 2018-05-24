@@ -8,20 +8,16 @@ use Doctrine\Common\Collections\Collection;
 interface RoutingPatternInterface extends EntityInterface
 {
     /**
-     * Set regExp
-     *
-     * @param string $regExp
-     *
-     * @return self
+     * {@inheritDoc}
      */
-    public function setRegExp($regExp);
+    public function setPrefix($prefix = null);
 
     /**
-     * Get regExp
+     * Get prefix
      *
      * @return string
      */
-    public function getRegExp();
+    public function getPrefix();
 
     /**
      * Set brand

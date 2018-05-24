@@ -15,7 +15,7 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $regExp;
+    private $prefix;
 
     /**
      * @var integer
@@ -70,7 +70,7 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
         }
 
         return [
-            'regExp' => 'regExp',
+            'prefix' => 'prefix',
             'id' => 'id',
             'name' => ['en','es'],
             'description' => ['en','es'],
@@ -84,7 +84,7 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
     public function toArray($hideSensitiveData = false)
     {
         return [
-            'regExp' => $this->getRegExp(),
+            'prefix' => $this->getPrefix(),
             'id' => $this->getId(),
             'name' => [
                 'en' => $this->getNameEn(),
@@ -130,13 +130,13 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $regExp
+     * @param string $prefix
      *
      * @return static
      */
-    public function setRegExp($regExp = null)
+    public function setPrefix($prefix = null)
     {
-        $this->regExp = $regExp;
+        $this->prefix = $prefix;
 
         return $this;
     }
@@ -144,9 +144,9 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string
      */
-    public function getRegExp()
+    public function getPrefix()
     {
-        return $this->regExp;
+        return $this->prefix;
     }
 
     /**

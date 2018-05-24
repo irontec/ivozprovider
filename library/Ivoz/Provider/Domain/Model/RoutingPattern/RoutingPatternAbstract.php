@@ -16,7 +16,7 @@ abstract class RoutingPatternAbstract
     /**
      * @var string
      */
-    protected $regExp;
+    protected $prefix;
 
     /**
      * @var Name
@@ -40,11 +40,11 @@ abstract class RoutingPatternAbstract
      * Constructor
      */
     protected function __construct(
-        $regExp,
+        $prefix,
         Name $name,
         Description $description
     ) {
-        $this->setRegExp($regExp);
+        $this->setPrefix($prefix);
         $this->setName($name);
         $this->setDescription($description);
     }
@@ -123,7 +123,7 @@ abstract class RoutingPatternAbstract
         );
 
         $self = new static(
-            $dto->getRegExp(),
+            $dto->getPrefix(),
             $name,
             $description
         );
@@ -160,7 +160,7 @@ abstract class RoutingPatternAbstract
         );
 
         $this
-            ->setRegExp($dto->getRegExp())
+            ->setPrefix($dto->getPrefix())
             ->setName($name)
             ->setDescription($description)
             ->setBrand($dto->getBrand());
@@ -178,7 +178,7 @@ abstract class RoutingPatternAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setRegExp(self::getRegExp())
+            ->setPrefix(self::getPrefix())
             ->setNameEn(self::getName()->getEn())
             ->setNameEs(self::getName()->getEs())
             ->setDescriptionEn(self::getDescription()->getEn())
@@ -192,7 +192,7 @@ abstract class RoutingPatternAbstract
     protected function __toArray()
     {
         return [
-            'regExp' => self::getRegExp(),
+            'prefix' => self::getPrefix(),
             'nameEn' => self::getName()->getEn(),
             'nameEs' => self::getName()->getEs(),
             'descriptionEn' => self::getDescription()->getEn(),
@@ -205,30 +205,30 @@ abstract class RoutingPatternAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * Set regExp
+     * Set prefix
      *
-     * @param string $regExp
+     * @param string $prefix
      *
      * @return self
      */
-    public function setRegExp($regExp)
+    public function setPrefix($prefix)
     {
-        Assertion::notNull($regExp, 'regExp value "%s" is null, but non null value was expected.');
-        Assertion::maxLength($regExp, 80, 'regExp value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        Assertion::notNull($prefix, 'prefix value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($prefix, 80, 'prefix value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
-        $this->regExp = $regExp;
+        $this->prefix = $prefix;
 
         return $this;
     }
 
     /**
-     * Get regExp
+     * Get prefix
      *
      * @return string
      */
-    public function getRegExp()
+    public function getPrefix()
     {
-        return $this->regExp;
+        return $this->prefix;
     }
 
     /**
