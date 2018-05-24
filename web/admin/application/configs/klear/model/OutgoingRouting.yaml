@@ -35,8 +35,8 @@ production:
             fields:
               - name${lang}
               - description${lang}
-              - regExp
-            template: '%name${lang}% %description${lang}% (%regExp%)'
+              - prefix
+            template: '%name${lang}% %description${lang}% (%prefix%)'
           order:
             RoutingPattern.name.${lang}: asc
     routingPatternGroup:

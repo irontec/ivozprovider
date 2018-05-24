@@ -13,16 +13,17 @@ production:
       isMultilang: true
       type: text
       maxLength: 55
-    regExp:
-      title: _('Reg exp / Prefix')
+    prefix:
+      title: _('Prefix')
       type: text
+      pattern: '\+[0-9]*'
       required: true
       maxLength: 80
       info:
         type: box
         position: left
         icon: help
-        text: _("If you want a prefix, use only digits. Otherwise, define your regular expresion.")
+        text: _("Must start with '+' followed by zero or more digits.")
         label: _("Need help?")
     brand:
       title: ngettext('Brand', 'Brands', 1)
