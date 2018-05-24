@@ -39,11 +39,11 @@ class CreateByOutgoingRoutingAndRoutingPattern
         RoutingPatternInterface $pattern = null
     ) {
         $lcrRuleDto = LcrRule::createDto();
-        $condition = 'fax';
         if (is_null($pattern)) {
             // Fax route
             $lcrRuleDto
                 ->setTag('fax')
+                ->setPrefix('fax')
                 ->setDescription('Special route for fax');
         } else {
             // Non-fax route
@@ -51,12 +51,11 @@ class CreateByOutgoingRoutingAndRoutingPattern
                 ->setTag(
                     $pattern->getName()->getEn()
                 )
+                ->setPrefix($pattern->getPrefix())
                 ->setDescription(
                     $pattern->getDescription()->getEn()
                 )
                 ->setRoutingPatternId($pattern->getId());
-
-            $condition = $pattern->getRegExp();
         }
 
         $brandId = $entity->getBrand()->getId();
@@ -84,8 +83,6 @@ class CreateByOutgoingRoutingAndRoutingPattern
         $lcrRule = $this
             ->createEntityFromDTO
             ->execute(LcrRule::class, $lcrRuleDto);
-
-        $lcrRule->setCondition($condition);
 
         // Setting Outgoing Routing also sets from_uri (see model)
         $lcrRule->setOutgoingRouting($entity);
