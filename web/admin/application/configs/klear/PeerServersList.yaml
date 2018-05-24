@@ -30,7 +30,6 @@ production:
           default: peerServersEdit_screen
         blacklist:
           domain: true
-          params: true
           transport: true
           uriScheme: true
           authNeeded: true
@@ -38,7 +37,6 @@ production:
           authPassword: true
           sendPAI: true
           sendRPID: true
-          prefix: true
           hostname: true
           ip: true
           port: true
@@ -74,8 +72,6 @@ production:
           sendPAI: true
           fromUser: true
           fromDomain: true
-          prefix: true
-          params: true
       fixedPositions: &peerServersFixedPositions_Link
         group0:
           label: _("Basic Configuration")
@@ -106,13 +102,6 @@ production:
           fields:
             fromUser: 6
             fromDomain: 6
-        group4:
-          label: _("R-URI customization (after numeric transformations)")
-          colsPerRow: 12
-          collapsed: true
-          fields:
-            prefix: 4
-            params: 6
 
     peerServersEdit_screen: &peerServersEdit_screenLink
       <<: *PeerServers
