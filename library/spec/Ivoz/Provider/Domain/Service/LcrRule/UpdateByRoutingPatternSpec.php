@@ -50,12 +50,10 @@ class UpdateByRoutingPatternSpec extends ObjectBehavior
         RoutingPatternInterface $entity,
         LcrRuleInterface $lcrRule
     ) {
-        $regExp = 'a-z';
         $this->getterProphecy(
             $entity,
             [
                 'getLcrRules' => [$lcrRule],
-                'getRegExp' => $regExp,
                 'getName' => new Name('en', 'es'),
                 'getDescription' => new Description('en', 'es')
             ]
@@ -65,10 +63,6 @@ class UpdateByRoutingPatternSpec extends ObjectBehavior
         $lcrRule
             ->toDto()
             ->willReturn($lcrRuleDto);
-
-        $lcrRule
-            ->setCondition($regExp)
-            ->shouldBeCalled();
 
         $this
             ->entityPersister

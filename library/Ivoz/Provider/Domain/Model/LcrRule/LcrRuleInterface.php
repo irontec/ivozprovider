@@ -13,13 +13,6 @@ interface LcrRuleInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * {@inheritDoc}
-     */
-    public function setRequestUri($requestUri = null);
-
-    public function setCondition($regexp);
-
-    /**
      * Set lcrId
      *
      * @param integer $lcrId
@@ -66,6 +59,15 @@ interface LcrRuleInterface extends LoggableEntityInterface
      * @return string
      */
     public function getFromUri();
+
+    /**
+     * Set requestUri
+     *
+     * @param string $requestUri
+     *
+     * @return self
+     */
+    public function setRequestUri($requestUri = null);
 
     /**
      * Get requestUri

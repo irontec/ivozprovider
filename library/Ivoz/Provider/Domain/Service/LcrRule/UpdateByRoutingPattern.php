@@ -47,8 +47,6 @@ class UpdateByRoutingPattern implements RoutingPatternLifecycleEventHandlerInter
 
         foreach ($lcrRules as $lcrRule) {
 
-            $lcrRule->setCondition($entity->getRegExp());
-
             /**
              * @var LcrRuleDTO $lcrRuleDTO
              */

@@ -17,7 +17,7 @@ Feature: Retrieve routing pattern groups rel patterns
           {
               "id": 1,
               "routingPattern": {
-                  "regExp": "+34",
+                  "prefix": "+34",
                   "id": 1,
                   "name": {
                       "en": "en",
@@ -39,7 +39,7 @@ Feature: Retrieve routing pattern groups rel patterns
           {
               "id": 2,
               "routingPattern": {
-                  "regExp": "+34",
+                  "prefix": "+34",
                   "id": 1,
                   "name": {
                       "en": "en",
@@ -73,7 +73,7 @@ Feature: Retrieve routing pattern groups rel patterns
       {
           "id": 1,
           "routingPattern": {
-              "regExp": "+34",
+              "prefix": "+34",
               "id": 1,
               "name": {
                   "en": "en",

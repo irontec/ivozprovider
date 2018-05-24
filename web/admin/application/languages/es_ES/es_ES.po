@@ -968,12 +968,6 @@ msgstr ""
 "Si ningún miembro de la cola contesta en estos segundos, se activará la "
 "lógica de no contesta. Dejar vacío para deshabilitar."
 
-msgid ""
-"If you want a prefix, use only digits. Otherwise, define your regular "
-"expresion."
-msgstr ""
-"Si desea un prefijo, use solo dígitos. Si no, defina una expresión regular."
-
 msgid "Ignore"
 msgstr "Ignorar"
 
@@ -1367,6 +1361,9 @@ msgid_plural "Musics on Hold"
 msgstr[0] "Música en espera"
 msgstr[1] "Músicas en espera"
 
+msgid "Must start with '+' followed by zero or more digits."
+msgstr "Debe comenzar con '+' seguido de cero o más dígitos."
+
 msgid "Must start with sip or sips followed by colon"
 msgstr "Debe comenzar con sip o sips seguido de dos puntos"
 
@@ -1689,8 +1686,9 @@ msgid_plural "Prepaid Balances"
 msgstr[0] "Saldo prepago"
 msgstr[1] "Saldos prepago"
 
+#, fuzzy
 msgid "Prepend this field to callee"
-msgstr "Añadir este campo como prefijo del número destino"
+msgstr "Evitar llamadas perdidas"
 
 msgid "Prevent missed calls"
 msgstr "Evitar llamadas perdidas"
@@ -1760,10 +1758,11 @@ msgstr[0] "Miembro de cola"
 msgstr[1] "Miembros de cola"
 
 msgid "R-URI customization (after numeric transformations)"
-msgstr "Transformaciones R-URI posteriores a las transformaciones numéricas"
+msgstr ""
 
+#, fuzzy
 msgid "R-URI params"
-msgstr "Parámetros R-URI"
+msgstr "Patrón R-URI"
 
 msgid "R-URI pattern"
 msgstr "Patrón R-URI"
@@ -1815,9 +1814,6 @@ msgstr "Referee"
 
 msgid "Referrer"
 msgstr "Referrer"
-
-msgid "Reg exp / Prefix"
-msgstr "Expr. Regular / Prefijo"
 
 msgid "Registrar Server URI"
 msgstr "URI Servidor de registro"

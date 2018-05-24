@@ -79,10 +79,6 @@ class CreateByOutgoingRoutingAndRoutingPatternSpec extends ObjectBehavior
     ) {
         $this->createExampleBase($entity, $brand, $lcrRule);
 
-        $lcrRule
-            ->setCondition('fax')
-            ->shouldBeCalled();
-
         $this
             ->entityPersister
             ->persist(Argument::type(LcrRule::class), true);
@@ -96,10 +92,6 @@ class CreateByOutgoingRoutingAndRoutingPatternSpec extends ObjectBehavior
         LcrRuleInterface $lcrRule
     ) {
         $this->createExampleBase($entity, $brand, $lcrRule);
-
-        $lcrRule
-            ->setCondition('fax')
-            ->shouldBeCalled();
 
         $validatorCallback = function (LcrRule $lcrRule) {
             if ($lcrRule->getTag() !== 'fax') {
@@ -135,12 +127,8 @@ class CreateByOutgoingRoutingAndRoutingPatternSpec extends ObjectBehavior
             ->shouldBeCalled();
 
         $pattern
-            ->getRegExp()
-            ->willReturn('regExp')
-            ->shouldBeCalled();
-
-        $lcrRule
-            ->setCondition('regExp')
+            ->getPrefix()
+            ->willReturn('prefix')
             ->shouldBeCalled();
 
         $pattern
@@ -157,7 +145,7 @@ class CreateByOutgoingRoutingAndRoutingPatternSpec extends ObjectBehavior
                 return false;
             }
 
-            if ($lcrRule->getCondition() !== 'regExp') {
+            if ($lcrRule->getPrefix() !== 'prefix') {
                 return false;
             }
 
@@ -188,10 +176,6 @@ class CreateByOutgoingRoutingAndRoutingPatternSpec extends ObjectBehavior
             ->getId()
             ->willReturn(2);
 
-        $lcrRule
-            ->setCondition('fax')
-            ->shouldBeCalled();
-
         $validatorCallback = function (LcrRule $lcrRule) {
             return $lcrRule->getFromUri() === '^b1c2$';
         };
@@ -213,10 +197,6 @@ class CreateByOutgoingRoutingAndRoutingPatternSpec extends ObjectBehavior
         $entity
             ->getCompany()
             ->willReturn(null)
-            ->shouldBeCalled();
-
-        $lcrRule
-            ->setCondition('fax')
             ->shouldBeCalled();
 
         $validatorCallback = function (LcrRule $lcrRule) {
