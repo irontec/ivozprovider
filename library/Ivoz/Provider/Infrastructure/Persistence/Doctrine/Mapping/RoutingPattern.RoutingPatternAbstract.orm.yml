@@ -8,13 +8,12 @@ Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternAbstract:
       class: Description
       columnPrefix: false
   fields:
-    regExp:
+    prefix:
       type: string
       nullable: false
       length: 80
       options:
         fixed: false
-      column: '`regExp`'
   manyToOne:
     brand:
       targetEntity: \Ivoz\Provider\Domain\Model\Brand\BrandInterface
