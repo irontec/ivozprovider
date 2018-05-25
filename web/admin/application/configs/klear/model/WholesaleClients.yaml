@@ -159,6 +159,22 @@ production:
             fields:
               - iden
             template: '%iden%'
+    relRoutingTags:
+      title: ngettext('Routing Tag', 'Routing Tags', 0)
+      type: multiselect
+      source:
+        data: mapper
+        config:
+          filterClass: IvozProvider_Klear_Filter_Brand
+          relation: \Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTag
+          relationProperty: company
+          relatedProperty: routingTag
+          related: \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTag
+          relatedFieldName:
+            fields:
+              - name
+              - tag
+            template: '%name% (%tag%)'
 staging:
   _extends: production
 testing:

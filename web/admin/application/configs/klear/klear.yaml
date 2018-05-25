@@ -166,6 +166,10 @@ production:
           title: ngettext('Routing pattern group', 'Routing pattern groups', 0)
           class: ui-silk-script-link
           description: _("List of %s", ngettext('Routing pattern group', 'Routing pattern groups', 0))
+        RoutingTagsList:
+          title: ngettext('Routing Tag', 'Routing Tags', 0)
+          class: ui-silk-tag-purple
+          description: _("List of %s", ngettext('Routing Tag', 'Routing Tags', 0))
         OutgoingRoutingList:
           title: ngettext('Outgoing Routing', 'Outgoing Routings', 0)
           class: ui-silk-arrow-divide

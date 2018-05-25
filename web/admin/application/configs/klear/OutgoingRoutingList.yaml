@@ -20,6 +20,7 @@ production:
       fields: &outgoingRouting_fieldsLink
         order: &outgoingRouting_fieldsOrder
           company: true
+          routingTag: true
           type: true
           target: true
           routingPattern: true
@@ -59,7 +60,8 @@ production:
         group0:
           colsPerRow: 12
           fields:
-            company: 12
+            company: 8
+            routingTag: 4
         group1:
           colsPerRow: 12
           label: _("Call destination")

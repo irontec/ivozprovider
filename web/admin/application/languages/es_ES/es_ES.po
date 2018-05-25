@@ -1869,6 +1869,11 @@ msgstr[1] "Candados"
 msgid "Route type"
 msgstr "Enrutar"
 
+msgid "Routing Tag"
+msgid_plural "Routing Tags"
+msgstr[0] "Etiqueta de ruta"
+msgstr[1] "Etiquetas de ruta"
+
 msgid "Routing configuration"
 msgstr "Configuración de enrutado"
 
