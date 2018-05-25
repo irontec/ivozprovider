@@ -14,9 +14,7 @@ class LcrRuleSpec extends ObjectBehavior
         $dto = new LcrRuleDto();
         $dto->setLcrId(1)
             ->setStopper(1)
-            ->setEnabled(1)
-            ->setTag('tag')
-            ->setDescription('description');
+            ->setEnabled(1);
 
         $this->beConstructedThrough(
             'fromDto',
