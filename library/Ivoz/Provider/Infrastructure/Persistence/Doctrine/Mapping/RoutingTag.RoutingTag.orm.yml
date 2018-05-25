@@ -1,0 +1,20 @@
+Ivoz\Provider\Domain\Model\RoutingTag\RoutingTag:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\RoutingTagDoctrineRepository
+  type: entity
+  table: RoutingTags
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  oneToMany:
+    outgoingRoutings:
+      targetEntity: Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface
+      mappedBy: routingTag
+    relCompanies:
+      targetEntity: Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface
+      mappedBy: routingTag
