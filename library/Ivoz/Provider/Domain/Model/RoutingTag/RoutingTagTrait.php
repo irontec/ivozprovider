@@ -1,6 +1,6 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Model\RoutingPattern;
+namespace Ivoz\Provider\Domain\Model\RoutingTag;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -8,10 +8,10 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
- * RoutingPatternTrait
+ * RoutingTagTrait
  * @codeCoverageIgnore
  */
-trait RoutingPatternTrait
+trait RoutingTagTrait
 {
     /**
      * @var integer
@@ -26,12 +26,7 @@ trait RoutingPatternTrait
     /**
      * @var Collection
      */
-    protected $relPatternGroups;
-
-    /**
-     * @var Collection
-     */
-    protected $lcrRules;
+    protected $relCompanies;
 
 
     /**
@@ -41,8 +36,7 @@ trait RoutingPatternTrait
     {
         parent::__construct(...func_get_args());
         $this->outgoingRoutings = new ArrayCollection();
-        $this->relPatternGroups = new ArrayCollection();
-        $this->lcrRules = new ArrayCollection();
+        $this->relCompanies = new ArrayCollection();
     }
 
     /**
@@ -53,19 +47,15 @@ trait RoutingPatternTrait
     public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto RoutingPatternDto
+         * @var $dto RoutingTagDto
          */
         $self = parent::fromDto($dto);
         if ($dto->getOutgoingRoutings()) {
             $self->replaceOutgoingRoutings($dto->getOutgoingRoutings());
         }
 
-        if ($dto->getRelPatternGroups()) {
-            $self->replaceRelPatternGroups($dto->getRelPatternGroups());
-        }
-
-        if ($dto->getLcrRules()) {
-            $self->replaceLcrRules($dto->getLcrRules());
+        if ($dto->getRelCompanies()) {
+            $self->replaceRelCompanies($dto->getRelCompanies());
         }
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -82,24 +72,21 @@ trait RoutingPatternTrait
     public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto RoutingPatternDto
+         * @var $dto RoutingTagDto
          */
         parent::updateFromDto($dto);
         if ($dto->getOutgoingRoutings()) {
             $this->replaceOutgoingRoutings($dto->getOutgoingRoutings());
         }
-        if ($dto->getRelPatternGroups()) {
-            $this->replaceRelPatternGroups($dto->getRelPatternGroups());
-        }
-        if ($dto->getLcrRules()) {
-            $this->replaceLcrRules($dto->getLcrRules());
+        if ($dto->getRelCompanies()) {
+            $this->replaceRelCompanies($dto->getRelCompanies());
         }
         return $this;
     }
 
     /**
      * @param int $depth
-     * @return RoutingPatternDto
+     * @return RoutingTagDto
      */
     public function toDto($depth = 0)
     {
@@ -124,7 +111,7 @@ trait RoutingPatternTrait
      *
      * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting
      *
-     * @return RoutingPatternTrait
+     * @return RoutingTagTrait
      */
     public function addOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting)
     {
@@ -156,7 +143,7 @@ trait RoutingPatternTrait
         foreach ($outgoingRoutings as $entity) {
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
-            $entity->setRoutingPattern($this);
+            $entity->setRoutingTag($this);
         }
         $updatedEntityKeys = array_keys($updatedEntities);
 
@@ -192,147 +179,75 @@ trait RoutingPatternTrait
     }
 
     /**
-     * Add relPatternGroup
+     * Add relCompany
      *
-     * @param \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface $relPatternGroup
+     * @param \Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface $relCompany
      *
-     * @return RoutingPatternTrait
+     * @return RoutingTagTrait
      */
-    public function addRelPatternGroup(\Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface $relPatternGroup)
+    public function addRelCompany(\Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface $relCompany)
     {
-        $this->relPatternGroups->add($relPatternGroup);
+        $this->relCompanies->add($relCompany);
 
         return $this;
     }
 
     /**
-     * Remove relPatternGroup
+     * Remove relCompany
      *
-     * @param \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface $relPatternGroup
+     * @param \Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface $relCompany
      */
-    public function removeRelPatternGroup(\Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface $relPatternGroup)
+    public function removeRelCompany(\Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface $relCompany)
     {
-        $this->relPatternGroups->removeElement($relPatternGroup);
+        $this->relCompanies->removeElement($relCompany);
     }
 
     /**
-     * Replace relPatternGroups
+     * Replace relCompanies
      *
-     * @param \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface[] $relPatternGroups
+     * @param \Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface[] $relCompanies
      * @return self
      */
-    public function replaceRelPatternGroups(Collection $relPatternGroups)
+    public function replaceRelCompanies(Collection $relCompanies)
     {
         $updatedEntities = [];
         $fallBackId = -1;
-        foreach ($relPatternGroups as $entity) {
+        foreach ($relCompanies as $entity) {
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
-            $entity->setRoutingPattern($this);
+            $entity->setRoutingTag($this);
         }
         $updatedEntityKeys = array_keys($updatedEntities);
 
-        foreach ($this->relPatternGroups as $key => $entity) {
+        foreach ($this->relCompanies as $key => $entity) {
             $identity = $entity->getId();
             if (in_array($identity, $updatedEntityKeys)) {
-                $this->relPatternGroups->set($key, $updatedEntities[$identity]);
+                $this->relCompanies->set($key, $updatedEntities[$identity]);
             } else {
-                $this->relPatternGroups->remove($key);
+                $this->relCompanies->remove($key);
             }
             unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
-            $this->addRelPatternGroup($entity);
+            $this->addRelCompany($entity);
         }
 
         return $this;
     }
 
     /**
-     * Get relPatternGroups
+     * Get relCompanies
      *
-     * @return \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface[]
+     * @return \Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface[]
      */
-    public function getRelPatternGroups(Criteria $criteria = null)
+    public function getRelCompanies(Criteria $criteria = null)
     {
         if (!is_null($criteria)) {
-            return $this->relPatternGroups->matching($criteria)->toArray();
+            return $this->relCompanies->matching($criteria)->toArray();
         }
 
-        return $this->relPatternGroups->toArray();
-    }
-
-    /**
-     * Add lcrRule
-     *
-     * @param \Ivoz\Provider\Domain\Model\LcrRule\LcrRuleInterface $lcrRule
-     *
-     * @return RoutingPatternTrait
-     */
-    public function addLcrRule(\Ivoz\Provider\Domain\Model\LcrRule\LcrRuleInterface $lcrRule)
-    {
-        $this->lcrRules->add($lcrRule);
-
-        return $this;
-    }
-
-    /**
-     * Remove lcrRule
-     *
-     * @param \Ivoz\Provider\Domain\Model\LcrRule\LcrRuleInterface $lcrRule
-     */
-    public function removeLcrRule(\Ivoz\Provider\Domain\Model\LcrRule\LcrRuleInterface $lcrRule)
-    {
-        $this->lcrRules->removeElement($lcrRule);
-    }
-
-    /**
-     * Replace lcrRules
-     *
-     * @param \Ivoz\Provider\Domain\Model\LcrRule\LcrRuleInterface[] $lcrRules
-     * @return self
-     */
-    public function replaceLcrRules(Collection $lcrRules)
-    {
-        $updatedEntities = [];
-        $fallBackId = -1;
-        foreach ($lcrRules as $entity) {
-            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
-            $updatedEntities[$index] = $entity;
-            $entity->setRoutingPattern($this);
-        }
-        $updatedEntityKeys = array_keys($updatedEntities);
-
-        foreach ($this->lcrRules as $key => $entity) {
-            $identity = $entity->getId();
-            if (in_array($identity, $updatedEntityKeys)) {
-                $this->lcrRules->set($key, $updatedEntities[$identity]);
-            } else {
-                $this->lcrRules->remove($key);
-            }
-            unset($updatedEntities[$identity]);
-        }
-
-        foreach ($updatedEntities as $entity) {
-            $this->addLcrRule($entity);
-        }
-
-        return $this;
-    }
-
-    /**
-     * Get lcrRules
-     *
-     * @return \Ivoz\Provider\Domain\Model\LcrRule\LcrRuleInterface[]
-     */
-    public function getLcrRules(Criteria $criteria = null)
-    {
-        if (!is_null($criteria)) {
-            return $this->lcrRules->matching($criteria)->toArray();
-        }
-
-        return $this->lcrRules->toArray();
+        return $this->relCompanies->toArray();
     }
 
 

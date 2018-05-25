@@ -222,6 +222,11 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
      */
     private $relCodecs = null;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagDto[] | null
+     */
+    private $relRoutingTags = null;
+
 
     use DtoNormalizer;
 
@@ -322,7 +327,8 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'musicsOnHold' => $this->getMusicsOnHold(),
             'recordings' => $this->getRecordings(),
             'relFeatures' => $this->getRelFeatures(),
-            'relCodecs' => $this->getRelCodecs()
+            'relCodecs' => $this->getRelCodecs(),
+            'relRoutingTags' => $this->getRelRoutingTags()
         ];
     }
 
@@ -453,6 +459,17 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             }
         }
 
+        if (!is_null($this->relRoutingTags)) {
+            $items = $this->getRelRoutingTags();
+            $this->relRoutingTags = [];
+            foreach ($items as $item) {
+                $this->relRoutingTags[] = $transformer->transform(
+                    'Ivoz\\Provider\\Domain\\Model\\CompanyRelRoutingTag\\CompanyRelRoutingTag',
+                    $item->getId() ?? $item
+                );
+            }
+        }
+
     }
 
     /**
@@ -499,6 +516,10 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         $this->relCodecs = $transformer->transform(
             'Ivoz\\Provider\\Domain\\Model\\CompanyRelCodec\\CompanyRelCodec',
             $this->relCodecs
+        );
+        $this->relRoutingTags = $transformer->transform(
+            'Ivoz\\Provider\\Domain\\Model\\CompanyRelRoutingTag\\CompanyRelRoutingTag',
+            $this->relRoutingTags
         );
     }
 
@@ -1652,6 +1673,26 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     public function getRelCodecs()
     {
         return $this->relCodecs;
+    }
+
+    /**
+     * @param array $relRoutingTags
+     *
+     * @return static
+     */
+    public function setRelRoutingTags($relRoutingTags = null)
+    {
+        $this->relRoutingTags = $relRoutingTags;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getRelRoutingTags()
+    {
+        return $this->relRoutingTags;
     }
 }
 

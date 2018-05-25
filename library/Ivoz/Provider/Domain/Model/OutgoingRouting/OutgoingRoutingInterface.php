@@ -14,6 +14,16 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @return array|RoutingPatternInterface[]
+     */
+    public function getRoutingPatterns();
+
+    /**
+     * @param RoutingPatternInterface $pattern
+     */
+    public function hasRoutingPattern(\Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface $pattern);
+
+    /**
      * Set type
      *
      * @param string $type
@@ -140,6 +150,22 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface
      */
     public function getRoutingPatternGroup();
+
+    /**
+     * Set routingTag
+     *
+     * @param \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface $routingTag
+     *
+     * @return self
+     */
+    public function setRoutingTag(\Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface $routingTag = null);
+
+    /**
+     * Get routingTag
+     *
+     * @return \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface
+     */
+    public function getRoutingTag();
 
     /**
      * Add lcrRule

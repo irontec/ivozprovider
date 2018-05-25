@@ -53,6 +53,11 @@ abstract class OutgoingRoutingAbstract
      */
     protected $routingPatternGroup;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface
+     */
+    protected $routingTag;
+
 
     use ChangelogTrait;
 
@@ -139,6 +144,7 @@ abstract class OutgoingRoutingAbstract
             ->setPeeringContract($dto->getPeeringContract())
             ->setRoutingPattern($dto->getRoutingPattern())
             ->setRoutingPatternGroup($dto->getRoutingPatternGroup())
+            ->setRoutingTag($dto->getRoutingTag())
         ;
 
         $self->sanitizeValues();
@@ -166,7 +172,8 @@ abstract class OutgoingRoutingAbstract
             ->setCompany($dto->getCompany())
             ->setPeeringContract($dto->getPeeringContract())
             ->setRoutingPattern($dto->getRoutingPattern())
-            ->setRoutingPatternGroup($dto->getRoutingPatternGroup());
+            ->setRoutingPatternGroup($dto->getRoutingPatternGroup())
+            ->setRoutingTag($dto->getRoutingTag());
 
 
 
@@ -188,7 +195,8 @@ abstract class OutgoingRoutingAbstract
             ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
             ->setPeeringContract(\Ivoz\Provider\Domain\Model\PeeringContract\PeeringContract::entityToDto(self::getPeeringContract(), $depth))
             ->setRoutingPattern(\Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPattern::entityToDto(self::getRoutingPattern(), $depth))
-            ->setRoutingPatternGroup(\Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup::entityToDto(self::getRoutingPatternGroup(), $depth));
+            ->setRoutingPatternGroup(\Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup::entityToDto(self::getRoutingPatternGroup(), $depth))
+            ->setRoutingTag(\Ivoz\Provider\Domain\Model\RoutingTag\RoutingTag::entityToDto(self::getRoutingTag(), $depth));
     }
 
     /**
@@ -204,7 +212,8 @@ abstract class OutgoingRoutingAbstract
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
             'peeringContractId' => self::getPeeringContract() ? self::getPeeringContract()->getId() : null,
             'routingPatternId' => self::getRoutingPattern() ? self::getRoutingPattern()->getId() : null,
-            'routingPatternGroupId' => self::getRoutingPatternGroup() ? self::getRoutingPatternGroup()->getId() : null
+            'routingPatternGroupId' => self::getRoutingPatternGroup() ? self::getRoutingPatternGroup()->getId() : null,
+            'routingTagId' => self::getRoutingTag() ? self::getRoutingTag()->getId() : null
         ];
     }
 
@@ -412,6 +421,30 @@ abstract class OutgoingRoutingAbstract
     public function getRoutingPatternGroup()
     {
         return $this->routingPatternGroup;
+    }
+
+    /**
+     * Set routingTag
+     *
+     * @param \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface $routingTag
+     *
+     * @return self
+     */
+    public function setRoutingTag(\Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface $routingTag = null)
+    {
+        $this->routingTag = $routingTag;
+
+        return $this;
+    }
+
+    /**
+     * Get routingTag
+     *
+     * @return \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface
+     */
+    public function getRoutingTag()
+    {
+        return $this->routingTag;
     }
 
 
