@@ -94,11 +94,9 @@ class CreateByOutgoingRoutingAndRoutingPatternSpec extends ObjectBehavior
         $this->createExampleBase($entity, $brand, $lcrRule);
 
         $validatorCallback = function (LcrRule $lcrRule) {
-            if ($lcrRule->getTag() !== 'fax') {
+            if ($lcrRule->getPrefix() !== 'fax') {
                 return false;
             }
-
-            return $lcrRule->getDescription() === 'Special route for fax';
         };
 
         $this
@@ -117,16 +115,6 @@ class CreateByOutgoingRoutingAndRoutingPatternSpec extends ObjectBehavior
         $this->createExampleBase($entity, $brand, $lcrRule);
 
         $pattern
-            ->getName()
-            ->willReturn(new Name('nameEn', 'nameEs'))
-            ->shouldBeCalled();
-
-        $pattern
-            ->getDescription()
-            ->willReturn(new Description('descEn', 'descEs'))
-            ->shouldBeCalled();
-
-        $pattern
             ->getPrefix()
             ->willReturn('prefix')
             ->shouldBeCalled();
@@ -137,14 +125,6 @@ class CreateByOutgoingRoutingAndRoutingPatternSpec extends ObjectBehavior
             ->shouldBeCalled();
 
         $validatorCallback = function (LcrRule $lcrRule) {
-            if ($lcrRule->getTag() !== 'nameEn') {
-                return false;
-            }
-
-            if ($lcrRule->getDescription() !== 'descEn') {
-                return false;
-            }
-
             if ($lcrRule->getPrefix() !== 'prefix') {
                 return false;
             }

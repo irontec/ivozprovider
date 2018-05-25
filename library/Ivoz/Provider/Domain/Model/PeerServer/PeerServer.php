@@ -106,11 +106,6 @@ class PeerServer extends PeerServerAbstract implements PeerServerInterface
         return parent::setIp($ip);
     }
 
-    public function getFlags()
-    {
-        return $this->getSendPAI() + ($this->getSendRPID()*2);
-    }
-
     public function getName()
     {
         return

@@ -26,7 +26,6 @@ class ProviderLcrRule extends Fixture implements DependentFixtureInterface
         $item3->setFromUri("^b1c[0-9]+\$");
         $item3->setStopper(0);
         $item3->setEnabled(1);
-        $item3->setTag("Afghanistan");
         $item3->setRoutingPattern($this->getReference('_reference_ProviderRoutingPatternRoutingPattern68'));
         $item3->setOutgoingRouting($this->getReference('_reference_ProviderOutgoingRouting2'));
         $this->addReference('_reference_ProviderLcrRule3', $item3);
@@ -39,7 +38,6 @@ class ProviderLcrRule extends Fixture implements DependentFixtureInterface
         $item4->setFromUri("^b1c1\$");
         $item4->setStopper(0);
         $item4->setEnabled(1);
-        $item4->setTag("Afghanistan");
         $item4->setRoutingPattern($this->getReference('_reference_ProviderRoutingPatternRoutingPattern68'));
         $item4->setOutgoingRouting($this->getReference('_reference_ProviderOutgoingRouting1'));
         $this->addReference('_reference_ProviderLcrRule4', $item4);

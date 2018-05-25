@@ -54,8 +54,6 @@ class UpdateByRoutingPatternSpec extends ObjectBehavior
             $entity,
             [
                 'getLcrRules' => [$lcrRule],
-                'getName' => new Name('en', 'es'),
-                'getDescription' => new Description('en', 'es')
             ]
         );
 

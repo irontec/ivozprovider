@@ -53,16 +53,6 @@ abstract class LcrRuleAbstract
     protected $enabled = '1';
 
     /**
-     * @var string
-     */
-    protected $tag;
-
-    /**
-     * @var string
-     */
-    protected $description = '';
-
-    /**
      * @var \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface
      */
     protected $routingPattern;
@@ -78,18 +68,11 @@ abstract class LcrRuleAbstract
     /**
      * Constructor
      */
-    protected function __construct(
-        $lcrId,
-        $stopper,
-        $enabled,
-        $tag,
-        $description
-    ) {
+    protected function __construct($lcrId, $stopper, $enabled)
+    {
         $this->setLcrId($lcrId);
         $this->setStopper($stopper);
         $this->setEnabled($enabled);
-        $this->setTag($tag);
-        $this->setDescription($description);
     }
 
     abstract public function getId();
@@ -158,9 +141,7 @@ abstract class LcrRuleAbstract
         $self = new static(
             $dto->getLcrId(),
             $dto->getStopper(),
-            $dto->getEnabled(),
-            $dto->getTag(),
-            $dto->getDescription());
+            $dto->getEnabled());
 
         $self
             ->setPrefix($dto->getPrefix())
@@ -196,8 +177,6 @@ abstract class LcrRuleAbstract
             ->setMtTvalue($dto->getMtTvalue())
             ->setStopper($dto->getStopper())
             ->setEnabled($dto->getEnabled())
-            ->setTag($dto->getTag())
-            ->setDescription($dto->getDescription())
             ->setRoutingPattern($dto->getRoutingPattern())
             ->setOutgoingRouting($dto->getOutgoingRouting());
 
@@ -221,8 +200,6 @@ abstract class LcrRuleAbstract
             ->setMtTvalue(self::getMtTvalue())
             ->setStopper(self::getStopper())
             ->setEnabled(self::getEnabled())
-            ->setTag(self::getTag())
-            ->setDescription(self::getDescription())
             ->setRoutingPattern(\Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPattern::entityToDto(self::getRoutingPattern(), $depth))
             ->setOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting::entityToDto(self::getOutgoingRouting(), $depth));
     }
@@ -240,8 +217,6 @@ abstract class LcrRuleAbstract
             'mt_tvalue' => self::getMtTvalue(),
             'stopper' => self::getStopper(),
             'enabled' => self::getEnabled(),
-            'tag' => self::getTag(),
-            'description' => self::getDescription(),
             'routingPatternId' => self::getRoutingPattern() ? self::getRoutingPattern()->getId() : null,
             'outgoingRoutingId' => self::getOutgoingRouting() ? self::getOutgoingRouting()->getId() : null
         ];
@@ -444,60 +419,6 @@ abstract class LcrRuleAbstract
     public function getEnabled()
     {
         return $this->enabled;
-    }
-
-    /**
-     * Set tag
-     *
-     * @param string $tag
-     *
-     * @return self
-     */
-    public function setTag($tag)
-    {
-        Assertion::notNull($tag, 'tag value "%s" is null, but non null value was expected.');
-        Assertion::maxLength($tag, 55, 'tag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-
-        $this->tag = $tag;
-
-        return $this;
-    }
-
-    /**
-     * Get tag
-     *
-     * @return string
-     */
-    public function getTag()
-    {
-        return $this->tag;
-    }
-
-    /**
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return self
-     */
-    public function setDescription($description)
-    {
-        Assertion::notNull($description, 'description value "%s" is null, but non null value was expected.');
-        Assertion::maxLength($description, 500, 'description value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->description;
     }
 
     /**

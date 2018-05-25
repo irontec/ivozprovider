@@ -16,8 +16,6 @@ interface PeerServerInterface extends LoggableEntityInterface
      */
     public function setIp($ip = null);
 
-    public function getFlags();
-
     public function getName();
 
     /**

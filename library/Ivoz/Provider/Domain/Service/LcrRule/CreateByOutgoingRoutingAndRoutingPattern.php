@@ -42,19 +42,11 @@ class CreateByOutgoingRoutingAndRoutingPattern
         if (is_null($pattern)) {
             // Fax route
             $lcrRuleDto
-                ->setTag('fax')
-                ->setPrefix('fax')
-                ->setDescription('Special route for fax');
+                ->setPrefix('fax');
         } else {
             // Non-fax route
             $lcrRuleDto
-                ->setTag(
-                    $pattern->getName()->getEn()
-                )
                 ->setPrefix($pattern->getPrefix())
-                ->setDescription(
-                    $pattern->getDescription()->getEn()
-                )
                 ->setRoutingPatternId($pattern->getId());
         }
 

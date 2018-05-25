@@ -48,16 +48,6 @@ abstract class LcrRuleDtoAbstract implements DataTransferObjectInterface
     private $enabled = '1';
 
     /**
-     * @var string
-     */
-    private $tag;
-
-    /**
-     * @var string
-     */
-    private $description = '';
-
-    /**
      * @var integer
      */
     private $id;
@@ -97,8 +87,6 @@ abstract class LcrRuleDtoAbstract implements DataTransferObjectInterface
             'mtTvalue' => 'mtTvalue',
             'stopper' => 'stopper',
             'enabled' => 'enabled',
-            'tag' => 'tag',
-            'description' => 'description',
             'id' => 'id',
             'routingPatternId' => 'routingPattern',
             'outgoingRoutingId' => 'outgoingRouting'
@@ -118,8 +106,6 @@ abstract class LcrRuleDtoAbstract implements DataTransferObjectInterface
             'mtTvalue' => $this->getMtTvalue(),
             'stopper' => $this->getStopper(),
             'enabled' => $this->getEnabled(),
-            'tag' => $this->getTag(),
-            'description' => $this->getDescription(),
             'id' => $this->getId(),
             'routingPattern' => $this->getRoutingPattern(),
             'outgoingRouting' => $this->getOutgoingRouting()
@@ -281,46 +267,6 @@ abstract class LcrRuleDtoAbstract implements DataTransferObjectInterface
     public function getEnabled()
     {
         return $this->enabled;
-    }
-
-    /**
-     * @param string $tag
-     *
-     * @return static
-     */
-    public function setTag($tag = null)
-    {
-        $this->tag = $tag;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTag()
-    {
-        return $this->tag;
-    }
-
-    /**
-     * @param string $description
-     *
-     * @return static
-     */
-    public function setDescription($description = null)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->description;
     }
 
     /**

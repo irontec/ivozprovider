@@ -74,11 +74,6 @@ abstract class LcrGatewayAbstract
     /**
      * @var integer
      */
-    protected $flags = '0';
-
-    /**
-     * @var integer
-     */
     protected $defunct;
 
     /**
@@ -92,11 +87,10 @@ abstract class LcrGatewayAbstract
     /**
      * Constructor
      */
-    protected function __construct($lcrId, $gwName, $flags)
+    protected function __construct($lcrId, $gwName)
     {
         $this->setLcrId($lcrId);
         $this->setGwName($gwName);
-        $this->setFlags($flags);
     }
 
     abstract public function getId();
@@ -164,8 +158,7 @@ abstract class LcrGatewayAbstract
 
         $self = new static(
             $dto->getLcrId(),
-            $dto->getGwName(),
-            $dto->getFlags());
+            $dto->getGwName());
 
         $self
             ->setIp($dto->getIp())
@@ -210,7 +203,6 @@ abstract class LcrGatewayAbstract
             ->setStrip($dto->getStrip())
             ->setPrefix($dto->getPrefix())
             ->setTag($dto->getTag())
-            ->setFlags($dto->getFlags())
             ->setDefunct($dto->getDefunct())
             ->setPeerServer($dto->getPeerServer());
 
@@ -238,7 +230,6 @@ abstract class LcrGatewayAbstract
             ->setStrip(self::getStrip())
             ->setPrefix(self::getPrefix())
             ->setTag(self::getTag())
-            ->setFlags(self::getFlags())
             ->setDefunct(self::getDefunct())
             ->setPeerServer(\Ivoz\Provider\Domain\Model\PeerServer\PeerServer::entityToDto(self::getPeerServer(), $depth));
     }
@@ -260,7 +251,6 @@ abstract class LcrGatewayAbstract
             'strip' => self::getStrip(),
             'prefix' => self::getPrefix(),
             'tag' => self::getTag(),
-            'flags' => self::getFlags(),
             'defunct' => self::getDefunct(),
             'peerServerId' => self::getPeerServer() ? self::getPeerServer()->getId() : null
         ];
@@ -577,34 +567,6 @@ abstract class LcrGatewayAbstract
     public function getTag()
     {
         return $this->tag;
-    }
-
-    /**
-     * Set flags
-     *
-     * @param integer $flags
-     *
-     * @return self
-     */
-    public function setFlags($flags)
-    {
-        Assertion::notNull($flags, 'flags value "%s" is null, but non null value was expected.');
-        Assertion::integerish($flags, 'flags value "%s" is not an integer or a number castable to integer.');
-        Assertion::greaterOrEqualThan($flags, 0, 'flags provided "%s" is not greater or equal than "%s".');
-
-        $this->flags = $flags;
-
-        return $this;
-    }
-
-    /**
-     * Get flags
-     *
-     * @return integer
-     */
-    public function getFlags()
-    {
-        return $this->flags;
     }
 
     /**

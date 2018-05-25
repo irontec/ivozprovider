@@ -48,7 +48,6 @@ class UpdateByPeerServerSpec extends ObjectBehavior
                 'getPort' => null,
                 'getUriScheme' => null,
                 'getTransport' => null,
-                'getFlags' => null,
                 'getId' => null
             ]
         );
@@ -84,7 +83,6 @@ class UpdateByPeerServerSpec extends ObjectBehavior
                 'getPort' => null,
                 'getUriScheme' => null,
                 'getTransport' => null,
-                'getFlags' => null,
                 'getId' => null
             ]
         );

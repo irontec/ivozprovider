@@ -15,7 +15,6 @@ class LcrRuleDto extends LcrRuleDtoAbstract
                 'id' => 'id',
                 'prefix' => 'prefix',
                 'fromUri' => 'fromUri',
-                'tag' => 'tag',
             ];
         }
 

@@ -51,19 +51,6 @@ Ivoz\Provider\Domain\Model\LcrRule\LcrRuleAbstract:
       options:
         unsigned: true
         default: '1'
-    tag:
-      type: string
-      nullable: false
-      length: 55
-      options:
-        fixed: false
-    description:
-      type: string
-      nullable: false
-      length: 500
-      options:
-        fixed: false
-        default: ''
   manyToOne:
     routingPattern:
       targetEntity: \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface
