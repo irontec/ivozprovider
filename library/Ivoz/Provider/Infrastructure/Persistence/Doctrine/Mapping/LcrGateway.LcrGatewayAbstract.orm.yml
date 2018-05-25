@@ -74,12 +74,6 @@ Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayAbstract:
       length: 64
       options:
         fixed: false
-    flags:
-      type: integer
-      nullable: false
-      options:
-        unsigned: true
-        default: '0'
     defunct:
       type: integer
       nullable: true
