@@ -46,8 +46,6 @@ class UpdateByPeerServer implements PeerServerLifecycleEventHandlerInterface
             ->setPort($entity->getPort())
             ->setUriScheme($entity->getUriScheme())
             ->setTransport($entity->getTransport())
-            ->setTag((string) $entity->getId())
-            ->setFlags($entity->getFlags())
             ->setPeerServerId($entity->getId());
 
         $lcrGateway = $this->entityPersister->persistDto(
