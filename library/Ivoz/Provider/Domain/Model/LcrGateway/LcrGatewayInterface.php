@@ -189,22 +189,6 @@ interface LcrGatewayInterface extends LoggableEntityInterface
     public function getTag();
 
     /**
-     * Set flags
-     *
-     * @param integer $flags
-     *
-     * @return self
-     */
-    public function setFlags($flags);
-
-    /**
-     * Get flags
-     *
-     * @return integer
-     */
-    public function getFlags();
-
-    /**
      * Set defunct
      *
      * @param integer $defunct

@@ -70,11 +70,6 @@ abstract class LcrGatewayDtoAbstract implements DataTransferObjectInterface
     /**
      * @var integer
      */
-    private $flags = '0';
-
-    /**
-     * @var integer
-     */
     private $defunct;
 
     /**
@@ -116,7 +111,6 @@ abstract class LcrGatewayDtoAbstract implements DataTransferObjectInterface
             'strip' => 'strip',
             'prefix' => 'prefix',
             'tag' => 'tag',
-            'flags' => 'flags',
             'defunct' => 'defunct',
             'id' => 'id',
             'peerServerId' => 'peerServer'
@@ -140,7 +134,6 @@ abstract class LcrGatewayDtoAbstract implements DataTransferObjectInterface
             'strip' => $this->getStrip(),
             'prefix' => $this->getPrefix(),
             'tag' => $this->getTag(),
-            'flags' => $this->getFlags(),
             'defunct' => $this->getDefunct(),
             'id' => $this->getId(),
             'peerServer' => $this->getPeerServer()
@@ -381,26 +374,6 @@ abstract class LcrGatewayDtoAbstract implements DataTransferObjectInterface
     public function getTag()
     {
         return $this->tag;
-    }
-
-    /**
-     * @param integer $flags
-     *
-     * @return static
-     */
-    public function setFlags($flags = null)
-    {
-        $this->flags = $flags;
-
-        return $this;
-    }
-
-    /**
-     * @return integer
-     */
-    public function getFlags()
-    {
-        return $this->flags;
     }
 
     /**

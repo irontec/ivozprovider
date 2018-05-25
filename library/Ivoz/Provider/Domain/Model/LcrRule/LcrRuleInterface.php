@@ -125,38 +125,6 @@ interface LcrRuleInterface extends LoggableEntityInterface
     public function getEnabled();
 
     /**
-     * Set tag
-     *
-     * @param string $tag
-     *
-     * @return self
-     */
-    public function setTag($tag);
-
-    /**
-     * Get tag
-     *
-     * @return string
-     */
-    public function getTag();
-
-    /**
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return self
-     */
-    public function setDescription($description);
-
-    /**
-     * Get description
-     *
-     * @return string
-     */
-    public function getDescription();
-
-    /**
      * Set routingPattern
      *
      * @param \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface $routingPattern
