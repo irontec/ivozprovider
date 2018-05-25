@@ -62,6 +62,11 @@ class CreateByOutgoingRoutingAndRoutingPatternSpec extends ObjectBehavior
             ->getCompany()
             ->willReturn(null);
 
+        $entity
+            ->getRoutingTag()
+            ->willReturn(null)
+            ->shouldBeCalled();
+
         $this
             ->createEntityFromDTO
             ->execute(LcrRule::class, Argument::type(LcrRuleDto::class))
@@ -70,6 +75,7 @@ class CreateByOutgoingRoutingAndRoutingPatternSpec extends ObjectBehavior
         $lcrRule
             ->setOutgoingRouting($entity)
             ->shouldBeCalled();
+
     }
 
     function it_creates_lcr_rule(
