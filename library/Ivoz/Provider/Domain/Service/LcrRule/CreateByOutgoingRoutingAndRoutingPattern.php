@@ -39,6 +39,11 @@ class CreateByOutgoingRoutingAndRoutingPattern
         RoutingPatternInterface $pattern = null
     ) {
         $lcrRuleDto = LcrRule::createDto();
+
+        $routingTag = ($entity->getRoutingTag())
+            ? $entity->getRoutingTag()->getTag()
+            : "";
+
         if (is_null($pattern)) {
             // Fax route
             $lcrRuleDto
@@ -46,7 +51,7 @@ class CreateByOutgoingRoutingAndRoutingPattern
         } else {
             // Non-fax route
             $lcrRuleDto
-                ->setPrefix($pattern->getPrefix())
+                ->setPrefix($routingTag . $pattern->getPrefix())
                 ->setRoutingPatternId($pattern->getId());
         }
 
