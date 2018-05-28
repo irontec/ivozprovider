@@ -7,7 +7,8 @@ angular
         $rootScope,
         $location,
         Authentication,
-        ngProgress
+        ngProgress,
+        $translate
     ) {
         /**
          * Reset login status
@@ -40,6 +41,8 @@ angular
 
             localStorage.setItem('userName', response.userName);
             localStorage.setItem('gsQRCode', response.gsQRCode);
+            localStorage.setItem('language', response.language);
+            $translate.use(response.language);
 
             if (response.gsQRCode) {
                 localStorage.setItem('terminalName', response.terminalName);
