@@ -1,15 +1,15 @@
 <?php
 
-namespace spec\Ivoz\Provider\Domain\Service\LcrRule;
+namespace spec\Ivoz\Kam\Domain\Service\TrunksLcrRule;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
-use Ivoz\Provider\Domain\Model\LcrRule\LcrRuleInterface;
+use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface;
 use Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface;
-use Ivoz\Provider\Domain\Service\LcrRule\CreateByOutgoingRoutingAndRoutingPattern;
-use Ivoz\Provider\Domain\Service\LcrRule\UpdateByOutgoingRouting;
+use Ivoz\Kam\Domain\Service\TrunksLcrRule\CreateByOutgoingRoutingAndRoutingPattern;
+use Ivoz\Kam\Domain\Service\TrunksLcrRule\UpdateByOutgoingRouting;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -42,7 +42,7 @@ class UpdateByOutgoingRoutingSpec extends ObjectBehavior
 
     private function prepareBaseExample(
         OutgoingRoutingInterface $outgoingRouting,
-        LcrRuleInterface $lcrRule
+        TrunksLcrRuleInterface $lcrRule
     ) {
         $outgoingRouting
             ->getLcrRules()
@@ -61,7 +61,7 @@ class UpdateByOutgoingRoutingSpec extends ObjectBehavior
 
     function it_removes_old_lcr_rules(
         OutgoingRoutingInterface $outgoingRouting,
-        LcrRuleInterface $lcrRule
+        TrunksLcrRuleInterface $lcrRule
     ) {
         $this->prepareBaseExample($outgoingRouting, $lcrRule);
         $outgoingRouting
@@ -88,7 +88,7 @@ class UpdateByOutgoingRoutingSpec extends ObjectBehavior
 
     function it_sets_new_rules(
         OutgoingRoutingInterface $outgoingRouting,
-        LcrRuleInterface $lcrRule
+        TrunksLcrRuleInterface $lcrRule
     ) {
         $this->prepareBaseExample($outgoingRouting, $lcrRule);
 
@@ -108,7 +108,7 @@ class UpdateByOutgoingRoutingSpec extends ObjectBehavior
 
     function it_retrieves_routingPatternGroup_patterns_when_type_is_group(
         OutgoingRoutingInterface $outgoingRouting,
-        LcrRuleInterface $lcrRule,
+        TrunksLcrRuleInterface $lcrRule,
         RoutingPatternGroupInterface $routingPatternGroup,
         RoutingPatternInterface $routingPattern
     ) {
@@ -139,7 +139,7 @@ class UpdateByOutgoingRoutingSpec extends ObjectBehavior
 
     function it_retrieves_routingPattern_when_type_is_pattern(
         OutgoingRoutingInterface $outgoingRouting,
-        LcrRuleInterface $lcrRule,
+        TrunksLcrRuleInterface $lcrRule,
         RoutingPatternInterface $routingPattern
     ) {
         $this->prepareBaseExample($outgoingRouting, $lcrRule);

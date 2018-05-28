@@ -1,14 +1,12 @@
 <?php
 
-namespace spec\Ivoz\Provider\Domain\Service\LcrRule;
+namespace spec\Ivoz\Kam\Domain\Service\TrunksLcrRule;
 
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
-use Ivoz\Provider\Domain\Model\LcrRule\LcrRuleDto;
-use Ivoz\Provider\Domain\Model\LcrRule\LcrRuleInterface;
+use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleDto;
+use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface;
 use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface;
-use Ivoz\Provider\Domain\Model\RoutingPattern\Name;
-use Ivoz\Provider\Domain\Model\RoutingPattern\Description;
-use Ivoz\Provider\Domain\Service\LcrRule\UpdateByRoutingPattern;
+use Ivoz\Kam\Domain\Service\TrunksLcrRule\UpdateByRoutingPattern;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use spec\HelperTrait;
@@ -48,7 +46,7 @@ class UpdateByRoutingPatternSpec extends ObjectBehavior
 
     function it_updates_lcr_rules(
         RoutingPatternInterface $entity,
-        LcrRuleInterface $lcrRule
+        TrunksLcrRuleInterface $lcrRule
     ) {
         $this->getterProphecy(
             $entity,
@@ -57,7 +55,7 @@ class UpdateByRoutingPatternSpec extends ObjectBehavior
             ]
         );
 
-        $lcrRuleDto = new LcrRuleDto();
+        $lcrRuleDto = new TrunksLcrRuleDto();
         $lcrRule
             ->toDto()
             ->willReturn($lcrRuleDto);

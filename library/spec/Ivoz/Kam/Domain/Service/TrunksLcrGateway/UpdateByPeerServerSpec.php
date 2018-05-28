@@ -1,12 +1,12 @@
 <?php
 
-namespace spec\Ivoz\Provider\Domain\Service\LcrGateway;
+namespace spec\Ivoz\Kam\Domain\Service\TrunksLcrGateway;
 
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
-use Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayDto;
-use Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayInterface;
+use Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayDto;
+use Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface;
 use Ivoz\Provider\Domain\Model\PeerServer\PeerServerInterface;
-use Ivoz\Provider\Domain\Service\LcrGateway\UpdateByPeerServer;
+use Ivoz\Kam\Domain\Service\TrunksLcrGateway\UpdateByPeerServer;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use spec\HelperTrait;
@@ -36,7 +36,7 @@ class UpdateByPeerServerSpec extends ObjectBehavior
 
     function it_creates_lcr_gateway_if_none(
         PeerServerInterface $entity,
-        LcrGatewayInterface $lcrGateway
+        TrunksLcrGatewayInterface $lcrGateway
     ) {
         $this->getterProphecy(
             $entity,
@@ -55,7 +55,7 @@ class UpdateByPeerServerSpec extends ObjectBehavior
         $this
             ->entityPersister
             ->persistDto(
-                Argument::type(LcrGatewayDto::class),
+                Argument::type(TrunksLcrGatewayDto::class),
                 null,
                 true
             )
@@ -71,7 +71,7 @@ class UpdateByPeerServerSpec extends ObjectBehavior
 
     function it_updates_lcr_gateway(
         PeerServerInterface $entity,
-        LcrGatewayInterface $lcrGateway
+        TrunksLcrGatewayInterface $lcrGateway
     ) {
         $this->getterProphecy(
             $entity,
@@ -87,7 +87,7 @@ class UpdateByPeerServerSpec extends ObjectBehavior
             ]
         );
 
-        $dto = new LcrGatewayDto();
+        $dto = new TrunksLcrGatewayDto();
 
         $lcrGateway
             ->toDto()

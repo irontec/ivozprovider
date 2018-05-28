@@ -1,17 +1,17 @@
 <?php
 
-namespace spec\Ivoz\Provider\Domain\Model\LcrRule;
+namespace spec\Ivoz\Kam\Domain\Model\TrunksLcrRule;
 
-use Ivoz\Provider\Domain\Model\LcrRule\LcrRule;
-use Ivoz\Provider\Domain\Model\LcrRule\LcrRuleDto;
+use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRule;
+use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleDto;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
-class LcrRuleSpec extends ObjectBehavior
+class TrunksLcrRuleSpec extends ObjectBehavior
 {
     function let() {
 
-        $dto = new LcrRuleDto();
+        $dto = new TrunksLcrRuleDto();
         $dto->setLcrId(1)
             ->setStopper(1)
             ->setEnabled(1);
@@ -24,6 +24,6 @@ class LcrRuleSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType(LcrRule::class);
+        $this->shouldHaveType(TrunksLcrRule::class);
     }
 }

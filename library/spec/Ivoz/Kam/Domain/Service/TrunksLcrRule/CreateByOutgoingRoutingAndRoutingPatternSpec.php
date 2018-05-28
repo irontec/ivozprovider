@@ -1,19 +1,17 @@
 <?php
 
-namespace spec\Ivoz\Provider\Domain\Service\LcrRule;
+namespace spec\Ivoz\Kam\Domain\Service\TrunksLcrRule;
 
 use Ivoz\Core\Application\Service\CreateEntityFromDTO;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
-use Ivoz\Provider\Domain\Model\LcrRule\LcrRule;
-use Ivoz\Provider\Domain\Model\LcrRule\LcrRuleDto;
-use Ivoz\Provider\Domain\Model\LcrRule\LcrRuleInterface;
+use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRule;
+use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleDto;
+use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
-use Ivoz\Provider\Domain\Model\RoutingPattern\Name;
-use Ivoz\Provider\Domain\Model\RoutingPattern\Description;
 use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface;
-use Ivoz\Provider\Domain\Service\LcrRule\CreateByOutgoingRoutingAndRoutingPattern;
+use Ivoz\Kam\Domain\Service\TrunksLcrRule\CreateByOutgoingRoutingAndRoutingPattern;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -47,7 +45,7 @@ class CreateByOutgoingRoutingAndRoutingPatternSpec extends ObjectBehavior
     protected function createExampleBase(
         OutgoingRoutingInterface $entity,
         BrandInterface $brand,
-        LcrRuleInterface $lcrRule
+        TrunksLcrRuleInterface $lcrRule
     ) {
         $entity
             ->getBrand()
@@ -69,7 +67,7 @@ class CreateByOutgoingRoutingAndRoutingPatternSpec extends ObjectBehavior
 
         $this
             ->createEntityFromDTO
-            ->execute(LcrRule::class, Argument::type(LcrRuleDto::class))
+            ->execute(TrunksLcrRule::class, Argument::type(TrunksLcrRuleDto::class))
             ->willReturn($lcrRule);
 
         $lcrRule
@@ -81,13 +79,13 @@ class CreateByOutgoingRoutingAndRoutingPatternSpec extends ObjectBehavior
     function it_creates_lcr_rule(
         OutgoingRoutingInterface $entity,
         BrandInterface $brand,
-        LcrRuleInterface $lcrRule
+        TrunksLcrRuleInterface $lcrRule
     ) {
         $this->createExampleBase($entity, $brand, $lcrRule);
 
         $this
             ->entityPersister
-            ->persist(Argument::type(LcrRule::class), true);
+            ->persist(Argument::type(TrunksLcrRule::class), true);
 
         $this->execute($entity, null);
     }
@@ -95,7 +93,7 @@ class CreateByOutgoingRoutingAndRoutingPatternSpec extends ObjectBehavior
     function it_sets_fax_properties_when_pattern_is_null(
         OutgoingRoutingInterface $entity,
         BrandInterface $brand,
-        LcrRuleInterface $lcrRule
+        TrunksLcrRuleInterface $lcrRule
     ) {
         $this->createExampleBase($entity, $brand, $lcrRule);
 
@@ -115,7 +113,7 @@ class CreateByOutgoingRoutingAndRoutingPatternSpec extends ObjectBehavior
     function it_sets_properties_by_pattern(
         OutgoingRoutingInterface $entity,
         BrandInterface $brand,
-        LcrRuleInterface $lcrRule,
+        TrunksLcrRuleInterface $lcrRule,
         RoutingPatternInterface $pattern
     ) {
         $this->createExampleBase($entity, $brand, $lcrRule);
@@ -130,7 +128,7 @@ class CreateByOutgoingRoutingAndRoutingPatternSpec extends ObjectBehavior
             ->willReturn(1)
             ->shouldBeCalled();
 
-        $validatorCallback = function (LcrRule $lcrRule) {
+        $validatorCallback = function (TrunksLcrRule $lcrRule) {
             if ($lcrRule->getPrefix() !== 'prefix') {
                 return false;
             }
@@ -148,7 +146,7 @@ class CreateByOutgoingRoutingAndRoutingPatternSpec extends ObjectBehavior
     function it_sets_fromUri_by_company_and_brand_if_not_empty(
         OutgoingRoutingInterface $entity,
         BrandInterface $brand,
-        LcrRuleInterface $lcrRule,
+        TrunksLcrRuleInterface $lcrRule,
         CompanyInterface $company
     ) {
         $this->createExampleBase($entity, $brand, $lcrRule);
@@ -162,7 +160,7 @@ class CreateByOutgoingRoutingAndRoutingPatternSpec extends ObjectBehavior
             ->getId()
             ->willReturn(2);
 
-        $validatorCallback = function (LcrRule $lcrRule) {
+        $validatorCallback = function (TrunksLcrRule $lcrRule) {
             return $lcrRule->getFromUri() === '^b1c2$';
         };
 
@@ -176,7 +174,7 @@ class CreateByOutgoingRoutingAndRoutingPatternSpec extends ObjectBehavior
     function it_sets_fromUri_by_brand_if_company_is_empty(
         OutgoingRoutingInterface $entity,
         BrandInterface $brand,
-        LcrRuleInterface $lcrRule
+        TrunksLcrRuleInterface $lcrRule
     ) {
         $this->createExampleBase($entity, $brand, $lcrRule);
 

@@ -1,15 +1,15 @@
 <?php
 
-namespace spec\Ivoz\Provider\Domain\Service\LcrRuleTarget;
+namespace spec\Ivoz\Kam\Domain\Service\TrunksLcrRuleTarget;
 
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
-use Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayInterface;
-use Ivoz\Provider\Domain\Model\LcrRule\LcrRuleInterface;
-use Ivoz\Provider\Domain\Model\LcrRuleTarget\LcrRuleTargetDto;
+use Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface;
+use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface;
+use Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetDto;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 use Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface;
 use Ivoz\Provider\Domain\Model\PeerServer\PeerServerInterface;
-use Ivoz\Provider\Domain\Service\LcrRuleTarget\CreateByOutgoingRouting;
+use Ivoz\Kam\Domain\Service\TrunksLcrRuleTarget\CreateByOutgoingRouting;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use spec\HelperTrait;
@@ -47,8 +47,8 @@ class CreateByOutgoingRoutingSpec extends ObjectBehavior
         OutgoingRoutingInterface $outgoingRouting,
         PeeringContractInterface $peeringContract,
         PeerServerInterface $peerServer,
-        LcrGatewayInterface $lcrGateway,
-        LcrRuleInterface $lcrRule
+        TrunksLcrGatewayInterface $lcrGateway,
+        TrunksLcrRuleInterface $lcrRule
     ) {
         $this->getterProphecy(
             $outgoingRouting,
@@ -80,7 +80,7 @@ class CreateByOutgoingRoutingSpec extends ObjectBehavior
 
         $this
             ->entityPersister
-            ->persistDto(Argument::type(LcrRuleTargetDto::class))
+            ->persistDto(Argument::type(TrunksLcrRuleTargetDto::class))
             ->shouldBeCalled();
 
         $this->execute($outgoingRouting);
