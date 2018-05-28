@@ -162,12 +162,20 @@ angular
                 controller: 'PreferencesCtrl'
             });
 
-        $translateProvider.useStaticFilesLoader({
-            prefix: 'languages/locale-',
-            suffix: '.json'
-        });
-        $translateProvider.preferredLanguage('es');
-        $translateProvider.useSanitizeValueStrategy('escaped');
+        $translateProvider
+            .useStaticFilesLoader({
+                prefix: 'languages/locale-',
+                suffix: '.json'
+            })
+            .registerAvailableLanguageKeys(['en', 'es'])
+            .useSanitizeValueStrategy('escaped');
+
+        var userLanguage = localStorage.getItem('language');
+        if (userLanguage) {
+            $translateProvider.preferredLanguage(userLanguage);
+        } else {
+            $translateProvider.determinePreferredLanguage();
+        }
     }
 
     function init($rootScope, $location, configGlobal, $state) {
