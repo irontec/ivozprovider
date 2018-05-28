@@ -96,11 +96,11 @@ trait OutgoingRoutingTrait
     /**
      * Add lcrRule
      *
-     * @param \Ivoz\Provider\Domain\Model\LcrRule\LcrRuleInterface $lcrRule
+     * @param \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface $lcrRule
      *
      * @return OutgoingRoutingTrait
      */
-    public function addLcrRule(\Ivoz\Provider\Domain\Model\LcrRule\LcrRuleInterface $lcrRule)
+    public function addLcrRule(\Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface $lcrRule)
     {
         $this->lcrRules->add($lcrRule);
 
@@ -110,9 +110,9 @@ trait OutgoingRoutingTrait
     /**
      * Remove lcrRule
      *
-     * @param \Ivoz\Provider\Domain\Model\LcrRule\LcrRuleInterface $lcrRule
+     * @param \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface $lcrRule
      */
-    public function removeLcrRule(\Ivoz\Provider\Domain\Model\LcrRule\LcrRuleInterface $lcrRule)
+    public function removeLcrRule(\Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface $lcrRule)
     {
         $this->lcrRules->removeElement($lcrRule);
     }
@@ -120,7 +120,7 @@ trait OutgoingRoutingTrait
     /**
      * Replace lcrRules
      *
-     * @param \Ivoz\Provider\Domain\Model\LcrRule\LcrRuleInterface[] $lcrRules
+     * @param \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface[] $lcrRules
      * @return self
      */
     public function replaceLcrRules(Collection $lcrRules)
@@ -154,7 +154,7 @@ trait OutgoingRoutingTrait
     /**
      * Get lcrRules
      *
-     * @return \Ivoz\Provider\Domain\Model\LcrRule\LcrRuleInterface[]
+     * @return \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface[]
      */
     public function getLcrRules(Criteria $criteria = null)
     {

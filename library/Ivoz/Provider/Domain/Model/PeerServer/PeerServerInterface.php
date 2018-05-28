@@ -236,16 +236,16 @@ interface PeerServerInterface extends LoggableEntityInterface
     /**
      * Set lcrGateway
      *
-     * @param \Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayInterface $lcrGateway
+     * @param \Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface $lcrGateway
      *
      * @return self
      */
-    public function setLcrGateway(\Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayInterface $lcrGateway = null);
+    public function setLcrGateway(\Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface $lcrGateway = null);
 
     /**
      * Get lcrGateway
      *
-     * @return \Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayInterface
+     * @return \Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface
      */
     public function getLcrGateway();
 

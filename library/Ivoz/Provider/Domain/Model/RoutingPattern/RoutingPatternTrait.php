@@ -266,11 +266,11 @@ trait RoutingPatternTrait
     /**
      * Add lcrRule
      *
-     * @param \Ivoz\Provider\Domain\Model\LcrRule\LcrRuleInterface $lcrRule
+     * @param \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface $lcrRule
      *
      * @return RoutingPatternTrait
      */
-    public function addLcrRule(\Ivoz\Provider\Domain\Model\LcrRule\LcrRuleInterface $lcrRule)
+    public function addLcrRule(\Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface $lcrRule)
     {
         $this->lcrRules->add($lcrRule);
 
@@ -280,9 +280,9 @@ trait RoutingPatternTrait
     /**
      * Remove lcrRule
      *
-     * @param \Ivoz\Provider\Domain\Model\LcrRule\LcrRuleInterface $lcrRule
+     * @param \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface $lcrRule
      */
-    public function removeLcrRule(\Ivoz\Provider\Domain\Model\LcrRule\LcrRuleInterface $lcrRule)
+    public function removeLcrRule(\Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface $lcrRule)
     {
         $this->lcrRules->removeElement($lcrRule);
     }
@@ -290,7 +290,7 @@ trait RoutingPatternTrait
     /**
      * Replace lcrRules
      *
-     * @param \Ivoz\Provider\Domain\Model\LcrRule\LcrRuleInterface[] $lcrRules
+     * @param \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface[] $lcrRules
      * @return self
      */
     public function replaceLcrRules(Collection $lcrRules)
@@ -324,7 +324,7 @@ trait RoutingPatternTrait
     /**
      * Get lcrRules
      *
-     * @return \Ivoz\Provider\Domain\Model\LcrRule\LcrRuleInterface[]
+     * @return \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface[]
      */
     public function getLcrRules(Criteria $criteria = null)
     {

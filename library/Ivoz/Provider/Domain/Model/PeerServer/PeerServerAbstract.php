@@ -92,7 +92,7 @@ abstract class PeerServerAbstract
     protected $fromDomain;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayInterface
+     * @var \Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface
      */
     protected $lcrGateway;
 
@@ -691,11 +691,11 @@ abstract class PeerServerAbstract
     /**
      * Set lcrGateway
      *
-     * @param \Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayInterface $lcrGateway
+     * @param \Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface $lcrGateway
      *
      * @return self
      */
-    public function setLcrGateway(\Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayInterface $lcrGateway = null)
+    public function setLcrGateway(\Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface $lcrGateway = null)
     {
         $this->lcrGateway = $lcrGateway;
 
@@ -705,7 +705,7 @@ abstract class PeerServerAbstract
     /**
      * Get lcrGateway
      *
-     * @return \Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayInterface
+     * @return \Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface
      */
     public function getLcrGateway()
     {

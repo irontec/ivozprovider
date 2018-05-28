@@ -19,5 +19,5 @@ Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPattern:
       targetEntity: Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface
       mappedBy: routingPattern
     lcrRules:
-      targetEntity: Ivoz\Provider\Domain\Model\LcrRule\LcrRuleInterface
+      targetEntity: Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface
       mappedBy: routingPattern
