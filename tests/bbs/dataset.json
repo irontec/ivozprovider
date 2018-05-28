@@ -780,7 +780,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"regExp\": \"+34\",\n  \"name\": {\n  \t\"en\": \"Spain\",  \t\n  \t\"es\": \"España\"\n  },\n  \"description\": {\n  \t\"en\": \"BBS - Spain\",  \t\n  \t\"es\": \"BBS - España\"\n  },\n  \"brand\": {{brandId}}\n}"
+							"raw": "{\n  \"prefix\": \"+34\",\n  \"name\": {\n  \t\"en\": \"Spain\",  \t\n  \t\"es\": \"España\"\n  },\n  \"description\": {\n  \t\"en\": \"BBS - Spain\",  \t\n  \t\"es\": \"BBS - España\"\n  },\n  \"brand\": {{brandId}}\n}"
 						},
 						"url": {
 							"raw": "{{api_url}}/routing_patterns",
@@ -880,7 +880,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"regExp\": \"+1\",\n  \"name\": {\n  \t\"en\": \"USA\",  \t\n  \t\"es\": \"Estados Unidos\"\n  },\n  \"description\": {\n  \t\"en\": \"BBS - Usa\",  \t\n  \t\"es\": \"BBS - Estados Unidos\"\n  },\n  \"brand\": {{brandId}}\n}"
+							"raw": "{\n  \"prefix\": \"+1\",\n  \"name\": {\n  \t\"en\": \"USA\",  \t\n  \t\"es\": \"Estados Unidos\"\n  },\n  \"description\": {\n  \t\"en\": \"BBS - Usa\",  \t\n  \t\"es\": \"BBS - Estados Unidos\"\n  },\n  \"brand\": {{brandId}}\n}"
 						},
 						"url": {
 							"raw": "{{api_url}}/routing_patterns",
@@ -939,410 +939,6 @@
 							],
 							"path": [
 								"outgoing_routings"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create Destination ES",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "33215d11-abbc-43de-9fa0-ed285d960710",
-								"type": "text/javascript",
-								"exec": [
-									"tests[\"Status code is 201\"] = responseCode.code === 201;",
-									"",
-									"var jsonData = JSON.parse(responseBody)",
-									"",
-									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
-									"",
-									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
-									"",
-									"postman.setGlobalVariable(\"destinationESId\", jsonData.id);",
-									""
-								]
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{api_auth}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"name\": {\n  \t\"en\": \"Spain\",\n  \t\"es\": \"España\"\n  },\n  \"description\": {\n  \t\"en\": \"Spain\",\n  \t\"es\": \"España\"\n  },\n  \"brand\": {{brandId}}\n}"
-						},
-						"url": {
-							"raw": "{{api_url}}/destinations",
-							"host": [
-								"{{api_url}}"
-							],
-							"path": [
-								"destinations"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Add Pattern to Destination ES",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "e811bf36-abf5-48f2-b4b1-087d8e917873",
-								"type": "text/javascript",
-								"exec": [
-									"tests[\"Status code is 201\"] = responseCode.code === 201;",
-									"",
-									"var jsonData = JSON.parse(responseBody)",
-									"",
-									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
-									"",
-									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
-									"",
-									""
-								]
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{api_auth}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"prefix\": \"+34\",\n  \"destination\": {{destinationESId}}\n}"
-						},
-						"url": {
-							"raw": "{{api_url}}/tp_destinations",
-							"host": [
-								"{{api_url}}"
-							],
-							"path": [
-								"tp_destinations"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create Destination US",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "f3e91408-7d38-46bf-bf27-a1b5c5d305c2",
-								"type": "text/javascript",
-								"exec": [
-									"tests[\"Status code is 201\"] = responseCode.code === 201;",
-									"",
-									"var jsonData = JSON.parse(responseBody)",
-									"",
-									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
-									"",
-									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
-									"",
-									"postman.setGlobalVariable(\"destinationUSId\", jsonData.id);",
-									""
-								]
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{api_auth}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"name\": {\n  \t\"en\": \"USA\",\n  \t\"es\": \"EEEUU\"\n  },\n  \"description\": {\n  \t\"en\": \"United States of America\",\n  \t\"es\": \"Estados Unidos de América\"\n  },\n  \"brand\": {{brandId}}\n}"
-						},
-						"url": {
-							"raw": "{{api_url}}/destinations",
-							"host": [
-								"{{api_url}}"
-							],
-							"path": [
-								"destinations"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Add Pattern to Destination US",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "e811bf36-abf5-48f2-b4b1-087d8e917873",
-								"type": "text/javascript",
-								"exec": [
-									"tests[\"Status code is 201\"] = responseCode.code === 201;",
-									"",
-									"var jsonData = JSON.parse(responseBody)",
-									"",
-									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
-									"",
-									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
-									"",
-									""
-								]
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{api_auth}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"prefix\": \"+1\",\n  \"destination\": {{destinationUSId}}\n}"
-						},
-						"url": {
-							"raw": "{{api_url}}/tp_destinations",
-							"host": [
-								"{{api_url}}"
-							],
-							"path": [
-								"tp_destinations"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create National Rate",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "8b01386f-10ec-45ea-b067-f7e567aacc5a",
-								"type": "text/javascript",
-								"exec": [
-									"tests[\"Status code is 201\"] = responseCode.code === 201;",
-									"",
-									"var jsonData = JSON.parse(responseBody)",
-									"",
-									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
-									"",
-									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
-									"",
-									"postman.setGlobalVariable(\"nationalRateId\", jsonData.id);",
-									""
-								]
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{api_auth}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"name\": \"National Calls Rate\",\n  \"brand\": {{brandId}}\n}"
-						},
-						"url": {
-							"raw": "{{api_url}}/rates",
-							"host": [
-								"{{api_url}}"
-							],
-							"path": [
-								"rates"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Add National Costs to Rate",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "427efeed-65aa-4fbd-9d06-0a4921eb586f",
-								"type": "text/javascript",
-								"exec": [
-									"tests[\"Status code is 201\"] = responseCode.code === 201;",
-									"",
-									"var jsonData = JSON.parse(responseBody)",
-									"",
-									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
-									"",
-									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
-									"",
-									""
-								]
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{api_auth}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"connectFee\": \"0.001\",\n  \"rateCost\": \"0.3\",\n  \"rateUnit\": \"60s\",\n  \"rateIncrement\": \"1s\",\n  \"groupIntervalStart\": \"0s\",\n  \"rate\": {{nationalRateId}}\n}"
-						},
-						"url": {
-							"raw": "{{api_url}}/tp_rates",
-							"host": [
-								"{{api_url}}"
-							],
-							"path": [
-								"tp_rates"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create National Rate copy",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "09544a4e-400a-4ac7-907f-4b8e4ded463c",
-								"type": "text/javascript",
-								"exec": [
-									"tests[\"Status code is 201\"] = responseCode.code === 201;",
-									"",
-									"var jsonData = JSON.parse(responseBody)",
-									"",
-									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
-									"",
-									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
-									"",
-									"postman.setGlobalVariable(\"internationalRateId\", jsonData.id);",
-									""
-								]
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{api_auth}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"name\": \"Intenational Calls Rate\",\n  \"brand\": {{brandId}}\n}"
-						},
-						"url": {
-							"raw": "{{api_url}}/rates",
-							"host": [
-								"{{api_url}}"
-							],
-							"path": [
-								"rates"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Add International Costs to Rate",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "427efeed-65aa-4fbd-9d06-0a4921eb586f",
-								"type": "text/javascript",
-								"exec": [
-									"tests[\"Status code is 201\"] = responseCode.code === 201;",
-									"",
-									"var jsonData = JSON.parse(responseBody)",
-									"",
-									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
-									"",
-									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
-									"",
-									""
-								]
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{api_auth}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"connectFee\": \"1.500\",\n  \"rateCost\": \"1.2\",\n  \"rateUnit\": \"60s\",\n  \"rateIncrement\": \"1s\",\n  \"groupIntervalStart\": \"0s\",\n  \"rate\": {{internationalRateId}}\n}"
-						},
-						"url": {
-							"raw": "{{api_url}}/tp_rates",
-							"host": [
-								"{{api_url}}"
-							],
-							"path": [
-								"tp_rates"
 							]
 						}
 					},
@@ -1434,7 +1030,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"destinationRate\": {{destinationRateId}},\n  \"destination\": {{destinationESId}},\n  \"rate\": {{nationalRateId}}\n}"
+							"raw": "{\n  \"destination\": {\n    \"prefix\": \"+34\",\n    \"prefixName\": \"Spain\"\n  },\n  \"rate\": {\n    \"cost\": \"0.3\",\n    \"connectFee\": \"0.001\",\n    \"rateIncrement\": \"1s\",\n    \"groupIntervalStart\": \"0s\"\n  },\n  \"destinationRate\": {{destinationRateId}}\n}"
 						},
 						"url": {
 							"raw": "{{api_url}}/tp_destination_rates",
@@ -1483,7 +1079,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"destinationRate\": {{destinationRateId}},\n  \"destination\": {{destinationUSId}},\n  \"rate\": {{internationalRateId}}\n}"
+							"raw": "{\n  \"destination\": {\n    \"prefix\": \"+1\",\n    \"prefixName\": \"USA\"\n  },\n  \"rate\": {\n    \"cost\": \"0.3\",\n    \"connectFee\": \"0.001\",\n    \"rateIncrement\": \"1s\",\n    \"groupIntervalStart\": \"0s\"\n  },\n  \"destinationRate\": {{destinationRateId}}\n}"
 						},
 						"url": {
 							"raw": "{{api_url}}/tp_destination_rates",
@@ -5620,6 +5216,56 @@
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"callTypeFilter\": \"internal\",\n  \"callForwardType\": \"userNotRegistered\",\n  \"targetType\": \"extension\",\n  \"user\": {{eveUserId}},\n  \"extension\": {{daveExtensionId}}\n}"
+						},
+						"url": {
+							"raw": "{{api_url}}/call_forward_settings",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"call_forward_settings"
+							]
+						},
+						"description": "POST"
+					},
+					"response": []
+				},
+				{
+					"name": "Call Forward Charlie Inconditional External",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var jsonData = JSON.parse(responseBody)",
+									"",
+									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
+									"",
+									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{api_auth}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"callTypeFilter\": \"external\",\n  \"callForwardType\": \"inconditional\",\n  \"targetType\": \"number\",\n  \"user\": {{charlieUserId}},\n  \"numberCountry\": 70,\n  \"numberValue\": \"999661001\"\n}"
 						},
 						"url": {
 							"raw": "{{api_url}}/call_forward_settings",
