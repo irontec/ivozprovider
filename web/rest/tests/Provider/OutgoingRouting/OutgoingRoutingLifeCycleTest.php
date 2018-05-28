@@ -6,7 +6,7 @@ use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Tests\DbIntegrationTestHelperTrait;
-use Ivoz\Provider\Domain\Model\LcrRule\LcrRule;
+use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRule;
 
 class OutgoingRoutingLifeCycleTestLifeCycleTest extends KernelTestCase
 {
@@ -68,7 +68,7 @@ class OutgoingRoutingLifeCycleTestLifeCycleTest extends KernelTestCase
         $this->addOutgoingRouting();
 
         $lcrRules = $this->getChangelogByClass(
-            LcrRule::class
+            TrunksLcrRule::class
         );
 
         $this->assertGreaterThan(0, count($lcrRules));
