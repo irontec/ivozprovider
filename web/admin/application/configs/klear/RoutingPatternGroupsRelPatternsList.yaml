@@ -34,7 +34,7 @@ production:
       class: ui-silk-add
       label: true
       multiInstance: true
-      title: _("Add %s", ngettext('Routing pattern groups rel pattern', 'Routing pattern groups rel patterns', 1), "[format| (%parent%)]")
+      title: _("Add %s", ngettext('Routing pattern groups rel pattern', 'Routing pattern groups rel patterns', 1))
       shortcutOption: N
     routingPatternGroupsRelPatternsEdit_screen: &routingPatternGroupsRelPatternsEdit_screenLink
       <<: *RoutingPatternGroupsRelPatterns
