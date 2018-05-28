@@ -104,14 +104,14 @@ production:
           class: ui-silk-building
           description: _("List of %s", ngettext('Virtual PBX', 'Virtual PBXs', 0))
         RetailClientsList:
-          title: ngettext('Retail', 'Retail', 0)
+          title: ngettext('Retail', 'Retails', 0)
           class: ui-silk-basket
-          description: _("List of %s", ngettext('Retail', 'Retail', 0))
+          description: _("List of %s", ngettext('Retail', 'Retails', 0))
           showOnlyIf: ${auth.brand.retail.enabled}
         WholesaleClientsList:
-          title: ngettext('Wholesale', 'Wholesale', 0)
+          title: ngettext('Wholesale', 'Wholesales', 0)
           class: ui-silk-cart
-          description: _("List of %s", ngettext('Wholesale', 'Wholesale', 0))
+          description: _("List of %s", ngettext('Wholesale', 'Wholesales', 0))
           showOnlyIf: ${auth.brand.wholesale.enabled}
         CompanyBalancesList:
           title: ngettext('Prepaid Balance', 'Prepaid Balances', 0)
