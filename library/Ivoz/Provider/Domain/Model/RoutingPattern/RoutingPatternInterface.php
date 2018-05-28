@@ -68,6 +68,68 @@ interface RoutingPatternInterface extends EntityInterface
     public function getDescription();
 
     /**
+     * Add outgoingRouting
+     *
+     * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting
+     *
+     * @return RoutingPatternTrait
+     */
+    public function addOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting);
+
+    /**
+     * Remove outgoingRouting
+     *
+     * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting
+     */
+    public function removeOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting);
+
+    /**
+     * Replace outgoingRoutings
+     *
+     * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface[] $outgoingRoutings
+     * @return self
+     */
+    public function replaceOutgoingRoutings(Collection $outgoingRoutings);
+
+    /**
+     * Get outgoingRoutings
+     *
+     * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface[]
+     */
+    public function getOutgoingRoutings(\Doctrine\Common\Collections\Criteria $criteria = null);
+
+    /**
+     * Add relPatternGroup
+     *
+     * @param \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface $relPatternGroup
+     *
+     * @return RoutingPatternTrait
+     */
+    public function addRelPatternGroup(\Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface $relPatternGroup);
+
+    /**
+     * Remove relPatternGroup
+     *
+     * @param \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface $relPatternGroup
+     */
+    public function removeRelPatternGroup(\Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface $relPatternGroup);
+
+    /**
+     * Replace relPatternGroups
+     *
+     * @param \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface[] $relPatternGroups
+     * @return self
+     */
+    public function replaceRelPatternGroups(Collection $relPatternGroups);
+
+    /**
+     * Get relPatternGroups
+     *
+     * @return \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface[]
+     */
+    public function getRelPatternGroups(\Doctrine\Common\Collections\Criteria $criteria = null);
+
+    /**
      * Add lcrRule
      *
      * @param \Ivoz\Provider\Domain\Model\LcrRule\LcrRuleInterface $lcrRule

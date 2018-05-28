@@ -1847,6 +1847,11 @@ msgstr[1] "Route Locks"
 msgid "Route type"
 msgstr "Route type"
 
+msgid "Routing Tag"
+msgid_plural "Routing Tags"
+msgstr[0] "Routing Tag"
+msgstr[1] "Routing Tags"
+
 msgid "Routing configuration"
 msgstr "Routing configuration"
 

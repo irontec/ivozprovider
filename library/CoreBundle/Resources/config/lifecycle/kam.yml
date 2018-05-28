@@ -1,4 +1,0 @@
-imports:
-  - { resource: "@CoreBundle/Resources/config/lifecycle/kam/trusted.yml" }
-  - { resource: "@CoreBundle/Resources/config/lifecycle/kam/trunks_uacreg.yml" }
-  - { resource: "@CoreBundle/Resources/config/lifecycle/kam/users_address.yml" }

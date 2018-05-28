@@ -13,7 +13,7 @@ interface RoutingPatternGroupsRelPatternInterface extends EntityInterface
      *
      * @return self
      */
-    public function setRoutingPattern(\Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface $routingPattern);
+    public function setRoutingPattern(\Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface $routingPattern = null);
 
     /**
      * Get routingPattern

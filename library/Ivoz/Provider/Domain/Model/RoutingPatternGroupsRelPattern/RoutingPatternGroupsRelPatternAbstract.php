@@ -163,7 +163,7 @@ abstract class RoutingPatternGroupsRelPatternAbstract
      *
      * @return self
      */
-    public function setRoutingPattern(\Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface $routingPattern)
+    public function setRoutingPattern(\Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface $routingPattern = null)
     {
         $this->routingPattern = $routingPattern;
 

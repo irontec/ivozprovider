@@ -23,6 +23,22 @@ production:
             visualFilter:
               hide: ["routingPattern","routingPatternGroup"]
               show: []
+    routingTag:
+      title: ngettext('Routing Tag', 'Routing Tags', 1)
+      type: select
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTag
+          filterClass: IvozProvider_Klear_Filter_Brand
+          fieldName:
+            fields:
+              - name
+              - tag
+            template: '%name% (%tag%)'
+          order:
+            RoutingTag.name: asc
+        'null': _("Unassigned")
     routingPattern:
       title: _('Select destination pattern')
       type: select

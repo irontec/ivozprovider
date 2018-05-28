@@ -864,5 +864,36 @@ interface CompanyInterface extends LoggableEntityInterface
      */
     public function getRelCodecs(\Doctrine\Common\Collections\Criteria $criteria = null);
 
+    /**
+     * Add relRoutingTag
+     *
+     * @param \Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface $relRoutingTag
+     *
+     * @return CompanyTrait
+     */
+    public function addRelRoutingTag(\Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface $relRoutingTag);
+
+    /**
+     * Remove relRoutingTag
+     *
+     * @param \Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface $relRoutingTag
+     */
+    public function removeRelRoutingTag(\Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface $relRoutingTag);
+
+    /**
+     * Replace relRoutingTags
+     *
+     * @param \Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface[] $relRoutingTags
+     * @return self
+     */
+    public function replaceRelRoutingTags(Collection $relRoutingTags);
+
+    /**
+     * Get relRoutingTags
+     *
+     * @return \Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface[]
+     */
+    public function getRelRoutingTags(\Doctrine\Common\Collections\Criteria $criteria = null);
+
 }
 

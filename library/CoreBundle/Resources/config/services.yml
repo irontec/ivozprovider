@@ -7,7 +7,6 @@ imports:
   - { resource: "@CoreBundle/Resources/config/services/events.yml" }
   - { resource: "@CoreBundle/Resources/config/services/application.yml" }
   - { resource: '@CoreBundle/Resources/config/lifecycle.yml' }
-  - { resource: '@CoreBundle/Resources/config/lifecycle.yml' }
   - { resource: '@CoreBundle/Resources/config/model.yml' }
 
 services:

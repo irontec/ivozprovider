@@ -39,6 +39,8 @@ doctrine:
         Ivoz\Provider\Domain\Model\Company\Company
       Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecInterface:
         Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodec
+      Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface:
+        Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTag
       Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface:
         Ivoz\Provider\Domain\Model\CompanyService\CompanyService
       Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface:
@@ -167,6 +169,8 @@ doctrine:
         Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPattern
       Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface:
         Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPattern
+      Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface:
+        Ivoz\Provider\Domain\Model\RoutingTag\RoutingTag
       Ivoz\Provider\Domain\Model\Schedule\ScheduleInterface:
         Ivoz\Provider\Domain\Model\Schedule\Schedule
       Ivoz\Provider\Domain\Model\Service\ServiceInterface:

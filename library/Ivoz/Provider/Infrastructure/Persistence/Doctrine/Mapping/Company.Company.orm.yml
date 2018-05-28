@@ -48,3 +48,8 @@ Ivoz\Provider\Domain\Model\Company\Company:
       mappedBy: company
       cascade: ['persist']
       orphanRemoval: true
+    relRoutingTags:
+      targetEntity: Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface
+      mappedBy: company
+      cascade: ['persist']
+      orphanRemoval: true

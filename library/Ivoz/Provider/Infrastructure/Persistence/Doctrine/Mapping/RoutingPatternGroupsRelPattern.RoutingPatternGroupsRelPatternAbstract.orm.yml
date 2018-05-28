@@ -11,7 +11,7 @@ Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRe
       cascade: {  }
       fetch: LAZY
       mappedBy: null
-      inversedBy: null
+      inversedBy: relPatternGroups
       joinColumns:
         routingPatternId:
           referencedColumnName: id

@@ -247,6 +247,10 @@ mappers:
         modelFile: RoutingPatterns,
         entity: 'Ivoz\\Provider\\Domain\\Model\\RoutingPattern\\RoutingPattern'
     }
+  - &RoutingTags {
+        modelFile: RoutingTags,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\RoutingTag\\RoutingTag'
+    }
   - &RouteLocks {
         modelFile: RouteLocks,
         entity: 'Ivoz\\Provider\\Domain\\Model\\RouteLock\\RouteLock'
