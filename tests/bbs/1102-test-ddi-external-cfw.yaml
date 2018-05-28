@@ -1,0 +1,22 @@
+# ----------------------------------------------------------------------------
+scenarios:
+  - name: call from world to forwarded to alice DDI
+    timeout: 20
+    sessions:
+
+      - external:
+          - wait
+          - call:
+              dest: "sip:999661003@trunks.ivozprovider.local"
+              caller: 999663333
+          - waitfor: CONFIRMED
+          - wait: 2
+          - hangup
+          - waitfor: DISCONNCTD
+      - alice:
+          - register:
+              <<: *alice_cred
+          - waitfor: INCOMING
+          - answer
+          - waitfor: DISCONNCTD
+          - unregister
