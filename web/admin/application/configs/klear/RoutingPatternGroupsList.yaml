@@ -41,7 +41,7 @@ production:
         <<: *forcedBrand
       label: true
       multiInstance: true
-      title: _("Add %s", ngettext('Routing pattern group', 'Routing pattern groups', 1), "[format| (%parent%)]")
+      title: _("Add %s", ngettext('Routing pattern group', 'Routing pattern groups', 1))
       shortcutOption: N
     routingPatternGroupsEdit_screen: &routingPatternGroupsEdit_screenLink
       <<: *RoutingPatternGroups

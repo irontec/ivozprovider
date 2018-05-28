@@ -41,8 +41,8 @@ production:
             fields:
               - name${lang}
               - description${lang}
-              - regExp
-            template: "%name${lang}% %description${lang}% (%regExp%)"
+              - prefix
+            template: "%name${lang}% %description${lang}% (%prefix%)"
           filterClass: IvozProvider_Klear_Filter_Brand
 staging:
   _extends: production
