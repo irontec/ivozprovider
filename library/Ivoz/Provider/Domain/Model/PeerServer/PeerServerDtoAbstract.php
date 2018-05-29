@@ -28,7 +28,7 @@ abstract class PeerServerDtoAbstract implements DataTransferObjectInterface
     private $port;
 
     /**
-     * @var boolean
+     * @var integer
      */
     private $uriScheme;
 
@@ -247,7 +247,7 @@ abstract class PeerServerDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param boolean $uriScheme
+     * @param integer $uriScheme
      *
      * @return static
      */
@@ -259,7 +259,7 @@ abstract class PeerServerDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean
+     * @return integer
      */
     public function getUriScheme()
     {

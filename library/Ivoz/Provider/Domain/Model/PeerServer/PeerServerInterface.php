@@ -60,7 +60,7 @@ interface PeerServerInterface extends LoggableEntityInterface
     /**
      * Set uriScheme
      *
-     * @param boolean $uriScheme
+     * @param integer $uriScheme
      *
      * @return self
      */
@@ -69,7 +69,7 @@ interface PeerServerInterface extends LoggableEntityInterface
     /**
      * Get uriScheme
      *
-     * @return boolean
+     * @return integer
      */
     public function getUriScheme();
 
