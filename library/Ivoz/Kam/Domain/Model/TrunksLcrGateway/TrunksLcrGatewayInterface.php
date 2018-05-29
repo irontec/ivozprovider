@@ -111,7 +111,7 @@ interface TrunksLcrGatewayInterface extends LoggableEntityInterface
     /**
      * Set uriScheme
      *
-     * @param boolean $uriScheme
+     * @param integer $uriScheme
      *
      * @return self
      */
@@ -120,7 +120,7 @@ interface TrunksLcrGatewayInterface extends LoggableEntityInterface
     /**
      * Get uriScheme
      *
-     * @return boolean
+     * @return integer
      */
     public function getUriScheme();
 

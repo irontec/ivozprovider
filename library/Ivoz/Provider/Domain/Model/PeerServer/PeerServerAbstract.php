@@ -30,7 +30,7 @@ abstract class PeerServerAbstract
 
     /**
      * column: uri_scheme
-     * @var boolean
+     * @var integer
      */
     protected $uriScheme;
 
@@ -385,14 +385,17 @@ abstract class PeerServerAbstract
     /**
      * Set uriScheme
      *
-     * @param boolean $uriScheme
+     * @param integer $uriScheme
      *
      * @return self
      */
     public function setUriScheme($uriScheme = null)
     {
         if (!is_null($uriScheme)) {
-            Assertion::between(intval($uriScheme), 0, 1, 'uriScheme provided "%s" is not a valid boolean value.');
+            if (!is_null($uriScheme)) {
+                Assertion::integerish($uriScheme, 'uriScheme value "%s" is not an integer or a number castable to integer.');
+                Assertion::greaterOrEqualThan($uriScheme, 0, 'uriScheme provided "%s" is not greater or equal than "%s".');
+            }
         }
 
         $this->uriScheme = $uriScheme;
@@ -403,7 +406,7 @@ abstract class PeerServerAbstract
     /**
      * Get uriScheme
      *
-     * @return boolean
+     * @return integer
      */
     public function getUriScheme()
     {
