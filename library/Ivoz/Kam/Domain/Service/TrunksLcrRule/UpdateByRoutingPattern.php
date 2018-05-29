@@ -7,6 +7,7 @@ use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleDto;
 use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface;
 use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface;
 use Ivoz\Provider\Domain\Service\RoutingPattern\RoutingPatternLifecycleEventHandlerInterface;
+use Ivoz\Provider\Infrastructure\Persistence\Doctrine\OutgoingRoutingDoctrineRepository;
 
 /**
  * Class UpdateByRoutingPattern
@@ -16,14 +17,26 @@ use Ivoz\Provider\Domain\Service\RoutingPattern\RoutingPatternLifecycleEventHand
 class UpdateByRoutingPattern implements RoutingPatternLifecycleEventHandlerInterface
 {
     /**
-     * @var EntityPersisterInterface
+     * @var UpdateByOutgoingRouting
      */
-    protected $entityPersister;
+    protected $updateByOutgoingRouting;
 
+    /**
+     * @var OutgoingRoutingRepository
+     */
+    protected $outgoingRoutingRepository;
+
+    /**
+     * UpdateByRoutingPattern constructor.
+     * @param UpdateByOutgoingRouting $updateByOutgoingRouting
+     * @param OutgoingRoutingRepository $outgoingRoutingRepository
+     */
     public function __construct(
-        EntityPersisterInterface $entityPersister
+        UpdateByOutgoingRouting $updateByOutgoingRouting,
+        OutgoingRoutingRepository $outgoingRoutingRepository
     ) {
-        $this->entityPersister = $entityPersister;
+        $this->updateByOutgoingRouting = $updateByOutgoingRouting;
+        $this->outgoingRoutingRepository = $outgoingRoutingRepository;
     }
 
     public static function getSubscribedEvents()
@@ -35,26 +48,12 @@ class UpdateByRoutingPattern implements RoutingPatternLifecycleEventHandlerInter
 
     public function execute(RoutingPatternInterface $entity, $isNew)
     {
-        // If any LcrRule uses this Pattern, update accordingly
-        /**
-         * @var TrunksLcrRuleInterface[] $lcrRules
-         */
-        $lcrRules = $entity->getLcrRules();
+        // Get all OutgointRoutings that use this routingPattern
+        $outgoingRoutings = $this->outgoingRoutingRepository->findByRoutingPattern($entity);
 
-        if (empty($lcrRules)) {
-            return;
-        }
-
-        foreach ($lcrRules as $lcrRule) {
-
-            /**
-             * @var TrunksLcrRuleDTO $lcrRuleDTO
-             */
-            $lcrRuleDTO = $lcrRule->toDto();
-
-            return $this
-                ->entityPersister
-                ->persistDto($lcrRuleDTO, $lcrRule);
+        // Update all outgoing routes if required
+        foreach ($outgoingRoutings as $outgoingRouting) {
+            $this->updateByOutgoingRouting->execute($outgoingRouting);
         }
     }
 }

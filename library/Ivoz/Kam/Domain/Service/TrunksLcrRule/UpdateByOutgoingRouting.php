@@ -5,6 +5,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRule;
 use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface;
+use Ivoz\Kam\Domain\Service\TrunksLcrRuleTarget\CreateByOutgoingRouting;
+use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface;
 use Ivoz\Provider\Domain\Service\OutgoingRouting\OutgoingRoutingLifecycleEventHandlerInterface;
@@ -25,12 +27,20 @@ class UpdateByOutgoingRouting implements OutgoingRoutingLifecycleEventHandlerInt
      */
     protected $lcrRuleFactory;
 
+    /**
+     * @var CreateByOutgoingRouting
+     */
+    protected $lcrRuleTargetFactory;
+
+
     public function __construct(
         EntityPersisterInterface $entityPersister,
-        CreateByOutgoingRoutingAndRoutingPattern $lcrRuleFactory
+        CreateByOutgoingRoutingAndRoutingPattern $lcrRuleFactory,
+        CreateByOutgoingRouting $lcrRuleTargetFactory
     ) {
         $this->entityPersister = $entityPersister;
         $this->lcrRuleFactory = $lcrRuleFactory;
+        $this->lcrRuleTargetFactory = $lcrRuleTargetFactory;
     }
 
     public static function getSubscribedEvents()
@@ -42,29 +52,55 @@ class UpdateByOutgoingRouting implements OutgoingRoutingLifecycleEventHandlerInt
 
     /**
      * @param OutgoingRoutingInterface $outgoingRouting
+     * @throws \Exception
      */
     public function execute(OutgoingRoutingInterface $outgoingRouting)
     {
-        // If edit, delete everything and fresh-start
-        /** @var TrunksLcrRuleInterface[] $lcrRules */
-        $lcrRules = $outgoingRouting->getLcrRules();
-        foreach ($lcrRules as $lcrRule) {
-            $this->entityPersister->remove($lcrRule);
-            $outgoingRouting->removeLcrRule($lcrRule);
+        // Check if any of the lcrRules has no pattern anymore
+        $this->removeObsoleteLrcRules($outgoingRouting);
+
+        //! Fax OutgoingRoutings have no routingPattern and a single LcrRule with NULL routingPatternId
+        if ($outgoingRouting->getType() == OutgoingRouting::FAX) {
+            $lcrRule = $this->lcrRuleFactory->execute($outgoingRouting, null);
+            if ($lcrRule->hasChanged('id')) {
+                $outgoingRouting->addLcrRule($lcrRule);
+            }
+            return;
         }
 
-        /**
-         * @var TrunksLcrRuleInterface[] $lcrRules
-         */
-        $routingPatterns = $this->getPatterns($outgoingRouting);
-
-        $lcrRules = new ArrayCollection();
+        // Create or update existing LcrRules based on actual RoutingPatterns of OutgoingRouting
+        $routingPatterns = $outgoingRouting->getRoutingPatterns();
+        $lcrRules = array();
         foreach ($routingPatterns as $routingPattern) {
-            $lcrRule = $this->lcrRuleFactory->execute($outgoingRouting, $routingPattern);
-            $lcrRules->add($lcrRule);
+            $lcrRules[] = $this->lcrRuleFactory->execute($outgoingRouting, $routingPattern);
         }
+        $outgoingRouting->replaceLcrRules(new ArrayCollection($lcrRules));
 
-        $outgoingRouting->replaceLcrRules($lcrRules);
+        // Update TrunksLcrRuleTargets with updated/created TrunksLcrRules
+        $this->lcrRuleTargetFactory->execute($outgoingRouting);
+    }
+
+    /**
+     * @param OutgoingRoutingInterface $outgoingRouting
+     * @return void
+     * @throws \Exception
+     */
+    protected function removeObsoleteLrcRules(OutgoingRoutingInterface $outgoingRouting)
+    {
+        $lcrRules = $outgoingRouting->getLcrRules();
+
+        foreach ($lcrRules as $lcrRule) {
+            $pattern = $lcrRule->getRoutingPattern();
+
+            // For fax LcrRules, just check is OutgoingRouting type is still Fax, or remove it
+            if (is_null($pattern) && $outgoingRouting->getType() != OutgoingRouting::FAX) {
+                $outgoingRouting->removeLcrRule($lcrRule);
+
+                // For the rest of the LcrRules, check the lcrRule pattern is in the OutgoingRouting patterns, or remote it
+            } else if (!$outgoingRouting->hasRoutingPattern($lcrRule->getRoutingPattern())) {
+                $outgoingRouting->removeLcrRule($lcrRule);
+            }
+        }
     }
 
     /**
@@ -89,4 +125,5 @@ class UpdateByOutgoingRouting implements OutgoingRoutingLifecycleEventHandlerInt
 
         return $routingPatterns;
     }
+
 }

@@ -6,6 +6,7 @@ use Ivoz\Core\Application\Service\CreateEntityFromDTO;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRule;
 use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface;
+use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleRepository;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface;
 
@@ -21,45 +22,64 @@ class CreateByOutgoingRoutingAndRoutingPattern
      */
     protected $createEntityFromDTO;
 
+    /**
+     * @var TrunksLcrRuleRepository
+     */
+    protected $lcrRuleRepository;
+
     public function __construct(
         EntityPersisterInterface $entityPersister,
-        CreateEntityFromDTO $createEntityFromDTO
+        CreateEntityFromDTO $createEntityFromDTO,
+        TrunksLcrRuleRepository $lcrRuleRepository
     ) {
         $this->entityPersister = $entityPersister;
         $this->createEntityFromDTO = $createEntityFromDTO;
+        $this->lcrRuleRepository = $lcrRuleRepository;
     }
 
     /**
-     * @param OutgoingRoutingInterface $entity
-     * @param RoutingPatternInterface|null $pattern
+     * @param OutgoingRoutingInterface $outgoingRouting
+     * @param RoutingPatternInterface|null $routingPattern
      * @return TrunksLcrRuleInterface
      */
     public function execute(
-        OutgoingRoutingInterface $entity,
-        RoutingPatternInterface $pattern = null
+        OutgoingRoutingInterface $outgoingRouting,
+        RoutingPatternInterface $routingPattern = null
     ) {
-        $lcrRuleDto = TrunksLcrRule::createDto();
+        $routingPatternId = ($routingPattern)
+            ? $routingPattern->getId()
+            : null;
 
-        $routingTag = ($entity->getRoutingTag())
-            ? $entity->getRoutingTag()->getTag()
-            : "";
+        $routingTag = ($outgoingRouting->getRoutingTag())
+            ? $outgoingRouting->getRoutingTag()->getTag()
+            : '';
 
-        if (is_null($pattern)) {
+        /** @var TrunksLcrRuleInterface $lcrRule */
+        $lcrRule = $this->lcrRuleRepository->findOneBy([
+            'outgoingRouting' => $outgoingRouting->getId(),
+            'routingPattern' => $routingPatternId
+        ]);
+
+        $lcrRuleDto = ($lcrRule)
+            ? $lcrRule->toDto()
+            : TrunksLcrRule::createDto();
+
+        if (is_null($routingPattern)) {
             // Fax route
             $lcrRuleDto
                 ->setPrefix('fax');
         } else {
             // Non-fax route
             $lcrRuleDto
-                ->setPrefix($routingTag . $pattern->getPrefix())
-                ->setRoutingPatternId($pattern->getId());
+                ->setPrefix($routingTag . $routingPattern->getPrefix())
+                ->setRoutingPatternId($routingPattern->getId());
         }
 
-        $brandId = $entity->getBrand()->getId();
+        $brandId = $outgoingRouting->getBrand()->getId();
 
         // Setting LcrRule FromURI pattern
-        if (!is_null($entity->getCompany())) {
-            $companyId = $entity->getCompany()->getId();
+        if (!is_null($outgoingRouting->getCompany())) {
+            $companyId = $outgoingRouting->getCompany()->getId();
             $lcrRuleDto->setFromUri(
                 sprintf(
                     '^b%dc%d$',
@@ -82,7 +102,7 @@ class CreateByOutgoingRoutingAndRoutingPattern
             ->execute(TrunksLcrRule::class, $lcrRuleDto);
 
         // Setting Outgoing Routing also sets from_uri (see model)
-        $lcrRule->setOutgoingRouting($entity);
+        $lcrRule->setOutgoingRouting($outgoingRouting);
 
         $this
             ->entityPersister

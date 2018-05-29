@@ -20,7 +20,20 @@ class CreateByPeerServer implements PeerServerLifecycleEventHandlerInterface
      */
     protected $entityPersister;
 
-    public function __construct(EntityPersisterInterface $entityPersister)
+    /**
+     * @var CreateByOutgoingRouting
+     */
+    protected $lcrRuleTargetFactory;
+
+    /**
+     * CreateByPeerServer constructor.
+     * @param EntityPersisterInterface $entityPersister
+     * @param CreateByOutgoingRouting $lcrRuleTargetFactory
+     */
+    public function __construct(
+        EntityPersisterInterface $entityPersister,
+        CreateByOutgoingRouting $lcrRuleTargetFactory
+    )
     {
         $this->entityPersister = $entityPersister;
     }
@@ -46,23 +59,7 @@ class CreateByPeerServer implements PeerServerLifecycleEventHandlerInterface
         $outgoingRoutings = $entity->getPeeringContract()->getOutgoingRoutings();
 
         foreach ($outgoingRoutings as $outgoingRouting) {
-            /** @var TrunksLcrRuleInterface[] $lcrRules */
-            $lcrRules = $outgoingRouting->getLcrRules();
-
-            foreach ($lcrRules as $lcrRule) {
-                $lcrRuleTargetDto = TrunksLcrRuleTarget::createDto();
-
-                $lcrRuleTargetDto
-                    ->setRuleId($lcrRule->getId())
-                    ->setGwId($entity->getLcrGateway()->getId())
-                    ->setPriority($outgoingRouting->getPriority())
-                    ->setWeight($outgoingRouting->getWeight())
-                    ->setOutgoingRoutingId($outgoingRouting->getId());
-
-                $this
-                    ->entityPersister
-                    ->persistDto($lcrRuleTargetDto);
-            }
+            $this->lcrRuleTargetFactory->execute($outgoingRouting);
         }
     }
 }
