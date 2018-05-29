@@ -3,8 +3,15 @@
 # Stop on first non-zero exit code
 set -e
 
+if [ `whoami` != 'jenkins' ]; then
+    echo "This test is designed to be executed from Jenkins CI."
+    echo "Do not run this without updating paramters.yml database name."
+    exit 1
+fi
+
 pushd /opt/irontec/ivozprovider/scheme
     # Create database and load initial data
+    bin/console doctrine:database:drop --force || true
     bin/console doctrine:database:create -vv
     bin/console doctrine:database:import initial.sql -vv
 
