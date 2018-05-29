@@ -4,7 +4,6 @@ namespace IvozProvider\Klear\Auth;
 use Ivoz\Core\Application\Service\DataGateway;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
 use Ivoz\Provider\Domain\Model\Brand\BrandDTO;
-use IvozProvider\Model\Brands;
 
 class Adapter implements \Klear_Auth_Adapter_KlearAuthInterface
 {
@@ -17,7 +16,7 @@ class Adapter implements \Klear_Auth_Adapter_KlearAuthInterface
     protected $administrator;
 
     /**
-     * @var Brands
+     * @var Brand
      */
     protected $_currentBrand;
 

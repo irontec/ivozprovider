@@ -58,7 +58,7 @@ production:
         order:
           <<: *PeerContractsOrder_Link
         blacklist:
-          externallyRated: ${auth.brand.billing.disabled}
+          externallyRated: ${auth.brandFeatures.billing.disabled}
       fixedPositions:
         group0:
           label: _("Basic Configuration")
@@ -85,7 +85,7 @@ production:
         order:
           <<: *PeerContractsOrder_Link
         blacklist:
-          externallyRated: ${auth.brand.billing.disabled}
+          externallyRated: ${auth.brandFeatures.billing.disabled}
 
     #PeerServers
     <<: *peerServers_screensLink

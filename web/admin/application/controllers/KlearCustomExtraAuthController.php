@@ -1,11 +1,10 @@
 <?php
 
 use \Ivoz\Provider\Domain\Model\Brand\Brand;
-use \Ivoz\Provider\Domain\Model\Brand\BrandDTO;
+use \Ivoz\Provider\Domain\Model\Brand\BrandDto;
 use \Ivoz\Provider\Domain\Model\Company\Company;
-use \Ivoz\Provider\Domain\Model\Brand\CompanyDTO;
+use \Ivoz\Provider\Domain\Model\Brand\CompanyDto;
 use \Ivoz\Provider\Domain\Model\Feature\Feature;
-use \Ivoz\Provider\Domain\Model\Feature\FeatureDTO;
 
 
 class KlearCustomExtraAuthController extends Zend_Controller_Action
@@ -298,7 +297,7 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
         /** @var \Ivoz\Core\Application\Service\DataGateway $dataGateway */
         $dataGateway = \Zend_Registry::get('data_gateway');
 
-        /** @var \Ivoz\Provider\Domain\Model\Feature\FeatureDTO[] $featureList */
+        /** @var \Ivoz\Provider\Domain\Model\Feature\FeatureDto[] $featureList */
         $featureList = $dataGateway->findAll(
                 Feature::class
         );
@@ -321,10 +320,10 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
         }
 
         // Brand or company!
-        if ($entity instanceof BrandDTO) {
-            $this->_user->brand = $features;
+        if ($entity instanceof BrandDto) {
+            $this->_user->brandFeatures = $features;
         } else {
-            $this->_user->company = $features;
+            $this->_user->companyFeatures = $features;
         }
     }
 }
