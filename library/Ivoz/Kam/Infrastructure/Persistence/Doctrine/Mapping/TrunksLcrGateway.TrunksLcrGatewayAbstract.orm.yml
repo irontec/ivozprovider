@@ -47,7 +47,7 @@ Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayAbstract:
       options:
         fixed: false
     uriScheme:
-      type: boolean
+      type: smallint
       nullable: true
       column: uri_scheme
       options:

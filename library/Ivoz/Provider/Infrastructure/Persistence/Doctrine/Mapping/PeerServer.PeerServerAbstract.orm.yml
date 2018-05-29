@@ -19,7 +19,7 @@ Ivoz\Provider\Domain\Model\PeerServer\PeerServerAbstract:
       options:
         unsigned: true
     uriScheme:
-      type: boolean
+      type: smallint
       nullable: true
       column: uri_scheme
       options:
