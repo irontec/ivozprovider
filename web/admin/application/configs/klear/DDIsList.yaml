@@ -118,7 +118,7 @@ production:
         blacklist:
           brand: true
           target: true
-          recordCalls: ${auth.company.recordings.disabled}
+          recordCalls: ${auth.companyFeatures.recordings.disabled}
       fixedPositions:
         <<: *dDIsFixedPositions_Link
     dDIsEdit_screen: &dDIsEdit_screenLink
@@ -136,8 +136,8 @@ production:
         blacklist:
           target: true
           brand: true
-          recordCalls: ${auth.company.recordings.disabled}
-          billInboundCalls: ${auth.brand.billing.disabled}
+          recordCalls: ${auth.companyFeatures.recordings.disabled}
+          billInboundCalls: ${auth.brandFeatures.billing.disabled}
       fixedPositions:
         <<: *dDIsFixedPositions_Link
     dDIsEditLimited_screen: &dDIsEdit_screenLink
@@ -157,7 +157,7 @@ production:
           peeringContract: true
           brand: true
           billInboundCalls: true
-          recordCalls: ${auth.company.recordings.disabled}
+          recordCalls: ${auth.companyFeatures.recordings.disabled}
         readOnly:
           DDI: true
           country: true

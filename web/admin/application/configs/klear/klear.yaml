@@ -107,12 +107,12 @@ production:
           title: ngettext('Retail', 'Retails', 0)
           class: ui-silk-basket
           description: _("List of %s", ngettext('Retail', 'Retails', 0))
-          showOnlyIf: ${auth.brand.retail.enabled}
+          showOnlyIf: ${auth.brandFeatures.retail.enabled}
         WholesaleClientsList:
           title: ngettext('Wholesale', 'Wholesales', 0)
           class: ui-silk-cart
           description: _("List of %s", ngettext('Wholesale', 'Wholesales', 0))
-          showOnlyIf: ${auth.brand.wholesale.enabled}
+          showOnlyIf: ${auth.brandFeatures.wholesale.enabled}
         CompanyBalancesList:
           title: ngettext('Prepaid Balance', 'Prepaid Balances', 0)
           class: ui-silk-money-yen
@@ -153,7 +153,7 @@ production:
           title: ngettext('Retail Account', 'Retail Accounts', 0)
           class: ui-silk-key
           description: _("List of %s", ngettext('Retail Account', 'Retail Accounts', 0))
-          showOnlyIf: ${auth.brand.retail.enabled}
+          showOnlyIf: ${auth.brandFeatures.retail.enabled}
         GenericMatchListsList:
           title: ngettext('Generic Match List', 'Generic Match Lists', 0)
           class: ui-silk-text-list-numbers
@@ -178,32 +178,32 @@ production:
           title: ngettext('Destination rate', 'Destination rates', 0)
           class: ui-silk-destrate
           description: _("List of %s", ngettext('Destination rate', 'Destination rates', 0))
-          showOnlyIf: ${auth.brand.billing.enabled}
+          showOnlyIf: ${auth.brandFeatures.billing.enabled}
         RatingPlansList:
           title: ngettext('Rating plan', 'Rating plans', 0)
           class: ui-silk-money
           description: _("List of %s", ngettext('Rating plan', 'Rating plans', 0))
-          showOnlyIf: ${auth.brand.billing.enabled}
+          showOnlyIf: ${auth.brandFeatures.billing.enabled}
         InvoiceTemplatesList:
           title: ngettext('Invoice template', 'Invoice templates', 0)
           class: ui-silk-report-key
           description: _("List of %s", ngettext('Invoice template', 'Invoice templates', 0))
-          showOnlyIf: ${auth.brand.invoices.enabled}
+          showOnlyIf: ${auth.brandFeatures.invoices.enabled}
         FixedCostsList:
           title: ngettext('Fixed cost', 'Fixed costs', 0)
           class:  ui-silk-money-add
           description: _("List of %s", ngettext('Fixed cost', 'Fixed costs', 0))
-          showOnlyIf: ${auth.brand.invoices.enabled}
+          showOnlyIf: ${auth.brandFeatures.invoices.enabled}
         InvoicesList:
           title: ngettext('Invoice', 'Invoices', 0)
           class: ui-silk-report
           description: _("List of %s", ngettext('Invoice', 'Invoices', 0))
-          showOnlyIf: ${auth.brand.invoices.enabled}
+          showOnlyIf: ${auth.brandFeatures.invoices.enabled}
         KamTrunksCdrsBrandList:
           title: ngettext('Billable call', 'Billable calls', 0)
           class: ui-silk-application-view-list
           description: _("List of %s", ngettext('Billable call', 'Billable calls', 0))
-          showOnlyIf: ${auth.brand.billing.enabled}
+          showOnlyIf: ${auth.brandFeatures.billing.enabled}
     Admin:
       title: _("Company Configuration")
       meta: "[mine:${auth.isCompanyAdmin}|company:${auth.companyId}|type:${auth.companyType}|name:${auth.companyName}]"
@@ -226,7 +226,7 @@ production:
           description: _("List of %s", ngettext('Extension', 'Extensions', 0))
           showOnlyIf: ${auth.companyVPBX}
         FriendsList:
-          showOnlyIf: ${auth.company.friends.enabled}
+          showOnlyIf: ${auth.companyFeatures.friends.enabled}
           title: ngettext('Friend', 'Friends', 0)
           class: ui-silk-heart
           description: _("List of %s", ngettext('Friend', 'Friends', 0))
@@ -309,9 +309,9 @@ production:
           title: ngettext('Queue', 'Queues', 0)
           class: ui-silk-status-away
           description: _("List of %s", ngettext('Queue', 'Queues', 0))
-          showOnlyIf: ${auth.company.queues.enabled}
+          showOnlyIf: ${auth.companyFeatures.queues.enabled}
         ConferenceRoomsList:
-          showOnlyIf: ${auth.company.conferences.enabled}
+          showOnlyIf: ${auth.companyFeatures.conferences.enabled}
           title: ngettext('Conference room', 'Conference rooms', 0)
           class: ui-silk-transmit-blue
           description: _("List of %s", ngettext('Conference room', 'Conference rooms', 0))
@@ -327,7 +327,7 @@ production:
           description: _("List of %s", ngettext('Music on Hold', 'Musics on Hold', 0))
           showOnlyIf: ${auth.companyVPBX}
         RecordingsList:
-          showOnlyIf: ${auth.company.recordings.enabled}
+          showOnlyIf: ${auth.companyFeatures.recordings.enabled}
           title: ngettext('Recording', 'Recordings', 0)
           class: ui-silk-bullet-disk
           description: _("List of %s", ngettext('Recording', 'Recordings', 0))
@@ -337,7 +337,7 @@ production:
           description: _("List of %s", ngettext('Service', 'Services', 0))
           showOnlyIf: ${auth.companyVPBX}
         FaxesList:
-          showOnlyIf: ${auth.company.faxes.enabled}
+          showOnlyIf: ${auth.companyFeatures.faxes.enabled}
           title: ngettext('Fax', 'Faxes', 0)
           class: ui-silk-printer
           description: _("List of %s", ngettext('Fax', 'Faxes', 0))
