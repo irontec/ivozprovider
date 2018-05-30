@@ -1,0 +1,91 @@
+Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayAbstract:
+  type: mappedSuperclass
+  indexes:
+    lcrGateway_lcr_id:
+      columns:
+        - lcr_id
+  uniqueConstraints:
+    peerServerIdUnique:
+      columns:
+        - peerServerId
+  fields:
+    lcrId:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+        default: '1'
+      column: lcr_id
+    gwName:
+      type: string
+      nullable: false
+      length: 200
+      options:
+        fixed: false
+      column: gw_name
+    ip:
+      type: string
+      nullable: true
+      length: 50
+      options:
+        fixed: false
+    hostname:
+      type: string
+      nullable: true
+      length: 64
+      options:
+        fixed: false
+    port:
+      type: smallint
+      nullable: true
+      options:
+        unsigned: true
+    params:
+      type: string
+      nullable: true
+      length: 64
+      options:
+        fixed: false
+    uriScheme:
+      type: boolean
+      nullable: true
+      column: uri_scheme
+      options:
+        unsigned: true
+    transport:
+      type: boolean
+      nullable: true
+      options:
+        unsigned: true
+    strip:
+      type: boolean
+      nullable: true
+      options:
+        unsigned: true
+    prefix:
+      type: string
+      nullable: true
+      length: 16
+      options:
+        fixed: false
+    tag:
+      type: string
+      nullable: true
+      length: 64
+      options:
+        fixed: false
+    defunct:
+      type: integer
+      nullable: true
+      options:
+        unsigned: true
+  oneToOne:
+    peerServer:
+      targetEntity: \Ivoz\Provider\Domain\Model\PeerServer\PeerServerInterface
+      inversedBy: lcrGateway
+      fetch: LAZY
+      joinColumn:
+        name: peerServerId
+        referencedColumnName: id
+        nullable: false
+        onDelete: cascade

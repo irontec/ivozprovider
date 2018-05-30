@@ -13,7 +13,7 @@ Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting:
         strategy: IDENTITY
   oneToMany:
     lcrRules:
-      targetEntity: Ivoz\Provider\Domain\Model\LcrRule\LcrRuleInterface
+      targetEntity: Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface
       mappedBy: outgoingRouting
       cascade: ['persist']
       orphanRemoval: true

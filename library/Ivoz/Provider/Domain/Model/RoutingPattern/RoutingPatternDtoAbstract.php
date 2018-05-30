@@ -58,7 +58,7 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
     private $relPatternGroups = null;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\LcrRule\LcrRuleDto[] | null
+     * @var \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleDto[] | null
      */
     private $lcrRules = null;
 
@@ -144,7 +144,7 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
             $this->lcrRules = [];
             foreach ($items as $item) {
                 $this->lcrRules[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\LcrRule\\LcrRule',
+                    'Ivoz\\Kam\\Domain\\Model\\TrunksLcrRule\\TrunksLcrRule',
                     $item->getId() ?? $item
                 );
             }
@@ -166,7 +166,7 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
             $this->relPatternGroups
         );
         $this->lcrRules = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\LcrRule\\LcrRule',
+            'Ivoz\\Kam\\Domain\\Model\\TrunksLcrRule\\TrunksLcrRule',
             $this->lcrRules
         );
     }

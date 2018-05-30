@@ -88,7 +88,7 @@ abstract class PeerServerDtoAbstract implements DataTransferObjectInterface
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayDto | null
+     * @var \Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayDto | null
      */
     private $lcrGateway;
 
@@ -173,7 +173,7 @@ abstract class PeerServerDtoAbstract implements DataTransferObjectInterface
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
-        $this->lcrGateway = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\LcrGateway\\LcrGateway', $this->getLcrGatewayId());
+        $this->lcrGateway = $transformer->transform('Ivoz\\Kam\\Domain\\Model\\TrunksLcrGateway\\TrunksLcrGateway', $this->getLcrGatewayId());
         $this->peeringContract = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\PeeringContract\\PeeringContract', $this->getPeeringContractId());
         $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
     }
@@ -487,11 +487,11 @@ abstract class PeerServerDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayDto $lcrGateway
+     * @param \Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayDto $lcrGateway
      *
      * @return static
      */
-    public function setLcrGateway(\Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayDto $lcrGateway = null)
+    public function setLcrGateway(\Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayDto $lcrGateway = null)
     {
         $this->lcrGateway = $lcrGateway;
 
@@ -499,7 +499,7 @@ abstract class PeerServerDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayDto
+     * @return \Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayDto
      */
     public function getLcrGateway()
     {
@@ -514,7 +514,7 @@ abstract class PeerServerDtoAbstract implements DataTransferObjectInterface
     public function setLcrGatewayId($id)
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayDto($id)
+            ? new \Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayDto($id)
             : null;
 
         return $this->setLcrGateway($value);

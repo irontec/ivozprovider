@@ -63,7 +63,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     private $routingTag;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\LcrRule\LcrRuleDto[] | null
+     * @var \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleDto[] | null
      */
     private $lcrRules = null;
 
@@ -134,7 +134,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
             $this->lcrRules = [];
             foreach ($items as $item) {
                 $this->lcrRules[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\LcrRule\\LcrRule',
+                    'Ivoz\\Kam\\Domain\\Model\\TrunksLcrRule\\TrunksLcrRule',
                     $item->getId() ?? $item
                 );
             }
@@ -148,7 +148,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
         $this->lcrRules = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\LcrRule\\LcrRule',
+            'Ivoz\\Kam\\Domain\\Model\\TrunksLcrRule\\TrunksLcrRule',
             $this->lcrRules
         );
     }

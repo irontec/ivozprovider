@@ -7,7 +7,7 @@ services:
 
   Ivoz\Provider\Domain\Service\RoutingPatternGroup\UpdateByRoutingPatternAndCountry: ~
 
-  Ivoz\Provider\Domain\Service\LcrRule\CreateByOutgoingRoutingAndRoutingPattern: ~
+  Ivoz\Kam\Domain\Service\TrunksLcrRule\CreateByOutgoingRoutingAndRoutingPattern: ~
 
   Ivoz\Provider\Domain\Service\Invoice\Generator:
     arguments:

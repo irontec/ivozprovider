@@ -120,7 +120,7 @@ Ivoz\Provider\Domain\Model\PeerServer\PeerServerAbstract:
       orphanRemoval: false
   oneToOne:
     lcrGateway:
-      targetEntity: Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayInterface
+      targetEntity: Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface
       mappedBy: peerServer
       fetch: LAZY
 
