@@ -36,6 +36,12 @@ class UserStatus
      * @var string
      * @AttributeDefinition(type="string")
      */
+    protected $language;
+
+    /**
+     * @var string
+     * @AttributeDefinition(type="string")
+     */
     protected $voiceMail;
 
     /**
@@ -136,6 +142,23 @@ class UserStatus
     public function setCompanyDomain($companyDomain)
     {
         $this->companyDomain = $companyDomain;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLanguage()
+    {
+        return $this->language;
+    }
+
+    /**
+     * @return string
+     */
+    public function setLanguage($language)
+    {
+        $this->language = $language;
         return $this;
     }
 

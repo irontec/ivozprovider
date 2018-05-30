@@ -59,6 +59,9 @@ class StatusAction
         $userStatus->setUserName(
             $user->getFullName()
         );
+        $userStatus->setLanguage(
+            $user->getLanguageCode()
+        );
         $userStatus->setGsQRCode(
             $user->getGsQRCode()
         );
