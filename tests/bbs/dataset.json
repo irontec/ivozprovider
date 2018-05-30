@@ -3765,7 +3765,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"BBS Generic IVR\",\n  \"timeout\": 5,\n  \"maxDigits\": 4,\n  \"allowExtensions\": true,\n  \"noInputRouteType\": \"extension\",\n  \"errorRouteType\": \"number\",\n  \"errorNumberValue\": \"999661003\",\n  \"company\": {{companyId}},\n  \"noInputExtension\": {{daveExtensionId}},\n  \"errorNumberCountry\": 70\n}"
+							"raw": "{\n  \"name\": \"BBS Generic IVR\",\n  \"timeout\": 5,\n  \"maxDigits\": 4,\n  \"allowExtensions\": true,\n  \"noInputRouteType\": \"extension\",\n  \"errorRouteType\": \"number\",\n  \"errorNumberValue\": \"999661001\",\n  \"company\": {{companyId}},\n  \"noInputExtension\": {{daveExtensionId}},\n  \"errorNumberCountry\": 70\n}"
 						},
 						"url": {
 							"raw": "{{api_url}}/ivrs",
