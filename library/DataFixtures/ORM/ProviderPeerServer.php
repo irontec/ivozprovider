@@ -25,7 +25,7 @@ class ProviderPeerServer extends Fixture implements DependentFixtureInterface
         $item1 = $this->createEntityInstanceWithPublicMethods(PeerServer::class);
         $item1->setHostname("127.0.0.1");
         $item1->setPort(5060);
-        $item1->setUriScheme(true);
+        $item1->setUriScheme(1);
         $item1->setTransport(true);
         $item1->setSendPAI(false);
         $item1->setSendRPID(false);
@@ -40,7 +40,7 @@ class ProviderPeerServer extends Fixture implements DependentFixtureInterface
         $item2 = $this->createEntityInstanceWithPublicMethods(PeerServer::class);
         $item2->setHostname("127.0.0.2");
         $item2->setPort(5060);
-        $item2->setUriScheme(true);
+        $item2->setUriScheme(2);
         $item2->setTransport(true);
         $item2->setSendPAI(false);
         $item2->setSendRPID(false);
