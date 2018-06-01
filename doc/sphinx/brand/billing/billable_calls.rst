@@ -34,21 +34,11 @@ Each entry shows this information:
     Destination
         External number dialed.
 
-    Pricing pattern
-        Shows the :ref:`pricing pattern <price_pattern>` used to set the price.
-
     Duration
         Shows how long the call lasted.
 
-    Metered (yes/no)
-        Shows if the asynchronous task that sets the price of each call has
-        parsed each call.
-
     Price
         The cost of the call.
-
-    Pricing plan
-        Shows the :ref:`Pricing plan <price_plan>` used to set the price.
 
     Peering contract
         Shows which :ref:`Peering contract <peering_contracts>` was used for
@@ -56,11 +46,6 @@ Each entry shows this information:
 
     Invoice
         Show if a call is already included in any :ref:`Invoices`.
-
-    Type (inbound/outbound)
-        Since some incoming calls can imply cost (see
-        :ref:`billing of inbound calls <bill_inbound>`), show if the call is an
-        incoming call or an outgoung one.
 
 .. note:: As soon as the call is hung up, they appear in this list. In some minutes
    time the asynchronous process will set *Metered* to 'yes' and will assign a

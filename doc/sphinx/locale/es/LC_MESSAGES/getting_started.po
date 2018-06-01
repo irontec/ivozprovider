@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-04 14:01+0200\n"
+"POT-Creation-Date: 2018-06-01 12:51+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.5.1\n"
+"Generated-By: Babel 2.4.0\n"
 
 #: ../../getting_started/external_incoming_calls/configure_ddi.rst:1
 msgid ""
@@ -34,53 +34,51 @@ msgid ""
 "The brand operator, responsible of this *peering* agreements with VoIP "
 "providers , has the task to create the DDIs for each provider."
 msgstr ""
-"El operador de marca, como único responsable de llegar a acuerdos de *peering* "
-"con operadores IP, es el responsable de dar de alta los DDIs de cada operador."
+"El operador de marca, como único responsable de llegar a acuerdos de "
+"*peering* con operadores IP, es el responsable de dar de alta los DDIs de"
+" cada operador."
 
 #: ../../getting_started/external_incoming_calls/configure_ddi.rst:13
-msgid "To accomplish this, following section can be used:"
-msgstr "Para ello, tiene que acceder a la siguiente sección:"
-
-#: ../../getting_started/external_incoming_calls/configure_ddi.rst:25
 msgid ""
 "Notice that in order to access this section, the brand operator (or "
 "*god*) must have emulated the proper company and access the menu section "
 "**Company Configuration**."
 msgstr ""
-"Observar que para poder acceder a esta sección el operador de marca (o *god*) "
-"tiene que haber emulado una empresa concreta y acceder desde el bloque "
-"**Configuración de empresa**."
+"Observar que para poder acceder a esta sección el operador de marca (o "
+"*god*) tiene que haber emulado una empresa concreta y acceder desde el "
+"bloque **Configuración de empresa**."
 
-#: ../../getting_started/external_incoming_calls/configure_ddi.rst:29
+#: ../../getting_started/external_incoming_calls/configure_ddi.rst:17
 msgid ""
 "Section **Company configuration > DDIs** is different when the company "
 "administrator access than the displayed data when a global or brand "
 "administrator does. Company administrator are unable to create or delete "
 "DDIs, just edit the one created by the brand or god administrator."
 msgstr ""
-"La sección **Configuración de empresa > DDIs** es distinta cuando accede un "
-"administrador de empresa que cuando accede un operador global o de marca. El "
-"administrador de empresa no puede crear nuevos DDIs ni borrar los que ya "
-"existen, solo puede editar los que el operador de marca haya creado."
+"La sección **Configuración de empresa > DDIs** es distinta cuando accede "
+"un administrador de empresa que cuando accede un operador global o de "
+"marca. El administrador de empresa no puede crear nuevos DDIs ni borrar "
+"los que ya existen, solo puede editar los que el operador de marca haya "
+"creado."
 
-#: ../../getting_started/external_incoming_calls/configure_ddi.rst:34
+#: ../../getting_started/external_incoming_calls/configure_ddi.rst:22
 msgid ""
 "The section **Brand configuration > DDIs** is a *read-only* display of "
 "all the DDIs of the brand, associated with the different companies."
 msgstr ""
-"Por otra parte, la sección **Configuración de marca > DDIs** solo sirve para "
-"que el operador de marca pueda ver los DDIs asociados a sus distintas empresas, "
-"es un listado en *read-only*."
+"Por otra parte, la sección **Configuración de marca > DDIs** solo sirve "
+"para que el operador de marca pueda ver los DDIs asociados a sus "
+"distintas empresas, es un listado en *read-only*."
 
-#: ../../getting_started/external_incoming_calls/configure_ddi.rst:47
+#: ../../getting_started/external_incoming_calls/configure_ddi.rst:25
 msgid ""
 "Taking into account this concepts, we create a new DDI and fill the "
 "required fields:"
 msgstr ""
-"Una vez explicados estos conceptos, añadimos un nuevo DDI y rellenamos los "
-"campos necesarios:"
+"Una vez explicados estos conceptos, añadimos un nuevo DDI y rellenamos "
+"los campos necesarios:"
 
-#: ../../getting_started/external_incoming_calls/configure_ddi.rst:62
+#: ../../getting_started/external_incoming_calls/configure_ddi.rst:40
 msgid ""
 "For detailed information about configuration fields, check :ref:`DDIs` "
 "section."
@@ -88,11 +86,11 @@ msgstr ""
 "Para más información sobre los campos de configuración, ver la sección "
 ":ref:`DDIs`"
 
-#: ../../getting_started/external_incoming_calls/configure_ddi.rst:66
+#: ../../getting_started/external_incoming_calls/configure_ddi.rst:44
 msgid "Configure incoming routes"
 msgstr "Configurar tratamiento en entrada"
 
-#: ../../getting_started/external_incoming_calls/configure_ddi.rst:68
+#: ../../getting_started/external_incoming_calls/configure_ddi.rst:46
 msgid ""
 "In the previous section, we have created the DDI and configure it, but "
 "**the most common procedure** is that the brand operator just create it "
@@ -100,19 +98,20 @@ msgid ""
 "configure** it choosing the correct route (user, huntgroup, etc.), its "
 "filters with calendars and so on."
 msgstr ""
-"En la sección anterior hemos dado de alta el DDI y lo hemos configurado, pero "
-"conviene tener claro que **en un uso normal, el administrador de marca** "
-"simplemente **daría de alta el DDI y el administrador de empresa**, accediendo "
-"a la misma sección, **lo configuraría** apuntándolo al usuario / grupo de "
-"salto / etc. adecuado, configurando horarios, calendarios, etc."
+"En la sección anterior hemos dado de alta el DDI y lo hemos configurado, "
+"pero conviene tener claro que **en un uso normal, el administrador de "
+"marca** simplemente **daría de alta el DDI y el administrador de "
+"empresa**, accediendo a la misma sección, **lo configuraría** apuntándolo"
+" al usuario / grupo de salto / etc. adecuado, configurando horarios, "
+"calendarios, etc."
 
-#: ../../getting_started/external_incoming_calls/configure_ddi.rst:73
+#: ../../getting_started/external_incoming_calls/configure_ddi.rst:51
 msgid ""
 "At this point, calling the number of the configured DDI will make the "
 "*Alice* phone ring."
 msgstr ""
-"En este punto, marcando el número público debería de sonar el teléfono de "
-"*Alice* consiguiendo, por tanto, el objetivo de este bloque :)"
+"En este punto, marcando el número público debería de sonar el teléfono de"
+" *Alice* consiguiendo, por tanto, el objetivo de este bloque :)"
 
 #: ../../getting_started/external_incoming_calls/index.rst:3
 msgid "Receive external calls"
@@ -123,8 +122,8 @@ msgid ""
 "The goal of this block will be configure IvozProvider to receive incoming"
 " external calls."
 msgstr ""
-"El objetivo de este bloque será configurar IvozProvider para recibir llamadas "
-"externas."
+"El objetivo de este bloque será configurar IvozProvider para recibir "
+"llamadas externas."
 
 #: ../../getting_started/external_incoming_calls/index.rst:8
 msgid "In order tho archive this, this steps will be followed:"
@@ -139,16 +138,17 @@ msgid ""
 "We understand a **Peering contract** the agreeming between a **Brand "
 "Operator** and a VoIP Provider to make and receive calls."
 msgstr ""
-"En IvozProvider se entiende por **Contrato de Peering** el acuerdo entre un "
-"**Operador de Marca** y un Operador VoIP para sacar y recibir llamadas."
+"En IvozProvider se entiende por **Contrato de Peering** el acuerdo entre "
+"un **Operador de Marca** y un Operador VoIP para sacar y recibir "
+"llamadas."
 
 #: ../../getting_started/external_incoming_calls/peering.rst:8
 msgid ""
 "IvozProvider is ready to integrate with IP providers created on the "
 "secteion **Perring contracts**:"
 msgstr ""
-"IvozProvider permite integrarse con Operadores IP por medio de la sección "
-"**Contratos de Peering** que pasamos a describir:"
+"IvozProvider permite integrarse con Operadores IP por medio de la sección"
+" **Contratos de Peering** que pasamos a describir:"
 
 #: ../../getting_started/external_incoming_calls/transformations.rst:3
 msgid "Transformations configuration"
@@ -159,9 +159,9 @@ msgid ""
 "**IvozProvider** is designed to provide service **anywhere in the "
 "planet**, not only the original country where the platform is installed."
 msgstr ""
-"**IvozProvider** está diseñado con la intención de **poder dar servicio en "
-"cualquier lugar del planeta**, no solamente en el país originario de la "
-"solución."
+"**IvozProvider** está diseñado con la intención de **poder dar servicio "
+"en cualquier lugar del planeta**, no solamente en el país originario de "
+"la solución."
 
 #: ../../getting_started/external_incoming_calls/transformations.rst:8
 msgid ""
@@ -171,25 +171,26 @@ msgid ""
 "<https://www.itu.int/rec/T-REC-E.164/es>`_ **to a neutral format**."
 msgstr ""
 "Un concepto muy importante para conseguir este objetivo es el de las "
-"transformaciones númericas, que consisten en la **adaptación de los distintos "
-"sistemas de numeración de los países del mundo** definidos en `E.164 <https://"
-"www.itu.int/rec/T-REC-E.164/es>`_ **a un formato neutro**."
+"transformaciones númericas, que consisten en la **adaptación de los "
+"distintos sistemas de numeración de los países del mundo** definidos en "
+"`E.164 <https://www.itu.int/rec/T-REC-E.164/es>`_ **a un formato "
+"neutro**."
 
 #: ../../getting_started/external_incoming_calls/transformations.rst:13
 msgid ""
 "The section that allows the brand operator to configure all the **numeric"
 " transformations** is:"
 msgstr ""
-"La sección que le permite configurar al operador de marca todo lo relativo a "
-"**Transformaciones numéricas** es:"
+"La sección que le permite configurar al operador de marca todo lo "
+"relativo a **Transformaciones numéricas** es:"
 
 #: ../../getting_started/external_incoming_calls/transformations.rst:27
 msgid ""
 "You can find more information about transformations in :ref:`Numeric "
 "transformations` section."
 msgstr ""
-"Para más información sobre transformaciones ver sección :ref:`Transformaciones "
-"numéricas`."
+"Para más información sobre transformaciones ver sección "
+":ref:`Transformaciones numéricas`."
 
 #: ../../getting_started/external_outgoing_calls/call_routing.rst:4
 msgid "Outgoing Routing configuration"
@@ -219,7 +220,7 @@ msgstr ""
 "Para realizar esta vinculación, accedemos a la sección **Rutas "
 "salientes**:"
 
-#: ../../getting_started/external_outgoing_calls/call_routing.rst:25
+#: ../../getting_started/external_outgoing_calls/call_routing.rst:15
 msgid ""
 "If we choose routing 'Spain' calls only through our *Peering contract*, "
 "we will make this configuration:"
@@ -227,7 +228,7 @@ msgstr ""
 "Si optamos por enrutar solamente las llamadas de España por nuestro "
 "Contrato de *peering*, tendremos que realizar la siguiente configuración:"
 
-#: ../../getting_started/external_outgoing_calls/call_routing.rst:38
+#: ../../getting_started/external_outgoing_calls/call_routing.rst:28
 msgid ""
 "On the other hand, if we are more generous and we decide to place calls "
 "to all european countries, we would make this configuration:"
@@ -236,13 +237,72 @@ msgstr ""
 "llamadas a países europeos, la configuración a aplicar sería la "
 "siguiente:"
 
-#: ../../getting_started/external_outgoing_calls/call_routing.rst:52
+#: ../../getting_started/external_outgoing_calls/call_routing.rst:42
 msgid ""
 "For more information about routing and load balancing check "
 ":ref:`Outgoing Routing` section:"
 msgstr ""
-"Para más información sobre enrutado y balanceo de carga vea la "
-"sección :ref:`Enrutado saliente`:"
+"Para más información sobre enrutado y balanceo de carga vea la sección "
+":ref:`Enrutado saliente`:"
+
+#: ../../getting_started/external_outgoing_calls/destination_rate.rst:4
+msgid "Creating a destination rate"
+msgstr "Crear un precio destino"
+
+#: ../../getting_started/external_outgoing_calls/destination_rate.rst:6
+msgid ""
+"Destination rates section is empty by default, as opposed to target "
+"patterns section, that has all the 254 countries of the world. The reason"
+" is that one destination rate will usually imply lots of pattern per "
+"country (GSM networks, especial numbers, mobile numbers, fixed lines, "
+"etc.)."
+msgstr ""
+"A diferencia de los patrones de destino, que vienen precreados con los "
+"países del mundo, los patrones de precio no se crean ya que lo "
+"habitual es que un país se divida en muchos patrones de precio (redes GSM"
+" de un operador, numeraciones especiales, números fijos, números móviles,"
+" etc.)."
+
+#: ../../getting_started/external_outgoing_calls/destination_rate.rst:11
+msgid ""
+"In most of the cases, this section data will be imported from CSV "
+"provided by your Peering Contracts, but for our test we will create it "
+"manually. Check section :ref:`Destination rates` for more information."
+msgstr ""
+"En la mayoríad e los casos, los datos de esta sección serán importado desde "
+"un CSV facilitado por los Contratos de Peering, pero para nuesto ejemplo lo "
+"crearemos manualmente. Vea la sección :ref:`Precios destino` para más información."
+
+#: ../../getting_started/external_outgoing_calls/destination_rate.rst:15
+msgid "Create a **destination rate**:"
+msgstr "Creamos un **precio destino**:"
+
+#: ../../getting_started/external_outgoing_calls/destination_rate.rst:26
+msgid "And we add a price for a given prefix in E.164 (with + sign)"
+msgstr "Y añadimos un precio con el prefijo en E.164 (con signo +)"
+
+#: ../../getting_started/external_outgoing_calls/destination_rate.rst:36
+msgid "Floating number must use the \".\" as decimal separator (e.g. 0.02)"
+msgstr ""
+"Los números decimales se tienen que introducir utilizando el \".\" como "
+"separador decimal (e.g. 0.02)"
+
+#: ../../getting_started/external_outgoing_calls/finish.rst:3
+msgid "Outgoing configuration complete!"
+msgstr "¡Configuración saliente completada!"
+
+#: ../../getting_started/external_outgoing_calls/finish.rst:5
+msgid "That's it!"
+msgstr "¡Listo!"
+
+#: ../../getting_started/external_outgoing_calls/finish.rst:7
+msgid ""
+"At this point, *Alice* should be able to make outgoing calls to spanish "
+"destinations and this calls should be billed accordingly."
+msgstr ""
+"En este punto, *Alice* debería de ser capaz de realizar llamadas "
+"nacionales externas, que se tendrían que cursar y tarificar con "
+"normalidad."
 
 #: ../../getting_started/external_outgoing_calls/index.rst:3
 msgid "Making external calls"
@@ -313,181 +373,6 @@ msgstr ""
 "Si una llamada no se va a poder tarificar, IvozProvider no permitirá su "
 "establecimiento."
 
-#: ../../getting_started/external_outgoing_calls/noplan_nocall.rst:27
-msgid "Creating a pricing pattern"
-msgstr "Crear un patrón de precio"
-
-#: ../../getting_started/external_outgoing_calls/noplan_nocall.rst:29
-msgid ""
-"Just the way :ref:`target patterns <target_patterns>` exist, **pricing "
-"patterns** exist and are configured in this section:"
-msgstr ""
-"Del mismo modo que existen los :ref:`patrones de destino "
-"<target_patterns>`, existen los **patrones de precio** y se configuran en"
-" esta sección:"
-
-#: ../../getting_started/external_outgoing_calls/noplan_nocall.rst:41
-msgid ""
-"A call is considered billable if there is a pricing pattern that matches "
-"this call."
-msgstr ""
-"Para que una llamada se considere tarificable, tiene que *matchear* con "
-"algún patrón de precio dado de alta previamente."
-
-#: ../../getting_started/external_outgoing_calls/noplan_nocall.rst:44
-msgid ""
-"Pricing patterns section is empty by default, as opposed to target "
-"patterns section, that has all the 254 countries of the world. The reason"
-" is that pricing pattern will usually imply lots of pattern per country "
-"(GSM networks, especial numbers, mobile numbers, fixed lines, etc.)."
-msgstr ""
-"A diferencia de los patrones de destino, que vienen precreados con los "
-"254 países del mundo, los patrones de precio no se crean ya que lo "
-"habitual es que un país se divida en muchos patrones de precio (redes GSM"
-" de un operador, numeraciones especiales, números fijos, números móviles,"
-" etc.)."
-
-#: ../../getting_started/external_outgoing_calls/noplan_nocall.rst:49
-msgid "We will create the pricing plan 'Spain' for our outgoing call:"
-msgstr "Creemos el patrón de precio *Spain* para nuestra llamada saliente externa:"
-
-#: ../../getting_started/external_outgoing_calls/noplan_nocall.rst:65
-msgid "Creating a pricing plan"
-msgstr "Crear un plan de precio"
-
-#: ../../getting_started/external_outgoing_calls/noplan_nocall.rst:67
-msgid ""
-"A **Pricing plan** determines the price of a type of call (of a pricing "
-"pattern) and is configured in this section:"
-msgstr ""
-"Un **Plan de precio** determina el coste de un tipo de llamada (de un "
-"patrón de precio) y se configura en esta sección:"
-
-#: ../../getting_started/external_outgoing_calls/noplan_nocall.rst:79
-msgid "We create a **pricing plan** for our goal:"
-msgstr "Creamos un **plan de precio** para nuestro objetivo:"
-
-#: ../../getting_started/external_outgoing_calls/noplan_nocall.rst:90
-msgid "And we add the **pricing patter** we have just created:"
-msgstr "Y le añadimos el **patrón de precio** que hemos creado antes:"
-
-#: ../../getting_started/external_outgoing_calls/noplan_nocall.rst:104
-msgid "Floating number must use the \".\" as decimal separator (e.g. 0.02)"
-msgstr ""
-"Los números decimales se tienen que introducir utilizando el \".\" como "
-"separador decimal (e.g. 0.02)"
-
-#: ../../getting_started/external_outgoing_calls/noplan_nocall.rst:107
-msgid "Finding a pricing plan for a specific destination"
-msgstr "Encontrar un plan de precios para un destino concreto"
-
-#: ../../getting_started/external_outgoing_calls/noplan_nocall.rst:108
-msgid ""
-"To check the configuration so far we can **find a pricing plan** for a "
-"call pressing:"
-msgstr ""
-"Para comprobar que hasta este punto la configuración es correcta, podemos"
-" **encontrar un plan de precio** para una llamada concreta pulsando:"
-
-#: ../../getting_started/external_outgoing_calls/noplan_nocall.rst:120
-#: ../../getting_started/external_outgoing_calls/noplan_nocall.rst:201
-msgid "We introduce the destination number in :ref:`E.164 format <e164>`:"
-msgstr "Introducimos el número destino en :ref:`formato E.164 <e164>`:"
-
-#: ../../getting_started/external_outgoing_calls/noplan_nocall.rst:131
-msgid ""
-"And we can check that it matches the **precing plan** we have just "
-"created:"
-msgstr "Y vemos que *matchea* con el **plan de precio** que acabamos de crear:"
-
-#: ../../getting_started/external_outgoing_calls/noplan_nocall.rst:146
-msgid "Assigning a pricing plan to a company"
-msgstr "Vincular plan de precio a empresa"
-
-#: ../../getting_started/external_outgoing_calls/noplan_nocall.rst:148
-msgid ""
-"A specific **pricing plan** can be linked to 'n' companies and the *brand"
-" operator* is responsible for this task."
-msgstr ""
-"Un **plan de precios** concreto se puede vincular a *n* empresas y "
-"corresponde al *Operador de marca* realizar esta vinculación."
-
-#: ../../getting_started/external_outgoing_calls/noplan_nocall.rst:151
-msgid ""
-"In the section **Brand configuration** > **Companies** we select the "
-"*demo* company:"
-msgstr ""
-"Para ello, desde la sección **Configuración de Marca** > **Empresas**, "
-"seleccionando la empresa *demo*:"
-
-#: ../../getting_started/external_outgoing_calls/noplan_nocall.rst:163
-msgid ""
-"The **Pricing plan** and **Companies** relationship is set for a "
-"determined period of time, that's why we have to select *Start time* and "
-"*End time*:"
-msgstr ""
-"La vinculación de **Planes de precio** y **Empresas** es efectiva en un "
-"período de tiempo concreto, de ahí que haya que seleccionar *Fecha "
-"inicio* y *Fecha fin*:"
-
-#: ../../getting_started/external_outgoing_calls/noplan_nocall.rst:175
-msgid ""
-"The **metric** of the link lets you assign more than one *pricing plan* "
-"for a company, even though some destinations are included in more than "
-"one of those pricing plans."
-msgstr ""
-"La **metrica** de la vinculación permite vincular más de un *plan de "
-"precios* a una empresa de forma coincidente en el tiempo, aunque ciertos "
-"destinos estén incluidos en más de uno de esos planes de precio."
-
-#: ../../getting_started/external_outgoing_calls/noplan_nocall.rst:179
-msgid ""
-"If a given call can be billed with more than one active pricing plan, it "
-"will be billed using the pricing plan with lower metric."
-msgstr ""
-"Una llamada que puede tarificarse en base a más de un plan de    precio "
-"vinculado a una empresa y activo en un momento dado lo hará en base al"
-"    plan de precio con menor métrica."
-
-#: ../../getting_started/external_outgoing_calls/noplan_nocall.rst:182
-msgid ""
-"This allows having a general *Pricing plan* and concrete the price of a "
-"specific destination in another *pricing plan* with lower metric (free "
-"cell phone calls, for example)."
-msgstr ""
-"Esto permite tener un *Plan de precios* general y matizar el coste de "
-"algún tipo de llamada en otro *Plan de precio* (móviles gratis, por "
-"ejemplo)."
-
-#: ../../getting_started/external_outgoing_calls/noplan_nocall.rst:187
-msgid "Simulating a call of a specific company"
-msgstr "Simular una llamada desde una empresa concreta"
-
-#: ../../getting_started/external_outgoing_calls/noplan_nocall.rst:188
-msgid ""
-"We can simulate a call for a given company and check the price it will "
-"imply. This way, we can be sure that the configuration is ok and that "
-"calls to that destination will be billed using a specific *Pricing plan*:"
-msgstr ""
-"Del mismo modo que al crear un *Plan de precios* hemos comprobado que a "
-"nuestra llamada aplicaba dicho plan, podemos simular una llamada concreta"
-" en una empresa concreta y saber qué coste se le aplicaría:"
-
-#: ../../getting_started/external_outgoing_calls/noplan_nocall.rst:213
-msgid ""
-"And we confirm that it will be billed with the pricing plan that we have "
-"just created and linked:"
-msgstr "Y vemos que *matchea* con el **plan de precio** que acabamos de crear:"
-
-#: ../../getting_started/external_outgoing_calls/noplan_nocall.rst:225
-msgid ""
-"At this point, *Alice* should be able to make outgoing calls to spanish "
-"destinations and this calls should be billed accordingly."
-msgstr ""
-"En este punto, *Alice* debería de ser capaz de realizar llamadas "
-"nacionales externas, que se tendrían que cursar y tarificar con "
-"normalidad."
-
 #: ../../getting_started/external_outgoing_calls/outgoing_ddi.rst:5
 msgid "Outgoing DDI configuration"
 msgstr "Configurar DDI saliente"
@@ -553,27 +438,33 @@ msgstr ""
 "Para ello, en primer lugar, necesitamos que los números externos recaigan"
 " en un **patrón de destino** dado de alta con anterioridad."
 
+#: ../../getting_started/external_outgoing_calls/where_do_i_call.rst:17
+msgid ""
+"To achieve our goal of making an external call to a spanish number, we "
+"didn't have to modify the initial contents of this two sections :)"
+msgstr ""
+
 #: ../../getting_started/internal_calls/brand_portal.rst:3
 msgid "DemoBrand Configuration"
 msgstr "Configuración DemoBrand"
 
 #: ../../getting_started/internal_calls/brand_portal.rst:5
 msgid ""
-"We need that the default DemoBrand have a company with at least 2 users. "
+"We need that the default DemoBrand have a client with at least 2 users. "
 "In order to archive this we will require little configuration in this "
 "section."
 msgstr ""
-"Para conseguir que esta DemoBrand tenga una compañía con 2 usuarios que "
+"Para conseguir que esta DemoBrand tenga un cliente con 2 usuarios que "
 "se puedan llamar entre sí, vamos a tener que hacer muy poco en este "
 "bloque."
 
 #: ../../getting_started/internal_calls/brand_portal.rst:8
 msgid ""
-"In fact, if we check **Companies** in the brand menu, we'll discover that"
-" there is already an existing *DemoCompany* that we can use to fulfill "
-"our desired goal :)"
+"In fact, if we check **Virtual PBXs** in the brand menu, we'll discover "
+"that there is already an existing *DemoCompany* that we can use to "
+"fulfill our desired goal :)"
 msgstr ""
-"De hecho, al acceder a la sección **Empresas**, vemos que ya existe una "
+"De hecho, al acceder a la sección **PBXs virtuales**, vemos que ya existe una "
 "compañía *DemoCompany* que podremos utilizar para cumplir nuestro ansiado"
 " objetivo :)"
 
@@ -720,10 +611,10 @@ msgstr "Configuración DemoCompany"
 #: ../../getting_started/internal_calls/company_portal.rst:5
 msgid ""
 "We're close to make our fist call in our fresh installed IvozProvider, "
-"there are only 6 steps to configure in our DemoCompany company."
+"there are only 6 steps to configure in our DemoCompany virtual pbx."
 msgstr ""
 "Estamos cerca de hacer nuestra primera llamada en nuestro flamente nuevo "
-"IvozProvider, solo queda crear 6 cosas dentro de nuestra empresa "
+"IvozProvider, solo queda crear 6 cosas dentro de nuestra pbx virtuals "
 "DemoCompany:"
 
 #: ../../getting_started/internal_calls/company_portal.rst:8
@@ -984,4 +875,176 @@ msgstr ""
 "Para conseguir que Alice llame a Bob, tendremos que realizar labores de 3"
 " niveles descritos en :ref:`operation_roles`, de ahí la organización del "
 "siguiente índice en esos 3 bloques:"
+
+#~ msgid "To accomplish this, following section can be used:"
+#~ msgstr "Para ello, tiene que acceder a la siguiente sección:"
+
+#~ msgid ""
+#~ "Just the way :ref:`target patterns "
+#~ "<target_patterns>` exist, **pricing patterns** "
+#~ "exist and are configured in this "
+#~ "section:"
+#~ msgstr ""
+#~ "Del mismo modo que existen los "
+#~ ":ref:`patrones de destino <target_patterns>`, "
+#~ "existen los **patrones de precio** y "
+#~ "se configuran en esta sección:"
+
+#~ msgid ""
+#~ "A call is considered billable if "
+#~ "there is a pricing pattern that "
+#~ "matches this call."
+#~ msgstr ""
+#~ "Para que una llamada se considere "
+#~ "tarificable, tiene que *matchear* con "
+#~ "algún patrón de precio dado de "
+#~ "alta previamente."
+
+#~ msgid "We will create the pricing plan 'Spain' for our outgoing call:"
+#~ msgstr ""
+#~ "Creemos el patrón de precio *Spain* "
+#~ "para nuestra llamada saliente externa:"
+
+#~ msgid "Creating a pricing plan"
+#~ msgstr "Crear un plan de precio"
+
+#~ msgid ""
+#~ "A **Pricing plan** determines the price"
+#~ " of a type of call (of a "
+#~ "pricing pattern) and is configured in"
+#~ " this section:"
+#~ msgstr ""
+#~ "Un **Plan de precio** determina el "
+#~ "coste de un tipo de llamada (de"
+#~ " un patrón de precio) y se "
+#~ "configura en esta sección:"
+
+#~ msgid "We create a **pricing plan** for our goal:"
+#~ msgstr "Creamos un **plan de precio** para nuestro objetivo:"
+
+#~ msgid "And we add the **pricing patter** we have just created:"
+#~ msgstr "Y le añadimos el **patrón de precio** que hemos creado antes:"
+
+#~ msgid "Finding a pricing plan for a specific destination"
+#~ msgstr "Encontrar un plan de precios para un destino concreto"
+
+#~ msgid ""
+#~ "To check the configuration so far "
+#~ "we can **find a pricing plan** for"
+#~ " a call pressing:"
+#~ msgstr ""
+#~ "Para comprobar que hasta este punto "
+#~ "la configuración es correcta, podemos "
+#~ "**encontrar un plan de precio** para "
+#~ "una llamada concreta pulsando:"
+
+#~ msgid "We introduce the destination number in :ref:`E.164 format <e164>`:"
+#~ msgstr "Introducimos el número destino en :ref:`formato E.164 <e164>`:"
+
+#~ msgid ""
+#~ "And we can check that it matches"
+#~ " the **precing plan** we have just"
+#~ " created:"
+#~ msgstr "Y vemos que *matchea* con el **plan de precio** que acabamos de crear:"
+
+#~ msgid "Assigning a pricing plan to a company"
+#~ msgstr "Vincular plan de precio a empresa"
+
+#~ msgid ""
+#~ "A specific **pricing plan** can be "
+#~ "linked to 'n' companies and the "
+#~ "*brand operator* is responsible for this"
+#~ " task."
+#~ msgstr ""
+#~ "Un **plan de precios** concreto se "
+#~ "puede vincular a *n* empresas y "
+#~ "corresponde al *Operador de marca* "
+#~ "realizar esta vinculación."
+
+#~ msgid ""
+#~ "In the section **Brand configuration** >"
+#~ " **Companies** we select the *demo* "
+#~ "company:"
+#~ msgstr ""
+#~ "Para ello, desde la sección "
+#~ "**Configuración de Marca** > **Empresas**, "
+#~ "seleccionando la empresa *demo*:"
+
+#~ msgid ""
+#~ "The **Pricing plan** and **Companies** "
+#~ "relationship is set for a determined "
+#~ "period of time, that's why we have"
+#~ " to select *Start time* and *End "
+#~ "time*:"
+#~ msgstr ""
+#~ "La vinculación de **Planes de precio**"
+#~ " y **Empresas** es efectiva en un "
+#~ "período de tiempo concreto, de ahí "
+#~ "que haya que seleccionar *Fecha inicio*"
+#~ " y *Fecha fin*:"
+
+#~ msgid ""
+#~ "The **metric** of the link lets "
+#~ "you assign more than one *pricing "
+#~ "plan* for a company, even though "
+#~ "some destinations are included in more"
+#~ " than one of those pricing plans."
+#~ msgstr ""
+#~ "La **metrica** de la vinculación permite"
+#~ " vincular más de un *plan de "
+#~ "precios* a una empresa de forma "
+#~ "coincidente en el tiempo, aunque ciertos"
+#~ " destinos estén incluidos en más de"
+#~ " uno de esos planes de precio."
+
+#~ msgid ""
+#~ "If a given call can be billed "
+#~ "with more than one active pricing "
+#~ "plan, it will be billed using the"
+#~ " pricing plan with lower metric."
+#~ msgstr ""
+#~ "Una llamada que puede tarificarse en "
+#~ "base a más de un plan de    "
+#~ "precio vinculado a una empresa y "
+#~ "activo en un momento dado lo hará"
+#~ " en base al    plan de precio "
+#~ "con menor métrica."
+
+#~ msgid ""
+#~ "This allows having a general *Pricing"
+#~ " plan* and concrete the price of "
+#~ "a specific destination in another "
+#~ "*pricing plan* with lower metric (free"
+#~ " cell phone calls, for example)."
+#~ msgstr ""
+#~ "Esto permite tener un *Plan de "
+#~ "precios* general y matizar el coste "
+#~ "de algún tipo de llamada en otro"
+#~ " *Plan de precio* (móviles gratis, "
+#~ "por ejemplo)."
+
+#~ msgid "Simulating a call of a specific company"
+#~ msgstr "Simular una llamada desde una empresa concreta"
+
+#~ msgid ""
+#~ "We can simulate a call for a "
+#~ "given company and check the price "
+#~ "it will imply. This way, we can"
+#~ " be sure that the configuration is"
+#~ " ok and that calls to that "
+#~ "destination will be billed using a "
+#~ "specific *Pricing plan*:"
+#~ msgstr ""
+#~ "Del mismo modo que al crear un "
+#~ "*Plan de precios* hemos comprobado que"
+#~ " a nuestra llamada aplicaba dicho "
+#~ "plan, podemos simular una llamada "
+#~ "concreta en una empresa concreta y "
+#~ "saber qué coste se le aplicaría:"
+
+#~ msgid ""
+#~ "And we confirm that it will be "
+#~ "billed with the pricing plan that "
+#~ "we have just created and linked:"
+#~ msgstr "Y vemos que *matchea* con el **plan de precio** que acabamos de crear:"
 

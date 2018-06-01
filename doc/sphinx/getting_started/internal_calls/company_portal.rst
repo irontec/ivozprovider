@@ -3,7 +3,7 @@ DemoCompany Configuration
 *************************
 
 We're close to make our fist call in our fresh installed IvozProvider, there
-are only 6 steps to configure in our DemoCompany company.
+are only 6 steps to configure in our DemoCompany virtual pbx.
 
 - 2 terminals
 - 2 extensions

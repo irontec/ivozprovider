@@ -9,7 +9,10 @@ We will follow this steps:
 
 .. toctree::
 
-   where_do_i_call
-   call_routing
-   outgoing_ddi
-   noplan_nocall
+    where_do_i_call
+    call_routing
+    outgoing_ddi
+    noplan_nocall
+    destination_rate
+    /brand/billing/rating_plans
+    finish

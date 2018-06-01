@@ -38,12 +38,13 @@ msgstr ""
 
 #: ../../basics/architecture/additional_elements.rst:8
 msgid ""
-"Another remarkable task is **asychronous tasks handler**: CDR must be "
-"parsed, calls must be billed, recordings must be encoded, etc."
+"Another remarkable task is **asychronous tasks handler** in charge of "
+"encoding recordings, generating invoices, reloading services, importing "
+"data, etc."
 msgstr ""
-"Otro proceso menos crucial son **los gestores de tareas asíncronas**: el "
-"CDR ha de ser parseado, la llamadas tarificadas, las grabaciones "
-"codificadas, etc."
+"Otro proceso menos crucial son **los gestores de tareas asíncronas** "
+"encargado de codificar las grabaciones, generar facturas, recargar servicios, "
+"importar datos, etc."
 
 #: ../../basics/architecture/audio_flow.rst:1
 msgid ""
@@ -869,22 +870,14 @@ msgid "GitHub: https://github.com/irontec/ivozprovider"
 msgstr "GitHub: https://github.com/irontec/ivozprovider"
 
 #: ../../basics/intro/getting_help.rst:12
-msgid "Users mailing list: users@lists-ivozprovider.irontec.com"
-msgstr "Listas de correo para usuarios: users@lists-ivozprovider.irontec.com"
-
-#: ../../basics/intro/getting_help.rst:14
-msgid "Developers mailing list: dev@lists-ivozprovider.irontec.com"
-msgstr "Listas de correo para desarrolladores: dev@lists-ivozprovider.irontec.com"
-
-#: ../../basics/intro/getting_help.rst:16
 msgid "email: vozip@irontec.com"
 msgstr "Dirección de correo: vozip@irontec.com"
 
-#: ../../basics/intro/getting_help.rst:18
+#: ../../basics/intro/getting_help.rst:14
 msgid "Twitter: `@irontec <https://twitter.com/irontec>`_"
 msgstr "Twitter: `@irontec <https://twitter.com/irontec>`_"
 
-#: ../../basics/intro/getting_help.rst:20
+#: ../../basics/intro/getting_help.rst:16
 msgid ""
 "IRC Channel `#ivozprovider "
 "<https://webchat.freenode.net/?channels=ivozprovider>`_ at "
@@ -894,7 +887,7 @@ msgstr ""
 "<https://webchat.freenode.net/?channels=ivozprovider>`_ "
 "enirc.freenode.net"
 
-#: ../../basics/intro/getting_help.rst:23
+#: ../../basics/intro/getting_help.rst:19
 msgid "Don't hesitate to contact us for any kind of feedback :)"
 msgstr "No dudes en contactarnos cualquiera que sea el motivo :)"
 
@@ -1778,4 +1771,3 @@ msgid ""
 msgstr ""
 "Los usuarios son los que utilizan y disfrutan todas las funcionalidades "
 "de IvozProvider."
-
