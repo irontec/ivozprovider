@@ -21,7 +21,7 @@ production:
       title: _("List of %s %2s", ngettext('Virtual PBX', 'Virtual PBXs', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/brand/companies.html"
+        href: "/doc/${lang}/brand/virtual_pbx.html"
       forcedValues:
         type: 'vpbx'
         <<: *forcedBrand

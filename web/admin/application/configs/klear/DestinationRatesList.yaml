@@ -18,7 +18,7 @@ production:
       title: _("List of %s %2s", ngettext('Destination rate', 'Destination rates', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/brand/billing/pricing_plans.html"
+        href: "/doc/${lang}/brand/billing/destination_rates.html"
       forcedValues:
         <<: *forcedBrand
       fields: &destinationRates_fieldsLink
