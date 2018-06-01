@@ -52,7 +52,7 @@ During the Company creating process, we skipped the security mechanism that
 **limits the IP addresses or ranges that the company terminals can use 
 in their terminals**. 
 
-This can be activated in the section **Brand configuration** > **Company**:
+This can be activated in the section **Brand configuration** > **Virtual PBXs**:
 
 .. image:: img/authorized_ips2.png
     :align: center

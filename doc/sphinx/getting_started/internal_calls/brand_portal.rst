@@ -2,10 +2,10 @@
 DemoBrand Configuration
 ***********************
 
-We need that the default DemoBrand have a company with at least 2 users. In
+We need that the default DemoBrand have a client with at least 2 users. In
 order to archive this we will require little configuration in this section.
 
-In fact, if we check **Companies** in the brand menu, we'll discover that there
+In fact, if we check **Virtual PBXs** in the brand menu, we'll discover that there
 is already an existing *DemoCompany* that we can use to fulfill our desired
 goal :)
 

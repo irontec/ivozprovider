@@ -18,16 +18,6 @@ have just created, we only have to use the following section:
 
 As displayed by the zero counter, no Peer Serve has been created yet:
 
-.. ifconfig:: language == 'en'
-
-    .. image:: img/en/peerservers_add.png
-      :align: center
-
-.. ifconfig:: language == 'es'
-
-    .. image:: img/es/peerservers_add.png
-      :align: center
-
 .. glossary::
 
     Name

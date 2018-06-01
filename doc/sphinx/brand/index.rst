@@ -4,8 +4,9 @@ Brand Configuration
 
 .. toctree::
 
-    companies
+    virtual_pbx
     retail
+    wholesale
     balances
     portal_urls
     notifications

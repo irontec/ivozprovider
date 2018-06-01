@@ -10,6 +10,8 @@ Brand administators can configure the notifications sent by IvozProvider:
 
 - Email sent when a new fax is received
 
+- Email sent when a balance is below configured threshold
+
 .. hint:: When no custom notification is configured, default ones will be used
 
 Notifications are created in two steps: Create a notification type and add contents to the notification for each

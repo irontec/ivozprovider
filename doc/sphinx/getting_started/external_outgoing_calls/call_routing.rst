@@ -12,16 +12,6 @@ established through our **Contract Peering**.
 
 To make this assignment, we use the section **Outgoing routing**:
 
-.. ifconfig:: language == 'en'
-
-    .. image:: img/en/outgoing_routes_section.png
-      :align: center
-
-.. ifconfig:: language == 'es'
-
-    .. image:: img/es/outgoing_routes_section.png
-      :align: center
-
 If we choose routing 'Spain' calls only through our *Peering contract*, we will
 make this configuration:
 

@@ -9,10 +9,6 @@ multiple channels to get information or report bugs:
 
 - GitHub: https://github.com/irontec/ivozprovider
 
-- Users mailing list: users@lists-ivozprovider.irontec.com
-
-- Developers mailing list: dev@lists-ivozprovider.irontec.com
-
 - email: vozip@irontec.com
 
 - Twitter: `@irontec <https://twitter.com/irontec>`_

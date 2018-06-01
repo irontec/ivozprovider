@@ -28,3 +28,4 @@ Company Configuration
     call_recording
     services
     faxing
+    call_registry

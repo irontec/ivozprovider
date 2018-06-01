@@ -13,7 +13,7 @@ We will cover this topics:
 .. toctree::
     :maxdepth: 1
 
-    call_registry
     billable_calls
-    pricing_plans
+    destination_rates
+    rating_plans
     bill_a_call
