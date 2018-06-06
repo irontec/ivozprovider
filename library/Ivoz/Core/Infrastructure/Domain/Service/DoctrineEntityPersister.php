@@ -38,6 +38,13 @@ class DoctrineEntityPersister implements EntityPersisterInterface
      */
     protected $entityStateAccessor;
 
+
+    /**
+     * @var ReflectionProperty
+     * @deprecated
+     */
+    protected $orphanAccesor;
+
     /**
      * @var CreateEntityFromDTO
      */
@@ -94,6 +101,9 @@ class DoctrineEntityPersister implements EntityPersisterInterface
         $unitOfWorkRef = new \ReflectionClass($this->unitOfWork);
         $this->entityStateAccessor = $unitOfWorkRef->getProperty('entityStates');
         $this->entityStateAccessor->setAccessible(true);
+
+        $this->orphanAccesor = $unitOfWorkRef->getProperty('orphanRemovals');
+        $this->orphanAccesor->setAccessible(true);
 
         $this->createEntityFromDTO = $createEntityFromDTO;
         $this->entityUpdater = $entityUpdater;
@@ -155,6 +165,12 @@ class DoctrineEntityPersister implements EntityPersisterInterface
                 UnitOfWork::STATE_MANAGED,
                 UnitOfWork::STATE_REMOVED
             ];
+
+            $orphans = $this->orphanAccesor->getValue($unitOfWork);
+            $this->orphanAccesor->setValue($unitOfWork, []);
+            foreach ($orphans as $orphan) {
+                $this->remove($orphan, false);
+            }
 
             if (in_array($state, $singleComputationValidStates)) {
                 $this->em->flush($entity);
@@ -319,7 +335,7 @@ class DoctrineEntityPersister implements EntityPersisterInterface
         }
 
         $commandlog = Commandlog::fromEvent($command);
-        $this->em->persist($commandlog);
+        $this->persist($commandlog);
         $this->logger->info(
             sprintf(
                 '%s > %s::%s(%s)',
@@ -337,7 +353,7 @@ class DoctrineEntityPersister implements EntityPersisterInterface
         foreach ($entityEvents as $event) {
             $changeLog = Changelog::fromEvent($event);
             $changeLog->setCommand($commandlog);
-            $this->em->persist($changeLog);
+            $this->persist($changeLog);
 
             $this->logger->info(
                 sprintf(
@@ -351,6 +367,6 @@ class DoctrineEntityPersister implements EntityPersisterInterface
         }
 
         $this->entityEventSubscriber->clearEvents();
-        $this->em->flush();
+        $this->dispatchQueued();
     }
 }
