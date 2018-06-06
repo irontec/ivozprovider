@@ -79,7 +79,6 @@ production:
       title: _("Edit %s %2s", ngettext('Call forward setting', 'Call forward settings', 1), "[format| (%item%)]")
       fields:
         blacklist:
-          extensionId: true
           targetTypeValue: true
           userId: true
           retailAccountId: true
