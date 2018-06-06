@@ -48,7 +48,7 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
     private $uriScheme;
 
     /**
-     * @var boolean
+     * @var integer
      */
     private $transport;
 
@@ -297,7 +297,7 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @param boolean $transport
+     * @param integer $transport
      *
      * @return static
      */
@@ -309,7 +309,7 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @return boolean
+     * @return integer
      */
     public function getTransport()
     {

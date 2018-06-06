@@ -52,7 +52,7 @@ abstract class TrunksLcrGatewayAbstract
     protected $uriScheme;
 
     /**
-     * @var boolean
+     * @var integer
      */
     protected $transport;
 
@@ -463,14 +463,17 @@ abstract class TrunksLcrGatewayAbstract
     /**
      * Set transport
      *
-     * @param boolean $transport
+     * @param integer $transport
      *
      * @return self
      */
     public function setTransport($transport = null)
     {
         if (!is_null($transport)) {
-            Assertion::between(intval($transport), 0, 1, 'transport provided "%s" is not a valid boolean value.');
+            if (!is_null($transport)) {
+                Assertion::integerish($transport, 'transport value "%s" is not an integer or a number castable to integer.');
+                Assertion::greaterOrEqualThan($transport, 0, 'transport provided "%s" is not greater or equal than "%s".');
+            }
         }
 
         $this->transport = $transport;
@@ -481,7 +484,7 @@ abstract class TrunksLcrGatewayAbstract
     /**
      * Get transport
      *
-     * @return boolean
+     * @return integer
      */
     public function getTransport()
     {
