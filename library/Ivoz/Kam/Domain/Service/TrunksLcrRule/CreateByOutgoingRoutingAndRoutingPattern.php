@@ -2,8 +2,7 @@
 
 namespace Ivoz\Kam\Domain\Service\TrunksLcrRule;
 
-use Ivoz\Core\Application\Service\CreateEntityFromDTO;
-use Ivoz\Core\Domain\Service\EntityPersisterInterface;
+use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRule;
 use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface;
 use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleRepository;
@@ -13,28 +12,21 @@ use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface;
 class CreateByOutgoingRoutingAndRoutingPattern
 {
     /**
-     * @var EntityPersisterInterface
-     */
-    protected $entityPersister;
-
-    /**
-     * @var CreateEntityFromDTO
-     */
-    protected $createEntityFromDTO;
-
-    /**
      * @var TrunksLcrRuleRepository
      */
     protected $lcrRuleRepository;
 
+    /**
+     * @var EntityTools
+     */
+    protected $entityTools;
+
     public function __construct(
-        EntityPersisterInterface $entityPersister,
-        CreateEntityFromDTO $createEntityFromDTO,
-        TrunksLcrRuleRepository $lcrRuleRepository
+        TrunksLcrRuleRepository $lcrRuleRepository,
+        EntityTools $entityTools
     ) {
-        $this->entityPersister = $entityPersister;
-        $this->createEntityFromDTO = $createEntityFromDTO;
         $this->lcrRuleRepository = $lcrRuleRepository;
+        $this->entityTools = $entityTools;
     }
 
     /**
@@ -96,19 +88,11 @@ class CreateByOutgoingRoutingAndRoutingPattern
             );
         }
 
-        /** @var TrunksLcrRule $lcrRule */
-        $lcrRule = $this
-            ->createEntityFromDTO
-            ->execute(TrunksLcrRule::class, $lcrRuleDto);
-
         // Setting Outgoing Routing also sets from_uri (see model)
-        $lcrRule->setOutgoingRouting($outgoingRouting);
+        $lcrRuleDto->setOutgoingRoutingId($outgoingRouting->getId());
 
-        $this
-            ->entityPersister
-            ->persist($lcrRule, true);
-
-        return $lcrRule;
+        return $this
+            ->entityTools
+            ->persistDto($lcrRuleDto, $lcrRule, true);
     }
-
 }

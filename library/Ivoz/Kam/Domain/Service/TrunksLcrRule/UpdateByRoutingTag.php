@@ -40,6 +40,10 @@ class UpdateByRoutingTag implements RoutingTagLifecycleEventHandlerInterface
 
     public function execute(RoutingTagInterface $entity, $isNew)
     {
+        if (!$entity->hasChanged('tag')) {
+            return;
+        }
+
         // Get all OutgointRoutings that use this routingTag
         $outgoingRoutings = $entity->getOutgoingRoutings();
 

@@ -5,9 +5,9 @@ namespace Ivoz\Kam\Domain\Service\TrunksLcrRule;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleDto;
 use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface;
+use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingRepository;
 use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface;
 use Ivoz\Provider\Domain\Service\RoutingPattern\RoutingPatternLifecycleEventHandlerInterface;
-use Ivoz\Provider\Infrastructure\Persistence\Doctrine\OutgoingRoutingDoctrineRepository;
 
 /**
  * Class UpdateByRoutingPattern
@@ -48,6 +48,10 @@ class UpdateByRoutingPattern implements RoutingPatternLifecycleEventHandlerInter
 
     public function execute(RoutingPatternInterface $entity, $isNew)
     {
+        if (!$entity->hasChanged('prefix')) {
+            return;
+        }
+
         // Get all OutgointRoutings that use this routingPattern
         $outgoingRoutings = $this->outgoingRoutingRepository->findByRoutingPattern($entity);
 

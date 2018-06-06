@@ -15,5 +15,3 @@ Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting:
     lcrRules:
       targetEntity: Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface
       mappedBy: outgoingRouting
-      cascade: ['persist']
-      orphanRemoval: true

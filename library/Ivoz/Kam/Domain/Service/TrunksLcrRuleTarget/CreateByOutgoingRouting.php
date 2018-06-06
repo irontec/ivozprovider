@@ -2,34 +2,44 @@
 
 namespace Ivoz\Kam\Domain\Service\TrunksLcrRuleTarget;
 
+use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface;
+use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleRepository;
 use Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTarget;
+use Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetRepository;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 use Ivoz\Provider\Domain\Model\PeerServer\PeerServerInterface;
-use Ivoz\Provider\Domain\Service\OutgoingRouting\OutgoingRoutingLifecycleEventHandlerInterface;
 
 /**
  * Class CreateByOutgoingRouting
  * @package Ivoz\Kam\Domain\Service\TrunksLcrGateway
  */
-class CreateByOutgoingRouting implements OutgoingRoutingLifecycleEventHandlerInterface
+class CreateByOutgoingRouting
 {
     /**
      * @var EntityPersisterInterface
      */
     protected $entityPersister;
 
-    public function __construct(EntityPersisterInterface $entityPersister)
-    {
-        $this->entityPersister = $entityPersister;
-    }
+    /**
+     * @var TrunksLcrRuleRepository
+     */
+    protected $trunksLcrRuleTargetRepository;
 
-    public static function getSubscribedEvents()
-    {
-        return [
-            self::EVENT_POST_PERSIST => 20
-        ];
+    /**
+     * @var EntityTools
+     */
+    protected $entityTools;
+
+    public function __construct(
+        EntityPersisterInterface $entityPersister,
+        TrunksLcrRuleTargetRepository $trunksLcrRuleTargetRepository,
+        EntityTools $entityTools
+    ) {
+        $this->entityPersister = $entityPersister;
+        $this->trunksLcrRuleTargetRepository = $trunksLcrRuleTargetRepository;
+        $this->entityTools = $entityTools;
     }
 
     public function execute(OutgoingRoutingInterface $outgoingRouting)
@@ -57,7 +67,16 @@ class CreateByOutgoingRouting implements OutgoingRoutingLifecycleEventHandlerInt
         // Create n x m LcrRuleTargets (n LcrRules; m LcrGateways)
         foreach ($lcrRules as $lcrRule) {
             foreach ($lcrGateways as $lcrGateway) {
-                $lcrRuleTargetDto = TrunksLcrRuleTarget::createDto();
+
+                $lcrRuleTarget = $this->trunksLcrRuleTargetRepository->findRuleTarget(
+                    $outgoingRouting,
+                    $lcrRule,
+                    $lcrGateway
+                );
+
+                $lcrRuleTargetDto = $lcrRuleTarget
+                    ? $this->entityTools->entityToDto($lcrRuleTarget)
+                    : TrunksLcrRuleTarget::createDto();
 
                 $lcrRuleTargetDto
                     ->setRuleId($lcrRule->getId())
@@ -66,9 +85,8 @@ class CreateByOutgoingRouting implements OutgoingRoutingLifecycleEventHandlerInt
                     ->setWeight($outgoingRouting->getWeight())
                     ->setOutgoingRoutingId($outgoingRouting->getId());
 
-                //@todo double check this condition,
                 //we're creating new entities every time
-                $this->entityPersister->persistDto($lcrRuleTargetDto);
+                $this->entityPersister->persistDto($lcrRuleTargetDto, $lcrRuleTarget);
             }
         }
     }

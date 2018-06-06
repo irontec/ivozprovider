@@ -14,3 +14,5 @@ parameters:
       - Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfile
     Ivoz\Provider\Domain\Model\Fax\Fax:
       - Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOut
+    Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup:
+      - Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting

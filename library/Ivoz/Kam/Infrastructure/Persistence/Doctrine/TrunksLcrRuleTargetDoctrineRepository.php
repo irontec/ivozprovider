@@ -3,8 +3,12 @@
 namespace Ivoz\Kam\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface;
+use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface;
+use Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface;
 use Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetRepository;
 use Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTarget;
+use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -18,5 +22,23 @@ class TrunksLcrRuleTargetDoctrineRepository extends ServiceEntityRepository impl
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, TrunksLcrRuleTarget::class);
+    }
+
+    /**
+     * @param OutgoingRoutingInterface $outgoingRouting
+     * @param TrunksLcrRuleInterface $lcrRule
+     * @param TrunksLcrGatewayInterface $lcrGateway
+     * @return TrunksLcrRuleTargetInterface | null
+     */
+    public function findRuleTarget(
+        OutgoingRoutingInterface $outgoingRouting,
+        TrunksLcrRuleInterface $lcrRule,
+        TrunksLcrGatewayInterface $lcrGateway
+    ) {
+        return $this->findOneBy([
+            'outgoingRouting' => $outgoingRouting->getId(),
+            'rule' => $lcrRule->getId(),
+            'gw' => $lcrGateway->getId()
+        ]);
     }
 }

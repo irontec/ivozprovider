@@ -2,7 +2,9 @@
 
 namespace Ivoz\Kam\Domain\Service\TrunksLcrRule;
 
+use Ivoz\Kam\Domain\Service\TrunksLcrRuleTarget\CreateByOutgoingRouting as RuleTargetByOutgoingRouting;
 use Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface;
+use Ivoz\Kam\Domain\Service\TrunksLcrRule\UpdateByOutgoingRouting as LcrRuleByOutgoingRouting;
 use Ivoz\Provider\Domain\Service\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternLifecycleEventHandlerInterface;
 
 /**
@@ -13,18 +15,25 @@ use Ivoz\Provider\Domain\Service\RoutingPatternGroupsRelPattern\RoutingPatternGr
 class UpdateByRoutingPatternGroupsRelPattern implements RoutingPatternGroupsRelPatternLifecycleEventHandlerInterface
 {
     /**
-     * @var UpdateByOutgoingRouting
+     * @var RuleTargetByOutgoingRouting
      */
-    protected $updateByOutgoingRouting;
+    protected $ruleTargetByOutgoingRouting;
+
+    /**
+     * @var LcrRuleByOutgoingRouting
+     */
+    protected $lcrRuleByOutgoingRouting;
 
     /**
      * UpdateByRoutingPatternGroupsRelPattern constructor.
-     * @param UpdateByOutgoingRouting $updateByOutgoingRouting
+     * @param UpdateByOutgoingRouting $ruleTargetByOutgoingRouting
      */
     public function __construct(
-        UpdateByOutgoingRouting $updateByOutgoingRouting
+        RuleTargetByOutgoingRouting $ruleTargetByOutgoingRouting,
+        LcrRuleByOutgoingRouting $lcrRuleByByOutgoingRouting
     ) {
-        $this->updateByOutgoingRouting = $updateByOutgoingRouting;
+        $this->ruleTargetByOutgoingRouting = $ruleTargetByOutgoingRouting;
+        $this->lcrRuleByOutgoingRouting = $lcrRuleByByOutgoingRouting;
     }
 
     public static function getSubscribedEvents()
@@ -42,7 +51,8 @@ class UpdateByRoutingPatternGroupsRelPattern implements RoutingPatternGroupsRelP
 
         // Update all outgoing routes if required
         foreach ($outgoingRoutings as $outgoingRouting) {
-            $this->updateByOutgoingRouting->execute($outgoingRouting);
+            $this->lcrRuleByOutgoingRouting->execute($outgoingRouting);
+            $this->ruleTargetByOutgoingRouting->execute($outgoingRouting);
         }
     }
 }

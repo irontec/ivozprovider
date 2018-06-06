@@ -3,11 +3,10 @@
 namespace Ivoz\Kam\Domain\Service\TrunksLcrRuleTarget;
 
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
-use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface;
-use Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTarget;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 use Ivoz\Provider\Domain\Model\PeerServer\PeerServerInterface;
 use Ivoz\Provider\Domain\Service\PeerServer\PeerServerLifecycleEventHandlerInterface;
+use Ivoz\Kam\Domain\Service\TrunksLcrGateway\UpdateByPeerServer;
 
 /**
  * Class CreateByPeerServer
@@ -15,6 +14,8 @@ use Ivoz\Provider\Domain\Service\PeerServer\PeerServerLifecycleEventHandlerInter
  */
 class CreateByPeerServer implements PeerServerLifecycleEventHandlerInterface
 {
+    const POST_PERSIST_PRIORITY = UpdateByPeerServer::POST_PERSIST_PRIORITY + 10;
+
     /**
      * @var EntityPersisterInterface
      */
@@ -33,15 +34,15 @@ class CreateByPeerServer implements PeerServerLifecycleEventHandlerInterface
     public function __construct(
         EntityPersisterInterface $entityPersister,
         CreateByOutgoingRouting $lcrRuleTargetFactory
-    )
-    {
+    ) {
         $this->entityPersister = $entityPersister;
+        $this->lcrRuleTargetFactory = $lcrRuleTargetFactory;
     }
 
     public static function getSubscribedEvents()
     {
         return [
-            self::EVENT_POST_PERSIST => 20
+            self::EVENT_POST_PERSIST => self::POST_PERSIST_PRIORITY
         ];
     }
 
