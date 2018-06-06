@@ -53,7 +53,7 @@ Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayAbstract:
       options:
         unsigned: true
     transport:
-      type: boolean
+      type: smallint
       nullable: true
       options:
         unsigned: true
