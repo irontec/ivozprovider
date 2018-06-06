@@ -26,7 +26,7 @@ class ProviderPeerServer extends Fixture implements DependentFixtureInterface
         $item1->setHostname("127.0.0.1");
         $item1->setPort(5060);
         $item1->setUriScheme(1);
-        $item1->setTransport(true);
+        $item1->setTransport(1);
         $item1->setSendPAI(false);
         $item1->setSendRPID(false);
         $item1->setSipProxy("127.0.0.1");
@@ -41,7 +41,7 @@ class ProviderPeerServer extends Fixture implements DependentFixtureInterface
         $item2->setHostname("127.0.0.2");
         $item2->setPort(5060);
         $item2->setUriScheme(2);
-        $item2->setTransport(true);
+        $item2->setTransport(1);
         $item2->setSendPAI(false);
         $item2->setSendRPID(false);
         $item2->setSipProxy("127.0.0.2");

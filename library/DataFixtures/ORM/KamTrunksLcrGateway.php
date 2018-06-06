@@ -30,7 +30,7 @@ class KamTrunksLcrGateway extends Fixture implements DependentFixtureInterface
         $item1->setPort(5060);
         $item1->setParams("");
         $item1->setUriScheme(2);
-        $item1->setTransport(true);
+        $item1->setTransport(1);
         $item1->setPeerServer($this->getReference('_reference_ProviderPeerServer1'));
         $this->addReference('_reference_KamTrunksLcrGateway1', $item1);
         $this->sanitizeEntityValues($item1);
