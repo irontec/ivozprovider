@@ -2,7 +2,7 @@
 
 namespace spec\Ivoz\Kam\Domain\Service\TrunksLcrGateway;
 
-use Ivoz\Core\Domain\Service\EntityPersisterInterface;
+use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayDto;
 use Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface;
 use Ivoz\Provider\Domain\Model\PeerServer\PeerServerInterface;
@@ -16,18 +16,17 @@ class UpdateByPeerServerSpec extends ObjectBehavior
     use HelperTrait;
 
     /**
-     * @var EntityPersisterInterface
+     * @var EntityTools
      */
-    protected $entityPersister;
+    protected $entityTools;
 
     public function let(
-        EntityPersisterInterface $entityPersister
+        EntityTools $entityTools
     ) {
-        $this->entityPersister = $entityPersister;
+        $this->entityTools = $entityTools;
 
-        $this->beConstructedWith($entityPersister);
+        $this->beConstructedWith($entityTools);
     }
-
 
     function it_is_initializable()
     {
@@ -53,7 +52,7 @@ class UpdateByPeerServerSpec extends ObjectBehavior
         );
 
         $this
-            ->entityPersister
+            ->entityTools
             ->persistDto(
                 Argument::type(TrunksLcrGatewayDto::class),
                 null,
@@ -67,7 +66,6 @@ class UpdateByPeerServerSpec extends ObjectBehavior
 
         $this->execute($entity, false);
     }
-
 
     function it_updates_lcr_gateway(
         PeerServerInterface $entity,
@@ -95,7 +93,7 @@ class UpdateByPeerServerSpec extends ObjectBehavior
             ->shouldBeCalled();
 
         $this
-            ->entityPersister
+            ->entityTools
             ->persistDto(
                 $dto,
                 $lcrGateway,

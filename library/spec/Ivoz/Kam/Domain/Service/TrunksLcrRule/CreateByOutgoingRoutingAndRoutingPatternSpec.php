@@ -3,7 +3,8 @@
 namespace spec\Ivoz\Kam\Domain\Service\TrunksLcrRule;
 
 use Ivoz\Core\Application\Service\CreateEntityFromDTO;
-use Ivoz\Core\Domain\Service\EntityPersisterInterface;
+use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleRepository;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRule;
@@ -18,23 +19,30 @@ use Prophecy\Argument;
 class CreateByOutgoingRoutingAndRoutingPatternSpec extends ObjectBehavior
 {
     /**
-     * @var EntityPersisterInterface
+     * @var EntityTools
      */
-    protected $entityPersister;
+    protected $entityTools;
 
     /**
      * @var CreateEntityFromDTO
      */
     protected $createEntityFromDTO;
 
-    public function let(
-        EntityPersisterInterface $entityPersister,
-        CreateEntityFromDTO $createEntityFromDTO
-    ) {
-        $this->entityPersister = $entityPersister;
-        $this->createEntityFromDTO = $createEntityFromDTO;
+    /**
+     * @var TrunksLcrRuleRepository
+     */
+    protected $trunksLcrRuleRepository;
 
-        $this->beConstructedWith($entityPersister, $createEntityFromDTO);
+    public function let(
+        EntityTools $entityTools,
+        CreateEntityFromDTO $createEntityFromDTO,
+        TrunksLcrRuleRepository $trunksLcrRuleRepository
+    ) {
+        $this->entityTools = $entityTools;
+        $this->createEntityFromDTO = $createEntityFromDTO;
+        $this->trunksLcrRuleRepository = $trunksLcrRuleRepository;
+
+        $this->beConstructedWith($trunksLcrRuleRepository, $entityTools);
     }
 
     function it_is_initializable()
@@ -52,6 +60,11 @@ class CreateByOutgoingRoutingAndRoutingPatternSpec extends ObjectBehavior
             ->willReturn($brand)
             ->shouldBeCalled();
 
+        $entity
+            ->getId()
+            ->willReturn(1)
+            ->shouldBeCalled();
+
         $brand
             ->getId()
             ->willReturn(1);
@@ -64,16 +77,6 @@ class CreateByOutgoingRoutingAndRoutingPatternSpec extends ObjectBehavior
             ->getRoutingTag()
             ->willReturn(null)
             ->shouldBeCalled();
-
-        $this
-            ->createEntityFromDTO
-            ->execute(TrunksLcrRule::class, Argument::type(TrunksLcrRuleDto::class))
-            ->willReturn($lcrRule);
-
-        $lcrRule
-            ->setOutgoingRouting($entity)
-            ->shouldBeCalled();
-
     }
 
     function it_creates_lcr_rule(
@@ -84,8 +87,36 @@ class CreateByOutgoingRoutingAndRoutingPatternSpec extends ObjectBehavior
         $this->createExampleBase($entity, $brand, $lcrRule);
 
         $this
-            ->entityPersister
-            ->persist(Argument::type(TrunksLcrRule::class), true);
+            ->entityTools
+            ->persistDto(
+                Argument::type(TrunksLcrRuleDto::class),
+                Argument::type(TrunksLcrRule::class),
+                true
+            );
+
+        $this->execute($entity, null);
+    }
+
+    function it_sets_outgoingRouting_id(
+        OutgoingRoutingInterface $entity,
+        BrandInterface $brand,
+        TrunksLcrRuleInterface $lcrRule
+    ) {
+        $this->createExampleBase($entity, $brand, $lcrRule);
+
+        $validatorCallback = function (LcrRuleDto $lcrRuleDto) use ($entity) {
+            if ($lcrRuleDto->getOutgoingRoutingId() === $entity->getId()) {
+                return false;
+            }
+        };
+
+        $this
+            ->entityTools
+            ->persistDto(
+                Argument::that($validatorCallback),
+                Argument::any(),
+                true
+            );
 
         $this->execute($entity, null);
     }
@@ -97,15 +128,19 @@ class CreateByOutgoingRoutingAndRoutingPatternSpec extends ObjectBehavior
     ) {
         $this->createExampleBase($entity, $brand, $lcrRule);
 
-        $validatorCallback = function (LcrRule $lcrRule) {
-            if ($lcrRule->getPrefix() !== 'fax') {
+        $validatorCallback = function (LcrRuleDto $lcrRuleDto) {
+            if ($lcrRuleDto->getPrefix() !== 'fax') {
                 return false;
             }
         };
 
         $this
-            ->entityPersister
-            ->persist(Argument::that($validatorCallback), true);
+            ->entityTools
+            ->persistDto(
+                Argument::that($validatorCallback),
+                Argument::type(TrunksLcrRule::class),
+                true
+            );
 
         $this->execute($entity, null);
     }
@@ -128,17 +163,21 @@ class CreateByOutgoingRoutingAndRoutingPatternSpec extends ObjectBehavior
             ->willReturn(1)
             ->shouldBeCalled();
 
-        $validatorCallback = function (TrunksLcrRule $lcrRule) {
-            if ($lcrRule->getPrefix() !== 'prefix') {
+        $validatorCallback = function (TrunksLcrRuleDto $lcrRuleDto) {
+            if ($lcrRuleDto->getPrefix() !== 'prefix') {
                 return false;
             }
 
-            return $lcrRule->getRoutingPattern()->getId() === 1;
+            return $lcrRuleDto->getRoutingPatternId() === 1;
         };
 
         $this
-            ->entityPersister
-            ->persist(Argument::that($validatorCallback), true);
+            ->entityTools
+            ->persist(
+                Argument::that($validatorCallback),
+                Argument::type(TrunksLcrRule::class),
+                true
+            );
 
         $this->execute($entity, $pattern);
     }
@@ -160,13 +199,17 @@ class CreateByOutgoingRoutingAndRoutingPatternSpec extends ObjectBehavior
             ->getId()
             ->willReturn(2);
 
-        $validatorCallback = function (TrunksLcrRule $lcrRule) {
-            return $lcrRule->getFromUri() === '^b1c2$';
+        $validatorCallback = function (TrunksLcrRuleDto $lcrRuleDto) {
+            return $lcrRuleDto->getFromUri() === '^b1c2$';
         };
 
         $this
-            ->entityPersister
-            ->persist(Argument::that($validatorCallback), true);
+            ->entityTools
+            ->persist(
+                Argument::that($validatorCallback),
+                Argument::type(TrunksLcrRule::class),
+                true
+            );
 
         $this->execute($entity, null);
     }
@@ -183,13 +226,17 @@ class CreateByOutgoingRoutingAndRoutingPatternSpec extends ObjectBehavior
             ->willReturn(null)
             ->shouldBeCalled();
 
-        $validatorCallback = function (LcrRule $lcrRule) {
-            return $lcrRule->getFromUri() === '^b1c[0-9]+$';
+        $validatorCallback = function (LcrRuleDto $lcrRuleDto) {
+            return $lcrRuleDto->getFromUri() === '^b1c[0-9]+$';
         };
 
         $this
-            ->entityPersister
-            ->persist(Argument::that($validatorCallback), true);
+            ->entityTools
+            ->persist(
+                Argument::that($validatorCallback),
+                Argument::type(TrunksLcrRule::class),
+                true
+            );
 
         $this->execute($entity, null);
     }

@@ -6,6 +6,7 @@ use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface;
 use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface;
 use Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetDto;
+use Ivoz\Kam\Domain\Service\TrunksLcrRuleTarget\CreateByOutgoingRouting;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 use Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface;
 use Ivoz\Provider\Domain\Model\PeerServer\PeerServerInterface;
@@ -23,10 +24,22 @@ class CreateByPeerServerSpec extends ObjectBehavior
      */
     protected $entityPersister;
 
-    public function let(EntityPersisterInterface $entityPersister)
-    {
+    /**
+     * @var CreateByOutgoingRouting
+     */
+    protected $lcrRuleTargetFactory;
+
+    public function let(
+        EntityPersisterInterface $entityPersister,
+        CreateByOutgoingRouting $lcrRuleTargetFactory
+    ) {
         $this->entityPersister = $entityPersister;
-        $this->beConstructedWith($entityPersister);
+        $this->lcrRuleTargetFactory = $lcrRuleTargetFactory;
+
+        $this->beConstructedWith(
+            $entityPersister,
+            $lcrRuleTargetFactory
+        );
     }
 
     function it_is_initializable()
@@ -47,7 +60,7 @@ class CreateByPeerServerSpec extends ObjectBehavior
     }
 
 
-    function it_creates_new_lcrRuleTarges(
+    function it_calls_lcrRuleTargetFactory_per_outgoingRouting(
         PeerServerInterface $entity,
         PeeringContractInterface $peeringContract,
         TrunksLcrGatewayInterface $lcrGateway,
@@ -57,8 +70,7 @@ class CreateByPeerServerSpec extends ObjectBehavior
         $this->getterProphecy(
             $entity,
             [
-                'getPeeringContract' => $peeringContract,
-                'getLcrGateway' => $lcrGateway
+                'getPeeringContract' => $peeringContract
             ]
         );
 
@@ -67,35 +79,9 @@ class CreateByPeerServerSpec extends ObjectBehavior
             ->willReturn([$outgoingRouting])
             ->shouldBeCalled();
 
-        $this->getterProphecy(
-            $outgoingRouting,
-            [
-                'getLcrRules' => [$lcrRule],
-                'getPriority' => ($priority = 8),
-                'getWeight' => ($weight = 2),
-                'getId' => ($outgoingRoutingId = 3)
-            ]
-        );
-
-        $lcrGateway
-            ->getId()
-            ->willReturn($lcrGatewayId = 1);
-
-        $lcrRule
-            ->getId()
-            ->willReturn($lcrRuleId = 1);
-
-        $dto = new TrunksLcrRuleTargetDto();
-        $dto
-            ->setRuleId($lcrGatewayId)
-            ->setGwId($lcrRuleId)
-            ->setPriority($priority)
-            ->setWeight($weight)
-            ->setOutgoingRoutingId($outgoingRoutingId);
-
         $this
-            ->entityPersister
-            ->persistDto($dto)
+            ->lcrRuleTargetFactory
+            ->execute($outgoingRouting)
             ->shouldBeCalled();
 
         $this->execute($entity, true);

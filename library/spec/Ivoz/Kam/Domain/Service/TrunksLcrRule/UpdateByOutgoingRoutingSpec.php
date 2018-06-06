@@ -3,11 +3,12 @@
 namespace spec\Ivoz\Kam\Domain\Service\TrunksLcrRule;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Ivoz\Core\Domain\Service\EntityPersisterInterface;
+use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface;
+use Ivoz\Kam\Domain\Service\TrunksLcrRuleTarget\CreateByOutgoingRouting;
+use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface;
-use Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface;
 use Ivoz\Kam\Domain\Service\TrunksLcrRule\CreateByOutgoingRoutingAndRoutingPattern;
 use Ivoz\Kam\Domain\Service\TrunksLcrRule\UpdateByOutgoingRouting;
 use PhpSpec\ObjectBehavior;
@@ -16,23 +17,35 @@ use Prophecy\Argument;
 class UpdateByOutgoingRoutingSpec extends ObjectBehavior
 {
     /**
-     * @var EntityPersisterInterface
+     * @var EntityTools
      */
-    protected $entityPersister;
+    protected $entityTools;
 
     /**
      * @var CreateByOutgoingRoutingAndRoutingPattern
      */
     protected $lcrRuleFactory;
 
-    public function let(
-        EntityPersisterInterface $entityPersister,
-        CreateByOutgoingRoutingAndRoutingPattern $lcrRuleFactory
-    ) {
-        $this->entityPersister = $entityPersister;
-        $this->lcrRuleFactory = $lcrRuleFactory;
+    /**
+     *  @var TrunksLcrRuleInterface
+     */
+    protected $lcrRule;
 
-        $this->beConstructedWith($entityPersister, $lcrRuleFactory);
+    /**
+     * @var CreateByOutgoingRouting
+     */
+    protected $lcrRuleTargetFactory;
+
+    public function let(
+        EntityTools $entityTools,
+        CreateByOutgoingRoutingAndRoutingPattern $lcrRuleFactory,
+        TrunksLcrRuleInterface $lcrRule
+    ) {
+        $this->entityTools = $entityTools;
+        $this->lcrRuleFactory = $lcrRuleFactory;
+        $this->lcrRule = $lcrRule;
+
+        $this->beConstructedWith($entityTools, $lcrRuleFactory);
     }
 
     function it_is_initializable()
@@ -50,114 +63,120 @@ class UpdateByOutgoingRoutingSpec extends ObjectBehavior
 
         $outgoingRouting
             ->getType()
-            ->willReturn('fax');
+            ->willReturn(OutgoingRouting::FAX);
+
+        $lcrRule
+            ->hasChanged('id')
+            ->willReturn(false);
+
+            $this->lcrRuleFactory
+                ->execute($outgoingRouting)
+                ->willReturn($this->lcrRule);
+    }
+
+    function it_does_nothing_on_not_new_fax_type_rule(
+        OutgoingRoutingInterface $outgoingRouting,
+        TrunksLcrRuleInterface $lcrRule,
+        RoutingPatternInterface $routingPattern
+    ) {
+        $this->prepareBaseExample($outgoingRouting, $lcrRule);
+        $lcrRuleObject = $lcrRule->getWrappedObject();
+        $initialRuleCollection = [
+            $lcrRuleObject
+        ];
+        $outgoingRouting
+            ->getLcrRules()
+            ->willReturn($initialRuleCollection)
+            ->shouldBeCalled();
+
+        $lcrRule
+            ->hasChanged('id')
+            ->willReturn(false);
+
+        $this
+            ->lcrRuleFactory
+            ->execute($outgoingRouting, null)
+            ->willReturn($lcrRuleObject)
+            ->shouldBeCalled();
 
         $outgoingRouting
-            ->replaceLcrRules(
-                Argument::type(ArrayCollection::class)
-            )
+            ->replaceLcrRules(Argument::type(ArrayCollection::class))
+            ->shouldNotBeCalled();
+
+        $this->entityTools
+            ->removeFromArray(Argument::any())
+            ->shouldNotBeCalled();
+
+        $this->execute(
+            $outgoingRouting->getWrappedObject()
+        );
+    }
+
+    function it_replaces_lcr_rules(
+        OutgoingRoutingInterface $outgoingRouting,
+        TrunksLcrRuleInterface $lcrRule,
+        TrunksLcrRuleInterface $lcrRule2,
+        RoutingPatternInterface $routingPattern
+    ) {
+        $this->prepareRuleReplacementScenario($outgoingRouting, $lcrRule, $lcrRule2);
+
+        $this->execute(
+            $outgoingRouting->getWrappedObject()
+        );
+    }
+
+    /**
+     * @param OutgoingRoutingInterface $outgoingRouting
+     * @param TrunksLcrRuleInterface $lcrRule
+     * @param TrunksLcrRuleInterface $lcrRule2
+     */
+    private function prepareRuleReplacementScenario(OutgoingRoutingInterface $outgoingRouting, TrunksLcrRuleInterface $lcrRule, TrunksLcrRuleInterface $lcrRule2)
+    {
+        $this->prepareBaseExample($outgoingRouting, $lcrRule);
+        $lcrRuleObject = $lcrRule->getWrappedObject();
+        $lcrRule2Object = $lcrRule2->getWrappedObject();
+        $initialRuleCollection = [
+            $lcrRuleObject
+        ];
+        $updatedRuleCollection = [
+            $lcrRule2Object
+        ];
+        $outgoingRouting
+            ->getLcrRules()
+            ->willReturn($initialRuleCollection, $updatedRuleCollection)
+            ->shouldBeCalled();
+
+        $outgoingRouting
+            ->replaceLcrRules(Argument::type(ArrayCollection::class))
+            ->shouldBeCalled();
+
+        $lcrRule
+            ->hasChanged('id')
+            ->willReturn(true);
+
+        $this
+            ->lcrRuleFactory
+            ->execute($outgoingRouting, null)
+            ->willReturn($lcrRuleObject)
             ->shouldBeCalled();
     }
 
     function it_removes_old_lcr_rules(
         OutgoingRoutingInterface $outgoingRouting,
-        TrunksLcrRuleInterface $lcrRule
-    ) {
-        $this->prepareBaseExample($outgoingRouting, $lcrRule);
-        $outgoingRouting
-            ->getLcrRules()
-            ->willReturn([$lcrRule]);
-
-        $this
-            ->entityPersister
-            ->remove($lcrRule)
-            ->shouldBeCalled();
-
-        $outgoingRouting
-            ->removeLcrRule($lcrRule)
-            ->shouldBeCalled();
-
-        $this
-            ->lcrRuleFactory
-            ->execute($outgoingRouting, null)
-            ->willReturn($lcrRule)
-            ->shouldBeCalled();
-
-        $this->execute($outgoingRouting);
-    }
-
-    function it_sets_new_rules(
-        OutgoingRoutingInterface $outgoingRouting,
-        TrunksLcrRuleInterface $lcrRule
-    ) {
-        $this->prepareBaseExample($outgoingRouting, $lcrRule);
-
-        $this
-            ->lcrRuleFactory
-            ->execute($outgoingRouting, null)
-            ->willReturn($lcrRule)
-            ->shouldBeCalled();
-
-        $lcrRules = new ArrayCollection([$lcrRule->getWrappedObject()]);
-        $outgoingRouting
-            ->replaceLcrRules($lcrRules)
-            ->shouldBeCalled();
-
-        $this->execute($outgoingRouting);
-    }
-
-    function it_retrieves_routingPatternGroup_patterns_when_type_is_group(
-        OutgoingRoutingInterface $outgoingRouting,
         TrunksLcrRuleInterface $lcrRule,
-        RoutingPatternGroupInterface $routingPatternGroup,
+        TrunksLcrRuleInterface $lcrRule2,
         RoutingPatternInterface $routingPattern
     ) {
-        $this->prepareBaseExample($outgoingRouting, $lcrRule);
+        $this->prepareRuleReplacementScenario($outgoingRouting, $lcrRule, $lcrRule2);
 
-        $outgoingRouting
-            ->getType()
-            ->willReturn('group');
-
-        $outgoingRouting
-            ->getRoutingPatternGroup()
-            ->willReturn($routingPatternGroup)
+        $this->entityTools
+            ->removeFromArray(Argument::type('array'))
             ->shouldBeCalled();
 
-        $routingPatternGroup
-            ->getRoutingPatterns()
-            ->willReturn([$routingPattern])
-            ->shouldBeCalled();
-
-        $this
-            ->lcrRuleFactory
-            ->execute($outgoingRouting, $routingPattern)
-            ->willReturn($lcrRule)
-            ->shouldBeCalled();
-
-        $this->execute($outgoingRouting);
+        $this->execute(
+            $outgoingRouting->getWrappedObject()
+        );
     }
 
-    function it_retrieves_routingPattern_when_type_is_pattern(
-        OutgoingRoutingInterface $outgoingRouting,
-        TrunksLcrRuleInterface $lcrRule,
-        RoutingPatternInterface $routingPattern
-    ) {
-        $this->prepareBaseExample($outgoingRouting, $lcrRule);
 
-        $outgoingRouting
-            ->getType()
-            ->willReturn('pattern');
-
-        $outgoingRouting
-            ->getRoutingPattern()
-            ->willReturn($routingPattern);
-
-        $this
-            ->lcrRuleFactory
-            ->execute($outgoingRouting, $routingPattern)
-            ->willReturn($lcrRule)
-            ->shouldBeCalled();
-
-        $this->execute($outgoingRouting);
-    }
 }
