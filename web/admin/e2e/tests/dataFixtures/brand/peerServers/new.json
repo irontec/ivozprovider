@@ -8,8 +8,6 @@
   "authPassword": "",
   "sendPAI": "0",
   "sendRPID": "0",
-  "prefix": "",
-  "params": "",
   "fromUser": "",
   "fromDomain": ""
 }
