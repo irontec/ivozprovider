@@ -53,8 +53,8 @@ If you want to test an [standalone](https://irontec.github.io/ivozprovider/en/oa
 | Version  | 64 bits  | 32 bits |
 |----------|:--------:|:-------:|
 |stable (oasis 1.7) | [![iso http](portals/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-1.7.0-oasis-amd64.iso)| [![iso http](portals/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-1.7.0-oasis-i386.iso)|
-|testing (artemis 2.2.0) | [![iso http](portals/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-2.2~2.2.0-artemis-amd64.iso)| [![iso http](portals/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-2.2~2.2.0-artemis-i386.iso)|
-|experimental (bleeding 2.3.0) | |
+|testing (artemis 2.3.0) | [![iso http](portals/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-2.3~2.3.0-artemis-amd64.iso)| [![iso http](portals/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-2.3~2.3.0-artemis-i386.iso)|
+|experimental (bleeding 2.4.0) | |
 
 
 ## Documentation
@@ -77,7 +77,7 @@ Don't hesitate to [contact us](https://www.irontec.com/contacto) for support if 
 
 ## License
     Ivoz Provider - Multitenant solution for VoIP telephony providers
-    Copyright (C) 2014-2016 Irontec S.L.
+    Copyright (C) 2014-2018 Irontec S.L.
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
