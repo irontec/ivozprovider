@@ -1,24 +1,22 @@
 <?php
+
 namespace Ivoz\Kam\Domain\Service\TrunksLcrRule;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Ivoz\Core\Domain\Service\EntityPersisterInterface;
-use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRule;
-use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface;
+use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
-use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface;
-use Ivoz\Provider\Domain\Service\OutgoingRouting\OutgoingRoutingLifecycleEventHandlerInterface;
 
 /**
  * Class UpdateByOutgoingRouting
  * @package Ivoz\Kam\Domain\Service\TrunksLcrRule
  */
-class UpdateByOutgoingRouting implements OutgoingRoutingLifecycleEventHandlerInterface
+class UpdateByOutgoingRouting
 {
     /**
-     * @var EntityPersisterInterface
+     * @var EntityTools
      */
-    protected $entityPersister;
+    protected $entityTools;
 
     /**
      * @var CreateByOutgoingRoutingAndRoutingPattern
@@ -26,67 +24,68 @@ class UpdateByOutgoingRouting implements OutgoingRoutingLifecycleEventHandlerInt
     protected $lcrRuleFactory;
 
     public function __construct(
-        EntityPersisterInterface $entityPersister,
+        EntityTools $entityTools,
         CreateByOutgoingRoutingAndRoutingPattern $lcrRuleFactory
     ) {
-        $this->entityPersister = $entityPersister;
+        $this->entityTools = $entityTools;
         $this->lcrRuleFactory = $lcrRuleFactory;
     }
 
-    public static function getSubscribedEvents()
-    {
-        return [
-            self::EVENT_POST_PERSIST => 10
-        ];
-    }
-
     /**
      * @param OutgoingRoutingInterface $outgoingRouting
+     * @throws \Exception
      */
     public function execute(OutgoingRoutingInterface $outgoingRouting)
     {
-        // If edit, delete everything and fresh-start
-        /** @var TrunksLcrRuleInterface[] $lcrRules */
-        $lcrRules = $outgoingRouting->getLcrRules();
-        foreach ($lcrRules as $lcrRule) {
-            $this->entityPersister->remove($lcrRule);
-            $outgoingRouting->removeLcrRule($lcrRule);
-        }
-
-        /**
-         * @var TrunksLcrRuleInterface[] $lcrRules
-         */
-        $routingPatterns = $this->getPatterns($outgoingRouting);
-
-        $lcrRules = new ArrayCollection();
-        foreach ($routingPatterns as $routingPattern) {
-            $lcrRule = $this->lcrRuleFactory->execute($outgoingRouting, $routingPattern);
-            $lcrRules->add($lcrRule);
-        }
-
-        $outgoingRouting->replaceLcrRules($lcrRules);
+        /** @todo split this service into two */
+        $originalLcrRules = $outgoingRouting->getLcrRules();
+        $this->addNewLcrRules($outgoingRouting);
+        $this->removeObsoleteLrcRules($outgoingRouting, $originalLcrRules);
     }
 
     /**
      * @param OutgoingRoutingInterface $outgoingRouting
-     * @return array
+     * @return void
      * @throws \Exception
      */
-    protected function getPatterns(OutgoingRoutingInterface $outgoingRouting)
+    protected function removeObsoleteLrcRules(OutgoingRoutingInterface $outgoingRouting, array $prevLcrRules)
     {
-        $routingPatterns = [];
+        $currentLcrRules = $outgoingRouting->getLcrRules();
 
-        if ($outgoingRouting->getType() === 'group') {
-            $patterns = $outgoingRouting->getRoutingPatternGroup()->getRoutingPatterns();
-            $routingPatterns = $patterns;
-        } elseif ($outgoingRouting->getType() === 'pattern') {
-            $routingPatterns[] = $outgoingRouting->getRoutingPattern();
-        } elseif ($outgoingRouting->getType() === 'fax') {
-            $routingPatterns[] = null;
-        } else {
-            throw new \DomainException('Incorrect Outgoing Routing Type');
+        $entitiesToBeRemoved = [];
+        foreach ($prevLcrRules as $prevLcrRule) {
+            if (!in_array($prevLcrRule, $currentLcrRules)) {
+                $entitiesToBeRemoved[] = $prevLcrRule;
+            }
         }
 
-        return $routingPatterns;
+        if (empty($entitiesToBeRemoved)) {
+            return;
+        }
+
+        $this->entityTools->removeFromArray($entitiesToBeRemoved);
+    }
+
+    /**
+     * @param OutgoingRoutingInterface $outgoingRouting
+     */
+    private function addNewLcrRules(OutgoingRoutingInterface $outgoingRouting)
+    {
+        //! Fax OutgoingRoutings have no routingPattern and a single LcrRule with NULL routingPatternId
+        if ($outgoingRouting->getType() == OutgoingRouting::FAX) {
+            $lcrRule = $this->lcrRuleFactory->execute($outgoingRouting, null);
+            if ($lcrRule->hasChanged('id')) {
+                $outgoingRouting->replaceLcrRules(new ArrayCollection([$lcrRule]));
+            }
+            return;
+        }
+
+        // Create or update existing LcrRules based on actual RoutingPatterns of OutgoingRouting
+        $routingPatterns = $outgoingRouting->getRoutingPatterns();
+        $lcrRules = array();
+        foreach ($routingPatterns as $routingPattern) {
+            $lcrRules[] = $this->lcrRuleFactory->execute($outgoingRouting, $routingPattern);
+        }
+        $outgoingRouting->replaceLcrRules(new ArrayCollection($lcrRules));
     }
 }

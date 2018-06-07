@@ -83,7 +83,7 @@ class EntityTools
      */
     public function persist(EntityInterface $entity, $dispatchImmediately = false)
     {
-        return $this
+        $this
             ->entityPersister
             ->persist(
                 $entity,
@@ -113,8 +113,19 @@ class EntityTools
      */
     public function remove(EntityInterface $entity)
     {
-        return $this
+        $this
             ->entityPersister
             ->remove($entity);
+    }
+
+    /**
+     * @param EntityInterface[] $entities
+     * @return void
+     */
+    public function removeFromArray(array $entities)
+    {
+        $this
+            ->entityPersister
+            ->removeFromArray($entities);
     }
 }

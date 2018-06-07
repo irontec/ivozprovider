@@ -1,7 +1,8 @@
 <?php
+
 namespace Ivoz\Kam\Domain\Service\TrunksLcrGateway;
 
-use Ivoz\Core\Domain\Service\EntityPersisterInterface;
+use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\PeerServer\PeerServerInterface;
 use Ivoz\Provider\Domain\Service\PeerServer\PeerServerLifecycleEventHandlerInterface;
 use Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGateway;
@@ -12,21 +13,23 @@ use Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGateway;
  */
 class UpdateByPeerServer implements PeerServerLifecycleEventHandlerInterface
 {
+    CONST POST_PERSIST_PRIORITY = 10;
+
     /**
-     * @var EntityPersisterInterface
+     * @var EntityTools
      */
-    protected $entityPersister;
+    protected $entityTools;
 
     public function __construct(
-        EntityPersisterInterface $entityPersister
+        EntityTools $entityTools
     ) {
-        $this->entityPersister = $entityPersister;
+        $this->entityTools = $entityTools;
     }
 
     public static function getSubscribedEvents()
     {
         return [
-            self::EVENT_POST_PERSIST => 10
+            self::EVENT_POST_PERSIST => self::POST_PERSIST_PRIORITY
         ];
     }
 
@@ -48,7 +51,7 @@ class UpdateByPeerServer implements PeerServerLifecycleEventHandlerInterface
             ->setTransport($entity->getTransport())
             ->setPeerServerId($entity->getId());
 
-        $lcrGateway = $this->entityPersister->persistDto(
+        $lcrGateway = $this->entityTools->persistDto(
             $lcrGatewayDto,
             $lcrGateway,
             true

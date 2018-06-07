@@ -14,12 +14,13 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * @return array|RoutingPatternInterface[]
+     * @return RoutingPatternInterface[]
      */
     public function getRoutingPatterns();
 
     /**
      * @param RoutingPatternInterface $pattern
+     * @return bool
      */
     public function hasRoutingPattern(\Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface $pattern);
 

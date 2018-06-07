@@ -2,6 +2,7 @@
 
 namespace Tests\Provider\OutgoingRouting;
 
+use Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTarget;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
@@ -15,7 +16,7 @@ class OutgoingRoutingLifeCycleTestLifeCycleTest extends KernelTestCase
     /**
      * @return OutgoingRouting
      */
-    protected function getOutgoingRoutingPdo()
+    protected function getOutgoingRoutingDto()
     {
         $outgoingRoutingDto = new OutgoingRoutingDto();
         $outgoingRoutingDto
@@ -37,7 +38,7 @@ class OutgoingRoutingLifeCycleTestLifeCycleTest extends KernelTestCase
     {
         return $this
             ->entityPersister
-            ->persistDto($this->getOutgoingRoutingPdo(), null, true);
+            ->persistDto($this->getOutgoingRoutingDto(), null, true);
     }
 
     /**
@@ -72,5 +73,19 @@ class OutgoingRoutingLifeCycleTestLifeCycleTest extends KernelTestCase
         );
 
         $this->assertGreaterThan(0, count($lcrRules));
+    }
+
+    /**
+     * @test
+     */
+    public function new_outgoing_routing_creates_lcr_rule_targets()
+    {
+        $this->addOutgoingRouting();
+
+        $lcrRuleTargets = $this->getChangelogByClass(
+            TrunksLcrRuleTarget::class
+        );
+
+        $this->assertGreaterThan(0, count($lcrRuleTargets));
     }
 }

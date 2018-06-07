@@ -54,7 +54,7 @@ class OutgoingRouting extends OutgoingRoutingAbstract implements OutgoingRouting
     }
 
     /**
-     * @return array|RoutingPatternInterface[]
+     * @return RoutingPatternInterface[]
      */
     public function getRoutingPatterns()
     {
@@ -71,6 +71,7 @@ class OutgoingRouting extends OutgoingRoutingAbstract implements OutgoingRouting
 
     /**
      * @param RoutingPatternInterface $pattern
+     * @return bool
      */
     public function hasRoutingPattern(RoutingPatternInterface $pattern)
     {

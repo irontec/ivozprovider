@@ -5,6 +5,8 @@ namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingRepository;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting;
+use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface;
+use Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -18,5 +20,25 @@ class OutgoingRoutingDoctrineRepository extends ServiceEntityRepository implemen
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, OutgoingRouting::class);
+    }
+
+    /*
+     * Finds outgoing routings using the given pattern or a group having the given pattern
+     */
+    public function findByRoutingPattern(RoutingPatternInterface $routingPattern) :array
+    {
+        $qb = $this->createQueryBuilder('self');
+        $query = $qb
+            ->select('self')
+            ->innerJoin('self.routingPatternGroup', 'routingPatternGroup')
+            ->innerJoin('routingPatternGroup.relPatterns', 'relPattern')
+            ->innerJoin('relPattern.routingPattern', 'routingPattern')
+            ->groupBy('self.id')
+            ->getQuery();
+
+        return array_merge(
+            $routingPattern->getOutgoingRoutings(),
+            $query->getResult()
+        );
     }
 }
