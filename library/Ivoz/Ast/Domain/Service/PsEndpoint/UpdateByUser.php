@@ -24,6 +24,14 @@ class UpdateByUser implements UserLifecycleEventHandlerInterface
         $this->entityPersister = $entityPersister;
     }
 
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_POST_PERSIST => 40,
+            self::EVENT_PRE_REMOVE => 10
+        ];
+    }
+
     public function execute(UserInterface $entity, $isNew)
     {
         $endpoint = $entity->getEndpoint();

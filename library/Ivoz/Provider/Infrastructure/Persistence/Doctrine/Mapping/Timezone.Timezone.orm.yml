@@ -1,5 +1,5 @@
 Ivoz\Provider\Domain\Model\Timezone\Timezone:
-  repositoryClass: \Ivoz\Provider\Infrastructure\Persistence\Doctrine\TimezoneDoctrineRepository
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\TimezoneDoctrineRepository
   type: entity
   table: Timezones
   id:

@@ -32,6 +32,13 @@ class PropagateBrandServices implements CompanyLifecycleEventHandlerInterface
         $this->brandServiceRepository = $brandServiceRepository;
     }
 
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_POST_PERSIST => 30
+        ];
+    }
+
     /**
      * @throws \Exception
      */

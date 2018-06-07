@@ -29,6 +29,13 @@ class UpdateByRetailAccount implements RetailAccountLifecycleEventHandlerInterfa
         $this->psEndpointRepository = $psEndpointRepository;
     }
 
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_POST_PERSIST => 10
+        ];
+    }
+
     /**
      * @param RetailAccountInterface $entity
      */

@@ -23,7 +23,7 @@ Feature: Create routing pattern groups rel patterns
       {
           "id": 3,
           "routingPattern": {
-              "regExp": "+35",
+              "prefix": "+35",
               "id": 2,
               "name": {
                   "en": "en",
@@ -56,7 +56,7 @@ Feature: Create routing pattern groups rel patterns
       {
           "id": 3,
           "routingPattern": {
-              "regExp": "+35",
+              "prefix": "+35",
               "id": 2,
               "name": {
                   "en": "en",

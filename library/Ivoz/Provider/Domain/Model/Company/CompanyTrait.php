@@ -63,6 +63,16 @@ trait CompanyTrait
      */
     protected $relFeatures;
 
+    /**
+     * @var Collection
+     */
+    protected $relCodecs;
+
+    /**
+     * @var Collection
+     */
+    protected $relRoutingTags;
+
 
     /**
      * Constructor
@@ -79,6 +89,8 @@ trait CompanyTrait
         $this->musicsOnHold = new ArrayCollection();
         $this->recordings = new ArrayCollection();
         $this->relFeatures = new ArrayCollection();
+        $this->relCodecs = new ArrayCollection();
+        $this->relRoutingTags = new ArrayCollection();
     }
 
     /**
@@ -127,6 +139,14 @@ trait CompanyTrait
         if ($dto->getRelFeatures()) {
             $self->replaceRelFeatures($dto->getRelFeatures());
         }
+
+        if ($dto->getRelCodecs()) {
+            $self->replaceRelCodecs($dto->getRelCodecs());
+        }
+
+        if ($dto->getRelRoutingTags()) {
+            $self->replaceRelRoutingTags($dto->getRelRoutingTags());
+        }
         if ($dto->getId()) {
             $self->id = $dto->getId();
             $self->initChangelog();
@@ -171,6 +191,12 @@ trait CompanyTrait
         }
         if ($dto->getRelFeatures()) {
             $this->replaceRelFeatures($dto->getRelFeatures());
+        }
+        if ($dto->getRelCodecs()) {
+            $this->replaceRelCodecs($dto->getRelCodecs());
+        }
+        if ($dto->getRelRoutingTags()) {
+            $this->replaceRelRoutingTags($dto->getRelRoutingTags());
         }
         return $this;
     }
@@ -843,6 +869,150 @@ trait CompanyTrait
         }
 
         return $this->relFeatures->toArray();
+    }
+
+    /**
+     * Add relCodec
+     *
+     * @param \Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecInterface $relCodec
+     *
+     * @return CompanyTrait
+     */
+    public function addRelCodec(\Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecInterface $relCodec)
+    {
+        $this->relCodecs->add($relCodec);
+
+        return $this;
+    }
+
+    /**
+     * Remove relCodec
+     *
+     * @param \Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecInterface $relCodec
+     */
+    public function removeRelCodec(\Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecInterface $relCodec)
+    {
+        $this->relCodecs->removeElement($relCodec);
+    }
+
+    /**
+     * Replace relCodecs
+     *
+     * @param \Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecInterface[] $relCodecs
+     * @return self
+     */
+    public function replaceRelCodecs(Collection $relCodecs)
+    {
+        $updatedEntities = [];
+        $fallBackId = -1;
+        foreach ($relCodecs as $entity) {
+            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
+            $updatedEntities[$index] = $entity;
+            $entity->setCompany($this);
+        }
+        $updatedEntityKeys = array_keys($updatedEntities);
+
+        foreach ($this->relCodecs as $key => $entity) {
+            $identity = $entity->getId();
+            if (in_array($identity, $updatedEntityKeys)) {
+                $this->relCodecs->set($key, $updatedEntities[$identity]);
+            } else {
+                $this->relCodecs->remove($key);
+            }
+            unset($updatedEntities[$identity]);
+        }
+
+        foreach ($updatedEntities as $entity) {
+            $this->addRelCodec($entity);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get relCodecs
+     *
+     * @return \Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecInterface[]
+     */
+    public function getRelCodecs(Criteria $criteria = null)
+    {
+        if (!is_null($criteria)) {
+            return $this->relCodecs->matching($criteria)->toArray();
+        }
+
+        return $this->relCodecs->toArray();
+    }
+
+    /**
+     * Add relRoutingTag
+     *
+     * @param \Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface $relRoutingTag
+     *
+     * @return CompanyTrait
+     */
+    public function addRelRoutingTag(\Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface $relRoutingTag)
+    {
+        $this->relRoutingTags->add($relRoutingTag);
+
+        return $this;
+    }
+
+    /**
+     * Remove relRoutingTag
+     *
+     * @param \Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface $relRoutingTag
+     */
+    public function removeRelRoutingTag(\Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface $relRoutingTag)
+    {
+        $this->relRoutingTags->removeElement($relRoutingTag);
+    }
+
+    /**
+     * Replace relRoutingTags
+     *
+     * @param \Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface[] $relRoutingTags
+     * @return self
+     */
+    public function replaceRelRoutingTags(Collection $relRoutingTags)
+    {
+        $updatedEntities = [];
+        $fallBackId = -1;
+        foreach ($relRoutingTags as $entity) {
+            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
+            $updatedEntities[$index] = $entity;
+            $entity->setCompany($this);
+        }
+        $updatedEntityKeys = array_keys($updatedEntities);
+
+        foreach ($this->relRoutingTags as $key => $entity) {
+            $identity = $entity->getId();
+            if (in_array($identity, $updatedEntityKeys)) {
+                $this->relRoutingTags->set($key, $updatedEntities[$identity]);
+            } else {
+                $this->relRoutingTags->remove($key);
+            }
+            unset($updatedEntities[$identity]);
+        }
+
+        foreach ($updatedEntities as $entity) {
+            $this->addRelRoutingTag($entity);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get relRoutingTags
+     *
+     * @return \Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface[]
+     */
+    public function getRelRoutingTags(Criteria $criteria = null)
+    {
+        if (!is_null($criteria)) {
+            return $this->relRoutingTags->matching($criteria)->toArray();
+        }
+
+        return $this->relRoutingTags->toArray();
     }
 
 

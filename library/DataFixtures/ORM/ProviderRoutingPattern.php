@@ -23,7 +23,7 @@ class ProviderRoutingPattern extends Fixture implements DependentFixtureInterfac
         $manager->getClassMetadata(RoutingPattern::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
         $item1 = $this->createEntityInstanceWithPublicMethods(RoutingPattern::class);
-        $item1->setRegExp("+34");
+        $item1->setPrefix("+34");
         $item1->setName(new Name('en', 'es'));
         $item1->setDescription(new Description('en', 'es'));
         $item1->setBrand($this->getReference('_reference_ProviderBrand1'));
@@ -33,7 +33,7 @@ class ProviderRoutingPattern extends Fixture implements DependentFixtureInterfac
 
 
         $item2 = $this->createEntityInstanceWithPublicMethods(RoutingPattern::class);
-        $item2->setRegExp("+35");
+        $item2->setPrefix("+35");
         $item2->setName(new Name('en', 'es'));
         $item2->setDescription(new Description('en', 'es'));
         $item2->setBrand($this->getReference('_reference_ProviderBrand1'));

@@ -19,7 +19,8 @@ class ProviderOutgoingRouting extends Fixture implements DependentFixtureInterfa
     {
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(OutgoingRouting::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
-    
+
+        /** @var OutgoingRouting $item1 */
         $item1 = $this->createEntityInstanceWithPublicMethods(OutgoingRouting::class);
         $item1->setType("pattern");
         $item1->setPriority(1);
@@ -28,6 +29,7 @@ class ProviderOutgoingRouting extends Fixture implements DependentFixtureInterfa
         $item1->setCompany($this->getReference('_reference_ProviderCompany1'));
         $item1->setPeeringContract($this->getReference('_reference_ProviderPeeringContract1'));
         $item1->setRoutingPattern($this->getReference('_reference_ProviderRoutingPatternRoutingPattern68'));
+        $item1->setRoutingTag($this->getReference('_reference_ProviderRoutingTag1'));
         $this->addReference('_reference_ProviderOutgoingRouting1', $item1);
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
@@ -39,11 +41,11 @@ class ProviderOutgoingRouting extends Fixture implements DependentFixtureInterfa
         $item2->setBrand($this->getReference('_reference_ProviderBrand1'));
         $item2->setPeeringContract($this->getReference('_reference_ProviderPeeringContract1'));
         $item2->setRoutingPattern($this->getReference('_reference_ProviderRoutingPatternRoutingPattern68'));
+        $item2->setRoutingTag($this->getReference('_reference_ProviderRoutingTag1'));
         $this->addReference('_reference_ProviderOutgoingRouting2', $item2);
         $this->sanitizeEntityValues($item2);
         $manager->persist($item2);
 
-    
         $manager->flush();
     }
 
@@ -51,7 +53,8 @@ class ProviderOutgoingRouting extends Fixture implements DependentFixtureInterfa
     {
         return array(
             ProviderBrand::class,
-            ProviderCompany::class
+            ProviderCompany::class,
+            ProviderRoutingTag::class
         );
     }
 }

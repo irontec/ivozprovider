@@ -16,6 +16,13 @@ class SendUsersPermissionsReloadRequest implements TrustedLifecycleEventHandlerI
         $this->usersPermissionsReload = $usersPermissionsReload;
     }
 
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_ON_COMMIT => 10
+        ];
+    }
+
     public function execute(TrustedInterface $entity)
     {
         $this->usersPermissionsReload->send();

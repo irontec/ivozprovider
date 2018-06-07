@@ -17,6 +17,6 @@ bin/console cache:clear --no-warmup -q -n
 bin/console api:swagger:export > web/swagger.json
 
 # Create jwt certificates
-[ ! -e /opt/irontec/ivozprovider/web/rest/var/jwt/private.pem ] && bin/generate_keys --initial
+[ ! -e /opt/irontec/ivozprovider/web/rest/var/jwt/private.pem ] && bin/generate-keys --initial
 
 :

@@ -4,40 +4,16 @@ services:
     public: false
 
   ##################################
-  ## Service collection
-  ##################################
-  Ivoz\Provider\Domain\Service\ApplicationServer\ApplicationServerLifecycleServiceCollection:
-    public: true
-
-  provider.lifecycle.application_server.service_collection:
-    '@Ivoz\Provider\Domain\Service\ApplicationServer\ApplicationServerLifecycleServiceCollection'
-
-  ##################################
-  ## post_persist
-  ##################################
-  Ivoz\Kam\Domain\Service\Dispatcher\UpdateByApplicationServer:
-    tags:
-      - { name: provider.lifecycle.application_server.post_persist, priority: 10}
-    arguments:
-      $entityPersister:
-        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
-      $dispatcherRepository:
-        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Kam\\Domain\\Model\\Dispatcher\\Dispatcher")'
-
-
-  ##################################
   ## on_commit
   ##################################
   Ivoz\Provider\Infrastructure\Domain\Service\ApplicationServer\SendUsersDispatcherReloadRequest:
-    tags:
-      - { name: provider.lifecycle.application_server.on_commit, priority: 10 }
+    tags: [{ name: 'domain.service'}]
     arguments:
       $usersDispatcherReload:
         '@XmlRpc\XmlRpcUsersRequest::DispatcherReload'
 
   Ivoz\Provider\Infrastructure\Domain\Service\ApplicationServer\SendTrunksDispatcherReloadRequest:
-    tags:
-      - { name: provider.lifecycle.application_server.on_commit, priority: 20 }
+    tags: [{ name: 'domain.service'}]
     arguments:
       $trunksDispatcherReload:
         '@XmlRpc\XmlRpcTrunksRequest::DispatcherReload'

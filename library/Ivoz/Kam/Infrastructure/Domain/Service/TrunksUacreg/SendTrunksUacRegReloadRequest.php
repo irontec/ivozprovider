@@ -16,6 +16,13 @@ class SendTrunksUacRegReloadRequest implements TrunksUacregLifecycleEventHandler
         $this->trunksUacRegReload = $trunksUacRegReload;
     }
 
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_ON_COMMIT => 10
+        ];
+    }
+
     public function execute(TrunksUacregInterface $entity, $isNew)
     {
         $this->trunksUacRegReload->send();

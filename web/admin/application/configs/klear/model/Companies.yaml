@@ -96,6 +96,7 @@ production:
       defaultValue: 10
       source:
         control: Spinner
+        min: 0
       info:
         type: box
         position: left

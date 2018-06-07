@@ -15,6 +15,13 @@ class SendTrunksLcrReloadRequest implements PeerServerLifecycleEventHandlerInter
     ) {
         $this->trunksLcrReload = $trunksLcrReload;
     }
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_ON_COMMIT => 10
+        ];
+    }
+
 
     public function execute(PeerServerInterface $entity, $isNew)
     {

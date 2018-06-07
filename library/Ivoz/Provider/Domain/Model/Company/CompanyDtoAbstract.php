@@ -217,6 +217,16 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
      */
     private $relFeatures = null;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecDto[] | null
+     */
+    private $relCodecs = null;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagDto[] | null
+     */
+    private $relRoutingTags = null;
+
 
     use DtoNormalizer;
 
@@ -316,7 +326,9 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'ratingProfiles' => $this->getRatingProfiles(),
             'musicsOnHold' => $this->getMusicsOnHold(),
             'recordings' => $this->getRecordings(),
-            'relFeatures' => $this->getRelFeatures()
+            'relFeatures' => $this->getRelFeatures(),
+            'relCodecs' => $this->getRelCodecs(),
+            'relRoutingTags' => $this->getRelRoutingTags()
         ];
     }
 
@@ -436,6 +448,28 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             }
         }
 
+        if (!is_null($this->relCodecs)) {
+            $items = $this->getRelCodecs();
+            $this->relCodecs = [];
+            foreach ($items as $item) {
+                $this->relCodecs[] = $transformer->transform(
+                    'Ivoz\\Provider\\Domain\\Model\\CompanyRelCodec\\CompanyRelCodec',
+                    $item->getId() ?? $item
+                );
+            }
+        }
+
+        if (!is_null($this->relRoutingTags)) {
+            $items = $this->getRelRoutingTags();
+            $this->relRoutingTags = [];
+            foreach ($items as $item) {
+                $this->relRoutingTags[] = $transformer->transform(
+                    'Ivoz\\Provider\\Domain\\Model\\CompanyRelRoutingTag\\CompanyRelRoutingTag',
+                    $item->getId() ?? $item
+                );
+            }
+        }
+
     }
 
     /**
@@ -478,6 +512,14 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         $this->relFeatures = $transformer->transform(
             'Ivoz\\Provider\\Domain\\Model\\FeaturesRelCompany\\FeaturesRelCompany',
             $this->relFeatures
+        );
+        $this->relCodecs = $transformer->transform(
+            'Ivoz\\Provider\\Domain\\Model\\CompanyRelCodec\\CompanyRelCodec',
+            $this->relCodecs
+        );
+        $this->relRoutingTags = $transformer->transform(
+            'Ivoz\\Provider\\Domain\\Model\\CompanyRelRoutingTag\\CompanyRelRoutingTag',
+            $this->relRoutingTags
         );
     }
 
@@ -1611,6 +1653,46 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     public function getRelFeatures()
     {
         return $this->relFeatures;
+    }
+
+    /**
+     * @param array $relCodecs
+     *
+     * @return static
+     */
+    public function setRelCodecs($relCodecs = null)
+    {
+        $this->relCodecs = $relCodecs;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getRelCodecs()
+    {
+        return $this->relCodecs;
+    }
+
+    /**
+     * @param array $relRoutingTags
+     *
+     * @return static
+     */
+    public function setRelRoutingTags($relRoutingTags = null)
+    {
+        $this->relRoutingTags = $relRoutingTags;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getRelRoutingTags()
+    {
+        return $this->relRoutingTags;
     }
 }
 

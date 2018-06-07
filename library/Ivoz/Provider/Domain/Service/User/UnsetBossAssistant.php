@@ -33,6 +33,13 @@ class UnsetBossAssistant implements UserLifecycleEventHandlerInterface
         $this->userRepository = $userRepository;
     }
 
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_POST_PERSIST => 30
+        ];
+    }
+
     public function execute(UserInterface $entity, $isNew)
     {
         $isBoss = $entity->getIsBoss() == 1;

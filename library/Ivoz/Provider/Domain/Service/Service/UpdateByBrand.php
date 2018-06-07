@@ -28,6 +28,13 @@ class UpdateByBrand implements BrandLifecycleEventHandlerInterface
         $this->serviceRepository = $serviceRepository;
     }
 
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_POST_PERSIST => 30
+        ];
+    }
+
     public function execute(BrandInterface $entity, $isNew)
     {
         if (!$isNew) {

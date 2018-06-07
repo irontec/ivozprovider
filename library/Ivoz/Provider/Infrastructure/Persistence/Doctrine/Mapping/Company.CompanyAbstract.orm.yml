@@ -4,7 +4,7 @@ Ivoz\Provider\Domain\Model\Company\CompanyAbstract:
     domain_unique:
       columns:
         - domain_users
-    cCompany_name_brand:
+    company_name_brand:
       columns:
         - name
         - brandId

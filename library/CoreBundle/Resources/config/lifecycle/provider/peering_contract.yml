@@ -4,27 +4,16 @@ services:
     public: false
 
   ##################################
-  ## Service collection
-  ##################################
-  Ivoz\Provider\Domain\Service\PeeringContract\PeeringContractLifecycleServiceCollection:
-    public: true
-
-  provider.lifecycle.peering_contract.service_collection:
-    '@Ivoz\Provider\Domain\Service\PeeringContract\PeeringContractLifecycleServiceCollection'
-
-  ##################################
   ## on_commit
   ##################################
   Ivoz\Provider\Infrastructure\Domain\Service\PeeringContract\SendTrunksLcrReloadRequest:
-    tags:
-      - { name: provider.lifecycle.peering_contract.on_commit, priority: 10 }
+    tags: [{ name: 'domain.service'}]
     arguments:
       $trunksLcrReload:
         '@XmlRpc\XmlRpcTrunksRequest::LcrReload'
 
   Ivoz\Provider\Infrastructure\Domain\Service\PeeringContract\SendTrunksUacRegReloadRequest:
-    tags:
-      - { name: provider.lifecycle.peering_contract.on_commit, priority: 20 }
+    tags: [{ name: 'domain.service'}]
     arguments:
       $trunksUacRegReload:
         '@XmlRpc\XmlRpcTrunksRequest::UacRegReload'

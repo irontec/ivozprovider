@@ -1,5 +1,6 @@
 <?php
 namespace Ivoz\Provider\Domain\Model\OutgoingRouting;
+use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface;
 
 /**
  * OutgoingRouting
@@ -7,6 +8,13 @@ namespace Ivoz\Provider\Domain\Model\OutgoingRouting;
 class OutgoingRouting extends OutgoingRoutingAbstract implements OutgoingRoutingInterface
 {
     use OutgoingRoutingTrait;
+
+    /**
+     * Available OutgoingRoutings Types
+     */
+    const PATTERN   = 'pattern';
+    const GROUP     = 'group';
+    const FAX       = 'fax';
 
     /**
      * @codeCoverageIgnore
@@ -43,6 +51,39 @@ class OutgoingRouting extends OutgoingRoutingAbstract implements OutgoingRouting
             default:
                 throw new \DomainException('Incorrect Outgoing Routing Type');
         }
+    }
+
+    /**
+     * @return RoutingPatternInterface[]
+     */
+    public function getRoutingPatterns()
+    {
+        switch ($this->getType()) {
+            case OutgoingRouting::GROUP:
+                return $this->getRoutingPatternGroup()->getRoutingPatterns();
+            case OutgoingRouting::PATTERN:
+                return [ $this->getRoutingPattern() ];
+            case OutgoingRouting::FAX:
+            default:
+                return [ ];
+        }
+    }
+
+    /**
+     * @param RoutingPatternInterface $pattern
+     * @return bool
+     */
+    public function hasRoutingPattern(RoutingPatternInterface $pattern)
+    {
+        $routingPatterns = $this->getRoutingPatterns();
+        foreach ($routingPatterns as $routingPattern) {
+            // TODO id checking??
+            if ($routingPattern->getId() == $pattern->getId()) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
 

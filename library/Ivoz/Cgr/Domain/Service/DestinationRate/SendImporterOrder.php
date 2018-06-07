@@ -31,6 +31,13 @@ class SendImporterOrder implements DestinationRateLifecycleEventHandlerInterface
         $this->entityPersister = $entityPersister;
     }
 
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_ON_COMMIT => 10
+        ];
+    }
+
     public function execute(DestinationRateInterface $entity)
     {
         $pendingStatus = $entity->getStatus() === 'waiting';

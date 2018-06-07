@@ -29,30 +29,15 @@ abstract class PeerServerAbstract
     protected $port;
 
     /**
-     * @var string
-     */
-    protected $params;
-
-    /**
      * column: uri_scheme
-     * @var boolean
+     * @var integer
      */
     protected $uriScheme;
 
     /**
-     * @var boolean
+     * @var integer
      */
     protected $transport;
-
-    /**
-     * @var boolean
-     */
-    protected $strip;
-
-    /**
-     * @var string
-     */
-    protected $prefix;
 
     /**
      * @var boolean
@@ -107,7 +92,7 @@ abstract class PeerServerAbstract
     protected $fromDomain;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayInterface
+     * @var \Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface
      */
     protected $lcrGateway;
 
@@ -202,11 +187,8 @@ abstract class PeerServerAbstract
             ->setIp($dto->getIp())
             ->setHostname($dto->getHostname())
             ->setPort($dto->getPort())
-            ->setParams($dto->getParams())
             ->setUriScheme($dto->getUriScheme())
             ->setTransport($dto->getTransport())
-            ->setStrip($dto->getStrip())
-            ->setPrefix($dto->getPrefix())
             ->setSendPAI($dto->getSendPAI())
             ->setSendRPID($dto->getSendRPID())
             ->setAuthUser($dto->getAuthUser())
@@ -240,11 +222,8 @@ abstract class PeerServerAbstract
             ->setIp($dto->getIp())
             ->setHostname($dto->getHostname())
             ->setPort($dto->getPort())
-            ->setParams($dto->getParams())
             ->setUriScheme($dto->getUriScheme())
             ->setTransport($dto->getTransport())
-            ->setStrip($dto->getStrip())
-            ->setPrefix($dto->getPrefix())
             ->setSendPAI($dto->getSendPAI())
             ->setSendRPID($dto->getSendRPID())
             ->setAuthNeeded($dto->getAuthNeeded())
@@ -273,11 +252,8 @@ abstract class PeerServerAbstract
             ->setIp(self::getIp())
             ->setHostname(self::getHostname())
             ->setPort(self::getPort())
-            ->setParams(self::getParams())
             ->setUriScheme(self::getUriScheme())
             ->setTransport(self::getTransport())
-            ->setStrip(self::getStrip())
-            ->setPrefix(self::getPrefix())
             ->setSendPAI(self::getSendPAI())
             ->setSendRPID(self::getSendRPID())
             ->setAuthNeeded(self::getAuthNeeded())
@@ -300,11 +276,8 @@ abstract class PeerServerAbstract
             'ip' => self::getIp(),
             'hostname' => self::getHostname(),
             'port' => self::getPort(),
-            'params' => self::getParams(),
             'uri_scheme' => self::getUriScheme(),
             'transport' => self::getTransport(),
-            'strip' => self::getStrip(),
-            'prefix' => self::getPrefix(),
             'sendPAI' => self::getSendPAI(),
             'sendRPID' => self::getSendRPID(),
             'auth_needed' => self::getAuthNeeded(),
@@ -410,44 +383,19 @@ abstract class PeerServerAbstract
     }
 
     /**
-     * Set params
-     *
-     * @param string $params
-     *
-     * @return self
-     */
-    public function setParams($params = null)
-    {
-        if (!is_null($params)) {
-            Assertion::maxLength($params, 64, 'params value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        }
-
-        $this->params = $params;
-
-        return $this;
-    }
-
-    /**
-     * Get params
-     *
-     * @return string
-     */
-    public function getParams()
-    {
-        return $this->params;
-    }
-
-    /**
      * Set uriScheme
      *
-     * @param boolean $uriScheme
+     * @param integer $uriScheme
      *
      * @return self
      */
     public function setUriScheme($uriScheme = null)
     {
         if (!is_null($uriScheme)) {
-            Assertion::between(intval($uriScheme), 0, 1, 'uriScheme provided "%s" is not a valid boolean value.');
+            if (!is_null($uriScheme)) {
+                Assertion::integerish($uriScheme, 'uriScheme value "%s" is not an integer or a number castable to integer.');
+                Assertion::greaterOrEqualThan($uriScheme, 0, 'uriScheme provided "%s" is not greater or equal than "%s".');
+            }
         }
 
         $this->uriScheme = $uriScheme;
@@ -458,7 +406,7 @@ abstract class PeerServerAbstract
     /**
      * Get uriScheme
      *
-     * @return boolean
+     * @return integer
      */
     public function getUriScheme()
     {
@@ -468,14 +416,17 @@ abstract class PeerServerAbstract
     /**
      * Set transport
      *
-     * @param boolean $transport
+     * @param integer $transport
      *
      * @return self
      */
     public function setTransport($transport = null)
     {
         if (!is_null($transport)) {
-            Assertion::between(intval($transport), 0, 1, 'transport provided "%s" is not a valid boolean value.');
+            if (!is_null($transport)) {
+                Assertion::integerish($transport, 'transport value "%s" is not an integer or a number castable to integer.');
+                Assertion::greaterOrEqualThan($transport, 0, 'transport provided "%s" is not greater or equal than "%s".');
+            }
         }
 
         $this->transport = $transport;
@@ -486,67 +437,11 @@ abstract class PeerServerAbstract
     /**
      * Get transport
      *
-     * @return boolean
+     * @return integer
      */
     public function getTransport()
     {
         return $this->transport;
-    }
-
-    /**
-     * Set strip
-     *
-     * @param boolean $strip
-     *
-     * @return self
-     */
-    public function setStrip($strip = null)
-    {
-        if (!is_null($strip)) {
-            Assertion::between(intval($strip), 0, 1, 'strip provided "%s" is not a valid boolean value.');
-        }
-
-        $this->strip = $strip;
-
-        return $this;
-    }
-
-    /**
-     * Get strip
-     *
-     * @return boolean
-     */
-    public function getStrip()
-    {
-        return $this->strip;
-    }
-
-    /**
-     * Set prefix
-     *
-     * @param string $prefix
-     *
-     * @return self
-     */
-    public function setPrefix($prefix = null)
-    {
-        if (!is_null($prefix)) {
-            Assertion::maxLength($prefix, 16, 'prefix value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        }
-
-        $this->prefix = $prefix;
-
-        return $this;
-    }
-
-    /**
-     * Get prefix
-     *
-     * @return string
-     */
-    public function getPrefix()
-    {
-        return $this->prefix;
     }
 
     /**
@@ -802,11 +697,11 @@ abstract class PeerServerAbstract
     /**
      * Set lcrGateway
      *
-     * @param \Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayInterface $lcrGateway
+     * @param \Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface $lcrGateway
      *
      * @return self
      */
-    public function setLcrGateway(\Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayInterface $lcrGateway = null)
+    public function setLcrGateway(\Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface $lcrGateway = null)
     {
         $this->lcrGateway = $lcrGateway;
 
@@ -816,7 +711,7 @@ abstract class PeerServerAbstract
     /**
      * Get lcrGateway
      *
-     * @return \Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayInterface
+     * @return \Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface
      */
     public function getLcrGateway()
     {

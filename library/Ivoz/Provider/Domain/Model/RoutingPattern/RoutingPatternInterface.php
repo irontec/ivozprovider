@@ -8,20 +8,16 @@ use Doctrine\Common\Collections\Collection;
 interface RoutingPatternInterface extends EntityInterface
 {
     /**
-     * Set regExp
-     *
-     * @param string $regExp
-     *
-     * @return self
+     * {@inheritDoc}
      */
-    public function setRegExp($regExp);
+    public function setPrefix($prefix = null);
 
     /**
-     * Get regExp
+     * Get prefix
      *
      * @return string
      */
-    public function getRegExp();
+    public function getPrefix();
 
     /**
      * Set brand
@@ -72,25 +68,87 @@ interface RoutingPatternInterface extends EntityInterface
     public function getDescription();
 
     /**
-     * Add lcrRule
+     * Add outgoingRouting
      *
-     * @param \Ivoz\Provider\Domain\Model\LcrRule\LcrRuleInterface $lcrRule
+     * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting
      *
      * @return RoutingPatternTrait
      */
-    public function addLcrRule(\Ivoz\Provider\Domain\Model\LcrRule\LcrRuleInterface $lcrRule);
+    public function addOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting);
+
+    /**
+     * Remove outgoingRouting
+     *
+     * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting
+     */
+    public function removeOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting);
+
+    /**
+     * Replace outgoingRoutings
+     *
+     * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface[] $outgoingRoutings
+     * @return self
+     */
+    public function replaceOutgoingRoutings(Collection $outgoingRoutings);
+
+    /**
+     * Get outgoingRoutings
+     *
+     * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface[]
+     */
+    public function getOutgoingRoutings(\Doctrine\Common\Collections\Criteria $criteria = null);
+
+    /**
+     * Add relPatternGroup
+     *
+     * @param \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface $relPatternGroup
+     *
+     * @return RoutingPatternTrait
+     */
+    public function addRelPatternGroup(\Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface $relPatternGroup);
+
+    /**
+     * Remove relPatternGroup
+     *
+     * @param \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface $relPatternGroup
+     */
+    public function removeRelPatternGroup(\Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface $relPatternGroup);
+
+    /**
+     * Replace relPatternGroups
+     *
+     * @param \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface[] $relPatternGroups
+     * @return self
+     */
+    public function replaceRelPatternGroups(Collection $relPatternGroups);
+
+    /**
+     * Get relPatternGroups
+     *
+     * @return \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface[]
+     */
+    public function getRelPatternGroups(\Doctrine\Common\Collections\Criteria $criteria = null);
+
+    /**
+     * Add lcrRule
+     *
+     * @param \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface $lcrRule
+     *
+     * @return RoutingPatternTrait
+     */
+    public function addLcrRule(\Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface $lcrRule);
 
     /**
      * Remove lcrRule
      *
-     * @param \Ivoz\Provider\Domain\Model\LcrRule\LcrRuleInterface $lcrRule
+     * @param \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface $lcrRule
      */
-    public function removeLcrRule(\Ivoz\Provider\Domain\Model\LcrRule\LcrRuleInterface $lcrRule);
+    public function removeLcrRule(\Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface $lcrRule);
 
     /**
      * Replace lcrRules
      *
-     * @param \Ivoz\Provider\Domain\Model\LcrRule\LcrRuleInterface[] $lcrRules
+     * @param \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface[] $lcrRules
      * @return self
      */
     public function replaceLcrRules(Collection $lcrRules);
@@ -98,7 +156,7 @@ interface RoutingPatternInterface extends EntityInterface
     /**
      * Get lcrRules
      *
-     * @return \Ivoz\Provider\Domain\Model\LcrRule\LcrRuleInterface[]
+     * @return \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface[]
      */
     public function getLcrRules(\Doctrine\Common\Collections\Criteria $criteria = null);
 

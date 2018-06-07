@@ -19,7 +19,7 @@ production:
       info:
         <<: *documentationLink
         href: "/doc/${lang}/brand/transformations/index.html"
-      rawCondition: "TransformationRuleSet.brand IS NULL OR TransformationRuleSet.brand = '${auth.brandId}'"
+      rawCondition: "(TransformationRuleSet.brand IS NULL OR TransformationRuleSet.brand = '${auth.brandId}')"
       order:
         field:
           - "TransformationRuleSet.brand desc"

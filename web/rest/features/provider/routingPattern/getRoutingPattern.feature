@@ -15,7 +15,7 @@ Feature: Retrieve routing patterns
     """
       [
           {
-              "regExp": "+34",
+              "prefix": "+34",
               "id": 1,
               "name": {
                   "en": "en",
@@ -23,7 +23,7 @@ Feature: Retrieve routing patterns
               }
           },
           {
-              "regExp": "+35",
+              "prefix": "+35",
               "id": 2,
               "name": {
                   "en": "en",
@@ -43,7 +43,7 @@ Feature: Retrieve routing patterns
     And the JSON should be like:
     """
       {
-          "regExp": "+34",
+          "prefix": "+34",
           "id": 1,
           "name": {
               "en": "en",

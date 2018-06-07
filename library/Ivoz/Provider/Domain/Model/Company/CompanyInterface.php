@@ -833,5 +833,67 @@ interface CompanyInterface extends LoggableEntityInterface
      */
     public function getRelFeatures(\Doctrine\Common\Collections\Criteria $criteria = null);
 
+    /**
+     * Add relCodec
+     *
+     * @param \Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecInterface $relCodec
+     *
+     * @return CompanyTrait
+     */
+    public function addRelCodec(\Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecInterface $relCodec);
+
+    /**
+     * Remove relCodec
+     *
+     * @param \Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecInterface $relCodec
+     */
+    public function removeRelCodec(\Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecInterface $relCodec);
+
+    /**
+     * Replace relCodecs
+     *
+     * @param \Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecInterface[] $relCodecs
+     * @return self
+     */
+    public function replaceRelCodecs(Collection $relCodecs);
+
+    /**
+     * Get relCodecs
+     *
+     * @return \Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodecInterface[]
+     */
+    public function getRelCodecs(\Doctrine\Common\Collections\Criteria $criteria = null);
+
+    /**
+     * Add relRoutingTag
+     *
+     * @param \Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface $relRoutingTag
+     *
+     * @return CompanyTrait
+     */
+    public function addRelRoutingTag(\Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface $relRoutingTag);
+
+    /**
+     * Remove relRoutingTag
+     *
+     * @param \Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface $relRoutingTag
+     */
+    public function removeRelRoutingTag(\Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface $relRoutingTag);
+
+    /**
+     * Replace relRoutingTags
+     *
+     * @param \Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface[] $relRoutingTags
+     * @return self
+     */
+    public function replaceRelRoutingTags(Collection $relRoutingTags);
+
+    /**
+     * Get relRoutingTags
+     *
+     * @return \Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface[]
+     */
+    public function getRelRoutingTags(\Doctrine\Common\Collections\Criteria $criteria = null);
+
 }
 

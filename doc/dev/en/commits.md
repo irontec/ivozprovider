@@ -11,14 +11,17 @@ While this prefixs are not fixed, it is recommended to use the already existing
 ones in the git log history.
 
     - doc: Changes in documentation (no source code changed)
-    - portals: Changes for web, portals klears, and so on
+    - web/admin: Changes for web, portals klears, and so on
+    - web/rest: Changes in API entities and endpoints
+    - web/user: Changes in user angular based portal
     - kamtrunks: Changes in proxys working with trunks
     - kamusers: Changes in proxys working with users
-    - agi: Changes that affect logic of PBX
+    - agis: Changes that affect logic of PBX
     - scheme: Changes that only affect database tables structures
-    - mappers: Changes in mappers or models (p.e.: regeneration)
+    - core: Changes in data entities (almost everything under libray dir)
     - i18n: Internalization or translation changes
     - pkg: Changes related to debian package system
+    - tests: Changes affecting how CI test behave
     - ...
 
 Tags can be as especific as required and could reference some services like

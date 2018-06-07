@@ -16,6 +16,13 @@ class SendUsersDomainReloadRequest implements DomainLifecycleEventHandlerInterfa
         $this->usersDomainReload = $usersDomainReload;
     }
 
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_ON_COMMIT => 10
+        ];
+    }
+
     public function execute(DomainInterface $entity)
     {
         $this->usersDomainReload->send();

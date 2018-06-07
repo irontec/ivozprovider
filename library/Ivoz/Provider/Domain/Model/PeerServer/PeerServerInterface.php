@@ -16,13 +16,6 @@ interface PeerServerInterface extends LoggableEntityInterface
      */
     public function setIp($ip = null);
 
-    /**
-     * {@inheritDoc}
-     */
-    public function setParams($params = null);
-
-    public function getFlags();
-
     public function getName();
 
     /**
@@ -65,16 +58,9 @@ interface PeerServerInterface extends LoggableEntityInterface
     public function getPort();
 
     /**
-     * Get params
-     *
-     * @return string
-     */
-    public function getParams();
-
-    /**
      * Set uriScheme
      *
-     * @param boolean $uriScheme
+     * @param integer $uriScheme
      *
      * @return self
      */
@@ -83,14 +69,14 @@ interface PeerServerInterface extends LoggableEntityInterface
     /**
      * Get uriScheme
      *
-     * @return boolean
+     * @return integer
      */
     public function getUriScheme();
 
     /**
      * Set transport
      *
-     * @param boolean $transport
+     * @param integer $transport
      *
      * @return self
      */
@@ -99,41 +85,9 @@ interface PeerServerInterface extends LoggableEntityInterface
     /**
      * Get transport
      *
-     * @return boolean
+     * @return integer
      */
     public function getTransport();
-
-    /**
-     * Set strip
-     *
-     * @param boolean $strip
-     *
-     * @return self
-     */
-    public function setStrip($strip = null);
-
-    /**
-     * Get strip
-     *
-     * @return boolean
-     */
-    public function getStrip();
-
-    /**
-     * Set prefix
-     *
-     * @param string $prefix
-     *
-     * @return self
-     */
-    public function setPrefix($prefix = null);
-
-    /**
-     * Get prefix
-     *
-     * @return string
-     */
-    public function getPrefix();
 
     /**
      * Set sendPAI
@@ -282,16 +236,16 @@ interface PeerServerInterface extends LoggableEntityInterface
     /**
      * Set lcrGateway
      *
-     * @param \Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayInterface $lcrGateway
+     * @param \Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface $lcrGateway
      *
      * @return self
      */
-    public function setLcrGateway(\Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayInterface $lcrGateway = null);
+    public function setLcrGateway(\Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface $lcrGateway = null);
 
     /**
      * Get lcrGateway
      *
-     * @return \Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayInterface
+     * @return \Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface
      */
     public function getLcrGateway();
 

@@ -4,51 +4,16 @@ services:
     public: false
 
   ##################################
-  ## Service collection
-  ##################################
-  Ivoz\Provider\Domain\Service\TransformationRuleSet\TransformationRuleSetLifecycleServiceCollection:
-    public: true
-
-  provider.lifecycle.transformation_rule_set.service_collection:
-    '@Ivoz\Provider\Domain\Service\TransformationRuleSet\TransformationRuleSetLifecycleServiceCollection'
-
-  ##################################
-  ## post_persist
-  ##################################
-  Ivoz\Provider\Domain\Service\TransformationRule\GenerateRules:
-    tags:
-      - { name: provider.lifecycle.transformation_rule_set.post_persist, priority: 10 }
-    arguments:
-      $entityPersister:
-        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
-      $generateInRules:
-        '@Ivoz\Provider\Domain\Service\TransformationRule\GenerateInRules'
-      $generateOutRules:
-        '@Ivoz\Provider\Domain\Service\TransformationRule\GenerateOutRules'
-
-  Ivoz\Provider\Domain\Service\TransformationRule\GenerateInRules:
-    arguments:
-      $entityPersister:
-        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
-
-  Ivoz\Provider\Domain\Service\TransformationRule\GenerateOutRules:
-    arguments:
-      $entityPersister:
-        '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
-
-  ##################################
   ## on_commit
   ##################################
   Ivoz\Provider\Infrastructure\Domain\Service\TransformationRuleSet\SendUsersDialplanReloadRequest:
-    tags:
-      - { name: provider.lifecycle.transformation_rule_set.on_commit, priority: 10 }
+    tags: [{ name: 'domain.service'}]
     arguments:
       $usersDialplanReload:
         '@XmlRpc\XmlRpcUsersRequest::DialplanReload'
 
   Ivoz\Provider\Infrastructure\Domain\Service\TransformationRuleSet\SendTrunksDialplanReloadRequest:
-    tags:
-      - { name: provider.lifecycle.transformation_rule_set.on_commit, priority: 20 }
+    tags: [{ name: 'domain.service'}]
     arguments:
       $trunksDialplanReload:
         '@XmlRpc\XmlRpcTrunksRequest::DialplanReload'

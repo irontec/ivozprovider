@@ -23,6 +23,13 @@ class SendRecodingOrder implements LocutionLifecycleEventHandlerInterface
         $this->recoder = $recoder;
     }
 
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_ON_COMMIT => 10
+        ];
+    }
+
     public function execute(LocutionInterface $entity)
     {
         $pendingStatus = $entity->getStatus() === 'pending';

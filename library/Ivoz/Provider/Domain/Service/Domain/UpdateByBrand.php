@@ -34,6 +34,13 @@ class UpdateByBrand implements BrandLifecycleEventHandlerInterface
         $this->entityPersister = $entityPersister;
     }
 
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_POST_PERSIST => 10
+        ];
+    }
+
     public function execute(BrandInterface $entity, $isNew)
     {
         if (!$entity->hasChanged('domain_users')) {

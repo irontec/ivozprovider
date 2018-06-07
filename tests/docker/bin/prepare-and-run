@@ -4,7 +4,7 @@
 mv /opt/library-vendor /opt/irontec/ivozprovider/library/vendor
 
 # Update composer dependencies
-/opt/irontec/ivozprovider/library/bin/composer_install.sh --prefer-dist --no-progress
+/opt/irontec/ivozprovider/library/bin/composer-install --prefer-dist --no-progress
 
 # Run requested command
 exec $*

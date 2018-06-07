@@ -12,6 +12,12 @@ Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPattern:
       generator:
         strategy: IDENTITY
   oneToMany:
+    outgoingRoutings:
+      targetEntity: Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface
+      mappedBy: routingPattern
+    relPatternGroups:
+      targetEntity: Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface
+      mappedBy: routingPattern
     lcrRules:
-      targetEntity: Ivoz\Provider\Domain\Model\LcrRule\LcrRuleInterface
+      targetEntity: Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface
       mappedBy: routingPattern

@@ -27,6 +27,14 @@ class DeleteByCompany implements CompanyLifecycleEventHandlerInterface
         $this->em = $em;
     }
 
+
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_POST_REMOVE => 10
+        ];
+    }
+
     public function execute(CompanyInterface $entity, $isNew)
     {
         $domain = $entity->getDomain();

@@ -28,29 +28,14 @@ abstract class PeerServerDtoAbstract implements DataTransferObjectInterface
     private $port;
 
     /**
-     * @var string
-     */
-    private $params;
-
-    /**
-     * @var boolean
+     * @var integer
      */
     private $uriScheme;
 
     /**
-     * @var boolean
+     * @var integer
      */
     private $transport;
-
-    /**
-     * @var boolean
-     */
-    private $strip;
-
-    /**
-     * @var string
-     */
-    private $prefix;
 
     /**
      * @var boolean
@@ -103,7 +88,7 @@ abstract class PeerServerDtoAbstract implements DataTransferObjectInterface
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayDto | null
+     * @var \Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayDto | null
      */
     private $lcrGateway;
 
@@ -138,11 +123,8 @@ abstract class PeerServerDtoAbstract implements DataTransferObjectInterface
             'ip' => 'ip',
             'hostname' => 'hostname',
             'port' => 'port',
-            'params' => 'params',
             'uriScheme' => 'uriScheme',
             'transport' => 'transport',
-            'strip' => 'strip',
-            'prefix' => 'prefix',
             'sendPAI' => 'sendPAI',
             'sendRPID' => 'sendRPID',
             'authNeeded' => 'authNeeded',
@@ -168,11 +150,8 @@ abstract class PeerServerDtoAbstract implements DataTransferObjectInterface
             'ip' => $this->getIp(),
             'hostname' => $this->getHostname(),
             'port' => $this->getPort(),
-            'params' => $this->getParams(),
             'uriScheme' => $this->getUriScheme(),
             'transport' => $this->getTransport(),
-            'strip' => $this->getStrip(),
-            'prefix' => $this->getPrefix(),
             'sendPAI' => $this->getSendPAI(),
             'sendRPID' => $this->getSendRPID(),
             'authNeeded' => $this->getAuthNeeded(),
@@ -194,7 +173,7 @@ abstract class PeerServerDtoAbstract implements DataTransferObjectInterface
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
-        $this->lcrGateway = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\LcrGateway\\LcrGateway', $this->getLcrGatewayId());
+        $this->lcrGateway = $transformer->transform('Ivoz\\Kam\\Domain\\Model\\TrunksLcrGateway\\TrunksLcrGateway', $this->getLcrGatewayId());
         $this->peeringContract = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\PeeringContract\\PeeringContract', $this->getPeeringContractId());
         $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
     }
@@ -268,27 +247,7 @@ abstract class PeerServerDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $params
-     *
-     * @return static
-     */
-    public function setParams($params = null)
-    {
-        $this->params = $params;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getParams()
-    {
-        return $this->params;
-    }
-
-    /**
-     * @param boolean $uriScheme
+     * @param integer $uriScheme
      *
      * @return static
      */
@@ -300,7 +259,7 @@ abstract class PeerServerDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean
+     * @return integer
      */
     public function getUriScheme()
     {
@@ -308,7 +267,7 @@ abstract class PeerServerDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param boolean $transport
+     * @param integer $transport
      *
      * @return static
      */
@@ -320,51 +279,11 @@ abstract class PeerServerDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return boolean
+     * @return integer
      */
     public function getTransport()
     {
         return $this->transport;
-    }
-
-    /**
-     * @param boolean $strip
-     *
-     * @return static
-     */
-    public function setStrip($strip = null)
-    {
-        $this->strip = $strip;
-
-        return $this;
-    }
-
-    /**
-     * @return boolean
-     */
-    public function getStrip()
-    {
-        return $this->strip;
-    }
-
-    /**
-     * @param string $prefix
-     *
-     * @return static
-     */
-    public function setPrefix($prefix = null)
-    {
-        $this->prefix = $prefix;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPrefix()
-    {
-        return $this->prefix;
     }
 
     /**
@@ -568,11 +487,11 @@ abstract class PeerServerDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayDto $lcrGateway
+     * @param \Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayDto $lcrGateway
      *
      * @return static
      */
-    public function setLcrGateway(\Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayDto $lcrGateway = null)
+    public function setLcrGateway(\Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayDto $lcrGateway = null)
     {
         $this->lcrGateway = $lcrGateway;
 
@@ -580,7 +499,7 @@ abstract class PeerServerDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayDto
+     * @return \Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayDto
      */
     public function getLcrGateway()
     {
@@ -595,7 +514,7 @@ abstract class PeerServerDtoAbstract implements DataTransferObjectInterface
     public function setLcrGatewayId($id)
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayDto($id)
+            ? new \Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayDto($id)
             : null;
 
         return $this->setLcrGateway($value);

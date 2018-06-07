@@ -17,7 +17,7 @@ From its beginning, IvozProvider was designed to be installed distributed betwee
  * Proxy:
    - Provides **SIP communication** with Providers and Users terminals
    - Provides **media relay** between endpoints
-   - Powered by [Kamailo SIP Server 4.4](https://www.kamailio.org/w/)
+   - Powered by [Kamailo SIP Server 5.1](https://www.kamailio.org/w/)
 
  * Portal:
    - Provides **Web interfaces** for all platform roles
@@ -32,29 +32,29 @@ From its beginning, IvozProvider was designed to be installed distributed betwee
 
  * Data:
    - Provides database and shared storage for the rest of machines
-   - Powered by [MySQL 5.5 Server](http://www.mysql.com/)
+   - Powered by [MySQL 5.7 Server](http://www.mysql.com/)
 
-And [many others](https://irontec.github.io/ivozprovider/en/intro/what_is_inside.html) open source projects.
+And [many others](https://irontec.github.io/ivozprovider/en/artemis/basics/intro/what_is_inside.html) open source projects.
 
 Bear in mind that, while at least one of each profile must be installed for the platform to work, there can be multiple machines of each profile and all of them can also be installed in the same machine (a.k.a. standalone installation).
 
 ![scaling](web/admin/public/images/horizontalscaling.png)
 
 #### Cloud Service
-IvozProvider is designed to work directly from the Internet. Although it can be used in local environments, being exposed to the public network [has it's advantages](https://irontec.github.io/ivozprovider/en/intro/what_is_ivozprovider.html#exposed-to-the-public-network)
+IvozProvider is designed to work directly from the Internet. Although it can be used in local environments, being exposed to the public network [has it's advantages](https://irontec.github.io/ivozprovider/en/artemis/basics/intro/what_is_ivozprovider.html#exposed-to-the-public-network)
 
 ## Installation
 
-There are [several ways](https://irontec.github.io/ivozprovider/en/installation) to install IvozProvider.
+There are [several ways](https://irontec.github.io/ivozprovider/en/artemis/basics/installation) to install IvozProvider.
 
-If you want to test an [standalone](https://irontec.github.io/ivozprovider/en/installation/install_types.html#instalacion-standalone) installation, we recommend using one of auto-install CDs based on Debian Jessie 9.4 amd64.
+If you want to test an [standalone](https://irontec.github.io/ivozprovider/en/artemis/basics/installation/install_types.html#standalone-install) installation, we recommend using one of auto-install CDs based on Debian Stretch 9.4 amd64.
 
 
 | Version  | 64 bits  | 32 bits |
 |----------|:--------:|:-------:|
 |stable (oasis 1.7) | [![iso http](web/admin/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-1.7.0-oasis-amd64.iso)| [![iso http](web/admin/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-1.7.0-oasis-i386.iso)|
-|testing (artemis 2.2.0) | [![iso http](web/admin/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-2.2~2.2.0-artemis-amd64.iso)| [![iso http](web/admin/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-2.2~2.2.0-artemis-i386.iso)|
-|experimental (bleeding 2.3.0) | |
+|testing (artemis 2.3.0) | [![iso http](web/admin/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-2.3~2.3.0-artemis-amd64.iso)| [![iso http](web/admin/public/images/iso-http-green.png)](http://packages.irontec.com/isos/ivozprovider-2.3~2.3.0-artemis-i386.iso)|
+|experimental (bleeding 2.4.0) | |
 
 
 ## Documentation
@@ -63,8 +63,8 @@ You can browse online documentation in different formats:
 
 | Language | HTML | LaTeX | PDF | EPUB |
 |----------|:----:|:-----:|:---:|:----:|
-| Spanish  | [![badge html](web/admin/public/images/doc-html-green.png)](https://irontec.github.io/ivozprovider/es) [![badge singlehtml](web/admin/public/images/doc-singlehtml-green.png)](https://irontec.github.io/ivozprovider/essingle) | [![badge latex](web/admin/public/images/doc-latex-ff69b4.png)](https://irontec.github.io/ivozprovider/eslatex/artemis/IvozProvider.tex) | [![badge pdf](web/admin/public/images/doc-pdf-blue.png)](https://irontec.github.io/ivozprovider/eslatex/artemis/IvozProvider.pdf) | [![badge epub](web/admin/public/images/doc-epub-orange.png)](https://irontec.github.io/ivozprovider/esepub/artemis/IvozProvider.epub) |
-| English  | [![badge html](web/admin/public/images/doc-html-green.png)](https://irontec.github.io/ivozprovider/en) [![badge singlehtml](web/admin/public/images/doc-singlehtml-green.png)](https://irontec.github.io/ivozprovider/ensingle) | [![badge latex](web/admin/public/images/doc-latex-ff69b4.png)](https://irontec.github.io/ivozprovider/enlatex/artemis/IvozProvider.tex) | [![badge pdf](web/admin/public/images/doc-pdf-blue.png)](https://irontec.github.io/ivozprovider/enlatex/artemis/IvozProvider.pdf) | [![badge epub](web/admin/public/images/doc-epub-orange.png)](https://irontec.github.io/ivozprovider/enepub/artemis/IvozProvider.epub) |
+| Spanish  | [![badge html](web/admin/public/images/doc-html-green.png)](https://irontec.github.io/ivozprovider/es/artemis) [![badge singlehtml](web/admin/public/images/doc-singlehtml-green.png)](https://irontec.github.io/ivozprovider/essingle/artemis) | [![badge latex](web/admin/public/images/doc-latex-ff69b4.png)](https://irontec.github.io/ivozprovider/eslatex/artemis/IvozProvider.tex) | [![badge pdf](web/admin/public/images/doc-pdf-blue.png)](https://irontec.github.io/ivozprovider/eslatex/artemis/IvozProvider.pdf) | [![badge epub](web/admin/public/images/doc-epub-orange.png)](https://irontec.github.io/ivozprovider/esepub/artemis/IvozProvider.epub) |
+| English  | [![badge html](web/admin/public/images/doc-html-green.png)](https://irontec.github.io/ivozprovider/en/artemis) [![badge singlehtml](web/admin/public/images/doc-singlehtml-green.png)](https://irontec.github.io/ivozprovider/ensingle/artemis) | [![badge latex](web/admin/public/images/doc-latex-ff69b4.png)](https://irontec.github.io/ivozprovider/enlatex/artemis/IvozProvider.tex) | [![badge pdf](web/admin/public/images/doc-pdf-blue.png)](https://irontec.github.io/ivozprovider/enlatex/artemis/IvozProvider.pdf) | [![badge epub](web/admin/public/images/doc-epub-orange.png)](https://irontec.github.io/ivozprovider/enepub/artemis/IvozProvider.epub) |
 
 
 ## Feedback & Questions
@@ -77,7 +77,7 @@ Don't hesitate to [contact us](https://www.irontec.com/contacto) for support if 
 
 ## License
     Ivoz Provider - Multitenant solution for VoIP telephony providers
-    Copyright (C) 2014-2016 Irontec S.L.
+    Copyright (C) 2014-2018 Irontec S.L.
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by

@@ -83,32 +83,6 @@ class PeerServerSpec extends ObjectBehavior
             ->during('setIp', ['2001:db8:a0b:12f0::1']);
     }
 
-    function it_throws_exception_on_invalid_params()
-    {
-        $this
-            ->shouldThrow('\Exception')
-            ->during('setParams', ['Something']);
-
-        $this
-            ->shouldThrow('\Exception')
-            ->during('setParams', ['Something wrong']);
-
-        $this
-            ->shouldThrow('\Exception')
-            ->during('setParams', [';']);
-    }
-
-    function it_accepts_valid_params()
-    {
-        $this
-            ->shouldNotThrow('\Exception')
-            ->during('setParams', [';somethingRight']);
-
-        $this
-            ->shouldNotThrow('\Exception')
-            ->during('setParams', [null]);
-    }
-
     function it_throws_exception_on_empty_peering_contract()
     {
         $dto = clone $this->dto;

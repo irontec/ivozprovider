@@ -11,7 +11,7 @@ Feature: Create routing patterns
     And I send a "POST" request to "/routing_patterns" with body:
     """
       {
-          "regExp": "+349",
+          "prefix": "+349",
           "id": 1,
           "name": {
               "en": "Spain",
@@ -30,7 +30,7 @@ Feature: Create routing patterns
     And the JSON should be equal to:
     """
       {
-          "regExp": "+349",
+          "prefix": "+349",
           "id": 3,
           "name": {
               "en": "Spain",
@@ -49,7 +49,7 @@ Feature: Create routing patterns
     And the JSON should be like:
     """
       {
-          "regExp": "+349",
+          "prefix": "+349",
           "id": 3,
           "name": {
               "en": "Spain",

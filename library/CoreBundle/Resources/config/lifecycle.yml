@@ -1,8 +1,7 @@
 imports:
   - { resource: "@CoreBundle/Resources/config/lifecycle/core/xml_rpc.yml" }
-  - { resource: "@CoreBundle/Resources/config/lifecycle/provider.yml" }
-  - { resource: "@CoreBundle/Resources/config/lifecycle/kam.yml" }
-  - { resource: "@CoreBundle/Resources/config/lifecycle/cgr.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/provider/*.yml" }
+  - { resource: "@CoreBundle/Resources/config/lifecycle/kam/*.yml" }
 
 services:
   _defaults:
@@ -12,7 +11,6 @@ services:
   Ivoz\Core\Infrastructure\Domain\Service\Lifecycle\DoctrineEventSubscriber:
     arguments:
       $serviceContainer: '@service_container'
-      $eventPublisher: '@Ivoz\Core\Domain\Service\DomainEventPublisher'
     tags:
       - { name: doctrine.event_subscriber }
 

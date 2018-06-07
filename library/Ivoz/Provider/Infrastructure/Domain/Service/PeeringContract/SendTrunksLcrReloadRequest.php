@@ -16,6 +16,13 @@ class SendTrunksLcrReloadRequest implements PeeringContractLifecycleEventHandler
         $this->trunksLcrReload = $trunksLcrReload;
     }
 
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_ON_COMMIT => 10
+        ];
+    }
+
     public function execute(PeeringContractInterface $entity, $isNew)
     {
         $this->trunksLcrReload->send();

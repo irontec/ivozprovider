@@ -31,7 +31,7 @@ production:
             retailClientsEdit_screen: true
             kamUsersAddressList_screen: true
             administratorsList_screen: true
-            tpRatingProfilesList_screen: ${auth.brand.billing.enabled}
+            tpRatingProfilesList_screen: ${auth.brandFeatures.billing.enabled}
             outgoingRoutingList_screen: true
           dialogs:
             retailClientsDel_dialog: false
@@ -62,7 +62,7 @@ production:
           recordingsLimitEmail: true
           externallyExtraOpts: true
           type: true
-          recordingsDiskUsage: ${auth.brand.recordings.disabled}
+          recordingsDiskUsage: ${auth.brandFeatures.recordings.disabled}
           billingMethod: true
           balance: true
         order:
@@ -177,17 +177,17 @@ production:
           distributeMethod: ${auth.isNotMainOperator}
           applicationServer: ${auth.isNotMainOperator}
           mediaRelaySets: ${auth.isNotMainOperator}
-          recordingsLimitMB: ${auth.brand.recordings.disabled}
-          recordingsLimitEmail: ${auth.brand.recordings.disabled}
-          recordingsDiskUsage: ${auth.brand.recordings.disabled}
-          onDemandRecord: ${auth.brand.recordings.disabled}
-          onDemandRecordCode: ${auth.brand.recordings.disabled}
-          nif: ${auth.brand.invoices.disabled}
-          postalAddress: ${auth.brand.invoices.disabled}
-          postalCode: ${auth.brand.invoices.disabled}
-          town: ${auth.brand.invoices.disabled}
-          province: ${auth.brand.invoices.disabled}
-          countryName: ${auth.brand.invoices.disabled}
+          recordingsLimitMB: ${auth.brandFeatures.recordings.disabled}
+          recordingsLimitEmail: ${auth.brandFeatures.recordings.disabled}
+          recordingsDiskUsage: ${auth.brandFeatures.recordings.disabled}
+          onDemandRecord: ${auth.brandFeatures.recordings.disabled}
+          onDemandRecordCode: ${auth.brandFeatures.recordings.disabled}
+          nif: ${auth.brandFeatures.invoices.disabled}
+          postalAddress: ${auth.brandFeatures.invoices.disabled}
+          postalCode: ${auth.brandFeatures.invoices.disabled}
+          town: ${auth.brandFeatures.invoices.disabled}
+          province: ${auth.brandFeatures.invoices.disabled}
+          countryName: ${auth.brandFeatures.invoices.disabled}
           outgoingDdiRule: true
           balance: true
         whitelist:

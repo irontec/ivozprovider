@@ -1,4 +1,5 @@
 <?php
+
 namespace Ivoz\Provider\Domain\Service\RoutingPattern;
 
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
@@ -41,6 +42,13 @@ class UpdateByBrand implements BrandLifecycleEventHandlerInterface
         $this->routingPatternGroupByRoutingPatternAndCountry = $routingPatternGroupByRoutingPatternAndCountry;
     }
 
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_POST_PERSIST => 20
+        ];
+    }
+
     public function execute(BrandInterface $entity, $isNew)
     {
         if (!$isNew) {
@@ -63,7 +71,7 @@ class UpdateByBrand implements BrandLifecycleEventHandlerInterface
                 ->setNameEn($country->getName()->getEn())
                 ->setDescriptionEs('')
                 ->setDescriptionEn('')
-                ->setRegExp((string) $country->getCountryCode())
+                ->setPrefix((string) $country->getCountryCode())
                 ->setBrandId($entity->getId());
 
             $routingPattern = $this->entityPersister->persistDto(

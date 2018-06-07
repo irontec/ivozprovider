@@ -40,6 +40,13 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
         $this->invoiveRepository = $invoiveRepository;
     }
 
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_PRE_PERSIST => 10
+        ];
+    }
+
     /**
      * @throws \DomainException
      */
@@ -77,11 +84,11 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
         $now = (new \DateTime())->setTimezone($invoiceTz);
         $today = $now->setTime(0, 0, 0);
         if ($today < $inDate || $today < $outDate) {
-            throw new \DomainException('', self::FORBIDDEN_FUTURE_DATES);
+            throw new \DomainException('Forbidden future dates', self::FORBIDDEN_FUTURE_DATES);
         }
 
         if ($inDate >= $outDate) {
-            throw new \DomainException('', self::SENSELESS_IN_OUT_DATE);
+            throw new \DomainException('In-Out date error', self::SENSELESS_IN_OUT_DATE);
         }
 
         $untarificattedCallNum = $this->trunksCdrRepository->countUntarificattedCallsBeforeDate(
@@ -91,7 +98,7 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
         );
 
         if ($untarificattedCallNum > 0) {
-            throw new \DomainException('', self::UNMETERED_CALLS);
+            throw new \DomainException('Unmetered calls', self::UNMETERED_CALLS);
         }
 
         /**
@@ -119,7 +126,7 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
             );
 
             if ($calls > 0) {
-                throw new \DomainException('', self::UNBILLED_CALLS_AFTER_OUT_DATE);
+                throw new \DomainException('Unbilled calls after out date', self::UNBILLED_CALLS_AFTER_OUT_DATE);
             }
         }
 
@@ -132,7 +139,7 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
         );
 
         if ($invoiceCount) {
-            throw new \DomainException('', self::INVOICES_FOUND_IN_THE_SAME_RANGE_OF_DATE);
+            throw new \DomainException('Invoices found in the same range of date', self::INVOICES_FOUND_IN_THE_SAME_RANGE_OF_DATE);
         }
     }
 }

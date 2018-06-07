@@ -51,6 +51,7 @@ production:
       defaultValue: 2
       source:
         control: Spinner
+        min: 0
       info:
         type: box
         position: left
@@ -109,6 +110,7 @@ production:
         data: mapper
         config:
           entity: \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet
+          filterClass: IvozProvider_Klear_Filter_WholesaleMediaRelaySets
           fieldName:
             fields:
               - name
@@ -144,6 +146,36 @@ production:
             template: '%name${lang}%'
           order:
             TransformationRuleSet.name.${lang}: asc
+    relCodecs:
+      title: _('Audio Transcoding')
+      type: multiselect
+      source:
+        data: mapper
+        config:
+          relation: \Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodec
+          relationProperty: company
+          relatedProperty: codec
+          related: \Ivoz\Provider\Domain\Model\Codec\Codec
+          relatedFieldName:
+            fields:
+              - iden
+            template: '%iden%'
+    relRoutingTags:
+      title: ngettext('Routing Tag', 'Routing Tags', 0)
+      type: multiselect
+      source:
+        data: mapper
+        config:
+          filterClass: IvozProvider_Klear_Filter_Brand
+          relation: \Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTag
+          relationProperty: company
+          relatedProperty: routingTag
+          related: \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTag
+          relatedFieldName:
+            fields:
+              - name
+              - tag
+            template: '%name% (%tag%)'
 staging:
   _extends: production
 testing:

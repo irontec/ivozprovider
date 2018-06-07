@@ -13,7 +13,7 @@ class RoutingPatternDto extends RoutingPatternDtoAbstract
         if ($context === self::CONTEXT_COLLECTION) {
             return [
                 'id' => 'id',
-                'regExp' => 'regExp',
+                'prefix' => 'prefix',
                 'name' => ['en','es']
             ];
         }

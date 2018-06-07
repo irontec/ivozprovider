@@ -18,34 +18,17 @@ Ivoz\Provider\Domain\Model\PeerServer\PeerServerAbstract:
       nullable: true
       options:
         unsigned: true
-    params:
-      type: string
-      nullable: true
-      length: 64
-      options:
-        fixed: false
     uriScheme:
-      type: boolean
+      type: smallint
       nullable: true
       column: uri_scheme
       options:
         unsigned: true
     transport:
-      type: boolean
+      type: smallint
       nullable: true
       options:
         unsigned: true
-    strip:
-      type: boolean
-      nullable: true
-      options:
-        unsigned: true
-    prefix:
-      type: string
-      nullable: true
-      length: 16
-      options:
-        fixed: false
     sendPAI:
       type: boolean
       nullable: true
@@ -137,7 +120,7 @@ Ivoz\Provider\Domain\Model\PeerServer\PeerServerAbstract:
       orphanRemoval: false
   oneToOne:
     lcrGateway:
-      targetEntity: Ivoz\Provider\Domain\Model\LcrGateway\LcrGatewayInterface
+      targetEntity: Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface
       mappedBy: peerServer
       fetch: LAZY
 

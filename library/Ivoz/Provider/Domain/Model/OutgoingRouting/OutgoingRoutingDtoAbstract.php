@@ -58,7 +58,12 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     private $routingPatternGroup;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\LcrRule\LcrRuleDto[] | null
+     * @var \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagDto | null
+     */
+    private $routingTag;
+
+    /**
+     * @var \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleDto[] | null
      */
     private $lcrRules = null;
 
@@ -88,7 +93,8 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
             'companyId' => 'company',
             'peeringContractId' => 'peeringContract',
             'routingPatternId' => 'routingPattern',
-            'routingPatternGroupId' => 'routingPatternGroup'
+            'routingPatternGroupId' => 'routingPatternGroup',
+            'routingTagId' => 'routingTag'
         ];
     }
 
@@ -107,6 +113,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
             'peeringContract' => $this->getPeeringContract(),
             'routingPattern' => $this->getRoutingPattern(),
             'routingPatternGroup' => $this->getRoutingPatternGroup(),
+            'routingTag' => $this->getRoutingTag(),
             'lcrRules' => $this->getLcrRules()
         ];
     }
@@ -121,12 +128,13 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         $this->peeringContract = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\PeeringContract\\PeeringContract', $this->getPeeringContractId());
         $this->routingPattern = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\RoutingPattern\\RoutingPattern', $this->getRoutingPatternId());
         $this->routingPatternGroup = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\RoutingPatternGroup\\RoutingPatternGroup', $this->getRoutingPatternGroupId());
+        $this->routingTag = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\RoutingTag\\RoutingTag', $this->getRoutingTagId());
         if (!is_null($this->lcrRules)) {
             $items = $this->getLcrRules();
             $this->lcrRules = [];
             foreach ($items as $item) {
                 $this->lcrRules[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\LcrRule\\LcrRule',
+                    'Ivoz\\Kam\\Domain\\Model\\TrunksLcrRule\\TrunksLcrRule',
                     $item->getId() ?? $item
                 );
             }
@@ -140,7 +148,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
         $this->lcrRules = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\LcrRule\\LcrRule',
+            'Ivoz\\Kam\\Domain\\Model\\TrunksLcrRule\\TrunksLcrRule',
             $this->lcrRules
         );
     }
@@ -449,6 +457,52 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     public function getRoutingPatternGroupId()
     {
         if ($dto = $this->getRoutingPatternGroup()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagDto $routingTag
+     *
+     * @return static
+     */
+    public function setRoutingTag(\Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagDto $routingTag = null)
+    {
+        $this->routingTag = $routingTag;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagDto
+     */
+    public function getRoutingTag()
+    {
+        return $this->routingTag;
+    }
+
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setRoutingTagId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagDto($id)
+            : null;
+
+        return $this->setRoutingTag($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getRoutingTagId()
+    {
+        if ($dto = $this->getRoutingTag()) {
             return $dto->getId();
         }
 

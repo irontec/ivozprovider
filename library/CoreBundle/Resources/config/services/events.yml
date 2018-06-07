@@ -8,18 +8,11 @@ services:
     public: true
     arguments: ~
 
-  Ivoz\Core\Application\Service\CommandEventSubscriber:
-    arguments: ~
+  Ivoz\Core\Application\Service\CommandEventSubscriber: ~
 
-  Ivoz\Core\Domain\Service\EntityEventSubscriber:
-    arguments: ~
+  Ivoz\Core\Domain\Service\EntityEventSubscriber: ~
 
-  Ivoz\Provider\Domain\Service\BalanceNotification\NotifyBrokenThreshold:
-    arguments:
-      $notificationTemplateRepository:
-        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\NotificationTemplate\\NotificationTemplate")'
-      $balanceNotificationRepository:
-        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\BalanceNotification\\BalanceNotification")'
+  Ivoz\Provider\Domain\Service\BalanceNotification\NotifyBrokenThreshold: ~
 
   Ivoz\Core\Domain\Service\DomainEventPublisher:
      factory: ['Ivoz\Core\Domain\Service\DomainEventPublisher', getInstance]

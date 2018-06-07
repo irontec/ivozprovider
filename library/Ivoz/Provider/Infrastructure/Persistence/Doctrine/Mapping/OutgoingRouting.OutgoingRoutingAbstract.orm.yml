@@ -60,7 +60,7 @@ Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingAbstract:
       cascade: {  }
       fetch: LAZY
       mappedBy: null
-      inversedBy: null
+      inversedBy: outgoingRoutings
       joinColumns:
         routingPatternId:
           referencedColumnName: id
@@ -74,6 +74,17 @@ Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingAbstract:
       inversedBy: outgoingRoutings
       joinColumns:
         routingPatternGroupId:
+          referencedColumnName: id
+          onDelete: cascade
+      orphanRemoval: false
+    routingTag:
+      targetEntity: \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: outgoingRoutings
+      joinColumns:
+        routingTagId:
           referencedColumnName: id
           onDelete: cascade
       orphanRemoval: false

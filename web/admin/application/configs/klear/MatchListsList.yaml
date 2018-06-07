@@ -10,7 +10,7 @@ production:
   screens: &matchLists_screensLink
     matchListsList_screen: &matchListsList_screenLink
       controller: list
-      rawCondition: "MatchList.company = '${auth.companyId}' OR MatchList.brand = '${auth.brandId}'"
+      rawCondition: "(MatchList.company = '${auth.companyId}' OR MatchList.brand = '${auth.brandId}')"
       order:
         field:
           - "MatchList.brand asc"

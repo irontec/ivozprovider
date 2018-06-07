@@ -19,6 +19,14 @@ class UpdateByPickUpRelUser implements PickUpRelUserLifecycleEventHandlerInterfa
         $this->entityPersister = $entityPersister;
     }
 
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_POST_PERSIST => 10,
+            self::EVENT_POST_REMOVE => 10,
+        ];
+    }
+
     public function execute(PickUpRelUserInterface $entity, $isNew)
     {
         $user = $entity->getUser();

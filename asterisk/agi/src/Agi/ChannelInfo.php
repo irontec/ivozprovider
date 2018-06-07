@@ -136,6 +136,11 @@ class ChannelInfo
     public function getChannelData($datatype)
     {
         $data = $this->agi->getVariable("${datatype}");
+
+        if (empty($data)) {
+            return null;
+        }
+
         list ($type, $id) = explode('#', $data);
 
         switch ($type) {

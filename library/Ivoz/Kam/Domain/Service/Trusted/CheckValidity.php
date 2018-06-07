@@ -13,6 +13,13 @@ class CheckValidity implements TrustedLifecycleEventHandlerInterface
 {
     public function __construct() {}
 
+    public static function getSubscribedEvents()
+    {
+        return [
+            self::EVENT_PRE_PERSIST => 10
+        ];
+    }
+
     public function execute(TrustedInterface $entity)
     {
         $ip = $entity->getSrcIp();

@@ -1,6 +1,6 @@
 # ----------------------------------------------------------------------------
 scenarios:
-  - name: call from bob to charlie using IVR common (error handler)
+  - name: call from bob to alice using IVR common (error handler)
     type: simple
     timeout: 20
     sessions:
@@ -12,9 +12,9 @@ scenarios:
           - waitfor: CONFIRMED
           - dtmf: 1024              # Call to invalid extension
           - waitfor: DISCONNCTD
-      - charlie:
+      - alice:
           - register:
-              <<: *charlie_cred
+              <<: *alice_cred
           - waitfor: INCOMING
           - ringing
           - wait
