@@ -25,7 +25,7 @@ Ivoz\Provider\Domain\Model\PeerServer\PeerServerAbstract:
       options:
         unsigned: true
     transport:
-      type: boolean
+      type: smallint
       nullable: true
       options:
         unsigned: true

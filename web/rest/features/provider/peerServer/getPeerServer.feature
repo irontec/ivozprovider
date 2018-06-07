@@ -38,7 +38,7 @@ Feature: Retrieve peer servers
           "hostname": "127.0.0.1",
           "port": 5060,
           "uriScheme": 1,
-          "transport": true,
+          "transport": 1,
           "sendPAI": false,
           "sendRPID": false,
           "authNeeded": "no",

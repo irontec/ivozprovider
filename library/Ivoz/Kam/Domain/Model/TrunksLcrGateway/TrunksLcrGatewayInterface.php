@@ -127,7 +127,7 @@ interface TrunksLcrGatewayInterface extends LoggableEntityInterface
     /**
      * Set transport
      *
-     * @param boolean $transport
+     * @param integer $transport
      *
      * @return self
      */
@@ -136,7 +136,7 @@ interface TrunksLcrGatewayInterface extends LoggableEntityInterface
     /**
      * Get transport
      *
-     * @return boolean
+     * @return integer
      */
     public function getTransport();
 
