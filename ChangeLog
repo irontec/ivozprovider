@@ -1,3 +1,41 @@
+Thu, 07 Jun 2018 13:40:17 +0200 IvozProvider Team <dev@list-ivozprovider.irontec.com>
+
+   * IvozProvider 2.3 released
+
+   * Wholesale:
+
+     - Added support for audio transcoding using rtpengine
+     - Added support for routing tags
+
+   * Proxies:
+
+     - Upgraded Kamailio version to 5.1.2
+     - Improved DDI Bouncing logic (outgoing calls to platform DDIs)
+     - Refactored configuration files routes
+     - PeerServers with unresolvable domains are now skipped
+
+   * Routing:
+
+     - Added support for routing based on routing tags
+     - Removed support for regular expressions in routing patterns
+
+   * PBX:
+
+     - Fixed a bug on external calls forwarded to external numbers
+
+   * Web:
+
+     - Added english translation for user portal
+     - Menu entries are now properly displayed based on enabled features
+
+   * Core:
+
+     - Reworked Kamailio LCR rules logic
+
+   * Provisioning:
+
+     - Added latest Cisco combined CA
+
 Fri, 04 May 2018 15:38:00 +0200 IvozProvider Team <dev@list-ivozprovider.irontec.com>
 
    * IvozProvider 2.2 released
