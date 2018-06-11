@@ -80,4 +80,46 @@ class Extensions extends Raw\Extensions
         return $pk;
     }
 
+    /**
+     * @inheritdoc
+     */
+    public function delete(\IvozProvider\Model\Raw\ModelAbstract $model)
+    {
+        // IVRCustom
+        $customIvrsByTimeoutExtension = $model->getIVRCustomByTimeoutExtension();
+        foreach ($customIvrsByTimeoutExtension as $ivrByTimeoutExtension) {
+            $ivrByTimeoutExtension
+                ->setTimeoutTargetType(null)
+                ->setTimeoutExtensionId(null)
+                ->save();
+        }
+
+        $customIvrsByErrorExtension = $model->getIVRCustomByErrorExtension();
+        foreach ($customIvrsByErrorExtension as $ivrByErrorExtension) {
+            $ivrByErrorExtension
+                ->setErrorTargetType(null)
+                ->setErrorExtensionId(null)
+                ->save();
+        }
+
+        // IVRCommon
+        $commonIvrsByTimeoutExtension = $model->getIVRCommonByTimeoutExtension();
+        foreach ($commonIvrsByTimeoutExtension as $ivrByTimeoutExtension) {
+            $ivrByTimeoutExtension
+                ->setTimeoutTargetType(null)
+                ->setTimeoutExtensionId(null)
+                ->save();
+        }
+
+        $commonIvrsByErrorExtension = $model->getIVRCommonByErrorExtension();
+        foreach ($commonIvrsByErrorExtension as $ivrByErrorExtension) {
+            $ivrByErrorExtension
+                ->setErrorTargetType(null)
+                ->setErrorExtensionId(null)
+                ->save();
+        }
+
+        return parent::delete($model);
+    }
+
 }
