@@ -693,6 +693,7 @@ class Users extends ModelAbstract
             'CallForwardSettings_ibfk_1',
             'CallForwardSettings_ibfk_3',
             'HuntGroupsRelUsers_ibfk_2',
+            'IVRCustomEntries_ibfk_4',
             'PickUpRelUsers_ibfk_2',
             'QueueMembers_ibfk_2'
         ));
@@ -711,7 +712,6 @@ class Users extends ModelAbstract
             'IVRCommon_ibfk_9',
             'IVRCustom_ibfk_8',
             'IVRCustom_ibfk_9',
-            'IVRCustomEntries_ibfk_4',
             'Queues_ibfk_5',
             'Queues_ibfk_8',
             'Users_ibfk_11'
