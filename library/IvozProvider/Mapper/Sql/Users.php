@@ -186,7 +186,6 @@ class Users extends Raw\Users
         }
 
         return $response;
-
     }
 
     /**
@@ -198,15 +197,21 @@ class Users extends Raw\Users
      */
     public function delete(\IvozProvider\Model\Raw\ModelAbstract $model)
     {
-
-        $extension = $model->getExtension();
-
         // Update the endpoint
         $endpoint = $model->getEndpoint();
         if ($endpoint) {
             $endpoint
                 ->setCallerid(null)
                 ->setMailboxes(null)
+                ->save();
+        }
+
+        // Update the Extension
+        $extension = $model->getExtension();
+        if ($extension) {
+            $extension
+                ->setRouteType(null)
+                ->setUserId(null)
                 ->save();
         }
 
