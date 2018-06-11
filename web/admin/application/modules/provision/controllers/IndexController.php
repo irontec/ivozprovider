@@ -1,5 +1,8 @@
 <?php
 
+use Ivoz\Provider\Domain\Model\Language\LanguageDto;
+use Ivoz\Provider\Domain\Model\User\UserDto;
+
 class Provision_IndexController extends Zend_Controller_Action
 {
     /**
@@ -64,14 +67,22 @@ class Provision_IndexController extends Zend_Controller_Action
             ['User.terminal = ' . $terminal->getId()]
         );
 
-        /** @var \Ivoz\Provider\Domain\Model\Language\LanguageDto $language */
-        $language = $this->dataGateway->remoteProcedureCall(
-            \Ivoz\Provider\Domain\Model\User\User::class,
-            $this->view->user->getId(),
-            'getLanguage',
-            []
-        );
-        $this->view->language = $language->toDto();
+        if (!$this->view->user) {
+
+            $this->view->language = new LanguageDto();
+            $this->view->user = new UserDto();
+
+        } else {
+
+            /** @var \Ivoz\Provider\Domain\Model\Language\LanguageDto $language */
+            $language = $this->dataGateway->remoteProcedureCall(
+                \Ivoz\Provider\Domain\Model\User\User::class,
+                $this->view->user->getId(),
+                'getLanguage',
+                []
+            );
+            $this->view->language = $language->toDto();
+        }
 
         /**
          * For backward compatibility reasons
