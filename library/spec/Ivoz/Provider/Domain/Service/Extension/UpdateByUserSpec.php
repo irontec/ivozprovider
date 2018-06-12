@@ -22,6 +22,11 @@ class UpdateByUserSpec extends ObjectBehavior
         UserInterface $entity
     ) {
         $entity
+            ->hasChanged('id')
+            ->willReturn(false)
+            ->shouldBeCalled();
+
+        $entity
             ->hasChanged('extensionId')
             ->willReturn(false)
             ->shouldBeCalled();
@@ -37,6 +42,11 @@ class UpdateByUserSpec extends ObjectBehavior
         UserInterface $entity,
         ExtensionInterface $extension
     ) {
+        $entity
+            ->hasChanged('id')
+            ->willReturn(false)
+            ->shouldBeCalled();
+
         $entity
             ->hasChanged('extensionId')
             ->willReturn(true)
@@ -63,6 +73,11 @@ class UpdateByUserSpec extends ObjectBehavior
         UserInterface $entity
     ) {
         $entity
+            ->hasChanged('id')
+            ->willReturn(false)
+            ->shouldBeCalled();
+
+        $entity
             ->hasChanged('extensionId')
             ->willReturn(true)
             ->shouldBeCalled();
@@ -70,6 +85,38 @@ class UpdateByUserSpec extends ObjectBehavior
         $entity
             ->getExtension()
             ->willReturn(null)
+            ->shouldBeCalled();
+
+        $this->execute($entity, false);
+    }
+
+    function it_cleans_up_extension_on_remove(
+        UserInterface $entity,
+        ExtensionInterface $extension
+    ) {
+        $entity
+            ->hasChanged('id')
+            ->willReturn(true)
+            ->shouldBeCalled();
+
+        $entity
+            ->getId()
+            ->willReturn(null)
+            ->shouldBeCalled();
+
+        $entity
+            ->getExtension()
+            ->willReturn($extension)
+            ->shouldBeCalled();
+
+        $extension
+            ->setRouteType(null)
+            ->willReturn($extension)
+            ->shouldBeCalled();
+
+        $extension
+            ->setUser(null)
+            ->willReturn($extension)
             ->shouldBeCalled();
 
         $this->execute($entity, false);
