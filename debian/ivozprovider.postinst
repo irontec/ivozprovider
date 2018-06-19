@@ -71,7 +71,7 @@ function start_services()
     [ "$RET" = true ] && ACTION=restart || ACTION=start
 
     # Start media proxy
-    /bin/systemctl $ACTION rtpproxy
+    /bin/systemctl $ACTION rtpengine
 
     # Start Users & trunks proxyies
     /bin/systemctl $ACTION kamailio@users
@@ -83,7 +83,6 @@ function start_services()
 
 function enable_services()
 {
-    /bin/systemctl enable rtpproxy
     /bin/systemctl enable rtpengine
     /bin/systemctl enable kamailio@users
     /bin/systemctl enable kamailio@trunks

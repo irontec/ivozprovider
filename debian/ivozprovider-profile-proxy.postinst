@@ -15,7 +15,6 @@ function setup_media_relays()
 
     # Configure Media relay IPs
     sed -i -r "s/(IP *= *).*/\1$MEDIA_RELAY_ADDRESS/"         /etc/default/rtpengine
-    sed -i -r "s/(AUDIO_SOCK *= *).*/\1$MEDIA_RELAY_ADDRESS/" /etc/default/rtpproxy
 }
 
 #######################################################################################################################
