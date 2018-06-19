@@ -12,7 +12,6 @@ Feature: Update media relay sets
     """
       {
           "name": "Updated",
-          "type": "rtpengine",
           "description": "Updated media relay set"
       }
     """
@@ -24,7 +23,6 @@ Feature: Update media relay sets
      {
           "name": "Updated",
           "description": "Updated media relay set",
-          "type": "rtpengine",
           "id": 1
      }
     """
