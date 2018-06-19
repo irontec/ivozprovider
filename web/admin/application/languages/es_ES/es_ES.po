@@ -2508,12 +2508,6 @@ msgstr "Rechazar"
 msgid "e.g. 8.8.8.8"
 msgstr "por. ej. 8.8.8.8"
 
-msgid "e.g. udp:127.0.0.1:22222"
-msgstr "p.ej. udp:127.0.0.1:22222"
-
-msgid "e.g. udp:127.0.0.1:22223"
-msgstr "p.ej. udp:127.0.0.1:22223"
-
 msgid "encoding"
 msgstr "Codificando"
 

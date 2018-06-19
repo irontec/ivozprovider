@@ -319,10 +319,6 @@ mappers:
         modelFile: KamTrusted,
         entity: 'Kam\\Model\\Trusted\\Trusted'
     }
-  - &Rtpproxy {
-        modelFile: KamRtpproxy,
-        entity: 'Kam\\Model\\Rtpproxy\\Rtpproxy'
-    }
   - &Rtpengine {
         modelFile: KamRtpengine,
         entity: 'Kam\\Model\\Rtpengine\\Rtpengine'

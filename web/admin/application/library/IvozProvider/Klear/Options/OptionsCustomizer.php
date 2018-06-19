@@ -66,12 +66,6 @@ class IvozProvider_Klear_Options_OptionsCustomizer implements \KlearMatrix_Model
                 $show = $this->_pricingPlanHasStarted();
 //                 $show = false;
                 break;
-            case "kamRtpproxyList_screen":
-                $show = $this->_isTypeRtpproxy();
-                break;
-            case "kamRtpengineList_screen":
-                $show = !$this->_isTypeRtpproxy();
-                break;
             case "mediaRelaySetsEdit_screen":
             case "mediaRelaySetsDel_dialog":
                 $show = $this->_isRemovable();
@@ -131,20 +125,7 @@ class IvozProvider_Klear_Options_OptionsCustomizer implements \KlearMatrix_Model
 
     protected function _isRemovable() {
         $name = $this->_parentModel->getName();
-        if ($name == 'Default-rtpproxy' || $name == 'Default-rtpengine') {
-            return false;
-        }
-
-        return true;
-    }
-
-    protected function _isTypeRtpproxy() {
-        $type = $this->_parentModel->getType();
-        if ($type == 'rtpproxy') {
-            return true;
-        }
-
-        return false;
+        return $name != 'Default';
     }
 
     protected function _isEditable() {

@@ -43,7 +43,6 @@ production:
           fields:
             disabled: 4
             weight: 5
-            __empty: 4
             url: 9
             description: 8
       <<: *kamRtpengineHelp
