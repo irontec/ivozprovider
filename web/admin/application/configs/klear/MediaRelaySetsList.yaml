@@ -1,7 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
 #include conf.d/documentationLink.yaml
-#include KamRtpproxyList.yaml
 #include KamRtpengineList.yaml
 
 production:
@@ -24,7 +23,6 @@ production:
           title: _("Options")
           screens:
             mediaRelaySetsEdit_screen: true
-            kamRtpproxyList_screen: true
             kamRtpengineList_screen: true
           dialogs:
             mediaRelaySetsDel_dialog: true
@@ -45,7 +43,6 @@ production:
           colsPerRow: 2
           fields:
             name: 1
-            type: 1
             description: 2
     mediaRelaySetsEdit_screen: &mediaRelaySetsEdit_screenLink
       <<: *MediaRelaySets
@@ -58,27 +55,10 @@ production:
       title: _("Edit %s %2s", ngettext('Media relay set', 'Media relay sets', 1), "[format| (%item%)]")
       fixedPositions:
         <<: *mediaRelaySetsFixedPositionLink
-      fields:
-        readOnly:
-          type: true
-    #kamRtpproxy:
-    <<: *kamRtpproxy_screensLink
-    kamRtpproxyList_screen:
-      parentOptionCustomizer:
-        - IvozProvider_Klear_Options_OptionsCustomizer
-      <<: *kamRtpproxyList_screenLink
-      filterField: MediaRelaySet
-    kamRtpproxyNew_screen:
-      <<: *kamRtpproxyNew_screenLink
-      filterField: MediaRelaySet
-    kamRtpproxyEdit_screen:
-      <<: *kamRtpproxyEdit_screenLink
-      filterField: MediaRelaySet
+
     #kamRtpengine:
     <<: *kamRtpengine_screensLink
     kamRtpengineList_screen:
-      parentOptionCustomizer:
-        - IvozProvider_Klear_Options_OptionsCustomizer
       <<: *kamRtpengineList_screenLink
       filterField: MediaRelaySet
     kamRtpengineNew_screen:
@@ -101,8 +81,7 @@ production:
       message: _("%s successfully deleted.", ngettext('Media relay set', 'Media relay sets', 1))
       multiItem: 1
       labelOnList: 1
-  # kamRtpproxy dialogs:
-    <<: *kamRtpproxy_dialogsLink
+
   # kamRtpengine dialogs:
     <<: *kamRtpengine_dialogsLink
 staging:

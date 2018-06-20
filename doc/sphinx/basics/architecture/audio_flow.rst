@@ -12,8 +12,7 @@ receive the media itself, usually using UDP as a transport protocol.
 
 Both entities exchanges RTP with the same IvozProvider entity: *media-relays*.
 
-IvozProvider implements *media-relays* using both `RTPengine <https://github.com/sipwise/rtpengine>`_ and
-`RTPproxy <http://www.rtpproxy.org/>`_.
+IvozProvider implements *media-relays* using `RTPengine <https://github.com/sipwise/rtpengine>`_.
 
 Similar to SIP, these *media-relays* exchanges RTP when is needed with
 *Application Servers*, but **external entities never talk directly to them**.

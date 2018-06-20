@@ -44,21 +44,5 @@ interface MediaRelaySetInterface extends LoggableEntityInterface
      */
     public function getDescription();
 
-    /**
-     * Set type
-     *
-     * @param string $type
-     *
-     * @return self
-     */
-    public function setType($type);
-
-    /**
-     * Get type
-     *
-     * @return string
-     */
-    public function getType();
-
 }
 
