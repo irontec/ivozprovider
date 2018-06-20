@@ -1,13 +1,13 @@
 <?php
 
-namespace Ivoz\Kam\Domain\Model\TrunksAddres;
+namespace Ivoz\Kam\Domain\Model\TrunksAddress;
 
 /**
- * TrunksAddres
+ * TrunksAddress
  */
-class TrunksAddres extends TrunksAddresAbstract implements TrunksAddresInterface
+class TrunksAddress extends TrunksAddressAbstract implements TrunksAddressInterface
 {
-    use TrunksAddresTrait;
+    use TrunksAddressTrait;
 
     /**
      * @codeCoverageIgnore

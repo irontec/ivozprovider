@@ -1,4 +1,4 @@
-Ivoz\Kam\Domain\Model\TrunksAddres\TrunksAddresAbstract:
+Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddressAbstract:
   type: mappedSuperclass
   uniqueConstraints:
     grp:

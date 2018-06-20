@@ -1,6 +1,6 @@
 <?php
 
-namespace Ivoz\Kam\Domain\Model\TrunksAddres;
+namespace Ivoz\Kam\Domain\Model\TrunksAddress;
 
 use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
@@ -8,10 +8,10 @@ use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
 
 /**
- * TrunksAddresAbstract
+ * TrunksAddressAbstract
  * @codeCoverageIgnore
  */
-abstract class TrunksAddresAbstract
+abstract class TrunksAddressAbstract
 {
     /**
      * @var integer
@@ -57,7 +57,7 @@ abstract class TrunksAddresAbstract
     public function __toString()
     {
         return sprintf("%s#%s",
-            "TrunksAddres",
+            "TrunksAddress",
             $this->getId()
         );
     }
@@ -72,17 +72,17 @@ abstract class TrunksAddresAbstract
 
     /**
      * @param null $id
-     * @return TrunksAddresDto
+     * @return TrunksAddressDto
      */
     public static function createDto($id = null)
     {
-        return new TrunksAddresDto($id);
+        return new TrunksAddressDto($id);
     }
 
     /**
      * @param EntityInterface|null $entity
      * @param int $depth
-     * @return TrunksAddresDto|null
+     * @return TrunksAddressDto|null
      */
     public static function entityToDto(EntityInterface $entity = null, $depth = 0)
     {
@@ -90,7 +90,7 @@ abstract class TrunksAddresAbstract
             return null;
         }
 
-        Assertion::isInstanceOf($entity, TrunksAddresInterface::class);
+        Assertion::isInstanceOf($entity, TrunksAddressInterface::class);
 
         if ($depth < 1) {
             return static::createDto($entity->getId());
@@ -111,9 +111,9 @@ abstract class TrunksAddresAbstract
     public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto TrunksAddresDto
+         * @var $dto TrunksAddressDto
          */
-        Assertion::isInstanceOf($dto, TrunksAddresDto::class);
+        Assertion::isInstanceOf($dto, TrunksAddressDto::class);
 
         $self = new static(
             $dto->getGrp(),
@@ -138,9 +138,9 @@ abstract class TrunksAddresAbstract
     public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto TrunksAddresDto
+         * @var $dto TrunksAddressDto
          */
-        Assertion::isInstanceOf($dto, TrunksAddresDto::class);
+        Assertion::isInstanceOf($dto, TrunksAddressDto::class);
 
         $this
             ->setGrp($dto->getGrp())
@@ -157,7 +157,7 @@ abstract class TrunksAddresAbstract
 
     /**
      * @param int $depth
-     * @return TrunksAddresDto
+     * @return TrunksAddressDto
      */
     public function toDto($depth = 0)
     {

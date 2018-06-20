@@ -1,6 +1,6 @@
 <?php
 
-namespace Ivoz\Kam\Domain\Model\TrunksAddres;
+namespace Ivoz\Kam\Domain\Model\TrunksAddress;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
@@ -10,7 +10,7 @@ use Ivoz\Core\Application\Model\DtoNormalizer;
 /**
  * @codeCoverageIgnore
  */
-abstract class TrunksAddresDtoAbstract implements DataTransferObjectInterface
+abstract class TrunksAddressDtoAbstract implements DataTransferObjectInterface
 {
     /**
      * @var integer

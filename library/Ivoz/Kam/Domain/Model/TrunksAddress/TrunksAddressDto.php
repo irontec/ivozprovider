@@ -1,13 +1,13 @@
 <?php
 
-namespace Ivoz\Kam\Domain\Model\TrunksAddres;
+namespace Ivoz\Kam\Domain\Model\TrunksAddress;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Core\Application\CollectionTransformerInterface;
 
 
-class TrunksAddresDto extends TrunksAddresDtoAbstract
+class TrunksAddressDto extends TrunksAddressDtoAbstract
 {
 
 }

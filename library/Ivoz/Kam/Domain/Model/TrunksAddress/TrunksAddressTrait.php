@@ -1,14 +1,14 @@
 <?php
 
-namespace Ivoz\Kam\Domain\Model\TrunksAddres;
+namespace Ivoz\Kam\Domain\Model\TrunksAddress;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 
 /**
- * TrunksAddresTrait
+ * TrunksAddressTrait
  * @codeCoverageIgnore
  */
-trait TrunksAddresTrait
+trait TrunksAddressTrait
 {
     /**
      * @var integer
@@ -33,7 +33,7 @@ trait TrunksAddresTrait
     public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto TrunksAddresDto
+         * @var $dto TrunksAddressDto
          */
         $self = parent::fromDto($dto);
 
@@ -52,7 +52,7 @@ trait TrunksAddresTrait
     public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto TrunksAddresDto
+         * @var $dto TrunksAddressDto
          */
         parent::updateFromDto($dto);
 
@@ -61,7 +61,7 @@ trait TrunksAddresTrait
 
     /**
      * @param int $depth
-     * @return TrunksAddresDto
+     * @return TrunksAddressDto
      */
     public function toDto($depth = 0)
     {

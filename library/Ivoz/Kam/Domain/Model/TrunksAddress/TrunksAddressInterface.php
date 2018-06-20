@@ -1,10 +1,10 @@
 <?php
 
-namespace Ivoz\Kam\Domain\Model\TrunksAddres;
+namespace Ivoz\Kam\Domain\Model\TrunksAddress;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface TrunksAddresInterface extends LoggableEntityInterface
+interface TrunksAddressInterface extends LoggableEntityInterface
 {
     /**
      * @codeCoverageIgnore
