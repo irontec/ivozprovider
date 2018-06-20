@@ -234,7 +234,7 @@ class RouterAction
         $this->voiceMailAction = $voiceMailAction;
     }
 
-    public function setRouteType(string $routeType)
+    public function setRouteType(string $routeType = null)
     {
         $this->routeType = $routeType;
         return $this;
