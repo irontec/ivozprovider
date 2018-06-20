@@ -44,6 +44,10 @@ class RecordingDtoAssembler implements CustomDtoAssemblerInterface
                 ->storagePathResolver
                 ->getPathResolver('RecordedFile');
 
+            $pathResolver->setOriginalFileName(
+                $entity->getRecordedFile()->getBaseName()
+            );
+
             $dto->setRecordedFilePath(
                 $pathResolver->getFilePath($entity)
             );

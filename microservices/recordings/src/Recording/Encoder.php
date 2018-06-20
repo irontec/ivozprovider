@@ -3,20 +3,27 @@
 namespace Recording;
 
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
-use Ivoz\Kam\Domain\Model\TrunksCdr\AccCdrInterface;
-use Ivoz\Kam\Domain\Model\TrunksCdr\AccCdrRepository;
-use Ivoz\Provider\Domain\Model\Recording\RecordingDTO;
-use IvozProvider\Utils\SizeFormatter;
+use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
+use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrRepository;
+use Ivoz\Kam\Domain\Model\UsersCdr\UsersCdrRepository;
+use Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Provider\Domain\Model\Recording\RecordingDto;
 use Symfony\Bridge\Monolog\Logger;
 use Symfony\Component\Process\Process;
+use Zend_Media_Mpeg_Abs;
 
 
 class Encoder
 {
     /**
-     * @var AccCdrRepository
+     * @var TrunksCdrRepository
      */
-    protected $cdrRepository;
+    protected $trunksCdrRepository;
+
+    /**
+     * @var UsersCdrRepository
+     */
+    protected $usersCdrRepository;
 
     /**
      * @var EntityPersisterInterface
@@ -34,13 +41,14 @@ class Encoder
     protected $logger;
 
     public function __construct(
-        AccCdrRepository $cdrRepository,
+        TrunksCdrRepository $trunksCdrRepository,
+        UsersCdrRepository $usersCdrRepository,
         EntityPersisterInterface $entityPersister,
         string $rawRecordingsDir,
         Logger $logger
-
     ) {
-        $this->cdrRepository = $cdrRepository;
+        $this->trunksCdrRepository = $trunksCdrRepository;
+        $this->usersCdrRepository = $usersCdrRepository;
         $this->entityPersister = $entityPersister;
         $this->rawRecordingsDir = $rawRecordingsDir;
         $this->logger = $logger;
@@ -81,8 +89,9 @@ class Encoder
                 }
 
                 // Check if this file is .rtp
-                if (substr($filename, -6) == ".a.rtp")
+                if (substr($filename, -8) == "-mix.wav") {
                     array_push($files, $filename);
+                }
            }
         }
 
@@ -94,10 +103,9 @@ class Encoder
         foreach ($files as $filename) {
 
             // Store valid files
-            if (preg_match("/((.*)=.*\.(\d+))\.[ao]\.rtp$/", $filename, $matches)) {
-                $file = $matches[1];
-                $callid = $matches[2];
-                $recordcnt = $matches[3];
+            if (preg_match("/(.*)-\w+-mix.wav/", $filename, $matches)) {
+                $file = $matches[0];
+                $callid = urldecode($matches[1]);
             } else {
                 $this->logger->error(sprintf("[Recordings][ERROR] Unable to get info from filename %s\n", $filename));
                 continue;
@@ -107,45 +115,47 @@ class Encoder
             $hashid = substr(md5($callid),0,8);
 
             // Get callid from file
-            $this->logger->info(sprintf("[Recordings][%s] Checking file %s [record=%d]\n", $hashid, $file, $recordcnt));
+            $this->logger->info(sprintf("[Recordings][%s] Checking file %s\n", $hashid, $file));
 
             // Look if the converstation with that id has ended
-            /** @var AccCdrInterface $kamAccCdr */
-            $kamAccCdr = $this->cdrRepository->findOneBy(['callid' => $callid]);
-            if (!$kamAccCdr) {
-                $stats['skipped']++;
-                $this->logger->info(sprintf("[Recordings][%s] Call with id = %s has not yet finished!\n", $hashid, $callid));
-                continue;
-            }
+            /** @var TrunksCdrInterface $kamAccCdr */
+            $kamAccCdr = $this->trunksCdrRepository->findOneBy(['callid' => $callid]);
+            if ($kamAccCdr) {
+                $type = 'ddi';
+                $recorder = "";
+            } else {
+                $kamAccCdr = $this->usersCdrRepository->findOneBy(['callid' => $callid]);
+                if ($kamAccCdr) {
+                    $type = 'ondemand';
 
-            // Convert files to .wav
-            $extractRtp = $this->rawRecordingsDir . $file;
-            $extractWav = $this->rawRecordingsDir . $callid . '.' . $recordcnt . '.wav';
-            $this->logger->info(sprintf("[Recordings][%s] Extracting audio into %s\n", $hashid, basename($extractWav)));
-
-            $extractProcess = new Process([
-                "/usr/bin/extractaudio",
-//                "-d",
-                $extractRtp,
-                $extractWav
-            ]);
-            $extractProcess->mustRun();
-
-            if ($extractProcess->getExitCode() != 0) {
-                $stats['error']++;
-                $this->logger->error(
-                    sprintf(
-                        "[Recordings][%s] Failed to extract audio: Command was %s\n",
-                        $hashid,
-                        $extractProcess->getCommandLine()
-                    )
-                );
-                continue;
+                    switch ($kamAccCdr->getCompany()->getType()) {
+                        case Company::RETAIL:
+                        case Company::WHOLESALE:
+                            $recorder = $kamAccCdr->getCallee();
+                            break;
+                        case Company::VPBX:
+                            if ($kamAccCdr->getXcallid()) {
+                                // If call second leg, callee is who activated the recording
+                                $recorder = $kamAccCdr->getCallee();
+                            } else {
+                                // If call first leg, caller is who activated the recording
+                                $recorder = $kamAccCdr->getCaller();
+                            }
+                            break;
+                        default:
+                            $recorder = $kamAccCdr->getCallee();
+                            break;
+                    }
+                } else {
+                    $stats['skipped']++;
+                    $this->logger->info(sprintf("[Recordings][%s] Call with id = %s has not yet finished!\n", $hashid, $callid));
+                    continue;
+                }
             }
 
             // Convert .wav to .mp3
-            $convertWav = $this->rawRecordingsDir . $callid . '.' . $recordcnt . ".wav";
-            $convertMp3 = $this->rawRecordingsDir . $callid . '.' . $recordcnt . ".mp3";
+            $convertWav = $this->rawRecordingsDir . $filename;
+            $convertMp3 = $this->rawRecordingsDir . $callid . ".mp3";
             $this->logger->info(sprintf("[Recordings][%s] Encoding to %s\n", $hashid, basename($convertMp3)));
 
             $convertProcess = new Process([
@@ -174,23 +184,7 @@ class Encoder
             $duration = $mp3info->getLengthEstimate();
 
             // Create an entry in Recordings table with the file
-            $recordingDto = new RecordingDTO();
-
-            if ($kamAccCdr->getProxy() == 'USER') {
-                $type = 'ondemand';
-                if ($kamAccCdr->getXcallid()) {
-                    // If call second leg, callee is who activated the recording
-                    $recorder = $kamAccCdr->getCallee();
-                } else {
-                    // If call first leg, caller is who activated the recording
-                    $recorder = $kamAccCdr->getCaller();
-                }
-
-                $recordingDto->setRecorder($recorder);
-
-            } else {
-                $type = 'ddi';
-            }
+            $recordingDto = new RecordingDto();
 
             // Get company and brand for this recording
             $company = $kamAccCdr->getCompany();
@@ -198,6 +192,7 @@ class Encoder
             $recordingDto->setCompanyId($company->getId())
                 ->setCalldate($kamAccCdr->getStartTime())
                 ->setType($type)
+                ->setRecorder($recorder)
                 ->setCallid($kamAccCdr->getCallid())
                 ->setDuration($duration)
                 ->setCaller($kamAccCdr->getCaller())
@@ -210,38 +205,6 @@ class Encoder
             $this->logger->info(
                 sprintf("[Recordings][%s] Create Recordings entry with id %s\n", $hashid, $recording->getId())
             );
-//
-//            // If this company has disk space limit
-//            if ($companyLimit > 0) {
-//                // Check the new used space
-//                $companyNewUsage = ($companyUsed + $recordingDto->getRecordedFileFileSize()) * 100 / $companyLimit;
-//                $this->logger->info(sprintf("[Recordings][company%d] DiskUsage %d%%\n", $company->getId(), $companyNewUsage));
-//
-//                // Space over available!
-//                if ($companyNewUsage >= 100) {
-//                    // Rotate old company recordings
-//                    $this->rotateCompanyRecordings($company);
-//                } else if ($companyUsage < 80 && $companyNewUsage >= 80) {
-//                    // Space over 80%, send notification email
-//                    $this->sendCompanyMail($company);
-//                }
-//            }
-//
-//            // If this brand has disk space limit
-//            if ($brandLimit > 0) {
-//                // Check the new used space
-//                $brandNewUsage = ($brandUsed + $recordingDto->getRecordedFileFileSize()) * 100 / $brandLimit;
-//                $this->logger->info(sprintf("[Recordings][brand%d] DiskUsage %d%%\n", $brand->getId(), $brandNewUsage));
-//
-//                // Space over available!
-//                if ($brandNewUsage >= 100) {
-//                    // Rotate old brands recordings
-//                    $this->rotateBrandRecordings($brand);
-//                } else if ($brandUsage < 80 && $brandNewUsage >= 80) {
-//                    // Space over 80%, send notification email
-//                    $this->sendBrandMail($brand);
-//                }
-//            }
 
             // Remove encoded files
             unlink($convertWav);
@@ -258,138 +221,8 @@ class Encoder
             $stats['deleted'],
             $stats['skipped']
         );
+
         $this->logger->info($summary);
     }
 
-//    private function rotateCompanyRecordings($company)
-//    {
-//        $usage = $company->getRecordingsDiskUsage();
-//        $limit = $company->getRecordingsLimit();
-//        $recordings = $company->getRecordings();
-//
-//        while ($usage >= $limit && !empty($recordings)) {
-//            $oldest = array_shift($recordings);
-//            $summary = sprintf("[Recordings][Company%d] MaxDiskLimit reached (%s/%s): Recording %d has been rotated out.\n",
-//                    $company->getId(),
-//                    SizeFormatter::sizeToHuman($usage),
-//                    SIzeFormatter::sizeToHuman($limit),
-//                    $oldest->getId());
-//            $this->logger->info($summary);
-//            $usage -= $oldest->getRecordedFileFileSize();
-//            $oldest->delete();
-//        }
-//    }
-//
-//    private function rotateBrandRecordings($brand)
-//    {
-//        $usage = $brand->getRecordingsDiskUsage();
-//        $limit = $brand->getRecordingsLimit();
-//
-//        // Get brand companies
-//        $companyIds = array();
-//        foreach ($brand->getCompanies() as $company) {
-//            array_push($companyIds, $company->getId());
-//        }
-//
-//        // Get removable calls
-//        $recordingRepository = new \IvozProvider\Mapper\Sql\Recordings();
-//        $recordings = $recordingRepository->fetchList("companyId IN (".implode(',', $companyIds).")", "calldate ASC", 10);
-//
-//        while ($usage >= $limit && !empty($recordings)) {
-//            $oldest = array_shift($recordings);
-//            $summary = sprintf("[Recordings][Brand%d] MaxDiskLimit reached (%s/%s): Recording %d has been rotated out.\n",
-//                    $brand->getId(),
-//                    SizeFormatter::sizeToHuman($usage),
-//                    SIzeFormatter::sizeToHuman($limit),
-//                    $oldest->getId());
-//            $this->logger->info($summary);
-//            $usage -= $oldest->getRecordedFileFileSize();
-//            $oldest->delete();
-//        }
-//    }
-//
-//    private function sendBrandMail($brand)
-//    {
-//        try {
-//            // Get defaults mail settings
-//            $config = \Zend_Controller_Front::getInstance()->getParam('bootstrap');
-//            $mail = $config->getOption('mail');
-//            $default_fromname = $mail['fromname'];
-//            $default_fromuser = $mail['fromuser'];
-//            $voicemail = $config->getOption('voicemail');
-//
-//            $body = file_get_contents(APPLICATION_PATH . "/../templates/emailBrands_body.tmpl");
-//            $subject = file_get_contents(APPLICATION_PATH . "/../templates/emailBrands_subject.tmpl");
-//
-//            $fromName = $brand->getFromName();
-//            if (empty($fromName)) $fromName = $default_fromname;
-//            $fromAddress = $brand->getFromAddress();
-//            if (empty($fromAddress)) $fromAddress = $default_fromuser;
-//
-//            $substitution = array(
-//                '${BRAND_NAME}'     => $brand->getName(),
-//                '${BRAND_ID}'       => $brand->getId(),
-//                '${DISK_USAGE}'     => SizeFormatter::sizeToHuman($brand->getRecordingsDiskUsage()),
-//                '${DISK_LIMIT}'     => SizeFormatter::sizeToHuman($brand->getRecordingsLimit()),
-//            );
-//
-//            foreach ($substitution as $search => $replace) {
-//                $body = str_replace($search, $replace, $body);
-//                $subject = str_replace($search, $replace, $subject);
-//            }
-//
-//            $mail = new Zend_Mail('utf8');
-//            $mail->setBodyText($body);
-//            $mail->setSubject($subject);
-//            $mail->setFrom($fromAddress, $fromName);
-//            $mail->addTo($brand->getRecordingsLimitEmail());
-//            $mail->send();
-//
-//        } catch (Exception $e) {
-//            echo $e->getMessage();
-//        }
-//    }
-//
-//    private function sendCompanyMail($company)
-//    {
-//        try {
-//            // Get defaults mail settings
-//            $config = \Zend_Controller_Front::getInstance()->getParam('bootstrap');
-//            $mail = $config->getOption('mail');
-//            $default_fromname = $mail['fromname'];
-//            $default_fromuser = $mail['fromuser'];
-//            $voicemail = $config->getOption('voicemail');
-//            $brand = $company->getBrand();
-//
-//            $body = file_get_contents(APPLICATION_PATH . "/../templates/emailCompanies_body.tmpl");
-//            $subject = file_get_contents(APPLICATION_PATH . "/../templates/emailCompanies_subject.tmpl");
-//
-//            $fromName = $brand->getFromName();
-//            if (empty($fromName)) $fromName = $default_fromname;
-//            $fromAddress = $brand->getFromAddress();
-//            if (empty($fromAddress)) $fromAddress = $default_fromuser;
-//
-//            $substitution = array(
-//                '${COMPANY_NAME}'     => $company->getName(),
-//                '${COMPANY_ID}'       => $company->getId(),
-//                '${DISK_USAGE}'       => SizeFormatter::sizeToHuman($company->getRecordingsDiskUsage()),
-//                '${DISK_LIMIT}'       => SizeFormatter::sizeToHuman($company->getRecordingsLimit()),
-//            );
-//
-//            foreach ($substitution as $search => $replace) {
-//                $body = str_replace($search, $replace, $body);
-//                $subject = str_replace($search, $replace, $subject);
-//            }
-//
-//            $mail = new Zend_Mail('utf8');
-//            $mail->setBodyText($body);
-//            $mail->setSubject($subject);
-//            $mail->setFrom($fromAddress, $fromName);
-//            $mail->addTo($company->getRecordingsLimitEmail());
-//            $mail->send();
-//
-//        } catch (Exception $e) {
-//            echo $e->getMessage();
-//        }
-//    }
 }
