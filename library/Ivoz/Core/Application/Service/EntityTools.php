@@ -8,6 +8,9 @@ use Ivoz\Core\Application\Service\Assembler\DtoAssembler;
 use Ivoz\Core\Application\Service\Assembler\EntityAssembler;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister;
+use Doctrine\DBAL\LockMode;
+use Doctrine\ORM\OptimisticLockException;
+use Doctrine\ORM\PessimisticLockException;
 
 /**
  * Entity service facade
@@ -33,7 +36,6 @@ class EntityTools
      * @var DtoAssembler
      */
     private $dtoAssembler;
-
 
     /**
      * EntityTools constructor.
@@ -74,6 +76,24 @@ class EntityTools
         return $this
             ->dtoAssembler
             ->toDto($entity);
+    }
+
+    /**
+     * lock entity or throw exception
+     * @see https://www.doctrine-project.org/projects/doctrine-orm/en/2.6/reference/transactions-and-concurrency.html#locking-support
+     *
+     * @param EntityInterface $entity
+     * @param int $expectedVersion
+     * @param int $lockMode
+     *
+     * @throws OptimisticLockException
+     * @throws PessimisticLockException
+     *
+     * @return void
+     */
+    public function lock(EntityInterface $entity, int $expectedVersion, $lockMode = LockMode::OPTIMISTIC)
+    {
+        $this->em->lock($entity, $lockMode, $expectedVersion);
     }
 
     /**

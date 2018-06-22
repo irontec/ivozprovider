@@ -1,6 +1,7 @@
 <?php
 
 namespace Ivoz\Provider\Domain\Model\Invoice;
+
 use Ivoz\Core\Domain\Model\TempFileContainnerTrait;
 use Ivoz\Core\Domain\Service\FileContainerInterface;
 
@@ -51,6 +52,16 @@ class Invoice extends InvoiceAbstract implements InvoiceInterface, FileContainer
         }
 
         return parent::setStatus($status);
+    }
+
+    public function setNumber($number = null)
+    {
+        if ($number === '') {
+            //Avoid unique key issues
+            $number = null;
+        }
+
+        return parent::setNumber($number);
     }
 }
 
