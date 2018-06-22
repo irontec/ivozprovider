@@ -139,6 +139,10 @@ mappers:
         modelFile: InvoiceTemplates,
         entity: 'Ivoz\\Provider\\Domain\\Model\\InvoiceTemplate\\InvoiceTemplate'
     }
+  - &InvoiceNumberSequences {
+        modelFile: InvoiceNumberSequences,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\InvoiceNumberSequence\\InvoiceNumberSequence'
+    }
   - &IvrEntries {
         modelFile: IvrEntries,
         entity: 'Ivoz\\Provider\\Domain\\Model\\IvrEntry\\IvrEntry'

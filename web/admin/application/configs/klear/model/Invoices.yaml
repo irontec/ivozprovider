@@ -8,6 +8,30 @@ production:
       required: true
       maxLength: 30
       default: true
+    numberSequence:
+      title: _('Invoice number sequence')
+      type: select
+      required: false
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequence
+          filterClass: IvozProvider_Klear_Filter_Brand
+          fieldName:
+            fields:
+              - iden
+            template: '%iden%'
+          order:
+            InvoiceNumberSequence.iden: asc
+          visualFilter:
+            iden:
+              'null':
+                show: ["number"]
+                hide: []
+              __default__:
+                show: []
+                hide: ["number"]
+        'null': _("Unassigned")
     inDate:
       title: _('In date')
       type: picker

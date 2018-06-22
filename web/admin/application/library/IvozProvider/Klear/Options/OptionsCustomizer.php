@@ -49,6 +49,16 @@ class IvozProvider_Klear_Options_OptionsCustomizer implements \KlearMatrix_Model
             case "emulateCompany_dialog":
                 $show = $this->_checkEmulation("company");
                 break;
+
+            case 'generateInvoice_dialog':
+            case 'invoicesDel_dialog':
+            case 'invoicesEdit_screen':
+                $show = $parentModel->getStatus() !== 'created';
+                break;
+            case 'invoicesView_screen':
+                $show = $parentModel->getStatus() === 'created';
+                break;
+
             case "pricingPlansEdit_screen":
                 $show = !$this->_pricingPlanHasStarted();
                 break;

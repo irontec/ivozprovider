@@ -189,6 +189,11 @@ production:
           class: ui-silk-report-key
           description: _("List of %s", ngettext('Invoice template', 'Invoice templates', 0))
           showOnlyIf: ${auth.brandFeatures.invoices.enabled}
+        InvoiceNumberSequencesList:
+            title: ngettext('Invoice number sequence', 'Invoice number sequences', 0)
+            class: ui-silk-report-key
+            description: _("List of %s", ngettext('Invoice number sequence', 'Invoice number sequences', 0))
+            showOnlyIf: ${auth.brandFeatures.invoices.enabled}
         FixedCostsList:
           title: ngettext('Fixed cost', 'Fixed costs', 0)
           class:  ui-silk-money-add
