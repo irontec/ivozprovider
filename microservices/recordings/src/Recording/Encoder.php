@@ -130,6 +130,7 @@ class Encoder
 
                     switch ($kamAccCdr->getCompany()->getType()) {
                         case Company::RETAIL:
+                        case Company::RESIDENTIAL:
                         case Company::WHOLESALE:
                             $recorder = $kamAccCdr->getCallee();
                             break;
