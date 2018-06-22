@@ -1,18 +1,16 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Model\RetailAccount;
-
+namespace Ivoz\Provider\Domain\Model\ResidentialDevice;
 use Assert\Assertion;
-
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
 
 /**
- * RetailAccount
+ * ResidentialDevice
  */
-class RetailAccount extends RetailAccountAbstract implements RetailAccountInterface
+class ResidentialDevice extends ResidentialDeviceAbstract implements ResidentialDeviceInterface
 {
-    use RetailAccountTrait;
+    use ResidentialDeviceTrait;
 
     /**
      * @codeCoverageIgnore
@@ -146,7 +144,7 @@ class RetailAccount extends RetailAccountAbstract implements RetailAccountInterf
         // Check if the configured transport is not the standard (UDP)
         $transport = $this->getTransport();
         if ($transport != 'udp') {
-            $uri .= ";transport=$tranport";
+            $uri .= ";transport=$transport";
         }
 
         return $uri;
@@ -170,7 +168,7 @@ class RetailAccount extends RetailAccountAbstract implements RetailAccountInterf
     }
 
     /**
-     * Get Retail Account outgoingDdi
+     * Get Residential Device outgoingDdi
      * If no Ddi is assigned, retrieve company's default Ddi
      * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface or NULL
      */
@@ -187,7 +185,7 @@ class RetailAccount extends RetailAccountAbstract implements RetailAccountInterf
     }
 
     /**
-     * Get Ddi associated with this retail Account
+     * Get Ddi associated with this residential device
      *
      * @return DdiInterface
      */
@@ -209,5 +207,6 @@ class RetailAccount extends RetailAccountAbstract implements RetailAccountInterf
 
         return array_shift($ddis);
     }
+
 }
 

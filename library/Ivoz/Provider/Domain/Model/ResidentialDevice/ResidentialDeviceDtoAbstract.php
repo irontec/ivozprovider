@@ -1,6 +1,6 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Model\RetailAccount;
+namespace Ivoz\Provider\Domain\Model\ResidentialDevice;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
@@ -10,7 +10,7 @@ use Ivoz\Core\Application\Model\DtoNormalizer;
 /**
  * @codeCoverageIgnore
  */
-abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
+abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterface
 {
     /**
      * @var string

@@ -187,6 +187,11 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
      */
     private $user;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto | null
+     */
+    private $residentialDevice;
+
 
     use DtoNormalizer;
 
@@ -239,7 +244,8 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
             'imapflags' => 'imapflags',
             'stamp' => 'stamp',
             'id' => 'id',
-            'userId' => 'user'
+            'userId' => 'user',
+            'residentialDeviceId' => 'residentialDevice'
         ];
     }
 
@@ -283,7 +289,8 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
             'imapflags' => $this->getImapflags(),
             'stamp' => $this->getStamp(),
             'id' => $this->getId(),
-            'user' => $this->getUser()
+            'user' => $this->getUser(),
+            'residentialDevice' => $this->getResidentialDevice()
         ];
     }
 
@@ -293,6 +300,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
         $this->user = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\User\\User', $this->getUserId());
+        $this->residentialDevice = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\ResidentialDevice\\ResidentialDevice', $this->getResidentialDeviceId());
     }
 
     /**
@@ -1023,6 +1031,52 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     public function getUserId()
     {
         if ($dto = $this->getUser()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto $residentialDevice
+     *
+     * @return static
+     */
+    public function setResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto $residentialDevice = null)
+    {
+        $this->residentialDevice = $residentialDevice;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto
+     */
+    public function getResidentialDevice()
+    {
+        return $this->residentialDevice;
+    }
+
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setResidentialDeviceId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto($id)
+            : null;
+
+        return $this->setResidentialDevice($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getResidentialDeviceId()
+    {
+        if ($dto = $this->getResidentialDevice()) {
             return $dto->getId();
         }
 

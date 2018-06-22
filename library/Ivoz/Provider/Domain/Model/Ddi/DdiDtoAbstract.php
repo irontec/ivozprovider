@@ -113,9 +113,9 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
     private $country;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto | null
+     * @var \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto | null
      */
-    private $retailAccount;
+    private $residentialDevice;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteDto | null
@@ -160,7 +160,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
             'faxId' => 'fax',
             'peeringContractId' => 'peeringContract',
             'countryId' => 'country',
-            'retailAccountId' => 'retailAccount',
+            'residentialDeviceId' => 'residentialDevice',
             'conditionalRouteId' => 'conditionalRoute'
         ];
     }
@@ -191,7 +191,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
             'fax' => $this->getFax(),
             'peeringContract' => $this->getPeeringContract(),
             'country' => $this->getCountry(),
-            'retailAccount' => $this->getRetailAccount(),
+            'residentialDevice' => $this->getResidentialDevice(),
             'conditionalRoute' => $this->getConditionalRoute()
         ];
     }
@@ -213,7 +213,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         $this->fax = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Fax\\Fax', $this->getFaxId());
         $this->peeringContract = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\PeeringContract\\PeeringContract', $this->getPeeringContractId());
         $this->country = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Country\\Country', $this->getCountryId());
-        $this->retailAccount = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\RetailAccount\\RetailAccount', $this->getRetailAccountId());
+        $this->residentialDevice = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\ResidentialDevice\\ResidentialDevice', $this->getResidentialDeviceId());
         $this->conditionalRoute = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\ConditionalRoute\\ConditionalRoute', $this->getConditionalRouteId());
     }
 
@@ -938,23 +938,23 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto $retailAccount
+     * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto $residentialDevice
      *
      * @return static
      */
-    public function setRetailAccount(\Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto $retailAccount = null)
+    public function setResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto $residentialDevice = null)
     {
-        $this->retailAccount = $retailAccount;
+        $this->residentialDevice = $residentialDevice;
 
         return $this;
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto
+     * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto
      */
-    public function getRetailAccount()
+    public function getResidentialDevice()
     {
-        return $this->retailAccount;
+        return $this->residentialDevice;
     }
 
     /**
@@ -962,21 +962,21 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
      *
      * @return static
      */
-    public function setRetailAccountId($id)
+    public function setResidentialDeviceId($id)
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto($id)
+            ? new \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto($id)
             : null;
 
-        return $this->setRetailAccount($value);
+        return $this->setResidentialDevice($value);
     }
 
     /**
      * @return integer | null
      */
-    public function getRetailAccountId()
+    public function getResidentialDeviceId()
     {
-        if ($dto = $this->getRetailAccount()) {
+        if ($dto = $this->getResidentialDevice()) {
             return $dto->getId();
         }
 

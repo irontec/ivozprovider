@@ -1,6 +1,6 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Model\RetailAccount;
+namespace Ivoz\Provider\Domain\Model\ResidentialDevice;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -8,10 +8,10 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
- * RetailAccountTrait
+ * ResidentialDeviceTrait
  * @codeCoverageIgnore
  */
-trait RetailAccountTrait
+trait ResidentialDeviceTrait
 {
     /**
      * @var integer
@@ -47,7 +47,7 @@ trait RetailAccountTrait
     public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto RetailAccountDto
+         * @var $dto ResidentialDeviceDto
          */
         $self = parent::fromDto($dto);
         if ($dto->getPsEndpoints()) {
@@ -72,7 +72,7 @@ trait RetailAccountTrait
     public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto RetailAccountDto
+         * @var $dto ResidentialDeviceDto
          */
         parent::updateFromDto($dto);
         if ($dto->getPsEndpoints()) {
@@ -86,7 +86,7 @@ trait RetailAccountTrait
 
     /**
      * @param int $depth
-     * @return RetailAccountDto
+     * @return ResidentialDeviceDto
      */
     public function toDto($depth = 0)
     {
@@ -111,7 +111,7 @@ trait RetailAccountTrait
      *
      * @param \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface $psEndpoint
      *
-     * @return RetailAccountTrait
+     * @return ResidentialDeviceTrait
      */
     public function addPsEndpoint(\Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface $psEndpoint)
     {
@@ -143,7 +143,7 @@ trait RetailAccountTrait
         foreach ($psEndpoints as $entity) {
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
-            $entity->setRetailAccount($this);
+            $entity->setResidentialDevice($this);
         }
         $updatedEntityKeys = array_keys($updatedEntities);
 
@@ -183,7 +183,7 @@ trait RetailAccountTrait
      *
      * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $ddi
      *
-     * @return RetailAccountTrait
+     * @return ResidentialDeviceTrait
      */
     public function addDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $ddi)
     {
@@ -215,7 +215,7 @@ trait RetailAccountTrait
         foreach ($ddis as $entity) {
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
-            $entity->setRetailAccount($this);
+            $entity->setResidentialDevice($this);
         }
         $updatedEntityKeys = array_keys($updatedEntities);
 

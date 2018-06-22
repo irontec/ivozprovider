@@ -123,7 +123,7 @@ trait RoutableTrait
             'queue'          => 'Queue',
             'voicemail'      => 'VoicemailUser',
             'extension'      => 'Extension',
-            'retail'         => 'RetailAccount',
+            'residential'    => 'ResidentialDevice',
             'conditional'    => 'ConditionalRoute',
             'fax'            => 'Fax'
         ];

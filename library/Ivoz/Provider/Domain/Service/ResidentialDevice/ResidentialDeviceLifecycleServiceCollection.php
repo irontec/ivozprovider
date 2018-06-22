@@ -1,6 +1,6 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Service\RetailAccount;
+namespace Ivoz\Provider\Domain\Service\ResidentialDevice;
 
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
@@ -8,11 +8,11 @@ use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
 /**
  * @codeCoverageIgnore
  */
-class RetailAccountLifecycleServiceCollection implements LifecycleServiceCollectionInterface
+class ResidentialDeviceLifecycleServiceCollection implements LifecycleServiceCollectionInterface
 {
     use LifecycleServiceCollectionTrait;
 
-    protected function addService(RetailAccountLifecycleEventHandlerInterface $service)
+    protected function addService(ResidentialDeviceLifecycleEventHandlerInterface $service)
     {
         $this->services[] = $service;
     }

@@ -66,6 +66,11 @@ abstract class CallForwardSettingAbstract
      */
     protected $numberCountry;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface
+     */
+    protected $residentialDevice;
+
 
     use ChangelogTrait;
 
@@ -162,6 +167,7 @@ abstract class CallForwardSettingAbstract
             ->setExtension($dto->getExtension())
             ->setVoiceMailUser($dto->getVoiceMailUser())
             ->setNumberCountry($dto->getNumberCountry())
+            ->setResidentialDevice($dto->getResidentialDevice())
         ;
 
         $self->sanitizeValues();
@@ -191,7 +197,8 @@ abstract class CallForwardSettingAbstract
             ->setUser($dto->getUser())
             ->setExtension($dto->getExtension())
             ->setVoiceMailUser($dto->getVoiceMailUser())
-            ->setNumberCountry($dto->getNumberCountry());
+            ->setNumberCountry($dto->getNumberCountry())
+            ->setResidentialDevice($dto->getResidentialDevice());
 
 
 
@@ -215,7 +222,8 @@ abstract class CallForwardSettingAbstract
             ->setUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto(self::getUser(), $depth))
             ->setExtension(\Ivoz\Provider\Domain\Model\Extension\Extension::entityToDto(self::getExtension(), $depth))
             ->setVoiceMailUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto(self::getVoiceMailUser(), $depth))
-            ->setNumberCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto(self::getNumberCountry(), $depth));
+            ->setNumberCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto(self::getNumberCountry(), $depth))
+            ->setResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice::entityToDto(self::getResidentialDevice(), $depth));
     }
 
     /**
@@ -233,7 +241,8 @@ abstract class CallForwardSettingAbstract
             'userId' => self::getUser() ? self::getUser()->getId() : null,
             'extensionId' => self::getExtension() ? self::getExtension()->getId() : null,
             'voiceMailUserId' => self::getVoiceMailUser() ? self::getVoiceMailUser()->getId() : null,
-            'numberCountryId' => self::getNumberCountry() ? self::getNumberCountry()->getId() : null
+            'numberCountryId' => self::getNumberCountry() ? self::getNumberCountry()->getId() : null,
+            'residentialDeviceId' => self::getResidentialDevice() ? self::getResidentialDevice()->getId() : null
         ];
     }
 
@@ -513,6 +522,30 @@ abstract class CallForwardSettingAbstract
     public function getNumberCountry()
     {
         return $this->numberCountry;
+    }
+
+    /**
+     * Set residentialDevice
+     *
+     * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice
+     *
+     * @return self
+     */
+    public function setResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice = null)
+    {
+        $this->residentialDevice = $residentialDevice;
+
+        return $this;
+    }
+
+    /**
+     * Get residentialDevice
+     *
+     * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface
+     */
+    public function getResidentialDevice()
+    {
+        return $this->residentialDevice;
     }
 
 

@@ -1,11 +1,11 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Model\RetailAccount;
+namespace Ivoz\Provider\Domain\Model\ResidentialDevice;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Doctrine\Common\Collections\Collection;
 
-interface RetailAccountInterface extends LoggableEntityInterface
+interface ResidentialDeviceInterface extends LoggableEntityInterface
 {
     /**
      * @codeCoverageIgnore
@@ -59,14 +59,14 @@ interface RetailAccountInterface extends LoggableEntityInterface
     public function getLanguageCode();
 
     /**
-     * Get Retail Account outgoingDdi
+     * Get Residential Device outgoingDdi
      * If no Ddi is assigned, retrieve company's default Ddi
      * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface or NULL
      */
     public function getOutgoingDdi();
 
     /**
-     * Get Ddi associated with this retail Account
+     * Get Ddi associated with this residential device
      *
      * @return DdiInterface
      */
@@ -354,7 +354,7 @@ interface RetailAccountInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface $psEndpoint
      *
-     * @return RetailAccountTrait
+     * @return ResidentialDeviceTrait
      */
     public function addPsEndpoint(\Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface $psEndpoint);
 
@@ -385,7 +385,7 @@ interface RetailAccountInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $ddi
      *
-     * @return RetailAccountTrait
+     * @return ResidentialDeviceTrait
      */
     public function addDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $ddi);
 

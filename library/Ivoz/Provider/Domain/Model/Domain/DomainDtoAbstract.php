@@ -38,9 +38,9 @@ abstract class DomainDtoAbstract implements DataTransferObjectInterface
     private $friends = null;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto[] | null
+     * @var \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto[] | null
      */
-    private $retailAccounts = null;
+    private $residentialDevices = null;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\Terminal\TerminalDto[] | null
@@ -83,7 +83,7 @@ abstract class DomainDtoAbstract implements DataTransferObjectInterface
             'description' => $this->getDescription(),
             'id' => $this->getId(),
             'friends' => $this->getFriends(),
-            'retailAccounts' => $this->getRetailAccounts(),
+            'residentialDevices' => $this->getResidentialDevices(),
             'terminals' => $this->getTerminals()
         ];
     }
@@ -104,12 +104,12 @@ abstract class DomainDtoAbstract implements DataTransferObjectInterface
             }
         }
 
-        if (!is_null($this->retailAccounts)) {
-            $items = $this->getRetailAccounts();
-            $this->retailAccounts = [];
+        if (!is_null($this->residentialDevices)) {
+            $items = $this->getResidentialDevices();
+            $this->residentialDevices = [];
             foreach ($items as $item) {
-                $this->retailAccounts[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\RetailAccount\\RetailAccount',
+                $this->residentialDevices[] = $transformer->transform(
+                    'Ivoz\\Provider\\Domain\\Model\\ResidentialDevice\\ResidentialDevice',
                     $item->getId() ?? $item
                 );
             }
@@ -137,9 +137,9 @@ abstract class DomainDtoAbstract implements DataTransferObjectInterface
             'Ivoz\\Provider\\Domain\\Model\\Friend\\Friend',
             $this->friends
         );
-        $this->retailAccounts = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\RetailAccount\\RetailAccount',
-            $this->retailAccounts
+        $this->residentialDevices = $transformer->transform(
+            'Ivoz\\Provider\\Domain\\Model\\ResidentialDevice\\ResidentialDevice',
+            $this->residentialDevices
         );
         $this->terminals = $transformer->transform(
             'Ivoz\\Provider\\Domain\\Model\\Terminal\\Terminal',
@@ -248,13 +248,13 @@ abstract class DomainDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param array $retailAccounts
+     * @param array $residentialDevices
      *
      * @return static
      */
-    public function setRetailAccounts($retailAccounts = null)
+    public function setResidentialDevices($residentialDevices = null)
     {
-        $this->retailAccounts = $retailAccounts;
+        $this->residentialDevices = $residentialDevices;
 
         return $this;
     }
@@ -262,9 +262,9 @@ abstract class DomainDtoAbstract implements DataTransferObjectInterface
     /**
      * @return array
      */
-    public function getRetailAccounts()
+    public function getResidentialDevices()
     {
-        return $this->retailAccounts;
+        return $this->residentialDevices;
     }
 
     /**

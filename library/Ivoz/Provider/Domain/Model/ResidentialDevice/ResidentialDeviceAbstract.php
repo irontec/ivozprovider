@@ -1,6 +1,6 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Model\RetailAccount;
+namespace Ivoz\Provider\Domain\Model\ResidentialDevice;
 
 use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
@@ -8,10 +8,10 @@ use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
 
 /**
- * RetailAccountAbstract
+ * ResidentialDeviceAbstract
  * @codeCoverageIgnore
  */
-abstract class RetailAccountAbstract
+abstract class ResidentialDeviceAbstract
 {
     /**
      * @var string
@@ -158,7 +158,7 @@ abstract class RetailAccountAbstract
     public function __toString()
     {
         return sprintf("%s#%s",
-            "RetailAccount",
+            "ResidentialDevice",
             $this->getId()
         );
     }
@@ -173,17 +173,17 @@ abstract class RetailAccountAbstract
 
     /**
      * @param null $id
-     * @return RetailAccountDto
+     * @return ResidentialDeviceDto
      */
     public static function createDto($id = null)
     {
-        return new RetailAccountDto($id);
+        return new ResidentialDeviceDto($id);
     }
 
     /**
      * @param EntityInterface|null $entity
      * @param int $depth
-     * @return RetailAccountDto|null
+     * @return ResidentialDeviceDto|null
      */
     public static function entityToDto(EntityInterface $entity = null, $depth = 0)
     {
@@ -191,7 +191,7 @@ abstract class RetailAccountAbstract
             return null;
         }
 
-        Assertion::isInstanceOf($entity, RetailAccountInterface::class);
+        Assertion::isInstanceOf($entity, ResidentialDeviceInterface::class);
 
         if ($depth < 1) {
             return static::createDto($entity->getId());
@@ -212,9 +212,9 @@ abstract class RetailAccountAbstract
     public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto RetailAccountDto
+         * @var $dto ResidentialDeviceDto
          */
-        Assertion::isInstanceOf($dto, RetailAccountDto::class);
+        Assertion::isInstanceOf($dto, ResidentialDeviceDto::class);
 
         $self = new static(
             $dto->getName(),
@@ -254,9 +254,9 @@ abstract class RetailAccountAbstract
     public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto RetailAccountDto
+         * @var $dto ResidentialDeviceDto
          */
-        Assertion::isInstanceOf($dto, RetailAccountDto::class);
+        Assertion::isInstanceOf($dto, ResidentialDeviceDto::class);
 
         $this
             ->setName($dto->getName())
@@ -288,7 +288,7 @@ abstract class RetailAccountAbstract
 
     /**
      * @param int $depth
-     * @return RetailAccountDto
+     * @return ResidentialDeviceDto
      */
     public function toDto($depth = 0)
     {

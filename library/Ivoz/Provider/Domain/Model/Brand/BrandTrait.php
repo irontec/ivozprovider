@@ -41,7 +41,7 @@ trait BrandTrait
     /**
      * @var Collection
      */
-    protected $retailAccounts;
+    protected $residentialDevices;
 
     /**
      * @var Collection
@@ -69,7 +69,7 @@ trait BrandTrait
         $this->services = new ArrayCollection();
         $this->urls = new ArrayCollection();
         $this->relFeatures = new ArrayCollection();
-        $this->retailAccounts = new ArrayCollection();
+        $this->residentialDevices = new ArrayCollection();
         $this->musicsOnHold = new ArrayCollection();
         $this->matchLists = new ArrayCollection();
         $this->outgoingRoutings = new ArrayCollection();
@@ -102,8 +102,8 @@ trait BrandTrait
             $self->replaceRelFeatures($dto->getRelFeatures());
         }
 
-        if ($dto->getRetailAccounts()) {
-            $self->replaceRetailAccounts($dto->getRetailAccounts());
+        if ($dto->getResidentialDevices()) {
+            $self->replaceResidentialDevices($dto->getResidentialDevices());
         }
 
         if ($dto->getMusicsOnHold()) {
@@ -147,8 +147,8 @@ trait BrandTrait
         if ($dto->getRelFeatures()) {
             $this->replaceRelFeatures($dto->getRelFeatures());
         }
-        if ($dto->getRetailAccounts()) {
-            $this->replaceRetailAccounts($dto->getRetailAccounts());
+        if ($dto->getResidentialDevices()) {
+            $this->replaceResidentialDevices($dto->getResidentialDevices());
         }
         if ($dto->getMusicsOnHold()) {
             $this->replaceMusicsOnHold($dto->getMusicsOnHold());
@@ -473,75 +473,75 @@ trait BrandTrait
     }
 
     /**
-     * Add retailAccount
+     * Add residentialDevice
      *
-     * @param \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount
+     * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice
      *
      * @return BrandTrait
      */
-    public function addRetailAccount(\Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount)
+    public function addResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice)
     {
-        $this->retailAccounts->add($retailAccount);
+        $this->residentialDevices->add($residentialDevice);
 
         return $this;
     }
 
     /**
-     * Remove retailAccount
+     * Remove residentialDevice
      *
-     * @param \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount
+     * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice
      */
-    public function removeRetailAccount(\Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount)
+    public function removeResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice)
     {
-        $this->retailAccounts->removeElement($retailAccount);
+        $this->residentialDevices->removeElement($residentialDevice);
     }
 
     /**
-     * Replace retailAccounts
+     * Replace residentialDevices
      *
-     * @param \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface[] $retailAccounts
+     * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface[] $residentialDevices
      * @return self
      */
-    public function replaceRetailAccounts(Collection $retailAccounts)
+    public function replaceResidentialDevices(Collection $residentialDevices)
     {
         $updatedEntities = [];
         $fallBackId = -1;
-        foreach ($retailAccounts as $entity) {
+        foreach ($residentialDevices as $entity) {
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
             $entity->setBrand($this);
         }
         $updatedEntityKeys = array_keys($updatedEntities);
 
-        foreach ($this->retailAccounts as $key => $entity) {
+        foreach ($this->residentialDevices as $key => $entity) {
             $identity = $entity->getId();
             if (in_array($identity, $updatedEntityKeys)) {
-                $this->retailAccounts->set($key, $updatedEntities[$identity]);
+                $this->residentialDevices->set($key, $updatedEntities[$identity]);
             } else {
-                $this->retailAccounts->remove($key);
+                $this->residentialDevices->remove($key);
             }
             unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
-            $this->addRetailAccount($entity);
+            $this->addResidentialDevice($entity);
         }
 
         return $this;
     }
 
     /**
-     * Get retailAccounts
+     * Get residentialDevices
      *
-     * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface[]
+     * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface[]
      */
-    public function getRetailAccounts(Criteria $criteria = null)
+    public function getResidentialDevices(Criteria $criteria = null)
     {
         if (!is_null($criteria)) {
-            return $this->retailAccounts->matching($criteria)->toArray();
+            return $this->residentialDevices->matching($criteria)->toArray();
         }
 
-        return $this->retailAccounts->toArray();
+        return $this->residentialDevices->toArray();
     }
 
     /**

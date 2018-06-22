@@ -185,6 +185,11 @@ abstract class VoicemailAbstract
      */
     protected $user;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface
+     */
+    protected $residentialDevice;
+
 
     use ChangelogTrait;
 
@@ -297,6 +302,7 @@ abstract class VoicemailAbstract
             ->setImapflags($dto->getImapflags())
             ->setStamp($dto->getStamp())
             ->setUser($dto->getUser())
+            ->setResidentialDevice($dto->getResidentialDevice())
         ;
 
         $self->sanitizeValues();
@@ -350,7 +356,8 @@ abstract class VoicemailAbstract
             ->setImapport($dto->getImapport())
             ->setImapflags($dto->getImapflags())
             ->setStamp($dto->getStamp())
-            ->setUser($dto->getUser());
+            ->setUser($dto->getUser())
+            ->setResidentialDevice($dto->getResidentialDevice());
 
 
 
@@ -398,7 +405,8 @@ abstract class VoicemailAbstract
             ->setImapport(self::getImapport())
             ->setImapflags(self::getImapflags())
             ->setStamp(self::getStamp())
-            ->setUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto(self::getUser(), $depth));
+            ->setUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto(self::getUser(), $depth))
+            ->setResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice::entityToDto(self::getResidentialDevice(), $depth));
     }
 
     /**
@@ -440,7 +448,8 @@ abstract class VoicemailAbstract
             'imapport' => self::getImapport(),
             'imapflags' => self::getImapflags(),
             'stamp' => self::getStamp(),
-            'userId' => self::getUser() ? self::getUser()->getId() : null
+            'userId' => self::getUser() ? self::getUser()->getId() : null,
+            'residentialDeviceId' => self::getResidentialDevice() ? self::getResidentialDevice()->getId() : null
         ];
     }
 
@@ -1390,6 +1399,30 @@ abstract class VoicemailAbstract
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set residentialDevice
+     *
+     * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice
+     *
+     * @return self
+     */
+    public function setResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice = null)
+    {
+        $this->residentialDevice = $residentialDevice;
+
+        return $this;
+    }
+
+    /**
+     * Get residentialDevice
+     *
+     * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface
+     */
+    public function getResidentialDevice()
+    {
+        return $this->residentialDevice;
     }
 
 

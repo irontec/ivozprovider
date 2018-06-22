@@ -1,8 +1,9 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Model\RetailAccount;
+namespace Ivoz\Provider\Domain\Model\ResidentialDevice;
 
-class RetailAccountDto extends RetailAccountDtoAbstract
+
+class ResidentialDeviceDto extends ResidentialDeviceDtoAbstract
 {
     public function toArray($hideSensitiveData = false)
     {
@@ -36,6 +37,5 @@ class RetailAccountDto extends RetailAccountDtoAbstract
 
         return $response;
     }
-}
-
+ }
 

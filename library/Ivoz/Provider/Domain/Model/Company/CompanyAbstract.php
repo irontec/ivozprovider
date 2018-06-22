@@ -14,7 +14,7 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 abstract class CompanyAbstract
 {
     /**
-     * comment: enum:vpbx|retail|wholesale
+     * comment: enum:vpbx|retail|wholesale|residential
      * @var string
      */
     protected $type = 'vpbx';
@@ -458,6 +458,7 @@ abstract class CompanyAbstract
           0 => 'vpbx',
           1 => 'retail',
           2 => 'wholesale',
+          3 => 'residential',
         ), 'typevalue "%s" is not an element of the valid values: %s');
 
         $this->type = $type;
