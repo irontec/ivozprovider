@@ -52,7 +52,7 @@ production:
           peeringContract: ${auth.isCompanyOperator}
           language: true
           queue: true
-          retailAccount: true
+          residentialDevice: true
           conditionalRoute: true
       fixedPositions: &dDIsFixedPositions_Link
         group0:
@@ -86,7 +86,7 @@ production:
             conferenceRoom: 1
             friendValue: 1
             queue: 1
-            retailAccount: 1
+            residentialDevice: 1
             conditionalRoute: 1
         group4:
           label: _("Additional configuration")

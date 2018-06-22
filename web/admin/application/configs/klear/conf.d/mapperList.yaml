@@ -91,8 +91,8 @@ mappers:
         modelFile: ExternalCallFilters,
         entity: 'Ivoz\\Provider\\Domain\\Model\\ExternalCallFilter\\ExternalCallFilter'
     }
-  - &ExternalCallFiltersRetail {
-        modelFile: ExternalCallFiltersRetail,
+  - &ExternalCallFiltersResidential {
+        modelFile: ExternalCallFiltersResidential,
         entity: 'Ivoz\\Provider\\Domain\\Model\\ExternalCallFilter\\ExternalCallFilter'
     }
   - &FaxesInOut {
@@ -231,12 +231,12 @@ mappers:
         modelFile: Recordings,
         entity: 'Ivoz\\Provider\\Domain\\Model\\Recording\\Recording'
     }
-  - &RetailAccounts {
-        modelFile: RetailAccounts,
-        entity: 'Ivoz\\Provider\\Domain\\Model\\RetailAccount\\RetailAccount'
+  - &ResidentialDevices {
+        modelFile: ResidentialDevices,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\ResidentialDevice\\ResidentialDevice'
     }
-  - &RetailClients {
-        modelFile: RetailClients,
+  - &ResidentialClients {
+        modelFile: ResidentialClients,
         entity: 'Ivoz\\Provider\\Domain\\Model\\Company\\Company'
   }
   - &RoutingPatternGroups {

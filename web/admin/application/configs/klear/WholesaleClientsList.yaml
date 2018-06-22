@@ -298,7 +298,7 @@ production:
       module: default
       controller: klear-custom-extra-auth
       action: emulate
-      class: ui-silk-cart-add
+      class: ui-silk-cart-go
       label: false
       labelOnEdit: false
       labelOnList: false

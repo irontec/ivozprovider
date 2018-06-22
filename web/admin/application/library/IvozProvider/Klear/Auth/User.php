@@ -74,7 +74,7 @@ class User extends \Klear_Model_UserAdvanced
         $this->companyName = $company->getName();
         $this->companyType = $company->getType();
         $this->companyVPBX = $company->getType() === Company::VPBX;
-        $this->companyRetail = $company->getType() === Company::RETAIL;
+        $this->companyResidential = $company->getType() === Company::RESIDENTIAL;
         $this->companyWholesale = $company->getType() === Company::WHOLESALE;
     }
 

@@ -299,7 +299,7 @@ production:
           relationProperty: company
           relatedProperty: feature
           related: \Ivoz\Provider\Domain\Model\Feature\Feature
-          filterClass: IvozProvider_Klear_Filter_RetailFeatures
+          filterClass: IvozProvider_Klear_Filter_ResidentialFeatures
           relatedFieldName:
             fields:
               - name${lang}

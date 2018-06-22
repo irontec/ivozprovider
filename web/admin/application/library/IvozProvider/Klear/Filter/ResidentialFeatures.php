@@ -6,12 +6,12 @@ use \Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrand;
 use \Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrandDto;
 
 /**
- * Class IvozProvider_Klear_Filter_Features
+ * Class IvozProvider_Klear_Filter_ResidentialFeatures
  *
  * Filter Features Multiselect to avoid selecting Features not enabled by the Brand
- * Filter Features Multiselect to avoid selecting Features not available to Retail Clients
+ * Filter Features Multiselect to avoid selecting Features not available to Residentials Clients
  */
-class IvozProvider_Klear_Filter_RetailFeatures implements KlearMatrix_Model_Field_Select_Filter_Interface
+class IvozProvider_Klear_Filter_ResidentialFeatures implements KlearMatrix_Model_Field_Select_Filter_Interface
 {
     protected $_condition = array();
     protected $_arguments = array();
@@ -39,6 +39,7 @@ class IvozProvider_Klear_Filter_RetailFeatures implements KlearMatrix_Model_Fiel
             Feature::CONFERENCES,
             Feature::BILLING,
             Feature::INVOICES,
+            Feature::RESIDENTIAL,
             Feature::RETAIL,
             Feature::WHOLESALE,
         );
@@ -47,7 +48,7 @@ class IvozProvider_Klear_Filter_RetailFeatures implements KlearMatrix_Model_Fiel
         foreach ($rels as $rel) {
             $featureId = $rel->getFeatureId();
 
-            // Ignore features not related with Retail Clients
+            // Ignore features not related with Residential Clients
             if (in_array($featureId, $excludedFeatures)) {
                 continue;
             }

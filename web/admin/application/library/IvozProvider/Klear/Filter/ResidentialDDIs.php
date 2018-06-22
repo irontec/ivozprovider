@@ -1,12 +1,12 @@
 <?php
 
 /**
- * Class IvozProvider_Klear_Filter_RetailDDIs
+ * Class IvozProvider_Klear_Filter_ResidentialDDIs
  *
- * Filter DDIs Listbox to only display DDIs assigned to the Retail Account being edited
+ * Filter DDIs Listbox to only display DDIs assigned to the Residential Device being edited
  *
  */
-class IvozProvider_Klear_Filter_RetailDDIs implements KlearMatrix_Model_Field_Select_Filter_Interface
+class IvozProvider_Klear_Filter_ResidentialDDIs implements KlearMatrix_Model_Field_Select_Filter_Interface
 {
     protected $_condition = array();
 
@@ -14,7 +14,7 @@ class IvozProvider_Klear_Filter_RetailDDIs implements KlearMatrix_Model_Field_Se
     {
         // Get current pk
         $pk = $routeDispatcher->getParam("pk", false);
-        $this->_condition[] = "self::retailAccount = '" . $pk . "'";
+        $this->_condition[] = "self::residentialDevice = '" . $pk . "'";
 
         return true;
     }

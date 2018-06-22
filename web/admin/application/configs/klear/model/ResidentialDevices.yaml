@@ -2,7 +2,7 @@
 #include ../conf.d/updateMethodHelp.yaml
 
 production:
-  entity: Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount
+  entity: Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice
   fields:
     company:
       title: ngettext('Company', 'Companies', 1)
@@ -107,7 +107,7 @@ production:
         data: mapper
         config:
           entity: \Ivoz\Provider\Domain\Model\Ddi\Ddi
-          filterClass: IvozProvider_Klear_Filter_RetailDDIs
+          filterClass: IvozProvider_Klear_Filter_ResidentialDDIs
           fieldName:
             fields:
               - ddie164
@@ -223,14 +223,14 @@ production:
       dirty: true
       source:
         class: IvozProvider_Klear_Ghost_RegisterStatus
-        method: getRetailAccountStatusIcon
+        method: getResidentialDeviceStatusIcon
     status:
       title: _('Status')
       type: ghost
       dirty: true
       source:
         class: IvozProvider_Klear_Ghost_RegisterStatus
-        method: getRetailAccountStatus
+        method: getResidentialDeviceStatus
     transformationRuleSet:
       title: ngettext('Numeric transformation', 'Numeric transformations', 1)
       type: select

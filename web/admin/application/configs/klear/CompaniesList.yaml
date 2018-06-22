@@ -347,7 +347,7 @@ production:
       module: default
       controller: klear-custom-extra-auth
       action: emulate
-      class: ui-silk-building-add
+      class: ui-silk-building-go
       label: false
       labelOnEdit: false
       labelOnList: false

@@ -82,7 +82,7 @@ class IvozProvider_Klear_Filter_RouteTypes implements KlearMatrix_Model_Field_Se
         }
 
         if ($companyDto->getType() === Company::VPBX) {
-            $excludedRoutes[] = 'retailAccount';
+            $excludedRoutes[] = 'residential';
         } else {
             $excludedRoutes[] = 'user';
             $excludedRoutes[] = 'ivr';

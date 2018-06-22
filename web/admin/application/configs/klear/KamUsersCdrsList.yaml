@@ -25,14 +25,14 @@ production:
           callidHash: true
           user: true
           friend: true
-          retailAccount: ${auth.companyVPBX}
+          residentialDevice: ${auth.companyVPBX}
           direction: ${auth.companyVPBX}
           brand: true
           callid: true
           xcallid: true
         order:
           startTime: true
-          retailAccount: true
+          residentialDevice: true
           direction: true
           caller: true
           callee: true
@@ -59,7 +59,7 @@ production:
           brand: true
           user: true
           friend: true
-          retailAccount: ${auth.companyVPBX}
+          residentialDevice: ${auth.companyVPBX}
           direction: ${auth.companyVPBX}
           company: true
           endTime: true
@@ -68,7 +68,7 @@ production:
           duration: true
           caller: true
           callee: true
-          retailAccount: true
+          residentialDevice: true
           direction: true
           callid: true
           callidHash: true
@@ -83,7 +83,7 @@ production:
             endTime: 6
             caller: 6
             callee: 6
-            retailAccount: 6
+            residentialDevice: 6
             direction: 6
         group2:
           label: _("Identify Call")

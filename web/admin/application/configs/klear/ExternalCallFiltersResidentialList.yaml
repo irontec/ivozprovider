@@ -6,13 +6,13 @@
 production:
   main:
     module: klearMatrix
-    defaultScreen: externalCallFiltersRetailList_screen
-  screens: &externalCallFiltersRetail_screensLink
-    externalCallFiltersRetailList_screen: &externalCallFiltersRetailList_screenLink
+    defaultScreen: externalCallFiltersResidentialList_screen
+  screens: &externalCallFiltersResidential_screensLink
+    externalCallFiltersResidentialList_screen: &externalCallFiltersResidentialList_screenLink
       controller: list
       pagination:
         items: 25
-      <<: *ExternalCallFiltersRetail
+      <<: *ExternalCallFiltersResidential
       class: ui-silk-arrow-branch
       title: _("List of %s %2s", ngettext('External call filter', 'External call filters', 0), "[format| (%parent%)]")
       info:
@@ -24,11 +24,11 @@ production:
         options:
           title: _("Options")
           screens:
-            externalCallFiltersRetailEdit_screen: true
+            externalCallFiltersResidentialEdit_screen: true
           dialogs:
-            externalCallFiltersRetailDel_dialog: true
-          default: externalCallFiltersRetailEdit_screen
-        blacklist: &externalCallFiltersRetail_blacklistLink
+            externalCallFiltersResidentialDel_dialog: true
+          default: externalCallFiltersResidentialEdit_screen
+        blacklist: &externalCallFiltersResidential_blacklistLink
           company: false
           welcomeLocution: true
           holidayLocution: true
@@ -50,17 +50,17 @@ production:
           ExternalCallFilterRelSchedules: true
           ExternalCallFilterWhiteLists: true
           ExternalCallFilterBlackLists: true
-        order: &externalCallFiltersRetail_orderLink
+        order: &externalCallFiltersResidential_orderLink
           company: true
           name: true
       options:
         title: _("Options")
         screens:
-          externalCallFiltersRetailNew_screen: true
+          externalCallFiltersResidentialNew_screen: true
         dialogs:
-          externalCallFiltersRetailDel_dialog: true
-    externalCallFiltersRetailNew_screen: &externalCallFiltersRetailNew_screenLink
-      <<: *ExternalCallFiltersRetail
+          externalCallFiltersResidentialDel_dialog: true
+    externalCallFiltersResidentialNew_screen: &externalCallFiltersResidentialNew_screenLink
+      <<: *ExternalCallFiltersResidential
       controller: new
       class: ui-silk-add
       label: true
@@ -72,9 +72,9 @@ production:
         <<: *forcedCompany
       fields:
         blacklist:
-          <<: *externalCallFiltersRetail_blacklistLink
-    externalCallFiltersRetailEdit_screen: &externalCallFiltersRetailEdit_screenLink
-      <<: *ExternalCallFiltersRetail
+          <<: *externalCallFiltersResidential_blacklistLink
+    externalCallFiltersResidentialEdit_screen: &externalCallFiltersResidentialEdit_screenLink
+      <<: *ExternalCallFiltersResidential
       controller: edit
       class: ui-silk-pencil
       label: false
@@ -83,10 +83,10 @@ production:
         <<: *forcedCompany
       fields:
         blacklist:
-          <<: *externalCallFiltersRetail_blacklistLink
-  dialogs: &externalCallFiltersRetail_dialogsLink
-    externalCallFiltersRetailDel_dialog: &externalCallFiltersRetailDel_dialogLink
-      <<: *ExternalCallFiltersRetail
+          <<: *externalCallFiltersResidential_blacklistLink
+  dialogs: &externalCallFiltersResidential_dialogsLink
+    externalCallFiltersResidentialDel_dialog: &externalCallFiltersResidentialDel_dialogLink
+      <<: *ExternalCallFiltersResidential
       controller: delete
       class: ui-silk-bin
       labelOption: false

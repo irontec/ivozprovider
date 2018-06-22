@@ -5,23 +5,23 @@
 production:
   main:
     module: klearMatrix
-    defaultScreen: retailAccountsList_screen
-  screens: &retailAccounts_screensLink
-    retailAccountsList_screen: &retailAccountsList_screenLink
+    defaultScreen: residentialDevicesList_screen
+  screens: &residentialDevices_screensLink
+    residentialDevicesList_screen: &residentialDevicesList_screenLink
       controller: list
       pagination:
         items: 25
-      <<: *RetailAccounts
+      <<: *ResidentialDevices
       class: ui-silk-text-list-bullets
-      title: _("List of %s %2s", ngettext('Retail Account', 'Retail Accounts', 0), "[format| (%parent%)]")
+      title: _("List of %s %2s", ngettext('Residential Device', 'Residential Devices', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/retail/accounts.html"
+        href: "/doc/${lang}/residential/accounts.html"
       forcedValues:
         <<: *forcedCompany
         <<: *forcedBrand
       fields:
-        blacklist: &retailAccounts_blacklistLink
+        blacklist: &residentialDevices_blacklistLink
           transport: true
           authNeeded: true
           password: true
@@ -48,24 +48,24 @@ production:
         options:
           title: _("Options")
           screens:
-            retailAccountsEdit_screen: ${auth.canSeeBrand}
+            residentialDevicesEdit_screen: ${auth.canSeeBrand}
           dialogs:
-            retailAccountsDel_dialog: ${auth.canSeeBrand}
-          default: retailAccountsEdit_screen
+            residentialDevicesDel_dialog: ${auth.canSeeBrand}
+          default: residentialDevicesEdit_screen
       options:
         title: _("Options")
         screens:
-          retailAccountsNew_screen: ${auth.canSeeBrand}
+          residentialDevicesNew_screen: ${auth.canSeeBrand}
         dialogs:
-          retailAccountsDel_dialog: ${auth.canSeeBrand}
+          residentialDevicesDel_dialog: ${auth.canSeeBrand}
 
-    retailAccountsNew_screen: &retailAccountsNew_screenLink
-      <<: *RetailAccounts
+    residentialDevicesNew_screen: &residentialDevicesNew_screenLink
+      <<: *ResidentialDevices
       controller: new
       class: ui-silk-add
       label: true
       multiInstance: true
-      title: _("Add %s", ngettext('Retail Account', 'Retail Accounts', 1), "[format| (%parent%)]")
+      title: _("Add %s", ngettext('Residential Device', 'Residential Devices', 1), "[format| (%parent%)]")
       scripts:
         module: default
         name: jquery.passwordgennew.js
@@ -74,7 +74,7 @@ production:
         <<: *forcedCompany
         <<: *forcedBrand
       fields:
-        blacklist: &retailAccounts_blacklistLink
+        blacklist: &residentialDevices_blacklistLink
           domain: true
           directMediaMethod: true
           updateCallerid: true
@@ -83,7 +83,7 @@ production:
           disallow: true
           status: true
           statusIcon: true
-        order: &retailAccounts_orderLink
+        order: &residentialDevices_orderLink
           name: true
           description: true
           priority: true
@@ -97,7 +97,7 @@ production:
           allow: true
           fromDomain: true
           status: true
-      fixedPositions: &retailAccounts_FixedPositionsLink
+      fixedPositions: &residentialDevices_FixedPositionsLink
         group0:
           label: _("Basic Configuration")
           colsPerRow: 12
@@ -129,20 +129,20 @@ production:
             allow: 2
             fromDomain: 2
 
-    retailAccountsEdit_screen: &retailAccountsEdit_screenLink
-      <<: *RetailAccounts
+    residentialDevicesEdit_screen: &residentialDevicesEdit_screenLink
+      <<: *ResidentialDevices
       controller: edit
       class: ui-silk-pencil
       label: false
-      labelOnPostAction: _("Edit %s %2s", ngettext('Retail Account', 'Retail Accounts', 1), "[format| (%item%)]")
-      title: _("Edit %s %2s", ngettext('Retail Account', 'Retail Accounts', 1), "[format| (%item%)]")
+      labelOnPostAction: _("Edit %s %2s", ngettext('Residential Device', 'Residential Devices', 1), "[format| (%item%)]")
+      title: _("Edit %s %2s", ngettext('Residential Device', 'Residential Devices', 1), "[format| (%item%)]")
       scripts:
         module: default
         name: jquery.passwordgenedit.js
       plugin: passwordgen
       fields:
         order:
-          <<: *retailAccounts_orderLink
+          <<: *residentialDevices_orderLink
         blacklist:
           domain: true
           directMediaMethod: true
@@ -152,26 +152,26 @@ production:
           disallow: true
           statusIcon: true
       fixedPositions:
-          <<: *retailAccounts_FixedPositionsLink
+          <<: *residentialDevices_FixedPositionsLink
       forcedValues:
         <<: *forcedCompany
         <<: *forcedBrand
 
-  dialogs: &retailAccounts_dialogsLink
-    retailAccountsDel_dialog: &retailAccountsDel_dialogLink
-      <<: *RetailAccounts
+  dialogs: &residentialDevices_dialogsLink
+    residentialDevicesDel_dialog: &residentialDevicesDel_dialogLink
+      <<: *ResidentialDevices
       controller: delete
       class: ui-silk-bin
       labelOption: false
-      title: _("Delete %s", ngettext('Retail Account', 'Retail Accounts', 1))
-      description: _("Do you want to delete this %s?", ngettext('Retail Account', 'Retail Accounts', 1))
-      message: _("%s successfully deleted.", ngettext('Retail Account', 'Retail Accounts', 1))
+      title: _("Delete %s", ngettext('Residential Device', 'Residential Devices', 1))
+      description: _("Do you want to delete this %s?", ngettext('Residential Device', 'Residential Devices', 1))
+      message: _("%s successfully deleted.", ngettext('Residential Device', 'Residential Devices', 1))
       multiItem: 1
       labelOnList: 1
 
   commands:
     generatePassword_command:
-      <<: *RetailAccounts
+      <<: *ResidentialDevices
       title: "Generate new secure password"
       class: ui-silk-arrow-refresh
       module: default

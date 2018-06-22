@@ -101,6 +101,7 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
                         case 'vpbx': $icon = "building"; break;
                         case 'retail': $icon = "basket"; break;
                         case 'wholesale': $icon = "cart"; break;
+                        case 'residential': $icon = "house"; break;
                     }
                     $html .= '<option data-subtype="'.$option->getType()
                     .'" data-icon="ui-silk inline ui-silk-'.$icon
@@ -208,7 +209,7 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
                 $type = "brand";
                 $entity = Brand::class;
                 break;
-            case "RetailClientsList":
+            case "ResidentialClientsList":
             case "CompaniesList":
             case "WholesaleClientsList":
                 $type = "company";

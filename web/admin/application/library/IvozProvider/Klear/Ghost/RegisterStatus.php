@@ -6,7 +6,7 @@ use Ivoz\Kam\Domain\Model\UsersLocation\UsersLocationDto;
 use Ivoz\Provider\Domain\Model\Domain\Domain;
 use Ivoz\Provider\Domain\Model\Domain\DomainDto;
 use Ivoz\Provider\Domain\Model\Friend\FriendDto;
-use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto;
+use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalDto;
 
 class IvozProvider_Klear_Ghost_RegisterStatus extends KlearMatrix_Model_Field_Ghost_Abstract
@@ -64,12 +64,12 @@ class IvozProvider_Klear_Ghost_RegisterStatus extends KlearMatrix_Model_Field_Gh
     }
 
     /**
-     * Get Register Status for Retail Accounts
-     * @param RetailAccountDto $model
+     * Get Register Status for Residential Devices
+     * @param ResidentialDeviceDto $model
      * @return string HTML code to display SIP register status icon
      * @throws Zend_Exception
      */
-    public function getRetailAccountStatusIcon($model)
+    public function getResidentialDeviceStatusIcon($model)
     {
         $registerStatus = $this->getDirectConnectivityStatus($model);
         if (empty($registerStatus)) {
@@ -79,12 +79,12 @@ class IvozProvider_Klear_Ghost_RegisterStatus extends KlearMatrix_Model_Field_Gh
     }
 
     /**
-     * Get Register Status for Retail Accounts
-     * @param RetailAccountDto $model
+     * Get Register Status for Residential Devices
+     * @param ResidentialDeviceDto $model
      * @return string HTML code to display SIP register status
      * @throws Zend_Exception
      */
-    public function getRetailAccountStatus($model)
+    public function getResidentialDeviceStatus($model)
     {
         $registerStatus = $this->getDirectConnectivityStatus($model);
         if (empty($registerStatus)) {
@@ -95,7 +95,7 @@ class IvozProvider_Klear_Ghost_RegisterStatus extends KlearMatrix_Model_Field_Gh
 
     /**
      * Check if entity has direct connectivity enabled
-     * @param FriendDto|RetailAccountDto $model
+     * @param FriendDto|ResidentialDeviceDto $model
      * @return string HTML code to display SIP register status or empty string
      */
     private function getDirectConnectivityStatus($model)
@@ -110,7 +110,7 @@ class IvozProvider_Klear_Ghost_RegisterStatus extends KlearMatrix_Model_Field_Gh
     /**
      * Get Register Status from UsersLocation Table
      *
-     * @param TerminalDto|FriendDto|RetailAccountDto $model
+     * @param TerminalDto|FriendDto|ResidentialDeviceDto $model
      * @return string HTML code to display SIP register status icon
      * @throws Zend_Exception
      */
@@ -154,7 +154,7 @@ class IvozProvider_Klear_Ghost_RegisterStatus extends KlearMatrix_Model_Field_Gh
     /**
      * Get Register Status from UsersLocation Table
      *
-     * @param TerminalDto|FriendDto|RetailAccountDto $model
+     * @param TerminalDto|FriendDto|ResidentialDeviceDto $model
      * @return string HTML code to display SIP register status
      * @throws Zend_Exception
      */
