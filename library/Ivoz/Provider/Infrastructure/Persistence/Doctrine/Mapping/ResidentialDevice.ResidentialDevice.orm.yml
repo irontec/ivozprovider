@@ -1,7 +1,7 @@
-Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount:
-  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\RetailAccountDoctrineRepository
+Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\ResidentialDeviceDoctrineRepository
   type: entity
-  table: RetailAccounts
+  table: ResidentialDevices
   id:
     id:
       type: integer
@@ -14,7 +14,7 @@ Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount:
   oneToMany:
     psEndpoints:
       targetEntity: Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface
-      mappedBy: retailAccount
+      mappedBy: residentialDevice
     ddis:
       targetEntity: Ivoz\Provider\Domain\Model\Ddi\DdiInterface
-      mappedBy: retailAccount
+      mappedBy: residentialDevice

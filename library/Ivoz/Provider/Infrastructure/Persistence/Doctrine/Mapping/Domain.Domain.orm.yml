@@ -15,8 +15,8 @@ Ivoz\Provider\Domain\Model\Domain\Domain:
     friends:
       targetEntity: Ivoz\Provider\Domain\Model\Friend\FriendInterface
       mappedBy: domain
-    retailAccounts:
-      targetEntity: Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface
+    residentialDevices:
+      targetEntity: Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface
       mappedBy: domain
     terminals:
       targetEntity: Ivoz\Provider\Domain\Model\Terminal\TerminalInterface

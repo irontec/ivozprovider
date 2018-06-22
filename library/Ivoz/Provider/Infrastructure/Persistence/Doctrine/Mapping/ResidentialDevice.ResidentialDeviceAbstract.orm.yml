@@ -1,7 +1,7 @@
-Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountAbstract:
+Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceAbstract:
   type: mappedSuperclass
   uniqueConstraints:
-    retailAccount_name_brand:
+    residentialDevice_name_brand:
       columns:
       - name
       - brandId
@@ -114,7 +114,7 @@ Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountAbstract:
       cascade: {  }
       fetch: LAZY
       mappedBy: null
-      inversedBy: retailAccounts
+      inversedBy: residentialDevices
       joinColumns:
         brandId:
           referencedColumnName: id
@@ -126,7 +126,7 @@ Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountAbstract:
       cascade: {  }
       fetch: LAZY
       mappedBy: null
-      inversedBy: retailAccounts
+      inversedBy: residentialDevices
       joinColumns:
         domainId:
           domainId: id
