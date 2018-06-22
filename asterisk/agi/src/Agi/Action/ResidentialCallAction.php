@@ -3,10 +3,10 @@
 namespace Agi\Action;
 
 use Agi\Wrapper;
-use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
+use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
 
 
-class RetailCallAction
+class ResidentialCallAction
 {
     /**
      * @var Wrapper
@@ -14,12 +14,12 @@ class RetailCallAction
     protected $agi;
 
     /**
-     * @var RetailAccountInterface
+     * @var ResidentialDeviceInterface
      */
-    protected $retailAccount;
+    protected $residentialDevice;
 
     /**
-     * RetailCallAction constructor.
+     * ResidentialCallAction constructor.
      * @param Wrapper $agi
      */
     public function __construct(
@@ -30,33 +30,33 @@ class RetailCallAction
     }
 
     /**
-     * @param RetailAccountInterface|null $retailAccount
+     * @param ResidentialDeviceInterface|null $residentialDevice
      * @return $this
      */
-    public function setRetailAccount(RetailAccountInterface $retailAccount = null)
+    public function setResidentialDevice(ResidentialDeviceInterface $residentialDevice = null)
     {
-        $this->retailAccount = $retailAccount;
+        $this->residentialDevice = $residentialDevice;
         return $this;
     }
 
     public function process()
     {
         // Local variables to improve readability
-        $retailAccount = $this->retailAccount;
+        $residentialDevice = $this->residentialDevice;
 
-        if (is_null($retailAccount)) {
-            $this->agi->error("Retail Account is not properly defined. Check configuration.");
+        if (is_null($residentialDevice)) {
+            $this->agi->error("Residential Device is not properly defined. Check configuration.");
             return;
         }
 
-        // Transform destination to retail preferred format
+        // Get dialed number
         $number =  $this->agi->getExtension();
 
         // Some verbose dolan pls
-        $this->agi->notice("Preparing call to %s through account %s", $number, $retailAccount);
+        $this->agi->notice("Preparing call to %s through account %s", $number, $residentialDevice);
 
-        // Get retail account endpoint
-        $endpointName = $retailAccount->getSorcery();
+        // Get device endpoint
+        $endpointName = $residentialDevice->getSorcery();
 
         // Configure Dial options
         $options = "";

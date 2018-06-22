@@ -5,7 +5,6 @@ namespace Helpers;
 use Assert\Assertion;
 use Doctrine\ORM\EntityManagerInterface;
 use Ivoz\Provider\Domain\Model\Domain\Domain;
-use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
 use Ivoz\Provider\Domain\Model\Terminal\Terminal;
 
 class EndpointResolver
@@ -151,10 +150,10 @@ class EndpointResolver
 
     /**
      * @param $endpointName
-     * @return RetailAccountInterface|null
+     * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface
      * @throws \Assert\AssertionFailedException
      */
-    public function getRetailFromEndpoint($endpointName)
+    public function getResidentialFromEndpoint($endpointName)
     {
         /** @var \Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface $endpoint */
         $endpoint = $this->getEndpointFromName($endpointName);
@@ -164,15 +163,15 @@ class EndpointResolver
             sprintf('No endpoint found for "%s".', $endpointName)
         );
 
-        /** @var \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retail */
-        $retail = $endpoint->getRetailAccount();
+        /** @var \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residential */
+        $residential = $endpoint->getResidentialDevice();
 
         Assertion::notNull(
-            $retail,
-            sprintf('Endpoint "%s" has no retail associated.', $endpointName)
+            $residential,
+            sprintf('Endpoint "%s" has no residential associated.', $endpointName)
         );
 
-        return $retail;
+        return $residential;
     }
 
 }

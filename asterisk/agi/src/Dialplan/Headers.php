@@ -64,6 +64,7 @@ class Headers extends RouteHandlerAbstract
         $endpoint = $this->endpointResolver->getEndpointFromName($this->agi->getEndpoint());
         if (!empty($endpoint)) {
             $terminal = $endpoint->getTerminal();
+            $exten = $this->agi->getExtension();
             if (!is_null($terminal)) {
                 /** @var UserInterface $user */
                 $user = $terminal->getUser();
@@ -71,13 +72,13 @@ class Headers extends RouteHandlerAbstract
             }
             $friend = $endpoint->getFriend();
             if (!is_null($friend)) {
-                $this->agi->setSIPHeader("X-Info-Callee", $this->agi->getExtension());
+                $this->agi->setSIPHeader("X-Info-Callee", $exten);
                 $this->agi->setSIPHeader("X-Info-Location", $friend->getRequestURI($exten));
             }
-            $retail = $endpoint->getRetailAccount();
-            if (!is_null($retail)) {
-                $this->agi->setSIPHeader("X-Info-Callee", $this->agi->getExtension());
-                $this->agi->setSIPHeader("X-Info-Location", $retail->getRequestURI($exten));
+            $resisdential = $endpoint->getResidentialDevice();
+            if (!is_null($resisdential)) {
+                $this->agi->setSIPHeader("X-Info-Callee", $exten);
+                $this->agi->setSIPHeader("X-Info-Location", $resisdential->getRequestURI($exten));
 
             }
 

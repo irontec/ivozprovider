@@ -2,13 +2,13 @@
 
 namespace Dialplan;
 
-use Agi\Action\ExternalRetailCallAction;
+use Agi\Action\ExternalResidentialCallAction;
 use Agi\ChannelInfo;
 use Agi\Wrapper;
 use Helpers\EndpointResolver;
 use RouteHandlerAbstract;
 
-class Retailers extends RouteHandlerAbstract
+class Residentials extends RouteHandlerAbstract
 {
     /**
      * @var Wrapper
@@ -26,33 +26,33 @@ class Retailers extends RouteHandlerAbstract
     protected $endpointResolver;
 
     /**
-     * @var ExternalRetailCallAction
+     * @var ExternalResidentialCallAction
      */
-    protected $externalRetailCallAction;
+    protected $externalResidentialCallAction;
 
     /**
-     * Retails constructor.
+     * Residentials constructor.
      *
      * @param Wrapper $agi
      * @param ChannelInfo $channelInfo
      * @param EndpointResolver $endpointResolver
-     * @param ExternalRetailCallAction $externalRetailCallAction
+     * @param ExternalResidentialCallAction $externalResidentialCallAction
      */
     public function __construct(
         Wrapper $agi,
         ChannelInfo $channelInfo,
         EndpointResolver $endpointResolver,
-        ExternalRetailCallAction $externalRetailCallAction
+        ExternalResidentialCallAction $externalResidentialCallAction
     )
     {
         $this->agi = $agi;
         $this->channelInfo = $channelInfo;
         $this->endpointResolver = $endpointResolver;
-        $this->externalRetailCallAction = $externalRetailCallAction;
+        $this->externalResidentialCallAction = $externalResidentialCallAction;
     }
 
     /**
-     * Outgoing calls from retail caccounts
+     * Outgoing calls from residential devices
      *
      * @throws \Assert\AssertionFailedException
      */
@@ -61,11 +61,11 @@ class Retailers extends RouteHandlerAbstract
         // Get identified Enpoint name
         $endpointName = $this->agi->getEndpoint();
 
-        // Get retail from the endpoint.
-        $retail = $this->endpointResolver->getRetailFromEndpoint($endpointName);
+        // Get residential from the endpoint.
+        $residential = $this->endpointResolver->getResidentialFromEndpoint($endpointName);
 
         // Set Company/Brand/Generic Music class
-        $company = $retail->getCompany();
+        $company = $residential->getCompany();
         $this->agi->setVariable("__COMPANYID", $company->getId());
 
         // Get call destination
@@ -75,18 +75,13 @@ class Retailers extends RouteHandlerAbstract
         $this->agi->setVariable("_CALL_ID", $this->agi->getCallId());
 
         // Set User as the caller
-        $this->channelInfo->setChannelCaller($retail);
+        $this->channelInfo->setChannelCaller($residential);
 
         // Some feedback for asterisk cli
-        $this->agi->notice(
-            "Processing outgoing call from Retail account \e[0;36m%s [retail%d]\e[0;93m to number %s",
-            $retail->getName(),
-            $retail->getId(),
-            $exten
-        );
+        $this->agi->notice("Processing outgoing call from \e[0;36m%s\e[0;93m to number %s", $residential, $exten);
 
-        // All retail calls are handled as external
-        $this->externalRetailCallAction
+        // All residential calls are handled as external
+        $this->externalResidentialCallAction
             ->setDestination($exten)
             ->process();
     }
