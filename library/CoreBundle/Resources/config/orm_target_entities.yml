@@ -103,6 +103,10 @@ doctrine:
         Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUser
       Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface:
         Ivoz\Provider\Domain\Model\Invoice\Invoice
+      Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface:
+        Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequence
+      Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface:
+        Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceScheduler
       Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface:
         Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplate
       Ivoz\Provider\Domain\Model\IvrEntry\IvrEntryInterface:
