@@ -69,15 +69,19 @@ abstract class InvoiceAbstract
      */
     protected $company;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface
+     */
+    protected $numberSequence;
+
 
     use ChangelogTrait;
 
     /**
      * Constructor
      */
-    protected function __construct($number, Pdf $pdf)
+    protected function __construct(Pdf $pdf)
     {
-        $this->setNumber($number);
         $this->setPdf($pdf);
     }
 
@@ -151,11 +155,11 @@ abstract class InvoiceAbstract
         );
 
         $self = new static(
-            $dto->getNumber(),
             $pdf
         );
 
         $self
+            ->setNumber($dto->getNumber())
             ->setInDate($dto->getInDate())
             ->setOutDate($dto->getOutDate())
             ->setTotal($dto->getTotal())
@@ -165,6 +169,7 @@ abstract class InvoiceAbstract
             ->setInvoiceTemplate($dto->getInvoiceTemplate())
             ->setBrand($dto->getBrand())
             ->setCompany($dto->getCompany())
+            ->setNumberSequence($dto->getNumberSequence())
         ;
 
         $self->sanitizeValues();
@@ -201,7 +206,8 @@ abstract class InvoiceAbstract
             ->setPdf($pdf)
             ->setInvoiceTemplate($dto->getInvoiceTemplate())
             ->setBrand($dto->getBrand())
-            ->setCompany($dto->getCompany());
+            ->setCompany($dto->getCompany())
+            ->setNumberSequence($dto->getNumberSequence());
 
 
 
@@ -228,7 +234,8 @@ abstract class InvoiceAbstract
             ->setPdfBaseName(self::getPdf()->getBaseName())
             ->setInvoiceTemplate(\Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplate::entityToDto(self::getInvoiceTemplate(), $depth))
             ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
-            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth));
+            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
+            ->setNumberSequence(\Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequence::entityToDto(self::getNumberSequence(), $depth));
     }
 
     /**
@@ -249,7 +256,8 @@ abstract class InvoiceAbstract
             'pdfBaseName' => self::getPdf()->getBaseName(),
             'invoiceTemplateId' => self::getInvoiceTemplate() ? self::getInvoiceTemplate()->getId() : null,
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null
+            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
+            'numberSequenceId' => self::getNumberSequence() ? self::getNumberSequence()->getId() : null
         ];
     }
 
@@ -263,10 +271,11 @@ abstract class InvoiceAbstract
      *
      * @return self
      */
-    public function setNumber($number)
+    public function setNumber($number = null)
     {
-        Assertion::notNull($number, 'number value "%s" is null, but non null value was expected.');
-        Assertion::maxLength($number, 30, 'number value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        if (!is_null($number)) {
+            Assertion::maxLength($number, 30, 'number value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        }
 
         $this->number = $number;
 
@@ -539,6 +548,30 @@ abstract class InvoiceAbstract
     public function getCompany()
     {
         return $this->company;
+    }
+
+    /**
+     * Set numberSequence
+     *
+     * @param \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface $numberSequence
+     *
+     * @return self
+     */
+    public function setNumberSequence(\Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface $numberSequence = null)
+    {
+        $this->numberSequence = $numberSequence;
+
+        return $this;
+    }
+
+    /**
+     * Get numberSequence
+     *
+     * @return \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface
+     */
+    public function getNumberSequence()
+    {
+        return $this->numberSequence;
     }
 
     /**

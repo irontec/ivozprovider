@@ -83,6 +83,11 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     private $company;
 
     /**
+     * @var \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceDto | null
+     */
+    private $numberSequence;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoiceDto[] | null
      */
     private $relFixedCosts = null;
@@ -116,7 +121,8 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
             'pdf' => ['fileSize','mimeType','baseName'],
             'invoiceTemplateId' => 'invoiceTemplate',
             'brandId' => 'brand',
-            'companyId' => 'company'
+            'companyId' => 'company',
+            'numberSequenceId' => 'numberSequence'
         ];
     }
 
@@ -142,6 +148,7 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
             'invoiceTemplate' => $this->getInvoiceTemplate(),
             'brand' => $this->getBrand(),
             'company' => $this->getCompany(),
+            'numberSequence' => $this->getNumberSequence(),
             'relFixedCosts' => $this->getRelFixedCosts()
         ];
     }
@@ -154,6 +161,7 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
         $this->invoiceTemplate = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\InvoiceTemplate\\InvoiceTemplate', $this->getInvoiceTemplateId());
         $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
         $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
+        $this->numberSequence = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\InvoiceNumberSequence\\InvoiceNumberSequence', $this->getNumberSequenceId());
         if (!is_null($this->relFixedCosts)) {
             $items = $this->getRelFixedCosts();
             $this->relFixedCosts = [];
@@ -530,6 +538,52 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     public function getCompanyId()
     {
         if ($dto = $this->getCompany()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceDto $numberSequence
+     *
+     * @return static
+     */
+    public function setNumberSequence(\Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceDto $numberSequence = null)
+    {
+        $this->numberSequence = $numberSequence;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceDto
+     */
+    public function getNumberSequence()
+    {
+        return $this->numberSequence;
+    }
+
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setNumberSequenceId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceDto($id)
+            : null;
+
+        return $this->setNumberSequence($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getNumberSequenceId()
+    {
+        if ($dto = $this->getNumberSequence()) {
             return $dto->getId();
         }
 
