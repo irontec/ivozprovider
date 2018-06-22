@@ -1,7 +1,7 @@
 # ----------------------------------------------------------------------------
 
 scenarios:
-  - name: call from retail account to Alice DDI
+  - name: call from residential device to Alice DDI
     timeout: 25
     sessions:
 
@@ -11,7 +11,7 @@ scenarios:
           - call:
               dest: 999661001
               credentials:
-                <<: *retail_cred
+                <<: *residential_cred
           - waitfor: CONFIRMED
           - waitfor: DISCONNCTD
 

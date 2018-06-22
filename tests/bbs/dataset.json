@@ -107,7 +107,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"ZZZ - Test Brand for BBS\",\n  \"domainUsers\": \"retail-bbs.ivozprovider.local\",\n  \"language\": 2,\n  \"defaultTimezone\": 145,\n  \"transformationRuleSet\": 70,\n  \"invoice\": {\n    \"nif\": \"string\",\n    \"postalAddress\": \"string\",\n    \"postalCode\": \"string\",\n    \"town\": \"string\",\n    \"province\": \"string\",\n    \"country\": \"string\",\n    \"registryData\": \"string\"\n  }\n}"
+							"raw": "{\n  \"name\": \"ZZZ - Test Brand for BBS\",\n  \"domainUsers\": \"brand-bbs.ivozprovider.local\",\n  \"language\": 2,\n  \"defaultTimezone\": 145,\n  \"transformationRuleSet\": 70,\n  \"invoice\": {\n    \"nif\": \"string\",\n    \"postalAddress\": \"string\",\n    \"postalCode\": \"string\",\n    \"town\": \"string\",\n    \"province\": \"string\",\n    \"country\": \"string\",\n    \"registryData\": \"string\"\n  }\n}"
 						},
 						"url": {
 							"raw": "{{api_url}}/brands",
@@ -498,7 +498,7 @@
 					"response": []
 				},
 				{
-					"name": "Add Brand Feature: Retail",
+					"name": "Add Brand Feature: Residential",
 					"event": [
 						{
 							"listen": "test",
@@ -3266,10 +3266,10 @@
 			]
 		},
 		{
-			"name": "0020 - Retail Data",
+			"name": "0020 - Residential Data",
 			"item": [
 				{
-					"name": "Create BBS Retail Client",
+					"name": "Create BBS Residential Client",
 					"event": [
 						{
 							"listen": "test",
@@ -3284,7 +3284,7 @@
 									"",
 									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
 									"",
-									"postman.setGlobalVariable(\"retailId\", jsonData.id);",
+									"postman.setGlobalVariable(\"residentialId\", jsonData.id);",
 									""
 								]
 							}
@@ -3304,7 +3304,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"type\": \"retail\",\n  \"name\": \"BBS - Retail for Black Box SIP tests\",\n  \"nif\": \"09876543210ART\",\n  \"externalMaxCalls\": 2,\n  \"postalAddress\": \"Retail address\",\n  \"postalCode\": \"48902\",\n  \"town\": \"Retail town\",\n  \"province\": \"Retail province\",\n  \"countryName\": \"Retail country\",\n  \"defaultTimezone\": 1,\n  \"onDemandRecord\": 2,\n  \"onDemandRecordCode\": \"234\",\n  \"ipfilter\": false,\n  \"transformationRuleSet\": 70,\n  \"brand\": {{brandId}}\n}"
+							"raw": "{\n  \"type\": \"residential\",\n  \"name\": \"BBS - Residential for Black Box SIP tests\",\n  \"nif\": \"09876543210ART\",\n  \"externalMaxCalls\": 2,\n  \"postalAddress\": \"Residential address\",\n  \"postalCode\": \"48902\",\n  \"town\": \"Residential town\",\n  \"province\": \"Residential province\",\n  \"countryName\": \"Residential country\",\n  \"defaultTimezone\": 1,\n  \"onDemandRecord\": 2,\n  \"onDemandRecordCode\": \"234\",\n  \"ipfilter\": false,\n  \"transformationRuleSet\": 70,\n  \"brand\": {{brandId}}\n}"
 						},
 						"url": {
 							"raw": "{{api_url}}/companies",
@@ -3319,7 +3319,7 @@
 					"response": []
 				},
 				{
-					"name": "Add  Retail Rating Profile",
+					"name": "Add  Residential Rating Profile",
 					"event": [
 						{
 							"listen": "test",
@@ -3354,7 +3354,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"activationTime\": \"2018-01-01 00:00:00.000\",\n  \"company\": {{retailId}},\n  \"ratingPlan\": {{ratingPlanId}}\n}"
+							"raw": "{\n  \"activationTime\": \"2018-01-01 00:00:00.000\",\n  \"company\": {{residentialId}},\n  \"ratingPlan\": {{ratingPlanId}}\n}"
 						},
 						"url": {
 							"raw": "{{api_url}}/tp_rating_profiles",
@@ -3369,7 +3369,7 @@
 					"response": []
 				},
 				{
-					"name": "Get BBS Retail data",
+					"name": "Get BBS Residential data",
 					"event": [
 						{
 							"listen": "test",
@@ -3382,7 +3382,7 @@
 									"",
 									"tests[\"Response body is JSON\"] = jsonData !== undefined;",
 									"",
-									"postman.setGlobalVariable(\"retailData\", responseBody);",
+									"postman.setGlobalVariable(\"residentialData\", responseBody);",
 									""
 								]
 							}
@@ -3405,20 +3405,20 @@
 							"raw": "{\n  \"type\": \"vpbx\",\n  \"name\": \"BBS - Company for Black Box SIP tests\",\n  \"domainUsers\": \"bbs.ivozprovider.local\",\n  \"nif\": \"09876543210ART\",\n  \"externalMaxCalls\": 2,\n  \"postalAddress\": \"Company address\",\n  \"postalCode\": \"48902\",\n  \"town\": \"Company town\",\n  \"province\": \"Company province\",\n  \"countryName\": \"Company country\",\n  \"defaultTimezone\": 1,\n  \"brand\": {{brandId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/companies/{{retailId}}",
+							"raw": "{{api_url}}/companies/{{residentialId}}",
 							"host": [
 								"{{api_url}}"
 							],
 							"path": [
 								"companies",
-								"{{retailId}}"
+								"{{residentialId}}"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Add Retail Feature: Recordings",
+					"name": "Add Residential Feature: Recordings",
 					"event": [
 						{
 							"listen": "test",
@@ -3452,7 +3452,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "\n{\n  \"company\": {{retailId}},\n  \"feature\": 2\n}"
+							"raw": "\n{\n  \"company\": {{residentialId}},\n  \"feature\": 2\n}"
 						},
 						"url": {
 							"raw": "{{api_url}}/features_rel_companies",
@@ -3467,7 +3467,7 @@
 					"response": []
 				},
 				{
-					"name": "Add Retail Feature: Faxes",
+					"name": "Add Residential Feature: Faxes",
 					"event": [
 						{
 							"listen": "test",
@@ -3501,7 +3501,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"company\": {{retailId}},\n  \"feature\": 3\n}"
+							"raw": "{\n  \"company\": {{residentialId}},\n  \"feature\": 3\n}"
 						},
 						"url": {
 							"raw": "{{api_url}}/features_rel_companies",
@@ -3516,7 +3516,7 @@
 					"response": []
 				},
 				{
-					"name": "Add Retail Feature: Progress",
+					"name": "Add Residential Feature: Progress",
 					"event": [
 						{
 							"listen": "test",
@@ -3550,7 +3550,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"company\": {{retailId}},\n  \"feature\": 8\n}"
+							"raw": "{\n  \"company\": {{residentialId}},\n  \"feature\": 8\n}"
 						},
 						"url": {
 							"raw": "{{api_url}}/features_rel_companies",
@@ -3565,7 +3565,7 @@
 					"response": []
 				},
 				{
-					"name": "Create Retail Account",
+					"name": "Create Residential Account",
 					"event": [
 						{
 							"listen": "test",
@@ -3580,7 +3580,7 @@
 									"",
 									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
 									"",
-									"postman.setGlobalVariable(\"retailAccountId\", jsonData.id);",
+									"postman.setGlobalVariable(\"residentialDeviceId\", jsonData.id);",
 									"",
 									""
 								]
@@ -3601,22 +3601,22 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"20000\",\n  \"transport\": \"udp\",\n  \"password\": \"r3t41Lp4sSW0rd+\",\n  \"directConnectivity\": \"no\",\n  \"brand\": {{brandId}},\n  \"company\": {{retailId}}\n}"
+							"raw": "{\n  \"name\": \"20000\",\n  \"transport\": \"udp\",\n  \"password\": \"r3s1d3nt14lp4sSW0rd+\",\n  \"directConnectivity\": \"no\",\n  \"brand\": {{brandId}},\n  \"company\": {{residentialId}}\n}"
 						},
 						"url": {
-							"raw": "{{api_url}}/retail_accounts",
+							"raw": "{{api_url}}/residential_devices",
 							"host": [
 								"{{api_url}}"
 							],
 							"path": [
-								"retail_accounts"
+								"residential_devices"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Create Retail DDI",
+					"name": "Create Residential DDI",
 					"event": [
 						{
 							"listen": "test",
@@ -3631,7 +3631,7 @@
 									"",
 									"tests[\"Response body has token id\"] = jsonData.id !== undefined;",
 									"",
-									"postman.setGlobalVariable(\"retailDDIId\", jsonData.id);",
+									"postman.setGlobalVariable(\"residentialDDIId\", jsonData.id);",
 									""
 								]
 							}
@@ -3651,7 +3651,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"ddi\": \"999920000\",\n  \"routeType\": \"retailAccount\",\n  \"company\": {{retailId}},\n  \"brand\": {{brandId}},\n  \"retailAccount\": {{retailAccountId}},\n  \"peeringContract\": {{peeringContractId}},\n  \"country\": 235\n}"
+							"raw": "{\n  \"ddi\": \"999920000\",\n  \"routeType\": \"residentialDevice\",\n  \"company\": {{residentialId}},\n  \"brand\": {{brandId}},\n  \"residentialDevice\": {{residentialDeviceId}},\n  \"peeringContract\": {{peeringContractId}},\n  \"country\": 235\n}"
 						},
 						"url": {
 							"raw": "{{api_url}}/ddis",
@@ -3666,18 +3666,18 @@
 					"response": []
 				},
 				{
-					"name": "Set Default Retail Client DDI",
+					"name": "Set Default Residential Client DDI",
 					"event": [
 						{
 							"listen": "prerequest",
 							"script": {
 								"type": "text/javascript",
 								"exec": [
-									"var retailData = JSON.parse(postman.getGlobalVariable(\"retailData\"));",
+									"var residentialData = JSON.parse(postman.getGlobalVariable(\"residentialData\"));",
 									"",
-									"retailData.outgoingDdi = postman.getGlobalVariable(\"retailDDIId\");",
+									"residentialData.outgoingDdi = postman.getGlobalVariable(\"residentialDDIId\");",
 									"",
-									"postman.setGlobalVariable(\"retailData\", JSON.stringify(retailData));",
+									"postman.setGlobalVariable(\"residentialData\", JSON.stringify(residentialData));",
 									"",
 									""
 								]
@@ -3709,16 +3709,16 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{{retailData}}"
+							"raw": "{{residentialData}}"
 						},
 						"url": {
-							"raw": "{{api_url}}/companies/{{retailId}}",
+							"raw": "{{api_url}}/companies/{{residentialId}}",
 							"host": [
 								"{{api_url}}"
 							],
 							"path": [
 								"companies",
-								"{{retailId}}"
+								"{{residentialId}}"
 							]
 						}
 					},
