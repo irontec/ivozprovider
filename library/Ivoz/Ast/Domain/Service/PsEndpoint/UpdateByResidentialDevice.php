@@ -4,12 +4,12 @@ namespace Ivoz\Ast\Domain\Service\PsEndpoint;
 
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointRepository;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
-use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
-use Ivoz\Provider\Domain\Service\RetailAccount\RetailAccountLifecycleEventHandlerInterface;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpoint;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
+use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
+use Ivoz\Provider\Domain\Service\ResidentialDevice\ResidentialDeviceLifecycleEventHandlerInterface;
 
-class UpdateByRetailAccount implements RetailAccountLifecycleEventHandlerInterface
+class UpdateByResidentialDevice implements ResidentialDeviceLifecycleEventHandlerInterface
 {
     /**
      * @var EntityPersisterInterface
@@ -37,15 +37,15 @@ class UpdateByRetailAccount implements RetailAccountLifecycleEventHandlerInterfa
     }
 
     /**
-     * @param RetailAccountInterface $entity
+     * @param ResidentialDeviceInterface $entity
      */
-    public function execute(RetailAccountInterface $entity, $isNew)
+    public function execute(ResidentialDeviceInterface $entity, $isNew)
     {
         /**
          * @var PsEndpointInterface $endpoint
          */
         $endpoint = $this->psEndpointRepository->findOneBy([
-            'retailAccount' => $entity->getId()
+            'residentialDevice' => $entity->getId()
         ]);
 
         // If not found create a new one
@@ -60,14 +60,14 @@ class UpdateByRetailAccount implements RetailAccountLifecycleEventHandlerInterfa
             $endpointDTO  = $endpoint->toDto();
         }
 
-        // Use company domain if retail from-domain not set
+        // Use company domain if residential device from-domain not set
         $fromDomain = $entity->getFromDomain()
             ? $entity->getFromDomain()
             : $entity->getDomain()->getDomain();
 
         // Update/Insert endpoint data
         $endpointDTO
-            ->setRetailAccountId($entity->getId())
+            ->setResidentialDeviceId($entity->getId())
             ->setSorceryId($entity->getSorcery())
             ->setFromDomain($fromDomain)
             ->setAors($entity->getSorcery())

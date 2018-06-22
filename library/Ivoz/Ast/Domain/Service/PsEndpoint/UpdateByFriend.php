@@ -60,7 +60,7 @@ class UpdateByFriend implements FriendLifecycleEventHandlerInterface
             $endPointDto = $endpoint->toDto();
         }
 
-        // Use company domain if retail from-domain not set
+        // Use company domain if friend from-domain not set
         $fromDomain = $entity->getFromDomain()
             ? $entity->getFromDomain()
             : $entity->getDomain()->getDomain();
