@@ -16,6 +16,8 @@ use Ivoz\Kam\Domain\Model\TrunksCdr\AccCdrRepository;
  */
 class CheckValidity implements InvoiceLifecycleEventHandlerInterface
 {
+    const PRE_PERSIST_PRIORITY = InvoiceLifecycleEventHandlerInterface::PRIORITY_HIGH;
+
     const UNMETERED_CALLS = 50001;
     const INVOICES_FOUND_IN_THE_SAME_RANGE_OF_DATE = 50003;
     const UNBILLED_CALLS_AFTER_OUT_DATE = 50004;
@@ -43,7 +45,7 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
     public static function getSubscribedEvents()
     {
         return [
-            self::EVENT_PRE_PERSIST => 10
+            self::EVENT_PRE_PERSIST => self::PRE_PERSIST_PRIORITY
         ];
     }
 

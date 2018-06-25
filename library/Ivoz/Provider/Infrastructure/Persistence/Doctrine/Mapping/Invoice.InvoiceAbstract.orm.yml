@@ -12,7 +12,7 @@ Ivoz\Provider\Domain\Model\Invoice\InvoiceAbstract:
   fields:
     number:
       type: string
-      nullable: false
+      nullable: true
       length: 30
       options:
         fixed: false
@@ -81,6 +81,17 @@ Ivoz\Provider\Domain\Model\Invoice\InvoiceAbstract:
       inversedBy: null
       joinColumns:
         invoiceTemplateId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false
+    numberSequence:
+      targetEntity: \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        invoiceNumberSequenceId:
           referencedColumnName: id
           onDelete: set null
       orphanRemoval: false

@@ -23,14 +23,7 @@ interface InvoiceInterface extends LoggableEntityInterface
      */
     public function setStatus($status = null);
 
-    /**
-     * Set number
-     *
-     * @param string $number
-     *
-     * @return self
-     */
-    public function setNumber($number);
+    public function setNumber($number = null);
 
     /**
      * Get number
@@ -173,6 +166,22 @@ interface InvoiceInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
      */
     public function getCompany();
+
+    /**
+     * Set numberSequence
+     *
+     * @param \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface $numberSequence
+     *
+     * @return self
+     */
+    public function setNumberSequence(\Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface $numberSequence = null);
+
+    /**
+     * Get numberSequence
+     *
+     * @return \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface
+     */
+    public function getNumberSequence();
 
     /**
      * Set pdf

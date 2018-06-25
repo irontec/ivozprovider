@@ -1037,6 +1037,9 @@ msgstr ""
 msgid "Inconditional"
 msgstr "Incondicional"
 
+msgid "Increment"
+msgstr "Incremento"
+
 msgid "Insert your username"
 msgstr "Introduce tu nombre de usuario"
 
@@ -1066,6 +1069,11 @@ msgstr "Datos de facturación"
 msgid "Invoice has been enqueued. It will be generated as soon as posible."
 msgstr "Factura encolada. Se generará lo antes posible."
 
+msgid "Invoice number sequence"
+msgid_plural "Invoice number sequences"
+msgstr[0] "Secuencia de número de factura."
+msgstr[1] "Secuencias de número de factura."
+
 msgid "Invoice template"
 msgid_plural "Invoice templates"
 msgstr[0] "Plantilla de factura"
@@ -1089,6 +1097,9 @@ msgstr "Jefe"
 msgid "Is sent in the username of Contact header in generated REGISTER."
 msgstr "Enviado como usuario en la cabecera Contact de los REGISTER"
 
+msgid "Iteration"
+msgstr "Números generados"
+
 #, python-format
 msgid "Join to %s %2s"
 msgstr "Unirse a %s %2s"
@@ -1107,6 +1118,9 @@ msgstr "Última provisión"
 
 msgid "Lastname"
 msgstr "Apellido"
+
+msgid "Latest value"
+msgstr "Último valor"
 
 msgid "Least recent"
 msgstr "Menos reciente"
@@ -1977,6 +1991,9 @@ msgstr "Enviar nuevo %s"
 
 msgid "Send to IP[:PORT] instead of SIP Proxy address"
 msgstr "Se enviará a IP:[PUERTO] en lugar de la dirección del Proxy SIP"
+
+msgid "Sequence length"
+msgstr "Longitud de secuencia"
 
 msgid "Server data"
 msgstr "Configuración Servidor"

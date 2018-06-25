@@ -1022,6 +1022,9 @@ msgstr ""
 msgid "Inconditional"
 msgstr "Inconditional"
 
+msgid "Increment"
+msgstr "Increment"
+
 msgid "Insert your username"
 msgstr "Insert your username"
 
@@ -1051,6 +1054,11 @@ msgstr "Invoice data"
 msgid "Invoice has been enqueued. It will be generated as soon as posible."
 msgstr "Invoice has been enqueued. It will be generated as soon as posible."
 
+msgid "Invoice number sequence"
+msgid_plural "Invoice number sequences"
+msgstr[0] "Invoice number sequence"
+msgstr[1] "Invoice number sequences"
+
 msgid "Invoice template"
 msgid_plural "Invoice templates"
 msgstr[0] "Invoice template"
@@ -1075,6 +1083,9 @@ msgstr "Is boss"
 msgid "Is sent in the username of Contact header in generated REGISTER."
 msgstr "Is sent in the username of Contact header in generated REGISTER."
 
+msgid "Iteration"
+msgstr "Iteration"
+
 #, python-format
 msgid "Join to %s %2s"
 msgstr "Join to %s %2s"
@@ -1093,6 +1104,9 @@ msgstr "Last provision date"
 
 msgid "Lastname"
 msgstr "Lastname"
+
+msgid "Latest value"
+msgstr "Latest value"
 
 msgid "Least recent"
 msgstr "Least recent"
@@ -1953,6 +1967,9 @@ msgstr "Send new %s"
 
 msgid "Send to IP[:PORT] instead of SIP Proxy address"
 msgstr "Send to IP[:PORT] instead of SIP Proxy address"
+
+msgid "Sequence length"
+msgstr "Sequence length"
 
 msgid "Server data"
 msgstr "Server data"
