@@ -2336,9 +2336,6 @@ msgstr "Using BXFER or INFO"
 msgid "Using DTMFs (read WARNING)"
 msgstr "Using DTMFs (read WARNING)"
 
-msgid "Version"
-msgstr "Version"
-
 #, python-format
 msgid "View %s %2s"
 msgstr "View %s %2s"
