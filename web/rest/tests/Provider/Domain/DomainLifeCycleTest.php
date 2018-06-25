@@ -56,7 +56,7 @@ class DomainLifeCycleTest extends KernelTestCase
         /** @var Domain $domain */
         $domain = $domainRepository->find(3);
         $domain->setDomain('api-test.ivozprovider.local');
-        $domain->replaceRetailAccounts(
+        $domain->replaceResidentialDevices(
             new \Doctrine\Common\Collections\ArrayCollection([])
         );
         $domain->replaceTerminals(
@@ -93,7 +93,7 @@ class DomainLifeCycleTest extends KernelTestCase
     /**
      * @test
      */
-    public function updating_domain_updates_retailAccount_endpoints()
+    public function updating_domain_updates_residentialDevices_endpoints()
     {
         $domainRepository =  $this->em
             ->getRepository(Domain::class);
@@ -109,10 +109,10 @@ class DomainLifeCycleTest extends KernelTestCase
 
         $this->entityPersister->persist($domain, true);
 
-        $retailAccounts = $domain->getRetailAccounts();
+        $residentialDevices = $domain->getResidentialDevices();
         $this->assertCount(
             1,
-            $retailAccounts
+            $residentialDevices
         );
 
         $changelogEntries = $this->getChangelogByClass(
@@ -147,7 +147,7 @@ class DomainLifeCycleTest extends KernelTestCase
         $domain->replaceFriends(
             new \Doctrine\Common\Collections\ArrayCollection([])
         );
-        $domain->replaceRetailAccounts(
+        $domain->replaceResidentialDevices(
             new \Doctrine\Common\Collections\ArrayCollection([])
         );
 

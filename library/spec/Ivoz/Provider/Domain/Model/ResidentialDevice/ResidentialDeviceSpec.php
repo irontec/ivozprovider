@@ -1,22 +1,22 @@
 <?php
 
-namespace spec\Ivoz\Provider\Domain\Model\RetailAccount;
+namespace spec\Ivoz\Provider\Domain\Model\ResidentialDevice;
 
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
-use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount;
-use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto;
+use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice;
+use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use spec\HelperTrait;
 
-class RetailAccountSpec extends ObjectBehavior
+class ResidentialDeviceSpec extends ObjectBehavior
 {
     use HelperTrait;
 
     /**
-     * @var RetailAccountDto
+     * @var ResidentialDeviceDto
      */
     protected $dto;
 
@@ -30,7 +30,7 @@ class RetailAccountSpec extends ObjectBehavior
         CompanyInterface $company,
         BrandInterface $brand
     ) {
-        $this->dto = $dto = new RetailAccountDto();
+        $this->dto = $dto = new ResidentialDeviceDto();
         $this->brand = $brand;
 
         $dto->setName('Name')
@@ -67,7 +67,7 @@ class RetailAccountSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType(RetailAccount::class);
+        $this->shouldHaveType(ResidentialDevice::class);
     }
 
     function it_throws_exception_on_invalid_name()

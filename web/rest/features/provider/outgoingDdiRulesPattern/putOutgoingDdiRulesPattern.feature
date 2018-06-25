@@ -62,7 +62,7 @@ Feature: Update outgoing ddi rules patterns
               "fax": null,
               "peeringContract": 1,
               "country": 1,
-              "retailAccount": null,
+              "residentialDevice": null,
               "conditionalRoute": null
           }
       }

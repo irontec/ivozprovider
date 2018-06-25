@@ -6,10 +6,10 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\Mapping\ClassMetadata;
-use Ivoz\Provider\Domain\Model\Company\Company;
-use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount;
+use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice;
+use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
 
-class ProviderRetailAccount extends Fixture implements DependentFixtureInterface
+class ProviderResidentialDevice extends Fixture implements DependentFixtureInterface
 {
     use \DataFixtures\FixtureHelperTrait;
 
@@ -19,10 +19,10 @@ class ProviderRetailAccount extends Fixture implements DependentFixtureInterface
     public function load(ObjectManager $manager)
     {
         $this->disableLifecycleEvents($manager);
-        $manager->getClassMetadata(RetailAccount::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
+        $manager->getClassMetadata(ResidentialDevice::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
-        /** @var RetailAccount $item1 */
-        $item1 = $this->createEntityInstanceWithPublicMethods(RetailAccount::class);
+        /** @var ResidentialDevice $item1 */
+        $item1 = $this->createEntityInstanceWithPublicMethods(ResidentialDevice::class);
         $item1->setName('retail');
         $item1->setTransport('udp');
         $item1->setAuthNeeded('yes');
@@ -39,7 +39,7 @@ class ProviderRetailAccount extends Fixture implements DependentFixtureInterface
         $item1->setCompany(
             $this->getReference('_reference_ProviderCompany3')
         );
-        $this->addReference('_reference_ProviderRetailAccount1', $item1);
+        $this->addReference('_reference_ProviderResidentialDevice1', $item1);
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 

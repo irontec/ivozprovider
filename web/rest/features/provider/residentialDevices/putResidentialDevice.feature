@@ -1,14 +1,14 @@
-Feature: Update retail accounts
-  In order to manage retail accounts
+Feature: Update residential devices
+  In order to manage residential devices
   As an super admin
   I need to be able to update them through the API.
 
   @createSchema
-  Scenario: Update a retail account
+  Scenario: Update a residential device
     Given I add Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
-      And I send a "PUT" request to "/retail_accounts/1" with body:
+      And I send a "PUT" request to "/residential_devices/1" with body:
     """
       {
           "name": "updatedRetail",
@@ -115,7 +115,7 @@ Feature: Update retail accounts
               "fax": null,
               "peeringContract": 1,
               "country": 1,
-              "retailAccount": null,
+              "residentialDevice": null,
               "conditionalRoute": null
           },
           "language": {

@@ -77,15 +77,15 @@ class AstPsEndpoint extends Fixture implements DependentFixtureInterface
 
         /** @var PsEndpoint $item5 */
         $item5 = $this->createEntityInstanceWithPublicMethods(PsEndpoint::class);
-        $item5->setSorceryId("b1c1f1_testRetail");
+        $item5->setSorceryId("b1c1f1_testResidential");
         $item5->setFromDomain("127.0.0.1");
-        $item5->setAors("b1c1f1_testRetail");
+        $item5->setAors("b1c1f1_testResidential");
         $item5->setContext("friends");
         $item5->setAllow("alaw");
         $item5->setDirectMediaMethod("invite");
         $item5->setOutboundProxy("sip:users.ivozprovider.local^3Blr");
         $item5->setTrustIdInbound("yes");
-        $item5->setRetailAccount($this->getReference('_reference_ProviderRetailAccount1'));
+        $item5->setResidentialDevice($this->getReference('_reference_ProviderResidentialDevice1'));
         $this->addReference('_reference_AstPsEndpoint5', $item5);
         $this->sanitizeEntityValues($item5);
         $manager->persist($item5);
@@ -97,6 +97,7 @@ class AstPsEndpoint extends Fixture implements DependentFixtureInterface
     {
         return array(
             ProviderFriend::class,
+            ProviderResidentialDevice::class
         );
     }
 }
