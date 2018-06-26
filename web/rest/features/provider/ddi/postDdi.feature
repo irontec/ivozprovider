@@ -30,7 +30,7 @@ Feature: Create Ddis
           "fax": null,
           "peeringContract": null,
           "country": 1,
-          "retailAccount": null,
+          "residentialDevice": null,
           "conditionalRoute": null
       }
     """
@@ -117,7 +117,7 @@ Feature: Create Ddis
                   "es": "Europa"
               }
           },
-          "retailAccount": null,
+          "residentialDevice": null,
           "conditionalRoute": null
       }
     """

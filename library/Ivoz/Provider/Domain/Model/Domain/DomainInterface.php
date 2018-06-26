@@ -93,35 +93,35 @@ interface DomainInterface extends LoggableEntityInterface
     public function getFriends(\Doctrine\Common\Collections\Criteria $criteria = null);
 
     /**
-     * Add retailAccount
+     * Add residentialDevice
      *
-     * @param \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount
+     * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice
      *
      * @return DomainTrait
      */
-    public function addRetailAccount(\Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount);
+    public function addResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice);
 
     /**
-     * Remove retailAccount
+     * Remove residentialDevice
      *
-     * @param \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount
+     * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice
      */
-    public function removeRetailAccount(\Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount);
+    public function removeResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice);
 
     /**
-     * Replace retailAccounts
+     * Replace residentialDevices
      *
-     * @param \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface[] $retailAccounts
+     * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface[] $residentialDevices
      * @return self
      */
-    public function replaceRetailAccounts(Collection $retailAccounts);
+    public function replaceResidentialDevices(Collection $residentialDevices);
 
     /**
-     * Get retailAccounts
+     * Get residentialDevices
      *
-     * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface[]
+     * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface[]
      */
-    public function getRetailAccounts(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getResidentialDevices(\Doctrine\Common\Collections\Criteria $criteria = null);
 
     /**
      * Add terminal

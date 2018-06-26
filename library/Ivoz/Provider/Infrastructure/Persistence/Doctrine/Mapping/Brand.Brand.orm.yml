@@ -26,8 +26,8 @@ Ivoz\Provider\Domain\Model\Brand\Brand:
       mappedBy: brand
       cascade: ['persist']
       orphanRemoval: true
-    retailAccounts:
-      targetEntity: Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface
+    residentialDevices:
+      targetEntity: Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface
       mappedBy: brand
     musicsOnHold:
       targetEntity: Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface

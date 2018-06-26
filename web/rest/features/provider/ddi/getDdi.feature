@@ -72,7 +72,7 @@ Feature: Retrieve Ddis
                   "es": "Europa"
               }
           },
-          "retailAccount": null,
+          "residentialDevice": null,
           "conditionalRoute": null
       }
     """

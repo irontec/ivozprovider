@@ -59,7 +59,7 @@ production:
                 - conferenceRoom
                 - friendValue
                 - queue
-                - retailAccount
+                - residentialDevice
                 - conditionalRoute
           'user':
             title: ngettext('User', 'Users', 1)
@@ -103,10 +103,10 @@ production:
               show: [ queue ]
               hide:
                 <<: *routableFields
-          'retailAccount':
-            title: _('Retail Account')
+          'residential':
+            title: _('Residential Device')
             visualFilter:
-              show: [ retailAccount, recordCalls ]
+              show: [ residentialDevice, recordCalls ]
               hide:
                 <<: *routableFields
           'conditional':
@@ -240,20 +240,21 @@ production:
           order:
             ConferenceRoom.name: asc
         'null': _("Unassigned")
-    retailAccount:
-      title: _('Retail Account')
+    residentialDevice:
+      title: _('Residential Device')
       type: select
+      required: true
       source:
         data: mapper
         config:
-          entity: \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount
+          entity: \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice
           filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
             fields:
               - name
             template: '%name%'
           order:
-            RetailAccount.name: asc
+            ResidentialDevice.name: asc
         'null': _("Unassigned")
     friendValue:
       title: _('Friend value')

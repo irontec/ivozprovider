@@ -157,8 +157,8 @@ doctrine:
         Ivoz\Provider\Domain\Model\Queue\Queue
       Ivoz\Provider\Domain\Model\Recording\RecordingInterface:
         Ivoz\Provider\Domain\Model\Recording\Recording
-      Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface:
-        Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount
+      Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface:
+        Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice
       Ivoz\Provider\Domain\Model\RouteLock\RouteLockInterface:
         Ivoz\Provider\Domain\Model\RouteLock\RouteLock
       Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface:

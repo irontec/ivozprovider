@@ -50,7 +50,7 @@ Feature: Update faxes
               "fax": null,
               "peeringContract": 1,
               "country": 1,
-              "retailAccount": null,
+              "residentialDevice": null,
               "conditionalRoute": null
           }
       }

@@ -231,6 +231,8 @@
                     icon = 'basket';
                 } else if (config.getSubType() == 'wholesale') {
                     icon = 'cart';
+                } else if (config.getSubType() == 'residential') {
+                    icon = 'house';
                 }
             } else if (config.getType() == 'brand') {
                icon = 'world';

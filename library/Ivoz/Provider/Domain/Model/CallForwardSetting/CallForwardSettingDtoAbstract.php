@@ -67,6 +67,11 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
      */
     private $numberCountry;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto | null
+     */
+    private $residentialDevice;
+
 
     use DtoNormalizer;
 
@@ -95,7 +100,8 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
             'userId' => 'user',
             'extensionId' => 'extension',
             'voiceMailUserId' => 'voiceMailUser',
-            'numberCountryId' => 'numberCountry'
+            'numberCountryId' => 'numberCountry',
+            'residentialDeviceId' => 'residentialDevice'
         ];
     }
 
@@ -115,7 +121,8 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
             'user' => $this->getUser(),
             'extension' => $this->getExtension(),
             'voiceMailUser' => $this->getVoiceMailUser(),
-            'numberCountry' => $this->getNumberCountry()
+            'numberCountry' => $this->getNumberCountry(),
+            'residentialDevice' => $this->getResidentialDevice()
         ];
     }
 
@@ -128,6 +135,7 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
         $this->extension = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Extension\\Extension', $this->getExtensionId());
         $this->voiceMailUser = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\User\\User', $this->getVoiceMailUserId());
         $this->numberCountry = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Country\\Country', $this->getNumberCountryId());
+        $this->residentialDevice = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\ResidentialDevice\\ResidentialDevice', $this->getResidentialDeviceId());
     }
 
     /**
@@ -456,6 +464,52 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
     public function getNumberCountryId()
     {
         if ($dto = $this->getNumberCountry()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto $residentialDevice
+     *
+     * @return static
+     */
+    public function setResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto $residentialDevice = null)
+    {
+        $this->residentialDevice = $residentialDevice;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto
+     */
+    public function getResidentialDevice()
+    {
+        return $this->residentialDevice;
+    }
+
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setResidentialDeviceId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto($id)
+            : null;
+
+        return $this->setResidentialDevice($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getResidentialDeviceId()
+    {
+        if ($dto = $this->getResidentialDevice()) {
             return $dto->getId();
         }
 

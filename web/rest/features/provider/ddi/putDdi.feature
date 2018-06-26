@@ -30,7 +30,7 @@ Feature: Update Ddis
           "fax": null,
           "peeringContract": 1,
           "country": 1,
-          "retailAccount": null,
+          "residentialDevice": null,
           "conditionalRoute": null
       }
     """
@@ -79,7 +79,7 @@ Feature: Update Ddis
                   "es": "Europa"
               }
           },
-          "retailAccount": null,
+          "residentialDevice": null,
           "conditionalRoute": null
       }
     """

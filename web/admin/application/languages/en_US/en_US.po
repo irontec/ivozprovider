@@ -618,8 +618,8 @@ msgid "Emulate Company %s"
 msgstr "Emulate Company %s"
 
 #, python-format
-msgid "Emulate Retail Client %s"
-msgstr "Emulate Retail Client %s"
+msgid "Emulate Residential Client %s"
+msgstr "Emulate Residential Client %s"
 
 #, python-format
 msgid "Emulate Wholesale Client %s"
@@ -1814,6 +1814,21 @@ msgstr "Resend fax"
 msgid "Resend to"
 msgstr "Resend to"
 
+msgid "Residential"
+msgid_plural "Residentials"
+msgstr[0] "Residential"
+msgstr[1] "Residentials"
+
+msgid "Residential Client"
+msgid_plural "Residential Clients"
+msgstr[0] "Residential Client"
+msgstr[1] "Residential Clients"
+
+msgid "Residential Device"
+msgid_plural "Residential Devices"
+msgstr[0] "Residential Device"
+msgstr[1] "Residential Devices"
+
 msgid "Restore backup"
 msgstr "Restore backup"
 
@@ -1825,21 +1840,6 @@ msgstr "Restore last backup"
 
 msgid "Results"
 msgstr "Results"
-
-msgid "Retail"
-msgid_plural "Retails"
-msgstr[0] "Retail"
-msgstr[1] "Retails"
-
-msgid "Retail Account"
-msgid_plural "Retail Accounts"
-msgstr[0] "Retail Account"
-msgstr[1] "Retail Accounts"
-
-msgid "Retail Client"
-msgid_plural "Retail Clients"
-msgstr[0] "Retail Client"
-msgstr[1] "Retail Clients"
 
 msgid "Ring all"
 msgstr "Ring all"

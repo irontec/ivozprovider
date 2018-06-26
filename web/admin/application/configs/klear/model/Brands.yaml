@@ -195,7 +195,7 @@ production:
             template: '%name${lang}%'
           visualFilter:
             iden:
-              retail:
+              residential:
                 toggle:
                   - domainUsers
               recordings:

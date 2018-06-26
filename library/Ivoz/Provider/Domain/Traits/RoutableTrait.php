@@ -27,7 +27,8 @@ trait RoutableTrait
         'extension',
         'retail',
         'conditional',
-        'fax'
+        'fax',
+        'residential',
     ];
 
     /**
@@ -89,6 +90,13 @@ trait RoutableTrait
                     $this->{$voicemailGetter}()->getLastname()
                 );
 
+            case 'residential':
+                $residentialGetter = 'get' . $prefix . 'ResidentialDevice';
+                if (!$this->{$residentialGetter}()) {
+                    return "";
+                }
+                return $this->{$residentialGetter}()->getName();
+
             default:
                 // Get Generic Target Type
                 $targetGetter = 'get' . $prefix . ucfirst($routeType);
@@ -123,7 +131,7 @@ trait RoutableTrait
             'queue'          => 'Queue',
             'voicemail'      => 'VoicemailUser',
             'extension'      => 'Extension',
-            'retail'         => 'RetailAccount',
+            'residential'    => 'ResidentialDevice',
             'conditional'    => 'ConditionalRoute',
             'fax'            => 'Fax'
         ];
