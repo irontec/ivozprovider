@@ -559,6 +559,9 @@ msgstr "Do not disturb"
 msgid "Do you want to delete this %s?"
 msgstr "Do you want to delete this %s?"
 
+msgid "Do you want to rerate selected calls?"
+msgstr "Do you want to rerate selected calls?"
+
 msgid "Domain"
 msgid_plural "Domains"
 msgstr[0] "Domain"
@@ -1070,6 +1073,9 @@ msgstr "Invoice template tester"
 msgid "Invoice(s) enqueued"
 msgstr "Invoice(s) enqueued"
 
+msgid "Invoiced calls can't be metered again"
+msgstr "Invoiced calls can't be metered again"
+
 msgid "Invoices have been enqueued. They will be generated as soon as posible."
 msgstr ""
 "Invoices have been enqueued. They will be generated as soon as posible."
@@ -1453,6 +1459,9 @@ msgid_plural "Numeric transformations"
 msgstr[0] "Numeric transformation"
 msgstr[1] "Numeric transformations"
 
+msgid "Ok"
+msgstr "Ok"
+
 msgid "On-demand"
 msgstr "On-demand"
 
@@ -1623,6 +1632,9 @@ msgstr "Pin protected"
 
 msgid "Platform Configuration"
 msgstr "Platform Configuration"
+
+msgid "Please select only uninvoiced calls"
+msgstr "Please select only uninvoiced calls"
 
 msgid "Please, choose a file to import"
 msgstr "Please, choose a file to import"
@@ -1804,6 +1816,11 @@ msgstr "Regular Expression"
 
 msgid "Replace expr"
 msgstr "Replace expr"
+
+msgid "Rerate call"
+msgid_plural "Rerate calls"
+msgstr[0] "Rerate call"
+msgstr[1] "Rerate calls"
 
 msgid "Resend"
 msgstr "Resend"
@@ -2041,6 +2058,12 @@ msgstr "Target type"
 
 msgid "Target type value"
 msgstr "Target type value"
+
+msgid "Tarificate Calls?"
+msgstr "Tarificate Calls?"
+
+msgid "Tarificator Job started"
+msgstr "Tarificator Job started"
 
 msgid "Tax rate"
 msgstr "Tax rate"

@@ -78,6 +78,18 @@ production:
             direction: 6
             invoice: 6
 
+  dialogs:  &kamTrunksCdrs_dialogsLink
+    tarificateCall_dialog:
+      <<: *KamTrunksCdrs
+      module: default
+      title: ngettext('Rerate call', 'Rerate calls', 1)
+      labelOnList: ngettext('Rerate call', 'Rerate calls', 0)
+      controller: klear-custom-tarificator
+      action: tarificate-call
+      class:  ui-silk-coins-add
+      multiItem: true
+      alwaysEnabled: false
+
 staging:
   _extends: production
 testing:
