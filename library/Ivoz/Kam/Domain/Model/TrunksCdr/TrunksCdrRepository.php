@@ -41,5 +41,11 @@ interface TrunksCdrRepository extends ObjectRepository, Selectable
      * @return mixed
      */
     public function countUntarificattedCallsInRange(int $companyId, int $brandId, string $startTime, string $endTime);
+
+    /**
+     * @param array $pks
+     * @return bool
+     */
+    public function areRetarificable(array $pks);
 }
 
