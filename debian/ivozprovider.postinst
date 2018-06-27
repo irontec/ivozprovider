@@ -3,22 +3,57 @@
 # Source debconf library.
 . /usr/share/debconf/confmodule
 
+function setup_bind()
+{
+    # Setup local DNS Server entries
+    db_get ivozprovider/users_address           || true
+    sed -r -i "s/(users           IN      A      ) .*/\1 $RET/"     /etc/bind/db.ivozprovider.local
+    db_get ivozprovider/trunks_address          || true
+    sed -r -i "s/(trunks          IN      A      ) .*/\1 $RET/"     /etc/bind/db.ivozprovider.local
+    db_get ivozprovider/data_address            || true
+    sed -r -i "s/(data            IN      A      ) .*/\1 $RET/"     /etc/bind/db.ivozprovider.local
+    db_get ivozprovider/storage_address         || true
+    sed -r -i "s/(storage         IN      A      ) .*/\1 $RET/"     /etc/bind/db.ivozprovider.local
+    db_get ivozprovider/logs_address            || true
+    sed -r -i "s/(logs            IN      A      ) .*/\1 $RET/"     /etc/bind/db.ivozprovider.local
+    db_get ivozprovider/jobs_address            || true
+    sed -r -i "s/(jobs            IN      A      ) .*/\1 $RET/"     /etc/bind/db.ivozprovider.local
+
+    # Restart Local DNS
+    /bin/systemctl start bind9
+}
+
 function setup_mysql()
 {
     # Get mysql password from configuration
     db_get ivozprovider/mysql_password      || true
     MYSQL_PASSWORD=$RET
 
+    db_get ivozprovider/mysql_password_old  || true
+    MYSQL_PASSWORD_OLD=$RET
+
+    # Check if mysql password has changed
+    if [ -n "$MYSQL_PASSWORD_OLD" ] &&  [ "$MYSQL_PASSWORD" != "$MYSQL_PASSWORD_OLD" ]; then
+        export MYSQL_PWD=$MYSQL_PASSWORD_OLD
+    else
+        export MYSQL_PWD=$MYSQL_PASSWORD
+    fi
+
+    # Setup global mysql password
+    sed -r -i "s/(database_password:) .*/\1 $MYSQL_PASSWORD/" \
+        /opt/irontec/ivozprovider/library/CoreBundle/Resources/config/parameters.yml
+
     # Change database bind address
-    sed -i "s/(bind =) .*/\1 127.0.0.1" /etc/mysql/mysql.conf.d/ivozprovider.cnf
+    sed -i -r "s/(bind =) .*/\1 127.0.0.1/" /etc/mysql/conf.d/ivozprovider.cnf
 
     # Change database password
-    /usr/bin/mysql --user=root --password=$MYSQL_PASSWORD -e "GRANT ALL ON ivozprovider.* TO 'root'@'localhost' IDENTIFIED BY '$MYSQL_PASSWORD'";
-    /usr/bin/mysql --user=root --password=$MYSQL_PASSWORD -e "GRANT ALL ON ivozprovider.* TO 'root'@'127.0.0.1' IDENTIFIED BY '$MYSQL_PASSWORD'";
-    /usr/bin/mysql --user=root --password=$MYSQL_PASSWORD -e "GRANT ALL ON ivozprovider.* TO 'root'@'::1' IDENTIFIED BY '$MYSQL_PASSWORD'";
-    /usr/bin/mysql --user=root --password=$MYSQL_PASSWORD -e "GRANT ALL ON ivozprovider.* TO 'root'@'$HOSTNAME' IDENTIFIED BY '$MYSQL_PASSWORD'";
-    /usr/bin/mysql --user=root --password=$MYSQL_PASSWORD -e "FLUSH PRIVILEGES;"
-
+    /usr/bin/mysql --user=root << EOF
+			GRANT ALL ON ivozprovider.* TO 'root'@'localhost' IDENTIFIED BY '$MYSQL_PASSWORD';
+			GRANT ALL ON ivozprovider.* TO 'root'@'127.0.0.1' IDENTIFIED BY '$MYSQL_PASSWORD';
+			GRANT ALL ON ivozprovider.* TO 'root'@'::1' IDENTIFIED BY '$MYSQL_PASSWORD';
+			GRANT ALL ON ivozprovider.* TO 'root'@'$HOSTNAME' IDENTIFIED BY '$MYSQL_PASSWORD';
+			FLUSH PRIVILEGES;
+EOF
 }
 
 function setup_proxies()
@@ -32,16 +67,17 @@ function setup_proxies()
     TRUNKS_ADDRESS=$RET
 
     # Update database tables
-    /usr/bin/mysql --user=root --password="$MYSQL_PASSWORD" ivozprovider -e "UPDATE ProxyTrunks SET ip = '$TRUNKS_ADDRESS'"
-    /usr/bin/mysql --user=root --password="$MYSQL_PASSWORD" ivozprovider -e "UPDATE ProxyUsers  SET ip = '$USERS_ADDRESS'"
+    export MYSQL_PWD=$MYSQL_PASSWORD
+    /usr/bin/mysql --user=root ivozprovider -e "UPDATE ProxyTrunks SET ip = '$TRUNKS_ADDRESS'"
+    /usr/bin/mysql --user=root ivozprovider -e "UPDATE ProxyUsers  SET ip = '$USERS_ADDRESS'"
 
     # Update DemoCompany domain to USERS_ADDRESS
-    /usr/bin/mysql --user=root --password="$MYSQL_PASSWORD" ivozprovider -e "UPDATE Companies SET domain_users = '$USERS_ADDRESS' WHERE domain_users LIKE '%.%.%.%'";
-    /usr/bin/mysql --user=root --password="$MYSQL_PASSWORD" ivozprovider -e "UPDATE Domains SET domain = '$USERS_ADDRESS' WHERE domain REGEXP '[0-9]\.[0-9]\.[0-9]\.[0-9]'";
+    /usr/bin/mysql --user=root ivozprovider -e "UPDATE Companies SET domain_users = '$USERS_ADDRESS' WHERE domain_users LIKE '%.%.%.%'";
+    /usr/bin/mysql --user=root ivozprovider -e "UPDATE Domains SET domain = '$USERS_ADDRESS' WHERE domain REGEXP '[0-9]\.[0-9]\.[0-9]\.[0-9]'";
 
     # Change ProxyTrunks ports if USERS_ADDRESS == TRUNKS_ADDRESS
     if [ -n "$USERS_ADDRESS" ] && [ "$USERS_ADDRESS" == "$TRUNKS_ADDRESS" ]; then
-        sed -i -e '/#!define TRUNKS_SIP_PORT/c\#!define TRUNKS_SIP_PORT 7060' /etc/kamailio/users/kamailio.cfg
+        sed -i -e '/#!define TRUNKS_SIP_PORT/c\#!define TRUNKS_SIP_PORT 7060' /etc/kamailio/proxyusers/kamailio.cfg
         sed -i -e '/#!define SIP_PORT/c\#!define SIP_PORT 7060' /etc/kamailio/proxytrunks/kamailio.cfg
         sed -i -e '/#!define SIPS_PORT/c\#!define SIPS_PORT 7061' /etc/kamailio/proxytrunks/kamailio.cfg
         sed -i -e '/contact=sip:trunks.ivozprovider.local/c\contact=sip:trunks.ivozprovider.local:7060' /etc/asterisk/pjsip.conf
@@ -52,11 +88,28 @@ function setup_proxies()
     fi
 }
 
+function setup_portals
+{
+    db_get ivozprovider/language
+    PORTAL_LANG=$RET
+    sed -i -r "s/(lang: ).*/\1 $PORTAL_LANG/" /opt/irontec/ivozprovider/web/admin/application/configs/application.ini
+}
+
 function setup_pbx()
 {
     # Set asterisk bind address to localhost
     sed -i "s/bind=0.0.0.0:6060/bind=127.0.0.1:6060/g" /etc/asterisk/pjsip.conf
     sed -i "s/bindaddr = 0.0.0.0/bindaddr = 127.0.0.1/g" /etc/asterisk/manager.conf
+}
+
+function setup_media_relays()
+{
+    # Get Media relay public IP from debconf
+    db_get ivozprovider/media_relay_address            || true
+    MEDIA_RELAY_ADDRESS=$RET
+
+    # Configure Media relay IPs
+    sed -i -r "s/(ADDRESS_SOCK *= *).*/\1$MEDIA_RELAY_ADDRESS/"  /etc/default/rtpengine
 }
 
 function setup_sshd()
@@ -81,6 +134,17 @@ function start_services()
     /bin/systemctl $ACTION asterisk
 }
 
+function cache_clear_all
+{
+    /opt/irontec/ivozprovider/scheme/bin/console cache:clear --quiet --no-interaction
+    /opt/irontec/ivozprovider/web/rest/bin/console cache:clear --quiet --no-interaction
+    /opt/irontec/ivozprovider/asterisk/agi/bin/console cache:clear --quiet --no-interaction
+    /opt/irontec/ivozprovider/microservices/balances/bin/console cache:clear --quiet --no-interaction
+    /opt/irontec/ivozprovider/microservices/recordings/bin/console cache:clear --quiet --no-interaction
+    /opt/irontec/ivozprovider/microservices/workers/bin/console cache:clear --quiet --no-interaction
+}
+
+
 function enable_services()
 {
     /bin/systemctl enable rtpengine
@@ -93,15 +157,23 @@ function enable_services()
 }
 
 # Run only on first install or on dpkg-reconfigure
-if [ -z "$2" ] || [ "$1" == "reconfigure" ]; then
+if [ -z "$2" ] || [ "$1" == "configure" ]; then
     # Setup mysql password
     setup_mysql
+    # Setup local DNS server
+    setup_bind
     # Setup proxy addresses
     setup_proxies
+    # Setup portals language
+    setup_portals
     # Setup pbx system
     setup_pbx
+    # Setup media relays
+    setup_media_relays
     # Setup ssh daemon
     setup_sshd
+    # Clear services caches
+    cache_clear_all
     # Restart services
     start_services
 fi
