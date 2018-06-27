@@ -58,5 +58,17 @@ class DestinationRateGroup extends DestinationRateGroupAbstract implements Desti
         }
         $this->_addTmpFile($fldName, $file);
     }
+
+    /**
+     * @return string
+     */
+    public function getCgrTag()
+    {
+        return sprintf(
+            "b%ddr%d",
+            $this->getBrand()->getId(),
+            $this->getId()
+        );
+    }
 }
 

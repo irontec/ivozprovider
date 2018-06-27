@@ -49,7 +49,8 @@ class Destination extends DestinationAbstract implements DestinationInterface
     public function getCgrTag()
     {
         return sprintf(
-            "dst%d",
+            "b%ddst%d",
+            $this->getBrand()->getId(),
             $this->getId()
         );
     }
