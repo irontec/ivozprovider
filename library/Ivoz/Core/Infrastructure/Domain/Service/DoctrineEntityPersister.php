@@ -2,7 +2,6 @@
 
 namespace Ivoz\Core\Infrastructure\Domain\Service;
 
-use Doctrine\Common\EventArgs;
 use Ivoz\Core\Application\Service\CreateEntityFromDTO;
 use Ivoz\Core\Application\Service\UpdateEntityFromDTO;
 use Ivoz\Core\Application\DataTransferObjectInterface;

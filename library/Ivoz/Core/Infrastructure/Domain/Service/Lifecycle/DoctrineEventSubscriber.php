@@ -151,6 +151,10 @@ class DoctrineEventSubscriber implements EventSubscriber
         }
 
         foreach ($this->flushedEntities as $entity) {
+
+            if (!$entity->__isInitialized__) {
+                continue;
+            }
             $entity->initChangelog();
         }
 
