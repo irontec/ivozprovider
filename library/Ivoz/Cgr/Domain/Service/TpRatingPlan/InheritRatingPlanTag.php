@@ -21,15 +21,8 @@ class InheritRatingPlanTag implements TpRatingPlanLifecycleEventHandlerInterface
         );
 
         $entity->setDestratesTag(
-            $entity->getDestinationRate()->getTag()
+            $entity->getDestinationRateGroup()->getCgrTag()
         );
-
-        $timing = $entity->getTiming();
-        if (!is_null($timing)) {
-            $entity->setTimingTag(
-                $entity->getTiming()->getTag()
-            );
-        }
     }
 
 }
