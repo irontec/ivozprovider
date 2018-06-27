@@ -18,20 +18,20 @@ production:
             template: '%name${lang}%'
           order:
             RatingPlan.name.${lang}: asc
-    destinationRate:
+    destinationRateGroup:
       title: ngettext('Destination rate', 'Destination rates', 1)
       type: select
       source:
         data: mapper
         config:
-          entity: \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRate
+          entity: \Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroup
           filterClass: IvozProvider_Klear_Filter_Brand
           fieldName:
             fields:
               - name${lang}
             template: '%name${lang}%'
           order:
-            DestinationRate.name.${lang}: asc
+            DestinationRateGroup.name.${lang}: asc
     timing:
       title: ngettext('Timing', 'Timing', 1)
       type: select
@@ -59,6 +59,68 @@ production:
         icon: help
         text: _("In case of colliding prefixes, destination rate with highest weight will be used.")
         label: _("Need help?")
+    timingType:
+      title: _('Timing type')
+      type: select
+      source:
+        data: inline
+        values:
+          'always':
+            title: _("Always")
+            visualFilter:
+              show: [ ]
+              hide: &timingFields
+                - timeIn
+                - monday
+                - tuesday
+                - wednesday
+                - thursday
+                - friday
+                - saturday
+                - sunday
+          'custom':
+            title: _("Custom")
+            visualFilter:
+              show:
+                <<: *timingFields
+              hide: []
+    timeIn:
+      title: _('Time in')
+      type: picker
+      required: true
+      defaultValue: 00:00:00
+      source:
+        control: time
+        settings:
+          disabled: 'false'
+    monday:
+      title: _('Monday')
+      type: checkbox
+      defaultValue: 1
+    tuesday:
+      title: _('Tuesday')
+      type: checkbox
+      defaultValue: 1
+    wednesday:
+      title: _('Wednesday')
+      type: checkbox
+      defaultValue: 1
+    thursday:
+      title: _('Thursday')
+      type: checkbox
+      defaultValue: 1
+    friday:
+      title: _('Friday')
+      type: checkbox
+      defaultValue: 1
+    saturday:
+      title: _('Saturday')
+      type: checkbox
+      defaultValue: 1
+    sunday:
+      title: _('Sunday')
+      type: checkbox
+      defaultValue: 1
 staging:
   _extends: production
 testing:

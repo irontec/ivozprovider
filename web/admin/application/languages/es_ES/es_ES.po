@@ -128,6 +128,9 @@ msgstr "Los carácteres permitidos son a-z, A-Z, 0-9, guión bajo y '-'"
 msgid "Allowed video codecs"
 msgstr "Codecs video permitidos"
 
+msgid "Always"
+msgstr "Siempre"
+
 msgid "An error occurred"
 msgstr "Ha ocurrido un error"
 
@@ -491,6 +494,9 @@ msgstr "Código de País"
 
 msgid "Created"
 msgstr "Creado"
+
+msgid "Custom"
+msgstr "A medida"
 
 msgid "DDI"
 msgid_plural "DDIs"
@@ -2327,6 +2333,9 @@ msgid "Timing"
 msgid_plural "Timing"
 msgstr[0] "Timing"
 msgstr[1] "Timings"
+
+msgid "Timing type"
+msgstr "Tipo timing"
 
 msgid "To address"
 msgstr "Dirección destino"
