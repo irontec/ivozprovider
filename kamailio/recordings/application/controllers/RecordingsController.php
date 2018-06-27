@@ -317,7 +317,7 @@ class RecordingsController extends Zend_Controller_Action
                 $subject = str_replace($search, $replace, $subject);
             }
 
-            $mail = new Zend_Mail('utf8');
+            $mail = new Zend_Mail('UTF-8');
             $mail->setBodyText($body);
             $mail->setSubject($subject);
             $mail->setFrom($fromAddress, $fromName);
@@ -360,7 +360,7 @@ class RecordingsController extends Zend_Controller_Action
                 $subject = str_replace($search, $replace, $subject);
             }
 
-            $mail = new Zend_Mail('utf8');
+            $mail = new Zend_Mail('UTF-8');
             $mail->setBodyText($body);
             $mail->setSubject($subject);
             $mail->setFrom($fromAddress, $fromName);
