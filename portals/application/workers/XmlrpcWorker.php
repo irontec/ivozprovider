@@ -95,7 +95,7 @@ class XmlrpcWorker extends Iron_Gearman_Worker
         $options = $this->_bootstrap->getOption('gearmand');
         $mailOptions = $options["mail"];
 
-        $mail = new \Zend_Mail();
+        $mail = new \Zend_Mail('UTF-8');
         $mail
         ->setBodyText($message)
         ->setSubject($mailOptions["subject"])
