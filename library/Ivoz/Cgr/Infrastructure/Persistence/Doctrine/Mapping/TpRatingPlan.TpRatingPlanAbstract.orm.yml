@@ -58,6 +58,54 @@ Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanAbstract:
       options:
         default: CURRENT_TIMESTAMP
       column: created_at
+    timingType:
+      type: string
+      nullable: true
+      length: 10
+      options:
+        fixed: false
+        comment: '[enum:always|custom]'
+        default: 'always'
+      column: timing_type
+    timeIn:
+      type: time
+      nullable: false
+      column: time_in
+    monday:
+      type: boolean
+      nullable: true
+      options:
+        default: '1'
+    tuesday:
+      type: boolean
+      nullable: true
+      options:
+        default: '1'
+    wednesday:
+      type: boolean
+      nullable: true
+      options:
+        default: '1'
+    thursday:
+      type: boolean
+      nullable: true
+      options:
+        default: '1'
+    friday:
+      type: boolean
+      nullable: true
+      options:
+        default: '1'
+    saturday:
+      type: boolean
+      nullable: true
+      options:
+        default: '1'
+    sunday:
+      type: boolean
+      nullable: true
+      options:
+        default: '1'
   manyToOne:
     ratingPlan:
       targetEntity: \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface
@@ -71,14 +119,14 @@ Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanAbstract:
           referencedColumnName: id
           onDelete: cascade
       orphanRemoval: false
-    destinationRate:
-      targetEntity: \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface
+    destinationRateGroup:
+      targetEntity: \Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface
       cascade: {  }
       fetch: LAZY
       mappedBy: null
       inversedBy: null
       joinColumns:
-        destinationRateId:
+        destinationRateGroupId:
           nullable: false
           referencedColumnName: id
           onDelete: cascade
