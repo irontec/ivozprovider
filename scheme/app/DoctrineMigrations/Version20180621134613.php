@@ -100,6 +100,7 @@ class Version20180621134613 extends AbstractMigration
         $this->addSql('DROP INDEX IDX_800B60515EA9D64D ON ast_ps_endpoints');
         $this->addSql('ALTER TABLE ast_ps_endpoints CHANGE retailaccountid residentialDeviceId INT UNSIGNED DEFAULT NULL');
         $this->addSql('ALTER TABLE ast_ps_endpoints ADD CONSTRAINT FK_800B60518B329DCD FOREIGN KEY (residentialDeviceId) REFERENCES ResidentialDevices (id) ON DELETE CASCADE');
+        $this->addSql('UPDATE ast_ps_endpoints SET context = "residential" WHERE context = "retail"');
         $this->addSql('CREATE INDEX IDX_800B60518B329DCD ON ast_ps_endpoints (residentialDeviceId)');
         $this->addSql('DROP INDEX usersCdr_retailAccountId ON kam_users_cdrs');
         $this->addSql('ALTER TABLE kam_users_cdrs CHANGE retailaccountid residentialDeviceId INT UNSIGNED DEFAULT NULL');
