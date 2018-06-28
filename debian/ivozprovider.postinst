@@ -32,9 +32,14 @@ function setup_mysql()
     db_get ivozprovider/mysql_password_old  || true
     MYSQL_PASSWORD_OLD=$RET
 
-    # Check if mysql password has changed
-    if [ -n "$MYSQL_PASSWORD_OLD" ] &&  [ "$MYSQL_PASSWORD" != "$MYSQL_PASSWORD_OLD" ]; then
-        export MYSQL_PWD=$MYSQL_PASSWORD_OLD
+    if [ -n "$MYSQL_PASSWORD_OLD" ]; then
+        # Check if mysql password has changed
+        if [ "$MYSQL_PASSWORD" != "$MYSQL_PASSWORD_OLD" ]; then
+            export MYSQL_PWD=$MYSQL_PASSWORD_OLD
+        else
+            # Password didn't changed, job's done
+            return
+        fi
     else
         export MYSQL_PWD=$MYSQL_PASSWORD
     fi
