@@ -32,6 +32,7 @@ Scenario: I create termimals
 Scenario: I can edit terminals
   Given I can see at least one row
    When I click on "Terminals" first elements edit button
+    And I fill out the form with "company/terminals/edit" data fixture
     And I click on save button
    Then I can see confirmation dialog
    When I click on close dialog button

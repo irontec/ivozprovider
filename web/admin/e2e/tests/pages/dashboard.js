@@ -56,7 +56,7 @@ function dashboard () {
       .click(this.elements.emulatorSelectorOptions.selector + nthChild)
       .click('@dialogSubmitBtn');
 
-    this.api.pause(100);
+    this.api.pause(200);
     this.waitForElementNotPresent('@loadingPanel');
     this.api.pause(50);
 
