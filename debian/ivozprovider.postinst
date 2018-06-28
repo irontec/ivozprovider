@@ -20,7 +20,7 @@ function setup_bind()
     sed -r -i "s/(jobs            IN      A      ) .*/\1 $RET/"     /etc/bind/db.ivozprovider.local
 
     # Restart Local DNS
-    /bin/systemctl start bind9
+    /bin/systemctl restart bind9
 }
 
 function setup_mysql()
@@ -59,6 +59,14 @@ function setup_mysql()
 			GRANT ALL ON ivozprovider.* TO 'root'@'$HOSTNAME' IDENTIFIED BY '$MYSQL_PASSWORD';
 			FLUSH PRIVILEGES;
 EOF
+
+    # Regenerate all aplications cache
+    /opt/irontec/ivozprovider/scheme/bin/console cache:clear --quiet --no-interaction
+    /opt/irontec/ivozprovider/web/rest/bin/console cache:clear --quiet --no-interaction
+    /opt/irontec/ivozprovider/asterisk/agi/bin/console cache:clear --quiet --no-interaction
+    /opt/irontec/ivozprovider/microservices/balances/bin/console cache:clear --quiet --no-interaction
+    /opt/irontec/ivozprovider/microservices/recordings/bin/console cache:clear --quiet --no-interaction
+    /opt/irontec/ivozprovider/microservices/workers/bin/console cache:clear --quiet --no-interaction
 }
 
 function setup_proxies()
@@ -97,7 +105,7 @@ function setup_portals
 {
     db_get ivozprovider/language
     PORTAL_LANG=$RET
-    sed -i -r "s/(lang: ).*/\1 $PORTAL_LANG/" /opt/irontec/ivozprovider/web/admin/application/configs/application.ini
+    sed -i -r "s/(lang: ).*/\1 $PORTAL_LANG/" /opt/irontec/ivozprovider/web/admin/application/configs/klear/klear.yaml
 }
 
 function setup_pbx()
@@ -120,7 +128,7 @@ function setup_media_relays()
 function setup_sshd()
 {
     # Allow root login using password
-    sed -i -r "s/(PermitRootLogin) .*/\1 yes/"  /etc/ssh/sshd_config
+    sed -i -r "s/#PermitRootLogin .*/PermitRootLogin yes/"  /etc/ssh/sshd_config
 }
 
 function start_services()
@@ -138,17 +146,6 @@ function start_services()
     # Start asterisk right now :p
     /bin/systemctl $ACTION asterisk
 }
-
-function cache_clear_all
-{
-    /opt/irontec/ivozprovider/scheme/bin/console cache:clear --quiet --no-interaction
-    /opt/irontec/ivozprovider/web/rest/bin/console cache:clear --quiet --no-interaction
-    /opt/irontec/ivozprovider/asterisk/agi/bin/console cache:clear --quiet --no-interaction
-    /opt/irontec/ivozprovider/microservices/balances/bin/console cache:clear --quiet --no-interaction
-    /opt/irontec/ivozprovider/microservices/recordings/bin/console cache:clear --quiet --no-interaction
-    /opt/irontec/ivozprovider/microservices/workers/bin/console cache:clear --quiet --no-interaction
-}
-
 
 function enable_services()
 {
@@ -177,8 +174,6 @@ if [ -z "$2" ] || [ "$1" == "configure" ]; then
     setup_media_relays
     # Setup ssh daemon
     setup_sshd
-    # Clear services caches
-    cache_clear_all
     # Restart services
     start_services
 fi
