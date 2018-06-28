@@ -730,7 +730,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"sipProxy\": \"fakepeerserver.com\",\t\n  \"peeringContract\": {{peeringContractId}},\n  \"brand\": {{brandId}}\n}"
+							"raw": "{\n  \"sipProxy\": \"127.0.0.1\",\t\n  \"peeringContract\": {{peeringContractId}},\n  \"brand\": {{brandId}}\n}"
 						},
 						"url": {
 							"raw": "{{api_url}}/peer_servers",
