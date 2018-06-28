@@ -53,7 +53,7 @@ class UpdateByResidentialDevice implements ResidentialDeviceLifecycleEventHandle
 
             $endpointDTO = PsEndpoint::createDto();
             $endpointDTO
-                ->setContext('retail')
+                ->setContext('residential')
                 ->setSendDiversion('yes')
                 ->setSendPai('yes');
         } else {
