@@ -30,5 +30,5 @@ users:
 
   - residential: &residential_cred
         username: "20000"
-        password: r3s1d3nt14lp4sSW0rd+
+        password: r3S1d3nT14lP4sSW0rd+
         domain: brand-bbs.ivozprovider.local

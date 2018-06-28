@@ -5,8 +5,8 @@ scenarios:
     timeout: 25
     sessions:
 
-      # Retail: Call to Alice DDI
-      - retail:
+      # Residential: Call to Alice DDI
+      - residential:
           - wait
           - call:
               dest: 999661001
@@ -15,7 +15,7 @@ scenarios:
           - waitfor: CONFIRMED
           - waitfor: DISCONNCTD
 
-      # Alice: Wait for call from retail
+      # Alice: Wait for call from residential
       - alice:
           - register:
               <<: *alice_cred

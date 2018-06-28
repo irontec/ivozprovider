@@ -3601,7 +3601,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"20000\",\n  \"transport\": \"udp\",\n  \"password\": \"r3s1d3nt14lp4sSW0rd+\",\n  \"directConnectivity\": \"no\",\n  \"brand\": {{brandId}},\n  \"company\": {{residentialId}}\n}"
+							"raw": "{\n  \"name\": \"20000\",\n  \"transport\": \"udp\",\n  \"password\": \"r3S1d3nT14lP4sSW0rd+\",\n  \"directConnectivity\": \"no\",\n  \"brand\": {{brandId}},\n  \"company\": {{residentialId}}\n}"
 						},
 						"url": {
 							"raw": "{{api_url}}/residential_devices",
@@ -3651,7 +3651,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"ddi\": \"999920000\",\n  \"routeType\": \"residentialDevice\",\n  \"company\": {{residentialId}},\n  \"brand\": {{brandId}},\n  \"residentialDevice\": {{residentialDeviceId}},\n  \"peeringContract\": {{peeringContractId}},\n  \"country\": 235\n}"
+							"raw": "{\n  \"ddi\": \"999920000\",\n  \"routeType\": \"residential\",\n  \"company\": {{residentialId}},\n  \"brand\": {{brandId}},\n  \"residentialDevice\": {{residentialDeviceId}},\n  \"peeringContract\": {{peeringContractId}},\n  \"country\": 235\n}"
 						},
 						"url": {
 							"raw": "{{api_url}}/ddis",
