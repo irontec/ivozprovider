@@ -42,6 +42,7 @@ function setup_mysql()
         fi
     else
         export MYSQL_PWD=$MYSQL_PASSWORD
+        db_set ivozprovider/mysql_password_old $MYSQL_PASSWORD
     fi
 
     # Setup global mysql password
