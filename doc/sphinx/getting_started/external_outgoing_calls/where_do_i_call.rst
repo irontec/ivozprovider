@@ -12,3 +12,7 @@ in an existing **target pattern**.
 
     /brand/routing/target_patterns
     /brand/routing/target_pattern_groups
+
+
+To achieve our goal of making an external call to a spanish number, we didn't have
+to modify the initial contents of this two sections :)

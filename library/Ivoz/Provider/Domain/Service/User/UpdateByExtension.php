@@ -66,6 +66,11 @@ class UpdateByExtension implements ExtensionLifecycleEventHandlerInterface
                 'id' => $originalValue
             ]);
 
+            if (!$prevUser) {
+                // User has been removed
+                return;
+            }
+
             $prevUser->setExtension(null);
         }
 

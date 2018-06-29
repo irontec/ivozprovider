@@ -87,20 +87,20 @@ production:
           order:
             User.name: asc
         'null': _("Unassigned")
-    retailAccount:
-      title: _('Retail Account')
+    residentialDevice:
+      title: _('Residential Device')
       type: select
       source:
         data: mapper
         config:
-          entity: \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount
+          entity: \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice
           filterClass: IvozProvider_Klear_Filter_Company
           fieldName:
             fields:
               - name
             template: '%name%'
           order:
-            RetailAccount.name: asc
+            ResidentialDevice.name: asc
         'null': _("Unassigned")
     friend:
       title: _('Friend')

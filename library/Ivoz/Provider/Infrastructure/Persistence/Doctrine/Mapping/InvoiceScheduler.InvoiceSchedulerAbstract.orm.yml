@@ -1,0 +1,68 @@
+Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerAbstract:
+  type: mappedSuperclass
+  uniqueConstraints:
+    invoiceNumberSequence_iden_brand:
+      columns:
+        - iden
+        - brandId
+  fields:
+    iden:
+      type: string
+      nullable: false
+      length: 40
+      options:
+        fixed: false
+    unit:
+      type: string
+      nullable: false
+      length: 30
+      options:
+        fixed: false
+        comment: '[enum:week|month|year]'
+        default: 'month'
+    frequency:
+      type: smallint
+      nullable: false
+      options:
+        unsigned: true
+    email:
+      type: string
+      nullable: false
+      length: 140
+      options:
+        fixed: false
+    inProgress:
+      type: boolean
+      nullable: false
+      options:
+        default: '0'
+      column: inProgress
+    lastExecution:
+      type: datetime
+      nullable: true
+      column: lastExecution
+  manyToOne:
+    brand:
+      targetEntity: \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        brandId:
+          referencedColumnName: id
+          nullable: false
+          onDelete: cascade
+      orphanRemoval: false
+    numberSequence:
+      targetEntity: \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        invoiceNumberSequenceId:
+          referencedColumnName: id
+          nullable: true
+          onDelete: set null
+      orphanRemoval: false

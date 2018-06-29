@@ -13,10 +13,26 @@ production:
       <<: *kamTrunksCdrsList_screenLink
       forcedValues:
         <<: *forcedBrand
+      fields:
+        <<: *kamTrunksCdrs_fieldsLink
+        options:
+          title: _("Options")
+          screens:
+            kamTrunksCdrsView_screen: true
+          dialogs:
+            tarificateCall_dialog: ${auth.brandFeatures.billing.enabled}
+          default: kamTrunksCdrsView_screen
+      options:
+        title: _("Options")
+        dialogs:
+          tarificateCall_dialog: true
     kamTrunksCdrsView_screen:
       <<: *kamTrunksCdrsView_screenLink
       forcedValues:
         <<: *forcedBrand
+
+  dialogs:
+    <<: *kamTrunksCdrs_dialogsLink
 
 staging:
   _extends: production

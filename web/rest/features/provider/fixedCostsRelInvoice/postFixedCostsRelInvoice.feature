@@ -48,7 +48,8 @@ Feature: Create fixed costs rel invoices
               },
               "invoiceTemplate": 1,
               "brand": 1,
-              "company": 1
+              "company": 1,
+              "numberSequence": null
           }
       }
     """
@@ -89,7 +90,8 @@ Feature: Create fixed costs rel invoices
               },
               "invoiceTemplate": 1,
               "brand": 1,
-              "company": 1
+              "company": 1,
+              "numberSequence": null
           }
       }
     """

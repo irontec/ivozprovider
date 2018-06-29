@@ -91,8 +91,8 @@ mappers:
         modelFile: ExternalCallFilters,
         entity: 'Ivoz\\Provider\\Domain\\Model\\ExternalCallFilter\\ExternalCallFilter'
     }
-  - &ExternalCallFiltersRetail {
-        modelFile: ExternalCallFiltersRetail,
+  - &ExternalCallFiltersResidential {
+        modelFile: ExternalCallFiltersResidential,
         entity: 'Ivoz\\Provider\\Domain\\Model\\ExternalCallFilter\\ExternalCallFilter'
     }
   - &FaxesInOut {
@@ -138,6 +138,10 @@ mappers:
   - &InvoiceTemplates {
         modelFile: InvoiceTemplates,
         entity: 'Ivoz\\Provider\\Domain\\Model\\InvoiceTemplate\\InvoiceTemplate'
+    }
+  - &InvoiceNumberSequences {
+        modelFile: InvoiceNumberSequences,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\InvoiceNumberSequence\\InvoiceNumberSequence'
     }
   - &IvrEntries {
         modelFile: IvrEntries,
@@ -227,12 +231,12 @@ mappers:
         modelFile: Recordings,
         entity: 'Ivoz\\Provider\\Domain\\Model\\Recording\\Recording'
     }
-  - &RetailAccounts {
-        modelFile: RetailAccounts,
-        entity: 'Ivoz\\Provider\\Domain\\Model\\RetailAccount\\RetailAccount'
+  - &ResidentialDevices {
+        modelFile: ResidentialDevices,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\ResidentialDevice\\ResidentialDevice'
     }
-  - &RetailClients {
-        modelFile: RetailClients,
+  - &ResidentialClients {
+        modelFile: ResidentialClients,
         entity: 'Ivoz\\Provider\\Domain\\Model\\Company\\Company'
   }
   - &RoutingPatternGroups {
@@ -318,10 +322,6 @@ mappers:
   - &Trusted {
         modelFile: KamTrusted,
         entity: 'Kam\\Model\\Trusted\\Trusted'
-    }
-  - &Rtpproxy {
-        modelFile: KamRtpproxy,
-        entity: 'Kam\\Model\\Rtpproxy\\Rtpproxy'
     }
   - &Rtpengine {
         modelFile: KamRtpengine,

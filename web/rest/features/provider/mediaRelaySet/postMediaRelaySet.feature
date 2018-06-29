@@ -23,7 +23,6 @@ Feature: Create media relay sets
        {
           "name": "New",
           "description": "New media relay set",
-          "type": "rtpproxy",
           "id": 3
       }
     """
@@ -40,7 +39,6 @@ Feature: Create media relay sets
        {
           "name": "New",
           "description": "New media relay set",
-          "type": "rtpproxy",
           "id": 3
       }
     """

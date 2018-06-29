@@ -26,7 +26,6 @@ ivozprovider-profile-data
 ivozprovider-profile-portal
 ivozprovider-profile-proxy
 ivozprovider-recordings
-ivozprovider-rtpproxy:#ARCH#
 ivozprovider-rtpengine:#ARCH#
 ivozprovider-scheme
 ivozprovider-web-admin

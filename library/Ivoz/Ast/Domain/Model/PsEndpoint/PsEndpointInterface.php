@@ -306,20 +306,20 @@ interface PsEndpointInterface extends LoggableEntityInterface
     public function getFriend();
 
     /**
-     * Set retailAccount
+     * Set residentialDevice
      *
-     * @param \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount
+     * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice
      *
      * @return self
      */
-    public function setRetailAccount(\Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount = null);
+    public function setResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice = null);
 
     /**
-     * Get retailAccount
+     * Get residentialDevice
      *
-     * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface
+     * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface
      */
-    public function getRetailAccount();
+    public function getResidentialDevice();
 
 }
 

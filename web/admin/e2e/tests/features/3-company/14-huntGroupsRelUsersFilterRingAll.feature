@@ -1,7 +1,6 @@
 @company
 @huntGroupsRelUsersFilterRingAll
 @company14
-@retry
 
 Feature: Hunt groups rel users filter ring all admin page
   As a main operator

@@ -185,6 +185,22 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
     public function getNumberCountry();
 
     /**
+     * Set residentialDevice
+     *
+     * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice
+     *
+     * @return self
+     */
+    public function setResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface $residentialDevice = null);
+
+    /**
+     * Get residentialDevice
+     *
+     * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface
+     */
+    public function getResidentialDevice();
+
+    /**
      * @param string $prefix
      * @return null|string
      */

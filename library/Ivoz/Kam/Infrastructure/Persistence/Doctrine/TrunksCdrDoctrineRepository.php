@@ -82,9 +82,7 @@ class TrunksCdrDoctrineRepository extends ServiceEntityRepository implements Tru
             ->select('count(self)')
             ->addCriteria(
                 CriteriaHelper::fromArray($conditions)
-            )
-            ->getQuery()
-            ->getSingleScalarResult();
+            );
 
         return (int) $qb->getQuery()->getSingleScalarResult();
     }
@@ -114,10 +112,72 @@ class TrunksCdrDoctrineRepository extends ServiceEntityRepository implements Tru
             ->select('count(self)')
             ->addCriteria(
                 CriteriaHelper::fromArray($conditions)
-            )
-            ->getQuery()
-            ->getSingleScalarResult();
+            );
 
         return (int) $qb->getQuery()->getSingleScalarResult();
+    }
+
+    /**
+     * @param array $pks
+     * @return bool
+     */
+    public function areRetarificable(array $pks)
+    {
+        $qb = $this->createQueryBuilder('self');
+
+        $conditions = [
+            ['id', 'in', $pks],
+            'or' => [
+                ['invoice', 'isNotNull'],
+                ['peeringContract', 'isNull'],
+                ['peeringContract', 'eq', '']
+            ]
+        ];
+
+        $qb
+            ->select('count(self)')
+            ->addCriteria(
+                CriteriaHelper::fromArray($conditions)
+            );
+
+        $elementNumber = (int) $qb->getQuery()->getSingleScalarResult();
+
+        return $elementNumber === 0;
+    }
+
+    /**
+     * @param array $ids
+     * @return array
+     */
+    public function idsToCgrid(array $ids)
+    {
+        $qb = $this->createQueryBuilder('self');
+
+        $conditions = [
+            ['id', 'in', $ids]
+        ];
+
+        $qb
+            ->select('self.cgrid')
+            ->addCriteria(
+                CriteriaHelper::fromArray($conditions)
+            );
+
+        $result = $qb
+            ->getQuery()
+            ->getScalarResult();
+
+        $cgrids = array_map(
+            function ($item) {
+                return $item['cgrid'];
+            },
+            $result
+        );
+
+        if (count($ids) !== count($cgrids)) {
+            throw new \DomainException('Some id were not found');
+        }
+
+        return $cgrids;
     }
 }

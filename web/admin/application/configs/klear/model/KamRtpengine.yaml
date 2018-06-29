@@ -7,12 +7,7 @@ production:
       trim: both
       required: true
       maxLength: 128
-      info:
-        type: box
-        position: left
-        icon: help
-        text: _("e.g. udp:127.0.0.1:22223")
-        label: _("Need help?")
+      defaultValue: "udp:127.0.0.1:22223"
     weight:
       title: _('Weight')
       type: number

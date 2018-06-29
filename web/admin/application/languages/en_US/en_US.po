@@ -559,6 +559,9 @@ msgstr "Do not disturb"
 msgid "Do you want to delete this %s?"
 msgstr "Do you want to delete this %s?"
 
+msgid "Do you want to rerate selected calls?"
+msgstr "Do you want to rerate selected calls?"
+
 msgid "Domain"
 msgid_plural "Domains"
 msgstr[0] "Domain"
@@ -618,8 +621,8 @@ msgid "Emulate Company %s"
 msgstr "Emulate Company %s"
 
 #, python-format
-msgid "Emulate Retail Client %s"
-msgstr "Emulate Retail Client %s"
+msgid "Emulate Residential Client %s"
+msgstr "Emulate Residential Client %s"
 
 #, python-format
 msgid "Emulate Wholesale Client %s"
@@ -1022,6 +1025,9 @@ msgstr ""
 msgid "Inconditional"
 msgstr "Inconditional"
 
+msgid "Increment"
+msgstr "Increment"
+
 msgid "Insert your username"
 msgstr "Insert your username"
 
@@ -1051,6 +1057,11 @@ msgstr "Invoice data"
 msgid "Invoice has been enqueued. It will be generated as soon as posible."
 msgstr "Invoice has been enqueued. It will be generated as soon as posible."
 
+msgid "Invoice number sequence"
+msgid_plural "Invoice number sequences"
+msgstr[0] "Invoice number sequence"
+msgstr[1] "Invoice number sequences"
+
 msgid "Invoice template"
 msgid_plural "Invoice templates"
 msgstr[0] "Invoice template"
@@ -1061,6 +1072,9 @@ msgstr "Invoice template tester"
 
 msgid "Invoice(s) enqueued"
 msgstr "Invoice(s) enqueued"
+
+msgid "Invoiced calls can't be metered again"
+msgstr "Invoiced calls can't be metered again"
 
 msgid "Invoices have been enqueued. They will be generated as soon as posible."
 msgstr ""
@@ -1074,6 +1088,9 @@ msgstr "Is boss"
 
 msgid "Is sent in the username of Contact header in generated REGISTER."
 msgstr "Is sent in the username of Contact header in generated REGISTER."
+
+msgid "Iteration"
+msgstr "Iteration"
 
 #, python-format
 msgid "Join to %s %2s"
@@ -1093,6 +1110,9 @@ msgstr "Last provision date"
 
 msgid "Lastname"
 msgstr "Lastname"
+
+msgid "Latest value"
+msgstr "Latest value"
 
 msgid "Least recent"
 msgstr "Least recent"
@@ -1439,6 +1459,9 @@ msgid_plural "Numeric transformations"
 msgstr[0] "Numeric transformation"
 msgstr[1] "Numeric transformations"
 
+msgid "Ok"
+msgstr "Ok"
+
 msgid "On-demand"
 msgstr "On-demand"
 
@@ -1609,6 +1632,9 @@ msgstr "Pin protected"
 
 msgid "Platform Configuration"
 msgstr "Platform Configuration"
+
+msgid "Please select only uninvoiced calls"
+msgstr "Please select only uninvoiced calls"
 
 msgid "Please, choose a file to import"
 msgstr "Please, choose a file to import"
@@ -1791,6 +1817,11 @@ msgstr "Regular Expression"
 msgid "Replace expr"
 msgstr "Replace expr"
 
+msgid "Rerate call"
+msgid_plural "Rerate calls"
+msgstr[0] "Rerate call"
+msgstr[1] "Rerate calls"
+
 msgid "Resend"
 msgstr "Resend"
 
@@ -1799,6 +1830,21 @@ msgstr "Resend fax"
 
 msgid "Resend to"
 msgstr "Resend to"
+
+msgid "Residential"
+msgid_plural "Residentials"
+msgstr[0] "Residential"
+msgstr[1] "Residentials"
+
+msgid "Residential Client"
+msgid_plural "Residential Clients"
+msgstr[0] "Residential Client"
+msgstr[1] "Residential Clients"
+
+msgid "Residential Device"
+msgid_plural "Residential Devices"
+msgstr[0] "Residential Device"
+msgstr[1] "Residential Devices"
 
 msgid "Restore backup"
 msgstr "Restore backup"
@@ -1811,21 +1857,6 @@ msgstr "Restore last backup"
 
 msgid "Results"
 msgstr "Results"
-
-msgid "Retail"
-msgid_plural "Retails"
-msgstr[0] "Retail"
-msgstr[1] "Retails"
-
-msgid "Retail Account"
-msgid_plural "Retail Accounts"
-msgstr[0] "Retail Account"
-msgstr[1] "Retail Accounts"
-
-msgid "Retail Client"
-msgid_plural "Retail Clients"
-msgstr[0] "Retail Client"
-msgstr[1] "Retail Clients"
 
 msgid "Ring all"
 msgstr "Ring all"
@@ -1954,6 +1985,9 @@ msgstr "Send new %s"
 msgid "Send to IP[:PORT] instead of SIP Proxy address"
 msgstr "Send to IP[:PORT] instead of SIP Proxy address"
 
+msgid "Sequence length"
+msgstr "Sequence length"
+
 msgid "Server data"
 msgstr "Server data"
 
@@ -2024,6 +2058,12 @@ msgstr "Target type"
 
 msgid "Target type value"
 msgstr "Target type value"
+
+msgid "Tarificate Calls?"
+msgstr "Tarificate Calls?"
+
+msgid "Tarificator Job started"
+msgstr "Tarificator Job started"
 
 msgid "Tax rate"
 msgstr "Tax rate"
@@ -2476,12 +2516,6 @@ msgstr "deny"
 
 msgid "e.g. 8.8.8.8"
 msgstr "e.g. 8.8.8.8"
-
-msgid "e.g. udp:127.0.0.1:22222"
-msgstr "e.g. udp:127.0.0.1:22222"
-
-msgid "e.g. udp:127.0.0.1:22223"
-msgstr "e.g. udp:127.0.0.1:22223"
 
 msgid "encoding"
 msgstr "encoding"

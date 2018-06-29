@@ -28,7 +28,7 @@ users:
         password: fr13ndp4SSW0rd+
         domain: bbs.ivozprovider.local
 
-  - retail: &retail_cred
+  - residential: &residential_cred
         username: "20000"
-        password: r3t41Lp4sSW0rd+
-        domain: retail-bbs.ivozprovider.local
+        password: r3S1d3nT14lP4sSW0rd+
+        domain: brand-bbs.ivozprovider.local

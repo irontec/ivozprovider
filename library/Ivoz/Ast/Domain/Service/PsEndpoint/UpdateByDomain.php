@@ -7,8 +7,8 @@ use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointDto;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
+use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalInterface;
-use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
 use Ivoz\Provider\Domain\Service\Domain\DomainLifecycleEventHandlerInterface;
 
 class UpdateByDomain implements DomainLifecycleEventHandlerInterface
@@ -40,12 +40,12 @@ class UpdateByDomain implements DomainLifecycleEventHandlerInterface
             }
         }
 
-        /** @var RetailAccountInterface[] $retailAccounts */
-        $retailAccounts = $entity->getRetailAccounts();
+        /** @var ResidentialDeviceInterface[] $residentialDevices */
+        $residentialDevices = $entity->getResidentialDevices();
 
-        foreach ($retailAccounts as $retailAccount) {
-            if (!$retailAccount->getFromDomain()) {
-                $this->updateEndpoint($retailAccount->getAstPsEndpoint(), $entity->getDomain());
+        foreach ($residentialDevices as $residentialDevice) {
+            if (!$residentialDevice->getFromDomain()) {
+                $this->updateEndpoint($residentialDevice->getAstPsEndpoint(), $entity->getDomain());
             }
         }
 

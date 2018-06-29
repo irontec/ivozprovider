@@ -19,7 +19,7 @@ Ivoz\Provider\Domain\Model\Extension\ExtensionAbstract:
       length: 25
       options:
         fixed: false
-        comment: '[enum:user|number|ivr|huntGroup|conferenceRoom|friend|queue|retailAccount|conditional]'
+        comment: '[enum:user|number|ivr|huntGroup|conferenceRoom|friend|queue|conditional]'
       column: routeType
     numberValue:
       type: string

@@ -49,6 +49,16 @@ class IvozProvider_Klear_Options_OptionsCustomizer implements \KlearMatrix_Model
             case "emulateCompany_dialog":
                 $show = $this->_checkEmulation("company");
                 break;
+
+            case 'generateInvoice_dialog':
+            case 'invoicesDel_dialog':
+            case 'invoicesEdit_screen':
+                $show = $parentModel->getStatus() !== 'created';
+                break;
+            case 'invoicesView_screen':
+                $show = $parentModel->getStatus() === 'created';
+                break;
+
             case "pricingPlansEdit_screen":
                 $show = !$this->_pricingPlanHasStarted();
                 break;
@@ -65,12 +75,6 @@ class IvozProvider_Klear_Options_OptionsCustomizer implements \KlearMatrix_Model
             case "pricingPlansRelTargetPatternsListView_screen":
                 $show = $this->_pricingPlanHasStarted();
 //                 $show = false;
-                break;
-            case "kamRtpproxyList_screen":
-                $show = $this->_isTypeRtpproxy();
-                break;
-            case "kamRtpengineList_screen":
-                $show = !$this->_isTypeRtpproxy();
                 break;
             case "mediaRelaySetsEdit_screen":
             case "mediaRelaySetsDel_dialog":
@@ -131,20 +135,7 @@ class IvozProvider_Klear_Options_OptionsCustomizer implements \KlearMatrix_Model
 
     protected function _isRemovable() {
         $name = $this->_parentModel->getName();
-        if ($name == 'Default-rtpproxy' || $name == 'Default-rtpengine') {
-            return false;
-        }
-
-        return true;
-    }
-
-    protected function _isTypeRtpproxy() {
-        $type = $this->_parentModel->getType();
-        if ($type == 'rtpproxy') {
-            return true;
-        }
-
-        return false;
+        return $name != 'Default';
     }
 
     protected function _isEditable() {

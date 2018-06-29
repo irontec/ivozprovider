@@ -7,18 +7,69 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-17 19:10+0200\n"
+"POT-Creation-Date: 2018-06-01 16:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.5.1\n"
+"Generated-By: Babel 2.4.0\n"
 
 #: ../../brand/balances.rst:3
 msgid "Balances"
 msgstr "Saldos"
+
+#: ../../brand/balances.rst:5
+msgid ""
+"This section displays the balance status for :ref:`Prepaid billing` and "
+":ref:`Pseudo-prepaid billing` clients."
+msgstr ""
+"Esta sección muestra el estado de saldos para clientes con :ref:`Tarificación prepago` "
+"y :ref:`Tarificación pseudo-prepago`"
+
+#: ../../brand/balances.rst:7
+msgid "Following sections are available for each client:"
+msgstr "Las siguientes secciones estan disponibles para cada cliente:"
+
+#: ../../brand/balances.rst:10
+msgid "Balance Movements List"
+msgstr "Listado de movimientos de saldo"
+
+#: ../../brand/balances.rst:12
+msgid ""
+"Brand administators can keep track the balance movements (increase or "
+"decrease) on this account and their status after the movement."
+msgstr ""
+"Los administadores de marca pueden comprar el registro de movimientos "
+"(aumentos y decrementos) de cada cuenta y el estado tras el movmiento."
+
+#: ../../brand/balances.rst:16
+msgid "Billable Calls List"
+msgstr "Listado llamadas facturables"
+
+#: ../../brand/balances.rst:18
+msgid ""
+"List of calls that have decreased the balance, like the one described in "
+"the section :ref:`Billable calls`."
+msgstr ""
+"Listado de llamadas que han decrementado el saldo, como el que se "
+"describe en la sección :ref:`Llamadas facturables`."
+
+#: ../../brand/balances.rst:22
+msgid "Balance Notifications"
+msgstr "Notificaciones de saldo"
+
+#: ../../brand/balances.rst:24
+msgid ""
+"Brand administrators can configure email notifications when the balance "
+"is below a given threshold. See :ref:`Notification templates` to "
+"customize the sent email."
+msgstr ""
+"Los administradores pueden conifgurar notifiaciones vía correo "
+"electrónico cuando el saldo se encuentra por debajo de un límite pre-"
+"establecido. Ver :ref:`Plantillas de Notificaciones` para parametrizar "
+"los correos enviados."
 
 #: ../../brand/billing/bill_a_call.rst:3
 msgid "Call billing"
@@ -52,9 +103,9 @@ msgstr ""
 
 #: ../../brand/billing/bill_a_call.rst:16
 msgid ""
-"If with the current configuration (active and applicable pricing plans "
-"for a given company and for the specific destination) it won't be "
-"possible to bill the call, IvozProvider will prevent its establishment."
+"If with the current configuration (active and applicable rating plans for"
+" a given company and for the specific destination) it won't be possible "
+"to bill the call, IvozProvider will prevent its establishment."
 msgstr ""
 "Si no se va a poder tarificar atendiendo a los planes de precios activos "
 "para la empresa, la llamada no se cursará."
@@ -67,101 +118,64 @@ msgstr ""
 "En el momento en el que una llamada que implique coste se cuelga, aparece"
 " en el listado de :ref:`billable_calls`."
 
-#: ../../brand/billing/bill_a_call.rst:22
-msgid ""
-"Some minutes later, the billing task will evaluate each unbilled call and"
-" will update this fields:"
-msgstr ""
-"Pasados unos minutos, el proceso tarificador evaluará las llamadas "
-"tarificables sin coste y rellenará los siguientes campos del registro "
-"anterior:"
-
-#: ../../brand/billing/bill_a_call.rst:25
-#: ../../brand/billing/billable_calls.rst:46
-msgid "Price"
-msgstr "Precio"
+#: ../../brand/billing/bill_a_call.rst:24
+msgid "Postpaid billing"
+msgstr "Tarificación postpago"
 
 #: ../../brand/billing/bill_a_call.rst:26
-#: ../../brand/billing/billable_calls.rst:49
-msgid "Pricing plan"
-msgstr "Plan de precio"
-
-#: ../../brand/billing/bill_a_call.rst:27
-#: ../../brand/billing/billable_calls.rst:36
-msgid "Pricing pattern"
-msgstr "Patrón de destino (que es en realidad el patrón de precio)"
+msgid "Call tarification is done after the call ends"
+msgstr "La tarificación de llamadas se realiza tras el colgado"
 
 #: ../../brand/billing/bill_a_call.rst:28
-msgid "Set Metered to 'yes'"
-msgstr "Tarificado a 'Sí'"
+msgid "No configurable limit or balances involved"
+msgstr "No existe saldo ni límite de gasto configurable"
 
 #: ../../brand/billing/bill_a_call.rst:32
-msgid "Manual re-billing"
-msgstr "Retarificación manual"
+msgid "Prepaid billing"
+msgstr "Tarificación prepago"
 
 #: ../../brand/billing/bill_a_call.rst:34
+#: ../../brand/billing/bill_a_call.rst:48
+msgid "Call trarification is done during the call"
+msgstr "La tarificación de la llamada se hace durante la llamada"
+
+#: ../../brand/billing/bill_a_call.rst:36
 msgid ""
-"It may happen that the brand operator needs to re-bill an specific call "
-"due to multiple reasons:"
+"Clients with prepaid have a preconfigured balance that will be decrement "
+"during the call"
 msgstr ""
-"Puede ocurrir que una llamada se tarifique de forma incorrecta, por "
-"múltiples motivos:"
+"Los clientes con prepago tienen un saldo preconfigurado que ira "
+"decrementando durante la llamada"
 
-#: ../../brand/billing/bill_a_call.rst:37
-msgid "Mistake on imported pricing plan/pattern."
-msgstr "Plan de precio importado con una errata."
-
-#: ../../brand/billing/bill_a_call.rst:39
-msgid "Multiple pricing plans with incorrect metric value."
-msgstr "Múltiples planes de precios con métricas incorrectas."
-
-#: ../../brand/billing/bill_a_call.rst:41
-msgid "Not asociated pricing plan."
-msgstr "Plan de precio adicional sin vincular."
-
-#: ../../brand/billing/bill_a_call.rst:43
-msgid "Etc."
-msgstr "Etc."
-
-#: ../../brand/billing/bill_a_call.rst:45
-msgid "In these cases, the *brand operator* can re-bill wrongly billed calls."
-msgstr ""
-"Para estos casos, el *administrador de marca* puede re-tarificar las "
-"llamadas que considere mal tarificadas."
-
-#: ../../brand/billing/bill_a_call.rst:47
+#: ../../brand/billing/bill_a_call.rst:38
 msgid ""
-"Billing a call again means setting the price as it is made right now. It "
-"uses, therefore, the current configuration of pricing plans not the "
-"configuration of the moment the call was made."
+"When the balance reaches zero, all established calls for the client will "
+"hang up"
 msgstr ""
-"Retarificar una llamada consiste en volver a calcular el precio de la "
-"misma. Lógicamente, la retarificación se calculará en el momento "
-"solicitado, teniendo en cuenta las configuración actual de planes de "
-"precio y no las del momento del establecimiento de la llamada)."
+"Cuando el saldo llega a cero, todas las llamadas establecidas del cliente"
+" serán colgadas"
 
-#: ../../brand/billing/bill_a_call.rst:51
-msgid ""
-"In order to re-bill some calls (or just one), select them in **Brand "
-"configuration** > **Billable calls** and press the button **Bill calls**."
-msgstr ""
-"Para retarificar, basta con seleccionar las llamadas en **Configuración "
-"de Marca** > **Llamada facturables** y presionar el botón **Tarificar "
-"llamadas**:"
+#: ../../brand/billing/bill_a_call.rst:40
+#: ../../brand/billing/bill_a_call.rst:52
+msgid "Clients can not place new calls with zero or below balance"
+msgstr "Los clientes no pueden realizar nuevas llamadas con saldo cero o inferior."
 
-#: ../../brand/billing/bill_a_call.rst:56
+#: ../../brand/billing/bill_a_call.rst:42
+#: ../../brand/billing/bill_a_call.rst:54
+msgid "Low balance email notifications can be configured"
+msgstr "Es posible configurar notifaciones de correo para saldos bajos"
+
+#: ../../brand/billing/bill_a_call.rst:46
+msgid "Pseudo-prepaid billing"
+msgstr "Tarificación pseudo-prepago"
+
+#: ../../brand/billing/bill_a_call.rst:50
 msgid ""
-"**It is not possible to re-bill a call that is currently included in an "
-"existing invoice**. In other words, if a selected call has a non-empty "
-"**Invoice** field, this invoice must be deleted before. The reason behind"
-" this logic is that we don't want and invoice containing calls with a "
-"wrong price."
+"Clients with pseudo-prepaid have a preconfigured balance that will be "
+"decrement after the call ends"
 msgstr ""
-"**No se puede retarificar una llamada que esté incluida en una factura**."
-" Es decir, si la llamada seleccionada tiene el campo **Factura** con "
-"valor, habrá que borrar esta factura previamente. El motivo es estar "
-"seguros que no existen facturas con llamadas mal tarificadas: si "
-"retarificas una llamada, regeneras la factura que la contiene."
+"Los clientes con pseudo-prepago tienen un saldo preconfigurado que ira "
+"decrementando cuando las llamada finalice"
 
 #: ../../brand/billing/billable_calls.rst:5
 msgid "Billable calls"
@@ -199,7 +213,6 @@ msgid "Main level (god level)"
 msgstr "A nivel global (*god*)."
 
 #: ../../brand/billing/billable_calls.rst:19
-#: ../../brand/billing/call_registry.rst:23
 msgid "Brand level"
 msgstr "A nivel de marca."
 
@@ -240,47 +253,27 @@ msgstr "Destino"
 msgid "External number dialed."
 msgstr "Número externo al que se ha llamado."
 
-#: ../../brand/billing/billable_calls.rst:38
-msgid "Shows the :ref:`pricing pattern <price_pattern>` used to set the price."
-msgstr ""
-"Indica el :ref:`patrón de precio <price_pattern>` en base al cual se ha "
-"puesto precio a la llamada."
-
-#: ../../brand/billing/billable_calls.rst:39
+#: ../../brand/billing/billable_calls.rst:36
 msgid "Duration"
 msgstr "Duración"
 
-#: ../../brand/billing/billable_calls.rst:41
+#: ../../brand/billing/billable_calls.rst:38
 msgid "Shows how long the call lasted."
 msgstr "Indica cuánto ha durado la llamada."
 
-#: ../../brand/billing/billable_calls.rst:42
-msgid "Metered (yes/no)"
-msgstr "Tarificado (sí/no)"
+#: ../../brand/billing/billable_calls.rst:39
+msgid "Price"
+msgstr "Precio"
 
-#: ../../brand/billing/billable_calls.rst:44
-msgid ""
-"Shows if the asynchronous task that sets the price of each call has "
-"parsed each call."
-msgstr ""
-"Indica si el proceso que pone precio a las llamadas ha calculado el "
-"precio de esta llamada concreta."
-
-#: ../../brand/billing/billable_calls.rst:48
+#: ../../brand/billing/billable_calls.rst:41
 msgid "The cost of the call."
 msgstr "Coste calculado para la llamada."
 
-#: ../../brand/billing/billable_calls.rst:51
-msgid "Shows the :ref:`Pricing plan <price_plan>` used to set the price."
-msgstr ""
-":ref:`Plan de precio <price_plan>` en base al cual se ha puesto precio a "
-"la llamada."
-
-#: ../../brand/billing/billable_calls.rst:52
+#: ../../brand/billing/billable_calls.rst:42
 msgid "Peering contract"
 msgstr "Contrato de peering"
 
-#: ../../brand/billing/billable_calls.rst:54
+#: ../../brand/billing/billable_calls.rst:44
 msgid ""
 "Shows which :ref:`Peering contract <peering_contracts>` was used for each"
 " call."
@@ -288,29 +281,15 @@ msgstr ""
 "Indica por qué :ref:`Contrato de peering <peering_contracts>` ha salido "
 "la llamada."
 
-#: ../../brand/billing/billable_calls.rst:56
+#: ../../brand/billing/billable_calls.rst:46
 msgid "Invoice"
 msgstr "Factura"
 
-#: ../../brand/billing/billable_calls.rst:58
+#: ../../brand/billing/billable_calls.rst:48
 msgid "Show if a call is already included in any :ref:`Invoices`."
 msgstr "Indica si la llamada está incluida en alguna :ref:`Facturas`."
 
-#: ../../brand/billing/billable_calls.rst:59
-msgid "Type (inbound/outbound)"
-msgstr "Tipo (entrante/saliente)"
-
-#: ../../brand/billing/billable_calls.rst:61
-msgid ""
-"Since some incoming calls can imply cost (see :ref:`billing of inbound "
-"calls <bill_inbound>`), show if the call is an incoming call or an "
-"outgoung one."
-msgstr ""
-"Dado que ciertas llamadas entrantes pueden implicar coste (ver "
-":ref:`tarificación de llamadas entrantes <bill_inbound>`), indica si la "
-"llamada es entrante o saliente."
-
-#: ../../brand/billing/billable_calls.rst:65
+#: ../../brand/billing/billable_calls.rst:50
 msgid ""
 "As soon as the call is hung up, they appear in this list. In some minutes"
 " time the asynchronous process will set *Metered* to 'yes' and will "
@@ -321,85 +300,204 @@ msgstr ""
 "llamada (*Tarificado* igual a 'Sí') y tendremos disponible el **Precio** "
 "calculado."
 
-#: ../../brand/billing/call_registry.rst:5
-msgid "Call Registry"
-msgstr "Histórico de llamadas"
+#: ../../brand/billing/destination_rates.rst:5
+msgid "Destination Rates"
+msgstr "Precios destino"
 
-#: ../../brand/billing/call_registry.rst:7
+#: ../../brand/billing/destination_rates.rst:7
+msgid "A Destination rate groups some prefixes with their cost details:"
+msgstr "Los **precio destino** agrupan los prefijos y sus costes:"
+
+#: ../../brand/billing/destination_rates.rst:9
+msgid "Cost per minute"
+msgstr "Precio por minuto"
+
+#: ../../brand/billing/destination_rates.rst:10
+msgid "Call establishment cost"
+msgstr "Establecimiento de llamada"
+
+#: ../../brand/billing/destination_rates.rst:11
+msgid "Bill by seconds, by minutes, etc."
+msgstr "Facturación por segundos / minutos /etc."
+
+#: ../../brand/billing/destination_rates.rst:13
 msgid ""
-"*Call Registry* section shows the calls of the whole telephony platform "
-"and it is present in three different levels:"
+"At this point, the future brand operator may have noticed that creating "
+"thousands of pricing patterns would be a really annoying and time "
+"consuming task, as there are 254 countries, each of them with their "
+"mobile networks, landline networks, special service numbers, etc."
 msgstr ""
-"Los históricos de llamadas muestran todas las llamadas de la plataforma y"
-" se muestran a 3 niveles:"
+"En ese momento, es posible que el futuro administrador de marca se haya "
+"dado cuenta de la titánica tarea que implicaría crear miles de patrones "
+"de precio (254 países por las distintas redes móviles, fijos, "
+"numeraciones especiales, etc.) para luego poder agruparlos en un plan de "
+"precios."
 
-#: ../../brand/billing/call_registry.rst:10
-msgid "**Main management** > **Call Registry**"
-msgstr "**Gestión general** > **Histórico de llamadas**"
-
-#: ../../brand/billing/call_registry.rst:11
-msgid "**Brand configuration** > **Call Registry**"
-msgstr "**Configuración de Marca** > **Histórico de llamadas**"
-
-#: ../../brand/billing/call_registry.rst:12
-msgid "**Company configuration** > **Call Registry**"
-msgstr "**Configuración de Empresa** > **Histórico de llamadas**"
-
-#: ../../brand/billing/call_registry.rst:14
-msgid "Each section filters calls conveniently."
-msgstr ""
-"En cada uno de los niveles se muestran las llamadas filtradas "
-"convenientemente."
-
-#: ../../brand/billing/call_registry.rst:17
-msgid "Main management (god)"
-msgstr "A nivel global (god)"
-
-#: ../../brand/billing/call_registry.rst:18
+#: ../../brand/billing/destination_rates.rst:18
 msgid ""
-"Lists all the calls of the platform, showing which brand and company they"
-" belong to:"
+"That's why the creation of destination reate is done using a `CSV "
+"<https://es.wikipedia.org/wiki/CSV>`_ file. If you still want to create "
+"data manually, check section :ref:`Creating a destination rate`"
 msgstr ""
-"Muestra todas las llamadas de la plataforma, indicando la marca y la "
-"empresa de cada una de ellas:"
+"Esto es debiado a que la creaciónd e los precios destinos se realiza generalmente "
+"a través de un fichero `CSV <https://es.wikipedia.org/wiki/CSV>`_. Si quiere crear los "
+"datos de manera manual, vea la sección :ref:`Crear un precio destino`"
 
-#: ../../brand/billing/call_registry.rst:24
+#: ../../brand/billing/destination_rates.rst:24
+msgid "Importing a CSV file"
+msgstr "Importación vía CSV"
+
+#: ../../brand/billing/destination_rates.rst:26
 msgid ""
-"Lists all the calls of the currently emulated brand, showing which "
-"company they belong to:"
+"The first step is creating an empty rating plan to import the prices in "
+"(section **Brand configuration** > **Destination rates**):"
 msgstr ""
-"Muestra todas las llamadas de la marca emulada, indicando la empresa de "
-"cada una de ellas:"
+"El primer paso es crear un plan de precios vacío sobre el que importar "
+"nuestros precios (sección **Configuración de marca** > **Planes de "
+"precio**):"
 
-#: ../../brand/billing/call_registry.rst:30
-msgid "Company level"
-msgstr "A nivel de empresa"
+#: ../../brand/billing/destination_rates.rst:30
+msgid "This is the key button for the massive pricing pattern import process:"
+msgstr "El botón clave para este proceso de importación masiva es el siguiente:"
 
-#: ../../brand/billing/call_registry.rst:31
-msgid "Lists all the calls of the currently emulated company:"
-msgstr "Muestra todas las llamadas de la empresa emulada:"
-
-#: ../../brand/billing/call_registry.rst:35
+#: ../../brand/billing/destination_rates.rst:34
 msgid ""
-"`CSV <https://es.wikipedia.org/wiki/CSV>`_ export makes possible to "
-"download the list for its later analysis."
+"We can select which column contains which field, in case we want to "
+"import a `CSV <https://es.wikipedia.org/wiki/CSV>`_ file in a non-"
+"recommended format. We can also decide whether to import the first line "
+"or discard it as it may have titles instead of data."
 msgstr ""
-"El exportador a `CSV <https://es.wikipedia.org/wiki/CSV>`_ permite "
-"exportar el listado para su posterior almacenamiento o procesado."
+"En esta ventana podríamos seleccionar qué contiene cada columna, en caso "
+"de no haber creado el `CSV <https://es.wikipedia.org/wiki/CSV>`_ en el "
+"formato recomendado. Del mismo modo, se nos ofrece la posibilidad de "
+"ignorar la primera línea, en caso de que incluya los nombres de las "
+"columnas en lugar de datos."
 
-#: ../../brand/billing/call_registry.rst:38
+#: ../../brand/billing/destination_rates.rst:39
 msgid ""
-"If you choose one specific call, additional information is shown. This "
-"additional information is dependant of the current level (*god*, brand or"
-" company) and shows details about call transfers, call forwards, etc."
+"The importing process is done in background, letting the brand operator "
+"continue doing other stuff while it is finished."
 msgstr ""
-"Si se accede a una llamada concreta, se muestra información adicional "
-"sobre la misma. Esta información adicional depende del nivel (*god*, "
-"marca o empresa) y provee información sobre desvíos, transferencias, etc."
+"El proceso de importación se realiza en segundo plano, permitiendo al "
+"administrador de marca seguir configurando otros aspectos de la "
+"plataforma mientras se completa."
+
+#: ../../brand/billing/destination_rates.rst:43
+msgid "CSV format"
+msgstr "Formato CSV"
+
+#: ../../brand/billing/destination_rates.rst:45
+msgid ""
+"Although the above window allows importing non-recommended format CSV "
+"files, we encourage you to import a file in the proposed format, as it "
+"will make this process much easier."
+msgstr ""
+"A pesar de que la ventana anterior nos permite importar archivos CSV en "
+"distintos formatos, lo mejor es  importar un archivo en el formato "
+"adecuado para simplicar este proceso."
+
+#: ../../brand/billing/destination_rates.rst:49
+msgid ""
+"You can find a sample CSV for importing `here "
+"<https://raw.githubusercontent.com/ "
+"irontec/ivozprovider/artemis/web/admin/samples/pricesSample.csv>`_."
+msgstr ""
+"Puedes encontrar un CSV de ejemplo para la importación `aqui "
+"<https://raw.githubusercontent.com/ "
+"irontec/ivozprovider/artemis/web/admin/samples/pricesSample.csv>`_."
+
+#: ../../brand/billing/destination_rates.rst:53
+msgid "The order of the columns should be:"
+msgstr "El orden de las columnas debería de ser:"
+
+#: ../../brand/billing/destination_rates.rst:55
+msgid "Destination name"
+msgstr "Nombre del destino"
+
+#: ../../brand/billing/destination_rates.rst:56
+msgid "Destination prefix (E.164 with + sign)"
+msgstr "Prefijo destino (E.164 con signo +)"
+
+#: ../../brand/billing/destination_rates.rst:57
+msgid "Per minute charge"
+msgstr "Precio por minuto"
+
+#: ../../brand/billing/destination_rates.rst:58
+msgid "Establishment cost"
+msgstr "Precio de establecimiento"
+
+#: ../../brand/billing/destination_rates.rst:59
+msgid "Billing period in seconds"
+msgstr "Período de facturación en segundos"
+
+#: ../../brand/billing/destination_rates.rst:61
+msgid ""
+"It is recommended to double quote alphanumeric entries, though it is not "
+"compulsory for single word entries (or entries without odd symbols). **If"
+" they contain any comma, they MUST be quoted**."
+msgstr ""
+"Se recomienda entrecomillar con comillas dobles las entradas "
+"alfanuméricas, aunque no es necesario para entradas con una única palabra"
+" (o entradas sin símbolos raros). **Si contienen coma, es OBLIGATORIO "
+"entrecomillarlos**."
+
+#: ../../brand/billing/destination_rates.rst:65
+msgid "Floating numbers **MUST use point as decimal separator**."
+msgstr ""
+"Los **números decimales** tienen que usar el **punto como separador "
+"decimal**."
+
+#: ../../brand/billing/destination_rates.rst:67
+msgid "Numeric entries can be quoted with double quotes, but it is not mandatory."
+msgstr ""
+"Las entradas numéricas se pueden entrecomillar con comillas dobles, pero "
+"no es obligatorio."
+
+#: ../../brand/billing/destination_rates.rst:70
+msgid "The price of the call will be increased every billing period unit."
+msgstr "El precio de la llamada sera incrementado cada periodo de facturacion."
+
+#: ../../brand/billing/destination_rates.rst:72
+msgid ""
+"If *billing period* is set to 1, every second the price will be increased"
+" *price per minute* divided by 60 (bill by seconds)."
+msgstr ""
+"Si se pone a 1, implica una tarificación por segundos y cada segundo "
+"implicará un coste que será el *precio por minuto* dividido entre 60."
+
+#: ../../brand/billing/destination_rates.rst:75
+msgid ""
+"If *billing period* is set to 60, every minute the price will be "
+"increased *price per minute* (bill by minutes)."
+msgstr ""
+"Si se pone a 60, implica una tarificación por minutos y cada minuto "
+"implicará un coste que será el *precio por minuto*."
+
+#: ../../brand/billing/destination_rates.rst:79
+msgid ""
+"You can download the imported file of the destination rate. Take into "
+"account that while importing over existing data, the mathching values are"
+" overwritten and the not matching are kept. This allows downloading the "
+"imported file, changing some values and importing pricing back."
+msgstr ""
+"Puedes descargar el fichero importad del precio destino. Ten en cuenta "
+"que cuando importe ficheros sobre datos existentes, los valores que coincidan "
+"serán sobreescritos y los no coincidentes serán mantenidos. Esto permite descargar "
+"el fichero importado, cambiar algunos valores y volverlo a importar."
+
+#: ../../brand/billing/destination_rates.rst:83
+msgid ""
+"Once the import process is over, we only have to include this destination"
+" rate into some rating plan and bind it to the companies we want "
+"following the procedure explained in :ref:`Rating plans`."
+msgstr ""
+"Una vez completada la importación, solo faltaría asociar el nuevo plan de"
+" precios a las empresas que queramos, siguiendo el procedimiento "
+"explicado en :ref:`Planes de precio`."
 
 #: ../../brand/billing/index.rst:3
 msgid "Billing"
-msgstr "Tarificación y facturación"
+msgstr "Tarificación"
 
 #: ../../brand/billing/index.rst:5
 msgid ""
@@ -423,442 +521,112 @@ msgstr "Crear facturas que recojan el detalle y el consumo de sus empresas."
 msgid "We will cover this topics:"
 msgstr "Pare ello, abordaremos las siguientes cuestiones:"
 
-#: ../../brand/billing/pricing_plans.rst:3
-msgid "Pricing plans"
+#: ../../brand/billing/rating_plans.rst:3
+msgid "Rating plans"
 msgstr "Planes de precio"
 
-#: ../../brand/billing/pricing_plans.rst:5
+#: ../../brand/billing/rating_plans.rst:7
+msgid "Creating a rating plan"
+msgstr "Creando un plan de precios"
+
+#: ../../brand/billing/rating_plans.rst:9
 msgid ""
-"In :ref:`noplan_nocall` section the process of creating a *pricing plan* "
-"was described quite thoroughly and main concepts were introduced:"
+"Destination rates are grouped using Rating plans. This offers the "
+"possibility to have base pricing data and customize some destination with"
+" different prices."
 msgstr ""
-"En la sección :ref:`noplan_nocall` se hacía una introducción bastante "
-"completa sobre el proceso manual de creación de un plan de precios y los "
-"conceptos más importantes:"
 
-#: ../../brand/billing/pricing_plans.rst:8
+#: ../../brand/billing/rating_plans.rst:12
+msgid "Create a **rating plan**:"
+msgstr "Crear un **plan de precios**:"
+
+#: ../../brand/billing/rating_plans.rst:23
+msgid "And then we can add our destination rate:"
+msgstr "Y ahora podemos añadir nuestro precio destino:"
+
+#: ../../brand/billing/rating_plans.rst:33
 msgid ""
-"A pricing plan groups some pricing patterns (prefixes) with their cost "
-"details:"
+"The **metric** of the link lets you assign more than one *destination "
+"rate* for a plan, even though some destinations are included in more than"
+" one of those destination rates."
 msgstr ""
-"**Un plan de precios agrupa un listado de patrones de precio (prefijos de"
-" llamada) con sus detalles de precio**:"
+"La **metrica** permite assignar más de un *precio destino* al plan de precios, "
+"aunque exista el mismo destino en más de uno de ellos."
 
-#: ../../brand/billing/pricing_plans.rst:10
-msgid "Cost per minute"
-msgstr "Precio por minuto"
-
-#: ../../brand/billing/pricing_plans.rst:11
-msgid "Call establishment cost"
-msgstr "Establecimiento de llamada"
-
-#: ../../brand/billing/pricing_plans.rst:12
-msgid "Bill by seconds, by minutes, etc."
-msgstr "Facturación por segundos / minutos /etc."
-
-#: ../../brand/billing/pricing_plans.rst:14
+#: ../../brand/billing/rating_plans.rst:37
 msgid ""
-"A pricing plan is linked to an specific company with a period of time in "
-"which this asociation is valid."
+"If a given call can be billed with more than one destination rate, it "
+"will be billed using the one with lowest metric."
 msgstr ""
-"Un plan de precios se asocia a una empresa concreta, indicando el período"
-" de validez de dicho plan."
+"Si una llamada puede ser tarificada empleando más de un Precio destino, se "
+"empleará el que tenga menor métrica."
 
-#: ../../brand/billing/pricing_plans.rst:17
+#: ../../brand/billing/rating_plans.rst:40
 msgid ""
-"One company may have more than one valid pricing plan for an specific "
-"call in an specific moment."
+"This allows having a general *Destination rate* and concrete the price of"
+" a specific destination in another *destination rate* with lower metric "
+"(free cell phone calls, for example)."
 msgstr ""
-"Una empresa podía tener varios planes de precios en un momento concreto "
-"para una llamada concreta."
+"Esto permite tener un *Precio destino* genera y especificar un precio para "
+"un destino concreto en otro *precio destino* con una métrica menor "
+"(por ejemplo, llamadas gratuitas a móviles)."
 
-#: ../../brand/billing/pricing_plans.rst:20
+#: ../../brand/billing/rating_plans.rst:45
+msgid "Checking Rating plans"
+msgstr "Comprobando los planes de precio"
+
+#: ../../brand/billing/rating_plans.rst:46
 msgid ""
-"In such cases, the call price will be calculated using the price detail "
-"of the matching pricing plan with minor metric."
+"To check the configuration so far we can **Simulate a call** from the "
+"rating plans list."
 msgstr ""
-"En este último caso, el coste de la llamada se calcularía utilizando el "
-"plan de precio de menor métrica."
+"Para comprobar la configuración puede **Simular una llamada** desde el listado "
+"de planes de precio."
 
-#: ../../brand/billing/pricing_plans.rst:25
-msgid "Manual creation"
-msgstr "Creación manual"
-
-#: ../../brand/billing/pricing_plans.rst:27
+#: ../../brand/billing/rating_plans.rst:48
 msgid ""
-":ref:`Manual creation of a pricing plan <price_plan>` implied the "
-"previous creation of at least one :ref:`price pattern <price_pattern>`."
+"We introduce the destination number in :ref:`E.164 format <e164>`, and we"
+" can check that it matches the **rating plan** we have just created:"
 msgstr ""
-"La :ref:`creación manual de un plan de precio <price_plan>` implicaba la "
-"creación previa de un :ref:`patrón de precio <price_pattern>`."
 
-#: ../../brand/billing/pricing_plans.rst:30
+#: ../../brand/billing/rating_plans.rst:61
+msgid "Assigning a rating plan to a company"
+msgstr "Asignar planes de precio a la compañía"
+
+#: ../../brand/billing/rating_plans.rst:63
+msgid "A specific **rating plan** can be linked to multiple companies."
+msgstr "Un *plan de precios* puede estar vinculado a multiples compañías."
+
+#: ../../brand/billing/rating_plans.rst:65
 msgid ""
-"At this point, the future brand operator may have noticed that creating "
-"thousands of pricing patterns would be a really annoying and time "
-"consuming task, as there are 254 countries, each of them with their "
-"mobile networks, landline networks, special service numbers, etc."
+"In the section **Brand configuration** > **Virtual PBXs** we select the "
+"*demo* company:"
 msgstr ""
-"En ese momento, es posible que el futuro administrador de marca se haya "
-"dado cuenta de la titánica tarea que implicaría crear miles de patrones "
-"de precio (254 países por las distintas redes móviles, fijos, "
-"numeraciones especiales, etc.) para luego poder agruparlos en un plan de "
-"precios."
+"La sección **Configuración de Marca > PBXs Virtuales** seleccionaremos la"
+" compañía *DemoCompany*:"
 
-#: ../../brand/billing/pricing_plans.rst:35
+#: ../../brand/billing/rating_plans.rst:77
 msgid ""
-"That's why the creation of pricing patterns and pricing plans is done "
-"using a `CSV <https://es.wikipedia.org/wiki/CSV>`_ file."
+"The **Rating plan** have an activation time, and only one can be active "
+"for each company."
 msgstr ""
-"Es por ello que el proceso de creación de planes y patrones de precio se "
-"realiza partiendo de un `CSV <https://es.wikipedia.org/wiki/CSV>`_."
+"El **plan de precios** tiene una fecha de activación y solo uno puede "
+"estar activo para cada compañía."
 
-#: ../../brand/billing/pricing_plans.rst:40
-msgid "Importing a CSV file"
-msgstr "Importación vía CSV"
+#: ../../brand/billing/rating_plans.rst:90
+msgid "Simulating a call of a specific company"
+msgstr "Simular una llamada para una compañía"
 
-#: ../../brand/billing/pricing_plans.rst:42
+#: ../../brand/billing/rating_plans.rst:91
 msgid ""
-"The first step is creating an empty pricing plan to import the prices in "
-"(section **Brand configuration** > **Pricing plans**):"
+"In this list we can also simulate a call for a given company like we did "
+"previously in the rating plan list and check the price it will imply. "
+"This way, we can be sure that the configuration is ok."
 msgstr ""
-"El primer paso es crear un plan de precios vacío sobre el que importar "
-"nuestros precios (sección **Configuración de marca** > **Planes de "
-"precio**):"
-
-#: ../../brand/billing/pricing_plans.rst:47
-msgid "We enter the empty pricing plan we have just created:"
-msgstr "Accedemos al listado (vacío) del plan de precio que acabamos de crear:"
-
-#: ../../brand/billing/pricing_plans.rst:51
-msgid "This is the key button for the massive pricing pattern import process:"
-msgstr "El botón clave para este proceso de importación masiva es el siguiente:"
-
-#: ../../brand/billing/pricing_plans.rst:55
-msgid "Once chosen the CSV file to import, this window turns up:"
-msgstr ""
-"Una vez elegido el archivo a importar, se nos presenta la siguiente "
-"ventana:"
-
-#: ../../brand/billing/pricing_plans.rst:59
-msgid ""
-"We can select which column contains which field, in case we want to "
-"import a `CSV <https://es.wikipedia.org/wiki/CSV>`_ file in a non-"
-"recommended format. We can also decide whether to import the first line "
-"or discard it as it may have titles instead of data."
-msgstr ""
-"En esta ventana podríamos seleccionar qué contiene cada columna, en caso "
-"de no haber creado el `CSV <https://es.wikipedia.org/wiki/CSV>`_ en el "
-"formato recomendado. Del mismo modo, se nos ofrece la posibilidad de "
-"ignorar la primera línea, en caso de que incluya los nombres de las "
-"columnas en lugar de datos."
-
-#: ../../brand/billing/pricing_plans.rst:64
-msgid ""
-"The importing process is done in background, letting the brand operator "
-"continue doing other stuff while it is finished."
-msgstr ""
-"El proceso de importación se realiza en segundo plano, permitiendo al "
-"administrador de marca seguir configurando otros aspectos de la "
-"plataforma mientras se completa."
-
-#: ../../brand/billing/pricing_plans.rst:68
-msgid "CSV format"
-msgstr "Formato CSV"
-
-#: ../../brand/billing/pricing_plans.rst:70
-msgid ""
-"Although the above window allowed importing non-recommended format `CSV "
-"<https://es.wikipedia.org/wiki/CSV>`_  files, we encourage you to import "
-"a file in the proposed format, as it will make this process much easier."
-msgstr ""
-"A pesar de que la ventana anterior nos permite importar archivos `CSV "
-"<https://es.wikipedia.org/wiki/CSV>`_ en distintos formatos, lo mejor es "
-"importar un archivo en el formato adecuado para simplicar este proceso."
-
-#: ../../brand/billing/pricing_plans.rst:74
-msgid ""
-"The recommended `CSV <https://es.wikipedia.org/wiki/CSV>`_ format is "
-"described in the contextual help section, that includes even a link to "
-"download an example file:"
-msgstr ""
-"El formato del archivo `CSV <https://es.wikipedia.org/wiki/CSV>`_ está "
-"explicado en la propia sección de ayuda contextual, que incluye un enlace"
-" para poder descargar un archivo de ejemplo:"
-
-#: ../../brand/billing/pricing_plans.rst:80
-msgid "The order of the columns should be:"
-msgstr "El orden de las columnas debería de ser:"
-
-#: ../../brand/billing/pricing_plans.rst:82
-msgid "Pricing pattern name"
-msgstr "Nombre del patrón de precio"
-
-#: ../../brand/billing/pricing_plans.rst:83
-msgid "Pricing pattern description"
-msgstr "Descripción del patrón de precio"
-
-#: ../../brand/billing/pricing_plans.rst:84
-msgid "Prefix"
-msgstr "Prefijo"
-
-#: ../../brand/billing/pricing_plans.rst:85
-msgid "Price per minute"
-msgstr "Precio por minuto"
-
-#: ../../brand/billing/pricing_plans.rst:86
-msgid "Establishment cost"
-msgstr "Precio de establecimiento"
-
-#: ../../brand/billing/pricing_plans.rst:87
-msgid "Billing period"
-msgstr "Período de facturación"
-
-#: ../../brand/billing/pricing_plans.rst:89
-msgid ""
-"It is recommended to double quote alphanumeric entries, though it is not "
-"compulsory for single word entries (or entries without odd symbols). **If"
-" they contain any comma, they MUST be quoted**."
-msgstr ""
-"Se recomienda entrecomillar con comillas dobles las entradas "
-"alfanuméricas, aunque no es necesario para entradas con una única palabra"
-" (o entradas sin símbolos raros). **Si contienen coma, es OBLIGATORIO "
-"entrecomillarlos**."
-
-#: ../../brand/billing/pricing_plans.rst:93
-msgid "Floating numbers **MUST use point as decimal separator**."
-msgstr ""
-"Los **números decimales** tienen que usar el **punto como separador "
-"decimal**."
-
-#: ../../brand/billing/pricing_plans.rst:95
-msgid "Numeric entries can be quoted with double quotes, but it is not mandatory."
-msgstr ""
-"Las entradas numéricas se pueden entrecomillar con comillas dobles, pero "
-"no es obligatorio."
-
-#: ../../brand/billing/pricing_plans.rst:98
-msgid ""
-"The importing system will just bind the price to an existing price "
-"pattern or, if prefix doesn't match any existing pricing pattern, it will"
-" create one."
-msgstr ""
-"El sistema de importación creará los patrones de precio que sean "
-"necesarios. Si ya existe un patrón de precios con ese prefijo, no se "
-"creará, simplemente se vinculará."
-
-#: ../../brand/billing/pricing_plans.rst:102
-msgid "The price of the call will be increased every billing period unit."
-msgstr "El precio de la llamada sera incrementado cada periodo de facturacion."
-
-#: ../../brand/billing/pricing_plans.rst:104
-msgid ""
-"If *billing period* is set to 1, every second the price will be increased"
-" *price per minute* divided by 60 (bill by seconds)."
-msgstr ""
-"Si se pone a 1, implica una tarificación por segundos y cada segundo "
-"implicará un coste que será el *precio por minuto* dividido entre 60."
-
-#: ../../brand/billing/pricing_plans.rst:107
-msgid ""
-"If *billing period* is set to 60, every minute the price will be "
-"increased *price per minute* (bill by minutes)."
-msgstr ""
-"Si se pone a 60, implica una tarificación por minutos y cada minuto "
-"implicará un coste que será el *precio por minuto*."
-
-#: ../../brand/billing/pricing_plans.rst:110
-msgid ""
-"Once the import process is over, we just have to bind the pricing plan to"
-" the companies we want following :ref:`the procedure explained in the "
-"previous block <pricing_plan_to_company>`."
-msgstr ""
-"Una vez completada la importación, solo faltaría asociar el nuevo plan de"
-" precios a las empresas que queramos, siguiendo :ref:`el procedimiento "
-"explicado en el bloque anterior <pricing_plan_to_company>`."
-
-#: ../../brand/companies.rst:3
-msgid "Companies"
-msgstr "Compañías"
-
-#: ../../brand/companies.rst:5
-msgid "These are remaining relevant parameters configured in Companies section:"
-msgstr "Estos son los parámetros relevantes configurados en la sección Compañía:"
-
-#: ../../brand/companies.rst:9 ../../brand/notifications.rst:27
-#: ../../brand/peering/peer_servers.rst:32
-#: ../../brand/peering/peering_contracts.rst:32 ../../brand/retail.rst:8
-msgid "Name"
-msgstr "Nombre"
-
-#: ../../brand/companies.rst:11 ../../brand/retail.rst:10
-msgid "Sets the name for this company."
-msgstr "Configura el nombre de la compañía."
-
-#: ../../brand/companies.rst:12 ../../brand/retail.rst:11
-msgid "NIF"
-msgstr "NIF"
-
-#: ../../brand/companies.rst:14 ../../brand/retail.rst:13
-msgid "Number used in this company's invoices."
-msgstr "Número empleado en las facturas de la compañía."
-
-#: ../../brand/companies.rst:15 ../../brand/retail.rst:14
-msgid "Invoice data"
-msgstr "Datos de facturación"
-
-#: ../../brand/companies.rst:17 ../../brand/retail.rst:16
-msgid "Data included in invoices created by this brand."
-msgstr "Información incluida en las facturas creadas por esta marca."
-
-#: ../../brand/companies.rst:18 ../../brand/retail.rst:17
-msgid "Outgoing DDI"
-msgstr "DDI saliente"
-
-#: ../../brand/companies.rst:20 ../../brand/retail.rst:19
-msgid ""
-"Introduced in 1.3, this setting selects a DDI for outgoing calls of this "
-"company, if it is no overridden in a lower level (e.g. user level)"
-msgstr ""
-"Introducido en 1.3, esta opción permite elegir el DDI saliente para las "
-"llamadas de esta compañía, si no son especificadas en un nivel inferior "
-"(por ejemplo a nivel de usuario)"
-
-#: ../../brand/companies.rst:22 ../../brand/retail.rst:21
-msgid "Media relay set"
-msgstr "Servidores de Media"
-
-#: ../../brand/companies.rst:24 ../../brand/retail.rst:23
-msgid ""
-"As mentioned above, media-relay can be grouped in sets to reserve "
-"capacities or on a geographical purpose. This section lets you assign "
-"them to companies."
-msgstr ""
-"Como se ha mencionado, los servidores de media pueden ser agrupados para "
-"reservar capacidades o para una distribución geográfica. Esta sección le "
-"permite asignarlos a las compañías."
-
-#: ../../brand/companies.rst:26 ../../brand/retail.rst:25
-msgid "Distribute Method"
-msgstr "Método de distribución"
-
-#: ../../brand/companies.rst:28 ../../brand/retail.rst:27
-msgid ""
-"'Hash based' distributes calls hashing a parameter that is unique per "
-"company/retail, 'Round robin' distributes calls equally between AS-es and"
-" 'static' is used for debugging purposes."
-msgstr ""
-"'Basado en hash' distribuye las llamadas en base a un parámetro único por"
-" empresa/cliente retail, 'Round robin' distribuye las llamadas "
-"uniformemente entre todos los AS-es y 'estático' se utiliza solo para "
-"*testing*."
-
-#: ../../brand/companies.rst:31 ../../brand/retail.rst:30
-msgid "Application Server"
-msgstr "Servidores de aplicación"
-
-#: ../../brand/companies.rst:33 ../../brand/retail.rst:32
-msgid ""
-"If 'static' *distribute method* is used, select an application server "
-"here."
-msgstr "Si se utiliza 'estático', selecciona un AS aquí."
-
-#: ../../brand/companies.rst:34 ../../brand/retail.rst:33
-msgid "Recordings"
-msgstr "Grabaciones"
-
-#: ../../brand/companies.rst:36 ../../brand/retail.rst:35
-#, python-format
-msgid ""
-"Configures a limit for the size of recordings of this company. A "
-"notification is sent to configured address when 80% is reached and older "
-"recordings are rotated when configured size is reached."
-msgstr ""
-"Configure el límite de tamaño de las grabaciones de esta compañía. Se "
-"enviará una notificación a la dirección configurada cuando se alcance el "
-"80% y se rotarán las grabaciones más antiguas cuando se alcance el "
-"límite."
-
-#: ../../brand/companies.rst:39 ../../brand/retail.rst:38
-msgid "Features"
-msgstr "Features"
-
-#: ../../brand/companies.rst:41 ../../brand/retail.rst:40
-msgid ""
-"Introduced in 1.3, lets brand operator choose the features of the "
-"company. Related sections are hidden consequently and the company cannot "
-"use them."
-msgstr ""
-"Introducido en 1.3, permite a los operadores de marca elegir las features"
-" de la compañía. Esto habilitará o deshabilitará las diferentes secciones"
-" del menú de compañía."
-
-#: ../../brand/companies.rst:44
-msgid ""
-"Most of the features are self-explanatory, but **voice notification** "
-"deserves an explanation: if you enable them, when a call fails, the user "
-"will listen a locution explaining what occurred (\"you have no "
-"permissions to place this call\", \"the call cannot be billed\", etc.)"
-msgstr ""
-"La mayoría de las features son auto-explicativas, pero las "
-"**notificaciones de voz** merecen una explicación: si se habilitan, "
-"cuando una llamada falla, el usuario escuchará una locución explicando lo"
-" ocurrido (\"no tiene permisos para realizar esta llamada\", \"la llamada"
-" no puede ser tarificada\", etc.)"
-
-#: ../../brand/companies.rst:49
-msgid ""
-"Recordings rotation happens at two levels: brand and company. This means "
-"that **a company's recordings can be rotated even though its limit has "
-"not arrived (or even it has no limit) if brand's limit applies first**."
-msgstr ""
-"La rotación de grabaciones ocurre en dos niveles: marca y compañía. Esto "
-"significa que **las grabaciones de una compañía puede llegar a ser "
-"rotadas incluso si esta no ha alcanzado su límite (o incluso si no tiene "
-"límite) si se ha alcanzado el límite de espacio de su marca**."
-
-#: ../../brand/companies.rst:53
-msgid ""
-"Again: recordings rotation happens at two levels: brand and company. This"
-" means that **a company's recordings can be rotated even though its limit"
-" has not arrived (or even it has no limit) if brand's limit applies "
-"first**."
-msgstr ""
-"De nuevo: La rotación de grabaciones ocurre en dos niveles: marca y "
-"compañía. Esto significa que **las grabaciones de una compañía puede "
-"llegar a ser rotadas incluso si esta no ha alcanzado su límite (o incluso"
-" si no tiene límite) si se ha alcanzado el límite de espacio de su "
-"marca**."
-
-#: ../../brand/companies.rst:57
-msgid ""
-"To avoid this, make sure that the sum of all companies does not exceed "
-"the size assigned to your brand and make sure that all companies has a "
-"size configured (if 0, it has unlimited size)."
-msgstr ""
-"Para evitar esto, asegurese que la suma de los límites de las companías "
-"no exceda el tamaño asignado a la marca y que todas las compañías tienen "
-"un límite de espacio configurado (si es 0, tendrán ilimitado)."
-
-#: ../../brand/companies.rst:61
-msgid ""
-"Both **Distribute method** and **Application Server** are only visible "
-"for God Administrator."
-msgstr ""
-"Tanto **Método de distibución** como **Servidor de aplicación** solo son "
-"visibles para el operador global (*god*)."
-
-#: ../../brand/companies.rst:64
-msgid ""
-"'Round-robin' distribute method is reserved for huge companies/retails "
-"whose calls cannot be handled in a single AS. **Use 'Hash based' for "
-"remaining ones**, as 'Round-robin' imposes some limitations to company "
-"features (no queues, no conferences)."
-msgstr ""
-"El método de distribución 'Round-robin' está reservado para compañías "
-"enormes cuyas llamadas no *entren* en un AS. **Utilizar 'Basado en hash' "
-"para el resto**, ya que 'Round-robin' impone una serie de limitaciones en"
-" las funcionalidades de la compañía (sin colas, sin conferencias)."
+"In este listado también es posible simular una llamada para una compañía,"
+" tal y como hicimos anteriormente en el listado de planes de precio y "
+"comprobar el precio que tendrá. De esta manera, podemos confirmar que le "
+"configuración es correcta."
 
 #: ../../brand/index.rst:3
 msgid "Brand Configuration"
@@ -1098,7 +866,7 @@ msgstr ""
 
 #: ../../brand/notifications.rst:5
 msgid "Notification Templates"
-msgstr "Plantillas de Notificationes"
+msgstr "Plantillas de Notificaciones"
 
 #: ../../brand/notifications.rst:7
 msgid "Brand administators can configure the notifications sent by IvozProvider:"
@@ -1115,10 +883,14 @@ msgid "Email sent when a new fax is received"
 msgstr "Correos electrónicos enviados cuando se recibe un fax nuevo."
 
 #: ../../brand/notifications.rst:13
+msgid "Email sent when a balance is below configured threshold"
+msgstr ""
+
+#: ../../brand/notifications.rst:15
 msgid "When no custom notification is configured, default ones will be used"
 msgstr "Si no se configuran notificaciones, se emplearán notificaciones genéricas"
 
-#: ../../brand/notifications.rst:15
+#: ../../brand/notifications.rst:17
 msgid ""
 "Notifications are created in two steps: Create a notification type and "
 "add contents to the notification for each required language."
@@ -1127,11 +899,11 @@ msgstr ""
 " de notificación y añadir contenido a la notificación para cada lenguaje "
 "necesario."
 
-#: ../../brand/notifications.rst:20
+#: ../../brand/notifications.rst:22
 msgid "Creating a new notification"
 msgstr "Crear una nueva notificación"
 
-#: ../../brand/notifications.rst:22
+#: ../../brand/notifications.rst:24
 msgid ""
 "Brand administrators can create new notification templates in **Brand "
 "configuration** > **Notification templates**:"
@@ -1140,19 +912,25 @@ msgstr ""
 "notificacion en **Configuración de marca** > **Plantillas de "
 "notificación**"
 
-#: ../../brand/notifications.rst:24
+#: ../../brand/notifications.rst:26
 msgid "Fields are nearly self-explanatory:"
 msgstr "Los campos son auto-explicativos"
 
-#: ../../brand/notifications.rst:29
+#: ../../brand/notifications.rst:29 ../../brand/peering/peer_servers.rst:22
+#: ../../brand/peering/peering_contracts.rst:32 ../../brand/retail.rst:12
+#: ../../brand/virtual_pbx.rst:11 ../../brand/wholesale.rst:22
+msgid "Name"
+msgstr "Nombre"
+
+#: ../../brand/notifications.rst:31
 msgid "Used to identify this notification template"
 msgstr "Empleado para identificar esta plantilla de notificación"
 
-#: ../../brand/notifications.rst:30
+#: ../../brand/notifications.rst:32
 msgid "Type"
 msgstr "Tipo"
 
-#: ../../brand/notifications.rst:32
+#: ../../brand/notifications.rst:34
 msgid ""
 "Determine the notification type. Each notification type has its own "
 "substitution variables avaiable to replace the contents of the subject "
@@ -1162,11 +940,11 @@ msgstr ""
 "propias variables de sustitución disponibles para poder replazar en los "
 "contenidos del asunto y cuerpo."
 
-#: ../../brand/notifications.rst:37
+#: ../../brand/notifications.rst:39
 msgid "Adding Notification contents"
 msgstr "Añadiendo contenidos a la notificación"
 
-#: ../../brand/notifications.rst:39
+#: ../../brand/notifications.rst:41
 msgid ""
 "Once the notification has been created, you can add different language "
 "contents. IvozProvider will automatically use the proper language based "
@@ -1176,31 +954,31 @@ msgstr ""
 "los diferentes languages. IvozProvider eligirá automáticamente el "
 "lenguaje en función del destino:"
 
-#: ../../brand/notifications.rst:42
+#: ../../brand/notifications.rst:44
 msgid "For Voicemails, the user language will be used"
 msgstr "Para buzones de voz, el lenguaje del usuario del buzón será empleado"
 
-#: ../../brand/notifications.rst:44
+#: ../../brand/notifications.rst:46
 msgid "For Faxes, the company language will be used."
 msgstr "Para faxes, el lenguaje de la compañía será empleado."
 
-#: ../../brand/notifications.rst:46
+#: ../../brand/notifications.rst:48
 msgid "Configurable fields of each content:"
 msgstr "Campos configurables para cada contenido:"
 
-#: ../../brand/notifications.rst:49
+#: ../../brand/notifications.rst:51
 msgid "Language"
 msgstr "Lenguaje"
 
-#: ../../brand/notifications.rst:51
+#: ../../brand/notifications.rst:53
 msgid "Language of the contents."
 msgstr "Lenguaje de los contenidos"
 
-#: ../../brand/notifications.rst:52
+#: ../../brand/notifications.rst:54
 msgid "From Name"
 msgstr "Nombre origen"
 
-#: ../../brand/notifications.rst:54
+#: ../../brand/notifications.rst:56
 msgid ""
 "The from name used while sending emails (p.e. IvozProvider Voicemail "
 "Notifications)"
@@ -1208,11 +986,11 @@ msgstr ""
 "Nombre mostar al enviar correos electrónicos (p.e. Notificaciones Buzón "
 "de voz IvozProvider)"
 
-#: ../../brand/notifications.rst:55
+#: ../../brand/notifications.rst:57
 msgid "From Address"
 msgstr "Dirección origen"
 
-#: ../../brand/notifications.rst:57
+#: ../../brand/notifications.rst:59
 msgid ""
 "The from address used while sending emails (p.e. no-"
 "reply@ivozprovider.com)"
@@ -1220,11 +998,11 @@ msgstr ""
 "Dirección origen mostrado al enviar corros electrónicos (p.e. no-"
 "reply@ivozprovider.com)"
 
-#: ../../brand/notifications.rst:58
+#: ../../brand/notifications.rst:60
 msgid "Substitution variables"
 msgstr "Sustitución de variables"
 
-#: ../../brand/notifications.rst:60
+#: ../../brand/notifications.rst:62
 msgid ""
 "Avaialble variables that can be used in subject and body that will be "
 "replaced before sending the email. Each notification type has its own "
@@ -1234,11 +1012,11 @@ msgstr ""
 "remplazadas antes de enviar el correo electrónico. Cada notificacion "
 "cuenta con sus propias variables de sustitución."
 
-#: ../../brand/notifications.rst:62
+#: ../../brand/notifications.rst:64
 msgid "Subject"
 msgstr "Asunto"
 
-#: ../../brand/notifications.rst:64
+#: ../../brand/notifications.rst:66
 msgid ""
 "Subject of the email to be sent. You can include Substitution variables "
 "here."
@@ -1246,11 +1024,11 @@ msgstr ""
 "Asunto del email que se enviará. Puede emplear variables de sustitución "
 "aquí."
 
-#: ../../brand/notifications.rst:65
+#: ../../brand/notifications.rst:67
 msgid "Body"
 msgstr "Cuerpo"
 
-#: ../../brand/notifications.rst:67
+#: ../../brand/notifications.rst:69
 msgid ""
 "HTML Body of the email to be sent. You can include Substitution variables"
 " here."
@@ -1258,7 +1036,7 @@ msgstr ""
 "Cuerpo HTML del email que se enviará. Puede emplear variables de "
 "sustitución aquí."
 
-#: ../../brand/notifications.rst:69
+#: ../../brand/notifications.rst:71
 msgid ""
 "There is no need to create all content languages. If custom notification "
 "has some languages not defined the default contents will be used for that"
@@ -1268,11 +1046,11 @@ msgstr ""
 "notificación no tiene un lenguaje definido, se emplearán los contenidos "
 "por defecto para ese lenguaje y tipo de notificación."
 
-#: ../../brand/notifications.rst:75
+#: ../../brand/notifications.rst:77
 msgid "Assigning templates to companies"
 msgstr "Asignar plantillas a compañías."
 
-#: ../../brand/notifications.rst:77
+#: ../../brand/notifications.rst:79
 msgid ""
 "Once the notification has been configured for the desired languages, "
 "Brand administrator must assign it to the Company or Retail Client that "
@@ -1310,25 +1088,25 @@ msgstr ""
 "Tal y como indica el 0, no hay ningún PeerServer definido, por lo que "
 "añadimos uno:"
 
-#: ../../brand/peering/peer_servers.rst:34
+#: ../../brand/peering/peer_servers.rst:24
 msgid "Used to identify this Peer Server"
 msgstr "Se utilizará para referencia a este PeerServer."
 
-#: ../../brand/peering/peer_servers.rst:35
+#: ../../brand/peering/peer_servers.rst:25
 #: ../../brand/peering/peering_contracts.rst:35
 msgid "Description"
 msgstr "Descripción"
 
-#: ../../brand/peering/peer_servers.rst:37
+#: ../../brand/peering/peer_servers.rst:27
 #: ../../brand/peering/peering_contracts.rst:37
 msgid "Optional field with any required extra information."
 msgstr "Un campo adicional para escribir algún detalle."
 
-#: ../../brand/peering/peer_servers.rst:38
+#: ../../brand/peering/peer_servers.rst:28
 msgid "SIP Proxy"
 msgstr "SIP Proxy"
 
-#: ../../brand/peering/peer_servers.rst:40
+#: ../../brand/peering/peer_servers.rst:30
 msgid ""
 "IP address (or DNS registry) of the Peer Server. You can also specify a "
 "port if it's different from 5060."
@@ -1336,27 +1114,27 @@ msgstr ""
 "Dirección IP (o registro DNS) del PeerServer. Si utiliza un puerto"
 "        distinto a 5060, se puede indicar con ':'."
 
-#: ../../brand/peering/peer_servers.rst:42
+#: ../../brand/peering/peer_servers.rst:32
 msgid "URI Scheme"
 msgstr "Esquema URI"
 
-#: ../../brand/peering/peer_servers.rst:44
+#: ../../brand/peering/peer_servers.rst:34
 msgid "Supported schemes are sip and sips. Use 'sip' in case of doubt."
 msgstr "Los esquemas soportados son sip y sips. Dejar en 'sip' en caso de duda."
 
-#: ../../brand/peering/peer_servers.rst:45
+#: ../../brand/peering/peer_servers.rst:35
 msgid "Transport"
 msgstr "Transporte"
 
-#: ../../brand/peering/peer_servers.rst:47
+#: ../../brand/peering/peer_servers.rst:37
 msgid "Supported transport protocols. Use 'udp' in case of doubt."
 msgstr "Los protocolos de transporte SIP soportados. En caso de duda, dejar 'udp'."
 
-#: ../../brand/peering/peer_servers.rst:48
+#: ../../brand/peering/peer_servers.rst:38
 msgid "Outbound Proxy"
 msgstr "Proxy saliente"
 
-#: ../../brand/peering/peer_servers.rst:50
+#: ../../brand/peering/peer_servers.rst:40
 msgid ""
 "Usually this is left empty. It can be filled with the IP address of the "
 "**SIP Proxy** domain (to avoid DNS resolution, but keeping the domain in "
@@ -1370,11 +1148,11 @@ msgstr ""
 "lugar de enviar los mensajes SIP al destino de **SIP Proxy**, los envía a"
 " la IP:PUERTO de este campo."
 
-#: ../../brand/peering/peer_servers.rst:55
+#: ../../brand/peering/peer_servers.rst:45
 msgid "Requires Authentication"
 msgstr "Requiere autenticación"
 
-#: ../../brand/peering/peer_servers.rst:57
+#: ../../brand/peering/peer_servers.rst:47
 msgid ""
 "Some Peering contracts validate our platform by IP, others require each "
 "session that we want to establish. For this last case, this section "
@@ -1385,11 +1163,11 @@ msgstr ""
 "ser del último grupo, este selector nos permite introducir un usuario y "
 "una contraseña para responder a esa autenticación."
 
-#: ../../brand/peering/peer_servers.rst:60
+#: ../../brand/peering/peer_servers.rst:50
 msgid "Call Origin Header"
 msgstr "Cabecera de origen de llamada"
 
-#: ../../brand/peering/peer_servers.rst:62
+#: ../../brand/peering/peer_servers.rst:52
 msgid ""
 "Some Providers get origin from SIP From header. Others use the From "
 "header for accounting and need extra headers to identify the origin. In "
@@ -1399,11 +1177,11 @@ msgstr ""
 "para validar la cuenta de cliente y necesitan cabeceras adicionales para "
 "recoger el origen. En caso de duda, marcar **PAI**."
 
-#: ../../brand/peering/peer_servers.rst:65
+#: ../../brand/peering/peer_servers.rst:55
 msgid "R-URI Transformations before numeric transformations"
 msgstr "Transformaciones R-URI previas a las transformaciones numéricas"
 
-#: ../../brand/peering/peer_servers.rst:67
+#: ../../brand/peering/peer_servers.rst:57
 msgid ""
 "This setting allow static changes to the destination of the calls before "
 "applying numeric transformation rules mentioned in :ref:`Numeric "
@@ -1418,11 +1196,11 @@ msgstr ""
 "URI siguiendo el formato indicado. En caso de duda, dejar todo el bloque "
 "en blanco."
 
-#: ../../brand/peering/peer_servers.rst:72
+#: ../../brand/peering/peer_servers.rst:62
 msgid "From header customization"
 msgstr "Personalización de la cabecera From"
 
-#: ../../brand/peering/peer_servers.rst:74
+#: ../../brand/peering/peer_servers.rst:64
 msgid ""
 "For those providers that show origin in other headers (PAI/RPID), it is "
 "possible that request that From User have the account code being used and"
@@ -1433,7 +1211,7 @@ msgstr ""
 "cliente y el From Domain (por ejemplo), su dominio SIP. En caso de duda, "
 "dejar en blanco."
 
-#: ../../brand/peering/peer_servers.rst:78
+#: ../../brand/peering/peer_servers.rst:68
 msgid ""
 "There are many fields to establish *peering* with multiple kind of "
 "providers, but usually with the name and SIP Proxy will be enough (for "
@@ -1444,7 +1222,7 @@ msgstr ""
 "todo tipo, pero lo habitual será poner solo nombre y SIP Proxy (para los "
 "operadores que nos validen por IP) o nombre, SIP Proxy y Autenticación."
 
-#: ../../brand/peering/peer_servers.rst:83
+#: ../../brand/peering/peer_servers.rst:73
 msgid ""
 "In case of defining multiple Peering Servers for a single Peering "
 "Contract, IvozProvider will balance and failover using all of them. Like "
@@ -1652,9 +1430,226 @@ msgstr ""
 msgid "Portals URLS"
 msgstr "URL Portales"
 
+#: ../../brand/portal_urls.rst:5
+msgid "This section allows configuration of client portals:"
+msgstr "Esta sección permite configurar los portales de clientes:"
+
+#: ../../brand/portal_urls.rst:7
+msgid "**Company**: Administration portal for all company types"
+msgstr "**Compañía**: Portal de administración para todos los tipos de compañías"
+
+#: ../../brand/portal_urls.rst:8
+msgid "**User**: Special portal for Virtual PBXs users"
+msgstr "**Usuario**: Portal especial para usuarios de PBXs virtuales"
+
+#: ../../brand/portal_urls.rst:12
+msgid "URLs MUST be HTTPS"
+msgstr "Las URLs deben ser HTTPS."
+
+#: ../../brand/portal_urls.rst:13
+msgid "URLs MUST not end with slash /"
+msgstr "Las URLs no deben terminar con barra /"
+
+#: ../../brand/portal_urls.rst:16
+msgid ""
+"Each URL can also configure a logo per URL, a theme and a phrase to use "
+"as the title of the portal allowing creation of corporative portals per "
+"company."
+msgstr ""
+"Cada URL puede también configurar un logo, un tema y titlo para emplear "
+"en en el portal, permitiendo la creación de portales por cada compañía."
+
+#: ../../brand/portal_urls.rst:19
+msgid "For more information about each portal options see below menu sections."
+msgstr ""
+"Para más información de cada opción del portal vea el menú de secciones a"
+" continuación. "
+
 #: ../../brand/retail.rst:5
-msgid "Retail Clients"
-msgstr "Clientes Retail"
+msgid "Retail"
+msgstr "Retail"
+
+#: ../../brand/retail.rst:7
+msgid ""
+"Retail are designed to provider DDI routing service to clients with self "
+"hosted PBXs.."
+msgstr ""
+"Los clientes retail están diseñados para ofrecer servicio de enrutado de "
+"DDIs a clientes con PBXs propias."
+
+#: ../../brand/retail.rst:9 ../../brand/virtual_pbx.rst:8
+#: ../../brand/wholesale.rst:19
+msgid ""
+"Some fields described below may not be visible depending on enabled "
+"features."
+msgstr ""
+"Algunos de los campos descritos a continuación podrían ser invisibles en "
+"función de las funcionalidades habilitadas en el cliente."
+
+#: ../../brand/retail.rst:14 ../../brand/virtual_pbx.rst:13
+#: ../../brand/wholesale.rst:24
+msgid "Sets the name for this client."
+msgstr "Configura el nombre del cliente."
+
+#: ../../brand/retail.rst:15 ../../brand/virtual_pbx.rst:17
+#: ../../brand/wholesale.rst:25
+msgid "Features"
+msgstr "Features"
+
+#: ../../brand/retail.rst:17 ../../brand/virtual_pbx.rst:19
+#: ../../brand/wholesale.rst:27
+msgid ""
+"Allow configuration of avaialble features for this client. Related "
+"sections are hidden consequently and the client cannot use them."
+msgstr ""
+"Permite elegir las features del cliente. Esto habilitará o deshabilitará "
+"las diferentes secciones del menú del cliente."
+
+#: ../../brand/retail.rst:19 ../../brand/virtual_pbx.rst:21
+#: ../../brand/wholesale.rst:29
+msgid "Billing method"
+msgstr "Método de tarificación"
+
+#: ../../brand/retail.rst:21 ../../brand/virtual_pbx.rst:23
+#: ../../brand/wholesale.rst:31
+msgid ""
+"When billing feature is enabled determines when calls will be priced. See"
+" :ref:`Billing` section."
+msgstr ""
+"Cuando la tarificación esté habilitada, determina como serán tarificadas "
+"las llamadas. Ver sección :ref:`Tarificación`."
+
+#: ../../brand/retail.rst:22 ../../brand/virtual_pbx.rst:24
+#: ../../brand/wholesale.rst:32
+msgid "Geographic Configuration"
+msgstr "Configuración geográfica"
+
+#: ../../brand/retail.rst:24 ../../brand/virtual_pbx.rst:26
+#: ../../brand/wholesale.rst:34
+msgid ""
+"General client configuration for language and timezones. Most of the "
+"settings in the section can be configured per user if required."
+msgstr ""
+"Configuración geral del lenguaje y zona horaria. La mayoría de las "
+"opciones en esta sección se pueden configurar por usuario si es "
+"necesario."
+
+#: ../../brand/retail.rst:26 ../../brand/virtual_pbx.rst:28
+#: ../../brand/wholesale.rst:36
+msgid "Security"
+msgstr "Seguridad"
+
+#: ../../brand/retail.rst:28 ../../brand/virtual_pbx.rst:30
+msgid "Limits the external concurrent calls and source of calls for this client."
+msgstr ""
+"Limita el número de llamadas externas concurrentes y origenes de llamadas"
+" de este cliente."
+
+#: ../../brand/retail.rst:29 ../../brand/virtual_pbx.rst:31
+#: ../../brand/wholesale.rst:42
+msgid "Invoice data"
+msgstr "Datos de facturación"
+
+#: ../../brand/retail.rst:31 ../../brand/virtual_pbx.rst:33
+#: ../../brand/wholesale.rst:44
+msgid "Data included in invoices created by this brand."
+msgstr "Información incluida en las facturas creadas por esta marca."
+
+#: ../../brand/retail.rst:32 ../../brand/virtual_pbx.rst:34
+msgid "Externally rated options"
+msgstr "Opciones adicionales tarificación externa"
+
+#: ../../brand/retail.rst:34 ../../brand/virtual_pbx.rst:36
+msgid ""
+"For :ref:`Peering contracts` with externally rated enabled, this field "
+"can be used to store specific information for this client."
+msgstr ""
+"Para :ref:`Contratos de peering` con tarificación externa habilitada, "
+"este campo puede emplearse para información específica de este cliente."
+
+#: ../../brand/retail.rst:36 ../../brand/virtual_pbx.rst:38
+#: ../../brand/wholesale.rst:45
+msgid "Notifications"
+msgstr "Notificationes"
+
+#: ../../brand/retail.rst:38 ../../brand/virtual_pbx.rst:40
+#: ../../brand/wholesale.rst:47
+msgid "Configure the email :ref:`notification templates` to use for this company."
+msgstr ""
+"Configurar las :ref:`Plantillas de notificaciones` a emplear en esta "
+"compañía."
+
+#: ../../brand/retail.rst:39 ../../brand/virtual_pbx.rst:41
+msgid "Outgoing DDI"
+msgstr "DDI saliente"
+
+#: ../../brand/retail.rst:41 ../../brand/virtual_pbx.rst:43
+msgid ""
+"Selects a DDI for outgoing calls of this client, if it is no overridden "
+"in a lower level."
+msgstr ""
+"Introducido en 1.3, esta opción permite elegir el DDI saliente para las "
+"llamadas de este cliente, si no son especificadas en un nivel inferior."
+
+#: ../../brand/retail.rst:43 ../../brand/virtual_pbx.rst:45
+#: ../../brand/wholesale.rst:48
+msgid "Media relay set"
+msgstr "Servidores de Media"
+
+#: ../../brand/retail.rst:45 ../../brand/virtual_pbx.rst:47
+#: ../../brand/wholesale.rst:50
+msgid ""
+"As mentioned above, media-relay can be grouped in sets to reserve "
+"capacities or on a geographical purpose. This section lets you assign "
+"them to companies."
+msgstr ""
+"Como se ha mencionado, los servidores de media pueden ser agrupados para "
+"reservar capacidades o para una distribución geográfica. Esta sección le "
+"permite asignarlos a las compañías."
+
+#: ../../brand/retail.rst:47 ../../brand/virtual_pbx.rst:49
+msgid "Distribute Method"
+msgstr "Método de distribución"
+
+#: ../../brand/retail.rst:49 ../../brand/virtual_pbx.rst:51
+msgid ""
+"'Hash based' distributes calls hashing a parameter that is unique per "
+"client, 'Round robin' distributes calls equally between AS-es and "
+"'static' is used for debugging purposes."
+msgstr ""
+"'Basado en hash' distribuye las llamadas en base a un parámetro único por"
+" cliente, 'Round robin' distribuye las llamadas uniformemente entre todos"
+" los AS-es y 'estático' se utiliza solo para *testing*."
+
+#: ../../brand/retail.rst:52 ../../brand/virtual_pbx.rst:54
+msgid "Application Server"
+msgstr "Servidores de aplicación"
+
+#: ../../brand/retail.rst:54 ../../brand/virtual_pbx.rst:56
+msgid ""
+"If 'static' *distribute method* is used, select an application server "
+"here."
+msgstr "Si se utiliza 'estático', selecciona un AS aquí."
+
+#: ../../brand/retail.rst:55 ../../brand/virtual_pbx.rst:57
+msgid "Recordings"
+msgstr "Grabaciones"
+
+#: ../../brand/retail.rst:57 ../../brand/virtual_pbx.rst:59
+#, python-format
+msgid ""
+"Configures a limit for the size of recordings of this client. A "
+"notification is sent to configured address when 80% is reached and older "
+"recordings are rotated when configured size is reached."
+msgstr ""
+"Configure el límite de tamaño de las grabaciones de este cliente. Se "
+"enviará una notificación a la dirección configurada cuando se alcance el "
+"80% y se rotarán las grabaciones más antiguas cuando se alcance el "
+"límite."
+
+#: ../../brand/retail.rst:61
+msgid "Retail clients and their accounts use Brand's domain for authentication."
+msgstr ""
 
 #: ../../brand/routing/index.rst:3
 msgid "Outgoing Call Routing"
@@ -1785,6 +1780,55 @@ msgstr ""
 "encadenar/utilizar más de 2 rutas, aunque en los ejemplo se hayan "
 "utilizado solo 2."
 
+#: ../../brand/routing/routing_tags.rst:3 ../../brand/wholesale.rst:39
+msgid "Routing tags"
+msgstr "Routing tags"
+
+#: ../../brand/routing/routing_tags.rst:5
+msgid ""
+"In most scenarios, Brands administrators are responsible of configuring "
+":ref:`Peering Contracts` and :ref:`Outgoing Routing` to provide "
+"connectivity for their clients. But in some cases, clients want to choose"
+" the outgoing routing to use per call."
+msgstr ""
+"En la mayoría de escenarios, los administradores de marca son "
+"responsables de configurar los :ref:`Contratos de peering` y :ref:`Rutas "
+"salientes` para ofrecer conectividad a sus clientes. En algunos casos, "
+"los clientes quieren poder elegir la ruta saliente que se empleará en "
+"cada una de las llamdas."
+
+#: ../../brand/routing/routing_tags.rst:10
+msgid ""
+"A Routing tag is an code that will prefix the destination number when "
+"placing calls to Ivoz Provider."
+msgstr ""
+"Un Routing tag es un código que se emplea como prefijo al número destino "
+"cuando se realizan llamadas a Ivoz Provider."
+
+#: ../../brand/routing/routing_tags.rst:23
+msgid ""
+"In order to use a routing tag, the client must have it enabled in their "
+"edit screen. Using a non enabled routing tag will case the call to be "
+"declined."
+msgstr ""
+"Para poder emplear los routing tags, el cliente debe tenerlos habilitados"
+" en su pantalla de edición. Emplear un tag no habilitado hará que las "
+"llamadas sean directamente rechazadas."
+
+#: ../../brand/routing/routing_tags.rst:37
+msgid "Route tags are only available to wholesale clients at the moment."
+msgstr ""
+"En la versión actual, los routing tags solo estan disponibles para "
+"clientes wholesale."
+
+#: ../../brand/routing/routing_tags.rst:40
+msgid ""
+"Then, each routing tag can be used to configure their :ref:`Outgoing "
+"routing` order."
+msgstr ""
+"Cada Routing tag puede ser empleado al configurar sus :ref:`Rutas "
+"salientes`."
+
 #: ../../brand/routing/target_pattern_groups.rst:3
 msgid "Target pattern groups"
 msgstr "Grupos de patrones"
@@ -1794,8 +1838,8 @@ msgid ""
 "As we will see in :ref:`Outgoing Call Routing` section, every target "
 "pattern will be linked to a Peering Contract."
 msgstr ""
-"Como veremos en la sección de :ref:`Enrutado saliente`, "
-"cada patrón de destino se vinculará a un Contrato de Peering concreto."
+"Como veremos en la sección de :ref:`Enrutado saliente`, cada patrón de "
+"destino se vinculará a un Contrato de Peering concreto."
 
 #: ../../brand/routing/target_pattern_groups.rst:8
 msgid ""
@@ -1807,18 +1851,14 @@ msgstr ""
 "así poder vincular un grupo entero a un Contrato de Peering."
 
 #: ../../brand/routing/target_pattern_groups.rst:11
-msgid "This is the goal of this section:"
-msgstr "Para ello se utiliza esta sección:"
-
-#: ../../brand/routing/target_pattern_groups.rst:24
 msgid ""
-"By default we can see the 254 countries grouped in the continents defined"
-" in `ISO 3166 <https://es.wikipedia.org/wiki/ISO_3166>`_:"
+"By default we can see the countries grouped in the continents defined in "
+"`ISO 3166 <https://en.wikipedia.org/wiki/ISO_3166>`_:"
 msgstr ""
-"Por defecto aparecen los 254 países agrupados en base a su continente "
+"Por defecto aparecen los países agrupados en base a su continente "
 "definidos en la `ISO 3166 <https://es.wikipedia.org/wiki/ISO_3166>`_:"
 
-#: ../../brand/routing/target_pattern_groups.rst:37
+#: ../../brand/routing/target_pattern_groups.rst:24
 msgid ""
 "**To sum up**, when a user dials an external number, IvozProvider looks "
 "up a matching target pattern to decide which PeeringContract must be used"
@@ -1827,14 +1867,6 @@ msgstr ""
 "**En resumen**, cuando un usuario marca un número externo, IvozProvider "
 "busca el patrón de destino al que pertenece para saber por dónde tiene "
 "que sacar dicha llamada."
-
-#: ../../brand/routing/target_pattern_groups.rst:41
-msgid ""
-"To achieve our goal of making an external call to a spanish number, we "
-"didn't have to modify the initial contents of this two sections :)"
-msgstr ""
-"Para conseguir nuestro objetivo de llamar a un número español, no hemos "
-"tenido que modificar el contenido de partida de estas dos secciones :)"
 
 #: ../../brand/routing/target_patterns.rst:5
 msgid "Target patterns"
@@ -1849,47 +1881,25 @@ msgstr ""
 "Cuando un usuario marca un número externo, IvozProvider intenta calificar"
 "  estenúmero en uno de los patrones de destino definidos en esta sección:"
 
-#: ../../brand/routing/target_patterns.rst:21
+#: ../../brand/routing/target_patterns.rst:10
 msgid ""
-"Usually, it will we useful to have one target pattern for the 254 "
-"countries defined in the `ISO 3166 "
-"<https://es.wikipedia.org/wiki/ISO_3166>`_. That's why IvozProvider "
-"automatically includes all this countries and their prefixes:"
+"Usually, it will we useful to have one target pattern for the countries "
+"defined in the `ISO 3166 <https://en.wikipedia.org/wiki/ISO_3166>`_. "
+"That's why IvozProvider automatically includes all this countries and "
+"their prefixes:"
 msgstr ""
 "Lo más normal será que nos interese tener un patrón de destino por cada "
-"uno delos 254 países definidos en la `ISO 3166 "
+"uno de los países definidos en la `ISO 3166 "
 "<https://es.wikipedia.org/wiki/ISO_3166>`_. Por ese motivo, IvozProvider "
 "incluye estos países y sus prefijos de forma automática:"
 
-#: ../../brand/routing/target_patterns.rst:36
-msgid ""
-"Within this list we can find Spain's prefix, that will be the prefix of "
-"the test call we are going to make in this section:"
-msgstr ""
-"Dentro de este listado aparece el prefijo de España, que será el grupo "
-"del número que probemos en este bloque:"
-
-#: ../../brand/routing/target_patterns.rst:50
+#: ../../brand/routing/target_patterns.rst:25
 msgid ""
 "Brand operator can choose between keeping this target pattern if finds "
-"them useful or deleting them an creating the ones that meet his needs. In"
-" fact, apart from phone prefixes it is also possible to use regular "
-"expressions. e.g. Unique target pattern that contains all possible "
-"targets: ^[0-9]+$"
+"them useful or deleting them an creating the ones that meet his needs."
 msgstr ""
 "Cada operador de marca puede elegir mantener estos patrones o borrarlos y"
-" crear los que le interesen. De hecho, aparte de prefijos, también se "
-"pueden definir expresiones regulares. e.g. Queremos crear un único patrón"
-" que englobe todas las llamadas: ^[0-9]+$."
-
-#: ../../brand/routing/target_patterns.rst:55
-msgid ""
-"Notice that using regular expressions instead of prefixes can make a "
-"phone number to match more than one target pattern. Use with "
-"responsibility."
-msgstr ""
-"Crear patrones de destino en base a expresiones regulares puede provocar "
-"que un número encaje en 2 patrones. Usar con responsabilidad."
+" crear los que le interesen."
 
 #: ../../brand/services.rst:5
 msgid "Brand Services"
@@ -1966,15 +1976,15 @@ msgstr ""
 "`E.164 <https://www.itu.int/rec/T-REC-E.164/es>`_ **a un formato "
 "neutro**."
 
-#: ../../brand/transformations/index.rst:15
+#: ../../brand/transformations/index.rst:14
 msgid "There are two different transformation scenarios:"
 msgstr "En concreto, se distinguen 2 casos:"
 
-#: ../../brand/transformations/index.rst:18
+#: ../../brand/transformations/index.rst:17
 msgid "Incoming transformations"
 msgstr "Adaptación en entrada"
 
-#: ../../brand/transformations/index.rst:20
+#: ../../brand/transformations/index.rst:19
 msgid ""
 "When a new call is received in IvozProvider matching a provider that has "
 "been configured for *peering*, we must adapt the numbers that make "
@@ -1984,15 +1994,15 @@ msgstr ""
 "que tenemos un acuerdo de *peering*, hay que adaptar las numeraciones que"
 " hacen referencia a:"
 
-#: ../../brand/transformations/index.rst:23
+#: ../../brand/transformations/index.rst:22
 msgid "Origin of the call"
 msgstr "Origen de la llamada."
 
-#: ../../brand/transformations/index.rst:25
+#: ../../brand/transformations/index.rst:24
 msgid "Destination of the call"
 msgstr "Destino de la llamada."
 
-#: ../../brand/transformations/index.rst:27
+#: ../../brand/transformations/index.rst:26
 msgid ""
 "Depending on the country of the provider, the international numbers will "
 "have a format or another. In this case, the spanish provider will use, "
@@ -2001,15 +2011,15 @@ msgstr ""
 "En función del país del operador indicará los números internacionales de "
 "una forma distinta. En el caso de un operador español, por ejemplo:"
 
-#: ../../brand/transformations/index.rst:30
+#: ../../brand/transformations/index.rst:29
 msgid "00 + 33 + number belonging to France"
 msgstr "Utilizará 00 + 33 + número para una llamada con origen francés."
 
-#: ../../brand/transformations/index.rst:32
+#: ../../brand/transformations/index.rst:31
 msgid "It's possible that the international numbers came without the 00 code."
 msgstr "Puede que muestre las numeraciones internacionales sin el 00."
 
-#: ../../brand/transformations/index.rst:34
+#: ../../brand/transformations/index.rst:33
 msgid ""
 "It's possible that, if the call comes from the same country that the "
 "provider, the number comes without the calling code (911234567 insted of "
@@ -2018,17 +2028,17 @@ msgstr ""
 "Es probable que si la llamada procede del mismo país del operador, no se "
 "muestre el prefijo del país (911234567 en lugar de 00 + 34 + 911234567)"
 
-#: ../../brand/transformations/index.rst:39
+#: ../../brand/transformations/index.rst:38
 msgid "For an Ukranian provider, that doesn't use the 00 as international code:"
 msgstr ""
 "En el caso de un operador de Ucrania, que no utiliza 00 como código "
 "internacional:"
 
-#: ../../brand/transformations/index.rst:41
+#: ../../brand/transformations/index.rst:40
 msgid "It will use 810 + 33 + number belonging to France."
 msgstr "Utilizará 810 + 33 + número francés para el mismo número."
 
-#: ../../brand/transformations/index.rst:43
+#: ../../brand/transformations/index.rst:42
 msgid ""
 "It's possible that even part of the internation code (00 in most of the "
 "countries of the world) the provider use specific codes as prefix."
@@ -2037,7 +2047,7 @@ msgstr ""
 "países del mundo) un operador concreto anteceda sus números con un "
 "prefijo concreto."
 
-#: ../../brand/transformations/index.rst:46
+#: ../../brand/transformations/index.rst:45
 msgid ""
 "The goal of the incoming transformation is that, no matter what numeric "
 "system the provider uses, the number will end in a general and common "
@@ -2047,19 +2057,19 @@ msgstr ""
 "notación utilizada por el operador, la llamada se acabe en un formato "
 "homogéneo y común."
 
-#: ../../brand/transformations/index.rst:51
+#: ../../brand/transformations/index.rst:50
 msgid ""
 "This common format is usually called E.164 and shows the numbers without "
-"internation code, but with country calling code: i.e. 34911234567"
+"internation code, but with country calling code: i.e. +34911234567"
 msgstr ""
 "Este formato común se suele llamar E.164 y muestra los números sin el "
-"código internacional y con el prefijo de país: e.g. 34911234567"
+"código internacional y con el prefijo de país: e.g. +34911234567"
 
-#: ../../brand/transformations/index.rst:56
+#: ../../brand/transformations/index.rst:55
 msgid "Outgoing transformations"
 msgstr "Adaptación en salida"
 
-#: ../../brand/transformations/index.rst:58
+#: ../../brand/transformations/index.rst:57
 msgid ""
 "In the same whay the origin and destination must adaptat incoming "
 "numbers, it will be required to adapt outgoing dialed numbers to properly"
@@ -2069,29 +2079,29 @@ msgstr ""
 "entrada, habrá que adaptar también las numeraciones en salida en función "
 "del operador por el que se vaya a sacar la llamada."
 
-#: ../../brand/transformations/index.rst:62
+#: ../../brand/transformations/index.rst:61
 msgid "For example, for a number with spanish number system:"
 msgstr "Por ejemplo, para una llamada a un número español:"
 
-#: ../../brand/transformations/index.rst:64
+#: ../../brand/transformations/index.rst:63
 msgid ""
-"*Spanish provider*: Destination will come in E164 (34911234567) and for "
+"*Spanish provider*: Destination will come in E164 (+34911234567) and for "
 "this provider, we can remove the calling code (will understand it belongs"
 " to its country), so the number sent to them will be 911234567."
 msgstr ""
-"*Operador español*: El destino vendrá en E164 (34911234567) y habrá que "
+"*Operador español*: El destino vendrá en E164 (+34911234567) y habrá que "
 "quitar el prefijo de país: 911234567."
 
-#: ../../brand/transformations/index.rst:68
+#: ../../brand/transformations/index.rst:67
 msgid ""
-"*French provider*: The destination will come in E164 (34911234567) and we"
-" must add the international code for France, so the number sent to them "
-"will be 0034911234567."
+"*French provider*: The destination will come in E164 (+34911234567) and "
+"we must add the international code for France, so the number sent to them"
+" will be 0034911234567."
 msgstr ""
-"*Operador francés*: El destino vendrá en E164 (34911234567) y habrá que "
+"*Operador francés*: El destino vendrá en E164 (+34911234567) y habrá que "
 "añadir el código internacional: 0034911234567."
 
-#: ../../brand/transformations/index.rst:72
+#: ../../brand/transformations/index.rst:71
 msgid ""
 "To sum up, we aim to send the origin and destination in the format the "
 "provider is expecting."
@@ -2100,7 +2110,7 @@ msgstr ""
 " el operador elegido los espera, para que la llamada progrese con "
 "normalidad."
 
-#: ../../brand/transformations/index.rst:75
+#: ../../brand/transformations/index.rst:74
 msgid ""
 "Numeric transformation uses `simple regular expresions "
 "<https://es.wikipedia.org/wiki/Expresi%C3%B3n_regular>`_ to describe the "
@@ -2113,11 +2123,11 @@ msgstr ""
 "pueden encontrar múltiples tutoriales sobre el uso básico de expresiones "
 "regulares."
 
-#: ../../brand/transformations/index.rst:82
+#: ../../brand/transformations/index.rst:81
 msgid "'National provider' transformations"
 msgstr "Transformación 'Operador Nacional'"
 
-#: ../../brand/transformations/index.rst:84
+#: ../../brand/transformations/index.rst:83
 msgid ""
 "IvozProvider comes with an automatic transformation rules generator that "
 "fits with most of the countries."
@@ -2125,13 +2135,13 @@ msgstr ""
 "IvozProvider permite crear automáticamente las reglas de transformación "
 "típicas de la mayoría de países."
 
-#: ../../brand/transformations/index.rst:87
+#: ../../brand/transformations/index.rst:86
 msgid "In order to create a new set of transformations for spanish provider:"
 msgstr ""
 "Para crear el set de reglas necesarias para los operadores españoles, "
 "basta con:"
 
-#: ../../brand/transformations/index.rst:99
+#: ../../brand/transformations/index.rst:98
 msgid ""
 "The rules that has been auto-created will transform the numbers for "
 "spanish providers that follow this rules:"
@@ -2140,15 +2150,15 @@ msgstr ""
 "para operadores nacionales que muestren las numeraciones siguiendo estas "
 "reglas:"
 
-#: ../../brand/transformations/index.rst:102
+#: ../../brand/transformations/index.rst:101
 msgid "A spanish number: Neither international nor calling code (34)."
 msgstr "Número español: se muestra sin código internacional y sin el 34."
 
-#: ../../brand/transformations/index.rst:103
+#: ../../brand/transformations/index.rst:102
 msgid "Not a spanish number: International code (00) and calling code (34)."
 msgstr "Número internacional: se precede de 00 y del código del país."
 
-#: ../../brand/transformations/index.rst:105
+#: ../../brand/transformations/index.rst:104
 msgid ""
 "The numeric transformation *sets* must be assigned to **Peering "
 "Contracts**, as shown in the following section. This *set* can be shared "
@@ -2158,13 +2168,13 @@ msgstr ""
 "**PeeringContracts**, tal y como veremos en la siguiente sección. Este "
 "*set* será el adecuado para la mayoría de operadores españoles."
 
-#: ../../brand/transformations/index.rst:109
+#: ../../brand/transformations/index.rst:108
 msgid "Let's check this *set* to understand what transformation rule does:"
 msgstr ""
 "Analicemos el *set* para entender lo que hace cada regla de "
 "transformación:"
 
-#: ../../brand/transformations/index.rst:119
+#: ../../brand/transformations/index.rst:118
 msgid ""
 "The automatic rule generation will create 8 common rules based on the "
 "given parameters. This rules can be edited later to match the provider "
@@ -2174,47 +2184,47 @@ msgstr ""
 "parámetros especificados. Estas reglas se pueden editar después, el "
 "proceso de automatización termina una vez creado el set."
 
-#: ../../brand/transformations/index.rst:124
+#: ../../brand/transformations/index.rst:123
 msgid "Spanish incoming transformation"
 msgstr "Adaptación en entrada España"
 
-#: ../../brand/transformations/index.rst:126
+#: ../../brand/transformations/index.rst:125
 msgid "Displayed in blue in the previous image:"
 msgstr "Aparece en azul en la imagen anterior:"
 
-#: ../../brand/transformations/index.rst:128
+#: ../../brand/transformations/index.rst:127
 msgid "Left called/destination"
 msgstr "Izquierda llamado/destino"
 
-#: ../../brand/transformations/index.rst:130
+#: ../../brand/transformations/index.rst:129
 msgid "Right callee/origin"
 msgstr "Derecha llamante/origen"
 
-#: ../../brand/transformations/index.rst:132
+#: ../../brand/transformations/index.rst:131
 msgid "The same rules will be applied for the origin and destination:"
 msgstr ""
 "Tanto para el origen como para el destino las reglas que se aplican son "
 "las mismas:"
 
-#: ../../brand/transformations/index.rst:142
+#: ../../brand/transformations/index.rst:133
 msgid "The **metric** field will be used to order the rules (smaller first)."
 msgstr ""
 "Las reglas se evalúan antes o después en función del campo **métrica** "
 "(de menor a mayor)."
 
-#: ../../brand/transformations/index.rst:144
+#: ../../brand/transformations/index.rst:135
 msgid "If a rule doesnt *match*, the next rule is evaluated."
 msgstr "Si una regla no *matchea*, se evalúa la siguiente regla."
 
-#: ../../brand/transformations/index.rst:145
+#: ../../brand/transformations/index.rst:136
 msgid "If a rule *matches*, no more rules are evaluated."
 msgstr "Si una regla *matchea*, no se evalúan más reglas."
 
-#: ../../brand/transformations/index.rst:146
+#: ../../brand/transformations/index.rst:137
 msgid "If no rule *matches*, no change is applied."
 msgstr "Si ninguna regla *matchea*, no se aplica ningún cambio."
 
-#: ../../brand/transformations/index.rst:148
+#: ../../brand/transformations/index.rst:139
 msgid ""
 "The **Search** field is evaluated agains the number (depending of the "
 "tranformation type it will be destination or origin)."
@@ -2222,23 +2232,7 @@ msgstr ""
 "El campo **Buscar** se evalúa contra el campo en cuestión (en el caso de "
 "la captura, contra el campo Llamado/Destino de una llamada saliente)."
 
-#: ../../brand/transformations/index.rst:151
-msgid ""
-"Metric 1: Starting with (^) 00 or '+', followed by a digit between 1 and "
-"9 and only digits between 0 and 9 until the end ($)."
-msgstr ""
-"Métrica 1: Que empiece por (^) 00 o '+', seguido de un dígito del 1 al 9,"
-" seguido de 1 o más dígitos del 0 al 9 hasta el final ($)."
-
-#: ../../brand/transformations/index.rst:153
-msgid ""
-"Metric 2: Starting with a digit bewteen 1 and 9, followed by eight digits"
-" between 0 and 9 until the end($)."
-msgstr ""
-"Métrica 2: Que empiece por un dígito del 1 al 9, seguido de 1 o más "
-"dígitos del 0 al 9 hasta el final ($)."
-
-#: ../../brand/transformations/index.rst:156
+#: ../../brand/transformations/index.rst:142
 msgid ""
 "The **Replace** field will use the capture groups that matched the Search"
 " field (displayed between brackets, \\1 for the first one, \\2 for the "
@@ -2248,57 +2242,19 @@ msgstr ""
 "entre paréntesis, \\1 para la primera, \\2 para la segunda, etc.) y "
 "expresa cómo tiene que quedar el número:"
 
-#: ../../brand/transformations/index.rst:160
-msgid "Metric 1: The number will be converted just to the second capture (\\2)"
-msgstr "Métrica 1: El campo mostrará solo el segundo elemento capturado (\\2)."
-
-#: ../../brand/transformations/index.rst:161
-msgid "Metric 2: The number will be converted to the first capture with 34 prefix"
-msgstr "Métrica 1: El campo añadirá 34 al primer elemento capturado (\\1)."
-
-#: ../../brand/transformations/index.rst:163
-msgid "Or *in other words*:"
-msgstr "Explicación *en modo texto*:"
-
-#: ../../brand/transformations/index.rst:165
-msgid "Metric 1: Strip the international code (00 or '+')"
-msgstr "Métrica 1: Quitar código internacional (00 o '+') si lo hay."
-
-#: ../../brand/transformations/index.rst:166
-msgid "Metric 2: Add 34 to spanish numbers that comes without calling code."
-msgstr ""
-"Métrica 2: Añadir 34 a los números españoles mostrados sin prefijo de "
-"país para que queden en E.164."
-
-#: ../../brand/transformations/index.rst:169
+#: ../../brand/transformations/index.rst:148
 msgid "Spanish outgoing transformation"
 msgstr "Adaptación en salida España"
 
-#: ../../brand/transformations/index.rst:179
+#: ../../brand/transformations/index.rst:150
 msgid ""
 "Following the same logic, this 2 rules make the change of the outgoig "
-"external destination numbers:"
+"external destination numbers."
 msgstr ""
 "Siguiendo la misma lógica, estas 2 reglas realizan los siguientes cambios"
 " sobre el destino en llamadas salientes:"
 
-#: ../../brand/transformations/index.rst:182
-msgid ""
-"Metric 1: If the number starts with 34 prefix, remove it. This converts "
-"E.164 spanish numbers to national format."
-msgstr ""
-"Métrica 1: Si empieza con 34 seguido de más dígitos, quitamos 34. "
-"Convierte números españoles de E.164 a formato nacional."
-
-#: ../../brand/transformations/index.rst:184
-msgid ""
-"Metric 2: If the number doesn't start with 34 prefix, add 00. This "
-"converts E.164 international numbers to spanish international numbers."
-msgstr ""
-"Métrica 2: Si no empieza por 34, añadimos 00. Convierte "
-"númerosinternacionales de E.164 a formato internacional español."
-
-#: ../../brand/transformations/index.rst:187
+#: ../../brand/transformations/index.rst:154
 msgid ""
 "**To sum up**: numeric tranformation can adapt origin and destination "
 "numbers to E.164 for the platform, and to providers expected formats, "
@@ -2309,4 +2265,144 @@ msgstr ""
 "destinos, a E.164 en entrada y a los formatos que los operadores esperan "
 "en salida, utilizando reglas con expresiones regulares y métricas "
 "agrupadas en *sets* que se asocian a **PeeringContracts**."
+
+#: ../../brand/virtual_pbx.rst:3
+msgid "Virtual PBX"
+msgstr "PBX Virtual"
+
+#: ../../brand/virtual_pbx.rst:5
+msgid ""
+"Virtual PBX clients are designed to provide service to clients with "
+"multiple terminals that require featureful call flows."
+msgstr ""
+
+#: ../../brand/virtual_pbx.rst:14
+msgid "SIP domain"
+msgstr "Dominio SIP"
+
+#: ../../brand/virtual_pbx.rst:16
+msgid "DNS for this client. See :ref:`Company SIP Domain` section."
+msgstr "DNS del cliente. Ver sección :ref:`Dominio SIP de la compañía`"
+
+#: ../../brand/virtual_pbx.rst:64
+msgid ""
+"Most of the features are self-explanatory, but **voice notification** "
+"deserves an explanation: if you enable them, when a call fails, the user "
+"will listen a locution explaining what occurred (\"you have no "
+"permissions to place this call\", \"the call cannot be billed\", etc.)"
+msgstr ""
+"La mayoría de las features son auto-explicativas, pero las "
+"**notificaciones de voz** merecen una explicación: si se habilitan, "
+"cuando una llamada falla, el usuario escuchará una locución explicando lo"
+" ocurrido (\"no tiene permisos para realizar esta llamada\", \"la llamada"
+" no puede ser tarificada\", etc.)"
+
+#: ../../brand/virtual_pbx.rst:69
+msgid ""
+"Recordings rotation happens at two levels: brand and client. This means "
+"that **a client's recordings can be rotated even though its limit has not"
+" arrived (or even it has no limit) if brand's limit applies first**."
+msgstr ""
+"La rotación de grabaciones ocurre en dos niveles: marca y compañía. Esto "
+"significa que **las grabaciones de una compañía puede llegar a ser "
+"rotadas incluso si esta no ha alcanzado su límite (o incluso si no tiene "
+"límite) si se ha alcanzado el límite de espacio de su marca**."
+
+#: ../../brand/virtual_pbx.rst:73
+msgid ""
+"Again: recordings rotation happens at two levels: brand and client. This "
+"means that **a client's recordings can be rotated even though its limit "
+"has not arrived (or even it has no limit) if brand's limit applies "
+"first**."
+msgstr ""
+"De nuevo: La rotación de grabaciones ocurre en dos niveles: marca y "
+"cliente. Esto significa que **las grabaciones de una compañía puede "
+"llegar a ser rotadas incluso si esta no ha alcanzado su límite (o incluso"
+" si no tiene límite) si se ha alcanzado el límite de espacio de su "
+"marca**."
+
+#: ../../brand/virtual_pbx.rst:77
+msgid ""
+"To avoid this, make sure that the sum of all companies does not exceed "
+"the size assigned to your brand and make sure that all companies has a "
+"size configured (if 0, it has unlimited size)."
+msgstr ""
+"Para evitar esto, asegurese que la suma de los límites de las companías "
+"no exceda el tamaño asignado a la marca y que todas las compañías tienen "
+"un límite de espacio configurado (si es 0, tendrán ilimitado)."
+
+#: ../../brand/virtual_pbx.rst:81
+msgid ""
+"Both **Distribute method** and **Application Server** are only visible "
+"for God Administrator."
+msgstr ""
+"Tanto **Método de distibución** como **Servidor de aplicación** solo son "
+"visibles para el operador global (*god*)."
+
+#: ../../brand/virtual_pbx.rst:84
+msgid ""
+"'Round-robin' distribute method is reserved for huge companies whose "
+"calls cannot be handled in a single AS. **Use 'Hash based' for remaining "
+"ones**, as 'Round-robin' imposes some limitations to client features (no "
+"queues, no conferences)."
+msgstr ""
+"El método de distribución 'Round-robin' está reservado para compañías "
+"enormes cuyas llamadas no *entren* en un AS. **Utilizar 'Basado en hash' "
+"para el resto**, ya que 'Round-robin' impone una serie de limitaciones en"
+" las funcionalidades de la compañía (sin colas, sin conferencias)."
+
+#: ../../brand/wholesale.rst:5
+msgid "Wholesale"
+msgstr "Wholesale"
+
+#: ../../brand/wholesale.rst:7
+msgid ""
+"Wholesale allows trunking services with Carriers without any application "
+"server features, focusing on concurrency and quality rather on having "
+"lots of services."
+msgstr ""
+"Wholesale permite ofrecer un servicio de conexión con Proveedores para "
+"clientes sin requisitos de funcionalidades de Servidores de aplicación, "
+"centrándose en concurrencia y calidad e ignorando el resto de "
+"funcionalidades."
+
+#: ../../brand/wholesale.rst:11
+msgid "Just make outgoing calls."
+msgstr "Solo realiza llamadas salientes."
+
+#: ../../brand/wholesale.rst:13
+msgid "IP authentication only (no register, no SIP auth)."
+msgstr "Solo autenticación IP (sin registro, sin autenticación SIP)."
+
+#: ../../brand/wholesale.rst:15
+msgid ""
+"Calls go directly from users to trunks, without any application server "
+"involved."
+msgstr ""
+"Las llamadas van directamente del proxy de usuarios al de salida sin la "
+"participación de ningun servidor de aplicación."
+
+#: ../../brand/wholesale.rst:17
+msgid "Support for routing tags (client can choose the outgoing route to use)"
+msgstr ""
+"Soportan Routing tags (el cliente puede elegir la ruta de salida a "
+"emplear)"
+
+#: ../../brand/wholesale.rst:38
+msgid "Limits the external concurrent calls."
+msgstr "Limitar el número de llamadas externas concurrentes."
+
+#: ../../brand/wholesale.rst:41
+msgid "Select the :ref:`routing tags` this wholesale will be able to use."
+msgstr ""
+"Seleccionar los :ref:`routing tags` que el cliente wholesale podrá "
+"emplear."
+
+#: ../../brand/wholesale.rst:52
+msgid "Audio transcoding"
+msgstr "Transcodificación de audio"
+
+#: ../../brand/wholesale.rst:54
+msgid "Select the codec capabilities to add to calls."
+msgstr "Permite seleccionar los codecs que se añadirán a las llamadas."
 

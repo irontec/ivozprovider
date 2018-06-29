@@ -161,6 +161,45 @@ class DataGateway
         return $response;
     }
 
+
+    /**
+     * @param string $entityName
+     * @param array|null $criteria
+     * @param array|null $orderBy
+     * @param int|null $chunkSize
+     * @param int|null $offset
+     * @return \Generator
+     */
+    public function findAllBy(
+        string $entityName,
+        array $criteria = null,
+        array $orderBy = null,
+        int $chunkSize = 50,
+        int $offset = 0
+    ) {
+        $qb = $this
+            ->queryBuilderFactory
+            ->createFromArguments($entityName, $criteria, $orderBy);
+
+        $currentPage = 1;
+        $continue =  true;
+        while ($continue) {
+
+            $qb
+                ->setMaxResults($chunkSize)
+                ->setFirstResult(($currentPage - 1) * $chunkSize);
+
+            $query = $qb->getQuery();
+            $results = $query->getResult();
+            $continue = count($results) === $chunkSize;
+            $currentPage++;
+
+            foreach ($results as $result) {
+                yield $this->dtoAssembler->toDto($result);
+            }
+        }
+    }
+
     /**
      * @param string $entityName
      * @param array|null $criteria

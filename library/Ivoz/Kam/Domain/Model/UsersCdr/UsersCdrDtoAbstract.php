@@ -98,9 +98,9 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
     private $friend;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto | null
+     * @var \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto | null
      */
-    private $retailAccount;
+    private $residentialDevice;
 
 
     use DtoNormalizer;
@@ -137,7 +137,7 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
             'companyId' => 'company',
             'userId' => 'user',
             'friendId' => 'friend',
-            'retailAccountId' => 'retailAccount'
+            'residentialDeviceId' => 'residentialDevice'
         ];
     }
 
@@ -164,7 +164,7 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
             'company' => $this->getCompany(),
             'user' => $this->getUser(),
             'friend' => $this->getFriend(),
-            'retailAccount' => $this->getRetailAccount()
+            'residentialDevice' => $this->getResidentialDevice()
         ];
     }
 
@@ -177,7 +177,7 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
         $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
         $this->user = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\User\\User', $this->getUserId());
         $this->friend = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Friend\\Friend', $this->getFriendId());
-        $this->retailAccount = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\RetailAccount\\RetailAccount', $this->getRetailAccountId());
+        $this->residentialDevice = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\ResidentialDevice\\ResidentialDevice', $this->getResidentialDeviceId());
     }
 
     /**
@@ -633,23 +633,23 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto $retailAccount
+     * @param \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto $residentialDevice
      *
      * @return static
      */
-    public function setRetailAccount(\Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto $retailAccount = null)
+    public function setResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto $residentialDevice = null)
     {
-        $this->retailAccount = $retailAccount;
+        $this->residentialDevice = $residentialDevice;
 
         return $this;
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto
+     * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto
      */
-    public function getRetailAccount()
+    public function getResidentialDevice()
     {
-        return $this->retailAccount;
+        return $this->residentialDevice;
     }
 
     /**
@@ -657,21 +657,21 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
      *
      * @return static
      */
-    public function setRetailAccountId($id)
+    public function setResidentialDeviceId($id)
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto($id)
+            ? new \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto($id)
             : null;
 
-        return $this->setRetailAccount($value);
+        return $this->setResidentialDevice($value);
     }
 
     /**
      * @return integer | null
      */
-    public function getRetailAccountId()
+    public function getResidentialDeviceId()
     {
-        if ($dto = $this->getRetailAccount()) {
+        if ($dto = $this->getResidentialDevice()) {
             return $dto->getId();
         }
 

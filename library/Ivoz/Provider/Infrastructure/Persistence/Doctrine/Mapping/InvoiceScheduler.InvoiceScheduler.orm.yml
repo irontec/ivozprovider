@@ -1,0 +1,13 @@
+Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceScheduler:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\InvoiceSchedulerDoctrineRepository
+  type: entity
+  table: InvoiceSchedulers
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY

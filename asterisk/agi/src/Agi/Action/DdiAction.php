@@ -134,7 +134,7 @@ class DdiAction
             ->setRouteConferenceRoom($ddi->getConferenceRoom())
             ->setRouteFriendDestination($ddi->getFriendValue())
             ->setRouteQueue($ddi->getQueue())
-            ->setRouteRetail($ddi->getRetailAccount())
+            ->setRouteResidential($ddi->getResidentialDevice())
             ->setRouteConditional($ddi->getConditionalRoute())
             ->route();
     }

@@ -91,3 +91,14 @@ Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingAbstract:
           referencedColumnName: id
           onDelete: set null
       orphanRemoval: false
+    residentialDevice:
+      targetEntity: \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        residentialDeviceId:
+          referencedColumnName: id
+          onDelete: cascade
+      orphanRemoval: false

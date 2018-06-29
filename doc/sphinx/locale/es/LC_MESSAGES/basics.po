@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-07 17:55+0200\n"
+"POT-Creation-Date: 2018-06-19 18:44+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,12 +38,13 @@ msgstr ""
 
 #: ../../basics/architecture/additional_elements.rst:8
 msgid ""
-"Another remarkable task is **asychronous tasks handler**: CDR must be "
-"parsed, calls must be billed, recordings must be encoded, etc."
+"Another remarkable task is **asychronous tasks handler** in charge of "
+"encoding recordings, generating invoices, reloading services, importing "
+"data, etc."
 msgstr ""
-"Otro proceso menos crucial son **los gestores de tareas asíncronas**: el "
-"CDR ha de ser parseado, la llamadas tarificadas, las grabaciones "
-"codificadas, etc."
+"Otro proceso menos crucial son **los gestores de tareas asíncronas** "
+"encargado de codificar las grabaciones, generar facturas, recargar servicios, "
+"importar datos, etc."
 
 #: ../../basics/architecture/audio_flow.rst:1
 msgid ""
@@ -87,15 +88,13 @@ msgstr ""
 
 #: ../../basics/architecture/audio_flow.rst:15
 msgid ""
-"IvozProvider implements *media-relays* using both `RTPengine "
-"<https://github.com/sipwise/rtpengine>`_ and `RTPproxy "
-"<http://www.rtpproxy.org/>`_."
+"IvozProvider implements *media-relays* using `RTPengine "
+"<https://github.com/sipwise/rtpengine>`_."
 msgstr ""
-"IvozProvider implementa *servidores media* usando tanto `RTPengine "
-"<https://github.com/sipwise/rtpengine>`_ como `RTPproxy "
-"<http://www.rtpproxy.org/>`_."
+"IvozProvider implementa *servidores media* usando `RTPengine "
+"<https://github.com/sipwise/rtpengine>`_."
 
-#: ../../basics/architecture/audio_flow.rst:18
+#: ../../basics/architecture/audio_flow.rst:17
 msgid ""
 "Similar to SIP, these *media-relays* exchanges RTP when is needed with "
 "*Application Servers*, but **external entities never talk directly to "
@@ -451,9 +450,9 @@ msgid ""
 " automatically with IvozProvider meta packages."
 msgstr ""
 "Se recomienda emplear las `guias oficiales de instalación "
-"<https://www.debian.org/releases/stretch/installmanual>`_ para obtener un "
-"sistema base mínimo, ya que toda dependencia que necesite posteriormente "
-"será instalada automaticamente."
+"<https://www.debian.org/releases/stretch/installmanual>`_ para obtener un"
+" sistema base mínimo, ya que toda dependencia que necesite posteriormente"
+" será instalada automaticamente."
 
 #: ../../basics/installation/debian_install.rst:14
 msgid ""
@@ -871,22 +870,14 @@ msgid "GitHub: https://github.com/irontec/ivozprovider"
 msgstr "GitHub: https://github.com/irontec/ivozprovider"
 
 #: ../../basics/intro/getting_help.rst:12
-msgid "Users mailing list: users@lists-ivozprovider.irontec.com"
-msgstr "Listas de correo para usuarios: users@lists-ivozprovider.irontec.com"
-
-#: ../../basics/intro/getting_help.rst:14
-msgid "Developers mailing list: dev@lists-ivozprovider.irontec.com"
-msgstr "Listas de correo para desarrolladores: dev@lists-ivozprovider.irontec.com"
-
-#: ../../basics/intro/getting_help.rst:16
 msgid "email: vozip@irontec.com"
 msgstr "Dirección de correo: vozip@irontec.com"
 
-#: ../../basics/intro/getting_help.rst:18
+#: ../../basics/intro/getting_help.rst:14
 msgid "Twitter: `@irontec <https://twitter.com/irontec>`_"
 msgstr "Twitter: `@irontec <https://twitter.com/irontec>`_"
 
-#: ../../basics/intro/getting_help.rst:20
+#: ../../basics/intro/getting_help.rst:16
 msgid ""
 "IRC Channel `#ivozprovider "
 "<https://webchat.freenode.net/?channels=ivozprovider>`_ at "
@@ -896,7 +887,7 @@ msgstr ""
 "<https://webchat.freenode.net/?channels=ivozprovider>`_ "
 "enirc.freenode.net"
 
-#: ../../basics/intro/getting_help.rst:23
+#: ../../basics/intro/getting_help.rst:19
 msgid "Don't hesitate to contact us for any kind of feedback :)"
 msgstr "No dudes en contactarnos cualquiera que sea el motivo :)"
 
@@ -1780,4 +1771,3 @@ msgid ""
 msgstr ""
 "Los usuarios son los que utilizan y disfrutan todas las funcionalidades "
 "de IvozProvider."
-

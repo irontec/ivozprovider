@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
 #include TpRatingProfilesList.yaml
 #include AdministratorsList.yaml
 #include KamTrustedList.yaml
@@ -16,6 +17,9 @@ production:
       <<: *WholesaleClients
       class: ui-silk-cart
       title: _("List of %s %2s", ngettext('Wholesale Client', 'Wholesale Clients', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/brand/wholesale.html"
       forcedValues:
         type: 'wholesale'
         <<: *forcedBrand
@@ -298,7 +302,7 @@ production:
       module: default
       controller: klear-custom-extra-auth
       action: emulate
-      class: ui-silk-cart-add
+      class: ui-silk-cart-go
       label: false
       labelOnEdit: false
       labelOnList: false

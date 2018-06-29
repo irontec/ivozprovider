@@ -103,6 +103,10 @@ doctrine:
         Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUser
       Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface:
         Ivoz\Provider\Domain\Model\Invoice\Invoice
+      Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface:
+        Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequence
+      Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface:
+        Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceScheduler
       Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface:
         Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplate
       Ivoz\Provider\Domain\Model\IvrEntry\IvrEntryInterface:
@@ -153,8 +157,8 @@ doctrine:
         Ivoz\Provider\Domain\Model\Queue\Queue
       Ivoz\Provider\Domain\Model\Recording\RecordingInterface:
         Ivoz\Provider\Domain\Model\Recording\Recording
-      Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface:
-        Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount
+      Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface:
+        Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice
       Ivoz\Provider\Domain\Model\RouteLock\RouteLockInterface:
         Ivoz\Provider\Domain\Model\RouteLock\RouteLock
       Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface:
@@ -207,8 +211,6 @@ doctrine:
         Ivoz\Kam\Domain\Model\Dispatcher\Dispatcher
       Ivoz\Kam\Domain\Model\Trusted\TrustedInterface:
         Ivoz\Kam\Domain\Model\Trusted\Trusted
-      Ivoz\Kam\Domain\Model\Rtpproxy\RtpproxyInterface:
-        Ivoz\Kam\Domain\Model\Rtpproxy\Rtpproxy
       Ivoz\Kam\Domain\Model\TrunksAcc\TrunksAccInterface:
         Ivoz\Kam\Domain\Model\TrunksAcc\TrunksAcc
       Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddressInterface:

@@ -25,9 +25,9 @@ Ivoz\Kam\Domain\Model\UsersCdr\UsersCdrAbstract:
     usersCdr_friendId:
       columns:
         - friendId
-    usersCdr_retailAccountId:
+    usersCdr_residentialDeviceId:
       columns:
-        - retailAccountId
+        - residentialDeviceId
   fields:
     startTime:
       type: datetime
@@ -148,14 +148,14 @@ Ivoz\Kam\Domain\Model\UsersCdr\UsersCdrAbstract:
           referencedColumnName: id
           onDelete: set null
       orphanRemoval: false
-    retailAccount:
-      targetEntity: \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface
+    residentialDevice:
+      targetEntity: \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface
       cascade: {  }
       fetch: LAZY
       mappedBy: null
       inversedBy: null
       joinColumns:
-        retailAccountId:
+        residentialDeviceId:
           referencedColumnName: id
           onDelete: set null
       orphanRemoval: false

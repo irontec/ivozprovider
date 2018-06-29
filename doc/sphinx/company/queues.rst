@@ -12,7 +12,7 @@ than users attending them**.
              queue related stat, etc.).
 
 **In distributed installations** using Queues is only compatible with an static
-assignment or 'hash based' distribution (see **Distribute method** :ref:`here <Companies>`).
+assignment or 'hash based' distribution (see **Distribute method** :ref:`here <Virtual PBX>`).
 
 .. hint:: Brand operators can choose which Companies have queues (see **Features**
           in :ref:`Brand Configuration` and :ref:`Company Configuration`).

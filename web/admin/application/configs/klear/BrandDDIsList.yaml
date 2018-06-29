@@ -42,7 +42,7 @@ production:
           billInboundCalls: true
           friendValue: true
           queue: true
-          retailAccount: true
+          residentialDevice: true
           language: true
           conditionalRoute: true
 staging: 

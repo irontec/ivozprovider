@@ -11,8 +11,8 @@ use Ivoz\Provider\Domain\Model\Fax\Fax;
 use Ivoz\Provider\Domain\Model\Fax\FaxInterface;
 use Ivoz\Provider\Domain\Model\Friend\Friend;
 use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
-use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount;
-use Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface;
+use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice;
+use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
 use Ivoz\Provider\Domain\Model\User\User;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 
@@ -96,8 +96,8 @@ class ChannelInfo
             $type = "Ddi";
         } else if ($data instanceof FriendInterface) {
             $type = "Friend";
-        } else if ($data instanceof RetailAccountInterface) {
-            $type = "RetailAccount";
+        } else if ($data instanceof ResidentialDeviceInterface) {
+            $type = "Residential";
         } else if ($data instanceof FaxInterface) {
             $type = "Fax";
         }
@@ -153,8 +153,8 @@ class ChannelInfo
             case "Friend":
                 $repository = $this->em->getRepository(Friend::class);
                 break;
-            case "RetailAccount":
-                $repository = $this->em->getRepository(RetailAccount::class);
+            case "Residential":
+                $repository = $this->em->getRepository(ResidentialDevice::class);
                 break;
             case "Fax":
                 $repository = $this->em->getRepository(Fax::class);

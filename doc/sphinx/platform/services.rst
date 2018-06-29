@@ -45,6 +45,15 @@ configuration** > **Services**:
         dialing an special code. Voice instructions will be provided in the
         user's language.
 
+    Open Lock
+        Calling this service code will set route lock status to 'Opened' (see :ref:`route_locks`).
+
+    Close Lock
+        Calling this service code will set route lock status to 'Closed' (see :ref:`route_locks`).
+
+    Toggle Lock
+        Calling this service code will change the current status of the lock (see :ref:`route_locks`).
+
 As soon as new services are implemented into IvozProvider, they will be listed
 in this section.
 

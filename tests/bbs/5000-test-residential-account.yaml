@@ -1,0 +1,30 @@
+# ----------------------------------------------------------------------------
+
+scenarios:
+  - name: call from residential device to Alice DDI
+    timeout: 25
+    sessions:
+
+      # Residential: Call to Alice DDI
+      - residential:
+          - wait
+          - call:
+              dest: 999661001
+              credentials:
+                <<: *residential_cred
+          - waitfor: CONFIRMED
+          - waitfor: DISCONNCTD
+
+      # Alice: Wait for call from residential
+      - alice:
+          - register:
+              <<: *alice_cred
+          - waitfor: INCOMING
+          - ringing
+          - wait: 5
+          - answer
+          - waitfor: CONFIRMED
+          - wait
+          - hangup
+          - waitfor: DISCONNCTD
+

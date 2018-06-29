@@ -24,3 +24,8 @@ services:
   Ivoz\Core\Infrastructure\Domain\Service\Cgrates\RemoveTpRatingProfile:  ~
   Ivoz\Cgr\Domain\Service\TpRatingProfile\RemoveTpRatingProfileInterface:
     '@Ivoz\Core\Infrastructure\Domain\Service\Cgrates\RemoveTpRatingProfile'
+
+  Ivoz\Core\Infrastructure\Domain\Service\Cgrates\RerateCallService:
+    public: true
+  Ivoz\Kam\Domain\Service\TrunksCdr\RerateCallServiceInterface:
+    '@Ivoz\Core\Infrastructure\Domain\Service\Cgrates\RetateCallService'

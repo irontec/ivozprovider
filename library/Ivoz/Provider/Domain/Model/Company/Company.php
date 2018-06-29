@@ -17,11 +17,13 @@ class Company extends CompanyAbstract implements CompanyInterface
     /**
      * Available Company Types
      */
-    const VPBX      = 'vpbx';
+    const VPBX          = 'vpbx';
 
-    const RETAIL    = "retail";
+    const RETAIL        = 'retail';
 
-    const WHOLESALE = "wholesale";
+    const WHOLESALE     = 'wholesale';
+
+    const RESIDENTIAL   = 'residential';
 
     use CompanyTrait;
 
@@ -81,6 +83,14 @@ class Company extends CompanyAbstract implements CompanyInterface
         }
 
         if ($this->getType() == Company::RETAIL) {
+            if (!$this->getDomain()) {
+                $this->setDomain(
+                    $this->getBrand()->getDomain()
+                );
+            }
+        }
+
+        if ($this->getType() == Company::RESIDENTIAL) {
             if (!$this->getDomain()) {
                 $this->setDomain(
                     $this->getBrand()->getDomain()

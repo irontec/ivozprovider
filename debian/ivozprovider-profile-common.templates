@@ -10,6 +10,15 @@ Default: changeme
 Description: Renter root (administrator) MySQL password:
 Description-es.UTF-8: Vuelva a introducir la contraseña MySQL de root (administrador):
 
+Template: ivozprovider/mysql_password_error
+Type: error
+Description: Entered passwords does not match. Please select again the option to configure MySQL password.
+Description-es.UTF-8: Las contraseñas introducidas no coinciden. Por favor, reconfigure la contraseña de MySQL.
+
+Template: ivozprovider/mysql_password_old
+Type: password
+Description: Old database password during reconfiguration process
+
 Template: ivozprovider/dns_address
 Type: string
 Default: 127.0.0.1

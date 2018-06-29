@@ -19,7 +19,7 @@ abstract class ExtensionAbstract
     protected $number;
 
     /**
-     * comment: enum:user|number|ivr|huntGroup|conferenceRoom|friend|queue|retailAccount|conditional
+     * comment: enum:user|number|ivr|huntGroup|conferenceRoom|friend|queue|conditional
      * @var string
      */
     protected $routeType;
@@ -293,8 +293,7 @@ abstract class ExtensionAbstract
           4 => 'conferenceRoom',
           5 => 'friend',
           6 => 'queue',
-          7 => 'retailAccount',
-          8 => 'conditional',
+          7 => 'conditional',
         ), 'routeTypevalue "%s" is not an element of the valid values: %s');
         }
 

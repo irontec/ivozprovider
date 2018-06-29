@@ -613,7 +613,7 @@ Ivoz\Provider\Domain\Model\Recording\Recording:
       ROLE_BRAND_ADMIN:
         company:
           in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
-Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount:
+Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:

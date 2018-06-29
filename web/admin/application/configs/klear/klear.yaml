@@ -103,20 +103,16 @@ production:
           title: ngettext('Virtual PBX', 'Virtual PBXs', 0)
           class: ui-silk-building
           description: _("List of %s", ngettext('Virtual PBX', 'Virtual PBXs', 0))
-        RetailClientsList:
-          title: ngettext('Retail', 'Retails', 0)
-          class: ui-silk-basket
-          description: _("List of %s", ngettext('Retail', 'Retails', 0))
-          showOnlyIf: ${auth.brandFeatures.retail.enabled}
         WholesaleClientsList:
           title: ngettext('Wholesale', 'Wholesales', 0)
           class: ui-silk-cart
           description: _("List of %s", ngettext('Wholesale', 'Wholesales', 0))
           showOnlyIf: ${auth.brandFeatures.wholesale.enabled}
-        CompanyBalancesList:
-          title: ngettext('Prepaid Balance', 'Prepaid Balances', 0)
-          class: ui-silk-money-yen
-          description: _("List of %s", ngettext('Company', 'Companies', 0))
+        ResidentialClientsList:
+          title: ngettext('Residential', 'Residentials', 0)
+          class: ui-silk-house
+          description: _("List of %s", ngettext('Residential', 'Residentials', 0))
+          showOnlyIf: ${auth.brandFeatures.residential.enabled}
         CompanyBalancesList:
           title: ngettext('Prepaid Balance', 'Prepaid Balances', 0)
           class: ui-silk-money-yen
@@ -149,10 +145,10 @@ production:
           title: ngettext('DDI', 'DDIs', 0)
           class: ui-silk-lightning-go
           description: _("List of %s", ngettext('DDI', 'DDIs', 0))
-        BrandRetailAccountsList:
-          title: ngettext('Retail Account', 'Retail Accounts', 0)
-          class: ui-silk-key
-          description: _("List of %s", ngettext('Retail Account', 'Retail Accounts', 0))
+        BrandResidentialDevicesList:
+          title: ngettext('Residential Device', 'Residential Devices', 0)
+          class: ui-silk-ipod-sound
+          description: _("List of %s", ngettext('Residential Device', 'Residential Devices', 0))
           showOnlyIf: ${auth.brandFeatures.retail.enabled}
         GenericMatchListsList:
           title: ngettext('Generic Match List', 'Generic Match Lists', 0)
@@ -189,6 +185,11 @@ production:
           class: ui-silk-report-key
           description: _("List of %s", ngettext('Invoice template', 'Invoice templates', 0))
           showOnlyIf: ${auth.brandFeatures.invoices.enabled}
+        InvoiceNumberSequencesList:
+            title: ngettext('Invoice number sequence', 'Invoice number sequences', 0)
+            class: ui-silk-report-key
+            description: _("List of %s", ngettext('Invoice number sequence', 'Invoice number sequences', 0))
+            showOnlyIf: ${auth.brandFeatures.invoices.enabled}
         FixedCostsList:
           title: ngettext('Fixed cost', 'Fixed costs', 0)
           class:  ui-silk-money-add
@@ -230,21 +231,21 @@ production:
           title: ngettext('Friend', 'Friends', 0)
           class: ui-silk-heart
           description: _("List of %s", ngettext('Friend', 'Friends', 0))
-        RetailAccountsList:
-          title: ngettext('Retail Account', 'Retail Accounts', 0)
-          class: ui-silk-key
-          description: _("List of %s", ngettext('Retail Account', 'Retail Accounts', 0))
-          showOnlyIf: ${auth.companyRetail}
+        ResidentialDevicesList:
+          title: ngettext('Residential Device', 'Residential Devices', 0)
+          class: ui-silk-ipod-sound
+          description: _("List of %s", ngettext('Residential Device', 'Residential Devices', 0))
+          showOnlyIf: ${auth.companyResidential}
         DDIsList:
           title: ngettext('DDI', 'DDIs', 0)
           class: ui-silk-lightning-go
           description: _("List of %s", ngettext('DDI', 'DDIs', 0))
           showOnlyIf: ${auth.companyVPBX}
-        RetailDDIsList:
+        ResidentialDDIsList:
           title: ngettext('DDI', 'DDIs', 0)
           class: ui-silk-lightning-go
           description: _("List of %s", ngettext('DDI', 'DDIs', 0))
-          showOnlyIf: ${auth.companyRetail}
+          showOnlyIf: ${auth.companyResidential}
         OutgoingDDIRulesList:
           title: ngettext('Outgoing DDI Rule', 'Outgoing DDI Rules', 0)
           class: ui-silk-script-lightning
@@ -255,11 +256,11 @@ production:
           class: ui-silk-arrow-branch
           description: _("List of %s", ngettext('External call filter', 'External call filters', 0))
           showOnlyIf: ${auth.companyVPBX}
-        ExternalCallFiltersRetailList:
+        ExternalCallFiltersResidentialList:
           title: ngettext('External call filter', 'External call filters', 0)
           class: ui-silk-arrow-branch
           description: _("List of %s", ngettext('External call filter', 'External call filters', 0))
-          showOnlyIf: ${auth.companyRetail}
+          showOnlyIf: ${auth.companyResidential}
         ConditionalRoutesList:
           title: ngettext('Conditional Route', 'Conditional Routes', 0)
           class: ui-silk-arrow-divide
@@ -346,11 +347,11 @@ production:
           class: ui-silk-application-view-list
           description: _("List of %s", ngettext('Call', 'Calls', 0))
           showOnlyIf: ${auth.companyVPBX}
-        KamUsersCdrsRetailList:
+        KamUsersCdrsResidentialList:
           title: ngettext('Call registry', 'Call registries', 1)
           class: ui-silk-application-view-list
           description: _("List of %s", ngettext('Call', 'Calls', 0))
-          showOnlyIf: ${auth.companyRetail}
+          showOnlyIf: ${auth.companyResidential}
         KamTrunksCdrsWholesaleList:
           title: ngettext('Call registry', 'Call registries', 1)
           class: ui-silk-application-view-list

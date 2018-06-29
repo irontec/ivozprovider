@@ -13,8 +13,8 @@ Background:
   Given I click on "MediaRelaySets" CTA
    Then I am on "MediaRelaySets" list
     And I can see at least one row
-   When I click on "MediaRelaySets" first elements "kamRtpproxy" button
-   Then I am on "MediaRelaySetsList_kamRtpproxy" subscreen list
+   When I click on "MediaRelaySets" first elements "kamRtpengine" button
+   Then I am on "MediaRelaySetsList_kamRtpengine" subscreen list
 
 Scenario: I can create media relays
   Given I click on add button
@@ -22,21 +22,21 @@ Scenario: I can create media relays
     And I click on save button
    Then I can see confirmation dialog
    When I click on close dialog button
-   Then I am on "MediaRelaySetsList_kamRtpproxy" subscreen list
-  When I click on "kamRtpproxy" last elements edit button
+   Then I am on "MediaRelaySetsList_kamRtpengine" subscreen list
+  When I click on "kamRtpengine" last elements edit button
   Then I compare the form data with "platform/mediaRelay/new" data fixture
 
 Scenario: I can edit media relay
   Given I can see at least one row
-   When I click on "kamRtpproxy" first elements edit button
+   When I click on "kamRtpengine" first elements edit button
     And I click on save button
    Then I can see confirmation dialog
    When I click on close dialog button
-   Then I am on "MediaRelaySetsList_kamRtpproxy" subscreen list
+   Then I am on "MediaRelaySetsList_kamRtpengine" subscreen list
 
 Scenario: I can click on delete media relay button
   Given I can see at least one row
-   When I click on "kamRtpproxy" first elements delete button
+   When I click on "kamRtpengine" first elements delete button
    Then I can see confirmation dialog
    When I click on close dialog button
-   Then I am on "MediaRelaySetsList_kamRtpproxy" subscreen list
+   Then I am on "MediaRelaySetsList_kamRtpengine" subscreen list

@@ -160,13 +160,18 @@ class InterfaceGenerator extends EntityGenerator
             (-1 * strlen('Interface'))
         );
 
-        $defaultImplementationReflection = new \ReflectionClass($defaultImplementationClassName);
-        $getChangeSetMethod = $defaultImplementationReflection->getMethod('getChangeSet');
+        try {
+            $defaultImplementationReflection = new \ReflectionClass($defaultImplementationClassName);
+            $getChangeSetMethod = $defaultImplementationReflection->getMethod('getChangeSet');
 
-        return $getChangeSetMethod->isPublic()
-            ? 'LoggableEntityInterface'
-            : 'EntityInterface';
+            return $getChangeSetMethod->isPublic()
+                ? 'LoggableEntityInterface'
+                : 'EntityInterface';
 
+        } catch (\Exception $e) {
+
+            return 'EntityInterface';
+        }
     }
 
     /**

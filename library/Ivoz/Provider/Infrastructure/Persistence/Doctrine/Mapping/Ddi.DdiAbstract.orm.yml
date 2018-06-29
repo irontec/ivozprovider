@@ -42,7 +42,7 @@ Ivoz\Provider\Domain\Model\Ddi\DdiAbstract:
       length: 25
       options:
         fixed: false
-        comment: '[enum:user|ivr|huntGroup|fax|conferenceRoom|friend|queue|retailAccount|conditional]'
+        comment: '[enum:user|ivr|huntGroup|fax|conferenceRoom|friend|queue|conditional|residential]'
       column: routeType
     billInboundCalls:
       type: boolean
@@ -193,14 +193,14 @@ Ivoz\Provider\Domain\Model\Ddi\DdiAbstract:
           nullable: false
           onDelete: cascade
       orphanRemoval: false
-    retailAccount:
-      targetEntity: \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface
+    residentialDevice:
+      targetEntity: \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface
       cascade: {  }
       fetch: LAZY
       mappedBy: null
       inversedBy: ddis
       joinColumns:
-        retailAccountId:
+        residentialDeviceId:
           referencedColumnName: id
           onDelete: set null
       orphanRemoval: false

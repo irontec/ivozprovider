@@ -26,15 +26,16 @@ production:
           title: _("Options")
           screens:
             invoicesEdit_screen: true
+            invoicesView_screen: true
             fixedCostsRelInvoicesList_screen: true
             kamTrunksCdrsList_screen: true
           dialogs:
             generateInvoice_dialog: true
             invoicesDel_dialog: true
-          default: invoicesEdit_screen
         order: &invoicesOrder_Link
           company: true
           number: true
+          numberSequence: true
           inDate: true
           outDate: true
           total: true
@@ -45,13 +46,11 @@ production:
           pdf: true
         blacklist:
           FixedCostsRelInvoices: true
+          numberSequence: true
       options:
         title: _("Options")
         screens:
           invoicesNew_screen: true
-        dialogs:
-          invoicesDel_dialog: true
-          generateInvoice_dialog: true
 
     invoicesNew_screen: &invoicesNew_screenLink
       <<: *Invoices
@@ -77,8 +76,10 @@ production:
         group0:
           colsPerRow: 2
           fields:
+            numberSequence: 1
             number: 1
             company: 1
+            invoiceTemplate: 1
         group1:
           colsPerRow: 2
           fields:
@@ -99,6 +100,8 @@ production:
     invoicesEdit_screen: &invoicesEdit_screenLink
       <<: *Invoices
       controller: edit
+      parentOptionCustomizer:
+        - IvozProvider_Klear_Options_OptionsCustomizer
       class: ui-silk-pencil
       label: false
       title: _("Edit %s %2s", ngettext('Invoice', 'Invoices', 1), "[format| (%item%)]")
@@ -111,8 +114,14 @@ production:
           total: true
           totalWithTax: true
           status: true
+          number: true
       fixedPositions:
         <<: *invoicesFixedPositions_Link
+
+    invoicesView_screen: &invoicesView_screenLink
+      <<: *invoicesEdit_screenLink
+      disableSave: true
+      class: ui-silk-eye
 
     <<: *fixedCostsRelInvoices_screensLink
     fixedCostsRelInvoicesList_screen:
@@ -128,11 +137,12 @@ production:
       parentOptionCustomizer: 
         - recordCount
 
-
   dialogs: &invoices_dialogsLink
     invoicesDel_dialog: &invoicesDel_dialogLink
       <<: *Invoices
       controller: delete
+      parentOptionCustomizer:
+        - IvozProvider_Klear_Options_OptionsCustomizer
       class: ui-silk-bin
       labelOption: false
       title: _("Delete %s",  ngettext('Invoice', 'Invoices', 1))
@@ -143,6 +153,8 @@ production:
     generateInvoice_dialog:
       <<: *Invoices
       module: default
+      parentOptionCustomizer:
+        - IvozProvider_Klear_Options_OptionsCustomizer
       title: _("Generate %s",  ngettext('Invoice', 'Invoices', 1))
       label: false
       labelOnEdit: true
@@ -153,8 +165,6 @@ production:
       action: generate
       class:  ui-silk-report-add
       multiItem: true
-
-
 
     <<: *fixedCostsRelInvoices_dialogsLink
   commands: &invoices_commandsLink

@@ -8,20 +8,20 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-27 19:30+0200\n"
+"POT-Creation-Date: 2018-06-01 12:51+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.5.1\n"
+"Generated-By: Babel 2.4.0\n"
 
-#: ../../platform/antiflood.rst:3
+#: ../../platform/antiflood.rst:5
 msgid "Antiflood trusted IPs"
 msgstr "Ips de confianza"
 
-#: ../../platform/antiflood.rst:5
+#: ../../platform/antiflood.rst:7
 msgid ""
 "IvozProvider comes with an *anti-flooding* mechanism to avoid that a "
 "single sender can deny the platform service by sending lots of requests. "
@@ -33,7 +33,7 @@ msgstr ""
 "(usuarios y salida) incorporan este mecanismo, que **limita el número de "
 "peticiones desde un dirección origen en un tramo concreto de tiempo**."
 
-#: ../../platform/antiflood.rst:10
+#: ../../platform/antiflood.rst:12
 msgid ""
 "When an origin reaches this limit, the proxy will stop sending responses "
 "for a period of time. After this time, the requests will be again handled"
@@ -42,7 +42,7 @@ msgstr ""
 "Cuando un origen llega al límite, el proxy dejará de contestarle durante "
 "un tiempo dado. Pasado ese tiempo, volverá a contestarle con normalidad"
 
-#: ../../platform/antiflood.rst:14
+#: ../../platform/antiflood.rst:16
 msgid ""
 "Some origins are automatically excluded from this *anti-flooding* "
 "mechanism:"
@@ -50,15 +50,15 @@ msgstr ""
 "Ciertos orígenes que están automáticamente excluidos de este mecanismo de"
 " *anti-flooding*:"
 
-#: ../../platform/antiflood.rst:16
+#: ../../platform/antiflood.rst:18
 msgid "Application Servers from the platform."
 msgstr "Servidores de aplicación de la plataforma."
 
-#: ../../platform/antiflood.rst:18
+#: ../../platform/antiflood.rst:20
 msgid "Company authorized IP addresses or ranges (see previous section)."
 msgstr "IPs o rangos autorizados de empresas (ver sección anterior)."
 
-#: ../../platform/antiflood.rst:20
+#: ../../platform/antiflood.rst:22
 msgid ""
 "Global operator of the platform can also add exceptions to this mechanism"
 " in the section **Global configuration** > **Antiflood trusted IPs**."
@@ -503,7 +503,37 @@ msgstr ""
 "terminal de cualquier usuario a un código especial. Las instrucciones se "
 "mostrarán en el idioma del usuario."
 
-#: ../../platform/services.rst:48
+#: ../../platform/services.rst:47
+msgid "Open Lock"
+msgstr ""
+
+#: ../../platform/services.rst:49
+msgid ""
+"Calling this service code will set route lock status to 'Opened' (see "
+":ref:`route_locks`)."
+msgstr ""
+
+#: ../../platform/services.rst:50
+msgid "Close Lock"
+msgstr ""
+
+#: ../../platform/services.rst:52
+msgid ""
+"Calling this service code will set route lock status to 'Closed' (see "
+":ref:`route_locks`)."
+msgstr ""
+
+#: ../../platform/services.rst:53
+msgid "Toggle Lock"
+msgstr ""
+
+#: ../../platform/services.rst:55
+msgid ""
+"Calling this service code will change the current status of the lock (see"
+" :ref:`route_locks`)."
+msgstr ""
+
+#: ../../platform/services.rst:57
 msgid ""
 "As soon as new services are implemented into IvozProvider, they will be "
 "listed in this section."
@@ -512,7 +542,7 @@ msgstr ""
 "aparecerán en este listado para que el operador global sepa de su "
 "existencia y lo comunique a sus operadores de marca."
 
-#: ../../platform/services.rst:51
+#: ../../platform/services.rst:60
 msgid ""
 "This section lists the available services and the default codes when a "
 "**new brand** is created."
@@ -520,7 +550,7 @@ msgstr ""
 "Este listado determina los servicios disponibles y los códigos por "
 "defecto de las **nuevas marcas**."
 
-#: ../../platform/services.rst:54
+#: ../../platform/services.rst:63
 msgid ""
 "Changing the default code in this section will only affect new created "
 "brands."
@@ -855,3 +885,4 @@ msgid "This example is identical to 't23/yea-{mac}', as subpaths are ignored."
 msgstr ""
 "Este ejemplo es idéntico a 't23/yea-{mac}', ya que las subrutas se "
 "ignoran."
+

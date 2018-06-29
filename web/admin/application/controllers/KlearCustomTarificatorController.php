@@ -25,6 +25,7 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
             ->addActionContext("test-company-plans", "json")
             ->addActionContext("test-brand-plans", "json")
             ->addActionContext("test-rating-plan", "json")
+            ->addActionContext("tarificate-call", "json")
             ->initContext("json");
 
         $this->_helper->layout->disableLayout();
@@ -36,6 +37,40 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
         $loggedUser = $auth->getIdentity();
         $this->_brandId = $loggedUser->brandId;
     }
+
+    public function tarificateCallAction ()
+    {
+        $pks = $this->getRequest()->getParam("pk");
+        if (!is_array($pks) && !is_null($pks)) {
+            $pks = array($pks);
+        }
+
+        $runTarificator = $this->getParam("tarificate");
+        if ($runTarificator) {
+            $this->_helper->log("[Tarificator] Tarificate selected calls");
+            return $this->retarificate($pks);
+        }
+
+        $title = $this->_helper->translate("Tarificate Calls?");
+        $message = "<p>".$this->_helper->translate("Do you want to rerate selected calls?")."</p>";
+        $this->_showDialog($title, $message, "Ok", "Cancel", false, "300", "100");
+    }
+
+    /**
+     * @param $pks
+     * @return boolean
+     */
+    protected function _checkRetarificables($pks)
+    {
+        /** @var DataGateway $dataGateway */
+        $dataGateway = \Zend_Registry::get('data_gateway');
+        return $dataGateway->runNamedQuery(
+            \Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdr::class,
+            'areRetarificable',
+            [$pks]
+        );
+    }
+
 
     public function testCompanyPlansAction ()
     {
@@ -429,6 +464,42 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
         $jsonResponse->addJsFile("/js/customTarificator.js");
         $jsonResponse->setData($data);
         $jsonResponse->attachView($this->view);
+    }
+
+    /**
+     * @param $pks
+     */
+    protected function retarificate($pks)
+    {
+        $retarificable = $this->_checkRetarificables($pks);
+        if ($retarificable) {
+
+            $serviceContainer = \Zend_Registry::get('container');
+            $rerateService = $serviceContainer->get(
+                \Ivoz\Core\Infrastructure\Domain\Service\Cgrates\RerateCallService::class
+            );
+
+            $rerateService->execute($pks);
+            $message = "<p>" . $this->_helper->translate("Tarificator Job started") . "</p>";
+            $title = $this->_helper->translate("Ok");
+
+        } else {
+
+            $message = "<p>".$this->_helper->translate("Invoiced calls can't be metered again")."</p>";
+            $message .= "<p>".$this->_helper->translate("Please select only uninvoiced calls")."</p>";
+
+            $title = $this->_helper->translate("Error");
+        }
+
+        $this->_showDialog(
+            $title,
+            $message,
+            false,
+            "Ok",
+            false,
+            "300",
+            "100"
+        );
     }
 
     /**

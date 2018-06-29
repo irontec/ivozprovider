@@ -12,16 +12,6 @@ production:
       type: text
       trim: both
       maxLength: 200
-    type:
-      title: _('Type')
-      type: select
-      source:
-        data: inline
-        values:
-          rtpproxy:
-            title:  rtpproxy
-          rtpengine:
-            title: rtpengine
 staging:
   _extends: production
 testing:

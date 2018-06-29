@@ -29,6 +29,7 @@
 		"enabled": true
 	},
 	"cdrs": {
+		"sm_cost_retries": 0,
 		"enabled": true
 	},
 	"sm_kamailio": {

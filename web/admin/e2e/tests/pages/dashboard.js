@@ -50,14 +50,17 @@ function dashboard () {
   function selectEmulatedEntity(position) {
     var nthChild = ':nth-child('+ position +')';
 
-    return this
+    this
       .waitForElementVisible('@emulatorSelectorCombo')
       .click('@emulatorSelectorCombo')
       .click(this.elements.emulatorSelectorOptions.selector + nthChild)
-      .click('@dialogSubmitBtn')
-      .waitForElementVisible('@loadingPanel', 2000)
-      .verify.elementNotPresent('@loadingPanel')
-      .api.pause(500);
+      .click('@dialogSubmitBtn');
+
+    this.api.pause(200);
+    this.waitForElementNotPresent('@loadingPanel');
+    this.api.pause(50);
+
+    return this;
   }
 
   function clickOnCompanyEmulatorButton() {
