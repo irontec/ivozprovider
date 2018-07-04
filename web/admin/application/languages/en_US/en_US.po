@@ -480,6 +480,21 @@ msgid_plural "DDIs"
 msgstr[0] "DDI"
 msgstr[1] "DDIs"
 
+msgid "DDI Provider"
+msgid_plural "DDI Providers"
+msgstr[0] "DDI Provider"
+msgstr[1] "DDI Providers"
+
+msgid "DDI Provider Address"
+msgid_plural "DDI Provider Addresses"
+msgstr[0] "DDI Provider Address"
+msgstr[1] "DDI Provider Addresses"
+
+msgid "DDI Provider Registration"
+msgid_plural "DDI Provider Registrations"
+msgstr[0] "DDI Provider Registration"
+msgstr[1] "DDI Provider Registrations"
+
 msgid "Default Action"
 msgstr "Default Action"
 
@@ -916,6 +931,9 @@ msgid "Hunt Group"
 msgid_plural "Hunt Groups"
 msgstr[0] "Hunt Group"
 msgstr[1] "Hunt Groups"
+
+msgid "IP Address"
+msgstr "IP address"
 
 msgid "IP or domain name (port with ':')"
 msgstr "IP or domain name (port with ':')"
@@ -1706,11 +1724,6 @@ msgstr "Processing"
 
 msgid "Proto"
 msgstr "Proto"
-
-msgid "Provider register"
-msgid_plural "Provider registers"
-msgstr[0] "Provider register"
-msgstr[1] "Provider registers"
 
 msgid "Province"
 msgid_plural "Provinces"

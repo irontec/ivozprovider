@@ -127,8 +127,12 @@ production:
           description: _("List of %s", ngettext('Notification template', 'Notification templates', 0))
         PeeringContractsList:
           title: ngettext('Peering contract', 'Peering contracts', 0)
-          class: ui-silk-connect
+          class: ui-silk-server-connect
           description: _("List of %s", ngettext('Peering contract', 'Peering contracts', 0))
+        DdiProvidersList:
+          title: ngettext('DDI Provider', 'DDI Providers', 0)
+          class: ui-silk-server-lightning
+          description: _("List of %s", ngettext('DDI Provider', 'DDI Providers', 0))
         TransformationRuleSetsList:
           title: ngettext('Numeric transformation', 'Numeric transformations', 0)
           class: ui-silk-application-side-expand
@@ -236,7 +240,7 @@ production:
           class: ui-silk-ipod-sound
           description: _("List of %s", ngettext('Residential Device', 'Residential Devices', 0))
           showOnlyIf: ${auth.companyResidential}
-        DDIsList:
+        DdisList:
           title: ngettext('DDI', 'DDIs', 0)
           class: ui-silk-lightning-go
           description: _("List of %s", ngettext('DDI', 'DDIs', 0))

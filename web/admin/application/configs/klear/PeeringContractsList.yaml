@@ -2,7 +2,6 @@
 #include conf.d/actions.yaml
 #include conf.d/documentationLink.yaml
 #include PeerServersList.yaml
-#include KamTrunksUacregList.yaml
 
 production:
   main:
@@ -14,7 +13,7 @@ production:
       pagination:
         items: 25
       <<: *PeeringContracts
-      class: ui-silk-connect
+      class: ui-silk-server-connect
       title: _("List of %s %2s", ngettext('Peering contract', 'Peering contracts', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
@@ -27,7 +26,6 @@ production:
           screens:
             peeringContractsEdit_screen: true
             peerServersList_screen: true
-            kamTrunksUacregList_screen: true
           dialogs:
             peeringContractsDel_dialog: true
           default: peeringContractsEdit_screen
@@ -101,19 +99,6 @@ production:
       <<: *peerServersEdit_screenLink
       filterField: PeeringContract
 
-    #kamTrunksUacreg:
-    kamTrunksUacregList_screen:
-      <<: *kamTrunksUacregList_screenLink
-      filterField: PeeringContract
-      parentOptionCustomizer:
-        - recordCount
-    kamTrunksUacregNew_screen:
-      <<: *kamTrunksUacregNew_screenLink
-      filterField: PeeringContract
-    kamTrunksUacregEdit_screen:
-      <<: *kamTrunksUacregEdit_screenLink
-      filterField: PeeringContract
-
   dialogs: &peeringContracts_dialosgLink
     peeringContractsDel_dialog: &peeringContractsDel_dialogLink
       <<: *PeeringContracts
@@ -128,8 +113,6 @@ production:
 
     #PeerServers
     <<: *peerServers_dialogsLink
-    # kamTrunksUacreg dialogs
-    <<: *kamTrunksUacreg_dialogsLink
 
 staging:
   _extends: production
