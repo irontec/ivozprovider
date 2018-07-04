@@ -170,14 +170,14 @@ Ivoz\Provider\Domain\Model\Ddi\DdiAbstract:
           referencedColumnName: id
           onDelete: set null
       orphanRemoval: false
-    peeringContract:
-      targetEntity: \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface
+    ddiProvider:
+      targetEntity: \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface
       cascade: {  }
       fetch: LAZY
       mappedBy: null
       inversedBy: null
       joinColumns:
-        peeringContractId:
+        ddiProviderId:
           referencedColumnName: id
           onDelete: set null
       orphanRemoval: false

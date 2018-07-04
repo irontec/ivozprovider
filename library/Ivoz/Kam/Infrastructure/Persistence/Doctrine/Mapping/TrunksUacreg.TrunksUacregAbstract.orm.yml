@@ -1,12 +1,5 @@
 Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregAbstract:
   type: mappedSuperclass
-  indexes:
-    trunksUacreg_brandId:
-      columns:
-        - brandId
-    trunksUacreg_peeringContractId:
-      columns:
-        - peeringContractId
   uniqueConstraints:
     l_uuid_idx:
       columns:
@@ -102,13 +95,6 @@ Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregAbstract:
         unsigned: false
         default: '0'
       column: reg_delay
-    multiddi:
-      type: boolean
-      nullable: false
-      options:
-        default: '0'
-        unsigned: true
-      column: multiDdi
     authHa1:
       type: string
       nullable: false
@@ -130,14 +116,15 @@ Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregAbstract:
           nullable: false
           onDelete: cascade
       orphanRemoval: false
-    peeringContract:
-      targetEntity: \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface
+  oneToOne:
+    ddiProviderRegistration:
+      targetEntity: \Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface
       cascade: {  }
       fetch: LAZY
       mappedBy: null
-      inversedBy: null
+      inversedBy: trunksUacreg
       joinColumns:
-        peeringContractId:
+        ddiProviderRegistrationId:
           referencedColumnName: id
           nullable: false
           onDelete: cascade

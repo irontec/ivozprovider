@@ -1,0 +1,13 @@
+Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddress:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\DdiProviderAddressDoctrineRepository
+  type: entity
+  table: DDIProviderAddresses
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
