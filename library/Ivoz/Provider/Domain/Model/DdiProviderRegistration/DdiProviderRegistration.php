@@ -27,5 +27,15 @@ class DdiProviderRegistration extends DdiProviderRegistrationAbstract implements
     {
         return $this->id;
     }
+
+    /**
+     * @inheritdoc
+     */
+    protected function sanitizeValues()
+    {
+        if ($this->getMultiDdi()) {
+            $this->setContactUsername('');
+        }
+    }
 }
 
