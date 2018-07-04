@@ -276,20 +276,20 @@ interface DdiInterface extends LoggableEntityInterface
     public function getFax();
 
     /**
-     * Set peeringContract
+     * Set ddiProvider
      *
-     * @param \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface $peeringContract
+     * @param \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface $ddiProvider
      *
      * @return self
      */
-    public function setPeeringContract(\Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface $peeringContract = null);
+    public function setDdiProvider(\Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface $ddiProvider = null);
 
     /**
-     * Get peeringContract
+     * Get ddiProvider
      *
-     * @return \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface
+     * @return \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface
      */
-    public function getPeeringContract();
+    public function getDdiProvider();
 
     /**
      * Set country
