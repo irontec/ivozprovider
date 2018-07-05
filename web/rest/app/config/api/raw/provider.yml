@@ -202,6 +202,25 @@ Ivoz\Provider\Domain\Model\Ddi\Ddi:
       ROLE_BRAND_ADMIN:
         company:
           in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider:
+  attributes:
+    access_control: '"ROLE_BRAND_ADMIN" in roles'
+    read_access_control:
+      ROLE_BRAND_ADMIN:
+        brand:
+          eq: "user.getBrand().getId()"
+Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistration:
+  attributes:
+    access_control: '"ROLE_BRAND_ADMIN" in roles'
+    read_access_control:
+      inherited:
+        ddiProvider: 'Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider'
+Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddress:
+    attributes:
+      access_control: '"ROLE_BRAND_ADMIN" in roles'
+    read_access_control:
+      inherited:
+        ddiProvider: 'Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider'
 Ivoz\Provider\Domain\Model\Domain\Domain:
   itemOperations:
     put: ~

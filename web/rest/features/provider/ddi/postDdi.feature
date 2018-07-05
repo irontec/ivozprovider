@@ -28,7 +28,7 @@ Feature: Create Ddis
           "ivr": null,
           "huntGroup": null,
           "fax": null,
-          "peeringContract": null,
+          "ddiProvider": null,
           "country": 1,
           "residentialDevice": null,
           "conditionalRoute": null
@@ -103,7 +103,7 @@ Feature: Create Ddis
           "ivr": null,
           "huntGroup": null,
           "fax": null,
-          "peeringContract": null,
+          "ddiProvider": null,
           "country": {
               "code": "ES",
               "countryCode": "+34",
