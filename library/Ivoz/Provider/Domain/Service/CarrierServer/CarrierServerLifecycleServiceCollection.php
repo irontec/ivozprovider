@@ -1,6 +1,6 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Service\PeerServer;
+namespace Ivoz\Provider\Domain\Service\CarrierServer;
 
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
@@ -8,11 +8,11 @@ use Ivoz\Core\Domain\Service\LifecycleServiceCollectionTrait;
 /**
  * @codeCoverageIgnore
  */
-class PeerServerLifecycleServiceCollection implements LifecycleServiceCollectionInterface
+class CarrierServerLifecycleServiceCollection implements LifecycleServiceCollectionInterface
 {
     use LifecycleServiceCollectionTrait;
 
-    protected function addService(PeerServerLifecycleEventHandlerInterface $service)
+    protected function addService(CarrierServerLifecycleEventHandlerInterface $service)
     {
         $this->services[] = $service;
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Model\PeeringContract;
+namespace Ivoz\Provider\Domain\Model\Carrier;
 
 use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
@@ -8,10 +8,10 @@ use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
 
 /**
- * PeeringContractAbstract
+ * CarrierAbstract
  * @codeCoverageIgnore
  */
-abstract class PeeringContractAbstract
+abstract class CarrierAbstract
 {
     /**
      * @var string
@@ -55,7 +55,7 @@ abstract class PeeringContractAbstract
     public function __toString()
     {
         return sprintf("%s#%s",
-            "PeeringContract",
+            "Carrier",
             $this->getId()
         );
     }
@@ -70,17 +70,17 @@ abstract class PeeringContractAbstract
 
     /**
      * @param null $id
-     * @return PeeringContractDto
+     * @return CarrierDto
      */
     public static function createDto($id = null)
     {
-        return new PeeringContractDto($id);
+        return new CarrierDto($id);
     }
 
     /**
      * @param EntityInterface|null $entity
      * @param int $depth
-     * @return PeeringContractDto|null
+     * @return CarrierDto|null
      */
     public static function entityToDto(EntityInterface $entity = null, $depth = 0)
     {
@@ -88,7 +88,7 @@ abstract class PeeringContractAbstract
             return null;
         }
 
-        Assertion::isInstanceOf($entity, PeeringContractInterface::class);
+        Assertion::isInstanceOf($entity, CarrierInterface::class);
 
         if ($depth < 1) {
             return static::createDto($entity->getId());
@@ -109,9 +109,9 @@ abstract class PeeringContractAbstract
     public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto PeeringContractDto
+         * @var $dto CarrierDto
          */
-        Assertion::isInstanceOf($dto, PeeringContractDto::class);
+        Assertion::isInstanceOf($dto, CarrierDto::class);
 
         $self = new static(
             $dto->getDescription(),
@@ -136,9 +136,9 @@ abstract class PeeringContractAbstract
     public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto PeeringContractDto
+         * @var $dto CarrierDto
          */
-        Assertion::isInstanceOf($dto, PeeringContractDto::class);
+        Assertion::isInstanceOf($dto, CarrierDto::class);
 
         $this
             ->setDescription($dto->getDescription())
@@ -155,7 +155,7 @@ abstract class PeeringContractAbstract
 
     /**
      * @param int $depth
-     * @return PeeringContractDto
+     * @return CarrierDto
      */
     public function toDto($depth = 0)
     {

@@ -1,14 +1,14 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Model\PeerServer;
+namespace Ivoz\Provider\Domain\Model\CarrierServer;
 use Assert\Assertion;
 
 /**
- * PeerServer
+ * CarrierServer
  */
-class PeerServer extends PeerServerAbstract implements PeerServerInterface
+class CarrierServer extends CarrierServerAbstract implements CarrierServerInterface
 {
-    use PeerServerTrait;
+    use CarrierServerTrait;
 
     /**
      * @return array
@@ -35,24 +35,24 @@ class PeerServer extends PeerServerAbstract implements PeerServerInterface
 
     protected function sanitizeValues()
     {
-        $this->sanitizeBrandByPeeringContract();
+        $this->sanitizeBrandByCarrier();
         $this->sanitizeAuth();
         $this->sanitizeProxyLogic();
     }
 
-    protected function sanitizeBrandByPeeringContract()
+    protected function sanitizeBrandByCarrier()
     {
         $isNew = !$this->getId();
-        $isNotNewAndPeeringContractHasChanged =
+        $isNotNewAndCarrierHasChanged =
             !$isNew
-            && $this->hasChanged('peeringContractId');
+            && $this->hasChanged('carrierId');
 
-        if ($isNotNewAndPeeringContractHasChanged || !$this->getBrand()->getId()) {
-            $peerContract = $this->getPeeringContract();
-            if (!$peerContract) {
-                throw new \DomainException('Unknown PeeringContract');
+        if ($isNotNewAndCarrierHasChanged || !$this->getBrand()->getId()) {
+            $carrier = $this->getCarrier();
+            if (!$carrier) {
+                throw new \DomainException('Unknown Carrier');
             }
-            $brand = $peerContract->getBrand();
+            $brand = $carrier->getBrand();
             if (!$brand) {
                 throw new \DomainException('Unknown Brand');
             }
@@ -110,12 +110,11 @@ class PeerServer extends PeerServerAbstract implements PeerServerInterface
     {
         return
             sprintf(
-                'b%dp%ds%d',
+                'b%dc%ds%d',
                 $this->getBrand()->getId(),
-                $this->getPeeringContract()->getId(),
+                $this->getCarrier()->getId(),
                 $this->getId()
             );
     }
-
 }
 

@@ -1,8 +1,9 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Model\PeerServer;
+namespace Ivoz\Provider\Domain\Model\CarrierServer;
 
-class PeerServerDto extends PeerServerDtoAbstract
+
+class CarrierServerDto extends CarrierServerDtoAbstract
 {
     /**
      * @inheritdoc
@@ -27,6 +28,9 @@ class PeerServerDto extends PeerServerDtoAbstract
         return $response;
     }
 
+    /**
+     * @inheritdoc
+     */
     public function toArray($hideSensitiveData = false)
     {
         $response = parent::toArray($hideSensitiveData);

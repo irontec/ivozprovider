@@ -43,9 +43,9 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     private $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractDto | null
+     * @var \Ivoz\Provider\Domain\Model\Carrier\CarrierDto | null
      */
-    private $peeringContract;
+    private $carrier;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternDto | null
@@ -91,7 +91,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
             'id' => 'id',
             'brandId' => 'brand',
             'companyId' => 'company',
-            'peeringContractId' => 'peeringContract',
+            'carrierId' => 'carrier',
             'routingPatternId' => 'routingPattern',
             'routingPatternGroupId' => 'routingPatternGroup',
             'routingTagId' => 'routingTag'
@@ -110,7 +110,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
             'id' => $this->getId(),
             'brand' => $this->getBrand(),
             'company' => $this->getCompany(),
-            'peeringContract' => $this->getPeeringContract(),
+            'carrier' => $this->getCarrier(),
             'routingPattern' => $this->getRoutingPattern(),
             'routingPatternGroup' => $this->getRoutingPatternGroup(),
             'routingTag' => $this->getRoutingTag(),
@@ -125,7 +125,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     {
         $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
         $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
-        $this->peeringContract = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\PeeringContract\\PeeringContract', $this->getPeeringContractId());
+        $this->carrier = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Carrier\\Carrier', $this->getCarrierId());
         $this->routingPattern = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\RoutingPattern\\RoutingPattern', $this->getRoutingPatternId());
         $this->routingPatternGroup = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\RoutingPatternGroup\\RoutingPatternGroup', $this->getRoutingPatternGroupId());
         $this->routingTag = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\RoutingTag\\RoutingTag', $this->getRoutingTagId());
@@ -326,23 +326,23 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractDto $peeringContract
+     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierDto $carrier
      *
      * @return static
      */
-    public function setPeeringContract(\Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractDto $peeringContract = null)
+    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierDto $carrier = null)
     {
-        $this->peeringContract = $peeringContract;
+        $this->carrier = $carrier;
 
         return $this;
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractDto
+     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierDto
      */
-    public function getPeeringContract()
+    public function getCarrier()
     {
-        return $this->peeringContract;
+        return $this->carrier;
     }
 
     /**
@@ -350,21 +350,21 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
      *
      * @return static
      */
-    public function setPeeringContractId($id)
+    public function setCarrierId($id)
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractDto($id)
+            ? new \Ivoz\Provider\Domain\Model\Carrier\CarrierDto($id)
             : null;
 
-        return $this->setPeeringContract($value);
+        return $this->setCarrier($value);
     }
 
     /**
      * @return integer | null
      */
-    public function getPeeringContractId()
+    public function getCarrierId()
     {
-        if ($dto = $this->getPeeringContract()) {
+        if ($dto = $this->getCarrier()) {
             return $dto->getId();
         }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Model\PeerServer;
+namespace Ivoz\Provider\Domain\Model\CarrierServer;
 
 use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
@@ -8,10 +8,10 @@ use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
 
 /**
- * PeerServerAbstract
+ * CarrierServerAbstract
  * @codeCoverageIgnore
  */
-abstract class PeerServerAbstract
+abstract class CarrierServerAbstract
 {
     /**
      * @var string
@@ -29,7 +29,6 @@ abstract class PeerServerAbstract
     protected $port;
 
     /**
-     * column: uri_scheme
      * @var integer
      */
     protected $uriScheme;
@@ -50,43 +49,36 @@ abstract class PeerServerAbstract
     protected $sendRPID = 0;
 
     /**
-     * column: auth_needed
      * @var string
      */
     protected $authNeeded = 'no';
 
     /**
-     * column: auth_user
      * @var string
      */
     protected $authUser;
 
     /**
-     * column: auth_password
      * @var string
      */
     protected $authPassword;
 
     /**
-     * column: sip_proxy
      * @var string
      */
     protected $sipProxy;
 
     /**
-     * column: outbound_proxy
      * @var string
      */
     protected $outboundProxy;
 
     /**
-     * column: from_user
      * @var string
      */
     protected $fromUser;
 
     /**
-     * column: from_domain
      * @var string
      */
     protected $fromDomain;
@@ -97,9 +89,9 @@ abstract class PeerServerAbstract
     protected $lcrGateway;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface
+     * @var \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
      */
-    protected $peeringContract;
+    protected $carrier;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
@@ -122,7 +114,7 @@ abstract class PeerServerAbstract
     public function __toString()
     {
         return sprintf("%s#%s",
-            "PeerServer",
+            "CarrierServer",
             $this->getId()
         );
     }
@@ -137,17 +129,17 @@ abstract class PeerServerAbstract
 
     /**
      * @param null $id
-     * @return PeerServerDto
+     * @return CarrierServerDto
      */
     public static function createDto($id = null)
     {
-        return new PeerServerDto($id);
+        return new CarrierServerDto($id);
     }
 
     /**
      * @param EntityInterface|null $entity
      * @param int $depth
-     * @return PeerServerDto|null
+     * @return CarrierServerDto|null
      */
     public static function entityToDto(EntityInterface $entity = null, $depth = 0)
     {
@@ -155,7 +147,7 @@ abstract class PeerServerAbstract
             return null;
         }
 
-        Assertion::isInstanceOf($entity, PeerServerInterface::class);
+        Assertion::isInstanceOf($entity, CarrierServerInterface::class);
 
         if ($depth < 1) {
             return static::createDto($entity->getId());
@@ -176,9 +168,9 @@ abstract class PeerServerAbstract
     public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto PeerServerDto
+         * @var $dto CarrierServerDto
          */
-        Assertion::isInstanceOf($dto, PeerServerDto::class);
+        Assertion::isInstanceOf($dto, CarrierServerDto::class);
 
         $self = new static(
             $dto->getAuthNeeded());
@@ -197,7 +189,7 @@ abstract class PeerServerAbstract
             ->setOutboundProxy($dto->getOutboundProxy())
             ->setFromUser($dto->getFromUser())
             ->setFromDomain($dto->getFromDomain())
-            ->setPeeringContract($dto->getPeeringContract())
+            ->setCarrier($dto->getCarrier())
             ->setBrand($dto->getBrand())
         ;
 
@@ -214,9 +206,9 @@ abstract class PeerServerAbstract
     public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto PeerServerDto
+         * @var $dto CarrierServerDto
          */
-        Assertion::isInstanceOf($dto, PeerServerDto::class);
+        Assertion::isInstanceOf($dto, CarrierServerDto::class);
 
         $this
             ->setIp($dto->getIp())
@@ -233,7 +225,7 @@ abstract class PeerServerAbstract
             ->setOutboundProxy($dto->getOutboundProxy())
             ->setFromUser($dto->getFromUser())
             ->setFromDomain($dto->getFromDomain())
-            ->setPeeringContract($dto->getPeeringContract())
+            ->setCarrier($dto->getCarrier())
             ->setBrand($dto->getBrand());
 
 
@@ -244,7 +236,7 @@ abstract class PeerServerAbstract
 
     /**
      * @param int $depth
-     * @return PeerServerDto
+     * @return CarrierServerDto
      */
     public function toDto($depth = 0)
     {
@@ -263,7 +255,7 @@ abstract class PeerServerAbstract
             ->setOutboundProxy(self::getOutboundProxy())
             ->setFromUser(self::getFromUser())
             ->setFromDomain(self::getFromDomain())
-            ->setPeeringContract(\Ivoz\Provider\Domain\Model\PeeringContract\PeeringContract::entityToDto(self::getPeeringContract(), $depth))
+            ->setCarrier(\Ivoz\Provider\Domain\Model\Carrier\Carrier::entityToDto(self::getCarrier(), $depth))
             ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth));
     }
 
@@ -276,18 +268,18 @@ abstract class PeerServerAbstract
             'ip' => self::getIp(),
             'hostname' => self::getHostname(),
             'port' => self::getPort(),
-            'uri_scheme' => self::getUriScheme(),
+            'uriScheme' => self::getUriScheme(),
             'transport' => self::getTransport(),
             'sendPAI' => self::getSendPAI(),
             'sendRPID' => self::getSendRPID(),
-            'auth_needed' => self::getAuthNeeded(),
-            'auth_user' => self::getAuthUser(),
-            'auth_password' => self::getAuthPassword(),
-            'sip_proxy' => self::getSipProxy(),
-            'outbound_proxy' => self::getOutboundProxy(),
-            'from_user' => self::getFromUser(),
-            'from_domain' => self::getFromDomain(),
-            'peeringContractId' => self::getPeeringContract() ? self::getPeeringContract()->getId() : null,
+            'authNeeded' => self::getAuthNeeded(),
+            'authUser' => self::getAuthUser(),
+            'authPassword' => self::getAuthPassword(),
+            'sipProxy' => self::getSipProxy(),
+            'outboundProxy' => self::getOutboundProxy(),
+            'fromUser' => self::getFromUser(),
+            'fromDomain' => self::getFromDomain(),
+            'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null,
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null
         ];
     }
@@ -719,27 +711,27 @@ abstract class PeerServerAbstract
     }
 
     /**
-     * Set peeringContract
+     * Set carrier
      *
-     * @param \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface $peeringContract
+     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier
      *
      * @return self
      */
-    public function setPeeringContract(\Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface $peeringContract = null)
+    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier = null)
     {
-        $this->peeringContract = $peeringContract;
+        $this->carrier = $carrier;
 
         return $this;
     }
 
     /**
-     * Get peeringContract
+     * Get carrier
      *
-     * @return \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface
+     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
      */
-    public function getPeeringContract()
+    public function getCarrier()
     {
-        return $this->peeringContract;
+        return $this->carrier;
     }
 
     /**

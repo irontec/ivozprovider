@@ -1,8 +1,9 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Model\PeeringContract;
+namespace Ivoz\Provider\Domain\Model\Carrier;
 
-class PeeringContractDto extends PeeringContractDtoAbstract
+
+class CarrierDto extends CarrierDtoAbstract
 {
     /**
      * @inheritdoc

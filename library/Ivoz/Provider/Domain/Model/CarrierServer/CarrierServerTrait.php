@@ -1,14 +1,14 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Model\PeerServer;
+namespace Ivoz\Provider\Domain\Model\CarrierServer;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 
 /**
- * PeerServerTrait
+ * CarrierServerTrait
  * @codeCoverageIgnore
  */
-trait PeerServerTrait
+trait CarrierServerTrait
 {
     /**
      * @var integer
@@ -33,7 +33,7 @@ trait PeerServerTrait
     public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto PeerServerDto
+         * @var $dto CarrierServerDto
          */
         $self = parent::fromDto($dto);
 
@@ -52,7 +52,7 @@ trait PeerServerTrait
     public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto PeerServerDto
+         * @var $dto CarrierServerDto
          */
         parent::updateFromDto($dto);
 
@@ -61,7 +61,7 @@ trait PeerServerTrait
 
     /**
      * @param int $depth
-     * @return PeerServerDto
+     * @return CarrierServerDto
      */
     public function toDto($depth = 0)
     {

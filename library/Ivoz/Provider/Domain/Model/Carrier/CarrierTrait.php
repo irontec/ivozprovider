@@ -1,6 +1,6 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Model\PeeringContract;
+namespace Ivoz\Provider\Domain\Model\Carrier;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -8,10 +8,10 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\Criteria;
 
 /**
- * PeeringContractTrait
+ * CarrierTrait
  * @codeCoverageIgnore
  */
-trait PeeringContractTrait
+trait CarrierTrait
 {
     /**
      * @var integer
@@ -26,7 +26,7 @@ trait PeeringContractTrait
     /**
      * @var Collection
      */
-    protected $peerServers;
+    protected $servers;
 
 
     /**
@@ -36,7 +36,7 @@ trait PeeringContractTrait
     {
         parent::__construct(...func_get_args());
         $this->outgoingRoutings = new ArrayCollection();
-        $this->peerServers = new ArrayCollection();
+        $this->servers = new ArrayCollection();
     }
 
     /**
@@ -47,15 +47,15 @@ trait PeeringContractTrait
     public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto PeeringContractDto
+         * @var $dto CarrierDto
          */
         $self = parent::fromDto($dto);
         if ($dto->getOutgoingRoutings()) {
             $self->replaceOutgoingRoutings($dto->getOutgoingRoutings());
         }
 
-        if ($dto->getPeerServers()) {
-            $self->replacePeerServers($dto->getPeerServers());
+        if ($dto->getServers()) {
+            $self->replaceServers($dto->getServers());
         }
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -72,21 +72,21 @@ trait PeeringContractTrait
     public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto PeeringContractDto
+         * @var $dto CarrierDto
          */
         parent::updateFromDto($dto);
         if ($dto->getOutgoingRoutings()) {
             $this->replaceOutgoingRoutings($dto->getOutgoingRoutings());
         }
-        if ($dto->getPeerServers()) {
-            $this->replacePeerServers($dto->getPeerServers());
+        if ($dto->getServers()) {
+            $this->replaceServers($dto->getServers());
         }
         return $this;
     }
 
     /**
      * @param int $depth
-     * @return PeeringContractDto
+     * @return CarrierDto
      */
     public function toDto($depth = 0)
     {
@@ -111,7 +111,7 @@ trait PeeringContractTrait
      *
      * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting
      *
-     * @return PeeringContractTrait
+     * @return CarrierTrait
      */
     public function addOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting)
     {
@@ -143,7 +143,7 @@ trait PeeringContractTrait
         foreach ($outgoingRoutings as $entity) {
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
-            $entity->setPeeringContract($this);
+            $entity->setCarrier($this);
         }
         $updatedEntityKeys = array_keys($updatedEntities);
 
@@ -179,75 +179,75 @@ trait PeeringContractTrait
     }
 
     /**
-     * Add peerServer
+     * Add server
      *
-     * @param \Ivoz\Provider\Domain\Model\PeerServer\PeerServerInterface $peerServer
+     * @param \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface $server
      *
-     * @return PeeringContractTrait
+     * @return CarrierTrait
      */
-    public function addPeerServer(\Ivoz\Provider\Domain\Model\PeerServer\PeerServerInterface $peerServer)
+    public function addServer(\Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface $server)
     {
-        $this->peerServers->add($peerServer);
+        $this->servers->add($server);
 
         return $this;
     }
 
     /**
-     * Remove peerServer
+     * Remove server
      *
-     * @param \Ivoz\Provider\Domain\Model\PeerServer\PeerServerInterface $peerServer
+     * @param \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface $server
      */
-    public function removePeerServer(\Ivoz\Provider\Domain\Model\PeerServer\PeerServerInterface $peerServer)
+    public function removeServer(\Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface $server)
     {
-        $this->peerServers->removeElement($peerServer);
+        $this->servers->removeElement($server);
     }
 
     /**
-     * Replace peerServers
+     * Replace servers
      *
-     * @param \Ivoz\Provider\Domain\Model\PeerServer\PeerServerInterface[] $peerServers
+     * @param \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface[] $servers
      * @return self
      */
-    public function replacePeerServers(Collection $peerServers)
+    public function replaceServers(Collection $servers)
     {
         $updatedEntities = [];
         $fallBackId = -1;
-        foreach ($peerServers as $entity) {
+        foreach ($servers as $entity) {
             $index = $entity->getId() ? $entity->getId() : $fallBackId--;
             $updatedEntities[$index] = $entity;
-            $entity->setPeeringContract($this);
+            $entity->setCarrier($this);
         }
         $updatedEntityKeys = array_keys($updatedEntities);
 
-        foreach ($this->peerServers as $key => $entity) {
+        foreach ($this->servers as $key => $entity) {
             $identity = $entity->getId();
             if (in_array($identity, $updatedEntityKeys)) {
-                $this->peerServers->set($key, $updatedEntities[$identity]);
+                $this->servers->set($key, $updatedEntities[$identity]);
             } else {
-                $this->peerServers->remove($key);
+                $this->servers->remove($key);
             }
             unset($updatedEntities[$identity]);
         }
 
         foreach ($updatedEntities as $entity) {
-            $this->addPeerServer($entity);
+            $this->addServer($entity);
         }
 
         return $this;
     }
 
     /**
-     * Get peerServers
+     * Get servers
      *
-     * @return \Ivoz\Provider\Domain\Model\PeerServer\PeerServerInterface[]
+     * @return \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface[]
      */
-    public function getPeerServers(Criteria $criteria = null)
+    public function getServers(Criteria $criteria = null)
     {
         if (!is_null($criteria)) {
-            return $this->peerServers->matching($criteria)->toArray();
+            return $this->servers->matching($criteria)->toArray();
         }
 
-        return $this->peerServers->toArray();
+        return $this->servers->toArray();
     }
 
 

@@ -111,9 +111,9 @@ abstract class TrunksCdrAbstract
     protected $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface
+     * @var \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
      */
-    protected $peeringContract;
+    protected $carrier;
 
     /**
      * @var \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface
@@ -223,7 +223,7 @@ abstract class TrunksCdrAbstract
             ->setInvoice($dto->getInvoice())
             ->setBrand($dto->getBrand())
             ->setCompany($dto->getCompany())
-            ->setPeeringContract($dto->getPeeringContract())
+            ->setCarrier($dto->getCarrier())
             ->setTpDestination($dto->getTpDestination())
             ->setDestinationRate($dto->getDestinationRate())
         ;
@@ -265,7 +265,7 @@ abstract class TrunksCdrAbstract
             ->setInvoice($dto->getInvoice())
             ->setBrand($dto->getBrand())
             ->setCompany($dto->getCompany())
-            ->setPeeringContract($dto->getPeeringContract())
+            ->setCarrier($dto->getCarrier())
             ->setTpDestination($dto->getTpDestination())
             ->setDestinationRate($dto->getDestinationRate());
 
@@ -301,7 +301,7 @@ abstract class TrunksCdrAbstract
             ->setInvoice(\Ivoz\Provider\Domain\Model\Invoice\Invoice::entityToDto(self::getInvoice(), $depth))
             ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
             ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
-            ->setPeeringContract(\Ivoz\Provider\Domain\Model\PeeringContract\PeeringContract::entityToDto(self::getPeeringContract(), $depth))
+            ->setCarrier(\Ivoz\Provider\Domain\Model\Carrier\Carrier::entityToDto(self::getCarrier(), $depth))
             ->setTpDestination(\Ivoz\Cgr\Domain\Model\TpDestination\TpDestination::entityToDto(self::getTpDestination(), $depth))
             ->setDestinationRate(\Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRate::entityToDto(self::getDestinationRate(), $depth));
     }
@@ -331,7 +331,7 @@ abstract class TrunksCdrAbstract
             'invoiceId' => self::getInvoice() ? self::getInvoice()->getId() : null,
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
-            'peeringContractId' => self::getPeeringContract() ? self::getPeeringContract()->getId() : null,
+            'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null,
             'tpDestinationId' => self::getTpDestination() ? self::getTpDestination()->getId() : null,
             'destinationRateId' => self::getDestinationRate() ? self::getDestinationRate()->getId() : null
         ];
@@ -865,27 +865,27 @@ abstract class TrunksCdrAbstract
     }
 
     /**
-     * Set peeringContract
+     * Set carrier
      *
-     * @param \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface $peeringContract
+     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier
      *
      * @return self
      */
-    public function setPeeringContract(\Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface $peeringContract = null)
+    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier = null)
     {
-        $this->peeringContract = $peeringContract;
+        $this->carrier = $carrier;
 
         return $this;
     }
 
     /**
-     * Get peeringContract
+     * Get carrier
      *
-     * @return \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface
+     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
      */
-    public function getPeeringContract()
+    public function getCarrier()
     {
-        return $this->peeringContract;
+        return $this->carrier;
     }
 
     /**

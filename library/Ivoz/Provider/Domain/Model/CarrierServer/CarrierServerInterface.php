@@ -1,10 +1,10 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Model\PeerServer;
+namespace Ivoz\Provider\Domain\Model\CarrierServer;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface PeerServerInterface extends LoggableEntityInterface
+interface CarrierServerInterface extends LoggableEntityInterface
 {
     /**
      * @return array
@@ -250,20 +250,20 @@ interface PeerServerInterface extends LoggableEntityInterface
     public function getLcrGateway();
 
     /**
-     * Set peeringContract
+     * Set carrier
      *
-     * @param \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface $peeringContract
+     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier
      *
      * @return self
      */
-    public function setPeeringContract(\Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface $peeringContract = null);
+    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier = null);
 
     /**
-     * Get peeringContract
+     * Get carrier
      *
-     * @return \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface
+     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
      */
-    public function getPeeringContract();
+    public function getCarrier();
 
     /**
      * Set brand

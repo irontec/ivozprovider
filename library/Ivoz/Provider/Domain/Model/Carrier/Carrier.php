@@ -1,12 +1,13 @@
 <?php
-namespace Ivoz\Provider\Domain\Model\PeeringContract;
+
+namespace Ivoz\Provider\Domain\Model\Carrier;
 
 /**
- * PeeringContract
+ * Carrier
  */
-class PeeringContract extends PeeringContractAbstract implements PeeringContractInterface
+class Carrier extends CarrierAbstract implements CarrierInterface
 {
-    use PeeringContractTrait;
+    use CarrierTrait;
 
     /**
      * @codeCoverageIgnore

@@ -1,6 +1,6 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Model\PeeringContract;
+namespace Ivoz\Provider\Domain\Model\Carrier;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
@@ -10,7 +10,7 @@ use Ivoz\Core\Application\Model\DtoNormalizer;
 /**
  * @codeCoverageIgnore
  */
-abstract class PeeringContractDtoAbstract implements DataTransferObjectInterface
+abstract class CarrierDtoAbstract implements DataTransferObjectInterface
 {
     /**
      * @var string
@@ -48,9 +48,9 @@ abstract class PeeringContractDtoAbstract implements DataTransferObjectInterface
     private $outgoingRoutings = null;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\PeerServer\PeerServerDto[] | null
+     * @var \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerDto[] | null
      */
-    private $peerServers = null;
+    private $servers = null;
 
 
     use DtoNormalizer;
@@ -92,7 +92,7 @@ abstract class PeeringContractDtoAbstract implements DataTransferObjectInterface
             'brand' => $this->getBrand(),
             'transformationRuleSet' => $this->getTransformationRuleSet(),
             'outgoingRoutings' => $this->getOutgoingRoutings(),
-            'peerServers' => $this->getPeerServers()
+            'servers' => $this->getServers()
         ];
     }
 
@@ -114,12 +114,12 @@ abstract class PeeringContractDtoAbstract implements DataTransferObjectInterface
             }
         }
 
-        if (!is_null($this->peerServers)) {
-            $items = $this->getPeerServers();
-            $this->peerServers = [];
+        if (!is_null($this->servers)) {
+            $items = $this->getServers();
+            $this->servers = [];
             foreach ($items as $item) {
-                $this->peerServers[] = $transformer->transform(
-                    'Ivoz\\Provider\\Domain\\Model\\PeerServer\\PeerServer',
+                $this->servers[] = $transformer->transform(
+                    'Ivoz\\Provider\\Domain\\Model\\CarrierServer\\CarrierServer',
                     $item->getId() ?? $item
                 );
             }
@@ -136,9 +136,9 @@ abstract class PeeringContractDtoAbstract implements DataTransferObjectInterface
             'Ivoz\\Provider\\Domain\\Model\\OutgoingRouting\\OutgoingRouting',
             $this->outgoingRoutings
         );
-        $this->peerServers = $transformer->transform(
-            'Ivoz\\Provider\\Domain\\Model\\PeerServer\\PeerServer',
-            $this->peerServers
+        $this->servers = $transformer->transform(
+            'Ivoz\\Provider\\Domain\\Model\\CarrierServer\\CarrierServer',
+            $this->servers
         );
     }
 
@@ -335,13 +335,13 @@ abstract class PeeringContractDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param array $peerServers
+     * @param array $servers
      *
      * @return static
      */
-    public function setPeerServers($peerServers = null)
+    public function setServers($servers = null)
     {
-        $this->peerServers = $peerServers;
+        $this->servers = $servers;
 
         return $this;
     }
@@ -349,9 +349,9 @@ abstract class PeeringContractDtoAbstract implements DataTransferObjectInterface
     /**
      * @return array
      */
-    public function getPeerServers()
+    public function getServers()
     {
-        return $this->peerServers;
+        return $this->servers;
     }
 }
 

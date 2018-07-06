@@ -1,6 +1,6 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Model\PeerServer;
+namespace Ivoz\Provider\Domain\Model\CarrierServer;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
@@ -10,7 +10,7 @@ use Ivoz\Core\Application\Model\DtoNormalizer;
 /**
  * @codeCoverageIgnore
  */
-abstract class PeerServerDtoAbstract implements DataTransferObjectInterface
+abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
 {
     /**
      * @var string
@@ -93,9 +93,9 @@ abstract class PeerServerDtoAbstract implements DataTransferObjectInterface
     private $lcrGateway;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractDto | null
+     * @var \Ivoz\Provider\Domain\Model\Carrier\CarrierDto | null
      */
-    private $peeringContract;
+    private $carrier;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
@@ -136,7 +136,7 @@ abstract class PeerServerDtoAbstract implements DataTransferObjectInterface
             'fromDomain' => 'fromDomain',
             'id' => 'id',
             'lcrGatewayId' => 'lcrGateway',
-            'peeringContractId' => 'peeringContract',
+            'carrierId' => 'carrier',
             'brandId' => 'brand'
         ];
     }
@@ -163,7 +163,7 @@ abstract class PeerServerDtoAbstract implements DataTransferObjectInterface
             'fromDomain' => $this->getFromDomain(),
             'id' => $this->getId(),
             'lcrGateway' => $this->getLcrGateway(),
-            'peeringContract' => $this->getPeeringContract(),
+            'carrier' => $this->getCarrier(),
             'brand' => $this->getBrand()
         ];
     }
@@ -174,7 +174,7 @@ abstract class PeerServerDtoAbstract implements DataTransferObjectInterface
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
         $this->lcrGateway = $transformer->transform('Ivoz\\Kam\\Domain\\Model\\TrunksLcrGateway\\TrunksLcrGateway', $this->getLcrGatewayId());
-        $this->peeringContract = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\PeeringContract\\PeeringContract', $this->getPeeringContractId());
+        $this->carrier = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Carrier\\Carrier', $this->getCarrierId());
         $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
     }
 
@@ -533,23 +533,23 @@ abstract class PeerServerDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractDto $peeringContract
+     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierDto $carrier
      *
      * @return static
      */
-    public function setPeeringContract(\Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractDto $peeringContract = null)
+    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierDto $carrier = null)
     {
-        $this->peeringContract = $peeringContract;
+        $this->carrier = $carrier;
 
         return $this;
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractDto
+     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierDto
      */
-    public function getPeeringContract()
+    public function getCarrier()
     {
-        return $this->peeringContract;
+        return $this->carrier;
     }
 
     /**
@@ -557,21 +557,21 @@ abstract class PeerServerDtoAbstract implements DataTransferObjectInterface
      *
      * @return static
      */
-    public function setPeeringContractId($id)
+    public function setCarrierId($id)
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractDto($id)
+            ? new \Ivoz\Provider\Domain\Model\Carrier\CarrierDto($id)
             : null;
 
-        return $this->setPeeringContract($value);
+        return $this->setCarrier($value);
     }
 
     /**
      * @return integer | null
      */
-    public function getPeeringContractId()
+    public function getCarrierId()
     {
-        if ($dto = $this->getPeeringContract()) {
+        if ($dto = $this->getCarrier()) {
             return $dto->getId();
         }
 

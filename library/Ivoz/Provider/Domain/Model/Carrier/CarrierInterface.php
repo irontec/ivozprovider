@@ -1,11 +1,11 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Model\PeeringContract;
+namespace Ivoz\Provider\Domain\Model\Carrier;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Doctrine\Common\Collections\Collection;
 
-interface PeeringContractInterface extends LoggableEntityInterface
+interface CarrierInterface extends LoggableEntityInterface
 {
     /**
      * @codeCoverageIgnore
@@ -98,7 +98,7 @@ interface PeeringContractInterface extends LoggableEntityInterface
      *
      * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting
      *
-     * @return PeeringContractTrait
+     * @return CarrierTrait
      */
     public function addOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting);
 
@@ -125,35 +125,35 @@ interface PeeringContractInterface extends LoggableEntityInterface
     public function getOutgoingRoutings(\Doctrine\Common\Collections\Criteria $criteria = null);
 
     /**
-     * Add peerServer
+     * Add server
      *
-     * @param \Ivoz\Provider\Domain\Model\PeerServer\PeerServerInterface $peerServer
+     * @param \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface $server
      *
-     * @return PeeringContractTrait
+     * @return CarrierTrait
      */
-    public function addPeerServer(\Ivoz\Provider\Domain\Model\PeerServer\PeerServerInterface $peerServer);
+    public function addServer(\Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface $server);
 
     /**
-     * Remove peerServer
+     * Remove server
      *
-     * @param \Ivoz\Provider\Domain\Model\PeerServer\PeerServerInterface $peerServer
+     * @param \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface $server
      */
-    public function removePeerServer(\Ivoz\Provider\Domain\Model\PeerServer\PeerServerInterface $peerServer);
+    public function removeServer(\Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface $server);
 
     /**
-     * Replace peerServers
+     * Replace servers
      *
-     * @param \Ivoz\Provider\Domain\Model\PeerServer\PeerServerInterface[] $peerServers
+     * @param \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface[] $servers
      * @return self
      */
-    public function replacePeerServers(Collection $peerServers);
+    public function replaceServers(Collection $servers);
 
     /**
-     * Get peerServers
+     * Get servers
      *
-     * @return \Ivoz\Provider\Domain\Model\PeerServer\PeerServerInterface[]
+     * @return \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface[]
      */
-    public function getPeerServers(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getServers(\Doctrine\Common\Collections\Criteria $criteria = null);
 
 }
 
