@@ -1,13 +1,13 @@
-Feature: Retrieve peer servers
-  In order to manage peer servers
+Feature: Retrieve carrier servers
+  In order to manage carrier servers
   As an super admin
   I need to be able to retrieve them through the API.
 
   @createSchema
-  Scenario: Retrieve the peer servers json list
+  Scenario: Retrieve the carrier servers json list
     Given I add Authorization header
     When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "peer_servers"
+    And I send a "GET" request to "carrier_servers"
     Then the response status code should be 200
     And the response should be in JSON
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
@@ -24,10 +24,10 @@ Feature: Retrieve peer servers
       ]
     """
 
-  Scenario: Retrieve certain peer server json
+  Scenario: Retrieve certain carrier server json
     Given I add Authorization header
     When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "peer_servers/1"
+    And I send a "GET" request to "carrier_servers/1"
     Then the response status code should be 200
     And the response should be in JSON
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
@@ -49,9 +49,9 @@ Feature: Retrieve peer servers
           "fromUser": "",
           "fromDomain": "",
           "id": 1,
-          "peeringContract": {
-              "description": "Artemis-Dev",
-              "name": "Artemis-Dev",
+          "carrier": {
+              "description": "CarrierDescription",
+              "name": "CarrierName",
               "externallyRated": false,
               "id": 1,
               "brand": 1,

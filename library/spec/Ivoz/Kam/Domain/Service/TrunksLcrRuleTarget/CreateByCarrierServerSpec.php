@@ -5,17 +5,15 @@ namespace spec\Ivoz\Kam\Domain\Service\TrunksLcrRuleTarget;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface;
 use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface;
-use Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetDto;
 use Ivoz\Kam\Domain\Service\TrunksLcrRuleTarget\CreateByOutgoingRouting;
+use Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
-use Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface;
-use Ivoz\Provider\Domain\Model\PeerServer\PeerServerInterface;
-use Ivoz\Kam\Domain\Service\TrunksLcrRuleTarget\CreateByPeerServer;
+use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
+use Ivoz\Kam\Domain\Service\TrunksLcrRuleTarget\CreateByCarrierServer;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 use spec\HelperTrait;
 
-class CreateByPeerServerSpec extends ObjectBehavior
+class CreateByCarrierServerSpec extends ObjectBehavior
 {
     use HelperTrait;
 
@@ -44,16 +42,16 @@ class CreateByPeerServerSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType(CreateByPeerServer::class);
+        $this->shouldHaveType(CreateByCarrierServer::class);
     }
 
     function it_does_nothing_if_not_new(
-        PeerServerInterface $entity,
-        PeeringContractInterface $peeringContract
+        CarrierServerInterface $entity,
+        CarrierInterface $carrier
     ) {
         $entity
-            ->getPeeringContract()
-            ->willReturn($peeringContract)
+            ->getCarrier()
+            ->willReturn($carrier)
             ->shouldNotBeCalled();
 
         $this->execute($entity, false);
@@ -61,8 +59,8 @@ class CreateByPeerServerSpec extends ObjectBehavior
 
 
     function it_calls_lcrRuleTargetFactory_per_outgoingRouting(
-        PeerServerInterface $entity,
-        PeeringContractInterface $peeringContract,
+        CarrierServerInterface $entity,
+        CarrierInterface $carrier,
         TrunksLcrGatewayInterface $lcrGateway,
         OutgoingRoutingInterface $outgoingRouting,
         TrunksLcrRuleInterface $lcrRule
@@ -70,11 +68,11 @@ class CreateByPeerServerSpec extends ObjectBehavior
         $this->getterProphecy(
             $entity,
             [
-                'getPeeringContract' => $peeringContract
+                'getCarrier' => $carrier
             ]
         );
 
-        $peeringContract
+        $carrier
             ->getOutgoingRoutings()
             ->willReturn([$outgoingRouting])
             ->shouldBeCalled();

@@ -1,13 +1,13 @@
-Feature: Retrieve peering contracts
-  In order to manage peering contracts
+Feature: Retrieve carriers
+  In order to manage carriers
   As an super admin
   I need to be able to retrieve them through the API.
 
   @createSchema
-  Scenario: Retrieve the peering contracts json list
+  Scenario: Retrieve the carriers json list
     Given I add Authorization header
     When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "peering_contracts"
+    And I send a "GET" request to "carriers"
     Then the response status code should be 200
     And the response should be in JSON
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
@@ -15,26 +15,26 @@ Feature: Retrieve peering contracts
     """
       [
           {
-              "description": "Artemis-Dev",
-              "name": "Artemis-Dev",
+              "description": "CarrierDescription",
+              "name": "CarrierName",
               "externallyRated": false,
               "id": 1
           }
       ]
     """
 
-  Scenario: Retrieve certain peering contract json
+  Scenario: Retrieve certain carrier json
     Given I add Authorization header
     When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "peering_contracts/1"
+    And I send a "GET" request to "carriers/1"
     Then the response status code should be 200
     And the response should be in JSON
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
     And the JSON should be like:
     """
       {
-          "description": "Artemis-Dev",
-          "name": "Artemis-Dev",
+          "description": "CarrierDescription",
+          "name": "CarrierName",
           "externallyRated": false,
           "id": 1,
           "brand": "~",

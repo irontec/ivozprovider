@@ -563,14 +563,14 @@ Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting:
       ROLE_BRAND_ADMIN:
         brand:
           eq: "user.getBrand().getId()"
-Ivoz\Provider\Domain\Model\PeeringContract\PeeringContract:
+Ivoz\Provider\Domain\Model\Carrier\Carrier:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
       ROLE_BRAND_ADMIN:
         brand:
           eq: "user.getBrand().getId()"
-Ivoz\Provider\Domain\Model\PeerServer\PeerServer:
+Ivoz\Provider\Domain\Model\CarrierServer\CarrierServer:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:

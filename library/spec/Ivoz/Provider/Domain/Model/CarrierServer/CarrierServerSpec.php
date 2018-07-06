@@ -1,36 +1,35 @@
 <?php
 
-namespace spec\Ivoz\Provider\Domain\Model\PeerServer;
+namespace spec\Ivoz\Provider\Domain\Model\CarrierServer;
 
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
-use Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface;
-use Ivoz\Provider\Domain\Model\PeerServer\PeerServer;
-use Ivoz\Provider\Domain\Model\PeerServer\PeerServerDto;
+use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
+use Ivoz\Provider\Domain\Model\CarrierServer\CarrierServer;
+use Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerDto;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 use spec\HelperTrait;
 
-class PeerServerSpec extends ObjectBehavior
+class CarrierServerSpec extends ObjectBehavior
 {
     use HelperTrait;
 
     /**
-     * @var PeerServerDto
+     * @var CarrierServerDto
      */
     protected $dto;
 
     function let(
         BrandInterface $brand,
-        PeeringContractInterface $peeringContract
+        CarrierInterface $carrier
     ) {
-        $this->dto = $dto = new PeerServerDto();
+        $this->dto = $dto = new CarrierServerDto();
         $dto->setAuthNeeded('yes');
 
-        $peeringContract
+        $carrier
             ->getId()
             ->willReturn(1);
 
-        $peeringContract
+        $carrier
             ->getBrand()
             ->willReturn($brand);
 
@@ -38,7 +37,7 @@ class PeerServerSpec extends ObjectBehavior
             $dto,
             [
                 'brand' => $brand->getWrappedObject(),
-                'peeringContract' => $peeringContract->getWrappedObject()
+                'carrier' => $carrier->getWrappedObject()
             ]
         );
 
@@ -50,7 +49,7 @@ class PeerServerSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType(PeerServer::class);
+        $this->shouldHaveType(CarrierServer::class);
     }
 
     function it_throws_exception_on_invalid_ip()
@@ -83,27 +82,27 @@ class PeerServerSpec extends ObjectBehavior
             ->during('setIp', ['2001:db8:a0b:12f0::1']);
     }
 
-    function it_throws_exception_on_empty_peering_contract()
+    function it_throws_exception_on_empty_carrier()
     {
         $dto = clone $this->dto;
         $this->hydrate(
             $dto,
-            ['peeringContract' => null]
+            ['carrier' => null]
         );
 
-        $exception = new \Exception('Unknown PeeringContract');
+        $exception = new \Exception('Unknown Carrier');
         $this
             ->shouldThrow($exception)
             ->during('updateFromDto', [$dto]);
     }
 
-    function it_throws_exception_on_empty_peering_contract_brand(
-        PeeringContractInterface $anotherPeeringContract
+    function it_throws_exception_on_empty_carrier_brand(
+        CarrierInterface $anotherCarrier
     ) {
         $dto = clone $this->dto;
         $this->hydrate(
             $dto,
-            ['peeringContract' => $anotherPeeringContract->getWrappedObject()]
+            ['carrier' => $anotherCarrier->getWrappedObject()]
         );
 
         $exception = new \Exception('Unknown Brand');;
@@ -112,19 +111,19 @@ class PeerServerSpec extends ObjectBehavior
             ->during('updateFromDto', [$dto]);
     }
 
-    function it_sets_brand_when_not_new_and_changed_peeringContractId(
-        PeeringContractInterface $newPeeringContract,
+    function it_sets_brand_when_not_new_and_changed_carrierId(
+        CarrierInterface $newCarrier,
         BrandInterface $brand
     ) {
         $dto = clone $this->dto;
 
-        $newPeeringContract
+        $newCarrier
             ->getBrand()
             ->willReturn($brand);
 
         $this->hydrate(
             $dto,
-            ['peeringContract' => $newPeeringContract->getWrappedObject()]
+            ['carrier' => $newCarrier->getWrappedObject()]
         );
 
         $this->hydrate(

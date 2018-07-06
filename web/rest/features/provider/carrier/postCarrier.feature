@@ -1,14 +1,14 @@
-Feature: Create peering contracts
-  In order to manage peering contracts
+Feature: Create carriers
+  In order to manage carriers
   As an super admin
   I need to be able to create them through the API.
 
   @createSchema
-  Scenario: Create a peering contracts
+  Scenario: Create a carriers
     Given I add Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
-      And I send a "POST" request to "/peering_contracts" with body:
+      And I send a "POST" request to "/carriers" with body:
     """
       {
           "description": "Artemis-New",
@@ -31,10 +31,10 @@ Feature: Create peering contracts
       }
     """
 
-  Scenario: Retrieve created peering contract
+  Scenario: Retrieve created carrier
     Given I add Authorization header
      When I add "Accept" header equal to "application/json"
-      And I send a "GET" request to "/peering_contracts/2"
+      And I send a "GET" request to "/carriers/2"
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
