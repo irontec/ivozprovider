@@ -1,5 +1,5 @@
 production:
-  entity: Ivoz\Provider\Domain\Model\PeeringContract\PeeringContract
+  entity: Ivoz\Provider\Domain\Model\Carrier\Carrier
   fields:
     name:
       title: _('Name')

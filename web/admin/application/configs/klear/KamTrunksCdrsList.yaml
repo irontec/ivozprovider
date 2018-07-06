@@ -39,7 +39,7 @@ production:
           callee: true
           duration: true
           price: true
-          peeringContract: true
+          carrier: true
           invoice: true
     kamTrunksCdrsView_screen: &kamTrunksCdrsView_screenLink
       <<: *KamTrunksCdrs
@@ -57,7 +57,7 @@ production:
           callee: true
           duration: true
           price: true
-          peeringContract: true
+          carrier: true
           invoice: true
       fixedPositions:
         group0:
@@ -74,7 +74,7 @@ production:
           colsPerRow: 12
           fields:
             price: 6
-            peeringContract: 6
+            carrier: 6
             direction: 6
             invoice: 6
 

@@ -41,19 +41,19 @@ production:
           order:
             Brand.name: asc
         'null': _("Unassigned")
-    peeringContract:
+    carrier:
       title: _('Peering contract id')
       type: select
       source:
         data: mapper
         config:
-          entity: \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContract
+          entity: \Ivoz\Provider\Domain\Model\Carrier\Carrier
           fieldName:
             fields:
               - name
             template: '%name%'
           order:
-            PeeringContract.name: asc
+            Carrier.name: asc
         'null': _("Unassigned")
     invoice:
       title: ngettext('Invoice', 'Invoices', 1)

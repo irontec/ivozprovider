@@ -25,7 +25,7 @@ production:
           country: true
           DDI: true
           company: true
-          peeringContract: true
+          carrier: true
         blacklist:
           externalCallFilter: true
           routeType: true

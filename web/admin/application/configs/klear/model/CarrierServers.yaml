@@ -1,20 +1,20 @@
 production:
-  entity: Ivoz\Provider\Domain\Model\PeerServer\PeerServer
+  entity: Ivoz\Provider\Domain\Model\CarrierServer\CarrierServer
   fields: 
-    peeringContract:
-      title: _('Peering contract')
+    carrier:
+      title: ngettext('Carrier', 'Carriers', 0)
       type: select
       required: true
       source:
         data: mapper
         config:
-          entity: \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContract
+          entity: \Ivoz\Provider\Domain\Model\Carrier\Carrier
           fieldName: 
             fields: 
               - description
             template: '%description%'
           order:
-            PeeringContract.description: asc
+            Carrier.description: asc
       default: true
     ip:
       title: _('Destination IP address')
@@ -98,13 +98,13 @@ production:
           'yes':
             title: _('Yes')
             visualFilter:
-              show: ["authUser", "authPassword"]
+              show: [ authUser, authPassword ]
               hide: []
           'no':
             title: _('No')
             visualFilter:
               show: []
-              hide: ["authUser", "authPassword"]
+              hide: [ authUser, authPassword ]
     authUser:
       title: _('Auth user')
       type: text

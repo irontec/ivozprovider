@@ -379,6 +379,16 @@ msgstr "Cancelar"
 msgid "Cannot invoice calls from today in the future."
 msgstr "No se pueden crear facturas en el dia actual o futuro."
 
+msgid "Carrier"
+msgid_plural "Carriers"
+msgstr[0] "Carrier"
+msgstr[1] "Carriers"
+
+msgid "Carrier server"
+msgid_plural "Carrier servers"
+msgstr[0] "Servidor de Carrier"
+msgstr[1] "Servidores de Carrier"
+
 msgid "Charge period"
 msgstr "Período de facturación"
 
@@ -1035,11 +1045,10 @@ msgstr "En curso"
 msgid "Inbound"
 msgstr "Entrante"
 
-msgid ""
-"Inbound Calls cannot be billed as PeeringContract is not externally rated."
+msgid "Inbound Calls cannot be billed as DDI Provider is not externally rated."
 msgstr ""
-"Las llamadas entrantes solo pueden ser tarificadas en Contratos de Peering "
-"con tarificación externa."
+"Las llamadas entrantes solo pueden ser tarificadas en Proveedores de DDI con "
+"tarificación externa."
 
 msgid "Inbound configuration"
 msgstr "Configuración Entrante"
@@ -1630,16 +1639,6 @@ msgstr "Patrón"
 
 msgid "Pdf file"
 msgstr "Fichero PDF"
-
-msgid "Peer server"
-msgid_plural "Peer servers"
-msgstr[0] "Servidor"
-msgstr[1] "Servidores"
-
-msgid "Peering contract"
-msgid_plural "Peering contracts"
-msgstr[0] "Contrato de Peering"
-msgstr[1] "Contratos de Peering"
 
 msgid "Peering contract id"
 msgstr "Contrato de Peering"

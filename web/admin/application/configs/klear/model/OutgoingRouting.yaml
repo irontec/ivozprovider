@@ -69,21 +69,21 @@ production:
             template: '%name%'
           order:
             RoutingPatternGroup.name: asc
-    peeringContract:
-      title: _('Peering contract')
+    carrier:
+      title: ngettext('Carrier', 'Carriers', 0)
       type: select
       required: true
       source:
         data: mapper
         config:
-          entity: \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContract
+          entity: \Ivoz\Provider\Domain\Model\Carrier\Carrier
           filterClass: IvozProvider_Klear_Filter_Brand
           fieldName:
             fields:
               - name
             template: '%name%'
           order:
-            PeeringContract.name: asc
+            Carrier.name: asc
     priority:
       title: _('Priority')
       type: number

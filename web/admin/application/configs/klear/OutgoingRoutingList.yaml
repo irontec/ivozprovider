@@ -25,7 +25,7 @@ production:
           target: true
           routingPattern: true
           routingPatternGroup: true
-          peeringContract: true
+          carrier: true
           priority: true
           weight: true
         blacklist:
@@ -73,7 +73,7 @@ production:
           colsPerRow: 12
           label: _("Outgoing route")
           fields:
-            peeringContract: 12
+            carrier: 12
         group3:
           colsPerRow: 2
           label: _("Failover and load-balancing")

@@ -109,20 +109,20 @@ production:
       title: _('Diversion')
       type: text
       maxLength: 64
-    peeringContract:
-      title: _('Peering contract id')
+    carrier:
+      title: ngettext('Carrier', 'Carriers', 0)
       type: select
       source:
         data: mapper
         config:
-          entity: \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContract
+          entity: \Ivoz\Provider\Domain\Model\Carrier\Carrier
           filterClass: IvozProvider_Klear_Filter_Brand
           fieldName:
             fields:
               - name
             template: '%name%'
           order:
-            PeeringContract.name: asc
+            Carrier.name: asc
         'null': _("Unassigned")
     externallyRated:
       title: _('Externally rated')
