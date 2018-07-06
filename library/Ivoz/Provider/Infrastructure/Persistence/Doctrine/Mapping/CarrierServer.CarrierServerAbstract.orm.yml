@@ -1,4 +1,4 @@
-Ivoz\Provider\Domain\Model\PeerServer\PeerServerAbstract:
+Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerAbstract:
   type: mappedSuperclass
   fields:
     ip:
@@ -21,9 +21,9 @@ Ivoz\Provider\Domain\Model\PeerServer\PeerServerAbstract:
     uriScheme:
       type: smallint
       nullable: true
-      column: uri_scheme
       options:
         unsigned: true
+      column: uriScheme
     transport:
       type: smallint
       nullable: true
@@ -50,58 +50,58 @@ Ivoz\Provider\Domain\Model\PeerServer\PeerServerAbstract:
       options:
         fixed: false
         default: 'no'
-      column: auth_needed
+      column: authNeeded
     authUser:
       type: string
       nullable: true
       length: 64
       options:
         fixed: false
-      column: auth_user
+      column: authUser
     authPassword:
       type: string
       nullable: true
       length: 64
       options:
         fixed: false
-      column: auth_password
+      column: authPassword
     sipProxy:
       type: string
       nullable: true
       length: 128
       options:
         fixed: false
-      column: sip_proxy
+      column: sipProxy
     outboundProxy:
       type: string
       nullable: true
       length: 128
       options:
         fixed: false
-      column: outbound_proxy
+      column: outboundProxy
     fromUser:
       type: string
       nullable: true
       length: 64
       options:
         fixed: false
-      column: from_user
+      column: fromUser
     fromDomain:
       type: string
       nullable: true
       length: 190
       options:
         fixed: false
-      column: from_domain
+      column: fromDomain
   manyToOne:
-    peeringContract:
-      targetEntity: \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface
+    carrier:
+      targetEntity: \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
       cascade: {  }
       fetch: LAZY
       mappedBy: null
-      inversedBy: peerServers
+      inversedBy: servers
       joinColumns:
-        peeringContractId:
+        carrierId:
           referencedColumnName: id
           nullable: false
           onDelete: cascade
@@ -121,6 +121,6 @@ Ivoz\Provider\Domain\Model\PeerServer\PeerServerAbstract:
   oneToOne:
     lcrGateway:
       targetEntity: Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface
-      mappedBy: peerServer
+      mappedBy: carrierServer
       fetch: LAZY
 

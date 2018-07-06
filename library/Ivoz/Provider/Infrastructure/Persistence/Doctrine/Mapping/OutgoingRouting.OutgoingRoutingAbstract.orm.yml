@@ -43,14 +43,14 @@ Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingAbstract:
           referencedColumnName: id
           onDelete: cascade
       orphanRemoval: false
-    peeringContract:
-      targetEntity: \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface
+    carrier:
+      targetEntity: \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
       cascade: {  }
       fetch: LAZY
       mappedBy: null
       inversedBy: outgoingRoutings
       joinColumns:
-        peeringContractId:
+        carrierId:
           referencedColumnName: id
           nullable: false
           onDelete: cascade

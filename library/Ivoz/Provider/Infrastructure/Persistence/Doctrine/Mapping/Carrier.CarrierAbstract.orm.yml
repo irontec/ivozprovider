@@ -1,7 +1,7 @@
-Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractAbstract:
+Ivoz\Provider\Domain\Model\Carrier\CarrierAbstract:
   type: mappedSuperclass
   uniqueConstraints:
-    peeringContract_nameBrand:
+    carrier_nameBrand:
       columns:
         - name
         - brandId
@@ -24,6 +24,7 @@ Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractAbstract:
       nullable: true
       options:
         default: '0'
+        unsigned: true
       column: externallyRated
   manyToOne:
     brand:
