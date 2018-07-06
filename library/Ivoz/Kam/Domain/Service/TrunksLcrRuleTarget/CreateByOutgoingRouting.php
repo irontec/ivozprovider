@@ -44,23 +44,20 @@ class CreateByOutgoingRouting
 
     public function execute(OutgoingRoutingInterface $outgoingRouting)
     {
-        $peeringContract = $outgoingRouting->getPeeringContract();
-        if (empty($peeringContract)) {
-            throw new \DomainException('Peering Contract not found');
+        $carrier = $outgoingRouting->getCarrier();
+        if (empty($carrier)) {
+            throw new \DomainException('Carrier not found');
         }
 
-        $peerServers = $peeringContract->getPeerServers();
+        $carrierServers = $carrier->getServers();
 
         /**
          * @var TrunksLcrGatewayInterface[] $lcrGateways
          */
         $lcrGateways = array();
 
-        /**
-         * @var PeerServerInterface $peerServer
-         */
-        foreach ($peerServers as $peerServer) {
-            $lcrGateways[] = $peerServer->getLcrGateway();
+        foreach ($carrierServers as $carrierServer) {
+            $lcrGateways[] = $carrierServer->getLcrGateway();
         }
 
         $lcrRules = $outgoingRouting->getLcrRules();

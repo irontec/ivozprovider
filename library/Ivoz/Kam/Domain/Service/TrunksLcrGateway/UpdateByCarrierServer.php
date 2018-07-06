@@ -3,15 +3,15 @@
 namespace Ivoz\Kam\Domain\Service\TrunksLcrGateway;
 
 use Ivoz\Core\Application\Service\EntityTools;
-use Ivoz\Provider\Domain\Model\PeerServer\PeerServerInterface;
-use Ivoz\Provider\Domain\Service\PeerServer\PeerServerLifecycleEventHandlerInterface;
+use Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface;
+use Ivoz\Provider\Domain\Service\CarrierServer\CarrierServerLifecycleEventHandlerInterface;
 use Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGateway;
 
 /**
- * Class UpdateByPeerServer
+ * Class UpdateByCarrierServer
  * @package Ivoz\Kam\Domain\Service\TrunksLcrGateway
  */
-class UpdateByPeerServer implements PeerServerLifecycleEventHandlerInterface
+class UpdateByCarrierServer implements CarrierServerLifecycleEventHandlerInterface
 {
     CONST POST_PERSIST_PRIORITY = 10;
 
@@ -33,7 +33,7 @@ class UpdateByPeerServer implements PeerServerLifecycleEventHandlerInterface
         ];
     }
 
-    public function execute(PeerServerInterface $entity, $isNew)
+    public function execute(CarrierServerInterface $entity, $isNew)
     {
         $lcrGateway = $entity->getLcrGateway();
 
@@ -41,7 +41,7 @@ class UpdateByPeerServer implements PeerServerLifecycleEventHandlerInterface
             ? TrunksLcrGateway::createDto()
             : $lcrGateway->toDto();
 
-        // Update/Create LcrGateway for this PeerServer
+        // Update/Create LcrGateway for this CarrierServer
         $lcrGatewayDto
             ->setGwName($entity->getName())
             ->setIp($entity->getIp())
@@ -49,7 +49,7 @@ class UpdateByPeerServer implements PeerServerLifecycleEventHandlerInterface
             ->setPort($entity->getPort())
             ->setUriScheme($entity->getUriScheme())
             ->setTransport($entity->getTransport())
-            ->setPeerServerId($entity->getId());
+            ->setCarrierServerId($entity->getId());
 
         $lcrGateway = $this->entityTools->persistDto(
             $lcrGatewayDto,
