@@ -1,12 +1,15 @@
 Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerAbstract:
   type: mappedSuperclass
   uniqueConstraints:
-    invoiceNumberSequence_iden_brand:
+    invoiceScheduler_name_brand:
       columns:
-        - iden
+        - name
         - brandId
+    invoiceScheduler_company:
+      columns:
+        - companyId
   fields:
-    iden:
+    name:
       type: string
       nullable: false
       length: 40
@@ -31,16 +34,20 @@ Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerAbstract:
       length: 140
       options:
         fixed: false
-    inProgress:
-      type: boolean
-      nullable: false
-      options:
-        default: '0'
-      column: inProgress
     lastExecution:
       type: datetime
       nullable: true
       column: lastExecution
+    nextExecution:
+      type: datetime
+      nullable: true
+      column: nextExecution
+    taxRate:
+      type: decimal
+      nullable: true
+      precision: 10
+      scale: 3
+      column: taxRate
   manyToOne:
     brand:
       targetEntity: \Ivoz\Provider\Domain\Model\Brand\BrandInterface
@@ -50,6 +57,18 @@ Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerAbstract:
       inversedBy: null
       joinColumns:
         brandId:
+          referencedColumnName: id
+          nullable: false
+          onDelete: cascade
+      orphanRemoval: false
+    company:
+      targetEntity: \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        companyId:
           referencedColumnName: id
           nullable: false
           onDelete: cascade
@@ -64,5 +83,16 @@ Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerAbstract:
         invoiceNumberSequenceId:
           referencedColumnName: id
           nullable: true
+          onDelete: set null
+      orphanRemoval: false
+    invoiceTemplate:
+      targetEntity: \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplate
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        invoiceTemplateId:
+          referencedColumnName: id
           onDelete: set null
       orphanRemoval: false

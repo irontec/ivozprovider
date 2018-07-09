@@ -48,6 +48,13 @@ Ivoz\Provider\Domain\Model\Invoice\InvoiceAbstract:
       options:
         fixed: false
         comment: '[enum:waiting|processing|created|error]'
+    statusMsg:
+      type: string
+      nullable: true
+      length: 140
+      options:
+        fixed: false
+      column: statusMsg
   manyToOne:
     brand:
       targetEntity: \Ivoz\Provider\Domain\Model\Brand\BrandInterface
@@ -92,6 +99,17 @@ Ivoz\Provider\Domain\Model\Invoice\InvoiceAbstract:
       inversedBy: null
       joinColumns:
         invoiceNumberSequenceId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false
+    scheduler:
+      targetEntity: \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        invoiceSchedulerId:
           referencedColumnName: id
           onDelete: set null
       orphanRemoval: false

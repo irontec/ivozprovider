@@ -11,3 +11,7 @@ Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceScheduler:
       id: true
       generator:
         strategy: IDENTITY
+  oneToMany:
+    relFixedCosts:
+      targetEntity: Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceScheduler
+      mappedBy: invoiceScheduler

@@ -1,4 +1,4 @@
-Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoiceAbstract:
+Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceSchedulerAbstract:
   type: mappedSuperclass
   fields:
     quantity:
@@ -20,8 +20,8 @@ Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoiceAbstract:
           nullable: false
           onDelete: cascade
       orphanRemoval: false
-    invoice:
-      targetEntity: \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface
+    invoiceScheduler:
+      targetEntity: \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface
       cascade: {  }
       fetch: LAZY
       mappedBy: null
