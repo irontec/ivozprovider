@@ -35,19 +35,34 @@ abstract class InvoiceSchedulerAbstract
     protected $email;
 
     /**
-     * @var boolean
-     */
-    protected $inProgress = '0';
-
-    /**
      * @var \DateTime
      */
     protected $lastExecution;
 
     /**
+     * @var \DateTime
+     */
+    protected $nextExecution;
+
+    /**
+     * @var string
+     */
+    protected $taxRate;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface
+     */
+    protected $invoiceTemplate;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
      */
     protected $brand;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     */
+    protected $company;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface
@@ -60,18 +75,12 @@ abstract class InvoiceSchedulerAbstract
     /**
      * Constructor
      */
-    protected function __construct(
-        $iden,
-        $unit,
-        $frequency,
-        $email,
-        $inProgress
-    ) {
+    protected function __construct($iden, $unit, $frequency, $email)
+    {
         $this->setIden($iden);
         $this->setUnit($unit);
         $this->setFrequency($frequency);
         $this->setEmail($email);
-        $this->setInProgress($inProgress);
     }
 
     abstract public function getId();
@@ -141,12 +150,15 @@ abstract class InvoiceSchedulerAbstract
             $dto->getIden(),
             $dto->getUnit(),
             $dto->getFrequency(),
-            $dto->getEmail(),
-            $dto->getInProgress());
+            $dto->getEmail());
 
         $self
             ->setLastExecution($dto->getLastExecution())
+            ->setNextExecution($dto->getNextExecution())
+            ->setTaxRate($dto->getTaxRate())
+            ->setInvoiceTemplate($dto->getInvoiceTemplate())
             ->setBrand($dto->getBrand())
+            ->setCompany($dto->getCompany())
             ->setNumberSequence($dto->getNumberSequence())
         ;
 
@@ -172,9 +184,12 @@ abstract class InvoiceSchedulerAbstract
             ->setUnit($dto->getUnit())
             ->setFrequency($dto->getFrequency())
             ->setEmail($dto->getEmail())
-            ->setInProgress($dto->getInProgress())
             ->setLastExecution($dto->getLastExecution())
+            ->setNextExecution($dto->getNextExecution())
+            ->setTaxRate($dto->getTaxRate())
+            ->setInvoiceTemplate($dto->getInvoiceTemplate())
             ->setBrand($dto->getBrand())
+            ->setCompany($dto->getCompany())
             ->setNumberSequence($dto->getNumberSequence());
 
 
@@ -194,9 +209,12 @@ abstract class InvoiceSchedulerAbstract
             ->setUnit(self::getUnit())
             ->setFrequency(self::getFrequency())
             ->setEmail(self::getEmail())
-            ->setInProgress(self::getInProgress())
             ->setLastExecution(self::getLastExecution())
+            ->setNextExecution(self::getNextExecution())
+            ->setTaxRate(self::getTaxRate())
+            ->setInvoiceTemplate(\Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplate::entityToDto(self::getInvoiceTemplate(), $depth))
             ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
+            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
             ->setNumberSequence(\Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequence::entityToDto(self::getNumberSequence(), $depth));
     }
 
@@ -210,9 +228,12 @@ abstract class InvoiceSchedulerAbstract
             'unit' => self::getUnit(),
             'frequency' => self::getFrequency(),
             'email' => self::getEmail(),
-            'inProgress' => self::getInProgress(),
             'lastExecution' => self::getLastExecution(),
+            'nextExecution' => self::getNextExecution(),
+            'taxRate' => self::getTaxRate(),
+            'invoiceTemplateId' => self::getInvoiceTemplate() ? self::getInvoiceTemplate()->getId() : null,
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
+            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
             'numberSequenceId' => self::getNumberSequence() ? self::getNumberSequence()->getId() : null
         ];
     }
@@ -335,33 +356,6 @@ abstract class InvoiceSchedulerAbstract
     }
 
     /**
-     * Set inProgress
-     *
-     * @param boolean $inProgress
-     *
-     * @return self
-     */
-    public function setInProgress($inProgress)
-    {
-        Assertion::notNull($inProgress, 'inProgress value "%s" is null, but non null value was expected.');
-        Assertion::between(intval($inProgress), 0, 1, 'inProgress provided "%s" is not a valid boolean value.');
-
-        $this->inProgress = $inProgress;
-
-        return $this;
-    }
-
-    /**
-     * Get inProgress
-     *
-     * @return boolean
-     */
-    public function getInProgress()
-    {
-        return $this->inProgress;
-    }
-
-    /**
      * Set lastExecution
      *
      * @param \DateTime $lastExecution
@@ -393,6 +387,91 @@ abstract class InvoiceSchedulerAbstract
     }
 
     /**
+     * Set nextExecution
+     *
+     * @param \DateTime $nextExecution
+     *
+     * @return self
+     */
+    public function setNextExecution($nextExecution = null)
+    {
+        if (!is_null($nextExecution)) {
+        $nextExecution = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
+            $nextExecution,
+            null
+        );
+        }
+
+        $this->nextExecution = $nextExecution;
+
+        return $this;
+    }
+
+    /**
+     * Get nextExecution
+     *
+     * @return \DateTime
+     */
+    public function getNextExecution()
+    {
+        return $this->nextExecution;
+    }
+
+    /**
+     * Set taxRate
+     *
+     * @param string $taxRate
+     *
+     * @return self
+     */
+    public function setTaxRate($taxRate = null)
+    {
+        if (!is_null($taxRate)) {
+            if (!is_null($taxRate)) {
+                Assertion::numeric($taxRate);
+            }
+        }
+
+        $this->taxRate = $taxRate;
+
+        return $this;
+    }
+
+    /**
+     * Get taxRate
+     *
+     * @return string
+     */
+    public function getTaxRate()
+    {
+        return $this->taxRate;
+    }
+
+    /**
+     * Set invoiceTemplate
+     *
+     * @param \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface $invoiceTemplate
+     *
+     * @return self
+     */
+    public function setInvoiceTemplate(\Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface $invoiceTemplate = null)
+    {
+        $this->invoiceTemplate = $invoiceTemplate;
+
+        return $this;
+    }
+
+    /**
+     * Get invoiceTemplate
+     *
+     * @return \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface
+     */
+    public function getInvoiceTemplate()
+    {
+        return $this->invoiceTemplate;
+    }
+
+    /**
      * Set brand
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
@@ -414,6 +493,30 @@ abstract class InvoiceSchedulerAbstract
     public function getBrand()
     {
         return $this->brand;
+    }
+
+    /**
+     * Set company
+     *
+     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
+     *
+     * @return self
+     */
+    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
+    {
+        $this->company = $company;
+
+        return $this;
+    }
+
+    /**
+     * Get company
+     *
+     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     */
+    public function getCompany()
+    {
+        return $this->company;
     }
 
     /**
