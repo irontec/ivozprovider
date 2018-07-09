@@ -27,5 +27,29 @@ class FixedCostsRelInvoice extends FixedCostsRelInvoiceAbstract implements Fixed
     {
         return $this->id;
     }
+
+    /**
+     * @param InvoiceInterface $invoice
+     * @param FixedCostsRelInvoiceSchedulerInterface $fixedCostsRelInvoiceScheduler
+     * @return static
+     */
+    public static function fromFixedCostsRelInvoiceScheduler(
+        InvoiceInterface $invoice,
+        FixedCostsRelInvoiceSchedulerInterface $fixedCostRelScheduler
+    ) {
+        $dto = new static();
+        $dto
+            ->setQuantity(
+                $fixedCostRelScheduler->getQuantity()
+            )
+            ->setFixedCost(
+                $fixedCostRelScheduler->getFixedCost()
+            )
+            ->setInvoice(
+                $invoice
+            );
+
+        return $dto;
+    }
 }
 

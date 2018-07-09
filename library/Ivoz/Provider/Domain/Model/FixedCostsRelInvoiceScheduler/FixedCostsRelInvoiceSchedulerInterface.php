@@ -1,10 +1,10 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Model\FixedCostsRelInvoice;
+namespace Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface FixedCostsRelInvoiceInterface extends LoggableEntityInterface
+interface FixedCostsRelInvoiceSchedulerInterface extends LoggableEntityInterface
 {
     /**
      * @codeCoverageIgnore
@@ -45,20 +45,20 @@ interface FixedCostsRelInvoiceInterface extends LoggableEntityInterface
     public function getFixedCost();
 
     /**
-     * Set invoice
+     * Set invoiceScheduler
      *
-     * @param \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice
+     * @param \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface $invoiceScheduler
      *
      * @return self
      */
-    public function setInvoice(\Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice = null);
+    public function setInvoiceScheduler(\Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface $invoiceScheduler = null);
 
     /**
-     * Get invoice
+     * Get invoiceScheduler
      *
-     * @return \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface
+     * @return \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface
      */
-    public function getInvoice();
+    public function getInvoiceScheduler();
 
 }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Model\FixedCostsRelInvoice;
+namespace Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler;
 
 use Assert\Assertion;
 use Ivoz\Core\Application\DataTransferObjectInterface;
@@ -8,10 +8,10 @@ use Ivoz\Core\Domain\Model\ChangelogTrait;
 use Ivoz\Core\Domain\Model\EntityInterface;
 
 /**
- * FixedCostsRelInvoiceAbstract
+ * FixedCostsRelInvoiceSchedulerAbstract
  * @codeCoverageIgnore
  */
-abstract class FixedCostsRelInvoiceAbstract
+abstract class FixedCostsRelInvoiceSchedulerAbstract
 {
     /**
      * @var integer
@@ -24,9 +24,9 @@ abstract class FixedCostsRelInvoiceAbstract
     protected $fixedCost;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface
+     * @var \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface
      */
-    protected $invoice;
+    protected $invoiceScheduler;
 
 
     use ChangelogTrait;
@@ -44,7 +44,7 @@ abstract class FixedCostsRelInvoiceAbstract
     public function __toString()
     {
         return sprintf("%s#%s",
-            "FixedCostsRelInvoice",
+            "FixedCostsRelInvoiceScheduler",
             $this->getId()
         );
     }
@@ -59,17 +59,17 @@ abstract class FixedCostsRelInvoiceAbstract
 
     /**
      * @param null $id
-     * @return FixedCostsRelInvoiceDto
+     * @return FixedCostsRelInvoiceSchedulerDto
      */
     public static function createDto($id = null)
     {
-        return new FixedCostsRelInvoiceDto($id);
+        return new FixedCostsRelInvoiceSchedulerDto($id);
     }
 
     /**
      * @param EntityInterface|null $entity
      * @param int $depth
-     * @return FixedCostsRelInvoiceDto|null
+     * @return FixedCostsRelInvoiceSchedulerDto|null
      */
     public static function entityToDto(EntityInterface $entity = null, $depth = 0)
     {
@@ -77,7 +77,7 @@ abstract class FixedCostsRelInvoiceAbstract
             return null;
         }
 
-        Assertion::isInstanceOf($entity, FixedCostsRelInvoiceInterface::class);
+        Assertion::isInstanceOf($entity, FixedCostsRelInvoiceSchedulerInterface::class);
 
         if ($depth < 1) {
             return static::createDto($entity->getId());
@@ -98,16 +98,16 @@ abstract class FixedCostsRelInvoiceAbstract
     public static function fromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto FixedCostsRelInvoiceDto
+         * @var $dto FixedCostsRelInvoiceSchedulerDto
          */
-        Assertion::isInstanceOf($dto, FixedCostsRelInvoiceDto::class);
+        Assertion::isInstanceOf($dto, FixedCostsRelInvoiceSchedulerDto::class);
 
         $self = new static();
 
         $self
             ->setQuantity($dto->getQuantity())
             ->setFixedCost($dto->getFixedCost())
-            ->setInvoice($dto->getInvoice())
+            ->setInvoiceScheduler($dto->getInvoiceScheduler())
         ;
 
         $self->sanitizeValues();
@@ -123,14 +123,14 @@ abstract class FixedCostsRelInvoiceAbstract
     public function updateFromDto(DataTransferObjectInterface $dto)
     {
         /**
-         * @var $dto FixedCostsRelInvoiceDto
+         * @var $dto FixedCostsRelInvoiceSchedulerDto
          */
-        Assertion::isInstanceOf($dto, FixedCostsRelInvoiceDto::class);
+        Assertion::isInstanceOf($dto, FixedCostsRelInvoiceSchedulerDto::class);
 
         $this
             ->setQuantity($dto->getQuantity())
             ->setFixedCost($dto->getFixedCost())
-            ->setInvoice($dto->getInvoice());
+            ->setInvoiceScheduler($dto->getInvoiceScheduler());
 
 
 
@@ -140,14 +140,14 @@ abstract class FixedCostsRelInvoiceAbstract
 
     /**
      * @param int $depth
-     * @return FixedCostsRelInvoiceDto
+     * @return FixedCostsRelInvoiceSchedulerDto
      */
     public function toDto($depth = 0)
     {
         return self::createDto()
             ->setQuantity(self::getQuantity())
             ->setFixedCost(\Ivoz\Provider\Domain\Model\FixedCost\FixedCost::entityToDto(self::getFixedCost(), $depth))
-            ->setInvoice(\Ivoz\Provider\Domain\Model\Invoice\Invoice::entityToDto(self::getInvoice(), $depth));
+            ->setInvoiceScheduler(\Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceScheduler::entityToDto(self::getInvoiceScheduler(), $depth));
     }
 
     /**
@@ -158,7 +158,7 @@ abstract class FixedCostsRelInvoiceAbstract
         return [
             'quantity' => self::getQuantity(),
             'fixedCostId' => self::getFixedCost() ? self::getFixedCost()->getId() : null,
-            'invoiceId' => self::getInvoice() ? self::getInvoice()->getId() : null
+            'invoiceSchedulerId' => self::getInvoiceScheduler() ? self::getInvoiceScheduler()->getId() : null
         ];
     }
 
@@ -220,27 +220,27 @@ abstract class FixedCostsRelInvoiceAbstract
     }
 
     /**
-     * Set invoice
+     * Set invoiceScheduler
      *
-     * @param \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice
+     * @param \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface $invoiceScheduler
      *
      * @return self
      */
-    public function setInvoice(\Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice = null)
+    public function setInvoiceScheduler(\Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface $invoiceScheduler = null)
     {
-        $this->invoice = $invoice;
+        $this->invoiceScheduler = $invoiceScheduler;
 
         return $this;
     }
 
     /**
-     * Get invoice
+     * Get invoiceScheduler
      *
-     * @return \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface
+     * @return \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface
      */
-    public function getInvoice()
+    public function getInvoiceScheduler()
     {
-        return $this->invoice;
+        return $this->invoiceScheduler;
     }
 
 

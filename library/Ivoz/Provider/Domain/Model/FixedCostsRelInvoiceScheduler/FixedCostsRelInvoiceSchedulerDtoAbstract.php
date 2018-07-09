@@ -1,6 +1,6 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Model\FixedCostsRelInvoice;
+namespace Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
@@ -10,7 +10,7 @@ use Ivoz\Core\Application\Model\DtoNormalizer;
 /**
  * @codeCoverageIgnore
  */
-abstract class FixedCostsRelInvoiceDtoAbstract implements DataTransferObjectInterface
+abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferObjectInterface
 {
     /**
      * @var integer
@@ -28,9 +28,9 @@ abstract class FixedCostsRelInvoiceDtoAbstract implements DataTransferObjectInte
     private $fixedCost;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Invoice\InvoiceDto | null
+     * @var \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerDto | null
      */
-    private $invoice;
+    private $invoiceScheduler;
 
 
     use DtoNormalizer;
@@ -53,7 +53,7 @@ abstract class FixedCostsRelInvoiceDtoAbstract implements DataTransferObjectInte
             'quantity' => 'quantity',
             'id' => 'id',
             'fixedCostId' => 'fixedCost',
-            'invoiceId' => 'invoice'
+            'invoiceSchedulerId' => 'invoiceScheduler'
         ];
     }
 
@@ -66,7 +66,7 @@ abstract class FixedCostsRelInvoiceDtoAbstract implements DataTransferObjectInte
             'quantity' => $this->getQuantity(),
             'id' => $this->getId(),
             'fixedCost' => $this->getFixedCost(),
-            'invoice' => $this->getInvoice()
+            'invoiceScheduler' => $this->getInvoiceScheduler()
         ];
     }
 
@@ -76,7 +76,7 @@ abstract class FixedCostsRelInvoiceDtoAbstract implements DataTransferObjectInte
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
         $this->fixedCost = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\FixedCost\\FixedCost', $this->getFixedCostId());
-        $this->invoice = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Invoice\\Invoice', $this->getInvoiceId());
+        $this->invoiceScheduler = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\InvoiceScheduler\\InvoiceScheduler', $this->getInvoiceSchedulerId());
     }
 
     /**
@@ -174,23 +174,23 @@ abstract class FixedCostsRelInvoiceDtoAbstract implements DataTransferObjectInte
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Invoice\InvoiceDto $invoice
+     * @param \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerDto $invoiceScheduler
      *
      * @return static
      */
-    public function setInvoice(\Ivoz\Provider\Domain\Model\Invoice\InvoiceDto $invoice = null)
+    public function setInvoiceScheduler(\Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerDto $invoiceScheduler = null)
     {
-        $this->invoice = $invoice;
+        $this->invoiceScheduler = $invoiceScheduler;
 
         return $this;
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Invoice\InvoiceDto
+     * @return \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerDto
      */
-    public function getInvoice()
+    public function getInvoiceScheduler()
     {
-        return $this->invoice;
+        return $this->invoiceScheduler;
     }
 
     /**
@@ -198,21 +198,21 @@ abstract class FixedCostsRelInvoiceDtoAbstract implements DataTransferObjectInte
      *
      * @return static
      */
-    public function setInvoiceId($id)
+    public function setInvoiceSchedulerId($id)
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Invoice\InvoiceDto($id)
+            ? new \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerDto($id)
             : null;
 
-        return $this->setInvoice($value);
+        return $this->setInvoiceScheduler($value);
     }
 
     /**
      * @return integer | null
      */
-    public function getInvoiceId()
+    public function getInvoiceSchedulerId()
     {
-        if ($dto = $this->getInvoice()) {
+        if ($dto = $this->getInvoiceScheduler()) {
             return $dto->getId();
         }
 

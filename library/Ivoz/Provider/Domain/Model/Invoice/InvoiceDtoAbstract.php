@@ -48,6 +48,11 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     private $status;
 
     /**
+     * @var string
+     */
+    private $statusMsg;
+
+    /**
      * @var integer
      */
     private $id;
@@ -88,6 +93,11 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     private $numberSequence;
 
     /**
+     * @var \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerDto | null
+     */
+    private $scheduler;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoiceDto[] | null
      */
     private $relFixedCosts = null;
@@ -117,12 +127,14 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
             'taxRate' => 'taxRate',
             'totalWithTax' => 'totalWithTax',
             'status' => 'status',
+            'statusMsg' => 'statusMsg',
             'id' => 'id',
             'pdf' => ['fileSize','mimeType','baseName'],
             'invoiceTemplateId' => 'invoiceTemplate',
             'brandId' => 'brand',
             'companyId' => 'company',
-            'numberSequenceId' => 'numberSequence'
+            'numberSequenceId' => 'numberSequence',
+            'schedulerId' => 'scheduler'
         ];
     }
 
@@ -139,6 +151,7 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
             'taxRate' => $this->getTaxRate(),
             'totalWithTax' => $this->getTotalWithTax(),
             'status' => $this->getStatus(),
+            'statusMsg' => $this->getStatusMsg(),
             'id' => $this->getId(),
             'pdf' => [
                 'fileSize' => $this->getPdfFileSize(),
@@ -149,6 +162,7 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
             'brand' => $this->getBrand(),
             'company' => $this->getCompany(),
             'numberSequence' => $this->getNumberSequence(),
+            'scheduler' => $this->getScheduler(),
             'relFixedCosts' => $this->getRelFixedCosts()
         ];
     }
@@ -162,6 +176,7 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
         $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
         $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
         $this->numberSequence = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\InvoiceNumberSequence\\InvoiceNumberSequence', $this->getNumberSequenceId());
+        $this->scheduler = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\InvoiceScheduler\\InvoiceScheduler', $this->getSchedulerId());
         if (!is_null($this->relFixedCosts)) {
             $items = $this->getRelFixedCosts();
             $this->relFixedCosts = [];
@@ -324,6 +339,26 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * @param string $statusMsg
+     *
+     * @return static
+     */
+    public function setStatusMsg($statusMsg = null)
+    {
+        $this->statusMsg = $statusMsg;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStatusMsg()
+    {
+        return $this->statusMsg;
     }
 
     /**
@@ -584,6 +619,52 @@ abstract class InvoiceDtoAbstract implements DataTransferObjectInterface
     public function getNumberSequenceId()
     {
         if ($dto = $this->getNumberSequence()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerDto $scheduler
+     *
+     * @return static
+     */
+    public function setScheduler(\Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerDto $scheduler = null)
+    {
+        $this->scheduler = $scheduler;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerDto
+     */
+    public function getScheduler()
+    {
+        return $this->scheduler;
+    }
+
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setSchedulerId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerDto($id)
+            : null;
+
+        return $this->setScheduler($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getSchedulerId()
+    {
+        if ($dto = $this->getScheduler()) {
             return $dto->getId();
         }
 

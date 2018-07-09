@@ -168,7 +168,17 @@ interface FaxesInOutInterface extends LoggableEntityInterface
      */
     public function getFile();
 
+    /**
+     * @param $fldName
+     * @param TempFile $file
+     */
     public function addTmpFile($fldName, \Ivoz\Core\Domain\Service\TempFile $file);
+
+    /**
+     * @param TempFile $file
+     * @throws \Exception
+     */
+    public function removeTmpFile(\Ivoz\Core\Domain\Service\TempFile $file);
 
     /**
      * @return TempFile[]

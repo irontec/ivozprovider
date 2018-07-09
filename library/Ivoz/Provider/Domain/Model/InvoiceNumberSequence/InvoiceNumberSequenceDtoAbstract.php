@@ -15,7 +15,7 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
     /**
      * @var string
      */
-    private $iden;
+    private $name;
 
     /**
      * @var string
@@ -75,7 +75,7 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
         }
 
         return [
-            'iden' => 'iden',
+            'name' => 'name',
             'prefix' => 'prefix',
             'sequenceLength' => 'sequenceLength',
             'increment' => 'increment',
@@ -93,7 +93,7 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
     public function toArray($hideSensitiveData = false)
     {
         return [
-            'iden' => $this->getIden(),
+            'name' => $this->getName(),
             'prefix' => $this->getPrefix(),
             'sequenceLength' => $this->getSequenceLength(),
             'increment' => $this->getIncrement(),
@@ -122,13 +122,13 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
     }
 
     /**
-     * @param string $iden
+     * @param string $name
      *
      * @return static
      */
-    public function setIden($iden = null)
+    public function setName($name = null)
     {
-        $this->iden = $iden;
+        $this->name = $name;
 
         return $this;
     }
@@ -136,9 +136,9 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
     /**
      * @return string
      */
-    public function getIden()
+    public function getName()
     {
-        return $this->iden;
+        return $this->name;
     }
 
     /**

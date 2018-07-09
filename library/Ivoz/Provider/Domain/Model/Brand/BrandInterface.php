@@ -448,7 +448,17 @@ interface BrandInterface extends LoggableEntityInterface
      */
     public function getOutgoingRoutings(\Doctrine\Common\Collections\Criteria $criteria = null);
 
+    /**
+     * @param $fldName
+     * @param TempFile $file
+     */
     public function addTmpFile($fldName, \Ivoz\Core\Domain\Service\TempFile $file);
+
+    /**
+     * @param TempFile $file
+     * @throws \Exception
+     */
+    public function removeTmpFile(\Ivoz\Core\Domain\Service\TempFile $file);
 
     /**
      * @return TempFile[]

@@ -50,6 +50,11 @@ abstract class InvoiceAbstract
     protected $status;
 
     /**
+     * @var string
+     */
+    protected $statusMsg;
+
+    /**
      * @var Pdf
      */
     protected $pdf;
@@ -73,6 +78,11 @@ abstract class InvoiceAbstract
      * @var \Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface
      */
     protected $numberSequence;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface
+     */
+    protected $scheduler;
 
 
     use ChangelogTrait;
@@ -166,10 +176,12 @@ abstract class InvoiceAbstract
             ->setTaxRate($dto->getTaxRate())
             ->setTotalWithTax($dto->getTotalWithTax())
             ->setStatus($dto->getStatus())
+            ->setStatusMsg($dto->getStatusMsg())
             ->setInvoiceTemplate($dto->getInvoiceTemplate())
             ->setBrand($dto->getBrand())
             ->setCompany($dto->getCompany())
             ->setNumberSequence($dto->getNumberSequence())
+            ->setScheduler($dto->getScheduler())
         ;
 
         $self->sanitizeValues();
@@ -203,11 +215,13 @@ abstract class InvoiceAbstract
             ->setTaxRate($dto->getTaxRate())
             ->setTotalWithTax($dto->getTotalWithTax())
             ->setStatus($dto->getStatus())
+            ->setStatusMsg($dto->getStatusMsg())
             ->setPdf($pdf)
             ->setInvoiceTemplate($dto->getInvoiceTemplate())
             ->setBrand($dto->getBrand())
             ->setCompany($dto->getCompany())
-            ->setNumberSequence($dto->getNumberSequence());
+            ->setNumberSequence($dto->getNumberSequence())
+            ->setScheduler($dto->getScheduler());
 
 
 
@@ -229,13 +243,15 @@ abstract class InvoiceAbstract
             ->setTaxRate(self::getTaxRate())
             ->setTotalWithTax(self::getTotalWithTax())
             ->setStatus(self::getStatus())
+            ->setStatusMsg(self::getStatusMsg())
             ->setPdfFileSize(self::getPdf()->getFileSize())
             ->setPdfMimeType(self::getPdf()->getMimeType())
             ->setPdfBaseName(self::getPdf()->getBaseName())
             ->setInvoiceTemplate(\Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplate::entityToDto(self::getInvoiceTemplate(), $depth))
             ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
             ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
-            ->setNumberSequence(\Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequence::entityToDto(self::getNumberSequence(), $depth));
+            ->setNumberSequence(\Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequence::entityToDto(self::getNumberSequence(), $depth))
+            ->setScheduler(\Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceScheduler::entityToDto(self::getScheduler(), $depth));
     }
 
     /**
@@ -251,13 +267,15 @@ abstract class InvoiceAbstract
             'taxRate' => self::getTaxRate(),
             'totalWithTax' => self::getTotalWithTax(),
             'status' => self::getStatus(),
+            'statusMsg' => self::getStatusMsg(),
             'pdfFileSize' => self::getPdf()->getFileSize(),
             'pdfMimeType' => self::getPdf()->getMimeType(),
             'pdfBaseName' => self::getPdf()->getBaseName(),
             'invoiceTemplateId' => self::getInvoiceTemplate() ? self::getInvoiceTemplate()->getId() : null,
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
-            'numberSequenceId' => self::getNumberSequence() ? self::getNumberSequence()->getId() : null
+            'numberSequenceId' => self::getNumberSequence() ? self::getNumberSequence()->getId() : null,
+            'schedulerId' => self::getScheduler() ? self::getScheduler()->getId() : null
         ];
     }
 
@@ -479,6 +497,34 @@ abstract class InvoiceAbstract
     }
 
     /**
+     * Set statusMsg
+     *
+     * @param string $statusMsg
+     *
+     * @return self
+     */
+    public function setStatusMsg($statusMsg = null)
+    {
+        if (!is_null($statusMsg)) {
+            Assertion::maxLength($statusMsg, 140, 'statusMsg value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        }
+
+        $this->statusMsg = $statusMsg;
+
+        return $this;
+    }
+
+    /**
+     * Get statusMsg
+     *
+     * @return string
+     */
+    public function getStatusMsg()
+    {
+        return $this->statusMsg;
+    }
+
+    /**
      * Set invoiceTemplate
      *
      * @param \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface $invoiceTemplate
@@ -572,6 +618,30 @@ abstract class InvoiceAbstract
     public function getNumberSequence()
     {
         return $this->numberSequence;
+    }
+
+    /**
+     * Set scheduler
+     *
+     * @param \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface $scheduler
+     *
+     * @return self
+     */
+    public function setScheduler(\Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface $scheduler = null)
+    {
+        $this->scheduler = $scheduler;
+
+        return $this;
+    }
+
+    /**
+     * Get scheduler
+     *
+     * @return \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface
+     */
+    public function getScheduler()
+    {
+        return $this->scheduler;
     }
 
     /**
