@@ -6,3 +6,4 @@ imports:
   - { resource: '@CoreBundle/Resources/config/services/infraestructure/repositories.yml' }
   - { resource: '@CoreBundle/Resources/config/services/infraestructure/http.yml' }
   - { resource: '@CoreBundle/Resources/config/services/infraestructure/cgrates.yml' }
+  - { resource: '@CoreBundle/Resources/config/services/infraestructure/symfony.yml' }
