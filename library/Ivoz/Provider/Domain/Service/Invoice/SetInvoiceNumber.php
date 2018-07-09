@@ -37,7 +37,8 @@ class SetInvoiceNumber implements InvoiceLifecycleEventHandlerInterface
             return;
         }
 
-        if ($entity->getStatus() != 'created') {
+        $processing = $entity->isProcessing();
+        if (!$processing) {
             return;
         }
 

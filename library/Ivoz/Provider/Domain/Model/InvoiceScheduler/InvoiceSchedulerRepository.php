@@ -7,7 +7,10 @@ use Doctrine\Common\Collections\Selectable;
 
 interface InvoiceSchedulerRepository extends  ObjectRepository, Selectable
 {
-
+    /**
+     * @return InvoiceSchedulerInterface[]
+     */
+    public function getPendingSchedulers();
 }
 
 

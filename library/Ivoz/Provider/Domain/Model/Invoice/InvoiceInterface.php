@@ -19,6 +19,11 @@ interface InvoiceInterface extends LoggableEntityInterface
     public function getFileObjects();
 
     /**
+     * @return bool
+     */
+    public function isProcessing();
+
+    /**
      * @inheritdoc
      */
     public function setStatus($status = null);

@@ -177,6 +177,7 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
         if (!is_null($quantity)) {
             if (!is_null($quantity)) {
                 Assertion::integerish($quantity, 'quantity value "%s" is not an integer or a number castable to integer.');
+                Assertion::greaterOrEqualThan($quantity, 0, 'quantity provided "%s" is not greater or equal than "%s".');
             }
         }
 

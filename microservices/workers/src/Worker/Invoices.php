@@ -8,6 +8,7 @@ use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Core\Domain\Service\TempFile;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrRepository;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceDto;
+use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceRepository;
 use Ivoz\Provider\Domain\Service\Invoice\Generator;
 use Mmoreram\GearmanBundle\Driver\Gearman;
@@ -94,13 +95,20 @@ class Invoices
 
         $this->trunksCdrRepository->resetInvoiceId($id);
 
+        /** @var InvoiceInterface $invoice */
         $invoice = $this->invoiceRepository->find($id);
+        if (!$invoice) {
+            $this->logger->error("Invoice #${id} was not found!");
+            return;
+        }
+
         $invoice->setStatus("processing");
         $this->entityPersister->persist($invoice, true);
 
         $this->logger->info("[INVOICER] Status = processing");
 
         try {
+
             $content = $this->generator->getInvoicePDFContents($id);
             $tempPath = "/opt/irontec/ivozprovider/storage/invoice";
             if (!file_exists($tempPath)) {
@@ -122,11 +130,16 @@ class Invoices
 
             $this->entityPersister->persistDto($invoiceDto, $invoice);
             $this->logger->info("[INVOICER] Status = created");
+
         } catch (\Exception $e) {
-            $invoice->setStatus("error");
-            $this->entityPersister->persist($invoice);
             $this->logger->info("[INVOICER] Status = error");
             $this->logger->info("[INVOICER] Error was: ".$e->getMessage());
+
+            $invoice->setStatus("error");
+            $invoice->setStatusMsg(
+                $e->getMessage()
+            );
+            $this->entityPersister->persist($invoice, true);
         }
 
         return true;
