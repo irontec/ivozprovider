@@ -40,6 +40,7 @@ Feature: Create fixed costs rel invoices
               "taxRate": "21",
               "totalWithTax": "0.33",
               "status": "processing",
+              "statusMsg": null,
               "id": 1,
               "pdf": {
                   "fileSize": null,
@@ -49,7 +50,8 @@ Feature: Create fixed costs rel invoices
               "invoiceTemplate": 1,
               "brand": 1,
               "company": 1,
-              "numberSequence": null
+              "numberSequence": null,
+              "scheduler": null
           }
       }
     """
