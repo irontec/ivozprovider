@@ -1,0 +1,13 @@
+Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceScheduler:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\FixedCostsRelInvoiceSchedulerDoctrineRepository
+  type: entity
+  table: FixedCostsRelInvoiceSchedulers
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
