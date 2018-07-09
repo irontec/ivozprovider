@@ -13,6 +13,13 @@ interface FixedCostsRelInvoiceInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @param InvoiceInterface $invoice
+     * @param FixedCostsRelInvoiceSchedulerInterface $fixedCostsRelInvoiceScheduler
+     * @return static
+     */
+    public function fromFixedCostsRelInvoiceScheduler(\Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice, \Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceSchedulerInterface $fixedCostRelScheduler);
+
+    /**
      * Set quantity
      *
      * @param integer $quantity
