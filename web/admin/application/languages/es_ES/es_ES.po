@@ -824,6 +824,9 @@ msgstr "DDI forzado"
 msgid "Forward Fax"
 msgstr "Reenviar Fax"
 
+msgid "Frequency"
+msgstr "Frequencia"
+
 msgid "Friday"
 msgstr "Viernes"
 
@@ -1095,6 +1098,11 @@ msgid_plural "Invoice number sequences"
 msgstr[0] "Numeración de facturas"
 msgstr[1] "Numeriaciones de facturas"
 
+msgid "Invoice scheduler"
+msgid_plural "Invoice schedulers"
+msgstr[0] "Planificador de facturas"
+msgstr[1] "Planificadores de facturas"
+
 msgid "Invoice template"
 msgid_plural "Invoice templates"
 msgstr[0] "Plantilla de factura"
@@ -1133,6 +1141,9 @@ msgstr "Mantener DDI original"
 
 msgid "Language"
 msgstr "Lenguaje"
+
+msgid "Last execution"
+msgstr "Última ejecución"
 
 msgid "Last notification sent on"
 msgstr "Último envío"
@@ -1388,6 +1399,9 @@ msgstr "Longitud mínima: 2"
 msgid "Monday"
 msgstr "Lunes"
 
+msgid "Month"
+msgstr "Mes"
+
 msgid "Movement amount"
 msgstr "Cantidad"
 
@@ -1416,6 +1430,9 @@ msgstr "Longitud números nacionales"
 
 msgid "Need help?"
 msgstr "¿Necesita ayuda?"
+
+msgid "Next execution"
+msgstr "Próxima ejecucion"
 
 msgid "Nif"
 msgstr "NIF"
@@ -2336,6 +2353,9 @@ msgstr "Tipo URL"
 msgid "Unassigned"
 msgstr "Sin asignar"
 
+msgid "Unit"
+msgstr "Unidad"
+
 msgid "Update CallerID?"
 msgstr "¿Actualización Pantalla?"
 
@@ -2444,6 +2464,9 @@ msgstr "Esperando"
 msgid "Wednesday"
 msgstr "Miércoles"
 
+msgid "Week"
+msgstr "Semana"
+
 msgid "Weight"
 msgstr "Peso"
 
@@ -2499,6 +2522,9 @@ msgstr "Máscara de red inválida: el valor será ignorado."
 
 msgid "Xcallid"
 msgstr "X-CallId"
+
+msgid "Year"
+msgstr "Año"
 
 msgid "Yes"
 msgstr "Si"
