@@ -147,7 +147,9 @@ class DoctrineEntityPersister implements EntityPersisterInterface
     {
         $unitOfWork = $this->em->getUnitOfWork();
         $state = $unitOfWork->getEntityState($entity);
-        if ($state ===  UnitOfWork::STATE_NEW && $dispatchImmediately) {
+        $isNew = $state === UnitOfWork::STATE_NEW;
+        $applyNow = ($dispatchImmediately || is_null($this->rootEntity));
+        if ($isNew && $applyNow) {
             $this->em->persist($entity);
         }
 
