@@ -123,6 +123,10 @@ mappers:
         modelFile: FixedCostsRelInvoices,
         entity: 'Ivoz\\Provider\\Domain\\Model\\FixedCostsRelInvoice\\FixedCostsRelInvoice'
     }
+  - &FixedCostsRelInvoiceSchedulers {
+        modelFile: FixedCostsRelInvoiceSchedulers,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\FixedCostsRelInvoiceScheduler\\FixedCostsRelInvoiceScheduler'
+    }
   - &Friends {
         modelFile: Friends,
         entity: 'Ivoz\\Provider\\Domain\\Model\\Friend\\Friend'
@@ -155,6 +159,10 @@ mappers:
         modelFile: InvoiceNumberSequences,
         entity: 'Ivoz\\Provider\\Domain\\Model\\InvoiceNumberSequence\\InvoiceNumberSequence'
     }
+  - &InvoiceSchedulers {
+        modelFile: InvoiceSchedulers,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\InvoiceScheduler\\InvoiceScheduler'
+  }
   - &IvrEntries {
         modelFile: IvrEntries,
         entity: 'Ivoz\\Provider\\Domain\\Model\\IvrEntry\\IvrEntry'

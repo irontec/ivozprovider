@@ -47,6 +47,7 @@ production:
         blacklist:
           FixedCostsRelInvoices: true
           numberSequence: true
+          scheduler: true
       options:
         title: _("Options")
         screens:
@@ -72,6 +73,7 @@ production:
           status: true
           pdf: true
           FixedCostsRelInvoices: true
+          scheduler: true
       fixedPositions: &invoicesFixedPositions_Link
         group0:
           colsPerRow: 2

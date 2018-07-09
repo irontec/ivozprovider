@@ -5,57 +5,58 @@
 production:
   main:
     module: klearMatrix
-    defaultScreen: fixedCostsRelInvoicesList_screen
-  screens: &fixedCostsRelInvoices_screensLink
-    fixedCostsRelInvoicesList_screen: &fixedCostsRelInvoicesList_screenLink
+    defaultScreen: fixedCostsRelInvoiceSchedulersList_screen
+  screens: &fixedCostsRelInvoiceSchedulers_screensLink
+    fixedCostsRelInvoiceSchedulersList_screen: &fixedCostsRelInvoiceSchedulersList_screenLink
       controller: list
       class: ui-silk-money-add
       pagination:
         items: 25
-      <<: *FixedCostsRelInvoices
+      <<: *FixedCostsRelInvoiceSchedulers
       title: _("List of %s %2s", ngettext('Fixed cost', 'Fixed costs', 0), "[format| (%parent%)]")
-      fields: &fixedCostsRelInvoices_fieldsLink
+      filterField: invoiceScheduler
+      fields: &fixedCostsRelInvoiceSchedulers_fieldsLink
         options:
           title: _("Options")
           screens:
-            fixedCostsRelInvoicesEdit_screen: true
+            fixedCostsRelInvoiceSchedulersEdit_screen: true
           dialogs:
-            fixedCostsRelInvoicesDel_dialog: true
-          default: fixedCostsRelInvoicesEdit_screen
+            fixedCostsRelInvoiceSchedulersDel_dialog: true
+          default: fixedCostsRelInvoiceSchedulersEdit_screen
       options:
         title: _("Options")
         screens:
-          fixedCostsRelInvoicesNew_screen: true
+          fixedCostsRelInvoiceSchedulersNew_screen: true
         dialogs:
-          fixedCostsRelInvoicesDel_dialog: true
-    fixedCostsRelInvoicesNew_screen: &fixedCostsRelInvoicesNew_screenLink
-      <<: *FixedCostsRelInvoices
+          fixedCostsRelInvoiceSchedulersDel_dialog: true
+    fixedCostsRelInvoiceSchedulersNew_screen: &fixedCostsRelInvoiceSchedulersNew_screenLink
+      <<: *FixedCostsRelInvoiceSchedulers
       controller: new
       class: ui-silk-add
       label: true
       multiInstance: true
       title: _("Add %s", ngettext('Fixed cost', 'Fixed costs', 1), "[format| (%parent%)]")
       shortcutOption: N
-      filterField: Invoice
-      fixedPositions: &fixedCostsRelInvoices_fixedPositions_Link
+      filterField: invoiceScheduler
+      fixedPositions: &fixedCostsRelInvoiceSchedulers_fixedPositions_Link
         group0:
           colsPerRow: 12
           fields:
             fixedCost: 9
             quantity: 3
-    fixedCostsRelInvoicesEdit_screen: &fixedCostsRelInvoicesEdit_screenLink
-      <<: *FixedCostsRelInvoices
+    fixedCostsRelInvoiceSchedulersEdit_screen: &fixedCostsRelInvoiceSchedulersEdit_screenLink
+      <<: *FixedCostsRelInvoiceSchedulers
       controller: edit
       class: ui-silk-pencil
       label: false
       labelOnPostAction: _("Edit %s %2s", ngettext('Fixed cost', 'Fixed costs', 1), "[format| (%item%)]")
       title: _("Edit %s %2s", ngettext('Fixed cost', 'Fixed costs', 1), "[format| (%item%)]")
-      filterField: Invoice
+      filterField: invoiceScheduler
       fixedPositions:
-        <<: *fixedCostsRelInvoices_fixedPositions_Link
-  dialogs: &fixedCostsRelInvoices_dialogsLink
-    fixedCostsRelInvoicesDel_dialog: &fixedCostsRelInvoicesDel_dialogLink
-      <<: *FixedCostsRelInvoices
+        <<: *fixedCostsRelInvoiceSchedulers_fixedPositions_Link
+  dialogs: &fixedCostsRelInvoiceSchedulers_dialogsLink
+    fixedCostsRelInvoiceSchedulersDel_dialog: &fixedCostsRelInvoiceSchedulersDel_dialogLink
+      <<: *FixedCostsRelInvoiceSchedulers
       controller: delete
       class: ui-silk-bin
       labelOption: false

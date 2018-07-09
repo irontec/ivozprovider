@@ -30,6 +30,20 @@ faxVariablesHelp: &faxVariablesHelp
                <b>&#36;{FAX_DATE}</b>    <i>Received Date </i><br/>
             </pre>'
 
+invoiceVariablesHelp: &invoiceVariablesHelp
+    info:
+      type: box
+      position: left
+      icon: help
+      label: _("Need help?")
+      text: 'You can use these fax variables in subject and body:<br/>
+            <pre>
+               <b>&#36;{INVOICE_COMPANY}</b>  <i>Company name</i><br/>
+               <b>&#36;{INVOICE_DATE_IN}</b>  <i>Start date</i><br/>
+               <b>&#36;{INVOICE_DATE_OUT}</b> <i>End date</i><br/>
+               <b>&#36;{INVOICE_AMOUNT}</b>   <i>Total amount with taxes</i><br/>
+               <b>&#36;{INVOICE_CURRENCY}</b> <i>Currency</i><br/>
+            </pre>'
 
 lowBalanceVariablesHelp: &lowBalanceVariablesHelp
     info:

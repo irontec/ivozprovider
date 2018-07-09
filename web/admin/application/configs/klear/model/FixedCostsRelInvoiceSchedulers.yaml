@@ -1,6 +1,6 @@
 production:
-  entity: Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoice
-  fields: 
+  entity: Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceScheduler
+  fields:
     fixedCost:
       title: _('Fixed cost')
       type: select
@@ -10,27 +10,27 @@ production:
         config:
           entity: \Ivoz\Provider\Domain\Model\FixedCost\FixedCost
           filterClass: IvozProvider_Klear_Filter_Brand
-          fieldName: 
+          fieldName:
             fields:
               - name
               - cost
             template: '%name% - %cost% €'
           order:
             FixedCost.description: asc
-    invoice:
-      title: ngettext('Invoice', 'Invoices', 1)
+    invoiceScheduler:
+      title: ngettext('Invoice scheduler', 'Invoice schedulers', 1)
       type: select
       required: true
       source:
         data: mapper
         config:
-          entity: \Ivoz\Provider\Domain\Model\Invoice\Invoice
-          fieldName: 
-            fields: 
-              - number
-            template: '%number%'
+          entity: \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceScheduler
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
           order:
-            Invoice.number: asc
+            InvoiceScheduler.name: asc
     quantity:
       title: ngettext('Quantity', 'Quantities', 1)
       type: number

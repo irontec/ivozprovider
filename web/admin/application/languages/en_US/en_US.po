@@ -811,6 +811,9 @@ msgstr "Forced DDI"
 msgid "Forward Fax"
 msgstr "Forward Fax"
 
+msgid "Frequency"
+msgstr "Frequency"
+
 msgid "Friday"
 msgstr "Friday"
 
@@ -1069,6 +1072,11 @@ msgid_plural "Invoices"
 msgstr[0] "Invoice"
 msgstr[1] "Invoices"
 
+msgid "Invoice Notification"
+msgid_plural "Invoice Notifications"
+msgstr[0] "Invoice Notification"
+msgstr[1] "Invoice Notifications"
+
 msgid "Invoice data"
 msgstr "Invoice data"
 
@@ -1079,6 +1087,11 @@ msgid "Invoice number sequence"
 msgid_plural "Invoice number sequences"
 msgstr[0] "Invoice number sequence"
 msgstr[1] "Invoice number sequences"
+
+msgid "Invoice scheduler"
+msgid_plural "Invoice schedulers"
+msgstr[0] "Invoice scheduler"
+msgstr[1] "Invoice schedulers"
 
 msgid "Invoice template"
 msgid_plural "Invoice templates"
@@ -1119,6 +1132,9 @@ msgstr "Keep Original DDI"
 
 msgid "Language"
 msgstr "Language"
+
+msgid "Last execution"
+msgstr "Last execution"
 
 msgid "Last notification sent on"
 msgstr "Last notification sent on"
@@ -1370,6 +1386,9 @@ msgstr "Minimal length: 2"
 msgid "Monday"
 msgstr "Monday"
 
+msgid "Month"
+msgstr "Month"
+
 msgid "Movement amount"
 msgstr "Movement amount"
 
@@ -1397,6 +1416,9 @@ msgstr "National number length"
 
 msgid "Need help?"
 msgstr "Need help?"
+
+msgid "Next execution"
+msgstr "Next execution"
 
 msgid "Nif"
 msgstr "TIN"
@@ -2314,6 +2336,9 @@ msgstr "URL type"
 msgid "Unassigned"
 msgstr "Unassigned"
 
+msgid "Unit"
+msgstr "Unit"
+
 msgid "Update CallerID?"
 msgstr "Update CallerID?"
 
@@ -2417,6 +2442,9 @@ msgstr "Waiting"
 msgid "Wednesday"
 msgstr "Wednesday"
 
+msgid "Week"
+msgstr "Week"
+
 msgid "Weight"
 msgstr "Weight"
 
@@ -2471,6 +2499,9 @@ msgstr "Wrong mask, discarding value."
 
 msgid "Xcallid"
 msgstr "Xcallid"
+
+msgid "Year"
+msgstr "Year"
 
 msgid "Yes"
 msgstr "Yes"
