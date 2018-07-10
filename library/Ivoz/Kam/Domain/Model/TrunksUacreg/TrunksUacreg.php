@@ -44,16 +44,6 @@ class TrunksUacreg extends TrunksUacregAbstract implements TrunksUacregInterface
             $this->setAuthProxy('sip:' . $this->getRDomain());
         }
 
-        if (!$this->getMultiDdi()) {
-            return;
-        }
-
-        $isNew = !$this->getId();
-        $multiDdi_is_enabled_in_new_item = $isNew; # New item
-        $multiDdi_has_been_enabled = !$isNew && $this->hasChanged('multiDdi'); # Existing item
-        if ($multiDdi_has_been_enabled || $multiDdi_is_enabled_in_new_item) {
-            $this->setLUuid((string)round(microtime(true) * 1000));
-        }
     }
 
     /**
@@ -66,6 +56,18 @@ class TrunksUacreg extends TrunksUacregAbstract implements TrunksUacregInterface
         }
 
         return parent::setAuthProxy($authProxy);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function setLUuid($lUuid)
+    {
+        if (empty($lUuid)) {
+            $lUuid = (string)round(microtime(true) * 1000);
+        }
+
+        return parent::setLUuid($lUuid);
     }
 }
 

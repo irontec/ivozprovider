@@ -101,9 +101,9 @@ abstract class DdiAbstract
     protected $fax;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface
+     * @var \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface
      */
-    protected $peeringContract;
+    protected $ddiProvider;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface
@@ -216,7 +216,7 @@ abstract class DdiAbstract
             ->setIvr($dto->getIvr())
             ->setHuntGroup($dto->getHuntGroup())
             ->setFax($dto->getFax())
-            ->setPeeringContract($dto->getPeeringContract())
+            ->setDdiProvider($dto->getDdiProvider())
             ->setCountry($dto->getCountry())
             ->setResidentialDevice($dto->getResidentialDevice())
             ->setConditionalRoute($dto->getConditionalRoute())
@@ -257,7 +257,7 @@ abstract class DdiAbstract
             ->setIvr($dto->getIvr())
             ->setHuntGroup($dto->getHuntGroup())
             ->setFax($dto->getFax())
-            ->setPeeringContract($dto->getPeeringContract())
+            ->setDdiProvider($dto->getDdiProvider())
             ->setCountry($dto->getCountry())
             ->setResidentialDevice($dto->getResidentialDevice())
             ->setConditionalRoute($dto->getConditionalRoute());
@@ -292,7 +292,7 @@ abstract class DdiAbstract
             ->setIvr(\Ivoz\Provider\Domain\Model\Ivr\Ivr::entityToDto(self::getIvr(), $depth))
             ->setHuntGroup(\Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup::entityToDto(self::getHuntGroup(), $depth))
             ->setFax(\Ivoz\Provider\Domain\Model\Fax\Fax::entityToDto(self::getFax(), $depth))
-            ->setPeeringContract(\Ivoz\Provider\Domain\Model\PeeringContract\PeeringContract::entityToDto(self::getPeeringContract(), $depth))
+            ->setDdiProvider(\Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider::entityToDto(self::getDdiProvider(), $depth))
             ->setCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto(self::getCountry(), $depth))
             ->setResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice::entityToDto(self::getResidentialDevice(), $depth))
             ->setConditionalRoute(\Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute::entityToDto(self::getConditionalRoute(), $depth));
@@ -321,7 +321,7 @@ abstract class DdiAbstract
             'ivrId' => self::getIvr() ? self::getIvr()->getId() : null,
             'huntGroupId' => self::getHuntGroup() ? self::getHuntGroup()->getId() : null,
             'faxId' => self::getFax() ? self::getFax()->getId() : null,
-            'peeringContractId' => self::getPeeringContract() ? self::getPeeringContract()->getId() : null,
+            'ddiProviderId' => self::getDdiProvider() ? self::getDdiProvider()->getId() : null,
             'countryId' => self::getCountry() ? self::getCountry()->getId() : null,
             'residentialDeviceId' => self::getResidentialDevice() ? self::getResidentialDevice()->getId() : null,
             'conditionalRouteId' => self::getConditionalRoute() ? self::getConditionalRoute()->getId() : null
@@ -782,27 +782,27 @@ abstract class DdiAbstract
     }
 
     /**
-     * Set peeringContract
+     * Set ddiProvider
      *
-     * @param \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface $peeringContract
+     * @param \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface $ddiProvider
      *
      * @return self
      */
-    public function setPeeringContract(\Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface $peeringContract = null)
+    public function setDdiProvider(\Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface $ddiProvider = null)
     {
-        $this->peeringContract = $peeringContract;
+        $this->ddiProvider = $ddiProvider;
 
         return $this;
     }
 
     /**
-     * Get peeringContract
+     * Get ddiProvider
      *
-     * @return \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface
+     * @return \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface
      */
-    public function getPeeringContract()
+    public function getDdiProvider()
     {
-        return $this->peeringContract;
+        return $this->ddiProvider;
     }
 
     /**

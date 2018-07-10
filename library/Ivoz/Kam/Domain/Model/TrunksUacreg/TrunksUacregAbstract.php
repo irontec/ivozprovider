@@ -83,25 +83,20 @@ abstract class TrunksUacregAbstract
     protected $regDelay = '0';
 
     /**
-     * @var boolean
-     */
-    protected $multiddi = '0';
-
-    /**
      * column: auth_ha1
      * @var string
      */
     protected $authHa1 = '';
 
     /**
+     * @var \Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface
+     */
+    protected $ddiProviderRegistration;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
      */
     protected $brand;
-
-    /**
-     * @var \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface
-     */
-    protected $peeringContract;
 
 
     use ChangelogTrait;
@@ -122,7 +117,6 @@ abstract class TrunksUacregAbstract
         $expires,
         $flags,
         $regDelay,
-        $multiddi,
         $authHa1
     ) {
         $this->setLUuid($lUuid);
@@ -137,7 +131,6 @@ abstract class TrunksUacregAbstract
         $this->setExpires($expires);
         $this->setFlags($flags);
         $this->setRegDelay($regDelay);
-        $this->setMultiddi($multiddi);
         $this->setAuthHa1($authHa1);
     }
 
@@ -217,12 +210,11 @@ abstract class TrunksUacregAbstract
             $dto->getExpires(),
             $dto->getFlags(),
             $dto->getRegDelay(),
-            $dto->getMultiddi(),
             $dto->getAuthHa1());
 
         $self
+            ->setDdiProviderRegistration($dto->getDdiProviderRegistration())
             ->setBrand($dto->getBrand())
-            ->setPeeringContract($dto->getPeeringContract())
         ;
 
         $self->sanitizeValues();
@@ -255,10 +247,9 @@ abstract class TrunksUacregAbstract
             ->setExpires($dto->getExpires())
             ->setFlags($dto->getFlags())
             ->setRegDelay($dto->getRegDelay())
-            ->setMultiddi($dto->getMultiddi())
             ->setAuthHa1($dto->getAuthHa1())
-            ->setBrand($dto->getBrand())
-            ->setPeeringContract($dto->getPeeringContract());
+            ->setDdiProviderRegistration($dto->getDdiProviderRegistration())
+            ->setBrand($dto->getBrand());
 
 
 
@@ -285,10 +276,9 @@ abstract class TrunksUacregAbstract
             ->setExpires(self::getExpires())
             ->setFlags(self::getFlags())
             ->setRegDelay(self::getRegDelay())
-            ->setMultiddi(self::getMultiddi())
             ->setAuthHa1(self::getAuthHa1())
-            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
-            ->setPeeringContract(\Ivoz\Provider\Domain\Model\PeeringContract\PeeringContract::entityToDto(self::getPeeringContract(), $depth));
+            ->setDdiProviderRegistration(\Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistration::entityToDto(self::getDdiProviderRegistration(), $depth))
+            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth));
     }
 
     /**
@@ -309,10 +299,9 @@ abstract class TrunksUacregAbstract
             'expires' => self::getExpires(),
             'flags' => self::getFlags(),
             'reg_delay' => self::getRegDelay(),
-            'multiDdi' => self::getMultiddi(),
             'auth_ha1' => self::getAuthHa1(),
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
-            'peeringContractId' => self::getPeeringContract() ? self::getPeeringContract()->getId() : null
+            'ddiProviderRegistrationId' => self::getDdiProviderRegistration() ? self::getDdiProviderRegistration()->getId() : null,
+            'brandId' => self::getBrand() ? self::getBrand()->getId() : null
         ];
     }
 
@@ -644,33 +633,6 @@ abstract class TrunksUacregAbstract
     }
 
     /**
-     * Set multiddi
-     *
-     * @param boolean $multiddi
-     *
-     * @return self
-     */
-    public function setMultiddi($multiddi)
-    {
-        Assertion::notNull($multiddi, 'multiddi value "%s" is null, but non null value was expected.');
-        Assertion::between(intval($multiddi), 0, 1, 'multiddi provided "%s" is not a valid boolean value.');
-
-        $this->multiddi = $multiddi;
-
-        return $this;
-    }
-
-    /**
-     * Get multiddi
-     *
-     * @return boolean
-     */
-    public function getMultiddi()
-    {
-        return $this->multiddi;
-    }
-
-    /**
      * Set authHa1
      *
      * @param string $authHa1
@@ -698,6 +660,30 @@ abstract class TrunksUacregAbstract
     }
 
     /**
+     * Set ddiProviderRegistration
+     *
+     * @param \Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface $ddiProviderRegistration
+     *
+     * @return self
+     */
+    public function setDdiProviderRegistration(\Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface $ddiProviderRegistration)
+    {
+        $this->ddiProviderRegistration = $ddiProviderRegistration;
+
+        return $this;
+    }
+
+    /**
+     * Get ddiProviderRegistration
+     *
+     * @return \Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface
+     */
+    public function getDdiProviderRegistration()
+    {
+        return $this->ddiProviderRegistration;
+    }
+
+    /**
      * Set brand
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
@@ -719,30 +705,6 @@ abstract class TrunksUacregAbstract
     public function getBrand()
     {
         return $this->brand;
-    }
-
-    /**
-     * Set peeringContract
-     *
-     * @param \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface $peeringContract
-     *
-     * @return self
-     */
-    public function setPeeringContract(\Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface $peeringContract)
-    {
-        $this->peeringContract = $peeringContract;
-
-        return $this;
-    }
-
-    /**
-     * Get peeringContract
-     *
-     * @return \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface
-     */
-    public function getPeeringContract()
-    {
-        return $this->peeringContract;
     }
 
 

@@ -71,9 +71,21 @@ mappers:
         modelFile: ConferenceRooms,
         entity: 'Ivoz\\Provider\\Domain\\Model\\ConferenceRoom\\ConferenceRoom'
     }
-  - &DDIs {
+  - &Ddis {
         modelFile: Ddis,
         entity: 'Ivoz\\Provider\\Domain\\Model\\Ddi\\Ddi'
+    }
+  - &DdiProviders {
+        modelFile: DdiProviders,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\DdiProvider\\DdiProvider'
+    }
+  - &DdiProviderAddresses {
+        modelFile: DdiProviderAddresses,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\DdiProviderAddress\\DdiProviderAddress'
+    }
+  - &DdiProviderRegistrations {
+        modelFile: DdiProviderRegistrations,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\DdiProviderRegistration\\DdiProviderRegistration'
     }
   - &DestinationRates {
         modelFile: DestinationRates,
@@ -330,10 +342,6 @@ mappers:
   - &KamTrunksAcc {
         modelFile: KamTrunksAcc,
         entity: 'Kam\\Model\\TrunksAcc\\TrunksAcc'
-    }
-  - &KamTrunksUacreg {
-        modelFile: KamTrunksUacreg,
-        entity: 'Ivoz\\Kam\\Domain\\Model\\TrunksUacreg\\TrunksUacreg'
     }
   - &UsersAcc {
         modelFile: UsersAcc,

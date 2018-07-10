@@ -5,13 +5,13 @@
 production:
   main:
     module: klearMatrix
-    defaultScreen: dDIsList_screen
-  screens: &dDIs_screenLink
-    dDIsList_screen: &dDIsList_screenLink
+    defaultScreen: ddisList_screen
+  screens: &ddis_screenLink
+    ddisList_screen: &ddisList_screenLink
       controller: list
       pagination:
         items: 25
-      <<: *DDIs
+      <<: *Ddis
       title: _("List of %s %2s", ngettext('DDI', 'DDIs', 0), "[format| (%parent%)]")
       class: ui-silk-lightning-go
       info:
@@ -24,7 +24,7 @@ production:
           - Ddi.ddi: asc
           - Ddi.routeType: desc
       fields:
-        order: &dDIsFieldsOder_Link
+        order: &ddisFieldsOder_Link
           country: true
           DDI: true
           externalCallFilter: true
@@ -33,11 +33,11 @@ production:
         options:
           title: _("Options")
           screens:
-            dDIsEdit_screen: ${auth.isNotCompanyOperator}
-            dDIsEditLimited_screen: ${auth.isCompanyOperator}
+            ddisEdit_screen: ${auth.isNotCompanyOperator}
+            ddisEditLimited_screen: ${auth.isCompanyOperator}
           dialogs:
-            dDIsDel_dialog: ${auth.isNotCompanyOperator}
-          default: dDIsEdit_screen
+            ddisDel_dialog: ${auth.isNotCompanyOperator}
+          default: ddisEdit_screen
         blacklist:
           user: true
           fax: true
@@ -49,19 +49,19 @@ production:
           recordCalls: true
           displayName: true
           billInboundCalls: true
-          peeringContract: ${auth.isCompanyOperator}
+          ddiProvider: ${auth.isCompanyOperator}
           language: true
           queue: true
           residentialDevice: true
           conditionalRoute: true
-      fixedPositions: &dDIsFixedPositions_Link
+      fixedPositions: &ddisFixedPositions_Link
         group0:
           label: _("Number data")
           colsPerRow: 3
           fields:
             country: 1
             DDI: 1
-            peeringContract: 1
+            ddiProvider: 1
             displayName: 2
             language: 1
         group1:
@@ -96,12 +96,12 @@ production:
       options:
         title: _("Options")
         screens:
-          dDIsNew_screen: ${auth.isNotCompanyOperator}
+          ddisNew_screen: ${auth.isNotCompanyOperator}
         dialogs:
-          dDIsDel_dialog: ${auth.isNotCompanyOperator}
+          ddisDel_dialog: ${auth.isNotCompanyOperator}
           importDDIs_dialog: false
-    dDIsNew_screen: &dDIsNew_screenLink
-      <<: *DDIs
+    ddisNew_screen: &ddisNew_screenLink
+      <<: *Ddis
       controller: new
       class: ui-silk-add
       label: true
@@ -114,15 +114,15 @@ production:
       title: _("Add %s", ngettext('DDI', 'DDIs', 1))
       fields:
         order:
-          <<: *dDIsFieldsOder_Link
+          <<: *ddisFieldsOder_Link
         blacklist:
           brand: true
           target: true
           recordCalls: ${auth.companyFeatures.recordings.disabled}
       fixedPositions:
-        <<: *dDIsFixedPositions_Link
-    dDIsEdit_screen: &dDIsEdit_screenLink
-      <<: *DDIs
+        <<: *ddisFixedPositions_Link
+    ddisEdit_screen: &ddisEdit_screenLink
+      <<: *Ddis
       controller: edit
       class: ui-silk-pencil
       label: false
@@ -132,16 +132,16 @@ production:
       title: _("Edit %s %2s", ngettext('DDI', 'DDIs', 1), "[format| (%item%)]")
       fields:
         order:
-          <<: *dDIsFieldsOder_Link
+          <<: *ddisFieldsOder_Link
         blacklist:
           target: true
           brand: true
           recordCalls: ${auth.companyFeatures.recordings.disabled}
           billInboundCalls: ${auth.brandFeatures.billing.disabled}
       fixedPositions:
-        <<: *dDIsFixedPositions_Link
-    dDIsEditLimited_screen: &dDIsEdit_screenLink
-      <<: *DDIs
+        <<: *ddisFixedPositions_Link
+    ddisEditLimited_screen: &ddisEdit_screenLink
+      <<: *Ddis
       controller: edit
       class: ui-silk-pencil
       label: false
@@ -150,11 +150,10 @@ production:
       title: _("Edit %s %2s", ngettext('DDI', 'DDIs', 1), "[format| (%item%)]")
       fields:
         order:
-          <<: *dDIsFieldsOder_Link
+          <<: *ddisFieldsOder_Link
         blacklist:
           target: true
-#          ddie164: true
-          peeringContract: true
+          ddiProvider: true
           brand: true
           billInboundCalls: true
           recordCalls: ${auth.companyFeatures.recordings.disabled}
@@ -162,10 +161,11 @@ production:
           DDI: true
           country: true
       fixedPositions:
-        <<: *dDIsFixedPositions_Link
-  dialogs: &dDIs_dialogsLink
-    dDIsDel_dialog: &dDIsDel_dialogLink
-      <<: *DDIs
+        <<: *ddisFixedPositions_Link
+
+  dialogs: &ddis_dialogsLink
+    ddisDel_dialog: &ddisDel_dialogLink
+      <<: *Ddis
       controller: delete
       class: ui-silk-bin
       labelOption: false
@@ -176,7 +176,7 @@ production:
       labelOnList: 1
 
     importDDIs_dialog:
-      <<: *DDIs
+      <<: *Ddis
       module: default
       title: _("Import %s", ngettext('DDI', 'DDIs', 0))
       label: false
@@ -197,7 +197,7 @@ production:
 
   commands:
     importDDIsFreeUpload_command:
-      <<: *DDIs
+      <<: *Ddis
       controller: File
       action: free-upload
 

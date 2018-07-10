@@ -6,6 +6,7 @@ use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\Ddi\Ddi;
 use Ivoz\Provider\Domain\Model\Ddi\DdiDto;
+use Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface;
 use Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -23,14 +24,14 @@ class DdiSpec extends ObjectBehavior
     /**
      * @var PeeringContractInterface
      */
-    protected $peeringContract;
+    protected $ddiProvider;
 
     function let(
         CountryInterface $country,
-        PeeringContractInterface $peeringContract,
+        DdiProviderInterface $ddiProvider,
         BrandInterface $brand
     ) {
-        $this->peeringContract = $peeringContract;
+        $this->ddiProvider = $ddiProvider;
 
         $this->dto = $dto = new DdiDto();
         $dto
@@ -42,7 +43,7 @@ class DdiSpec extends ObjectBehavior
             $dto,
             [
                 'country' => $country->getWrappedObject(),
-                'peeringContract' => $peeringContract->getWrappedObject(),
+                'ddiProvider' => $ddiProvider->getWrappedObject(),
                 'brand' =>  $brand->getWrappedObject()
             ]
         );
@@ -94,33 +95,5 @@ class DdiSpec extends ObjectBehavior
         $this
             ->getDdie164()
             ->shouldBe('34123');
-    }
-
-    function it_ensures_externally_rated_when_bill_inbound_calls_is_true() {
-        $dto = clone $this->dto;
-        $dto
-            ->setBillInboundCalls(1);
-
-        $this
-            ->peeringContract
-            ->getExternallyRated()
-            ->willReturn(false);
-
-        $this
-            ->peeringContract
-            ->getId()
-            ->willReturn(1);
-
-        $exception = new \Exception(
-            'Inbound Calls cannot be billed as PeeringContract is not externally rated',
-            90000
-        );
-
-        $this
-            ->shouldThrow($exception)
-            ->during(
-                'updateFromDto',
-                [$dto]
-            );
     }
 }

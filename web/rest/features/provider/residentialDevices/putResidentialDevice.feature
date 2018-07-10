@@ -113,7 +113,7 @@ Feature: Update residential devices
               "ivr": null,
               "huntGroup": null,
               "fax": null,
-              "peeringContract": 1,
+              "ddiProvider": 1,
               "country": 1,
               "residentialDevice": null,
               "conditionalRoute": null

@@ -103,9 +103,9 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
     private $fax;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractDto | null
+     * @var \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto | null
      */
-    private $peeringContract;
+    private $ddiProvider;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\Country\CountryDto | null
@@ -158,7 +158,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
             'ivrId' => 'ivr',
             'huntGroupId' => 'huntGroup',
             'faxId' => 'fax',
-            'peeringContractId' => 'peeringContract',
+            'ddiProviderId' => 'ddiProvider',
             'countryId' => 'country',
             'residentialDeviceId' => 'residentialDevice',
             'conditionalRouteId' => 'conditionalRoute'
@@ -189,7 +189,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
             'ivr' => $this->getIvr(),
             'huntGroup' => $this->getHuntGroup(),
             'fax' => $this->getFax(),
-            'peeringContract' => $this->getPeeringContract(),
+            'ddiProvider' => $this->getDdiProvider(),
             'country' => $this->getCountry(),
             'residentialDevice' => $this->getResidentialDevice(),
             'conditionalRoute' => $this->getConditionalRoute()
@@ -211,7 +211,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         $this->ivr = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Ivr\\Ivr', $this->getIvrId());
         $this->huntGroup = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\HuntGroup\\HuntGroup', $this->getHuntGroupId());
         $this->fax = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Fax\\Fax', $this->getFaxId());
-        $this->peeringContract = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\PeeringContract\\PeeringContract', $this->getPeeringContractId());
+        $this->ddiProvider = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\DdiProvider\\DdiProvider', $this->getDdiProviderId());
         $this->country = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Country\\Country', $this->getCountryId());
         $this->residentialDevice = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\ResidentialDevice\\ResidentialDevice', $this->getResidentialDeviceId());
         $this->conditionalRoute = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\ConditionalRoute\\ConditionalRoute', $this->getConditionalRouteId());
@@ -846,23 +846,23 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractDto $peeringContract
+     * @param \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto $ddiProvider
      *
      * @return static
      */
-    public function setPeeringContract(\Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractDto $peeringContract = null)
+    public function setDdiProvider(\Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto $ddiProvider = null)
     {
-        $this->peeringContract = $peeringContract;
+        $this->ddiProvider = $ddiProvider;
 
         return $this;
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractDto
+     * @return \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto
      */
-    public function getPeeringContract()
+    public function getDdiProvider()
     {
-        return $this->peeringContract;
+        return $this->ddiProvider;
     }
 
     /**
@@ -870,21 +870,21 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
      *
      * @return static
      */
-    public function setPeeringContractId($id)
+    public function setDdiProviderId($id)
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractDto($id)
+            ? new \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto($id)
             : null;
 
-        return $this->setPeeringContract($value);
+        return $this->setDdiProvider($value);
     }
 
     /**
      * @return integer | null
      */
-    public function getPeeringContractId()
+    public function getDdiProviderId()
     {
-        if ($dto = $this->getPeeringContract()) {
+        if ($dto = $this->getDdiProvider()) {
             return $dto->getId();
         }
 

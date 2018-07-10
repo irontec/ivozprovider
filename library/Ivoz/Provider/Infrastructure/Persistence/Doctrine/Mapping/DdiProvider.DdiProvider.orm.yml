@@ -1,0 +1,20 @@
+Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\DdiProviderDoctrineRepository
+  type: entity
+  table: DDIProviders
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  oneToMany:
+    ddiProviderRegistrations:
+      targetEntity: Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface
+      mappedBy: ddiProvider
+    ddiProviderAddresses:
+      targetEntity: Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface
+      mappedBy: ddiProvider

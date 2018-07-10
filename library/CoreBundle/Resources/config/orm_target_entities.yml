@@ -61,6 +61,12 @@ doctrine:
         Ivoz\Provider\Domain\Model\Country\Country
       Ivoz\Provider\Domain\Model\Ddi\DdiInterface:
         Ivoz\Provider\Domain\Model\Ddi\Ddi
+      Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface:
+        Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider
+      Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface:
+        Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddress
+      Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface:
+        Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistration
       Ivoz\Provider\Domain\Model\Domain\DomainInterface:
         Ivoz\Provider\Domain\Model\Domain\Domain
       Ivoz\Provider\Domain\Model\EtagVersion\EtagVersionInterface:

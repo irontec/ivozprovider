@@ -5,6 +5,7 @@ namespace spec\Ivoz\Kam\Domain\Model\TrunksUacreg;
 use Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacreg;
 use Ivoz\Kam\Domain\Model\TrunksUacreg\TrunksUacregDto;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface;
 use Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -18,7 +19,7 @@ class TrunksUacregSpec extends ObjectBehavior
 
     function let(
         BrandInterface $brand,
-        PeeringContractInterface $peeringContract
+        DdiProviderRegistrationInterface $ddiProviderRegistration
     ) {
 
 
@@ -35,14 +36,13 @@ class TrunksUacregSpec extends ObjectBehavior
             ->setAuthProxy('sips:127.0.0.1')
             ->setExpires(1)
             ->setFlags(1)
-            ->setRegDelay(1)
-            ->setMultiddi(0);
+            ->setRegDelay(1);
 
         $this->hydrate(
             $dto,
             [
                 'brand' => $brand->getWrappedObject(),
-                'peeringContract' => $peeringContract->getWrappedObject()
+                'ddiProviderRegistration' => $ddiProviderRegistration->getWrappedObject()
             ]
         );
 
@@ -50,7 +50,7 @@ class TrunksUacregSpec extends ObjectBehavior
             ->getId()
             ->willReturn(1);
 
-        $peeringContract
+        $ddiProviderRegistration
             ->getId()
             ->willReturn(1);
 

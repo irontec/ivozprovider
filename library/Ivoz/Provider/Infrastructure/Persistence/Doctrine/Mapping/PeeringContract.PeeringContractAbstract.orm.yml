@@ -1,7 +1,7 @@
 Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractAbstract:
   type: mappedSuperclass
   uniqueConstraints:
-    name_per_brand:
+    peeringContract_nameBrand:
       columns:
         - name
         - brandId
