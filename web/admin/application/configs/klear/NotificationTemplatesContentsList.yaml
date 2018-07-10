@@ -20,6 +20,7 @@ production:
           body: true
           voicemailVariables: true
           faxVariables: true
+          invoiceVariables: true
           lowBalanceVariables: true
         options:
           title: _("Options")
@@ -49,6 +50,7 @@ production:
           fromAddress: true
           voicemailVariables: true
           faxVariables: true
+          invoiceVariables: true
           lowBalanceVariables: true
           subject: true
           body: true
@@ -70,6 +72,7 @@ production:
           fields:
             voicemailVariables: 1
             faxVariables: 1
+            invoiceVariables: true
             lowBalanceVariables: 1
             subject: 1
             body: 1
@@ -111,6 +114,7 @@ production:
           <<: *notificationTemplatesContentsFieldsOrderPositions_Link
         blacklist:
           faxVariables: true
+          invoiceVariables: true
           lowBalanceVariables: true
     notificationTemplatesContentsVoicemailEdit_screen: &notificationTemplatesContentsVoicemailEdit_screenLink
       <<: *notificationTemplatesContentsEdit_screenLink
@@ -119,6 +123,7 @@ production:
           <<: *notificationTemplatesContentsFieldsOrderPositions_Link
         blacklist:
           faxVariables: true
+          invoiceVariables: true
           lowBalanceVariables: true
 
     ###################################################################################################################
@@ -149,6 +154,7 @@ production:
           <<: *notificationTemplatesContentsFieldsOrderPositions_Link
         blacklist:
           voicemailVariables: true
+          invoiceVariables: true
           lowBalanceVariables: true
     notificationTemplatesContentsFaxEdit_screen: &notificationTemplatesContentsFaxEdit_screenLink
       <<: *notificationTemplatesContentsEdit_screenLink
@@ -158,6 +164,47 @@ production:
         blacklist:
           voicemailVariables: true
           lowBalanceVariables: true
+          invoiceVariables: true
+
+    ###################################################################################################################
+    # Screens for Invoice Notification templates
+    # This screens is like the generic one but hidding the other substitution variables helpers
+    ###################################################################################################################
+    notificationTemplatesContentsInvoiceList_screen: &notificationTemplatesContentsInvoiceList_screenLink
+      <<: *notificationTemplatesContentsList_screenLink
+      fields:
+        <<: *notificationTemplatesContents_fieldsLink
+        options:
+          title: _("Options")
+          screens:
+            notificationTemplatesContentsInvoiceEdit_screen: true
+          dialogs:
+            notificationTemplatesContentsDel_dialog: true
+          default: notificationTemplatesContentsInvoiceEdit_screen
+      options:
+        title: _("Options")
+        screens:
+          notificationTemplatesContentsInvoiceNew_screen: true
+        dialogs:
+          notificationTemplatesContentsDel_dialog: true
+    notificationTemplatesContentsInvoiceNew_screen: &notificationTemplatesContentsInvoiceNew_screenLink
+      <<: *notificationTemplatesContentsNew_screenLink
+      fields:
+        order:
+          <<: *notificationTemplatesContentsFieldsOrderPositions_Link
+        blacklist:
+          voicemailVariables: true
+          lowBalanceVariables: true
+          faxVariables: true
+    notificationTemplatesContentsInvoiceEdit_screen: &notificationTemplatesContentsInvoiceEdit_screenLink
+      <<: *notificationTemplatesContentsEdit_screenLink
+      fields:
+        order:
+          <<: *notificationTemplatesContentsFieldsOrderPositions_Link
+        blacklist:
+          voicemailVariables: true
+          lowBalanceVariables: true
+          faxVariables: true
 
     ###################################################################################################################
     # Screens for LowBalance Notification templates
@@ -188,6 +235,7 @@ production:
         blacklist:
           voicemailVariables: true
           faxVariables: true
+          invoiceVariables: true
     notificationTemplatesContentsLowBalanceEdit_screen: &notificationTemplatesContentsLowBalanceEdit_screenLink
       <<: *notificationTemplatesContentsEdit_screenLink
       fields:
@@ -196,6 +244,7 @@ production:
         blacklist:
           voicemailVariables: true
           faxVariables: true
+          invoiceVariables: true
 
   dialogs: &notificationTemplatesContents_dialogsLink
     notificationTemplatesContentsDel_dialog: &notificationTemplatesContentsDel_dialogLink

@@ -1087,6 +1087,11 @@ msgid_plural "Invoices"
 msgstr[0] "Factura"
 msgstr[1] "Facturas"
 
+msgid "Invoice Notification"
+msgid_plural "Invoice Notifications"
+msgstr[0] "Notificación de factura"
+msgstr[1] "Notificaciones de factura"
+
 msgid "Invoice data"
 msgstr "Datos de facturación"
 

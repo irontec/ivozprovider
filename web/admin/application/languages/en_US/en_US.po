@@ -1072,6 +1072,11 @@ msgid_plural "Invoices"
 msgstr[0] "Invoice"
 msgstr[1] "Invoices"
 
+msgid "Invoice Notification"
+msgid_plural "Invoice Notifications"
+msgstr[0] "Voicemail Notification"
+msgstr[1] "Voicemail Notifications"
+
 msgid "Invoice data"
 msgstr "Invoice data"
 
