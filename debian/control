@@ -219,7 +219,7 @@ Description: IVOZ Provider - Rest API files
 Package: ivozprovider-common-library
 Architecture: all
 Section: php
-Depends: php7.0-cli, php7.0-mysql, php7.0-mbstring, php7.0-xml, acl, klear-library, php-mailparse
+Depends: php7.0-cli, php7.0-mysql, php7.0-mbstring, php7.0-xml, acl, klear-library, php-mailparse, php7.0-intl
 Provides: ivozprovider-data-library
 Conflicts: ivozprovider-data-library
 Priority: optional
