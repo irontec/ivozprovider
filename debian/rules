@@ -36,6 +36,8 @@ build_microservices: build_library
 	cd microservices/balances; composer --no-interaction --no-dev  --no-progress install
 	cd microservices/recordings; composer --no-interaction --no-dev  --no-progress install
 	cd microservices/workers; composer --no-interaction --no-dev  --no-progress install
+	cd microservices/scheduler; composer --no-interaction --no-dev  --no-progress install
+
 
 build_scheme: build_library
 	cd scheme ; composer --no-interaction --no-dev  --no-progress install
