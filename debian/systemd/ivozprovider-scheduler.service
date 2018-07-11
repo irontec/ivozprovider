@@ -1,0 +1,6 @@
+[Unit]
+Description=Run Ivozprovider Scheduled tasks
+
+[Service]
+Type=oneshot
+ExecStart=/opt/irontec/ivozprovider/microservices/scheduler/bin/run

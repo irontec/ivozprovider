@@ -1,0 +1,8 @@
+[Unit]
+Description=Ivozprovider Scheduled tasks runner
+
+[Timer]
+OnCalendar=*:0,15,30,45
+
+[Install]
+WantedBy=timers.target
