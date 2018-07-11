@@ -70,14 +70,11 @@ production:
       sufix: "€"
     status:
       title: _('Status')
-      type: select
+      type: ghost
+      dirty: true
       source:
-        data: inline
-        values:
-          'waiting': _('Waiting')
-          'processing': _('Processing')
-          'created': _('Created')
-          'error': _('Error')
+        class: IvozProvider_Klear_Ghost_Invoice
+        method: getStatus
     pdf:
       title: _('Pdf file')
       type: file
