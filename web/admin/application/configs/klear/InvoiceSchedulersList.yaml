@@ -12,7 +12,7 @@ production:
       pagination:
         items: 25
       <<: *InvoiceSchedulers
-      class: ui-silk-report-key
+      class: ui-silk-report-clock
       title: _("List of %s %2s", ngettext('Invoice scheduler', 'Invoice schedulers', 0), "[format| (%parent%)]")
       forcedValues:
         <<: *forcedBrand

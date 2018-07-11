@@ -12,7 +12,7 @@ production:
       pagination:
         items: 25
       <<: *InvoiceNumberSequences
-      class: ui-silk-report-key
+      class: ui-silk-report-go
       title: _("List of %s %2s", ngettext('Invoice number sequence', 'Invoice number sequences', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink

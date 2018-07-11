@@ -1,5 +1,15 @@
 
-.ui-silk-destrate
+.ui-silk-report-clock
 {
 	background-image: url(./silk-extended-sprite.png);background-position: -0px -0px;
+}
+
+.ui-silk-destrate
+{
+	background-image: url(./silk-extended-sprite.png);background-position: -18px -0px;
+}
+
+.ui-silk-report-refresh
+{
+	background-image: url(./silk-extended-sprite.png);background-position: -0px -18px;
 }
