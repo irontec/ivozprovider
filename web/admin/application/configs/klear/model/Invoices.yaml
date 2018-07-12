@@ -190,6 +190,22 @@ production:
       options:
         screens:
           fixedCostsRelInvoicesNew_screen: true
+    scheduler:
+      title: _('Invoice scheduler')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceScheduler
+          filterClass: IvozProvider_Klear_Filter_Brand
+          fieldName:
+            fields:
+              - iden
+            template: '%iden%'
+          order:
+            InvoiceScheduler.iden: asc
+        'null': _("Unassigned")
 staging:
   _extends: production
 testing:

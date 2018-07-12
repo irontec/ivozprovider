@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include InvoicesList.yaml
 #include FixedCostsRelInvoiceSchedulersList.yaml
 
 production:
@@ -22,6 +23,7 @@ production:
           screens:
             invoiceSchedulersEdit_screen: true
             fixedCostsRelInvoiceSchedulersList_screen: true
+            invoicesList_screen: true
           dialogs:
             invoiceSchedulersDel_dialog: true
           default: invoiceSchedulersEdit_screen
@@ -90,6 +92,20 @@ production:
       fixedPositions:
         <<: *invoiceSchedulersFixedPositions_Link
 
+    #Invoices:
+    <<: *invoices_screensLink
+    invoicesList_screen:
+      <<: *invoicesList_screenLink
+      filterField: scheduler
+      parentOptionCustomizer:
+        - recordCount
+    invoicesNew_screen:
+      <<: *invoicesNew_screenLink
+      filterField: scheduler
+    invoicesEdit_screen:
+      <<: *invoicesEdit_screenLink
+      filterField: scheduler
+
     #FixedCostsRelInvoiceScheduler:
     <<: *fixedCostsRelInvoiceSchedulers_screensLink
     fixedCostsRelInvoiceSchedulersList_screen:
@@ -110,7 +126,11 @@ production:
       labelOnList: 1
 
   # invoices dialogs:
+    <<: *invoices_dialogsLink
     <<: *fixedCostsRelInvoiceSchedulers_dialogsLink
+
+  commands: &invoiceSchedulers__commandsLink
+    <<: *invoices_commandsLink
 
 staging:
   _extends: production
