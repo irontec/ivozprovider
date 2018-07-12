@@ -318,7 +318,7 @@ class Generator
 
                     // -----------------
 
-                    $destination = $call->getDestination();
+                    $destination = $call->getTpDestination();
                     $destinationDto = $this->dtoAssembler->toDto($destination);
 
                     $callData['targetPattern'] = $destinationDto->toArray();
