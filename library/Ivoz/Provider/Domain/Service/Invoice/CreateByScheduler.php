@@ -41,9 +41,9 @@ class CreateByScheduler
             $this->updateLastExecutionDate($scheduler);
         } catch (\Exception $e) {
 
-            $iden = $scheduler->getIden();
+            $name = $scheduler->getName();
             $this->logger->error(
-                "Invoice scheduler #${iden} has failed: "
+                "Invoice scheduler #${$name} has failed: "
                 . $e->getMessage()
             );
 
