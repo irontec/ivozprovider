@@ -22,9 +22,6 @@ class ProviderFixedCostsRelInvoice extends Fixture implements DependentFixtureIn
 
         /** @var FixedCostsRelInvoice $item1 */
         $item1 = $this->createEntityInstanceWithPublicMethods(FixedCostsRelInvoice::class);
-        $item1->setBrand(
-            $this->getReference('_reference_ProviderBrand1')
-        );
         $item1->setFixedCost(
             $this->getReference('_reference_ProviderFixedCost1')
         );
