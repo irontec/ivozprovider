@@ -11,7 +11,7 @@ Feature: Update invoice number sequences
       And I send a "PUT" request to "/invoice_number_sequences/1" with body:
     """
             {
-          "iden": "GeneratorNameEdited",
+          "name": "GeneratorNameEdited",
           "prefix": "auto",
           "sequenceLength": 4,
           "increment": 1,
@@ -27,7 +27,7 @@ Feature: Update invoice number sequences
      And the JSON should be like:
     """
         {
-          "iden": "GeneratorNameEdited",
+          "name": "GeneratorNameEdited",
           "prefix": "auto",
           "sequenceLength": 4,
           "increment": 1,
