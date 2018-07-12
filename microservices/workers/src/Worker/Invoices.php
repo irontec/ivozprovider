@@ -91,6 +91,11 @@ class Invoices
 
         /** @var InvoiceInterface $invoice */
         $invoice = $this->invoiceRepository->find($id);
+        if (!$invoice) {
+            $this->logger->error("Invoice #${id} was not found!");
+            return;
+        }
+
         $invoice->setStatus("processing");
         $this->entityTools->persist($invoice, true);
 

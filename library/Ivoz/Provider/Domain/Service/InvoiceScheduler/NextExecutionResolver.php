@@ -83,15 +83,14 @@ class NextExecutionResolver implements InvoiceSchedulerLifecycleEventHandlerInte
             return;
         }
 
-        $lastExecution = $scheduler->getLastExecution();
-        if (!$lastExecution) {
+        $nextExecution = clone $scheduler->getNextExecution();
+        if (!$nextExecution) {
             return;
         }
-        $lastExecution->setTimezone(
+        $nextExecution->setTimezone(
             new \DateTimeZone('UTC')
         );
 
-        $nextExecution = clone $lastExecution;
         $nextExecution
             ->add(
                 $scheduler->getInterval()
