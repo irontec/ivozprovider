@@ -97,8 +97,8 @@ doctrine:
         Ivoz\Provider\Domain\Model\FixedCost\FixedCost
       Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoiceInterface:
         Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoice
-      Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceSchedulers\FixedCostsRelInvoiceSchedulersInterface:
-        Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceSchedulers\FixedCostsRelInvoiceSchedulers
+      Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceSchedulerInterface:
+        Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceScheduler
       Ivoz\Provider\Domain\Model\Friend\FriendInterface:
         Ivoz\Provider\Domain\Model\Friend\Friend
       Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPatternInterface:

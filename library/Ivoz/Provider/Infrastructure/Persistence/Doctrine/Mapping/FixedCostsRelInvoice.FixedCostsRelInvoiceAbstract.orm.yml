@@ -6,7 +6,7 @@ Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoiceAbstract:
       type: integer
       nullable: true
       options:
-        unsigned: false
+        unsigned: true
   manyToOne:
     brand:
       targetEntity: \Ivoz\Provider\Domain\Model\Brand\BrandInterface

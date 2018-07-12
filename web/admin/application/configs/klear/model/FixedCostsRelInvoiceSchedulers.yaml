@@ -49,10 +49,10 @@ production:
     quantity:
       title: ngettext('Quantity', 'Quantities', 1)
       type: number
-      defaultValue: 0
+      defaultValue: 1
       source:
         control: Spinner
-        min: 0
+        min: 1
         max: 100
 staging:
   _extends: production

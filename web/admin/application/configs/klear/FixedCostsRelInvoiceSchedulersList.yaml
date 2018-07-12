@@ -14,6 +14,7 @@ production:
         items: 25
       <<: *FixedCostsRelInvoiceSchedulers
       title: _("List of %s %2s", ngettext('Fixed cost', 'Fixed costs', 0), "[format| (%parent%)]")
+      filterField: invoiceScheduler
       forcedValues:
         <<: *forcedBrand
       fields: &fixedCostsRelInvoiceSchedulers_fieldsLink

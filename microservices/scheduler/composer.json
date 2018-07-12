@@ -1,6 +1,6 @@
 {
     "name": "irontec/ivozprovider/scheduler",
-    "description": "Multitenant solution for VoIP telephony providers (company balance module)",
+    "description": "Multitenant solution for VoIP telephony providers (scheduled task runner module)",
     "authors": [
         {
             "name": "Ivan Alonso",

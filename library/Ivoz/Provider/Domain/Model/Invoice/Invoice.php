@@ -10,6 +10,9 @@ use Ivoz\Core\Domain\Service\FileContainerInterface;
  */
 class Invoice extends InvoiceAbstract implements InvoiceInterface, FileContainerInterface
 {
+    const STATUS_WAITING = 'waiting';
+    const STATUS_PROCESSING = 'processing';
+
     use InvoiceTrait;
     use TempFileContainnerTrait;
 
@@ -43,12 +46,20 @@ class Invoice extends InvoiceAbstract implements InvoiceInterface, FileContainer
     }
 
     /**
+     * @return bool
+     */
+    public function isProcessing()
+    {
+        return $this->getStatus() === self::STATUS_PROCESSING;
+    }
+
+    /**
      * @inheritdoc
      */
     public function setStatus($status = null)
     {
         if (is_null($status)) {
-            $status = 'waiting';
+            $status = self::STATUS_WAITING;
         }
 
         return parent::setStatus($status);

@@ -1,6 +1,5 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
-#include InvoicesList.yaml
 #include FixedCostsRelInvoiceSchedulersList.yaml
 
 production:
@@ -63,7 +62,7 @@ production:
           colsPerRow: 2
           fields:
             Iden: 1
-            company: true
+            company: 1
             email: 1
             nextExecution: 1
             lastExecution: 1
@@ -91,25 +90,10 @@ production:
       fixedPositions:
         <<: *invoiceSchedulersFixedPositions_Link
 
-    #Invoices:
-    <<: *invoices_screensLink
-    invoicesList_screen:
-      <<: *invoicesList_screenLink
-      filterField: InvoiceScheduler
-      parentOptionCustomizer:
-        - recordCount
-    invoicesNew_screen:
-      <<: *invoicesNew_screenLink
-      filterField: InvoiceScheduler
-    invoicesEdit_screen:
-      <<: *invoicesEdit_screenLink
-      filterField: InvoiceScheduler
-
     #FixedCostsRelInvoiceScheduler:
     <<: *fixedCostsRelInvoiceSchedulers_screensLink
     fixedCostsRelInvoiceSchedulersList_screen:
       <<: *fixedCostsRelInvoiceSchedulersList_screenLink
-      filterField: invoiceScheduler
       parentOptionCustomizer:
         - recordCount
 
@@ -126,7 +110,6 @@ production:
       labelOnList: 1
 
   # invoices dialogs:
-    <<: *invoices_dialogsLink
     <<: *fixedCostsRelInvoiceSchedulers_dialogsLink
 
 staging:

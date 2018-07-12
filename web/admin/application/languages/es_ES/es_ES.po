@@ -825,7 +825,7 @@ msgid "Forward Fax"
 msgstr "Reenviar Fax"
 
 msgid "Frequency"
-msgstr "Frequencia"
+msgstr "Frecuencia"
 
 msgid "Friday"
 msgstr "Viernes"
@@ -1432,7 +1432,7 @@ msgid "Need help?"
 msgstr "¿Necesita ayuda?"
 
 msgid "Next execution"
-msgstr "Próxima ejecucion"
+msgstr "Próxima ejecución"
 
 msgid "Nif"
 msgstr "NIF"
