@@ -15,7 +15,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     /**
      * @var string
      */
-    private $iden;
+    private $name;
 
     /**
      * @var string
@@ -95,7 +95,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
         }
 
         return [
-            'iden' => 'iden',
+            'name' => 'name',
             'unit' => 'unit',
             'frequency' => 'frequency',
             'email' => 'email',
@@ -116,7 +116,7 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     public function toArray($hideSensitiveData = false)
     {
         return [
-            'iden' => $this->getIden(),
+            'name' => $this->getName(),
             'unit' => $this->getUnit(),
             'frequency' => $this->getFrequency(),
             'email' => $this->getEmail(),
@@ -166,13 +166,13 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @param string $iden
+     * @param string $name
      *
      * @return static
      */
-    public function setIden($iden = null)
+    public function setName($name = null)
     {
-        $this->iden = $iden;
+        $this->name = $name;
 
         return $this;
     }
@@ -180,9 +180,9 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
     /**
      * @return string
      */
-    public function getIden()
+    public function getName()
     {
-        return $this->iden;
+        return $this->name;
     }
 
     /**

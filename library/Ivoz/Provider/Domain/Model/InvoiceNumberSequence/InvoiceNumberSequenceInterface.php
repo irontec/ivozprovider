@@ -29,20 +29,20 @@ interface InvoiceNumberSequenceInterface extends LoggableEntityInterface
     public function nextval();
 
     /**
-     * Set iden
+     * Set name
      *
-     * @param string $iden
+     * @param string $name
      *
      * @return self
      */
-    public function setIden($iden);
+    public function setName($name);
 
     /**
-     * Get iden
+     * Get name
      *
      * @return string
      */
-    public function getIden();
+    public function getName();
 
     /**
      * Set prefix

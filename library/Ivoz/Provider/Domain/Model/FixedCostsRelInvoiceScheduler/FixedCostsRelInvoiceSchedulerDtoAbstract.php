@@ -23,11 +23,6 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
-     */
-    private $brand;
-
-    /**
      * @var \Ivoz\Provider\Domain\Model\FixedCost\FixedCostDto | null
      */
     private $fixedCost;
@@ -57,7 +52,6 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
         return [
             'quantity' => 'quantity',
             'id' => 'id',
-            'brandId' => 'brand',
             'fixedCostId' => 'fixedCost',
             'invoiceSchedulerId' => 'invoiceScheduler'
         ];
@@ -71,7 +65,6 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
         return [
             'quantity' => $this->getQuantity(),
             'id' => $this->getId(),
-            'brand' => $this->getBrand(),
             'fixedCost' => $this->getFixedCost(),
             'invoiceScheduler' => $this->getInvoiceScheduler()
         ];
@@ -82,7 +75,6 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
-        $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
         $this->fixedCost = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\FixedCost\\FixedCost', $this->getFixedCostId());
         $this->invoiceScheduler = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\InvoiceScheduler\\InvoiceScheduler', $this->getInvoiceSchedulerId());
     }
@@ -133,52 +125,6 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandDto $brand
-     *
-     * @return static
-     */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandDto $brand = null)
-    {
-        $this->brand = $brand;
-
-        return $this;
-    }
-
-    /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto
-     */
-    public function getBrand()
-    {
-        return $this->brand;
-    }
-
-    /**
-     * @param integer $id | null
-     *
-     * @return static
-     */
-    public function setBrandId($id)
-    {
-        $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Brand\BrandDto($id)
-            : null;
-
-        return $this->setBrand($value);
-    }
-
-    /**
-     * @return integer | null
-     */
-    public function getBrandId()
-    {
-        if ($dto = $this->getBrand()) {
-            return $dto->getId();
-        }
-
-        return null;
     }
 
     /**

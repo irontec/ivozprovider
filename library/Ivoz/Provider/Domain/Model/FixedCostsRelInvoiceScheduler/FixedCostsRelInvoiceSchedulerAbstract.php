@@ -19,11 +19,6 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     protected $quantity;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
-     */
-    protected $brand;
-
-    /**
      * @var \Ivoz\Provider\Domain\Model\FixedCost\FixedCostInterface
      */
     protected $fixedCost;
@@ -111,7 +106,6 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
 
         $self
             ->setQuantity($dto->getQuantity())
-            ->setBrand($dto->getBrand())
             ->setFixedCost($dto->getFixedCost())
             ->setInvoiceScheduler($dto->getInvoiceScheduler())
         ;
@@ -135,7 +129,6 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
 
         $this
             ->setQuantity($dto->getQuantity())
-            ->setBrand($dto->getBrand())
             ->setFixedCost($dto->getFixedCost())
             ->setInvoiceScheduler($dto->getInvoiceScheduler());
 
@@ -153,7 +146,6 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     {
         return self::createDto()
             ->setQuantity(self::getQuantity())
-            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
             ->setFixedCost(\Ivoz\Provider\Domain\Model\FixedCost\FixedCost::entityToDto(self::getFixedCost(), $depth))
             ->setInvoiceScheduler(\Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceScheduler::entityToDto(self::getInvoiceScheduler(), $depth));
     }
@@ -165,7 +157,6 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     {
         return [
             'quantity' => self::getQuantity(),
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
             'fixedCostId' => self::getFixedCost() ? self::getFixedCost()->getId() : null,
             'invoiceSchedulerId' => self::getInvoiceScheduler() ? self::getInvoiceScheduler()->getId() : null
         ];
@@ -203,30 +194,6 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     public function getQuantity()
     {
         return $this->quantity;
-    }
-
-    /**
-     * Set brand
-     *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
-     *
-     * @return self
-     */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
-    {
-        $this->brand = $brand;
-
-        return $this;
-    }
-
-    /**
-     * Get brand
-     *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
-     */
-    public function getBrand()
-    {
-        return $this->brand;
     }
 
     /**

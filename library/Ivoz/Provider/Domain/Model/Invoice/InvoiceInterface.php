@@ -267,7 +267,17 @@ interface InvoiceInterface extends LoggableEntityInterface
      */
     public function getRelFixedCosts(\Doctrine\Common\Collections\Criteria $criteria = null);
 
+    /**
+     * @param $fldName
+     * @param TempFile $file
+     */
     public function addTmpFile($fldName, \Ivoz\Core\Domain\Service\TempFile $file);
+
+    /**
+     * @param TempFile $file
+     * @throws \Exception
+     */
+    public function removeTmpFile(\Ivoz\Core\Domain\Service\TempFile $file);
 
     /**
      * @return TempFile[]
