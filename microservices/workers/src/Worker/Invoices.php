@@ -3,8 +3,7 @@
 namespace Worker;
 
 use GearmanJob;
-use Ivoz\Core\Application\Service\Assembler\DtoAssembler;
-use Ivoz\Core\Domain\Service\EntityPersisterInterface;
+use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Core\Domain\Service\TempFile;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrRepository;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceDto;
@@ -12,7 +11,7 @@ use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceRepository;
 use Ivoz\Provider\Domain\Service\Invoice\Generator;
 use Mmoreram\GearmanBundle\Driver\Gearman;
-use Monolog\Logger;
+use Psr\Log\LoggerInterface;
 
 /**
  * @Gearman\Work(
@@ -25,9 +24,9 @@ use Monolog\Logger;
 class Invoices
 {
     /**
-     * @var EntityPersisterInterface
+     * @var EntityTools
      */
-    protected $entityPersister;
+    protected $entityTools;
 
     /**
      * @var InvoiceRepository
@@ -45,34 +44,29 @@ class Invoices
     protected $generator;
 
     /**
-     * @var DtoAssembler
-     */
-    protected $dtoAssembler;
-
-    /**
-     * @var Logger
+     * @var LoggerInterface
      */
     protected $logger;
 
     /**
      * Invoices constructor.
-     * @param EntityPersisterInterface $entityPersister
+     * @param EntityTools $entityTools
      * @param InvoiceRepository $invoiceRepository
+     * @param TrunksCdrRepository $trunksCdrRepository
+     * @param Generator $generator
      * @param Logger $logger
      */
     public function __construct(
-        EntityPersisterInterface $entityPersister,
+        EntityTools $entityTools,
         InvoiceRepository $invoiceRepository,
         TrunksCdrRepository $trunksCdrRepository,
         Generator $generator,
-        DtoAssembler $dtoAssembler,
-        Logger $logger
+        LoggerInterface $logger
     ) {
-        $this->entityPersister = $entityPersister;
+        $this->entityTools = $entityTools;
         $this->invoiceRepository = $invoiceRepository;
         $this->trunksCdrRepository = $trunksCdrRepository;
         $this->generator = $generator;
-        $this->dtoAssembler = $dtoAssembler;
         $this->logger = $logger;
     }
 
@@ -103,7 +97,7 @@ class Invoices
         }
 
         $invoice->setStatus("processing");
-        $this->entityPersister->persist($invoice, true);
+        $this->entityTools->persist($invoice, true);
 
         $this->logger->info("[INVOICER] Status = processing");
 
@@ -119,7 +113,7 @@ class Invoices
 
             $totals = $this->generator->getTotals();
             /** @var InvoiceDto $invoiceDto */
-            $invoiceDto = $this->dtoAssembler->toDto($invoice);
+            $invoiceDto = $this->entityTools->entityToDto($invoice);
             $invoiceDto
                 ->setPdfPath($tempPdf)
                 ->setPdfBaseName('invoice-' . $invoice->getNumber() . '.pdf')
@@ -128,7 +122,7 @@ class Invoices
                 ->setTotalWithTax($totals["totalWithTaxes"])
                 ->setStatus("created");
 
-            $this->entityPersister->persistDto($invoiceDto, $invoice);
+            $this->entityTools->persistDto($invoiceDto, $invoice);
             $this->logger->info("[INVOICER] Status = created");
 
         } catch (\Exception $e) {
@@ -139,7 +133,7 @@ class Invoices
             $invoice->setStatusMsg(
                 $e->getMessage()
             );
-            $this->entityPersister->persist($invoice, true);
+            $this->entityTools->persist($invoice, true);
         }
 
         return true;

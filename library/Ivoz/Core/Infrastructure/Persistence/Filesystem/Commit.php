@@ -8,10 +8,12 @@ use Ivoz\Core\Domain\Service\CommonLifecycleEventHandlerInterface;
 
 class Commit implements CommonLifecycleEventHandlerInterface
 {
+    const ON_COMMIT_PRIORITY = 10;
+
     public static function getSubscribedEvents()
     {
         return [
-            self::EVENT_ON_COMMIT => 10
+            self::EVENT_ON_COMMIT => self::ON_COMMIT_PRIORITY
         ];
     }
 
@@ -24,9 +26,11 @@ class Commit implements CommonLifecycleEventHandlerInterface
         foreach ($entity->getTempFiles() as $tmpFile) {
             if (is_null($tmpFile->getTmpPath())) {
                 $tmpFile->remove($entity);
-                return;
+            } else {
+                $tmpFile->commit($entity);
             }
-            $tmpFile->commit($entity);
+
+            $entity->removeTmpFile($tmpFile);
         }
     }
 }
