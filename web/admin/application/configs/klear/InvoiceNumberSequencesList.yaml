@@ -56,7 +56,7 @@ production:
         group0:
           colsPerRow: 2
           fields:
-            iden: 1
+            name: 1
             prefix: 1
         group1:
           colsPerRow: 2

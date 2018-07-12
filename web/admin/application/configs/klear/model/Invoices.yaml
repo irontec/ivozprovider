@@ -19,12 +19,12 @@ production:
           filterClass: IvozProvider_Klear_Filter_Brand
           fieldName:
             fields:
-              - iden
-            template: '%iden%'
+              - name
+            template: '%name%'
           order:
-            InvoiceNumberSequence.iden: asc
+            InvoiceNumberSequence.name: asc
           visualFilter:
-            iden:
+            name:
               'null':
                 show: ["number"]
                 hide: []
@@ -140,6 +140,22 @@ production:
             template: '%name%'
           order:
             InvoiceTemplate.name: asc
+        'null': _("Unassigned")
+    scheduler:
+      title: ngettext('Invoice scheduler', 'Invoice schedulers', 1)
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceScheduler
+          filterClass: IvozProvider_Klear_Filter_Brand
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order:
+            InvoiceScheduler.name: asc
         'null': _("Unassigned")
     FixedCostsRelInvoices:
       title: ngettext('Fixed cost', 'Fixed costs', 1)

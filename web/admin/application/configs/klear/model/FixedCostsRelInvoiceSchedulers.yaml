@@ -42,10 +42,10 @@ production:
           entity: \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceScheduler
           fieldName:
             fields:
-              - iden
-            template: '%iden%'
+              - name
+            template: '%name%'
           order:
-            InvoiceScheduler.iden: asc
+            InvoiceScheduler.name: asc
     quantity:
       title: ngettext('Quantity', 'Quantities', 1)
       type: number

@@ -196,12 +196,12 @@ production:
           showOnlyIf: ${auth.brandFeatures.invoices.enabled}
         InvoiceNumberSequencesList:
           title: ngettext('Invoice number sequence', 'Invoice number sequences', 0)
-          class: ui-silk-report-key
+          class: ui-silk-report-go
           description: _("List of %s", ngettext('Invoice number sequence', 'Invoice number sequences', 0))
           showOnlyIf: ${auth.brandFeatures.invoices.enabled}
         InvoiceSchedulersList:
           title: ngettext('Invoice scheduler', 'Invoice schedulers', 0)
-          class: ui-silk-report-key
+          class: ui-silk-report-clock
           description: _("List of %s", ngettext('Invoice scheduler', 'Invoice schedulers', 0))
           showOnlyIf: ${auth.brandFeatures.invoices.enabled}
         InvoicesList:

@@ -26,7 +26,7 @@ production:
             invoiceSchedulersDel_dialog: true
           default: invoiceSchedulersEdit_screen
         order:
-          iden: true
+          name: true
           company: true
           frecuency: true
           unit: true
@@ -61,7 +61,7 @@ production:
         group0:
           colsPerRow: 2
           fields:
-            Iden: 1
+            name: 1
             company: 1
             email: 1
             nextExecution: 1
