@@ -62,7 +62,6 @@ class NextExecutionResolverSpec extends ObjectBehavior
             $scheduler,
             [
                 'getNextExecution' => new \DateTime(),
-                'getLastExecution' => new \DateTime(),
                 'getInterval' => new \DateInterval('P1W')
             ]
         );
