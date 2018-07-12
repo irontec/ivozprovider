@@ -17,7 +17,7 @@ interface FixedCostsRelInvoiceInterface extends LoggableEntityInterface
      * @param FixedCostsRelInvoiceSchedulerInterface $fixedCostsRelInvoiceScheduler
      * @return static
      */
-    public function fromFixedCostsRelInvoiceScheduler(\Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice, \Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceSchedulerInterface $fixedCostRelScheduler);
+    public static function fromFixedCostsRelInvoiceScheduler(\Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice, \Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceSchedulerInterface $fixedCostRelScheduler);
 
     /**
      * Set quantity

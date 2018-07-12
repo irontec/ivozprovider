@@ -35,7 +35,7 @@ class FixedCostsRelInvoice extends FixedCostsRelInvoiceAbstract implements Fixed
      * @param FixedCostsRelInvoiceSchedulerInterface $fixedCostsRelInvoiceScheduler
      * @return static
      */
-    public function fromFixedCostsRelInvoiceScheduler(
+    public static function fromFixedCostsRelInvoiceScheduler(
         InvoiceInterface $invoice,
         FixedCostsRelInvoiceSchedulerInterface $fixedCostRelScheduler
     ) {
