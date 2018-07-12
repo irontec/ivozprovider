@@ -1,15 +1,15 @@
 Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerAbstract:
   type: mappedSuperclass
   uniqueConstraints:
-    invoiceScheduler_iden_brand:
+    invoiceScheduler_name_brand:
       columns:
-        - iden
+        - name
         - brandId
     invoiceScheduler_company:
       columns:
         - companyId
   fields:
-    iden:
+    name:
       type: string
       nullable: false
       length: 40

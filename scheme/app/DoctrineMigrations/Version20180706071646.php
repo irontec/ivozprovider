@@ -21,17 +21,14 @@ class Version20180706071646 extends AbstractMigration
         $this->addSql(
             'CREATE TABLE FixedCostsRelInvoiceSchedulers (
                     id INT UNSIGNED AUTO_INCREMENT NOT NULL,
-                    quantity INT DEFAULT NULL,
-                    brandId INT UNSIGNED NOT NULL,
+                    quantity INT UNSIGNED DEFAULT NULL,
                     fixedCostId INT UNSIGNED NOT NULL,
                     invoiceId INT UNSIGNED NOT NULL,
-                    INDEX IDX_D9D0952B9CBEC244 (brandId),
                     INDEX IDX_D9D0952B81256364 (fixedCostId),
                     INDEX IDX_D9D0952B3D7BDC51 (invoiceId),
                     PRIMARY KEY(id)
                 ) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB'
         );
-        $this->addSql('ALTER TABLE FixedCostsRelInvoiceSchedulers ADD CONSTRAINT FK_D9D0952B9CBEC244 FOREIGN KEY (brandId) REFERENCES Brands (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE FixedCostsRelInvoiceSchedulers ADD CONSTRAINT FK_D9D0952B81256364 FOREIGN KEY (fixedCostId) REFERENCES FixedCosts (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE FixedCostsRelInvoiceSchedulers ADD CONSTRAINT FK_D9D0952B3D7BDC51 FOREIGN KEY (invoiceId) REFERENCES InvoiceSchedulers (id) ON DELETE CASCADE');
 
@@ -48,7 +45,6 @@ class Version20180706071646 extends AbstractMigration
         $this->addSql('ALTER TABLE InvoiceSchedulers ADD CONSTRAINT FK_41E90A1A2480E723 FOREIGN KEY (companyId) REFERENCES Companies (id) ON DELETE CASCADE');
         $this->addSql('CREATE INDEX IDX_41E90A1AD07541BE ON InvoiceSchedulers (invoiceTemplateId)');
         $this->addSql('CREATE UNIQUE INDEX invoiceScheduler_company ON InvoiceSchedulers (companyId)');
-        $this->addSql('ALTER TABLE InvoiceSchedulers RENAME INDEX invoicenumbersequence_iden_brand TO invoiceScheduler_iden_brand');
 
         $this->addSql(
             'ALTER TABLE Invoices
@@ -73,7 +69,6 @@ class Version20180706071646 extends AbstractMigration
         $this->addSql('DROP INDEX IDX_41E90A1AD07541BE ON InvoiceSchedulers');
         $this->addSql('DROP INDEX invoiceScheduler_company ON InvoiceSchedulers');
         $this->addSql('ALTER TABLE InvoiceSchedulers ADD inProgress TINYINT(1) DEFAULT \'0\' NOT NULL, DROP nextExecution, DROP taxRate, DROP invoiceTemplateId, DROP companyId');
-        $this->addSql('ALTER TABLE InvoiceSchedulers RENAME INDEX invoicescheduler_iden_brand TO invoiceNumberSequence_iden_brand');
         $this->addSql('ALTER TABLE Invoices DROP FOREIGN KEY FK_93594DC31D113CF5');
         $this->addSql('DROP INDEX IDX_93594DC31D113CF5 ON Invoices');
         $this->addSql('ALTER TABLE Invoices DROP statusMsg, DROP invoiceSchedulerId');
