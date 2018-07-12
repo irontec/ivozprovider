@@ -106,6 +106,12 @@ interface LocutionInterface extends LoggableEntityInterface
     public function getOriginalFile();
 
     /**
+     * @param TempFile $file
+     * @throws \Exception
+     */
+    public function removeTmpFile(\Ivoz\Core\Domain\Service\TempFile $file);
+
+    /**
      * @return TempFile[]
      */
     public function getTempFiles();

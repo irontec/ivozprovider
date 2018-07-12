@@ -148,6 +148,12 @@ interface DestinationRateInterface extends EntityInterface
     public function getTpDestinationRates(\Doctrine\Common\Collections\Criteria $criteria = null);
 
     /**
+     * @param TempFile $file
+     * @throws \Exception
+     */
+    public function removeTmpFile(\Ivoz\Core\Domain\Service\TempFile $file);
+
+    /**
      * @return TempFile[]
      */
     public function getTempFiles();

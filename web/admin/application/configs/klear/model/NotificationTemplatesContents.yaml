@@ -70,6 +70,15 @@ production:
         class: IvozProvider_Klear_Ghost_NotificationTemplate
         method: getVariables
       <<: *faxVariablesHelp
+    invoiceVariables:
+      title: _('Substitution variables')
+      type: ghost
+      maxLength: 255
+      readonly: true
+      source:
+        class: IvozProvider_Klear_Ghost_NotificationTemplate
+        method: getVariables
+      <<: *invoiceVariablesHelp
     lowBalanceVariables:
       title: _('Substitution variables')
       type: ghost

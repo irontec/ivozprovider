@@ -555,6 +555,22 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getFaxNotificationTemplate();
 
     /**
+     * Set invoiceNotificationTemplate
+     *
+     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $invoiceNotificationTemplate
+     *
+     * @return self
+     */
+    public function setInvoiceNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $invoiceNotificationTemplate = null);
+
+    /**
+     * Get invoiceNotificationTemplate
+     *
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
+     */
+    public function getInvoiceNotificationTemplate();
+
+    /**
      * Add extension
      *
      * @param \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface $extension

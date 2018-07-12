@@ -11,7 +11,7 @@
     And I send a "POST" request to "/invoice_number_sequences" with body:
     """
       {
-          "iden": "Identifier",
+          "name": "Identifier",
           "prefix": "test",
           "sequenceLength": 4,
           "increment": 1,
@@ -25,7 +25,7 @@
     And the JSON should be equal to:
     """
       {
-          "iden": "Identifier",
+          "name": "Identifier",
           "latestValue": "",
           "id": 2
       }
@@ -41,7 +41,7 @@
     And the JSON should be like:
     """
       {
-          "iden": "Identifier",
+          "name": "Identifier",
           "prefix": "test",
           "sequenceLength": 4,
           "increment": 1,

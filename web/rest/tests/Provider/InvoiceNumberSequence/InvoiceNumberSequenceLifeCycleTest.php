@@ -18,7 +18,7 @@ class InvoiceNumberSequenceLifeCycleTestLifeCycleTest extends KernelTestCase
     {
         $invoiceNumberSequenceDto = new InvoiceNumberSequenceDto();
         $invoiceNumberSequenceDto
-             ->setIden('numSeq')
+             ->setName('numSeq')
              ->setPrefix('prefix-')
              ->setSequenceLength(1)
              ->setIncrement(1)

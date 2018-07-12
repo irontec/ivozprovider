@@ -79,7 +79,8 @@ Feature: Update music on holds
               "outgoingDdi": null,
               "outgoingDdiRule": null,
               "voicemailNotificationTemplate": 1,
-              "faxNotificationTemplate": null
+              "faxNotificationTemplate": null,
+              "invoiceNotificationTemplate": null
           }
       }
     """

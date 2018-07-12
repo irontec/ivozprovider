@@ -19,6 +19,11 @@ interface InvoiceInterface extends LoggableEntityInterface
     public function getFileObjects();
 
     /**
+     * @return bool
+     */
+    public function isProcessing();
+
+    /**
      * @inheritdoc
      */
     public function setStatus($status = null);
@@ -120,6 +125,22 @@ interface InvoiceInterface extends LoggableEntityInterface
     public function getStatus();
 
     /**
+     * Set statusMsg
+     *
+     * @param string $statusMsg
+     *
+     * @return self
+     */
+    public function setStatusMsg($statusMsg = null);
+
+    /**
+     * Get statusMsg
+     *
+     * @return string
+     */
+    public function getStatusMsg();
+
+    /**
      * Set invoiceTemplate
      *
      * @param \Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface $invoiceTemplate
@@ -184,6 +205,22 @@ interface InvoiceInterface extends LoggableEntityInterface
     public function getNumberSequence();
 
     /**
+     * Set scheduler
+     *
+     * @param \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface $scheduler
+     *
+     * @return self
+     */
+    public function setScheduler(\Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface $scheduler = null);
+
+    /**
+     * Get scheduler
+     *
+     * @return \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface
+     */
+    public function getScheduler();
+
+    /**
      * Set pdf
      *
      * @param \Ivoz\Provider\Domain\Model\Invoice\Pdf $pdf
@@ -230,7 +267,17 @@ interface InvoiceInterface extends LoggableEntityInterface
      */
     public function getRelFixedCosts(\Doctrine\Common\Collections\Criteria $criteria = null);
 
+    /**
+     * @param $fldName
+     * @param TempFile $file
+     */
     public function addTmpFile($fldName, \Ivoz\Core\Domain\Service\TempFile $file);
+
+    /**
+     * @param TempFile $file
+     * @throws \Exception
+     */
+    public function removeTmpFile(\Ivoz\Core\Domain\Service\TempFile $file);
 
     /**
      * @return TempFile[]

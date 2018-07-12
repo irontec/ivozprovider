@@ -12,7 +12,7 @@ class InvoiceNumberSequenceDto extends InvoiceNumberSequenceDtoAbstract
         if ($context === self::CONTEXT_COLLECTION) {
             return [
                 'id' => 'id',
-                'iden' => 'iden',
+                'name' => 'name',
                 'latestValue' => 'latestValue'
             ];
         }

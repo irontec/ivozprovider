@@ -180,6 +180,7 @@ Feature: Create companies
               "id": 1,
               "brand": 1
           },
-          "faxNotificationTemplate": null
+          "faxNotificationTemplate": null,
+          "invoiceNotificationTemplate": null
       }
     """

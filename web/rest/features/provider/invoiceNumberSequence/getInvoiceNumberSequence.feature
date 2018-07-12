@@ -15,7 +15,7 @@ Feature: Retrieve invoice number sequences
     """
       [
           {
-              "iden": "GeneratorName",
+              "name": "GeneratorName",
               "latestValue": "auto0001",
               "id": 1
           }
@@ -32,7 +32,7 @@ Feature: Retrieve invoice number sequences
     And the JSON should be like:
     """
       {
-          "iden": "GeneratorName",
+          "name": "GeneratorName",
           "prefix": "auto",
           "sequenceLength": 4,
           "increment": 1,

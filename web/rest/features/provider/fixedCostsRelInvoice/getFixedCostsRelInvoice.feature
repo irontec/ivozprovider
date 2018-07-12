@@ -17,7 +17,6 @@ Feature: Retrieve fixed costs rel invoices
           {
               "quantity": 1,
               "id": 1,
-              "brand": "~",
               "fixedCost": {
                   "name": "Monitoring",
                   "description": "Something",
@@ -59,7 +58,6 @@ Feature: Retrieve fixed costs rel invoices
       {
           "quantity": 1,
           "id": 1,
-          "brand": "~",
           "fixedCost": {
               "name": "Monitoring",
               "description": "Something",

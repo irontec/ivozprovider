@@ -30,7 +30,7 @@ class ProviderInvoiceNumberSequence extends Fixture implements DependentFixtureI
             $this->getReference('_reference_ProviderBrand1')
         );
 
-        $item1->setIden('GeneratorName');
+        $item1->setName('GeneratorName');
         $item1->setPrefix('auto');
         $item1->setSequenceLength(4);
         $item1->setIncrement(1);

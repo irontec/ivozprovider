@@ -1,12 +1,12 @@
 Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceAbstract:
   type: mappedSuperclass
   uniqueConstraints:
-    invoiceNumberSequence_iden_brand:
+    invoiceNumberSequence_name_brand:
       columns:
-        - iden
+        - name
         - brandId
   fields:
-    iden:
+    name:
       type: string
       nullable: false
       length: 40
