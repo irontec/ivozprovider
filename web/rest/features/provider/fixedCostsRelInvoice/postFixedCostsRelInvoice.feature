@@ -12,7 +12,6 @@ Feature: Create fixed costs rel invoices
     """
       {
           "quantity": 1,
-          "brand": 2,
           "fixedCost": 1,
           "invoice": 1
       }
@@ -68,7 +67,6 @@ Feature: Create fixed costs rel invoices
       {
           "quantity": 1,
           "id": 2,
-          "brand": "~",
           "fixedCost": {
               "name": "Monitoring",
               "description": "Something",

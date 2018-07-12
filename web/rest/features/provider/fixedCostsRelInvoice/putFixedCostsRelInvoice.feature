@@ -13,7 +13,6 @@ Feature: Update fixed costs rel invoices
       {
           "quantity": 2,
           "id": 1,
-          "brand": 1,
           "fixedCost": 1,
           "invoice": 1
       }
@@ -26,7 +25,6 @@ Feature: Update fixed costs rel invoices
       {
           "quantity": 2,
           "id": 1,
-          "brand": "~",
           "fixedCost": {
               "name": "Monitoring",
               "description": "Something",
