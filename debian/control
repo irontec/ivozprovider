@@ -83,6 +83,7 @@ Priority: optional
 Depends: ivozprovider-profile-common (=${binary:Version}),
     ivozprovider-doc (=${binary:Version}),
     ivozprovider-async-workers (=${binary:Version}),
+    ivozprovider-scheduler (=${binary:Version}),
     apache2,
     ssl-cert,
     php-gearman,
@@ -243,6 +244,14 @@ Priority: optional
 Depends: ivozprovider-common-library (=${binary:Version}), php-gearman
 Homepage: http://www.irontec.com
 Description: IVOZ Provider - Async Workers - Symfony microservice
+ .
+
+Package: ivozprovider-scheduler
+Architecture: all
+Priority: optional
+Depends: ivozprovider-common-library (=${binary:Version})
+Homepage: http://www.irontec.com
+Description: IVOZ Provider - Scheduled tasks runner - Symfony microservice
  .
 
 Package: ivozprovider-balances
