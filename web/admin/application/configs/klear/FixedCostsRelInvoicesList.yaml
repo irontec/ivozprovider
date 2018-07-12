@@ -14,8 +14,6 @@ production:
         items: 25
       <<: *FixedCostsRelInvoices
       title: _("List of %s %2s", ngettext('Fixed cost', 'Fixed costs', 0), "[format| (%parent%)]")
-      forcedValues:
-        <<: *forcedBrand
       fields: &fixedCostsRelInvoices_fieldsLink
         options:
           title: _("Options")
@@ -40,8 +38,6 @@ production:
       shortcutOption: N
       fullWidth: true
       filterField: Invoice
-      forcedValues:
-        <<: *forcedBrand
       fixedPositions: &fixedCostsRelInvoices_fixedPositions_Link
         group0:
           colsPerRow: 12
@@ -57,8 +53,6 @@ production:
       title: _("Edit %s %2s", ngettext('Fixed cost', 'Fixed costs', 1), "[format| (%item%)]")
       fullWidth: true
       filterField: Invoice
-      forcedValues:
-        <<: *forcedBrand
       fixedPositions:
         <<: *fixedCostsRelInvoices_fixedPositions_Link
   dialogs: &fixedCostsRelInvoices_dialogsLink

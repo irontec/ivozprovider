@@ -75,6 +75,11 @@ production:
       source:
         class: IvozProvider_Klear_Ghost_Invoice
         method: getStatus
+        values:
+          'waiting': _('Waiting')
+          'processing': _('Processing')
+          'created': _('Created')
+          'error': _('Error')
     pdf:
       title: _('Pdf file')
       type: file
