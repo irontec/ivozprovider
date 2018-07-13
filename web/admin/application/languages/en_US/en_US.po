@@ -372,6 +372,16 @@ msgstr "Cancel"
 msgid "Cannot invoice calls from today in the future."
 msgstr "Cannot invoice calls from today in the future."
 
+msgid "Carrier"
+msgid_plural "Carriers"
+msgstr[0] "Carrier"
+msgstr[1] "Carriers"
+
+msgid "Carrier server"
+msgid_plural "Carrier servers"
+msgstr[0] "Carrier server"
+msgstr[1] "Carrier servers"
+
 msgid "Charge period"
 msgstr "Charge period"
 
@@ -1021,10 +1031,9 @@ msgstr "In progress"
 msgid "Inbound"
 msgstr "Inbound"
 
-msgid ""
-"Inbound Calls cannot be billed as PeeringContract is not externally rated."
+msgid "Inbound Calls cannot be billed as DDI Provider is not externally rated."
 msgstr ""
-"Inbound Calls cannot be billed as PeeringContract is not externally rated."
+"Inbound Calls cannot be billed as DDI Provider is not externally rated."
 
 msgid "Inbound configuration"
 msgstr "Inbound configuration"
@@ -1610,16 +1619,6 @@ msgstr "Pattern"
 
 msgid "Pdf file"
 msgstr "Pdf file"
-
-msgid "Peer server"
-msgid_plural "Peer servers"
-msgstr[0] "Peer server"
-msgstr[1] "Peer servers"
-
-msgid "Peering contract"
-msgid_plural "Peering contracts"
-msgstr[0] "Peering contract"
-msgstr[1] "Peering contracts"
 
 msgid "Peering contract id"
 msgstr "Peering Contract"

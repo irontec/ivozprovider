@@ -1,7 +1,7 @@
 {
   "country": "70",
   "DDI": "123",
-  "peeringContract": "1",
+  "ddiProvider": "1",
   "displayName": "",
   "language": "__NULL__",
   "externalCallFilter": "__NULL__",

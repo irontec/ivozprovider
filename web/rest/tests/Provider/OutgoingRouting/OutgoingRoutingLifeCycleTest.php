@@ -25,7 +25,7 @@ class OutgoingRoutingLifeCycleTestLifeCycleTest extends KernelTestCase
               ->setWeight(2)
               ->setBrandId(1)
               ->setCompanyId(1)
-              ->setPeeringContractId(1)
+              ->setCarrierId(1)
               ->setRoutingPatternId(1);
 
         return $outgoingRoutingDto;

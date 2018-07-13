@@ -27,7 +27,7 @@ class ProviderOutgoingRouting extends Fixture implements DependentFixtureInterfa
         $item1->setWeight(1);
         $item1->setBrand($this->getReference('_reference_ProviderBrand1'));
         $item1->setCompany($this->getReference('_reference_ProviderCompany1'));
-        $item1->setPeeringContract($this->getReference('_reference_ProviderPeeringContract1'));
+        $item1->setCarrier($this->getReference('_reference_ProviderCarrier1'));
         $item1->setRoutingPattern($this->getReference('_reference_ProviderRoutingPatternRoutingPattern68'));
         $item1->setRoutingTag($this->getReference('_reference_ProviderRoutingTag1'));
         $this->addReference('_reference_ProviderOutgoingRouting1', $item1);
@@ -39,7 +39,7 @@ class ProviderOutgoingRouting extends Fixture implements DependentFixtureInterfa
         $item2->setPriority(11);
         $item2->setWeight(6);
         $item2->setBrand($this->getReference('_reference_ProviderBrand1'));
-        $item2->setPeeringContract($this->getReference('_reference_ProviderPeeringContract1'));
+        $item2->setCarrier($this->getReference('_reference_ProviderCarrier1'));
         $item2->setRoutingPattern($this->getReference('_reference_ProviderRoutingPatternRoutingPattern68'));
         $item2->setRoutingTag($this->getReference('_reference_ProviderRoutingTag1'));
         $this->addReference('_reference_ProviderOutgoingRouting2', $item2);
@@ -54,6 +54,7 @@ class ProviderOutgoingRouting extends Fixture implements DependentFixtureInterfa
         return array(
             ProviderBrand::class,
             ProviderCompany::class,
+            ProviderCarrier::class,
             ProviderRoutingTag::class
         );
     }

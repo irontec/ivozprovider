@@ -29,6 +29,10 @@ doctrine:
         Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchList
       Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface:
         Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting
+      Ivoz\Provider\Domain\Model\Carrier\CarrierInterface:
+        Ivoz\Provider\Domain\Model\Carrier\Carrier
+      Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface:
+        Ivoz\Provider\Domain\Model\CarrierServer\CarrierServer
       Ivoz\Provider\Domain\Model\Commandlog\CommandlogInterface:
         Ivoz\Provider\Domain\Model\Commandlog\Commandlog
       Ivoz\Provider\Domain\Model\Codec\CodecInterface:
@@ -147,10 +151,6 @@ doctrine:
         Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPattern
       Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface:
         Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting
-      Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface:
-        Ivoz\Provider\Domain\Model\PeeringContract\PeeringContract
-      Ivoz\Provider\Domain\Model\PeerServer\PeerServerInterface:
-        Ivoz\Provider\Domain\Model\PeerServer\PeerServer
       Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupInterface:
         Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroup
       Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface:

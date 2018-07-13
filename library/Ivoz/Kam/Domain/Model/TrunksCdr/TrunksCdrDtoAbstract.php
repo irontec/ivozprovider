@@ -113,9 +113,9 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     private $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractDto | null
+     * @var \Ivoz\Provider\Domain\Model\Carrier\CarrierDto | null
      */
-    private $peeringContract;
+    private $carrier;
 
     /**
      * @var \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationDto | null
@@ -165,7 +165,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
             'invoiceId' => 'invoice',
             'brandId' => 'brand',
             'companyId' => 'company',
-            'peeringContractId' => 'peeringContract',
+            'carrierId' => 'carrier',
             'tpDestinationId' => 'tpDestination',
             'destinationRateId' => 'destinationRate'
         ];
@@ -197,7 +197,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
             'invoice' => $this->getInvoice(),
             'brand' => $this->getBrand(),
             'company' => $this->getCompany(),
-            'peeringContract' => $this->getPeeringContract(),
+            'carrier' => $this->getCarrier(),
             'tpDestination' => $this->getTpDestination(),
             'destinationRate' => $this->getDestinationRate()
         ];
@@ -211,7 +211,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         $this->invoice = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Invoice\\Invoice', $this->getInvoiceId());
         $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
         $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
-        $this->peeringContract = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\PeeringContract\\PeeringContract', $this->getPeeringContractId());
+        $this->carrier = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Carrier\\Carrier', $this->getCarrierId());
         $this->tpDestination = $transformer->transform('Ivoz\\Cgr\\Domain\\Model\\TpDestination\\TpDestination', $this->getTpDestinationId());
         $this->destinationRate = $transformer->transform('Ivoz\\Cgr\\Domain\\Model\\DestinationRate\\DestinationRate', $this->getDestinationRateId());
     }
@@ -703,23 +703,23 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractDto $peeringContract
+     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierDto $carrier
      *
      * @return static
      */
-    public function setPeeringContract(\Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractDto $peeringContract = null)
+    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierDto $carrier = null)
     {
-        $this->peeringContract = $peeringContract;
+        $this->carrier = $carrier;
 
         return $this;
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractDto
+     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierDto
      */
-    public function getPeeringContract()
+    public function getCarrier()
     {
-        return $this->peeringContract;
+        return $this->carrier;
     }
 
     /**
@@ -727,21 +727,21 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
      *
      * @return static
      */
-    public function setPeeringContractId($id)
+    public function setCarrierId($id)
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractDto($id)
+            ? new \Ivoz\Provider\Domain\Model\Carrier\CarrierDto($id)
             : null;
 
-        return $this->setPeeringContract($value);
+        return $this->setCarrier($value);
     }
 
     /**
      * @return integer | null
      */
-    public function getPeeringContractId()
+    public function getCarrierId()
     {
-        if ($dto = $this->getPeeringContract()) {
+        if ($dto = $this->getCarrier()) {
             return $dto->getId();
         }
 

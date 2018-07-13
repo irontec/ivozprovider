@@ -6,13 +6,13 @@ services:
   ##################################
   ## on_commit
   ##################################
-  Ivoz\Provider\Infrastructure\Domain\Service\PeeringContract\SendTrunksLcrReloadRequest:
+  Ivoz\Provider\Infrastructure\Domain\Service\Carrier\SendTrunksLcrReloadRequest:
     tags: [{ name: 'domain.service'}]
     arguments:
       $trunksLcrReload:
         '@XmlRpc\XmlRpcTrunksRequest::LcrReload'
 
-  Ivoz\Provider\Infrastructure\Domain\Service\PeeringContract\SendTrunksUacRegReloadRequest:
+  Ivoz\Provider\Infrastructure\Domain\Service\Carrier\SendTrunksUacRegReloadRequest:
     tags: [{ name: 'domain.service'}]
     arguments:
       $trunksUacRegReload:

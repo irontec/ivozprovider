@@ -38,7 +38,7 @@ production:
         blacklist:
           brand: true
           company: true
-          peeringContract: true
+          carrier: true
           invoice: true
         order:
           startTime: true
@@ -57,7 +57,7 @@ production:
         blacklist:
           brand: true
           company: true
-          peeringContract: true
+          carrier: true
           invoice: true
         order:
           startTime: true

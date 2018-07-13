@@ -205,20 +205,20 @@ interface TrunksLcrGatewayInterface extends LoggableEntityInterface
     public function getDefunct();
 
     /**
-     * Set peerServer
+     * Set carrierServer
      *
-     * @param \Ivoz\Provider\Domain\Model\PeerServer\PeerServerInterface $peerServer
+     * @param \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface $carrierServer
      *
      * @return self
      */
-    public function setPeerServer(\Ivoz\Provider\Domain\Model\PeerServer\PeerServerInterface $peerServer);
+    public function setCarrierServer(\Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface $carrierServer);
 
     /**
-     * Get peerServer
+     * Get carrierServer
      *
-     * @return \Ivoz\Provider\Domain\Model\PeerServer\PeerServerInterface
+     * @return \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface
      */
-    public function getPeerServer();
+    public function getCarrierServer();
 
 }
 

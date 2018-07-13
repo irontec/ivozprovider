@@ -43,6 +43,14 @@ mappers:
         modelFile: CallForwardSettings,
         entity: 'Ivoz\\Provider\\Domain\\Model\\CallForwardSetting\\CallForwardSetting'
     }
+  - &Carriers {
+        modelFile: Carriers,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\Carrier\\Carrier'
+    }
+  - &CarrierServers {
+        modelFile: CarrierServers,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\CarrierServer\\CarrierServer'
+    }
   - &Companies {
         modelFile: Companies,
         entity: 'Ivoz\\Provider\\Domain\\Model\\Company\\Company'
@@ -210,14 +218,6 @@ mappers:
   - &OutgoingRouting {
         modelFile: OutgoingRouting,
         entity: 'Ivoz\\Provider\\Domain\\Model\\OutgoingRouting\\OutgoingRouting'
-    }
-  - &PeeringContracts {
-        modelFile: PeeringContracts,
-        entity: 'Ivoz\\Provider\\Domain\\Model\\PeeringContract\\PeeringContract'
-    }
-  - &PeerServers {
-        modelFile: PeerServers,
-        entity: 'Ivoz\\Provider\\Domain\\Model\\PeerServer\\PeerServer'
     }
   - &PickUpGroups {
         modelFile: PickUpGroups,
