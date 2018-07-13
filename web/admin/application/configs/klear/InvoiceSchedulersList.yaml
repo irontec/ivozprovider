@@ -1,6 +1,7 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
 #include FixedCostsRelInvoiceSchedulersList.yaml
+#include InvoicesList.yaml
 
 production:
   main:
@@ -89,7 +90,7 @@ production:
       fixedPositions:
         <<: *invoiceSchedulersFixedPositions_Link
 
-    #Invoices:
+    # Invoices
     <<: *invoices_screensLink
     invoicesList_screen:
       <<: *invoicesList_screenLink
@@ -122,7 +123,9 @@ production:
       multiItem: 1
       labelOnList: 1
 
-  # invoices dialogs:
+    # Invoices dialogs
+    <<: *invoices_dialogsLink
+    # Fixed Cost for Schedulers dialogs
     <<: *fixedCostsRelInvoiceSchedulers_dialogsLink
 
   commands: &invoiceSchedulers__commandsLink
