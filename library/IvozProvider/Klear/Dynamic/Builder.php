@@ -89,7 +89,12 @@ class Builder
         self::$_brandURL = $brandURLMapper->findOneByField('url', $urls);
 
         if (!self::$_brandURL instanceof \IvozProvider\Model\BrandURLs) {
-            self::$_brandURL = $brandURLMapper->findOneByField('urlType', 'god');
+            self::$_brandURL = new \IvozProvider\Model\BrandURLs();
+            self::$_brandURL
+                ->setName('Global Administration portal')
+                ->setUrlType('god')
+                ->setKlearTheme('redmond');
+
             return false;
         }
 
