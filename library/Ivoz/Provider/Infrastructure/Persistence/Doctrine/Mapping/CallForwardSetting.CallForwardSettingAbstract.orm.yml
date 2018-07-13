@@ -55,7 +55,7 @@ Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingAbstract:
       joinColumns:
         userId:
           referencedColumnName: id
-          nullable: false
+          nullable: true
           onDelete: cascade
       orphanRemoval: false
     extension:
@@ -100,5 +100,6 @@ Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingAbstract:
       joinColumns:
         residentialDeviceId:
           referencedColumnName: id
+          nullable: true
           onDelete: cascade
       orphanRemoval: false

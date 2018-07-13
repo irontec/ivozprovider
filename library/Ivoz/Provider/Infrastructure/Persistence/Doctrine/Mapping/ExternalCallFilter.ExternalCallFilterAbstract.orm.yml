@@ -76,6 +76,8 @@ Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilterAbstract:
       joinColumns:
         holidayLocutionId:
           referencedColumnName: id
+          nullable: true
+          onDelete: set null
       orphanRemoval: false
     outOfScheduleLocution:
       targetEntity: \Ivoz\Provider\Domain\Model\Locution\LocutionInterface
