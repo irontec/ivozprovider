@@ -35,7 +35,7 @@ abstract class DdiAbstract
     protected $displayName;
 
     /**
-     * comment: enum:user|ivr|huntGroup|fax|conferenceRoom|friend|queue|conditional|residential
+     * comment: enum:user|ivr|huntGroup|fax|conferenceRoom|friend|queue|conditional|residential|retail
      * @var string
      */
     protected $routeType;
@@ -119,6 +119,11 @@ abstract class DdiAbstract
      * @var \Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface
      */
     protected $conditionalRoute;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface
+     */
+    protected $retailAccount;
 
 
     use ChangelogTrait;
@@ -220,6 +225,7 @@ abstract class DdiAbstract
             ->setCountry($dto->getCountry())
             ->setResidentialDevice($dto->getResidentialDevice())
             ->setConditionalRoute($dto->getConditionalRoute())
+            ->setRetailAccount($dto->getRetailAccount())
         ;
 
         $self->sanitizeValues();
@@ -260,7 +266,8 @@ abstract class DdiAbstract
             ->setDdiProvider($dto->getDdiProvider())
             ->setCountry($dto->getCountry())
             ->setResidentialDevice($dto->getResidentialDevice())
-            ->setConditionalRoute($dto->getConditionalRoute());
+            ->setConditionalRoute($dto->getConditionalRoute())
+            ->setRetailAccount($dto->getRetailAccount());
 
 
 
@@ -295,7 +302,8 @@ abstract class DdiAbstract
             ->setDdiProvider(\Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider::entityToDto(self::getDdiProvider(), $depth))
             ->setCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto(self::getCountry(), $depth))
             ->setResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice::entityToDto(self::getResidentialDevice(), $depth))
-            ->setConditionalRoute(\Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute::entityToDto(self::getConditionalRoute(), $depth));
+            ->setConditionalRoute(\Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute::entityToDto(self::getConditionalRoute(), $depth))
+            ->setRetailAccount(\Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount::entityToDto(self::getRetailAccount(), $depth));
     }
 
     /**
@@ -324,7 +332,8 @@ abstract class DdiAbstract
             'ddiProviderId' => self::getDdiProvider() ? self::getDdiProvider()->getId() : null,
             'countryId' => self::getCountry() ? self::getCountry()->getId() : null,
             'residentialDeviceId' => self::getResidentialDevice() ? self::getResidentialDevice()->getId() : null,
-            'conditionalRouteId' => self::getConditionalRoute() ? self::getConditionalRoute()->getId() : null
+            'conditionalRouteId' => self::getConditionalRoute() ? self::getConditionalRoute()->getId() : null,
+            'retailAccountId' => self::getRetailAccount() ? self::getRetailAccount()->getId() : null
         ];
     }
 
@@ -468,6 +477,7 @@ abstract class DdiAbstract
           6 => 'queue',
           7 => 'conditional',
           8 => 'residential',
+          9 => 'retail',
         ), 'routeTypevalue "%s" is not an element of the valid values: %s');
         }
 
@@ -875,6 +885,30 @@ abstract class DdiAbstract
     public function getConditionalRoute()
     {
         return $this->conditionalRoute;
+    }
+
+    /**
+     * Set retailAccount
+     *
+     * @param \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount
+     *
+     * @return self
+     */
+    public function setRetailAccount(\Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount = null)
+    {
+        $this->retailAccount = $retailAccount;
+
+        return $this;
+    }
+
+    /**
+     * Get retailAccount
+     *
+     * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface
+     */
+    public function getRetailAccount()
+    {
+        return $this->retailAccount;
     }
 
 
