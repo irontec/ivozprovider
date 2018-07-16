@@ -258,7 +258,15 @@ mappers:
   - &ResidentialClients {
         modelFile: ResidentialClients,
         entity: 'Ivoz\\Provider\\Domain\\Model\\Company\\Company'
-  }
+    }
+  - &RetailAccounts {
+        modelFile: RetailAccounts,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\RetailAccount\\RetailAccount'
+    }
+  - &RetailClients {
+        modelFile: RetailClients,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\Company\\Company'
+    }
   - &RoutingPatternGroups {
         modelFile: RoutingPatternGroups,
         entity: 'Ivoz\\Provider\\Domain\\Model\\RoutingPatternGroup\\RoutingPatternGroup'

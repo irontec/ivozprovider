@@ -661,6 +661,10 @@ msgid "Emulate Residential Client %s"
 msgstr "Emular Cliente Residencial %s"
 
 #, python-format
+msgid "Emulate Retail Client %s"
+msgstr "Emular Cliente Retail %s"
+
+#, python-format
 msgid "Emulate Wholesale Client %s"
 msgstr "Emular Cliente Wholesale %s"
 
@@ -1913,6 +1917,26 @@ msgstr "Restaurar último backup"
 
 msgid "Results"
 msgstr "Resultados"
+
+msgid "Retail"
+msgid_plural "Retails"
+msgstr[0] "Retail"
+msgstr[1] "Retails"
+
+msgid "Retail Account"
+msgid_plural "Retail Accounts"
+msgstr[0] "Cuenta Retail"
+msgstr[1] "Cuentas Retail"
+
+msgid "Retail Client"
+msgid_plural "Retail Clients"
+msgstr[0] "Cliente Retail"
+msgstr[1] "Clientes Retail"
+
+msgid "Retail admin"
+msgid_plural "Retail admins"
+msgstr[0] "Administrador Retail"
+msgstr[1] "Administradores Retail"
 
 msgid "Ring all"
 msgstr "A todos"

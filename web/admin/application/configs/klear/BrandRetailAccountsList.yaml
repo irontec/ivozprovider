@@ -1,42 +1,30 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
-#include conf.d/documentationLink.yaml
 
 production:
   main:
     module: klearMatrix
-    defaultScreen: residentialDevicesList_screen
-  screens: &residentialDevices_screensLink
-    residentialDevicesList_screen: &residentialDevicesList_screenLink
+    defaultScreen: retailAccountsList_screen
+  screens: &retailAccounts_screensLink
+    retailAccountsList_screen: &retailAccountsList_screenLink
       controller: list
       pagination:
         items: 25
-      <<: *ResidentialDevices
+      <<: *RetailAccounts
       class: ui-silk-text-list-bullets
-      title: _("List of %s %2s", ngettext('Residential Device', 'Residential Devices', 0), "[format| (%parent%)]")
-      info:
-        <<: *documentationLink
-        href: "/doc/${lang}/residential/devices.html"
+      title: _("List of %s %2s", ngettext('Retail Account', 'Retail Accounts', 0), "[format| (%parent%)]")
       forcedValues:
         <<: *forcedBrand
       fields:
-        blacklist: &residentialDevices_blacklistLink
+        blacklist: &retailAccounts_blacklistLink
           transport: true
-          authNeeded: true
           password: true
-          areaCode: true
           country: true
-          allow: true
-          disallow: true
-          directMediaMethod: true
-          updateCallerid: true
           fromDomain: true
-          calleridUpdateHeader: true
           directConnectivity: true
           transformationRuleSet: true
           ip: true
           port: true
-          language: true
           status: true
         order:
           company: true
