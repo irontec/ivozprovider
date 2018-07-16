@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-01 16:27+0200\n"
+"POT-Creation-Date: 2018-07-18 19:01+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.4.0\n"
+"Generated-By: Babel 2.3.4\n"
 
 #: ../../company/calendars.rst:3 ../../company/external_filters.rst:56
 msgid "Calendars"
@@ -1004,16 +1004,16 @@ msgid "The number, without country code."
 msgstr "El número en cuestión, sin códigos de país."
 
 #: ../../company/ddis.rst:12
-msgid "Peering contract"
-msgstr "Contrato de peering"
+msgid "DDI Provider"
+msgstr "Proveedor DDI"
 
 #: ../../company/ddis.rst:14
 msgid ""
-"The peering contract that provides this number. This relation allow the "
-"platform to apply the required :ref:`transformations` in order to "
-"determine its standard form."
+"The :ref:`DDI Provider <ddi_provider>` that provides this number. This "
+"relation allow the platform to apply the required :ref:`transformations` "
+"in order to determine its standard form."
 msgstr ""
-"El contrato de peering por el que entra la numeración. Esta relación "
+"El :ref:`proveedor DDI <ddi_provider>` por el que entra la numeración. Esta relación "
 "permite aplicar las :ref:`Transformaciones Numéricas` adecuadas."
 
 #: ../../company/ddis.rst:17

@@ -7,6 +7,7 @@ Brand Configuration
     virtual_pbx
     retail
     wholesale
+    residential
     balances
     portal_urls
     notifications

@@ -1,6 +1,6 @@
-************
-SIP Register
-************
+**************************
+DDI Provider Registrations
+**************************
 
 Some providers require a `SIP Register
 <https://tools.ietf.org/html/rfc3261#section-10>`_ active in order to receive
@@ -12,27 +12,6 @@ to process our outgoing calls through their services.
    validated by IP. This will avoid unnecessary traffic (authentication in each
    session and preriodic registers) and simplifies its configuration, just by
    leaving most of the fields by default.
-
-For this reason, IvozProvider allows periodic SIP register configuration in the
-following section:
-
-.. ifconfig:: language == 'en'
-
-    .. image:: img/en/sip_registers.png
-
-.. ifconfig:: language == 'es'
-
-    .. image:: img/es/sip_registers.png
-
-If we create a new one, the following screen will be displayed:
-
-.. ifconfig:: language == 'en'
-
-    .. image:: img/en/sip_registers_add.png
-
-.. ifconfig:: language == 'es'
-
-    .. image:: img/es/sip_registers_add.png
 
 .. glossary::
 
@@ -46,10 +25,10 @@ If we create a new one, the following screen will be displayed:
 
     DDI
         This will be sent in the SIP Contact header and must be unique in all
-        the platform. For Peering contracts with an associated DDI, it is
+        the platform. For DDI Providers with an associated DDI, it is
         recommended to enter that DDI. In case of multiples DDI for the same
-        Peering Contract, use any of them. If no DDI is associated with this
-        Peering Contract just enter an unique numeric value.
+        DDI Provider, use any of them. If no DDI is associated with this
+        DDI Provider just enter an unique numeric value.
 
     User
         Authentication user. Most of the time it's the same as username, so

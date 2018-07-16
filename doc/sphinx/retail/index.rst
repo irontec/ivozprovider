@@ -19,7 +19,6 @@ associated with Retail clients included in IvozProvider.
     :caption: Retail concepts
 
     accounts
-    filters
     ddis
 
 .. toctree::
@@ -27,4 +26,3 @@ associated with Retail clients included in IvozProvider.
     :caption: Additional retail features
 
     /company/call_recording
-    /company/faxing

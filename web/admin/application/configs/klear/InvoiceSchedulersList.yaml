@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
 #include FixedCostsRelInvoiceSchedulersList.yaml
 #include InvoicesList.yaml
 
@@ -15,6 +16,9 @@ production:
       <<: *InvoiceSchedulers
       class: ui-silk-report-clock
       title: _("List of %s %2s", ngettext('Invoice scheduler', 'Invoice schedulers', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/brand/invoices/scheduler.html"
       forcedValues:
         <<: *forcedBrand
       fields: &invoiceSchedulers_fieldsLink

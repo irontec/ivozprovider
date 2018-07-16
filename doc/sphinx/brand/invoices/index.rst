@@ -10,3 +10,4 @@ cost of a given company.
     templates
     fixed_costs
     invoices
+    number_sequences

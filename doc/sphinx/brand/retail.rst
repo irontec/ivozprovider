@@ -31,7 +31,7 @@ Retail are designed to provider DDI routing service to clients with self hosted 
         Data included in invoices created by this brand.
 
     Externally rated options
-        For :ref:`Peering contracts` with externally rated enabled, this field can be used to store specific
+        For :ref:`Carriers` with externally rated enabled, this field can be used to store specific
         information for this client.
 
     Notifications

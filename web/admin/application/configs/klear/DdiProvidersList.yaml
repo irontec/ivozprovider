@@ -19,7 +19,7 @@ production:
       title: _("List of %s %2s", ngettext('DDI Provider', 'DDI Providers', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/brand/providers/ddi_provider.html"
+        href: "/doc/${lang}/brand/peering/ddi_providers.html"
       forcedValues:
         <<: *forcedBrand
       fields:

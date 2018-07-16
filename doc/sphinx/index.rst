@@ -47,6 +47,7 @@ IvozProvider Official Documentation
     platform/index
     brand/index
     company/index
+    residential/index
     retail/index
 
 .. toctree::

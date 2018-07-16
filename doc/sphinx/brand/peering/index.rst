@@ -4,8 +4,10 @@ Peering
 
 .. toctree::
 
-    peering_contracts
-    peer_servers
-    sip_register
+    carriers
+    carrier_servers
+    ddi_providers
+    ddi_provider_registrations
+    ddi_provider_addresses
 
 

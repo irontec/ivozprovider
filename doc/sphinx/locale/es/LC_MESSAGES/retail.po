@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-20 13:02+0200\n"
+"POT-Creation-Date: 2018-07-18 19:01+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.4.0\n"
+"Generated-By: Babel 2.3.4\n"
 
 #: ../../retail/accounts.rst:5
 msgid "Retail Accounts"
@@ -112,7 +112,7 @@ msgstr "Configuracion de las cuentas retail"
 msgid "These are the configurable settings of *Retail accounts*:"
 msgstr "Estas son las opciones de configuracion de las *Cuentas retail*:"
 
-#: ../../retail/accounts.rst:43 ../../retail/filters.rst:16
+#: ../../retail/accounts.rst:43
 msgid "Name"
 msgstr "Nombre"
 
@@ -253,100 +253,31 @@ msgstr "DDIs Retail"
 
 #: ../../retail/ddis.rst:7
 msgid ""
-"DDIs are the external entry point from Contract Peerings to Retail "
-"Clients that can be routed through Retail Accounts."
+"DDIs are the external entry point from DDI Providers to Retail Clients "
+"that can be routed through Retail Accounts."
 msgstr ""
-"Los DDIs son el punto de entrada externa desde Contratos de peering a "
+"Los DDIs son el punto de entrada externa desde Proveedores DDI a "
 "Clientes Retail que se enrutarán a través de Cuentas de Retail."
 
-#: ../../retail/ddis.rst:13
-msgid "DDI filters"
-msgstr "Filtros DDI"
-
-#: ../../retail/ddis.rst:15
-msgid ""
-"We can assign an **external call filter** configured in :ref:`previous "
-"section <retail_filters>`. Contrary to Virtual PBX External Call fiters, "
-"Retail DDIs filters only allow static redirection to another external "
-"number."
-msgstr ""
-"Podemos asignar un **filtro de entrada** configurado en :ref:`la anterior"
-" sección <retail_filters>`. Al contrario que los filtros externos "
-"disponibles en las PBX Virtuales, los filtros de los DDI de Retail tan "
-"solo proporcionan un desvío estático a un número externo."
-
-#: ../../retail/ddis.rst:21
+#: ../../retail/ddis.rst:12
 msgid "Retail DDI routes"
 msgstr "Rutas de DDI Retail"
 
-#: ../../retail/ddis.rst:23
+#: ../../retail/ddis.rst:14
 msgid ""
 "Retail DDIs can only be routed to a :ref:`Retail Accounts "
-"<retail_accounts>` or :ref:`Virtual Fax <faxing_system>`."
+"<retail_accounts>`"
 msgstr ""
 "Los DDI de Retail solo pueden ser enrutados a :ref:`Cuentas Retail "
-"<retail_accounts>` o :ref:`Faxes Virtuales <faxing_system>`."
+"<retail_accounts>`"
 
-#: ../../retail/ddis.rst:26
+#: ../../retail/ddis.rst:16
 msgid ""
 "Routing a DDI through a Retail account will allow to place external calls"
 " from that account presenting that DDI as origin."
 msgstr ""
 "Enrutar un DDI a través de una Cuenta Retail permitirá realizar llamadas "
 "externas desde esa cuenta presentando dicho DDI como origen."
-
-#: ../../retail/ddis.rst:31
-msgid "Recordings"
-msgstr "Grabaciones"
-
-#: ../../retail/ddis.rst:33
-msgid ""
-"If Retail Client has *Recordings* feature enabled, DDIs can also record "
-"incoming and/or outgoing calls."
-msgstr ""
-"Si el Cliente Retail tiene la feature *Grabaciones* habilitada, los DDIs "
-"también podrán grabar las llamadas salientes y/o entrantes·"
-
-#: ../../retail/filters.rst:5
-msgid "Retail DDI filters"
-msgstr "Filtros DDI Retail"
-
-#: ../../retail/filters.rst:7
-msgid ""
-"Retail External Filters can be assigned to DDIs to temporary forward "
-"calls to an external number."
-msgstr ""
-"Los Filtros Externos de Retail pueden asignarse a DDIs permitiendo un "
-"desvío temporal a números externos."
-
-#: ../../retail/filters.rst:11
-msgid "Filters Configuration"
-msgstr "Configuración de Filtros"
-
-#: ../../retail/filters.rst:13
-msgid "This are the configurable settings of *Retail external filters*:"
-msgstr "Estas son las opciones configurables de los *Filtros externos de Retail*:"
-
-#: ../../retail/filters.rst:18
-msgid "Name of the filter."
-msgstr "Nombre del filtro."
-
-#: ../../retail/filters.rst:19
-msgid "Number"
-msgstr "Número"
-
-#: ../../retail/filters.rst:21
-msgid "External Destination for this filter."
-msgstr "Destino externo para este filtro."
-
-#: ../../retail/filters.rst:24
-msgid ""
-"Calls forwarded by a filter will keep the original caller identification,"
-" adding the fordwarding info in a SIP *Diversion* header."
-msgstr ""
-"Las llamadas desviadas por un filtro mantendrán la identificación "
-"original del llamante, añadiendo los datos del desviador en una cabecera "
-"SIP *Diversion*."
 
 #: ../../retail/index.rst:3
 msgid "Retail Configuration"

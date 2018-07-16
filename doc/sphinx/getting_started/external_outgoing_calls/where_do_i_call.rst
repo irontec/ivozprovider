@@ -10,8 +10,8 @@ in an existing **target pattern**.
 
 .. toctree::
 
-    /brand/routing/target_patterns
-    /brand/routing/target_pattern_groups
+    /brand/routing/patterns
+    /brand/routing/pattern_groups
 
 
 To achieve our goal of making an external call to a spanish number, we didn't have

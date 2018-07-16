@@ -1,16 +1,16 @@
-.. _retail_filters:
+.. _residential_filters:
 
-#####################
-Retail DDI filters
-#####################
+#######################
+Residential DDI filters
+#######################
 
-Retail External Filters can be assigned to DDIs to temporary
+Residential External Filters can be assigned to DDIs to temporary
 forward calls to an external number.
 
 Filters Configuration
 =====================
 
-This are the configurable settings of *Retail external filters*:
+This are the configurable settings of *Residential external filters*:
 
 .. glossary::
 

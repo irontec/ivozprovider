@@ -26,6 +26,6 @@ For a StandAlone installation, we recommend at least:
 
 If you're not using a :ref:`Automatic ISO CD image` you will also need:
 
-    * Debian Jessie 8.0 base install
+    * Debian Stretch 9.0 base install
     * Internet access
 

@@ -20,6 +20,5 @@ IvozProvider is ready to integrate with IP providers created on the secteion
 
 .. toctree::
 
-    /brand/peering/peering_contracts
-    /brand/peering/peer_servers
-    /brand/peering/sip_register
+    /brand/peering/ddi_providers
+    /brand/peering/ddi_provider_registrations

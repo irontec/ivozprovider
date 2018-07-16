@@ -3,7 +3,7 @@ Routing tags
 ************
 
 In most scenarios, Brands administrators are responsible of configuring
-:ref:`Peering Contracts` and :ref:`Outgoing Routing` to provide connectivity for
+:ref:`Carriers` and :ref:`Outgoing Routing` to provide connectivity for
 their clients. But in some cases, clients want to choose the outgoing routing to
 use per call.
 

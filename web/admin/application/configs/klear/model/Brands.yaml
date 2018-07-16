@@ -203,7 +203,7 @@ production:
                   - recordingsLimitMB
                   - recordingsDiskUsage
                   - recordingsLimitEmail
-              billing:
+              invoices:
                 toggle:
                   - invoice.PostalAddress
                   - invoice.PostalCode

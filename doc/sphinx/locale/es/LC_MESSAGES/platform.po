@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-01 12:51+0200\n"
+"POT-Creation-Date: 2018-07-18 19:01+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.4.0\n"
+"Generated-By: Babel 2.3.4\n"
 
 #: ../../platform/antiflood.rst:5
 msgid "Antiflood trusted IPs"
@@ -124,7 +124,7 @@ msgid "Sets the name for this brand."
 msgstr "Configura el nombre de esta marca."
 
 #: ../../platform/brands.rst:8
-msgid "NIF"
+msgid "TIN"
 msgstr "NIF"
 
 #: ../../platform/brands.rst:10
@@ -152,34 +152,23 @@ msgid "Data included in invoices created by this brand."
 msgstr "Información incluida en las facturas creadas por esta marca."
 
 #: ../../platform/brands.rst:18
-msgid "Mail data"
-msgstr "Información de notificaciones"
-
-#: ../../platform/brands.rst:20
-msgid ""
-"Display name and from address used in external emails for this brand "
-"(faxes, voicemail, etc.)"
-msgstr ""
-"Nombre y dirección origen empleada en los emails de notificación enviados"
-" por esta marca (faxes, voicemail, etc.)"
-
-#: ../../platform/brands.rst:22
 msgid "SIP domain"
 msgstr "Dominio SIP"
 
-#: ../../platform/brands.rst:24
+#: ../../platform/brands.rst:20
 msgid ""
 "Introduced in 1.4. Domain pointing to Users SIP proxy used by all the "
-"Retail Accounts of this brand."
+"Retail Accounts and Residential Devices of this brand."
 msgstr ""
 "Introducido en 1.4. Configura el dominio que apuntará al proxy SIP de "
-"usuarios empleado por todas las cuentas Retail de esta marca."
+"usuarios empleado por todas las cuentas Retail y Dispositivos Residenciales "
+"de esta marca."
 
-#: ../../platform/brands.rst:26
+#: ../../platform/brands.rst:22
 msgid "Recordings"
 msgstr "Grabaciones"
 
-#: ../../platform/brands.rst:28
+#: ../../platform/brands.rst:24
 #, python-format
 msgid ""
 "Configures a limit for the size of recordings of this brand. A "
@@ -191,11 +180,11 @@ msgstr ""
 "80% y se rotarán las grabaciones más antiguas cuando se alcance el "
 "límite."
 
-#: ../../platform/brands.rst:31
+#: ../../platform/brands.rst:27
 msgid "Features"
 msgstr "Features"
 
-#: ../../platform/brands.rst:33
+#: ../../platform/brands.rst:29
 msgid ""
 "Introduced in 1.3, lets god operator choose the features of the created "
 "brand. An equivalent configuration is available in Companies, to choose "
@@ -208,18 +197,37 @@ msgstr ""
 "marca. Se habilitarán o deshabilitarán secciones en función de esta "
 "configuración."
 
-#: ../../platform/brands.rst:38
-msgid ""
-"Some features (currently invoices and billing) are related to brand and "
-"cannot be assigned to companies. Remaining features are related to "
-"companies and lets the brand operator to assign them to its companies."
-msgstr ""
-"Algunas features (actualmente facturas y tarificación) estan relacionadas"
-" con las marcas y no pueden ser asignadas a compañías. El resto de "
-"features estan relacionadas con compañías y el propio administrador de "
-"marca podrá asignarlas  a sus compañías."
+#: ../../platform/brands.rst:33
+msgid "Max calls"
+msgstr "Límite llamadas"
 
-#: ../../platform/brands.rst:42
+#: ../../platform/brands.rst:35
+msgid ""
+"Limits both user generated and **external** received calls to this value "
+"(0 for unlimited)."
+msgstr ""
+"Limita tanto las llamadas generadas por los usuarios como las llamadas "
+"recibidas desde el exterior a este valor (0 para ilimitado)."
+
+#: ../../platform/brands.rst:37
+msgid "Locales"
+msgstr "Localización"
+
+#: ../../platform/brands.rst:39
+msgid "Define default Timezone and Language for clients of this brand."
+msgstr "Define la Zona horaria e Idioma para los clientes de esta marca."
+
+#: ../../platform/brands.rst:41
+msgid ""
+"Some features are related to brand and cannot be assigned to companies. "
+"Other ones are also related to companies and lets the brand operator to "
+"assign them to its companies."
+msgstr ""
+"Algunas features estan relacionadas con las marcas y no pueden ser asignadas "
+"a compañías. Otras features estan relacionadas con compañías y el propio "
+"administrador de marca podrá asignarlas  a sus compañías."
+
+#: ../../platform/brands.rst:45
 msgid ""
 "Disabling billing hides all related sections and assumes that an external"
 " element will set a price for calls (external tarification module is "
@@ -229,13 +237,21 @@ msgstr ""
 "asumirá que un elemento externo se encargá de poner precios a cada "
 "llamada (requerirá un módulo de tarificación externa, ¡pídelo!)."
 
-#: ../../platform/brands.rst:46
+#: ../../platform/brands.rst:49
 msgid ""
 "Disabling invoices hides related sections, assuming you will use an "
 "external tool to generate them."
 msgstr ""
 "Deshabilitar facturas ocultará las secciones relacionadas y asumirá que "
 "un elemento externo se encargará de generar las facturas."
+
+#: ../../platform/brands.rst:52
+msgid ""
+"SIP domain is only visible for Brands with Retail or Residential features"
+" enabled."
+msgstr ""
+"El dominio SIP solo será visible para Marcas con Retail o Residencial "
+"habilitado."
 
 #: ../../platform/domains.rst:4
 msgid "SIP Domains"
@@ -885,4 +901,3 @@ msgid "This example is identical to 't23/yea-{mac}', as subpaths are ignored."
 msgstr ""
 "Este ejemplo es idéntico a 't23/yea-{mac}', ya que las subrutas se "
 "ignoran."
-

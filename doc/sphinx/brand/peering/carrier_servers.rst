@@ -1,33 +1,20 @@
-************
-Peer Servers
-************
+***************
+Carrier Servers
+***************
 
-A **Peer Server** is a SIP server associated to an IP Provider.
-In order to add some Peer Servers for the Peer Contract that
-have just created, we only have to use the following section:
-
-.. ifconfig:: language == 'en'
-
-    .. image:: img/en/peerservers.png
-      :align: center
-
-.. ifconfig:: language == 'es'
-
-    .. image:: img/es/peerservers.png
-      :align: center
-
-As displayed by the zero counter, no Peer Serve has been created yet:
+A **Carrier Server** is a SIP server associated to an IP Provider. Carrier servers
+are used for placing outgoing calls by using :ref:`Outgoing routing`.
 
 .. glossary::
 
     Name
-        Used to identify this Peer Server
+        Used to identify this Carrier Server
 
     Description
         Optional field with any required extra information.
 
     SIP Proxy
-        IP address (or DNS registry) of the Peer Server. You can also specify
+        IP address (or DNS registry) of the Carrier Server. You can also specify
         a port if it's different from 5060.
 
     URI Scheme
@@ -44,7 +31,7 @@ As displayed by the zero counter, no Peer Serve has been created yet:
         IP:PORT of this field.
 
     Requires Authentication
-        Some Peering contracts validate our platform by IP, others require
+        Some Carriers validate our platform by IP, others require
         each session that we want to establish. For this last case, this section
         allows to configure user and password for this authentication.
 
@@ -70,7 +57,7 @@ As displayed by the zero counter, no Peer Serve has been created yet:
    those that validate our platform by IP) and Authentication (for those that
    won't).
 
-.. warning:: In case of defining multiple Peering Servers for a single
-   Peering Contract, IvozProvider will balance and failover using all of them.
+.. warning:: In case of defining multiple Carrier Servers for a single
+   Carrier, IvozProvider will balance and failover using all of them.
    Like with Application Servers, it will disable those who doesn't respond to
    our requests.
