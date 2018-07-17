@@ -47,6 +47,9 @@ production:
       <<: *CompanyServices
       forcedValues:
         <<: *forcedCompany
+      fields:
+        readOnly:
+            service: true
       controller: edit
       class: ui-silk-pencil
       label: false
