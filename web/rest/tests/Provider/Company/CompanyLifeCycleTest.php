@@ -182,15 +182,14 @@ class CompanyLifeCycleTest extends KernelTestCase
      */
     public function added_company_has_a_companyServices()
     {
-        $serviceRepository = $this->em
-            ->getRepository(Service::class);
-        $services = $serviceRepository->findAll();
-
         $company = $this->addCompany();
         $companyServices = $company->getCompanyServices();
 
+        $brand = $company->getBrand();
+        $brandServices = $brand->getServices();
+
         $this->assertEquals(
-            count($services),
+            count($brandServices),
             count($companyServices)
         );
     }

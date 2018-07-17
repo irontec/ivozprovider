@@ -13,7 +13,7 @@ Feature: Update company services
       {
           "code": "92",
           "company": 2,
-          "service": 2
+          "service": 4
       }
     """
     Then the response status code should be 200
@@ -26,10 +26,10 @@ Feature: Update company services
           "id": 1,
           "company": "~",
           "service": {
-              "iden": "GroupPickUp",
-              "defaultCode": "95",
-              "extraArgs": false,
-              "id": 2,
+              "iden": "RecordLocution",
+              "defaultCode": "00",
+              "extraArgs": true,
+              "id": 4,
               "name": {
                   "en": "en",
                   "es": "en"

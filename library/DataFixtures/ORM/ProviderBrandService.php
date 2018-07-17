@@ -44,15 +44,6 @@ class ProviderBrandService extends Fixture implements DependentFixtureInterface
         $this->sanitizeEntityValues($item3);
         $manager->persist($item3);
 
-        $item4 = $this->createEntityInstanceWithPublicMethods(BrandService::class);
-        $item4->setCode("00");
-        $item4->setBrand($this->getReference('_reference_ProviderBrand1'));
-        $item4->setService($this->getReference('_reference_ProviderService4'));
-        $this->addReference('_reference_ProviderBrandServiceBrandService4', $item4);
-        $this->sanitizeEntityValues($item4);
-        $manager->persist($item4);
-
-    
         $manager->flush();
     }
 
