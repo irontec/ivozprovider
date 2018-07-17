@@ -66,11 +66,11 @@ class Version20180705161808 extends AbstractMigration
         $this->addSql('INSERT INTO Carriers SELECT * FROM PeeringContracts');
         $this->addSql('INSERT INTO CarrierServers (
                                   id, ip, hostname, port, uriScheme, transport, sendPAI, sendRPID,
-                                  authNeeded, authPassword, sipProxy, outboundProxy,
+                                  authUser, authNeeded, authPassword, sipProxy, outboundProxy,
                                   fromUser, fromDomain, carrierId, brandId
                             ) SELECT
                                   id, ip, hostname, port, uri_scheme, transport, sendPAI, sendRPID,
-                                  auth_needed, auth_password, sip_proxy, outbound_proxy,
+                                  auth_user, auth_needed, auth_password, sip_proxy, outbound_proxy,
                                   from_user, from_domain, peeringContractId, brandId
                             FROM PeerServers');
 
@@ -119,11 +119,11 @@ class Version20180705161808 extends AbstractMigration
         $this->addSql('INSERT INTO PeeringContracts SELECT * FROM Carriers');
         $this->addSql('INSERT INTO PeerServers (
                                   id, ip, hostname, port, uri_scheme, transport, sendPAI, sendRPID,
-                                  auth_needed, auth_password, sip_proxy, outbound_proxy,
+                                  auth_user, auth_needed, auth_password, sip_proxy, outbound_proxy,
                                   from_user, from_domain, peeringContractId, brandId
                             ) SELECT
                                   id, ip, hostname, port, uriScheme, transport, sendPAI, sendRPID,
-                                  authNeeded, authPassword, sipProxy, outboundProxy,
+                                  authUser, authNeeded, authPassword, sipProxy, outboundProxy,
                                   fromUser, fromDomain, carrierId, brandId
                             FROM CarrierServers');
 
