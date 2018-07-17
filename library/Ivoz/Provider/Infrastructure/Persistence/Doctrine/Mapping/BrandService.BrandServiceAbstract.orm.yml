@@ -1,5 +1,10 @@
 Ivoz\Provider\Domain\Model\BrandService\BrandServiceAbstract:
   type: mappedSuperclass
+  uniqueConstraints:
+    brandService_brand_service:
+      columns:
+        - brandId
+        - serviceId
   fields:
     code:
       type: string
