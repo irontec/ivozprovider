@@ -26,3 +26,8 @@ Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressAbstract:
           nullable: false
           onDelete: cascade
       orphanRemoval: false
+  oneToOne:
+    trunksAddress:
+      targetEntity: Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddressInterface
+      mappedBy: ddiProviderAddress
+      fetch: LAZY

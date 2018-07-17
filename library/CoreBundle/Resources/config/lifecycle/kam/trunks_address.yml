@@ -6,8 +6,8 @@ services:
   ##################################
   ## on_commit
   ##################################
-  Ivoz\Kam\Infrastructure\Domain\Service\UsersAddress\SendUsersPermissionsReloadRequest:
+  Ivoz\Kam\Infrastructure\Domain\Service\TrunksAddress\SendTrunksPermissionsReloadRequest:
     tags: [{ name: 'domain.service'}]
     arguments:
-      $usersPermissionsReload:
-        '@XmlRpc\XmlRpcUsersRequest::PermissionsAddressReload'
+      $trunksPermissionsReload:
+        '@XmlRpc\XmlRpcTrunksRequest::PermissionsAddressReload'

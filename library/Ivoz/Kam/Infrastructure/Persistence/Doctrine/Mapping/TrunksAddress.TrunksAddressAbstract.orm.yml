@@ -1,9 +1,5 @@
 Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddressAbstract:
   type: mappedSuperclass
-  uniqueConstraints:
-    grp:
-      columns:
-        - grp
   fields:
     grp:
       type: integer
@@ -36,3 +32,13 @@ Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddressAbstract:
       length: 64
       options:
         fixed: false
+  oneToOne:
+    ddiProviderAddress:
+      targetEntity: \Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface
+      inversedBy: trunksAddress
+      fetch: LAZY
+      joinColumn:
+        name: ddiProviderAddressId
+        referencedColumnName: id
+        nullable: false
+        onDelete: cascade

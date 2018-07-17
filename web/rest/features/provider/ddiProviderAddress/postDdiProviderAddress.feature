@@ -22,6 +22,8 @@ Feature: Create ddi provider addresses
      And the JSON should be equal to:
     """
       {
+          "ip": "1.1.1.1",
+          "description": "NewDDIProviderAddress",
           "id": 2
       }
     """

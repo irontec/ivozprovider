@@ -39,6 +39,11 @@ abstract class TrunksAddressAbstract
      */
     protected $tag;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface
+     */
+    protected $ddiProviderAddress;
+
 
     use ChangelogTrait;
 
@@ -123,6 +128,7 @@ abstract class TrunksAddressAbstract
         $self
             ->setIpAddr($dto->getIpAddr())
             ->setTag($dto->getTag())
+            ->setDdiProviderAddress($dto->getDdiProviderAddress())
         ;
 
         $self->sanitizeValues();
@@ -147,7 +153,8 @@ abstract class TrunksAddressAbstract
             ->setIpAddr($dto->getIpAddr())
             ->setMask($dto->getMask())
             ->setPort($dto->getPort())
-            ->setTag($dto->getTag());
+            ->setTag($dto->getTag())
+            ->setDdiProviderAddress($dto->getDdiProviderAddress());
 
 
 
@@ -166,7 +173,8 @@ abstract class TrunksAddressAbstract
             ->setIpAddr(self::getIpAddr())
             ->setMask(self::getMask())
             ->setPort(self::getPort())
-            ->setTag(self::getTag());
+            ->setTag(self::getTag())
+            ->setDdiProviderAddress(\Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddress::entityToDto(self::getDdiProviderAddress(), $depth));
     }
 
     /**
@@ -179,7 +187,8 @@ abstract class TrunksAddressAbstract
             'ip_addr' => self::getIpAddr(),
             'mask' => self::getMask(),
             'port' => self::getPort(),
-            'tag' => self::getTag()
+            'tag' => self::getTag(),
+            'ddiProviderAddressId' => self::getDdiProviderAddress() ? self::getDdiProviderAddress()->getId() : null
         ];
     }
 
@@ -322,6 +331,30 @@ abstract class TrunksAddressAbstract
     public function getTag()
     {
         return $this->tag;
+    }
+
+    /**
+     * Set ddiProviderAddress
+     *
+     * @param \Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface $ddiProviderAddress
+     *
+     * @return self
+     */
+    public function setDdiProviderAddress(\Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface $ddiProviderAddress)
+    {
+        $this->ddiProviderAddress = $ddiProviderAddress;
+
+        return $this;
+    }
+
+    /**
+     * Get ddiProviderAddress
+     *
+     * @return \Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface
+     */
+    public function getDdiProviderAddress()
+    {
+        return $this->ddiProviderAddress;
     }
 
 

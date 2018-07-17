@@ -15,6 +15,8 @@ Feature: Retrieve ddi provider addresses
     """
       [
           {
+              "ip": "127.0.0.1",
+              "description": "DDI Provider Address 1",
               "id": 1
           }
       ]

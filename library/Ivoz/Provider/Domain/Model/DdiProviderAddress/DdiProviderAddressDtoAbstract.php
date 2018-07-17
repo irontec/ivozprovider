@@ -28,6 +28,11 @@ abstract class DdiProviderAddressDtoAbstract implements DataTransferObjectInterf
     private $id;
 
     /**
+     * @var \Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddressDto | null
+     */
+    private $trunksAddress;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderDto | null
      */
     private $ddiProvider;
@@ -53,6 +58,7 @@ abstract class DdiProviderAddressDtoAbstract implements DataTransferObjectInterf
             'ip' => 'ip',
             'description' => 'description',
             'id' => 'id',
+            'trunksAddressId' => 'trunksAddress',
             'ddiProviderId' => 'ddiProvider'
         ];
     }
@@ -66,6 +72,7 @@ abstract class DdiProviderAddressDtoAbstract implements DataTransferObjectInterf
             'ip' => $this->getIp(),
             'description' => $this->getDescription(),
             'id' => $this->getId(),
+            'trunksAddress' => $this->getTrunksAddress(),
             'ddiProvider' => $this->getDdiProvider()
         ];
     }
@@ -75,6 +82,7 @@ abstract class DdiProviderAddressDtoAbstract implements DataTransferObjectInterf
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
+        $this->trunksAddress = $transformer->transform('Ivoz\\Kam\\Domain\\Model\\TrunksAddress\\TrunksAddress', $this->getTrunksAddressId());
         $this->ddiProvider = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\DdiProvider\\DdiProvider', $this->getDdiProviderId());
     }
 
@@ -144,6 +152,52 @@ abstract class DdiProviderAddressDtoAbstract implements DataTransferObjectInterf
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @param \Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddressDto $trunksAddress
+     *
+     * @return static
+     */
+    public function setTrunksAddress(\Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddressDto $trunksAddress = null)
+    {
+        $this->trunksAddress = $trunksAddress;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddressDto
+     */
+    public function getTrunksAddress()
+    {
+        return $this->trunksAddress;
+    }
+
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setTrunksAddressId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddressDto($id)
+            : null;
+
+        return $this->setTrunksAddress($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getTrunksAddressId()
+    {
+        if ($dto = $this->getTrunksAddress()) {
+            return $dto->getId();
+        }
+
+        return null;
     }
 
     /**
