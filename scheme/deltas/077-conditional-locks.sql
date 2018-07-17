@@ -30,4 +30,6 @@ INSERT INTO Services (iden, name_en, name_es, description_en, description_es, de
 INSERT INTO Services (iden, name_en, name_es, description_en, description_es, defaultCode, extraArgs)
   VALUES ('ToggleLock', 'Toggle Lock', 'Alternar candado', 'Switch current lock status', 'Alterna el estado de un candado', '72', 1);
 
-
+-- Create default services for demo data if still exists
+INSERT IGNORE INTO BrandServices (brandId, serviceId, code) SELECT 1, id, defaultCode FROM Services WHERE iden IN ('CloseLock', 'OpenLock', 'ToggleLock');
+INSERT IGNORE INTO CompanyServices (companyId, serviceId, code) SELECT 1, id, defaultCode FROM Services WHERE iden IN ('CloseLock', 'OpenLock', 'ToggleLock');
