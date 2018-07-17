@@ -24,6 +24,11 @@ abstract class DdiProviderAddressAbstract
     protected $description;
 
     /**
+     * @var \Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddressInterface
+     */
+    protected $trunksAddress;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface
      */
     protected $ddiProvider;
@@ -219,6 +224,30 @@ abstract class DdiProviderAddressAbstract
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set trunksAddress
+     *
+     * @param \Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddressInterface $trunksAddress
+     *
+     * @return self
+     */
+    public function setTrunksAddress(\Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddressInterface $trunksAddress = null)
+    {
+        $this->trunksAddress = $trunksAddress;
+
+        return $this;
+    }
+
+    /**
+     * Get trunksAddress
+     *
+     * @return \Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddressInterface
+     */
+    public function getTrunksAddress()
+    {
+        return $this->trunksAddress;
     }
 
     /**

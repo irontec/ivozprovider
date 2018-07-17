@@ -42,6 +42,11 @@ abstract class TrunksAddressDtoAbstract implements DataTransferObjectInterface
      */
     private $id;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressDto | null
+     */
+    private $ddiProviderAddress;
+
 
     use DtoNormalizer;
 
@@ -65,7 +70,8 @@ abstract class TrunksAddressDtoAbstract implements DataTransferObjectInterface
             'mask' => 'mask',
             'port' => 'port',
             'tag' => 'tag',
-            'id' => 'id'
+            'id' => 'id',
+            'ddiProviderAddressId' => 'ddiProviderAddress'
         ];
     }
 
@@ -80,7 +86,8 @@ abstract class TrunksAddressDtoAbstract implements DataTransferObjectInterface
             'mask' => $this->getMask(),
             'port' => $this->getPort(),
             'tag' => $this->getTag(),
-            'id' => $this->getId()
+            'id' => $this->getId(),
+            'ddiProviderAddress' => $this->getDdiProviderAddress()
         ];
     }
 
@@ -89,7 +96,7 @@ abstract class TrunksAddressDtoAbstract implements DataTransferObjectInterface
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
-
+        $this->ddiProviderAddress = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\DdiProviderAddress\\DdiProviderAddress', $this->getDdiProviderAddressId());
     }
 
     /**
@@ -218,6 +225,52 @@ abstract class TrunksAddressDtoAbstract implements DataTransferObjectInterface
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressDto $ddiProviderAddress
+     *
+     * @return static
+     */
+    public function setDdiProviderAddress(\Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressDto $ddiProviderAddress = null)
+    {
+        $this->ddiProviderAddress = $ddiProviderAddress;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressDto
+     */
+    public function getDdiProviderAddress()
+    {
+        return $this->ddiProviderAddress;
+    }
+
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setDdiProviderAddressId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressDto($id)
+            : null;
+
+        return $this->setDdiProviderAddress($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getDdiProviderAddressId()
+    {
+        if ($dto = $this->getDdiProviderAddress()) {
+            return $dto->getId();
+        }
+
+        return null;
     }
 }
 
