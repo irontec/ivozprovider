@@ -23,6 +23,7 @@ class Feature extends FeatureAbstract implements FeatureInterface
     const RESIDENTIAL       = 9;
     const WHOLESALE         = 10;
     const RETAIL            = 11;
+    const VPBX              = 12;
 
     /**
      * @codeCoverageIgnore
