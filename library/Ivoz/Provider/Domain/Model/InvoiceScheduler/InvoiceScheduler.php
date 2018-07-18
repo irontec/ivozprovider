@@ -35,7 +35,9 @@ class InvoiceScheduler extends InvoiceSchedulerAbstract implements InvoiceSchedu
      */
     public function setEmail($email)
     {
-        Assertion::email($email);
+        if (!empty($email)) {
+            Assertion::email($email);
+        }
         return parent::setEmail($email);
     }
 

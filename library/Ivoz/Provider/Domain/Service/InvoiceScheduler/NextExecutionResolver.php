@@ -52,14 +52,16 @@ class NextExecutionResolver implements InvoiceSchedulerLifecycleEventHandlerInte
 
         switch ($unit) {
             case 'year':
+                $nextExecution->modify('first day of january, next year');
+                break;
             case 'week':
                 $nextExecution->modify('next monday');
                 break;
             case 'month':
-                $nextExecution->modify('next month');
+                $nextExecution->modify('first day of next month');
                 break;
             default:
-                throw new \DomainException('Unkown unit ' . $unit);
+                throw new \DomainException('Unknown unit ' . $unit);
         }
 
 
