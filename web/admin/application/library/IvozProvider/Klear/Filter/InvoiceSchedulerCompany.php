@@ -14,6 +14,9 @@ class IvozProvider_Klear_Filter_InvoiceSchedulerCompany extends IvozProvider_Kle
         }
 
         $schedulerId = $routeDispatcher->getParam("pk", false);
+        if (is_array($schedulerId)) {
+            return true;
+        }
 
         // Add parent filters
         parent::setRouteDispatcher($routeDispatcher);
