@@ -34,7 +34,7 @@ production:
         order:
           name: true
           company: true
-          frecuency: true
+          frequency: true
           unit: true
         blacklist:
           email: true

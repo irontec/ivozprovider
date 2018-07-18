@@ -20,9 +20,9 @@ production:
       title: _('Unit')
       type: select
       required: true
+      defaultValue: 'month'
       source:
         data: inline
-        values:
         values:
           'week': _('Week')
           'month': _('Month')
@@ -108,7 +108,6 @@ production:
               __default__:
                 show: []
                 hide: ["number"]
-        'null': _("Unassigned")
     invoiceTemplate:
       title: _('Template')
       type: select
@@ -124,7 +123,6 @@ production:
             template: '%name%'
           order:
             InvoiceTemplate.name: asc
-        'null': _("Unassigned")
 staging:
   _extends: production
 testing:
