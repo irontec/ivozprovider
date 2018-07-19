@@ -53,12 +53,12 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
     private $timing;
 
     /**
-     * @var \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanDto | null
+     * @var \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto | null
      */
     private $ratingPlan;
 
     /**
-     * @var \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateDto | null
+     * @var \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateDto | null
      */
     private $destinationRate;
 
@@ -118,8 +118,8 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
         $this->timing = $transformer->transform('Ivoz\\Cgr\\Domain\\Model\\TpTiming\\TpTiming', $this->getTimingId());
-        $this->ratingPlan = $transformer->transform('Ivoz\\Cgr\\Domain\\Model\\RatingPlan\\RatingPlan', $this->getRatingPlanId());
-        $this->destinationRate = $transformer->transform('Ivoz\\Cgr\\Domain\\Model\\DestinationRate\\DestinationRate', $this->getDestinationRateId());
+        $this->ratingPlan = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\RatingPlan\\RatingPlan', $this->getRatingPlanId());
+        $this->destinationRate = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\DestinationRate\\DestinationRate', $this->getDestinationRateId());
     }
 
     /**
@@ -317,11 +317,11 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanDto $ratingPlan
+     * @param \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto $ratingPlan
      *
      * @return static
      */
-    public function setRatingPlan(\Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanDto $ratingPlan = null)
+    public function setRatingPlan(\Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto $ratingPlan = null)
     {
         $this->ratingPlan = $ratingPlan;
 
@@ -329,7 +329,7 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanDto
+     * @return \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto
      */
     public function getRatingPlan()
     {
@@ -344,7 +344,7 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
     public function setRatingPlanId($id)
     {
         $value = !is_null($id)
-            ? new \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanDto($id)
+            ? new \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto($id)
             : null;
 
         return $this->setRatingPlan($value);
@@ -363,11 +363,11 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateDto $destinationRate
+     * @param \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateDto $destinationRate
      *
      * @return static
      */
-    public function setDestinationRate(\Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateDto $destinationRate = null)
+    public function setDestinationRate(\Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateDto $destinationRate = null)
     {
         $this->destinationRate = $destinationRate;
 
@@ -375,7 +375,7 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateDto
+     * @return \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateDto
      */
     public function getDestinationRate()
     {
@@ -390,7 +390,7 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
     public function setDestinationRateId($id)
     {
         $value = !is_null($id)
-            ? new \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateDto($id)
+            ? new \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateDto($id)
             : null;
 
         return $this->setDestinationRate($value);

@@ -121,7 +121,7 @@ abstract class TrunksCdrAbstract
     protected $tpDestination;
 
     /**
-     * @var \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateInterface
+     * @var \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface
      */
     protected $destinationRate;
 
@@ -303,7 +303,7 @@ abstract class TrunksCdrAbstract
             ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
             ->setCarrier(\Ivoz\Provider\Domain\Model\Carrier\Carrier::entityToDto(self::getCarrier(), $depth))
             ->setTpDestination(\Ivoz\Cgr\Domain\Model\TpDestination\TpDestination::entityToDto(self::getTpDestination(), $depth))
-            ->setDestinationRate(\Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRate::entityToDto(self::getDestinationRate(), $depth));
+            ->setDestinationRate(\Ivoz\Provider\Domain\Model\DestinationRate\DestinationRate::entityToDto(self::getDestinationRate(), $depth));
     }
 
     /**
@@ -915,11 +915,11 @@ abstract class TrunksCdrAbstract
     /**
      * Set destinationRate
      *
-     * @param \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate
+     * @param \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate
      *
      * @return self
      */
-    public function setDestinationRate(\Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate = null)
+    public function setDestinationRate(\Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate = null)
     {
         $this->destinationRate = $destinationRate;
 
@@ -929,7 +929,7 @@ abstract class TrunksCdrAbstract
     /**
      * Get destinationRate
      *
-     * @return \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateInterface
+     * @return \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface
      */
     public function getDestinationRate()
     {

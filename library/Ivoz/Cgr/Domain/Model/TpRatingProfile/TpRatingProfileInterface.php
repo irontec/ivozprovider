@@ -207,16 +207,16 @@ interface TpRatingProfileInterface extends LoggableEntityInterface
     /**
      * Set ratingPlan
      *
-     * @param \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan
+     * @param \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan
      *
      * @return self
      */
-    public function setRatingPlan(\Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan);
+    public function setRatingPlan(\Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan);
 
     /**
      * Get ratingPlan
      *
-     * @return \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanInterface
+     * @return \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface
      */
     public function getRatingPlan();
 
