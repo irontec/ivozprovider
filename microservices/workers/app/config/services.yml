@@ -19,7 +19,7 @@ services:
     public: true
     arguments:
       $em: '@=service("doctrine.orm.entity_manager")'
-      $destinationRateRepository: '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Cgr\\Domain\\Model\\DestinationRate\\DestinationRate")'
+      $destinationRateRepository: '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\DestinationRate\\DestinationRate")'
       $entityPersister: '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
       $logger: '@logger'
 
