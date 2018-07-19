@@ -123,9 +123,9 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
             /** @var DataGateway $dataGateway */
             $dataGateway = \Zend_Registry::get('data_gateway');
 
-            /** @var \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanDto[] $ratingPlans */
+            /** @var \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto[] $ratingPlans */
             $ratingPlans = $dataGateway->findBy(
-                \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlan::class,
+                \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan::class,
                 [
                     'RatingPlan.brand = :brand',
                     ['brand' => $brandId]
@@ -169,9 +169,9 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
             /** @var DataGateway $dataGateway */
             $dataGateway = \Zend_Registry::get('data_gateway');
 
-            /** @var \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanDto[] $ratingPlans */
+            /** @var \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto[] $ratingPlans */
             $ratingPlan = $dataGateway->find(
-                \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlan::class,
+                \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan::class,
                 $this->getParam('parentId')
             );
 

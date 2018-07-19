@@ -10,7 +10,7 @@ production:
       source:
         data: mapper
         config:
-          entity: \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlan
+          entity: \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan
           filterClass: IvozProvider_Klear_Filter_Brand
           fieldName:
             fields:
@@ -24,7 +24,7 @@ production:
       source:
         data: mapper
         config:
-          entity: \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRate
+          entity: \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRate
           filterClass: IvozProvider_Klear_Filter_Brand
           fieldName:
             fields:

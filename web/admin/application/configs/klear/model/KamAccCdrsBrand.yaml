@@ -167,7 +167,7 @@ production:
       source:
         data: mapper
         config:
-          entity: \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlan
+          entity: \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan
           fieldName: 
             fields: 
               - name
