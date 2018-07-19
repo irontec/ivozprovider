@@ -42,7 +42,7 @@ class CgrTpRatingProfile extends Fixture implements DependentFixtureInterface
             $this->getReference('_reference_ProviderCompany1')
         );
         $item1->setRatingPlan(
-            $this->getReference('_reference_CgrRatingPlans1')
+            $this->getReference('_reference_ProviderRatingPlans1')
         );
         $this->sanitizeEntityValues($item1);
         $this->addReference('_reference_CgrTpRatingProfile1', $item1);
@@ -68,7 +68,7 @@ class CgrTpRatingProfile extends Fixture implements DependentFixtureInterface
             $this->getReference('_reference_ProviderCompany1')
         );
         $item2->setRatingPlan(
-            $this->getReference('_reference_CgrRatingPlans1')
+            $this->getReference('_reference_ProviderRatingPlans1')
         );
         $this->sanitizeEntityValues($item2);
         $this->addReference('_reference_CgrTpRatingProfile2', $item2);
@@ -80,7 +80,7 @@ class CgrTpRatingProfile extends Fixture implements DependentFixtureInterface
     public function getDependencies()
     {
         return array(
-            CgrRatingPlans::class,
+            ProviderRatingPlans::class,
             ProviderCompany::class,
         );
     }

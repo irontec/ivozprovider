@@ -6,11 +6,11 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\Mapping\ClassMetadata;
-use Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlan;
-use Ivoz\Cgr\Domain\Model\RatingPlan\Name;
-use Ivoz\Cgr\Domain\Model\RatingPlan\Description;
+use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan;
+use Ivoz\Provider\Domain\Model\RatingPlan\Name;
+use Ivoz\Provider\Domain\Model\RatingPlan\Description;
 
-class CgrRatingPlans extends Fixture implements DependentFixtureInterface
+class ProviderRatingPlans extends Fixture implements DependentFixtureInterface
 {
     use \DataFixtures\FixtureHelperTrait;
 
@@ -33,7 +33,7 @@ class CgrRatingPlans extends Fixture implements DependentFixtureInterface
         $item1->setBrand(
             $this->getReference('_reference_ProviderBrand1')
         );
-        $this->addReference('_reference_CgrRatingPlans1', $item1);
+        $this->addReference('_reference_ProviderRatingPlans1', $item1);
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
@@ -46,7 +46,7 @@ class CgrRatingPlans extends Fixture implements DependentFixtureInterface
         $item2->setBrand(
             $this->getReference('_reference_ProviderBrand1')
         );
-        $this->addReference('_reference_CgrRatingPlans2', $item2);
+        $this->addReference('_reference_ProviderRatingPlans2', $item2);
         $this->sanitizeEntityValues($item2);
         $manager->persist($item2);
 
