@@ -173,7 +173,7 @@ Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrAbstract:
           onDelete: set null
       orphanRemoval: false
     destinationRate:
-      targetEntity: \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateInterface
+      targetEntity: \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface
       cascade: {  }
       fetch: LAZY
       mappedBy: null

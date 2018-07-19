@@ -1,4 +1,4 @@
-Ivoz\Cgr\Domain\Model\DestinationRate\File:
+Ivoz\Provider\Domain\Model\DestinationRate\File:
   type: embeddable
   fields:
     fileSize:

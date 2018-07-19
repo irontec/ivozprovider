@@ -106,7 +106,7 @@ Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileAbstract:
           onDelete: cascade
       orphanRemoval: false
     ratingPlan:
-      targetEntity: \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanInterface
+      targetEntity: \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface
       cascade: {  }
       fetch: LAZY
       mappedBy: null

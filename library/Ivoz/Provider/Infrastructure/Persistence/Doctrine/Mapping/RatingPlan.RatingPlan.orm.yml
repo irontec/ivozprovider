@@ -1,5 +1,5 @@
-Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlan:
-  repositoryClass: Ivoz\Cgr\Infrastructure\Persistence\Doctrine\RatingPlanDoctrineRepository
+Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\RatingPlanDoctrineRepository
   type: entity
   table: RatingPlans
   id:

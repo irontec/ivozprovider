@@ -1,11 +1,7 @@
-Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateAbstract:
+Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanAbstract:
   type: mappedSuperclass
-  indexes:
-    destinationRate_brandId:
-      columns:
-        - brandId
   uniqueConstraints:
-    destinationRate_brandTag:
+    brandTag:
       columns:
         - tag
         - brandId
@@ -16,9 +12,6 @@ Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateAbstract:
     description:
       class: Description
       columnPrefix: false
-    file:
-      class: File
-      columnPrefix: false
   fields:
     tag:
       type: string
@@ -26,14 +19,6 @@ Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateAbstract:
       length: 64
       options:
         fixed: false
-    status:
-      type: string
-      nullable: true
-      length: 20
-      options:
-        fixed: false
-        comment: '[enum:waiting|inProgress|imported|error]'
-        default: null
   manyToOne:
     brand:
       targetEntity: \Ivoz\Provider\Domain\Model\Brand\BrandInterface

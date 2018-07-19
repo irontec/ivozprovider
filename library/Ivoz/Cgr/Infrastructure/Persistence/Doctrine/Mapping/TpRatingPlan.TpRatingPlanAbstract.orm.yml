@@ -60,7 +60,7 @@ Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanAbstract:
       column: created_at
   manyToOne:
     ratingPlan:
-      targetEntity: \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanInterface
+      targetEntity: \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface
       cascade: {  }
       fetch: LAZY
       mappedBy: null
@@ -72,7 +72,7 @@ Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanAbstract:
           onDelete: cascade
       orphanRemoval: false
     destinationRate:
-      targetEntity: \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateInterface
+      targetEntity: \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface
       cascade: {  }
       fetch: LAZY
       mappedBy: null
