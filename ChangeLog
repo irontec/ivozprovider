@@ -1,3 +1,27 @@
+Fri, 20 Jul 2018 12:35:45 +0200 IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 2.5 released
+
+    * Peering
+        - Contract Peering has been splitted into DDI Providers and Carriers
+            * DDI Provider are servers for incoming DDI calls
+            * Carriers are server for placing outgoing calls
+
+    * Retail
+        - New retail entity without Application Server features
+            * Allow incoming calls from DDIProviders to Retail Accounts
+            * Allow outgoing calls from Retail Accounts to Carriers
+            * Recording support
+            * Routing Tag support
+
+    * Invoices
+        - Improved Invoices number sequences integration
+        - New scheduler for periodic Invoices generation and email notifications
+
+    * Web
+        - Improved Global administration fallback when URL does not match any configured
+        - Virtual PBX sections can now be toggled by vPBX Brand feature
+
 Fri, 29 Jun 2018 10:49:46 +0200 IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 2.4 released
