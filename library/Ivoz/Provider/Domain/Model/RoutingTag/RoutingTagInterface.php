@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\Collection;
 interface RoutingTagInterface extends LoggableEntityInterface
 {
     /**
-     * @RoutingTagoverageIgnore
+     * @codeCoverageIgnore
      * @return array
      */
     public function getChangeSet();

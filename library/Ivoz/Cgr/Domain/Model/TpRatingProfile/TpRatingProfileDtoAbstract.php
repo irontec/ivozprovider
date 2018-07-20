@@ -73,14 +73,9 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
+     * @var \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileDto | null
      */
-    private $company;
-
-    /**
-     * @var \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto | null
-     */
-    private $ratingPlan;
+    private $ratingProfile;
 
 
     use DtoNormalizer;
@@ -112,8 +107,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
             'cdrStatQueueIds' => 'cdrStatQueueIds',
             'createdAt' => 'createdAt',
             'id' => 'id',
-            'companyId' => 'company',
-            'ratingPlanId' => 'ratingPlan'
+            'ratingProfileId' => 'ratingProfile'
         ];
     }
 
@@ -135,8 +129,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
             'cdrStatQueueIds' => $this->getCdrStatQueueIds(),
             'createdAt' => $this->getCreatedAt(),
             'id' => $this->getId(),
-            'company' => $this->getCompany(),
-            'ratingPlan' => $this->getRatingPlan()
+            'ratingProfile' => $this->getRatingProfile()
         ];
     }
 
@@ -145,8 +138,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
-        $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
-        $this->ratingPlan = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\RatingPlan\\RatingPlan', $this->getRatingPlanId());
+        $this->ratingProfile = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\RatingProfile\\RatingProfile', $this->getRatingProfileId());
     }
 
     /**
@@ -398,23 +390,23 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyDto $company
+     * @param \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileDto $ratingProfile
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyDto $company = null)
+    public function setRatingProfile(\Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileDto $ratingProfile = null)
     {
-        $this->company = $company;
+        $this->ratingProfile = $ratingProfile;
 
         return $this;
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto
+     * @return \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileDto
      */
-    public function getCompany()
+    public function getRatingProfile()
     {
-        return $this->company;
+        return $this->ratingProfile;
     }
 
     /**
@@ -422,67 +414,21 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
      *
      * @return static
      */
-    public function setCompanyId($id)
+    public function setRatingProfileId($id)
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Company\CompanyDto($id)
+            ? new \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileDto($id)
             : null;
 
-        return $this->setCompany($value);
+        return $this->setRatingProfile($value);
     }
 
     /**
      * @return integer | null
      */
-    public function getCompanyId()
+    public function getRatingProfileId()
     {
-        if ($dto = $this->getCompany()) {
-            return $dto->getId();
-        }
-
-        return null;
-    }
-
-    /**
-     * @param \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto $ratingPlan
-     *
-     * @return static
-     */
-    public function setRatingPlan(\Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto $ratingPlan = null)
-    {
-        $this->ratingPlan = $ratingPlan;
-
-        return $this;
-    }
-
-    /**
-     * @return \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto
-     */
-    public function getRatingPlan()
-    {
-        return $this->ratingPlan;
-    }
-
-    /**
-     * @param integer $id | null
-     *
-     * @return static
-     */
-    public function setRatingPlanId($id)
-    {
-        $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto($id)
-            : null;
-
-        return $this->setRatingPlan($value);
-    }
-
-    /**
-     * @return integer | null
-     */
-    public function getRatingPlanId()
-    {
-        if ($dto = $this->getRatingPlan()) {
+        if ($dto = $this->getRatingProfile()) {
             return $dto->getId();
         }
 
