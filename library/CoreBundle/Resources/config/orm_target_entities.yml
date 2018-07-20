@@ -163,6 +163,8 @@ doctrine:
         Ivoz\Provider\Domain\Model\QueueMember\QueueMember
       Ivoz\Provider\Domain\Model\Queue\QueueInterface:
         Ivoz\Provider\Domain\Model\Queue\Queue
+      Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface:
+        Ivoz\Provider\Domain\Model\RatingProfile\RatingProfile
       Ivoz\Provider\Domain\Model\Recording\RecordingInterface:
         Ivoz\Provider\Domain\Model\Recording\Recording
       Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface:

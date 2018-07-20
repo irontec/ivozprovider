@@ -1,0 +1,58 @@
+Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileAbstract:
+  type: mappedSuperclass
+  uniqueConstraints:
+    ratingProfile_company_plan_tag:
+      columns:
+        - companyId
+        - ratingPlanId
+        - routingTagId
+        - activationTime
+  fields:
+    activationTime:
+      type: datetime
+      nullable: false
+      options:
+        default: CURRENT_TIMESTAMP
+      column: activationTime
+  manyToOne:
+    company:
+      targetEntity: \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: ratingProfiles
+      joinColumns:
+        companyId:
+          referencedColumnName: id
+          nullable: false
+          onDelete: cascade
+      orphanRemoval: false
+    ratingPlan:
+      targetEntity: \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        ratingPlanId:
+          referencedColumnName: id
+          nullable: false
+          onDelete: cascade
+      orphanRemoval: false
+    routingTag:
+      targetEntity: \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        routingTagId:
+          referencedColumnName: id
+          nullable: true
+          onDelete: cascade
+      orphanRemoval: false
+  oneToOne:
+    tpRatingProfile:
+      targetEntity: Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface
+      mappedBy: ratingProfile
+      fetch: LAZY
