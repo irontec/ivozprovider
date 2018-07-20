@@ -1469,6 +1469,9 @@ msgstr "No input target"
 msgid "No matching condition handler"
 msgstr "No matching condition handler"
 
+msgid "No routing tag"
+msgstr "No routing tag"
+
 msgid "None"
 msgstr "None"
 

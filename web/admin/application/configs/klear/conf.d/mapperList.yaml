@@ -247,6 +247,10 @@ mappers:
         modelFile: RatingPlans,
         entity: 'Ivoz\\Provider\\Domain\\Model\\RatingPlan\\RatingPlan'
     }
+  - &RatingProfiles {
+        modelFile: RatingProfiles,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\RatingProfile\\RatingProfile'
+    }
   - &Recordings {
         modelFile: Recordings,
         entity: 'Ivoz\\Provider\\Domain\\Model\\Recording\\Recording'
@@ -326,10 +330,6 @@ mappers:
   - &TpRatingPlans {
         modelFile: TpRatingPlans,
         entity: 'Ivoz\\Cgr\\Domain\\Model\\TpRatingPlan\\TpRatingPlan'
-    }
-  - &TpRatingProfiles {
-        modelFile: TpRatingProfiles,
-        entity: 'Ivoz\\Cgr\\Domain\\Model\\TpRatingProfile\\TpRatingProfile'
     }
   - &TransformationRules {
         modelFile: TransformationRules,
