@@ -6,10 +6,12 @@ use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface;
 
 class UpdateRatingPlanTag implements RatingPlanLifecycleEventHandlerInterface
 {
+    CONST POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
+
     public static function getSubscribedEvents()
     {
         return [
-            self::EVENT_POST_PERSIST => 10
+            self::EVENT_POST_PERSIST => self::POST_PERSIST_PRIORITY
         ];
     }
 

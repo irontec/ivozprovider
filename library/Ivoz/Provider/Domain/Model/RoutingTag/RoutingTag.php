@@ -10,7 +10,7 @@ class RoutingTag extends RoutingTagAbstract implements RoutingTagInterface
     use RoutingTagTrait;
 
     /**
-     * @RoutingTagoverageIgnore
+     * @codeCoverageIgnore
      * @return array
      */
     public function getChangeSet()
@@ -19,8 +19,7 @@ class RoutingTag extends RoutingTagAbstract implements RoutingTagInterface
     }
 
     /**
-     * Get id
-     * @RoutingTagoverageIgnore
+     * @codeCoverageIgnore
      * @return integer
      */
     public function getId()
