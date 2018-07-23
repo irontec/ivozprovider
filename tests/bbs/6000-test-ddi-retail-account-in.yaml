@@ -1,0 +1,28 @@
+# ----------------------------------------------------------------------------
+
+scenarios:
+  - name: call from external to retail account
+    timeout: 25
+    sessions:
+      - retail:
+          - register:
+              <<: *retail_cred
+          - waitfor: INCOMING
+          - ringing
+          - wait: 5
+          - answer
+          - waitfor: CONFIRMED
+          - wait
+          - hangup
+          - waitfor: DISCONNCTD
+
+      # Place a call to retail account DDI
+      - external:
+          - wait
+          - call:
+              dest: "sip:999666001@trunks.ivozprovider.local"
+              caller: 999444000
+          - waitfor: CONFIRMED
+          - wait: 2
+          - waitfor: DISCONNCTD
+
