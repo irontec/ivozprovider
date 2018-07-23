@@ -39,6 +39,7 @@ class IvozProvider_Klear_Filter_Features implements KlearMatrix_Model_Field_Sele
             if ($featureId == Feature::RESIDENTIAL) continue;
             if ($featureId == Feature::WHOLESALE) continue;
             if ($featureId == Feature::RETAIL) continue;
+            if ($featureId == Feature::VPBX) continue;
             $featureIds[] = $featureId;
         }
 

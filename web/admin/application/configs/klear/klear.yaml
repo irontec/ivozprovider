@@ -103,6 +103,7 @@ production:
           title: ngettext('Virtual PBX', 'Virtual PBXs', 0)
           class: ui-silk-building
           description: _("List of %s", ngettext('Virtual PBX', 'Virtual PBXs', 1))
+          showOnlyIf: ${auth.brandFeatures.vpbx.enabled}
         RetailClientsList:
           title: ngettext('Retail', 'Retails', 1)
           class: ui-silk-basket
@@ -122,6 +123,7 @@ production:
           title: ngettext('Prepaid Balance', 'Prepaid Balances', 0)
           class: ui-silk-money-yen
           description: _("List of %s", ngettext('Prepaid Balance', 'Prepaid Balances', 0))
+          showOnlyIf: ${auth.brandFeatures.billing.enabled}
         CompanyURLsList:
           title: ngettext('Portal URL', 'Portal URLs', 0)
           class: ui-silk-world
@@ -146,10 +148,12 @@ production:
           title: ngettext('Generic Music on Hold', 'Generic Musics on Hold', 0)
           class: ui-silk-music
           description: _("List of %s", ngettext('Generic Music on Hold', 'Generic Musics on Hold', 0))
+          showOnlyIf: ${auth.brandFeatures.vpbx.enabled}
         BrandServicesList:
           title: ngettext('Service', 'Services', 0)
           class: ui-silk-page-white-wrench
           description: _("List of %s", ngettext('Service', 'Services', 0))
+          showOnlyIf: ${auth.brandFeatures.vpbx.enabled}
         BrandDDIsList:
           title: ngettext('DDI', 'DDIs', 0)
           class: ui-silk-lightning-go
@@ -168,6 +172,7 @@ production:
           title: ngettext('Generic Match List', 'Generic Match Lists', 0)
           class: ui-silk-text-list-numbers
           description: _("List of %s", ngettext('Generic Match List', 'Generic Match Lists', 0))
+          showOnlyIf: ${auth.brandFeatures.vpbx.enabled}
         RoutingPatternsList:
           title: ngettext('Routing pattern', 'Routing patterns', 0)
           class: ui-silk-script-go
