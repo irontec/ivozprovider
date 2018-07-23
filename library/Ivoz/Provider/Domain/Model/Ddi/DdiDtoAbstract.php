@@ -122,6 +122,11 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
      */
     private $conditionalRoute;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto | null
+     */
+    private $retailAccount;
+
 
     use DtoNormalizer;
 
@@ -161,7 +166,8 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
             'ddiProviderId' => 'ddiProvider',
             'countryId' => 'country',
             'residentialDeviceId' => 'residentialDevice',
-            'conditionalRouteId' => 'conditionalRoute'
+            'conditionalRouteId' => 'conditionalRoute',
+            'retailAccountId' => 'retailAccount'
         ];
     }
 
@@ -192,7 +198,8 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
             'ddiProvider' => $this->getDdiProvider(),
             'country' => $this->getCountry(),
             'residentialDevice' => $this->getResidentialDevice(),
-            'conditionalRoute' => $this->getConditionalRoute()
+            'conditionalRoute' => $this->getConditionalRoute(),
+            'retailAccount' => $this->getRetailAccount()
         ];
     }
 
@@ -215,6 +222,7 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         $this->country = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Country\\Country', $this->getCountryId());
         $this->residentialDevice = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\ResidentialDevice\\ResidentialDevice', $this->getResidentialDeviceId());
         $this->conditionalRoute = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\ConditionalRoute\\ConditionalRoute', $this->getConditionalRouteId());
+        $this->retailAccount = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\RetailAccount\\RetailAccount', $this->getRetailAccountId());
     }
 
     /**
@@ -1023,6 +1031,52 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
     public function getConditionalRouteId()
     {
         if ($dto = $this->getConditionalRoute()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto $retailAccount
+     *
+     * @return static
+     */
+    public function setRetailAccount(\Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto $retailAccount = null)
+    {
+        $this->retailAccount = $retailAccount;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto
+     */
+    public function getRetailAccount()
+    {
+        return $this->retailAccount;
+    }
+
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setRetailAccountId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto($id)
+            : null;
+
+        return $this->setRetailAccount($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getRetailAccountId()
+    {
+        if ($dto = $this->getRetailAccount()) {
             return $dto->getId();
         }
 

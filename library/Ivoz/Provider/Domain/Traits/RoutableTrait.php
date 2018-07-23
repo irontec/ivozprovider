@@ -29,6 +29,7 @@ trait RoutableTrait
         'conditional',
         'fax',
         'residential',
+        'retail'
     ];
 
     /**
@@ -96,6 +97,13 @@ trait RoutableTrait
                     return "";
                 }
                 return $this->{$residentialGetter}()->getName();
+
+            case 'retail':
+                $retailGetter = 'get' . $prefix . 'RetailAccount';
+                if (!$this->{$retailGetter}()) {
+                    return "";
+                }
+                return $this->{$retailGetter}()->getName();
 
             default:
                 // Get Generic Target Type

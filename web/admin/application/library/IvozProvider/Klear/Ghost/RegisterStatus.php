@@ -94,6 +94,36 @@ class IvozProvider_Klear_Ghost_RegisterStatus extends KlearMatrix_Model_Field_Gh
     }
 
     /**
+     * Get Register Status for Residential Devices
+     * @param RetailAccountDto $model
+     * @return string HTML code to display SIP register status icon
+     * @throws Zend_Exception
+     */
+    public function getRetailAccountStatusIcon($model)
+    {
+        $registerStatus = $this->getDirectConnectivityStatus($model);
+        if (empty($registerStatus)) {
+            $registerStatus = $this->getLocationStatusIcon($model);
+        }
+        return $registerStatus;
+    }
+
+    /**
+     * Get Register Status for Residential Devices
+     * @param RetailAccountDto $model
+     * @return string HTML code to display SIP register status
+     * @throws Zend_Exception
+     */
+    public function getRetailAccountStatus($model)
+    {
+        $registerStatus = $this->getDirectConnectivityStatus($model);
+        if (empty($registerStatus)) {
+            $registerStatus = $this->getLocationStatus($model);
+        }
+        return $registerStatus;
+    }
+
+    /**
      * Check if entity has direct connectivity enabled
      * @param FriendDto|ResidentialDeviceDto $model
      * @return string HTML code to display SIP register status or empty string

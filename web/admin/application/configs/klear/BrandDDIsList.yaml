@@ -49,6 +49,7 @@ production:
           residentialDevice: true
           language: true
           conditionalRoute: true
+          retailAccount: true
 staging: 
   _extends: production
 testing:

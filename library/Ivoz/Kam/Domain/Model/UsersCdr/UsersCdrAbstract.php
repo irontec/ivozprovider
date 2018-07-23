@@ -100,6 +100,11 @@ abstract class UsersCdrAbstract
      */
     protected $residentialDevice;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface
+     */
+    protected $retailAccount;
+
 
     use ChangelogTrait;
 
@@ -196,6 +201,7 @@ abstract class UsersCdrAbstract
             ->setUser($dto->getUser())
             ->setFriend($dto->getFriend())
             ->setResidentialDevice($dto->getResidentialDevice())
+            ->setRetailAccount($dto->getRetailAccount())
         ;
 
         $self->sanitizeValues();
@@ -232,7 +238,8 @@ abstract class UsersCdrAbstract
             ->setCompany($dto->getCompany())
             ->setUser($dto->getUser())
             ->setFriend($dto->getFriend())
-            ->setResidentialDevice($dto->getResidentialDevice());
+            ->setResidentialDevice($dto->getResidentialDevice())
+            ->setRetailAccount($dto->getRetailAccount());
 
 
 
@@ -263,7 +270,8 @@ abstract class UsersCdrAbstract
             ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
             ->setUser(\Ivoz\Provider\Domain\Model\User\User::entityToDto(self::getUser(), $depth))
             ->setFriend(\Ivoz\Provider\Domain\Model\Friend\Friend::entityToDto(self::getFriend(), $depth))
-            ->setResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice::entityToDto(self::getResidentialDevice(), $depth));
+            ->setResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice::entityToDto(self::getResidentialDevice(), $depth))
+            ->setRetailAccount(\Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount::entityToDto(self::getRetailAccount(), $depth));
     }
 
     /**
@@ -288,7 +296,8 @@ abstract class UsersCdrAbstract
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
             'userId' => self::getUser() ? self::getUser()->getId() : null,
             'friendId' => self::getFriend() ? self::getFriend()->getId() : null,
-            'residentialDeviceId' => self::getResidentialDevice() ? self::getResidentialDevice()->getId() : null
+            'residentialDeviceId' => self::getResidentialDevice() ? self::getResidentialDevice()->getId() : null,
+            'retailAccountId' => self::getRetailAccount() ? self::getRetailAccount()->getId() : null
         ];
     }
 
@@ -751,6 +760,30 @@ abstract class UsersCdrAbstract
     public function getResidentialDevice()
     {
         return $this->residentialDevice;
+    }
+
+    /**
+     * Set retailAccount
+     *
+     * @param \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount
+     *
+     * @return self
+     */
+    public function setRetailAccount(\Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount = null)
+    {
+        $this->retailAccount = $retailAccount;
+
+        return $this;
+    }
+
+    /**
+     * Get retailAccount
+     *
+     * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface
+     */
+    public function getRetailAccount()
+    {
+        return $this->retailAccount;
     }
 
 

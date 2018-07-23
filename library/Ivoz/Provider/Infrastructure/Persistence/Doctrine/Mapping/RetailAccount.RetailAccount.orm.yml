@@ -1,0 +1,17 @@
+Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\RetailAccountDoctrineRepository
+  type: entity
+  table: RetailAccounts
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  oneToMany:
+    ddis:
+      targetEntity: Ivoz\Provider\Domain\Model\Ddi\DdiInterface
+      mappedBy: retailAccount
