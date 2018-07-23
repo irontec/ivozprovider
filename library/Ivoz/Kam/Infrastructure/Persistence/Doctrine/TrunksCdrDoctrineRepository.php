@@ -72,8 +72,8 @@ class TrunksCdrDoctrineRepository extends ServiceEntityRepository implements Tru
             ['company', 'eq', $companyId],
             ['brand', 'eq', $brandId],
             ['startTime', 'lt', $startTime],
-            ['peeringContract', 'neq', null],
-            ['peeringContract', 'neq', ''],
+            ['carrier', 'neq', null],
+            ['carrier', 'neq', ''],
             ['price', 'isNull'],
             ['cgrid', 'isNull']
         ];
@@ -102,8 +102,8 @@ class TrunksCdrDoctrineRepository extends ServiceEntityRepository implements Tru
             ['brand', 'eq', $brandId],
             ['startTime', 'gt', $startTime],
             ['endTime', 'lt', $endTime],
-            ['peeringContract', 'neq', null],
-            ['peeringContract', 'neq', ''],
+            ['carrier', 'neq', null],
+            ['carrier', 'neq', ''],
             ['price', 'isNull'],
             ['cgrid', 'isNull']
         ];
@@ -129,8 +129,8 @@ class TrunksCdrDoctrineRepository extends ServiceEntityRepository implements Tru
             ['id', 'in', $pks],
             'or' => [
                 ['invoice', 'isNotNull'],
-                ['peeringContract', 'isNull'],
-                ['peeringContract', 'eq', '']
+                ['carrier', 'isNull'],
+                ['carrier', 'eq', '']
             ]
         ];
 

@@ -1,0 +1,315 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
+#include TpRatingProfilesList.yaml
+#include AdministratorsList.yaml
+#include KamUsersAddressList.yaml
+
+production:
+  main:
+    module: klearMatrix
+    defaultScreen: retailClientsList_screen
+  screens: &retailClients_screensLink
+    retailClientsList_screen: &retailClientsList_screenLink
+      controller: list
+      pagination:
+        items: 25
+      <<: *RetailClients
+      class: ui-silk-cart
+      title: _("List of %s %2s", ngettext('Retail Client', 'Retail Clients', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/brand/retail.html"
+      forcedValues:
+        type: 'retail'
+        <<: *forcedBrand
+      fields:
+        options:
+          title: _("Options")
+          screens:
+            retailClientsEdit_screen: true
+            kamUsersAddressList_screen: true
+            administratorsList_screen: true
+            tpRatingProfilesList_screen: ${auth.brandFeatures.billing.enabled}
+          dialogs:
+            retailClientsDel_dialog: false
+            emulateCompany_dialog: true
+          default: retailClientsEdit_screen
+        blacklist:
+          typeIcon: true
+          transformationRuleSet: true
+          postalAddress: true
+          postalCode: true
+          town: true
+          province: true
+          countryName: true
+          registryData: true
+          defaultTimezone: true
+          mediaRelaySets: true
+          ipFilter: true
+          language: true
+          relCodecs: true
+        order:
+          name: true
+          nif: true
+          billingMethod: true
+          balance: true
+          maxCalls: true
+          language: true
+          transformationRuleSet: true
+          domainUsers: true
+          recordingsDiskUsage: true
+      options:
+        title: _("Options")
+        screens:
+          retailClientsNew_screen: true
+        dialogs:
+          retailClientsDel_dialog: true
+      csv:
+        active: false
+        filename: "RetailClients"
+        headers: true
+        enclosure: '"'
+        separator: ";"
+        nameklear: false
+        rawValues: true
+        ignoreBlackList: true
+        newLine: "\r\n"
+        encoding: "utf-8"
+        executionSeconds: ""
+
+    retailClientsNew_screen: &retailClientsNew_screenLink
+      <<: *RetailClients
+      controller: new
+      fields:
+        blacklist:
+          nif: true
+          type: true
+          typeIcon: true
+          postalAddress: true
+          postalCode: true
+          town: true
+          province: true
+          countryName: true
+          mediaRelaySets: true
+          outgoingDDI: true
+          maxCalls: false
+          relCodecs: true
+        order: &retailClientsOrder_Link
+          id: true
+          name: true
+          language: true
+          maxCalls: true
+          defaultTimezone: true
+          relRoutingTags: true
+      fixedPositions: &retailClientsFixedPositions_Link
+        group0:
+          colsPerRow: 6
+          label: _("Basic Configuration")
+          fields:
+            name: 3
+            billingMethod: 3
+        group1:
+          colsPerRow: 12
+          label: _("Geographic Configuration")
+          fields:
+            language: 4
+            country: 4
+            defaultTimezone: 4
+            transformationRuleSet: 8
+        group2:
+          colsPerRow: 2
+          label: _("Security")
+          fields:
+            maxCalls: 1
+            ipFilter: 1
+        group9:
+          colsPerRow: 2
+          collapsed: true
+          label: _("Routing configuration")
+          fields:
+            relRoutingTags: 1
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      title: _("Add %s", ngettext('Retail Client', 'Retail Clients', 1))
+      shortcutOption: N
+      forcedValues:
+        type: "retail"
+        <<: *forcedBrand
+        nif: '12345678-Z'
+        postalAddress: 'Postal address'
+        postalCode: 'PC'
+        town: 'Town'
+        countryName: 'Country'
+        province: 'Province'
+
+    retailClientsEdit_screen: &retailClientsEdit_screenLink
+      <<: *RetailClients
+      controller: edit
+      fields:
+        blacklist:
+          type: true
+          typeIcon: true
+          mediaRelaySets: ${auth.isNotMainOperator}
+          nif: ${auth.brandFeatures.invoices.disabled}
+          postalAddress: ${auth.brandFeatures.invoices.disabled}
+          postalCode: ${auth.brandFeatures.invoices.disabled}
+          town: ${auth.brandFeatures.invoices.disabled}
+          province: ${auth.brandFeatures.invoices.disabled}
+          countryName: ${auth.brandFeatures.invoices.disabled}
+        whitelist:
+          id: ${auth.isMainOperator}
+        order:
+          <<: *retailClientsOrder_Link
+      fixedPositions:
+        group0:
+          colsPerRow: 6
+          label: _("Basic Configuration")
+          fields:
+            name: 4
+            nif: 2
+            billingMethod: 3
+        group1:
+          colsPerRow: 12
+          label: _("Geographic Configuration")
+          fields:
+            language: 4
+            country: 4
+            defaultTimezone: 4
+            transformationRuleSet: 8
+        group9:
+          colsPerRow: 2
+          label: _("Routing configuration")
+          fields:
+            relRoutingTags: 1
+        group2:
+          colsPerRow: 2
+          label: _("Security")
+          fields:
+            maxCalls: 1
+            ipFilter: 1
+        group3:
+          colsPerRow: 12
+          label: _("Server data")
+          fields:
+            outgoingDDI: 6
+            mediaRelaySets: 4
+            relCodecs: 4
+        group4:
+          colsPerRow: 2
+          label: _("Invoice data")
+          fields:
+            invoiceLanguage: 1
+            postalAddress: 2
+            postalCode: 1
+            town: 1
+            province: 1
+            countryName: 1
+            registryData: 2
+        group6:
+          colsPerRow: 1
+          collapsed: true
+          label: _("Externally rated options")
+          fields:
+            externallyExtraOpts: 1
+      class: ui-silk-pencil
+      label: false
+      title: _("Edit %s %2s", ngettext('Retail Client', 'Retail Clients', 1), "[format| (%item%)]")
+      forcedValues:
+        <<: *forcedBrand
+
+    # Administrators screens
+    <<: *administrators_screensLink
+    administratorsList_screen:
+      <<: *administratorsList_screenLink
+      class: ui-silk-user-gray
+      title: _("List of %s %2s", ngettext('Company admin', 'Company admins', 0), "[format| (%parent%)]")
+      filterField: Company
+      parentOptionCustomizer:
+        - recordCount
+    administratorsNew_screen:
+      <<: *administratorsNew_screenLink
+      title: _("Add %s", ngettext('Company admin', 'Company admins', 1), "[format| (%parent%)]")
+      filterField: Company
+    administratorsEdit_screen:
+      <<: *administratorsEdit_screenLink
+      title: _("Edit %s %2s", ngettext('Company admin', 'Company admins', 1), "[format| (%item%)]")
+      filterField: Company
+
+    # tpRatingPlan:
+    <<: *tpRatingProfiles_screensLink
+    tpRatingProfilesList_screen:
+      <<: *tpRatingProfilesList_screenLink
+      filterField: company
+      parentOptionCustomizer:
+        - recordCount
+    tpRatingProfilesNew_screen:
+      <<: *tpRatingProfilesNew_screenLink
+      filterField: company
+    tpRatingProfilesEdit_screen:
+      <<: *tpRatingProfilesEdit_screenLink
+      filterField: company
+
+    # kamUsersAddress:
+    kamUsersAddressList_screen:
+      <<: *kamUsersAddressList_screenLink
+      filterField: Company
+      parentOptionCustomizer:
+        - recordCount
+    kamUsersAddressNew_screen:
+      <<: *kamUsersAddressNew_screenLink
+      filterField: Company
+    kamUsersAddressEdit_screen:
+      <<: *kamUsersAddressEdit_screenLink
+      filterField: Company
+
+
+  dialogs: &retailClients_dialogsLink
+    retailClientsDel_dialog: &retailClientsDel_dialogLink
+      <<: *RetailClients
+      controller: delete
+      secureDelete: true
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('Retail Client', 'Retail Clients', 1))
+      description: _("Do you want to delete this %s?", ngettext('Retail Client', 'Retail Clients', 1))
+      message: _("%s successfully deleted.", ngettext('Retail Client', 'Retail Clients', 1))
+      multiItem: 1
+      labelOnList: 1
+
+    emulateCompany_dialog:
+      title: _("Emulate Retail Client %s", "[format| (%item%)]")
+      module: default
+      controller: klear-custom-extra-auth
+      action: emulate
+      class: ui-silk-basket-go
+      label: false
+      labelOnEdit: false
+      labelOnList: false
+      labelOnEntityPostSave: false
+      multiItem: false
+      parentOptionCustomizer:
+        - IvozProvider_Klear_Options_OptionsCustomizer
+
+    # Administrators dialogs
+    <<: *administrators_dialogsLink
+    administratorsDel_dialog:
+      <<: *administratorsDel_dialogLink
+      title: _("Delete %s", ngettext('Retail admin', 'Retail admins', 1))
+      description: _("Do you want to delete this %s?", ngettext('Retail admin', 'Retail admins', 1))
+      message: _("%s successfully deleted.", ngettext('Retail admin', 'Retail admins', 1))
+
+    # tpRatingProfiles:
+    <<: *tpRatingProfiles_dialogsLink
+    # kamUsersAddress dialogs:
+    <<: *kamUsersAddress_dialogsLink
+
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

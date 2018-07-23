@@ -76,22 +76,6 @@ class ProviderCompanyService extends Fixture implements DependentFixtureInterfac
         $this->sanitizeEntityValues($item7);
         $manager->persist($item7);
 
-        $item8 = $this->createEntityInstanceWithPublicMethods(CompanyService::class);
-        $item8->setCode("00");
-        $item8->setCompany($this->getReference('_reference_ProviderCompany2'));
-        $item8->setService($this->getReference('_reference_ProviderService4'));
-        $this->addReference('_reference_ProviderCompanyService8', $item8);
-        $this->sanitizeEntityValues($item8);
-        $manager->persist($item8);
-
-        $item9 = $this->createEntityInstanceWithPublicMethods(CompanyService::class);
-        $item9->setCode("21");
-        $item9->setCompany($this->getReference('_reference_ProviderCompany1'));
-        $item9->setService($this->getReference('_reference_ProviderService4'));
-        $this->addReference('_reference_ProviderCompanyService9', $item9);
-        $this->sanitizeEntityValues($item9);
-        $manager->persist($item9);
-
         $manager->flush();
     }
 

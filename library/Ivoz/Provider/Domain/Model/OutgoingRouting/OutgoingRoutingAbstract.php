@@ -39,9 +39,9 @@ abstract class OutgoingRoutingAbstract
     protected $company;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface
+     * @var \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
      */
-    protected $peeringContract;
+    protected $carrier;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface
@@ -141,7 +141,7 @@ abstract class OutgoingRoutingAbstract
             ->setType($dto->getType())
             ->setBrand($dto->getBrand())
             ->setCompany($dto->getCompany())
-            ->setPeeringContract($dto->getPeeringContract())
+            ->setCarrier($dto->getCarrier())
             ->setRoutingPattern($dto->getRoutingPattern())
             ->setRoutingPatternGroup($dto->getRoutingPatternGroup())
             ->setRoutingTag($dto->getRoutingTag())
@@ -170,7 +170,7 @@ abstract class OutgoingRoutingAbstract
             ->setWeight($dto->getWeight())
             ->setBrand($dto->getBrand())
             ->setCompany($dto->getCompany())
-            ->setPeeringContract($dto->getPeeringContract())
+            ->setCarrier($dto->getCarrier())
             ->setRoutingPattern($dto->getRoutingPattern())
             ->setRoutingPatternGroup($dto->getRoutingPatternGroup())
             ->setRoutingTag($dto->getRoutingTag());
@@ -193,7 +193,7 @@ abstract class OutgoingRoutingAbstract
             ->setWeight(self::getWeight())
             ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
             ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
-            ->setPeeringContract(\Ivoz\Provider\Domain\Model\PeeringContract\PeeringContract::entityToDto(self::getPeeringContract(), $depth))
+            ->setCarrier(\Ivoz\Provider\Domain\Model\Carrier\Carrier::entityToDto(self::getCarrier(), $depth))
             ->setRoutingPattern(\Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPattern::entityToDto(self::getRoutingPattern(), $depth))
             ->setRoutingPatternGroup(\Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup::entityToDto(self::getRoutingPatternGroup(), $depth))
             ->setRoutingTag(\Ivoz\Provider\Domain\Model\RoutingTag\RoutingTag::entityToDto(self::getRoutingTag(), $depth));
@@ -210,7 +210,7 @@ abstract class OutgoingRoutingAbstract
             'weight' => self::getWeight(),
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
-            'peeringContractId' => self::getPeeringContract() ? self::getPeeringContract()->getId() : null,
+            'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null,
             'routingPatternId' => self::getRoutingPattern() ? self::getRoutingPattern()->getId() : null,
             'routingPatternGroupId' => self::getRoutingPatternGroup() ? self::getRoutingPatternGroup()->getId() : null,
             'routingTagId' => self::getRoutingTag() ? self::getRoutingTag()->getId() : null
@@ -352,27 +352,27 @@ abstract class OutgoingRoutingAbstract
     }
 
     /**
-     * Set peeringContract
+     * Set carrier
      *
-     * @param \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface $peeringContract
+     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier
      *
      * @return self
      */
-    public function setPeeringContract(\Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface $peeringContract = null)
+    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier = null)
     {
-        $this->peeringContract = $peeringContract;
+        $this->carrier = $carrier;
 
         return $this;
     }
 
     /**
-     * Get peeringContract
+     * Get carrier
      *
-     * @return \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface
+     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
      */
-    public function getPeeringContract()
+    public function getCarrier()
     {
-        return $this->peeringContract;
+        return $this->carrier;
     }
 
     /**

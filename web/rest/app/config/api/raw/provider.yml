@@ -202,6 +202,25 @@ Ivoz\Provider\Domain\Model\Ddi\Ddi:
       ROLE_BRAND_ADMIN:
         company:
           in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider:
+  attributes:
+    access_control: '"ROLE_BRAND_ADMIN" in roles'
+    read_access_control:
+      ROLE_BRAND_ADMIN:
+        brand:
+          eq: "user.getBrand().getId()"
+Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistration:
+  attributes:
+    access_control: '"ROLE_BRAND_ADMIN" in roles'
+    read_access_control:
+      inherited:
+        ddiProvider: 'Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider'
+Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddress:
+    attributes:
+      access_control: '"ROLE_BRAND_ADMIN" in roles'
+    read_access_control:
+      inherited:
+        ddiProvider: 'Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider'
 Ivoz\Provider\Domain\Model\Domain\Domain:
   itemOperations:
     put: ~
@@ -379,6 +398,13 @@ Ivoz\Provider\Domain\Model\Invoice\Invoice:
       ROLE_BRAND_ADMIN:
         company:
           in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequence:
+  attributes:
+    access_control: '"ROLE_BRAND_ADMIN" in roles'
+    read_access_control:
+      ROLE_BRAND_ADMIN:
+        brand:
+          eq: "user.getBrand().getId()"
 Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplate:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
@@ -537,14 +563,14 @@ Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting:
       ROLE_BRAND_ADMIN:
         brand:
           eq: "user.getBrand().getId()"
-Ivoz\Provider\Domain\Model\PeeringContract\PeeringContract:
+Ivoz\Provider\Domain\Model\Carrier\Carrier:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
       ROLE_BRAND_ADMIN:
         brand:
           eq: "user.getBrand().getId()"
-Ivoz\Provider\Domain\Model\PeerServer\PeerServer:
+Ivoz\Provider\Domain\Model\CarrierServer\CarrierServer:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
@@ -614,6 +640,19 @@ Ivoz\Provider\Domain\Model\Recording\Recording:
         company:
           in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
 Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+      ROLE_BRAND_ADMIN:
+        or:
+          - brand:
+              eq: "user.getBrand().getId()"
+          - company:
+              in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:

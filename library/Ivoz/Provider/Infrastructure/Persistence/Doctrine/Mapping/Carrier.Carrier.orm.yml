@@ -1,0 +1,20 @@
+Ivoz\Provider\Domain\Model\Carrier\Carrier:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\CarrierDoctrineRepository
+  type: entity
+  table: Carriers
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  oneToMany:
+    outgoingRoutings:
+      targetEntity: Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface
+      mappedBy: carrier
+    servers:
+      targetEntity: Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface
+      mappedBy: carrier

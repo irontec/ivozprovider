@@ -12,11 +12,11 @@ production:
       pagination:
         items: 25
       <<: *InvoiceNumberSequences
-      class: ui-silk-report-key
+      class: ui-silk-report-go
       title: _("List of %s %2s", ngettext('Invoice number sequence', 'Invoice number sequences', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/brand/invoices/invoices_number_sequence.html"
+        href: "/doc/${lang}/brand/invoices/number_sequences.html"
       forcedValues:
         <<: *forcedBrand
       fields: &invoiceNumberSequences_fieldsLink
@@ -56,7 +56,7 @@ production:
         group0:
           colsPerRow: 2
           fields:
-            iden: 1
+            name: 1
             prefix: 1
         group1:
           colsPerRow: 2

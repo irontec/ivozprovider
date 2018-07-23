@@ -127,6 +127,12 @@ interface MusicOnHoldInterface extends LoggableEntityInterface
     public function getEncodedFile();
 
     /**
+     * @param TempFile $file
+     * @throws \Exception
+     */
+    public function removeTmpFile(\Ivoz\Core\Domain\Service\TempFile $file);
+
+    /**
      * @return TempFile[]
      */
     public function getTempFiles();

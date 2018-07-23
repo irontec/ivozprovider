@@ -5,7 +5,7 @@ Outgoing Call Routing
 
 .. toctree::
 
-    target_patterns
-    target_pattern_groups
-    routing_tags
+    patterns
+    pattern_groups
+    tags
     outgoing_routing

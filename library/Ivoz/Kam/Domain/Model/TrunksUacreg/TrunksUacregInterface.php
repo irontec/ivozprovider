@@ -17,11 +17,7 @@ interface TrunksUacregInterface extends LoggableEntityInterface
     public function setAuthProxy($authProxy);
 
     /**
-     * Set lUuid
-     *
-     * @param string $lUuid
-     *
-     * @return self
+     * @inheritdoc
      */
     public function setLUuid($lUuid);
 
@@ -200,22 +196,6 @@ interface TrunksUacregInterface extends LoggableEntityInterface
     public function getRegDelay();
 
     /**
-     * Set multiddi
-     *
-     * @param boolean $multiddi
-     *
-     * @return self
-     */
-    public function setMultiddi($multiddi);
-
-    /**
-     * Get multiddi
-     *
-     * @return boolean
-     */
-    public function getMultiddi();
-
-    /**
      * Set authHa1
      *
      * @param string $authHa1
@@ -232,6 +212,22 @@ interface TrunksUacregInterface extends LoggableEntityInterface
     public function getAuthHa1();
 
     /**
+     * Set ddiProviderRegistration
+     *
+     * @param \Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface $ddiProviderRegistration
+     *
+     * @return self
+     */
+    public function setDdiProviderRegistration(\Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface $ddiProviderRegistration);
+
+    /**
+     * Get ddiProviderRegistration
+     *
+     * @return \Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface
+     */
+    public function getDdiProviderRegistration();
+
+    /**
      * Set brand
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
@@ -246,22 +242,6 @@ interface TrunksUacregInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
      */
     public function getBrand();
-
-    /**
-     * Set peeringContract
-     *
-     * @param \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface $peeringContract
-     *
-     * @return self
-     */
-    public function setPeeringContract(\Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface $peeringContract);
-
-    /**
-     * Get peeringContract
-     *
-     * @return \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface
-     */
-    public function getPeeringContract();
 
 }
 

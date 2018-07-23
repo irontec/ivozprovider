@@ -81,13 +81,26 @@ class IvozProvider_Klear_Filter_RouteTypes implements KlearMatrix_Model_Field_Se
             }
         }
 
-        if ($companyDto->getType() === Company::VPBX) {
-            $excludedRoutes[] = 'residential';
-        } else {
-            $excludedRoutes[] = 'user';
-            $excludedRoutes[] = 'ivr';
-            $excludedRoutes[] = 'huntGroup';
-            $excludedRoutes[] = 'conditional';
+        switch ($companyDto->getType()) {
+            case Company::VPBX:
+                $excludedRoutes[] = 'residential';
+                $excludedRoutes[] = 'retail';
+                break;
+            case Company::RETAIL:
+                $excludedRoutes[] = 'user';
+                $excludedRoutes[] = 'ivr';
+                $excludedRoutes[] = 'huntGroup';
+                $excludedRoutes[] = 'conditional';
+                $excludedRoutes[] = 'residential';
+                break;
+            case Company::RESIDENTIAL:
+                $excludedRoutes[] = 'user';
+                $excludedRoutes[] = 'ivr';
+                $excludedRoutes[] = 'huntGroup';
+                $excludedRoutes[] = 'conditional';
+                $excludedRoutes[] = 'retail';
+                break;
+
         }
 
         return $excludedRoutes;

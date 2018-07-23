@@ -73,11 +73,6 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
     private $regDelay = '0';
 
     /**
-     * @var boolean
-     */
-    private $multiddi = '0';
-
-    /**
      * @var string
      */
     private $authHa1 = '';
@@ -88,14 +83,14 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
     private $id;
 
     /**
+     * @var \Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationDto | null
+     */
+    private $ddiProviderRegistration;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
      */
     private $brand;
-
-    /**
-     * @var \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractDto | null
-     */
-    private $peeringContract;
 
 
     use DtoNormalizer;
@@ -127,11 +122,10 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
             'expires' => 'expires',
             'flags' => 'flags',
             'regDelay' => 'regDelay',
-            'multiddi' => 'multiddi',
             'authHa1' => 'authHa1',
             'id' => 'id',
-            'brandId' => 'brand',
-            'peeringContractId' => 'peeringContract'
+            'ddiProviderRegistrationId' => 'ddiProviderRegistration',
+            'brandId' => 'brand'
         ];
     }
 
@@ -153,11 +147,10 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
             'expires' => $this->getExpires(),
             'flags' => $this->getFlags(),
             'regDelay' => $this->getRegDelay(),
-            'multiddi' => $this->getMultiddi(),
             'authHa1' => $this->getAuthHa1(),
             'id' => $this->getId(),
-            'brand' => $this->getBrand(),
-            'peeringContract' => $this->getPeeringContract()
+            'ddiProviderRegistration' => $this->getDdiProviderRegistration(),
+            'brand' => $this->getBrand()
         ];
     }
 
@@ -166,8 +159,8 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
+        $this->ddiProviderRegistration = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\DdiProviderRegistration\\DdiProviderRegistration', $this->getDdiProviderRegistrationId());
         $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
-        $this->peeringContract = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\PeeringContract\\PeeringContract', $this->getPeeringContractId());
     }
 
     /**
@@ -419,26 +412,6 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param boolean $multiddi
-     *
-     * @return static
-     */
-    public function setMultiddi($multiddi = null)
-    {
-        $this->multiddi = $multiddi;
-
-        return $this;
-    }
-
-    /**
-     * @return boolean
-     */
-    public function getMultiddi()
-    {
-        return $this->multiddi;
-    }
-
-    /**
      * @param string $authHa1
      *
      * @return static
@@ -476,6 +449,52 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationDto $ddiProviderRegistration
+     *
+     * @return static
+     */
+    public function setDdiProviderRegistration(\Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationDto $ddiProviderRegistration = null)
+    {
+        $this->ddiProviderRegistration = $ddiProviderRegistration;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationDto
+     */
+    public function getDdiProviderRegistration()
+    {
+        return $this->ddiProviderRegistration;
+    }
+
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setDdiProviderRegistrationId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationDto($id)
+            : null;
+
+        return $this->setDdiProviderRegistration($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getDdiProviderRegistrationId()
+    {
+        if ($dto = $this->getDdiProviderRegistration()) {
+            return $dto->getId();
+        }
+
+        return null;
     }
 
     /**
@@ -518,52 +537,6 @@ abstract class TrunksUacregDtoAbstract implements DataTransferObjectInterface
     public function getBrandId()
     {
         if ($dto = $this->getBrand()) {
-            return $dto->getId();
-        }
-
-        return null;
-    }
-
-    /**
-     * @param \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractDto $peeringContract
-     *
-     * @return static
-     */
-    public function setPeeringContract(\Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractDto $peeringContract = null)
-    {
-        $this->peeringContract = $peeringContract;
-
-        return $this;
-    }
-
-    /**
-     * @return \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractDto
-     */
-    public function getPeeringContract()
-    {
-        return $this->peeringContract;
-    }
-
-    /**
-     * @param integer $id | null
-     *
-     * @return static
-     */
-    public function setPeeringContractId($id)
-    {
-        $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractDto($id)
-            : null;
-
-        return $this->setPeeringContract($value);
-    }
-
-    /**
-     * @return integer | null
-     */
-    public function getPeeringContractId()
-    {
-        if ($dto = $this->getPeeringContract()) {
             return $dto->getId();
         }
 

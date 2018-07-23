@@ -64,6 +64,7 @@ production:
           externallyExtraOpts: true
           voicemailNotificationTemplate: true
           faxNotificationTemplate: true
+          invoiceNotificationTemplate: true
           billingMethod: true
           balance: true
         order:
@@ -117,6 +118,7 @@ production:
           recordingsLimitEmail: true
           recordingsDiskUsage: true
           voicemailNotificationTemplate: true
+          invoiceNotificationTemplate: true
           faxNotificationTemplate: true
           balance: true
         order: &companiesOrder_Link
@@ -265,6 +267,7 @@ production:
           fields:
             voicemailNotificationTemplate: 1
             faxNotificationTemplate: 1
+            invoiceNotificationTemplate: 1
 
     # Administrators
     <<: *administrators_screensLink

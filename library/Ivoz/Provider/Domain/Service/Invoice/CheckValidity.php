@@ -73,11 +73,12 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
         $outDate = clone $entity->getOutDate();
 
         if ($entity->hasChanged('outDate')) {
-            $oneSecAgo = new \DateInterval('PT1S');
             $outDate
-                ->setTimezone($invoiceTz)
-                ->add(new \DateInterval('P1D'))
-                ->sub($oneSecAgo);
+                ->setTimezone($invoiceTz);
+            $outDate
+                ->modify('next day')
+                ->setTime(0, 0, 0)
+                ->modify('- 1 second');
 
             $entity->setOutDate($outDate);
         }

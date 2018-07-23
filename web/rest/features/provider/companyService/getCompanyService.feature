@@ -41,14 +41,6 @@ Feature: Retrieve company services
           {
               "code": "93",
               "id": 7
-          },
-          {
-              "code": "00",
-              "id": 8
-          },
-          {
-              "code": "21",
-              "id": 9
           }
       ]
     """

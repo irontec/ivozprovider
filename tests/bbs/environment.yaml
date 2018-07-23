@@ -32,3 +32,9 @@ users:
         username: "20000"
         password: r3S1d3nT14lP4sSW0rd+
         domain: brand-bbs.ivozprovider.local
+
+  - retail: &retail_cred
+        username: "999666001"
+        password: r3t41lP4sSW0rd+
+        domain: brand-bbs.ivozprovider.local
+

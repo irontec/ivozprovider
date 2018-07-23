@@ -173,6 +173,11 @@ abstract class CompanyAbstract
      */
     protected $faxNotificationTemplate;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
+     */
+    protected $invoiceNotificationTemplate;
+
 
     use ChangelogTrait;
 
@@ -302,6 +307,7 @@ abstract class CompanyAbstract
             ->setOutgoingDdiRule($dto->getOutgoingDdiRule())
             ->setVoicemailNotificationTemplate($dto->getVoicemailNotificationTemplate())
             ->setFaxNotificationTemplate($dto->getFaxNotificationTemplate())
+            ->setInvoiceNotificationTemplate($dto->getInvoiceNotificationTemplate())
         ;
 
         $self->sanitizeValues();
@@ -352,7 +358,8 @@ abstract class CompanyAbstract
             ->setOutgoingDdi($dto->getOutgoingDdi())
             ->setOutgoingDdiRule($dto->getOutgoingDdiRule())
             ->setVoicemailNotificationTemplate($dto->getVoicemailNotificationTemplate())
-            ->setFaxNotificationTemplate($dto->getFaxNotificationTemplate());
+            ->setFaxNotificationTemplate($dto->getFaxNotificationTemplate())
+            ->setInvoiceNotificationTemplate($dto->getInvoiceNotificationTemplate());
 
 
 
@@ -397,7 +404,8 @@ abstract class CompanyAbstract
             ->setOutgoingDdi(\Ivoz\Provider\Domain\Model\Ddi\Ddi::entityToDto(self::getOutgoingDdi(), $depth))
             ->setOutgoingDdiRule(\Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule::entityToDto(self::getOutgoingDdiRule(), $depth))
             ->setVoicemailNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate::entityToDto(self::getVoicemailNotificationTemplate(), $depth))
-            ->setFaxNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate::entityToDto(self::getFaxNotificationTemplate(), $depth));
+            ->setFaxNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate::entityToDto(self::getFaxNotificationTemplate(), $depth))
+            ->setInvoiceNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate::entityToDto(self::getInvoiceNotificationTemplate(), $depth));
     }
 
     /**
@@ -436,7 +444,8 @@ abstract class CompanyAbstract
             'outgoingDdiId' => self::getOutgoingDdi() ? self::getOutgoingDdi()->getId() : null,
             'outgoingDdiRuleId' => self::getOutgoingDdiRule() ? self::getOutgoingDdiRule()->getId() : null,
             'voicemailNotificationTemplateId' => self::getVoicemailNotificationTemplate() ? self::getVoicemailNotificationTemplate()->getId() : null,
-            'faxNotificationTemplateId' => self::getFaxNotificationTemplate() ? self::getFaxNotificationTemplate()->getId() : null
+            'faxNotificationTemplateId' => self::getFaxNotificationTemplate() ? self::getFaxNotificationTemplate()->getId() : null,
+            'invoiceNotificationTemplateId' => self::getInvoiceNotificationTemplate() ? self::getInvoiceNotificationTemplate()->getId() : null
         ];
     }
 
@@ -1273,6 +1282,30 @@ abstract class CompanyAbstract
     public function getFaxNotificationTemplate()
     {
         return $this->faxNotificationTemplate;
+    }
+
+    /**
+     * Set invoiceNotificationTemplate
+     *
+     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $invoiceNotificationTemplate
+     *
+     * @return self
+     */
+    public function setInvoiceNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $invoiceNotificationTemplate = null)
+    {
+        $this->invoiceNotificationTemplate = $invoiceNotificationTemplate;
+
+        return $this;
+    }
+
+    /**
+     * Get invoiceNotificationTemplate
+     *
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
+     */
+    public function getInvoiceNotificationTemplate()
+    {
+        return $this->invoiceNotificationTemplate;
     }
 
 

@@ -21,7 +21,7 @@ Feature: Create outgoing ddi rules patterns
     Then the response status code should be 201
      And the response should be in JSON
      And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-     And the JSON should be equal to:
+     And the JSON should be like:
     """
       {
           "action": "force",
@@ -40,30 +40,7 @@ Feature: Create outgoing ddi rules patterns
               "brand": null,
               "company": 1
           },
-          "forcedDdi": {
-              "ddi": "123",
-              "ddie164": "+34123",
-              "recordCalls": "none",
-              "displayName": "",
-              "routeType": null,
-              "billInboundCalls": false,
-              "friendValue": "",
-              "id": 1,
-              "company": 1,
-              "brand": 1,
-              "conferenceRoom": null,
-              "language": null,
-              "queue": null,
-              "externalCallFilter": null,
-              "user": null,
-              "ivr": null,
-              "huntGroup": null,
-              "fax": null,
-              "peeringContract": 1,
-              "country": 1,
-              "residentialDevice": null,
-              "conditionalRoute": null
-          }
+          "forcedDdi": "~"
       }
     """
 
@@ -74,7 +51,7 @@ Feature: Create outgoing ddi rules patterns
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-      And the JSON should be equal to:
+      And the JSON should be like:
     """
       {
           "action": "force",
@@ -93,29 +70,6 @@ Feature: Create outgoing ddi rules patterns
               "brand": null,
               "company": 1
           },
-          "forcedDdi": {
-              "ddi": "123",
-              "ddie164": "+34123",
-              "recordCalls": "none",
-              "displayName": "",
-              "routeType": null,
-              "billInboundCalls": false,
-              "friendValue": "",
-              "id": 1,
-              "company": 1,
-              "brand": 1,
-              "conferenceRoom": null,
-              "language": null,
-              "queue": null,
-              "externalCallFilter": null,
-              "user": null,
-              "ivr": null,
-              "huntGroup": null,
-              "fax": null,
-              "peeringContract": 1,
-              "country": 1,
-              "residentialDevice": null,
-              "conditionalRoute": null
-          }
+          "forcedDdi": "~"
       }
     """

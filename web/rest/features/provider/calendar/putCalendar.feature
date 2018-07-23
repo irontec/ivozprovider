@@ -57,7 +57,8 @@ Feature: Update calendars
               "outgoingDdiRule": null,
               "outgoingDdiRule": null,
               "voicemailNotificationTemplate": 1,
-              "faxNotificationTemplate": null
+              "faxNotificationTemplate": null,
+              "invoiceNotificationTemplate": null
           }
       }
     """

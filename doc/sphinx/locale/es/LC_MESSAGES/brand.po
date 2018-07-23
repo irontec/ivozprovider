@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-01 16:18+0200\n"
+"POT-Creation-Date: 2018-07-18 19:20+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.4.0\n"
+"Generated-By: Babel 2.3.4\n"
 
 #: ../../brand/balances.rst:3
 msgid "Balances"
@@ -25,8 +25,8 @@ msgid ""
 "This section displays the balance status for :ref:`Prepaid billing` and "
 ":ref:`Pseudo-prepaid billing` clients."
 msgstr ""
-"Esta sección muestra el estado de saldos para clientes con :ref:`Tarificación prepago` "
-"y :ref:`Tarificación pseudo-prepago`"
+"Esta sección muestra el estado de saldos para clientes con "
+":ref:`Tarificación prepago` y :ref:`Tarificación pseudo-prepago`"
 
 #: ../../brand/balances.rst:7
 msgid "Following sections are available for each client:"
@@ -270,16 +270,12 @@ msgid "The cost of the call."
 msgstr "Coste calculado para la llamada."
 
 #: ../../brand/billing/billable_calls.rst:42
-msgid "Peering contract"
-msgstr "Contrato de peering"
+msgid "DDI Provider"
+msgstr "Provedor DDI"
 
 #: ../../brand/billing/billable_calls.rst:44
-msgid ""
-"Shows which :ref:`Peering contract <peering_contracts>` was used for each"
-" call."
-msgstr ""
-"Indica por qué :ref:`Contrato de peering <peering_contracts>` ha salido "
-"la llamada."
+msgid "Shows which :ref:`DDI Provider <ddi_provider>` was used for each call."
+msgstr "Indica por qué :ref:`Proveedor DDI <ddi_provider>` ha salido la llamada."
 
 #: ../../brand/billing/billable_calls.rst:46
 msgid "Invoice"
@@ -339,9 +335,10 @@ msgid ""
 "<https://es.wikipedia.org/wiki/CSV>`_ file. If you still want to create "
 "data manually, check section :ref:`Creating a destination rate`"
 msgstr ""
-"Esto es debiado a que la creaciónd e los precios destinos se realiza generalmente "
-"a través de un fichero `CSV <https://es.wikipedia.org/wiki/CSV>`_. Si quiere crear los "
-"datos de manera manual, vea la sección :ref:`Crear un precio destino`"
+"Esto es debido a que la creación de los precios destinos se realiza "
+"generalmente a través de un fichero `CSV "
+"<https://es.wikipedia.org/wiki/CSV>`_. Si quiere crear los datos de "
+"manera manual, vea la sección :ref:`Crear un precio destino`"
 
 #: ../../brand/billing/destination_rates.rst:24
 msgid "Importing a CSV file"
@@ -481,9 +478,10 @@ msgid ""
 "imported file, changing some values and importing pricing back."
 msgstr ""
 "Puedes descargar el fichero importad del precio destino. Ten en cuenta "
-"que cuando importe ficheros sobre datos existentes, los valores que coincidan "
-"serán sobreescritos y los no coincidentes serán mantenidos. Esto permite descargar "
-"el fichero importado, cambiar algunos valores y volverlo a importar."
+"que cuando importe ficheros sobre datos existentes, los valores que "
+"coincidan serán sobreescritos y los no coincidentes serán mantenidos. "
+"Esto permite descargar el fichero importado, cambiar algunos valores y "
+"volverlo a importar."
 
 #: ../../brand/billing/destination_rates.rst:83
 msgid ""
@@ -550,16 +548,16 @@ msgid ""
 "rate* for a plan, even though some destinations are included in more than"
 " one of those destination rates."
 msgstr ""
-"La **metrica** permite assignar más de un *precio destino* al plan de precios, "
-"aunque exista el mismo destino en más de uno de ellos."
+"La **métrica** permite asignar más de un *precio destino* al plan de "
+"precios, aunque exista el mismo destino en más de uno de ellos."
 
 #: ../../brand/billing/rating_plans.rst:37
 msgid ""
 "If a given call can be billed with more than one destination rate, it "
 "will be billed using the one with lowest metric."
 msgstr ""
-"Si una llamada puede ser tarificada empleando más de un Precio destino, se "
-"empleará el que tenga menor métrica."
+"Si una llamada puede ser tarificada empleando más de un Precio destino, "
+"se empleará el que tenga menor métrica."
 
 #: ../../brand/billing/rating_plans.rst:40
 msgid ""
@@ -567,8 +565,8 @@ msgid ""
 " a specific destination in another *destination rate* with lower metric "
 "(free cell phone calls, for example)."
 msgstr ""
-"Esto permite tener un *Precio destino* genera y especificar un precio para "
-"un destino concreto en otro *precio destino* con una métrica menor "
+"Esto permite tener un *Precio destino* genera y especificar un precio "
+"para un destino concreto en otro *precio destino* con una métrica menor "
 "(por ejemplo, llamadas gratuitas a móviles)."
 
 #: ../../brand/billing/rating_plans.rst:45
@@ -580,8 +578,8 @@ msgid ""
 "To check the configuration so far we can **Simulate a call** from the "
 "rating plans list."
 msgstr ""
-"Para comprobar la configuración puede **Simular una llamada** desde el listado "
-"de planes de precio."
+"Para comprobar la configuración puede **Simular una llamada** desde el "
+"listado de planes de precio."
 
 #: ../../brand/billing/rating_plans.rst:48
 msgid ""
@@ -759,6 +757,16 @@ msgstr ""
 "Todas las llamadas del tramo escogido tienen que estar facturadas para "
 "poder emitir la factura."
 
+#: ../../brand/invoices/number_sequences.rst:3
+msgid "Number Sequences"
+msgstr "Secuencias de Numeración"
+
+#: ../../brand/invoices/number_sequences.rst:5
+#: ../../brand/peering/ddi_provider_addresses.rst:5
+#: ../../brand/peering/ddi_providers.rst:7 ../../brand/residential.rst:5
+msgid "TODO https://github.com/irontec/ivozprovider/issues/442"
+msgstr ""
+
 #: ../../brand/invoices/templates.rst:3
 msgid "Invoice templates"
 msgstr "Plantillas de facturas"
@@ -887,10 +895,18 @@ msgid "Email sent when a balance is below configured threshold"
 msgstr ""
 
 #: ../../brand/notifications.rst:15
+msgid "Email sent when an automatic invoice is generated"
+msgstr "Correos electrónicos enviados cuando se generan facturas automáticas"
+
+#: ../../brand/notifications.rst:17
+msgid "Email sent when scheduled CDR CSVs are generated"
+msgstr "Correos electrónicos enviados cuando se generan CSVs de CDR planificados"
+
+#: ../../brand/notifications.rst:20
 msgid "When no custom notification is configured, default ones will be used"
 msgstr "Si no se configuran notificaciones, se emplearán notificaciones genéricas"
 
-#: ../../brand/notifications.rst:17
+#: ../../brand/notifications.rst:22
 msgid ""
 "Notifications are created in two steps: Create a notification type and "
 "add contents to the notification for each required language."
@@ -899,11 +915,11 @@ msgstr ""
 " de notificación y añadir contenido a la notificación para cada lenguaje "
 "necesario."
 
-#: ../../brand/notifications.rst:22
+#: ../../brand/notifications.rst:27
 msgid "Creating a new notification"
 msgstr "Crear una nueva notificación"
 
-#: ../../brand/notifications.rst:24
+#: ../../brand/notifications.rst:29
 msgid ""
 "Brand administrators can create new notification templates in **Brand "
 "configuration** > **Notification templates**:"
@@ -912,25 +928,25 @@ msgstr ""
 "notificacion en **Configuración de marca** > **Plantillas de "
 "notificación**"
 
-#: ../../brand/notifications.rst:26
+#: ../../brand/notifications.rst:31
 msgid "Fields are nearly self-explanatory:"
 msgstr "Los campos son auto-explicativos"
 
-#: ../../brand/notifications.rst:29 ../../brand/peering/peer_servers.rst:22
-#: ../../brand/peering/peering_contracts.rst:32 ../../brand/retail.rst:12
+#: ../../brand/notifications.rst:34 ../../brand/peering/carrier_servers.rst:9
+#: ../../brand/peering/carriers.rst:6 ../../brand/retail.rst:12
 #: ../../brand/virtual_pbx.rst:11 ../../brand/wholesale.rst:22
 msgid "Name"
 msgstr "Nombre"
 
-#: ../../brand/notifications.rst:31
+#: ../../brand/notifications.rst:36
 msgid "Used to identify this notification template"
 msgstr "Empleado para identificar esta plantilla de notificación"
 
-#: ../../brand/notifications.rst:32
+#: ../../brand/notifications.rst:37
 msgid "Type"
 msgstr "Tipo"
 
-#: ../../brand/notifications.rst:34
+#: ../../brand/notifications.rst:39
 msgid ""
 "Determine the notification type. Each notification type has its own "
 "substitution variables avaiable to replace the contents of the subject "
@@ -940,11 +956,11 @@ msgstr ""
 "propias variables de sustitución disponibles para poder replazar en los "
 "contenidos del asunto y cuerpo."
 
-#: ../../brand/notifications.rst:39
+#: ../../brand/notifications.rst:44
 msgid "Adding Notification contents"
 msgstr "Añadiendo contenidos a la notificación"
 
-#: ../../brand/notifications.rst:41
+#: ../../brand/notifications.rst:46
 msgid ""
 "Once the notification has been created, you can add different language "
 "contents. IvozProvider will automatically use the proper language based "
@@ -954,31 +970,31 @@ msgstr ""
 "los diferentes languages. IvozProvider eligirá automáticamente el "
 "lenguaje en función del destino:"
 
-#: ../../brand/notifications.rst:44
+#: ../../brand/notifications.rst:49
 msgid "For Voicemails, the user language will be used"
 msgstr "Para buzones de voz, el lenguaje del usuario del buzón será empleado"
 
-#: ../../brand/notifications.rst:46
+#: ../../brand/notifications.rst:51
 msgid "For Faxes, the company language will be used."
 msgstr "Para faxes, el lenguaje de la compañía será empleado."
 
-#: ../../brand/notifications.rst:48
+#: ../../brand/notifications.rst:53
 msgid "Configurable fields of each content:"
 msgstr "Campos configurables para cada contenido:"
 
-#: ../../brand/notifications.rst:51
+#: ../../brand/notifications.rst:56
 msgid "Language"
 msgstr "Lenguaje"
 
-#: ../../brand/notifications.rst:53
+#: ../../brand/notifications.rst:58
 msgid "Language of the contents."
 msgstr "Lenguaje de los contenidos"
 
-#: ../../brand/notifications.rst:54
+#: ../../brand/notifications.rst:59
 msgid "From Name"
 msgstr "Nombre origen"
 
-#: ../../brand/notifications.rst:56
+#: ../../brand/notifications.rst:61
 msgid ""
 "The from name used while sending emails (p.e. IvozProvider Voicemail "
 "Notifications)"
@@ -986,11 +1002,11 @@ msgstr ""
 "Nombre mostar al enviar correos electrónicos (p.e. Notificaciones Buzón "
 "de voz IvozProvider)"
 
-#: ../../brand/notifications.rst:57
+#: ../../brand/notifications.rst:62
 msgid "From Address"
 msgstr "Dirección origen"
 
-#: ../../brand/notifications.rst:59
+#: ../../brand/notifications.rst:64
 msgid ""
 "The from address used while sending emails (p.e. no-"
 "reply@ivozprovider.com)"
@@ -998,11 +1014,11 @@ msgstr ""
 "Dirección origen mostrado al enviar corros electrónicos (p.e. no-"
 "reply@ivozprovider.com)"
 
-#: ../../brand/notifications.rst:60
+#: ../../brand/notifications.rst:65
 msgid "Substitution variables"
 msgstr "Sustitución de variables"
 
-#: ../../brand/notifications.rst:62
+#: ../../brand/notifications.rst:67
 msgid ""
 "Avaialble variables that can be used in subject and body that will be "
 "replaced before sending the email. Each notification type has its own "
@@ -1012,11 +1028,11 @@ msgstr ""
 "remplazadas antes de enviar el correo electrónico. Cada notificacion "
 "cuenta con sus propias variables de sustitución."
 
-#: ../../brand/notifications.rst:64
+#: ../../brand/notifications.rst:69
 msgid "Subject"
 msgstr "Asunto"
 
-#: ../../brand/notifications.rst:66
+#: ../../brand/notifications.rst:71
 msgid ""
 "Subject of the email to be sent. You can include Substitution variables "
 "here."
@@ -1024,11 +1040,11 @@ msgstr ""
 "Asunto del email que se enviará. Puede emplear variables de sustitución "
 "aquí."
 
-#: ../../brand/notifications.rst:67
+#: ../../brand/notifications.rst:72
 msgid "Body"
 msgstr "Cuerpo"
 
-#: ../../brand/notifications.rst:69
+#: ../../brand/notifications.rst:74
 msgid ""
 "HTML Body of the email to be sent. You can include Substitution variables"
 " here."
@@ -1036,7 +1052,7 @@ msgstr ""
 "Cuerpo HTML del email que se enviará. Puede emplear variables de "
 "sustitución aquí."
 
-#: ../../brand/notifications.rst:71
+#: ../../brand/notifications.rst:76
 msgid ""
 "There is no need to create all content languages. If custom notification "
 "has some languages not defined the default contents will be used for that"
@@ -1046,11 +1062,11 @@ msgstr ""
 "notificación no tiene un lenguaje definido, se emplearán los contenidos "
 "por defecto para ese lenguaje y tipo de notificación."
 
-#: ../../brand/notifications.rst:77
+#: ../../brand/notifications.rst:82
 msgid "Assigning templates to companies"
 msgstr "Asignar plantillas a compañías."
 
-#: ../../brand/notifications.rst:79
+#: ../../brand/notifications.rst:84
 msgid ""
 "Once the notification has been configured for the desired languages, "
 "Brand administrator must assign it to the Company or Retail Client that "
@@ -1063,78 +1079,68 @@ msgstr ""
 "Configuración de Notificaciones de las pantallas de edición de Compañía y"
 " Cliente Retail."
 
-#: ../../brand/peering/index.rst:3
-msgid "Peering"
-msgstr "Peering"
+#: ../../brand/peering/carrier_servers.rst:3
+msgid "Carrier Servers"
+msgstr "Servidores de Carrier"
 
-#: ../../brand/peering/peer_servers.rst:3
-msgid "Peer Servers"
-msgstr "Peer Servers"
-
-#: ../../brand/peering/peer_servers.rst:5
+#: ../../brand/peering/carrier_servers.rst:5
 msgid ""
-"A **Peer Server** is a SIP server associated to an IP Provider. In order "
-"to add some Peer Servers for the Peer Contract that have just created, we"
-" only have to use the following section:"
+"A **Carrier Server** is a SIP server associated to an IP Provider. "
+"Carrier servers are used for placing outgoing calls by using "
+":ref:`Outgoing routing`."
 msgstr ""
-"El concepto de **PeerServer** se refiere a los distintos servidores SIP "
-"que puede tener un Operador IP para servir su dominio SIP. Para definir "
-"los PeerServers del OPERADOR que acabamos de definir, hay que pulsar este"
-" botón:"
+"El concepto de **Servidor de Carrier** se refiere a los distintos "
+"servidores SIP que puede tener un Operador IP para servir su dominio SIP."
+"Estos servidores se emplean para realizar llamadas salientes a empleando "
+":ref:`Rutas salientes`."
 
-#: ../../brand/peering/peer_servers.rst:19
-msgid "As displayed by the zero counter, no Peer Serve has been created yet:"
-msgstr ""
-"Tal y como indica el 0, no hay ningún PeerServer definido, por lo que "
-"añadimos uno:"
+#: ../../brand/peering/carrier_servers.rst:11
+msgid "Used to identify this Carrier Server"
+msgstr "Se utilizará para referencia a este servidor."
 
-#: ../../brand/peering/peer_servers.rst:24
-msgid "Used to identify this Peer Server"
-msgstr "Se utilizará para referencia a este PeerServer."
-
-#: ../../brand/peering/peer_servers.rst:25
-#: ../../brand/peering/peering_contracts.rst:35
+#: ../../brand/peering/carrier_servers.rst:12
+#: ../../brand/peering/carriers.rst:9
 msgid "Description"
 msgstr "Descripción"
 
-#: ../../brand/peering/peer_servers.rst:27
-#: ../../brand/peering/peering_contracts.rst:37
+#: ../../brand/peering/carrier_servers.rst:14
+#: ../../brand/peering/carriers.rst:11
 msgid "Optional field with any required extra information."
 msgstr "Un campo adicional para escribir algún detalle."
 
-#: ../../brand/peering/peer_servers.rst:28
+#: ../../brand/peering/carrier_servers.rst:15
 msgid "SIP Proxy"
 msgstr "SIP Proxy"
 
-#: ../../brand/peering/peer_servers.rst:30
+#: ../../brand/peering/carrier_servers.rst:17
 msgid ""
-"IP address (or DNS registry) of the Peer Server. You can also specify a "
-"port if it's different from 5060."
+"IP address (or DNS registry) of the Carrier Server. You can also specify "
+"a port if it's different from 5060."
 msgstr ""
-"Dirección IP (o registro DNS) del PeerServer. Si utiliza un puerto"
-"        distinto a 5060, se puede indicar con ':'."
+"Dirección IP (o registro DNS) del Servidor. Si utiliza un puerto distinto"
+" a 5060, se puede indicar con ':'."
 
-#: ../../brand/peering/peer_servers.rst:32
+#: ../../brand/peering/carrier_servers.rst:19
 msgid "URI Scheme"
 msgstr "Esquema URI"
 
-#: ../../brand/peering/peer_servers.rst:34
+#: ../../brand/peering/carrier_servers.rst:21
 msgid "Supported schemes are sip and sips. Use 'sip' in case of doubt."
 msgstr "Los esquemas soportados son sip y sips. Dejar en 'sip' en caso de duda."
 
-#: ../../brand/peering/peer_servers.rst:35
+#: ../../brand/peering/carrier_servers.rst:22
 msgid "Transport"
 msgstr "Transporte"
 
-#: ../../brand/peering/peer_servers.rst:37
+#: ../../brand/peering/carrier_servers.rst:24
 msgid "Supported transport protocols. Use 'udp' in case of doubt."
 msgstr "Los protocolos de transporte SIP soportados. En caso de duda, dejar 'udp'."
 
-#: ../../brand/peering/peer_servers.rst:38
+#: ../../brand/peering/carrier_servers.rst:25
 msgid "Outbound Proxy"
 msgstr "Proxy saliente"
 
-#: ../../brand/peering/peer_servers.rst:40
+#: ../../brand/peering/carrier_servers.rst:27
 msgid ""
 "Usually this is left empty. It can be filled with the IP address of the "
 "**SIP Proxy** domain (to avoid DNS resolution, but keeping the domain in "
@@ -1148,26 +1154,26 @@ msgstr ""
 "lugar de enviar los mensajes SIP al destino de **SIP Proxy**, los envía a"
 " la IP:PUERTO de este campo."
 
-#: ../../brand/peering/peer_servers.rst:45
+#: ../../brand/peering/carrier_servers.rst:32
 msgid "Requires Authentication"
 msgstr "Requiere autenticación"
 
-#: ../../brand/peering/peer_servers.rst:47
+#: ../../brand/peering/carrier_servers.rst:34
 msgid ""
-"Some Peering contracts validate our platform by IP, others require each "
-"session that we want to establish. For this last case, this section "
-"allows to configure user and password for this authentication."
+"Some Carriers validate our platform by IP, others require each session "
+"that we want to establish. For this last case, this section allows to "
+"configure user and password for this authentication."
 msgstr ""
-"Existen contratos de Peering que nos validarán por IP, otros necesitarán "
-"que nos autentiquemos en cada sesión que queramos establecer. En caso de "
-"ser del último grupo, este selector nos permite introducir un usuario y "
-"una contraseña para responder a esa autenticación."
+"Existen Carriers que nos validarán por IP, otros necesitarán que nos "
+"autentiquemos en cada sesión que queramos establecer. En caso de ser del "
+"último grupo, este selector nos permite introducir un usuario y una "
+"contraseña para responder a esa autenticación."
 
-#: ../../brand/peering/peer_servers.rst:50
+#: ../../brand/peering/carrier_servers.rst:37
 msgid "Call Origin Header"
 msgstr "Cabecera de origen de llamada"
 
-#: ../../brand/peering/peer_servers.rst:52
+#: ../../brand/peering/carrier_servers.rst:39
 msgid ""
 "Some Providers get origin from SIP From header. Others use the From "
 "header for accounting and need extra headers to identify the origin. In "
@@ -1177,11 +1183,11 @@ msgstr ""
 "para validar la cuenta de cliente y necesitan cabeceras adicionales para "
 "recoger el origen. En caso de duda, marcar **PAI**."
 
-#: ../../brand/peering/peer_servers.rst:55
+#: ../../brand/peering/carrier_servers.rst:42
 msgid "R-URI Transformations before numeric transformations"
 msgstr "Transformaciones R-URI previas a las transformaciones numéricas"
 
-#: ../../brand/peering/peer_servers.rst:57
+#: ../../brand/peering/carrier_servers.rst:44
 msgid ""
 "This setting allow static changes to the destination of the calls before "
 "applying numeric transformation rules mentioned in :ref:`Numeric "
@@ -1196,11 +1202,11 @@ msgstr ""
 "URI siguiendo el formato indicado. En caso de duda, dejar todo el bloque "
 "en blanco."
 
-#: ../../brand/peering/peer_servers.rst:62
+#: ../../brand/peering/carrier_servers.rst:49
 msgid "From header customization"
 msgstr "Personalización de la cabecera From"
 
-#: ../../brand/peering/peer_servers.rst:64
+#: ../../brand/peering/carrier_servers.rst:51
 msgid ""
 "For those providers that show origin in other headers (PAI/RPID), it is "
 "possible that request that From User have the account code being used and"
@@ -1211,7 +1217,7 @@ msgstr ""
 "cliente y el From Domain (por ejemplo), su dominio SIP. En caso de duda, "
 "dejar en blanco."
 
-#: ../../brand/peering/peer_servers.rst:68
+#: ../../brand/peering/carrier_servers.rst:55
 msgid ""
 "There are many fields to establish *peering* with multiple kind of "
 "providers, but usually with the name and SIP Proxy will be enough (for "
@@ -1222,53 +1228,45 @@ msgstr ""
 "todo tipo, pero lo habitual será poner solo nombre y SIP Proxy (para los "
 "operadores que nos validen por IP) o nombre, SIP Proxy y Autenticación."
 
-#: ../../brand/peering/peer_servers.rst:73
+#: ../../brand/peering/carrier_servers.rst:60
 msgid ""
-"In case of defining multiple Peering Servers for a single Peering "
-"Contract, IvozProvider will balance and failover using all of them. Like "
-"with Application Servers, it will disable those who doesn't respond to "
-"our requests."
+"In case of defining multiple Carrier Servers for a single Carrier, "
+"IvozProvider will balance and failover using all of them. Like with "
+"Application Servers, it will disable those who doesn't respond to our "
+"requests."
 msgstr ""
-"En caso de definir múltiples PeerServers para un PeeringContract, "
-"IvozProvider hará balanceo y failover utilizando todos. Es decir, a veces"
-" hablará a uno y otras veces a otro. En caso de que uno no le conteste, "
-"lo intentará con el resto hasta dar con uno que conteste."
+"En caso de definir múltiples servidores para un Carrier, IvozProvider "
+"hará balanceo y failover utilizando todos. Es decir, a veces hablará a "
+"uno y otras veces a otro. En caso de que uno no le conteste, lo intentará"
+" con el resto hasta dar con uno que conteste."
 
-#: ../../brand/peering/peering_contracts.rst:5
-msgid "Peering contracts"
-msgstr "Contratos de Peering"
+#: ../../brand/peering/carriers.rst:3
+msgid "Carriers"
+msgstr "Carriers"
 
-#: ../../brand/peering/peering_contracts.rst:7
-msgid "These are the basic information of a Peering contract:"
-msgstr "Analicemos los campos de un Contrato de Peering de ejemplo:"
+#: ../../brand/peering/carriers.rst:8
+msgid "Used to reference this Carrier."
+msgstr "Se utilizará para referencia a este Carrier."
 
-#: ../../brand/peering/peering_contracts.rst:19
-msgid "If we edit it, well see something like this:"
-msgstr "Si entramos a editar este Contrato de Peering concreto:"
-
-#: ../../brand/peering/peering_contracts.rst:34
-msgid "Used to reference this Peering contract."
-msgstr "Se utilizará para referencia a este Contrato de Peering."
-
-#: ../../brand/peering/peering_contracts.rst:38
+#: ../../brand/peering/carriers.rst:12
 msgid "Numeric Transformation"
 msgstr "Transformación numérica"
 
-#: ../../brand/peering/peering_contracts.rst:40
+#: ../../brand/peering/carriers.rst:14
 msgid ""
 "Transformation that will be applied to the origin and destination of the "
-"incoming and outgoing numbers that use this Peering contact (see "
-":ref:`Numeric transformations`)."
+"outgoing numbers that use this Carrier (see :ref:`Numeric "
+"transformations`)."
 msgstr ""
-"Transformaciones que se aplicarán al origen y al destino a "
-"lasnumeraciones que entren o salgan por este contrato de peering (ver "
-":ref:`Transformaciones Numéricas`)."
+"Transformaciones que se aplicarán al origen y al destino a las "
+"numeraciones que salgan por este Carrier (ver :ref:`Transformaciones "
+"Numéricas`)."
 
-#: ../../brand/peering/peering_contracts.rst:43
+#: ../../brand/peering/carriers.rst:17
 msgid "External tarification"
 msgstr "Tarificación externa"
 
-#: ../../brand/peering/peering_contracts.rst:45
+#: ../../brand/peering/carriers.rst:19
 msgid ""
 "This setting requires the external tarification module and allows "
 "tarification on special numbers. This module is not standard so don't "
@@ -1279,15 +1277,15 @@ msgstr ""
 ":ref:`desarrolladores de la solución <getting_help>` en caso de estar "
 "interesados."
 
-#: ../../brand/peering/peering_contracts.rst:49
-msgid "Fields marked with a red start are mandatory."
-msgstr "Los campos marcados con una estrella roja son obligatorios."
+#: ../../brand/peering/ddi_provider_addresses.rst:3
+msgid "DDI Provider Addresses"
+msgstr "Direcciones IP de proveedores DDI"
 
-#: ../../brand/peering/sip_register.rst:3
-msgid "SIP Register"
-msgstr "Registro SIP"
+#: ../../brand/peering/ddi_provider_registrations.rst:3
+msgid "DDI Provider Registrations"
+msgstr "Registros SIP de proveedores DDI"
 
-#: ../../brand/peering/sip_register.rst:5
+#: ../../brand/peering/ddi_provider_registrations.rst:5
 msgid ""
 "Some providers require a `SIP Register "
 "<https://tools.ietf.org/html/rfc3261#section-10>`_ active in order to "
@@ -1300,7 +1298,7 @@ msgstr ""
 "que exigen un registro activo para poder sacar llamadas a través de "
 "ellos."
 
-#: ../../brand/peering/sip_register.rst:10
+#: ../../brand/peering/ddi_provider_registrations.rst:10
 msgid ""
 "IvozProvider supports any kind of *peering*, but we highly recomend *peer"
 " to peer peerings*: without authentication, without registry and "
@@ -1314,23 +1312,11 @@ msgstr ""
 "registros periódicos) y simplifica la configuración, quedándose casi todo"
 " con los valores por defecto."
 
-#: ../../brand/peering/sip_register.rst:16
-msgid ""
-"For this reason, IvozProvider allows periodic SIP register configuration "
-"in the following section:"
-msgstr ""
-"Por este motivo IvozProvider permite configurar registros SIP periódicos "
-"por medio del siguiente botón:"
-
-#: ../../brand/peering/sip_register.rst:27
-msgid "If we create a new one, the following screen will be displayed:"
-msgstr "Si creamos uno nuevo, nos encontramos con la siguiente ventana:"
-
-#: ../../brand/peering/sip_register.rst:38
+#: ../../brand/peering/ddi_provider_registrations.rst:17
 msgid "Username"
 msgstr "Nombre de usuario"
 
-#: ../../brand/peering/sip_register.rst:40
+#: ../../brand/peering/ddi_provider_registrations.rst:19
 msgid ""
 "Account number or similar provider by the provider that requires SIP "
 "register."
@@ -1338,11 +1324,11 @@ msgstr ""
 "Número de cuenta de cliente o similar proporcionada por el operador que "
 "exige registro SIP."
 
-#: ../../brand/peering/sip_register.rst:42
+#: ../../brand/peering/ddi_provider_registrations.rst:21
 msgid "Domain"
 msgstr "Dominio"
 
-#: ../../brand/peering/sip_register.rst:44
+#: ../../brand/peering/ddi_provider_registrations.rst:23
 msgid ""
 "Domain or IP of the registar server. Usually the same as the SIP proxy of"
 " the Peer server."
@@ -1350,29 +1336,29 @@ msgstr ""
 "Dominio o IP del servidor de registros. Habitualmente el mismo que sirve "
 "de Proxy SIP en el PeerServer."
 
-#: ../../brand/peering/sip_register.rst:46
+#: ../../brand/peering/ddi_provider_registrations.rst:25
 msgid "DDI"
 msgstr "DDI"
 
-#: ../../brand/peering/sip_register.rst:48
+#: ../../brand/peering/ddi_provider_registrations.rst:27
 msgid ""
 "This will be sent in the SIP Contact header and must be unique in all the"
-" platform. For Peering contracts with an associated DDI, it is "
-"recommended to enter that DDI. In case of multiples DDI for the same "
-"Peering Contract, use any of them. If no DDI is associated with this "
-"Peering Contract just enter an unique numeric value."
+" platform. For DDI Providers with an associated DDI, it is recommended to"
+" enter that DDI. In case of multiples DDI for the same DDI Provider, use "
+"any of them. If no DDI is associated with this DDI Provider just enter an"
+" unique numeric value."
 msgstr ""
 "Se envía en la cabecera Contact y tiene que ser único a nivel de toda "
-"laplataforma. En PeeringContracts con un DDI asociado, se recomienda "
-"meter ese DDI. En caso de múltiples DDIs asociados, se recomienda meter "
-"uno de ellos. En caso de ningún DDI asociado, se recomienda meter un "
-"valor único (cualquier valor que te deje guardar)."
+"laplataforma. En proveedores con un DDI asociado, se recomienda meter ese"
+" DDI. En caso de múltiples DDIs asociados, se recomienda meter uno de "
+"ellos. En caso de ningún DDI asociado, se recomienda meter un valor único"
+" (cualquier valor que te deje guardar)."
 
-#: ../../brand/peering/sip_register.rst:53
+#: ../../brand/peering/ddi_provider_registrations.rst:32
 msgid "User"
 msgstr "Usuario"
 
-#: ../../brand/peering/sip_register.rst:55
+#: ../../brand/peering/ddi_provider_registrations.rst:34
 msgid ""
 "Authentication user. Most of the time it's the same as username, so it's "
 "recommended to leave empty."
@@ -1380,11 +1366,11 @@ msgstr ""
 "Usuario de autenticación, prácticamente siempre es igual al \"Nombre de "
 "usuario\" por lo que se recomienda dejar en blanco."
 
-#: ../../brand/peering/sip_register.rst:57
+#: ../../brand/peering/ddi_provider_registrations.rst:36
 msgid "Register server URI"
 msgstr "URI Servidor de registro"
 
-#: ../../brand/peering/sip_register.rst:59
+#: ../../brand/peering/ddi_provider_registrations.rst:38
 msgid ""
 "Usually this can be left empty, as it can be obtained from the Domain. If"
 " it is not the case, enter the IP address with the 'sip:' prefix."
@@ -1393,11 +1379,11 @@ msgstr ""
 "introducido. Si no fuera así, poner una dirección IP con 'sip:' por "
 "delante."
 
-#: ../../brand/peering/sip_register.rst:62
+#: ../../brand/peering/ddi_provider_registrations.rst:41
 msgid "Realm"
 msgstr "Realm"
 
-#: ../../brand/peering/sip_register.rst:64
+#: ../../brand/peering/ddi_provider_registrations.rst:43
 msgid ""
 "Leave empty to accept the authentication realm proposed by the provider. "
 "Define only if you are familiar to the authentication mechanism used in "
@@ -1407,15 +1393,15 @@ msgstr ""
 "contrario.Definir solo si de estar familiarizado el mecanismo de "
 "autorización de SIP y saber lo que este campo implica."
 
-#: ../../brand/peering/sip_register.rst:67
+#: ../../brand/peering/ddi_provider_registrations.rst:46
 msgid "Expire"
 msgstr "Expire"
 
-#: ../../brand/peering/sip_register.rst:69
+#: ../../brand/peering/ddi_provider_registrations.rst:48
 msgid "Default suggested register expire time."
 msgstr "Tiempo que IvozProvider sugerirá como tiempo de expiración del registro."
 
-#: ../../brand/peering/sip_register.rst:71
+#: ../../brand/peering/ddi_provider_registrations.rst:50
 msgid ""
 "Similar to the Peer Servers, there are lots of fields in the screen. You "
 "must have into account that most of the provider doesn't require register"
@@ -1425,6 +1411,14 @@ msgstr ""
 "que tener en cuenta, no obstante, que la mayoría de operadores no "
 "deberían de exigir registro y, los que lo hagan, habitualmente solo "
 "requerirán de usuario, dominio y contraseña."
+
+#: ../../brand/peering/ddi_providers.rst:5
+msgid "DDI Providers"
+msgstr "Proveedores DDI"
+
+#: ../../brand/peering/index.rst:3
+msgid "Peering"
+msgstr "Peering"
 
 #: ../../brand/portal_urls.rst:3
 msgid "Portals URLS"
@@ -1464,6 +1458,10 @@ msgid "For more information about each portal options see below menu sections."
 msgstr ""
 "Para más información de cada opción del portal vea el menú de secciones a"
 " continuación. "
+
+#: ../../brand/residential.rst:3
+msgid "Residential"
+msgstr "Residencial"
 
 #: ../../brand/retail.rst:5
 msgid "Retail"
@@ -1561,11 +1559,11 @@ msgstr "Opciones adicionales tarificación externa"
 
 #: ../../brand/retail.rst:34 ../../brand/virtual_pbx.rst:36
 msgid ""
-"For :ref:`Peering contracts` with externally rated enabled, this field "
-"can be used to store specific information for this client."
+"For :ref:`Carriers` with externally rated enabled, this field can be used"
+" to store specific information for this client."
 msgstr ""
-"Para :ref:`Contratos de peering` con tarificación externa habilitada, "
-"este campo puede emplearse para información específica de este cliente."
+"Para :ref:`Carriers` con tarificación externa habilitada, este campo "
+"puede emplearse para información específica de este cliente."
 
 #: ../../brand/retail.rst:36 ../../brand/virtual_pbx.rst:38
 #: ../../brand/wholesale.rst:45
@@ -1780,77 +1778,28 @@ msgstr ""
 "encadenar/utilizar más de 2 rutas, aunque en los ejemplo se hayan "
 "utilizado solo 2."
 
-#: ../../brand/routing/routing_tags.rst:3 ../../brand/wholesale.rst:39
-msgid "Routing tags"
-msgstr "Routing tags"
-
-#: ../../brand/routing/routing_tags.rst:5
-msgid ""
-"In most scenarios, Brands administrators are responsible of configuring "
-":ref:`Peering Contracts` and :ref:`Outgoing Routing` to provide "
-"connectivity for their clients. But in some cases, clients want to choose"
-" the outgoing routing to use per call."
-msgstr ""
-"En la mayoría de escenarios, los administradores de marca son "
-"responsables de configurar los :ref:`Contratos de peering` y :ref:`Rutas "
-"salientes` para ofrecer conectividad a sus clientes. En algunos casos, "
-"los clientes quieren poder elegir la ruta saliente que se empleará en "
-"cada una de las llamdas."
-
-#: ../../brand/routing/routing_tags.rst:10
-msgid ""
-"A Routing tag is an code that will prefix the destination number when "
-"placing calls to Ivoz Provider."
-msgstr ""
-"Un Routing tag es un código que se emplea como prefijo al número destino "
-"cuando se realizan llamadas a Ivoz Provider."
-
-#: ../../brand/routing/routing_tags.rst:23
-msgid ""
-"In order to use a routing tag, the client must have it enabled in their "
-"edit screen. Using a non enabled routing tag will case the call to be "
-"declined."
-msgstr ""
-"Para poder emplear los routing tags, el cliente debe tenerlos habilitados"
-" en su pantalla de edición. Emplear un tag no habilitado hará que las "
-"llamadas sean directamente rechazadas."
-
-#: ../../brand/routing/routing_tags.rst:37
-msgid "Route tags are only available to wholesale clients at the moment."
-msgstr ""
-"En la versión actual, los routing tags solo estan disponibles para "
-"clientes wholesale."
-
-#: ../../brand/routing/routing_tags.rst:40
-msgid ""
-"Then, each routing tag can be used to configure their :ref:`Outgoing "
-"routing` order."
-msgstr ""
-"Cada Routing tag puede ser empleado al configurar sus :ref:`Rutas "
-"salientes`."
-
-#: ../../brand/routing/target_pattern_groups.rst:3
-msgid "Target pattern groups"
+#: ../../brand/routing/pattern_groups.rst:3
+msgid "Routing pattern groups"
 msgstr "Grupos de patrones"
 
-#: ../../brand/routing/target_pattern_groups.rst:5
+#: ../../brand/routing/pattern_groups.rst:5
 msgid ""
-"As we will see in :ref:`Outgoing Call Routing` section, every target "
-"pattern will be linked to a Peering Contract."
+"As we will see in :ref:`Outgoing Routing` section, every routing pattern "
+"will be linked to a Carrier."
 msgstr ""
-"Como veremos en la sección de :ref:`Enrutado saliente`, cada patrón de "
-"destino se vinculará a un Contrato de Peering concreto."
+"Como veremos en la sección de :ref:`Rutas salientes`, cada patrón de "
+"destino se vinculará a un Carrier concreto."
 
-#: ../../brand/routing/target_pattern_groups.rst:8
+#: ../../brand/routing/pattern_groups.rst:8
 msgid ""
-"That's why it can be useful to group the target patterns in **target "
-"pattern group** so that we can link a whole group to a Peering Contract "
-"more easily."
+"That's why it can be useful to group the routing patterns in **routing "
+"pattern group** so that we can link a whole group to a Carrier more "
+"easily."
 msgstr ""
 "Por este motivo, puede ser interesante agrupar los patrones en grupos y "
-"así poder vincular un grupo entero a un Contrato de Peering."
+"así poder vincular un grupo entero a un Carrier."
 
-#: ../../brand/routing/target_pattern_groups.rst:11
+#: ../../brand/routing/pattern_groups.rst:11
 msgid ""
 "By default we can see the countries grouped in the continents defined in "
 "`ISO 3166 <https://en.wikipedia.org/wiki/ISO_3166>`_:"
@@ -1858,32 +1807,32 @@ msgstr ""
 "Por defecto aparecen los países agrupados en base a su continente "
 "definidos en la `ISO 3166 <https://es.wikipedia.org/wiki/ISO_3166>`_:"
 
-#: ../../brand/routing/target_pattern_groups.rst:24
+#: ../../brand/routing/pattern_groups.rst:24
 msgid ""
 "**To sum up**, when a user dials an external number, IvozProvider looks "
-"up a matching target pattern to decide which PeeringContract must be used"
-" to place this call."
+"up a matching routing pattern to decide which Carrier must be used to "
+"place this call."
 msgstr ""
 "**En resumen**, cuando un usuario marca un número externo, IvozProvider "
 "busca el patrón de destino al que pertenece para saber por dónde tiene "
 "que sacar dicha llamada."
 
-#: ../../brand/routing/target_patterns.rst:5
-msgid "Target patterns"
-msgstr "Patrones de destino"
+#: ../../brand/routing/patterns.rst:5
+msgid "Routing patterns"
+msgstr "Patrones de ruta"
 
-#: ../../brand/routing/target_patterns.rst:7
+#: ../../brand/routing/patterns.rst:7
 msgid ""
 "When a user dials an external phone number, IvozProvider tries to "
-"categorize this call into a one of the target patterns defined in this "
+"categorize this call into a one of the routing patterns defined in this "
 "section:"
 msgstr ""
 "Cuando un usuario marca un número externo, IvozProvider intenta calificar"
-"  estenúmero en uno de los patrones de destino definidos en esta sección:"
+"  este número en uno de los patrones de ruta definidos en esta sección:"
 
-#: ../../brand/routing/target_patterns.rst:10
+#: ../../brand/routing/patterns.rst:10
 msgid ""
-"Usually, it will we useful to have one target pattern for the countries "
+"Usually, it will we useful to have one routing pattern for the countries "
 "defined in the `ISO 3166 <https://en.wikipedia.org/wiki/ISO_3166>`_. "
 "That's why IvozProvider automatically includes all this countries and "
 "their prefixes:"
@@ -1893,13 +1842,62 @@ msgstr ""
 "<https://es.wikipedia.org/wiki/ISO_3166>`_. Por ese motivo, IvozProvider "
 "incluye estos países y sus prefijos de forma automática:"
 
-#: ../../brand/routing/target_patterns.rst:25
+#: ../../brand/routing/patterns.rst:25
 msgid ""
-"Brand operator can choose between keeping this target pattern if finds "
+"Brand operator can choose between keeping this routing pattern if finds "
 "them useful or deleting them an creating the ones that meet his needs."
 msgstr ""
 "Cada operador de marca puede elegir mantener estos patrones o borrarlos y"
 " crear los que le interesen."
+
+#: ../../brand/routing/tags.rst:3 ../../brand/wholesale.rst:39
+msgid "Routing tags"
+msgstr "Routing tags"
+
+#: ../../brand/routing/tags.rst:5
+msgid ""
+"In most scenarios, Brands administrators are responsible of configuring "
+":ref:`Carriers` and :ref:`Outgoing Routing` to provide connectivity for "
+"their clients. But in some cases, clients want to choose the outgoing "
+"routing to use per call."
+msgstr ""
+"En la mayoría de escenarios, los administradores de marca son "
+"responsables de configurar los :ref:`Carriers` y :ref:`Rutas salientes` "
+"para ofrecer conectividad a sus clientes. En algunos casos, los clientes "
+"quieren poder elegir la ruta saliente que se empleará en cada una de las "
+"llamdas."
+
+#: ../../brand/routing/tags.rst:10
+msgid ""
+"A Routing tag is an code that will prefix the destination number when "
+"placing calls to Ivoz Provider."
+msgstr ""
+"Un Routing tag es un código que se emplea como prefijo al número destino "
+"cuando se realizan llamadas a Ivoz Provider."
+
+#: ../../brand/routing/tags.rst:23
+msgid ""
+"In order to use a routing tag, the client must have it enabled in their "
+"edit screen. Using a non enabled routing tag will case the call to be "
+"declined."
+msgstr ""
+"Para poder emplear los routing tags, el cliente debe tenerlos habilitados"
+" en su pantalla de edición. Emplear un tag no habilitado hará que las "
+"llamadas sean directamente rechazadas."
+
+#: ../../brand/routing/tags.rst:37
+msgid "Route tags are only available to wholesale clients at the moment."
+msgstr ""
+"En la versión actual, los routing tags solo estan disponibles para "
+"clientes wholesale."
+
+#: ../../brand/routing/tags.rst:40
+msgid ""
+"Then, each routing tag can be used to configure their :ref:`Outgoing "
+"routing` order."
+msgstr ""
+"Cada Routing tag puede ser empleado al configurar sus :ref:`Rutas "
+"salientes`."
 
 #: ../../brand/services.rst:5
 msgid "Brand Services"
@@ -2160,13 +2158,13 @@ msgstr "Número internacional: se precede de 00 y del código del país."
 
 #: ../../brand/transformations/index.rst:104
 msgid ""
-"The numeric transformation *sets* must be assigned to **Peering "
-"Contracts**, as shown in the following section. This *set* can be shared "
-"by multiple spanish providers."
+"The numeric transformation *sets* must be assigned to **Carrier**, as "
+"shown in the following section. This *set* can be shared by multiple "
+"spanish providers."
 msgstr ""
-"Los *sets* de transformaciones numéricas se asignan a "
-"**PeeringContracts**, tal y como veremos en la siguiente sección. Este "
-"*set* será el adecuado para la mayoría de operadores españoles."
+"Los *sets* de transformaciones numéricas se asignan a **Carriers**, tal y"
+" como veremos en la siguiente sección. Este *set* será el adecuado para "
+"la mayoría de operadores españoles."
 
 #: ../../brand/transformations/index.rst:108
 msgid "Let's check this *set* to understand what transformation rule does:"
@@ -2259,12 +2257,12 @@ msgid ""
 "**To sum up**: numeric tranformation can adapt origin and destination "
 "numbers to E.164 for the platform, and to providers expected formats, "
 "based on regular expresions and metric that can be grouped in *sets* to "
-"be shared between multiple **Peering Contracts**."
+"be shared between multiple **Carriers**."
 msgstr ""
 "**En resumen**: las transformaciones numéricas adaptan orígenes y "
 "destinos, a E.164 en entrada y a los formatos que los operadores esperan "
 "en salida, utilizando reglas con expresiones regulares y métricas "
-"agrupadas en *sets* que se asocian a **PeeringContracts**."
+"agrupadas en *sets* que se asocian a **Carriers**."
 
 #: ../../brand/virtual_pbx.rst:3
 msgid "Virtual PBX"

@@ -13,6 +13,13 @@ interface FixedCostsRelInvoiceInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @param InvoiceInterface $invoice
+     * @param FixedCostsRelInvoiceSchedulerInterface $fixedCostsRelInvoiceScheduler
+     * @return static
+     */
+    public static function fromFixedCostsRelInvoiceScheduler(\Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice, \Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceSchedulerInterface $fixedCostRelScheduler);
+
+    /**
      * Set quantity
      *
      * @param integer $quantity
@@ -27,22 +34,6 @@ interface FixedCostsRelInvoiceInterface extends LoggableEntityInterface
      * @return integer
      */
     public function getQuantity();
-
-    /**
-     * Set brand
-     *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
-     *
-     * @return self
-     */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand);
-
-    /**
-     * Get brand
-     *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
-     */
-    public function getBrand();
 
     /**
      * Set fixedCost

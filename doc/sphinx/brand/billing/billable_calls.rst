@@ -40,8 +40,8 @@ Each entry shows this information:
     Price
         The cost of the call.
 
-    Peering contract
-        Shows which :ref:`Peering contract <peering_contracts>` was used for
+    DDI Provider
+        Shows which :ref:`DDI Provider <ddi_provider>` was used for
         each call.
 
     Invoice

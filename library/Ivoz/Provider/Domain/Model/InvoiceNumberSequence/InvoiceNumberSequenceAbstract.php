@@ -16,7 +16,7 @@ abstract class InvoiceNumberSequenceAbstract
     /**
      * @var string
      */
-    protected $iden;
+    protected $name;
 
     /**
      * @var string
@@ -60,14 +60,14 @@ abstract class InvoiceNumberSequenceAbstract
      * Constructor
      */
     protected function __construct(
-        $iden,
+        $name,
         $prefix,
         $sequenceLength,
         $increment,
         $iteration,
         $version
     ) {
-        $this->setIden($iden);
+        $this->setName($name);
         $this->setPrefix($prefix);
         $this->setSequenceLength($sequenceLength);
         $this->setIncrement($increment);
@@ -139,7 +139,7 @@ abstract class InvoiceNumberSequenceAbstract
         Assertion::isInstanceOf($dto, InvoiceNumberSequenceDto::class);
 
         $self = new static(
-            $dto->getIden(),
+            $dto->getName(),
             $dto->getPrefix(),
             $dto->getSequenceLength(),
             $dto->getIncrement(),
@@ -169,7 +169,7 @@ abstract class InvoiceNumberSequenceAbstract
         Assertion::isInstanceOf($dto, InvoiceNumberSequenceDto::class);
 
         $this
-            ->setIden($dto->getIden())
+            ->setName($dto->getName())
             ->setPrefix($dto->getPrefix())
             ->setSequenceLength($dto->getSequenceLength())
             ->setIncrement($dto->getIncrement())
@@ -191,7 +191,7 @@ abstract class InvoiceNumberSequenceAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setIden(self::getIden())
+            ->setName(self::getName())
             ->setPrefix(self::getPrefix())
             ->setSequenceLength(self::getSequenceLength())
             ->setIncrement(self::getIncrement())
@@ -207,7 +207,7 @@ abstract class InvoiceNumberSequenceAbstract
     protected function __toArray()
     {
         return [
-            'iden' => self::getIden(),
+            'name' => self::getName(),
             'prefix' => self::getPrefix(),
             'sequenceLength' => self::getSequenceLength(),
             'increment' => self::getIncrement(),
@@ -222,30 +222,30 @@ abstract class InvoiceNumberSequenceAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * Set iden
+     * Set name
      *
-     * @param string $iden
+     * @param string $name
      *
      * @return self
      */
-    public function setIden($iden)
+    public function setName($name)
     {
-        Assertion::notNull($iden, 'iden value "%s" is null, but non null value was expected.');
-        Assertion::maxLength($iden, 40, 'iden value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        Assertion::notNull($name, 'name value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($name, 40, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
 
-        $this->iden = $iden;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * Get iden
+     * Get name
      *
      * @return string
      */
-    public function getIden()
+    public function getName()
     {
-        return $this->iden;
+        return $this->name;
     }
 
     /**

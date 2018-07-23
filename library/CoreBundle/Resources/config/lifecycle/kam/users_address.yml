@@ -10,4 +10,4 @@ services:
     tags: [{ name: 'domain.service'}]
     arguments:
       $usersPermissionsReload:
-        '@XmlRpc\XmlRpcUsersRequest::PermissionsTrustedReload'
+        '@XmlRpc\XmlRpcUsersRequest::PermissionsAddressReload'

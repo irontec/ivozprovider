@@ -1,5 +1,10 @@
 Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceAbstract:
   type: mappedSuperclass
+  uniqueConstraints:
+    companyService_company_service:
+      columns:
+        - companyId
+        - serviceId
   fields:
     code:
       type: string

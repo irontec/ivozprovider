@@ -35,7 +35,7 @@ abstract class DdiAbstract
     protected $displayName;
 
     /**
-     * comment: enum:user|ivr|huntGroup|fax|conferenceRoom|friend|queue|conditional|residential
+     * comment: enum:user|ivr|huntGroup|fax|conferenceRoom|friend|queue|conditional|residential|retail
      * @var string
      */
     protected $routeType;
@@ -101,9 +101,9 @@ abstract class DdiAbstract
     protected $fax;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface
+     * @var \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface
      */
-    protected $peeringContract;
+    protected $ddiProvider;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface
@@ -119,6 +119,11 @@ abstract class DdiAbstract
      * @var \Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRouteInterface
      */
     protected $conditionalRoute;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface
+     */
+    protected $retailAccount;
 
 
     use ChangelogTrait;
@@ -216,10 +221,11 @@ abstract class DdiAbstract
             ->setIvr($dto->getIvr())
             ->setHuntGroup($dto->getHuntGroup())
             ->setFax($dto->getFax())
-            ->setPeeringContract($dto->getPeeringContract())
+            ->setDdiProvider($dto->getDdiProvider())
             ->setCountry($dto->getCountry())
             ->setResidentialDevice($dto->getResidentialDevice())
             ->setConditionalRoute($dto->getConditionalRoute())
+            ->setRetailAccount($dto->getRetailAccount())
         ;
 
         $self->sanitizeValues();
@@ -257,10 +263,11 @@ abstract class DdiAbstract
             ->setIvr($dto->getIvr())
             ->setHuntGroup($dto->getHuntGroup())
             ->setFax($dto->getFax())
-            ->setPeeringContract($dto->getPeeringContract())
+            ->setDdiProvider($dto->getDdiProvider())
             ->setCountry($dto->getCountry())
             ->setResidentialDevice($dto->getResidentialDevice())
-            ->setConditionalRoute($dto->getConditionalRoute());
+            ->setConditionalRoute($dto->getConditionalRoute())
+            ->setRetailAccount($dto->getRetailAccount());
 
 
 
@@ -292,10 +299,11 @@ abstract class DdiAbstract
             ->setIvr(\Ivoz\Provider\Domain\Model\Ivr\Ivr::entityToDto(self::getIvr(), $depth))
             ->setHuntGroup(\Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup::entityToDto(self::getHuntGroup(), $depth))
             ->setFax(\Ivoz\Provider\Domain\Model\Fax\Fax::entityToDto(self::getFax(), $depth))
-            ->setPeeringContract(\Ivoz\Provider\Domain\Model\PeeringContract\PeeringContract::entityToDto(self::getPeeringContract(), $depth))
+            ->setDdiProvider(\Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider::entityToDto(self::getDdiProvider(), $depth))
             ->setCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto(self::getCountry(), $depth))
             ->setResidentialDevice(\Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice::entityToDto(self::getResidentialDevice(), $depth))
-            ->setConditionalRoute(\Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute::entityToDto(self::getConditionalRoute(), $depth));
+            ->setConditionalRoute(\Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute::entityToDto(self::getConditionalRoute(), $depth))
+            ->setRetailAccount(\Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount::entityToDto(self::getRetailAccount(), $depth));
     }
 
     /**
@@ -321,10 +329,11 @@ abstract class DdiAbstract
             'ivrId' => self::getIvr() ? self::getIvr()->getId() : null,
             'huntGroupId' => self::getHuntGroup() ? self::getHuntGroup()->getId() : null,
             'faxId' => self::getFax() ? self::getFax()->getId() : null,
-            'peeringContractId' => self::getPeeringContract() ? self::getPeeringContract()->getId() : null,
+            'ddiProviderId' => self::getDdiProvider() ? self::getDdiProvider()->getId() : null,
             'countryId' => self::getCountry() ? self::getCountry()->getId() : null,
             'residentialDeviceId' => self::getResidentialDevice() ? self::getResidentialDevice()->getId() : null,
-            'conditionalRouteId' => self::getConditionalRoute() ? self::getConditionalRoute()->getId() : null
+            'conditionalRouteId' => self::getConditionalRoute() ? self::getConditionalRoute()->getId() : null,
+            'retailAccountId' => self::getRetailAccount() ? self::getRetailAccount()->getId() : null
         ];
     }
 
@@ -468,6 +477,7 @@ abstract class DdiAbstract
           6 => 'queue',
           7 => 'conditional',
           8 => 'residential',
+          9 => 'retail',
         ), 'routeTypevalue "%s" is not an element of the valid values: %s');
         }
 
@@ -782,27 +792,27 @@ abstract class DdiAbstract
     }
 
     /**
-     * Set peeringContract
+     * Set ddiProvider
      *
-     * @param \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface $peeringContract
+     * @param \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface $ddiProvider
      *
      * @return self
      */
-    public function setPeeringContract(\Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface $peeringContract = null)
+    public function setDdiProvider(\Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface $ddiProvider = null)
     {
-        $this->peeringContract = $peeringContract;
+        $this->ddiProvider = $ddiProvider;
 
         return $this;
     }
 
     /**
-     * Get peeringContract
+     * Get ddiProvider
      *
-     * @return \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface
+     * @return \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface
      */
-    public function getPeeringContract()
+    public function getDdiProvider()
     {
-        return $this->peeringContract;
+        return $this->ddiProvider;
     }
 
     /**
@@ -875,6 +885,30 @@ abstract class DdiAbstract
     public function getConditionalRoute()
     {
         return $this->conditionalRoute;
+    }
+
+    /**
+     * Set retailAccount
+     *
+     * @param \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount
+     *
+     * @return self
+     */
+    public function setRetailAccount(\Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface $retailAccount = null)
+    {
+        $this->retailAccount = $retailAccount;
+
+        return $this;
+    }
+
+    /**
+     * Get retailAccount
+     *
+     * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface
+     */
+    public function getRetailAccount()
+    {
+        return $this->retailAccount;
     }
 
 

@@ -80,7 +80,7 @@ class Version20180621134613 extends AbstractMigration
             $this->addSql('ALTER TABLE ast_voicemail DROP FOREIGN KEY ast_voicemail_ibfk_2');
             $this->addSql('DROP INDEX retailAccountId ON ast_voicemail');
             $this->addSql('ALTER TABLE ast_voicemail CHANGE retailaccountid residentialDeviceId INT UNSIGNED DEFAULT NULL');
-            $this->connection->query('DELETE FROM changelog WHERE change_number = 81')->execute();
+            $this->connection->query('DELETE FROM changelog WHERE change_number = 82')->execute();
         } else {
             $this->addSql('ALTER TABLE ast_voicemail ADD residentialDeviceId INT UNSIGNED DEFAULT NULL');
         }

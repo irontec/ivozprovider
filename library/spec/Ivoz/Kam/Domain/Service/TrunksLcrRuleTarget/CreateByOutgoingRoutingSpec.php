@@ -8,9 +8,9 @@ use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface;
 use Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTarget;
 use Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface;
 use Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetDto;
+use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
+use Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
-use Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface;
-use Ivoz\Provider\Domain\Model\PeerServer\PeerServerInterface;
 use Ivoz\Kam\Domain\Service\TrunksLcrRuleTarget\CreateByOutgoingRouting;
 use Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetRepository;
 use Ivoz\Core\Application\Service\EntityTools;
@@ -58,10 +58,10 @@ class CreateByOutgoingRoutingSpec extends ObjectBehavior
         $this->shouldHaveType(CreateByOutgoingRouting::class);
     }
 
-    function it_throws_exeption_on_empty_peeringContract(
+    function it_throws_exeption_on_empty_carrier(
         OutgoingRoutingInterface $outgoingRouting
     ) {
-        $exception = new \Exception('Peering Contract not found');
+        $exception = new \Exception('Carrier not found');
         $this
             ->shouldThrow($exception)
             ->during('execute', [$outgoingRouting]);
@@ -69,15 +69,15 @@ class CreateByOutgoingRoutingSpec extends ObjectBehavior
 
     function it_creates_lcr_rule_targets(
         OutgoingRoutingInterface $outgoingRouting,
-        PeeringContractInterface $peeringContract,
-        PeerServerInterface $peerServer,
+        CarrierInterface $carrier,
+        CarrierServerInterface $carrierServer,
         TrunksLcrGatewayInterface $lcrGateway,
         TrunksLcrRuleInterface $lcrRule
     ) {
         $this->getterProphecy(
             $outgoingRouting,
             [
-                'getPeeringContract' => $peeringContract,
+                'getCarrier' => $carrier,
                 'getLcrRules' => [$lcrRule],
                 'getPriority' => 1,
                 'getWeight' => 2,
@@ -85,11 +85,11 @@ class CreateByOutgoingRoutingSpec extends ObjectBehavior
             ]
         );
 
-        $peeringContract
-            ->getPeerServers()
-            ->willReturn([$peerServer]);
+        $carrier
+            ->getServers()
+            ->willReturn([$carrierServer]);
 
-        $peerServer
+        $carrierServer
             ->getLcrGateway()
             ->willReturn($lcrGateway)
             ->shouldBeCalled();
@@ -117,8 +117,8 @@ class CreateByOutgoingRoutingSpec extends ObjectBehavior
 
     function it_updates_lcr_rule_targets(
         OutgoingRoutingInterface $outgoingRouting,
-        PeeringContractInterface $peeringContract,
-        PeerServerInterface $peerServer,
+        CarrierInterface $carrier,
+        CarrierServerInterface $carrierServer,
         TrunksLcrGatewayInterface $lcrGateway,
         TrunksLcrRuleInterface $lcrRule,
         TrunksLcrRuleTargetInterface $trunksLcrRuleTarget
@@ -126,7 +126,7 @@ class CreateByOutgoingRoutingSpec extends ObjectBehavior
         $this->getterProphecy(
             $outgoingRouting,
             [
-                'getPeeringContract' => $peeringContract,
+                'getCarrier' => $carrier,
                 'getLcrRules' => [$lcrRule],
                 'getPriority' => 1,
                 'getWeight' => 2,
@@ -149,11 +149,11 @@ class CreateByOutgoingRoutingSpec extends ObjectBehavior
             )
             ->willReturn($trunksLcrRuleTargetObject);
 
-        $peeringContract
-            ->getPeerServers()
-            ->willReturn([$peerServer]);
+        $carrier
+            ->getServers()
+            ->willReturn([$carrierServer]);
 
-        $peerServer
+        $carrierServer
             ->getLcrGateway()
             ->willReturn($lcrGateway)
             ->shouldBeCalled();

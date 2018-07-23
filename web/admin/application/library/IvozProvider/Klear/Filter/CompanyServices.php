@@ -2,6 +2,8 @@
 
 use Ivoz\Provider\Domain\Model\BrandService\BrandService;
 use Ivoz\Provider\Domain\Model\BrandService\BrandServiceDto;
+use Ivoz\Provider\Domain\Model\CompanyService\CompanyService;
+use Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceDto;
 
 /**
  * Class IvozProvider_Klear_Filter_CompanyServices
@@ -17,11 +19,25 @@ class IvozProvider_Klear_Filter_CompanyServices implements KlearMatrix_Model_Fie
     {
         $auth = Zend_Auth::getInstance();
         if (!$auth->hasIdentity()) {
-            throw new Klear_Exception_Default("No brand emulated");
+            throw new Klear_Exception_Default("No company emulated");
         }
+
+        // Get ModelName and your Controller
+        $currentItemName = $routeDispatcher->getCurrentItemName();
+
+        $unfilteredScreens = array(
+            "companyServicesList_screen",
+            "companyServicesEdit_screen",
+        );
+
+        if (in_array($currentItemName, $unfilteredScreens)) {
+            return true;
+        }
+
 
         $loggedUser = $auth->getIdentity();
         $currentBrandyId = $loggedUser->brandId;
+        $currentCompanyId = $loggedUser->companyId;
 
         $dataGateway = \Zend_Registry::get('data_gateway');
 
@@ -31,15 +47,30 @@ class IvozProvider_Klear_Filter_CompanyServices implements KlearMatrix_Model_Fie
             ["BrandService.brand = " . $currentBrandyId]
         );
 
-        $servicesIds = array();
+        $brandServicesIds = array();
         foreach ($brandServices as $brandService) {
-            array_push($servicesIds, $brandService->getServiceId());
+            array_push($brandServicesIds, $brandService->getServiceId());
         }
 
-        if (count($servicesIds)) {
-            $this->_condition[] = "self::id IN (" . implode(',', $servicesIds) . ")";
+        if (count($brandServicesIds)) {
+            $this->_condition[] = "self::id IN (" . implode(',', $brandServicesIds) . ")";
         } else {
             $this->_condition[] = "self::id IS NULL";  // Hackish
+        }
+
+        /** @var CompanyServiceDto[] $companyServices */
+        $companyServices = $dataGateway->findBy(
+            CompanyService::class,
+            ["CompanyService.company = " . $currentCompanyId]
+        );
+
+        $companyServicesIds = array();
+        foreach ($companyServices as $companyService) {
+            array_push($companyServicesIds, $companyService->getServiceId());
+        }
+
+        if (count($companyServicesIds)) {
+            $this->_condition[] = "self::id NOT IN (" . implode(',', $companyServicesIds) . ")";
         }
 
         return true;

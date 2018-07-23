@@ -78,9 +78,9 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\PeerServer\PeerServerDto | null
+     * @var \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerDto | null
      */
-    private $peerServer;
+    private $carrierServer;
 
 
     use DtoNormalizer;
@@ -113,7 +113,7 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
             'tag' => 'tag',
             'defunct' => 'defunct',
             'id' => 'id',
-            'peerServerId' => 'peerServer'
+            'carrierServerId' => 'carrierServer'
         ];
     }
 
@@ -136,7 +136,7 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
             'tag' => $this->getTag(),
             'defunct' => $this->getDefunct(),
             'id' => $this->getId(),
-            'peerServer' => $this->getPeerServer()
+            'carrierServer' => $this->getCarrierServer()
         ];
     }
 
@@ -145,7 +145,7 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
-        $this->peerServer = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\PeerServer\\PeerServer', $this->getPeerServerId());
+        $this->carrierServer = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\CarrierServer\\CarrierServer', $this->getCarrierServerId());
     }
 
     /**
@@ -417,23 +417,23 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\PeerServer\PeerServerDto $peerServer
+     * @param \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerDto $carrierServer
      *
      * @return static
      */
-    public function setPeerServer(\Ivoz\Provider\Domain\Model\PeerServer\PeerServerDto $peerServer = null)
+    public function setCarrierServer(\Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerDto $carrierServer = null)
     {
-        $this->peerServer = $peerServer;
+        $this->carrierServer = $carrierServer;
 
         return $this;
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\PeerServer\PeerServerDto
+     * @return \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerDto
      */
-    public function getPeerServer()
+    public function getCarrierServer()
     {
-        return $this->peerServer;
+        return $this->carrierServer;
     }
 
     /**
@@ -441,21 +441,21 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
      *
      * @return static
      */
-    public function setPeerServerId($id)
+    public function setCarrierServerId($id)
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\PeerServer\PeerServerDto($id)
+            ? new \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerDto($id)
             : null;
 
-        return $this->setPeerServer($value);
+        return $this->setCarrierServer($value);
     }
 
     /**
      * @return integer | null
      */
-    public function getPeerServerId()
+    public function getCarrierServerId()
     {
-        if ($dto = $this->getPeerServer()) {
+        if ($dto = $this->getCarrierServer()) {
             return $dto->getId();
         }
 

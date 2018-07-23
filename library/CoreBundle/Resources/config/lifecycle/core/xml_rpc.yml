@@ -38,6 +38,14 @@ services:
       $enabled:
         '@=service("kernel").getEnvironment() != "test"'
 
+  XmlRpc\XmlRpcTrunksRequest::PermissionsAddressReload:
+    class: Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\XmlRpcTrunksRequest
+    arguments:
+      $rpcMethod:
+        'permissions.addressReload'
+      $enabled:
+        '@=service("kernel").getEnvironment() != "test"'
+
   XmlRpc\XmlRpcTrunksRequest::UacRegReload:
     class: Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\XmlRpcTrunksRequest
     arguments:
@@ -74,6 +82,14 @@ services:
     arguments:
       $rpcMethod:
         'permissions.trustedReload'
+      $enabled:
+        '@=service("kernel").getEnvironment() != "test"'
+
+  XmlRpc\XmlRpcUsersRequest::PermissionsAddressReload:
+    class: Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\XmlRpcUsersRequest
+    arguments:
+      $rpcMethod:
+        'permissions.addressReload'
       $enabled:
         '@=service("kernel").getEnvironment() != "test"'
 

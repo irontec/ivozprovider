@@ -3,9 +3,9 @@ namespace IvozProvider\Klear\Dynamic;
 
 use Ivoz\Core\Application\Service\DataGateway;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
-use Ivoz\Provider\Domain\Model\Brand\BrandDTO;
+use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 use Ivoz\Provider\Domain\Model\BrandUrl\BrandUrl;
-use Ivoz\Provider\Domain\Model\BrandUrl\BrandUrlDTO;
+use Ivoz\Provider\Domain\Model\BrandUrl\BrandUrlDto;
 use IvozProvider\Klear\Dynamic\Config\MainOperator;
 use IvozProvider\Klear\Dynamic\Config\BrandOperator;
 use IvozProvider\Klear\Dynamic\Config\CompanyAdmin;
@@ -14,12 +14,12 @@ class Builder
 {
     /**
      *
-     * @var BrandDTO
+     * @var BrandDto
      */
     protected static $_brand;
 
     /**
-     * @var BrandUrlDTO
+     * @var BrandUrlDto
      */
     protected static $_URL;
 
@@ -84,13 +84,14 @@ class Builder
         );
 
 
-        if (!self::$_URL instanceof BrandUrlDTO) {
-            self::$_URL = $dataGateway->findOneBy(
-                BrandUrl::class,
-                [
-                    'BrandUrl.urlType = \'god\''
-                ]
-            );
+        if (!self::$_URL instanceof BrandUrlDto) {
+            self::$_URL = new BrandUrlDto();
+            self::$_URL
+                ->setBrandId(null)
+                ->setName('Global Administration portal')
+                ->setUrlType('god')
+                ->setKlearTheme('redmond');
+
             return false;
         }
 

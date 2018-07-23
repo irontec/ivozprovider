@@ -1,0 +1,2 @@
+microservices/scheduler /opt/irontec/ivozprovider/microservices/
+debian/systemd/ivozprovider-scheduler.timer /lib/systemd/system

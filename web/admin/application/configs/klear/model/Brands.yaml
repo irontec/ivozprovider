@@ -195,6 +195,9 @@ production:
             template: '%name${lang}%'
           visualFilter:
             iden:
+              retail:
+                toggle:
+                  - domainUsers
               residential:
                 toggle:
                   - domainUsers
@@ -203,7 +206,7 @@ production:
                   - recordingsLimitMB
                   - recordingsDiskUsage
                   - recordingsLimitEmail
-              billing:
+              invoices:
                 toggle:
                   - invoice.PostalAddress
                   - invoice.PostalCode

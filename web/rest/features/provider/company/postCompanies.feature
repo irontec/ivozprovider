@@ -162,7 +162,7 @@ Feature: Create companies
               "ivr": null,
               "huntGroup": null,
               "fax": null,
-              "peeringContract": 1,
+              "ddiProvider": 1,
               "country": 1,
               "residentialDevice": null,
               "conditionalRoute": null
@@ -180,6 +180,7 @@ Feature: Create companies
               "id": 1,
               "brand": 1
           },
-          "faxNotificationTemplate": null
+          "faxNotificationTemplate": null,
+          "invoiceNotificationTemplate": null
       }
     """

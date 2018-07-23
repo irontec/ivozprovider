@@ -28,7 +28,7 @@ Feature: Update Ddis
           "ivr": null,
           "huntGroup": null,
           "fax": null,
-          "peeringContract": 1,
+          "ddiProvider": 1,
           "country": 1,
           "residentialDevice": null,
           "conditionalRoute": null
@@ -58,10 +58,9 @@ Feature: Update Ddis
           "ivr": null,
           "huntGroup": null,
           "fax": null,
-          "peeringContract": {
-              "description": "Artemis-Dev",
-              "name": "Artemis-Dev",
-              "externallyRated": false,
+          "ddiProvider": {
+              "description": "DDIProviderDescription",
+              "name": "DDIProviderName",
               "id": 1,
               "brand": 1,
               "transformationRuleSet": 1

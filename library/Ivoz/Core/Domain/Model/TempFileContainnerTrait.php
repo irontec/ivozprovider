@@ -11,9 +11,27 @@ trait TempFileContainnerTrait
      */
     protected $tmpFiles = [];
 
+    /**
+     * @param $fldName
+     * @param TempFile $file
+     */
     public function addTmpFile($fldName, TempFile $file)
     {
         $this->tmpFiles[$fldName]  = $file;
+    }
+
+    /**
+     * @param TempFile $file
+     * @throws \Exception
+     */
+    public function removeTmpFile(TempFile $file)
+    {
+        $position = array_search($file, $this->tmpFiles);
+        if ($position === false) {
+            throw new \Exception('File not found');
+        }
+
+        unset($this->tmpFiles[$position]);
     }
 
     /**

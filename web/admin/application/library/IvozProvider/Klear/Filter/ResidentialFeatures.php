@@ -42,6 +42,7 @@ class IvozProvider_Klear_Filter_ResidentialFeatures implements KlearMatrix_Model
             Feature::RESIDENTIAL,
             Feature::RETAIL,
             Feature::WHOLESALE,
+            Feature::VPBX,
         );
 
         $featureIds = [];

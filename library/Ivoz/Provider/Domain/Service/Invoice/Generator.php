@@ -225,7 +225,7 @@ class Generator
         $conditions = [
             ['brand', 'eq', $brand->getId()],
             ['company', 'eq', $company->getId()],
-            ['peeringContract', 'isNotNull'],
+            ['carrier', 'isNotNull'],
             ['startTime', 'gte', $utcInDate->format(self::MYSQL_DATETIME_FORMAT)],
             ['startTime', 'lte', $utcOutDate->format(self::MYSQL_DATETIME_FORMAT)]
         ];
@@ -318,7 +318,7 @@ class Generator
 
                     // -----------------
 
-                    $destination = $call->getDestination();
+                    $destination = $call->getTpDestination();
                     $destinationDto = $this->dtoAssembler->toDto($destination);
 
                     $callData['targetPattern'] = $destinationDto->toArray();

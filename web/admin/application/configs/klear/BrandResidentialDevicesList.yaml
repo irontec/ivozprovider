@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
 
 production:
   main:
@@ -13,6 +14,9 @@ production:
       <<: *ResidentialDevices
       class: ui-silk-text-list-bullets
       title: _("List of %s %2s", ngettext('Residential Device', 'Residential Devices', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/residential/devices.html"
       forcedValues:
         <<: *forcedBrand
       fields:
@@ -35,6 +39,7 @@ production:
           language: true
           status: true
         order:
+          company: true
           name: true
           domain: true
           description: true

@@ -6,7 +6,7 @@ services:
   ##################################
   ## on_commit
   ##################################
-  Ivoz\Provider\Infrastructure\Domain\Service\PeerServer\SendTrunksLcrReloadRequest:
+  Ivoz\Provider\Infrastructure\Domain\Service\CarrierServer\SendTrunksLcrReloadRequest:
     tags: [{ name: 'domain.service'}]
     arguments:
       $trunksLcrReload:

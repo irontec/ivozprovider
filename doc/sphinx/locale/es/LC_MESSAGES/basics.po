@@ -7,14 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-19 18:44+0200\n"
+"POT-Creation-Date: 2018-07-18 19:01+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.4.0\n"
+"Generated-By: Babel 2.3.4\n"
 
 #: ../../basics/architecture/additional_elements.rst:1
 msgid ""
@@ -43,8 +44,8 @@ msgid ""
 "data, etc."
 msgstr ""
 "Otro proceso menos crucial son **los gestores de tareas asíncronas** "
-"encargado de codificar las grabaciones, generar facturas, recargar servicios, "
-"importar datos, etc."
+"encargado de codificar las grabaciones, generar facturas, recargar "
+"servicios, importar datos, etc."
 
 #: ../../basics/architecture/audio_flow.rst:1
 msgid ""
@@ -786,8 +787,8 @@ msgstr ""
 "será necesario:"
 
 #: ../../basics/installation/requirements.rst:29
-msgid "Debian Jessie 8.0 base install"
-msgstr "Instalación base de Debian Jessie 8.0"
+msgid "Debian Stretch 9.0 base install"
+msgstr "Instalación base de Debian Jessie 9.0"
 
 #: ../../basics/installation/requirements.rst:30
 msgid "Internet access"
@@ -1771,3 +1772,4 @@ msgid ""
 msgstr ""
 "Los usuarios son los que utilizan y disfrutan todas las funcionalidades "
 "de IvozProvider."
+

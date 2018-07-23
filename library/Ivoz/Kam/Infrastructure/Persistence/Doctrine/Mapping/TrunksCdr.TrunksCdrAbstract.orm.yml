@@ -150,14 +150,14 @@ Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrAbstract:
           referencedColumnName: id
           onDelete: cascade
       orphanRemoval: false
-    peeringContract:
-      targetEntity: \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface
+    carrier:
+      targetEntity: \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
       cascade: {  }
       fetch: LAZY
       mappedBy: null
       inversedBy: null
       joinColumns:
-        peeringContractId:
+        carrierId:
           referencedColumnName: id
           onDelete: set null
       orphanRemoval: false

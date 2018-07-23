@@ -379,6 +379,16 @@ msgstr "Cancelar"
 msgid "Cannot invoice calls from today in the future."
 msgstr "No se pueden crear facturas en el dia actual o futuro."
 
+msgid "Carrier"
+msgid_plural "Carriers"
+msgstr[0] "Carrier"
+msgstr[1] "Carriers"
+
+msgid "Carrier server"
+msgid_plural "Carrier servers"
+msgstr[0] "Servidor de Carrier"
+msgstr[1] "Servidores de Carrier"
+
 msgid "Charge period"
 msgstr "Período de facturación"
 
@@ -486,6 +496,21 @@ msgid "DDI"
 msgid_plural "DDIs"
 msgstr[0] "DDI"
 msgstr[1] "DDIs"
+
+msgid "DDI Provider"
+msgid_plural "DDI Providers"
+msgstr[0] "Proveedor DDIs"
+msgstr[1] "Proveedores DDIs"
+
+msgid "DDI Provider Address"
+msgid_plural "DDI Provider Addresses"
+msgstr[0] "Dirección IP Proveedor"
+msgstr[1] "Direcciones IP Proveedor"
+
+msgid "DDI Provider Registration"
+msgid_plural "DDI Provider Registrations"
+msgstr[0] "Registro Proveedor"
+msgstr[1] "Registros Proveedor"
 
 msgid "Default Action"
 msgstr "Acción por defecto"
@@ -634,6 +659,10 @@ msgstr "Emular Compañía %s"
 #, python-format
 msgid "Emulate Residential Client %s"
 msgstr "Emular Cliente Residencial %s"
+
+#, python-format
+msgid "Emulate Retail Client %s"
+msgstr "Emular Cliente Retail %s"
 
 #, python-format
 msgid "Emulate Wholesale Client %s"
@@ -809,6 +838,9 @@ msgstr "DDI forzado"
 msgid "Forward Fax"
 msgstr "Reenviar Fax"
 
+msgid "Frequency"
+msgstr "Frecuencia"
+
 msgid "Friday"
 msgstr "Viernes"
 
@@ -932,6 +964,9 @@ msgid_plural "Hunt Groups"
 msgstr[0] "Grupo de salto"
 msgstr[1] "Grupos de salto"
 
+msgid "IP Address"
+msgstr "Dirección IP"
+
 msgid "IP or domain name (port with ':')"
 msgstr "IP o dominio (puerto con ':')"
 
@@ -1014,11 +1049,10 @@ msgstr "En curso"
 msgid "Inbound"
 msgstr "Entrante"
 
-msgid ""
-"Inbound Calls cannot be billed as PeeringContract is not externally rated."
+msgid "Inbound Calls cannot be billed as DDI Provider is not externally rated."
 msgstr ""
-"Las llamadas entrantes solo pueden ser tarificadas en Contratos de Peering "
-"con tarificación externa."
+"Las llamadas entrantes solo pueden ser tarificadas en Proveedores de DDI con "
+"tarificación externa."
 
 msgid "Inbound configuration"
 msgstr "Configuración Entrante"
@@ -1066,6 +1100,11 @@ msgid_plural "Invoices"
 msgstr[0] "Factura"
 msgstr[1] "Facturas"
 
+msgid "Invoice Notification"
+msgid_plural "Invoice Notifications"
+msgstr[0] "Notificación de factura"
+msgstr[1] "Notificaciones de factura"
+
 msgid "Invoice data"
 msgstr "Datos de facturación"
 
@@ -1074,8 +1113,13 @@ msgstr "Factura encolada. Se generará lo antes posible."
 
 msgid "Invoice number sequence"
 msgid_plural "Invoice number sequences"
-msgstr[0] "Secuencia de número de factura."
-msgstr[1] "Secuencias de número de factura."
+msgstr[0] "Numeración de facturas"
+msgstr[1] "Numeriaciones de facturas"
+
+msgid "Invoice scheduler"
+msgid_plural "Invoice schedulers"
+msgstr[0] "Planificador de facturas"
+msgstr[1] "Planificadores de facturas"
 
 msgid "Invoice template"
 msgid_plural "Invoice templates"
@@ -1115,6 +1159,9 @@ msgstr "Mantener DDI original"
 
 msgid "Language"
 msgstr "Lenguaje"
+
+msgid "Last execution"
+msgstr "Última ejecución"
 
 msgid "Last notification sent on"
 msgstr "Último envío"
@@ -1370,6 +1417,9 @@ msgstr "Longitud mínima: 2"
 msgid "Monday"
 msgstr "Lunes"
 
+msgid "Month"
+msgstr "Mes"
+
 msgid "Movement amount"
 msgstr "Cantidad"
 
@@ -1398,6 +1448,9 @@ msgstr "Longitud números nacionales"
 
 msgid "Need help?"
 msgstr "¿Necesita ayuda?"
+
+msgid "Next execution"
+msgstr "Próxima ejecución"
 
 msgid "Nif"
 msgstr "NIF"
@@ -1591,16 +1644,6 @@ msgstr "Patrón"
 msgid "Pdf file"
 msgstr "Fichero PDF"
 
-msgid "Peer server"
-msgid_plural "Peer servers"
-msgstr[0] "Servidor"
-msgstr[1] "Servidores"
-
-msgid "Peering contract"
-msgid_plural "Peering contracts"
-msgstr[0] "Contrato de Peering"
-msgstr[1] "Contratos de Peering"
-
 msgid "Peering contract id"
 msgstr "Contrato de Peering"
 
@@ -1728,11 +1771,6 @@ msgstr "Procesando"
 
 msgid "Proto"
 msgstr "Protocolo"
-
-msgid "Provider register"
-msgid_plural "Provider registers"
-msgstr[0] "Registro Proveedor"
-msgstr[1] "Registros Proveedor"
 
 msgid "Province"
 msgid_plural "Provinces"
@@ -1879,6 +1917,26 @@ msgstr "Restaurar último backup"
 
 msgid "Results"
 msgstr "Resultados"
+
+msgid "Retail"
+msgid_plural "Retails"
+msgstr[0] "Retail"
+msgstr[1] "Retails"
+
+msgid "Retail Account"
+msgid_plural "Retail Accounts"
+msgstr[0] "Cuenta Retail"
+msgstr[1] "Cuentas Retail"
+
+msgid "Retail Client"
+msgid_plural "Retail Clients"
+msgstr[0] "Cliente Retail"
+msgstr[1] "Clientes Retail"
+
+msgid "Retail admin"
+msgid_plural "Retail admins"
+msgstr[0] "Administrador Retail"
+msgstr[1] "Administradores Retail"
 
 msgid "Ring all"
 msgstr "A todos"
@@ -2323,6 +2381,9 @@ msgstr "Tipo URL"
 msgid "Unassigned"
 msgstr "Sin asignar"
 
+msgid "Unit"
+msgstr "Unidad"
+
 msgid "Update CallerID?"
 msgstr "¿Actualización Pantalla?"
 
@@ -2431,6 +2492,9 @@ msgstr "Esperando"
 msgid "Wednesday"
 msgstr "Miércoles"
 
+msgid "Week"
+msgstr "Semana"
+
 msgid "Weight"
 msgstr "Peso"
 
@@ -2486,6 +2550,9 @@ msgstr "Máscara de red inválida: el valor será ignorado."
 
 msgid "Xcallid"
 msgstr "X-CallId"
+
+msgid "Year"
+msgstr "Año"
 
 msgid "Yes"
 msgstr "Si"

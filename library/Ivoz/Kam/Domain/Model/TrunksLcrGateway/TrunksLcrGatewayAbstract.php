@@ -77,9 +77,9 @@ abstract class TrunksLcrGatewayAbstract
     protected $defunct;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\PeerServer\PeerServerInterface
+     * @var \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface
      */
-    protected $peerServer;
+    protected $carrierServer;
 
 
     use ChangelogTrait;
@@ -171,7 +171,7 @@ abstract class TrunksLcrGatewayAbstract
             ->setPrefix($dto->getPrefix())
             ->setTag($dto->getTag())
             ->setDefunct($dto->getDefunct())
-            ->setPeerServer($dto->getPeerServer())
+            ->setCarrierServer($dto->getCarrierServer())
         ;
 
         $self->sanitizeValues();
@@ -204,7 +204,7 @@ abstract class TrunksLcrGatewayAbstract
             ->setPrefix($dto->getPrefix())
             ->setTag($dto->getTag())
             ->setDefunct($dto->getDefunct())
-            ->setPeerServer($dto->getPeerServer());
+            ->setCarrierServer($dto->getCarrierServer());
 
 
 
@@ -231,7 +231,7 @@ abstract class TrunksLcrGatewayAbstract
             ->setPrefix(self::getPrefix())
             ->setTag(self::getTag())
             ->setDefunct(self::getDefunct())
-            ->setPeerServer(\Ivoz\Provider\Domain\Model\PeerServer\PeerServer::entityToDto(self::getPeerServer(), $depth));
+            ->setCarrierServer(\Ivoz\Provider\Domain\Model\CarrierServer\CarrierServer::entityToDto(self::getCarrierServer(), $depth));
     }
 
     /**
@@ -252,7 +252,7 @@ abstract class TrunksLcrGatewayAbstract
             'prefix' => self::getPrefix(),
             'tag' => self::getTag(),
             'defunct' => self::getDefunct(),
-            'peerServerId' => self::getPeerServer() ? self::getPeerServer()->getId() : null
+            'carrierServerId' => self::getCarrierServer() ? self::getCarrierServer()->getId() : null
         ];
     }
 
@@ -607,27 +607,27 @@ abstract class TrunksLcrGatewayAbstract
     }
 
     /**
-     * Set peerServer
+     * Set carrierServer
      *
-     * @param \Ivoz\Provider\Domain\Model\PeerServer\PeerServerInterface $peerServer
+     * @param \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface $carrierServer
      *
      * @return self
      */
-    public function setPeerServer(\Ivoz\Provider\Domain\Model\PeerServer\PeerServerInterface $peerServer)
+    public function setCarrierServer(\Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface $carrierServer)
     {
-        $this->peerServer = $peerServer;
+        $this->carrierServer = $carrierServer;
 
         return $this;
     }
 
     /**
-     * Get peerServer
+     * Get carrierServer
      *
-     * @return \Ivoz\Provider\Domain\Model\PeerServer\PeerServerInterface
+     * @return \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface
      */
-    public function getPeerServer()
+    public function getCarrierServer()
     {
-        return $this->peerServer;
+        return $this->carrierServer;
     }
 
 

@@ -311,20 +311,20 @@ interface TrunksCdrInterface extends EntityInterface
     public function getCompany();
 
     /**
-     * Set peeringContract
+     * Set carrier
      *
-     * @param \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface $peeringContract
+     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier
      *
      * @return self
      */
-    public function setPeeringContract(\Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface $peeringContract = null);
+    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier = null);
 
     /**
-     * Get peeringContract
+     * Get carrier
      *
-     * @return \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface
+     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
      */
-    public function getPeeringContract();
+    public function getCarrier();
 
     /**
      * Set tpDestination

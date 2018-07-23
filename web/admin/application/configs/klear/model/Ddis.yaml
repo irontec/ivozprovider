@@ -19,7 +19,7 @@ production:
           order:
             Company.name: asc
     DDI:
-      title: _('DDI')
+      title: ngettext('DDI', 'DDIs', 1)
       type: text
       trim: both
       pattern: "^[0-9]+$"
@@ -61,6 +61,7 @@ production:
                 - queue
                 - residentialDevice
                 - conditionalRoute
+                - retailAccount
           'user':
             title: ngettext('User', 'Users', 1)
             visualFilter:
@@ -113,6 +114,12 @@ production:
             title: _('Conditional Route')
             visualFilter:
               show: [ conditionalRoute ]
+              hide:
+                <<: *routableFields
+          'retail':
+            title: ngettext('Retail Account', 'Retail Accounts', 1)
+            visualFilter:
+              show: [ retailAccount ]
               hide:
                 <<: *routableFields
     recordCalls:
@@ -262,21 +269,21 @@ production:
       maxLength: 25
       required: true
       <<: *friendValueHelp
-    peeringContract:
-      title: _('Peering contract id')
+    ddiProvider:
+      title: ngettext('DDI Provider', 'DDI Providers', 1)
       type: select
       required: true
       source:
         data: mapper
         config:
-          entity: \Ivoz\Provider\Domain\Model\PeeringContract\PeeringContract
+          entity: \Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider
           filterClass: IvozProvider_Klear_Filter_Brand
           fieldName:
             fields:
               - name
             template: '%name%'
           order:
-            PeeringContract.description: asc
+            DdiProvider.description: asc
     country:
       title: _('Country')
       type: select
@@ -337,6 +344,22 @@ production:
             template: '%name%'
           order:
             ConditionalRoute.name: asc
+        'null': _("Unassigned")
+    retailAccount:
+      title:  ngettext('Retail Account', 'Retail Accounts', 1)
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount
+          filterClass: IvozProvider_Klear_Filter_Company
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order:
+            RetailAccount.name: asc
         'null': _("Unassigned")
     target:
       title: _('Target')

@@ -29,6 +29,10 @@ doctrine:
         Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchList
       Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface:
         Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting
+      Ivoz\Provider\Domain\Model\Carrier\CarrierInterface:
+        Ivoz\Provider\Domain\Model\Carrier\Carrier
+      Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface:
+        Ivoz\Provider\Domain\Model\CarrierServer\CarrierServer
       Ivoz\Provider\Domain\Model\Commandlog\CommandlogInterface:
         Ivoz\Provider\Domain\Model\Commandlog\Commandlog
       Ivoz\Provider\Domain\Model\Codec\CodecInterface:
@@ -61,6 +65,12 @@ doctrine:
         Ivoz\Provider\Domain\Model\Country\Country
       Ivoz\Provider\Domain\Model\Ddi\DdiInterface:
         Ivoz\Provider\Domain\Model\Ddi\Ddi
+      Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface:
+        Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider
+      Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface:
+        Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddress
+      Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistrationInterface:
+        Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistration
       Ivoz\Provider\Domain\Model\Domain\DomainInterface:
         Ivoz\Provider\Domain\Model\Domain\Domain
       Ivoz\Provider\Domain\Model\EtagVersion\EtagVersionInterface:
@@ -91,6 +101,8 @@ doctrine:
         Ivoz\Provider\Domain\Model\FixedCost\FixedCost
       Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoiceInterface:
         Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoice
+      Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceSchedulerInterface:
+        Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceScheduler
       Ivoz\Provider\Domain\Model\Friend\FriendInterface:
         Ivoz\Provider\Domain\Model\Friend\Friend
       Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPatternInterface:
@@ -139,10 +151,6 @@ doctrine:
         Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPattern
       Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface:
         Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting
-      Ivoz\Provider\Domain\Model\PeeringContract\PeeringContractInterface:
-        Ivoz\Provider\Domain\Model\PeeringContract\PeeringContract
-      Ivoz\Provider\Domain\Model\PeerServer\PeerServerInterface:
-        Ivoz\Provider\Domain\Model\PeerServer\PeerServer
       Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupInterface:
         Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroup
       Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface:
@@ -159,6 +167,8 @@ doctrine:
         Ivoz\Provider\Domain\Model\Recording\Recording
       Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface:
         Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice
+      Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface:
+        Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount
       Ivoz\Provider\Domain\Model\RouteLock\RouteLockInterface:
         Ivoz\Provider\Domain\Model\RouteLock\RouteLock
       Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface:

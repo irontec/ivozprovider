@@ -17,7 +17,7 @@ production:
       title: _("List of %s %2s", ngettext('Rating plan', 'Rating plans', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/brand/billing/pricing_plans.html"
+        href: "/doc/${lang}/brand/billing/rating_plans.html"
       forcedValues:
         <<: *forcedBrand
       fields: &ratingPlans_fieldsLink

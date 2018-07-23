@@ -13,7 +13,7 @@ Feature: Create brand servers
       {
           "code": "11",
           "brand": 1,
-          "service": 1
+          "service": 4
       }
     """
     Then the response status code should be 201
@@ -23,14 +23,14 @@ Feature: Create brand servers
     """
       {
           "code": "11",
-          "id": 5
+          "id": 4
       }
     """
 
   Scenario: Retrieve created brand service
     Given I add Authorization header
      When I add "Accept" header equal to "application/json"
-      And I send a "GET" request to "brand_services/5"
+      And I send a "GET" request to "brand_services/4"
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
@@ -38,13 +38,13 @@ Feature: Create brand servers
     """
       {
           "code": "11",
-          "id": 5,
+          "id": 4,
           "brand": "~",
           "service": {
-              "iden": "DirectPickUp",
-              "defaultCode": "94",
+              "iden": "RecordLocution",
+              "defaultCode": "00",
               "extraArgs": true,
-              "id": 1,
+              "id": 4,
               "name": {
                   "en": "en",
                   "es": "en"

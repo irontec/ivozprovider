@@ -372,6 +372,16 @@ msgstr "Cancel"
 msgid "Cannot invoice calls from today in the future."
 msgstr "Cannot invoice calls from today in the future."
 
+msgid "Carrier"
+msgid_plural "Carriers"
+msgstr[0] "Carrier"
+msgstr[1] "Carriers"
+
+msgid "Carrier server"
+msgid_plural "Carrier servers"
+msgstr[0] "Carrier server"
+msgstr[1] "Carrier servers"
+
 msgid "Charge period"
 msgstr "Charge period"
 
@@ -479,6 +489,21 @@ msgid "DDI"
 msgid_plural "DDIs"
 msgstr[0] "DDI"
 msgstr[1] "DDIs"
+
+msgid "DDI Provider"
+msgid_plural "DDI Providers"
+msgstr[0] "DDI Provider"
+msgstr[1] "DDI Providers"
+
+msgid "DDI Provider Address"
+msgid_plural "DDI Provider Addresses"
+msgstr[0] "DDI Provider Address"
+msgstr[1] "DDI Provider Addresses"
+
+msgid "DDI Provider Registration"
+msgid_plural "DDI Provider Registrations"
+msgstr[0] "DDI Provider Registration"
+msgstr[1] "DDI Provider Registrations"
 
 msgid "Default Action"
 msgstr "Default Action"
@@ -623,6 +648,10 @@ msgstr "Emulate Company %s"
 #, python-format
 msgid "Emulate Residential Client %s"
 msgstr "Emulate Residential Client %s"
+
+#, python-format
+msgid "Emulate Retail Client %s"
+msgstr "Emulate Retail Client %s"
 
 #, python-format
 msgid "Emulate Wholesale Client %s"
@@ -796,6 +825,9 @@ msgstr "Forced DDI"
 msgid "Forward Fax"
 msgstr "Forward Fax"
 
+msgid "Frequency"
+msgstr "Frequency"
+
 msgid "Friday"
 msgstr "Friday"
 
@@ -917,6 +949,9 @@ msgid_plural "Hunt Groups"
 msgstr[0] "Hunt Group"
 msgstr[1] "Hunt Groups"
 
+msgid "IP Address"
+msgstr "IP address"
+
 msgid "IP or domain name (port with ':')"
 msgstr "IP or domain name (port with ':')"
 
@@ -1000,10 +1035,9 @@ msgstr "In progress"
 msgid "Inbound"
 msgstr "Inbound"
 
-msgid ""
-"Inbound Calls cannot be billed as PeeringContract is not externally rated."
+msgid "Inbound Calls cannot be billed as DDI Provider is not externally rated."
 msgstr ""
-"Inbound Calls cannot be billed as PeeringContract is not externally rated."
+"Inbound Calls cannot be billed as DDI Provider is not externally rated."
 
 msgid "Inbound configuration"
 msgstr "Inbound configuration"
@@ -1051,6 +1085,11 @@ msgid_plural "Invoices"
 msgstr[0] "Invoice"
 msgstr[1] "Invoices"
 
+msgid "Invoice Notification"
+msgid_plural "Invoice Notifications"
+msgstr[0] "Invoice Notification"
+msgstr[1] "Invoice Notifications"
+
 msgid "Invoice data"
 msgstr "Invoice data"
 
@@ -1061,6 +1100,11 @@ msgid "Invoice number sequence"
 msgid_plural "Invoice number sequences"
 msgstr[0] "Invoice number sequence"
 msgstr[1] "Invoice number sequences"
+
+msgid "Invoice scheduler"
+msgid_plural "Invoice schedulers"
+msgstr[0] "Invoice scheduler"
+msgstr[1] "Invoice schedulers"
 
 msgid "Invoice template"
 msgid_plural "Invoice templates"
@@ -1101,6 +1145,9 @@ msgstr "Keep Original DDI"
 
 msgid "Language"
 msgstr "Language"
+
+msgid "Last execution"
+msgstr "Last execution"
 
 msgid "Last notification sent on"
 msgstr "Last notification sent on"
@@ -1352,6 +1399,9 @@ msgstr "Minimal length: 2"
 msgid "Monday"
 msgstr "Monday"
 
+msgid "Month"
+msgstr "Month"
+
 msgid "Movement amount"
 msgstr "Movement amount"
 
@@ -1379,6 +1429,9 @@ msgstr "National number length"
 
 msgid "Need help?"
 msgstr "Need help?"
+
+msgid "Next execution"
+msgstr "Next execution"
 
 msgid "Nif"
 msgstr "TIN"
@@ -1571,16 +1624,6 @@ msgstr "Pattern"
 msgid "Pdf file"
 msgstr "Pdf file"
 
-msgid "Peer server"
-msgid_plural "Peer servers"
-msgstr[0] "Peer server"
-msgstr[1] "Peer servers"
-
-msgid "Peering contract"
-msgid_plural "Peering contracts"
-msgstr[0] "Peering contract"
-msgstr[1] "Peering contracts"
-
 msgid "Peering contract id"
 msgstr "Peering Contract"
 
@@ -1706,11 +1749,6 @@ msgstr "Processing"
 
 msgid "Proto"
 msgstr "Proto"
-
-msgid "Provider register"
-msgid_plural "Provider registers"
-msgstr[0] "Provider register"
-msgstr[1] "Provider registers"
 
 msgid "Province"
 msgid_plural "Provinces"
@@ -1857,6 +1895,26 @@ msgstr "Restore last backup"
 
 msgid "Results"
 msgstr "Results"
+
+msgid "Retail"
+msgid_plural "Retails"
+msgstr[0] "Retail"
+msgstr[1] "Retails"
+
+msgid "Retail Account"
+msgid_plural "Retail Accounts"
+msgstr[0] "Retail Account"
+msgstr[1] "Retail Accounts"
+
+msgid "Retail Client"
+msgid_plural "Retail Clients"
+msgstr[0] "Retail Client"
+msgstr[1] "Retail Clients"
+
+msgid "Retail admin"
+msgid_plural "Retail admins"
+msgstr[0] "Retail admin"
+msgstr[1] "Retail admins"
 
 msgid "Ring all"
 msgstr "Ring all"
@@ -2301,6 +2359,9 @@ msgstr "URL type"
 msgid "Unassigned"
 msgstr "Unassigned"
 
+msgid "Unit"
+msgstr "Unit"
+
 msgid "Update CallerID?"
 msgstr "Update CallerID?"
 
@@ -2404,6 +2465,9 @@ msgstr "Waiting"
 msgid "Wednesday"
 msgstr "Wednesday"
 
+msgid "Week"
+msgstr "Week"
+
 msgid "Weight"
 msgstr "Weight"
 
@@ -2458,6 +2522,9 @@ msgstr "Wrong mask, discarding value."
 
 msgid "Xcallid"
 msgstr "Xcallid"
+
+msgid "Year"
+msgstr "Year"
 
 msgid "Yes"
 msgstr "Yes"

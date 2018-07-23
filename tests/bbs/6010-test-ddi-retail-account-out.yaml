@@ -1,0 +1,26 @@
+# ----------------------------------------------------------------------------
+scenarios:
+  - name: call from retail to its ddi
+    timeout: 20
+    sessions:
+
+      - call_uac_retail:
+          - wait
+          - call:
+              dest: 999666001
+              caller: 123456789
+              credentials:
+                <<: *retail_cred
+          - waitfor: CONFIRMED
+          - wait: 2
+          - hangup
+          - waitfor: DISCONNCTD
+
+      - call_uas_retail:
+          - register:
+              <<: *retail_cred
+          - waitfor: INCOMING
+          - callid: 999666001
+          - answer
+          - waitfor: DISCONNCTD
+          - unregister

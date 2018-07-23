@@ -1,0 +1,194 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
+
+production:
+  main:
+    module: klearMatrix
+    defaultScreen: ddisList_screen
+  screens: &ddis_screenLink
+    ddisList_screen: &ddisList_screenLink
+      controller: list
+      pagination:
+        items: 25
+      <<: *Ddis
+      title: _("List of %s %2s", ngettext('DDI', 'DDIs', 0), "[format| (%parent%)]")
+      class: ui-silk-lightning-go
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/company/ddis.html"
+      forcedValues:
+        <<: *forcedCompany
+        recordCalls: 'all'
+        routeType: 'retail'
+      order:
+          - Ddi.country: asc
+          - Ddi.ddi: asc
+          - Ddi.routeType: desc
+      fields:
+        order: &ddisFieldsOder_Link
+          country: true
+          DDI: true
+          externalCallFilter: true
+          routeType: true
+          target: true
+        options:
+          title: _("Options")
+          screens:
+            ddisEdit_screen: ${auth.isNotCompanyOperator}
+            ddisEditLimited_screen: ${auth.isCompanyOperator}
+          dialogs:
+            ddisDel_dialog: ${auth.isNotCompanyOperator}
+          default: ddisEdit_screen
+        blacklist: &ddisBlacklist_Link
+          user: true
+          fax: true
+          ivr: true
+          huntGroup: true
+          conferenceRoom: true
+          friendValue: true
+          brand: true
+          recordCalls: true
+          displayName: true
+          billInboundCalls: true
+          ddiProvider: ${auth.isCompanyOperator}
+          language: true
+          queue: true
+          residentialDevice: true
+          conditionalRoute: true
+          externalCallFilter: true
+          target: true
+
+      fixedPositions: &ddisFixedPositions_Link
+        group0:
+          label: _("Number data")
+          colsPerRow: 3
+          fields:
+            country: 1
+            DDI: 1
+            ddiProvider: 1
+            displayName: 2
+            language: 1
+        group3:
+          label: _("Routing configuration")
+          colsPerRow: 3
+          fields:
+            retailAccount: 1
+      options:
+        title: _("Options")
+        screens:
+          ddisNew_screen: ${auth.isNotCompanyOperator}
+        dialogs:
+          ddisDel_dialog: ${auth.isNotCompanyOperator}
+          importDDIs_dialog: false
+
+    ddisNew_screen: &ddisNew_screenLink
+      <<: *Ddis
+      controller: new
+      class: ui-silk-add
+      label: true
+      multiInstance: true
+      defaultValues:
+        country: ${auth.companyCountryId}
+      forcedValues:
+        <<: *forcedBrand
+        <<: *forcedCompany
+        recordCalls: 'all'
+        routeType: 'retail'
+      title: _("Add %s", ngettext('DDI', 'DDIs', 1))
+      fields:
+        order:
+          <<: *ddisFieldsOder_Link
+        blacklist:
+          <<: *ddisBlacklist_Link
+          brand: true
+          target: true
+      fixedPositions:
+        <<: *ddisFixedPositions_Link
+
+    ddisEdit_screen: &ddisEdit_screenLink
+      <<: *Ddis
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      forcedValues:
+        <<: *forcedBrand
+        <<: *forcedCompany
+        recordCalls: 'all'
+        routeType: 'retail'
+      title: _("Edit %s %2s", ngettext('DDI', 'DDIs', 1), "[format| (%item%)]")
+      fields:
+        order:
+          <<: *ddisFieldsOder_Link
+        blacklist:
+          <<: *ddisBlacklist_Link
+      fixedPositions:
+        <<: *ddisFixedPositions_Link
+
+    ddisEditLimited_screen: &ddisEdit_screenLink
+      <<: *Ddis
+      controller: edit
+      class: ui-silk-pencil
+      label: false
+      forcedValues:
+        <<: *forcedCompany
+        recordCalls: 'all'
+        routeType: 'retail'
+      title: _("Edit %s %2s", ngettext('DDI', 'DDIs', 1), "[format| (%item%)]")
+      fields:
+        order:
+          <<: *ddisFieldsOder_Link
+        blacklist:
+          <<: *ddisBlacklist_Link
+        readOnly:
+          DDI: true
+          country: true
+      fixedPositions:
+        <<: *ddisFixedPositions_Link
+
+  dialogs: &ddis_dialogsLink
+    ddisDel_dialog: &ddisDel_dialogLink
+      <<: *Ddis
+      controller: delete
+      class: ui-silk-bin
+      labelOption: false
+      title: _("Delete %s", ngettext('DDI', 'DDIs', 1))
+      description: _("Do you want to delete this %s?", ngettext('DDI', 'DDIs', 1))
+      message: _("%s successfully deleted.", ngettext('DDI', 'DDIs', 1))
+      multiItem: 1
+      labelOnList: 1
+
+    importDDIs_dialog:
+      <<: *Ddis
+      module: default
+      title: _("Import %s", ngettext('DDI', 'DDIs', 0))
+      label: false
+      labelOnEdit: true
+      labelOnList: true
+      labelOnOption: true
+      labelOnEntityPostSave: true
+      controller: import-file
+      action: import
+      class:  ui-silk-page-gear
+      freeUploadCommand: importDDIsFreeUpload_command
+      delimiter: ";"
+      enclosure: '"'
+      escape: "\\"
+      forcedValues:
+        company: *forcedCompany
+        <<: *forcedBrand
+
+  commands:
+    importDDIsFreeUpload_command:
+      <<: *Ddis
+      controller: File
+      action: free-upload
+
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

@@ -101,7 +101,7 @@ providers that follow this rules:
 - A spanish number: Neither international nor calling code (34).
 - Not a spanish number: International code (00) and calling code (34).
 
-The numeric transformation *sets* must be assigned to **Peering Contracts**, as
+The numeric transformation *sets* must be assigned to **Carrier**, as
 shown in the following section. This *set* can be shared by multiple spanish
 providers.
 
@@ -154,4 +154,4 @@ destination numbers.
 .. attention:: **To sum up**: numeric tranformation can adapt origin and
    destination numbers to E.164 for the platform, and to providers expected
    formats, based on regular expresions and metric that can be grouped in *sets*
-   to be shared between multiple **Peering Contracts**.
+   to be shared between multiple **Carriers**.

@@ -10,8 +10,8 @@ DDIs
     DDI
         The number, without country code.
 
-    Peering contract
-        The peering contract that provides this number. This relation allow
+    DDI Provider
+        The :ref:`DDI Provider <ddi_provider>` that provides this number. This relation allow
         the platform to apply the required :ref:`transformations` in
         order to determine its standard form.
 

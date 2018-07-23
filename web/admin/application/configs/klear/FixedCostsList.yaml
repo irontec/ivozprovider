@@ -44,7 +44,6 @@ production:
       label: true
       multiInstance: true
       title: _("Add %s", ngettext('Fixed cost', 'Fixed costs', 1), "[format| (%parent%)]")
-      fullWidth: true
       shortcutOption: N
       forcedValues:
         <<: *forcedBrand
