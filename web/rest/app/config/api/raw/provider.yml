@@ -652,6 +652,19 @@ Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice:
               eq: "user.getBrand().getId()"
           - company:
               in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+      ROLE_BRAND_ADMIN:
+        or:
+          - brand:
+              eq: "user.getBrand().getId()"
+          - company:
+              in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
 Ivoz\Provider\Domain\Model\RouteLock\RouteLock:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
