@@ -31,20 +31,6 @@ interface RetailAccountInterface extends LoggableEntityInterface
     public function setPort($port = null);
 
     /**
-     * Obtain content for X-Info-Location header
-     *
-     * @param mixed $callee
-     * @return string
-     */
-    public function getRequestUri($callee);
-
-    /**
-     * @param $callee
-     * @return string
-     */
-    public function getRequestDirectUri($callee);
-
-    /**
      * Get name
      *
      * @return string

@@ -175,41 +175,6 @@ class Friend extends FriendAbstract implements FriendInterface
         return $callAcl->dstIsCallable($exten);
     }
 
-    public function getRequestDirectUri($callee)
-    {
-        $uri = sprintf("sip:%s@%s", $callee, $this->getIp());
-
-        // Check if the configured port is not the standard (5060)
-        $port = $this->getPort();
-        if (!is_null($port) && $port != 5060) {
-            $uri .= ":$port";
-        }
-
-        // Check if the configured transport is not the standard (UDP)
-        $transport = $this->getTransport();
-        if ($transport != 'udp') {
-            $uri .= ";transport=$transport";
-        }
-
-        return $uri;
-    }
-
-    /**
-     * Obtain content for X-Info-Friend header
-     *
-     * @param called $number
-     */
-    public function getRequestUri($callee)
-    {
-        if ($this->getDirectConnectivity() == 'yes') {
-
-            return $this->getRequestDirectUri($callee);
-        } else {
-            // Only Kamailio knows this!
-            return 'dynamic';
-        }
-    }
-
     public function getAstPsEndpoint()
     {
         $astPsEnpoints = $this->getPsEndpoints(
