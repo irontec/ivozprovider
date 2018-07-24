@@ -40,20 +40,6 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
      */
     public function getSorcery();
 
-    /**
-     * Obtain content for X-Info-Location header
-     *
-     * @param mixed $callee
-     * @return string
-     */
-    public function getRequestUri($callee);
-
-    /**
-     * @param $callee
-     * @return string
-     */
-    public function getRequestDirectUri($callee);
-
     public function getAstPsEndpoint();
 
     public function getLanguageCode();

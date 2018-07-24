@@ -69,17 +69,8 @@ class Headers extends RouteHandlerAbstract
                 /** @var UserInterface $user */
                 $user = $terminal->getUser();
                 $this->agi->setSIPHeader("X-Info-Callee", $user->getExtensionNumber());
-            }
-            $friend = $endpoint->getFriend();
-            if (!is_null($friend)) {
+            } else {
                 $this->agi->setSIPHeader("X-Info-Callee", $exten);
-                $this->agi->setSIPHeader("X-Info-Location", $friend->getRequestURI($exten));
-            }
-            $resisdential = $endpoint->getResidentialDevice();
-            if (!is_null($resisdential)) {
-                $this->agi->setSIPHeader("X-Info-Callee", $exten);
-                $this->agi->setSIPHeader("X-Info-Location", $resisdential->getRequestURI($exten));
-
             }
 
             // Set on-demand recording header (only for proxyusers)

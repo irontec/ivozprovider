@@ -55,15 +55,6 @@ interface FriendInterface extends LoggableEntityInterface
      */
     public function isAllowedToCall($exten);
 
-    public function getRequestDirectUri($callee);
-
-    /**
-     * Obtain content for X-Info-Friend header
-     *
-     * @param called $number
-     */
-    public function getRequestUri($callee);
-
     public function getAstPsEndpoint();
 
     public function getLanguageCode();
