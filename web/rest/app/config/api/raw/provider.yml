@@ -625,6 +625,13 @@ Ivoz\Provider\Domain\Model\Queue\Queue:
       ROLE_BRAND_ADMIN:
         company:
           in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+Ivoz\Provider\Domain\Model\RatingProfile\RatingProfile:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      ROLE_BRAND_ADMIN:
+        company:
+          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
 Ivoz\Provider\Domain\Model\Recording\Recording:
   itemOperations:
     put: ~
@@ -698,6 +705,13 @@ Ivoz\Provider\Domain\Model\RoutingPattern\Description:
 Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPattern:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
+    read_access_control:
+      ROLE_BRAND_ADMIN:
+        brand:
+          eq: "user.getBrand().getId()"
+Ivoz\Provider\Domain\Model\RoutingTag\RoutingTag:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
       ROLE_BRAND_ADMIN:
         brand:

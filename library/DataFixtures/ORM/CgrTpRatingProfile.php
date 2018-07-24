@@ -38,11 +38,8 @@ class CgrTpRatingProfile extends Fixture implements DependentFixtureInterface
         $item1->setCreatedAt(
             new \DateTime('2018-01-01 10:10:10')
         );
-        $item1->setCompany(
-            $this->getReference('_reference_ProviderCompany1')
-        );
-        $item1->setRatingPlan(
-            $this->getReference('_reference_ProviderRatingPlans1')
+        $item1->setRatingProfile(
+            $this->getReference('_reference_ProviderRatingProfile1')
         );
         $this->sanitizeEntityValues($item1);
         $this->addReference('_reference_CgrTpRatingProfile1', $item1);
@@ -56,7 +53,7 @@ class CgrTpRatingProfile extends Fixture implements DependentFixtureInterface
         $item2->setDirection('*out');
         $item2->setTenant('b1');
         $item2->setCategory('call');
-        $item2->setSubject('c1');
+        $item2->setSubject('c1rt1');
         $item2->setActivationTime(
             new \DateTime('2018-02-02 20:20:20')
         );
@@ -64,11 +61,8 @@ class CgrTpRatingProfile extends Fixture implements DependentFixtureInterface
         $item2->setCreatedAt(
             new \DateTime('2018-02-02 20:20:20')
         );
-        $item2->setCompany(
-            $this->getReference('_reference_ProviderCompany1')
-        );
-        $item2->setRatingPlan(
-            $this->getReference('_reference_ProviderRatingPlans1')
+        $item2->setRatingProfile(
+            $this->getReference('_reference_ProviderRatingProfile2')
         );
         $this->sanitizeEntityValues($item2);
         $this->addReference('_reference_CgrTpRatingProfile2', $item2);
@@ -80,8 +74,7 @@ class CgrTpRatingProfile extends Fixture implements DependentFixtureInterface
     public function getDependencies()
     {
         return array(
-            ProviderRatingPlans::class,
-            ProviderCompany::class,
+            ProviderRatingProfile::class,
         );
     }
 }
