@@ -52,12 +52,12 @@ abstract class TpRatingPlanAbstract
     protected $timing;
 
     /**
-     * @var \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanInterface
+     * @var \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface
      */
     protected $ratingPlan;
 
     /**
-     * @var \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateInterface
+     * @var \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface
      */
     protected $destinationRate;
 
@@ -200,8 +200,8 @@ abstract class TpRatingPlanAbstract
             ->setWeight(self::getWeight())
             ->setCreatedAt(self::getCreatedAt())
             ->setTiming(\Ivoz\Cgr\Domain\Model\TpTiming\TpTiming::entityToDto(self::getTiming(), $depth))
-            ->setRatingPlan(\Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlan::entityToDto(self::getRatingPlan(), $depth))
-            ->setDestinationRate(\Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRate::entityToDto(self::getDestinationRate(), $depth));
+            ->setRatingPlan(\Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan::entityToDto(self::getRatingPlan(), $depth))
+            ->setDestinationRate(\Ivoz\Provider\Domain\Model\DestinationRate\DestinationRate::entityToDto(self::getDestinationRate(), $depth));
     }
 
     /**
@@ -419,11 +419,11 @@ abstract class TpRatingPlanAbstract
     /**
      * Set ratingPlan
      *
-     * @param \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan
+     * @param \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan
      *
      * @return self
      */
-    public function setRatingPlan(\Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan)
+    public function setRatingPlan(\Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan)
     {
         $this->ratingPlan = $ratingPlan;
 
@@ -433,7 +433,7 @@ abstract class TpRatingPlanAbstract
     /**
      * Get ratingPlan
      *
-     * @return \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanInterface
+     * @return \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface
      */
     public function getRatingPlan()
     {
@@ -443,11 +443,11 @@ abstract class TpRatingPlanAbstract
     /**
      * Set destinationRate
      *
-     * @param \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate
+     * @param \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate
      *
      * @return self
      */
-    public function setDestinationRate(\Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate)
+    public function setDestinationRate(\Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate)
     {
         $this->destinationRate = $destinationRate;
 
@@ -457,7 +457,7 @@ abstract class TpRatingPlanAbstract
     /**
      * Get destinationRate
      *
-     * @return \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateInterface
+     * @return \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface
      */
     public function getDestinationRate()
     {

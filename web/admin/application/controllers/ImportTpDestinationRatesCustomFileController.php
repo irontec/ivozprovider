@@ -1,6 +1,6 @@
 <?php
 
-use \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRate;
+use \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRate;
 
 class ImportTpDestinationRatesCustomFileController extends Zend_Controller_Action
 {
@@ -330,7 +330,7 @@ class ImportTpDestinationRatesCustomFileController extends Zend_Controller_Actio
         /** @var \Ivoz\Core\Application\Service\DataGateway $dataGateway */
         $dataGateway = Zend_Registry::get('data_gateway');
 
-        /** @var \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateDto $destinationRateDto */
+        /** @var \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateDto $destinationRateDto */
         $destinationRateDto = $dataGateway->find(
             DestinationRate::class,
             $this->getRequest()->getParam("pk")

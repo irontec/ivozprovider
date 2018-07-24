@@ -97,7 +97,7 @@ mappers:
     }
   - &DestinationRates {
         modelFile: DestinationRates,
-        entity: 'Ivoz\\Cgr\\Domain\\Model\\DestinationRate\\DestinationRate'
+        entity: 'Ivoz\\Provider\\Domain\\Model\\DestinationRate\\DestinationRate'
     }
   - &Domains {
         modelFile: Domains,
@@ -245,7 +245,7 @@ mappers:
     }
   - &RatingPlans {
         modelFile: RatingPlans,
-        entity: 'Ivoz\\Cgr\\Domain\\Model\\RatingPlan\\RatingPlan'
+        entity: 'Ivoz\\Provider\\Domain\\Model\\RatingPlan\\RatingPlan'
     }
   - &Recordings {
         modelFile: Recordings,

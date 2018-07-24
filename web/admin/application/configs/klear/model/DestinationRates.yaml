@@ -1,5 +1,5 @@
 production:
-  entity: Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRate
+  entity: Ivoz\Provider\Domain\Model\DestinationRate\DestinationRate
   fields: 
     id:
       title: ngettext('Id', 'Ids', 1)

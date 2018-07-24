@@ -78,7 +78,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     private $company;
 
     /**
-     * @var \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanDto | null
+     * @var \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto | null
      */
     private $ratingPlan;
 
@@ -146,7 +146,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
         $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
-        $this->ratingPlan = $transformer->transform('Ivoz\\Cgr\\Domain\\Model\\RatingPlan\\RatingPlan', $this->getRatingPlanId());
+        $this->ratingPlan = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\RatingPlan\\RatingPlan', $this->getRatingPlanId());
     }
 
     /**
@@ -444,11 +444,11 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanDto $ratingPlan
+     * @param \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto $ratingPlan
      *
      * @return static
      */
-    public function setRatingPlan(\Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanDto $ratingPlan = null)
+    public function setRatingPlan(\Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto $ratingPlan = null)
     {
         $this->ratingPlan = $ratingPlan;
 
@@ -456,7 +456,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanDto
+     * @return \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto
      */
     public function getRatingPlan()
     {
@@ -471,7 +471,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     public function setRatingPlanId($id)
     {
         $value = !is_null($id)
-            ? new \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanDto($id)
+            ? new \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto($id)
             : null;
 
         return $this->setRatingPlan($value);

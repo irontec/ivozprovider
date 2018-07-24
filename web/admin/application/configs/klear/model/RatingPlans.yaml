@@ -1,5 +1,5 @@
 production:
-  entity: Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlan
+  entity: Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan
   fields:
     id:
       title: ngettext('Id', 'Ids', 1)

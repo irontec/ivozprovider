@@ -123,7 +123,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     private $tpDestination;
 
     /**
-     * @var \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateDto | null
+     * @var \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateDto | null
      */
     private $destinationRate;
 
@@ -213,7 +213,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
         $this->carrier = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Carrier\\Carrier', $this->getCarrierId());
         $this->tpDestination = $transformer->transform('Ivoz\\Cgr\\Domain\\Model\\TpDestination\\TpDestination', $this->getTpDestinationId());
-        $this->destinationRate = $transformer->transform('Ivoz\\Cgr\\Domain\\Model\\DestinationRate\\DestinationRate', $this->getDestinationRateId());
+        $this->destinationRate = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\DestinationRate\\DestinationRate', $this->getDestinationRateId());
     }
 
     /**
@@ -795,11 +795,11 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateDto $destinationRate
+     * @param \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateDto $destinationRate
      *
      * @return static
      */
-    public function setDestinationRate(\Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateDto $destinationRate = null)
+    public function setDestinationRate(\Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateDto $destinationRate = null)
     {
         $this->destinationRate = $destinationRate;
 
@@ -807,7 +807,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateDto
+     * @return \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateDto
      */
     public function getDestinationRate()
     {
@@ -822,7 +822,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     public function setDestinationRateId($id)
     {
         $value = !is_null($id)
-            ? new \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateDto($id)
+            ? new \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateDto($id)
             : null;
 
         return $this->setDestinationRate($value);

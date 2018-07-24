@@ -2,8 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Service\Invoice;
 
-use Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanDto;
-use Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanRepository;
+use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto;
+use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanRepository;
 use Ivoz\Cgr\Domain\Model\TpCdr\TpCdr;
 use Ivoz\Cgr\Domain\Model\TpCdr\TpCdrInterface;
 use Ivoz\Cgr\Domain\Model\TpCdr\TpCdrRepository;

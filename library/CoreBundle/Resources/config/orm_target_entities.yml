@@ -243,10 +243,10 @@ doctrine:
         Ivoz\Kam\Domain\Model\User\User
       Ivoz\Kam\Domain\Model\Version\VersionInterface:
         Ivoz\Kam\Domain\Model\Version\Version
-      Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateInterface:
-        Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRate
-      Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanInterface:
-        Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlan
+      Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface:
+        Ivoz\Provider\Domain\Model\DestinationRate\DestinationRate
+      Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface:
+        Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan
       Ivoz\Cgr\Domain\Model\TpAccount\TpAccountInterface:
         Ivoz\Cgr\Domain\Model\TpAccount\TpAccount
       Ivoz\Cgr\Domain\Model\TpCdr\TpCdrInterface:

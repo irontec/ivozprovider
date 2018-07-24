@@ -94,7 +94,7 @@ Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateAbstract:
       column: created_at
   manyToOne:
     destinationRate:
-      targetEntity: \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateInterface
+      targetEntity: \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface
       mappedBy: null
       inversedBy: tpDestinationRates
       joinColumns:
