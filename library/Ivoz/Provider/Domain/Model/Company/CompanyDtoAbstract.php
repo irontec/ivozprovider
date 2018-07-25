@@ -203,7 +203,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     private $terminals = null;
 
     /**
-     * @var \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileDto[] | null
+     * @var \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileDto[] | null
      */
     private $ratingProfiles = null;
 
@@ -417,7 +417,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             $this->ratingProfiles = [];
             foreach ($items as $item) {
                 $this->ratingProfiles[] = $transformer->transform(
-                    'Ivoz\\Cgr\\Domain\\Model\\TpRatingProfile\\TpRatingProfile',
+                    'Ivoz\\Provider\\Domain\\Model\\RatingProfile\\RatingProfile',
                     $item->getId() ?? $item
                 );
             }
@@ -506,7 +506,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             $this->terminals
         );
         $this->ratingProfiles = $transformer->transform(
-            'Ivoz\\Cgr\\Domain\\Model\\TpRatingProfile\\TpRatingProfile',
+            'Ivoz\\Provider\\Domain\\Model\\RatingProfile\\RatingProfile',
             $this->ratingProfiles
         );
         $this->musicsOnHold = $transformer->transform(

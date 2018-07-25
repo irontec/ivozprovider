@@ -7,6 +7,8 @@ use Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface;
 use Ivoz\Core\Infrastructure\Domain\Service\Cgrates\RemoveTpRatingProfile;
 use Ivoz\Core\Infrastructure\Service\JsonRpc\FakeClient;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface;
+use Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Ivoz\Core\Infrastructure\Domain\Service\Redis\Client as RedisClient;
@@ -50,13 +52,13 @@ class RemoveTpRatingProfileSpec extends ObjectBehavior
 
     function it_schedules_full_reload_if_company_was_not_removed(
         TpRatingProfileInterface $tpRatingProfile,
-        CompanyInterface $company
+        RatingProfileInterface $ratingProfile
     ) {
         $tpRatingProfile
-            ->getCompany()
-            ->willReturn($company);
+            ->getRatingProfile()
+            ->willReturn($ratingProfile);
 
-        $company
+        $ratingProfile
             ->getId()
             ->willReturn(1);
 
@@ -72,7 +74,7 @@ class RemoveTpRatingProfileSpec extends ObjectBehavior
         TpRatingProfileInterface $tpRatingProfile
     ) {
         $tpRatingProfile
-            ->getCompany()
+            ->getRatingProfile()
             ->willReturn(null);
 
         $this
@@ -93,7 +95,7 @@ class RemoveTpRatingProfileSpec extends ObjectBehavior
         TpRatingProfileInterface $tpRatingProfile
     ) {
         $tpRatingProfile
-            ->getCompany()
+            ->getRatingProfile()
             ->willReturn(null);
 
         $tpRatingProfile
@@ -121,7 +123,7 @@ class RemoveTpRatingProfileSpec extends ObjectBehavior
         TpRatingProfileInterface $tpRatingProfile
     ) {
         $tpRatingProfile
-            ->getCompany()
+            ->getRatingProfile()
             ->willReturn(null);
 
         $tpRatingProfile

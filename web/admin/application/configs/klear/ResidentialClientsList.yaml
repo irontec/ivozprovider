@@ -2,7 +2,7 @@
 #include conf.d/actions.yaml
 #include conf.d/documentationLink.yaml
 #include AdministratorsList.yaml
-#include TpRatingProfilesList.yaml
+#include RatingProfilesList.yaml
 #include OutgoingRoutingList.yaml
 #include KamUsersAddressList.yaml
 
@@ -31,7 +31,7 @@ production:
             residentialClientsEdit_screen: true
             kamUsersAddressList_screen: true
             administratorsList_screen: true
-            tpRatingProfilesList_screen: ${auth.brandFeatures.billing.enabled}
+            ratingProfilesList_screen: ${auth.brandFeatures.billing.enabled}
             outgoingRoutingList_screen: true
           dialogs:
             residentialClientsDel_dialog: false
@@ -285,19 +285,25 @@ production:
       title: _("Edit %s %2s", ngettext('Company admin', 'Company admins', 1), "[format| (%item%)]")
       filterField: Company
 
-    # tpRatingPlan:
-    <<: *tpRatingProfiles_screensLink
-    tpRatingProfilesList_screen:
-      <<: *tpRatingProfilesList_screenLink
+    # ratingPlan:
+    <<: *ratingProfiles_screensLink
+    ratingProfilesList_screen:
+      <<: *ratingProfilesList_screenLink
       filterField: company
+      forcedValues:
+        "self::routingTag": null
       parentOptionCustomizer:
         - recordCount
-    tpRatingProfilesNew_screen:
-      <<: *tpRatingProfilesNew_screenLink
+    ratingProfilesNew_screen:
+      <<: *ratingProfilesNew_screenLink
+      forcedValues:
+        "self::routingTag": null
       filterField: company
-    tpRatingProfilesEdit_screen:
-      <<: *tpRatingProfilesEdit_screenLink
+    ratingProfilesEdit_screen:
+      <<: *ratingProfilesEdit_screenLink
       filterField: company
+      forcedValues:
+        "self::routingTag": null
 
     # outgoingRouting
     <<: *outgoingRouting_screensLink
@@ -353,8 +359,8 @@ production:
       parentOptionCustomizer:
         - IvozProvider_Klear_Options_OptionsCustomizer
 
-    # tpRatingProfiles:
-    <<: *tpRatingProfiles_dialogsLink
+    # ratingProfiles:
+    <<: *ratingProfiles_dialogsLink
 
     # Administrators dialogs
     <<: *administrators_dialogsLink

@@ -1488,6 +1488,9 @@ msgstr "Enrutado sin entrada"
 msgid "No matching condition handler"
 msgstr "Tratamiento sin coincidencia"
 
+msgid "No routing tag"
+msgstr "Sin etiqueta de enrutado"
+
 msgid "None"
 msgstr "Ninguna"
 

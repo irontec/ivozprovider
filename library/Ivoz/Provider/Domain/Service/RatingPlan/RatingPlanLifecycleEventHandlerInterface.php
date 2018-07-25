@@ -3,7 +3,7 @@
 namespace Ivoz\Provider\Domain\Service\RatingPlan;
 
 use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface;
-use Ivoz\Provider\Domain\Service\LifecycleEventHandlerInterface;
+use Ivoz\Core\Domain\Service\LifecycleEventHandlerInterface;
 
 interface RatingPlanLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {

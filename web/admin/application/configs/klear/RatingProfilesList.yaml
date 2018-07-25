@@ -4,44 +4,44 @@
 production:
   main:
     module: klearMatrix
-    defaultScreen: tpRatingProfilesList_screen
-  screens: &tpRatingProfiles_screensLink
-    tpRatingProfilesList_screen: &tpRatingProfilesList_screenLink
+    defaultScreen: ratingProfilesList_screen
+  screens: &ratingProfiles_screensLink
+    ratingProfilesList_screen: &ratingProfilesList_screenLink
       controller: list
       pagination:
         items: 25
-      <<: *TpRatingProfiles
+      <<: *RatingProfiles
       class: ui-silk-money
       title: _("List of %s %2s", ngettext('Rating Profile', 'Rating Profiles', 0), "[format| (%parent%)]")
-      fields: &tpRatingProfiles_fieldsLink
+      fields: &ratingProfiles_fieldsLink
         order:
-          tag: true
-          name: true
-          description: true
+          activationTime: true
+          routingProfile: true
+          routingTag: true
         options:
           title: _("Options")
           screens:
-            tpRatingProfilesEdit_screen: true
+            ratingProfilesEdit_screen: true
           dialogs:
-            tpRatingProfilesDel_dialog: true
-          default: tpRatingProfilesEdit_screen
+            ratingProfilesDel_dialog: true
+          default: ratingProfilesEdit_screen
       options:
         title: _("Options")
         screens:
-          tpRatingProfilesNew_screen: true
+          ratingProfilesNew_screen: true
         dialogs:
-          tpRatingProfilesDel_dialog: true
+          ratingProfilesDel_dialog: true
           simulateCall_dialog: true
 
-    tpRatingProfilesNew_screen: &tpRatingProfilesNew_screenLink
-      <<: *TpRatingProfiles
+    ratingProfilesNew_screen: &ratingProfilesNew_screenLink
+      <<: *RatingProfiles
       controller: new
       class: ui-silk-money-add
       label: true
       multiInstance: true
       title: _("Add %s", ngettext('Rating Profile', 'Rating Profiles', 1), "[format| (%parent%)]")
       shortcutOption: N
-      fixedPositions: &ptpRatingProfilesFixedPositions_Link
+      fixedPositions: &ratingProfilesFixedPositions_Link
         group1:
           colsPerRow: 9
           fields:
@@ -49,18 +49,18 @@ production:
             name: 5
             description: 8
 
-    tpRatingProfilesEdit_screen: &tpRatingProfilesEdit_screenLink
-      <<: *TpRatingProfiles
+    ratingProfilesEdit_screen: &ratingProfilesEdit_screenLink
+      <<: *RatingProfiles
       controller: edit
       class: ui-silk-pencil
       label: false
       title: _("Edit %s %2s", ngettext('Rating Profile', 'Rating Profiles', 1), "[format| (%item%)]")
       fixedPositions:
-        <<: *ptpRatingProfilesFixedPositions_Link
+        <<: *ratingProfilesFixedPositions_Link
 
-  dialogs: &tpRatingProfiles_dialogsLink
-    tpRatingProfilesDel_dialog: &tpRatingProfilesDel_dialogLink
-      <<: *TpRatingProfiles
+  dialogs: &ratingProfiles_dialogsLink
+    ratingProfilesDel_dialog: &ratingProfilesDel_dialogLink
+      <<: *RatingProfiles
       controller: delete
       class: ui-silk-bin
       labelOption: false
@@ -71,7 +71,7 @@ production:
       labelOnList: 1
 
     simulateCall_dialog: &simulateCall_dialogLink
-      <<: *TpRatingProfiles
+      <<: *RatingProfiles
       module: default
       title: _("Simulate a call")
       label: false

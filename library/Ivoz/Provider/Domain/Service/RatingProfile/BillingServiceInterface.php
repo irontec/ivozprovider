@@ -1,6 +1,6 @@
 <?php
 
-namespace Ivoz\Cgr\Domain\Service\TpRatingProfile;
+namespace Ivoz\Provider\Domain\Service\RatingProfile;
 
 interface BillingServiceInterface
 {

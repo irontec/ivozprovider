@@ -27,10 +27,10 @@ class RemoveTpRatingProfile extends AbstractApiBasedService implements RemoveTpR
      */
     public function execute(TpRatingProfileInterface $tpRatingProfile)
     {
-        $company = $tpRatingProfile->getCompany();
-        $companyWasRemoved = is_null($company) || is_null($company->getId());
+        $ratingProfile = $tpRatingProfile->getRatingProfile();
+        $ratingProfileWasRemoved = is_null($ratingProfile) || is_null($ratingProfile->getId());
 
-        if (!$companyWasRemoved) {
+        if (!$ratingProfileWasRemoved) {
             $this->redisClient->scheduleFullReload();
             return;
         }

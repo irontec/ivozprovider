@@ -1,7 +1,7 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
 #include conf.d/documentationLink.yaml
-#include TpRatingProfilesList.yaml
+#include RatingProfilesList.yaml
 #include AdministratorsList.yaml
 #include KamUsersAddressList.yaml
 
@@ -30,7 +30,7 @@ production:
             retailClientsEdit_screen: true
             kamUsersAddressList_screen: true
             administratorsList_screen: true
-            tpRatingProfilesList_screen: ${auth.brandFeatures.billing.enabled}
+            ratingProfilesList_screen: ${auth.brandFeatures.billing.enabled}
           dialogs:
             retailClientsDel_dialog: false
             emulateCompany_dialog: true
@@ -238,17 +238,17 @@ production:
       filterField: Company
 
     # tpRatingPlan:
-    <<: *tpRatingProfiles_screensLink
-    tpRatingProfilesList_screen:
-      <<: *tpRatingProfilesList_screenLink
+    <<: *ratingProfiles_screensLink
+    ratingProfilesList_screen:
+      <<: *ratingProfilesList_screenLink
       filterField: company
       parentOptionCustomizer:
         - recordCount
-    tpRatingProfilesNew_screen:
-      <<: *tpRatingProfilesNew_screenLink
+    ratingProfilesNew_screen:
+      <<: *ratingProfilesNew_screenLink
       filterField: company
-    tpRatingProfilesEdit_screen:
-      <<: *tpRatingProfilesEdit_screenLink
+    ratingProfilesEdit_screen:
+      <<: *ratingProfilesEdit_screenLink
       filterField: company
 
     # kamUsersAddress:
@@ -300,8 +300,8 @@ production:
       description: _("Do you want to delete this %s?", ngettext('Retail admin', 'Retail admins', 1))
       message: _("%s successfully deleted.", ngettext('Retail admin', 'Retail admins', 1))
 
-    # tpRatingProfiles:
-    <<: *tpRatingProfiles_dialogsLink
+    # ratingProfiles:
+    <<: *ratingProfiles_dialogsLink
     # kamUsersAddress dialogs:
     <<: *kamUsersAddress_dialogsLink
 

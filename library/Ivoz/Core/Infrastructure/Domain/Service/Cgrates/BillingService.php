@@ -4,7 +4,7 @@ namespace Ivoz\Core\Infrastructure\Domain\Service\Cgrates;
 
 use Graze\GuzzleHttp\JsonRpc\Client;
 use Ivoz\Cgr\Domain\Model\TpRatingProfile\SimulatedCall;
-use Ivoz\Cgr\Domain\Service\TpRatingProfile\BillingServiceInterface;
+use Ivoz\Provider\Domain\Service\RatingProfile\BillingServiceInterface;
 use Ivoz\Core\Application\Service\EntityTools;
 
 class BillingService implements BillingServiceInterface

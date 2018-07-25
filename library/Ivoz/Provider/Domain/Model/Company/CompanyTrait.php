@@ -586,11 +586,11 @@ trait CompanyTrait
     /**
      * Add ratingProfile
      *
-     * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $ratingProfile
+     * @param \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile
      *
      * @return CompanyTrait
      */
-    public function addRatingProfile(\Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $ratingProfile)
+    public function addRatingProfile(\Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile)
     {
         $this->ratingProfiles->add($ratingProfile);
 
@@ -600,9 +600,9 @@ trait CompanyTrait
     /**
      * Remove ratingProfile
      *
-     * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $ratingProfile
+     * @param \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile
      */
-    public function removeRatingProfile(\Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $ratingProfile)
+    public function removeRatingProfile(\Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile)
     {
         $this->ratingProfiles->removeElement($ratingProfile);
     }
@@ -610,7 +610,7 @@ trait CompanyTrait
     /**
      * Replace ratingProfiles
      *
-     * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface[] $ratingProfiles
+     * @param \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface[] $ratingProfiles
      * @return self
      */
     public function replaceRatingProfiles(Collection $ratingProfiles)
@@ -644,7 +644,7 @@ trait CompanyTrait
     /**
      * Get ratingProfiles
      *
-     * @return \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface[]
+     * @return \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface[]
      */
     public function getRatingProfiles(Criteria $criteria = null)
     {

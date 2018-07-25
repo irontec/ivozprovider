@@ -1,13 +1,13 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Model\RoutingTag;
+namespace Ivoz\Provider\Domain\Model\RatingProfile;
 
 /**
- * RoutingTag
+ * RatingProfile
  */
-class RoutingTag extends RoutingTagAbstract implements RoutingTagInterface
+class RatingProfile extends RatingProfileAbstract implements RatingProfileInterface
 {
-    use RoutingTagTrait;
+    use RatingProfileTrait;
 
     /**
      * @codeCoverageIgnore
@@ -19,6 +19,7 @@ class RoutingTag extends RoutingTagAbstract implements RoutingTagInterface
     }
 
     /**
+     * Get id
      * @codeCoverageIgnore
      * @return integer
      */
@@ -26,6 +27,5 @@ class RoutingTag extends RoutingTagAbstract implements RoutingTagInterface
     {
         return $this->id;
     }
-
 }
 

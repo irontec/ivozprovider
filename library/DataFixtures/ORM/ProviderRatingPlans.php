@@ -33,7 +33,7 @@ class ProviderRatingPlans extends Fixture implements DependentFixtureInterface
         $item1->setBrand(
             $this->getReference('_reference_ProviderBrand1')
         );
-        $this->addReference('_reference_ProviderRatingPlans1', $item1);
+        $this->addReference('_reference_ProviderRatingPlan1', $item1);
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
@@ -46,7 +46,7 @@ class ProviderRatingPlans extends Fixture implements DependentFixtureInterface
         $item2->setBrand(
             $this->getReference('_reference_ProviderBrand1')
         );
-        $this->addReference('_reference_ProviderRatingPlans2', $item2);
+        $this->addReference('_reference_ProviderRatingPlan2', $item2);
         $this->sanitizeEntityValues($item2);
         $manager->persist($item2);
 

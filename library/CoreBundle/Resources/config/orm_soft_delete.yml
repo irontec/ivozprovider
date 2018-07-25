@@ -10,9 +10,11 @@ parameters:
       - Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHold
       - Ivoz\Provider\Domain\Model\Recording\Recording
       - Ivoz\Provider\Domain\Model\Fax\Fax
+      - Ivoz\Provider\Domain\Model\RatingProfile\RatingProfile
       - Ivoz\Cgr\Domain\Model\TpAccountAction\TpAccountAction
-      - Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfile
     Ivoz\Provider\Domain\Model\Fax\Fax:
       - Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOut
     Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup:
       - Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting
+    Ivoz\Provider\Domain\Model\RatingProfile\RatingProfile:
+      - Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfile
