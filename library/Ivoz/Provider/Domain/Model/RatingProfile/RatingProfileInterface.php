@@ -61,6 +61,22 @@ interface RatingProfileInterface extends LoggableEntityInterface
     public function getCompany();
 
     /**
+     * Set carrier
+     *
+     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier
+     *
+     * @return self
+     */
+    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier = null);
+
+    /**
+     * Get carrier
+     *
+     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+     */
+    public function getCarrier();
+
+    /**
      * Set ratingPlan
      *
      * @param \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan

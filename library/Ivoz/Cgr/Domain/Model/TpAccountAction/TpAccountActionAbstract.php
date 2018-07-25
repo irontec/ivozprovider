@@ -67,6 +67,11 @@ abstract class TpAccountActionAbstract
      */
     protected $company;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+     */
+    protected $carrier;
+
 
     use ChangelogTrait;
 
@@ -167,6 +172,7 @@ abstract class TpAccountActionAbstract
             ->setActionPlanTag($dto->getActionPlanTag())
             ->setActionTriggersTag($dto->getActionTriggersTag())
             ->setCompany($dto->getCompany())
+            ->setCarrier($dto->getCarrier())
         ;
 
         $self->sanitizeValues();
@@ -196,7 +202,8 @@ abstract class TpAccountActionAbstract
             ->setAllowNegative($dto->getAllowNegative())
             ->setDisabled($dto->getDisabled())
             ->setCreatedAt($dto->getCreatedAt())
-            ->setCompany($dto->getCompany());
+            ->setCompany($dto->getCompany())
+            ->setCarrier($dto->getCarrier());
 
 
 
@@ -220,7 +227,8 @@ abstract class TpAccountActionAbstract
             ->setAllowNegative(self::getAllowNegative())
             ->setDisabled(self::getDisabled())
             ->setCreatedAt(self::getCreatedAt())
-            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth));
+            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
+            ->setCarrier(\Ivoz\Provider\Domain\Model\Carrier\Carrier::entityToDto(self::getCarrier(), $depth));
     }
 
     /**
@@ -238,7 +246,8 @@ abstract class TpAccountActionAbstract
             'allow_negative' => self::getAllowNegative(),
             'disabled' => self::getDisabled(),
             'created_at' => self::getCreatedAt(),
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null
+            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
+            'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null
         ];
     }
 
@@ -515,6 +524,30 @@ abstract class TpAccountActionAbstract
     public function getCompany()
     {
         return $this->company;
+    }
+
+    /**
+     * Set carrier
+     *
+     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier
+     *
+     * @return self
+     */
+    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier)
+    {
+        $this->carrier = $carrier;
+
+        return $this;
+    }
+
+    /**
+     * Get carrier
+     *
+     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+     */
+    public function getCarrier()
+    {
+        return $this->carrier;
     }
 
 

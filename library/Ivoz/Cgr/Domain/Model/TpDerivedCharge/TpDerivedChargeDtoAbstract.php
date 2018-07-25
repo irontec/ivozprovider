@@ -1,6 +1,6 @@
 <?php
 
-namespace Ivoz\Cgr\Domain\Model\TpAccountAction;
+namespace Ivoz\Cgr\Domain\Model\TpDerivedCharge;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
@@ -10,7 +10,7 @@ use Ivoz\Core\Application\Model\DtoNormalizer;
 /**
  * @codeCoverageIgnore
  */
-abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
+abstract class TpDerivedChargeDtoAbstract implements DataTransferObjectInterface
 {
     /**
      * @var string
@@ -25,32 +25,47 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
+    private $direction = '*out';
+
+    /**
+     * @var string
+     */
     private $tenant;
 
     /**
      * @var string
      */
-    private $account;
+    private $category = 'call';
 
     /**
      * @var string
      */
-    private $actionPlanTag;
+    private $account = '*any';
 
     /**
      * @var string
      */
-    private $actionTriggersTag;
+    private $subject = '*any';
 
     /**
-     * @var boolean
+     * @var string
      */
-    private $allowNegative = 0;
+    private $runid = 'carrier';
 
     /**
-     * @var boolean
+     * @var string
      */
-    private $disabled = 0;
+    private $runFilters = 'carrier_id';
+
+    /**
+     * @var string
+     */
+    private $accountField = 'carrier_id';
+
+    /**
+     * @var string
+     */
+    private $subjectField = 'carrier_id';
 
     /**
      * @var \DateTime
@@ -63,14 +78,9 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
     private $id;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
+     * @var \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
      */
-    private $company;
-
-    /**
-     * @var \Ivoz\Provider\Domain\Model\Carrier\CarrierDto | null
-     */
-    private $carrier;
+    private $brand;
 
 
     use DtoNormalizer;
@@ -92,16 +102,18 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
         return [
             'tpid' => 'tpid',
             'loadid' => 'loadid',
+            'direction' => 'direction',
             'tenant' => 'tenant',
+            'category' => 'category',
             'account' => 'account',
-            'actionPlanTag' => 'actionPlanTag',
-            'actionTriggersTag' => 'actionTriggersTag',
-            'allowNegative' => 'allowNegative',
-            'disabled' => 'disabled',
+            'subject' => 'subject',
+            'runid' => 'runid',
+            'runFilters' => 'runFilters',
+            'accountField' => 'accountField',
+            'subjectField' => 'subjectField',
             'createdAt' => 'createdAt',
             'id' => 'id',
-            'companyId' => 'company',
-            'carrierId' => 'carrier'
+            'brandId' => 'brand'
         ];
     }
 
@@ -113,16 +125,18 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
         return [
             'tpid' => $this->getTpid(),
             'loadid' => $this->getLoadid(),
+            'direction' => $this->getDirection(),
             'tenant' => $this->getTenant(),
+            'category' => $this->getCategory(),
             'account' => $this->getAccount(),
-            'actionPlanTag' => $this->getActionPlanTag(),
-            'actionTriggersTag' => $this->getActionTriggersTag(),
-            'allowNegative' => $this->getAllowNegative(),
-            'disabled' => $this->getDisabled(),
+            'subject' => $this->getSubject(),
+            'runid' => $this->getRunid(),
+            'runFilters' => $this->getRunFilters(),
+            'accountField' => $this->getAccountField(),
+            'subjectField' => $this->getSubjectField(),
             'createdAt' => $this->getCreatedAt(),
             'id' => $this->getId(),
-            'company' => $this->getCompany(),
-            'carrier' => $this->getCarrier()
+            'brand' => $this->getBrand()
         ];
     }
 
@@ -131,8 +145,7 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
-        $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
-        $this->carrier = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Carrier\\Carrier', $this->getCarrierId());
+        $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
     }
 
     /**
@@ -184,6 +197,26 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
+     * @param string $direction
+     *
+     * @return static
+     */
+    public function setDirection($direction = null)
+    {
+        $this->direction = $direction;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDirection()
+    {
+        return $this->direction;
+    }
+
+    /**
      * @param string $tenant
      *
      * @return static
@@ -201,6 +234,26 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
     public function getTenant()
     {
         return $this->tenant;
+    }
+
+    /**
+     * @param string $category
+     *
+     * @return static
+     */
+    public function setCategory($category = null)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCategory()
+    {
+        return $this->category;
     }
 
     /**
@@ -224,13 +277,13 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $actionPlanTag
+     * @param string $subject
      *
      * @return static
      */
-    public function setActionPlanTag($actionPlanTag = null)
+    public function setSubject($subject = null)
     {
-        $this->actionPlanTag = $actionPlanTag;
+        $this->subject = $subject;
 
         return $this;
     }
@@ -238,19 +291,19 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string
      */
-    public function getActionPlanTag()
+    public function getSubject()
     {
-        return $this->actionPlanTag;
+        return $this->subject;
     }
 
     /**
-     * @param string $actionTriggersTag
+     * @param string $runid
      *
      * @return static
      */
-    public function setActionTriggersTag($actionTriggersTag = null)
+    public function setRunid($runid = null)
     {
-        $this->actionTriggersTag = $actionTriggersTag;
+        $this->runid = $runid;
 
         return $this;
     }
@@ -258,49 +311,69 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string
      */
-    public function getActionTriggersTag()
+    public function getRunid()
     {
-        return $this->actionTriggersTag;
+        return $this->runid;
     }
 
     /**
-     * @param boolean $allowNegative
+     * @param string $runFilters
      *
      * @return static
      */
-    public function setAllowNegative($allowNegative = null)
+    public function setRunFilters($runFilters = null)
     {
-        $this->allowNegative = $allowNegative;
+        $this->runFilters = $runFilters;
 
         return $this;
     }
 
     /**
-     * @return boolean
+     * @return string
      */
-    public function getAllowNegative()
+    public function getRunFilters()
     {
-        return $this->allowNegative;
+        return $this->runFilters;
     }
 
     /**
-     * @param boolean $disabled
+     * @param string $accountField
      *
      * @return static
      */
-    public function setDisabled($disabled = null)
+    public function setAccountField($accountField = null)
     {
-        $this->disabled = $disabled;
+        $this->accountField = $accountField;
 
         return $this;
     }
 
     /**
-     * @return boolean
+     * @return string
      */
-    public function getDisabled()
+    public function getAccountField()
     {
-        return $this->disabled;
+        return $this->accountField;
+    }
+
+    /**
+     * @param string $subjectField
+     *
+     * @return static
+     */
+    public function setSubjectField($subjectField = null)
+    {
+        $this->subjectField = $subjectField;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSubjectField()
+    {
+        return $this->subjectField;
     }
 
     /**
@@ -344,23 +417,23 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyDto $company
+     * @param \Ivoz\Provider\Domain\Model\Brand\BrandDto $brand
      *
      * @return static
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyDto $company = null)
+    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandDto $brand = null)
     {
-        $this->company = $company;
+        $this->brand = $brand;
 
         return $this;
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyDto
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto
      */
-    public function getCompany()
+    public function getBrand()
     {
-        return $this->company;
+        return $this->brand;
     }
 
     /**
@@ -368,67 +441,21 @@ abstract class TpAccountActionDtoAbstract implements DataTransferObjectInterface
      *
      * @return static
      */
-    public function setCompanyId($id)
+    public function setBrandId($id)
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Company\CompanyDto($id)
+            ? new \Ivoz\Provider\Domain\Model\Brand\BrandDto($id)
             : null;
 
-        return $this->setCompany($value);
+        return $this->setBrand($value);
     }
 
     /**
      * @return integer | null
      */
-    public function getCompanyId()
+    public function getBrandId()
     {
-        if ($dto = $this->getCompany()) {
-            return $dto->getId();
-        }
-
-        return null;
-    }
-
-    /**
-     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierDto $carrier
-     *
-     * @return static
-     */
-    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierDto $carrier = null)
-    {
-        $this->carrier = $carrier;
-
-        return $this;
-    }
-
-    /**
-     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierDto
-     */
-    public function getCarrier()
-    {
-        return $this->carrier;
-    }
-
-    /**
-     * @param integer $id | null
-     *
-     * @return static
-     */
-    public function setCarrierId($id)
-    {
-        $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Carrier\CarrierDto($id)
-            : null;
-
-        return $this->setCarrier($value);
-    }
-
-    /**
-     * @return integer | null
-     */
-    public function getCarrierId()
-    {
-        if ($dto = $this->getCarrier()) {
+        if ($dto = $this->getBrand()) {
             return $dto->getId();
         }
 

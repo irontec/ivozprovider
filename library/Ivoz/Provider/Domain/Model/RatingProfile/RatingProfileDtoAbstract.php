@@ -33,6 +33,11 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
     private $company;
 
     /**
+     * @var \Ivoz\Provider\Domain\Model\Carrier\CarrierDto | null
+     */
+    private $carrier;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto | null
      */
     private $ratingPlan;
@@ -64,6 +69,7 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
             'id' => 'id',
             'tpRatingProfileId' => 'tpRatingProfile',
             'companyId' => 'company',
+            'carrierId' => 'carrier',
             'ratingPlanId' => 'ratingPlan',
             'routingTagId' => 'routingTag'
         ];
@@ -79,6 +85,7 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
             'id' => $this->getId(),
             'tpRatingProfile' => $this->getTpRatingProfile(),
             'company' => $this->getCompany(),
+            'carrier' => $this->getCarrier(),
             'ratingPlan' => $this->getRatingPlan(),
             'routingTag' => $this->getRoutingTag()
         ];
@@ -91,6 +98,7 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
     {
         $this->tpRatingProfile = $transformer->transform('Ivoz\\Cgr\\Domain\\Model\\TpRatingProfile\\TpRatingProfile', $this->getTpRatingProfileId());
         $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
+        $this->carrier = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Carrier\\Carrier', $this->getCarrierId());
         $this->ratingPlan = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\RatingPlan\\RatingPlan', $this->getRatingPlanId());
         $this->routingTag = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\RoutingTag\\RoutingTag', $this->getRoutingTagId());
     }
@@ -229,6 +237,52 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
     public function getCompanyId()
     {
         if ($dto = $this->getCompany()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierDto $carrier
+     *
+     * @return static
+     */
+    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierDto $carrier = null)
+    {
+        $this->carrier = $carrier;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierDto
+     */
+    public function getCarrier()
+    {
+        return $this->carrier;
+    }
+
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setCarrierId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Carrier\CarrierDto($id)
+            : null;
+
+        return $this->setCarrier($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getCarrierId()
+    {
+        if ($dto = $this->getCarrier()) {
             return $dto->getId();
         }
 

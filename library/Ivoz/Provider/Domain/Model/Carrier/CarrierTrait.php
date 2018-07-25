@@ -28,6 +28,11 @@ trait CarrierTrait
      */
     protected $servers;
 
+    /**
+     * @var Collection
+     */
+    protected $ratingProfiles;
+
 
     /**
      * Constructor
@@ -37,6 +42,7 @@ trait CarrierTrait
         parent::__construct(...func_get_args());
         $this->outgoingRoutings = new ArrayCollection();
         $this->servers = new ArrayCollection();
+        $this->ratingProfiles = new ArrayCollection();
     }
 
     /**
@@ -56,6 +62,10 @@ trait CarrierTrait
 
         if ($dto->getServers()) {
             $self->replaceServers($dto->getServers());
+        }
+
+        if ($dto->getRatingProfiles()) {
+            $self->replaceRatingProfiles($dto->getRatingProfiles());
         }
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -80,6 +90,9 @@ trait CarrierTrait
         }
         if ($dto->getServers()) {
             $this->replaceServers($dto->getServers());
+        }
+        if ($dto->getRatingProfiles()) {
+            $this->replaceRatingProfiles($dto->getRatingProfiles());
         }
         return $this;
     }
@@ -248,6 +261,78 @@ trait CarrierTrait
         }
 
         return $this->servers->toArray();
+    }
+
+    /**
+     * Add ratingProfile
+     *
+     * @param \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile
+     *
+     * @return CarrierTrait
+     */
+    public function addRatingProfile(\Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile)
+    {
+        $this->ratingProfiles->add($ratingProfile);
+
+        return $this;
+    }
+
+    /**
+     * Remove ratingProfile
+     *
+     * @param \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile
+     */
+    public function removeRatingProfile(\Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile)
+    {
+        $this->ratingProfiles->removeElement($ratingProfile);
+    }
+
+    /**
+     * Replace ratingProfiles
+     *
+     * @param \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface[] $ratingProfiles
+     * @return self
+     */
+    public function replaceRatingProfiles(Collection $ratingProfiles)
+    {
+        $updatedEntities = [];
+        $fallBackId = -1;
+        foreach ($ratingProfiles as $entity) {
+            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
+            $updatedEntities[$index] = $entity;
+            $entity->setCarrier($this);
+        }
+        $updatedEntityKeys = array_keys($updatedEntities);
+
+        foreach ($this->ratingProfiles as $key => $entity) {
+            $identity = $entity->getId();
+            if (in_array($identity, $updatedEntityKeys)) {
+                $this->ratingProfiles->set($key, $updatedEntities[$identity]);
+            } else {
+                $this->ratingProfiles->remove($key);
+            }
+            unset($updatedEntities[$identity]);
+        }
+
+        foreach ($updatedEntities as $entity) {
+            $this->addRatingProfile($entity);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get ratingProfiles
+     *
+     * @return \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface[]
+     */
+    public function getRatingProfiles(Criteria $criteria = null)
+    {
+        if (!is_null($criteria)) {
+            return $this->ratingProfiles->matching($criteria)->toArray();
+        }
+
+        return $this->ratingProfiles->toArray();
     }
 
 
