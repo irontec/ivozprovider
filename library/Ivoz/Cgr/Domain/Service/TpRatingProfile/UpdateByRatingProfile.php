@@ -39,8 +39,15 @@ class UpdateByRatingProfile implements RatingProfileLifecycleEventHandlerInterfa
             ? TpRatingProfile::createDto()
             : $this->entityTools->entityToDto($tpRatingProfile);
 
-        $compay = $ratingProfile->getCompany();
-        $brand = $compay->getBrand();
+        $company = $ratingProfile->getCompany();
+        $carrier = $ratingProfile->getCarrier();
+
+        if ($company) {
+            $brand = $company->getBrand();
+        } else {
+            $brand = $carrier->getBrand();
+        }
+
         $ratingPlan = $ratingProfile->getRatingPlan();
         $routingTag = $ratingProfile->getRoutingTag();
 
@@ -51,17 +58,28 @@ class UpdateByRatingProfile implements RatingProfileLifecycleEventHandlerInterfa
             ->setRatingPlanTag($ratingPlan->getTag())
             ->setRatingProfileId($ratingProfile->getId());
 
-        if ($routingTag) {
-            $tpRatingProfileDto->setSubject(
-                sprintf("c%drt%d",
-                    $compay->getId(),
-                    $routingTag->getId()
-                )
-            );
-        } else {
+
+        if ($company) {
             $tpRatingProfileDto->setSubject(
                 sprintf("c%d",
-                    $compay->getId()
+                    $company->getId()
+                )
+            );
+        }
+
+        if ($carrier) {
+            $tpRatingProfileDto->setSubject(
+                sprintf("cr%d",
+                    $carrier->getId()
+                )
+            );
+        }
+
+        if ($routingTag) {
+            $tpRatingProfileDto->setSubject(
+                sprintf("%srt%d",
+                    $tpRatingProfileDto->getSubject(),
+                    $routingTag->getId()
                 )
             );
         }
