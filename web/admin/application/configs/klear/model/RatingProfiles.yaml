@@ -51,7 +51,8 @@ production:
           fieldName:
             fields:
               - name
-            template: '%name%'
+              - tag
+            template: '%name% (%tag%)'
           order:
             RoutingTag.name: asc
         'null': _("No routing tag")
