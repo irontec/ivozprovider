@@ -81,6 +81,12 @@ production:
       source:
         class: IvozProvider_Klear_Ghost_TrunksCdr
         method: getDuration
+    cost:
+      title: _('Cost')
+      type: ghost
+      source:
+        class: IvozProvider_Klear_Ghost_TrunksCdr
+        method: getCost
 staging:
   _extends: production
 testing:

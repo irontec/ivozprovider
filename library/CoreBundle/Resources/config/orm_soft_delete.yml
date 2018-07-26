@@ -12,6 +12,9 @@ parameters:
       - Ivoz\Provider\Domain\Model\Fax\Fax
       - Ivoz\Provider\Domain\Model\RatingProfile\RatingProfile
       - Ivoz\Cgr\Domain\Model\TpAccountAction\TpAccountAction
+    Ivoz\Provider\Domain\Model\Carrier\Carrier:
+      - Ivoz\Provider\Domain\Model\RatingProfile\RatingProfile
+      - Ivoz\Cgr\Domain\Model\TpAccountAction\TpAccountAction
     Ivoz\Provider\Domain\Model\Fax\Fax:
       - Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOut
     Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup:

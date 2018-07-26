@@ -24,7 +24,19 @@ Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileAbstract:
       joinColumns:
         companyId:
           referencedColumnName: id
-          nullable: false
+          nullable: true
+          onDelete: cascade
+      orphanRemoval: false
+    carrier:
+      targetEntity: \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: ratingProfiles
+      joinColumns:
+        carrierId:
+          referencedColumnName: id
+          nullable: true
           onDelete: cascade
       orphanRemoval: false
     ratingPlan:

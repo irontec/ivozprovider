@@ -155,5 +155,36 @@ interface CarrierInterface extends LoggableEntityInterface
      */
     public function getServers(\Doctrine\Common\Collections\Criteria $criteria = null);
 
+    /**
+     * Add ratingProfile
+     *
+     * @param \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile
+     *
+     * @return CarrierTrait
+     */
+    public function addRatingProfile(\Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile);
+
+    /**
+     * Remove ratingProfile
+     *
+     * @param \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile
+     */
+    public function removeRatingProfile(\Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile);
+
+    /**
+     * Replace ratingProfiles
+     *
+     * @param \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface[] $ratingProfiles
+     * @return self
+     */
+    public function replaceRatingProfiles(Collection $ratingProfiles);
+
+    /**
+     * Get ratingProfiles
+     *
+     * @return \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface[]
+     */
+    public function getRatingProfiles(\Doctrine\Common\Collections\Criteria $criteria = null);
+
 }
 

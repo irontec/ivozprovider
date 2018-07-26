@@ -2,6 +2,7 @@
 #include conf.d/actions.yaml
 #include conf.d/documentationLink.yaml
 #include CarrierServersList.yaml
+#include RatingProfilesList.yaml
 
 production:
   main:
@@ -26,6 +27,7 @@ production:
           screens:
             carriersEdit_screen: true
             carrierServersList_screen: true
+            ratingProfilesList_screen: true
           dialogs:
             carriersDel_dialog: true
           default: carriersEdit_screen
@@ -99,6 +101,29 @@ production:
       <<: *carrierServersEdit_screenLink
       filterField: Carrier
 
+    # Rating Profiles (call cost)
+    <<: *ratingProfiles_screensLink
+    ratingProfilesList_screen:
+      <<: *ratingProfilesList_screenLink
+      filterField: carrier
+      forcedValues:
+        "self::routingTag": null
+        "self::company": null
+      parentOptionCustomizer:
+        - recordCount
+    ratingProfilesNew_screen:
+      <<: *ratingProfilesNew_screenLink
+      filterField: carrier
+      forcedValues:
+        "self::routingTag": null
+        "self::company": null
+    ratingProfilesEdit_screen:
+      <<: *ratingProfilesEdit_screenLink
+      filterField: carrier
+      forcedValues:
+        "self::routingTag": null
+        "self::company": null
+
   dialogs: &carriers_dialosgLink
     carriersDel_dialog: &carriersDel_dialogLink
       <<: *Carriers
@@ -113,6 +138,11 @@ production:
 
     # Carrier Servers dialogs
     <<: *carrierServers_dialogsLink
+
+    # Rating Profiles dialogs
+    <<: *ratingProfiles_dialogsLink
+    <<: *simulateCall_dialogLink
+
 
 staging:
   _extends: production

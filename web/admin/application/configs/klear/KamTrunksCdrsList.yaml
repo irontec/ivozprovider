@@ -39,6 +39,7 @@ production:
           callee: true
           duration: true
           price: true
+          cost: true
           carrier: true
           invoice: true
     kamTrunksCdrsView_screen: &kamTrunksCdrsView_screenLink
@@ -57,6 +58,7 @@ production:
           callee: true
           duration: true
           price: true
+          cost: true
           carrier: true
           invoice: true
       fixedPositions:
@@ -74,6 +76,7 @@ production:
           colsPerRow: 12
           fields:
             price: 6
+            cost: 6
             carrier: 6
             direction: 6
             invoice: 6

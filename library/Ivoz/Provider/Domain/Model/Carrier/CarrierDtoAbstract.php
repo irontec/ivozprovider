@@ -52,6 +52,11 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
      */
     private $servers = null;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileDto[] | null
+     */
+    private $ratingProfiles = null;
+
 
     use DtoNormalizer;
 
@@ -92,7 +97,8 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
             'brand' => $this->getBrand(),
             'transformationRuleSet' => $this->getTransformationRuleSet(),
             'outgoingRoutings' => $this->getOutgoingRoutings(),
-            'servers' => $this->getServers()
+            'servers' => $this->getServers(),
+            'ratingProfiles' => $this->getRatingProfiles()
         ];
     }
 
@@ -125,6 +131,17 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
             }
         }
 
+        if (!is_null($this->ratingProfiles)) {
+            $items = $this->getRatingProfiles();
+            $this->ratingProfiles = [];
+            foreach ($items as $item) {
+                $this->ratingProfiles[] = $transformer->transform(
+                    'Ivoz\\Provider\\Domain\\Model\\RatingProfile\\RatingProfile',
+                    $item->getId() ?? $item
+                );
+            }
+        }
+
     }
 
     /**
@@ -139,6 +156,10 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
         $this->servers = $transformer->transform(
             'Ivoz\\Provider\\Domain\\Model\\CarrierServer\\CarrierServer',
             $this->servers
+        );
+        $this->ratingProfiles = $transformer->transform(
+            'Ivoz\\Provider\\Domain\\Model\\RatingProfile\\RatingProfile',
+            $this->ratingProfiles
         );
     }
 
@@ -352,6 +373,26 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     public function getServers()
     {
         return $this->servers;
+    }
+
+    /**
+     * @param array $ratingProfiles
+     *
+     * @return static
+     */
+    public function setRatingProfiles($ratingProfiles = null)
+    {
+        $this->ratingProfiles = $ratingProfiles;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getRatingProfiles()
+    {
+        return $this->ratingProfiles;
     }
 }
 

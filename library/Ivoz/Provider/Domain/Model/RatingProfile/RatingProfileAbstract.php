@@ -29,6 +29,11 @@ abstract class RatingProfileAbstract
     protected $company;
 
     /**
+     * @var \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+     */
+    protected $carrier;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface
      */
     protected $ratingPlan;
@@ -117,6 +122,7 @@ abstract class RatingProfileAbstract
 
         $self
             ->setCompany($dto->getCompany())
+            ->setCarrier($dto->getCarrier())
             ->setRatingPlan($dto->getRatingPlan())
             ->setRoutingTag($dto->getRoutingTag())
         ;
@@ -141,6 +147,7 @@ abstract class RatingProfileAbstract
         $this
             ->setActivationTime($dto->getActivationTime())
             ->setCompany($dto->getCompany())
+            ->setCarrier($dto->getCarrier())
             ->setRatingPlan($dto->getRatingPlan())
             ->setRoutingTag($dto->getRoutingTag());
 
@@ -159,6 +166,7 @@ abstract class RatingProfileAbstract
         return self::createDto()
             ->setActivationTime(self::getActivationTime())
             ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
+            ->setCarrier(\Ivoz\Provider\Domain\Model\Carrier\Carrier::entityToDto(self::getCarrier(), $depth))
             ->setRatingPlan(\Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan::entityToDto(self::getRatingPlan(), $depth))
             ->setRoutingTag(\Ivoz\Provider\Domain\Model\RoutingTag\RoutingTag::entityToDto(self::getRoutingTag(), $depth));
     }
@@ -171,6 +179,7 @@ abstract class RatingProfileAbstract
         return [
             'activationTime' => self::getActivationTime(),
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
+            'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null,
             'ratingPlanId' => self::getRatingPlan() ? self::getRatingPlan()->getId() : null,
             'routingTagId' => self::getRoutingTag() ? self::getRoutingTag()->getId() : null
         ];
@@ -255,6 +264,30 @@ abstract class RatingProfileAbstract
     public function getCompany()
     {
         return $this->company;
+    }
+
+    /**
+     * Set carrier
+     *
+     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier
+     *
+     * @return self
+     */
+    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier = null)
+    {
+        $this->carrier = $carrier;
+
+        return $this;
+    }
+
+    /**
+     * Get carrier
+     *
+     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+     */
+    public function getCarrier()
+    {
+        return $this->carrier;
     }
 
     /**
