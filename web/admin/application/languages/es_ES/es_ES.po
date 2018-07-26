@@ -1647,9 +1647,6 @@ msgstr "Patrón"
 msgid "Pdf file"
 msgstr "Fichero PDF"
 
-msgid "Peering contract id"
-msgstr "Contrato de Peering"
-
 msgid "Penalty"
 msgstr "Prioridad"
 

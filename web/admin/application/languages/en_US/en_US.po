@@ -1627,9 +1627,6 @@ msgstr "Pattern"
 msgid "Pdf file"
 msgstr "Pdf file"
 
-msgid "Peering contract id"
-msgstr "Peering Contract"
-
 msgid "Penalty"
 msgstr "Penalty"
 

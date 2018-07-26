@@ -42,7 +42,7 @@ production:
             Brand.name: asc
         'null': _("Unassigned")
     carrier:
-      title: _('Peering contract id')
+      title: ngettext('Carrier', 'Carriers', 1)
       type: select
       source:
         data: mapper
