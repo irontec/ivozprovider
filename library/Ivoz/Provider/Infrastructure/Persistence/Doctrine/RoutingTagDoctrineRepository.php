@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface;
 use Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagRepository;
 use Ivoz\Provider\Domain\Model\RoutingTag\RoutingTag;
 use Symfony\Bridge\Doctrine\RegistryInterface;
@@ -18,5 +19,23 @@ class RoutingTagDoctrineRepository extends ServiceEntityRepository implements Ro
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, RoutingTag::class);
+    }
+
+    /**
+     * @param int $companyId
+     * @return RoutingTagInterface[]
+     */
+    public function findByCompanyId(int $companyId)
+    {
+        $qb = $this->createQueryBuilder('self');
+        $query = $qb
+            ->select('self')
+            ->innerJoin('self.relCompanies', 'companyRelRoutingTag')
+            ->where(
+                $qb->expr()->eq('companyRelRoutingTag.company', $companyId)
+            )
+            ->getQuery();
+
+        return $query->getResult();
     }
 }
