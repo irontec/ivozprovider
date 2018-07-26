@@ -47,7 +47,7 @@ production:
         data: mapper
         config:
           entity: \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTag
-          filterClass: IvozProvider_Klear_Filter_Brand
+          filterClass: IvozProvider_Klear_Filter_RouteTag
           fieldName:
             fields:
               - name
