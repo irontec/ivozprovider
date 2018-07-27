@@ -52,6 +52,11 @@ class LoadTpRatingProfile extends AbstractApiBasedService implements LoadTpRatin
             ->getActivationTime()
             ->format('Y-m-d\TH:i:s\Z');
 
+        $cdrStatQueueIds = "";
+        if (!is_null($tpRatingProfile->getCdrStatQueueIds())) {
+            $cdrStatQueueIds = $tpRatingProfile->getCdrStatQueueIds();
+        }
+
         $payload = [
             'TPid' => '',
             'LoadId' => '',
@@ -64,7 +69,7 @@ class LoadTpRatingProfile extends AbstractApiBasedService implements LoadTpRatin
                     'ActivationTime' => $activationTime,
                     'RatingPlanId' => $tpRatingProfile->getRatingPlanTag(),
                     'FallbackSubjects' => '',
-                    'CdrStatQueueIds' => ''
+                    'CdrStatQueueIds' => $cdrStatQueueIds
                 ]
             ]
         ];
