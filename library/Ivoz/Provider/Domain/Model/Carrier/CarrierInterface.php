@@ -202,5 +202,36 @@ interface CarrierInterface extends LoggableEntityInterface
      */
     public function getRatingProfiles(\Doctrine\Common\Collections\Criteria $criteria = null);
 
+    /**
+     * Add tpCdrStat
+     *
+     * @param \Ivoz\Cgr\Domain\Model\TpCdrStat\TpCdrStatInterface $tpCdrStat
+     *
+     * @return CarrierTrait
+     */
+    public function addTpCdrStat(\Ivoz\Cgr\Domain\Model\TpCdrStat\TpCdrStatInterface $tpCdrStat);
+
+    /**
+     * Remove tpCdrStat
+     *
+     * @param \Ivoz\Cgr\Domain\Model\TpCdrStat\TpCdrStatInterface $tpCdrStat
+     */
+    public function removeTpCdrStat(\Ivoz\Cgr\Domain\Model\TpCdrStat\TpCdrStatInterface $tpCdrStat);
+
+    /**
+     * Replace tpCdrStats
+     *
+     * @param \Ivoz\Cgr\Domain\Model\TpCdrStat\TpCdrStatInterface[] $tpCdrStats
+     * @return self
+     */
+    public function replaceTpCdrStats(Collection $tpCdrStats);
+
+    /**
+     * Get tpCdrStats
+     *
+     * @return \Ivoz\Cgr\Domain\Model\TpCdrStat\TpCdrStatInterface[]
+     */
+    public function getTpCdrStats(\Doctrine\Common\Collections\Criteria $criteria = null);
+
 }
 
