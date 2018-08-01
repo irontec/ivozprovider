@@ -28,6 +28,20 @@ interface DestinationRateInterface extends LoggableEntityInterface
     public function getCgrDestinationsTag();
 
     /**
+     * Ensure Valid connectFee format
+     *
+     * @inheritdoc
+     */
+    public function setConnectFee($connectFee);
+
+    /**
+     * Ensure Valid connectFee format
+     *
+     * @inheritdoc
+     */
+    public function setCost($cost);
+
+    /**
      * Ensure Group Interval Start has seconds suffix
      *
      * @inheritdoc
@@ -42,29 +56,11 @@ interface DestinationRateInterface extends LoggableEntityInterface
     public function setRateIncrement($rateIncrement);
 
     /**
-     * Set cost
-     *
-     * @param string $cost
-     *
-     * @return self
-     */
-    public function setCost($cost);
-
-    /**
      * Get cost
      *
      * @return string
      */
     public function getCost();
-
-    /**
-     * Set connectFee
-     *
-     * @param string $connectFee
-     *
-     * @return self
-     */
-    public function setConnectFee($connectFee);
 
     /**
      * Get connectFee

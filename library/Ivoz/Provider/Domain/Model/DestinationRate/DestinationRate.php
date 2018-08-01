@@ -1,6 +1,7 @@
 <?php
 
 namespace Ivoz\Provider\Domain\Model\DestinationRate;
+use Assert\Assertion;
 
 /**
  * DestinationRate
@@ -51,6 +52,31 @@ class DestinationRate extends DestinationRateAbstract implements DestinationRate
     {
         return $this->getDestination()->getCgrTag();
     }
+
+    /**
+     * Ensure Valid connectFee format
+     *
+     * @inheritdoc
+     */
+    public function setConnectFee($connectFee)
+    {
+        Assertion::regex($connectFee, '/^[0-9]{1,6}[.]{0,1}[0-9]*$/');
+
+        return parent::setConnectFee($connectFee);
+    }
+
+    /**
+     * Ensure Valid connectFee format
+     *
+     * @inheritdoc
+     */
+    public function setCost($cost)
+    {
+        Assertion::regex($cost, '/^[0-9]{1,6}[.]{0,1}[0-9]*$/');
+
+        return parent::setCost($cost);
+    }
+
 
     /**
      * Ensure Group Interval Start has seconds suffix

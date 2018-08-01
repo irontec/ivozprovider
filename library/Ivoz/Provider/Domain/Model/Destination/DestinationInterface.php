@@ -14,18 +14,16 @@ interface DestinationInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * Validate prefix comes in E.164 format
+     *
+     * @inheritdoc
+     */
+    public function setPrefix($prefix);
+
+    /**
      * @return string
      */
     public function getCgrTag();
-
-    /**
-     * Set prefix
-     *
-     * @param string $prefix
-     *
-     * @return self
-     */
-    public function setPrefix($prefix);
 
     /**
      * Get prefix

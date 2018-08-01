@@ -1,6 +1,7 @@
 <?php
 
 namespace Ivoz\Provider\Domain\Model\Destination;
+use Assert\Assertion;
 
 /**
  * Destination
@@ -27,6 +28,19 @@ class Destination extends DestinationAbstract implements DestinationInterface
     {
         return $this->id;
     }
+
+    /**
+     * Validate prefix comes in E.164 format
+     *
+     * @inheritdoc
+     */
+    public function setPrefix($prefix)
+    {
+        Assertion::regex($prefix, '/^\\+[0-9]+$/');
+
+        return parent::setPrefix($prefix);
+    }
+
 
 
     /**
