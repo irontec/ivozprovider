@@ -1,0 +1,80 @@
+production:
+  entity: Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroup
+  fields: 
+    id:
+      title: ngettext('Id', 'Ids', 1)
+      required: false 
+    name:
+      title: _('Name')
+      type: text
+      isMultilang: true
+      trim: both
+      required: true
+      maxLength: 55
+      default: true
+    description:
+      title: _('Description')
+      type: text
+      isMultilang: true
+      trim: both
+      maxLength: 255
+    brand:
+      title: ngettext('Brand', 'Brands', 1)
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Brand\Brand
+          fieldName: 
+            fields: 
+              - name
+            template: '%name%'
+          order:
+            Brand.name: asc
+    file:
+      title: _('Imported file')
+      type: file
+      source:
+        data: fso
+        size_limit: 20M
+        options:
+          hiddenName: false
+          download:
+            external: true
+            type: command
+            target: destinationRateGroupsFileDownload_command
+            icon: ui-silk-bullet-disk
+            title: _("Download file")
+            onNull: hide
+          delete:
+            type: setNullFso
+            icon: ui-silk-bin
+            title: _("Delete file")
+            onNull: hide
+      options:
+        commands:
+          destinationRateGroupsFileDownload_command: true
+    status:
+      title: _('Importer status')
+      type: select
+      readonly: true
+      source:
+        data: inline
+        values:
+          'waiting':
+            title: _("Waiting")
+          'inProgress':
+            title: _("In progress")
+          'imported':
+            title: _("Imported")
+          'error':
+            title: _("Error")
+staging: 
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

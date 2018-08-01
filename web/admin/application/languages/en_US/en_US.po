@@ -531,7 +531,9 @@ msgid "Description"
 msgstr "Description"
 
 msgid "Destination"
-msgstr "Destination"
+msgid_plural "Destinations"
+msgstr[0] "Destination"
+msgstr[1] "Destinations"
 
 msgid "Destination IP address"
 msgstr "Destination IP address"
@@ -540,6 +542,11 @@ msgid "Destination rate"
 msgid_plural "Destination rates"
 msgstr[0] "Destination rate"
 msgstr[1] "Destination rates"
+
+msgid "Destination rate group"
+msgid_plural "Destination rate groups"
+msgstr[0] "Destination rate group"
+msgstr[1] "Destination rate groups"
 
 msgid "Destination rate not found"
 msgstr "Destination rate not found"
@@ -2107,9 +2114,6 @@ msgstr "Tag"
 
 msgid "Target"
 msgstr "Target"
-
-msgid "Target pattern"
-msgstr "Target pattern"
 
 msgid "Target type"
 msgstr "Target type"

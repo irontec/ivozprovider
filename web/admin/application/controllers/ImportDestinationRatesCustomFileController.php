@@ -1,8 +1,9 @@
 <?php
 
-use \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRate;
+use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroup;
+use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupDto;
 
-class ImportTpDestinationRatesCustomFileController extends Zend_Controller_Action
+class ImportDestinationRatesCustomFileController extends Zend_Controller_Action
 {
     protected $_mainRouter;
     protected $_item;
@@ -330,13 +331,13 @@ class ImportTpDestinationRatesCustomFileController extends Zend_Controller_Actio
         /** @var \Ivoz\Core\Application\Service\DataGateway $dataGateway */
         $dataGateway = Zend_Registry::get('data_gateway');
 
-        /** @var \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateDto $destinationRateDto */
-        $destinationRateDto = $dataGateway->find(
-            DestinationRate::class,
+        /** @var DestinationRateGroupDto $destinationRateGroupDto */
+        $destinationRateGroupDto = $dataGateway->find(
+            DestinationRateGroup::class,
             $this->getRequest()->getParam("pk")
         );
 
-        if (!$destinationRateDto) {
+        if (!$destinationRateGroupDto) {
             throw new \Exception('Destination rate not found');
         }
 
@@ -347,7 +348,7 @@ class ImportTpDestinationRatesCustomFileController extends Zend_Controller_Actio
         $importerArguments["scape"] = $this->_scape;
         $importerArguments["columns"] = $this->getColumns();
 
-        $destinationRateDto
+        $destinationRateGroupDto
             ->setFilePath(
                 $this->getRequest()->getParam('filePath')
             )
@@ -359,8 +360,8 @@ class ImportTpDestinationRatesCustomFileController extends Zend_Controller_Actio
             );
 
         $dataGateway->update(
-            DestinationRate::class,
-            $destinationRateDto
+            DestinationRateGroup::class,
+            $destinationRateGroupDto
         );
 
         $mess = $this->_helper->translate("Import process enqueued");
