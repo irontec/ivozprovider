@@ -1,6 +1,6 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Model\DestinationRate;
+namespace Ivoz\Provider\Domain\Model\DestinationRateGroup;
 
 use Assert\Assertion;
 use Ivoz\Core\Domain\Model\EntityInterface;

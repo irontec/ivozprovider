@@ -117,16 +117,6 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
      */
     private $carrier;
 
-    /**
-     * @var \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationDto | null
-     */
-    private $tpDestination;
-
-    /**
-     * @var \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateDto | null
-     */
-    private $destinationRate;
-
 
     use DtoNormalizer;
 
@@ -165,9 +155,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
             'invoiceId' => 'invoice',
             'brandId' => 'brand',
             'companyId' => 'company',
-            'carrierId' => 'carrier',
-            'tpDestinationId' => 'tpDestination',
-            'destinationRateId' => 'destinationRate'
+            'carrierId' => 'carrier'
         ];
     }
 
@@ -197,9 +185,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
             'invoice' => $this->getInvoice(),
             'brand' => $this->getBrand(),
             'company' => $this->getCompany(),
-            'carrier' => $this->getCarrier(),
-            'tpDestination' => $this->getTpDestination(),
-            'destinationRate' => $this->getDestinationRate()
+            'carrier' => $this->getCarrier()
         ];
     }
 
@@ -212,8 +198,6 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
         $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
         $this->carrier = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Carrier\\Carrier', $this->getCarrierId());
-        $this->tpDestination = $transformer->transform('Ivoz\\Cgr\\Domain\\Model\\TpDestination\\TpDestination', $this->getTpDestinationId());
-        $this->destinationRate = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\DestinationRate\\DestinationRate', $this->getDestinationRateId());
     }
 
     /**
@@ -742,98 +726,6 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     public function getCarrierId()
     {
         if ($dto = $this->getCarrier()) {
-            return $dto->getId();
-        }
-
-        return null;
-    }
-
-    /**
-     * @param \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationDto $tpDestination
-     *
-     * @return static
-     */
-    public function setTpDestination(\Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationDto $tpDestination = null)
-    {
-        $this->tpDestination = $tpDestination;
-
-        return $this;
-    }
-
-    /**
-     * @return \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationDto
-     */
-    public function getTpDestination()
-    {
-        return $this->tpDestination;
-    }
-
-    /**
-     * @param integer $id | null
-     *
-     * @return static
-     */
-    public function setTpDestinationId($id)
-    {
-        $value = !is_null($id)
-            ? new \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationDto($id)
-            : null;
-
-        return $this->setTpDestination($value);
-    }
-
-    /**
-     * @return integer | null
-     */
-    public function getTpDestinationId()
-    {
-        if ($dto = $this->getTpDestination()) {
-            return $dto->getId();
-        }
-
-        return null;
-    }
-
-    /**
-     * @param \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateDto $destinationRate
-     *
-     * @return static
-     */
-    public function setDestinationRate(\Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateDto $destinationRate = null)
-    {
-        $this->destinationRate = $destinationRate;
-
-        return $this;
-    }
-
-    /**
-     * @return \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateDto
-     */
-    public function getDestinationRate()
-    {
-        return $this->destinationRate;
-    }
-
-    /**
-     * @param integer $id | null
-     *
-     * @return static
-     */
-    public function setDestinationRateId($id)
-    {
-        $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateDto($id)
-            : null;
-
-        return $this->setDestinationRate($value);
-    }
-
-    /**
-     * @return integer | null
-     */
-    public function getDestinationRateId()
-    {
-        if ($dto = $this->getDestinationRate()) {
             return $dto->getId();
         }
 

@@ -2,167 +2,154 @@
 
 namespace Ivoz\Provider\Domain\Model\DestinationRate;
 
-use Ivoz\Core\Domain\Model\EntityInterface;
-use Doctrine\Common\Collections\Collection;
+use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface DestinationRateInterface extends EntityInterface
+interface DestinationRateInterface extends LoggableEntityInterface
 {
     /**
+     * @codeCoverageIgnore
      * @return array
      */
-    public function getFileObjects();
+    public function getChangeSet();
 
     /**
-     * Add TempFile and set status to pending
-     *
-     * @param $fldName
-     * @param TempFile $file
+     * @return string
      */
-    public function addTmpFile($fldName, \Ivoz\Core\Domain\Service\TempFile $file);
+    public function getCgrTag();
 
     /**
-     * Set tag
+     * @return string
+     */
+    public function getCgrRatesTag();
+
+    /**
+     * @return string
+     */
+    public function getCgrDestinationsTag();
+
+    /**
+     * Ensure Group Interval Start has seconds suffix
      *
-     * @param string $tag
+     * @inheritdoc
+     */
+    public function setGroupIntervalStart($groupIntervalStart);
+
+    /**
+     * Ensure Rating Increment has seconds suffix
+     *
+     * @inheritdoc
+     */
+    public function setRateIncrement($rateIncrement);
+
+    /**
+     * Set cost
+     *
+     * @param string $cost
      *
      * @return self
      */
-    public function setTag($tag = null);
+    public function setCost($cost);
 
     /**
-     * Get tag
+     * Get cost
      *
      * @return string
      */
-    public function getTag();
+    public function getCost();
 
     /**
-     * Set status
+     * Set connectFee
      *
-     * @param string $status
+     * @param string $connectFee
      *
      * @return self
      */
-    public function setStatus($status = null);
+    public function setConnectFee($connectFee);
 
     /**
-     * Get status
+     * Get connectFee
      *
      * @return string
      */
-    public function getStatus();
+    public function getConnectFee();
 
     /**
-     * Set brand
+     * Get rateIncrement
      *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
+     * @return string
+     */
+    public function getRateIncrement();
+
+    /**
+     * Get groupIntervalStart
+     *
+     * @return string
+     */
+    public function getGroupIntervalStart();
+
+    /**
+     * Set tpRate
+     *
+     * @param \Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface $tpRate
      *
      * @return self
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand);
+    public function setTpRate(\Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface $tpRate = null);
 
     /**
-     * Get brand
+     * Get tpRate
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @return \Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface
      */
-    public function getBrand();
+    public function getTpRate();
 
     /**
-     * Set name
-     *
-     * @param \Ivoz\Provider\Domain\Model\DestinationRate\Name $name
-     *
-     * @return self
-     */
-    public function setName(\Ivoz\Provider\Domain\Model\DestinationRate\Name $name);
-
-    /**
-     * Get name
-     *
-     * @return \Ivoz\Provider\Domain\Model\DestinationRate\Name
-     */
-    public function getName();
-
-    /**
-     * Set description
-     *
-     * @param \Ivoz\Provider\Domain\Model\DestinationRate\Description $description
-     *
-     * @return self
-     */
-    public function setDescription(\Ivoz\Provider\Domain\Model\DestinationRate\Description $description);
-
-    /**
-     * Get description
-     *
-     * @return \Ivoz\Provider\Domain\Model\DestinationRate\Description
-     */
-    public function getDescription();
-
-    /**
-     * Set file
-     *
-     * @param \Ivoz\Provider\Domain\Model\DestinationRate\File $file
-     *
-     * @return self
-     */
-    public function setFile(\Ivoz\Provider\Domain\Model\DestinationRate\File $file);
-
-    /**
-     * Get file
-     *
-     * @return \Ivoz\Provider\Domain\Model\DestinationRate\File
-     */
-    public function getFile();
-
-    /**
-     * Add tpDestinationRate
+     * Set tpDestinationRate
      *
      * @param \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface $tpDestinationRate
      *
-     * @return DestinationRateTrait
-     */
-    public function addTpDestinationRate(\Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface $tpDestinationRate);
-
-    /**
-     * Remove tpDestinationRate
-     *
-     * @param \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface $tpDestinationRate
-     */
-    public function removeTpDestinationRate(\Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface $tpDestinationRate);
-
-    /**
-     * Replace tpDestinationRates
-     *
-     * @param \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface[] $tpDestinationRates
      * @return self
      */
-    public function replaceTpDestinationRates(Collection $tpDestinationRates);
+    public function setTpDestinationRate(\Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface $tpDestinationRate = null);
 
     /**
-     * Get tpDestinationRates
+     * Get tpDestinationRate
      *
-     * @return \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface[]
+     * @return \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface
      */
-    public function getTpDestinationRates(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getTpDestinationRate();
 
     /**
-     * @param TempFile $file
-     * @throws \Exception
+     * Set destinationRateGroup
+     *
+     * @param \Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface $destinationRateGroup
+     *
+     * @return self
      */
-    public function removeTmpFile(\Ivoz\Core\Domain\Service\TempFile $file);
+    public function setDestinationRateGroup(\Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface $destinationRateGroup = null);
 
     /**
-     * @return TempFile[]
+     * Get destinationRateGroup
+     *
+     * @return \Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface
      */
-    public function getTempFiles();
+    public function getDestinationRateGroup();
 
     /**
-     * @var string $fldName
-     * @return null | TempFile
+     * Set destination
+     *
+     * @param \Ivoz\Provider\Domain\Model\Destination\DestinationInterface $destination
+     *
+     * @return self
      */
-    public function getTempFileByFieldName($fldName);
+    public function setDestination(\Ivoz\Provider\Domain\Model\Destination\DestinationInterface $destination = null);
+
+    /**
+     * Get destination
+     *
+     * @return \Ivoz\Provider\Domain\Model\Destination\DestinationInterface
+     */
+    public function getDestination();
 
 }
 

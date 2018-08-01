@@ -29,20 +29,15 @@ abstract class TpDestinationAbstract
     protected $prefix;
 
     /**
-     * @var string
-     */
-    protected $name;
-
-    /**
      * column: created_at
      * @var \DateTime
      */
     protected $createdAt;
 
     /**
-     * @var \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface
+     * @var \Ivoz\Provider\Domain\Model\Destination\DestinationInterface
      */
-    protected $tpDestinationRate;
+    protected $destination;
 
 
     use ChangelogTrait;
@@ -127,8 +122,7 @@ abstract class TpDestinationAbstract
 
         $self
             ->setTag($dto->getTag())
-            ->setName($dto->getName())
-            ->setTpDestinationRate($dto->getTpDestinationRate())
+            ->setDestination($dto->getDestination())
         ;
 
         $self->sanitizeValues();
@@ -152,9 +146,8 @@ abstract class TpDestinationAbstract
             ->setTpid($dto->getTpid())
             ->setTag($dto->getTag())
             ->setPrefix($dto->getPrefix())
-            ->setName($dto->getName())
             ->setCreatedAt($dto->getCreatedAt())
-            ->setTpDestinationRate($dto->getTpDestinationRate());
+            ->setDestination($dto->getDestination());
 
 
 
@@ -172,9 +165,8 @@ abstract class TpDestinationAbstract
             ->setTpid(self::getTpid())
             ->setTag(self::getTag())
             ->setPrefix(self::getPrefix())
-            ->setName(self::getName())
             ->setCreatedAt(self::getCreatedAt())
-            ->setTpDestinationRate(\Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRate::entityToDto(self::getTpDestinationRate(), $depth));
+            ->setDestination(\Ivoz\Provider\Domain\Model\Destination\Destination::entityToDto(self::getDestination(), $depth));
     }
 
     /**
@@ -186,9 +178,8 @@ abstract class TpDestinationAbstract
             'tpid' => self::getTpid(),
             'tag' => self::getTag(),
             'prefix' => self::getPrefix(),
-            'name' => self::getName(),
             'created_at' => self::getCreatedAt(),
-            'tpDestinationRateId' => self::getTpDestinationRate() ? self::getTpDestinationRate()->getId() : null
+            'destinationId' => self::getDestination() ? self::getDestination()->getId() : null
         ];
     }
 
@@ -278,34 +269,6 @@ abstract class TpDestinationAbstract
     }
 
     /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return self
-     */
-    public function setName($name = null)
-    {
-        if (!is_null($name)) {
-            Assertion::maxLength($name, 64, 'name value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        }
-
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
      * Set createdAt
      *
      * @param \DateTime $createdAt
@@ -336,27 +299,27 @@ abstract class TpDestinationAbstract
     }
 
     /**
-     * Set tpDestinationRate
+     * Set destination
      *
-     * @param \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface $tpDestinationRate
+     * @param \Ivoz\Provider\Domain\Model\Destination\DestinationInterface $destination
      *
      * @return self
      */
-    public function setTpDestinationRate(\Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface $tpDestinationRate)
+    public function setDestination(\Ivoz\Provider\Domain\Model\Destination\DestinationInterface $destination)
     {
-        $this->tpDestinationRate = $tpDestinationRate;
+        $this->destination = $destination;
 
         return $this;
     }
 
     /**
-     * Get tpDestinationRate
+     * Get destination
      *
-     * @return \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface
+     * @return \Ivoz\Provider\Domain\Model\Destination\DestinationInterface
      */
-    public function getTpDestinationRate()
+    public function getDestination()
     {
-        return $this->tpDestinationRate;
+        return $this->destination;
     }
 
 

@@ -55,22 +55,6 @@ interface TpDestinationInterface extends EntityInterface
     public function getPrefix();
 
     /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return self
-     */
-    public function setName($name = null);
-
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName();
-
-    /**
      * Set createdAt
      *
      * @param \DateTime $createdAt
@@ -87,20 +71,20 @@ interface TpDestinationInterface extends EntityInterface
     public function getCreatedAt();
 
     /**
-     * Set tpDestinationRate
+     * Set destination
      *
-     * @param \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface $tpDestinationRate
+     * @param \Ivoz\Provider\Domain\Model\Destination\DestinationInterface $destination
      *
      * @return self
      */
-    public function setTpDestinationRate(\Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface $tpDestinationRate);
+    public function setDestination(\Ivoz\Provider\Domain\Model\Destination\DestinationInterface $destination);
 
     /**
-     * Get tpDestinationRate
+     * Get destination
      *
-     * @return \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface
+     * @return \Ivoz\Provider\Domain\Model\Destination\DestinationInterface
      */
-    public function getTpDestinationRate();
+    public function getDestination();
 
 }
 
