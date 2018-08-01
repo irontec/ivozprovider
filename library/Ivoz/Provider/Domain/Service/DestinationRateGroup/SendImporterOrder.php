@@ -1,17 +1,18 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Service\DestinationRate;
+namespace Ivoz\Provider\Domain\Service\DestinationRateGroup;
 
-use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\RatesImporter;
+use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface;
 
 /**
  * Class SendImporterOrder
- * @package namespace Ivoz\Cgr\Domain\Service\DestinationRate;
+ *
+ * @package namespace Ivoz\Cgr\Domain\Service\DestinationRateGroup
  * @lifecycle on_commit
  */
-class SendImporterOrder implements DestinationRateLifecycleEventHandlerInterface
+class SendImporterOrder implements DestinationRateGroupLifecycleEventHandlerInterface
 {
     /**
      * @var RatesImporter
@@ -23,6 +24,12 @@ class SendImporterOrder implements DestinationRateLifecycleEventHandlerInterface
      */
     protected $entityPersister;
 
+    /**
+     * SendImporterOrder constructor.
+     *
+     * @param RatesImporter $importer
+     * @param EntityPersisterInterface $entityPersister
+     */
     public function __construct(
         RatesImporter $importer,
         EntityPersisterInterface $entityPersister
@@ -31,6 +38,9 @@ class SendImporterOrder implements DestinationRateLifecycleEventHandlerInterface
         $this->entityPersister = $entityPersister;
     }
 
+    /**
+     * @return array
+     */
     public static function getSubscribedEvents()
     {
         return [
@@ -38,7 +48,10 @@ class SendImporterOrder implements DestinationRateLifecycleEventHandlerInterface
         ];
     }
 
-    public function execute(DestinationRateInterface $entity)
+    /**
+     * @param DestinationRateGroupInterface $entity
+     */
+    public function execute(DestinationRateGroupInterface $entity)
     {
         $pendingStatus = $entity->getStatus() === 'waiting';
         $statusHasChanged = $entity->hasChanged('status');
