@@ -2,22 +2,14 @@
 
 namespace Ivoz\Core\Infrastructure\Domain\Service\Cgrates;
 
+use Ivoz\Core\Domain\Assert\Assertion;
+use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Service\Company\CompanyBalanceServiceInterface;
-use Graze\GuzzleHttp\JsonRpc\Client;
 
-class CompanyBalanceService implements CompanyBalanceServiceInterface
+class CompanyBalanceService extends AbstractBalanceService implements CompanyBalanceServiceInterface
 {
-    /**
-     * @var Client
-     */
-    protected $client;
-
-    public function __construct(
-        Client $client
-    ) {
-        $this->client = $client;
-    }
+    const ACCOUNT_PREFIX = 'c';
 
     /**
      * @see \Ivoz\Provider\Domain\Service\Company\CompanyBalanceServiceInterface::incrementBalance
@@ -25,12 +17,7 @@ class CompanyBalanceService implements CompanyBalanceServiceInterface
      */
     public function incrementBalance(CompanyInterface $company, float $amount)
     {
-        $payload = $this->getBalancePayload($company, $amount);
-
-        return $this->sendRequest(
-            'ApierV1.AddBalance',
-            $payload
-        );
+        return parent::addBalance($company, $amount);
     }
 
     /**
@@ -39,33 +26,7 @@ class CompanyBalanceService implements CompanyBalanceServiceInterface
      */
     public function decrementBalance(CompanyInterface $company, float $amount)
     {
-        $payload = $this->getBalancePayload($company, $amount);
-
-        return $this->sendRequest(
-            'ApierV1.DebitBalance',
-            $payload
-        );
-    }
-
-    protected function sendRequest($method, $payload)
-    {
-        /** @var \Graze\GuzzleHttp\JsonRpc\Message\Response $request */
-        $request = $this->client
-            ->request(
-                1,
-                $method,
-                [$payload]
-            );
-
-        $response = $this->client->send($request);
-        $responseObject = json_decode(
-            $response->getBody()->__toString()
-        );
-
-        return [
-            'success' => ($responseObject->result === 'OK'),
-            'error' => $responseObject->error
-        ];
+        return parent::debitBalance($company, $amount);
     }
 
     /**
@@ -74,41 +35,21 @@ class CompanyBalanceService implements CompanyBalanceServiceInterface
      */
     public function getBalances($brandId, array $companyIds)
     {
-        $tenant = 'b' . $brandId;
+        $tenant = self::TENANT_PREFIX . $brandId;
         $accountIds = array_map(
             function ($companyId) {
-                return 'c' . $companyId;
+                return self::ACCOUNT_PREFIX . $companyId;
             },
             $companyIds
         );
 
-        $payload = [
-            'Tenant' => $tenant,
-            'AccountIds' => $accountIds
-        ];
-
-        $requestId = 1;
-        /** @var \Graze\GuzzleHttp\JsonRpc\Message\Response $request */
-        $request = $this->client
-            ->request(
-                $requestId,
-                'ApierV2.GetAccounts',
-                [$payload]
-            );
-
-        $response = $this->client->send($request);
-        $payload = json_decode($response->getBody()->__toString());
-
-        $balanceSum = [];
-        foreach ($payload->result as $balance) {
-            $balanceSum += $this->balanceReducer($balance);
-        }
-        $payload->result = $balanceSum;
-
-        return $payload;
+        return parent::getAccountsBalances($tenant, $accountIds);
     }
 
-
+    /**
+     * @see \Ivoz\Provider\Domain\Service\Company\CompanyBalanceServiceClientInterface::getBalance
+     * @inheritdoc
+     */
     public function getBalance($brandId, $companyId)
     {
         $companyIds = [$companyId];
@@ -117,43 +58,32 @@ class CompanyBalanceService implements CompanyBalanceServiceInterface
         return $payload->result[$companyId];
     }
 
-
-    private function getBalancePayload(CompanyInterface $company, $amount)
+    /**
+     * @see AbstractBalanceService::getTenant
+     * @inheritdoc
+     */
+    protected function getTenant(EntityInterface $entity)
     {
-        $brand = $company->getBrand();
+        Assertion::isInstanceOf(
+            $entity,
+            CompanyInterface::class
+        );
 
-        return [
-            'Tenant' =>'b' . $brand->getId(),
-            'Account' => 'c' . $company->getId(),
-            'BalanceUuid' => null,
-            'BalanceId' => '*default',
-            'BalanceType' => '*monetary',
-            'Directions' => null,
-            'Value' => $amount,
-            'ExpiryTime' => null,
-            'RatingSubject' => null,
-            'Categories' => null,
-            'DestinationIds' => null,
-            'TimingIds' => null,
-            'Weight' => null,
-            'SharedGroups' => null,
-            'Overwrite' => false,
-            'Blocker' => null,
-            'Disabled' => null
-        ];
+        $brand = $entity->getBrand();
+        return self::TENANT_PREFIX . $brand->getId();
     }
 
     /**
-     * @param \stdClass $item
-     * @return array
+     * @see AbstractBalanceService::getAccount
+     * @inheritdoc
      */
-    private function balanceReducer($item)
+    protected function getAccount(EntityInterface $entity)
     {
-        $companyId = substr($item->ID, -1);
-        $balance =  $item->BalanceMap->{'*monetary'}[0]->Value;
+        Assertion::isInstanceOf(
+            $entity,
+            CompanyInterface::class
+        );
 
-        return [
-            $companyId => $balance
-        ];
+        return self::ACCOUNT_PREFIX . $entity->getId();
     }
 }

@@ -2,8 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\Company;
 
-use Ivoz\Core\Domain\Service\EntityPersisterInterface;
-use Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister;
+use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\BalanceMovement\BalanceMovement;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Symfony\Bridge\Monolog\Logger;
@@ -12,9 +11,9 @@ use Ivoz\Provider\Domain\Model\Company\CompanyRepository;
 abstract class AbstractBalanceOperation
 {
     /**
-     * @var EntityPersisterInterface
+     * @var EntityTools
      */
-    protected $entityPersister;
+    protected $entityTools;
 
     /**
      * @var Logger
@@ -44,20 +43,20 @@ abstract class AbstractBalanceOperation
     /**
      * IncrementBalance constructor.
      *
-     * @param DoctrineEntityPersister $entityPersister
+     * @param EntityTools $entityPersister
      * @param Logger $logger
      * @param CompanyBalanceServiceInterface $client
      * @param CompanyRepository $companyRepository
      * @param SyncBalances $syncBalanceService
      */
     public function __construct(
-        DoctrineEntityPersister $entityPersister,
+        EntityTools $entityTools,
         Logger $logger,
         CompanyBalanceServiceInterface $client,
         CompanyRepository $companyRepository,
         SyncBalances $syncBalanceService
     ) {
-        $this->entityPersister = $entityPersister;
+        $this->entityTools = $entityTools;
         $this->logger = $logger;
         $this->client = $client;
         $this->companyRepository = $companyRepository;
@@ -101,7 +100,7 @@ abstract class AbstractBalanceOperation
                 ->setAmount($amount)
                 ->setBalance($balance);
 
-            $this->entityPersister->persistDto($balanceMovementDto, null, true);
+            $this->entityTools->persistDto($balanceMovementDto, null, true);
         }
 
         return $success;
