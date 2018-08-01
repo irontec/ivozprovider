@@ -67,7 +67,7 @@ interface BalanceNotificationInterface extends LoggableEntityInterface
      *
      * @return self
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company);
+    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null);
 
     /**
      * Get company
@@ -75,6 +75,22 @@ interface BalanceNotificationInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
      */
     public function getCompany();
+
+    /**
+     * Set carrier
+     *
+     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier
+     *
+     * @return self
+     */
+    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier = null);
+
+    /**
+     * Get carrier
+     *
+     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+     */
+    public function getCarrier();
 
     /**
      * Set notificationTemplate

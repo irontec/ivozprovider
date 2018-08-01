@@ -62,6 +62,22 @@ interface CarrierInterface extends LoggableEntityInterface
     public function getExternallyRated();
 
     /**
+     * Set balance
+     *
+     * @param string $balance
+     *
+     * @return self
+     */
+    public function setBalance($balance = null);
+
+    /**
+     * Get balance
+     *
+     * @return string
+     */
+    public function getBalance();
+
+    /**
      * Set brand
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand

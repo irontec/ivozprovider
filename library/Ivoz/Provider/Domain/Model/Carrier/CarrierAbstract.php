@@ -29,6 +29,11 @@ abstract class CarrierAbstract
     protected $externallyRated = '0';
 
     /**
+     * @var string
+     */
+    protected $balance = 0;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
      */
     protected $brand;
@@ -119,6 +124,7 @@ abstract class CarrierAbstract
 
         $self
             ->setExternallyRated($dto->getExternallyRated())
+            ->setBalance($dto->getBalance())
             ->setBrand($dto->getBrand())
             ->setTransformationRuleSet($dto->getTransformationRuleSet())
         ;
@@ -144,6 +150,7 @@ abstract class CarrierAbstract
             ->setDescription($dto->getDescription())
             ->setName($dto->getName())
             ->setExternallyRated($dto->getExternallyRated())
+            ->setBalance($dto->getBalance())
             ->setBrand($dto->getBrand())
             ->setTransformationRuleSet($dto->getTransformationRuleSet());
 
@@ -163,6 +170,7 @@ abstract class CarrierAbstract
             ->setDescription(self::getDescription())
             ->setName(self::getName())
             ->setExternallyRated(self::getExternallyRated())
+            ->setBalance(self::getBalance())
             ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
             ->setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet::entityToDto(self::getTransformationRuleSet(), $depth));
     }
@@ -176,6 +184,7 @@ abstract class CarrierAbstract
             'description' => self::getDescription(),
             'name' => self::getName(),
             'externallyRated' => self::getExternallyRated(),
+            'balance' => self::getBalance(),
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
             'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null
         ];
@@ -264,6 +273,36 @@ abstract class CarrierAbstract
     public function getExternallyRated()
     {
         return $this->externallyRated;
+    }
+
+    /**
+     * Set balance
+     *
+     * @param string $balance
+     *
+     * @return self
+     */
+    public function setBalance($balance = null)
+    {
+        if (!is_null($balance)) {
+            if (!is_null($balance)) {
+                Assertion::numeric($balance);
+            }
+        }
+
+        $this->balance = $balance;
+
+        return $this;
+    }
+
+    /**
+     * Get balance
+     *
+     * @return string
+     */
+    public function getBalance()
+    {
+        return $this->balance;
     }
 
     /**

@@ -28,6 +28,11 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     private $externallyRated = '0';
 
     /**
+     * @var string
+     */
+    private $balance = 0;
+
+    /**
      * @var integer
      */
     private $id;
@@ -78,6 +83,7 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
             'description' => 'description',
             'name' => 'name',
             'externallyRated' => 'externallyRated',
+            'balance' => 'balance',
             'id' => 'id',
             'brandId' => 'brand',
             'transformationRuleSetId' => 'transformationRuleSet'
@@ -93,6 +99,7 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
             'description' => $this->getDescription(),
             'name' => $this->getName(),
             'externallyRated' => $this->getExternallyRated(),
+            'balance' => $this->getBalance(),
             'id' => $this->getId(),
             'brand' => $this->getBrand(),
             'transformationRuleSet' => $this->getTransformationRuleSet(),
@@ -221,6 +228,26 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     public function getExternallyRated()
     {
         return $this->externallyRated;
+    }
+
+    /**
+     * @param string $balance
+     *
+     * @return static
+     */
+    public function setBalance($balance = null)
+    {
+        $this->balance = $balance;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBalance()
+    {
+        return $this->balance;
     }
 
     /**

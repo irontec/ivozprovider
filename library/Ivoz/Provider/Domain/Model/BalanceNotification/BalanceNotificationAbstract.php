@@ -34,6 +34,11 @@ abstract class BalanceNotificationAbstract
     protected $company;
 
     /**
+     * @var \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+     */
+    protected $carrier;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
      */
     protected $notificationTemplate;
@@ -119,6 +124,7 @@ abstract class BalanceNotificationAbstract
             ->setThreshold($dto->getThreshold())
             ->setLastSent($dto->getLastSent())
             ->setCompany($dto->getCompany())
+            ->setCarrier($dto->getCarrier())
             ->setNotificationTemplate($dto->getNotificationTemplate())
         ;
 
@@ -144,6 +150,7 @@ abstract class BalanceNotificationAbstract
             ->setThreshold($dto->getThreshold())
             ->setLastSent($dto->getLastSent())
             ->setCompany($dto->getCompany())
+            ->setCarrier($dto->getCarrier())
             ->setNotificationTemplate($dto->getNotificationTemplate());
 
 
@@ -163,6 +170,7 @@ abstract class BalanceNotificationAbstract
             ->setThreshold(self::getThreshold())
             ->setLastSent(self::getLastSent())
             ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
+            ->setCarrier(\Ivoz\Provider\Domain\Model\Carrier\Carrier::entityToDto(self::getCarrier(), $depth))
             ->setNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate::entityToDto(self::getNotificationTemplate(), $depth));
     }
 
@@ -176,6 +184,7 @@ abstract class BalanceNotificationAbstract
             'threshold' => self::getThreshold(),
             'lastSent' => self::getLastSent(),
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
+            'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null,
             'notificationTemplateId' => self::getNotificationTemplate() ? self::getNotificationTemplate()->getId() : null
         ];
     }
@@ -279,7 +288,7 @@ abstract class BalanceNotificationAbstract
      *
      * @return self
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
+    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
     {
         $this->company = $company;
 
@@ -294,6 +303,30 @@ abstract class BalanceNotificationAbstract
     public function getCompany()
     {
         return $this->company;
+    }
+
+    /**
+     * Set carrier
+     *
+     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier
+     *
+     * @return self
+     */
+    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier = null)
+    {
+        $this->carrier = $carrier;
+
+        return $this;
+    }
+
+    /**
+     * Get carrier
+     *
+     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+     */
+    public function getCarrier()
+    {
+        return $this->carrier;
     }
 
     /**
