@@ -161,25 +161,3 @@ Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrAbstract:
           referencedColumnName: id
           onDelete: set null
       orphanRemoval: false
-    tpDestination:
-      targetEntity: \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface
-      cascade: {  }
-      fetch: LAZY
-      mappedBy: null
-      inversedBy: null
-      joinColumns:
-        tpDestinationId:
-          referencedColumnName: id
-          onDelete: set null
-      orphanRemoval: false
-    destinationRate:
-      targetEntity: \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface
-      cascade: {  }
-      fetch: LAZY
-      mappedBy: null
-      inversedBy: null
-      joinColumns:
-        destinationRateId:
-          referencedColumnName: id
-          onDelete: set null
-      orphanRemoval: false

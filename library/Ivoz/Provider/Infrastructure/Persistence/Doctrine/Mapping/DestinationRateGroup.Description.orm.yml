@@ -1,4 +1,4 @@
-Ivoz\Provider\Domain\Model\DestinationRate\Description:
+Ivoz\Provider\Domain\Model\DestinationRateGroup\Description:
   type: embeddable
   fields:
     en:

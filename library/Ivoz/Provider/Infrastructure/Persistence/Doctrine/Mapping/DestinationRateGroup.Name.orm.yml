@@ -1,15 +1,17 @@
-Ivoz\Cgr\Domain\Model\TpDestinationRate\Destination:
+Ivoz\Provider\Domain\Model\DestinationRateGroup\Name:
   type: embeddable
   fields:
-    prefix:
+    en:
       type: string
       nullable: false
-      length: 24
+      length: 55
       options:
         fixed: false
-    prefixName:
+      column: name_en
+    es:
       type: string
       nullable: false
-      length: 60
+      length: 55
       options:
         fixed: false
+      column: name_es

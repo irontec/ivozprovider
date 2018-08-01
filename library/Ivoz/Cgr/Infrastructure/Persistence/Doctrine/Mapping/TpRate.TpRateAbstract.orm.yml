@@ -14,7 +14,6 @@ Ivoz\Cgr\Domain\Model\TpRate\TpRateAbstract:
         - tpid
         - tag
         - group_interval_start
-        - tpDestinationRateId
   fields:
     tpid:
       type: string
@@ -71,15 +70,12 @@ Ivoz\Cgr\Domain\Model\TpRate\TpRateAbstract:
         default: CURRENT_TIMESTAMP
       column: created_at
   oneToOne:
-    tpDestinationRate:
-      targetEntity: \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface
-      cascade: {  }
-      fetch: LAZY
-      mappedBy: null
+    destinationRate:
+      targetEntity: \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface
       inversedBy: tpRate
-      joinColumns:
-        tpDestinationRateId:
-          nullable: false
-          referencedColumnName: id
-          onDelete: cascade
-      orphanRemoval: false
+      fetch: LAZY
+      joinColumn:
+        name: destinationRateId
+        referencedColumnName: id
+        nullable: false
+        onDelete: cascade

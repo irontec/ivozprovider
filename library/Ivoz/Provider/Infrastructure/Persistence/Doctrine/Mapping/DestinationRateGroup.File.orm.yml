@@ -1,4 +1,4 @@
-Ivoz\Provider\Domain\Model\DestinationRate\File:
+Ivoz\Provider\Domain\Model\DestinationRateGroup\File:
   type: embeddable
   fields:
     fileSize:
