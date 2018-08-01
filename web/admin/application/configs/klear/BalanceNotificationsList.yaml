@@ -13,7 +13,7 @@ production:
       <<: *BalanceNotifications
       class: ui-silk-email
       title: _("List of %s %2s", ngettext('Balance Notification', 'Balance Notifications', 0), "[format| (%parent%)]")
-      fields:
+      fields: &balanceNotificationList_fieldsLink
         options:
           title: _("Options")
           screens:
@@ -36,7 +36,7 @@ production:
       multiInstance: true
       title: _("Add %s %2s", ngettext('Balance Notification', 'Balance Notifications', 1), "[format| (%parent%)]")
       shortcutOption: N
-      fields:
+      fields: &balanceNotificationNew_fieldsLink
         blacklist:
           lastSent: true
       fixedPositions: &balanceNotificationFixedPositions_Link
@@ -47,6 +47,7 @@ production:
             notificationTemplate: 1
             toAddress: 1
             threshold: 1
+            lastSent: 1
 
     balanceNotificationEdit_screen: &balanceNotificationEdit_screenLink
       <<: *BalanceNotifications

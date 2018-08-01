@@ -74,20 +74,35 @@ production:
     balanceNotificationList_screen:
       <<: *balanceNotificationList_screenLink
       filterField: Company
+      fields:
+        <<: *balanceNotificationList_fieldsLink
+        blacklist:
+          carrier: true
       parentOptionCustomizer:
         - recordCount
     balanceNotificationNew_screen:
       <<: *balanceNotificationNew_screenLink
       filterField: Company
+      fields:
+        <<: *balanceNotificationNew_fieldsLink
+        blacklist:
+          carrier: true
     balanceNotificationEdit_screen:
       <<: *balanceNotificationEdit_screenLink
       filterField: Company
+      fields:
+        blacklist:
+          carrier: true
 
     # balanceMovements
     <<: *balanceMovements_screensLink
     balanceMovementsList_screen:
       <<: *balanceMovementsList_screenLink
       filterField: Company
+      fields:
+        <<: *balanceMovementsList_fieldsLink
+        blacklist:
+          carrier: true
       parentOptionCustomizer:
         - recordCount
 

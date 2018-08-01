@@ -3,6 +3,8 @@
 #include conf.d/documentationLink.yaml
 #include CarrierServersList.yaml
 #include RatingProfilesList.yaml
+#include BalanceNotificationsList.yaml
+#include BalanceMovementsList.yaml
 
 production:
   main:
@@ -28,7 +30,10 @@ production:
             carriersEdit_screen: true
             carrierServersList_screen: true
             ratingProfilesList_screen: true
+            balanceMovementsList_screen: true
+            balanceNotificationList_screen: true
           dialogs:
+            addToBalance_dialog: true
             carriersDel_dialog: true
           default: carriersEdit_screen
         order: &carrierOrder_Link
@@ -37,6 +42,7 @@ production:
           description: true
         blacklist:
           externallyRated: true
+          billingMethod: true
       options:
         title: _("Options")
         screens:
@@ -59,7 +65,8 @@ production:
           <<: *carrierOrder_Link
         blacklist:
           externallyRated: ${auth.brandFeatures.billing.disabled}
-      fixedPositions:
+          balance: true
+      fixedPositions: &carriersNew_fixedPositionsLink
         group0:
           label: _("Basic Configuration")
           colsPerRow: 12
@@ -72,6 +79,8 @@ production:
           fields:
             transformationRuleSet: 3
             externallyRated: 3
+            billingMethod: 3
+            balance: 3
 
     carriersEdit_screen: &carriersEdit_screenLink
       <<: *Carriers
@@ -86,6 +95,8 @@ production:
           <<: *carrierOrder_Link
         blacklist:
           externallyRated: ${auth.brandFeatures.billing.disabled}
+      fixedPositions:
+        <<: *carriersNew_fixedPositionsLink
 
     # Carrier Servers screens
     <<: *carrierServers_screensLink
@@ -124,6 +135,44 @@ production:
         "self::routingTag": null
         "self::company": null
 
+    # balanceNotification
+    <<: *balanceNotification_screensLink
+    balanceNotificationList_screen:
+      <<: *balanceNotificationList_screenLink
+      filterField: Carrier
+      fields:
+        <<: *balanceNotificationList_fieldsLink
+        blacklist:
+          company: true
+      parentOptionCustomizer:
+        - recordCount
+    balanceNotificationNew_screen:
+      <<: *balanceNotificationNew_screenLink
+      filterField: Carrier
+      fields:
+        <<: *balanceNotificationNew_fieldsLink
+        blacklist:
+          company: true
+          lastSent: true
+    balanceNotificationEdit_screen:
+      <<: *balanceNotificationEdit_screenLink
+      filterField: Carrier
+      fields:
+        blacklist:
+          company: true
+
+    # balanceMovements
+    <<: *balanceMovements_screensLink
+    balanceMovementsList_screen:
+      <<: *balanceMovementsList_screenLink
+      filterField: Carrier
+      fields:
+        <<: *balanceMovementsList_fieldsLink
+        blacklist:
+          company: true
+      parentOptionCustomizer:
+        - recordCount
+
   dialogs: &carriers_dialosgLink
     carriersDel_dialog: &carriersDel_dialogLink
       <<: *Carriers
@@ -136,6 +185,14 @@ production:
       multiItem: 1
       labelOnList: 1
 
+    addToBalance_dialog: &addToBalance_dialogLink
+      title: _("Balance operations")
+      module: default
+      controller: klear-custom-increment-balance
+      labelOnEdit: true
+      action: add-to-carrier-balance
+      class: ui-silk-money-add
+
     # Carrier Servers dialogs
     <<: *carrierServers_dialogsLink
 
@@ -143,6 +200,8 @@ production:
     <<: *ratingProfiles_dialogsLink
     <<: *simulateCall_dialogLink
 
+    # balanceNotification dialogs:
+    <<: *balanceNotification_dialogsLink
 
 staging:
   _extends: production
