@@ -97,13 +97,12 @@ class NotifyBrokenThreshold implements DomainEventSubscriberInterface
             );
 
         $this->mailer->send($email);
-
     }
 
-    private function parseNotificationContent(string $content, string $companyName, float $currentBalance)
+    private function parseNotificationContent(string $content, string $name, float $currentBalance)
     {
         $substitution = array(
-            '${BALANCE_COMPANY}' => $companyName,
+            '${BALANCE_NAME}' => $name,
             '${BALANCE_AMOUNT}' => $currentBalance
         );
 
