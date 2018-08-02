@@ -15,12 +15,22 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $tag;
+    private $cost;
 
     /**
      * @var string
      */
-    private $status;
+    private $connectFee;
+
+    /**
+     * @var string
+     */
+    private $rateIncrement;
+
+    /**
+     * @var string
+     */
+    private $groupIntervalStart = '0s';
 
     /**
      * @var integer
@@ -28,54 +38,24 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
     private $id;
 
     /**
-     * @var string
+     * @var \Ivoz\Cgr\Domain\Model\TpRate\TpRateDto | null
      */
-    private $nameEn;
+    private $tpRate;
 
     /**
-     * @var string
+     * @var \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateDto | null
      */
-    private $nameEs;
+    private $tpDestinationRate;
 
     /**
-     * @var string
+     * @var \Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupDto | null
      */
-    private $descriptionEn;
+    private $destinationRateGroup;
 
     /**
-     * @var string
+     * @var \Ivoz\Provider\Domain\Model\Destination\DestinationDto | null
      */
-    private $descriptionEs;
-
-    /**
-     * @var integer
-     */
-    private $fileFileSize;
-
-    /**
-     * @var string
-     */
-    private $fileMimeType;
-
-    /**
-     * @var string
-     */
-    private $fileBaseName;
-
-    /**
-     * @var array
-     */
-    private $fileImporterArguments;
-
-    /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
-     */
-    private $brand;
-
-    /**
-     * @var \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateDto[] | null
-     */
-    private $tpDestinationRates = null;
+    private $destination;
 
 
     use DtoNormalizer;
@@ -95,13 +75,15 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
         }
 
         return [
-            'tag' => 'tag',
-            'status' => 'status',
+            'cost' => 'cost',
+            'connectFee' => 'connectFee',
+            'rateIncrement' => 'rateIncrement',
+            'groupIntervalStart' => 'groupIntervalStart',
             'id' => 'id',
-            'name' => ['en','es'],
-            'description' => ['en','es'],
-            'file' => ['fileSize','mimeType','baseName','importerArguments'],
-            'brandId' => 'brand'
+            'tpRateId' => 'tpRate',
+            'tpDestinationRateId' => 'tpDestinationRate',
+            'destinationRateGroupId' => 'destinationRateGroup',
+            'destinationId' => 'destination'
         ];
     }
 
@@ -111,25 +93,15 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
     public function toArray($hideSensitiveData = false)
     {
         return [
-            'tag' => $this->getTag(),
-            'status' => $this->getStatus(),
+            'cost' => $this->getCost(),
+            'connectFee' => $this->getConnectFee(),
+            'rateIncrement' => $this->getRateIncrement(),
+            'groupIntervalStart' => $this->getGroupIntervalStart(),
             'id' => $this->getId(),
-            'name' => [
-                'en' => $this->getNameEn(),
-                'es' => $this->getNameEs()
-            ],
-            'description' => [
-                'en' => $this->getDescriptionEn(),
-                'es' => $this->getDescriptionEs()
-            ],
-            'file' => [
-                'fileSize' => $this->getFileFileSize(),
-                'mimeType' => $this->getFileMimeType(),
-                'baseName' => $this->getFileBaseName(),
-                'importerArguments' => $this->getFileImporterArguments()
-            ],
-            'brand' => $this->getBrand(),
-            'tpDestinationRates' => $this->getTpDestinationRates()
+            'tpRate' => $this->getTpRate(),
+            'tpDestinationRate' => $this->getTpDestinationRate(),
+            'destinationRateGroup' => $this->getDestinationRateGroup(),
+            'destination' => $this->getDestination()
         ];
     }
 
@@ -138,18 +110,10 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
-        $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
-        if (!is_null($this->tpDestinationRates)) {
-            $items = $this->getTpDestinationRates();
-            $this->tpDestinationRates = [];
-            foreach ($items as $item) {
-                $this->tpDestinationRates[] = $transformer->transform(
-                    'Ivoz\\Cgr\\Domain\\Model\\TpDestinationRate\\TpDestinationRate',
-                    $item->getId() ?? $item
-                );
-            }
-        }
-
+        $this->tpRate = $transformer->transform('Ivoz\\Cgr\\Domain\\Model\\TpRate\\TpRate', $this->getTpRateId());
+        $this->tpDestinationRate = $transformer->transform('Ivoz\\Cgr\\Domain\\Model\\TpDestinationRate\\TpDestinationRate', $this->getTpDestinationRateId());
+        $this->destinationRateGroup = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\DestinationRateGroup\\DestinationRateGroup', $this->getDestinationRateGroupId());
+        $this->destination = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Destination\\Destination', $this->getDestinationId());
     }
 
     /**
@@ -157,20 +121,17 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-        $this->tpDestinationRates = $transformer->transform(
-            'Ivoz\\Cgr\\Domain\\Model\\TpDestinationRate\\TpDestinationRate',
-            $this->tpDestinationRates
-        );
+
     }
 
     /**
-     * @param string $tag
+     * @param string $cost
      *
      * @return static
      */
-    public function setTag($tag = null)
+    public function setCost($cost = null)
     {
-        $this->tag = $tag;
+        $this->cost = $cost;
 
         return $this;
     }
@@ -178,19 +139,19 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string
      */
-    public function getTag()
+    public function getCost()
     {
-        return $this->tag;
+        return $this->cost;
     }
 
     /**
-     * @param string $status
+     * @param string $connectFee
      *
      * @return static
      */
-    public function setStatus($status = null)
+    public function setConnectFee($connectFee = null)
     {
-        $this->status = $status;
+        $this->connectFee = $connectFee;
 
         return $this;
     }
@@ -198,9 +159,49 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
     /**
      * @return string
      */
-    public function getStatus()
+    public function getConnectFee()
     {
-        return $this->status;
+        return $this->connectFee;
+    }
+
+    /**
+     * @param string $rateIncrement
+     *
+     * @return static
+     */
+    public function setRateIncrement($rateIncrement = null)
+    {
+        $this->rateIncrement = $rateIncrement;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRateIncrement()
+    {
+        return $this->rateIncrement;
+    }
+
+    /**
+     * @param string $groupIntervalStart
+     *
+     * @return static
+     */
+    public function setGroupIntervalStart($groupIntervalStart = null)
+    {
+        $this->groupIntervalStart = $groupIntervalStart;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getGroupIntervalStart()
+    {
+        return $this->groupIntervalStart;
     }
 
     /**
@@ -224,183 +225,23 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $nameEn
+     * @param \Ivoz\Cgr\Domain\Model\TpRate\TpRateDto $tpRate
      *
      * @return static
      */
-    public function setNameEn($nameEn = null)
+    public function setTpRate(\Ivoz\Cgr\Domain\Model\TpRate\TpRateDto $tpRate = null)
     {
-        $this->nameEn = $nameEn;
+        $this->tpRate = $tpRate;
 
         return $this;
     }
 
     /**
-     * @return string
+     * @return \Ivoz\Cgr\Domain\Model\TpRate\TpRateDto
      */
-    public function getNameEn()
+    public function getTpRate()
     {
-        return $this->nameEn;
-    }
-
-    /**
-     * @param string $nameEs
-     *
-     * @return static
-     */
-    public function setNameEs($nameEs = null)
-    {
-        $this->nameEs = $nameEs;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getNameEs()
-    {
-        return $this->nameEs;
-    }
-
-    /**
-     * @param string $descriptionEn
-     *
-     * @return static
-     */
-    public function setDescriptionEn($descriptionEn = null)
-    {
-        $this->descriptionEn = $descriptionEn;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getDescriptionEn()
-    {
-        return $this->descriptionEn;
-    }
-
-    /**
-     * @param string $descriptionEs
-     *
-     * @return static
-     */
-    public function setDescriptionEs($descriptionEs = null)
-    {
-        $this->descriptionEs = $descriptionEs;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getDescriptionEs()
-    {
-        return $this->descriptionEs;
-    }
-
-    /**
-     * @param integer $fileFileSize
-     *
-     * @return static
-     */
-    public function setFileFileSize($fileFileSize = null)
-    {
-        $this->fileFileSize = $fileFileSize;
-
-        return $this;
-    }
-
-    /**
-     * @return integer
-     */
-    public function getFileFileSize()
-    {
-        return $this->fileFileSize;
-    }
-
-    /**
-     * @param string $fileMimeType
-     *
-     * @return static
-     */
-    public function setFileMimeType($fileMimeType = null)
-    {
-        $this->fileMimeType = $fileMimeType;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getFileMimeType()
-    {
-        return $this->fileMimeType;
-    }
-
-    /**
-     * @param string $fileBaseName
-     *
-     * @return static
-     */
-    public function setFileBaseName($fileBaseName = null)
-    {
-        $this->fileBaseName = $fileBaseName;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getFileBaseName()
-    {
-        return $this->fileBaseName;
-    }
-
-    /**
-     * @param array $fileImporterArguments
-     *
-     * @return static
-     */
-    public function setFileImporterArguments($fileImporterArguments = null)
-    {
-        $this->fileImporterArguments = $fileImporterArguments;
-
-        return $this;
-    }
-
-    /**
-     * @return array
-     */
-    public function getFileImporterArguments()
-    {
-        return $this->fileImporterArguments;
-    }
-
-    /**
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandDto $brand
-     *
-     * @return static
-     */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandDto $brand = null)
-    {
-        $this->brand = $brand;
-
-        return $this;
-    }
-
-    /**
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandDto
-     */
-    public function getBrand()
-    {
-        return $this->brand;
+        return $this->tpRate;
     }
 
     /**
@@ -408,21 +249,21 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
      *
      * @return static
      */
-    public function setBrandId($id)
+    public function setTpRateId($id)
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Brand\BrandDto($id)
+            ? new \Ivoz\Cgr\Domain\Model\TpRate\TpRateDto($id)
             : null;
 
-        return $this->setBrand($value);
+        return $this->setTpRate($value);
     }
 
     /**
      * @return integer | null
      */
-    public function getBrandId()
+    public function getTpRateId()
     {
-        if ($dto = $this->getBrand()) {
+        if ($dto = $this->getTpRate()) {
             return $dto->getId();
         }
 
@@ -430,23 +271,141 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param array $tpDestinationRates
+     * @param \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateDto $tpDestinationRate
      *
      * @return static
      */
-    public function setTpDestinationRates($tpDestinationRates = null)
+    public function setTpDestinationRate(\Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateDto $tpDestinationRate = null)
     {
-        $this->tpDestinationRates = $tpDestinationRates;
+        $this->tpDestinationRate = $tpDestinationRate;
 
         return $this;
     }
 
     /**
-     * @return array
+     * @return \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateDto
      */
-    public function getTpDestinationRates()
+    public function getTpDestinationRate()
     {
-        return $this->tpDestinationRates;
+        return $this->tpDestinationRate;
+    }
+
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setTpDestinationRateId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateDto($id)
+            : null;
+
+        return $this->setTpDestinationRate($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getTpDestinationRateId()
+    {
+        if ($dto = $this->getTpDestinationRate()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupDto $destinationRateGroup
+     *
+     * @return static
+     */
+    public function setDestinationRateGroup(\Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupDto $destinationRateGroup = null)
+    {
+        $this->destinationRateGroup = $destinationRateGroup;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupDto
+     */
+    public function getDestinationRateGroup()
+    {
+        return $this->destinationRateGroup;
+    }
+
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setDestinationRateGroupId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupDto($id)
+            : null;
+
+        return $this->setDestinationRateGroup($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getDestinationRateGroupId()
+    {
+        if ($dto = $this->getDestinationRateGroup()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\Destination\DestinationDto $destination
+     *
+     * @return static
+     */
+    public function setDestination(\Ivoz\Provider\Domain\Model\Destination\DestinationDto $destination = null)
+    {
+        $this->destination = $destination;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Destination\DestinationDto
+     */
+    public function getDestination()
+    {
+        return $this->destination;
+    }
+
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setDestinationId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Destination\DestinationDto($id)
+            : null;
+
+        return $this->setDestination($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getDestinationId()
+    {
+        if ($dto = $this->getDestination()) {
+            return $dto->getId();
+        }
+
+        return null;
     }
 }
 

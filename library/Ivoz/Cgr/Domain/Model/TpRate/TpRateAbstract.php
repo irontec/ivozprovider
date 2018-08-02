@@ -60,9 +60,9 @@ abstract class TpRateAbstract
     protected $createdAt;
 
     /**
-     * @var \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface
+     * @var \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface
      */
-    protected $tpDestinationRate;
+    protected $destinationRate;
 
 
     use ChangelogTrait;
@@ -162,7 +162,7 @@ abstract class TpRateAbstract
 
         $self
             ->setTag($dto->getTag())
-            ->setTpDestinationRate($dto->getTpDestinationRate())
+            ->setDestinationRate($dto->getDestinationRate())
         ;
 
         $self->sanitizeValues();
@@ -191,7 +191,7 @@ abstract class TpRateAbstract
             ->setRateIncrement($dto->getRateIncrement())
             ->setGroupIntervalStart($dto->getGroupIntervalStart())
             ->setCreatedAt($dto->getCreatedAt())
-            ->setTpDestinationRate($dto->getTpDestinationRate());
+            ->setDestinationRate($dto->getDestinationRate());
 
 
 
@@ -214,7 +214,7 @@ abstract class TpRateAbstract
             ->setRateIncrement(self::getRateIncrement())
             ->setGroupIntervalStart(self::getGroupIntervalStart())
             ->setCreatedAt(self::getCreatedAt())
-            ->setTpDestinationRate(\Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRate::entityToDto(self::getTpDestinationRate(), $depth));
+            ->setDestinationRate(\Ivoz\Provider\Domain\Model\DestinationRate\DestinationRate::entityToDto(self::getDestinationRate(), $depth));
     }
 
     /**
@@ -231,7 +231,7 @@ abstract class TpRateAbstract
             'rate_increment' => self::getRateIncrement(),
             'group_interval_start' => self::getGroupIntervalStart(),
             'created_at' => self::getCreatedAt(),
-            'tpDestinationRateId' => self::getTpDestinationRate() ? self::getTpDestinationRate()->getId() : null
+            'destinationRateId' => self::getDestinationRate() ? self::getDestinationRate()->getId() : null
         ];
     }
 
@@ -459,27 +459,27 @@ abstract class TpRateAbstract
     }
 
     /**
-     * Set tpDestinationRate
+     * Set destinationRate
      *
-     * @param \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface $tpDestinationRate
+     * @param \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate
      *
      * @return self
      */
-    public function setTpDestinationRate(\Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface $tpDestinationRate)
+    public function setDestinationRate(\Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate)
     {
-        $this->tpDestinationRate = $tpDestinationRate;
+        $this->destinationRate = $destinationRate;
 
         return $this;
     }
 
     /**
-     * Get tpDestinationRate
+     * Get destinationRate
      *
-     * @return \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface
+     * @return \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface
      */
-    public function getTpDestinationRate()
+    public function getDestinationRate()
     {
-        return $this->tpDestinationRate;
+        return $this->destinationRate;
     }
 
 

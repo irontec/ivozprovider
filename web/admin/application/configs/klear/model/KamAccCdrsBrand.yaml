@@ -175,20 +175,6 @@ production:
           order:
             RatingPlan.name.${lang}: asc
         'null': _("Unassigned")
-    destination:
-      title: _('Target pattern')
-      type: select
-      source:
-        data: mapper
-        config:
-          entity: \Ivoz\Cgr\Domain\Model\Destination\Destination
-          fieldName:
-            fields:
-              - name${lang}
-            template: '%name${lang}%'
-          order:
-            Destination.name.${lang}: asc
-        'null': _("Unassigned")
     price:
       title: ngettext('Price', 'Prices', 1)
       type: text

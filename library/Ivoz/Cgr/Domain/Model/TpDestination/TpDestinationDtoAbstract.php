@@ -28,11 +28,6 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
     private $prefix;
 
     /**
-     * @var string
-     */
-    private $name;
-
-    /**
      * @var \DateTime
      */
     private $createdAt = 'CURRENT_TIMESTAMP';
@@ -43,9 +38,9 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
     private $id;
 
     /**
-     * @var \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateDto | null
+     * @var \Ivoz\Provider\Domain\Model\Destination\DestinationDto | null
      */
-    private $tpDestinationRate;
+    private $destination;
 
 
     use DtoNormalizer;
@@ -68,10 +63,9 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
             'tpid' => 'tpid',
             'tag' => 'tag',
             'prefix' => 'prefix',
-            'name' => 'name',
             'createdAt' => 'createdAt',
             'id' => 'id',
-            'tpDestinationRateId' => 'tpDestinationRate'
+            'destinationId' => 'destination'
         ];
     }
 
@@ -84,10 +78,9 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
             'tpid' => $this->getTpid(),
             'tag' => $this->getTag(),
             'prefix' => $this->getPrefix(),
-            'name' => $this->getName(),
             'createdAt' => $this->getCreatedAt(),
             'id' => $this->getId(),
-            'tpDestinationRate' => $this->getTpDestinationRate()
+            'destination' => $this->getDestination()
         ];
     }
 
@@ -96,7 +89,7 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
-        $this->tpDestinationRate = $transformer->transform('Ivoz\\Cgr\\Domain\\Model\\TpDestinationRate\\TpDestinationRate', $this->getTpDestinationRateId());
+        $this->destination = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Destination\\Destination', $this->getDestinationId());
     }
 
     /**
@@ -168,26 +161,6 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $name
-     *
-     * @return static
-     */
-    public function setName($name = null)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
      * @param \DateTime $createdAt
      *
      * @return static
@@ -228,23 +201,23 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateDto $tpDestinationRate
+     * @param \Ivoz\Provider\Domain\Model\Destination\DestinationDto $destination
      *
      * @return static
      */
-    public function setTpDestinationRate(\Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateDto $tpDestinationRate = null)
+    public function setDestination(\Ivoz\Provider\Domain\Model\Destination\DestinationDto $destination = null)
     {
-        $this->tpDestinationRate = $tpDestinationRate;
+        $this->destination = $destination;
 
         return $this;
     }
 
     /**
-     * @return \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateDto
+     * @return \Ivoz\Provider\Domain\Model\Destination\DestinationDto
      */
-    public function getTpDestinationRate()
+    public function getDestination()
     {
-        return $this->tpDestinationRate;
+        return $this->destination;
     }
 
     /**
@@ -252,21 +225,21 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
      *
      * @return static
      */
-    public function setTpDestinationRateId($id)
+    public function setDestinationId($id)
     {
         $value = !is_null($id)
-            ? new \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateDto($id)
+            ? new \Ivoz\Provider\Domain\Model\Destination\DestinationDto($id)
             : null;
 
-        return $this->setTpDestinationRate($value);
+        return $this->setDestination($value);
     }
 
     /**
      * @return integer | null
      */
-    public function getTpDestinationRateId()
+    public function getDestinationId()
     {
-        if ($dto = $this->getTpDestinationRate()) {
+        if ($dto = $this->getDestination()) {
             return $dto->getId();
         }
 

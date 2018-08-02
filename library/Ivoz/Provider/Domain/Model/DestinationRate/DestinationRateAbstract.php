@@ -14,35 +14,45 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 abstract class DestinationRateAbstract
 {
     /**
+     * column: rate
      * @var string
      */
-    protected $tag;
+    protected $cost;
 
     /**
-     * comment: enum:waiting|inProgress|imported|error
      * @var string
      */
-    protected $status;
+    protected $connectFee;
 
     /**
-     * @var Name
+     * @var string
      */
-    protected $name;
+    protected $rateIncrement;
 
     /**
-     * @var Description
+     * @var string
      */
-    protected $description;
+    protected $groupIntervalStart = '0s';
 
     /**
-     * @var File
+     * @var \Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface
      */
-    protected $file;
+    protected $tpRate;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @var \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface
      */
-    protected $brand;
+    protected $tpDestinationRate;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface
+     */
+    protected $destinationRateGroup;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Destination\DestinationInterface
+     */
+    protected $destination;
 
 
     use ChangelogTrait;
@@ -51,13 +61,15 @@ abstract class DestinationRateAbstract
      * Constructor
      */
     protected function __construct(
-        Name $name,
-        Description $description,
-        File $file
+        $cost,
+        $connectFee,
+        $rateIncrement,
+        $groupIntervalStart
     ) {
-        $this->setName($name);
-        $this->setDescription($description);
-        $this->setFile($file);
+        $this->setCost($cost);
+        $this->setConnectFee($connectFee);
+        $this->setRateIncrement($rateIncrement);
+        $this->setGroupIntervalStart($groupIntervalStart);
     }
 
     abstract public function getId();
@@ -123,33 +135,15 @@ abstract class DestinationRateAbstract
          */
         Assertion::isInstanceOf($dto, DestinationRateDto::class);
 
-        $name = new Name(
-            $dto->getNameEn(),
-            $dto->getNameEs()
-        );
-
-        $description = new Description(
-            $dto->getDescriptionEn(),
-            $dto->getDescriptionEs()
-        );
-
-        $file = new File(
-            $dto->getFileFileSize(),
-            $dto->getFileMimeType(),
-            $dto->getFileBaseName(),
-            $dto->getFileImporterArguments()
-        );
-
         $self = new static(
-            $name,
-            $description,
-            $file
-        );
+            $dto->getCost(),
+            $dto->getConnectFee(),
+            $dto->getRateIncrement(),
+            $dto->getGroupIntervalStart());
 
         $self
-            ->setTag($dto->getTag())
-            ->setStatus($dto->getStatus())
-            ->setBrand($dto->getBrand())
+            ->setDestinationRateGroup($dto->getDestinationRateGroup())
+            ->setDestination($dto->getDestination())
         ;
 
         $self->sanitizeValues();
@@ -169,30 +163,13 @@ abstract class DestinationRateAbstract
          */
         Assertion::isInstanceOf($dto, DestinationRateDto::class);
 
-        $name = new Name(
-            $dto->getNameEn(),
-            $dto->getNameEs()
-        );
-
-        $description = new Description(
-            $dto->getDescriptionEn(),
-            $dto->getDescriptionEs()
-        );
-
-        $file = new File(
-            $dto->getFileFileSize(),
-            $dto->getFileMimeType(),
-            $dto->getFileBaseName(),
-            $dto->getFileImporterArguments()
-        );
-
         $this
-            ->setTag($dto->getTag())
-            ->setStatus($dto->getStatus())
-            ->setName($name)
-            ->setDescription($description)
-            ->setFile($file)
-            ->setBrand($dto->getBrand());
+            ->setCost($dto->getCost())
+            ->setConnectFee($dto->getConnectFee())
+            ->setRateIncrement($dto->getRateIncrement())
+            ->setGroupIntervalStart($dto->getGroupIntervalStart())
+            ->setDestinationRateGroup($dto->getDestinationRateGroup())
+            ->setDestination($dto->getDestination());
 
 
 
@@ -207,17 +184,12 @@ abstract class DestinationRateAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setTag(self::getTag())
-            ->setStatus(self::getStatus())
-            ->setNameEn(self::getName()->getEn())
-            ->setNameEs(self::getName()->getEs())
-            ->setDescriptionEn(self::getDescription()->getEn())
-            ->setDescriptionEs(self::getDescription()->getEs())
-            ->setFileFileSize(self::getFile()->getFileSize())
-            ->setFileMimeType(self::getFile()->getMimeType())
-            ->setFileBaseName(self::getFile()->getBaseName())
-            ->setFileImporterArguments(self::getFile()->getImporterArguments())
-            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth));
+            ->setCost(self::getCost())
+            ->setConnectFee(self::getConnectFee())
+            ->setRateIncrement(self::getRateIncrement())
+            ->setGroupIntervalStart(self::getGroupIntervalStart())
+            ->setDestinationRateGroup(\Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroup::entityToDto(self::getDestinationRateGroup(), $depth))
+            ->setDestination(\Ivoz\Provider\Domain\Model\Destination\Destination::entityToDto(self::getDestination(), $depth));
     }
 
     /**
@@ -226,17 +198,12 @@ abstract class DestinationRateAbstract
     protected function __toArray()
     {
         return [
-            'tag' => self::getTag(),
-            'status' => self::getStatus(),
-            'nameEn' => self::getName()->getEn(),
-            'nameEs' => self::getName()->getEs(),
-            'descriptionEn' => self::getDescription()->getEn(),
-            'descriptionEs' => self::getDescription()->getEs(),
-            'fileFileSize' => self::getFile()->getFileSize(),
-            'fileMimeType' => self::getFile()->getMimeType(),
-            'fileBaseName' => self::getFile()->getBaseName(),
-            'fileImporterArguments' => self::getFile()->getImporterArguments(),
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null
+            'rate' => self::getCost(),
+            'connectFee' => self::getConnectFee(),
+            'rateIncrement' => self::getRateIncrement(),
+            'groupIntervalStart' => self::getGroupIntervalStart(),
+            'destinationRateGroupId' => self::getDestinationRateGroup() ? self::getDestinationRateGroup()->getId() : null,
+            'destinationId' => self::getDestination() ? self::getDestination()->getId() : null
         ];
     }
 
@@ -244,162 +211,210 @@ abstract class DestinationRateAbstract
     // @codeCoverageIgnoreStart
 
     /**
-     * Set tag
+     * Set cost
      *
-     * @param string $tag
+     * @param string $cost
      *
      * @return self
      */
-    public function setTag($tag = null)
+    public function setCost($cost)
     {
-        if (!is_null($tag)) {
-            Assertion::maxLength($tag, 64, 'tag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        }
+        Assertion::notNull($cost, 'cost value "%s" is null, but non null value was expected.');
+        Assertion::numeric($cost);
 
-        $this->tag = $tag;
+        $this->cost = $cost;
 
         return $this;
     }
 
     /**
-     * Get tag
+     * Get cost
      *
      * @return string
      */
-    public function getTag()
+    public function getCost()
     {
-        return $this->tag;
+        return $this->cost;
     }
 
     /**
-     * Set status
+     * Set connectFee
      *
-     * @param string $status
+     * @param string $connectFee
      *
      * @return self
      */
-    public function setStatus($status = null)
+    public function setConnectFee($connectFee)
     {
-        if (!is_null($status)) {
-            Assertion::maxLength($status, 20, 'status value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        Assertion::choice($status, array (
-          0 => 'waiting',
-          1 => 'inProgress',
-          2 => 'imported',
-          3 => 'error',
-        ), 'statusvalue "%s" is not an element of the valid values: %s');
-        }
+        Assertion::notNull($connectFee, 'connectFee value "%s" is null, but non null value was expected.');
+        Assertion::numeric($connectFee);
 
-        $this->status = $status;
+        $this->connectFee = $connectFee;
 
         return $this;
     }
 
     /**
-     * Get status
+     * Get connectFee
      *
      * @return string
      */
-    public function getStatus()
+    public function getConnectFee()
     {
-        return $this->status;
+        return $this->connectFee;
     }
 
     /**
-     * Set brand
+     * Set rateIncrement
      *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
+     * @param string $rateIncrement
      *
      * @return self
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
+    public function setRateIncrement($rateIncrement)
     {
-        $this->brand = $brand;
+        Assertion::notNull($rateIncrement, 'rateIncrement value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($rateIncrement, 16, 'rateIncrement value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+
+        $this->rateIncrement = $rateIncrement;
 
         return $this;
     }
 
     /**
-     * Get brand
+     * Get rateIncrement
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @return string
      */
-    public function getBrand()
+    public function getRateIncrement()
     {
-        return $this->brand;
+        return $this->rateIncrement;
     }
 
     /**
-     * Set name
+     * Set groupIntervalStart
      *
-     * @param \Ivoz\Provider\Domain\Model\DestinationRate\Name $name
+     * @param string $groupIntervalStart
      *
      * @return self
      */
-    public function setName(Name $name)
+    public function setGroupIntervalStart($groupIntervalStart)
     {
-        $this->name = $name;
+        Assertion::notNull($groupIntervalStart, 'groupIntervalStart value "%s" is null, but non null value was expected.');
+        Assertion::maxLength($groupIntervalStart, 16, 'groupIntervalStart value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+
+        $this->groupIntervalStart = $groupIntervalStart;
 
         return $this;
     }
 
     /**
-     * Get name
+     * Get groupIntervalStart
      *
-     * @return \Ivoz\Provider\Domain\Model\DestinationRate\Name
+     * @return string
      */
-    public function getName()
+    public function getGroupIntervalStart()
     {
-        return $this->name;
+        return $this->groupIntervalStart;
     }
 
     /**
-     * Set description
+     * Set tpRate
      *
-     * @param \Ivoz\Provider\Domain\Model\DestinationRate\Description $description
+     * @param \Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface $tpRate
      *
      * @return self
      */
-    public function setDescription(Description $description)
+    public function setTpRate(\Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface $tpRate = null)
     {
-        $this->description = $description;
+        $this->tpRate = $tpRate;
 
         return $this;
     }
 
     /**
-     * Get description
+     * Get tpRate
      *
-     * @return \Ivoz\Provider\Domain\Model\DestinationRate\Description
+     * @return \Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface
      */
-    public function getDescription()
+    public function getTpRate()
     {
-        return $this->description;
+        return $this->tpRate;
     }
 
     /**
-     * Set file
+     * Set tpDestinationRate
      *
-     * @param \Ivoz\Provider\Domain\Model\DestinationRate\File $file
+     * @param \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface $tpDestinationRate
      *
      * @return self
      */
-    public function setFile(File $file)
+    public function setTpDestinationRate(\Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface $tpDestinationRate = null)
     {
-        $this->file = $file;
+        $this->tpDestinationRate = $tpDestinationRate;
 
         return $this;
     }
 
     /**
-     * Get file
+     * Get tpDestinationRate
      *
-     * @return \Ivoz\Provider\Domain\Model\DestinationRate\File
+     * @return \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface
      */
-    public function getFile()
+    public function getTpDestinationRate()
     {
-        return $this->file;
+        return $this->tpDestinationRate;
     }
+
+    /**
+     * Set destinationRateGroup
+     *
+     * @param \Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface $destinationRateGroup
+     *
+     * @return self
+     */
+    public function setDestinationRateGroup(\Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface $destinationRateGroup = null)
+    {
+        $this->destinationRateGroup = $destinationRateGroup;
+
+        return $this;
+    }
+
+    /**
+     * Get destinationRateGroup
+     *
+     * @return \Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface
+     */
+    public function getDestinationRateGroup()
+    {
+        return $this->destinationRateGroup;
+    }
+
+    /**
+     * Set destination
+     *
+     * @param \Ivoz\Provider\Domain\Model\Destination\DestinationInterface $destination
+     *
+     * @return self
+     */
+    public function setDestination(\Ivoz\Provider\Domain\Model\Destination\DestinationInterface $destination = null)
+    {
+        $this->destination = $destination;
+
+        return $this;
+    }
+
+    /**
+     * Get destination
+     *
+     * @return \Ivoz\Provider\Domain\Model\Destination\DestinationInterface
+     */
+    public function getDestination()
+    {
+        return $this->destination;
+    }
+
+
 
     // @codeCoverageIgnoreEnd
 }

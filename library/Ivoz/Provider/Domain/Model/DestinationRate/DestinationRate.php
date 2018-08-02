@@ -1,18 +1,23 @@
 <?php
 
 namespace Ivoz\Provider\Domain\Model\DestinationRate;
-
-use Ivoz\Core\Domain\Model\TempFileContainnerTrait;
-use Ivoz\Core\Domain\Service\FileContainerInterface;
-use Ivoz\Core\Domain\Service\TempFile;
+use Assert\Assertion;
 
 /**
  * DestinationRate
  */
-class DestinationRate extends DestinationRateAbstract implements DestinationRateInterface, FileContainerInterface
+class DestinationRate extends DestinationRateAbstract implements DestinationRateInterface
 {
     use DestinationRateTrait;
-    use TempFileContainnerTrait { addTmpFile as protected _addTmpFile; }
+
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
+    public function getChangeSet()
+    {
+        return parent::getChangeSet();
+    }
 
     /**
      * Get id
@@ -25,26 +30,80 @@ class DestinationRate extends DestinationRateAbstract implements DestinationRate
     }
 
     /**
-     * @return array
+     * @return string
      */
-    public function getFileObjects()
+    public function getCgrTag()
     {
-        return [
-            'File'
-        ];
+        return sprintf("dr%d", $this->getDestinationRateGroup()->getId());
     }
 
     /**
-     * Add TempFile and set status to pending
-     *
-     * @param $fldName
-     * @param TempFile $file
+     * @return string
      */
-    public function addTmpFile($fldName, TempFile $file)
+    public function getCgrRatesTag()
     {
-        if ($fldName == 'File') {
-            $this->setStatus('waiting');
+        return sprintf("rt%d", $this->getId());
+    }
+
+    /**
+     * @return string
+     */
+    public function getCgrDestinationsTag()
+    {
+        return $this->getDestination()->getCgrTag();
+    }
+
+    /**
+     * Ensure Valid connectFee format
+     *
+     * @inheritdoc
+     */
+    public function setConnectFee($connectFee)
+    {
+        Assertion::regex($connectFee, '/^[0-9]{1,6}[.]{0,1}[0-9]*$/');
+
+        return parent::setConnectFee($connectFee);
+    }
+
+    /**
+     * Ensure Valid connectFee format
+     *
+     * @inheritdoc
+     */
+    public function setCost($cost)
+    {
+        Assertion::regex($cost, '/^[0-9]{1,6}[.]{0,1}[0-9]*$/');
+
+        return parent::setCost($cost);
+    }
+
+
+    /**
+     * Ensure Group Interval Start has seconds suffix
+     *
+     * @inheritdoc
+     */
+    public function setGroupIntervalStart($groupIntervalStart)
+    {
+        if (!strpos($groupIntervalStart, 's')) {
+            $groupIntervalStart .= 's';
         }
-        $this->_addTmpFile($fldName, $file);
+
+        return parent::setGroupIntervalStart($groupIntervalStart);
+    }
+
+    /**
+     * Ensure Rating Increment has seconds suffix
+     *
+     * @inheritdoc
+     */
+    public function setRateIncrement($rateIncrement)
+    {
+        if (!strpos($rateIncrement, 's')) {
+            $rateIncrement .= 's';
+        }
+
+        return parent::setRateIncrement($rateIncrement);
     }
 }
+

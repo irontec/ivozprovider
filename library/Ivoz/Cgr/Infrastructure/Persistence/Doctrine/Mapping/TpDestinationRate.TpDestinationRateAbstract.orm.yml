@@ -15,18 +15,6 @@ Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateAbstract:
         - tpid
         - tag
         - destinations_tag
-    destinationRate_prefix:
-      unique: true
-      columns:
-        - destinationRateId
-        - prefix
-  embedded:
-    destination:
-      class: Destination
-      columnPrefix: false
-    rate:
-      class: Rate
-      columnPrefix: false
   fields:
     tpid:
       type: string
@@ -92,14 +80,13 @@ Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateAbstract:
       options:
         default: CURRENT_TIMESTAMP
       column: created_at
-  manyToOne:
+  oneToOne:
     destinationRate:
       targetEntity: \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface
-      mappedBy: null
-      inversedBy: tpDestinationRates
-      joinColumns:
-        destinationRateId:
-          nullable: false
-          referencedColumnName: id
-          onDelete: cascade
-      orphanRemoval: false
+      inversedBy: tpDestinationRate
+      fetch: LAZY
+      joinColumn:
+        name: destinationRateId
+        referencedColumnName: id
+        nullable: false
+        onDelete: cascade

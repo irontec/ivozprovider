@@ -542,7 +542,9 @@ msgid "Description"
 msgstr "Descripción"
 
 msgid "Destination"
-msgstr "Destino"
+msgid_plural "Destinations"
+msgstr[0] "Destino"
+msgstr[1] "Destinos"
 
 msgid "Destination IP address"
 msgstr "Dirección IP destino"
@@ -551,6 +553,11 @@ msgid "Destination rate"
 msgid_plural "Destination rates"
 msgstr[0] "Precio destino"
 msgstr[1] "Precios destinos"
+
+msgid "Destination rate group"
+msgid_plural "Destination rate groups"
+msgstr[0] "Grupo de precio destino"
+msgstr[1] "Grupos de precios destinos"
 
 msgid "Destination rate not found"
 msgstr "Precio destino no encontrado"
@@ -2131,9 +2138,6 @@ msgstr "Tag"
 
 msgid "Target"
 msgstr "Destino"
-
-msgid "Target pattern"
-msgstr "Patron de destino"
 
 msgid "Target type"
 msgstr "Tipo de ruta"

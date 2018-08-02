@@ -14,7 +14,6 @@ Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationAbstract:
         - tpid
         - tag
         - prefix
-        - tpDestinationRateId
   fields:
     tpid:
       type: string
@@ -35,12 +34,6 @@ Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationAbstract:
       length: 24
       options:
         fixed: false
-    name:
-      type: string
-      nullable: true
-      length: 64
-      options:
-        fixed: false
     createdAt:
       type: datetime
       nullable: false
@@ -48,15 +41,12 @@ Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationAbstract:
         default: CURRENT_TIMESTAMP
       column: created_at
   oneToOne:
-    tpDestinationRate:
-      targetEntity: \Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface
-      cascade: {  }
-      fetch: LAZY
-      mappedBy: null
+    destination:
+      targetEntity: \Ivoz\Provider\Domain\Model\Destination\DestinationInterface
       inversedBy: tpDestination
-      joinColumns:
-        tpDestinationRateId:
-          nullable: false
-          referencedColumnName: id
-          onDelete: cascade
-      orphanRemoval: false
+      fetch: LAZY
+      joinColumn:
+        name: destinationId
+        referencedColumnName: id
+        nullable: false
+        onDelete: cascade

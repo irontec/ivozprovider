@@ -1,49 +1,66 @@
 Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateAbstract:
   type: mappedSuperclass
-  indexes:
-    destinationRate_brandId:
-      columns:
-        - brandId
   uniqueConstraints:
-    destinationRate_brandTag:
+    destinationRate_destination:
+      unique: true
       columns:
-        - tag
-        - brandId
-  embedded:
-    name:
-      class: Name
-      columnPrefix: false
-    description:
-      class: Description
-      columnPrefix: false
-    file:
-      class: File
-      columnPrefix: false
+        - destinationRateGroupId
+        - destinationId
   fields:
-    tag:
+    cost:
+      type: decimal
+      nullable: false
+      precision: 10
+      scale: 4
+      column: rate
+    connectFee:
+      type: decimal
+      nullable: false
+      precision: 10
+      scale: 4
+      column: connectFee
+    rateIncrement:
       type: string
-      nullable: true
-      length: 64
+      nullable: false
+      length: 16
       options:
         fixed: false
-    status:
+      column: rateIncrement
+    groupIntervalStart:
       type: string
-      nullable: true
-      length: 20
+      nullable: false
+      length: 16
       options:
         fixed: false
-        comment: '[enum:waiting|inProgress|imported|error]'
-        default: null
+        default: "0s"
+      column: groupIntervalStart
   manyToOne:
-    brand:
-      targetEntity: \Ivoz\Provider\Domain\Model\Brand\BrandInterface
-      cascade: {  }
-      fetch: LAZY
+    destinationRateGroup:
+      targetEntity: \Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface
       mappedBy: null
-      inversedBy: null
+      inversedBy: destinationRates
       joinColumns:
-        brandId:
-          referencedColumnName: id
+        destinationRateGroupId:
           nullable: false
+          referencedColumnName: id
           onDelete: cascade
       orphanRemoval: false
+    destination:
+      targetEntity: \Ivoz\Provider\Domain\Model\Destination\DestinationInterface
+      mappedBy: null
+      inversedBy: destinationRates
+      joinColumns:
+        destinationId:
+          nullable: false
+          referencedColumnName: id
+          onDelete: cascade
+      orphanRemoval: false
+  oneToOne:
+    tpRate:
+      targetEntity: Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface
+      mappedBy: destinationRate
+      fetch: LAZY
+    tpDestinationRate:
+      targetEntity: Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface
+      mappedBy: destinationRate
+      fetch: LAZY

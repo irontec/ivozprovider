@@ -95,9 +95,17 @@ mappers:
         modelFile: DdiProviderRegistrations,
         entity: 'Ivoz\\Provider\\Domain\\Model\\DdiProviderRegistration\\DdiProviderRegistration'
     }
+  - &Destinations {
+        modelFile: Destinations,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\Destination\\Destination'
+    }
   - &DestinationRates {
         modelFile: DestinationRates,
         entity: 'Ivoz\\Provider\\Domain\\Model\\DestinationRate\\DestinationRate'
+    }
+  - &DestinationRateGroups {
+        modelFile: DestinationRateGroups,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\DestinationRateGroup\\DestinationRateGroup'
     }
   - &Domains {
         modelFile: Domains,
@@ -314,14 +322,6 @@ mappers:
   - &TransformationRuleSets {
         modelFile: TransformationRuleSets,
         entity: 'Ivoz\\Provider\\Domain\\Model\\TransformationRuleSet\\TransformationRuleSet'
-    }
-  - &TpDestinationRates {
-        modelFile: TpDestinationRates,
-        entity: 'Ivoz\\Cgr\\Domain\\Model\\TpDestinationRate\\TpDestinationRate'
-    }
-  - &TpDestinations {
-        modelFile: TpDestinations,
-        entity: 'Ivoz\\Cgr\\Domain\\Model\\TpDestination\\TpDestination'
     }
   - &TpRates {
         modelFile: TpRates,

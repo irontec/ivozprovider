@@ -326,37 +326,5 @@ interface TrunksCdrInterface extends EntityInterface
      */
     public function getCarrier();
 
-    /**
-     * Set tpDestination
-     *
-     * @param \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface $tpDestination
-     *
-     * @return self
-     */
-    public function setTpDestination(\Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface $tpDestination = null);
-
-    /**
-     * Get tpDestination
-     *
-     * @return \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface
-     */
-    public function getTpDestination();
-
-    /**
-     * Set destinationRate
-     *
-     * @param \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate
-     *
-     * @return self
-     */
-    public function setDestinationRate(\Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate = null);
-
-    /**
-     * Get destinationRate
-     *
-     * @return \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface
-     */
-    public function getDestinationRate();
-
 }
 

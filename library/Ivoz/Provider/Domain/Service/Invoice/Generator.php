@@ -306,25 +306,6 @@ class Generator
                     $callData['targetPattern']['name'] = $destination->getName();
                     $callData['targetPattern']['description'] = $destination->getName();
 
-                }  else if ($call->getDestinationRate()) {
-
-                    /* Legacy path */
-                    $destinationRate = $call->getDestinationRate();
-                    $destinationRateDto = $this->dtoAssembler->toDto($destinationRate);
-
-                    $callData['pricingPlan'] = $destinationRateDto->toArray();
-                    $callData['pricingPlan']['name'] = $destinationRate->getName()->{'get' . $lang}();
-                    $callData['pricingPlan']['description'] = $destinationRate->getDescription()->{'get' . $lang}();
-
-                    // -----------------
-
-                    $destination = $call->getTpDestination();
-                    $destinationDto = $this->dtoAssembler->toDto($destination);
-
-                    $callData['targetPattern'] = $destinationDto->toArray();
-                    $callData['targetPattern']['name'] = $destination->getName();
-                    $callData['targetPattern']['description'] = $destination->getName();
-
                 } else {
 
                     $callData['pricingPlan']['name'] = '';

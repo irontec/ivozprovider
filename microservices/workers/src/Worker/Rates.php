@@ -3,12 +3,13 @@
 namespace Worker;
 
 use Doctrine\ORM\EntityManagerInterface;
+use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use GearmanJob;
-use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateDto;
-use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface;
-use Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateRepository;
 use Ivoz\Core\Application\Service\Assembler\DtoAssembler;
+use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupDto;
+use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface;
+use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupRepository;
 use Mmoreram\GearmanBundle\Driver\Gearman;
 use Symfony\Bridge\Monolog\Logger;
 use Symfony\Component\Serializer\Encoder\CsvEncoder;
@@ -32,9 +33,9 @@ class Rates
     protected $em;
 
     /**
-     * @var EntityPersisterInterface
+     * @var EntityTools
      */
-    protected $entityPersister;
+    protected $entityTools;
 
     /**
      * @var Logger
@@ -42,15 +43,9 @@ class Rates
     protected $logger;
 
     /**
-     * @var DestinationRateInterface
+     * @var DestinationRateGroupRepository
      */
-    protected $destinationRateRepository;
-
-    /**
-     * @var DtoAssembler
-     */
-    protected $dtoAssembler;
-
+    protected $destinationRateGroupRepository;
 
     /**
      * @var Client
@@ -59,25 +54,23 @@ class Rates
 
     /**
      * Rates constructor.
+     *
      * @param EntityManagerInterface $em
-     * @param DestinationRateRepository $destinationRateRepository
-     * @param DtoAssembler $dtoAssembler
-     * @param EntityPersisterInterface $entityPersister
+     * @param DestinationRateGroupRepository $destinationRateGroupRepository
+     * @param EntityTools $entityTools
      * @param Logger $logger
      * @param Client $redisClient
      */
     public function __construct(
         EntityManagerInterface $em,
-        DestinationRateRepository $destinationRateRepository,
-        DtoAssembler $dtoAssembler,
-        EntityPersisterInterface $entityPersister,
+        DestinationRateGroupRepository $destinationRateGroupRepository,
+        EntityTools $entityTools,
         Logger $logger,
         Client $redisClient
     ) {
         $this->em = $em;
-        $this->destinationRateRepository = $destinationRateRepository;
-        $this->dtoAssembler = $dtoAssembler;
-        $this->entityPersister = $entityPersister;
+        $this->destinationRateGroupRepository = $destinationRateGroupRepository;
+        $this->entityTools = $entityTools;
         $this->logger = $logger;
         $this->redisClient = $redisClient;
     }
@@ -90,6 +83,7 @@ class Rates
      *
      * @param GearmanJob $serializedJob Serialized object with job parameters
      * @return boolean
+     * @throws \Exception
      */
     public function import(GearmanJob $serializedJob)
     {
@@ -99,31 +93,35 @@ class Rates
         $job = igbinary_unserialize($serializedJob->workload());
         $params = $job->getParams();
 
-        /** @var DestinationRateInterface $destinationRate */
-        $destinationRate = $this->destinationRateRepository->find(
+        /** @var DestinationRateGroupInterface $destinationRateGroup */
+        $destinationRateGroup = $this->destinationRateGroupRepository->find(
             $params['id']
         );
 
-        if (!$destinationRate) {
+        if (!$destinationRateGroup) {
             $this->logger->error('Unknown destination rate with id ' . $params['id']);
             throw new \Exception();
         }
 
-        $destinationRateId = $destinationRate->getId();
-        $brandId = $destinationRate->getBrand()->getId();
+        $destinationRateGroupId = $destinationRateGroup->getId();
+        $brandId = $destinationRateGroup->getBrand()->getId();
 
-        /** @var DestinationRateDto $destinationRateDto */
-        $destinationRateDto = $this->dtoAssembler->toDto(
-            $destinationRate
+        /** @var DestinationRateGroupDto $destinationRateGroupDto */
+        $destinationRateGroupDto = $this->entityTools->entityToDto(
+            $destinationRateGroup
         );
 
-        $destinationRateDto->setStatus('inProgress');
-        $this
-            ->entityPersister
-            ->persistDto($destinationRateDto, $destinationRate, true);
+        $destinationRateGroupDto->setStatus('inProgress');
+        $this->entityTools
+            ->persistDto(
+                $destinationRateGroupDto,
+                $destinationRateGroup,
+                true
+            );
+
         $this->logger->debug('Importer in progress');
 
-        $importerArguments = $destinationRate
+        $importerArguments = $destinationRateGroup
             ->getFile()
             ->getImporterArguments();
 
@@ -132,8 +130,9 @@ class Rates
             $importerArguments['enclosure'] ?? '"',
             $importerArguments['scape'] ?? '\\'
         );
+
         $serializer = new Serializer([new ObjectNormalizer()], [$csvEncoder]);
-        $csvContents = file_get_contents($destinationRateDto->getFilePath());
+        $csvContents = file_get_contents($destinationRateGroupDto->getFilePath());
         if ($importerArguments['ignoreFirst']) {
             $csvContents = preg_replace('/^.+\n/', '', $csvContents);
         }
@@ -145,7 +144,8 @@ class Rates
             $csvContents,
             'csv'
         );
-        $tpDestinationRates = [];
+        $destinationRates = [];
+        $destinations = [];
 
         if (current($csvLines) && !is_array(current($csvLines))) {
             // We require an array of arrays
@@ -158,75 +158,113 @@ class Rates
             $line["Per minute charge"]  = sprintf("%.4f", $line["rateCost"]);
             $line["Connection charge"]  = sprintf("%.4f", $line["connectionCharge"]);
 
-            $tpDestinationRates[] =
-                sprintf('("%s", "%s", "%s", "%s", "%ss", %s)',
-                    $line['destinationPrefix'],
-                    $line['destinationName'],
-                    $line["connectionCharge"],
+            $destinations[] = sprintf('("%s",  "%s",  "%s", "%d" )',
+                $line['destinationPrefix'],
+                $line['destinationName'],
+                $line['destinationName'],
+                $brandId
+            );
+
+            $destinationRates[] =
+                sprintf('("%s", "%s", "%ss", %s, %d)',
                     $line["rateCost"],
+                    $line["connectionCharge"],
                     $line["rateIncrement"],
-                    sprintf('(SELECT id FROM DestinationRates WHERE id = %d LIMIT 1)', $destinationRateId)
+                    sprintf(
+                        '(SELECT id FROM Destinations WHERE prefix = "%s" AND brandId = %d LIMIT 1)',
+                        $line['destinationPrefix'],
+                        $brandId
+                    ),
+                    $destinationRateGroupId
             );
         }
 
-        if (!$tpDestinationRates) {
+        if (!$destinationRates) {
             echo "No lines parsed from CSV File: " . $params['filePath'];
-            $destinationRateDto->setStatus('error');
-            $this
-                ->entityPersister
-                ->persistDto($destinationRateDto, $destinationRate, true);
+            $destinationRateGroupDto->setStatus('error');
+            $this->entityTools
+                ->persistDto(
+                    $destinationRateGroupDto,
+                    $destinationRateGroup,
+                    true
+                );
             exit(1);
         }
 
         try {
             $this->em->getConnection()->beginTransaction();
 
-            ////////////////////////////
-            /// tp_destination_rates
-            ////////////////////////////
-            $this->logger->debug('About to insert tp_destination_rates');
-            $tpDestinationRateChunks = array_chunk($tpDestinationRates, 100);
-            foreach ($tpDestinationRateChunks as $tpDestinationRates) {
+            /**
+             * Create any missing Destinations
+             */
+            $this->logger->debug('About to insert Destinations');
+            $destinationChunks = array_chunk($destinations, 100);
+            foreach ($destinationChunks as $destination) {
+                $destinationInsert = 'INSERT IGNORE INTO Destinations (prefix, name_en, name_es, brandId) VALUES '
+                        . implode (",", $destination);
+                $this->em->getConnection()->executeQuery($destinationInsert);
+            }
 
-                $tpDestinationRateInsert = 'REPLACE INTO tp_destination_rates (prefix, prefix_name, connect_fee, rate, rate_increment, destinationRateId) VALUES ' . implode(",", $tpDestinationRates);
+            /**
+             * Create any missing tp_destinations from Destination table
+             */
+            $this->logger->debug('About to insert tp_destinations');
+            $tpDestinationInsert = 'INSERT IGNORE INTO tp_destinations (tag, prefix, destinationId)
+                        SELECT CONCAT("b", brandId, "dst", id), prefix, id FROM Destinations';
+            $this->em->getConnection()->executeQuery($tpDestinationInsert);
+
+            /**
+             *  Update DestinationRates with each CSV row
+             */
+            $this->logger->debug('About to insert DestinationRates');
+            $tpDestinationRateChunks = array_chunk($destinationRates, 100);
+            foreach ($tpDestinationRateChunks as $destinationRates) {
+
+                $tpDestinationRateInsert = 'INSERT INTO DestinationRates
+                              (rate, connectFee, rateIncrement, destinationId, destinationRateGroupId)
+                              VALUES ' . implode(",", $destinationRates) .
+                              'ON DUPLICATE KEY UPDATE 
+                                rate = VALUES(rate),
+                                connectFee = VALUES(connectFee),
+                                rateIncrement = VALUES(rateIncrement)';
                 $this->em->getConnection()->executeQuery($tpDestinationRateInsert);
             }
 
-            $this->logger->debug('About to update tp_destination_rates');
-            $tpDestinationRateUpdateTags = "UPDATE tp_destination_rates SET
-                              tag = CONCAT('b" . $brandId . "dr', destinationRateId),
-                              rates_tag = CONCAT('b" . $brandId . "dr', destinationRateId, 'rt', id),
-                              destinations_tag = CONCAT('b" . $brandId . "dr', destinationRateId, 'dst', id)";
-            $this->em->getConnection()->executeQuery($tpDestinationRateUpdateTags);
-
-            ////////////////////////////
-            /// tp_destinations
-            ////////////////////////////
-            $this->logger->debug('About to insert tp_destinations');
-            $tpDestinationInsert = "REPLACE INTO tp_destinations
-                          (tag, prefix, name, tpDestinationRateId)
-                        SELECT destinations_tag, prefix, prefix_name, id
-                          FROM tp_destination_rates
-                          WHERE destinationRateId = (SELECT id FROM DestinationRates WHERE id = '$destinationRateId')";
-            $this->em->getConnection()->executeQuery($tpDestinationInsert);
-
-            ////////////////////////////
-            /// tp_rates
-            ////////////////////////////
+            /**
+             * Update tp_rates with each DestinationRates row
+             */
             $this->logger->debug('About to insert tp_rates');
-            $tpRatesInsert = "REPLACE INTO tp_rates
-                          (tag, rate, connect_fee, rate_increment, group_interval_start, tpDestinationRateId)
-                        SELECT rates_tag, rate, connect_fee, rate_increment, group_interval_start, id
-                          FROM tp_destination_rates
-                          WHERE destinationRateId = (SELECT id FROM DestinationRates WHERE id = '$destinationRateId' LIMIT 1)";
+            $tpRatesInsert = "INSERT INTO tp_rates
+                          (tag, rate, connect_fee, rate_increment, group_interval_start, destinationRateId)
+                        SELECT CONCAT('b', DRG.brandId, 'rt', DR.id), rate, connectFee, rateIncrement, groupIntervalStart, DR.id
+                          FROM DestinationRates DR
+                          INNER JOIN DestinationRateGroups DRG ON DRG.id = DR.destinationRateGroupId
+                          WHERE DRG.id = $destinationRateGroupId
+                          ON DUPLICATE KEY UPDATE
+                            rate = VALUES(rate),
+                            connect_fee = VALUES(connect_fee),
+                            rate_increment = VALUES(rate_increment),
+                            group_interval_start = VALUES(group_interval_start)";
             $this->em->getConnection()->executeQuery($tpRatesInsert);
+
+            /**
+             * Update tp_destination_rates with each DestinationRates row
+             */
+            $this->logger->debug('About to update tp_destination_rates');
+            $tpDestinationRatesInsert = "INSERT IGNORE tp_destination_rates (tag, destinations_tag, rates_tag, destinationRateId)
+                        SELECT CONCAT('b', DRG.brandId, 'dr', DR.id), CONCAT('b', DRG.brandId, 'dst', DR.destinationId),
+                         CONCAT('b', DRG.brandId, 'rt', DR.id), DR.id
+                          FROM DestinationRates DR
+                          INNER JOIN DestinationRateGroups DRG ON DRG.id = DR.destinationRateGroupId
+                          WHERE DRG.id = $destinationRateGroupId";
+            $this->em->getConnection()->executeQuery($tpDestinationRatesInsert);
 
             $this->em->getConnection()->commit();
 
-            $destinationRateDto->setStatus('imported');
+            $destinationRateGroupDto->setStatus('imported');
             $this
-                ->entityPersister
-                ->persistDto($destinationRateDto, $destinationRate, true);
+                ->entityTools
+                ->persistDto($destinationRateGroupDto, $destinationRateGroup, true);
 
             $this->redisClient->scheduleFullReload();
             $this->logger->debug('Importer finished successfuly');
@@ -236,10 +274,10 @@ class Rates
             $this->logger->error('Importer error. Rollback');
             $this->em->getConnection()->rollback();
 
-            $destinationRateDto->setStatus('error');
+            $destinationRateGroupDto->setStatus('error');
             $this
-                ->entityPersister
-                ->persistDto($destinationRateDto, $destinationRate, true);
+                ->entityTools
+                ->persistDto($destinationRateGroupDto, $destinationRateGroup, true);
 
             $this->em->close();
 
