@@ -34,7 +34,7 @@ class DestinationRate extends DestinationRateAbstract implements DestinationRate
      */
     public function getCgrTag()
     {
-        return sprintf("dr%d", $this->getDestinationRateGroup()->getId());
+        return $this->getDestinationRateGroup()->getCgrTag();
     }
 
     /**
@@ -42,7 +42,11 @@ class DestinationRate extends DestinationRateAbstract implements DestinationRate
      */
     public function getCgrRatesTag()
     {
-        return sprintf("rt%d", $this->getId());
+        return sprintf(
+            "b%drt%d",
+            $this->getDestinationRateGroup()->getBrand()->getId(),
+            $this->getId()
+        );
     }
 
     /**

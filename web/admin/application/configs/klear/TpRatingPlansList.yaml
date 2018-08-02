@@ -50,8 +50,20 @@ production:
         group1:
           colsPerRow: 4
           fields:
-            destinationRate: 3
+            destinationRateGroup: 3
             weight: 1
+        group2:
+          colsPerRow: 6
+          fields:
+            timingType: 3
+            timeIn: 3
+            monday: 1
+            tuesday: 1
+            wednesday: 1
+            thursday: 1
+            friday: 1
+            saturday: 1
+            sunday: 1
 
     tpRatingPlansEdit_screen: &tpRatingPlansEdit_screenLink
       <<: *TpRatingPlans

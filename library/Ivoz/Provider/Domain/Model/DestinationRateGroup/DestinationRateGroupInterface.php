@@ -27,6 +27,11 @@ interface DestinationRateGroupInterface extends LoggableEntityInterface
     public function addTmpFile($fldName, \Ivoz\Core\Domain\Service\TempFile $file);
 
     /**
+     * @return string
+     */
+    public function getCgrTag();
+
+    /**
      * Set status
      *
      * @param string $status

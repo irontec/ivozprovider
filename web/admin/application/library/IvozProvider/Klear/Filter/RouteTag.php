@@ -17,11 +17,16 @@ class IvozProvider_Klear_Filter_RouteTag extends IvozProvider_Klear_Filter_Brand
         /** @var \Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagDto $tags */
         $tags = $dataGateway->findBy(
             \Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTag::class,
-            ["CompanyRelRoutingTag.company = '$companyId'"]
+            [   "CompanyRelRoutingTag.company = '$companyId'"   ]
         );
 
         $tagIds = array_map(function ($tag) { return $tag->getRoutingtagId(); }, $tags);;
-        $this->_condition[] = "self::id in (''," . implode(",", $tagIds) . ")";
+        if (count($tagIds) > 0) {
+            $this->_condition[] = "self::id in (" . implode(",", $tagIds) . ")";
+        } else {
+            $this->_condition[] = "FALSE = TRUE";
+        }
+
 
         return true;
     }
