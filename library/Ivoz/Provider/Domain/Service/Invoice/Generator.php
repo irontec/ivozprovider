@@ -2,13 +2,15 @@
 
 namespace Ivoz\Provider\Domain\Service\Invoice;
 
+use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface;
+use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Provider\Domain\Model\Destination\DestinationInterface;
 use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto;
 use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanRepository;
 use Ivoz\Cgr\Domain\Model\TpCdr\TpCdr;
 use Ivoz\Cgr\Domain\Model\TpCdr\TpCdrInterface;
 use Ivoz\Cgr\Domain\Model\TpCdr\TpCdrRepository;
 use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationRepository;
-use Ivoz\Core\Application\Service\Assembler\DtoAssembler;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrRepository;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
@@ -53,9 +55,9 @@ class Generator
     protected $tpDestinationRepository;
 
     /**
-     * @var DtoAssembler
+     * @var EntityTools
      */
-    protected $dtoAssembler;
+    protected $entityTools;
 
     /**
      * @var Logger
@@ -75,7 +77,7 @@ class Generator
      * @param TpCdrRepository $tpCdrRepository
      * @param RatingPlanRepository $ratingPlanRepository
      * @param TpDestinationRepository $destinationRepository
-     * @param DtoAssembler $dtoAssembler
+     * @param EntityTools $entityTools
      * @param Logger $logger
      * @param string $vendorDir
      */
@@ -85,7 +87,7 @@ class Generator
         TpCdrRepository $tpCdrRepository,
         RatingPlanRepository $ratingPlanRepository,
         TpDestinationRepository $destinationRepository,
-        DtoAssembler $dtoAssembler,
+        EntityTools $entityTools,
         Logger $logger,
         string $vendorDir
     ) {
@@ -94,7 +96,7 @@ class Generator
         $this->tpCdrRepository = $tpCdrRepository;
         $this->ratingPlanRepository = $ratingPlanRepository;
         $this->tpDestinationRepository = $destinationRepository;
-        $this->dtoAssembler = $dtoAssembler;
+        $this->entityTools = $entityTools;
         $this->logger = $logger;
         $this->vendorDir = $vendorDir;
     }
@@ -128,14 +130,14 @@ class Generator
         $callData = $this->_getCallData($invoice);
 
         $brand = $invoice->getBrand();
-        $brandDto = $this->dtoAssembler->toDto($brand);
+        $brandDto = $this->entityTools->entityToDto($brand);
         $brandLogoPath = $brandDto->getLogoPath();
         if (!file_exists($brandLogoPath)) {
             $brandLogoPath = 'images/palmera90.png';
         }
 
         $company = $invoice->getCompany();
-        $companyDto = $this->dtoAssembler->toDto($company);
+        $companyDto = $this->entityTools->entityToDto($company);
         $invoiceTz = new \DateTimeZone(
             $company->getDefaultTimezone()->getTz()
         );
@@ -148,7 +150,7 @@ class Generator
         $outDate = clone $invoice->getOutDate();
         $outDate->setTimezone($invoiceTz);
 
-        $invoiceDto = $this->dtoAssembler->toDto($invoice);
+        $invoiceDto = $this->entityTools->entityToDto($invoice);
 
         $invoiceArray = $invoiceDto->toArray();
         $invoiceArray['invoiceDate'] = $invoiceDate->format(self::DATE_FORMAT);
@@ -251,7 +253,7 @@ class Generator
 
             foreach ($calls as $call) {
 
-                $callDto = $this->dtoAssembler->toDto($call);
+                $callDto = $this->entityTools->entityToDto($call);
                 $callData = $callDto->toArray();
                 $callData['calldate'] = $call
                     ->getStartTime()
@@ -276,7 +278,6 @@ class Generator
                     : $call->getDuration();
                 $callData['dst_duration_formatted'] = $this->_timeFormat($duration);
 
-                /** @todo WTF */
                 $callData['durationFormatted'] = $callData['dst_duration_formatted'];
 
                 $callData['pricingPlan'] = [];
@@ -287,24 +288,45 @@ class Generator
                     $costDetails = $tpCdr->getCostDetails();
                     $timespan = $costDetails['Timespans'][0];
                     $ratingPlanTag = $timespan['RatingPlanId'];
-                    $ratingPlan = $this->ratingPlanRepository->findOneByTag($ratingPlanTag);
 
-                    /** @var RatingPlanDto $ratingPlanDto */
-                    $ratingPlanDto = $this->dtoAssembler->toDto($ratingPlan);
+                    try {
+                        $ratingPlan = $this->ratingPlanRepository->findOneByTag($ratingPlanTag);
 
-                    $callData['pricingPlan'] = $ratingPlanDto->toArray();
-                    $callData['pricingPlan']['name'] = $ratingPlan->getName()->{'get' . $lang}();
-                    $callData['pricingPlan']['description'] = $ratingPlan->getDescription()->{'get' . $lang}();
+                        /** @var RatingPlanDto $ratingPlanDto */
+                        $ratingPlanDto = $this->entityTools->entityToDto($ratingPlan);
+
+                        $callData['pricingPlan'] = $ratingPlanDto->toArray();
+                        $callData['pricingPlan']['name'] = $ratingPlan->getName()->{'get' . $lang}();
+                        $callData['pricingPlan']['description'] = $ratingPlan->getDescription()->{'get' . $lang}();
+
+                    } catch (\Doctrine\ORM\NoResultException $e) {
+                        $callData['pricingPlan']['name'] = '';
+                        $callData['pricingPlan']['description'] = '';
+                    }
 
                     // -----------------
 
                     $matchedDestTag = $timespan['MatchedDestId'];
-                    $destination = $this->tpDestinationRepository->findOneByTag($matchedDestTag);
-                    $destinationDto = $this->dtoAssembler->toDto($destination);
 
-                    $callData['targetPattern'] = $destinationDto->toArray();
-                    $callData['targetPattern']['name'] = $destination->getName();
-                    $callData['targetPattern']['description'] = $destination->getName();
+                    try {
+                        /** @var TpDestinationInterface $destination */
+                        $tpDstination = $this->tpDestinationRepository->findOneByTag($matchedDestTag);
+                        if (!$tpDstination) {
+                            throw new \Doctrine\ORM\NoResultException('Tp Destination not found');
+                        }
+
+                        /** @var DestinationInterface $destination */
+                        $destination = $tpDstination->getDestination();
+                        $destinationDto = $this->entityTools->entityToDto($destination);
+
+                        $callData['targetPattern'] = $destinationDto->toArray();
+                        $callData['targetPattern']['name'] = $destination->getName()->{'get' . $lang}();;
+                        $callData['targetPattern']['description'] = $destination->getName()->{'get' . $lang}();
+
+                    } catch (\Doctrine\ORM\NoResultException $e) {
+                        $callData['targetPattern']['name'] = '';
+                        $callData['targetPattern']['description'] = '';
+                    }
 
                 } else {
 
