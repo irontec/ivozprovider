@@ -28,6 +28,7 @@ function goToDashboard(resolve) {
               $(".ui-tabs-nav .ui-icon-close").click();
               $("a.ui-dialog-titlebar-close").click();
               $("#footerbar a.subsection").trigger('mousedown').trigger('mouseup');
+              setTimeout( () => { $("#tabsList").css("margin-left", 0); }, 50 );
             `).waitForElementVisible('.ui-tabs-nav .ui-icon-close', 5000);
     }
 
