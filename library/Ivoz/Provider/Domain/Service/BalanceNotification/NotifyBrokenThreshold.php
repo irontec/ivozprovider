@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\BalanceNotification;
 
+use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Core\Domain\Event\DomainEventInterface;
 use Ivoz\Core\Domain\Service\DomainEventSubscriberInterface;
 use Ivoz\Core\Domain\Service\DomainEventSubscriberTrait;
@@ -28,6 +29,11 @@ class NotifyBrokenThreshold implements DomainEventSubscriberInterface
     protected $balanceNotificationRepository;
 
     /**
+     * @var EntityTools
+     */
+    protected $entityTools;
+
+    /**
      * @var Client
      */
     protected $mailer;
@@ -35,10 +41,12 @@ class NotifyBrokenThreshold implements DomainEventSubscriberInterface
     public function __construct(
         NotificationTemplateRepository $notificationTemplateRepository,
         BalanceNotificationRepository $balanceNotificationRepository,
+        EntityTools $entityTools,
         Client $mailer
     ) {
         $this->notificationTemplateRepository = $notificationTemplateRepository;
         $this->balanceNotificationRepository = $balanceNotificationRepository;
+        $this->entityTools = $entityTools;
         $this->mailer = $mailer;
     }
 
@@ -97,6 +105,14 @@ class NotifyBrokenThreshold implements DomainEventSubscriberInterface
             );
 
         $this->mailer->send($email);
+
+        $balanceNotificationDto = $this->entityTools->entityToDto($balanceNotification);
+        $balanceNotificationDto->setLastSent(new \DateTime());
+        $this->entityTools->persistDto(
+            $balanceNotificationDto,
+            $balanceNotification,
+            false
+        );
     }
 
     private function parseNotificationContent(string $content, string $name, float $currentBalance)
