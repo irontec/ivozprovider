@@ -33,7 +33,7 @@ class InvoiceNumberSequenceLifeCycleTestLifeCycleTest extends KernelTestCase
     protected function addInvoiceNumberSequence()
     {
         return $this
-            ->entityPersister
+            ->entityTools
             ->persistDto(
                 $this->getInvoiceNumberSequencePdo(),
                 null,

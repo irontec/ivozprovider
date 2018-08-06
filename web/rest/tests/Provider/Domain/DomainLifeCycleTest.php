@@ -23,7 +23,7 @@ class DomainLifeCycleTest extends KernelTestCase
             ->setDescription('127.7.7.7');
 
         /** @var Domain $domain */
-        $domain = $this->entityPersister
+        $domain = $this->entityTools
             ->persistDto($domainDto, null, true);
 
         return $domain;
@@ -63,7 +63,7 @@ class DomainLifeCycleTest extends KernelTestCase
             new \Doctrine\Common\Collections\ArrayCollection([])
         );
 
-        $this->entityPersister->persist($domain, true);
+        $this->entityTools->persist($domain, true);
 
         $friends = $domain->getFriends();
         $this->assertCount(
@@ -107,7 +107,7 @@ class DomainLifeCycleTest extends KernelTestCase
             new \Doctrine\Common\Collections\ArrayCollection([])
         );
 
-        $this->entityPersister->persist($domain, true);
+        $this->entityTools->persist($domain, true);
 
         $residentialDevices = $domain->getResidentialDevices();
         $this->assertCount(
@@ -151,7 +151,7 @@ class DomainLifeCycleTest extends KernelTestCase
             new \Doctrine\Common\Collections\ArrayCollection([])
         );
 
-        $this->entityPersister->persist($domain, true);
+        $this->entityTools->persist($domain, true);
 
         $terminals = $domain->getTerminals();
         $this->assertCount(

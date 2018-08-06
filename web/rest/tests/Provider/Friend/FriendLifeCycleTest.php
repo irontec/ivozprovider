@@ -29,7 +29,7 @@ class FriendLifeCycleTestLifeCycleTest extends KernelTestCase
             ->setDomainId(1);
 
         return $this
-            ->entityPersister
+            ->entityTools
             ->persistDto($friendDto, null, true);
     }
 
@@ -87,7 +87,7 @@ class FriendLifeCycleTestLifeCycleTest extends KernelTestCase
         $friendDto->setDirectMediaMethod('invite');
 
         $this
-            ->entityPersister
+            ->entityTools
             ->persistDto($friendDto, $friend, true);
 
         $friendEntries = $this->getChangelogByClass(

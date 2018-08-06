@@ -37,7 +37,7 @@ class OutgoingRoutingLifeCycleTestLifeCycleTest extends KernelTestCase
     protected function addOutgoingRouting()
     {
         return $this
-            ->entityPersister
+            ->entityTools
             ->persistDto($this->getOutgoingRoutingDto(), null, true);
     }
 

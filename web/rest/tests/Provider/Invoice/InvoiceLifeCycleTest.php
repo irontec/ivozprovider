@@ -43,7 +43,7 @@ class InvoiceLifeCycleTestLifeCycleTest extends KernelTestCase
     protected function addInvoice()
     {
         return $this
-            ->entityPersister
+            ->entityTools
             ->persistDto($this->getInvoicePdo(), null, true);
     }
 
@@ -84,7 +84,7 @@ class InvoiceLifeCycleTestLifeCycleTest extends KernelTestCase
         $this->expectException(\DomainException::class);
 
         $this
-            ->entityPersister
+            ->entityTools
             ->persistDto($invoicePdo, null, true);
     }
 }

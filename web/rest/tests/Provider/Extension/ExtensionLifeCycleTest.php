@@ -29,7 +29,7 @@ class ExtensionLifeCycleTest extends KernelTestCase
 
         /** @var Extension $extension */
         return $this
-            ->entityPersister
+            ->entityTools
             ->persistDto($extensionDto, null, true);
     }
 
@@ -135,7 +135,7 @@ class ExtensionLifeCycleTest extends KernelTestCase
 
         /** @var Extension $extension */
         $this
-            ->entityPersister
+            ->entityTools
             ->persistDto($extensionDto, null, true);
 
         $changelogEntries = $this->getChangelogByClass(
