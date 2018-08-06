@@ -276,12 +276,12 @@ class DoctrineEntityPersister implements EntityPersisterInterface
             $this->persistEvents();
         });
 
-        $this->rootEntity = null;
         $eventManager = $this->em->getEventManager();
         $eventManager->dispatchEvent(
             CustomEvents::onCommit,
             new OnCommitEventArgs($this->em)
         );
+        $this->rootEntity = null;
     }
 
     private function getDependantEntities(EntityInterface $entity)
