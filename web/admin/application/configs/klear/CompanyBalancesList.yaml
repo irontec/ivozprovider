@@ -58,6 +58,7 @@ production:
           externallyExtraOpts: true
           voicemailNotificationTemplate: true
           faxNotificationTemplate: true
+          invoiceNotificationTemplate: true
           language: true
           nif: true
           country: true
