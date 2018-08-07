@@ -2,6 +2,8 @@
 
 use Ivoz\Provider\Domain\Service\Company\IncrementBalance;
 use Ivoz\Provider\Domain\Service\Company\DecrementBalance;
+use Ivoz\Provider\Domain\Service\Carrier\IncrementBalance as IncrementCarrierBalance;
+use Ivoz\Provider\Domain\Service\Carrier\DecrementBalance as DecrementCarrierBalance;
 use Ivoz\Provider\Domain\Service\Company\AbstractBalanceOperation;
 
 class KlearCustomIncrementBalanceController extends Zend_Controller_Action
@@ -26,6 +28,7 @@ class KlearCustomIncrementBalanceController extends Zend_Controller_Action
         $this->_helper
             ->ContextSwitch()
             ->addActionContext('add-to-balance', 'json')
+            ->addActionContext('add-to-carrier-balance', 'json')
             ->initContext('json');
 
         $this->_helper->layout->disableLayout();
@@ -42,7 +45,6 @@ class KlearCustomIncrementBalanceController extends Zend_Controller_Action
         $id = $this->_mainRouter->getParam('pk', false);
 
         if (!$id) {
-
             $message = _('Id not found');
             return $this->_dispatch( $message, $buttons);
         }
@@ -76,6 +78,59 @@ class KlearCustomIncrementBalanceController extends Zend_Controller_Action
             return $this->_dispatch( $reponseMessage, $buttons);
         }
 
+        return $this->_showDialog(
+            $company->getName(),
+            $company->getId()
+        );
+    }
+
+    public function addToCarrierBalanceAction()
+    {
+        $buttons = array();
+        $id = $this->_mainRouter->getParam('pk', false);
+
+        if (!$id) {
+            $message = _('Id not found');
+            return $this->_dispatch( $message, $buttons);
+        }
+
+        /** @var \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier */
+        $carrier = $this->dataGateway->find(
+            \Ivoz\Provider\Domain\Model\Carrier\Carrier::class,
+            $id
+        );
+
+        if (($this->getParam("sent"))) {
+
+            $targetService = $this->getParam("operation") === 'add'
+                ? IncrementCarrierBalance::class
+                : DecrementCarrierBalance::class;
+
+            /** @var AbstractBalanceOperation $balanceService */
+            $balanceService = $this->container->get(
+                $targetService
+            );
+
+            $success = $balanceService->execute(
+                $id,
+                $this->getParam("amount")
+            );
+
+            $reponseMessage = $success
+                ? _('Balance modified successfully')
+                : sprintf(_('There was an error: %s'), $balanceService->getLastError());
+
+            return $this->_dispatch( $reponseMessage, $buttons);
+        }
+
+        return $this->_showDialog(
+            $carrier->getName(),
+            $carrier->getId()
+        );
+    }
+
+    private function _showDialog($name, $id)
+    {
         $styles = '
             <style>
                 .ui-widget.ui-dialog-content.ui-widget-content {
@@ -134,8 +189,8 @@ class KlearCustomIncrementBalanceController extends Zend_Controller_Action
             . '<p class="updateable-item" style="font-size: 0.8em;">'
             . sprintf(
                 _('Add balance operation to <strong>%s</strong>'),
-                $company->getName(),
-                $company->getId()
+                $name,
+                $id
             )
             . '</p>'
             . '<p class="updateable-item" style="font-size: 0.8em;z-index: 9999999;"><label for="amount">Amount</label>'

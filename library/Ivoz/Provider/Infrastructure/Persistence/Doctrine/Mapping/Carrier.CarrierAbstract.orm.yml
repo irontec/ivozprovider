@@ -26,6 +26,13 @@ Ivoz\Provider\Domain\Model\Carrier\CarrierAbstract:
         default: '0'
         unsigned: true
       column: externallyRated
+    balance:
+      type: decimal
+      nullable: true
+      precision: 10
+      scale: 4
+      options:
+        default: 0
   manyToOne:
     brand:
       targetEntity: \Ivoz\Provider\Domain\Model\Brand\BrandInterface

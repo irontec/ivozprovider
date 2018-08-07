@@ -1,12 +1,12 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Service\Company;
+namespace Ivoz\Provider\Domain\Service\Carrier;
 
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\BalanceMovement\BalanceMovement;
-use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
 use Symfony\Bridge\Monolog\Logger;
-use Ivoz\Provider\Domain\Model\Company\CompanyRepository;
+use Ivoz\Provider\Domain\Model\Carrier\CarrierRepository;
 
 abstract class AbstractBalanceOperation
 {
@@ -21,14 +21,14 @@ abstract class AbstractBalanceOperation
     protected $logger;
 
     /**
-     * @var CompanyBalanceServiceInterface
+     * @var CarrierBalanceServiceInterface
      */
     protected $client;
 
     /**
-     * @var CompanyRepository
+     * @var CarrierRepository
      */
-    protected $companyRepository;
+    protected $carrierRepository;
 
     /**
      * @var SyncBalances
@@ -43,39 +43,40 @@ abstract class AbstractBalanceOperation
     /**
      * IncrementBalance constructor.
      *
-     * @param EntityTools $entityPersister
+     * @param EntityTools $entityTools
      * @param Logger $logger
-     * @param CompanyBalanceServiceInterface $client
-     * @param CompanyRepository $companyRepository
+     * @param CarrierBalanceServiceInterface $client
+     * @param CarrierRepository $carrierRepository
      * @param SyncBalances $syncBalanceService
      */
     public function __construct(
         EntityTools $entityTools,
         Logger $logger,
-        CompanyBalanceServiceInterface $client,
-        CompanyRepository $companyRepository,
+        CarrierBalanceServiceInterface $client,
+        CarrierRepository $carrierRepository,
         SyncBalances $syncBalanceService
     ) {
         $this->entityTools = $entityTools;
         $this->logger = $logger;
         $this->client = $client;
-        $this->companyRepository = $companyRepository;
+        $this->carrierRepository = $carrierRepository;
         $this->syncBalanceService = $syncBalanceService;
     }
 
     /**
-     * @param $companyId
+     * @param $carrierId
      * @param float $amount
      * @return boolean
      */
-    abstract public function execute($companyId, float $amount);
+    abstract public function execute($carrierId, float $amount);
 
     /**
-     * @param CompanyInterface $companyId
-     * @param float $amount
+     * @param $amount
+     * @param array $response
+     * @param CarrierInterface $carrier
      * @return boolean
      */
-    protected function handleResponse($amount, array $response, CompanyInterface $company)
+    protected function handleResponse($amount, array $response, CarrierInterface $carrier)
     {
         if ($response['error']) {
             $this->lastError = $response['error'];
@@ -85,18 +86,18 @@ abstract class AbstractBalanceOperation
         $success = $response['success'];
 
         if ($success) {
-            $brandId = $company->getBrand()->getId();
-            $companyIds = [$company->getId()];
+            $brandId = $carrier->getBrand()->getId();
+            $carrierIds = [$carrier->getId()];
 
-            $this->syncBalanceService->updateCompanies($brandId, $companyIds);
+            $this->syncBalanceService->updateCarriers($brandId, $carrierIds);
 
             // Get current balance status
-            $balance = $this->client->getBalance($brandId, $company->getId());
+            $balance = $this->client->getBalance($brandId, $carrier->getId());
 
             // Store this transaction in a BalanceMovement
             $balanceMovementDto = BalanceMovement::createDto();
             $balanceMovementDto
-                ->setCompanyId($company->getId())
+                ->setCarrierId($carrier->getId())
                 ->setAmount($amount)
                 ->setBalance($balance);
 

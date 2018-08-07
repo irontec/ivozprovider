@@ -37,6 +37,11 @@ abstract class BalanceMovementDtoAbstract implements DataTransferObjectInterface
      */
     private $company;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Carrier\CarrierDto | null
+     */
+    private $carrier;
+
 
     use DtoNormalizer;
 
@@ -59,7 +64,8 @@ abstract class BalanceMovementDtoAbstract implements DataTransferObjectInterface
             'balance' => 'balance',
             'createdOn' => 'createdOn',
             'id' => 'id',
-            'companyId' => 'company'
+            'companyId' => 'company',
+            'carrierId' => 'carrier'
         ];
     }
 
@@ -73,7 +79,8 @@ abstract class BalanceMovementDtoAbstract implements DataTransferObjectInterface
             'balance' => $this->getBalance(),
             'createdOn' => $this->getCreatedOn(),
             'id' => $this->getId(),
-            'company' => $this->getCompany()
+            'company' => $this->getCompany(),
+            'carrier' => $this->getCarrier()
         ];
     }
 
@@ -83,6 +90,7 @@ abstract class BalanceMovementDtoAbstract implements DataTransferObjectInterface
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
         $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
+        $this->carrier = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Carrier\\Carrier', $this->getCarrierId());
     }
 
     /**
@@ -213,6 +221,52 @@ abstract class BalanceMovementDtoAbstract implements DataTransferObjectInterface
     public function getCompanyId()
     {
         if ($dto = $this->getCompany()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierDto $carrier
+     *
+     * @return static
+     */
+    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierDto $carrier = null)
+    {
+        $this->carrier = $carrier;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierDto
+     */
+    public function getCarrier()
+    {
+        return $this->carrier;
+    }
+
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setCarrierId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\Carrier\CarrierDto($id)
+            : null;
+
+        return $this->setCarrier($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getCarrierId()
+    {
+        if ($dto = $this->getCarrier()) {
             return $dto->getId();
         }
 

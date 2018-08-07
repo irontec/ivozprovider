@@ -33,7 +33,7 @@ class RoutingTagLifeCycleTest extends KernelTestCase
     protected function addRoutingTag()
     {
         return $this
-            ->entityPersister
+            ->entityTools
             ->persistDto($this->getRoutingTagDto(), null, true);
     }
 

@@ -33,6 +33,11 @@ abstract class BalanceMovementAbstract
      */
     protected $company;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+     */
+    protected $carrier;
+
 
     use ChangelogTrait;
 
@@ -114,6 +119,7 @@ abstract class BalanceMovementAbstract
             ->setBalance($dto->getBalance())
             ->setCreatedOn($dto->getCreatedOn())
             ->setCompany($dto->getCompany())
+            ->setCarrier($dto->getCarrier())
         ;
 
         $self->sanitizeValues();
@@ -137,7 +143,8 @@ abstract class BalanceMovementAbstract
             ->setAmount($dto->getAmount())
             ->setBalance($dto->getBalance())
             ->setCreatedOn($dto->getCreatedOn())
-            ->setCompany($dto->getCompany());
+            ->setCompany($dto->getCompany())
+            ->setCarrier($dto->getCarrier());
 
 
 
@@ -155,7 +162,8 @@ abstract class BalanceMovementAbstract
             ->setAmount(self::getAmount())
             ->setBalance(self::getBalance())
             ->setCreatedOn(self::getCreatedOn())
-            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth));
+            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
+            ->setCarrier(\Ivoz\Provider\Domain\Model\Carrier\Carrier::entityToDto(self::getCarrier(), $depth));
     }
 
     /**
@@ -167,7 +175,8 @@ abstract class BalanceMovementAbstract
             'amount' => self::getAmount(),
             'balance' => self::getBalance(),
             'createdOn' => self::getCreatedOn(),
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null
+            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
+            'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null
         ];
     }
 
@@ -272,7 +281,7 @@ abstract class BalanceMovementAbstract
      *
      * @return self
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
+    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
     {
         $this->company = $company;
 
@@ -287,6 +296,30 @@ abstract class BalanceMovementAbstract
     public function getCompany()
     {
         return $this->company;
+    }
+
+    /**
+     * Set carrier
+     *
+     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier
+     *
+     * @return self
+     */
+    public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier = null)
+    {
+        $this->carrier = $carrier;
+
+        return $this;
+    }
+
+    /**
+     * Get carrier
+     *
+     * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+     */
+    public function getCarrier()
+    {
+        return $this->carrier;
     }
 
 

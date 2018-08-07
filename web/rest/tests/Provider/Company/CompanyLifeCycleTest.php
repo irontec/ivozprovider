@@ -44,7 +44,7 @@ class CompanyLifeCycleTest extends KernelTestCase
             ->setCountryId(1);
 
         /** @var Company $as */
-        $company = $this->entityPersister
+        $company = $this->entityTools
             ->persistDto($companyDto, null, true);
 
         return $company;
@@ -96,7 +96,7 @@ class CompanyLifeCycleTest extends KernelTestCase
             ->setCountryId(1);
 
         /** @var Company $as */
-        $company = $this->entityPersister
+        $company = $this->entityTools
             ->persistDto($companyDto, null, true);
 
         $this->assertEquals(
@@ -145,7 +145,7 @@ class CompanyLifeCycleTest extends KernelTestCase
         $company
             ->setName('UpdatedName')
             ->setDomainUsers('UpdatedValue');
-        $this->entityPersister->persist($company, true);
+        $this->entityTools->persist($company, true);
 
         $this->assertEquals(
             'UpdatedValue',
@@ -208,7 +208,7 @@ class CompanyLifeCycleTest extends KernelTestCase
             $domain
         );
 
-        $this->entityPersister->remove($company);
+        $this->entityTools->remove($company);
         $this->assertNull($company->getDomain());
     }
 }

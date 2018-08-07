@@ -2,12 +2,14 @@
 
 namespace Ivoz\Provider\Domain\Service\BalanceNotification;
 
+use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Core\Domain\Event\DomainEventInterface;
 use Ivoz\Core\Domain\Service\DomainEventSubscriberInterface;
 use Ivoz\Core\Domain\Service\DomainEventSubscriberTrait;
 use Ivoz\Provider\Domain\Model\BalanceNotification\BalanceNotificationInterface;
 use Ivoz\Provider\Domain\Model\BalanceNotification\BalanceNotificationRepository;
-use Ivoz\Provider\Domain\Model\Company\Events\CompanyBalanceThresholdWasBroken;
+use Ivoz\Provider\Domain\Events\AbstractBalanceThresholdWasBroken;
+use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateRepository;
 use Ivoz\Core\Infrastructure\Domain\Service\Mailer\Client;
 use Ivoz\Core\Domain\Model\Mailer\Message;
@@ -27,6 +29,11 @@ class NotifyBrokenThreshold implements DomainEventSubscriberInterface
     protected $balanceNotificationRepository;
 
     /**
+     * @var EntityTools
+     */
+    protected $entityTools;
+
+    /**
      * @var Client
      */
     protected $mailer;
@@ -34,29 +41,31 @@ class NotifyBrokenThreshold implements DomainEventSubscriberInterface
     public function __construct(
         NotificationTemplateRepository $notificationTemplateRepository,
         BalanceNotificationRepository $balanceNotificationRepository,
+        EntityTools $entityTools,
         Client $mailer
     ) {
         $this->notificationTemplateRepository = $notificationTemplateRepository;
         $this->balanceNotificationRepository = $balanceNotificationRepository;
+        $this->entityTools = $entityTools;
         $this->mailer = $mailer;
     }
 
     /**
-     * @param CompanyBalanceThresholdWasBroken $domainEvent
+     * @param AbstractBalanceThresholdWasBroken $domainEvent
      * @throws \Exception
      * @return void
      */
     public function handle(DomainEventInterface $domainEvent)
     {
-        if (!($domainEvent instanceof CompanyBalanceThresholdWasBroken)) {
-            throw new \Exception('CompanyBalanceThresholdWasBroken was expected');
+        if (!($domainEvent instanceof AbstractBalanceThresholdWasBroken)) {
+            throw new \Exception('AbstractBalanceThresholdWasBroken was expected');
         }
         $this->events[] = $domainEvent;
 
         $this->sendNotification($domainEvent);
     }
 
-    private function sendNotification(CompanyBalanceThresholdWasBroken $event)
+    private function sendNotification(AbstractBalanceThresholdWasBroken $event)
     {
         /** @var BalanceNotificationInterface $balanceNotification */
         $balanceNotification = $this->balanceNotificationRepository
@@ -65,22 +74,19 @@ class NotifyBrokenThreshold implements DomainEventSubscriberInterface
         $notificationTemplate = $this->notificationTemplateRepository
             ->findTemplateByBalanceNotification($balanceNotification);
 
-        $company = $balanceNotification->getCompany();
-        $language = $company->getLanguage();
-        if (!$language) {
-            $language = $company->getBrand()->getLanguage();
-        }
+        $name = $this->getEntityName($balanceNotification);
+        $language = $this->getLanguage($balanceNotification);
 
         $notificationContent = $notificationTemplate->getContentsByLanguage($language);
         $subject = $this->parseNotificationContent(
             $notificationContent->getSubject(),
-            $company->getName(),
+            $name,
             $event->getCurrentBalance()
         );
 
         $body = $this->parseNotificationContent(
             $notificationContent->getBody(),
-            $company->getName(),
+            $name,
             $event->getCurrentBalance()
         );
 
@@ -100,12 +106,19 @@ class NotifyBrokenThreshold implements DomainEventSubscriberInterface
 
         $this->mailer->send($email);
 
+        $balanceNotificationDto = $this->entityTools->entityToDto($balanceNotification);
+        $balanceNotificationDto->setLastSent(new \DateTime());
+        $this->entityTools->persistDto(
+            $balanceNotificationDto,
+            $balanceNotification,
+            false
+        );
     }
 
-    private function parseNotificationContent(string $content, string $companyName, float $currentBalance)
+    private function parseNotificationContent(string $content, string $name, float $currentBalance)
     {
         $substitution = array(
-            '${BALANCE_COMPANY}' => $companyName,
+            '${BALANCE_NAME}' => $name,
             '${BALANCE_AMOUNT}' => $currentBalance
         );
 
@@ -118,10 +131,51 @@ class NotifyBrokenThreshold implements DomainEventSubscriberInterface
      */
     public function isSubscribedTo(DomainEventInterface $domainEvent)
     {
-        if ($domainEvent instanceof CompanyBalanceThresholdWasBroken) {
+        if ($domainEvent instanceof AbstractBalanceThresholdWasBroken) {
             return true;
         }
 
         return false;
+    }
+
+    /**
+     * @param BalanceNotificationInterface $balanceNotification
+     * @return LanguageInterface
+     */
+    private function getLanguage(BalanceNotificationInterface $balanceNotification)
+    {
+        $carrier = $balanceNotification->getCarrier();
+        if ($carrier) {
+
+            return $carrier
+                ->getBrand()
+                ->getLanguage();
+        }
+
+        $company = $balanceNotification->getCompany();
+        $language = $company->getLanguage();
+        if (!$language) {
+            $language = $company
+                ->getBrand()
+                ->getLanguage();
+        }
+
+        return $language;
+    }
+
+    /**
+     * @param BalanceNotificationInterface $balanceNotification
+     * @return mixed
+     */
+    private function getEntityName(BalanceNotificationInterface $balanceNotification)
+    {
+        $carrier = $balanceNotification->getCarrier();
+        if ($carrier) {
+            return $carrier->getName();
+        }
+
+        return $balanceNotification
+            ->getCompany()
+            ->getName();
     }
 }
