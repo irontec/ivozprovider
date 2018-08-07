@@ -562,8 +562,8 @@ msgstr[1] "Precios destinos"
 
 msgid "Destination rate group"
 msgid_plural "Destination rate groups"
-msgstr[0] "Grupo de precio destino"
-msgstr[1] "Grupos de precios destinos"
+msgstr[0] "Grupo precio destino"
+msgstr[1] "Grupos precio destino"
 
 msgid "Destination rate not found"
 msgstr "Precio destino no encontrado"
@@ -1127,7 +1127,7 @@ msgstr "Factura encolada. Se generará lo antes posible."
 msgid "Invoice number sequence"
 msgid_plural "Invoice number sequences"
 msgstr[0] "Numeración de facturas"
-msgstr[1] "Numeriaciones de facturas"
+msgstr[1] "Numeraciones de facturas"
 
 msgid "Invoice scheduler"
 msgid_plural "Invoice schedulers"
@@ -2335,7 +2335,7 @@ msgstr[0] "Timing"
 msgstr[1] "Timings"
 
 msgid "Timing type"
-msgstr "Tipo timing"
+msgstr "Tipo de timing"
 
 msgid "To address"
 msgstr "Dirección destino"
