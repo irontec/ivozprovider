@@ -40,6 +40,10 @@ production:
           brand: true
           name: true
           description: true
+          transformationRuleSet: true
+          balance: true
+          acd: true
+          asr: true
         blacklist:
           externallyRated: true
           billingMethod: true
@@ -66,6 +70,8 @@ production:
         blacklist:
           externallyRated: ${auth.brandFeatures.billing.disabled}
           balance: true
+          acd: true
+          asr: true
       fixedPositions: &carriersNew_fixedPositionsLink
         group0:
           label: _("Basic Configuration")
@@ -79,8 +85,13 @@ production:
           fields:
             transformationRuleSet: 3
             externallyRated: 3
-            billingMethod: 3
             balance: 3
+        group2:
+          label: _("Quality measuring")
+          colsPerRow: 2
+          fields:
+            acd: 1
+            asr: 1
 
     carriersEdit_screen: &carriersEdit_screenLink
       <<: *Carriers
