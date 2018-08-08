@@ -269,3 +269,5 @@ doctrine:
         Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfile
       Ivoz\Cgr\Domain\Model\TpTiming\TpTimingInterface:
         Ivoz\Cgr\Domain\Model\TpTiming\TpTiming
+      Ivoz\Cgr\Domain\Model\TpCdrStat\TpCdrStatInterface:
+        Ivoz\Cgr\Domain\Model\TpCdrStat\TpCdrStat

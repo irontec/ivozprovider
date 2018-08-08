@@ -30,6 +30,12 @@
 	},
 	"cdrs": {
 		"sm_cost_retries": 0,
+		"cdrstats_conns": [
+			{"address": "*internal"}
+		],
+		"enabled": true
+	},
+	"cdrstats": {
 		"enabled": true
 	},
 	"sm_kamailio": {

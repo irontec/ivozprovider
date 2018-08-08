@@ -68,10 +68,9 @@ class UpdateByRatingProfile implements RatingProfileLifecycleEventHandlerInterfa
         }
 
         if ($carrier) {
-            $tpRatingProfileDto->setSubject(
-                sprintf("cr%d",
-                    $carrier->getId()
-                )
+            $tpRatingProfileDto
+                ->setSubject(sprintf("cr%d",$carrier->getId()))
+                ->setCdrStatQueueIds(sprintf("cr%d", $carrier->getId())
             );
         }
 

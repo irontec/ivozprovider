@@ -35,8 +35,14 @@ msgstr ""
 "0 disables if more available, 2 gets double calls than 1, 3 gets triple "
 "calls than 1, etc."
 
+msgid "ACD"
+msgstr "ACD"
+
 msgid "ACL data"
 msgstr "ACL data"
+
+msgid "ASR"
+msgstr "ASR"
 
 msgid "Accept"
 msgstr "Accept"
@@ -136,6 +142,10 @@ msgstr "An error occurred: check files format and content."
 msgid "Announce"
 msgstr "Announce"
 
+#, python-format
+msgid "Answer-Seizure Ratio: <a href='%s' target='_blank' >more info</a>"
+msgstr ""
+
 msgid "Antiflood trusted IP"
 msgid_plural "Antiflood trusted IPs"
 msgstr[0] "Antiflood trusted IP"
@@ -193,6 +203,10 @@ msgstr[1] "Authorized sources"
 
 msgid "Automatic creation of rules"
 msgstr "Automatic creation of rules"
+
+#, python-format
+msgid "Average Call Duration: <a href='%s' target='_blank' >more info</a>"
+msgstr ""
 
 msgid "Balance"
 msgstr "Balance"
@@ -1790,6 +1804,9 @@ msgstr "Pseudo-prepaid"
 msgid "QR Code"
 msgstr "QR Code"
 
+msgid "Quality measuring"
+msgstr "Quality measuring"
+
 msgid "Quantity"
 msgid_plural "Quantities"
 msgstr[0] "Quantity"
@@ -2602,6 +2619,12 @@ msgstr "encoding"
 
 msgid "error"
 msgstr "error"
+
+msgid "https://en.wikipedia.org/wiki/Answer-seizure_ratio"
+msgstr ""
+
+msgid "https://en.wikipedia.org/wiki/Average_call_duration"
+msgstr ""
 
 msgid "ignore"
 msgstr "ignore"

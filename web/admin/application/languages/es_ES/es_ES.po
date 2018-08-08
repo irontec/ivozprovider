@@ -35,8 +35,14 @@ msgstr ""
 "0 lo desactiva si hay más disponibles, 2 procesa el doble de llamadas que el "
 "que tenga 1, etc."
 
+msgid "ACD"
+msgstr "ACD"
+
 msgid "ACL data"
 msgstr "Datos permisos"
+
+msgid "ASR"
+msgstr "ASR"
 
 msgid "Accept"
 msgstr "Aceptar"
@@ -141,6 +147,12 @@ msgstr ""
 msgid "Announce"
 msgstr "Anuncio"
 
+#, python-format
+msgid "Answer-Seizure Ratio: <a href='%s' target='_blank' >more info</a>"
+msgstr ""
+"Tasa de llamadas contestadas (Answer-Seizure Ratio): <a href='%s' "
+"target='_blank' >más información</a>"
+
 msgid "Antiflood trusted IP"
 msgid_plural "Antiflood trusted IPs"
 msgstr[0] "IP de confianza"
@@ -198,6 +210,12 @@ msgstr[1] "Redes autorizadas"
 
 msgid "Automatic creation of rules"
 msgstr "Creación automática de reglas"
+
+#, python-format
+msgid "Average Call Duration: <a href='%s' target='_blank' >more info</a>"
+msgstr ""
+"Duración media de llamada (Average Call Duration): <a href='%s' "
+"target='_blank' >más información</a>"
 
 msgid "Balance"
 msgstr "Saldo"
@@ -1812,6 +1830,9 @@ msgstr "Pseudo-prepago"
 msgid "QR Code"
 msgstr "Código QR"
 
+msgid "Quality measuring"
+msgstr "Medición de calidad"
+
 msgid "Quantity"
 msgid_plural "Quantities"
 msgstr[0] "Cantidad"
@@ -2633,6 +2654,12 @@ msgstr "Codificando"
 
 msgid "error"
 msgstr "Error"
+
+msgid "https://en.wikipedia.org/wiki/Answer-seizure_ratio"
+msgstr ""
+
+msgid "https://en.wikipedia.org/wiki/Average_call_duration"
+msgstr ""
 
 msgid "ignore"
 msgstr "ignorar"

@@ -62,6 +62,11 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
      */
     private $ratingProfiles = null;
 
+    /**
+     * @var \Ivoz\Cgr\Domain\Model\TpCdrStat\TpCdrStatDto[] | null
+     */
+    private $tpCdrStats = null;
+
 
     use DtoNormalizer;
 
@@ -105,7 +110,8 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
             'transformationRuleSet' => $this->getTransformationRuleSet(),
             'outgoingRoutings' => $this->getOutgoingRoutings(),
             'servers' => $this->getServers(),
-            'ratingProfiles' => $this->getRatingProfiles()
+            'ratingProfiles' => $this->getRatingProfiles(),
+            'tpCdrStats' => $this->getTpCdrStats()
         ];
     }
 
@@ -149,6 +155,17 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
             }
         }
 
+        if (!is_null($this->tpCdrStats)) {
+            $items = $this->getTpCdrStats();
+            $this->tpCdrStats = [];
+            foreach ($items as $item) {
+                $this->tpCdrStats[] = $transformer->transform(
+                    'Ivoz\\Cgr\\Domain\\Model\\TpCdrStat\\TpCdrStat',
+                    $item->getId() ?? $item
+                );
+            }
+        }
+
     }
 
     /**
@@ -167,6 +184,10 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
         $this->ratingProfiles = $transformer->transform(
             'Ivoz\\Provider\\Domain\\Model\\RatingProfile\\RatingProfile',
             $this->ratingProfiles
+        );
+        $this->tpCdrStats = $transformer->transform(
+            'Ivoz\\Cgr\\Domain\\Model\\TpCdrStat\\TpCdrStat',
+            $this->tpCdrStats
         );
     }
 
@@ -420,6 +441,26 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     public function getRatingProfiles()
     {
         return $this->ratingProfiles;
+    }
+
+    /**
+     * @param array $tpCdrStats
+     *
+     * @return static
+     */
+    public function setTpCdrStats($tpCdrStats = null)
+    {
+        $this->tpCdrStats = $tpCdrStats;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getTpCdrStats()
+    {
+        return $this->tpCdrStats;
     }
 }
 
