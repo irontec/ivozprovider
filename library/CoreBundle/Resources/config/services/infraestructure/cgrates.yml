@@ -36,3 +36,8 @@ services:
     public: true
   Ivoz\Kam\Domain\Service\TrunksCdr\RerateCallServiceInterface:
     '@Ivoz\Core\Infrastructure\Domain\Service\Cgrates\RerateCallService'
+
+  Ivoz\Cgr\Infrastructure\Domain\Service\Cgrates\FetchCallStatsService:
+    public: true
+  Ivoz\Cgr\Domain\Service\TpCdrStat\FetchCallStatsServiceInterface:
+    '@Ivoz\Core\Infrastructure\Domain\Service\Cgrates\FetchCallStatsService'
