@@ -165,6 +165,10 @@ class Wrapper
         }
 
         if ($file instanceof LocutionInterface) {
+            $this->locutionPathResolver->setOriginalFileName(
+                $file->getEncodedFile()->getBaseName()
+            );
+
             $file = $this
                 ->locutionPathResolver
                 ->getFilePath($file);
@@ -173,6 +177,8 @@ class Wrapper
                 $this->error("Locution $file not found in filesystem.");
                 return;
             }
+
+            $file = pathinfo($file, PATHINFO_DIRNAME) . DIRECTORY_SEPARATOR . pathinfo($file, PATHINFO_FILENAME);
         }
 
         $this->fastagi->exec("Playback", "$file,$options");
@@ -197,20 +203,35 @@ class Wrapper
      *
      * @return string
      */
-    public function read($locution, $timeout = 0, $maxdigits = 0)
+    public function read(LocutionInterface $locution, $timeout = 0, $maxdigits = 0)
     {
-        if ($locution instanceof LocutionInterface) {
-            $locution = $this
-                ->locutionPathResolver
-                ->getFilePath($locution);
+        $this->locutionPathResolver->setOriginalFileName(
+            $locution->getEncodedFile()->getBaseName()
+        );
 
-            if (!file_exists($locution)) {
-                $this->error("Locution $locution not found in filesystem.");
-                $locution = "";
-            }
+        $file = $this
+            ->locutionPathResolver
+            ->getFilePath($locution);
+
+        if (!file_exists($file)) {
+            $this->error("Locution $file not found in filesystem.");
+            return $this->readInSilence($timeout, $maxdigits);
         }
 
-        $this->fastagi->exec('Read', "PRESSED,$locution,$maxdigits,,,$timeout");
+        // Remove extension for Read application
+        $filename = pathinfo($file, PATHINFO_DIRNAME) . DIRECTORY_SEPARATOR . pathinfo($file, PATHINFO_FILENAME);
+
+        $this->fastagi->exec('Read', "PRESSED,$filename,$maxdigits,,,$timeout");
+        if ($this->getVariable("READSTATUS") == "HANGUP") {
+            return "HANGUP";
+        }
+
+        return $this->getVariable("PRESSED");
+    }
+
+    public function readInSilence($timeout = 0, $maxdigits = 0)
+    {
+        $this->fastagi->exec('Read', "PRESSED,,$maxdigits,,,$timeout");
         if ($this->getVariable("READSTATUS") == "HANGUP") {
             return "HANGUP";
         }
