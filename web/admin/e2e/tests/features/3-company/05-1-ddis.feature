@@ -16,8 +16,8 @@ Background:
     And I emulate the brand at position "1"
     And I click on company emulation button
     And I emulate the company at position "1"
-    And I click on "DDIs" CTA
-   Then I am on "DDIs" list
+    And I click on "Ddis" CTA
+   Then I am on "Ddis" list
 
 Scenario: I create ddis
   When I click on add button
@@ -25,22 +25,22 @@ Scenario: I create ddis
    And I click on save button
   Then I can see confirmation dialog
   When I click on close dialog button
-  Then I am on "DDIs" list
-  When I click on "DDIs" last elements edit button
+  Then I am on "Ddis" list
+  When I click on "Ddis" last elements edit button
   Then I compare the form data with "company/ddis/new" data fixture
 
 Scenario: I can save DDIs
   Given I can see at least one row
-   When I click on "DDIs" first elements edit button
+   When I click on "Ddis" first elements edit button
     And I click on save button
    Then I can see confirmation dialog
    When I click on close dialog button
-   Then I am on "DDIs" list
+   Then I am on "Ddis" list
 
 Scenario: I can click on delete user button
   Given I can see at least one row
    When I select element at position "1"
-    And I click on "DDIs" delete button in the footer
+    And I click on "Ddis" delete button in the footer
    Then I can see confirmation dialog
    When I click on close dialog button
-   Then I am on "DDIs" list
+   Then I am on "Ddis" list
