@@ -34,7 +34,8 @@ class MicroKernel extends Kernel
 
     protected function configureRoutes(RouteCollectionBuilder $routes)
     {
-        $routes->add('/', 'Controller:indexAction');
+        $routes->add('/', 'InvoiceSchedulerController:indexAction');
+        $routes->add('/billable-calls', 'BillableCallController:indexAction');
     }
 
     // optional, to use the standard Symfony cache directory
