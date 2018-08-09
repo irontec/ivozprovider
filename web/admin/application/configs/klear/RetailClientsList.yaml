@@ -48,17 +48,15 @@ production:
           mediaRelaySets: true
           ipFilter: true
           language: true
-          relCodecs: true
+          maxCalls: true
+          recordingsDiskUsage: true
         order:
           name: true
           nif: true
           billingMethod: true
-          balance: true
-          maxCalls: true
-          language: true
-          transformationRuleSet: true
-          domainUsers: true
-          recordingsDiskUsage: true
+          outgoingDDI: true
+          relRoutingTags: true
+          relCodecs: true
       options:
         title: _("Options")
         screens:

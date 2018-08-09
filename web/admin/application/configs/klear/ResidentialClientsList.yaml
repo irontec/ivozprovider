@@ -47,7 +47,6 @@ production:
           province: true
           countryName: true
           country: true
-          outgoingDDI: true
           outgoingDdiRule: true
           registryData: true
           maxCalls: true
@@ -66,15 +65,13 @@ production:
           type: true
           voicemailNotificationTemplate: true
           faxNotificationTemplate: true
-          billingMethod: true
           balance: true
         order:
           name: true
           nif: true
-          language: true
-          transformationRuleSet: true
-          domainUsers: true
-          recordingsDiskUsage: true
+          billingMethod: true
+          outgoingDDI: true
+          relFeatures: true
       options:
         title: _("Options")
         screens:
