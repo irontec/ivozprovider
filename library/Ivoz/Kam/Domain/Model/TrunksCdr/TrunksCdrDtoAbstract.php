@@ -83,6 +83,11 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     private $priceDetails;
 
     /**
+     * @var boolean
+     */
+    private $metered = '0';
+
+    /**
      * @var string
      */
     private $direction;
@@ -149,6 +154,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
             'bounced' => 'bounced',
             'price' => 'price',
             'priceDetails' => 'priceDetails',
+            'metered' => 'metered',
             'direction' => 'direction',
             'cgrid' => 'cgrid',
             'id' => 'id',
@@ -179,6 +185,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
             'bounced' => $this->getBounced(),
             'price' => $this->getPrice(),
             'priceDetails' => $this->getPriceDetails(),
+            'metered' => $this->getMetered(),
             'direction' => $this->getDirection(),
             'cgrid' => $this->getCgrid(),
             'id' => $this->getId(),
@@ -486,6 +493,26 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     public function getPriceDetails()
     {
         return $this->priceDetails;
+    }
+
+    /**
+     * @param boolean $metered
+     *
+     * @return static
+     */
+    public function setMetered($metered = null)
+    {
+        $this->metered = $metered;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getMetered()
+    {
+        return $this->metered;
     }
 
     /**

@@ -86,6 +86,11 @@ abstract class TrunksCdrAbstract
     protected $priceDetails;
 
     /**
+     * @var boolean
+     */
+    protected $metered = '0';
+
+    /**
      * @var string
      */
     protected $direction;
@@ -208,6 +213,7 @@ abstract class TrunksCdrAbstract
             ->setBounced($dto->getBounced())
             ->setPrice($dto->getPrice())
             ->setPriceDetails($dto->getPriceDetails())
+            ->setMetered($dto->getMetered())
             ->setDirection($dto->getDirection())
             ->setCgrid($dto->getCgrid())
             ->setInvoice($dto->getInvoice())
@@ -248,6 +254,7 @@ abstract class TrunksCdrAbstract
             ->setBounced($dto->getBounced())
             ->setPrice($dto->getPrice())
             ->setPriceDetails($dto->getPriceDetails())
+            ->setMetered($dto->getMetered())
             ->setDirection($dto->getDirection())
             ->setCgrid($dto->getCgrid())
             ->setInvoice($dto->getInvoice())
@@ -282,6 +289,7 @@ abstract class TrunksCdrAbstract
             ->setBounced(self::getBounced())
             ->setPrice(self::getPrice())
             ->setPriceDetails(self::getPriceDetails())
+            ->setMetered(self::getMetered())
             ->setDirection(self::getDirection())
             ->setCgrid(self::getCgrid())
             ->setInvoice(\Ivoz\Provider\Domain\Model\Invoice\Invoice::entityToDto(self::getInvoice(), $depth))
@@ -310,6 +318,7 @@ abstract class TrunksCdrAbstract
             'bounced' => self::getBounced(),
             'price' => self::getPrice(),
             'priceDetails' => self::getPriceDetails(),
+            'metered' => self::getMetered(),
             'direction' => self::getDirection(),
             'cgrid' => self::getCgrid(),
             'invoiceId' => self::getInvoice() ? self::getInvoice()->getId() : null,
@@ -717,6 +726,34 @@ abstract class TrunksCdrAbstract
     public function getPriceDetails()
     {
         return $this->priceDetails;
+    }
+
+    /**
+     * Set metered
+     *
+     * @param boolean $metered
+     *
+     * @return self
+     */
+    public function setMetered($metered = null)
+    {
+        if (!is_null($metered)) {
+            Assertion::between(intval($metered), 0, 1, 'metered provided "%s" is not a valid boolean value.');
+        }
+
+        $this->metered = $metered;
+
+        return $this;
+    }
+
+    /**
+     * Get metered
+     *
+     * @return boolean
+     */
+    public function getMetered()
+    {
+        return $this->metered;
     }
 
     /**
