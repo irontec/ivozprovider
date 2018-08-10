@@ -95,8 +95,6 @@ class Xmlrpc
      */
     public function delayed(GearmanJob $serializedJob)
     {
-        $retryInterval =
-
         /** @var \Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Xmlrpc $job */
         $job = igbinary_unserialize($serializedJob->workload());
 
@@ -146,8 +144,6 @@ class Xmlrpc
                 // Create a new XmlRpc client for each server
                 $client = new Client(sprintf("http://%s:%d/RPC2",  $server->getIp(), $port));
                 $client->setUserAgent("xmlrpclib");
-                $client->send(new Request($method));
-
                 $response = $client->send(new Request($method));
 
                 if ($response->errno) {
