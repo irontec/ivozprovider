@@ -12,8 +12,3 @@ services:
       $trunksLcrReload:
         '@XmlRpc\XmlRpcTrunksRequest::LcrReload'
 
-  Ivoz\Provider\Infrastructure\Domain\Service\Carrier\SendTrunksUacRegReloadRequest:
-    tags: [{ name: 'domain.service'}]
-    arguments:
-      $trunksUacRegReload:
-        '@XmlRpc\XmlRpcTrunksRequest::UacRegReload'
