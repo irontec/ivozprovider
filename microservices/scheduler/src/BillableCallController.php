@@ -1,18 +1,29 @@
 <?php
 
 use Symfony\Component\HttpFoundation\Response;
-use Ivoz\Provider\Domain\Service\Invoice\CreateByScheduler;
-use Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerRepository;
+use Ivoz\Provider\Domain\Service\BillableCall\MigrateFromTrunksCdr as BillableCallFromTrunksCdr;
 
 class BillableCallController
 {
-    public function __construct()
-    {
-        $cosa = 1;
+    protected $billableCallFromTrunksCdr;
+
+    public function __construct(
+        BillableCallFromTrunksCdr $billableCallFromTrunksCdr
+    ) {
+        $this->billableCallFromTrunksCdr = $billableCallFromTrunksCdr;
     }
 
     public function indexAction()
     {
-        return new Response("BillableCallController::index done!\n", 200);
+        try {
+            $this->billableCallFromTrunksCdr->execute();
+        } catch (\Exception $e) {
+            return new Response(
+                $e->getMessage() . "\n",
+                500
+            );
+        }
+
+        return new Response("BillableCall migration done!\n", 200);
     }
 }

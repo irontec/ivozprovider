@@ -20,11 +20,20 @@ interface BrandInterface extends LoggableEntityInterface
 
     /**
      * @inheritdoc
+     * @see BrandAbstract::setDomainUsers
      */
     public function setDomainUsers($domainUsers = null);
 
+    /**
+     * @return string
+     */
     public function getLanguageCode();
 
+    /**
+     * @param CompanyInterface $company
+     * @param null $destination
+     * @return bool
+     */
     public function willUseExternallyRating(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company, $destination = null);
 
     /**

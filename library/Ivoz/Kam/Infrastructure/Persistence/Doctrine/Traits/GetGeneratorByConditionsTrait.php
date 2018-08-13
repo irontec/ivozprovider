@@ -6,7 +6,13 @@ use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 
 trait GetGeneratorByConditionsTrait
 {
-    public function getGeneratorByConditions(array $conditions, int $limit, array $order = null)
+    /**
+     * @param array $conditions
+     * @param int $batchSize
+     * @param array|null $order
+     * @return \Generator
+     */
+    public function getGeneratorByConditions(array $conditions, int $batchSize, array $order = null)
     {
         /**
          * @var \Doctrine\ORM\EntityRepository $this
@@ -23,12 +29,12 @@ trait GetGeneratorByConditionsTrait
         while ($continue) {
 
             $qb
-                ->setMaxResults($limit)
-                ->setFirstResult(($currentPage -1) * $limit);
+                ->setMaxResults($batchSize)
+                ->setFirstResult(($currentPage -1) * $batchSize);
 
             $query = $qb->getQuery();
             $results = $query->getResult();
-            $continue = count($results) === $limit;
+            $continue = count($results) === $batchSize;
             $currentPage++;
 
             yield $results;
