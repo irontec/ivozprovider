@@ -297,6 +297,9 @@ msgstr "Busy"
 msgid "CIDR notation (e.g. 8.8.8.0/24) or specific IP address (e.g. 8.8.8.8)"
 msgstr "CIDR notation (e.g. 8.8.8.0/24) or specific IP address (e.g. 8.8.8.8)"
 
+msgid "Calculate cost?"
+msgstr "Calculate cost?"
+
 msgid "Calendar"
 msgid_plural "Calendars"
 msgstr[0] "Calendar"
