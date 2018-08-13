@@ -50,4 +50,17 @@ class IvozProvider_Klear_Ghost_Carriers extends KlearMatrix_Model_Field_Ghost_Ab
 
         return round($response, 1) . ' s';
     }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierDto $carrier
+     * @return string
+     */
+    public function getBalance($carrierDto)
+    {
+        if (!$carrierDto->getCalculateCost()) {
+            return Klear_Model_Gettext::gettextCheck('_("Disabled")');
+        }
+
+        return $carrierDto->getBalance();
+    }
 }

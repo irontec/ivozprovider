@@ -52,17 +52,37 @@ production:
           '0':
             title: _("No")
             visualFilter:
-              show: [balance]
+              show: [balance, calculateCost]
               hide: []
           '1':
             title: _("Yes")
             visualFilter:
               show: []
+              hide: [balance, calculateCost]
+    calculateCost:
+      title: _('Calculate cost?')
+      type: select
+      defaultValue: 0
+      source:
+        data: inline
+        values:
+          '0':
+            title: _("No")
+            visualFilter:
+              show: []
               hide: [balance]
+          '1':
+            title: _("Yes")
+            visualFilter:
+              show: [balance]
+              hide: []
     balance:
       title: _('Balance')
-      type: text
+      type: ghost
       readonly: true
+      source:
+        class: IvozProvider_Klear_Ghost_Carriers
+        method: getBalance
     acd:
       title: _('ACD')
       type: ghost
