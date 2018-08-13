@@ -109,11 +109,11 @@ class Xmlrpc
                $job->getRpcMethod(), $this->retryInterval)
             );
             sleep($this->retryInterval);
-        } else {
-            // Thanks Gearmand, you've done your job
-            $serializedJob->sendComplete("DONE");
+            exit(GEARMAN_WORK_ERROR);
         }
 
+        // Thanks Gearmand, you've done your job
+        $serializedJob->sendComplete("DONE");
         return $success;
     }
 
