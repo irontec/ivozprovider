@@ -4,7 +4,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Ivoz\Provider\Domain\Service\Invoice\CreateByScheduler;
 use Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerRepository;
 
-class Controller
+class InvoiceSchedulerController
 {
     /**
      * @var CreateByScheduler

@@ -3,6 +3,7 @@
 namespace Ivoz\Cgr\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\NoResultException;
 use Ivoz\Cgr\Domain\Model\TpCdr\TpCdrRepository;
 use Ivoz\Cgr\Domain\Model\TpCdr\TpCdr;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
@@ -25,7 +26,7 @@ class TpCdrDoctrineRepository extends ServiceEntityRepository implements TpCdrRe
      * @param string $cgrid
      * @return int
      */
-    public function getOneByCgrid(string $cgrid)
+    public function getDefaultRunByCgrid(string $cgrid)
     {
         $conditions = [
             ['cgrid', 'eq', $cgrid],
@@ -36,8 +37,40 @@ class TpCdrDoctrineRepository extends ServiceEntityRepository implements TpCdrRe
             ->createQueryBuilder('self')
             ->addCriteria(CriteriaHelper::fromArray($conditions));
 
-        return $qb
-            ->getQuery()
-            ->getSingleResult();
+        try {
+
+            return $qb
+                ->getQuery()
+                ->getSingleResult();
+
+        } catch (NoResultException $error) {}
+
+        return null;
+    }
+
+
+    /**
+     * @param string $cgrid
+     * @return int
+     */
+    public function getCarrierRunByCgrid(string $cgrid)
+    {
+        $conditions = [
+            ['cgrid', 'eq', $cgrid],
+            ['runId', 'eq', 'carrier'],
+            ['requestType', 'eq', '*postpaid']
+        ];
+
+        $qb = $this
+            ->createQueryBuilder('self')
+            ->addCriteria(CriteriaHelper::fromArray($conditions));
+
+        try {
+
+            return $qb
+                ->getQuery()
+                ->getSingleResult();
+
+        } catch (NoResultException $error) {}
     }
 }

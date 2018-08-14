@@ -103,6 +103,11 @@ Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrAbstract:
       options:
         fixed: false
       column: priceDetails
+    metered:
+      type: boolean
+      nullable: true
+      options:
+        default: '0'
     direction:
       type: string
       nullable: true

@@ -1,0 +1,152 @@
+Ivoz\Provider\Domain\Model\BillableCall\BillableCallAbstract:
+  type: mappedSuperclass
+  fields:
+    callid:
+      type: string
+      nullable: true
+      length: 255
+      options:
+        fixed: false
+    startTime:
+      type: datetime
+      nullable: true
+      column: startTime
+    duration:
+      type: float
+      nullable: false
+      precision: 10
+      scale: 3
+      options:
+        default: '0.000'
+    caller:
+      type: string
+      nullable: true
+      length: 128
+      options:
+        fixed: false
+    callee:
+      type: string
+      nullable: true
+      length: 128
+      options:
+        fixed: false
+    cost:
+      type: decimal
+      precision: 20
+      scale: 4
+      nullable: true
+    price:
+      type: decimal
+      precision: 20
+      scale: 4
+      nullable: true
+    priceDetails:
+      type: json_array
+      nullable: true
+      column: priceDetails
+    carrierName:
+      type: string
+      nullable: true
+      length: 200
+      options:
+        fixed: false
+      column: carrierName
+    destinationName:
+      type: string
+      nullable: true
+      length: 100
+      options:
+        fixed: false
+      column: destinationName
+    ratingPlanName:
+      type: string
+      nullable: true
+      length: 55
+      options:
+        fixed: false
+      column: ratingPlanName
+  manyToOne:
+    brand:
+      targetEntity: \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        brandId:
+          referencedColumnName: id
+          nullable: false
+          onDelete: cascade
+      orphanRemoval: false
+    company:
+      targetEntity: \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        companyId:
+          referencedColumnName: id
+          nullable: false
+          onDelete: cascade
+      orphanRemoval: false
+    carrier:
+      targetEntity: \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        carrierId:
+          referencedColumnName: id
+          nullable: true
+          onDelete: set null
+      orphanRemoval: false
+    destination:
+      targetEntity: \Ivoz\Provider\Domain\Model\Destination\DestinationInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        destinationId:
+          referencedColumnName: id
+          nullable: true
+          onDelete: set null
+      orphanRemoval: false
+    ratingPlan:
+      targetEntity: \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        ratingPlanId:
+          referencedColumnName: id
+          nullable: true
+          onDelete: set null
+      orphanRemoval: false
+    invoice:
+      targetEntity: \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        invoiceId:
+          referencedColumnName: id
+          nullable: true
+          onDelete: set null
+      orphanRemoval: false
+    trunksCdr:
+      targetEntity: \Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        trunksCdrId:
+          referencedColumnName: id
+          nullable: true
+          onDelete: set null
+      orphanRemoval: false

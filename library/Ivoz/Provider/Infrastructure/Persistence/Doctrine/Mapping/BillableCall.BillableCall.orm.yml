@@ -1,0 +1,13 @@
+Ivoz\Provider\Domain\Model\BillableCall\BillableCall:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\BillableCallDoctrineRepository
+  type: entity
+  table: BillableCalls
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY

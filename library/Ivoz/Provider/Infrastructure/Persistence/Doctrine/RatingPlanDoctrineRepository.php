@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\NoResultException;
 use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface;
 use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanRepository;
 use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan;
@@ -23,7 +24,7 @@ class RatingPlanDoctrineRepository extends ServiceEntityRepository implements Ra
 
     /**
      * @param string $tag
-     * @return RatingPlanInterface
+     * @return RatingPlanInterface | null
      */
     public function findOneByTag(string $tag)
     {
@@ -32,9 +33,15 @@ class RatingPlanDoctrineRepository extends ServiceEntityRepository implements Ra
             ->where('self.tag = :tag')
             ->setParameter('tag', $tag);
 
-        return $qb
-            ->getQuery()
-            ->getSingleResult();
+        try {
+
+            return $qb
+                ->getQuery()
+                ->getSingleResult();
+
+        } catch (NoResultException $error) {}
+
+        return null;
     }
 }
 

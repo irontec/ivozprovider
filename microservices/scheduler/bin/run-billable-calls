@@ -13,7 +13,8 @@ $input = new ArgvInput();
 $env = $input->getParameterOption(['--env', '-e'], getenv('SYMFONY_ENV') ?: 'dev');
 
 $kernel = new MicroKernel($env, false);
-$request = new Request([], [], [], [], [], ['REQUEST_URI' => '/']);
+$request = new Request([], [], [], [], [], ['REQUEST_URI' => '/billable-calls']);
+
 $response = $kernel->handle($request);
 $response->send();
 $kernel->terminate($request, $response);

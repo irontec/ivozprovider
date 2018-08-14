@@ -265,7 +265,7 @@ class Generator
                 /** @var TpCdrInterface $tpCdr */
                 $tpCdr = null;
                 if ($call->getCgrid()) {
-                    $tpCdr = $this->tpCdrRepository->getOneByCgrid($call->getCgrid());
+                    $tpCdr = $this->tpCdrRepository->getDefaultRunByCgrid($call->getCgrid());
                 }
 
                 $price = $tpCdr

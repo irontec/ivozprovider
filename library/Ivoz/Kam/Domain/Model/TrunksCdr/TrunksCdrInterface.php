@@ -231,6 +231,22 @@ interface TrunksCdrInterface extends EntityInterface
     public function getPriceDetails();
 
     /**
+     * Set metered
+     *
+     * @param boolean $metered
+     *
+     * @return self
+     */
+    public function setMetered($metered = null);
+
+    /**
+     * Get metered
+     *
+     * @return boolean
+     */
+    public function getMetered();
+
+    /**
      * Set direction
      *
      * @param string $direction
