@@ -46,6 +46,7 @@ production:
           asr: true
         blacklist:
           externallyRated: true
+          calculateCost: true
           billingMethod: true
       options:
         title: _("Options")
@@ -85,7 +86,7 @@ production:
           fields:
             transformationRuleSet: 3
             externallyRated: 3
-            balance: 3
+            calculateCost: 3
         group2:
           label: _("Quality measuring")
           colsPerRow: 2
@@ -106,6 +107,7 @@ production:
           <<: *carrierOrder_Link
         blacklist:
           externallyRated: ${auth.brandFeatures.billing.disabled}
+          balance: true
       fixedPositions:
         <<: *carriersNew_fixedPositionsLink
 
@@ -132,6 +134,7 @@ production:
         "self::routingTag": null
         "self::company": null
       parentOptionCustomizer:
+        - IvozProvider_Klear_Options_OptionsCustomizer
         - recordCount
     ratingProfilesNew_screen:
       <<: *ratingProfilesNew_screenLink
@@ -156,6 +159,7 @@ production:
         blacklist:
           company: true
       parentOptionCustomizer:
+        - IvozProvider_Klear_Options_OptionsCustomizer
         - recordCount
     balanceNotificationNew_screen:
       <<: *balanceNotificationNew_screenLink
@@ -182,8 +186,8 @@ production:
         blacklist:
           company: true
       parentOptionCustomizer:
+        - IvozProvider_Klear_Options_OptionsCustomizer
         - recordCount
-
   dialogs: &carriers_dialosgLink
     carriersDel_dialog: &carriersDel_dialogLink
       <<: *Carriers
@@ -203,6 +207,8 @@ production:
       labelOnEdit: true
       action: add-to-carrier-balance
       class: ui-silk-money-add
+      parentOptionCustomizer:
+        - IvozProvider_Klear_Options_OptionsCustomizer
 
     # Carrier Servers dialogs
     <<: *carrierServers_dialogsLink

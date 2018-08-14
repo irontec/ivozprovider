@@ -28,6 +28,7 @@ Feature: Update carriers
           "name": "Artemis-Updated",
           "externallyRated": true,
           "balance": "0",
+          "calculateCost": false,
           "id": 1,
           "brand": {
               "name": "Irontec_e2e",

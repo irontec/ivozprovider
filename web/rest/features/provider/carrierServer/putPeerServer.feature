@@ -55,6 +55,7 @@ Feature: Update carrier servers
                 "name": "CarrierName",
                 "externallyRated": false,
                 "balance": "0",
+                "calculateCost": false,
                 "id": 1,
                 "brand": 1,
                 "transformationRuleSet": 1

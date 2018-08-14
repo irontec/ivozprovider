@@ -33,6 +33,13 @@ Ivoz\Provider\Domain\Model\Carrier\CarrierAbstract:
       scale: 4
       options:
         default: 0
+    calculateCost:
+      type: boolean
+      nullable: true
+      options:
+        default: '0'
+        unsigned: true
+      column: calculateCost
   manyToOne:
     brand:
       targetEntity: \Ivoz\Provider\Domain\Model\Brand\BrandInterface

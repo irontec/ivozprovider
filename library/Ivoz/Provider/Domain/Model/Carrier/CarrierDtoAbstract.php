@@ -33,6 +33,11 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     private $balance = 0;
 
     /**
+     * @var boolean
+     */
+    private $calculateCost = '0';
+
+    /**
      * @var integer
      */
     private $id;
@@ -89,6 +94,7 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
             'name' => 'name',
             'externallyRated' => 'externallyRated',
             'balance' => 'balance',
+            'calculateCost' => 'calculateCost',
             'id' => 'id',
             'brandId' => 'brand',
             'transformationRuleSetId' => 'transformationRuleSet'
@@ -105,6 +111,7 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
             'name' => $this->getName(),
             'externallyRated' => $this->getExternallyRated(),
             'balance' => $this->getBalance(),
+            'calculateCost' => $this->getCalculateCost(),
             'id' => $this->getId(),
             'brand' => $this->getBrand(),
             'transformationRuleSet' => $this->getTransformationRuleSet(),
@@ -269,6 +276,26 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     public function getBalance()
     {
         return $this->balance;
+    }
+
+    /**
+     * @param boolean $calculateCost
+     *
+     * @return static
+     */
+    public function setCalculateCost($calculateCost = null)
+    {
+        $this->calculateCost = $calculateCost;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getCalculateCost()
+    {
+        return $this->calculateCost;
     }
 
     /**

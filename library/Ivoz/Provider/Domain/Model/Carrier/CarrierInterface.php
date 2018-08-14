@@ -78,6 +78,22 @@ interface CarrierInterface extends LoggableEntityInterface
     public function getBalance();
 
     /**
+     * Set calculateCost
+     *
+     * @param boolean $calculateCost
+     *
+     * @return self
+     */
+    public function setCalculateCost($calculateCost = null);
+
+    /**
+     * Get calculateCost
+     *
+     * @return boolean
+     */
+    public function getCalculateCost();
+
+    /**
      * Set brand
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand

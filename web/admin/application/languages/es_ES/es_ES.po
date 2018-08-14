@@ -308,6 +308,9 @@ msgstr ""
 "Notación CIDR  (por ej. 8.8.8.0/24) o dirección IP específica (por ej. "
 "8.8.8.8)"
 
+msgid "Calculate cost?"
+msgstr "¿Calcular coste?"
+
 msgid "Calendar"
 msgid_plural "Calendars"
 msgstr[0] "Calendario"

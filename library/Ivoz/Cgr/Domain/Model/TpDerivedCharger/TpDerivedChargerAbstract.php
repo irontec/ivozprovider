@@ -69,7 +69,7 @@ abstract class TpDerivedChargerAbstract
      * column: req_type_field
      * @var string
      */
-    protected $reqTypeField = '^*postpaid';
+    protected $reqTypeField = 'carrierReqtype';
 
     /**
      * column: direction_field
