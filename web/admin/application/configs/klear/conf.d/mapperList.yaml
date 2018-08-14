@@ -15,6 +15,10 @@ mappers:
         modelFile: BalanceNotifications,
         entity: 'Ivoz\\Provider\\Domain\\Model\\BalanceNotification\\BalanceNotification'
     }
+  - &BillableCalls {
+        modelFile: BillableCalls,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\BillableCall\\BillableCall'
+    }
   - &BrandServices {
         modelFile: BrandServices,
         entity: 'Ivoz\\Provider\\Domain\\Model\\BrandService\\BrandService'
@@ -342,10 +346,6 @@ mappers:
   - &WholesaleClients {
         modelFile: WholesaleClients,
         entity: 'Ivoz\\Provider\\Domain\\Model\\Company\\Company'
-    }
-  - &KamTrunksCdrs {
-        modelFile: KamTrunksCdrs,
-        entity: 'Ivoz\\Kam\\Domain\\Model\\TrunksCdr\\TrunksCdr'
     }
   - &Trusted {
         modelFile: KamTrusted,

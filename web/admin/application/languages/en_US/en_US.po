@@ -328,6 +328,9 @@ msgstr[1] "Call ACL Patterns"
 msgid "Call Details"
 msgstr "Call Details"
 
+msgid "Call ID"
+msgstr "Call ID"
+
 msgid "Call destination"
 msgstr "Call destination"
 

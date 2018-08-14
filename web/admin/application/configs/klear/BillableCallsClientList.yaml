@@ -5,22 +5,21 @@
 production:
   main:
     module: klearMatrix
-    defaultScreen: kamTrunksCdrsList_screen
+    defaultScreen: billableCallsList_screen
 
-  screens: &kamTrunksCdrs_screensLink
-    kamTrunksCdrsList_screen: &kamTrunksCdrsList_screenLink
+  screens: &billableCallsClient_screensLink
+    billableCallsList_screen: &billableCallsList_screenLink
       controller: list
       csv: true
       order:
         field:
-          - TrunksCdr.startTime
-          - TrunksCdr.brand
-          - TrunksCdr.company
+          - BillableCall.startTime
+          - BillableCall.brand
+          - BillableCall.company
         type: desc
-      rawCondition: "TrunksCdr.direction='outbound'"
       pagination:
         items: 25
-      <<: *KamTrunksCdrs
+      <<: *BillableCalls
       class: ui-silk-application-view-list
       title: _("List of %s %2s", ngettext('Call registry', 'Call registries', 1), "[format| (%parent%)]")
       forcedValues:
@@ -29,24 +28,32 @@ production:
       info:
         <<: *documentationLink
         href: "/doc/${lang}/brand/billing/billable_calls.html"
-      fields: &kamTrunksCdrs_fieldsLink
+      fields: &billableCalls_fieldsLink
         options:
           title: _("Options")
           screens:
-            kamTrunksCdrsView_screen: true
-          default: kamTrunksCdrsView_screen
+            billableCallsView_screen: true
+          default: billableCallsView_screen
         blacklist:
           brand: true
           company: true
-          carrier: true
           invoice: true
+          callid: true
+          carrierName: true
+          cost: true
+          destinationName: true
+          ratingPlanName: true
         order:
           startTime: true
+          brand: true
+          company: true
+          caller: true
           callee: true
           duration: true
           price: true
-    kamTrunksCdrsView_screen: &kamTrunksCdrsView_screenLink
-      <<: *KamTrunksCdrs
+          cost: true
+    billableCallsView_screen:
+      <<: *BillableCalls
       controller: edit
       class: ui-silk-eye
       label: false
@@ -57,27 +64,31 @@ production:
         blacklist:
           brand: true
           company: true
-          carrier: true
+          carrierName: true
           invoice: true
+          callid: true
+          cost: true
         order:
           startTime: true
-          callee: true
           duration: true
+          callee: true
           price: true
       fixedPositions:
         group0:
           label: _("Basic Information")
           colsPerRow: 12
           fields:
-            callee: 6
             startTime: 6
             duration: 6
+            caller: 6
+            callee: 6
         group1:
           label: _("Billing Information")
-          colsPerRow: 12
+          colsPerRow: 16
           fields:
-            price: 6
-            direction: 6
+            price: 4
+            ratingPlanName: 6
+            destinationName: 6
 
 staging:
   _extends: production
