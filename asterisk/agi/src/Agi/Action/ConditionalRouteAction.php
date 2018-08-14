@@ -130,7 +130,7 @@ class ConditionalRouteAction
         }
 
         // Play locution if requested
-        $this->agi->playback($locution);
+        $this->agi->playbackLocution($locution);
 
         // Route this!
         $this->routerAction->route();

@@ -101,10 +101,10 @@ class IvrAction
                 $this->agi->notice("Entered value %d matches entry %s.", $userPressed, $entry->getEntry());
 
                 // Entered data matched one of the entries, play success (if any)
-                $this->agi->playback($ivr->getSuccessLocution());
+                $this->agi->playbackLocution($ivr->getSuccessLocution());
 
                 // Play entry success (if any)
-                $this->agi->playback($entry->getWelcomeLocution());
+                $this->agi->playbackLocution($entry->getWelcomeLocution());
 
                 // Route to destination
                 $this->routerAction
@@ -142,7 +142,7 @@ class IvrAction
                 $this->agi->notice("Entered value %d matches company extension %s", $userPressed, $extension);
 
                 // Entered data matched one of company extensions, play success (if any)
-                $this->agi->playback($ivr->getSuccessLocution());
+                $this->agi->playbackLocution($ivr->getSuccessLocution());
 
                 // Route to dialed extension
                 $this->routerAction
@@ -167,7 +167,7 @@ class IvrAction
         $this->agi->verbose("Processing IVR no input handler.");
 
         // Play No Input Locution
-        $this->agi->playback($this->ivr->getNoInputLocution());
+        $this->agi->playbackLocution($this->ivr->getNoInputLocution());
 
         // Route to destination
         $this->routerAction
@@ -186,7 +186,7 @@ class IvrAction
         $this->agi->verbose("Processing IVR error handler.");
 
         // Play Error Locution
-        $this->agi->playback($this->ivr->getErrorLocution());
+        $this->agi->playbackLocution($this->ivr->getErrorLocution());
 
         // Route to destination
         $this->routerAction

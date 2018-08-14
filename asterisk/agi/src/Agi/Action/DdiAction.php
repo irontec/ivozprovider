@@ -114,7 +114,7 @@ class DdiAction
             }
 
             // Play Welcome message
-            $this->agi->playback($externalCallFilter->getWelcomeLocution());
+            $this->agi->playbackLocution($externalCallFilter->getWelcomeLocution());
         }
 
         // Check if this DDI has custom Display Name
