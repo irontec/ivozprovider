@@ -36,6 +36,7 @@ Feature: Retrieve carriers
           "description": "CarrierDescription",
           "name": "CarrierName",
           "externallyRated": false,
+          "calculateCost": false,
           "id": 1,
           "brand": "~",
           "transformationRuleSet": {
