@@ -96,9 +96,9 @@ class ExternalFilterAction
 
         // Play holiday locution
         if (!empty($this->eventLocution)) {
-            $this->agi->playback($this->eventLocution);
+            $this->agi->playbackLocution($this->eventLocution);
         } else {
-            $this->agi->playback($filter->getHolidayLocution());
+            $this->agi->playbackLocution($filter->getHolidayLocution());
         }
 
         // Set Diversion information
@@ -132,7 +132,7 @@ class ExternalFilterAction
         $this->agi->notice("Procesing OutOfSchedule filter %s for DDI %s", $filter, $ddi);
 
         // Play holiday locution
-        $this->agi->playback($this->filter->getOutOfScheduleLocution());
+        $this->agi->playbackLocution($this->filter->getOutOfScheduleLocution());
 
         // Set Diversion information
         $count = $this->agi->getRedirecting('count');

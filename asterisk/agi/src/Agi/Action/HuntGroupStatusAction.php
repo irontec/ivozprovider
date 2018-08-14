@@ -86,7 +86,7 @@ class HuntGroupStatusAction
             $this->agi->verbose("Processing Hungroup %s no answer handler.", $huntGroup);
 
             // Play NoAnswer Locution
-            $this->agi->playback($huntGroup->getNoAnswerLocution());
+            $this->agi->playbackLocution($huntGroup->getNoAnswerLocution());
 
             // Route to destination
             $this->routerAction
