@@ -3,7 +3,6 @@
 #include conf.d/documentationLink.yaml
 #include BalanceNotificationsList.yaml
 #include BalanceMovementsList.yaml
-#include BillableCallsList.yaml
 
 production:
   main:
@@ -28,7 +27,6 @@ production:
           title: _("Options")
           screens:
             balanceMovementsList_screen: true
-            billableCallsList_screen: true
             balanceNotificationList_screen: true
           dialogs:
             addToBalance_dialog: true
@@ -104,21 +102,6 @@ production:
         <<: *balanceMovementsList_fieldsLink
         blacklist:
           carrier: true
-      parentOptionCustomizer:
-        - recordCount
-
-    # billableCalls
-    <<: *billableCalls_screensLink
-    billableCallsList_screen:
-      <<: *billableCallsList_screenLink
-      rawCondition: "BillableCall.invoice IS NULL"
-      class: ui-silk-application-view-list
-      filterField: Company
-      fields:
-        <<: *billableCalls_fieldsLink
-        blacklist:
-          brand: true
-          invoice: true
       parentOptionCustomizer:
         - recordCount
 
