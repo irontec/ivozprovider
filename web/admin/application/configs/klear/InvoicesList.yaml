@@ -63,7 +63,6 @@ production:
       shortcutOption: N
       forcedValues:
         <<: *forcedBrand
-        status: waiting
       fields:
         order:
           <<: *invoicesOrder_Link
