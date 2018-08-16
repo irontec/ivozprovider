@@ -158,7 +158,7 @@ protected function __toArray()
      */
     protected static $setMethodTemplate =
 '/**
- * <description>
+ * <deprecated><description>
  *
  * @param <variableType> $<variableName>
  *
@@ -1167,6 +1167,8 @@ public function <methodName>(<criteriaArgument>)
             ? 'protected'
             : 'public';
 
+        $deprecated = "@deprecated\n     * ";
+
         if (array_key_exists($fieldName, $metadata->fieldMappings)) {
             $currentField = (object) $metadata->fieldMappings[$fieldName];
             $isNullable = isset($currentField->nullable) && $currentField->nullable;
@@ -1179,6 +1181,11 @@ public function <methodName>(<criteriaArgument>)
         if ($typeHint[0] === '\\') {
             // typehints are always prefixed in parent::generateEntityStubMethod
             $typeHint = substr($typeHint, 1);
+        }
+
+        $isFk = strpos($typeHint, '\\');
+        if ($isFk) {
+            $deprecated = '';
         }
 
         $isCollection = strpos($typeHint, 'Doctrine\\Common\\Collections\\Collection') !== false;
@@ -1298,6 +1305,7 @@ public function <methodName>(<criteriaArgument>)
 
         $replacements = array(
             $this->spaces . '<assertions>' => $assertions,
+            '<deprecated>' => $deprecated,
             '<visibility>' => $visibility
         );
 
