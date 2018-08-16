@@ -14,6 +14,7 @@ interface RoutingTagInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -30,6 +31,7 @@ interface RoutingTagInterface extends LoggableEntityInterface
     public function getName();
 
     /**
+     * @deprecated
      * Set tag
      *
      * @param string $tag

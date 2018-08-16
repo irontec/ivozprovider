@@ -17,6 +17,7 @@ interface UsersAddressInterface extends LoggableEntityInterface
     public function setMask($mask = null);
 
     /**
+     * @deprecated
      * Set sourceAddress
      *
      * @param string $sourceAddress
@@ -47,6 +48,7 @@ interface UsersAddressInterface extends LoggableEntityInterface
     public function getMask();
 
     /**
+     * @deprecated
      * Set port
      *
      * @param integer $port
@@ -63,6 +65,7 @@ interface UsersAddressInterface extends LoggableEntityInterface
     public function getPort();
 
     /**
+     * @deprecated
      * Set tag
      *
      * @param string $tag
@@ -79,6 +82,7 @@ interface UsersAddressInterface extends LoggableEntityInterface
     public function getTag();
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description

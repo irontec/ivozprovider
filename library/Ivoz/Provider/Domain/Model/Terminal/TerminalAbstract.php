@@ -250,6 +250,7 @@ abstract class TerminalAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -278,6 +279,7 @@ abstract class TerminalAbstract
     }
 
     /**
+     * @deprecated
      * Set disallow
      *
      * @param string $disallow
@@ -305,6 +307,7 @@ abstract class TerminalAbstract
     }
 
     /**
+     * @deprecated
      * Set allowAudio
      *
      * @param string $allowAudio
@@ -332,6 +335,7 @@ abstract class TerminalAbstract
     }
 
     /**
+     * @deprecated
      * Set allowVideo
      *
      * @param string $allowVideo
@@ -360,6 +364,7 @@ abstract class TerminalAbstract
     }
 
     /**
+     * @deprecated
      * Set directMediaMethod
      *
      * @param string $directMediaMethod
@@ -391,6 +396,7 @@ abstract class TerminalAbstract
     }
 
     /**
+     * @deprecated
      * Set password
      *
      * @param string $password
@@ -418,6 +424,7 @@ abstract class TerminalAbstract
     }
 
     /**
+     * @deprecated
      * Set mac
      *
      * @param string $mac
@@ -446,6 +453,7 @@ abstract class TerminalAbstract
     }
 
     /**
+     * @deprecated
      * Set lastProvisionDate
      *
      * @param \DateTime $lastProvisionDate

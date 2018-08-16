@@ -227,6 +227,7 @@ abstract class UsersXcapAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set username
      *
      * @param string $username
@@ -254,6 +255,7 @@ abstract class UsersXcapAbstract
     }
 
     /**
+     * @deprecated
      * Set domain
      *
      * @param string $domain
@@ -281,6 +283,7 @@ abstract class UsersXcapAbstract
     }
 
     /**
+     * @deprecated
      * Set doc
      *
      * @param string $doc
@@ -307,6 +310,7 @@ abstract class UsersXcapAbstract
     }
 
     /**
+     * @deprecated
      * Set docType
      *
      * @param integer $docType
@@ -334,6 +338,7 @@ abstract class UsersXcapAbstract
     }
 
     /**
+     * @deprecated
      * Set etag
      *
      * @param string $etag
@@ -361,6 +366,7 @@ abstract class UsersXcapAbstract
     }
 
     /**
+     * @deprecated
      * Set source
      *
      * @param integer $source
@@ -388,6 +394,7 @@ abstract class UsersXcapAbstract
     }
 
     /**
+     * @deprecated
      * Set docUri
      *
      * @param string $docUri
@@ -415,6 +422,7 @@ abstract class UsersXcapAbstract
     }
 
     /**
+     * @deprecated
      * Set port
      *
      * @param integer $port

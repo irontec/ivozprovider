@@ -339,6 +339,7 @@ abstract class QueueAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -367,6 +368,7 @@ abstract class QueueAbstract
     }
 
     /**
+     * @deprecated
      * Set maxWaitTime
      *
      * @param integer $maxWaitTime
@@ -397,6 +399,7 @@ abstract class QueueAbstract
     }
 
     /**
+     * @deprecated
      * Set timeoutTargetType
      *
      * @param string $timeoutTargetType
@@ -430,6 +433,7 @@ abstract class QueueAbstract
     }
 
     /**
+     * @deprecated
      * Set timeoutNumberValue
      *
      * @param string $timeoutNumberValue
@@ -458,6 +462,7 @@ abstract class QueueAbstract
     }
 
     /**
+     * @deprecated
      * Set maxlen
      *
      * @param integer $maxlen
@@ -488,6 +493,7 @@ abstract class QueueAbstract
     }
 
     /**
+     * @deprecated
      * Set fullTargetType
      *
      * @param string $fullTargetType
@@ -521,6 +527,7 @@ abstract class QueueAbstract
     }
 
     /**
+     * @deprecated
      * Set fullNumberValue
      *
      * @param string $fullNumberValue
@@ -549,6 +556,7 @@ abstract class QueueAbstract
     }
 
     /**
+     * @deprecated
      * Set periodicAnnounceFrequency
      *
      * @param integer $periodicAnnounceFrequency
@@ -579,6 +587,7 @@ abstract class QueueAbstract
     }
 
     /**
+     * @deprecated
      * Set memberCallRest
      *
      * @param integer $memberCallRest
@@ -609,6 +618,7 @@ abstract class QueueAbstract
     }
 
     /**
+     * @deprecated
      * Set memberCallTimeout
      *
      * @param integer $memberCallTimeout
@@ -639,6 +649,7 @@ abstract class QueueAbstract
     }
 
     /**
+     * @deprecated
      * Set strategy
      *
      * @param string $strategy
@@ -666,6 +677,7 @@ abstract class QueueAbstract
     }
 
     /**
+     * @deprecated
      * Set weight
      *
      * @param integer $weight

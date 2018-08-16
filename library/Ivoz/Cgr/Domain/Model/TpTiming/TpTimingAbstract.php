@@ -227,6 +227,7 @@ abstract class TpTimingAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set tpid
      *
      * @param string $tpid
@@ -254,6 +255,7 @@ abstract class TpTimingAbstract
     }
 
     /**
+     * @deprecated
      * Set tag
      *
      * @param string $tag
@@ -282,6 +284,7 @@ abstract class TpTimingAbstract
     }
 
     /**
+     * @deprecated
      * Set years
      *
      * @param string $years
@@ -309,6 +312,7 @@ abstract class TpTimingAbstract
     }
 
     /**
+     * @deprecated
      * Set months
      *
      * @param string $months
@@ -336,6 +340,7 @@ abstract class TpTimingAbstract
     }
 
     /**
+     * @deprecated
      * Set monthDays
      *
      * @param string $monthDays
@@ -363,6 +368,7 @@ abstract class TpTimingAbstract
     }
 
     /**
+     * @deprecated
      * Set weekDays
      *
      * @param string $weekDays
@@ -390,6 +396,7 @@ abstract class TpTimingAbstract
     }
 
     /**
+     * @deprecated
      * Set time
      *
      * @param string $time
@@ -417,6 +424,7 @@ abstract class TpTimingAbstract
     }
 
     /**
+     * @deprecated
      * Set createdAt
      *
      * @param \DateTime $createdAt

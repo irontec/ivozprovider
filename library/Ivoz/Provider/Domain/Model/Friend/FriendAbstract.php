@@ -359,6 +359,7 @@ abstract class FriendAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -386,6 +387,7 @@ abstract class FriendAbstract
     }
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description
@@ -413,6 +415,7 @@ abstract class FriendAbstract
     }
 
     /**
+     * @deprecated
      * Set transport
      *
      * @param string $transport
@@ -445,6 +448,7 @@ abstract class FriendAbstract
     }
 
     /**
+     * @deprecated
      * Set ip
      *
      * @param string $ip
@@ -473,6 +477,7 @@ abstract class FriendAbstract
     }
 
     /**
+     * @deprecated
      * Set port
      *
      * @param integer $port
@@ -504,6 +509,7 @@ abstract class FriendAbstract
     }
 
     /**
+     * @deprecated
      * Set authNeeded
      *
      * @param string $authNeeded
@@ -530,6 +536,7 @@ abstract class FriendAbstract
     }
 
     /**
+     * @deprecated
      * Set password
      *
      * @param string $password
@@ -558,6 +565,7 @@ abstract class FriendAbstract
     }
 
     /**
+     * @deprecated
      * Set priority
      *
      * @param integer $priority
@@ -585,6 +593,7 @@ abstract class FriendAbstract
     }
 
     /**
+     * @deprecated
      * Set disallow
      *
      * @param string $disallow
@@ -612,6 +621,7 @@ abstract class FriendAbstract
     }
 
     /**
+     * @deprecated
      * Set allow
      *
      * @param string $allow
@@ -639,6 +649,7 @@ abstract class FriendAbstract
     }
 
     /**
+     * @deprecated
      * Set directMediaMethod
      *
      * @param string $directMediaMethod
@@ -669,6 +680,7 @@ abstract class FriendAbstract
     }
 
     /**
+     * @deprecated
      * Set calleridUpdateHeader
      *
      * @param string $calleridUpdateHeader
@@ -699,6 +711,7 @@ abstract class FriendAbstract
     }
 
     /**
+     * @deprecated
      * Set updateCallerid
      *
      * @param string $updateCallerid
@@ -729,6 +742,7 @@ abstract class FriendAbstract
     }
 
     /**
+     * @deprecated
      * Set fromDomain
      *
      * @param string $fromDomain
@@ -757,6 +771,7 @@ abstract class FriendAbstract
     }
 
     /**
+     * @deprecated
      * Set directConnectivity
      *
      * @param string $directConnectivity

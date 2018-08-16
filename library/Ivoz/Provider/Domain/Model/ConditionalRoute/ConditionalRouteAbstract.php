@@ -266,6 +266,7 @@ abstract class ConditionalRouteAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -293,6 +294,7 @@ abstract class ConditionalRouteAbstract
     }
 
     /**
+     * @deprecated
      * Set routetype
      *
      * @param string $routetype
@@ -332,6 +334,7 @@ abstract class ConditionalRouteAbstract
     }
 
     /**
+     * @deprecated
      * Set numbervalue
      *
      * @param string $numbervalue
@@ -360,6 +363,7 @@ abstract class ConditionalRouteAbstract
     }
 
     /**
+     * @deprecated
      * Set friendvalue
      *
      * @param string $friendvalue

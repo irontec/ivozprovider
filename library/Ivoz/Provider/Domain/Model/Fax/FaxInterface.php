@@ -20,6 +20,7 @@ interface FaxInterface extends LoggableEntityInterface
     public function getOutgoingDdi();
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -36,6 +37,7 @@ interface FaxInterface extends LoggableEntityInterface
     public function getName();
 
     /**
+     * @deprecated
      * Set email
      *
      * @param string $email

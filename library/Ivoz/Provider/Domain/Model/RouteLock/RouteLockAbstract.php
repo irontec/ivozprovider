@@ -177,6 +177,7 @@ abstract class RouteLockAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -204,6 +205,7 @@ abstract class RouteLockAbstract
     }
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description
@@ -231,6 +233,7 @@ abstract class RouteLockAbstract
     }
 
     /**
+     * @deprecated
      * Set open
      *
      * @param boolean $open

@@ -9,6 +9,7 @@ interface TpRatingPlanInterface extends EntityInterface
     public function getWeekDays();
 
     /**
+     * @deprecated
      * Set tpid
      *
      * @param string $tpid
@@ -25,6 +26,7 @@ interface TpRatingPlanInterface extends EntityInterface
     public function getTpid();
 
     /**
+     * @deprecated
      * Set tag
      *
      * @param string $tag
@@ -41,6 +43,7 @@ interface TpRatingPlanInterface extends EntityInterface
     public function getTag();
 
     /**
+     * @deprecated
      * Set destratesTag
      *
      * @param string $destratesTag
@@ -57,6 +60,7 @@ interface TpRatingPlanInterface extends EntityInterface
     public function getDestratesTag();
 
     /**
+     * @deprecated
      * Set timingTag
      *
      * @param string $timingTag
@@ -73,6 +77,7 @@ interface TpRatingPlanInterface extends EntityInterface
     public function getTimingTag();
 
     /**
+     * @deprecated
      * Set weight
      *
      * @param string $weight
@@ -89,6 +94,7 @@ interface TpRatingPlanInterface extends EntityInterface
     public function getWeight();
 
     /**
+     * @deprecated
      * Set createdAt
      *
      * @param \DateTime $createdAt
@@ -105,6 +111,7 @@ interface TpRatingPlanInterface extends EntityInterface
     public function getCreatedAt();
 
     /**
+     * @deprecated
      * Set timingType
      *
      * @param string $timingType
@@ -121,6 +128,7 @@ interface TpRatingPlanInterface extends EntityInterface
     public function getTimingType();
 
     /**
+     * @deprecated
      * Set timeIn
      *
      * @param \DateTime $timeIn
@@ -137,6 +145,7 @@ interface TpRatingPlanInterface extends EntityInterface
     public function getTimeIn();
 
     /**
+     * @deprecated
      * Set monday
      *
      * @param boolean $monday
@@ -153,6 +162,7 @@ interface TpRatingPlanInterface extends EntityInterface
     public function getMonday();
 
     /**
+     * @deprecated
      * Set tuesday
      *
      * @param boolean $tuesday
@@ -169,6 +179,7 @@ interface TpRatingPlanInterface extends EntityInterface
     public function getTuesday();
 
     /**
+     * @deprecated
      * Set wednesday
      *
      * @param boolean $wednesday
@@ -185,6 +196,7 @@ interface TpRatingPlanInterface extends EntityInterface
     public function getWednesday();
 
     /**
+     * @deprecated
      * Set thursday
      *
      * @param boolean $thursday
@@ -201,6 +213,7 @@ interface TpRatingPlanInterface extends EntityInterface
     public function getThursday();
 
     /**
+     * @deprecated
      * Set friday
      *
      * @param boolean $friday
@@ -217,6 +230,7 @@ interface TpRatingPlanInterface extends EntityInterface
     public function getFriday();
 
     /**
+     * @deprecated
      * Set saturday
      *
      * @param boolean $saturday
@@ -233,6 +247,7 @@ interface TpRatingPlanInterface extends EntityInterface
     public function getSaturday();
 
     /**
+     * @deprecated
      * Set sunday
      *
      * @param boolean $sunday

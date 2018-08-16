@@ -175,6 +175,7 @@ abstract class HuntGroupsRelUserAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set timeoutTime
      *
      * @param integer $timeoutTime
@@ -205,6 +206,7 @@ abstract class HuntGroupsRelUserAbstract
     }
 
     /**
+     * @deprecated
      * Set priority
      *
      * @param integer $priority

@@ -13,6 +13,7 @@ interface DispatcherInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @deprecated
      * Set setid
      *
      * @param integer $setid
@@ -29,6 +30,7 @@ interface DispatcherInterface extends LoggableEntityInterface
     public function getSetid();
 
     /**
+     * @deprecated
      * Set destination
      *
      * @param string $destination
@@ -45,6 +47,7 @@ interface DispatcherInterface extends LoggableEntityInterface
     public function getDestination();
 
     /**
+     * @deprecated
      * Set flags
      *
      * @param integer $flags
@@ -61,6 +64,7 @@ interface DispatcherInterface extends LoggableEntityInterface
     public function getFlags();
 
     /**
+     * @deprecated
      * Set priority
      *
      * @param integer $priority
@@ -77,6 +81,7 @@ interface DispatcherInterface extends LoggableEntityInterface
     public function getPriority();
 
     /**
+     * @deprecated
      * Set attrs
      *
      * @param string $attrs
@@ -93,6 +98,7 @@ interface DispatcherInterface extends LoggableEntityInterface
     public function getAttrs();
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description

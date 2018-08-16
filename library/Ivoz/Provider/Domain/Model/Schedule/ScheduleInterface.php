@@ -17,6 +17,7 @@ interface ScheduleInterface extends LoggableEntityInterface
     public function isOnSchedule(\DateTime $time);
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -33,6 +34,7 @@ interface ScheduleInterface extends LoggableEntityInterface
     public function getName();
 
     /**
+     * @deprecated
      * Set timeIn
      *
      * @param \DateTime $timeIn
@@ -49,6 +51,7 @@ interface ScheduleInterface extends LoggableEntityInterface
     public function getTimeIn();
 
     /**
+     * @deprecated
      * Set timeout
      *
      * @param \DateTime $timeout
@@ -65,6 +68,7 @@ interface ScheduleInterface extends LoggableEntityInterface
     public function getTimeout();
 
     /**
+     * @deprecated
      * Set monday
      *
      * @param boolean $monday
@@ -81,6 +85,7 @@ interface ScheduleInterface extends LoggableEntityInterface
     public function getMonday();
 
     /**
+     * @deprecated
      * Set tuesday
      *
      * @param boolean $tuesday
@@ -97,6 +102,7 @@ interface ScheduleInterface extends LoggableEntityInterface
     public function getTuesday();
 
     /**
+     * @deprecated
      * Set wednesday
      *
      * @param boolean $wednesday
@@ -113,6 +119,7 @@ interface ScheduleInterface extends LoggableEntityInterface
     public function getWednesday();
 
     /**
+     * @deprecated
      * Set thursday
      *
      * @param boolean $thursday
@@ -129,6 +136,7 @@ interface ScheduleInterface extends LoggableEntityInterface
     public function getThursday();
 
     /**
+     * @deprecated
      * Set friday
      *
      * @param boolean $friday
@@ -145,6 +153,7 @@ interface ScheduleInterface extends LoggableEntityInterface
     public function getFriday();
 
     /**
+     * @deprecated
      * Set saturday
      *
      * @param boolean $saturday
@@ -161,6 +170,7 @@ interface ScheduleInterface extends LoggableEntityInterface
     public function getSaturday();
 
     /**
+     * @deprecated
      * Set sunday
      *
      * @param boolean $sunday

@@ -189,6 +189,7 @@ abstract class RatingProfileAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set activationTime
      *
      * @param \DateTime $activationTime

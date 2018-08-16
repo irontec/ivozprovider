@@ -13,6 +13,7 @@ interface QueueInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -29,6 +30,7 @@ interface QueueInterface extends LoggableEntityInterface
     public function getName();
 
     /**
+     * @deprecated
      * Set periodicAnnounce
      *
      * @param string $periodicAnnounce
@@ -45,6 +47,7 @@ interface QueueInterface extends LoggableEntityInterface
     public function getPeriodicAnnounce();
 
     /**
+     * @deprecated
      * Set periodicAnnounceFrequency
      *
      * @param integer $periodicAnnounceFrequency
@@ -61,6 +64,7 @@ interface QueueInterface extends LoggableEntityInterface
     public function getPeriodicAnnounceFrequency();
 
     /**
+     * @deprecated
      * Set timeout
      *
      * @param integer $timeout
@@ -77,6 +81,7 @@ interface QueueInterface extends LoggableEntityInterface
     public function getTimeout();
 
     /**
+     * @deprecated
      * Set autopause
      *
      * @param string $autopause
@@ -93,6 +98,7 @@ interface QueueInterface extends LoggableEntityInterface
     public function getAutopause();
 
     /**
+     * @deprecated
      * Set ringinuse
      *
      * @param string $ringinuse
@@ -109,6 +115,7 @@ interface QueueInterface extends LoggableEntityInterface
     public function getRinginuse();
 
     /**
+     * @deprecated
      * Set wrapuptime
      *
      * @param integer $wrapuptime
@@ -125,6 +132,7 @@ interface QueueInterface extends LoggableEntityInterface
     public function getWrapuptime();
 
     /**
+     * @deprecated
      * Set maxlen
      *
      * @param integer $maxlen
@@ -141,6 +149,7 @@ interface QueueInterface extends LoggableEntityInterface
     public function getMaxlen();
 
     /**
+     * @deprecated
      * Set strategy
      *
      * @param string $strategy
@@ -157,6 +166,7 @@ interface QueueInterface extends LoggableEntityInterface
     public function getStrategy();
 
     /**
+     * @deprecated
      * Set weight
      *
      * @param integer $weight

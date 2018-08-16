@@ -187,6 +187,7 @@ abstract class TpDestinationAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set tpid
      *
      * @param string $tpid
@@ -214,6 +215,7 @@ abstract class TpDestinationAbstract
     }
 
     /**
+     * @deprecated
      * Set tag
      *
      * @param string $tag
@@ -242,6 +244,7 @@ abstract class TpDestinationAbstract
     }
 
     /**
+     * @deprecated
      * Set prefix
      *
      * @param string $prefix
@@ -269,6 +272,7 @@ abstract class TpDestinationAbstract
     }
 
     /**
+     * @deprecated
      * Set createdAt
      *
      * @param \DateTime $createdAt

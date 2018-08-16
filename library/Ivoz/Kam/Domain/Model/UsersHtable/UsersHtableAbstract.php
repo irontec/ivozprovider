@@ -196,6 +196,7 @@ abstract class UsersHtableAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set keyName
      *
      * @param string $keyName
@@ -223,6 +224,7 @@ abstract class UsersHtableAbstract
     }
 
     /**
+     * @deprecated
      * Set keyType
      *
      * @param integer $keyType
@@ -250,6 +252,7 @@ abstract class UsersHtableAbstract
     }
 
     /**
+     * @deprecated
      * Set valueType
      *
      * @param integer $valueType
@@ -277,6 +280,7 @@ abstract class UsersHtableAbstract
     }
 
     /**
+     * @deprecated
      * Set keyValue
      *
      * @param string $keyValue
@@ -304,6 +308,7 @@ abstract class UsersHtableAbstract
     }
 
     /**
+     * @deprecated
      * Set expires
      *
      * @param integer $expires

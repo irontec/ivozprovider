@@ -239,6 +239,7 @@ abstract class TpRateAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set tpid
      *
      * @param string $tpid
@@ -266,6 +267,7 @@ abstract class TpRateAbstract
     }
 
     /**
+     * @deprecated
      * Set tag
      *
      * @param string $tag
@@ -294,6 +296,7 @@ abstract class TpRateAbstract
     }
 
     /**
+     * @deprecated
      * Set connectFee
      *
      * @param string $connectFee
@@ -321,6 +324,7 @@ abstract class TpRateAbstract
     }
 
     /**
+     * @deprecated
      * Set rateCost
      *
      * @param string $rateCost
@@ -348,6 +352,7 @@ abstract class TpRateAbstract
     }
 
     /**
+     * @deprecated
      * Set rateUnit
      *
      * @param string $rateUnit
@@ -375,6 +380,7 @@ abstract class TpRateAbstract
     }
 
     /**
+     * @deprecated
      * Set rateIncrement
      *
      * @param string $rateIncrement
@@ -402,6 +408,7 @@ abstract class TpRateAbstract
     }
 
     /**
+     * @deprecated
      * Set groupIntervalStart
      *
      * @param string $groupIntervalStart
@@ -429,6 +436,7 @@ abstract class TpRateAbstract
     }
 
     /**
+     * @deprecated
      * Set createdAt
      *
      * @param \DateTime $createdAt

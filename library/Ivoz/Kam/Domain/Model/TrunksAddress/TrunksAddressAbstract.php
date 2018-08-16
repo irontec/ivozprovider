@@ -196,6 +196,7 @@ abstract class TrunksAddressAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set grp
      *
      * @param integer $grp
@@ -224,6 +225,7 @@ abstract class TrunksAddressAbstract
     }
 
     /**
+     * @deprecated
      * Set ipAddr
      *
      * @param string $ipAddr
@@ -252,6 +254,7 @@ abstract class TrunksAddressAbstract
     }
 
     /**
+     * @deprecated
      * Set mask
      *
      * @param integer $mask
@@ -279,6 +282,7 @@ abstract class TrunksAddressAbstract
     }
 
     /**
+     * @deprecated
      * Set port
      *
      * @param integer $port
@@ -306,6 +310,7 @@ abstract class TrunksAddressAbstract
     }
 
     /**
+     * @deprecated
      * Set tag
      *
      * @param string $tag

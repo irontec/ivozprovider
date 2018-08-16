@@ -177,6 +177,7 @@ abstract class OutgoingDdiRuleAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -204,6 +205,7 @@ abstract class OutgoingDdiRuleAbstract
     }
 
     /**
+     * @deprecated
      * Set defaultAction
      *
      * @param string $defaultAction

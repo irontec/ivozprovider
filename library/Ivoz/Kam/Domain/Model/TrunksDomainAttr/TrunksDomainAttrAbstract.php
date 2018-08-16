@@ -193,6 +193,7 @@ abstract class TrunksDomainAttrAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set did
      *
      * @param string $did
@@ -220,6 +221,7 @@ abstract class TrunksDomainAttrAbstract
     }
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -247,6 +249,7 @@ abstract class TrunksDomainAttrAbstract
     }
 
     /**
+     * @deprecated
      * Set type
      *
      * @param integer $type
@@ -275,6 +278,7 @@ abstract class TrunksDomainAttrAbstract
     }
 
     /**
+     * @deprecated
      * Set value
      *
      * @param string $value
@@ -302,6 +306,7 @@ abstract class TrunksDomainAttrAbstract
     }
 
     /**
+     * @deprecated
      * Set lastModified
      *
      * @param \DateTime $lastModified

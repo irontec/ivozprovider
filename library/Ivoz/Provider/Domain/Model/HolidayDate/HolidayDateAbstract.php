@@ -176,6 +176,7 @@ abstract class HolidayDateAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -203,6 +204,7 @@ abstract class HolidayDateAbstract
     }
 
     /**
+     * @deprecated
      * Set eventDate
      *
      * @param \DateTime $eventDate

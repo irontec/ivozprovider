@@ -235,6 +235,7 @@ abstract class DestinationRateGroupAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set status
      *
      * @param string $status

@@ -195,6 +195,7 @@ abstract class TransformationRuleAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set type
      *
      * @param string $type
@@ -228,6 +229,7 @@ abstract class TransformationRuleAbstract
     }
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description
@@ -255,6 +257,7 @@ abstract class TransformationRuleAbstract
     }
 
     /**
+     * @deprecated
      * Set priority
      *
      * @param integer $priority
@@ -286,6 +289,7 @@ abstract class TransformationRuleAbstract
     }
 
     /**
+     * @deprecated
      * Set matchExpr
      *
      * @param string $matchExpr
@@ -314,6 +318,7 @@ abstract class TransformationRuleAbstract
     }
 
     /**
+     * @deprecated
      * Set replaceExpr
      *
      * @param string $replaceExpr

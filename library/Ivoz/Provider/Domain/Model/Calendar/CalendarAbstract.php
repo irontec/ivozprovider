@@ -157,6 +157,7 @@ abstract class CalendarAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name

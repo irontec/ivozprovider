@@ -13,6 +13,7 @@ interface BalanceNotificationInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @deprecated
      * Set toAddress
      *
      * @param string $toAddress
@@ -29,6 +30,7 @@ interface BalanceNotificationInterface extends LoggableEntityInterface
     public function getToAddress();
 
     /**
+     * @deprecated
      * Set threshold
      *
      * @param string $threshold
@@ -45,6 +47,7 @@ interface BalanceNotificationInterface extends LoggableEntityInterface
     public function getThreshold();
 
     /**
+     * @deprecated
      * Set lastSent
      *
      * @param \DateTime $lastSent

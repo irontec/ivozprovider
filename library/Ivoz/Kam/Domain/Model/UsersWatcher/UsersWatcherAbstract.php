@@ -217,6 +217,7 @@ abstract class UsersWatcherAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set presentityUri
      *
      * @param string $presentityUri
@@ -244,6 +245,7 @@ abstract class UsersWatcherAbstract
     }
 
     /**
+     * @deprecated
      * Set watcherUsername
      *
      * @param string $watcherUsername
@@ -271,6 +273,7 @@ abstract class UsersWatcherAbstract
     }
 
     /**
+     * @deprecated
      * Set watcherDomain
      *
      * @param string $watcherDomain
@@ -298,6 +301,7 @@ abstract class UsersWatcherAbstract
     }
 
     /**
+     * @deprecated
      * Set event
      *
      * @param string $event
@@ -325,6 +329,7 @@ abstract class UsersWatcherAbstract
     }
 
     /**
+     * @deprecated
      * Set status
      *
      * @param integer $status
@@ -352,6 +357,7 @@ abstract class UsersWatcherAbstract
     }
 
     /**
+     * @deprecated
      * Set reason
      *
      * @param string $reason
@@ -380,6 +386,7 @@ abstract class UsersWatcherAbstract
     }
 
     /**
+     * @deprecated
      * Set insertedTime
      *
      * @param integer $insertedTime

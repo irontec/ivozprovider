@@ -80,6 +80,7 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
     public function getOutOfScheduleRouteType();
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -96,6 +97,7 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
     public function getName();
 
     /**
+     * @deprecated
      * Set holidayTargetType
      *
      * @param string $holidayTargetType
@@ -112,6 +114,7 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
     public function getHolidayTargetType();
 
     /**
+     * @deprecated
      * Set holidayNumberValue
      *
      * @param string $holidayNumberValue
@@ -128,6 +131,7 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
     public function getHolidayNumberValue();
 
     /**
+     * @deprecated
      * Set outOfScheduleTargetType
      *
      * @param string $outOfScheduleTargetType
@@ -144,6 +148,7 @@ interface ExternalCallFilterInterface extends LoggableEntityInterface
     public function getOutOfScheduleTargetType();
 
     /**
+     * @deprecated
      * Set outOfScheduleNumberValue
      *
      * @param string $outOfScheduleNumberValue

@@ -7,6 +7,7 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 interface RatingPlanInterface extends EntityInterface
 {
     /**
+     * @deprecated
      * Set tag
      *
      * @param string $tag

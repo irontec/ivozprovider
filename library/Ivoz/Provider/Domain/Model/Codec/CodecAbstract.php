@@ -168,6 +168,7 @@ abstract class CodecAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set type
      *
      * @param string $type
@@ -199,6 +200,7 @@ abstract class CodecAbstract
     }
 
     /**
+     * @deprecated
      * Set iden
      *
      * @param string $iden
@@ -226,6 +228,7 @@ abstract class CodecAbstract
     }
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name

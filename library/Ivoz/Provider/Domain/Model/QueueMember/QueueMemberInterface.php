@@ -13,6 +13,7 @@ interface QueueMemberInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @deprecated
      * Set penalty
      *
      * @param integer $penalty

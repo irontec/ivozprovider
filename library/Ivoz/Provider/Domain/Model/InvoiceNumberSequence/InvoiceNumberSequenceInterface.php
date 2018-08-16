@@ -29,6 +29,7 @@ interface InvoiceNumberSequenceInterface extends LoggableEntityInterface
     public function nextval();
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -45,6 +46,7 @@ interface InvoiceNumberSequenceInterface extends LoggableEntityInterface
     public function getName();
 
     /**
+     * @deprecated
      * Set prefix
      *
      * @param string $prefix
@@ -61,6 +63,7 @@ interface InvoiceNumberSequenceInterface extends LoggableEntityInterface
     public function getPrefix();
 
     /**
+     * @deprecated
      * Set sequenceLength
      *
      * @param integer $sequenceLength
@@ -77,6 +80,7 @@ interface InvoiceNumberSequenceInterface extends LoggableEntityInterface
     public function getSequenceLength();
 
     /**
+     * @deprecated
      * Set increment
      *
      * @param integer $increment
@@ -93,6 +97,7 @@ interface InvoiceNumberSequenceInterface extends LoggableEntityInterface
     public function getIncrement();
 
     /**
+     * @deprecated
      * Set latestValue
      *
      * @param string $latestValue
@@ -109,6 +114,7 @@ interface InvoiceNumberSequenceInterface extends LoggableEntityInterface
     public function getLatestValue();
 
     /**
+     * @deprecated
      * Set iteration
      *
      * @param integer $iteration

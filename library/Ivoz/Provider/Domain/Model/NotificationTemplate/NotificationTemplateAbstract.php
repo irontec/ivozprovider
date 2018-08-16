@@ -168,6 +168,7 @@ abstract class NotificationTemplateAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -195,6 +196,7 @@ abstract class NotificationTemplateAbstract
     }
 
     /**
+     * @deprecated
      * Set type
      *
      * @param string $type

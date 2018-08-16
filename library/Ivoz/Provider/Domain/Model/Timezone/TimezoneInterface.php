@@ -13,6 +13,7 @@ interface TimezoneInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @deprecated
      * Set tz
      *
      * @param string $tz
@@ -29,6 +30,7 @@ interface TimezoneInterface extends LoggableEntityInterface
     public function getTz();
 
     /**
+     * @deprecated
      * Set comment
      *
      * @param string $comment

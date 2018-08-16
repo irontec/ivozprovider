@@ -157,6 +157,7 @@ abstract class ProxyUserAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -185,6 +186,7 @@ abstract class ProxyUserAbstract
     }
 
     /**
+     * @deprecated
      * Set ip
      *
      * @param string $ip

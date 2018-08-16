@@ -240,6 +240,7 @@ abstract class ScheduleAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -267,6 +268,7 @@ abstract class ScheduleAbstract
     }
 
     /**
+     * @deprecated
      * Set timeIn
      *
      * @param \DateTime $timeIn
@@ -293,6 +295,7 @@ abstract class ScheduleAbstract
     }
 
     /**
+     * @deprecated
      * Set timeout
      *
      * @param \DateTime $timeout
@@ -319,6 +322,7 @@ abstract class ScheduleAbstract
     }
 
     /**
+     * @deprecated
      * Set monday
      *
      * @param boolean $monday
@@ -347,6 +351,7 @@ abstract class ScheduleAbstract
     }
 
     /**
+     * @deprecated
      * Set tuesday
      *
      * @param boolean $tuesday
@@ -375,6 +380,7 @@ abstract class ScheduleAbstract
     }
 
     /**
+     * @deprecated
      * Set wednesday
      *
      * @param boolean $wednesday
@@ -403,6 +409,7 @@ abstract class ScheduleAbstract
     }
 
     /**
+     * @deprecated
      * Set thursday
      *
      * @param boolean $thursday
@@ -431,6 +438,7 @@ abstract class ScheduleAbstract
     }
 
     /**
+     * @deprecated
      * Set friday
      *
      * @param boolean $friday
@@ -459,6 +467,7 @@ abstract class ScheduleAbstract
     }
 
     /**
+     * @deprecated
      * Set saturday
      *
      * @param boolean $saturday
@@ -487,6 +496,7 @@ abstract class ScheduleAbstract
     }
 
     /**
+     * @deprecated
      * Set sunday
      *
      * @param boolean $sunday

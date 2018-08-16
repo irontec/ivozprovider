@@ -237,6 +237,7 @@ abstract class UsersPresentityAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set username
      *
      * @param string $username
@@ -264,6 +265,7 @@ abstract class UsersPresentityAbstract
     }
 
     /**
+     * @deprecated
      * Set domain
      *
      * @param string $domain
@@ -291,6 +293,7 @@ abstract class UsersPresentityAbstract
     }
 
     /**
+     * @deprecated
      * Set event
      *
      * @param string $event
@@ -318,6 +321,7 @@ abstract class UsersPresentityAbstract
     }
 
     /**
+     * @deprecated
      * Set etag
      *
      * @param string $etag
@@ -345,6 +349,7 @@ abstract class UsersPresentityAbstract
     }
 
     /**
+     * @deprecated
      * Set expires
      *
      * @param integer $expires
@@ -372,6 +377,7 @@ abstract class UsersPresentityAbstract
     }
 
     /**
+     * @deprecated
      * Set receivedTime
      *
      * @param integer $receivedTime
@@ -399,6 +405,7 @@ abstract class UsersPresentityAbstract
     }
 
     /**
+     * @deprecated
      * Set body
      *
      * @param string $body
@@ -425,6 +432,7 @@ abstract class UsersPresentityAbstract
     }
 
     /**
+     * @deprecated
      * Set sender
      *
      * @param string $sender
@@ -452,6 +460,7 @@ abstract class UsersPresentityAbstract
     }
 
     /**
+     * @deprecated
      * Set priority
      *
      * @param integer $priority

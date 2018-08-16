@@ -222,6 +222,7 @@ abstract class IvrEntryAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set entry
      *
      * @param string $entry
@@ -249,6 +250,7 @@ abstract class IvrEntryAbstract
     }
 
     /**
+     * @deprecated
      * Set routeType
      *
      * @param string $routeType
@@ -282,6 +284,7 @@ abstract class IvrEntryAbstract
     }
 
     /**
+     * @deprecated
      * Set numberValue
      *
      * @param string $numberValue

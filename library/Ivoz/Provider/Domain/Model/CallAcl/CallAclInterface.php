@@ -20,6 +20,7 @@ interface CallAclInterface extends LoggableEntityInterface
     public function dstIsCallable($dst);
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -36,6 +37,7 @@ interface CallAclInterface extends LoggableEntityInterface
     public function getName();
 
     /**
+     * @deprecated
      * Set defaultPolicy
      *
      * @param string $defaultPolicy

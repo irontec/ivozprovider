@@ -167,6 +167,7 @@ abstract class RoutingTagAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -194,6 +195,7 @@ abstract class RoutingTagAbstract
     }
 
     /**
+     * @deprecated
      * Set tag
      *
      * @param string $tag

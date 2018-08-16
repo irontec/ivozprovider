@@ -194,6 +194,7 @@ abstract class MatchListPatternAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description
@@ -222,6 +223,7 @@ abstract class MatchListPatternAbstract
     }
 
     /**
+     * @deprecated
      * Set type
      *
      * @param string $type
@@ -253,6 +255,7 @@ abstract class MatchListPatternAbstract
     }
 
     /**
+     * @deprecated
      * Set regexp
      *
      * @param string $regexp
@@ -281,6 +284,7 @@ abstract class MatchListPatternAbstract
     }
 
     /**
+     * @deprecated
      * Set numbervalue
      *
      * @param string $numbervalue

@@ -168,6 +168,7 @@ abstract class CallAclAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -195,6 +196,7 @@ abstract class CallAclAbstract
     }
 
     /**
+     * @deprecated
      * Set defaultPolicy
      *
      * @param string $defaultPolicy

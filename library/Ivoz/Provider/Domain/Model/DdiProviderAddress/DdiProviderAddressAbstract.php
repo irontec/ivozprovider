@@ -171,6 +171,7 @@ abstract class DdiProviderAddressAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set ip
      *
      * @param string $ip
@@ -199,6 +200,7 @@ abstract class DdiProviderAddressAbstract
     }
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description

@@ -41,6 +41,7 @@ interface AdministratorInterface extends LoggableEntityInterface
     public function getTimezone();
 
     /**
+     * @deprecated
      * Set username
      *
      * @param string $username
@@ -64,6 +65,7 @@ interface AdministratorInterface extends LoggableEntityInterface
     public function getPass();
 
     /**
+     * @deprecated
      * Set email
      *
      * @param string $email
@@ -80,6 +82,7 @@ interface AdministratorInterface extends LoggableEntityInterface
     public function getEmail();
 
     /**
+     * @deprecated
      * Set active
      *
      * @param boolean $active
@@ -96,6 +99,7 @@ interface AdministratorInterface extends LoggableEntityInterface
     public function getActive();
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -112,6 +116,7 @@ interface AdministratorInterface extends LoggableEntityInterface
     public function getName();
 
     /**
+     * @deprecated
      * Set lastname
      *
      * @param string $lastname

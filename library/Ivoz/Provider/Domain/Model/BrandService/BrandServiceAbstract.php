@@ -166,6 +166,7 @@ abstract class BrandServiceAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set code
      *
      * @param string $code

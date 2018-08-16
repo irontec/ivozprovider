@@ -13,6 +13,7 @@ interface ChangelogInterface extends EntityInterface
     public static function fromEvent(\Ivoz\Core\Domain\Event\EntityEventInterface $event);
 
     /**
+     * @deprecated
      * Set entity
      *
      * @param string $entity
@@ -29,6 +30,7 @@ interface ChangelogInterface extends EntityInterface
     public function getEntity();
 
     /**
+     * @deprecated
      * Set entityId
      *
      * @param string $entityId
@@ -45,6 +47,7 @@ interface ChangelogInterface extends EntityInterface
     public function getEntityId();
 
     /**
+     * @deprecated
      * Set data
      *
      * @param array $data
@@ -61,6 +64,7 @@ interface ChangelogInterface extends EntityInterface
     public function getData();
 
     /**
+     * @deprecated
      * Set createdOn
      *
      * @param \DateTime $createdOn
@@ -77,6 +81,7 @@ interface ChangelogInterface extends EntityInterface
     public function getCreatedOn();
 
     /**
+     * @deprecated
      * Set microtime
      *
      * @param integer $microtime

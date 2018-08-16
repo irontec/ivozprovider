@@ -13,6 +13,7 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @deprecated
      * Set tpid
      *
      * @param string $tpid
@@ -29,6 +30,7 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
     public function getTpid();
 
     /**
+     * @deprecated
      * Set loadid
      *
      * @param string $loadid
@@ -45,6 +47,7 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
     public function getLoadid();
 
     /**
+     * @deprecated
      * Set direction
      *
      * @param string $direction
@@ -61,6 +64,7 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
     public function getDirection();
 
     /**
+     * @deprecated
      * Set tenant
      *
      * @param string $tenant
@@ -77,6 +81,7 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
     public function getTenant();
 
     /**
+     * @deprecated
      * Set category
      *
      * @param string $category
@@ -93,6 +98,7 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
     public function getCategory();
 
     /**
+     * @deprecated
      * Set account
      *
      * @param string $account
@@ -109,6 +115,7 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
     public function getAccount();
 
     /**
+     * @deprecated
      * Set subject
      *
      * @param string $subject
@@ -125,6 +132,7 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
     public function getSubject();
 
     /**
+     * @deprecated
      * Set destinationIds
      *
      * @param string $destinationIds
@@ -141,6 +149,7 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
     public function getDestinationIds();
 
     /**
+     * @deprecated
      * Set runid
      *
      * @param string $runid
@@ -157,6 +166,7 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
     public function getRunid();
 
     /**
+     * @deprecated
      * Set runFilters
      *
      * @param string $runFilters
@@ -173,6 +183,7 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
     public function getRunFilters();
 
     /**
+     * @deprecated
      * Set reqTypeField
      *
      * @param string $reqTypeField
@@ -189,6 +200,7 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
     public function getReqTypeField();
 
     /**
+     * @deprecated
      * Set directionField
      *
      * @param string $directionField
@@ -205,6 +217,7 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
     public function getDirectionField();
 
     /**
+     * @deprecated
      * Set tenantField
      *
      * @param string $tenantField
@@ -221,6 +234,7 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
     public function getTenantField();
 
     /**
+     * @deprecated
      * Set categoryField
      *
      * @param string $categoryField
@@ -237,6 +251,7 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
     public function getCategoryField();
 
     /**
+     * @deprecated
      * Set accountField
      *
      * @param string $accountField
@@ -253,6 +268,7 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
     public function getAccountField();
 
     /**
+     * @deprecated
      * Set subjectField
      *
      * @param string $subjectField
@@ -269,6 +285,7 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
     public function getSubjectField();
 
     /**
+     * @deprecated
      * Set destinationField
      *
      * @param string $destinationField
@@ -285,6 +302,7 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
     public function getDestinationField();
 
     /**
+     * @deprecated
      * Set setupTimeField
      *
      * @param string $setupTimeField
@@ -301,6 +319,7 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
     public function getSetupTimeField();
 
     /**
+     * @deprecated
      * Set pddField
      *
      * @param string $pddField
@@ -317,6 +336,7 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
     public function getPddField();
 
     /**
+     * @deprecated
      * Set answerTimeField
      *
      * @param string $answerTimeField
@@ -333,6 +353,7 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
     public function getAnswerTimeField();
 
     /**
+     * @deprecated
      * Set usageField
      *
      * @param string $usageField
@@ -349,6 +370,7 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
     public function getUsageField();
 
     /**
+     * @deprecated
      * Set supplierField
      *
      * @param string $supplierField
@@ -365,6 +387,7 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
     public function getSupplierField();
 
     /**
+     * @deprecated
      * Set disconnectCauseField
      *
      * @param string $disconnectCauseField
@@ -381,6 +404,7 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
     public function getDisconnectCauseField();
 
     /**
+     * @deprecated
      * Set ratedTimeField
      *
      * @param string $ratedTimeField
@@ -397,6 +421,7 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
     public function getRatedTimeField();
 
     /**
+     * @deprecated
      * Set costField
      *
      * @param string $costField
@@ -413,6 +438,7 @@ interface TpDerivedChargerInterface extends LoggableEntityInterface
     public function getCostField();
 
     /**
+     * @deprecated
      * Set createdAt
      *
      * @param \DateTime $createdAt

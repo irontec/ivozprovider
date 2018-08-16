@@ -232,6 +232,7 @@ abstract class MusicOnHoldAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -259,6 +260,7 @@ abstract class MusicOnHoldAbstract
     }
 
     /**
+     * @deprecated
      * Set status
      *
      * @param string $status

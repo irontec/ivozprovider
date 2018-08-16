@@ -13,6 +13,7 @@ interface UsersPresentityInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @deprecated
      * Set username
      *
      * @param string $username
@@ -29,6 +30,7 @@ interface UsersPresentityInterface extends LoggableEntityInterface
     public function getUsername();
 
     /**
+     * @deprecated
      * Set domain
      *
      * @param string $domain
@@ -45,6 +47,7 @@ interface UsersPresentityInterface extends LoggableEntityInterface
     public function getDomain();
 
     /**
+     * @deprecated
      * Set event
      *
      * @param string $event
@@ -61,6 +64,7 @@ interface UsersPresentityInterface extends LoggableEntityInterface
     public function getEvent();
 
     /**
+     * @deprecated
      * Set etag
      *
      * @param string $etag
@@ -77,6 +81,7 @@ interface UsersPresentityInterface extends LoggableEntityInterface
     public function getEtag();
 
     /**
+     * @deprecated
      * Set expires
      *
      * @param integer $expires
@@ -93,6 +98,7 @@ interface UsersPresentityInterface extends LoggableEntityInterface
     public function getExpires();
 
     /**
+     * @deprecated
      * Set receivedTime
      *
      * @param integer $receivedTime
@@ -109,6 +115,7 @@ interface UsersPresentityInterface extends LoggableEntityInterface
     public function getReceivedTime();
 
     /**
+     * @deprecated
      * Set body
      *
      * @param string $body
@@ -125,6 +132,7 @@ interface UsersPresentityInterface extends LoggableEntityInterface
     public function getBody();
 
     /**
+     * @deprecated
      * Set sender
      *
      * @param string $sender
@@ -141,6 +149,7 @@ interface UsersPresentityInterface extends LoggableEntityInterface
     public function getSender();
 
     /**
+     * @deprecated
      * Set priority
      *
      * @param integer $priority

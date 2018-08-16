@@ -59,6 +59,7 @@ interface BrandInterface extends LoggableEntityInterface
     public function hasFeature($featureId);
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -82,6 +83,7 @@ interface BrandInterface extends LoggableEntityInterface
     public function getDomainUsers();
 
     /**
+     * @deprecated
      * Set recordingsLimitMB
      *
      * @param integer $recordingsLimitMB
@@ -98,6 +100,7 @@ interface BrandInterface extends LoggableEntityInterface
     public function getRecordingsLimitMB();
 
     /**
+     * @deprecated
      * Set recordingsLimitEmail
      *
      * @param string $recordingsLimitEmail
@@ -114,6 +117,7 @@ interface BrandInterface extends LoggableEntityInterface
     public function getRecordingsLimitEmail();
 
     /**
+     * @deprecated
      * Set maxCalls
      *
      * @param integer $maxCalls

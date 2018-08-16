@@ -7,6 +7,7 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 interface TrunksCdrInterface extends EntityInterface
 {
     /**
+     * @deprecated
      * Set startTime
      *
      * @param \DateTime $startTime
@@ -23,6 +24,7 @@ interface TrunksCdrInterface extends EntityInterface
     public function getStartTime();
 
     /**
+     * @deprecated
      * Set endTime
      *
      * @param \DateTime $endTime
@@ -39,6 +41,7 @@ interface TrunksCdrInterface extends EntityInterface
     public function getEndTime();
 
     /**
+     * @deprecated
      * Set duration
      *
      * @param float $duration
@@ -55,6 +58,7 @@ interface TrunksCdrInterface extends EntityInterface
     public function getDuration();
 
     /**
+     * @deprecated
      * Set caller
      *
      * @param string $caller
@@ -71,6 +75,7 @@ interface TrunksCdrInterface extends EntityInterface
     public function getCaller();
 
     /**
+     * @deprecated
      * Set callee
      *
      * @param string $callee
@@ -87,6 +92,7 @@ interface TrunksCdrInterface extends EntityInterface
     public function getCallee();
 
     /**
+     * @deprecated
      * Set callid
      *
      * @param string $callid
@@ -103,6 +109,7 @@ interface TrunksCdrInterface extends EntityInterface
     public function getCallid();
 
     /**
+     * @deprecated
      * Set callidHash
      *
      * @param string $callidHash
@@ -119,6 +126,7 @@ interface TrunksCdrInterface extends EntityInterface
     public function getCallidHash();
 
     /**
+     * @deprecated
      * Set xcallid
      *
      * @param string $xcallid
@@ -135,6 +143,7 @@ interface TrunksCdrInterface extends EntityInterface
     public function getXcallid();
 
     /**
+     * @deprecated
      * Set diversion
      *
      * @param string $diversion
@@ -151,6 +160,7 @@ interface TrunksCdrInterface extends EntityInterface
     public function getDiversion();
 
     /**
+     * @deprecated
      * Set bounced
      *
      * @param boolean $bounced
@@ -167,6 +177,7 @@ interface TrunksCdrInterface extends EntityInterface
     public function getBounced();
 
     /**
+     * @deprecated
      * Set metered
      *
      * @param boolean $metered
@@ -183,6 +194,7 @@ interface TrunksCdrInterface extends EntityInterface
     public function getMetered();
 
     /**
+     * @deprecated
      * Set direction
      *
      * @param string $direction
@@ -199,6 +211,7 @@ interface TrunksCdrInterface extends EntityInterface
     public function getDirection();
 
     /**
+     * @deprecated
      * Set cgrid
      *
      * @param string $cgrid

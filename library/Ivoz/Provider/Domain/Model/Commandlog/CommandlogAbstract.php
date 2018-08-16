@@ -200,6 +200,7 @@ abstract class CommandlogAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set requestId
      *
      * @param guid $requestId
@@ -226,6 +227,7 @@ abstract class CommandlogAbstract
     }
 
     /**
+     * @deprecated
      * Set class
      *
      * @param string $class
@@ -253,6 +255,7 @@ abstract class CommandlogAbstract
     }
 
     /**
+     * @deprecated
      * Set method
      *
      * @param string $method
@@ -281,6 +284,7 @@ abstract class CommandlogAbstract
     }
 
     /**
+     * @deprecated
      * Set arguments
      *
      * @param array $arguments
@@ -308,6 +312,7 @@ abstract class CommandlogAbstract
     }
 
     /**
+     * @deprecated
      * Set createdOn
      *
      * @param \DateTime $createdOn
@@ -338,6 +343,7 @@ abstract class CommandlogAbstract
     }
 
     /**
+     * @deprecated
      * Set microtime
      *
      * @param integer $microtime

@@ -30,6 +30,7 @@ interface BrandUrlInterface extends LoggableEntityInterface
     public function getUrl();
 
     /**
+     * @deprecated
      * Set klearTheme
      *
      * @param string $klearTheme
@@ -46,6 +47,7 @@ interface BrandUrlInterface extends LoggableEntityInterface
     public function getKlearTheme();
 
     /**
+     * @deprecated
      * Set urlType
      *
      * @param string $urlType
@@ -62,6 +64,7 @@ interface BrandUrlInterface extends LoggableEntityInterface
     public function getUrlType();
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -78,6 +81,7 @@ interface BrandUrlInterface extends LoggableEntityInterface
     public function getName();
 
     /**
+     * @deprecated
      * Set userTheme
      *
      * @param string $userTheme

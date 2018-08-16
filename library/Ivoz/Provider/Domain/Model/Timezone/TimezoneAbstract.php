@@ -189,6 +189,7 @@ abstract class TimezoneAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set tz
      *
      * @param string $tz
@@ -216,6 +217,7 @@ abstract class TimezoneAbstract
     }
 
     /**
+     * @deprecated
      * Set comment
      *
      * @param string $comment

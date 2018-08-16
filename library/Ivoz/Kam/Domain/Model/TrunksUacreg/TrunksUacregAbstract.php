@@ -309,6 +309,7 @@ abstract class TrunksUacregAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set lUuid
      *
      * @param string $lUuid
@@ -336,6 +337,7 @@ abstract class TrunksUacregAbstract
     }
 
     /**
+     * @deprecated
      * Set lUsername
      *
      * @param string $lUsername
@@ -363,6 +365,7 @@ abstract class TrunksUacregAbstract
     }
 
     /**
+     * @deprecated
      * Set lDomain
      *
      * @param string $lDomain
@@ -390,6 +393,7 @@ abstract class TrunksUacregAbstract
     }
 
     /**
+     * @deprecated
      * Set rUsername
      *
      * @param string $rUsername
@@ -417,6 +421,7 @@ abstract class TrunksUacregAbstract
     }
 
     /**
+     * @deprecated
      * Set rDomain
      *
      * @param string $rDomain
@@ -444,6 +449,7 @@ abstract class TrunksUacregAbstract
     }
 
     /**
+     * @deprecated
      * Set realm
      *
      * @param string $realm
@@ -471,6 +477,7 @@ abstract class TrunksUacregAbstract
     }
 
     /**
+     * @deprecated
      * Set authUsername
      *
      * @param string $authUsername
@@ -498,6 +505,7 @@ abstract class TrunksUacregAbstract
     }
 
     /**
+     * @deprecated
      * Set authPassword
      *
      * @param string $authPassword
@@ -525,6 +533,7 @@ abstract class TrunksUacregAbstract
     }
 
     /**
+     * @deprecated
      * Set authProxy
      *
      * @param string $authProxy
@@ -552,6 +561,7 @@ abstract class TrunksUacregAbstract
     }
 
     /**
+     * @deprecated
      * Set expires
      *
      * @param integer $expires
@@ -579,6 +589,7 @@ abstract class TrunksUacregAbstract
     }
 
     /**
+     * @deprecated
      * Set flags
      *
      * @param integer $flags
@@ -606,6 +617,7 @@ abstract class TrunksUacregAbstract
     }
 
     /**
+     * @deprecated
      * Set regDelay
      *
      * @param integer $regDelay
@@ -633,6 +645,7 @@ abstract class TrunksUacregAbstract
     }
 
     /**
+     * @deprecated
      * Set authHa1
      *
      * @param string $authHa1

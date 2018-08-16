@@ -21,6 +21,7 @@ interface ConditionalRouteInterface extends LoggableEntityInterface
     public function getNumberValueE164();
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -37,6 +38,7 @@ interface ConditionalRouteInterface extends LoggableEntityInterface
     public function getName();
 
     /**
+     * @deprecated
      * Set routetype
      *
      * @param string $routetype
@@ -53,6 +55,7 @@ interface ConditionalRouteInterface extends LoggableEntityInterface
     public function getRoutetype();
 
     /**
+     * @deprecated
      * Set numbervalue
      *
      * @param string $numbervalue
@@ -69,6 +72,7 @@ interface ConditionalRouteInterface extends LoggableEntityInterface
     public function getNumbervalue();
 
     /**
+     * @deprecated
      * Set friendvalue
      *
      * @param string $friendvalue

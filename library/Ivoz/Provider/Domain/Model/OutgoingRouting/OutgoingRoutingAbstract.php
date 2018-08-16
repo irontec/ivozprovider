@@ -221,6 +221,7 @@ abstract class OutgoingRoutingAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set type
      *
      * @param string $type
@@ -248,6 +249,7 @@ abstract class OutgoingRoutingAbstract
     }
 
     /**
+     * @deprecated
      * Set priority
      *
      * @param integer $priority
@@ -276,6 +278,7 @@ abstract class OutgoingRoutingAbstract
     }
 
     /**
+     * @deprecated
      * Set weight
      *
      * @param integer $weight

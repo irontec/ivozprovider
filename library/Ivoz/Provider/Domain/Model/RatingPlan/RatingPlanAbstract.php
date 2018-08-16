@@ -201,6 +201,7 @@ abstract class RatingPlanAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set tag
      *
      * @param string $tag

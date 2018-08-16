@@ -32,6 +32,7 @@ interface DestinationRateGroupInterface extends LoggableEntityInterface
     public function getCgrTag();
 
     /**
+     * @deprecated
      * Set status
      *
      * @param string $status

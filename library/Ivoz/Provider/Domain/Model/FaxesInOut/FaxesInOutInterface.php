@@ -41,6 +41,7 @@ interface FaxesInOutInterface extends LoggableEntityInterface
     public function getCalldate();
 
     /**
+     * @deprecated
      * Set src
      *
      * @param string $src
@@ -57,6 +58,7 @@ interface FaxesInOutInterface extends LoggableEntityInterface
     public function getSrc();
 
     /**
+     * @deprecated
      * Set dst
      *
      * @param string $dst
@@ -73,6 +75,7 @@ interface FaxesInOutInterface extends LoggableEntityInterface
     public function getDst();
 
     /**
+     * @deprecated
      * Set type
      *
      * @param string $type
@@ -89,6 +92,7 @@ interface FaxesInOutInterface extends LoggableEntityInterface
     public function getType();
 
     /**
+     * @deprecated
      * Set pages
      *
      * @param string $pages
@@ -105,6 +109,7 @@ interface FaxesInOutInterface extends LoggableEntityInterface
     public function getPages();
 
     /**
+     * @deprecated
      * Set status
      *
      * @param string $status

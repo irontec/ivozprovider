@@ -54,6 +54,7 @@ interface TerminalInterface extends LoggableEntityInterface
     public function getName();
 
     /**
+     * @deprecated
      * Set disallow
      *
      * @param string $disallow
@@ -70,6 +71,7 @@ interface TerminalInterface extends LoggableEntityInterface
     public function getDisallow();
 
     /**
+     * @deprecated
      * Set allowAudio
      *
      * @param string $allowAudio
@@ -86,6 +88,7 @@ interface TerminalInterface extends LoggableEntityInterface
     public function getAllowAudio();
 
     /**
+     * @deprecated
      * Set allowVideo
      *
      * @param string $allowVideo
@@ -102,6 +105,7 @@ interface TerminalInterface extends LoggableEntityInterface
     public function getAllowVideo();
 
     /**
+     * @deprecated
      * Set directMediaMethod
      *
      * @param string $directMediaMethod
@@ -132,6 +136,7 @@ interface TerminalInterface extends LoggableEntityInterface
     public function getMac();
 
     /**
+     * @deprecated
      * Set lastProvisionDate
      *
      * @param \DateTime $lastProvisionDate

@@ -26,6 +26,7 @@ interface LocutionInterface extends LoggableEntityInterface
     public function addTmpFile($fldName, \Ivoz\Core\Domain\Service\TempFile $file);
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -42,6 +43,7 @@ interface LocutionInterface extends LoggableEntityInterface
     public function getName();
 
     /**
+     * @deprecated
      * Set status
      *
      * @param string $status

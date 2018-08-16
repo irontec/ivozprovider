@@ -341,6 +341,7 @@ abstract class DdiAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set ddi
      *
      * @param string $ddi
@@ -368,6 +369,7 @@ abstract class DdiAbstract
     }
 
     /**
+     * @deprecated
      * Set ddie164
      *
      * @param string $ddie164
@@ -396,6 +398,7 @@ abstract class DdiAbstract
     }
 
     /**
+     * @deprecated
      * Set recordCalls
      *
      * @param string $recordCalls
@@ -429,6 +432,7 @@ abstract class DdiAbstract
     }
 
     /**
+     * @deprecated
      * Set displayName
      *
      * @param string $displayName
@@ -457,6 +461,7 @@ abstract class DdiAbstract
     }
 
     /**
+     * @deprecated
      * Set routeType
      *
      * @param string $routeType
@@ -497,6 +502,7 @@ abstract class DdiAbstract
     }
 
     /**
+     * @deprecated
      * Set billInboundCalls
      *
      * @param boolean $billInboundCalls
@@ -524,6 +530,7 @@ abstract class DdiAbstract
     }
 
     /**
+     * @deprecated
      * Set friendValue
      *
      * @param string $friendValue

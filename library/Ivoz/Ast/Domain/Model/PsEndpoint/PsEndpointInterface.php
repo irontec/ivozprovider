@@ -18,6 +18,7 @@ interface PsEndpointInterface extends LoggableEntityInterface
     public function updateByUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user);
 
     /**
+     * @deprecated
      * Set sorceryId
      *
      * @param string $sorceryId
@@ -34,6 +35,7 @@ interface PsEndpointInterface extends LoggableEntityInterface
     public function getSorceryId();
 
     /**
+     * @deprecated
      * Set fromDomain
      *
      * @param string $fromDomain
@@ -50,6 +52,7 @@ interface PsEndpointInterface extends LoggableEntityInterface
     public function getFromDomain();
 
     /**
+     * @deprecated
      * Set aors
      *
      * @param string $aors
@@ -66,6 +69,7 @@ interface PsEndpointInterface extends LoggableEntityInterface
     public function getAors();
 
     /**
+     * @deprecated
      * Set callerid
      *
      * @param string $callerid
@@ -82,6 +86,7 @@ interface PsEndpointInterface extends LoggableEntityInterface
     public function getCallerid();
 
     /**
+     * @deprecated
      * Set context
      *
      * @param string $context
@@ -98,6 +103,7 @@ interface PsEndpointInterface extends LoggableEntityInterface
     public function getContext();
 
     /**
+     * @deprecated
      * Set disallow
      *
      * @param string $disallow
@@ -114,6 +120,7 @@ interface PsEndpointInterface extends LoggableEntityInterface
     public function getDisallow();
 
     /**
+     * @deprecated
      * Set allow
      *
      * @param string $allow
@@ -130,6 +137,7 @@ interface PsEndpointInterface extends LoggableEntityInterface
     public function getAllow();
 
     /**
+     * @deprecated
      * Set directMedia
      *
      * @param string $directMedia
@@ -146,6 +154,7 @@ interface PsEndpointInterface extends LoggableEntityInterface
     public function getDirectMedia();
 
     /**
+     * @deprecated
      * Set directMediaMethod
      *
      * @param string $directMediaMethod
@@ -162,6 +171,7 @@ interface PsEndpointInterface extends LoggableEntityInterface
     public function getDirectMediaMethod();
 
     /**
+     * @deprecated
      * Set mailboxes
      *
      * @param string $mailboxes
@@ -178,6 +188,7 @@ interface PsEndpointInterface extends LoggableEntityInterface
     public function getMailboxes();
 
     /**
+     * @deprecated
      * Set namedPickupGroup
      *
      * @param string $namedPickupGroup
@@ -194,6 +205,7 @@ interface PsEndpointInterface extends LoggableEntityInterface
     public function getNamedPickupGroup();
 
     /**
+     * @deprecated
      * Set sendDiversion
      *
      * @param string $sendDiversion
@@ -210,6 +222,7 @@ interface PsEndpointInterface extends LoggableEntityInterface
     public function getSendDiversion();
 
     /**
+     * @deprecated
      * Set sendPai
      *
      * @param string $sendPai
@@ -226,6 +239,7 @@ interface PsEndpointInterface extends LoggableEntityInterface
     public function getSendPai();
 
     /**
+     * @deprecated
      * Set oneHundredRel
      *
      * @param string $oneHundredRel
@@ -242,6 +256,7 @@ interface PsEndpointInterface extends LoggableEntityInterface
     public function getOneHundredRel();
 
     /**
+     * @deprecated
      * Set outboundProxy
      *
      * @param string $outboundProxy
@@ -258,6 +273,7 @@ interface PsEndpointInterface extends LoggableEntityInterface
     public function getOutboundProxy();
 
     /**
+     * @deprecated
      * Set trustIdInbound
      *
      * @param string $trustIdInbound

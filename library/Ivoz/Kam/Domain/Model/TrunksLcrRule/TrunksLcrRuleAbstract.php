@@ -226,6 +226,7 @@ abstract class TrunksLcrRuleAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set lcrId
      *
      * @param integer $lcrId
@@ -254,6 +255,7 @@ abstract class TrunksLcrRuleAbstract
     }
 
     /**
+     * @deprecated
      * Set prefix
      *
      * @param string $prefix
@@ -282,6 +284,7 @@ abstract class TrunksLcrRuleAbstract
     }
 
     /**
+     * @deprecated
      * Set fromUri
      *
      * @param string $fromUri
@@ -310,6 +313,7 @@ abstract class TrunksLcrRuleAbstract
     }
 
     /**
+     * @deprecated
      * Set requestUri
      *
      * @param string $requestUri
@@ -338,6 +342,7 @@ abstract class TrunksLcrRuleAbstract
     }
 
     /**
+     * @deprecated
      * Set mtTvalue
      *
      * @param string $mtTvalue
@@ -366,6 +371,7 @@ abstract class TrunksLcrRuleAbstract
     }
 
     /**
+     * @deprecated
      * Set stopper
      *
      * @param integer $stopper
@@ -394,6 +400,7 @@ abstract class TrunksLcrRuleAbstract
     }
 
     /**
+     * @deprecated
      * Set enabled
      *
      * @param integer $enabled

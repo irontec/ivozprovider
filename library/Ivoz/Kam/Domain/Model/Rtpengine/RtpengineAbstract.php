@@ -206,6 +206,7 @@ abstract class RtpengineAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set setid
      *
      * @param integer $setid
@@ -233,6 +234,7 @@ abstract class RtpengineAbstract
     }
 
     /**
+     * @deprecated
      * Set url
      *
      * @param string $url
@@ -260,6 +262,7 @@ abstract class RtpengineAbstract
     }
 
     /**
+     * @deprecated
      * Set weight
      *
      * @param integer $weight
@@ -288,6 +291,7 @@ abstract class RtpengineAbstract
     }
 
     /**
+     * @deprecated
      * Set disabled
      *
      * @param boolean $disabled
@@ -315,6 +319,7 @@ abstract class RtpengineAbstract
     }
 
     /**
+     * @deprecated
      * Set stamp
      *
      * @param \DateTime $stamp
@@ -345,6 +350,7 @@ abstract class RtpengineAbstract
     }
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description

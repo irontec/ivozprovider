@@ -398,6 +398,7 @@ abstract class TpCdrAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set cgrid
      *
      * @param string $cgrid
@@ -425,6 +426,7 @@ abstract class TpCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set runId
      *
      * @param string $runId
@@ -452,6 +454,7 @@ abstract class TpCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set originHost
      *
      * @param string $originHost
@@ -479,6 +482,7 @@ abstract class TpCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set source
      *
      * @param string $source
@@ -506,6 +510,7 @@ abstract class TpCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set originId
      *
      * @param string $originId
@@ -533,6 +538,7 @@ abstract class TpCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set tor
      *
      * @param string $tor
@@ -560,6 +566,7 @@ abstract class TpCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set requestType
      *
      * @param string $requestType
@@ -587,6 +594,7 @@ abstract class TpCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set tenant
      *
      * @param string $tenant
@@ -614,6 +622,7 @@ abstract class TpCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set category
      *
      * @param string $category
@@ -641,6 +650,7 @@ abstract class TpCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set account
      *
      * @param string $account
@@ -668,6 +678,7 @@ abstract class TpCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set subject
      *
      * @param string $subject
@@ -695,6 +706,7 @@ abstract class TpCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set destination
      *
      * @param string $destination
@@ -722,6 +734,7 @@ abstract class TpCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set setupTime
      *
      * @param \DateTime $setupTime
@@ -752,6 +765,7 @@ abstract class TpCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set answerTime
      *
      * @param \DateTime $answerTime
@@ -782,6 +796,7 @@ abstract class TpCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set usage
      *
      * @param integer $usage
@@ -809,6 +824,7 @@ abstract class TpCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set extraFields
      *
      * @param string $extraFields
@@ -835,6 +851,7 @@ abstract class TpCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set costSource
      *
      * @param string $costSource
@@ -862,6 +879,7 @@ abstract class TpCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set cost
      *
      * @param string $cost
@@ -889,6 +907,7 @@ abstract class TpCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set costDetails
      *
      * @param array $costDetails
@@ -915,6 +934,7 @@ abstract class TpCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set extraInfo
      *
      * @param string $extraInfo
@@ -941,6 +961,7 @@ abstract class TpCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set createdAt
      *
      * @param \DateTime $createdAt
@@ -972,6 +993,7 @@ abstract class TpCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set updatedAt
      *
      * @param \DateTime $updatedAt
@@ -1003,6 +1025,7 @@ abstract class TpCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set deletedAt
      *
      * @param \DateTime $deletedAt

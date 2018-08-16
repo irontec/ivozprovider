@@ -239,6 +239,7 @@ abstract class FaxesInOutAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set calldate
      *
      * @param \DateTime $calldate
@@ -269,6 +270,7 @@ abstract class FaxesInOutAbstract
     }
 
     /**
+     * @deprecated
      * Set src
      *
      * @param string $src
@@ -297,6 +299,7 @@ abstract class FaxesInOutAbstract
     }
 
     /**
+     * @deprecated
      * Set dst
      *
      * @param string $dst
@@ -325,6 +328,7 @@ abstract class FaxesInOutAbstract
     }
 
     /**
+     * @deprecated
      * Set type
      *
      * @param string $type
@@ -357,6 +361,7 @@ abstract class FaxesInOutAbstract
     }
 
     /**
+     * @deprecated
      * Set pages
      *
      * @param string $pages
@@ -385,6 +390,7 @@ abstract class FaxesInOutAbstract
     }
 
     /**
+     * @deprecated
      * Set status
      *
      * @param string $status

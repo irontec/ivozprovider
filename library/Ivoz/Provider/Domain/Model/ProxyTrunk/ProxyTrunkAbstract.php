@@ -157,6 +157,7 @@ abstract class ProxyTrunkAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -185,6 +186,7 @@ abstract class ProxyTrunkAbstract
     }
 
     /**
+     * @deprecated
      * Set ip
      *
      * @param string $ip

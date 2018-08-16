@@ -13,6 +13,7 @@ interface TrunksLcrRuleInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @deprecated
      * Set lcrId
      *
      * @param integer $lcrId
@@ -29,6 +30,7 @@ interface TrunksLcrRuleInterface extends LoggableEntityInterface
     public function getLcrId();
 
     /**
+     * @deprecated
      * Set prefix
      *
      * @param string $prefix
@@ -45,6 +47,7 @@ interface TrunksLcrRuleInterface extends LoggableEntityInterface
     public function getPrefix();
 
     /**
+     * @deprecated
      * Set fromUri
      *
      * @param string $fromUri
@@ -61,6 +64,7 @@ interface TrunksLcrRuleInterface extends LoggableEntityInterface
     public function getFromUri();
 
     /**
+     * @deprecated
      * Set requestUri
      *
      * @param string $requestUri
@@ -77,6 +81,7 @@ interface TrunksLcrRuleInterface extends LoggableEntityInterface
     public function getRequestUri();
 
     /**
+     * @deprecated
      * Set mtTvalue
      *
      * @param string $mtTvalue
@@ -93,6 +98,7 @@ interface TrunksLcrRuleInterface extends LoggableEntityInterface
     public function getMtTvalue();
 
     /**
+     * @deprecated
      * Set stopper
      *
      * @param integer $stopper
@@ -109,6 +115,7 @@ interface TrunksLcrRuleInterface extends LoggableEntityInterface
     public function getStopper();
 
     /**
+     * @deprecated
      * Set enabled
      *
      * @param integer $enabled

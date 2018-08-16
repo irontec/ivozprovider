@@ -175,6 +175,7 @@ abstract class FixedCostAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -202,6 +203,7 @@ abstract class FixedCostAbstract
     }
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description
@@ -229,6 +231,7 @@ abstract class FixedCostAbstract
     }
 
     /**
+     * @deprecated
      * Set cost
      *
      * @param string $cost

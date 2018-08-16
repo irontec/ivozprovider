@@ -12,6 +12,7 @@ interface VoicemailInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @deprecated
      * Set context
      *
      * @param string $context
@@ -28,6 +29,7 @@ interface VoicemailInterface extends LoggableEntityInterface
     public function getContext();
 
     /**
+     * @deprecated
      * Set mailbox
      *
      * @param string $mailbox
@@ -44,6 +46,7 @@ interface VoicemailInterface extends LoggableEntityInterface
     public function getMailbox();
 
     /**
+     * @deprecated
      * Set password
      *
      * @param string $password
@@ -60,6 +63,7 @@ interface VoicemailInterface extends LoggableEntityInterface
     public function getPassword();
 
     /**
+     * @deprecated
      * Set fullname
      *
      * @param string $fullname
@@ -76,6 +80,7 @@ interface VoicemailInterface extends LoggableEntityInterface
     public function getFullname();
 
     /**
+     * @deprecated
      * Set alias
      *
      * @param string $alias
@@ -92,6 +97,7 @@ interface VoicemailInterface extends LoggableEntityInterface
     public function getAlias();
 
     /**
+     * @deprecated
      * Set email
      *
      * @param string $email
@@ -108,6 +114,7 @@ interface VoicemailInterface extends LoggableEntityInterface
     public function getEmail();
 
     /**
+     * @deprecated
      * Set pager
      *
      * @param string $pager
@@ -124,6 +131,7 @@ interface VoicemailInterface extends LoggableEntityInterface
     public function getPager();
 
     /**
+     * @deprecated
      * Set attach
      *
      * @param string $attach
@@ -140,6 +148,7 @@ interface VoicemailInterface extends LoggableEntityInterface
     public function getAttach();
 
     /**
+     * @deprecated
      * Set attachfmt
      *
      * @param string $attachfmt
@@ -156,6 +165,7 @@ interface VoicemailInterface extends LoggableEntityInterface
     public function getAttachfmt();
 
     /**
+     * @deprecated
      * Set serveremail
      *
      * @param string $serveremail
@@ -172,6 +182,7 @@ interface VoicemailInterface extends LoggableEntityInterface
     public function getServeremail();
 
     /**
+     * @deprecated
      * Set language
      *
      * @param string $language
@@ -188,6 +199,7 @@ interface VoicemailInterface extends LoggableEntityInterface
     public function getLanguage();
 
     /**
+     * @deprecated
      * Set tz
      *
      * @param string $tz
@@ -204,6 +216,7 @@ interface VoicemailInterface extends LoggableEntityInterface
     public function getTz();
 
     /**
+     * @deprecated
      * Set deleteVoicemail
      *
      * @param string $deleteVoicemail
@@ -220,6 +233,7 @@ interface VoicemailInterface extends LoggableEntityInterface
     public function getDeleteVoicemail();
 
     /**
+     * @deprecated
      * Set saycid
      *
      * @param string $saycid
@@ -236,6 +250,7 @@ interface VoicemailInterface extends LoggableEntityInterface
     public function getSaycid();
 
     /**
+     * @deprecated
      * Set sendVoicemail
      *
      * @param string $sendVoicemail
@@ -252,6 +267,7 @@ interface VoicemailInterface extends LoggableEntityInterface
     public function getSendVoicemail();
 
     /**
+     * @deprecated
      * Set review
      *
      * @param string $review
@@ -268,6 +284,7 @@ interface VoicemailInterface extends LoggableEntityInterface
     public function getReview();
 
     /**
+     * @deprecated
      * Set tempgreetwarn
      *
      * @param string $tempgreetwarn
@@ -284,6 +301,7 @@ interface VoicemailInterface extends LoggableEntityInterface
     public function getTempgreetwarn();
 
     /**
+     * @deprecated
      * Set operator
      *
      * @param string $operator
@@ -300,6 +318,7 @@ interface VoicemailInterface extends LoggableEntityInterface
     public function getOperator();
 
     /**
+     * @deprecated
      * Set envelope
      *
      * @param string $envelope
@@ -316,6 +335,7 @@ interface VoicemailInterface extends LoggableEntityInterface
     public function getEnvelope();
 
     /**
+     * @deprecated
      * Set sayduration
      *
      * @param integer $sayduration
@@ -332,6 +352,7 @@ interface VoicemailInterface extends LoggableEntityInterface
     public function getSayduration();
 
     /**
+     * @deprecated
      * Set forcename
      *
      * @param string $forcename
@@ -348,6 +369,7 @@ interface VoicemailInterface extends LoggableEntityInterface
     public function getForcename();
 
     /**
+     * @deprecated
      * Set forcegreetings
      *
      * @param string $forcegreetings
@@ -364,6 +386,7 @@ interface VoicemailInterface extends LoggableEntityInterface
     public function getForcegreetings();
 
     /**
+     * @deprecated
      * Set callback
      *
      * @param string $callback
@@ -380,6 +403,7 @@ interface VoicemailInterface extends LoggableEntityInterface
     public function getCallback();
 
     /**
+     * @deprecated
      * Set dialout
      *
      * @param string $dialout
@@ -396,6 +420,7 @@ interface VoicemailInterface extends LoggableEntityInterface
     public function getDialout();
 
     /**
+     * @deprecated
      * Set exitcontext
      *
      * @param string $exitcontext
@@ -412,6 +437,7 @@ interface VoicemailInterface extends LoggableEntityInterface
     public function getExitcontext();
 
     /**
+     * @deprecated
      * Set maxmsg
      *
      * @param integer $maxmsg
@@ -428,6 +454,7 @@ interface VoicemailInterface extends LoggableEntityInterface
     public function getMaxmsg();
 
     /**
+     * @deprecated
      * Set volgain
      *
      * @param string $volgain
@@ -444,6 +471,7 @@ interface VoicemailInterface extends LoggableEntityInterface
     public function getVolgain();
 
     /**
+     * @deprecated
      * Set imapuser
      *
      * @param string $imapuser
@@ -460,6 +488,7 @@ interface VoicemailInterface extends LoggableEntityInterface
     public function getImapuser();
 
     /**
+     * @deprecated
      * Set imappassword
      *
      * @param string $imappassword
@@ -476,6 +505,7 @@ interface VoicemailInterface extends LoggableEntityInterface
     public function getImappassword();
 
     /**
+     * @deprecated
      * Set imapserver
      *
      * @param string $imapserver
@@ -492,6 +522,7 @@ interface VoicemailInterface extends LoggableEntityInterface
     public function getImapserver();
 
     /**
+     * @deprecated
      * Set imapport
      *
      * @param string $imapport
@@ -508,6 +539,7 @@ interface VoicemailInterface extends LoggableEntityInterface
     public function getImapport();
 
     /**
+     * @deprecated
      * Set imapflags
      *
      * @param string $imapflags
@@ -524,6 +556,7 @@ interface VoicemailInterface extends LoggableEntityInterface
     public function getImapflags();
 
     /**
+     * @deprecated
      * Set stamp
      *
      * @param \DateTime $stamp

@@ -255,6 +255,7 @@ abstract class TpAccountActionAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set tpid
      *
      * @param string $tpid
@@ -282,6 +283,7 @@ abstract class TpAccountActionAbstract
     }
 
     /**
+     * @deprecated
      * Set loadid
      *
      * @param string $loadid
@@ -309,6 +311,7 @@ abstract class TpAccountActionAbstract
     }
 
     /**
+     * @deprecated
      * Set tenant
      *
      * @param string $tenant
@@ -336,6 +339,7 @@ abstract class TpAccountActionAbstract
     }
 
     /**
+     * @deprecated
      * Set account
      *
      * @param string $account
@@ -363,6 +367,7 @@ abstract class TpAccountActionAbstract
     }
 
     /**
+     * @deprecated
      * Set actionPlanTag
      *
      * @param string $actionPlanTag
@@ -391,6 +396,7 @@ abstract class TpAccountActionAbstract
     }
 
     /**
+     * @deprecated
      * Set actionTriggersTag
      *
      * @param string $actionTriggersTag
@@ -419,6 +425,7 @@ abstract class TpAccountActionAbstract
     }
 
     /**
+     * @deprecated
      * Set allowNegative
      *
      * @param boolean $allowNegative
@@ -446,6 +453,7 @@ abstract class TpAccountActionAbstract
     }
 
     /**
+     * @deprecated
      * Set disabled
      *
      * @param boolean $disabled
@@ -473,6 +481,7 @@ abstract class TpAccountActionAbstract
     }
 
     /**
+     * @deprecated
      * Set createdAt
      *
      * @param \DateTime $createdAt

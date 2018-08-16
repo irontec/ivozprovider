@@ -167,6 +167,7 @@ abstract class FriendsPatternAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -194,6 +195,7 @@ abstract class FriendsPatternAbstract
     }
 
     /**
+     * @deprecated
      * Set regExp
      *
      * @param string $regExp

@@ -194,6 +194,7 @@ abstract class InvoiceTemplateAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -221,6 +222,7 @@ abstract class InvoiceTemplateAbstract
     }
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description
@@ -249,6 +251,7 @@ abstract class InvoiceTemplateAbstract
     }
 
     /**
+     * @deprecated
      * Set template
      *
      * @param string $template
@@ -276,6 +279,7 @@ abstract class InvoiceTemplateAbstract
     }
 
     /**
+     * @deprecated
      * Set templateHeader
      *
      * @param string $templateHeader
@@ -304,6 +308,7 @@ abstract class InvoiceTemplateAbstract
     }
 
     /**
+     * @deprecated
      * Set templateFooter
      *
      * @param string $templateFooter

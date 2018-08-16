@@ -25,6 +25,7 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
     public function hasRoutingPattern(\Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface $pattern);
 
     /**
+     * @deprecated
      * Set type
      *
      * @param string $type
@@ -41,6 +42,7 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
     public function getType();
 
     /**
+     * @deprecated
      * Set priority
      *
      * @param integer $priority
@@ -57,6 +59,7 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
     public function getPriority();
 
     /**
+     * @deprecated
      * Set weight
      *
      * @param integer $weight

@@ -33,6 +33,7 @@ interface InvoiceInterface extends LoggableEntityInterface
     public function getNumber();
 
     /**
+     * @deprecated
      * Set inDate
      *
      * @param \DateTime $inDate
@@ -49,6 +50,7 @@ interface InvoiceInterface extends LoggableEntityInterface
     public function getInDate();
 
     /**
+     * @deprecated
      * Set outDate
      *
      * @param \DateTime $outDate
@@ -65,6 +67,7 @@ interface InvoiceInterface extends LoggableEntityInterface
     public function getOutDate();
 
     /**
+     * @deprecated
      * Set total
      *
      * @param string $total
@@ -81,6 +84,7 @@ interface InvoiceInterface extends LoggableEntityInterface
     public function getTotal();
 
     /**
+     * @deprecated
      * Set taxRate
      *
      * @param string $taxRate
@@ -97,6 +101,7 @@ interface InvoiceInterface extends LoggableEntityInterface
     public function getTaxRate();
 
     /**
+     * @deprecated
      * Set totalWithTax
      *
      * @param string $totalWithTax
@@ -113,6 +118,7 @@ interface InvoiceInterface extends LoggableEntityInterface
     public function getTotalWithTax();
 
     /**
+     * @deprecated
      * Set status
      *
      * @param string $status
@@ -129,6 +135,7 @@ interface InvoiceInterface extends LoggableEntityInterface
     public function getStatus();
 
     /**
+     * @deprecated
      * Set statusMsg
      *
      * @param string $statusMsg

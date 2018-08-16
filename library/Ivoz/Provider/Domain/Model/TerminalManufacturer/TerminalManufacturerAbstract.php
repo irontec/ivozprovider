@@ -167,6 +167,7 @@ abstract class TerminalManufacturerAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set iden
      *
      * @param string $iden
@@ -194,6 +195,7 @@ abstract class TerminalManufacturerAbstract
     }
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -221,6 +223,7 @@ abstract class TerminalManufacturerAbstract
     }
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description

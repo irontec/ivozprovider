@@ -14,6 +14,7 @@ interface CarrierInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description
@@ -30,6 +31,7 @@ interface CarrierInterface extends LoggableEntityInterface
     public function getDescription();
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -46,6 +48,7 @@ interface CarrierInterface extends LoggableEntityInterface
     public function getName();
 
     /**
+     * @deprecated
      * Set externallyRated
      *
      * @param boolean $externallyRated
@@ -62,6 +65,7 @@ interface CarrierInterface extends LoggableEntityInterface
     public function getExternallyRated();
 
     /**
+     * @deprecated
      * Set balance
      *
      * @param string $balance
@@ -78,6 +82,7 @@ interface CarrierInterface extends LoggableEntityInterface
     public function getBalance();
 
     /**
+     * @deprecated
      * Set calculateCost
      *
      * @param boolean $calculateCost

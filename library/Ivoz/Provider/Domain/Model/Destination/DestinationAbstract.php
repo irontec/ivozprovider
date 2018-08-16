@@ -185,6 +185,7 @@ abstract class DestinationAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set prefix
      *
      * @param string $prefix

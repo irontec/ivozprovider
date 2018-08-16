@@ -283,6 +283,7 @@ abstract class InvoiceAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set number
      *
      * @param string $number
@@ -311,6 +312,7 @@ abstract class InvoiceAbstract
     }
 
     /**
+     * @deprecated
      * Set inDate
      *
      * @param \DateTime $inDate
@@ -342,6 +344,7 @@ abstract class InvoiceAbstract
     }
 
     /**
+     * @deprecated
      * Set outDate
      *
      * @param \DateTime $outDate
@@ -373,6 +376,7 @@ abstract class InvoiceAbstract
     }
 
     /**
+     * @deprecated
      * Set total
      *
      * @param string $total
@@ -403,6 +407,7 @@ abstract class InvoiceAbstract
     }
 
     /**
+     * @deprecated
      * Set taxRate
      *
      * @param string $taxRate
@@ -433,6 +438,7 @@ abstract class InvoiceAbstract
     }
 
     /**
+     * @deprecated
      * Set totalWithTax
      *
      * @param string $totalWithTax
@@ -463,6 +469,7 @@ abstract class InvoiceAbstract
     }
 
     /**
+     * @deprecated
      * Set status
      *
      * @param string $status
@@ -497,6 +504,7 @@ abstract class InvoiceAbstract
     }
 
     /**
+     * @deprecated
      * Set statusMsg
      *
      * @param string $statusMsg

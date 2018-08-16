@@ -200,6 +200,7 @@ abstract class ChangelogAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set entity
      *
      * @param string $entity
@@ -227,6 +228,7 @@ abstract class ChangelogAbstract
     }
 
     /**
+     * @deprecated
      * Set entityId
      *
      * @param string $entityId
@@ -254,6 +256,7 @@ abstract class ChangelogAbstract
     }
 
     /**
+     * @deprecated
      * Set data
      *
      * @param array $data
@@ -281,6 +284,7 @@ abstract class ChangelogAbstract
     }
 
     /**
+     * @deprecated
      * Set createdOn
      *
      * @param \DateTime $createdOn
@@ -311,6 +315,7 @@ abstract class ChangelogAbstract
     }
 
     /**
+     * @deprecated
      * Set microtime
      *
      * @param integer $microtime

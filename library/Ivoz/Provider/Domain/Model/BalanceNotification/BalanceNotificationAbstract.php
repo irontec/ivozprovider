@@ -193,6 +193,7 @@ abstract class BalanceNotificationAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set toAddress
      *
      * @param string $toAddress
@@ -221,6 +222,7 @@ abstract class BalanceNotificationAbstract
     }
 
     /**
+     * @deprecated
      * Set threshold
      *
      * @param string $threshold
@@ -251,6 +253,7 @@ abstract class BalanceNotificationAbstract
     }
 
     /**
+     * @deprecated
      * Set lastSent
      *
      * @param \DateTime $lastSent

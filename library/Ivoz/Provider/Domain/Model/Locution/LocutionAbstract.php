@@ -223,6 +223,7 @@ abstract class LocutionAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -250,6 +251,7 @@ abstract class LocutionAbstract
     }
 
     /**
+     * @deprecated
      * Set status
      *
      * @param string $status

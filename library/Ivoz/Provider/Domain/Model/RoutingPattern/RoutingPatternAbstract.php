@@ -205,6 +205,7 @@ abstract class RoutingPatternAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set prefix
      *
      * @param string $prefix
