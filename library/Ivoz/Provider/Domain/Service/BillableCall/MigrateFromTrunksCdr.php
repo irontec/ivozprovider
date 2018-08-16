@@ -12,6 +12,8 @@ use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrRepository;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCall;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallDto;
+use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
+use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
 use Ivoz\Provider\Domain\Model\Destination\DestinationInterface;
 use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface;
@@ -43,6 +45,11 @@ class MigrateFromTrunksCdr
     protected $tpDestinationRepository;
 
     /**
+     * @var BillableCallRepository
+     */
+    protected $billableCallRepository;
+
+    /**
      * @var EntityTools
      */
     protected $entityTools;
@@ -57,6 +64,7 @@ class MigrateFromTrunksCdr
         TpCdrRepository $tpCdrRepository,
         RatingPlanRepository $ratingPlanRepository,
         TpDestinationRepository $tpDestinationRepository,
+        BillableCallRepository $billableCallRepository,
         EntityTools $entityTools,
         LoggerInterface $logger
     ) {
@@ -64,6 +72,7 @@ class MigrateFromTrunksCdr
         $this->tpCdrRepository = $tpCdrRepository;
         $this->ratingPlanRepository = $ratingPlanRepository;
         $this->tpDestinationRepository = $tpDestinationRepository;
+        $this->billableCallRepository = $billableCallRepository;
         $this->entityTools = $entityTools;
         $this->logger = $logger;
     }
@@ -100,8 +109,17 @@ class MigrateFromTrunksCdr
 
     private function migrateToBillableCall(TrunksCdrInterface $trunksCdr)
     {
-        $billableCallDto = $this->createBillableCallByTrunksCdr(
-            $trunksCdr
+
+        /**
+         * @var BillableCallInterface $billableCall
+         */
+        $billableCall = $this->billableCallRepository->findOneBy([
+            'trunksCdr' => $trunksCdr->getId()
+        ]);
+
+        $billableCallDto = $this->createOrUpdateBillableCallByTrunksCdr(
+            $trunksCdr,
+            $billableCall
         );
 
         $this->updateBillableCallByTpCdr(
@@ -112,7 +130,7 @@ class MigrateFromTrunksCdr
 
         $this->entityTools->persistDto(
             $billableCallDto,
-            null,
+            $billableCall,
             false
         );
 
@@ -136,10 +154,13 @@ class MigrateFromTrunksCdr
      *
      * @return BillableCallDto
      */
-    private function createBillableCallByTrunksCdr(
-        TrunksCdrInterface $trunksCdr
+    private function createOrUpdateBillableCallByTrunksCdr(
+        TrunksCdrInterface $trunksCdr,
+        BillableCallInterface $billableCall = null
     ) {
-        $billableCallDto = BillableCall::createDto();
+        $billableCallDto = $billableCall
+            ? $this->entityTools->entityToDto($billableCall)
+            : BillableCall::createDto();
 
         /**
          * @var CarrierInterface $carrier

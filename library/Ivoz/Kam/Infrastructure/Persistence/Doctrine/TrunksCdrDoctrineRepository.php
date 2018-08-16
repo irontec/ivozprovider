@@ -42,6 +42,22 @@ class TrunksCdrDoctrineRepository extends ServiceEntityRepository implements Tru
     }
 
     /**
+     * @param array $ids
+     */
+    public function resetMetered(array $ids)
+    {
+        $qb = $this
+            ->createQueryBuilder('self')
+            ->update($this->_entityName, 'self')
+            ->set('self.metered', ':metered')
+            ->setParameter(':metered', 0)
+            ->where('self.id in (:ids)')
+            ->setParameter(':ids', $ids);
+
+        return $qb->getQuery()->execute();
+    }
+
+    /**
      * @param array $conditions
      * @param int $invoiceId
      * @return mixed
@@ -118,69 +134,8 @@ class TrunksCdrDoctrineRepository extends ServiceEntityRepository implements Tru
         return (int) $qb->getQuery()->getSingleScalarResult();
     }
 
-    /**
-     * @param array $pks
-     * @return bool
-     */
-    public function areRetarificable(array $pks)
-    {
-        $qb = $this->createQueryBuilder('self');
 
-        $conditions = [
-            ['id', 'in', $pks],
-            'or' => [
-                ['invoice', 'isNotNull'],
-                ['carrier', 'isNull'],
-                ['carrier', 'eq', '']
-            ]
-        ];
 
-        $qb
-            ->select('count(self)')
-            ->addCriteria(
-                CriteriaHelper::fromArray($conditions)
-            );
-
-        $elementNumber = (int) $qb->getQuery()->getSingleScalarResult();
-
-        return $elementNumber === 0;
-    }
-
-    /**
-     * @param array $ids
-     * @return array
-     */
-    public function idsToCgrid(array $ids)
-    {
-        $qb = $this->createQueryBuilder('self');
-
-        $conditions = [
-            ['id', 'in', $ids]
-        ];
-
-        $qb
-            ->select('self.cgrid')
-            ->addCriteria(
-                CriteriaHelper::fromArray($conditions)
-            );
-
-        $result = $qb
-            ->getQuery()
-            ->getScalarResult();
-
-        $cgrids = array_map(
-            function ($item) {
-                return $item['cgrid'];
-            },
-            $result
-        );
-
-        if (count($ids) !== count($cgrids)) {
-            throw new \DomainException('Some id were not found');
-        }
-
-        return $cgrids;
-    }
 
     /**
      * This method expects results to be marked as metered as soon as they're used:
