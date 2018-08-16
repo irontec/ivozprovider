@@ -1,6 +1,7 @@
 Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTag:
   repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\CompanyRelRoutingTagDoctrineRepository
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: CompaniesRelRoutingTags
   id:
     id:

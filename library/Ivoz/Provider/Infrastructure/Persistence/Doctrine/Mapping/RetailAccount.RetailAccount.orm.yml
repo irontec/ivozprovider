@@ -1,6 +1,7 @@
 Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount:
   repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\RetailAccountDoctrineRepository
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: RetailAccounts
   id:
     id:

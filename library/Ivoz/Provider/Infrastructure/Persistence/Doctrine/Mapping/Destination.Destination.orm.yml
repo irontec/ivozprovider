@@ -1,6 +1,7 @@
 Ivoz\Provider\Domain\Model\Destination\Destination:
   repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\DestinationDoctrineRepository
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: Destinations
   id:
     id:

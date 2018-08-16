@@ -1,6 +1,7 @@
 Ivoz\Provider\Domain\Model\HolidayDate\HolidayDate:
   repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\HolidayDateDoctrineRepository
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: HolidayDates
   id:
     id:

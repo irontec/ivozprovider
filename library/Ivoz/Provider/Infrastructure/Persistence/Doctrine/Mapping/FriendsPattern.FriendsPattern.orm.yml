@@ -1,6 +1,7 @@
 Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPattern:
   repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\FriendsPatternDoctrineRepository
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: FriendsPatterns
   id:
     id:

@@ -1,6 +1,7 @@
 Ivoz\Provider\Domain\Model\BalanceNotification\BalanceNotification:
   repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\BalanceNotificationDoctrineRepository
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: BalanceNotifications
   id:
     id:

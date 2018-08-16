@@ -1,6 +1,7 @@
 Ivoz\Provider\Domain\Model\Friend\Friend:
   repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\FriendDoctrineRepository
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: Friends
   id:
     id:

@@ -1,6 +1,7 @@
 Ivoz\Provider\Domain\Model\RoutingTag\RoutingTag:
   repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\RoutingTagDoctrineRepository
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: RoutingTags
   id:
     id:

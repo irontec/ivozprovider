@@ -1,6 +1,7 @@
 Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPattern:
   type: entity
   table: MatchListPatterns
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   id:
     id:
       type: integer

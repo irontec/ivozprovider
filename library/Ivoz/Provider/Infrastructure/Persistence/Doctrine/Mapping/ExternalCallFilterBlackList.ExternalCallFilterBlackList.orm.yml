@@ -1,5 +1,6 @@
 Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList\ExternalCallFilterBlackList:
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: ExternalCallFilterBlackLists
   id:
     id:

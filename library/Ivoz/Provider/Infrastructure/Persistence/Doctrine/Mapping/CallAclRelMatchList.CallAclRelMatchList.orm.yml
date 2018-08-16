@@ -1,6 +1,7 @@
 Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchList:
   repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\CallAclRelMatchListDoctrineRepository
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: CallAclRelMatchLists
   id:
     id:

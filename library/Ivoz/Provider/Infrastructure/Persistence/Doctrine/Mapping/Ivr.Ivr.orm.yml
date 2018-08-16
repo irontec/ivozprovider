@@ -1,6 +1,7 @@
 Ivoz\Provider\Domain\Model\Ivr\Ivr:
   repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\IvrDoctrineRepository
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: IVRs
   id:
     id:

@@ -1,6 +1,7 @@
 Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup:
   repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\HuntGroupDoctrineRepository
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: HuntGroups
   id:
     id:

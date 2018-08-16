@@ -1,6 +1,7 @@
 Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice:
   repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\ResidentialDeviceDoctrineRepository
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: ResidentialDevices
   id:
     id:

@@ -1,6 +1,7 @@
 Ivoz\Provider\Domain\Model\Recording\Recording:
   repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\RecordingDoctrineRepository
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: Recordings
   id:
     id:

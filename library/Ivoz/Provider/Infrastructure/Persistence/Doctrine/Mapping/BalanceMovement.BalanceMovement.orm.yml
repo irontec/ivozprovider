@@ -1,6 +1,7 @@
 Ivoz\Provider\Domain\Model\BalanceMovement\BalanceMovement:
   repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\BalanceMovementDoctrineRepository
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: BalanceMovements
   id:
     id:

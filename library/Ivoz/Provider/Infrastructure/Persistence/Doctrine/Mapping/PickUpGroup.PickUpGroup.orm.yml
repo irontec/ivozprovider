@@ -1,6 +1,7 @@
 Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroup:
   repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\PickUpGroupDoctrineRepository
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: PickUpGroups
   id:
     id:

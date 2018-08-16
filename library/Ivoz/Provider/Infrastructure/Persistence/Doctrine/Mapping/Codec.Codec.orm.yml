@@ -1,6 +1,7 @@
 Ivoz\Provider\Domain\Model\Codec\Codec:
   repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\CodecDoctrineRepository
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: Codecs
   id:
     id:
