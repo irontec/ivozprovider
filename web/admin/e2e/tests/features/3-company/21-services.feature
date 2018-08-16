@@ -18,6 +18,7 @@ Background:
     And I click on "CompanyServices" CTA
    Then I am on "CompanyServices" list
 
+@skip
 Scenario: I can create company services
   When I click on add button
    And I fill out the form with "company/services/new" data fixture
