@@ -2,17 +2,11 @@
 
 namespace Ivoz\Provider\Domain\Service\Invoice;
 
-use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface;
 use Ivoz\Core\Application\Service\EntityTools;
-use Ivoz\Provider\Domain\Model\Destination\DestinationInterface;
+use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
+use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;
+use Ivoz\Provider\Domain\Model\Destination\DestinationDto;
 use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto;
-use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanRepository;
-use Ivoz\Cgr\Domain\Model\TpCdr\TpCdr;
-use Ivoz\Cgr\Domain\Model\TpCdr\TpCdrInterface;
-use Ivoz\Cgr\Domain\Model\TpCdr\TpCdrRepository;
-use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationRepository;
-use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
-use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrRepository;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceRepository;
 use Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplate;
@@ -40,19 +34,9 @@ class Generator
     protected $invoiceRepository;
 
     /**
-     * @var TrunksCdrRepository
+     * @var BillableCallRepository
      */
-    protected $trunksCdrRepository;
-
-    /**
-     * @var RatingPlanRepository
-     */
-    protected $ratingPlanRepository;
-
-    /**
-     * @var TpDestinationRepository
-     */
-    protected $tpDestinationRepository;
+    protected $billableCallRepository;
 
     /**
      * @var EntityTools
@@ -73,29 +57,20 @@ class Generator
      * Generator constructor.
      *
      * @param InvoiceRepository $invoiceRepository
-     * @param TrunksCdrRepository $trunksCdrRepository
-     * @param TpCdrRepository $tpCdrRepository
-     * @param RatingPlanRepository $ratingPlanRepository
-     * @param TpDestinationRepository $destinationRepository
+     * @param BillableCallRepository $billableCallRepository
      * @param EntityTools $entityTools
      * @param Logger $logger
      * @param string $vendorDir
      */
     public function __construct(
         InvoiceRepository $invoiceRepository,
-        TrunksCdrRepository $trunksCdrRepository,
-        TpCdrRepository $tpCdrRepository,
-        RatingPlanRepository $ratingPlanRepository,
-        TpDestinationRepository $destinationRepository,
+        BillableCallRepository $billableCallRepository,
         EntityTools $entityTools,
         Logger $logger,
         string $vendorDir
     ) {
         $this->invoiceRepository = $invoiceRepository;
-        $this->trunksCdrRepository = $trunksCdrRepository;
-        $this->tpCdrRepository = $tpCdrRepository;
-        $this->ratingPlanRepository = $ratingPlanRepository;
-        $this->tpDestinationRepository = $destinationRepository;
+        $this->billableCallRepository = $billableCallRepository;
         $this->entityTools = $entityTools;
         $this->logger = $logger;
         $this->vendorDir = $vendorDir;
@@ -115,6 +90,7 @@ class Generator
     /**
      * @param int $invoiceId
      * @return string
+     * @throws \Exception
      */
     public function getInvoicePDFContents(int $invoiceId)
     {
@@ -233,18 +209,18 @@ class Generator
         ];
         $this->logger->debug('Where: ' . print_r($conditions, true));
 
-        $this->trunksCdrRepository->setInvoiceId(
+        $this->billableCallRepository->setInvoiceId(
             $conditions,
             $invoice->getId()
         );
 
-        $callGenerator = $this->trunksCdrRepository->getGeneratorByConditions(
+        $callGenerator = $this->billableCallRepository->getGeneratorByConditions(
             $conditions,
             50,
             ['self.startTime', 'ASC']
         );
 
-        /** @var TrunksCdrInterface[] $calls */
+        /** @var BillableCallInterface[] $calls */
         foreach ($callGenerator as $calls) {
 
             if (empty($calls)) {
@@ -262,78 +238,43 @@ class Generator
 
                 $callData['dst'] = $call->getCallee();
 
-                /** @var TpCdrInterface $tpCdr */
-                $tpCdr = null;
-                if ($call->getCgrid()) {
-                    $tpCdr = $this->tpCdrRepository->getDefaultRunByCgrid($call->getCgrid());
-                }
+                $callData['price'] = $this->roundAndFormat(
+                    $call->getPrice()
+                );
 
-                $price = $tpCdr
-                    ? $tpCdr->getCost()
-                    : $call->getPrice();
-                $callData['price'] = $this->roundAndFormat($price);
-
-                $duration = $tpCdr
-                    ? $tpCdr->getDuration()
-                    : $call->getDuration();
-                $callData['dst_duration_formatted'] = $this->_timeFormat($duration);
+                $callData['dst_duration_formatted'] = $this->_timeFormat(
+                    $call->getDuration()
+                );
 
                 $callData['durationFormatted'] = $callData['dst_duration_formatted'];
 
                 $callData['pricingPlan'] = [];
                 $callData['targetPattern'] = [];
 
-                if ($tpCdr) {
-                    // Checkpoint
-                    $costDetails = $tpCdr->getCostDetails();
-                    $timespan = $costDetails['Timespans'][0];
-                    $ratingPlanTag = $timespan['RatingPlanId'];
+                $ratingPlan = $call->getRatingPlan();
+                if ($ratingPlan) {
+                    /** @var RatingPlanDto $ratingPlanDto */
+                    $ratingPlanDto = $this->entityTools->entityToDto($ratingPlan);
 
-                    try {
-                        $ratingPlan = $this->ratingPlanRepository->findOneByTag($ratingPlanTag);
-
-                        /** @var RatingPlanDto $ratingPlanDto */
-                        $ratingPlanDto = $this->entityTools->entityToDto($ratingPlan);
-
-                        $callData['pricingPlan'] = $ratingPlanDto->toArray();
-                        $callData['pricingPlan']['name'] = $ratingPlan->getName()->{'get' . $lang}();
-                        $callData['pricingPlan']['description'] = $ratingPlan->getDescription()->{'get' . $lang}();
-
-                    } catch (\Doctrine\ORM\NoResultException $e) {
-                        $callData['pricingPlan']['name'] = '';
-                        $callData['pricingPlan']['description'] = '';
-                    }
-
-                    // -----------------
-
-                    $matchedDestTag = $timespan['MatchedDestId'];
-
-                    try {
-                        /** @var TpDestinationInterface $destination */
-                        $tpDstination = $this->tpDestinationRepository->findOneByTag($matchedDestTag);
-                        if (!$tpDstination) {
-                            throw new \Doctrine\ORM\NoResultException('Tp Destination not found');
-                        }
-
-                        /** @var DestinationInterface $destination */
-                        $destination = $tpDstination->getDestination();
-                        $destinationDto = $this->entityTools->entityToDto($destination);
-
-                        $callData['targetPattern'] = $destinationDto->toArray();
-                        $callData['targetPattern']['name'] = $destination->getName()->{'get' . $lang}();;
-                        $callData['targetPattern']['description'] = $destination->getName()->{'get' . $lang}();
-
-                    } catch (\Doctrine\ORM\NoResultException $e) {
-                        $callData['targetPattern']['name'] = '';
-                        $callData['targetPattern']['description'] = '';
-                    }
+                    $callData['pricingPlan'] = $ratingPlanDto->toArray();
+                    $callData['pricingPlan']['name'] = $ratingPlan->getName()->{'get' . $lang}();
+                    $callData['pricingPlan']['description'] = $ratingPlan->getDescription()->{'get' . $lang}();
 
                 } else {
-
-                    $callData['pricingPlan']['name'] = '';
+                    $callData['pricingPlan']['name'] = $call->getRatingPlanName();
                     $callData['pricingPlan']['description'] = '';
+                }
 
-                    $callData['targetPattern']['name'] = '';
+                $destination = $call->getDestination();
+                if ($destination) {
+                    /** @var DestinationDto $destinationDto */
+                    $destinationDto = $this->entityTools->entityToDto($destination);
+
+                    $callData['targetPattern'] = $destinationDto->toArray();
+                    $callData['targetPattern']['name'] = $destination->getName()->{'get' . $lang}();;
+                    $callData['targetPattern']['description'] = $destination->getName()->{'get' . $lang}();
+                } else {
+                    $callData['targetPattern']['name'] = $call->getDestinationName();
                     $callData['targetPattern']['description'] = '';
                 }
 
@@ -464,20 +405,6 @@ class Generator
         $mins = floor($seconds / 60 % 60);
         $secs = floor($seconds % 60);
         return sprintf('%02d:%02d:%02d', $hours, $mins, $secs);
-    }
-
-    /**
-     * @param $call
-     * @return mixed
-     */
-    protected function getCallPricingPlan(TrunksCdrInterface $call)
-    {
-        $pricingPlanId = $call->getPricingPlanId();
-        if (!array_key_exists($pricingPlanId, $this->pricingPlanCache)) {
-            $this->pricingPlanCache[$pricingPlanId] = $call->getPricingPlan();
-        }
-
-        return $this->pricingPlanCache[$pricingPlanId];
     }
 
     /**

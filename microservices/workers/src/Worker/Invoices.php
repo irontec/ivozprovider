@@ -5,7 +5,7 @@ namespace Worker;
 use GearmanJob;
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Core\Domain\Service\TempFile;
-use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrRepository;
+use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceDto;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceRepository;
@@ -34,9 +34,9 @@ class Invoices
     protected $invoiceRepository;
 
     /**
-     * @var TrunksCdrRepository
+     * @var BillableCallRepository
      */
-    protected $trunksCdrRepository;
+    protected $billableCallRepository;
 
     /**
      * @var Generator
@@ -52,20 +52,20 @@ class Invoices
      * Invoices constructor.
      * @param EntityTools $entityTools
      * @param InvoiceRepository $invoiceRepository
-     * @param TrunksCdrRepository $trunksCdrRepository
+     * @param BillableCallRepository $billableCallRepository
      * @param Generator $generator
-     * @param Logger $logger
+     * @param LoggerInterface $logger
      */
     public function __construct(
         EntityTools $entityTools,
         InvoiceRepository $invoiceRepository,
-        TrunksCdrRepository $trunksCdrRepository,
+        BillableCallRepository $billableCallRepository,
         Generator $generator,
         LoggerInterface $logger
     ) {
         $this->entityTools = $entityTools;
         $this->invoiceRepository = $invoiceRepository;
-        $this->trunksCdrRepository = $trunksCdrRepository;
+        $this->billableCallRepository = $billableCallRepository;
         $this->generator = $generator;
         $this->logger = $logger;
     }
@@ -87,7 +87,7 @@ class Invoices
         $id = $job->getId();
         $this->logger->info("[INVOICER] ID = " . $id);
 
-        $this->trunksCdrRepository->resetInvoiceId($id);
+        $this->billableCallRepository->resetInvoiceId($id);
 
         /** @var InvoiceInterface $invoice */
         $invoice = $this->invoiceRepository->find($id);
