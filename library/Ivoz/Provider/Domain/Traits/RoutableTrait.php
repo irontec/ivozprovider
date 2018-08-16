@@ -36,7 +36,7 @@ trait RoutableTrait
      * @param string $prefix
      * @return null|string
      */
-    public function getTarget (string $prefix = "")
+    public function getTarget(string $prefix = "")
     {
         // Get Route Type
         $routeTypeGetter = 'get' . $prefix . 'RouteType';
