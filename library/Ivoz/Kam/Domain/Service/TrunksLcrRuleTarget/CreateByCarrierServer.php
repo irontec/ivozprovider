@@ -47,17 +47,17 @@ class CreateByCarrierServer implements CarrierServerLifecycleEventHandlerInterfa
     }
 
     /**
-     * @param CarrierServerInterface $entity
+     * @param CarrierServerInterface $carrierServer
      * @param $isNew
      */
-    public function execute(CarrierServerInterface $entity, $isNew)
+    public function execute(CarrierServerInterface $carrierServer, $isNew)
     {
         if (!$isNew) {
             return;
         }
 
         /** @var OutgoingRoutingInterface[] $outgoingRoutings */
-        $outgoingRoutings = $entity->getCarrier()->getOutgoingRoutings();
+        $outgoingRoutings = $carrierServer->getCarrier()->getOutgoingRoutings();
 
         foreach ($outgoingRoutings as $outgoingRouting) {
             $this->lcrRuleTargetFactory->execute($outgoingRouting);

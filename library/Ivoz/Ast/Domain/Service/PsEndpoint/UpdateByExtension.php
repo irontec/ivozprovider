@@ -2,7 +2,9 @@
 
 namespace Ivoz\Ast\Domain\Service\PsEndpoint;
 
+use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointDto;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
+use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Ivoz\Provider\Domain\Service\Extension\ExtensionLifecycleEventHandlerInterface;
@@ -15,14 +17,14 @@ use Ivoz\Provider\Domain\Service\Extension\ExtensionLifecycleEventHandlerInterfa
 class UpdateByExtension implements ExtensionLifecycleEventHandlerInterface
 {
     /**
-     * @var EntityPersisterInterface
+     * @var EntityTools
      */
-    protected $entityPersister;
+    protected $entityTools;
 
     public function __construct(
-        EntityPersisterInterface $entityPersister
+        EntityTools $entityTools
     ) {
-        $this->entityPersister = $entityPersister;
+        $this->entityTools = $entityTools;
     }
 
     public static function getSubscribedEvents()
@@ -33,25 +35,25 @@ class UpdateByExtension implements ExtensionLifecycleEventHandlerInterface
     }
 
     /**
-     * @param ExtensionInterface $entity
+     * @param ExtensionInterface $extension
      * @param $isNew
      */
-    public function execute(ExtensionInterface $entity, $isNew)
+    public function execute(ExtensionInterface $extension, $isNew)
     {
         // Ignore non-user extensions
-        $user = $entity->getUser();
+        $user = $extension->getUser();
         if (!$user) {
             return;
         }
 
         // Only apply to user's with extension
-        $extension = $user->getExtension();
-        if (!$extension) {
+        $userExtension = $user->getExtension();
+        if (!$userExtension) {
             return;
         }
 
         // Only apply if the extension changed is user's screen extension
-        if ($entity->getId() != $extension->getId()) {
+        if ($extension->getId() != $userExtension->getId()) {
             return;
         }
 
@@ -67,6 +69,8 @@ class UpdateByExtension implements ExtensionLifecycleEventHandlerInterface
         if (!$endpoint) {
             return;
         }
+        /** @var PsEndpointDto $endpointDto */
+        $endpointDto = $this->entityTools->entityToDto($endpoint);
 
         $callerId = sprintf(
             '%s <%s>',
@@ -75,15 +79,16 @@ class UpdateByExtension implements ExtensionLifecycleEventHandlerInterface
         );
 
         // Set new callerid with updated extension number
-        $endpoint->setCallerid($callerId);
+        $endpointDto->setCallerid($callerId);
 
         // Update endpoint voicemail mailbox@context
         if ($user->getVoicemailEnabled()) {
-            $endpoint->setMailboxes($user->getVoiceMail());
+            $endpointDto->setMailboxes($user->getVoiceMail());
         }
 
-        $this
-            ->entityPersister
-            ->persist($endpoint);
+        $this->entityTools->persistDto(
+            $endpointDto,
+            $endpoint
+        );
     }
 }

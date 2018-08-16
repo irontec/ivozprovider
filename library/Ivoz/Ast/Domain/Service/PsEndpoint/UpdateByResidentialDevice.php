@@ -51,13 +51,13 @@ class UpdateByResidentialDevice implements ResidentialDeviceLifecycleEventHandle
         // If not found create a new one
         if (is_null($endpoint)) {
 
-            $endpointDTO = PsEndpoint::createDto();
-            $endpointDTO
+            $endpointDto = PsEndpoint::createDto();
+            $endpointDto
                 ->setContext('residential')
                 ->setSendDiversion('yes')
                 ->setSendPai('yes');
         } else {
-            $endpointDTO  = $endpoint->toDto();
+            $endpointDto  = $endpoint->toDto();
         }
 
         // Use company domain if residential device from-domain not set
@@ -66,7 +66,7 @@ class UpdateByResidentialDevice implements ResidentialDeviceLifecycleEventHandle
             : $entity->getDomain()->getDomain();
 
         // Update/Insert endpoint data
-        $endpointDTO
+        $endpointDto
             ->setResidentialDeviceId($entity->getId())
             ->setSorceryId($entity->getSorcery())
             ->setFromDomain($fromDomain)
@@ -78,6 +78,6 @@ class UpdateByResidentialDevice implements ResidentialDeviceLifecycleEventHandle
             ->setOutboundProxy('sip:users.ivozprovider.local^3Blr')
             ->setDirectMediaMethod('invite');
 
-        $this->entityPersister->persistDto($endpointDTO, $endpoint);
+        $this->entityPersister->persistDto($endpointDto, $endpoint);
     }
 }

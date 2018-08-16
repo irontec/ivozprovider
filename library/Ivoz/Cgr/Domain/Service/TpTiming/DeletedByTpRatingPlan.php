@@ -34,13 +34,13 @@ class DeletedByTpRatingPlan implements TpRatingPlanLifecycleEventHandlerInterfac
         ];
     }
 
-    public function execute(TpRatingPlanInterface $entity)
+    public function execute(TpRatingPlanInterface $tpRatingPlan)
     {
-        $timing = $entity->getTiming();
+        $timing = $tpRatingPlan->getTiming();
 
         if ($timing) {
             // Delete custom timing if exists
-            $this->entityTools->remove($entity->getTiming());
+            $this->entityTools->remove($tpRatingPlan->getTiming());
         }
     }
 }

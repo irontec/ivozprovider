@@ -21,7 +21,7 @@ class UpdatedTpRatingPlanNotificator implements TpRatingPlanLifecycleEventHandle
         ];
     }
 
-    public function execute(TpRatingPlanInterface $entity)
+    public function execute(TpRatingPlanInterface $tpRatingPlan)
     {
         $this->client->scheduleFullReload();
     }

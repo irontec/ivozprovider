@@ -7,5 +7,5 @@ use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
 
 interface InvoiceLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(InvoiceInterface $entity);
+    public function execute(InvoiceInterface $invoice);
 }

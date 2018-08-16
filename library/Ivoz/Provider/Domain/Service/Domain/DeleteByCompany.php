@@ -35,13 +35,13 @@ class DeleteByCompany implements CompanyLifecycleEventHandlerInterface
         ];
     }
 
-    public function execute(CompanyInterface $entity, $isNew)
+    public function execute(CompanyInterface $company, $isNew)
     {
-        $domain = $entity->getDomain();
+        $domain = $company->getDomain();
 
         if ($domain) {
             $this->em->remove($domain);
-            $entity->setDomain(null);
+            $company->setDomain(null);
         }
     }
 }

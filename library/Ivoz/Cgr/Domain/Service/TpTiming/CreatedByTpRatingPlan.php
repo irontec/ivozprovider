@@ -3,6 +3,7 @@
 namespace Ivoz\Cgr\Domain\Service\TpTiming;
 
 use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlan;
+use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanDto;
 use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanInterface;
 use Ivoz\Cgr\Domain\Model\TpTiming\TpTiming;
 use Ivoz\Cgr\Domain\Model\TpTiming\TpTimingDto;
@@ -11,7 +12,7 @@ use Ivoz\Core\Application\Service\EntityTools;
 
 class CreatedByTpRatingPlan implements TpRatingPlanLifecycleEventHandlerInterface
 {
-    CONST POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
+    const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
     /**
      * @var EntityTools
@@ -36,15 +37,15 @@ class CreatedByTpRatingPlan implements TpRatingPlanLifecycleEventHandlerInterfac
         ];
     }
 
-    public function execute(TpRatingPlanInterface $entity)
+    public function execute(TpRatingPlanInterface $tpRatingPlan)
     {
-        $timing = $entity->getTiming();
+        $timing = $tpRatingPlan->getTiming();
 
         // Always timings don't have timing entity related
-        if ($entity->getTimingType() == TpRatingPlan::TIMING_TYPE_ALWAYS) {
+        if ($tpRatingPlan->getTimingType() == TpRatingPlan::TIMING_TYPE_ALWAYS) {
             if ($timing) {
                 // Delete custom timing if exists
-                $this->entityTools->remove($entity->getTiming());
+                $this->entityTools->remove($tpRatingPlan->getTiming());
             }
         } else {
 
@@ -56,8 +57,8 @@ class CreatedByTpRatingPlan implements TpRatingPlanLifecycleEventHandlerInterfac
             }
 
             $timingTag = sprintf("b%dtm%d",
-                $entity->getRatingPlan()->getBrand()->getId(),
-                $entity->getId()
+                $tpRatingPlan->getRatingPlan()->getBrand()->getId(),
+                $tpRatingPlan->getId()
             );
 
             // Update/Insert endpoint data
@@ -66,8 +67,8 @@ class CreatedByTpRatingPlan implements TpRatingPlanLifecycleEventHandlerInterfac
                 ->setYears(TpTiming::TIMING_ANY)
                 ->setMonths(TpTiming::TIMING_ANY)
                 ->setMonthDays(TpTiming::TIMING_ANY)
-                ->setWeekDays($entity->getWeekDays())
-                ->setTime($entity->getTimeIn()->format("H:i:s"));
+                ->setWeekDays($tpRatingPlan->getWeekDays())
+                ->setTime($tpRatingPlan->getTimeIn()->format("H:i:s"));
 
             $timing = $this->entityTools
                 ->persistDto(
@@ -76,10 +77,17 @@ class CreatedByTpRatingPlan implements TpRatingPlanLifecycleEventHandlerInterfac
                     true
                 );
 
-            $entity
-                ->setTiming($timing)
+            /** @var TpRatingPlanDto $tpRatingPlanDto */
+            $tpRatingPlanDto = $this->entityTools->entityToDto($tpRatingPlan);
+            $tpRatingPlanDto
+                ->setTimingId($timing->getId())
                 ->setTimingTag($timingTag);
 
+            $this->entityTools->persistDto(
+                $tpRatingPlanDto,
+                $tpRatingPlan,
+                true
+            );
         }
     }
 

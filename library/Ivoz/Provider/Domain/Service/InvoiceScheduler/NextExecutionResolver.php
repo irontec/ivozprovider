@@ -2,7 +2,9 @@
 
 namespace Ivoz\Provider\Domain\Service\InvoiceScheduler;
 
+use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Core\Domain\Service\LifecycleEventHandlerInterface;
+use Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerDto;
 use Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface;
 
 /**
@@ -12,7 +14,16 @@ class NextExecutionResolver implements InvoiceSchedulerLifecycleEventHandlerInte
 {
     const PRE_PERSIST_PRIORITY = LifecycleEventHandlerInterface::PRIORITY_NORMAL;
 
-    public function __construct() {}
+    /**
+     * @var EntityTools
+     */
+    protected $entityTools;
+
+    public function __construct(
+        EntityTools $entityTools
+    ) {
+        $this->entityTools = $entityTools;
+    }
 
     public static function getSubscribedEvents()
     {
@@ -64,9 +75,10 @@ class NextExecutionResolver implements InvoiceSchedulerLifecycleEventHandlerInte
                 throw new \DomainException('Unknown unit ' . $unit);
         }
 
-
         $nextExecution->setTime(8, 0, 0);
-        $scheduler->setNextExecution(
+
+        $this->setNextExecution(
+            $scheduler,
             $nextExecution
         );
     }
@@ -98,7 +110,28 @@ class NextExecutionResolver implements InvoiceSchedulerLifecycleEventHandlerInte
                 $scheduler->getInterval()
             );
 
-        $scheduler
-            ->setNextExecution($nextExecution);
+        $this->setNextExecution(
+            $scheduler,
+            $nextExecution
+        );
+    }
+
+    /**
+     * @param InvoiceSchedulerInterface $scheduler
+     * @param \DateTime $nextExecution
+     */
+    protected function setNextExecution(InvoiceSchedulerInterface $scheduler, \DateTime $nextExecution)
+    {
+        /** @var InvoiceSchedulerDto $schedulerDto */
+        $schedulerDto = $this->entityTools->entityToDto($scheduler);
+        $schedulerDto->setNextExecution(
+            $nextExecution
+        );
+
+        $this->entityTools->persistDto(
+            $schedulerDto,
+            $scheduler,
+            false
+        );
     }
 }

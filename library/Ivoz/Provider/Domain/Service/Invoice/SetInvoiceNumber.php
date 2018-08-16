@@ -2,8 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Service\Invoice;
 
+use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
-use Ivoz\Kam\Domain\Model\TrunksCdr\AccCdrRepository;
 use Ivoz\Provider\Domain\Service\InvoiceNumberSequence\NextValGenerator;
 
 /**
@@ -18,10 +18,17 @@ class SetInvoiceNumber implements InvoiceLifecycleEventHandlerInterface
      */
     protected $nextValGenerator;
 
+    /**
+     * @var EntityTools
+     */
+    protected $entityTools;
+
     public function __construct(
-        NextValGenerator $nextValGenerator
+        NextValGenerator $nextValGenerator,
+        EntityTools $entityTools
     ) {
         $this->nextValGenerator = $nextValGenerator;
+        $this->entityTools = $entityTools;
     }
 
     public static function getSubscribedEvents()
@@ -31,27 +38,35 @@ class SetInvoiceNumber implements InvoiceLifecycleEventHandlerInterface
         ];
     }
 
-    public function execute(InvoiceInterface $entity)
+    public function execute(InvoiceInterface $invoice)
     {
-        if (!$entity->hasChanged('status')) {
+        if (!$invoice->hasChanged('status')) {
             return;
         }
 
-        $processing = $entity->isProcessing();
+        $processing = $invoice->isProcessing();
         if (!$processing) {
             return;
         }
 
-        if ($entity->getNumber()) {
+        if ($invoice->getNumber()) {
             return;
         }
 
-        $invoiceNumberGenerator = $entity->getNumberSequence();
+        $invoiceNumberGenerator = $invoice->getNumberSequence();
         if (!$invoiceNumberGenerator) {
             return;
         }
 
         $invoiceNumber = $this->nextValGenerator->execute($invoiceNumberGenerator);
-        $entity->setNumber($invoiceNumber);
+
+        $invoiceDto = $this->entityTools->entityToDto($invoice);
+        $invoiceDto->setNumber($invoiceNumber);
+
+        $this->entityTools->persistDto(
+            $invoiceDto,
+            $invoice,
+            false
+        );
     }
 }

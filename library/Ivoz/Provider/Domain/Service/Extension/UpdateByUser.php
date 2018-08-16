@@ -2,6 +2,8 @@
 
 namespace Ivoz\Provider\Domain\Service\Extension;
 
+use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Provider\Domain\Model\Extension\ExtensionDto;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Ivoz\Provider\Domain\Service\User\UserLifecycleEventHandlerInterface;
 
@@ -14,7 +16,16 @@ class UpdateByUser implements UserLifecycleEventHandlerInterface
     const POST_PERSIST_PRIORITY = 20;
     const POST_REMOVE_PRIORITY = 10;
 
-    public function __construct() {}
+    /**
+     * @var EntityTools
+     */
+    protected $entityTools;
+
+    public function __construct(
+        EntityTools $entityTools
+    ) {
+        $this->entityTools = $entityTools;
+    }
 
     public static function getSubscribedEvents()
     {
@@ -26,9 +37,26 @@ class UpdateByUser implements UserLifecycleEventHandlerInterface
 
     public function execute(UserInterface $user, $isNew)
     {
+        $extension = $user->getExtension();
+        if (!$extension) {
+            return;
+        }
+
+        /** @var ExtensionDto $extensionDto */
+        $extensionDto = $this->entityTools
+            ->entityToDto($extension);
+
         $removed = ($user->hasChanged('id') && !$user->getId());
         if ($removed) {
-            $this->cleanUpExtension($user);
+            $extensionDto
+                ->setRouteType(null)
+                ->setUserId(null);
+
+            $this->entityTools->persistDto(
+                $extensionDto,
+                $extension,
+                false
+            );
             return;
         }
 
@@ -37,23 +65,14 @@ class UpdateByUser implements UserLifecycleEventHandlerInterface
             return;
         }
 
-        // If extension has changed, update extension user
+        $extensionDto
+            ->setRouteType('user')
+            ->setUserId($user->getId());
 
-        $extension = $user->getExtension();
-        if ($extension) {
-            $extension
-                ->setRouteType('user')
-                ->setUser($user);
-        }
-    }
-
-    private function cleanUpExtension(UserInterface $entity)
-    {
-        $extension = $entity->getExtension();
-        if ($extension) {
-            $extension
-                ->setRouteType(null)
-                ->setUser(null);
-        }
+        $this->entityTools->persistDto(
+            $extensionDto,
+            $extension,
+            false
+        );
     }
 }

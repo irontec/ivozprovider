@@ -1,6 +1,7 @@
 <?php
 
 namespace Ivoz\Kam\Domain\Model\Trusted;
+use Ivoz\Core\Domain\Assert\Assertion;
 
 /**
  * Trusted
@@ -28,7 +29,6 @@ class Trusted extends TrustedAbstract implements TrustedInterface
         return $this->id;
     }
 
-
     /**
      * @return void
      * @throws \Exception
@@ -40,6 +40,19 @@ class Trusted extends TrustedAbstract implements TrustedInterface
         if ($company) {
             $this->setTag((string) $company->getId());
         }
+
+        $this->setProto('any');
+    }
+
+    public function setSrcIp($srcIp = null)
+    {
+        try {
+            Assertion::ip($srcIp);
+        } catch (\Exception $e) {
+            throw new \DomainException('Invalid IP address, discarding value.', 70000);
+        }
+
+        return parent::setSrcIp($srcIp);
     }
 
 }

@@ -31,7 +31,7 @@ class SanitizeEmptyValues implements CompanyLifecycleEventHandlerInterface
         ];
     }
 
-    public function execute(CompanyInterface $entity, $isNew)
+    public function execute(CompanyInterface $company, $isNew)
     {
         if (!$isNew) {
             return;
@@ -40,11 +40,11 @@ class SanitizeEmptyValues implements CompanyLifecycleEventHandlerInterface
         /**
          * @var $dto CompanyDTO
          */
-        $dto = $entity->toDto();
+        $dto = $company->toDto();
         if (!$dto->getMediaRelaySetsId()) {
             $dto->setMediaRelaySetsId(0);
         }
 
-        $this->entityUpdater->execute($entity, $dto);
+        $this->entityUpdater->execute($company, $dto);
     }
 }
