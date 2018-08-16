@@ -3,6 +3,8 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
+use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCall;
 use Symfony\Bridge\Doctrine\RegistryInterface;
@@ -19,4 +21,104 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
     {
         parent::__construct($registry, BillableCall::class);
     }
+
+    /**
+     * @param array $pks
+     * @return bool
+     */
+    public function areRetarificable(array $pks)
+    {
+        $qb = $this->createQueryBuilder('self');
+
+        $conditions = [
+            ['id', 'in', $pks],
+            'or' => [
+                ['invoice', 'isNotNull']
+            ]
+        ];
+
+        $qb
+            ->select('count(self)')
+            ->addCriteria(
+                CriteriaHelper::fromArray($conditions)
+            );
+
+        $elementNumber = (int) $qb->getQuery()->getSingleScalarResult();
+
+        return $elementNumber === 0;
+    }
+
+    /**
+     * @param array $ids
+     * @return array
+     */
+    public function idsToCgrid(array $ids)
+    {
+        $qb = $this->createQueryBuilder('self');
+
+        $conditions = [
+            ['id', 'in', $ids]
+        ];
+
+        $qb
+            ->select('self')
+            ->addCriteria(
+                CriteriaHelper::fromArray($conditions)
+            );
+
+        /** @var BillableCallInterface[] $billableCalls */
+        $billableCalls = $qb
+            ->getQuery()
+            ->getResult();
+
+        $cgrids = [];
+        foreach ($billableCalls as $billableCall) {
+            if (!is_null($billableCall->getTrunksCdr())) {
+                $cgrids[] = $billableCall->getTrunksCdr()->getCgrid();
+            }
+        }
+
+        if (count($ids) !== count($cgrids)) {
+            throw new \DomainException('Some id were not found');
+        }
+
+        return $cgrids;
+    }
+
+    /**
+     * @param array $ids
+     * @return array
+     */
+    public function idsToTrunkCdrId(array $ids)
+    {
+        $qb = $this->createQueryBuilder('self');
+
+        $conditions = [
+            ['id', 'in', $ids]
+        ];
+
+        $qb
+            ->select('IDENTITY(self.trunksCdr) as trunksCdr')
+            ->addCriteria(
+                CriteriaHelper::fromArray($conditions)
+            );
+
+        $result = $qb
+            ->getQuery()
+            ->getScalarResult();
+
+        $trunkCdrIds = array_map(
+            function ($item) {
+                   return $item['trunksCdr'];
+            },
+            $result
+        );
+
+        if (count($ids) !== count($trunkCdrIds)) {
+            throw new \DomainException('Some id were not found');
+        }
+
+        return $trunkCdrIds;
+    }
+
 }
