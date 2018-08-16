@@ -66,7 +66,7 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
         /** @var DataGateway $dataGateway */
         $dataGateway = \Zend_Registry::get('data_gateway');
         return $dataGateway->runNamedQuery(
-            \Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdr::class,
+            \Ivoz\Provider\Domain\Model\BillableCall\BillableCall::class,
             'areRetarificable',
             [$pks]
         );
