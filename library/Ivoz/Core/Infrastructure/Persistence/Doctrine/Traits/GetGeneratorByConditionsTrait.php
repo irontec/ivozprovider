@@ -1,6 +1,6 @@
 <?php
 
-namespace Ivoz\Kam\Infrastructure\Persistence\Doctrine\Traits;
+namespace Ivoz\Core\Infrastructure\Persistence\Doctrine\Traits;
 
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 

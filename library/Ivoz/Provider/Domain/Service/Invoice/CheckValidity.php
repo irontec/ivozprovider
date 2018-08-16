@@ -2,8 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\Invoice;
 
-use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdr;
-use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrRepository;
+use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;
 use Ivoz\Provider\Domain\Model\Invoice\Invoice;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceRepository;
@@ -25,9 +24,9 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
     const FORBIDDEN_FUTURE_DATES = 50006;
 
     /**
-     * @var TrunksCdrRepository
+     * @var BillableCallRepository
      */
-    protected $trunksCdrRepository;
+    protected $billableCallRepository;
 
     /**
      * @var InvoiceRepository
@@ -35,10 +34,10 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
     protected $invoiveRepository;
 
     public function __construct(
-        TrunksCdrRepository $trunksCdrRepository,
+        BillableCallRepository $billableCallRepository,
         InvoiceRepository $invoiveRepository
     ) {
-        $this->trunksCdrRepository = $trunksCdrRepository;
+        $this->billableCallRepository = $billableCallRepository;
         $this->invoiveRepository = $invoiveRepository;
     }
 
@@ -94,7 +93,7 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
             throw new \DomainException('In-Out date error', self::SENSELESS_IN_OUT_DATE);
         }
 
-        $untarificattedCallNum = $this->trunksCdrRepository->countUntarificattedCallsBeforeDate(
+        $untarificattedCallNum = $this->billableCallRepository->countUntarificattedCallsBeforeDate(
             $entity->getCompany()->getId(),
             $entity->getBrand()->getId(),
             $utcOutDate->format('Y-m-d H:i:s')
@@ -121,7 +120,7 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
             $invoice = $invoices[0];
             $nextInvoiceInDate = $invoice->getInDate();
 
-            $calls = $this->trunksCdrRepository->countUntarificattedCallsInRange(
+            $calls = $this->billableCallRepository->countUntarificattedCallsInRange(
                 $entity->getCompany()->getId(),
                 $entity->getBrand()->getId(),
                 $utcOutDate->format('Y-m-d H:i:s'),

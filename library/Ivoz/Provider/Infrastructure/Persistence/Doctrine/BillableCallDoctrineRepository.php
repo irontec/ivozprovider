@@ -5,6 +5,7 @@ namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
+use Ivoz\Core\Infrastructure\Persistence\Doctrine\Traits\GetGeneratorByConditionsTrait;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCall;
 use Symfony\Bridge\Doctrine\RegistryInterface;
@@ -17,6 +18,9 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class BillableCallDoctrineRepository extends ServiceEntityRepository implements BillableCallRepository
 {
+    use GetGeneratorByConditionsTrait;
+
+
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, BillableCall::class);
@@ -44,7 +48,6 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
             );
 
         $elementNumber = (int) $qb->getQuery()->getSingleScalarResult();
-
         return $elementNumber === 0;
     }
 
@@ -65,7 +68,6 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
             ->addCriteria(
                 CriteriaHelper::fromArray($conditions)
             );
-
         /** @var BillableCallInterface[] $billableCalls */
         $billableCalls = $qb
             ->getQuery()
@@ -106,10 +108,9 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
         $result = $qb
             ->getQuery()
             ->getScalarResult();
-
         $trunkCdrIds = array_map(
             function ($item) {
-                   return $item['trunksCdr'];
+                return $item['trunksCdr'];
             },
             $result
         );
@@ -119,6 +120,98 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
         }
 
         return $trunkCdrIds;
+    }
+
+    /**
+     * @param int $invoiceId
+     * @return mixed
+     */
+    public function resetInvoiceId(int $invoiceId)
+    {
+        $qb = $this
+            ->createQueryBuilder('self')
+            ->update($this->_entityName, 'self')
+            ->set('self.invoice', ':nullValue')
+            ->setParameter(':nullValue', null)
+            ->where('self.invoice = :invoiceId')
+            ->setParameter(':invoiceId', $invoiceId);
+
+        return $qb->getQuery()->execute();
+    }
+
+    /**
+     * @param array $conditions
+     * @param int $invoiceId
+     * @return mixed
+     */
+    public function setInvoiceId(array $conditions, int $invoiceId)
+    {
+        $qb = $this
+            ->createQueryBuilder('self')
+            ->update($this->_entityName, 'self')
+            ->set('self.invoice', ':invoiceId')
+            ->setParameter(':invoiceId', $invoiceId)
+            ->addCriteria(
+                CriteriaHelper::fromArray($conditions)
+            );
+
+        return $qb->getQuery()->execute();
+    }
+
+    /**
+     * @param int $companyId
+     * @param int $brandId
+     * @param string $startTime
+     * @return mixed
+     */
+    public function countUntarificattedCallsBeforeDate(int $companyId, int $brandId, string $startTime)
+    {
+        $qb = $this->createQueryBuilder('self');
+        $conditions = [
+            ['company', 'eq', $companyId],
+            ['brand', 'eq', $brandId],
+            ['startTime', 'lt', $startTime],
+            ['carrier', 'neq', null],
+            ['carrier', 'neq', ''],
+            ['price', 'isNull']
+        ];
+
+        $qb
+            ->select('count(self)')
+            ->addCriteria(
+                CriteriaHelper::fromArray($conditions)
+            );
+
+        return (int) $qb->getQuery()->getSingleScalarResult();
+    }
+
+    /**
+     * @param int $companyId
+     * @param int $brandId
+     * @param string $startTime
+     * @return mixed
+     */
+    public function countUntarificattedCallsInRange(int $companyId, int $brandId, string $startTime, string $endTime)
+    {
+        $qb = $this->createQueryBuilder('self');
+        
+        $conditions = [
+            ['company', 'eq', $companyId],
+            ['brand', 'eq', $brandId],
+            ['startTime', 'gt', $startTime],
+            ['endTime', 'lt', $endTime],
+            ['carrier', 'neq', null],
+            ['carrier', 'neq', ''],
+            ['price', 'isNull']
+        ];
+
+        $qb
+            ->select('count(self)')
+            ->addCriteria(
+                CriteriaHelper::fromArray($conditions)
+            );
+
+        return (int) $qb->getQuery()->getSingleScalarResult();
     }
 
 }
