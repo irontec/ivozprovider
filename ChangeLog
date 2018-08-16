@@ -1,3 +1,29 @@
+Thu, 16 Aug 2018 13:29:25 +0200 IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 2.6 released
+
+    * Application Server
+        - Fixed a crash when no welcome Locution was supplied to IVRs
+
+    * Proxies
+        - Removed unused X-Info-Location logics for dynamic endpoints
+
+    * Billing
+        - Added support for Rating profiles per Routing Tag in Wholesale/Retail clients
+        - Added support for Timings in Rating profiles configuration
+        - Added support for call cost calculation based on Carrier rating profiles
+        - Added support for prepaid balances on Carriers
+        - Added support for balance notifications for Carriers
+        - Added support for quality metrics on Carriers
+        - Migrated Destination Rates and Rating Plan entities to Provider namespace
+
+    * Web
+        - Improved call simulators to support routing tags
+
+    * Other
+        - Added a new entity BillableCall to merge information from Kamailio/CGRates tables
+        - Fixed async workers not being rescheduled properly
+
 Fri, 20 Jul 2018 12:35:45 +0200 IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 2.5 released
