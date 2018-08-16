@@ -12,6 +12,8 @@ class Invoice extends InvoiceAbstract implements InvoiceInterface, FileContainer
 {
     const STATUS_WAITING = 'waiting';
     const STATUS_PROCESSING = 'processing';
+    const STATUS_CREATED = 'created';
+    const STATUS_ERROR = 'error';
 
     use InvoiceTrait;
     use TempFileContainnerTrait;
@@ -51,18 +53,6 @@ class Invoice extends InvoiceAbstract implements InvoiceInterface, FileContainer
     public function isProcessing()
     {
         return $this->getStatus() === self::STATUS_PROCESSING;
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function setStatus($status = null)
-    {
-        if (is_null($status)) {
-            $status = self::STATUS_WAITING;
-        }
-
-        return parent::setStatus($status);
     }
 
     public function setNumber($number = null)

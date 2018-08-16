@@ -48,13 +48,4 @@ class InvoiceSpec extends ObjectBehavior
     {
         $this->shouldHaveType(Invoice::class);
     }
-
-    function it_turns_null_status_into_waiting()
-    {
-        $this->setStatus(null);
-
-        $this
-            ->getStatus()
-            ->shouldBe('waiting');
-    }
 }
