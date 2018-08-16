@@ -36,7 +36,7 @@ class InheritRatingPlanTag implements TpRatingPlanLifecycleEventHandlerInterface
             $tpRatingPlan->getRatingPlan()->getTag()
         );
 
-        $tpRatingPlan->setDestratesTag(
+        $tpRatingPlanDto->setDestratesTag(
             $tpRatingPlan->getDestinationRateGroup()->getCgrTag()
         );
 
