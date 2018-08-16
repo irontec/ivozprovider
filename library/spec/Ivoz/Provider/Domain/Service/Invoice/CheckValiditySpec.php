@@ -2,7 +2,7 @@
 
 namespace spec\Ivoz\Provider\Domain\Service\Invoice;
 
-use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrRepository;
+use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceRepository;
 use Ivoz\Provider\Domain\Service\Invoice\CheckValidity;
 use PhpSpec\Exception\Example\PendingException;
@@ -13,9 +13,9 @@ class CheckValiditySpec extends ObjectBehavior
 {
 
     /**
-     * @var TrunksCdrRepository
+     * @var BillableCallRepository
      */
-    protected $trunksCdrRepository;
+    protected $billableCallRepository;
 
     /**
      * @var InvoiceRepository
@@ -23,13 +23,13 @@ class CheckValiditySpec extends ObjectBehavior
     protected $invoiveRepository;
 
     public function let(
-        TrunksCdrRepository $trunksCdrRepository,
+        BillableCallRepository $billableCallRepository,
         InvoiceRepository $invoiveRepository
     ) {
-        $this->trunksCdrRepository = $trunksCdrRepository;
+        $this->billableCallRepository = $billableCallRepository;
         $this->invoiveRepository = $invoiveRepository;
 
-        $this->beConstructedWith($trunksCdrRepository, $invoiveRepository);
+        $this->beConstructedWith($billableCallRepository, $invoiveRepository);
     }
 
     function it_is_initializable()
