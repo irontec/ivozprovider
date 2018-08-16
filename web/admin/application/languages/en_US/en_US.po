@@ -785,6 +785,9 @@ msgstr "Externally rater custom options"
 msgid "Extra Configuration"
 msgstr "Extra Configuration"
 
+msgid "Extra Information"
+msgstr "Extra Information"
+
 msgid "Failover and load-balancing"
 msgstr "Failover and load-balancing"
 
