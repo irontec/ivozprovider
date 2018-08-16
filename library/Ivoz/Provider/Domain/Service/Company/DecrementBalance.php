@@ -21,9 +21,4 @@ class DecrementBalance extends AbstractBalanceOperation
             $company
         );
     }
-
-    public function getLastError()
-    {
-        return $this->lastError;
-    }
 }

@@ -103,6 +103,11 @@ Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrAbstract:
       options:
         fixed: false
       column: priceDetails
+    metered:
+      type: boolean
+      nullable: true
+      options:
+        default: '0'
     direction:
       type: string
       nullable: true
@@ -158,28 +163,6 @@ Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrAbstract:
       inversedBy: null
       joinColumns:
         carrierId:
-          referencedColumnName: id
-          onDelete: set null
-      orphanRemoval: false
-    tpDestination:
-      targetEntity: \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface
-      cascade: {  }
-      fetch: LAZY
-      mappedBy: null
-      inversedBy: null
-      joinColumns:
-        tpDestinationId:
-          referencedColumnName: id
-          onDelete: set null
-      orphanRemoval: false
-    destinationRate:
-      targetEntity: \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateInterface
-      cascade: {  }
-      fetch: LAZY
-      mappedBy: null
-      inversedBy: null
-      joinColumns:
-        destinationRateId:
           referencedColumnName: id
           onDelete: set null
       orphanRemoval: false

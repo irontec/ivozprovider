@@ -1,14 +1,14 @@
 ########################################
 ## Raw
 ########################################
-Ivoz\Cgr\Domain\Model\DestinationRate\Name:
-Ivoz\Cgr\Domain\Model\DestinationRate\Description:
-Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRate:
+Ivoz\Provider\Domain\Model\DestinationRateGroup\Name:
+Ivoz\Provider\Domain\Model\DestinationRateGroup\Description:
+Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroup:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
-Ivoz\Cgr\Domain\Model\RatingPlan\Name:
-Ivoz\Cgr\Domain\Model\RatingPlan\Description:
-Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlan:
+Ivoz\Provider\Domain\Model\RatingPlan\Name:
+Ivoz\Provider\Domain\Model\RatingPlan\Description:
+Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
 Ivoz\Cgr\Domain\Model\TpDestination\TpDestination:
@@ -17,8 +17,6 @@ Ivoz\Cgr\Domain\Model\TpDestination\TpDestination:
 Ivoz\Cgr\Domain\Model\TpRate\TpRate:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
-Ivoz\Cgr\Domain\Model\TpDestinationRate\Destination:
-Ivoz\Cgr\Domain\Model\TpDestinationRate\Rate:
 Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRate:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'

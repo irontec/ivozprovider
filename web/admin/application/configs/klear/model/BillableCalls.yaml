@@ -1,0 +1,92 @@
+production:
+  entity: Ivoz\Provider\Domain\Model\BillableCall\BillableCall
+  fields:
+    startTime:
+      title: _('Start time')
+      type: picker
+      defaultValue: 2000-01-01 00:00:00
+      source:
+        control: datetime
+        settings:
+          disabled: 'false'
+    callid:
+      title: _('Call ID')
+      type: text
+      maxLength: 128
+    caller:
+      title: _('Caller')
+      type: text
+      maxLength: 128
+    callee:
+      title: _('Callee')
+      type: text
+      maxLength: 128
+    destinationName:
+      title: _('Destination')
+      type: text
+      maxLength: 100
+    company:
+      title: ngettext('Company', 'Companies', 1)
+      type: select
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Company\Company
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order:
+            Company.name: asc
+        'null': _("Unassigned")
+    brand:
+      title: ngettext('Brand', 'Brands', 1)
+      type: select
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Brand\Brand
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order:
+            Brand.name: asc
+        'null': _("Unassigned")
+    invoice:
+      title: ngettext('Invoice', 'Invoices', 1)
+      type: select
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Invoice\Invoice
+          fieldName:
+            fields:
+              - number
+            template: '%number%'
+          order:
+            Invoice.number: asc
+        'null': _("Unassigned")
+    price:
+      title: _('Price')
+      type: text
+    duration:
+      title: _('Duration')
+      type: text
+    cost:
+      title: _('Cost')
+      type: text
+    carrierName:
+      title: _('Carrier')
+      type: text
+    ratingPlanName:
+      title: _('Rating plan')
+      type: text
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

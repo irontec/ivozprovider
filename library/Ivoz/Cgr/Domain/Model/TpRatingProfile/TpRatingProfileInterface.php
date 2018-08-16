@@ -189,36 +189,20 @@ interface TpRatingProfileInterface extends LoggableEntityInterface
     public function getCreatedAt();
 
     /**
-     * Set company
+     * Set ratingProfile
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
-     *
-     * @return self
-     */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null);
-
-    /**
-     * Get company
-     *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
-     */
-    public function getCompany();
-
-    /**
-     * Set ratingPlan
-     *
-     * @param \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan
+     * @param \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile
      *
      * @return self
      */
-    public function setRatingPlan(\Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan);
+    public function setRatingProfile(\Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile);
 
     /**
-     * Get ratingPlan
+     * Get ratingProfile
      *
-     * @return \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanInterface
+     * @return \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface
      */
-    public function getRatingPlan();
+    public function getRatingProfile();
 
 }
 

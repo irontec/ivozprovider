@@ -29,7 +29,7 @@ class FaxesInOutLifeCycleTest extends KernelTestCase
 
         /** @var FaxesInOut $extension */
         return $this
-            ->entityPersister
+            ->entityTools
             ->persistDto($extensionDto, null, true);
     }
 

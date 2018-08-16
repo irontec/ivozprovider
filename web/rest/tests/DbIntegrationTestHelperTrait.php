@@ -26,12 +26,6 @@ trait DbIntegrationTestHelperTrait
     protected $em;
 
     /**
-     * @var DoctrineEntityPersister
-     */
-    protected $entityPersister;
-
-
-    /**
      * @var EntityTools
      */
     protected $entityTools;
@@ -62,9 +56,6 @@ trait DbIntegrationTestHelperTrait
         $this->em = $serviceContainer
             ->get('doctrine')
             ->getManager();
-
-        $this->entityPersister = $serviceContainer
-            ->get(DoctrineEntityPersister::class);
 
         $this->eventPublisher = $serviceContainer
             ->get(DomainEventPublisher::class);

@@ -51,8 +51,64 @@ production:
         values:
           '0':
             title: _("No")
+            visualFilter:
+              show: [balance, calculateCost]
+              hide: []
           '1':
             title: _("Yes")
+            visualFilter:
+              show: []
+              hide: [balance, calculateCost]
+    calculateCost:
+      title: _('Calculate cost?')
+      type: select
+      defaultValue: 0
+      source:
+        data: inline
+        values:
+          '0':
+            title: _("No")
+            visualFilter:
+              show: []
+              hide: [balance]
+          '1':
+            title: _("Yes")
+            visualFilter:
+              show: [balance]
+              hide: []
+    balance:
+      title: _('Balance')
+      type: ghost
+      readonly: true
+      source:
+        class: IvozProvider_Klear_Ghost_Carriers
+        method: getBalance
+    acd:
+      title: _('ACD')
+      type: ghost
+      dirty: true
+      source:
+        class: IvozProvider_Klear_Ghost_Carriers
+        method: getAcd
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Average Call Duration: <a href='%s' target='_blank' >more info</a>", _("https://en.wikipedia.org/wiki/Average_call_duration"))
+        label: _("Need help?")
+    asr:
+      title: _('ASR')
+      type: ghost
+      dirty: true
+      source:
+        class: IvozProvider_Klear_Ghost_Carriers
+        method: getAsr
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Answer-Seizure Ratio: <a href='%s' target='_blank' >more info</a>", _("https://en.wikipedia.org/wiki/Answer-seizure_ratio"))
+        label: _("Need help?")
 staging:
   _extends: production
 testing:

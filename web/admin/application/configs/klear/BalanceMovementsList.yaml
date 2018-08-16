@@ -15,7 +15,7 @@ production:
       <<: *BalanceMovements
       class: ui-silk-chart-curve
       title: _("List of %s %2s", ngettext('Balance Movement', 'Balance Movements', 0), "[format| (%parent%)]")
-      fields:
+      fields: &balanceMovementsList_fieldsLink
         order:
           createdOn: true
           amount: true

@@ -1,0 +1,100 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
+
+production:
+  main:
+    module: klearMatrix
+    defaultScreen: billableCallsList_screen
+
+  screens: &billableCallsClient_screensLink
+    billableCallsList_screen: &billableCallsList_screenLink
+      controller: list
+      csv: true
+      order:
+        field:
+          - BillableCall.startTime
+          - BillableCall.brand
+          - BillableCall.company
+        type: desc
+      pagination:
+        items: 25
+      <<: *BillableCalls
+      class: ui-silk-application-view-list
+      title: _("List of %s %2s", ngettext('Call registry', 'Call registries', 1), "[format| (%parent%)]")
+      forcedValues:
+        <<: *forcedBrand
+        <<: *forcedCompany
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/brand/billing/billable_calls.html"
+      fields: &billableCalls_fieldsLink
+        options:
+          title: _("Options")
+          screens:
+            billableCallsView_screen: true
+          default: billableCallsView_screen
+        blacklist:
+          brand: true
+          company: true
+          invoice: true
+          callid: true
+          carrierName: true
+          cost: true
+          destinationName: true
+          ratingPlanName: true
+        order:
+          startTime: true
+          brand: true
+          company: true
+          caller: true
+          callee: true
+          duration: true
+          price: true
+          cost: true
+    billableCallsView_screen:
+      <<: *BillableCalls
+      controller: edit
+      class: ui-silk-eye
+      label: false
+      disableSave: true
+      labelOnPostAction: _("View %s %2s", ngettext('Call registry', 'Call registries', 1), "[format| (%item%)]")
+      title: _("View %s %2s", ngettext('Call registry', 'Call registries', 1), "[format| (%item%)]")
+      fields:
+        blacklist:
+          brand: true
+          company: true
+          carrierName: true
+          invoice: true
+          callid: true
+          cost: true
+        order:
+          startTime: true
+          duration: true
+          callee: true
+          price: true
+      fixedPositions:
+        group0:
+          label: _("Basic Information")
+          colsPerRow: 12
+          fields:
+            startTime: 6
+            duration: 6
+            caller: 6
+            callee: 6
+        group1:
+          label: _("Billing Information")
+          colsPerRow: 16
+          fields:
+            price: 4
+            ratingPlanName: 6
+            destinationName: 6
+
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

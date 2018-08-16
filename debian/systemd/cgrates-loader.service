@@ -3,4 +3,4 @@ Description=Run cgr-loader with database tariff plans
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/cgr-loader -from_stordb -validate -cleanup -safety_key tp_changed_at
+ExecStart=/usr/bin/cgr-loader -from_stordb -validate -cleanup -timezone UTC -safety_key tp_changed_at

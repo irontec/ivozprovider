@@ -28,6 +28,16 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     private $externallyRated = '0';
 
     /**
+     * @var string
+     */
+    private $balance = 0;
+
+    /**
+     * @var boolean
+     */
+    private $calculateCost = '0';
+
+    /**
      * @var integer
      */
     private $id;
@@ -52,6 +62,16 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
      */
     private $servers = null;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileDto[] | null
+     */
+    private $ratingProfiles = null;
+
+    /**
+     * @var \Ivoz\Cgr\Domain\Model\TpCdrStat\TpCdrStatDto[] | null
+     */
+    private $tpCdrStats = null;
+
 
     use DtoNormalizer;
 
@@ -73,6 +93,8 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
             'description' => 'description',
             'name' => 'name',
             'externallyRated' => 'externallyRated',
+            'balance' => 'balance',
+            'calculateCost' => 'calculateCost',
             'id' => 'id',
             'brandId' => 'brand',
             'transformationRuleSetId' => 'transformationRuleSet'
@@ -88,11 +110,15 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
             'description' => $this->getDescription(),
             'name' => $this->getName(),
             'externallyRated' => $this->getExternallyRated(),
+            'balance' => $this->getBalance(),
+            'calculateCost' => $this->getCalculateCost(),
             'id' => $this->getId(),
             'brand' => $this->getBrand(),
             'transformationRuleSet' => $this->getTransformationRuleSet(),
             'outgoingRoutings' => $this->getOutgoingRoutings(),
-            'servers' => $this->getServers()
+            'servers' => $this->getServers(),
+            'ratingProfiles' => $this->getRatingProfiles(),
+            'tpCdrStats' => $this->getTpCdrStats()
         ];
     }
 
@@ -125,6 +151,28 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
             }
         }
 
+        if (!is_null($this->ratingProfiles)) {
+            $items = $this->getRatingProfiles();
+            $this->ratingProfiles = [];
+            foreach ($items as $item) {
+                $this->ratingProfiles[] = $transformer->transform(
+                    'Ivoz\\Provider\\Domain\\Model\\RatingProfile\\RatingProfile',
+                    $item->getId() ?? $item
+                );
+            }
+        }
+
+        if (!is_null($this->tpCdrStats)) {
+            $items = $this->getTpCdrStats();
+            $this->tpCdrStats = [];
+            foreach ($items as $item) {
+                $this->tpCdrStats[] = $transformer->transform(
+                    'Ivoz\\Cgr\\Domain\\Model\\TpCdrStat\\TpCdrStat',
+                    $item->getId() ?? $item
+                );
+            }
+        }
+
     }
 
     /**
@@ -139,6 +187,14 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
         $this->servers = $transformer->transform(
             'Ivoz\\Provider\\Domain\\Model\\CarrierServer\\CarrierServer',
             $this->servers
+        );
+        $this->ratingProfiles = $transformer->transform(
+            'Ivoz\\Provider\\Domain\\Model\\RatingProfile\\RatingProfile',
+            $this->ratingProfiles
+        );
+        $this->tpCdrStats = $transformer->transform(
+            'Ivoz\\Cgr\\Domain\\Model\\TpCdrStat\\TpCdrStat',
+            $this->tpCdrStats
         );
     }
 
@@ -200,6 +256,46 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     public function getExternallyRated()
     {
         return $this->externallyRated;
+    }
+
+    /**
+     * @param string $balance
+     *
+     * @return static
+     */
+    public function setBalance($balance = null)
+    {
+        $this->balance = $balance;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBalance()
+    {
+        return $this->balance;
+    }
+
+    /**
+     * @param boolean $calculateCost
+     *
+     * @return static
+     */
+    public function setCalculateCost($calculateCost = null)
+    {
+        $this->calculateCost = $calculateCost;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getCalculateCost()
+    {
+        return $this->calculateCost;
     }
 
     /**
@@ -352,6 +448,46 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     public function getServers()
     {
         return $this->servers;
+    }
+
+    /**
+     * @param array $ratingProfiles
+     *
+     * @return static
+     */
+    public function setRatingProfiles($ratingProfiles = null)
+    {
+        $this->ratingProfiles = $ratingProfiles;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getRatingProfiles()
+    {
+        return $this->ratingProfiles;
+    }
+
+    /**
+     * @param array $tpCdrStats
+     *
+     * @return static
+     */
+    public function setTpCdrStats($tpCdrStats = null)
+    {
+        $this->tpCdrStats = $tpCdrStats;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getTpCdrStats()
+    {
+        return $this->tpCdrStats;
     }
 }
 

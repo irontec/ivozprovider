@@ -9,6 +9,26 @@ interface TpCdrInterface extends EntityInterface
     public function getDuration();
 
     /**
+     * @return array|null
+     */
+    public function getCostDetailsFirstTimespan();
+
+    /**
+     * @return \DateTime
+     */
+    public function getStartTime();
+
+    /**
+     * @return string
+     */
+    public function getRatingPlanTag();
+
+    /**
+     * @return string
+     */
+    public function getMatchedDestinationTag();
+
+    /**
      * Set cgrid
      *
      * @param string $cgrid

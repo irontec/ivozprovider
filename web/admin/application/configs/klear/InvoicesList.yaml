@@ -1,7 +1,7 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
 #include conf.d/documentationLink.yaml
-#include KamTrunksCdrsList.yaml
+#include BillableCallsList.yaml
 #include FixedCostsRelInvoicesList.yaml
 
 production:
@@ -28,7 +28,7 @@ production:
             invoicesEdit_screen: true
             invoicesView_screen: true
             fixedCostsRelInvoicesList_screen: true
-            kamTrunksCdrsList_screen: true
+            billableCallsList_screen: true
           dialogs:
             generateInvoice_dialog: true
             invoicesDel_dialog: true
@@ -63,7 +63,6 @@ production:
       shortcutOption: N
       forcedValues:
         <<: *forcedBrand
-        status: waiting
       fields:
         order:
           <<: *invoicesOrder_Link
@@ -131,13 +130,25 @@ production:
       filterField: Invoice
       parentOptionCustomizer:
         - recordCount
-    <<: *kamTrunksCdrs_screensLink
-    kamTrunksCdrsList_screen:
-      <<: *kamTrunksCdrsList_screenLink
+    billableCallsList_screen:
+      <<: *billableCallsList_screenLink
       class: ui-silk-application-view-list
       filterField: Invoice
-      parentOptionCustomizer: 
+      parentOptionCustomizer:
         - recordCount
+      fields:
+        <<: *billableCalls_fieldsLink
+        blacklist:
+          <<: *billableCalls_blacklistLink
+          company: true
+          brand: true
+    billableCallsView_screen:
+      <<: *billableCallsView_screenLink
+      fields:
+        <<: *billableCallsView_fieldsLink
+        blacklist:
+          company: true
+          brand: true
 
   dialogs: &invoices_dialogsLink
     invoicesDel_dialog: &invoicesDel_dialogLink

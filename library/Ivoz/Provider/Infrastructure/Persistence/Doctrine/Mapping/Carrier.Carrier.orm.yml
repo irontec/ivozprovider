@@ -18,3 +18,9 @@ Ivoz\Provider\Domain\Model\Carrier\Carrier:
     servers:
       targetEntity: Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface
       mappedBy: carrier
+    ratingProfiles:
+      targetEntity: Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface
+      mappedBy: carrier
+    tpCdrStats:
+      targetEntity: Ivoz\Cgr\Domain\Model\TpCdrStat\TpCdrStatInterface
+      mappedBy: carrier

@@ -3,7 +3,6 @@
 #include conf.d/documentationLink.yaml
 #include BalanceNotificationsList.yaml
 #include BalanceMovementsList.yaml
-#include KamTrunksCdrsList.yaml
 
 production:
   main:
@@ -28,7 +27,6 @@ production:
           title: _("Options")
           screens:
             balanceMovementsList_screen: true
-            kamTrunksCdrsList_screen: true
             balanceNotificationList_screen: true
           dialogs:
             addToBalance_dialog: true
@@ -58,6 +56,7 @@ production:
           externallyExtraOpts: true
           voicemailNotificationTemplate: true
           faxNotificationTemplate: true
+          invoiceNotificationTemplate: true
           language: true
           nif: true
           country: true
@@ -74,35 +73,35 @@ production:
     balanceNotificationList_screen:
       <<: *balanceNotificationList_screenLink
       filterField: Company
+      fields:
+        <<: *balanceNotificationList_fieldsLink
+        blacklist:
+          carrier: true
       parentOptionCustomizer:
         - recordCount
     balanceNotificationNew_screen:
       <<: *balanceNotificationNew_screenLink
       filterField: Company
+      fields:
+        <<: *balanceNotificationNew_fieldsLink
+        blacklist:
+          carrier: true
     balanceNotificationEdit_screen:
       <<: *balanceNotificationEdit_screenLink
       filterField: Company
+      fields:
+        blacklist:
+          carrier: true
 
     # balanceMovements
     <<: *balanceMovements_screensLink
     balanceMovementsList_screen:
       <<: *balanceMovementsList_screenLink
       filterField: Company
-      parentOptionCustomizer:
-        - recordCount
-
-    # kamTrunksCdrs
-    <<: *kamTrunksCdrs_screensLink
-    kamTrunksCdrsList_screen:
-      <<: *kamTrunksCdrsList_screenLink
-      rawCondition: "TrunksCdr.invoice IS NULL"
-      class: ui-silk-application-view-list
-      filterField: Company
       fields:
-        <<: *kamTrunksCdrs_fieldsLink
+        <<: *balanceMovementsList_fieldsLink
         blacklist:
-          brand: true
-          invoice: true
+          carrier: true
       parentOptionCustomizer:
         - recordCount
 

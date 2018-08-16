@@ -127,6 +127,13 @@ class EntityTools
             ->persistDto($dto, $entity, $dispatchImmediately);
     }
 
+    public function dispatchQueuedOperations()
+    {
+        return $this
+            ->entityPersister
+            ->dispatchQueued();
+    }
+
     /**
      * @param EntityInterface $entity
      * @return void

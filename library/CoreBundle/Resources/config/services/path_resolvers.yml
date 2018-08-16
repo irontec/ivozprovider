@@ -126,15 +126,15 @@ services:
       $keepExtension: true
 
   ##########################################
-  ## DestinationRate
+  ## DestinationRateGroup
   ##########################################
-  Service\StoragePathResolverCollection::DestinationRate:
+  Service\StoragePathResolverCollection::DestinationRateGroup:
      class: Ivoz\Core\Application\Service\StoragePathResolverCollection
      calls:
-      - [addPathResolver, ['File', '@Service\CommonStoragePathResolver::DestinationRateFile']]
+      - [addPathResolver, ['File', '@Service\CommonStoragePathResolver::DestinationRateGroupFile']]
      public: true
 
-  Service\CommonStoragePathResolver::DestinationRateFile:
+  Service\CommonStoragePathResolver::DestinationRateGroupFile:
     class: Ivoz\Core\Application\Service\CommonStoragePathResolver
     arguments:
       $localStoragePath: '%local_storage_path%'

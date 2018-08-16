@@ -2,7 +2,6 @@
 
 namespace Ivoz\Core\Infrastructure\Domain\Service;
 
-use Doctrine\Common\EventArgs;
 use Ivoz\Core\Application\Service\CreateEntityFromDTO;
 use Ivoz\Core\Application\Service\UpdateEntityFromDTO;
 use Ivoz\Core\Application\DataTransferObjectInterface;
@@ -277,12 +276,12 @@ class DoctrineEntityPersister implements EntityPersisterInterface
             $this->persistEvents();
         });
 
-        $this->rootEntity = null;
         $eventManager = $this->em->getEventManager();
         $eventManager->dispatchEvent(
             CustomEvents::onCommit,
             new OnCommitEventArgs($this->em)
         );
+        $this->rootEntity = null;
     }
 
     private function getDependantEntities(EntityInterface $entity)

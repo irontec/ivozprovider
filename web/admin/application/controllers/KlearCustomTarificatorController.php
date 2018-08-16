@@ -2,7 +2,8 @@
 
 use Ivoz\Core\Infrastructure\Domain\Service\Cgrates\BillingService;
 use Ivoz\Core\Application\Service\DataGateway;
-use \Ivoz\Cgr\Domain\Model\TpRatingProfile\SimulatedCall;
+use Ivoz\Cgr\Domain\Model\TpRatingProfile\SimulatedCall;
+use Ivoz\Provider\Domain\Model\Company\Company;
 
 class KlearCustomTarificatorController extends Zend_Controller_Action
 {
@@ -65,42 +66,58 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
         /** @var DataGateway $dataGateway */
         $dataGateway = \Zend_Registry::get('data_gateway');
         return $dataGateway->runNamedQuery(
-            \Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdr::class,
+            \Ivoz\Provider\Domain\Model\BillableCall\BillableCall::class,
             'areRetarificable',
             [$pks]
         );
     }
 
-
-    public function testCompanyPlansAction ()
+    public function testCompanyPlansAction()
     {
-        $argumentsResolver = function () {
-            /** @var DataGateway $dataGateway */
-            $dataGateway = \Zend_Registry::get('data_gateway');
+        $dataGateway = \Zend_Registry::get('data_gateway');
 
-            /** @var \Ivoz\Provider\Domain\Model\Company\CompanyDto $companyDto */
-            $companyDto = $dataGateway->find(
-                \Ivoz\Provider\Domain\Model\Company\Company::class,
-                $this->getParam("parentId")
-            );
+        /** @var \Ivoz\Provider\Domain\Model\Company\CompanyDto $companyDto */
+        $companyDto = $dataGateway->find(
+            \Ivoz\Provider\Domain\Model\Company\Company::class,
+            $this->getParam("parentId")
+        );
+
+        $argumentsResolver = function() use($dataGateway, $companyDto) {
 
             $callDuration = $this->getParam('duration');
             if ($callDuration < 1) {
                 $callDuration = 60;
             }
 
+            $subject = 'c' . $companyDto->getId();
+            $routingTag = $this->getParam('routingTag');
+            if ($routingTag) {
+                $subject .= 'rt' . $routingTag;
+            }
+
             return [
                 [
                     $callDuration,
                     'b' . $companyDto->getBrandId(),
-                    'c' . $companyDto->getId()
+                    $subject
                 ]
             ];
         };
 
+
+        $companyType = is_null($companyDto)
+            ? ''
+            : $companyDto->getType();
+
+        $showRatingTags = in_array(
+            $companyType,
+            [Company::WHOLESALE, Company::RETAIL]
+        );
+
         $this->testPlans(
             'simulateCall',
-            $argumentsResolver
+            $argumentsResolver,
+            $showRatingTags
         );
     }
 
@@ -123,9 +140,9 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
             /** @var DataGateway $dataGateway */
             $dataGateway = \Zend_Registry::get('data_gateway');
 
-            /** @var \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanDto[] $ratingPlans */
+            /** @var \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto[] $ratingPlans */
             $ratingPlans = $dataGateway->findBy(
-                \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlan::class,
+                \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan::class,
                 [
                     'RatingPlan.brand = :brand',
                     ['brand' => $brandId]
@@ -146,7 +163,8 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
 
         $this->testPlans(
             'simulateCallByRatingPlan',
-            $argumentsResolver
+            $argumentsResolver,
+            false
         );
     }
 
@@ -169,9 +187,9 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
             /** @var DataGateway $dataGateway */
             $dataGateway = \Zend_Registry::get('data_gateway');
 
-            /** @var \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanDto[] $ratingPlans */
+            /** @var \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto[] $ratingPlans */
             $ratingPlan = $dataGateway->find(
-                \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlan::class,
+                \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan::class,
                 $this->getParam('parentId')
             );
 
@@ -186,19 +204,20 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
 
         $this->testPlans(
             'simulateCallByRatingPlan',
-            $argumentsResolver
+            $argumentsResolver,
+            false
         );
     }
 
-    protected function testPlans(string $handler, callable $callArgumentsResolver)
+    protected function testPlans(string $handler, callable $callArgumentsResolver, $showRatingTags)
     {
         if (!$this->getParam("tarificate")) {
-            return $this->_confirmDialog();
+            return $this->_confirmDialog($showRatingTags);
         }
 
         $errors = $this->_getFormErrors();
         if (!is_null($errors)) {
-            return $this->_confirmDialog($errors);
+            return $this->_confirmDialog($showRatingTags, $errors);
         }
 
         try {
@@ -240,13 +259,20 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
         );
     }
 
-    protected function _confirmDialog ($errorMessage = "")
+    protected function _confirmDialog ($showRatingTags = false, $errorMessage = "")
     {
         $title = $this->_helper->translate("Rating Profile Tester");
         $message = $errorMessage;
         $message .= "<form>";
         $message .= "<table class='kMatrix'>";
         $message .=     "<tr>";
+
+        if ($showRatingTags) {
+            $message .=         "<th class='ui-widget-header multiItem notSortable'>";
+            $message .=             \Klear_Model_Gettext::gettextCheck("ngettext('Routing Tag', 'Routing Tags', 0)");
+            $message .=         "</th>";
+        }
+
         $message .=         "<th class='ui-widget-header multiItem notSortable'>";
         $message .=             $this->_helper->translate("Phone number");
         $message .=         "</th>";
@@ -258,6 +284,28 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
         $message .=         "</th>";
         $message .=     "</tr>";
         $message .=     "<tr>";
+
+        if ($showRatingTags) {
+
+            $routingTags = $this->_getRoutingTagArray();
+
+            $message .=     "<td class='ui-widget-content' style='overflow: visible; min-width: 225px;'>";
+            $message .=         '<style> .selectboxit-container .selectboxit { width: 220px!important; }</style>';
+            $message .=         '<select id="routingTag" name="routingTag" class="ui-widget ui-state-default ui-corner-all">';
+            $message .=             '<option value="">'. $this->_helper->translate('No routing tag') .'</option>';
+
+            foreach ($routingTags as $routingTag) {
+                $id = $routingTag->getId();
+                $routingTagName = $routingTag->getName();
+                $tag = $routingTag->getTag();
+
+                $message .=         '<option value="'. $id .'">'. "$routingTagName ($tag)" .'</option>';
+            }
+
+            $message .=         '</select>';
+            $message .=     "</td>";
+        }
+
         $message .=         "<td class='ui-widget-content'>";
         $message .=             '<input type="text" id="number" name="number" placeholder="+34123456789" class="ui-widget ui-state-default ui-corner-all" pattern="\\+[0-9]+"';
         $message .=                 'required value="'.$this->getParam("number").'">';
@@ -271,6 +319,19 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
         $message .= "</form>";
 
         $this->_showDialog($title, $message, $this->_helper->translate("Test"), "Close", false, "auto");
+    }
+
+
+    protected function _getRoutingTagArray()
+    {
+        /** @var DataGateway $dataGateway */
+        $dataGateway = \Zend_Registry::get('data_gateway');
+        $companyId = $this->getRequest()->getParam("parentId");
+        return $dataGateway->runNamedQuery(
+            \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface::class,
+            'findByCompanyId',
+            [$companyId]
+        );
     }
 
     protected function _getFormErrors()

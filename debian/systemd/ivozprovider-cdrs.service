@@ -1,0 +1,6 @@
+[Unit]
+Description=Run Ivozprovider CDR mixer
+
+[Service]
+Type=oneshot
+ExecStart=/opt/irontec/ivozprovider/microservices/scheduler/bin/run-billable-calls

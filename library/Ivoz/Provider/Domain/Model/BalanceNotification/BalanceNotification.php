@@ -2,8 +2,6 @@
 
 namespace Ivoz\Provider\Domain\Model\BalanceNotification;
 
-use Doctrine\Common\Collections\Criteria;
-
 /**
  * BalanceNotification
  */
@@ -30,5 +28,15 @@ class BalanceNotification extends BalanceNotificationAbstract implements Balance
         return $this->id;
     }
 
+    protected function sanitizeValues()
+    {
+        if ($this->getCarrier()) {
+            $this->setCompany(null);
+        }
+
+        if ($this->getCompany()) {
+            $this->setCarrier(null);
+        }
+    }
 }
 

@@ -28,10 +28,8 @@ Ivoz\Provider\Domain\Model\Company\Company:
       targetEntity: Ivoz\Provider\Domain\Model\Terminal\TerminalInterface
       mappedBy: company
     ratingProfiles:
-      targetEntity: Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface
+      targetEntity: Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface
       mappedBy: company
-      cascade: ['persist']
-      orphanRemoval: true
     musicsOnHold:
       targetEntity: Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHoldInterface
       mappedBy: company

@@ -155,7 +155,7 @@ function list () {
 
   function assertNotEmpty() {
     return this
-      .waitForElementVisible('@rows', 5000)
+      .waitForElementVisible('@rows', 8000)
       .jqueryCount(
         'table.kMatrix tr:visible',
         (response) => {

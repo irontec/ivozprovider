@@ -111,45 +111,6 @@ class ResidentialDevice extends ResidentialDeviceAbstract implements Residential
             $this->getName());
     }
 
-    /**
-     * Obtain content for X-Info-Location header
-     *
-     * @param mixed $callee
-     * @return string
-     */
-    public function getRequestUri($callee)
-    {
-        if ($this->getDirectConnectivity() == 'yes') {
-            return $this->getRequestDirectUri($callee);
-        }
-
-        // Only Kamailio knows this!
-        return 'dynamic';
-    }
-
-    /**
-     * @param $callee
-     * @return string
-     */
-    public function getRequestDirectUri($callee)
-    {
-        $uri = sprintf('sip:%s@%s', $callee, $this->getIp());
-
-        // Check if the configured port is not the standard (5060)
-        $port = $this->getPort();
-        if (!is_null($port) && $port != 5060) {
-            $uri .= ":$port";
-        }
-
-        // Check if the configured transport is not the standard (UDP)
-        $transport = $this->getTransport();
-        if ($transport != 'udp') {
-            $uri .= ";transport=$transport";
-        }
-
-        return $uri;
-    }
-
     public function getAstPsEndpoint()
     {
         $psEndpoints = $this->getPsEndpoints();

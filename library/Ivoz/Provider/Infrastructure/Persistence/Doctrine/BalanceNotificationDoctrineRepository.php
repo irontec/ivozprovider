@@ -6,6 +6,7 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Provider\Domain\Model\BalanceNotification\BalanceNotificationRepository;
 use Ivoz\Provider\Domain\Model\BalanceNotification\BalanceNotification;
+use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -21,6 +22,7 @@ class BalanceNotificationDoctrineRepository extends ServiceEntityRepository impl
     {
         parent::__construct($registry, BalanceNotification::class);
     }
+
     /**
      * @inheritdoc
      * @see BalanceNotificationRepository::findBrokenThresholdsByCompany
@@ -34,6 +36,27 @@ class BalanceNotificationDoctrineRepository extends ServiceEntityRepository impl
             ->addCriteria(
                 CriteriaHelper::fromArray([
                     ['company', 'eq', $company->getId()],
+                    ['threshold', 'lte', $prevValue],
+                    ['threshold', 'gt', $currentValue],
+                ])
+            );
+
+        return $qb->getQuery()->getResult();
+    }
+
+    /**
+     * @inheritdoc
+     * @see BalanceNotificationRepository::findBrokenThresholdsByCarrier
+     */
+    public function findBrokenThresholdsByCarrier(CarrierInterface $carrier, $prevValue, $currentValue)
+    {
+        $qb = $this->createQueryBuilder('self');
+
+        $qb
+            ->select('self')
+            ->addCriteria(
+                CriteriaHelper::fromArray([
+                    ['carrier', 'eq', $carrier->getId()],
                     ['threshold', 'lte', $prevValue],
                     ['threshold', 'gt', $currentValue],
                 ])

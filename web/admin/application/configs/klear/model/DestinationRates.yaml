@@ -1,76 +1,99 @@
 production:
-  entity: Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRate
+  entity: Ivoz\Provider\Domain\Model\DestinationRate\DestinationRate
   fields: 
     id:
       title: ngettext('Id', 'Ids', 1)
-      required: false 
-    name:
-      title: _('Name')
+      required: false
+      default: true
+    connectFee:
+      title: _('Connection fee')
       type: text
-      isMultilang: true
+      pattern: "^[0-9]{1,6}[.]{0,1}[0-9]*$"
       trim: both
       required: true
-      maxLength: 55
-      default: true
-    description:
-      title: _('Description')
+      defaultValue: "0.0000"
+      sufix: "€"
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Use point as decimal delimiter - e.g. 0.02")
+        label: _("Need help?")
+    cost:
+      title: _('Per minute rate')
       type: text
-      isMultilang: true
+      pattern: "^[0-9]{1,6}[.]{0,1}[0-9]*$"
       trim: both
-      maxLength: 255
-    brand:
-      title: ngettext('Brand', 'Brands', 1)
+      required: true
+      defaultValue: "0.0000"
+      sufix: "€"
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Use point as decimal delimiter - e.g. 0.02")
+        label: _("Need help?")
+    rateIncrement:
+      title: _('Charge period')
+      type: number
+      defaultValue: 1
+      required: true
+      source:
+        control: Spinner
+        min: 1
+        step: 1
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Interval in seconds to increase call cost.")
+        label: _("Need help?")
+    groupIntervalStart:
+      title: _('Interval start')
+      type: number
+      defaultValue: 0
+      required: true
+      source:
+        control: Spinner
+        min: 0
+        step: 1
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Seconds from the beginning of the call when this rate will be activated.")
+        label: _("Need help?")
+    destinationRateGroup:
+      title: ngettext('Destination rate group', 'Destination rate groups', 1)
       type: select
       required: true
       source:
         data: mapper
         config:
-          entity: \Ivoz\Provider\Domain\Model\Brand\Brand
-          fieldName: 
-            fields: 
-              - name
-            template: '%name%'
-          order:
-            Brand.name: asc
-    file:
-      title: _('Imported file')
-      type: file
-      source:
-        data: fso
-        size_limit: 20M
-        options:
-          hiddenName: false
-          download:
-            external: true
-            type: command
-            target: destinationRatesFileDownload_command
-            icon: ui-silk-bullet-disk
-            title: _("Download file")
-            onNull: hide
-          delete:
-            type: setNullFso
-            icon: ui-silk-bin
-            title: _("Delete file")
-            onNull: hide
-      options:
-        commands:
-          destinationRatesFileDownload_command: true
-    status:
-      title: _('Importer status')
+          entity: \Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroup
+          fieldName:
+            fields:
+              - id
+            template: "%name${lang}%"
+    destination:
+      title: ngettext('Destination', 'Destinations', 1)
       type: select
-      readonly: true
+      required: true
       source:
-        data: inline
-        values:
-          'waiting':
-            title: _("Waiting")
-          'inProgress':
-            title: _("In progress")
-          'imported':
-            title: _("Imported")
-          'error':
-            title: _("Error")
-staging: 
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Destination\Destination
+          filterClass: IvozProvider_Klear_Filter_Brand
+          fieldName:
+            fields:
+              - name${lang}
+              - prefix
+            template: "%name${lang}% (%prefix%)"
+      decorators:
+        autocomplete:
+          command: destinationsRatesautocomplete_command
+
+staging:
   _extends: production
 testing:
   _extends: production

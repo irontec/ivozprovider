@@ -1,5 +1,4 @@
 #!/usr/bin/env php
-
 <?php
 
 use Symfony\Component\Console\Input\ArgvInput;
@@ -14,7 +13,7 @@ $input = new ArgvInput();
 $env = $input->getParameterOption(['--env', '-e'], getenv('SYMFONY_ENV') ?: 'dev');
 
 $kernel = new MicroKernel($env, false);
-$request = new Request();
+$request = new Request([], [], [], [], [], ['REQUEST_URI' => '/']);
 $response = $kernel->handle($request);
 $response->send();
 $kernel->terminate($request, $response);

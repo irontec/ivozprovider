@@ -5,19 +5,29 @@ namespace Ivoz\Core\Infrastructure\Domain\Service\Cgrates;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrRepository;
 use Ivoz\Kam\Domain\Service\TrunksCdr\RerateCallServiceInterface;
 use Ivoz\Core\Infrastructure\Domain\Service\Redis\Client as RedisClient;
-use Ivoz\Core\Infrastructure\Domain\Service\Cgrates\AbstractApiBasedService;
 use Graze\GuzzleHttp\JsonRpc\ClientInterface;
+use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;
 
 class RerateCallService extends AbstractApiBasedService implements RerateCallServiceInterface
 {
-    protected $cdrRepository;
+    /**
+     * @var TrunksCdrRepository
+     */
+    protected $trunksCdrRepository;
+
+    /**
+     * @var BillableCallRepository
+     */
+    protected $billableCallRepository;
 
     public function __construct(
         ClientInterface $jsonRpcClient,
         RedisClient $redisClient,
-        TrunksCdrRepository $cdrRepository
+        BillableCallRepository $billableCallRepository,
+        TrunksCdrRepository $trunksCdrRepository
     ) {
-        $this->cdrRepository = $cdrRepository;
+        $this->billableCallRepository = $billableCallRepository;
+        $this->trunksCdrRepository = $trunksCdrRepository;
 
         return parent::__construct(
             $jsonRpcClient,
@@ -27,11 +37,12 @@ class RerateCallService extends AbstractApiBasedService implements RerateCallSer
 
     /**
      * @inheritdoc
+     * @see RerateCallServiceInterface::execute()
      */
     public function execute(array $pks)
     {
         $cgrIds = $this
-            ->cdrRepository
+            ->billableCallRepository
             ->idsToCgrid($pks);
 
         $payload = [
@@ -55,9 +66,16 @@ class RerateCallService extends AbstractApiBasedService implements RerateCallSer
             "SendToStats" => false
         ];
 
-        return $this->sendRequest(
+        $this->sendRequest(
             'CdrsV1.RateCDRs',
             $payload
         );
+
+        $trunkCdrIds = $this
+            ->billableCallRepository
+            ->idsToTrunkCdrId($pks);
+
+        $this->trunksCdrRepository
+            ->resetMetered($trunkCdrIds);
     }
 }

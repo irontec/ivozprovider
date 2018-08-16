@@ -62,6 +62,38 @@ interface CarrierInterface extends LoggableEntityInterface
     public function getExternallyRated();
 
     /**
+     * Set balance
+     *
+     * @param string $balance
+     *
+     * @return self
+     */
+    public function setBalance($balance = null);
+
+    /**
+     * Get balance
+     *
+     * @return string
+     */
+    public function getBalance();
+
+    /**
+     * Set calculateCost
+     *
+     * @param boolean $calculateCost
+     *
+     * @return self
+     */
+    public function setCalculateCost($calculateCost = null);
+
+    /**
+     * Get calculateCost
+     *
+     * @return boolean
+     */
+    public function getCalculateCost();
+
+    /**
      * Set brand
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
@@ -154,6 +186,68 @@ interface CarrierInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface[]
      */
     public function getServers(\Doctrine\Common\Collections\Criteria $criteria = null);
+
+    /**
+     * Add ratingProfile
+     *
+     * @param \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile
+     *
+     * @return CarrierTrait
+     */
+    public function addRatingProfile(\Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile);
+
+    /**
+     * Remove ratingProfile
+     *
+     * @param \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile
+     */
+    public function removeRatingProfile(\Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile);
+
+    /**
+     * Replace ratingProfiles
+     *
+     * @param \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface[] $ratingProfiles
+     * @return self
+     */
+    public function replaceRatingProfiles(Collection $ratingProfiles);
+
+    /**
+     * Get ratingProfiles
+     *
+     * @return \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface[]
+     */
+    public function getRatingProfiles(\Doctrine\Common\Collections\Criteria $criteria = null);
+
+    /**
+     * Add tpCdrStat
+     *
+     * @param \Ivoz\Cgr\Domain\Model\TpCdrStat\TpCdrStatInterface $tpCdrStat
+     *
+     * @return CarrierTrait
+     */
+    public function addTpCdrStat(\Ivoz\Cgr\Domain\Model\TpCdrStat\TpCdrStatInterface $tpCdrStat);
+
+    /**
+     * Remove tpCdrStat
+     *
+     * @param \Ivoz\Cgr\Domain\Model\TpCdrStat\TpCdrStatInterface $tpCdrStat
+     */
+    public function removeTpCdrStat(\Ivoz\Cgr\Domain\Model\TpCdrStat\TpCdrStatInterface $tpCdrStat);
+
+    /**
+     * Replace tpCdrStats
+     *
+     * @param \Ivoz\Cgr\Domain\Model\TpCdrStat\TpCdrStatInterface[] $tpCdrStats
+     * @return self
+     */
+    public function replaceTpCdrStats(Collection $tpCdrStats);
+
+    /**
+     * Get tpCdrStats
+     *
+     * @return \Ivoz\Cgr\Domain\Model\TpCdrStat\TpCdrStatInterface[]
+     */
+    public function getTpCdrStats(\Doctrine\Common\Collections\Criteria $criteria = null);
 
 }
 

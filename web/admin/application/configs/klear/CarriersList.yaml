@@ -2,6 +2,10 @@
 #include conf.d/actions.yaml
 #include conf.d/documentationLink.yaml
 #include CarrierServersList.yaml
+#include RatingProfilesList.yaml
+#include BalanceNotificationsList.yaml
+#include BalanceMovementsList.yaml
+#include BillableCallsList.yaml
 
 production:
   main:
@@ -26,15 +30,26 @@ production:
           screens:
             carriersEdit_screen: true
             carrierServersList_screen: true
+            ratingProfilesList_screen: true
+            balanceMovementsList_screen: true
+            balanceNotificationList_screen: true
+            billableCallsList_screen: true
           dialogs:
+            addToBalance_dialog: true
             carriersDel_dialog: true
           default: carriersEdit_screen
         order: &carrierOrder_Link
           brand: true
           name: true
           description: true
+          transformationRuleSet: true
+          balance: true
+          acd: true
+          asr: true
         blacklist:
           externallyRated: true
+          calculateCost: true
+          billingMethod: true
       options:
         title: _("Options")
         screens:
@@ -57,7 +72,10 @@ production:
           <<: *carrierOrder_Link
         blacklist:
           externallyRated: ${auth.brandFeatures.billing.disabled}
-      fixedPositions:
+          balance: true
+          acd: true
+          asr: true
+      fixedPositions: &carriersNew_fixedPositionsLink
         group0:
           label: _("Basic Configuration")
           colsPerRow: 12
@@ -70,6 +88,13 @@ production:
           fields:
             transformationRuleSet: 3
             externallyRated: 3
+            calculateCost: 3
+        group2:
+          label: _("Quality measuring")
+          colsPerRow: 2
+          fields:
+            acd: 1
+            asr: 1
 
     carriersEdit_screen: &carriersEdit_screenLink
       <<: *Carriers
@@ -84,6 +109,9 @@ production:
           <<: *carrierOrder_Link
         blacklist:
           externallyRated: ${auth.brandFeatures.billing.disabled}
+          balance: true
+      fixedPositions:
+        <<: *carriersNew_fixedPositionsLink
 
     # Carrier Servers screens
     <<: *carrierServers_screensLink
@@ -99,6 +127,90 @@ production:
       <<: *carrierServersEdit_screenLink
       filterField: Carrier
 
+    # Rating Profiles (call cost)
+    <<: *ratingProfiles_screensLink
+    ratingProfilesList_screen:
+      <<: *ratingProfilesList_screenLink
+      filterField: carrier
+      forcedValues:
+        "self::routingTag": null
+        "self::company": null
+      parentOptionCustomizer:
+        - IvozProvider_Klear_Options_OptionsCustomizer
+        - recordCount
+    ratingProfilesNew_screen:
+      <<: *ratingProfilesNew_screenLink
+      filterField: carrier
+      forcedValues:
+        "self::routingTag": null
+        "self::company": null
+    ratingProfilesEdit_screen:
+      <<: *ratingProfilesEdit_screenLink
+      filterField: carrier
+      forcedValues:
+        "self::routingTag": null
+        "self::company": null
+
+    # balanceNotification
+    <<: *balanceNotification_screensLink
+    balanceNotificationList_screen:
+      <<: *balanceNotificationList_screenLink
+      filterField: Carrier
+      fields:
+        <<: *balanceNotificationList_fieldsLink
+        blacklist:
+          company: true
+      parentOptionCustomizer:
+        - IvozProvider_Klear_Options_OptionsCustomizer
+        - recordCount
+    balanceNotificationNew_screen:
+      <<: *balanceNotificationNew_screenLink
+      filterField: Carrier
+      fields:
+        <<: *balanceNotificationNew_fieldsLink
+        blacklist:
+          company: true
+          lastSent: true
+    balanceNotificationEdit_screen:
+      <<: *balanceNotificationEdit_screenLink
+      filterField: Carrier
+      fields:
+        blacklist:
+          company: true
+
+    # balanceMovements
+    <<: *balanceMovements_screensLink
+    balanceMovementsList_screen:
+      <<: *balanceMovementsList_screenLink
+      filterField: Carrier
+      fields:
+        <<: *balanceMovementsList_fieldsLink
+        blacklist:
+          company: true
+      parentOptionCustomizer:
+        - IvozProvider_Klear_Options_OptionsCustomizer
+        - recordCount
+
+    billableCallsList_screen:
+      <<: *billableCallsList_screenLink
+      class: ui-silk-application-view-list
+      filterField: Carrier
+      parentOptionCustomizer:
+        - recordCount
+      fields:
+        <<: *billableCalls_fieldsLink
+        blacklist:
+          <<: *billableCalls_blacklistLink
+          company: true
+          brand: true
+    billableCallsView_screen:
+      <<: *billableCallsView_screenLink
+      fields:
+        <<: *billableCallsView_fieldsLink
+        blacklist:
+          company: true
+          brand: true
+
   dialogs: &carriers_dialosgLink
     carriersDel_dialog: &carriersDel_dialogLink
       <<: *Carriers
@@ -111,8 +223,25 @@ production:
       multiItem: 1
       labelOnList: 1
 
+    addToBalance_dialog: &addToBalance_dialogLink
+      title: _("Balance operations")
+      module: default
+      controller: klear-custom-increment-balance
+      labelOnEdit: true
+      action: add-to-carrier-balance
+      class: ui-silk-money-add
+      parentOptionCustomizer:
+        - IvozProvider_Klear_Options_OptionsCustomizer
+
     # Carrier Servers dialogs
     <<: *carrierServers_dialogsLink
+
+    # Rating Profiles dialogs
+    <<: *ratingProfiles_dialogsLink
+    <<: *simulateCall_dialogLink
+
+    # balanceNotification dialogs:
+    <<: *balanceNotification_dialogsLink
 
 staging:
   _extends: production

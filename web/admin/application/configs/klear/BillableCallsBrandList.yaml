@@ -1,0 +1,44 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+#include BillableCallsList.yaml
+
+production:
+  main:
+    module: klearMatrix
+    defaultScreen: billableCallsList_screen
+
+  screens:
+    <<: *billableCalls_screensLink
+    billableCallsList_screen:
+      <<: *billableCallsList_screenLink
+      forcedValues:
+        <<: *forcedBrand
+      fields:
+        <<: *billableCalls_fieldsLink
+        options:
+          title: _("Options")
+          screens:
+            billableCallsView_screen: true
+          dialogs:
+            tarificateCall_dialog: ${auth.brandFeatures.billing.enabled}
+          default: billableCallsView_screen
+      options:
+        title: _("Options")
+        dialogs:
+          tarificateCall_dialog: true
+    billableCallsView_screen:
+      <<: *billableCallsView_screenLink
+      forcedValues:
+        <<: *forcedBrand
+
+  dialogs:
+    <<: *billableCalls_dialogsLink
+
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

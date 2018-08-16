@@ -169,82 +169,18 @@ interface TpDestinationRateInterface extends EntityInterface
     /**
      * Set destinationRate
      *
-     * @param \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate
+     * @param \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate
      *
      * @return self
      */
-    public function setDestinationRate(\Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate = null);
+    public function setDestinationRate(\Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate);
 
     /**
      * Get destinationRate
      *
-     * @return \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateInterface
+     * @return \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface
      */
     public function getDestinationRate();
-
-    /**
-     * Set destination
-     *
-     * @param \Ivoz\Cgr\Domain\Model\TpDestinationRate\Destination $destination
-     *
-     * @return self
-     */
-    public function setDestination(\Ivoz\Cgr\Domain\Model\TpDestinationRate\Destination $destination);
-
-    /**
-     * Get destination
-     *
-     * @return \Ivoz\Cgr\Domain\Model\TpDestinationRate\Destination
-     */
-    public function getDestination();
-
-    /**
-     * Set rate
-     *
-     * @param \Ivoz\Cgr\Domain\Model\TpDestinationRate\Rate $rate
-     *
-     * @return self
-     */
-    public function setRate(\Ivoz\Cgr\Domain\Model\TpDestinationRate\Rate $rate);
-
-    /**
-     * Get rate
-     *
-     * @return \Ivoz\Cgr\Domain\Model\TpDestinationRate\Rate
-     */
-    public function getRate();
-
-    /**
-     * Set tpDestination
-     *
-     * @param \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface $tpDestination
-     *
-     * @return self
-     */
-    public function setTpDestination(\Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface $tpDestination = null);
-
-    /**
-     * Get tpDestination
-     *
-     * @return \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface
-     */
-    public function getTpDestination();
-
-    /**
-     * Set tpRate
-     *
-     * @param \Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface $tpRate
-     *
-     * @return self
-     */
-    public function setTpRate(\Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface $tpRate = null);
-
-    /**
-     * Get tpRate
-     *
-     * @return \Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface
-     */
-    public function getTpRate();
 
 }
 

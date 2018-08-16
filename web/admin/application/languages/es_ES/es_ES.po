@@ -35,8 +35,14 @@ msgstr ""
 "0 lo desactiva si hay más disponibles, 2 procesa el doble de llamadas que el "
 "que tenga 1, etc."
 
+msgid "ACD"
+msgstr "ACD"
+
 msgid "ACL data"
 msgstr "Datos permisos"
+
+msgid "ASR"
+msgstr "ASR"
 
 msgid "Accept"
 msgstr "Aceptar"
@@ -128,6 +134,9 @@ msgstr "Los carácteres permitidos son a-z, A-Z, 0-9, guión bajo y '-'"
 msgid "Allowed video codecs"
 msgstr "Codecs video permitidos"
 
+msgid "Always"
+msgstr "Siempre"
+
 msgid "An error occurred"
 msgstr "Ha ocurrido un error"
 
@@ -137,6 +146,12 @@ msgstr ""
 
 msgid "Announce"
 msgstr "Anuncio"
+
+#, python-format
+msgid "Answer-Seizure Ratio: <a href='%s' target='_blank' >more info</a>"
+msgstr ""
+"Tasa de llamadas contestadas (Answer-Seizure Ratio): <a href='%s' "
+"target='_blank' >más información</a>"
 
 msgid "Antiflood trusted IP"
 msgid_plural "Antiflood trusted IPs"
@@ -195,6 +210,12 @@ msgstr[1] "Redes autorizadas"
 
 msgid "Automatic creation of rules"
 msgstr "Creación automática de reglas"
+
+#, python-format
+msgid "Average Call Duration: <a href='%s' target='_blank' >more info</a>"
+msgstr ""
+"Duración media de llamada (Average Call Duration): <a href='%s' "
+"target='_blank' >más información</a>"
 
 msgid "Balance"
 msgstr "Saldo"
@@ -287,6 +308,9 @@ msgstr ""
 "Notación CIDR  (por ej. 8.8.8.0/24) o dirección IP específica (por ej. "
 "8.8.8.8)"
 
+msgid "Calculate cost?"
+msgstr "¿Calcular coste?"
+
 msgid "Calendar"
 msgid_plural "Calendars"
 msgstr[0] "Calendario"
@@ -314,6 +338,9 @@ msgstr[1] "Patrón permisos llamada"
 
 msgid "Call Details"
 msgstr "Detalles llamada"
+
+msgid "Call ID"
+msgstr "ID de llamada"
 
 msgid "Call destination"
 msgstr "Destino llamada"
@@ -492,6 +519,9 @@ msgstr "Código de País"
 msgid "Created"
 msgstr "Creado"
 
+msgid "Custom"
+msgstr "A medida"
+
 msgid "DDI"
 msgid_plural "DDIs"
 msgstr[0] "DDI"
@@ -542,7 +572,9 @@ msgid "Description"
 msgstr "Descripción"
 
 msgid "Destination"
-msgstr "Destino"
+msgid_plural "Destinations"
+msgstr[0] "Destino"
+msgstr[1] "Destinos"
 
 msgid "Destination IP address"
 msgstr "Dirección IP destino"
@@ -551,6 +583,11 @@ msgid "Destination rate"
 msgid_plural "Destination rates"
 msgstr[0] "Precio destino"
 msgstr[1] "Precios destinos"
+
+msgid "Destination rate group"
+msgid_plural "Destination rate groups"
+msgstr[0] "Grupo precio destino"
+msgstr[1] "Grupos precio destino"
 
 msgid "Destination rate not found"
 msgstr "Precio destino no encontrado"
@@ -764,6 +801,9 @@ msgstr "Opciones adicionales tarificación externa"
 
 msgid "Extra Configuration"
 msgstr "Configuración adicional"
+
+msgid "Extra Information"
+msgstr "Información adicional"
 
 msgid "Failover and load-balancing"
 msgstr "Contingencia y balanceo de carga"
@@ -1114,7 +1154,7 @@ msgstr "Factura encolada. Se generará lo antes posible."
 msgid "Invoice number sequence"
 msgid_plural "Invoice number sequences"
 msgstr[0] "Numeración de facturas"
-msgstr[1] "Numeriaciones de facturas"
+msgstr[1] "Numeraciones de facturas"
 
 msgid "Invoice scheduler"
 msgid_plural "Invoice schedulers"
@@ -1488,6 +1528,9 @@ msgstr "Enrutado sin entrada"
 msgid "No matching condition handler"
 msgstr "Tratamiento sin coincidencia"
 
+msgid "No routing tag"
+msgstr "Sin etiqueta de enrutado"
+
 msgid "None"
 msgstr "Ninguna"
 
@@ -1644,9 +1687,6 @@ msgstr "Patrón"
 msgid "Pdf file"
 msgstr "Fichero PDF"
 
-msgid "Peering contract id"
-msgstr "Contrato de Peering"
-
 msgid "Penalty"
 msgstr "Prioridad"
 
@@ -1798,6 +1838,9 @@ msgstr "Pseudo-prepago"
 
 msgid "QR Code"
 msgstr "Código QR"
+
+msgid "Quality measuring"
+msgstr "Medición de calidad"
 
 msgid "Quantity"
 msgid_plural "Quantities"
@@ -2132,9 +2175,6 @@ msgstr "Tag"
 msgid "Target"
 msgstr "Destino"
 
-msgid "Target pattern"
-msgstr "Patron de destino"
-
 msgid "Target type"
 msgstr "Tipo de ruta"
 
@@ -2323,6 +2363,9 @@ msgid "Timing"
 msgid_plural "Timing"
 msgstr[0] "Timing"
 msgstr[1] "Timings"
+
+msgid "Timing type"
+msgstr "Tipo de timing"
 
 msgid "To address"
 msgstr "Dirección destino"
@@ -2620,6 +2663,12 @@ msgstr "Codificando"
 
 msgid "error"
 msgstr "Error"
+
+msgid "https://en.wikipedia.org/wiki/Answer-seizure_ratio"
+msgstr ""
+
+msgid "https://en.wikipedia.org/wiki/Average_call_duration"
+msgstr ""
 
 msgid "ignore"
 msgstr "ignorar"

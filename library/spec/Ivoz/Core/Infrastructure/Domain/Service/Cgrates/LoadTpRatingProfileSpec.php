@@ -132,6 +132,10 @@ class LoadTpRatingProfileSpec extends ObjectBehavior
             ->willReturn('SomeTag');
 
         $tpRatingProfile
+            ->getCdrStatQueueIds()
+            ->willReturn('5');
+
+        $tpRatingProfile
             ->getActivationTime()
             ->willReturn(
                 new \DateTime(
@@ -181,7 +185,7 @@ class LoadTpRatingProfileSpec extends ObjectBehavior
                     'ActivationTime' => '2018-01-01T10:00:00Z',
                     'RatingPlanId' => 'SomeTag',
                     'FallbackSubjects' => '',
-                    'CdrStatQueueIds' => ''
+                    'CdrStatQueueIds' => '5'
                 ]
             ]
         ];

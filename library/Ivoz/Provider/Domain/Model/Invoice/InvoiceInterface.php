@@ -23,11 +23,6 @@ interface InvoiceInterface extends LoggableEntityInterface
      */
     public function isProcessing();
 
-    /**
-     * @inheritdoc
-     */
-    public function setStatus($status = null);
-
     public function setNumber($number = null);
 
     /**
@@ -116,6 +111,15 @@ interface InvoiceInterface extends LoggableEntityInterface
      * @return string
      */
     public function getTotalWithTax();
+
+    /**
+     * Set status
+     *
+     * @param string $status
+     *
+     * @return self
+     */
+    public function setStatus($status = null);
 
     /**
      * Get status

@@ -5,6 +5,7 @@ namespace Ivoz\Provider\Domain\Service\Invoice;
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoice;
 use Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceSchedulerInterface;
+use Ivoz\Provider\Domain\Model\Invoice\Invoice;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceDto;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
 use Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface;
@@ -80,6 +81,7 @@ class CreateByScheduler
         $company = $scheduler->getCompany();
         $invoiceDto = new InvoiceDto();
         $invoiceDto
+            ->setStatus(Invoice::STATUS_WAITING)
             ->setInDate($inDate)
             ->setOutDate($outDate)
             ->setTaxRate(

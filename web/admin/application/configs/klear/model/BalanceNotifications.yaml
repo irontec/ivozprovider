@@ -15,6 +15,20 @@ production:
             template: '%name%'
           order:
             Company.name: asc
+    carrier:
+      title: ngettext('Carrier', 'Carriers', 1)
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Carrier\Carrier
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+          order:
+            Carrier.name: asc
     notificationTemplate:
       title: ngettext('Notification Template', 'Notifications Templates', 1)
       type: select
@@ -60,7 +74,6 @@ production:
       readonly: true
       source:
         control: datetime
-
 staging:
   _extends: production
 testing:

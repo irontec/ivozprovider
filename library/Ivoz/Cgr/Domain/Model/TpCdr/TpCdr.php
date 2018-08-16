@@ -28,5 +28,55 @@ class TpCdr extends TpCdrAbstract implements TpCdrInterface
 
         return $usage / (1000 * 1000 * 1000);
     }
+
+    /**
+     * @return array|null
+     */
+    public function getCostDetailsFirstTimespan()
+    {
+        $costDetails = $this->getCostDetails();
+        $timespans = $costDetails['Timespans'];
+
+        return current($timespans);
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getStartTime()
+    {
+        $timespan = $this->getCostDetailsFirstTimespan();
+        if (!$timespan) {
+            return;
+        }
+
+        return new \DateTime($timespan['TimeStart']);
+    }
+
+    /**
+     * @return string
+     */
+    public function getRatingPlanTag()
+    {
+        $timespan = $this->getCostDetailsFirstTimespan();
+        if (!$timespan) {
+            return;
+        }
+
+        return $timespan['RatingPlanId'];
+    }
+
+    /**
+     * @return string
+     */
+    public function getMatchedDestinationTag()
+    {
+        $timespan = $this->getCostDetailsFirstTimespan();
+        if (!$timespan) {
+            return;
+        }
+
+        return $timespan['MatchedDestId'];
+    }
 }
 

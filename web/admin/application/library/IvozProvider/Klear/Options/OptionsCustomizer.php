@@ -115,6 +115,12 @@ class IvozProvider_Klear_Options_OptionsCustomizer implements \KlearMatrix_Model
             case "genericMatchListsDel_dialog":
                 $show = $this->_isBrandData();
                 break;
+            case "ratingProfilesList_screen":
+            case "addToBalance_dialog":
+            case "balanceNotificationList_screen":
+            case "balanceMovementsList_screen":
+                $show = $this->_parentModel->getCalculateCost();
+                break;
             default:
                 throw new Klear_Exception_Default("Unsupported dialog " . $this->_option->getName());
                 break;

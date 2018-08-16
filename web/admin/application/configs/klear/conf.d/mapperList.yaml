@@ -15,6 +15,10 @@ mappers:
         modelFile: BalanceNotifications,
         entity: 'Ivoz\\Provider\\Domain\\Model\\BalanceNotification\\BalanceNotification'
     }
+  - &BillableCalls {
+        modelFile: BillableCalls,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\BillableCall\\BillableCall'
+    }
   - &BrandServices {
         modelFile: BrandServices,
         entity: 'Ivoz\\Provider\\Domain\\Model\\BrandService\\BrandService'
@@ -95,9 +99,17 @@ mappers:
         modelFile: DdiProviderRegistrations,
         entity: 'Ivoz\\Provider\\Domain\\Model\\DdiProviderRegistration\\DdiProviderRegistration'
     }
+  - &Destinations {
+        modelFile: Destinations,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\Destination\\Destination'
+    }
   - &DestinationRates {
         modelFile: DestinationRates,
-        entity: 'Ivoz\\Cgr\\Domain\\Model\\DestinationRate\\DestinationRate'
+        entity: 'Ivoz\\Provider\\Domain\\Model\\DestinationRate\\DestinationRate'
+    }
+  - &DestinationRateGroups {
+        modelFile: DestinationRateGroups,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\DestinationRateGroup\\DestinationRateGroup'
     }
   - &Domains {
         modelFile: Domains,
@@ -245,7 +257,11 @@ mappers:
     }
   - &RatingPlans {
         modelFile: RatingPlans,
-        entity: 'Ivoz\\Cgr\\Domain\\Model\\RatingPlan\\RatingPlan'
+        entity: 'Ivoz\\Provider\\Domain\\Model\\RatingPlan\\RatingPlan'
+    }
+  - &RatingProfiles {
+        modelFile: RatingProfiles,
+        entity: 'Ivoz\\Provider\\Domain\\Model\\RatingProfile\\RatingProfile'
     }
   - &Recordings {
         modelFile: Recordings,
@@ -311,14 +327,6 @@ mappers:
         modelFile: TransformationRuleSets,
         entity: 'Ivoz\\Provider\\Domain\\Model\\TransformationRuleSet\\TransformationRuleSet'
     }
-  - &TpDestinationRates {
-        modelFile: TpDestinationRates,
-        entity: 'Ivoz\\Cgr\\Domain\\Model\\TpDestinationRate\\TpDestinationRate'
-    }
-  - &TpDestinations {
-        modelFile: TpDestinations,
-        entity: 'Ivoz\\Cgr\\Domain\\Model\\TpDestination\\TpDestination'
-    }
   - &TpRates {
         modelFile: TpRates,
         entity: 'Ivoz\\Cgr\\Domain\\Model\\TpRate\\TpRate'
@@ -326,10 +334,6 @@ mappers:
   - &TpRatingPlans {
         modelFile: TpRatingPlans,
         entity: 'Ivoz\\Cgr\\Domain\\Model\\TpRatingPlan\\TpRatingPlan'
-    }
-  - &TpRatingProfiles {
-        modelFile: TpRatingProfiles,
-        entity: 'Ivoz\\Cgr\\Domain\\Model\\TpRatingProfile\\TpRatingProfile'
     }
   - &TransformationRules {
         modelFile: TransformationRules,
@@ -342,10 +346,6 @@ mappers:
   - &WholesaleClients {
         modelFile: WholesaleClients,
         entity: 'Ivoz\\Provider\\Domain\\Model\\Company\\Company'
-    }
-  - &KamTrunksCdrs {
-        modelFile: KamTrunksCdrs,
-        entity: 'Ivoz\\Kam\\Domain\\Model\\TrunksCdr\\TrunksCdr'
     }
   - &Trusted {
         modelFile: KamTrusted,

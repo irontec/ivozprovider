@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Routing\RouteCollectionBuilder;
 use Ivoz\Provider\Domain\Service\Company\SyncBalances;
+use Ivoz\Provider\Domain\Service\Carrier\SyncBalances as SyncCarrierBalances;
 
 class MicroKernel extends Kernel
 {
@@ -47,7 +48,11 @@ class MicroKernel extends Kernel
         $syncBalancesService = $this->container->get(SyncBalances::class);
         $syncBalancesService->updateAll();
 
-        return new Response("Company balances updated successfully!\n");
+        /** @var SyncCarrierBalances $syncCarrierBalancesService */
+        $syncCarrierBalancesService = $this->container->get(SyncCarrierBalances::class);
+        $syncCarrierBalancesService->updateAll();
+
+        return new Response("Company and carrier balances updated successfully!\n");
     }
 
     // optional, to use the standard Symfony cache directory

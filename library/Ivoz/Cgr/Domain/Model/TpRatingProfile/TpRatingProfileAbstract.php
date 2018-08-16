@@ -74,14 +74,9 @@ abstract class TpRatingProfileAbstract
     protected $createdAt;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @var \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface
      */
-    protected $company;
-
-    /**
-     * @var \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanInterface
-     */
-    protected $ratingPlan;
+    protected $ratingProfile;
 
 
     use ChangelogTrait;
@@ -182,8 +177,7 @@ abstract class TpRatingProfileAbstract
             ->setRatingPlanTag($dto->getRatingPlanTag())
             ->setFallbackSubjects($dto->getFallbackSubjects())
             ->setCdrStatQueueIds($dto->getCdrStatQueueIds())
-            ->setCompany($dto->getCompany())
-            ->setRatingPlan($dto->getRatingPlan())
+            ->setRatingProfile($dto->getRatingProfile())
         ;
 
         $self->sanitizeValues();
@@ -215,8 +209,7 @@ abstract class TpRatingProfileAbstract
             ->setFallbackSubjects($dto->getFallbackSubjects())
             ->setCdrStatQueueIds($dto->getCdrStatQueueIds())
             ->setCreatedAt($dto->getCreatedAt())
-            ->setCompany($dto->getCompany())
-            ->setRatingPlan($dto->getRatingPlan());
+            ->setRatingProfile($dto->getRatingProfile());
 
 
 
@@ -242,8 +235,7 @@ abstract class TpRatingProfileAbstract
             ->setFallbackSubjects(self::getFallbackSubjects())
             ->setCdrStatQueueIds(self::getCdrStatQueueIds())
             ->setCreatedAt(self::getCreatedAt())
-            ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
-            ->setRatingPlan(\Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlan::entityToDto(self::getRatingPlan(), $depth));
+            ->setRatingProfile(\Ivoz\Provider\Domain\Model\RatingProfile\RatingProfile::entityToDto(self::getRatingProfile(), $depth));
     }
 
     /**
@@ -263,8 +255,7 @@ abstract class TpRatingProfileAbstract
             'fallback_subjects' => self::getFallbackSubjects(),
             'cdr_stat_queue_ids' => self::getCdrStatQueueIds(),
             'created_at' => self::getCreatedAt(),
-            'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
-            'ratingPlanId' => self::getRatingPlan() ? self::getRatingPlan()->getId() : null
+            'ratingProfileId' => self::getRatingProfile() ? self::getRatingProfile()->getId() : null
         ];
     }
 
@@ -580,51 +571,27 @@ abstract class TpRatingProfileAbstract
     }
 
     /**
-     * Set company
+     * Set ratingProfile
      *
-     * @param \Ivoz\Provider\Domain\Model\Company\CompanyInterface $company
+     * @param \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile
      *
      * @return self
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
+    public function setRatingProfile(\Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile)
     {
-        $this->company = $company;
+        $this->ratingProfile = $ratingProfile;
 
         return $this;
     }
 
     /**
-     * Get company
+     * Get ratingProfile
      *
-     * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
+     * @return \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface
      */
-    public function getCompany()
+    public function getRatingProfile()
     {
-        return $this->company;
-    }
-
-    /**
-     * Set ratingPlan
-     *
-     * @param \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan
-     *
-     * @return self
-     */
-    public function setRatingPlan(\Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan)
-    {
-        $this->ratingPlan = $ratingPlan;
-
-        return $this;
-    }
-
-    /**
-     * Get ratingPlan
-     *
-     * @return \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanInterface
-     */
-    public function getRatingPlan()
-    {
-        return $this->ratingPlan;
+        return $this->ratingProfile;
     }
 
 

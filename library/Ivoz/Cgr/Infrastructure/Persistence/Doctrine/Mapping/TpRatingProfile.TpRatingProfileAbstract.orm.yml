@@ -92,28 +92,13 @@ Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileAbstract:
       options:
         default: CURRENT_TIMESTAMP
       column: created_at
-  manyToOne:
-    company:
-      targetEntity: \Ivoz\Provider\Domain\Model\Company\CompanyInterface
-      cascade: {  }
+  oneToOne:
+    ratingProfile:
+      targetEntity: \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface
+      inversedBy: tpRatingProfile
       fetch: LAZY
-      mappedBy: null
-      inversedBy: ratingProfiles
-      joinColumns:
-        companyId:
-          referencedColumnName: id
-          nullable: false
-          onDelete: cascade
-      orphanRemoval: false
-    ratingPlan:
-      targetEntity: \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanInterface
-      cascade: {  }
-      fetch: LAZY
-      mappedBy: null
-      inversedBy: null
-      joinColumns:
-        ratingPlanId:
-          referencedColumnName: id
-          nullable: false
-          onDelete: cascade
-      orphanRemoval: false
+      joinColumn:
+        name: ratingProfileId
+        referencedColumnName: id
+        nullable: false
+        onDelete: cascade

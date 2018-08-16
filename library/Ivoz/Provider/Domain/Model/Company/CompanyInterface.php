@@ -728,23 +728,23 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Add ratingProfile
      *
-     * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $ratingProfile
+     * @param \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile
      *
      * @return CompanyTrait
      */
-    public function addRatingProfile(\Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $ratingProfile);
+    public function addRatingProfile(\Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile);
 
     /**
      * Remove ratingProfile
      *
-     * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $ratingProfile
+     * @param \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile
      */
-    public function removeRatingProfile(\Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $ratingProfile);
+    public function removeRatingProfile(\Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile);
 
     /**
      * Replace ratingProfiles
      *
-     * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface[] $ratingProfiles
+     * @param \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface[] $ratingProfiles
      * @return self
      */
     public function replaceRatingProfiles(Collection $ratingProfiles);
@@ -752,7 +752,7 @@ interface CompanyInterface extends LoggableEntityInterface
     /**
      * Get ratingProfiles
      *
-     * @return \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface[]
+     * @return \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface[]
      */
     public function getRatingProfiles(\Doctrine\Common\Collections\Criteria $criteria = null);
 

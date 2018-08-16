@@ -45,12 +45,16 @@ class Brand extends BrandAbstract implements BrandInterface, FileContainerInterf
 
     /**
      * @inheritdoc
+     * @see BrandAbstract::setDomainUsers
      */
     public function setDomainUsers($domainUsers = null)
     {
         return parent::setDomainUsers(trim($domainUsers));
     }
 
+    /**
+     * @return string
+     */
     public function getLanguageCode()
     {
         $language = $this->getLanguage();
@@ -61,6 +65,11 @@ class Brand extends BrandAbstract implements BrandInterface, FileContainerInterf
         return $language->getIden();
     }
 
+    /**
+     * @param CompanyInterface $company
+     * @param null $destination
+     * @return bool
+     */
     public function willUseExternallyRating(CompanyInterface $company, $destination=null)
     {
         $outgoingRoutings = $company->getOutgoingRoutings();

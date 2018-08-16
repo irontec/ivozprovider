@@ -66,17 +66,7 @@ abstract class TpDestinationRateAbstract
     protected $createdAt;
 
     /**
-     * @var Destination
-     */
-    protected $destination;
-
-    /**
-     * @var Rate
-     */
-    protected $rate;
-
-    /**
-     * @var \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateInterface
+     * @var \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface
      */
     protected $destinationRate;
 
@@ -92,9 +82,7 @@ abstract class TpDestinationRateAbstract
         $roundingDecimals,
         $maxCost,
         $maxCostStrategy,
-        $createdAt,
-        Destination $destination,
-        Rate $rate
+        $createdAt
     ) {
         $this->setTpid($tpid);
         $this->setRoundingMethod($roundingMethod);
@@ -102,8 +90,6 @@ abstract class TpDestinationRateAbstract
         $this->setMaxCost($maxCost);
         $this->setMaxCostStrategy($maxCostStrategy);
         $this->setCreatedAt($createdAt);
-        $this->setDestination($destination);
-        $this->setRate($rate);
     }
 
     abstract public function getId();
@@ -169,28 +155,13 @@ abstract class TpDestinationRateAbstract
          */
         Assertion::isInstanceOf($dto, TpDestinationRateDto::class);
 
-        $destination = new Destination(
-            $dto->getDestinationPrefix(),
-            $dto->getDestinationPrefixName()
-        );
-
-        $rate = new Rate(
-            $dto->getRateCost(),
-            $dto->getRateConnectFee(),
-            $dto->getRateRateIncrement(),
-            $dto->getRateGroupIntervalStart()
-        );
-
         $self = new static(
             $dto->getTpid(),
             $dto->getRoundingMethod(),
             $dto->getRoundingDecimals(),
             $dto->getMaxCost(),
             $dto->getMaxCostStrategy(),
-            $dto->getCreatedAt(),
-            $destination,
-            $rate
-        );
+            $dto->getCreatedAt());
 
         $self
             ->setTag($dto->getTag())
@@ -216,18 +187,6 @@ abstract class TpDestinationRateAbstract
          */
         Assertion::isInstanceOf($dto, TpDestinationRateDto::class);
 
-        $destination = new Destination(
-            $dto->getDestinationPrefix(),
-            $dto->getDestinationPrefixName()
-        );
-
-        $rate = new Rate(
-            $dto->getRateCost(),
-            $dto->getRateConnectFee(),
-            $dto->getRateRateIncrement(),
-            $dto->getRateGroupIntervalStart()
-        );
-
         $this
             ->setTpid($dto->getTpid())
             ->setTag($dto->getTag())
@@ -238,8 +197,6 @@ abstract class TpDestinationRateAbstract
             ->setMaxCost($dto->getMaxCost())
             ->setMaxCostStrategy($dto->getMaxCostStrategy())
             ->setCreatedAt($dto->getCreatedAt())
-            ->setDestination($destination)
-            ->setRate($rate)
             ->setDestinationRate($dto->getDestinationRate());
 
 
@@ -264,13 +221,7 @@ abstract class TpDestinationRateAbstract
             ->setMaxCost(self::getMaxCost())
             ->setMaxCostStrategy(self::getMaxCostStrategy())
             ->setCreatedAt(self::getCreatedAt())
-            ->setDestinationPrefix(self::getDestination()->getPrefix())
-            ->setDestinationPrefixName(self::getDestination()->getPrefixName())
-            ->setRateCost(self::getRate()->getCost())
-            ->setRateConnectFee(self::getRate()->getConnectFee())
-            ->setRateRateIncrement(self::getRate()->getRateIncrement())
-            ->setRateGroupIntervalStart(self::getRate()->getGroupIntervalStart())
-            ->setDestinationRate(\Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRate::entityToDto(self::getDestinationRate(), $depth));
+            ->setDestinationRate(\Ivoz\Provider\Domain\Model\DestinationRate\DestinationRate::entityToDto(self::getDestinationRate(), $depth));
     }
 
     /**
@@ -288,12 +239,6 @@ abstract class TpDestinationRateAbstract
             'max_cost' => self::getMaxCost(),
             'max_cost_strategy' => self::getMaxCostStrategy(),
             'created_at' => self::getCreatedAt(),
-            'destinationPrefix' => self::getDestination()->getPrefix(),
-            'destinationPrefixName' => self::getDestination()->getPrefixName(),
-            'rateCost' => self::getRate()->getCost(),
-            'rateConnectFee' => self::getRate()->getConnectFee(),
-            'rateRateIncrement' => self::getRate()->getRateIncrement(),
-            'rateGroupIntervalStart' => self::getRate()->getGroupIntervalStart(),
             'destinationRateId' => self::getDestinationRate() ? self::getDestinationRate()->getId() : null
         ];
     }
@@ -553,11 +498,11 @@ abstract class TpDestinationRateAbstract
     /**
      * Set destinationRate
      *
-     * @param \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate
+     * @param \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate
      *
      * @return self
      */
-    public function setDestinationRate(\Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate = null)
+    public function setDestinationRate(\Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate)
     {
         $this->destinationRate = $destinationRate;
 
@@ -567,60 +512,14 @@ abstract class TpDestinationRateAbstract
     /**
      * Get destinationRate
      *
-     * @return \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateInterface
+     * @return \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface
      */
     public function getDestinationRate()
     {
         return $this->destinationRate;
     }
 
-    /**
-     * Set destination
-     *
-     * @param \Ivoz\Cgr\Domain\Model\TpDestinationRate\Destination $destination
-     *
-     * @return self
-     */
-    public function setDestination(Destination $destination)
-    {
-        $this->destination = $destination;
 
-        return $this;
-    }
-
-    /**
-     * Get destination
-     *
-     * @return \Ivoz\Cgr\Domain\Model\TpDestinationRate\Destination
-     */
-    public function getDestination()
-    {
-        return $this->destination;
-    }
-
-    /**
-     * Set rate
-     *
-     * @param \Ivoz\Cgr\Domain\Model\TpDestinationRate\Rate $rate
-     *
-     * @return self
-     */
-    public function setRate(Rate $rate)
-    {
-        $this->rate = $rate;
-
-        return $this;
-    }
-
-    /**
-     * Get rate
-     *
-     * @return \Ivoz\Cgr\Domain\Model\TpDestinationRate\Rate
-     */
-    public function getRate()
-    {
-        return $this->rate;
-    }
 
     // @codeCoverageIgnoreEnd
 }

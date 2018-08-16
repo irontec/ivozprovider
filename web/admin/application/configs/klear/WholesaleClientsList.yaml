@@ -1,7 +1,7 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
 #include conf.d/documentationLink.yaml
-#include TpRatingProfilesList.yaml
+#include RatingProfilesList.yaml
 #include AdministratorsList.yaml
 #include KamTrustedList.yaml
 
@@ -30,7 +30,7 @@ production:
             wholesaleClientsEdit_screen: true
             kamTrustedList_screen: true
             administratorsList_screen: true
-            tpRatingProfilesList_screen: true
+            ratingProfilesList_screen: ${auth.brandFeatures.billing.enabled}
           dialogs:
             wholesaleClientsDel_dialog: false
             emulateCompany_dialog: true
@@ -47,17 +47,16 @@ production:
           defaultTimezone: true
           mediaRelaySets: true
           language: true
-          relCodecs: true
+          balance: true
+          maxCalls: true
+          recordingsDiskUsage: true
         order:
           name: true
           nif: true
+          outgoingDDI: true
           billingMethod: true
-          balance: true
-          maxCalls: true
-          language: true
-          transformationRuleSet: true
-          domainUsers: true
-          recordingsDiskUsage: true
+          relRoutingTags: true
+          relCodecs: true
       options:
         title: _("Options")
         screens:
@@ -270,18 +269,18 @@ production:
       title: _("Edit %s %2s", ngettext('Wholesale Address', 'Wholesale Addresses', 1), "[format| (%item%)]")
       filterField: Company
 
-    # tpRatingPlan:
-    <<: *tpRatingProfiles_screensLink
-    tpRatingProfilesList_screen:
-      <<: *tpRatingProfilesList_screenLink
+    # ratingPlan:
+    <<: *ratingProfiles_screensLink
+    ratingProfilesList_screen:
+      <<: *ratingProfilesList_screenLink
       filterField: company
       parentOptionCustomizer:
         - recordCount
-    tpRatingProfilesNew_screen:
-      <<: *tpRatingProfilesNew_screenLink
+    ratingProfilesNew_screen:
+      <<: *ratingProfilesNew_screenLink
       filterField: company
-    tpRatingProfilesEdit_screen:
-      <<: *tpRatingProfilesEdit_screenLink
+    ratingProfilesEdit_screen:
+      <<: *ratingProfilesEdit_screenLink
       filterField: company
 
   dialogs: &wholesaleClients_dialogsLink
@@ -327,8 +326,8 @@ production:
       description: _("Do you want to delete this %s?", ngettext('Wholesale admin', 'Wholesale admins', 1))
       message: _("%s successfully deleted.", ngettext('Wholesale admin', 'Wholesale admins', 1))
 
-    # tpRatingProfiles:
-    <<: *tpRatingProfiles_dialogsLink
+    # ratingProfiles:
+    <<: *ratingProfiles_dialogsLink
 
 staging:
   _extends: production

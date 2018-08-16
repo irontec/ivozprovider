@@ -24,7 +24,7 @@ class CallForwardSettingLifeCycleTest extends KernelTestCase
             ->setTargetType('number')
            ->setUserId(1);
 
-        $this->entityPersister->persistDto($cf, null, true);
+        $this->entityTools->persistDto($cf, null, true);
     }
 
     /**
@@ -40,7 +40,7 @@ class CallForwardSettingLifeCycleTest extends KernelTestCase
             ->setTargetType('number')
             ->setUserId(1);
 
-        $this->entityPersister->persistDto($cf, null, true);
+        $this->entityTools->persistDto($cf, null, true);
     }
 
     /**
@@ -56,7 +56,7 @@ class CallForwardSettingLifeCycleTest extends KernelTestCase
             ->setTargetType('number')
             ->setUserId(1);
 
-        $this->entityPersister->persistDto($cf, null, true);
+        $this->entityTools->persistDto($cf, null, true);
     }
 
     /**
@@ -72,7 +72,7 @@ class CallForwardSettingLifeCycleTest extends KernelTestCase
             ->setTargetType('number')
             ->setUserId(1);
 
-        $this->entityPersister->persistDto($cf, null, true);
+        $this->entityTools->persistDto($cf, null, true);
     }
 
     /**
@@ -88,6 +88,6 @@ class CallForwardSettingLifeCycleTest extends KernelTestCase
             ->setTargetType('number')
             ->setUserId(1);
 
-        $this->entityPersister->persistDto($cf, null, true);
+        $this->entityTools->persistDto($cf, null, true);
     }
 }

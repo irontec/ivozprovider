@@ -2,9 +2,9 @@
 
 namespace Ivoz\Cgr\Domain\Model\TpRatingProfile;
 
-use Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlan;
-use Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanDto;
-use Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanRepository;
+use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan;
+use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto;
+use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanRepository;
 use Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRate;
 use Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateRepository;
 use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlan;

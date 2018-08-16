@@ -86,6 +86,11 @@ abstract class TrunksCdrAbstract
     protected $priceDetails;
 
     /**
+     * @var boolean
+     */
+    protected $metered = '0';
+
+    /**
      * @var string
      */
     protected $direction;
@@ -114,16 +119,6 @@ abstract class TrunksCdrAbstract
      * @var \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
      */
     protected $carrier;
-
-    /**
-     * @var \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface
-     */
-    protected $tpDestination;
-
-    /**
-     * @var \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateInterface
-     */
-    protected $destinationRate;
 
 
     use ChangelogTrait;
@@ -218,14 +213,13 @@ abstract class TrunksCdrAbstract
             ->setBounced($dto->getBounced())
             ->setPrice($dto->getPrice())
             ->setPriceDetails($dto->getPriceDetails())
+            ->setMetered($dto->getMetered())
             ->setDirection($dto->getDirection())
             ->setCgrid($dto->getCgrid())
             ->setInvoice($dto->getInvoice())
             ->setBrand($dto->getBrand())
             ->setCompany($dto->getCompany())
             ->setCarrier($dto->getCarrier())
-            ->setTpDestination($dto->getTpDestination())
-            ->setDestinationRate($dto->getDestinationRate())
         ;
 
         $self->sanitizeValues();
@@ -260,14 +254,13 @@ abstract class TrunksCdrAbstract
             ->setBounced($dto->getBounced())
             ->setPrice($dto->getPrice())
             ->setPriceDetails($dto->getPriceDetails())
+            ->setMetered($dto->getMetered())
             ->setDirection($dto->getDirection())
             ->setCgrid($dto->getCgrid())
             ->setInvoice($dto->getInvoice())
             ->setBrand($dto->getBrand())
             ->setCompany($dto->getCompany())
-            ->setCarrier($dto->getCarrier())
-            ->setTpDestination($dto->getTpDestination())
-            ->setDestinationRate($dto->getDestinationRate());
+            ->setCarrier($dto->getCarrier());
 
 
 
@@ -296,14 +289,13 @@ abstract class TrunksCdrAbstract
             ->setBounced(self::getBounced())
             ->setPrice(self::getPrice())
             ->setPriceDetails(self::getPriceDetails())
+            ->setMetered(self::getMetered())
             ->setDirection(self::getDirection())
             ->setCgrid(self::getCgrid())
             ->setInvoice(\Ivoz\Provider\Domain\Model\Invoice\Invoice::entityToDto(self::getInvoice(), $depth))
             ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
             ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
-            ->setCarrier(\Ivoz\Provider\Domain\Model\Carrier\Carrier::entityToDto(self::getCarrier(), $depth))
-            ->setTpDestination(\Ivoz\Cgr\Domain\Model\TpDestination\TpDestination::entityToDto(self::getTpDestination(), $depth))
-            ->setDestinationRate(\Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRate::entityToDto(self::getDestinationRate(), $depth));
+            ->setCarrier(\Ivoz\Provider\Domain\Model\Carrier\Carrier::entityToDto(self::getCarrier(), $depth));
     }
 
     /**
@@ -326,14 +318,13 @@ abstract class TrunksCdrAbstract
             'bounced' => self::getBounced(),
             'price' => self::getPrice(),
             'priceDetails' => self::getPriceDetails(),
+            'metered' => self::getMetered(),
             'direction' => self::getDirection(),
             'cgrid' => self::getCgrid(),
             'invoiceId' => self::getInvoice() ? self::getInvoice()->getId() : null,
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
-            'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null,
-            'tpDestinationId' => self::getTpDestination() ? self::getTpDestination()->getId() : null,
-            'destinationRateId' => self::getDestinationRate() ? self::getDestinationRate()->getId() : null
+            'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null
         ];
     }
 
@@ -738,6 +729,34 @@ abstract class TrunksCdrAbstract
     }
 
     /**
+     * Set metered
+     *
+     * @param boolean $metered
+     *
+     * @return self
+     */
+    public function setMetered($metered = null)
+    {
+        if (!is_null($metered)) {
+            Assertion::between(intval($metered), 0, 1, 'metered provided "%s" is not a valid boolean value.');
+        }
+
+        $this->metered = $metered;
+
+        return $this;
+    }
+
+    /**
+     * Get metered
+     *
+     * @return boolean
+     */
+    public function getMetered()
+    {
+        return $this->metered;
+    }
+
+    /**
      * Set direction
      *
      * @param string $direction
@@ -886,54 +905,6 @@ abstract class TrunksCdrAbstract
     public function getCarrier()
     {
         return $this->carrier;
-    }
-
-    /**
-     * Set tpDestination
-     *
-     * @param \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface $tpDestination
-     *
-     * @return self
-     */
-    public function setTpDestination(\Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface $tpDestination = null)
-    {
-        $this->tpDestination = $tpDestination;
-
-        return $this;
-    }
-
-    /**
-     * Get tpDestination
-     *
-     * @return \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface
-     */
-    public function getTpDestination()
-    {
-        return $this->tpDestination;
-    }
-
-    /**
-     * Set destinationRate
-     *
-     * @param \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate
-     *
-     * @return self
-     */
-    public function setDestinationRate(\Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate = null)
-    {
-        $this->destinationRate = $destinationRate;
-
-        return $this;
-    }
-
-    /**
-     * Get destinationRate
-     *
-     * @return \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateInterface
-     */
-    public function getDestinationRate()
-    {
-        return $this->destinationRate;
     }
 
 

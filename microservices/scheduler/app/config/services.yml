@@ -10,5 +10,7 @@ services:
     autoconfigure: true
     public: true
 
-  Controller:
-    class: "Controller"
+  BillableCallController:
+    class: "BillableCallController"
+  InvoiceSchedulerController:
+    class: "InvoiceSchedulerController"

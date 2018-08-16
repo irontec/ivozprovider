@@ -29,7 +29,7 @@ class BrandServiceLifeCycleTest extends KernelTestCase
             $companyServices
         );
 
-        $this->entityPersister->remove($brandService);
+        $this->entityTools->remove($brandService);
 
         $companyServiceRepository = $this->em->getRepository(CompanyService::class);
         $companyServices = $companyServiceRepository->findBy([

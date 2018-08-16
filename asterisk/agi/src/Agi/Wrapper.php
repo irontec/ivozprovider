@@ -152,30 +152,39 @@ class Wrapper
         return $this;
     }
 
-
     /**
      *
-     * @param LocutionInterface|null $file
+     * @param LocutionInterface|null $locution
      * @param string $options
      */
-    public function playback($file = null, $options = "")
+    public function playbackLocution(LocutionInterface $locution = null, $options = "")
     {
-        if (is_null($file) || empty($file)) {
+        if (empty($locution)) {
             return;
         }
 
-        if ($file instanceof LocutionInterface) {
-            $file = $this
-                ->locutionPathResolver
-                ->getFilePath($file);
+        $this->locutionPathResolver->setOriginalFileName(
+            $locution->getEncodedFile()->getBaseName()
+        );
 
-            if (!file_exists($file)) {
-                $this->error("Locution $file not found in filesystem.");
-                return;
-            }
+        $file = $this
+            ->locutionPathResolver
+            ->getFilePath($locution);
+
+        if (!file_exists($file)) {
+            $this->error("Locution $file not found in filesystem.");
+            return;
         }
 
-        $this->fastagi->exec("Playback", "$file,$options");
+        $filename = pathinfo($file, PATHINFO_DIRNAME) . DIRECTORY_SEPARATOR . pathinfo($file, PATHINFO_FILENAME);
+
+        $this->playback($filename, $options);
+
+    }
+
+    public function playback($filename = "", $options = "")
+    {
+        $this->fastagi->exec("Playback", "$filename,$options");
     }
 
     public function pickup($interface = "")
@@ -191,26 +200,40 @@ class Wrapper
     /**
      * Read DTMF digits while playing a locution
      *
-     * @param $locution
+     * @param LocutionInterface | null $locution
      * @param int $timeout
      * @param int $maxdigits
      *
      * @return string
      */
-    public function read($locution, $timeout = 0, $maxdigits = 0)
+    public function readLocution(LocutionInterface $locution = null, $timeout = 0, $maxdigits = 0)
     {
-        if ($locution instanceof LocutionInterface) {
-            $locution = $this
-                ->locutionPathResolver
-                ->getFilePath($locution);
-
-            if (!file_exists($locution)) {
-                $this->error("Locution $locution not found in filesystem.");
-                $locution = "";
-            }
+        if (!$locution) {
+            return $this->read("", $timeout, $maxdigits);
         }
 
-        $this->fastagi->exec('Read', "PRESSED,$locution,$maxdigits,,,$timeout");
+        $this->locutionPathResolver->setOriginalFileName(
+            $locution->getEncodedFile()->getBaseName()
+        );
+
+        $file = $this
+            ->locutionPathResolver
+            ->getFilePath($locution);
+
+        if (!file_exists($file)) {
+            $this->error("Locution $file not found in filesystem.");
+            return $this->read("", $timeout, $maxdigits);
+        }
+
+        // Remove extension for Read application
+        $filename = pathinfo($file, PATHINFO_DIRNAME) . DIRECTORY_SEPARATOR . pathinfo($file, PATHINFO_FILENAME);
+
+        return $this->read($filename, $timeout, $maxdigits);
+    }
+
+    public function read($filename = "", $timeout = 0, $maxdigits = 0)
+    {
+        $this->fastagi->exec('Read', "PRESSED,$filename,$maxdigits,,,$timeout");
         if ($this->getVariable("READSTATUS") == "HANGUP") {
             return "HANGUP";
         }

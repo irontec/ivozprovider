@@ -1,0 +1,17 @@
+Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroup:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\DestinationRateGroupDoctrineRepository
+  type: entity
+  table: DestinationRateGroups
+  id:
+    id:
+      type: integer
+      nullable: false
+      options:
+        unsigned: true
+      id: true
+      generator:
+        strategy: IDENTITY
+  oneToMany:
+    destinationRates:
+      targetEntity: Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface
+      mappedBy: destinationRateGroup

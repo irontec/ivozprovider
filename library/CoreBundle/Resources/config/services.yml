@@ -52,6 +52,7 @@ services:
     arguments:
         $entityManager: '@doctrine.orm.entity_manager'
     public: true
+    lazy: true
 
   Ivoz\Core\Infrastructure\Symfony\EventListener\DomainExceptionListener:
     tags:

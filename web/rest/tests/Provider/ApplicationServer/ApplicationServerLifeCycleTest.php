@@ -85,7 +85,7 @@ class ApplicationServerLifeCycleTest extends KernelTestCase
             ->setName('test002');
 
         /** @var ApplicationServer $as */
-        $as = $this->entityPersister
+        $as = $this->entityTools
             ->persistDto($asDto, null, true);
 
         return $as;
@@ -155,7 +155,7 @@ class ApplicationServerLifeCycleTest extends KernelTestCase
             $kamDispatcher
         );
 
-        $this->entityPersister->persist($as, true);
+        $this->entityTools->persist($as, true);
 
         $this->assertEquals(
             $kamDispatcher->getDestination(),
@@ -194,7 +194,7 @@ class ApplicationServerLifeCycleTest extends KernelTestCase
             $kamDispatcher
         );
 
-        $this->entityPersister->persist($as, true);
+        $this->entityTools->persist($as, true);
     }
 
     /**
@@ -209,7 +209,7 @@ class ApplicationServerLifeCycleTest extends KernelTestCase
         $as = $applicationServerRepository->find(1);
         $as->setName('Something');
 
-        $this->entityPersister->persist($as, true);
+        $this->entityTools->persist($as, true);
     }
 
     /**
@@ -221,6 +221,6 @@ class ApplicationServerLifeCycleTest extends KernelTestCase
 
         $applicationServerRepository = $this->em->getRepository(ApplicationServer::class);
         $as = $applicationServerRepository->find(1);
-        $this->entityPersister->remove($as);
+        $this->entityTools->remove($as);
     }
 }

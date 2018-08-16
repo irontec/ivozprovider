@@ -231,6 +231,22 @@ interface TrunksCdrInterface extends EntityInterface
     public function getPriceDetails();
 
     /**
+     * Set metered
+     *
+     * @param boolean $metered
+     *
+     * @return self
+     */
+    public function setMetered($metered = null);
+
+    /**
+     * Get metered
+     *
+     * @return boolean
+     */
+    public function getMetered();
+
+    /**
      * Set direction
      *
      * @param string $direction
@@ -325,38 +341,6 @@ interface TrunksCdrInterface extends EntityInterface
      * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
      */
     public function getCarrier();
-
-    /**
-     * Set tpDestination
-     *
-     * @param \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface $tpDestination
-     *
-     * @return self
-     */
-    public function setTpDestination(\Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface $tpDestination = null);
-
-    /**
-     * Get tpDestination
-     *
-     * @return \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface
-     */
-    public function getTpDestination();
-
-    /**
-     * Set destinationRate
-     *
-     * @param \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate
-     *
-     * @return self
-     */
-    public function setDestinationRate(\Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateInterface $destinationRate = null);
-
-    /**
-     * Get destinationRate
-     *
-     * @return \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateInterface
-     */
-    public function getDestinationRate();
 
 }
 

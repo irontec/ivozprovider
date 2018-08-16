@@ -38,7 +38,7 @@ class BrandLifeCycleTest extends KernelTestCase
             ->setDefaultTimezoneId(1);
 
         /** @var Brand $brand */
-        $brand = $this->entityPersister
+        $brand = $this->entityTools
             ->persistDto($brandDto, null, true);
 
         return $brand;
@@ -102,7 +102,7 @@ class BrandLifeCycleTest extends KernelTestCase
         );
 
         $brand->setDomainUsers('');
-        $this->entityPersister
+        $this->entityTools
             ->persist($brand, true);
 
         /** @var Changelog[] $changelogEntries */
@@ -135,7 +135,7 @@ class BrandLifeCycleTest extends KernelTestCase
         $brand = $brandRepository->find(2);
         $domainId = $brand->getDomain()->getId();
 
-        $this->entityPersister->remove($brand);
+        $this->entityTools->remove($brand);
 
         /** @var Changelog[] $changelogEntries */
         $changelogEntries = $this->getChangelogByClass(

@@ -4,7 +4,7 @@ namespace Ivoz\Core\Infrastructure\Domain\Service\Cgrates;
 
 use Graze\GuzzleHttp\JsonRpc\Client;
 use Ivoz\Cgr\Domain\Model\TpRatingProfile\SimulatedCall;
-use Ivoz\Cgr\Domain\Service\TpRatingProfile\BillingServiceInterface;
+use Ivoz\Provider\Domain\Service\RatingProfile\BillingServiceInterface;
 use Ivoz\Core\Application\Service\EntityTools;
 
 class BillingService implements BillingServiceInterface
@@ -83,9 +83,17 @@ class BillingService implements BillingServiceInterface
             'Usage' => "${durationSeconds}s"
         ];
 
-        return $this->sendRequest(
-            $payload
-        );
+        try {
+            return $this->sendRequest(
+                $payload
+            );
+        } catch (\RuntimeException $e) {
+            return SimulatedCall::fromErrorResponse(
+                $e->getMessage(),
+                $payload['RatingPlanId'],
+                $this->entityTools
+            );
+        }
     }
 
     /**
@@ -106,20 +114,10 @@ class BillingService implements BillingServiceInterface
         $response = $this->client->send($request);
         $stringResponse = $response->getBody()->__toString();
 
-        try {
-
-            return SimulatedCall::fromCgRatesResponse(
-                $stringResponse,
-                substr($payload['Usage'], 0, -1),
-                $this->entityTools
-            );
-        } catch (\RuntimeException $e) {
-
-            return SimulatedCall::fromErrorResponse(
-                $e->getMessage(),
-                $payload['RatingPlanId'],
-                $this->entityTools
-            );
-        }
+        return SimulatedCall::fromCgRatesResponse(
+            $stringResponse,
+            substr($payload['Usage'], 0, -1),
+            $this->entityTools
+        );
     }
 }

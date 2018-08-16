@@ -43,6 +43,51 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
     private $createdAt = 'CURRENT_TIMESTAMP';
 
     /**
+     * @var string
+     */
+    private $timingType = 'always';
+
+    /**
+     * @var \DateTime
+     */
+    private $timeIn;
+
+    /**
+     * @var boolean
+     */
+    private $monday = '1';
+
+    /**
+     * @var boolean
+     */
+    private $tuesday = '1';
+
+    /**
+     * @var boolean
+     */
+    private $wednesday = '1';
+
+    /**
+     * @var boolean
+     */
+    private $thursday = '1';
+
+    /**
+     * @var boolean
+     */
+    private $friday = '1';
+
+    /**
+     * @var boolean
+     */
+    private $saturday = '1';
+
+    /**
+     * @var boolean
+     */
+    private $sunday = '1';
+
+    /**
      * @var integer
      */
     private $id;
@@ -53,14 +98,14 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
     private $timing;
 
     /**
-     * @var \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanDto | null
+     * @var \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto | null
      */
     private $ratingPlan;
 
     /**
-     * @var \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateDto | null
+     * @var \Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupDto | null
      */
-    private $destinationRate;
+    private $destinationRateGroup;
 
 
     use DtoNormalizer;
@@ -86,10 +131,19 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
             'timingTag' => 'timingTag',
             'weight' => 'weight',
             'createdAt' => 'createdAt',
+            'timingType' => 'timingType',
+            'timeIn' => 'timeIn',
+            'monday' => 'monday',
+            'tuesday' => 'tuesday',
+            'wednesday' => 'wednesday',
+            'thursday' => 'thursday',
+            'friday' => 'friday',
+            'saturday' => 'saturday',
+            'sunday' => 'sunday',
             'id' => 'id',
             'timingId' => 'timing',
             'ratingPlanId' => 'ratingPlan',
-            'destinationRateId' => 'destinationRate'
+            'destinationRateGroupId' => 'destinationRateGroup'
         ];
     }
 
@@ -105,10 +159,19 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
             'timingTag' => $this->getTimingTag(),
             'weight' => $this->getWeight(),
             'createdAt' => $this->getCreatedAt(),
+            'timingType' => $this->getTimingType(),
+            'timeIn' => $this->getTimeIn(),
+            'monday' => $this->getMonday(),
+            'tuesday' => $this->getTuesday(),
+            'wednesday' => $this->getWednesday(),
+            'thursday' => $this->getThursday(),
+            'friday' => $this->getFriday(),
+            'saturday' => $this->getSaturday(),
+            'sunday' => $this->getSunday(),
             'id' => $this->getId(),
             'timing' => $this->getTiming(),
             'ratingPlan' => $this->getRatingPlan(),
-            'destinationRate' => $this->getDestinationRate()
+            'destinationRateGroup' => $this->getDestinationRateGroup()
         ];
     }
 
@@ -118,8 +181,8 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
         $this->timing = $transformer->transform('Ivoz\\Cgr\\Domain\\Model\\TpTiming\\TpTiming', $this->getTimingId());
-        $this->ratingPlan = $transformer->transform('Ivoz\\Cgr\\Domain\\Model\\RatingPlan\\RatingPlan', $this->getRatingPlanId());
-        $this->destinationRate = $transformer->transform('Ivoz\\Cgr\\Domain\\Model\\DestinationRate\\DestinationRate', $this->getDestinationRateId());
+        $this->ratingPlan = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\RatingPlan\\RatingPlan', $this->getRatingPlanId());
+        $this->destinationRateGroup = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\DestinationRateGroup\\DestinationRateGroup', $this->getDestinationRateGroupId());
     }
 
     /**
@@ -251,6 +314,186 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
+     * @param string $timingType
+     *
+     * @return static
+     */
+    public function setTimingType($timingType = null)
+    {
+        $this->timingType = $timingType;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTimingType()
+    {
+        return $this->timingType;
+    }
+
+    /**
+     * @param \DateTime $timeIn
+     *
+     * @return static
+     */
+    public function setTimeIn($timeIn = null)
+    {
+        $this->timeIn = $timeIn;
+
+        return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getTimeIn()
+    {
+        return $this->timeIn;
+    }
+
+    /**
+     * @param boolean $monday
+     *
+     * @return static
+     */
+    public function setMonday($monday = null)
+    {
+        $this->monday = $monday;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getMonday()
+    {
+        return $this->monday;
+    }
+
+    /**
+     * @param boolean $tuesday
+     *
+     * @return static
+     */
+    public function setTuesday($tuesday = null)
+    {
+        $this->tuesday = $tuesday;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getTuesday()
+    {
+        return $this->tuesday;
+    }
+
+    /**
+     * @param boolean $wednesday
+     *
+     * @return static
+     */
+    public function setWednesday($wednesday = null)
+    {
+        $this->wednesday = $wednesday;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getWednesday()
+    {
+        return $this->wednesday;
+    }
+
+    /**
+     * @param boolean $thursday
+     *
+     * @return static
+     */
+    public function setThursday($thursday = null)
+    {
+        $this->thursday = $thursday;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getThursday()
+    {
+        return $this->thursday;
+    }
+
+    /**
+     * @param boolean $friday
+     *
+     * @return static
+     */
+    public function setFriday($friday = null)
+    {
+        $this->friday = $friday;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getFriday()
+    {
+        return $this->friday;
+    }
+
+    /**
+     * @param boolean $saturday
+     *
+     * @return static
+     */
+    public function setSaturday($saturday = null)
+    {
+        $this->saturday = $saturday;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getSaturday()
+    {
+        return $this->saturday;
+    }
+
+    /**
+     * @param boolean $sunday
+     *
+     * @return static
+     */
+    public function setSunday($sunday = null)
+    {
+        $this->sunday = $sunday;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getSunday()
+    {
+        return $this->sunday;
+    }
+
+    /**
      * @param integer $id
      *
      * @return static
@@ -317,11 +560,11 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanDto $ratingPlan
+     * @param \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto $ratingPlan
      *
      * @return static
      */
-    public function setRatingPlan(\Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanDto $ratingPlan = null)
+    public function setRatingPlan(\Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto $ratingPlan = null)
     {
         $this->ratingPlan = $ratingPlan;
 
@@ -329,7 +572,7 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @return \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanDto
+     * @return \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto
      */
     public function getRatingPlan()
     {
@@ -344,7 +587,7 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
     public function setRatingPlanId($id)
     {
         $value = !is_null($id)
-            ? new \Ivoz\Cgr\Domain\Model\RatingPlan\RatingPlanDto($id)
+            ? new \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto($id)
             : null;
 
         return $this->setRatingPlan($value);
@@ -363,23 +606,23 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateDto $destinationRate
+     * @param \Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupDto $destinationRateGroup
      *
      * @return static
      */
-    public function setDestinationRate(\Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateDto $destinationRate = null)
+    public function setDestinationRateGroup(\Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupDto $destinationRateGroup = null)
     {
-        $this->destinationRate = $destinationRate;
+        $this->destinationRateGroup = $destinationRateGroup;
 
         return $this;
     }
 
     /**
-     * @return \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateDto
+     * @return \Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupDto
      */
-    public function getDestinationRate()
+    public function getDestinationRateGroup()
     {
-        return $this->destinationRate;
+        return $this->destinationRateGroup;
     }
 
     /**
@@ -387,21 +630,21 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
      *
      * @return static
      */
-    public function setDestinationRateId($id)
+    public function setDestinationRateGroupId($id)
     {
         $value = !is_null($id)
-            ? new \Ivoz\Cgr\Domain\Model\DestinationRate\DestinationRateDto($id)
+            ? new \Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupDto($id)
             : null;
 
-        return $this->setDestinationRate($value);
+        return $this->setDestinationRateGroup($value);
     }
 
     /**
      * @return integer | null
      */
-    public function getDestinationRateId()
+    public function getDestinationRateGroupId()
     {
-        if ($dto = $this->getDestinationRate()) {
+        if ($dto = $this->getDestinationRateGroup()) {
             return $dto->getId();
         }
 
