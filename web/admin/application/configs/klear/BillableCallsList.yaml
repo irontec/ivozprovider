@@ -5,62 +5,70 @@
 production:
   main:
     module: klearMatrix
-    defaultScreen: kamTrunksCdrsList_screen
+    defaultScreen: billableCallsList_screen
 
-  screens: &kamTrunksCdrs_screensLink
-    kamTrunksCdrsList_screen: &kamTrunksCdrsList_screenLink
+  screens: &billableCalls_screensLink
+    billableCallsList_screen: &billableCallsList_screenLink
       controller: list
       csv: true
       order:
         field:
-          - TrunksCdr.startTime
-          - TrunksCdr.brand
-          - TrunksCdr.company
+          - BillableCall.startTime
+          - BillableCall.brand
+          - BillableCall.company
         type: desc
-      rawCondition: "TrunksCdr.direction='outbound'"
-      pagination: 
+      pagination:
         items: 25
-      <<: *KamTrunksCdrs
+      <<: *BillableCalls
       class: ui-silk-application-view-list
       title: _("List of %s %2s", ngettext('Billable call', 'Billable calls', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
         href: "/doc/${lang}/brand/billing/billable_calls.html"
-      fields: &kamTrunksCdrs_fieldsLink
+      fields: &billableCalls_fieldsLink
         options:
           title: _("Options")
           screens:
-            kamTrunksCdrsView_screen: true
-          default: kamTrunksCdrsView_screen
+            billableCallsView_screen: true
+          default: billableCallsView_screen
+        blacklist: &billableCalls_blacklistLink
+          callid: true
+          ratingPlanName: true
+          destinationName: true
+          carrierName: true
         order:
           startTime: true
           brand: true
           company: true
+          caller: true
           callee: true
           duration: true
           price: true
           cost: true
-          carrier: true
           invoice: true
-    kamTrunksCdrsView_screen: &kamTrunksCdrsView_screenLink
-      <<: *KamTrunksCdrs
+    billableCallsView_screen: &billableCallsView_screenLink
+      <<: *BillableCalls
       controller: edit
       class: ui-silk-eye
       label: false
       disableSave: true
       labelOnPostAction: _("View %s %2s", ngettext('Billable call', 'Billable calls', 1), "[format| (%item%)]")
       title: _("View %s %2s", ngettext('Billable call', 'Billable calls', 1), "[format| (%item%)]")
-      fields:
+      fields: &billableCallsView_fieldsLink
         order:
-          startTime: true
           brand: true
           company: true
+          startTime: true
+          caller: true
           callee: true
           duration: true
           price: true
           cost: true
-          carrier: true
+          ratingPlanName: true
+          destinationName: true
+          carrierName: true
           invoice: true
+          callid: true
       fixedPositions:
         group0:
           label: _("Basic Information")
@@ -68,8 +76,9 @@ production:
           fields:
             brand: 6
             company: 6
-            callee: 6
             startTime: 6
+            caller: 6
+            callee: 6
             duration: 6
         group1:
           label: _("Billing Information")
@@ -77,13 +86,19 @@ production:
           fields:
             price: 6
             cost: 6
-            carrier: 6
-            direction: 6
+            ratingPlanName: 6
+            destinationName: 6
+            carrierName: 6
             invoice: 6
+        group2:
+          label: _("Extra Information")
+          colsPerRow: 12
+          fields:
+            callid: 12
 
-  dialogs:  &kamTrunksCdrs_dialogsLink
+  dialogs:  &billableCalls_dialogsLink
     tarificateCall_dialog:
-      <<: *KamTrunksCdrs
+      <<: *BillableCalls
       module: default
       title: ngettext('Rerate call', 'Rerate calls', 1)
       labelOnList: ngettext('Rerate call', 'Rerate calls', 0)

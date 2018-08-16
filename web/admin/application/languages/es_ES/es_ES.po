@@ -339,6 +339,9 @@ msgstr[1] "Patrón permisos llamada"
 msgid "Call Details"
 msgstr "Detalles llamada"
 
+msgid "Call ID"
+msgstr "ID de llamada"
+
 msgid "Call destination"
 msgstr "Destino llamada"
 
@@ -798,6 +801,9 @@ msgstr "Opciones adicionales tarificación externa"
 
 msgid "Extra Configuration"
 msgstr "Configuración adicional"
+
+msgid "Extra Information"
+msgstr "Información adicional"
 
 msgid "Failover and load-balancing"
 msgstr "Contingencia y balanceo de carga"

@@ -3,7 +3,6 @@
 #include conf.d/documentationLink.yaml
 #include BalanceNotificationsList.yaml
 #include BalanceMovementsList.yaml
-#include KamTrunksCdrsList.yaml
 
 production:
   main:
@@ -28,7 +27,6 @@ production:
           title: _("Options")
           screens:
             balanceMovementsList_screen: true
-            kamTrunksCdrsList_screen: true
             balanceNotificationList_screen: true
           dialogs:
             addToBalance_dialog: true
@@ -104,21 +102,6 @@ production:
         <<: *balanceMovementsList_fieldsLink
         blacklist:
           carrier: true
-      parentOptionCustomizer:
-        - recordCount
-
-    # kamTrunksCdrs
-    <<: *kamTrunksCdrs_screensLink
-    kamTrunksCdrsList_screen:
-      <<: *kamTrunksCdrsList_screenLink
-      rawCondition: "TrunksCdr.invoice IS NULL"
-      class: ui-silk-application-view-list
-      filterField: Company
-      fields:
-        <<: *kamTrunksCdrs_fieldsLink
-        blacklist:
-          brand: true
-          invoice: true
       parentOptionCustomizer:
         - recordCount
 

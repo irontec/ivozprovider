@@ -5,6 +5,7 @@
 #include RatingProfilesList.yaml
 #include BalanceNotificationsList.yaml
 #include BalanceMovementsList.yaml
+#include BillableCallsList.yaml
 
 production:
   main:
@@ -32,6 +33,7 @@ production:
             ratingProfilesList_screen: true
             balanceMovementsList_screen: true
             balanceNotificationList_screen: true
+            billableCallsList_screen: true
           dialogs:
             addToBalance_dialog: true
             carriersDel_dialog: true
@@ -188,6 +190,27 @@ production:
       parentOptionCustomizer:
         - IvozProvider_Klear_Options_OptionsCustomizer
         - recordCount
+
+    billableCallsList_screen:
+      <<: *billableCallsList_screenLink
+      class: ui-silk-application-view-list
+      filterField: Carrier
+      parentOptionCustomizer:
+        - recordCount
+      fields:
+        <<: *billableCalls_fieldsLink
+        blacklist:
+          <<: *billableCalls_blacklistLink
+          company: true
+          brand: true
+    billableCallsView_screen:
+      <<: *billableCallsView_screenLink
+      fields:
+        <<: *billableCallsView_fieldsLink
+        blacklist:
+          company: true
+          brand: true
+
   dialogs: &carriers_dialosgLink
     carriersDel_dialog: &carriersDel_dialogLink
       <<: *Carriers
