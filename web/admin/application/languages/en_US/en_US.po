@@ -411,6 +411,9 @@ msgstr "Charge period"
 msgid "Check documentation for this section"
 msgstr "Check documentation for this section"
 
+msgid "Client Configuration"
+msgstr "Client Configuration"
+
 msgid "Client's default"
 msgstr "Client's default"
 
@@ -433,9 +436,6 @@ msgid "Company"
 msgid_plural "Companies"
 msgstr[0] "Company"
 msgstr[1] "Companies"
-
-msgid "Company Configuration"
-msgstr "Company Configuration"
 
 msgid "Company URL"
 msgid_plural "Company URLs"
@@ -942,6 +942,9 @@ msgstr "Generic template"
 msgid "Geographic Configuration"
 msgstr "Geographic Configuration"
 
+msgid "Global Configuration"
+msgstr "Global Configuration"
+
 msgid "God"
 msgstr "God"
 
@@ -1013,9 +1016,6 @@ msgid "Iden"
 msgid_plural "Idens"
 msgstr[0] "Iden"
 msgstr[1] "Idens"
-
-msgid "Identify Call"
-msgstr "Identify Call"
 
 msgid ""
 "If no queue member answers before time this seconds, the timeout queue logic "
@@ -1640,6 +1640,9 @@ msgid_plural "Outgoing routings"
 msgstr[0] "Outgoing routing"
 msgstr[1] "Outgoing routings"
 
+msgid "Owner"
+msgstr "Owner"
+
 msgid "PDF File"
 msgid_plural "PDF Files"
 msgstr[0] "PDF File"
@@ -1653,6 +1656,9 @@ msgstr "Parse file and import"
 
 msgid "Parsed"
 msgstr "Parsed"
+
+msgid "Party"
+msgstr "Party"
 
 msgid "Password"
 msgstr "Password"
@@ -1708,9 +1714,6 @@ msgstr "Pin code"
 
 msgid "Pin protected"
 msgstr "Pin protected"
-
-msgid "Platform Configuration"
-msgstr "Platform Configuration"
 
 msgid "Please select only uninvoiced calls"
 msgstr "Please select only uninvoiced calls"

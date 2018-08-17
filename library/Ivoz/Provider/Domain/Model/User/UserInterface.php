@@ -125,6 +125,11 @@ interface UserInterface extends LoggableEntityInterface
     public function getTimezone();
 
     /**
+     * @return string
+     */
+    public function getFullNameExtension();
+
+    /**
      * Set name
      *
      * @param string $name

@@ -45,8 +45,8 @@ production:
 
   menu:
     General:
-      title:  _("Platform Configuration")
-      description: _("Platform Configuration")
+      title:  _("Global Configuration")
+      description: _("Global Configuration")
       showOnlyIf: ${auth.canSeeMain}
       submenus:
         BrandsList:
@@ -235,7 +235,7 @@ production:
           description: _("List of %s", ngettext('Billable call', 'Billable calls', 0))
           showOnlyIf: ${auth.brandFeatures.billing.enabled}
     Admin:
-      title: _("Company Configuration")
+      title: _("Client Configuration")
       meta: "[mine:${auth.isCompanyAdmin}|company:${auth.companyId}|type:${auth.companyType}|name:${auth.companyName}]"
       showOnlyIf: ${auth.canSeeCompany}
       description: _("Admin")
@@ -390,12 +390,7 @@ production:
           title: ngettext('Call registry', 'Call registries', 1)
           class: ui-silk-application-view-list
           description: _("List of %s", ngettext('Call', 'Calls', 0))
-          showOnlyIf: ${auth.companyVPBX}
-        KamUsersCdrsResidentialList:
-          title: ngettext('Call registry', 'Call registries', 1)
-          class: ui-silk-application-view-list
-          description: _("List of %s", ngettext('Call', 'Calls', 0))
-          showOnlyIf: ${auth.companyResidential}
+          showOnlyIf: ${auth.companyNotWholesale}
         BillableCallsClientList:
           title: ngettext('Billable call', 'Billable calls', 0)
           class: ui-silk-application-view-list
