@@ -51,18 +51,6 @@ Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrAbstract:
       length: 128
       options:
         fixed: false
-    referee:
-      type: string
-      nullable: true
-      length: 128
-      options:
-        fixed: false
-    referrer:
-      type: string
-      nullable: true
-      length: 128
-      options:
-        fixed: false
     callid:
       type: string
       nullable: true
@@ -91,18 +79,6 @@ Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrAbstract:
     bounced:
       type: boolean
       nullable: true
-    price:
-      type: decimal
-      nullable: true
-      precision: 10
-      scale: 4
-    priceDetails:
-      type: text
-      nullable: true
-      length: 65535
-      options:
-        fixed: false
-      column: priceDetails
     metered:
       type: boolean
       nullable: true
@@ -122,17 +98,6 @@ Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrAbstract:
         fixed: false
       column: cgrid
   manyToOne:
-    invoice:
-      targetEntity: \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface
-      cascade: {  }
-      fetch: LAZY
-      mappedBy: null
-      inversedBy: null
-      joinColumns:
-        invoiceId:
-          referencedColumnName: id
-          onDelete: set null
-      orphanRemoval: false
     brand:
       targetEntity: \Ivoz\Provider\Domain\Model\Brand\BrandInterface
       cascade: {  }
