@@ -43,16 +43,6 @@ abstract class TrunksCdrAbstract
     /**
      * @var string
      */
-    protected $referee;
-
-    /**
-     * @var string
-     */
-    protected $referrer;
-
-    /**
-     * @var string
-     */
     protected $callid;
 
     /**
@@ -76,16 +66,6 @@ abstract class TrunksCdrAbstract
     protected $bounced;
 
     /**
-     * @var string
-     */
-    protected $price;
-
-    /**
-     * @var string
-     */
-    protected $priceDetails;
-
-    /**
      * @var boolean
      */
     protected $metered = '0';
@@ -99,11 +79,6 @@ abstract class TrunksCdrAbstract
      * @var string
      */
     protected $cgrid;
-
-    /**
-     * @var \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface
-     */
-    protected $invoice;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
@@ -204,19 +179,14 @@ abstract class TrunksCdrAbstract
         $self
             ->setCaller($dto->getCaller())
             ->setCallee($dto->getCallee())
-            ->setReferee($dto->getReferee())
-            ->setReferrer($dto->getReferrer())
             ->setCallid($dto->getCallid())
             ->setCallidHash($dto->getCallidHash())
             ->setXcallid($dto->getXcallid())
             ->setDiversion($dto->getDiversion())
             ->setBounced($dto->getBounced())
-            ->setPrice($dto->getPrice())
-            ->setPriceDetails($dto->getPriceDetails())
             ->setMetered($dto->getMetered())
             ->setDirection($dto->getDirection())
             ->setCgrid($dto->getCgrid())
-            ->setInvoice($dto->getInvoice())
             ->setBrand($dto->getBrand())
             ->setCompany($dto->getCompany())
             ->setCarrier($dto->getCarrier())
@@ -245,19 +215,14 @@ abstract class TrunksCdrAbstract
             ->setDuration($dto->getDuration())
             ->setCaller($dto->getCaller())
             ->setCallee($dto->getCallee())
-            ->setReferee($dto->getReferee())
-            ->setReferrer($dto->getReferrer())
             ->setCallid($dto->getCallid())
             ->setCallidHash($dto->getCallidHash())
             ->setXcallid($dto->getXcallid())
             ->setDiversion($dto->getDiversion())
             ->setBounced($dto->getBounced())
-            ->setPrice($dto->getPrice())
-            ->setPriceDetails($dto->getPriceDetails())
             ->setMetered($dto->getMetered())
             ->setDirection($dto->getDirection())
             ->setCgrid($dto->getCgrid())
-            ->setInvoice($dto->getInvoice())
             ->setBrand($dto->getBrand())
             ->setCompany($dto->getCompany())
             ->setCarrier($dto->getCarrier());
@@ -280,19 +245,14 @@ abstract class TrunksCdrAbstract
             ->setDuration(self::getDuration())
             ->setCaller(self::getCaller())
             ->setCallee(self::getCallee())
-            ->setReferee(self::getReferee())
-            ->setReferrer(self::getReferrer())
             ->setCallid(self::getCallid())
             ->setCallidHash(self::getCallidHash())
             ->setXcallid(self::getXcallid())
             ->setDiversion(self::getDiversion())
             ->setBounced(self::getBounced())
-            ->setPrice(self::getPrice())
-            ->setPriceDetails(self::getPriceDetails())
             ->setMetered(self::getMetered())
             ->setDirection(self::getDirection())
             ->setCgrid(self::getCgrid())
-            ->setInvoice(\Ivoz\Provider\Domain\Model\Invoice\Invoice::entityToDto(self::getInvoice(), $depth))
             ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
             ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
             ->setCarrier(\Ivoz\Provider\Domain\Model\Carrier\Carrier::entityToDto(self::getCarrier(), $depth));
@@ -309,19 +269,14 @@ abstract class TrunksCdrAbstract
             'duration' => self::getDuration(),
             'caller' => self::getCaller(),
             'callee' => self::getCallee(),
-            'referee' => self::getReferee(),
-            'referrer' => self::getReferrer(),
             'callid' => self::getCallid(),
             'callidHash' => self::getCallidHash(),
             'xcallid' => self::getXcallid(),
             'diversion' => self::getDiversion(),
             'bounced' => self::getBounced(),
-            'price' => self::getPrice(),
-            'priceDetails' => self::getPriceDetails(),
             'metered' => self::getMetered(),
             'direction' => self::getDirection(),
             'cgrid' => self::getCgrid(),
-            'invoiceId' => self::getInvoice() ? self::getInvoice()->getId() : null,
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
             'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null
@@ -475,62 +430,6 @@ abstract class TrunksCdrAbstract
     }
 
     /**
-     * Set referee
-     *
-     * @param string $referee
-     *
-     * @return self
-     */
-    public function setReferee($referee = null)
-    {
-        if (!is_null($referee)) {
-            Assertion::maxLength($referee, 128, 'referee value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        }
-
-        $this->referee = $referee;
-
-        return $this;
-    }
-
-    /**
-     * Get referee
-     *
-     * @return string
-     */
-    public function getReferee()
-    {
-        return $this->referee;
-    }
-
-    /**
-     * Set referrer
-     *
-     * @param string $referrer
-     *
-     * @return self
-     */
-    public function setReferrer($referrer = null)
-    {
-        if (!is_null($referrer)) {
-            Assertion::maxLength($referrer, 128, 'referrer value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        }
-
-        $this->referrer = $referrer;
-
-        return $this;
-    }
-
-    /**
-     * Get referrer
-     *
-     * @return string
-     */
-    public function getReferrer()
-    {
-        return $this->referrer;
-    }
-
-    /**
      * Set callid
      *
      * @param string $callid
@@ -671,64 +570,6 @@ abstract class TrunksCdrAbstract
     }
 
     /**
-     * Set price
-     *
-     * @param string $price
-     *
-     * @return self
-     */
-    public function setPrice($price = null)
-    {
-        if (!is_null($price)) {
-            if (!is_null($price)) {
-                Assertion::numeric($price);
-            }
-        }
-
-        $this->price = $price;
-
-        return $this;
-    }
-
-    /**
-     * Get price
-     *
-     * @return string
-     */
-    public function getPrice()
-    {
-        return $this->price;
-    }
-
-    /**
-     * Set priceDetails
-     *
-     * @param string $priceDetails
-     *
-     * @return self
-     */
-    public function setPriceDetails($priceDetails = null)
-    {
-        if (!is_null($priceDetails)) {
-            Assertion::maxLength($priceDetails, 65535, 'priceDetails value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        }
-
-        $this->priceDetails = $priceDetails;
-
-        return $this;
-    }
-
-    /**
-     * Get priceDetails
-     *
-     * @return string
-     */
-    public function getPriceDetails()
-    {
-        return $this->priceDetails;
-    }
-
-    /**
      * Set metered
      *
      * @param boolean $metered
@@ -809,30 +650,6 @@ abstract class TrunksCdrAbstract
     public function getCgrid()
     {
         return $this->cgrid;
-    }
-
-    /**
-     * Set invoice
-     *
-     * @param \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice
-     *
-     * @return self
-     */
-    public function setInvoice(\Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice = null)
-    {
-        $this->invoice = $invoice;
-
-        return $this;
-    }
-
-    /**
-     * Get invoice
-     *
-     * @return \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface
-     */
-    public function getInvoice()
-    {
-        return $this->invoice;
     }
 
     /**

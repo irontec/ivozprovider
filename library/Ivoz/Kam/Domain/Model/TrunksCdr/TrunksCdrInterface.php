@@ -87,38 +87,6 @@ interface TrunksCdrInterface extends EntityInterface
     public function getCallee();
 
     /**
-     * Set referee
-     *
-     * @param string $referee
-     *
-     * @return self
-     */
-    public function setReferee($referee = null);
-
-    /**
-     * Get referee
-     *
-     * @return string
-     */
-    public function getReferee();
-
-    /**
-     * Set referrer
-     *
-     * @param string $referrer
-     *
-     * @return self
-     */
-    public function setReferrer($referrer = null);
-
-    /**
-     * Get referrer
-     *
-     * @return string
-     */
-    public function getReferrer();
-
-    /**
      * Set callid
      *
      * @param string $callid
@@ -199,38 +167,6 @@ interface TrunksCdrInterface extends EntityInterface
     public function getBounced();
 
     /**
-     * Set price
-     *
-     * @param string $price
-     *
-     * @return self
-     */
-    public function setPrice($price = null);
-
-    /**
-     * Get price
-     *
-     * @return string
-     */
-    public function getPrice();
-
-    /**
-     * Set priceDetails
-     *
-     * @param string $priceDetails
-     *
-     * @return self
-     */
-    public function setPriceDetails($priceDetails = null);
-
-    /**
-     * Get priceDetails
-     *
-     * @return string
-     */
-    public function getPriceDetails();
-
-    /**
      * Set metered
      *
      * @param boolean $metered
@@ -277,22 +213,6 @@ interface TrunksCdrInterface extends EntityInterface
      * @return string
      */
     public function getCgrid();
-
-    /**
-     * Set invoice
-     *
-     * @param \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice
-     *
-     * @return self
-     */
-    public function setInvoice(\Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice = null);
-
-    /**
-     * Get invoice
-     *
-     * @return \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface
-     */
-    public function getInvoice();
 
     /**
      * Set brand
