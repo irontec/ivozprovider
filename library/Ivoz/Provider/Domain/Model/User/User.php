@@ -419,5 +419,17 @@ class User extends UserAbstract implements UserInterface, AdvancedUserInterface,
 
         return $this->getCompany()->getDefaultTimezone();
     }
+
+    /**
+     * @return string
+     */
+    public function getFullNameExtension()
+    {
+        return sprintf("%s %s (%s)",
+            $this->getName(),
+            $this->getLastname(),
+            $this->getExtensionNumber()
+        );
+    }
 }
 

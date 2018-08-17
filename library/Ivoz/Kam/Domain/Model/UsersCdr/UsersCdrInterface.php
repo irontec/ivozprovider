@@ -7,6 +7,16 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 interface UsersCdrInterface extends EntityInterface
 {
     /**
+     * @return string
+     */
+    public function getOwner();
+
+    /**
+     * @return string
+     */
+    public function getParty();
+
+    /**
      * Set startTime
      *
      * @param \DateTime $startTime
