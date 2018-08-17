@@ -422,6 +422,9 @@ msgstr "Período de facturación"
 msgid "Check documentation for this section"
 msgstr "Ver documentación de esta sección"
 
+msgid "Client Configuration"
+msgstr "Configuración de Cliente"
+
 msgid "Client's default"
 msgstr "Usar configuración cliente"
 
@@ -444,9 +447,6 @@ msgid "Company"
 msgid_plural "Companies"
 msgstr[0] "Empresa"
 msgstr[1] "Empresas"
-
-msgid "Company Configuration"
-msgstr "Configuración de Empresa"
 
 msgid "Company URL"
 msgid_plural "Company URLs"
@@ -961,6 +961,9 @@ msgstr "Plantilla genérica"
 msgid "Geographic Configuration"
 msgstr "Configuración Geográfica"
 
+msgid "Global Configuration"
+msgstr "Configuración Global"
+
 msgid "God"
 msgstr "God"
 
@@ -1032,9 +1035,6 @@ msgid "Iden"
 msgid_plural "Idens"
 msgstr[0] "Iden"
 msgstr[1] "Idens"
-
-msgid "Identify Call"
-msgstr "Identificar Llamada"
 
 msgid ""
 "If no queue member answers before time this seconds, the timeout queue logic "
@@ -1664,6 +1664,9 @@ msgid_plural "Outgoing routings"
 msgstr[0] "Ruta saliente"
 msgstr[1] "Rutas salientes"
 
+msgid "Owner"
+msgstr "Dueño"
+
 msgid "PDF File"
 msgid_plural "PDF Files"
 msgstr[0] "Fichero PDF"
@@ -1677,6 +1680,9 @@ msgstr "Analizar fichero e importar"
 
 msgid "Parsed"
 msgstr "Parseada"
+
+msgid "Party"
+msgstr "Interlocutor"
 
 msgid "Password"
 msgstr "Contraseña"
@@ -1734,9 +1740,6 @@ msgstr "Contraseña"
 
 msgid "Pin protected"
 msgstr "Con contraseña"
-
-msgid "Platform Configuration"
-msgstr "Configuración de Plataforma"
 
 msgid "Please select only uninvoiced calls"
 msgstr "Por favor, seleccione únicamente llamadas no facturadas"
