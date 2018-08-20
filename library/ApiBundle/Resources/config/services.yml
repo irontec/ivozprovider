@@ -27,6 +27,9 @@ services:
   # Check access_control before any database is hit
   api_platform.security.listener.request.deny_access:
     class: ApiPlatform\Core\Security\EventListener\DenyAccessListener
+    arguments:
+      $resourceMetadataFactory: '@api_platform.metadata.resource.metadata_factory'
+      $resourceAccessCheckerOrExpressionLanguage: '@api_platform.security.resource_access_checker'
     tags:
       - { name: kernel.event_listener, event: kernel.request, priority: 7 }
 

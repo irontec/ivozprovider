@@ -21,7 +21,7 @@ class NumericFilter extends BaseNumericFilter
 
     public function __construct(
         ManagerRegistry $managerRegistry,
-        RequestStack $requestStack,
+        $requestStack = null,
         LoggerInterface $logger = null,
         array $properties = null,
         ResourceMetadataFactoryInterface $resourceMetadataFactory
@@ -50,11 +50,12 @@ class NumericFilter extends BaseNumericFilter
         QueryBuilder $queryBuilder,
         QueryNameGeneratorInterface $queryNameGenerator,
         string $resourceClass,
-        string $operationName = null
+        string $operationName = null,
+        array $context = []
     ) {
         $metadata = $this->resourceMetadataFactory->create($resourceClass);
         $this->overrideProperties($metadata->getAttributes());
 
-        return parent::apply($queryBuilder, $queryNameGenerator, $resourceClass, $operationName);
+        return parent::apply($queryBuilder, $queryNameGenerator, $resourceClass, $operationName, $context);
     }
 }

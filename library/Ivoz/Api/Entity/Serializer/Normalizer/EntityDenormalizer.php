@@ -133,6 +133,15 @@ class EntityDenormalizer implements DenormalizerInterface
             : new $dtoClass;
 
         $baseData = $dto->toArray();
+        foreach ($baseData as $key => $value) {
+            if (!$value instanceof DataTransferObjectInterface) {
+                continue;
+            }
+
+            unset($baseData[$key]);
+            $relKey = $key. 'Id';
+            $baseData[$relKey] = $value->getId();
+        }
         $data = array_replace_recursive($baseData, $input);
         $dto->denormalize(
             $data,

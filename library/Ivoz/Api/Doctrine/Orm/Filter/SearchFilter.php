@@ -23,7 +23,7 @@ class SearchFilter extends BaseSearchFilter
 
     public function __construct(
         ManagerRegistry $managerRegistry,
-        RequestStack $requestStack,
+        $requestStack = null,
         IriConverterInterface $iriConverter,
         PropertyAccessorInterface $propertyAccessor = null,
         LoggerInterface $logger = null,
@@ -31,7 +31,14 @@ class SearchFilter extends BaseSearchFilter
         ResourceMetadataFactoryInterface $resourceMetadataFactory
     ) {
         $this->resourceMetadataFactory = $resourceMetadataFactory;
-        return parent::__construct(...func_get_args());
+        return parent::__construct(
+            $managerRegistry,
+            $requestStack,
+            $iriConverter,
+            $propertyAccessor,
+            $logger,
+            $properties
+        );
     }
 
     /**
@@ -47,6 +54,7 @@ class SearchFilter extends BaseSearchFilter
         );
     }
 
+
     /**
      * {@inheritdoc}
      */
@@ -54,11 +62,12 @@ class SearchFilter extends BaseSearchFilter
         QueryBuilder $queryBuilder,
         QueryNameGeneratorInterface $queryNameGenerator,
         string $resourceClass,
-        string $operationName = null
+        string $operationName = null,
+        array $context = []
     ) {
         $metadata = $this->resourceMetadataFactory->create($resourceClass);
         $this->overrideProperties($metadata->getAttributes());
 
-        return parent::apply($queryBuilder, $queryNameGenerator, $resourceClass, $operationName);
+        return parent::apply($queryBuilder, $queryNameGenerator, $resourceClass, $operationName, $context);
     }
 }

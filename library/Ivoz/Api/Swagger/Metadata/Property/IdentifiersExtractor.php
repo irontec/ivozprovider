@@ -29,4 +29,12 @@ class IdentifiersExtractor implements IdentifiersExtractorInterface
     {
         return $this->decoratedIdentifiersExtractor->getIdentifiersFromItem(...func_get_args());
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getIdentifiersFromResourceClass(string $resourceClass): array
+    {
+        return $this->decoratedIdentifiersExtractor->getIdentifiersFromResourceClass(...func_get_args());
+    }
 }
