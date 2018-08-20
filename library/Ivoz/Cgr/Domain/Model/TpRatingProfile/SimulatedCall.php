@@ -2,11 +2,12 @@
 
 namespace Ivoz\Cgr\Domain\Model\TpRatingProfile;
 
+use Ivoz\Cgr\Domain\Model\TpDestination\TpDestination;
+use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface;
+use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationRepository;
 use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan;
 use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto;
 use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanRepository;
-use Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRate;
-use Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateRepository;
 use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlan;
 use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanRepository;
 use Ivoz\Core\Application\Service\EntityTools;
@@ -94,8 +95,9 @@ class SimulatedCall
 
         /** @var TpRatingPlanRepository $tpRatingPlanRepository */
         $tpRatingPlanRepository = $entityTools->getRepository(TpRatingPlan::class);
-        /** @var TpDestinationRateRepository $tpDestinationRateRepository */
-        $tpDestinationRateRepository = $entityTools->getRepository(TpDestinationRate::class);
+
+        /** @var TpDestinationRepository $tpDestinationRepository */
+        $tpDestinationRepository = $entityTools->getRepository(TpDestination::class);
 
         if ($response->error) {
             throw new \RuntimeException($response->error);
@@ -153,18 +155,23 @@ class SimulatedCall
 
         $destinationTag = $result->RatingFilters->{$ratingFilterId}->DestinationID;
 
-        /** @var TpDestinationRate $tpDestinationRate */
-        $tpDestinationRate = $tpDestinationRateRepository->findOneBy([
-            'destinationsTag' => $destinationTag
+        /** @var TpDestinationInterface $tpDestination */
+        $tpDestination = $tpDestinationRepository->findOneBy([
+            'tag' => $destinationTag
         ]);
 
-        if (!$tpDestinationRate) {
+        if (!$tpDestination) {
             throw new \DomainException(self::FALLBACK_ERROR_MSG);
         }
 
-        $instance->patternName = $tpDestinationRate
+        $destination = $tpDestination->getDestination();
+        $brandLanguageCode = $destination->getBrand()->getLanguageCode();
+        $getter = 'get' . $brandLanguageCode;
+
+        $instance->patternName = $tpDestination
             ->getDestination()
-            ->getPrefixName();
+            ->getName()
+            ->{$getter}();
 
         return $instance;
     }
