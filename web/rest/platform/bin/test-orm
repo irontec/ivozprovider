@@ -2,7 +2,7 @@
 
 set -e
 
-pushd /opt/irontec/ivozprovider/web/rest
+pushd /opt/irontec/ivozprovider/web/rest/platform
     # Prepare dataset
     bin/console api:prepare:database -e test
     # Load fixtures

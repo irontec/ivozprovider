@@ -4,7 +4,7 @@ set -e
 
 export SYMFONY_ENV=test
 
-pushd /opt/irontec/ivozprovider/web/rest
+pushd /opt/irontec/ivozprovider/web/rest/platform
     # Prepare dataset
     bin/console core:prepare:database -e test
     # Load fixtures

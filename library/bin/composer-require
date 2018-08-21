@@ -28,6 +28,14 @@ pushd /opt/irontec/ivozprovider/scheme
     composer require $*
 popd
 
-pushd /opt/irontec/ivozprovider/web/rest
+pushd /opt/irontec/ivozprovider/web/rest/platform
+    composer require $*
+popd
+
+pushd /opt/irontec/ivozprovider/web/rest/brand
+    composer require $*
+popd
+
+pushd /opt/irontec/ivozprovider/web/rest/brand
     composer require $*
 popd

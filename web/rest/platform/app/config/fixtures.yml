@@ -5,4 +5,4 @@ services:
     public: false
 
   DataFixtures\:
-    resource: '../../../../library/DataFixtures/*'
+    resource: '../../../../../library/DataFixtures/*'

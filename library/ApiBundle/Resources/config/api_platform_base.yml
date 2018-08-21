@@ -1,5 +1,9 @@
 api_platform:
 
+    title: 'Ivoz Provider'
+    description: 'Rest API'
+    version: '2.6-1'
+
     # Specify a name converter to use.
 #    name_converter: ~
 

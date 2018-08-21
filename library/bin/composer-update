@@ -28,7 +28,15 @@ pushd /opt/irontec/ivozprovider/scheme
     rm -fr composer.lock vendor
 popd
 
-pushd /opt/irontec/ivozprovider/web/rest
+pushd /opt/irontec/ivozprovider/web/rest/platform
+    rm -fr composer.lock vendor
+popd
+
+pushd /opt/irontec/ivozprovider/web/rest/brand
+    rm -fr composer.lock vendor
+popd
+
+pushd /opt/irontec/ivozprovider/web/rest/client
     rm -fr composer.lock vendor
 popd
 

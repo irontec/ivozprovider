@@ -5,7 +5,7 @@
 # Set current environment
 export SYMFONY_ENV=prod
 
-cd /opt/irontec/ivozprovider/web/rest
+cd /opt/irontec/ivozprovider/web/rest/platform
 
 # Set proper var permissions
 setfacl -dR -m u:www-data:rwX -m u:root:rwX var
@@ -17,6 +17,6 @@ bin/console cache:clear --no-warmup -q -n
 bin/console api:swagger:export > web/swagger.json
 
 # Create jwt certificates
-[ ! -e /opt/irontec/ivozprovider/web/rest/var/jwt/private.pem ] && bin/generate-keys --initial
+[ ! -e /opt/irontec/ivozprovider/web/rest/platform/var/jwt/private.pem ] && bin/generate-keys --initial
 
 :

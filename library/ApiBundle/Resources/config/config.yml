@@ -35,8 +35,9 @@ framework:
 twig:
   debug: '%kernel.debug%'
   strict_variables: '%kernel.debug%'
-  paths:
-    '%kernel.project_dir%/../../library/ApiBundle/Resources/views': ApiBundle
+#  paths:
+#    This must be set on application
+#    '../views': ApiBundle
 
 lexik_jwt_authentication:
   private_key_path: '%jwt_private_key_path%'
