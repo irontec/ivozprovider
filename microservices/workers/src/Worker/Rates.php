@@ -252,7 +252,7 @@ class Rates
              */
             $this->logger->debug('About to update tp_destination_rates');
             $tpDestinationRatesInsert = "INSERT IGNORE tp_destination_rates (tag, destinations_tag, rates_tag, destinationRateId)
-                        SELECT CONCAT('b', DRG.brandId, 'dr', DR.id), CONCAT('b', DRG.brandId, 'dst', DR.destinationId),
+                        SELECT CONCAT('b', DRG.brandId, 'dr', DRG.id), CONCAT('b', DRG.brandId, 'dst', DR.destinationId),
                          CONCAT('b', DRG.brandId, 'rt', DR.id), DR.id
                           FROM DestinationRates DR
                           INNER JOIN DestinationRateGroups DRG ON DRG.id = DR.destinationRateGroupId
