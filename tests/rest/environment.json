@@ -4,7 +4,7 @@
 	"values": [
 		{
 			"key": "api_url",
-			"value": "https://mainoperator.portals.ivozprovider.com/rest",
+			"value": "https://mainoperator.portals.ivozprovider.com/rest/platform",
 			"type": "text",
 			"enabled": true,
 			"hovered": false

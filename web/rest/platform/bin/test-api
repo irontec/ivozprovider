@@ -1,0 +1,24 @@
+#!/bin/bash
+
+set -e
+
+export SYMFONY_ENV=test
+
+pushd /opt/irontec/ivozprovider/web/rest
+    # Prepare dataset
+    bin/console core:prepare:database -e test
+    # Load fixtures
+    bin/console doctrine:fixtures:load --no-interaction -v
+
+    # Create initial dataset file
+    mv var/cache/test/db.sqlite var/cache/test/db.sqlite.back
+
+    # Generate api token certificates
+    mkdir -p var/jwt
+    openssl genrsa -passout pass:changeme -out var/jwt/private-test.pem -aes256 4096
+    openssl rsa  -passin pass:changeme -pubout -in var/jwt/private-test.pem -out var/jwt/public-test.pem
+    chmod o+r -R var/jwt
+
+    # Run tests
+    vendor/bin/behat -f progress -o std -f junit -o results
+popd

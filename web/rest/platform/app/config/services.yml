@@ -1,0 +1,33 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/service_container.html
+imports:
+    - { resource: "@ApiBundle/Resources/config/services.yml" }
+
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Jwt\UserAuthenticationSuccessHandler:
+    arguments:
+      - '@lexik_jwt_authentication.jwt_manager'
+      - '@event_dispatcher'
+
+  Jwt\TokenAuthenticator:
+    arguments:
+      - '@lexik_jwt_authentication.jwt_manager'
+      - '@event_dispatcher'
+      - '@lexik_jwt_authentication.extractor.chain_extractor'
+
+  Security\User\Provider::User:
+    class: Security\User\UserProvider
+    arguments:
+      $identifierField: 'email'
+      $entityClass: 'Ivoz\Provider\Domain\Model\User\User'
+
+  Security\User\Provider::Administrator:
+    class: Security\User\UserProvider
+    arguments:
+      $identifierField: 'username'
+      $entityClass: 'Ivoz\Provider\Domain\Model\Administrator\Administrator'

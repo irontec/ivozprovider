@@ -1,6 +1,0 @@
-########################################
-## Raw
-########################################
-Ivoz\Kam\Domain\Model\UsersCdr\UsersCdr:
-  attributes:
-    access_control: '"ROLE_BRAND_ADMIN" in roles'
