@@ -347,6 +347,7 @@ abstract class RecordingAbstract
     {
         Assertion::notNull($duration, 'duration value "%s" is null, but non null value was expected.');
         Assertion::numeric($duration);
+        $duration = (float) $duration;
 
         $this->duration = $duration;
 

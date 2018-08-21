@@ -429,6 +429,7 @@ abstract class TpDestinationRateAbstract
     {
         Assertion::notNull($maxCost, 'maxCost value "%s" is null, but non null value was expected.');
         Assertion::numeric($maxCost);
+        $maxCost = (float) $maxCost;
 
         $this->maxCost = $maxCost;
 

@@ -890,6 +890,7 @@ abstract class TpCdrAbstract
     {
         Assertion::notNull($cost, 'cost value "%s" is null, but non null value was expected.');
         Assertion::numeric($cost);
+        $cost = (float) $cost;
 
         $this->cost = $cost;
 

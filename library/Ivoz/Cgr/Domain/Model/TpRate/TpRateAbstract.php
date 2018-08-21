@@ -307,6 +307,7 @@ abstract class TpRateAbstract
     {
         Assertion::notNull($connectFee, 'connectFee value "%s" is null, but non null value was expected.');
         Assertion::numeric($connectFee);
+        $connectFee = (float) $connectFee;
 
         $this->connectFee = $connectFee;
 
@@ -335,6 +336,7 @@ abstract class TpRateAbstract
     {
         Assertion::notNull($rateCost, 'rateCost value "%s" is null, but non null value was expected.');
         Assertion::numeric($rateCost);
+        $rateCost = (float) $rateCost;
 
         $this->rateCost = $rateCost;
 

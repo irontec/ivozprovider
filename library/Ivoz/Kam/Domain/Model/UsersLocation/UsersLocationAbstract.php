@@ -586,6 +586,7 @@ abstract class UsersLocationAbstract
     {
         Assertion::notNull($q, 'q value "%s" is null, but non null value was expected.');
         Assertion::numeric($q);
+        $q = (float) $q;
 
         $this->q = $q;
 
