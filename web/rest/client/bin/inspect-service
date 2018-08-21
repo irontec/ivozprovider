@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [ -z "$1" ] || [ -z "$2" ]; then
+    echo -e "\033[0;31mInvalid argument count\033[0m"
+    echo
+    echo -e "\033[0;32mUsage:\033[0m $0 Provider Company"
+    echo
+    exit 1
+fi
+
+
+pushd /opt/irontec/ivozprovider/web/rest
+    bin/console debug:container "${1,,}.lifecycle.${2,,}.service_collection"
+popd

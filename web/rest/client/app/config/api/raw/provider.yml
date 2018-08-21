@@ -1,0 +1,604 @@
+########################################
+## Raw
+########################################
+Ivoz\Provider\Domain\Model\Calendar\Calendar:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+      ROLE_BRAND_ADMIN:
+        company:
+          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+Ivoz\Provider\Domain\Model\CallAcl\CallAcl:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+      ROLE_BRAND_ADMIN:
+        company:
+          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchList:
+  collectionOperations:
+    get:
+      operation_normalization_context: 'detailedCollection'
+      normalization_context:
+        groups: ['detailedCollection']
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      inherited:
+        callAcl: 'Ivoz\Provider\Domain\Model\CallAcl\CallAcl'
+        matchList: 'Ivoz\Provider\Domain\Model\MatchList\MatchList'
+Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting:
+  attributes:
+    access_control: '("ROLE_COMPANY_ADMIN" in roles) or ("ROLE_COMPANY_USER" in roles)'
+    read_access_control:
+      ROLE_COMPANY_USER:
+        user:
+          eq: "user.getId()"
+      ROLE_COMPANY_ADMIN:
+        user:
+          in: "userRepository.getSupervisedUserIdsByAdmin(user)"
+      ROLE_BRAND_ADMIN:
+        user:
+          in: "userRepository.getSupervisedUserIdsByAdmin(user)"
+Ivoz\Provider\Domain\Model\Company\Company:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+      ROLE_BRAND_ADMIN:
+        brand:
+          eq: "user.getBrand().getId()"
+Ivoz\Provider\Domain\Model\CompanyService\CompanyService:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+      ROLE_BRAND_ADMIN:
+        company:
+          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+      ROLE_BRAND_ADMIN:
+        company:
+          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      inherited:
+        conditionalRoute: 'Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute'
+Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlist:
+  collectionOperations:
+    get:
+      operation_normalization_context: 'detailedCollection'
+      normalization_context:
+        groups: ['detailedCollection']
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      inherited:
+        matchlist: 'Ivoz\Provider\Domain\Model\MatchList\MatchList'
+Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelSchedule:
+  collectionOperations:
+    get:
+      operation_normalization_context: 'detailedCollection'
+      normalization_context:
+        groups: ['detailedCollection']
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      inherited:
+        condition: 'Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition'
+Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendar:
+  collectionOperations:
+    get:
+      operation_normalization_context: 'detailedCollection'
+      normalization_context:
+        groups: ['detailedCollection']
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      inherited:
+        calendar: 'Ivoz\Provider\Domain\Model\Calendar\Calendar'
+Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLock:
+  collectionOperations:
+    get:
+      operation_normalization_context: 'detailedCollection'
+      normalization_context:
+        groups: ['detailedCollection']
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      inherited:
+        routeLock: 'Ivoz\Provider\Domain\Model\RouteLock\RouteLock'
+Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+      ROLE_BRAND_ADMIN:
+        company:
+          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+Ivoz\Provider\Domain\Model\Country\Name:
+Ivoz\Provider\Domain\Model\Country\Zone:
+Ivoz\Provider\Domain\Model\Country\Country:
+  itemOperations:
+    put: ~
+    delete: ~
+  collectionOperations:
+    post: ~
+  attributes:
+    access_control: '"ROLE_USER" in roles'
+Ivoz\Provider\Domain\Model\Ddi\Ddi:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+      ROLE_BRAND_ADMIN:
+        company:
+          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+Ivoz\Provider\Domain\Model\Extension\Extension:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+      ROLE_BRAND_ADMIN:
+        company:
+          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+      ROLE_BRAND_ADMIN:
+        company:
+          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList\ExternalCallFilterBlackList:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      inherited:
+        filter: 'Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter'
+Ivoz\Provider\Domain\Model\ExternalCallFilterRelCalendar\ExternalCallFilterRelCalendar:
+  collectionOperations:
+    get:
+      operation_normalization_context: 'detailedCollection'
+      normalization_context:
+        groups: ['detailedCollection']
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      inherited:
+        filter: 'Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter'
+Ivoz\Provider\Domain\Model\ExternalCallFilterRelSchedule\ExternalCallFilterRelSchedule:
+  collectionOperations:
+    get:
+      operation_normalization_context: 'detailedCollection'
+      normalization_context:
+        groups: ['detailedCollection']
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      inherited:
+        filter: 'Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter'
+Ivoz\Provider\Domain\Model\ExternalCallFilterWhiteList\ExternalCallFilterWhiteList:
+  collectionOperations:
+    get:
+      operation_normalization_context: 'detailedCollection'
+      normalization_context:
+        groups: ['detailedCollection']
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      inherited:
+        filter: 'Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter'
+Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOut:
+  itemOperations:
+    put: ~
+    delete: ~
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      inherited:
+        fax: 'Ivoz\Provider\Domain\Model\Fax\Fax'
+Ivoz\Provider\Domain\Model\Fax\Fax:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+      ROLE_BRAND_ADMIN:
+        company:
+          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+Ivoz\Provider\Domain\Model\Feature\Feature:
+  itemOperations:
+    put: ~
+    delete: ~
+  collectionOperations:
+    post: ~
+#  attributes:
+#    access_control: '"ROLE_SUPER_ADMIN" in roles'
+Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompany:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+      ROLE_BRAND_ADMIN:
+        company:
+          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+Ivoz\Provider\Domain\Model\Friend\Friend:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+      ROLE_BRAND_ADMIN:
+        company:
+          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPattern:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      inherited:
+        friend: 'Ivoz\Provider\Domain\Model\Friend\Friend'
+Ivoz\Provider\Domain\Model\HolidayDate\HolidayDate:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      inherited:
+        calendar: 'Ivoz\Provider\Domain\Model\Calendar\Calendar'
+Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+      ROLE_BRAND_ADMIN:
+        company:
+          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUser:
+  collectionOperations:
+    get:
+      operation_normalization_context: 'detailedCollection'
+      normalization_context:
+        groups: ['detailedCollection']
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      inherited:
+        huntGroup: 'Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup'
+Ivoz\Provider\Domain\Model\Invoice\Invoice:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+      ROLE_BRAND_ADMIN:
+        company:
+          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+Ivoz\Provider\Domain\Model\IvrEntry\IvrEntry:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      inherited:
+        ivr: 'Ivoz\Provider\Domain\Model\Ivr\Ivr'
+Ivoz\Provider\Domain\Model\Ivr\Ivr:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+      ROLE_BRAND_ADMIN:
+        company:
+          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+Ivoz\Provider\Domain\Model\IvrExcludedExtension\IvrExcludedExtension:
+  collectionOperations:
+    get:
+      operation_normalization_context: 'detailedCollection'
+      normalization_context:
+        groups: ['detailedCollection']
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      inherited:
+        ivr: 'Ivoz\Provider\Domain\Model\Ivr\Ivr'
+Ivoz\Provider\Domain\Model\Language\Language:
+  itemOperations:
+    put: ~
+    delete: ~
+  collectionOperations:
+    post: ~
+  attributes:
+    access_control: '"ROLE_USER" in roles'
+Ivoz\Provider\Domain\Model\Language\Name:
+Ivoz\Provider\Domain\Model\Locution\Locution:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+      ROLE_BRAND_ADMIN:
+        company:
+          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+Ivoz\Provider\Domain\Model\MatchList\MatchList:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        or:
+          - brand:
+              eq: "user.getCompany().getBrand().getId()"
+          - company:
+              eq: "user.getCompany().getId()"
+      ROLE_BRAND_ADMIN:
+        or:
+          - brand:
+              eq: "user.getBrand().getId()"
+          - company:
+              in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+    write_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+      ROLE_BRAND_ADMIN:
+        or:
+          - brand:
+              eq: "user.getBrand().getId()"
+          - company:
+              in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPattern:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      inherited:
+        matchList: 'Ivoz\Provider\Domain\Model\MatchList\MatchList'
+Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHold:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        or:
+          - brand:
+              isNull: ~
+          - company:
+              eq: "user.getCompany().getId()"
+      ROLE_BRAND_ADMIN:
+        or:
+          - brand:
+              eq: "user.getBrand().getId()"
+          - company:
+              in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+    write_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+      ROLE_BRAND_ADMIN:
+        or:
+          - brand:
+              eq: "user.getBrand().getId()"
+          - company:
+              in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+      ROLE_BRAND_ADMIN:
+        company:
+          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPattern:
+  collectionOperations:
+    get:
+      operation_normalization_context: 'detailedCollection'
+      normalization_context:
+        groups: ['detailedCollection']
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      inherited:
+        outgoingDdiRule: 'Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule'
+Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+      ROLE_BRAND_ADMIN:
+        brand:
+          eq: "user.getBrand().getId()"
+Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroup:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+      ROLE_BRAND_ADMIN:
+        company:
+          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUser:
+  collectionOperations:
+    get:
+      operation_normalization_context: 'detailedCollection'
+      normalization_context:
+        groups: ['detailedCollection']
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      inherited:
+        pickUpGroup: 'Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroup'
+Ivoz\Provider\Domain\Model\QueueMember\QueueMember:
+  collectionOperations:
+    get:
+      operation_normalization_context: 'detailedCollection'
+      normalization_context:
+        groups: ['detailedCollection']
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      inherited:
+        queue: 'Ivoz\Provider\Domain\Model\Queue\Queue'
+Ivoz\Provider\Domain\Model\Queue\Queue:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+      ROLE_BRAND_ADMIN:
+        company:
+          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+Ivoz\Provider\Domain\Model\RatingProfile\RatingProfile:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      ROLE_BRAND_ADMIN:
+        company:
+          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+Ivoz\Provider\Domain\Model\Recording\Recording:
+  itemOperations:
+    put: ~
+  collectionOperations:
+    post: ~
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+      ROLE_BRAND_ADMIN:
+        company:
+          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+      ROLE_BRAND_ADMIN:
+        or:
+          - brand:
+              eq: "user.getBrand().getId()"
+          - company:
+              in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+      ROLE_BRAND_ADMIN:
+        or:
+          - brand:
+              eq: "user.getBrand().getId()"
+          - company:
+              in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+Ivoz\Provider\Domain\Model\RouteLock\RouteLock:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+      ROLE_BRAND_ADMIN:
+        company:
+          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+Ivoz\Provider\Domain\Model\RoutingTag\RoutingTag:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      ROLE_BRAND_ADMIN:
+        brand:
+          eq: "user.getBrand().getId()"
+Ivoz\Provider\Domain\Model\Schedule\Schedule:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+      ROLE_BRAND_ADMIN:
+        company:
+          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+Ivoz\Provider\Domain\Model\Service\Service:
+  itemOperations:
+    delete: ~
+  collectionOperations:
+    post: ~
+  attributes:
+    access_control: '"ROLE_SUPER_ADMIN" in roles'
+Ivoz\Provider\Domain\Model\Terminal\Terminal:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
+      ROLE_BRAND_ADMIN:
+        company:
+          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+Ivoz\Provider\Domain\Model\TerminalModel\TerminalModel:
+  itemOperations:
+    put: ~
+    delete: ~
+  collectionOperations:
+    post: ~
+  attributes:
+    access_control: '"ROLE_SUPER_ADMIN" in roles'
+Ivoz\Provider\Domain\Model\Timezone\Timezone:
+  itemOperations:
+    put: ~
+    delete: ~
+  collectionOperations:
+    post: ~
+  attributes:
+    access_control: '"ROLE_USER" in roles'
+Ivoz\Provider\Domain\Model\User\User:
+  attributes:
+    access_control: '("ROLE_COMPANY_ADMIN" in roles) or ("ROLE_COMPANY_USER" in roles)'
+    read_access_control:
+      ROLE_COMPANY_USER:
+        user:
+          eq: "user.getId()"
+      ROLE_COMPANY_ADMIN:
+        company:
+          in: "user.getCompany().getId()"
+      ROLE_BRAND_ADMIN:
+        company:
+          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"

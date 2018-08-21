@@ -1,0 +1,118 @@
+api:
+  resource: '.'
+  type: 'api_platform'
+
+api_base_path:
+  path: '/'
+
+api_doc:
+  path: api/swagger.json
+
+api_admin_login:
+  path: admin_login
+
+api_user_login:
+  path: user_login
+
+###############################
+## Custom routes
+###############################
+
+get_my_status:
+  path: '/my/status'
+  methods: ['GET']
+  defaults:
+    _controller: Controller\My\StatusAction
+    _api_resource_class: 'Model\UserStatus'
+    _api_item_operation_name: 'get_my_status'
+    _api_receive: false
+
+get_my_web_theme:
+  path: '/my/web_theme'
+  methods: ['GET']
+  defaults:
+    _controller: Controller\My\WebThemeAction
+    _api_resource_class: 'Model\WebTheme'
+    _api_item_operation_name: 'get_my_web_theme'
+    _api_receive: false
+
+get_my_call_stats:
+  path: '/my/call_stats'
+  methods: ['GET']
+  defaults:
+    _controller: Controller\My\CallStatsAction
+    _api_resource_class: 'Model\CallStats'
+    _api_item_operation_name: 'get_my_call_stats'
+    _api_receive: false
+
+get_my_profile:
+  path: '/my/profile'
+  methods: ['GET']
+  defaults:
+    _controller: Controller\My\ProfileAction
+    _api_resource_class: 'Ivoz\Provider\Domain\Model\User\User'
+    _api_item_operation_name: 'get_my_profile'
+    _api_receive: false
+
+put_my_profile:
+  path: '/my/profile'
+  methods: ['PUT']
+  defaults:
+    _controller: Controller\My\PutProfileAction
+    _api_resource_class: 'Ivoz\Provider\Domain\Model\User\User'
+    _api_item_operation_name: 'put_my_profile'
+    _api_receive: false
+
+get_my_company_assistants:
+  path: '/my/company_assistants'
+  methods: ['GET']
+  defaults:
+    _controller: Controller\My\CompanyAssistantsAction
+    _api_resource_class: 'Ivoz\Provider\Domain\Model\User\User'
+    _api_collection_operation_name: 'get_my_company_assistants'
+    _api_receive: false
+
+get_my_company_voicemails:
+  path: '/my/company_voicemails'
+  methods: ['GET']
+  defaults:
+    _controller: Controller\My\CompanyVoicemailsAction
+    _api_resource_class: 'Ivoz\Provider\Domain\Model\User\User'
+    _api_collection_operation_name: 'get_my_company_assistants'
+    _api_receive: false
+
+get_my_company_extensions:
+  path: '/my/company_extensions'
+  methods: ['GET']
+  defaults:
+    _controller: Controller\My\CompanyExtensionsAction
+    _api_resource_class: 'Ivoz\Provider\Domain\Model\Extension\Extension'
+    _api_collection_operation_name: 'get_my_company_extensions'
+    _api_receive: false
+
+get_my_call_forward_settings:
+  path: '/my/call_forward_settings'
+  methods: ['GET']
+  defaults:
+    _controller: Controller\My\CallForwardSettingsAction
+    _api_resource_class: 'Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting'
+    _api_collection_operation_name: 'get_my_call_forward_settings'
+    _api_receive: false
+
+post_my_call_forward_settings:
+  path: '/my/call_forward_settings'
+  methods: ['POST']
+  defaults:
+    _controller: Controller\My\PostCallForwardSettingsAction
+    _api_resource_class: 'Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting'
+    _api_item_operation_name: 'post_my_call_forward_settings'
+    _api_receive: false
+
+get_my_call_history:
+  path: '/my/call_history'
+  methods: ['GET']
+  defaults:
+    _controller: Controller\My\CallHistoryAction
+    _api_resource_class: 'Ivoz\Kam\Domain\Model\UsersCdr\UsersCdr'
+    _api_collection_operation_name: 'get_my_call_history'
+    _api_receive: false
