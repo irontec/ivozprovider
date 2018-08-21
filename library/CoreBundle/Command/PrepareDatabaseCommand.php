@@ -1,6 +1,6 @@
 <?php
 
-namespace ApiBundle\Command;
+namespace CoreBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
@@ -49,8 +49,8 @@ class PrepareDatabaseCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
-            ->setName('api:prepare:database')
-            ->setDescription('Generate database schema and load fixtures');
+            ->setName('core:prepare:database')
+            ->setDescription('Fault tolerant database schema generator');
     }
 
     /**

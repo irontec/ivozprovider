@@ -2,9 +2,9 @@
 
 set -e
 
-pushd /opt/irontec/ivozprovider/web/rest/platform
+pushd /opt/irontec/ivozprovider/scheme
     # Prepare dataset
-    bin/console api:prepare:database -e test
+    bin/console core:prepare:database -e test
     # Load fixtures
     bin/console doctrine:fixtures:load -e test --no-interaction -v
 
