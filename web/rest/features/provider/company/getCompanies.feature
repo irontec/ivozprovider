@@ -60,7 +60,7 @@ Feature: Retrieve companies
           "recordingsLimitMB": null,
           "recordingsLimitEmail": "",
           "billingMethod": "prepaid",
-          "balance": "1.2",
+          "balance": 1.2,
           "id": 1,
           "language": {
               "iden": "es",

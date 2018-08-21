@@ -82,7 +82,7 @@ Feature: Create companies
           "recordingsLimitMB": 0,
           "recordingsLimitEmail": "",
           "billingMethod": "postpaid",
-          "balance": "0",
+          "balance": 0,
           "id": 4,
           "language": {
               "iden": "es",

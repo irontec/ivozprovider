@@ -14,7 +14,7 @@ Feature: Update balance notifications
           "id": 1,
           "company": 1,
           "toAddress": "updated@address",
-          "threshold": "1.0003"
+          "threshold": 1.0003
       }
     """
     Then the response status code should be 200
@@ -24,7 +24,7 @@ Feature: Update balance notifications
     """
       {
           "toAddress": "updated@address",
-          "threshold": "1.0003",
+          "threshold": 1.0003,
           "lastSent": null,
           "id": 1,
           "company": "~",

@@ -33,7 +33,7 @@ Feature: Retrieve fixed costs
       {
           "name": "Monitoring",
           "description": "Something",
-          "cost": "1",
+          "cost": 1,
           "id": 1,
           "brand": "~"
       }

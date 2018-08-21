@@ -27,7 +27,7 @@ Feature: Update carriers
           "description": "Artemis-Updated",
           "name": "Artemis-Updated",
           "externallyRated": true,
-          "balance": "0",
+          "balance": 0,
           "calculateCost": false,
           "id": 1,
           "brand": {

@@ -13,7 +13,7 @@ Feature: Create balance notifications
       {
           "company": 1,
           "toAddress": "new@address.com",
-          "threshold": "1230.0001"
+          "threshold": 1230.0001
       }
     """
     Then the response status code should be 201
@@ -23,7 +23,7 @@ Feature: Create balance notifications
     """
       {
           "toAddress": "new@address.com",
-          "threshold": "1230.0001",
+          "threshold": 1230.0001,
           "id": 3
       }
     """
@@ -39,7 +39,7 @@ Feature: Create balance notifications
     """
       {
           "toAddress": "new@address.com",
-          "threshold": "1230.0001",
+          "threshold": 1230.0001,
           "lastSent": null,
           "id": 3,
           "company": "~",

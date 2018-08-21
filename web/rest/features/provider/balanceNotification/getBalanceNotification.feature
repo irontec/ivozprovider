@@ -16,12 +16,12 @@ Feature: Retrieve balance notifications
       [
             {
                 "toAddress": "balance@ivozprovider.com",
-                "threshold": "4.5",
+                "threshold": 4.5,
                 "id": 1
             },
             {
                 "toAddress": "balance2@ivozprovider.com",
-                "threshold": "0",
+                "threshold": 0,
                 "id": 2
             }
       ]
@@ -38,7 +38,7 @@ Feature: Retrieve balance notifications
     """
       {
           "toAddress": "balance@ivozprovider.com",
-          "threshold": "4.5",
+          "threshold": 4.5,
           "lastSent": null,
           "id": 1,
           "company": "~",
