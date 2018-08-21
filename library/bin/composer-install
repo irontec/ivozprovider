@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Stop on first non-zero exit code
+set -e
+
 pushd /opt/irontec/ivozprovider/library
     composer install $*
 popd

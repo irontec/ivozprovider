@@ -22,8 +22,12 @@
             "options": {
                 "symlink": true
             }
+        },
+        {
+            "packagist.org": false
         }
     ],
+    "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
             "": "src/",

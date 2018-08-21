@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "0832cdb9d95e17960009818115ee5451",
+    "content-hash": "fefe138a4b7f747dc180bc6d6606da93",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -1002,11 +1002,11 @@
         },
         {
             "name": "egulias/email-validator",
-            "version": "2.1.4.0",
+            "version": "2.1.5.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/egulias/email-validator",
-                "reference": "8790f594151ca6a2010c6218e09d96df67173ad3",
+                "reference": "54859fabea8b3beecbb1a282888d5c990036b9e3",
                 "shasum": null
             },
             "require": {
@@ -1289,18 +1289,13 @@
         },
         {
             "name": "mmoreram/gearman-bundle",
-            "version": "v4.1.0",
+            "version": "4.1.0.0",
             "target-dir": "Mmoreram/GearmanBundle",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mmoreram/GearmanBundle.git",
-                "reference": "ac43476cea9e412ae132db5030ae6ba9f1d87af9"
-            },
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mmoreram/GearmanBundle/zipball/ac43476cea9e412ae132db5030ae6ba9f1d87af9",
+                "type": "path",
+                "url": "../../library/vendor/mmoreram/gearman-bundle/Mmoreram/GearmanBundle",
                 "reference": "ac43476cea9e412ae132db5030ae6ba9f1d87af9",
-                "shasum": ""
+                "shasum": null
             },
             "require": {
                 "doctrine/common": "~2.2",
@@ -1332,7 +1327,6 @@
                     "Mmoreram\\GearmanBundle": ""
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1342,12 +1336,12 @@
                     "email": "yuhu@mmoreram.com"
                 },
                 {
-                    "name": "Symfony Community",
-                    "homepage": "https://github.com/mmoreram/GearmanBundle/contributors"
-                },
-                {
                     "name": "Matt Daum",
                     "email": "matt@setfive.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://github.com/mmoreram/GearmanBundle/contributors"
                 }
             ],
             "description": "Adds gearman support to your Symfony2, Symfony3 and Symfony4 project",
@@ -1355,7 +1349,9 @@
             "keywords": [
                 "gearman"
             ],
-            "time": "2017-11-22T17:09:48+00:00"
+            "transport-options": {
+                "symlink": true
+            }
         },
         {
             "name": "monolog/monolog",
@@ -1570,11 +1566,11 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "2.0.15.0",
+            "version": "2.0.17.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/paragonie/random_compat",
-                "reference": "10bcb46e8f3d365170f6de9d05245aa066b81f09",
+                "reference": "29af24f25bab834fcbb38ad2a69fa93b867e070d",
                 "shasum": null
             },
             "require": {
@@ -1620,17 +1616,12 @@
         },
         {
             "name": "phpxmlrpc/phpxmlrpc",
-            "version": "4.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/gggeek/phpxmlrpc.git",
-                "reference": "679eacd661962f353a809ab66e83a86233f28bcc"
-            },
+            "version": "4.0.0.0",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/gggeek/phpxmlrpc/zipball/679eacd661962f353a809ab66e83a86233f28bcc",
+                "type": "path",
+                "url": "../../library/vendor/phpxmlrpc/phpxmlrpc",
                 "reference": "679eacd661962f353a809ab66e83a86233f28bcc",
-                "shasum": ""
+                "shasum": null
             },
             "require": {
                 "ext-xml": "*",
@@ -1657,7 +1648,6 @@
                     "PhpXmlRpc\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -1667,7 +1657,9 @@
                 "webservices",
                 "xmlrpc"
             ],
-            "time": "2016-01-20T23:28:09+00:00"
+            "transport-options": {
+                "symlink": true
+            }
         },
         {
             "name": "predis/predis",
@@ -1939,16 +1931,17 @@
         },
         {
             "name": "ramsey/uuid",
-            "version": "3.7.3.0",
+            "version": "3.8.0.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/ramsey/uuid",
-                "reference": "44abcdad877d9a46685a3a4d221e3b2c4b87cb76",
+                "reference": "d09ea80159c1929d75b3f9c60504d613aeb4a1e3",
                 "shasum": null
             },
             "require": {
-                "paragonie/random_compat": "^1.0|^2.0",
-                "php": "^5.4 || ^7.0"
+                "paragonie/random_compat": "^1.0|^2.0|9.99.99",
+                "php": "^5.4 || ^7.0",
+                "symfony/polyfill-ctype": "^1.8"
             },
             "replace": {
                 "rhumsaa/uuid": "self.version"
@@ -1956,16 +1949,17 @@
             "require-dev": {
                 "codeception/aspect-mock": "^1.0 | ~2.0.0",
                 "doctrine/annotations": "~1.2.0",
-                "goaop/framework": "1.0.0-alpha.2 | ^1.0 | ^2.1",
+                "goaop/framework": "1.0.0-alpha.2 | ^1.0 | ~2.1.0",
                 "ircmaxell/random-lib": "^1.1",
                 "jakub-onderka/php-parallel-lint": "^0.9.0",
                 "mockery/mockery": "^0.9.9",
                 "moontoast/math": "^1.1",
                 "php-mock/php-mock-phpunit": "^0.3|^1.1",
-                "phpunit/phpunit": "^4.7|^5.0",
+                "phpunit/phpunit": "^4.7|^5.0|^6.5",
                 "squizlabs/php_codesniffer": "^2.3"
             },
             "suggest": {
+                "ext-ctype": "Provides support for PHP Ctype functions",
                 "ext-libsodium": "Provides the PECL libsodium extension for use with the SodiumRandomGenerator",
                 "ext-uuid": "Provides the PECL UUID extension for use with the PeclUuidTimeGenerator and PeclUuidRandomGenerator",
                 "ircmaxell/random-lib": "Provides RandomLib for use with the RandomLibAdapter",
@@ -2040,11 +2034,11 @@
         },
         {
             "name": "swiftmailer/swiftmailer",
-            "version": "6.1.0.0",
+            "version": "6.1.2.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/swiftmailer/swiftmailer",
-                "reference": "0ff595e1d9d7d1c929b2a5f7b774bbcfbbd81587",
+                "reference": "7d760881d266d63c5e7a1155cbcf2ac656a31ca8",
                 "shasum": null
             },
             "require": {
@@ -2159,11 +2153,11 @@
         },
         {
             "name": "symfony/polyfill-apcu",
-            "version": "1.8.0.0",
+            "version": "1.9.0.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-apcu",
-                "reference": "9b83bd010112ec196410849e840d9b9fefcb15ad",
+                "reference": "19e1b73bf255265ad0b568f81766ae2a3266d8d2",
                 "shasum": null
             },
             "require": {
@@ -2172,7 +2166,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.8-dev"
+                    "dev-master": "1.9-dev"
                 }
             },
             "autoload": {
@@ -2211,20 +2205,23 @@
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "1.8.0.0",
+            "version": "1.9.0.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-ctype",
-                "reference": "7cc359f1b7b80fc25ed7796be7d96adc9b354bae",
+                "reference": "e3d826245268269cd66f8326bd8bc066687b4a19",
                 "shasum": null
             },
             "require": {
                 "php": ">=5.3.3"
             },
+            "suggest": {
+                "ext-ctype": "For best performance"
+            },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.8-dev"
+                    "dev-master": "1.9-dev"
                 }
             },
             "autoload": {
@@ -2262,11 +2259,11 @@
         },
         {
             "name": "symfony/polyfill-intl-icu",
-            "version": "1.8.0.0",
+            "version": "1.9.0.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-intl-icu",
-                "reference": "80ee17ae83c10cd513e5144f91a73607a21edb4e",
+                "reference": "f22a90256d577c7ef7efad8df1f0201663d57644",
                 "shasum": null
             },
             "require": {
@@ -2279,7 +2276,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.8-dev"
+                    "dev-master": "1.9-dev"
                 }
             },
             "autoload": {
@@ -2316,11 +2313,11 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "1.8.0.0",
+            "version": "1.9.0.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-mbstring",
-                "reference": "3296adf6a6454a050679cde90f95350ad604b171",
+                "reference": "d0cd638f4634c16d8df4508e847f14e9e43168b8",
                 "shasum": null
             },
             "require": {
@@ -2332,7 +2329,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.8-dev"
+                    "dev-master": "1.9-dev"
                 }
             },
             "autoload": {
@@ -2371,11 +2368,11 @@
         },
         {
             "name": "symfony/polyfill-php56",
-            "version": "1.8.0.0",
+            "version": "1.9.0.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-php56",
-                "reference": "af98553c84912459db3f636329567809d639a8f6",
+                "reference": "7b4fc009172cc0196535b0328bd1226284a28000",
                 "shasum": null
             },
             "require": {
@@ -2385,7 +2382,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.8-dev"
+                    "dev-master": "1.9-dev"
                 }
             },
             "autoload": {
@@ -2423,21 +2420,21 @@
         },
         {
             "name": "symfony/polyfill-php70",
-            "version": "1.8.0.0",
+            "version": "1.9.0.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-php70",
-                "reference": "77454693d8f10dd23bb24955cffd2d82db1007a6",
+                "reference": "1e24b0c4a56d55aaf368763a06c6d1c7d3194934",
                 "shasum": null
             },
             "require": {
-                "paragonie/random_compat": "~1.0|~2.0",
+                "paragonie/random_compat": "~1.0|~2.0|~9.99",
                 "php": ">=5.3.3"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.8-dev"
+                    "dev-master": "1.9-dev"
                 }
             },
             "autoload": {
@@ -2478,11 +2475,11 @@
         },
         {
             "name": "symfony/polyfill-util",
-            "version": "1.8.0.0",
+            "version": "1.9.0.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-util",
-                "reference": "1a5ad95d9436cbff3296034fe9f8d586dce3fb3a",
+                "reference": "8e15d04ba3440984d23e7964b2ee1d25c8de1581",
                 "shasum": null
             },
             "require": {
@@ -2491,7 +2488,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.8-dev"
+                    "dev-master": "1.9-dev"
                 }
             },
             "autoload": {
@@ -2584,11 +2581,11 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "3.4.12.0",
+            "version": "3.4.14.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/symfony",
-                "reference": "c36f8cb21b5f1661a14fdb8cef9cc611d54a3494",
+                "reference": "f50e17fa4edd6216f7fe5b908f04e64ba1d19a9e",
                 "shasum": null
             },
             "require": {
@@ -2611,7 +2608,7 @@
             },
             "conflict": {
                 "phpdocumentor/reflection-docblock": "<3.0||>=3.2.0,<3.2.2",
-                "phpdocumentor/type-resolver": "<0.2.1",
+                "phpdocumentor/type-resolver": "<0.3.0",
                 "phpunit/phpunit": "<4.8.35|<5.4.3,>=5.0"
             },
             "provide": {
@@ -2680,7 +2677,7 @@
                 "doctrine/data-fixtures": "1.0.*",
                 "doctrine/dbal": "~2.4",
                 "doctrine/doctrine-bundle": "~1.4",
-                "doctrine/orm": "~2.4,>=2.4.5",
+                "doctrine/orm": "~2.4,>=2.4.5,<=2.7.0",
                 "egulias/email-validator": "~1.2,>=1.2.8|~2.0",
                 "monolog/monolog": "~1.11",
                 "ocramius/proxy-manager": "~0.4|~1.0|~2.0",
@@ -2740,16 +2737,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "2.4.8.0",
+            "version": "1.35.4.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/twig/twig",
-                "reference": "7b604c89da162034bdf4bb66310f358d313dd16d",
+                "reference": "7e081e98378a1e78c29cc9eba4aefa5d78a05d2a",
                 "shasum": null
             },
             "require": {
-                "php": "^7.0",
-                "symfony/polyfill-mbstring": "~1.0"
+                "php": ">=5.3.3",
+                "symfony/polyfill-ctype": "^1.8"
             },
             "require-dev": {
                 "psr/container": "^1.0",
@@ -2759,7 +2756,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.4-dev"
+                    "dev-master": "1.35-dev"
                 }
             },
             "autoload": {
@@ -2768,11 +2765,6 @@
                 },
                 "psr-4": {
                     "Twig\\": "src/"
-                }
-            },
-            "autoload-dev": {
-                "psr-0": {
-                    "Twig_Tests_": "test/"
                 }
             },
             "license": [
@@ -2787,7 +2779,7 @@
                 },
                 {
                     "name": "Twig Team",
-                    "homepage": "http://twig.sensiolabs.org/contributors",
+                    "homepage": "https://twig.symfony.com/contributors",
                     "role": "Contributors"
                 },
                 {
@@ -2797,7 +2789,7 @@
                 }
             ],
             "description": "Twig, the flexible, fast, and secure template language for PHP",
-            "homepage": "http://twig.sensiolabs.org",
+            "homepage": "https://twig.symfony.com",
             "keywords": [
                 "templating"
             ],
@@ -2848,17 +2840,12 @@
         },
         {
             "name": "zendframework/zend-code",
-            "version": "3.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/zendframework/zend-code.git",
-                "reference": "2899c17f83a7207f2d7f53ec2f421204d3beea27"
-            },
+            "version": "dev-master",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-code/zipball/2899c17f83a7207f2d7f53ec2f421204d3beea27",
+                "type": "path",
+                "url": "../../library/vendor/zendframework/zend-code",
                 "reference": "2899c17f83a7207f2d7f53ec2f421204d3beea27",
-                "shasum": ""
+                "shasum": null
             },
             "require": {
                 "php": "^5.6 || 7.0.0 - 7.0.4 || ^7.0.6",
@@ -2887,7 +2874,32 @@
                     "Zend\\Code\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "ZendTest\\Code\\": "test/"
+                }
+            },
+            "scripts": {
+                "check": [
+                    "@cs-check",
+                    "@test"
+                ],
+                "upload-coverage": [
+                    "coveralls -v"
+                ],
+                "cs-check": [
+                    "phpcs"
+                ],
+                "cs-fix": [
+                    "phpcbf"
+                ],
+                "test": [
+                    "phpunit --colors=always"
+                ],
+                "test-coverage": [
+                    "phpunit --colors=always --coverage-clover clover.xml"
+                ]
+            },
             "license": [
                 "BSD-3-Clause"
             ],
@@ -2897,21 +2909,18 @@
                 "code",
                 "zf2"
             ],
-            "time": "2016-10-24T13:23:32+00:00"
+            "transport-options": {
+                "symlink": true
+            }
         },
         {
             "name": "zendframework/zend-eventmanager",
-            "version": "3.2.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/zendframework/zend-eventmanager.git",
-                "reference": "a5e2583a211f73604691586b8406ff7296a946dd"
-            },
+            "version": "dev-master",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-eventmanager/zipball/a5e2583a211f73604691586b8406ff7296a946dd",
+                "type": "path",
+                "url": "../../library/vendor/zendframework/zend-eventmanager",
                 "reference": "a5e2583a211f73604691586b8406ff7296a946dd",
-                "shasum": ""
+                "shasum": null
             },
             "require": {
                 "php": "^5.6 || ^7.0"
@@ -2939,7 +2948,33 @@
                     "Zend\\EventManager\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "ZendTest\\EventManager\\": "test/",
+                    "ZendBench\\EventManager\\": "benchmarks/"
+                },
+                "files": [
+                    "test/_autoload.php"
+                ]
+            },
+            "scripts": {
+                "check": [
+                    "@cs-check",
+                    "@test"
+                ],
+                "cs-check": [
+                    "phpcs"
+                ],
+                "cs-fix": [
+                    "phpcbf"
+                ],
+                "test": [
+                    "phpunit --colors=always"
+                ],
+                "test-coverage": [
+                    "phpunit --colors=always --coverage-clover clover.xml"
+                ]
+            },
             "license": [
                 "BSD-3-Clause"
             ],
@@ -2951,12 +2986,14 @@
                 "events",
                 "zf2"
             ],
-            "time": "2018-04-25T15:33:34+00:00"
+            "transport-options": {
+                "symlink": true
+            }
         }
     ],
     "packages-dev": [],
     "aliases": [],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,

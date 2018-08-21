@@ -18,8 +18,12 @@
             "options": {
                 "symlink": true
             }
+        },
+        {
+            "packagist.org": false
         }
     ],
+    "minimum-stability": "dev",
     "autoload": {
         "psr-0": {
             "IvozProvider\\": "../../library/IvozProvider"
