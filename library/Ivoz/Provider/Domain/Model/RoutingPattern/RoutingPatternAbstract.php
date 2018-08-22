@@ -29,6 +29,11 @@ abstract class RoutingPatternAbstract
     protected $description;
 
     /**
+     * @var \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface
+     */
+    protected $tpDestination;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
      */
     protected $brand;
@@ -229,6 +234,30 @@ abstract class RoutingPatternAbstract
     public function getPrefix()
     {
         return $this->prefix;
+    }
+
+    /**
+     * Set tpDestination
+     *
+     * @param \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface $tpDestination
+     *
+     * @return self
+     */
+    public function setTpDestination(\Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface $tpDestination = null)
+    {
+        $this->tpDestination = $tpDestination;
+
+        return $this;
+    }
+
+    /**
+     * Get tpDestination
+     *
+     * @return \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface
+     */
+    public function getTpDestination()
+    {
+        return $this->tpDestination;
     }
 
     /**

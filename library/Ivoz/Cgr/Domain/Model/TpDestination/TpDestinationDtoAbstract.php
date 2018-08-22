@@ -42,6 +42,11 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
      */
     private $destination;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternDto | null
+     */
+    private $routingPattern;
+
 
     use DtoNormalizer;
 
@@ -65,7 +70,8 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
             'prefix' => 'prefix',
             'createdAt' => 'createdAt',
             'id' => 'id',
-            'destinationId' => 'destination'
+            'destinationId' => 'destination',
+            'routingPatternId' => 'routingPattern'
         ];
     }
 
@@ -80,7 +86,8 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
             'prefix' => $this->getPrefix(),
             'createdAt' => $this->getCreatedAt(),
             'id' => $this->getId(),
-            'destination' => $this->getDestination()
+            'destination' => $this->getDestination(),
+            'routingPattern' => $this->getRoutingPattern()
         ];
     }
 
@@ -90,6 +97,7 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
         $this->destination = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Destination\\Destination', $this->getDestinationId());
+        $this->routingPattern = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\RoutingPattern\\RoutingPattern', $this->getRoutingPatternId());
     }
 
     /**
@@ -240,6 +248,52 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
     public function getDestinationId()
     {
         if ($dto = $this->getDestination()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternDto $routingPattern
+     *
+     * @return static
+     */
+    public function setRoutingPattern(\Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternDto $routingPattern = null)
+    {
+        $this->routingPattern = $routingPattern;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternDto
+     */
+    public function getRoutingPattern()
+    {
+        return $this->routingPattern;
+    }
+
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setRoutingPatternId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternDto($id)
+            : null;
+
+        return $this->setRoutingPattern($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getRoutingPatternId()
+    {
+        if ($dto = $this->getRoutingPattern()) {
             return $dto->getId();
         }
 

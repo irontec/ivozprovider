@@ -13,11 +13,32 @@ interface RoutingPatternInterface extends EntityInterface
     public function setPrefix($prefix = null);
 
     /**
+     * @return string
+     */
+    public function getCgrTag();
+
+    /**
      * Get prefix
      *
      * @return string
      */
     public function getPrefix();
+
+    /**
+     * Set tpDestination
+     *
+     * @param \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface $tpDestination
+     *
+     * @return self
+     */
+    public function setTpDestination(\Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface $tpDestination = null);
+
+    /**
+     * Get tpDestination
+     *
+     * @return \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface
+     */
+    public function getTpDestination();
 
     /**
      * Set brand
