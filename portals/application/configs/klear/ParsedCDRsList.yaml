@@ -12,8 +12,6 @@ production:
       csv: false
       order:
         field:
-          - brandId
-          - companyId
           - calldate
         type: desc
       pagination:

@@ -13,7 +13,6 @@ production:
       order:
         field:
           - calldate
-          - companyId
         type: desc
       pagination:
         items: 50

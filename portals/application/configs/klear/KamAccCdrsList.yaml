@@ -12,8 +12,6 @@ production:
       order:
         field:
           - start_time_utc
-          - brandId
-          - companyId
         type: desc
       rawCondition: "peeringContractId IS NOT NULL AND peeringContractId != ''"
       pagination:
