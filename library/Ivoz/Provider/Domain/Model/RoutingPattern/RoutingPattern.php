@@ -31,5 +31,18 @@ class RoutingPattern extends RoutingPatternAbstract implements RoutingPatternInt
         }
         return parent::setPrefix($prefix);
     }
+
+    /**
+     * @return string
+     */
+    public function getCgrTag()
+    {
+        return sprintf(
+            "b%dlcrdst%d",
+            $this->getBrand()->getId(),
+            $this->getId()
+        );
+    }
+
 }
 
