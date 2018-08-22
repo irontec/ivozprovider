@@ -39,6 +39,11 @@ abstract class TpDestinationAbstract
      */
     protected $destination;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface
+     */
+    protected $routingPattern;
+
 
     use ChangelogTrait;
 
@@ -123,6 +128,7 @@ abstract class TpDestinationAbstract
         $self
             ->setTag($dto->getTag())
             ->setDestination($dto->getDestination())
+            ->setRoutingPattern($dto->getRoutingPattern())
         ;
 
         $self->sanitizeValues();
@@ -147,7 +153,8 @@ abstract class TpDestinationAbstract
             ->setTag($dto->getTag())
             ->setPrefix($dto->getPrefix())
             ->setCreatedAt($dto->getCreatedAt())
-            ->setDestination($dto->getDestination());
+            ->setDestination($dto->getDestination())
+            ->setRoutingPattern($dto->getRoutingPattern());
 
 
 
@@ -166,7 +173,8 @@ abstract class TpDestinationAbstract
             ->setTag(self::getTag())
             ->setPrefix(self::getPrefix())
             ->setCreatedAt(self::getCreatedAt())
-            ->setDestination(\Ivoz\Provider\Domain\Model\Destination\Destination::entityToDto(self::getDestination(), $depth));
+            ->setDestination(\Ivoz\Provider\Domain\Model\Destination\Destination::entityToDto(self::getDestination(), $depth))
+            ->setRoutingPattern(\Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPattern::entityToDto(self::getRoutingPattern(), $depth));
     }
 
     /**
@@ -179,7 +187,8 @@ abstract class TpDestinationAbstract
             'tag' => self::getTag(),
             'prefix' => self::getPrefix(),
             'created_at' => self::getCreatedAt(),
-            'destinationId' => self::getDestination() ? self::getDestination()->getId() : null
+            'destinationId' => self::getDestination() ? self::getDestination()->getId() : null,
+            'routingPatternId' => self::getRoutingPattern() ? self::getRoutingPattern()->getId() : null
         ];
     }
 
@@ -320,6 +329,30 @@ abstract class TpDestinationAbstract
     public function getDestination()
     {
         return $this->destination;
+    }
+
+    /**
+     * Set routingPattern
+     *
+     * @param \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface $routingPattern
+     *
+     * @return self
+     */
+    public function setRoutingPattern(\Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface $routingPattern)
+    {
+        $this->routingPattern = $routingPattern;
+
+        return $this;
+    }
+
+    /**
+     * Get routingPattern
+     *
+     * @return \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface
+     */
+    public function getRoutingPattern()
+    {
+        return $this->routingPattern;
     }
 
 

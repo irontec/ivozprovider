@@ -48,5 +48,14 @@ Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationAbstract:
       joinColumn:
         name: destinationId
         referencedColumnName: id
-        nullable: false
+        nullable: true
+        onDelete: cascade
+    routingPattern:
+      targetEntity: \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface
+      inversedBy: tpDestination
+      fetch: LAZY
+      joinColumn:
+        name: routingPatternId
+        referencedColumnName: id
+        nullable: true
         onDelete: cascade

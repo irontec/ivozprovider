@@ -7,6 +7,24 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 interface TpDestinationInterface extends EntityInterface
 {
     /**
+     * Set destination
+     *
+     * @param \Ivoz\Provider\Domain\Model\Destination\DestinationInterface | null $destination
+     *
+     * @return self
+     */
+    public function setDestination(\Ivoz\Provider\Domain\Model\Destination\DestinationInterface $destination = null);
+
+    /**
+     * Set routingPattern
+     *
+     * @param \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface | null $routingPattern
+     *
+     * @return self
+     */
+    public function setRoutingPattern(\Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface $routingPattern = null);
+
+    /**
      * Set tpid
      *
      * @param string $tpid
@@ -71,20 +89,18 @@ interface TpDestinationInterface extends EntityInterface
     public function getCreatedAt();
 
     /**
-     * Set destination
-     *
-     * @param \Ivoz\Provider\Domain\Model\Destination\DestinationInterface $destination
-     *
-     * @return self
-     */
-    public function setDestination(\Ivoz\Provider\Domain\Model\Destination\DestinationInterface $destination);
-
-    /**
      * Get destination
      *
      * @return \Ivoz\Provider\Domain\Model\Destination\DestinationInterface
      */
     public function getDestination();
+
+    /**
+     * Get routingPattern
+     *
+     * @return \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface
+     */
+    public function getRoutingPattern();
 
 }
 

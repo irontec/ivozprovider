@@ -27,3 +27,8 @@ Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternAbstract:
           nullable: false
           onDelete: cascade
       orphanRemoval: false
+  oneToOne:
+    tpDestination:
+      targetEntity: \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface
+      mappedBy: routingPattern
+      fetch: LAZY

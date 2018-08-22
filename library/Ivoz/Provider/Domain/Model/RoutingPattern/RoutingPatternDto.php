@@ -18,7 +18,12 @@ class RoutingPatternDto extends RoutingPatternDtoAbstract
             ];
         }
 
-        return parent::getPropertyMap(...func_get_args());
+        $response =  parent::getPropertyMap(...func_get_args());
+
+        // Remove application entity relation
+        unset($response['tpDestinationId']);
+
+        return $response;
     }
 }
 

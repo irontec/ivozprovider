@@ -43,6 +43,11 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
     private $descriptionEs;
 
     /**
+     * @var \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationDto | null
+     */
+    private $tpDestination;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
      */
     private $brand;
@@ -84,6 +89,7 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
             'id' => 'id',
             'name' => ['en','es'],
             'description' => ['en','es'],
+            'tpDestinationId' => 'tpDestination',
             'brandId' => 'brand'
         ];
     }
@@ -104,6 +110,7 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
                 'en' => $this->getDescriptionEn(),
                 'es' => $this->getDescriptionEs()
             ],
+            'tpDestination' => $this->getTpDestination(),
             'brand' => $this->getBrand(),
             'outgoingRoutings' => $this->getOutgoingRoutings(),
             'relPatternGroups' => $this->getRelPatternGroups(),
@@ -116,6 +123,7 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
+        $this->tpDestination = $transformer->transform('Ivoz\\Cgr\\Domain\\Model\\TpDestination\\TpDestination', $this->getTpDestinationId());
         $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
         if (!is_null($this->outgoingRoutings)) {
             $items = $this->getOutgoingRoutings();
@@ -289,6 +297,52 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
     public function getDescriptionEs()
     {
         return $this->descriptionEs;
+    }
+
+    /**
+     * @param \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationDto $tpDestination
+     *
+     * @return static
+     */
+    public function setTpDestination(\Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationDto $tpDestination = null)
+    {
+        $this->tpDestination = $tpDestination;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationDto
+     */
+    public function getTpDestination()
+    {
+        return $this->tpDestination;
+    }
+
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setTpDestinationId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationDto($id)
+            : null;
+
+        return $this->setTpDestination($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getTpDestinationId()
+    {
+        if ($dto = $this->getTpDestination()) {
+            return $dto->getId();
+        }
+
+        return null;
     }
 
     /**
