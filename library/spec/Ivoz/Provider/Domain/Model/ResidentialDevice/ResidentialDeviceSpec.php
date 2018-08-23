@@ -151,13 +151,15 @@ class ResidentialDeviceSpec extends ObjectBehavior
     )
     {
         $this->brand
+            ->getId()
+            ->willReturn(1);
+
+        $this->brand
             ->getDomain()
             ->willReturn($domain);
 
         $this
             ->getDomain()
             ->shouldBe($domain);
-
-
     }
 }
