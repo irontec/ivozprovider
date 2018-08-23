@@ -203,6 +203,7 @@ abstract class CarrierAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description
@@ -230,6 +231,7 @@ abstract class CarrierAbstract
     }
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -257,6 +259,7 @@ abstract class CarrierAbstract
     }
 
     /**
+     * @deprecated
      * Set externallyRated
      *
      * @param boolean $externallyRated
@@ -285,6 +288,7 @@ abstract class CarrierAbstract
     }
 
     /**
+     * @deprecated
      * Set balance
      *
      * @param string $balance
@@ -315,6 +319,7 @@ abstract class CarrierAbstract
     }
 
     /**
+     * @deprecated
      * Set calculateCost
      *
      * @param boolean $calculateCost

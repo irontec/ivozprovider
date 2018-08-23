@@ -1,6 +1,7 @@
 Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting:
   repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\OutgoingRoutingDoctrineRepository
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: OutgoingRouting
   id:
     id:

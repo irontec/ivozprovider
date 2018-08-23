@@ -301,6 +301,7 @@ abstract class BillableCallAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set callid
      *
      * @param string $callid
@@ -329,6 +330,7 @@ abstract class BillableCallAbstract
     }
 
     /**
+     * @deprecated
      * Set startTime
      *
      * @param \DateTime $startTime
@@ -360,6 +362,7 @@ abstract class BillableCallAbstract
     }
 
     /**
+     * @deprecated
      * Set duration
      *
      * @param float $duration
@@ -387,6 +390,7 @@ abstract class BillableCallAbstract
     }
 
     /**
+     * @deprecated
      * Set caller
      *
      * @param string $caller
@@ -415,6 +419,7 @@ abstract class BillableCallAbstract
     }
 
     /**
+     * @deprecated
      * Set callee
      *
      * @param string $callee
@@ -443,6 +448,7 @@ abstract class BillableCallAbstract
     }
 
     /**
+     * @deprecated
      * Set cost
      *
      * @param string $cost
@@ -473,6 +479,7 @@ abstract class BillableCallAbstract
     }
 
     /**
+     * @deprecated
      * Set price
      *
      * @param string $price
@@ -503,6 +510,7 @@ abstract class BillableCallAbstract
     }
 
     /**
+     * @deprecated
      * Set priceDetails
      *
      * @param array $priceDetails
@@ -530,6 +538,7 @@ abstract class BillableCallAbstract
     }
 
     /**
+     * @deprecated
      * Set carrierName
      *
      * @param string $carrierName
@@ -558,6 +567,7 @@ abstract class BillableCallAbstract
     }
 
     /**
+     * @deprecated
      * Set destinationName
      *
      * @param string $destinationName
@@ -586,6 +596,7 @@ abstract class BillableCallAbstract
     }
 
     /**
+     * @deprecated
      * Set ratingPlanName
      *
      * @param string $ratingPlanName

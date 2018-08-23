@@ -263,6 +263,7 @@ abstract class TpRatingProfileAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set tpid
      *
      * @param string $tpid
@@ -290,6 +291,7 @@ abstract class TpRatingProfileAbstract
     }
 
     /**
+     * @deprecated
      * Set loadid
      *
      * @param string $loadid
@@ -317,6 +319,7 @@ abstract class TpRatingProfileAbstract
     }
 
     /**
+     * @deprecated
      * Set direction
      *
      * @param string $direction
@@ -344,6 +347,7 @@ abstract class TpRatingProfileAbstract
     }
 
     /**
+     * @deprecated
      * Set tenant
      *
      * @param string $tenant
@@ -372,6 +376,7 @@ abstract class TpRatingProfileAbstract
     }
 
     /**
+     * @deprecated
      * Set category
      *
      * @param string $category
@@ -399,6 +404,7 @@ abstract class TpRatingProfileAbstract
     }
 
     /**
+     * @deprecated
      * Set subject
      *
      * @param string $subject
@@ -427,6 +433,7 @@ abstract class TpRatingProfileAbstract
     }
 
     /**
+     * @deprecated
      * Set activationTime
      *
      * @param \DateTime $activationTime
@@ -457,6 +464,7 @@ abstract class TpRatingProfileAbstract
     }
 
     /**
+     * @deprecated
      * Set ratingPlanTag
      *
      * @param string $ratingPlanTag
@@ -485,6 +493,7 @@ abstract class TpRatingProfileAbstract
     }
 
     /**
+     * @deprecated
      * Set fallbackSubjects
      *
      * @param string $fallbackSubjects
@@ -513,6 +522,7 @@ abstract class TpRatingProfileAbstract
     }
 
     /**
+     * @deprecated
      * Set cdrStatQueueIds
      *
      * @param string $cdrStatQueueIds
@@ -541,6 +551,7 @@ abstract class TpRatingProfileAbstract
     }
 
     /**
+     * @deprecated
      * Set createdAt
      *
      * @param \DateTime $createdAt

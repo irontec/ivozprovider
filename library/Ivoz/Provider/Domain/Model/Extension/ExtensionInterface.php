@@ -47,6 +47,7 @@ interface ExtensionInterface extends LoggableEntityInterface
     public function getNumber();
 
     /**
+     * @deprecated
      * Set routeType
      *
      * @param string $routeType
@@ -70,6 +71,7 @@ interface ExtensionInterface extends LoggableEntityInterface
     public function getNumberValue();
 
     /**
+     * @deprecated
      * Set friendValue
      *
      * @param string $friendValue

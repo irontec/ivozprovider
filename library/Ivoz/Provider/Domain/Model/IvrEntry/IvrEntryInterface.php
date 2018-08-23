@@ -20,6 +20,7 @@ interface IvrEntryInterface extends LoggableEntityInterface
     public function getNumberValueE164();
 
     /**
+     * @deprecated
      * Set entry
      *
      * @param string $entry
@@ -36,6 +37,7 @@ interface IvrEntryInterface extends LoggableEntityInterface
     public function getEntry();
 
     /**
+     * @deprecated
      * Set routeType
      *
      * @param string $routeType
@@ -52,6 +54,7 @@ interface IvrEntryInterface extends LoggableEntityInterface
     public function getRouteType();
 
     /**
+     * @deprecated
      * Set numberValue
      *
      * @param string $numberValue

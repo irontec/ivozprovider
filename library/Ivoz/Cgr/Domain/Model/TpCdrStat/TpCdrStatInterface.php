@@ -13,6 +13,7 @@ interface TpCdrStatInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @deprecated
      * Set tpid
      *
      * @param string $tpid
@@ -29,6 +30,7 @@ interface TpCdrStatInterface extends LoggableEntityInterface
     public function getTpid();
 
     /**
+     * @deprecated
      * Set tag
      *
      * @param string $tag
@@ -45,6 +47,7 @@ interface TpCdrStatInterface extends LoggableEntityInterface
     public function getTag();
 
     /**
+     * @deprecated
      * Set queueLength
      *
      * @param integer $queueLength
@@ -61,6 +64,7 @@ interface TpCdrStatInterface extends LoggableEntityInterface
     public function getQueueLength();
 
     /**
+     * @deprecated
      * Set timeWindow
      *
      * @param string $timeWindow
@@ -77,6 +81,7 @@ interface TpCdrStatInterface extends LoggableEntityInterface
     public function getTimeWindow();
 
     /**
+     * @deprecated
      * Set saveInterval
      *
      * @param string $saveInterval
@@ -93,6 +98,7 @@ interface TpCdrStatInterface extends LoggableEntityInterface
     public function getSaveInterval();
 
     /**
+     * @deprecated
      * Set metrics
      *
      * @param string $metrics
@@ -109,6 +115,7 @@ interface TpCdrStatInterface extends LoggableEntityInterface
     public function getMetrics();
 
     /**
+     * @deprecated
      * Set setupInterval
      *
      * @param string $setupInterval
@@ -125,6 +132,7 @@ interface TpCdrStatInterface extends LoggableEntityInterface
     public function getSetupInterval();
 
     /**
+     * @deprecated
      * Set tors
      *
      * @param string $tors
@@ -141,6 +149,7 @@ interface TpCdrStatInterface extends LoggableEntityInterface
     public function getTors();
 
     /**
+     * @deprecated
      * Set cdrHosts
      *
      * @param string $cdrHosts
@@ -157,6 +166,7 @@ interface TpCdrStatInterface extends LoggableEntityInterface
     public function getCdrHosts();
 
     /**
+     * @deprecated
      * Set cdrSources
      *
      * @param string $cdrSources
@@ -173,6 +183,7 @@ interface TpCdrStatInterface extends LoggableEntityInterface
     public function getCdrSources();
 
     /**
+     * @deprecated
      * Set reqTypes
      *
      * @param string $reqTypes
@@ -189,6 +200,7 @@ interface TpCdrStatInterface extends LoggableEntityInterface
     public function getReqTypes();
 
     /**
+     * @deprecated
      * Set directions
      *
      * @param string $directions
@@ -205,6 +217,7 @@ interface TpCdrStatInterface extends LoggableEntityInterface
     public function getDirections();
 
     /**
+     * @deprecated
      * Set tenants
      *
      * @param string $tenants
@@ -221,6 +234,7 @@ interface TpCdrStatInterface extends LoggableEntityInterface
     public function getTenants();
 
     /**
+     * @deprecated
      * Set categories
      *
      * @param string $categories
@@ -237,6 +251,7 @@ interface TpCdrStatInterface extends LoggableEntityInterface
     public function getCategories();
 
     /**
+     * @deprecated
      * Set accounts
      *
      * @param string $accounts
@@ -253,6 +268,7 @@ interface TpCdrStatInterface extends LoggableEntityInterface
     public function getAccounts();
 
     /**
+     * @deprecated
      * Set subjects
      *
      * @param string $subjects
@@ -269,6 +285,7 @@ interface TpCdrStatInterface extends LoggableEntityInterface
     public function getSubjects();
 
     /**
+     * @deprecated
      * Set destinationIds
      *
      * @param string $destinationIds
@@ -285,6 +302,7 @@ interface TpCdrStatInterface extends LoggableEntityInterface
     public function getDestinationIds();
 
     /**
+     * @deprecated
      * Set ppdInterval
      *
      * @param string $ppdInterval
@@ -301,6 +319,7 @@ interface TpCdrStatInterface extends LoggableEntityInterface
     public function getPpdInterval();
 
     /**
+     * @deprecated
      * Set usageInterval
      *
      * @param string $usageInterval
@@ -317,6 +336,7 @@ interface TpCdrStatInterface extends LoggableEntityInterface
     public function getUsageInterval();
 
     /**
+     * @deprecated
      * Set suppliers
      *
      * @param string $suppliers
@@ -333,6 +353,7 @@ interface TpCdrStatInterface extends LoggableEntityInterface
     public function getSuppliers();
 
     /**
+     * @deprecated
      * Set disconnectCauses
      *
      * @param string $disconnectCauses
@@ -349,6 +370,7 @@ interface TpCdrStatInterface extends LoggableEntityInterface
     public function getDisconnectCauses();
 
     /**
+     * @deprecated
      * Set mediationRunids
      *
      * @param string $mediationRunids
@@ -365,6 +387,7 @@ interface TpCdrStatInterface extends LoggableEntityInterface
     public function getMediationRunids();
 
     /**
+     * @deprecated
      * Set ratedAccounts
      *
      * @param string $ratedAccounts
@@ -381,6 +404,7 @@ interface TpCdrStatInterface extends LoggableEntityInterface
     public function getRatedAccounts();
 
     /**
+     * @deprecated
      * Set ratedSubjects
      *
      * @param string $ratedSubjects
@@ -397,6 +421,7 @@ interface TpCdrStatInterface extends LoggableEntityInterface
     public function getRatedSubjects();
 
     /**
+     * @deprecated
      * Set costInterval
      *
      * @param string $costInterval
@@ -413,6 +438,7 @@ interface TpCdrStatInterface extends LoggableEntityInterface
     public function getCostInterval();
 
     /**
+     * @deprecated
      * Set actionTriggers
      *
      * @param string $actionTriggers
@@ -429,6 +455,7 @@ interface TpCdrStatInterface extends LoggableEntityInterface
     public function getActionTriggers();
 
     /**
+     * @deprecated
      * Set createdAt
      *
      * @param \DateTime $createdAt

@@ -242,6 +242,7 @@ abstract class QueueAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -269,6 +270,7 @@ abstract class QueueAbstract
     }
 
     /**
+     * @deprecated
      * Set periodicAnnounce
      *
      * @param string $periodicAnnounce
@@ -297,6 +299,7 @@ abstract class QueueAbstract
     }
 
     /**
+     * @deprecated
      * Set periodicAnnounceFrequency
      *
      * @param integer $periodicAnnounceFrequency
@@ -327,6 +330,7 @@ abstract class QueueAbstract
     }
 
     /**
+     * @deprecated
      * Set timeout
      *
      * @param integer $timeout
@@ -357,6 +361,7 @@ abstract class QueueAbstract
     }
 
     /**
+     * @deprecated
      * Set autopause
      *
      * @param string $autopause
@@ -383,6 +388,7 @@ abstract class QueueAbstract
     }
 
     /**
+     * @deprecated
      * Set ringinuse
      *
      * @param string $ringinuse
@@ -409,6 +415,7 @@ abstract class QueueAbstract
     }
 
     /**
+     * @deprecated
      * Set wrapuptime
      *
      * @param integer $wrapuptime
@@ -439,6 +446,7 @@ abstract class QueueAbstract
     }
 
     /**
+     * @deprecated
      * Set maxlen
      *
      * @param integer $maxlen
@@ -469,6 +477,7 @@ abstract class QueueAbstract
     }
 
     /**
+     * @deprecated
      * Set strategy
      *
      * @param string $strategy
@@ -496,6 +505,7 @@ abstract class QueueAbstract
     }
 
     /**
+     * @deprecated
      * Set weight
      *
      * @param integer $weight

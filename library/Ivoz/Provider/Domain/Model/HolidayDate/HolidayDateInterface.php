@@ -13,6 +13,7 @@ interface HolidayDateInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -29,6 +30,7 @@ interface HolidayDateInterface extends LoggableEntityInterface
     public function getName();
 
     /**
+     * @deprecated
      * Set eventDate
      *
      * @param \DateTime $eventDate

@@ -184,6 +184,7 @@ abstract class BalanceMovementAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set amount
      *
      * @param string $amount
@@ -214,6 +215,7 @@ abstract class BalanceMovementAbstract
     }
 
     /**
+     * @deprecated
      * Set balance
      *
      * @param string $balance
@@ -244,6 +246,7 @@ abstract class BalanceMovementAbstract
     }
 
     /**
+     * @deprecated
      * Set createdOn
      *
      * @param \DateTime $createdOn

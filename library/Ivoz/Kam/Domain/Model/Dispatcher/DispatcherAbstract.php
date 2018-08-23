@@ -213,6 +213,7 @@ abstract class DispatcherAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set setid
      *
      * @param integer $setid
@@ -240,6 +241,7 @@ abstract class DispatcherAbstract
     }
 
     /**
+     * @deprecated
      * Set destination
      *
      * @param string $destination
@@ -267,6 +269,7 @@ abstract class DispatcherAbstract
     }
 
     /**
+     * @deprecated
      * Set flags
      *
      * @param integer $flags
@@ -294,6 +297,7 @@ abstract class DispatcherAbstract
     }
 
     /**
+     * @deprecated
      * Set priority
      *
      * @param integer $priority
@@ -321,6 +325,7 @@ abstract class DispatcherAbstract
     }
 
     /**
+     * @deprecated
      * Set attrs
      *
      * @param string $attrs
@@ -348,6 +353,7 @@ abstract class DispatcherAbstract
     }
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description

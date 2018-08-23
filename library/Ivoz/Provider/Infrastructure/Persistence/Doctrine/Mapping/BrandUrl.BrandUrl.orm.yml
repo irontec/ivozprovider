@@ -1,6 +1,7 @@
 Ivoz\Provider\Domain\Model\BrandUrl\BrandUrl:
   repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\BrandUrlDoctrineRepository
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: BrandURLs
   id:
     id:

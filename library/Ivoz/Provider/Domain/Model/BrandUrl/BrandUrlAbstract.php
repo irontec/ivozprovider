@@ -222,6 +222,7 @@ abstract class BrandUrlAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set url
      *
      * @param string $url
@@ -249,6 +250,7 @@ abstract class BrandUrlAbstract
     }
 
     /**
+     * @deprecated
      * Set klearTheme
      *
      * @param string $klearTheme
@@ -277,6 +279,7 @@ abstract class BrandUrlAbstract
     }
 
     /**
+     * @deprecated
      * Set urlType
      *
      * @param string $urlType
@@ -310,6 +313,7 @@ abstract class BrandUrlAbstract
     }
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -338,6 +342,7 @@ abstract class BrandUrlAbstract
     }
 
     /**
+     * @deprecated
      * Set userTheme
      *
      * @param string $userTheme

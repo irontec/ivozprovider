@@ -166,6 +166,7 @@ abstract class QueueMemberAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set penalty
      *
      * @param integer $penalty

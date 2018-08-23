@@ -1,6 +1,7 @@
 Ivoz\Provider\Domain\Model\CompanyRelCodec\CompanyRelCodec:
   repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\CompanyRelCodecDoctrineRepository
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: CompaniesRelCodecs
   id:
     id:

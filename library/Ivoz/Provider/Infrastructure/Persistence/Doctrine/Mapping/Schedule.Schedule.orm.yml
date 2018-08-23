@@ -1,6 +1,7 @@
 Ivoz\Provider\Domain\Model\Schedule\Schedule:
   repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\ScheduleDoctrineRepository
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: Schedules
   id:
     id:

@@ -13,6 +13,7 @@ interface DdiProviderRegistrationInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @deprecated
      * Set username
      *
      * @param string $username
@@ -29,6 +30,7 @@ interface DdiProviderRegistrationInterface extends LoggableEntityInterface
     public function getUsername();
 
     /**
+     * @deprecated
      * Set domain
      *
      * @param string $domain
@@ -45,6 +47,7 @@ interface DdiProviderRegistrationInterface extends LoggableEntityInterface
     public function getDomain();
 
     /**
+     * @deprecated
      * Set realm
      *
      * @param string $realm
@@ -61,6 +64,7 @@ interface DdiProviderRegistrationInterface extends LoggableEntityInterface
     public function getRealm();
 
     /**
+     * @deprecated
      * Set authUsername
      *
      * @param string $authUsername
@@ -77,6 +81,7 @@ interface DdiProviderRegistrationInterface extends LoggableEntityInterface
     public function getAuthUsername();
 
     /**
+     * @deprecated
      * Set authPassword
      *
      * @param string $authPassword
@@ -93,6 +98,7 @@ interface DdiProviderRegistrationInterface extends LoggableEntityInterface
     public function getAuthPassword();
 
     /**
+     * @deprecated
      * Set authProxy
      *
      * @param string $authProxy
@@ -109,6 +115,7 @@ interface DdiProviderRegistrationInterface extends LoggableEntityInterface
     public function getAuthProxy();
 
     /**
+     * @deprecated
      * Set expires
      *
      * @param integer $expires
@@ -125,6 +132,7 @@ interface DdiProviderRegistrationInterface extends LoggableEntityInterface
     public function getExpires();
 
     /**
+     * @deprecated
      * Set multiDdi
      *
      * @param boolean $multiDdi
@@ -141,6 +149,7 @@ interface DdiProviderRegistrationInterface extends LoggableEntityInterface
     public function getMultiDdi();
 
     /**
+     * @deprecated
      * Set contactUsername
      *
      * @param string $contactUsername

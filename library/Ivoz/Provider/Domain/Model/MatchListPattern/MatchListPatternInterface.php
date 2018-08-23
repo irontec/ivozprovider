@@ -19,6 +19,7 @@ interface MatchListPatternInterface extends LoggableEntityInterface
     public function getNumberE164();
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description
@@ -35,6 +36,7 @@ interface MatchListPatternInterface extends LoggableEntityInterface
     public function getDescription();
 
     /**
+     * @deprecated
      * Set type
      *
      * @param string $type
@@ -51,6 +53,7 @@ interface MatchListPatternInterface extends LoggableEntityInterface
     public function getType();
 
     /**
+     * @deprecated
      * Set regexp
      *
      * @param string $regexp
@@ -67,6 +70,7 @@ interface MatchListPatternInterface extends LoggableEntityInterface
     public function getRegexp();
 
     /**
+     * @deprecated
      * Set numbervalue
      *
      * @param string $numbervalue

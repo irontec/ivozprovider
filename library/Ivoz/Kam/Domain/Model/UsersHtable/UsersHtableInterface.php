@@ -13,6 +13,7 @@ interface UsersHtableInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @deprecated
      * Set keyName
      *
      * @param string $keyName
@@ -29,6 +30,7 @@ interface UsersHtableInterface extends LoggableEntityInterface
     public function getKeyName();
 
     /**
+     * @deprecated
      * Set keyType
      *
      * @param integer $keyType
@@ -45,6 +47,7 @@ interface UsersHtableInterface extends LoggableEntityInterface
     public function getKeyType();
 
     /**
+     * @deprecated
      * Set valueType
      *
      * @param integer $valueType
@@ -61,6 +64,7 @@ interface UsersHtableInterface extends LoggableEntityInterface
     public function getValueType();
 
     /**
+     * @deprecated
      * Set keyValue
      *
      * @param string $keyValue
@@ -77,6 +81,7 @@ interface UsersHtableInterface extends LoggableEntityInterface
     public function getKeyValue();
 
     /**
+     * @deprecated
      * Set expires
      *
      * @param integer $expires

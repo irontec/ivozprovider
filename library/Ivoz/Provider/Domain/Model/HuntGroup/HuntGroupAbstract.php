@@ -258,6 +258,7 @@ abstract class HuntGroupAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -285,6 +286,7 @@ abstract class HuntGroupAbstract
     }
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description
@@ -312,6 +314,7 @@ abstract class HuntGroupAbstract
     }
 
     /**
+     * @deprecated
      * Set strategy
      *
      * @param string $strategy
@@ -345,6 +348,7 @@ abstract class HuntGroupAbstract
     }
 
     /**
+     * @deprecated
      * Set ringAllTimeout
      *
      * @param integer $ringAllTimeout
@@ -372,6 +376,7 @@ abstract class HuntGroupAbstract
     }
 
     /**
+     * @deprecated
      * Set noAnswerTargetType
      *
      * @param string $noAnswerTargetType
@@ -405,6 +410,7 @@ abstract class HuntGroupAbstract
     }
 
     /**
+     * @deprecated
      * Set noAnswerNumberValue
      *
      * @param string $noAnswerNumberValue
@@ -433,6 +439,7 @@ abstract class HuntGroupAbstract
     }
 
     /**
+     * @deprecated
      * Set preventMissedCalls
      *
      * @param integer $preventMissedCalls

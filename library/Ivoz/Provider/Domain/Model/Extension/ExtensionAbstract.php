@@ -248,6 +248,7 @@ abstract class ExtensionAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set number
      *
      * @param string $number
@@ -275,6 +276,7 @@ abstract class ExtensionAbstract
     }
 
     /**
+     * @deprecated
      * Set routeType
      *
      * @param string $routeType
@@ -313,6 +315,7 @@ abstract class ExtensionAbstract
     }
 
     /**
+     * @deprecated
      * Set numberValue
      *
      * @param string $numberValue
@@ -341,6 +344,7 @@ abstract class ExtensionAbstract
     }
 
     /**
+     * @deprecated
      * Set friendValue
      *
      * @param string $friendValue

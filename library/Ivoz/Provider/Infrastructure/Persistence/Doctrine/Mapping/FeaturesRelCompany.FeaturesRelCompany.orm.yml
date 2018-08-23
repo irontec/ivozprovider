@@ -1,6 +1,7 @@
 Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompany:
   repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\FeaturesRelCompanyDoctrineRepository
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: FeaturesRelCompanies
   id:
     id:

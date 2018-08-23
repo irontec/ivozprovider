@@ -37,6 +37,7 @@ interface IvrInterface extends LoggableEntityInterface
     public function getErrorTarget();
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -53,6 +54,7 @@ interface IvrInterface extends LoggableEntityInterface
     public function getName();
 
     /**
+     * @deprecated
      * Set timeout
      *
      * @param integer $timeout
@@ -69,6 +71,7 @@ interface IvrInterface extends LoggableEntityInterface
     public function getTimeout();
 
     /**
+     * @deprecated
      * Set maxDigits
      *
      * @param integer $maxDigits
@@ -85,6 +88,7 @@ interface IvrInterface extends LoggableEntityInterface
     public function getMaxDigits();
 
     /**
+     * @deprecated
      * Set allowExtensions
      *
      * @param boolean $allowExtensions
@@ -101,6 +105,7 @@ interface IvrInterface extends LoggableEntityInterface
     public function getAllowExtensions();
 
     /**
+     * @deprecated
      * Set noInputRouteType
      *
      * @param string $noInputRouteType
@@ -117,6 +122,7 @@ interface IvrInterface extends LoggableEntityInterface
     public function getNoInputRouteType();
 
     /**
+     * @deprecated
      * Set noInputNumberValue
      *
      * @param string $noInputNumberValue
@@ -133,6 +139,7 @@ interface IvrInterface extends LoggableEntityInterface
     public function getNoInputNumberValue();
 
     /**
+     * @deprecated
      * Set errorRouteType
      *
      * @param string $errorRouteType
@@ -149,6 +156,7 @@ interface IvrInterface extends LoggableEntityInterface
     public function getErrorRouteType();
 
     /**
+     * @deprecated
      * Set errorNumberValue
      *
      * @param string $errorNumberValue

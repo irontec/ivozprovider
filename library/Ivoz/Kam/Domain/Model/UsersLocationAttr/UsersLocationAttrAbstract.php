@@ -214,6 +214,7 @@ abstract class UsersLocationAttrAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set ruid
      *
      * @param string $ruid
@@ -241,6 +242,7 @@ abstract class UsersLocationAttrAbstract
     }
 
     /**
+     * @deprecated
      * Set username
      *
      * @param string $username
@@ -268,6 +270,7 @@ abstract class UsersLocationAttrAbstract
     }
 
     /**
+     * @deprecated
      * Set domain
      *
      * @param string $domain
@@ -296,6 +299,7 @@ abstract class UsersLocationAttrAbstract
     }
 
     /**
+     * @deprecated
      * Set aname
      *
      * @param string $aname
@@ -323,6 +327,7 @@ abstract class UsersLocationAttrAbstract
     }
 
     /**
+     * @deprecated
      * Set atype
      *
      * @param integer $atype
@@ -350,6 +355,7 @@ abstract class UsersLocationAttrAbstract
     }
 
     /**
+     * @deprecated
      * Set avalue
      *
      * @param string $avalue
@@ -377,6 +383,7 @@ abstract class UsersLocationAttrAbstract
     }
 
     /**
+     * @deprecated
      * Set lastModified
      *
      * @param \DateTime $lastModified

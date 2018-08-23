@@ -32,14 +32,13 @@ class DoctrineEntityPersister implements EntityPersisterInterface
     protected $unitOfWork;
 
     /**
-     * @var ReflectionProperty
+     * @var \ReflectionProperty
      * @deprecated
      */
     protected $entityStateAccessor;
 
-
     /**
-     * @var ReflectionProperty
+     * @var \ReflectionProperty
      * @deprecated
      */
     protected $orphanAccesor;
@@ -123,6 +122,19 @@ class DoctrineEntityPersister implements EntityPersisterInterface
         EntityInterface $entity = null,
         $dispatchImmediately = false
     ) {
+        if ($dto->getId() && !$entity) {
+            $entityClass = substr(
+                get_class($dto),
+                0,
+                -3
+            );
+
+            $entity = $this->em->find(
+                $entityClass,
+                $dto->getId()
+            );
+        }
+
         if (is_null($entity)) {
             $entityClass = substr(get_class($dto), 0, -3);
             $entity = $this

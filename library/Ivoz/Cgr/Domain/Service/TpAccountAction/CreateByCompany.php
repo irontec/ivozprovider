@@ -32,14 +32,14 @@ class CreateByCompany implements CompanyLifecycleEventHandlerInterface
         ];
     }
 
-    public function execute(CompanyInterface $entity, $isNew)
+    public function execute(CompanyInterface $company, $isNew)
     {
         if (!$isNew) {
             return;
         }
 
         /** @var CompanyDTO $entityDto */
-        $entityDto = $entity->toDTO();
+        $entityDto = $company->toDTO();
 
         $accountActionDto = TpAccountAction::createDTO();
 

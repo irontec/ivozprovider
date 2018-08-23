@@ -196,6 +196,7 @@ abstract class TrunksLcrRuleTargetAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set lcrId
      *
      * @param integer $lcrId
@@ -224,6 +225,7 @@ abstract class TrunksLcrRuleTargetAbstract
     }
 
     /**
+     * @deprecated
      * Set priority
      *
      * @param integer $priority
@@ -252,6 +254,7 @@ abstract class TrunksLcrRuleTargetAbstract
     }
 
     /**
+     * @deprecated
      * Set weight
      *
      * @param integer $weight

@@ -157,6 +157,7 @@ abstract class ApplicationServerAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set ip
      *
      * @param string $ip
@@ -184,6 +185,7 @@ abstract class ApplicationServerAbstract
     }
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name

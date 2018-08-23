@@ -1,6 +1,7 @@
 Ivoz\Provider\Domain\Model\DdiProviderRegistration\DdiProviderRegistration:
   repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\DdiProviderRegistrationDoctrineRepository
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: DDIProviderRegistrations
   id:
     id:

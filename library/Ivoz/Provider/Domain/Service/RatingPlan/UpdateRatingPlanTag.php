@@ -2,11 +2,23 @@
 
 namespace Ivoz\Provider\Domain\Service\RatingPlan;
 
+use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface;
 
 class UpdateRatingPlanTag implements RatingPlanLifecycleEventHandlerInterface
 {
     CONST POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
+
+    /**
+     * @var EntityTools
+     */
+    protected $entityTools;
+
+    public function __construct(
+        EntityTools $entityTools
+    ) {
+        $this->entityTools = $entityTools;
+    }
 
     public static function getSubscribedEvents()
     {
@@ -15,14 +27,22 @@ class UpdateRatingPlanTag implements RatingPlanLifecycleEventHandlerInterface
         ];
     }
 
-    public function execute(RatingPlanInterface $entity)
+    public function execute(RatingPlanInterface $ratingPlan)
     {
+        $ratingPlanDto = $this->entityTools->entityToDto($ratingPlan);
+
         /** Set CGRatingPlans Unique Tag */
-        $entity->setTag(
+        $ratingPlanDto->setTag(
             sprintf("b%drp%d",
-                $entity->getBrand()->getId(),
-                $entity->getId()
+                $ratingPlan->getBrand()->getId(),
+                $ratingPlan->getId()
             )
+        );
+
+        $this->entityTools->persistDto(
+            $ratingPlanDto,
+            $ratingPlan,
+            false
         );
     }
 }

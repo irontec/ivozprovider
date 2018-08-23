@@ -211,6 +211,7 @@ abstract class DestinationRateAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set cost
      *
      * @param string $cost
@@ -238,6 +239,7 @@ abstract class DestinationRateAbstract
     }
 
     /**
+     * @deprecated
      * Set connectFee
      *
      * @param string $connectFee
@@ -265,6 +267,7 @@ abstract class DestinationRateAbstract
     }
 
     /**
+     * @deprecated
      * Set rateIncrement
      *
      * @param string $rateIncrement
@@ -292,6 +295,7 @@ abstract class DestinationRateAbstract
     }
 
     /**
+     * @deprecated
      * Set groupIntervalStart
      *
      * @param string $groupIntervalStart

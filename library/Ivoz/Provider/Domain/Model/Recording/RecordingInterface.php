@@ -18,6 +18,7 @@ interface RecordingInterface extends LoggableEntityInterface
     public function getFileObjects();
 
     /**
+     * @deprecated
      * Set callid
      *
      * @param string $callid
@@ -34,6 +35,7 @@ interface RecordingInterface extends LoggableEntityInterface
     public function getCallid();
 
     /**
+     * @deprecated
      * Set calldate
      *
      * @param \DateTime $calldate
@@ -50,6 +52,7 @@ interface RecordingInterface extends LoggableEntityInterface
     public function getCalldate();
 
     /**
+     * @deprecated
      * Set type
      *
      * @param string $type
@@ -66,6 +69,7 @@ interface RecordingInterface extends LoggableEntityInterface
     public function getType();
 
     /**
+     * @deprecated
      * Set duration
      *
      * @param float $duration
@@ -82,6 +86,7 @@ interface RecordingInterface extends LoggableEntityInterface
     public function getDuration();
 
     /**
+     * @deprecated
      * Set caller
      *
      * @param string $caller
@@ -98,6 +103,7 @@ interface RecordingInterface extends LoggableEntityInterface
     public function getCaller();
 
     /**
+     * @deprecated
      * Set callee
      *
      * @param string $callee
@@ -114,6 +120,7 @@ interface RecordingInterface extends LoggableEntityInterface
     public function getCallee();
 
     /**
+     * @deprecated
      * Set recorder
      *
      * @param string $recorder

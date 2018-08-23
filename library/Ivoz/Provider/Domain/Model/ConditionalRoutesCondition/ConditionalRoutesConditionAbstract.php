@@ -266,6 +266,7 @@ abstract class ConditionalRoutesConditionAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set priority
      *
      * @param integer $priority
@@ -293,6 +294,7 @@ abstract class ConditionalRoutesConditionAbstract
     }
 
     /**
+     * @deprecated
      * Set routeType
      *
      * @param string $routeType
@@ -332,6 +334,7 @@ abstract class ConditionalRoutesConditionAbstract
     }
 
     /**
+     * @deprecated
      * Set numberValue
      *
      * @param string $numberValue
@@ -360,6 +363,7 @@ abstract class ConditionalRoutesConditionAbstract
     }
 
     /**
+     * @deprecated
      * Set friendValue
      *
      * @param string $friendValue

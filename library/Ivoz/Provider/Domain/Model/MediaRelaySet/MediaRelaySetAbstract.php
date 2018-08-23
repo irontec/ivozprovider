@@ -157,6 +157,7 @@ abstract class MediaRelaySetAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -184,6 +185,7 @@ abstract class MediaRelaySetAbstract
     }
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description

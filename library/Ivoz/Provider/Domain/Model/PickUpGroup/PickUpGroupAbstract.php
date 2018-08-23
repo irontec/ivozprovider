@@ -157,6 +157,7 @@ abstract class PickUpGroupAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name

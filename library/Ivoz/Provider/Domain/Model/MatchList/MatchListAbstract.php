@@ -166,6 +166,7 @@ abstract class MatchListAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name

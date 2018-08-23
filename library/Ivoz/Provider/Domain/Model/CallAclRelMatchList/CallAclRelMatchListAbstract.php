@@ -177,6 +177,7 @@ abstract class CallAclRelMatchListAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set priority
      *
      * @param integer $priority
@@ -204,6 +205,7 @@ abstract class CallAclRelMatchListAbstract
     }
 
     /**
+     * @deprecated
      * Set policy
      *
      * @param string $policy

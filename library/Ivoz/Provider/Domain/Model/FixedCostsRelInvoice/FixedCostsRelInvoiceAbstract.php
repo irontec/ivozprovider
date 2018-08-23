@@ -166,6 +166,7 @@ abstract class FixedCostsRelInvoiceAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set quantity
      *
      * @param integer $quantity

@@ -1,6 +1,7 @@
 Ivoz\Provider\Domain\Model\CompanyService\CompanyService:
   repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\CompanyServiceDoctrineRepository
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: CompanyServices
   id:
     id:

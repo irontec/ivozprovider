@@ -202,6 +202,7 @@ abstract class CountryAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set code
      *
      * @param string $code
@@ -229,6 +230,7 @@ abstract class CountryAbstract
     }
 
     /**
+     * @deprecated
      * Set countryCode
      *
      * @param string $countryCode

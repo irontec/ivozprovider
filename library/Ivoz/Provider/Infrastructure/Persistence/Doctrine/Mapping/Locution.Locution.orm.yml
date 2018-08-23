@@ -1,6 +1,7 @@
 Ivoz\Provider\Domain\Model\Locution\Locution:
   repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\LocutionDoctrineRepository
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: Locutions
   id:
     id:

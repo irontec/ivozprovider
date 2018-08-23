@@ -2,6 +2,7 @@
 
 namespace spec\Ivoz\Provider\Domain\Service\User;
 
+use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Provider\Domain\Model\User\UserDto;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
@@ -13,9 +14,9 @@ use Prophecy\Argument;
 class UnsetBossAssistantSpec extends ObjectBehavior
 {
     /**
-     * @var EntityPersisterInterface
+     * @var EntityTools
      */
-    protected $entityPersister;
+    protected $entityTools;
 
     /**
      * @var UserRepository
@@ -23,14 +24,14 @@ class UnsetBossAssistantSpec extends ObjectBehavior
     protected $userRepository;
 
     public function let(
-        EntityPersisterInterface $entityPersister,
+        EntityTools $entityTools,
         UserRepository $userRepository
     ) {
-        $this->entityPersister = $entityPersister;
+        $this->entityTools = $entityTools;
         $this->userRepository = $userRepository;
 
         $this->beConstructedWith(
-            $entityPersister,
+            $entityTools,
             $userRepository
         );
     }
@@ -52,7 +53,7 @@ class UnsetBossAssistantSpec extends ObjectBehavior
             ->willReturn(true);
 
         $this
-            ->entityPersister
+            ->entityTools
             ->persistDto(Argument::any())
             ->shouldNotBeCalled();
 
@@ -71,7 +72,7 @@ class UnsetBossAssistantSpec extends ObjectBehavior
             ->willReturn(true);
 
         $this
-            ->entityPersister
+            ->entityTools
             ->persistDto(Argument::any())
             ->shouldNotBeCalled();
 
@@ -90,7 +91,7 @@ class UnsetBossAssistantSpec extends ObjectBehavior
             ->willReturn(false);
 
         $this
-            ->entityPersister
+            ->entityTools
             ->persistDto(Argument::any())
             ->shouldNotBeCalled();
 
@@ -118,7 +119,7 @@ class UnsetBossAssistantSpec extends ObjectBehavior
             ->willReturn([])
             ->shouldBeCalled();
         $this
-            ->entityPersister
+            ->entityTools
             ->persistDto(Argument::any())
             ->shouldNotBeCalled();
 
@@ -150,8 +151,10 @@ class UnsetBossAssistantSpec extends ObjectBehavior
         $bossDto = new UserDto();
         $bossDto->setBossAssistantId(1);
 
-        $boss
-            ->toDto()
+
+        $this
+            ->entityTools
+            ->entityToDto($boss)
             ->willReturn($bossDto)
             ->shouldBeCalled();
 
@@ -160,7 +163,7 @@ class UnsetBossAssistantSpec extends ObjectBehavior
         };
 
         $this
-            ->entityPersister
+            ->entityTools
             ->persistDto(
                 Argument::that($assistantValidatorCallback),
                 $boss

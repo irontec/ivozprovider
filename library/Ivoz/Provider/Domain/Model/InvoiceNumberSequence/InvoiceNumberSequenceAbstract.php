@@ -222,6 +222,7 @@ abstract class InvoiceNumberSequenceAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -249,6 +250,7 @@ abstract class InvoiceNumberSequenceAbstract
     }
 
     /**
+     * @deprecated
      * Set prefix
      *
      * @param string $prefix
@@ -276,6 +278,7 @@ abstract class InvoiceNumberSequenceAbstract
     }
 
     /**
+     * @deprecated
      * Set sequenceLength
      *
      * @param integer $sequenceLength
@@ -304,6 +307,7 @@ abstract class InvoiceNumberSequenceAbstract
     }
 
     /**
+     * @deprecated
      * Set increment
      *
      * @param integer $increment
@@ -332,6 +336,7 @@ abstract class InvoiceNumberSequenceAbstract
     }
 
     /**
+     * @deprecated
      * Set latestValue
      *
      * @param string $latestValue
@@ -359,6 +364,7 @@ abstract class InvoiceNumberSequenceAbstract
     }
 
     /**
+     * @deprecated
      * Set iteration
      *
      * @param integer $iteration
@@ -387,6 +393,7 @@ abstract class InvoiceNumberSequenceAbstract
     }
 
     /**
+     * @deprecated
      * Set version
      *
      * @param integer $version

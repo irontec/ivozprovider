@@ -242,6 +242,7 @@ abstract class InvoiceSchedulerAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -269,6 +270,7 @@ abstract class InvoiceSchedulerAbstract
     }
 
     /**
+     * @deprecated
      * Set unit
      *
      * @param string $unit
@@ -301,6 +303,7 @@ abstract class InvoiceSchedulerAbstract
     }
 
     /**
+     * @deprecated
      * Set frequency
      *
      * @param integer $frequency
@@ -329,6 +332,7 @@ abstract class InvoiceSchedulerAbstract
     }
 
     /**
+     * @deprecated
      * Set email
      *
      * @param string $email
@@ -356,6 +360,7 @@ abstract class InvoiceSchedulerAbstract
     }
 
     /**
+     * @deprecated
      * Set lastExecution
      *
      * @param \DateTime $lastExecution
@@ -387,6 +392,7 @@ abstract class InvoiceSchedulerAbstract
     }
 
     /**
+     * @deprecated
      * Set nextExecution
      *
      * @param \DateTime $nextExecution
@@ -418,6 +424,7 @@ abstract class InvoiceSchedulerAbstract
     }
 
     /**
+     * @deprecated
      * Set taxRate
      *
      * @param string $taxRate

@@ -166,6 +166,7 @@ abstract class CompanyServiceAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set code
      *
      * @param string $code

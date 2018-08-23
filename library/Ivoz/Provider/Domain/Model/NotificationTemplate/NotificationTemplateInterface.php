@@ -22,6 +22,7 @@ interface NotificationTemplateInterface extends LoggableEntityInterface
     public function getContentsByLanguage(\Ivoz\Provider\Domain\Model\Language\LanguageInterface $language);
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -38,6 +39,7 @@ interface NotificationTemplateInterface extends LoggableEntityInterface
     public function getName();
 
     /**
+     * @deprecated
      * Set type
      *
      * @param string $type

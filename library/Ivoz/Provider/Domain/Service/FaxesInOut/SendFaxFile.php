@@ -2,7 +2,9 @@
 
 namespace Ivoz\Provider\Domain\Service\FaxesInOut;
 
+use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Core\Infrastructure\Service\Asterisk\ARI\ARIConnector;
+use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutDto;
 use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutInterface;
 
 /**
@@ -11,12 +13,22 @@ use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutInterface;
  */
 class SendFaxFile implements FaxesInOutLifecycleEventHandlerInterface
 {
+    /**
+     * @var ARIConnector
+     */
     protected $ariConnector;
 
+    /**
+     * @var EntityTools
+     */
+    protected $entityTools;
+
     public function __construct(
-        ARIConnector $ariConnector
+        ARIConnector $ariConnector,
+        EntityTools $entityTools
     ) {
         $this->ariConnector = $ariConnector;
+        $this->entityTools = $entityTools;
     }
 
     public static function getSubscribedEvents()
@@ -43,9 +55,12 @@ class SendFaxFile implements FaxesInOutLifecycleEventHandlerInterface
         try {
             $this->ariConnector->sendFaxfileRequest($entity);
         } catch (\Exception $e) {
-            $entity->setStatus('error');
 
-            //@todo This will not be persisted...
+            /** @var FaxesInOutDto $dto */
+            $dto = $this->entityTools->entityToDto($entity);
+            $dto->setStatus('error');
+            $this->entityTools->persistDto($dto, $entity, true);
+
             throw $e;
         }
     }

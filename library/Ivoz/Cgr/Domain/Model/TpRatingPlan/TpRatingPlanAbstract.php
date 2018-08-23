@@ -316,6 +316,7 @@ abstract class TpRatingPlanAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set tpid
      *
      * @param string $tpid
@@ -343,6 +344,7 @@ abstract class TpRatingPlanAbstract
     }
 
     /**
+     * @deprecated
      * Set tag
      *
      * @param string $tag
@@ -371,6 +373,7 @@ abstract class TpRatingPlanAbstract
     }
 
     /**
+     * @deprecated
      * Set destratesTag
      *
      * @param string $destratesTag
@@ -399,6 +402,7 @@ abstract class TpRatingPlanAbstract
     }
 
     /**
+     * @deprecated
      * Set timingTag
      *
      * @param string $timingTag
@@ -426,6 +430,7 @@ abstract class TpRatingPlanAbstract
     }
 
     /**
+     * @deprecated
      * Set weight
      *
      * @param string $weight
@@ -453,6 +458,7 @@ abstract class TpRatingPlanAbstract
     }
 
     /**
+     * @deprecated
      * Set createdAt
      *
      * @param \DateTime $createdAt
@@ -483,6 +489,7 @@ abstract class TpRatingPlanAbstract
     }
 
     /**
+     * @deprecated
      * Set timingType
      *
      * @param string $timingType
@@ -515,6 +522,7 @@ abstract class TpRatingPlanAbstract
     }
 
     /**
+     * @deprecated
      * Set timeIn
      *
      * @param \DateTime $timeIn
@@ -541,6 +549,7 @@ abstract class TpRatingPlanAbstract
     }
 
     /**
+     * @deprecated
      * Set monday
      *
      * @param boolean $monday
@@ -569,6 +578,7 @@ abstract class TpRatingPlanAbstract
     }
 
     /**
+     * @deprecated
      * Set tuesday
      *
      * @param boolean $tuesday
@@ -597,6 +607,7 @@ abstract class TpRatingPlanAbstract
     }
 
     /**
+     * @deprecated
      * Set wednesday
      *
      * @param boolean $wednesday
@@ -625,6 +636,7 @@ abstract class TpRatingPlanAbstract
     }
 
     /**
+     * @deprecated
      * Set thursday
      *
      * @param boolean $thursday
@@ -653,6 +665,7 @@ abstract class TpRatingPlanAbstract
     }
 
     /**
+     * @deprecated
      * Set friday
      *
      * @param boolean $friday
@@ -681,6 +694,7 @@ abstract class TpRatingPlanAbstract
     }
 
     /**
+     * @deprecated
      * Set saturday
      *
      * @param boolean $saturday
@@ -709,6 +723,7 @@ abstract class TpRatingPlanAbstract
     }
 
     /**
+     * @deprecated
      * Set sunday
      *
      * @param boolean $sunday

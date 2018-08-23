@@ -19,6 +19,7 @@ interface RoutingPatternGroupInterface extends LoggableEntityInterface
     public function getRoutingPatterns();
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -35,6 +36,7 @@ interface RoutingPatternGroupInterface extends LoggableEntityInterface
     public function getName();
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description

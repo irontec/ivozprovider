@@ -319,6 +319,7 @@ abstract class IvrAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -346,6 +347,7 @@ abstract class IvrAbstract
     }
 
     /**
+     * @deprecated
      * Set timeout
      *
      * @param integer $timeout
@@ -374,6 +376,7 @@ abstract class IvrAbstract
     }
 
     /**
+     * @deprecated
      * Set maxDigits
      *
      * @param integer $maxDigits
@@ -402,6 +405,7 @@ abstract class IvrAbstract
     }
 
     /**
+     * @deprecated
      * Set allowExtensions
      *
      * @param boolean $allowExtensions
@@ -429,6 +433,7 @@ abstract class IvrAbstract
     }
 
     /**
+     * @deprecated
      * Set noInputRouteType
      *
      * @param string $noInputRouteType
@@ -462,6 +467,7 @@ abstract class IvrAbstract
     }
 
     /**
+     * @deprecated
      * Set noInputNumberValue
      *
      * @param string $noInputNumberValue
@@ -490,6 +496,7 @@ abstract class IvrAbstract
     }
 
     /**
+     * @deprecated
      * Set errorRouteType
      *
      * @param string $errorRouteType
@@ -523,6 +530,7 @@ abstract class IvrAbstract
     }
 
     /**
+     * @deprecated
      * Set errorNumberValue
      *
      * @param string $errorNumberValue

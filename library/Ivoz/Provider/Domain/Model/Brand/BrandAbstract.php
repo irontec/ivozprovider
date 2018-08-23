@@ -286,6 +286,7 @@ abstract class BrandAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -313,6 +314,7 @@ abstract class BrandAbstract
     }
 
     /**
+     * @deprecated
      * Set domainUsers
      *
      * @param string $domainUsers
@@ -341,6 +343,7 @@ abstract class BrandAbstract
     }
 
     /**
+     * @deprecated
      * Set recordingsLimitMB
      *
      * @param integer $recordingsLimitMB
@@ -371,6 +374,7 @@ abstract class BrandAbstract
     }
 
     /**
+     * @deprecated
      * Set recordingsLimitEmail
      *
      * @param string $recordingsLimitEmail
@@ -399,6 +403,7 @@ abstract class BrandAbstract
     }
 
     /**
+     * @deprecated
      * Set maxCalls
      *
      * @param integer $maxCalls

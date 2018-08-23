@@ -130,6 +130,7 @@ interface UserInterface extends LoggableEntityInterface
     public function getFullNameExtension();
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -146,6 +147,7 @@ interface UserInterface extends LoggableEntityInterface
     public function getName();
 
     /**
+     * @deprecated
      * Set lastname
      *
      * @param string $lastname
@@ -176,6 +178,7 @@ interface UserInterface extends LoggableEntityInterface
     public function getPass();
 
     /**
+     * @deprecated
      * Set doNotDisturb
      *
      * @param boolean $doNotDisturb
@@ -192,6 +195,7 @@ interface UserInterface extends LoggableEntityInterface
     public function getDoNotDisturb();
 
     /**
+     * @deprecated
      * Set isBoss
      *
      * @param boolean $isBoss
@@ -208,6 +212,7 @@ interface UserInterface extends LoggableEntityInterface
     public function getIsBoss();
 
     /**
+     * @deprecated
      * Set active
      *
      * @param boolean $active
@@ -224,6 +229,7 @@ interface UserInterface extends LoggableEntityInterface
     public function getActive();
 
     /**
+     * @deprecated
      * Set maxCalls
      *
      * @param integer $maxCalls
@@ -240,6 +246,7 @@ interface UserInterface extends LoggableEntityInterface
     public function getMaxCalls();
 
     /**
+     * @deprecated
      * Set externalIpCalls
      *
      * @param string $externalIpCalls
@@ -256,6 +263,7 @@ interface UserInterface extends LoggableEntityInterface
     public function getExternalIpCalls();
 
     /**
+     * @deprecated
      * Set voicemailEnabled
      *
      * @param boolean $voicemailEnabled
@@ -272,6 +280,7 @@ interface UserInterface extends LoggableEntityInterface
     public function getVoicemailEnabled();
 
     /**
+     * @deprecated
      * Set voicemailSendMail
      *
      * @param boolean $voicemailSendMail
@@ -288,6 +297,7 @@ interface UserInterface extends LoggableEntityInterface
     public function getVoicemailSendMail();
 
     /**
+     * @deprecated
      * Set voicemailAttachSound
      *
      * @param boolean $voicemailAttachSound
@@ -304,6 +314,7 @@ interface UserInterface extends LoggableEntityInterface
     public function getVoicemailAttachSound();
 
     /**
+     * @deprecated
      * Set tokenKey
      *
      * @param string $tokenKey
@@ -320,6 +331,7 @@ interface UserInterface extends LoggableEntityInterface
     public function getTokenKey();
 
     /**
+     * @deprecated
      * Set gsQRCode
      *
      * @param boolean $gsQRCode

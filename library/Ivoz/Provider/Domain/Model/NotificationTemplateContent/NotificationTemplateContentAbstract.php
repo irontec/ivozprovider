@@ -194,6 +194,7 @@ abstract class NotificationTemplateContentAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set fromName
      *
      * @param string $fromName
@@ -222,6 +223,7 @@ abstract class NotificationTemplateContentAbstract
     }
 
     /**
+     * @deprecated
      * Set fromAddress
      *
      * @param string $fromAddress
@@ -250,6 +252,7 @@ abstract class NotificationTemplateContentAbstract
     }
 
     /**
+     * @deprecated
      * Set subject
      *
      * @param string $subject
@@ -277,6 +280,7 @@ abstract class NotificationTemplateContentAbstract
     }
 
     /**
+     * @deprecated
      * Set body
      *
      * @param string $body

@@ -166,6 +166,7 @@ abstract class RoutingPatternGroupAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -193,6 +194,7 @@ abstract class RoutingPatternGroupAbstract
     }
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description

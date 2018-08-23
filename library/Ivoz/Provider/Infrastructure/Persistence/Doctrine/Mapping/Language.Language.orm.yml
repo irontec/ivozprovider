@@ -1,6 +1,7 @@
 Ivoz\Provider\Domain\Model\Language\Language:
   repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\LanguageDoctrineRepository
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: Languages
   id:
     id:

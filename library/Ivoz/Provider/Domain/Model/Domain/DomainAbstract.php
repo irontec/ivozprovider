@@ -167,6 +167,7 @@ abstract class DomainAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set domain
      *
      * @param string $domain
@@ -194,6 +195,7 @@ abstract class DomainAbstract
     }
 
     /**
+     * @deprecated
      * Set pointsTo
      *
      * @param string $pointsTo
@@ -220,6 +222,7 @@ abstract class DomainAbstract
     }
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description

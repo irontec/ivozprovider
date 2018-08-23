@@ -170,6 +170,7 @@ abstract class LanguageAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set iden
      *
      * @param string $iden

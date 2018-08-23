@@ -34,7 +34,7 @@ class SearchBrokenThresholds implements CompanyLifecycleEventHandlerInterface
         ];
     }
 
-    public function execute(CompanyInterface $entity, $isNew)
+    public function execute(CompanyInterface $company, $isNew)
     {
         // Skip new created company
         if ($isNew) {
@@ -42,12 +42,12 @@ class SearchBrokenThresholds implements CompanyLifecycleEventHandlerInterface
         }
 
         // Only handle balance changes
-        if (!$entity->hasChanged('balance')) {
+        if (!$company->hasChanged('balance')) {
             return;
         }
 
-        $prevBalance = $entity->getInitialValue('balance');
-        $currentBalance = $entity->getBalance();
+        $prevBalance = $company->getInitialValue('balance');
+        $currentBalance = $company->getBalance();
 
         // Only handle balance decreasement
         if ($currentBalance > $prevBalance) {
@@ -55,7 +55,7 @@ class SearchBrokenThresholds implements CompanyLifecycleEventHandlerInterface
         }
 
         $brokenThresholds = $this->balanceNotificationRepository->findBrokenThresholdsByCompany(
-            $entity,
+            $company,
             $prevBalance,
             $currentBalance
         );

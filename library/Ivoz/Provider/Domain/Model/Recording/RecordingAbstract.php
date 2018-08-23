@@ -245,6 +245,7 @@ abstract class RecordingAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set callid
      *
      * @param string $callid
@@ -273,6 +274,7 @@ abstract class RecordingAbstract
     }
 
     /**
+     * @deprecated
      * Set calldate
      *
      * @param \DateTime $calldate
@@ -303,6 +305,7 @@ abstract class RecordingAbstract
     }
 
     /**
+     * @deprecated
      * Set type
      *
      * @param string $type
@@ -333,6 +336,7 @@ abstract class RecordingAbstract
     }
 
     /**
+     * @deprecated
      * Set duration
      *
      * @param float $duration
@@ -360,6 +364,7 @@ abstract class RecordingAbstract
     }
 
     /**
+     * @deprecated
      * Set caller
      *
      * @param string $caller
@@ -388,6 +393,7 @@ abstract class RecordingAbstract
     }
 
     /**
+     * @deprecated
      * Set callee
      *
      * @param string $callee
@@ -416,6 +422,7 @@ abstract class RecordingAbstract
     }
 
     /**
+     * @deprecated
      * Set recorder
      *
      * @param string $recorder

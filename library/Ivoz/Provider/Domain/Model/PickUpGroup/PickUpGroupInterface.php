@@ -14,6 +14,7 @@ interface PickUpGroupInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name

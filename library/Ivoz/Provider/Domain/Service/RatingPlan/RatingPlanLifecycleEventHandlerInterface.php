@@ -7,5 +7,5 @@ use Ivoz\Core\Domain\Service\LifecycleEventHandlerInterface;
 
 interface RatingPlanLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(RatingPlanInterface $entity);
+    public function execute(RatingPlanInterface $ratingPlan);
 }

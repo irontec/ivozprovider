@@ -1,6 +1,7 @@
 Ivoz\Provider\Domain\Model\Country\Country:
   repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\CountryDoctrineRepository
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: Countries
   id:
     id:

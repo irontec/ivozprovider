@@ -287,6 +287,7 @@ abstract class TrunksCdrAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set startTime
      *
      * @param \DateTime $startTime
@@ -317,6 +318,7 @@ abstract class TrunksCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set endTime
      *
      * @param \DateTime $endTime
@@ -347,6 +349,7 @@ abstract class TrunksCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set duration
      *
      * @param float $duration
@@ -374,6 +377,7 @@ abstract class TrunksCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set caller
      *
      * @param string $caller
@@ -402,6 +406,7 @@ abstract class TrunksCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set callee
      *
      * @param string $callee
@@ -430,6 +435,7 @@ abstract class TrunksCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set callid
      *
      * @param string $callid
@@ -458,6 +464,7 @@ abstract class TrunksCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set callidHash
      *
      * @param string $callidHash
@@ -486,6 +493,7 @@ abstract class TrunksCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set xcallid
      *
      * @param string $xcallid
@@ -514,6 +522,7 @@ abstract class TrunksCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set diversion
      *
      * @param string $diversion
@@ -542,6 +551,7 @@ abstract class TrunksCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set bounced
      *
      * @param boolean $bounced
@@ -570,6 +580,7 @@ abstract class TrunksCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set metered
      *
      * @param boolean $metered
@@ -598,6 +609,7 @@ abstract class TrunksCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set direction
      *
      * @param string $direction
@@ -625,6 +637,7 @@ abstract class TrunksCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set cgrid
      *
      * @param string $cgrid

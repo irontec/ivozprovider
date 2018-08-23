@@ -233,6 +233,7 @@ abstract class TransformationRuleSetAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description
@@ -261,6 +262,7 @@ abstract class TransformationRuleSetAbstract
     }
 
     /**
+     * @deprecated
      * Set internationalCode
      *
      * @param string $internationalCode
@@ -289,6 +291,7 @@ abstract class TransformationRuleSetAbstract
     }
 
     /**
+     * @deprecated
      * Set trunkPrefix
      *
      * @param string $trunkPrefix
@@ -317,6 +320,7 @@ abstract class TransformationRuleSetAbstract
     }
 
     /**
+     * @deprecated
      * Set areaCode
      *
      * @param string $areaCode
@@ -345,6 +349,7 @@ abstract class TransformationRuleSetAbstract
     }
 
     /**
+     * @deprecated
      * Set nationalLen
      *
      * @param integer $nationalLen
@@ -376,6 +381,7 @@ abstract class TransformationRuleSetAbstract
     }
 
     /**
+     * @deprecated
      * Set generateRules
      *
      * @param boolean $generateRules

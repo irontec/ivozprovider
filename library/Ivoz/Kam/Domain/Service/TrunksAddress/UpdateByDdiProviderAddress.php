@@ -53,6 +53,10 @@ class UpdateByDdiProviderAddress implements DdiProviderAddressLifecycleEventHand
             true
         );
 
-        $ddiProviderAddress->setTrunksAddress($trunksAddress);
+        $ddiProviderAddress
+            ->setTrunksAddress($trunksAddress);
+
+        $this->entityTools
+            ->persist($ddiProviderAddress);
     }
 }

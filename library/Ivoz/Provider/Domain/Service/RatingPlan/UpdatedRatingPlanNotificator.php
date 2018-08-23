@@ -21,9 +21,9 @@ class UpdatedRatingPlanNotificator implements RatingPlanLifecycleEventHandlerInt
         ];
     }
 
-    public function execute(RatingPlanInterface $entity)
+    public function execute(RatingPlanInterface $ratingPlan)
     {
-        $wasDeleted = is_null($entity->getId());
+        $wasDeleted = is_null($ratingPlan->getId());
         if (!$wasDeleted) {
             return;
         }

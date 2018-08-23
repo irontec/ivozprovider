@@ -1,6 +1,7 @@
 Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContent:
   repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\NotificationTemplateContentDoctrineRepository
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: NotificationTemplatesContents
   id:
     id:

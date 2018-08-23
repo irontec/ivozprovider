@@ -2,7 +2,8 @@
 
 namespace Ivoz\Ast\Domain\Service\PsEndpoint;
 
-use Ivoz\Core\Domain\Service\EntityPersisterInterface;
+use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointDto;
+use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Ivoz\Provider\Domain\Service\User\UserLifecycleEventHandlerInterface;
 
@@ -14,14 +15,14 @@ use Ivoz\Provider\Domain\Service\User\UserLifecycleEventHandlerInterface;
 class UpdateByUser implements UserLifecycleEventHandlerInterface
 {
     /**
-     * @var EntityPersisterInterface
+     * @var EntityTools
      */
-    protected $entityPersister;
+    protected $entityTools;
 
     public function __construct(
-        EntityPersisterInterface $entityPersister
+        EntityTools $entityTools
     ) {
-        $this->entityPersister = $entityPersister;
+        $this->entityTools = $entityTools;
     }
 
     public static function getSubscribedEvents()
@@ -32,25 +33,29 @@ class UpdateByUser implements UserLifecycleEventHandlerInterface
         ];
     }
 
-    public function execute(UserInterface $entity, $isNew)
+    public function execute(UserInterface $user, $isNew)
     {
-        $endpoint = $entity->getEndpoint();
+        $endpoint = $user->getEndpoint();
         if (!$endpoint) {
             return;
         }
+        /** @var PsEndpointDto $endpointDto */
+        $endpointDto = $this
+            ->entityTools
+            ->entityToDto($endpoint);
 
         $callerId = sprintf(
             '%s <%s>',
-            $entity->getFullName(),
-            $entity->getExtensionNumber()
+            $user->getFullName(),
+            $user->getExtensionNumber()
         );
 
-        $endpoint
+        $endpointDto
             ->setCallerid($callerId)
-            ->setMailboxes($entity->getVoiceMail());
+            ->setMailboxes($user->getVoiceMail());
 
         $this
-            ->entityPersister
-            ->persist($endpoint);
+            ->entityTools
+            ->persistDto($endpointDto, $endpoint, false);
     }
 }

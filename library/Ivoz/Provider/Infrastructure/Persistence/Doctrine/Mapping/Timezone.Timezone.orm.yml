@@ -1,6 +1,7 @@
 Ivoz\Provider\Domain\Model\Timezone\Timezone:
   repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\TimezoneDoctrineRepository
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: Timezones
   id:
     id:

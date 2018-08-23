@@ -89,6 +89,9 @@ class UpdateByRatingProfile implements RatingProfileLifecycleEventHandlerInterfa
             true
         );
 
-        $ratingProfile->setTpRatingProfile($tpRatingProfile);
+        $ratingProfile
+            ->setTpRatingProfile($tpRatingProfile);
+
+        $this->entityTools->persist($ratingProfile);
     }
 }

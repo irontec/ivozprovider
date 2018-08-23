@@ -13,6 +13,7 @@ interface FixedCostInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -29,6 +30,7 @@ interface FixedCostInterface extends LoggableEntityInterface
     public function getName();
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description
@@ -45,6 +47,7 @@ interface FixedCostInterface extends LoggableEntityInterface
     public function getDescription();
 
     /**
+     * @deprecated
      * Set cost
      *
      * @param string $cost

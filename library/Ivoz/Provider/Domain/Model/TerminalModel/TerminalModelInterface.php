@@ -35,6 +35,7 @@ interface TerminalModelInterface extends LoggableEntityInterface
     public function getIden();
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -51,6 +52,7 @@ interface TerminalModelInterface extends LoggableEntityInterface
     public function getName();
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description
@@ -81,6 +83,7 @@ interface TerminalModelInterface extends LoggableEntityInterface
     public function getSpecificTemplate();
 
     /**
+     * @deprecated
      * Set genericUrlPattern
      *
      * @param string $genericUrlPattern
@@ -97,6 +100,7 @@ interface TerminalModelInterface extends LoggableEntityInterface
     public function getGenericUrlPattern();
 
     /**
+     * @deprecated
      * Set specificUrlPattern
      *
      * @param string $specificUrlPattern

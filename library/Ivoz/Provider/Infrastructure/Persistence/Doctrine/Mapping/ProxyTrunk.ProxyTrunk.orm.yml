@@ -1,6 +1,7 @@
 Ivoz\Provider\Domain\Model\ProxyTrunk\ProxyTrunk:
   repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\ProxyTrunkDoctrineRepository
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: ProxyTrunks
   id:
     id:

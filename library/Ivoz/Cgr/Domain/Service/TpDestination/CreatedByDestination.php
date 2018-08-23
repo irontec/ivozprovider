@@ -3,16 +3,14 @@
 namespace Ivoz\Cgr\Domain\Service\TpDestination;
 
 use Ivoz\Cgr\Domain\Model\TpDestination\TpDestination;
-use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface;
 use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationDto;
 use Ivoz\Core\Application\Service\EntityTools;
-use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Provider\Domain\Model\Destination\DestinationInterface;
 use Ivoz\Provider\Domain\Service\Destination\DestinationLifecycleEventHandlerInterface;
 
 class CreatedByDestination implements DestinationLifecycleEventHandlerInterface
 {
-    CONST POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
+    const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
     /**
      * @var EntityTools
@@ -66,7 +64,11 @@ class CreatedByDestination implements DestinationLifecycleEventHandlerInterface
             true
         );
 
-        $destination->setTpDestination($tpDestination);
+        $destination
+            ->setTpDestination($tpDestination);
+
+        $this->entityTools
+            ->persist($destination);
     }
 
 }

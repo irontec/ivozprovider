@@ -1,6 +1,7 @@
 Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroup:
   repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\DestinationRateGroupDoctrineRepository
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: DestinationRateGroups
   id:
     id:

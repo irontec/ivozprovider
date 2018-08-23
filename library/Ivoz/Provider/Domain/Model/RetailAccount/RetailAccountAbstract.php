@@ -265,6 +265,7 @@ abstract class RetailAccountAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -292,6 +293,7 @@ abstract class RetailAccountAbstract
     }
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description
@@ -319,6 +321,7 @@ abstract class RetailAccountAbstract
     }
 
     /**
+     * @deprecated
      * Set transport
      *
      * @param string $transport
@@ -351,6 +354,7 @@ abstract class RetailAccountAbstract
     }
 
     /**
+     * @deprecated
      * Set ip
      *
      * @param string $ip
@@ -379,6 +383,7 @@ abstract class RetailAccountAbstract
     }
 
     /**
+     * @deprecated
      * Set port
      *
      * @param integer $port
@@ -410,6 +415,7 @@ abstract class RetailAccountAbstract
     }
 
     /**
+     * @deprecated
      * Set password
      *
      * @param string $password
@@ -438,6 +444,7 @@ abstract class RetailAccountAbstract
     }
 
     /**
+     * @deprecated
      * Set fromDomain
      *
      * @param string $fromDomain
@@ -466,6 +473,7 @@ abstract class RetailAccountAbstract
     }
 
     /**
+     * @deprecated
      * Set directConnectivity
      *
      * @param string $directConnectivity

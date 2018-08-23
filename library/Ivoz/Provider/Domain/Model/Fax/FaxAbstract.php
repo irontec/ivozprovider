@@ -185,6 +185,7 @@ abstract class FaxAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -212,6 +213,7 @@ abstract class FaxAbstract
     }
 
     /**
+     * @deprecated
      * Set email
      *
      * @param string $email
@@ -240,6 +242,7 @@ abstract class FaxAbstract
     }
 
     /**
+     * @deprecated
      * Set sendByEmail
      *
      * @param boolean $sendByEmail

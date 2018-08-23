@@ -214,6 +214,7 @@ abstract class TrustedAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set srcIp
      *
      * @param string $srcIp
@@ -242,6 +243,7 @@ abstract class TrustedAbstract
     }
 
     /**
+     * @deprecated
      * Set proto
      *
      * @param string $proto
@@ -270,6 +272,7 @@ abstract class TrustedAbstract
     }
 
     /**
+     * @deprecated
      * Set fromPattern
      *
      * @param string $fromPattern
@@ -298,6 +301,7 @@ abstract class TrustedAbstract
     }
 
     /**
+     * @deprecated
      * Set ruriPattern
      *
      * @param string $ruriPattern
@@ -326,6 +330,7 @@ abstract class TrustedAbstract
     }
 
     /**
+     * @deprecated
      * Set tag
      *
      * @param string $tag
@@ -354,6 +359,7 @@ abstract class TrustedAbstract
     }
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description
@@ -382,6 +388,7 @@ abstract class TrustedAbstract
     }
 
     /**
+     * @deprecated
      * Set priority
      *
      * @param integer $priority

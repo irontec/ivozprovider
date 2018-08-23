@@ -12,13 +12,6 @@ interface TrustedInterface extends LoggableEntityInterface
      */
     public function getChangeSet();
 
-    /**
-     * Set srcIp
-     *
-     * @param string $srcIp
-     *
-     * @return self
-     */
     public function setSrcIp($srcIp = null);
 
     /**
@@ -29,6 +22,7 @@ interface TrustedInterface extends LoggableEntityInterface
     public function getSrcIp();
 
     /**
+     * @deprecated
      * Set proto
      *
      * @param string $proto
@@ -45,6 +39,7 @@ interface TrustedInterface extends LoggableEntityInterface
     public function getProto();
 
     /**
+     * @deprecated
      * Set fromPattern
      *
      * @param string $fromPattern
@@ -61,6 +56,7 @@ interface TrustedInterface extends LoggableEntityInterface
     public function getFromPattern();
 
     /**
+     * @deprecated
      * Set ruriPattern
      *
      * @param string $ruriPattern
@@ -77,6 +73,7 @@ interface TrustedInterface extends LoggableEntityInterface
     public function getRuriPattern();
 
     /**
+     * @deprecated
      * Set tag
      *
      * @param string $tag
@@ -93,6 +90,7 @@ interface TrustedInterface extends LoggableEntityInterface
     public function getTag();
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description
@@ -109,6 +107,7 @@ interface TrustedInterface extends LoggableEntityInterface
     public function getDescription();
 
     /**
+     * @deprecated
      * Set priority
      *
      * @param integer $priority

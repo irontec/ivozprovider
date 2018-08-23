@@ -224,6 +224,7 @@ abstract class AdministratorAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set username
      *
      * @param string $username
@@ -251,6 +252,7 @@ abstract class AdministratorAbstract
     }
 
     /**
+     * @deprecated
      * Set pass
      *
      * @param string $pass
@@ -278,6 +280,7 @@ abstract class AdministratorAbstract
     }
 
     /**
+     * @deprecated
      * Set email
      *
      * @param string $email
@@ -305,6 +308,7 @@ abstract class AdministratorAbstract
     }
 
     /**
+     * @deprecated
      * Set active
      *
      * @param boolean $active
@@ -332,6 +336,7 @@ abstract class AdministratorAbstract
     }
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -360,6 +365,7 @@ abstract class AdministratorAbstract
     }
 
     /**
+     * @deprecated
      * Set lastname
      *
      * @param string $lastname

@@ -1,6 +1,7 @@
 Ivoz\Provider\Domain\Model\IvrEntry\IvrEntry:
   repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\IvrEntryDoctrineRepository
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: IVREntries
   id:
     id:

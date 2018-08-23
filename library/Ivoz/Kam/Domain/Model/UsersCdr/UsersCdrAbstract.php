@@ -305,6 +305,7 @@ abstract class UsersCdrAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set startTime
      *
      * @param \DateTime $startTime
@@ -335,6 +336,7 @@ abstract class UsersCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set endTime
      *
      * @param \DateTime $endTime
@@ -365,6 +367,7 @@ abstract class UsersCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set duration
      *
      * @param float $duration
@@ -392,6 +395,7 @@ abstract class UsersCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set direction
      *
      * @param string $direction
@@ -419,6 +423,7 @@ abstract class UsersCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set caller
      *
      * @param string $caller
@@ -447,6 +452,7 @@ abstract class UsersCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set callee
      *
      * @param string $callee
@@ -475,6 +481,7 @@ abstract class UsersCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set diversion
      *
      * @param string $diversion
@@ -503,6 +510,7 @@ abstract class UsersCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set referee
      *
      * @param string $referee
@@ -531,6 +539,7 @@ abstract class UsersCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set referrer
      *
      * @param string $referrer
@@ -559,6 +568,7 @@ abstract class UsersCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set callid
      *
      * @param string $callid
@@ -587,6 +597,7 @@ abstract class UsersCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set callidHash
      *
      * @param string $callidHash
@@ -615,6 +626,7 @@ abstract class UsersCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set xcallid
      *
      * @param string $xcallid

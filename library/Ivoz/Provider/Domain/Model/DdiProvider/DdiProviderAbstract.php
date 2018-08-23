@@ -185,6 +185,7 @@ abstract class DdiProviderAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description
@@ -212,6 +213,7 @@ abstract class DdiProviderAbstract
     }
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -239,6 +241,7 @@ abstract class DdiProviderAbstract
     }
 
     /**
+     * @deprecated
      * Set externallyRated
      *
      * @param boolean $externallyRated

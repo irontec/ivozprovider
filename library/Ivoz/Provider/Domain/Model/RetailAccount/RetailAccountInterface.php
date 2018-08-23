@@ -38,6 +38,7 @@ interface RetailAccountInterface extends LoggableEntityInterface
     public function getName();
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description
@@ -54,6 +55,7 @@ interface RetailAccountInterface extends LoggableEntityInterface
     public function getDescription();
 
     /**
+     * @deprecated
      * Set transport
      *
      * @param string $transport
@@ -91,6 +93,7 @@ interface RetailAccountInterface extends LoggableEntityInterface
     public function getPassword();
 
     /**
+     * @deprecated
      * Set fromDomain
      *
      * @param string $fromDomain
@@ -107,6 +110,7 @@ interface RetailAccountInterface extends LoggableEntityInterface
     public function getFromDomain();
 
     /**
+     * @deprecated
      * Set directConnectivity
      *
      * @param string $directConnectivity

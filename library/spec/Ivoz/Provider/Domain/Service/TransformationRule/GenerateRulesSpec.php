@@ -2,8 +2,10 @@
 
 namespace spec\Ivoz\Provider\Domain\Service\TransformationRule;
 
+use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Provider\Domain\Model\TransformationRule\TransformationRuleInterface;
+use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface;
 use Ivoz\Provider\Domain\Service\TransformationRule\GenerateInRules;
 use Ivoz\Provider\Domain\Service\TransformationRule\GenerateOutRules;
@@ -14,9 +16,9 @@ use Prophecy\Argument;
 class GenerateRulesSpec extends ObjectBehavior
 {
     /**
-     * @var EntityPersisterInterface
+     * @var EntityTools
      */
-    protected $entityPersister;
+    protected $entityTools;
 
     /**
      * @var GenerateInRules
@@ -29,11 +31,11 @@ class GenerateRulesSpec extends ObjectBehavior
     protected $generateOutRules;
 
     function let(
-        EntityPersisterInterface $entityPersister,
+        EntityTools $entityTools,
         GenerateInRules $generateInRules,
         GenerateOutRules $generateOutRules
     ) {
-        $this->entityPersister = $entityPersister;
+        $this->entityTools = $entityTools;
         $this->generateInRules = $generateInRules;
         $this->generateOutRules = $generateOutRules;
 
@@ -57,14 +59,15 @@ class GenerateRulesSpec extends ObjectBehavior
     }
 
     private function prepareExample(
-        TransformationRuleSetInterface $entity
+        TransformationRuleSetInterface $transformationRuleSet,
+        TransformationRuleSetDto $transformationRuleSetDto
     ) {
-        $entity
+        $transformationRuleSet
             ->getGenerateRules()
             ->willReturn(true)
             ->shouldBeCalled();
 
-        $entity
+        $transformationRuleSet
             ->getRules()
             ->willReturn([])
             ->shouldBeCalled();
@@ -85,88 +88,103 @@ class GenerateRulesSpec extends ObjectBehavior
             )
             ->shouldBeCalled();
 
-        $entity
+        $this
+            ->entityTools
+            ->entityToDto($transformationRuleSet)
+            ->willReturn($transformationRuleSetDto);
+
+        $transformationRuleSetDto
             ->setGenerateRules(false)
             ->shouldBeCalled();
 
         $this
-            ->entityPersister
-            ->persist($entity)
+            ->entityTools
+            ->persistDto($transformationRuleSetDto, $transformationRuleSet, false)
+            ->shouldBeCalled();
+
+        $this
+            ->entityTools
+            ->dispatchQueuedOperations()
             ->shouldBeCalled();
     }
 
     function it_removes_already_existing_rules(
-        TransformationRuleSetInterface $entity,
+        TransformationRuleSetInterface $transformationRuleSet,
+        TransformationRuleSetDto $transformationRuleSetDto,
         TransformationRuleInterface $transformationRule
     ) {
-        $this->prepareExample($entity);
+        $this->prepareExample($transformationRuleSet, $transformationRuleSetDto);
 
-        $entity
+        $transformationRuleSet
             ->getRules()
             ->willReturn([$transformationRule])
             ->shouldBeCalled();
 
-        $entity
+        $transformationRuleSet
             ->removeRule($transformationRule)
             ->shouldBeCalled();
 
         $this
-            ->entityPersister
+            ->entityTools
             ->remove($transformationRule)
             ->shouldBeCalled();
 
-        $this->execute($entity, true);
+        $this->execute($transformationRuleSet, true);
     }
 
     function it_calls_generate_callerin_rules(
-        TransformationRuleSetInterface $entity
+        TransformationRuleSetInterface $transformationRuleSet,
+        TransformationRuleSetDto $transformationRuleSetDto
     ) {
-        $this->prepareExample($entity);
+        $this->prepareExample($transformationRuleSet, $transformationRuleSetDto);
 
         $this
             ->generateInRules
-            ->execute($entity, 'callerin')
-        ->shouldBeCalled();
+            ->execute($transformationRuleSet, 'callerin')
+            ->shouldBeCalled();
 
-        $this->execute($entity, true);
+        $this->execute($transformationRuleSet, true);
     }
 
     function it_calls_generate_calleein_rules(
-        TransformationRuleSetInterface $entity
+        TransformationRuleSetInterface $transformationRuleSet,
+        TransformationRuleSetDto $transformationRuleSetDto
     ) {
-        $this->prepareExample($entity);
+        $this->prepareExample($transformationRuleSet, $transformationRuleSetDto);
 
         $this
             ->generateInRules
-            ->execute($entity, 'calleein')
+            ->execute($transformationRuleSet, 'calleein')
             ->shouldBeCalled();
 
-        $this->execute($entity, true);
+        $this->execute($transformationRuleSet, true);
     }
 
     function it_calls_generate_callerout_rules(
-        TransformationRuleSetInterface $entity
+        TransformationRuleSetInterface $transformationRuleSet,
+        TransformationRuleSetDto $transformationRuleSetDto
     ) {
-        $this->prepareExample($entity);
+        $this->prepareExample($transformationRuleSet, $transformationRuleSetDto);
 
         $this
             ->generateOutRules
-            ->execute($entity, 'callerout')
+            ->execute($transformationRuleSet, 'callerout')
             ->shouldBeCalled();
 
-        $this->execute($entity, true);
+        $this->execute($transformationRuleSet, true);
     }
 
     function it_calls_generate_calleeout_rules(
-        TransformationRuleSetInterface $entity
+        TransformationRuleSetInterface $transformationRuleSet,
+        TransformationRuleSetDto $transformationRuleSetDto
     ) {
-        $this->prepareExample($entity);
+        $this->prepareExample($transformationRuleSet, $transformationRuleSetDto);
 
         $this
             ->generateOutRules
-            ->execute($entity, 'calleeout')
+            ->execute($transformationRuleSet, 'calleeout')
             ->shouldBeCalled();
 
-        $this->execute($entity, true);
+        $this->execute($transformationRuleSet, true);
     }
 }

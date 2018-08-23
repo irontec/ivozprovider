@@ -13,6 +13,7 @@ interface RatingProfileInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @deprecated
      * Set activationTime
      *
      * @param \DateTime $activationTime

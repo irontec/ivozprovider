@@ -67,7 +67,11 @@ class UpdatedByDestinationRate implements DestinationRateLifecycleEventHandlerIn
             true
         );
 
-        $destinationRate->setTpRate($tpRate);
+        $destinationRate
+            ->setTpRate($tpRate);
+
+        $this->entityTools
+            ->persist($destinationRate);
     }
 
 }

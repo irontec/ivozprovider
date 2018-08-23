@@ -13,6 +13,7 @@ interface NotificationTemplateContentInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @deprecated
      * Set fromName
      *
      * @param string $fromName
@@ -29,6 +30,7 @@ interface NotificationTemplateContentInterface extends LoggableEntityInterface
     public function getFromName();
 
     /**
+     * @deprecated
      * Set fromAddress
      *
      * @param string $fromAddress
@@ -45,6 +47,7 @@ interface NotificationTemplateContentInterface extends LoggableEntityInterface
     public function getFromAddress();
 
     /**
+     * @deprecated
      * Set subject
      *
      * @param string $subject
@@ -61,6 +64,7 @@ interface NotificationTemplateContentInterface extends LoggableEntityInterface
     public function getSubject();
 
     /**
+     * @deprecated
      * Set body
      *
      * @param string $body

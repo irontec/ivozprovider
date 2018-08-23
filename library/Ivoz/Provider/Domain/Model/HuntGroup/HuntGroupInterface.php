@@ -41,6 +41,7 @@ interface HuntGroupInterface extends LoggableEntityInterface
     public function getNoAnswerNumberValueE164();
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -57,6 +58,7 @@ interface HuntGroupInterface extends LoggableEntityInterface
     public function getName();
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description
@@ -73,6 +75,7 @@ interface HuntGroupInterface extends LoggableEntityInterface
     public function getDescription();
 
     /**
+     * @deprecated
      * Set strategy
      *
      * @param string $strategy
@@ -96,6 +99,7 @@ interface HuntGroupInterface extends LoggableEntityInterface
     public function getRingAllTimeout();
 
     /**
+     * @deprecated
      * Set noAnswerTargetType
      *
      * @param string $noAnswerTargetType
@@ -112,6 +116,7 @@ interface HuntGroupInterface extends LoggableEntityInterface
     public function getNoAnswerTargetType();
 
     /**
+     * @deprecated
      * Set noAnswerNumberValue
      *
      * @param string $noAnswerNumberValue
@@ -128,6 +133,7 @@ interface HuntGroupInterface extends LoggableEntityInterface
     public function getNoAnswerNumberValue();
 
     /**
+     * @deprecated
      * Set preventMissedCalls
      *
      * @param integer $preventMissedCalls

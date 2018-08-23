@@ -7,5 +7,5 @@ use Ivoz\Kam\Domain\Model\Trusted\TrustedInterface;
 
 interface TrustedLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(TrustedInterface $entity);
+    public function execute(TrustedInterface $trusted);
 }

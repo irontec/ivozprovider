@@ -2,8 +2,9 @@
 
 namespace Ivoz\Provider\Domain\Service\TransformationRule;
 
-use Ivoz\Core\Domain\Service\EntityPersisterInterface;
+use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\TransformationRule\TransformationRuleInterface;
+use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetDto;
 use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface;
 use Ivoz\Provider\Domain\Service\TransformationRuleSet\TransformationRuleSetLifecycleEventHandlerInterface;
 
@@ -14,9 +15,9 @@ use Ivoz\Provider\Domain\Service\TransformationRuleSet\TransformationRuleSetLife
 class GenerateRules implements TransformationRuleSetLifecycleEventHandlerInterface
 {
     /**
-     * @var EntityPersisterInterface
+     * @var EntityTools
      */
-    protected $entityPersister;
+    protected $entityTools;
 
     /**
      * @var GenerateInRules
@@ -29,11 +30,11 @@ class GenerateRules implements TransformationRuleSetLifecycleEventHandlerInterfa
     protected $generateOutRules;
 
     public function __construct(
-        EntityPersisterInterface $entityPersister,
+        EntityTools $entityTools,
         GenerateInRules $generateInRules,
         GenerateOutRules $generateOutRules
     ) {
-        $this->entityPersister = $entityPersister;
+        $this->entityTools = $entityTools;
         $this->generateInRules = $generateInRules;
         $this->generateOutRules = $generateOutRules;
     }
@@ -45,33 +46,41 @@ class GenerateRules implements TransformationRuleSetLifecycleEventHandlerInterfa
         ];
     }
 
-    public function execute(TransformationRuleSetInterface $entity, $isNew)
+    public function execute(TransformationRuleSetInterface $transformationRuleSet, $isNew)
     {
         // Only if requested to autogenerate rules
-        if (!$entity->getGenerateRules()) {
+        if (!$transformationRuleSet->getGenerateRules()) {
             return;
         }
 
         // Delete existing Rules for given ruleset
         /** @var TransformationRuleInterface[] $rules */
-        $rules = $entity->getRules();
+        $rules = $transformationRuleSet->getRules();
         foreach ($rules as $rule) {
 
-            $entity
+            $transformationRuleSet
                 ->removeRule($rule);
 
-            $this->entityPersister
+            $this->entityTools
                 ->remove($rule);
         }
 
         // Generate rules
-        $this->generateInRules->execute($entity, 'callerin');
-        $this->generateInRules->execute($entity, 'calleein');
-        $this->generateOutRules->execute($entity, 'callerout');
-        $this->generateOutRules->execute($entity, 'calleeout');
+        $this->generateInRules->execute($transformationRuleSet, 'callerin');
+        $this->generateInRules->execute($transformationRuleSet, 'calleein');
+        $this->generateOutRules->execute($transformationRuleSet, 'callerout');
+        $this->generateOutRules->execute($transformationRuleSet, 'calleeout');
 
         // Mark rules as generated
-        $entity->setGenerateRules(false);
-        $this->entityPersister->persist($entity);
+        /** @var TransformationRuleSetDto $transformationRuleSetDto */
+        $transformationRuleSetDto = $this->entityTools->entityToDto($transformationRuleSet);
+        $transformationRuleSetDto->setGenerateRules(false);
+        $this->entityTools->persistDto(
+            $transformationRuleSetDto,
+            $transformationRuleSet,
+            false
+        );
+
+        $this->entityTools->dispatchQueuedOperations();
     }
 }

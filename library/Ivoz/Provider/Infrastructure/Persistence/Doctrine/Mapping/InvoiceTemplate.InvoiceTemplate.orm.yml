@@ -1,6 +1,7 @@
 Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplate:
   repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\InvoiceTemplateDoctrineRepository
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: InvoiceTemplates
   id:
     id:

@@ -13,6 +13,7 @@ interface TpRatingProfileInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @deprecated
      * Set tpid
      *
      * @param string $tpid
@@ -29,6 +30,7 @@ interface TpRatingProfileInterface extends LoggableEntityInterface
     public function getTpid();
 
     /**
+     * @deprecated
      * Set loadid
      *
      * @param string $loadid
@@ -45,6 +47,7 @@ interface TpRatingProfileInterface extends LoggableEntityInterface
     public function getLoadid();
 
     /**
+     * @deprecated
      * Set direction
      *
      * @param string $direction
@@ -61,6 +64,7 @@ interface TpRatingProfileInterface extends LoggableEntityInterface
     public function getDirection();
 
     /**
+     * @deprecated
      * Set tenant
      *
      * @param string $tenant
@@ -77,6 +81,7 @@ interface TpRatingProfileInterface extends LoggableEntityInterface
     public function getTenant();
 
     /**
+     * @deprecated
      * Set category
      *
      * @param string $category
@@ -93,6 +98,7 @@ interface TpRatingProfileInterface extends LoggableEntityInterface
     public function getCategory();
 
     /**
+     * @deprecated
      * Set subject
      *
      * @param string $subject
@@ -109,6 +115,7 @@ interface TpRatingProfileInterface extends LoggableEntityInterface
     public function getSubject();
 
     /**
+     * @deprecated
      * Set activationTime
      *
      * @param \DateTime $activationTime
@@ -125,6 +132,7 @@ interface TpRatingProfileInterface extends LoggableEntityInterface
     public function getActivationTime();
 
     /**
+     * @deprecated
      * Set ratingPlanTag
      *
      * @param string $ratingPlanTag
@@ -141,6 +149,7 @@ interface TpRatingProfileInterface extends LoggableEntityInterface
     public function getRatingPlanTag();
 
     /**
+     * @deprecated
      * Set fallbackSubjects
      *
      * @param string $fallbackSubjects
@@ -157,6 +166,7 @@ interface TpRatingProfileInterface extends LoggableEntityInterface
     public function getFallbackSubjects();
 
     /**
+     * @deprecated
      * Set cdrStatQueueIds
      *
      * @param string $cdrStatQueueIds
@@ -173,6 +183,7 @@ interface TpRatingProfileInterface extends LoggableEntityInterface
     public function getCdrStatQueueIds();
 
     /**
+     * @deprecated
      * Set createdAt
      *
      * @param \DateTime $createdAt

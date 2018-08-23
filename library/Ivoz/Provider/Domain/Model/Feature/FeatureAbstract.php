@@ -170,6 +170,7 @@ abstract class FeatureAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set iden
      *
      * @param string $iden

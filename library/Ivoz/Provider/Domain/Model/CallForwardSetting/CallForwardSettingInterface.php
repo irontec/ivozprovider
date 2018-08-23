@@ -34,6 +34,7 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
     public function getRouteType();
 
     /**
+     * @deprecated
      * Set callTypeFilter
      *
      * @param string $callTypeFilter
@@ -50,6 +51,7 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
     public function getCallTypeFilter();
 
     /**
+     * @deprecated
      * Set callForwardType
      *
      * @param string $callForwardType
@@ -66,6 +68,7 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
     public function getCallForwardType();
 
     /**
+     * @deprecated
      * Set targetType
      *
      * @param string $targetType
@@ -89,6 +92,7 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
     public function getNumberValue();
 
     /**
+     * @deprecated
      * Set noAnswerTimeout
      *
      * @param integer $noAnswerTimeout
@@ -105,6 +109,7 @@ interface CallForwardSettingInterface extends LoggableEntityInterface
     public function getNoAnswerTimeout();
 
     /**
+     * @deprecated
      * Set enabled
      *
      * @param boolean $enabled

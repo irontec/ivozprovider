@@ -20,6 +20,7 @@ interface CountryInterface extends LoggableEntityInterface
     public function hasAreaCode();
 
     /**
+     * @deprecated
      * Set code
      *
      * @param string $code
@@ -36,6 +37,7 @@ interface CountryInterface extends LoggableEntityInterface
     public function getCode();
 
     /**
+     * @deprecated
      * Set countryCode
      *
      * @param string $countryCode

@@ -250,6 +250,7 @@ abstract class CallForwardSettingAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set callTypeFilter
      *
      * @param string $callTypeFilter
@@ -282,6 +283,7 @@ abstract class CallForwardSettingAbstract
     }
 
     /**
+     * @deprecated
      * Set callForwardType
      *
      * @param string $callForwardType
@@ -315,6 +317,7 @@ abstract class CallForwardSettingAbstract
     }
 
     /**
+     * @deprecated
      * Set targetType
      *
      * @param string $targetType
@@ -347,6 +350,7 @@ abstract class CallForwardSettingAbstract
     }
 
     /**
+     * @deprecated
      * Set numberValue
      *
      * @param string $numberValue
@@ -375,6 +379,7 @@ abstract class CallForwardSettingAbstract
     }
 
     /**
+     * @deprecated
      * Set noAnswerTimeout
      *
      * @param integer $noAnswerTimeout
@@ -402,6 +407,7 @@ abstract class CallForwardSettingAbstract
     }
 
     /**
+     * @deprecated
      * Set enabled
      *
      * @param boolean $enabled

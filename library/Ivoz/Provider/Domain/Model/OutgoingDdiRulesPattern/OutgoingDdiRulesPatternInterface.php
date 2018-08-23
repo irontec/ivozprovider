@@ -19,6 +19,7 @@ interface OutgoingDdiRulesPatternInterface extends LoggableEntityInterface
     public function getForcedDdi();
 
     /**
+     * @deprecated
      * Set action
      *
      * @param string $action
@@ -35,6 +36,7 @@ interface OutgoingDdiRulesPatternInterface extends LoggableEntityInterface
     public function getAction();
 
     /**
+     * @deprecated
      * Set priority
      *
      * @param integer $priority

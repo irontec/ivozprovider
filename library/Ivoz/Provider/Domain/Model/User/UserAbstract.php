@@ -396,6 +396,7 @@ abstract class UserAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -423,6 +424,7 @@ abstract class UserAbstract
     }
 
     /**
+     * @deprecated
      * Set lastname
      *
      * @param string $lastname
@@ -450,6 +452,7 @@ abstract class UserAbstract
     }
 
     /**
+     * @deprecated
      * Set email
      *
      * @param string $email
@@ -478,6 +481,7 @@ abstract class UserAbstract
     }
 
     /**
+     * @deprecated
      * Set pass
      *
      * @param string $pass
@@ -506,6 +510,7 @@ abstract class UserAbstract
     }
 
     /**
+     * @deprecated
      * Set doNotDisturb
      *
      * @param boolean $doNotDisturb
@@ -533,6 +538,7 @@ abstract class UserAbstract
     }
 
     /**
+     * @deprecated
      * Set isBoss
      *
      * @param boolean $isBoss
@@ -560,6 +566,7 @@ abstract class UserAbstract
     }
 
     /**
+     * @deprecated
      * Set active
      *
      * @param boolean $active
@@ -587,6 +594,7 @@ abstract class UserAbstract
     }
 
     /**
+     * @deprecated
      * Set maxCalls
      *
      * @param integer $maxCalls
@@ -615,6 +623,7 @@ abstract class UserAbstract
     }
 
     /**
+     * @deprecated
      * Set externalIpCalls
      *
      * @param string $externalIpCalls
@@ -648,6 +657,7 @@ abstract class UserAbstract
     }
 
     /**
+     * @deprecated
      * Set voicemailEnabled
      *
      * @param boolean $voicemailEnabled
@@ -675,6 +685,7 @@ abstract class UserAbstract
     }
 
     /**
+     * @deprecated
      * Set voicemailSendMail
      *
      * @param boolean $voicemailSendMail
@@ -702,6 +713,7 @@ abstract class UserAbstract
     }
 
     /**
+     * @deprecated
      * Set voicemailAttachSound
      *
      * @param boolean $voicemailAttachSound
@@ -729,6 +741,7 @@ abstract class UserAbstract
     }
 
     /**
+     * @deprecated
      * Set tokenKey
      *
      * @param string $tokenKey
@@ -757,6 +770,7 @@ abstract class UserAbstract
     }
 
     /**
+     * @deprecated
      * Set gsQRCode
      *
      * @param boolean $gsQRCode

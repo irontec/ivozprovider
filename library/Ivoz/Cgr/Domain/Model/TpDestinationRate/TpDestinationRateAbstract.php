@@ -247,6 +247,7 @@ abstract class TpDestinationRateAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set tpid
      *
      * @param string $tpid
@@ -274,6 +275,7 @@ abstract class TpDestinationRateAbstract
     }
 
     /**
+     * @deprecated
      * Set tag
      *
      * @param string $tag
@@ -302,6 +304,7 @@ abstract class TpDestinationRateAbstract
     }
 
     /**
+     * @deprecated
      * Set destinationsTag
      *
      * @param string $destinationsTag
@@ -330,6 +333,7 @@ abstract class TpDestinationRateAbstract
     }
 
     /**
+     * @deprecated
      * Set ratesTag
      *
      * @param string $ratesTag
@@ -358,6 +362,7 @@ abstract class TpDestinationRateAbstract
     }
 
     /**
+     * @deprecated
      * Set roundingMethod
      *
      * @param string $roundingMethod
@@ -385,6 +390,7 @@ abstract class TpDestinationRateAbstract
     }
 
     /**
+     * @deprecated
      * Set roundingDecimals
      *
      * @param integer $roundingDecimals
@@ -412,6 +418,7 @@ abstract class TpDestinationRateAbstract
     }
 
     /**
+     * @deprecated
      * Set maxCost
      *
      * @param string $maxCost
@@ -439,6 +446,7 @@ abstract class TpDestinationRateAbstract
     }
 
     /**
+     * @deprecated
      * Set maxCostStrategy
      *
      * @param string $maxCostStrategy
@@ -466,6 +474,7 @@ abstract class TpDestinationRateAbstract
     }
 
     /**
+     * @deprecated
      * Set createdAt
      *
      * @param \DateTime $createdAt

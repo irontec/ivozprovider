@@ -13,6 +13,7 @@ interface UsersWatcherInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @deprecated
      * Set presentityUri
      *
      * @param string $presentityUri
@@ -29,6 +30,7 @@ interface UsersWatcherInterface extends LoggableEntityInterface
     public function getPresentityUri();
 
     /**
+     * @deprecated
      * Set watcherUsername
      *
      * @param string $watcherUsername
@@ -45,6 +47,7 @@ interface UsersWatcherInterface extends LoggableEntityInterface
     public function getWatcherUsername();
 
     /**
+     * @deprecated
      * Set watcherDomain
      *
      * @param string $watcherDomain
@@ -61,6 +64,7 @@ interface UsersWatcherInterface extends LoggableEntityInterface
     public function getWatcherDomain();
 
     /**
+     * @deprecated
      * Set event
      *
      * @param string $event
@@ -77,6 +81,7 @@ interface UsersWatcherInterface extends LoggableEntityInterface
     public function getEvent();
 
     /**
+     * @deprecated
      * Set status
      *
      * @param integer $status
@@ -93,6 +98,7 @@ interface UsersWatcherInterface extends LoggableEntityInterface
     public function getStatus();
 
     /**
+     * @deprecated
      * Set reason
      *
      * @param string $reason
@@ -109,6 +115,7 @@ interface UsersWatcherInterface extends LoggableEntityInterface
     public function getReason();
 
     /**
+     * @deprecated
      * Set insertedTime
      *
      * @param integer $insertedTime

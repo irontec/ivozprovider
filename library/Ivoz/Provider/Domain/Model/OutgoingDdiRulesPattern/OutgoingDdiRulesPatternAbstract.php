@@ -186,6 +186,7 @@ abstract class OutgoingDdiRulesPatternAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set action
      *
      * @param string $action
@@ -217,6 +218,7 @@ abstract class OutgoingDdiRulesPatternAbstract
     }
 
     /**
+     * @deprecated
      * Set priority
      *
      * @param integer $priority

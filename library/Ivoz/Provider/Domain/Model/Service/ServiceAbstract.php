@@ -217,6 +217,7 @@ abstract class ServiceAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set iden
      *
      * @param string $iden
@@ -244,6 +245,7 @@ abstract class ServiceAbstract
     }
 
     /**
+     * @deprecated
      * Set defaultCode
      *
      * @param string $defaultCode
@@ -271,6 +273,7 @@ abstract class ServiceAbstract
     }
 
     /**
+     * @deprecated
      * Set extraArgs
      *
      * @param boolean $extraArgs

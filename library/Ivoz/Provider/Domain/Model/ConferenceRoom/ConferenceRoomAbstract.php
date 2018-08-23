@@ -186,6 +186,7 @@ abstract class ConferenceRoomAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -213,6 +214,7 @@ abstract class ConferenceRoomAbstract
     }
 
     /**
+     * @deprecated
      * Set pinProtected
      *
      * @param boolean $pinProtected
@@ -240,6 +242,7 @@ abstract class ConferenceRoomAbstract
     }
 
     /**
+     * @deprecated
      * Set pinCode
      *
      * @param string $pinCode
@@ -268,6 +271,7 @@ abstract class ConferenceRoomAbstract
     }
 
     /**
+     * @deprecated
      * Set maxMembers
      *
      * @param integer $maxMembers

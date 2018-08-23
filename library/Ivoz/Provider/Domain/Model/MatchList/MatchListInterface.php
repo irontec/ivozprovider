@@ -22,6 +22,7 @@ interface MatchListInterface extends LoggableEntityInterface
     public function numberMatches($number);
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name

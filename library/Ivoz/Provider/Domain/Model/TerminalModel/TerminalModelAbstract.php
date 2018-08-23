@@ -213,6 +213,7 @@ abstract class TerminalModelAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set iden
      *
      * @param string $iden
@@ -240,6 +241,7 @@ abstract class TerminalModelAbstract
     }
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -267,6 +269,7 @@ abstract class TerminalModelAbstract
     }
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description
@@ -294,6 +297,7 @@ abstract class TerminalModelAbstract
     }
 
     /**
+     * @deprecated
      * Set genericTemplate
      *
      * @param string $genericTemplate
@@ -322,6 +326,7 @@ abstract class TerminalModelAbstract
     }
 
     /**
+     * @deprecated
      * Set specificTemplate
      *
      * @param string $specificTemplate
@@ -350,6 +355,7 @@ abstract class TerminalModelAbstract
     }
 
     /**
+     * @deprecated
      * Set genericUrlPattern
      *
      * @param string $genericUrlPattern
@@ -378,6 +384,7 @@ abstract class TerminalModelAbstract
     }
 
     /**
+     * @deprecated
      * Set specificUrlPattern
      *
      * @param string $specificUrlPattern

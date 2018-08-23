@@ -249,6 +249,7 @@ abstract class DdiProviderRegistrationAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set username
      *
      * @param string $username
@@ -276,6 +277,7 @@ abstract class DdiProviderRegistrationAbstract
     }
 
     /**
+     * @deprecated
      * Set domain
      *
      * @param string $domain
@@ -303,6 +305,7 @@ abstract class DdiProviderRegistrationAbstract
     }
 
     /**
+     * @deprecated
      * Set realm
      *
      * @param string $realm
@@ -330,6 +333,7 @@ abstract class DdiProviderRegistrationAbstract
     }
 
     /**
+     * @deprecated
      * Set authUsername
      *
      * @param string $authUsername
@@ -357,6 +361,7 @@ abstract class DdiProviderRegistrationAbstract
     }
 
     /**
+     * @deprecated
      * Set authPassword
      *
      * @param string $authPassword
@@ -384,6 +389,7 @@ abstract class DdiProviderRegistrationAbstract
     }
 
     /**
+     * @deprecated
      * Set authProxy
      *
      * @param string $authProxy
@@ -411,6 +417,7 @@ abstract class DdiProviderRegistrationAbstract
     }
 
     /**
+     * @deprecated
      * Set expires
      *
      * @param integer $expires
@@ -438,6 +445,7 @@ abstract class DdiProviderRegistrationAbstract
     }
 
     /**
+     * @deprecated
      * Set multiDdi
      *
      * @param boolean $multiDdi
@@ -466,6 +474,7 @@ abstract class DdiProviderRegistrationAbstract
     }
 
     /**
+     * @deprecated
      * Set contactUsername
      *
      * @param string $contactUsername

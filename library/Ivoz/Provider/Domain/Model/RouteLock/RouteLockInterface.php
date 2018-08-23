@@ -20,6 +20,7 @@ interface RouteLockInterface extends LoggableEntityInterface
     public function isOpen();
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -36,6 +37,7 @@ interface RouteLockInterface extends LoggableEntityInterface
     public function getName();
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description
@@ -52,6 +54,7 @@ interface RouteLockInterface extends LoggableEntityInterface
     public function getDescription();
 
     /**
+     * @deprecated
      * Set open
      *
      * @param boolean $open

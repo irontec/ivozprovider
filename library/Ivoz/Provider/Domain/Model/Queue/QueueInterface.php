@@ -62,6 +62,7 @@ interface QueueInterface extends LoggableEntityInterface
     public function getMaxWaitTime();
 
     /**
+     * @deprecated
      * Set timeoutTargetType
      *
      * @param string $timeoutTargetType
@@ -78,6 +79,7 @@ interface QueueInterface extends LoggableEntityInterface
     public function getTimeoutTargetType();
 
     /**
+     * @deprecated
      * Set timeoutNumberValue
      *
      * @param string $timeoutNumberValue
@@ -101,6 +103,7 @@ interface QueueInterface extends LoggableEntityInterface
     public function getMaxlen();
 
     /**
+     * @deprecated
      * Set fullTargetType
      *
      * @param string $fullTargetType
@@ -117,6 +120,7 @@ interface QueueInterface extends LoggableEntityInterface
     public function getFullTargetType();
 
     /**
+     * @deprecated
      * Set fullNumberValue
      *
      * @param string $fullNumberValue
@@ -133,6 +137,7 @@ interface QueueInterface extends LoggableEntityInterface
     public function getFullNumberValue();
 
     /**
+     * @deprecated
      * Set periodicAnnounceFrequency
      *
      * @param integer $periodicAnnounceFrequency
@@ -149,6 +154,7 @@ interface QueueInterface extends LoggableEntityInterface
     public function getPeriodicAnnounceFrequency();
 
     /**
+     * @deprecated
      * Set memberCallRest
      *
      * @param integer $memberCallRest
@@ -165,6 +171,7 @@ interface QueueInterface extends LoggableEntityInterface
     public function getMemberCallRest();
 
     /**
+     * @deprecated
      * Set memberCallTimeout
      *
      * @param integer $memberCallTimeout
@@ -181,6 +188,7 @@ interface QueueInterface extends LoggableEntityInterface
     public function getMemberCallTimeout();
 
     /**
+     * @deprecated
      * Set strategy
      *
      * @param string $strategy
@@ -197,6 +205,7 @@ interface QueueInterface extends LoggableEntityInterface
     public function getStrategy();
 
     /**
+     * @deprecated
      * Set weight
      *
      * @param integer $weight

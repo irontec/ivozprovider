@@ -276,6 +276,7 @@ abstract class ExternalCallFilterAbstract
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -303,6 +304,7 @@ abstract class ExternalCallFilterAbstract
     }
 
     /**
+     * @deprecated
      * Set holidayTargetType
      *
      * @param string $holidayTargetType
@@ -336,6 +338,7 @@ abstract class ExternalCallFilterAbstract
     }
 
     /**
+     * @deprecated
      * Set holidayNumberValue
      *
      * @param string $holidayNumberValue
@@ -364,6 +367,7 @@ abstract class ExternalCallFilterAbstract
     }
 
     /**
+     * @deprecated
      * Set outOfScheduleTargetType
      *
      * @param string $outOfScheduleTargetType
@@ -397,6 +401,7 @@ abstract class ExternalCallFilterAbstract
     }
 
     /**
+     * @deprecated
      * Set outOfScheduleNumberValue
      *
      * @param string $outOfScheduleNumberValue

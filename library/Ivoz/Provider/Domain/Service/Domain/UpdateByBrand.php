@@ -2,7 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\Domain;
 
-use Ivoz\Core\Domain\Service\EntityPersisterInterface;
+use Ivoz\Core\Application\Service\EntityTools;
 use Doctrine\ORM\EntityManagerInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Domain\Domain;
@@ -16,35 +16,29 @@ use Ivoz\Provider\Domain\Service\Brand\BrandLifecycleEventHandlerInterface;
  */
 class UpdateByBrand implements BrandLifecycleEventHandlerInterface
 {
-    /**
-     * @var EntityManagerInterface
-     */
-    protected $em;
+    const POST_PERSIST_PRIORITY = 10;
 
     /**
-     * @var EntityPersisterInterface
+     * @var EntityTools
      */
-    protected $entityPersister;
+    protected $entityTools;
 
     public function __construct(
-        EntityManagerInterface $em,
-        EntityPersisterInterface $entityPersister
+        EntityTools $entityTools
     ) {
-        $this->em = $em;
-        $this->entityPersister = $entityPersister;
+        $this->entityTools = $entityTools;
     }
 
     public static function getSubscribedEvents()
     {
         return [
-            self::EVENT_POST_PERSIST => 10
+            self::EVENT_POST_PERSIST => self::POST_PERSIST_PRIORITY
         ];
     }
 
     public function execute(BrandInterface $entity, $isNew)
     {
         if (!$entity->hasChanged('domain_users')) {
-
             return;
         }
 
@@ -57,7 +51,7 @@ class UpdateByBrand implements BrandLifecycleEventHandlerInterface
 
         // Empty domain field, delete any related domain
         if (!$domainUsers && $domain) {
-            $this->em->remove($domain);
+            $this->entityTools->remove($domain);
 
             return;
         }
@@ -66,7 +60,7 @@ class UpdateByBrand implements BrandLifecycleEventHandlerInterface
         if (is_null($domain)) {
             $domainDto = Domain::createDto();
         } else {
-            $domainDto = $domain->toDto();
+            $domainDto = $this->entityTools->entityToDto($domain);
         }
 
         /**
@@ -77,9 +71,12 @@ class UpdateByBrand implements BrandLifecycleEventHandlerInterface
             ->setDescription($entity->getName() . " proxyusers domain");
 
         $domain = $this
-            ->entityPersister
-            ->persistDto($domainDto, $domain);
+            ->entityTools
+            ->persistDto($domainDto, $domain, true);
 
         $entity->setDomain($domain);
+
+        $this->entityTools
+            ->persist($entity);
     }
 }

@@ -26,6 +26,7 @@ interface OutgoingDdiRuleInterface extends LoggableEntityInterface
     public function getOutgoingDdi($originalDdi, $e164destination);
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -42,6 +43,7 @@ interface OutgoingDdiRuleInterface extends LoggableEntityInterface
     public function getName();
 
     /**
+     * @deprecated
      * Set defaultAction
      *
      * @param string $defaultAction
