@@ -203,13 +203,20 @@ services:
   ################################################
   Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\MissingReferenceFixerDecorator:
     decorates: 'api_platform.swagger.normalizer.documentation'
-    decoration_priority: 11
+    decoration_priority: 12
     arguments:
       $decoratedNormalizer: '@Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\MissingReferenceFixerDecorator.inner'
       $propertyNameCollectionFactory: '@Ivoz\Api\Swagger\Metadata\Property\Factory\PropertyNameCollectionFactory'
       $resourceMetadataFactory: "@api_platform.metadata.resource.metadata_factory"
       $propertyMetadataFactory: "@api_platform.metadata.property.metadata_factory"
       $resourceClassResolver: "@api_platform.resource_class_resolver"
+
+  Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\OrphanAttributeFixerDecorator:
+    decorates: 'api_platform.swagger.normalizer.documentation'
+    decoration_priority: 11
+    arguments:
+      $decoratedNormalizer: '@Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\OrphanAttributeFixerDecorator.inner'
+      $propertyMetadataFactory: "@api_platform.metadata.property.metadata_factory"
 
   Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\ReferenceFixerDecorator:
     decorates: 'api_platform.swagger.normalizer.documentation'
