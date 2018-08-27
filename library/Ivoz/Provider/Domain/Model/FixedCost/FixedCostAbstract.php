@@ -243,6 +243,7 @@ abstract class FixedCostAbstract
         if (!is_null($cost)) {
             if (!is_null($cost)) {
                 Assertion::numeric($cost);
+                $cost = (float) $cost;
             }
         }
 

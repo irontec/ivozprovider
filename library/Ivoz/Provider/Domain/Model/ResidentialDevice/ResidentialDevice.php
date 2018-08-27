@@ -38,6 +38,12 @@ class ResidentialDevice extends ResidentialDeviceAbstract implements Residential
 
     protected function sanitizeValues()
     {
+        $this->setBrand(
+            $this
+                ->getCompany()
+                ->getBrand()
+        );
+
         $this->setDomain(
             $this
                 ->getCompany()

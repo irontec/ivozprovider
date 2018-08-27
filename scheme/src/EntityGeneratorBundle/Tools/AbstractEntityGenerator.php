@@ -1377,6 +1377,7 @@ public function <methodName>(<criteriaArgument>)
         $options = (object) $currentField->options;
 
         $assertions[] = AssertionGenerator::float($currentField->fieldName);
+        $assertions[] = '$' . $currentField->fieldName . ' = (float) $' . $currentField->fieldName . ';';
 
         if (isset($options->unsigned) && $options->unsigned) {
             $assertions[] = AssertionGenerator::greaterOrEqualThan($currentField->fieldName, 0);

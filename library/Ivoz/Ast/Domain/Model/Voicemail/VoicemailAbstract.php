@@ -1215,6 +1215,7 @@ abstract class VoicemailAbstract
         if (!is_null($volgain)) {
             if (!is_null($volgain)) {
                 Assertion::numeric($volgain);
+                $volgain = (float) $volgain;
             }
         }
 

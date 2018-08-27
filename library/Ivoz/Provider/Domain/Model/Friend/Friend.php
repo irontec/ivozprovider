@@ -61,6 +61,7 @@ class Friend extends FriendAbstract implements FriendInterface
 
     /**
      * {@inheritDoc}
+     * @see FriendAbstract::setName
      */
     public function setName($name)
     {
@@ -74,6 +75,7 @@ class Friend extends FriendAbstract implements FriendInterface
 
     /**
      * {@inheritDoc}
+     * @see FriendAbstract::setIp
      */
     public function setIp($ip = null)
     {
@@ -85,11 +87,12 @@ class Friend extends FriendAbstract implements FriendInterface
 
     /**
      * {@inheritDoc}
+     * @see FriendAbstract::setPort
      */
     public function setPort($port = null)
     {
         if (!empty($port)) {
-            Assertion::regex($port, '/^[0-9]+$/');
+            Assertion::regex((string) $port, '/^[0-9]+$/');
             Assertion::lessThan($port, pow(2, 16), 'Friend.port provided "%s" is not lower than "%s".');
         }
         return parent::setPort($port);
@@ -97,6 +100,7 @@ class Friend extends FriendAbstract implements FriendInterface
 
     /**
      * {@inheritDoc}
+     * @see FriendAbstract::setPassword
      */
     public function setPassword($password = null)
     {

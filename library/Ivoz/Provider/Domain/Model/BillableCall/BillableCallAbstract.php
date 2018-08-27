@@ -373,6 +373,7 @@ abstract class BillableCallAbstract
     {
         Assertion::notNull($duration, 'duration value "%s" is null, but non null value was expected.');
         Assertion::numeric($duration);
+        $duration = (float) $duration;
 
         $this->duration = $duration;
 
@@ -460,6 +461,7 @@ abstract class BillableCallAbstract
         if (!is_null($cost)) {
             if (!is_null($cost)) {
                 Assertion::numeric($cost);
+                $cost = (float) $cost;
             }
         }
 
@@ -491,6 +493,7 @@ abstract class BillableCallAbstract
         if (!is_null($price)) {
             if (!is_null($price)) {
                 Assertion::numeric($price);
+                $price = (float) $price;
             }
         }
 

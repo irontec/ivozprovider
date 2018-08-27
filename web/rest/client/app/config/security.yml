@@ -1,0 +1,90 @@
+## To get started with security, check out the documentation:
+## http://symfony.com/doc/current/security.html
+security:
+
+  role_hierarchy:
+    ROLE_COMPANY_USER: ROLE_USER
+    ROLE_COMPANY_ADMIN: ROLE_USER
+    ROLE_BRAND_ADMIN: ROLE_COMPANY_ADMIN
+    ROLE_SUPER_ADMIN: [ROLE_BRAND_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+  # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+  encoders:
+    Ivoz\Provider\Domain\Model\Administrator\Administrator:
+      algorithm: bcrypt
+      cost: 12
+    Ivoz\Provider\Domain\Model\User\User:
+      algorithm: bcrypt
+      cost: 12
+
+  providers:
+    admin_orm:
+      id: 'Security\User\Provider::Administrator'
+    user_orm:
+      id: 'Security\User\Provider::User'
+
+  firewalls:
+    # disables authentication for assets and the profiler, adapt it according to your needs
+    dev:
+      pattern: ^/(_(profiler|wdt)|css|images|js)/
+      security: false
+
+    api_docs:
+      pattern: ^/index.[^.{3,6}]/?.*$
+      security: false
+
+    admin_login:
+      pattern:  ^/admin_login
+      stateless: true
+      anonymous: true
+      provider: admin_orm
+      form_login:
+          check_path: /admin_login
+          require_previous_session: false
+          username_parameter: username
+          password_parameter: password
+          success_handler: lexik_jwt_authentication.handler.authentication_success
+          failure_handler: lexik_jwt_authentication.handler.authentication_failure
+          require_previous_session: false
+
+    user_login:
+      pattern:  ^/user_login
+      stateless: true
+      anonymous: true
+      provider: user_orm
+      form_login:
+          check_path: /user_login
+          require_previous_session: false
+          username_parameter: email
+          password_parameter: password
+          success_handler: Jwt\UserAuthenticationSuccessHandler
+          failure_handler: lexik_jwt_authentication.handler.authentication_failure
+          require_previous_session: false
+
+    web_theme:
+      pattern: ^/my/web_theme$
+      stateless: true
+      security: false
+
+    api:
+      pattern:   ^/.+
+      stateless: true
+      guard:
+        authenticators:
+          - Jwt\TokenAuthenticator
+
+    main:
+      anonymous: ~
+      # activate different ways to authenticate
+
+      # http://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
+      #http_basic: ~
+
+      # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+      #form_login: ~
+
+  access_control:
+    - { path: ^/admin_login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/user_login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/index.html, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/, roles: ROLE_USER }

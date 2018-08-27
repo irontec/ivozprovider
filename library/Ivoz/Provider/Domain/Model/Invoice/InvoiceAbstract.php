@@ -388,6 +388,7 @@ abstract class InvoiceAbstract
         if (!is_null($total)) {
             if (!is_null($total)) {
                 Assertion::numeric($total);
+                $total = (float) $total;
             }
         }
 
@@ -419,6 +420,7 @@ abstract class InvoiceAbstract
         if (!is_null($taxRate)) {
             if (!is_null($taxRate)) {
                 Assertion::numeric($taxRate);
+                $taxRate = (float) $taxRate;
             }
         }
 
@@ -450,6 +452,7 @@ abstract class InvoiceAbstract
         if (!is_null($totalWithTax)) {
             if (!is_null($totalWithTax)) {
                 Assertion::numeric($totalWithTax);
+                $totalWithTax = (float) $totalWithTax;
             }
         }
 

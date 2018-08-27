@@ -1,0 +1,30 @@
+imports:
+  - { resource: "@CoreBundle/Resources/config/config.yml" }
+  - { resource: "@CoreBundle/Resources/config/doctrine_cache.yml" }
+  - { resource: "@ApiBundle/Resources/config/config.yml" }
+  - { resource: api_platform.yml }
+  - { resource: security.yml }
+  - { resource: services.yml }
+
+parameters:
+  #required to generate valid urls from console
+  #https://symfony.com/doc/current/console/request_context.html
+  router.request_context.base_url: /api/platform
+
+framework:
+  secret: '%secret%'
+  router:
+    resource: '%kernel.root_dir%/config/routing.yml'
+
+# Twig Configuration
+twig:
+  paths:
+    '%kernel.project_dir%/../../../library/ApiBundle/Resources/views': ApiBundle
+
+nelmio_cors:
+  paths:
+    '^/':
+      allow_origin: ['*']
+      allow_headers: ['authorization','content-type','request-date']
+      allow_methods: ['POST', 'PUT', 'GET', 'DELETE']
+      max_age: 3600

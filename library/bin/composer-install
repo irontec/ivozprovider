@@ -31,6 +31,14 @@ pushd /opt/irontec/ivozprovider/scheme
     composer install $*
 popd
 
-pushd /opt/irontec/ivozprovider/web/rest
+pushd /opt/irontec/ivozprovider/web/rest/platform
+    composer install $*
+popd
+
+pushd /opt/irontec/ivozprovider/web/rest/brand
+    composer install $*
+popd
+
+pushd /opt/irontec/ivozprovider/web/rest/client
     composer install $*
 popd

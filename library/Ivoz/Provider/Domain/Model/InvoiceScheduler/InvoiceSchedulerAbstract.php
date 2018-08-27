@@ -436,6 +436,7 @@ abstract class InvoiceSchedulerAbstract
         if (!is_null($taxRate)) {
             if (!is_null($taxRate)) {
                 Assertion::numeric($taxRate);
+                $taxRate = (float) $taxRate;
             }
         }
 

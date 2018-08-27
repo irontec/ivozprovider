@@ -15,21 +15,25 @@ interface FriendInterface extends LoggableEntityInterface
 
     /**
      * {@inheritDoc}
+     * @see FriendAbstract::setName
      */
     public function setName($name);
 
     /**
      * {@inheritDoc}
+     * @see FriendAbstract::setIp
      */
     public function setIp($ip = null);
 
     /**
      * {@inheritDoc}
+     * @see FriendAbstract::setPort
      */
     public function setPort($port = null);
 
     /**
      * {@inheritDoc}
+     * @see FriendAbstract::setPassword
      */
     public function setPassword($password = null);
 

@@ -1,0 +1,23 @@
+default:
+  calls:
+    error_reporting: 16383 # E_ALL & ~E_USER_DREPRECATED
+  suites:
+    default:
+      contexts:
+        - FeatureContext: { kernel: "@kernel" }
+        - Behat\MinkExtension\Context\MinkContext
+        - Behatch\Context\RestContext
+        - Behatch\Context\JsonContext
+        - Ivoz\Api\Behat\Context\JsonContext: { kernel: "@kernel" }
+#        - CoverageContext: {}
+  extensions:
+    Behat\Symfony2Extension:
+      kernel:
+        env: "test"
+        debug: "true"
+    Behat\MinkExtension:
+      base_url: "https://ivozprovider/"
+      sessions:
+        default:
+          symfony2: ~
+    Behatch\Extension: ~

@@ -1,0 +1,19 @@
+api:
+  resource: '.'
+  type: 'api_platform'
+
+api_base_path:
+  path: '/'
+
+api_doc:
+  path: api/swagger.json
+
+api_admin_login:
+  path: admin_login
+
+api_user_login:
+  path: user_login
+
+###############################
+## Custom routes
+###############################

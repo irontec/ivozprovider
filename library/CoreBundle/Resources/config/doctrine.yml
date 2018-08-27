@@ -23,6 +23,7 @@ doctrine:
     types:
       datetime: Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\DBAL\Types\UtcDateTimeType
       datetimetz: Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\DBAL\Types\UtcDateTimeType
+      decimal: Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\DBAL\Types\NumericDecimalType
   orm:
     auto_generate_proxy_classes: '%kernel.debug%'
     quote_strategy: 'Ivoz\Core\Infrastructure\Persistence\Doctrine\ORM\Mapping\QuoteStrategy'

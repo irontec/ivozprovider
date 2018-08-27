@@ -17,8 +17,8 @@ build_agis: build_library
 	cd asterisk/agi ; composer --no-interaction --no-dev  --no-progress install
 
 build_webrest: build_library
-	cd web/rest ; composer --no-interaction --no-dev  --no-progress install
-	cd web/rest ; composer dump-autoload --optimize --no-dev --classmap-authoritative
+	cd web/rest/platform ; composer --no-interaction --no-dev  --no-progress install
+	cd web/rest/platform ; composer dump-autoload --optimize --no-dev --classmap-authoritative
 
 build_webadmin: build_library
 	cd web/admin ; msgfmt -o application/languages/es_ES/es_ES.mo application/languages/es_ES/es_ES.po

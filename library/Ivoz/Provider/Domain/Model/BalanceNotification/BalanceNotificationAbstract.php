@@ -234,6 +234,7 @@ abstract class BalanceNotificationAbstract
         if (!is_null($threshold)) {
             if (!is_null($threshold)) {
                 Assertion::numeric($threshold);
+                $threshold = (float) $threshold;
             }
         }
 
