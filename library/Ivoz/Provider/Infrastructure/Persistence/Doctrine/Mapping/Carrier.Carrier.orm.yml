@@ -16,6 +16,9 @@ Ivoz\Provider\Domain\Model\Carrier\Carrier:
     outgoingRoutings:
       targetEntity: Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface
       mappedBy: carrier
+    outgoingRoutingsRelCarriers:
+      targetEntity: Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface
+      mappedBy: carrier
     servers:
       targetEntity: Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface
       mappedBy: carrier

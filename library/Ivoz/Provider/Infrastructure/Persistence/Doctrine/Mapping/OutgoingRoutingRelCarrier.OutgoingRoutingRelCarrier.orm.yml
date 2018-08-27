@@ -1,8 +1,8 @@
-Ivoz\Provider\Domain\Model\RatingProfile\RatingProfile:
-  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\RatingProfileDoctrineRepository
+Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrier:
+  repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\OutgoingRoutingRelCarrierDoctrineRepository
   type: entity
   changeTrackingPolicy: DEFERRED_EXPLICIT
-  table: RatingProfiles
+  table: OutgoingRoutingRelCarriers
   id:
     id:
       type: integer
@@ -13,7 +13,6 @@ Ivoz\Provider\Domain\Model\RatingProfile\RatingProfile:
       generator:
         strategy: IDENTITY
   oneToMany:
-    tpRatingProfile:
+    tpRatingProfiles:
       targetEntity: Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface
-      mappedBy: ratingProfile
-      fetch: LAZY
+      mappedBy: outgoingRoutingRelCarrier
