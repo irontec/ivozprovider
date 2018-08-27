@@ -13,11 +13,6 @@ use Ivoz\Core\Application\Model\DtoNormalizer;
 abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
 {
     /**
-     * @var string
-     */
-    private $tag;
-
-    /**
      * @var integer
      */
     private $id;
@@ -65,7 +60,6 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
         }
 
         return [
-            'tag' => 'tag',
             'id' => 'id',
             'name' => ['en','es'],
             'description' => ['en','es'],
@@ -79,7 +73,6 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     public function toArray($hideSensitiveData = false)
     {
         return [
-            'tag' => $this->getTag(),
             'id' => $this->getId(),
             'name' => [
                 'en' => $this->getNameEn(),
@@ -107,26 +100,6 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
 
-    }
-
-    /**
-     * @param string $tag
-     *
-     * @return static
-     */
-    public function setTag($tag = null)
-    {
-        $this->tag = $tag;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTag()
-    {
-        return $this->tag;
     }
 
     /**

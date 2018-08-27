@@ -14,11 +14,6 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 abstract class RatingPlanAbstract
 {
     /**
-     * @var string
-     */
-    protected $tag;
-
-    /**
      * @var Name
      */
     protected $name;
@@ -124,7 +119,6 @@ abstract class RatingPlanAbstract
         );
 
         $self
-            ->setTag($dto->getTag())
             ->setBrand($dto->getBrand())
         ;
 
@@ -156,7 +150,6 @@ abstract class RatingPlanAbstract
         );
 
         $this
-            ->setTag($dto->getTag())
             ->setName($name)
             ->setDescription($description)
             ->setBrand($dto->getBrand());
@@ -174,7 +167,6 @@ abstract class RatingPlanAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setTag(self::getTag())
             ->setNameEn(self::getName()->getEn())
             ->setNameEs(self::getName()->getEs())
             ->setDescriptionEn(self::getDescription()->getEn())
@@ -188,7 +180,6 @@ abstract class RatingPlanAbstract
     protected function __toArray()
     {
         return [
-            'tag' => self::getTag(),
             'nameEn' => self::getName()->getEn(),
             'nameEs' => self::getName()->getEs(),
             'descriptionEn' => self::getDescription()->getEn(),
@@ -199,35 +190,6 @@ abstract class RatingPlanAbstract
 
 
     // @codeCoverageIgnoreStart
-
-    /**
-     * @deprecated
-     * Set tag
-     *
-     * @param string $tag
-     *
-     * @return self
-     */
-    public function setTag($tag = null)
-    {
-        if (!is_null($tag)) {
-            Assertion::maxLength($tag, 64, 'tag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        }
-
-        $this->tag = $tag;
-
-        return $this;
-    }
-
-    /**
-     * Get tag
-     *
-     * @return string
-     */
-    public function getTag()
-    {
-        return $this->tag;
-    }
 
     /**
      * Set brand

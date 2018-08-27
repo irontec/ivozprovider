@@ -7,21 +7,11 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 interface RatingPlanInterface extends EntityInterface
 {
     /**
-     * @deprecated
-     * Set tag
-     *
-     * @param string $tag
-     *
-     * @return self
-     */
-    public function setTag($tag = null);
-
-    /**
-     * Get tag
+     * CGRates tag for this Rating Plan
      *
      * @return string
      */
-    public function getTag();
+    public function getCgrTag();
 
     /**
      * Set brand

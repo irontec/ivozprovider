@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\RatingProfile;
 
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
+use Doctrine\Common\Collections\Collection;
 
 interface RatingProfileInterface extends LoggableEntityInterface
 {
@@ -28,22 +29,6 @@ interface RatingProfileInterface extends LoggableEntityInterface
      * @return \DateTime
      */
     public function getActivationTime();
-
-    /**
-     * Set tpRatingProfile
-     *
-     * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $tpRatingProfile
-     *
-     * @return self
-     */
-    public function setTpRatingProfile(\Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $tpRatingProfile = null);
-
-    /**
-     * Get tpRatingProfile
-     *
-     * @return \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface
-     */
-    public function getTpRatingProfile();
 
     /**
      * Set company
@@ -108,6 +93,37 @@ interface RatingProfileInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface
      */
     public function getRoutingTag();
+
+    /**
+     * Add tpRatingProfile
+     *
+     * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $tpRatingProfile
+     *
+     * @return RatingProfileTrait
+     */
+    public function addTpRatingProfile(\Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $tpRatingProfile);
+
+    /**
+     * Remove tpRatingProfile
+     *
+     * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $tpRatingProfile
+     */
+    public function removeTpRatingProfile(\Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $tpRatingProfile);
+
+    /**
+     * Replace tpRatingProfile
+     *
+     * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface[] $tpRatingProfile
+     * @return self
+     */
+    public function replaceTpRatingProfile(Collection $tpRatingProfile);
+
+    /**
+     * Get tpRatingProfile
+     *
+     * @return \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface[]
+     */
+    public function getTpRatingProfile(\Doctrine\Common\Collections\Criteria $criteria = null);
 
 }
 

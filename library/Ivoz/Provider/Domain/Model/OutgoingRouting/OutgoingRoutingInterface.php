@@ -19,6 +19,20 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
     public function getRoutingPatterns();
 
     /**
+     * Return CGRates tag for LCR category
+     *
+     * @return string
+     */
+    public function getCgrCategory();
+
+    /**
+     * Return CGRates tag for LCR rating plan category
+     *
+     * @return string
+     */
+    public function getCgrRpCategory();
+
+    /**
      * @param RoutingPatternInterface $pattern
      * @return bool
      */
@@ -74,6 +88,23 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
      * @return integer
      */
     public function getWeight();
+
+    /**
+     * @deprecated
+     * Set routingMode
+     *
+     * @param string $routingMode
+     *
+     * @return self
+     */
+    public function setRoutingMode($routingMode = null);
+
+    /**
+     * Get routingMode
+     *
+     * @return string
+     */
+    public function getRoutingMode();
 
     /**
      * Set brand
@@ -172,6 +203,22 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
     public function getRoutingTag();
 
     /**
+     * Set tpLcrRule
+     *
+     * @param \Ivoz\Cgr\Domain\Model\TpLcrRule\TpLcrRuleInterface $tpLcrRule
+     *
+     * @return self
+     */
+    public function setTpLcrRule(\Ivoz\Cgr\Domain\Model\TpLcrRule\TpLcrRuleInterface $tpLcrRule = null);
+
+    /**
+     * Get tpLcrRule
+     *
+     * @return \Ivoz\Cgr\Domain\Model\TpLcrRule\TpLcrRuleInterface
+     */
+    public function getTpLcrRule();
+
+    /**
      * Add lcrRule
      *
      * @param \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface $lcrRule
@@ -201,6 +248,37 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
      * @return \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface[]
      */
     public function getLcrRules(\Doctrine\Common\Collections\Criteria $criteria = null);
+
+    /**
+     * Add relCarrier
+     *
+     * @param \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $relCarrier
+     *
+     * @return OutgoingRoutingTrait
+     */
+    public function addRelCarrier(\Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $relCarrier);
+
+    /**
+     * Remove relCarrier
+     *
+     * @param \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $relCarrier
+     */
+    public function removeRelCarrier(\Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $relCarrier);
+
+    /**
+     * Replace relCarriers
+     *
+     * @param \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface[] $relCarriers
+     * @return self
+     */
+    public function replaceRelCarriers(Collection $relCarriers);
+
+    /**
+     * Get relCarriers
+     *
+     * @return \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface[]
+     */
+    public function getRelCarriers(\Doctrine\Common\Collections\Criteria $criteria = null);
 
 }
 

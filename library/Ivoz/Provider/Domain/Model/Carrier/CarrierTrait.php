@@ -26,6 +26,11 @@ trait CarrierTrait
     /**
      * @var Collection
      */
+    protected $outgoingRoutingsRelCarriers;
+
+    /**
+     * @var Collection
+     */
     protected $servers;
 
     /**
@@ -46,6 +51,7 @@ trait CarrierTrait
     {
         parent::__construct(...func_get_args());
         $this->outgoingRoutings = new ArrayCollection();
+        $this->outgoingRoutingsRelCarriers = new ArrayCollection();
         $this->servers = new ArrayCollection();
         $this->ratingProfiles = new ArrayCollection();
         $this->tpCdrStats = new ArrayCollection();
@@ -64,6 +70,10 @@ trait CarrierTrait
         $self = parent::fromDto($dto);
         if ($dto->getOutgoingRoutings()) {
             $self->replaceOutgoingRoutings($dto->getOutgoingRoutings());
+        }
+
+        if ($dto->getOutgoingRoutingsRelCarriers()) {
+            $self->replaceOutgoingRoutingsRelCarriers($dto->getOutgoingRoutingsRelCarriers());
         }
 
         if ($dto->getServers()) {
@@ -97,6 +107,9 @@ trait CarrierTrait
         parent::updateFromDto($dto);
         if ($dto->getOutgoingRoutings()) {
             $this->replaceOutgoingRoutings($dto->getOutgoingRoutings());
+        }
+        if ($dto->getOutgoingRoutingsRelCarriers()) {
+            $this->replaceOutgoingRoutingsRelCarriers($dto->getOutgoingRoutingsRelCarriers());
         }
         if ($dto->getServers()) {
             $this->replaceServers($dto->getServers());
@@ -202,6 +215,78 @@ trait CarrierTrait
         }
 
         return $this->outgoingRoutings->toArray();
+    }
+
+    /**
+     * Add outgoingRoutingsRelCarrier
+     *
+     * @param \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $outgoingRoutingsRelCarrier
+     *
+     * @return CarrierTrait
+     */
+    public function addOutgoingRoutingsRelCarrier(\Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $outgoingRoutingsRelCarrier)
+    {
+        $this->outgoingRoutingsRelCarriers->add($outgoingRoutingsRelCarrier);
+
+        return $this;
+    }
+
+    /**
+     * Remove outgoingRoutingsRelCarrier
+     *
+     * @param \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $outgoingRoutingsRelCarrier
+     */
+    public function removeOutgoingRoutingsRelCarrier(\Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $outgoingRoutingsRelCarrier)
+    {
+        $this->outgoingRoutingsRelCarriers->removeElement($outgoingRoutingsRelCarrier);
+    }
+
+    /**
+     * Replace outgoingRoutingsRelCarriers
+     *
+     * @param \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface[] $outgoingRoutingsRelCarriers
+     * @return self
+     */
+    public function replaceOutgoingRoutingsRelCarriers(Collection $outgoingRoutingsRelCarriers)
+    {
+        $updatedEntities = [];
+        $fallBackId = -1;
+        foreach ($outgoingRoutingsRelCarriers as $entity) {
+            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
+            $updatedEntities[$index] = $entity;
+            $entity->setCarrier($this);
+        }
+        $updatedEntityKeys = array_keys($updatedEntities);
+
+        foreach ($this->outgoingRoutingsRelCarriers as $key => $entity) {
+            $identity = $entity->getId();
+            if (in_array($identity, $updatedEntityKeys)) {
+                $this->outgoingRoutingsRelCarriers->set($key, $updatedEntities[$identity]);
+            } else {
+                $this->outgoingRoutingsRelCarriers->remove($key);
+            }
+            unset($updatedEntities[$identity]);
+        }
+
+        foreach ($updatedEntities as $entity) {
+            $this->addOutgoingRoutingsRelCarrier($entity);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get outgoingRoutingsRelCarriers
+     *
+     * @return \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface[]
+     */
+    public function getOutgoingRoutingsRelCarriers(Criteria $criteria = null)
+    {
+        if (!is_null($criteria)) {
+            return $this->outgoingRoutingsRelCarriers->matching($criteria)->toArray();
+        }
+
+        return $this->outgoingRoutingsRelCarriers->toArray();
     }
 
     /**

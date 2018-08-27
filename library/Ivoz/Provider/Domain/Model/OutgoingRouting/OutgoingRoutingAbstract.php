@@ -29,6 +29,12 @@ abstract class OutgoingRoutingAbstract
     protected $weight = '1';
 
     /**
+     * comment: enum:static|lcr
+     * @var string
+     */
+    protected $routingMode = 'static';
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
      */
     protected $brand;
@@ -139,6 +145,7 @@ abstract class OutgoingRoutingAbstract
 
         $self
             ->setType($dto->getType())
+            ->setRoutingMode($dto->getRoutingMode())
             ->setBrand($dto->getBrand())
             ->setCompany($dto->getCompany())
             ->setCarrier($dto->getCarrier())
@@ -168,6 +175,7 @@ abstract class OutgoingRoutingAbstract
             ->setType($dto->getType())
             ->setPriority($dto->getPriority())
             ->setWeight($dto->getWeight())
+            ->setRoutingMode($dto->getRoutingMode())
             ->setBrand($dto->getBrand())
             ->setCompany($dto->getCompany())
             ->setCarrier($dto->getCarrier())
@@ -191,6 +199,7 @@ abstract class OutgoingRoutingAbstract
             ->setType(self::getType())
             ->setPriority(self::getPriority())
             ->setWeight(self::getWeight())
+            ->setRoutingMode(self::getRoutingMode())
             ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
             ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
             ->setCarrier(\Ivoz\Provider\Domain\Model\Carrier\Carrier::entityToDto(self::getCarrier(), $depth))
@@ -208,6 +217,7 @@ abstract class OutgoingRoutingAbstract
             'type' => self::getType(),
             'priority' => self::getPriority(),
             'weight' => self::getWeight(),
+            'routingMode' => self::getRoutingMode(),
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
             'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null,
@@ -304,6 +314,39 @@ abstract class OutgoingRoutingAbstract
     public function getWeight()
     {
         return $this->weight;
+    }
+
+    /**
+     * @deprecated
+     * Set routingMode
+     *
+     * @param string $routingMode
+     *
+     * @return self
+     */
+    public function setRoutingMode($routingMode = null)
+    {
+        if (!is_null($routingMode)) {
+            Assertion::maxLength($routingMode, 25, 'routingMode value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        Assertion::choice($routingMode, array (
+          0 => 'static',
+          1 => 'lcr',
+        ), 'routingModevalue "%s" is not an element of the valid values: %s');
+        }
+
+        $this->routingMode = $routingMode;
+
+        return $this;
+    }
+
+    /**
+     * Get routingMode
+     *
+     * @return string
+     */
+    public function getRoutingMode()
+    {
+        return $this->routingMode;
     }
 
     /**

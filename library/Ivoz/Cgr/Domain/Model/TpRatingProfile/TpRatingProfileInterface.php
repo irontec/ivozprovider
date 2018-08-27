@@ -206,7 +206,7 @@ interface TpRatingProfileInterface extends LoggableEntityInterface
      *
      * @return self
      */
-    public function setRatingProfile(\Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile);
+    public function setRatingProfile(\Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile = null);
 
     /**
      * Get ratingProfile
@@ -214,6 +214,22 @@ interface TpRatingProfileInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface
      */
     public function getRatingProfile();
+
+    /**
+     * Set outgoingRoutingRelCarrier
+     *
+     * @param \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $outgoingRoutingRelCarrier
+     *
+     * @return self
+     */
+    public function setOutgoingRoutingRelCarrier(\Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $outgoingRoutingRelCarrier = null);
+
+    /**
+     * Get outgoingRoutingRelCarrier
+     *
+     * @return \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface
+     */
+    public function getOutgoingRoutingRelCarrier();
 
 }
 

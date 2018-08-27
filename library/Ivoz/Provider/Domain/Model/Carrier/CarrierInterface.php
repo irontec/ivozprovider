@@ -162,6 +162,37 @@ interface CarrierInterface extends LoggableEntityInterface
     public function getOutgoingRoutings(\Doctrine\Common\Collections\Criteria $criteria = null);
 
     /**
+     * Add outgoingRoutingsRelCarrier
+     *
+     * @param \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $outgoingRoutingsRelCarrier
+     *
+     * @return CarrierTrait
+     */
+    public function addOutgoingRoutingsRelCarrier(\Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $outgoingRoutingsRelCarrier);
+
+    /**
+     * Remove outgoingRoutingsRelCarrier
+     *
+     * @param \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $outgoingRoutingsRelCarrier
+     */
+    public function removeOutgoingRoutingsRelCarrier(\Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $outgoingRoutingsRelCarrier);
+
+    /**
+     * Replace outgoingRoutingsRelCarriers
+     *
+     * @param \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface[] $outgoingRoutingsRelCarriers
+     * @return self
+     */
+    public function replaceOutgoingRoutingsRelCarriers(Collection $outgoingRoutingsRelCarriers);
+
+    /**
+     * Get outgoingRoutingsRelCarriers
+     *
+     * @return \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface[]
+     */
+    public function getOutgoingRoutingsRelCarriers(\Doctrine\Common\Collections\Criteria $criteria = null);
+
+    /**
      * Add server
      *
      * @param \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface $server

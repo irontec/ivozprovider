@@ -19,11 +19,6 @@ abstract class RatingProfileAbstract
     protected $activationTime;
 
     /**
-     * @var \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface
-     */
-    protected $tpRatingProfile;
-
-    /**
      * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
      */
     protected $company;
@@ -217,30 +212,6 @@ abstract class RatingProfileAbstract
     public function getActivationTime()
     {
         return $this->activationTime;
-    }
-
-    /**
-     * Set tpRatingProfile
-     *
-     * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $tpRatingProfile
-     *
-     * @return self
-     */
-    public function setTpRatingProfile(\Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $tpRatingProfile = null)
-    {
-        $this->tpRatingProfile = $tpRatingProfile;
-
-        return $this;
-    }
-
-    /**
-     * Get tpRatingProfile
-     *
-     * @return \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface
-     */
-    public function getTpRatingProfile()
-    {
-        return $this->tpRatingProfile;
     }
 
     /**

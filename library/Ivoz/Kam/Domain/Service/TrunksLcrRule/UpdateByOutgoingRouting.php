@@ -72,7 +72,7 @@ class UpdateByOutgoingRouting
     private function addNewLcrRules(OutgoingRoutingInterface $outgoingRouting)
     {
         //! Fax OutgoingRoutings have no routingPattern and a single LcrRule with NULL routingPatternId
-        if ($outgoingRouting->getType() == OutgoingRouting::FAX) {
+        if ($outgoingRouting->getType() == OutgoingRouting::TYPE_FAX) {
             $lcrRule = $this->lcrRuleFactory->execute($outgoingRouting, null);
             if ($lcrRule->hasChanged('id')) {
                 $outgoingRouting->replaceLcrRules(new ArrayCollection([$lcrRule]));
