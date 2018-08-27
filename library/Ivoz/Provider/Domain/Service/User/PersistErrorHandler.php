@@ -2,12 +2,13 @@
 
 namespace Ivoz\Provider\Domain\Service\User;
 
+use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Ivoz\Core\Domain\Service\PersistErrorHandlerInterface;
 
 /**
  * Class CryptPass
  * @package Ivoz\Provider\Domain\Service\User
- * @lifecycle pre_persist
+ * @lifecycle on_error
  */
 class PersistErrorHandler implements PersistErrorHandlerInterface
 {
@@ -20,16 +21,25 @@ class PersistErrorHandler implements PersistErrorHandlerInterface
 
     public function __construct() {}
 
-    public function handle(\Exception $e)
+    public function handle(\Exception $exception)
     {
-        $isDuplicatedEmailError =
-            $e->getCode() === self::MYSQL_ERROR_DUPLICATE_ENTRY
-            && strpos($e->getMessage(), self::UNIQUE_EMAIL_CONSTRAINT_NAME);
-
-        if ($isDuplicatedEmailError) {
-            throw new \DomainException('Email already in use', 2201, $e);
+        if (!$exception instanceof UniqueConstraintViolationException) {
+            return;
         }
 
-        throw $e;
+        $pdoException = $exception->getPrevious();
+        if (!$pdoException instanceof \PDOException) {
+            return;
+        }
+
+        $isDuplicatedEmailError =
+            $pdoException->getErrorCode() === self::MYSQL_ERROR_DUPLICATE_ENTRY
+            && strpos($exception->getMessage(), self::UNIQUE_EMAIL_CONSTRAINT_NAME);
+
+        if ($isDuplicatedEmailError) {
+            throw new \DomainException('Email already in use', 2201, $exception);
+        }
+
+        throw $exception;
     }
 }

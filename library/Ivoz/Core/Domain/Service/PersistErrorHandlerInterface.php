@@ -7,5 +7,5 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 
 interface PersistErrorHandlerInterface
 {
-    public function handle(\Exception $e);
+    public function handle(\Exception $exception);
 }

@@ -12,6 +12,7 @@ use Doctrine\ORM\UnitOfWork;
 use Ivoz\Core\Application\Service\CommandEventSubscriber;
 use Ivoz\Core\Domain\Service\EntityEventSubscriber;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\OnCommitEventArgs;
+use Ivoz\Core\Infrastructure\Persistence\Doctrine\OnErrorEventArgs;
 use Ivoz\Provider\Domain\Model\Changelog\Changelog;
 use Ivoz\Provider\Domain\Model\Commandlog\Commandlog;
 use Ivoz\Core\Application\Helper\EntityClassHelper;
@@ -256,6 +257,22 @@ class DoctrineEntityPersister implements EntityPersisterInterface
     }
 
     private function transactional(EntityInterface $entity, callable $transaction)
+    {
+        try {
+
+            $this->runTransactional($entity, $transaction);
+
+        } catch (\Exception $exception) {
+
+            $eventManager = $this->em->getEventManager();
+            $eventManager->dispatchEvent(
+                CustomEvents::onError,
+                new OnErrorEventArgs($entity, $exception)
+            );
+        }
+    }
+
+    private function runTransactional(EntityInterface $entity, callable $transaction)
     {
         if ($this->rootEntity instanceof EntityInterface) {
             $transaction();
