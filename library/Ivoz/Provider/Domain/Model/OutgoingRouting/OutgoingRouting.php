@@ -89,6 +89,32 @@ class OutgoingRouting extends OutgoingRoutingAbstract implements OutgoingRouting
     }
 
     /**
+     * Return CGRates tag for LCR category
+     *
+     * @return string
+     */
+    public function getCgrCategory()
+    {
+        return sprintf(
+            "or%d",
+            $this->getId()
+        );
+    }
+
+    /**
+     * Return CGRates tag for LCR rating plan category
+     *
+     * @return string
+     */
+    public function getCgrRpCategory()
+    {
+        return sprintf(
+            "lcr_profile%d",
+            $this->getId()
+        );
+    }
+
+    /**
      * @param RoutingPatternInterface $pattern
      * @return bool
      */

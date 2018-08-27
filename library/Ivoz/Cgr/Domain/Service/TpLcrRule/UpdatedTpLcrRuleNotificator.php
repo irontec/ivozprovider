@@ -1,11 +1,11 @@
 <?php
 
-namespace Ivoz\Cgr\Domain\Service\TpRatingPlan;
+namespace Ivoz\Cgr\Domain\Service\TpLcrRule;
 
-use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanInterface;
+use Ivoz\Cgr\Domain\Model\TpLcrRule\TpLcrRuleInterface;
 use Ivoz\Core\Infrastructure\Domain\Service\Redis\Client as RedisClient;
 
-class UpdatedTpRatingPlanNotificator implements TpRatingPlanLifecycleEventHandlerInterface
+class UpdatedTpLcrRuleNotificator implements TpLcrRuleLifecycleEventHandlerInterface
 {
     const ON_COMMIT_PRIORITY = self::PRIORITY_NORMAL;
 
@@ -23,7 +23,7 @@ class UpdatedTpRatingPlanNotificator implements TpRatingPlanLifecycleEventHandle
         ];
     }
 
-    public function execute(TpRatingPlanInterface $tpRatingPlan)
+    public function execute(TpLcrRuleInterface $entity)
     {
         $this->client->scheduleFullReload();
     }

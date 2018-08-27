@@ -3,8 +3,8 @@
 namespace Ivoz\Kam\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayRepository;
 use Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGateway;
+use Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -15,8 +15,16 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class TrunksLcrGatewayDoctrineRepository extends ServiceEntityRepository implements TrunksLcrGatewayRepository
 {
+    const DUMMY_LCR_GATEWAY_ID = 0;
+
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, TrunksLcrGateway::class);
+    }
+
+    public function findDummyGateway()
+    {
+        return $this
+            ->find(self::DUMMY_LCR_GATEWAY_ID);
     }
 }
