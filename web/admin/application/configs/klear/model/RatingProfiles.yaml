@@ -56,7 +56,6 @@ production:
           order:
             RoutingTag.name: asc
         'null': _("No routing tag")
-      default: true
 
 staging:
   _extends: production

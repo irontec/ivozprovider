@@ -1197,6 +1197,9 @@ msgstr "Unirse a %s %2s"
 msgid "Keep Original DDI"
 msgstr "Mantener DDI original"
 
+msgid "LCR"
+msgstr "LCR"
+
 msgid "Language"
 msgstr "Lenguaje"
 
