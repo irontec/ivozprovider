@@ -21,6 +21,7 @@ use Ivoz\Core\Domain\Service\DomainEventPublisher;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Events as CustomEvents;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\OnCommitEventArgs;
+use Ivoz\Core\Infrastructure\Persistence\Doctrine\OnErrorEventArgs;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class DoctrineEventSubscriber implements EventSubscriber
@@ -70,7 +71,9 @@ class DoctrineEventSubscriber implements EventSubscriber
             Events::onFlush,
 
             Events::postLoad,
-            CustomEvents::onCommit
+
+            CustomEvents::onCommit,
+            CustomEvents::onError
         ];
     }
 
@@ -161,6 +164,14 @@ class DoctrineEventSubscriber implements EventSubscriber
         $this->flushedEntities = [];
     }
 
+    public function onError(OnErrorEventArgs $args)
+    {
+        $this->handleError(
+            $args->getEntity(),
+            $args->getException()
+        );
+    }
+
     private function run($eventName, LifecycleEventArgs $args, bool $isNew = false)
     {
         $this->triggerDomainEvents($eventName, $args, $isNew);
@@ -248,14 +259,18 @@ class DoctrineEventSubscriber implements EventSubscriber
         try {
             $service->execute($entity, $isNew);
         } catch (\Exception $exception) {
-
-            $errorHandlerName = LifecycleServiceHelper::getServiceNameByEntity($entity, 'error_handler');
-            if (!$this->serviceContainer->has($errorHandlerName)) {
-                throw $exception;
-            }
-
-            $errorHandler = $this->serviceContainer->get($errorHandlerName);
-            $errorHandler->execute($exception);
+            $this->handleError($entity, $exception);
         }
+    }
+
+    private function handleError(EntityInterface $entity, \Exception $exception)
+    {
+        $errorHandlerName = LifecycleServiceHelper::getServiceNameByEntity($entity, 'error_handler');
+        if (!$this->serviceContainer->has($errorHandlerName)) {
+            throw $exception;
+        }
+
+        $errorHandler = $this->serviceContainer->get($errorHandlerName);
+        $errorHandler->execute($exception);
     }
 }

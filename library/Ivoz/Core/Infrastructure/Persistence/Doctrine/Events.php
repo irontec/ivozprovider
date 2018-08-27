@@ -8,4 +8,6 @@ final class Events
      * Triggered after the transaction has been successful
      */
     const onCommit = 'onCommit';
+
+    const onError = 'onError';
 }
