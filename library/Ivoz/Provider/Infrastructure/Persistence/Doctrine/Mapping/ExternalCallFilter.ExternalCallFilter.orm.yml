@@ -29,3 +29,5 @@ Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter:
     calendars:
       targetEntity: Ivoz\Provider\Domain\Model\ExternalCallFilterRelCalendar\ExternalCallFilterRelCalendar
       mappedBy: filter
+      cascade: ['persist']
+      orphanRemoval: true
