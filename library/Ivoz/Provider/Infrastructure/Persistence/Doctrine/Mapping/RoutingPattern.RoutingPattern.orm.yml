@@ -18,6 +18,8 @@ Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPattern:
     relPatternGroups:
       targetEntity: Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface
       mappedBy: routingPattern
+      cascade: ['persist']
+      orphanRemoval: true
     lcrRules:
       targetEntity: Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface
       mappedBy: routingPattern

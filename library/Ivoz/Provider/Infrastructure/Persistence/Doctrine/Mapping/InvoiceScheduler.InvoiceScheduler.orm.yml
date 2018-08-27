@@ -15,3 +15,5 @@ Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceScheduler:
     relFixedCosts:
       targetEntity: Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceScheduler
       mappedBy: invoiceScheduler
+      cascade: ['persist']
+      orphanRemoval: true
