@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Service\Domain;
 
 use Doctrine\ORM\EntityManagerInterface;
+use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Service\Company\CompanyLifecycleEventHandlerInterface;
 
@@ -39,7 +40,7 @@ class DeleteByCompany implements CompanyLifecycleEventHandlerInterface
     {
         $domain = $company->getDomain();
 
-        if ($domain) {
+        if ($domain && $company->getType() === Company::VPBX) {
             $this->em->remove($domain);
             $company->setDomain(null);
         }
