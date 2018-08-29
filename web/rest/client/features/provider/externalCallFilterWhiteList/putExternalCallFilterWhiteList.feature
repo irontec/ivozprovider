@@ -43,7 +43,6 @@ Feature: Update external call filter white lists
           "matchlist": {
               "name": "testMatchlist2",
               "id": 2,
-              "brand": null,
               "company": 1
           }
       }

@@ -37,7 +37,6 @@ Feature: Retrieve external call filter black lists
               "matchlist": {
                   "name": "testMatchlist",
                   "id": 1,
-                  "brand": null,
                   "company": 1
               }
           }
@@ -76,7 +75,6 @@ Feature: Retrieve external call filter black lists
           "matchlist": {
               "name": "testMatchlist",
               "id": 1,
-              "brand": null,
               "company": 1
           }
       }

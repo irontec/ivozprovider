@@ -28,7 +28,6 @@ Feature: Retrieve outgoing ddi rules patterns
               "matchList": {
                   "name": "testMatchlist",
                   "id": 1,
-                  "brand": null,
                   "company": 1
               },
               "forcedDdi": null
@@ -59,7 +58,6 @@ Feature: Retrieve outgoing ddi rules patterns
           "matchList": {
               "name": "testMatchlist",
               "id": 1,
-              "brand": null,
               "company": 1
           },
           "forcedDdi": null

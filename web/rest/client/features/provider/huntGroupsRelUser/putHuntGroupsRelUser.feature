@@ -62,7 +62,6 @@ Feature: Update hunt groups rel users
               "callAcl": null,
               "bossAssistant": null,
               "bossAssistantWhiteList": null,
-              "transformationRuleSet": 1,
               "language": null,
               "terminal": 1,
               "extension": null,

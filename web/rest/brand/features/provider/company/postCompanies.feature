@@ -29,7 +29,7 @@ Feature: Create companies
         "recordingsLimitMB": 0,
         "recordingsLimitEmail": "",
         "language": 1,
-        "mediaRelaySets": 0,
+        "mediaRelaySets": 1,
         "defaultTimezone": 1,
         "brand": 1,
         "domain": 1,
@@ -92,7 +92,6 @@ Feature: Create companies
                   "es": "es"
               }
           },
-          "mediaRelaySets": null,
           "defaultTimezone": {
               "tz": "Europe/Madrid",
               "comment": "mainland",
@@ -102,6 +101,37 @@ Feature: Create companies
                   "es": "es"
               },
               "country": 1
+          },
+          "brand": {
+              "name": "DemoBrand",
+              "domainUsers": "",
+              "recordingsLimitMB": null,
+              "recordingsLimitEmail": "",
+              "maxCalls": 0,
+              "id": 1,
+              "logo": {
+                  "fileSize": null,
+                  "mimeType": null,
+                  "baseName": null
+              },
+              "invoice": {
+                  "nif": "",
+                  "postalAddress": "",
+                  "postalCode": "",
+                  "town": "",
+                  "province": "",
+                  "country": "",
+                  "registryData": ""
+              },
+              "domain": 6,
+              "language": 1,
+              "defaultTimezone": 1
+          },
+          "domain": {
+              "domain": "api.irontec.com",
+              "pointsTo": "proxyusers",
+              "description": "API company proxyusers domain",
+              "id": 1
           },
           "country": {
               "code": "ES",
@@ -116,37 +146,26 @@ Feature: Create companies
                   "es": "Europa"
               }
           },
-          "outgoingDdi": {
-              "ddi": "123",
-              "ddie164": "+34123",
-              "recordCalls": "none",
-              "displayName": "",
-              "routeType": null,
-              "billInboundCalls": false,
-              "friendValue": "",
+          "transformationRuleSet": {
+              "description": "Generic transformation for Spain",
+              "internationalCode": "00",
+              "trunkPrefix": "",
+              "areaCode": "",
+              "nationalLen": 9,
+              "generateRules": false,
               "id": 1,
-              "company": 1,
-              "brand": 1,
-              "conferenceRoom": null,
-              "language": null,
-              "queue": null,
-              "externalCallFilter": null,
-              "user": null,
-              "ivr": null,
-              "huntGroup": null,
-              "fax": null,
-              "ddiProvider": 1,
-              "country": 1,
-              "residentialDevice": null,
-              "conditionalRoute": null,
-              "retailAccount": null
+              "name": {
+                  "en": "en",
+                  "es": "es"
+              },
+              "brand": null,
+              "country": 1
           },
-          "outgoingDdiRule": {
-              "name": "testRule",
-              "defaultAction": "keep",
+          "voicemailNotificationTemplate": {
+              "name": "Voicemail notification",
+              "type": "voicemail",
               "id": 1,
-              "company": 1,
-              "forcedDdi": null
+              "brand": 1
           },
           "faxNotificationTemplate": null,
           "invoiceNotificationTemplate": null

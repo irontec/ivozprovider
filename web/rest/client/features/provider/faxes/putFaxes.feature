@@ -39,7 +39,6 @@ Feature: Update faxes
               "friendValue": "",
               "id": 1,
               "company": 1,
-              "brand": 1,
               "conferenceRoom": null,
               "language": null,
               "queue": null,
@@ -48,10 +47,10 @@ Feature: Update faxes
               "ivr": null,
               "huntGroup": null,
               "fax": null,
-              "ddiProvider": 1,
               "country": 1,
               "residentialDevice": null,
-              "conditionalRoute": null
+              "conditionalRoute": null,
+              "retailAccount": null
           }
       }
     """

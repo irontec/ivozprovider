@@ -23,7 +23,6 @@ Feature: Update match lists
      {
           "name": "updatedMatchlist",
           "id": 1,
-          "brand": null,
           "company": {
               "type": "vpbx",
               "name": "Irontec Test Company",
@@ -46,18 +45,10 @@ Feature: Update match lists
               "balance": 0,
               "id": 2,
               "language": 1,
-              "mediaRelaySets": 1,
               "defaultTimezone": 1,
-              "brand": 1,
-              "domain": 5,
-              "applicationServer": null,
               "country": 1,
-              "transformationRuleSet": 1,
               "outgoingDdi": null,
-              "outgoingDdiRule": null,
-              "voicemailNotificationTemplate": 1,
-              "faxNotificationTemplate": null,
-              "invoiceNotificationTemplate": null
+              "outgoingDdiRule": null
           }
       }
     """

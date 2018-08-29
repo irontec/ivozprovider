@@ -48,7 +48,6 @@ Feature: Update pick up rel users
               "callAcl": null,
               "bossAssistant": null,
               "bossAssistantWhiteList": null,
-              "transformationRuleSet": 1,
               "language": null,
               "terminal": 2,
               "extension": null,

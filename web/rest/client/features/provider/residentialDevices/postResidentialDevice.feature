@@ -26,7 +26,6 @@ Feature: Create residential devices
           "fromDomain": null,
           "directConnectivity": "yes",
           "company": 3,
-          "transformationRuleSet": null,
           "outgoingDdi": null,
           "language": null
       }
@@ -70,7 +69,6 @@ Feature: Create residential devices
           "directConnectivity": "yes",
           "id": 2,
           "company": "~",
-          "transformationRuleSet": null,
           "outgoingDdi": null,
           "language": null
       }

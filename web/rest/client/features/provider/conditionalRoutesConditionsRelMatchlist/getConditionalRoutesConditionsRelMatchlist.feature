@@ -36,7 +36,6 @@ Feature: Retrieve conditional routes conditions rel matchlists
               "matchlist": {
                   "name": "testMatchlist",
                   "id": 1,
-                  "brand": null,
                   "company": 1
               }
           }
@@ -74,7 +73,6 @@ Feature: Retrieve conditional routes conditions rel matchlists
           "matchlist": {
               "name": "testMatchlist",
               "id": 1,
-              "brand": null,
               "company": 1
           }
       }

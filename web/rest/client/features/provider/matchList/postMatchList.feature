@@ -38,7 +38,6 @@ Feature: Create match lists
       {
           "name": "newMatchlist",
           "id": 3,
-          "brand": null,
           "company": {
               "type": "vpbx",
               "name": "DemoCompany",
@@ -61,18 +60,10 @@ Feature: Create match lists
               "balance": 1.2,
               "id": 1,
               "language": 1,
-              "mediaRelaySets": 1,
               "defaultTimezone": 1,
-              "brand": 1,
-              "domain": 3,
-              "applicationServer": null,
               "country": 1,
-              "transformationRuleSet": 1,
               "outgoingDdi": null,
-              "outgoingDdiRule": null,
-              "voicemailNotificationTemplate": 1,
-              "faxNotificationTemplate": null,
-              "invoiceNotificationTemplate": null
+              "outgoingDdiRule": null
           }
       }
     """

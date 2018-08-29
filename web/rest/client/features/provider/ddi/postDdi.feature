@@ -90,7 +90,6 @@ Feature: Create Ddis
               "callAcl": null,
               "bossAssistant": null,
               "bossAssistantWhiteList": null,
-              "transformationRuleSet": 1,
               "language": null,
               "terminal": 1,
               "extension": null,
@@ -102,7 +101,6 @@ Feature: Create Ddis
           "ivr": null,
           "huntGroup": null,
           "fax": null,
-          "ddiProvider": null,
           "country": {
               "code": "ES",
               "countryCode": "+34",
@@ -117,6 +115,7 @@ Feature: Create Ddis
               }
           },
           "residentialDevice": null,
-          "conditionalRoute": null
+          "conditionalRoute": null,
+          "retailAccount": null
       }
     """
