@@ -7,6 +7,30 @@ services:
     autoconfigure: true
     public: false
 
+  Ivoz\Provider\Infrastructure\Api\Jwt\UserAuthenticationSuccessHandler:
+    arguments:
+      - '@lexik_jwt_authentication.jwt_manager'
+      - '@event_dispatcher'
+
+  Ivoz\Provider\Infrastructure\Api\Jwt\TokenAuthenticator:
+    arguments:
+      - '@lexik_jwt_authentication.jwt_manager'
+      - '@event_dispatcher'
+      - '@lexik_jwt_authentication.extractor.chain_extractor'
+
+  Ivoz\Provider\Infrastructure\Api\Security\User\Provider::User:
+    class: Ivoz\Provider\Infrastructure\Api\Security\User\UserProvider
+    arguments:
+      $identifierField: 'email'
+      $entityClass: 'Ivoz\Provider\Domain\Model\User\User'
+
+  Ivoz\Provider\Infrastructure\Api\Security\User\Provider::Administrator:
+    class: Ivoz\Provider\Infrastructure\Api\Security\User\UserProvider
+    arguments:
+      $identifierField: 'username'
+      $entityClass: 'Ivoz\Provider\Domain\Model\Administrator\Administrator'
+
+
   ################################################
   ## Dependencies
   ################################################
@@ -240,16 +264,9 @@ services:
       $decoratedNormalizer:
         '@Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\SearchFilterDecorator.inner'
 
-  Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\AuthEndpointDecorator:
-    decorates: 'api_platform.swagger.normalizer.documentation'
-    decoration_priority: 8
-    arguments:
-      $decoratedNormalizer:
-        '@Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\AuthEndpointDecorator.inner'
-
   Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\BasePathDecorator:
     decorates: 'api_platform.swagger.normalizer.documentation'
-    decoration_priority: 7
+    decoration_priority: 8
     arguments:
       $decoratedNormalizer:
         '@Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\BasePathDecorator.inner'

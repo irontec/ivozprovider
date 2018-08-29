@@ -1,6 +1,6 @@
 <?php
 
-namespace Ivoz\Api\Swagger\Serializer\DocumentationNormalizer;
+namespace Service;
 
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
@@ -79,50 +79,8 @@ class AuthEndpointDecorator implements NormalizerInterface
             ]
         ];
 
-        $authUserDefinition = [
-            'post' => [
-                "tags" => [
-                    "Auth"
-                ],
-                "operationId" => "postUserAuthenticate",
-                "consumes" => [
-                    "application/x-www-form-urlencoded",
-                ],
-                "produces" => [
-                    "application/json",
-                ],
-                "summary" => "Retrieve JWT token",
-                "parameters" => [
-                    [
-                        "name" => "email",
-                        "in" => "formData",
-                        "type" => 'string',
-                        "required" => true
-                    ],
-                    [
-                        "name" => "password",
-                        "in" => "formData",
-                        "type" => 'string',
-                        "required" => true
-                    ]
-                ],
-                "responses" => [
-                    "200" => [
-                        "description" => "Valid credentials"
-                    ],
-                    "400" => [
-                        "description" => "Invalid input"
-                    ],
-                    "401" => [
-                        "description" => "Bad credentials"
-                    ]
-                ]
-            ]
-        ];
-
         $auth = [
             '/admin_login' => $authAdminDefinition,
-            '/user_login' => $authUserDefinition,
         ];
 
         $response['paths'] = array_merge($auth, $paths);

@@ -1,6 +1,6 @@
 <?php
 
-namespace Jwt;
+namespace Ivoz\Provider\Infrastructure\Api\Jwt;
 
 use Lexik\Bundle\JWTAuthenticationBundle\Security\Guard\JWTTokenAuthenticator;
 use Lexik\Bundle\JWTAuthenticationBundle\Security\Authentication\Token\PreAuthenticationJWTUserToken;
@@ -10,6 +10,7 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Ivoz\Provider\Domain\Model\User\User;
+use \Ivoz\Provider\Infrastructure\Api\Security\User\UserProvider;
 
 class TokenAuthenticator extends JWTTokenAuthenticator
 {
@@ -67,7 +68,7 @@ class TokenAuthenticator extends JWTTokenAuthenticator
      */
     protected function loadUser(UserProviderInterface $userProvider, array $payload, $identity)
     {
-        if (!$userProvider instanceof \Security\User\UserProvider) {
+        if (!$userProvider instanceof UserProvider) {
             return parent::loadUser(...func_get_args());
         }
 
