@@ -44,18 +44,16 @@ Ivoz\Provider\Domain\Model\Country\Name:
 Ivoz\Provider\Domain\Model\Country\Zone:
 Ivoz\Provider\Domain\Model\Country\Country:
   itemOperations:
-    put: ~
-    delete: ~
+    get: ~
   collectionOperations:
-    post: ~
+    get: ~
   attributes:
     access_control: '"ROLE_USER" in roles'
 Ivoz\Provider\Domain\Model\Domain\Domain:
   itemOperations:
-    put: ~
-    delete: ~
+    get: ~
   collectionOperations:
-    post: ~
+    get: ~
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\Feature\Feature:
@@ -70,10 +68,9 @@ Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrand:
           eq: "user.getBrand().getId()"
 Ivoz\Provider\Domain\Model\Language\Language:
   itemOperations:
-    put: ~
-    delete: ~
+    get: ~
   collectionOperations:
-    post: ~
+    get: ~
   attributes:
     access_control: '"ROLE_USER" in roles'
 Ivoz\Provider\Domain\Model\Language\Name:
@@ -88,9 +85,10 @@ Ivoz\Provider\Domain\Model\ProxyUser\ProxyUser:
     access_control: '"ROLE_SUPER_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\Service\Service:
   itemOperations:
-    delete: ~
+    get: ~
+    put: ~
   collectionOperations:
-    post: ~
+    get: ~
   attributes:
     access_control: '"ROLE_SUPER_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\TerminalManufacturer\TerminalManufacturer:
@@ -101,9 +99,8 @@ Ivoz\Provider\Domain\Model\TerminalModel\TerminalModel:
     access_control: '"ROLE_SUPER_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\Timezone\Timezone:
   itemOperations:
-    put: ~
-    delete: ~
+    get: ~
   collectionOperations:
-    post: ~
+    get: ~
   attributes:
     access_control: '"ROLE_USER" in roles'
