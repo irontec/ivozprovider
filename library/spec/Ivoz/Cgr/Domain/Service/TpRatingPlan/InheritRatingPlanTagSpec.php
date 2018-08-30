@@ -6,10 +6,10 @@ use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanDto;
 use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanInterface;
 use Ivoz\Cgr\Domain\Service\TpRatingPlan\InheritRatingPlanTag;
 use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Core\Application\Service\UpdateEntityFromDTO;
 use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface;
 use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class InheritRatingPlanTagSpec extends ObjectBehavior
 {
@@ -18,11 +18,18 @@ class InheritRatingPlanTagSpec extends ObjectBehavior
      */
     protected $entityTools;
 
+    /**
+     * @var UpdateEntityFromDTO
+     */
+    protected $entityUpdater;
+
     public function let(
-        EntityTools $entityTools
+        EntityTools $entityTools,
+        UpdateEntityFromDTO $entityUpdater
     ) {
         $this->entityTools = $entityTools;
-        $this->beConstructedWith($entityTools);
+        $this->entityUpdater = $entityUpdater;
+        $this->beConstructedWith($entityTools, $entityUpdater);
     }
 
     function it_is_initializable()
@@ -46,7 +53,7 @@ class InheritRatingPlanTagSpec extends ObjectBehavior
             ->willReturn($ratingPlan);
 
         $ratingPlan
-            ->getTag()
+            ->getCgrTag()
             ->willReturn('RatingPlanTag');
 
         $tpRatingPlanDto
@@ -65,11 +72,10 @@ class InheritRatingPlanTagSpec extends ObjectBehavior
             ->setDestratesTag('CgrTag')
             ->shouldBeCalled();
 
-        $this->entityTools
-            ->persistDto(
-                $tpRatingPlanDto,
+        $this->entityUpdater
+            ->execute(
                 $tpRatingPlan,
-                false
+                $tpRatingPlanDto
             )->shouldBeCalled();
 
         $this->execute($tpRatingPlan, true);

@@ -4,12 +4,14 @@ namespace spec\Ivoz\Kam\Domain\Service\TrunksLcrRuleTarget;
 
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface;
+use Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayRepository;
 use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface;
 use Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTarget;
 use Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface;
 use Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetDto;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
 use Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface;
+use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 use Ivoz\Kam\Domain\Service\TrunksLcrRuleTarget\CreateByOutgoingRouting;
 use Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetRepository;
@@ -33,6 +35,11 @@ class CreateByOutgoingRoutingSpec extends ObjectBehavior
     protected $trunksLcrRuleTargetRepository;
 
     /**
+     * @var TrunksLcrGatewayRepository
+     */
+    protected $trunksLcrGatewayRepository;
+
+    /**
      * @var EntityTools
      */
     protected $entityTools;
@@ -40,15 +47,18 @@ class CreateByOutgoingRoutingSpec extends ObjectBehavior
     public function let(
         EntityPersisterInterface $entityPersister,
         TrunksLcrRuleTargetRepository $trunksLcrRuleTargetRepository,
+        TrunksLcrGatewayRepository $trunksLcrGatewayRepository,
         EntityTools $entityTools
     ) {
         $this->entityPersister = $entityPersister;
         $this->trunksLcrRuleTargetRepository = $trunksLcrRuleTargetRepository;
+        $this->trunksLcrGatewayRepository = $trunksLcrGatewayRepository;
         $this->entityTools = $entityTools;
 
         $this->beConstructedWith(
             $entityPersister,
             $trunksLcrRuleTargetRepository,
+            $trunksLcrGatewayRepository,
             $entityTools
         );
     }
@@ -61,7 +71,24 @@ class CreateByOutgoingRoutingSpec extends ObjectBehavior
     function it_throws_exeption_on_empty_carrier(
         OutgoingRoutingInterface $outgoingRouting
     ) {
+        $this->getterProphecy(
+            $outgoingRouting,
+            [
+                'getRoutingMode' => OutgoingRouting::MODE_STATIC,
+                'getCarrier' => null,
+            ]
+        );
+
         $exception = new \Exception('Carrier not found');
+        $this
+            ->shouldThrow($exception)
+            ->during('execute', [$outgoingRouting]);
+    }
+
+    function it_throws_exeption_on_invalid_routing_mode(
+        OutgoingRoutingInterface $outgoingRouting
+    ) {
+        $exception = new \Exception('Invalid Routing mode');
         $this
             ->shouldThrow($exception)
             ->during('execute', [$outgoingRouting]);
@@ -77,6 +104,7 @@ class CreateByOutgoingRoutingSpec extends ObjectBehavior
         $this->getterProphecy(
             $outgoingRouting,
             [
+                'getRoutingMode' => OutgoingRouting::MODE_STATIC,
                 'getCarrier' => $carrier,
                 'getLcrRules' => [$lcrRule],
                 'getPriority' => 1,
@@ -126,6 +154,7 @@ class CreateByOutgoingRoutingSpec extends ObjectBehavior
         $this->getterProphecy(
             $outgoingRouting,
             [
+                'getRoutingMode' => OutgoingRouting::MODE_STATIC,
                 'getCarrier' => $carrier,
                 'getLcrRules' => [$lcrRule],
                 'getPriority' => 1,
