@@ -16,10 +16,12 @@ use Ivoz\Provider\Domain\Service\RoutingPattern\RoutingPatternLifecycleEventHand
  */
 class UpdateByRoutingPattern implements RoutingPatternLifecycleEventHandlerInterface
 {
+    const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
+
     /**
-     * @var UpdateByOutgoingRouting
+     * @var TrunksLcrRuleFactory
      */
-    protected $updateByOutgoingRouting;
+    protected $trunksLcrRuleFactory;
 
     /**
      * @var OutgoingRoutingRepository
@@ -28,36 +30,47 @@ class UpdateByRoutingPattern implements RoutingPatternLifecycleEventHandlerInter
 
     /**
      * UpdateByRoutingPattern constructor.
-     * @param UpdateByOutgoingRouting $updateByOutgoingRouting
+     * @param TrunksLcrRuleFactory $trunksLcrRuleFactory
      * @param OutgoingRoutingRepository $outgoingRoutingRepository
      */
     public function __construct(
-        UpdateByOutgoingRouting $updateByOutgoingRouting,
+        TrunksLcrRuleFactory $trunksLcrRuleFactory,
         OutgoingRoutingRepository $outgoingRoutingRepository
     ) {
-        $this->updateByOutgoingRouting = $updateByOutgoingRouting;
+        $this->trunksLcrRuleFactory = $trunksLcrRuleFactory;
         $this->outgoingRoutingRepository = $outgoingRoutingRepository;
     }
 
     public static function getSubscribedEvents()
     {
         return [
-            self::EVENT_POST_PERSIST => 10
+            self::EVENT_POST_PERSIST => self::POST_PERSIST_PRIORITY
         ];
     }
 
-    public function execute(RoutingPatternInterface $entity, $isNew)
+    /**
+     * @param RoutingPatternInterface $routingPattern
+     * @param $isNew
+     * @throws \Exception
+     */
+    public function execute(RoutingPatternInterface $routingPattern, $isNew)
     {
-        if (!$entity->hasChanged('prefix')) {
+
+        if (!$routingPattern->hasChanged('prefix')) {
             return;
         }
 
         // Get all OutgointRoutings that use this routingPattern
-        $outgoingRoutings = $this->outgoingRoutingRepository->findByRoutingPattern($entity);
+        $outgoingRoutings = $this
+                ->outgoingRoutingRepository
+                ->findByRoutingPattern($routingPattern);
 
         // Update all outgoing routes if required
         foreach ($outgoingRoutings as $outgoingRouting) {
-            $this->updateByOutgoingRouting->execute($outgoingRouting);
+            $this->trunksLcrRuleFactory->execute(
+                $outgoingRouting,
+                $routingPattern
+            );
         }
     }
 }

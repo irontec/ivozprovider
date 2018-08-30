@@ -41,19 +41,19 @@ class TrunksLcrRule extends TrunksLcrRuleAbstract implements TrunksLcrRuleInterf
     {
         $company = $outgoingRouting->getCompany();
 
-        if (!is_null($company)) {
-            // Company specific rule
-            return sprintf(
-                '^b%dc%d$',
-                $outgoingRouting->getBrand()->getId(),
-                $company->getId()
-            );
-        } else {
+        if (is_null($company)) {
             // Apply all companies
             return sprintf(
                 '^b%dc[0-9]+$',
                 $outgoingRouting->getBrand()->getId()
             );
         }
+
+        // Company specific rule
+        return sprintf(
+            '^b%dc%d$',
+            $outgoingRouting->getBrand()->getId(),
+            $company->getId()
+        );
     }
 }

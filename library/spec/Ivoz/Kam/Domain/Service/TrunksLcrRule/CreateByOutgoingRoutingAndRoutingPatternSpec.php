@@ -12,7 +12,7 @@ use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleDto;
 use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface;
-use Ivoz\Kam\Domain\Service\TrunksLcrRule\CreateByOutgoingRoutingAndRoutingPattern;
+use Ivoz\Kam\Domain\Service\TrunksLcrRule\TrunksLcrRuleFactory;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -47,7 +47,7 @@ class CreateByOutgoingRoutingAndRoutingPatternSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType(CreateByOutgoingRoutingAndRoutingPattern::class);
+        $this->shouldHaveType(TrunksLcrRuleFactory::class);
     }
 
     protected function createExampleBase(

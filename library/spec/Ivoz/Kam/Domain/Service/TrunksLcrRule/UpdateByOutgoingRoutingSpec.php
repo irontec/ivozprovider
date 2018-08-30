@@ -9,7 +9,7 @@ use Ivoz\Kam\Domain\Service\TrunksLcrRuleTarget\CreateByOutgoingRouting;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface;
-use Ivoz\Kam\Domain\Service\TrunksLcrRule\CreateByOutgoingRoutingAndRoutingPattern;
+use Ivoz\Kam\Domain\Service\TrunksLcrRule\TrunksLcrRuleFactory;
 use Ivoz\Kam\Domain\Service\TrunksLcrRule\UpdateByOutgoingRouting;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -22,7 +22,7 @@ class UpdateByOutgoingRoutingSpec extends ObjectBehavior
     protected $entityTools;
 
     /**
-     * @var CreateByOutgoingRoutingAndRoutingPattern
+     * @var TrunksLcrRuleFactory
      */
     protected $lcrRuleFactory;
 
@@ -38,7 +38,7 @@ class UpdateByOutgoingRoutingSpec extends ObjectBehavior
 
     public function let(
         EntityTools $entityTools,
-        CreateByOutgoingRoutingAndRoutingPattern $lcrRuleFactory,
+        TrunksLcrRuleFactory $lcrRuleFactory,
         TrunksLcrRuleInterface $lcrRule
     ) {
         $this->entityTools = $entityTools;
