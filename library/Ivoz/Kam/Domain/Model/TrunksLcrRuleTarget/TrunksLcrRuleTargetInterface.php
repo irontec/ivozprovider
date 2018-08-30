@@ -102,7 +102,7 @@ interface TrunksLcrRuleTargetInterface extends LoggableEntityInterface
      *
      * @return self
      */
-    public function setOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting);
+    public function setOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting = null);
 
     /**
      * Get outgoingRouting

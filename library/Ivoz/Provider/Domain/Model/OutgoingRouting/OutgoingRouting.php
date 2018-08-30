@@ -83,6 +83,7 @@ class OutgoingRouting extends OutgoingRoutingAbstract implements OutgoingRouting
             case self::TYPE_PATTERN:
                 return [ $this->getRoutingPattern() ];
             case self::TYPE_FAX:
+                return [ null ];
             default:
                 return [ ];
         }

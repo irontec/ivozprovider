@@ -31,6 +31,11 @@ trait OutgoingRoutingTrait
     /**
      * @var Collection
      */
+    protected $lcrRuleTargets;
+
+    /**
+     * @var Collection
+     */
     protected $relCarriers;
 
 
@@ -41,6 +46,7 @@ trait OutgoingRoutingTrait
     {
         parent::__construct(...func_get_args());
         $this->lcrRules = new ArrayCollection();
+        $this->lcrRuleTargets = new ArrayCollection();
         $this->relCarriers = new ArrayCollection();
     }
 
@@ -57,6 +63,10 @@ trait OutgoingRoutingTrait
         $self = parent::fromDto($dto);
         if ($dto->getLcrRules()) {
             $self->replaceLcrRules($dto->getLcrRules());
+        }
+
+        if ($dto->getLcrRuleTargets()) {
+            $self->replaceLcrRuleTargets($dto->getLcrRuleTargets());
         }
 
         if ($dto->getRelCarriers()) {
@@ -82,6 +92,9 @@ trait OutgoingRoutingTrait
         parent::updateFromDto($dto);
         if ($dto->getLcrRules()) {
             $this->replaceLcrRules($dto->getLcrRules());
+        }
+        if ($dto->getLcrRuleTargets()) {
+            $this->replaceLcrRuleTargets($dto->getLcrRuleTargets());
         }
         if ($dto->getRelCarriers()) {
             $this->replaceRelCarriers($dto->getRelCarriers());
@@ -205,6 +218,78 @@ trait OutgoingRoutingTrait
         }
 
         return $this->lcrRules->toArray();
+    }
+
+    /**
+     * Add lcrRuleTarget
+     *
+     * @param \Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface $lcrRuleTarget
+     *
+     * @return OutgoingRoutingTrait
+     */
+    public function addLcrRuleTarget(\Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface $lcrRuleTarget)
+    {
+        $this->lcrRuleTargets->add($lcrRuleTarget);
+
+        return $this;
+    }
+
+    /**
+     * Remove lcrRuleTarget
+     *
+     * @param \Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface $lcrRuleTarget
+     */
+    public function removeLcrRuleTarget(\Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface $lcrRuleTarget)
+    {
+        $this->lcrRuleTargets->removeElement($lcrRuleTarget);
+    }
+
+    /**
+     * Replace lcrRuleTargets
+     *
+     * @param \Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface[] $lcrRuleTargets
+     * @return self
+     */
+    public function replaceLcrRuleTargets(Collection $lcrRuleTargets)
+    {
+        $updatedEntities = [];
+        $fallBackId = -1;
+        foreach ($lcrRuleTargets as $entity) {
+            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
+            $updatedEntities[$index] = $entity;
+            $entity->setOutgoingRouting($this);
+        }
+        $updatedEntityKeys = array_keys($updatedEntities);
+
+        foreach ($this->lcrRuleTargets as $key => $entity) {
+            $identity = $entity->getId();
+            if (in_array($identity, $updatedEntityKeys)) {
+                $this->lcrRuleTargets->set($key, $updatedEntities[$identity]);
+            } else {
+                $this->lcrRuleTargets->remove($key);
+            }
+            unset($updatedEntities[$identity]);
+        }
+
+        foreach ($updatedEntities as $entity) {
+            $this->addLcrRuleTarget($entity);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get lcrRuleTargets
+     *
+     * @return \Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface[]
+     */
+    public function getLcrRuleTargets(Criteria $criteria = null)
+    {
+        if (!is_null($criteria)) {
+            return $this->lcrRuleTargets->matching($criteria)->toArray();
+        }
+
+        return $this->lcrRuleTargets->toArray();
     }
 
     /**

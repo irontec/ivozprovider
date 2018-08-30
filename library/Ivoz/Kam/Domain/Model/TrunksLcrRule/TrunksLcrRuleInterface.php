@@ -13,6 +13,14 @@ interface TrunksLcrRuleInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * Return LcrRule FromUri string based on OutgoingRouting configuration
+     *
+     * @param OutgoingRoutingInterface $outgoingRouting
+     * @return string
+     */
+    public static function getFromUriForOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting);
+
+    /**
      * @deprecated
      * Set lcrId
      *
@@ -146,6 +154,22 @@ interface TrunksLcrRuleInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface
      */
     public function getRoutingPattern();
+
+    /**
+     * Set routingPatternGroupsRelPattern
+     *
+     * @param \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface $routingPatternGroupsRelPattern
+     *
+     * @return self
+     */
+    public function setRoutingPatternGroupsRelPattern(\Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface $routingPatternGroupsRelPattern = null);
+
+    /**
+     * Get routingPatternGroupsRelPattern
+     *
+     * @return \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface
+     */
+    public function getRoutingPatternGroupsRelPattern();
 
     /**
      * Set outgoingRouting

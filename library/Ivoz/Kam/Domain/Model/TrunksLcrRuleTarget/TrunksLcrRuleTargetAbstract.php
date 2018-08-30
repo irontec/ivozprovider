@@ -337,7 +337,7 @@ abstract class TrunksLcrRuleTargetAbstract
      *
      * @return self
      */
-    public function setOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting)
+    public function setOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting = null)
     {
         $this->outgoingRouting = $outgoingRouting;
 
