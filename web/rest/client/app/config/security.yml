@@ -66,6 +66,11 @@ security:
       stateless: true
       security: false
 
+    refresh:
+        pattern:  ^/token/refresh
+        stateless: true
+        anonymous: true
+
     api:
       pattern:   ^/.+
       stateless: true
@@ -86,5 +91,6 @@ security:
   access_control:
     - { path: ^/admin_login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
     - { path: ^/user_login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/token/refresh, roles: IS_AUTHENTICATED_ANONYMOUSLY }
     - { path: ^/index.html, roles: IS_AUTHENTICATED_ANONYMOUSLY }
     - { path: ^/, roles: ROLE_USER }

@@ -79,7 +79,10 @@ class DoctrineEventSubscriber implements EventSubscriber
 
     public function postLoad(LifecycleEventArgs $args)
     {
-        $args->getObject()->initChangelog();
+        $object = $args->getObject();
+        if ($object instanceof EntityInterface) {
+            $object->initChangelog();
+        }
     }
 
     public function prePersist(LifecycleEventArgs $args)
@@ -174,6 +177,11 @@ class DoctrineEventSubscriber implements EventSubscriber
 
     private function run($eventName, LifecycleEventArgs $args, bool $isNew = false)
     {
+        $entity = $args->getObject();
+        if (!$entity instanceof EntityInterface) {
+            return;
+        }
+
         $this->triggerDomainEvents($eventName, $args, $isNew);
         $this->runSharedServices($eventName, $args, $isNew);
         $this->runEntityServices($eventName, $args, $isNew);

@@ -36,6 +36,6 @@ pushd /opt/irontec/ivozprovider/web/rest/brand
     composer require $*
 popd
 
-pushd /opt/irontec/ivozprovider/web/rest/brand
+pushd /opt/irontec/ivozprovider/web/rest/client
     composer require $*
 popd

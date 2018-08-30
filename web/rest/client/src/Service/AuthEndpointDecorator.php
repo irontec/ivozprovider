@@ -123,6 +123,40 @@ class AuthEndpointDecorator implements NormalizerInterface
         $auth = [
             '/admin_login' => $authAdminDefinition,
             '/user_login' => $authUserDefinition,
+            '/token/refresh' => [
+                'post' => [
+                    "tags" => [
+                        "Auth"
+                    ],
+                    "operationId" => "postTokenRefresh",
+                    "consumes" => [
+                        "application/x-www-form-urlencoded",
+                    ],
+                    "produces" => [
+                        "application/json",
+                    ],
+                    "summary" => "Retrieve JWT token",
+                    "parameters" => [
+                        [
+                            "name" => "refresh_token",
+                            "in" => "formData",
+                            "type" => 'string',
+                            "required" => true
+                        ]
+                    ],
+                    "responses" => [
+                        "200" => [
+                            "description" => "Valid credentials"
+                        ],
+                        "400" => [
+                            "description" => "Invalid input"
+                        ],
+                        "401" => [
+                            "description" => "Bad credentials"
+                        ]
+                    ]
+                ]
+            ]
         ];
 
         $response['paths'] = array_merge($auth, $paths);

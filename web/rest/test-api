@@ -1,0 +1,13 @@
+#!/bin/bash
+
+pushd /opt/irontec/ivozprovider/web/rest/platform
+    bin/test-api
+popd
+
+pushd /opt/irontec/ivozprovider/web/rest/brand
+    bin/test-api
+popd
+
+pushd /opt/irontec/ivozprovider/web/rest/client
+    bin/test-api
+popd
