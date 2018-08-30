@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "f676435c64b37a9eb6d8bfaf04c56be2",
+    "content-hash": "73c9df5fc3492408a54107f42b639169",
     "packages": [
         {
             "name": "api-platform/core",
@@ -1283,6 +1283,59 @@
                 "psr",
                 "psr-13",
                 "rest"
+            ],
+            "transport-options": {
+                "symlink": true
+            }
+        },
+        {
+            "name": "gesdinet/jwt-refresh-token-bundle",
+            "version": "0.4.0.0",
+            "dist": {
+                "type": "path",
+                "url": "../../../library/vendor/gesdinet/jwt-refresh-token-bundle",
+                "reference": "95292f16e25b06a8d5a5e70c0dc38b2214df8849",
+                "shasum": null
+            },
+            "require": {
+                "doctrine/doctrine-bundle": "~1.4",
+                "doctrine/orm": "^2.4.8",
+                "lexik/jwt-authentication-bundle": "^1.1|^2.0@dev",
+                "php": ">=5.3.3",
+                "symfony/framework-bundle": "~3.3|~4.0",
+                "symfony/validator": "~3.3|~4.0"
+            },
+            "require-dev": {
+                "phpspec/phpspec": "^4.0"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Gesdinet\\JWTRefreshTokenBundle\\": ""
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Gesdinet\\JWTRefreshTokenBundle\\spec\\": "spec/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marcos Gómez Vilches",
+                    "email": "marcos@gesdinet.com"
+                }
+            ],
+            "description": "Implements a refresh token system over Json Web Tokens in Symfony",
+            "keywords": [
+                "jwt refresh token bundle symfony json web"
             ],
             "transport-options": {
                 "symlink": true
