@@ -16,6 +16,9 @@ Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting:
     lcrRules:
       targetEntity: Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface
       mappedBy: outgoingRouting
+    lcrRuleTargets:
+      targetEntity: Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface
+      mappedBy: outgoingRouting
     relCarriers:
       targetEntity: Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface
       mappedBy: outgoingRouting
