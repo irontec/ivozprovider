@@ -52,7 +52,7 @@ Feature: Retrieve administrators
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-      And the JSON should be like:
+      And the JSON should be equal to:
     """
       {
           "username": "admin",
@@ -63,7 +63,6 @@ Feature: Retrieve administrators
           "lastname": "ivozprovider",
           "id": 1,
           "brand": null,
-          "company": null,
           "timezone": {
               "tz": "Europe/Madrid",
               "comment": "mainland",

@@ -80,7 +80,37 @@ Feature: Retrieve companies
               },
               "country": 1
           },
-          "applicationServer": null,
+          "brand": {
+              "name": "DemoBrand",
+              "domainUsers": "",
+              "recordingsLimitMB": null,
+              "recordingsLimitEmail": "",
+              "maxCalls": 0,
+              "id": 1,
+              "logo": {
+                  "fileSize": null,
+                  "mimeType": null,
+                  "baseName": null
+              },
+              "invoice": {
+                  "nif": "",
+                  "postalAddress": "",
+                  "postalCode": "",
+                  "town": "",
+                  "province": "",
+                  "country": "",
+                  "registryData": ""
+              },
+              "domain": 6,
+              "language": 1,
+              "defaultTimezone": 1
+          },
+          "domain": {
+              "domain": "127.0.0.1",
+              "pointsTo": "proxyusers",
+              "description": "DemoCompany proxyusers domain",
+              "id": 3
+          },
           "country": {
               "code": "ES",
               "countryCode": "+34",
@@ -94,8 +124,27 @@ Feature: Retrieve companies
                   "es": "Europa"
               }
           },
-          "outgoingDdi": null,
-          "outgoingDdiRule": null,
+          "transformationRuleSet": {
+              "description": "Generic transformation for Spain",
+              "internationalCode": "00",
+              "trunkPrefix": "",
+              "areaCode": "",
+              "nationalLen": 9,
+              "generateRules": false,
+              "id": 1,
+              "name": {
+                  "en": "en",
+                  "es": "es"
+              },
+              "brand": null,
+              "country": 1
+          },
+          "voicemailNotificationTemplate": {
+              "name": "Voicemail notification",
+              "type": "voicemail",
+              "id": 1,
+              "brand": 1
+          },
           "faxNotificationTemplate": null,
           "invoiceNotificationTemplate": null
       }

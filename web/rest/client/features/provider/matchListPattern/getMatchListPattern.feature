@@ -42,7 +42,6 @@ Feature: Retrieve match list patterns
           "matchList": {
               "name": "testMatchlist",
               "id": 1,
-              "brand": null,
               "company": 1
           },
           "numberCountry": {

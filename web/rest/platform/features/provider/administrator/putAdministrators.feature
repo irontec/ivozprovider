@@ -18,7 +18,6 @@ Feature: Update administrators
           "name": "Updated admin name",
           "lastname": "a lastname",
           "brand": null,
-          "company": null,
           "timezone": 2
       }
     """
@@ -36,7 +35,6 @@ Feature: Update administrators
           "lastname": "a lastname",
           "id": 4,
           "brand": null,
-          "company": null,
           "timezone": {
               "tz": "Europe/London",
               "comment": null,

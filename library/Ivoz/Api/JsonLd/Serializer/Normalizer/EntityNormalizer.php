@@ -8,6 +8,7 @@ use ApiPlatform\Core\JsonLd\ContextBuilderInterface;
 use ApiPlatform\Core\JsonLd\Serializer\JsonLdContextTrait;
 use ApiPlatform\Core\Metadata\Resource\Factory\ResourceMetadataFactoryInterface;
 use Ivoz\Api\Entity\Serializer\Normalizer\DateTimeNormalizer;
+use Ivoz\Api\Swagger\Metadata\Property\Factory\PropertyNameCollectionFactory;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Service\Assembler\DtoAssembler;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
@@ -39,7 +40,8 @@ class EntityNormalizer extends JsonEntityNormalizer implements NormalizerInterfa
         ResourceClassResolverInterface $resourceClassResolver,
         ContextBuilderInterface $contextBuilder,
         DtoAssembler $dtoAssembler,
-        DateTimeNormalizer $dateTimeNormalizer
+        DateTimeNormalizer $dateTimeNormalizer,
+        PropertyNameCollectionFactory $propertyNameCollectionFactory
     ) {
         $this->iriConverter = $iriConverter;
         $this->contextBuilder = $contextBuilder;
@@ -49,7 +51,8 @@ class EntityNormalizer extends JsonEntityNormalizer implements NormalizerInterfa
             $resourceClassResolver,
             $contextBuilder,
             $dtoAssembler,
-            $dateTimeNormalizer
+            $dateTimeNormalizer,
+            $propertyNameCollectionFactory
         );
     }
 

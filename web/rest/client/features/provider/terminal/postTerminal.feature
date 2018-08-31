@@ -64,8 +64,7 @@ Feature: Create terminals
               "specificTemplate": "",
               "genericUrlPattern": "",
               "specificUrlPattern": "",
-              "id": 1,
-              "terminalManufacturer": 1
+              "id": 1
           }
       }
     """

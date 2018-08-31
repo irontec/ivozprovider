@@ -27,7 +27,6 @@ Feature: Create friends
           "fromDomain": "",
           "directConnectivity": "yes",
           "company": 1,
-          "transformationRuleSet": null,
           "callAcl": null,
           "outgoingDdi": null,
           "language": null
@@ -71,7 +70,6 @@ Feature: Create friends
           "directConnectivity": "yes",
           "id": 2,
           "company": "~",
-          "transformationRuleSet": null,
           "callAcl": null,
           "outgoingDdi": null,
           "language": null

@@ -61,6 +61,7 @@
         "php": ">=7.0.19",
         "doctrine/doctrine-migrations-bundle": "^1.2",
         "doctrine/orm": "^2.5",
+        "gesdinet/jwt-refresh-token-bundle": "^0.4.0",
         "incenteev/composer-parameter-handler": "^2.0",
         "predis/predis": "^1.1",
         "ramsey/uuid": "^3.7",

@@ -65,6 +65,9 @@ Ivoz\Kam\Domain\Model\UsersCdr\UsersCdr:
 ########################################
 Ivoz\Provider\Domain\Model\User\User:
   itemOperations:
+    get: ~
+    put: ~
+    delete: ~
     get_my_profile:
       access_control: '"ROLE_COMPANY_USER" in roles'
       depth: 1
@@ -106,6 +109,8 @@ Ivoz\Provider\Domain\Model\User\User:
             schema:
               $ref: '#/definitions/User-updateMyProfile'
   collectionOperations:
+    get: ~
+    post: ~
     get_my_company_assistants:
       access_control: '"ROLE_COMPANY_USER" in roles'
       method: 'GET'
@@ -135,6 +140,9 @@ Ivoz\Provider\Domain\Model\User\User:
 
 Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting:
   itemOperations:
+    get: ~
+    put: ~
+    delete: ~
     post_my_call_forward_settings:
       access_control: '"ROLE_COMPANY_USER" in roles'
       method: 'POST'
@@ -155,6 +163,8 @@ Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting:
             schema:
               $ref: '#/definitions/CallForwardSetting'
   collectionOperations:
+    get: ~
+    post: ~
     get_my_call_forward_settings:
       access_control: '"ROLE_COMPANY_USER" in roles'
       method: 'GET'
@@ -174,6 +184,8 @@ Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting:
 
 Ivoz\Provider\Domain\Model\Extension\Extension:
   collectionOperations:
+    get: ~
+    post: ~
     get_my_company_extensions:
       access_control: '"ROLE_COMPANY_USER" in roles'
       method: 'GET'

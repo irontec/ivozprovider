@@ -27,7 +27,6 @@ Feature: Retrieve call acl rel match lists
               "matchList": {
                   "name": "testMatchlist",
                   "id": 1,
-                  "brand": null,
                   "company": 1
               }
           }
@@ -56,7 +55,6 @@ Feature: Retrieve call acl rel match lists
           "matchList": {
               "name": "testMatchlist",
               "id": 1,
-              "brand": null,
               "company": 1
           }
       }

@@ -71,59 +71,79 @@ class OperationMetadataFactory implements ResourceMetadataFactoryInterface
             'application/json'
         ];
 
-        $itemOperations = array_replace_recursive(
-            [
-                'get' => [
-                    'method' => 'GET',
-                    'normalization_context' => [
-                        'groups' => [
-                            DataTransferObjectInterface::CONTEXT_DETAILED
-                        ]
-                    ],
-                    'swagger_context' => [
-                        'produces' => $defaultFormats,
+        $itemOperations = $resourceMetadata->getItemOperations();
+        $defaultItemOperations = [
+            'get' => [
+                'method' => 'GET',
+                'normalization_context' => [
+                    'groups' => [
+                        DataTransferObjectInterface::CONTEXT_DETAILED
                     ]
                 ],
-                'put' => [
-                    'method' => 'PUT',
-                    'swagger_context' => [
-                        'consumes' => $defaultFormats,
-                        'produces' => $defaultFormats,
-                    ]
-                ],
-                'delete' => [
-                    'method' => 'DELETE'
+                'swagger_context' => [
+                    'produces' => $defaultFormats,
                 ]
             ],
-            $resourceMetadata->getItemOperations()
+            'put' => [
+                'method' => 'PUT',
+                'swagger_context' => [
+                    'consumes' => $defaultFormats,
+                    'produces' => $defaultFormats,
+                ]
+            ],
+            'delete' => [
+                'method' => 'DELETE'
+            ]
+        ];
+        $defaultItemOperations = array_filter(
+            $defaultItemOperations,
+            function ($key) use ($itemOperations) {
+                return array_key_exists($key, $itemOperations);
+            },
+            ARRAY_FILTER_USE_KEY
+        );
+
+        $itemOperations = array_replace_recursive(
+            $defaultItemOperations,
+            $itemOperations
         );
         $itemOperations = array_filter($itemOperations, function ($value) {
             return !is_null($value);
         });
         $resourceMetadata = $resourceMetadata->withItemOperations($itemOperations);
 
-        $collectionOperations = array_replace_recursive(
-            [
-                'get' => [
-                    'method' => 'GET',
-                    'normalization_context' => [
-                        'groups' => [
-                            DataTransferObjectInterface::CONTEXT_COLLECTION
-                        ]
-                    ],
-                    'swagger_context' => [
-                        'produces' => $defaultFormats,
+        $collectionOperations = $resourceMetadata->getCollectionOperations();
+        $deafultCollectionOperations = [
+            'get' => [
+                'method' => 'GET',
+                'normalization_context' => [
+                    'groups' => [
+                        DataTransferObjectInterface::CONTEXT_COLLECTION
                     ]
                 ],
-                'post' => [
-                    'method' => 'POST',
-                    'swagger_context' => [
-                        'consumes' => $defaultFormats,
-                        'produces' => $defaultFormats,
-                    ]
+                'swagger_context' => [
+                    'produces' => $defaultFormats,
                 ]
             ],
-            $resourceMetadata->getCollectionOperations()
+            'post' => [
+                'method' => 'POST',
+                'swagger_context' => [
+                    'consumes' => $defaultFormats,
+                    'produces' => $defaultFormats,
+                ]
+            ]
+        ];
+        $deafultCollectionOperations = array_filter(
+            $deafultCollectionOperations,
+            function ($key) use ($collectionOperations) {
+                return array_key_exists($key, $collectionOperations);
+            },
+            ARRAY_FILTER_USE_KEY
+        );
+
+        $collectionOperations = array_replace_recursive(
+            $deafultCollectionOperations,
+            $collectionOperations
         );
         $collectionOperations = array_filter($collectionOperations, function ($value) {
             return !is_null($value);

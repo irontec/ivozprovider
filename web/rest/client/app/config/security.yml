@@ -19,9 +19,9 @@ security:
 
   providers:
     admin_orm:
-      id: 'Security\User\Provider::Administrator'
+      id: 'Ivoz\Provider\Infrastructure\Api\Security\User\Provider::Administrator'
     user_orm:
-      id: 'Security\User\Provider::User'
+      id: 'Ivoz\Provider\Infrastructure\Api\Security\User\Provider::User'
 
   firewalls:
     # disables authentication for assets and the profiler, adapt it according to your needs
@@ -57,7 +57,7 @@ security:
           require_previous_session: false
           username_parameter: email
           password_parameter: password
-          success_handler: Jwt\UserAuthenticationSuccessHandler
+          success_handler: Ivoz\Provider\Infrastructure\Api\Jwt\UserAuthenticationSuccessHandler
           failure_handler: lexik_jwt_authentication.handler.authentication_failure
           require_previous_session: false
 
@@ -66,12 +66,17 @@ security:
       stateless: true
       security: false
 
+    refresh:
+        pattern:  ^/token/refresh
+        stateless: true
+        anonymous: true
+
     api:
       pattern:   ^/.+
       stateless: true
       guard:
         authenticators:
-          - Jwt\TokenAuthenticator
+          - Ivoz\Provider\Infrastructure\Api\Jwt\TokenAuthenticator
 
     main:
       anonymous: ~
@@ -86,5 +91,6 @@ security:
   access_control:
     - { path: ^/admin_login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
     - { path: ^/user_login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/token/refresh, roles: IS_AUTHENTICATED_ANONYMOUSLY }
     - { path: ^/index.html, roles: IS_AUTHENTICATED_ANONYMOUSLY }
     - { path: ^/, roles: ROLE_USER }

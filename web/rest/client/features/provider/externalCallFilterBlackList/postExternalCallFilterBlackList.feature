@@ -44,7 +44,6 @@ Feature: Create external call filter black lists
           "matchlist": {
               "name": "testMatchlist2",
               "id": 2,
-              "brand": null,
               "company": 1
           }
       }
@@ -82,7 +81,6 @@ Feature: Create external call filter black lists
           "matchlist": {
               "name": "testMatchlist2",
               "id": 2,
-              "brand": null,
               "company": 1
           }
       }

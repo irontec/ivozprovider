@@ -10,6 +10,7 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Service\Assembler\DtoAssembler;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use Ivoz\Api\Swagger\Metadata\Property\Factory\PropertyNameCollectionFactory;
 
 /**
  * Based on ApiPlatform\Core\JsonLd\Serializer\ItemNormalizer
@@ -43,18 +44,25 @@ class EntityNormalizer implements NormalizerInterface
      */
     private $dateTimeNormalizer;
 
+    /**
+     * @var PropertyNameCollectionFactory
+     */
+    protected $propertyNameCollectionFactory;
+
     public function __construct(
         ResourceMetadataFactoryInterface $resourceMetadataFactory,
         ResourceClassResolverInterface $resourceClassResolver,
         ContextBuilderInterface $contextBuilder,
         DtoAssembler $dtoAssembler,
-        DateTimeNormalizer $dateTimeNormalizer
+        DateTimeNormalizer $dateTimeNormalizer,
+        PropertyNameCollectionFactory $propertyNameCollectionFactory
     ) {
         $this->resourceClassResolver = $resourceClassResolver;
         $this->resourceMetadataFactory = $resourceMetadataFactory;
         $this->contextBuilder = $contextBuilder;
         $this->dtoAssembler = $dtoAssembler;
         $this->dateTimeNormalizer = $dateTimeNormalizer;
+        $this->propertyNameCollectionFactory = $propertyNameCollectionFactory;
     }
 
     /**
@@ -151,7 +159,10 @@ class EntityNormalizer implements NormalizerInterface
     protected function normalizeDto($dto, array $context, $isSubresource, $depth, $resourceClass, $resourceMetadata): array
     {
         $normalizationContext = $context['operation_normalization_context'] ?? $context['operation_type'];
-        $rawData = $dto->normalize($normalizationContext);
+        $rawData = $this->filterProperties(
+            $dto->normalize($normalizationContext),
+            $resourceClass
+        );
 
         foreach ($rawData as $key => $value) {
 
@@ -198,5 +209,24 @@ class EntityNormalizer implements NormalizerInterface
         }
 
         return $rawData;
+    }
+
+    private function filterProperties(array $data, string $resourceClass)
+    {
+        $mappedProperties = [];
+        $propertyNameCollection = $this->propertyNameCollectionFactory->create($resourceClass);
+        foreach ($propertyNameCollection as $property) {
+            $mappedProperties[] = $property;
+        }
+
+        $response = array_filter(
+            $data,
+            function ($property) use ($mappedProperties) {
+                return in_array($property, $mappedProperties);
+            },
+            ARRAY_FILTER_USE_KEY
+        );
+
+        return $response;
     }
 }

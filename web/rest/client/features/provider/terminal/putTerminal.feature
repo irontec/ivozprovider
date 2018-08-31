@@ -47,8 +47,7 @@ Feature: Update terminals
               "specificTemplate": null,
               "genericUrlPattern": "y000000000052.cfg",
               "specificUrlPattern": "{mac}",
-              "id": 2,
-              "terminalManufacturer": 2
+              "id": 2
           }
       }
     """

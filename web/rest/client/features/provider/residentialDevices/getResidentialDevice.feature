@@ -49,7 +49,6 @@ Feature: Retrieve residential devices
           "directConnectivity": "yes",
           "id": 1,
           "company": "~",
-          "transformationRuleSet": null,
           "outgoingDdi": null,
           "language": null
       }

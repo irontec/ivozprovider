@@ -1,6 +1,6 @@
 <?php
 
-namespace Security\User;
+namespace Ivoz\Provider\Infrastructure\Api\Security\User;
 
 use Ivoz\Provider\Domain\Model\Administrator\Administrator;
 use Ivoz\Provider\Domain\Model\User\User;

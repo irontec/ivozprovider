@@ -38,7 +38,6 @@ Feature: Update outgoing ddi rules patterns
           "matchList": {
               "name": "testMatchlist2",
               "id": 2,
-              "brand": null,
               "company": 1
           },
           "forcedDdi": "~"

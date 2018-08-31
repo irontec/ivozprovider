@@ -53,7 +53,7 @@ class ReferenceFixerDecorator implements NormalizerInterface
         return count($segments) > 1;
     }
 
-    private function fixRelationReferences($definitions)
+    private function fixRelationReferences(\ArrayObject $definitions)
     {
         $definitionKeys = array_keys($definitions->getArrayCopy());
         foreach ($definitionKeys as $key) {

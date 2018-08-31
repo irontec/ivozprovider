@@ -48,7 +48,6 @@ Feature: Retrieve friends
           "directConnectivity": "yes",
           "id": 1,
           "company": "~",
-          "transformationRuleSet": null,
           "callAcl": null,
           "outgoingDdi": null,
           "language": null

@@ -13,15 +13,10 @@ security:
     Ivoz\Provider\Domain\Model\Administrator\Administrator:
       algorithm: bcrypt
       cost: 12
-    Ivoz\Provider\Domain\Model\User\User:
-      algorithm: bcrypt
-      cost: 12
 
   providers:
     admin_orm:
-      id: 'Security\User\Provider::Administrator'
-    user_orm:
-      id: 'Security\User\Provider::User'
+      id: 'Ivoz\Provider\Infrastructure\Api\Security\User\Provider::Administrator'
 
   firewalls:
     # disables authentication for assets and the profiler, adapt it according to your needs
@@ -47,31 +42,22 @@ security:
           failure_handler: lexik_jwt_authentication.handler.authentication_failure
           require_previous_session: false
 
-    user_login:
-      pattern:  ^/user_login
-      stateless: true
-      anonymous: true
-      provider: user_orm
-      form_login:
-          check_path: /user_login
-          require_previous_session: false
-          username_parameter: email
-          password_parameter: password
-          success_handler: Jwt\UserAuthenticationSuccessHandler
-          failure_handler: lexik_jwt_authentication.handler.authentication_failure
-          require_previous_session: false
-
-    web_theme:
-      pattern: ^/my/web_theme$
-      stateless: true
-      security: false
+    refresh:
+        pattern:  ^/token/refresh
+        stateless: true
+        anonymous: true
 
     api:
       pattern:   ^/.+
       stateless: true
       guard:
         authenticators:
-          - Jwt\TokenAuthenticator
+          - Ivoz\Provider\Infrastructure\Api\Jwt\TokenAuthenticator
+
+    refresh:
+        pattern:  ^/api/token/refresh
+        stateless: true
+        anonymous: true
 
     main:
       anonymous: ~
@@ -85,6 +71,6 @@ security:
 
   access_control:
     - { path: ^/admin_login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-    - { path: ^/user_login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/token/refresh, roles: IS_AUTHENTICATED_ANONYMOUSLY }
     - { path: ^/index.html, roles: IS_AUTHENTICATED_ANONYMOUSLY }
     - { path: ^/, roles: ROLE_USER }

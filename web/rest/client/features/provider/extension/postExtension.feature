@@ -75,7 +75,6 @@ Feature: Create extensions
               "callAcl": null,
               "bossAssistant": null,
               "bossAssistantWhiteList": null,
-              "transformationRuleSet": 1,
               "language": null,
               "terminal": 1,
               "extension": 4,

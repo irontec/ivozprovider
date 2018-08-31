@@ -28,7 +28,6 @@ Feature: Update friends
           "directConnectivity": "yes",
           "id": 1,
           "company": 2,
-          "transformationRuleSet": null,
           "callAcl": null,
           "outgoingDdi": null,
           "language": null
@@ -57,7 +56,6 @@ Feature: Update friends
           "directConnectivity": "yes",
           "id": 1,
           "company": "~",
-          "transformationRuleSet": null,
           "callAcl": null,
           "outgoingDdi": null,
           "language": null

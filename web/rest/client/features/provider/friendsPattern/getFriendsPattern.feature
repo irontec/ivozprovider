@@ -53,8 +53,6 @@ Feature: Retrieve friends patterns
               "directConnectivity": "yes",
               "id": 1,
               "company": 1,
-              "domain": 3,
-              "transformationRuleSet": null,
               "callAcl": null,
               "outgoingDdi": null,
               "language": null

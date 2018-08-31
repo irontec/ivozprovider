@@ -26,7 +26,6 @@ Feature: Update residential devices
           "fromDomain": null,
           "directConnectivity": "yes",
           "company": 1,
-          "transformationRuleSet": 1,
           "outgoingDdi": 1,
           "language": 1
       }
@@ -63,7 +62,6 @@ Feature: Update residential devices
               "friendValue": "",
               "id": 1,
               "company": 1,
-              "brand": 1,
               "conferenceRoom": null,
               "language": null,
               "queue": null,
@@ -72,7 +70,6 @@ Feature: Update residential devices
               "ivr": null,
               "huntGroup": null,
               "fax": null,
-              "ddiProvider": 1,
               "country": 1,
               "residentialDevice": null,
               "conditionalRoute": null,

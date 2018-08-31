@@ -15,9 +15,15 @@ api_user_login:
   path: user_login
 
 ###############################
+## Refresh JWT Token
+###############################
+gesdinet_jwt_refresh_token:
+  path: '/token/refresh'
+  defaults: { _controller: gesdinet.jwtrefreshtoken:refresh }
+
+###############################
 ## Custom routes
 ###############################
-
 get_my_status:
   path: '/my/status'
   methods: ['GET']
