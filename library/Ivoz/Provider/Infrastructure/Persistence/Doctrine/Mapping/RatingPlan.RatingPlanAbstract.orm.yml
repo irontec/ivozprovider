@@ -1,10 +1,5 @@
 Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanAbstract:
   type: mappedSuperclass
-  uniqueConstraints:
-    brandTag:
-      columns:
-        - tag
-        - brandId
   embedded:
     name:
       class: Name
@@ -12,13 +7,6 @@ Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanAbstract:
     description:
       class: Description
       columnPrefix: false
-  fields:
-    tag:
-      type: string
-      nullable: true
-      length: 64
-      options:
-        fixed: false
   manyToOne:
     brand:
       targetEntity: \Ivoz\Provider\Domain\Model\Brand\BrandInterface

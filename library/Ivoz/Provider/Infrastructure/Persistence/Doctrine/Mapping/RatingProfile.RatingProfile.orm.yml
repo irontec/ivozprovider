@@ -12,3 +12,8 @@ Ivoz\Provider\Domain\Model\RatingProfile\RatingProfile:
       id: true
       generator:
         strategy: IDENTITY
+  oneToMany:
+    tpRatingProfile:
+      targetEntity: Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface
+      mappedBy: ratingProfile
+      fetch: LAZY

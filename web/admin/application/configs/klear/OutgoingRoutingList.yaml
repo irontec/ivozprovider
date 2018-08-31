@@ -25,12 +25,17 @@ production:
           target: true
           routingPattern: true
           routingPatternGroup: true
+          routingMode: true
           carrier: true
+          relCarriers: true
+          carriersGhost: true
           priority: true
           weight: true
         blacklist:
           routingPattern: true
           routingPatternGroup: true
+          carrier: true
+          relCarriers: true
         options:
           title: _("Options")
           screens:
@@ -54,6 +59,7 @@ production:
       fields:
         blacklist:
           target: true
+          carriersGhost: true
         order:
           <<: *outgoingRouting_fieldsOrder
       fixedPositions: &outgoingRoutingFixedPositions_Link
@@ -73,7 +79,9 @@ production:
           colsPerRow: 12
           label: _("Outgoing route")
           fields:
-            carrier: 12
+            routingMode: 6
+            carrier: 6
+            relCarriers: 6
         group3:
           colsPerRow: 2
           label: _("Failover and load-balancing")
@@ -94,6 +102,7 @@ production:
           <<: *outgoingRouting_fieldsOrder
         blacklist:
           target: true
+          carriersGhost: true
       controller: edit
       class: ui-silk-pencil
       label: false

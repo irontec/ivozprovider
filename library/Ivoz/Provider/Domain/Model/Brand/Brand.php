@@ -145,5 +145,18 @@ class Brand extends BrandAbstract implements BrandInterface, FileContainerInterf
 
         return false;
     }
+
+    /**
+     * Return Brand Cgrates tenant code
+     *
+     * @return string
+     */
+    public function getCgrTenant()
+    {
+        return sprintf(
+            "b%d",
+            $this->getId()
+        );
+    }
 }
 

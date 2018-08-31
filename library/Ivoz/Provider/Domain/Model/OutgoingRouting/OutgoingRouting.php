@@ -1,5 +1,6 @@
 <?php
 namespace Ivoz\Provider\Domain\Model\OutgoingRouting;
+use Doctrine\Common\Collections\ArrayCollection;
 use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface;
 
 /**
@@ -12,9 +13,15 @@ class OutgoingRouting extends OutgoingRoutingAbstract implements OutgoingRouting
     /**
      * Available OutgoingRoutings Types
      */
-    const PATTERN   = 'pattern';
-    const GROUP     = 'group';
-    const FAX       = 'fax';
+    const TYPE_PATTERN   = 'pattern';
+    const TYPE_GROUP     = 'group';
+    const TYPE_FAX       = 'fax';
+
+    /**
+     * Available OugoingRoutings Route Mode
+     */
+    const MODE_STATIC = 'static';
+    const MODE_LCR    = 'lcr';
 
     /**
      * @codeCoverageIgnore
@@ -38,19 +45,31 @@ class OutgoingRouting extends OutgoingRoutingAbstract implements OutgoingRouting
     protected function sanitizeValues()
     {
         switch ($this->getType()) {
-            case 'group':
+            case self::TYPE_GROUP:
                 $this->setRoutingPattern(null);
                 break;
-            case 'pattern':
+            case self::TYPE_PATTERN:
                 $this->setRoutingPatternGroup(null);
                 break;
-            case 'fax':
+            case self::TYPE_FAX:
                 $this->setRoutingPattern(null);
                 $this->setRoutingPatternGroup(null);
                 break;
             default:
                 throw new \DomainException('Incorrect Outgoing Routing Type');
         }
+
+        switch ($this->getRoutingMode()) {
+            case self::MODE_STATIC:
+                $this->replaceRelCarriers(new ArrayCollection());
+                break;
+            case self::MODE_LCR:
+                $this->setCarrier(null);
+                break;
+            default:
+                throw new \DomainException('Incorrect Outgoing Routing Mode');
+        }
+
     }
 
     /**
@@ -59,14 +78,40 @@ class OutgoingRouting extends OutgoingRoutingAbstract implements OutgoingRouting
     public function getRoutingPatterns()
     {
         switch ($this->getType()) {
-            case OutgoingRouting::GROUP:
+            case self::TYPE_GROUP:
                 return $this->getRoutingPatternGroup()->getRoutingPatterns();
-            case OutgoingRouting::PATTERN:
+            case self::TYPE_PATTERN:
                 return [ $this->getRoutingPattern() ];
-            case OutgoingRouting::FAX:
+            case self::TYPE_FAX:
             default:
                 return [ ];
         }
+    }
+
+    /**
+     * Return CGRates tag for LCR category
+     *
+     * @return string
+     */
+    public function getCgrCategory()
+    {
+        return sprintf(
+            "or%d",
+            $this->getId()
+        );
+    }
+
+    /**
+     * Return CGRates tag for LCR rating plan category
+     *
+     * @return string
+     */
+    public function getCgrRpCategory()
+    {
+        return sprintf(
+            "lcr_profile%d",
+            $this->getId()
+        );
     }
 
     /**

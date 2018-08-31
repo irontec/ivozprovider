@@ -6,6 +6,8 @@ use Ivoz\Cgr\Domain\Model\TpAccountAction\TpAccountActionInterface;
 
 class UpdatedTpAccountActionNotificator implements TpAccountActionLifecycleEventHandlerInterface
 {
+    const ON_COMMIT_PRIORITY = self::PRIORITY_NORMAL;
+
     /**
      * @var LoadTpAccountActionInterface
      */
@@ -27,7 +29,7 @@ class UpdatedTpAccountActionNotificator implements TpAccountActionLifecycleEvent
     public static function getSubscribedEvents()
     {
         return [
-            self::EVENT_ON_COMMIT => 10
+            self::EVENT_ON_COMMIT => self::ON_COMMIT_PRIORITY
         ];
     }
 

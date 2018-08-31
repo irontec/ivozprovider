@@ -3,14 +3,13 @@
 namespace Ivoz\Cgr\Domain\Service\TpDerivedCharger;
 
 use Ivoz\Cgr\Domain\Model\TpDerivedCharger\TpDerivedCharger;
-use Ivoz\Cgr\Domain\Model\TpDerivedCharger\TpDerivedChargerDto;
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Service\Brand\BrandLifecycleEventHandlerInterface;
 
 class CreatedByBrand implements BrandLifecycleEventHandlerInterface
 {
-    CONST POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
+    const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
     /**
      * @var EntityTools

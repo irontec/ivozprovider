@@ -58,6 +58,11 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     private $outgoingRoutings = null;
 
     /**
+     * @var \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierDto[] | null
+     */
+    private $outgoingRoutingsRelCarriers = null;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerDto[] | null
      */
     private $servers = null;
@@ -116,6 +121,7 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
             'brand' => $this->getBrand(),
             'transformationRuleSet' => $this->getTransformationRuleSet(),
             'outgoingRoutings' => $this->getOutgoingRoutings(),
+            'outgoingRoutingsRelCarriers' => $this->getOutgoingRoutingsRelCarriers(),
             'servers' => $this->getServers(),
             'ratingProfiles' => $this->getRatingProfiles(),
             'tpCdrStats' => $this->getTpCdrStats()
@@ -135,6 +141,17 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
             foreach ($items as $item) {
                 $this->outgoingRoutings[] = $transformer->transform(
                     'Ivoz\\Provider\\Domain\\Model\\OutgoingRouting\\OutgoingRouting',
+                    $item->getId() ?? $item
+                );
+            }
+        }
+
+        if (!is_null($this->outgoingRoutingsRelCarriers)) {
+            $items = $this->getOutgoingRoutingsRelCarriers();
+            $this->outgoingRoutingsRelCarriers = [];
+            foreach ($items as $item) {
+                $this->outgoingRoutingsRelCarriers[] = $transformer->transform(
+                    'Ivoz\\Provider\\Domain\\Model\\OutgoingRoutingRelCarrier\\OutgoingRoutingRelCarrier',
                     $item->getId() ?? $item
                 );
             }
@@ -183,6 +200,10 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
         $this->outgoingRoutings = $transformer->transform(
             'Ivoz\\Provider\\Domain\\Model\\OutgoingRouting\\OutgoingRouting',
             $this->outgoingRoutings
+        );
+        $this->outgoingRoutingsRelCarriers = $transformer->transform(
+            'Ivoz\\Provider\\Domain\\Model\\OutgoingRoutingRelCarrier\\OutgoingRoutingRelCarrier',
+            $this->outgoingRoutingsRelCarriers
         );
         $this->servers = $transformer->transform(
             'Ivoz\\Provider\\Domain\\Model\\CarrierServer\\CarrierServer',
@@ -428,6 +449,26 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     public function getOutgoingRoutings()
     {
         return $this->outgoingRoutings;
+    }
+
+    /**
+     * @param array $outgoingRoutingsRelCarriers
+     *
+     * @return static
+     */
+    public function setOutgoingRoutingsRelCarriers($outgoingRoutingsRelCarriers = null)
+    {
+        $this->outgoingRoutingsRelCarriers = $outgoingRoutingsRelCarriers;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getOutgoingRoutingsRelCarriers()
+    {
+        return $this->outgoingRoutingsRelCarriers;
     }
 
     /**

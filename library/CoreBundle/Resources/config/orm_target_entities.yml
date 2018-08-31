@@ -153,6 +153,8 @@ doctrine:
         Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPattern
       Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface:
         Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting
+      Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface:
+        Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrier
       Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupInterface:
         Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroup
       Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface:
@@ -265,6 +267,8 @@ doctrine:
         Ivoz\Cgr\Domain\Model\TpDestination\TpDestination
       Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface:
         Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRate
+      Ivoz\Cgr\Domain\Model\TpLcrRule\TpLcrRuleInterface:
+        Ivoz\Cgr\Domain\Model\TpLcrRule\TpLcrRule
       Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface:
         Ivoz\Cgr\Domain\Model\TpRate\TpRate
       Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanInterface:

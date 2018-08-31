@@ -137,7 +137,7 @@ class DataGateway
      * @param array|null $orderBy
      * @param int|null $limit
      * @param int|null $offset
-     * @return DataTransferObjectInterface
+     * @return DataTransferObjectInterface[]
      */
     public function findBy(
         string $entityName,

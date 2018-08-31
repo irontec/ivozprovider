@@ -63,7 +63,7 @@ class UpdateByOutgoingRoutingSpec extends ObjectBehavior
 
         $outgoingRouting
             ->getType()
-            ->willReturn(OutgoingRouting::FAX);
+            ->willReturn(OutgoingRouting::TYPE_FAX);
 
         $lcrRule
             ->hasChanged('id')

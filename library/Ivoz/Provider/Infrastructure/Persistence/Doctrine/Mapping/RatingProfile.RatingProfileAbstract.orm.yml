@@ -63,8 +63,3 @@ Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileAbstract:
           nullable: true
           onDelete: cascade
       orphanRemoval: false
-  oneToOne:
-    tpRatingProfile:
-      targetEntity: Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface
-      mappedBy: ratingProfile
-      fetch: LAZY

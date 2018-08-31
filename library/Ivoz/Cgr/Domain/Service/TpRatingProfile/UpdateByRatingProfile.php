@@ -55,7 +55,7 @@ class UpdateByRatingProfile implements RatingProfileLifecycleEventHandlerInterfa
         $tpRatingProfileDto
             ->setActivationTime($ratingProfile->getActivationTime())
             ->setTenant(sprintf("b%d", $brand->getId()))
-            ->setRatingPlanTag($ratingPlan->getTag())
+            ->setRatingPlanTag($ratingPlan->getCgrTag())
             ->setRatingProfileId($ratingProfile->getId());
 
 

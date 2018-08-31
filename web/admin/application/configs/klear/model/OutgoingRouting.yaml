@@ -84,6 +84,31 @@ production:
             template: '%name%'
           order:
             Carrier.name: asc
+    relCarriers:
+      title: ngettext('Carrier', 'Carriers', 1)
+      type: multiselect
+      required: true
+      source:
+        data: mapper
+        config:
+          filterClass: IvozProvider_Klear_Filter_Brand
+          relation: \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrier
+          relationProperty: outgoingRouting
+          relatedProperty: carrier
+          related: \Ivoz\Provider\Domain\Model\Carrier\Carrier
+          filterClass: IvozProvider_Klear_Filter_CarriersCost
+          relatedFieldName:
+            fields:
+              - name
+            template: '%name%'
+          order:
+            Carrier.name: asc
+    carriersGhost:
+      title: ngettext('Carrier', 'Carriers', 1)
+      type: ghost
+      source:
+        class: IvozProvider_Klear_Ghost_OutgoingRouting
+        method: getCarriers
     priority:
       title: _('Priority')
       type: number
@@ -102,6 +127,23 @@ production:
         control: Spinner
         min: 1
         max: 254
+    routingMode:
+      title: _('Route type')
+      type: select
+      source:
+        data: inline
+        filterClass: IvozProvider_Klear_Filter_OutgoingRoutingMode
+        values:
+          'static':
+            title: _("Static")
+            visualFilter:
+              show: [ carrier ]
+              hide: [ relCarriers ]
+          'lcr':
+            title: _("LCR")
+            visualFilter:
+              show: [ relCarriers ]
+              hide: [ carrier ]
     company:
       title: ngettext('Company', 'Companies', 1)
       type: select
@@ -124,7 +166,6 @@ production:
       source:
         class: IvozProvider_Klear_Ghost_OutgoingRouteType
         method: getData
-
 staging:
   _extends: production
 testing:

@@ -27,7 +27,6 @@ class ProviderRatingPlans extends Fixture implements DependentFixtureInterface
         /** @var RatingPlan $item1 */
         $item1 = $this->createEntityInstanceWithPublicMethods(RatingPlan::class);
 
-        $item1->setTag('b1rp1');
         $item1->setName(new Name('Something', 'Algo'));
         $item1->setDescription(new Description('', ''));
         $item1->setBrand(
@@ -40,7 +39,6 @@ class ProviderRatingPlans extends Fixture implements DependentFixtureInterface
         /** @var RatingPlan $item2 */
         $item2 = $this->createEntityInstanceWithPublicMethods(RatingPlan::class);
 
-        $item2->setTag('b1rp2');
         $item2->setName(new Name('Something more', 'Algo más'));
         $item2->setDescription(new Description('', ''));
         $item2->setBrand(

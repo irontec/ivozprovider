@@ -59,6 +59,13 @@ interface BrandInterface extends LoggableEntityInterface
     public function hasFeature($featureId);
 
     /**
+     * Return Brand Cgrates tenant code
+     *
+     * @return string
+     */
+    public function getCgrTenant();
+
+    /**
      * @deprecated
      * Set name
      *

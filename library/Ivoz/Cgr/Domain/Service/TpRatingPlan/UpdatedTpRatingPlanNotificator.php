@@ -7,6 +7,8 @@ use Ivoz\Core\Infrastructure\Domain\Service\Redis\Client as RedisClient;
 
 class UpdatedTpRatingPlanNotificator implements TpRatingPlanLifecycleEventHandlerInterface
 {
+    const ON_COMMIT_PRIORITY = self::PRIORITY_NORMAL;
+
     private $client;
 
     public function __construct(RedisClient $client)
@@ -17,7 +19,7 @@ class UpdatedTpRatingPlanNotificator implements TpRatingPlanLifecycleEventHandle
     public static function getSubscribedEvents()
     {
         return [
-            self::EVENT_ON_COMMIT => 10
+            self::EVENT_ON_COMMIT => self::ON_COMMIT_PRIORITY
         ];
     }
 

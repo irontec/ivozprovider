@@ -16,3 +16,13 @@ Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting:
     lcrRules:
       targetEntity: Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface
       mappedBy: outgoingRouting
+    relCarriers:
+      targetEntity: Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface
+      mappedBy: outgoingRouting
+      cascade: ['persist']
+      orphanRemoval: true
+  oneToOne:
+    tpLcrRule:
+      targetEntity: Ivoz\Cgr\Domain\Model\TpLcrRule\TpLcrRuleInterface
+      mappedBy: outgoingRouting
+      fetch: LAZY
