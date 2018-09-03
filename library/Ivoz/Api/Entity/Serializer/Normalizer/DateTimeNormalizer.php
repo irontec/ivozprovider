@@ -96,7 +96,6 @@ class DateTimeNormalizer
         $propertyMetadata = $this->propertyMetadataFactory->create($class, $fieldName);
         $fieldType = $propertyMetadata->getType();
         if (is_null($fieldType)) {
-
             return;
         }
 
@@ -154,6 +153,5 @@ class DateTimeNormalizer
                 DBALType::DATETIMETZ
             ]
         );
-
     }
 }

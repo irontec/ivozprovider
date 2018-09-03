@@ -213,5 +213,4 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
 
         return (int) $qb->getQuery()->getSingleScalarResult();
     }
-
 }

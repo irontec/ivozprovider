@@ -79,7 +79,6 @@ class DataAccessControlHelper
         }
 
         if (is_array($value)) {
-
             foreach ($value as &$val) {
                 $val = self::transformValue($val);
             }
@@ -90,8 +89,7 @@ class DataAccessControlHelper
     private static function transformOperator(string $operator)
     {
         $operator = strtoupper($operator);
-        switch ($operator)
-        {
+        switch ($operator) {
             case 'EQ':
                 return '==';
             case Comparison::IN:
@@ -109,4 +107,3 @@ class DataAccessControlHelper
         }
     }
 }
-

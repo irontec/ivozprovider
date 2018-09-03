@@ -57,7 +57,6 @@ class GenerateRules implements TransformationRuleSetLifecycleEventHandlerInterfa
         /** @var TransformationRuleInterface[] $rules */
         $rules = $transformationRuleSet->getRules();
         foreach ($rules as $rule) {
-
             $transformationRuleSet
                 ->removeRule($rule);
 

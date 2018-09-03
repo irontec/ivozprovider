@@ -40,7 +40,6 @@ final class DoctrineOrmPropertyMetadataFactory implements PropertyMetadataFactor
         }
 
         try {
-
             $field = $doctrineClassMetadata->getAssociationMapping($property);
             return new PropertyMetadata(
                 new Type(
@@ -49,7 +48,6 @@ final class DoctrineOrmPropertyMetadataFactory implements PropertyMetadataFactor
                     $field['targetEntity']
                 )
             );
-
         } catch (\Exception $e) {
             return new PropertyMetadata(
                 new Type(

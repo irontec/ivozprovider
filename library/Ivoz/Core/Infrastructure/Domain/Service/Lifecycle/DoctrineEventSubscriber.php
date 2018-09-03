@@ -157,7 +157,6 @@ class DoctrineEventSubscriber implements EventSubscriber
         }
 
         foreach ($this->flushedEntities as $entity) {
-
             if (!$entity->__isInitialized__) {
                 continue;
             }
@@ -191,13 +190,12 @@ class DoctrineEventSubscriber implements EventSubscriber
     {
         $entity = $args->getObject();
         if (!$entity instanceof LoggableEntityInterface) {
-
             return;
         }
 
         $event = null;
 
-        switch($eventName) {
+        switch ($eventName) {
             case 'pre_remove':
                 // We use pre_remove because Id value is gone on post_remove
                 $event = new EntityWasDeleted(
@@ -208,10 +206,8 @@ class DoctrineEventSubscriber implements EventSubscriber
 
                 break;
             case 'post_persist':
-
                 $changeSet = $entity->getChangeSet();
                 if (empty($changeSet)) {
-
                     return;
                 }
 

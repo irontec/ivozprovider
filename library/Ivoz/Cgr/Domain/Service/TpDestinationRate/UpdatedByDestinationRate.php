@@ -72,5 +72,4 @@ class UpdatedByDestinationRate implements DestinationRateLifecycleEventHandlerIn
         $this->entityTools
             ->persist($destinationRate);
     }
-
 }

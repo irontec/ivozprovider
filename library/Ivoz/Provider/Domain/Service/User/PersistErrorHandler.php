@@ -19,7 +19,9 @@ class PersistErrorHandler implements PersistErrorHandlerInterface
     const MYSQL_ERROR_DUPLICATE_ENTRY = 1062;
     const UNIQUE_EMAIL_CONSTRAINT_NAME = 'duplicateEmail';
 
-    public function __construct() {}
+    public function __construct()
+    {
+    }
 
     public function handle(\Exception $exception)
     {

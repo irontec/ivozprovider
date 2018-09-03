@@ -19,5 +19,4 @@ class TerminalDoctrineRepository extends ServiceEntityRepository implements Term
     {
         parent::__construct($registry, Terminal::class);
     }
-
 }

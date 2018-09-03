@@ -53,8 +53,7 @@ class TrunksLcrRuleTargetFactory
 
     public function execute(
         OutgoingRoutingInterface $outgoingRouting
-    )
-    {
+    ) {
         /**
          * @var TrunksLcrGatewayInterface[] $lcrGateways
          */
@@ -90,7 +89,6 @@ class TrunksLcrRuleTargetFactory
         // Create n x m LcrRuleTargets (n LcrRules; m LcrGateways)
         foreach ($lcrRules as $lcrRule) {
             foreach ($lcrGateways as $lcrGateway) {
-
                 $lcrRuleTarget = $this->trunksLcrRuleTargetRepository->findRuleTarget(
                     $outgoingRouting,
                     $lcrRule,

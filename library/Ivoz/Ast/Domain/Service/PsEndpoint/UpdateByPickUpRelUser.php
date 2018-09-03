@@ -55,6 +55,6 @@ class UpdateByPickUpRelUser implements PickUpRelUserLifecycleEventHandlerInterfa
                 $endpointDto,
                 $endpoint,
                 false
-        );
+            );
     }
 }

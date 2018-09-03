@@ -109,7 +109,6 @@ class EntityDenormalizer implements DenormalizerInterface
     {
         $response = [];
         foreach ($data as $fieldName => $value) {
-
             $response[$fieldName] = $this->dateTimeNormalizer->denormalize(
                 $class,
                 $fieldName,

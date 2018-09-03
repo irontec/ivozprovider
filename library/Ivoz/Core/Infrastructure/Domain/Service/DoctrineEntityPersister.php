@@ -84,8 +84,7 @@ class DoctrineEntityPersister implements EntityPersisterInterface
      */
     protected $softDeleteMap = [];
 
-    public function __construct
-    (
+    public function __construct(
         EntityManagerInterface $em,
         CreateEntityFromDTO $createEntityFromDTO,
         UpdateEntityFromDTO $entityUpdater,
@@ -259,11 +258,8 @@ class DoctrineEntityPersister implements EntityPersisterInterface
     private function transactional(EntityInterface $entity, callable $transaction)
     {
         try {
-
             $this->runTransactional($entity, $transaction);
-
         } catch (\Exception $exception) {
-
             $eventManager = $this->em->getEventManager();
             $eventManager->dispatchEvent(
                 CustomEvents::onError,
@@ -288,7 +284,6 @@ class DoctrineEntityPersister implements EntityPersisterInterface
              * Run until every pending insert/update order is applied
              */
             while (true) {
-
                 if (empty($this->pendingUpdates)) {
                     // Trigger post [persist|remove] events
                     $this->em->flush();
@@ -327,11 +322,9 @@ class DoctrineEntityPersister implements EntityPersisterInterface
             ->getMetadataFactory();
 
         foreach ($dependantEntityClasses as $dependantEntityClass) {
-
             $entityMetadata = $metadataFactory->getMetadataFor($dependantEntityClass);
             $associations = $entityMetadata->getAssociationsByTargetClass($entityClass);
             foreach ($associations as $field => $association) {
-
                 $isDeleteCascade =
                     isset($association['joinColumns'])
                     && $association['joinColumns'][0]['onDelete'] === 'cascade';

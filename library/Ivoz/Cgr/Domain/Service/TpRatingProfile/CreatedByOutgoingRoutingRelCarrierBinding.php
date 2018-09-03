@@ -26,8 +26,7 @@ class CreatedByOutgoingRoutingRelCarrierBinding implements OutgoingRoutingRelCar
      */
     public function __construct(
         CreatedByOutgoingRoutingRelCarrier $createByOutgoingRouting
-    )
-    {
+    ) {
         $this->createByOutgoingRoutingRelCarrier = $createByOutgoingRouting;
     }
 

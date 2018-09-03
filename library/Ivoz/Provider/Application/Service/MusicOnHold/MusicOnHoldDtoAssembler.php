@@ -41,7 +41,6 @@ class MusicOnHoldDtoAssembler implements CustomDtoAssemblerInterface
 
         /* OriginalFile */
         if ($entity->getOriginalFile()->getFileSize()) {
-
             $pathResolver = $this
                 ->storagePathResolver
                 ->getPathResolver('OriginalFile');
@@ -56,7 +55,6 @@ class MusicOnHoldDtoAssembler implements CustomDtoAssemblerInterface
 
         /* EncodedFile */
         if ($entity->getEncodedFile()->getFileSize()) {
-
             $pathResolver = $this
                 ->storagePathResolver
                 ->getPathResolver('EncodedFile');

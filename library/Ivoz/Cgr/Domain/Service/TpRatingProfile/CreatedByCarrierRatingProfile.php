@@ -29,8 +29,7 @@ class CreatedByCarrierRatingProfile implements RatingProfileLifecycleEventHandle
     public function __construct(
         EntityTools $entityTools,
         CreatedByOutgoingRoutingRelCarrier $createByOutgoingRouting
-    )
-    {
+    ) {
         $this->entityTools = $entityTools;
         $this->createByOutgoingRoutingRelCarrier = $createByOutgoingRouting;
     }
@@ -60,7 +59,5 @@ class CreatedByCarrierRatingProfile implements RatingProfileLifecycleEventHandle
         foreach ($outgoingRoutingRelCarrier as $outgoingRoutingRelCarrier) {
             $this->createByOutgoingRoutingRelCarrier->execute($outgoingRoutingRelCarrier);
         }
-
     }
-
 }

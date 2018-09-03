@@ -20,4 +20,3 @@ class DestinationRateGroupDoctrineRepository extends ServiceEntityRepository imp
         parent::__construct($registry, DestinationRateGroup::class);
     }
 }
-

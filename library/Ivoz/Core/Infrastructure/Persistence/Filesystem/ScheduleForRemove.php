@@ -38,7 +38,6 @@ class ScheduleForRemove implements CommonLifecycleEventHandlerInterface
         );
 
         foreach ($entity->getFileObjects() as $fldName) {
-
             $fldGetter = 'get'. ucFirst($fldName); // .'BaseName';
             $valueObject = $entity->{$fldGetter}();
             $baseName = $valueObject->getBaseName();

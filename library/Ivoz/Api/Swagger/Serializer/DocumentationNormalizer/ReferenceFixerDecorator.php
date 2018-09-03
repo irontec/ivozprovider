@@ -57,7 +57,6 @@ class ReferenceFixerDecorator implements NormalizerInterface
     {
         $definitionKeys = array_keys($definitions->getArrayCopy());
         foreach ($definitionKeys as $key) {
-
             if (!$this->isEntity($key)) {
                 if ($this->hasContext($key)) {
                     unset($definitions[$key]);
@@ -102,7 +101,7 @@ class ReferenceFixerDecorator implements NormalizerInterface
             return null;
         }
 
-        $property['items'] = $this->setContext($property['items'],  $context);
+        $property['items'] = $this->setContext($property['items'], $context);
 
         return $property;
     }

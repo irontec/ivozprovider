@@ -107,7 +107,5 @@ class EntityAssembler
                 -3
             )
             . 'Assembler';
-
     }
-
 }

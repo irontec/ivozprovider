@@ -19,5 +19,4 @@ class TerminalManufacturerDoctrineRepository extends ServiceEntityRepository imp
     {
         parent::__construct($registry, TerminalManufacturer::class);
     }
-
 }

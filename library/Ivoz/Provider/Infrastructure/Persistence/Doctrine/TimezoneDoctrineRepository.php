@@ -19,5 +19,4 @@ class TimezoneDoctrineRepository extends ServiceEntityRepository implements Time
     {
         parent::__construct($registry, Timezone::class);
     }
-
 }

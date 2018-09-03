@@ -70,5 +70,4 @@ class CreatedByOutgoingRouting implements OutgoingRoutingLifecycleEventHandlerIn
         $this->entityTools
             ->persist($outgoingRouting);
     }
-
 }

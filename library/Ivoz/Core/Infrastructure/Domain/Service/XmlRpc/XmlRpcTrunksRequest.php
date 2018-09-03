@@ -24,5 +24,4 @@ class XmlRpcTrunksRequest extends AbstractXmlRpcRequest
             $enabled
         );
     }
-
 }

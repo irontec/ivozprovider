@@ -10,4 +10,3 @@ class FakeARIConnector extends ARIConnector
     {
     }
 }
-

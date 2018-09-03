@@ -164,7 +164,6 @@ final class DynamicLoadingExtension implements QueryItemExtensionInterface, Quer
         $targetProperties = $this->getTargetPropertiesByContext($resourceClass, $context);
 
         foreach ($classMetadata->associationMappings as $association => $mapping) {
-
             if (!in_array($association, $targetProperties)) {
                 continue;
             }

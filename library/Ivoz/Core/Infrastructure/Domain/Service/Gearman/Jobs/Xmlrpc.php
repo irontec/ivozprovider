@@ -4,7 +4,8 @@ namespace Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs;
 
 use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Manager;
 
-class Xmlrpc extends AbstractJob {
+class Xmlrpc extends AbstractJob
+{
 
     /**
      * @var string
@@ -52,7 +53,8 @@ class Xmlrpc extends AbstractJob {
      * @param string $rpcEntity
      * @return $this
      */
-    public function setRpcEntity($rpcEntity) {
+    public function setRpcEntity($rpcEntity)
+    {
         $this->rpcEntity = $rpcEntity;
         return $this;
     }
@@ -100,5 +102,4 @@ class Xmlrpc extends AbstractJob {
     {
         return $this->rpcMethod;
     }
-
 }

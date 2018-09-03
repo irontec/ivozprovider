@@ -33,7 +33,6 @@ class LifecycleCompiler implements CompilerPassInterface
     protected function buildService(array $serviceCollection, $collectionClassName = null)
     {
         foreach ($serviceCollection as $tag => $services) {
-
             $event = substr(
                 $tag,
                 strrpos($tag, '.') + 1
@@ -52,7 +51,6 @@ class LifecycleCompiler implements CompilerPassInterface
             $eventCollection->setPublic(true);
 
             foreach ($services as $key => $class) {
-
                 $tagProperties = is_subclass_of($class, LifecycleEventHandlerInterface::class)
                     ? $class::getSubscribedEvents()
                     : [];
@@ -95,7 +93,6 @@ class LifecycleCompiler implements CompilerPassInterface
          * @var Definition $definition
          */
         foreach ($servicesDefinitions as $definition) {
-
             $tags = array_filter($definition->getTags(), function ($key) {
 
                 if (strpos($key, 'lifecycle.') === false) {
@@ -107,7 +104,6 @@ class LifecycleCompiler implements CompilerPassInterface
                 }
 
                 return true;
-
             }, ARRAY_FILTER_USE_KEY);
 
             if (empty($tags)) {
@@ -134,7 +130,6 @@ class LifecycleCompiler implements CompilerPassInterface
          * @var Definition $definition
          */
         foreach ($servicesDefinitions as $definition) {
-
             $tags = array_filter($definition->getTags(), function ($key) {
 
                 if (strpos($key, '.lifecycle.') === false) {
@@ -142,7 +137,6 @@ class LifecycleCompiler implements CompilerPassInterface
                 }
 
                 return (strpos($key, '.error_handler') !== false);
-
             }, ARRAY_FILTER_USE_KEY);
 
             if (empty($tags)) {

@@ -20,4 +20,3 @@ class VoicemailDoctrineRepository extends ServiceEntityRepository implements Voi
         parent::__construct($registry, Voicemail::class);
     }
 }
-

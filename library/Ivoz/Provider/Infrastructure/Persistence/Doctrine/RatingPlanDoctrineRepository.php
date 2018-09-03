@@ -34,14 +34,12 @@ class RatingPlanDoctrineRepository extends ServiceEntityRepository implements Ra
             ->setParameter('tag', $tag);
 
         try {
-
             return $qb
                 ->getQuery()
                 ->getSingleResult();
-
-        } catch (NoResultException $error) {}
+        } catch (NoResultException $error) {
+        }
 
         return null;
     }
 }
-

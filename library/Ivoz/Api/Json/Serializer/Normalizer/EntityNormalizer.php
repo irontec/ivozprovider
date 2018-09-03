@@ -79,7 +79,7 @@ class EntityNormalizer implements NormalizerInterface
     public function normalize($object, $format = null, array $context = [])
     {
         if (!$object instanceof EntityInterface) {
-            Throw new \Exception('Object must implement EntityInterface');
+            throw new \Exception('Object must implement EntityInterface');
         }
 
         if (isset($context['item_operation_name']) && $context['item_operation_name'] === 'put') {
@@ -98,7 +98,6 @@ class EntityNormalizer implements NormalizerInterface
         $properties = $reflection->getProperties();
 
         foreach ($properties as $property) {
-
             if (!empty($propertyFilters) && !in_array($property->getName(), $propertyFilters)) {
                 continue;
             }
@@ -173,9 +172,7 @@ class EntityNormalizer implements NormalizerInterface
         );
 
         foreach ($rawData as $key => $value) {
-
             if ($value instanceof DataTransferObjectInterface) {
-
                 if ($depth == 0) {
                     $rawData[$key] = $rawData[$key]->getId();
                     continue;
@@ -188,7 +185,6 @@ class EntityNormalizer implements NormalizerInterface
                 ];
 
                 try {
-
                     $resourceClass = substr(get_class($value), 0, strlen('dto') * -1);
                     $resourceMetadata = $this
                         ->resourceMetadataFactory
@@ -202,11 +198,9 @@ class EntityNormalizer implements NormalizerInterface
                         $resourceClass,
                         $resourceMetadata
                     );
-
                 } catch (\Exception $e) {
                     unset($rawData[$key]);
                 }
-
             } elseif ($value instanceof \DateTimeInterface) {
                 $rawData[$key] = $this->dateTimeNormalizer->normalize(
                     $resourceClass,

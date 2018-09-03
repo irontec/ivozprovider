@@ -61,5 +61,4 @@ class InheritRatingPlanTag implements TpRatingPlanLifecycleEventHandlerInterface
             $tpRatingPlanDto
         );
     }
-
 }

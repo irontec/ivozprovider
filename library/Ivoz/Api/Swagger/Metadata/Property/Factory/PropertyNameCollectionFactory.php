@@ -51,7 +51,6 @@ class PropertyNameCollectionFactory implements PropertyNameCollectionFactoryInte
             $attributes = $this->normalizePropertyMap($propertyMap);
 
             foreach ($attributes as $key => $value) {
-
                 if (array_key_exists($value, $propertyMap)) {
                     continue;
                 }
@@ -63,7 +62,6 @@ class PropertyNameCollectionFactory implements PropertyNameCollectionFactoryInte
                     unset($attributes[$key]);
                 }
             }
-
         } else {
             $attributes = $this->inspectAttributes($resourceClass);
         }

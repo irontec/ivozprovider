@@ -152,7 +152,8 @@ class Generator
         }
 
         $this->logger->debug(self::LOGGER_PREFIX . ' Preparing templates');
-        $templateEngine = new Handlebars;;
+        $templateEngine = new Handlebars;
+        ;
         $header = $templateEngine->render($templateModel->getTemplateHeader(), $variables);
         $body = $templateEngine->render($templateModel->getTemplate(), $variables);
         $footer = $templateEngine->render($templateModel->getTemplateFooter(), $variables);
@@ -222,13 +223,11 @@ class Generator
 
         /** @var BillableCallInterface[] $calls */
         foreach ($callGenerator as $calls) {
-
             if (empty($calls)) {
                 break;
             }
 
             foreach ($calls as $call) {
-
                 $callDto = $this->entityTools->entityToDto($call);
                 $callData = $callDto->toArray();
                 $callData['calldate'] = $call
@@ -259,7 +258,6 @@ class Generator
                     $callData['pricingPlan'] = $ratingPlanDto->toArray();
                     $callData['pricingPlan']['name'] = $ratingPlan->getName()->{'get' . $lang}();
                     $callData['pricingPlan']['description'] = $ratingPlan->getDescription()->{'get' . $lang}();
-
                 } else {
                     $callData['pricingPlan']['name'] = $call->getRatingPlanName();
                     $callData['pricingPlan']['description'] = '';
@@ -271,7 +269,8 @@ class Generator
                     $destinationDto = $this->entityTools->entityToDto($destination);
 
                     $callData['targetPattern'] = $destinationDto->toArray();
-                    $callData['targetPattern']['name'] = $destination->getName()->{'get' . $lang}();;
+                    $callData['targetPattern']['name'] = $destination->getName()->{'get' . $lang}();
+                    ;
                     $callData['targetPattern']['description'] = $destination->getName()->{'get' . $lang}();
                 } else {
                     $callData['targetPattern']['name'] = $call->getDestinationName();

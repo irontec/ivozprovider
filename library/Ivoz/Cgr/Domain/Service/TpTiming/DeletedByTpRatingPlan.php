@@ -8,7 +8,7 @@ use Ivoz\Core\Application\Service\EntityTools;
 
 class DeletedByTpRatingPlan implements TpRatingPlanLifecycleEventHandlerInterface
 {
-    CONST POST_REMOVE_PRIORITY = self::PRIORITY_NORMAL;
+    const POST_REMOVE_PRIORITY = self::PRIORITY_NORMAL;
 
 
     /**

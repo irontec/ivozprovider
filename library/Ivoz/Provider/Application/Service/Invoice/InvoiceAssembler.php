@@ -10,7 +10,6 @@ use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
 use Assert\Assertion;
 use Ivoz\Core\Application\Service\Traits\FileContainerEntityAssemblerTrait;
 
-
 class InvoiceAssembler implements CustomEntityAssemblerInterface
 {
     use FileContainerEntityAssemblerTrait;

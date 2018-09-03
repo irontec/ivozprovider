@@ -27,7 +27,6 @@ trait GetGeneratorByConditionsTrait
         $currentPage = 1;
         $continue =  true;
         while ($continue) {
-
             $qb
                 ->setMaxResults($batchSize)
                 ->setFirstResult(($currentPage -1) * $batchSize);

@@ -10,7 +10,6 @@ use Ivoz\Provider\Domain\Model\BrandUrl\BrandUrlInterface;
 use Assert\Assertion;
 use Ivoz\Core\Application\Service\Traits\FileContainerEntityAssemblerTrait;
 
-
 class BrandUrlAssembler implements CustomEntityAssemblerInterface
 {
     use FileContainerEntityAssemblerTrait;

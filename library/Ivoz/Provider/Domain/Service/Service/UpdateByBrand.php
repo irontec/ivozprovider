@@ -47,7 +47,6 @@ class UpdateByBrand implements BrandLifecycleEventHandlerInterface
          * @var Service $service
          */
         foreach ($services as $service) {
-
             $brandServiceDto = BrandService::createDto();
             $brandServiceDto
                 ->setServiceId($service->getId())

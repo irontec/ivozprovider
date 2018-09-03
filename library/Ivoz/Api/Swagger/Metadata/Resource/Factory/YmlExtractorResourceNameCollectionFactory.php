@@ -22,7 +22,6 @@ class YmlExtractorResourceNameCollectionFactory implements ResourceNameCollectio
     public function __construct(
         string $sourceFilePath,
         Finder $finder
-
     ) {
         if (!file_exists($sourceFilePath)) {
             throw new \Exception('Directory not found: ' . $sourceFilePath);

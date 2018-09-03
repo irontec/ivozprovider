@@ -40,7 +40,6 @@ class BrandDtoAssembler implements CustomDtoAssemblerInterface
         }
 
         if ($entity->getLogo()->getFileSize()) {
-
             $pathResolver = $this
                 ->storagePathResolver
                 ->getPathResolver('Logo');

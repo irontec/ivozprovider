@@ -55,7 +55,8 @@ trait RoutableTrait
                 if (!$this->{$userGetter}()) {
                     return "";
                 }
-                return sprintf("%s %s",
+                return sprintf(
+                    "%s %s",
                     $this->{$userGetter}()->getName(),
                     $this->{$userGetter}()->getLastname()
                 );
@@ -86,7 +87,8 @@ trait RoutableTrait
                 if (!$this->{$voicemailGetter}()) {
                     return "";
                 }
-                return sprintf("%s %s",
+                return sprintf(
+                    "%s %s",
                     $this->{$voicemailGetter}()->getName(),
                     $this->{$voicemailGetter}()->getLastname()
                 );
@@ -145,7 +147,6 @@ trait RoutableTrait
         ];
 
         foreach ($nullableFields as $type => $fieldNames) {
-
             if ($routeType == $type) {
                 continue;
             }
@@ -166,6 +167,4 @@ trait RoutableTrait
             }
         }
     }
-
 }
-
