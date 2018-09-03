@@ -6,11 +6,11 @@ use ApiPlatform\Core\Api\ResourceClassResolverInterface;
 use ApiPlatform\Core\JsonLd\ContextBuilderInterface;
 use ApiPlatform\Core\Metadata\Resource\Factory\ResourceMetadataFactoryInterface;
 use Ivoz\Api\Entity\Serializer\Normalizer\DateTimeNormalizer;
+use Ivoz\Api\Swagger\Metadata\Property\Factory\PropertyNameCollectionFactory;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Service\Assembler\DtoAssembler;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Ivoz\Api\Swagger\Metadata\Property\Factory\PropertyNameCollectionFactory;
 
 /**
  * Based on ApiPlatform\Core\JsonLd\Serializer\ItemNormalizer
@@ -125,7 +125,7 @@ class EntityNormalizer implements NormalizerInterface
         $resourceMetadata = $this->resourceMetadataFactory->create($resourceClass);
 
         $depth = isset($context['item_operation_name'])
-            ? $resourceMetadata->getItemOperationAttribute($context['item_operation_name'],'depth', 1)
+            ? $resourceMetadata->getItemOperationAttribute($context['item_operation_name'], 'depth', 1)
             : $resourceMetadata->getCollectionOperationAttribute($context['collection_operation_name'], 'depth', 1);
 
         if ($depth > 0) {
@@ -155,13 +155,21 @@ class EntityNormalizer implements NormalizerInterface
      * @param $resourceMetadata
      * @return array
      */
-
-    protected function normalizeDto($dto, array $context, $isSubresource, $depth, $resourceClass, $resourceMetadata): array
-    {
+    protected function normalizeDto(
+        $dto,
+        array $context,
+        $isSubresource,
+        $depth,
+        $resourceClass,
+        $resourceMetadata
+    ): array {
         $normalizationContext = $context['operation_normalization_context'] ?? $context['operation_type'];
+        $forcedAttributes = $context['attributes'] ?? [];
+
         $rawData = $this->filterProperties(
             $dto->normalize($normalizationContext),
-            $resourceClass
+            $resourceClass,
+            $forcedAttributes
         );
 
         foreach ($rawData as $key => $value) {
@@ -198,7 +206,8 @@ class EntityNormalizer implements NormalizerInterface
                 } catch (\Exception $e) {
                     unset($rawData[$key]);
                 }
-            } else if ($value instanceof \DateTimeInterface) {
+
+            } elseif ($value instanceof \DateTimeInterface) {
 
                 $rawData[$key] = $this->dateTimeNormalizer->normalize(
                     $resourceClass,
@@ -211,12 +220,16 @@ class EntityNormalizer implements NormalizerInterface
         return $rawData;
     }
 
-    private function filterProperties(array $data, string $resourceClass)
+    private function filterProperties(array $data, string $resourceClass, $requestedAttributes)
     {
         $mappedProperties = [];
         $propertyNameCollection = $this->propertyNameCollectionFactory->create($resourceClass);
         foreach ($propertyNameCollection as $property) {
             $mappedProperties[] = $property;
+        }
+
+        if (!empty($requestedAttributes)) {
+            $mappedProperties = array_intersect($mappedProperties, $requestedAttributes);
         }
 
         $response = array_filter(

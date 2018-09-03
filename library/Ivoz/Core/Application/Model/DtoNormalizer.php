@@ -58,10 +58,10 @@ trait DtoNormalizer
                         $key,
                         $property
                     ];
-                    $methods[$setter] =  $dataPath;
+                    $methods[$setter] = $dataPath;
                 }
-            } else if (array_key_exists($value, $data)) {
-                $methods['set' . ucfirst($key)] =  [$value];
+            } elseif (array_key_exists($value, $data)) {
+                $methods['set' . ucfirst($key)] = [$value];
             }
         }
 
