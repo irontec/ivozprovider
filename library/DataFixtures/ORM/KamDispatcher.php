@@ -52,5 +52,4 @@ class KamDispatcher extends Fixture implements DependentFixtureInterface
             ProviderApplicationServer::class,
         );
     }
-
 }

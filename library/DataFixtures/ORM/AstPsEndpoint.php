@@ -25,7 +25,7 @@ class AstPsEndpoint extends Fixture implements DependentFixtureInterface
         $item1->setAors("b1c1t1_alice");
         $item1->setCallerid("Alice  <101>");
         $item1->setAllow("alaw");
-        $item1->setDirectMedia(NULL);
+        $item1->setDirectMedia(null);
         $item1->setDirectMediaMethod("invite");
         $item1->setMailboxes("101@company1");
         $item1->setNamedPickupGroup("");
@@ -39,7 +39,7 @@ class AstPsEndpoint extends Fixture implements DependentFixtureInterface
         $item2->setAors("b1c1t2_bob");
         $item2->setCallerid("Bob  <102>");
         $item2->setAllow("alaw");
-        $item2->setDirectMedia(NULL);
+        $item2->setDirectMedia(null);
         $item2->setDirectMediaMethod("invite");
         $item2->setMailboxes("102@company1");
         $item2->setNamedPickupGroup("");

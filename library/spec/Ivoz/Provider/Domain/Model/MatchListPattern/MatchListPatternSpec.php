@@ -17,7 +17,8 @@ class MatchListPatternSpec extends ObjectBehavior
      */
     protected $dto;
 
-    function let() {
+    function let()
+    {
         $this->dto = $dto = new MatchListPatternDto();
         $dto
             ->setType('number');

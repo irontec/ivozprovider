@@ -22,5 +22,4 @@ class KamUsersCdr extends Fixture
     
         $manager->flush();
     }
-
 }

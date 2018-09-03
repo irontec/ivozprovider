@@ -32,7 +32,7 @@ class ProviderTimezone extends Fixture implements DependentFixtureInterface
 
         $item158 = $this->createEntityInstanceWithPublicMethods(Timezone::class);
         $item158->setTz("Europe/London");
-        $item158->setComment(NULL);
+        $item158->setComment(null);
         $item158->setLabel(new Label('en', 'es'));
         $item158->setCountry($this->getReference('_reference_ProviderCountry79'));
         $this->addReference('_reference_ProviderTimezone158', $item158);

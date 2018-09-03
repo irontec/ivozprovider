@@ -105,7 +105,8 @@ class CarrierServerSpec extends ObjectBehavior
             ['carrier' => $anotherCarrier->getWrappedObject()]
         );
 
-        $exception = new \Exception('Unknown Brand');;
+        $exception = new \Exception('Unknown Brand');
+        ;
         $this
             ->shouldThrow($exception)
             ->during('updateFromDto', [$dto]);
@@ -193,4 +194,3 @@ class CarrierServerSpec extends ObjectBehavior
             ->shouldBe(5060);
     }
 }
-

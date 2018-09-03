@@ -12,12 +12,13 @@ class BrandUrlSpec extends ObjectBehavior
 {
     protected $dto;
 
-    function let() {
+    function let()
+    {
 
         $this->dto = $dto = new BrandUrlDto();
 
         $dto->setUrl('https://something.net')
-            ->setUrlType( 'user')
+            ->setUrlType('user')
             ->setLogoFileSize(50)
             ->setLogoMimeType('')
             ->setLogoBaseName('logo.png');

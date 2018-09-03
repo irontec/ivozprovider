@@ -37,5 +37,4 @@ class ProviderLanguage extends Fixture
     
         $manager->flush();
     }
-
 }

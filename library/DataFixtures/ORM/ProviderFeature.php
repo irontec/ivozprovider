@@ -86,5 +86,4 @@ class ProviderFeature extends Fixture
     
         $manager->flush();
     }
-
 }

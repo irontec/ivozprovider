@@ -29,5 +29,4 @@ class ProviderProxyUser extends Fixture
     
         $manager->flush();
     }
-
 }

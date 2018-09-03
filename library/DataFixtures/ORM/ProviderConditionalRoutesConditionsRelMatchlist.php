@@ -44,5 +44,4 @@ class ProviderConditionalRoutesConditionsRelMatchlist extends Fixture implements
             ProviderMatchList::class
         );
     }
-
 }

@@ -21,7 +21,6 @@ class TerminalSpec extends ObjectBehavior
     function let(
         CompanyInterface $company,
         DomainInterface $domain
-
     ) {
         $this->dto = $dto = new TerminalDto();
         $this->company = $company;
@@ -108,5 +107,4 @@ class TerminalSpec extends ObjectBehavior
             ->getDomain()
             ->shouldBe($this->domain);
     }
-
 }
