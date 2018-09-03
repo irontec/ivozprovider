@@ -193,8 +193,6 @@ abstract class TrunksAddressAbstract
             'ddiProviderAddressId' => self::getDdiProviderAddress() ? self::getDdiProviderAddress()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -363,8 +361,6 @@ abstract class TrunksAddressAbstract
     {
         return $this->ddiProviderAddress;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

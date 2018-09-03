@@ -454,8 +454,6 @@ abstract class VoicemailAbstract
             'residentialDeviceId' => self::getResidentialDevice() ? self::getResidentialDevice()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -1460,8 +1458,6 @@ abstract class VoicemailAbstract
     {
         return $this->residentialDevice;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

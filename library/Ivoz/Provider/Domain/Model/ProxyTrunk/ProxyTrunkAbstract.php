@@ -154,8 +154,6 @@ abstract class ProxyTrunkAbstract
             'ip' => self::getIp()
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -214,8 +212,6 @@ abstract class ProxyTrunkAbstract
     {
         return $this->ip;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

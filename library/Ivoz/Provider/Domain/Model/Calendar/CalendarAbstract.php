@@ -154,8 +154,6 @@ abstract class CalendarAbstract
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -209,8 +207,6 @@ abstract class CalendarAbstract
     {
         return $this->company;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

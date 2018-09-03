@@ -127,7 +127,6 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
         if (!is_null($this->relPatternGroups)) {
             $items = $this->getRelPatternGroups();
             $this->relPatternGroups = [];
@@ -138,7 +137,6 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
         if (!is_null($this->lcrRules)) {
             $items = $this->getLcrRules();
             $this->lcrRules = [];

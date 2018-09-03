@@ -117,8 +117,6 @@ trait DomainTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add friend
      *

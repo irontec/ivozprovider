@@ -91,8 +91,6 @@ trait NotificationTemplateTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add content
      *

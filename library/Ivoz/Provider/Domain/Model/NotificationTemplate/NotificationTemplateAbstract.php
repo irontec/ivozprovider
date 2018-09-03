@@ -165,8 +165,6 @@ abstract class NotificationTemplateAbstract
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -255,8 +253,6 @@ abstract class NotificationTemplateAbstract
     {
         return $this->brand;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

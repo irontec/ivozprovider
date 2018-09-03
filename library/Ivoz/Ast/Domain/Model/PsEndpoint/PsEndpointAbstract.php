@@ -327,8 +327,6 @@ abstract class PsEndpointAbstract
             'residentialDeviceId' => self::getResidentialDevice() ? self::getResidentialDevice()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -570,9 +568,9 @@ abstract class PsEndpointAbstract
     {
         if (!is_null($directMediaMethod)) {
             Assertion::choice($directMediaMethod, array (
-            0 => 'update',
-            1 => 'invite',
-            2 => 'reinvite',
+              0 => 'update',
+              1 => 'invite',
+              2 => 'reinvite',
             ), 'directMediaMethodvalue "%s" is not an element of the valid values: %s');
         }
 
@@ -860,8 +858,6 @@ abstract class PsEndpointAbstract
     {
         return $this->residentialDevice;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

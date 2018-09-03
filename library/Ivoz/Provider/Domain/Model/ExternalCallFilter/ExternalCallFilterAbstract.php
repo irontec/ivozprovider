@@ -273,8 +273,6 @@ abstract class ExternalCallFilterAbstract
             'outOfScheduleNumberCountryId' => self::getOutOfScheduleNumberCountry() ? self::getOutOfScheduleNumberCountry()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -318,9 +316,9 @@ abstract class ExternalCallFilterAbstract
         if (!is_null($holidayTargetType)) {
             Assertion::maxLength($holidayTargetType, 25, 'holidayTargetType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
             Assertion::choice($holidayTargetType, array (
-            0 => 'number',
-            1 => 'extension',
-            2 => 'voicemail',
+              0 => 'number',
+              1 => 'extension',
+              2 => 'voicemail',
             ), 'holidayTargetTypevalue "%s" is not an element of the valid values: %s');
         }
 
@@ -381,9 +379,9 @@ abstract class ExternalCallFilterAbstract
         if (!is_null($outOfScheduleTargetType)) {
             Assertion::maxLength($outOfScheduleTargetType, 25, 'outOfScheduleTargetType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
             Assertion::choice($outOfScheduleTargetType, array (
-            0 => 'number',
-            1 => 'extension',
-            2 => 'voicemail',
+              0 => 'number',
+              1 => 'extension',
+              2 => 'voicemail',
             ), 'outOfScheduleTargetTypevalue "%s" is not an element of the valid values: %s');
         }
 
@@ -670,8 +668,6 @@ abstract class ExternalCallFilterAbstract
     {
         return $this->outOfScheduleNumberCountry;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

@@ -210,8 +210,6 @@ abstract class DispatcherAbstract
             'applicationServerId' => self::getApplicationServer() ? self::getApplicationServer()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -405,8 +403,6 @@ abstract class DispatcherAbstract
     {
         return $this->applicationServer;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

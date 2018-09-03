@@ -91,8 +91,6 @@ trait CalendarTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add holidayDate
      *

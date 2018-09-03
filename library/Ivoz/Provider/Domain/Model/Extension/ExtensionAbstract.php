@@ -245,8 +245,6 @@ abstract class ExtensionAbstract
             'numberCountryId' => self::getNumberCountry() ? self::getNumberCountry()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -290,14 +288,14 @@ abstract class ExtensionAbstract
         if (!is_null($routeType)) {
             Assertion::maxLength($routeType, 25, 'routeType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
             Assertion::choice($routeType, array (
-            0 => 'user',
-            1 => 'number',
-            2 => 'ivr',
-            3 => 'huntGroup',
-            4 => 'conferenceRoom',
-            5 => 'friend',
-            6 => 'queue',
-            7 => 'conditional',
+              0 => 'user',
+              1 => 'number',
+              2 => 'ivr',
+              3 => 'huntGroup',
+              4 => 'conferenceRoom',
+              5 => 'friend',
+              6 => 'queue',
+              7 => 'conditional',
             ), 'routeTypevalue "%s" is not an element of the valid values: %s');
         }
 
@@ -565,8 +563,6 @@ abstract class ExtensionAbstract
     {
         return $this->numberCountry;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

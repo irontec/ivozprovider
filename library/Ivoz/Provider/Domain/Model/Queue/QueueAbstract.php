@@ -334,8 +334,6 @@ abstract class QueueAbstract
             'fullNumberCountryId' => self::getFullNumberCountry() ? self::getFullNumberCountry()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -411,9 +409,9 @@ abstract class QueueAbstract
         if (!is_null($timeoutTargetType)) {
             Assertion::maxLength($timeoutTargetType, 25, 'timeoutTargetType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
             Assertion::choice($timeoutTargetType, array (
-            0 => 'number',
-            1 => 'extension',
-            2 => 'voicemail',
+              0 => 'number',
+              1 => 'extension',
+              2 => 'voicemail',
             ), 'timeoutTargetTypevalue "%s" is not an element of the valid values: %s');
         }
 
@@ -505,9 +503,9 @@ abstract class QueueAbstract
         if (!is_null($fullTargetType)) {
             Assertion::maxLength($fullTargetType, 25, 'fullTargetType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
             Assertion::choice($fullTargetType, array (
-            0 => 'number',
-            1 => 'extension',
-            2 => 'voicemail',
+              0 => 'number',
+              1 => 'extension',
+              2 => 'voicemail',
             ), 'fullTargetTypevalue "%s" is not an element of the valid values: %s');
         }
 
@@ -946,8 +944,6 @@ abstract class QueueAbstract
     {
         return $this->fullNumberCountry;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

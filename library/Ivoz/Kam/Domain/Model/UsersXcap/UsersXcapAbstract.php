@@ -224,8 +224,6 @@ abstract class UsersXcapAbstract
             'port' => self::getPort()
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -450,8 +448,6 @@ abstract class UsersXcapAbstract
     {
         return $this->port;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

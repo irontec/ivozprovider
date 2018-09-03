@@ -234,8 +234,6 @@ abstract class UsersPresentityAbstract
             'priority' => self::getPriority()
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -488,8 +486,6 @@ abstract class UsersPresentityAbstract
     {
         return $this->priority;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

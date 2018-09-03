@@ -91,8 +91,6 @@ trait OutgoingRoutingRelCarrierTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add tpRatingProfile
      *

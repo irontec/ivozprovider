@@ -166,7 +166,6 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
         if (!is_null($this->lcrRuleTargets)) {
             $items = $this->getLcrRuleTargets();
             $this->lcrRuleTargets = [];
@@ -177,7 +176,6 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
         if (!is_null($this->relCarriers)) {
             $items = $this->getRelCarriers();
             $this->relCarriers = [];

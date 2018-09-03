@@ -179,8 +179,6 @@ abstract class BalanceMovementAbstract
             'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -326,8 +324,6 @@ abstract class BalanceMovementAbstract
     {
         return $this->carrier;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

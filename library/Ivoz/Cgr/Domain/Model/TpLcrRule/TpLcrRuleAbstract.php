@@ -286,8 +286,6 @@ abstract class TpLcrRuleAbstract
             'outgoingRoutingId' => self::getOutgoingRouting() ? self::getOutgoingRouting()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -687,8 +685,6 @@ abstract class TpLcrRuleAbstract
     {
         return $this->outgoingRouting;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

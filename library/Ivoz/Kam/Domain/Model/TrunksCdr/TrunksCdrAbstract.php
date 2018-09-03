@@ -284,8 +284,6 @@ abstract class TrunksCdrAbstract
             'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -739,8 +737,6 @@ abstract class TrunksCdrAbstract
     {
         return $this->carrier;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

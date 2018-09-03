@@ -191,8 +191,6 @@ abstract class NotificationTemplateContentAbstract
             'languageId' => self::getLanguage() ? self::getLanguage()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -356,8 +354,6 @@ abstract class NotificationTemplateContentAbstract
     {
         return $this->language;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

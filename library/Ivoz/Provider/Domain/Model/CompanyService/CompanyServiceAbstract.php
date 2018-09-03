@@ -163,8 +163,6 @@ abstract class CompanyServiceAbstract
             'serviceId' => self::getService() ? self::getService()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -242,8 +240,6 @@ abstract class CompanyServiceAbstract
     {
         return $this->service;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

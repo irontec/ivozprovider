@@ -192,8 +192,6 @@ abstract class TransformationRuleAbstract
             'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -371,8 +369,6 @@ abstract class TransformationRuleAbstract
     {
         return $this->transformationRuleSet;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

@@ -152,8 +152,6 @@ abstract class ExternalCallFilterRelCalendarAbstract
             'calendarId' => self::getCalendar() ? self::getCalendar()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -203,8 +201,6 @@ abstract class ExternalCallFilterRelCalendarAbstract
     {
         return $this->calendar;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

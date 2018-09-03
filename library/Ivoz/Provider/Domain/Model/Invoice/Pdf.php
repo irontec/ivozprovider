@@ -133,7 +133,5 @@ class Pdf
         return $this->baseName;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }

@@ -255,8 +255,6 @@ abstract class HuntGroupAbstract
             'noAnswerNumberCountryId' => self::getNoAnswerNumberCountry() ? self::getNoAnswerNumberCountry()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -390,9 +388,9 @@ abstract class HuntGroupAbstract
         if (!is_null($noAnswerTargetType)) {
             Assertion::maxLength($noAnswerTargetType, 25, 'noAnswerTargetType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
             Assertion::choice($noAnswerTargetType, array (
-            0 => 'number',
-            1 => 'extension',
-            2 => 'voicemail',
+              0 => 'number',
+              1 => 'extension',
+              2 => 'voicemail',
             ), 'noAnswerTargetTypevalue "%s" is not an element of the valid values: %s');
         }
 
@@ -588,8 +586,6 @@ abstract class HuntGroupAbstract
     {
         return $this->noAnswerNumberCountry;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

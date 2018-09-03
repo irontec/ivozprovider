@@ -218,8 +218,6 @@ abstract class BrandUrlAbstract
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -405,7 +403,6 @@ abstract class BrandUrlAbstract
     public function setLogo(Logo $logo)
     {
         $this->logo = $logo;
-
         return $this;
     }
 
@@ -418,6 +415,5 @@ abstract class BrandUrlAbstract
     {
         return $this->logo;
     }
-
     // @codeCoverageIgnoreEnd
 }

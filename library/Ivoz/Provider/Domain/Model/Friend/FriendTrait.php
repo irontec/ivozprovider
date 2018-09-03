@@ -104,8 +104,6 @@ trait FriendTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add psEndpoint
      *

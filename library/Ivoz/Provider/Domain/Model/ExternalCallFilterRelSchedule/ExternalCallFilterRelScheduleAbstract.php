@@ -152,8 +152,6 @@ abstract class ExternalCallFilterRelScheduleAbstract
             'scheduleId' => self::getSchedule() ? self::getSchedule()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -203,8 +201,6 @@ abstract class ExternalCallFilterRelScheduleAbstract
     {
         return $this->schedule;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

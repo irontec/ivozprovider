@@ -152,8 +152,6 @@ abstract class IvrExcludedExtensionAbstract
             'extensionId' => self::getExtension() ? self::getExtension()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -203,8 +201,6 @@ abstract class IvrExcludedExtensionAbstract
     {
         return $this->extension;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

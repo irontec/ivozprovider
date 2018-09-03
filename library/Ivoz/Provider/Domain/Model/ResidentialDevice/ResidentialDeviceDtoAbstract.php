@@ -222,7 +222,6 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
                 );
             }
         }
-
         if (!is_null($this->ddis)) {
             $items = $this->getDdis();
             $this->ddis = [];

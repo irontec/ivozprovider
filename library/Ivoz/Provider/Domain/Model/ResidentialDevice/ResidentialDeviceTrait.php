@@ -104,8 +104,6 @@ trait ResidentialDeviceTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add psEndpoint
      *

@@ -91,7 +91,5 @@ class Description
         return $this->es;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }

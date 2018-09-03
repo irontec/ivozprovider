@@ -91,8 +91,6 @@ trait DestinationTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add destinationRate
      *

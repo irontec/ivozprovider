@@ -237,7 +237,6 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
         if (!is_null($this->services)) {
             $items = $this->getServices();
             $this->services = [];
@@ -248,7 +247,6 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
         if (!is_null($this->urls)) {
             $items = $this->getUrls();
             $this->urls = [];
@@ -259,7 +257,6 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
         if (!is_null($this->relFeatures)) {
             $items = $this->getRelFeatures();
             $this->relFeatures = [];
@@ -270,7 +267,6 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
         if (!is_null($this->residentialDevices)) {
             $items = $this->getResidentialDevices();
             $this->residentialDevices = [];
@@ -281,7 +277,6 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
         if (!is_null($this->musicsOnHold)) {
             $items = $this->getMusicsOnHold();
             $this->musicsOnHold = [];
@@ -292,7 +287,6 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
         if (!is_null($this->matchLists)) {
             $items = $this->getMatchLists();
             $this->matchLists = [];
@@ -303,7 +297,6 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
         if (!is_null($this->outgoingRoutings)) {
             $items = $this->getOutgoingRoutings();
             $this->outgoingRoutings = [];

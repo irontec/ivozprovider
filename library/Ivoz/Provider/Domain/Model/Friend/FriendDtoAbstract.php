@@ -229,7 +229,6 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
         if (!is_null($this->patterns)) {
             $items = $this->getPatterns();
             $this->patterns = [];

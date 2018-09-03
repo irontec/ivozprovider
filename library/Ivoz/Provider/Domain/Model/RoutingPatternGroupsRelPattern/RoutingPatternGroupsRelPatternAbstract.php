@@ -152,8 +152,6 @@ abstract class RoutingPatternGroupsRelPatternAbstract
             'routingPatternGroupId' => self::getRoutingPatternGroup() ? self::getRoutingPatternGroup()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -203,8 +201,6 @@ abstract class RoutingPatternGroupsRelPatternAbstract
     {
         return $this->routingPatternGroup;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

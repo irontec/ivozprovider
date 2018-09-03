@@ -211,8 +211,6 @@ abstract class TrustedAbstract
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -440,8 +438,6 @@ abstract class TrustedAbstract
     {
         return $this->company;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

@@ -306,8 +306,6 @@ abstract class TrunksUacregAbstract
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -721,8 +719,6 @@ abstract class TrunksUacregAbstract
     {
         return $this->brand;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

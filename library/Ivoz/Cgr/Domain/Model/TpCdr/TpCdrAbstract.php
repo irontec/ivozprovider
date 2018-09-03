@@ -395,8 +395,6 @@ abstract class TpCdrAbstract
             'deleted_at' => self::getDeletedAt()
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -1058,8 +1056,6 @@ abstract class TpCdrAbstract
     {
         return $this->deletedAt;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

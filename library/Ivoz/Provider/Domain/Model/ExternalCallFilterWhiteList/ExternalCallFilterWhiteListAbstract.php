@@ -152,8 +152,6 @@ abstract class ExternalCallFilterWhiteListAbstract
             'matchlistId' => self::getMatchlist() ? self::getMatchlist()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -203,8 +201,6 @@ abstract class ExternalCallFilterWhiteListAbstract
     {
         return $this->matchlist;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

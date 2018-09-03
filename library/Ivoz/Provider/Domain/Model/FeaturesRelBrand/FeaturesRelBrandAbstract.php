@@ -152,8 +152,6 @@ abstract class FeaturesRelBrandAbstract
             'featureId' => self::getFeature() ? self::getFeature()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -203,8 +201,6 @@ abstract class FeaturesRelBrandAbstract
     {
         return $this->feature;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

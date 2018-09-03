@@ -161,8 +161,6 @@ abstract class QueueMemberAbstract
             'userId' => self::getUser() ? self::getUser()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -243,8 +241,6 @@ abstract class QueueMemberAbstract
     {
         return $this->user;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

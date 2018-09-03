@@ -298,8 +298,6 @@ abstract class BillableCallAbstract
             'trunksCdrId' => self::getTrunksCdr() ? self::getTrunksCdr()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -796,8 +794,6 @@ abstract class BillableCallAbstract
     {
         return $this->trunksCdr;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

@@ -104,8 +104,6 @@ trait DdiProviderTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add ddiProviderRegistration
      *

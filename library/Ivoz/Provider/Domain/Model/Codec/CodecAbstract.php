@@ -165,8 +165,6 @@ abstract class CodecAbstract
             'name' => self::getName()
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -256,8 +254,6 @@ abstract class CodecAbstract
     {
         return $this->name;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

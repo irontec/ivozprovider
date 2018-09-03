@@ -257,8 +257,6 @@ abstract class TrunksLcrGatewayAbstract
             'carrierServerId' => self::getCarrierServer() ? self::getCarrierServer()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -643,8 +641,6 @@ abstract class TrunksLcrGatewayAbstract
     {
         return $this->carrierServer;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

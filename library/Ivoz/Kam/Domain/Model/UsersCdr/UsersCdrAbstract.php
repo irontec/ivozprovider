@@ -302,8 +302,6 @@ abstract class UsersCdrAbstract
             'retailAccountId' => self::getRetailAccount() ? self::getRetailAccount()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -800,8 +798,6 @@ abstract class UsersCdrAbstract
     {
         return $this->retailAccount;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

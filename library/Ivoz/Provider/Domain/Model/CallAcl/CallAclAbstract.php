@@ -165,8 +165,6 @@ abstract class CallAclAbstract
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -252,8 +250,6 @@ abstract class CallAclAbstract
     {
         return $this->company;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

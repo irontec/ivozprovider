@@ -444,8 +444,6 @@ abstract class TpDerivedChargerAbstract
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -1204,8 +1202,6 @@ abstract class TpDerivedChargerAbstract
     {
         return $this->brand;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

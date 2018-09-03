@@ -239,8 +239,6 @@ abstract class InvoiceSchedulerAbstract
             'numberSequenceId' => self::getNumberSequence() ? self::getNumberSequence()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -552,8 +550,6 @@ abstract class InvoiceSchedulerAbstract
     {
         return $this->numberSequence;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

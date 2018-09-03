@@ -181,8 +181,6 @@ abstract class RatingProfileAbstract
             'routingTagId' => self::getRoutingTag() ? self::getRoutingTag()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -311,8 +309,6 @@ abstract class RatingProfileAbstract
     {
         return $this->routingTag;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

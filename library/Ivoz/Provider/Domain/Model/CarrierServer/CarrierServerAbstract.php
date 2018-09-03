@@ -285,8 +285,6 @@ abstract class CarrierServerAbstract
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -773,8 +771,6 @@ abstract class CarrierServerAbstract
     {
         return $this->brand;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

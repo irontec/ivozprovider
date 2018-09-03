@@ -164,8 +164,6 @@ abstract class TerminalManufacturerAbstract
             'description' => self::getDescription()
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -251,8 +249,6 @@ abstract class TerminalManufacturerAbstract
     {
         return $this->description;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

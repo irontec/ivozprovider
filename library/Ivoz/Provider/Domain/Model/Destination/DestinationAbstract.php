@@ -181,8 +181,6 @@ abstract class DestinationAbstract
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -271,7 +269,6 @@ abstract class DestinationAbstract
     public function setName(Name $name)
     {
         $this->name = $name;
-
         return $this;
     }
 
@@ -284,6 +281,5 @@ abstract class DestinationAbstract
     {
         return $this->name;
     }
-
     // @codeCoverageIgnoreEnd
 }

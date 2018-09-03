@@ -91,8 +91,6 @@ trait HuntGroupTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add huntGroupsRelUser
      *

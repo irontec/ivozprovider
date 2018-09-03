@@ -113,7 +113,6 @@ abstract class DdiProviderDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
         if (!is_null($this->ddiProviderAddresses)) {
             $items = $this->getDdiProviderAddresses();
             $this->ddiProviderAddresses = [];

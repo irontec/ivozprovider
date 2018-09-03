@@ -91,8 +91,6 @@ trait OutgoingDdiRuleTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add pattern
      *

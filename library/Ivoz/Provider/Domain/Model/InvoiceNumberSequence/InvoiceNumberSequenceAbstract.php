@@ -219,8 +219,6 @@ abstract class InvoiceNumberSequenceAbstract
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -445,8 +443,6 @@ abstract class InvoiceNumberSequenceAbstract
     {
         return $this->brand;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

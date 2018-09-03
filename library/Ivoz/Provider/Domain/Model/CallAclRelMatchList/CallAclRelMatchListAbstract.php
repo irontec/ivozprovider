@@ -174,8 +174,6 @@ abstract class CallAclRelMatchListAbstract
             'matchListId' => self::getMatchList() ? self::getMatchList()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -285,8 +283,6 @@ abstract class CallAclRelMatchListAbstract
     {
         return $this->matchList;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

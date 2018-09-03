@@ -161,8 +161,6 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
             'invoiceSchedulerId' => self::getInvoiceScheduler() ? self::getInvoiceScheduler()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -244,8 +242,6 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     {
         return $this->invoiceScheduler;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

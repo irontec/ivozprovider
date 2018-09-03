@@ -143,8 +143,6 @@ trait CarrierTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add outgoingRouting
      *

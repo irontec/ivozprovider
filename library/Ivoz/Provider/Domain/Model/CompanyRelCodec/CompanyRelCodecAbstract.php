@@ -152,8 +152,6 @@ abstract class CompanyRelCodecAbstract
             'codecId' => self::getCodec() ? self::getCodec()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -203,8 +201,6 @@ abstract class CompanyRelCodecAbstract
     {
         return $this->codec;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

@@ -156,7 +156,6 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
         if (!is_null($this->users)) {
             $items = $this->getUsers();
             $this->users = [];

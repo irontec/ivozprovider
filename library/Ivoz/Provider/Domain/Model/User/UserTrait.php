@@ -117,8 +117,6 @@ trait UserTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add pickUpRelUser
      *

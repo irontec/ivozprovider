@@ -130,8 +130,6 @@ trait ConditionalRoutesConditionTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add relMatchlist
      *

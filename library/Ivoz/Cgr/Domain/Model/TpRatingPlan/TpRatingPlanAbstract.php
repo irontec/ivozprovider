@@ -313,8 +313,6 @@ abstract class TpRatingPlanAbstract
             'destinationRateGroupId' => self::getDestinationRateGroup() ? self::getDestinationRateGroup()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -504,8 +502,8 @@ abstract class TpRatingPlanAbstract
         if (!is_null($timingType)) {
             Assertion::maxLength($timingType, 10, 'timingType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
             Assertion::choice($timingType, array (
-            0 => 'always',
-            1 => 'custom',
+              0 => 'always',
+              1 => 'custom',
             ), 'timingTypevalue "%s" is not an element of the valid values: %s');
         }
 
@@ -825,8 +823,6 @@ abstract class TpRatingPlanAbstract
     {
         return $this->destinationRateGroup;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

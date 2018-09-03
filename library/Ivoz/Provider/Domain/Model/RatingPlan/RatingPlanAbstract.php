@@ -188,8 +188,6 @@ abstract class RatingPlanAbstract
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -226,7 +224,6 @@ abstract class RatingPlanAbstract
     public function setName(Name $name)
     {
         $this->name = $name;
-
         return $this;
     }
 
@@ -250,7 +247,6 @@ abstract class RatingPlanAbstract
     public function setDescription(Description $description)
     {
         $this->description = $description;
-
         return $this;
     }
 
@@ -263,6 +259,5 @@ abstract class RatingPlanAbstract
     {
         return $this->description;
     }
-
     // @codeCoverageIgnoreEnd
 }

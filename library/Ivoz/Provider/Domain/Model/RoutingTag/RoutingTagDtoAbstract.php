@@ -98,7 +98,6 @@ abstract class RoutingTagDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
         if (!is_null($this->relCompanies)) {
             $items = $this->getRelCompanies();
             $this->relCompanies = [];

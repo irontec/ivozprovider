@@ -91,8 +91,6 @@ trait TransformationRuleSetTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add rule
      *

@@ -91,7 +91,5 @@ class Label
         return $this->es;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }

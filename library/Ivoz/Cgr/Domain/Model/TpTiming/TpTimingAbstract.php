@@ -224,8 +224,6 @@ abstract class TpTimingAbstract
             'created_at' => self::getCreatedAt()
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -455,8 +453,6 @@ abstract class TpTimingAbstract
     {
         return $this->createdAt;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

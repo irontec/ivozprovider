@@ -174,8 +174,6 @@ abstract class OutgoingDdiRuleAbstract
             'forcedDdiId' => self::getForcedDdi() ? self::getForcedDdi()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -285,8 +283,6 @@ abstract class OutgoingDdiRuleAbstract
     {
         return $this->forcedDdi;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

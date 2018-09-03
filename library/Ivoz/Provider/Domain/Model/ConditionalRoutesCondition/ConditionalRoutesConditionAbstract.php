@@ -263,8 +263,6 @@ abstract class ConditionalRoutesConditionAbstract
             'numberCountryId' => self::getNumberCountry() ? self::getNumberCountry()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -308,15 +306,15 @@ abstract class ConditionalRoutesConditionAbstract
         if (!is_null($routeType)) {
             Assertion::maxLength($routeType, 25, 'routeType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
             Assertion::choice($routeType, array (
-            0 => 'user',
-            1 => 'number',
-            2 => 'ivr',
-            3 => 'huntGroup',
-            4 => 'voicemail',
-            5 => 'friend',
-            6 => 'queue',
-            7 => 'conferenceRoom',
-            8 => 'extension',
+              0 => 'user',
+              1 => 'number',
+              2 => 'ivr',
+              3 => 'huntGroup',
+              4 => 'voicemail',
+              5 => 'friend',
+              6 => 'queue',
+              7 => 'conferenceRoom',
+              8 => 'extension',
             ), 'routeTypevalue "%s" is not an element of the valid values: %s');
         }
 
@@ -632,8 +630,6 @@ abstract class ConditionalRoutesConditionAbstract
     {
         return $this->numberCountry;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

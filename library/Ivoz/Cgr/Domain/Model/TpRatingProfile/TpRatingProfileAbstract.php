@@ -269,8 +269,6 @@ abstract class TpRatingProfileAbstract
             'outgoingRoutingRelCarrierId' => self::getOutgoingRoutingRelCarrier() ? self::getOutgoingRoutingRelCarrier()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -639,8 +637,6 @@ abstract class TpRatingProfileAbstract
     {
         return $this->outgoingRoutingRelCarrier;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

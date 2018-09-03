@@ -98,7 +98,6 @@ abstract class RoutingPatternGroupDtoAbstract implements DataTransferObjectInter
                 );
             }
         }
-
         if (!is_null($this->outgoingRoutings)) {
             $items = $this->getOutgoingRoutings();
             $this->outgoingRoutings = [];

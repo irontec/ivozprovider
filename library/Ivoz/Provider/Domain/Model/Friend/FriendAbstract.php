@@ -356,8 +356,6 @@ abstract class FriendAbstract
             'languageId' => self::getLanguage() ? self::getLanguage()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -946,8 +944,6 @@ abstract class FriendAbstract
     {
         return $this->language;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

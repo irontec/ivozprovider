@@ -241,8 +241,6 @@ abstract class RecordingAbstract
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -486,7 +484,6 @@ abstract class RecordingAbstract
     public function setRecordedFile(RecordedFile $recordedFile)
     {
         $this->recordedFile = $recordedFile;
-
         return $this;
     }
 
@@ -499,6 +496,5 @@ abstract class RecordingAbstract
     {
         return $this->recordedFile;
     }
-
     // @codeCoverageIgnoreEnd
 }

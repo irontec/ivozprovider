@@ -122,8 +122,6 @@ trait OutgoingRoutingTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Set tpLcrRule
      *

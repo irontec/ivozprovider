@@ -247,8 +247,6 @@ abstract class TerminalAbstract
             'terminalModelId' => self::getTerminalModel() ? self::getTerminalModel()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -557,8 +555,6 @@ abstract class TerminalAbstract
     {
         return $this->terminalModel;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

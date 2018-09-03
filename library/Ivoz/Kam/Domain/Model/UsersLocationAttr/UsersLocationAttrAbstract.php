@@ -211,8 +211,6 @@ abstract class UsersLocationAttrAbstract
             'last_modified' => self::getLastModified()
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -414,8 +412,6 @@ abstract class UsersLocationAttrAbstract
     {
         return $this->lastModified;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

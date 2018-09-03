@@ -193,8 +193,6 @@ abstract class TrunksLcrRuleTargetAbstract
             'outgoingRoutingId' => self::getOutgoingRouting() ? self::getOutgoingRouting()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -355,8 +353,6 @@ abstract class TrunksLcrRuleTargetAbstract
     {
         return $this->outgoingRouting;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

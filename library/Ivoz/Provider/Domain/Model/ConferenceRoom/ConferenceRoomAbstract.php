@@ -183,8 +183,6 @@ abstract class ConferenceRoomAbstract
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -324,8 +322,6 @@ abstract class ConferenceRoomAbstract
     {
         return $this->company;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

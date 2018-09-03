@@ -184,8 +184,6 @@ abstract class TpDestinationAbstract
             'destinationId' => self::getDestination() ? self::getDestination()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -327,8 +325,6 @@ abstract class TpDestinationAbstract
     {
         return $this->destination;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

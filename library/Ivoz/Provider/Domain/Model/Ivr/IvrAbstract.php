@@ -316,8 +316,6 @@ abstract class IvrAbstract
             'errorNumberCountryId' => self::getErrorNumberCountry() ? self::getErrorNumberCountry()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -447,9 +445,9 @@ abstract class IvrAbstract
         if (!is_null($noInputRouteType)) {
             Assertion::maxLength($noInputRouteType, 25, 'noInputRouteType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
             Assertion::choice($noInputRouteType, array (
-            0 => 'number',
-            1 => 'extension',
-            2 => 'voicemail',
+              0 => 'number',
+              1 => 'extension',
+              2 => 'voicemail',
             ), 'noInputRouteTypevalue "%s" is not an element of the valid values: %s');
         }
 
@@ -510,9 +508,9 @@ abstract class IvrAbstract
         if (!is_null($errorRouteType)) {
             Assertion::maxLength($errorRouteType, 25, 'errorRouteType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
             Assertion::choice($errorRouteType, array (
-            0 => 'number',
-            1 => 'extension',
-            2 => 'voicemail',
+              0 => 'number',
+              1 => 'extension',
+              2 => 'voicemail',
             ), 'errorRouteTypevalue "%s" is not an element of the valid values: %s');
         }
 
@@ -823,8 +821,6 @@ abstract class IvrAbstract
     {
         return $this->errorNumberCountry;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

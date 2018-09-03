@@ -130,8 +130,6 @@ trait ExternalCallFilterTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add calendar
      *

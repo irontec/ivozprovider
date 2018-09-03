@@ -133,7 +133,5 @@ class OriginalFile
         return $this->baseName;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }

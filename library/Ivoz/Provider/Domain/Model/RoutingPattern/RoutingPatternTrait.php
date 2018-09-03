@@ -117,8 +117,6 @@ trait RoutingPatternTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add outgoingRouting
      *

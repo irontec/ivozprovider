@@ -91,8 +91,6 @@ trait InvoiceTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add relFixedCost
      *

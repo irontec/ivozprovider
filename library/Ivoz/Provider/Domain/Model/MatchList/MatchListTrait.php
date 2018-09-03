@@ -91,8 +91,6 @@ trait MatchListTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add pattern
      *

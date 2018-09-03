@@ -219,8 +219,6 @@ abstract class IvrEntryAbstract
             'numberCountryId' => self::getNumberCountry() ? self::getNumberCountry()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -457,8 +455,6 @@ abstract class IvrEntryAbstract
     {
         return $this->numberCountry;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

@@ -193,8 +193,6 @@ abstract class UsersHtableAbstract
             'expires' => self::getExpires()
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -336,8 +334,6 @@ abstract class UsersHtableAbstract
     {
         return $this->expires;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

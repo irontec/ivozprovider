@@ -197,8 +197,6 @@ abstract class ChangelogAbstract
             'commandId' => self::getCommand() ? self::getCommand()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -367,8 +365,6 @@ abstract class ChangelogAbstract
     {
         return $this->command;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

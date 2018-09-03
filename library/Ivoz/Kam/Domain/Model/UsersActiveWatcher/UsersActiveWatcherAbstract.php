@@ -432,8 +432,6 @@ abstract class UsersActiveWatcherAbstract
             'user_agent' => self::getUserAgent()
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -1166,8 +1164,6 @@ abstract class UsersActiveWatcherAbstract
     {
         return $this->userAgent;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

@@ -152,8 +152,6 @@ abstract class ConditionalRoutesConditionsRelCalendarAbstract
             'calendarId' => self::getCalendar() ? self::getCalendar()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -203,8 +201,6 @@ abstract class ConditionalRoutesConditionsRelCalendarAbstract
     {
         return $this->calendar;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

@@ -193,8 +193,6 @@ abstract class TrunksHtableAbstract
             'expires' => self::getExpires()
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -336,8 +334,6 @@ abstract class TrunksHtableAbstract
     {
         return $this->expires;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

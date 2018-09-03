@@ -161,8 +161,6 @@ abstract class FixedCostsRelInvoiceAbstract
             'invoiceId' => self::getInvoice() ? self::getInvoice()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -244,8 +242,6 @@ abstract class FixedCostsRelInvoiceAbstract
     {
         return $this->invoice;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

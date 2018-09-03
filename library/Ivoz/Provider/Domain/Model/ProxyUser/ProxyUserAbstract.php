@@ -152,8 +152,6 @@ abstract class ProxyUserAbstract
             'ip' => self::getIp()
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -213,8 +211,6 @@ abstract class ProxyUserAbstract
     {
         return $this->ip;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

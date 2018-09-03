@@ -91,8 +91,6 @@ trait PickUpGroupTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add relUser
      *

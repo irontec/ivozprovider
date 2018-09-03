@@ -229,8 +229,6 @@ abstract class TransformationRuleSetAbstract
             'countryId' => self::getCountry() ? self::getCountry()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -468,7 +466,6 @@ abstract class TransformationRuleSetAbstract
     public function setName(Name $name)
     {
         $this->name = $name;
-
         return $this;
     }
 
@@ -481,6 +478,5 @@ abstract class TransformationRuleSetAbstract
     {
         return $this->name;
     }
-
     // @codeCoverageIgnoreEnd
 }

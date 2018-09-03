@@ -370,8 +370,6 @@ abstract class UsersLocationAbstract
             'partition' => self::getPartition()
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -1004,8 +1002,6 @@ abstract class UsersLocationAbstract
     {
         return $this->partition;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

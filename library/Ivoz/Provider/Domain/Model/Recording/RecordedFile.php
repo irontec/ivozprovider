@@ -133,7 +133,5 @@ class RecordedFile
         return $this->baseName;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }

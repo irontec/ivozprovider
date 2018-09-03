@@ -244,8 +244,6 @@ abstract class TpDestinationRateAbstract
             'destinationRateId' => self::getDestinationRate() ? self::getDestinationRate()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -530,8 +528,6 @@ abstract class TpDestinationRateAbstract
     {
         return $this->destinationRate;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

@@ -458,8 +458,6 @@ abstract class TpCdrStatAbstract
             'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -1244,8 +1242,6 @@ abstract class TpCdrStatAbstract
     {
         return $this->carrier;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

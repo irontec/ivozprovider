@@ -197,8 +197,6 @@ abstract class CommandlogAbstract
             'microtime' => self::getMicrotime()
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -371,8 +369,6 @@ abstract class CommandlogAbstract
     {
         return $this->microtime;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

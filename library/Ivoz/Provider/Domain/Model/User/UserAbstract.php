@@ -393,8 +393,6 @@ abstract class UserAbstract
             'voicemailLocutionId' => self::getVoicemailLocution() ? self::getVoicemailLocution()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -1086,8 +1084,6 @@ abstract class UserAbstract
     {
         return $this->voicemailLocution;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

@@ -182,8 +182,6 @@ abstract class DdiProviderAbstract
             'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -318,8 +316,6 @@ abstract class DdiProviderAbstract
     {
         return $this->transformationRuleSet;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

@@ -163,8 +163,6 @@ abstract class RoutingPatternGroupAbstract
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -247,8 +245,6 @@ abstract class RoutingPatternGroupAbstract
     {
         return $this->brand;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

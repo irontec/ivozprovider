@@ -104,8 +104,6 @@ trait IvrTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add entry
      *

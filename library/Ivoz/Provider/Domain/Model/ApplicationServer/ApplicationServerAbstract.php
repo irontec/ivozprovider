@@ -154,8 +154,6 @@ abstract class ApplicationServerAbstract
             'name' => self::getName()
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -214,8 +212,6 @@ abstract class ApplicationServerAbstract
     {
         return $this->name;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

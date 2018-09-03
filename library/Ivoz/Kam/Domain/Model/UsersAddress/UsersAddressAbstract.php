@@ -203,8 +203,6 @@ abstract class UsersAddressAbstract
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -401,8 +399,6 @@ abstract class UsersAddressAbstract
     {
         return $this->company;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

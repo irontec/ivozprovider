@@ -173,8 +173,6 @@ abstract class HolidayDateAbstract
             'locutionId' => self::getLocution() ? self::getLocution()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -279,8 +277,6 @@ abstract class HolidayDateAbstract
     {
         return $this->locution;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

@@ -214,8 +214,6 @@ abstract class UsersWatcherAbstract
             'inserted_time' => self::getInsertedTime()
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -414,8 +412,6 @@ abstract class UsersWatcherAbstract
     {
         return $this->insertedTime;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

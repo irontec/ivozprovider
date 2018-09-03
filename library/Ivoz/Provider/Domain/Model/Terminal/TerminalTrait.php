@@ -104,8 +104,6 @@ trait TerminalTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add astPsEndpoint
      *

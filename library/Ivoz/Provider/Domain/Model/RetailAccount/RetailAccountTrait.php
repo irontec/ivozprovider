@@ -91,8 +91,6 @@ trait RetailAccountTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add ddi
      *

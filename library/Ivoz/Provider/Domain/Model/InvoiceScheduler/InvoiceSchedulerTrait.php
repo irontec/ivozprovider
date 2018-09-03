@@ -91,8 +91,6 @@ trait InvoiceSchedulerTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add relFixedCost
      *

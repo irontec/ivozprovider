@@ -345,8 +345,6 @@ abstract class ResidentialDeviceAbstract
             'languageId' => self::getLanguage() ? self::getLanguage()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -907,8 +905,6 @@ abstract class ResidentialDeviceAbstract
     {
         return $this->language;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

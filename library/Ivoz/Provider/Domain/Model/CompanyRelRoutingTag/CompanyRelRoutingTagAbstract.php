@@ -152,8 +152,6 @@ abstract class CompanyRelRoutingTagAbstract
             'routingTagId' => self::getRoutingTag() ? self::getRoutingTag()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -203,8 +201,6 @@ abstract class CompanyRelRoutingTagAbstract
     {
         return $this->routingTag;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

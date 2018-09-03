@@ -166,8 +166,6 @@ abstract class DdiProviderAddressAbstract
             'ddiProviderId' => self::getDdiProvider() ? self::getDdiProvider()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -275,8 +273,6 @@ abstract class DdiProviderAddressAbstract
     {
         return $this->ddiProvider;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

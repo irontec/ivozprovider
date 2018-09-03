@@ -172,7 +172,5 @@ class File
         return $this->importerArguments;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }

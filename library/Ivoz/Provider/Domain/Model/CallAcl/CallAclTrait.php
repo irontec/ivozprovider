@@ -91,8 +91,6 @@ trait CallAclTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add relMatchList
      *

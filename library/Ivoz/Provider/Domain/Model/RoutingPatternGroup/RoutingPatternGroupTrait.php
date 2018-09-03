@@ -104,8 +104,6 @@ trait RoutingPatternGroupTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add relPattern
      *

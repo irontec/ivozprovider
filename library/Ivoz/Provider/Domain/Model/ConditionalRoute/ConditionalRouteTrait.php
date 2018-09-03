@@ -91,8 +91,6 @@ trait ConditionalRouteTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add condition
      *

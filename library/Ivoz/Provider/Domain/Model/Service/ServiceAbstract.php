@@ -213,8 +213,6 @@ abstract class ServiceAbstract
             'descriptionEs' => self::getDescription()->getEs()
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -311,7 +309,6 @@ abstract class ServiceAbstract
     public function setName(Name $name)
     {
         $this->name = $name;
-
         return $this;
     }
 
@@ -335,7 +332,6 @@ abstract class ServiceAbstract
     public function setDescription(Description $description)
     {
         $this->description = $description;
-
         return $this;
     }
 
@@ -348,6 +344,5 @@ abstract class ServiceAbstract
     {
         return $this->description;
     }
-
     // @codeCoverageIgnoreEnd
 }

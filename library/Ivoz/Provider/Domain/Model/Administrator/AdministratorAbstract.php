@@ -221,8 +221,6 @@ abstract class AdministratorAbstract
             'timezoneId' => self::getTimezone() ? self::getTimezone()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -466,8 +464,6 @@ abstract class AdministratorAbstract
     {
         return $this->timezone;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

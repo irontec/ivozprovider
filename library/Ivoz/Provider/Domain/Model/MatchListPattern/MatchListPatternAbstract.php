@@ -191,8 +191,6 @@ abstract class MatchListPatternAbstract
             'numberCountryId' => self::getNumberCountry() ? self::getNumberCountry()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -361,8 +359,6 @@ abstract class MatchListPatternAbstract
     {
         return $this->numberCountry;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

@@ -340,8 +340,6 @@ abstract class UsersPuaAbstract
             'extra_headers' => self::getExtraHeaders()
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -849,8 +847,6 @@ abstract class UsersPuaAbstract
     {
         return $this->extraHeaders;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

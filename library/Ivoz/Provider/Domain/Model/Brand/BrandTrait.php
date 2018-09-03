@@ -182,8 +182,6 @@ trait BrandTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add company
      *

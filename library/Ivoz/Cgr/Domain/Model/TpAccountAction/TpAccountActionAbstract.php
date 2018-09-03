@@ -252,8 +252,6 @@ abstract class TpAccountActionAbstract
             'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -560,8 +558,6 @@ abstract class TpAccountActionAbstract
     {
         return $this->carrier;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

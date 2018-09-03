@@ -164,8 +164,6 @@ abstract class FriendsPatternAbstract
             'friendId' => self::getFriend() ? self::getFriend()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -247,8 +245,6 @@ abstract class FriendsPatternAbstract
     {
         return $this->friend;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

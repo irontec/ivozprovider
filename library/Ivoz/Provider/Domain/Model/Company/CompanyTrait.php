@@ -221,8 +221,6 @@ trait CompanyTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add extension
      *

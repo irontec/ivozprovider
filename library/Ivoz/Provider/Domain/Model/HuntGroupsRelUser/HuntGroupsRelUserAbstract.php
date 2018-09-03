@@ -170,8 +170,6 @@ abstract class HuntGroupsRelUserAbstract
             'userId' => self::getUser() ? self::getUser()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -283,8 +281,6 @@ abstract class HuntGroupsRelUserAbstract
     {
         return $this->user;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

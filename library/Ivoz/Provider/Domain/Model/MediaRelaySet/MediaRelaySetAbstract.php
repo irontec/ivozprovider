@@ -154,8 +154,6 @@ abstract class MediaRelaySetAbstract
             'description' => self::getDescription()
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -214,8 +212,6 @@ abstract class MediaRelaySetAbstract
     {
         return $this->description;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

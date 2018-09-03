@@ -188,8 +188,6 @@ abstract class BalanceNotificationAbstract
             'notificationTemplateId' => self::getNotificationTemplate() ? self::getNotificationTemplate()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -356,8 +354,6 @@ abstract class BalanceNotificationAbstract
     {
         return $this->notificationTemplate;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

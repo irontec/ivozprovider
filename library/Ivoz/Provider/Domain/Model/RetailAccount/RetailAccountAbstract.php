@@ -262,8 +262,6 @@ abstract class RetailAccountAbstract
             'outgoingDdiId' => self::getOutgoingDdi() ? self::getOutgoingDdi()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -624,8 +622,6 @@ abstract class RetailAccountAbstract
     {
         return $this->outgoingDdi;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

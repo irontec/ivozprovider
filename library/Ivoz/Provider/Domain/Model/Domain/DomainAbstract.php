@@ -164,8 +164,6 @@ abstract class DomainAbstract
             'description' => self::getDescription()
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -251,8 +249,6 @@ abstract class DomainAbstract
     {
         return $this->description;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

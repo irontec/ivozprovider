@@ -239,8 +239,6 @@ abstract class QueueAbstract
             'queueId' => self::getQueue() ? self::getQueue()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -560,8 +558,6 @@ abstract class QueueAbstract
     {
         return $this->queue;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

@@ -450,8 +450,6 @@ abstract class CompanyAbstract
             'invoiceNotificationTemplateId' => self::getInvoiceNotificationTemplate() ? self::getInvoiceNotificationTemplate()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -1329,8 +1327,6 @@ abstract class CompanyAbstract
     {
         return $this->invoiceNotificationTemplate;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

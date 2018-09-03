@@ -279,8 +279,6 @@ abstract class InvoiceAbstract
             'schedulerId' => self::getScheduler() ? self::getScheduler()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -485,10 +483,10 @@ abstract class InvoiceAbstract
         if (!is_null($status)) {
             Assertion::maxLength($status, 25, 'status value "%s" is too long, it should have no more than %d characters, but has %d characters.');
             Assertion::choice($status, array (
-            0 => 'waiting',
-            1 => 'processing',
-            2 => 'created',
-            3 => 'error',
+              0 => 'waiting',
+              1 => 'processing',
+              2 => 'created',
+              3 => 'error',
             ), 'statusvalue "%s" is not an element of the valid values: %s');
         }
 
@@ -666,7 +664,6 @@ abstract class InvoiceAbstract
     public function setPdf(Pdf $pdf)
     {
         $this->pdf = $pdf;
-
         return $this;
     }
 
@@ -679,6 +676,5 @@ abstract class InvoiceAbstract
     {
         return $this->pdf;
     }
-
     // @codeCoverageIgnoreEnd
 }

@@ -247,8 +247,6 @@ abstract class CallForwardSettingAbstract
             'residentialDeviceId' => self::getResidentialDevice() ? self::getResidentialDevice()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -555,8 +553,6 @@ abstract class CallForwardSettingAbstract
     {
         return $this->residentialDevice;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

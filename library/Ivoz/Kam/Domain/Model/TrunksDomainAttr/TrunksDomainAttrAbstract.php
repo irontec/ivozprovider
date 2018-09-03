@@ -190,8 +190,6 @@ abstract class TrunksDomainAttrAbstract
             'last_modified' => self::getLastModified()
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -337,8 +335,6 @@ abstract class TrunksDomainAttrAbstract
     {
         return $this->lastModified;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

@@ -152,8 +152,6 @@ abstract class PickUpRelUserAbstract
             'userId' => self::getUser() ? self::getUser()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -203,8 +201,6 @@ abstract class PickUpRelUserAbstract
     {
         return $this->user;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

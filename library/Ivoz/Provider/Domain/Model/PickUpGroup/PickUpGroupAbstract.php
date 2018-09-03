@@ -154,8 +154,6 @@ abstract class PickUpGroupAbstract
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -209,8 +207,6 @@ abstract class PickUpGroupAbstract
     {
         return $this->company;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

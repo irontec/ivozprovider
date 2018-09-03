@@ -203,8 +203,6 @@ abstract class RtpengineAbstract
             'mediaRelaySetId' => self::getMediaRelaySet() ? self::getMediaRelaySet()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -403,8 +401,6 @@ abstract class RtpengineAbstract
     {
         return $this->mediaRelaySet;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

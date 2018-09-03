@@ -182,8 +182,6 @@ abstract class FaxAbstract
             'outgoingDdiId' => self::getOutgoingDdi() ? self::getOutgoingDdi()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -318,8 +316,6 @@ abstract class FaxAbstract
     {
         return $this->outgoingDdi;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

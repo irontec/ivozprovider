@@ -200,8 +200,6 @@ abstract class CarrierAbstract
             'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -397,8 +395,6 @@ abstract class CarrierAbstract
     {
         return $this->transformationRuleSet;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

@@ -228,8 +228,6 @@ abstract class OutgoingRoutingAbstract
             'routingTagId' => self::getRoutingTag() ? self::getRoutingTag()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -331,8 +329,8 @@ abstract class OutgoingRoutingAbstract
         if (!is_null($routingMode)) {
             Assertion::maxLength($routingMode, 25, 'routingMode value "%s" is too long, it should have no more than %d characters, but has %d characters.');
             Assertion::choice($routingMode, array (
-            0 => 'static',
-            1 => 'lcr',
+              0 => 'static',
+              1 => 'lcr',
             ), 'routingModevalue "%s" is not an element of the valid values: %s');
         }
 
@@ -494,8 +492,6 @@ abstract class OutgoingRoutingAbstract
     {
         return $this->routingTag;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

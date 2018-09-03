@@ -130,10 +130,5 @@ interface RatingProfileInterface extends LoggableEntityInterface
      *
      * @return \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface[]
      */
-<<<<<<< HEAD
     public function getTpRatingProfiles(\Doctrine\Common\Collections\Criteria $criteria = null);
-
-=======
-    public function getTpRatingProfile(\Doctrine\Common\Collections\Criteria $criteria = null);
->>>>>>> eba09efe4... core: formated all Models to PSR2 codestyle
 }

@@ -91,8 +91,6 @@ trait ExtensionTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add user
      *

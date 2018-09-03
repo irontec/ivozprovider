@@ -152,8 +152,6 @@ abstract class ConditionalRoutesConditionsRelRouteLockAbstract
             'routeLockId' => self::getRouteLock() ? self::getRouteLock()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -203,8 +201,6 @@ abstract class ConditionalRoutesConditionsRelRouteLockAbstract
     {
         return $this->routeLock;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

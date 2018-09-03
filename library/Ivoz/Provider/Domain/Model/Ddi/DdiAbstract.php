@@ -338,8 +338,6 @@ abstract class DdiAbstract
             'retailAccountId' => self::getRetailAccount() ? self::getRetailAccount()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -475,16 +473,16 @@ abstract class DdiAbstract
         if (!is_null($routeType)) {
             Assertion::maxLength($routeType, 25, 'routeType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
             Assertion::choice($routeType, array (
-            0 => 'user',
-            1 => 'ivr',
-            2 => 'huntGroup',
-            3 => 'fax',
-            4 => 'conferenceRoom',
-            5 => 'friend',
-            6 => 'queue',
-            7 => 'conditional',
-            8 => 'residential',
-            9 => 'retail',
+              0 => 'user',
+              1 => 'ivr',
+              2 => 'huntGroup',
+              3 => 'fax',
+              4 => 'conferenceRoom',
+              5 => 'friend',
+              6 => 'queue',
+              7 => 'conditional',
+              8 => 'residential',
+              9 => 'retail',
             ), 'routeTypevalue "%s" is not an element of the valid values: %s');
         }
 
@@ -919,8 +917,6 @@ abstract class DdiAbstract
     {
         return $this->retailAccount;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

@@ -208,8 +208,6 @@ abstract class DestinationRateAbstract
             'destinationId' => self::getDestination() ? self::getDestination()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -421,8 +419,6 @@ abstract class DestinationRateAbstract
     {
         return $this->destination;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

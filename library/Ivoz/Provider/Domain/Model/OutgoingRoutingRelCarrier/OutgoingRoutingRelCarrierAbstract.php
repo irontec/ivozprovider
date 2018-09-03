@@ -152,8 +152,6 @@ abstract class OutgoingRoutingRelCarrierAbstract
             'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -203,8 +201,6 @@ abstract class OutgoingRoutingRelCarrierAbstract
     {
         return $this->carrier;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }

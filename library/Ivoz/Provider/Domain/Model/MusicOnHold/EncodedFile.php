@@ -133,7 +133,5 @@ class EncodedFile
         return $this->baseName;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }

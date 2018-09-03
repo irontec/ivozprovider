@@ -210,8 +210,6 @@ abstract class TerminalModelAbstract
             'terminalManufacturerId' => self::getTerminalManufacturer() ? self::getTerminalManufacturer()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -437,8 +435,6 @@ abstract class TerminalModelAbstract
     {
         return $this->terminalManufacturer;
     }
-
-
 
     // @codeCoverageIgnoreEnd
 }
