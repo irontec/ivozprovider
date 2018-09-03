@@ -49,4 +49,3 @@ class TpDestinationRate extends TpDestinationRateAbstract implements TpDestinati
         return parent::setGroupIntervalStart($groupIntervalStart);
     }
 }
-

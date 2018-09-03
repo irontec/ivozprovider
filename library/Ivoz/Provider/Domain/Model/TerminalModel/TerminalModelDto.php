@@ -20,5 +20,3 @@ class TerminalModelDto extends TerminalModelDtoAbstract
         return parent::getPropertyMap(...func_get_args());
     }
 }
-
-

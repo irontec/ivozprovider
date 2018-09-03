@@ -75,6 +75,4 @@ interface OutgoingRoutingRelCarrierInterface extends LoggableEntityInterface
      * @return \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface[]
      */
     public function getTpRatingProfiles(\Doctrine\Common\Collections\Criteria $criteria = null);
-
 }
-

@@ -89,7 +89,8 @@ abstract class ExtensionAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "Extension",
             $this->getId()
         );
@@ -149,7 +150,8 @@ abstract class ExtensionAbstract
         Assertion::isInstanceOf($dto, ExtensionDto::class);
 
         $self = new static(
-            $dto->getNumber());
+            $dto->getNumber()
+        );
 
         $self
             ->setRouteType($dto->getRouteType())
@@ -287,16 +289,16 @@ abstract class ExtensionAbstract
     {
         if (!is_null($routeType)) {
             Assertion::maxLength($routeType, 25, 'routeType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        Assertion::choice($routeType, array (
-          0 => 'user',
-          1 => 'number',
-          2 => 'ivr',
-          3 => 'huntGroup',
-          4 => 'conferenceRoom',
-          5 => 'friend',
-          6 => 'queue',
-          7 => 'conditional',
-        ), 'routeTypevalue "%s" is not an element of the valid values: %s');
+            Assertion::choice($routeType, array (
+            0 => 'user',
+            1 => 'number',
+            2 => 'ivr',
+            3 => 'huntGroup',
+            4 => 'conferenceRoom',
+            5 => 'friend',
+            6 => 'queue',
+            7 => 'conditional',
+            ), 'routeTypevalue "%s" is not an element of the valid values: %s');
         }
 
         $this->routeType = $routeType;
@@ -568,4 +570,3 @@ abstract class ExtensionAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

@@ -142,7 +142,6 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
                 );
             }
         }
-
     }
 
     /**
@@ -422,5 +421,3 @@ abstract class DestinationRateGroupDtoAbstract implements DataTransferObjectInte
         return $this->destinationRates;
     }
 }
-
-

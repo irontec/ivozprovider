@@ -236,7 +236,6 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -244,7 +243,6 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -787,5 +785,3 @@ abstract class UsersActiveWatcherDtoAbstract implements DataTransferObjectInterf
         return $this->id;
     }
 }
-
-

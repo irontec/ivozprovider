@@ -164,7 +164,4 @@ trait PickUpGroupTrait
 
         return $this->relUsers->toArray();
     }
-
-
 }
-

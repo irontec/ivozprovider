@@ -69,7 +69,7 @@ class HuntGroup extends HuntGroupAbstract implements HuntGroupInterface
             Criteria::create()->orderBy(['priority' => Criteria::ASC])
         );
 
-        foreach($huntGroupRelUsers as $huntGroupRelUser) {
+        foreach ($huntGroupRelUsers as $huntGroupRelUser) {
             $user = $huntGroupRelUser->getUser();
             if (empty($user)) {
                 continue;
@@ -104,4 +104,3 @@ class HuntGroup extends HuntGroupAbstract implements HuntGroupInterface
             $this->getNoAnswerNumberValue();
     }
 }
-

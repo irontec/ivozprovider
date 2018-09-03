@@ -1,6 +1,7 @@
 <?php
 
 namespace Ivoz\Kam\Domain\Model\Trusted;
+
 use Ivoz\Core\Domain\Assert\Assertion;
 
 /**
@@ -54,6 +55,4 @@ class Trusted extends TrustedAbstract implements TrustedInterface
 
         return parent::setSrcIp($srcIp);
     }
-
 }
-

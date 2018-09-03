@@ -103,7 +103,6 @@ abstract class UsersLocationAttrDtoAbstract implements DataTransferObjectInterfa
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -111,7 +110,6 @@ abstract class UsersLocationAttrDtoAbstract implements DataTransferObjectInterfa
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -274,5 +272,3 @@ abstract class UsersLocationAttrDtoAbstract implements DataTransferObjectInterfa
         return $this->id;
     }
 }
-
-

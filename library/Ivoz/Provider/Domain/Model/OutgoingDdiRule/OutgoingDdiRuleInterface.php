@@ -114,6 +114,4 @@ interface OutgoingDdiRuleInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPatternInterface[]
      */
     public function getPatterns(\Doctrine\Common\Collections\Criteria $criteria = null);
-
 }
-

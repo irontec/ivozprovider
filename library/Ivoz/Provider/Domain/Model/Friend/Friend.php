@@ -44,7 +44,8 @@ class Friend extends FriendAbstract implements FriendInterface
      */
     public function __toString()
     {
-        return sprintf("%s [%s]",
+        return sprintf(
+            "%s [%s]",
             $this->getName(),
             parent::__toString()
         );
@@ -120,9 +121,11 @@ class Friend extends FriendAbstract implements FriendInterface
      */
     public function getContact()
     {
-        return sprintf("sip:%s@%s",
+        return sprintf(
+            "sip:%s@%s",
             $this->getName(),
-            $this->getDomain());
+            $this->getDomain()
+        );
     }
 
     /**
@@ -155,7 +158,6 @@ class Friend extends FriendAbstract implements FriendInterface
         foreach ($patterns as $pattern) {
             $regexp = '/' . $pattern->getRegExp() . '/';
             if (preg_match($regexp, $exten)) {
-
                 return true;
             }
         }
@@ -193,7 +195,6 @@ class Friend extends FriendAbstract implements FriendInterface
     {
         $language = $this->getLanguage();
         if (!$language) {
-
             return $this
                 ->getCompany()
                 ->getLanguageCode();
@@ -220,4 +221,3 @@ class Friend extends FriendAbstract implements FriendInterface
         return $ddi;
     }
 }
-

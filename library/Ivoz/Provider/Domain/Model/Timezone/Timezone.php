@@ -28,4 +28,3 @@ class Timezone extends TimezoneAbstract implements TimezoneInterface
         return $this->id;
     }
 }
-

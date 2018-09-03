@@ -249,7 +249,4 @@ trait ResidentialDeviceTrait
 
         return $this->ddis->toArray();
     }
-
-
 }
-

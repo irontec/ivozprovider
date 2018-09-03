@@ -45,6 +45,4 @@ interface ApplicationServerInterface extends LoggableEntityInterface
      * @return string
      */
     public function getName();
-
 }
-

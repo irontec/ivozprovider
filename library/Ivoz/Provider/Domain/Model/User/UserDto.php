@@ -123,5 +123,3 @@ class UserDto extends UserDtoAbstract
         return parent::denormalize($data, $context);
     }
 }
-
-

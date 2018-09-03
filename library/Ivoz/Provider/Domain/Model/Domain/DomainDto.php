@@ -21,5 +21,3 @@ class DomainDto extends DomainDtoAbstract
         return parent::getPropertyMap(...func_get_args());
     }
 }
-
-

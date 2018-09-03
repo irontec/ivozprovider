@@ -79,7 +79,8 @@ abstract class InvoiceNumberSequenceAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "InvoiceNumberSequence",
             $this->getId()
         );
@@ -144,7 +145,8 @@ abstract class InvoiceNumberSequenceAbstract
             $dto->getSequenceLength(),
             $dto->getIncrement(),
             $dto->getIteration(),
-            $dto->getVersion());
+            $dto->getVersion()
+        );
 
         $self
             ->setLatestValue($dto->getLatestValue())
@@ -448,4 +450,3 @@ abstract class InvoiceNumberSequenceAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

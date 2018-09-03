@@ -52,4 +52,3 @@ class BrandUrl extends BrandUrlAbstract implements BrandUrlInterface, FileContai
         return parent::setUrl($url);
     }
 }
-

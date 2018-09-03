@@ -133,7 +133,8 @@ abstract class TpRatingPlanAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "TpRatingPlan",
             $this->getId()
         );
@@ -197,7 +198,8 @@ abstract class TpRatingPlanAbstract
             $dto->getTimingTag(),
             $dto->getWeight(),
             $dto->getCreatedAt(),
-            $dto->getTimeIn());
+            $dto->getTimeIn()
+        );
 
         $self
             ->setTag($dto->getTag())
@@ -501,10 +503,10 @@ abstract class TpRatingPlanAbstract
     {
         if (!is_null($timingType)) {
             Assertion::maxLength($timingType, 10, 'timingType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        Assertion::choice($timingType, array (
-          0 => 'always',
-          1 => 'custom',
-        ), 'timingTypevalue "%s" is not an element of the valid values: %s');
+            Assertion::choice($timingType, array (
+            0 => 'always',
+            1 => 'custom',
+            ), 'timingTypevalue "%s" is not an element of the valid values: %s');
         }
 
         $this->timingType = $timingType;
@@ -828,4 +830,3 @@ abstract class TpRatingPlanAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

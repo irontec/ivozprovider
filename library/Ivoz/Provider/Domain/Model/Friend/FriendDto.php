@@ -31,5 +31,3 @@ class FriendDto extends FriendDtoAbstract
         return $response;
     }
 }
-
-

@@ -85,7 +85,6 @@ abstract class PickUpGroupDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
     }
 
     /**
@@ -205,5 +204,3 @@ abstract class PickUpGroupDtoAbstract implements DataTransferObjectInterface
         return $this->relUsers;
     }
 }
-
-

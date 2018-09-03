@@ -112,6 +112,4 @@ interface ChangelogInterface extends EntityInterface
      * @return \Ivoz\Provider\Domain\Model\Commandlog\CommandlogInterface
      */
     public function getCommand();
-
 }
-

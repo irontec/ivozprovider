@@ -44,7 +44,8 @@ abstract class RatingPlanAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "RatingPlan",
             $this->getId()
         );
@@ -265,4 +266,3 @@ abstract class RatingPlanAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

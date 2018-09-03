@@ -164,7 +164,4 @@ trait DestinationTrait
 
         return $this->destinationRates->toArray();
     }
-
-
 }
-

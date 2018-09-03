@@ -39,7 +39,8 @@ abstract class FeatureAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "Feature",
             $this->getId()
         );
@@ -223,4 +224,3 @@ abstract class FeatureAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

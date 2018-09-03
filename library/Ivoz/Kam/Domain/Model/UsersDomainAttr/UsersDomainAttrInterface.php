@@ -114,6 +114,4 @@ interface UsersDomainAttrInterface extends LoggableEntityInterface
      * @return \DateTime
      */
     public function getLastModified();
-
 }
-

@@ -109,7 +109,6 @@ abstract class RoutingTagDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
     }
 
     /**
@@ -273,5 +272,3 @@ abstract class RoutingTagDtoAbstract implements DataTransferObjectInterface
         return $this->relCompanies;
     }
 }
-
-

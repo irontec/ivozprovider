@@ -20,7 +20,4 @@ class FaxDto extends FaxDtoAbstract
 
         return parent::getPropertyMap(...func_get_args());
     }
-
 }
-
-

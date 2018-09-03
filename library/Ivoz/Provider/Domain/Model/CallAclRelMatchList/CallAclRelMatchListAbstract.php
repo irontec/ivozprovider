@@ -50,7 +50,8 @@ abstract class CallAclRelMatchListAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "CallAclRelMatchList",
             $this->getId()
         );
@@ -111,7 +112,8 @@ abstract class CallAclRelMatchListAbstract
 
         $self = new static(
             $dto->getPriority(),
-            $dto->getPolicy());
+            $dto->getPolicy()
+        );
 
         $self
             ->setCallAcl($dto->getCallAcl())
@@ -288,4 +290,3 @@ abstract class CallAclRelMatchListAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

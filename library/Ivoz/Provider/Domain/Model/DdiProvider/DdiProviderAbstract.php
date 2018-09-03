@@ -54,7 +54,8 @@ abstract class DdiProviderAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "DdiProvider",
             $this->getId()
         );
@@ -115,7 +116,8 @@ abstract class DdiProviderAbstract
 
         $self = new static(
             $dto->getDescription(),
-            $dto->getName());
+            $dto->getName()
+        );
 
         $self
             ->setExternallyRated($dto->getExternallyRated())
@@ -321,4 +323,3 @@ abstract class DdiProviderAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

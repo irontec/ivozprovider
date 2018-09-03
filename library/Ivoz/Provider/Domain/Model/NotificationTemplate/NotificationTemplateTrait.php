@@ -164,7 +164,4 @@ trait NotificationTemplateTrait
 
         return $this->contents->toArray();
     }
-
-
 }
-

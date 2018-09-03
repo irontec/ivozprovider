@@ -129,6 +129,4 @@ interface DispatcherInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface
      */
     public function getApplicationServer();
-
 }
-

@@ -60,6 +60,4 @@ interface FixedCostsRelInvoiceSchedulerInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface
      */
     public function getInvoiceScheduler();
-
 }
-

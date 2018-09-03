@@ -22,7 +22,6 @@ trait DdiProviderRegistrationTrait
     protected function __construct()
     {
         parent::__construct(...func_get_args());
-
     }
 
     /**
@@ -79,7 +78,4 @@ trait DdiProviderRegistrationTrait
             'id' => self::getId()
         ];
     }
-
-
 }
-

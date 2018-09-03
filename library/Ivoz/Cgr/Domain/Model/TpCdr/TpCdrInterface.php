@@ -418,6 +418,4 @@ interface TpCdrInterface extends EntityInterface
      * @return \DateTime
      */
     public function getDeletedAt();
-
 }
-

@@ -96,7 +96,8 @@ abstract class TpDestinationRateAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "TpDestinationRate",
             $this->getId()
         );
@@ -161,7 +162,8 @@ abstract class TpDestinationRateAbstract
             $dto->getRoundingDecimals(),
             $dto->getMaxCost(),
             $dto->getMaxCostStrategy(),
-            $dto->getCreatedAt());
+            $dto->getCreatedAt()
+        );
 
         $self
             ->setTag($dto->getTag())
@@ -533,4 +535,3 @@ abstract class TpDestinationRateAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

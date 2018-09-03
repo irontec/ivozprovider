@@ -21,5 +21,3 @@ class FixedCostsRelInvoiceDto extends FixedCostsRelInvoiceDtoAbstract
         return parent::getPropertyMap(...func_get_args());
     }
 }
-
-

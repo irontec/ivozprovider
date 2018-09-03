@@ -69,5 +69,3 @@ class LocutionDto extends LocutionDtoAbstract
         return $this;
     }
 }
-
-

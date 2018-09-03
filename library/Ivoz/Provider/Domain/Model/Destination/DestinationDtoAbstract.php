@@ -108,7 +108,6 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
     }
 
     /**
@@ -314,5 +313,3 @@ abstract class DestinationDtoAbstract implements DataTransferObjectInterface
         return $this->destinationRates;
     }
 }
-
-

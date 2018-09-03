@@ -274,6 +274,4 @@ interface TrunksCdrInterface extends EntityInterface
      * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
      */
     public function getCarrier();
-
 }
-

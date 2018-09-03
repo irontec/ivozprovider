@@ -188,7 +188,6 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
     }
 
     /**
@@ -692,5 +691,3 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         return $this->relCarriers;
     }
 }
-
-

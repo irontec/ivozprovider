@@ -13,4 +13,3 @@ interface UsersCdrRepository extends ObjectRepository, Selectable
      */
     public function countByUserId($userId) :int;
 }
-

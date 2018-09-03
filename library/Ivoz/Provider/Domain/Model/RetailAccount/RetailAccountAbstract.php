@@ -102,7 +102,8 @@ abstract class RetailAccountAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "RetailAccount",
             $this->getId()
         );
@@ -165,7 +166,8 @@ abstract class RetailAccountAbstract
             $dto->getName(),
             $dto->getDescription(),
             $dto->getTransport(),
-            $dto->getDirectConnectivity());
+            $dto->getDirectConnectivity()
+        );
 
         $self
             ->setIp($dto->getIp())
@@ -627,4 +629,3 @@ abstract class RetailAccountAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

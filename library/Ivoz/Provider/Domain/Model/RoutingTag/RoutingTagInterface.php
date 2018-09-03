@@ -124,6 +124,4 @@ interface RoutingTagInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface[]
      */
     public function getRelCompanies(\Doctrine\Common\Collections\Criteria $criteria = null);
-
 }
-

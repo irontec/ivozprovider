@@ -142,7 +142,8 @@ abstract class DdiAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "Ddi",
             $this->getId()
         );
@@ -204,7 +205,8 @@ abstract class DdiAbstract
         $self = new static(
             $dto->getDdi(),
             $dto->getRecordCalls(),
-            $dto->getBillInboundCalls());
+            $dto->getBillInboundCalls()
+        );
 
         $self
             ->setDdie164($dto->getDdie164())
@@ -472,18 +474,18 @@ abstract class DdiAbstract
     {
         if (!is_null($routeType)) {
             Assertion::maxLength($routeType, 25, 'routeType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        Assertion::choice($routeType, array (
-          0 => 'user',
-          1 => 'ivr',
-          2 => 'huntGroup',
-          3 => 'fax',
-          4 => 'conferenceRoom',
-          5 => 'friend',
-          6 => 'queue',
-          7 => 'conditional',
-          8 => 'residential',
-          9 => 'retail',
-        ), 'routeTypevalue "%s" is not an element of the valid values: %s');
+            Assertion::choice($routeType, array (
+            0 => 'user',
+            1 => 'ivr',
+            2 => 'huntGroup',
+            3 => 'fax',
+            4 => 'conferenceRoom',
+            5 => 'friend',
+            6 => 'queue',
+            7 => 'conditional',
+            8 => 'residential',
+            9 => 'retail',
+            ), 'routeTypevalue "%s" is not an element of the valid values: %s');
         }
 
         $this->routeType = $routeType;
@@ -922,4 +924,3 @@ abstract class DdiAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

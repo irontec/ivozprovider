@@ -2,7 +2,6 @@
 
 namespace Ivoz\Provider\Domain\Model\DestinationRateGroup;
 
-
 class DestinationRateGroupDto extends DestinationRateGroupDtoAbstract
 {
     private $filePath;
@@ -32,5 +31,3 @@ class DestinationRateGroupDto extends DestinationRateGroupDtoAbstract
         return $this->filePath;
     }
 }
-
-

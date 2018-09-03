@@ -137,4 +137,3 @@ class EncodedFile
 
     // @codeCoverageIgnoreEnd
 }
-

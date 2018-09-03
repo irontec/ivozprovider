@@ -74,4 +74,3 @@ class FaxesInOut extends FaxesInOutAbstract implements FaxesInOutInterface, File
             $this->getDst();
     }
 }
-

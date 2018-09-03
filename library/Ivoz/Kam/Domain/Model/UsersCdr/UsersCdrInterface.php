@@ -315,6 +315,4 @@ interface UsersCdrInterface extends EntityInterface
      * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface
      */
     public function getRetailAccount();
-
 }
-

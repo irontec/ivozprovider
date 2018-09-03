@@ -117,6 +117,4 @@ interface MatchListPatternInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
      */
     public function getNumberCountry();
-
 }
-

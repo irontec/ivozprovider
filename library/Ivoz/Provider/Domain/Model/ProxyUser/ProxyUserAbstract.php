@@ -31,14 +31,14 @@ abstract class ProxyUserAbstract
      */
     protected function __construct()
     {
-
     }
 
     abstract public function getId();
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "ProxyUser",
             $this->getId()
         );
@@ -218,4 +218,3 @@ abstract class ProxyUserAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

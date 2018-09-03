@@ -21,5 +21,3 @@ class QueueMemberDto extends QueueMemberDtoAbstract
         return parent::getPropertyMap(...func_get_args());
     }
 }
-
-

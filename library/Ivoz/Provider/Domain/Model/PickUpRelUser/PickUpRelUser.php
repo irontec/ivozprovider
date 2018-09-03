@@ -27,4 +27,3 @@ class PickUpRelUser extends PickUpRelUserAbstract implements PickUpRelUserInterf
         return $this->id;
     }
 }
-

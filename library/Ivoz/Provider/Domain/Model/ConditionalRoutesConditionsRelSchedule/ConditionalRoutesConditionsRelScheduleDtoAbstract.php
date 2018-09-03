@@ -77,7 +77,6 @@ abstract class ConditionalRoutesConditionsRelScheduleDtoAbstract implements Data
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -192,5 +191,3 @@ abstract class ConditionalRoutesConditionsRelScheduleDtoAbstract implements Data
         return null;
     }
 }
-
-

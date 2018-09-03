@@ -206,7 +206,8 @@ abstract class VoicemailAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "Voicemail",
             $this->getId()
         );
@@ -267,7 +268,8 @@ abstract class VoicemailAbstract
 
         $self = new static(
             $dto->getContext(),
-            $dto->getMailbox());
+            $dto->getMailbox()
+        );
 
         $self
             ->setPassword($dto->getPassword())
@@ -1390,10 +1392,10 @@ abstract class VoicemailAbstract
     public function setStamp($stamp = null)
     {
         if (!is_null($stamp)) {
-        $stamp = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
-            $stamp,
-            null
-        );
+            $stamp = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
+                $stamp,
+                null
+            );
         }
 
         $this->stamp = $stamp;
@@ -1463,4 +1465,3 @@ abstract class VoicemailAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

@@ -6,5 +6,3 @@ class CompanyRelCodecDto extends CompanyRelCodecDtoAbstract
 {
 
 }
-
-

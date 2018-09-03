@@ -334,7 +334,4 @@ trait RoutingPatternTrait
 
         return $this->lcrRules->toArray();
     }
-
-
 }
-

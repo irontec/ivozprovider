@@ -31,14 +31,14 @@ abstract class FeaturesRelBrandAbstract
      */
     protected function __construct()
     {
-
     }
 
     abstract public function getId();
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "FeaturesRelBrand",
             $this->getId()
         );
@@ -208,4 +208,3 @@ abstract class FeaturesRelBrandAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

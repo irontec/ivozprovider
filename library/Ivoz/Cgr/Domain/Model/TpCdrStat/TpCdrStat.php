@@ -28,4 +28,3 @@ class TpCdrStat extends TpCdrStatAbstract implements TpCdrStatInterface
         return $this->id;
     }
 }
-

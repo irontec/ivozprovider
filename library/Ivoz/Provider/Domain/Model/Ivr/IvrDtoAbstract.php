@@ -231,7 +231,6 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
     }
 
     /**
@@ -975,5 +974,3 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return $this->excludedExtensions;
     }
 }
-
-

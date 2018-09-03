@@ -48,5 +48,3 @@ class CallForwardSettingDto extends CallForwardSettingDtoAbstract
         return parent::getPropertyMap($context);
     }
 }
-
-

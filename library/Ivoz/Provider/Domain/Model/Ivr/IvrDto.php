@@ -19,5 +19,3 @@ class IvrDto extends IvrDtoAbstract
         return parent::getPropertyMap(...func_get_args());
     }
 }
-
-

@@ -28,4 +28,3 @@ class FixedCost extends FixedCostAbstract implements FixedCostInterface
         return $this->id;
     }
 }
-

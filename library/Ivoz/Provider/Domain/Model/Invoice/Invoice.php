@@ -65,4 +65,3 @@ class Invoice extends InvoiceAbstract implements InvoiceInterface, FileContainer
         return parent::setNumber($number);
     }
 }
-

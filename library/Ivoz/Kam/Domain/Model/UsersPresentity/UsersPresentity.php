@@ -28,4 +28,3 @@ class UsersPresentity extends UsersPresentityAbstract implements UsersPresentity
         return $this->id;
     }
 }
-

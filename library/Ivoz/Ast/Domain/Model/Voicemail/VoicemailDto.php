@@ -16,5 +16,3 @@ class VoicemailDto extends VoicemailDtoAbstract
         return $response;
     }
 }
-
-

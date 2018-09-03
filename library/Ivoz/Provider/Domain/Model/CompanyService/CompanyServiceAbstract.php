@@ -43,7 +43,8 @@ abstract class CompanyServiceAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "CompanyService",
             $this->getId()
         );
@@ -103,7 +104,8 @@ abstract class CompanyServiceAbstract
         Assertion::isInstanceOf($dto, CompanyServiceDto::class);
 
         $self = new static(
-            $dto->getCode());
+            $dto->getCode()
+        );
 
         $self
             ->setCompany($dto->getCompany())
@@ -245,4 +247,3 @@ abstract class CompanyServiceAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

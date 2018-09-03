@@ -89,6 +89,4 @@ interface ServiceInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Service\Description
      */
     public function getDescription();
-
 }
-

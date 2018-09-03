@@ -56,7 +56,8 @@ abstract class TpDestinationAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "TpDestination",
             $this->getId()
         );
@@ -118,7 +119,8 @@ abstract class TpDestinationAbstract
         $self = new static(
             $dto->getTpid(),
             $dto->getPrefix(),
-            $dto->getCreatedAt());
+            $dto->getCreatedAt()
+        );
 
         $self
             ->setTag($dto->getTag())
@@ -330,4 +332,3 @@ abstract class TpDestinationAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

@@ -317,6 +317,4 @@ interface UsersPuaInterface extends LoggableEntityInterface
      * @return string
      */
     public function getExtraHeaders();
-
 }
-

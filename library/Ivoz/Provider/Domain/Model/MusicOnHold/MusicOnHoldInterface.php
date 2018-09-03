@@ -144,6 +144,4 @@ interface MusicOnHoldInterface extends LoggableEntityInterface
      * @return null | TempFile
      */
     public function getTempFileByFieldName($fldName);
-
 }
-

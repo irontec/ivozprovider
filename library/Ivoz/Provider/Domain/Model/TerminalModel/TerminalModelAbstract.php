@@ -70,7 +70,8 @@ abstract class TerminalModelAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "TerminalModel",
             $this->getId()
         );
@@ -132,7 +133,8 @@ abstract class TerminalModelAbstract
         $self = new static(
             $dto->getIden(),
             $dto->getName(),
-            $dto->getDescription());
+            $dto->getDescription()
+        );
 
         $self
             ->setGenericTemplate($dto->getGenericTemplate())
@@ -440,4 +442,3 @@ abstract class TerminalModelAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

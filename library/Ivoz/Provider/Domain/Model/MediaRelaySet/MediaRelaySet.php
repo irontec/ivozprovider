@@ -27,4 +27,3 @@ class MediaRelaySet extends MediaRelaySetAbstract implements MediaRelaySetInterf
         return $this->id;
     }
 }
-

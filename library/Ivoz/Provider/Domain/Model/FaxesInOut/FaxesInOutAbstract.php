@@ -75,7 +75,8 @@ abstract class FaxesInOutAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "FaxesInOut",
             $this->getId()
         );
@@ -339,10 +340,10 @@ abstract class FaxesInOutAbstract
     {
         if (!is_null($type)) {
             Assertion::maxLength($type, 20, 'type value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        Assertion::choice($type, array (
-          0 => 'In',
-          1 => 'Out',
-        ), 'typevalue "%s" is not an element of the valid values: %s');
+            Assertion::choice($type, array (
+            0 => 'In',
+            1 => 'Out',
+            ), 'typevalue "%s" is not an element of the valid values: %s');
         }
 
         $this->type = $type;
@@ -491,4 +492,3 @@ abstract class FaxesInOutAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

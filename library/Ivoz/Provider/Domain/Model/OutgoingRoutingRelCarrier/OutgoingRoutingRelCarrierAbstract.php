@@ -31,14 +31,14 @@ abstract class OutgoingRoutingRelCarrierAbstract
      */
     protected function __construct()
     {
-
     }
 
     abstract public function getId();
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "OutgoingRoutingRelCarrier",
             $this->getId()
         );
@@ -208,4 +208,3 @@ abstract class OutgoingRoutingRelCarrierAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

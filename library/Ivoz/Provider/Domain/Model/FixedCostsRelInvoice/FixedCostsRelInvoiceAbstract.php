@@ -36,14 +36,14 @@ abstract class FixedCostsRelInvoiceAbstract
      */
     protected function __construct()
     {
-
     }
 
     abstract public function getId();
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "FixedCostsRelInvoice",
             $this->getId()
         );
@@ -249,4 +249,3 @@ abstract class FixedCostsRelInvoiceAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

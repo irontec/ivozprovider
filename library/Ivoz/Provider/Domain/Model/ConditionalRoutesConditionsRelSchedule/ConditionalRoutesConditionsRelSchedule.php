@@ -29,4 +29,3 @@ class ConditionalRoutesConditionsRelSchedule extends ConditionalRoutesConditions
         return $this->id;
     }
 }
-

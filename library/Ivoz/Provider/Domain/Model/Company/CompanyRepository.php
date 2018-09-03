@@ -18,4 +18,3 @@ interface CompanyRepository extends ObjectRepository, Selectable
      */
     public function getPrepaidCompanies();
 }
-

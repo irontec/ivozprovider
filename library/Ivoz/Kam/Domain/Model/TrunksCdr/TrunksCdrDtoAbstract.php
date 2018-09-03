@@ -176,7 +176,6 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -597,5 +596,3 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 }
-
-

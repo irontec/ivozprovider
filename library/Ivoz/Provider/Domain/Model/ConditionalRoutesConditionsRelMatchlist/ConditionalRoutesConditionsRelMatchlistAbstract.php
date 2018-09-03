@@ -31,14 +31,14 @@ abstract class ConditionalRoutesConditionsRelMatchlistAbstract
      */
     protected function __construct()
     {
-
     }
 
     abstract public function getId();
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "ConditionalRoutesConditionsRelMatchlist",
             $this->getId()
         );
@@ -208,4 +208,3 @@ abstract class ConditionalRoutesConditionsRelMatchlistAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

@@ -43,7 +43,8 @@ abstract class RoutingPatternGroupAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "RoutingPatternGroup",
             $this->getId()
         );
@@ -103,7 +104,8 @@ abstract class RoutingPatternGroupAbstract
         Assertion::isInstanceOf($dto, RoutingPatternGroupDto::class);
 
         $self = new static(
-            $dto->getName());
+            $dto->getName()
+        );
 
         $self
             ->setDescription($dto->getDescription())
@@ -250,4 +252,3 @@ abstract class RoutingPatternGroupAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

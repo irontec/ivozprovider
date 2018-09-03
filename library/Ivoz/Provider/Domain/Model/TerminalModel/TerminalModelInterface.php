@@ -131,6 +131,4 @@ interface TerminalModelInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\TerminalManufacturer\TerminalManufacturerInterface
      */
     public function getTerminalManufacturer();
-
 }
-

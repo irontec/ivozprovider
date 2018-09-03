@@ -122,7 +122,8 @@ abstract class TpLcrRuleAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "TpLcrRule",
             $this->getId()
         );
@@ -191,7 +192,8 @@ abstract class TpLcrRuleAbstract
             $dto->getStrategy(),
             $dto->getActivationTime(),
             $dto->getWeight(),
-            $dto->getCreatedAt());
+            $dto->getCreatedAt()
+        );
 
         $self
             ->setSubject($dto->getSubject())
@@ -690,4 +692,3 @@ abstract class TpLcrRuleAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

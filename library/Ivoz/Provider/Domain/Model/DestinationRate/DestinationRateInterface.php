@@ -146,6 +146,4 @@ interface DestinationRateInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Destination\DestinationInterface
      */
     public function getDestination();
-
 }
-

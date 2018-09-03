@@ -28,4 +28,3 @@ class Domain extends DomainAbstract implements DomainInterface
         return $this->id;
     }
 }
-

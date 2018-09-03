@@ -134,7 +134,6 @@ abstract class TrunksLcrRuleDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -435,5 +434,3 @@ abstract class TrunksLcrRuleDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 }
-
-

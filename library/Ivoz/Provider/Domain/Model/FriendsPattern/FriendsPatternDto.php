@@ -20,5 +20,3 @@ class FriendsPatternDto extends FriendsPatternDtoAbstract
         return parent::getPropertyMap(...func_get_args());
     }
 }
-
-

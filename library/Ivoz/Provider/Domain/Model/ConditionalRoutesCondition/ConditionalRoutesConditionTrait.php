@@ -419,7 +419,4 @@ trait ConditionalRoutesConditionTrait
 
         return $this->relRouteLocks->toArray();
     }
-
-
 }
-

@@ -39,4 +39,3 @@ class BrandService extends BrandServiceAbstract implements BrandServiceInterface
         return parent::setCode($code);
     }
 }
-

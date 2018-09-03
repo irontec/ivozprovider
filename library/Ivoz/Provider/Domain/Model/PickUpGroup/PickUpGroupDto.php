@@ -19,5 +19,3 @@ class PickUpGroupDto extends PickUpGroupDtoAbstract
         return parent::getPropertyMap(...func_get_args());
     }
 }
-
-

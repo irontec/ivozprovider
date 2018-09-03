@@ -77,7 +77,8 @@ abstract class AdministratorAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "Administrator",
             $this->getId()
         );
@@ -140,7 +141,8 @@ abstract class AdministratorAbstract
             $dto->getUsername(),
             $dto->getPass(),
             $dto->getEmail(),
-            $dto->getActive());
+            $dto->getActive()
+        );
 
         $self
             ->setName($dto->getName())
@@ -469,4 +471,3 @@ abstract class AdministratorAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

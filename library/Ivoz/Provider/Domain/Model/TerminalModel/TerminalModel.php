@@ -70,4 +70,3 @@ class TerminalModel extends TerminalModelAbstract implements TerminalModelInterf
         return preg_replace('/\?>\r\n/', "?> \r\n", $template);
     }
 }
-

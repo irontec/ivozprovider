@@ -27,4 +27,3 @@ class HuntGroupsRelUser extends HuntGroupsRelUserAbstract implements HuntGroupsR
         return $this->id;
     }
 }
-

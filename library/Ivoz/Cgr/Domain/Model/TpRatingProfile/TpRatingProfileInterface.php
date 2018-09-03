@@ -230,6 +230,4 @@ interface TpRatingProfileInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface
      */
     public function getOutgoingRoutingRelCarrier();
-
 }
-

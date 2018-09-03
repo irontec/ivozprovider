@@ -2,7 +2,6 @@
 
 namespace Ivoz\Provider\Domain\Model\DdiProvider;
 
-
 class DdiProviderDto extends DdiProviderDtoAbstract
 {
     /**
@@ -21,5 +20,3 @@ class DdiProviderDto extends DdiProviderDtoAbstract
         return parent::getPropertyMap(...func_get_args());
     }
 }
-
-

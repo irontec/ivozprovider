@@ -104,7 +104,6 @@ abstract class TransformationRuleDtoAbstract implements DataTransferObjectInterf
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -273,5 +272,3 @@ abstract class TransformationRuleDtoAbstract implements DataTransferObjectInterf
         return null;
     }
 }
-
-

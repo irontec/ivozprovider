@@ -27,4 +27,3 @@ class TrunksLcrGateway extends TrunksLcrGatewayAbstract implements TrunksLcrGate
         return $this->id;
     }
 }
-

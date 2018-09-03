@@ -53,7 +53,8 @@ abstract class RoutingPatternAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "RoutingPattern",
             $this->getId()
         );
@@ -306,4 +307,3 @@ abstract class RoutingPatternAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

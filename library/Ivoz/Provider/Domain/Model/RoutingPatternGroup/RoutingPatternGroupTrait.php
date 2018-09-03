@@ -249,7 +249,4 @@ trait RoutingPatternGroupTrait
 
         return $this->outgoingRoutings->toArray();
     }
-
-
 }
-

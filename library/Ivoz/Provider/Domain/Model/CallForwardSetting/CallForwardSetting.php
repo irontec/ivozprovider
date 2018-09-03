@@ -124,4 +124,3 @@ class CallForwardSetting extends CallForwardSettingAbstract implements CallForwa
         return $this->getTargetType();
     }
 }
-

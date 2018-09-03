@@ -71,7 +71,8 @@ abstract class TrustedAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "Trusted",
             $this->getId()
         );
@@ -131,7 +132,8 @@ abstract class TrustedAbstract
         Assertion::isInstanceOf($dto, TrustedDto::class);
 
         $self = new static(
-            $dto->getPriority());
+            $dto->getPriority()
+        );
 
         $self
             ->setSrcIp($dto->getSrcIp())
@@ -443,4 +445,3 @@ abstract class TrustedAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

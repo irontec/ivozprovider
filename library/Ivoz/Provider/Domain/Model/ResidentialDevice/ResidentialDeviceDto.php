@@ -2,7 +2,6 @@
 
 namespace Ivoz\Provider\Domain\Model\ResidentialDevice;
 
-
 class ResidentialDeviceDto extends ResidentialDeviceDtoAbstract
 {
     public function toArray($hideSensitiveData = false)
@@ -37,5 +36,4 @@ class ResidentialDeviceDto extends ResidentialDeviceDtoAbstract
 
         return $response;
     }
- }
-
+}

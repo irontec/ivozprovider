@@ -62,7 +62,8 @@ abstract class ServiceAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "Service",
             $this->getId()
         );
@@ -350,4 +351,3 @@ abstract class ServiceAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

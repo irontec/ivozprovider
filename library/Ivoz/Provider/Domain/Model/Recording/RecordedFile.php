@@ -137,4 +137,3 @@ class RecordedFile
 
     // @codeCoverageIgnoreEnd
 }
-

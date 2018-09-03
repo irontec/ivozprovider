@@ -59,7 +59,8 @@ abstract class InvoiceTemplateAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "InvoiceTemplate",
             $this->getId()
         );
@@ -120,7 +121,8 @@ abstract class InvoiceTemplateAbstract
 
         $self = new static(
             $dto->getName(),
-            $dto->getTemplate());
+            $dto->getTemplate()
+        );
 
         $self
             ->setDescription($dto->getDescription())
@@ -364,4 +366,3 @@ abstract class InvoiceTemplateAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

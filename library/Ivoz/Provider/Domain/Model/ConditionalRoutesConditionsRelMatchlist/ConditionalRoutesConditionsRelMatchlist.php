@@ -26,4 +26,3 @@ class ConditionalRoutesConditionsRelMatchlist extends ConditionalRoutesCondition
         return $this->id;
     }
 }
-

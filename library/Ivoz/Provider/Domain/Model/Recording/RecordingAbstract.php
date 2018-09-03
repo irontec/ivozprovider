@@ -81,7 +81,8 @@ abstract class RecordingAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "Recording",
             $this->getId()
         );
@@ -501,4 +502,3 @@ abstract class RecordingAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

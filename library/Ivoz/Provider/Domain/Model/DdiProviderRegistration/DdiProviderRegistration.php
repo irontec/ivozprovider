@@ -38,4 +38,3 @@ class DdiProviderRegistration extends DdiProviderRegistrationAbstract implements
         }
     }
 }
-

@@ -603,6 +603,4 @@ interface VoicemailInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface
      */
     public function getResidentialDevice();
-
 }
-

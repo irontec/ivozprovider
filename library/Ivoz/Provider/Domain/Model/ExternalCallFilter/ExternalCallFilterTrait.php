@@ -419,7 +419,4 @@ trait ExternalCallFilterTrait
 
         return $this->schedules->toArray();
     }
-
-
 }
-

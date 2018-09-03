@@ -21,5 +21,3 @@ class ConditionalRoutesConditionsRelMatchlistDto extends ConditionalRoutesCondit
         return parent::getPropertyMap(...func_get_args());
     }
 }
-
-

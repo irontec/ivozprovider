@@ -89,7 +89,6 @@ abstract class TrunksDomainAttrDtoAbstract implements DataTransferObjectInterfac
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -97,7 +96,6 @@ abstract class TrunksDomainAttrDtoAbstract implements DataTransferObjectInterfac
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -220,5 +218,3 @@ abstract class TrunksDomainAttrDtoAbstract implements DataTransferObjectInterfac
         return $this->id;
     }
 }
-
-

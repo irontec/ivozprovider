@@ -238,7 +238,8 @@ abstract class TpCdrStatAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "TpCdrStat",
             $this->getId()
         );
@@ -324,7 +325,8 @@ abstract class TpCdrStatAbstract
             $dto->getRatedSubjects(),
             $dto->getCostInterval(),
             $dto->getActionTriggers(),
-            $dto->getCreatedAt());
+            $dto->getCreatedAt()
+        );
 
         $self
             ->setCarrier($dto->getCarrier())
@@ -1247,4 +1249,3 @@ abstract class TpCdrStatAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

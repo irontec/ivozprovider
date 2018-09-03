@@ -25,4 +25,3 @@ interface BalanceNotificationRepository extends ObjectRepository, Selectable
      */
     public function findBrokenThresholdsByCarrier(CarrierInterface $carrier, $prevValue, $currentValue);
 }
-

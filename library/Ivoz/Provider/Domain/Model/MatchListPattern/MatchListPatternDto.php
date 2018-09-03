@@ -22,5 +22,3 @@ class MatchListPatternDto extends MatchListPatternDtoAbstract
         return parent::getPropertyMap(...func_get_args());
     }
 }
-
-

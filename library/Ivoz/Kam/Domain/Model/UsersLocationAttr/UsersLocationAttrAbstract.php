@@ -75,7 +75,8 @@ abstract class UsersLocationAttrAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "UsersLocationAttr",
             $this->getId()
         );
@@ -140,7 +141,8 @@ abstract class UsersLocationAttrAbstract
             $dto->getAname(),
             $dto->getAtype(),
             $dto->getAvalue(),
-            $dto->getLastModified());
+            $dto->getLastModified()
+        );
 
         $self
             ->setDomain($dto->getDomain())
@@ -417,4 +419,3 @@ abstract class UsersLocationAttrAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

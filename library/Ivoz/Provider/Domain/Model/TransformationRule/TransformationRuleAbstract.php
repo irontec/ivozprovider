@@ -60,7 +60,8 @@ abstract class TransformationRuleAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "TransformationRule",
             $this->getId()
         );
@@ -121,7 +122,8 @@ abstract class TransformationRuleAbstract
 
         $self = new static(
             $dto->getType(),
-            $dto->getDescription());
+            $dto->getDescription()
+        );
 
         $self
             ->setPriority($dto->getPriority())
@@ -374,4 +376,3 @@ abstract class TransformationRuleAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

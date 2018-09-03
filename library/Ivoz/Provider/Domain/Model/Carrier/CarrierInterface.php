@@ -284,6 +284,4 @@ interface CarrierInterface extends LoggableEntityInterface
      * @return \Ivoz\Cgr\Domain\Model\TpCdrStat\TpCdrStatInterface[]
      */
     public function getTpCdrStats(\Doctrine\Common\Collections\Criteria $criteria = null);
-
 }
-

@@ -189,7 +189,6 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
     }
 
     /**
@@ -531,5 +530,3 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
         return $this->tpCdrStats;
     }
 }
-
-

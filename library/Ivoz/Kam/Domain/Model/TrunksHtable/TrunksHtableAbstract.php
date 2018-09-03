@@ -66,7 +66,8 @@ abstract class TrunksHtableAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "TrunksHtable",
             $this->getId()
         );
@@ -130,7 +131,8 @@ abstract class TrunksHtableAbstract
             $dto->getKeyType(),
             $dto->getValueType(),
             $dto->getKeyValue(),
-            $dto->getExpires());
+            $dto->getExpires()
+        );
 
         $self;
 
@@ -339,4 +341,3 @@ abstract class TrunksHtableAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

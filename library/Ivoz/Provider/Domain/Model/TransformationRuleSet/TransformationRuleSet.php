@@ -54,4 +54,3 @@ class TransformationRuleSet extends TransformationRuleSetAbstract implements Tra
         return parent::setTrunkPrefix($trunkPrefix);
     }
 }
-

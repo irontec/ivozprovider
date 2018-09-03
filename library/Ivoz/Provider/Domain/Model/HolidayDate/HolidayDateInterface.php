@@ -77,6 +77,4 @@ interface HolidayDateInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Locution\LocutionInterface
      */
     public function getLocution();
-
 }
-

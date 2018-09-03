@@ -70,7 +70,7 @@ class Brand extends BrandAbstract implements BrandInterface, FileContainerInterf
      * @param null $destination
      * @return bool
      */
-    public function willUseExternallyRating(CompanyInterface $company, $destination=null)
+    public function willUseExternallyRating(CompanyInterface $company, $destination = null)
     {
         $outgoingRoutings = $company->getOutgoingRoutings();
 
@@ -138,7 +138,6 @@ class Brand extends BrandAbstract implements BrandInterface, FileContainerInterf
     {
         foreach ($this->getFeatures() as $feature) {
             if ($feature->getId() == $featureId) {
-
                 return true;
             }
         }
@@ -159,4 +158,3 @@ class Brand extends BrandAbstract implements BrandInterface, FileContainerInterf
         );
     }
 }
-

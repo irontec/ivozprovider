@@ -9,4 +9,3 @@ interface TpAccountActionRepository extends ObjectRepository, Selectable
 {
 
 }
-

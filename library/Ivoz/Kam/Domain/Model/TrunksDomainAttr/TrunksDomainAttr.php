@@ -28,4 +28,3 @@ class TrunksDomainAttr extends TrunksDomainAttrAbstract implements TrunksDomainA
         return $this->id;
     }
 }
-

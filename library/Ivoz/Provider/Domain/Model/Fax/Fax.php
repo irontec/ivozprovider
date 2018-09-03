@@ -34,7 +34,8 @@ class Fax extends FaxAbstract implements FaxInterface
      */
     public function __toString()
     {
-        return sprintf("%s [fax%d]",
+        return sprintf(
+            "%s [fax%d]",
             $this->getName(),
             $this->getId()
         );
@@ -55,7 +56,6 @@ class Fax extends FaxAbstract implements FaxInterface
     public function getOutgoingDdi()
     {
         if (!is_null($this->outgoingDdi)) {
-
             return parent::getOutgoingDdi();
         }
 
@@ -64,4 +64,3 @@ class Fax extends FaxAbstract implements FaxInterface
             ->getOutgoingDdi();
     }
 }
-

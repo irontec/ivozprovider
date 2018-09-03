@@ -39,4 +39,3 @@ class BalanceNotification extends BalanceNotificationAbstract implements Balance
         }
     }
 }
-

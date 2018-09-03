@@ -159,6 +159,4 @@ interface DestinationRateGroupInterface extends LoggableEntityInterface
      * @return null | TempFile
      */
     public function getTempFileByFieldName($fldName);
-
 }
-

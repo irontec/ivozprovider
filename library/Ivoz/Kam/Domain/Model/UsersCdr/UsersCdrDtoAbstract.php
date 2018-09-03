@@ -193,7 +193,6 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -732,5 +731,3 @@ abstract class UsersCdrDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 }
-
-

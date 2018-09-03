@@ -160,7 +160,6 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -489,5 +488,3 @@ abstract class TpLcrRuleDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 }
-
-

@@ -6,5 +6,3 @@ class CommandlogDto extends CommandlogDtoAbstract
 {
 
 }
-
-

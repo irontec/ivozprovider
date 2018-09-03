@@ -6,5 +6,3 @@ class RoutingTagDto extends RoutingTagDtoAbstract
 {
 
 }
-
-

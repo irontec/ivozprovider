@@ -167,7 +167,6 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
     }
 
     /**
@@ -543,5 +542,3 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
         return $this->users;
     }
 }
-
-

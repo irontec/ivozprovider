@@ -22,6 +22,4 @@ class IvrExcludedExtension extends IvrExcludedExtensionAbstract implements IvrEx
     {
         return $this->id;
     }
-
 }
-

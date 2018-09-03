@@ -164,7 +164,4 @@ trait OutgoingDdiRuleTrait
 
         return $this->patterns->toArray();
     }
-
-
 }
-

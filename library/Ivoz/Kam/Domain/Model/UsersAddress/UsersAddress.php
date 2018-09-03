@@ -61,4 +61,3 @@ class UsersAddress extends UsersAddressAbstract implements UsersAddressInterface
         return parent::setMask($mask);
     }
 }
-

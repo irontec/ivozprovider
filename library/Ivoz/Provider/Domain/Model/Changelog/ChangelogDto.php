@@ -6,5 +6,3 @@ class ChangelogDto extends ChangelogDtoAbstract
 {
 
 }
-
-

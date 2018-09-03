@@ -27,4 +27,3 @@ class PickUpGroup extends PickUpGroupAbstract implements PickUpGroupInterface
         return $this->id;
     }
 }
-

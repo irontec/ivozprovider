@@ -33,5 +33,3 @@ class AdministratorDto extends AdministratorDtoAbstract
         return $response;
     }
 }
-
-

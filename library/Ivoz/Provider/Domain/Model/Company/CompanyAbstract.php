@@ -214,7 +214,8 @@ abstract class CompanyAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "Company",
             $this->getId()
         );
@@ -284,7 +285,8 @@ abstract class CompanyAbstract
             $dto->getTown(),
             $dto->getProvince(),
             $dto->getCountryName(),
-            $dto->getBillingMethod());
+            $dto->getBillingMethod()
+        );
 
         $self
             ->setDomainUsers($dto->getDomainUsers())
@@ -1332,4 +1334,3 @@ abstract class CompanyAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

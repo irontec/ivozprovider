@@ -208,7 +208,6 @@ class EntityNormalizer implements NormalizerInterface
                 }
 
             } elseif ($value instanceof \DateTimeInterface) {
-
                 $rawData[$key] = $this->dateTimeNormalizer->normalize(
                     $resourceClass,
                     $key,

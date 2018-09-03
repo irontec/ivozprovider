@@ -54,7 +54,8 @@ abstract class FaxAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "Fax",
             $this->getId()
         );
@@ -115,7 +116,8 @@ abstract class FaxAbstract
 
         $self = new static(
             $dto->getName(),
-            $dto->getSendByEmail());
+            $dto->getSendByEmail()
+        );
 
         $self
             ->setEmail($dto->getEmail())
@@ -321,4 +323,3 @@ abstract class FaxAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

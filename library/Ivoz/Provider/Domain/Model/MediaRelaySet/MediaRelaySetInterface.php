@@ -45,6 +45,4 @@ interface MediaRelaySetInterface extends LoggableEntityInterface
      * @return string
      */
     public function getDescription();
-
 }
-

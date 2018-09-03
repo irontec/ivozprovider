@@ -27,4 +27,3 @@ class UsersLocationAttr extends UsersLocationAttrAbstract implements UsersLocati
         return $this->id;
     }
 }
-

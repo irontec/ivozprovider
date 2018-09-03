@@ -228,7 +228,8 @@ abstract class TpDerivedChargerAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "TpDerivedCharger",
             $this->getId()
         );
@@ -311,7 +312,8 @@ abstract class TpDerivedChargerAbstract
             $dto->getDisconnectCauseField(),
             $dto->getRatedTimeField(),
             $dto->getCostField(),
-            $dto->getCreatedAt());
+            $dto->getCreatedAt()
+        );
 
         $self
             ->setSubject($dto->getSubject())
@@ -1207,4 +1209,3 @@ abstract class TpDerivedChargerAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

@@ -62,6 +62,4 @@ interface TerminalManufacturerInterface extends LoggableEntityInterface
      * @return string
      */
     public function getDescription();
-
 }
-

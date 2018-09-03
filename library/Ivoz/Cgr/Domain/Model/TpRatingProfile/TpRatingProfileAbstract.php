@@ -109,7 +109,8 @@ abstract class TpRatingProfileAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "TpRatingProfile",
             $this->getId()
         );
@@ -174,7 +175,8 @@ abstract class TpRatingProfileAbstract
             $dto->getDirection(),
             $dto->getCategory(),
             $dto->getActivationTime(),
-            $dto->getCreatedAt());
+            $dto->getCreatedAt()
+        );
 
         $self
             ->setTenant($dto->getTenant())
@@ -642,4 +644,3 @@ abstract class TpRatingProfileAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

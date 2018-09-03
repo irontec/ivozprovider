@@ -164,7 +164,4 @@ trait TransformationRuleSetTrait
 
         return $this->rules->toArray();
     }
-
-
 }
-

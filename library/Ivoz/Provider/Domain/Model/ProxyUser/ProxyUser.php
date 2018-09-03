@@ -28,4 +28,3 @@ class ProxyUser extends ProxyUserAbstract implements ProxyUserInterface
         return $this->id;
     }
 }
-

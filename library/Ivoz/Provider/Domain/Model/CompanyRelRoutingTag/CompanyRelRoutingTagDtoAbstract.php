@@ -77,7 +77,6 @@ abstract class CompanyRelRoutingTagDtoAbstract implements DataTransferObjectInte
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -192,5 +191,3 @@ abstract class CompanyRelRoutingTagDtoAbstract implements DataTransferObjectInte
         return null;
     }
 }
-
-

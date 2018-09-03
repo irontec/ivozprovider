@@ -6,5 +6,3 @@ class FeaturesRelBrandDto extends FeaturesRelBrandDtoAbstract
 {
 
 }
-
-

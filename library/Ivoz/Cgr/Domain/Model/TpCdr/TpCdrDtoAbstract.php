@@ -215,7 +215,6 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -223,7 +222,6 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -706,5 +704,3 @@ abstract class TpCdrDtoAbstract implements DataTransferObjectInterface
         return $this->id;
     }
 }
-
-

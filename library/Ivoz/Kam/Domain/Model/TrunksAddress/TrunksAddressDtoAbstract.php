@@ -104,7 +104,6 @@ abstract class TrunksAddressDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -273,5 +272,3 @@ abstract class TrunksAddressDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 }
-
-

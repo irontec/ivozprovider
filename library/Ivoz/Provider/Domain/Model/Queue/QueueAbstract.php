@@ -133,14 +133,14 @@ abstract class QueueAbstract
      */
     protected function __construct()
     {
-
     }
 
     abstract public function getId();
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "Queue",
             $this->getId()
         );
@@ -410,11 +410,11 @@ abstract class QueueAbstract
     {
         if (!is_null($timeoutTargetType)) {
             Assertion::maxLength($timeoutTargetType, 25, 'timeoutTargetType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        Assertion::choice($timeoutTargetType, array (
-          0 => 'number',
-          1 => 'extension',
-          2 => 'voicemail',
-        ), 'timeoutTargetTypevalue "%s" is not an element of the valid values: %s');
+            Assertion::choice($timeoutTargetType, array (
+            0 => 'number',
+            1 => 'extension',
+            2 => 'voicemail',
+            ), 'timeoutTargetTypevalue "%s" is not an element of the valid values: %s');
         }
 
         $this->timeoutTargetType = $timeoutTargetType;
@@ -504,11 +504,11 @@ abstract class QueueAbstract
     {
         if (!is_null($fullTargetType)) {
             Assertion::maxLength($fullTargetType, 25, 'fullTargetType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        Assertion::choice($fullTargetType, array (
-          0 => 'number',
-          1 => 'extension',
-          2 => 'voicemail',
-        ), 'fullTargetTypevalue "%s" is not an element of the valid values: %s');
+            Assertion::choice($fullTargetType, array (
+            0 => 'number',
+            1 => 'extension',
+            2 => 'voicemail',
+            ), 'fullTargetTypevalue "%s" is not an element of the valid values: %s');
         }
 
         $this->fullTargetType = $fullTargetType;
@@ -951,4 +951,3 @@ abstract class QueueAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

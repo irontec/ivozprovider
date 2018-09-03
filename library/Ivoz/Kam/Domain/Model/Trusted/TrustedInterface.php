@@ -138,6 +138,4 @@ interface TrustedInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
      */
     public function getCompany();
-
 }
-

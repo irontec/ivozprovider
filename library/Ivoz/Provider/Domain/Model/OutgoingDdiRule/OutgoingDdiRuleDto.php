@@ -20,5 +20,3 @@ class OutgoingDdiRuleDto extends OutgoingDdiRuleDtoAbstract
         return parent::getPropertyMap(...func_get_args());
     }
 }
-
-

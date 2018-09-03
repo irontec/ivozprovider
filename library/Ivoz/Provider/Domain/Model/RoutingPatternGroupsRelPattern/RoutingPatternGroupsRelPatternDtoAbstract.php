@@ -77,7 +77,6 @@ abstract class RoutingPatternGroupsRelPatternDtoAbstract implements DataTransfer
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -192,5 +191,3 @@ abstract class RoutingPatternGroupsRelPatternDtoAbstract implements DataTransfer
         return null;
     }
 }
-
-

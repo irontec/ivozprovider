@@ -20,5 +20,3 @@ class InvoiceTemplateDto extends InvoiceTemplateDtoAbstract
         return parent::getPropertyMap(...func_get_args());
     }
 }
-
-

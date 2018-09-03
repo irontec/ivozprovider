@@ -61,7 +61,8 @@ abstract class TrunksLcrRuleTargetAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "TrunksLcrRuleTarget",
             $this->getId()
         );
@@ -123,7 +124,8 @@ abstract class TrunksLcrRuleTargetAbstract
         $self = new static(
             $dto->getLcrId(),
             $dto->getPriority(),
-            $dto->getWeight());
+            $dto->getWeight()
+        );
 
         $self
             ->setRule($dto->getRule())
@@ -358,4 +360,3 @@ abstract class TrunksLcrRuleTargetAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

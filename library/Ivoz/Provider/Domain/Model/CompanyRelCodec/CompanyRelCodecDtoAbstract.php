@@ -77,7 +77,6 @@ abstract class CompanyRelCodecDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -192,5 +191,3 @@ abstract class CompanyRelCodecDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 }
-
-

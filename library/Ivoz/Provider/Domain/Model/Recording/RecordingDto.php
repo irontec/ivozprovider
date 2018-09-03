@@ -51,5 +51,3 @@ class RecordingDto extends RecordingDtoAbstract
         return $this->recordedFile;
     }
 }
-
-

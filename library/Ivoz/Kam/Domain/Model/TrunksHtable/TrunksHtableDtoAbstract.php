@@ -89,7 +89,6 @@ abstract class TrunksHtableDtoAbstract implements DataTransferObjectInterface
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -97,7 +96,6 @@ abstract class TrunksHtableDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -220,5 +218,3 @@ abstract class TrunksHtableDtoAbstract implements DataTransferObjectInterface
         return $this->id;
     }
 }
-
-

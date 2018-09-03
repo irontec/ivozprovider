@@ -43,7 +43,6 @@ class TrunksUacreg extends TrunksUacregAbstract implements TrunksUacregInterface
         if (!$this->getAuthProxy()) {
             $this->setAuthProxy('sip:' . $this->getRDomain());
         }
-
     }
 
     /**
@@ -70,4 +69,3 @@ class TrunksUacreg extends TrunksUacregAbstract implements TrunksUacregInterface
         return parent::setLUuid($lUuid);
     }
 }
-

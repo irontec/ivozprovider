@@ -140,7 +140,6 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -435,5 +434,3 @@ abstract class DdiProviderRegistrationDtoAbstract implements DataTransferObjectI
         return null;
     }
 }
-
-

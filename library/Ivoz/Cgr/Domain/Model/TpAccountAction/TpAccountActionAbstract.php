@@ -100,7 +100,8 @@ abstract class TpAccountActionAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "TpAccountAction",
             $this->getId()
         );
@@ -166,7 +167,8 @@ abstract class TpAccountActionAbstract
             $dto->getAccount(),
             $dto->getAllowNegative(),
             $dto->getDisabled(),
-            $dto->getCreatedAt());
+            $dto->getCreatedAt()
+        );
 
         $self
             ->setActionPlanTag($dto->getActionPlanTag())
@@ -563,4 +565,3 @@ abstract class TpAccountActionAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

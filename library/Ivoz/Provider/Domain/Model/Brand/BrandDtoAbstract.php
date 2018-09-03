@@ -314,7 +314,6 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
     }
 
     /**
@@ -974,5 +973,3 @@ abstract class BrandDtoAbstract implements DataTransferObjectInterface
         return $this->outgoingRoutings;
     }
 }
-
-

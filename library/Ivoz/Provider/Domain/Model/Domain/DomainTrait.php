@@ -334,7 +334,4 @@ trait DomainTrait
 
         return $this->terminals->toArray();
     }
-
-
 }
-

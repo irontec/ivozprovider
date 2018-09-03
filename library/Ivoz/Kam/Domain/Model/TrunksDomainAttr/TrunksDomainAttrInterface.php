@@ -96,6 +96,4 @@ interface TrunksDomainAttrInterface extends LoggableEntityInterface
      * @return \DateTime
      */
     public function getLastModified();
-
 }
-

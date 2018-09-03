@@ -2,7 +2,6 @@
 
 namespace Ivoz\Provider\Domain\Model\RatingProfile;
 
-
 class RatingProfileDto extends RatingProfileDtoAbstract
 {
     /**
@@ -18,5 +17,3 @@ class RatingProfileDto extends RatingProfileDtoAbstract
         return $response;
     }
 }
-
-

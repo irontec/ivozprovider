@@ -98,7 +98,6 @@ abstract class TimezoneDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -247,5 +246,3 @@ abstract class TimezoneDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 }
-
-

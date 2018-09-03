@@ -44,6 +44,4 @@ interface FeatureInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Feature\Name
      */
     public function getName();
-
 }
-

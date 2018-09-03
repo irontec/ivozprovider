@@ -77,6 +77,4 @@ interface CallAclRelMatchListInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface
      */
     public function getMatchList();
-
 }
-

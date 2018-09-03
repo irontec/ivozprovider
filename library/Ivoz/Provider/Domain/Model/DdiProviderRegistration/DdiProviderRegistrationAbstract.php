@@ -98,7 +98,8 @@ abstract class DdiProviderRegistrationAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "DdiProviderRegistration",
             $this->getId()
         );
@@ -165,7 +166,8 @@ abstract class DdiProviderRegistrationAbstract
             $dto->getAuthPassword(),
             $dto->getAuthProxy(),
             $dto->getExpires(),
-            $dto->getContactUsername());
+            $dto->getContactUsername()
+        );
 
         $self
             ->setMultiDdi($dto->getMultiDdi())
@@ -553,4 +555,3 @@ abstract class DdiProviderRegistrationAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

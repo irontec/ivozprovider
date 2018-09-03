@@ -51,4 +51,3 @@ class Calendar extends CalendarAbstract implements CalendarInterface
         return !empty($holidayDates);
     }
 }
-

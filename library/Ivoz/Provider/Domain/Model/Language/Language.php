@@ -28,4 +28,3 @@ class Language extends LanguageAbstract implements LanguageInterface
         return $this->id;
     }
 }
-

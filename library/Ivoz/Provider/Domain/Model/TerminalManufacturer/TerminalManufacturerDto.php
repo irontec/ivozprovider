@@ -20,5 +20,3 @@ class TerminalManufacturerDto extends TerminalManufacturerDtoAbstract
         return parent::getPropertyMap(...func_get_args());
     }
 }
-
-

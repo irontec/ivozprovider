@@ -50,7 +50,8 @@ abstract class CountryAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "Country",
             $this->getId()
         );
@@ -308,4 +309,3 @@ abstract class CountryAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

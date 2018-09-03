@@ -20,5 +20,3 @@ class ExternalCallFilterDto extends ExternalCallFilterDtoAbstract
         return parent::getPropertyMap(...func_get_args());
     }
 }
-
-

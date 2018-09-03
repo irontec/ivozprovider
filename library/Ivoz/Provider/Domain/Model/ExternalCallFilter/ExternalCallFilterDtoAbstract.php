@@ -236,7 +236,6 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
                 );
             }
         }
-
     }
 
     /**
@@ -922,5 +921,3 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
         return $this->schedules;
     }
 }
-
-

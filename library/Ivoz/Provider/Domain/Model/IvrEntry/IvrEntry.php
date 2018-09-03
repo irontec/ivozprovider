@@ -59,4 +59,3 @@ class IvrEntry extends IvrEntryAbstract implements IvrEntryInterface
             $this->getNumberValue();
     }
 }
-

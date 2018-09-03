@@ -49,7 +49,8 @@ abstract class TimezoneAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "Timezone",
             $this->getId()
         );
@@ -295,4 +296,3 @@ abstract class TimezoneAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

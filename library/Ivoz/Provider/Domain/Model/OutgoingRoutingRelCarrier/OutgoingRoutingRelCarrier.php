@@ -28,4 +28,3 @@ class OutgoingRoutingRelCarrier extends OutgoingRoutingRelCarrierAbstract implem
         return $this->id;
     }
 }
-

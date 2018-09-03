@@ -43,7 +43,8 @@ abstract class BrandServiceAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "BrandService",
             $this->getId()
         );
@@ -103,7 +104,8 @@ abstract class BrandServiceAbstract
         Assertion::isInstanceOf($dto, BrandServiceDto::class);
 
         $self = new static(
-            $dto->getCode());
+            $dto->getCode()
+        );
 
         $self
             ->setBrand($dto->getBrand())
@@ -245,4 +247,3 @@ abstract class BrandServiceAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

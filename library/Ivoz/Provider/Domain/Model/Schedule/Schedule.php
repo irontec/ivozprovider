@@ -30,7 +30,7 @@ class Schedule extends ScheduleAbstract implements ScheduleInterface
 
     public function checkIsOnTimeRange($dayOfTheWeek, \DateTime $time, \DateTimeZone $timeZone)
     {
-        if(!call_user_func(array($this, 'get' . $dayOfTheWeek))) {
+        if (!call_user_func(array($this, 'get' . $dayOfTheWeek))) {
             return false;
         }
 
@@ -51,7 +51,7 @@ class Schedule extends ScheduleAbstract implements ScheduleInterface
     {
         // Check if Day of The Week is enabled in the schedule
         $dayOfTheWeek = $time->format("l");
-        if(!call_user_func(array($this, "get" . $dayOfTheWeek))) {
+        if (!call_user_func(array($this, "get" . $dayOfTheWeek))) {
             return false;
         }
 
@@ -70,4 +70,3 @@ class Schedule extends ScheduleAbstract implements ScheduleInterface
         return $isOnSchedule;
     }
 }
-

@@ -96,6 +96,4 @@ interface TrunksHtableInterface extends LoggableEntityInterface
      * @return integer
      */
     public function getExpires();
-
 }
-

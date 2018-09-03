@@ -43,6 +43,4 @@ interface FeaturesRelBrandInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Feature\FeatureInterface
      */
     public function getFeature();
-
 }
-

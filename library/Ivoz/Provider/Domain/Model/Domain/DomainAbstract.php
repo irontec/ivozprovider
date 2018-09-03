@@ -44,7 +44,8 @@ abstract class DomainAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "Domain",
             $this->getId()
         );
@@ -105,7 +106,8 @@ abstract class DomainAbstract
 
         $self = new static(
             $dto->getDomain(),
-            $dto->getPointsTo());
+            $dto->getPointsTo()
+        );
 
         $self
             ->setDescription($dto->getDescription())
@@ -254,4 +256,3 @@ abstract class DomainAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

@@ -53,6 +53,4 @@ class TpAccountAction extends TpAccountActionAbstract implements TpAccountAction
         }
         return $this;
     }
-
 }
-

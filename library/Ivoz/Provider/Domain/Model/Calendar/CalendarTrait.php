@@ -164,7 +164,4 @@ trait CalendarTrait
 
         return $this->holidayDates->toArray();
     }
-
-
 }
-

@@ -194,7 +194,6 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -759,5 +758,3 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 }
-
-

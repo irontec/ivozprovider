@@ -20,5 +20,3 @@ class ExtensionDto extends ExtensionDtoAbstract
         return parent::getPropertyMap(...func_get_args());
     }
 }
-
-

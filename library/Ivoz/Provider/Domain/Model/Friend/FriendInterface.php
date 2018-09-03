@@ -436,6 +436,4 @@ interface FriendInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPatternInterface[]
      */
     public function getPatterns(\Doctrine\Common\Collections\Criteria $criteria = null);
-
 }
-

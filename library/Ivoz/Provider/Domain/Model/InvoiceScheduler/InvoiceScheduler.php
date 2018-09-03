@@ -68,4 +68,3 @@ class InvoiceScheduler extends InvoiceSchedulerAbstract implements InvoiceSchedu
         }
     }
 }
-

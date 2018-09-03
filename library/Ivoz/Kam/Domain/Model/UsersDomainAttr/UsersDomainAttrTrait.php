@@ -22,7 +22,6 @@ trait UsersDomainAttrTrait
     protected function __construct()
     {
         parent::__construct(...func_get_args());
-
     }
 
     /**
@@ -86,7 +85,4 @@ trait UsersDomainAttrTrait
             'id' => self::getId()
         ];
     }
-
-
 }
-

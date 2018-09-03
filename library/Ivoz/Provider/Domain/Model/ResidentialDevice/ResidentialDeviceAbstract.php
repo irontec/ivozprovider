@@ -157,7 +157,8 @@ abstract class ResidentialDeviceAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "ResidentialDevice",
             $this->getId()
         );
@@ -226,7 +227,8 @@ abstract class ResidentialDeviceAbstract
             $dto->getDirectMediaMethod(),
             $dto->getCalleridUpdateHeader(),
             $dto->getUpdateCallerid(),
-            $dto->getDirectConnectivity());
+            $dto->getDirectConnectivity()
+        );
 
         $self
             ->setIp($dto->getIp())
@@ -910,4 +912,3 @@ abstract class ResidentialDeviceAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

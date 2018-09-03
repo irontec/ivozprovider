@@ -50,4 +50,3 @@ class RoutingPatternGroup extends RoutingPatternGroupAbstract implements Routing
         return $patterns;
     }
 }
-

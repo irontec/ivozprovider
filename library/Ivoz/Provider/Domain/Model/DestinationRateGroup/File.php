@@ -176,4 +176,3 @@ class File
 
     // @codeCoverageIgnoreEnd
 }
-

@@ -20,5 +20,3 @@ class PickUpRelUserDto extends PickUpRelUserDtoAbstract
         return parent::getPropertyMap(...func_get_args());
     }
 }
-
-

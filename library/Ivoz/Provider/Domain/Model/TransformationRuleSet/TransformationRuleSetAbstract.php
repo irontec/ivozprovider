@@ -73,7 +73,8 @@ abstract class TransformationRuleSetAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "TransformationRuleSet",
             $this->getId()
         );
@@ -483,4 +484,3 @@ abstract class TransformationRuleSetAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

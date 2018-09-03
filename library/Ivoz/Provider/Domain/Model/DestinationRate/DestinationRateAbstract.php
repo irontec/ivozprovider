@@ -76,7 +76,8 @@ abstract class DestinationRateAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "DestinationRate",
             $this->getId()
         );
@@ -139,7 +140,8 @@ abstract class DestinationRateAbstract
             $dto->getCost(),
             $dto->getConnectFee(),
             $dto->getRateIncrement(),
-            $dto->getGroupIntervalStart());
+            $dto->getGroupIntervalStart()
+        );
 
         $self
             ->setDestinationRateGroup($dto->getDestinationRateGroup())
@@ -424,4 +426,3 @@ abstract class DestinationRateAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

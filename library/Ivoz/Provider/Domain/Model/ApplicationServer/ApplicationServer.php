@@ -28,4 +28,3 @@ class ApplicationServer extends ApplicationServerAbstract implements Application
         return $this->id;
     }
 }
-

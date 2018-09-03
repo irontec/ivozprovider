@@ -183,7 +183,6 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -624,5 +623,3 @@ abstract class CarrierServerDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 }
-
-

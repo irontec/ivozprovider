@@ -39,7 +39,8 @@ abstract class LanguageAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "Language",
             $this->getId()
         );
@@ -223,4 +224,3 @@ abstract class LanguageAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

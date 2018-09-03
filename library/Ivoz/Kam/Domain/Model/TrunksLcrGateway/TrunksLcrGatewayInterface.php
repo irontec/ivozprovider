@@ -231,6 +231,4 @@ interface TrunksLcrGatewayInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface
      */
     public function getCarrierServer();
-
 }
-

@@ -130,6 +130,4 @@ interface UsersWatcherInterface extends LoggableEntityInterface
      * @return integer
      */
     public function getInsertedTime();
-
 }
-

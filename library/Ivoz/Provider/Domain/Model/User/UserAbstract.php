@@ -181,7 +181,8 @@ abstract class UserAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "User",
             $this->getId()
         );
@@ -251,7 +252,8 @@ abstract class UserAbstract
             $dto->getVoicemailEnabled(),
             $dto->getVoicemailSendMail(),
             $dto->getVoicemailAttachSound(),
-            $dto->getGsQRCode());
+            $dto->getGsQRCode()
+        );
 
         $self
             ->setEmail($dto->getEmail())
@@ -1089,4 +1091,3 @@ abstract class UserAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

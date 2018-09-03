@@ -149,7 +149,6 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
     }
 
     /**
@@ -397,5 +396,3 @@ abstract class RoutingPatternDtoAbstract implements DataTransferObjectInterface
         return $this->lcrRules;
     }
 }
-
-

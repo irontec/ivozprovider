@@ -251,7 +251,6 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -840,5 +839,3 @@ abstract class TpDerivedChargerDtoAbstract implements DataTransferObjectInterfac
         return null;
     }
 }
-
-

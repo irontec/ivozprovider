@@ -97,7 +97,8 @@ abstract class TrunksLcrGatewayAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "TrunksLcrGateway",
             $this->getId()
         );
@@ -158,7 +159,8 @@ abstract class TrunksLcrGatewayAbstract
 
         $self = new static(
             $dto->getLcrId(),
-            $dto->getGwName());
+            $dto->getGwName()
+        );
 
         $self
             ->setIp($dto->getIp())
@@ -646,4 +648,3 @@ abstract class TrunksLcrGatewayAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

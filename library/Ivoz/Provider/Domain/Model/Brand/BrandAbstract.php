@@ -86,7 +86,8 @@ abstract class BrandAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "Brand",
             $this->getId()
         );
@@ -553,4 +554,3 @@ abstract class BrandAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

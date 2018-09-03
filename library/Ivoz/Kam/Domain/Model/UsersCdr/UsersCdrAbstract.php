@@ -122,7 +122,8 @@ abstract class UsersCdrAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "UsersCdr",
             $this->getId()
         );
@@ -184,7 +185,8 @@ abstract class UsersCdrAbstract
         $self = new static(
             $dto->getStartTime(),
             $dto->getEndTime(),
-            $dto->getDuration());
+            $dto->getDuration()
+        );
 
         $self
             ->setDirection($dto->getDirection())
@@ -803,4 +805,3 @@ abstract class UsersCdrAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

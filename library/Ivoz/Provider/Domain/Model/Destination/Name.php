@@ -97,4 +97,3 @@ class Name
 
     // @codeCoverageIgnoreEnd
 }
-

@@ -64,7 +64,8 @@ abstract class CarrierAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "Carrier",
             $this->getId()
         );
@@ -125,7 +126,8 @@ abstract class CarrierAbstract
 
         $self = new static(
             $dto->getDescription(),
-            $dto->getName());
+            $dto->getName()
+        );
 
         $self
             ->setExternallyRated($dto->getExternallyRated())
@@ -400,4 +402,3 @@ abstract class CarrierAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

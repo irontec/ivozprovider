@@ -29,7 +29,9 @@ class Message
      */
     protected $toAddress;
 
-    public function __constructor(){}
+    public function __constructor()
+    {
+    }
 
     /**
      * @return \Swift_Message

@@ -109,7 +109,6 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
     }
 
     /**
@@ -367,5 +366,3 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
         return $this->tpRatingProfiles;
     }
 }
-
-

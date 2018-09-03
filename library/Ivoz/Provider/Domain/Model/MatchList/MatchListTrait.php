@@ -164,7 +164,4 @@ trait MatchListTrait
 
         return $this->patterns->toArray();
     }
-
-
 }
-

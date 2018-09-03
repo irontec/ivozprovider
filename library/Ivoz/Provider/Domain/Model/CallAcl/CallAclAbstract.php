@@ -45,7 +45,8 @@ abstract class CallAclAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "CallAcl",
             $this->getId()
         );
@@ -106,7 +107,8 @@ abstract class CallAclAbstract
 
         $self = new static(
             $dto->getName(),
-            $dto->getDefaultPolicy());
+            $dto->getDefaultPolicy()
+        );
 
         $self
             ->setCompany($dto->getCompany())
@@ -255,4 +257,3 @@ abstract class CallAclAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

@@ -36,4 +36,3 @@ class Voicemail extends VoicemailAbstract implements VoicemailInterface
         return $this->id;
     }
 }
-

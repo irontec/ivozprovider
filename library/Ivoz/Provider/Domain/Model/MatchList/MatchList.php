@@ -1,6 +1,7 @@
 <?php
 
 namespace Ivoz\Provider\Domain\Model\MatchList;
+
 use Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPatternInterface;
 
 /**
@@ -63,4 +64,3 @@ class MatchList extends MatchListAbstract implements MatchListInterface
         return false;
     }
 }
-

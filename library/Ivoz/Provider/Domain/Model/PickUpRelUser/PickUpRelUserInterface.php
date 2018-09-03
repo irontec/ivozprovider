@@ -43,6 +43,4 @@ interface PickUpRelUserInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\User\UserInterface
      */
     public function getUser();
-
 }
-

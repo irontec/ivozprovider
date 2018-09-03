@@ -43,7 +43,8 @@ abstract class MatchListAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "MatchList",
             $this->getId()
         );
@@ -103,7 +104,8 @@ abstract class MatchListAbstract
         Assertion::isInstanceOf($dto, MatchListDto::class);
 
         $self = new static(
-            $dto->getName());
+            $dto->getName()
+        );
 
         $self
             ->setBrand($dto->getBrand())
@@ -245,4 +247,3 @@ abstract class MatchListAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

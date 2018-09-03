@@ -164,7 +164,4 @@ trait RetailAccountTrait
 
         return $this->ddis->toArray();
     }
-
-
 }
-

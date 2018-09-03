@@ -38,7 +38,8 @@ abstract class ApplicationServerAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "ApplicationServer",
             $this->getId()
         );
@@ -98,7 +99,8 @@ abstract class ApplicationServerAbstract
         Assertion::isInstanceOf($dto, ApplicationServerDto::class);
 
         $self = new static(
-            $dto->getIp());
+            $dto->getIp()
+        );
 
         $self
             ->setName($dto->getName())
@@ -217,4 +219,3 @@ abstract class ApplicationServerAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

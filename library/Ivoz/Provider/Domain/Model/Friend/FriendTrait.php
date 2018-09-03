@@ -249,7 +249,4 @@ trait FriendTrait
 
         return $this->patterns->toArray();
     }
-
-
 }
-

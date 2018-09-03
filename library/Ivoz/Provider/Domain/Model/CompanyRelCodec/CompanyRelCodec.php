@@ -29,4 +29,3 @@ class CompanyRelCodec extends CompanyRelCodecAbstract implements CompanyRelCodec
         return $this->id;
     }
 }
-

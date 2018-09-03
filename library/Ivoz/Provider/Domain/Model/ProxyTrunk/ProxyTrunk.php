@@ -28,4 +28,3 @@ class ProxyTrunk extends ProxyTrunkAbstract implements ProxyTrunkInterface
         return $this->id;
     }
 }
-

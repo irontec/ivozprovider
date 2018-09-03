@@ -385,6 +385,4 @@ interface UsersLocationInterface extends LoggableEntityInterface
      * @return integer
      */
     public function getPartition();
-
 }
-

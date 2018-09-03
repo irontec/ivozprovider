@@ -76,7 +76,6 @@ abstract class LanguageDtoAbstract implements DataTransferObjectInterface
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -84,7 +83,6 @@ abstract class LanguageDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -167,5 +165,3 @@ abstract class LanguageDtoAbstract implements DataTransferObjectInterface
         return $this->nameEs;
     }
 }
-
-

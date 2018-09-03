@@ -49,5 +49,3 @@ class FaxesInOutDto extends FaxesInOutDtoAbstract
         return $this->filePath;
     }
 }
-
-

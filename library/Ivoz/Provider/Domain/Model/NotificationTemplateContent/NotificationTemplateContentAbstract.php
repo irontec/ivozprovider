@@ -59,7 +59,8 @@ abstract class NotificationTemplateContentAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "NotificationTemplateContent",
             $this->getId()
         );
@@ -120,7 +121,8 @@ abstract class NotificationTemplateContentAbstract
 
         $self = new static(
             $dto->getSubject(),
-            $dto->getBody());
+            $dto->getBody()
+        );
 
         $self
             ->setFromName($dto->getFromName())
@@ -359,4 +361,3 @@ abstract class NotificationTemplateContentAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

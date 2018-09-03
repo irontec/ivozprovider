@@ -92,6 +92,4 @@ interface OutgoingDdiRulesPatternInterface extends LoggableEntityInterface
      * @return self
      */
     public function setForcedDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $forcedDdi = null);
-
 }
-

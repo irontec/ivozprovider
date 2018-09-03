@@ -2,7 +2,7 @@
 
 namespace Ivoz\Core\Domain\Model;
 
-Trait ChangelogTrait
+trait ChangelogTrait
 {
     /**
      * @return bool
@@ -67,7 +67,6 @@ Trait ChangelogTrait
         $changes = [];
         $currentValues = $this->__toArray();
         foreach ($currentValues as $key => $value) {
-
             if ($this->_initialValues[$key] == $currentValues[$key]) {
                 continue;
             }

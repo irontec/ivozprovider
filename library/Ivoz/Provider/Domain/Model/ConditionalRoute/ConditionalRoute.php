@@ -39,7 +39,8 @@ class ConditionalRoute extends ConditionalRouteAbstract implements ConditionalRo
      */
     public function __toString()
     {
-        return sprintf("%s [%s]",
+        return sprintf(
+            "%s [%s]",
             $this->getName(),
             parent::__toString()
         );
@@ -69,4 +70,3 @@ class ConditionalRoute extends ConditionalRouteAbstract implements ConditionalRo
             $this->getNumberValue();
     }
 }
-

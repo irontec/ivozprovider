@@ -164,7 +164,4 @@ trait RatingProfileTrait
 
         return $this->tpRatingProfiles->toArray();
     }
-
-
 }
-

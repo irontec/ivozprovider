@@ -62,6 +62,4 @@ interface CodecInterface extends LoggableEntityInterface
      * @return string
      */
     public function getName();
-
 }
-

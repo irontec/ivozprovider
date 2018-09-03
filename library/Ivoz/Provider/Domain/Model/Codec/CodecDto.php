@@ -6,5 +6,3 @@ class CodecDto extends CodecDtoAbstract
 {
 
 }
-
-

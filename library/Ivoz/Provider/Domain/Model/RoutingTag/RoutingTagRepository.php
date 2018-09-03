@@ -13,4 +13,3 @@ interface RoutingTagRepository extends ObjectRepository, Selectable
      */
     public function findByCompanyId(int $companyId);
 }
-

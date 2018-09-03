@@ -28,4 +28,3 @@ class FixedCostsRelInvoiceScheduler extends FixedCostsRelInvoiceSchedulerAbstrac
         return $this->id;
     }
 }
-

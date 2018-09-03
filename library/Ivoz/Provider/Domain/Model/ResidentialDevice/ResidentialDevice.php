@@ -1,6 +1,7 @@
 <?php
 
 namespace Ivoz\Provider\Domain\Model\ResidentialDevice;
+
 use Assert\Assertion;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
@@ -100,9 +101,11 @@ class ResidentialDevice extends ResidentialDeviceAbstract implements Residential
      */
     public function getContact()
     {
-        return sprintf("sip:%s@%s",
+        return sprintf(
+            "sip:%s@%s",
             $this->getName(),
-            $this->getDomain());
+            $this->getDomain()
+        );
     }
 
     /**
@@ -110,11 +113,13 @@ class ResidentialDevice extends ResidentialDeviceAbstract implements Residential
      */
     public function getSorcery()
     {
-        return sprintf("b%dc%dr%d_%s",
+        return sprintf(
+            "b%dc%dr%d_%s",
             $this->getCompany()->getBrand()->getId(),
             $this->getCompany()->getId(),
             $this->getId(),
-            $this->getName());
+            $this->getName()
+        );
     }
 
     public function getAstPsEndpoint()
@@ -174,6 +179,4 @@ class ResidentialDevice extends ResidentialDeviceAbstract implements Residential
 
         return array_shift($ddis);
     }
-
 }
-

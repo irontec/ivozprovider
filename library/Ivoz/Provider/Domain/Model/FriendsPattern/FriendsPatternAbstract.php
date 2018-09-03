@@ -44,7 +44,8 @@ abstract class FriendsPatternAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "FriendsPattern",
             $this->getId()
         );
@@ -105,7 +106,8 @@ abstract class FriendsPatternAbstract
 
         $self = new static(
             $dto->getName(),
-            $dto->getRegExp());
+            $dto->getRegExp()
+        );
 
         $self
             ->setFriend($dto->getFriend())
@@ -250,4 +252,3 @@ abstract class FriendsPatternAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

@@ -80,7 +80,8 @@ abstract class OutgoingRoutingAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "OutgoingRouting",
             $this->getId()
         );
@@ -141,7 +142,8 @@ abstract class OutgoingRoutingAbstract
 
         $self = new static(
             $dto->getPriority(),
-            $dto->getWeight());
+            $dto->getWeight()
+        );
 
         $self
             ->setType($dto->getType())
@@ -328,10 +330,10 @@ abstract class OutgoingRoutingAbstract
     {
         if (!is_null($routingMode)) {
             Assertion::maxLength($routingMode, 25, 'routingMode value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        Assertion::choice($routingMode, array (
-          0 => 'static',
-          1 => 'lcr',
-        ), 'routingModevalue "%s" is not an element of the valid values: %s');
+            Assertion::choice($routingMode, array (
+            0 => 'static',
+            1 => 'lcr',
+            ), 'routingModevalue "%s" is not an element of the valid values: %s');
         }
 
         $this->routingMode = $routingMode;
@@ -497,4 +499,3 @@ abstract class OutgoingRoutingAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

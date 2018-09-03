@@ -77,6 +77,4 @@ interface TimezoneInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Timezone\Label
      */
     public function getLabel();
-
 }
-

@@ -28,4 +28,3 @@ class Dispatcher extends DispatcherAbstract implements DispatcherInterface
         return $this->id;
     }
 }
-

@@ -1,6 +1,7 @@
 <?php
 
 namespace Ivoz\Provider\Domain\Model\DdiProviderAddress;
+
 use Assert\Assertion;
 
 /**
@@ -39,4 +40,3 @@ class DdiProviderAddress extends DdiProviderAddressAbstract implements DdiProvid
         return parent::setIp($ip);
     }
 }
-

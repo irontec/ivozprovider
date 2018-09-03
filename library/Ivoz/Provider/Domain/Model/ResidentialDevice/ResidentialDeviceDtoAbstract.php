@@ -233,7 +233,6 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
                 );
             }
         }
-
     }
 
     /**
@@ -867,5 +866,3 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $this->ddis;
     }
 }
-
-

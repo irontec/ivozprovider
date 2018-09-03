@@ -113,7 +113,8 @@ abstract class CarrierServerAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "CarrierServer",
             $this->getId()
         );
@@ -173,7 +174,8 @@ abstract class CarrierServerAbstract
         Assertion::isInstanceOf($dto, CarrierServerDto::class);
 
         $self = new static(
-            $dto->getAuthNeeded());
+            $dto->getAuthNeeded()
+        );
 
         $self
             ->setIp($dto->getIp())
@@ -776,4 +778,3 @@ abstract class CarrierServerAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

@@ -59,7 +59,8 @@ abstract class LocutionAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "Locution",
             $this->getId()
         );
@@ -262,12 +263,12 @@ abstract class LocutionAbstract
     {
         if (!is_null($status)) {
             Assertion::maxLength($status, 20, 'status value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        Assertion::choice($status, array (
-          0 => 'pending',
-          1 => 'encoding',
-          2 => 'ready',
-          3 => 'error',
-        ), 'statusvalue "%s" is not an element of the valid values: %s');
+            Assertion::choice($status, array (
+            0 => 'pending',
+            1 => 'encoding',
+            2 => 'ready',
+            3 => 'error',
+            ), 'statusvalue "%s" is not an element of the valid values: %s');
         }
 
         $this->status = $status;
@@ -359,4 +360,3 @@ abstract class LocutionAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

@@ -160,7 +160,8 @@ abstract class UsersPuaAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "UsersPua",
             $this->getId()
         );
@@ -235,7 +236,8 @@ abstract class UsersPuaAbstract
             $dto->getContact(),
             $dto->getRemoteContact(),
             $dto->getVersion(),
-            $dto->getExtraHeaders());
+            $dto->getExtraHeaders()
+        );
 
         $self
             ->setTupleId($dto->getTupleId())
@@ -852,4 +854,3 @@ abstract class UsersPuaAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

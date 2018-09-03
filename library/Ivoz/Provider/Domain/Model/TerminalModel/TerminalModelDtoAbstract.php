@@ -118,7 +118,6 @@ abstract class TerminalModelDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -327,5 +326,3 @@ abstract class TerminalModelDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 }
-
-

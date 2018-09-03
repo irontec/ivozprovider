@@ -48,6 +48,4 @@ class TpRate extends TpRateAbstract implements TpRateInterface
 
         return parent::setGroupIntervalStart($groupIntervalStart);
     }
-
 }
-

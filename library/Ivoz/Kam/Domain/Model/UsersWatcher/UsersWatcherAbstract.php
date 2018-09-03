@@ -78,7 +78,8 @@ abstract class UsersWatcherAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "UsersWatcher",
             $this->getId()
         );
@@ -143,7 +144,8 @@ abstract class UsersWatcherAbstract
             $dto->getWatcherDomain(),
             $dto->getEvent(),
             $dto->getStatus(),
-            $dto->getInsertedTime());
+            $dto->getInsertedTime()
+        );
 
         $self
             ->setReason($dto->getReason())
@@ -417,4 +419,3 @@ abstract class UsersWatcherAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

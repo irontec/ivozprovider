@@ -188,8 +188,7 @@ final class DynamicLoadingExtension implements QueryItemExtensionInterface, Quer
                 continue;
             }
 
-            if (
-                (false === $propertyMetadata->isReadableLink() || false === $propertyMetadata->isReadable())
+            if ((false === $propertyMetadata->isReadableLink() || false === $propertyMetadata->isReadable())
                 && false === $propertyMetadata->getAttribute('fetchEager', false)
             ) {
                 continue;
@@ -254,7 +253,6 @@ final class DynamicLoadingExtension implements QueryItemExtensionInterface, Quer
                 }
 
                 if (array_key_exists($property, $targetClassMetadata->embeddedClasses)) {
-
                     $embeddedProperties = $this->propertyNameCollectionFactory->create(
                         $targetClassMetadata->embeddedClasses[$property]['class']
                     );
@@ -295,19 +293,26 @@ final class DynamicLoadingExtension implements QueryItemExtensionInterface, Quer
         }
 
         if (null !== $this->serializerContextBuilder && null !== $request) {
-            return $this->serializerContextBuilder->createFromRequest($request,
-                'normalization_context' === $contextType);
+            return $this->serializerContextBuilder->createFromRequest(
+                $request,
+                'normalization_context' === $contextType
+            );
         }
 
         $resourceMetadata = $this->resourceMetadataFactory->create($resourceClass);
 
         if (isset($options['collection_operation_name'])) {
-            $context = $resourceMetadata->getCollectionOperationAttribute($options['collection_operation_name'],
-                $contextType, null, true);
+            $context = $resourceMetadata->getCollectionOperationAttribute(
+                $options['collection_operation_name'],
+                $contextType,
+                null,
+                true
+            );
         } elseif (isset($options['item_operation_name'])) {
             $context = $resourceMetadata->getItemOperationAttribute(
                 $options['item_operation_name'],
-                $contextType, null,
+                $contextType,
+                null,
                 true
             );
         } else {
