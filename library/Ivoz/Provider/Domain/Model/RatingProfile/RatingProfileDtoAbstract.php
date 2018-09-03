@@ -45,7 +45,7 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
     /**
      * @var \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileDto[] | null
      */
-    private $tpRatingProfile = null;
+    private $tpRatingProfiles = null;
 
 
     use DtoNormalizer;
@@ -86,7 +86,7 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
             'carrier' => $this->getCarrier(),
             'ratingPlan' => $this->getRatingPlan(),
             'routingTag' => $this->getRoutingTag(),
-            'tpRatingProfile' => $this->getTpRatingProfile()
+            'tpRatingProfiles' => $this->getTpRatingProfiles()
         ];
     }
 
@@ -99,11 +99,11 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
         $this->carrier = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Carrier\\Carrier', $this->getCarrierId());
         $this->ratingPlan = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\RatingPlan\\RatingPlan', $this->getRatingPlanId());
         $this->routingTag = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\RoutingTag\\RoutingTag', $this->getRoutingTagId());
-        if (!is_null($this->tpRatingProfile)) {
-            $items = $this->getTpRatingProfile();
-            $this->tpRatingProfile = [];
+        if (!is_null($this->tpRatingProfiles)) {
+            $items = $this->getTpRatingProfiles();
+            $this->tpRatingProfiles = [];
             foreach ($items as $item) {
-                $this->tpRatingProfile[] = $transformer->transform(
+                $this->tpRatingProfiles[] = $transformer->transform(
                     'Ivoz\\Cgr\\Domain\\Model\\TpRatingProfile\\TpRatingProfile',
                     $item->getId() ?? $item
                 );
@@ -117,9 +117,9 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-        $this->tpRatingProfile = $transformer->transform(
+        $this->tpRatingProfiles = $transformer->transform(
             'Ivoz\\Cgr\\Domain\\Model\\TpRatingProfile\\TpRatingProfile',
-            $this->tpRatingProfile
+            $this->tpRatingProfiles
         );
     }
 
@@ -348,13 +348,13 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param array $tpRatingProfile
+     * @param array $tpRatingProfiles
      *
      * @return static
      */
-    public function setTpRatingProfile($tpRatingProfile = null)
+    public function setTpRatingProfiles($tpRatingProfiles = null)
     {
-        $this->tpRatingProfile = $tpRatingProfile;
+        $this->tpRatingProfiles = $tpRatingProfiles;
 
         return $this;
     }
@@ -362,9 +362,9 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
     /**
      * @return array
      */
-    public function getTpRatingProfile()
+    public function getTpRatingProfiles()
     {
-        return $this->tpRatingProfile;
+        return $this->tpRatingProfiles;
     }
 }
 

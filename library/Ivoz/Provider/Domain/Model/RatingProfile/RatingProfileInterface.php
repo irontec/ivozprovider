@@ -14,6 +14,13 @@ interface RatingProfileInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * Return the TpRatingProfile row associated with this RatingProfile
+     *
+     * @return TpRatingProfileInterface|mixed
+     */
+    public function getCgrRatingProfile();
+
+    /**
      * @deprecated
      * Set activationTime
      *
@@ -111,19 +118,19 @@ interface RatingProfileInterface extends LoggableEntityInterface
     public function removeTpRatingProfile(\Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $tpRatingProfile);
 
     /**
-     * Replace tpRatingProfile
+     * Replace tpRatingProfiles
      *
-     * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface[] $tpRatingProfile
+     * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface[] $tpRatingProfiles
      * @return self
      */
-    public function replaceTpRatingProfile(Collection $tpRatingProfile);
+    public function replaceTpRatingProfiles(Collection $tpRatingProfiles);
 
     /**
-     * Get tpRatingProfile
+     * Get tpRatingProfiles
      *
      * @return \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface[]
      */
-    public function getTpRatingProfile(\Doctrine\Common\Collections\Criteria $criteria = null);
+    public function getTpRatingProfiles(\Doctrine\Common\Collections\Criteria $criteria = null);
 
 }
 

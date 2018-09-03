@@ -13,7 +13,7 @@ Ivoz\Provider\Domain\Model\RatingProfile\RatingProfile:
       generator:
         strategy: IDENTITY
   oneToMany:
-    tpRatingProfile:
+    tpRatingProfiles:
       targetEntity: Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface
       mappedBy: ratingProfile
       fetch: LAZY

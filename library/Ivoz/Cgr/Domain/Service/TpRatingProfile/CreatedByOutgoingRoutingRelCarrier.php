@@ -41,7 +41,7 @@ class CreatedByOutgoingRoutingRelCarrier
         $ratingProfiles = $carrier->getRatingProfiles();
 
         foreach ($ratingProfiles as $ratingProfile) {
-            $carrierTpRatingProfile = $ratingProfile->getTpRatingProfile();
+            $carrierTpRatingProfile = $ratingProfile->getCgrRatingProfile();
 
             // Check if this TpRatingPlan already exists for current OutgoingRouting
             $outgoingRoutingTpRatingProfiles =

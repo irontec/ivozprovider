@@ -2,6 +2,7 @@
 
 namespace Ivoz\Cgr\Domain\Service\TpRatingProfile;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfile;
 use Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileDto;
 use Ivoz\Core\Application\Service\EntityTools;
@@ -32,7 +33,7 @@ class UpdateByRatingProfile implements RatingProfileLifecycleEventHandlerInterfa
 
     public function execute(RatingProfileInterface $ratingProfile, $isNew)
     {
-        $tpRatingProfile = $ratingProfile->getTpRatingProfile();
+        $tpRatingProfile = $ratingProfile->getCgrRatingProfile();
 
         /** @var TpRatingProfileDto $tpRatingProfileDto */
         $tpRatingProfileDto = is_null($tpRatingProfile)
@@ -90,7 +91,7 @@ class UpdateByRatingProfile implements RatingProfileLifecycleEventHandlerInterfa
         );
 
         $ratingProfile
-            ->setTpRatingProfile($tpRatingProfile);
+            ->replaceTpRatingProfiles(new ArrayCollection([$tpRatingProfile]));
 
         $this->entityTools->persist($ratingProfile);
     }
