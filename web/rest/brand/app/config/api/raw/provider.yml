@@ -1,6 +1,30 @@
 ########################################
 ## Raw
 ########################################
+Ivoz\Provider\Domain\Model\Administrator\Administrator:
+  attributes:
+    access_control: '"ROLE_BRAND_ADMIN" in roles'
+    read_access_control:
+      ROLE_BRAND_ADMIN:
+        or:
+          - company:
+              in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+          - brand:
+              eq: "user.getBrand().getId()"
+Ivoz\Provider\Domain\Model\BillableCall\BillableCall:
+  collectionOperations:
+    get:
+      swagger_context:
+        produces:
+          - 'application/ld+json'
+          - 'application/json'
+          - 'text/csv'
+  attributes:
+    access_control: '"ROLE_BRAND_ADMIN" in roles'
+    read_access_control:
+      ROLE_BRAND_ADMIN:
+        brand:
+          eq: "user.getBrand().getId()"
 Ivoz\Provider\Domain\Model\Brand\Brand:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
@@ -56,7 +80,7 @@ Ivoz\Provider\Domain\Model\Domain\Domain:
   collectionOperations:
     get: ~
   attributes:
-    access_control: '"ROLE_SUPER_ADMIN" in roles'
+    access_control: '"ROLE_BRAND_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
@@ -82,7 +106,7 @@ Ivoz\Provider\Domain\Model\Feature\Feature:
   collectionOperations:
     get: ~
   attributes:
-    access_control: '"ROLE_SUPER_ADMIN" in roles'
+    access_control: '"ROLE_BRAND_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrand:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
@@ -97,18 +121,29 @@ Ivoz\Provider\Domain\Model\FixedCost\FixedCost:
       ROLE_BRAND_ADMIN:
         brand:
           eq: "user.getBrand().getId()"
+
+
 Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoice:
+  itemOperations:
+    get: ~
+    delete: ~
+    put:
+      depth: 1
   collectionOperations:
     get:
+      depth: 1
       operation_normalization_context: 'detailedCollection'
       normalization_context:
         groups: ['detailedCollection']
-    post: ~
+    post:
+      depth: 1
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
       inherited:
         fixedCost: 'Ivoz\Provider\Domain\Model\FixedCost\FixedCost'
+
+
 Ivoz\Provider\Domain\Model\Invoice\Invoice:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
@@ -178,10 +213,12 @@ Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup:
 Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPattern:
   collectionOperations:
     get:
+      depth: 1
       operation_normalization_context: 'detailedCollection'
       normalization_context:
         groups: ['detailedCollection']
-    post: ~
+    post:
+      depth: 1
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
@@ -202,7 +239,7 @@ Ivoz\Provider\Domain\Model\Service\Service:
   collectionOperations:
     get: ~
   attributes:
-    access_control: '"ROLE_SUPER_ADMIN" in roles'
+    access_control: '"ROLE_BRAND_ADMIN" in roles'
 Ivoz\Provider\Domain\Model\Timezone\Timezone:
   itemOperations:
     get: ~
