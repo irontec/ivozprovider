@@ -749,6 +749,9 @@ msgstr "Exec"
 msgid "Expire"
 msgstr "Expire"
 
+msgid "Export to CSV"
+msgstr "Export to CSV"
+
 msgid "Extension"
 msgid_plural "Extensions"
 msgstr[0] "Extension"
