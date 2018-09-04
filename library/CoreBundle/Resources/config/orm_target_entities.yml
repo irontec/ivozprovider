@@ -29,6 +29,10 @@ doctrine:
         Ivoz\Provider\Domain\Model\CallAcl\CallAcl
       Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchListInterface:
         Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchList
+      Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReportInterface:
+        Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReport
+      Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface:
+        Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvScheduler
       Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface:
         Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting
       Ivoz\Provider\Domain\Model\Carrier\CarrierInterface:
