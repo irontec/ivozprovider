@@ -63,6 +63,7 @@ Feature: Retrieve administrators
           "lastname": "ivozprovider",
           "id": 1,
           "brand": null,
+          "company": null,
           "timezone": {
               "tz": "Europe/Madrid",
               "comment": "mainland",
