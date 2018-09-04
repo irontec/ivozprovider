@@ -2,6 +2,7 @@
 
 namespace Ivoz\Kam\Domain\Service\TrunksLcrRuleTarget;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayInterface;
@@ -11,13 +12,12 @@ use Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTarget;
 use Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetRepository;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
-use Ivoz\Provider\Domain\Model\PeerServer\PeerServerInterface;
 
 /**
- * Class CreateByOutgoingRouting
+ * Class TrunksLcrRuleTargetFactory
  * @package Ivoz\Kam\Domain\Service\TrunksLcrGateway
  */
-class CreateByOutgoingRouting
+class TrunksLcrRuleTargetFactory
 {
     /**
      * @var EntityPersisterInterface
@@ -51,7 +51,9 @@ class CreateByOutgoingRouting
         $this->entityTools = $entityTools;
     }
 
-    public function execute(OutgoingRoutingInterface $outgoingRouting)
+    public function execute(
+        OutgoingRoutingInterface $outgoingRouting
+    )
     {
         /**
          * @var TrunksLcrGatewayInterface[] $lcrGateways
@@ -73,14 +75,17 @@ class CreateByOutgoingRouting
                     $lcrGateways[] = $carrierServer->getLcrGateway();
                 }
                 break;
+
             case OutgoingRouting::MODE_LCR:
                 // Lcr Rules use special dummy gateway
                 $lcrGateways[] = $this->trunksLcrGatewayRepository->findDummyGateway();
                 break;
+
             default:
                 throw new \DomainException('Invalid Routing mode');
         }
 
+        $lcrRuleTargets = [];
         $lcrRules = $outgoingRouting->getLcrRules();
         // Create n x m LcrRuleTargets (n LcrRules; m LcrGateways)
         foreach ($lcrRules as $lcrRule) {
@@ -104,8 +109,20 @@ class CreateByOutgoingRouting
                     ->setOutgoingRoutingId($outgoingRouting->getId());
 
                 //we're creating new entities every time
-                $this->entityPersister->persistDto($lcrRuleTargetDto, $lcrRuleTarget);
+                $lcrRuleTargets[] = $this->entityPersister->persistDto(
+                    $lcrRuleTargetDto,
+                    $lcrRuleTarget,
+                    true
+                );
             }
         }
+
+        $outgoingRouting->replaceLcrRuleTargets(
+            new ArrayCollection($lcrRuleTargets)
+        );
+
+        $this->entityTools->persist(
+            $outgoingRouting
+        );
     }
 }

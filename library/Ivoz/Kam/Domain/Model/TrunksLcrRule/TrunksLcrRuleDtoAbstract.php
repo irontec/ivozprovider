@@ -58,6 +58,11 @@ abstract class TrunksLcrRuleDtoAbstract implements DataTransferObjectInterface
     private $routingPattern;
 
     /**
+     * @var \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternDto | null
+     */
+    private $routingPatternGroupsRelPattern;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingDto | null
      */
     private $outgoingRouting;
@@ -89,6 +94,7 @@ abstract class TrunksLcrRuleDtoAbstract implements DataTransferObjectInterface
             'enabled' => 'enabled',
             'id' => 'id',
             'routingPatternId' => 'routingPattern',
+            'routingPatternGroupsRelPatternId' => 'routingPatternGroupsRelPattern',
             'outgoingRoutingId' => 'outgoingRouting'
         ];
     }
@@ -108,6 +114,7 @@ abstract class TrunksLcrRuleDtoAbstract implements DataTransferObjectInterface
             'enabled' => $this->getEnabled(),
             'id' => $this->getId(),
             'routingPattern' => $this->getRoutingPattern(),
+            'routingPatternGroupsRelPattern' => $this->getRoutingPatternGroupsRelPattern(),
             'outgoingRouting' => $this->getOutgoingRouting()
         ];
     }
@@ -118,6 +125,7 @@ abstract class TrunksLcrRuleDtoAbstract implements DataTransferObjectInterface
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
         $this->routingPattern = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\RoutingPattern\\RoutingPattern', $this->getRoutingPatternId());
+        $this->routingPatternGroupsRelPattern = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\RoutingPatternGroupsRelPattern\\RoutingPatternGroupsRelPattern', $this->getRoutingPatternGroupsRelPatternId());
         $this->outgoingRouting = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\OutgoingRouting\\OutgoingRouting', $this->getOutgoingRoutingId());
     }
 
@@ -329,6 +337,52 @@ abstract class TrunksLcrRuleDtoAbstract implements DataTransferObjectInterface
     public function getRoutingPatternId()
     {
         if ($dto = $this->getRoutingPattern()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternDto $routingPatternGroupsRelPattern
+     *
+     * @return static
+     */
+    public function setRoutingPatternGroupsRelPattern(\Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternDto $routingPatternGroupsRelPattern = null)
+    {
+        $this->routingPatternGroupsRelPattern = $routingPatternGroupsRelPattern;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternDto
+     */
+    public function getRoutingPatternGroupsRelPattern()
+    {
+        return $this->routingPatternGroupsRelPattern;
+    }
+
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setRoutingPatternGroupsRelPatternId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternDto($id)
+            : null;
+
+        return $this->setRoutingPatternGroupsRelPattern($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getRoutingPatternGroupsRelPatternId()
+    {
+        if ($dto = $this->getRoutingPatternGroupsRelPattern()) {
             return $dto->getId();
         }
 

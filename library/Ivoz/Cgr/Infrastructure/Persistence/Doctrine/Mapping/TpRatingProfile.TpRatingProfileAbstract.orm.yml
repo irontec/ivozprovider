@@ -95,7 +95,7 @@ Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileAbstract:
   manyToOne:
     ratingProfile:
       targetEntity: \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface
-      inversedBy: tpRatingProfile
+      inversedBy: tpRatingProfiles
       fetch: LAZY
       joinColumn:
         name: ratingProfileId

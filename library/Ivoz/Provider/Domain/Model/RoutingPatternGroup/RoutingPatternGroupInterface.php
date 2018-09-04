@@ -14,9 +14,10 @@ interface RoutingPatternGroupInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @param Criteria|null $criteria
      * @return \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface[]
      */
-    public function getRoutingPatterns();
+    public function getRoutingPatterns(\Doctrine\Common\Collections\Criteria $criteria = null);
 
     /**
      * @deprecated

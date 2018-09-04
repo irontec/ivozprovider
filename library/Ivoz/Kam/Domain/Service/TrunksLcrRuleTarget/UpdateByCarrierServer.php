@@ -6,36 +6,29 @@ use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 use Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface;
 use Ivoz\Provider\Domain\Service\CarrierServer\CarrierServerLifecycleEventHandlerInterface;
-use Ivoz\Kam\Domain\Service\TrunksLcrGateway\UpdateByCarrierServer;
+use Ivoz\Kam\Domain\Service\TrunksLcrGateway\UpdateByCarrierServer as LcrGatewayUpdateByCarrierServer;
 
 /**
- * Class CreateByCarrierServer
+ * Class UpdateByCarrierServer
  * @package Ivoz\Kam\Domain\Service\TrunksLcrRuleTarget
  */
-class CreateByCarrierServer implements CarrierServerLifecycleEventHandlerInterface
+class UpdateByCarrierServer implements CarrierServerLifecycleEventHandlerInterface
 {
-    const POST_PERSIST_PRIORITY = UpdateByCarrierServer::POST_PERSIST_PRIORITY + 10;
+    const POST_PERSIST_PRIORITY = LcrGatewayUpdateByCarrierServer::POST_PERSIST_PRIORITY + 10;
 
     /**
-     * @var EntityPersisterInterface
-     */
-    protected $entityPersister;
-
-    /**
-     * @var CreateByOutgoingRouting
+     * @var TrunksLcrRuleTargetFactory
      */
     protected $lcrRuleTargetFactory;
 
     /**
      * CreateByCarrierServer constructor.
      * @param EntityPersisterInterface $entityPersister
-     * @param CreateByOutgoingRouting $lcrRuleTargetFactory
+     * @param TrunksLcrRuleTargetFactory $lcrRuleTargetFactory
      */
     public function __construct(
-        EntityPersisterInterface $entityPersister,
-        CreateByOutgoingRouting $lcrRuleTargetFactory
+        TrunksLcrRuleTargetFactory $lcrRuleTargetFactory
     ) {
-        $this->entityPersister = $entityPersister;
         $this->lcrRuleTargetFactory = $lcrRuleTargetFactory;
     }
 

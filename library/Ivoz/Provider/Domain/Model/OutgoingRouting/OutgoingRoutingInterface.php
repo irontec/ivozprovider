@@ -250,6 +250,37 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
     public function getLcrRules(\Doctrine\Common\Collections\Criteria $criteria = null);
 
     /**
+     * Add lcrRuleTarget
+     *
+     * @param \Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface $lcrRuleTarget
+     *
+     * @return OutgoingRoutingTrait
+     */
+    public function addLcrRuleTarget(\Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface $lcrRuleTarget);
+
+    /**
+     * Remove lcrRuleTarget
+     *
+     * @param \Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface $lcrRuleTarget
+     */
+    public function removeLcrRuleTarget(\Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface $lcrRuleTarget);
+
+    /**
+     * Replace lcrRuleTargets
+     *
+     * @param \Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface[] $lcrRuleTargets
+     * @return self
+     */
+    public function replaceLcrRuleTargets(Collection $lcrRuleTargets);
+
+    /**
+     * Get lcrRuleTargets
+     *
+     * @return \Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface[]
+     */
+    public function getLcrRuleTargets(\Doctrine\Common\Collections\Criteria $criteria = null);
+
+    /**
      * Add relCarrier
      *
      * @param \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $relCarrier

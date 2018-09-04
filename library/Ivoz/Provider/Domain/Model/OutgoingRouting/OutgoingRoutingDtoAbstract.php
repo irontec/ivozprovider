@@ -78,6 +78,11 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     private $lcrRules = null;
 
     /**
+     * @var \Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetDto[] | null
+     */
+    private $lcrRuleTargets = null;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierDto[] | null
      */
     private $relCarriers = null;
@@ -134,6 +139,7 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
             'routingTag' => $this->getRoutingTag(),
             'tpLcrRule' => $this->getTpLcrRule(),
             'lcrRules' => $this->getLcrRules(),
+            'lcrRuleTargets' => $this->getLcrRuleTargets(),
             'relCarriers' => $this->getRelCarriers()
         ];
     }
@@ -161,6 +167,17 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
             }
         }
 
+        if (!is_null($this->lcrRuleTargets)) {
+            $items = $this->getLcrRuleTargets();
+            $this->lcrRuleTargets = [];
+            foreach ($items as $item) {
+                $this->lcrRuleTargets[] = $transformer->transform(
+                    'Ivoz\\Kam\\Domain\\Model\\TrunksLcrRuleTarget\\TrunksLcrRuleTarget',
+                    $item->getId() ?? $item
+                );
+            }
+        }
+
         if (!is_null($this->relCarriers)) {
             $items = $this->getRelCarriers();
             $this->relCarriers = [];
@@ -182,6 +199,10 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
         $this->lcrRules = $transformer->transform(
             'Ivoz\\Kam\\Domain\\Model\\TrunksLcrRule\\TrunksLcrRule',
             $this->lcrRules
+        );
+        $this->lcrRuleTargets = $transformer->transform(
+            'Ivoz\\Kam\\Domain\\Model\\TrunksLcrRuleTarget\\TrunksLcrRuleTarget',
+            $this->lcrRuleTargets
         );
         $this->relCarriers = $transformer->transform(
             'Ivoz\\Provider\\Domain\\Model\\OutgoingRoutingRelCarrier\\OutgoingRoutingRelCarrier',
@@ -629,6 +650,26 @@ abstract class OutgoingRoutingDtoAbstract implements DataTransferObjectInterface
     public function getLcrRules()
     {
         return $this->lcrRules;
+    }
+
+    /**
+     * @param array $lcrRuleTargets
+     *
+     * @return static
+     */
+    public function setLcrRuleTargets($lcrRuleTargets = null)
+    {
+        $this->lcrRuleTargets = $lcrRuleTargets;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getLcrRuleTargets()
+    {
+        return $this->lcrRuleTargets;
     }
 
     /**

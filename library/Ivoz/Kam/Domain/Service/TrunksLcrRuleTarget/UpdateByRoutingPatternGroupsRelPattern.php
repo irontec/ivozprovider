@@ -1,32 +1,34 @@
 <?php
 
-namespace Ivoz\Kam\Domain\Service\TrunksLcrRule;
+namespace Ivoz\Kam\Domain\Service\TrunksLcrRuleTarget;
 
 use Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface;
 use Ivoz\Provider\Domain\Service\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternLifecycleEventHandlerInterface;
+use Ivoz\Kam\Domain\Service\TrunksLcrRule\UpdateByRoutingPatternGroupsRelPattern as LcrRuleUpdateByRoutingPatternGroupsRelPattern;
+
 
 /**
  * Class UpdateByRoutingPatternGroupsRelPattern
- * @package Ivoz\Kam\Domain\Service\TrunksLcrRule
+ * @package Ivoz\Kam\Domain\Service\TrunksLcrRuleTarget
  * @lifecycle
  */
 class UpdateByRoutingPatternGroupsRelPattern implements RoutingPatternGroupsRelPatternLifecycleEventHandlerInterface
 {
-    const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
+    const POST_PERSIST_PRIORITY = LcrRuleUpdateByRoutingPatternGroupsRelPattern::POST_PERSIST_PRIORITY + 10;
 
     /**
-     * @var TrunksLcrRuleFactory
+     * @var TrunksLcrRuleTargetFactory
      */
-    protected $trunksLcrRuleFactory;
+    protected $trunksLcrRuleTargetFactory;
 
     /**
      * UpdateByRoutingPatternGroupsRelPattern constructor.
-     * @param TrunksLcrRuleFactory $trunksLcrRuleFactory
+     * @param TrunksLcrRuleTargetFactory $trunksLcrRuleTargetFactory
      */
     public function __construct(
-        TrunksLcrRuleFactory $trunksLcrRuleFactory
+        TrunksLcrRuleTargetFactory $trunksLcrRuleTargetFactory
     ) {
-        $this->trunksLcrRuleFactory = $trunksLcrRuleFactory;
+        $this->trunksLcrRuleTargetFactory = $trunksLcrRuleTargetFactory;
     }
 
     public static function getSubscribedEvents()
@@ -36,22 +38,19 @@ class UpdateByRoutingPatternGroupsRelPattern implements RoutingPatternGroupsRelP
         ];
     }
 
-    public function execute(RoutingPatternGroupsRelPatternInterface $routingPatternGroupsRelPattern, $isNew)
+    public function execute(
+        RoutingPatternGroupsRelPatternInterface $routingPatternGroupsRelPattern,
+        $isNew
+    )
     {
         // Get all OutgointRoutings that use this routingPattern
         $outgoingRoutings = $routingPatternGroupsRelPattern->getRoutingPatternGroup()->getOutgoingRoutings();
-        $routingPattern = $routingPatternGroupsRelPattern->getRoutingPattern();
 
         // Update all outgoing routes if required
         foreach ($outgoingRoutings as $outgoingRouting) {
-            $lcRule = $this->trunksLcrRuleFactory->execute(
-                $outgoingRouting,
-                $routingPattern
+            $this->trunksLcrRuleTargetFactory->execute(
+                $outgoingRouting
             );
-
-            if ($isNew) {
-                $outgoingRouting->addLcrRule($lcRule);
-            }
         }
     }
 }
