@@ -1,6 +1,13 @@
 ########################################
 ## Raw
 ########################################
+Ivoz\Provider\Domain\Model\BillableCall\BillableCall:
+  attributes:
+    access_control: '"ROLE_COMPANY_ADMIN" in roles'
+    read_access_control:
+      ROLE_COMPANY_ADMIN:
+        company:
+          eq: "user.getCompany().getId()"
 Ivoz\Provider\Domain\Model\Calendar\Calendar:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
@@ -8,9 +15,6 @@ Ivoz\Provider\Domain\Model\Calendar\Calendar:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
-      ROLE_BRAND_ADMIN:
-        company:
-          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
 Ivoz\Provider\Domain\Model\CallAcl\CallAcl:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
@@ -18,13 +22,11 @@ Ivoz\Provider\Domain\Model\CallAcl\CallAcl:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
-      ROLE_BRAND_ADMIN:
-        company:
-          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
 Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchList:
   collectionOperations:
     post: ~
     get:
+      depth: 1
       operation_normalization_context: 'detailedCollection'
       normalization_context:
         groups: ['detailedCollection']
@@ -44,9 +46,6 @@ Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting:
       ROLE_COMPANY_ADMIN:
         user:
           in: "userRepository.getSupervisedUserIdsByAdmin(user)"
-      ROLE_BRAND_ADMIN:
-        user:
-          in: "userRepository.getSupervisedUserIdsByAdmin(user)"
 Ivoz\Provider\Domain\Model\Company\Company:
   itemOperations: []
   collectionOperations: []
@@ -56,9 +55,6 @@ Ivoz\Provider\Domain\Model\Company\Company:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
-      ROLE_BRAND_ADMIN:
-        brand:
-          eq: "user.getBrand().getId()"
 Ivoz\Provider\Domain\Model\CompanyService\CompanyService:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
@@ -66,9 +62,6 @@ Ivoz\Provider\Domain\Model\CompanyService\CompanyService:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
-      ROLE_BRAND_ADMIN:
-        company:
-          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
 Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
@@ -76,9 +69,6 @@ Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
-      ROLE_BRAND_ADMIN:
-        company:
-          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
 Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
@@ -88,10 +78,12 @@ Ivoz\Provider\Domain\Model\ConditionalRoutesCondition\ConditionalRoutesCondition
 Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlist:
   collectionOperations:
     get:
+      depth: 1
       operation_normalization_context: 'detailedCollection'
       normalization_context:
         groups: ['detailedCollection']
-    post: ~
+    post:
+      depth: 1
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
@@ -100,10 +92,12 @@ Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRo
 Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelSchedule:
   collectionOperations:
     get:
+      depth: 1
       operation_normalization_context: 'detailedCollection'
       normalization_context:
         groups: ['detailedCollection']
-    post: ~
+    post:
+      depth: 1
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
@@ -112,10 +106,12 @@ Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRou
 Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendar:
   collectionOperations:
     get:
+      depth: 1
       operation_normalization_context: 'detailedCollection'
       normalization_context:
         groups: ['detailedCollection']
-    post: ~
+    post:
+      depth: 1
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
@@ -140,9 +136,6 @@ Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
-      ROLE_BRAND_ADMIN:
-        company:
-          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
 Ivoz\Provider\Domain\Model\Country\Name:
 Ivoz\Provider\Domain\Model\Country\Zone:
 Ivoz\Provider\Domain\Model\Country\Country:
@@ -159,9 +152,6 @@ Ivoz\Provider\Domain\Model\Ddi\Ddi:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
-      ROLE_BRAND_ADMIN:
-        company:
-          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
 Ivoz\Provider\Domain\Model\Extension\Extension:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
@@ -169,9 +159,6 @@ Ivoz\Provider\Domain\Model\Extension\Extension:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
-      ROLE_BRAND_ADMIN:
-        company:
-          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
 Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
@@ -179,10 +166,15 @@ Ivoz\Provider\Domain\Model\ExternalCallFilter\ExternalCallFilter:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
-      ROLE_BRAND_ADMIN:
-        company:
-          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
 Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList\ExternalCallFilterBlackList:
+  collectionOperations:
+    get:
+      operation_normalization_context: 'detailedCollection'
+      normalization_context:
+        groups: ['detailedCollection']
+      depth: 1
+    post:
+      depth: 1
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
@@ -191,10 +183,12 @@ Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList\ExternalCallFilterBlackLi
 Ivoz\Provider\Domain\Model\ExternalCallFilterRelCalendar\ExternalCallFilterRelCalendar:
   collectionOperations:
     get:
+      depth: 1
       operation_normalization_context: 'detailedCollection'
       normalization_context:
         groups: ['detailedCollection']
-    post: ~
+    post:
+      depth: 1
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
@@ -203,10 +197,12 @@ Ivoz\Provider\Domain\Model\ExternalCallFilterRelCalendar\ExternalCallFilterRelCa
 Ivoz\Provider\Domain\Model\ExternalCallFilterRelSchedule\ExternalCallFilterRelSchedule:
   collectionOperations:
     get:
+      depth: 1
       operation_normalization_context: 'detailedCollection'
       normalization_context:
         groups: ['detailedCollection']
-    post: ~
+    post:
+      depth: 1
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
@@ -215,10 +211,12 @@ Ivoz\Provider\Domain\Model\ExternalCallFilterRelSchedule\ExternalCallFilterRelSc
 Ivoz\Provider\Domain\Model\ExternalCallFilterWhiteList\ExternalCallFilterWhiteList:
   collectionOperations:
     get:
+      depth: 1
       operation_normalization_context: 'detailedCollection'
       normalization_context:
         groups: ['detailedCollection']
-    post: ~
+    post:
+      depth: 1
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
@@ -241,22 +239,21 @@ Ivoz\Provider\Domain\Model\Fax\Fax:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
-      ROLE_BRAND_ADMIN:
-        company:
-          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
 Ivoz\Provider\Domain\Model\Feature\Feature:
   itemOperations: []
   collectionOperations: []
 Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompany:
+  collectionOperations:
+    get:
+      depth: 1
+    post:
+      depth: 1
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
-      ROLE_BRAND_ADMIN:
-        company:
-          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
 Ivoz\Provider\Domain\Model\Friend\Friend:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
@@ -264,9 +261,6 @@ Ivoz\Provider\Domain\Model\Friend\Friend:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
-      ROLE_BRAND_ADMIN:
-        company:
-          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
 Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPattern:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
@@ -286,16 +280,15 @@ Ivoz\Provider\Domain\Model\HuntGroup\HuntGroup:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
-      ROLE_BRAND_ADMIN:
-        company:
-          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
 Ivoz\Provider\Domain\Model\HuntGroupsRelUser\HuntGroupsRelUser:
   collectionOperations:
     get:
+      depth: 1
       operation_normalization_context: 'detailedCollection'
       normalization_context:
         groups: ['detailedCollection']
-    post: ~
+    post:
+      depth: 1
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
@@ -308,9 +301,6 @@ Ivoz\Provider\Domain\Model\Invoice\Invoice:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
-      ROLE_BRAND_ADMIN:
-        company:
-          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
 Ivoz\Provider\Domain\Model\IvrEntry\IvrEntry:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
@@ -324,16 +314,15 @@ Ivoz\Provider\Domain\Model\Ivr\Ivr:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
-      ROLE_BRAND_ADMIN:
-        company:
-          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
 Ivoz\Provider\Domain\Model\IvrExcludedExtension\IvrExcludedExtension:
   collectionOperations:
     get:
+      depth: 1
       operation_normalization_context: 'detailedCollection'
       normalization_context:
         groups: ['detailedCollection']
-    post: ~
+    post:
+      depth: 1
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
@@ -354,9 +343,6 @@ Ivoz\Provider\Domain\Model\Locution\Locution:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
-      ROLE_BRAND_ADMIN:
-        company:
-          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
 Ivoz\Provider\Domain\Model\MatchList\MatchList:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
@@ -367,22 +353,10 @@ Ivoz\Provider\Domain\Model\MatchList\MatchList:
               eq: "user.getCompany().getBrand().getId()"
           - company:
               eq: "user.getCompany().getId()"
-      ROLE_BRAND_ADMIN:
-        or:
-          - brand:
-              eq: "user.getBrand().getId()"
-          - company:
-              in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
     write_access_control:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
-      ROLE_BRAND_ADMIN:
-        or:
-          - brand:
-              eq: "user.getBrand().getId()"
-          - company:
-              in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
 Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPattern:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
@@ -399,22 +373,10 @@ Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHold:
               isNull: ~
           - company:
               eq: "user.getCompany().getId()"
-      ROLE_BRAND_ADMIN:
-        or:
-          - brand:
-              eq: "user.getBrand().getId()"
-          - company:
-              in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
     write_access_control:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
-      ROLE_BRAND_ADMIN:
-        or:
-          - brand:
-              eq: "user.getBrand().getId()"
-          - company:
-              in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
 Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
@@ -422,16 +384,15 @@ Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
-      ROLE_BRAND_ADMIN:
-        company:
-          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
 Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPattern:
   collectionOperations:
     get:
+      depth: 1
       operation_normalization_context: 'detailedCollection'
       normalization_context:
         groups: ['detailedCollection']
-    post: ~
+    post:
+      depth: 1
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
@@ -444,9 +405,6 @@ Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
-      ROLE_BRAND_ADMIN:
-        brand:
-          eq: "user.getBrand().getId()"
 Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroup:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
@@ -454,16 +412,15 @@ Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroup:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
-      ROLE_BRAND_ADMIN:
-        company:
-          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
 Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUser:
   collectionOperations:
     get:
+      depth: 1
       operation_normalization_context: 'detailedCollection'
       normalization_context:
         groups: ['detailedCollection']
-    post: ~
+    post:
+      depth: 1
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
@@ -472,10 +429,12 @@ Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUser:
 Ivoz\Provider\Domain\Model\QueueMember\QueueMember:
   collectionOperations:
     get:
+      depth: 1
       operation_normalization_context: 'detailedCollection'
       normalization_context:
         groups: ['detailedCollection']
-    post: ~
+    post:
+      depth: 1
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
     read_access_control:
@@ -488,16 +447,9 @@ Ivoz\Provider\Domain\Model\Queue\Queue:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
-      ROLE_BRAND_ADMIN:
-        company:
-          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
 Ivoz\Provider\Domain\Model\RatingProfile\RatingProfile:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
-    read_access_control:
-      ROLE_BRAND_ADMIN:
-        company:
-          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
 Ivoz\Provider\Domain\Model\Recording\Recording:
   itemOperations:
     get: ~
@@ -509,9 +461,6 @@ Ivoz\Provider\Domain\Model\Recording\Recording:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
-      ROLE_BRAND_ADMIN:
-        company:
-          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
 Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
@@ -519,12 +468,6 @@ Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
-      ROLE_BRAND_ADMIN:
-        or:
-          - brand:
-              eq: "user.getBrand().getId()"
-          - company:
-              in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
 Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
@@ -532,12 +475,6 @@ Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
-      ROLE_BRAND_ADMIN:
-        or:
-          - brand:
-              eq: "user.getBrand().getId()"
-          - company:
-              in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
 Ivoz\Provider\Domain\Model\RouteLock\RouteLock:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
@@ -545,16 +482,9 @@ Ivoz\Provider\Domain\Model\RouteLock\RouteLock:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
-      ROLE_BRAND_ADMIN:
-        company:
-          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
 Ivoz\Provider\Domain\Model\RoutingTag\RoutingTag:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
-    read_access_control:
-      ROLE_BRAND_ADMIN:
-        brand:
-          eq: "user.getBrand().getId()"
 Ivoz\Provider\Domain\Model\Schedule\Schedule:
   attributes:
     access_control: '"ROLE_COMPANY_ADMIN" in roles'
@@ -562,9 +492,6 @@ Ivoz\Provider\Domain\Model\Schedule\Schedule:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
-      ROLE_BRAND_ADMIN:
-        company:
-          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
 Ivoz\Provider\Domain\Model\Service\Service:
   itemOperations:
     get: ~
@@ -579,9 +506,6 @@ Ivoz\Provider\Domain\Model\Terminal\Terminal:
       ROLE_COMPANY_ADMIN:
         company:
           eq: "user.getCompany().getId()"
-      ROLE_BRAND_ADMIN:
-        company:
-          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
 Ivoz\Provider\Domain\Model\TerminalModel\TerminalModel:
   itemOperations:
     get: ~
@@ -606,6 +530,3 @@ Ivoz\Provider\Domain\Model\User\User:
       ROLE_COMPANY_ADMIN:
         company:
           in: "user.getCompany().getId()"
-      ROLE_BRAND_ADMIN:
-        company:
-          in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"

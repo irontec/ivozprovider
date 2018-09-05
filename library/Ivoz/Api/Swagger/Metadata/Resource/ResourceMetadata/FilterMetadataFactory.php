@@ -2,14 +2,14 @@
 
 namespace Ivoz\Api\Swagger\Metadata\Resource\ResourceMetadata;
 
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter;
 use ApiPlatform\Core\Metadata\Resource\Factory\ResourceMetadataFactoryInterface;
 use ApiPlatform\Core\Metadata\Resource\ResourceMetadata;
+use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\Mapping\ClassMetadataInfo;
 use Ivoz\Api\Swagger\Metadata\Property\Factory\PropertyNameCollectionFactory;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Symfony\Bridge\Doctrine\ManagerRegistry;
-use Doctrine\ORM\Mapping\ClassMetadata;
-use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter;
 
 class FilterMetadataFactory implements ResourceMetadataFactoryInterface
 {
@@ -53,6 +53,7 @@ class FilterMetadataFactory implements ResourceMetadataFactoryInterface
         $filters = $this->getEntityFilters($resourceClass);
         if (!empty($filters)) {
             $attributes['filters'] = array_keys($filters);
+            $attributes['filters'][] = 'ivoz.api.filter.property_filter';
             $attributes['filterFields'] = $filters;
         }
         $resourceMetadata = $resourceMetadata->withAttributes($attributes);
@@ -79,7 +80,7 @@ class FilterMetadataFactory implements ResourceMetadataFactoryInterface
             }
 
             $type = $this->getFieldType($resourceClass, $attribute);
-            switch($type) {
+            switch ($type) {
                 case 'string':
                 case 'guid':
                     $filters['ivoz.api.filter.search'][$attribute] = Filter\SearchFilter::STRATEGY_START;

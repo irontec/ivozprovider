@@ -53,8 +53,14 @@ final class DynamicLoadingExtension implements QueryItemExtensionInterface, Quer
     /**
      * {@inheritdoc}
      */
-    public function applyToItem(QueryBuilder $queryBuilder, QueryNameGeneratorInterface $queryNameGenerator, string $resourceClass, array $identifiers, string $operationName = null, array $context = [])
-    {
+    public function applyToItem(
+        QueryBuilder $queryBuilder,
+        QueryNameGeneratorInterface $queryNameGenerator,
+        string $resourceClass,
+        array $identifiers,
+        string $operationName = null,
+        array $context = []
+    ) {
         $options = [];
 
         if (null !== $operationName) {
@@ -62,7 +68,11 @@ final class DynamicLoadingExtension implements QueryItemExtensionInterface, Quer
         }
 
         $contextType = isset($context['api_denormalize']) ? 'denormalization_context' : 'normalization_context';
-        $serializerContext = $this->getSerializerContext($context['resource_class'] ?? $resourceClass, $contextType, $options);
+        $serializerContext = $this->getSerializerContext(
+            $context['resource_class'] ?? $resourceClass,
+            $contextType,
+            $options
+        );
 
         $this->apply($queryBuilder, $queryNameGenerator, $resourceClass, $context, $options, $serializerContext);
     }
@@ -70,8 +80,12 @@ final class DynamicLoadingExtension implements QueryItemExtensionInterface, Quer
     /**
      * {@inheritdoc}
      */
-    public function applyToCollection(QueryBuilder $queryBuilder, QueryNameGeneratorInterface $queryNameGenerator, string $resourceClass, string $operationName = null)
-    {
+    public function applyToCollection(
+        QueryBuilder $queryBuilder,
+        QueryNameGeneratorInterface $queryNameGenerator,
+        string $resourceClass,
+        string $operationName = null
+    ) {
         $options = [];
 
         if (null !== $operationName) {
@@ -93,8 +107,14 @@ final class DynamicLoadingExtension implements QueryItemExtensionInterface, Quer
      * @param $options
      * @param $serializerContext
      */
-    private function apply(QueryBuilder $queryBuilder, QueryNameGeneratorInterface $queryNameGenerator, string $resourceClass, array $context, $options, $serializerContext)
-    {
+    private function apply(
+        QueryBuilder $queryBuilder,
+        QueryNameGeneratorInterface $queryNameGenerator,
+        string $resourceClass,
+        array $context,
+        $options,
+        $serializerContext
+    ) {
         if (isset($context[AbstractNormalizer::GROUPS])) {
             $groups = ['serializer_groups' => $context[AbstractNormalizer::GROUPS]];
         } else {
@@ -114,16 +134,16 @@ final class DynamicLoadingExtension implements QueryItemExtensionInterface, Quer
     /**
      * Joins relations to eager load.
      *
-     * @param QueryBuilder                $queryBuilder
+     * @param QueryBuilder $queryBuilder
      * @param QueryNameGeneratorInterface $queryNameGenerator
-     * @param string                      $resourceClass
-     * @param bool                        $forceEager
-     * @param string                      $parentAlias
-     * @param array                       $propertyMetadataOptions
-     * @param array                       $context
-     * @param bool                        $wasLeftJoin             if the relation containing the new one had a left join, we have to force the new one to left join too
-     * @param int                         $joinCount               the number of joins
-     * @param int                         $currentDepth            the current max depth
+     * @param string $resourceClass
+     * @param bool $forceEager
+     * @param string $parentAlias
+     * @param array $propertyMetadataOptions
+     * @param array $context
+     * @param bool $wasLeftJoin if the relation containing the new one had a left join, we have to force the new one to left join too
+     * @param int $joinCount the number of joins
+     * @param int $currentDepth the current max depth
      *
      * @throws RuntimeException when the max number of joins has been reached
      */
@@ -155,7 +175,11 @@ final class DynamicLoadingExtension implements QueryItemExtensionInterface, Quer
             }
 
             try {
-                $propertyMetadata = $this->propertyMetadataFactory->create($resourceClass, $association, $propertyMetadataOptions);
+                $propertyMetadata = $this->propertyMetadataFactory->create(
+                    $resourceClass,
+                    $association,
+                    $propertyMetadataOptions
+                );
             } catch (PropertyNotFoundException $propertyNotFoundException) {
                 //skip properties not found
                 continue;
@@ -164,7 +188,10 @@ final class DynamicLoadingExtension implements QueryItemExtensionInterface, Quer
                 continue;
             }
 
-            if ((false === $propertyMetadata->isReadableLink() || false === $propertyMetadata->isReadable()) && false === $propertyMetadata->getAttribute('fetchEager', false)) {
+            if (
+                (false === $propertyMetadata->isReadableLink() || false === $propertyMetadata->isReadable())
+                && false === $propertyMetadata->getAttribute('fetchEager', false)
+            ) {
                 continue;
             }
 
@@ -211,7 +238,11 @@ final class DynamicLoadingExtension implements QueryItemExtensionInterface, Quer
                 ]
             ];
             foreach ($this->propertyNameCollectionFactory->create($entity, $options) as $property) {
-                $propertyMetadata = $this->propertyMetadataFactory->create($entity, $property, $propertyMetadataOptions);
+                $propertyMetadata = $this->propertyMetadataFactory->create(
+                    $entity,
+                    $property,
+                    $propertyMetadataOptions
+                );
 
                 if (true === $propertyMetadata->isIdentifier()) {
                     $select[] = $property;
@@ -223,8 +254,17 @@ final class DynamicLoadingExtension implements QueryItemExtensionInterface, Quer
                 }
 
                 if (array_key_exists($property, $targetClassMetadata->embeddedClasses)) {
-                    foreach ($this->propertyNameCollectionFactory->create($targetClassMetadata->embeddedClasses[$property]['class']) as $embeddedProperty) {
-                        $propertyMetadata = $this->propertyMetadataFactory->create($entity, $property, $propertyMetadataOptions);
+
+                    $embeddedProperties = $this->propertyNameCollectionFactory->create(
+                        $targetClassMetadata->embeddedClasses[$property]['class']
+                    );
+
+                    foreach ($embeddedProperties as $embeddedProperty) {
+                        $propertyMetadata = $this->propertyMetadataFactory->create(
+                            $entity,
+                            $property,
+                            $propertyMetadataOptions
+                        );
                         $propertyName = "$property.$embeddedProperty";
                         if ($targetClassMetadata->hasField($propertyName) && (true === $propertyMetadata->getAttribute('fetchable') || $propertyMetadata->isReadable())) {
                             $select[] = $propertyName;
@@ -241,8 +281,8 @@ final class DynamicLoadingExtension implements QueryItemExtensionInterface, Quer
      * Gets serializer context.
      *
      * @param string $resourceClass
-     * @param string $contextType   normalization_context or denormalization_context
-     * @param array  $options       represents the operation name so that groups are the one of the specific operation
+     * @param string $contextType normalization_context or denormalization_context
+     * @param array $options represents the operation name so that groups are the one of the specific operation
      *
      * @return array
      */
@@ -255,15 +295,21 @@ final class DynamicLoadingExtension implements QueryItemExtensionInterface, Quer
         }
 
         if (null !== $this->serializerContextBuilder && null !== $request) {
-            return $this->serializerContextBuilder->createFromRequest($request, 'normalization_context' === $contextType);
+            return $this->serializerContextBuilder->createFromRequest($request,
+                'normalization_context' === $contextType);
         }
 
         $resourceMetadata = $this->resourceMetadataFactory->create($resourceClass);
 
         if (isset($options['collection_operation_name'])) {
-            $context = $resourceMetadata->getCollectionOperationAttribute($options['collection_operation_name'], $contextType, null, true);
+            $context = $resourceMetadata->getCollectionOperationAttribute($options['collection_operation_name'],
+                $contextType, null, true);
         } elseif (isset($options['item_operation_name'])) {
-            $context = $resourceMetadata->getItemOperationAttribute($options['item_operation_name'], $contextType, null, true);
+            $context = $resourceMetadata->getItemOperationAttribute(
+                $options['item_operation_name'],
+                $contextType, null,
+                true
+            );
         } else {
             $context = $resourceMetadata->getAttribute($contextType);
         }
@@ -312,6 +358,11 @@ final class DynamicLoadingExtension implements QueryItemExtensionInterface, Quer
             $response[] = $item;
         }
 
-        return $response;
+        $attributeFilter = $context['attributes'] ?? [];
+        if (empty($attributeFilter)) {
+            return $response;
+        }
+
+        return array_intersect($response, $attributeFilter);
     }
 }

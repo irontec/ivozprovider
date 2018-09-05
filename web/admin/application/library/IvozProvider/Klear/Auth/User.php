@@ -2,9 +2,9 @@
 
 namespace IvozProvider\Klear\Auth;
 
-use \Ivoz\Provider\Domain\Model\Brand\Brand;
+use Ivoz\Provider\Domain\Model\Brand\Brand;
 use Ivoz\Provider\Domain\Model\Brand\BrandDTO;
-use \Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Company\CompanyDTO;
 
 
@@ -30,6 +30,15 @@ class User extends \Klear_Model_UserAdvanced
     public $companyCountryId;
     public $brandFeatures = [];
     public $companyFeatures = [];
+
+    public $token;
+    public $refreshToken;
+
+    public function setToken(string $token, string $refreshToken)
+    {
+        $this->token = $token;
+        $this->refreshToken = $refreshToken;
+    }
 
     public function setUserName($username)
     {

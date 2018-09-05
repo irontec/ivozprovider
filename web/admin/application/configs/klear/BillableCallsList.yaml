@@ -10,7 +10,7 @@ production:
   screens: &billableCalls_screensLink
     billableCallsList_screen: &billableCallsList_screenLink
       controller: list
-      csv: true
+      csv: false
       order:
         field:
           - BillableCall.startTime
@@ -46,6 +46,10 @@ production:
           price: true
           cost: true
           invoice: true
+      options: &billableCalls_optionsLink
+        title: _("Options")
+        commands:
+          exportBillableCallsToCsv_command: true
     billableCallsView_screen: &billableCallsView_screenLink
       <<: *BillableCalls
       controller: edit
@@ -107,6 +111,16 @@ production:
       class:  ui-silk-coins-add
       multiItem: true
       alwaysEnabled: false
+
+  commands: &exportBillableCallsToCsv_commandsLink
+    exportBillableCallsToCsv_command: &exportBillableCallsToCsv_commandLink
+      <<: *BillableCalls
+      title: _("Export to CSV")
+      label: true
+      module: default
+      controller: klear-custom-billable-calls
+      action: export-to-csv
+      class:  ui-silk-page-white-database
 
 staging:
   _extends: production
