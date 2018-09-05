@@ -1,5 +1,5 @@
 #!/bin/bash
-pushd /opt/irontec/ivozprovider/web/rest
+pushd /opt/irontec/ivozprovider/web/rest/platform
     mkdir -p var/jwt
 
     if [ $1 == '--initial' ]; then

@@ -16,5 +16,7 @@
 */var/sessions/*
 !*/var/sessions/.gitkeep
 !*/var/SymfonyRequirements.php
+!*/var/jwt
+platform/var/jwt
 */vendor/
 */results/
