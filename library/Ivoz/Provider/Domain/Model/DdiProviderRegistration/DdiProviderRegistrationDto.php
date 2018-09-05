@@ -2,7 +2,6 @@
 
 namespace Ivoz\Provider\Domain\Model\DdiProviderRegistration;
 
-
 class DdiProviderRegistrationDto extends DdiProviderRegistrationDtoAbstract
 {
     /**
@@ -18,5 +17,3 @@ class DdiProviderRegistrationDto extends DdiProviderRegistrationDtoAbstract
         return $response;
     }
 }
-
-

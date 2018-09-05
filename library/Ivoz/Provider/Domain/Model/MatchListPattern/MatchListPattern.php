@@ -58,7 +58,6 @@ class MatchListPattern extends MatchListPatternAbstract implements MatchListPatt
                 $setter = 'set' . ucfirst($fieldName);
                 $this->{$setter}(null);
             }
-        }
+            }
     }
 }
-

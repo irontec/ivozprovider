@@ -28,4 +28,3 @@ class UsersHtable extends UsersHtableAbstract implements UsersHtableInterface
         return $this->id;
     }
 }
-

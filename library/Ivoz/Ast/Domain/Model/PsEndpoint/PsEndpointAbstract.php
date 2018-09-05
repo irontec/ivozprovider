@@ -143,7 +143,8 @@ abstract class PsEndpointAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "PsEndpoint",
             $this->getId()
         );
@@ -207,7 +208,8 @@ abstract class PsEndpointAbstract
             $dto->getContext(),
             $dto->getDisallow(),
             $dto->getAllow(),
-            $dto->getOneHundredRel());
+            $dto->getOneHundredRel()
+        );
 
         $self
             ->setFromDomain($dto->getFromDomain())
@@ -325,8 +327,6 @@ abstract class PsEndpointAbstract
             'residentialDeviceId' => self::getResidentialDevice() ? self::getResidentialDevice()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -567,11 +567,11 @@ abstract class PsEndpointAbstract
     public function setDirectMediaMethod($directMediaMethod = null)
     {
         if (!is_null($directMediaMethod)) {
-        Assertion::choice($directMediaMethod, array (
-          0 => 'update',
-          1 => 'invite',
-          2 => 'reinvite',
-        ), 'directMediaMethodvalue "%s" is not an element of the valid values: %s');
+            Assertion::choice($directMediaMethod, array (
+              0 => 'update',
+              1 => 'invite',
+              2 => 'reinvite',
+            ), 'directMediaMethodvalue "%s" is not an element of the valid values: %s');
         }
 
         $this->directMediaMethod = $directMediaMethod;
@@ -859,8 +859,5 @@ abstract class PsEndpointAbstract
         return $this->residentialDevice;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

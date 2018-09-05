@@ -39,6 +39,4 @@ interface IvrExcludedExtensionInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Extension\ExtensionInterface
      */
     public function getExtension();
-
 }
-

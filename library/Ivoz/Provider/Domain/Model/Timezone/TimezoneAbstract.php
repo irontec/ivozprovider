@@ -49,7 +49,8 @@ abstract class TimezoneAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "Timezone",
             $this->getId()
         );
@@ -184,8 +185,6 @@ abstract class TimezoneAbstract
             'countryId' => self::getCountry() ? self::getCountry()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -279,7 +278,6 @@ abstract class TimezoneAbstract
     public function setLabel(Label $label)
     {
         $this->label = $label;
-
         return $this;
     }
 
@@ -292,7 +290,5 @@ abstract class TimezoneAbstract
     {
         return $this->label;
     }
-
     // @codeCoverageIgnoreEnd
 }
-

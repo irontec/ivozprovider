@@ -84,6 +84,4 @@ interface FaxInterface extends LoggableEntityInterface
      * @return self
      */
     public function setOutgoingDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $outgoingDdi = null);
-
 }
-

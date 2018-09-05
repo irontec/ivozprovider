@@ -9,7 +9,9 @@ class CheckValidity implements InvoiceNumberSequenceLifecycleEventHandlerInterfa
 {
     const PRE_PERSIST_PRIORITY = InvoiceLifecycleEventHandlerInterface::PRIORITY_HIGH;
 
-    public function __construct() {}
+    public function __construct()
+    {
+    }
 
     public static function getSubscribedEvents()
     {

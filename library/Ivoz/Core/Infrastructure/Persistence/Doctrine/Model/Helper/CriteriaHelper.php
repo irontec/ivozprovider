@@ -9,7 +9,7 @@ use Doctrine\Common\Collections\Expr\Value;
 use Doctrine\Common\Collections\Expr\CompositeExpression;
 use Doctrine\Common\Collections\Expr\Expression;
 
-class CriteriaHelper implements  CriteriaHelperInterface
+class CriteriaHelper implements CriteriaHelperInterface
 {
     /**
      * @param array $conditions
@@ -52,7 +52,6 @@ class CriteriaHelper implements  CriteriaHelperInterface
     {
         $expressions = [];
         foreach ($conditions as $key => $comparison) {
-
             if (!in_array($key, ['or', 'and'], true)) {
                 list($field, $operator) = $comparison;
                 $value = $comparison[2] ?? null;

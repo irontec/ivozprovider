@@ -13,7 +13,8 @@ class CommonLifecycleServiceCollection implements LifecycleServiceCollectionInte
      */
     protected $services;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->services = array();
     }
 

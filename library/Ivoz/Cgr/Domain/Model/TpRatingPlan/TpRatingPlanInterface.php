@@ -310,6 +310,4 @@ interface TpRatingPlanInterface extends EntityInterface
      * @return \Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface
      */
     public function getDestinationRateGroup();
-
 }
-

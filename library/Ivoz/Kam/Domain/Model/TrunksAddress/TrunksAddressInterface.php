@@ -112,6 +112,4 @@ interface TrunksAddressInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface
      */
     public function getDdiProviderAddress();
-
 }
-

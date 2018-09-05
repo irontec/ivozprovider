@@ -87,6 +87,7 @@ trait AdministratorSecurityTrait
     /**
      * @see AdvancedUserInterface::eraseCredentials()
      */
-    public function eraseCredentials() {}
+    public function eraseCredentials()
+    {
+    }
 }
-

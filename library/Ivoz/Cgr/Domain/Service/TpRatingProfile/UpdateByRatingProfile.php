@@ -11,7 +11,7 @@ use Ivoz\Provider\Domain\Service\RatingProfile\RatingProfileLifecycleEventHandle
 
 class UpdateByRatingProfile implements RatingProfileLifecycleEventHandlerInterface
 {
-    CONST POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
+    const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
     /**
      * @var EntityPersisterInterface
@@ -62,7 +62,8 @@ class UpdateByRatingProfile implements RatingProfileLifecycleEventHandlerInterfa
 
         if ($company) {
             $tpRatingProfileDto->setSubject(
-                sprintf("c%d",
+                sprintf(
+                    "c%d",
                     $company->getId()
                 )
             );
@@ -70,14 +71,14 @@ class UpdateByRatingProfile implements RatingProfileLifecycleEventHandlerInterfa
 
         if ($carrier) {
             $tpRatingProfileDto
-                ->setSubject(sprintf("cr%d",$carrier->getId()))
-                ->setCdrStatQueueIds(sprintf("cr%d", $carrier->getId())
-            );
+                ->setSubject(sprintf("cr%d", $carrier->getId()))
+                ->setCdrStatQueueIds(sprintf("cr%d", $carrier->getId()));
         }
 
         if ($routingTag) {
             $tpRatingProfileDto->setSubject(
-                sprintf("%srt%d",
+                sprintf(
+                    "%srt%d",
                     $tpRatingProfileDto->getSubject(),
                     $routingTag->getId()
                 )

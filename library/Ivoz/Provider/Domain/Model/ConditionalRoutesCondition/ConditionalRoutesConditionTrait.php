@@ -130,8 +130,6 @@ trait ConditionalRoutesConditionTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add relMatchlist
      *
@@ -419,7 +417,4 @@ trait ConditionalRoutesConditionTrait
 
         return $this->relRouteLocks->toArray();
     }
-
-
 }
-

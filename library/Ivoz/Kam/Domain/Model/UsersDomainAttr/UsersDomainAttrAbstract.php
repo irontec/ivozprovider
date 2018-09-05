@@ -111,7 +111,6 @@ abstract class UsersDomainAttrAbstract
         $changes = [];
         $currentValues = $this->__toArray();
         foreach ($currentValues as $key => $value) {
-
             if ($this->_initialValues[$key] == $currentValues[$key]) {
                 continue;
             }
@@ -160,7 +159,8 @@ abstract class UsersDomainAttrAbstract
             $dto->getName(),
             $dto->getType(),
             $dto->getValue(),
-            $dto->getLastModified());
+            $dto->getLastModified()
+        );
 
         $self;
 
@@ -367,4 +367,3 @@ abstract class UsersDomainAttrAbstract
 
     // @codeCoverageIgnoreEnd
 }
-

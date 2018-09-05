@@ -133,8 +133,5 @@ class File
         return $this->baseName;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

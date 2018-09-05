@@ -85,7 +85,8 @@ abstract class UsersXcapAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "UsersXcap",
             $this->getId()
         );
@@ -152,7 +153,8 @@ abstract class UsersXcapAbstract
             $dto->getEtag(),
             $dto->getSource(),
             $dto->getDocUri(),
-            $dto->getPort());
+            $dto->getPort()
+        );
 
         $self;
 
@@ -222,8 +224,6 @@ abstract class UsersXcapAbstract
             'port' => self::getPort()
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -449,8 +449,5 @@ abstract class UsersXcapAbstract
         return $this->port;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

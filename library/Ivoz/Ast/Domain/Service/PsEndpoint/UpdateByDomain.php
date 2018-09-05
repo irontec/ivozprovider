@@ -18,7 +18,8 @@ class UpdateByDomain implements DomainLifecycleEventHandlerInterface
      */
     protected $entityPersister;
 
-    public function __construct(EntityPersisterInterface $entityPersister) {
+    public function __construct(EntityPersisterInterface $entityPersister)
+    {
         $this->entityPersister = $entityPersister;
     }
 

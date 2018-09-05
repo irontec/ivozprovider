@@ -104,8 +104,6 @@ trait ResidentialDeviceTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add psEndpoint
      *
@@ -249,7 +247,4 @@ trait ResidentialDeviceTrait
 
         return $this->ddis->toArray();
     }
-
-
 }
-

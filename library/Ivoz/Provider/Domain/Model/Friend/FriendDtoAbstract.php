@@ -229,7 +229,6 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
         if (!is_null($this->patterns)) {
             $items = $this->getPatterns();
             $this->patterns = [];
@@ -240,7 +239,6 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
     }
 
     /**
@@ -894,5 +892,3 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
         return $this->patterns;
     }
 }
-
-

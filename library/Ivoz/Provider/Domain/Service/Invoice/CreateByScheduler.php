@@ -41,7 +41,6 @@ class CreateByScheduler
             $this->setFixedCosts($scheduler, $invoice);
             $this->updateLastExecutionDate($scheduler);
         } catch (\Exception $e) {
-
             $name = $scheduler->getName();
             $this->logger->error(
                 "Invoice scheduler #${$name} has failed: "

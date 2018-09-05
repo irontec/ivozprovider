@@ -103,7 +103,6 @@ abstract class DomainDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
         if (!is_null($this->residentialDevices)) {
             $items = $this->getResidentialDevices();
             $this->residentialDevices = [];
@@ -114,7 +113,6 @@ abstract class DomainDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
         if (!is_null($this->terminals)) {
             $items = $this->getTerminals();
             $this->terminals = [];
@@ -125,7 +123,6 @@ abstract class DomainDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
     }
 
     /**
@@ -287,5 +284,3 @@ abstract class DomainDtoAbstract implements DataTransferObjectInterface
         return $this->terminals;
     }
 }
-
-

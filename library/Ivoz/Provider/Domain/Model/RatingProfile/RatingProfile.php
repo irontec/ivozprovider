@@ -47,4 +47,3 @@ class RatingProfile extends RatingProfileAbstract implements RatingProfileInterf
         return array_shift($tpRatingProfiles);
     }
 }
-

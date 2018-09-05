@@ -175,7 +175,7 @@ public function <methodName>Id()
             $this->generateEntityBody($metadata)
         );
 
-        $code = str_replace($placeHolders, $replacements, static::$classTemplate) . "\n\n";
+        $code = str_replace($placeHolders, $replacements, static::$classTemplate);
 
         return str_replace('<spaces>', $this->spaces, $code);
     }
@@ -290,8 +290,17 @@ public function <methodName>Id()
             $transformCollections = $spaces . implode("\n" . $spaces, $collectionTransformers);
         }
 
-        $response = str_replace($this->spaces . '<transformForeignKeys>', $transformForeignKeys, $response);
-        return str_replace($this->spaces . '<transformCollections>', $transformCollections, $response);
+        if (empty($transformForeignKeys)) {
+            $response = str_replace("\n" . $this->spaces . "<transformForeignKeys>", '', $response);
+        } else {
+            $response = str_replace($this->spaces . '<transformForeignKeys>', $transformForeignKeys, $response);
+        }
+
+        if (empty($transformCollections)) {
+            return str_replace("\n" . $this->spaces . "<transformCollections>", '', $response);
+        } else {
+            return str_replace($this->spaces . '<transformCollections>', $transformCollections, $response);
+        }
     }
 
 
@@ -661,7 +670,7 @@ public function <methodName>Id()
                         . "\n" . $fourSpaces
                         . ');';
                     $fkTransformers[] = $this->spaces . "}";
-                    $fkTransformers[] = "}\n";
+                    $fkTransformers[] = "}";
                     continue;
                 }
 
@@ -852,12 +861,14 @@ public function <methodName>Id()
 
         $response = $methods;
 
+        $stubMethods = implode("\n\n", $response);
+
         if ($this->codeCoverageIgnoreBlock) {
-            array_unshift($response, $this->spaces . "// @codeCoverageIgnoreStart");
-            $response[] = $this->spaces . "// @codeCoverageIgnoreEnd";
+            $stubMethods = $this->spaces . "// @codeCoverageIgnoreStart\n" . $stubMethods;
+            $stubMethods .= $this->spaces . "// @codeCoverageIgnoreEnd";
         }
 
-        return implode("\n\n", $response);
+        return $stubMethods;
     }
 
     /**

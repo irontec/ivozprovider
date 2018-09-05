@@ -60,4 +60,3 @@ class PsEndpoint extends PsEndpointAbstract implements PsEndpointInterface
         }
     }
 }
-

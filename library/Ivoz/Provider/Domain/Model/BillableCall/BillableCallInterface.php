@@ -310,6 +310,4 @@ interface BillableCallInterface extends LoggableEntityInterface
      * @return \Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface
      */
     public function getTrunksCdr();
-
 }
-

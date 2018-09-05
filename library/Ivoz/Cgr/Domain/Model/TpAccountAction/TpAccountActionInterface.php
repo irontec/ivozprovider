@@ -192,6 +192,4 @@ interface TpAccountActionInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
      */
     public function getCarrier();
-
 }
-

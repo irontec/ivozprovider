@@ -46,5 +46,3 @@ class BrandUrlDto extends BrandUrlDtoAbstract
         return $this->logoPath;
     }
 }
-
-

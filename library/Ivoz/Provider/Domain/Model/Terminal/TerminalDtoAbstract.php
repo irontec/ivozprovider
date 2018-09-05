@@ -156,7 +156,6 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
         if (!is_null($this->users)) {
             $items = $this->getUsers();
             $this->users = [];
@@ -167,7 +166,6 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
     }
 
     /**
@@ -543,5 +541,3 @@ abstract class TerminalDtoAbstract implements DataTransferObjectInterface
         return $this->users;
     }
 }
-
-

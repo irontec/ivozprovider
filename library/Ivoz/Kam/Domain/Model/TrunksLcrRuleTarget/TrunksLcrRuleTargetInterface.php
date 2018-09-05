@@ -110,6 +110,4 @@ interface TrunksLcrRuleTargetInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface
      */
     public function getOutgoingRouting();
-
 }
-

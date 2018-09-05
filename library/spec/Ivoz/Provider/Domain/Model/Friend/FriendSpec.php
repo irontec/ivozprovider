@@ -141,5 +141,4 @@ class FriendSpec extends ObjectBehavior
             ->shouldNotThrow('\Exception')
             ->during('setPassword', ['HZhN5z*j48']);
     }
-
 }

@@ -53,7 +53,8 @@ abstract class RatingProfileAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "RatingProfile",
             $this->getId()
         );
@@ -113,7 +114,8 @@ abstract class RatingProfileAbstract
         Assertion::isInstanceOf($dto, RatingProfileDto::class);
 
         $self = new static(
-            $dto->getActivationTime());
+            $dto->getActivationTime()
+        );
 
         $self
             ->setCompany($dto->getCompany())
@@ -179,8 +181,6 @@ abstract class RatingProfileAbstract
             'routingTagId' => self::getRoutingTag() ? self::getRoutingTag()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -310,8 +310,5 @@ abstract class RatingProfileAbstract
         return $this->routingTag;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

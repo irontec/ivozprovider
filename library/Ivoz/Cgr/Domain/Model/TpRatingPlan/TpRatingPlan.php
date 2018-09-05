@@ -63,4 +63,3 @@ class TpRatingPlan extends TpRatingPlanAbstract implements TpRatingPlanInterface
         return implode(';', array_keys($weekDays));
     }
 }
-

@@ -5,5 +5,7 @@ namespace Ivoz\Provider\Domain\Model\Schedule;
 use Doctrine\Common\Persistence\ObjectRepository;
 use Doctrine\Common\Collections\Selectable;
 
-interface ScheduleRepository extends ObjectRepository, Selectable {}
+interface ScheduleRepository extends ObjectRepository, Selectable
+{
 
+}

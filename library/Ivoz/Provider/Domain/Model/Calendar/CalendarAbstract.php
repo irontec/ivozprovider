@@ -38,7 +38,8 @@ abstract class CalendarAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "Calendar",
             $this->getId()
         );
@@ -98,7 +99,8 @@ abstract class CalendarAbstract
         Assertion::isInstanceOf($dto, CalendarDto::class);
 
         $self = new static(
-            $dto->getName());
+            $dto->getName()
+        );
 
         $self
             ->setCompany($dto->getCompany())
@@ -152,8 +154,6 @@ abstract class CalendarAbstract
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -208,8 +208,5 @@ abstract class CalendarAbstract
         return $this->company;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

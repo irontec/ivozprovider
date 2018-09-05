@@ -28,4 +28,3 @@ class TpDerivedCharger extends TpDerivedChargerAbstract implements TpDerivedChar
         return $this->id;
     }
 }
-

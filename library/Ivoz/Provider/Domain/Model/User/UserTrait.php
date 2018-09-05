@@ -117,8 +117,6 @@ trait UserTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add pickUpRelUser
      *
@@ -334,7 +332,4 @@ trait UserTrait
 
         return $this->callForwardSettings->toArray();
     }
-
-
 }
-

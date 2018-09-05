@@ -118,7 +118,8 @@ abstract class BillableCallAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "BillableCall",
             $this->getId()
         );
@@ -178,7 +179,8 @@ abstract class BillableCallAbstract
         Assertion::isInstanceOf($dto, BillableCallDto::class);
 
         $self = new static(
-            $dto->getDuration());
+            $dto->getDuration()
+        );
 
         $self
             ->setCallid($dto->getCallid())
@@ -296,8 +298,6 @@ abstract class BillableCallAbstract
             'trunksCdrId' => self::getTrunksCdr() ? self::getTrunksCdr()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -340,10 +340,10 @@ abstract class BillableCallAbstract
     public function setStartTime($startTime = null)
     {
         if (!is_null($startTime)) {
-        $startTime = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
-            $startTime,
-            null
-        );
+            $startTime = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
+                $startTime,
+                null
+            );
         }
 
         $this->startTime = $startTime;
@@ -795,8 +795,5 @@ abstract class BillableCallAbstract
         return $this->trunksCdr;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

@@ -81,5 +81,4 @@ class GenerateOutRules
 
         $this->entityPersister->persistDto($ruleDto);
     }
-
 }

@@ -31,14 +31,14 @@ abstract class ExternalCallFilterRelCalendarAbstract
      */
     protected function __construct()
     {
-
     }
 
     abstract public function getId();
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "ExternalCallFilterRelCalendar",
             $this->getId()
         );
@@ -152,8 +152,6 @@ abstract class ExternalCallFilterRelCalendarAbstract
             'calendarId' => self::getCalendar() ? self::getCalendar()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -204,8 +202,5 @@ abstract class ExternalCallFilterRelCalendarAbstract
         return $this->calendar;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

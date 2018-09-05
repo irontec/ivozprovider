@@ -141,6 +141,4 @@ interface TpTimingInterface extends EntityInterface
      * @return \DateTime
      */
     public function getCreatedAt();
-
 }
-

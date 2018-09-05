@@ -21,5 +21,3 @@ class MediaRelaySetDto extends MediaRelaySetDtoAbstract
         return parent::getPropertyMap(...func_get_args());
     }
 }
-
-

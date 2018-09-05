@@ -38,7 +38,8 @@ abstract class PickUpGroupAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "PickUpGroup",
             $this->getId()
         );
@@ -98,7 +99,8 @@ abstract class PickUpGroupAbstract
         Assertion::isInstanceOf($dto, PickUpGroupDto::class);
 
         $self = new static(
-            $dto->getName());
+            $dto->getName()
+        );
 
         $self
             ->setCompany($dto->getCompany())
@@ -152,8 +154,6 @@ abstract class PickUpGroupAbstract
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -208,8 +208,5 @@ abstract class PickUpGroupAbstract
         return $this->company;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

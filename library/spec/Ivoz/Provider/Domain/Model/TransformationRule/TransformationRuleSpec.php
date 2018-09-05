@@ -9,7 +9,8 @@ use Prophecy\Argument;
 
 class TransformationRuleSpec extends ObjectBehavior
 {
-    function let() {
+    function let()
+    {
 
         $dto = new TransformationRuleDto();
         $dto->setType('callerin')

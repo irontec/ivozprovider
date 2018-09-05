@@ -28,4 +28,3 @@ class ExternalCallFilterBlackList extends ExternalCallFilterBlackListAbstract im
         return $this->id;
     }
 }
-

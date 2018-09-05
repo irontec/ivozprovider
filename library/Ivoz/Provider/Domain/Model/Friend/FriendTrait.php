@@ -104,8 +104,6 @@ trait FriendTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add psEndpoint
      *
@@ -249,7 +247,4 @@ trait FriendTrait
 
         return $this->patterns->toArray();
     }
-
-
 }
-

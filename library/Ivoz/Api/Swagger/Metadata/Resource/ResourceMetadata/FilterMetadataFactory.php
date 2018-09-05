@@ -74,7 +74,6 @@ class FilterMetadataFactory implements ResourceMetadataFactoryInterface
 
         $attributes = $this->getEntityAttributes($resourceClass);
         foreach ($attributes as $attribute) {
-
             if ($attribute === 'id') {
                 continue;
             }
@@ -97,7 +96,8 @@ class FilterMetadataFactory implements ResourceMetadataFactoryInterface
                     $filters['ivoz.api.filter.range'][$attribute] = null;
                     break;
                 case ClassMetadataInfo::MANY_TO_ONE:
-                    $filters['ivoz.api.filter.search'][$attribute] = Filter\SearchFilter::STRATEGY_EXACT;;
+                    $filters['ivoz.api.filter.search'][$attribute] = Filter\SearchFilter::STRATEGY_EXACT;
+                    ;
                     break;
                 case 'boolean':
                     $filters['ivoz.api.filter.boolean'][$attribute] = null;

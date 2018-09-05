@@ -98,7 +98,6 @@ abstract class BalanceMovementDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -273,5 +272,3 @@ abstract class BalanceMovementDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 }
-
-

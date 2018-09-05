@@ -117,8 +117,6 @@ trait DomainTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add friend
      *
@@ -334,7 +332,4 @@ trait DomainTrait
 
         return $this->terminals->toArray();
     }
-
-
 }
-

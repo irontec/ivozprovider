@@ -6,7 +6,6 @@ use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\ForeignKeyTransformerInterface;
 use Ivoz\Core\Application\CollectionTransformerInterface;
 
-
 class TrunksUacregDto extends TrunksUacregDtoAbstract
 {
     public function toArray($hideSensitiveData = false)
@@ -20,5 +19,3 @@ class TrunksUacregDto extends TrunksUacregDtoAbstract
         return $response;
     }
 }
-
-

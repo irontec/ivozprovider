@@ -28,4 +28,3 @@ class Carrier extends CarrierAbstract implements CarrierInterface
         return $this->id;
     }
 }
-

@@ -48,8 +48,7 @@ class InterfaceGenerator extends EntityGenerator
      * @var string
      */
     protected static $customMethodTemplate =
-        '<docComment><spaces>public <static>function <methodName>(<methodArguments>);
-';
+        '<docComment><spaces>public <static>function <methodName>(<methodArguments>);';
 
 
     protected function transformMetadata(ClassMetadataInfo $metadata)
@@ -90,7 +89,7 @@ class InterfaceGenerator extends EntityGenerator
             $this->generateEntityBody($metadata)
         );
 
-        $code = str_replace($placeHolders, $replacements, static::$classTemplate) . "\n";
+        $code = str_replace($placeHolders, $replacements, static::$classTemplate);
         $code = str_replace('\\Doctrine\\Common\\Collections\\Collection', 'Collection', $code);
         $code = str_replace('\\Doctrine\\Common\\Collections\\ArrayCollection', 'ArrayCollection', $code);
 
@@ -267,6 +266,6 @@ class InterfaceGenerator extends EntityGenerator
             );
         }
 
-        return implode("\n", $response);
+        return implode("\n\n", $response);
     }
 }

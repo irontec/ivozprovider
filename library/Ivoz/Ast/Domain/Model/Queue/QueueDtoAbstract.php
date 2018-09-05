@@ -139,7 +139,6 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -408,5 +407,3 @@ abstract class QueueDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 }
-
-

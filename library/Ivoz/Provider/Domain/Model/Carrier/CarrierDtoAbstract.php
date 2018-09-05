@@ -145,7 +145,6 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
         if (!is_null($this->outgoingRoutingsRelCarriers)) {
             $items = $this->getOutgoingRoutingsRelCarriers();
             $this->outgoingRoutingsRelCarriers = [];
@@ -156,7 +155,6 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
         if (!is_null($this->servers)) {
             $items = $this->getServers();
             $this->servers = [];
@@ -167,7 +165,6 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
         if (!is_null($this->ratingProfiles)) {
             $items = $this->getRatingProfiles();
             $this->ratingProfiles = [];
@@ -178,7 +175,6 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
         if (!is_null($this->tpCdrStats)) {
             $items = $this->getTpCdrStats();
             $this->tpCdrStats = [];
@@ -189,7 +185,6 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
     }
 
     /**
@@ -531,5 +526,3 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
         return $this->tpCdrStats;
     }
 }
-
-

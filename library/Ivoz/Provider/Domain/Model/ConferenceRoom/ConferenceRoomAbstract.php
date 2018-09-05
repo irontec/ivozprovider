@@ -55,7 +55,8 @@ abstract class ConferenceRoomAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "ConferenceRoom",
             $this->getId()
         );
@@ -117,7 +118,8 @@ abstract class ConferenceRoomAbstract
         $self = new static(
             $dto->getName(),
             $dto->getPinProtected(),
-            $dto->getMaxMembers());
+            $dto->getMaxMembers()
+        );
 
         $self
             ->setPinCode($dto->getPinCode())
@@ -181,8 +183,6 @@ abstract class ConferenceRoomAbstract
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -323,8 +323,5 @@ abstract class ConferenceRoomAbstract
         return $this->company;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

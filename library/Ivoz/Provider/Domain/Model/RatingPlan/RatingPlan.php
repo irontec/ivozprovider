@@ -26,11 +26,10 @@ class RatingPlan extends RatingPlanAbstract implements RatingPlanInterface
      */
     public function getCgrTag()
     {
-        return sprintf("b%drp%d",
+        return sprintf(
+            "b%drp%d",
             $this->getBrand()->getId(),
             $this->getId()
         );
     }
-
 }
-

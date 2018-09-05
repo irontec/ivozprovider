@@ -14,4 +14,3 @@ interface NotificationTemplateRepository extends ObjectRepository, Selectable
      */
     public function findTemplateByBalanceNotification(BalanceNotificationInterface $balanceNotification);
 }
-

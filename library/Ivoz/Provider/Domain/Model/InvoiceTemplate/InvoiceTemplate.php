@@ -39,4 +39,3 @@ class InvoiceTemplate extends InvoiceTemplateAbstract implements InvoiceTemplate
         return parent::setTemplate(...func_get_args());
     }
 }
-

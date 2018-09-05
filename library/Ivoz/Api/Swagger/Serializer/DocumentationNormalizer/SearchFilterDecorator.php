@@ -95,13 +95,11 @@ class SearchFilterDecorator implements NormalizerInterface
     private function appendPropertiesIntoParameters(array $parameters, array $properties, $prefix = '')
     {
         foreach ($properties as $name => $values) {
-
             if ($name === 'id') {
                 continue;
             }
 
             if (array_key_exists('$ref', $values)) {
-
                 $responseModel = $this->getDefinitionByRef($values['$ref']);
                 $parameters = $this->appendPropertiesIntoParameters(
                     $parameters,

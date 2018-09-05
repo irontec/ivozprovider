@@ -9,7 +9,8 @@ use Prophecy\Argument;
 
 class TrunksLcrRuleSpec extends ObjectBehavior
 {
-    function let() {
+    function let()
+    {
 
         $dto = new TrunksLcrRuleDto();
         $dto->setLcrId(1)

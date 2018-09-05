@@ -37,6 +37,4 @@ interface RoutingPatternGroupsRelPatternInterface extends EntityInterface
      * @return \Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface
      */
     public function getRoutingPatternGroup();
-
 }
-

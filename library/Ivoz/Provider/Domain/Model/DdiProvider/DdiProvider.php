@@ -28,4 +28,3 @@ class DdiProvider extends DdiProviderAbstract implements DdiProviderInterface
         return $this->id;
     }
 }
-

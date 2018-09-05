@@ -37,5 +37,3 @@ class TerminalDto extends TerminalDtoAbstract
         return $response;
     }
 }
-
-

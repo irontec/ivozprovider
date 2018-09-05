@@ -15,5 +15,3 @@ class RouteLockDto extends RouteLockDtoAbstract
         return $response;
     }
 }
-
-

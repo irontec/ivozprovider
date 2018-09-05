@@ -21,5 +21,3 @@ class ConferenceRoomDto extends ConferenceRoomDtoAbstract
         return parent::getPropertyMap(...func_get_args());
     }
 }
-
-

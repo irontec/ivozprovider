@@ -99,7 +99,6 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -248,5 +247,3 @@ abstract class RatingPlanDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 }
-
-

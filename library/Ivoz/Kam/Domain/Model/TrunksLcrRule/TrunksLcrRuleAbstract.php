@@ -84,7 +84,8 @@ abstract class TrunksLcrRuleAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "TrunksLcrRule",
             $this->getId()
         );
@@ -146,7 +147,8 @@ abstract class TrunksLcrRuleAbstract
         $self = new static(
             $dto->getLcrId(),
             $dto->getStopper(),
-            $dto->getEnabled());
+            $dto->getEnabled()
+        );
 
         $self
             ->setPrefix($dto->getPrefix())
@@ -230,8 +232,6 @@ abstract class TrunksLcrRuleAbstract
             'outgoingRoutingId' => self::getOutgoingRouting() ? self::getOutgoingRouting()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -509,8 +509,5 @@ abstract class TrunksLcrRuleAbstract
         return $this->outgoingRouting;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

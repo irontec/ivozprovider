@@ -14,7 +14,8 @@ class DestinationRateGroup extends DestinationRateGroupAbstract implements Desti
 {
     use DestinationRateGroupTrait;
 
-    use TempFileContainnerTrait { addTmpFile as protected _addTmpFile; }
+    use TempFileContainnerTrait { addTmpFile as protected _addTmpFile;
+    }
 
     /**
      * @codeCoverageIgnore
@@ -71,4 +72,3 @@ class DestinationRateGroup extends DestinationRateGroupAbstract implements Desti
         );
     }
 }
-

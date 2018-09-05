@@ -40,7 +40,6 @@ class LocutionDtoAssembler implements CustomDtoAssemblerInterface
         }
 
         if ($entity->getOriginalFile()->getFileSize()) {
-
             $pathResolver = $this
                 ->storagePathResolver
                 ->getPathResolver('OriginalFile');
@@ -54,7 +53,6 @@ class LocutionDtoAssembler implements CustomDtoAssemblerInterface
         }
 
         if ($entity->getEncodedFile()->getFileSize()) {
-
             $pathResolver = $this
                 ->storagePathResolver
                 ->getPathResolver('EncodedFile');

@@ -4,6 +4,7 @@ namespace Ivoz\Kam\Domain\Model\Rtpengine;
 
 use Assert\Assertion;
 use \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface;
+
 /**
  * Rtpengine
  */
@@ -41,4 +42,3 @@ class Rtpengine extends RtpengineAbstract implements RtpengineInterface
         return parent::setMediaRelaySet($mediaRelaySet);
     }
 }
-

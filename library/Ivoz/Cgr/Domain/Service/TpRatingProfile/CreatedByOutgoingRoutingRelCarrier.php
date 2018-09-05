@@ -22,8 +22,7 @@ class CreatedByOutgoingRoutingRelCarrier
      */
     public function __construct(
         EntityTools $entityTools
-    )
-    {
+    ) {
         $this->entityTools = $entityTools;
     }
 
@@ -49,7 +48,7 @@ class CreatedByOutgoingRoutingRelCarrier
                     CriteriaHelper::fromArray([
                         [ 'ratingProfile', 'eq', $ratingProfile ],
                     ])
-            );
+                );
             $outgoingRoutingTpRatingProfile = array_shift($outgoingRoutingTpRatingProfiles);
 
 
@@ -74,7 +73,5 @@ class CreatedByOutgoingRoutingRelCarrier
                     false
                 );
         }
-
     }
-
 }

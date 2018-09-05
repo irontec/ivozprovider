@@ -310,6 +310,4 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface[]
      */
     public function getRelCarriers(\Doctrine\Common\Collections\Criteria $criteria = null);
-
 }
-

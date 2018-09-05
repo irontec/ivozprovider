@@ -232,9 +232,7 @@ class DataAccessControlParser
     {
         $arrayCriteria = [];
         foreach ($accessControl as $key => $value) {
-
             if (in_array($key, ['and', 'or'])) {
-
                 $subCriteria = [];
                 foreach ($value as $v) {
                     $parsedValue = $this->accessControlToArrayCriteria($v);
@@ -298,4 +296,3 @@ class DataAccessControlParser
         ];
     }
 }
-

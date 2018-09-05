@@ -13,4 +13,3 @@ interface RatingPlanRepository extends ObjectRepository, Selectable
      */
     public function findOneByTag(string $tag);
 }
-

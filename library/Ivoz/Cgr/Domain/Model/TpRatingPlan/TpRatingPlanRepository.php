@@ -9,4 +9,3 @@ interface TpRatingPlanRepository extends ObjectRepository, Selectable
 {
 
 }
-

@@ -157,6 +157,4 @@ interface DdiProviderInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface[]
      */
     public function getDdiProviderAddresses(\Doctrine\Common\Collections\Criteria $criteria = null);
-
 }
-

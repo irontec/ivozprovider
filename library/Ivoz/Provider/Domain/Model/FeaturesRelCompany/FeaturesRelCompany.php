@@ -28,4 +28,3 @@ class FeaturesRelCompany extends FeaturesRelCompanyAbstract implements FeaturesR
         return $this->id;
     }
 }
-

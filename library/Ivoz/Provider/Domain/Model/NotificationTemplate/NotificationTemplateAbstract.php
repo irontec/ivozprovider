@@ -45,7 +45,8 @@ abstract class NotificationTemplateAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "NotificationTemplate",
             $this->getId()
         );
@@ -106,7 +107,8 @@ abstract class NotificationTemplateAbstract
 
         $self = new static(
             $dto->getName(),
-            $dto->getType());
+            $dto->getType()
+        );
 
         $self
             ->setBrand($dto->getBrand())
@@ -163,8 +165,6 @@ abstract class NotificationTemplateAbstract
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -254,8 +254,5 @@ abstract class NotificationTemplateAbstract
         return $this->brand;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

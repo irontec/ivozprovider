@@ -24,5 +24,3 @@ class TrunksLcrRuleTargetDto extends TrunksLcrRuleTargetDtoAbstract
         return parent::getPropertyMap(...func_get_args());
     }
 }
-
-

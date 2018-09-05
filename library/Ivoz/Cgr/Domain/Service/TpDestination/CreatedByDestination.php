@@ -70,5 +70,4 @@ class CreatedByDestination implements DestinationLifecycleEventHandlerInterface
         $this->entityTools
             ->persist($destination);
     }
-
 }

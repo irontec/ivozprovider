@@ -28,6 +28,4 @@ class TpRatingProfile extends TpRatingProfileAbstract implements TpRatingProfile
     {
         return parent::getChangeSet();
     }
-
 }
-

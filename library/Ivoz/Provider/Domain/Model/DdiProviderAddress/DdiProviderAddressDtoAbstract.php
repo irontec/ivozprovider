@@ -91,7 +91,6 @@ abstract class DdiProviderAddressDtoAbstract implements DataTransferObjectInterf
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -246,5 +245,3 @@ abstract class DdiProviderAddressDtoAbstract implements DataTransferObjectInterf
         return null;
     }
 }
-
-

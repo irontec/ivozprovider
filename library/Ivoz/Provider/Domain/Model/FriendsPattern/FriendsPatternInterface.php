@@ -61,6 +61,4 @@ interface FriendsPatternInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Friend\FriendInterface
      */
     public function getFriend();
-
 }
-

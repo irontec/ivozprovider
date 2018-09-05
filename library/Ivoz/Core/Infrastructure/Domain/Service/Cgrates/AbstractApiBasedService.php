@@ -60,7 +60,6 @@ abstract class AbstractApiBasedService
         $objectResponse = json_decode($stringResponse);
 
         if ($objectResponse->error) {
-
             $errorMsg = sprintf(
                 'CgRates API error response:  %s',
                 $objectResponse->error

@@ -36,7 +36,6 @@ class DomainServiceCompiler implements CompilerPassInterface
     {
         $service = $this->container->getDefinition($fqdn);
         foreach ($subscribedEvents as $event => $prioriry) {
-
             if (!in_array($event, LifecycleEventHandlerInterface::EVENT_TYPES)) {
                 throw new \Exception("Unknown event $event");
             }
@@ -91,7 +90,8 @@ class DomainServiceCompiler implements CompilerPassInterface
 
                 return $response;
             },
-            ARRAY_FILTER_USE_KEY);
+            ARRAY_FILTER_USE_KEY
+        );
 
         return array_keys($services);
     }
@@ -103,7 +103,6 @@ class DomainServiceCompiler implements CompilerPassInterface
     {
 
         foreach ($services as $fqdn => $value) {
-
             $repositoryInterface = preg_replace(
                 '/(.*)Infrastructure\\\\Persistence\\\\Doctrine\\\\(.*)DoctrineRepository/',
                 '${1}Domain\Model\\\\${2}\\\\${2}Repository',

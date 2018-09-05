@@ -89,6 +89,4 @@ interface TpDestinationInterface extends EntityInterface
      * @return \Ivoz\Provider\Domain\Model\Destination\DestinationInterface
      */
     public function getDestination();
-
 }
-

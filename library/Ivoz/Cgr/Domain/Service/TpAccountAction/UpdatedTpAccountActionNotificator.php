@@ -37,7 +37,6 @@ class UpdatedTpAccountActionNotificator implements TpAccountActionLifecycleEvent
     {
         $wasRemoved = is_null($entity->getId());
         if ($wasRemoved) {
-
             $this->removeTpAccount->execute($entity);
             return;
         }

@@ -63,4 +63,3 @@ class InvoiceNumberSequence extends InvoiceNumberSequenceAbstract implements Inv
         return $this->getLatestValue();
     }
 }
-

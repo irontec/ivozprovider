@@ -276,7 +276,6 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
         if (!is_null($this->queueMembers)) {
             $items = $this->getQueueMembers();
             $this->queueMembers = [];
@@ -287,7 +286,6 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
         if (!is_null($this->callForwardSettings)) {
             $items = $this->getCallForwardSettings();
             $this->callForwardSettings = [];
@@ -298,7 +296,6 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
     }
 
     /**
@@ -1232,5 +1229,3 @@ abstract class UserDtoAbstract implements DataTransferObjectInterface
         return $this->callForwardSettings;
     }
 }
-
-

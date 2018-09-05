@@ -184,7 +184,6 @@ class DataGateway
         $currentPage = 1;
         $continue =  true;
         while ($continue) {
-
             $qb
                 ->setMaxResults($chunkSize)
                 ->setFirstResult(($currentPage - 1) * $chunkSize);
@@ -338,10 +337,9 @@ class DataGateway
     private function triggerEvent(string $class, string $method, array $arguments)
     {
         foreach ($arguments as $key => $value) {
-
             if ($value instanceof DataTransferObjectInterface) {
                 $arguments[$key] = $value->toArray(true);
-            } else if (is_object($value)) {
+            } elseif (is_object($value)) {
                 $arguments[$key] = 'object(' . get_class($value) . ')';
             }
         }

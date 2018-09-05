@@ -91,7 +91,8 @@ abstract class UsersPresentityAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "UsersPresentity",
             $this->getId()
         );
@@ -159,7 +160,8 @@ abstract class UsersPresentityAbstract
             $dto->getReceivedTime(),
             $dto->getBody(),
             $dto->getSender(),
-            $dto->getPriority());
+            $dto->getPriority()
+        );
 
         $self;
 
@@ -232,8 +234,6 @@ abstract class UsersPresentityAbstract
             'priority' => self::getPriority()
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -487,8 +487,5 @@ abstract class UsersPresentityAbstract
         return $this->priority;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

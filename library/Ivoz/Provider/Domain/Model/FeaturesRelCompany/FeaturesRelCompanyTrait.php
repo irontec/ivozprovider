@@ -22,7 +22,6 @@ trait FeaturesRelCompanyTrait
     protected function __construct()
     {
         parent::__construct(...func_get_args());
-
     }
 
     /**
@@ -79,7 +78,4 @@ trait FeaturesRelCompanyTrait
             'id' => self::getId()
         ];
     }
-
-
 }
-

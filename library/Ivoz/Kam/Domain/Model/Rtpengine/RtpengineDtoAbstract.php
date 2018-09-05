@@ -111,7 +111,6 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -300,5 +299,3 @@ abstract class RtpengineDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 }
-
-

@@ -51,14 +51,14 @@ abstract class BalanceNotificationAbstract
      */
     protected function __construct()
     {
-
     }
 
     abstract public function getId();
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "BalanceNotification",
             $this->getId()
         );
@@ -188,8 +188,6 @@ abstract class BalanceNotificationAbstract
             'notificationTemplateId' => self::getNotificationTemplate() ? self::getNotificationTemplate()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -264,10 +262,10 @@ abstract class BalanceNotificationAbstract
     public function setLastSent($lastSent = null)
     {
         if (!is_null($lastSent)) {
-        $lastSent = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
-            $lastSent,
-            null
-        );
+            $lastSent = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
+                $lastSent,
+                null
+            );
         }
 
         $this->lastSent = $lastSent;
@@ -357,8 +355,5 @@ abstract class BalanceNotificationAbstract
         return $this->notificationTemplate;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

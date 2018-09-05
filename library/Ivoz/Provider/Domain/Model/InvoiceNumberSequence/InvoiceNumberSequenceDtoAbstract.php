@@ -118,7 +118,6 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -327,5 +326,3 @@ abstract class InvoiceNumberSequenceDtoAbstract implements DataTransferObjectInt
         return null;
     }
 }
-
-

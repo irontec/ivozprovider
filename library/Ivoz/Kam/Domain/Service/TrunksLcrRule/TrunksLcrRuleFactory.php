@@ -69,7 +69,6 @@ class TrunksLcrRuleFactory
 
             $routingPatternGroup = $outgoingRouting->getRoutingPatternGroup();
             if (!is_null($routingPatternGroup)) {
-
                 $routingPatternGroupsRelPatterns = $routingPatternGroup->getRelPatterns(
                     CriteriaHelper::fromArray([
                         [ "routingPattern", "eq", $routingPattern ]

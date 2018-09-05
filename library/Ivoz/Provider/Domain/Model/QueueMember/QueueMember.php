@@ -28,4 +28,3 @@ class QueueMember extends QueueMemberAbstract implements QueueMemberInterface
         return $this->id;
     }
 }
-

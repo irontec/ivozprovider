@@ -105,7 +105,6 @@ abstract class ServiceDtoAbstract implements DataTransferObjectInterface
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -113,7 +112,6 @@ abstract class ServiceDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -276,5 +274,3 @@ abstract class ServiceDtoAbstract implements DataTransferObjectInterface
         return $this->descriptionEs;
     }
 }
-
-

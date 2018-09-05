@@ -104,8 +104,6 @@ trait TerminalTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add astPsEndpoint
      *
@@ -249,7 +247,4 @@ trait TerminalTrait
 
         return $this->users->toArray();
     }
-
-
 }
-

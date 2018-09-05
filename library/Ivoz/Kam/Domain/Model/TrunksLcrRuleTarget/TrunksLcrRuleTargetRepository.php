@@ -22,4 +22,3 @@ interface TrunksLcrRuleTargetRepository extends ObjectRepository, Selectable
         TrunksLcrGatewayInterface $lcrGateway
     );
 }
-

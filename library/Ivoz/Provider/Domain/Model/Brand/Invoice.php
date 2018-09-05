@@ -267,8 +267,5 @@ class Invoice
         return $this->registryData;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

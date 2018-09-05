@@ -45,6 +45,4 @@ interface ProxyUserInterface extends LoggableEntityInterface
      * @return string
      */
     public function getIp();
-
 }
-

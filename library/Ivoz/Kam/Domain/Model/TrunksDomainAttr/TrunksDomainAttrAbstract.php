@@ -63,7 +63,8 @@ abstract class TrunksDomainAttrAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "TrunksDomainAttr",
             $this->getId()
         );
@@ -127,7 +128,8 @@ abstract class TrunksDomainAttrAbstract
             $dto->getName(),
             $dto->getType(),
             $dto->getValue(),
-            $dto->getLastModified());
+            $dto->getLastModified()
+        );
 
         $self;
 
@@ -188,8 +190,6 @@ abstract class TrunksDomainAttrAbstract
             'last_modified' => self::getLastModified()
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -336,8 +336,5 @@ abstract class TrunksDomainAttrAbstract
         return $this->lastModified;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

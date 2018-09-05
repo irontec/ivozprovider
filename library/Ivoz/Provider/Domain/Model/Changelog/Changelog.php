@@ -42,4 +42,3 @@ class Changelog extends ChangelogAbstract implements ChangelogInterface
         return $this->id;
     }
 }
-

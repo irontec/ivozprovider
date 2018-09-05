@@ -90,7 +90,6 @@ abstract class FixedCostDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -219,5 +218,3 @@ abstract class FixedCostDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 }
-
-

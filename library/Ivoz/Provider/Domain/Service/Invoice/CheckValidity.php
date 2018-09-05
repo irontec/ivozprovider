@@ -116,7 +116,6 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
             );
 
         if (!empty($invoices)) {
-
             $invoice = $invoices[0];
             $nextInvoiceInDate = $invoice->getInDate();
 

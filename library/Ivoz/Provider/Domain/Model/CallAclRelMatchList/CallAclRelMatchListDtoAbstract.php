@@ -91,7 +91,6 @@ abstract class CallAclRelMatchListDtoAbstract implements DataTransferObjectInter
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -246,5 +245,3 @@ abstract class CallAclRelMatchListDtoAbstract implements DataTransferObjectInter
         return null;
     }
 }
-
-

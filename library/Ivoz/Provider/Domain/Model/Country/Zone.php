@@ -91,8 +91,5 @@ class Zone
         return $this->es;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

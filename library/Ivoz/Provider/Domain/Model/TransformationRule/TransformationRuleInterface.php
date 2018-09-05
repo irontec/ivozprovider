@@ -107,6 +107,4 @@ interface TransformationRuleInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterface
      */
     public function getTransformationRuleSet();
-
 }
-

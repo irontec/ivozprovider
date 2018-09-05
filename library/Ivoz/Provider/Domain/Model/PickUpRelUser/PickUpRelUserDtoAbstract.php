@@ -77,7 +77,6 @@ abstract class PickUpRelUserDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -192,5 +191,3 @@ abstract class PickUpRelUserDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 }
-
-

@@ -91,8 +91,6 @@ trait NotificationTemplateTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add content
      *
@@ -164,7 +162,4 @@ trait NotificationTemplateTrait
 
         return $this->contents->toArray();
     }
-
-
 }
-

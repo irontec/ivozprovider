@@ -37,7 +37,7 @@ class TrunksLcrRule extends TrunksLcrRuleAbstract implements TrunksLcrRuleInterf
      * @param OutgoingRoutingInterface $outgoingRouting
      * @return string
      */
-    static public function getFromUriForOutgoingRouting(OutgoingRoutingInterface $outgoingRouting)
+    public static function getFromUriForOutgoingRouting(OutgoingRoutingInterface $outgoingRouting)
     {
         $company = $outgoingRouting->getCompany();
 

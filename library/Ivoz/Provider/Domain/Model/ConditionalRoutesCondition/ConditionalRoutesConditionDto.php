@@ -20,5 +20,3 @@ class ConditionalRoutesConditionDto extends ConditionalRoutesConditionDtoAbstrac
         return parent::getPropertyMap(...func_get_args());
     }
 }
-
-

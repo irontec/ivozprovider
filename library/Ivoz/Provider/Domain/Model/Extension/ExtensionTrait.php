@@ -91,8 +91,6 @@ trait ExtensionTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add user
      *
@@ -164,7 +162,4 @@ trait ExtensionTrait
 
         return $this->users->toArray();
     }
-
-
 }
-

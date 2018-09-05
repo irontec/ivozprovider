@@ -154,7 +154,6 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -489,5 +488,3 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 }
-
-

@@ -99,7 +99,6 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -300,5 +299,3 @@ abstract class OutgoingDdiRulesPatternDtoAbstract implements DataTransferObjectI
         return null;
     }
 }
-
-

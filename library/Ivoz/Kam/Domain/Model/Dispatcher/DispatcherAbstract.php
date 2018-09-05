@@ -74,7 +74,8 @@ abstract class DispatcherAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "Dispatcher",
             $this->getId()
         );
@@ -139,7 +140,8 @@ abstract class DispatcherAbstract
             $dto->getFlags(),
             $dto->getPriority(),
             $dto->getAttrs(),
-            $dto->getDescription());
+            $dto->getDescription()
+        );
 
         $self
             ->setApplicationServer($dto->getApplicationServer())
@@ -208,8 +210,6 @@ abstract class DispatcherAbstract
             'applicationServerId' => self::getApplicationServer() ? self::getApplicationServer()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -404,8 +404,5 @@ abstract class DispatcherAbstract
         return $this->applicationServer;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

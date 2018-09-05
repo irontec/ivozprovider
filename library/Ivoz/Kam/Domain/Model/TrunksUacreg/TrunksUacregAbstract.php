@@ -138,7 +138,8 @@ abstract class TrunksUacregAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "TrunksUacreg",
             $this->getId()
         );
@@ -210,7 +211,8 @@ abstract class TrunksUacregAbstract
             $dto->getExpires(),
             $dto->getFlags(),
             $dto->getRegDelay(),
-            $dto->getAuthHa1());
+            $dto->getAuthHa1()
+        );
 
         $self
             ->setDdiProviderRegistration($dto->getDdiProviderRegistration())
@@ -304,8 +306,6 @@ abstract class TrunksUacregAbstract
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -720,8 +720,5 @@ abstract class TrunksUacregAbstract
         return $this->brand;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

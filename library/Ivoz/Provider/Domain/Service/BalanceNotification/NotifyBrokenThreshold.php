@@ -146,7 +146,6 @@ class NotifyBrokenThreshold implements DomainEventSubscriberInterface
     {
         $carrier = $balanceNotification->getCarrier();
         if ($carrier) {
-
             return $carrier
                 ->getBrand()
                 ->getLanguage();

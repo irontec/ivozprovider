@@ -31,14 +31,14 @@ abstract class FeaturesRelCompanyAbstract
      */
     protected function __construct()
     {
-
     }
 
     abstract public function getId();
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "FeaturesRelCompany",
             $this->getId()
         );
@@ -152,8 +152,6 @@ abstract class FeaturesRelCompanyAbstract
             'featureId' => self::getFeature() ? self::getFeature()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -204,8 +202,5 @@ abstract class FeaturesRelCompanyAbstract
         return $this->feature;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

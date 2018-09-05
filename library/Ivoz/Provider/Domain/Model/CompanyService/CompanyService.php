@@ -36,7 +36,8 @@ class CompanyService extends CompanyServiceAbstract implements CompanyServiceInt
      */
     public function __toString()
     {
-        return sprintf("%s [%s]",
+        return sprintf(
+            "%s [%s]",
             $this->getService()->getName()->getEn(),
             parent::__toString()
         );
@@ -51,4 +52,3 @@ class CompanyService extends CompanyServiceAbstract implements CompanyServiceInt
         return parent::setCode($code);
     }
 }
-

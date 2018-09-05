@@ -308,7 +308,6 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -1083,5 +1082,3 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 }
-
-

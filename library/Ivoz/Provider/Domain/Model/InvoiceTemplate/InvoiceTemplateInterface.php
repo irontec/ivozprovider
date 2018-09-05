@@ -107,6 +107,4 @@ interface InvoiceTemplateInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
      */
     public function getBrand();
-
 }
-

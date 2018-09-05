@@ -7,7 +7,7 @@ use Ivoz\Core\Infrastructure\Domain\Service\Redis\Client as RedisClient;
 
 class UpdatedTpTimingNotificator implements TpTimingLifecycleEventHandlerInterface
 {
-    CONST ON_COMMIT_PRIORITY = self::PRIORITY_NORMAL;
+    const ON_COMMIT_PRIORITY = self::PRIORITY_NORMAL;
 
     private $client;
 

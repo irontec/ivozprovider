@@ -2,7 +2,6 @@
 
 namespace Ivoz\Provider\Domain\Model\CarrierServer;
 
-
 class CarrierServerDto extends CarrierServerDtoAbstract
 {
     /**
@@ -42,5 +41,3 @@ class CarrierServerDto extends CarrierServerDtoAbstract
         return $response;
     }
 }
-
-

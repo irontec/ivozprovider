@@ -34,7 +34,8 @@ class ConferenceRoom extends ConferenceRoomAbstract implements ConferenceRoomInt
      */
     public function __toString()
     {
-        return sprintf("%s [%s]",
+        return sprintf(
+            "%s [%s]",
             $this->getName(),
             parent::__toString()
         );
@@ -51,4 +52,3 @@ class ConferenceRoom extends ConferenceRoomAbstract implements ConferenceRoomInt
         }
     }
 }
-

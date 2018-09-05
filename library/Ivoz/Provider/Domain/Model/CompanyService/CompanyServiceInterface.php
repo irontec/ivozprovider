@@ -55,6 +55,4 @@ interface CompanyServiceInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Service\ServiceInterface
      */
     public function getService();
-
 }
-

@@ -190,6 +190,4 @@ interface TpDestinationRateInterface extends EntityInterface
      * @return \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface
      */
     public function getDestinationRate();
-
 }
-

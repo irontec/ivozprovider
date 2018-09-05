@@ -37,8 +37,7 @@ class RemoveByOutgoingRouting implements OutgoingRoutingLifecycleEventHandlerInt
     public function __construct(
         EntityTools $entityTools,
         TrunksLcrRuleRepository $trunksLcrRuleRepository
-    )
-    {
+    ) {
         $this->entityTools = $entityTools;
         $this->trunksLcrRuleRepository = $trunksLcrRuleRepository;
     }

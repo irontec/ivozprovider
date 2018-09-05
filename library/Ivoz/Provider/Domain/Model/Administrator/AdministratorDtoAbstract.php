@@ -127,7 +127,6 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -408,5 +407,3 @@ abstract class AdministratorDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 }
-
-

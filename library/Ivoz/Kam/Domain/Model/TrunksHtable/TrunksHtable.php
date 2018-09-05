@@ -28,4 +28,3 @@ class TrunksHtable extends TrunksHtableAbstract implements TrunksHtableInterface
         return $this->id;
     }
 }
-

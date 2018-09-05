@@ -101,7 +101,7 @@ public function getId()
             $placeHolders,
             $replacements,
             static::$classTemplate
-        ) . "\n";
+        );
     }
 
     /**

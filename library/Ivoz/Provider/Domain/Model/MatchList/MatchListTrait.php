@@ -91,8 +91,6 @@ trait MatchListTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add pattern
      *
@@ -164,7 +162,4 @@ trait MatchListTrait
 
         return $this->patterns->toArray();
     }
-
-
 }
-

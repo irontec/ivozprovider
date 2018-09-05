@@ -112,7 +112,8 @@ abstract class TrunksCdrAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "TrunksCdr",
             $this->getId()
         );
@@ -174,7 +175,8 @@ abstract class TrunksCdrAbstract
         $self = new static(
             $dto->getStartTime(),
             $dto->getEndTime(),
-            $dto->getDuration());
+            $dto->getDuration()
+        );
 
         $self
             ->setCaller($dto->getCaller())
@@ -282,8 +284,6 @@ abstract class TrunksCdrAbstract
             'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -738,8 +738,5 @@ abstract class TrunksCdrAbstract
         return $this->carrier;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

@@ -61,7 +61,8 @@ abstract class TrunksAddressAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "TrunksAddress",
             $this->getId()
         );
@@ -123,7 +124,8 @@ abstract class TrunksAddressAbstract
         $self = new static(
             $dto->getGrp(),
             $dto->getMask(),
-            $dto->getPort());
+            $dto->getPort()
+        );
 
         $self
             ->setIpAddr($dto->getIpAddr())
@@ -191,8 +193,6 @@ abstract class TrunksAddressAbstract
             'ddiProviderAddressId' => self::getDdiProviderAddress() ? self::getDdiProviderAddress()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -362,8 +362,5 @@ abstract class TrunksAddressAbstract
         return $this->ddiProviderAddress;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

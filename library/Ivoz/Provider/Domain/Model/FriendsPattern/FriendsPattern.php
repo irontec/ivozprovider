@@ -28,4 +28,3 @@ class FriendsPattern extends FriendsPatternAbstract implements FriendsPatternInt
         return $this->id;
     }
 }
-

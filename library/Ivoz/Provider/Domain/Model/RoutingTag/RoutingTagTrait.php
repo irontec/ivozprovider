@@ -104,8 +104,6 @@ trait RoutingTagTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add outgoingRouting
      *
@@ -249,7 +247,4 @@ trait RoutingTagTrait
 
         return $this->relCompanies->toArray();
     }
-
-
 }
-

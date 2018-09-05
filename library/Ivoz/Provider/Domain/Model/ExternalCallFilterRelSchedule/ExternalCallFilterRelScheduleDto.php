@@ -20,5 +20,3 @@ class ExternalCallFilterRelScheduleDto extends ExternalCallFilterRelScheduleDtoA
         return parent::getPropertyMap(...func_get_args());
     }
 }
-
-

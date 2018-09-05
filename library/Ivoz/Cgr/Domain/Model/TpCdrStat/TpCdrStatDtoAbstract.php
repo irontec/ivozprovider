@@ -258,7 +258,6 @@ abstract class TpCdrStatDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -867,5 +866,3 @@ abstract class TpCdrStatDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 }
-
-

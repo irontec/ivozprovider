@@ -143,8 +143,6 @@ trait CarrierTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add outgoingRouting
      *
@@ -504,7 +502,4 @@ trait CarrierTrait
 
         return $this->tpCdrStats->toArray();
     }
-
-
 }
-

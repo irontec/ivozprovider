@@ -21,5 +21,3 @@ class CountryDto extends CountryDtoAbstract
         return parent::getPropertyMap(...func_get_args());
     }
 }
-
-

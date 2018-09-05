@@ -220,7 +220,6 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
         if (!is_null($this->excludedExtensions)) {
             $items = $this->getExcludedExtensions();
             $this->excludedExtensions = [];
@@ -231,7 +230,6 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
     }
 
     /**
@@ -975,5 +973,3 @@ abstract class IvrDtoAbstract implements DataTransferObjectInterface
         return $this->excludedExtensions;
     }
 }
-
-

@@ -67,7 +67,8 @@ abstract class UsersAddressAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "UsersAddress",
             $this->getId()
         );
@@ -129,7 +130,8 @@ abstract class UsersAddressAbstract
         $self = new static(
             $dto->getSourceAddress(),
             $dto->getMask(),
-            $dto->getPort());
+            $dto->getPort()
+        );
 
         $self
             ->setIpAddr($dto->getIpAddr())
@@ -201,8 +203,6 @@ abstract class UsersAddressAbstract
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -400,8 +400,5 @@ abstract class UsersAddressAbstract
         return $this->company;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

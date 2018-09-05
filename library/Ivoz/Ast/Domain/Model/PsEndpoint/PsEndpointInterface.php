@@ -336,6 +336,4 @@ interface PsEndpointInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface
      */
     public function getResidentialDevice();
-
 }
-

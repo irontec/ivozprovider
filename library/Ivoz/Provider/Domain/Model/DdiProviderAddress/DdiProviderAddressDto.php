@@ -2,7 +2,6 @@
 
 namespace Ivoz\Provider\Domain\Model\DdiProviderAddress;
 
-
 class DdiProviderAddressDto extends DdiProviderAddressDtoAbstract
 {
     /**
@@ -26,5 +25,3 @@ class DdiProviderAddressDto extends DdiProviderAddressDtoAbstract
         return $response;
     }
 }
-
-

@@ -100,7 +100,6 @@ abstract class OutgoingDdiRuleDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
     }
 
     /**
@@ -286,5 +285,3 @@ abstract class OutgoingDdiRuleDtoAbstract implements DataTransferObjectInterface
         return $this->patterns;
     }
 }
-
-

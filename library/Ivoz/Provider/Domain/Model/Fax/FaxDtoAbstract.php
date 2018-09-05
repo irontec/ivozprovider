@@ -98,7 +98,6 @@ abstract class FaxDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -273,5 +272,3 @@ abstract class FaxDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 }
-
-

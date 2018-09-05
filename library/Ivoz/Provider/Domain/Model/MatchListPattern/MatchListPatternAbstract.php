@@ -59,7 +59,8 @@ abstract class MatchListPatternAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "MatchListPattern",
             $this->getId()
         );
@@ -119,7 +120,8 @@ abstract class MatchListPatternAbstract
         Assertion::isInstanceOf($dto, MatchListPatternDto::class);
 
         $self = new static(
-            $dto->getType());
+            $dto->getType()
+        );
 
         $self
             ->setDescription($dto->getDescription())
@@ -189,8 +191,6 @@ abstract class MatchListPatternAbstract
             'numberCountryId' => self::getNumberCountry() ? self::getNumberCountry()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -360,8 +360,5 @@ abstract class MatchListPatternAbstract
         return $this->numberCountry;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

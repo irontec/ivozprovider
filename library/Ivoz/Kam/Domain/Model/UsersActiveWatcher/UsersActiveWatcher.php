@@ -27,4 +27,3 @@ class UsersActiveWatcher extends UsersActiveWatcherAbstract implements UsersActi
         return $this->id;
     }
 }
-

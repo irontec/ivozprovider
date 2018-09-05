@@ -83,4 +83,3 @@ class RetailAccount extends RetailAccountAbstract implements RetailAccountInterf
         return parent::setPort($port);
     }
 }
-

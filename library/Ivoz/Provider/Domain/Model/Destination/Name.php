@@ -93,8 +93,5 @@ class Name
         return $this->es;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

@@ -164,6 +164,4 @@ interface UsersPresentityInterface extends LoggableEntityInterface
      * @return integer
      */
     public function getPriority();
-
 }
-

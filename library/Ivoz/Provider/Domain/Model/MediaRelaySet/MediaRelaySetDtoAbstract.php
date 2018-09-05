@@ -68,7 +68,6 @@ abstract class MediaRelaySetDtoAbstract implements DataTransferObjectInterface
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -76,7 +75,6 @@ abstract class MediaRelaySetDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -139,5 +137,3 @@ abstract class MediaRelaySetDtoAbstract implements DataTransferObjectInterface
         return $this->id;
     }
 }
-
-

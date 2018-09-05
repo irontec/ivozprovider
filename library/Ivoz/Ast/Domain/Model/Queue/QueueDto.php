@@ -6,5 +6,3 @@ class QueueDto extends QueueDtoAbstract
 {
 
 }
-
-

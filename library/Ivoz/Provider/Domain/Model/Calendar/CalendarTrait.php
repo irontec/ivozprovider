@@ -91,8 +91,6 @@ trait CalendarTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add holidayDate
      *
@@ -164,7 +162,4 @@ trait CalendarTrait
 
         return $this->holidayDates->toArray();
     }
-
-
 }
-

@@ -37,7 +37,8 @@ class OutgoingDdiRule extends OutgoingDdiRuleAbstract implements OutgoingDdiRule
      */
     public function __toString()
     {
-        return sprintf("%s[%s]",
+        return sprintf(
+            "%s[%s]",
             $this->getName(),
             parent::__toString()
         );
@@ -84,7 +85,7 @@ class OutgoingDdiRule extends OutgoingDdiRuleAbstract implements OutgoingDdiRule
         // Default Rule action
         if ($this->getDefaultAction() == 'keep') {
             $finalDdi = $originalDdi;
-        } else if ($this->getDefaultAction() == 'force') {
+        } elseif ($this->getDefaultAction() == 'force') {
             $finalDdi = $this->getForcedDdi();
         }
 
@@ -101,7 +102,7 @@ class OutgoingDdiRule extends OutgoingDdiRuleAbstract implements OutgoingDdiRule
             $list = $rulePattern->getMatchList();
             // If rule pattern matches, apply action and leave
             if ($list->numberMatches($e164destination)) {
-                if ($rulePattern->getAction() == 'force')  {
+                if ($rulePattern->getAction() == 'force') {
                     $finalDdi = $rulePattern->getForcedDdi();
                 }
                 break;
@@ -111,4 +112,3 @@ class OutgoingDdiRule extends OutgoingDdiRuleAbstract implements OutgoingDdiRule
         return $finalDdi;
     }
 }
-

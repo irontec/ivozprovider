@@ -19,4 +19,3 @@ class TrunksCdr extends TrunksCdrAbstract implements TrunksCdrInterface
         return $this->id;
     }
 }
-

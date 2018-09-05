@@ -220,7 +220,8 @@ abstract class UsersActiveWatcherAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "UsersActiveWatcher",
             $this->getId()
         );
@@ -302,7 +303,8 @@ abstract class UsersActiveWatcherAbstract
             $dto->getUpdated(),
             $dto->getUpdatedWinfo(),
             $dto->getFlags(),
-            $dto->getUserAgent());
+            $dto->getUserAgent()
+        );
 
         $self
             ->setEventId($dto->getEventId())
@@ -430,8 +432,6 @@ abstract class UsersActiveWatcherAbstract
             'user_agent' => self::getUserAgent()
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -1165,8 +1165,5 @@ abstract class UsersActiveWatcherAbstract
         return $this->userAgent;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

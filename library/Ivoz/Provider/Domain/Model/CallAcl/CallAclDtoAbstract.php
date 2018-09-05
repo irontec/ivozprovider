@@ -92,7 +92,6 @@ abstract class CallAclDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
     }
 
     /**
@@ -232,5 +231,3 @@ abstract class CallAclDtoAbstract implements DataTransferObjectInterface
         return $this->relMatchLists;
     }
 }
-
-

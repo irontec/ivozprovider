@@ -25,5 +25,3 @@ class BalanceNotificationDto extends BalanceNotificationDtoAbstract
         ];
     }
 }
-
-

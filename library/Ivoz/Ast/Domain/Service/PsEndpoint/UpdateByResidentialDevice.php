@@ -50,7 +50,6 @@ class UpdateByResidentialDevice implements ResidentialDeviceLifecycleEventHandle
 
         // If not found create a new one
         if (is_null($endpoint)) {
-
             $endpointDto = PsEndpoint::createDto();
             $endpointDto
                 ->setContext('residential')

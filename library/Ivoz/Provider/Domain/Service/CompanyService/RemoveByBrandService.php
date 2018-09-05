@@ -67,7 +67,6 @@ class RemoveByBrandService implements BrandServiceLifecycleEventHandlerInterface
          * @var Company $company
          */
         foreach ($companies as $company) {
-
             $companyService = $this->companyServiceRepository->findOneBy([
                 'company' => $company->getId(),
                 'service' => $entity->getService()->getId()

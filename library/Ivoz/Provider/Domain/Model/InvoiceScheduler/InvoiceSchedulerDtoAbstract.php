@@ -151,7 +151,6 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
                 );
             }
         }
-
     }
 
     /**
@@ -529,5 +528,3 @@ abstract class InvoiceSchedulerDtoAbstract implements DataTransferObjectInterfac
         return $this->relFixedCosts;
     }
 }
-
-

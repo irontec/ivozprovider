@@ -85,7 +85,6 @@ abstract class CalendarDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
     }
 
     /**
@@ -205,5 +204,3 @@ abstract class CalendarDtoAbstract implements DataTransferObjectInterface
         return $this->holidayDates;
     }
 }
-
-

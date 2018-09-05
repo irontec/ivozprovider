@@ -91,8 +91,6 @@ trait HuntGroupTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add huntGroupsRelUser
      *
@@ -164,7 +162,4 @@ trait HuntGroupTrait
 
         return $this->huntGroupsRelUsers->toArray();
     }
-
-
 }
-

@@ -11,13 +11,12 @@ class EntityClassHelper
     {
         $class = get_class($entity);
         if (!($entity instanceof \Doctrine\ORM\Proxy\Proxy)) {
-
             return $class;
         }
 
         return substr(
             $class,
-            strpos($class,Proxy::MARKER) + Proxy::MARKER_LENGTH + 1
+            strpos($class, Proxy::MARKER) + Proxy::MARKER_LENGTH + 1
         );
     }
 }

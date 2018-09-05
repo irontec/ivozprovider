@@ -77,7 +77,6 @@ abstract class FeaturesRelBrandDtoAbstract implements DataTransferObjectInterfac
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -192,5 +191,3 @@ abstract class FeaturesRelBrandDtoAbstract implements DataTransferObjectInterfac
         return null;
     }
 }
-
-

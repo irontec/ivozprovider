@@ -2,7 +2,6 @@
 
 namespace Ivoz\Cgr\Domain\Model\TpDestinationRate;
 
-
 class TpDestinationRateDto extends TpDestinationRateDtoAbstract
 {
     /**
@@ -35,5 +34,3 @@ class TpDestinationRateDto extends TpDestinationRateDtoAbstract
         return parent::setRateGroupIntervalStart($rateGroupIntervalStart);
     }
 }
-
-

@@ -20,5 +20,3 @@ class IvrEntryDto extends IvrEntryDtoAbstract
         return parent::getPropertyMap(...func_get_args());
     }
 }
-
-

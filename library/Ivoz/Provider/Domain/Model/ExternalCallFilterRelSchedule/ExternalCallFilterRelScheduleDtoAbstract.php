@@ -77,7 +77,6 @@ abstract class ExternalCallFilterRelScheduleDtoAbstract implements DataTransferO
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -192,5 +191,3 @@ abstract class ExternalCallFilterRelScheduleDtoAbstract implements DataTransferO
         return null;
     }
 }
-
-

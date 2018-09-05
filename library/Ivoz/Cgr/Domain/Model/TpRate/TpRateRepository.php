@@ -9,4 +9,3 @@ interface TpRateRepository extends ObjectRepository, Selectable
 {
 
 }
-

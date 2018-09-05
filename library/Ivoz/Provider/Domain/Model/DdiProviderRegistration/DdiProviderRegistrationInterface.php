@@ -196,6 +196,4 @@ interface DdiProviderRegistrationInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface
      */
     public function getDdiProvider();
-
 }
-

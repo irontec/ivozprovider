@@ -21,5 +21,3 @@ class CompanyDto extends CompanyDtoAbstract
         return parent::getPropertyMap($context);
     }
 }
-
-

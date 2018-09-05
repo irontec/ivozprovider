@@ -5,7 +5,7 @@ namespace Ivoz\Api\Operation\Factory;
 use ApiPlatform\Core\Metadata\Property\Factory\PropertyNameCollectionFactoryInterface;
 use ApiPlatform\Core\Operation\Factory\SubresourceOperationFactoryInterface;
 
-class SubresourceOperationFactoryDecorator  implements SubresourceOperationFactoryInterface
+class SubresourceOperationFactoryDecorator implements SubresourceOperationFactoryInterface
 {
     protected $decoratedNormalizer;
 

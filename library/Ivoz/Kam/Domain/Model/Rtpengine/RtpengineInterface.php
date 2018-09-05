@@ -122,6 +122,4 @@ interface RtpengineInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface
      */
     public function getMediaRelaySet();
-
 }
-

@@ -44,7 +44,8 @@ abstract class RoutingTagAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "RoutingTag",
             $this->getId()
         );
@@ -105,7 +106,8 @@ abstract class RoutingTagAbstract
 
         $self = new static(
             $dto->getName(),
-            $dto->getTag());
+            $dto->getTag()
+        );
 
         $self
             ->setBrand($dto->getBrand())
@@ -162,8 +164,6 @@ abstract class RoutingTagAbstract
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -246,8 +246,5 @@ abstract class RoutingTagAbstract
         return $this->brand;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

@@ -32,5 +32,4 @@ class KamTrusted extends Fixture
     
         $manager->flush();
     }
-
 }

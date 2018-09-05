@@ -28,4 +28,3 @@ class TpLcrRule extends TpLcrRuleAbstract implements TpLcrRuleInterface
         return $this->id;
     }
 }
-

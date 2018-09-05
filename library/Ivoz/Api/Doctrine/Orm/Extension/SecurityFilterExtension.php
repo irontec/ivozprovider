@@ -28,8 +28,10 @@ class SecurityFilterExtension implements QueryCollectionExtensionInterface, Quer
     public function applyToItem(
         QueryBuilder $queryBuilder,
         QueryNameGeneratorInterface $queryNameGenerator,
-        string $resourceClass, array $identifiers,
-        string $operationName = null, array $context = []
+        string $resourceClass,
+        array $identifiers,
+        string $operationName = null,
+        array $context = []
     ) {
         $dataAccessControl = $this->dataAccessControlParser->get();
 
@@ -62,4 +64,3 @@ class SecurityFilterExtension implements QueryCollectionExtensionInterface, Quer
         );
     }
 }
-

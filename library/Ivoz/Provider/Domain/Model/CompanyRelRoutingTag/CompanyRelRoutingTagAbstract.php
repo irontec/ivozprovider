@@ -31,14 +31,14 @@ abstract class CompanyRelRoutingTagAbstract
      */
     protected function __construct()
     {
-
     }
 
     abstract public function getId();
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "CompanyRelRoutingTag",
             $this->getId()
         );
@@ -152,8 +152,6 @@ abstract class CompanyRelRoutingTagAbstract
             'routingTagId' => self::getRoutingTag() ? self::getRoutingTag()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -204,8 +202,5 @@ abstract class CompanyRelRoutingTagAbstract
         return $this->routingTag;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

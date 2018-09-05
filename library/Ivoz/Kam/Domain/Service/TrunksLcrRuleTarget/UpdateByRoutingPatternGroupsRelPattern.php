@@ -6,7 +6,6 @@ use Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGrou
 use Ivoz\Provider\Domain\Service\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternLifecycleEventHandlerInterface;
 use Ivoz\Kam\Domain\Service\TrunksLcrRule\UpdateByRoutingPatternGroupsRelPattern as LcrRuleUpdateByRoutingPatternGroupsRelPattern;
 
-
 /**
  * Class UpdateByRoutingPatternGroupsRelPattern
  * @package Ivoz\Kam\Domain\Service\TrunksLcrRuleTarget
@@ -41,8 +40,7 @@ class UpdateByRoutingPatternGroupsRelPattern implements RoutingPatternGroupsRelP
     public function execute(
         RoutingPatternGroupsRelPatternInterface $routingPatternGroupsRelPattern,
         $isNew
-    )
-    {
+    ) {
         // Get all OutgointRoutings that use this routingPattern
         $outgoingRoutings = $routingPatternGroupsRelPattern->getRoutingPatternGroup()->getOutgoingRoutings();
 

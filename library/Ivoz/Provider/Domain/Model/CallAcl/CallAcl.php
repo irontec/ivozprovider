@@ -1,6 +1,7 @@
 <?php
 
 namespace Ivoz\Provider\Domain\Model\CallAcl;
+
 use Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchList;
 use Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchListInterface;
 
@@ -51,11 +52,11 @@ class CallAcl extends CallAclAbstract implements CallAclInterface
          */
         $aclRelMatchLists = $this->getRelMatchLists($criteria);
 
-        foreach($aclRelMatchLists as $aclRelMatchList) {
+        foreach ($aclRelMatchLists as $aclRelMatchList) {
             $policy = $aclRelMatchList->getPolicy();
             $matchList = $aclRelMatchList->getMatchList();
 
-            if($matchList->numberMatches($dst)) {
+            if ($matchList->numberMatches($dst)) {
                 return 'allow' === $policy;
             }
         }
@@ -63,4 +64,3 @@ class CallAcl extends CallAclAbstract implements CallAclInterface
         return 'allow' === $defaultPolicy;
     }
 }
-

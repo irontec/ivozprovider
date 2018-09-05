@@ -25,7 +25,8 @@ class GenerateInRulesSpec extends ObjectBehavior
         $this->beConstructedWith(...func_get_args());
     }
 
-    function it_is_initializable() {
+    function it_is_initializable()
+    {
         $this->shouldHaveType(GenerateInRules::class);
     }
 

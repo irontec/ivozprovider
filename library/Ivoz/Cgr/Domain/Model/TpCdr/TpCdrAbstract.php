@@ -195,7 +195,8 @@ abstract class TpCdrAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "TpCdr",
             $this->getId()
         );
@@ -274,7 +275,8 @@ abstract class TpCdrAbstract
             $dto->getCostSource(),
             $dto->getCost(),
             $dto->getCostDetails(),
-            $dto->getExtraInfo());
+            $dto->getExtraInfo()
+        );
 
         $self
             ->setCreatedAt($dto->getCreatedAt())
@@ -393,8 +395,6 @@ abstract class TpCdrAbstract
             'deleted_at' => self::getDeletedAt()
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -972,10 +972,10 @@ abstract class TpCdrAbstract
     public function setCreatedAt($createdAt = null)
     {
         if (!is_null($createdAt)) {
-        $createdAt = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
-            $createdAt,
-            NULL
-        );
+            $createdAt = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
+                $createdAt,
+                null
+            );
         }
 
         $this->createdAt = $createdAt;
@@ -1004,10 +1004,10 @@ abstract class TpCdrAbstract
     public function setUpdatedAt($updatedAt = null)
     {
         if (!is_null($updatedAt)) {
-        $updatedAt = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
-            $updatedAt,
-            NULL
-        );
+            $updatedAt = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
+                $updatedAt,
+                null
+            );
         }
 
         $this->updatedAt = $updatedAt;
@@ -1036,10 +1036,10 @@ abstract class TpCdrAbstract
     public function setDeletedAt($deletedAt = null)
     {
         if (!is_null($deletedAt)) {
-        $deletedAt = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
-            $deletedAt,
-            NULL
-        );
+            $deletedAt = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
+                $deletedAt,
+                null
+            );
         }
 
         $this->deletedAt = $deletedAt;
@@ -1057,8 +1057,5 @@ abstract class TpCdrAbstract
         return $this->deletedAt;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

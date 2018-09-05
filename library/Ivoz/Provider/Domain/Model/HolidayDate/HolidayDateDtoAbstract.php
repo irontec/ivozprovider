@@ -91,7 +91,6 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -246,5 +245,3 @@ abstract class HolidayDateDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 }
-
-

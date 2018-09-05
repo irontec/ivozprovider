@@ -87,7 +87,8 @@ abstract class InvoiceSchedulerAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "InvoiceScheduler",
             $this->getId()
         );
@@ -150,7 +151,8 @@ abstract class InvoiceSchedulerAbstract
             $dto->getName(),
             $dto->getUnit(),
             $dto->getFrequency(),
-            $dto->getEmail());
+            $dto->getEmail()
+        );
 
         $self
             ->setLastExecution($dto->getLastExecution())
@@ -237,8 +239,6 @@ abstract class InvoiceSchedulerAbstract
             'numberSequenceId' => self::getNumberSequence() ? self::getNumberSequence()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -370,10 +370,10 @@ abstract class InvoiceSchedulerAbstract
     public function setLastExecution($lastExecution = null)
     {
         if (!is_null($lastExecution)) {
-        $lastExecution = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
-            $lastExecution,
-            null
-        );
+            $lastExecution = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
+                $lastExecution,
+                null
+            );
         }
 
         $this->lastExecution = $lastExecution;
@@ -402,10 +402,10 @@ abstract class InvoiceSchedulerAbstract
     public function setNextExecution($nextExecution = null)
     {
         if (!is_null($nextExecution)) {
-        $nextExecution = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
-            $nextExecution,
-            null
-        );
+            $nextExecution = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
+                $nextExecution,
+                null
+            );
         }
 
         $this->nextExecution = $nextExecution;
@@ -551,8 +551,5 @@ abstract class InvoiceSchedulerAbstract
         return $this->numberSequence;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

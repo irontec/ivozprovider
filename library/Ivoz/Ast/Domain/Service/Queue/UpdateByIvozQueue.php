@@ -48,7 +48,6 @@ class UpdateByIvozQueue implements IvozQueueLifecycleEventHandlerInterface
     {
         $periodicAnnounceLocution = $entity->getPeriodicAnnounceLocution();
         if (!is_null($periodicAnnounceLocution)) {
-
             $periodicAnnounceLocution = $this
                 ->storagePathResolver
                 ->getFilePath($periodicAnnounceLocution);

@@ -164,7 +164,8 @@ abstract class FriendAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "Friend",
             $this->getId()
         );
@@ -234,7 +235,8 @@ abstract class FriendAbstract
             $dto->getDirectMediaMethod(),
             $dto->getCalleridUpdateHeader(),
             $dto->getUpdateCallerid(),
-            $dto->getDirectConnectivity());
+            $dto->getDirectConnectivity()
+        );
 
         $self
             ->setIp($dto->getIp())
@@ -354,8 +356,6 @@ abstract class FriendAbstract
             'languageId' => self::getLanguage() ? self::getLanguage()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -945,8 +945,5 @@ abstract class FriendAbstract
         return $this->language;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

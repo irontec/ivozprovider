@@ -27,6 +27,4 @@ class Codec extends CodecAbstract implements CodecInterface
     {
         return $this->id;
     }
-
 }
-

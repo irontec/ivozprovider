@@ -46,4 +46,3 @@ class BrandDto extends BrandDtoAbstract
         return parent::getPropertyMap($context);
     }
 }
-

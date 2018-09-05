@@ -180,7 +180,6 @@ abstract class UsersPuaDtoAbstract implements DataTransferObjectInterface
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -188,7 +187,6 @@ abstract class UsersPuaDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -571,5 +569,3 @@ abstract class UsersPuaDtoAbstract implements DataTransferObjectInterface
         return $this->id;
     }
 }
-
-

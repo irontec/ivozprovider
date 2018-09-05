@@ -86,7 +86,6 @@ class MigrateFromTrunksCdr
 
         $cdrCount = 0;
         foreach ($trunksGenerator as $trunks) {
-
             if (empty($trunks)) {
                 break;
             }
@@ -228,7 +227,6 @@ class MigrateFromTrunksCdr
         );
 
         if (!$defaultRunTpCdr) {
-
             return $billableCallDto;
         }
 

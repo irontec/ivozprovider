@@ -46,7 +46,8 @@ abstract class CodecAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "Codec",
             $this->getId()
         );
@@ -108,7 +109,8 @@ abstract class CodecAbstract
         $self = new static(
             $dto->getType(),
             $dto->getIden(),
-            $dto->getName());
+            $dto->getName()
+        );
 
         $self;
 
@@ -163,8 +165,6 @@ abstract class CodecAbstract
             'name' => self::getName()
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -255,8 +255,5 @@ abstract class CodecAbstract
         return $this->name;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

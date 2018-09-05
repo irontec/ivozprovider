@@ -21,5 +21,3 @@ class ExternalCallFilterWhiteListDto extends ExternalCallFilterWhiteListDtoAbstr
         return parent::getPropertyMap(...func_get_args());
     }
 }
-
-

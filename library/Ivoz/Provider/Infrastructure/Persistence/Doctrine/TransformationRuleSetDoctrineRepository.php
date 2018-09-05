@@ -27,7 +27,6 @@ class TransformationRuleSetDoctrineRepository extends ServiceEntityRepository im
         $qb->select('count('. $alias .')');
 
         foreach ($criteria as $field => $value) {
-
             $normalizedField = $alias . '.' . $field;
             $qb->andWhere(
                 $qb->expr()->eq($normalizedField, $value)

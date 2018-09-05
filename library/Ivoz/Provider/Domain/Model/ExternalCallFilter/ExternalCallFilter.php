@@ -45,7 +45,8 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
      */
     public function __toString()
     {
-        return sprintf("%s [ddi%d]",
+        return sprintf(
+            "%s [ddi%d]",
             $this->getName(),
             $this->getId()
         );
@@ -75,7 +76,6 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
              */
             $matchList = $list->getMatchList();
             if ($matchList->numberMatches($origin)) {
-
                 return true;
             }
         }
@@ -97,7 +97,6 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
              */
             $matchList = $list->getMatchList();
             if ($matchList->numberMatches($origin)) {
-
                 return true;
             }
         }
@@ -111,8 +110,7 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
     public function getHolidayDateForToday()
     {
         $externalCallFilterRelCalendars = $this->getCalendars();
-        if(empty($externalCallFilterRelCalendars)) {
-
+        if (empty($externalCallFilterRelCalendars)) {
             return null;
         }
 
@@ -122,7 +120,7 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
         /**
          * @var ExternalCallFilterRelCalendar $externalCallFilterRelCalendar
          */
-        foreach($externalCallFilterRelCalendars as $externalCallFilterRelCalendar) {
+        foreach ($externalCallFilterRelCalendars as $externalCallFilterRelCalendar) {
 
             /**
              * @var Calendar $calendar
@@ -139,8 +137,7 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
                 );
 
             $holidayDates = $calendar->getHolidayDates($holidayDateCriteria);
-            if(!empty($holidayDates)) {
-
+            if (!empty($holidayDates)) {
                 return $holidayDates[0];
             }
         }
@@ -155,7 +152,6 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
     {
         $externalCallFilterRelSchedules = $this->getSchedules();
         if (empty($externalCallFilterRelSchedules)) {
-
             return true;
         }
 
@@ -165,8 +161,7 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
         /**
          * @var ExternalCallFilterRelSchedule $externalCallFilterRelSchedule
          */
-        foreach($externalCallFilterRelSchedules as $externalCallFilterRelSchedule) {
-
+        foreach ($externalCallFilterRelSchedules as $externalCallFilterRelSchedule) {
             $schedule = $externalCallFilterRelSchedule->getSchedule();
             $company = $schedule->getCompany();
             $timezones = $company->getDefaultTimezone();
@@ -179,7 +174,6 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
                 );
 
             if ($scheduleMatched) {
-
                 break;
             }
         }
@@ -259,4 +253,3 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
         return $this->getOutOfScheduleTargetType();
     }
 }
-

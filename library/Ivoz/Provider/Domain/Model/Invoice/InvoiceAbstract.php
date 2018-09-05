@@ -99,7 +99,8 @@ abstract class InvoiceAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "Invoice",
             $this->getId()
         );
@@ -278,8 +279,6 @@ abstract class InvoiceAbstract
             'schedulerId' => self::getScheduler() ? self::getScheduler()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -322,10 +321,10 @@ abstract class InvoiceAbstract
     public function setInDate($inDate = null)
     {
         if (!is_null($inDate)) {
-        $inDate = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
-            $inDate,
-            null
-        );
+            $inDate = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
+                $inDate,
+                null
+            );
         }
 
         $this->inDate = $inDate;
@@ -354,10 +353,10 @@ abstract class InvoiceAbstract
     public function setOutDate($outDate = null)
     {
         if (!is_null($outDate)) {
-        $outDate = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
-            $outDate,
-            null
-        );
+            $outDate = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
+                $outDate,
+                null
+            );
         }
 
         $this->outDate = $outDate;
@@ -483,12 +482,12 @@ abstract class InvoiceAbstract
     {
         if (!is_null($status)) {
             Assertion::maxLength($status, 25, 'status value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        Assertion::choice($status, array (
-          0 => 'waiting',
-          1 => 'processing',
-          2 => 'created',
-          3 => 'error',
-        ), 'statusvalue "%s" is not an element of the valid values: %s');
+            Assertion::choice($status, array (
+              0 => 'waiting',
+              1 => 'processing',
+              2 => 'created',
+              3 => 'error',
+            ), 'statusvalue "%s" is not an element of the valid values: %s');
         }
 
         $this->status = $status;
@@ -665,7 +664,6 @@ abstract class InvoiceAbstract
     public function setPdf(Pdf $pdf)
     {
         $this->pdf = $pdf;
-
         return $this;
     }
 
@@ -678,7 +676,5 @@ abstract class InvoiceAbstract
     {
         return $this->pdf;
     }
-
     // @codeCoverageIgnoreEnd
 }
-

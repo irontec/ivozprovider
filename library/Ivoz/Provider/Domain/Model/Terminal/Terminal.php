@@ -42,7 +42,8 @@ class Terminal extends TerminalAbstract implements TerminalInterface
      */
     public function __toString()
     {
-        return sprintf("%s [%s]",
+        return sprintf(
+            "%s [%s]",
             $this->getName(),
             parent::__toString()
         );
@@ -155,4 +156,3 @@ class Terminal extends TerminalAbstract implements TerminalInterface
         return parent::setMac($mac);
     }
 }
-

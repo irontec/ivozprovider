@@ -55,6 +55,4 @@ class UsersCdr extends UsersCdrAbstract implements UsersCdrInterface
             return $this->getCaller();
         }
     }
-
 }
-

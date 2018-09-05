@@ -122,8 +122,6 @@ trait OutgoingRoutingTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Set tpLcrRule
      *
@@ -363,7 +361,4 @@ trait OutgoingRoutingTrait
 
         return $this->relCarriers->toArray();
     }
-
-
 }
-

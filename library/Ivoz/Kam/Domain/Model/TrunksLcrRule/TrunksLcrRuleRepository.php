@@ -20,4 +20,3 @@ interface TrunksLcrRuleRepository extends ObjectRepository, Selectable
      */
     public function findOrphanLcrRules(OutgoingRoutingInterface $outgoingRouting);
 }
-

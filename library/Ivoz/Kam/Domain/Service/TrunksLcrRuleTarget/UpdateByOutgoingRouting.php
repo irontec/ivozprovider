@@ -26,8 +26,7 @@ class UpdateByOutgoingRouting implements OutgoingRoutingLifecycleEventHandlerInt
      */
     public function __construct(
         TrunksLcrRuleTargetFactory $trunksLcrRuleTargetFactory
-    )
-    {
+    ) {
         $this->trunksLcrRuleTargetFactory = $trunksLcrRuleTargetFactory;
     }
 

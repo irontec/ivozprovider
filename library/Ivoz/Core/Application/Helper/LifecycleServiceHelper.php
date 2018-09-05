@@ -7,7 +7,6 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Domain\Service\LifecycleEventHandlerInterface;
 use Ivoz\Core\Domain\Service\LifecycleServiceCollectionInterface;
 
-
 class LifecycleServiceHelper
 {
     public static function getServiceNameByEntity(EntityInterface $entity, $event)
@@ -34,7 +33,6 @@ class LifecycleServiceHelper
         $targetInterface = null;
 
         foreach ($serviceInterfaces as $serviceInterface) {
-
             $isDomainServiceInterface = is_subclass_of(
                 $serviceInterface,
                 LifecycleEventHandlerInterface::class
@@ -53,9 +51,9 @@ class LifecycleServiceHelper
             return self::getServiceNameByEntityFqdn($serviceNamespace, $event);
         }
 
-       throw new \Exception(
-           "Could not resolve $serviceClass service tag"
-       );
+        throw new \Exception(
+            "Could not resolve $serviceClass service tag"
+        );
     }
 
     public static function getServiceCollectionTag(string $serviceClass)
@@ -64,7 +62,6 @@ class LifecycleServiceHelper
         $targetInterface = null;
 
         foreach ($serviceInterfaces as $serviceInterface) {
-
             $isServiceCollectionInterface = $serviceInterface === LifecycleServiceCollectionInterface::class;
             if (!$isServiceCollectionInterface) {
                 continue;

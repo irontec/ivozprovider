@@ -174,7 +174,8 @@ abstract class UsersLocationAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "UsersLocation",
             $this->getId()
         );
@@ -249,7 +250,8 @@ abstract class UsersLocationAbstract
             $dto->getServerId(),
             $dto->getConnectionId(),
             $dto->getKeepalive(),
-            $dto->getPartition());
+            $dto->getPartition()
+        );
 
         $self
             ->setDomain($dto->getDomain())
@@ -368,8 +370,6 @@ abstract class UsersLocationAbstract
             'partition' => self::getPartition()
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -1003,8 +1003,5 @@ abstract class UsersLocationAbstract
         return $this->partition;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

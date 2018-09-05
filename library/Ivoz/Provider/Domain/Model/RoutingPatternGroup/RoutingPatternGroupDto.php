@@ -21,5 +21,3 @@ class RoutingPatternGroupDto extends RoutingPatternGroupDtoAbstract
         return parent::getPropertyMap(...func_get_args());
     }
 }
-
-

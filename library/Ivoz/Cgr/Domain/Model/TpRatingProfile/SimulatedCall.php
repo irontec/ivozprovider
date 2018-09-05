@@ -78,7 +78,9 @@ class SimulatedCall
      */
     protected $cost;
 
-    private function __construct() {}
+    private function __construct()
+    {
+    }
 
     /**
      * @param string $response
@@ -311,4 +313,3 @@ class SimulatedCall
         return $this->cost;
     }
 }
-

@@ -44,7 +44,8 @@ class SendFaxFileSpec extends ObjectBehavior
         FaxesInOutInterface $entity
     ) {
         $this->prepareSendFaxFileConditions(
-            $entity, null
+            $entity,
+            null
         );
 
         $this
@@ -59,7 +60,9 @@ class SendFaxFileSpec extends ObjectBehavior
         FaxesInOutInterface $entity
     ) {
         $this->prepareSendFaxFileConditions(
-            $entity, 'out', null
+            $entity,
+            'out',
+            null
         );
 
         $this
@@ -74,7 +77,9 @@ class SendFaxFileSpec extends ObjectBehavior
         FaxesInOutInterface $entity
     ) {
         $this->prepareSendFaxFileConditions(
-            $entity, 'out', 'pending, false'
+            $entity,
+            'out',
+            'pending, false'
         );
 
         $this
@@ -131,7 +136,10 @@ class SendFaxFileSpec extends ObjectBehavior
     }
 
     protected function prepareSendFaxFileConditions(
-        $entity, $type = 'Out', $status = 'pending', bool $statusChanged = true
+        $entity,
+        $type = 'Out',
+        $status = 'pending',
+        bool $statusChanged = true
     ) {
         $entity
             ->getType()

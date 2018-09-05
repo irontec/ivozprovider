@@ -95,7 +95,8 @@ abstract class TerminalAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "Terminal",
             $this->getId()
         );
@@ -158,7 +159,8 @@ abstract class TerminalAbstract
             $dto->getDisallow(),
             $dto->getAllowAudio(),
             $dto->getDirectMediaMethod(),
-            $dto->getPassword());
+            $dto->getPassword()
+        );
 
         $self
             ->setName($dto->getName())
@@ -245,8 +247,6 @@ abstract class TerminalAbstract
             'terminalModelId' => self::getTerminalModel() ? self::getTerminalModel()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -463,10 +463,10 @@ abstract class TerminalAbstract
     public function setLastProvisionDate($lastProvisionDate = null)
     {
         if (!is_null($lastProvisionDate)) {
-        $lastProvisionDate = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
-            $lastProvisionDate,
-            null
-        );
+            $lastProvisionDate = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
+                $lastProvisionDate,
+                null
+            );
         }
 
         $this->lastProvisionDate = $lastProvisionDate;
@@ -556,8 +556,5 @@ abstract class TerminalAbstract
         return $this->terminalModel;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

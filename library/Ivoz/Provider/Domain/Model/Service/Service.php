@@ -40,4 +40,3 @@ class Service extends ServiceAbstract implements ServiceInterface
         return parent::setDefaultCode($defaultCode);
     }
 }
-

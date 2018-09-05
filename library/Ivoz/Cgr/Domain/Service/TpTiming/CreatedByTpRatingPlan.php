@@ -48,7 +48,6 @@ class CreatedByTpRatingPlan implements TpRatingPlanLifecycleEventHandlerInterfac
                 $this->entityTools->remove($tpRatingPlan->getTiming());
             }
         } else {
-
             // Update related timing or create a new one
             if (is_null($timing)) {
                 $timingDto = new TpTimingDto();
@@ -56,7 +55,8 @@ class CreatedByTpRatingPlan implements TpRatingPlanLifecycleEventHandlerInterfac
                 $timingDto = $timing->toDto();
             }
 
-            $timingTag = sprintf("b%dtm%d",
+            $timingTag = sprintf(
+                "b%dtm%d",
                 $tpRatingPlan->getRatingPlan()->getBrand()->getId(),
                 $tpRatingPlan->getId()
             );
@@ -90,5 +90,4 @@ class CreatedByTpRatingPlan implements TpRatingPlanLifecycleEventHandlerInterfac
             );
         }
     }
-
 }

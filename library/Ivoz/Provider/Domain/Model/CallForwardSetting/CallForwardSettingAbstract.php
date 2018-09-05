@@ -95,7 +95,8 @@ abstract class CallForwardSettingAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "CallForwardSetting",
             $this->getId()
         );
@@ -159,7 +160,8 @@ abstract class CallForwardSettingAbstract
             $dto->getCallForwardType(),
             $dto->getTargetType(),
             $dto->getNoAnswerTimeout(),
-            $dto->getEnabled());
+            $dto->getEnabled()
+        );
 
         $self
             ->setNumberValue($dto->getNumberValue())
@@ -245,8 +247,6 @@ abstract class CallForwardSettingAbstract
             'residentialDeviceId' => self::getResidentialDevice() ? self::getResidentialDevice()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -554,8 +554,5 @@ abstract class CallForwardSettingAbstract
         return $this->residentialDevice;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

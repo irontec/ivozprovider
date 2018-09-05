@@ -43,6 +43,4 @@ interface ConditionalRoutesConditionsRelMatchlistInterface extends LoggableEntit
      * @return \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface
      */
     public function getMatchlist();
-
 }
-

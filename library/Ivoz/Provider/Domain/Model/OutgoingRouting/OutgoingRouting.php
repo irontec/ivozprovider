@@ -1,5 +1,6 @@
 <?php
 namespace Ivoz\Provider\Domain\Model\OutgoingRouting;
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface;
 
@@ -69,7 +70,6 @@ class OutgoingRouting extends OutgoingRoutingAbstract implements OutgoingRouting
             default:
                 throw new \DomainException('Incorrect Outgoing Routing Mode');
         }
-
     }
 
     /**
@@ -132,4 +132,3 @@ class OutgoingRouting extends OutgoingRoutingAbstract implements OutgoingRouting
         return false;
     }
 }
-

@@ -85,7 +85,8 @@ abstract class ScheduleAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "Schedule",
             $this->getId()
         );
@@ -147,7 +148,8 @@ abstract class ScheduleAbstract
         $self = new static(
             $dto->getName(),
             $dto->getTimeIn(),
-            $dto->getTimeout());
+            $dto->getTimeout()
+        );
 
         $self
             ->setMonday($dto->getMonday())
@@ -235,8 +237,6 @@ abstract class ScheduleAbstract
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -548,8 +548,5 @@ abstract class ScheduleAbstract
         return $this->company;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

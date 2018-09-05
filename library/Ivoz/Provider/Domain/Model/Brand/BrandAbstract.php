@@ -86,7 +86,8 @@ abstract class BrandAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "Brand",
             $this->getId()
         );
@@ -281,8 +282,6 @@ abstract class BrandAbstract
             'defaultTimezoneId' => self::getDefaultTimezone() ? self::getDefaultTimezone()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -513,7 +512,6 @@ abstract class BrandAbstract
     public function setLogo(Logo $logo)
     {
         $this->logo = $logo;
-
         return $this;
     }
 
@@ -537,7 +535,6 @@ abstract class BrandAbstract
     public function setInvoice(Invoice $invoice)
     {
         $this->invoice = $invoice;
-
         return $this;
     }
 
@@ -550,7 +547,5 @@ abstract class BrandAbstract
     {
         return $this->invoice;
     }
-
     // @codeCoverageIgnoreEnd
 }
-

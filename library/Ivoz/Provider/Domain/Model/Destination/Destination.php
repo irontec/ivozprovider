@@ -1,6 +1,7 @@
 <?php
 
 namespace Ivoz\Provider\Domain\Model\Destination;
+
 use Assert\Assertion;
 
 /**
@@ -55,4 +56,3 @@ class Destination extends DestinationAbstract implements DestinationInterface
         );
     }
 }
-

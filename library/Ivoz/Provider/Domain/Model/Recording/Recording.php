@@ -1,6 +1,7 @@
 <?php
 
 namespace Ivoz\Provider\Domain\Model\Recording;
+
 use Ivoz\Core\Domain\Model\TempFileContainnerTrait;
 use Ivoz\Core\Domain\Service\FileContainerInterface;
 
@@ -41,4 +42,3 @@ class Recording extends RecordingAbstract implements RecordingInterface, FileCon
         return $this->id;
     }
 }
-

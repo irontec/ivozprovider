@@ -104,8 +104,6 @@ trait RoutingPatternGroupTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add relPattern
      *
@@ -249,7 +247,4 @@ trait RoutingPatternGroupTrait
 
         return $this->outgoingRoutings->toArray();
     }
-
-
 }
-

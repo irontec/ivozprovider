@@ -37,5 +37,4 @@ class NotificationTemplateDoctrineRepository extends ServiceEntityRepository imp
             "type" => "lowbalance"
         ]);
     }
-
 }

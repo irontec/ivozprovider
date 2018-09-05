@@ -117,11 +117,9 @@ class Administrator extends AdministratorAbstract implements AdministratorInterf
     {
         $timeZone = parent::getTimezone();
         if (!empty($timeZone)) {
-
             return $timeZone;
         }
 
         return $this->getCompany()->getDefaultTimezone();
     }
 }
-

@@ -96,6 +96,4 @@ interface UsersHtableInterface extends LoggableEntityInterface
      * @return integer
      */
     public function getExpires();
-
 }
-

@@ -91,7 +91,6 @@ abstract class HuntGroupsRelUserDtoAbstract implements DataTransferObjectInterfa
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -246,5 +245,3 @@ abstract class HuntGroupsRelUserDtoAbstract implements DataTransferObjectInterfa
         return null;
     }
 }
-
-

@@ -21,7 +21,8 @@ class ExtensionSpec extends ObjectBehavior
      */
     protected $dto;
 
-    function let() {
+    function let()
+    {
 
         $this->dto = $dto = new ExtensionDto();
         $dto->setNumber('123');

@@ -19,4 +19,3 @@ interface TpCdrRepository extends ObjectRepository, Selectable
      */
     public function getCarrierRunByCgrid(string $cgrid);
 }
-

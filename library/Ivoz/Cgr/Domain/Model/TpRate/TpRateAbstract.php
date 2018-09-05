@@ -92,7 +92,8 @@ abstract class TpRateAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "TpRate",
             $this->getId()
         );
@@ -158,7 +159,8 @@ abstract class TpRateAbstract
             $dto->getRateUnit(),
             $dto->getRateIncrement(),
             $dto->getGroupIntervalStart(),
-            $dto->getCreatedAt());
+            $dto->getCreatedAt()
+        );
 
         $self
             ->setTag($dto->getTag())
@@ -234,8 +236,6 @@ abstract class TpRateAbstract
             'destinationRateId' => self::getDestinationRate() ? self::getDestinationRate()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -492,8 +492,5 @@ abstract class TpRateAbstract
         return $this->destinationRate;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

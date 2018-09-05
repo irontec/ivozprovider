@@ -18,7 +18,4 @@ class TpDestination extends TpDestinationAbstract implements TpDestinationInterf
     {
         return $this->id;
     }
-
-
 }
-

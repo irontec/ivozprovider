@@ -60,4 +60,3 @@ class OutgoingDdiRulesPattern extends OutgoingDdiRulesPatternAbstract implements
             ->getOutgoingDdi();
     }
 }
-

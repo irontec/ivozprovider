@@ -57,7 +57,6 @@ class TrunksCdrDoctrineRepository extends ServiceEntityRepository implements Tru
         $currentPage = 1;
         $continue =  true;
         while ($continue) {
-
             $query = $qb->getQuery();
             $results = $query->getResult();
             $continue = count($results) === $batchSize;

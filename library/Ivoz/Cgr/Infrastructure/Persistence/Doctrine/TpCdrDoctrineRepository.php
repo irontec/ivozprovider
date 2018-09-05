@@ -38,12 +38,11 @@ class TpCdrDoctrineRepository extends ServiceEntityRepository implements TpCdrRe
             ->addCriteria(CriteriaHelper::fromArray($conditions));
 
         try {
-
             return $qb
                 ->getQuery()
                 ->getSingleResult();
-
-        } catch (NoResultException $error) {}
+        } catch (NoResultException $error) {
+        }
 
         return null;
     }
@@ -66,11 +65,10 @@ class TpCdrDoctrineRepository extends ServiceEntityRepository implements TpCdrRe
             ->addCriteria(CriteriaHelper::fromArray($conditions));
 
         try {
-
             return $qb
                 ->getQuery()
                 ->getSingleResult();
-
-        } catch (NoResultException $error) {}
+        } catch (NoResultException $error) {
+        }
     }
 }

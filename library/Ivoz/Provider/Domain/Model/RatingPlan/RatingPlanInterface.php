@@ -60,6 +60,4 @@ interface RatingPlanInterface extends EntityInterface
      * @return \Ivoz\Provider\Domain\Model\RatingPlan\Description
      */
     public function getDescription();
-
 }
-

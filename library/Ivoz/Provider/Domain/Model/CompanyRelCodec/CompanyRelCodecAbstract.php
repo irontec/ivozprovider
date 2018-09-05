@@ -31,14 +31,14 @@ abstract class CompanyRelCodecAbstract
      */
     protected function __construct()
     {
-
     }
 
     abstract public function getId();
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "CompanyRelCodec",
             $this->getId()
         );
@@ -152,8 +152,6 @@ abstract class CompanyRelCodecAbstract
             'codecId' => self::getCodec() ? self::getCodec()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -204,8 +202,5 @@ abstract class CompanyRelCodecAbstract
         return $this->codec;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

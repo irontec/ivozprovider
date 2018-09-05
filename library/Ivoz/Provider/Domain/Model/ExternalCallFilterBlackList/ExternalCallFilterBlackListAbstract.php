@@ -31,14 +31,14 @@ abstract class ExternalCallFilterBlackListAbstract
      */
     protected function __construct()
     {
-
     }
 
     abstract public function getId();
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "ExternalCallFilterBlackList",
             $this->getId()
         );
@@ -152,8 +152,6 @@ abstract class ExternalCallFilterBlackListAbstract
             'matchlistId' => self::getMatchlist() ? self::getMatchlist()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -204,8 +202,5 @@ abstract class ExternalCallFilterBlackListAbstract
         return $this->matchlist;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

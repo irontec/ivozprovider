@@ -77,6 +77,4 @@ interface HuntGroupsRelUserInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\User\UserInterface
      */
     public function getUser();
-
 }
-

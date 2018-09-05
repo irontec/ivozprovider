@@ -50,5 +50,4 @@ class ProviderCountry extends Fixture
 
         $manager->flush();
     }
-
 }

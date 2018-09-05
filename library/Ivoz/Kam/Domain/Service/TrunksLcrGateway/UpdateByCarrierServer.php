@@ -13,7 +13,7 @@ use Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGateway;
  */
 class UpdateByCarrierServer implements CarrierServerLifecycleEventHandlerInterface
 {
-    CONST POST_PERSIST_PRIORITY = 10;
+    const POST_PERSIST_PRIORITY = 10;
 
     /**
      * @var EntityTools

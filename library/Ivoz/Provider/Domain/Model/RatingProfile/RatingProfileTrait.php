@@ -91,8 +91,6 @@ trait RatingProfileTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add tpRatingProfile
      *
@@ -164,7 +162,4 @@ trait RatingProfileTrait
 
         return $this->tpRatingProfiles->toArray();
     }
-
-
 }
-

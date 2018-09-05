@@ -156,6 +156,4 @@ interface DomainInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface[]
      */
     public function getTerminals(\Doctrine\Common\Collections\Criteria $criteria = null);
-
 }
-

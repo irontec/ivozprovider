@@ -86,7 +86,6 @@ abstract class OutgoingRoutingRelCarrierDtoAbstract implements DataTransferObjec
                 );
             }
         }
-
     }
 
     /**
@@ -232,5 +231,3 @@ abstract class OutgoingRoutingRelCarrierDtoAbstract implements DataTransferObjec
         return $this->tpRatingProfiles;
     }
 }
-
-

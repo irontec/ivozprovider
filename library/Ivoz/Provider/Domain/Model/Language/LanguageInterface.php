@@ -44,6 +44,4 @@ interface LanguageInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Language\Name
      */
     public function getName();
-
 }
-

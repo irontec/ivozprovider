@@ -133,8 +133,5 @@ class Logo
         return $this->baseName;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

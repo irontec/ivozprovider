@@ -58,14 +58,14 @@ class Company extends CompanyAbstract implements CompanyInterface
     {
         if (!$this->getDefaultTimezone()) {
             $this->setDefaultTimezone(
-            // @todo create a shortcut
+                // @todo create a shortcut
                 $this->getBrand()->getDefaultTimezone()
             );
         }
 
         if (!$this->getLanguage()) {
             $this->setLanguage(
-            // @todo create a shortcut
+                // @todo create a shortcut
                 $this->getBrand()->getLanguage()
             );
         }
@@ -160,7 +160,6 @@ class Company extends CompanyAbstract implements CompanyInterface
          */
         foreach ($friends as $friend) {
             if ($friend->checkExtension($exten)) {
-
                 return $friend;
             }
         }
@@ -367,7 +366,6 @@ class Company extends CompanyAbstract implements CompanyInterface
          * @var FeaturesRelCompany $relFeature
          */
         foreach ($this->getRelFeatures() as $relFeature) {
-
             $relFeatureId = $relFeature->getFeature()->getId();
             if ($this->getBrand()->hasFeature($relFeatureId)) {
                 array_push($features, $relFeature->getFeature());
@@ -387,8 +385,9 @@ class Company extends CompanyAbstract implements CompanyInterface
         $services = $this->getCompanyServices();
         // Look for an exact match in service name
         foreach ($services as $service) {
-            if ($service->getService()->getIden() == $name)
+            if ($service->getService()->getIden() == $name) {
                 return $service->getCode();
+            }
         }
 
         return '';
@@ -402,11 +401,9 @@ class Company extends CompanyAbstract implements CompanyInterface
     {
         $timeZone = parent::getDefaultTimezone();
         if (!empty($timeZone)) {
-
             return $timeZone;
         }
 
         return $this->getBrand()->getDefaultTimezone();
     }
 }
-

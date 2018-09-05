@@ -453,6 +453,4 @@ interface UsersActiveWatcherInterface extends LoggableEntityInterface
      * @return string
      */
     public function getUserAgent();
-
 }
-

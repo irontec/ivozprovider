@@ -6,5 +6,3 @@ class OutgoingRoutingDto extends OutgoingRoutingDtoAbstract
 {
 
 }
-
-

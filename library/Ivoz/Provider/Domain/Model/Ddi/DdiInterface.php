@@ -365,6 +365,4 @@ interface DdiInterface extends LoggableEntityInterface
      * @return null|string
      */
     public function getTarget(string $prefix = '');
-
 }
-

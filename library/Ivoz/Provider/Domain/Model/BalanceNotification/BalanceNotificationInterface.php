@@ -110,6 +110,4 @@ interface BalanceNotificationInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
      */
     public function getNotificationTemplate();
-
 }
-

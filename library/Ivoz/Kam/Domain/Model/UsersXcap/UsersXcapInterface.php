@@ -147,6 +147,4 @@ interface UsersXcapInterface extends LoggableEntityInterface
      * @return integer
      */
     public function getPort();
-
 }
-

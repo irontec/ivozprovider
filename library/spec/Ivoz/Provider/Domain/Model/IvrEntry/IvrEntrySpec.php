@@ -45,7 +45,6 @@ class IvrEntrySpec extends ObjectBehavior
         ExtensionInterface $extension,
         UserInterface $voiceMailUser,
         ConditionalRouteInterface $conditionalRoute
-
     ) {
         $dto = clone $this->dto;
         $dto

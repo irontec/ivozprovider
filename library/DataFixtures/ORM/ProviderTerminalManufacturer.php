@@ -48,5 +48,4 @@ class ProviderTerminalManufacturer extends Fixture
     
         $manager->flush();
     }
-
 }

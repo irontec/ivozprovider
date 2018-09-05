@@ -51,6 +51,4 @@ class ProviderMusicOnHold extends Fixture implements DependentFixtureInterface
             ProviderBrand::class
         );
     }
-
-
 }

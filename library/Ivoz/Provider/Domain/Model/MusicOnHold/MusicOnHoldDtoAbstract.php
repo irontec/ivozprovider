@@ -133,7 +133,6 @@ abstract class MusicOnHoldDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -408,5 +407,3 @@ abstract class MusicOnHoldDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 }
-
-

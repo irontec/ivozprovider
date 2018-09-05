@@ -113,6 +113,4 @@ interface CommandlogInterface extends EntityInterface
      * @return integer
      */
     public function getMicrotime();
-
 }
-

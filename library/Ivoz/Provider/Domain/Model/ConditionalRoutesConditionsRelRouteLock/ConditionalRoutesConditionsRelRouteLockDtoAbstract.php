@@ -77,7 +77,6 @@ abstract class ConditionalRoutesConditionsRelRouteLockDtoAbstract implements Dat
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -192,5 +191,3 @@ abstract class ConditionalRoutesConditionsRelRouteLockDtoAbstract implements Dat
         return null;
     }
 }
-
-

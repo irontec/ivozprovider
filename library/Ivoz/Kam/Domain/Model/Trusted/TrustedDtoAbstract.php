@@ -118,7 +118,6 @@ abstract class TrustedDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -327,5 +326,3 @@ abstract class TrustedDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 }
-
-

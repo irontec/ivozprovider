@@ -87,7 +87,8 @@ abstract class QueueAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "Queue",
             $this->getId()
         );
@@ -149,7 +150,8 @@ abstract class QueueAbstract
         $self = new static(
             $dto->getName(),
             $dto->getAutopause(),
-            $dto->getRinginuse());
+            $dto->getRinginuse()
+        );
 
         $self
             ->setPeriodicAnnounce($dto->getPeriodicAnnounce())
@@ -237,8 +239,6 @@ abstract class QueueAbstract
             'queueId' => self::getQueue() ? self::getQueue()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -559,8 +559,5 @@ abstract class QueueAbstract
         return $this->queue;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

@@ -84,6 +84,4 @@ interface CalendarInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface[]
      */
     public function getHolidayDates(\Doctrine\Common\Collections\Criteria $criteria = null);
-
 }
-

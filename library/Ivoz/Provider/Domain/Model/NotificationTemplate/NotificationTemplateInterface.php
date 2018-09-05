@@ -101,6 +101,4 @@ interface NotificationTemplateInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateContentInterface[]
      */
     public function getContents(\Doctrine\Common\Collections\Criteria $criteria = null);
-
 }
-

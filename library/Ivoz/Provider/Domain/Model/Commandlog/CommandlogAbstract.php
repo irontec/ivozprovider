@@ -65,7 +65,8 @@ abstract class CommandlogAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "Commandlog",
             $this->getId()
         );
@@ -128,7 +129,8 @@ abstract class CommandlogAbstract
             $dto->getRequestId(),
             $dto->getClass(),
             $dto->getCreatedOn(),
-            $dto->getMicrotime());
+            $dto->getMicrotime()
+        );
 
         $self
             ->setMethod($dto->getMethod())
@@ -195,8 +197,6 @@ abstract class CommandlogAbstract
             'microtime' => self::getMicrotime()
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -370,8 +370,5 @@ abstract class CommandlogAbstract
         return $this->microtime;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

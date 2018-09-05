@@ -97,7 +97,6 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -246,5 +245,3 @@ abstract class TpDestinationDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 }
-
-

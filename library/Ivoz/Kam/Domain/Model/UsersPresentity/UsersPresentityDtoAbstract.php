@@ -117,7 +117,6 @@ abstract class UsersPresentityDtoAbstract implements DataTransferObjectInterface
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -125,7 +124,6 @@ abstract class UsersPresentityDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -328,5 +326,3 @@ abstract class UsersPresentityDtoAbstract implements DataTransferObjectInterface
         return $this->id;
     }
 }
-
-

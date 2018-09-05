@@ -63,7 +63,6 @@ class CommandEventSubscriber implements DomainEventSubscriberInterface
     public function isSubscribedTo(DomainEventInterface $domainEvent)
     {
         if ($domainEvent instanceof CommandEventInterface) {
-
             return true;
         }
 

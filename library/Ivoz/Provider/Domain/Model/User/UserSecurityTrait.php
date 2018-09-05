@@ -77,6 +77,7 @@ trait UserSecurityTrait
     /**
      * @see AdvancedUserInterface::eraseCredentials()
      */
-    public function eraseCredentials() {}
+    public function eraseCredentials()
+    {
+    }
 }
-

@@ -203,7 +203,6 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
                 );
             }
         }
-
         if (!is_null($this->blackLists)) {
             $items = $this->getBlackLists();
             $this->blackLists = [];
@@ -214,7 +213,6 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
                 );
             }
         }
-
         if (!is_null($this->whiteLists)) {
             $items = $this->getWhiteLists();
             $this->whiteLists = [];
@@ -225,7 +223,6 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
                 );
             }
         }
-
         if (!is_null($this->schedules)) {
             $items = $this->getSchedules();
             $this->schedules = [];
@@ -236,7 +233,6 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
                 );
             }
         }
-
     }
 
     /**
@@ -922,5 +918,3 @@ abstract class ExternalCallFilterDtoAbstract implements DataTransferObjectInterf
         return $this->schedules;
     }
 }
-
-

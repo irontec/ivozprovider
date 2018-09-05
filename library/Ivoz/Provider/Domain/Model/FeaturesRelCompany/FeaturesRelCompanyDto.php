@@ -20,5 +20,3 @@ class FeaturesRelCompanyDto extends FeaturesRelCompanyDtoAbstract
         return parent::getPropertyMap(...func_get_args());
     }
 }
-
-

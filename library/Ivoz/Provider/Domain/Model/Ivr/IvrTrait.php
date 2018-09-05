@@ -104,8 +104,6 @@ trait IvrTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add entry
      *
@@ -249,7 +247,4 @@ trait IvrTrait
 
         return $this->excludedExtensions->toArray();
     }
-
-
 }
-

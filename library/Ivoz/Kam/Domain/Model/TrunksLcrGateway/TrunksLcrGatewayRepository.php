@@ -9,4 +9,3 @@ interface TrunksLcrGatewayRepository extends ObjectRepository, Selectable
 {
     public function findDummyGateway();
 }
-

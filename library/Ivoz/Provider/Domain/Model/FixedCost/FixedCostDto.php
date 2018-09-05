@@ -19,5 +19,3 @@ class FixedCostDto extends FixedCostDtoAbstract
         return parent::getPropertyMap(...func_get_args());
     }
 }
-
-

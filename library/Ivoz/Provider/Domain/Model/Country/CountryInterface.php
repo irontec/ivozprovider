@@ -84,6 +84,4 @@ interface CountryInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Country\Zone
      */
     public function getZone();
-
 }
-

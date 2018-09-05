@@ -21,5 +21,3 @@ class ExternalCallFilterBlackListDto extends ExternalCallFilterBlackListDtoAbstr
         return parent::getPropertyMap(...func_get_args());
     }
 }
-
-

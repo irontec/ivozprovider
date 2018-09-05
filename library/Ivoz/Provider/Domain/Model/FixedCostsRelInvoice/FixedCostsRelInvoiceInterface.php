@@ -67,6 +67,4 @@ interface FixedCostsRelInvoiceInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface
      */
     public function getInvoice();
-
 }
-

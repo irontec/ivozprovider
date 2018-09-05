@@ -84,7 +84,8 @@ abstract class TpTimingAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "TpTiming",
             $this->getId()
         );
@@ -150,7 +151,8 @@ abstract class TpTimingAbstract
             $dto->getMonthDays(),
             $dto->getWeekDays(),
             $dto->getTime(),
-            $dto->getCreatedAt());
+            $dto->getCreatedAt()
+        );
 
         $self
             ->setTag($dto->getTag())
@@ -222,8 +224,6 @@ abstract class TpTimingAbstract
             'created_at' => self::getCreatedAt()
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -454,8 +454,5 @@ abstract class TpTimingAbstract
         return $this->createdAt;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

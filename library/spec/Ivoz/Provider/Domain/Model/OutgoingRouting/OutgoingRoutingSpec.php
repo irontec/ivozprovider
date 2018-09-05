@@ -19,7 +19,8 @@ class OutgoingRoutingSpec extends ObjectBehavior
      */
     protected $dto;
 
-    function let() {
+    function let()
+    {
         $this->dto = $dto = new OutgoingRoutingDto();
 
         $dto->setPriority(1);
@@ -95,7 +96,8 @@ class OutgoingRoutingSpec extends ObjectBehavior
     }
 
 
-    function it_throws_exception_on_unexpected_type() {
+    function it_throws_exception_on_unexpected_type()
+    {
 
         $dto = clone $this->dto;
         $dto->setType('something');

@@ -36,7 +36,6 @@ class SendRecodingOrder implements LocutionLifecycleEventHandlerInterface
         $statusHasChanged = $entity->hasChanged('status');
 
         if ($pendingStatus && $statusHasChanged) {
-
             $this->recoder
                 ->setId($entity->getId())
                 ->setEntityName(Locution::class)

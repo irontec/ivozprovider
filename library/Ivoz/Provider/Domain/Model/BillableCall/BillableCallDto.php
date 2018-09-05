@@ -2,7 +2,6 @@
 
 namespace Ivoz\Provider\Domain\Model\BillableCall;
 
-
 class BillableCallDto extends BillableCallDtoAbstract
 {
 
@@ -29,7 +28,4 @@ class BillableCallDto extends BillableCallDtoAbstract
 
         return parent::getPropertyMap(...func_get_args());
     }
-
 }
-
-
