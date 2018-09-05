@@ -10,7 +10,6 @@ class DeletedByTpRatingPlan implements TpRatingPlanLifecycleEventHandlerInterfac
 {
     const POST_REMOVE_PRIORITY = self::PRIORITY_NORMAL;
 
-
     /**
      * @var EntityTools
      */

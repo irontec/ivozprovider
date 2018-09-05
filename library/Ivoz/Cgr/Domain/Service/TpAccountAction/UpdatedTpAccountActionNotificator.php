@@ -3,44 +3,17 @@
 namespace Ivoz\Cgr\Domain\Service\TpAccountAction;
 
 use Ivoz\Cgr\Domain\Model\TpAccountAction\TpAccountActionInterface;
+use Ivoz\Cgr\Domain\Service\CgratesReloadNotificator;
 
-class UpdatedTpAccountActionNotificator implements TpAccountActionLifecycleEventHandlerInterface
+class UpdatedTpAccountActionNotificator extends CgratesReloadNotificator implements TpAccountActionLifecycleEventHandlerInterface
 {
-    const ON_COMMIT_PRIORITY = self::PRIORITY_NORMAL;
-
     /**
-     * @var LoadTpAccountActionInterface
+     * Reload CGRates Configuration
+     *
+     * @param TpAccountActionInterface $tpAccountAction
      */
-    protected $loadTpAccount;
-
-    /**
-     * @var RemoveTpAccountActionInterface
-     */
-    protected $removeTpAccount;
-
-    public function __construct(
-        LoadTpAccountActionInterface $loadService,
-        RemoveTpAccountActionInterface $removeService
-    ) {
-        $this->loadTpAccount = $loadService;
-        $this->removeTpAccount = $removeService;
-    }
-
-    public static function getSubscribedEvents()
+    public function execute(TpAccountActionInterface $tpAccountAction)
     {
-        return [
-            self::EVENT_ON_COMMIT => self::ON_COMMIT_PRIORITY
-        ];
-    }
-
-    public function execute(TpAccountActionInterface $entity)
-    {
-        $wasRemoved = is_null($entity->getId());
-        if ($wasRemoved) {
-            $this->removeTpAccount->execute($entity);
-            return;
-        }
-
-        $this->loadTpAccount->execute($entity);
+        $this->reload($tpAccountAction->getTpid());
     }
 }

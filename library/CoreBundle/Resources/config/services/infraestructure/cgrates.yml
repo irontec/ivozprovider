@@ -17,6 +17,25 @@ services:
   Ivoz\Core\Infrastructure\Domain\Service\Cgrates\BillingService:
     public: true
 
+  Ivoz\Core\Infrastructure\Domain\Service\Cgrates\ReloadService:
+    public: true
+
+  Ivoz\Core\Infrastructure\Domain\Service\Cgrates\LoadTpAccountAction:  ~
+  Ivoz\Cgr\Domain\Service\TpAccountAction\LoadTpAccountActionInterface:
+    '@Ivoz\Core\Infrastructure\Domain\Service\Cgrates\LoadTpAccountAction'
+
+  Ivoz\Core\Infrastructure\Domain\Service\Cgrates\RemoveTpAccountAction:  ~
+  Ivoz\Cgr\Domain\Service\TpAccountAction\RemoveTpAccountActionInterface:
+    '@Ivoz\Core\Infrastructure\Domain\Service\Cgrates\RemoveTpAccountAction'
+
+  Ivoz\Core\Infrastructure\Domain\Service\Cgrates\LoadTpRatingProfile:  ~
+  Ivoz\Cgr\Domain\Service\TpRatingProfile\LoadTpRatingProfileInterface:
+    '@Ivoz\Core\Infrastructure\Domain\Service\Cgrates\LoadTpRatingProfile'
+
+  Ivoz\Core\Infrastructure\Domain\Service\Cgrates\RemoveTpRatingProfile:  ~
+  Ivoz\Cgr\Domain\Service\TpRatingProfile\RemoveTpRatingProfileInterface:
+    '@Ivoz\Core\Infrastructure\Domain\Service\Cgrates\RemoveTpRatingProfile'
+
   Ivoz\Core\Infrastructure\Domain\Service\Cgrates\RerateCallService:
     public: true
   Ivoz\Kam\Domain\Service\TrunksCdr\RerateCallServiceInterface:

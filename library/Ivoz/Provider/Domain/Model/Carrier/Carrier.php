@@ -27,4 +27,12 @@ class Carrier extends CarrierAbstract implements CarrierInterface
     {
         return $this->id;
     }
+
+    /**
+     * @return string
+     */
+    public function getCgrSubject()
+    {
+        return sprintf("cr%d", $this->getId());
+    }
 }

@@ -41,15 +41,15 @@ class CreateByCarrier implements CarrierLifecycleEventHandlerInterface
             return;
         }
 
-        /** @var CarrierDto $carrierDto */
-        $carrierDto = $this->entityTools->entityToDto($carrier);
+        $brand = $carrier->getBrand();
 
         // Create a new TpAccountAction when Carrier is created
         $accountActionDto = TpAccountAction::createDTO();
         $accountActionDto
-            ->setCarrierId($carrierDto->getId())
-            ->setTenant(sprintf("b%d", $carrierDto->getBrandId()))
-            ->setAccount(sprintf("cr%d", $carrierDto->getId()));
+            ->setTpid($brand->getCgrTenant())
+            ->setCarrierId($carrier->getId())
+            ->setTenant($brand->getCgrTenant())
+            ->setAccount($carrier->getCgrSubject());
 
         $this->entityTools->persistDto($accountActionDto, null);
     }

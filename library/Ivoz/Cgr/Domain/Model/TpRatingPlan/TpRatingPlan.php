@@ -38,6 +38,10 @@ class TpRatingPlan extends TpRatingPlanAbstract implements TpRatingPlanInterface
                 ->setSunday(true)
                 ->setTimeIn(new \DateTime('00:00:00'));
         }
+
+        $this->setTpid(
+            $this->getRatingPlan()->getBrand()->getCgrTenant()
+        );
     }
 
     public function getWeekDays()

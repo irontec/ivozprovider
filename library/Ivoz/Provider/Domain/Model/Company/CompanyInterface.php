@@ -93,6 +93,11 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getDefaultTimezone();
 
     /**
+     * @return string
+     */
+    public function getCgrSubject();
+
+    /**
      * @deprecated
      * Set type
      *

@@ -46,6 +46,7 @@ class CreatedByDestination implements DestinationLifecycleEventHandlerInterface
             return;
         }
 
+        $brand = $destination->getBrand();
         $tpDestination = $destination->getTpDestination();
 
         /** @var TpDestinationDto $tpDestinationDto */
@@ -54,6 +55,7 @@ class CreatedByDestination implements DestinationLifecycleEventHandlerInterface
             : $this->entityTools->entityToDto($tpDestination);
 
         $tpDestinationDto
+            ->setTpid($brand->getCgrTenant())
             ->setPrefix($destination->getPrefix())
             ->setDestinationId($destination->getId())
             ->setTag($destination->getCgrTag());
