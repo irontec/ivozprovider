@@ -5376,16 +5376,16 @@
         },
         {
             "name": "php-pm/httpkernel-adapter",
-            "version": "1.0.4",
+            "version": "1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-pm/php-pm-httpkernel.git",
-                "reference": "6d1da1af8c68b05d6363780e7e5862dd5843caa6"
+                "reference": "be94a1aa5507d9b8159bb9af8d5da06d7ce72a6d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-pm/php-pm-httpkernel/zipball/6d1da1af8c68b05d6363780e7e5862dd5843caa6",
-                "reference": "6d1da1af8c68b05d6363780e7e5862dd5843caa6",
+                "url": "https://api.github.com/repos/php-pm/php-pm-httpkernel/zipball/be94a1aa5507d9b8159bb9af8d5da06d7ce72a6d",
+                "reference": "be94a1aa5507d9b8159bb9af8d5da06d7ce72a6d",
                 "shasum": ""
             },
             "require": {
@@ -5393,6 +5393,9 @@
                 "ringcentral/psr7": "^1.2",
                 "symfony/http-foundation": "^2.6|^3.0|^4",
                 "symfony/http-kernel": "^2.6|^3.0|^4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.7"
             },
             "type": "library",
             "autoload": {
@@ -5404,7 +5407,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2018-08-24T13:56:55+00:00"
+            "time": "2018-09-16T11:15:39+00:00"
         },
         {
             "name": "php-pm/php-pm",

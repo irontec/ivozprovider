@@ -62,7 +62,8 @@
         "ramsey/uuid": "^3.7",
         "symfony/monolog-bundle": "3.1.*",
         "symfony/swiftmailer-bundle": "^3.1",
-        "symfony/symfony": "3.4.*"
+        "symfony/symfony": "3.4.*",
+        "lexik/jwt-authentication-bundle": "^2.4"
     },
     "scripts": {
         "symfony-scripts": [
