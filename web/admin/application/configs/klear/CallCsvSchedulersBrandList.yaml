@@ -1,0 +1,42 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
+#include CallCsvReportsList.yaml
+#include CallCsvSchedulersList.yaml
+
+production:
+  main:
+    module: klearMatrix
+    defaultScreen: callCsvSchedulersList_screen
+  screens:
+    <<: *callCsvSchedulers_screensLink
+    callCsvSchedulersList_screen:
+      <<: *callCsvSchedulersList_screenLink
+      rawCondition: "CallCsvScheduler.brand is not null"
+      forcedValues:
+        <<: *forcedBrand
+
+    callCsvSchedulersNew_screen:
+      <<: *callCsvSchedulersNew_screenLink
+      forcedValues:
+        <<: *forcedBrand
+
+    callCsvSchedulersEdit_screen:
+      <<: *callCsvSchedulersEdit_screenLink
+      forcedValues:
+        <<: *forcedBrand
+
+  dialogs:
+    <<: *callCsvSchedulers_dialogsLink
+
+  commands:
+    <<: *callCsvSchedulers__commandsLink
+
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

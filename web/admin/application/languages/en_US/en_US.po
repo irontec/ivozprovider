@@ -320,6 +320,16 @@ msgid_plural "Call ACL Patterns"
 msgstr[0] "Call ACL Pattern"
 msgstr[1] "Call ACL Patterns"
 
+msgid "Call CSV report"
+msgid_plural "Call CSV reports"
+msgstr[0] "Call CSV report"
+msgstr[1] "Call CSV reports"
+
+msgid "Call CSV scheduler"
+msgid_plural "Call CSV schedulers"
+msgstr[0] "Call CSV scheduler"
+msgstr[1] "Call CSV schedulers"
+
 msgid "Call Details"
 msgstr "Call Details"
 
@@ -505,6 +515,9 @@ msgstr "Country code"
 
 msgid "Created"
 msgstr "Created"
+
+msgid "Created on"
+msgstr "Created on"
 
 msgid "Custom"
 msgstr "Custom"
@@ -1216,6 +1229,9 @@ msgstr "Latest value"
 
 msgid "Least recent"
 msgstr "Least recent"
+
+msgid "Leave empty if no mail is needed (just generate CSV)."
+msgstr "Leave empty if no mail is needed (just generate CSV)."
 
 msgid "Leave empty to send to Host field"
 msgstr "Leave empty to send to Host field"
@@ -2119,6 +2135,9 @@ msgstr "Send new %s"
 msgid "Send to IP[:PORT] instead of SIP Proxy address"
 msgstr "Send to IP[:PORT] instead of SIP Proxy address"
 
+msgid "Sent to"
+msgstr "Sent to"
+
 msgid "Sequence length"
 msgstr "Sequence length"
 
@@ -2334,6 +2353,9 @@ msgstr "This value will be displayed in the called terminals"
 
 msgid "Thursday"
 msgstr "Thursday"
+
+msgid "Time Information"
+msgstr "Time Information"
 
 msgid "Time in"
 msgstr "Time in"

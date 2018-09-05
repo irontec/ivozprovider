@@ -20,6 +20,11 @@ class RestClient
      */
     protected $refreshToken;
 
+    /**
+     * @var array
+     */
+    protected static $lastRequestInfo = [];
+
     public function __construct(
         string $token,
         string $refreshToken
@@ -34,28 +39,51 @@ class RestClient
     ) {
         $apiUrl = self::getBaseUrl() . self::LOGIN_ENDPOINT;
 
-        $context = self::getBaseStreamContextArguments('POST');
-        $context['http'] += [
-            'header' => "Accept: application/json\r\n"
-                        . "Content-Type: application/x-www-form-urlencoded\r\n",
-            'content' => http_build_query([
-                'username' => $username,
-                'password' => $password
-            ])
+        $options = self::getBaseRequestOptions('POST');
+        $options[CURLOPT_HTTPHEADER] = [
+            "Accept: application/json",
+            "Content-Type: application/x-www-form-urlencoded"
         ];
+        $options[CURLOPT_POST] = 1;
+        $options[CURLOPT_POSTFIELDS] = http_build_query([
+            'username' => $username,
+            'password' => $password
+        ]);
 
         try {
-            $response = file_get_contents(
-                $apiUrl,
-                false,
-                stream_context_create($context)
-            );
 
-            return json_decode($response);
+            $response = self::sendRequest($apiUrl, $options);
+
+            if (is_null($response)) {
+                throw new \Exception('Empty response');
+            }
+
+            $jsonResponse = json_decode($response);
+            if (json_last_error() !== JSON_ERROR_NONE) {
+                throw new \Exception('Invalid response format');
+            }
+
+            return $jsonResponse;
 
         } catch (\Exception $e) {
             throw new \DomainException('Unable to get API access token', 0, $e);
         }
+    }
+
+
+    private static function sendRequest($url, $options)
+    {
+        $options[CURLOPT_URL] = $url;
+        $options[CURLOPT_RETURNTRANSFER] = true;
+
+        $ch = curl_init();
+        curl_setopt_array($ch, $options);
+
+        $response = curl_exec($ch);
+        self::$lastRequestInfo = curl_getinfo($ch);
+        curl_close($ch);
+
+        return $response;
     }
 
     protected static function getBaseUrl()
@@ -66,40 +94,36 @@ class RestClient
             . basename($_SERVER['SCRIPT_FILENAME']);
     }
 
-    protected static function getBaseStreamContextArguments($method = 'GET')
+    protected static function getBaseRequestOptions($method = 'GET')
     {
         return [
-            'ssl' => [
-                'verify_peer' => false,
-                'verify_peer_name' => false
-            ],
-            'http' => [
-                'timeout' => 60,
-                'method' => $method,
-                'ignore_errors' => true
-            ]
+            CURLOPT_SSL_VERIFYPEER => false,
+            CURLOPT_SSL_VERIFYHOST => false,
+            CURLOPT_CONNECTTIMEOUT => 60,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_FRESH_CONNECT => true,
+            CURLOPT_RETURNTRANSFER => true
         ];
     }
 
     public function getBillableCalls(array $where = [])
     {
+        $where['_pagination'] = "false";
         $apiEndpoint =
             self::getBaseUrl()
             . self::BILLABLE_CALL_ENDPOINT
-            . '?_pagination=false';
+            . '?' . http_build_query($where);
 
-        $context = self::getBaseStreamContextArguments();
-        $context['http'] += [
-            'header' => "Accept: text/csv, text/json\r\n",
-            'content' => http_build_query($where)
+        $options = self::getBaseRequestOptions();
+        $options[CURLOPT_HTTPHEADER] = [
+            "Accept: text/csv, text/json"
         ];
 
         try {
             return $this->request(
                 $apiEndpoint,
-                $context
+                $options
             );
-
         } catch (\Exception $e) {
             throw new \DomainException('Unable to get Billable Calls', 0, $e);
         }
@@ -107,31 +131,29 @@ class RestClient
 
     /**
      * @param string $apiEndpoint
-     * @param \resource $context
+     * @param \resource $requestOptions
      * @param bool $retryOnExpiredToken
      * @return string
      * @throws \Exception
      */
-    private function request(string $apiEndpoint, array $context, bool $retryOnExpiredToken = true)
+    private function request(string $apiEndpoint, array $options, bool $retryOnExpiredToken = true)
     {
-        $requestContext = $context;
-        $requestContext['http']['header'] .= "authorization: Bearer " . $this->token . "\r\n";
+        $requestOptions = $options;
+        if (!isset($requestOptions[CURLOPT_HTTPHEADER])) {
+            $requestOptions[CURLOPT_HTTPHEADER] = [];
+        }
 
-        $requestContext = stream_context_create($requestContext);
-        $stream = fopen($apiEndpoint, 'r', false, $requestContext);
+        $requestOptions[CURLOPT_HTTPHEADER][] = "Authorization: Bearer " . $this->token;
+        $response = self::sendRequest($apiEndpoint, $requestOptions);
 
-        $responseHeaders = stream_get_meta_data($stream);
-        $headers = $responseHeaders['wrapper_data'] ?? [];
-        $response = stream_get_contents($stream);
-
-        if (strpos($headers[0], '401 Unauthorized') !== false) {
+        if (self::$lastRequestInfo['http_code'] === 401) {
 
             if (!$retryOnExpiredToken) {
                 throw new \Exception('Unauthorized');
             }
 
             $this->refreshToken();
-            return $this->request($apiEndpoint, $context, false);
+            return $this->request($apiEndpoint, $options, false);
         }
 
         return $response;
@@ -139,26 +161,28 @@ class RestClient
 
     private function refreshToken()
     {
-        $apiEndpoint = self::getBaseUrl() . self::REFRESH_TOKEN_ENDPOINT;
+        $apiUrl = self::getBaseUrl() . self::REFRESH_TOKEN_ENDPOINT;
 
-        $context = self::getBaseStreamContextArguments('POST');
-        $context['http'] += [
-            'header' => "Accept: application/json\r\n"
-                . "Content-Type: application/x-www-form-urlencoded\r\n",
-            'content' => http_build_query([
-                'refresh_token' => $this->refreshToken
-            ])
+        $options = self::getBaseRequestOptions('POST');
+        $options[CURLOPT_HTTPHEADER] = [
+            "Accept: application/json",
+            "Content-Type: application/x-www-form-urlencoded"
         ];
+        $options[CURLOPT_POST] = 1;
+        $options[CURLOPT_POSTFIELDS] = http_build_query([
+            'refresh_token' =>  $this->refreshToken
+        ]);
 
         try {
-            $response = file_get_contents(
-                $apiEndpoint,
-                false,
-                stream_context_create($context)
-            );
 
-            $response = json_decode($response);
-            $this->token = $response->token;
+            $response = self::sendRequest($apiUrl, $options);
+
+            $jsonResponse = json_decode($response);
+            if (json_last_error() !== JSON_ERROR_NONE) {
+                throw new \Exception('Invalid response format');
+            }
+
+            $this->token = $jsonResponse->token;
 
         } catch (\Exception $e) {
             throw new \DomainException('Unable to get API access token', 0, $e);

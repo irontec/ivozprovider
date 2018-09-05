@@ -46,10 +46,6 @@ production:
           price: true
           cost: true
           invoice: true
-      options: &billableCalls_optionsLink
-        title: _("Options")
-        commands:
-          exportBillableCallsToCsv_command: true
     billableCallsView_screen: &billableCallsView_screenLink
       <<: *BillableCalls
       controller: edit
@@ -112,15 +108,6 @@ production:
       multiItem: true
       alwaysEnabled: false
 
-  commands: &exportBillableCallsToCsv_commandsLink
-    exportBillableCallsToCsv_command: &exportBillableCallsToCsv_commandLink
-      <<: *BillableCalls
-      title: _("Export to CSV")
-      label: true
-      module: default
-      controller: klear-custom-billable-calls
-      action: export-to-csv
-      class:  ui-silk-page-white-database
 
 staging:
   _extends: production
