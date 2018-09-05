@@ -8,6 +8,7 @@ use Ivoz\Core\Application\Service\Assembler\DtoAssembler;
 use Ivoz\Core\Application\Service\Assembler\EntityAssembler;
 use Ivoz\Core\Domain\Model\EntityInterface;
 use Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister;
+use Ivoz\Core\Application\Service\UpdateEntityFromDTO;
 use Doctrine\DBAL\LockMode;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\PessimisticLockException;
@@ -38,6 +39,12 @@ class EntityTools
     private $dtoAssembler;
 
     /**
+     * @var UpdateEntityFromDTO
+     */
+    private $entityUpdater;
+
+
+    /**
      * EntityTools constructor.
      * @param EntityManager $entityManager
      * @param DoctrineEntityPersister $entityPersister
@@ -48,13 +55,15 @@ class EntityTools
         EntityManager $entityManager,
         DoctrineEntityPersister $entityPersister,
         EntityAssembler $entityAssembler,
-        DtoAssembler $dtoAssembler
+        DtoAssembler $dtoAssembler,
+        UpdateEntityFromDTO $entityUpdater
     ) {
         $this->em = $entityManager;
 
         $this->entityPersister = $entityPersister;
         $this->entityAssembler = $entityAssembler;
         $this->dtoAssembler = $dtoAssembler;
+        $this->entityUpdater = $entityUpdater;
     }
 
     /**
@@ -125,6 +134,18 @@ class EntityTools
         return $this
             ->entityPersister
             ->persistDto($dto, $entity, $dispatchImmediately);
+    }
+
+    public function updateEntityByDto(
+        EntityInterface $entity,
+        DataTransferObjectInterface $dto
+    ) {
+        $this->entityUpdater->execute(
+            $entity,
+            $dto
+        );
+
+        return $entity;
     }
 
     public function dispatchQueuedOperations()

@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Domain\Model\Administrator;
 
 trait AdministratorSecurityTrait
 {
+    abstract public function getId();
     abstract public function getUsername();
     abstract public function getEmail();
     abstract public function getPass();
@@ -73,6 +74,11 @@ trait AdministratorSecurityTrait
      */
     public function isEnabled()
     {
+        $isInnerGlobalAdmin = ($this->getId() === 0);
+        if ($isInnerGlobalAdmin) {
+            return true;
+        }
+
         return $this->getActive();
     }
 

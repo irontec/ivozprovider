@@ -110,7 +110,6 @@ class MigrateFromTrunksCdr
 
     private function migrateToBillableCall(TrunksCdrInterface $trunksCdr)
     {
-
         /**
          * @var BillableCallInterface $billableCall
          */

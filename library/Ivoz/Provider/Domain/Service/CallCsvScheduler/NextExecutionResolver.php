@@ -1,19 +1,19 @@
 <?php
 
-namespace Ivoz\Provider\Domain\Service\InvoiceScheduler;
+namespace Ivoz\Provider\Domain\Service\CallCsvScheduler;
 
 use Ivoz\Core\Application\Service\EntityTools;
-use Ivoz\Core\Domain\Service\LifecycleEventHandlerInterface;
-use Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface;
+use Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface;
+use Ivoz\Provider\Domain\Service\InvoiceScheduler\NextExecutionResolverTrait;
 
 /**
  * Class NextExecutionResolver
  */
-class NextExecutionResolver implements InvoiceSchedulerLifecycleEventHandlerInterface
+class NextExecutionResolver implements CallCsvSchedulerLifecycleEventHandlerInterface
 {
     use NextExecutionResolverTrait;
 
-    const PRE_PERSIST_PRIORITY = LifecycleEventHandlerInterface::PRIORITY_NORMAL;
+    const PRE_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
     /**
      * @var EntityTools
@@ -33,17 +33,12 @@ class NextExecutionResolver implements InvoiceSchedulerLifecycleEventHandlerInte
         ];
     }
 
-    public function execute(InvoiceSchedulerInterface $scheduler, bool $isNew)
+    public function execute(CallCsvSchedulerInterface $scheduler, bool $isNew)
     {
         $nextExecution = $scheduler->getNextExecution();
         if (!$nextExecution) {
-
-            $timeZone = $scheduler->getBrand()->getDefaultTimezone();
-            $this->setFallbackNextExecution(
-                $scheduler,
-                $timeZone
-            );
-
+            $timeZone = $scheduler->getTimezone();
+            $this->setFallbackNextExecution($scheduler, $timeZone);
             return;
         }
 

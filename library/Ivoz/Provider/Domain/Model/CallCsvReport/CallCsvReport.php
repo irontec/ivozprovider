@@ -2,12 +2,16 @@
 
 namespace Ivoz\Provider\Domain\Model\CallCsvReport;
 
+use Ivoz\Core\Domain\Model\TempFileContainnerTrait;
+use Ivoz\Core\Domain\Service\FileContainerInterface;
+
 /**
  * CallCsvReport
  */
-class CallCsvReport extends CallCsvReportAbstract implements CallCsvReportInterface
+class CallCsvReport extends CallCsvReportAbstract implements CallCsvReportInterface, FileContainerInterface
 {
     use CallCsvReportTrait;
+    use TempFileContainnerTrait;
 
     /**
      * @codeCoverageIgnore
@@ -26,6 +30,16 @@ class CallCsvReport extends CallCsvReportAbstract implements CallCsvReportInterf
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return array
+     */
+    public function getFileObjects()
+    {
+        return [
+            'Csv'
+        ];
     }
 }
 

@@ -7,5 +7,9 @@ use Doctrine\Common\Collections\Selectable;
 
 interface AdministratorRepository extends ObjectRepository, Selectable
 {
-
+    /**
+     * @return AdministratorInterface
+     * @throws \RuntimeException
+     */
+    public function getInnerGlobalAdmin();
 }
