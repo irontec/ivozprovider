@@ -36,6 +36,7 @@ class MicroKernel extends Kernel
     {
         $routes->add('/', 'InvoiceSchedulerController:indexAction');
         $routes->add('/billable-calls', 'BillableCallController:indexAction');
+        $routes->add('/call-csv-to-email', 'CallCsvController:indexAction');
     }
 
     // optional, to use the standard Symfony cache directory

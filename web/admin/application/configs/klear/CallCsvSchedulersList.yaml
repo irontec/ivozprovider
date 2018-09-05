@@ -33,20 +33,13 @@ production:
           dialogs:
             callCsvSchedulersDel_dialog: true
           default: callCsvSchedulersEdit_screen
-        order:
-          name: true
-          company: true
-          frequency: true
-          unit: true
-        blacklist:
-          email: true
-          lastExecution: true
       options:
         title: _("Options")
         screens:
           callCsvSchedulersNew_screen: true
         dialogs:
           callCsvSchedulersDel_dialog: true
+
     callCsvSchedulersNew_screen: &callCsvSchedulersNew_screenLink
       <<: *CallCsvSchedulers
       controller: new

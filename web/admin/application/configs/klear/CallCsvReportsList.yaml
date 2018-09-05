@@ -16,7 +16,7 @@ production:
       title: _("List of %s %2s", ngettext('Call CSV report', 'Call CSV reports', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/brand/call_csv/scheduler.html"
+        href: "/doc/${lang}/brand/call_csv/reports.html"
       fields: &callCsvReports_fieldsLink
         blacklist:
           company: true
@@ -33,20 +33,10 @@ production:
           dialogs:
             callCsvReportsDel_dialog: false
           default: callCsvReportsEdit_screen
-#        order:
-#          name: true
-#          company: true
-#          frequency: true
-#          unit: true
-#        blacklist:
-#          email: true
-#          numberSequence: true
-#          lastExecution: true
       options:
         title: _("Options")
         dialogs:
           callCsvReportsDel_dialog: true
-
 
     callCsvReportsView_screen: &callCsvReportsView_screenLink
       <<: *CallCsvReports
