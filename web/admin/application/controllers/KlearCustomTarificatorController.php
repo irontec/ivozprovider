@@ -151,10 +151,18 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
 
             $arguments = [];
             foreach ($ratingPlans as $ratingPlan) {
+
+                $cgrTag = $dataGateway->remoteProcedureCall(
+                    \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan::class,
+                    $ratingPlan->getId(),
+                    'getCgrTag',
+                    []
+                );
+
                 $arguments[] = [
                     $callDuration,
                     'b' . $brandId,
-                    $ratingPlan->getTag()
+                    $cgrTag
                 ];
             }
 
