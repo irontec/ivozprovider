@@ -63,13 +63,13 @@ class IvrAction
         $this->agi->notice("Processing IVR %s", $ivr);
 
         // Get IVR all Locutions
-        $welcomeLocution = "";
+        $welcomeLocution = null;
         if (!empty($ivr->getWelcomeLocution())) {
             $welcomeLocution = $ivr->getWelcomeLocution();
         }
 
         // Play locution and expect user press
-        $userPressed = $this->agi->read($welcomeLocution, $ivr->getTimeout(), $ivr->getMaxDigits());
+        $userPressed = $this->agi->readLocution($welcomeLocution, $ivr->getTimeout(), $ivr->getMaxDigits());
         $this->agi->verbose("IVR: User entered: %s", $userPressed);
 
         // User prefer Human interaction
