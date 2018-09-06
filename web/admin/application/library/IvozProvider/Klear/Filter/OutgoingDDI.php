@@ -12,6 +12,11 @@ class IvozProvider_Klear_Filter_OutgoingDDI implements KlearMatrix_Model_Field_S
 
     public function setRouteDispatcher(KlearMatrix_Model_RouteDispatcher $routeDispatcher)
     {
+        // Do not apply filtering in list view
+        if ($routeDispatcher->getControllerName() == "list") {
+            return;
+        }
+
         // Get current object id
         $pk = $routeDispatcher->getParam("pk", false);
 
@@ -32,6 +37,10 @@ class IvozProvider_Klear_Filter_OutgoingDDI implements KlearMatrix_Model_Field_S
 
     public function getCondition()
     {
-        return $this->_condition;
+        if (count($this->_condition) > 0) {
+            return $this->_condition;
+        }
+
+        return null;
     }
 }

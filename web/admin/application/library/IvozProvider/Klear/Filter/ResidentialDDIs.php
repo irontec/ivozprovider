@@ -12,6 +12,11 @@ class IvozProvider_Klear_Filter_ResidentialDDIs implements KlearMatrix_Model_Fie
 
     public function setRouteDispatcher(KlearMatrix_Model_RouteDispatcher $routeDispatcher)
     {
+        // Do not apply filtering in list view
+        if ($routeDispatcher->getControllerName() == "list") {
+            return;
+        }
+
         // Get current pk
         $pk = $routeDispatcher->getParam("pk", false);
         $this->_condition[] = "self::residentialDevice = '" . $pk . "'";
