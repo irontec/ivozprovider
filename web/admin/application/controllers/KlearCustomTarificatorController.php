@@ -375,13 +375,13 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
     {
         $headers = [
             'Plan',
-            'Call date',
+            'Start time',
             'Duration',
-            'Pattern Name',
-            'Con. Charge',
+            'Destination',
+            'Connection fee',
             'Interval start',
-            'Rate',
-            'Total cost',
+            'Price',
+            'Total',
         ];
         $rows = [];
 
