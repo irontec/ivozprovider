@@ -12,6 +12,11 @@ class IvozProvider_Klear_Filter_RetailDDIs implements KlearMatrix_Model_Field_Se
 
     public function setRouteDispatcher(KlearMatrix_Model_RouteDispatcher $routeDispatcher)
     {
+        // Do not apply filtering in list view
+        if ($routeDispatcher->getControllerName() == "list") {
+            return;
+        }
+
         // Get current pk
         $pk = $routeDispatcher->getParam("pk", false);
         $this->_condition[] = "self::retailAccount = '" . $pk . "'";
