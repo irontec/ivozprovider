@@ -65,7 +65,6 @@
         "guzzlehttp/guzzle": "^6.3",
         "incenteev/composer-parameter-handler": "^2.0",
         "lexik/jwt-authentication-bundle": "^2.5",
-        "predis/predis": "^1.1",
         "ramsey/uuid": "^3.7",
         "symfony/monolog-bundle": "3.1.*",
         "symfony/swiftmailer-bundle": "^3.1",
