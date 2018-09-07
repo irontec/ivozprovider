@@ -75,10 +75,9 @@ class SetInvoiceNumberSpec extends ObjectBehavior
 
         $this
             ->entityTools
-            ->persistDto(
-                $invoiceDto,
+            ->updateEntityByDto(
                 $invoice,
-                false
+                $invoiceDto
             )->shouldBeCalled();
 
         $this->execute($invoice, false);
