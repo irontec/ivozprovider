@@ -48,7 +48,6 @@ class CreateByScheduler
             $report = $this->createCallCsvReport($scheduler);
             $this->updateLastExecutionDate($scheduler);
         } catch (\Exception $e) {
-
             $name = $scheduler->getName();
             $this->logger->error(
                 "Call CSV scheduler #${$name} has failed: "

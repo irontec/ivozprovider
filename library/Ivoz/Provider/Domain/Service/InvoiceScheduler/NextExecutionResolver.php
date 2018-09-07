@@ -37,7 +37,6 @@ class NextExecutionResolver implements InvoiceSchedulerLifecycleEventHandlerInte
     {
         $nextExecution = $scheduler->getNextExecution();
         if (!$nextExecution) {
-
             $timeZone = $scheduler->getBrand()->getDefaultTimezone();
             $this->setFallbackNextExecution(
                 $scheduler,

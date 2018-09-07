@@ -49,5 +49,4 @@ class AdministratorDoctrineRepository extends ServiceEntityRepository implements
 
         return $privateAdmin;
     }
-
 }

@@ -105,15 +105,12 @@ class Client
     protected function request($method, $uri = '', array $options)
     {
         try {
-
             return $this->httpClient->request(
                 $method,
                 $uri,
                 $options
             );
-
         } catch (\Exception $e) {
-
             throw new \RuntimeException(
                 $e->getMessage(),
                 $e->getCode(),

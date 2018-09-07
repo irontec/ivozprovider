@@ -42,4 +42,3 @@ class CallCsvReport extends CallCsvReportAbstract implements CallCsvReportInterf
         ];
     }
 }
-

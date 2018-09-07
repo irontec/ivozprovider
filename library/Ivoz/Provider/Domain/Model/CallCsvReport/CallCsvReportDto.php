@@ -2,7 +2,6 @@
 
 namespace Ivoz\Provider\Domain\Model\CallCsvReport;
 
-
 class CallCsvReportDto extends CallCsvReportDtoAbstract
 {
     private $csvPath;
@@ -32,5 +31,3 @@ class CallCsvReportDto extends CallCsvReportDtoAbstract
         return $this->csvPath;
     }
 }
-
-
