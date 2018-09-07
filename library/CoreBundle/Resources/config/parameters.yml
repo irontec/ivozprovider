@@ -9,6 +9,13 @@ parameters:
     database_name: ivozprovider
     database_user: root
     database_password: changeme
+    api_platform_base_url: 'https://localhost/api/platform/dev.php/'
+    api_brand_base_url: 'https://localhost/api/brand/dev.php/'
+    api_client_base_url: 'https://localhost/api/client/dev.php/'
+    jwt_private_key_path: /opt/irontec/ivozprovider/web/rest/platform/var/jwt/private.pem
+    jwt_public_key_path: /opt/irontec/ivozprovider/web/rest/platform/var/jwt/public.pem
+    jwt_key_pass_phrase: changeme
+    jwt_token_ttl: 3600
     mailer_transport: smtp
     mailer_host: data.ivozprovider.local
     mailer_user: null

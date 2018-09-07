@@ -4,3 +4,4 @@ imports:
   - { resource: "gearman.yml" }
   - { resource: "logger.yml" }
   - { resource: "services.yml" }
+  - { resource: "security.yml" }
