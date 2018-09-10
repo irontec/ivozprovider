@@ -20,10 +20,10 @@ class KlearCustomDownloadFileController extends Zend_Controller_Action
     {
 
         $data = array(
-                'title' => _("Download file"),
-                'message'=> "<a download=\"template.txt\">" . _("Download") . "</a>",
+                'title' => $this->_helper->translate("Download file"),
+                'message'=> "<a download=\"template.txt\">" . $this->_helper->translate("Download") . "</a>",
                 'buttons'=> array(
-                        _('Cancel') => array(
+                        $this->_helper->translate('Cancel') => array(
                                 'reloadParent' => false,
                                 'recall' => false,
                         )

@@ -137,6 +137,9 @@ msgstr "Codecs video permitidos"
 msgid "Always"
 msgstr "Siempre"
 
+msgid "Amount"
+msgstr "Cantidad"
+
 msgid "An error occurred"
 msgstr "Ha ocurrido un error"
 
@@ -1519,6 +1522,12 @@ msgstr "Loc. No contesta"
 msgid "No answer timeout"
 msgstr "Timeout no contesta"
 
+msgid "No backup found."
+msgstr "No se encontro backup."
+
+msgid "No default template found"
+msgstr "No se encontró plantilla por defecto"
+
 msgid "No input configuration"
 msgstr "Configuración sin entrada"
 
@@ -1943,6 +1952,9 @@ msgstr "Reenviar fax"
 msgid "Resend to"
 msgstr "Reenviar a"
 
+msgid "Reset default template?"
+msgstr "¿Restaurar plantilla por defecto?"
+
 msgid "Residential"
 msgid_plural "Residentials"
 msgstr[0] "Residencial"
@@ -1960,6 +1972,9 @@ msgstr[1] "Dispositivo residencial"
 
 msgid "Restore backup"
 msgstr "Restaurar backup"
+
+msgid "Restore backup from"
+msgstr "Restaurar backup de"
 
 msgid "Restore default template"
 msgstr "Restaurar plantilla por defecto"
@@ -2317,10 +2332,8 @@ msgstr ""
 msgid "This setting needs external tarification module"
 msgstr "Esta opción requiere un módulo de tarificación externa"
 
-msgid ""
-"This template is going to be tested<br /><textarea name=\"currentCode\" rows="
-"\"8\" cols=\"80\" readonly></textarea>"
-msgstr ""
+msgid "This template is going to be tested"
+msgstr "La siguiente plantilla será probada"
 
 msgid "This value will be displayed in the called terminals"
 msgstr "Valor que se mostrará en el terminal llamado"
