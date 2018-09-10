@@ -392,8 +392,11 @@ production:
             title: _("Pseudo-prepaid")
     balance:
       title: _('Balance')
-      type: text
+      type: ghost
       readonly: true
+      source:
+        class: IvozProvider_Klear_Ghost_Companies
+        method: getBalance
     typeIcon:
       title: _('Type')
       type: ghost
