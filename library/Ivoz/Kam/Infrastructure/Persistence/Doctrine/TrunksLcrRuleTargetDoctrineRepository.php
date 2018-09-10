@@ -70,6 +70,5 @@ class TrunksLcrRuleTargetDoctrineRepository extends ServiceEntityRepository impl
             );
 
         return $qb->getQuery()->getResult();
-
     }
 }
