@@ -27,7 +27,7 @@ production:
       fields:
         order: &dDIsFieldsOder_Link
           country: true
-          DDI: true
+          ddi: true
           company: true
           carrier: true
         blacklist:
