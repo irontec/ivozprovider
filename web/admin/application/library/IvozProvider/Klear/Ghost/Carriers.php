@@ -1,19 +1,29 @@
 <?php
 
-use Ivoz\Cgr\Infrastructure\Domain\Service\Cgrates\FetchCallStatsService;
+use Ivoz\Provider\Domain\Model\Carrier\CarrierDto;
+use Ivoz\Cgr\Domain\Service\TpCdrStat\FetchCallStatsServiceInterface;
+use Ivoz\Provider\Domain\Service\Carrier\CarrierBalanceServiceInterface;
 
 class IvozProvider_Klear_Ghost_Carriers extends KlearMatrix_Model_Field_Ghost_Abstract
 {
     /**
-     * @var FetchCallStatsService
+     * @var FetchCallStatsServiceInterface
      */
     private $fetchCallStats;
+
+    /**
+     * @var CarrierBalanceServiceInterface
+     */
+    private $fetchCarrierBalance;
 
     public function __construct()
     {
         $serviceContainer = \Zend_Registry::get('container');
         $this->fetchCallStats = $serviceContainer->get(
-            FetchCallStatsService::class
+            FetchCallStatsServiceInterface::class
+        );
+        $this->fetchCarrierBalance = $serviceContainer->get(
+            CarrierBalanceServiceInterface::class
         );
     }
 
@@ -52,15 +62,18 @@ class IvozProvider_Klear_Ghost_Carriers extends KlearMatrix_Model_Field_Ghost_Ab
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\Carrier\CarrierDto $carrier
+     * @param CarrierDto $carrierDto
      * @return string
      */
-    public function getBalance($carrierDto)
+    public function getBalance(CarrierDto $carrierDto)
     {
         if (!$carrierDto->getCalculateCost()) {
             return Klear_Model_Gettext::gettextCheck('_("Disabled")');
         }
 
-        return $carrierDto->getBalance();
+        return $this->fetchCarrierBalance->getBalance(
+            $carrierDto->getBrandId(),
+            $carrierDto->getId()
+        );
     }
 }
