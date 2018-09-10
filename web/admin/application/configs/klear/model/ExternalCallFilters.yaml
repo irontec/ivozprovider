@@ -255,11 +255,11 @@ production:
         data: mapper
         config:
           relation: \Ivoz\Provider\Domain\Model\ExternalCallFilterRelSchedule\ExternalCallFilterRelSchedule
-          relationProperty: schedule
+          relationProperty: filter
           relatedProperty: schedule
           related: \Ivoz\Provider\Domain\Model\Schedule\Schedule
-          filterClass: IvozProvider_Klear_Filter_Company
           relatedFieldName: name
+          filterClass: IvozProvider_Klear_Filter_Company
     calendars:
       title: ngettext('Calendar', 'Calendars', 0)
       type: multiselect
