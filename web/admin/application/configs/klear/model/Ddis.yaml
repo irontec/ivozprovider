@@ -18,7 +18,7 @@ production:
             template: '%name%'
           order:
             Company.name: asc
-    DDI:
+    ddi:
       title: ngettext('DDI', 'DDIs', 1)
       type: text
       trim: both

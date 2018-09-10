@@ -127,7 +127,7 @@ production:
       fields:
         order:
           country: true
-          DDI: true
+          ddi: true
           company: true
         blacklist:
           user: true

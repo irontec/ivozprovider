@@ -26,7 +26,7 @@ production:
       fields:
         order: &ddisFieldsOder_Link
           country: true
-          DDI: true
+          ddi: true
           externalCallFilter: true
           routeType: true
           target: true
@@ -61,7 +61,7 @@ production:
           colsPerRow: 3
           fields:
             country: 1
-            DDI: 1
+            ddi: 1
             ddiProvider: 1
             displayName: 2
             language: 1
@@ -160,7 +160,7 @@ production:
           billInboundCalls: true
           recordCalls: ${auth.companyFeatures.recordings.disabled}
         readOnly:
-          DDI: true
+          ddi: true
           country: true
       fixedPositions:
         <<: *ddisFixedPositions_Link
