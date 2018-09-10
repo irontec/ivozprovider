@@ -133,6 +133,9 @@ msgstr "Allowed video codecs"
 msgid "Always"
 msgstr "Always"
 
+msgid "Amount"
+msgstr "Amount"
+
 msgid "An error occurred"
 msgstr "An error occurred"
 
@@ -1496,6 +1499,12 @@ msgstr "No answer locution"
 msgid "No answer timeout"
 msgstr "No answer timeout"
 
+msgid "No backup found."
+msgstr "No backup found."
+
+msgid "No default template found"
+msgstr "No default template found"
+
 msgid "No input configuration"
 msgstr "No input configuration"
 
@@ -1917,6 +1926,9 @@ msgstr "Resend fax"
 msgid "Resend to"
 msgstr "Resend to"
 
+msgid "Reset default template?"
+msgstr "Reset default template?"
+
 msgid "Residential"
 msgid_plural "Residentials"
 msgstr[0] "Residential"
@@ -1934,6 +1946,9 @@ msgstr[1] "Residential Devices"
 
 msgid "Restore backup"
 msgstr "Restore backup"
+
+msgid "Restore backup from"
+msgstr "Restore backup from"
 
 msgid "Restore default template"
 msgstr "Restore default template"
@@ -2289,10 +2304,8 @@ msgstr ""
 msgid "This setting needs external tarification module"
 msgstr "This setting needs external tarification module"
 
-msgid ""
-"This template is going to be tested<br /><textarea name=\"currentCode\" rows="
-"\"8\" cols=\"80\" readonly></textarea>"
-msgstr ""
+msgid "This template is going to be tested"
+msgstr "This template is going to be tested"
 
 msgid "This value will be displayed in the called terminals"
 msgstr "This value will be displayed in the called terminals"

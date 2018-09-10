@@ -28,8 +28,8 @@ class KlearCustomForwardFaxController extends Zend_Controller_Action
         }
 
         $bodyMsg = '
-                <p><strong>'._("Resend to").':</strong> '.$modelFax->getDst().'</p>
-                <p><strong>'._("File").':</strong> '.$modelFax->getFileBaseName().'</p>
+                <p><strong>'.$this->_helper->translate("Resend to").':</strong> '.$modelFax->getDst().'</p>
+                <p><strong>'.$this->_helper->translate("File").':</strong> '.$modelFax->getFileBaseName().'</p>
         ';
 
         if ($this->getRequest()->getParam("forward")) {
@@ -37,10 +37,10 @@ class KlearCustomForwardFaxController extends Zend_Controller_Action
             $modelFax->save();
 
             $data = array(
-                'title' => _("Fax resent"),
+                'title' => $this->_helper->translate("Fax resent"),
                 'message'=> $bodyMsg,
                 'buttons'=>array(
-                    _('Accept') => array(
+                    $this->_helper->translate('Accept') => array(
                         'reloadParent' => true,
                         'recall' => false,
                     )
@@ -48,14 +48,14 @@ class KlearCustomForwardFaxController extends Zend_Controller_Action
             );
         } else {
             $data = array(
-                'title' => _("Resend fax"),
+                'title' => $this->_helper->translate("Resend fax"),
                 'message'=> $bodyMsg,
                 'buttons'=>array(
-                    _('Cancel') => array(
+                    $this->_helper->translate('Cancel') => array(
                         'reloadParent' => false,
                         'recall' => false,
                     ),
-                    _('Resend') => array(
+                    $this->_helper->translate('Resend') => array(
                         "recall" => true,
                         "reloadParent" => false,
                         "params" => array(

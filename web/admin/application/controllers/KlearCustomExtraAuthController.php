@@ -239,7 +239,7 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
                 "message" => $message,
                 "options" => array('width'=>'300px'),
                 "buttons" => array(
-                        _("Accept") => array(
+                        $this->_helper->translate("Accept") => array(
                                 "recall" => true,
                                 "reloadParent" => false,
                                 "params" => array(
@@ -248,7 +248,7 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
                                         "remoteId" => $model->getId()
                                 ),
                         ),
-                        _("Cancel") => array(
+                        $this->_helper->translate("Cancel") => array(
                                 "recall" => false,
                                 "reloadParent" => false
                         )
@@ -269,7 +269,7 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
                 "message" => $message,
                 "options" => array('width'=>'300px'),
                 "buttons" => array(
-//                         _("Accept") => array(
+//                         $this->_helper->translate("Accept") => array(
 //                                 "recall" => false,
 //                                 "reloadParent" => true
 //                         )

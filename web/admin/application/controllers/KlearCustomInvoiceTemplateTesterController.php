@@ -78,11 +78,11 @@ class KlearCustomInvoiceTemplateTesterController extends Zend_Controller_Action
         $message = "<h2>Click <a href='".$tempFileLink."' target='_blank'> <span class=\"ui-silk inline ui-silk-page-white-acrobat\"></span>here</a> to view the result</p>";
 
         $data = array(
-            "title" => _("Invoice template tester"),
+            "title" => $this->_helper->translate("Invoice template tester"),
             "message" => $message,
             "options" => array('width'=>'300px'),
             "buttons" => array(
-              _("Close") => array(
+              $this->_helper->translate("Close") => array(
                   "recall" => false,
                   "reloadParent" => false
               )
@@ -99,7 +99,7 @@ class KlearCustomInvoiceTemplateTesterController extends Zend_Controller_Action
             "message" => $message,
             "options" => array('width'=>'300px'),
             "buttons" => array(
-                _("Accept") => array(
+                $this->_helper->translate("Accept") => array(
                     "recall" => false,
                     "reloadParent" => true
                 )

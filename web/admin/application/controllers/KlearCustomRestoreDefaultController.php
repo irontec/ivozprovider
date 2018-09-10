@@ -45,9 +45,9 @@ class KlearCustomRestoreDefaultController extends Zend_Controller_Action
             $file = fopen($filename, "r");
             $filecontent = fread($file, filesize($filename));
             $data = array(
-                'title' => _("Restore default template"),
+                'title' => $this->_helper->translate("Restore default template"),
                 'message' =>
-                    _("Loading")
+                    $this->_helper->translate("Loading")
                     . "<textarea style=\"display: none\">"
                     . str_replace("<br/>", "\n", $filecontent)
                     . "</textarea>"
@@ -55,24 +55,24 @@ class KlearCustomRestoreDefaultController extends Zend_Controller_Action
         } else {
             $existsBackup = file_exists($filename);
             if($existsBackup){
-                $message = "Reset default template? ($filename)";
+                $message = $this->_helper->translate("Reset default template?") . " ($filename)";
             }
             else {
-                $message = "No default template found ($filename)";
+                $message =  $this->_helper->translate("No default template found") . " ($filename)";
             }
 
             $data = array(
-                    'title' => _("Restore default template"),
-                    'message'=>_($message),
+                    'title' => $this->_helper->translate("Restore default template"),
+                    'message'=> $message,
                     'buttons'=>array(
-                            _('Accept') => array(
+                            $this->_helper->translate('Accept') => array(
                                     'reloadParent' => false,
                                     'recall' => $existsBackup,
                                     'params'=>array(
                                             "backup" => true
                                     )
                             ),
-                            _('Cancel') => array(
+                            $this->_helper->translate('Cancel') => array(
                                     'reloadParent' => false,
                                     'recall' => false,
                             )
