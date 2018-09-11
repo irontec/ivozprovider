@@ -31,11 +31,19 @@ production:
           carriersGhost: true
           priority: true
           weight: true
+          prefix: true
+          forceClid: true
+          clidCountry: true
+          clid: true
         blacklist:
           routingPattern: true
           routingPatternGroup: true
           carrier: true
           relCarriers: true
+          prefix: true
+          forceClid: true
+          clid: true
+          clidCountry: true
         options:
           title: _("Options")
           screens:
@@ -88,6 +96,15 @@ production:
           fields:
             priority: 1
             weight: 1
+        group4:
+          colsPerRow: 12
+          label: ngettext('Numeric transformation', 'Numeric transformations', 1)
+          collapsed: true
+          fields:
+            prefix: 6
+            forceClid: 6
+            clidCountry: 6
+            clid: 6
       class: ui-silk-add
       label: true
       multiInstance: true
