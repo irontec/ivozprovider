@@ -291,7 +291,7 @@ production:
         data: mapper
         config:
           relation: \Ivoz\Provider\Domain\Model\ExternalCallFilterWhiteList\ExternalCallFilterWhiteList
-          relationProperty: matchlist
+          relationProperty: filter
           relatedProperty: matchlist
           related: \Ivoz\Provider\Domain\Model\MatchList\MatchList
           relatedFieldName: name
@@ -307,7 +307,7 @@ production:
         data: mapper
         config:
           relation: \Ivoz\Provider\Domain\Model\ExternalCallFilterBlackList\ExternalCallFilterBlackList
-          relationProperty: matchlist
+          relationProperty: filter
           relatedProperty: matchlist
           related: \Ivoz\Provider\Domain\Model\MatchList\MatchList
           relatedFieldName: name
