@@ -425,6 +425,9 @@ msgstr "Período de facturación"
 msgid "Check documentation for this section"
 msgstr "Ver documentación de esta sección"
 
+msgid "Clid"
+msgstr "Origen"
+
 msgid "Client Configuration"
 msgstr "Configuración de Cliente"
 
@@ -581,6 +584,9 @@ msgstr[1] "Destinos"
 
 msgid "Destination IP address"
 msgstr "Dirección IP destino"
+
+msgid "Destination prefix"
+msgstr "Prefijo de destino"
 
 msgid "Destination rate"
 msgid_plural "Destination rates"
@@ -875,6 +881,9 @@ msgstr[1] "Costes fijos"
 msgid "For instance:"
 msgstr "Por ejemplo:"
 
+msgid "Force Clid"
+msgstr "Forzar Origen"
+
 msgid "Force DDI"
 msgstr "Forzar DDI"
 
@@ -1125,6 +1134,14 @@ msgstr "Incremento"
 
 msgid "Insert your username"
 msgstr "Introduce tu nombre de usuario"
+
+msgid ""
+"Instead of getting the caller from PAI/RPID headers, this clid will be used "
+"(and will be adapted using carrier's numeric transformations)."
+msgstr ""
+"En lugar de obtener el origen de las cabeceras PAI/RPID, se forzará este "
+"origen (y se adaptará utilizando las transformaciones numéricas del "
+"operador)."
 
 msgid "Internal"
 msgstr "Interna"
@@ -2328,6 +2345,13 @@ msgid ""
 "This importer expects values to be within quotation marks and separated by "
 "semicolons."
 msgstr ""
+
+msgid ""
+"This prefix will be added to the callee after carrier's numeric "
+"transformations."
+msgstr ""
+"Este prefijo se añadirá al destino de la llamada después de aplicar las "
+"transformaciones numéricas del operador."
 
 msgid "This setting needs external tarification module"
 msgstr "Esta opción requiere un módulo de tarificación externa"
