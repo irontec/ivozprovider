@@ -137,13 +137,13 @@ production:
           'static':
             title: _("Static")
             visualFilter:
-              show: [ carrier ]
+              show: [ carrier, prefix, forceClid, clidCountry, clid ]
               hide: [ relCarriers ]
           'lcr':
             title: _("LCR")
             visualFilter:
               show: [ relCarriers ]
-              hide: [ carrier ]
+              hide: [ carrier, prefix, forceClid, clidCountry, clid ]
     company:
       title: ngettext('Company', 'Companies', 1)
       type: select
@@ -166,6 +166,62 @@ production:
       source:
         class: IvozProvider_Klear_Ghost_OutgoingRouteType
         method: getData
+    prefix:
+      title: _('Destination prefix')
+      type: text
+      trim: both
+      maxLength: 25
+      required: false
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("This prefix will be added to the callee after carrier's numeric transformations.")
+        label: _("Need help?")
+    clid:
+      title: _('Clid')
+      type: text
+      trim: both
+      maxLength: 25
+      required: true
+    forceClid:
+      title: _('Force Clid')
+      type: select
+      defaultValue: 0
+      source:
+        data: inline
+        values:
+          '1':
+            title: _("Yes")
+            visualFilter:
+              show: [ clid, clidCountry ]
+              hide: []
+          '0':
+            title: _("No")
+            visualFilter:
+              show: []
+              hide: [ clid, clidCountry ]
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Instead of getting the caller from PAI/RPID headers, this clid will be used (and will be adapted using carrier's numeric transformations).")
+        label: _("Need help?")
+    clidCountry:
+      title: _('Country')
+      type: select
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Country\Country
+          fieldName:
+            fields:
+              - name${lang}
+              - countryCode
+            template: '%name${lang}% (%countryCode%)'
+          order:
+            Country.name.${lang}: asc
 staging:
   _extends: production
 testing:

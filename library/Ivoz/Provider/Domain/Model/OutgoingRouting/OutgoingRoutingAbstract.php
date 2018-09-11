@@ -35,6 +35,21 @@ abstract class OutgoingRoutingAbstract
     protected $routingMode = 'static';
 
     /**
+     * @var string
+     */
+    protected $prefix;
+
+    /**
+     * @var boolean
+     */
+    protected $forceClid = '0';
+
+    /**
+     * @var string
+     */
+    protected $clid;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
      */
     protected $brand;
@@ -63,6 +78,11 @@ abstract class OutgoingRoutingAbstract
      * @var \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface
      */
     protected $routingTag;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     */
+    protected $clidCountry;
 
 
     use ChangelogTrait;
@@ -148,12 +168,16 @@ abstract class OutgoingRoutingAbstract
         $self
             ->setType($dto->getType())
             ->setRoutingMode($dto->getRoutingMode())
+            ->setPrefix($dto->getPrefix())
+            ->setForceClid($dto->getForceClid())
+            ->setClid($dto->getClid())
             ->setBrand($dto->getBrand())
             ->setCompany($dto->getCompany())
             ->setCarrier($dto->getCarrier())
             ->setRoutingPattern($dto->getRoutingPattern())
             ->setRoutingPatternGroup($dto->getRoutingPatternGroup())
             ->setRoutingTag($dto->getRoutingTag())
+            ->setClidCountry($dto->getClidCountry())
         ;
 
         $self->sanitizeValues();
@@ -178,12 +202,16 @@ abstract class OutgoingRoutingAbstract
             ->setPriority($dto->getPriority())
             ->setWeight($dto->getWeight())
             ->setRoutingMode($dto->getRoutingMode())
+            ->setPrefix($dto->getPrefix())
+            ->setForceClid($dto->getForceClid())
+            ->setClid($dto->getClid())
             ->setBrand($dto->getBrand())
             ->setCompany($dto->getCompany())
             ->setCarrier($dto->getCarrier())
             ->setRoutingPattern($dto->getRoutingPattern())
             ->setRoutingPatternGroup($dto->getRoutingPatternGroup())
-            ->setRoutingTag($dto->getRoutingTag());
+            ->setRoutingTag($dto->getRoutingTag())
+            ->setClidCountry($dto->getClidCountry());
 
 
 
@@ -202,12 +230,16 @@ abstract class OutgoingRoutingAbstract
             ->setPriority(self::getPriority())
             ->setWeight(self::getWeight())
             ->setRoutingMode(self::getRoutingMode())
+            ->setPrefix(self::getPrefix())
+            ->setForceClid(self::getForceClid())
+            ->setClid(self::getClid())
             ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
             ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
             ->setCarrier(\Ivoz\Provider\Domain\Model\Carrier\Carrier::entityToDto(self::getCarrier(), $depth))
             ->setRoutingPattern(\Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPattern::entityToDto(self::getRoutingPattern(), $depth))
             ->setRoutingPatternGroup(\Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup::entityToDto(self::getRoutingPatternGroup(), $depth))
-            ->setRoutingTag(\Ivoz\Provider\Domain\Model\RoutingTag\RoutingTag::entityToDto(self::getRoutingTag(), $depth));
+            ->setRoutingTag(\Ivoz\Provider\Domain\Model\RoutingTag\RoutingTag::entityToDto(self::getRoutingTag(), $depth))
+            ->setClidCountry(\Ivoz\Provider\Domain\Model\Country\Country::entityToDto(self::getClidCountry(), $depth));
     }
 
     /**
@@ -220,12 +252,16 @@ abstract class OutgoingRoutingAbstract
             'priority' => self::getPriority(),
             'weight' => self::getWeight(),
             'routingMode' => self::getRoutingMode(),
+            'prefix' => self::getPrefix(),
+            'forceClid' => self::getForceClid(),
+            'clid' => self::getClid(),
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
             'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null,
             'routingPatternId' => self::getRoutingPattern() ? self::getRoutingPattern()->getId() : null,
             'routingPatternGroupId' => self::getRoutingPatternGroup() ? self::getRoutingPatternGroup()->getId() : null,
-            'routingTagId' => self::getRoutingTag() ? self::getRoutingTag()->getId() : null
+            'routingTagId' => self::getRoutingTag() ? self::getRoutingTag()->getId() : null,
+            'clidCountryId' => self::getClidCountry() ? self::getClidCountry()->getId() : null
         ];
     }
     // @codeCoverageIgnoreStart
@@ -347,6 +383,93 @@ abstract class OutgoingRoutingAbstract
     public function getRoutingMode()
     {
         return $this->routingMode;
+    }
+
+    /**
+     * @deprecated
+     * Set prefix
+     *
+     * @param string $prefix
+     *
+     * @return self
+     */
+    public function setPrefix($prefix = null)
+    {
+        if (!is_null($prefix)) {
+            Assertion::maxLength($prefix, 25, 'prefix value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        }
+
+        $this->prefix = $prefix;
+
+        return $this;
+    }
+
+    /**
+     * Get prefix
+     *
+     * @return string
+     */
+    public function getPrefix()
+    {
+        return $this->prefix;
+    }
+
+    /**
+     * @deprecated
+     * Set forceClid
+     *
+     * @param boolean $forceClid
+     *
+     * @return self
+     */
+    public function setForceClid($forceClid = null)
+    {
+        if (!is_null($forceClid)) {
+            Assertion::between(intval($forceClid), 0, 1, 'forceClid provided "%s" is not a valid boolean value.');
+        }
+
+        $this->forceClid = $forceClid;
+
+        return $this;
+    }
+
+    /**
+     * Get forceClid
+     *
+     * @return boolean
+     */
+    public function getForceClid()
+    {
+        return $this->forceClid;
+    }
+
+    /**
+     * @deprecated
+     * Set clid
+     *
+     * @param string $clid
+     *
+     * @return self
+     */
+    public function setClid($clid = null)
+    {
+        if (!is_null($clid)) {
+            Assertion::maxLength($clid, 25, 'clid value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        }
+
+        $this->clid = $clid;
+
+        return $this;
+    }
+
+    /**
+     * Get clid
+     *
+     * @return string
+     */
+    public function getClid()
+    {
+        return $this->clid;
     }
 
     /**
@@ -491,6 +614,30 @@ abstract class OutgoingRoutingAbstract
     public function getRoutingTag()
     {
         return $this->routingTag;
+    }
+
+    /**
+     * Set clidCountry
+     *
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $clidCountry
+     *
+     * @return self
+     */
+    public function setClidCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $clidCountry = null)
+    {
+        $this->clidCountry = $clidCountry;
+
+        return $this;
+    }
+
+    /**
+     * Get clidCountry
+     *
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     */
+    public function getClidCountry()
+    {
+        return $this->clidCountry;
     }
 
     // @codeCoverageIgnoreEnd

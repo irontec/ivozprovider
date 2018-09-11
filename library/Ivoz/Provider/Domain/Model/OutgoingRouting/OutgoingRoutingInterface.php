@@ -107,6 +107,57 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
     public function getRoutingMode();
 
     /**
+     * @deprecated
+     * Set prefix
+     *
+     * @param string $prefix
+     *
+     * @return self
+     */
+    public function setPrefix($prefix = null);
+
+    /**
+     * Get prefix
+     *
+     * @return string
+     */
+    public function getPrefix();
+
+    /**
+     * @deprecated
+     * Set forceClid
+     *
+     * @param boolean $forceClid
+     *
+     * @return self
+     */
+    public function setForceClid($forceClid = null);
+
+    /**
+     * Get forceClid
+     *
+     * @return boolean
+     */
+    public function getForceClid();
+
+    /**
+     * @deprecated
+     * Set clid
+     *
+     * @param string $clid
+     *
+     * @return self
+     */
+    public function setClid($clid = null);
+
+    /**
+     * Get clid
+     *
+     * @return string
+     */
+    public function getClid();
+
+    /**
      * Set brand
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
@@ -201,6 +252,22 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface
      */
     public function getRoutingTag();
+
+    /**
+     * Set clidCountry
+     *
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $clidCountry
+     *
+     * @return self
+     */
+    public function setClidCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $clidCountry = null);
+
+    /**
+     * Get clidCountry
+     *
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     */
+    public function getClidCountry();
 
     /**
      * Set tpLcrRule

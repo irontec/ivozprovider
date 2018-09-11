@@ -70,6 +70,11 @@ class OutgoingRouting extends OutgoingRoutingAbstract implements OutgoingRouting
             default:
                 throw new \DomainException('Incorrect Outgoing Routing Mode');
         }
+
+        if (!$this->getForceClid()) {
+            $this->setClid(null);
+            $this->setClidCountry(null);
+        }
     }
 
     /**
