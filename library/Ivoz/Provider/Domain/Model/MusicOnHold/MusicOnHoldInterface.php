@@ -2,9 +2,10 @@
 
 namespace Ivoz\Provider\Domain\Model\MusicOnHold;
 
+use Ivoz\Core\Domain\Service\FileContainerInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface MusicOnHoldInterface extends LoggableEntityInterface
+interface MusicOnHoldInterface extends FileContainerInterface, LoggableEntityInterface
 {
     /**
      * @codeCoverageIgnore

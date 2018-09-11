@@ -8,7 +8,7 @@ use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
 /**
  * CallCsvScheduler
  */
-class CallCsvScheduler extends CallCsvSchedulerAbstract implements CallCsvSchedulerInterface, SchedulerInterface
+class CallCsvScheduler extends CallCsvSchedulerAbstract implements SchedulerInterface, CallCsvSchedulerInterface
 {
     use CallCsvSchedulerTrait;
 

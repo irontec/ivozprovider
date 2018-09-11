@@ -8,7 +8,7 @@ use Ivoz\Core\Domain\Model\SchedulerInterface;
 /**
  * InvoiceScheduler
  */
-class InvoiceScheduler extends InvoiceSchedulerAbstract implements InvoiceSchedulerInterface, SchedulerInterface
+class InvoiceScheduler extends InvoiceSchedulerAbstract implements SchedulerInterface, InvoiceSchedulerInterface
 {
     use InvoiceSchedulerTrait;
 

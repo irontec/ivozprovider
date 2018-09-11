@@ -2,10 +2,11 @@
 
 namespace Ivoz\Provider\Domain\Model\DestinationRateGroup;
 
+use Ivoz\Core\Domain\Service\FileContainerInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Doctrine\Common\Collections\Collection;
 
-interface DestinationRateGroupInterface extends LoggableEntityInterface
+interface DestinationRateGroupInterface extends FileContainerInterface, LoggableEntityInterface
 {
     /**
      * @codeCoverageIgnore

@@ -9,7 +9,7 @@ use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 /**
  * Brand
  */
-class Brand extends BrandAbstract implements BrandInterface, FileContainerInterface
+class Brand extends BrandAbstract implements FileContainerInterface, BrandInterface
 {
     use BrandTrait;
     use TempFileContainnerTrait;

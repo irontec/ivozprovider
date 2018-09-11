@@ -8,7 +8,7 @@ use Ivoz\Core\Domain\Service\FileContainerInterface;
 /**
  * CallCsvReport
  */
-class CallCsvReport extends CallCsvReportAbstract implements CallCsvReportInterface, FileContainerInterface
+class CallCsvReport extends CallCsvReportAbstract implements FileContainerInterface, CallCsvReportInterface
 {
     use CallCsvReportTrait;
     use TempFileContainnerTrait;

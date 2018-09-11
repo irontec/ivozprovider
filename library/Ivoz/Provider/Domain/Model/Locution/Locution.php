@@ -8,7 +8,7 @@ use Ivoz\Core\Domain\Service\TempFile;
 /**
  * Locution
  */
-class Locution extends LocutionAbstract implements LocutionInterface, FileContainerInterface
+class Locution extends LocutionAbstract implements FileContainerInterface, LocutionInterface
 {
     use LocutionTrait;
     use TempFileContainnerTrait { addTmpFile as protected _addTmpFile;

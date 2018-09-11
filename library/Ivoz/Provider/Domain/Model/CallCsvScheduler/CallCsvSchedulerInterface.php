@@ -2,9 +2,10 @@
 
 namespace Ivoz\Provider\Domain\Model\CallCsvScheduler;
 
+use Ivoz\Core\Domain\Model\SchedulerInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface CallCsvSchedulerInterface extends LoggableEntityInterface
+interface CallCsvSchedulerInterface extends SchedulerInterface, LoggableEntityInterface
 {
     /**
      * @codeCoverageIgnore

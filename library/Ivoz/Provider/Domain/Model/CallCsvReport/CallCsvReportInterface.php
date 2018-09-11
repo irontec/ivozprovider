@@ -2,9 +2,10 @@
 
 namespace Ivoz\Provider\Domain\Model\CallCsvReport;
 
+use Ivoz\Core\Domain\Service\FileContainerInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface CallCsvReportInterface extends LoggableEntityInterface
+interface CallCsvReportInterface extends FileContainerInterface, LoggableEntityInterface
 {
     /**
      * @codeCoverageIgnore

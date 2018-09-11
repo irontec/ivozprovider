@@ -2,10 +2,11 @@
 
 namespace Ivoz\Provider\Domain\Model\InvoiceScheduler;
 
+use Ivoz\Core\Domain\Model\SchedulerInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Doctrine\Common\Collections\Collection;
 
-interface InvoiceSchedulerInterface extends LoggableEntityInterface
+interface InvoiceSchedulerInterface extends SchedulerInterface, LoggableEntityInterface
 {
     /**
      * @codeCoverageIgnore
