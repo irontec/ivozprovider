@@ -7,6 +7,7 @@ use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use GearmanJob;
 use Ivoz\Core\Application\Service\Assembler\DtoAssembler;
+use Ivoz\Core\Infrastructure\Domain\Service\Cgrates\ReloadService;
 use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupDto;
 use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface;
 use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupRepository;
@@ -48,9 +49,9 @@ class Rates
     protected $destinationRateGroupRepository;
 
     /**
-     * @var Client
+     * @var ReloadService
      */
-    protected $redisClient;
+    protected $reloadService;
 
     /**
      * Rates constructor.
@@ -59,20 +60,20 @@ class Rates
      * @param DestinationRateGroupRepository $destinationRateGroupRepository
      * @param EntityTools $entityTools
      * @param Logger $logger
-     * @param Client $redisClient
+     * @param ReloadService $reloadService
      */
     public function __construct(
         EntityManagerInterface $em,
         DestinationRateGroupRepository $destinationRateGroupRepository,
         EntityTools $entityTools,
         Logger $logger,
-        Client $redisClient
+        ReloadService $reloadService
     ) {
         $this->em = $em;
         $this->destinationRateGroupRepository = $destinationRateGroupRepository;
         $this->entityTools = $entityTools;
         $this->logger = $logger;
-        $this->redisClient = $redisClient;
+        $this->reloadService = $reloadService;
     }
 
     /**
@@ -104,7 +105,8 @@ class Rates
         }
 
         $destinationRateGroupId = $destinationRateGroup->getId();
-        $brandId = $destinationRateGroup->getBrand()->getId();
+        $brand = $destinationRateGroup->getBrand();
+        $brandId = $brand->getId();
 
         /** @var DestinationRateGroupDto $destinationRateGroupDto */
         $destinationRateGroupDto = $this->entityTools->entityToDto(
@@ -266,7 +268,7 @@ class Rates
                 ->entityTools
                 ->persistDto($destinationRateGroupDto, $destinationRateGroup, true);
 
-            $this->redisClient->scheduleFullReload();
+            $this->reloadService->execute($brand->getCgrTenant());
             $this->logger->debug('Importer finished successfuly');
 
         } catch (\Exception $exception) {
