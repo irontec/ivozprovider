@@ -117,7 +117,6 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
         }
 
         $datetime = new \DateTime('now');
-        $date = $datetime->format('Y-m-d');
 
         /**
          * @var ExternalCallFilterRelCalendar $externalCallFilterRelCalendar
@@ -134,7 +133,7 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
                 ->where(
                     $expressionBuilder->eq(
                         'eventDate',
-                        $date
+                        $datetime
                     )
                 );
 
@@ -184,7 +183,7 @@ class ExternalCallFilter extends ExternalCallFilterAbstract implements ExternalC
             }
         }
 
-        return $scheduleMatched;
+        return !$scheduleMatched;
     }
 
     /**

@@ -40,9 +40,19 @@ class Schedule extends ScheduleAbstract implements ScheduleInterface
                 ->format('H:i:s')
         );
 
+        $timeIn = strtotime(
+            $this->getTimeIn()
+                ->format('H:i:s')
+        );
+
+        $timeOut = strtotime(
+            $this->getTimeout()
+                ->format('H:i:s')
+        );
+
         $isInTimeRange =
-            ($time > strtotime($this->getTimeIn()))
-            && ($time < strtotime($this->getTimeout()));
+            ($time > $timeIn)
+            && ($time < $timeOut);
 
         return $isInTimeRange;
     }
