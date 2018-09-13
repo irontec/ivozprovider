@@ -63,7 +63,6 @@
         "doctrine/orm": "^2.5",
         "gesdinet/jwt-refresh-token-bundle": "^0.4.0",
         "incenteev/composer-parameter-handler": "^2.0",
-        "predis/predis": "^1.1",
         "ramsey/uuid": "^3.7",
         "symfony/monolog-bundle": "3.1.*",
         "symfony/swiftmailer-bundle": "^3.1",
