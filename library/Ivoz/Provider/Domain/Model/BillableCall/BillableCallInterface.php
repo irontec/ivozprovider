@@ -264,20 +264,20 @@ interface BillableCallInterface extends LoggableEntityInterface
     public function getDestination();
 
     /**
-     * Set ratingPlan
+     * Set ratingPlanGroup
      *
-     * @param \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan
+     * @param \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface $ratingPlanGroup
      *
      * @return self
      */
-    public function setRatingPlan(\Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan = null);
+    public function setRatingPlanGroup(\Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface $ratingPlanGroup = null);
 
     /**
-     * Get ratingPlan
+     * Get ratingPlanGroup
      *
-     * @return \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface
+     * @return \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface
      */
-    public function getRatingPlan();
+    public function getRatingPlanGroup();
 
     /**
      * Set invoice

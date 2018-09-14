@@ -93,9 +93,9 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     private $destination;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto | null
+     * @var \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupDto | null
      */
-    private $ratingPlan;
+    private $ratingPlanGroup;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\Invoice\InvoiceDto | null
@@ -141,7 +141,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
             'companyId' => 'company',
             'carrierId' => 'carrier',
             'destinationId' => 'destination',
-            'ratingPlanId' => 'ratingPlan',
+            'ratingPlanGroupId' => 'ratingPlanGroup',
             'invoiceId' => 'invoice',
             'trunksCdrId' => 'trunksCdr'
         ];
@@ -169,7 +169,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
             'company' => $this->getCompany(),
             'carrier' => $this->getCarrier(),
             'destination' => $this->getDestination(),
-            'ratingPlan' => $this->getRatingPlan(),
+            'ratingPlanGroup' => $this->getRatingPlanGroup(),
             'invoice' => $this->getInvoice(),
             'trunksCdr' => $this->getTrunksCdr()
         ];
@@ -184,7 +184,7 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
         $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
         $this->carrier = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Carrier\\Carrier', $this->getCarrierId());
         $this->destination = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Destination\\Destination', $this->getDestinationId());
-        $this->ratingPlan = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\RatingPlan\\RatingPlan', $this->getRatingPlanId());
+        $this->ratingPlanGroup = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\RatingPlanGroup\\RatingPlanGroup', $this->getRatingPlanGroupId());
         $this->invoice = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Invoice\\Invoice', $this->getInvoiceId());
         $this->trunksCdr = $transformer->transform('Ivoz\\Kam\\Domain\\Model\\TrunksCdr\\TrunksCdr', $this->getTrunksCdrId());
     }
@@ -621,23 +621,23 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto $ratingPlan
+     * @param \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupDto $ratingPlanGroup
      *
      * @return static
      */
-    public function setRatingPlan(\Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto $ratingPlan = null)
+    public function setRatingPlanGroup(\Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupDto $ratingPlanGroup = null)
     {
-        $this->ratingPlan = $ratingPlan;
+        $this->ratingPlanGroup = $ratingPlanGroup;
 
         return $this;
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto
+     * @return \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupDto
      */
-    public function getRatingPlan()
+    public function getRatingPlanGroup()
     {
-        return $this->ratingPlan;
+        return $this->ratingPlanGroup;
     }
 
     /**
@@ -645,21 +645,21 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
      *
      * @return static
      */
-    public function setRatingPlanId($id)
+    public function setRatingPlanGroupId($id)
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto($id)
+            ? new \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupDto($id)
             : null;
 
-        return $this->setRatingPlan($value);
+        return $this->setRatingPlanGroup($value);
     }
 
     /**
      * @return integer | null
      */
-    public function getRatingPlanId()
+    public function getRatingPlanGroupId()
     {
-        if ($dto = $this->getRatingPlan()) {
+        if ($dto = $this->getRatingPlanGroup()) {
             return $dto->getId();
         }
 

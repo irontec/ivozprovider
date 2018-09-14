@@ -89,9 +89,9 @@ abstract class BillableCallAbstract
     protected $destination;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface
+     * @var \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface
      */
-    protected $ratingPlan;
+    protected $ratingPlanGroup;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface
@@ -197,7 +197,7 @@ abstract class BillableCallAbstract
             ->setCompany($dto->getCompany())
             ->setCarrier($dto->getCarrier())
             ->setDestination($dto->getDestination())
-            ->setRatingPlan($dto->getRatingPlan())
+            ->setRatingPlanGroup($dto->getRatingPlanGroup())
             ->setInvoice($dto->getInvoice())
             ->setTrunksCdr($dto->getTrunksCdr())
         ;
@@ -235,7 +235,7 @@ abstract class BillableCallAbstract
             ->setCompany($dto->getCompany())
             ->setCarrier($dto->getCarrier())
             ->setDestination($dto->getDestination())
-            ->setRatingPlan($dto->getRatingPlan())
+            ->setRatingPlanGroup($dto->getRatingPlanGroup())
             ->setInvoice($dto->getInvoice())
             ->setTrunksCdr($dto->getTrunksCdr());
 
@@ -267,7 +267,7 @@ abstract class BillableCallAbstract
             ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
             ->setCarrier(\Ivoz\Provider\Domain\Model\Carrier\Carrier::entityToDto(self::getCarrier(), $depth))
             ->setDestination(\Ivoz\Provider\Domain\Model\Destination\Destination::entityToDto(self::getDestination(), $depth))
-            ->setRatingPlan(\Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan::entityToDto(self::getRatingPlan(), $depth))
+            ->setRatingPlanGroup(\Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup::entityToDto(self::getRatingPlanGroup(), $depth))
             ->setInvoice(\Ivoz\Provider\Domain\Model\Invoice\Invoice::entityToDto(self::getInvoice(), $depth))
             ->setTrunksCdr(\Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdr::entityToDto(self::getTrunksCdr(), $depth));
     }
@@ -293,7 +293,7 @@ abstract class BillableCallAbstract
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
             'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null,
             'destinationId' => self::getDestination() ? self::getDestination()->getId() : null,
-            'ratingPlanId' => self::getRatingPlan() ? self::getRatingPlan()->getId() : null,
+            'ratingPlanGroupId' => self::getRatingPlanGroup() ? self::getRatingPlanGroup()->getId() : null,
             'invoiceId' => self::getInvoice() ? self::getInvoice()->getId() : null,
             'trunksCdrId' => self::getTrunksCdr() ? self::getTrunksCdr()->getId() : null
         ];
@@ -724,27 +724,27 @@ abstract class BillableCallAbstract
     }
 
     /**
-     * Set ratingPlan
+     * Set ratingPlanGroup
      *
-     * @param \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan
+     * @param \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface $ratingPlanGroup
      *
      * @return self
      */
-    public function setRatingPlan(\Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan = null)
+    public function setRatingPlanGroup(\Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface $ratingPlanGroup = null)
     {
-        $this->ratingPlan = $ratingPlan;
+        $this->ratingPlanGroup = $ratingPlanGroup;
 
         return $this;
     }
 
     /**
-     * Get ratingPlan
+     * Get ratingPlanGroup
      *
-     * @return \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface
+     * @return \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface
      */
-    public function getRatingPlan()
+    public function getRatingPlanGroup()
     {
-        return $this->ratingPlan;
+        return $this->ratingPlanGroup;
     }
 
     /**

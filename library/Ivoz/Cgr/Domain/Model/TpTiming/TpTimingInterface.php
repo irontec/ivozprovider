@@ -141,4 +141,20 @@ interface TpTimingInterface extends EntityInterface
      * @return \DateTime
      */
     public function getCreatedAt();
+
+    /**
+     * Set ratingPlan
+     *
+     * @param \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan
+     *
+     * @return self
+     */
+    public function setRatingPlan(\Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan);
+
+    /**
+     * Get ratingPlan
+     *
+     * @return \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface
+     */
+    public function getRatingPlan();
 }
