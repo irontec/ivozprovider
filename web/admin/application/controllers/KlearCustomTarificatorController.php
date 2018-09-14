@@ -4,6 +4,7 @@ use Ivoz\Core\Infrastructure\Domain\Service\Cgrates\BillingService;
 use Ivoz\Core\Application\Service\DataGateway;
 use Ivoz\Cgr\Domain\Model\TpRatingProfile\SimulatedCall;
 use Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup;
 
 class KlearCustomTarificatorController extends Zend_Controller_Action
 {
@@ -195,17 +196,17 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
             /** @var DataGateway $dataGateway */
             $dataGateway = \Zend_Registry::get('data_gateway');
 
-            /** @var \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto[] $ratingPlans */
-            $ratingPlan = $dataGateway->find(
-                \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan::class,
-                $this->getParam('parentId')
+            $ratingPlanGroupTag = $dataGateway->remoteProcedureCall(
+                RatingPlanGroup::class,
+                $this->getParam('parentId'),
+                'getCgrTag',
+                []
             );
 
             return [
                 [
                     $callDuration,
-                    'b' . $brandId,
-                    $ratingPlan->getTag()
+                    $ratingPlanGroupTag
                 ]
             ];
         };

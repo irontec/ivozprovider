@@ -199,7 +199,7 @@ production:
           class: ui-silk-destrate
           description: _("List of %s", ngettext('Destination rate', 'Destination rates', 0))
           showOnlyIf: ${auth.brandFeatures.billing.enabled}
-        RatingPlansList:
+        RatingPlanGroupsList:
           title: ngettext('Rating plan', 'Rating plans', 0)
           class: ui-silk-money
           description: _("List of %s", ngettext('Rating plan', 'Rating plans', 0))

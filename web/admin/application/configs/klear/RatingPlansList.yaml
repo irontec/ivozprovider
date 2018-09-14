@@ -1,7 +1,5 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
-#include conf.d/documentationLink.yaml
-#include TpRatingPlansList.yaml
 
 production:
   main:
@@ -15,11 +13,6 @@ production:
       <<: *RatingPlans
       class: ui-silk-page-find
       title: _("List of %s %2s", ngettext('Rating plan', 'Rating plans', 0), "[format| (%parent%)]")
-      info:
-        <<: *documentationLink
-        href: "/doc/${lang}/brand/billing/rating_plans.html"
-      forcedValues:
-        <<: *forcedBrand
       fields: &ratingPlans_fieldsLink
         order:
           tag: true
@@ -29,7 +22,6 @@ production:
           title: _("Options")
           screens:
             ratingPlansEdit_screen: true
-            tpRatingPlansList_screen: true
           dialogs:
             ratingPlansDel_dialog: true
           default: ratingPlansEdit_screen
@@ -39,7 +31,7 @@ production:
           ratingPlansNew_screen: true
         dialogs:
           ratingPlansDel_dialog: true
-          simulateBrandPlansCall_dialog: true
+          simulateRatingPlanCall_dialog: true
 
     ratingPlansNew_screen: &ratingPlansNew_screenLink
       <<: *RatingPlans
@@ -48,16 +40,25 @@ production:
       label: true
       multiInstance: true
       title: _("Add %s", ngettext('Rating plan', 'Rating plans', 1), "[format| (%parent%)]")
-      forcedValues:
-        <<: *forcedBrand
       shortcutOption: N
-      fixedPositions: &pratingPlansFixedPositions_Link
+      fixedPositions: &ratingPlans_fixedPositionsLink
         group1:
-          colsPerRow: 9
+          colsPerRow: 4
           fields:
-            tag: 4
-            name: 5
-            description: 8
+            destinationRateGroup: 3
+            weight: 1
+        group2:
+          colsPerRow: 6
+          fields:
+            timingType: 3
+            timeIn: 3
+            monday: 1
+            tuesday: 1
+            wednesday: 1
+            thursday: 1
+            friday: 1
+            saturday: 1
+            sunday: 1
 
     ratingPlansEdit_screen: &ratingPlansEdit_screenLink
       <<: *RatingPlans
@@ -65,24 +66,8 @@ production:
       class: ui-silk-pencil
       label: false
       title: _("Edit %s %2s", ngettext('Rating plan', 'Rating plans', 1), "[format| (%item%)]")
-      forcedValues:
-        <<: *forcedBrand
       fixedPositions:
-        <<: *pratingPlansFixedPositions_Link
-
-    # tpRatingPlans:
-    <<: *tpRatingPlans_screensLink
-    tpRatingPlansList_screen:
-      <<: *tpRatingPlansList_screenLink
-      filterField: ratingPlan
-      parentOptionCustomizer:
-        - recordCount
-    tpRatingPlansNew_screen:
-      <<: *tpRatingPlansNew_screenLink
-      filterField: ratingPlan
-    tpRatingPlansEdit_screen:
-      <<: *tpRatingPlansEdit_screenLink
-      filterField: ratingPlan
+        <<: *ratingPlans_fixedPositionsLink
 
   dialogs: &ratingPlans_dialogsLink
     ratingPlansDel_dialog: &ratingPlansDel_dialogLink
@@ -96,7 +81,7 @@ production:
       multiItem: 1
       labelOnList: 1
 
-    simulateBrandPlansCall_dialog: &simulateBrandPlansCall_dialogLink
+    simulateRatingPlanCall_dialog: &simulateRatingPlanCall_dialogLink
       <<: *DestinationRates
       module: default
       title: _("Simulate a call")
@@ -106,11 +91,8 @@ production:
       labelOption: false
       labelOnEntityPostSave: false
       controller: klear-custom-tarificator
-      action: test-brand-plans
+      action: test-rating-plan
       class:  ui-silk-telephone
-
-#   tpRatingPlans dialogs:
-    <<: *tpRatingPlans_dialogsLink
 
 staging:
   _extends: production
