@@ -15,6 +15,7 @@ production:
       <<: *MediaRelaySets
       class: ui-silk-text-list-bullets
       title: _("List of %s %2s", ngettext('Media relay set', 'Media relay sets', 0), "[format| (%parent%)]")
+      rawCondition: "id != 0"
       fields: &mediaRelaySets_fieldsLink
         options:
           title: _("Options")
