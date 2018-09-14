@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "d1d41dcaacc79394c37e6ace26f2eadc",
+    "content-hash": "b22c5e3b00307c302c3a3edc0890dff8",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -1658,55 +1658,6 @@
             }
         },
         {
-            "name": "predis/predis",
-            "version": "1.1.1.0",
-            "dist": {
-                "type": "path",
-                "url": "../../library/vendor/predis/predis",
-                "reference": "f0210e38881631afeafb56ab43405a92cafd9fd1",
-                "shasum": null
-            },
-            "require": {
-                "php": ">=5.3.9"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.8"
-            },
-            "suggest": {
-                "ext-curl": "Allows access to Webdis when paired with phpiredis",
-                "ext-phpiredis": "Allows faster serialization and deserialization of the Redis protocol"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Predis\\": "src/"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Daniele Alessandri",
-                    "email": "suppakilla@gmail.com",
-                    "homepage": "http://clorophilla.net"
-                }
-            ],
-            "description": "Flexible and feature-complete Redis client for PHP and HHVM",
-            "homepage": "http://github.com/nrk/predis",
-            "keywords": [
-                "nosql",
-                "predis",
-                "redis"
-            ],
-            "support": {
-                "issues": "https://github.com/nrk/predis/issues"
-            },
-            "transport-options": {
-                "symlink": true
-            }
-        },
-        {
             "name": "psr/cache",
             "version": "1.0.1.0",
             "dist": {
@@ -2076,11 +2027,11 @@
         },
         {
             "name": "swiftmailer/swiftmailer",
-            "version": "6.1.2.0",
+            "version": "6.1.3.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/swiftmailer/swiftmailer",
-                "reference": "7d760881d266d63c5e7a1155cbcf2ac656a31ca8",
+                "reference": "8ddcb66ac10c392d3beb54829eef8ac1438595f4",
                 "shasum": null
             },
             "require": {
@@ -2565,11 +2516,11 @@
         },
         {
             "name": "symfony/swiftmailer-bundle",
-            "version": "3.2.2.0",
+            "version": "3.2.3.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/swiftmailer-bundle",
-                "reference": "f1ba0552a9cd4df0191a58845fbd5541cf9eda2d",
+                "reference": "7bd5de67552ee3f7e04df89d662d41eba346dc83",
                 "shasum": null
             },
             "require": {
@@ -2623,15 +2574,15 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "3.4.14.0",
+            "version": "3.4.15.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/symfony",
-                "reference": "f50e17fa4edd6216f7fe5b908f04e64ba1d19a9e",
+                "reference": "5bb5c2d4b0d5cf10672015b68519a199e6ac27c1",
                 "shasum": null
             },
             "require": {
-                "doctrine/common": "~2.4@stable",
+                "doctrine/common": "~2.4",
                 "ext-xml": "*",
                 "fig/link-util": "^1.0",
                 "php": "^5.5.9|>=7.0.8",
@@ -2719,7 +2670,7 @@
                 "doctrine/data-fixtures": "1.0.*",
                 "doctrine/dbal": "~2.4",
                 "doctrine/doctrine-bundle": "~1.4",
-                "doctrine/orm": "~2.4,>=2.4.5,<=2.7.0",
+                "doctrine/orm": "~2.4,>=2.4.5",
                 "egulias/email-validator": "~1.2,>=1.2.8|~2.0",
                 "monolog/monolog": "~1.11",
                 "ocramius/proxy-manager": "~0.4|~1.0|~2.0",

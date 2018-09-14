@@ -32,4 +32,13 @@ class RatingPlan extends RatingPlanAbstract implements RatingPlanInterface
             $this->getId()
         );
     }
+
+    public function getCgrTimingTag()
+    {
+        return sprintf(
+            "b%dtm%d",
+            $this->getBrand()->getId(),
+            $this->getId()
+        );
+    }
 }

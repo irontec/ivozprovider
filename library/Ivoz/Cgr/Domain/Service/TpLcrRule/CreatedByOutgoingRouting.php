@@ -45,6 +45,7 @@ class CreatedByOutgoingRouting implements OutgoingRoutingLifecycleEventHandlerIn
             return;
         }
 
+        $brand = $outgoingRouting->getBrand();
         $tpLcrRule = $outgoingRouting->getTpLcrRule();
 
         /** @var TpLcrRuleDto $tpLcrRuleDto */
@@ -53,7 +54,8 @@ class CreatedByOutgoingRouting implements OutgoingRoutingLifecycleEventHandlerIn
             : $this->entityTools->entityToDto($tpLcrRule);
 
         $tpLcrRuleDto
-            ->setTenant($outgoingRouting->getBrand()->getCgrTenant())
+            ->setTpid($brand->getCgrTenant())
+            ->setTenant($brand->getCgrTenant())
             ->setCategory($outgoingRouting->getCgrCategory())
             ->setRpCategory($outgoingRouting->getCgrRpCategory())
             ->setOutgoingRoutingId($outgoingRouting->getId());

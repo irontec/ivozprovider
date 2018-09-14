@@ -55,8 +55,8 @@ class CreatedByCarrierRatingProfile implements RatingProfileLifecycleEventHandle
             return;
         }
 
-        $outgoingRoutingRelCarrier = $carrier->getOutgoingRoutingsRelCarriers();
-        foreach ($outgoingRoutingRelCarrier as $outgoingRoutingRelCarrier) {
+        $outgoingRoutingRelCarriers = $carrier->getOutgoingRoutingsRelCarriers();
+        foreach ($outgoingRoutingRelCarriers as $outgoingRoutingRelCarrier) {
             $this->createByOutgoingRoutingRelCarrier->execute($outgoingRoutingRelCarrier);
         }
     }

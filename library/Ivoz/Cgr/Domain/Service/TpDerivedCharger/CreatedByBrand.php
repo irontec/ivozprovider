@@ -52,13 +52,9 @@ class CreatedByBrand implements BrandLifecycleEventHandlerInterface
         // Create a new TpDerivedCharger when brand is created
         $tpDerivedChargeDto = TpDerivedCharger::createDto();
         $tpDerivedChargeDto
-            ->setBrandId($brand->getId())
-            ->setTenant(
-                sprintf(
-                    "b%d",
-                    $brand->getId()
-                )
-            );
+            ->setTpid($brand->getCgrTenant())
+            ->setTenant($brand->getCgrTenant())
+            ->setBrandId($brand->getId());
 
         $this->entityTools->persistDto($tpDerivedChargeDto, null);
     }

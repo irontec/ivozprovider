@@ -406,4 +406,12 @@ class Company extends CompanyAbstract implements CompanyInterface
 
         return $this->getBrand()->getDefaultTimezone();
     }
+
+    /**
+     * @return string
+     */
+    public function getCgrSubject()
+    {
+        return sprintf("c%d", $this->getId());
+    }
 }

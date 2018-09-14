@@ -67,7 +67,6 @@
         "nelmio/cors-bundle": "^1.5",
         "php-mime-mail-parser/php-mime-mail-parser": "^2.9",
         "phpxmlrpc/phpxmlrpc": "4.0",
-        "predis/predis": "^1.1",
         "ramsey/uuid": "^3.7",
         "sensio/distribution-bundle": "5.0.*",
         "snc/redis-bundle": "2.1.*",

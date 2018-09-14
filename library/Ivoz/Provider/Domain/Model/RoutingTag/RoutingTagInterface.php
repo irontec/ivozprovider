@@ -14,6 +14,11 @@ interface RoutingTagInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @return string
+     */
+    public function getCgrSubject();
+
+    /**
      * @deprecated
      * Set name
      *

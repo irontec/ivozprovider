@@ -3,28 +3,20 @@
 namespace Ivoz\Cgr\Domain\Service\TpTiming;
 
 use Ivoz\Cgr\Domain\Model\TpTiming\TpTimingInterface;
-use Ivoz\Core\Infrastructure\Domain\Service\Redis\Client as RedisClient;
+use Ivoz\Cgr\Domain\Service\CgratesReloadNotificator;
 
-class UpdatedTpTimingNotificator implements TpTimingLifecycleEventHandlerInterface
+class UpdatedTpTimingNotificator extends CgratesReloadNotificator implements TpTimingLifecycleEventHandlerInterface
 {
-    const ON_COMMIT_PRIORITY = self::PRIORITY_NORMAL;
-
-    private $client;
-
-    public function __construct(RedisClient $client)
+    /**
+     * Reload CGRates Configuration
+     *
+     * @param TpTimingInterface $tpTiming
+     */
+    public function execute(TpTimingInterface $tpTiming)
     {
-        $this->client = $client;
-    }
-
-    public static function getSubscribedEvents()
-    {
-        return [
-            self::EVENT_ON_COMMIT => self::ON_COMMIT_PRIORITY
-        ];
-    }
-
-    public function execute(TpTimingInterface $entity)
-    {
-        $this->client->scheduleFullReload();
+        // Skip reload on timing removal
+        if ($tpTiming->getId()) {
+            $this->reload($tpTiming->getTpid());
+        }
     }
 }

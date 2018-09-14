@@ -59,7 +59,6 @@
         "doctrine/doctrine-migrations-bundle": "^1.2",
         "doctrine/orm": "^2.5",
         "graze/guzzle-jsonrpc": "3.2.*",
-        "predis/predis": "^1.1",
         "ramsey/uuid": "^3.7",
         "symfony/monolog-bundle": "3.1.*",
         "symfony/swiftmailer-bundle": "^3.1",

@@ -55,14 +55,11 @@ class CreatedByTpRatingPlan implements TpRatingPlanLifecycleEventHandlerInterfac
                 $timingDto = $timing->toDto();
             }
 
-            $timingTag = sprintf(
-                "b%dtm%d",
-                $tpRatingPlan->getRatingPlan()->getBrand()->getId(),
-                $tpRatingPlan->getId()
-            );
+            $timingTag = $tpRatingPlan->getRatingPlan()->getCgrTimingTag();
 
-            // Update/Insert endpoint data
+            // Update/Insert timing data
             $timingDto
+                ->setTpid($tpRatingPlan->getTpid())
                 ->setTag($timingTag)
                 ->setYears(TpTiming::TIMING_ANY)
                 ->setMonths(TpTiming::TIMING_ANY)

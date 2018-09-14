@@ -17,6 +17,9 @@ services:
   Ivoz\Core\Infrastructure\Domain\Service\Cgrates\BillingService:
     public: true
 
+  Ivoz\Core\Infrastructure\Domain\Service\Cgrates\ReloadService:
+    public: true
+
   Ivoz\Core\Infrastructure\Domain\Service\Cgrates\LoadTpAccountAction:  ~
   Ivoz\Cgr\Domain\Service\TpAccountAction\LoadTpAccountActionInterface:
     '@Ivoz\Core\Infrastructure\Domain\Service\Cgrates\LoadTpAccountAction'

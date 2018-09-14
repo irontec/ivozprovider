@@ -13,6 +13,8 @@ interface RatingPlanInterface extends EntityInterface
      */
     public function getCgrTag();
 
+    public function getCgrTimingTag();
+
     /**
      * Set brand
      *

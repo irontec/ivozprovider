@@ -2,45 +2,22 @@
 
 namespace Ivoz\Provider\Domain\Service\DestinationRateGroup;
 
-use Ivoz\Core\Infrastructure\Domain\Service\Redis\Client as RedisClient;
+use Ivoz\Cgr\Domain\Service\CgratesReloadNotificator;
 use Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface;
 
-class UpdatedDestinationRateGroupNotificator implements DestinationRateGroupLifecycleEventHandlerInterface
+class UpdatedDestinationRateGroupNotificator extends CgratesReloadNotificator implements DestinationRateGroupLifecycleEventHandlerInterface
 {
     /**
-     * @var RedisClient
+     * Reload CGRates Configuration
+     *
+     * @param DestinationRateGroupInterface $destinationRateGroup
      */
-    private $client;
-
-    /**
-     * UpdatedDestinationRateGroupNotificator constructor.
-     * @param RedisClient $client
-     */
-    public function __construct(RedisClient $client)
+    public function execute(DestinationRateGroupInterface $destinationRateGroup)
     {
-        $this->client = $client;
-    }
-
-    /**
-     * @return array
-     */
-    public static function getSubscribedEvents()
-    {
-        return [
-            self::EVENT_ON_COMMIT => 20
-        ];
-    }
-
-    /**
-     * @param DestinationRateGroupInterface $entity
-     */
-    public function execute(DestinationRateGroupInterface $entity)
-    {
-        $wasDeleted = is_null($entity->getId());
-        if (!$wasDeleted) {
-            return;
+        // When a destination rate group has been deleted
+        if (is_null($destinationRateGroup->getId())) {
+            $brand = $destinationRateGroup->getBrand();
+            $this->reload($brand->getCgrTenant());
         }
-
-        $this->client->scheduleFullReload();
     }
 }

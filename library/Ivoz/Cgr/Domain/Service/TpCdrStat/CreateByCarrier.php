@@ -41,27 +41,21 @@ class CreateByCarrier implements CarrierLifecycleEventHandlerInterface
             return;
         }
 
-        /** @var CarrierDto $carrierDto */
-        $carrierDto = $this->entityTools->entityToDto($carrier);
+        $brand = $carrier->getBrand();
 
-        // Create a new ACD TpCdrStat when Carrier is created
-        $CdrStatDto = TpCdrStat::createDTO();
-        $CdrStatDto
-            ->setCarrierId($carrierDto->getId())
-            ->setTag(sprintf("cr%d", $carrierDto->getId()))
-            ->setSubjects(sprintf("cr%d", $carrierDto->getId()))
-            ->setMetrics("ACD");
+        $metrics = [ 'ACD', 'ASR'];
 
-        $this->entityTools->persistDto($CdrStatDto, null);
+        foreach ($metrics as $metric) {
+            // Create a new metric TpCdrStat when Carrier is created
+            $CdrStatDto = TpCdrStat::createDTO();
+            $CdrStatDto
+                ->setTpid($brand->getCgrTenant())
+                ->setCarrierId($carrier->getId())
+                ->setTag($carrier->getCgrSubject())
+                ->setSubjects($carrier->getCgrSubject())
+                ->setMetrics($metric);
 
-        // Create a new ASR TpCdrStat when Carrier is created
-        $CdrStatDto = TpCdrStat::createDTO();
-        $CdrStatDto
-            ->setCarrierId($carrierDto->getId())
-            ->setTag(sprintf("cr%d", $carrierDto->getId()))
-            ->setSubjects(sprintf("cr%d", $carrierDto->getId()))
-            ->setMetrics("ASR");
-
-        $this->entityTools->persistDto($CdrStatDto, null);
+            $this->entityTools->persistDto($CdrStatDto);
+        }
     }
 }

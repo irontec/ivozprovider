@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "a7722906d85d318c6a03648841605e1e",
+    "content-hash": "e002db96e63f4fc2a732ea8ff66dcb46",
     "packages": [
         {
             "name": "api-platform/core",
@@ -2543,56 +2543,6 @@
             "time": "2016-01-20T23:28:09+00:00"
         },
         {
-            "name": "predis/predis",
-            "version": "v1.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nrk/predis.git",
-                "reference": "f0210e38881631afeafb56ab43405a92cafd9fd1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nrk/predis/zipball/f0210e38881631afeafb56ab43405a92cafd9fd1",
-                "reference": "f0210e38881631afeafb56ab43405a92cafd9fd1",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.9"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.8"
-            },
-            "suggest": {
-                "ext-curl": "Allows access to Webdis when paired with phpiredis",
-                "ext-phpiredis": "Allows faster serialization and deserialization of the Redis protocol"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Predis\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Daniele Alessandri",
-                    "email": "suppakilla@gmail.com",
-                    "homepage": "http://clorophilla.net"
-                }
-            ],
-            "description": "Flexible and feature-complete Redis client for PHP and HHVM",
-            "homepage": "http://github.com/nrk/predis",
-            "keywords": [
-                "nosql",
-                "predis",
-                "redis"
-            ],
-            "time": "2016-06-16T16:22:20+00:00"
-        },
-        {
             "name": "psr/cache",
             "version": "1.0.1",
             "source": {
@@ -3128,16 +3078,16 @@
         },
         {
             "name": "swiftmailer/swiftmailer",
-            "version": "v6.1.2",
+            "version": "v6.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swiftmailer/swiftmailer.git",
-                "reference": "7d760881d266d63c5e7a1155cbcf2ac656a31ca8"
+                "reference": "8ddcb66ac10c392d3beb54829eef8ac1438595f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/7d760881d266d63c5e7a1155cbcf2ac656a31ca8",
-                "reference": "7d760881d266d63c5e7a1155cbcf2ac656a31ca8",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/8ddcb66ac10c392d3beb54829eef8ac1438595f4",
+                "reference": "8ddcb66ac10c392d3beb54829eef8ac1438595f4",
                 "shasum": ""
             },
             "require": {
@@ -3183,7 +3133,7 @@
                 "mail",
                 "mailer"
             ],
-            "time": "2018-07-13T07:04:35+00:00"
+            "time": "2018-09-11T07:12:52+00:00"
         },
         {
             "name": "symfony/monolog-bundle",
@@ -3648,16 +3598,16 @@
         },
         {
             "name": "symfony/swiftmailer-bundle",
-            "version": "v3.2.2",
+            "version": "v3.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/swiftmailer-bundle.git",
-                "reference": "f1ba0552a9cd4df0191a58845fbd5541cf9eda2d"
+                "reference": "7bd5de67552ee3f7e04df89d662d41eba346dc83"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/swiftmailer-bundle/zipball/f1ba0552a9cd4df0191a58845fbd5541cf9eda2d",
-                "reference": "f1ba0552a9cd4df0191a58845fbd5541cf9eda2d",
+                "url": "https://api.github.com/repos/symfony/swiftmailer-bundle/zipball/7bd5de67552ee3f7e04df89d662d41eba346dc83",
+                "reference": "7bd5de67552ee3f7e04df89d662d41eba346dc83",
                 "shasum": ""
             },
             "require": {
@@ -3706,24 +3656,24 @@
             ],
             "description": "Symfony SwiftmailerBundle",
             "homepage": "http://symfony.com",
-            "time": "2018-04-03T16:29:41+00:00"
+            "time": "2018-08-29T08:49:17+00:00"
         },
         {
             "name": "symfony/symfony",
-            "version": "v3.4.14",
+            "version": "v3.4.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "f50e17fa4edd6216f7fe5b908f04e64ba1d19a9e"
+                "reference": "5bb5c2d4b0d5cf10672015b68519a199e6ac27c1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/f50e17fa4edd6216f7fe5b908f04e64ba1d19a9e",
-                "reference": "f50e17fa4edd6216f7fe5b908f04e64ba1d19a9e",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/5bb5c2d4b0d5cf10672015b68519a199e6ac27c1",
+                "reference": "5bb5c2d4b0d5cf10672015b68519a199e6ac27c1",
                 "shasum": ""
             },
             "require": {
-                "doctrine/common": "~2.4@stable",
+                "doctrine/common": "~2.4",
                 "ext-xml": "*",
                 "fig/link-util": "^1.0",
                 "php": "^5.5.9|>=7.0.8",
@@ -3811,7 +3761,7 @@
                 "doctrine/data-fixtures": "1.0.*",
                 "doctrine/dbal": "~2.4",
                 "doctrine/doctrine-bundle": "~1.4",
-                "doctrine/orm": "~2.4,>=2.4.5,<=2.7.0",
+                "doctrine/orm": "~2.4,>=2.4.5",
                 "egulias/email-validator": "~1.2,>=1.2.8|~2.0",
                 "monolog/monolog": "~1.11",
                 "ocramius/proxy-manager": "~0.4|~1.0|~2.0",
@@ -3861,7 +3811,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2018-08-01T14:48:04+00:00"
+            "time": "2018-08-28T06:06:28+00:00"
         },
         {
             "name": "twig/twig",
@@ -5426,16 +5376,16 @@
         },
         {
             "name": "php-pm/httpkernel-adapter",
-            "version": "1.0.3",
+            "version": "1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-pm/php-pm-httpkernel.git",
-                "reference": "305b9ab6b64b1ca5eda2b5a889bd660e5e07b0f1"
+                "reference": "6d1da1af8c68b05d6363780e7e5862dd5843caa6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-pm/php-pm-httpkernel/zipball/305b9ab6b64b1ca5eda2b5a889bd660e5e07b0f1",
-                "reference": "305b9ab6b64b1ca5eda2b5a889bd660e5e07b0f1",
+                "url": "https://api.github.com/repos/php-pm/php-pm-httpkernel/zipball/6d1da1af8c68b05d6363780e7e5862dd5843caa6",
+                "reference": "6d1da1af8c68b05d6363780e7e5862dd5843caa6",
                 "shasum": ""
             },
             "require": {
@@ -5454,7 +5404,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2018-06-25T15:14:39+00:00"
+            "time": "2018-08-24T13:56:55+00:00"
         },
         {
             "name": "php-pm/php-pm",
@@ -7381,16 +7331,16 @@
         },
         {
             "name": "symfony/phpunit-bridge",
-            "version": "v3.4.14",
+            "version": "v3.4.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/phpunit-bridge.git",
-                "reference": "4519412e6b503e3ca4ef43fb6a92b75fb5667824"
+                "reference": "f4fde1ede82c7ca2a4f06cf48521a185b26c0fed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/4519412e6b503e3ca4ef43fb6a92b75fb5667824",
-                "reference": "4519412e6b503e3ca4ef43fb6a92b75fb5667824",
+                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/f4fde1ede82c7ca2a4f06cf48521a185b26c0fed",
+                "reference": "f4fde1ede82c7ca2a4f06cf48521a185b26c0fed",
                 "shasum": ""
             },
             "require": {
@@ -7443,7 +7393,7 @@
             ],
             "description": "Symfony PHPUnit Bridge",
             "homepage": "https://symfony.com",
-            "time": "2018-07-26T11:19:56+00:00"
+            "time": "2018-08-27T15:17:06+00:00"
         },
         {
             "name": "webmozart/assert",

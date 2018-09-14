@@ -54,34 +54,27 @@ class UpdateByRatingProfile implements RatingProfileLifecycleEventHandlerInterfa
 
         // Update/Create TpRatingPorfile for this RatingProfile
         $tpRatingProfileDto
+            ->setTpid($brand->getCgrTenant())
             ->setActivationTime($ratingProfile->getActivationTime())
-            ->setTenant(sprintf("b%d", $brand->getId()))
+            ->setTenant(sprintf($brand->getCgrTenant()))
             ->setRatingPlanTag($ratingPlan->getCgrTag())
             ->setRatingProfileId($ratingProfile->getId());
 
 
         if ($company) {
-            $tpRatingProfileDto->setSubject(
-                sprintf(
-                    "c%d",
-                    $company->getId()
-                )
-            );
+            $tpRatingProfileDto->setSubject($company->getCgrSubject());
         }
 
         if ($carrier) {
             $tpRatingProfileDto
-                ->setSubject(sprintf("cr%d", $carrier->getId()))
-                ->setCdrStatQueueIds(sprintf("cr%d", $carrier->getId()));
+                ->setSubject($carrier->getCgrSubject())
+                ->setCdrStatQueueIds($carrier->getCgrSubject());
         }
 
         if ($routingTag) {
+            // Append Routing Tag subject code
             $tpRatingProfileDto->setSubject(
-                sprintf(
-                    "%srt%d",
-                    $tpRatingProfileDto->getSubject(),
-                    $routingTag->getId()
-                )
+                $tpRatingProfileDto->getSubject() . $routingTag->getCgrSubject()
             );
         }
 

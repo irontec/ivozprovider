@@ -46,6 +46,7 @@ class UpdatedByDestinationRate implements DestinationRateLifecycleEventHandlerIn
      */
     public function execute(DestinationRateInterface $destinationRate, $isNew)
     {
+        $brand = $destinationRate->getDestinationRateGroup()->getBrand();
         $tpRate = $destinationRate->getTpRate();
 
         /** @var TpRateDto $tpRateDto */
@@ -54,6 +55,7 @@ class UpdatedByDestinationRate implements DestinationRateLifecycleEventHandlerIn
             : $this->entityTools->entityToDto($tpRate);
 
         $tpRateDto
+            ->setTpid($brand->getCgrTenant())
             ->setDestinationRateId($destinationRate->getId())
             ->setTag($destinationRate->getCgrRatesTag())
             ->setConnectFee($destinationRate->getConnectFee())

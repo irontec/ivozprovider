@@ -1,7 +1,6 @@
 imports:
   - { resource: '@CoreBundle/Resources/config/services/infraestructure/gearmand.yml' }
   - { resource: '@CoreBundle/Resources/config/services/infraestructure/asterisk.yml' }
-  - { resource: '@CoreBundle/Resources/config/services/infraestructure/redis.yml' }
   - { resource: '@CoreBundle/Resources/config/services/infraestructure/doctrine.yml' }
   - { resource: '@CoreBundle/Resources/config/services/infraestructure/repositories.yml' }
   - { resource: '@CoreBundle/Resources/config/services/infraestructure/http.yml' }

@@ -24,6 +24,9 @@ services:
   Worker\Invoices:
     public: true
 
+  Worker\Cgrates:
+    public: true
+
   Worker\Xmlrpc:
     public: true
     arguments:

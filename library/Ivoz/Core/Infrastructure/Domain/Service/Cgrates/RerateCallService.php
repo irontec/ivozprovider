@@ -22,7 +22,6 @@ class RerateCallService extends AbstractApiBasedService implements RerateCallSer
 
     public function __construct(
         ClientInterface $jsonRpcClient,
-        RedisClient $redisClient,
         BillableCallRepository $billableCallRepository,
         TrunksCdrRepository $trunksCdrRepository
     ) {
@@ -30,8 +29,7 @@ class RerateCallService extends AbstractApiBasedService implements RerateCallSer
         $this->trunksCdrRepository = $trunksCdrRepository;
 
         return parent::__construct(
-            $jsonRpcClient,
-            $redisClient
+            $jsonRpcClient
         );
     }
 
