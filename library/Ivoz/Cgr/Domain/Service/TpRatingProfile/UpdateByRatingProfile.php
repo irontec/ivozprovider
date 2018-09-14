@@ -14,7 +14,7 @@ class UpdateByRatingProfile implements RatingProfileLifecycleEventHandlerInterfa
     const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
     /**
-     * @var EntityPersisterInterface
+     * @var EntityTools
      */
     protected $entityTools;
 
@@ -49,15 +49,15 @@ class UpdateByRatingProfile implements RatingProfileLifecycleEventHandlerInterfa
             $brand = $carrier->getBrand();
         }
 
-        $ratingPlan = $ratingProfile->getRatingPlan();
+        $ratingPlanGroup = $ratingProfile->getRatingPlanGroup();
         $routingTag = $ratingProfile->getRoutingTag();
 
         // Update/Create TpRatingPorfile for this RatingProfile
         $tpRatingProfileDto
             ->setTpid($brand->getCgrTenant())
             ->setActivationTime($ratingProfile->getActivationTime())
-            ->setTenant(sprintf($brand->getCgrTenant()))
-            ->setRatingPlanTag($ratingPlan->getCgrTag())
+            ->setTenant($brand->getCgrTenant())
+            ->setRatingPlanTag($ratingPlanGroup->getCgrTag())
             ->setRatingProfileId($ratingProfile->getId());
 
 

@@ -86,9 +86,13 @@ class RatingPlan extends RatingPlanAbstract implements RatingPlanInterface
      */
     public function getCgrTimingTag()
     {
+        if ($this->getTimingType() == self::TIMING_TYPE_ALWAYS) {
+            return TpTiming::TIMING_ANY;
+        }
+
         return sprintf(
             "b%dtm%d",
-            $this->getBrand()->getId(),
+            $this->getRatingPlanGroup()->getBrand()->getId(),
             $this->getId()
         );
     }

@@ -2,11 +2,12 @@
 
 namespace Ivoz\Cgr\Domain\Service\TpTiming;
 
-use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanInterface;
-use Ivoz\Cgr\Domain\Service\TpRatingPlan\TpRatingPlanLifecycleEventHandlerInterface;
 use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan;
+use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface;
+use Ivoz\Provider\Domain\Service\RatingPlan\RatingPlanLifecycleEventHandlerInterface;
 
-class DeletedByTpRatingPlan implements TpRatingPlanLifecycleEventHandlerInterface
+class DeletedByRatingPlan implements RatingPlanLifecycleEventHandlerInterface
 {
     const POST_REMOVE_PRIORITY = self::PRIORITY_NORMAL;
 
@@ -33,13 +34,14 @@ class DeletedByTpRatingPlan implements TpRatingPlanLifecycleEventHandlerInterfac
         ];
     }
 
-    public function execute(TpRatingPlanInterface $tpRatingPlan)
+    public function execute(RatingPlanInterface $ratingPlan)
     {
-        $timing = $tpRatingPlan->getTiming();
+        $tpTiming = $ratingPlan->getTpTiming();
 
-        if ($timing) {
+        // Always RatingPlans should not have TpTiming
+        if ($tpTiming && $ratingPlan->getTimingType() == RatingPlan::TIMING_TYPE_ALWAYS) {
             // Delete custom timing if exists
-            $this->entityTools->remove($tpRatingPlan->getTiming());
+            $this->entityTools->remove($tpTiming);
         }
     }
 }
