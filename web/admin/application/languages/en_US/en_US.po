@@ -1879,6 +1879,11 @@ msgid_plural "Rating plans"
 msgstr[0] "Rating plan"
 msgstr[1] "Rating plans"
 
+msgid "Rating plan group"
+msgid_plural "Rating plan groups"
+msgstr[0] "Rating plan group"
+msgstr[1] "Rating plan groups"
+
 msgid "Re metering date"
 msgstr "Re metering date"
 
@@ -2368,11 +2373,6 @@ msgstr "Timeout time"
 
 msgid "Timezone"
 msgstr "Timezone"
-
-msgid "Timing"
-msgid_plural "Timing"
-msgstr[0] "Timing"
-msgstr[1] "Timings"
 
 msgid "Timing type"
 msgstr "Timing type"

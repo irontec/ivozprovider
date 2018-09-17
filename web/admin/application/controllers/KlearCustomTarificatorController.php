@@ -3,7 +3,10 @@
 use Ivoz\Core\Infrastructure\Domain\Service\Cgrates\BillingService;
 use Ivoz\Core\Application\Service\DataGateway;
 use Ivoz\Cgr\Domain\Model\TpRatingProfile\SimulatedCall;
+use Ivoz\Provider\Domain\Model\Brand\Brand;
 use Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupDto;
+use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupsDto;
 use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup;
 
 class KlearCustomTarificatorController extends Zend_Controller_Action
@@ -79,7 +82,7 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
 
         /** @var \Ivoz\Provider\Domain\Model\Company\CompanyDto $companyDto */
         $companyDto = $dataGateway->find(
-            \Ivoz\Provider\Domain\Model\Company\Company::class,
+            Company::class,
             $this->getParam("parentId")
         );
 
@@ -96,10 +99,17 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
                 $subject .= 'rt' . $routingTag;
             }
 
+            $brandTenant = $dataGateway->remoteProcedureCall(
+                Brand::class,
+                $companyDto->getBrandId(),
+                'getCgrTenant',
+                []
+            );
+
             return [
                 [
                     $callDuration,
-                    'b' . $companyDto->getBrandId(),
+                    $brandTenant,
                     $subject
                 ]
             ];
@@ -141,28 +151,35 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
             /** @var DataGateway $dataGateway */
             $dataGateway = \Zend_Registry::get('data_gateway');
 
-            /** @var \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto[] $ratingPlans */
-            $ratingPlans = $dataGateway->findBy(
-                \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan::class,
+            /** @var RatingPlanGroupDto[] $ratingPlans */
+            $ratingPlanGroups = $dataGateway->findBy(
+                RatingPlanGroup::class,
                 [
-                    'RatingPlan.brand = :brand',
+                    'RatingPlanGroup.brand = :brand',
                     ['brand' => $brandId]
                 ]
             );
 
             $arguments = [];
-            foreach ($ratingPlans as $ratingPlan) {
+            foreach ($ratingPlanGroups as $ratingPlanGroup) {
 
                 $cgrTag = $dataGateway->remoteProcedureCall(
-                    \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan::class,
-                    $ratingPlan->getId(),
+                    RatingPlanGroup::class,
+                    $ratingPlanGroup->getId(),
                     'getCgrTag',
+                    []
+                );
+
+                $brandTenant = $dataGateway->remoteProcedureCall(
+                    Brand::class,
+                    $brandId,
+                    'getCgrTenant',
                     []
                 );
 
                 $arguments[] = [
                     $callDuration,
-                    'b' . $brandId,
+                    $brandTenant,
                     $cgrTag
                 ];
             }
@@ -203,9 +220,17 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
                 []
             );
 
+            $brandTenant = $dataGateway->remoteProcedureCall(
+                Brand::class,
+                $brandId,
+                'getCgrTenant',
+                []
+            );
+
             return [
                 [
                     $callDuration,
+                    $brandTenant,
                     $ratingPlanGroupTag
                 ]
             ];
@@ -253,7 +278,7 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
         }  catch (\Exception $e) {
             $message = $this->_helper->translate(
                 'There was an error'
-            );
+            ) . ":" .  $e->getMessage();
             $this->_helper->log("[Tarificator] error " . $message);
         }
 
@@ -388,7 +413,7 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
 
         foreach ($responses as $response) {
 
-            $ratingPlanName = $response->getRatingPlan()->getNameEn();
+            $ratingPlanName = $response->getRatingPlanGroup()->getNameEn();
 
             if ($response->getErrorMessage()) {
                 $errorMsg = '';
@@ -599,7 +624,7 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
      * @param $ratingPlanId
      * @return SimulatedCall
      */
-    private function simulateCallByRatingPlan($callDuration, $tenant, $ratingPlanId)
+    private function simulateCallByRatingPlan($callDuration, $tenant, $ratingPlanTag)
     {
         $container = \Zend_Registry::get('container');
 
@@ -608,7 +633,7 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
 
         return $billingService->simulateCallByRatingPlan(
             $tenant,
-            $ratingPlanId,
+            $ratingPlanTag,
             $this->getParam('number'),
             $callDuration
         );
