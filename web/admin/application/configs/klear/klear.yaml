@@ -390,6 +390,11 @@ production:
           title: ngettext('Fax', 'Faxes', 0)
           class: ui-silk-printer
           description: _("List of %s", ngettext('Fax', 'Faxes', 0))
+        RatingProfilesCompanyList:
+          title: ngettext('Rating Profile', 'Rating Profiles', 0)
+          class: ui-silk-money
+          description: _("List of %s", ngettext('Rating Profile', 'Rating Profiles', 0))
+          showOnlyIf: ${auth.brandFeatures.billing.enabled}
         KamUsersCdrsList:
           title: ngettext('Call registry', 'Call registries', 1)
           class: ui-silk-application-view-list

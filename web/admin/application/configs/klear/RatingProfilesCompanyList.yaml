@@ -1,0 +1,43 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+#include RatingProfilesList.yaml
+
+production:
+  main:
+    module: klearMatrix
+    defaultScreen: ratingProfilesList_screen
+
+  screens:
+    <<: *ratingProfiles_screensLink
+    ratingProfilesList_screen:
+      <<: *ratingProfilesList_screenLink
+      forcedValues:
+        <<: *forcedCompany
+      fields:
+        <<: *ratingProfiles_fieldsLink
+        options:
+          title: _("Options")
+          commands:
+            exportRatingPlansToCsv_command: true
+      options:
+        title: _("Options")
+        dialogs:
+          simulateCall_dialog: true
+
+  dialogs:
+    <<: *ratingProfiles_dialogsLink
+    simulateCall_dialog:
+      <<: *simulateCall_dialogLink
+      forcedValues:
+        parentId: ${auth.companyId}
+  commands:
+    <<: *ratingProfiles_commandLink
+
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production
