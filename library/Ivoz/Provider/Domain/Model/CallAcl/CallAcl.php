@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Model\CallAcl;
 
+use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchList;
 use Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchListInterface;
 
