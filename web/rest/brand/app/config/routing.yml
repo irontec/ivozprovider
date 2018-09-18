@@ -20,3 +20,15 @@ api_user_login:
 gesdinet_jwt_refresh_token:
   path:     /api/token/refresh
   defaults: { _controller: gesdinet.jwtrefreshtoken:refresh }
+
+###############################
+## Custom routes
+###############################
+get_my_rating_plan_prices:
+  path: '/my/rating_plan_prices'
+  methods: ['GET']
+  defaults:
+    _controller: Controller\My\RatingPlanPricesAction
+    _api_resource_class: 'Model\RatingPlanPrices'
+    _api_collection_operation_name: 'get_my_rating_plan_prices'
+    _api_receive: false

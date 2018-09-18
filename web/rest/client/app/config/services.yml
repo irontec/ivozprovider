@@ -16,80 +16,9 @@ services:
       $decoratedNormalizer:
         '@Service\AuthEndpointDecorator.inner'
 
-  #########################
-  ## Controller actions
-  #########################
-  Controller\My\StatusAction:
-    public: true
-    arguments:
-      $tokenStorage: '@security.token_storage'
-      $usersLocationRepository:
-        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Kam\\Domain\\Model\\UsersLocation\\UsersLocation")'
-
-  Controller\My\ProfileAction:
-    public: true
-    arguments:
-      $tokenStorage: '@security.token_storage'
-
-  Controller\My\PutProfileAction:
-    public: true
-    arguments:
-      $tokenStorage: '@security.token_storage'
-      $requestStack: '@request_stack'
-
-  Controller\My\CompanyVoicemailsAction:
-    public: true
-    arguments:
-      $tokenStorage: '@security.token_storage'
-      $userRepository:
-        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\User\\User")'
-
-  Controller\My\CompanyAssistantsAction:
-    public: true
-    arguments:
-      $tokenStorage: '@security.token_storage'
-      $userRepository:
-        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\User\\User")'
-
-  Controller\My\CompanyExtensionsAction:
-    public: true
-    arguments:
-      $tokenStorage: '@security.token_storage'
-      $extensionRepository:
-        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\Extension\\Extension")'
-
-  Controller\My\CallStatsAction:
-    public: true
-    arguments:
-      $tokenStorage: '@security.token_storage'
-      $callForwardSettingRepository:
-        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\CallForwardSetting\\CallForwardSetting")'
-      $usersCdrRepository:
-        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Kam\\Domain\\Model\\UsersCdr\\UsersCdr")'
-
-  Controller\My\WebThemeAction:
-    public: true
-    arguments:
-      $brandUrlRepository:
-        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\BrandUrl\\BrandUrl")'
-
-  Controller\My\CallForwardSettingsAction:
-    public: true
-    arguments:
-      $tokenStorage: '@security.token_storage'
-      $callForwardSettingRepository:
-        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Provider\\Domain\\Model\\CallForwardSetting\\CallForwardSetting")'
-
-  Controller\My\PostCallForwardSettingsAction:
-    public: true
-    arguments:
-      $tokenStorage: '@security.token_storage'
-      $requestStack: '@request_stack'
-
-  Controller\My\CallHistoryAction:
-    public: true
-    arguments:
-      $tokenStorage: '@security.token_storage'
-      $collectionExtensions: '@Ivoz\Api\Doctrine\Orm\Extension\CollectionExtensionList'
-      $usersCdrRepository:
-        '@=service("doctrine.orm.entity_manager").getRepository("Ivoz\\Kam\\Domain\\Model\\UsersCdr\\UsersCdr")'
+  #######################################
+  ## Controllers
+  #######################################
+  Controller\My\:
+    resource: '../../src/Controller/My/*'
+    tags: ['controller.service_arguments']
