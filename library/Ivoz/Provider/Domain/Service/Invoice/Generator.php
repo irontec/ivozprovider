@@ -6,10 +6,10 @@ use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;
 use Ivoz\Provider\Domain\Model\Destination\DestinationDto;
-use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceRepository;
 use Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplate;
+use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupDto;
 use Knp\Snappy\Pdf;
 use Handlebars\Handlebars;
 use Monolog\Logger;
@@ -250,14 +250,14 @@ class Generator
                 $callData['pricingPlan'] = [];
                 $callData['targetPattern'] = [];
 
-                $ratingPlan = $call->getRatingPlan();
-                if ($ratingPlan) {
-                    /** @var RatingPlanDto $ratingPlanDto */
-                    $ratingPlanDto = $this->entityTools->entityToDto($ratingPlan);
+                $ratingPlanGroup = $call->getRatingPlanGroup();
+                if ($ratingPlanGroup) {
+                    /** @var RatingPlanGroupDto $ratingPlanGroupDto */
+                    $ratingPlanGroupDto = $this->entityTools->entityToDto($ratingPlanGroup);
 
-                    $callData['pricingPlan'] = $ratingPlanDto->toArray();
-                    $callData['pricingPlan']['name'] = $ratingPlan->getName()->{'get' . $lang}();
-                    $callData['pricingPlan']['description'] = $ratingPlan->getDescription()->{'get' . $lang}();
+                    $callData['pricingPlan'] = $ratingPlanGroupDto->toArray();
+                    $callData['pricingPlan']['name'] = $ratingPlanGroup->getName()->{'get' . $lang}();
+                    $callData['pricingPlan']['description'] = $ratingPlanGroup->getDescription()->{'get' . $lang}();
                 } else {
                     $callData['pricingPlan']['name'] = $call->getRatingPlanName();
                     $callData['pricingPlan']['description'] = '';

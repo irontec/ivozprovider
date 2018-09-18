@@ -3,8 +3,10 @@
 namespace Ivoz\Cgr\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\NoResultException;
 use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanRepository;
 use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlan;
+use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -18,5 +20,26 @@ class TpRatingPlanDoctrineRepository extends ServiceEntityRepository implements 
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, TpRatingPlan::class);
+    }
+
+    /**
+     * @param string $tag
+     * @return RatingPlanInterface | null
+     */
+    public function findOneByTag(string $tag)
+    {
+        $qb = $this
+            ->createQueryBuilder('self')
+            ->where('self.tag = :tag')
+            ->setParameter('tag', $tag);
+
+        try {
+            return $qb
+                ->getQuery()
+                ->getSingleResult();
+        } catch (NoResultException $error) {
+        }
+
+        return null;
     }
 }

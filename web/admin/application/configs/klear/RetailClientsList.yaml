@@ -235,7 +235,7 @@ production:
       title: _("Edit %s %2s", ngettext('Company admin', 'Company admins', 1), "[format| (%item%)]")
       filterField: Company
 
-    # tpRatingPlan:
+    # Rating Plan:
     <<: *ratingProfiles_screensLink
     ratingProfilesList_screen:
       <<: *ratingProfilesList_screenLink

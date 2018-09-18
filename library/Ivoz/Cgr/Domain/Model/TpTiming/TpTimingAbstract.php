@@ -56,6 +56,11 @@ abstract class TpTimingAbstract
      */
     protected $createdAt;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface
+     */
+    protected $ratingPlan;
+
 
     use ChangelogTrait;
 
@@ -156,6 +161,7 @@ abstract class TpTimingAbstract
 
         $self
             ->setTag($dto->getTag())
+            ->setRatingPlan($dto->getRatingPlan())
         ;
 
         $self->sanitizeValues();
@@ -183,7 +189,8 @@ abstract class TpTimingAbstract
             ->setMonthDays($dto->getMonthDays())
             ->setWeekDays($dto->getWeekDays())
             ->setTime($dto->getTime())
-            ->setCreatedAt($dto->getCreatedAt());
+            ->setCreatedAt($dto->getCreatedAt())
+            ->setRatingPlan($dto->getRatingPlan());
 
 
 
@@ -205,7 +212,8 @@ abstract class TpTimingAbstract
             ->setMonthDays(self::getMonthDays())
             ->setWeekDays(self::getWeekDays())
             ->setTime(self::getTime())
-            ->setCreatedAt(self::getCreatedAt());
+            ->setCreatedAt(self::getCreatedAt())
+            ->setRatingPlan(\Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan::entityToDto(self::getRatingPlan(), $depth));
     }
 
     /**
@@ -221,7 +229,8 @@ abstract class TpTimingAbstract
             'month_days' => self::getMonthDays(),
             'week_days' => self::getWeekDays(),
             'time' => self::getTime(),
-            'created_at' => self::getCreatedAt()
+            'created_at' => self::getCreatedAt(),
+            'ratingPlanId' => self::getRatingPlan() ? self::getRatingPlan()->getId() : null
         ];
     }
     // @codeCoverageIgnoreStart
@@ -452,6 +461,30 @@ abstract class TpTimingAbstract
     public function getCreatedAt()
     {
         return $this->createdAt;
+    }
+
+    /**
+     * Set ratingPlan
+     *
+     * @param \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan
+     *
+     * @return self
+     */
+    public function setRatingPlan(\Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan)
+    {
+        $this->ratingPlan = $ratingPlan;
+
+        return $this;
+    }
+
+    /**
+     * Get ratingPlan
+     *
+     * @return \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface
+     */
+    public function getRatingPlan()
+    {
+        return $this->ratingPlan;
     }
 
     // @codeCoverageIgnoreEnd

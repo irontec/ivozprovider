@@ -1,4 +1,4 @@
-Ivoz\Provider\Domain\Model\RatingPlan\Description:
+Ivoz\Provider\Domain\Model\RatingPlanGroup\Description:
   type: embeddable
   fields:
     en:

@@ -269,7 +269,7 @@ production:
       title: _("Edit %s %2s", ngettext('Wholesale Address', 'Wholesale Addresses', 1), "[format| (%item%)]")
       filterField: Company
 
-    # ratingPlan:
+    # Rating Profile:
     <<: *ratingProfiles_screensLink
     ratingProfilesList_screen:
       <<: *ratingProfilesList_screenLink

@@ -1,22 +1,84 @@
 Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanAbstract:
   type: mappedSuperclass
-  embedded:
-    name:
-      class: Name
-      columnPrefix: false
-    description:
-      class: Description
-      columnPrefix: false
+  fields:
+    weight:
+      type: decimal
+      nullable: false
+      precision: 8
+      scale: 2
+      options:
+        fixed: false
+        default: 10
+    timingType:
+      type: string
+      nullable: true
+      length: 10
+      options:
+        fixed: false
+        comment: '[enum:always|custom]'
+        default: 'always'
+      column: timing_type
+    timeIn:
+      type: time
+      nullable: false
+      column: time_in
+    monday:
+      type: boolean
+      nullable: true
+      options:
+        default: '1'
+    tuesday:
+      type: boolean
+      nullable: true
+      options:
+        default: '1'
+    wednesday:
+      type: boolean
+      nullable: true
+      options:
+        default: '1'
+    thursday:
+      type: boolean
+      nullable: true
+      options:
+        default: '1'
+    friday:
+      type: boolean
+      nullable: true
+      options:
+        default: '1'
+    saturday:
+      type: boolean
+      nullable: true
+      options:
+        default: '1'
+    sunday:
+      type: boolean
+      nullable: true
+      options:
+        default: '1'
   manyToOne:
-    brand:
-      targetEntity: \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+    ratingPlanGroup:
+      targetEntity: \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface
       cascade: {  }
       fetch: LAZY
       mappedBy: null
       inversedBy: null
       joinColumns:
-        brandId:
-          referencedColumnName: id
+        ratingPlanGroupId:
           nullable: false
+          referencedColumnName: id
+          onDelete: cascade
+      orphanRemoval: false
+    destinationRateGroup:
+      targetEntity: \Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        destinationRateGroupId:
+          nullable: false
+          referencedColumnName: id
           onDelete: cascade
       orphanRemoval: false

@@ -259,6 +259,8 @@ doctrine:
         Ivoz\Provider\Domain\Model\Destination\Destination
       Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface:
         Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan
+      Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface:
+        Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup
       Ivoz\Cgr\Domain\Model\TpAccount\TpAccountInterface:
         Ivoz\Cgr\Domain\Model\TpAccount\TpAccount
       Ivoz\Cgr\Domain\Model\TpCdr\TpCdrInterface:

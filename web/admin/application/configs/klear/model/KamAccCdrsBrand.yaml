@@ -161,19 +161,19 @@ production:
         control: datetime
         settings:
           disabled: 'false'
-    ratingPlan:
+    ratingPlanGroup:
       title: ngettext('Rating plan', 'Rating plans', 1)
       type: select
       source:
         data: mapper
         config:
-          entity: \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan
+          entity: \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup
           fieldName: 
             fields: 
               - name
             template: '%name%'
           order:
-            RatingPlan.name.${lang}: asc
+            RatingPlanGroup.name.${lang}: asc
         'null': _("Unassigned")
     price:
       title: ngettext('Price', 'Prices', 1)

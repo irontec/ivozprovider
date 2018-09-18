@@ -114,14 +114,14 @@ Ivoz\Provider\Domain\Model\BillableCall\BillableCallAbstract:
           nullable: true
           onDelete: set null
       orphanRemoval: false
-    ratingPlan:
-      targetEntity: \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface
+    ratingPlanGroup:
+      targetEntity: \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface
       cascade: {  }
       fetch: LAZY
       mappedBy: null
       inversedBy: null
       joinColumns:
-        ratingPlanId:
+        ratingPlanGroupId:
           referencedColumnName: id
           nullable: true
           onDelete: set null

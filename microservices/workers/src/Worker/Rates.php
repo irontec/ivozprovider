@@ -211,8 +211,8 @@ class Rates
              * Create any missing tp_destinations from Destination table
              */
             $this->logger->debug('About to insert tp_destinations');
-            $tpDestinationInsert = 'INSERT IGNORE INTO tp_destinations (tag, prefix, destinationId)
-                        SELECT CONCAT("b", brandId, "dst", id), prefix, id FROM Destinations';
+            $tpDestinationInsert = 'INSERT IGNORE INTO tp_destinations (tpid, tag, prefix, destinationId)
+                        SELECT CONCAT("b", brandId), CONCAT("b", brandId, "dst", id), prefix, id FROM Destinations';
             $this->em->getConnection()->executeQuery($tpDestinationInsert);
 
             /**
@@ -237,8 +237,8 @@ class Rates
              */
             $this->logger->debug('About to insert tp_rates');
             $tpRatesInsert = "INSERT INTO tp_rates
-                          (tag, rate, connect_fee, rate_increment, group_interval_start, destinationRateId)
-                        SELECT CONCAT('b', DRG.brandId, 'rt', DR.id), rate, connectFee, rateIncrement, groupIntervalStart, DR.id
+                          (tpid, tag, rate, connect_fee, rate_increment, group_interval_start, destinationRateId)
+                        SELECT CONCAT('b', DRG.brandId), CONCAT('b', DRG.brandId, 'rt', DR.id), rate, connectFee, rateIncrement, groupIntervalStart, DR.id
                           FROM DestinationRates DR
                           INNER JOIN DestinationRateGroups DRG ON DRG.id = DR.destinationRateGroupId
                           WHERE DRG.id = $destinationRateGroupId
@@ -253,8 +253,8 @@ class Rates
              * Update tp_destination_rates with each DestinationRates row
              */
             $this->logger->debug('About to update tp_destination_rates');
-            $tpDestinationRatesInsert = "INSERT IGNORE tp_destination_rates (tag, destinations_tag, rates_tag, destinationRateId)
-                        SELECT CONCAT('b', DRG.brandId, 'dr', DRG.id), CONCAT('b', DRG.brandId, 'dst', DR.destinationId),
+            $tpDestinationRatesInsert = "INSERT IGNORE tp_destination_rates (tpid, tag, destinations_tag, rates_tag, destinationRateId)
+                        SELECT CONCAT('b', DRG.brandId), CONCAT('b', DRG.brandId, 'dr', DRG.id), CONCAT('b', DRG.brandId, 'dst', DR.destinationId),
                          CONCAT('b', DRG.brandId, 'rt', DR.id), DR.id
                           FROM DestinationRates DR
                           INNER JOIN DestinationRateGroups DRG ON DRG.id = DR.destinationRateGroupId

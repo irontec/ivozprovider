@@ -62,13 +62,13 @@ class BillingService implements BillingServiceInterface
      * Simulate call and get billing details
      *
      * @param string $tenant
-     * @param string $subject
+     * @param string $ratingPlanTag
+     * @param string $destination
      * @param int $durationSeconds
      *
-     * @throws \DomainException
      * @return SimulatedCall
      */
-    public function simulateCallByRatingPlan(string $tenant, string $ratingPlan, string $destination, int $durationSeconds)
+    public function simulateCallByRatingPlan(string $tenant, string $ratingPlanTag, string $destination, int $durationSeconds)
     {
         $answerDateTime = new \DateTime();
         $answerDateTime->setTimestamp(time());
@@ -76,7 +76,7 @@ class BillingService implements BillingServiceInterface
 
         $payload = [
             'Tenant' => $tenant,
-            'RatingPlanId' => $ratingPlan,
+            'RatingPlanId' => $ratingPlanTag,
             'Category' => 'call',
             'AnswerTime' => $answerDateTime->format('Y-m-d\TH:i:s\Z'),
             'Destination' => $destination,

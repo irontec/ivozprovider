@@ -1902,6 +1902,11 @@ msgid_plural "Rating plans"
 msgstr[0] "Plan de precio"
 msgstr[1] "Planes de precios"
 
+msgid "Rating plan group"
+msgid_plural "Rating plan groups"
+msgstr[0] "Grupo de planes de precio"
+msgstr[1] "Grupos de planes de precio"
+
 msgid "Re metering date"
 msgstr "Fecha de retarificación"
 
@@ -2394,11 +2399,6 @@ msgstr "Timeout"
 
 msgid "Timezone"
 msgstr "Zona Horaria"
-
-msgid "Timing"
-msgid_plural "Timing"
-msgstr[0] "Timing"
-msgstr[1] "Timings"
 
 msgid "Timing type"
 msgstr "Tipo de timing"

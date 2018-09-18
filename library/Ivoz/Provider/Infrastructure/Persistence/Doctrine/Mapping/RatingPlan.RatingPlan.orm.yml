@@ -1,7 +1,6 @@
 Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan:
   repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\RatingPlanDoctrineRepository
   type: entity
-  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: RatingPlans
   id:
     id:
@@ -12,3 +11,12 @@ Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan:
       id: true
       generator:
         strategy: IDENTITY
+  oneToOne:
+    tpTiming:
+      targetEntity: Ivoz\Cgr\Domain\Model\TpTiming\TpTimingInterface
+      mappedBy: ratingPlan
+      fetch: LAZY
+    tpRatingPlan:
+      targetEntity: Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanInterface
+      mappedBy: ratingPlan
+      fetch: LAZY

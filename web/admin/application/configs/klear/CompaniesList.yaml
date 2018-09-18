@@ -291,7 +291,7 @@ production:
       forcedValues:
         <<: *forcedBrand
 
-    # ratingPlan:
+    # Rating Profiles:
     <<: *ratingProfiles_screensLink
     ratingProfilesList_screen:
       <<: *ratingProfilesList_screenLink

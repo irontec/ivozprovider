@@ -66,3 +66,16 @@ Ivoz\Cgr\Domain\Model\TpTiming\TpTimingAbstract:
       options:
         default: CURRENT_TIMESTAMP
       column: created_at
+  oneToOne:
+    ratingPlan:
+      targetEntity: \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: tpTiming
+      joinColumns:
+        ratingPlanId:
+          nullable: false
+          referencedColumnName: id
+          onDelete: cascade
+      orphanRemoval: false
