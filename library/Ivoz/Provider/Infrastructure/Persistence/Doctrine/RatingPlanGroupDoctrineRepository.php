@@ -15,8 +15,117 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class RatingPlanGroupDoctrineRepository extends ServiceEntityRepository implements RatingPlanGroupRepository
 {
+    const TIME_FORMAT = 'H:i:s';
+
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, RatingPlanGroup::class);
+    }
+
+    /**
+     * @param $ratingPlanGroupId
+     * @return \Generator
+     */
+    public function getAllRatesByRatingPlanId($ratingPlanGroupId, $batchSize = 10000, callable $queryModifier = null)
+    {
+        $qb = $this->preparePricesQuery(
+            $ratingPlanGroupId
+        );
+
+        if ($queryModifier) {
+            $queryModifier($qb);
+        }
+
+        $currentPrefix = null;
+        $rateWindows = [];
+
+        $currentPage = 1;
+        $continue =  true;
+        while ($continue) {
+            $qb
+                ->setMaxResults($batchSize)
+                ->setFirstResult(($currentPage -1) * $batchSize);
+
+            $query = $qb->getQuery();
+            $results = $query->getResult();
+            $continue = count($results) === $batchSize;
+            $currentPage++;
+
+            $results = $this->cleanUpResults(
+                $results,
+                $currentPrefix,
+                $rateWindows
+            );
+
+            yield $results;
+        }
+    }
+
+    /**
+     * @param $ratingPlanId
+     * @param callable $queryModifier
+     * @return \Doctrine\ORM\QueryBuilder
+     */
+    private function preparePricesQuery($ratingPlanId): \Doctrine\ORM\QueryBuilder
+    {
+        $selectFields = [
+            'self.name.en as ratingPlan',
+            'RP.weight as weight',
+            'D.name.en as name',
+            'D.prefix as prefix',
+            'DR.connectFee as connectFee',
+            'DR.cost as cost',
+            'DR.rateIncrement as rateIncrement',
+            'DR.groupIntervalStart as groupIntervalStart',
+            'RP.timeIn as timeIn',
+            'CONCAT(RP.monday, RP.tuesday, RP.wednesday, RP.thursday, RP.friday, RP.saturday, RP.sunday) as days'
+        ];
+
+        $qb = $this
+            ->createQueryBuilder('self')
+            ->select(implode(', ', $selectFields))
+            ->innerJoin('self.ratingPlan', 'RP')
+            ->innerJoin('RP.destinationRateGroup', 'DRG')
+            ->innerJoin('DRG.destinationRates', 'DR')
+            ->innerJoin('DR.destination', 'D')
+            ->where('self.id = :id')
+            ->setParameter('id', $ratingPlanId)
+            ->orderBy('name')
+            ->addOrderBy('prefix')
+            ->addOrderBy('weight', 'DESC');
+
+        return $qb;
+    }
+
+    /**
+     * @param $results
+     * @param string|null $currentPrefix
+     * @param array $rateWindows
+     * @return mixed
+     */
+    private function cleanUpResults($results, string &$currentPrefix = null, array &$rateWindows)
+    {
+        foreach ($results as $key => $item) {
+            $item['timeIn'] = $item['timeIn']->format(self::TIME_FORMAT);
+            $results[$key]['timeIn'] = $item['timeIn'];
+
+            if ($currentPrefix !== $item['prefix']) {
+                $currentPrefix = $item['prefix'];
+                $rateWindows = [];
+            }
+
+            $currentWindow = $item['timeIn'] . $item['days'];
+
+            if (array_key_exists($currentWindow, $rateWindows)
+                && ($rateWindows[$currentWindow] > $item['weight'])
+            ) {
+                unset($results[$key]);
+                continue;
+            }
+
+            $rateWindows[$currentWindow] = $item['weight'];
+        }
+
+        return $results;
     }
 }

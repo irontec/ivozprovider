@@ -10,6 +10,8 @@ class RestClient
 
     const BILLABLE_CALL_ENDPOINT = '/billable_calls';
 
+    const RATING_PLANS_ENDPOINT = '/my/rating_plan_prices';
+
     /**
      * @var string
      */
@@ -70,7 +72,6 @@ class RestClient
         }
     }
 
-
     private static function sendRequest($url, $options)
     {
         $options[CURLOPT_URL] = $url;
@@ -86,11 +87,13 @@ class RestClient
         return $response;
     }
 
-    protected static function getBaseUrl()
+    protected static function getBaseUrl($api = 'platform')
     {
         return 'https://'
             . $_SERVER['SERVER_NAME']
-            . '/api/platform/'
+            . '/api/'
+            . $api
+            . '/'
             . basename($_SERVER['SCRIPT_FILENAME']);
     }
 
@@ -126,6 +129,29 @@ class RestClient
             );
         } catch (\Exception $e) {
             throw new \DomainException('Unable to get Billable Calls', 0, $e);
+        }
+    }
+
+    public function getRatingPlans($ratingPlanId = 1)
+    {
+        $apiEndpoint =
+            self::getBaseUrl('brand')
+            . self::RATING_PLANS_ENDPOINT
+            . '?id=' . $ratingPlanId;
+
+        $options = self::getBaseRequestOptions();
+        $options[CURLOPT_HTTPHEADER] = [
+            "Accept: text/csv, text/json"
+        ];
+
+        try {
+            return $this->request(
+                $apiEndpoint,
+                $options
+            );
+
+        } catch (\Exception $e) {
+            throw new \DomainException('Unable to get Rating Plans', 0, $e);
         }
     }
 
