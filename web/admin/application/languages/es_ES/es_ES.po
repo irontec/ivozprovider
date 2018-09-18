@@ -150,12 +150,6 @@ msgstr ""
 msgid "Announce"
 msgstr "Anuncio"
 
-#, python-format
-msgid "Answer-Seizure Ratio: <a href='%s' target='_blank' >more info</a>"
-msgstr ""
-"Tasa de llamadas contestadas (Answer-Seizure Ratio): <a href='%s' "
-"target='_blank' >más información</a>"
-
 msgid "Antiflood trusted IP"
 msgid_plural "Antiflood trusted IPs"
 msgstr[0] "IP de confianza"
@@ -213,12 +207,6 @@ msgstr[1] "Redes autorizadas"
 
 msgid "Automatic creation of rules"
 msgstr "Creación automática de reglas"
-
-#, python-format
-msgid "Average Call Duration: <a href='%s' target='_blank' >more info</a>"
-msgstr ""
-"Duración media de llamada (Average Call Duration): <a href='%s' "
-"target='_blank' >más información</a>"
 
 msgid "Balance"
 msgstr "Saldo"
@@ -1337,7 +1325,7 @@ msgstr ""
 "permitir este valor."
 
 msgid "Mail address where this notification will be sent"
-msgstr ""
+msgstr "Dirección donde esta notificación será enviada"
 
 msgid "Main Settings"
 msgstr "Configuración principal"
@@ -2345,6 +2333,8 @@ msgid ""
 "This importer expects values to be within quotation marks and separated by "
 "semicolons."
 msgstr ""
+"Este importador espera los valores entrecomillados y separados por punto y "
+"coma."
 
 msgid ""
 "This prefix will be added to the callee after carrier's numeric "
@@ -2433,6 +2423,7 @@ msgid ""
 "invoices issued: eg 'registered in the commercial register of bizkaia, tome "
 "xxxx, book and, folio zzz, sheet aa-bbbb'"
 msgstr ""
+"Información de facturación que será includida en las facturas generadas."
 
 msgid "Transformation Rule"
 msgid_plural "Transformation Rules"
@@ -2709,12 +2700,6 @@ msgstr "Codificando"
 
 msgid "error"
 msgstr "Error"
-
-msgid "https://en.wikipedia.org/wiki/Answer-seizure_ratio"
-msgstr ""
-
-msgid "https://en.wikipedia.org/wiki/Average_call_duration"
-msgstr ""
 
 msgid "ignore"
 msgstr "ignorar"
