@@ -94,7 +94,7 @@ production:
         type: box
         position: left
         icon: help
-        text: _("Average Call Duration: <a href='%s' target='_blank' >more info</a>", _("https://en.wikipedia.org/wiki/Average_call_duration"))
+        text: "<a href='https://en.wikipedia.org/wiki/Average_call_duration' target='_blank'>Average Call Duration</a>"
         label: _("Need help?")
     asr:
       title: _('ASR')
@@ -107,7 +107,7 @@ production:
         type: box
         position: left
         icon: help
-        text: _("Answer-Seizure Ratio: <a href='%s' target='_blank' >more info</a>", _("https://en.wikipedia.org/wiki/Answer-seizure_ratio"))
+        text: "<a href='https://en.wikipedia.org/wiki/Answer-seizure_ratio' target='_blank'>Answer-Seizure Ratio</a>"
         label: _("Need help?")
 staging:
   _extends: production

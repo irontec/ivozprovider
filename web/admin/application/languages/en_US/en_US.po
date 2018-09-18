@@ -145,10 +145,6 @@ msgstr "An error occurred: check files format and content."
 msgid "Announce"
 msgstr "Announce"
 
-#, python-format
-msgid "Answer-Seizure Ratio: <a href='%s' target='_blank' >more info</a>"
-msgstr ""
-
 msgid "Antiflood trusted IP"
 msgid_plural "Antiflood trusted IPs"
 msgstr[0] "Antiflood trusted IP"
@@ -206,10 +202,6 @@ msgstr[1] "Authorized sources"
 
 msgid "Automatic creation of rules"
 msgstr "Automatic creation of rules"
-
-#, python-format
-msgid "Average Call Duration: <a href='%s' target='_blank' >more info</a>"
-msgstr ""
 
 msgid "Balance"
 msgstr "Balance"
@@ -1316,7 +1308,7 @@ msgstr ""
 "Mail address shown as source when sending mails. MTA must allow this value."
 
 msgid "Mail address where this notification will be sent"
-msgstr ""
+msgstr "Mail address where this notification will be sent"
 
 msgid "Main Settings"
 msgstr "Main Settings"
@@ -2316,6 +2308,8 @@ msgid ""
 "This importer expects values to be within quotation marks and separated by "
 "semicolons."
 msgstr ""
+"This importer expects values to be within quotation marks and separated by "
+"semicolons."
 
 msgid ""
 "This prefix will be added to the callee after carrier's numeric "
@@ -2518,8 +2512,8 @@ msgstr "View Outgoing %s %s"
 
 msgid "Virtual PBX"
 msgid_plural "Virtual PBXs"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Virtual PBX"
+msgstr[1] "Virtual PBXs"
 
 msgid "Voicemail"
 msgid_plural "Voicemails"
@@ -2673,12 +2667,6 @@ msgstr "encoding"
 
 msgid "error"
 msgstr "error"
-
-msgid "https://en.wikipedia.org/wiki/Answer-seizure_ratio"
-msgstr ""
-
-msgid "https://en.wikipedia.org/wiki/Average_call_duration"
-msgstr ""
 
 msgid "ignore"
 msgstr "ignore"
