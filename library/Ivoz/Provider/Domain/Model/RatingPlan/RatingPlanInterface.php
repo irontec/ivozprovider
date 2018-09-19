@@ -204,7 +204,7 @@ interface RatingPlanInterface extends EntityInterface
      *
      * @return self
      */
-    public function setRatingPlanGroup(\Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface $ratingPlanGroup);
+    public function setRatingPlanGroup(\Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface $ratingPlanGroup = null);
 
     /**
      * Get ratingPlanGroup

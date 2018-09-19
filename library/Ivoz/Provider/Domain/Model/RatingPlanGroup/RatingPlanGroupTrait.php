@@ -3,6 +3,9 @@
 namespace Ivoz\Provider\Domain\Model\RatingPlanGroup;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Criteria;
 
 /**
  * RatingPlanGroupTrait
@@ -15,6 +18,11 @@ trait RatingPlanGroupTrait
      */
     protected $id;
 
+    /**
+     * @var Collection
+     */
+    protected $ratingPlan;
+
 
     /**
      * Constructor
@@ -22,6 +30,7 @@ trait RatingPlanGroupTrait
     protected function __construct()
     {
         parent::__construct(...func_get_args());
+        $this->ratingPlan = new ArrayCollection();
     }
 
     /**
@@ -35,7 +44,9 @@ trait RatingPlanGroupTrait
          * @var $dto RatingPlanGroupDto
          */
         $self = parent::fromDto($dto);
-
+        if ($dto->getRatingPlan()) {
+            $self->replaceRatingPlan($dto->getRatingPlan());
+        }
         if ($dto->getId()) {
             $self->id = $dto->getId();
             $self->initChangelog();
@@ -54,7 +65,9 @@ trait RatingPlanGroupTrait
          * @var $dto RatingPlanGroupDto
          */
         parent::updateFromDto($dto);
-
+        if ($dto->getRatingPlan()) {
+            $this->replaceRatingPlan($dto->getRatingPlan());
+        }
         return $this;
     }
 
@@ -77,5 +90,76 @@ trait RatingPlanGroupTrait
         return parent::__toArray() + [
             'id' => self::getId()
         ];
+    }
+    /**
+     * Add ratingPlan
+     *
+     * @param \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan
+     *
+     * @return RatingPlanGroupTrait
+     */
+    public function addRatingPlan(\Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan)
+    {
+        $this->ratingPlan->add($ratingPlan);
+
+        return $this;
+    }
+
+    /**
+     * Remove ratingPlan
+     *
+     * @param \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan
+     */
+    public function removeRatingPlan(\Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan)
+    {
+        $this->ratingPlan->removeElement($ratingPlan);
+    }
+
+    /**
+     * Replace ratingPlan
+     *
+     * @param \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface[] $ratingPlan
+     * @return self
+     */
+    public function replaceRatingPlan(Collection $ratingPlan)
+    {
+        $updatedEntities = [];
+        $fallBackId = -1;
+        foreach ($ratingPlan as $entity) {
+            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
+            $updatedEntities[$index] = $entity;
+            $entity->setRatingPlanGroup($this);
+        }
+        $updatedEntityKeys = array_keys($updatedEntities);
+
+        foreach ($this->ratingPlan as $key => $entity) {
+            $identity = $entity->getId();
+            if (in_array($identity, $updatedEntityKeys)) {
+                $this->ratingPlan->set($key, $updatedEntities[$identity]);
+            } else {
+                $this->ratingPlan->remove($key);
+            }
+            unset($updatedEntities[$identity]);
+        }
+
+        foreach ($updatedEntities as $entity) {
+            $this->addRatingPlan($entity);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get ratingPlan
+     *
+     * @return \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface[]
+     */
+    public function getRatingPlan(Criteria $criteria = null)
+    {
+        if (!is_null($criteria)) {
+            return $this->ratingPlan->matching($criteria)->toArray();
+        }
+
+        return $this->ratingPlan->toArray();
     }
 }

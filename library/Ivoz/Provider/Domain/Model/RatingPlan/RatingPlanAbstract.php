@@ -549,7 +549,7 @@ abstract class RatingPlanAbstract
      *
      * @return self
      */
-    public function setRatingPlanGroup(\Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface $ratingPlanGroup)
+    public function setRatingPlanGroup(\Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface $ratingPlanGroup = null)
     {
         $this->ratingPlanGroup = $ratingPlanGroup;
 

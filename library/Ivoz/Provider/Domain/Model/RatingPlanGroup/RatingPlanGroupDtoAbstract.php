@@ -42,6 +42,11 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
      */
     private $brand;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto[] | null
+     */
+    private $ratingPlan = null;
+
 
     use DtoNormalizer;
 
@@ -82,7 +87,8 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
                 'en' => $this->getDescriptionEn(),
                 'es' => $this->getDescriptionEs()
             ],
-            'brand' => $this->getBrand()
+            'brand' => $this->getBrand(),
+            'ratingPlan' => $this->getRatingPlan()
         ];
     }
 
@@ -92,6 +98,16 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
         $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
+        if (!is_null($this->ratingPlan)) {
+            $items = $this->getRatingPlan();
+            $this->ratingPlan = [];
+            foreach ($items as $item) {
+                $this->ratingPlan[] = $transformer->transform(
+                    'Ivoz\\Provider\\Domain\\Model\\RatingPlan\\RatingPlan',
+                    $item->getId() ?? $item
+                );
+            }
+        }
     }
 
     /**
@@ -99,6 +115,10 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
+        $this->ratingPlan = $transformer->transform(
+            'Ivoz\\Provider\\Domain\\Model\\RatingPlan\\RatingPlan',
+            $this->ratingPlan
+        );
     }
 
     /**
@@ -245,5 +265,25 @@ abstract class RatingPlanGroupDtoAbstract implements DataTransferObjectInterface
         }
 
         return null;
+    }
+
+    /**
+     * @param array $ratingPlan
+     *
+     * @return static
+     */
+    public function setRatingPlan($ratingPlan = null)
+    {
+        $this->ratingPlan = $ratingPlan;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getRatingPlan()
+    {
+        return $this->ratingPlan;
     }
 }
