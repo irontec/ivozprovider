@@ -4,6 +4,8 @@ use Ivoz\Core\Infrastructure\Domain\Service\Cgrates\BillingService;
 use Ivoz\Core\Application\Service\DataGateway;
 use Ivoz\Cgr\Domain\Model\TpRatingProfile\SimulatedCall;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
+use Ivoz\Provider\Domain\Model\Carrier\Carrier;
+use Ivoz\Provider\Domain\Model\Carrier\CarrierDto;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupDto;
 use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupsDto;
@@ -28,6 +30,7 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
 
         $this->_helper->ContextSwitch()
             ->addActionContext("test-company-plans", "json")
+            ->addActionContext("test-carrier-plans", "json")
             ->addActionContext("test-brand-plans", "json")
             ->addActionContext("test-rating-plan", "json")
             ->addActionContext("tarificate-call", "json")
@@ -75,6 +78,54 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
             [$pks]
         );
     }
+
+    public function testCarrierPlansAction()
+    {
+        $dataGateway = \Zend_Registry::get('data_gateway');
+
+        /** @var CarrierDto $carrierDto */
+        $carrierDto = $dataGateway->find(
+            Carrier::class,
+            $this->getParam("parentId")
+        );
+
+        $argumentsResolver = function() use($dataGateway, $carrierDto) {
+
+            $callDuration = $this->getParam('duration');
+            if ($callDuration < 1) {
+                $callDuration = 60;
+            }
+
+            $subject = $dataGateway->remoteProcedureCall(
+                Carrier::class,
+                $carrierDto->getId(),
+                'getCgrSubject',
+                []
+            );
+
+            $brandTenant = $dataGateway->remoteProcedureCall(
+                Brand::class,
+                $carrierDto->getBrandId(),
+                'getCgrTenant',
+                []
+            );
+
+            return [
+                [
+                    $callDuration,
+                    $brandTenant,
+                    $subject
+                ]
+            ];
+        };
+
+        $this->testPlans(
+            'simulateCall',
+            $argumentsResolver,
+            false
+        );
+    }
+
 
     public function testCompanyPlansAction()
     {
@@ -413,7 +464,10 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
 
         foreach ($responses as $response) {
 
-            $ratingPlanName = $response->getRatingPlanGroup()->getNameEn();
+            $ratingPlanGroup = $response->getRatingPlanGroup();
+            $ratingPlanGroupName = ($ratingPlanGroup)
+                    ? $ratingPlanGroup->getNameEn()
+                    : "";
 
             if ($response->getErrorMessage()) {
                 $errorMsg = '';
@@ -431,7 +485,7 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
                 }
 
                 $rows[] = [
-                    'Plan' => $ratingPlanName,
+                    'Plan' => $ratingPlanGroupName,
                     'error' => $errorMsg
                 ];
                 continue;
@@ -445,7 +499,7 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
             $cost = $response->getCost() + $response->getConnectionFee();
 
             $rows[] = [
-                'Plan' => $ratingPlanName,
+                'Plan' => $ratingPlanGroupName,
                 'Call date' => $response->getCallDate()->format('Y-m-d H:i:s'),
                 'Duration' => $response->getCallDuration() . ' ' . $this->_helper->translate('seconds'),
                 'Pattern Name' => $response->getPatternName() . ' (' . $response->getPrefix() . ')',
