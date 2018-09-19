@@ -16,4 +16,10 @@ interface TrunksCdrRepository extends ObjectRepository, Selectable
      * @return \Generator
      */
     public function getUnmeteredCallsGeneratorWithoutOffset(int $batchSize, array $order = null);
+
+    /**
+     * @param array $ids
+     * @return mixed
+     */
+    public function resetMetered(array $ids);
 }

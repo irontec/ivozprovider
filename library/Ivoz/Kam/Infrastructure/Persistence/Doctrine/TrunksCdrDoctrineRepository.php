@@ -65,4 +65,22 @@ class TrunksCdrDoctrineRepository extends ServiceEntityRepository implements Tru
             yield $results;
         }
     }
+
+    /**
+     * @param array $ids
+     * @return mixed
+     */
+    public function resetMetered(array $ids)
+    {
+        $qb = $this
+            ->createQueryBuilder('self')
+            ->update($this->_entityName, 'self')
+            ->set('self.metered', ':metered')
+            ->setParameter(':metered', 0)
+            ->where('self.id in (:ids)')
+            ->setParameter(':ids', $ids);
+
+        return $qb->getQuery()->execute();
+    }
+
 }
