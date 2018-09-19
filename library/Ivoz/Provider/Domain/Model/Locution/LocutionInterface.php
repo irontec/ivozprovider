@@ -2,9 +2,10 @@
 
 namespace Ivoz\Provider\Domain\Model\Locution;
 
+use Ivoz\Core\Domain\Service\FileContainerInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface LocutionInterface extends LoggableEntityInterface
+interface LocutionInterface extends FileContainerInterface, LoggableEntityInterface
 {
     /**
      * @codeCoverageIgnore

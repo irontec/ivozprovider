@@ -43,6 +43,14 @@ mappers:
         modelFile: CallAclRelMatchLists,
         entity: 'Ivoz\\Provider\\Domain\\Model\\CallAclRelMatchLists\\CallAclRelMatchLists'
     }
+  - &CallCsvReports {
+      modelFile: CallCsvReports,
+      entity: 'Ivoz\\Provider\\Domain\\Model\\CallCsvReport\\CallCsvReport'
+  }
+  - &CallCsvSchedulers {
+      modelFile: CallCsvSchedulers,
+      entity: 'Ivoz\\Provider\\Domain\\Model\\CallCsvScheduler\\CallCsvScheduler'
+  }
   - &CallForwardSettings {
         modelFile: CallForwardSettings,
         entity: 'Ivoz\\Provider\\Domain\\Model\\CallForwardSetting\\CallForwardSetting'

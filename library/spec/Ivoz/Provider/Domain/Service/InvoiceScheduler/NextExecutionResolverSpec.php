@@ -72,11 +72,11 @@ class NextExecutionResolverSpec extends ObjectBehavior
 
         $this
             ->entityTools
-            ->persistDto(
-                $schedulerDto,
+            ->updateEntityByDto(
                 $scheduler,
-                false
+                $schedulerDto
             )->shouldBeCalled();
+
         $this->execute(
             $scheduler,
             true
@@ -120,10 +120,9 @@ class NextExecutionResolverSpec extends ObjectBehavior
 
         $this
             ->entityTools
-            ->persistDto(
-                $schedulerDto,
+            ->updateEntityByDto(
                 $scheduler,
-                false
+                $schedulerDto
             )->shouldBeCalled();
 
         $this->execute(

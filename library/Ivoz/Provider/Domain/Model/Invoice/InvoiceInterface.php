@@ -2,10 +2,11 @@
 
 namespace Ivoz\Provider\Domain\Model\Invoice;
 
+use Ivoz\Core\Domain\Service\FileContainerInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Doctrine\Common\Collections\Collection;
 
-interface InvoiceInterface extends LoggableEntityInterface
+interface InvoiceInterface extends FileContainerInterface, LoggableEntityInterface
 {
     /**
      * @codeCoverageIgnore

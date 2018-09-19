@@ -114,9 +114,11 @@ class DateTimeNormalizer
             ->getUser()
             ->getTimezone();
 
-        return new \DateTimeZone(
-            $timeZone->getTz()
-        );
+        $tz = $timeZone
+            ? $timeZone->getTz()
+            : 'UTC';
+
+        return new \DateTimeZone($tz);
     }
 
     protected function getFieldType($class, $field)

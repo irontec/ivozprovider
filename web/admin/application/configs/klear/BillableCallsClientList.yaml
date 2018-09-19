@@ -1,6 +1,7 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
 #include conf.d/documentationLink.yaml
+#include BillableCallsList.yaml
 
 production:
   main:
@@ -10,7 +11,6 @@ production:
   screens: &billableCallsClient_screensLink
     billableCallsList_screen: &billableCallsList_screenLink
       controller: list
-      csv: true
       order:
         field:
           - BillableCall.startTime
@@ -52,6 +52,10 @@ production:
           duration: true
           price: true
           cost: true
+      options: &billableCalls_optionsLink
+        title: _("Options")
+        commands:
+          exportBillableCallsToCsv_command: true
     billableCallsView_screen:
       <<: *BillableCalls
       controller: edit
@@ -89,6 +93,20 @@ production:
             price: 4
             ratingPlanName: 6
             destinationName: 6
+  dialogs:
+    <<: *billableCalls_dialogsLink
+
+  commands: &exportBillableCallsToCsv_commandsLink
+    exportBillableCallsToCsv_command: &exportBillableCallsToCsv_commandLink
+      <<: *BillableCalls
+      title: _("Export to CSV")
+      label: true
+      module: default
+      controller: klear-custom-billable-calls
+      action: export-to-csv
+      class:  ui-silk-page-white-database
+      forcedValues:
+        "company": ${auth.companyId}
 
 staging:
   _extends: production

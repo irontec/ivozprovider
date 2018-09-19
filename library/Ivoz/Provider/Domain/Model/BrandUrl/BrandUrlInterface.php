@@ -2,9 +2,10 @@
 
 namespace Ivoz\Provider\Domain\Model\BrandUrl;
 
+use Ivoz\Core\Domain\Service\FileContainerInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface BrandUrlInterface extends LoggableEntityInterface
+interface BrandUrlInterface extends FileContainerInterface, LoggableEntityInterface
 {
     /**
      * @codeCoverageIgnore

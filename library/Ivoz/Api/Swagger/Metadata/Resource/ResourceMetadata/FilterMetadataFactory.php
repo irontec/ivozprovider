@@ -97,7 +97,6 @@ class FilterMetadataFactory implements ResourceMetadataFactoryInterface
                     break;
                 case ClassMetadataInfo::MANY_TO_ONE:
                     $filters['ivoz.api.filter.search'][$attribute] = Filter\SearchFilter::STRATEGY_EXACT;
-                    ;
                     break;
                 case 'boolean':
                     $filters['ivoz.api.filter.boolean'][$attribute] = null;
@@ -107,7 +106,7 @@ class FilterMetadataFactory implements ResourceMetadataFactoryInterface
                 case 'datetimetz':
                 case 'time':
                     $filters['ivoz.api.filter.search'][$attribute] = Filter\SearchFilter::STRATEGY_START;
-                    $filters['ivoz.api.filter.range'][$attribute] = null;
+                    $filters['ivoz.api.filter.date'][$attribute] = null;
                     break;
                 default:
                     // Value object and ClassMetadataInfo::ONE_TO_MANY

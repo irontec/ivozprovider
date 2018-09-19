@@ -3,6 +3,8 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
+use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorRepository;
 use Ivoz\Provider\Domain\Model\Administrator\Administrator;
 use Symfony\Bridge\Doctrine\RegistryInterface;
@@ -18,5 +20,33 @@ class AdministratorDoctrineRepository extends ServiceEntityRepository implements
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, Administrator::class);
+    }
+
+    /**
+     * @inheritdoc
+     * @see AdministratorRepository::getInnerGlobalAdmin
+     */
+    public function getInnerGlobalAdmin()
+    {
+        $qb = $this->createQueryBuilder('self');
+
+        $qb
+            ->select('self')
+            ->addCriteria(
+                CriteriaHelper::fromArray([
+                    ['id', 'eq', 0],
+                    ['active', 'eq', 0],
+                    ['brand', 'isNUll'],
+                    ['company', 'isNUll']
+                ])
+            );
+
+        $result = $qb->getQuery()->getResult();
+        $privateAdmin = current($result);
+        if (!$privateAdmin) {
+            throw new \RuntimeException('Unable to find inner global admin');
+        }
+
+        return $privateAdmin;
     }
 }

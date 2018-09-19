@@ -29,8 +29,48 @@ class KlearCustomBillableCallsController extends Zend_Controller_Action
             $user->refreshToken
         );
 
-        $billableCalls = $apiClient->getBillableCalls();
+        $config = $this->_mainRouter->getCurrentItem()->getConfig();
 
+        $criteria = $config->getProperty("forcedValues");
+        $criteria = $criteria
+            ? $criteria->toArray()
+            : [];
+
+        $criteria['_properties'] = [
+            'startTime',
+            'caller',
+            'callee',
+            'duration',
+            'price'
+        ];
+
+        $requestParams = $this->_request->getParam('post', null);
+        if (isset($requestParams) && array_key_exists('searchFields', $requestParams)) {
+            $where = [];
+
+            foreach($requestParams['searchFields'] as $field => $values) {
+                foreach ($values as $key => $value) {
+                    $value = urldecode($value);
+                    switch ($requestParams['searchOps'][$field][$key]) {
+                        case 'eq':
+                            $where[$field] = $value;
+                            break;
+                        case 'lt':
+                            $argument = $field . '[strictly_before]';
+                            $where[$argument] = $value;
+                            break;
+                        case 'gt':
+                            $argument = $field . '[strictly_after]';
+                            $where[$argument] = $value;
+                            break;
+                    }
+                }
+            }
+        }
+
+        $criteria += $where;
+
+        $billableCalls = $apiClient->getBillableCalls($criteria);
         $response = $this->getResponse();
         $response->clearHeaders();
         $response->setHeader('Content-Length', mb_strlen($billableCalls));
@@ -39,6 +79,7 @@ class KlearCustomBillableCallsController extends Zend_Controller_Action
 
         $response->sendHeaders();
         $response->clearHeaders();
+
         echo $billableCalls;
     }
 }

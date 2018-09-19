@@ -10,7 +10,7 @@ use Ivoz\Core\Domain\Service\TempFile;
 /**
  * DestinationRateGroup
  */
-class DestinationRateGroup extends DestinationRateGroupAbstract implements DestinationRateGroupInterface, FileContainerInterface
+class DestinationRateGroup extends DestinationRateGroupAbstract implements FileContainerInterface, DestinationRateGroupInterface
 {
     use DestinationRateGroupTrait;
 

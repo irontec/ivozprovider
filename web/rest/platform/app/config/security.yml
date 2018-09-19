@@ -2,22 +2,6 @@
 ## http://symfony.com/doc/current/security.html
 security:
 
-  role_hierarchy:
-    ROLE_COMPANY_USER: ROLE_USER
-    ROLE_COMPANY_ADMIN: ROLE_USER
-    ROLE_BRAND_ADMIN: ROLE_COMPANY_ADMIN
-    ROLE_SUPER_ADMIN: [ROLE_BRAND_ADMIN, ROLE_ALLOWED_TO_SWITCH]
-
-  # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
-  encoders:
-    Ivoz\Provider\Domain\Model\Administrator\Administrator:
-      algorithm: bcrypt
-      cost: 12
-
-  providers:
-    admin_orm:
-      id: 'Ivoz\Provider\Infrastructure\Api\Security\User\Provider::Administrator'
-
   firewalls:
     # disables authentication for assets and the profiler, adapt it according to your needs
     dev:

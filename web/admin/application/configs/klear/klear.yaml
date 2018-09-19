@@ -234,6 +234,10 @@ production:
           class: ui-silk-application-view-list
           description: _("List of %s", ngettext('Billable call', 'Billable calls', 0))
           showOnlyIf: ${auth.brandFeatures.billing.enabled}
+        CallCsvSchedulersBrandList:
+          title: ngettext('Call CSV scheduler', 'Call CSV schedulers', 1)
+          class: ui-silk-application-view-list-schedule
+          description: _("List of %s", ngettext('Call CSV scheduler', 'Call CSV schedulers', 0))
     Admin:
       title: _("Client Configuration")
       meta: "[mine:${auth.isCompanyAdmin}|company:${auth.companyId}|type:${auth.companyType}|name:${auth.companyName}]"
@@ -395,6 +399,10 @@ production:
           title: ngettext('Billable call', 'Billable calls', 0)
           class: ui-silk-application-view-list
           description: _("List of %s", ngettext('Billable call', 'Billable calls', 0))
+        CallCsvSchedulersList:
+          title: ngettext('Call CSV scheduler', 'Call CSV schedulers', 1)
+          class: ui-silk-application-view-list-schedule
+          description: _("List of %s", ngettext('Call CSV scheduler', 'Call CSV schedulers', 0))
   footerMenu:
     footer:
       title: ''

@@ -9,7 +9,7 @@ APP_PATHS+=(library)
 
 cd /opt/irontec/ivozprovider/
 for APPLICATION_PATH in ${APP_PATHS[@]}; do
-    library/vendor/bin/phpcbf -p --standard=PSR2 --ignore='*vendor*' $APPLICATION_PATH
+    library/vendor/bin/phpcbf -p --standard=PSR2 --ignore='*vendor*' --ignore='*coverage*' $APPLICATION_PATH
 done
 
 # Check there is no pending files to be commited

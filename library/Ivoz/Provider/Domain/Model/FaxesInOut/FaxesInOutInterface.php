@@ -2,9 +2,10 @@
 
 namespace Ivoz\Provider\Domain\Model\FaxesInOut;
 
+use Ivoz\Core\Domain\Service\FileContainerInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface FaxesInOutInterface extends LoggableEntityInterface
+interface FaxesInOutInterface extends FileContainerInterface, LoggableEntityInterface
 {
     /**
      * @codeCoverageIgnore

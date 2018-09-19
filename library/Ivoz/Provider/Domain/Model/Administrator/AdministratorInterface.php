@@ -36,7 +36,7 @@ interface AdministratorInterface extends LoggableEntityInterface
     public function unserialize($serialized);
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface
+     * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface | null
      */
     public function getTimezone();
 

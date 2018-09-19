@@ -2,10 +2,11 @@
 
 namespace Ivoz\Provider\Domain\Model\Brand;
 
+use Ivoz\Core\Domain\Service\FileContainerInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Doctrine\Common\Collections\Collection;
 
-interface BrandInterface extends LoggableEntityInterface
+interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
 {
     /**
      * @codeCoverageIgnore

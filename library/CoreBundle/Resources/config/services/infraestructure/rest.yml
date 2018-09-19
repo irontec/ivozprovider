@@ -1,0 +1,37 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Ivoz\Provider\Infrastructure\Api\Security\User\Provider::User:
+    class: Ivoz\Provider\Infrastructure\Api\Security\User\UserProvider
+    arguments:
+      $identifierField: 'email'
+      $entityClass: 'Ivoz\Provider\Domain\Model\User\User'
+
+  Ivoz\Provider\Infrastructure\Api\Security\User\Provider::Administrator:
+    class: Ivoz\Provider\Infrastructure\Api\Security\User\UserProvider
+    arguments:
+      $identifierField: 'username'
+      $entityClass: 'Ivoz\Provider\Domain\Model\Administrator\Administrator'
+
+  ivoz.api_platform.http.client:
+    class: GuzzleHttp\Client
+    arguments:
+      $config:
+        base_uri: '%api_platform_base_url%'
+        timeout: 0
+        allow_redirects: true
+        verify: false
+
+  Ivoz\Core\Infrastructure\Service\Rest\Client:
+    arguments:
+      $platformHttpClient: '@ivoz.api_platform.http.client'
+      $jwtTokenManager: '@lexik_jwt_authentication.jwt_manager'
+    tags:
+      - { name: test_double, fake: 'Ivoz\Core\Infrastructure\Service\JsonRpc\FakeClient' }
+
+
+
+

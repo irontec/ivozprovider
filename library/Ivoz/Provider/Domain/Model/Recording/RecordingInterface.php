@@ -2,9 +2,10 @@
 
 namespace Ivoz\Provider\Domain\Model\Recording;
 
+use Ivoz\Core\Domain\Service\FileContainerInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface RecordingInterface extends LoggableEntityInterface
+interface RecordingInterface extends FileContainerInterface, LoggableEntityInterface
 {
     /**
      * @codeCoverageIgnore

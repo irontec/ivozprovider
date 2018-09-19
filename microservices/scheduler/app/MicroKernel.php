@@ -14,11 +14,12 @@ class MicroKernel extends Kernel
     {
         $bundles = [
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
-
+            new Symfony\Bundle\SecurityBundle\SecurityBundle(),
             new Symfony\Bundle\MonologBundle\MonologBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new \Doctrine\Bundle\DoctrineCacheBundle\DoctrineCacheBundle(),
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
+            new Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle(),
 
             /* Core */
             new CoreBundle\CoreBundle(),
@@ -36,6 +37,7 @@ class MicroKernel extends Kernel
     {
         $routes->add('/', 'InvoiceSchedulerController:indexAction');
         $routes->add('/billable-calls', 'BillableCallController:indexAction');
+        $routes->add('/call-csv-to-email', 'CallCsvController:indexAction');
     }
 
     // optional, to use the standard Symfony cache directory

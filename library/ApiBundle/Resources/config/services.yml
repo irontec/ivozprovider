@@ -18,19 +18,6 @@ services:
       - '@event_dispatcher'
       - '@lexik_jwt_authentication.extractor.chain_extractor'
 
-  Ivoz\Provider\Infrastructure\Api\Security\User\Provider::User:
-    class: Ivoz\Provider\Infrastructure\Api\Security\User\UserProvider
-    arguments:
-      $identifierField: 'email'
-      $entityClass: 'Ivoz\Provider\Domain\Model\User\User'
-
-  Ivoz\Provider\Infrastructure\Api\Security\User\Provider::Administrator:
-    class: Ivoz\Provider\Infrastructure\Api\Security\User\UserProvider
-    arguments:
-      $identifierField: 'username'
-      $entityClass: 'Ivoz\Provider\Domain\Model\Administrator\Administrator'
-
-
   ################################################
   ## Dependencies
   ################################################

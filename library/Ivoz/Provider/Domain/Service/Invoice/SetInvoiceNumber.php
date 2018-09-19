@@ -63,10 +63,9 @@ class SetInvoiceNumber implements InvoiceLifecycleEventHandlerInterface
         $invoiceDto = $this->entityTools->entityToDto($invoice);
         $invoiceDto->setNumber($invoiceNumber);
 
-        $this->entityTools->persistDto(
-            $invoiceDto,
+        $this->entityTools->updateEntityByDto(
             $invoice,
-            false
+            $invoiceDto
         );
     }
 }
