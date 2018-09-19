@@ -82,5 +82,4 @@ class TrunksCdrDoctrineRepository extends ServiceEntityRepository implements Tru
 
         return $qb->getQuery()->execute();
     }
-
 }

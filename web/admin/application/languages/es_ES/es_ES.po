@@ -2143,6 +2143,9 @@ msgstr "Seleccione la marca que desea emular."
 msgid "Select the company you want to emulate"
 msgstr "Seleccione la empresa que desea emular"
 
+msgid "Selected weight is already in use"
+msgstr "El peso seleccionado ya está en uso"
+
 msgid "Send"
 msgstr "Enviar"
 
