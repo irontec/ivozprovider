@@ -58,7 +58,7 @@ class RerateCallService extends AbstractApiBasedService implements RerateCallSer
             "OrderIdEnd" => null,
             "TimeStart" => "",
             "TimeEnd" => "",
-            "RerateErrors" => false,
+            "RerateErrors" => true,
             "RerateRated" => true,
             "SendToStats" => false
         ];
