@@ -9,6 +9,7 @@ production:
     30200: _("There is a call forward with that call type. You can't add this call forward")
     40000: _("'Valid From' must be earlier than 'Valid to'")
     40001: _("You can't create a pricing plan that starts in de past")
+    40002: _("Selected weight is already in use")
     50001: _("There are unmetered calls.")
     50002: _("There are unbilled calls before in date.")
     50003: _("There are invoices in the same range of date.")

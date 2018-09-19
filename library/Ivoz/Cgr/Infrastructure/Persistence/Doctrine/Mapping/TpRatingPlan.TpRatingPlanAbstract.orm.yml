@@ -15,6 +15,7 @@ Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanAbstract:
         - tag
         - destrates_tag
         - timing_tag
+        - weight
   fields:
     tpid:
       type: string

@@ -1,0 +1,13 @@
+services:
+  _defaults:
+    autowire: true
+    public: false
+
+  ##################################
+  ## error_handler
+  ##################################
+
+  Ivoz\Provider\Domain\Service\RatingPlan\PersistErrorHandler:
+    tags:
+      - { name: provider.lifecycle.rating_plan.error_handler, priority: 10 }
+    arguments: ~

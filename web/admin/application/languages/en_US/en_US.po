@@ -2116,6 +2116,9 @@ msgstr "Select the brand you want to emulate."
 msgid "Select the company you want to emulate"
 msgstr "Select the company you want to emulate"
 
+msgid "Selected weight is already in use"
+msgstr "Selected weight is already in use"
+
 msgid "Send"
 msgstr "Send"
 

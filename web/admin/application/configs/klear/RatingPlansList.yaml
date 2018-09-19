@@ -8,6 +8,9 @@ production:
   screens: &ratingPlans_screensLink
     ratingPlansList_screen: &ratingPlansList_screenLink
       controller: list
+      order:
+        field:
+          - RatingPlan.weight desc
       pagination:
         items: 25
       <<: *RatingPlans
