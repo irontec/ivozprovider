@@ -1,5 +1,10 @@
 Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanAbstract:
   type: mappedSuperclass
+  uniqueConstraints:
+    ratingPlan_ratingPlanGroup_weight:
+      columns:
+        - ratingPlanGroupId
+        - weight
   fields:
     weight:
       type: decimal
