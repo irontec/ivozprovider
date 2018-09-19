@@ -12,3 +12,7 @@ Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup:
       id: true
       generator:
         strategy: IDENTITY
+  oneToMany:
+    ratingPlan:
+      targetEntity: \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface
+      mappedBy: ratingPlanGroup

@@ -68,7 +68,7 @@ Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanAbstract:
       cascade: {  }
       fetch: LAZY
       mappedBy: null
-      inversedBy: null
+      inversedBy: ratingPlan
       joinColumns:
         ratingPlanGroupId:
           nullable: false
