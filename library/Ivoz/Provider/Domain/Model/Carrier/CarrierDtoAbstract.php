@@ -58,6 +58,11 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     private $outgoingRoutings = null;
 
     /**
+     * @var \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierDto[] | null
+     */
+    private $outgoingRoutingsRelCarriers = null;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerDto[] | null
      */
     private $servers = null;
@@ -116,6 +121,7 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
             'brand' => $this->getBrand(),
             'transformationRuleSet' => $this->getTransformationRuleSet(),
             'outgoingRoutings' => $this->getOutgoingRoutings(),
+            'outgoingRoutingsRelCarriers' => $this->getOutgoingRoutingsRelCarriers(),
             'servers' => $this->getServers(),
             'ratingProfiles' => $this->getRatingProfiles(),
             'tpCdrStats' => $this->getTpCdrStats()
@@ -139,7 +145,16 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
+        if (!is_null($this->outgoingRoutingsRelCarriers)) {
+            $items = $this->getOutgoingRoutingsRelCarriers();
+            $this->outgoingRoutingsRelCarriers = [];
+            foreach ($items as $item) {
+                $this->outgoingRoutingsRelCarriers[] = $transformer->transform(
+                    'Ivoz\\Provider\\Domain\\Model\\OutgoingRoutingRelCarrier\\OutgoingRoutingRelCarrier',
+                    $item->getId() ?? $item
+                );
+            }
+        }
         if (!is_null($this->servers)) {
             $items = $this->getServers();
             $this->servers = [];
@@ -150,7 +165,6 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
         if (!is_null($this->ratingProfiles)) {
             $items = $this->getRatingProfiles();
             $this->ratingProfiles = [];
@@ -161,7 +175,6 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
         if (!is_null($this->tpCdrStats)) {
             $items = $this->getTpCdrStats();
             $this->tpCdrStats = [];
@@ -172,7 +185,6 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
     }
 
     /**
@@ -183,6 +195,10 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
         $this->outgoingRoutings = $transformer->transform(
             'Ivoz\\Provider\\Domain\\Model\\OutgoingRouting\\OutgoingRouting',
             $this->outgoingRoutings
+        );
+        $this->outgoingRoutingsRelCarriers = $transformer->transform(
+            'Ivoz\\Provider\\Domain\\Model\\OutgoingRoutingRelCarrier\\OutgoingRoutingRelCarrier',
+            $this->outgoingRoutingsRelCarriers
         );
         $this->servers = $transformer->transform(
             'Ivoz\\Provider\\Domain\\Model\\CarrierServer\\CarrierServer',
@@ -431,6 +447,26 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
+     * @param array $outgoingRoutingsRelCarriers
+     *
+     * @return static
+     */
+    public function setOutgoingRoutingsRelCarriers($outgoingRoutingsRelCarriers = null)
+    {
+        $this->outgoingRoutingsRelCarriers = $outgoingRoutingsRelCarriers;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getOutgoingRoutingsRelCarriers()
+    {
+        return $this->outgoingRoutingsRelCarriers;
+    }
+
+    /**
      * @param array $servers
      *
      * @return static
@@ -490,5 +526,3 @@ abstract class CarrierDtoAbstract implements DataTransferObjectInterface
         return $this->tpCdrStats;
     }
 }
-
-

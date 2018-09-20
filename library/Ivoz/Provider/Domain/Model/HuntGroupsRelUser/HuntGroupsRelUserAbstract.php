@@ -41,14 +41,14 @@ abstract class HuntGroupsRelUserAbstract
      */
     protected function __construct()
     {
-
     }
 
     abstract public function getId();
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "HuntGroupsRelUser",
             $this->getId()
         );
@@ -170,11 +170,10 @@ abstract class HuntGroupsRelUserAbstract
             'userId' => self::getUser() ? self::getUser()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set timeoutTime
      *
      * @param integer $timeoutTime
@@ -205,6 +204,7 @@ abstract class HuntGroupsRelUserAbstract
     }
 
     /**
+     * @deprecated
      * Set priority
      *
      * @param integer $priority
@@ -282,8 +282,5 @@ abstract class HuntGroupsRelUserAbstract
         return $this->user;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

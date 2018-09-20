@@ -29,5 +29,3 @@ class ScheduleDto extends ScheduleDtoAbstract
         return parent::getPropertyMap(...func_get_args());
     }
 }
-
-

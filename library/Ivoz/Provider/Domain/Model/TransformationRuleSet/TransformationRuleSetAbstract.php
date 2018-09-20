@@ -73,7 +73,8 @@ abstract class TransformationRuleSetAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "TransformationRuleSet",
             $this->getId()
         );
@@ -228,11 +229,10 @@ abstract class TransformationRuleSetAbstract
             'countryId' => self::getCountry() ? self::getCountry()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description
@@ -261,6 +261,7 @@ abstract class TransformationRuleSetAbstract
     }
 
     /**
+     * @deprecated
      * Set internationalCode
      *
      * @param string $internationalCode
@@ -289,6 +290,7 @@ abstract class TransformationRuleSetAbstract
     }
 
     /**
+     * @deprecated
      * Set trunkPrefix
      *
      * @param string $trunkPrefix
@@ -317,6 +319,7 @@ abstract class TransformationRuleSetAbstract
     }
 
     /**
+     * @deprecated
      * Set areaCode
      *
      * @param string $areaCode
@@ -345,6 +348,7 @@ abstract class TransformationRuleSetAbstract
     }
 
     /**
+     * @deprecated
      * Set nationalLen
      *
      * @param integer $nationalLen
@@ -376,6 +380,7 @@ abstract class TransformationRuleSetAbstract
     }
 
     /**
+     * @deprecated
      * Set generateRules
      *
      * @param boolean $generateRules
@@ -461,7 +466,6 @@ abstract class TransformationRuleSetAbstract
     public function setName(Name $name)
     {
         $this->name = $name;
-
         return $this;
     }
 
@@ -474,7 +478,5 @@ abstract class TransformationRuleSetAbstract
     {
         return $this->name;
     }
-
     // @codeCoverageIgnoreEnd
 }
-

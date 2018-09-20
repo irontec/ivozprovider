@@ -22,7 +22,6 @@ trait UsersHtableTrait
     protected function __construct()
     {
         parent::__construct(...func_get_args());
-
     }
 
     /**
@@ -79,7 +78,4 @@ trait UsersHtableTrait
             'id' => self::getId()
         ];
     }
-
-
 }
-

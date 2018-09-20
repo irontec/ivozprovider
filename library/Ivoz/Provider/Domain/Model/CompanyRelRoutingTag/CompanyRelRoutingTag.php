@@ -29,4 +29,3 @@ class CompanyRelRoutingTag extends CompanyRelRoutingTagAbstract implements Compa
         return $this->id;
     }
 }
-

@@ -13,6 +13,7 @@ interface TrunksLcrGatewayInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @deprecated
      * Set lcrId
      *
      * @param integer $lcrId
@@ -29,6 +30,7 @@ interface TrunksLcrGatewayInterface extends LoggableEntityInterface
     public function getLcrId();
 
     /**
+     * @deprecated
      * Set gwName
      *
      * @param string $gwName
@@ -45,6 +47,7 @@ interface TrunksLcrGatewayInterface extends LoggableEntityInterface
     public function getGwName();
 
     /**
+     * @deprecated
      * Set ip
      *
      * @param string $ip
@@ -61,6 +64,7 @@ interface TrunksLcrGatewayInterface extends LoggableEntityInterface
     public function getIp();
 
     /**
+     * @deprecated
      * Set hostname
      *
      * @param string $hostname
@@ -77,6 +81,7 @@ interface TrunksLcrGatewayInterface extends LoggableEntityInterface
     public function getHostname();
 
     /**
+     * @deprecated
      * Set port
      *
      * @param integer $port
@@ -93,6 +98,7 @@ interface TrunksLcrGatewayInterface extends LoggableEntityInterface
     public function getPort();
 
     /**
+     * @deprecated
      * Set params
      *
      * @param string $params
@@ -109,6 +115,7 @@ interface TrunksLcrGatewayInterface extends LoggableEntityInterface
     public function getParams();
 
     /**
+     * @deprecated
      * Set uriScheme
      *
      * @param integer $uriScheme
@@ -125,6 +132,7 @@ interface TrunksLcrGatewayInterface extends LoggableEntityInterface
     public function getUriScheme();
 
     /**
+     * @deprecated
      * Set transport
      *
      * @param integer $transport
@@ -141,6 +149,7 @@ interface TrunksLcrGatewayInterface extends LoggableEntityInterface
     public function getTransport();
 
     /**
+     * @deprecated
      * Set strip
      *
      * @param boolean $strip
@@ -157,6 +166,7 @@ interface TrunksLcrGatewayInterface extends LoggableEntityInterface
     public function getStrip();
 
     /**
+     * @deprecated
      * Set prefix
      *
      * @param string $prefix
@@ -173,6 +183,7 @@ interface TrunksLcrGatewayInterface extends LoggableEntityInterface
     public function getPrefix();
 
     /**
+     * @deprecated
      * Set tag
      *
      * @param string $tag
@@ -189,6 +200,7 @@ interface TrunksLcrGatewayInterface extends LoggableEntityInterface
     public function getTag();
 
     /**
+     * @deprecated
      * Set defunct
      *
      * @param integer $defunct
@@ -219,6 +231,4 @@ interface TrunksLcrGatewayInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface
      */
     public function getCarrierServer();
-
 }
-

@@ -4,7 +4,6 @@ namespace Ivoz\Core\Infrastructure\Domain\Service\Cgrates;
 
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrRepository;
 use Ivoz\Kam\Domain\Service\TrunksCdr\RerateCallServiceInterface;
-use Ivoz\Core\Infrastructure\Domain\Service\Redis\Client as RedisClient;
 use Graze\GuzzleHttp\JsonRpc\ClientInterface;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;
 
@@ -22,7 +21,6 @@ class RerateCallService extends AbstractApiBasedService implements RerateCallSer
 
     public function __construct(
         ClientInterface $jsonRpcClient,
-        RedisClient $redisClient,
         BillableCallRepository $billableCallRepository,
         TrunksCdrRepository $trunksCdrRepository
     ) {
@@ -30,8 +28,7 @@ class RerateCallService extends AbstractApiBasedService implements RerateCallSer
         $this->trunksCdrRepository = $trunksCdrRepository;
 
         return parent::__construct(
-            $jsonRpcClient,
-            $redisClient
+            $jsonRpcClient
         );
     }
 
@@ -61,7 +58,7 @@ class RerateCallService extends AbstractApiBasedService implements RerateCallSer
             "OrderIdEnd" => null,
             "TimeStart" => "",
             "TimeEnd" => "",
-            "RerateErrors" => false,
+            "RerateErrors" => true,
             "RerateRated" => true,
             "SendToStats" => false
         ];
@@ -70,6 +67,10 @@ class RerateCallService extends AbstractApiBasedService implements RerateCallSer
             'CdrsV1.RateCDRs',
             $payload
         );
+
+        $this
+            ->billableCallRepository
+            ->resetPrices($pks);
 
         $trunkCdrIds = $this
             ->billableCallRepository

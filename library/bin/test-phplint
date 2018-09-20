@@ -8,7 +8,7 @@ APP_PATHS+=(/opt/irontec/ivozprovider/asterisk/agi)
 APP_PATHS+=(/opt/irontec/ivozprovider/microservices/recordings)
 APP_PATHS+=(/opt/irontec/ivozprovider/microservices/workers)
 APP_PATHS+=(/opt/irontec/ivozprovider/scheme)
-APP_PATHS+=(/opt/irontec/ivozprovider/web/rest)
+APP_PATHS+=(/opt/irontec/ivozprovider/web/rest/platform)
 
 
 for APPLICATION_PATH in ${APP_PATHS[@]}; do

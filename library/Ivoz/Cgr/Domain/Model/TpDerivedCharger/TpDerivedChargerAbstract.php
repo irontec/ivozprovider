@@ -228,7 +228,8 @@ abstract class TpDerivedChargerAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "TpDerivedCharger",
             $this->getId()
         );
@@ -311,7 +312,8 @@ abstract class TpDerivedChargerAbstract
             $dto->getDisconnectCauseField(),
             $dto->getRatedTimeField(),
             $dto->getCostField(),
-            $dto->getCreatedAt());
+            $dto->getCreatedAt()
+        );
 
         $self
             ->setSubject($dto->getSubject())
@@ -442,11 +444,10 @@ abstract class TpDerivedChargerAbstract
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set tpid
      *
      * @param string $tpid
@@ -474,6 +475,7 @@ abstract class TpDerivedChargerAbstract
     }
 
     /**
+     * @deprecated
      * Set loadid
      *
      * @param string $loadid
@@ -501,6 +503,7 @@ abstract class TpDerivedChargerAbstract
     }
 
     /**
+     * @deprecated
      * Set direction
      *
      * @param string $direction
@@ -528,6 +531,7 @@ abstract class TpDerivedChargerAbstract
     }
 
     /**
+     * @deprecated
      * Set tenant
      *
      * @param string $tenant
@@ -555,6 +559,7 @@ abstract class TpDerivedChargerAbstract
     }
 
     /**
+     * @deprecated
      * Set category
      *
      * @param string $category
@@ -582,6 +587,7 @@ abstract class TpDerivedChargerAbstract
     }
 
     /**
+     * @deprecated
      * Set account
      *
      * @param string $account
@@ -609,6 +615,7 @@ abstract class TpDerivedChargerAbstract
     }
 
     /**
+     * @deprecated
      * Set subject
      *
      * @param string $subject
@@ -637,6 +644,7 @@ abstract class TpDerivedChargerAbstract
     }
 
     /**
+     * @deprecated
      * Set destinationIds
      *
      * @param string $destinationIds
@@ -665,6 +673,7 @@ abstract class TpDerivedChargerAbstract
     }
 
     /**
+     * @deprecated
      * Set runid
      *
      * @param string $runid
@@ -692,6 +701,7 @@ abstract class TpDerivedChargerAbstract
     }
 
     /**
+     * @deprecated
      * Set runFilters
      *
      * @param string $runFilters
@@ -719,6 +729,7 @@ abstract class TpDerivedChargerAbstract
     }
 
     /**
+     * @deprecated
      * Set reqTypeField
      *
      * @param string $reqTypeField
@@ -746,6 +757,7 @@ abstract class TpDerivedChargerAbstract
     }
 
     /**
+     * @deprecated
      * Set directionField
      *
      * @param string $directionField
@@ -773,6 +785,7 @@ abstract class TpDerivedChargerAbstract
     }
 
     /**
+     * @deprecated
      * Set tenantField
      *
      * @param string $tenantField
@@ -800,6 +813,7 @@ abstract class TpDerivedChargerAbstract
     }
 
     /**
+     * @deprecated
      * Set categoryField
      *
      * @param string $categoryField
@@ -827,6 +841,7 @@ abstract class TpDerivedChargerAbstract
     }
 
     /**
+     * @deprecated
      * Set accountField
      *
      * @param string $accountField
@@ -854,6 +869,7 @@ abstract class TpDerivedChargerAbstract
     }
 
     /**
+     * @deprecated
      * Set subjectField
      *
      * @param string $subjectField
@@ -881,6 +897,7 @@ abstract class TpDerivedChargerAbstract
     }
 
     /**
+     * @deprecated
      * Set destinationField
      *
      * @param string $destinationField
@@ -908,6 +925,7 @@ abstract class TpDerivedChargerAbstract
     }
 
     /**
+     * @deprecated
      * Set setupTimeField
      *
      * @param string $setupTimeField
@@ -935,6 +953,7 @@ abstract class TpDerivedChargerAbstract
     }
 
     /**
+     * @deprecated
      * Set pddField
      *
      * @param string $pddField
@@ -962,6 +981,7 @@ abstract class TpDerivedChargerAbstract
     }
 
     /**
+     * @deprecated
      * Set answerTimeField
      *
      * @param string $answerTimeField
@@ -989,6 +1009,7 @@ abstract class TpDerivedChargerAbstract
     }
 
     /**
+     * @deprecated
      * Set usageField
      *
      * @param string $usageField
@@ -1016,6 +1037,7 @@ abstract class TpDerivedChargerAbstract
     }
 
     /**
+     * @deprecated
      * Set supplierField
      *
      * @param string $supplierField
@@ -1043,6 +1065,7 @@ abstract class TpDerivedChargerAbstract
     }
 
     /**
+     * @deprecated
      * Set disconnectCauseField
      *
      * @param string $disconnectCauseField
@@ -1070,6 +1093,7 @@ abstract class TpDerivedChargerAbstract
     }
 
     /**
+     * @deprecated
      * Set ratedTimeField
      *
      * @param string $ratedTimeField
@@ -1097,6 +1121,7 @@ abstract class TpDerivedChargerAbstract
     }
 
     /**
+     * @deprecated
      * Set costField
      *
      * @param string $costField
@@ -1124,6 +1149,7 @@ abstract class TpDerivedChargerAbstract
     }
 
     /**
+     * @deprecated
      * Set createdAt
      *
      * @param \DateTime $createdAt
@@ -1177,8 +1203,5 @@ abstract class TpDerivedChargerAbstract
         return $this->brand;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

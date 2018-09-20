@@ -182,8 +182,6 @@ trait BrandTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add company
      *
@@ -759,7 +757,4 @@ trait BrandTrait
 
         return $this->outgoingRoutings->toArray();
     }
-
-
 }
-

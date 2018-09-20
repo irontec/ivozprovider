@@ -13,6 +13,7 @@ interface FeatureInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @deprecated
      * Set iden
      *
      * @param string $iden
@@ -43,6 +44,4 @@ interface FeatureInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Feature\Name
      */
     public function getName();
-
 }
-

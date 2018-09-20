@@ -13,6 +13,7 @@ interface TimezoneInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @deprecated
      * Set tz
      *
      * @param string $tz
@@ -29,6 +30,7 @@ interface TimezoneInterface extends LoggableEntityInterface
     public function getTz();
 
     /**
+     * @deprecated
      * Set comment
      *
      * @param string $comment
@@ -75,6 +77,4 @@ interface TimezoneInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Timezone\Label
      */
     public function getLabel();
-
 }
-

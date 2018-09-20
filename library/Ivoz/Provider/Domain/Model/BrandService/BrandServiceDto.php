@@ -20,5 +20,3 @@ class BrandServiceDto extends BrandServiceDtoAbstract
         return parent::getPropertyMap(...func_get_args());
     }
 }
-
-

@@ -9,4 +9,3 @@ interface TransformationRuleRepository extends ObjectRepository, Selectable
 {
     public function countByCriteria(array $criteria);
 }
-

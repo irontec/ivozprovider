@@ -6,6 +6,8 @@ use Ivoz\Cgr\Domain\Model\TpCdr\TpCdrInterface;
 use Ivoz\Cgr\Domain\Model\TpCdr\TpCdrRepository;
 use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface;
 use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationRepository;
+use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanInterface;
+use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanRepository;
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrDto;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
@@ -35,9 +37,9 @@ class MigrateFromTrunksCdr
     protected $tpCdrRepository;
 
     /**
-     * @var RatingPlanRepository
+     * @var TpRatingPlanRepository
      */
-    protected $ratingPlanRepository;
+    protected $tpRatingPlanRepository;
 
     /**
      * @var TpDestinationRepository
@@ -62,7 +64,7 @@ class MigrateFromTrunksCdr
     public function __construct(
         TrunksCdrRepository  $trunksCdrRepository,
         TpCdrRepository $tpCdrRepository,
-        RatingPlanRepository $ratingPlanRepository,
+        TpRatingPlanRepository $tpRatingPlanRepository,
         TpDestinationRepository $tpDestinationRepository,
         BillableCallRepository $billableCallRepository,
         EntityTools $entityTools,
@@ -70,7 +72,7 @@ class MigrateFromTrunksCdr
     ) {
         $this->trunksCdrRepository = $trunksCdrRepository;
         $this->tpCdrRepository = $tpCdrRepository;
-        $this->ratingPlanRepository = $ratingPlanRepository;
+        $this->tpRatingPlanRepository = $tpRatingPlanRepository;
         $this->tpDestinationRepository = $tpDestinationRepository;
         $this->billableCallRepository = $billableCallRepository;
         $this->entityTools = $entityTools;
@@ -86,7 +88,6 @@ class MigrateFromTrunksCdr
 
         $cdrCount = 0;
         foreach ($trunksGenerator as $trunks) {
-
             if (empty($trunks)) {
                 break;
             }
@@ -109,7 +110,6 @@ class MigrateFromTrunksCdr
 
     private function migrateToBillableCall(TrunksCdrInterface $trunksCdr)
     {
-
         /**
          * @var BillableCallInterface $billableCall
          */
@@ -228,7 +228,6 @@ class MigrateFromTrunksCdr
         );
 
         if (!$defaultRunTpCdr) {
-
             return $billableCallDto;
         }
 
@@ -237,18 +236,22 @@ class MigrateFromTrunksCdr
             : $billableCallDto->getCallee();
 
         /**
-         * @var RatingPlanInterface
+         * @var TpRatingPlanInterface $tpRatingPlan
          */
-        $ratingPlan = $this->ratingPlanRepository->findOneByTag(
+        $tpRatingPlan = $this->tpRatingPlanRepository->findOneByTag(
             $defaultRunTpCdr->getRatingPlanTag()
         );
-        $ratingPlanId = $ratingPlan
-            ? $ratingPlan->getId()
+
+        $ratingPlan = $tpRatingPlan->getRatingPlan();
+        $ratingPlanGroup = $ratingPlan->getRatingPlanGroup();
+
+        $ratingPlanGroupId = $ratingPlanGroup
+            ? $ratingPlanGroup->getId()
             : null;
 
         $brandLangGetter = 'get' . $languageCode;
-        $ratingPlanName = $ratingPlan
-            ? $ratingPlan->getName()->{$brandLangGetter}()
+        $ratingPlanGroupName = $ratingPlanGroup
+            ? $ratingPlanGroup->getName()->{$brandLangGetter}()
             : '';
 
         /** @var TpDestinationInterface $tpDestination */
@@ -293,11 +296,11 @@ class MigrateFromTrunksCdr
             ->setDestinationName(
                 $destinationName
             )
-            ->setRatingPlanId(
-                $ratingPlanId
+            ->setRatingPlanGroupId(
+                $ratingPlanGroupId
             )
             ->setRatingPlanName(
-                $ratingPlanName
+                $ratingPlanGroupName
             )->setPrice(
                 $defaultRunTpCdr->getCost()
             );

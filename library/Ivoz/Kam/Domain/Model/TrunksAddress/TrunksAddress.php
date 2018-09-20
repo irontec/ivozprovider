@@ -28,4 +28,3 @@ class TrunksAddress extends TrunksAddressAbstract implements TrunksAddressInterf
         return $this->id;
     }
 }
-

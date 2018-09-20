@@ -55,7 +55,8 @@ abstract class OutgoingDdiRulesPatternAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "OutgoingDdiRulesPattern",
             $this->getId()
         );
@@ -116,7 +117,8 @@ abstract class OutgoingDdiRulesPatternAbstract
 
         $self = new static(
             $dto->getAction(),
-            $dto->getPriority());
+            $dto->getPriority()
+        );
 
         $self
             ->setOutgoingDdiRule($dto->getOutgoingDdiRule())
@@ -181,11 +183,10 @@ abstract class OutgoingDdiRulesPatternAbstract
             'forcedDdiId' => self::getForcedDdi() ? self::getForcedDdi()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set action
      *
      * @param string $action
@@ -217,6 +218,7 @@ abstract class OutgoingDdiRulesPatternAbstract
     }
 
     /**
+     * @deprecated
      * Set priority
      *
      * @param integer $priority
@@ -315,8 +317,5 @@ abstract class OutgoingDdiRulesPatternAbstract
         return $this->forcedDdi;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

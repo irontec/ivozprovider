@@ -2,8 +2,7 @@
 
 namespace spec\Ivoz\Provider\Domain\Service\Domain;
 
-use Doctrine\ORM\EntityManagerInterface;
-use Ivoz\Core\Domain\Service\EntityPersisterInterface;
+use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainDto;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
@@ -15,14 +14,9 @@ use Prophecy\Argument;
 class UpdateByBrandSpec extends ObjectBehavior
 {
     /**
-     * @var EntityManagerInterface
+     * @var EntityTools
      */
-    protected $em;
-
-    /**
-     * @var EntityPersisterInterface
-     */
-    protected $entityPersister;
+    protected $entityTools;
 
     /**
      * @var DomainRepository
@@ -35,19 +29,16 @@ class UpdateByBrandSpec extends ObjectBehavior
     protected $entity;
 
     public function let(
-        EntityManagerInterface $em,
-        EntityPersisterInterface $entityPersister,
+        EntityTools $entityTools,
         DomainRepository $domainRepository,
         BrandInterface $entity
     ) {
-        $this->em = $em;
-        $this->entityPersister = $entityPersister;
+        $this->entityTools = $entityTools;
         $this->domainRepository = $domainRepository;
         $this->entity = $entity;
 
         $this->beConstructedWith(
-            $em,
-            $entityPersister,
+            $entityTools,
             $domainRepository
         );
     }
@@ -80,7 +71,7 @@ class UpdateByBrandSpec extends ObjectBehavior
         $this->prepareDomain($domain);
 
         $this
-            ->em
+            ->entityTools
             ->remove($domain)
             ->shouldBeCalled();
 
@@ -104,17 +95,26 @@ class UpdateByBrandSpec extends ObjectBehavior
             ->getName()
             ->willReturn('brandName');
 
+        $this
+            ->entityTools
+            ->entityToDto($domain)
+            ->willReturn($domainDto);
+
         $this->prepareDtoCallChain($domain, $domainDto);
 
         $this
-            ->entityPersister
-            ->persistDto($domainDto, $domain)
+            ->entityTools
+            ->persistDto($domainDto, $domain, true)
             ->willReturn($domain)
             ->shouldBeCalled();
 
         $this
             ->entity
             ->setDomain($domain)
+            ->shouldBeCalled();
+
+        $this->entityTools
+            ->persist($this->entity)
             ->shouldBeCalled();
 
         $this->execute(
@@ -139,10 +139,11 @@ class UpdateByBrandSpec extends ObjectBehavior
             ->shouldNotBeCalled();
 
         $this
-            ->entityPersister
+            ->entityTools
             ->persistDto(
                 Argument::type(DomainDto::class),
-                null
+                null,
+                true
             )
             ->willReturn($domain)
             ->shouldBeCalled();
@@ -150,6 +151,10 @@ class UpdateByBrandSpec extends ObjectBehavior
         $this
             ->entity
             ->setDomain($domain)
+            ->shouldBeCalled();
+
+        $this->entityTools
+            ->persist($this->entity)
             ->shouldBeCalled();
 
         $this->execute(

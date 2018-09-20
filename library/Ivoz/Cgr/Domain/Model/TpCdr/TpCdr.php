@@ -79,4 +79,3 @@ class TpCdr extends TpCdrAbstract implements TpCdrInterface
         return $timespan['MatchedDestId'];
     }
 }
-

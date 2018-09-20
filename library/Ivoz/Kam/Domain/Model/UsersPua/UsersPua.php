@@ -28,4 +28,3 @@ class UsersPua extends UsersPuaAbstract implements UsersPuaInterface
         return $this->id;
     }
 }
-

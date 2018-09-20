@@ -70,7 +70,7 @@ services:
   ################################################
   ## Order
   ## ?_order[property]=<asc|desc>
-  ## /_offers?order[name]=desc&order[id]=asc
+  ## /endpoint?_order[name]=desc&_order[id]=asc
   ################################################
   ivoz.api.filter.order:
     parent: 'api_platform.doctrine.orm.order_filter'
@@ -80,4 +80,17 @@ services:
     arguments:
       $properties: ~
       $resourceMetadataFactory: '@api_platform.metadata.resource.metadata_factory'
+    tags: [ 'api_platform.filter' ]
+
+  ################################################
+  ## Properties
+  ## ?_properties[]=<propertyName>
+  ## /endpoint?_properties[]=name&_properties[]=lastname
+  ################################################
+  ivoz.api.filter.property_filter:
+    parent: 'api_platform.serializer.property_filter'
+    public: false
+    arguments:
+      $parameterName: '_properties'
+      $overrideDefaultProperties: false
     tags: [ 'api_platform.filter' ]

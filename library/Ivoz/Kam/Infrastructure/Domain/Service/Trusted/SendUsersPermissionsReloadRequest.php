@@ -23,7 +23,7 @@ class SendUsersPermissionsReloadRequest implements TrustedLifecycleEventHandlerI
         ];
     }
 
-    public function execute(TrustedInterface $entity)
+    public function execute(TrustedInterface $trusted)
     {
         $this->usersPermissionsReload->send();
     }

@@ -41,14 +41,14 @@ abstract class DdiProviderAddressAbstract
      */
     protected function __construct()
     {
-
     }
 
     abstract public function getId();
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "DdiProviderAddress",
             $this->getId()
         );
@@ -166,11 +166,10 @@ abstract class DdiProviderAddressAbstract
             'ddiProviderId' => self::getDdiProvider() ? self::getDdiProvider()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set ip
      *
      * @param string $ip
@@ -199,6 +198,7 @@ abstract class DdiProviderAddressAbstract
     }
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description
@@ -274,8 +274,5 @@ abstract class DdiProviderAddressAbstract
         return $this->ddiProvider;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

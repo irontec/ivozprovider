@@ -2,7 +2,9 @@
 
 namespace spec\Ivoz\Provider\Domain\Service\FaxesInOut;
 
+use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Core\Infrastructure\Service\Asterisk\ARI\ARIConnector;
+use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutDto;
 use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutInterface;
 use Ivoz\Provider\Domain\Service\FaxesInOut\SendFaxFile;
 use PhpSpec\ObjectBehavior;
@@ -13,14 +15,24 @@ class SendFaxFileSpec extends ObjectBehavior
 {
     use HelperTrait;
 
+    /**
+     * @var ARIConnector
+     */
     protected $ariConnector;
 
+    /**
+     * @var EntityTools
+     */
+    protected $entityTools;
+
     function let(
-        ARIConnector $ariConnector
+        ARIConnector $ariConnector,
+        EntityTools $entityTools
     ) {
         $this->ariConnector = $ariConnector;
+        $this->entityTools = $entityTools;
 
-        $this->beConstructedWith($ariConnector);
+        $this->beConstructedWith($ariConnector, $entityTools);
     }
 
     function it_is_initializable()
@@ -32,7 +44,8 @@ class SendFaxFileSpec extends ObjectBehavior
         FaxesInOutInterface $entity
     ) {
         $this->prepareSendFaxFileConditions(
-            $entity, null
+            $entity,
+            null
         );
 
         $this
@@ -47,7 +60,9 @@ class SendFaxFileSpec extends ObjectBehavior
         FaxesInOutInterface $entity
     ) {
         $this->prepareSendFaxFileConditions(
-            $entity, 'out', null
+            $entity,
+            'out',
+            null
         );
 
         $this
@@ -62,7 +77,9 @@ class SendFaxFileSpec extends ObjectBehavior
         FaxesInOutInterface $entity
     ) {
         $this->prepareSendFaxFileConditions(
-            $entity, 'out', 'pending, false'
+            $entity,
+            'out',
+            'pending, false'
         );
 
         $this
@@ -86,11 +103,11 @@ class SendFaxFileSpec extends ObjectBehavior
         $this->execute($entity);
     }
 
-
     function it_sets_error_status_on_exception_(
-        FaxesInOutInterface $entity
+        FaxesInOutInterface $faxesInOut,
+        FaxesInOutDto $faxesInOutDto
     ) {
-        $this->prepareSendFaxFileConditions($entity);
+        $this->prepareSendFaxFileConditions($faxesInOut);
         $exception = new \Exception();
 
         $this
@@ -99,17 +116,30 @@ class SendFaxFileSpec extends ObjectBehavior
             ->willThrow(new \Exception())
             ->shouldBeCalled();
 
-        $entity
+        $this
+            ->entityTools
+            ->entityToDto($faxesInOut)
+            ->willReturn($faxesInOutDto);
+
+        $faxesInOutDto
             ->setStatus('error')
             ->shouldBeCalled();
 
         $this
+            ->entityTools
+            ->persistDto($faxesInOutDto, $faxesInOut, true)
+            ->shouldBeCalled();
+
+        $this
             ->shouldThrow($exception)
-            ->during('execute', [$entity]);
+            ->during('execute', [$faxesInOut]);
     }
 
     protected function prepareSendFaxFileConditions(
-        $entity, $type = 'Out', $status = 'pending', bool $statusChanged = true
+        $entity,
+        $type = 'Out',
+        $status = 'pending',
+        bool $statusChanged = true
     ) {
         $entity
             ->getType()

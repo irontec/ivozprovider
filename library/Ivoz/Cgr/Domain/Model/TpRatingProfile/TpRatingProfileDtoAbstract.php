@@ -77,6 +77,11 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
      */
     private $ratingProfile;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierDto | null
+     */
+    private $outgoingRoutingRelCarrier;
+
 
     use DtoNormalizer;
 
@@ -107,7 +112,8 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
             'cdrStatQueueIds' => 'cdrStatQueueIds',
             'createdAt' => 'createdAt',
             'id' => 'id',
-            'ratingProfileId' => 'ratingProfile'
+            'ratingProfileId' => 'ratingProfile',
+            'outgoingRoutingRelCarrierId' => 'outgoingRoutingRelCarrier'
         ];
     }
 
@@ -129,7 +135,8 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
             'cdrStatQueueIds' => $this->getCdrStatQueueIds(),
             'createdAt' => $this->getCreatedAt(),
             'id' => $this->getId(),
-            'ratingProfile' => $this->getRatingProfile()
+            'ratingProfile' => $this->getRatingProfile(),
+            'outgoingRoutingRelCarrier' => $this->getOutgoingRoutingRelCarrier()
         ];
     }
 
@@ -139,6 +146,7 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
         $this->ratingProfile = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\RatingProfile\\RatingProfile', $this->getRatingProfileId());
+        $this->outgoingRoutingRelCarrier = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\OutgoingRoutingRelCarrier\\OutgoingRoutingRelCarrier', $this->getOutgoingRoutingRelCarrierId());
     }
 
     /**
@@ -146,7 +154,6 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -434,6 +441,50 @@ abstract class TpRatingProfileDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierDto $outgoingRoutingRelCarrier
+     *
+     * @return static
+     */
+    public function setOutgoingRoutingRelCarrier(\Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierDto $outgoingRoutingRelCarrier = null)
+    {
+        $this->outgoingRoutingRelCarrier = $outgoingRoutingRelCarrier;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierDto
+     */
+    public function getOutgoingRoutingRelCarrier()
+    {
+        return $this->outgoingRoutingRelCarrier;
+    }
+
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setOutgoingRoutingRelCarrierId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierDto($id)
+            : null;
+
+        return $this->setOutgoingRoutingRelCarrier($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getOutgoingRoutingRelCarrierId()
+    {
+        if ($dto = $this->getOutgoingRoutingRelCarrier()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
 }
-
-

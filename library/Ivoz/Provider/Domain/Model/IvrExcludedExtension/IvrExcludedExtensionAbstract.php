@@ -31,14 +31,14 @@ abstract class IvrExcludedExtensionAbstract
      */
     protected function __construct()
     {
-
     }
 
     abstract public function getId();
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "IvrExcludedExtension",
             $this->getId()
         );
@@ -152,8 +152,6 @@ abstract class IvrExcludedExtensionAbstract
             'extensionId' => self::getExtension() ? self::getExtension()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -204,8 +202,5 @@ abstract class IvrExcludedExtensionAbstract
         return $this->extension;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

@@ -91,8 +91,6 @@ trait InvoiceTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add relFixedCost
      *
@@ -164,7 +162,4 @@ trait InvoiceTrait
 
         return $this->relFixedCosts->toArray();
     }
-
-
 }
-

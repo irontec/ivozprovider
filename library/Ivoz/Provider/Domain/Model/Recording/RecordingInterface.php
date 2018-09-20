@@ -2,9 +2,10 @@
 
 namespace Ivoz\Provider\Domain\Model\Recording;
 
+use Ivoz\Core\Domain\Service\FileContainerInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface RecordingInterface extends LoggableEntityInterface
+interface RecordingInterface extends FileContainerInterface, LoggableEntityInterface
 {
     /**
      * @codeCoverageIgnore
@@ -18,6 +19,7 @@ interface RecordingInterface extends LoggableEntityInterface
     public function getFileObjects();
 
     /**
+     * @deprecated
      * Set callid
      *
      * @param string $callid
@@ -34,6 +36,7 @@ interface RecordingInterface extends LoggableEntityInterface
     public function getCallid();
 
     /**
+     * @deprecated
      * Set calldate
      *
      * @param \DateTime $calldate
@@ -50,6 +53,7 @@ interface RecordingInterface extends LoggableEntityInterface
     public function getCalldate();
 
     /**
+     * @deprecated
      * Set type
      *
      * @param string $type
@@ -66,6 +70,7 @@ interface RecordingInterface extends LoggableEntityInterface
     public function getType();
 
     /**
+     * @deprecated
      * Set duration
      *
      * @param float $duration
@@ -82,6 +87,7 @@ interface RecordingInterface extends LoggableEntityInterface
     public function getDuration();
 
     /**
+     * @deprecated
      * Set caller
      *
      * @param string $caller
@@ -98,6 +104,7 @@ interface RecordingInterface extends LoggableEntityInterface
     public function getCaller();
 
     /**
+     * @deprecated
      * Set callee
      *
      * @param string $callee
@@ -114,6 +121,7 @@ interface RecordingInterface extends LoggableEntityInterface
     public function getCallee();
 
     /**
+     * @deprecated
      * Set recorder
      *
      * @param string $recorder
@@ -183,6 +191,4 @@ interface RecordingInterface extends LoggableEntityInterface
      * @return null | TempFile
      */
     public function getTempFileByFieldName($fldName);
-
 }
-

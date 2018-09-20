@@ -99,7 +99,8 @@ abstract class InvoiceAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "Invoice",
             $this->getId()
         );
@@ -278,11 +279,10 @@ abstract class InvoiceAbstract
             'schedulerId' => self::getScheduler() ? self::getScheduler()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set number
      *
      * @param string $number
@@ -311,6 +311,7 @@ abstract class InvoiceAbstract
     }
 
     /**
+     * @deprecated
      * Set inDate
      *
      * @param \DateTime $inDate
@@ -320,10 +321,10 @@ abstract class InvoiceAbstract
     public function setInDate($inDate = null)
     {
         if (!is_null($inDate)) {
-        $inDate = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
-            $inDate,
-            null
-        );
+            $inDate = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
+                $inDate,
+                null
+            );
         }
 
         $this->inDate = $inDate;
@@ -342,6 +343,7 @@ abstract class InvoiceAbstract
     }
 
     /**
+     * @deprecated
      * Set outDate
      *
      * @param \DateTime $outDate
@@ -351,10 +353,10 @@ abstract class InvoiceAbstract
     public function setOutDate($outDate = null)
     {
         if (!is_null($outDate)) {
-        $outDate = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
-            $outDate,
-            null
-        );
+            $outDate = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
+                $outDate,
+                null
+            );
         }
 
         $this->outDate = $outDate;
@@ -373,6 +375,7 @@ abstract class InvoiceAbstract
     }
 
     /**
+     * @deprecated
      * Set total
      *
      * @param string $total
@@ -384,6 +387,7 @@ abstract class InvoiceAbstract
         if (!is_null($total)) {
             if (!is_null($total)) {
                 Assertion::numeric($total);
+                $total = (float) $total;
             }
         }
 
@@ -403,6 +407,7 @@ abstract class InvoiceAbstract
     }
 
     /**
+     * @deprecated
      * Set taxRate
      *
      * @param string $taxRate
@@ -414,6 +419,7 @@ abstract class InvoiceAbstract
         if (!is_null($taxRate)) {
             if (!is_null($taxRate)) {
                 Assertion::numeric($taxRate);
+                $taxRate = (float) $taxRate;
             }
         }
 
@@ -433,6 +439,7 @@ abstract class InvoiceAbstract
     }
 
     /**
+     * @deprecated
      * Set totalWithTax
      *
      * @param string $totalWithTax
@@ -444,6 +451,7 @@ abstract class InvoiceAbstract
         if (!is_null($totalWithTax)) {
             if (!is_null($totalWithTax)) {
                 Assertion::numeric($totalWithTax);
+                $totalWithTax = (float) $totalWithTax;
             }
         }
 
@@ -463,6 +471,7 @@ abstract class InvoiceAbstract
     }
 
     /**
+     * @deprecated
      * Set status
      *
      * @param string $status
@@ -473,12 +482,12 @@ abstract class InvoiceAbstract
     {
         if (!is_null($status)) {
             Assertion::maxLength($status, 25, 'status value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        Assertion::choice($status, array (
-          0 => 'waiting',
-          1 => 'processing',
-          2 => 'created',
-          3 => 'error',
-        ), 'statusvalue "%s" is not an element of the valid values: %s');
+            Assertion::choice($status, array (
+              0 => 'waiting',
+              1 => 'processing',
+              2 => 'created',
+              3 => 'error',
+            ), 'statusvalue "%s" is not an element of the valid values: %s');
         }
 
         $this->status = $status;
@@ -497,6 +506,7 @@ abstract class InvoiceAbstract
     }
 
     /**
+     * @deprecated
      * Set statusMsg
      *
      * @param string $statusMsg
@@ -654,7 +664,6 @@ abstract class InvoiceAbstract
     public function setPdf(Pdf $pdf)
     {
         $this->pdf = $pdf;
-
         return $this;
     }
 
@@ -667,7 +676,5 @@ abstract class InvoiceAbstract
     {
         return $this->pdf;
     }
-
     // @codeCoverageIgnoreEnd
 }
-

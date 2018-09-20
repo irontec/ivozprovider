@@ -81,7 +81,8 @@ abstract class RecordingAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "Recording",
             $this->getId()
         );
@@ -240,11 +241,10 @@ abstract class RecordingAbstract
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set callid
      *
      * @param string $callid
@@ -273,6 +273,7 @@ abstract class RecordingAbstract
     }
 
     /**
+     * @deprecated
      * Set calldate
      *
      * @param \DateTime $calldate
@@ -303,6 +304,7 @@ abstract class RecordingAbstract
     }
 
     /**
+     * @deprecated
      * Set type
      *
      * @param string $type
@@ -333,6 +335,7 @@ abstract class RecordingAbstract
     }
 
     /**
+     * @deprecated
      * Set duration
      *
      * @param float $duration
@@ -343,6 +346,7 @@ abstract class RecordingAbstract
     {
         Assertion::notNull($duration, 'duration value "%s" is null, but non null value was expected.');
         Assertion::numeric($duration);
+        $duration = (float) $duration;
 
         $this->duration = $duration;
 
@@ -360,6 +364,7 @@ abstract class RecordingAbstract
     }
 
     /**
+     * @deprecated
      * Set caller
      *
      * @param string $caller
@@ -388,6 +393,7 @@ abstract class RecordingAbstract
     }
 
     /**
+     * @deprecated
      * Set callee
      *
      * @param string $callee
@@ -416,6 +422,7 @@ abstract class RecordingAbstract
     }
 
     /**
+     * @deprecated
      * Set recorder
      *
      * @param string $recorder
@@ -477,7 +484,6 @@ abstract class RecordingAbstract
     public function setRecordedFile(RecordedFile $recordedFile)
     {
         $this->recordedFile = $recordedFile;
-
         return $this;
     }
 
@@ -490,7 +496,5 @@ abstract class RecordingAbstract
     {
         return $this->recordedFile;
     }
-
     // @codeCoverageIgnoreEnd
 }
-

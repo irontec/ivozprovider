@@ -1,6 +1,7 @@
 Ivoz\Provider\Domain\Model\Fax\Fax:
   repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\FaxDoctrineRepository
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: Faxes
   id:
     id:

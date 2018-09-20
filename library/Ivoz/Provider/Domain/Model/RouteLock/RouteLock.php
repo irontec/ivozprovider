@@ -47,7 +47,4 @@ class RouteLock extends RouteLockAbstract implements RouteLockInterface
     {
         return $this->getOpen() == '1';
     }
-
-
 }
-

@@ -91,7 +91,8 @@ abstract class UsersPresentityAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "UsersPresentity",
             $this->getId()
         );
@@ -159,9 +160,8 @@ abstract class UsersPresentityAbstract
             $dto->getReceivedTime(),
             $dto->getBody(),
             $dto->getSender(),
-            $dto->getPriority());
-
-        $self;
+            $dto->getPriority()
+        );
 
         $self->sanitizeValues();
         $self->initChangelog();
@@ -232,11 +232,10 @@ abstract class UsersPresentityAbstract
             'priority' => self::getPriority()
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set username
      *
      * @param string $username
@@ -264,6 +263,7 @@ abstract class UsersPresentityAbstract
     }
 
     /**
+     * @deprecated
      * Set domain
      *
      * @param string $domain
@@ -291,6 +291,7 @@ abstract class UsersPresentityAbstract
     }
 
     /**
+     * @deprecated
      * Set event
      *
      * @param string $event
@@ -318,6 +319,7 @@ abstract class UsersPresentityAbstract
     }
 
     /**
+     * @deprecated
      * Set etag
      *
      * @param string $etag
@@ -345,6 +347,7 @@ abstract class UsersPresentityAbstract
     }
 
     /**
+     * @deprecated
      * Set expires
      *
      * @param integer $expires
@@ -372,6 +375,7 @@ abstract class UsersPresentityAbstract
     }
 
     /**
+     * @deprecated
      * Set receivedTime
      *
      * @param integer $receivedTime
@@ -399,6 +403,7 @@ abstract class UsersPresentityAbstract
     }
 
     /**
+     * @deprecated
      * Set body
      *
      * @param string $body
@@ -425,6 +430,7 @@ abstract class UsersPresentityAbstract
     }
 
     /**
+     * @deprecated
      * Set sender
      *
      * @param string $sender
@@ -452,6 +458,7 @@ abstract class UsersPresentityAbstract
     }
 
     /**
+     * @deprecated
      * Set priority
      *
      * @param integer $priority
@@ -478,8 +485,5 @@ abstract class UsersPresentityAbstract
         return $this->priority;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

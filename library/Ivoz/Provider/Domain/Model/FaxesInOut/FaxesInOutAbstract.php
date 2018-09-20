@@ -75,7 +75,8 @@ abstract class FaxesInOutAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "FaxesInOut",
             $this->getId()
         );
@@ -234,11 +235,10 @@ abstract class FaxesInOutAbstract
             'dstCountryId' => self::getDstCountry() ? self::getDstCountry()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set calldate
      *
      * @param \DateTime $calldate
@@ -269,6 +269,7 @@ abstract class FaxesInOutAbstract
     }
 
     /**
+     * @deprecated
      * Set src
      *
      * @param string $src
@@ -297,6 +298,7 @@ abstract class FaxesInOutAbstract
     }
 
     /**
+     * @deprecated
      * Set dst
      *
      * @param string $dst
@@ -325,6 +327,7 @@ abstract class FaxesInOutAbstract
     }
 
     /**
+     * @deprecated
      * Set type
      *
      * @param string $type
@@ -335,10 +338,10 @@ abstract class FaxesInOutAbstract
     {
         if (!is_null($type)) {
             Assertion::maxLength($type, 20, 'type value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        Assertion::choice($type, array (
-          0 => 'In',
-          1 => 'Out',
-        ), 'typevalue "%s" is not an element of the valid values: %s');
+            Assertion::choice($type, array (
+              0 => 'In',
+              1 => 'Out',
+            ), 'typevalue "%s" is not an element of the valid values: %s');
         }
 
         $this->type = $type;
@@ -357,6 +360,7 @@ abstract class FaxesInOutAbstract
     }
 
     /**
+     * @deprecated
      * Set pages
      *
      * @param string $pages
@@ -385,6 +389,7 @@ abstract class FaxesInOutAbstract
     }
 
     /**
+     * @deprecated
      * Set status
      *
      * @param string $status
@@ -469,7 +474,6 @@ abstract class FaxesInOutAbstract
     public function setFile(File $file)
     {
         $this->file = $file;
-
         return $this;
     }
 
@@ -482,7 +486,5 @@ abstract class FaxesInOutAbstract
     {
         return $this->file;
     }
-
     // @codeCoverageIgnoreEnd
 }
-

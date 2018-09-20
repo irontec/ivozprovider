@@ -221,8 +221,6 @@ trait CompanyTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add extension
      *
@@ -1014,7 +1012,4 @@ trait CompanyTrait
 
         return $this->relRoutingTags->toArray();
     }
-
-
 }
-

@@ -23,7 +23,7 @@ class SendTrunksLcrReloadRequest implements CarrierServerLifecycleEventHandlerIn
     }
 
 
-    public function execute(CarrierServerInterface $entity, $isNew)
+    public function execute(CarrierServerInterface $carrierServer, $isNew)
     {
         $this->trunksLcrReload->send();
     }

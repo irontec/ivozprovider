@@ -98,7 +98,6 @@ abstract class RoutingPatternGroupDtoAbstract implements DataTransferObjectInter
                 );
             }
         }
-
         if (!is_null($this->outgoingRoutings)) {
             $items = $this->getOutgoingRoutings();
             $this->outgoingRoutings = [];
@@ -109,7 +108,6 @@ abstract class RoutingPatternGroupDtoAbstract implements DataTransferObjectInter
                 );
             }
         }
-
     }
 
     /**
@@ -273,5 +271,3 @@ abstract class RoutingPatternGroupDtoAbstract implements DataTransferObjectInter
         return $this->outgoingRoutings;
     }
 }
-
-

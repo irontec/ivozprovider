@@ -214,7 +214,8 @@ abstract class CompanyAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "Company",
             $this->getId()
         );
@@ -284,7 +285,8 @@ abstract class CompanyAbstract
             $dto->getTown(),
             $dto->getProvince(),
             $dto->getCountryName(),
-            $dto->getBillingMethod());
+            $dto->getBillingMethod()
+        );
 
         $self
             ->setDomainUsers($dto->getDomainUsers())
@@ -448,11 +450,10 @@ abstract class CompanyAbstract
             'invoiceNotificationTemplateId' => self::getInvoiceNotificationTemplate() ? self::getInvoiceNotificationTemplate()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set type
      *
      * @param string $type
@@ -486,6 +487,7 @@ abstract class CompanyAbstract
     }
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -513,6 +515,7 @@ abstract class CompanyAbstract
     }
 
     /**
+     * @deprecated
      * Set domainUsers
      *
      * @param string $domainUsers
@@ -541,6 +544,7 @@ abstract class CompanyAbstract
     }
 
     /**
+     * @deprecated
      * Set nif
      *
      * @param string $nif
@@ -568,6 +572,7 @@ abstract class CompanyAbstract
     }
 
     /**
+     * @deprecated
      * Set distributeMethod
      *
      * @param string $distributeMethod
@@ -600,6 +605,7 @@ abstract class CompanyAbstract
     }
 
     /**
+     * @deprecated
      * Set maxCalls
      *
      * @param integer $maxCalls
@@ -628,6 +634,7 @@ abstract class CompanyAbstract
     }
 
     /**
+     * @deprecated
      * Set postalAddress
      *
      * @param string $postalAddress
@@ -655,6 +662,7 @@ abstract class CompanyAbstract
     }
 
     /**
+     * @deprecated
      * Set postalCode
      *
      * @param string $postalCode
@@ -682,6 +690,7 @@ abstract class CompanyAbstract
     }
 
     /**
+     * @deprecated
      * Set town
      *
      * @param string $town
@@ -709,6 +718,7 @@ abstract class CompanyAbstract
     }
 
     /**
+     * @deprecated
      * Set province
      *
      * @param string $province
@@ -736,6 +746,7 @@ abstract class CompanyAbstract
     }
 
     /**
+     * @deprecated
      * Set countryName
      *
      * @param string $countryName
@@ -763,6 +774,7 @@ abstract class CompanyAbstract
     }
 
     /**
+     * @deprecated
      * Set ipfilter
      *
      * @param boolean $ipfilter
@@ -791,6 +803,7 @@ abstract class CompanyAbstract
     }
 
     /**
+     * @deprecated
      * Set onDemandRecord
      *
      * @param integer $onDemandRecord
@@ -821,6 +834,7 @@ abstract class CompanyAbstract
     }
 
     /**
+     * @deprecated
      * Set onDemandRecordCode
      *
      * @param string $onDemandRecordCode
@@ -849,6 +863,7 @@ abstract class CompanyAbstract
     }
 
     /**
+     * @deprecated
      * Set externallyextraopts
      *
      * @param string $externallyextraopts
@@ -877,6 +892,7 @@ abstract class CompanyAbstract
     }
 
     /**
+     * @deprecated
      * Set recordingsLimitMB
      *
      * @param integer $recordingsLimitMB
@@ -907,6 +923,7 @@ abstract class CompanyAbstract
     }
 
     /**
+     * @deprecated
      * Set recordingsLimitEmail
      *
      * @param string $recordingsLimitEmail
@@ -935,6 +952,7 @@ abstract class CompanyAbstract
     }
 
     /**
+     * @deprecated
      * Set billingMethod
      *
      * @param string $billingMethod
@@ -967,6 +985,7 @@ abstract class CompanyAbstract
     }
 
     /**
+     * @deprecated
      * Set balance
      *
      * @param string $balance
@@ -978,6 +997,7 @@ abstract class CompanyAbstract
         if (!is_null($balance)) {
             if (!is_null($balance)) {
                 Assertion::numeric($balance);
+                $balance = (float) $balance;
             }
         }
 
@@ -1308,8 +1328,5 @@ abstract class CompanyAbstract
         return $this->invoiceNotificationTemplate;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

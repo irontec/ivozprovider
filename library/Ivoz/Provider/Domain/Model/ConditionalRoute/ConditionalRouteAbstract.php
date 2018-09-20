@@ -99,7 +99,8 @@ abstract class ConditionalRouteAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "ConditionalRoute",
             $this->getId()
         );
@@ -159,7 +160,8 @@ abstract class ConditionalRouteAbstract
         Assertion::isInstanceOf($dto, ConditionalRouteDto::class);
 
         $self = new static(
-            $dto->getName());
+            $dto->getName()
+        );
 
         $self
             ->setRoutetype($dto->getRoutetype())
@@ -261,11 +263,10 @@ abstract class ConditionalRouteAbstract
             'numberCountryId' => self::getNumberCountry() ? self::getNumberCountry()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -293,6 +294,7 @@ abstract class ConditionalRouteAbstract
     }
 
     /**
+     * @deprecated
      * Set routetype
      *
      * @param string $routetype
@@ -303,17 +305,17 @@ abstract class ConditionalRouteAbstract
     {
         if (!is_null($routetype)) {
             Assertion::maxLength($routetype, 25, 'routetype value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        Assertion::choice($routetype, array (
-          0 => 'user',
-          1 => 'number',
-          2 => 'ivr',
-          3 => 'huntGroup',
-          4 => 'voicemail',
-          5 => 'friend',
-          6 => 'queue',
-          7 => 'conferenceRoom',
-          8 => 'extension',
-        ), 'routetypevalue "%s" is not an element of the valid values: %s');
+            Assertion::choice($routetype, array (
+              0 => 'user',
+              1 => 'number',
+              2 => 'ivr',
+              3 => 'huntGroup',
+              4 => 'voicemail',
+              5 => 'friend',
+              6 => 'queue',
+              7 => 'conferenceRoom',
+              8 => 'extension',
+            ), 'routetypevalue "%s" is not an element of the valid values: %s');
         }
 
         $this->routetype = $routetype;
@@ -332,6 +334,7 @@ abstract class ConditionalRouteAbstract
     }
 
     /**
+     * @deprecated
      * Set numbervalue
      *
      * @param string $numbervalue
@@ -360,6 +363,7 @@ abstract class ConditionalRouteAbstract
     }
 
     /**
+     * @deprecated
      * Set friendvalue
      *
      * @param string $friendvalue
@@ -627,8 +631,5 @@ abstract class ConditionalRouteAbstract
         return $this->numberCountry;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

@@ -5,7 +5,6 @@ namespace Ivoz\Core\Application\Service;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\QueryBuilder;
 
-
 class QueryBuilderFactory
 {
     /**
@@ -35,14 +34,13 @@ class QueryBuilderFactory
         if (!is_null($criteria)) {
             $qb->where($criteria[0]);
 
-            if(isset($criteria[1])) {
+            if (isset($criteria[1])) {
                 $qb->setParameters($criteria[1]);
             }
         }
 
         if (!is_null($orderBy)) {
             foreach ($orderBy as $field => $order) {
-
                 preg_match('/\.*case .* as hidden ([^\s]+).*/i', $field, $caseOrder);
                 if (count($caseOrder) !== 2) {
                     $qb->addOrderBy($field, $order);

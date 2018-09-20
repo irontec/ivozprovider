@@ -44,7 +44,8 @@ class Friend extends FriendAbstract implements FriendInterface
      */
     public function __toString()
     {
-        return sprintf("%s [%s]",
+        return sprintf(
+            "%s [%s]",
             $this->getName(),
             parent::__toString()
         );
@@ -61,6 +62,7 @@ class Friend extends FriendAbstract implements FriendInterface
 
     /**
      * {@inheritDoc}
+     * @see FriendAbstract::setName
      */
     public function setName($name)
     {
@@ -74,6 +76,7 @@ class Friend extends FriendAbstract implements FriendInterface
 
     /**
      * {@inheritDoc}
+     * @see FriendAbstract::setIp
      */
     public function setIp($ip = null)
     {
@@ -85,11 +88,12 @@ class Friend extends FriendAbstract implements FriendInterface
 
     /**
      * {@inheritDoc}
+     * @see FriendAbstract::setPort
      */
     public function setPort($port = null)
     {
         if (!empty($port)) {
-            Assertion::regex($port, '/^[0-9]+$/');
+            Assertion::regex((string) $port, '/^[0-9]+$/');
             Assertion::lessThan($port, pow(2, 16), 'Friend.port provided "%s" is not lower than "%s".');
         }
         return parent::setPort($port);
@@ -97,6 +101,7 @@ class Friend extends FriendAbstract implements FriendInterface
 
     /**
      * {@inheritDoc}
+     * @see FriendAbstract::setPassword
      */
     public function setPassword($password = null)
     {
@@ -116,9 +121,11 @@ class Friend extends FriendAbstract implements FriendInterface
      */
     public function getContact()
     {
-        return sprintf("sip:%s@%s",
+        return sprintf(
+            "sip:%s@%s",
             $this->getName(),
-            $this->getDomain());
+            $this->getDomain()
+        );
     }
 
     /**
@@ -151,7 +158,6 @@ class Friend extends FriendAbstract implements FriendInterface
         foreach ($patterns as $pattern) {
             $regexp = '/' . $pattern->getRegExp() . '/';
             if (preg_match($regexp, $exten)) {
-
                 return true;
             }
         }
@@ -189,7 +195,6 @@ class Friend extends FriendAbstract implements FriendInterface
     {
         $language = $this->getLanguage();
         if (!$language) {
-
             return $this
                 ->getCompany()
                 ->getLanguageCode();
@@ -216,4 +221,3 @@ class Friend extends FriendAbstract implements FriendInterface
         return $ddi;
     }
 }
-

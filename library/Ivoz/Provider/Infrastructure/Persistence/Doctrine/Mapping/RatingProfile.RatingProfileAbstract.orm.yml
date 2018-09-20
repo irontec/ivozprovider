@@ -4,7 +4,7 @@ Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileAbstract:
     ratingProfile_company_plan_tag:
       columns:
         - companyId
-        - ratingPlanId
+        - ratingPlanGroupId
         - routingTagId
         - activationTime
   fields:
@@ -39,14 +39,14 @@ Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileAbstract:
           nullable: true
           onDelete: cascade
       orphanRemoval: false
-    ratingPlan:
-      targetEntity: \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface
+    ratingPlanGroup:
+      targetEntity: \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface
       cascade: {  }
       fetch: LAZY
       mappedBy: null
       inversedBy: null
       joinColumns:
-        ratingPlanId:
+        ratingPlanGroupId:
           referencedColumnName: id
           nullable: false
           onDelete: cascade
@@ -63,8 +63,3 @@ Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileAbstract:
           nullable: true
           onDelete: cascade
       orphanRemoval: false
-  oneToOne:
-    tpRatingProfile:
-      targetEntity: Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface
-      mappedBy: ratingProfile
-      fetch: LAZY

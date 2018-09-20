@@ -15,21 +15,25 @@ interface FriendInterface extends LoggableEntityInterface
 
     /**
      * {@inheritDoc}
+     * @see FriendAbstract::setName
      */
     public function setName($name);
 
     /**
      * {@inheritDoc}
+     * @see FriendAbstract::setIp
      */
     public function setIp($ip = null);
 
     /**
      * {@inheritDoc}
+     * @see FriendAbstract::setPort
      */
     public function setPort($port = null);
 
     /**
      * {@inheritDoc}
+     * @see FriendAbstract::setPassword
      */
     public function setPassword($password = null);
 
@@ -75,6 +79,7 @@ interface FriendInterface extends LoggableEntityInterface
     public function getName();
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description
@@ -91,6 +96,7 @@ interface FriendInterface extends LoggableEntityInterface
     public function getDescription();
 
     /**
+     * @deprecated
      * Set transport
      *
      * @param string $transport
@@ -121,6 +127,7 @@ interface FriendInterface extends LoggableEntityInterface
     public function getPort();
 
     /**
+     * @deprecated
      * Set authNeeded
      *
      * @param string $authNeeded
@@ -144,6 +151,7 @@ interface FriendInterface extends LoggableEntityInterface
     public function getPassword();
 
     /**
+     * @deprecated
      * Set priority
      *
      * @param integer $priority
@@ -160,6 +168,7 @@ interface FriendInterface extends LoggableEntityInterface
     public function getPriority();
 
     /**
+     * @deprecated
      * Set disallow
      *
      * @param string $disallow
@@ -176,6 +185,7 @@ interface FriendInterface extends LoggableEntityInterface
     public function getDisallow();
 
     /**
+     * @deprecated
      * Set allow
      *
      * @param string $allow
@@ -192,6 +202,7 @@ interface FriendInterface extends LoggableEntityInterface
     public function getAllow();
 
     /**
+     * @deprecated
      * Set directMediaMethod
      *
      * @param string $directMediaMethod
@@ -208,6 +219,7 @@ interface FriendInterface extends LoggableEntityInterface
     public function getDirectMediaMethod();
 
     /**
+     * @deprecated
      * Set calleridUpdateHeader
      *
      * @param string $calleridUpdateHeader
@@ -224,6 +236,7 @@ interface FriendInterface extends LoggableEntityInterface
     public function getCalleridUpdateHeader();
 
     /**
+     * @deprecated
      * Set updateCallerid
      *
      * @param string $updateCallerid
@@ -240,6 +253,7 @@ interface FriendInterface extends LoggableEntityInterface
     public function getUpdateCallerid();
 
     /**
+     * @deprecated
      * Set fromDomain
      *
      * @param string $fromDomain
@@ -256,6 +270,7 @@ interface FriendInterface extends LoggableEntityInterface
     public function getFromDomain();
 
     /**
+     * @deprecated
      * Set directConnectivity
      *
      * @param string $directConnectivity
@@ -421,6 +436,4 @@ interface FriendInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\FriendsPattern\FriendsPatternInterface[]
      */
     public function getPatterns(\Doctrine\Common\Collections\Criteria $criteria = null);
-
 }
-

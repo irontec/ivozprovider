@@ -66,6 +66,7 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
     public function getName();
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description
@@ -82,6 +83,7 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
     public function getDescription();
 
     /**
+     * @deprecated
      * Set transport
      *
      * @param string $transport
@@ -112,6 +114,7 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
     public function getPort();
 
     /**
+     * @deprecated
      * Set authNeeded
      *
      * @param string $authNeeded
@@ -135,6 +138,7 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
     public function getPassword();
 
     /**
+     * @deprecated
      * Set disallow
      *
      * @param string $disallow
@@ -151,6 +155,7 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
     public function getDisallow();
 
     /**
+     * @deprecated
      * Set allow
      *
      * @param string $allow
@@ -167,6 +172,7 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
     public function getAllow();
 
     /**
+     * @deprecated
      * Set directMediaMethod
      *
      * @param string $directMediaMethod
@@ -183,6 +189,7 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
     public function getDirectMediaMethod();
 
     /**
+     * @deprecated
      * Set calleridUpdateHeader
      *
      * @param string $calleridUpdateHeader
@@ -199,6 +206,7 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
     public function getCalleridUpdateHeader();
 
     /**
+     * @deprecated
      * Set updateCallerid
      *
      * @param string $updateCallerid
@@ -215,6 +223,7 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
     public function getUpdateCallerid();
 
     /**
+     * @deprecated
      * Set fromDomain
      *
      * @param string $fromDomain
@@ -231,6 +240,7 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
     public function getFromDomain();
 
     /**
+     * @deprecated
      * Set directConnectivity
      *
      * @param string $directConnectivity
@@ -396,6 +406,4 @@ interface ResidentialDeviceInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Ddi\DdiInterface[]
      */
     public function getDdis(\Doctrine\Common\Collections\Criteria $criteria = null);
-
 }
-

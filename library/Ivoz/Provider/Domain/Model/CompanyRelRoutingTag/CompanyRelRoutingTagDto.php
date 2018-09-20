@@ -6,5 +6,3 @@ class CompanyRelRoutingTagDto extends CompanyRelRoutingTagDtoAbstract
 {
 
 }
-
-

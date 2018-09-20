@@ -13,6 +13,7 @@ interface UsersLocationAttrInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @deprecated
      * Set ruid
      *
      * @param string $ruid
@@ -29,6 +30,7 @@ interface UsersLocationAttrInterface extends LoggableEntityInterface
     public function getRuid();
 
     /**
+     * @deprecated
      * Set username
      *
      * @param string $username
@@ -45,6 +47,7 @@ interface UsersLocationAttrInterface extends LoggableEntityInterface
     public function getUsername();
 
     /**
+     * @deprecated
      * Set domain
      *
      * @param string $domain
@@ -61,6 +64,7 @@ interface UsersLocationAttrInterface extends LoggableEntityInterface
     public function getDomain();
 
     /**
+     * @deprecated
      * Set aname
      *
      * @param string $aname
@@ -77,6 +81,7 @@ interface UsersLocationAttrInterface extends LoggableEntityInterface
     public function getAname();
 
     /**
+     * @deprecated
      * Set atype
      *
      * @param integer $atype
@@ -93,6 +98,7 @@ interface UsersLocationAttrInterface extends LoggableEntityInterface
     public function getAtype();
 
     /**
+     * @deprecated
      * Set avalue
      *
      * @param string $avalue
@@ -109,6 +115,7 @@ interface UsersLocationAttrInterface extends LoggableEntityInterface
     public function getAvalue();
 
     /**
+     * @deprecated
      * Set lastModified
      *
      * @param \DateTime $lastModified
@@ -123,6 +130,4 @@ interface UsersLocationAttrInterface extends LoggableEntityInterface
      * @return \DateTime
      */
     public function getLastModified();
-
 }
-

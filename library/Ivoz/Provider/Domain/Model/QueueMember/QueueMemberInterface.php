@@ -13,6 +13,7 @@ interface QueueMemberInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @deprecated
      * Set penalty
      *
      * @param integer $penalty
@@ -59,6 +60,4 @@ interface QueueMemberInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\User\UserInterface
      */
     public function getUser();
-
 }
-

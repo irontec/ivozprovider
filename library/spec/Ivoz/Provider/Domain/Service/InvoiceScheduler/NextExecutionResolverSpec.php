@@ -2,7 +2,9 @@
 
 namespace spec\Ivoz\Provider\Domain\Service\InvoiceScheduler;
 
+use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
+use Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerDto;
 use Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface;
 use Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface;
 use Ivoz\Provider\Domain\Service\InvoiceScheduler\NextExecutionResolver;
@@ -14,6 +16,19 @@ class NextExecutionResolverSpec extends ObjectBehavior
 {
     use HelperTrait;
 
+    /**
+     * @var EntityTools
+     */
+    protected $entityTools;
+
+    function let(
+        EntityTools $entityTools
+    ) {
+        $this->entityTools = $entityTools;
+
+        $this->beConstructedWith($entityTools);
+    }
+
     function it_is_initializable()
     {
         $this->shouldHaveType(NextExecutionResolver::class);
@@ -21,6 +36,7 @@ class NextExecutionResolverSpec extends ObjectBehavior
 
     function it_sets_next_execution_if_empty(
         InvoiceSchedulerInterface $scheduler,
+        InvoiceSchedulerDto $schedulerDto,
         BrandInterface $brand,
         TimezoneInterface $timezone
     ) {
@@ -42,11 +58,24 @@ class NextExecutionResolverSpec extends ObjectBehavior
             ]
         );
 
-        $scheduler
+        $this
+            ->entityTools
+            ->entityToDto($scheduler)
+            ->willReturn($schedulerDto)
+            ->shouldBeCalled();
+
+        $schedulerDto
             ->setNextExecution(
                 Argument::type(\DateTime::class)
             )
             ->shouldBeCalled();
+
+        $this
+            ->entityTools
+            ->updateEntityByDto(
+                $scheduler,
+                $schedulerDto
+            )->shouldBeCalled();
 
         $this->execute(
             $scheduler,
@@ -56,7 +85,8 @@ class NextExecutionResolverSpec extends ObjectBehavior
 
 
     function it_updates_next_execution_if_lastExecution_has_changed(
-        InvoiceSchedulerInterface $scheduler
+        InvoiceSchedulerInterface $scheduler,
+        InvoiceSchedulerDto $schedulerDto
     ) {
         $this->getterProphecy(
             $scheduler,
@@ -76,11 +106,24 @@ class NextExecutionResolverSpec extends ObjectBehavior
             ->willReturn(false)
             ->shouldBeCalled();
 
-        $scheduler
+        $this
+            ->entityTools
+            ->entityToDto($scheduler)
+            ->willReturn($schedulerDto)
+            ->shouldBeCalled();
+
+        $schedulerDto
             ->setNextExecution(
                 Argument::type(\DateTime::class)
             )
             ->shouldBeCalled();
+
+        $this
+            ->entityTools
+            ->updateEntityByDto(
+                $scheduler,
+                $schedulerDto
+            )->shouldBeCalled();
 
         $this->execute(
             $scheduler,

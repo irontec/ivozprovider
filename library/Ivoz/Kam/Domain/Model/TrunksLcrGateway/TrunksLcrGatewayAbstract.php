@@ -97,7 +97,8 @@ abstract class TrunksLcrGatewayAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "TrunksLcrGateway",
             $this->getId()
         );
@@ -158,7 +159,8 @@ abstract class TrunksLcrGatewayAbstract
 
         $self = new static(
             $dto->getLcrId(),
-            $dto->getGwName());
+            $dto->getGwName()
+        );
 
         $self
             ->setIp($dto->getIp())
@@ -255,11 +257,10 @@ abstract class TrunksLcrGatewayAbstract
             'carrierServerId' => self::getCarrierServer() ? self::getCarrierServer()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set lcrId
      *
      * @param integer $lcrId
@@ -288,6 +289,7 @@ abstract class TrunksLcrGatewayAbstract
     }
 
     /**
+     * @deprecated
      * Set gwName
      *
      * @param string $gwName
@@ -315,6 +317,7 @@ abstract class TrunksLcrGatewayAbstract
     }
 
     /**
+     * @deprecated
      * Set ip
      *
      * @param string $ip
@@ -343,6 +346,7 @@ abstract class TrunksLcrGatewayAbstract
     }
 
     /**
+     * @deprecated
      * Set hostname
      *
      * @param string $hostname
@@ -371,6 +375,7 @@ abstract class TrunksLcrGatewayAbstract
     }
 
     /**
+     * @deprecated
      * Set port
      *
      * @param integer $port
@@ -402,6 +407,7 @@ abstract class TrunksLcrGatewayAbstract
     }
 
     /**
+     * @deprecated
      * Set params
      *
      * @param string $params
@@ -430,6 +436,7 @@ abstract class TrunksLcrGatewayAbstract
     }
 
     /**
+     * @deprecated
      * Set uriScheme
      *
      * @param integer $uriScheme
@@ -461,6 +468,7 @@ abstract class TrunksLcrGatewayAbstract
     }
 
     /**
+     * @deprecated
      * Set transport
      *
      * @param integer $transport
@@ -492,6 +500,7 @@ abstract class TrunksLcrGatewayAbstract
     }
 
     /**
+     * @deprecated
      * Set strip
      *
      * @param boolean $strip
@@ -520,6 +529,7 @@ abstract class TrunksLcrGatewayAbstract
     }
 
     /**
+     * @deprecated
      * Set prefix
      *
      * @param string $prefix
@@ -548,6 +558,7 @@ abstract class TrunksLcrGatewayAbstract
     }
 
     /**
+     * @deprecated
      * Set tag
      *
      * @param string $tag
@@ -576,6 +587,7 @@ abstract class TrunksLcrGatewayAbstract
     }
 
     /**
+     * @deprecated
      * Set defunct
      *
      * @param integer $defunct
@@ -630,8 +642,5 @@ abstract class TrunksLcrGatewayAbstract
         return $this->carrierServer;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

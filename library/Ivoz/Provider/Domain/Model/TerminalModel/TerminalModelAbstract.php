@@ -70,7 +70,8 @@ abstract class TerminalModelAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "TerminalModel",
             $this->getId()
         );
@@ -132,7 +133,8 @@ abstract class TerminalModelAbstract
         $self = new static(
             $dto->getIden(),
             $dto->getName(),
-            $dto->getDescription());
+            $dto->getDescription()
+        );
 
         $self
             ->setGenericTemplate($dto->getGenericTemplate())
@@ -208,11 +210,10 @@ abstract class TerminalModelAbstract
             'terminalManufacturerId' => self::getTerminalManufacturer() ? self::getTerminalManufacturer()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set iden
      *
      * @param string $iden
@@ -240,6 +241,7 @@ abstract class TerminalModelAbstract
     }
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -267,6 +269,7 @@ abstract class TerminalModelAbstract
     }
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description
@@ -294,6 +297,7 @@ abstract class TerminalModelAbstract
     }
 
     /**
+     * @deprecated
      * Set genericTemplate
      *
      * @param string $genericTemplate
@@ -322,6 +326,7 @@ abstract class TerminalModelAbstract
     }
 
     /**
+     * @deprecated
      * Set specificTemplate
      *
      * @param string $specificTemplate
@@ -350,6 +355,7 @@ abstract class TerminalModelAbstract
     }
 
     /**
+     * @deprecated
      * Set genericUrlPattern
      *
      * @param string $genericUrlPattern
@@ -378,6 +384,7 @@ abstract class TerminalModelAbstract
     }
 
     /**
+     * @deprecated
      * Set specificUrlPattern
      *
      * @param string $specificUrlPattern
@@ -429,8 +436,5 @@ abstract class TerminalModelAbstract
         return $this->terminalManufacturer;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

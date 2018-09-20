@@ -13,6 +13,7 @@ interface BalanceMovementInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @deprecated
      * Set amount
      *
      * @param string $amount
@@ -29,6 +30,7 @@ interface BalanceMovementInterface extends LoggableEntityInterface
     public function getAmount();
 
     /**
+     * @deprecated
      * Set balance
      *
      * @param string $balance
@@ -45,6 +47,7 @@ interface BalanceMovementInterface extends LoggableEntityInterface
     public function getBalance();
 
     /**
+     * @deprecated
      * Set createdOn
      *
      * @param \DateTime $createdOn
@@ -91,6 +94,4 @@ interface BalanceMovementInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
      */
     public function getCarrier();
-
 }
-

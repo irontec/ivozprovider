@@ -50,7 +50,8 @@ abstract class OutgoingDdiRuleAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "OutgoingDdiRule",
             $this->getId()
         );
@@ -111,7 +112,8 @@ abstract class OutgoingDdiRuleAbstract
 
         $self = new static(
             $dto->getName(),
-            $dto->getDefaultAction());
+            $dto->getDefaultAction()
+        );
 
         $self
             ->setCompany($dto->getCompany())
@@ -172,11 +174,10 @@ abstract class OutgoingDdiRuleAbstract
             'forcedDdiId' => self::getForcedDdi() ? self::getForcedDdi()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -204,6 +205,7 @@ abstract class OutgoingDdiRuleAbstract
     }
 
     /**
+     * @deprecated
      * Set defaultAction
      *
      * @param string $defaultAction
@@ -282,8 +284,5 @@ abstract class OutgoingDdiRuleAbstract
         return $this->forcedDdi;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

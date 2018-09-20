@@ -79,7 +79,10 @@ class DoctrineEventSubscriber implements EventSubscriber
 
     public function postLoad(LifecycleEventArgs $args)
     {
-        $args->getObject()->initChangelog();
+        $object = $args->getObject();
+        if ($object instanceof EntityInterface) {
+            $object->initChangelog();
+        }
     }
 
     public function prePersist(LifecycleEventArgs $args)
@@ -154,7 +157,6 @@ class DoctrineEventSubscriber implements EventSubscriber
         }
 
         foreach ($this->flushedEntities as $entity) {
-
             if (!$entity->__isInitialized__) {
                 continue;
             }
@@ -174,6 +176,11 @@ class DoctrineEventSubscriber implements EventSubscriber
 
     private function run($eventName, LifecycleEventArgs $args, bool $isNew = false)
     {
+        $entity = $args->getObject();
+        if (!$entity instanceof EntityInterface) {
+            return;
+        }
+
         $this->triggerDomainEvents($eventName, $args, $isNew);
         $this->runSharedServices($eventName, $args, $isNew);
         $this->runEntityServices($eventName, $args, $isNew);
@@ -183,13 +190,12 @@ class DoctrineEventSubscriber implements EventSubscriber
     {
         $entity = $args->getObject();
         if (!$entity instanceof LoggableEntityInterface) {
-
             return;
         }
 
         $event = null;
 
-        switch($eventName) {
+        switch ($eventName) {
             case 'pre_remove':
                 // We use pre_remove because Id value is gone on post_remove
                 $event = new EntityWasDeleted(
@@ -200,10 +206,8 @@ class DoctrineEventSubscriber implements EventSubscriber
 
                 break;
             case 'post_persist':
-
                 $changeSet = $entity->getChangeSet();
                 if (empty($changeSet)) {
-
                     return;
                 }
 

@@ -15,6 +15,16 @@ trait RatingPlanTrait
      */
     protected $id;
 
+    /**
+     * @var \Ivoz\Cgr\Domain\Model\TpTiming\TpTimingInterface
+     */
+    protected $tpTiming;
+
+    /**
+     * @var \Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanInterface
+     */
+    protected $tpRatingPlan;
+
 
     /**
      * Constructor
@@ -22,7 +32,6 @@ trait RatingPlanTrait
     protected function __construct()
     {
         parent::__construct(...func_get_args());
-
     }
 
     /**
@@ -79,7 +88,51 @@ trait RatingPlanTrait
             'id' => self::getId()
         ];
     }
+    /**
+     * Set tpTiming
+     *
+     * @param \Ivoz\Cgr\Domain\Model\TpTiming\TpTimingInterface $tpTiming
+     *
+     * @return self
+     */
+    public function setTpTiming(\Ivoz\Cgr\Domain\Model\TpTiming\TpTimingInterface $tpTiming = null)
+    {
+        $this->tpTiming = $tpTiming;
 
+        return $this;
+    }
 
+    /**
+     * Get tpTiming
+     *
+     * @return \Ivoz\Cgr\Domain\Model\TpTiming\TpTimingInterface
+     */
+    public function getTpTiming()
+    {
+        return $this->tpTiming;
+    }
+
+    /**
+     * Set tpRatingPlan
+     *
+     * @param \Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanInterface $tpRatingPlan
+     *
+     * @return self
+     */
+    public function setTpRatingPlan(\Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanInterface $tpRatingPlan = null)
+    {
+        $this->tpRatingPlan = $tpRatingPlan;
+
+        return $this;
+    }
+
+    /**
+     * Get tpRatingPlan
+     *
+     * @return \Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanInterface
+     */
+    public function getTpRatingPlan()
+    {
+        return $this->tpRatingPlan;
+    }
 }
-

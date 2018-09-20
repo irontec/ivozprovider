@@ -1,6 +1,7 @@
 Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelSchedule:
   repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\ConditionalRoutesConditionsRelScheduleDoctrineRepository
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: ConditionalRoutesConditionsRelSchedules
   id:
     id:

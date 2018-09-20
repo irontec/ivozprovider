@@ -40,16 +40,6 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $referee;
-
-    /**
-     * @var string
-     */
-    private $referrer;
-
-    /**
-     * @var string
-     */
     private $callid;
 
     /**
@@ -73,16 +63,6 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     private $bounced;
 
     /**
-     * @var string
-     */
-    private $price;
-
-    /**
-     * @var string
-     */
-    private $priceDetails;
-
-    /**
      * @var boolean
      */
     private $metered = '0';
@@ -101,11 +81,6 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
      * @var integer
      */
     private $id;
-
-    /**
-     * @var \Ivoz\Provider\Domain\Model\Invoice\InvoiceDto | null
-     */
-    private $invoice;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\Brand\BrandDto | null
@@ -145,20 +120,15 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
             'duration' => 'duration',
             'caller' => 'caller',
             'callee' => 'callee',
-            'referee' => 'referee',
-            'referrer' => 'referrer',
             'callid' => 'callid',
             'callidHash' => 'callidHash',
             'xcallid' => 'xcallid',
             'diversion' => 'diversion',
             'bounced' => 'bounced',
-            'price' => 'price',
-            'priceDetails' => 'priceDetails',
             'metered' => 'metered',
             'direction' => 'direction',
             'cgrid' => 'cgrid',
             'id' => 'id',
-            'invoiceId' => 'invoice',
             'brandId' => 'brand',
             'companyId' => 'company',
             'carrierId' => 'carrier'
@@ -176,20 +146,15 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
             'duration' => $this->getDuration(),
             'caller' => $this->getCaller(),
             'callee' => $this->getCallee(),
-            'referee' => $this->getReferee(),
-            'referrer' => $this->getReferrer(),
             'callid' => $this->getCallid(),
             'callidHash' => $this->getCallidHash(),
             'xcallid' => $this->getXcallid(),
             'diversion' => $this->getDiversion(),
             'bounced' => $this->getBounced(),
-            'price' => $this->getPrice(),
-            'priceDetails' => $this->getPriceDetails(),
             'metered' => $this->getMetered(),
             'direction' => $this->getDirection(),
             'cgrid' => $this->getCgrid(),
             'id' => $this->getId(),
-            'invoice' => $this->getInvoice(),
             'brand' => $this->getBrand(),
             'company' => $this->getCompany(),
             'carrier' => $this->getCarrier()
@@ -201,7 +166,6 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
-        $this->invoice = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Invoice\\Invoice', $this->getInvoiceId());
         $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
         $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
         $this->carrier = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Carrier\\Carrier', $this->getCarrierId());
@@ -212,7 +176,6 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -316,46 +279,6 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $referee
-     *
-     * @return static
-     */
-    public function setReferee($referee = null)
-    {
-        $this->referee = $referee;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getReferee()
-    {
-        return $this->referee;
-    }
-
-    /**
-     * @param string $referrer
-     *
-     * @return static
-     */
-    public function setReferrer($referrer = null)
-    {
-        $this->referrer = $referrer;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getReferrer()
-    {
-        return $this->referrer;
-    }
-
-    /**
      * @param string $callid
      *
      * @return static
@@ -456,46 +379,6 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $price
-     *
-     * @return static
-     */
-    public function setPrice($price = null)
-    {
-        $this->price = $price;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPrice()
-    {
-        return $this->price;
-    }
-
-    /**
-     * @param string $priceDetails
-     *
-     * @return static
-     */
-    public function setPriceDetails($priceDetails = null)
-    {
-        $this->priceDetails = $priceDetails;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPriceDetails()
-    {
-        return $this->priceDetails;
-    }
-
-    /**
      * @param boolean $metered
      *
      * @return static
@@ -573,52 +456,6 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * @param \Ivoz\Provider\Domain\Model\Invoice\InvoiceDto $invoice
-     *
-     * @return static
-     */
-    public function setInvoice(\Ivoz\Provider\Domain\Model\Invoice\InvoiceDto $invoice = null)
-    {
-        $this->invoice = $invoice;
-
-        return $this;
-    }
-
-    /**
-     * @return \Ivoz\Provider\Domain\Model\Invoice\InvoiceDto
-     */
-    public function getInvoice()
-    {
-        return $this->invoice;
-    }
-
-    /**
-     * @param integer $id | null
-     *
-     * @return static
-     */
-    public function setInvoiceId($id)
-    {
-        $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\Invoice\InvoiceDto($id)
-            : null;
-
-        return $this->setInvoice($value);
-    }
-
-    /**
-     * @return integer | null
-     */
-    public function getInvoiceId()
-    {
-        if ($dto = $this->getInvoice()) {
-            return $dto->getId();
-        }
-
-        return null;
     }
 
     /**
@@ -759,5 +596,3 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 }
-
-

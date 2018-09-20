@@ -2,7 +2,7 @@
 
 namespace spec\Ivoz\Provider\Domain\Service\Domain;
 
-use Ivoz\Core\Domain\Service\EntityPersisterInterface;
+use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Model\Domain\DomainDto;
 use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
@@ -14,9 +14,9 @@ use Prophecy\Argument;
 class UpdateByCompanySpec extends ObjectBehavior
 {
     /**
-     * @var EntityPersisterInterface
+     * @var EntityTools
      */
-    protected $entityPersister;
+    protected $entityTools;
 
     /**
      * @var DomainRepository
@@ -29,16 +29,16 @@ class UpdateByCompanySpec extends ObjectBehavior
     protected $entity;
 
     public function let(
-        EntityPersisterInterface $entityPersister,
+        EntityTools $entityTools,
         DomainRepository $domainRepository,
         CompanyInterface $entity
     ) {
-        $this->entityPersister = $entityPersister;
+        $this->entityTools = $entityTools;
         $this->domainRepository = $domainRepository;
         $this->entity = $entity;
 
         $this->beConstructedWith(
-            $entityPersister,
+            $entityTools,
             $domainRepository
         );
     }
@@ -77,7 +77,7 @@ class UpdateByCompanySpec extends ObjectBehavior
             ->shouldBeCalled();
 
         $this
-            ->entityPersister
+            ->entityTools
             ->persistDto(
                 Argument::that($this->getDomainDtoAssertion()),
                 null
@@ -109,13 +109,12 @@ class UpdateByCompanySpec extends ObjectBehavior
 
 
         $domainDto = new DomainDto();
-        $domain
-            ->toDto()
-            ->willReturn($domainDto)
-            ->shouldBeCalled();
+        $this->entityTools
+            ->entityToDto($domain)
+            ->willReturn($domainDto);
 
         $this
-            ->entityPersister
+            ->entityTools
             ->persistDto(
                 Argument::that($this->getDomainDtoAssertion()),
                 $domain

@@ -19,12 +19,27 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
     public function getRoutingPatterns();
 
     /**
+     * Return CGRates tag for LCR category
+     *
+     * @return string
+     */
+    public function getCgrCategory();
+
+    /**
+     * Return CGRates tag for LCR rating plan category
+     *
+     * @return string
+     */
+    public function getCgrRpCategory();
+
+    /**
      * @param RoutingPatternInterface $pattern
      * @return bool
      */
     public function hasRoutingPattern(\Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface $pattern);
 
     /**
+     * @deprecated
      * Set type
      *
      * @param string $type
@@ -41,6 +56,7 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
     public function getType();
 
     /**
+     * @deprecated
      * Set priority
      *
      * @param integer $priority
@@ -57,6 +73,7 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
     public function getPriority();
 
     /**
+     * @deprecated
      * Set weight
      *
      * @param integer $weight
@@ -71,6 +88,74 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
      * @return integer
      */
     public function getWeight();
+
+    /**
+     * @deprecated
+     * Set routingMode
+     *
+     * @param string $routingMode
+     *
+     * @return self
+     */
+    public function setRoutingMode($routingMode = null);
+
+    /**
+     * Get routingMode
+     *
+     * @return string
+     */
+    public function getRoutingMode();
+
+    /**
+     * @deprecated
+     * Set prefix
+     *
+     * @param string $prefix
+     *
+     * @return self
+     */
+    public function setPrefix($prefix = null);
+
+    /**
+     * Get prefix
+     *
+     * @return string
+     */
+    public function getPrefix();
+
+    /**
+     * @deprecated
+     * Set forceClid
+     *
+     * @param boolean $forceClid
+     *
+     * @return self
+     */
+    public function setForceClid($forceClid = null);
+
+    /**
+     * Get forceClid
+     *
+     * @return boolean
+     */
+    public function getForceClid();
+
+    /**
+     * @deprecated
+     * Set clid
+     *
+     * @param string $clid
+     *
+     * @return self
+     */
+    public function setClid($clid = null);
+
+    /**
+     * Get clid
+     *
+     * @return string
+     */
+    public function getClid();
 
     /**
      * Set brand
@@ -169,6 +254,38 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
     public function getRoutingTag();
 
     /**
+     * Set clidCountry
+     *
+     * @param \Ivoz\Provider\Domain\Model\Country\CountryInterface $clidCountry
+     *
+     * @return self
+     */
+    public function setClidCountry(\Ivoz\Provider\Domain\Model\Country\CountryInterface $clidCountry = null);
+
+    /**
+     * Get clidCountry
+     *
+     * @return \Ivoz\Provider\Domain\Model\Country\CountryInterface
+     */
+    public function getClidCountry();
+
+    /**
+     * Set tpLcrRule
+     *
+     * @param \Ivoz\Cgr\Domain\Model\TpLcrRule\TpLcrRuleInterface $tpLcrRule
+     *
+     * @return self
+     */
+    public function setTpLcrRule(\Ivoz\Cgr\Domain\Model\TpLcrRule\TpLcrRuleInterface $tpLcrRule = null);
+
+    /**
+     * Get tpLcrRule
+     *
+     * @return \Ivoz\Cgr\Domain\Model\TpLcrRule\TpLcrRuleInterface
+     */
+    public function getTpLcrRule();
+
+    /**
      * Add lcrRule
      *
      * @param \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface $lcrRule
@@ -199,5 +316,65 @@ interface OutgoingRoutingInterface extends LoggableEntityInterface
      */
     public function getLcrRules(\Doctrine\Common\Collections\Criteria $criteria = null);
 
-}
+    /**
+     * Add lcrRuleTarget
+     *
+     * @param \Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface $lcrRuleTarget
+     *
+     * @return OutgoingRoutingTrait
+     */
+    public function addLcrRuleTarget(\Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface $lcrRuleTarget);
 
+    /**
+     * Remove lcrRuleTarget
+     *
+     * @param \Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface $lcrRuleTarget
+     */
+    public function removeLcrRuleTarget(\Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface $lcrRuleTarget);
+
+    /**
+     * Replace lcrRuleTargets
+     *
+     * @param \Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface[] $lcrRuleTargets
+     * @return self
+     */
+    public function replaceLcrRuleTargets(Collection $lcrRuleTargets);
+
+    /**
+     * Get lcrRuleTargets
+     *
+     * @return \Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface[]
+     */
+    public function getLcrRuleTargets(\Doctrine\Common\Collections\Criteria $criteria = null);
+
+    /**
+     * Add relCarrier
+     *
+     * @param \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $relCarrier
+     *
+     * @return OutgoingRoutingTrait
+     */
+    public function addRelCarrier(\Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $relCarrier);
+
+    /**
+     * Remove relCarrier
+     *
+     * @param \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $relCarrier
+     */
+    public function removeRelCarrier(\Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $relCarrier);
+
+    /**
+     * Replace relCarriers
+     *
+     * @param \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface[] $relCarriers
+     * @return self
+     */
+    public function replaceRelCarriers(Collection $relCarriers);
+
+    /**
+     * Get relCarriers
+     *
+     * @return \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface[]
+     */
+    public function getRelCarriers(\Doctrine\Common\Collections\Criteria $criteria = null);
+}

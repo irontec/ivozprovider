@@ -64,5 +64,4 @@ class ProviderService extends Fixture
     
         $manager->flush();
     }
-
 }

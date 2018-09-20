@@ -78,7 +78,8 @@ abstract class UsersWatcherAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "UsersWatcher",
             $this->getId()
         );
@@ -143,7 +144,8 @@ abstract class UsersWatcherAbstract
             $dto->getWatcherDomain(),
             $dto->getEvent(),
             $dto->getStatus(),
-            $dto->getInsertedTime());
+            $dto->getInsertedTime()
+        );
 
         $self
             ->setReason($dto->getReason())
@@ -212,11 +214,10 @@ abstract class UsersWatcherAbstract
             'inserted_time' => self::getInsertedTime()
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set presentityUri
      *
      * @param string $presentityUri
@@ -244,6 +245,7 @@ abstract class UsersWatcherAbstract
     }
 
     /**
+     * @deprecated
      * Set watcherUsername
      *
      * @param string $watcherUsername
@@ -271,6 +273,7 @@ abstract class UsersWatcherAbstract
     }
 
     /**
+     * @deprecated
      * Set watcherDomain
      *
      * @param string $watcherDomain
@@ -298,6 +301,7 @@ abstract class UsersWatcherAbstract
     }
 
     /**
+     * @deprecated
      * Set event
      *
      * @param string $event
@@ -325,6 +329,7 @@ abstract class UsersWatcherAbstract
     }
 
     /**
+     * @deprecated
      * Set status
      *
      * @param integer $status
@@ -352,6 +357,7 @@ abstract class UsersWatcherAbstract
     }
 
     /**
+     * @deprecated
      * Set reason
      *
      * @param string $reason
@@ -380,6 +386,7 @@ abstract class UsersWatcherAbstract
     }
 
     /**
+     * @deprecated
      * Set insertedTime
      *
      * @param integer $insertedTime
@@ -406,8 +413,5 @@ abstract class UsersWatcherAbstract
         return $this->insertedTime;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

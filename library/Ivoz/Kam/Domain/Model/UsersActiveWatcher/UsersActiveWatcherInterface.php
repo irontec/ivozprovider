@@ -13,6 +13,7 @@ interface UsersActiveWatcherInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @deprecated
      * Set presentityUri
      *
      * @param string $presentityUri
@@ -29,6 +30,7 @@ interface UsersActiveWatcherInterface extends LoggableEntityInterface
     public function getPresentityUri();
 
     /**
+     * @deprecated
      * Set watcherUsername
      *
      * @param string $watcherUsername
@@ -45,6 +47,7 @@ interface UsersActiveWatcherInterface extends LoggableEntityInterface
     public function getWatcherUsername();
 
     /**
+     * @deprecated
      * Set watcherDomain
      *
      * @param string $watcherDomain
@@ -61,6 +64,7 @@ interface UsersActiveWatcherInterface extends LoggableEntityInterface
     public function getWatcherDomain();
 
     /**
+     * @deprecated
      * Set toUser
      *
      * @param string $toUser
@@ -77,6 +81,7 @@ interface UsersActiveWatcherInterface extends LoggableEntityInterface
     public function getToUser();
 
     /**
+     * @deprecated
      * Set toDomain
      *
      * @param string $toDomain
@@ -93,6 +98,7 @@ interface UsersActiveWatcherInterface extends LoggableEntityInterface
     public function getToDomain();
 
     /**
+     * @deprecated
      * Set event
      *
      * @param string $event
@@ -109,6 +115,7 @@ interface UsersActiveWatcherInterface extends LoggableEntityInterface
     public function getEvent();
 
     /**
+     * @deprecated
      * Set eventId
      *
      * @param string $eventId
@@ -125,6 +132,7 @@ interface UsersActiveWatcherInterface extends LoggableEntityInterface
     public function getEventId();
 
     /**
+     * @deprecated
      * Set toTag
      *
      * @param string $toTag
@@ -141,6 +149,7 @@ interface UsersActiveWatcherInterface extends LoggableEntityInterface
     public function getToTag();
 
     /**
+     * @deprecated
      * Set fromTag
      *
      * @param string $fromTag
@@ -157,6 +166,7 @@ interface UsersActiveWatcherInterface extends LoggableEntityInterface
     public function getFromTag();
 
     /**
+     * @deprecated
      * Set callid
      *
      * @param string $callid
@@ -173,6 +183,7 @@ interface UsersActiveWatcherInterface extends LoggableEntityInterface
     public function getCallid();
 
     /**
+     * @deprecated
      * Set localCseq
      *
      * @param integer $localCseq
@@ -189,6 +200,7 @@ interface UsersActiveWatcherInterface extends LoggableEntityInterface
     public function getLocalCseq();
 
     /**
+     * @deprecated
      * Set remoteCseq
      *
      * @param integer $remoteCseq
@@ -205,6 +217,7 @@ interface UsersActiveWatcherInterface extends LoggableEntityInterface
     public function getRemoteCseq();
 
     /**
+     * @deprecated
      * Set contact
      *
      * @param string $contact
@@ -221,6 +234,7 @@ interface UsersActiveWatcherInterface extends LoggableEntityInterface
     public function getContact();
 
     /**
+     * @deprecated
      * Set recordRoute
      *
      * @param string $recordRoute
@@ -237,6 +251,7 @@ interface UsersActiveWatcherInterface extends LoggableEntityInterface
     public function getRecordRoute();
 
     /**
+     * @deprecated
      * Set expires
      *
      * @param integer $expires
@@ -253,6 +268,7 @@ interface UsersActiveWatcherInterface extends LoggableEntityInterface
     public function getExpires();
 
     /**
+     * @deprecated
      * Set status
      *
      * @param integer $status
@@ -269,6 +285,7 @@ interface UsersActiveWatcherInterface extends LoggableEntityInterface
     public function getStatus();
 
     /**
+     * @deprecated
      * Set reason
      *
      * @param string $reason
@@ -285,6 +302,7 @@ interface UsersActiveWatcherInterface extends LoggableEntityInterface
     public function getReason();
 
     /**
+     * @deprecated
      * Set version
      *
      * @param integer $version
@@ -301,6 +319,7 @@ interface UsersActiveWatcherInterface extends LoggableEntityInterface
     public function getVersion();
 
     /**
+     * @deprecated
      * Set socketInfo
      *
      * @param string $socketInfo
@@ -317,6 +336,7 @@ interface UsersActiveWatcherInterface extends LoggableEntityInterface
     public function getSocketInfo();
 
     /**
+     * @deprecated
      * Set localContact
      *
      * @param string $localContact
@@ -333,6 +353,7 @@ interface UsersActiveWatcherInterface extends LoggableEntityInterface
     public function getLocalContact();
 
     /**
+     * @deprecated
      * Set fromUser
      *
      * @param string $fromUser
@@ -349,6 +370,7 @@ interface UsersActiveWatcherInterface extends LoggableEntityInterface
     public function getFromUser();
 
     /**
+     * @deprecated
      * Set fromDomain
      *
      * @param string $fromDomain
@@ -365,6 +387,7 @@ interface UsersActiveWatcherInterface extends LoggableEntityInterface
     public function getFromDomain();
 
     /**
+     * @deprecated
      * Set updated
      *
      * @param integer $updated
@@ -381,6 +404,7 @@ interface UsersActiveWatcherInterface extends LoggableEntityInterface
     public function getUpdated();
 
     /**
+     * @deprecated
      * Set updatedWinfo
      *
      * @param integer $updatedWinfo
@@ -397,6 +421,7 @@ interface UsersActiveWatcherInterface extends LoggableEntityInterface
     public function getUpdatedWinfo();
 
     /**
+     * @deprecated
      * Set flags
      *
      * @param integer $flags
@@ -413,6 +438,7 @@ interface UsersActiveWatcherInterface extends LoggableEntityInterface
     public function getFlags();
 
     /**
+     * @deprecated
      * Set userAgent
      *
      * @param string $userAgent
@@ -427,6 +453,4 @@ interface UsersActiveWatcherInterface extends LoggableEntityInterface
      * @return string
      */
     public function getUserAgent();
-
 }
-

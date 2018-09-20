@@ -7,6 +7,7 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 interface TrunksCdrInterface extends EntityInterface
 {
     /**
+     * @deprecated
      * Set startTime
      *
      * @param \DateTime $startTime
@@ -23,6 +24,7 @@ interface TrunksCdrInterface extends EntityInterface
     public function getStartTime();
 
     /**
+     * @deprecated
      * Set endTime
      *
      * @param \DateTime $endTime
@@ -39,6 +41,7 @@ interface TrunksCdrInterface extends EntityInterface
     public function getEndTime();
 
     /**
+     * @deprecated
      * Set duration
      *
      * @param float $duration
@@ -55,6 +58,7 @@ interface TrunksCdrInterface extends EntityInterface
     public function getDuration();
 
     /**
+     * @deprecated
      * Set caller
      *
      * @param string $caller
@@ -71,6 +75,7 @@ interface TrunksCdrInterface extends EntityInterface
     public function getCaller();
 
     /**
+     * @deprecated
      * Set callee
      *
      * @param string $callee
@@ -87,38 +92,7 @@ interface TrunksCdrInterface extends EntityInterface
     public function getCallee();
 
     /**
-     * Set referee
-     *
-     * @param string $referee
-     *
-     * @return self
-     */
-    public function setReferee($referee = null);
-
-    /**
-     * Get referee
-     *
-     * @return string
-     */
-    public function getReferee();
-
-    /**
-     * Set referrer
-     *
-     * @param string $referrer
-     *
-     * @return self
-     */
-    public function setReferrer($referrer = null);
-
-    /**
-     * Get referrer
-     *
-     * @return string
-     */
-    public function getReferrer();
-
-    /**
+     * @deprecated
      * Set callid
      *
      * @param string $callid
@@ -135,6 +109,7 @@ interface TrunksCdrInterface extends EntityInterface
     public function getCallid();
 
     /**
+     * @deprecated
      * Set callidHash
      *
      * @param string $callidHash
@@ -151,6 +126,7 @@ interface TrunksCdrInterface extends EntityInterface
     public function getCallidHash();
 
     /**
+     * @deprecated
      * Set xcallid
      *
      * @param string $xcallid
@@ -167,6 +143,7 @@ interface TrunksCdrInterface extends EntityInterface
     public function getXcallid();
 
     /**
+     * @deprecated
      * Set diversion
      *
      * @param string $diversion
@@ -183,6 +160,7 @@ interface TrunksCdrInterface extends EntityInterface
     public function getDiversion();
 
     /**
+     * @deprecated
      * Set bounced
      *
      * @param boolean $bounced
@@ -199,38 +177,7 @@ interface TrunksCdrInterface extends EntityInterface
     public function getBounced();
 
     /**
-     * Set price
-     *
-     * @param string $price
-     *
-     * @return self
-     */
-    public function setPrice($price = null);
-
-    /**
-     * Get price
-     *
-     * @return string
-     */
-    public function getPrice();
-
-    /**
-     * Set priceDetails
-     *
-     * @param string $priceDetails
-     *
-     * @return self
-     */
-    public function setPriceDetails($priceDetails = null);
-
-    /**
-     * Get priceDetails
-     *
-     * @return string
-     */
-    public function getPriceDetails();
-
-    /**
+     * @deprecated
      * Set metered
      *
      * @param boolean $metered
@@ -247,6 +194,7 @@ interface TrunksCdrInterface extends EntityInterface
     public function getMetered();
 
     /**
+     * @deprecated
      * Set direction
      *
      * @param string $direction
@@ -263,6 +211,7 @@ interface TrunksCdrInterface extends EntityInterface
     public function getDirection();
 
     /**
+     * @deprecated
      * Set cgrid
      *
      * @param string $cgrid
@@ -277,22 +226,6 @@ interface TrunksCdrInterface extends EntityInterface
      * @return string
      */
     public function getCgrid();
-
-    /**
-     * Set invoice
-     *
-     * @param \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice
-     *
-     * @return self
-     */
-    public function setInvoice(\Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface $invoice = null);
-
-    /**
-     * Get invoice
-     *
-     * @return \Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface
-     */
-    public function getInvoice();
 
     /**
      * Set brand
@@ -341,6 +274,4 @@ interface TrunksCdrInterface extends EntityInterface
      * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
      */
     public function getCarrier();
-
 }
-

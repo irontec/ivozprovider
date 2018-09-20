@@ -43,6 +43,4 @@ interface ExternalCallFilterRelCalendarInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Calendar\CalendarInterface
      */
     public function getCalendar();
-
 }
-

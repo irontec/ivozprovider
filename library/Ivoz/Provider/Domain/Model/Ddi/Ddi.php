@@ -38,7 +38,8 @@ class Ddi extends DdiAbstract implements DdiInterface
      */
     public function __toString()
     {
-        return sprintf("%s [ddi%d]",
+        return sprintf(
+            "%s [ddi%d]",
             $this->getDdie164(),
             $this->getId()
         );
@@ -54,8 +55,7 @@ class Ddi extends DdiAbstract implements DdiInterface
         );
 
         // If billInboundCalls is set, carrier must have externallyRated to 1
-        if (
-            $this->getBillInboundCalls()
+        if ($this->getBillInboundCalls()
             && !$this->getDdiProvider()->getExternallyRated()
         ) {
             throw new \DomainException(
@@ -79,41 +79,23 @@ class Ddi extends DdiAbstract implements DdiInterface
      */
     public function getDomain()
     {
-        /**
-         * @var CompanyInterface $company
-         */
         $company = $this->getCompany();
-        if(!$company) {
-
+        if (!$company) {
             return null;
         }
 
-        /**
-         * @var Brand $brand
-         */
         $brand = $company->getBrand();
-        if(!$brand) {
-
+        if (!$brand) {
             return null;
         }
 
-        /**
-         * @todo this does not exist
-         */
         return $brand->getDomain();
     }
 
     public function getLanguageCode()
     {
-        /**
-         * @var Language $language
-         */
         $language = $this->getLanguage();
         if (!$language) {
-
-            /**
-             * @var Company $company
-             */
             $company = $this->getCompany();
 
             return $company->getLanguageCode();
@@ -155,4 +137,3 @@ class Ddi extends DdiAbstract implements DdiInterface
             $this->getDdi();
     }
 }
-

@@ -20,5 +20,3 @@ class CallAclDto extends CallAclDtoAbstract
         return parent::getPropertyMap(...func_get_args());
     }
 }
-
-

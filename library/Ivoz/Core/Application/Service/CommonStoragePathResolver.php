@@ -122,7 +122,7 @@ class CommonStoragePathResolver implements StoragePathResolverInterface
     protected function sanitizePath(string $storagePath): string
     {
         if (substr($storagePath, -1) === DIRECTORY_SEPARATOR) {
-            $storagePath = substr($storagePath,0,-1);
+            $storagePath = substr($storagePath, 0, -1);
         }
 
         return $storagePath;

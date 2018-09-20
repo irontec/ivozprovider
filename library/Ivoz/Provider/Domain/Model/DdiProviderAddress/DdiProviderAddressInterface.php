@@ -25,6 +25,7 @@ interface DdiProviderAddressInterface extends LoggableEntityInterface
     public function getIp();
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description
@@ -71,6 +72,4 @@ interface DdiProviderAddressInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\DdiProvider\DdiProviderInterface
      */
     public function getDdiProvider();
-
 }
-

@@ -19,7 +19,7 @@ abstract class NotificationTemplateAbstract
     protected $name;
 
     /**
-     * comment: enum:voicemail|fax|limit|lowbalance|invoice
+     * comment: enum:voicemail|fax|limit|lowbalance|invoice|callCsv
      * @var string
      */
     protected $type;
@@ -45,7 +45,8 @@ abstract class NotificationTemplateAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "NotificationTemplate",
             $this->getId()
         );
@@ -106,7 +107,8 @@ abstract class NotificationTemplateAbstract
 
         $self = new static(
             $dto->getName(),
-            $dto->getType());
+            $dto->getType()
+        );
 
         $self
             ->setBrand($dto->getBrand())
@@ -163,11 +165,10 @@ abstract class NotificationTemplateAbstract
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -195,6 +196,7 @@ abstract class NotificationTemplateAbstract
     }
 
     /**
+     * @deprecated
      * Set type
      *
      * @param string $type
@@ -211,6 +213,7 @@ abstract class NotificationTemplateAbstract
           2 => 'limit',
           3 => 'lowbalance',
           4 => 'invoice',
+          5 => 'callCsv',
         ), 'typevalue "%s" is not an element of the valid values: %s');
 
         $this->type = $type;
@@ -252,8 +255,5 @@ abstract class NotificationTemplateAbstract
         return $this->brand;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

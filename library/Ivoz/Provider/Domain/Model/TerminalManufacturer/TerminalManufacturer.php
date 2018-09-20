@@ -28,4 +28,3 @@ class TerminalManufacturer extends TerminalManufacturerAbstract implements Termi
         return $this->id;
     }
 }
-

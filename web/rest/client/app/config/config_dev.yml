@@ -1,0 +1,9 @@
+imports:
+  - { resource: config.yml }
+  - { resource: logger_dev.yml }
+  - { resource: fixtures.yml }
+
+framework:
+  router:
+    resource: '%kernel.root_dir%/config/routing_dev.yml'
+    strict_requirements: true

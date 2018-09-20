@@ -1,0 +1,24 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/service_container.html
+imports:
+    - { resource: "@ApiBundle/Resources/config/services.yml" }
+
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Service\AuthEndpointDecorator:
+    decorates: 'api_platform.swagger.normalizer.documentation'
+    decoration_priority: 5
+    arguments:
+      $decoratedNormalizer:
+        '@Service\AuthEndpointDecorator.inner'
+
+  #######################################
+  ## Controllers
+  #######################################
+  Controller\My\:
+    resource: '../../src/Controller/My/*'
+    tags: ['controller.service_arguments']

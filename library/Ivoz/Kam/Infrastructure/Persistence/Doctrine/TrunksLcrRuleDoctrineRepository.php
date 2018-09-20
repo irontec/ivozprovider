@@ -3,8 +3,11 @@
 namespace Ivoz\Kam\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
+use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface;
 use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleRepository;
 use Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRule;
+use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -18,5 +21,34 @@ class TrunksLcrRuleDoctrineRepository extends ServiceEntityRepository implements
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, TrunksLcrRule::class);
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @param OutgoingRoutingInterface $outgoingRouting
+     * @return TrunksLcrRuleInterface[]
+     * @throws \Doctrine\ORM\Query\QueryException
+     */
+    public function findOrphanLcrRules(OutgoingRoutingInterface $outgoingRouting)
+    {
+        $lcrRuleIds = [];
+
+        $outgoingRoutingLcrRules = $outgoingRouting->getLcrRules();
+        foreach ($outgoingRoutingLcrRules as $outgoingRoutingLcrRule) {
+            $lcrRuleIds[] = $outgoingRoutingLcrRule->getId();
+        }
+
+        $qb = $this->createQueryBuilder('self');
+        $qb
+            ->select('self')
+            ->addCriteria(
+                CriteriaHelper::fromArray([
+                    [ 'outgoingRouting', 'eq', $outgoingRouting ],
+                    [ 'id', 'notIn', $lcrRuleIds ]
+                ])
+            );
+
+        return $qb->getQuery()->getResult();
     }
 }

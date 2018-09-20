@@ -91,8 +91,6 @@ trait DestinationTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add destinationRate
      *
@@ -164,7 +162,4 @@ trait DestinationTrait
 
         return $this->destinationRates->toArray();
     }
-
-
 }
-

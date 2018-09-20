@@ -19,7 +19,7 @@ class MainOperator extends Base
             }
 
             if ($this->_user->companyId) {
-                $this->_subTitle .= sprintf('<br />Emulated company: <strong>%s</strong>',  $this->_user->companyName);
+                $this->_subTitle .= sprintf('<br />Emulated client: <strong>%s</strong>',  $this->_user->companyName);
             }
         }
     }

@@ -9,10 +9,12 @@ class AppKernel extends Kernel
     {
         $bundles = [
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
+            new Symfony\Bundle\SecurityBundle\SecurityBundle(),
             new Symfony\Bundle\MonologBundle\MonologBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
+            new Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle(),
 
             /* Core */
             new CoreBundle\CoreBundle(),
@@ -24,8 +26,12 @@ class AppKernel extends Kernel
         if (in_array($this->getEnvironment(), ['dev', 'test', 'test_e2e'], true)) {
             $bundles[] = new Symfony\Bundle\DebugBundle\DebugBundle();
 
-            if ('test_e2e' === $this->getEnvironment()) {
+            if ('dev' !== $this->getEnvironment()) {
                 $bundles[] = new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle();
+            }
+
+            if ('test' === $this->getEnvironment()) {
+                $bundles[] = new \DocteurKlein\TestDoubleBundle();
             }
         }
 

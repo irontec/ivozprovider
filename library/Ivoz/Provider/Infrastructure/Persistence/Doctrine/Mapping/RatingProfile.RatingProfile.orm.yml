@@ -1,6 +1,7 @@
 Ivoz\Provider\Domain\Model\RatingProfile\RatingProfile:
   repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\RatingProfileDoctrineRepository
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: RatingProfiles
   id:
     id:
@@ -11,3 +12,8 @@ Ivoz\Provider\Domain\Model\RatingProfile\RatingProfile:
       id: true
       generator:
         strategy: IDENTITY
+  oneToMany:
+    tpRatingProfiles:
+      targetEntity: Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface
+      mappedBy: ratingProfile
+      fetch: LAZY

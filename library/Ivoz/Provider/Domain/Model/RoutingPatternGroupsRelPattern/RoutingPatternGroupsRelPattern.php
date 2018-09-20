@@ -19,4 +19,3 @@ class RoutingPatternGroupsRelPattern extends RoutingPatternGroupsRelPatternAbstr
         return $this->id;
     }
 }
-

@@ -220,7 +220,8 @@ abstract class UsersActiveWatcherAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "UsersActiveWatcher",
             $this->getId()
         );
@@ -302,7 +303,8 @@ abstract class UsersActiveWatcherAbstract
             $dto->getUpdated(),
             $dto->getUpdatedWinfo(),
             $dto->getFlags(),
-            $dto->getUserAgent());
+            $dto->getUserAgent()
+        );
 
         $self
             ->setEventId($dto->getEventId())
@@ -430,11 +432,10 @@ abstract class UsersActiveWatcherAbstract
             'user_agent' => self::getUserAgent()
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set presentityUri
      *
      * @param string $presentityUri
@@ -462,6 +463,7 @@ abstract class UsersActiveWatcherAbstract
     }
 
     /**
+     * @deprecated
      * Set watcherUsername
      *
      * @param string $watcherUsername
@@ -489,6 +491,7 @@ abstract class UsersActiveWatcherAbstract
     }
 
     /**
+     * @deprecated
      * Set watcherDomain
      *
      * @param string $watcherDomain
@@ -516,6 +519,7 @@ abstract class UsersActiveWatcherAbstract
     }
 
     /**
+     * @deprecated
      * Set toUser
      *
      * @param string $toUser
@@ -543,6 +547,7 @@ abstract class UsersActiveWatcherAbstract
     }
 
     /**
+     * @deprecated
      * Set toDomain
      *
      * @param string $toDomain
@@ -570,6 +575,7 @@ abstract class UsersActiveWatcherAbstract
     }
 
     /**
+     * @deprecated
      * Set event
      *
      * @param string $event
@@ -597,6 +603,7 @@ abstract class UsersActiveWatcherAbstract
     }
 
     /**
+     * @deprecated
      * Set eventId
      *
      * @param string $eventId
@@ -625,6 +632,7 @@ abstract class UsersActiveWatcherAbstract
     }
 
     /**
+     * @deprecated
      * Set toTag
      *
      * @param string $toTag
@@ -652,6 +660,7 @@ abstract class UsersActiveWatcherAbstract
     }
 
     /**
+     * @deprecated
      * Set fromTag
      *
      * @param string $fromTag
@@ -679,6 +688,7 @@ abstract class UsersActiveWatcherAbstract
     }
 
     /**
+     * @deprecated
      * Set callid
      *
      * @param string $callid
@@ -706,6 +716,7 @@ abstract class UsersActiveWatcherAbstract
     }
 
     /**
+     * @deprecated
      * Set localCseq
      *
      * @param integer $localCseq
@@ -733,6 +744,7 @@ abstract class UsersActiveWatcherAbstract
     }
 
     /**
+     * @deprecated
      * Set remoteCseq
      *
      * @param integer $remoteCseq
@@ -760,6 +772,7 @@ abstract class UsersActiveWatcherAbstract
     }
 
     /**
+     * @deprecated
      * Set contact
      *
      * @param string $contact
@@ -787,6 +800,7 @@ abstract class UsersActiveWatcherAbstract
     }
 
     /**
+     * @deprecated
      * Set recordRoute
      *
      * @param string $recordRoute
@@ -815,6 +829,7 @@ abstract class UsersActiveWatcherAbstract
     }
 
     /**
+     * @deprecated
      * Set expires
      *
      * @param integer $expires
@@ -842,6 +857,7 @@ abstract class UsersActiveWatcherAbstract
     }
 
     /**
+     * @deprecated
      * Set status
      *
      * @param integer $status
@@ -869,6 +885,7 @@ abstract class UsersActiveWatcherAbstract
     }
 
     /**
+     * @deprecated
      * Set reason
      *
      * @param string $reason
@@ -897,6 +914,7 @@ abstract class UsersActiveWatcherAbstract
     }
 
     /**
+     * @deprecated
      * Set version
      *
      * @param integer $version
@@ -924,6 +942,7 @@ abstract class UsersActiveWatcherAbstract
     }
 
     /**
+     * @deprecated
      * Set socketInfo
      *
      * @param string $socketInfo
@@ -951,6 +970,7 @@ abstract class UsersActiveWatcherAbstract
     }
 
     /**
+     * @deprecated
      * Set localContact
      *
      * @param string $localContact
@@ -978,6 +998,7 @@ abstract class UsersActiveWatcherAbstract
     }
 
     /**
+     * @deprecated
      * Set fromUser
      *
      * @param string $fromUser
@@ -1005,6 +1026,7 @@ abstract class UsersActiveWatcherAbstract
     }
 
     /**
+     * @deprecated
      * Set fromDomain
      *
      * @param string $fromDomain
@@ -1032,6 +1054,7 @@ abstract class UsersActiveWatcherAbstract
     }
 
     /**
+     * @deprecated
      * Set updated
      *
      * @param integer $updated
@@ -1059,6 +1082,7 @@ abstract class UsersActiveWatcherAbstract
     }
 
     /**
+     * @deprecated
      * Set updatedWinfo
      *
      * @param integer $updatedWinfo
@@ -1086,6 +1110,7 @@ abstract class UsersActiveWatcherAbstract
     }
 
     /**
+     * @deprecated
      * Set flags
      *
      * @param integer $flags
@@ -1113,6 +1138,7 @@ abstract class UsersActiveWatcherAbstract
     }
 
     /**
+     * @deprecated
      * Set userAgent
      *
      * @param string $userAgent
@@ -1139,8 +1165,5 @@ abstract class UsersActiveWatcherAbstract
         return $this->userAgent;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

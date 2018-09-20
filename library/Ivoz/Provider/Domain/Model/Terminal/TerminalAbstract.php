@@ -95,7 +95,8 @@ abstract class TerminalAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "Terminal",
             $this->getId()
         );
@@ -158,7 +159,8 @@ abstract class TerminalAbstract
             $dto->getDisallow(),
             $dto->getAllowAudio(),
             $dto->getDirectMediaMethod(),
-            $dto->getPassword());
+            $dto->getPassword()
+        );
 
         $self
             ->setName($dto->getName())
@@ -245,11 +247,10 @@ abstract class TerminalAbstract
             'terminalModelId' => self::getTerminalModel() ? self::getTerminalModel()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -278,6 +279,7 @@ abstract class TerminalAbstract
     }
 
     /**
+     * @deprecated
      * Set disallow
      *
      * @param string $disallow
@@ -305,6 +307,7 @@ abstract class TerminalAbstract
     }
 
     /**
+     * @deprecated
      * Set allowAudio
      *
      * @param string $allowAudio
@@ -332,6 +335,7 @@ abstract class TerminalAbstract
     }
 
     /**
+     * @deprecated
      * Set allowVideo
      *
      * @param string $allowVideo
@@ -360,6 +364,7 @@ abstract class TerminalAbstract
     }
 
     /**
+     * @deprecated
      * Set directMediaMethod
      *
      * @param string $directMediaMethod
@@ -391,6 +396,7 @@ abstract class TerminalAbstract
     }
 
     /**
+     * @deprecated
      * Set password
      *
      * @param string $password
@@ -418,6 +424,7 @@ abstract class TerminalAbstract
     }
 
     /**
+     * @deprecated
      * Set mac
      *
      * @param string $mac
@@ -446,6 +453,7 @@ abstract class TerminalAbstract
     }
 
     /**
+     * @deprecated
      * Set lastProvisionDate
      *
      * @param \DateTime $lastProvisionDate
@@ -455,10 +463,10 @@ abstract class TerminalAbstract
     public function setLastProvisionDate($lastProvisionDate = null)
     {
         if (!is_null($lastProvisionDate)) {
-        $lastProvisionDate = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
-            $lastProvisionDate,
-            null
-        );
+            $lastProvisionDate = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
+                $lastProvisionDate,
+                null
+            );
         }
 
         $this->lastProvisionDate = $lastProvisionDate;
@@ -548,8 +556,5 @@ abstract class TerminalAbstract
         return $this->terminalModel;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

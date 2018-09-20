@@ -1,6 +1,7 @@
 Ivoz\Provider\Domain\Model\Brand\Brand:
   repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\BrandDoctrineRepository
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: Brands
   id:
     id:

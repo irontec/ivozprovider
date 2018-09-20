@@ -92,13 +92,22 @@ Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileAbstract:
       options:
         default: CURRENT_TIMESTAMP
       column: created_at
-  oneToOne:
+  manyToOne:
     ratingProfile:
       targetEntity: \Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface
-      inversedBy: tpRatingProfile
+      inversedBy: tpRatingProfiles
       fetch: LAZY
       joinColumn:
         name: ratingProfileId
         referencedColumnName: id
-        nullable: false
+        nullable: true
+        onDelete: cascade
+    outgoingRoutingRelCarrier:
+      targetEntity: \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface
+      inversedBy: tpRatingProfiles
+      fetch: LAZY
+      joinColumn:
+        name: outgoingRoutingRelCarrierId
+        referencedColumnName: id
+        nullable: true
         onDelete: cascade

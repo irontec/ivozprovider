@@ -21,5 +21,3 @@ class NotificationTemplateContentDto extends NotificationTemplateContentDtoAbstr
         return parent::getPropertyMap(...func_get_args());
     }
 }
-
-

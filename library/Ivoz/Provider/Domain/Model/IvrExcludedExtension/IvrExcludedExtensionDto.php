@@ -20,5 +20,3 @@ class IvrExcludedExtensionDto extends IvrExcludedExtensionDtoAbstract
         return parent::getPropertyMap(...func_get_args());
     }
 }
-
-

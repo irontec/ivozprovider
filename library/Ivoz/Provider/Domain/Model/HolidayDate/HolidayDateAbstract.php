@@ -49,7 +49,8 @@ abstract class HolidayDateAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "HolidayDate",
             $this->getId()
         );
@@ -110,7 +111,8 @@ abstract class HolidayDateAbstract
 
         $self = new static(
             $dto->getName(),
-            $dto->getEventDate());
+            $dto->getEventDate()
+        );
 
         $self
             ->setCalendar($dto->getCalendar())
@@ -171,11 +173,10 @@ abstract class HolidayDateAbstract
             'locutionId' => self::getLocution() ? self::getLocution()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -203,6 +204,7 @@ abstract class HolidayDateAbstract
     }
 
     /**
+     * @deprecated
      * Set eventDate
      *
      * @param \DateTime $eventDate
@@ -276,8 +278,5 @@ abstract class HolidayDateAbstract
         return $this->locution;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

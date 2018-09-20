@@ -1,0 +1,20 @@
+#!/bin/bash
+
+set -e
+
+
+APP_PATHS=()
+APP_PATHS+=(library)
+
+
+cd /opt/irontec/ivozprovider/
+for APPLICATION_PATH in ${APP_PATHS[@]}; do
+    library/vendor/bin/phpcbf -p --standard=PSR2 --ignore='*vendor*' --ignore='*coverage*' $APPLICATION_PATH
+done
+
+# Check there is no pending files to be commited
+if [ -n "$(git status -s)" ]; then
+    echo "There are code not properly formatted with PSR2 codestyle."
+    git diff
+    exit 1
+fi

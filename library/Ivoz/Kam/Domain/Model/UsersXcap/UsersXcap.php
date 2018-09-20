@@ -28,4 +28,3 @@ class UsersXcap extends UsersXcapAbstract implements UsersXcapInterface
         return $this->id;
     }
 }
-

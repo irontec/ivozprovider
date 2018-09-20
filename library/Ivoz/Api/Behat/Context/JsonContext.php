@@ -78,7 +78,6 @@ class JsonContext extends BaseContext implements Context, SnippetAcceptingContex
         }
 
         if (is_array($expected)) {
-
             $keyDivergence = array_diff(
                 array_keys($expected),
                 array_keys($actual)
@@ -92,7 +91,6 @@ class JsonContext extends BaseContext implements Context, SnippetAcceptingContex
             }
 
             foreach ($expected as $key => $value) {
-
                 if (!array_key_exists($key, $actual)) {
                     $this->assert(
                         false,
@@ -121,6 +119,5 @@ class JsonContext extends BaseContext implements Context, SnippetAcceptingContex
                 "Expected $actual to be an array"
             );
         }
-
     }
 }

@@ -26,4 +26,3 @@ interface UserRepository extends ObjectRepository, Selectable
      */
     public function getAvailableVoicemails(UserInterface $user) :array;
 }
-

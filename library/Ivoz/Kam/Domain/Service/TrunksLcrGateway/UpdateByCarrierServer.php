@@ -13,7 +13,7 @@ use Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGateway;
  */
 class UpdateByCarrierServer implements CarrierServerLifecycleEventHandlerInterface
 {
-    CONST POST_PERSIST_PRIORITY = 10;
+    const POST_PERSIST_PRIORITY = 10;
 
     /**
      * @var EntityTools
@@ -33,9 +33,9 @@ class UpdateByCarrierServer implements CarrierServerLifecycleEventHandlerInterfa
         ];
     }
 
-    public function execute(CarrierServerInterface $entity, $isNew)
+    public function execute(CarrierServerInterface $carrierServer, $isNew)
     {
-        $lcrGateway = $entity->getLcrGateway();
+        $lcrGateway = $carrierServer->getLcrGateway();
 
         $lcrGatewayDto = is_null($lcrGateway)
             ? TrunksLcrGateway::createDto()
@@ -43,13 +43,13 @@ class UpdateByCarrierServer implements CarrierServerLifecycleEventHandlerInterfa
 
         // Update/Create LcrGateway for this CarrierServer
         $lcrGatewayDto
-            ->setGwName($entity->getName())
-            ->setIp($entity->getIp())
-            ->setHostname($entity->getHostname())
-            ->setPort($entity->getPort())
-            ->setUriScheme($entity->getUriScheme())
-            ->setTransport($entity->getTransport())
-            ->setCarrierServerId($entity->getId());
+            ->setGwName($carrierServer->getName())
+            ->setIp($carrierServer->getIp())
+            ->setHostname($carrierServer->getHostname())
+            ->setPort($carrierServer->getPort())
+            ->setUriScheme($carrierServer->getUriScheme())
+            ->setTransport($carrierServer->getTransport())
+            ->setCarrierServerId($carrierServer->getId());
 
         $lcrGateway = $this->entityTools->persistDto(
             $lcrGatewayDto,
@@ -57,6 +57,8 @@ class UpdateByCarrierServer implements CarrierServerLifecycleEventHandlerInterfa
             true
         );
 
-        $entity->setLcrGateway($lcrGateway);
+        $carrierServer->setLcrGateway($lcrGateway);
+
+        $this->entityTools->persist($carrierServer);
     }
 }

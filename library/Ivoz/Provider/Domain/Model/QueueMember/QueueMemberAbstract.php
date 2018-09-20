@@ -36,14 +36,14 @@ abstract class QueueMemberAbstract
      */
     protected function __construct()
     {
-
     }
 
     abstract public function getId();
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "QueueMember",
             $this->getId()
         );
@@ -161,11 +161,10 @@ abstract class QueueMemberAbstract
             'userId' => self::getUser() ? self::getUser()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set penalty
      *
      * @param integer $penalty
@@ -243,8 +242,5 @@ abstract class QueueMemberAbstract
         return $this->user;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

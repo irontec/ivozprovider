@@ -1,6 +1,7 @@
 <?php
 
 namespace Ivoz\Provider\Domain\Model\DestinationRate;
+
 use Assert\Assertion;
 
 /**
@@ -110,4 +111,3 @@ class DestinationRate extends DestinationRateAbstract implements DestinationRate
         return parent::setRateIncrement($rateIncrement);
     }
 }
-

@@ -20,4 +20,3 @@ class DestinationDoctrineRepository extends ServiceEntityRepository implements D
         parent::__construct($registry, Destination::class);
     }
 }
-

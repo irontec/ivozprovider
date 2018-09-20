@@ -27,6 +27,4 @@ class UsersLocation extends UsersLocationAbstract implements UsersLocationInterf
     {
         return $this->id;
     }
-
 }
-

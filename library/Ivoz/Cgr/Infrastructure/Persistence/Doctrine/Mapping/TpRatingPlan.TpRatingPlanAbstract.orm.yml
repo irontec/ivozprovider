@@ -15,6 +15,7 @@ Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanAbstract:
         - tag
         - destrates_tag
         - timing_tag
+        - weight
   fields:
     tpid:
       type: string
@@ -58,88 +59,16 @@ Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanAbstract:
       options:
         default: CURRENT_TIMESTAMP
       column: created_at
-    timingType:
-      type: string
-      nullable: true
-      length: 10
-      options:
-        fixed: false
-        comment: '[enum:always|custom]'
-        default: 'always'
-      column: timing_type
-    timeIn:
-      type: time
-      nullable: false
-      column: time_in
-    monday:
-      type: boolean
-      nullable: true
-      options:
-        default: '1'
-    tuesday:
-      type: boolean
-      nullable: true
-      options:
-        default: '1'
-    wednesday:
-      type: boolean
-      nullable: true
-      options:
-        default: '1'
-    thursday:
-      type: boolean
-      nullable: true
-      options:
-        default: '1'
-    friday:
-      type: boolean
-      nullable: true
-      options:
-        default: '1'
-    saturday:
-      type: boolean
-      nullable: true
-      options:
-        default: '1'
-    sunday:
-      type: boolean
-      nullable: true
-      options:
-        default: '1'
-  manyToOne:
+  oneToOne:
     ratingPlan:
       targetEntity: \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface
       cascade: {  }
       fetch: LAZY
       mappedBy: null
-      inversedBy: null
+      inversedBy: tpRatingPlan
       joinColumns:
         ratingPlanId:
           nullable: false
           referencedColumnName: id
           onDelete: cascade
-      orphanRemoval: false
-    destinationRateGroup:
-      targetEntity: \Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface
-      cascade: {  }
-      fetch: LAZY
-      mappedBy: null
-      inversedBy: null
-      joinColumns:
-        destinationRateGroupId:
-          nullable: false
-          referencedColumnName: id
-          onDelete: cascade
-      orphanRemoval: false
-    timing:
-      targetEntity: \Ivoz\Cgr\Domain\Model\TpTiming\TpTiming
-      cascade: {  }
-      fetch: LAZY
-      mappedBy: null
-      inversedBy: null
-      joinColumns:
-        timingId:
-          nullable: true
-          referencedColumnName: id
-          onDelete: set null
       orphanRemoval: false

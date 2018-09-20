@@ -13,6 +13,7 @@ interface HuntGroupsRelUserInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @deprecated
      * Set timeoutTime
      *
      * @param integer $timeoutTime
@@ -29,6 +30,7 @@ interface HuntGroupsRelUserInterface extends LoggableEntityInterface
     public function getTimeoutTime();
 
     /**
+     * @deprecated
      * Set priority
      *
      * @param integer $priority
@@ -75,6 +77,4 @@ interface HuntGroupsRelUserInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\User\UserInterface
      */
     public function getUser();
-
 }
-

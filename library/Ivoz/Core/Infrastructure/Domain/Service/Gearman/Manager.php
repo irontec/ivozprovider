@@ -91,8 +91,4 @@ class Manager
 
         return new $workerName($logFile);
     }
-
-
-
-
 }

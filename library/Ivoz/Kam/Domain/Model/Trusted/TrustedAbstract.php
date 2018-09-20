@@ -71,7 +71,8 @@ abstract class TrustedAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "Trusted",
             $this->getId()
         );
@@ -131,7 +132,8 @@ abstract class TrustedAbstract
         Assertion::isInstanceOf($dto, TrustedDto::class);
 
         $self = new static(
-            $dto->getPriority());
+            $dto->getPriority()
+        );
 
         $self
             ->setSrcIp($dto->getSrcIp())
@@ -209,11 +211,10 @@ abstract class TrustedAbstract
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set srcIp
      *
      * @param string $srcIp
@@ -242,6 +243,7 @@ abstract class TrustedAbstract
     }
 
     /**
+     * @deprecated
      * Set proto
      *
      * @param string $proto
@@ -270,6 +272,7 @@ abstract class TrustedAbstract
     }
 
     /**
+     * @deprecated
      * Set fromPattern
      *
      * @param string $fromPattern
@@ -298,6 +301,7 @@ abstract class TrustedAbstract
     }
 
     /**
+     * @deprecated
      * Set ruriPattern
      *
      * @param string $ruriPattern
@@ -326,6 +330,7 @@ abstract class TrustedAbstract
     }
 
     /**
+     * @deprecated
      * Set tag
      *
      * @param string $tag
@@ -354,6 +359,7 @@ abstract class TrustedAbstract
     }
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description
@@ -382,6 +388,7 @@ abstract class TrustedAbstract
     }
 
     /**
+     * @deprecated
      * Set priority
      *
      * @param integer $priority
@@ -432,8 +439,5 @@ abstract class TrustedAbstract
         return $this->company;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

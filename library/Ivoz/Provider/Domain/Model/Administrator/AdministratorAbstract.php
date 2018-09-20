@@ -77,7 +77,8 @@ abstract class AdministratorAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "Administrator",
             $this->getId()
         );
@@ -140,7 +141,8 @@ abstract class AdministratorAbstract
             $dto->getUsername(),
             $dto->getPass(),
             $dto->getEmail(),
-            $dto->getActive());
+            $dto->getActive()
+        );
 
         $self
             ->setName($dto->getName())
@@ -219,11 +221,10 @@ abstract class AdministratorAbstract
             'timezoneId' => self::getTimezone() ? self::getTimezone()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set username
      *
      * @param string $username
@@ -251,6 +252,7 @@ abstract class AdministratorAbstract
     }
 
     /**
+     * @deprecated
      * Set pass
      *
      * @param string $pass
@@ -278,6 +280,7 @@ abstract class AdministratorAbstract
     }
 
     /**
+     * @deprecated
      * Set email
      *
      * @param string $email
@@ -305,6 +308,7 @@ abstract class AdministratorAbstract
     }
 
     /**
+     * @deprecated
      * Set active
      *
      * @param boolean $active
@@ -332,6 +336,7 @@ abstract class AdministratorAbstract
     }
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -360,6 +365,7 @@ abstract class AdministratorAbstract
     }
 
     /**
+     * @deprecated
      * Set lastname
      *
      * @param string $lastname
@@ -459,8 +465,5 @@ abstract class AdministratorAbstract
         return $this->timezone;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

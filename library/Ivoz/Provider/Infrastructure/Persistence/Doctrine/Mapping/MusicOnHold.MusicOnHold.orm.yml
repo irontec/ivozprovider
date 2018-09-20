@@ -1,6 +1,7 @@
 Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHold:
   repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\MusicOnHoldDoctrineRepository
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: MusicOnHold
   id:
     id:

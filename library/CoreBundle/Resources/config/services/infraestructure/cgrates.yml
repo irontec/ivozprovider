@@ -5,15 +5,19 @@ services:
     public: false
 
   Ivoz\Core\Infrastructure\Domain\Service\Cgrates\CompanyBalanceService: ~
-  Ivoz\Core\Infrastructure\Domain\Service\Cgrates\CarrierBalanceService: ~
-
   Ivoz\Provider\Domain\Service\Company\CompanyBalanceServiceInterface:
-    '@Ivoz\Core\Infrastructure\Domain\Service\Cgrates\CompanyBalanceService'
+    alias: Ivoz\Core\Infrastructure\Domain\Service\Cgrates\CompanyBalanceService
+    public: true
 
+  Ivoz\Core\Infrastructure\Domain\Service\Cgrates\CarrierBalanceService: ~
   Ivoz\Provider\Domain\Service\Carrier\CarrierBalanceServiceInterface:
-      '@Ivoz\Core\Infrastructure\Domain\Service\Cgrates\CarrierBalanceService'
+    alias: Ivoz\Core\Infrastructure\Domain\Service\Cgrates\CarrierBalanceService
+    public: true
 
   Ivoz\Core\Infrastructure\Domain\Service\Cgrates\BillingService:
+    public: true
+
+  Ivoz\Core\Infrastructure\Domain\Service\Cgrates\ReloadService:
     public: true
 
   Ivoz\Core\Infrastructure\Domain\Service\Cgrates\LoadTpAccountAction:  ~
@@ -37,7 +41,7 @@ services:
   Ivoz\Kam\Domain\Service\TrunksCdr\RerateCallServiceInterface:
     '@Ivoz\Core\Infrastructure\Domain\Service\Cgrates\RerateCallService'
 
-  Ivoz\Cgr\Infrastructure\Domain\Service\Cgrates\FetchCallStatsService:
-    public: true
+  Ivoz\Cgr\Infrastructure\Domain\Service\Cgrates\FetchCallStatsService: ~
   Ivoz\Cgr\Domain\Service\TpCdrStat\FetchCallStatsServiceInterface:
-    '@Ivoz\Core\Infrastructure\Domain\Service\Cgrates\FetchCallStatsService'
+    alias: Ivoz\Cgr\Infrastructure\Domain\Service\Cgrates\FetchCallStatsService
+    public: true

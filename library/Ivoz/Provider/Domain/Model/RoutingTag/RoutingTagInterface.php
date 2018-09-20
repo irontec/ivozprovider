@@ -14,6 +14,12 @@ interface RoutingTagInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @return string
+     */
+    public function getCgrSubject();
+
+    /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -30,6 +36,7 @@ interface RoutingTagInterface extends LoggableEntityInterface
     public function getName();
 
     /**
+     * @deprecated
      * Set tag
      *
      * @param string $tag
@@ -122,6 +129,4 @@ interface RoutingTagInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface[]
      */
     public function getRelCompanies(\Doctrine\Common\Collections\Criteria $criteria = null);
-
 }
-

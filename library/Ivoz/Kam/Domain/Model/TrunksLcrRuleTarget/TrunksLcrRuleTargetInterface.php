@@ -13,6 +13,7 @@ interface TrunksLcrRuleTargetInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @deprecated
      * Set lcrId
      *
      * @param integer $lcrId
@@ -29,6 +30,7 @@ interface TrunksLcrRuleTargetInterface extends LoggableEntityInterface
     public function getLcrId();
 
     /**
+     * @deprecated
      * Set priority
      *
      * @param integer $priority
@@ -45,6 +47,7 @@ interface TrunksLcrRuleTargetInterface extends LoggableEntityInterface
     public function getPriority();
 
     /**
+     * @deprecated
      * Set weight
      *
      * @param integer $weight
@@ -99,7 +102,7 @@ interface TrunksLcrRuleTargetInterface extends LoggableEntityInterface
      *
      * @return self
      */
-    public function setOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting);
+    public function setOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting = null);
 
     /**
      * Get outgoingRouting
@@ -107,6 +110,4 @@ interface TrunksLcrRuleTargetInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface
      */
     public function getOutgoingRouting();
-
 }
-

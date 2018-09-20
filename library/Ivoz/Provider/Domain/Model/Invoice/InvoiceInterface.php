@@ -2,10 +2,11 @@
 
 namespace Ivoz\Provider\Domain\Model\Invoice;
 
+use Ivoz\Core\Domain\Service\FileContainerInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Doctrine\Common\Collections\Collection;
 
-interface InvoiceInterface extends LoggableEntityInterface
+interface InvoiceInterface extends FileContainerInterface, LoggableEntityInterface
 {
     /**
      * @codeCoverageIgnore
@@ -33,6 +34,7 @@ interface InvoiceInterface extends LoggableEntityInterface
     public function getNumber();
 
     /**
+     * @deprecated
      * Set inDate
      *
      * @param \DateTime $inDate
@@ -49,6 +51,7 @@ interface InvoiceInterface extends LoggableEntityInterface
     public function getInDate();
 
     /**
+     * @deprecated
      * Set outDate
      *
      * @param \DateTime $outDate
@@ -65,6 +68,7 @@ interface InvoiceInterface extends LoggableEntityInterface
     public function getOutDate();
 
     /**
+     * @deprecated
      * Set total
      *
      * @param string $total
@@ -81,6 +85,7 @@ interface InvoiceInterface extends LoggableEntityInterface
     public function getTotal();
 
     /**
+     * @deprecated
      * Set taxRate
      *
      * @param string $taxRate
@@ -97,6 +102,7 @@ interface InvoiceInterface extends LoggableEntityInterface
     public function getTaxRate();
 
     /**
+     * @deprecated
      * Set totalWithTax
      *
      * @param string $totalWithTax
@@ -113,6 +119,7 @@ interface InvoiceInterface extends LoggableEntityInterface
     public function getTotalWithTax();
 
     /**
+     * @deprecated
      * Set status
      *
      * @param string $status
@@ -129,6 +136,7 @@ interface InvoiceInterface extends LoggableEntityInterface
     public function getStatus();
 
     /**
+     * @deprecated
      * Set statusMsg
      *
      * @param string $statusMsg
@@ -293,6 +301,4 @@ interface InvoiceInterface extends LoggableEntityInterface
      * @return null | TempFile
      */
     public function getTempFileByFieldName($fldName);
-
 }
-

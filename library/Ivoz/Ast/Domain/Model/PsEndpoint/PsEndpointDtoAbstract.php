@@ -197,7 +197,6 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -678,5 +677,3 @@ abstract class PsEndpointDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 }
-
-

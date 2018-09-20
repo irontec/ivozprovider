@@ -105,7 +105,6 @@ abstract class MatchListPatternDtoAbstract implements DataTransferObjectInterfac
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -300,5 +299,3 @@ abstract class MatchListPatternDtoAbstract implements DataTransferObjectInterfac
         return null;
     }
 }
-
-

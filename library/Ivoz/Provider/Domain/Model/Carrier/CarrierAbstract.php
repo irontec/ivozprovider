@@ -64,7 +64,8 @@ abstract class CarrierAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "Carrier",
             $this->getId()
         );
@@ -125,7 +126,8 @@ abstract class CarrierAbstract
 
         $self = new static(
             $dto->getDescription(),
-            $dto->getName());
+            $dto->getName()
+        );
 
         $self
             ->setExternallyRated($dto->getExternallyRated())
@@ -198,11 +200,10 @@ abstract class CarrierAbstract
             'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description
@@ -230,6 +231,7 @@ abstract class CarrierAbstract
     }
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -257,6 +259,7 @@ abstract class CarrierAbstract
     }
 
     /**
+     * @deprecated
      * Set externallyRated
      *
      * @param boolean $externallyRated
@@ -285,6 +288,7 @@ abstract class CarrierAbstract
     }
 
     /**
+     * @deprecated
      * Set balance
      *
      * @param string $balance
@@ -296,6 +300,7 @@ abstract class CarrierAbstract
         if (!is_null($balance)) {
             if (!is_null($balance)) {
                 Assertion::numeric($balance);
+                $balance = (float) $balance;
             }
         }
 
@@ -315,6 +320,7 @@ abstract class CarrierAbstract
     }
 
     /**
+     * @deprecated
      * Set calculateCost
      *
      * @param boolean $calculateCost
@@ -390,8 +396,5 @@ abstract class CarrierAbstract
         return $this->transformationRuleSet;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

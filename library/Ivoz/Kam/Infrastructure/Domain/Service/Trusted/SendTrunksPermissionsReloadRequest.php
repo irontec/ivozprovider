@@ -23,7 +23,7 @@ class SendTrunksPermissionsReloadRequest implements TrustedLifecycleEventHandler
         ];
     }
 
-    public function execute(TrustedInterface $entity)
+    public function execute(TrustedInterface $trusted)
     {
         $this->trunksPermissionsReload->send();
     }

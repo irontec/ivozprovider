@@ -53,7 +53,8 @@ abstract class RoutingPatternAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "RoutingPattern",
             $this->getId()
         );
@@ -200,11 +201,10 @@ abstract class RoutingPatternAbstract
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set prefix
      *
      * @param string $prefix
@@ -265,7 +265,6 @@ abstract class RoutingPatternAbstract
     public function setName(Name $name)
     {
         $this->name = $name;
-
         return $this;
     }
 
@@ -289,7 +288,6 @@ abstract class RoutingPatternAbstract
     public function setDescription(Description $description)
     {
         $this->description = $description;
-
         return $this;
     }
 
@@ -302,7 +300,5 @@ abstract class RoutingPatternAbstract
     {
         return $this->description;
     }
-
     // @codeCoverageIgnoreEnd
 }
-

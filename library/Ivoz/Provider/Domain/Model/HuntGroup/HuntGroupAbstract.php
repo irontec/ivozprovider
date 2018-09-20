@@ -99,7 +99,8 @@ abstract class HuntGroupAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "HuntGroup",
             $this->getId()
         );
@@ -163,7 +164,8 @@ abstract class HuntGroupAbstract
             $dto->getDescription(),
             $dto->getStrategy(),
             $dto->getRingAllTimeout(),
-            $dto->getPreventMissedCalls());
+            $dto->getPreventMissedCalls()
+        );
 
         $self
             ->setNoAnswerTargetType($dto->getNoAnswerTargetType())
@@ -253,11 +255,10 @@ abstract class HuntGroupAbstract
             'noAnswerNumberCountryId' => self::getNoAnswerNumberCountry() ? self::getNoAnswerNumberCountry()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -285,6 +286,7 @@ abstract class HuntGroupAbstract
     }
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description
@@ -312,6 +314,7 @@ abstract class HuntGroupAbstract
     }
 
     /**
+     * @deprecated
      * Set strategy
      *
      * @param string $strategy
@@ -345,6 +348,7 @@ abstract class HuntGroupAbstract
     }
 
     /**
+     * @deprecated
      * Set ringAllTimeout
      *
      * @param integer $ringAllTimeout
@@ -372,6 +376,7 @@ abstract class HuntGroupAbstract
     }
 
     /**
+     * @deprecated
      * Set noAnswerTargetType
      *
      * @param string $noAnswerTargetType
@@ -382,11 +387,11 @@ abstract class HuntGroupAbstract
     {
         if (!is_null($noAnswerTargetType)) {
             Assertion::maxLength($noAnswerTargetType, 25, 'noAnswerTargetType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        Assertion::choice($noAnswerTargetType, array (
-          0 => 'number',
-          1 => 'extension',
-          2 => 'voicemail',
-        ), 'noAnswerTargetTypevalue "%s" is not an element of the valid values: %s');
+            Assertion::choice($noAnswerTargetType, array (
+              0 => 'number',
+              1 => 'extension',
+              2 => 'voicemail',
+            ), 'noAnswerTargetTypevalue "%s" is not an element of the valid values: %s');
         }
 
         $this->noAnswerTargetType = $noAnswerTargetType;
@@ -405,6 +410,7 @@ abstract class HuntGroupAbstract
     }
 
     /**
+     * @deprecated
      * Set noAnswerNumberValue
      *
      * @param string $noAnswerNumberValue
@@ -433,6 +439,7 @@ abstract class HuntGroupAbstract
     }
 
     /**
+     * @deprecated
      * Set preventMissedCalls
      *
      * @param integer $preventMissedCalls
@@ -580,8 +587,5 @@ abstract class HuntGroupAbstract
         return $this->noAnswerNumberCountry;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

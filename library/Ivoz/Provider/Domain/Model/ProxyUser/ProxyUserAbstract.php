@@ -31,14 +31,14 @@ abstract class ProxyUserAbstract
      */
     protected function __construct()
     {
-
     }
 
     abstract public function getId();
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "ProxyUser",
             $this->getId()
         );
@@ -152,11 +152,10 @@ abstract class ProxyUserAbstract
             'ip' => self::getIp()
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -185,6 +184,7 @@ abstract class ProxyUserAbstract
     }
 
     /**
+     * @deprecated
      * Set ip
      *
      * @param string $ip
@@ -212,8 +212,5 @@ abstract class ProxyUserAbstract
         return $this->ip;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

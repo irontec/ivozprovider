@@ -2,6 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Model\RoutingPatternGroup;
 
+use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface;
 
 /**
@@ -31,12 +32,13 @@ class RoutingPatternGroup extends RoutingPatternGroupAbstract implements Routing
     }
 
     /**
+     * @param Criteria|null $criteria
      * @return \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface[]
      */
-    public function getRoutingPatterns()
+    public function getRoutingPatterns(Criteria $criteria = null)
     {
         $patterns = array();
-        $rels = $this->getRelPatterns();
+        $rels = $this->getRelPatterns($criteria);
 
         /**
          * @var RoutingPatternGroupsRelPatternInterface $rel
@@ -48,4 +50,3 @@ class RoutingPatternGroup extends RoutingPatternGroupAbstract implements Routing
         return $patterns;
     }
 }
-

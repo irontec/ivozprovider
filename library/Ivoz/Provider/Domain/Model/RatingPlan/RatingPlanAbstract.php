@@ -16,22 +16,65 @@ abstract class RatingPlanAbstract
     /**
      * @var string
      */
-    protected $tag;
+    protected $weight = 10;
 
     /**
-     * @var Name
+     * column: timing_type
+     * comment: enum:always|custom
+     * @var string
      */
-    protected $name;
+    protected $timingType = 'always';
 
     /**
-     * @var Description
+     * column: time_in
+     * @var \DateTime
      */
-    protected $description;
+    protected $timeIn;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @var boolean
      */
-    protected $brand;
+    protected $monday = '1';
+
+    /**
+     * @var boolean
+     */
+    protected $tuesday = '1';
+
+    /**
+     * @var boolean
+     */
+    protected $wednesday = '1';
+
+    /**
+     * @var boolean
+     */
+    protected $thursday = '1';
+
+    /**
+     * @var boolean
+     */
+    protected $friday = '1';
+
+    /**
+     * @var boolean
+     */
+    protected $saturday = '1';
+
+    /**
+     * @var boolean
+     */
+    protected $sunday = '1';
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface
+     */
+    protected $ratingPlanGroup;
+
+    /**
+     * @var \Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface
+     */
+    protected $destinationRateGroup;
 
 
     use ChangelogTrait;
@@ -39,17 +82,18 @@ abstract class RatingPlanAbstract
     /**
      * Constructor
      */
-    protected function __construct(Name $name, Description $description)
+    protected function __construct($weight, $timeIn)
     {
-        $this->setName($name);
-        $this->setDescription($description);
+        $this->setWeight($weight);
+        $this->setTimeIn($timeIn);
     }
 
     abstract public function getId();
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "RatingPlan",
             $this->getId()
         );
@@ -108,24 +152,22 @@ abstract class RatingPlanAbstract
          */
         Assertion::isInstanceOf($dto, RatingPlanDto::class);
 
-        $name = new Name(
-            $dto->getNameEn(),
-            $dto->getNameEs()
-        );
-
-        $description = new Description(
-            $dto->getDescriptionEn(),
-            $dto->getDescriptionEs()
-        );
-
         $self = new static(
-            $name,
-            $description
+            $dto->getWeight(),
+            $dto->getTimeIn()
         );
 
         $self
-            ->setTag($dto->getTag())
-            ->setBrand($dto->getBrand())
+            ->setTimingType($dto->getTimingType())
+            ->setMonday($dto->getMonday())
+            ->setTuesday($dto->getTuesday())
+            ->setWednesday($dto->getWednesday())
+            ->setThursday($dto->getThursday())
+            ->setFriday($dto->getFriday())
+            ->setSaturday($dto->getSaturday())
+            ->setSunday($dto->getSunday())
+            ->setRatingPlanGroup($dto->getRatingPlanGroup())
+            ->setDestinationRateGroup($dto->getDestinationRateGroup())
         ;
 
         $self->sanitizeValues();
@@ -145,21 +187,19 @@ abstract class RatingPlanAbstract
          */
         Assertion::isInstanceOf($dto, RatingPlanDto::class);
 
-        $name = new Name(
-            $dto->getNameEn(),
-            $dto->getNameEs()
-        );
-
-        $description = new Description(
-            $dto->getDescriptionEn(),
-            $dto->getDescriptionEs()
-        );
-
         $this
-            ->setTag($dto->getTag())
-            ->setName($name)
-            ->setDescription($description)
-            ->setBrand($dto->getBrand());
+            ->setWeight($dto->getWeight())
+            ->setTimingType($dto->getTimingType())
+            ->setTimeIn($dto->getTimeIn())
+            ->setMonday($dto->getMonday())
+            ->setTuesday($dto->getTuesday())
+            ->setWednesday($dto->getWednesday())
+            ->setThursday($dto->getThursday())
+            ->setFriday($dto->getFriday())
+            ->setSaturday($dto->getSaturday())
+            ->setSunday($dto->getSunday())
+            ->setRatingPlanGroup($dto->getRatingPlanGroup())
+            ->setDestinationRateGroup($dto->getDestinationRateGroup());
 
 
 
@@ -174,12 +214,18 @@ abstract class RatingPlanAbstract
     public function toDto($depth = 0)
     {
         return self::createDto()
-            ->setTag(self::getTag())
-            ->setNameEn(self::getName()->getEn())
-            ->setNameEs(self::getName()->getEs())
-            ->setDescriptionEn(self::getDescription()->getEn())
-            ->setDescriptionEs(self::getDescription()->getEs())
-            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth));
+            ->setWeight(self::getWeight())
+            ->setTimingType(self::getTimingType())
+            ->setTimeIn(self::getTimeIn())
+            ->setMonday(self::getMonday())
+            ->setTuesday(self::getTuesday())
+            ->setWednesday(self::getWednesday())
+            ->setThursday(self::getThursday())
+            ->setFriday(self::getFriday())
+            ->setSaturday(self::getSaturday())
+            ->setSunday(self::getSunday())
+            ->setRatingPlanGroup(\Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup::entityToDto(self::getRatingPlanGroup(), $depth))
+            ->setDestinationRateGroup(\Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroup::entityToDto(self::getDestinationRateGroup(), $depth));
     }
 
     /**
@@ -188,118 +234,361 @@ abstract class RatingPlanAbstract
     protected function __toArray()
     {
         return [
-            'tag' => self::getTag(),
-            'nameEn' => self::getName()->getEn(),
-            'nameEs' => self::getName()->getEs(),
-            'descriptionEn' => self::getDescription()->getEn(),
-            'descriptionEs' => self::getDescription()->getEs(),
-            'brandId' => self::getBrand() ? self::getBrand()->getId() : null
+            'weight' => self::getWeight(),
+            'timing_type' => self::getTimingType(),
+            'time_in' => self::getTimeIn(),
+            'monday' => self::getMonday(),
+            'tuesday' => self::getTuesday(),
+            'wednesday' => self::getWednesday(),
+            'thursday' => self::getThursday(),
+            'friday' => self::getFriday(),
+            'saturday' => self::getSaturday(),
+            'sunday' => self::getSunday(),
+            'ratingPlanGroupId' => self::getRatingPlanGroup() ? self::getRatingPlanGroup()->getId() : null,
+            'destinationRateGroupId' => self::getDestinationRateGroup() ? self::getDestinationRateGroup()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
-     * Set tag
+     * @deprecated
+     * Set weight
      *
-     * @param string $tag
+     * @param string $weight
      *
      * @return self
      */
-    public function setTag($tag = null)
+    public function setWeight($weight)
     {
-        if (!is_null($tag)) {
-            Assertion::maxLength($tag, 64, 'tag value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        }
+        Assertion::notNull($weight, 'weight value "%s" is null, but non null value was expected.');
+        Assertion::numeric($weight);
+        $weight = (float) $weight;
 
-        $this->tag = $tag;
+        $this->weight = $weight;
 
         return $this;
     }
 
     /**
-     * Get tag
+     * Get weight
      *
      * @return string
      */
-    public function getTag()
+    public function getWeight()
     {
-        return $this->tag;
+        return $this->weight;
     }
 
     /**
-     * Set brand
+     * @deprecated
+     * Set timingType
      *
-     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
+     * @param string $timingType
      *
      * @return self
      */
-    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand)
+    public function setTimingType($timingType = null)
     {
-        $this->brand = $brand;
+        if (!is_null($timingType)) {
+            Assertion::maxLength($timingType, 10, 'timingType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+            Assertion::choice($timingType, array (
+              0 => 'always',
+              1 => 'custom',
+            ), 'timingTypevalue "%s" is not an element of the valid values: %s');
+        }
+
+        $this->timingType = $timingType;
 
         return $this;
     }
 
     /**
-     * Get brand
+     * Get timingType
      *
-     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     * @return string
      */
-    public function getBrand()
+    public function getTimingType()
     {
-        return $this->brand;
+        return $this->timingType;
     }
 
     /**
-     * Set name
+     * @deprecated
+     * Set timeIn
      *
-     * @param \Ivoz\Provider\Domain\Model\RatingPlan\Name $name
+     * @param \DateTime $timeIn
      *
      * @return self
      */
-    public function setName(Name $name)
+    public function setTimeIn($timeIn)
     {
-        $this->name = $name;
+        Assertion::notNull($timeIn, 'timeIn value "%s" is null, but non null value was expected.');
+
+        $this->timeIn = $timeIn;
 
         return $this;
     }
 
     /**
-     * Get name
+     * Get timeIn
      *
-     * @return \Ivoz\Provider\Domain\Model\RatingPlan\Name
+     * @return \DateTime
      */
-    public function getName()
+    public function getTimeIn()
     {
-        return $this->name;
+        return $this->timeIn;
     }
 
     /**
-     * Set description
+     * @deprecated
+     * Set monday
      *
-     * @param \Ivoz\Provider\Domain\Model\RatingPlan\Description $description
+     * @param boolean $monday
      *
      * @return self
      */
-    public function setDescription(Description $description)
+    public function setMonday($monday = null)
     {
-        $this->description = $description;
+        if (!is_null($monday)) {
+            Assertion::between(intval($monday), 0, 1, 'monday provided "%s" is not a valid boolean value.');
+        }
+
+        $this->monday = $monday;
 
         return $this;
     }
 
     /**
-     * Get description
+     * Get monday
      *
-     * @return \Ivoz\Provider\Domain\Model\RatingPlan\Description
+     * @return boolean
      */
-    public function getDescription()
+    public function getMonday()
     {
-        return $this->description;
+        return $this->monday;
+    }
+
+    /**
+     * @deprecated
+     * Set tuesday
+     *
+     * @param boolean $tuesday
+     *
+     * @return self
+     */
+    public function setTuesday($tuesday = null)
+    {
+        if (!is_null($tuesday)) {
+            Assertion::between(intval($tuesday), 0, 1, 'tuesday provided "%s" is not a valid boolean value.');
+        }
+
+        $this->tuesday = $tuesday;
+
+        return $this;
+    }
+
+    /**
+     * Get tuesday
+     *
+     * @return boolean
+     */
+    public function getTuesday()
+    {
+        return $this->tuesday;
+    }
+
+    /**
+     * @deprecated
+     * Set wednesday
+     *
+     * @param boolean $wednesday
+     *
+     * @return self
+     */
+    public function setWednesday($wednesday = null)
+    {
+        if (!is_null($wednesday)) {
+            Assertion::between(intval($wednesday), 0, 1, 'wednesday provided "%s" is not a valid boolean value.');
+        }
+
+        $this->wednesday = $wednesday;
+
+        return $this;
+    }
+
+    /**
+     * Get wednesday
+     *
+     * @return boolean
+     */
+    public function getWednesday()
+    {
+        return $this->wednesday;
+    }
+
+    /**
+     * @deprecated
+     * Set thursday
+     *
+     * @param boolean $thursday
+     *
+     * @return self
+     */
+    public function setThursday($thursday = null)
+    {
+        if (!is_null($thursday)) {
+            Assertion::between(intval($thursday), 0, 1, 'thursday provided "%s" is not a valid boolean value.');
+        }
+
+        $this->thursday = $thursday;
+
+        return $this;
+    }
+
+    /**
+     * Get thursday
+     *
+     * @return boolean
+     */
+    public function getThursday()
+    {
+        return $this->thursday;
+    }
+
+    /**
+     * @deprecated
+     * Set friday
+     *
+     * @param boolean $friday
+     *
+     * @return self
+     */
+    public function setFriday($friday = null)
+    {
+        if (!is_null($friday)) {
+            Assertion::between(intval($friday), 0, 1, 'friday provided "%s" is not a valid boolean value.');
+        }
+
+        $this->friday = $friday;
+
+        return $this;
+    }
+
+    /**
+     * Get friday
+     *
+     * @return boolean
+     */
+    public function getFriday()
+    {
+        return $this->friday;
+    }
+
+    /**
+     * @deprecated
+     * Set saturday
+     *
+     * @param boolean $saturday
+     *
+     * @return self
+     */
+    public function setSaturday($saturday = null)
+    {
+        if (!is_null($saturday)) {
+            Assertion::between(intval($saturday), 0, 1, 'saturday provided "%s" is not a valid boolean value.');
+        }
+
+        $this->saturday = $saturday;
+
+        return $this;
+    }
+
+    /**
+     * Get saturday
+     *
+     * @return boolean
+     */
+    public function getSaturday()
+    {
+        return $this->saturday;
+    }
+
+    /**
+     * @deprecated
+     * Set sunday
+     *
+     * @param boolean $sunday
+     *
+     * @return self
+     */
+    public function setSunday($sunday = null)
+    {
+        if (!is_null($sunday)) {
+            Assertion::between(intval($sunday), 0, 1, 'sunday provided "%s" is not a valid boolean value.');
+        }
+
+        $this->sunday = $sunday;
+
+        return $this;
+    }
+
+    /**
+     * Get sunday
+     *
+     * @return boolean
+     */
+    public function getSunday()
+    {
+        return $this->sunday;
+    }
+
+    /**
+     * Set ratingPlanGroup
+     *
+     * @param \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface $ratingPlanGroup
+     *
+     * @return self
+     */
+    public function setRatingPlanGroup(\Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface $ratingPlanGroup = null)
+    {
+        $this->ratingPlanGroup = $ratingPlanGroup;
+
+        return $this;
+    }
+
+    /**
+     * Get ratingPlanGroup
+     *
+     * @return \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface
+     */
+    public function getRatingPlanGroup()
+    {
+        return $this->ratingPlanGroup;
+    }
+
+    /**
+     * Set destinationRateGroup
+     *
+     * @param \Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface $destinationRateGroup
+     *
+     * @return self
+     */
+    public function setDestinationRateGroup(\Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface $destinationRateGroup)
+    {
+        $this->destinationRateGroup = $destinationRateGroup;
+
+        return $this;
+    }
+
+    /**
+     * Get destinationRateGroup
+     *
+     * @return \Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupInterface
+     */
+    public function getDestinationRateGroup()
+    {
+        return $this->destinationRateGroup;
     }
 
     // @codeCoverageIgnoreEnd
 }
-

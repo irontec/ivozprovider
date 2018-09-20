@@ -79,7 +79,8 @@ abstract class InvoiceNumberSequenceAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "InvoiceNumberSequence",
             $this->getId()
         );
@@ -144,7 +145,8 @@ abstract class InvoiceNumberSequenceAbstract
             $dto->getSequenceLength(),
             $dto->getIncrement(),
             $dto->getIteration(),
-            $dto->getVersion());
+            $dto->getVersion()
+        );
 
         $self
             ->setLatestValue($dto->getLatestValue())
@@ -217,11 +219,10 @@ abstract class InvoiceNumberSequenceAbstract
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -249,6 +250,7 @@ abstract class InvoiceNumberSequenceAbstract
     }
 
     /**
+     * @deprecated
      * Set prefix
      *
      * @param string $prefix
@@ -276,6 +278,7 @@ abstract class InvoiceNumberSequenceAbstract
     }
 
     /**
+     * @deprecated
      * Set sequenceLength
      *
      * @param integer $sequenceLength
@@ -304,6 +307,7 @@ abstract class InvoiceNumberSequenceAbstract
     }
 
     /**
+     * @deprecated
      * Set increment
      *
      * @param integer $increment
@@ -332,6 +336,7 @@ abstract class InvoiceNumberSequenceAbstract
     }
 
     /**
+     * @deprecated
      * Set latestValue
      *
      * @param string $latestValue
@@ -359,6 +364,7 @@ abstract class InvoiceNumberSequenceAbstract
     }
 
     /**
+     * @deprecated
      * Set iteration
      *
      * @param integer $iteration
@@ -387,6 +393,7 @@ abstract class InvoiceNumberSequenceAbstract
     }
 
     /**
+     * @deprecated
      * Set version
      *
      * @param integer $version
@@ -437,8 +444,5 @@ abstract class InvoiceNumberSequenceAbstract
         return $this->brand;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

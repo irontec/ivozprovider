@@ -19,7 +19,4 @@ class CallAclRelMatchListDto extends CallAclRelMatchListDtoAbstract
 
         return parent::getPropertyMap(...func_get_args());
     }
-
 }
-
-

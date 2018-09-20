@@ -1,6 +1,7 @@
 Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceScheduler:
   repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\FixedCostsRelInvoiceSchedulerDoctrineRepository
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: FixedCostsRelInvoiceSchedulers
   id:
     id:

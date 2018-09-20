@@ -5,12 +5,15 @@ namespace Ivoz\Cgr\Domain\Model\TpRatingProfile;
 use Ivoz\Cgr\Domain\Model\TpDestination\TpDestination;
 use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface;
 use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationRepository;
+use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanDto;
 use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan;
 use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto;
 use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanRepository;
 use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlan;
 use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanRepository;
 use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup;
+use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupDto;
 
 /**
  * SimulatedCall
@@ -39,9 +42,9 @@ class SimulatedCall
     protected $callDuration;
 
     /**
-     * @var RatingPlanDto
+     * @var RatingPlanGroupDto
      */
-    protected $ratingPlan;
+    protected $ratingPlanGroupDto;
 
     /**
      * @var string
@@ -78,7 +81,9 @@ class SimulatedCall
      */
     protected $cost;
 
-    private function __construct() {}
+    private function __construct()
+    {
+    }
 
     /**
      * @param string $response
@@ -138,6 +143,9 @@ class SimulatedCall
 
         $instance->cost = $result->Cost;
 
+        $precision = $result->Rating->{$ratingId}->RoundingDecimals;
+        $instance->cost = ceil($instance->cost * pow(10, $precision)) / pow(10, $precision);
+
         $tag = $result->RatingFilters->{$ratingFilterId}->RatingPlanID;
         /** @var TpRatingPlan $tpRatingPlan */
         $tpRatingPlan = $tpRatingPlanRepository->findOneBy([
@@ -149,8 +157,8 @@ class SimulatedCall
         }
 
         /** @var RatingPlanDto ratingPlan */
-        $instance->ratingPlan = $entityTools->entityToDto(
-            $tpRatingPlan->getRatingPlan()
+        $instance->ratingPlanGroupDto = $entityTools->entityToDto(
+            $tpRatingPlan->getRatingPlan()->getRatingPlanGroup()
         );
 
         $destinationTag = $result->RatingFilters->{$ratingFilterId}->DestinationID;
@@ -178,8 +186,10 @@ class SimulatedCall
 
     /**
      * @param string $errorMsg
-     * @throws \DomainException
+     * @param string $ratingPlanTag
+     * @param EntityTools $entityTools
      * @return static
+     * @throws \Exception
      */
     public static function fromErrorResponse(
         string $errorMsg,
@@ -190,16 +200,15 @@ class SimulatedCall
 
         $instance->errorMessage = $errorMsg;
 
-        /** @var RatingPlanRepository $ratingPlansRepository */
-        $ratingPlansRepository = $entityTools->getRepository(RatingPlan::class);
+        /** @var TpRatingPlanRepository $ratingPlansRepository */
+        $tpRatingPlansRepository = $entityTools->getRepository(TpRatingPlan::class);
 
-        /** @var RatingPlan $ratingPlan */
-        $ratingPlan = $ratingPlansRepository->findOneBy([
+        /** @var TpRatingPlan $tpRatingPlan */
+        $tpRatingPlan = $tpRatingPlansRepository->findOneBy([
             'tag' => $ratingPlanTag
         ]);
 
-        /** @var RatingPlanDto ratingPlan */
-        $instance->ratingPlan = $entityTools->entityToDto($ratingPlan);
+        $instance->tpRatingPlanDto = $entityTools->entityToDto($tpRatingPlan);
 
         if ($errorMsg === 'SERVER_ERROR: UNAUTHORIZED_DESTINATION') {
             $instance->errorCode = self::ERROR_UNAUTHORIZED_DESTINATION;
@@ -248,11 +257,11 @@ class SimulatedCall
     }
 
     /**
-     * @return RatingPlanDto | null
+     * @return RatingPlanGroupDto | null
      */
-    public function getRatingPlan()
+    public function getRatingPlanGroup()
     {
-        return $this->ratingPlan;
+        return $this->ratingPlanGroupDto;
     }
 
     /**
@@ -311,4 +320,3 @@ class SimulatedCall
         return $this->cost;
     }
 }
-

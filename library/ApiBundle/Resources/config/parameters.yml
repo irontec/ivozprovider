@@ -1,7 +1,3 @@
 parameters:
-  jwt_private_key_path: '%kernel.root_dir%/../var/jwt/private.pem'
-  jwt_public_key_path: '%kernel.root_dir%/../var/jwt/public.pem'
-  jwt_key_pass_phrase: changeme
-  jwt_token_ttl: 3600
   api_mapping_paths:
     - '%kernel.root_dir%/config/api'

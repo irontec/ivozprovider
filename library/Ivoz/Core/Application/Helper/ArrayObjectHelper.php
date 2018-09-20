@@ -8,7 +8,6 @@ class ArrayObjectHelper
     {
         $response = [];
         foreach ($object as $key => $value) {
-
             $response[$key] = self::parseValue($value);
         }
         return $response;
@@ -21,7 +20,6 @@ class ArrayObjectHelper
         }
 
         if (is_array($value)) {
-
             $response = [];
             foreach ($value as $k => $v) {
                 $response[$k] = self::parseValue($v);
@@ -31,5 +29,4 @@ class ArrayObjectHelper
 
         return $value;
     }
-
 }

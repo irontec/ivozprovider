@@ -19,6 +19,34 @@ Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingAbstract:
       options:
         unsigned: true
         default: '1'
+    routingMode:
+      type: string
+      nullable: true
+      length: 25
+      options:
+        fixed: false
+        comment: '[enum:static|lcr]'
+        default: 'static'
+      column: routingMode
+    prefix:
+      type: string
+      nullable: true
+      length: 25
+      options:
+        fixed: false
+    forceClid:
+      type: boolean
+      nullable: true
+      options:
+        default: '0'
+        unsigned: true
+      column: forceClid
+    clid:
+      type: string
+      nullable: true
+      length: 25
+      options:
+        fixed: false
   manyToOne:
     brand:
       targetEntity: \Ivoz\Provider\Domain\Model\Brand\BrandInterface
@@ -52,7 +80,7 @@ Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingAbstract:
       joinColumns:
         carrierId:
           referencedColumnName: id
-          nullable: false
+          nullable: true
           onDelete: cascade
       orphanRemoval: false
     routingPattern:
@@ -87,4 +115,15 @@ Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingAbstract:
         routingTagId:
           referencedColumnName: id
           onDelete: cascade
+      orphanRemoval: false
+    clidCountry:
+      targetEntity: \Ivoz\Provider\Domain\Model\Country\CountryInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        clidCountryId:
+          referencedColumnName: id
+          onDelete: set null
       orphanRemoval: false

@@ -23,5 +23,3 @@ class TransformationRuleDto extends TransformationRuleDtoAbstract
         return parent::getPropertyMap(...func_get_args());
     }
 }
-
-

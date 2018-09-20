@@ -62,7 +62,6 @@ final class WriteListener
         switch ($request->getMethod()) {
             case Request::METHOD_PUT:
             case Request::METHOD_POST:
-
                 $this->validateAccessControlOrThrowException(
                     $controllerResult
                 );
@@ -73,7 +72,6 @@ final class WriteListener
                 );
                 break;
             case Request::METHOD_DELETE:
-
                 $this->validateAccessControlOrThrowException(
                     $controllerResult
                 );

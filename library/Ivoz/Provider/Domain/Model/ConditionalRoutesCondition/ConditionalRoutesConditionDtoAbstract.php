@@ -196,7 +196,6 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
                 );
             }
         }
-
         if (!is_null($this->relSchedules)) {
             $items = $this->getRelSchedules();
             $this->relSchedules = [];
@@ -207,7 +206,6 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
                 );
             }
         }
-
         if (!is_null($this->relCalendars)) {
             $items = $this->getRelCalendars();
             $this->relCalendars = [];
@@ -218,7 +216,6 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
                 );
             }
         }
-
         if (!is_null($this->relRouteLocks)) {
             $items = $this->getRelRouteLocks();
             $this->relRouteLocks = [];
@@ -229,7 +226,6 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
                 );
             }
         }
-
     }
 
     /**
@@ -895,5 +891,3 @@ abstract class ConditionalRoutesConditionDtoAbstract implements DataTransferObje
         return $this->relRouteLocks;
     }
 }
-
-

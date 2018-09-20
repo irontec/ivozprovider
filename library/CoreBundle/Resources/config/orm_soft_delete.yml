@@ -19,5 +19,17 @@ parameters:
       - Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOut
     Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup:
       - Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting
+    Ivoz\Provider\Domain\Model\Destination\Destination:
+      - Ivoz\Cgr\Domain\Model\TpDestination\TpDestination
+    Ivoz\Provider\Domain\Model\DestinationRate\DestinationRate:
+      - Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRate
+    Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup:
+      - Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan
+    Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan:
+      - Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlan
     Ivoz\Provider\Domain\Model\RatingProfile\RatingProfile:
+      - Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfile
+    Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting:
+      - Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrier
+    Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrier:
       - Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfile

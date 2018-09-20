@@ -19,9 +19,24 @@ trait OutgoingRoutingTrait
     protected $id;
 
     /**
+     * @var \Ivoz\Cgr\Domain\Model\TpLcrRule\TpLcrRuleInterface
+     */
+    protected $tpLcrRule;
+
+    /**
      * @var Collection
      */
     protected $lcrRules;
+
+    /**
+     * @var Collection
+     */
+    protected $lcrRuleTargets;
+
+    /**
+     * @var Collection
+     */
+    protected $relCarriers;
 
 
     /**
@@ -31,6 +46,8 @@ trait OutgoingRoutingTrait
     {
         parent::__construct(...func_get_args());
         $this->lcrRules = new ArrayCollection();
+        $this->lcrRuleTargets = new ArrayCollection();
+        $this->relCarriers = new ArrayCollection();
     }
 
     /**
@@ -46,6 +63,14 @@ trait OutgoingRoutingTrait
         $self = parent::fromDto($dto);
         if ($dto->getLcrRules()) {
             $self->replaceLcrRules($dto->getLcrRules());
+        }
+
+        if ($dto->getLcrRuleTargets()) {
+            $self->replaceLcrRuleTargets($dto->getLcrRuleTargets());
+        }
+
+        if ($dto->getRelCarriers()) {
+            $self->replaceRelCarriers($dto->getRelCarriers());
         }
         if ($dto->getId()) {
             $self->id = $dto->getId();
@@ -67,6 +92,12 @@ trait OutgoingRoutingTrait
         parent::updateFromDto($dto);
         if ($dto->getLcrRules()) {
             $this->replaceLcrRules($dto->getLcrRules());
+        }
+        if ($dto->getLcrRuleTargets()) {
+            $this->replaceLcrRuleTargets($dto->getLcrRuleTargets());
+        }
+        if ($dto->getRelCarriers()) {
+            $this->replaceRelCarriers($dto->getRelCarriers());
         }
         return $this;
     }
@@ -91,7 +122,29 @@ trait OutgoingRoutingTrait
             'id' => self::getId()
         ];
     }
+    /**
+     * Set tpLcrRule
+     *
+     * @param \Ivoz\Cgr\Domain\Model\TpLcrRule\TpLcrRuleInterface $tpLcrRule
+     *
+     * @return self
+     */
+    public function setTpLcrRule(\Ivoz\Cgr\Domain\Model\TpLcrRule\TpLcrRuleInterface $tpLcrRule = null)
+    {
+        $this->tpLcrRule = $tpLcrRule;
 
+        return $this;
+    }
+
+    /**
+     * Get tpLcrRule
+     *
+     * @return \Ivoz\Cgr\Domain\Model\TpLcrRule\TpLcrRuleInterface
+     */
+    public function getTpLcrRule()
+    {
+        return $this->tpLcrRule;
+    }
 
     /**
      * Add lcrRule
@@ -165,6 +218,147 @@ trait OutgoingRoutingTrait
         return $this->lcrRules->toArray();
     }
 
+    /**
+     * Add lcrRuleTarget
+     *
+     * @param \Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface $lcrRuleTarget
+     *
+     * @return OutgoingRoutingTrait
+     */
+    public function addLcrRuleTarget(\Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface $lcrRuleTarget)
+    {
+        $this->lcrRuleTargets->add($lcrRuleTarget);
 
+        return $this;
+    }
+
+    /**
+     * Remove lcrRuleTarget
+     *
+     * @param \Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface $lcrRuleTarget
+     */
+    public function removeLcrRuleTarget(\Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface $lcrRuleTarget)
+    {
+        $this->lcrRuleTargets->removeElement($lcrRuleTarget);
+    }
+
+    /**
+     * Replace lcrRuleTargets
+     *
+     * @param \Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface[] $lcrRuleTargets
+     * @return self
+     */
+    public function replaceLcrRuleTargets(Collection $lcrRuleTargets)
+    {
+        $updatedEntities = [];
+        $fallBackId = -1;
+        foreach ($lcrRuleTargets as $entity) {
+            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
+            $updatedEntities[$index] = $entity;
+            $entity->setOutgoingRouting($this);
+        }
+        $updatedEntityKeys = array_keys($updatedEntities);
+
+        foreach ($this->lcrRuleTargets as $key => $entity) {
+            $identity = $entity->getId();
+            if (in_array($identity, $updatedEntityKeys)) {
+                $this->lcrRuleTargets->set($key, $updatedEntities[$identity]);
+            } else {
+                $this->lcrRuleTargets->remove($key);
+            }
+            unset($updatedEntities[$identity]);
+        }
+
+        foreach ($updatedEntities as $entity) {
+            $this->addLcrRuleTarget($entity);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get lcrRuleTargets
+     *
+     * @return \Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetInterface[]
+     */
+    public function getLcrRuleTargets(Criteria $criteria = null)
+    {
+        if (!is_null($criteria)) {
+            return $this->lcrRuleTargets->matching($criteria)->toArray();
+        }
+
+        return $this->lcrRuleTargets->toArray();
+    }
+
+    /**
+     * Add relCarrier
+     *
+     * @param \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $relCarrier
+     *
+     * @return OutgoingRoutingTrait
+     */
+    public function addRelCarrier(\Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $relCarrier)
+    {
+        $this->relCarriers->add($relCarrier);
+
+        return $this;
+    }
+
+    /**
+     * Remove relCarrier
+     *
+     * @param \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $relCarrier
+     */
+    public function removeRelCarrier(\Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $relCarrier)
+    {
+        $this->relCarriers->removeElement($relCarrier);
+    }
+
+    /**
+     * Replace relCarriers
+     *
+     * @param \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface[] $relCarriers
+     * @return self
+     */
+    public function replaceRelCarriers(Collection $relCarriers)
+    {
+        $updatedEntities = [];
+        $fallBackId = -1;
+        foreach ($relCarriers as $entity) {
+            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
+            $updatedEntities[$index] = $entity;
+            $entity->setOutgoingRouting($this);
+        }
+        $updatedEntityKeys = array_keys($updatedEntities);
+
+        foreach ($this->relCarriers as $key => $entity) {
+            $identity = $entity->getId();
+            if (in_array($identity, $updatedEntityKeys)) {
+                $this->relCarriers->set($key, $updatedEntities[$identity]);
+            } else {
+                $this->relCarriers->remove($key);
+            }
+            unset($updatedEntities[$identity]);
+        }
+
+        foreach ($updatedEntities as $entity) {
+            $this->addRelCarrier($entity);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get relCarriers
+     *
+     * @return \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface[]
+     */
+    public function getRelCarriers(Criteria $criteria = null)
+    {
+        if (!is_null($criteria)) {
+            return $this->relCarriers->matching($criteria)->toArray();
+        }
+
+        return $this->relCarriers->toArray();
+    }
 }
-

@@ -38,7 +38,8 @@ abstract class MediaRelaySetAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "MediaRelaySet",
             $this->getId()
         );
@@ -98,7 +99,8 @@ abstract class MediaRelaySetAbstract
         Assertion::isInstanceOf($dto, MediaRelaySetDto::class);
 
         $self = new static(
-            $dto->getName());
+            $dto->getName()
+        );
 
         $self
             ->setDescription($dto->getDescription())
@@ -152,11 +154,10 @@ abstract class MediaRelaySetAbstract
             'description' => self::getDescription()
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -184,6 +185,7 @@ abstract class MediaRelaySetAbstract
     }
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description
@@ -211,8 +213,5 @@ abstract class MediaRelaySetAbstract
         return $this->description;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

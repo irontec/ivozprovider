@@ -59,7 +59,8 @@ abstract class InvoiceTemplateAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "InvoiceTemplate",
             $this->getId()
         );
@@ -120,7 +121,8 @@ abstract class InvoiceTemplateAbstract
 
         $self = new static(
             $dto->getName(),
-            $dto->getTemplate());
+            $dto->getTemplate()
+        );
 
         $self
             ->setDescription($dto->getDescription())
@@ -189,11 +191,10 @@ abstract class InvoiceTemplateAbstract
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -221,6 +222,7 @@ abstract class InvoiceTemplateAbstract
     }
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description
@@ -249,6 +251,7 @@ abstract class InvoiceTemplateAbstract
     }
 
     /**
+     * @deprecated
      * Set template
      *
      * @param string $template
@@ -276,6 +279,7 @@ abstract class InvoiceTemplateAbstract
     }
 
     /**
+     * @deprecated
      * Set templateHeader
      *
      * @param string $templateHeader
@@ -304,6 +308,7 @@ abstract class InvoiceTemplateAbstract
     }
 
     /**
+     * @deprecated
      * Set templateFooter
      *
      * @param string $templateFooter
@@ -355,8 +360,5 @@ abstract class InvoiceTemplateAbstract
         return $this->brand;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

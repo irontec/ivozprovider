@@ -117,8 +117,6 @@ trait RoutingPatternTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add outgoingRouting
      *
@@ -334,7 +332,4 @@ trait RoutingPatternTrait
 
         return $this->lcrRules->toArray();
     }
-
-
 }
-

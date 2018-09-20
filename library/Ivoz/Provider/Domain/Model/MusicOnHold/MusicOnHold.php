@@ -9,10 +9,11 @@ use Ivoz\Core\Domain\Service\TempFile;
 /**
  * MusicOnHold
  */
-class MusicOnHold extends MusicOnHoldAbstract implements MusicOnHoldInterface, FileContainerInterface
+class MusicOnHold extends MusicOnHoldAbstract implements FileContainerInterface, MusicOnHoldInterface
 {
     use MusicOnHoldTrait;
-    use TempFileContainnerTrait { addTmpFile as protected _addTmpFile; }
+    use TempFileContainnerTrait { addTmpFile as protected _addTmpFile;
+    }
 
     /**
      * @codeCoverageIgnore
@@ -83,4 +84,3 @@ class MusicOnHold extends MusicOnHoldAbstract implements MusicOnHoldInterface, F
         $this->_addTmpFile($fldName, $file);
     }
 }
-

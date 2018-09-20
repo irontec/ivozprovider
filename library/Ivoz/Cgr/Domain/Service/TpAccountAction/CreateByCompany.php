@@ -32,22 +32,22 @@ class CreateByCompany implements CompanyLifecycleEventHandlerInterface
         ];
     }
 
-    public function execute(CompanyInterface $entity, $isNew)
+    public function execute(CompanyInterface $company, $isNew)
     {
         if (!$isNew) {
             return;
         }
 
-        /** @var CompanyDTO $entityDto */
-        $entityDto = $entity->toDTO();
+        $brand = $company->getBrand();
 
         $accountActionDto = TpAccountAction::createDTO();
 
         // Fill all rating plan fields
         $accountActionDto
-            ->setCompanyId($entityDto->getId())
-            ->setTenant(sprintf("b%d", $entityDto->getBrandId()))
-            ->setAccount(sprintf("c%d", $entityDto->getId()));
+            ->setTpid($brand->getCgrTenant())
+            ->setCompanyId($company->getId())
+            ->setTenant($brand->getCgrTenant())
+            ->setAccount($company->getCgrSubject());
 
         $this->entityPersister->persistDto($accountActionDto, null);
     }

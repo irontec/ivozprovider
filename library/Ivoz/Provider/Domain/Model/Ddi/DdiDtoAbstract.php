@@ -230,7 +230,6 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -1083,5 +1082,3 @@ abstract class DdiDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 }
-
-

@@ -5,7 +5,7 @@ namespace Ivoz\Provider\Domain\Model\BillableCall;
 use Doctrine\Common\Persistence\ObjectRepository;
 use Doctrine\Common\Collections\Selectable;
 
-interface BillableCallRepository extends  ObjectRepository, Selectable
+interface BillableCallRepository extends ObjectRepository, Selectable
 {
     /**
      * @param array $pks
@@ -24,6 +24,12 @@ interface BillableCallRepository extends  ObjectRepository, Selectable
      * @return array
      */
     public function idsToTrunkCdrId(array $ids);
+
+    /**
+     * @param array $ids
+     * @return mixed
+     */
+    public function resetPrices(array $ids);
 
     /**
      * @param int $invoiceId

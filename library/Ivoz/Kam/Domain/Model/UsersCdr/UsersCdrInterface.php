@@ -7,6 +7,17 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 interface UsersCdrInterface extends EntityInterface
 {
     /**
+     * @return string
+     */
+    public function getOwner();
+
+    /**
+     * @return string
+     */
+    public function getParty();
+
+    /**
+     * @deprecated
      * Set startTime
      *
      * @param \DateTime $startTime
@@ -23,6 +34,7 @@ interface UsersCdrInterface extends EntityInterface
     public function getStartTime();
 
     /**
+     * @deprecated
      * Set endTime
      *
      * @param \DateTime $endTime
@@ -39,6 +51,7 @@ interface UsersCdrInterface extends EntityInterface
     public function getEndTime();
 
     /**
+     * @deprecated
      * Set duration
      *
      * @param float $duration
@@ -55,6 +68,7 @@ interface UsersCdrInterface extends EntityInterface
     public function getDuration();
 
     /**
+     * @deprecated
      * Set direction
      *
      * @param string $direction
@@ -71,6 +85,7 @@ interface UsersCdrInterface extends EntityInterface
     public function getDirection();
 
     /**
+     * @deprecated
      * Set caller
      *
      * @param string $caller
@@ -87,6 +102,7 @@ interface UsersCdrInterface extends EntityInterface
     public function getCaller();
 
     /**
+     * @deprecated
      * Set callee
      *
      * @param string $callee
@@ -103,6 +119,7 @@ interface UsersCdrInterface extends EntityInterface
     public function getCallee();
 
     /**
+     * @deprecated
      * Set diversion
      *
      * @param string $diversion
@@ -119,6 +136,7 @@ interface UsersCdrInterface extends EntityInterface
     public function getDiversion();
 
     /**
+     * @deprecated
      * Set referee
      *
      * @param string $referee
@@ -135,6 +153,7 @@ interface UsersCdrInterface extends EntityInterface
     public function getReferee();
 
     /**
+     * @deprecated
      * Set referrer
      *
      * @param string $referrer
@@ -151,6 +170,7 @@ interface UsersCdrInterface extends EntityInterface
     public function getReferrer();
 
     /**
+     * @deprecated
      * Set callid
      *
      * @param string $callid
@@ -167,6 +187,7 @@ interface UsersCdrInterface extends EntityInterface
     public function getCallid();
 
     /**
+     * @deprecated
      * Set callidHash
      *
      * @param string $callidHash
@@ -183,6 +204,7 @@ interface UsersCdrInterface extends EntityInterface
     public function getCallidHash();
 
     /**
+     * @deprecated
      * Set xcallid
      *
      * @param string $xcallid
@@ -293,6 +315,4 @@ interface UsersCdrInterface extends EntityInterface
      * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface
      */
     public function getRetailAccount();
-
 }
-

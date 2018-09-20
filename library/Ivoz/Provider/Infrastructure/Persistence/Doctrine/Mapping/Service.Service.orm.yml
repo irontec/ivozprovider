@@ -1,6 +1,7 @@
 Ivoz\Provider\Domain\Model\Service\Service:
   repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\ServiceDoctrineRepository
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: Services
   id:
     id:

@@ -59,7 +59,8 @@ abstract class DestinationRateGroupAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "DestinationRateGroup",
             $this->getId()
         );
@@ -230,11 +231,10 @@ abstract class DestinationRateGroupAbstract
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set status
      *
      * @param string $status
@@ -245,12 +245,12 @@ abstract class DestinationRateGroupAbstract
     {
         if (!is_null($status)) {
             Assertion::maxLength($status, 20, 'status value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        Assertion::choice($status, array (
-          0 => 'waiting',
-          1 => 'inProgress',
-          2 => 'imported',
-          3 => 'error',
-        ), 'statusvalue "%s" is not an element of the valid values: %s');
+            Assertion::choice($status, array (
+              0 => 'waiting',
+              1 => 'inProgress',
+              2 => 'imported',
+              3 => 'error',
+            ), 'statusvalue "%s" is not an element of the valid values: %s');
         }
 
         $this->status = $status;
@@ -302,7 +302,6 @@ abstract class DestinationRateGroupAbstract
     public function setName(Name $name)
     {
         $this->name = $name;
-
         return $this;
     }
 
@@ -326,7 +325,6 @@ abstract class DestinationRateGroupAbstract
     public function setDescription(Description $description)
     {
         $this->description = $description;
-
         return $this;
     }
 
@@ -350,7 +348,6 @@ abstract class DestinationRateGroupAbstract
     public function setFile(File $file)
     {
         $this->file = $file;
-
         return $this;
     }
 
@@ -363,7 +360,5 @@ abstract class DestinationRateGroupAbstract
     {
         return $this->file;
     }
-
     // @codeCoverageIgnoreEnd
 }
-

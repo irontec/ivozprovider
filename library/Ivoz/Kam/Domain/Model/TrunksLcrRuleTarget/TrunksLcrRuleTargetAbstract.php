@@ -61,7 +61,8 @@ abstract class TrunksLcrRuleTargetAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "TrunksLcrRuleTarget",
             $this->getId()
         );
@@ -123,7 +124,8 @@ abstract class TrunksLcrRuleTargetAbstract
         $self = new static(
             $dto->getLcrId(),
             $dto->getPriority(),
-            $dto->getWeight());
+            $dto->getWeight()
+        );
 
         $self
             ->setRule($dto->getRule())
@@ -191,11 +193,10 @@ abstract class TrunksLcrRuleTargetAbstract
             'outgoingRoutingId' => self::getOutgoingRouting() ? self::getOutgoingRouting()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set lcrId
      *
      * @param integer $lcrId
@@ -224,6 +225,7 @@ abstract class TrunksLcrRuleTargetAbstract
     }
 
     /**
+     * @deprecated
      * Set priority
      *
      * @param integer $priority
@@ -252,6 +254,7 @@ abstract class TrunksLcrRuleTargetAbstract
     }
 
     /**
+     * @deprecated
      * Set weight
      *
      * @param integer $weight
@@ -334,7 +337,7 @@ abstract class TrunksLcrRuleTargetAbstract
      *
      * @return self
      */
-    public function setOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting)
+    public function setOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting = null)
     {
         $this->outgoingRouting = $outgoingRouting;
 
@@ -351,8 +354,5 @@ abstract class TrunksLcrRuleTargetAbstract
         return $this->outgoingRouting;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

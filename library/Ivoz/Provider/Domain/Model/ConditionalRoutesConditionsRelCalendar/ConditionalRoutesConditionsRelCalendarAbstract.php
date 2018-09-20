@@ -31,14 +31,14 @@ abstract class ConditionalRoutesConditionsRelCalendarAbstract
      */
     protected function __construct()
     {
-
     }
 
     abstract public function getId();
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "ConditionalRoutesConditionsRelCalendar",
             $this->getId()
         );
@@ -152,8 +152,6 @@ abstract class ConditionalRoutesConditionsRelCalendarAbstract
             'calendarId' => self::getCalendar() ? self::getCalendar()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -204,8 +202,5 @@ abstract class ConditionalRoutesConditionsRelCalendarAbstract
         return $this->calendar;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

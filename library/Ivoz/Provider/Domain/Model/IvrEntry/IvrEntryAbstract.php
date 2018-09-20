@@ -75,7 +75,8 @@ abstract class IvrEntryAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "IvrEntry",
             $this->getId()
         );
@@ -136,7 +137,8 @@ abstract class IvrEntryAbstract
 
         $self = new static(
             $dto->getEntry(),
-            $dto->getRouteType());
+            $dto->getRouteType()
+        );
 
         $self
             ->setNumberValue($dto->getNumberValue())
@@ -217,11 +219,10 @@ abstract class IvrEntryAbstract
             'numberCountryId' => self::getNumberCountry() ? self::getNumberCountry()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set entry
      *
      * @param string $entry
@@ -249,6 +250,7 @@ abstract class IvrEntryAbstract
     }
 
     /**
+     * @deprecated
      * Set routeType
      *
      * @param string $routeType
@@ -282,6 +284,7 @@ abstract class IvrEntryAbstract
     }
 
     /**
+     * @deprecated
      * Set numberValue
      *
      * @param string $numberValue
@@ -453,8 +456,5 @@ abstract class IvrEntryAbstract
         return $this->numberCountry;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

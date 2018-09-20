@@ -54,7 +54,8 @@ abstract class FaxAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "Fax",
             $this->getId()
         );
@@ -115,7 +116,8 @@ abstract class FaxAbstract
 
         $self = new static(
             $dto->getName(),
-            $dto->getSendByEmail());
+            $dto->getSendByEmail()
+        );
 
         $self
             ->setEmail($dto->getEmail())
@@ -180,11 +182,10 @@ abstract class FaxAbstract
             'outgoingDdiId' => self::getOutgoingDdi() ? self::getOutgoingDdi()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -212,6 +213,7 @@ abstract class FaxAbstract
     }
 
     /**
+     * @deprecated
      * Set email
      *
      * @param string $email
@@ -240,6 +242,7 @@ abstract class FaxAbstract
     }
 
     /**
+     * @deprecated
      * Set sendByEmail
      *
      * @param boolean $sendByEmail
@@ -314,8 +317,5 @@ abstract class FaxAbstract
         return $this->outgoingDdi;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

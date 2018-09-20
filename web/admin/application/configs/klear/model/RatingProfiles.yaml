@@ -9,21 +9,21 @@ production:
         control: datetime
         settings:
           disabled: 'false'
-    ratingPlan:
+    ratingPlanGroup:
       title: ngettext('Rating plan', 'Rating plans', 1)
       type: select
       required: true
       source:
         data: mapper
         config:
-          entity: \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan
+          entity: \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup
           filterClass: IvozProvider_Klear_Filter_Brand
           fieldName:
             fields:
               - name${lang}
             template: '%name${lang}%'
           order:
-            RatingPlan.name.${lang}: asc
+            RatingPlanGroup.name.${lang}: asc
       default: true
     company:
       title: ngettext('Company', 'Companies', 1)
@@ -56,7 +56,6 @@ production:
           order:
             RoutingTag.name: asc
         'null': _("No routing tag")
-      default: true
 
 staging:
   _extends: production

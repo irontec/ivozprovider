@@ -9,4 +9,3 @@ interface TpTimingRepository extends ObjectRepository, Selectable
 {
 
 }
-

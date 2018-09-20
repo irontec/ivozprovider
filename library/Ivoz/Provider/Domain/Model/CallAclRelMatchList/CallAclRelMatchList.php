@@ -29,4 +29,3 @@ class CallAclRelMatchList extends CallAclRelMatchListAbstract implements CallAcl
         return $this->id;
     }
 }
-

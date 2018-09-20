@@ -83,5 +83,5 @@ Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGatewayAbstract:
       joinColumn:
         name: carrierServerId
         referencedColumnName: id
-        nullable: false
+        nullable: true
         onDelete: cascade

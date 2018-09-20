@@ -36,7 +36,6 @@ class DoctrineCollectionTransformer implements CollectionTransformerInterface
         $entityReflection = $entityReflectionClass->newInstanceWithoutConstructor();
 
         foreach ($elements as $element) {
-
             $entity = $element instanceof EntityInterface
                 ? $element
                 : $this->getEntity($entityReflection, $element);
@@ -57,7 +56,8 @@ class DoctrineCollectionTransformer implements CollectionTransformerInterface
     {
         if ($dto->getId()) {
             $entity = $this->em->getReference(
-                get_class($entityReflection), $dto->getId()
+                get_class($entityReflection),
+                $dto->getId()
             );
 
             return $entity;

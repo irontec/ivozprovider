@@ -9,7 +9,9 @@ use Graze\GuzzleHttp\JsonRpc\Message\Request;
 
 class FakeClient implements ClientInterface
 {
-    public function notification($method, array $params = null) {}
+    public function notification($method, array $params = null)
+    {
+    }
 
     public function request($id, $method, array $params = null)
     {
@@ -42,9 +44,15 @@ class FakeClient implements ClientInterface
         );
     }
 
-    public function sendAsync(RequestInterface $request) {}
+    public function sendAsync(RequestInterface $request)
+    {
+    }
 
-    public function sendAll(array $requests) {}
+    public function sendAll(array $requests)
+    {
+    }
 
-    public function sendAllAsync(array $requests) {}
+    public function sendAllAsync(array $requests)
+    {
+    }
 }

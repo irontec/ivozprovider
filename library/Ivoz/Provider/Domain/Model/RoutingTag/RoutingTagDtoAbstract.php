@@ -98,7 +98,6 @@ abstract class RoutingTagDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
         if (!is_null($this->relCompanies)) {
             $items = $this->getRelCompanies();
             $this->relCompanies = [];
@@ -109,7 +108,6 @@ abstract class RoutingTagDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
     }
 
     /**
@@ -273,5 +271,3 @@ abstract class RoutingTagDtoAbstract implements DataTransferObjectInterface
         return $this->relCompanies;
     }
 }
-
-

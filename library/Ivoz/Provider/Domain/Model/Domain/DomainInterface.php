@@ -14,6 +14,7 @@ interface DomainInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @deprecated
      * Set domain
      *
      * @param string $domain
@@ -30,6 +31,7 @@ interface DomainInterface extends LoggableEntityInterface
     public function getDomain();
 
     /**
+     * @deprecated
      * Set pointsTo
      *
      * @param string $pointsTo
@@ -46,6 +48,7 @@ interface DomainInterface extends LoggableEntityInterface
     public function getPointsTo();
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description
@@ -153,6 +156,4 @@ interface DomainInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface[]
      */
     public function getTerminals(\Doctrine\Common\Collections\Criteria $criteria = null);
-
 }
-

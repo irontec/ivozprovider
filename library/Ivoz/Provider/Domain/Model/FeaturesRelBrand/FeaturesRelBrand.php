@@ -28,4 +28,3 @@ class FeaturesRelBrand extends FeaturesRelBrandAbstract implements FeaturesRelBr
         return $this->id;
     }
 }
-

@@ -13,6 +13,7 @@ interface CodecInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @deprecated
      * Set type
      *
      * @param string $type
@@ -29,6 +30,7 @@ interface CodecInterface extends LoggableEntityInterface
     public function getType();
 
     /**
+     * @deprecated
      * Set iden
      *
      * @param string $iden
@@ -45,6 +47,7 @@ interface CodecInterface extends LoggableEntityInterface
     public function getIden();
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -59,6 +62,4 @@ interface CodecInterface extends LoggableEntityInterface
      * @return string
      */
     public function getName();
-
 }
-

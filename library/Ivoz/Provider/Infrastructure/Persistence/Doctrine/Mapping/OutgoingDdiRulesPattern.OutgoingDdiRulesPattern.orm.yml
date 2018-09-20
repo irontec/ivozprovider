@@ -1,6 +1,7 @@
 Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPattern:
   repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\OutgoingDdiRulesPatternDoctrineRepository
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: OutgoingDDIRulesPatterns
   id:
     id:

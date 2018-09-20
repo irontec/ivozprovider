@@ -2,7 +2,6 @@
 
 namespace Ivoz\Provider\Domain\Model\Carrier;
 
-
 class CarrierDto extends CarrierDtoAbstract
 {
     /**
@@ -22,5 +21,3 @@ class CarrierDto extends CarrierDtoAbstract
         return parent::getPropertyMap(...func_get_args());
     }
 }
-
-

@@ -13,6 +13,7 @@ interface UsersXcapInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @deprecated
      * Set username
      *
      * @param string $username
@@ -29,6 +30,7 @@ interface UsersXcapInterface extends LoggableEntityInterface
     public function getUsername();
 
     /**
+     * @deprecated
      * Set domain
      *
      * @param string $domain
@@ -45,6 +47,7 @@ interface UsersXcapInterface extends LoggableEntityInterface
     public function getDomain();
 
     /**
+     * @deprecated
      * Set doc
      *
      * @param string $doc
@@ -61,6 +64,7 @@ interface UsersXcapInterface extends LoggableEntityInterface
     public function getDoc();
 
     /**
+     * @deprecated
      * Set docType
      *
      * @param integer $docType
@@ -77,6 +81,7 @@ interface UsersXcapInterface extends LoggableEntityInterface
     public function getDocType();
 
     /**
+     * @deprecated
      * Set etag
      *
      * @param string $etag
@@ -93,6 +98,7 @@ interface UsersXcapInterface extends LoggableEntityInterface
     public function getEtag();
 
     /**
+     * @deprecated
      * Set source
      *
      * @param integer $source
@@ -109,6 +115,7 @@ interface UsersXcapInterface extends LoggableEntityInterface
     public function getSource();
 
     /**
+     * @deprecated
      * Set docUri
      *
      * @param string $docUri
@@ -125,6 +132,7 @@ interface UsersXcapInterface extends LoggableEntityInterface
     public function getDocUri();
 
     /**
+     * @deprecated
      * Set port
      *
      * @param integer $port
@@ -139,6 +147,4 @@ interface UsersXcapInterface extends LoggableEntityInterface
      * @return integer
      */
     public function getPort();
-
 }
-

@@ -66,5 +66,3 @@ class MusicOnHoldDto extends MusicOnHoldDtoAbstract
         ];
     }
 }
-
-

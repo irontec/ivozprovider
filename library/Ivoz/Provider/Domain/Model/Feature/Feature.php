@@ -44,4 +44,3 @@ class Feature extends FeatureAbstract implements FeatureInterface
         return $this->id;
     }
 }
-

@@ -29,6 +29,10 @@ doctrine:
         Ivoz\Provider\Domain\Model\CallAcl\CallAcl
       Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchListInterface:
         Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchList
+      Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReportInterface:
+        Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReport
+      Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface:
+        Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvScheduler
       Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingInterface:
         Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting
       Ivoz\Provider\Domain\Model\Carrier\CarrierInterface:
@@ -153,6 +157,8 @@ doctrine:
         Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPattern
       Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface:
         Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting
+      Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface:
+        Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrier
       Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroupInterface:
         Ivoz\Provider\Domain\Model\PickUpGroup\PickUpGroup
       Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface:
@@ -257,6 +263,8 @@ doctrine:
         Ivoz\Provider\Domain\Model\Destination\Destination
       Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface:
         Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan
+      Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface:
+        Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup
       Ivoz\Cgr\Domain\Model\TpAccount\TpAccountInterface:
         Ivoz\Cgr\Domain\Model\TpAccount\TpAccount
       Ivoz\Cgr\Domain\Model\TpCdr\TpCdrInterface:
@@ -265,6 +273,8 @@ doctrine:
         Ivoz\Cgr\Domain\Model\TpDestination\TpDestination
       Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRateInterface:
         Ivoz\Cgr\Domain\Model\TpDestinationRate\TpDestinationRate
+      Ivoz\Cgr\Domain\Model\TpLcrRule\TpLcrRuleInterface:
+        Ivoz\Cgr\Domain\Model\TpLcrRule\TpLcrRule
       Ivoz\Cgr\Domain\Model\TpRate\TpRateInterface:
         Ivoz\Cgr\Domain\Model\TpRate\TpRate
       Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanInterface:

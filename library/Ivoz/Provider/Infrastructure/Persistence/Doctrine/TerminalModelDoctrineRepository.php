@@ -19,5 +19,4 @@ class TerminalModelDoctrineRepository extends ServiceEntityRepository implements
     {
         parent::__construct($registry, TerminalModel::class);
     }
-
 }

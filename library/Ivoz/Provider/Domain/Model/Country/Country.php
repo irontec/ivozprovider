@@ -35,7 +35,6 @@ class Country extends CountryAbstract implements CountryInterface
      */
     public function hasAreaCode()
     {
-        return strpos($this->getE164Pattern(), 'ac') !== FALSE;
+        return strpos($this->getE164Pattern(), 'ac') !== false;
     }
 }
-

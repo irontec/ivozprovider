@@ -2,6 +2,7 @@
 
 namespace Ivoz\Cgr\Domain\Service\TpRatingProfile;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfile;
 use Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileDto;
 use Ivoz\Core\Application\Service\EntityTools;
@@ -10,10 +11,10 @@ use Ivoz\Provider\Domain\Service\RatingProfile\RatingProfileLifecycleEventHandle
 
 class UpdateByRatingProfile implements RatingProfileLifecycleEventHandlerInterface
 {
-    CONST POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
+    const POST_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
 
     /**
-     * @var EntityPersisterInterface
+     * @var EntityTools
      */
     protected $entityTools;
 
@@ -32,7 +33,7 @@ class UpdateByRatingProfile implements RatingProfileLifecycleEventHandlerInterfa
 
     public function execute(RatingProfileInterface $ratingProfile, $isNew)
     {
-        $tpRatingProfile = $ratingProfile->getTpRatingProfile();
+        $tpRatingProfile = $ratingProfile->getCgrRatingProfile();
 
         /** @var TpRatingProfileDto $tpRatingProfileDto */
         $tpRatingProfileDto = is_null($tpRatingProfile)
@@ -48,38 +49,32 @@ class UpdateByRatingProfile implements RatingProfileLifecycleEventHandlerInterfa
             $brand = $carrier->getBrand();
         }
 
-        $ratingPlan = $ratingProfile->getRatingPlan();
+        $ratingPlanGroup = $ratingProfile->getRatingPlanGroup();
         $routingTag = $ratingProfile->getRoutingTag();
 
         // Update/Create TpRatingPorfile for this RatingProfile
         $tpRatingProfileDto
+            ->setTpid($brand->getCgrTenant())
             ->setActivationTime($ratingProfile->getActivationTime())
-            ->setTenant(sprintf("b%d", $brand->getId()))
-            ->setRatingPlanTag($ratingPlan->getTag())
+            ->setTenant($brand->getCgrTenant())
+            ->setRatingPlanTag($ratingPlanGroup->getCgrTag())
             ->setRatingProfileId($ratingProfile->getId());
 
 
         if ($company) {
-            $tpRatingProfileDto->setSubject(
-                sprintf("c%d",
-                    $company->getId()
-                )
-            );
+            $tpRatingProfileDto->setSubject($company->getCgrSubject());
         }
 
         if ($carrier) {
             $tpRatingProfileDto
-                ->setSubject(sprintf("cr%d",$carrier->getId()))
-                ->setCdrStatQueueIds(sprintf("cr%d", $carrier->getId())
-            );
+                ->setSubject($carrier->getCgrSubject())
+                ->setCdrStatQueueIds($carrier->getCgrSubject());
         }
 
         if ($routingTag) {
+            // Append Routing Tag subject code
             $tpRatingProfileDto->setSubject(
-                sprintf("%srt%d",
-                    $tpRatingProfileDto->getSubject(),
-                    $routingTag->getId()
-                )
+                $tpRatingProfileDto->getSubject() . $routingTag->getCgrSubject()
             );
         }
 
@@ -89,6 +84,9 @@ class UpdateByRatingProfile implements RatingProfileLifecycleEventHandlerInterfa
             true
         );
 
-        $ratingProfile->setTpRatingProfile($tpRatingProfile);
+        $ratingProfile
+            ->replaceTpRatingProfiles(new ArrayCollection([$tpRatingProfile]));
+
+        $this->entityTools->persist($ratingProfile);
     }
 }

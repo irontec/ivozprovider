@@ -110,7 +110,6 @@ abstract class UsersXcapDtoAbstract implements DataTransferObjectInterface
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -118,7 +117,6 @@ abstract class UsersXcapDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -301,5 +299,3 @@ abstract class UsersXcapDtoAbstract implements DataTransferObjectInterface
         return $this->id;
     }
 }
-
-

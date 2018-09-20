@@ -65,7 +65,8 @@ abstract class ChangelogAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "Changelog",
             $this->getId()
         );
@@ -128,7 +129,8 @@ abstract class ChangelogAbstract
             $dto->getEntity(),
             $dto->getEntityId(),
             $dto->getCreatedOn(),
-            $dto->getMicrotime());
+            $dto->getMicrotime()
+        );
 
         $self
             ->setData($dto->getData())
@@ -195,11 +197,10 @@ abstract class ChangelogAbstract
             'commandId' => self::getCommand() ? self::getCommand()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set entity
      *
      * @param string $entity
@@ -227,6 +228,7 @@ abstract class ChangelogAbstract
     }
 
     /**
+     * @deprecated
      * Set entityId
      *
      * @param string $entityId
@@ -254,6 +256,7 @@ abstract class ChangelogAbstract
     }
 
     /**
+     * @deprecated
      * Set data
      *
      * @param array $data
@@ -281,6 +284,7 @@ abstract class ChangelogAbstract
     }
 
     /**
+     * @deprecated
      * Set createdOn
      *
      * @param \DateTime $createdOn
@@ -311,6 +315,7 @@ abstract class ChangelogAbstract
     }
 
     /**
+     * @deprecated
      * Set microtime
      *
      * @param integer $microtime
@@ -361,8 +366,5 @@ abstract class ChangelogAbstract
         return $this->command;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

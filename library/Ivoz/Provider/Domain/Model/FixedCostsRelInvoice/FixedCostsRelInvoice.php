@@ -1,6 +1,7 @@
 <?php
 
 namespace Ivoz\Provider\Domain\Model\FixedCostsRelInvoice;
+
 use Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceSchedulerInterface;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
 
@@ -54,4 +55,3 @@ class FixedCostsRelInvoice extends FixedCostsRelInvoiceAbstract implements Fixed
         return $dto;
     }
 }
-

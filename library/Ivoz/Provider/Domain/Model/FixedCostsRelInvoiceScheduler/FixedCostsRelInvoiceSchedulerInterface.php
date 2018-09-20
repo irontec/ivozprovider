@@ -13,6 +13,7 @@ interface FixedCostsRelInvoiceSchedulerInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @deprecated
      * Set quantity
      *
      * @param integer $quantity
@@ -59,6 +60,4 @@ interface FixedCostsRelInvoiceSchedulerInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface
      */
     public function getInvoiceScheduler();
-
 }
-

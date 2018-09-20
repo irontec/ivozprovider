@@ -48,8 +48,7 @@ class InterfaceGenerator extends EntityGenerator
      * @var string
      */
     protected static $customMethodTemplate =
-        '<docComment><spaces>public <static>function <methodName>(<methodArguments>);
-';
+        '<docComment><spaces>public <static>function <methodName>(<methodArguments>);';
 
 
     protected function transformMetadata(ClassMetadataInfo $metadata)
@@ -90,7 +89,7 @@ class InterfaceGenerator extends EntityGenerator
             $this->generateEntityBody($metadata)
         );
 
-        $code = str_replace($placeHolders, $replacements, static::$classTemplate) . "\n";
+        $code = str_replace($placeHolders, $replacements, static::$classTemplate);
         $code = str_replace('\\Doctrine\\Common\\Collections\\Collection', 'Collection', $code);
         $code = str_replace('\\Doctrine\\Common\\Collections\\ArrayCollection', 'ArrayCollection', $code);
 
@@ -121,9 +120,13 @@ class InterfaceGenerator extends EntityGenerator
             }
         }
 
-        $response = [
-            'use Ivoz\\Core\\Domain\\Model\\' . $this->getParentInterface($metadata) . ';'
-        ];
+        $interfaces = $this->getParentInterfaces($metadata);
+        $response = array_map(
+            function ($item) {
+                return 'use ' . $item .  ';';
+            },
+            $interfaces
+        );
 
         if ($useCollections) {
             $response[] = 'use Doctrine\\Common\Collections\\Collection;';
@@ -143,35 +146,84 @@ class InterfaceGenerator extends EntityGenerator
                 . $this->getClassName($metadata);
         }
 
+        $interfaces = $this->getParentInterfaces($metadata, false);
         $class =
             'interface '
             . $this->getClassName($metadata)
             . ' extends '
-            . $this->getParentInterface($metadata);
+            . implode(', ', $interfaces);
 
         return $class;
     }
 
-    private function getParentInterface(ClassMetadataInfo $metadata)
+    private function getParentInterfaces(ClassMetadataInfo $metadata, bool $fqdn = true)
     {
+        $currentInterface = $metadata->name;
         $defaultImplementationClassName = substr(
-            $metadata->name,
+            $currentInterface,
             0,
             (-1 * strlen('Interface'))
         );
 
+        $parentInterfaces = [];
         try {
             $defaultImplementationReflection = new \ReflectionClass($defaultImplementationClassName);
             $getChangeSetMethod = $defaultImplementationReflection->getMethod('getChangeSet');
 
-            return $getChangeSetMethod->isPublic()
-                ? 'LoggableEntityInterface'
-                : 'EntityInterface';
+            $parentInterfaces[] = $getChangeSetMethod->isPublic()
+                ? 'Ivoz\\Core\\Domain\\Model\\LoggableEntityInterface'
+                : 'Ivoz\\Core\\Domain\\Model\\EntityInterface';
+
+            $implementedInterfaces = $defaultImplementationReflection->getInterfaceNames();
+
+            if (!empty($implementedInterfaces)) {
+                $parentInterfaces = array_merge(
+                    $implementedInterfaces,
+                    $parentInterfaces
+                );
+            }
 
         } catch (\Exception $e) {
 
-            return 'EntityInterface';
+            $parentInterfaces = ['Ivoz\\Core\\Domain\\Model\\EntityInterface'];
         }
+
+        $parentInterfaces = array_filter(
+            $parentInterfaces,
+            function ($className) use ($currentInterface) {
+
+                if ($className === $currentInterface) {
+                    return false;
+                }
+
+                return stripos($className, 'Ivoz\\') === 0;
+            }
+        );
+
+        $potentiallyDuplicated = [];
+        foreach ($parentInterfaces as $interfaceFqdn) {
+
+            $interfaceReflection = new \ReflectionClass($interfaceFqdn);
+            $interfaces = $interfaceReflection->getInterfaceNames();
+
+            foreach ($interfaces as $item) {
+                $potentiallyDuplicated[] = $item;
+            }
+        }
+
+        $parentInterfaces = array_diff($parentInterfaces, $potentiallyDuplicated);
+
+        if (!$fqdn) {
+            $parentInterfaces = array_map(
+                function ($item) {
+                    $segments = explode('\\', $item);
+                    return end($segments);
+                },
+                $parentInterfaces
+            );
+        }
+
+        return array_unique($parentInterfaces);
     }
 
     /**
@@ -267,6 +319,6 @@ class InterfaceGenerator extends EntityGenerator
             );
         }
 
-        return implode("\n", $response);
+        return implode("\n\n", $response);
     }
 }

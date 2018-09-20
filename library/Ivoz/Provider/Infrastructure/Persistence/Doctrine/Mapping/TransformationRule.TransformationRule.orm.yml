@@ -1,6 +1,7 @@
 Ivoz\Provider\Domain\Model\TransformationRule\TransformationRule:
   repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\TransformationRuleDoctrineRepository
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: TransformationRules
   id:
     id:

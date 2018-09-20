@@ -26,7 +26,4 @@ class NotificationTemplateContent extends NotificationTemplateContentAbstract im
     {
         return $this->id;
     }
-
-
 }
-

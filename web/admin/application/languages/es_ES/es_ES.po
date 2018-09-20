@@ -137,6 +137,9 @@ msgstr "Codecs video permitidos"
 msgid "Always"
 msgstr "Siempre"
 
+msgid "Amount"
+msgstr "Cantidad"
+
 msgid "An error occurred"
 msgstr "Ha ocurrido un error"
 
@@ -146,12 +149,6 @@ msgstr ""
 
 msgid "Announce"
 msgstr "Anuncio"
-
-#, python-format
-msgid "Answer-Seizure Ratio: <a href='%s' target='_blank' >more info</a>"
-msgstr ""
-"Tasa de llamadas contestadas (Answer-Seizure Ratio): <a href='%s' "
-"target='_blank' >más información</a>"
 
 msgid "Antiflood trusted IP"
 msgid_plural "Antiflood trusted IPs"
@@ -210,12 +207,6 @@ msgstr[1] "Redes autorizadas"
 
 msgid "Automatic creation of rules"
 msgstr "Creación automática de reglas"
-
-#, python-format
-msgid "Average Call Duration: <a href='%s' target='_blank' >more info</a>"
-msgstr ""
-"Duración media de llamada (Average Call Duration): <a href='%s' "
-"target='_blank' >más información</a>"
 
 msgid "Balance"
 msgstr "Saldo"
@@ -336,6 +327,16 @@ msgid_plural "Call ACL Patterns"
 msgstr[0] "Patrón permisos llamada"
 msgstr[1] "Patrón permisos llamada"
 
+msgid "Call CSV report"
+msgid_plural "Call CSV reports"
+msgstr[0] "CSV de llamadas"
+msgstr[1] "CSVs de llamadas"
+
+msgid "Call CSV scheduler"
+msgid_plural "Call CSV schedulers"
+msgstr[0] "CSV programado"
+msgstr[1] "CSVs programados"
+
 msgid "Call Details"
 msgstr "Detalles llamada"
 
@@ -422,6 +423,12 @@ msgstr "Período de facturación"
 msgid "Check documentation for this section"
 msgstr "Ver documentación de esta sección"
 
+msgid "Clid"
+msgstr "Origen"
+
+msgid "Client Configuration"
+msgstr "Configuración de Cliente"
+
 msgid "Client's default"
 msgstr "Usar configuración cliente"
 
@@ -444,9 +451,6 @@ msgid "Company"
 msgid_plural "Companies"
 msgstr[0] "Empresa"
 msgstr[1] "Empresas"
-
-msgid "Company Configuration"
-msgstr "Configuración de Empresa"
 
 msgid "Company URL"
 msgid_plural "Company URLs"
@@ -519,6 +523,9 @@ msgstr "Código de País"
 msgid "Created"
 msgstr "Creado"
 
+msgid "Created on"
+msgstr "Fecha de creación"
+
 msgid "Custom"
 msgstr "A medida"
 
@@ -578,6 +585,9 @@ msgstr[1] "Destinos"
 
 msgid "Destination IP address"
 msgstr "Dirección IP destino"
+
+msgid "Destination prefix"
+msgstr "Prefijo de destino"
 
 msgid "Destination rate"
 msgid_plural "Destination rates"
@@ -765,6 +775,9 @@ msgstr "Ejecutar"
 msgid "Expire"
 msgstr "Expiración"
 
+msgid "Export to CSV"
+msgstr "Exportar a CSV"
+
 msgid "Extension"
 msgid_plural "Extensions"
 msgstr[0] "Extensión"
@@ -869,6 +882,9 @@ msgstr[1] "Costes fijos"
 msgid "For instance:"
 msgstr "Por ejemplo:"
 
+msgid "Force Clid"
+msgstr "Forzar Origen"
+
 msgid "Force DDI"
 msgstr "Forzar DDI"
 
@@ -961,6 +977,9 @@ msgstr "Plantilla genérica"
 msgid "Geographic Configuration"
 msgstr "Configuración Geográfica"
 
+msgid "Global Configuration"
+msgstr "Configuración Global"
+
 msgid "God"
 msgstr "God"
 
@@ -1032,9 +1051,6 @@ msgid "Iden"
 msgid_plural "Idens"
 msgstr[0] "Iden"
 msgstr[1] "Idens"
-
-msgid "Identify Call"
-msgstr "Identificar Llamada"
 
 msgid ""
 "If no queue member answers before time this seconds, the timeout queue logic "
@@ -1120,6 +1136,14 @@ msgstr "Incremento"
 msgid "Insert your username"
 msgstr "Introduce tu nombre de usuario"
 
+msgid ""
+"Instead of getting the caller from PAI/RPID headers, this clid will be used "
+"(and will be adapted using carrier's numeric transformations)."
+msgstr ""
+"En lugar de obtener el origen de las cabeceras PAI/RPID, se forzará este "
+"origen (y se adaptará utilizando las transformaciones numéricas del "
+"operador)."
+
 msgid "Internal"
 msgstr "Interna"
 
@@ -1197,6 +1221,9 @@ msgstr "Unirse a %s %2s"
 msgid "Keep Original DDI"
 msgstr "Mantener DDI original"
 
+msgid "LCR"
+msgstr "LCR"
+
 msgid "Language"
 msgstr "Lenguaje"
 
@@ -1217,6 +1244,11 @@ msgstr "Último valor"
 
 msgid "Least recent"
 msgstr "Menos reciente"
+
+msgid "Leave empty if no mail is needed (just generate CSV)."
+msgstr ""
+"Dejar en blanco si el envío por email no es necesario (únicamente generar "
+"CSV)"
 
 msgid "Leave empty to send to Host field"
 msgstr "Dejar vacío para enviar al campo Host"
@@ -1311,7 +1343,7 @@ msgstr ""
 "permitir este valor."
 
 msgid "Mail address where this notification will be sent"
-msgstr ""
+msgstr "Dirección donde esta notificación será enviada"
 
 msgid "Main Settings"
 msgstr "Configuración principal"
@@ -1513,6 +1545,12 @@ msgstr "Loc. No contesta"
 msgid "No answer timeout"
 msgstr "Timeout no contesta"
 
+msgid "No backup found."
+msgstr "No se encontro backup."
+
+msgid "No default template found"
+msgstr "No se encontró plantilla por defecto"
+
 msgid "No input configuration"
 msgstr "Configuración sin entrada"
 
@@ -1664,6 +1702,9 @@ msgid_plural "Outgoing routings"
 msgstr[0] "Ruta saliente"
 msgstr[1] "Rutas salientes"
 
+msgid "Owner"
+msgstr "Dueño"
+
 msgid "PDF File"
 msgid_plural "PDF Files"
 msgstr[0] "Fichero PDF"
@@ -1677,6 +1718,9 @@ msgstr "Analizar fichero e importar"
 
 msgid "Parsed"
 msgstr "Parseada"
+
+msgid "Party"
+msgstr "Interlocutor"
 
 msgid "Password"
 msgstr "Contraseña"
@@ -1734,9 +1778,6 @@ msgstr "Contraseña"
 
 msgid "Pin protected"
 msgstr "Con contraseña"
-
-msgid "Platform Configuration"
-msgstr "Configuración de Plataforma"
 
 msgid "Please select only uninvoiced calls"
 msgstr "Por favor, seleccione únicamente llamadas no facturadas"
@@ -1879,6 +1920,11 @@ msgid_plural "Rating plans"
 msgstr[0] "Plan de precio"
 msgstr[1] "Planes de precios"
 
+msgid "Rating plan group"
+msgid_plural "Rating plan groups"
+msgstr[0] "Grupo de planes de precio"
+msgstr[1] "Grupos de planes de precio"
+
 msgid "Re metering date"
 msgstr "Fecha de retarificación"
 
@@ -1934,6 +1980,9 @@ msgstr "Reenviar fax"
 msgid "Resend to"
 msgstr "Reenviar a"
 
+msgid "Reset default template?"
+msgstr "¿Restaurar plantilla por defecto?"
+
 msgid "Residential"
 msgid_plural "Residentials"
 msgstr[0] "Residencial"
@@ -1951,6 +2000,9 @@ msgstr[1] "Dispositivo residencial"
 
 msgid "Restore backup"
 msgstr "Restaurar backup"
+
+msgid "Restore backup from"
+msgstr "Restaurar backup de"
 
 msgid "Restore default template"
 msgstr "Restaurar plantilla por defecto"
@@ -2091,6 +2143,9 @@ msgstr "Seleccione la marca que desea emular."
 msgid "Select the company you want to emulate"
 msgstr "Seleccione la empresa que desea emular"
 
+msgid "Selected weight is already in use"
+msgstr "El peso seleccionado ya está en uso"
+
 msgid "Send"
 msgstr "Enviar"
 
@@ -2109,6 +2164,9 @@ msgstr "Enviar nuevo %s"
 
 msgid "Send to IP[:PORT] instead of SIP Proxy address"
 msgstr "Se enviará a IP:[PUERTO] en lugar de la dirección del Proxy SIP"
+
+msgid "Sent to"
+msgstr "Dirección de envío"
 
 msgid "Sequence length"
 msgstr "Longitud de secuencia"
@@ -2304,20 +2362,30 @@ msgid ""
 "This importer expects values to be within quotation marks and separated by "
 "semicolons."
 msgstr ""
+"Este importador espera los valores entrecomillados y separados por punto y "
+"coma."
+
+msgid ""
+"This prefix will be added to the callee after carrier's numeric "
+"transformations."
+msgstr ""
+"Este prefijo se añadirá al destino de la llamada después de aplicar las "
+"transformaciones numéricas del operador."
 
 msgid "This setting needs external tarification module"
 msgstr "Esta opción requiere un módulo de tarificación externa"
 
-msgid ""
-"This template is going to be tested<br /><textarea name=\"currentCode\" rows="
-"\"8\" cols=\"80\" readonly></textarea>"
-msgstr ""
+msgid "This template is going to be tested"
+msgstr "La siguiente plantilla será probada"
 
 msgid "This value will be displayed in the called terminals"
 msgstr "Valor que se mostrará en el terminal llamado"
 
 msgid "Thursday"
 msgstr "Jueves"
+
+msgid "Time Information"
+msgstr "Información Temporal"
 
 msgid "Time in"
 msgstr "Inicio"
@@ -2359,11 +2427,6 @@ msgstr "Timeout"
 msgid "Timezone"
 msgstr "Zona Horaria"
 
-msgid "Timing"
-msgid_plural "Timing"
-msgstr[0] "Timing"
-msgstr[1] "Timings"
-
 msgid "Timing type"
 msgstr "Tipo de timing"
 
@@ -2387,6 +2450,7 @@ msgid ""
 "invoices issued: eg 'registered in the commercial register of bizkaia, tome "
 "xxxx, book and, folio zzz, sheet aa-bbbb'"
 msgstr ""
+"Información de facturación que será includida en las facturas generadas."
 
 msgid "Transformation Rule"
 msgid_plural "Transformation Rules"
@@ -2663,12 +2727,6 @@ msgstr "Codificando"
 
 msgid "error"
 msgstr "Error"
-
-msgid "https://en.wikipedia.org/wiki/Answer-seizure_ratio"
-msgstr ""
-
-msgid "https://en.wikipedia.org/wiki/Average_call_duration"
-msgstr ""
 
 msgid "ignore"
 msgstr "ignorar"

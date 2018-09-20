@@ -91,8 +91,6 @@ trait RetailAccountTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add ddi
      *
@@ -164,7 +162,4 @@ trait RetailAccountTrait
 
         return $this->ddis->toArray();
     }
-
-
 }
-

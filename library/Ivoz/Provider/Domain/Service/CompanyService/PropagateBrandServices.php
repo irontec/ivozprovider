@@ -2,7 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\CompanyService;
 
-use Ivoz\Core\Domain\Service\EntityPersisterInterface;
+use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\BrandService\BrandService;
 use Ivoz\Provider\Domain\Model\BrandService\BrandServiceRepository;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
@@ -15,9 +15,9 @@ use Ivoz\Provider\Domain\Service\Company\CompanyLifecycleEventHandlerInterface;
 class PropagateBrandServices implements CompanyLifecycleEventHandlerInterface
 {
     /**
-     * @var EntityPersisterInterface
+     * @var EntityTools
      */
-    protected $entityPersister;
+    protected $entityTools;
 
     /**
      * @var BrandServiceRepository
@@ -25,10 +25,10 @@ class PropagateBrandServices implements CompanyLifecycleEventHandlerInterface
     protected $brandServiceRepository;
 
     public function __construct(
-        EntityPersisterInterface $entityPersister,
+        EntityTools $entityTools,
         BrandServiceRepository $brandServiceRepository
     ) {
-        $this->entityPersister = $entityPersister;
+        $this->entityTools = $entityTools;
         $this->brandServiceRepository = $brandServiceRepository;
     }
 
@@ -40,16 +40,17 @@ class PropagateBrandServices implements CompanyLifecycleEventHandlerInterface
     }
 
     /**
-     * @throws \Exception
+     * @param CompanyInterface $company
+     * @param $isNew
      */
-    public function execute(CompanyInterface $entity, $isNew)
+    public function execute(CompanyInterface $company, $isNew)
     {
         if (!$isNew) {
             return;
         }
 
         $services = $this->brandServiceRepository->findBy([
-            'brand' => $entity->getBrand()->getId()
+            'brand' => $company->getBrand()->getId()
         ]);
 
         /**
@@ -62,10 +63,18 @@ class PropagateBrandServices implements CompanyLifecycleEventHandlerInterface
             $companyServiceDto
                 ->setServiceId($serviceId)
                 ->setCode($service->getCode())
-                ->setCompanyId($entity->getId());
+                ->setCompanyId($company->getId());
 
-            $companyService = $this->entityPersister->persistDto($companyServiceDto);
-            $entity->addCompanyService($companyService);
+            $companyService = $this->entityTools->persistDto($companyServiceDto);
+
+            $company
+                ->addCompanyService($companyService);
         }
+
+        $this->entityTools
+            ->dispatchQueuedOperations();
+
+        $this->entityTools
+            ->persist($company);
     }
 }

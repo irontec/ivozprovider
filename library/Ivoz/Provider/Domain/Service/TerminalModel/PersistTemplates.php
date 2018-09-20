@@ -80,7 +80,7 @@ class PersistTemplates implements TerminalModelLifecycleEventHandlerInterface
         $fileRoute = $route . DIRECTORY_SEPARATOR .$file;
         $fileExists = $this->fs->exists($fileRoute);
 
-        if($fileExists) {
+        if ($fileExists) {
             $this->fs->rename(
                 $fileRoute,
                 $fileRoute . '.back'

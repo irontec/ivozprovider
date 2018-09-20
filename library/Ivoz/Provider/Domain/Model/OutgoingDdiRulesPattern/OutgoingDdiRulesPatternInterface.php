@@ -19,6 +19,7 @@ interface OutgoingDdiRulesPatternInterface extends LoggableEntityInterface
     public function getForcedDdi();
 
     /**
+     * @deprecated
      * Set action
      *
      * @param string $action
@@ -35,6 +36,7 @@ interface OutgoingDdiRulesPatternInterface extends LoggableEntityInterface
     public function getAction();
 
     /**
+     * @deprecated
      * Set priority
      *
      * @param integer $priority
@@ -90,6 +92,4 @@ interface OutgoingDdiRulesPatternInterface extends LoggableEntityInterface
      * @return self
      */
     public function setForcedDdi(\Ivoz\Provider\Domain\Model\Ddi\DdiInterface $forcedDdi = null);
-
 }
-

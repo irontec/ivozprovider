@@ -27,7 +27,6 @@ class TransformationRuleDoctrineRepository extends ServiceEntityRepository imple
         $qb->select('count('. $alias .')');
 
         foreach ($criteria as $field => $value) {
-
             $normalizedField = $alias . '.' . $field;
             $qb->andWhere(
                 $qb->expr()->eq($normalizedField, $value)

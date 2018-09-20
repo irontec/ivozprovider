@@ -83,7 +83,6 @@ abstract class FriendsPatternDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -192,5 +191,3 @@ abstract class FriendsPatternDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 }
-
-

@@ -77,7 +77,6 @@ abstract class ExternalCallFilterBlackListDtoAbstract implements DataTransferObj
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -192,5 +191,3 @@ abstract class ExternalCallFilterBlackListDtoAbstract implements DataTransferObj
         return null;
     }
 }
-
-

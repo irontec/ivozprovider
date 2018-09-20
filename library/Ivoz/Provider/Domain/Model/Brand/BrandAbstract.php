@@ -86,7 +86,8 @@ abstract class BrandAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "Brand",
             $this->getId()
         );
@@ -281,11 +282,10 @@ abstract class BrandAbstract
             'defaultTimezoneId' => self::getDefaultTimezone() ? self::getDefaultTimezone()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -313,6 +313,7 @@ abstract class BrandAbstract
     }
 
     /**
+     * @deprecated
      * Set domainUsers
      *
      * @param string $domainUsers
@@ -341,6 +342,7 @@ abstract class BrandAbstract
     }
 
     /**
+     * @deprecated
      * Set recordingsLimitMB
      *
      * @param integer $recordingsLimitMB
@@ -371,6 +373,7 @@ abstract class BrandAbstract
     }
 
     /**
+     * @deprecated
      * Set recordingsLimitEmail
      *
      * @param string $recordingsLimitEmail
@@ -399,6 +402,7 @@ abstract class BrandAbstract
     }
 
     /**
+     * @deprecated
      * Set maxCalls
      *
      * @param integer $maxCalls
@@ -508,7 +512,6 @@ abstract class BrandAbstract
     public function setLogo(Logo $logo)
     {
         $this->logo = $logo;
-
         return $this;
     }
 
@@ -532,7 +535,6 @@ abstract class BrandAbstract
     public function setInvoice(Invoice $invoice)
     {
         $this->invoice = $invoice;
-
         return $this;
     }
 
@@ -545,7 +547,5 @@ abstract class BrandAbstract
     {
         return $this->invoice;
     }
-
     // @codeCoverageIgnoreEnd
 }
-

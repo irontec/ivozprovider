@@ -105,7 +105,6 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -300,5 +299,3 @@ abstract class NotificationTemplateContentDtoAbstract implements DataTransferObj
         return null;
     }
 }
-
-

@@ -18,6 +18,7 @@ interface ServiceInterface extends LoggableEntityInterface
     public function setDefaultCode($defaultCode);
 
     /**
+     * @deprecated
      * Set iden
      *
      * @param string $iden
@@ -41,6 +42,7 @@ interface ServiceInterface extends LoggableEntityInterface
     public function getDefaultCode();
 
     /**
+     * @deprecated
      * Set extraArgs
      *
      * @param boolean $extraArgs
@@ -87,6 +89,4 @@ interface ServiceInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Service\Description
      */
     public function getDescription();
-
 }
-

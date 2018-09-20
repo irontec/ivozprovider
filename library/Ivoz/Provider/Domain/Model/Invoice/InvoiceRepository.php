@@ -38,4 +38,3 @@ interface InvoiceRepository extends ObjectRepository, Selectable
         int $invoiceIdToBeExcluded = null
     );
 }
-

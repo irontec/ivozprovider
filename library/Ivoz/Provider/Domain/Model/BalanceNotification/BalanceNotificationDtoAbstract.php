@@ -106,7 +106,6 @@ abstract class BalanceNotificationDtoAbstract implements DataTransferObjectInter
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -327,5 +326,3 @@ abstract class BalanceNotificationDtoAbstract implements DataTransferObjectInter
         return null;
     }
 }
-
-

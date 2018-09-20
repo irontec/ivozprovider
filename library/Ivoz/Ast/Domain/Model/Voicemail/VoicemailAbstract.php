@@ -206,7 +206,8 @@ abstract class VoicemailAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "Voicemail",
             $this->getId()
         );
@@ -267,7 +268,8 @@ abstract class VoicemailAbstract
 
         $self = new static(
             $dto->getContext(),
-            $dto->getMailbox());
+            $dto->getMailbox()
+        );
 
         $self
             ->setPassword($dto->getPassword())
@@ -452,11 +454,10 @@ abstract class VoicemailAbstract
             'residentialDeviceId' => self::getResidentialDevice() ? self::getResidentialDevice()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set context
      *
      * @param string $context
@@ -484,6 +485,7 @@ abstract class VoicemailAbstract
     }
 
     /**
+     * @deprecated
      * Set mailbox
      *
      * @param string $mailbox
@@ -511,6 +513,7 @@ abstract class VoicemailAbstract
     }
 
     /**
+     * @deprecated
      * Set password
      *
      * @param string $password
@@ -539,6 +542,7 @@ abstract class VoicemailAbstract
     }
 
     /**
+     * @deprecated
      * Set fullname
      *
      * @param string $fullname
@@ -567,6 +571,7 @@ abstract class VoicemailAbstract
     }
 
     /**
+     * @deprecated
      * Set alias
      *
      * @param string $alias
@@ -595,6 +600,7 @@ abstract class VoicemailAbstract
     }
 
     /**
+     * @deprecated
      * Set email
      *
      * @param string $email
@@ -623,6 +629,7 @@ abstract class VoicemailAbstract
     }
 
     /**
+     * @deprecated
      * Set pager
      *
      * @param string $pager
@@ -651,6 +658,7 @@ abstract class VoicemailAbstract
     }
 
     /**
+     * @deprecated
      * Set attach
      *
      * @param string $attach
@@ -678,6 +686,7 @@ abstract class VoicemailAbstract
     }
 
     /**
+     * @deprecated
      * Set attachfmt
      *
      * @param string $attachfmt
@@ -706,6 +715,7 @@ abstract class VoicemailAbstract
     }
 
     /**
+     * @deprecated
      * Set serveremail
      *
      * @param string $serveremail
@@ -734,6 +744,7 @@ abstract class VoicemailAbstract
     }
 
     /**
+     * @deprecated
      * Set language
      *
      * @param string $language
@@ -762,6 +773,7 @@ abstract class VoicemailAbstract
     }
 
     /**
+     * @deprecated
      * Set tz
      *
      * @param string $tz
@@ -790,6 +802,7 @@ abstract class VoicemailAbstract
     }
 
     /**
+     * @deprecated
      * Set deleteVoicemail
      *
      * @param string $deleteVoicemail
@@ -817,6 +830,7 @@ abstract class VoicemailAbstract
     }
 
     /**
+     * @deprecated
      * Set saycid
      *
      * @param string $saycid
@@ -844,6 +858,7 @@ abstract class VoicemailAbstract
     }
 
     /**
+     * @deprecated
      * Set sendVoicemail
      *
      * @param string $sendVoicemail
@@ -871,6 +886,7 @@ abstract class VoicemailAbstract
     }
 
     /**
+     * @deprecated
      * Set review
      *
      * @param string $review
@@ -898,6 +914,7 @@ abstract class VoicemailAbstract
     }
 
     /**
+     * @deprecated
      * Set tempgreetwarn
      *
      * @param string $tempgreetwarn
@@ -925,6 +942,7 @@ abstract class VoicemailAbstract
     }
 
     /**
+     * @deprecated
      * Set operator
      *
      * @param string $operator
@@ -952,6 +970,7 @@ abstract class VoicemailAbstract
     }
 
     /**
+     * @deprecated
      * Set envelope
      *
      * @param string $envelope
@@ -979,6 +998,7 @@ abstract class VoicemailAbstract
     }
 
     /**
+     * @deprecated
      * Set sayduration
      *
      * @param integer $sayduration
@@ -1009,6 +1029,7 @@ abstract class VoicemailAbstract
     }
 
     /**
+     * @deprecated
      * Set forcename
      *
      * @param string $forcename
@@ -1036,6 +1057,7 @@ abstract class VoicemailAbstract
     }
 
     /**
+     * @deprecated
      * Set forcegreetings
      *
      * @param string $forcegreetings
@@ -1063,6 +1085,7 @@ abstract class VoicemailAbstract
     }
 
     /**
+     * @deprecated
      * Set callback
      *
      * @param string $callback
@@ -1091,6 +1114,7 @@ abstract class VoicemailAbstract
     }
 
     /**
+     * @deprecated
      * Set dialout
      *
      * @param string $dialout
@@ -1119,6 +1143,7 @@ abstract class VoicemailAbstract
     }
 
     /**
+     * @deprecated
      * Set exitcontext
      *
      * @param string $exitcontext
@@ -1147,6 +1172,7 @@ abstract class VoicemailAbstract
     }
 
     /**
+     * @deprecated
      * Set maxmsg
      *
      * @param integer $maxmsg
@@ -1177,6 +1203,7 @@ abstract class VoicemailAbstract
     }
 
     /**
+     * @deprecated
      * Set volgain
      *
      * @param string $volgain
@@ -1188,6 +1215,7 @@ abstract class VoicemailAbstract
         if (!is_null($volgain)) {
             if (!is_null($volgain)) {
                 Assertion::numeric($volgain);
+                $volgain = (float) $volgain;
             }
         }
 
@@ -1207,6 +1235,7 @@ abstract class VoicemailAbstract
     }
 
     /**
+     * @deprecated
      * Set imapuser
      *
      * @param string $imapuser
@@ -1235,6 +1264,7 @@ abstract class VoicemailAbstract
     }
 
     /**
+     * @deprecated
      * Set imappassword
      *
      * @param string $imappassword
@@ -1263,6 +1293,7 @@ abstract class VoicemailAbstract
     }
 
     /**
+     * @deprecated
      * Set imapserver
      *
      * @param string $imapserver
@@ -1291,6 +1322,7 @@ abstract class VoicemailAbstract
     }
 
     /**
+     * @deprecated
      * Set imapport
      *
      * @param string $imapport
@@ -1319,6 +1351,7 @@ abstract class VoicemailAbstract
     }
 
     /**
+     * @deprecated
      * Set imapflags
      *
      * @param string $imapflags
@@ -1347,6 +1380,7 @@ abstract class VoicemailAbstract
     }
 
     /**
+     * @deprecated
      * Set stamp
      *
      * @param \DateTime $stamp
@@ -1356,10 +1390,10 @@ abstract class VoicemailAbstract
     public function setStamp($stamp = null)
     {
         if (!is_null($stamp)) {
-        $stamp = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
-            $stamp,
-            null
-        );
+            $stamp = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
+                $stamp,
+                null
+            );
         }
 
         $this->stamp = $stamp;
@@ -1425,8 +1459,5 @@ abstract class VoicemailAbstract
         return $this->residentialDevice;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

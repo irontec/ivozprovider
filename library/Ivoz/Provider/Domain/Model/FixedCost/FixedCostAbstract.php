@@ -48,7 +48,8 @@ abstract class FixedCostAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "FixedCost",
             $this->getId()
         );
@@ -108,7 +109,8 @@ abstract class FixedCostAbstract
         Assertion::isInstanceOf($dto, FixedCostDto::class);
 
         $self = new static(
-            $dto->getName());
+            $dto->getName()
+        );
 
         $self
             ->setDescription($dto->getDescription())
@@ -170,11 +172,10 @@ abstract class FixedCostAbstract
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -202,6 +203,7 @@ abstract class FixedCostAbstract
     }
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description
@@ -229,6 +231,7 @@ abstract class FixedCostAbstract
     }
 
     /**
+     * @deprecated
      * Set cost
      *
      * @param string $cost
@@ -240,6 +243,7 @@ abstract class FixedCostAbstract
         if (!is_null($cost)) {
             if (!is_null($cost)) {
                 Assertion::numeric($cost);
+                $cost = (float) $cost;
             }
         }
 
@@ -282,8 +286,5 @@ abstract class FixedCostAbstract
         return $this->brand;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

@@ -24,6 +24,7 @@ interface TransformationRuleSetInterface extends LoggableEntityInterface
     public function setTrunkPrefix($trunkPrefix = null);
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description
@@ -54,6 +55,7 @@ interface TransformationRuleSetInterface extends LoggableEntityInterface
     public function getTrunkPrefix();
 
     /**
+     * @deprecated
      * Set areaCode
      *
      * @param string $areaCode
@@ -70,6 +72,7 @@ interface TransformationRuleSetInterface extends LoggableEntityInterface
     public function getAreaCode();
 
     /**
+     * @deprecated
      * Set nationalLen
      *
      * @param integer $nationalLen
@@ -86,6 +89,7 @@ interface TransformationRuleSetInterface extends LoggableEntityInterface
     public function getNationalLen();
 
     /**
+     * @deprecated
      * Set generateRules
      *
      * @param boolean $generateRules
@@ -179,6 +183,4 @@ interface TransformationRuleSetInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\TransformationRule\TransformationRuleInterface[]
      */
     public function getRules(\Doctrine\Common\Collections\Criteria $criteria = null);
-
 }
-

@@ -26,6 +26,7 @@ interface OutgoingDdiRuleInterface extends LoggableEntityInterface
     public function getOutgoingDdi($originalDdi, $e164destination);
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -42,6 +43,7 @@ interface OutgoingDdiRuleInterface extends LoggableEntityInterface
     public function getName();
 
     /**
+     * @deprecated
      * Set defaultAction
      *
      * @param string $defaultAction
@@ -112,6 +114,4 @@ interface OutgoingDdiRuleInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\OutgoingDdiRulesPattern\OutgoingDdiRulesPatternInterface[]
      */
     public function getPatterns(\Doctrine\Common\Collections\Criteria $criteria = null);
-
 }
-

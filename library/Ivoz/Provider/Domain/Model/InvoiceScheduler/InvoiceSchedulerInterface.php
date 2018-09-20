@@ -2,10 +2,11 @@
 
 namespace Ivoz\Provider\Domain\Model\InvoiceScheduler;
 
+use Ivoz\Core\Domain\Model\SchedulerInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Doctrine\Common\Collections\Collection;
 
-interface InvoiceSchedulerInterface extends LoggableEntityInterface
+interface InvoiceSchedulerInterface extends SchedulerInterface, LoggableEntityInterface
 {
     /**
      * @codeCoverageIgnore
@@ -29,6 +30,7 @@ interface InvoiceSchedulerInterface extends LoggableEntityInterface
     public function getInterval();
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -45,6 +47,7 @@ interface InvoiceSchedulerInterface extends LoggableEntityInterface
     public function getName();
 
     /**
+     * @deprecated
      * Set unit
      *
      * @param string $unit
@@ -75,6 +78,7 @@ interface InvoiceSchedulerInterface extends LoggableEntityInterface
     public function getEmail();
 
     /**
+     * @deprecated
      * Set lastExecution
      *
      * @param \DateTime $lastExecution
@@ -91,6 +95,7 @@ interface InvoiceSchedulerInterface extends LoggableEntityInterface
     public function getLastExecution();
 
     /**
+     * @deprecated
      * Set nextExecution
      *
      * @param \DateTime $nextExecution
@@ -107,6 +112,7 @@ interface InvoiceSchedulerInterface extends LoggableEntityInterface
     public function getNextExecution();
 
     /**
+     * @deprecated
      * Set taxRate
      *
      * @param string $taxRate
@@ -216,6 +222,4 @@ interface InvoiceSchedulerInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoiceSchedulerInterface[]
      */
     public function getRelFixedCosts(\Doctrine\Common\Collections\Criteria $criteria = null);
-
 }
-

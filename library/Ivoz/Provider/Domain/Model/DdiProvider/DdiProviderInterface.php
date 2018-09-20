@@ -14,6 +14,7 @@ interface DdiProviderInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description
@@ -30,6 +31,7 @@ interface DdiProviderInterface extends LoggableEntityInterface
     public function getDescription();
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -46,6 +48,7 @@ interface DdiProviderInterface extends LoggableEntityInterface
     public function getName();
 
     /**
+     * @deprecated
      * Set externallyRated
      *
      * @param boolean $externallyRated
@@ -154,6 +157,4 @@ interface DdiProviderInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\DdiProviderAddress\DdiProviderAddressInterface[]
      */
     public function getDdiProviderAddresses(\Doctrine\Common\Collections\Criteria $criteria = null);
-
 }
-

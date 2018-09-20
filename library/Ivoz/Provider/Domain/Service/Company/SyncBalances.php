@@ -66,13 +66,12 @@ class SyncBalances
                 $this->logger->error(
                     'There was an error while retrieving brand#' . $brandId . ' company balances'
                 );
-                throw new \Exception ($response->error);
+                throw new \Exception($response->error);
             }
 
             $this->persistBalances($response->result);
 
             return true;
-
         } catch (\Exception $exception) {
             $this->logger->error($exception->getMessage());
 

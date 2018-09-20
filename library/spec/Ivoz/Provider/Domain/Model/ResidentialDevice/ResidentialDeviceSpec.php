@@ -148,8 +148,11 @@ class ResidentialDeviceSpec extends ObjectBehavior
 
     function it_sets_domain(
         DomainInterface $domain
-    )
-    {
+    ) {
+        $this->brand
+            ->getId()
+            ->willReturn(1);
+
         $this->brand
             ->getDomain()
             ->willReturn($domain);
@@ -157,7 +160,5 @@ class ResidentialDeviceSpec extends ObjectBehavior
         $this
             ->getDomain()
             ->shouldBe($domain);
-
-
     }
 }

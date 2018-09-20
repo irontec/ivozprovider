@@ -46,7 +46,8 @@ abstract class CodecAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "Codec",
             $this->getId()
         );
@@ -108,9 +109,8 @@ abstract class CodecAbstract
         $self = new static(
             $dto->getType(),
             $dto->getIden(),
-            $dto->getName());
-
-        $self;
+            $dto->getName()
+        );
 
         $self->sanitizeValues();
         $self->initChangelog();
@@ -163,11 +163,10 @@ abstract class CodecAbstract
             'name' => self::getName()
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set type
      *
      * @param string $type
@@ -199,6 +198,7 @@ abstract class CodecAbstract
     }
 
     /**
+     * @deprecated
      * Set iden
      *
      * @param string $iden
@@ -226,6 +226,7 @@ abstract class CodecAbstract
     }
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -252,8 +253,5 @@ abstract class CodecAbstract
         return $this->name;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

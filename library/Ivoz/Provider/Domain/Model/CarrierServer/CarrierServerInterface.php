@@ -26,6 +26,7 @@ interface CarrierServerInterface extends LoggableEntityInterface
     public function getIp();
 
     /**
+     * @deprecated
      * Set hostname
      *
      * @param string $hostname
@@ -42,6 +43,7 @@ interface CarrierServerInterface extends LoggableEntityInterface
     public function getHostname();
 
     /**
+     * @deprecated
      * Set port
      *
      * @param integer $port
@@ -58,6 +60,7 @@ interface CarrierServerInterface extends LoggableEntityInterface
     public function getPort();
 
     /**
+     * @deprecated
      * Set uriScheme
      *
      * @param integer $uriScheme
@@ -74,6 +77,7 @@ interface CarrierServerInterface extends LoggableEntityInterface
     public function getUriScheme();
 
     /**
+     * @deprecated
      * Set transport
      *
      * @param integer $transport
@@ -90,6 +94,7 @@ interface CarrierServerInterface extends LoggableEntityInterface
     public function getTransport();
 
     /**
+     * @deprecated
      * Set sendPAI
      *
      * @param boolean $sendPAI
@@ -106,6 +111,7 @@ interface CarrierServerInterface extends LoggableEntityInterface
     public function getSendPAI();
 
     /**
+     * @deprecated
      * Set sendRPID
      *
      * @param boolean $sendRPID
@@ -122,6 +128,7 @@ interface CarrierServerInterface extends LoggableEntityInterface
     public function getSendRPID();
 
     /**
+     * @deprecated
      * Set authNeeded
      *
      * @param string $authNeeded
@@ -138,6 +145,7 @@ interface CarrierServerInterface extends LoggableEntityInterface
     public function getAuthNeeded();
 
     /**
+     * @deprecated
      * Set authUser
      *
      * @param string $authUser
@@ -154,6 +162,7 @@ interface CarrierServerInterface extends LoggableEntityInterface
     public function getAuthUser();
 
     /**
+     * @deprecated
      * Set authPassword
      *
      * @param string $authPassword
@@ -170,6 +179,7 @@ interface CarrierServerInterface extends LoggableEntityInterface
     public function getAuthPassword();
 
     /**
+     * @deprecated
      * Set sipProxy
      *
      * @param string $sipProxy
@@ -186,6 +196,7 @@ interface CarrierServerInterface extends LoggableEntityInterface
     public function getSipProxy();
 
     /**
+     * @deprecated
      * Set outboundProxy
      *
      * @param string $outboundProxy
@@ -202,6 +213,7 @@ interface CarrierServerInterface extends LoggableEntityInterface
     public function getOutboundProxy();
 
     /**
+     * @deprecated
      * Set fromUser
      *
      * @param string $fromUser
@@ -218,6 +230,7 @@ interface CarrierServerInterface extends LoggableEntityInterface
     public function getFromUser();
 
     /**
+     * @deprecated
      * Set fromDomain
      *
      * @param string $fromDomain
@@ -280,6 +293,4 @@ interface CarrierServerInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
      */
     public function getBrand();
-
 }
-

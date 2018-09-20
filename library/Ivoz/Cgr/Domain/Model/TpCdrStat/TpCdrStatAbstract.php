@@ -238,7 +238,8 @@ abstract class TpCdrStatAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "TpCdrStat",
             $this->getId()
         );
@@ -324,7 +325,8 @@ abstract class TpCdrStatAbstract
             $dto->getRatedSubjects(),
             $dto->getCostInterval(),
             $dto->getActionTriggers(),
-            $dto->getCreatedAt());
+            $dto->getCreatedAt()
+        );
 
         $self
             ->setCarrier($dto->getCarrier())
@@ -456,11 +458,10 @@ abstract class TpCdrStatAbstract
             'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set tpid
      *
      * @param string $tpid
@@ -488,6 +489,7 @@ abstract class TpCdrStatAbstract
     }
 
     /**
+     * @deprecated
      * Set tag
      *
      * @param string $tag
@@ -515,6 +517,7 @@ abstract class TpCdrStatAbstract
     }
 
     /**
+     * @deprecated
      * Set queueLength
      *
      * @param integer $queueLength
@@ -542,6 +545,7 @@ abstract class TpCdrStatAbstract
     }
 
     /**
+     * @deprecated
      * Set timeWindow
      *
      * @param string $timeWindow
@@ -569,6 +573,7 @@ abstract class TpCdrStatAbstract
     }
 
     /**
+     * @deprecated
      * Set saveInterval
      *
      * @param string $saveInterval
@@ -596,6 +601,7 @@ abstract class TpCdrStatAbstract
     }
 
     /**
+     * @deprecated
      * Set metrics
      *
      * @param string $metrics
@@ -623,6 +629,7 @@ abstract class TpCdrStatAbstract
     }
 
     /**
+     * @deprecated
      * Set setupInterval
      *
      * @param string $setupInterval
@@ -650,6 +657,7 @@ abstract class TpCdrStatAbstract
     }
 
     /**
+     * @deprecated
      * Set tors
      *
      * @param string $tors
@@ -677,6 +685,7 @@ abstract class TpCdrStatAbstract
     }
 
     /**
+     * @deprecated
      * Set cdrHosts
      *
      * @param string $cdrHosts
@@ -704,6 +713,7 @@ abstract class TpCdrStatAbstract
     }
 
     /**
+     * @deprecated
      * Set cdrSources
      *
      * @param string $cdrSources
@@ -731,6 +741,7 @@ abstract class TpCdrStatAbstract
     }
 
     /**
+     * @deprecated
      * Set reqTypes
      *
      * @param string $reqTypes
@@ -758,6 +769,7 @@ abstract class TpCdrStatAbstract
     }
 
     /**
+     * @deprecated
      * Set directions
      *
      * @param string $directions
@@ -785,6 +797,7 @@ abstract class TpCdrStatAbstract
     }
 
     /**
+     * @deprecated
      * Set tenants
      *
      * @param string $tenants
@@ -812,6 +825,7 @@ abstract class TpCdrStatAbstract
     }
 
     /**
+     * @deprecated
      * Set categories
      *
      * @param string $categories
@@ -839,6 +853,7 @@ abstract class TpCdrStatAbstract
     }
 
     /**
+     * @deprecated
      * Set accounts
      *
      * @param string $accounts
@@ -866,6 +881,7 @@ abstract class TpCdrStatAbstract
     }
 
     /**
+     * @deprecated
      * Set subjects
      *
      * @param string $subjects
@@ -893,6 +909,7 @@ abstract class TpCdrStatAbstract
     }
 
     /**
+     * @deprecated
      * Set destinationIds
      *
      * @param string $destinationIds
@@ -920,6 +937,7 @@ abstract class TpCdrStatAbstract
     }
 
     /**
+     * @deprecated
      * Set ppdInterval
      *
      * @param string $ppdInterval
@@ -947,6 +965,7 @@ abstract class TpCdrStatAbstract
     }
 
     /**
+     * @deprecated
      * Set usageInterval
      *
      * @param string $usageInterval
@@ -974,6 +993,7 @@ abstract class TpCdrStatAbstract
     }
 
     /**
+     * @deprecated
      * Set suppliers
      *
      * @param string $suppliers
@@ -1001,6 +1021,7 @@ abstract class TpCdrStatAbstract
     }
 
     /**
+     * @deprecated
      * Set disconnectCauses
      *
      * @param string $disconnectCauses
@@ -1028,6 +1049,7 @@ abstract class TpCdrStatAbstract
     }
 
     /**
+     * @deprecated
      * Set mediationRunids
      *
      * @param string $mediationRunids
@@ -1055,6 +1077,7 @@ abstract class TpCdrStatAbstract
     }
 
     /**
+     * @deprecated
      * Set ratedAccounts
      *
      * @param string $ratedAccounts
@@ -1082,6 +1105,7 @@ abstract class TpCdrStatAbstract
     }
 
     /**
+     * @deprecated
      * Set ratedSubjects
      *
      * @param string $ratedSubjects
@@ -1109,6 +1133,7 @@ abstract class TpCdrStatAbstract
     }
 
     /**
+     * @deprecated
      * Set costInterval
      *
      * @param string $costInterval
@@ -1136,6 +1161,7 @@ abstract class TpCdrStatAbstract
     }
 
     /**
+     * @deprecated
      * Set actionTriggers
      *
      * @param string $actionTriggers
@@ -1163,6 +1189,7 @@ abstract class TpCdrStatAbstract
     }
 
     /**
+     * @deprecated
      * Set createdAt
      *
      * @param \DateTime $createdAt
@@ -1216,8 +1243,5 @@ abstract class TpCdrStatAbstract
         return $this->carrier;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

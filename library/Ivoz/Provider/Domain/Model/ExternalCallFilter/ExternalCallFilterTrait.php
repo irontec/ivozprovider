@@ -130,8 +130,6 @@ trait ExternalCallFilterTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add calendar
      *
@@ -419,7 +417,4 @@ trait ExternalCallFilterTrait
 
         return $this->schedules->toArray();
     }
-
-
 }
-

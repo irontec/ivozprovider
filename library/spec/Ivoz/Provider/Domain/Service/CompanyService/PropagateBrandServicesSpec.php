@@ -2,6 +2,7 @@
 
 namespace spec\Ivoz\Provider\Domain\Service\CompanyService;
 
+use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface;
@@ -17,9 +18,9 @@ use Prophecy\Argument;
 class PropagateBrandServicesSpec extends ObjectBehavior
 {
     /**
-     * @var EntityPersisterInterface
+     * @var EntityTools
      */
-    protected $entityPersister;
+    protected $entityTools;
 
     /**
      * @var BrandServiceRepository
@@ -37,12 +38,12 @@ class PropagateBrandServicesSpec extends ObjectBehavior
     protected $company;
 
     function let(
-        EntityPersisterInterface $entityPersister,
+        EntityTools $entityTools,
         BrandServiceRepository $brandServiceRepository,
         BrandInterface $brand,
         CompanyInterface $company
     ) {
-        $this->entityPersister = $entityPersister;
+        $this->entityTools = $entityTools;
         $this->brandServiceRepository = $brandServiceRepository;
 
         $brand
@@ -57,7 +58,7 @@ class PropagateBrandServicesSpec extends ObjectBehavior
         $this->company = $company;
 
         $this->beConstructedWith(
-            $entityPersister,
+            $entityTools,
             $brandServiceRepository
         );
     }
@@ -122,7 +123,7 @@ class PropagateBrandServicesSpec extends ObjectBehavior
             ->shouldBeCalled();
 
         $this
-            ->entityPersister
+            ->entityTools
             ->persistDto(Argument::type(CompanyServiceDto::class))
             ->shouldBeCalled()
             ->willReturn($companyService);
@@ -138,6 +139,13 @@ class PropagateBrandServicesSpec extends ObjectBehavior
             ->addCompanyService(Argument::type(CompanyServiceInterface::class))
             ->shouldBeCalled();
 
+        $this->entityTools
+            ->dispatchQueuedOperations()
+            ->shouldBeCalled();
+
+        $this->entityTools
+            ->persist($this->company)
+            ->shouldBeCalled();
 
         $this->execute(
             $this->company,

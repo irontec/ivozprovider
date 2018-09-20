@@ -27,5 +27,11 @@ class RoutingTag extends RoutingTagAbstract implements RoutingTagInterface
         return $this->id;
     }
 
+    /**
+     * @return string
+     */
+    public function getCgrSubject()
+    {
+        return sprintf("rt%d", $this->getId());
+    }
 }
-

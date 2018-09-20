@@ -31,14 +31,14 @@ abstract class PickUpRelUserAbstract
      */
     protected function __construct()
     {
-
     }
 
     abstract public function getId();
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "PickUpRelUser",
             $this->getId()
         );
@@ -152,8 +152,6 @@ abstract class PickUpRelUserAbstract
             'userId' => self::getUser() ? self::getUser()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -204,8 +202,5 @@ abstract class PickUpRelUserAbstract
         return $this->user;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

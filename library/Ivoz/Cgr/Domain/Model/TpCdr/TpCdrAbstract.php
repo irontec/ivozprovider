@@ -195,7 +195,8 @@ abstract class TpCdrAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "TpCdr",
             $this->getId()
         );
@@ -274,7 +275,8 @@ abstract class TpCdrAbstract
             $dto->getCostSource(),
             $dto->getCost(),
             $dto->getCostDetails(),
-            $dto->getExtraInfo());
+            $dto->getExtraInfo()
+        );
 
         $self
             ->setCreatedAt($dto->getCreatedAt())
@@ -393,11 +395,10 @@ abstract class TpCdrAbstract
             'deleted_at' => self::getDeletedAt()
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set cgrid
      *
      * @param string $cgrid
@@ -425,6 +426,7 @@ abstract class TpCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set runId
      *
      * @param string $runId
@@ -452,6 +454,7 @@ abstract class TpCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set originHost
      *
      * @param string $originHost
@@ -479,6 +482,7 @@ abstract class TpCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set source
      *
      * @param string $source
@@ -506,6 +510,7 @@ abstract class TpCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set originId
      *
      * @param string $originId
@@ -533,6 +538,7 @@ abstract class TpCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set tor
      *
      * @param string $tor
@@ -560,6 +566,7 @@ abstract class TpCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set requestType
      *
      * @param string $requestType
@@ -587,6 +594,7 @@ abstract class TpCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set tenant
      *
      * @param string $tenant
@@ -614,6 +622,7 @@ abstract class TpCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set category
      *
      * @param string $category
@@ -641,6 +650,7 @@ abstract class TpCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set account
      *
      * @param string $account
@@ -668,6 +678,7 @@ abstract class TpCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set subject
      *
      * @param string $subject
@@ -695,6 +706,7 @@ abstract class TpCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set destination
      *
      * @param string $destination
@@ -722,6 +734,7 @@ abstract class TpCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set setupTime
      *
      * @param \DateTime $setupTime
@@ -752,6 +765,7 @@ abstract class TpCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set answerTime
      *
      * @param \DateTime $answerTime
@@ -782,6 +796,7 @@ abstract class TpCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set usage
      *
      * @param integer $usage
@@ -809,6 +824,7 @@ abstract class TpCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set extraFields
      *
      * @param string $extraFields
@@ -835,6 +851,7 @@ abstract class TpCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set costSource
      *
      * @param string $costSource
@@ -862,6 +879,7 @@ abstract class TpCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set cost
      *
      * @param string $cost
@@ -872,6 +890,7 @@ abstract class TpCdrAbstract
     {
         Assertion::notNull($cost, 'cost value "%s" is null, but non null value was expected.');
         Assertion::numeric($cost);
+        $cost = (float) $cost;
 
         $this->cost = $cost;
 
@@ -889,6 +908,7 @@ abstract class TpCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set costDetails
      *
      * @param array $costDetails
@@ -915,6 +935,7 @@ abstract class TpCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set extraInfo
      *
      * @param string $extraInfo
@@ -941,6 +962,7 @@ abstract class TpCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set createdAt
      *
      * @param \DateTime $createdAt
@@ -950,10 +972,10 @@ abstract class TpCdrAbstract
     public function setCreatedAt($createdAt = null)
     {
         if (!is_null($createdAt)) {
-        $createdAt = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
-            $createdAt,
-            NULL
-        );
+            $createdAt = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
+                $createdAt,
+                null
+            );
         }
 
         $this->createdAt = $createdAt;
@@ -972,6 +994,7 @@ abstract class TpCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set updatedAt
      *
      * @param \DateTime $updatedAt
@@ -981,10 +1004,10 @@ abstract class TpCdrAbstract
     public function setUpdatedAt($updatedAt = null)
     {
         if (!is_null($updatedAt)) {
-        $updatedAt = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
-            $updatedAt,
-            NULL
-        );
+            $updatedAt = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
+                $updatedAt,
+                null
+            );
         }
 
         $this->updatedAt = $updatedAt;
@@ -1003,6 +1026,7 @@ abstract class TpCdrAbstract
     }
 
     /**
+     * @deprecated
      * Set deletedAt
      *
      * @param \DateTime $deletedAt
@@ -1012,10 +1036,10 @@ abstract class TpCdrAbstract
     public function setDeletedAt($deletedAt = null)
     {
         if (!is_null($deletedAt)) {
-        $deletedAt = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
-            $deletedAt,
-            NULL
-        );
+            $deletedAt = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
+                $deletedAt,
+                null
+            );
         }
 
         $this->deletedAt = $deletedAt;
@@ -1033,8 +1057,5 @@ abstract class TpCdrAbstract
         return $this->deletedAt;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

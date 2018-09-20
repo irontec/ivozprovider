@@ -13,6 +13,7 @@ interface ConferenceRoomInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -29,6 +30,7 @@ interface ConferenceRoomInterface extends LoggableEntityInterface
     public function getName();
 
     /**
+     * @deprecated
      * Set pinProtected
      *
      * @param boolean $pinProtected
@@ -45,6 +47,7 @@ interface ConferenceRoomInterface extends LoggableEntityInterface
     public function getPinProtected();
 
     /**
+     * @deprecated
      * Set pinCode
      *
      * @param string $pinCode
@@ -61,6 +64,7 @@ interface ConferenceRoomInterface extends LoggableEntityInterface
     public function getPinCode();
 
     /**
+     * @deprecated
      * Set maxMembers
      *
      * @param integer $maxMembers
@@ -91,6 +95,4 @@ interface ConferenceRoomInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Company\CompanyInterface
      */
     public function getCompany();
-
 }
-

@@ -29,7 +29,6 @@ class RepositoryCompiler implements CompilerPassInterface
     {
 
         foreach ($services as $fqdn => $value) {
-
             $repositoryInterface = preg_replace(
                 '/(.*)Infrastructure\\\\Persistence\\\\Doctrine\\\\(.*)DoctrineRepository/',
                 '${1}Domain\Model\\\\${2}\\\\${2}Repository',

@@ -64,6 +64,10 @@ class UpdateByCarrierServerSpec extends ObjectBehavior
             ->setLcrGateway($lcrGateway)
             ->shouldBeCalled();
 
+        $this->entityTools
+            ->persist($entity)
+            ->shouldBeCalled();
+
         $this->execute($entity, false);
     }
 
@@ -103,6 +107,10 @@ class UpdateByCarrierServerSpec extends ObjectBehavior
 
         $entity
             ->setLcrGateway($lcrGateway)
+            ->shouldBeCalled();
+
+        $this->entityTools
+            ->persist($entity)
             ->shouldBeCalled();
 
         $this->execute($entity, false);

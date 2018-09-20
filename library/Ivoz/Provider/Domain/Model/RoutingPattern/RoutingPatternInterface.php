@@ -159,6 +159,4 @@ interface RoutingPatternInterface extends EntityInterface
      * @return \Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleInterface[]
      */
     public function getLcrRules(\Doctrine\Common\Collections\Criteria $criteria = null);
-
 }
-

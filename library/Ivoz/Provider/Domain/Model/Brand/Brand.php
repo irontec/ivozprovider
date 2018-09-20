@@ -5,11 +5,12 @@ namespace Ivoz\Provider\Domain\Model\Brand;
 use Ivoz\Core\Domain\Model\TempFileContainnerTrait;
 use Ivoz\Core\Domain\Service\FileContainerInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
+use Ivoz\Provider\Domain\Model\Feature\FeatureInterface;
 
 /**
  * Brand
  */
-class Brand extends BrandAbstract implements BrandInterface, FileContainerInterface
+class Brand extends BrandAbstract implements FileContainerInterface, BrandInterface
 {
     use BrandTrait;
     use TempFileContainnerTrait;
@@ -66,28 +67,6 @@ class Brand extends BrandAbstract implements BrandInterface, FileContainerInterf
     }
 
     /**
-     * @param CompanyInterface $company
-     * @param null $destination
-     * @return bool
-     */
-    public function willUseExternallyRating(CompanyInterface $company, $destination=null)
-    {
-        $outgoingRoutings = $company->getOutgoingRoutings();
-
-        /**
-         * @var $outgoingRouting OutgoingRoutingInterface
-         */
-        foreach ($outgoingRoutings as $outgoingRouting) {
-            if (!$outgoingRouting->getPeeringContract()->getExternallyRated()) {
-                return false;
-            }
-        }
-
-        // This call will be rated using externally rater
-        return true;
-    }
-
-    /**
      * Get the size in bytes used by the recordings on this brand
      *
      */
@@ -96,9 +75,6 @@ class Brand extends BrandAbstract implements BrandInterface, FileContainerInterf
         // Get the sum of all the companies usages
         $total = 0;
 
-        /**
-         * @var $company CompanyInterface
-         */
         foreach ($this->getCompanies() as $company) {
             $total += $company->getRecordingsDiskUsage();
         }
@@ -120,9 +96,6 @@ class Brand extends BrandAbstract implements BrandInterface, FileContainerInterf
     public function getFeatures()
     {
         $features = array();
-        /**
-         * @var $relFeature FeaturesRelBrandInterface
-         */
         foreach ($this->getRelFeatures() as $relFeature) {
             array_push($features, $relFeature->getFeature());
         }
@@ -138,12 +111,23 @@ class Brand extends BrandAbstract implements BrandInterface, FileContainerInterf
     {
         foreach ($this->getFeatures() as $feature) {
             if ($feature->getId() == $featureId) {
-
                 return true;
             }
         }
 
         return false;
     }
-}
 
+    /**
+     * Return Brand Cgrates tenant code
+     *
+     * @return string
+     */
+    public function getCgrTenant()
+    {
+        return sprintf(
+            "b%d",
+            $this->getId()
+        );
+    }
+}

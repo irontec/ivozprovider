@@ -143,7 +143,6 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -516,5 +515,3 @@ abstract class CallForwardSettingDtoAbstract implements DataTransferObjectInterf
         return null;
     }
 }
-
-

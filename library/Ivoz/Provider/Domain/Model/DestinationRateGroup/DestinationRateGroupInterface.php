@@ -2,10 +2,11 @@
 
 namespace Ivoz\Provider\Domain\Model\DestinationRateGroup;
 
+use Ivoz\Core\Domain\Service\FileContainerInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Doctrine\Common\Collections\Collection;
 
-interface DestinationRateGroupInterface extends LoggableEntityInterface
+interface DestinationRateGroupInterface extends FileContainerInterface, LoggableEntityInterface
 {
     /**
      * @codeCoverageIgnore
@@ -32,6 +33,7 @@ interface DestinationRateGroupInterface extends LoggableEntityInterface
     public function getCgrTag();
 
     /**
+     * @deprecated
      * Set status
      *
      * @param string $status
@@ -158,6 +160,4 @@ interface DestinationRateGroupInterface extends LoggableEntityInterface
      * @return null | TempFile
      */
     public function getTempFileByFieldName($fldName);
-
 }
-

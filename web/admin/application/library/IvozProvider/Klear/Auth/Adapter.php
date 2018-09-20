@@ -1,12 +1,16 @@
 <?php
+
 namespace IvozProvider\Klear\Auth;
 
 use Ivoz\Core\Application\Service\DataGateway;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
-use Ivoz\Provider\Domain\Model\Brand\BrandDTO;
+use Ivoz\Provider\Domain\Model\Brand\BrandDto;
+use IvozProvider\Service\RestClient;
 
 class Adapter implements \Klear_Auth_Adapter_KlearAuthInterface
 {
+    const API_LOGIN_ENDPOINT = '/admin_login';
+
     protected $_username;
     protected $_password;
 
@@ -21,7 +25,7 @@ class Adapter implements \Klear_Auth_Adapter_KlearAuthInterface
     protected $_currentBrand;
 
     /**
-     * @var BrandDTO
+     * @var BrandDto
      */
     protected $_brand;
 
@@ -36,8 +40,10 @@ class Adapter implements \Klear_Auth_Adapter_KlearAuthInterface
      */
     protected $_user;
 
-    public function __construct(\Zend_Controller_Request_Abstract $request, \Klear_Model_ConfigParser $authConfig = null)
-    {
+    public function __construct(
+        \Zend_Controller_Request_Abstract $request,
+        \Klear_Model_ConfigParser $authConfig = null
+    ) {
         $this->_username = $request->getPost('username', '');
         $this->_password = $request->getPost('password', '');
 
@@ -54,7 +60,7 @@ class Adapter implements \Klear_Auth_Adapter_KlearAuthInterface
                 $authConfig->getProperty("brandId")
             );
 
-            if (!$this->_brand instanceof BrandDTO) {
+            if (!$this->_brand instanceof BrandDto) {
                 throw new \Klear_Exception_Default('Not a valid brand instanciated');
             }
         }
@@ -90,8 +96,9 @@ class Adapter implements \Klear_Auth_Adapter_KlearAuthInterface
 
             $user = $this->administrator->findByLoginAndBrand($this->_username, $this->_brand);
 
-            if ($this->_userHasValidCredentials($user) ) {
+            if ($this->_userHasValidCredentials($user)) {
 
+                $this->_setApiToken($user);
                 $this->_user = $user;
                 $authResult = \Zend_Auth_Result::SUCCESS;
                 $authMessage = array('message' => 'Welcome!');
@@ -106,6 +113,16 @@ class Adapter implements \Klear_Auth_Adapter_KlearAuthInterface
             return new \Zend_Auth_Result($authResult, $this->_username, $authMessage);
         }
     }
+
+    protected function _setApiToken(\IvozProvider\Klear\Auth\User $user)
+    {
+        $apiCredentials = RestClient::getAdminToken($this->_username, $this->_password);
+        $user->setToken(
+            $apiCredentials->token,
+            $apiCredentials->refresh_token
+        );
+    }
+
 
     protected function _userHasValidCredentials(\Klear_Auth_Adapter_Interfaces_BasicUserModel $user = null)
     {
@@ -124,22 +141,22 @@ class Adapter implements \Klear_Auth_Adapter_KlearAuthInterface
 
         switch ($hashParts[0]) {
 
-          case '1': //md5
+            case '1': //md5
 
-              list(,,$salt,) = explode("$", $hash);
-              $salt = '$1$' . $salt . '$';
-              break;
+                list(, , $salt,) = explode("$", $hash);
+                $salt = '$1$' . $salt . '$';
+                break;
 
-          case '5': //sha
+            case '5': //sha
 
-              list(,,$rounds,$salt,) = explode("$", $hash);
-              $salt = '$5$' . $rounds . '$' . $salt . '$';
-              break;
+                list(, , $rounds, $salt,) = explode("$", $hash);
+                $salt = '$5$' . $rounds . '$' . $salt . '$';
+                break;
 
-          case '2a': //blowfish
+            case '2a': //blowfish
 
-              $salt = substr($hash, 0, 29);
-              break;
+                $salt = substr($hash, 0, 29);
+                break;
         }
 
         $res = crypt($clearPass, $salt . '$');

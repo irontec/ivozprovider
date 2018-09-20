@@ -15,6 +15,7 @@ interface RtpengineInterface extends LoggableEntityInterface
     public function setMediaRelaySet(\Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface $mediaRelaySet = null);
 
     /**
+     * @deprecated
      * Set setid
      *
      * @param integer $setid
@@ -31,6 +32,7 @@ interface RtpengineInterface extends LoggableEntityInterface
     public function getSetid();
 
     /**
+     * @deprecated
      * Set url
      *
      * @param string $url
@@ -47,6 +49,7 @@ interface RtpengineInterface extends LoggableEntityInterface
     public function getUrl();
 
     /**
+     * @deprecated
      * Set weight
      *
      * @param integer $weight
@@ -63,6 +66,7 @@ interface RtpengineInterface extends LoggableEntityInterface
     public function getWeight();
 
     /**
+     * @deprecated
      * Set disabled
      *
      * @param boolean $disabled
@@ -79,6 +83,7 @@ interface RtpengineInterface extends LoggableEntityInterface
     public function getDisabled();
 
     /**
+     * @deprecated
      * Set stamp
      *
      * @param \DateTime $stamp
@@ -95,6 +100,7 @@ interface RtpengineInterface extends LoggableEntityInterface
     public function getStamp();
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description
@@ -116,6 +122,4 @@ interface RtpengineInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySetInterface
      */
     public function getMediaRelaySet();
-
 }
-

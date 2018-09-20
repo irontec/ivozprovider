@@ -2,9 +2,10 @@
 
 namespace Ivoz\Provider\Domain\Model\BrandUrl;
 
+use Ivoz\Core\Domain\Service\FileContainerInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface BrandUrlInterface extends LoggableEntityInterface
+interface BrandUrlInterface extends FileContainerInterface, LoggableEntityInterface
 {
     /**
      * @codeCoverageIgnore
@@ -30,6 +31,7 @@ interface BrandUrlInterface extends LoggableEntityInterface
     public function getUrl();
 
     /**
+     * @deprecated
      * Set klearTheme
      *
      * @param string $klearTheme
@@ -46,6 +48,7 @@ interface BrandUrlInterface extends LoggableEntityInterface
     public function getKlearTheme();
 
     /**
+     * @deprecated
      * Set urlType
      *
      * @param string $urlType
@@ -62,6 +65,7 @@ interface BrandUrlInterface extends LoggableEntityInterface
     public function getUrlType();
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -78,6 +82,7 @@ interface BrandUrlInterface extends LoggableEntityInterface
     public function getName();
 
     /**
+     * @deprecated
      * Set userTheme
      *
      * @param string $userTheme
@@ -147,6 +152,4 @@ interface BrandUrlInterface extends LoggableEntityInterface
      * @return null | TempFile
      */
     public function getTempFileByFieldName($fldName);
-
 }
-

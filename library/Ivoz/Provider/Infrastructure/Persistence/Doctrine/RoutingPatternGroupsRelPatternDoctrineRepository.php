@@ -19,5 +19,4 @@ class RoutingPatternGroupsRelPatternDoctrineRepository extends ServiceEntityRepo
     {
         parent::__construct($registry, RoutingPatternGroupsRelPattern::class);
     }
-
 }

@@ -63,6 +63,18 @@ Ivoz\Kam\Domain\Model\TrunksLcrRule\TrunksLcrRuleAbstract:
           referencedColumnName: id
           onDelete: cascade
       orphanRemoval: false
+    routingPatternGroupsRelPattern:
+      targetEntity: \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        routingPatternGroupsRelPatternId:
+          referencedColumnName: id
+          onDelete: cascade
+          nullable: true
+      orphanRemoval: false
     outgoingRouting:
       targetEntity: \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface
       cascade: {  }

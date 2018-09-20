@@ -125,7 +125,6 @@ abstract class LocutionDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -354,5 +353,3 @@ abstract class LocutionDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 }
-
-

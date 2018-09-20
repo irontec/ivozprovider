@@ -1,6 +1,7 @@
 Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSetting:
   repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\CallForwardSettingDoctrineRepository
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: CallForwardSettings
   id:
     id:

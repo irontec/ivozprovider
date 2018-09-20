@@ -20,6 +20,7 @@ interface CountryInterface extends LoggableEntityInterface
     public function hasAreaCode();
 
     /**
+     * @deprecated
      * Set code
      *
      * @param string $code
@@ -36,6 +37,7 @@ interface CountryInterface extends LoggableEntityInterface
     public function getCode();
 
     /**
+     * @deprecated
      * Set countryCode
      *
      * @param string $countryCode
@@ -82,6 +84,4 @@ interface CountryInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Country\Zone
      */
     public function getZone();
-
 }
-

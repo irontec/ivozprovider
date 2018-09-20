@@ -49,7 +49,8 @@ abstract class DestinationAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "Destination",
             $this->getId()
         );
@@ -180,11 +181,10 @@ abstract class DestinationAbstract
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set prefix
      *
      * @param string $prefix
@@ -269,7 +269,6 @@ abstract class DestinationAbstract
     public function setName(Name $name)
     {
         $this->name = $name;
-
         return $this;
     }
 
@@ -282,7 +281,5 @@ abstract class DestinationAbstract
     {
         return $this->name;
     }
-
     // @codeCoverageIgnoreEnd
 }
-

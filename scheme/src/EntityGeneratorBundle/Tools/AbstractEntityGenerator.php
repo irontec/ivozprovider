@@ -27,7 +27,8 @@ class AbstractEntityGenerator extends ParentGenerator
  * Constructor
  */
 public function __construct(<requiredFields>)<lineBreak>{
-<requiredFieldsSetters><collections>
+<requiredFieldsSetters>
+<collections>
 }
 ';
 
@@ -42,14 +43,16 @@ use ChangelogTrait;
  * Constructor
  */
 protected function __construct(<requiredFields>)<lineBreak>{
-<requiredFieldsSetters><collections>
+<requiredFieldsSetters>
+<collections>
 }
 
 abstract public function getId();
 
 public function __toString()
 {
-    return sprintf("%s#%s",
+    return sprintf(
+        "%s#%s",
         "<classTableName>",
         $this->getId()
     );
@@ -109,9 +112,7 @@ public static function fromDto(DataTransferObjectInterface $dto)
     Assertion::isInstanceOf($dto, <dtoClass>::class);
 <voContructor>
     $self = new static(<requiredFieldsGetters>);
-
-    $self<fromDTO>;
-
+<fromDTO>
     $self->sanitizeValues();
     $self->initChangelog();
 
@@ -150,15 +151,13 @@ public function toDto($depth = 0)
 protected function __toArray()
 {
     return [<toArray>];
-}
-
-';
+}';
     /**
      * @var string
      */
     protected static $setMethodTemplate =
 '/**
- * <description>
+ * <deprecated><description>
  *
  * @param <variableType> $<variableName>
  *
@@ -169,7 +168,8 @@ protected function __toArray()
 <assertions>$this-><fieldName> = $<variableName>;
 
 <spaces>return $this;
-}';
+}
+';
 
 
     /**
@@ -184,7 +184,8 @@ protected function __toArray()
 public function <methodName>(<criteriaArgument>)
 {<criteriaGetter>
 <spaces>return $this-><fieldName><forcedArray>;
-}';
+}
+';
 
 
     /**
@@ -256,6 +257,7 @@ public function <methodName>(<criteriaArgument>)
 
 <spaces>return $this;
 }';
+
     /**
      * {@inheritDoc}
      */
@@ -316,7 +318,7 @@ public function <methodName>(<criteriaArgument>)
             $this->generateEntityBody($metadata)
         );
 
-        $code = str_replace($placeHolders, $replacements, static::$classTemplate) . "\n";
+        $code = str_replace($placeHolders, $replacements, static::$classTemplate);
         $code = str_replace('\\Doctrine\\Common\\Collections\\Collection', 'Collection', $code);
         $code = str_replace('\\Doctrine\\Common\\Collections\\ArrayCollection', 'ArrayCollection', $code);
 
@@ -557,9 +559,9 @@ public function <methodName>(<criteriaArgument>)
                         . '$'
                         . $key;
                 }
-
-                $requiredFieldGetters .= "\n" . $this->spaces;
             }
+
+            $requiredFieldGetters .= "\n" . $this->spaces;
 
             if (strlen($requiredFields) > 40) {
                 $requiredFields = "\n". $this->spaces . str_replace(', ', ",\n". $this->spaces, $requiredFields) . "\n";
@@ -589,6 +591,8 @@ public function <methodName>(<criteriaArgument>)
             if ($metadata->isMappedSuperclass) {
                 $fromDTO =  "\n" . $spaces . '->' . $fromDTO . "\n" . $this->spaces;
             }
+
+            $fromDTO = "\n" . $this->spaces . '$self' . $fromDTO . ';' . "\n";
         }
 
         if (!empty($selfGetters)) {
@@ -611,10 +615,14 @@ public function <methodName>(<criteriaArgument>)
             }
         }
 
+        if (!empty($requiredFieldSetters)) {
+            $response = str_replace('<requiredFieldsSetters>', $requiredFieldSetters, $response);
+        } else {
+            $response = str_replace("<requiredFieldsSetters>\n",'', $response);
+        }
         $response = str_replace('<classTableName>', $this->getInstanceClassName($metadata), $response);
 
         $response = str_replace('<requiredFields>', $requiredFields, $response);
-        $response = str_replace('<requiredFieldsSetters>', $requiredFieldSetters, $response);
         $response = str_replace('<requiredFieldsGetters>', $requiredFieldGetters, $response);
 
         $namespaceSegments = explode('\\', $metadata->namespace);
@@ -644,7 +652,7 @@ public function <methodName>(<criteriaArgument>)
         } else {
 
             $response =  str_replace(
-                "<collections>",
+                "<collections>\n",
                 '',
                 $response
             );
@@ -1063,12 +1071,14 @@ public function <methodName>(<criteriaArgument>)
 
         $response = array_merge($methods, $parentMethods);
 
+        $stubMethods = implode("\n", $response);
+
         if ($this->codeCoverageIgnoreBlock) {
-            array_unshift($response, $this->spaces . "// @codeCoverageIgnoreStart");
-            $response[] = $this->spaces . "// @codeCoverageIgnoreEnd";
+            $stubMethods = $this->spaces . "// @codeCoverageIgnoreStart\n\n" . $stubMethods;
+            $stubMethods .=  $this->spaces . "// @codeCoverageIgnoreEnd";
         }
 
-        return implode("\n\n", $response);
+        return $stubMethods;
     }
 
     /**
@@ -1167,6 +1177,8 @@ public function <methodName>(<criteriaArgument>)
             ? 'protected'
             : 'public';
 
+        $deprecated = "@deprecated\n     * ";
+
         if (array_key_exists($fieldName, $metadata->fieldMappings)) {
             $currentField = (object) $metadata->fieldMappings[$fieldName];
             $isNullable = isset($currentField->nullable) && $currentField->nullable;
@@ -1179,6 +1191,11 @@ public function <methodName>(<criteriaArgument>)
         if ($typeHint[0] === '\\') {
             // typehints are always prefixed in parent::generateEntityStubMethod
             $typeHint = substr($typeHint, 1);
+        }
+
+        $isFk = strpos($typeHint, '\\');
+        if ($isFk) {
+            $deprecated = '';
         }
 
         $isCollection = strpos($typeHint, 'Doctrine\\Common\\Collections\\Collection') !== false;
@@ -1226,17 +1243,25 @@ public function <methodName>(<criteriaArgument>)
                     $this->getIntegerAssertions($currentField)
                 );
 
-                $call = '$var = \\Ivoz\\Core\\Domain\\Model\Helper\\DateTimeHelper::createOrFix('
+                $indent = ($isNullable)
+                    ? str_repeat(' ', 4)
+                    : '';
+
+                $call = $indent . '$var = \\Ivoz\\Core\\Domain\\Model\Helper\\DateTimeHelper::createOrFix('
                     . "\n" . $this->spaces
-                    .'$var,'
+                    . $indent .'$var,'
                     . "\n" . $this->spaces
-                    . '$default'
+                    . $indent . '$default'
                     . "\n"
-                    .');';
+                    . $indent .');';
 
                 $defaultValue = (isset($currentField->options) && \array_key_exists('default', $currentField->options))
                     ? var_export($currentField->options['default'], true)
                     : "null";
+
+                if ($defaultValue === "NULL") {
+                    $defaultValue = "null";
+                }
 
                 $assertions[] = str_replace(
                     ['$var', '$default'],
@@ -1280,8 +1305,10 @@ public function <methodName>(<criteriaArgument>)
 
                 $assertions[] = AssertionGenerator::choice(
                     $currentField->fieldName,
-                    $acceptedValues
+                    $acceptedValues,
+                    $isNullable
                 );
+
             }
 
             if ($isNullable) {
@@ -1298,6 +1325,7 @@ public function <methodName>(<criteriaArgument>)
 
         $replacements = array(
             $this->spaces . '<assertions>' => $assertions,
+            '<deprecated>' => $deprecated,
             '<visibility>' => $visibility
         );
 
@@ -1369,6 +1397,7 @@ public function <methodName>(<criteriaArgument>)
         $options = (object) $currentField->options;
 
         $assertions[] = AssertionGenerator::float($currentField->fieldName);
+        $assertions[] = '$' . $currentField->fieldName . ' = (float) $' . $currentField->fieldName . ';';
 
         if (isset($options->unsigned) && $options->unsigned) {
             $assertions[] = AssertionGenerator::greaterOrEqualThan($currentField->fieldName, 0);

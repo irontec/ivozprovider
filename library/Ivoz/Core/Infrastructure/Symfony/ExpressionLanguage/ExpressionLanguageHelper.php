@@ -4,7 +4,7 @@ namespace Ivoz\Core\Infrastructure\Symfony\ExpressionLanguage;
 
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 
-class ExpressionLanguageHelper implements  CriteriaHelperInterface
+class ExpressionLanguageHelper implements CriteriaHelperInterface
 {
     /**
      * @param array $conditions

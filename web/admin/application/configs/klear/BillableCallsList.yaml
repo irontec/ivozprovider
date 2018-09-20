@@ -10,7 +10,7 @@ production:
   screens: &billableCalls_screensLink
     billableCallsList_screen: &billableCallsList_screenLink
       controller: list
-      csv: true
+      csv: false
       order:
         field:
           - BillableCall.startTime
@@ -107,6 +107,7 @@ production:
       class:  ui-silk-coins-add
       multiItem: true
       alwaysEnabled: false
+
 
 staging:
   _extends: production

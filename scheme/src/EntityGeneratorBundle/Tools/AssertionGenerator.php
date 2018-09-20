@@ -50,9 +50,17 @@ class AssertionGenerator
         return "Assertion::maxLength($" . $fieldName . ", " . $maxLength . ", '". $message ."');";
     }
 
-    public static function choice($fieldName, $choices)
+    public static function choice($fieldName, $choices, $extraTab = false)
     {
         $message = $fieldName . 'value "%s" is not an element of the valid values: %s';
-        return "Assertion::choice($". $fieldName .", ". var_export($choices, true) . ", '". $message ."');";
+        $choicesString = var_export($choices, true);
+        $response = "Assertion::choice($" . $fieldName . ", " . $choicesString . ", '" . $message . "');";
+
+        if ($extraTab) {
+            $response = str_replace("\n", "\n" . str_repeat(" ", 4), $response);
+            $response = str_repeat(" ", 4) . $response;
+        }
+
+        return $response;
     }
 }

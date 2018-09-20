@@ -22,7 +22,6 @@ trait IvrEntryTrait
     protected function __construct()
     {
         parent::__construct(...func_get_args());
-
     }
 
     /**
@@ -79,7 +78,4 @@ trait IvrEntryTrait
             'id' => self::getId()
         ];
     }
-
-
 }
-

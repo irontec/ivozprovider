@@ -54,7 +54,8 @@ abstract class DdiProviderAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "DdiProvider",
             $this->getId()
         );
@@ -115,7 +116,8 @@ abstract class DdiProviderAbstract
 
         $self = new static(
             $dto->getDescription(),
-            $dto->getName());
+            $dto->getName()
+        );
 
         $self
             ->setExternallyRated($dto->getExternallyRated())
@@ -180,11 +182,10 @@ abstract class DdiProviderAbstract
             'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description
@@ -212,6 +213,7 @@ abstract class DdiProviderAbstract
     }
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -239,6 +241,7 @@ abstract class DdiProviderAbstract
     }
 
     /**
+     * @deprecated
      * Set externallyRated
      *
      * @param boolean $externallyRated
@@ -314,8 +317,5 @@ abstract class DdiProviderAbstract
         return $this->transformationRuleSet;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

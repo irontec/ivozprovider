@@ -23,6 +23,7 @@ interface TpRateInterface extends EntityInterface
     public function setGroupIntervalStart($groupIntervalStart);
 
     /**
+     * @deprecated
      * Set tpid
      *
      * @param string $tpid
@@ -39,6 +40,7 @@ interface TpRateInterface extends EntityInterface
     public function getTpid();
 
     /**
+     * @deprecated
      * Set tag
      *
      * @param string $tag
@@ -55,6 +57,7 @@ interface TpRateInterface extends EntityInterface
     public function getTag();
 
     /**
+     * @deprecated
      * Set connectFee
      *
      * @param string $connectFee
@@ -71,6 +74,7 @@ interface TpRateInterface extends EntityInterface
     public function getConnectFee();
 
     /**
+     * @deprecated
      * Set rateCost
      *
      * @param string $rateCost
@@ -87,6 +91,7 @@ interface TpRateInterface extends EntityInterface
     public function getRateCost();
 
     /**
+     * @deprecated
      * Set rateUnit
      *
      * @param string $rateUnit
@@ -117,6 +122,7 @@ interface TpRateInterface extends EntityInterface
     public function getGroupIntervalStart();
 
     /**
+     * @deprecated
      * Set createdAt
      *
      * @param \DateTime $createdAt
@@ -147,6 +153,4 @@ interface TpRateInterface extends EntityInterface
      * @return \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface
      */
     public function getDestinationRate();
-
 }
-

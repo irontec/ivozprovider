@@ -3,6 +3,9 @@
 namespace Ivoz\Provider\Domain\Model\RatingProfile;
 
 use Ivoz\Core\Application\DataTransferObjectInterface;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Criteria;
 
 /**
  * RatingProfileTrait
@@ -15,6 +18,11 @@ trait RatingProfileTrait
      */
     protected $id;
 
+    /**
+     * @var Collection
+     */
+    protected $tpRatingProfiles;
+
 
     /**
      * Constructor
@@ -22,7 +30,7 @@ trait RatingProfileTrait
     protected function __construct()
     {
         parent::__construct(...func_get_args());
-
+        $this->tpRatingProfiles = new ArrayCollection();
     }
 
     /**
@@ -36,7 +44,9 @@ trait RatingProfileTrait
          * @var $dto RatingProfileDto
          */
         $self = parent::fromDto($dto);
-
+        if ($dto->getTpRatingProfiles()) {
+            $self->replaceTpRatingProfiles($dto->getTpRatingProfiles());
+        }
         if ($dto->getId()) {
             $self->id = $dto->getId();
             $self->initChangelog();
@@ -55,7 +65,9 @@ trait RatingProfileTrait
          * @var $dto RatingProfileDto
          */
         parent::updateFromDto($dto);
-
+        if ($dto->getTpRatingProfiles()) {
+            $this->replaceTpRatingProfiles($dto->getTpRatingProfiles());
+        }
         return $this;
     }
 
@@ -79,7 +91,75 @@ trait RatingProfileTrait
             'id' => self::getId()
         ];
     }
+    /**
+     * Add tpRatingProfile
+     *
+     * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $tpRatingProfile
+     *
+     * @return RatingProfileTrait
+     */
+    public function addTpRatingProfile(\Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $tpRatingProfile)
+    {
+        $this->tpRatingProfiles->add($tpRatingProfile);
 
+        return $this;
+    }
 
+    /**
+     * Remove tpRatingProfile
+     *
+     * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $tpRatingProfile
+     */
+    public function removeTpRatingProfile(\Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface $tpRatingProfile)
+    {
+        $this->tpRatingProfiles->removeElement($tpRatingProfile);
+    }
+
+    /**
+     * Replace tpRatingProfiles
+     *
+     * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface[] $tpRatingProfiles
+     * @return self
+     */
+    public function replaceTpRatingProfiles(Collection $tpRatingProfiles)
+    {
+        $updatedEntities = [];
+        $fallBackId = -1;
+        foreach ($tpRatingProfiles as $entity) {
+            $index = $entity->getId() ? $entity->getId() : $fallBackId--;
+            $updatedEntities[$index] = $entity;
+            $entity->setRatingProfile($this);
+        }
+        $updatedEntityKeys = array_keys($updatedEntities);
+
+        foreach ($this->tpRatingProfiles as $key => $entity) {
+            $identity = $entity->getId();
+            if (in_array($identity, $updatedEntityKeys)) {
+                $this->tpRatingProfiles->set($key, $updatedEntities[$identity]);
+            } else {
+                $this->tpRatingProfiles->remove($key);
+            }
+            unset($updatedEntities[$identity]);
+        }
+
+        foreach ($updatedEntities as $entity) {
+            $this->addTpRatingProfile($entity);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get tpRatingProfiles
+     *
+     * @return \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileInterface[]
+     */
+    public function getTpRatingProfiles(Criteria $criteria = null)
+    {
+        if (!is_null($criteria)) {
+            return $this->tpRatingProfiles->matching($criteria)->toArray();
+        }
+
+        return $this->tpRatingProfiles->toArray();
+    }
 }
-

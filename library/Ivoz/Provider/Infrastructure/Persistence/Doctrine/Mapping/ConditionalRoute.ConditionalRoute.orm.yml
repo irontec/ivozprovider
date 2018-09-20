@@ -1,6 +1,7 @@
 Ivoz\Provider\Domain\Model\ConditionalRoute\ConditionalRoute:
   repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\ConditionalRouteDoctrineRepository
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: ConditionalRoutes
   id:
     id:

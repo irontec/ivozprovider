@@ -50,7 +50,8 @@ abstract class CountryAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "Country",
             $this->getId()
         );
@@ -197,11 +198,10 @@ abstract class CountryAbstract
             'zoneEs' => self::getZone()->getEs()
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set code
      *
      * @param string $code
@@ -229,6 +229,7 @@ abstract class CountryAbstract
     }
 
     /**
+     * @deprecated
      * Set countryCode
      *
      * @param string $countryCode
@@ -266,7 +267,6 @@ abstract class CountryAbstract
     public function setName(Name $name)
     {
         $this->name = $name;
-
         return $this;
     }
 
@@ -290,7 +290,6 @@ abstract class CountryAbstract
     public function setZone(Zone $zone)
     {
         $this->zone = $zone;
-
         return $this;
     }
 
@@ -303,7 +302,5 @@ abstract class CountryAbstract
     {
         return $this->zone;
     }
-
     // @codeCoverageIgnoreEnd
 }
-

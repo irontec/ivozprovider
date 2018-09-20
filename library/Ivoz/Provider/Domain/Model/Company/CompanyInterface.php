@@ -53,10 +53,7 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getMusicClass();
 
     /**
-     * Ensures valid domain value
-     * @param string $data
-     * @return \Ivoz\Provider\Model\Raw\Companies
-     * @throws \Exception
+     * @inheritdoc
      */
     public function setDomainUsers($domainUsers = null);
 
@@ -72,6 +69,12 @@ interface CompanyInterface extends LoggableEntityInterface
      */
     public function getRecordingsLimit();
 
+    /**
+     * Check if a Company has a given Feature by id
+     *
+     * @param $featureId
+     * @return bool
+     */
     public function hasFeature($featureId);
 
     /**
@@ -79,6 +82,9 @@ interface CompanyInterface extends LoggableEntityInterface
      */
     public function getOnDemandRecordDTMFs();
 
+    /**
+     * @return FeatureInterface[]
+     */
     public function getFeatures();
 
     /**
@@ -93,6 +99,12 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getDefaultTimezone();
 
     /**
+     * @return string
+     */
+    public function getCgrSubject();
+
+    /**
+     * @deprecated
      * Set type
      *
      * @param string $type
@@ -123,6 +135,7 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getDomainUsers();
 
     /**
+     * @deprecated
      * Set nif
      *
      * @param string $nif
@@ -139,6 +152,7 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getNif();
 
     /**
+     * @deprecated
      * Set distributeMethod
      *
      * @param string $distributeMethod
@@ -155,6 +169,7 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getDistributeMethod();
 
     /**
+     * @deprecated
      * Set maxCalls
      *
      * @param integer $maxCalls
@@ -171,6 +186,7 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getMaxCalls();
 
     /**
+     * @deprecated
      * Set postalAddress
      *
      * @param string $postalAddress
@@ -187,6 +203,7 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getPostalAddress();
 
     /**
+     * @deprecated
      * Set postalCode
      *
      * @param string $postalCode
@@ -203,6 +220,7 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getPostalCode();
 
     /**
+     * @deprecated
      * Set town
      *
      * @param string $town
@@ -219,6 +237,7 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getTown();
 
     /**
+     * @deprecated
      * Set province
      *
      * @param string $province
@@ -235,6 +254,7 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getProvince();
 
     /**
+     * @deprecated
      * Set countryName
      *
      * @param string $countryName
@@ -251,6 +271,7 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getCountryName();
 
     /**
+     * @deprecated
      * Set ipfilter
      *
      * @param boolean $ipfilter
@@ -267,6 +288,7 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getIpfilter();
 
     /**
+     * @deprecated
      * Set onDemandRecord
      *
      * @param integer $onDemandRecord
@@ -290,6 +312,7 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getOnDemandRecordCode();
 
     /**
+     * @deprecated
      * Set externallyextraopts
      *
      * @param string $externallyextraopts
@@ -306,6 +329,7 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getExternallyextraopts();
 
     /**
+     * @deprecated
      * Set recordingsLimitMB
      *
      * @param integer $recordingsLimitMB
@@ -322,6 +346,7 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getRecordingsLimitMB();
 
     /**
+     * @deprecated
      * Set recordingsLimitEmail
      *
      * @param string $recordingsLimitEmail
@@ -338,6 +363,7 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getRecordingsLimitEmail();
 
     /**
+     * @deprecated
      * Set billingMethod
      *
      * @param string $billingMethod
@@ -354,6 +380,7 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getBillingMethod();
 
     /**
+     * @deprecated
      * Set balance
      *
      * @param string $balance
@@ -910,6 +937,4 @@ interface CompanyInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\CompanyRelRoutingTag\CompanyRelRoutingTagInterface[]
      */
     public function getRelRoutingTags(\Doctrine\Common\Collections\Criteria $criteria = null);
-
 }
-

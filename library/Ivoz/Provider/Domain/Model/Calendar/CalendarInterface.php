@@ -22,6 +22,7 @@ interface CalendarInterface extends LoggableEntityInterface
     public function isHolidayDate($date);
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -83,6 +84,4 @@ interface CalendarInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\HolidayDate\HolidayDateInterface[]
      */
     public function getHolidayDates(\Doctrine\Common\Collections\Criteria $criteria = null);
-
 }
-

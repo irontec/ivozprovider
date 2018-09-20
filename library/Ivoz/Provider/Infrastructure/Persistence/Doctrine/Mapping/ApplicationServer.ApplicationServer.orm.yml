@@ -1,6 +1,7 @@
 Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServer:
   repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\ApplicationServerDoctrineRepository
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: ApplicationServers
   id:
     id:

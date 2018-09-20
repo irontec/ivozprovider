@@ -2,9 +2,10 @@
 
 namespace Ivoz\Provider\Domain\Model\MusicOnHold;
 
+use Ivoz\Core\Domain\Service\FileContainerInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface MusicOnHoldInterface extends LoggableEntityInterface
+interface MusicOnHoldInterface extends FileContainerInterface, LoggableEntityInterface
 {
     /**
      * @codeCoverageIgnore
@@ -31,6 +32,7 @@ interface MusicOnHoldInterface extends LoggableEntityInterface
     public function addTmpFile($fldName, \Ivoz\Core\Domain\Service\TempFile $file);
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -47,6 +49,7 @@ interface MusicOnHoldInterface extends LoggableEntityInterface
     public function getName();
 
     /**
+     * @deprecated
      * Set status
      *
      * @param string $status
@@ -142,6 +145,4 @@ interface MusicOnHoldInterface extends LoggableEntityInterface
      * @return null | TempFile
      */
     public function getTempFileByFieldName($fldName);
-
 }
-

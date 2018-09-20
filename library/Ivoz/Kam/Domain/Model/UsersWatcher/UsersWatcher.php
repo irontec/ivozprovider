@@ -28,4 +28,3 @@ class UsersWatcher extends UsersWatcherAbstract implements UsersWatcherInterface
         return $this->id;
     }
 }
-

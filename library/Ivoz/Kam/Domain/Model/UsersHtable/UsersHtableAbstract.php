@@ -66,7 +66,8 @@ abstract class UsersHtableAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "UsersHtable",
             $this->getId()
         );
@@ -130,9 +131,8 @@ abstract class UsersHtableAbstract
             $dto->getKeyType(),
             $dto->getValueType(),
             $dto->getKeyValue(),
-            $dto->getExpires());
-
-        $self;
+            $dto->getExpires()
+        );
 
         $self->sanitizeValues();
         $self->initChangelog();
@@ -191,11 +191,10 @@ abstract class UsersHtableAbstract
             'expires' => self::getExpires()
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set keyName
      *
      * @param string $keyName
@@ -223,6 +222,7 @@ abstract class UsersHtableAbstract
     }
 
     /**
+     * @deprecated
      * Set keyType
      *
      * @param integer $keyType
@@ -250,6 +250,7 @@ abstract class UsersHtableAbstract
     }
 
     /**
+     * @deprecated
      * Set valueType
      *
      * @param integer $valueType
@@ -277,6 +278,7 @@ abstract class UsersHtableAbstract
     }
 
     /**
+     * @deprecated
      * Set keyValue
      *
      * @param string $keyValue
@@ -304,6 +306,7 @@ abstract class UsersHtableAbstract
     }
 
     /**
+     * @deprecated
      * Set expires
      *
      * @param integer $expires
@@ -330,8 +333,5 @@ abstract class UsersHtableAbstract
         return $this->expires;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

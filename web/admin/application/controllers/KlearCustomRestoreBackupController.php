@@ -36,29 +36,29 @@ class KlearCustomRestoreBackupController extends Zend_Controller_Action
             $file = fopen($filename, "r");
             $filecontent = fread($file, filesize($filename));
             $data = array(
-                    'title' => _("Restore backup"),
-                    'message'=>_("Loading") . "<textarea style=\"display: none\">" . str_replace("<br/>", "\n", $filecontent) . "</textarea>"
+                    'title' => $this->_helper->translate("Restore backup"),
+                    'message'=>$this->_helper->translate("Loading") . "<textarea style=\"display: none\">" . str_replace("<br/>", "\n", $filecontent) . "</textarea>"
             );
         } else{
             $existsBackup = file_exists($filename);
             if($existsBackup){
-                $message = "Restore backup from " . date ("d m Y H:i:s.", filemtime($filename));
+                $message = $this->_helper->translate("Restore backup from") . " " . date ("d m Y H:i:s.", filemtime($filename));
             } else {
-                $message = "No backup found.";
+                $message = $this->_helper->translate("No backup found.");
             }
 
             $data = array(
-                    'title' => _("Restore backup"),
-                    'message'=>_($message),
+                    'title' => $this->_helper->translate("Restore backup"),
+                    'message'=> $message,
                     'buttons'=>array(
-                            _('Accept') => array(
+                            $this->_helper->translate('Accept') => array(
                                     'reloadParent' => false,
                                     'recall' => $existsBackup,
                                     'params'=>array(
                                             "backup" => true
                                     )
                             ),
-                            _('Cancel') => array(
+                            $this->_helper->translate('Cancel') => array(
                                     'reloadParent' => false,
                                     'recall' => false,
                             )

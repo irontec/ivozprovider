@@ -44,6 +44,7 @@ class RecordedFile
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set fileSize
      *
      * @param integer $fileSize
@@ -75,6 +76,7 @@ class RecordedFile
     }
 
     /**
+     * @deprecated
      * Set mimeType
      *
      * @param string $mimeType
@@ -103,6 +105,7 @@ class RecordedFile
     }
 
     /**
+     * @deprecated
      * Set baseName
      *
      * @param string $baseName
@@ -130,8 +133,5 @@ class RecordedFile
         return $this->baseName;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

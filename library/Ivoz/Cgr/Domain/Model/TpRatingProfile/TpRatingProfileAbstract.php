@@ -78,6 +78,11 @@ abstract class TpRatingProfileAbstract
      */
     protected $ratingProfile;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface
+     */
+    protected $outgoingRoutingRelCarrier;
+
 
     use ChangelogTrait;
 
@@ -104,7 +109,8 @@ abstract class TpRatingProfileAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "TpRatingProfile",
             $this->getId()
         );
@@ -169,7 +175,8 @@ abstract class TpRatingProfileAbstract
             $dto->getDirection(),
             $dto->getCategory(),
             $dto->getActivationTime(),
-            $dto->getCreatedAt());
+            $dto->getCreatedAt()
+        );
 
         $self
             ->setTenant($dto->getTenant())
@@ -178,6 +185,7 @@ abstract class TpRatingProfileAbstract
             ->setFallbackSubjects($dto->getFallbackSubjects())
             ->setCdrStatQueueIds($dto->getCdrStatQueueIds())
             ->setRatingProfile($dto->getRatingProfile())
+            ->setOutgoingRoutingRelCarrier($dto->getOutgoingRoutingRelCarrier())
         ;
 
         $self->sanitizeValues();
@@ -209,7 +217,8 @@ abstract class TpRatingProfileAbstract
             ->setFallbackSubjects($dto->getFallbackSubjects())
             ->setCdrStatQueueIds($dto->getCdrStatQueueIds())
             ->setCreatedAt($dto->getCreatedAt())
-            ->setRatingProfile($dto->getRatingProfile());
+            ->setRatingProfile($dto->getRatingProfile())
+            ->setOutgoingRoutingRelCarrier($dto->getOutgoingRoutingRelCarrier());
 
 
 
@@ -235,7 +244,8 @@ abstract class TpRatingProfileAbstract
             ->setFallbackSubjects(self::getFallbackSubjects())
             ->setCdrStatQueueIds(self::getCdrStatQueueIds())
             ->setCreatedAt(self::getCreatedAt())
-            ->setRatingProfile(\Ivoz\Provider\Domain\Model\RatingProfile\RatingProfile::entityToDto(self::getRatingProfile(), $depth));
+            ->setRatingProfile(\Ivoz\Provider\Domain\Model\RatingProfile\RatingProfile::entityToDto(self::getRatingProfile(), $depth))
+            ->setOutgoingRoutingRelCarrier(\Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrier::entityToDto(self::getOutgoingRoutingRelCarrier(), $depth));
     }
 
     /**
@@ -255,14 +265,14 @@ abstract class TpRatingProfileAbstract
             'fallback_subjects' => self::getFallbackSubjects(),
             'cdr_stat_queue_ids' => self::getCdrStatQueueIds(),
             'created_at' => self::getCreatedAt(),
-            'ratingProfileId' => self::getRatingProfile() ? self::getRatingProfile()->getId() : null
+            'ratingProfileId' => self::getRatingProfile() ? self::getRatingProfile()->getId() : null,
+            'outgoingRoutingRelCarrierId' => self::getOutgoingRoutingRelCarrier() ? self::getOutgoingRoutingRelCarrier()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set tpid
      *
      * @param string $tpid
@@ -290,6 +300,7 @@ abstract class TpRatingProfileAbstract
     }
 
     /**
+     * @deprecated
      * Set loadid
      *
      * @param string $loadid
@@ -317,6 +328,7 @@ abstract class TpRatingProfileAbstract
     }
 
     /**
+     * @deprecated
      * Set direction
      *
      * @param string $direction
@@ -344,6 +356,7 @@ abstract class TpRatingProfileAbstract
     }
 
     /**
+     * @deprecated
      * Set tenant
      *
      * @param string $tenant
@@ -372,6 +385,7 @@ abstract class TpRatingProfileAbstract
     }
 
     /**
+     * @deprecated
      * Set category
      *
      * @param string $category
@@ -399,6 +413,7 @@ abstract class TpRatingProfileAbstract
     }
 
     /**
+     * @deprecated
      * Set subject
      *
      * @param string $subject
@@ -427,6 +442,7 @@ abstract class TpRatingProfileAbstract
     }
 
     /**
+     * @deprecated
      * Set activationTime
      *
      * @param \DateTime $activationTime
@@ -457,6 +473,7 @@ abstract class TpRatingProfileAbstract
     }
 
     /**
+     * @deprecated
      * Set ratingPlanTag
      *
      * @param string $ratingPlanTag
@@ -485,6 +502,7 @@ abstract class TpRatingProfileAbstract
     }
 
     /**
+     * @deprecated
      * Set fallbackSubjects
      *
      * @param string $fallbackSubjects
@@ -513,6 +531,7 @@ abstract class TpRatingProfileAbstract
     }
 
     /**
+     * @deprecated
      * Set cdrStatQueueIds
      *
      * @param string $cdrStatQueueIds
@@ -541,6 +560,7 @@ abstract class TpRatingProfileAbstract
     }
 
     /**
+     * @deprecated
      * Set createdAt
      *
      * @param \DateTime $createdAt
@@ -577,7 +597,7 @@ abstract class TpRatingProfileAbstract
      *
      * @return self
      */
-    public function setRatingProfile(\Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile)
+    public function setRatingProfile(\Ivoz\Provider\Domain\Model\RatingProfile\RatingProfileInterface $ratingProfile = null)
     {
         $this->ratingProfile = $ratingProfile;
 
@@ -594,8 +614,29 @@ abstract class TpRatingProfileAbstract
         return $this->ratingProfile;
     }
 
+    /**
+     * Set outgoingRoutingRelCarrier
+     *
+     * @param \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $outgoingRoutingRelCarrier
+     *
+     * @return self
+     */
+    public function setOutgoingRoutingRelCarrier(\Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $outgoingRoutingRelCarrier = null)
+    {
+        $this->outgoingRoutingRelCarrier = $outgoingRoutingRelCarrier;
 
+        return $this;
+    }
+
+    /**
+     * Get outgoingRoutingRelCarrier
+     *
+     * @return \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface
+     */
+    public function getOutgoingRoutingRelCarrier()
+    {
+        return $this->outgoingRoutingRelCarrier;
+    }
 
     // @codeCoverageIgnoreEnd
 }
-

@@ -9,7 +9,7 @@ use Ivoz\Core\Domain\Service\FileContainerInterface;
 /**
  * BrandUrl
  */
-class BrandUrl extends BrandUrlAbstract implements BrandUrlInterface, FileContainerInterface
+class BrandUrl extends BrandUrlAbstract implements FileContainerInterface, BrandUrlInterface
 {
     use BrandUrlTrait;
     use TempFileContainnerTrait;
@@ -52,4 +52,3 @@ class BrandUrl extends BrandUrlAbstract implements BrandUrlInterface, FileContai
         return parent::setUrl($url);
     }
 }
-

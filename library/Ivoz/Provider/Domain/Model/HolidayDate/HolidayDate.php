@@ -28,4 +28,3 @@ class HolidayDate extends HolidayDateAbstract implements HolidayDateInterface
         return $this->id;
     }
 }
-

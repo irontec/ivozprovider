@@ -51,14 +51,14 @@ abstract class BalanceNotificationAbstract
      */
     protected function __construct()
     {
-
     }
 
     abstract public function getId();
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "BalanceNotification",
             $this->getId()
         );
@@ -188,11 +188,10 @@ abstract class BalanceNotificationAbstract
             'notificationTemplateId' => self::getNotificationTemplate() ? self::getNotificationTemplate()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set toAddress
      *
      * @param string $toAddress
@@ -221,6 +220,7 @@ abstract class BalanceNotificationAbstract
     }
 
     /**
+     * @deprecated
      * Set threshold
      *
      * @param string $threshold
@@ -232,6 +232,7 @@ abstract class BalanceNotificationAbstract
         if (!is_null($threshold)) {
             if (!is_null($threshold)) {
                 Assertion::numeric($threshold);
+                $threshold = (float) $threshold;
             }
         }
 
@@ -251,6 +252,7 @@ abstract class BalanceNotificationAbstract
     }
 
     /**
+     * @deprecated
      * Set lastSent
      *
      * @param \DateTime $lastSent
@@ -260,10 +262,10 @@ abstract class BalanceNotificationAbstract
     public function setLastSent($lastSent = null)
     {
         if (!is_null($lastSent)) {
-        $lastSent = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
-            $lastSent,
-            null
-        );
+            $lastSent = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
+                $lastSent,
+                null
+            );
         }
 
         $this->lastSent = $lastSent;
@@ -353,8 +355,5 @@ abstract class BalanceNotificationAbstract
         return $this->notificationTemplate;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

@@ -160,7 +160,8 @@ abstract class UsersPuaAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "UsersPua",
             $this->getId()
         );
@@ -235,7 +236,8 @@ abstract class UsersPuaAbstract
             $dto->getContact(),
             $dto->getRemoteContact(),
             $dto->getVersion(),
-            $dto->getExtraHeaders());
+            $dto->getExtraHeaders()
+        );
 
         $self
             ->setTupleId($dto->getTupleId())
@@ -338,11 +340,10 @@ abstract class UsersPuaAbstract
             'extra_headers' => self::getExtraHeaders()
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set presUri
      *
      * @param string $presUri
@@ -370,6 +371,7 @@ abstract class UsersPuaAbstract
     }
 
     /**
+     * @deprecated
      * Set presId
      *
      * @param string $presId
@@ -397,6 +399,7 @@ abstract class UsersPuaAbstract
     }
 
     /**
+     * @deprecated
      * Set event
      *
      * @param integer $event
@@ -424,6 +427,7 @@ abstract class UsersPuaAbstract
     }
 
     /**
+     * @deprecated
      * Set expires
      *
      * @param integer $expires
@@ -451,6 +455,7 @@ abstract class UsersPuaAbstract
     }
 
     /**
+     * @deprecated
      * Set desiredExpires
      *
      * @param integer $desiredExpires
@@ -478,6 +483,7 @@ abstract class UsersPuaAbstract
     }
 
     /**
+     * @deprecated
      * Set flag
      *
      * @param integer $flag
@@ -505,6 +511,7 @@ abstract class UsersPuaAbstract
     }
 
     /**
+     * @deprecated
      * Set etag
      *
      * @param string $etag
@@ -532,6 +539,7 @@ abstract class UsersPuaAbstract
     }
 
     /**
+     * @deprecated
      * Set tupleId
      *
      * @param string $tupleId
@@ -560,6 +568,7 @@ abstract class UsersPuaAbstract
     }
 
     /**
+     * @deprecated
      * Set watcherUri
      *
      * @param string $watcherUri
@@ -587,6 +596,7 @@ abstract class UsersPuaAbstract
     }
 
     /**
+     * @deprecated
      * Set callId
      *
      * @param string $callId
@@ -614,6 +624,7 @@ abstract class UsersPuaAbstract
     }
 
     /**
+     * @deprecated
      * Set toTag
      *
      * @param string $toTag
@@ -641,6 +652,7 @@ abstract class UsersPuaAbstract
     }
 
     /**
+     * @deprecated
      * Set fromTag
      *
      * @param string $fromTag
@@ -668,6 +680,7 @@ abstract class UsersPuaAbstract
     }
 
     /**
+     * @deprecated
      * Set cseq
      *
      * @param integer $cseq
@@ -695,6 +708,7 @@ abstract class UsersPuaAbstract
     }
 
     /**
+     * @deprecated
      * Set recordRoute
      *
      * @param string $recordRoute
@@ -723,6 +737,7 @@ abstract class UsersPuaAbstract
     }
 
     /**
+     * @deprecated
      * Set contact
      *
      * @param string $contact
@@ -750,6 +765,7 @@ abstract class UsersPuaAbstract
     }
 
     /**
+     * @deprecated
      * Set remoteContact
      *
      * @param string $remoteContact
@@ -777,6 +793,7 @@ abstract class UsersPuaAbstract
     }
 
     /**
+     * @deprecated
      * Set version
      *
      * @param integer $version
@@ -804,6 +821,7 @@ abstract class UsersPuaAbstract
     }
 
     /**
+     * @deprecated
      * Set extraHeaders
      *
      * @param string $extraHeaders
@@ -830,8 +848,5 @@ abstract class UsersPuaAbstract
         return $this->extraHeaders;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

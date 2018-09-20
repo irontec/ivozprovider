@@ -29,4 +29,3 @@ class ConditionalRoutesConditionsRelRouteLock extends ConditionalRoutesCondition
         return $this->id;
     }
 }
-

@@ -13,6 +13,7 @@ interface CommandlogInterface extends EntityInterface
     public static function fromEvent(\Ivoz\Core\Application\Event\CommandEventInterface $event);
 
     /**
+     * @deprecated
      * Set requestId
      *
      * @param guid $requestId
@@ -29,6 +30,7 @@ interface CommandlogInterface extends EntityInterface
     public function getRequestId();
 
     /**
+     * @deprecated
      * Set class
      *
      * @param string $class
@@ -45,6 +47,7 @@ interface CommandlogInterface extends EntityInterface
     public function getClass();
 
     /**
+     * @deprecated
      * Set method
      *
      * @param string $method
@@ -61,6 +64,7 @@ interface CommandlogInterface extends EntityInterface
     public function getMethod();
 
     /**
+     * @deprecated
      * Set arguments
      *
      * @param array $arguments
@@ -77,6 +81,7 @@ interface CommandlogInterface extends EntityInterface
     public function getArguments();
 
     /**
+     * @deprecated
      * Set createdOn
      *
      * @param \DateTime $createdOn
@@ -93,6 +98,7 @@ interface CommandlogInterface extends EntityInterface
     public function getCreatedOn();
 
     /**
+     * @deprecated
      * Set microtime
      *
      * @param integer $microtime
@@ -107,6 +113,4 @@ interface CommandlogInterface extends EntityInterface
      * @return integer
      */
     public function getMicrotime();
-
 }
-

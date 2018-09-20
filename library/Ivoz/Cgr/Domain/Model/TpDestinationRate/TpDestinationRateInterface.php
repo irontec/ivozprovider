@@ -23,6 +23,7 @@ interface TpDestinationRateInterface extends EntityInterface
     public function setGroupIntervalStart($groupIntervalStart);
 
     /**
+     * @deprecated
      * Set tpid
      *
      * @param string $tpid
@@ -39,6 +40,7 @@ interface TpDestinationRateInterface extends EntityInterface
     public function getTpid();
 
     /**
+     * @deprecated
      * Set tag
      *
      * @param string $tag
@@ -55,6 +57,7 @@ interface TpDestinationRateInterface extends EntityInterface
     public function getTag();
 
     /**
+     * @deprecated
      * Set destinationsTag
      *
      * @param string $destinationsTag
@@ -71,6 +74,7 @@ interface TpDestinationRateInterface extends EntityInterface
     public function getDestinationsTag();
 
     /**
+     * @deprecated
      * Set ratesTag
      *
      * @param string $ratesTag
@@ -87,6 +91,7 @@ interface TpDestinationRateInterface extends EntityInterface
     public function getRatesTag();
 
     /**
+     * @deprecated
      * Set roundingMethod
      *
      * @param string $roundingMethod
@@ -103,6 +108,7 @@ interface TpDestinationRateInterface extends EntityInterface
     public function getRoundingMethod();
 
     /**
+     * @deprecated
      * Set roundingDecimals
      *
      * @param integer $roundingDecimals
@@ -119,6 +125,7 @@ interface TpDestinationRateInterface extends EntityInterface
     public function getRoundingDecimals();
 
     /**
+     * @deprecated
      * Set maxCost
      *
      * @param string $maxCost
@@ -135,6 +142,7 @@ interface TpDestinationRateInterface extends EntityInterface
     public function getMaxCost();
 
     /**
+     * @deprecated
      * Set maxCostStrategy
      *
      * @param string $maxCostStrategy
@@ -151,6 +159,7 @@ interface TpDestinationRateInterface extends EntityInterface
     public function getMaxCostStrategy();
 
     /**
+     * @deprecated
      * Set createdAt
      *
      * @param \DateTime $createdAt
@@ -181,6 +190,4 @@ interface TpDestinationRateInterface extends EntityInterface
      * @return \Ivoz\Provider\Domain\Model\DestinationRate\DestinationRateInterface
      */
     public function getDestinationRate();
-
 }
-

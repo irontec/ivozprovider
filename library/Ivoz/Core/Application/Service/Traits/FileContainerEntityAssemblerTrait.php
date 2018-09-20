@@ -32,7 +32,6 @@ trait FileContainerEntityAssemblerTrait
         DataTransferObjectInterface $dto
     ) {
         foreach ($entity->getFileObjects() as $fieldName) {
-
             $pathGetter = 'get'. ucFirst($fieldName) .'Path';
             $baseNameGetter = 'get'. ucFirst($fieldName) .'BaseName';
             $tmpFilePath = $dto->{$pathGetter}();

@@ -44,7 +44,8 @@ abstract class DomainAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "Domain",
             $this->getId()
         );
@@ -105,7 +106,8 @@ abstract class DomainAbstract
 
         $self = new static(
             $dto->getDomain(),
-            $dto->getPointsTo());
+            $dto->getPointsTo()
+        );
 
         $self
             ->setDescription($dto->getDescription())
@@ -162,11 +164,10 @@ abstract class DomainAbstract
             'description' => self::getDescription()
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set domain
      *
      * @param string $domain
@@ -194,6 +195,7 @@ abstract class DomainAbstract
     }
 
     /**
+     * @deprecated
      * Set pointsTo
      *
      * @param string $pointsTo
@@ -220,6 +222,7 @@ abstract class DomainAbstract
     }
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description
@@ -247,8 +250,5 @@ abstract class DomainAbstract
         return $this->description;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

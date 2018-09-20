@@ -53,13 +53,13 @@ class Queue extends QueueAbstract implements QueueInterface
 
     public function getAstQueueName()
     {
-        return sprintf("b%dc%dq%d_%s",
+        return sprintf(
+            "b%dc%dq%d_%s",
             $this->getCompany()->getBrand()->getId(),
             $this->getCompany()->getId(),
             $this->getId(),
             $this->getName()
         );
-
     }
 
     /**
@@ -128,4 +128,3 @@ class Queue extends QueueAbstract implements QueueInterface
         return parent::setMaxlen($maxlen);
     }
 }
-

@@ -45,7 +45,8 @@ abstract class CallAclAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "CallAcl",
             $this->getId()
         );
@@ -106,7 +107,8 @@ abstract class CallAclAbstract
 
         $self = new static(
             $dto->getName(),
-            $dto->getDefaultPolicy());
+            $dto->getDefaultPolicy()
+        );
 
         $self
             ->setCompany($dto->getCompany())
@@ -163,11 +165,10 @@ abstract class CallAclAbstract
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -195,6 +196,7 @@ abstract class CallAclAbstract
     }
 
     /**
+     * @deprecated
      * Set defaultPolicy
      *
      * @param string $defaultPolicy
@@ -249,8 +251,5 @@ abstract class CallAclAbstract
         return $this->company;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

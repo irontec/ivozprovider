@@ -22,5 +22,3 @@ class DdiDto extends DdiDtoAbstract
         return parent::getPropertyMap(...func_get_args());
     }
 }
-
-

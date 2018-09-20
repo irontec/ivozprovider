@@ -132,7 +132,8 @@ abstract class IvrAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "Ivr",
             $this->getId()
         );
@@ -195,7 +196,8 @@ abstract class IvrAbstract
             $dto->getName(),
             $dto->getTimeout(),
             $dto->getMaxDigits(),
-            $dto->getAllowExtensions());
+            $dto->getAllowExtensions()
+        );
 
         $self
             ->setNoInputRouteType($dto->getNoInputRouteType())
@@ -314,11 +316,10 @@ abstract class IvrAbstract
             'errorNumberCountryId' => self::getErrorNumberCountry() ? self::getErrorNumberCountry()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -346,6 +347,7 @@ abstract class IvrAbstract
     }
 
     /**
+     * @deprecated
      * Set timeout
      *
      * @param integer $timeout
@@ -374,6 +376,7 @@ abstract class IvrAbstract
     }
 
     /**
+     * @deprecated
      * Set maxDigits
      *
      * @param integer $maxDigits
@@ -402,6 +405,7 @@ abstract class IvrAbstract
     }
 
     /**
+     * @deprecated
      * Set allowExtensions
      *
      * @param boolean $allowExtensions
@@ -429,6 +433,7 @@ abstract class IvrAbstract
     }
 
     /**
+     * @deprecated
      * Set noInputRouteType
      *
      * @param string $noInputRouteType
@@ -439,11 +444,11 @@ abstract class IvrAbstract
     {
         if (!is_null($noInputRouteType)) {
             Assertion::maxLength($noInputRouteType, 25, 'noInputRouteType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        Assertion::choice($noInputRouteType, array (
-          0 => 'number',
-          1 => 'extension',
-          2 => 'voicemail',
-        ), 'noInputRouteTypevalue "%s" is not an element of the valid values: %s');
+            Assertion::choice($noInputRouteType, array (
+              0 => 'number',
+              1 => 'extension',
+              2 => 'voicemail',
+            ), 'noInputRouteTypevalue "%s" is not an element of the valid values: %s');
         }
 
         $this->noInputRouteType = $noInputRouteType;
@@ -462,6 +467,7 @@ abstract class IvrAbstract
     }
 
     /**
+     * @deprecated
      * Set noInputNumberValue
      *
      * @param string $noInputNumberValue
@@ -490,6 +496,7 @@ abstract class IvrAbstract
     }
 
     /**
+     * @deprecated
      * Set errorRouteType
      *
      * @param string $errorRouteType
@@ -500,11 +507,11 @@ abstract class IvrAbstract
     {
         if (!is_null($errorRouteType)) {
             Assertion::maxLength($errorRouteType, 25, 'errorRouteType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        Assertion::choice($errorRouteType, array (
-          0 => 'number',
-          1 => 'extension',
-          2 => 'voicemail',
-        ), 'errorRouteTypevalue "%s" is not an element of the valid values: %s');
+            Assertion::choice($errorRouteType, array (
+              0 => 'number',
+              1 => 'extension',
+              2 => 'voicemail',
+            ), 'errorRouteTypevalue "%s" is not an element of the valid values: %s');
         }
 
         $this->errorRouteType = $errorRouteType;
@@ -523,6 +530,7 @@ abstract class IvrAbstract
     }
 
     /**
+     * @deprecated
      * Set errorNumberValue
      *
      * @param string $errorNumberValue
@@ -814,8 +822,5 @@ abstract class IvrAbstract
         return $this->errorNumberCountry;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

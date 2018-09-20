@@ -78,7 +78,7 @@ final class RegisterCommandListener
     ) {
         if (array_key_exists('_api_collection_operation_name', $routeParams)) {
             $action = $routeParams['_api_collection_operation_name'];
-        } else if(array_key_exists('_api_item_operation_name', $routeParams)) {
+        } elseif (array_key_exists('_api_item_operation_name', $routeParams)) {
             $action = $routeParams['_api_item_operation_name'];
         } else {
             return;
@@ -100,5 +100,4 @@ final class RegisterCommandListener
 
         $this->eventPublisher->publish($event);
     }
-
 }

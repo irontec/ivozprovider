@@ -20,5 +20,3 @@ class HuntGroupDto extends HuntGroupDtoAbstract
         return parent::getPropertyMap(...func_get_args());
     }
 }
-
-

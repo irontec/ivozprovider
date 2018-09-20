@@ -22,5 +22,3 @@ class HuntGroupsRelUserDto extends HuntGroupsRelUserDtoAbstract
         return parent::getPropertyMap(...func_get_args());
     }
 }
-
-

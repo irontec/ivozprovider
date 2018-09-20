@@ -42,4 +42,3 @@ class TransformationRule extends TransformationRuleAbstract implements Transform
         return parent::setMatchExpr($matchExpr);
     }
 }
-

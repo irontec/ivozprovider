@@ -18,6 +18,7 @@ interface InvoiceTemplateInterface extends LoggableEntityInterface
     public function setTemplate($template);
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -34,6 +35,7 @@ interface InvoiceTemplateInterface extends LoggableEntityInterface
     public function getName();
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description
@@ -57,6 +59,7 @@ interface InvoiceTemplateInterface extends LoggableEntityInterface
     public function getTemplate();
 
     /**
+     * @deprecated
      * Set templateHeader
      *
      * @param string $templateHeader
@@ -73,6 +76,7 @@ interface InvoiceTemplateInterface extends LoggableEntityInterface
     public function getTemplateHeader();
 
     /**
+     * @deprecated
      * Set templateFooter
      *
      * @param string $templateFooter
@@ -103,6 +107,4 @@ interface InvoiceTemplateInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
      */
     public function getBrand();
-
 }
-

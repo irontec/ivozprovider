@@ -29,7 +29,11 @@ class Message
      */
     protected $toAddress;
 
-    public function __constructor(){}
+    protected $attachment;
+
+    public function __constructor()
+    {
+    }
 
     /**
      * @return \Swift_Message
@@ -42,6 +46,10 @@ class Message
             ->setSubject($this->getSubject())
             ->setFrom($this->getFromAddress(), $this->getFromName())
             ->setTo($this->getToAddress());
+
+        if ($this->attachment) {
+            $message->attach($this->attachment);
+        }
 
         return $message;
     }
@@ -134,5 +142,13 @@ class Message
     {
         $this->toAddress = $toAddress;
         return $this;
+    }
+
+    public function setAttachment($file, $filename, $mimetype)
+    {
+        $this->attachment = \Swift_Attachment::fromPath($file, $mimetype);
+        $this->attachment->setFilename(
+            $filename
+        );
     }
 }

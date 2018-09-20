@@ -21,13 +21,14 @@ class TraitGenerator extends EntityGenerator
      * @var string
      */
     protected static $constructorMethodTemplate =
-'
+        '
 /**
  * Constructor
  */
 protected function __construct(<requiredFields>)<lineBreak>{
 <spaces>parent::__construct(...func_get_args());
-<requiredFieldsSetters><collections>
+<requiredFieldsSetters>
+<collections>
 }
 
 /**
@@ -80,9 +81,7 @@ public function toDto($depth = 0)
 protected function __toArray()
 {
     return parent::__toArray() + [<toArray>];
-}
-
-';
+}';
 
     /**
      * @var string
@@ -237,7 +236,7 @@ public function <methodName>(<criteriaArgument>)
             $this->generateEntityBody($metadata)
         );
 
-        $code = str_replace($placeHolders, $replacements, static::$classTemplate) . "\n";
+        $code = str_replace($placeHolders, $replacements, static::$classTemplate);
         $code = str_replace('\\Doctrine\\Common\\Collections\\Collection', 'Collection', $code);
         $code = str_replace('\\Doctrine\\Common\\Collections\\ArrayCollection', 'ArrayCollection', $code);
 
@@ -446,9 +445,10 @@ public function <methodName>(<criteriaArgument>)
 
             $requiredFields = implode(', ', $constructorArguments);
             $requiredFieldSetters =
-                $this->spaces
+                "\n"
+                . $this->spaces
                 . '$this->'
-                . implode("\n". $this->spaces .'$this->', $requiredSetters);
+                . implode("\n" . $this->spaces . '$this->', $requiredSetters);
 
             if (!empty($requiredGetters)) {
 
@@ -474,9 +474,9 @@ public function <methodName>(<criteriaArgument>)
                         . '$'
                         . $key;
                 }
-
-                $requiredFieldGetters .= "\n" . $this->spaces;
             }
+
+            $requiredFieldGetters .= "\n" . $this->spaces . $this->spaces;
 
             if (strlen($requiredFields) > 40) {
                 $requiredFields = "\n". $this->spaces . str_replace(', ', ",\n". $this->spaces, $requiredFields) . "\n";
@@ -528,8 +528,13 @@ public function <methodName>(<criteriaArgument>)
             }
         }
 
+        if (!empty($requiredFieldSetters)) {
+            $response = str_replace('<requiredFieldsSetters>', $requiredFieldSetters, $response);
+        } else {
+            $response = str_replace("<requiredFieldsSetters>\n",'', $response);
+        }
+
         $response = str_replace('<requiredFields>', $requiredFields, $response);
-        $response = str_replace('<requiredFieldsSetters>', $requiredFieldSetters, $response);
         $response = str_replace('<requiredFieldsGetters>', $requiredFieldGetters, $response);
 
         $namespaceSegments = explode('\\', $metadata->namespace);
@@ -559,7 +564,7 @@ public function <methodName>(<criteriaArgument>)
         } else {
 
             $response =  str_replace(
-                "<collections>",
+                "<collections>\n",
                 '',
                 $response
             );
@@ -796,7 +801,9 @@ public function <methodName>(<criteriaArgument>)
         }
 
         $parentMethodsStr = $this->_generateEntityStubMethods($metadata);
-        $parentMethods = explode("\n\n", $parentMethodsStr);
+        $parentMethods = !empty($parentMethods)
+            ? explode("\n\n", $parentMethodsStr)
+            : array();
 
         $metadata->embeddedClasses = $embeddedClasses;
         $methods = array();
@@ -842,12 +849,14 @@ public function <methodName>(<criteriaArgument>)
 
         $response = array_merge($methods, $parentMethods);
 
+        $stubMethods = implode("\n\n", $response);
+
         if ($this->codeCoverageIgnoreBlock) {
-            array_unshift($response, $this->spaces . "// @codeCoverageIgnoreStart");
-            $response[] = $this->spaces . "// @codeCoverageIgnoreEnd";
+            $stubMethods = $this->spaces . "// @codeCoverageIgnoreStart\n" . $stubMethods;
+            $stubMethods .= $this->spaces . "// @codeCoverageIgnoreEnd";
         }
 
-        return implode("\n\n", $response);
+        return $stubMethods;
     }
 
     /**
@@ -946,12 +955,14 @@ public function <methodName>(<criteriaArgument>)
 
         $response = array_merge($methods, $parentMethods);
 
+        $stubMethods = implode("\n\n", $response);
+
         if ($this->codeCoverageIgnoreBlock) {
-            array_unshift($response, $this->spaces . "// @codeCoverageIgnoreStart");
-            $response[] = $this->spaces . "// @codeCoverageIgnoreEnd";
+            $stubMethods = $this->spaces . "// @codeCoverageIgnoreStart\n" . $stubMethods;
+            $stubMethods .= $this->spaces . "// @codeCoverageIgnoreEnd";
         }
 
-        return implode("\n\n", $response);
+        return $stubMethods;
     }
 
 

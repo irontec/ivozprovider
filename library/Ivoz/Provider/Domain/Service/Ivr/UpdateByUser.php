@@ -51,7 +51,6 @@ class UpdateByUser implements UserLifecycleEventHandlerInterface
         /** @var Ivr[] $ivrs */
         $ivrs = $this->ivrRepository->findByUser($user);
         foreach ($ivrs as $ivr) {
-
             $noInputUser = $ivr->getNoInputVoiceMailUser();
             $errorUser = $ivr->getErrorVoiceMailUser();
 

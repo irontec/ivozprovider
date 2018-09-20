@@ -36,6 +36,7 @@ class Zone
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set en
      *
      * @param string $en
@@ -63,6 +64,7 @@ class Zone
     }
 
     /**
+     * @deprecated
      * Set es
      *
      * @param string $es
@@ -89,8 +91,5 @@ class Zone
         return $this->es;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

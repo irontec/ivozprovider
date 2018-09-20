@@ -72,5 +72,4 @@ class DtoAssembler
             ->serviceContainer
             ->get($serviceClassName);
     }
-
 }

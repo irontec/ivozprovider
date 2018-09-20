@@ -125,7 +125,6 @@ abstract class BrandUrlDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -354,5 +353,3 @@ abstract class BrandUrlDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 }
-
-

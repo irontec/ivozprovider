@@ -3,11 +3,12 @@
 namespace Ivoz\Provider\Domain\Model\InvoiceScheduler;
 
 use Ivoz\Core\Domain\Assert\Assertion;
+use Ivoz\Core\Domain\Model\SchedulerInterface;
 
 /**
  * InvoiceScheduler
  */
-class InvoiceScheduler extends InvoiceSchedulerAbstract implements InvoiceSchedulerInterface
+class InvoiceScheduler extends InvoiceSchedulerAbstract implements SchedulerInterface, InvoiceSchedulerInterface
 {
     use InvoiceSchedulerTrait;
 
@@ -68,4 +69,3 @@ class InvoiceScheduler extends InvoiceSchedulerAbstract implements InvoiceSchedu
         }
     }
 }
-

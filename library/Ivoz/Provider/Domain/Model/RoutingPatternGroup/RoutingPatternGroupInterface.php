@@ -14,11 +14,13 @@ interface RoutingPatternGroupInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @param Criteria|null $criteria
      * @return \Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPatternInterface[]
      */
-    public function getRoutingPatterns();
+    public function getRoutingPatterns(\Doctrine\Common\Collections\Criteria $criteria = null);
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -35,6 +37,7 @@ interface RoutingPatternGroupInterface extends LoggableEntityInterface
     public function getName();
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description
@@ -127,6 +130,4 @@ interface RoutingPatternGroupInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface[]
      */
     public function getOutgoingRoutings(\Doctrine\Common\Collections\Criteria $criteria = null);
-
 }
-

@@ -13,6 +13,7 @@ interface BillableCallInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @deprecated
      * Set callid
      *
      * @param string $callid
@@ -29,6 +30,7 @@ interface BillableCallInterface extends LoggableEntityInterface
     public function getCallid();
 
     /**
+     * @deprecated
      * Set startTime
      *
      * @param \DateTime $startTime
@@ -45,6 +47,7 @@ interface BillableCallInterface extends LoggableEntityInterface
     public function getStartTime();
 
     /**
+     * @deprecated
      * Set duration
      *
      * @param float $duration
@@ -61,6 +64,7 @@ interface BillableCallInterface extends LoggableEntityInterface
     public function getDuration();
 
     /**
+     * @deprecated
      * Set caller
      *
      * @param string $caller
@@ -77,6 +81,7 @@ interface BillableCallInterface extends LoggableEntityInterface
     public function getCaller();
 
     /**
+     * @deprecated
      * Set callee
      *
      * @param string $callee
@@ -93,6 +98,7 @@ interface BillableCallInterface extends LoggableEntityInterface
     public function getCallee();
 
     /**
+     * @deprecated
      * Set cost
      *
      * @param string $cost
@@ -109,6 +115,7 @@ interface BillableCallInterface extends LoggableEntityInterface
     public function getCost();
 
     /**
+     * @deprecated
      * Set price
      *
      * @param string $price
@@ -125,6 +132,7 @@ interface BillableCallInterface extends LoggableEntityInterface
     public function getPrice();
 
     /**
+     * @deprecated
      * Set priceDetails
      *
      * @param array $priceDetails
@@ -141,6 +149,7 @@ interface BillableCallInterface extends LoggableEntityInterface
     public function getPriceDetails();
 
     /**
+     * @deprecated
      * Set carrierName
      *
      * @param string $carrierName
@@ -157,6 +166,7 @@ interface BillableCallInterface extends LoggableEntityInterface
     public function getCarrierName();
 
     /**
+     * @deprecated
      * Set destinationName
      *
      * @param string $destinationName
@@ -173,6 +183,7 @@ interface BillableCallInterface extends LoggableEntityInterface
     public function getDestinationName();
 
     /**
+     * @deprecated
      * Set ratingPlanName
      *
      * @param string $ratingPlanName
@@ -253,20 +264,20 @@ interface BillableCallInterface extends LoggableEntityInterface
     public function getDestination();
 
     /**
-     * Set ratingPlan
+     * Set ratingPlanGroup
      *
-     * @param \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan
+     * @param \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface $ratingPlanGroup
      *
      * @return self
      */
-    public function setRatingPlan(\Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan = null);
+    public function setRatingPlanGroup(\Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface $ratingPlanGroup = null);
 
     /**
-     * Get ratingPlan
+     * Get ratingPlanGroup
      *
-     * @return \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface
+     * @return \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupInterface
      */
-    public function getRatingPlan();
+    public function getRatingPlanGroup();
 
     /**
      * Set invoice
@@ -299,6 +310,4 @@ interface BillableCallInterface extends LoggableEntityInterface
      * @return \Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface
      */
     public function getTrunksCdr();
-
 }
-

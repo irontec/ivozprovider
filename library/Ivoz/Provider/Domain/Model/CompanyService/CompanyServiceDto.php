@@ -19,5 +19,3 @@ class CompanyServiceDto extends CompanyServiceDtoAbstract
         return parent::getPropertyMap(...func_get_args());
     }
 }
-
-

@@ -222,7 +222,6 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
                 );
             }
         }
-
         if (!is_null($this->ddis)) {
             $items = $this->getDdis();
             $this->ddis = [];
@@ -233,7 +232,6 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
                 );
             }
         }
-
     }
 
     /**
@@ -867,5 +865,3 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         return $this->ddis;
     }
 }
-
-

@@ -67,7 +67,8 @@ abstract class RtpengineAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "Rtpengine",
             $this->getId()
         );
@@ -131,7 +132,8 @@ abstract class RtpengineAbstract
             $dto->getUrl(),
             $dto->getWeight(),
             $dto->getDisabled(),
-            $dto->getStamp());
+            $dto->getStamp()
+        );
 
         $self
             ->setDescription($dto->getDescription())
@@ -201,11 +203,10 @@ abstract class RtpengineAbstract
             'mediaRelaySetId' => self::getMediaRelaySet() ? self::getMediaRelaySet()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set setid
      *
      * @param integer $setid
@@ -233,6 +234,7 @@ abstract class RtpengineAbstract
     }
 
     /**
+     * @deprecated
      * Set url
      *
      * @param string $url
@@ -260,6 +262,7 @@ abstract class RtpengineAbstract
     }
 
     /**
+     * @deprecated
      * Set weight
      *
      * @param integer $weight
@@ -288,6 +291,7 @@ abstract class RtpengineAbstract
     }
 
     /**
+     * @deprecated
      * Set disabled
      *
      * @param boolean $disabled
@@ -315,6 +319,7 @@ abstract class RtpengineAbstract
     }
 
     /**
+     * @deprecated
      * Set stamp
      *
      * @param \DateTime $stamp
@@ -345,6 +350,7 @@ abstract class RtpengineAbstract
     }
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description
@@ -396,8 +402,5 @@ abstract class RtpengineAbstract
         return $this->mediaRelaySet;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

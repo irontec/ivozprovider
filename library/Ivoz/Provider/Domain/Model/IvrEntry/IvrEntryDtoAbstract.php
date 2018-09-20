@@ -130,7 +130,6 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -489,5 +488,3 @@ abstract class IvrEntryDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 }
-
-

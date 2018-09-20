@@ -85,7 +85,8 @@ abstract class ScheduleAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "Schedule",
             $this->getId()
         );
@@ -147,7 +148,8 @@ abstract class ScheduleAbstract
         $self = new static(
             $dto->getName(),
             $dto->getTimeIn(),
-            $dto->getTimeout());
+            $dto->getTimeout()
+        );
 
         $self
             ->setMonday($dto->getMonday())
@@ -235,11 +237,10 @@ abstract class ScheduleAbstract
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -267,6 +268,7 @@ abstract class ScheduleAbstract
     }
 
     /**
+     * @deprecated
      * Set timeIn
      *
      * @param \DateTime $timeIn
@@ -293,6 +295,7 @@ abstract class ScheduleAbstract
     }
 
     /**
+     * @deprecated
      * Set timeout
      *
      * @param \DateTime $timeout
@@ -319,6 +322,7 @@ abstract class ScheduleAbstract
     }
 
     /**
+     * @deprecated
      * Set monday
      *
      * @param boolean $monday
@@ -347,6 +351,7 @@ abstract class ScheduleAbstract
     }
 
     /**
+     * @deprecated
      * Set tuesday
      *
      * @param boolean $tuesday
@@ -375,6 +380,7 @@ abstract class ScheduleAbstract
     }
 
     /**
+     * @deprecated
      * Set wednesday
      *
      * @param boolean $wednesday
@@ -403,6 +409,7 @@ abstract class ScheduleAbstract
     }
 
     /**
+     * @deprecated
      * Set thursday
      *
      * @param boolean $thursday
@@ -431,6 +438,7 @@ abstract class ScheduleAbstract
     }
 
     /**
+     * @deprecated
      * Set friday
      *
      * @param boolean $friday
@@ -459,6 +467,7 @@ abstract class ScheduleAbstract
     }
 
     /**
+     * @deprecated
      * Set saturday
      *
      * @param boolean $saturday
@@ -487,6 +496,7 @@ abstract class ScheduleAbstract
     }
 
     /**
+     * @deprecated
      * Set sunday
      *
      * @param boolean $sunday
@@ -538,8 +548,5 @@ abstract class ScheduleAbstract
         return $this->company;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

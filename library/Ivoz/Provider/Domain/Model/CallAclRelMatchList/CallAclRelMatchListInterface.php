@@ -13,6 +13,7 @@ interface CallAclRelMatchListInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @deprecated
      * Set priority
      *
      * @param integer $priority
@@ -29,6 +30,7 @@ interface CallAclRelMatchListInterface extends LoggableEntityInterface
     public function getPriority();
 
     /**
+     * @deprecated
      * Set policy
      *
      * @param string $policy
@@ -75,6 +77,4 @@ interface CallAclRelMatchListInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\MatchList\MatchListInterface
      */
     public function getMatchList();
-
 }
-

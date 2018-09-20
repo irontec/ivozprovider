@@ -10,11 +10,12 @@ use Ivoz\Core\Domain\Service\TempFile;
 /**
  * DestinationRateGroup
  */
-class DestinationRateGroup extends DestinationRateGroupAbstract implements DestinationRateGroupInterface, FileContainerInterface
+class DestinationRateGroup extends DestinationRateGroupAbstract implements FileContainerInterface, DestinationRateGroupInterface
 {
     use DestinationRateGroupTrait;
 
-    use TempFileContainnerTrait { addTmpFile as protected _addTmpFile; }
+    use TempFileContainnerTrait { addTmpFile as protected _addTmpFile;
+    }
 
     /**
      * @codeCoverageIgnore
@@ -71,4 +72,3 @@ class DestinationRateGroup extends DestinationRateGroupAbstract implements Desti
         );
     }
 }
-

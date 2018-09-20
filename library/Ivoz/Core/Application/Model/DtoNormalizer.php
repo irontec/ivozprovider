@@ -49,19 +49,17 @@ trait DtoNormalizer
 
         $methods = [];
         foreach ($contextProperties as $key => $value) {
-
             if (is_array($value)) {
-
                 foreach ($value as $property) {
                     $setter = 'set' . ucfirst($key) . ucfirst($property);
                     $dataPath = [
                         $key,
                         $property
                     ];
-                    $methods[$setter] =  $dataPath;
+                    $methods[$setter] = $dataPath;
                 }
-            } else if (array_key_exists($value, $data)) {
-                $methods['set' . ucfirst($key)] =  [$value];
+            } elseif (array_key_exists($value, $data)) {
+                $methods['set' . ucfirst($key)] = [$value];
             }
         }
 
@@ -80,7 +78,6 @@ trait DtoNormalizer
     {
         $response = $data;
         foreach ($dataPath as $key) {
-
             if (!isset($response[$key])) {
                 $response = null;
                 continue;

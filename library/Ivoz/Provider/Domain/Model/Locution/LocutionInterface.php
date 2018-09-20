@@ -2,9 +2,10 @@
 
 namespace Ivoz\Provider\Domain\Model\Locution;
 
+use Ivoz\Core\Domain\Service\FileContainerInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 
-interface LocutionInterface extends LoggableEntityInterface
+interface LocutionInterface extends FileContainerInterface, LoggableEntityInterface
 {
     /**
      * @codeCoverageIgnore
@@ -26,6 +27,7 @@ interface LocutionInterface extends LoggableEntityInterface
     public function addTmpFile($fldName, \Ivoz\Core\Domain\Service\TempFile $file);
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -42,6 +44,7 @@ interface LocutionInterface extends LoggableEntityInterface
     public function getName();
 
     /**
+     * @deprecated
      * Set status
      *
      * @param string $status
@@ -121,6 +124,4 @@ interface LocutionInterface extends LoggableEntityInterface
      * @return null | TempFile
      */
     public function getTempFileByFieldName($fldName);
-
 }
-

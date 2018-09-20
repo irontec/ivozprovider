@@ -20,4 +20,3 @@ interface CallForwardSettingRepository extends ObjectRepository, Selectable
      */
     public function findAndJoinByUser(UserInterface $user) :array;
 }
-

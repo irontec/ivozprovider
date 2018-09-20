@@ -127,9 +127,12 @@ class KlearCustomRunCodeController extends Zend_Controller_Action
                 $message = implode("<br>", $output);
             }
             else{
-                $message = _('This template is going to be tested<br /><textarea name="currentCode" rows="8" cols="80" readonly></textarea>' . $inputMac . $error);
+                $message = $this->_helper->translate('This template is going to be tested')
+                            . '<br /><textarea name="currentCode" rows="8" cols="80" readonly></textarea>'
+                            . $inputMac
+                            . $error;
                 $buttons = array(
-                        _('Exec') => array(
+                        $this->_helper->translate('Exec') => array(
                                 'reloadParent' => false,
                                 'recall' => true,
                                 'params' => array('exec'=>true)
@@ -137,7 +140,7 @@ class KlearCustomRunCodeController extends Zend_Controller_Action
                 );
             }
         } else {
-            $message = _('The terminal model must be saved before you can test the code');
+            $message = $this->_helper->translate('The terminal model must be saved before you can test the code');
         }
 
         $this->_dispatch( $message, $buttons);
@@ -177,12 +180,12 @@ class KlearCustomRunCodeController extends Zend_Controller_Action
     }
 
     protected function _dispatch( $message, $buttons = array()){
-        $buttons[_('Close')] = array(
+        $buttons[$this->_helper->translate('Close')] = array(
             'reloadParent' => false,
             'recall' => false,
         );
         $data = array(
-            'title' => _("Test the code"),
+            'title' => $this->_helper->translate("Test the code"),
             'message' => $message,
             'buttons'=>$buttons
         );

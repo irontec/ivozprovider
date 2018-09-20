@@ -39,7 +39,8 @@ abstract class LanguageAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "Language",
             $this->getId()
         );
@@ -108,8 +109,6 @@ abstract class LanguageAbstract
             $name
         );
 
-        $self;
-
         $self->sanitizeValues();
         $self->initChangelog();
 
@@ -165,11 +164,10 @@ abstract class LanguageAbstract
             'nameEs' => self::getName()->getEs()
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set iden
      *
      * @param string $iden
@@ -206,7 +204,6 @@ abstract class LanguageAbstract
     public function setName(Name $name)
     {
         $this->name = $name;
-
         return $this;
     }
 
@@ -219,7 +216,5 @@ abstract class LanguageAbstract
     {
         return $this->name;
     }
-
     // @codeCoverageIgnoreEnd
 }
-

@@ -1,6 +1,7 @@
 Ivoz\Provider\Domain\Model\CarrierServer\CarrierServer:
   repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\CarrierServerDoctrineRepository
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: CarrierServers
   id:
     id:

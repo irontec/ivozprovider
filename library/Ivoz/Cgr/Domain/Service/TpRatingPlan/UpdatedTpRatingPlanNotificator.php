@@ -3,26 +3,17 @@
 namespace Ivoz\Cgr\Domain\Service\TpRatingPlan;
 
 use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanInterface;
-use Ivoz\Core\Infrastructure\Domain\Service\Redis\Client as RedisClient;
+use Ivoz\Cgr\Domain\Service\CgratesReloadNotificator;
 
-class UpdatedTpRatingPlanNotificator implements TpRatingPlanLifecycleEventHandlerInterface
+class UpdatedTpRatingPlanNotificator extends CgratesReloadNotificator implements TpRatingPlanLifecycleEventHandlerInterface
 {
-    private $client;
-
-    public function __construct(RedisClient $client)
+    /**
+     * Reload CGRates Configuration
+     *
+     * @param TpRatingPlanInterface $tpRatingPlan
+     */
+    public function execute(TpRatingPlanInterface $tpRatingPlan)
     {
-        $this->client = $client;
-    }
-
-    public static function getSubscribedEvents()
-    {
-        return [
-            self::EVENT_ON_COMMIT => 10
-        ];
-    }
-
-    public function execute(TpRatingPlanInterface $entity)
-    {
-        $this->client->scheduleFullReload();
+        $this->reload($tpRatingPlan->getTpid());
     }
 }

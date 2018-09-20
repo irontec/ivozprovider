@@ -58,6 +58,11 @@ abstract class TrunksLcrRuleAbstract
     protected $routingPattern;
 
     /**
+     * @var \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface
+     */
+    protected $routingPatternGroupsRelPattern;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface
      */
     protected $outgoingRouting;
@@ -79,7 +84,8 @@ abstract class TrunksLcrRuleAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "TrunksLcrRule",
             $this->getId()
         );
@@ -141,7 +147,8 @@ abstract class TrunksLcrRuleAbstract
         $self = new static(
             $dto->getLcrId(),
             $dto->getStopper(),
-            $dto->getEnabled());
+            $dto->getEnabled()
+        );
 
         $self
             ->setPrefix($dto->getPrefix())
@@ -149,6 +156,7 @@ abstract class TrunksLcrRuleAbstract
             ->setRequestUri($dto->getRequestUri())
             ->setMtTvalue($dto->getMtTvalue())
             ->setRoutingPattern($dto->getRoutingPattern())
+            ->setRoutingPatternGroupsRelPattern($dto->getRoutingPatternGroupsRelPattern())
             ->setOutgoingRouting($dto->getOutgoingRouting())
         ;
 
@@ -178,6 +186,7 @@ abstract class TrunksLcrRuleAbstract
             ->setStopper($dto->getStopper())
             ->setEnabled($dto->getEnabled())
             ->setRoutingPattern($dto->getRoutingPattern())
+            ->setRoutingPatternGroupsRelPattern($dto->getRoutingPatternGroupsRelPattern())
             ->setOutgoingRouting($dto->getOutgoingRouting());
 
 
@@ -201,6 +210,7 @@ abstract class TrunksLcrRuleAbstract
             ->setStopper(self::getStopper())
             ->setEnabled(self::getEnabled())
             ->setRoutingPattern(\Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPattern::entityToDto(self::getRoutingPattern(), $depth))
+            ->setRoutingPatternGroupsRelPattern(\Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPattern::entityToDto(self::getRoutingPatternGroupsRelPattern(), $depth))
             ->setOutgoingRouting(\Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRouting::entityToDto(self::getOutgoingRouting(), $depth));
     }
 
@@ -218,14 +228,14 @@ abstract class TrunksLcrRuleAbstract
             'stopper' => self::getStopper(),
             'enabled' => self::getEnabled(),
             'routingPatternId' => self::getRoutingPattern() ? self::getRoutingPattern()->getId() : null,
+            'routingPatternGroupsRelPatternId' => self::getRoutingPatternGroupsRelPattern() ? self::getRoutingPatternGroupsRelPattern()->getId() : null,
             'outgoingRoutingId' => self::getOutgoingRouting() ? self::getOutgoingRouting()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set lcrId
      *
      * @param integer $lcrId
@@ -254,6 +264,7 @@ abstract class TrunksLcrRuleAbstract
     }
 
     /**
+     * @deprecated
      * Set prefix
      *
      * @param string $prefix
@@ -282,6 +293,7 @@ abstract class TrunksLcrRuleAbstract
     }
 
     /**
+     * @deprecated
      * Set fromUri
      *
      * @param string $fromUri
@@ -310,6 +322,7 @@ abstract class TrunksLcrRuleAbstract
     }
 
     /**
+     * @deprecated
      * Set requestUri
      *
      * @param string $requestUri
@@ -338,6 +351,7 @@ abstract class TrunksLcrRuleAbstract
     }
 
     /**
+     * @deprecated
      * Set mtTvalue
      *
      * @param string $mtTvalue
@@ -366,6 +380,7 @@ abstract class TrunksLcrRuleAbstract
     }
 
     /**
+     * @deprecated
      * Set stopper
      *
      * @param integer $stopper
@@ -394,6 +409,7 @@ abstract class TrunksLcrRuleAbstract
     }
 
     /**
+     * @deprecated
      * Set enabled
      *
      * @param integer $enabled
@@ -446,6 +462,30 @@ abstract class TrunksLcrRuleAbstract
     }
 
     /**
+     * Set routingPatternGroupsRelPattern
+     *
+     * @param \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface $routingPatternGroupsRelPattern
+     *
+     * @return self
+     */
+    public function setRoutingPatternGroupsRelPattern(\Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface $routingPatternGroupsRelPattern = null)
+    {
+        $this->routingPatternGroupsRelPattern = $routingPatternGroupsRelPattern;
+
+        return $this;
+    }
+
+    /**
+     * Get routingPatternGroupsRelPattern
+     *
+     * @return \Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPatternInterface
+     */
+    public function getRoutingPatternGroupsRelPattern()
+    {
+        return $this->routingPatternGroupsRelPattern;
+    }
+
+    /**
      * Set outgoingRouting
      *
      * @param \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface $outgoingRouting
@@ -469,8 +509,5 @@ abstract class TrunksLcrRuleAbstract
         return $this->outgoingRouting;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

@@ -20,4 +20,3 @@ class DestinationRateDoctrineRepository extends ServiceEntityRepository implemen
         parent::__construct($registry, DestinationRate::class);
     }
 }
-

@@ -123,6 +123,24 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
     }
 
     /**
+     * @param array $ids
+     * @return mixed
+     */
+    public function resetPrices(array $ids)
+    {
+        $qb = $this
+            ->createQueryBuilder('self')
+            ->update($this->_entityName, 'self')
+            ->set('self.price', ':nullValue')
+            ->set('self.cost', ':nullValue')
+            ->setParameter(':nullValue', null)
+            ->where('self.id in (:ids)')
+            ->setParameter(':ids', $ids);
+
+        return $qb->getQuery()->execute();
+    }
+
+    /**
      * @param int $invoiceId
      * @return mixed
      */
@@ -213,5 +231,4 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
 
         return (int) $qb->getQuery()->getSingleScalarResult();
     }
-
 }

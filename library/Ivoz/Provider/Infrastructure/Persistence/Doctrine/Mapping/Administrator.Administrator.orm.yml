@@ -1,6 +1,7 @@
 Ivoz\Provider\Domain\Model\Administrator\Administrator:
   repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\AdministratorDoctrineRepository
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: Administrators
   id:
     id:

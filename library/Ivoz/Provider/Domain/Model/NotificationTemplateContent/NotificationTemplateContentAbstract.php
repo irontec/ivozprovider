@@ -59,7 +59,8 @@ abstract class NotificationTemplateContentAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "NotificationTemplateContent",
             $this->getId()
         );
@@ -120,7 +121,8 @@ abstract class NotificationTemplateContentAbstract
 
         $self = new static(
             $dto->getSubject(),
-            $dto->getBody());
+            $dto->getBody()
+        );
 
         $self
             ->setFromName($dto->getFromName())
@@ -189,11 +191,10 @@ abstract class NotificationTemplateContentAbstract
             'languageId' => self::getLanguage() ? self::getLanguage()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set fromName
      *
      * @param string $fromName
@@ -222,6 +223,7 @@ abstract class NotificationTemplateContentAbstract
     }
 
     /**
+     * @deprecated
      * Set fromAddress
      *
      * @param string $fromAddress
@@ -250,6 +252,7 @@ abstract class NotificationTemplateContentAbstract
     }
 
     /**
+     * @deprecated
      * Set subject
      *
      * @param string $subject
@@ -277,6 +280,7 @@ abstract class NotificationTemplateContentAbstract
     }
 
     /**
+     * @deprecated
      * Set body
      *
      * @param string $body
@@ -351,8 +355,5 @@ abstract class NotificationTemplateContentAbstract
         return $this->language;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

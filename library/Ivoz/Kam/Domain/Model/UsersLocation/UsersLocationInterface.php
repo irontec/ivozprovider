@@ -13,6 +13,7 @@ interface UsersLocationInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @deprecated
      * Set ruid
      *
      * @param string $ruid
@@ -29,6 +30,7 @@ interface UsersLocationInterface extends LoggableEntityInterface
     public function getRuid();
 
     /**
+     * @deprecated
      * Set username
      *
      * @param string $username
@@ -45,6 +47,7 @@ interface UsersLocationInterface extends LoggableEntityInterface
     public function getUsername();
 
     /**
+     * @deprecated
      * Set domain
      *
      * @param string $domain
@@ -61,6 +64,7 @@ interface UsersLocationInterface extends LoggableEntityInterface
     public function getDomain();
 
     /**
+     * @deprecated
      * Set contact
      *
      * @param string $contact
@@ -77,6 +81,7 @@ interface UsersLocationInterface extends LoggableEntityInterface
     public function getContact();
 
     /**
+     * @deprecated
      * Set received
      *
      * @param string $received
@@ -93,6 +98,7 @@ interface UsersLocationInterface extends LoggableEntityInterface
     public function getReceived();
 
     /**
+     * @deprecated
      * Set path
      *
      * @param string $path
@@ -109,6 +115,7 @@ interface UsersLocationInterface extends LoggableEntityInterface
     public function getPath();
 
     /**
+     * @deprecated
      * Set expires
      *
      * @param \DateTime $expires
@@ -125,6 +132,7 @@ interface UsersLocationInterface extends LoggableEntityInterface
     public function getExpires();
 
     /**
+     * @deprecated
      * Set q
      *
      * @param float $q
@@ -141,6 +149,7 @@ interface UsersLocationInterface extends LoggableEntityInterface
     public function getQ();
 
     /**
+     * @deprecated
      * Set callid
      *
      * @param string $callid
@@ -157,6 +166,7 @@ interface UsersLocationInterface extends LoggableEntityInterface
     public function getCallid();
 
     /**
+     * @deprecated
      * Set cseq
      *
      * @param integer $cseq
@@ -173,6 +183,7 @@ interface UsersLocationInterface extends LoggableEntityInterface
     public function getCseq();
 
     /**
+     * @deprecated
      * Set lastModified
      *
      * @param \DateTime $lastModified
@@ -189,6 +200,7 @@ interface UsersLocationInterface extends LoggableEntityInterface
     public function getLastModified();
 
     /**
+     * @deprecated
      * Set flags
      *
      * @param integer $flags
@@ -205,6 +217,7 @@ interface UsersLocationInterface extends LoggableEntityInterface
     public function getFlags();
 
     /**
+     * @deprecated
      * Set cflags
      *
      * @param integer $cflags
@@ -221,6 +234,7 @@ interface UsersLocationInterface extends LoggableEntityInterface
     public function getCflags();
 
     /**
+     * @deprecated
      * Set userAgent
      *
      * @param string $userAgent
@@ -237,6 +251,7 @@ interface UsersLocationInterface extends LoggableEntityInterface
     public function getUserAgent();
 
     /**
+     * @deprecated
      * Set socket
      *
      * @param string $socket
@@ -253,6 +268,7 @@ interface UsersLocationInterface extends LoggableEntityInterface
     public function getSocket();
 
     /**
+     * @deprecated
      * Set methods
      *
      * @param integer $methods
@@ -269,6 +285,7 @@ interface UsersLocationInterface extends LoggableEntityInterface
     public function getMethods();
 
     /**
+     * @deprecated
      * Set instance
      *
      * @param string $instance
@@ -285,6 +302,7 @@ interface UsersLocationInterface extends LoggableEntityInterface
     public function getInstance();
 
     /**
+     * @deprecated
      * Set regId
      *
      * @param integer $regId
@@ -301,6 +319,7 @@ interface UsersLocationInterface extends LoggableEntityInterface
     public function getRegId();
 
     /**
+     * @deprecated
      * Set serverId
      *
      * @param integer $serverId
@@ -317,6 +336,7 @@ interface UsersLocationInterface extends LoggableEntityInterface
     public function getServerId();
 
     /**
+     * @deprecated
      * Set connectionId
      *
      * @param integer $connectionId
@@ -333,6 +353,7 @@ interface UsersLocationInterface extends LoggableEntityInterface
     public function getConnectionId();
 
     /**
+     * @deprecated
      * Set keepalive
      *
      * @param integer $keepalive
@@ -349,6 +370,7 @@ interface UsersLocationInterface extends LoggableEntityInterface
     public function getKeepalive();
 
     /**
+     * @deprecated
      * Set partition
      *
      * @param integer $partition
@@ -363,6 +385,4 @@ interface UsersLocationInterface extends LoggableEntityInterface
      * @return integer
      */
     public function getPartition();
-
 }
-

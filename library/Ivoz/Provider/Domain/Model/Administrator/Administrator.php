@@ -111,17 +111,21 @@ class Administrator extends AdministratorAbstract implements AdministratorInterf
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface
+     * @return \Ivoz\Provider\Domain\Model\Timezone\TimezoneInterface | null
      */
     public function getTimezone()
     {
         $timeZone = parent::getTimezone();
         if (!empty($timeZone)) {
-
             return $timeZone;
         }
 
-        return $this->getCompany()->getDefaultTimezone();
+        if ($this->getCompany()) {
+            return $this
+                ->getCompany()
+                ->getDefaultTimezone();
+        }
+
+        return null;
     }
 }
-

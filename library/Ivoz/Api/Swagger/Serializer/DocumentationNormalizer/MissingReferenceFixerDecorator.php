@@ -89,12 +89,11 @@ class MissingReferenceFixerDecorator implements NormalizerInterface
         $pendingDefinitions = $this->getPendingDefinitions($paths, $definitions);
 
         $resourceNames = [];
-        foreach($object->getResourceNameCollection() as $resourceName) {
+        foreach ($object->getResourceNameCollection() as $resourceName) {
             $resourceNames[] = $resourceName;
         }
 
         foreach ($pendingDefinitions as $definition) {
-
             $definitionSegments = explode('-', $definition, 2);
             $resourceClassNames = array_filter($resourceNames, function ($class) use ($definitionSegments) {
                 $classSegments = explode('\\', $class);
@@ -338,7 +337,6 @@ class MissingReferenceFixerDecorator implements NormalizerInterface
     {
         $schemas = [];
         foreach ($definition['parameters'] as $parameter) {
-
             if (!isset($parameter['schema']) || !isset($parameter['schema']['$ref'])) {
                 continue;
             }
@@ -347,7 +345,6 @@ class MissingReferenceFixerDecorator implements NormalizerInterface
         }
 
         foreach ($definition['responses'] as $response) {
-
             if (!isset($response['schema']) || !isset($response['schema']['$ref'])) {
                 continue;
             }

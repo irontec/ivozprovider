@@ -53,7 +53,7 @@ Ivoz\Kam\Domain\Model\TrunksLcrRuleTarget\TrunksLcrRuleTargetAbstract:
       cascade: {  }
       fetch: LAZY
       mappedBy: null
-      inversedBy: null
+      inversedBy: lcrRuleTargets
       joinColumns:
         outgoingRoutingId:
           referencedColumnName: id

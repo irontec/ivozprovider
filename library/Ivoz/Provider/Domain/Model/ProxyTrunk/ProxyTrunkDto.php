@@ -21,5 +21,3 @@ class ProxyTrunkDto extends ProxyTrunkDtoAbstract
         return parent::getPropertyMap(...func_get_args());
     }
 }
-
-

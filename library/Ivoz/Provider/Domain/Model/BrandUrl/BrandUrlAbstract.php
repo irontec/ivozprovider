@@ -66,7 +66,8 @@ abstract class BrandUrlAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "BrandUrl",
             $this->getId()
         );
@@ -217,11 +218,10 @@ abstract class BrandUrlAbstract
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set url
      *
      * @param string $url
@@ -249,6 +249,7 @@ abstract class BrandUrlAbstract
     }
 
     /**
+     * @deprecated
      * Set klearTheme
      *
      * @param string $klearTheme
@@ -277,6 +278,7 @@ abstract class BrandUrlAbstract
     }
 
     /**
+     * @deprecated
      * Set urlType
      *
      * @param string $urlType
@@ -310,6 +312,7 @@ abstract class BrandUrlAbstract
     }
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -338,6 +341,7 @@ abstract class BrandUrlAbstract
     }
 
     /**
+     * @deprecated
      * Set userTheme
      *
      * @param string $userTheme
@@ -399,7 +403,6 @@ abstract class BrandUrlAbstract
     public function setLogo(Logo $logo)
     {
         $this->logo = $logo;
-
         return $this;
     }
 
@@ -412,7 +415,5 @@ abstract class BrandUrlAbstract
     {
         return $this->logo;
     }
-
     // @codeCoverageIgnoreEnd
 }
-

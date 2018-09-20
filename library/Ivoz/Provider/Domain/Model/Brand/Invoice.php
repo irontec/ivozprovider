@@ -71,6 +71,7 @@ class Invoice
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set nif
      *
      * @param string $nif
@@ -98,6 +99,7 @@ class Invoice
     }
 
     /**
+     * @deprecated
      * Set postalAddress
      *
      * @param string $postalAddress
@@ -125,6 +127,7 @@ class Invoice
     }
 
     /**
+     * @deprecated
      * Set postalCode
      *
      * @param string $postalCode
@@ -152,6 +155,7 @@ class Invoice
     }
 
     /**
+     * @deprecated
      * Set town
      *
      * @param string $town
@@ -179,6 +183,7 @@ class Invoice
     }
 
     /**
+     * @deprecated
      * Set province
      *
      * @param string $province
@@ -206,6 +211,7 @@ class Invoice
     }
 
     /**
+     * @deprecated
      * Set country
      *
      * @param string $country
@@ -233,6 +239,7 @@ class Invoice
     }
 
     /**
+     * @deprecated
      * Set registryData
      *
      * @param string $registryData
@@ -260,8 +267,5 @@ class Invoice
         return $this->registryData;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

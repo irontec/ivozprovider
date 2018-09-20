@@ -12,7 +12,8 @@ class Ivr extends IvrAbstract implements IvrInterface
 {
     use IvrTrait;
 
-    use RoutableTrait { getTarget as protected; }
+    use RoutableTrait { getTarget as protected;
+    }
 
     /**
      * @codeCoverageIgnore
@@ -39,7 +40,8 @@ class Ivr extends IvrAbstract implements IvrInterface
      */
     public function __toString()
     {
-        return sprintf("%s [%s]",
+        return sprintf(
+            "%s [%s]",
             $this->getName(),
             parent::__toString()
         );
@@ -105,6 +107,4 @@ class Ivr extends IvrAbstract implements IvrInterface
     {
         return $this->getTarget("Error");
     }
-
 }
-

@@ -28,4 +28,3 @@ class BillableCall extends BillableCallAbstract implements BillableCallInterface
         return $this->id;
     }
 }
-

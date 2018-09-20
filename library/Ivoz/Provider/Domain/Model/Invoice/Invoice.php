@@ -8,7 +8,7 @@ use Ivoz\Core\Domain\Service\FileContainerInterface;
 /**
  * Invoice
  */
-class Invoice extends InvoiceAbstract implements InvoiceInterface, FileContainerInterface
+class Invoice extends InvoiceAbstract implements FileContainerInterface, InvoiceInterface
 {
     const STATUS_WAITING = 'waiting';
     const STATUS_PROCESSING = 'processing';
@@ -65,4 +65,3 @@ class Invoice extends InvoiceAbstract implements InvoiceInterface, FileContainer
         return parent::setNumber($number);
     }
 }
-

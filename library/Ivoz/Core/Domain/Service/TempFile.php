@@ -2,7 +2,6 @@
 
 namespace Ivoz\Core\Domain\Service;
 
-use Ivoz\Core\Application\Service\StoragePathResolverInterace;
 use Ivoz\Core\Application\Service\StoragePathResolverInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
 
@@ -43,7 +42,7 @@ class TempFile
     public function commit(EntityInterface $entity)
     {
         if (!$entity->getId()) {
-            Throw new \Exception('Entity must be persisted');
+            throw new \Exception('Entity must be persisted');
         }
 
         $targetPath = $this
@@ -76,7 +75,7 @@ class TempFile
     public function remove(EntityInterface $entity)
     {
         if ($entity->getId()) {
-            Throw new \Exception('Entity must be removed first');
+            throw new \Exception('Entity must be removed first');
         }
 
         if (file_exists($this->tmpPath)) {
@@ -110,5 +109,4 @@ class TempFile
             }
         }
     }
-
 }

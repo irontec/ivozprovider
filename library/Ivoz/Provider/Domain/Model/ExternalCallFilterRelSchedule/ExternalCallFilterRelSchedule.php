@@ -28,4 +28,3 @@ class ExternalCallFilterRelSchedule extends ExternalCallFilterRelScheduleAbstrac
         return $this->id;
     }
 }
-

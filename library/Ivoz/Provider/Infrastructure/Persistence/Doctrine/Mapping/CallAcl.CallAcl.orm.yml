@@ -1,6 +1,7 @@
 Ivoz\Provider\Domain\Model\CallAcl\CallAcl:
   repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\CallAclDoctrineRepository
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: CallACL
   id:
     id:

@@ -29,6 +29,7 @@ interface TrunksUacregInterface extends LoggableEntityInterface
     public function getLUuid();
 
     /**
+     * @deprecated
      * Set lUsername
      *
      * @param string $lUsername
@@ -45,6 +46,7 @@ interface TrunksUacregInterface extends LoggableEntityInterface
     public function getLUsername();
 
     /**
+     * @deprecated
      * Set lDomain
      *
      * @param string $lDomain
@@ -61,6 +63,7 @@ interface TrunksUacregInterface extends LoggableEntityInterface
     public function getLDomain();
 
     /**
+     * @deprecated
      * Set rUsername
      *
      * @param string $rUsername
@@ -77,6 +80,7 @@ interface TrunksUacregInterface extends LoggableEntityInterface
     public function getRUsername();
 
     /**
+     * @deprecated
      * Set rDomain
      *
      * @param string $rDomain
@@ -93,6 +97,7 @@ interface TrunksUacregInterface extends LoggableEntityInterface
     public function getRDomain();
 
     /**
+     * @deprecated
      * Set realm
      *
      * @param string $realm
@@ -109,6 +114,7 @@ interface TrunksUacregInterface extends LoggableEntityInterface
     public function getRealm();
 
     /**
+     * @deprecated
      * Set authUsername
      *
      * @param string $authUsername
@@ -125,6 +131,7 @@ interface TrunksUacregInterface extends LoggableEntityInterface
     public function getAuthUsername();
 
     /**
+     * @deprecated
      * Set authPassword
      *
      * @param string $authPassword
@@ -148,6 +155,7 @@ interface TrunksUacregInterface extends LoggableEntityInterface
     public function getAuthProxy();
 
     /**
+     * @deprecated
      * Set expires
      *
      * @param integer $expires
@@ -164,6 +172,7 @@ interface TrunksUacregInterface extends LoggableEntityInterface
     public function getExpires();
 
     /**
+     * @deprecated
      * Set flags
      *
      * @param integer $flags
@@ -180,6 +189,7 @@ interface TrunksUacregInterface extends LoggableEntityInterface
     public function getFlags();
 
     /**
+     * @deprecated
      * Set regDelay
      *
      * @param integer $regDelay
@@ -196,6 +206,7 @@ interface TrunksUacregInterface extends LoggableEntityInterface
     public function getRegDelay();
 
     /**
+     * @deprecated
      * Set authHa1
      *
      * @param string $authHa1
@@ -242,6 +253,4 @@ interface TrunksUacregInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
      */
     public function getBrand();
-
 }
-

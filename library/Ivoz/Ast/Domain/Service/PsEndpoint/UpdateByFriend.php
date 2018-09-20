@@ -66,7 +66,6 @@ class UpdateByFriend implements FriendLifecycleEventHandlerInterface
             : $entity->getDomain()->getDomain();
 
         // Update/Insert endpoint data
-        $domainUsers = $entity->getCompany()->getDomainUsers();
         $endPointDto
             ->setFriendId($entity->getId())
             ->setSorceryId($entity->getSorcery())

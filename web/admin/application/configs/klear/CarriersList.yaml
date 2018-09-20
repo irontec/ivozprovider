@@ -238,7 +238,9 @@ production:
 
     # Rating Profiles dialogs
     <<: *ratingProfiles_dialogsLink
-    <<: *simulateCall_dialogLink
+    simulateCall_dialog:
+      <<: *simulateCall_dialogLink
+      action: test-carrier-plans
 
     # balanceNotification dialogs:
     <<: *balanceNotification_dialogsLink

@@ -2,7 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\User;
 
-use Ivoz\Core\Domain\Service\EntityPersisterInterface;
+use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\User\UserDto;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Ivoz\Provider\Domain\Model\User\UserRepository;
@@ -16,9 +16,9 @@ use Ivoz\Provider\Domain\Model\User\UserRepository;
 class UnsetBossAssistant implements UserLifecycleEventHandlerInterface
 {
     /**
-     * @var EntityPersisterInterface
+     * @var EntityTools
      */
-    protected $entityPersister;
+    protected $entityTools;
 
     /**
      * @var UserRepository
@@ -26,10 +26,10 @@ class UnsetBossAssistant implements UserLifecycleEventHandlerInterface
     protected $userRepository;
 
     public function __construct(
-        EntityPersisterInterface $entityPersister,
+        EntityTools $entityTools,
         UserRepository $userRepository
     ) {
-        $this->entityPersister = $entityPersister;
+        $this->entityTools = $entityTools;
         $this->userRepository = $userRepository;
     }
 
@@ -40,25 +40,29 @@ class UnsetBossAssistant implements UserLifecycleEventHandlerInterface
         ];
     }
 
-    public function execute(UserInterface $entity, $isNew)
+    public function execute(UserInterface $user, $isNew)
     {
-        $isBoss = $entity->getIsBoss() == 1;
-        $hasChangedIsBoss = $entity->hasChanged('isBoss');
+        $isBoss = $user->getIsBoss() == 1;
+        $hasChangedIsBoss = $user->hasChanged('isBoss');
 
         if (!$isNew && $hasChangedIsBoss && $isBoss) {
 
+            /** @var UserInterface[] $bosses */
             $bosses = $this
                 ->userRepository
-                ->findBy(['bossAssistant' => $entity->getId()]);
+                ->findBy(['bossAssistant' => $user->getId()]);
 
             foreach ($bosses as $boss) {
                 /**
-                 * @var UserDTO $bossDto
+                 * @var UserDto $bossDto
                  */
-                $bossDto = $boss->toDto();
+                $bossDto = $this->entityTools->entityToDto($boss);
                 $bossDto->setBossAssistantId(null);
 
-                $this->entityPersister->persistDto($bossDto, $boss);
+                $this->entityTools->persistDto(
+                    $bossDto,
+                    $boss
+                );
             }
         }
     }

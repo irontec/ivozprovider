@@ -56,6 +56,11 @@ abstract class TpTimingAbstract
      */
     protected $createdAt;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface
+     */
+    protected $ratingPlan;
+
 
     use ChangelogTrait;
 
@@ -84,7 +89,8 @@ abstract class TpTimingAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "TpTiming",
             $this->getId()
         );
@@ -150,10 +156,12 @@ abstract class TpTimingAbstract
             $dto->getMonthDays(),
             $dto->getWeekDays(),
             $dto->getTime(),
-            $dto->getCreatedAt());
+            $dto->getCreatedAt()
+        );
 
         $self
             ->setTag($dto->getTag())
+            ->setRatingPlan($dto->getRatingPlan())
         ;
 
         $self->sanitizeValues();
@@ -181,7 +189,8 @@ abstract class TpTimingAbstract
             ->setMonthDays($dto->getMonthDays())
             ->setWeekDays($dto->getWeekDays())
             ->setTime($dto->getTime())
-            ->setCreatedAt($dto->getCreatedAt());
+            ->setCreatedAt($dto->getCreatedAt())
+            ->setRatingPlan($dto->getRatingPlan());
 
 
 
@@ -203,7 +212,8 @@ abstract class TpTimingAbstract
             ->setMonthDays(self::getMonthDays())
             ->setWeekDays(self::getWeekDays())
             ->setTime(self::getTime())
-            ->setCreatedAt(self::getCreatedAt());
+            ->setCreatedAt(self::getCreatedAt())
+            ->setRatingPlan(\Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan::entityToDto(self::getRatingPlan(), $depth));
     }
 
     /**
@@ -219,14 +229,14 @@ abstract class TpTimingAbstract
             'month_days' => self::getMonthDays(),
             'week_days' => self::getWeekDays(),
             'time' => self::getTime(),
-            'created_at' => self::getCreatedAt()
+            'created_at' => self::getCreatedAt(),
+            'ratingPlanId' => self::getRatingPlan() ? self::getRatingPlan()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set tpid
      *
      * @param string $tpid
@@ -254,6 +264,7 @@ abstract class TpTimingAbstract
     }
 
     /**
+     * @deprecated
      * Set tag
      *
      * @param string $tag
@@ -282,6 +293,7 @@ abstract class TpTimingAbstract
     }
 
     /**
+     * @deprecated
      * Set years
      *
      * @param string $years
@@ -309,6 +321,7 @@ abstract class TpTimingAbstract
     }
 
     /**
+     * @deprecated
      * Set months
      *
      * @param string $months
@@ -336,6 +349,7 @@ abstract class TpTimingAbstract
     }
 
     /**
+     * @deprecated
      * Set monthDays
      *
      * @param string $monthDays
@@ -363,6 +377,7 @@ abstract class TpTimingAbstract
     }
 
     /**
+     * @deprecated
      * Set weekDays
      *
      * @param string $weekDays
@@ -390,6 +405,7 @@ abstract class TpTimingAbstract
     }
 
     /**
+     * @deprecated
      * Set time
      *
      * @param string $time
@@ -417,6 +433,7 @@ abstract class TpTimingAbstract
     }
 
     /**
+     * @deprecated
      * Set createdAt
      *
      * @param \DateTime $createdAt
@@ -446,8 +463,29 @@ abstract class TpTimingAbstract
         return $this->createdAt;
     }
 
+    /**
+     * Set ratingPlan
+     *
+     * @param \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan
+     *
+     * @return self
+     */
+    public function setRatingPlan(\Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan)
+    {
+        $this->ratingPlan = $ratingPlan;
 
+        return $this;
+    }
+
+    /**
+     * Get ratingPlan
+     *
+     * @return \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface
+     */
+    public function getRatingPlan()
+    {
+        return $this->ratingPlan;
+    }
 
     // @codeCoverageIgnoreEnd
 }
-

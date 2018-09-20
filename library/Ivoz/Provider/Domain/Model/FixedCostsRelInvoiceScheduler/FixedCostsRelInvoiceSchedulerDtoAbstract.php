@@ -84,7 +84,6 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -219,5 +218,3 @@ abstract class FixedCostsRelInvoiceSchedulerDtoAbstract implements DataTransferO
         return null;
     }
 }
-
-

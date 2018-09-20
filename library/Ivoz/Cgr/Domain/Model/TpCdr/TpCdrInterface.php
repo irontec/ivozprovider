@@ -29,6 +29,7 @@ interface TpCdrInterface extends EntityInterface
     public function getMatchedDestinationTag();
 
     /**
+     * @deprecated
      * Set cgrid
      *
      * @param string $cgrid
@@ -45,6 +46,7 @@ interface TpCdrInterface extends EntityInterface
     public function getCgrid();
 
     /**
+     * @deprecated
      * Set runId
      *
      * @param string $runId
@@ -61,6 +63,7 @@ interface TpCdrInterface extends EntityInterface
     public function getRunId();
 
     /**
+     * @deprecated
      * Set originHost
      *
      * @param string $originHost
@@ -77,6 +80,7 @@ interface TpCdrInterface extends EntityInterface
     public function getOriginHost();
 
     /**
+     * @deprecated
      * Set source
      *
      * @param string $source
@@ -93,6 +97,7 @@ interface TpCdrInterface extends EntityInterface
     public function getSource();
 
     /**
+     * @deprecated
      * Set originId
      *
      * @param string $originId
@@ -109,6 +114,7 @@ interface TpCdrInterface extends EntityInterface
     public function getOriginId();
 
     /**
+     * @deprecated
      * Set tor
      *
      * @param string $tor
@@ -125,6 +131,7 @@ interface TpCdrInterface extends EntityInterface
     public function getTor();
 
     /**
+     * @deprecated
      * Set requestType
      *
      * @param string $requestType
@@ -141,6 +148,7 @@ interface TpCdrInterface extends EntityInterface
     public function getRequestType();
 
     /**
+     * @deprecated
      * Set tenant
      *
      * @param string $tenant
@@ -157,6 +165,7 @@ interface TpCdrInterface extends EntityInterface
     public function getTenant();
 
     /**
+     * @deprecated
      * Set category
      *
      * @param string $category
@@ -173,6 +182,7 @@ interface TpCdrInterface extends EntityInterface
     public function getCategory();
 
     /**
+     * @deprecated
      * Set account
      *
      * @param string $account
@@ -189,6 +199,7 @@ interface TpCdrInterface extends EntityInterface
     public function getAccount();
 
     /**
+     * @deprecated
      * Set subject
      *
      * @param string $subject
@@ -205,6 +216,7 @@ interface TpCdrInterface extends EntityInterface
     public function getSubject();
 
     /**
+     * @deprecated
      * Set destination
      *
      * @param string $destination
@@ -221,6 +233,7 @@ interface TpCdrInterface extends EntityInterface
     public function getDestination();
 
     /**
+     * @deprecated
      * Set setupTime
      *
      * @param \DateTime $setupTime
@@ -237,6 +250,7 @@ interface TpCdrInterface extends EntityInterface
     public function getSetupTime();
 
     /**
+     * @deprecated
      * Set answerTime
      *
      * @param \DateTime $answerTime
@@ -253,6 +267,7 @@ interface TpCdrInterface extends EntityInterface
     public function getAnswerTime();
 
     /**
+     * @deprecated
      * Set usage
      *
      * @param integer $usage
@@ -269,6 +284,7 @@ interface TpCdrInterface extends EntityInterface
     public function getUsage();
 
     /**
+     * @deprecated
      * Set extraFields
      *
      * @param string $extraFields
@@ -285,6 +301,7 @@ interface TpCdrInterface extends EntityInterface
     public function getExtraFields();
 
     /**
+     * @deprecated
      * Set costSource
      *
      * @param string $costSource
@@ -301,6 +318,7 @@ interface TpCdrInterface extends EntityInterface
     public function getCostSource();
 
     /**
+     * @deprecated
      * Set cost
      *
      * @param string $cost
@@ -317,6 +335,7 @@ interface TpCdrInterface extends EntityInterface
     public function getCost();
 
     /**
+     * @deprecated
      * Set costDetails
      *
      * @param array $costDetails
@@ -333,6 +352,7 @@ interface TpCdrInterface extends EntityInterface
     public function getCostDetails();
 
     /**
+     * @deprecated
      * Set extraInfo
      *
      * @param string $extraInfo
@@ -349,6 +369,7 @@ interface TpCdrInterface extends EntityInterface
     public function getExtraInfo();
 
     /**
+     * @deprecated
      * Set createdAt
      *
      * @param \DateTime $createdAt
@@ -365,6 +386,7 @@ interface TpCdrInterface extends EntityInterface
     public function getCreatedAt();
 
     /**
+     * @deprecated
      * Set updatedAt
      *
      * @param \DateTime $updatedAt
@@ -381,6 +403,7 @@ interface TpCdrInterface extends EntityInterface
     public function getUpdatedAt();
 
     /**
+     * @deprecated
      * Set deletedAt
      *
      * @param \DateTime $deletedAt
@@ -395,6 +418,4 @@ interface TpCdrInterface extends EntityInterface
      * @return \DateTime
      */
     public function getDeletedAt();
-
 }
-

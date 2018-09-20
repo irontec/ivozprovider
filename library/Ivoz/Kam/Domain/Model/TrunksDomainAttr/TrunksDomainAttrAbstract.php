@@ -63,7 +63,8 @@ abstract class TrunksDomainAttrAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "TrunksDomainAttr",
             $this->getId()
         );
@@ -127,9 +128,8 @@ abstract class TrunksDomainAttrAbstract
             $dto->getName(),
             $dto->getType(),
             $dto->getValue(),
-            $dto->getLastModified());
-
-        $self;
+            $dto->getLastModified()
+        );
 
         $self->sanitizeValues();
         $self->initChangelog();
@@ -188,11 +188,10 @@ abstract class TrunksDomainAttrAbstract
             'last_modified' => self::getLastModified()
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set did
      *
      * @param string $did
@@ -220,6 +219,7 @@ abstract class TrunksDomainAttrAbstract
     }
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -247,6 +247,7 @@ abstract class TrunksDomainAttrAbstract
     }
 
     /**
+     * @deprecated
      * Set type
      *
      * @param integer $type
@@ -275,6 +276,7 @@ abstract class TrunksDomainAttrAbstract
     }
 
     /**
+     * @deprecated
      * Set value
      *
      * @param string $value
@@ -302,6 +304,7 @@ abstract class TrunksDomainAttrAbstract
     }
 
     /**
+     * @deprecated
      * Set lastModified
      *
      * @param \DateTime $lastModified
@@ -331,8 +334,5 @@ abstract class TrunksDomainAttrAbstract
         return $this->lastModified;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

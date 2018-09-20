@@ -34,8 +34,8 @@ class GenerateOutRules
         $nationalSubscriberLen = $nationalLen - strlen($areaCode);
 
         if (!empty($areaCode)) {
-            $ruleDTO = new TransformationRuleDto();
-            $ruleDTO
+            $ruleDto = new TransformationRuleDto();
+            $ruleDto
                 ->setTransformationRuleSetId($entity->getId())
                 ->setType($type)
                 ->setDescription("From e164 to within area national")
@@ -43,12 +43,12 @@ class GenerateOutRules
                 ->setMatchExpr('^\\' . $countryCode . $areaCode . '([0-9]{' . $nationalSubscriberLen . '})$')
                 ->setReplaceExpr('\1');
 
-            $this->entityPersister->persistDto($ruleDTO);
+            $this->entityPersister->persistDto($ruleDto);
         }
 
         if (!empty($trunkPrefix)) {
-            $ruleDTO = new TransformationRuleDto();
-            $ruleDTO
+            $ruleDto = new TransformationRuleDto();
+            $ruleDto
                 ->setTransformationRuleSetId($entity->getId())
                 ->setType($type)
                 ->setDescription("From e164 to out of area national")
@@ -56,11 +56,11 @@ class GenerateOutRules
                 ->setMatchExpr('^\\' . $countryCode . '([0-9]{' . $nationalLen . '})$')
                 ->setReplaceExpr('\1');
 
-            $this->entityPersister->persistDto($ruleDTO);
+            $this->entityPersister->persistDto($ruleDto);
         }
 
-        $ruleDTO = new TransformationRuleDto();
-        $ruleDTO
+        $ruleDto = new TransformationRuleDto();
+        $ruleDto
             ->setTransformationRuleSetId($entity->getId())
             ->setType($type)
             ->setDescription("From e164 to special national")
@@ -68,10 +68,10 @@ class GenerateOutRules
             ->setMatchExpr('^\\' . $countryCode . '([0-9]+)$')
             ->setReplaceExpr('\1');
 
-        $this->entityPersister->persistDto($ruleDTO);
+        $this->entityPersister->persistDto($ruleDto);
 
-        $ruleDTO = new TransformationRuleDto();
-        $ruleDTO
+        $ruleDto = new TransformationRuleDto();
+        $ruleDto
             ->setTransformationRuleSetId($entity->getId())
             ->setType($type)
             ->setDescription("From e164 to international")
@@ -79,7 +79,6 @@ class GenerateOutRules
             ->setMatchExpr('^\\+([0-9]+)$')
             ->setReplaceExpr($internationalCode . '\1');
 
-        $this->entityPersister->persistDto($ruleDTO);
+        $this->entityPersister->persistDto($ruleDto);
     }
-
 }

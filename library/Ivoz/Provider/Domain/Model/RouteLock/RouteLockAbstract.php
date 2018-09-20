@@ -50,7 +50,8 @@ abstract class RouteLockAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "RouteLock",
             $this->getId()
         );
@@ -112,7 +113,8 @@ abstract class RouteLockAbstract
         $self = new static(
             $dto->getName(),
             $dto->getDescription(),
-            $dto->getOpen());
+            $dto->getOpen()
+        );
 
         $self
             ->setCompany($dto->getCompany())
@@ -172,11 +174,10 @@ abstract class RouteLockAbstract
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -204,6 +205,7 @@ abstract class RouteLockAbstract
     }
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description
@@ -231,6 +233,7 @@ abstract class RouteLockAbstract
     }
 
     /**
+     * @deprecated
      * Set open
      *
      * @param boolean $open
@@ -281,8 +284,5 @@ abstract class RouteLockAbstract
         return $this->company;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

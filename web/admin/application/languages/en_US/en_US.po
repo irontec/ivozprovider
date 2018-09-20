@@ -133,6 +133,9 @@ msgstr "Allowed video codecs"
 msgid "Always"
 msgstr "Always"
 
+msgid "Amount"
+msgstr "Amount"
+
 msgid "An error occurred"
 msgstr "An error occurred"
 
@@ -141,10 +144,6 @@ msgstr "An error occurred: check files format and content."
 
 msgid "Announce"
 msgstr "Announce"
-
-#, python-format
-msgid "Answer-Seizure Ratio: <a href='%s' target='_blank' >more info</a>"
-msgstr ""
 
 msgid "Antiflood trusted IP"
 msgid_plural "Antiflood trusted IPs"
@@ -203,10 +202,6 @@ msgstr[1] "Authorized sources"
 
 msgid "Automatic creation of rules"
 msgstr "Automatic creation of rules"
-
-#, python-format
-msgid "Average Call Duration: <a href='%s' target='_blank' >more info</a>"
-msgstr ""
 
 msgid "Balance"
 msgstr "Balance"
@@ -325,6 +320,16 @@ msgid_plural "Call ACL Patterns"
 msgstr[0] "Call ACL Pattern"
 msgstr[1] "Call ACL Patterns"
 
+msgid "Call CSV report"
+msgid_plural "Call CSV reports"
+msgstr[0] "Call CSV report"
+msgstr[1] "Call CSV reports"
+
+msgid "Call CSV scheduler"
+msgid_plural "Call CSV schedulers"
+msgstr[0] "Call CSV scheduler"
+msgstr[1] "Call CSV schedulers"
+
 msgid "Call Details"
 msgstr "Call Details"
 
@@ -411,6 +416,12 @@ msgstr "Charge period"
 msgid "Check documentation for this section"
 msgstr "Check documentation for this section"
 
+msgid "Clid"
+msgstr "Clid"
+
+msgid "Client Configuration"
+msgstr "Client Configuration"
+
 msgid "Client's default"
 msgstr "Client's default"
 
@@ -433,9 +444,6 @@ msgid "Company"
 msgid_plural "Companies"
 msgstr[0] "Company"
 msgstr[1] "Companies"
-
-msgid "Company Configuration"
-msgstr "Company Configuration"
 
 msgid "Company URL"
 msgid_plural "Company URLs"
@@ -508,6 +516,9 @@ msgstr "Country code"
 msgid "Created"
 msgstr "Created"
 
+msgid "Created on"
+msgstr "Created on"
+
 msgid "Custom"
 msgstr "Custom"
 
@@ -563,6 +574,9 @@ msgstr[1] "Destinations"
 
 msgid "Destination IP address"
 msgstr "Destination IP address"
+
+msgid "Destination prefix"
+msgstr "Destination prefix"
 
 msgid "Destination rate"
 msgid_plural "Destination rates"
@@ -749,6 +763,9 @@ msgstr "Exec"
 msgid "Expire"
 msgstr "Expire"
 
+msgid "Export to CSV"
+msgstr "Export to CSV"
+
 msgid "Extension"
 msgid_plural "Extensions"
 msgstr[0] "Extension"
@@ -852,6 +869,9 @@ msgstr[1] "Fixed costs"
 msgid "For instance:"
 msgstr "For instance:"
 
+msgid "Force Clid"
+msgstr "Force Clid"
+
 msgid "Force DDI"
 msgstr "Force DDI"
 
@@ -942,6 +962,9 @@ msgstr "Generic template"
 msgid "Geographic Configuration"
 msgstr "Geographic Configuration"
 
+msgid "Global Configuration"
+msgstr "Global Configuration"
+
 msgid "God"
 msgstr "God"
 
@@ -1013,9 +1036,6 @@ msgid "Iden"
 msgid_plural "Idens"
 msgstr[0] "Iden"
 msgstr[1] "Idens"
-
-msgid "Identify Call"
-msgstr "Identify Call"
 
 msgid ""
 "If no queue member answers before time this seconds, the timeout queue logic "
@@ -1101,6 +1121,13 @@ msgstr "Increment"
 msgid "Insert your username"
 msgstr "Insert your username"
 
+msgid ""
+"Instead of getting the caller from PAI/RPID headers, this clid will be used "
+"(and will be adapted using carrier's numeric transformations)."
+msgstr ""
+"Instead of getting the caller from PAI/RPID headers, this clid will be used "
+"(and will be adapted using carrier's numeric transformations)."
+
 msgid "Internal"
 msgstr "Internal"
 
@@ -1179,6 +1206,9 @@ msgstr "Join to %s %2s"
 msgid "Keep Original DDI"
 msgstr "Keep Original DDI"
 
+msgid "LCR"
+msgstr "LCR"
+
 msgid "Language"
 msgstr "Language"
 
@@ -1199,6 +1229,9 @@ msgstr "Latest value"
 
 msgid "Least recent"
 msgstr "Least recent"
+
+msgid "Leave empty if no mail is needed (just generate CSV)."
+msgstr "Leave empty if no mail is needed (just generate CSV)."
 
 msgid "Leave empty to send to Host field"
 msgstr "Leave empty to send to Host field"
@@ -1291,7 +1324,7 @@ msgstr ""
 "Mail address shown as source when sending mails. MTA must allow this value."
 
 msgid "Mail address where this notification will be sent"
-msgstr ""
+msgstr "Mail address where this notification will be sent"
 
 msgid "Main Settings"
 msgstr "Main Settings"
@@ -1490,6 +1523,12 @@ msgstr "No answer locution"
 msgid "No answer timeout"
 msgstr "No answer timeout"
 
+msgid "No backup found."
+msgstr "No backup found."
+
+msgid "No default template found"
+msgstr "No default template found"
+
 msgid "No input configuration"
 msgstr "No input configuration"
 
@@ -1640,6 +1679,9 @@ msgid_plural "Outgoing routings"
 msgstr[0] "Outgoing routing"
 msgstr[1] "Outgoing routings"
 
+msgid "Owner"
+msgstr "Owner"
+
 msgid "PDF File"
 msgid_plural "PDF Files"
 msgstr[0] "PDF File"
@@ -1653,6 +1695,9 @@ msgstr "Parse file and import"
 
 msgid "Parsed"
 msgstr "Parsed"
+
+msgid "Party"
+msgstr "Party"
 
 msgid "Password"
 msgstr "Password"
@@ -1708,9 +1753,6 @@ msgstr "Pin code"
 
 msgid "Pin protected"
 msgstr "Pin protected"
-
-msgid "Platform Configuration"
-msgstr "Platform Configuration"
 
 msgid "Please select only uninvoiced calls"
 msgstr "Please select only uninvoiced calls"
@@ -1853,6 +1895,11 @@ msgid_plural "Rating plans"
 msgstr[0] "Rating plan"
 msgstr[1] "Rating plans"
 
+msgid "Rating plan group"
+msgid_plural "Rating plan groups"
+msgstr[0] "Rating plan group"
+msgstr[1] "Rating plan groups"
+
 msgid "Re metering date"
 msgstr "Re metering date"
 
@@ -1908,6 +1955,9 @@ msgstr "Resend fax"
 msgid "Resend to"
 msgstr "Resend to"
 
+msgid "Reset default template?"
+msgstr "Reset default template?"
+
 msgid "Residential"
 msgid_plural "Residentials"
 msgstr[0] "Residential"
@@ -1925,6 +1975,9 @@ msgstr[1] "Residential Devices"
 
 msgid "Restore backup"
 msgstr "Restore backup"
+
+msgid "Restore backup from"
+msgstr "Restore backup from"
 
 msgid "Restore default template"
 msgstr "Restore default template"
@@ -2063,6 +2116,9 @@ msgstr "Select the brand you want to emulate."
 msgid "Select the company you want to emulate"
 msgstr "Select the company you want to emulate"
 
+msgid "Selected weight is already in use"
+msgstr "Selected weight is already in use"
+
 msgid "Send"
 msgstr "Send"
 
@@ -2081,6 +2137,9 @@ msgstr "Send new %s"
 
 msgid "Send to IP[:PORT] instead of SIP Proxy address"
 msgstr "Send to IP[:PORT] instead of SIP Proxy address"
+
+msgid "Sent to"
+msgstr "Sent to"
 
 msgid "Sequence length"
 msgstr "Sequence length"
@@ -2276,20 +2335,30 @@ msgid ""
 "This importer expects values to be within quotation marks and separated by "
 "semicolons."
 msgstr ""
+"This importer expects values to be within quotation marks and separated by "
+"semicolons."
+
+msgid ""
+"This prefix will be added to the callee after carrier's numeric "
+"transformations."
+msgstr ""
+"This prefix will be added to the callee after carrier's numeric "
+"transformations."
 
 msgid "This setting needs external tarification module"
 msgstr "This setting needs external tarification module"
 
-msgid ""
-"This template is going to be tested<br /><textarea name=\"currentCode\" rows="
-"\"8\" cols=\"80\" readonly></textarea>"
-msgstr ""
+msgid "This template is going to be tested"
+msgstr "This template is going to be tested"
 
 msgid "This value will be displayed in the called terminals"
 msgstr "This value will be displayed in the called terminals"
 
 msgid "Thursday"
 msgstr "Thursday"
+
+msgid "Time Information"
+msgstr "Time Information"
 
 msgid "Time in"
 msgstr "Time in"
@@ -2329,11 +2398,6 @@ msgstr "Timeout time"
 
 msgid "Timezone"
 msgstr "Timezone"
-
-msgid "Timing"
-msgid_plural "Timing"
-msgstr[0] "Timing"
-msgstr[1] "Timings"
 
 msgid "Timing type"
 msgstr "Timing type"
@@ -2473,8 +2537,8 @@ msgstr "View Outgoing %s %s"
 
 msgid "Virtual PBX"
 msgid_plural "Virtual PBXs"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Virtual PBX"
+msgstr[1] "Virtual PBXs"
 
 msgid "Voicemail"
 msgid_plural "Voicemails"
@@ -2628,12 +2692,6 @@ msgstr "encoding"
 
 msgid "error"
 msgstr "error"
-
-msgid "https://en.wikipedia.org/wiki/Answer-seizure_ratio"
-msgstr ""
-
-msgid "https://en.wikipedia.org/wiki/Average_call_duration"
-msgstr ""
 
 msgid "ignore"
 msgstr "ignore"

@@ -76,7 +76,8 @@ abstract class DestinationRateAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "DestinationRate",
             $this->getId()
         );
@@ -139,7 +140,8 @@ abstract class DestinationRateAbstract
             $dto->getCost(),
             $dto->getConnectFee(),
             $dto->getRateIncrement(),
-            $dto->getGroupIntervalStart());
+            $dto->getGroupIntervalStart()
+        );
 
         $self
             ->setDestinationRateGroup($dto->getDestinationRateGroup())
@@ -206,11 +208,10 @@ abstract class DestinationRateAbstract
             'destinationId' => self::getDestination() ? self::getDestination()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set cost
      *
      * @param string $cost
@@ -221,6 +222,7 @@ abstract class DestinationRateAbstract
     {
         Assertion::notNull($cost, 'cost value "%s" is null, but non null value was expected.');
         Assertion::numeric($cost);
+        $cost = (float) $cost;
 
         $this->cost = $cost;
 
@@ -238,6 +240,7 @@ abstract class DestinationRateAbstract
     }
 
     /**
+     * @deprecated
      * Set connectFee
      *
      * @param string $connectFee
@@ -248,6 +251,7 @@ abstract class DestinationRateAbstract
     {
         Assertion::notNull($connectFee, 'connectFee value "%s" is null, but non null value was expected.');
         Assertion::numeric($connectFee);
+        $connectFee = (float) $connectFee;
 
         $this->connectFee = $connectFee;
 
@@ -265,6 +269,7 @@ abstract class DestinationRateAbstract
     }
 
     /**
+     * @deprecated
      * Set rateIncrement
      *
      * @param string $rateIncrement
@@ -292,6 +297,7 @@ abstract class DestinationRateAbstract
     }
 
     /**
+     * @deprecated
      * Set groupIntervalStart
      *
      * @param string $groupIntervalStart
@@ -414,8 +420,5 @@ abstract class DestinationRateAbstract
         return $this->destination;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

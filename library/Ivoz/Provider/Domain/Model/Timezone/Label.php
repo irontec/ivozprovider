@@ -36,6 +36,7 @@ class Label
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set en
      *
      * @param string $en
@@ -63,6 +64,7 @@ class Label
     }
 
     /**
+     * @deprecated
      * Set es
      *
      * @param string $es
@@ -89,8 +91,5 @@ class Label
         return $this->es;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

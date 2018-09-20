@@ -57,6 +57,11 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
      */
     private $id;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto | null
+     */
+    private $ratingPlan;
+
 
     use DtoNormalizer;
 
@@ -83,7 +88,8 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
             'weekDays' => 'weekDays',
             'time' => 'time',
             'createdAt' => 'createdAt',
-            'id' => 'id'
+            'id' => 'id',
+            'ratingPlanId' => 'ratingPlan'
         ];
     }
 
@@ -101,7 +107,8 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
             'weekDays' => $this->getWeekDays(),
             'time' => $this->getTime(),
             'createdAt' => $this->getCreatedAt(),
-            'id' => $this->getId()
+            'id' => $this->getId(),
+            'ratingPlan' => $this->getRatingPlan()
         ];
     }
 
@@ -110,7 +117,7 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
-
+        $this->ratingPlan = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\RatingPlan\\RatingPlan', $this->getRatingPlanId());
     }
 
     /**
@@ -118,7 +125,6 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -300,6 +306,50 @@ abstract class TpTimingDtoAbstract implements DataTransferObjectInterface
     {
         return $this->id;
     }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto $ratingPlan
+     *
+     * @return static
+     */
+    public function setRatingPlan(\Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto $ratingPlan = null)
+    {
+        $this->ratingPlan = $ratingPlan;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto
+     */
+    public function getRatingPlan()
+    {
+        return $this->ratingPlan;
+    }
+
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setRatingPlanId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto($id)
+            : null;
+
+        return $this->setRatingPlan($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getRatingPlanId()
+    {
+        if ($dto = $this->getRatingPlan()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
 }
-
-

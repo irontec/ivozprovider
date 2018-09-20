@@ -32,4 +32,3 @@ class RoutingPattern extends RoutingPatternAbstract implements RoutingPatternInt
         return parent::setPrefix($prefix);
     }
 }
-

@@ -31,5 +31,3 @@ class InvoiceDto extends InvoiceDtoAbstract
         return $this->pdfPath;
     }
 }
-
-

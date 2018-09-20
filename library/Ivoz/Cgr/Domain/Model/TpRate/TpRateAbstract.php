@@ -92,7 +92,8 @@ abstract class TpRateAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "TpRate",
             $this->getId()
         );
@@ -158,7 +159,8 @@ abstract class TpRateAbstract
             $dto->getRateUnit(),
             $dto->getRateIncrement(),
             $dto->getGroupIntervalStart(),
-            $dto->getCreatedAt());
+            $dto->getCreatedAt()
+        );
 
         $self
             ->setTag($dto->getTag())
@@ -234,11 +236,10 @@ abstract class TpRateAbstract
             'destinationRateId' => self::getDestinationRate() ? self::getDestinationRate()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set tpid
      *
      * @param string $tpid
@@ -266,6 +267,7 @@ abstract class TpRateAbstract
     }
 
     /**
+     * @deprecated
      * Set tag
      *
      * @param string $tag
@@ -294,6 +296,7 @@ abstract class TpRateAbstract
     }
 
     /**
+     * @deprecated
      * Set connectFee
      *
      * @param string $connectFee
@@ -304,6 +307,7 @@ abstract class TpRateAbstract
     {
         Assertion::notNull($connectFee, 'connectFee value "%s" is null, but non null value was expected.');
         Assertion::numeric($connectFee);
+        $connectFee = (float) $connectFee;
 
         $this->connectFee = $connectFee;
 
@@ -321,6 +325,7 @@ abstract class TpRateAbstract
     }
 
     /**
+     * @deprecated
      * Set rateCost
      *
      * @param string $rateCost
@@ -331,6 +336,7 @@ abstract class TpRateAbstract
     {
         Assertion::notNull($rateCost, 'rateCost value "%s" is null, but non null value was expected.');
         Assertion::numeric($rateCost);
+        $rateCost = (float) $rateCost;
 
         $this->rateCost = $rateCost;
 
@@ -348,6 +354,7 @@ abstract class TpRateAbstract
     }
 
     /**
+     * @deprecated
      * Set rateUnit
      *
      * @param string $rateUnit
@@ -375,6 +382,7 @@ abstract class TpRateAbstract
     }
 
     /**
+     * @deprecated
      * Set rateIncrement
      *
      * @param string $rateIncrement
@@ -402,6 +410,7 @@ abstract class TpRateAbstract
     }
 
     /**
+     * @deprecated
      * Set groupIntervalStart
      *
      * @param string $groupIntervalStart
@@ -429,6 +438,7 @@ abstract class TpRateAbstract
     }
 
     /**
+     * @deprecated
      * Set createdAt
      *
      * @param \DateTime $createdAt
@@ -482,8 +492,5 @@ abstract class TpRateAbstract
         return $this->destinationRate;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

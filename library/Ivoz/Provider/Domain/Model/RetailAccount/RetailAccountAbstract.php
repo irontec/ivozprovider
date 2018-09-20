@@ -102,7 +102,8 @@ abstract class RetailAccountAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "RetailAccount",
             $this->getId()
         );
@@ -165,7 +166,8 @@ abstract class RetailAccountAbstract
             $dto->getName(),
             $dto->getDescription(),
             $dto->getTransport(),
-            $dto->getDirectConnectivity());
+            $dto->getDirectConnectivity()
+        );
 
         $self
             ->setIp($dto->getIp())
@@ -260,11 +262,10 @@ abstract class RetailAccountAbstract
             'outgoingDdiId' => self::getOutgoingDdi() ? self::getOutgoingDdi()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -292,6 +293,7 @@ abstract class RetailAccountAbstract
     }
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description
@@ -319,6 +321,7 @@ abstract class RetailAccountAbstract
     }
 
     /**
+     * @deprecated
      * Set transport
      *
      * @param string $transport
@@ -351,6 +354,7 @@ abstract class RetailAccountAbstract
     }
 
     /**
+     * @deprecated
      * Set ip
      *
      * @param string $ip
@@ -379,6 +383,7 @@ abstract class RetailAccountAbstract
     }
 
     /**
+     * @deprecated
      * Set port
      *
      * @param integer $port
@@ -410,6 +415,7 @@ abstract class RetailAccountAbstract
     }
 
     /**
+     * @deprecated
      * Set password
      *
      * @param string $password
@@ -438,6 +444,7 @@ abstract class RetailAccountAbstract
     }
 
     /**
+     * @deprecated
      * Set fromDomain
      *
      * @param string $fromDomain
@@ -466,6 +473,7 @@ abstract class RetailAccountAbstract
     }
 
     /**
+     * @deprecated
      * Set directConnectivity
      *
      * @param string $directConnectivity
@@ -615,8 +623,5 @@ abstract class RetailAccountAbstract
         return $this->outgoingDdi;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

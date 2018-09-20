@@ -2,7 +2,7 @@
 
 namespace spec\Ivoz\Provider\Domain\Service\User;
 
-use Ivoz\Core\Domain\Service\EntityPersisterInterface;
+use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 use Ivoz\Provider\Domain\Model\User\UserRepository;
@@ -18,18 +18,18 @@ class UpdateByExtensionSpec extends ObjectBehavior
     protected $userRepository;
 
     /**
-     * @var EntityPersisterInterface
+     * @var EntityTools
      */
-    protected $entityPersister;
+    protected $entityTools;
 
     public function let(
         UserRepository $userRepository,
-        EntityPersisterInterface $entityPersister
+        EntityTools $entityTools
     ) {
         $this->userRepository = $userRepository;
-        $this->entityPersister = $entityPersister;
+        $this->entityTools = $entityTools;
 
-        $this->beConstructedWith($userRepository, $entityPersister);
+        $this->beConstructedWith($userRepository, $entityTools);
     }
 
     function it_is_initializable()
@@ -124,8 +124,8 @@ class UpdateByExtensionSpec extends ObjectBehavior
             ->shouldBeCalled();
 
         $this
-            ->entityPersister
-            ->persist($user)
+            ->entityTools
+            ->persist($user, false)
             ->shouldBeCalled();
 
         $this->execute($entity, true);

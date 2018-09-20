@@ -9,4 +9,3 @@ interface TpDestinationRateRepository extends ObjectRepository, Selectable
 {
 
 }
-

@@ -7,7 +7,6 @@ trait HelperTrait
     protected function getterProphecy($double, array $values)
     {
         foreach ($values as $method => $value) {
-
             $double
                 ->{$method}()
                 ->willReturn($value)
@@ -18,7 +17,6 @@ trait HelperTrait
     protected function fluentSetterProphecy($double, array $values)
     {
         foreach ($values as $method => $value) {
-
             $double
                 ->{$method}($value)
                 ->willReturn($double)
@@ -47,7 +45,6 @@ trait HelperTrait
         }
 
         if ($reflection->getParentClass()) {
-
             return $this->getProperty(
                 $reflection->getParentClass(),
                 $propertyName
@@ -57,7 +54,5 @@ trait HelperTrait
         throw new \Exception(
             'Property ' . $propertyName . ' does not exist'
         );
-
-
     }
 }

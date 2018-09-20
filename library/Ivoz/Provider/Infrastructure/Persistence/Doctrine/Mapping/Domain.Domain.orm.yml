@@ -1,6 +1,7 @@
 Ivoz\Provider\Domain\Model\Domain\Domain:
   repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\DomainDoctrineRepository
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: Domains
   id:
     id:

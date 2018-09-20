@@ -1,6 +1,7 @@
 Ivoz\Provider\Domain\Model\RoutingPattern\RoutingPattern:
   repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\RoutingPatternDoctrineRepository
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: RoutingPatterns
   id:
     id:

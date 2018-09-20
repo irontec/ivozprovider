@@ -92,7 +92,7 @@ class InvoiceDoctrineRepository extends ServiceEntityRepository implements Invoi
         $qb = $this->createQueryBuilder(self::ENTITY_ALIAS);
         $qb->select(self::ENTITY_ALIAS)
             ->where($query)
-            ->addOrderBy(self::ENTITY_ALIAS . '.inDate',  'ASC')
+            ->addOrderBy(self::ENTITY_ALIAS . '.inDate', 'ASC')
             ->setParameters($queryArguments);
 
         return $qb

@@ -96,7 +96,6 @@ class DateTimeNormalizer
         $propertyMetadata = $this->propertyMetadataFactory->create($class, $fieldName);
         $fieldType = $propertyMetadata->getType();
         if (is_null($fieldType)) {
-
             return;
         }
 
@@ -115,9 +114,11 @@ class DateTimeNormalizer
             ->getUser()
             ->getTimezone();
 
-        return new \DateTimeZone(
-            $timeZone->getTz()
-        );
+        $tz = $timeZone
+            ? $timeZone->getTz()
+            : 'UTC';
+
+        return new \DateTimeZone($tz);
     }
 
     protected function getFieldType($class, $field)
@@ -154,6 +155,5 @@ class DateTimeNormalizer
                 DBALType::DATETIMETZ
             ]
         );
-
     }
 }

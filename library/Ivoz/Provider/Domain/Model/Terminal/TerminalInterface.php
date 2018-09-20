@@ -14,11 +14,13 @@ interface TerminalInterface extends LoggableEntityInterface
 
     /**
      * {@inheritDoc}
+     * @throws \Assert\AssertionFailedException
      */
     public function setName($name = null);
 
     /**
      * {@inheritDoc}
+     * @throws \Assert\AssertionFailedException
      */
     public function setPassword($password);
 
@@ -54,6 +56,7 @@ interface TerminalInterface extends LoggableEntityInterface
     public function getName();
 
     /**
+     * @deprecated
      * Set disallow
      *
      * @param string $disallow
@@ -70,6 +73,7 @@ interface TerminalInterface extends LoggableEntityInterface
     public function getDisallow();
 
     /**
+     * @deprecated
      * Set allowAudio
      *
      * @param string $allowAudio
@@ -86,6 +90,7 @@ interface TerminalInterface extends LoggableEntityInterface
     public function getAllowAudio();
 
     /**
+     * @deprecated
      * Set allowVideo
      *
      * @param string $allowVideo
@@ -102,6 +107,7 @@ interface TerminalInterface extends LoggableEntityInterface
     public function getAllowVideo();
 
     /**
+     * @deprecated
      * Set directMediaMethod
      *
      * @param string $directMediaMethod
@@ -132,6 +138,7 @@ interface TerminalInterface extends LoggableEntityInterface
     public function getMac();
 
     /**
+     * @deprecated
      * Set lastProvisionDate
      *
      * @param \DateTime $lastProvisionDate
@@ -256,6 +263,4 @@ interface TerminalInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\User\UserInterface[]
      */
     public function getUsers(\Doctrine\Common\Collections\Criteria $criteria = null);
-
 }
-

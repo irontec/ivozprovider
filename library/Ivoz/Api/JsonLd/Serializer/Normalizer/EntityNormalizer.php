@@ -8,11 +8,11 @@ use ApiPlatform\Core\JsonLd\ContextBuilderInterface;
 use ApiPlatform\Core\JsonLd\Serializer\JsonLdContextTrait;
 use ApiPlatform\Core\Metadata\Resource\Factory\ResourceMetadataFactoryInterface;
 use Ivoz\Api\Entity\Serializer\Normalizer\DateTimeNormalizer;
+use Ivoz\Api\Json\Serializer\Normalizer\EntityNormalizer as JsonEntityNormalizer;
+use Ivoz\Api\Swagger\Metadata\Property\Factory\PropertyNameCollectionFactory;
 use Ivoz\Core\Application\DataTransferObjectInterface;
 use Ivoz\Core\Application\Service\Assembler\DtoAssembler;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Ivoz\Api\Json\Serializer\Normalizer\EntityNormalizer as JsonEntityNormalizer;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 
 /**
  * Based on ApiPlatform\Core\JsonLd\Serializer\ItemNormalizer
@@ -39,7 +39,8 @@ class EntityNormalizer extends JsonEntityNormalizer implements NormalizerInterfa
         ResourceClassResolverInterface $resourceClassResolver,
         ContextBuilderInterface $contextBuilder,
         DtoAssembler $dtoAssembler,
-        DateTimeNormalizer $dateTimeNormalizer
+        DateTimeNormalizer $dateTimeNormalizer,
+        PropertyNameCollectionFactory $propertyNameCollectionFactory
     ) {
         $this->iriConverter = $iriConverter;
         $this->contextBuilder = $contextBuilder;
@@ -49,7 +50,8 @@ class EntityNormalizer extends JsonEntityNormalizer implements NormalizerInterfa
             $resourceClassResolver,
             $contextBuilder,
             $dtoAssembler,
-            $dateTimeNormalizer
+            $dateTimeNormalizer,
+            $propertyNameCollectionFactory
         );
     }
 
@@ -63,8 +65,14 @@ class EntityNormalizer extends JsonEntityNormalizer implements NormalizerInterfa
      * @param $resourceMetadata
      * @return array
      */
-    protected function normalizeDto($dto, array $context, $isSubresource, $depth, $resourceClass, $resourceMetadata): array
-    {
+    protected function normalizeDto(
+        $dto,
+        array $context,
+        $isSubresource,
+        $depth,
+        $resourceClass,
+        $resourceMetadata
+    ): array {
         $data = $this->addJsonLdContext(
             $this->contextBuilder,
             $resourceClass,
@@ -73,16 +81,23 @@ class EntityNormalizer extends JsonEntityNormalizer implements NormalizerInterfa
 
         // Use resolved resource class instead of given resource class to support multiple inheritance child types
         $context['resource_class'] = $resourceClass;
-        $context['iri'] = $this
-            ->iriConverter
-            ->getItemIriFromResourceClass(
-                $resourceClass,
-                ['id' => $dto->getId()]
-            );
+
+        try {
+            $context['iri'] = $this
+                ->iriConverter
+                ->getItemIriFromResourceClass(
+                    $resourceClass,
+                    ['id' => $dto->getId()]
+                );
+        } catch (\Exception $e) {
+            // Do nothing, entity without endpoints
+        }
 
         $rawData = parent::normalizeDto(...func_get_args());
 
-        $data['@id'] = $context['iri'];
+        if (isset($context['iri'])) {
+            $data['@id'] = $context['iri'];
+        }
         $data['@type'] = $resourceMetadata->getIri() ?: $resourceMetadata->getShortName();
 
         return $data + $rawData;

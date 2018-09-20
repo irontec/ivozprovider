@@ -51,7 +51,6 @@ class UpdateByExtension implements ExtensionLifecycleEventHandlerInterface
         /** @var Ivr[] $ivrs */
         $ivrs = $this->ivrRepository->findByExtension($extension);
         foreach ($ivrs as $ivr) {
-
             $noInputExtension = $ivr->getNoInputExtension();
             $errorExtension = $ivr->getErrorExtension();
             /** @var IvrDto $ivrDto */

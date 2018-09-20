@@ -7,6 +7,9 @@ use Doctrine\Common\Collections\Selectable;
 
 interface TpRatingPlanRepository extends ObjectRepository, Selectable
 {
-
+    /**
+     * @param string $tag
+     * @return RatingPlanInterface
+     */
+    public function findOneByTag(string $tag);
 }
-

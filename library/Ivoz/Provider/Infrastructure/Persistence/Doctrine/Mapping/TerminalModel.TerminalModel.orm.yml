@@ -1,6 +1,7 @@
 Ivoz\Provider\Domain\Model\TerminalModel\TerminalModel:
   repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\TerminalModelDoctrineRepository
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: TerminalModels
   id:
     id:

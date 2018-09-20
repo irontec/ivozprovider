@@ -27,4 +27,3 @@ class TrunksLcrRuleTarget extends TrunksLcrRuleTargetAbstract implements TrunksL
         return $this->id;
     }
 }
-

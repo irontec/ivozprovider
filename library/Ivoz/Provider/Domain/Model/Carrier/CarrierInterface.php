@@ -14,6 +14,12 @@ interface CarrierInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @return string
+     */
+    public function getCgrSubject();
+
+    /**
+     * @deprecated
      * Set description
      *
      * @param string $description
@@ -30,6 +36,7 @@ interface CarrierInterface extends LoggableEntityInterface
     public function getDescription();
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -46,6 +53,7 @@ interface CarrierInterface extends LoggableEntityInterface
     public function getName();
 
     /**
+     * @deprecated
      * Set externallyRated
      *
      * @param boolean $externallyRated
@@ -62,6 +70,7 @@ interface CarrierInterface extends LoggableEntityInterface
     public function getExternallyRated();
 
     /**
+     * @deprecated
      * Set balance
      *
      * @param string $balance
@@ -78,6 +87,7 @@ interface CarrierInterface extends LoggableEntityInterface
     public function getBalance();
 
     /**
+     * @deprecated
      * Set calculateCost
      *
      * @param boolean $calculateCost
@@ -155,6 +165,37 @@ interface CarrierInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface[]
      */
     public function getOutgoingRoutings(\Doctrine\Common\Collections\Criteria $criteria = null);
+
+    /**
+     * Add outgoingRoutingsRelCarrier
+     *
+     * @param \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $outgoingRoutingsRelCarrier
+     *
+     * @return CarrierTrait
+     */
+    public function addOutgoingRoutingsRelCarrier(\Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $outgoingRoutingsRelCarrier);
+
+    /**
+     * Remove outgoingRoutingsRelCarrier
+     *
+     * @param \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $outgoingRoutingsRelCarrier
+     */
+    public function removeOutgoingRoutingsRelCarrier(\Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface $outgoingRoutingsRelCarrier);
+
+    /**
+     * Replace outgoingRoutingsRelCarriers
+     *
+     * @param \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface[] $outgoingRoutingsRelCarriers
+     * @return self
+     */
+    public function replaceOutgoingRoutingsRelCarriers(Collection $outgoingRoutingsRelCarriers);
+
+    /**
+     * Get outgoingRoutingsRelCarriers
+     *
+     * @return \Ivoz\Provider\Domain\Model\OutgoingRoutingRelCarrier\OutgoingRoutingRelCarrierInterface[]
+     */
+    public function getOutgoingRoutingsRelCarriers(\Doctrine\Common\Collections\Criteria $criteria = null);
 
     /**
      * Add server
@@ -248,6 +289,4 @@ interface CarrierInterface extends LoggableEntityInterface
      * @return \Ivoz\Cgr\Domain\Model\TpCdrStat\TpCdrStatInterface[]
      */
     public function getTpCdrStats(\Doctrine\Common\Collections\Criteria $criteria = null);
-
 }
-

@@ -1,5 +1,6 @@
 Ivoz\Provider\Domain\Model\MatchList\MatchList:
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: MatchLists
   id:
     id:

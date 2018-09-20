@@ -75,7 +75,6 @@ abstract class TerminalManufacturerDtoAbstract implements DataTransferObjectInte
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -83,7 +82,6 @@ abstract class TerminalManufacturerDtoAbstract implements DataTransferObjectInte
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -166,5 +164,3 @@ abstract class TerminalManufacturerDtoAbstract implements DataTransferObjectInte
         return $this->id;
     }
 }
-
-

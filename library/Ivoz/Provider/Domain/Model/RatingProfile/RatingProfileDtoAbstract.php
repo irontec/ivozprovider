@@ -23,11 +23,6 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
     private $id;
 
     /**
-     * @var \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileDto | null
-     */
-    private $tpRatingProfile;
-
-    /**
      * @var \Ivoz\Provider\Domain\Model\Company\CompanyDto | null
      */
     private $company;
@@ -38,14 +33,19 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
     private $carrier;
 
     /**
-     * @var \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto | null
+     * @var \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupDto | null
      */
-    private $ratingPlan;
+    private $ratingPlanGroup;
 
     /**
      * @var \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagDto | null
      */
     private $routingTag;
+
+    /**
+     * @var \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileDto[] | null
+     */
+    private $tpRatingProfiles = null;
 
 
     use DtoNormalizer;
@@ -67,10 +67,9 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
         return [
             'activationTime' => 'activationTime',
             'id' => 'id',
-            'tpRatingProfileId' => 'tpRatingProfile',
             'companyId' => 'company',
             'carrierId' => 'carrier',
-            'ratingPlanId' => 'ratingPlan',
+            'ratingPlanGroupId' => 'ratingPlanGroup',
             'routingTagId' => 'routingTag'
         ];
     }
@@ -83,11 +82,11 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
         return [
             'activationTime' => $this->getActivationTime(),
             'id' => $this->getId(),
-            'tpRatingProfile' => $this->getTpRatingProfile(),
             'company' => $this->getCompany(),
             'carrier' => $this->getCarrier(),
-            'ratingPlan' => $this->getRatingPlan(),
-            'routingTag' => $this->getRoutingTag()
+            'ratingPlanGroup' => $this->getRatingPlanGroup(),
+            'routingTag' => $this->getRoutingTag(),
+            'tpRatingProfiles' => $this->getTpRatingProfiles()
         ];
     }
 
@@ -96,11 +95,20 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
-        $this->tpRatingProfile = $transformer->transform('Ivoz\\Cgr\\Domain\\Model\\TpRatingProfile\\TpRatingProfile', $this->getTpRatingProfileId());
         $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
         $this->carrier = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Carrier\\Carrier', $this->getCarrierId());
-        $this->ratingPlan = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\RatingPlan\\RatingPlan', $this->getRatingPlanId());
+        $this->ratingPlanGroup = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\RatingPlanGroup\\RatingPlanGroup', $this->getRatingPlanGroupId());
         $this->routingTag = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\RoutingTag\\RoutingTag', $this->getRoutingTagId());
+        if (!is_null($this->tpRatingProfiles)) {
+            $items = $this->getTpRatingProfiles();
+            $this->tpRatingProfiles = [];
+            foreach ($items as $item) {
+                $this->tpRatingProfiles[] = $transformer->transform(
+                    'Ivoz\\Cgr\\Domain\\Model\\TpRatingProfile\\TpRatingProfile',
+                    $item->getId() ?? $item
+                );
+            }
+        }
     }
 
     /**
@@ -108,7 +116,10 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
+        $this->tpRatingProfiles = $transformer->transform(
+            'Ivoz\\Cgr\\Domain\\Model\\TpRatingProfile\\TpRatingProfile',
+            $this->tpRatingProfiles
+        );
     }
 
     /**
@@ -149,52 +160,6 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * @param \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileDto $tpRatingProfile
-     *
-     * @return static
-     */
-    public function setTpRatingProfile(\Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileDto $tpRatingProfile = null)
-    {
-        $this->tpRatingProfile = $tpRatingProfile;
-
-        return $this;
-    }
-
-    /**
-     * @return \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileDto
-     */
-    public function getTpRatingProfile()
-    {
-        return $this->tpRatingProfile;
-    }
-
-    /**
-     * @param integer $id | null
-     *
-     * @return static
-     */
-    public function setTpRatingProfileId($id)
-    {
-        $value = !is_null($id)
-            ? new \Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfileDto($id)
-            : null;
-
-        return $this->setTpRatingProfile($value);
-    }
-
-    /**
-     * @return integer | null
-     */
-    public function getTpRatingProfileId()
-    {
-        if ($dto = $this->getTpRatingProfile()) {
-            return $dto->getId();
-        }
-
-        return null;
     }
 
     /**
@@ -290,23 +255,23 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto $ratingPlan
+     * @param \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupDto $ratingPlanGroup
      *
      * @return static
      */
-    public function setRatingPlan(\Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto $ratingPlan = null)
+    public function setRatingPlanGroup(\Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupDto $ratingPlanGroup = null)
     {
-        $this->ratingPlan = $ratingPlan;
+        $this->ratingPlanGroup = $ratingPlanGroup;
 
         return $this;
     }
 
     /**
-     * @return \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto
+     * @return \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupDto
      */
-    public function getRatingPlan()
+    public function getRatingPlanGroup()
     {
-        return $this->ratingPlan;
+        return $this->ratingPlanGroup;
     }
 
     /**
@@ -314,21 +279,21 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
      *
      * @return static
      */
-    public function setRatingPlanId($id)
+    public function setRatingPlanGroupId($id)
     {
         $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto($id)
+            ? new \Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupDto($id)
             : null;
 
-        return $this->setRatingPlan($value);
+        return $this->setRatingPlanGroup($value);
     }
 
     /**
      * @return integer | null
      */
-    public function getRatingPlanId()
+    public function getRatingPlanGroupId()
     {
-        if ($dto = $this->getRatingPlan()) {
+        if ($dto = $this->getRatingPlanGroup()) {
             return $dto->getId();
         }
 
@@ -380,6 +345,24 @@ abstract class RatingProfileDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
+
+    /**
+     * @param array $tpRatingProfiles
+     *
+     * @return static
+     */
+    public function setTpRatingProfiles($tpRatingProfiles = null)
+    {
+        $this->tpRatingProfiles = $tpRatingProfiles;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getTpRatingProfiles()
+    {
+        return $this->tpRatingProfiles;
+    }
 }
-
-

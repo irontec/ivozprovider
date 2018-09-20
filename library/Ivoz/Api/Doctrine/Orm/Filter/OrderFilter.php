@@ -21,7 +21,7 @@ class OrderFilter extends BaseOrderFilter
 
     public function __construct(
         ManagerRegistry $managerRegistry,
-        RequestStack $requestStack,
+        $requestStack = null,
         $orderParameterName,
         LoggerInterface $logger = null,
         array $properties = null,
@@ -51,11 +51,12 @@ class OrderFilter extends BaseOrderFilter
         QueryBuilder $queryBuilder,
         QueryNameGeneratorInterface $queryNameGenerator,
         string $resourceClass,
-        string $operationName = null
+        string $operationName = null,
+        array $context = []
     ) {
         $metadata = $this->resourceMetadataFactory->create($resourceClass);
         $this->overrideProperties($metadata->getAttributes());
 
-        return parent::apply($queryBuilder, $queryNameGenerator, $resourceClass, $operationName);
+        return parent::apply($queryBuilder, $queryNameGenerator, $resourceClass, $operationName, $context);
     }
 }

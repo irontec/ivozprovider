@@ -7,6 +7,7 @@ use Ivoz\Core\Domain\Model\EntityInterface;
 interface TpTimingInterface extends EntityInterface
 {
     /**
+     * @deprecated
      * Set tpid
      *
      * @param string $tpid
@@ -23,6 +24,7 @@ interface TpTimingInterface extends EntityInterface
     public function getTpid();
 
     /**
+     * @deprecated
      * Set tag
      *
      * @param string $tag
@@ -39,6 +41,7 @@ interface TpTimingInterface extends EntityInterface
     public function getTag();
 
     /**
+     * @deprecated
      * Set years
      *
      * @param string $years
@@ -55,6 +58,7 @@ interface TpTimingInterface extends EntityInterface
     public function getYears();
 
     /**
+     * @deprecated
      * Set months
      *
      * @param string $months
@@ -71,6 +75,7 @@ interface TpTimingInterface extends EntityInterface
     public function getMonths();
 
     /**
+     * @deprecated
      * Set monthDays
      *
      * @param string $monthDays
@@ -87,6 +92,7 @@ interface TpTimingInterface extends EntityInterface
     public function getMonthDays();
 
     /**
+     * @deprecated
      * Set weekDays
      *
      * @param string $weekDays
@@ -103,6 +109,7 @@ interface TpTimingInterface extends EntityInterface
     public function getWeekDays();
 
     /**
+     * @deprecated
      * Set time
      *
      * @param string $time
@@ -119,6 +126,7 @@ interface TpTimingInterface extends EntityInterface
     public function getTime();
 
     /**
+     * @deprecated
      * Set createdAt
      *
      * @param \DateTime $createdAt
@@ -134,5 +142,19 @@ interface TpTimingInterface extends EntityInterface
      */
     public function getCreatedAt();
 
-}
+    /**
+     * Set ratingPlan
+     *
+     * @param \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan
+     *
+     * @return self
+     */
+    public function setRatingPlan(\Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface $ratingPlan);
 
+    /**
+     * Get ratingPlan
+     *
+     * @return \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface
+     */
+    public function getRatingPlan();
+}

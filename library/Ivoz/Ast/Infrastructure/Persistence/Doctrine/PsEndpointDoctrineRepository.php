@@ -17,8 +17,6 @@ class PsEndpointDoctrineRepository extends ServiceEntityRepository implements Ps
 {
     public function __construct(RegistryInterface $registry)
     {
-      parent::__construct($registry, PsEndpoint::class);
+        parent::__construct($registry, PsEndpoint::class);
     }
-
 }
-

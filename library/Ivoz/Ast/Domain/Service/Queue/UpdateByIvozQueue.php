@@ -48,7 +48,6 @@ class UpdateByIvozQueue implements IvozQueueLifecycleEventHandlerInterface
     {
         $periodicAnnounceLocution = $entity->getPeriodicAnnounceLocution();
         if (!is_null($periodicAnnounceLocution)) {
-
             $periodicAnnounceLocution = $this
                 ->storagePathResolver
                 ->getFilePath($periodicAnnounceLocution);
@@ -63,11 +62,11 @@ class UpdateByIvozQueue implements IvozQueueLifecycleEventHandlerInterface
             'queue' => $entity->getId()
         ]);
 
-        $astQueueDTO = is_null($astQueue)
+        $astQueueDto = is_null($astQueue)
             ? Queue::createDto()
             : $astQueue->toDto();
 
-        $astQueueDTO
+        $astQueueDto
             ->setQueueId($entity->getId())
             ->setName($astQueueName)
             ->setPeriodicAnnounce($periodicAnnounceLocution)
@@ -78,6 +77,6 @@ class UpdateByIvozQueue implements IvozQueueLifecycleEventHandlerInterface
             ->setWeight($entity->getWeight())
             ->setMaxlen($entity->getMaxlen());
 
-        $this->entityPersister->persistDto($astQueueDTO, $astQueue);
+        $this->entityPersister->persistDto($astQueueDto, $astQueue);
     }
 }

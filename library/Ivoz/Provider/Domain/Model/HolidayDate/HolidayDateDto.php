@@ -20,5 +20,3 @@ class HolidayDateDto extends HolidayDateDtoAbstract
         return parent::getPropertyMap(...func_get_args());
     }
 }
-
-

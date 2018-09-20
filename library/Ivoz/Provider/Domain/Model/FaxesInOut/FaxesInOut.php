@@ -8,7 +8,7 @@ use Ivoz\Core\Domain\Service\FileContainerInterface;
 /**
  * FaxesInOut
  */
-class FaxesInOut extends FaxesInOutAbstract implements FaxesInOutInterface, FileContainerInterface
+class FaxesInOut extends FaxesInOutAbstract implements FileContainerInterface, FaxesInOutInterface
 {
     use FaxesInOutTrait;
     use TempFileContainnerTrait;
@@ -74,4 +74,3 @@ class FaxesInOut extends FaxesInOutAbstract implements FaxesInOutInterface, File
             $this->getDst();
     }
 }
-

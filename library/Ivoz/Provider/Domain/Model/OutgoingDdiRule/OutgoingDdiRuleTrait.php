@@ -91,8 +91,6 @@ trait OutgoingDdiRuleTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add pattern
      *
@@ -164,7 +162,4 @@ trait OutgoingDdiRuleTrait
 
         return $this->patterns->toArray();
     }
-
-
 }
-

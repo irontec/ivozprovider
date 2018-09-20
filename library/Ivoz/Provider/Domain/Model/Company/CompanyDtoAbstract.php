@@ -367,7 +367,6 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
         if (!is_null($this->ddis)) {
             $items = $this->getDdis();
             $this->ddis = [];
@@ -378,7 +377,6 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
         if (!is_null($this->friends)) {
             $items = $this->getFriends();
             $this->friends = [];
@@ -389,7 +387,6 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
         if (!is_null($this->companyServices)) {
             $items = $this->getCompanyServices();
             $this->companyServices = [];
@@ -400,7 +397,6 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
         if (!is_null($this->terminals)) {
             $items = $this->getTerminals();
             $this->terminals = [];
@@ -411,7 +407,6 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
         if (!is_null($this->ratingProfiles)) {
             $items = $this->getRatingProfiles();
             $this->ratingProfiles = [];
@@ -422,7 +417,6 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
         if (!is_null($this->musicsOnHold)) {
             $items = $this->getMusicsOnHold();
             $this->musicsOnHold = [];
@@ -433,7 +427,6 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
         if (!is_null($this->recordings)) {
             $items = $this->getRecordings();
             $this->recordings = [];
@@ -444,7 +437,6 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
         if (!is_null($this->relFeatures)) {
             $items = $this->getRelFeatures();
             $this->relFeatures = [];
@@ -455,7 +447,6 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
         if (!is_null($this->relCodecs)) {
             $items = $this->getRelCodecs();
             $this->relCodecs = [];
@@ -466,7 +457,6 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
         if (!is_null($this->relRoutingTags)) {
             $items = $this->getRelRoutingTags();
             $this->relRoutingTags = [];
@@ -477,7 +467,6 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
     }
 
     /**
@@ -1749,5 +1738,3 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
         return $this->relRoutingTags;
     }
 }
-
-

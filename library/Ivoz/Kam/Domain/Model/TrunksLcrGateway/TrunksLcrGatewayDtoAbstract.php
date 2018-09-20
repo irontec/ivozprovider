@@ -153,7 +153,6 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -462,5 +461,3 @@ abstract class TrunksLcrGatewayDtoAbstract implements DataTransferObjectInterfac
         return null;
     }
 }
-
-

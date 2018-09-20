@@ -18,7 +18,8 @@ class UpdateByDomain implements DomainLifecycleEventHandlerInterface
      */
     protected $entityPersister;
 
-    public function __construct(EntityPersisterInterface $entityPersister) {
+    public function __construct(EntityPersisterInterface $entityPersister)
+    {
         $this->entityPersister = $entityPersister;
     }
 
@@ -61,10 +62,10 @@ class UpdateByDomain implements DomainLifecycleEventHandlerInterface
 
     private function updateEndpoint(PsEndpointInterface $endpoint, $fromdomain)
     {
-        /** @var PsEndpointDTO $endpointDTO */
-        $endpointDTO = $endpoint->toDto();
-        $endpointDTO->setFromDomain($fromdomain);
+        /** @var PsEndpointDto $endpointDto */
+        $endpointDto = $endpoint->toDto();
+        $endpointDto->setFromDomain($fromdomain);
 
-        $this->entityPersister->persistDto($endpointDTO, $endpoint);
+        $this->entityPersister->persistDto($endpointDto, $endpoint);
     }
 }

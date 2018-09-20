@@ -43,69 +43,14 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
     private $createdAt = 'CURRENT_TIMESTAMP';
 
     /**
-     * @var string
-     */
-    private $timingType = 'always';
-
-    /**
-     * @var \DateTime
-     */
-    private $timeIn;
-
-    /**
-     * @var boolean
-     */
-    private $monday = '1';
-
-    /**
-     * @var boolean
-     */
-    private $tuesday = '1';
-
-    /**
-     * @var boolean
-     */
-    private $wednesday = '1';
-
-    /**
-     * @var boolean
-     */
-    private $thursday = '1';
-
-    /**
-     * @var boolean
-     */
-    private $friday = '1';
-
-    /**
-     * @var boolean
-     */
-    private $saturday = '1';
-
-    /**
-     * @var boolean
-     */
-    private $sunday = '1';
-
-    /**
      * @var integer
      */
     private $id;
 
     /**
-     * @var \Ivoz\Cgr\Domain\Model\TpTiming\TpTimingDto | null
-     */
-    private $timing;
-
-    /**
      * @var \Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto | null
      */
     private $ratingPlan;
-
-    /**
-     * @var \Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupDto | null
-     */
-    private $destinationRateGroup;
 
 
     use DtoNormalizer;
@@ -131,19 +76,8 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
             'timingTag' => 'timingTag',
             'weight' => 'weight',
             'createdAt' => 'createdAt',
-            'timingType' => 'timingType',
-            'timeIn' => 'timeIn',
-            'monday' => 'monday',
-            'tuesday' => 'tuesday',
-            'wednesday' => 'wednesday',
-            'thursday' => 'thursday',
-            'friday' => 'friday',
-            'saturday' => 'saturday',
-            'sunday' => 'sunday',
             'id' => 'id',
-            'timingId' => 'timing',
-            'ratingPlanId' => 'ratingPlan',
-            'destinationRateGroupId' => 'destinationRateGroup'
+            'ratingPlanId' => 'ratingPlan'
         ];
     }
 
@@ -159,19 +93,8 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
             'timingTag' => $this->getTimingTag(),
             'weight' => $this->getWeight(),
             'createdAt' => $this->getCreatedAt(),
-            'timingType' => $this->getTimingType(),
-            'timeIn' => $this->getTimeIn(),
-            'monday' => $this->getMonday(),
-            'tuesday' => $this->getTuesday(),
-            'wednesday' => $this->getWednesday(),
-            'thursday' => $this->getThursday(),
-            'friday' => $this->getFriday(),
-            'saturday' => $this->getSaturday(),
-            'sunday' => $this->getSunday(),
             'id' => $this->getId(),
-            'timing' => $this->getTiming(),
-            'ratingPlan' => $this->getRatingPlan(),
-            'destinationRateGroup' => $this->getDestinationRateGroup()
+            'ratingPlan' => $this->getRatingPlan()
         ];
     }
 
@@ -180,9 +103,7 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
      */
     public function transformForeignKeys(ForeignKeyTransformerInterface $transformer)
     {
-        $this->timing = $transformer->transform('Ivoz\\Cgr\\Domain\\Model\\TpTiming\\TpTiming', $this->getTimingId());
         $this->ratingPlan = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\RatingPlan\\RatingPlan', $this->getRatingPlanId());
-        $this->destinationRateGroup = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\DestinationRateGroup\\DestinationRateGroup', $this->getDestinationRateGroupId());
     }
 
     /**
@@ -190,7 +111,6 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -314,186 +234,6 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
     }
 
     /**
-     * @param string $timingType
-     *
-     * @return static
-     */
-    public function setTimingType($timingType = null)
-    {
-        $this->timingType = $timingType;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTimingType()
-    {
-        return $this->timingType;
-    }
-
-    /**
-     * @param \DateTime $timeIn
-     *
-     * @return static
-     */
-    public function setTimeIn($timeIn = null)
-    {
-        $this->timeIn = $timeIn;
-
-        return $this;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getTimeIn()
-    {
-        return $this->timeIn;
-    }
-
-    /**
-     * @param boolean $monday
-     *
-     * @return static
-     */
-    public function setMonday($monday = null)
-    {
-        $this->monday = $monday;
-
-        return $this;
-    }
-
-    /**
-     * @return boolean
-     */
-    public function getMonday()
-    {
-        return $this->monday;
-    }
-
-    /**
-     * @param boolean $tuesday
-     *
-     * @return static
-     */
-    public function setTuesday($tuesday = null)
-    {
-        $this->tuesday = $tuesday;
-
-        return $this;
-    }
-
-    /**
-     * @return boolean
-     */
-    public function getTuesday()
-    {
-        return $this->tuesday;
-    }
-
-    /**
-     * @param boolean $wednesday
-     *
-     * @return static
-     */
-    public function setWednesday($wednesday = null)
-    {
-        $this->wednesday = $wednesday;
-
-        return $this;
-    }
-
-    /**
-     * @return boolean
-     */
-    public function getWednesday()
-    {
-        return $this->wednesday;
-    }
-
-    /**
-     * @param boolean $thursday
-     *
-     * @return static
-     */
-    public function setThursday($thursday = null)
-    {
-        $this->thursday = $thursday;
-
-        return $this;
-    }
-
-    /**
-     * @return boolean
-     */
-    public function getThursday()
-    {
-        return $this->thursday;
-    }
-
-    /**
-     * @param boolean $friday
-     *
-     * @return static
-     */
-    public function setFriday($friday = null)
-    {
-        $this->friday = $friday;
-
-        return $this;
-    }
-
-    /**
-     * @return boolean
-     */
-    public function getFriday()
-    {
-        return $this->friday;
-    }
-
-    /**
-     * @param boolean $saturday
-     *
-     * @return static
-     */
-    public function setSaturday($saturday = null)
-    {
-        $this->saturday = $saturday;
-
-        return $this;
-    }
-
-    /**
-     * @return boolean
-     */
-    public function getSaturday()
-    {
-        return $this->saturday;
-    }
-
-    /**
-     * @param boolean $sunday
-     *
-     * @return static
-     */
-    public function setSunday($sunday = null)
-    {
-        $this->sunday = $sunday;
-
-        return $this;
-    }
-
-    /**
-     * @return boolean
-     */
-    public function getSunday()
-    {
-        return $this->sunday;
-    }
-
-    /**
      * @param integer $id
      *
      * @return static
@@ -511,52 +251,6 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * @param \Ivoz\Cgr\Domain\Model\TpTiming\TpTimingDto $timing
-     *
-     * @return static
-     */
-    public function setTiming(\Ivoz\Cgr\Domain\Model\TpTiming\TpTimingDto $timing = null)
-    {
-        $this->timing = $timing;
-
-        return $this;
-    }
-
-    /**
-     * @return \Ivoz\Cgr\Domain\Model\TpTiming\TpTimingDto
-     */
-    public function getTiming()
-    {
-        return $this->timing;
-    }
-
-    /**
-     * @param integer $id | null
-     *
-     * @return static
-     */
-    public function setTimingId($id)
-    {
-        $value = !is_null($id)
-            ? new \Ivoz\Cgr\Domain\Model\TpTiming\TpTimingDto($id)
-            : null;
-
-        return $this->setTiming($value);
-    }
-
-    /**
-     * @return integer | null
-     */
-    public function getTimingId()
-    {
-        if ($dto = $this->getTiming()) {
-            return $dto->getId();
-        }
-
-        return null;
     }
 
     /**
@@ -604,52 +298,4 @@ abstract class TpRatingPlanDtoAbstract implements DataTransferObjectInterface
 
         return null;
     }
-
-    /**
-     * @param \Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupDto $destinationRateGroup
-     *
-     * @return static
-     */
-    public function setDestinationRateGroup(\Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupDto $destinationRateGroup = null)
-    {
-        $this->destinationRateGroup = $destinationRateGroup;
-
-        return $this;
-    }
-
-    /**
-     * @return \Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupDto
-     */
-    public function getDestinationRateGroup()
-    {
-        return $this->destinationRateGroup;
-    }
-
-    /**
-     * @param integer $id | null
-     *
-     * @return static
-     */
-    public function setDestinationRateGroupId($id)
-    {
-        $value = !is_null($id)
-            ? new \Ivoz\Provider\Domain\Model\DestinationRateGroup\DestinationRateGroupDto($id)
-            : null;
-
-        return $this->setDestinationRateGroup($value);
-    }
-
-    /**
-     * @return integer | null
-     */
-    public function getDestinationRateGroupId()
-    {
-        if ($dto = $this->getDestinationRateGroup()) {
-            return $dto->getId();
-        }
-
-        return null;
-    }
 }
-
-

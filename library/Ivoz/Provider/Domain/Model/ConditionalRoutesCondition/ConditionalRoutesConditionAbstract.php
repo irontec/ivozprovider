@@ -99,7 +99,8 @@ abstract class ConditionalRoutesConditionAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "ConditionalRoutesCondition",
             $this->getId()
         );
@@ -159,7 +160,8 @@ abstract class ConditionalRoutesConditionAbstract
         Assertion::isInstanceOf($dto, ConditionalRoutesConditionDto::class);
 
         $self = new static(
-            $dto->getPriority());
+            $dto->getPriority()
+        );
 
         $self
             ->setRouteType($dto->getRouteType())
@@ -261,11 +263,10 @@ abstract class ConditionalRoutesConditionAbstract
             'numberCountryId' => self::getNumberCountry() ? self::getNumberCountry()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set priority
      *
      * @param integer $priority
@@ -293,6 +294,7 @@ abstract class ConditionalRoutesConditionAbstract
     }
 
     /**
+     * @deprecated
      * Set routeType
      *
      * @param string $routeType
@@ -303,17 +305,17 @@ abstract class ConditionalRoutesConditionAbstract
     {
         if (!is_null($routeType)) {
             Assertion::maxLength($routeType, 25, 'routeType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        Assertion::choice($routeType, array (
-          0 => 'user',
-          1 => 'number',
-          2 => 'ivr',
-          3 => 'huntGroup',
-          4 => 'voicemail',
-          5 => 'friend',
-          6 => 'queue',
-          7 => 'conferenceRoom',
-          8 => 'extension',
-        ), 'routeTypevalue "%s" is not an element of the valid values: %s');
+            Assertion::choice($routeType, array (
+              0 => 'user',
+              1 => 'number',
+              2 => 'ivr',
+              3 => 'huntGroup',
+              4 => 'voicemail',
+              5 => 'friend',
+              6 => 'queue',
+              7 => 'conferenceRoom',
+              8 => 'extension',
+            ), 'routeTypevalue "%s" is not an element of the valid values: %s');
         }
 
         $this->routeType = $routeType;
@@ -332,6 +334,7 @@ abstract class ConditionalRoutesConditionAbstract
     }
 
     /**
+     * @deprecated
      * Set numberValue
      *
      * @param string $numberValue
@@ -360,6 +363,7 @@ abstract class ConditionalRoutesConditionAbstract
     }
 
     /**
+     * @deprecated
      * Set friendValue
      *
      * @param string $friendValue
@@ -627,8 +631,5 @@ abstract class ConditionalRoutesConditionAbstract
         return $this->numberCountry;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

@@ -91,8 +91,6 @@ trait CallAclTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add relMatchList
      *
@@ -164,7 +162,4 @@ trait CallAclTrait
 
         return $this->relMatchLists->toArray();
     }
-
-
 }
-

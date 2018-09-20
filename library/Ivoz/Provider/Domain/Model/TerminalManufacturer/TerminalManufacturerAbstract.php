@@ -45,7 +45,8 @@ abstract class TerminalManufacturerAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "TerminalManufacturer",
             $this->getId()
         );
@@ -107,9 +108,8 @@ abstract class TerminalManufacturerAbstract
         $self = new static(
             $dto->getIden(),
             $dto->getName(),
-            $dto->getDescription());
-
-        $self;
+            $dto->getDescription()
+        );
 
         $self->sanitizeValues();
         $self->initChangelog();
@@ -162,11 +162,10 @@ abstract class TerminalManufacturerAbstract
             'description' => self::getDescription()
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set iden
      *
      * @param string $iden
@@ -194,6 +193,7 @@ abstract class TerminalManufacturerAbstract
     }
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -221,6 +221,7 @@ abstract class TerminalManufacturerAbstract
     }
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description
@@ -247,8 +248,5 @@ abstract class TerminalManufacturerAbstract
         return $this->description;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

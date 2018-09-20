@@ -157,7 +157,8 @@ abstract class ResidentialDeviceAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "ResidentialDevice",
             $this->getId()
         );
@@ -226,7 +227,8 @@ abstract class ResidentialDeviceAbstract
             $dto->getDirectMediaMethod(),
             $dto->getCalleridUpdateHeader(),
             $dto->getUpdateCallerid(),
-            $dto->getDirectConnectivity());
+            $dto->getDirectConnectivity()
+        );
 
         $self
             ->setIp($dto->getIp())
@@ -343,11 +345,10 @@ abstract class ResidentialDeviceAbstract
             'languageId' => self::getLanguage() ? self::getLanguage()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -375,6 +376,7 @@ abstract class ResidentialDeviceAbstract
     }
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description
@@ -402,6 +404,7 @@ abstract class ResidentialDeviceAbstract
     }
 
     /**
+     * @deprecated
      * Set transport
      *
      * @param string $transport
@@ -434,6 +437,7 @@ abstract class ResidentialDeviceAbstract
     }
 
     /**
+     * @deprecated
      * Set ip
      *
      * @param string $ip
@@ -462,6 +466,7 @@ abstract class ResidentialDeviceAbstract
     }
 
     /**
+     * @deprecated
      * Set port
      *
      * @param integer $port
@@ -493,6 +498,7 @@ abstract class ResidentialDeviceAbstract
     }
 
     /**
+     * @deprecated
      * Set authNeeded
      *
      * @param string $authNeeded
@@ -519,6 +525,7 @@ abstract class ResidentialDeviceAbstract
     }
 
     /**
+     * @deprecated
      * Set password
      *
      * @param string $password
@@ -547,6 +554,7 @@ abstract class ResidentialDeviceAbstract
     }
 
     /**
+     * @deprecated
      * Set disallow
      *
      * @param string $disallow
@@ -574,6 +582,7 @@ abstract class ResidentialDeviceAbstract
     }
 
     /**
+     * @deprecated
      * Set allow
      *
      * @param string $allow
@@ -601,6 +610,7 @@ abstract class ResidentialDeviceAbstract
     }
 
     /**
+     * @deprecated
      * Set directMediaMethod
      *
      * @param string $directMediaMethod
@@ -631,6 +641,7 @@ abstract class ResidentialDeviceAbstract
     }
 
     /**
+     * @deprecated
      * Set calleridUpdateHeader
      *
      * @param string $calleridUpdateHeader
@@ -661,6 +672,7 @@ abstract class ResidentialDeviceAbstract
     }
 
     /**
+     * @deprecated
      * Set updateCallerid
      *
      * @param string $updateCallerid
@@ -691,6 +703,7 @@ abstract class ResidentialDeviceAbstract
     }
 
     /**
+     * @deprecated
      * Set fromDomain
      *
      * @param string $fromDomain
@@ -719,6 +732,7 @@ abstract class ResidentialDeviceAbstract
     }
 
     /**
+     * @deprecated
      * Set directConnectivity
      *
      * @param string $directConnectivity
@@ -892,8 +906,5 @@ abstract class ResidentialDeviceAbstract
         return $this->language;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

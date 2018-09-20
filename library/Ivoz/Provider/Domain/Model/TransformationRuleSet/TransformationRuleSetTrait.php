@@ -91,8 +91,6 @@ trait TransformationRuleSetTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add rule
      *
@@ -164,7 +162,4 @@ trait TransformationRuleSetTrait
 
         return $this->rules->toArray();
     }
-
-
 }
-

@@ -34,6 +34,17 @@ services:
       $storagePathResolver: '@Service\StoragePathResolverCollection::BrandUrl'
 
   ##########################################
+  ## CallCsvReport
+  ##########################################
+  Ivoz\Provider\Application\Service\CallCsvReport\CallCsvReportAssembler:
+    arguments:
+      $storagePathResolver: '@Service\StoragePathResolverCollection::CallCsvReport'
+
+  Ivoz\Provider\Application\Service\CallCsvReport\CallCsvReportDtoAssembler:
+    arguments:
+      $storagePathResolver: '@Service\StoragePathResolverCollection::CallCsvReport'
+
+  ##########################################
   ## FaxesInOut
   ##########################################
   Ivoz\Provider\Application\Service\FaxesInOut\FaxesInOutAssembler:

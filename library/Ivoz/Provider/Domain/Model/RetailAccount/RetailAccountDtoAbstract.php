@@ -166,7 +166,6 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
                 );
             }
         }
-
     }
 
     /**
@@ -610,5 +609,3 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
         return $this->ddis;
     }
 }
-
-

@@ -91,8 +91,6 @@ trait PickUpGroupTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add relUser
      *
@@ -164,7 +162,4 @@ trait PickUpGroupTrait
 
         return $this->relUsers->toArray();
     }
-
-
 }
-

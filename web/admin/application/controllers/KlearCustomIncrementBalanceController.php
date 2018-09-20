@@ -45,7 +45,7 @@ class KlearCustomIncrementBalanceController extends Zend_Controller_Action
         $id = $this->_mainRouter->getParam('pk', false);
 
         if (!$id) {
-            $message = _('Id not found');
+            $message = $this->_helper->translate('Id not found');
             return $this->_dispatch( $message, $buttons);
         }
 
@@ -72,8 +72,8 @@ class KlearCustomIncrementBalanceController extends Zend_Controller_Action
             );
 
             $reponseMessage = $success
-                ? _('Balance modified successfully')
-                : sprintf(_('There was an error: %s'), $balanceService->getLastError());
+                ? $this->_helper->translate('Balance modified successfully')
+                : sprintf($this->_helper->translate('There was an error: %s'), $balanceService->getLastError());
 
             return $this->_dispatch( $reponseMessage, $buttons);
         }
@@ -90,7 +90,7 @@ class KlearCustomIncrementBalanceController extends Zend_Controller_Action
         $id = $this->_mainRouter->getParam('pk', false);
 
         if (!$id) {
-            $message = _('Id not found');
+            $message = $this->_helper->translate('Id not found');
             return $this->_dispatch( $message, $buttons);
         }
 
@@ -117,8 +117,8 @@ class KlearCustomIncrementBalanceController extends Zend_Controller_Action
             );
 
             $reponseMessage = $success
-                ? _('Balance modified successfully')
-                : sprintf(_('There was an error: %s'), $balanceService->getLastError());
+                ? $this->_helper->translate('Balance modified successfully')
+                : sprintf($this->_helper->translate('There was an error: %s'), $balanceService->getLastError());
 
             return $this->_dispatch( $reponseMessage, $buttons);
         }
@@ -188,12 +188,14 @@ class KlearCustomIncrementBalanceController extends Zend_Controller_Action
             . $styles
             . '<p class="updateable-item" style="font-size: 0.8em;">'
             . sprintf(
-                _('Add balance operation to <strong>%s</strong>'),
+                $this->_helper->translate('Add balance operation to <strong>%s</strong>'),
                 $name,
                 $id
             )
             . '</p>'
-            . '<p class="updateable-item" style="font-size: 0.8em;z-index: 9999999;"><label for="amount">Amount</label>'
+            . '<p class="updateable-item" style="font-size: 0.8em;z-index: 9999999;"><label for="amount">'
+            . $this->_helper->translate('Amount')
+            . '</label>'
             . $operationSelector
             . $inputFld
             . ' €'
@@ -201,7 +203,7 @@ class KlearCustomIncrementBalanceController extends Zend_Controller_Action
             . '</form>';
 
         $buttons = [
-            _('Send') => [
+            $this->_helper->translate('Send') => [
                 'reloadParent' => false,
                 'recall' => true,
                 'params' => ['sent' => true]
@@ -211,12 +213,12 @@ class KlearCustomIncrementBalanceController extends Zend_Controller_Action
     }
 
     protected function _dispatch( $message, $buttons = array()){
-        $buttons[_('Close')] = [
+        $buttons[$this->_helper->translate('Close')] = [
             'reloadParent' => true,
             'recall' => false,
         ];
         $data = [
-            'title' => _("Add balance"),
+            'title' => $this->_helper->translate("Add balance"),
             'message' => $message,
             'buttons'=>$buttons
         ];

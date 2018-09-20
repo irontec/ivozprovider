@@ -20,5 +20,3 @@ class FeatureDto extends FeatureDtoAbstract
         return parent::getPropertyMap(...func_get_args());
     }
 }
-
-

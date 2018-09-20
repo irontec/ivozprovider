@@ -46,14 +46,14 @@ abstract class BalanceMovementAbstract
      */
     protected function __construct()
     {
-
     }
 
     abstract public function getId();
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "BalanceMovement",
             $this->getId()
         );
@@ -179,11 +179,10 @@ abstract class BalanceMovementAbstract
             'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set amount
      *
      * @param string $amount
@@ -195,6 +194,7 @@ abstract class BalanceMovementAbstract
         if (!is_null($amount)) {
             if (!is_null($amount)) {
                 Assertion::numeric($amount);
+                $amount = (float) $amount;
             }
         }
 
@@ -214,6 +214,7 @@ abstract class BalanceMovementAbstract
     }
 
     /**
+     * @deprecated
      * Set balance
      *
      * @param string $balance
@@ -225,6 +226,7 @@ abstract class BalanceMovementAbstract
         if (!is_null($balance)) {
             if (!is_null($balance)) {
                 Assertion::numeric($balance);
+                $balance = (float) $balance;
             }
         }
 
@@ -244,6 +246,7 @@ abstract class BalanceMovementAbstract
     }
 
     /**
+     * @deprecated
      * Set createdOn
      *
      * @param \DateTime $createdOn
@@ -253,10 +256,10 @@ abstract class BalanceMovementAbstract
     public function setCreatedOn($createdOn = null)
     {
         if (!is_null($createdOn)) {
-        $createdOn = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
-            $createdOn,
-            'CURRENT_TIMESTAMP'
-        );
+            $createdOn = \Ivoz\Core\Domain\Model\Helper\DateTimeHelper::createOrFix(
+                $createdOn,
+                'CURRENT_TIMESTAMP'
+            );
         }
 
         $this->createdOn = $createdOn;
@@ -322,8 +325,5 @@ abstract class BalanceMovementAbstract
         return $this->carrier;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

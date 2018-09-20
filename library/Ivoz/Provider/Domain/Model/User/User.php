@@ -42,7 +42,8 @@ class User extends UserAbstract implements UserInterface, AdvancedUserInterface,
      */
     public function __toString()
     {
-        return sprintf("%s %s [%s]",
+        return sprintf(
+            "%s %s [%s]",
             $this->getName(),
             $this->getLastname(),
             parent::__toString()
@@ -204,7 +205,6 @@ class User extends UserAbstract implements UserInterface, AdvancedUserInterface,
     {
         $ddi = $this->getOutgoingDdi();
         if ($ddi) {
-
             return $ddi->getDdiE164();
         }
 
@@ -221,7 +221,6 @@ class User extends UserAbstract implements UserInterface, AdvancedUserInterface,
     {
         $ddi = parent::getOutgoingDdi();
         if ($ddi) {
-
             return $ddi;
         }
 
@@ -239,7 +238,6 @@ class User extends UserAbstract implements UserInterface, AdvancedUserInterface,
     {
         $outgoingDdiRule = parent::getOutgoingDdiRule();
         if ($outgoingDdiRule) {
-
             return $outgoingDdiRule;
         }
 
@@ -256,7 +254,6 @@ class User extends UserAbstract implements UserInterface, AdvancedUserInterface,
     {
         $extension = $this->getExtension();
         if ($extension) {
-
             return $extension
                 ->getNumber();
         }
@@ -272,7 +269,6 @@ class User extends UserAbstract implements UserInterface, AdvancedUserInterface,
     {
         $callAcl = $this->getCallAcl();
         if (empty($callAcl)) {
-
             return true;
         }
 
@@ -292,9 +288,7 @@ class User extends UserAbstract implements UserInterface, AdvancedUserInterface,
          */
         $pickUpRelUsers = $this->getPickUpRelUsers();
         if (!empty($pickUpRelUsers)) {
-
             foreach ($pickUpRelUsers as $key => $pickUpRelUser) {
-
                 $pickUpGroups[$key] = $pickUpRelUser->getPickUpGroup();
             }
         }
@@ -377,7 +371,6 @@ class User extends UserAbstract implements UserInterface, AdvancedUserInterface,
     {
         $language = parent::getLanguage();
         if ($language) {
-
             return $language;
         }
 
@@ -413,11 +406,22 @@ class User extends UserAbstract implements UserInterface, AdvancedUserInterface,
     {
         $timeZone = parent::getTimezone();
         if (!empty($timeZone)) {
-
             return $timeZone;
         }
 
         return $this->getCompany()->getDefaultTimezone();
     }
-}
 
+    /**
+     * @return string
+     */
+    public function getFullNameExtension()
+    {
+        return sprintf(
+            "%s %s (%s)",
+            $this->getName(),
+            $this->getLastname(),
+            $this->getExtensionNumber()
+        );
+    }
+}

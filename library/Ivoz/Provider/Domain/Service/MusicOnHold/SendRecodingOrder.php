@@ -41,6 +41,5 @@ class SendRecodingOrder implements MusicOnHoldLifecycleEventHandlerInterface
                 ->setEntityName(MusicOnHold::class)
                 ->send();
         }
-
     }
 }

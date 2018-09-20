@@ -143,7 +143,8 @@ abstract class PsEndpointAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "PsEndpoint",
             $this->getId()
         );
@@ -207,7 +208,8 @@ abstract class PsEndpointAbstract
             $dto->getContext(),
             $dto->getDisallow(),
             $dto->getAllow(),
-            $dto->getOneHundredRel());
+            $dto->getOneHundredRel()
+        );
 
         $self
             ->setFromDomain($dto->getFromDomain())
@@ -325,11 +327,10 @@ abstract class PsEndpointAbstract
             'residentialDeviceId' => self::getResidentialDevice() ? self::getResidentialDevice()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set sorceryId
      *
      * @param string $sorceryId
@@ -357,6 +358,7 @@ abstract class PsEndpointAbstract
     }
 
     /**
+     * @deprecated
      * Set fromDomain
      *
      * @param string $fromDomain
@@ -385,6 +387,7 @@ abstract class PsEndpointAbstract
     }
 
     /**
+     * @deprecated
      * Set aors
      *
      * @param string $aors
@@ -413,6 +416,7 @@ abstract class PsEndpointAbstract
     }
 
     /**
+     * @deprecated
      * Set callerid
      *
      * @param string $callerid
@@ -441,6 +445,7 @@ abstract class PsEndpointAbstract
     }
 
     /**
+     * @deprecated
      * Set context
      *
      * @param string $context
@@ -468,6 +473,7 @@ abstract class PsEndpointAbstract
     }
 
     /**
+     * @deprecated
      * Set disallow
      *
      * @param string $disallow
@@ -495,6 +501,7 @@ abstract class PsEndpointAbstract
     }
 
     /**
+     * @deprecated
      * Set allow
      *
      * @param string $allow
@@ -522,6 +529,7 @@ abstract class PsEndpointAbstract
     }
 
     /**
+     * @deprecated
      * Set directMedia
      *
      * @param string $directMedia
@@ -549,6 +557,7 @@ abstract class PsEndpointAbstract
     }
 
     /**
+     * @deprecated
      * Set directMediaMethod
      *
      * @param string $directMediaMethod
@@ -558,11 +567,11 @@ abstract class PsEndpointAbstract
     public function setDirectMediaMethod($directMediaMethod = null)
     {
         if (!is_null($directMediaMethod)) {
-        Assertion::choice($directMediaMethod, array (
-          0 => 'update',
-          1 => 'invite',
-          2 => 'reinvite',
-        ), 'directMediaMethodvalue "%s" is not an element of the valid values: %s');
+            Assertion::choice($directMediaMethod, array (
+              0 => 'update',
+              1 => 'invite',
+              2 => 'reinvite',
+            ), 'directMediaMethodvalue "%s" is not an element of the valid values: %s');
         }
 
         $this->directMediaMethod = $directMediaMethod;
@@ -581,6 +590,7 @@ abstract class PsEndpointAbstract
     }
 
     /**
+     * @deprecated
      * Set mailboxes
      *
      * @param string $mailboxes
@@ -609,6 +619,7 @@ abstract class PsEndpointAbstract
     }
 
     /**
+     * @deprecated
      * Set namedPickupGroup
      *
      * @param string $namedPickupGroup
@@ -637,6 +648,7 @@ abstract class PsEndpointAbstract
     }
 
     /**
+     * @deprecated
      * Set sendDiversion
      *
      * @param string $sendDiversion
@@ -664,6 +676,7 @@ abstract class PsEndpointAbstract
     }
 
     /**
+     * @deprecated
      * Set sendPai
      *
      * @param string $sendPai
@@ -691,6 +704,7 @@ abstract class PsEndpointAbstract
     }
 
     /**
+     * @deprecated
      * Set oneHundredRel
      *
      * @param string $oneHundredRel
@@ -717,6 +731,7 @@ abstract class PsEndpointAbstract
     }
 
     /**
+     * @deprecated
      * Set outboundProxy
      *
      * @param string $outboundProxy
@@ -745,6 +760,7 @@ abstract class PsEndpointAbstract
     }
 
     /**
+     * @deprecated
      * Set trustIdInbound
      *
      * @param string $trustIdInbound
@@ -843,8 +859,5 @@ abstract class PsEndpointAbstract
         return $this->residentialDevice;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

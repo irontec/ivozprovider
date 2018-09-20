@@ -121,7 +121,6 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -408,5 +407,3 @@ abstract class DestinationRateDtoAbstract implements DataTransferObjectInterface
         return null;
     }
 }
-
-

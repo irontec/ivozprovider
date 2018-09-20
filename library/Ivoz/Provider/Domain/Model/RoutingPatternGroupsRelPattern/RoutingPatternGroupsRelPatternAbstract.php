@@ -31,14 +31,14 @@ abstract class RoutingPatternGroupsRelPatternAbstract
      */
     protected function __construct()
     {
-
     }
 
     abstract public function getId();
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "RoutingPatternGroupsRelPattern",
             $this->getId()
         );
@@ -152,8 +152,6 @@ abstract class RoutingPatternGroupsRelPatternAbstract
             'routingPatternGroupId' => self::getRoutingPatternGroup() ? self::getRoutingPatternGroup()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -204,8 +202,5 @@ abstract class RoutingPatternGroupsRelPatternAbstract
         return $this->routingPatternGroup;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

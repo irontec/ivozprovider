@@ -27,6 +27,7 @@ interface TpAccountActionInterface extends LoggableEntityInterface
     public function setCarrier(\Ivoz\Provider\Domain\Model\Carrier\CarrierInterface $carrier = null);
 
     /**
+     * @deprecated
      * Set tpid
      *
      * @param string $tpid
@@ -43,6 +44,7 @@ interface TpAccountActionInterface extends LoggableEntityInterface
     public function getTpid();
 
     /**
+     * @deprecated
      * Set loadid
      *
      * @param string $loadid
@@ -59,6 +61,7 @@ interface TpAccountActionInterface extends LoggableEntityInterface
     public function getLoadid();
 
     /**
+     * @deprecated
      * Set tenant
      *
      * @param string $tenant
@@ -75,6 +78,7 @@ interface TpAccountActionInterface extends LoggableEntityInterface
     public function getTenant();
 
     /**
+     * @deprecated
      * Set account
      *
      * @param string $account
@@ -91,6 +95,7 @@ interface TpAccountActionInterface extends LoggableEntityInterface
     public function getAccount();
 
     /**
+     * @deprecated
      * Set actionPlanTag
      *
      * @param string $actionPlanTag
@@ -107,6 +112,7 @@ interface TpAccountActionInterface extends LoggableEntityInterface
     public function getActionPlanTag();
 
     /**
+     * @deprecated
      * Set actionTriggersTag
      *
      * @param string $actionTriggersTag
@@ -123,6 +129,7 @@ interface TpAccountActionInterface extends LoggableEntityInterface
     public function getActionTriggersTag();
 
     /**
+     * @deprecated
      * Set allowNegative
      *
      * @param boolean $allowNegative
@@ -139,6 +146,7 @@ interface TpAccountActionInterface extends LoggableEntityInterface
     public function getAllowNegative();
 
     /**
+     * @deprecated
      * Set disabled
      *
      * @param boolean $disabled
@@ -155,6 +163,7 @@ interface TpAccountActionInterface extends LoggableEntityInterface
     public function getDisabled();
 
     /**
+     * @deprecated
      * Set createdAt
      *
      * @param \DateTime $createdAt
@@ -183,6 +192,4 @@ interface TpAccountActionInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\Carrier\CarrierInterface
      */
     public function getCarrier();
-
 }
-

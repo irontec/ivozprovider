@@ -1,6 +1,7 @@
 <?php
 
 namespace Ivoz\Provider\Domain\Model\CarrierServer;
+
 use Assert\Assertion;
 
 /**
@@ -117,4 +118,3 @@ class CarrierServer extends CarrierServerAbstract implements CarrierServerInterf
             );
     }
 }
-

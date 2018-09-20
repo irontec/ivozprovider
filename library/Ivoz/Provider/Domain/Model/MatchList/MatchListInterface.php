@@ -22,6 +22,7 @@ interface MatchListInterface extends LoggableEntityInterface
     public function numberMatches($number);
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -99,6 +100,4 @@ interface MatchListInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\MatchListPattern\MatchListPatternInterface[]
      */
     public function getPatterns(\Doctrine\Common\Collections\Criteria $criteria = null);
-
 }
-

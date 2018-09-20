@@ -74,7 +74,8 @@ abstract class DispatcherAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "Dispatcher",
             $this->getId()
         );
@@ -139,7 +140,8 @@ abstract class DispatcherAbstract
             $dto->getFlags(),
             $dto->getPriority(),
             $dto->getAttrs(),
-            $dto->getDescription());
+            $dto->getDescription()
+        );
 
         $self
             ->setApplicationServer($dto->getApplicationServer())
@@ -208,11 +210,10 @@ abstract class DispatcherAbstract
             'applicationServerId' => self::getApplicationServer() ? self::getApplicationServer()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set setid
      *
      * @param integer $setid
@@ -240,6 +241,7 @@ abstract class DispatcherAbstract
     }
 
     /**
+     * @deprecated
      * Set destination
      *
      * @param string $destination
@@ -267,6 +269,7 @@ abstract class DispatcherAbstract
     }
 
     /**
+     * @deprecated
      * Set flags
      *
      * @param integer $flags
@@ -294,6 +297,7 @@ abstract class DispatcherAbstract
     }
 
     /**
+     * @deprecated
      * Set priority
      *
      * @param integer $priority
@@ -321,6 +325,7 @@ abstract class DispatcherAbstract
     }
 
     /**
+     * @deprecated
      * Set attrs
      *
      * @param string $attrs
@@ -348,6 +353,7 @@ abstract class DispatcherAbstract
     }
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description
@@ -398,8 +404,5 @@ abstract class DispatcherAbstract
         return $this->applicationServer;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

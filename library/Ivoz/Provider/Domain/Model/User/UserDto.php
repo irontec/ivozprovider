@@ -89,7 +89,8 @@ class UserDto extends UserDtoAbstract
                 'doNotDisturb' => 'doNotDisturb',
                 'isBoss' => 'isBoss',
                 'maxCalls' => 'maxCalls',
-                'bossAssistantId' => 'bossAssistant'
+                'bossAssistantId' => 'bossAssistant',
+                'timezoneId' => 'timezone'
             ];
         }
 
@@ -123,5 +124,3 @@ class UserDto extends UserDtoAbstract
         return parent::denormalize($data, $context);
     }
 }
-
-

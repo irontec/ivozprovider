@@ -22,7 +22,4 @@ class TpTiming extends TpTimingAbstract implements TpTimingInterface
     {
         return $this->id;
     }
-
-
 }
-

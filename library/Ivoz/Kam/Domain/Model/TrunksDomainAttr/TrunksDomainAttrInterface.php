@@ -13,6 +13,7 @@ interface TrunksDomainAttrInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @deprecated
      * Set did
      *
      * @param string $did
@@ -29,6 +30,7 @@ interface TrunksDomainAttrInterface extends LoggableEntityInterface
     public function getDid();
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -45,6 +47,7 @@ interface TrunksDomainAttrInterface extends LoggableEntityInterface
     public function getName();
 
     /**
+     * @deprecated
      * Set type
      *
      * @param integer $type
@@ -61,6 +64,7 @@ interface TrunksDomainAttrInterface extends LoggableEntityInterface
     public function getType();
 
     /**
+     * @deprecated
      * Set value
      *
      * @param string $value
@@ -77,6 +81,7 @@ interface TrunksDomainAttrInterface extends LoggableEntityInterface
     public function getValue();
 
     /**
+     * @deprecated
      * Set lastModified
      *
      * @param \DateTime $lastModified
@@ -91,6 +96,4 @@ interface TrunksDomainAttrInterface extends LoggableEntityInterface
      * @return \DateTime
      */
     public function getLastModified();
-
 }
-

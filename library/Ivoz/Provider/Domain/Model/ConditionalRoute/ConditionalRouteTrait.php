@@ -91,8 +91,6 @@ trait ConditionalRouteTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add condition
      *
@@ -164,7 +162,4 @@ trait ConditionalRouteTrait
 
         return $this->conditions->toArray();
     }
-
-
 }
-

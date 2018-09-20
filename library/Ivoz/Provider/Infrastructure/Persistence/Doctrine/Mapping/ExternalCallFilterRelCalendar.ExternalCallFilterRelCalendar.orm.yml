@@ -1,6 +1,7 @@
 Ivoz\Provider\Domain\Model\ExternalCallFilterRelCalendar\ExternalCallFilterRelCalendar:
   repositoryClass: Ivoz\Provider\Infrastructure\Persistence\Doctrine\ExternalCallFilterRelCalendarDoctrineRepository
   type: entity
+  changeTrackingPolicy: DEFERRED_EXPLICIT
   table: ExternalCallFilterRelCalendars
   id:
     id:

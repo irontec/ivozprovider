@@ -31,14 +31,14 @@ abstract class ExternalCallFilterRelScheduleAbstract
      */
     protected function __construct()
     {
-
     }
 
     abstract public function getId();
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "ExternalCallFilterRelSchedule",
             $this->getId()
         );
@@ -152,8 +152,6 @@ abstract class ExternalCallFilterRelScheduleAbstract
             'scheduleId' => self::getSchedule() ? self::getSchedule()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
@@ -204,8 +202,5 @@ abstract class ExternalCallFilterRelScheduleAbstract
         return $this->schedule;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

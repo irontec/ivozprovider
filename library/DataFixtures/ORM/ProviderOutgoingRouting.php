@@ -22,6 +22,7 @@ class ProviderOutgoingRouting extends Fixture implements DependentFixtureInterfa
 
         /** @var OutgoingRouting $item1 */
         $item1 = $this->createEntityInstanceWithPublicMethods(OutgoingRouting::class);
+        $item1->setRoutingMode(OutgoingRouting::MODE_STATIC);
         $item1->setType("pattern");
         $item1->setPriority(1);
         $item1->setWeight(1);
@@ -31,10 +32,16 @@ class ProviderOutgoingRouting extends Fixture implements DependentFixtureInterfa
         $item1->setRoutingPattern($this->getReference('_reference_ProviderRoutingPatternRoutingPattern68'));
         $item1->setRoutingTag($this->getReference('_reference_ProviderRoutingTag1'));
         $this->addReference('_reference_ProviderOutgoingRouting1', $item1);
-        $this->sanitizeEntityValues($item1);
+        /**
+         * @FIXME Sanitize must be disabled for this entity because static routingMode checks
+         *   must ensure relCarriers is empty. This doesn't happen on DateFixure created entities because
+         *   they don't create entities using class contructor.
+         */
+        //$this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
         $item2 = $this->createEntityInstanceWithPublicMethods(OutgoingRouting::class);
+        $item2->setRoutingMode(OutgoingRouting::MODE_STATIC);
         $item2->setType("pattern");
         $item2->setPriority(11);
         $item2->setWeight(6);
@@ -43,7 +50,7 @@ class ProviderOutgoingRouting extends Fixture implements DependentFixtureInterfa
         $item2->setRoutingPattern($this->getReference('_reference_ProviderRoutingPatternRoutingPattern68'));
         $item2->setRoutingTag($this->getReference('_reference_ProviderRoutingTag1'));
         $this->addReference('_reference_ProviderOutgoingRouting2', $item2);
-        $this->sanitizeEntityValues($item2);
+        //$this->sanitizeEntityValues($item2);
         $manager->persist($item2);
 
         $manager->flush();

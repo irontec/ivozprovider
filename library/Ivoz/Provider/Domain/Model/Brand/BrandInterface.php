@@ -2,10 +2,11 @@
 
 namespace Ivoz\Provider\Domain\Model\Brand;
 
+use Ivoz\Core\Domain\Service\FileContainerInterface;
 use Ivoz\Core\Domain\Model\LoggableEntityInterface;
 use Doctrine\Common\Collections\Collection;
 
-interface BrandInterface extends LoggableEntityInterface
+interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
 {
     /**
      * @codeCoverageIgnore
@@ -30,13 +31,6 @@ interface BrandInterface extends LoggableEntityInterface
     public function getLanguageCode();
 
     /**
-     * @param CompanyInterface $company
-     * @param null $destination
-     * @return bool
-     */
-    public function willUseExternallyRating(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company, $destination = null);
-
-    /**
      * Get the size in bytes used by the recordings on this brand
      *
      */
@@ -59,6 +53,14 @@ interface BrandInterface extends LoggableEntityInterface
     public function hasFeature($featureId);
 
     /**
+     * Return Brand Cgrates tenant code
+     *
+     * @return string
+     */
+    public function getCgrTenant();
+
+    /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -82,6 +84,7 @@ interface BrandInterface extends LoggableEntityInterface
     public function getDomainUsers();
 
     /**
+     * @deprecated
      * Set recordingsLimitMB
      *
      * @param integer $recordingsLimitMB
@@ -98,6 +101,7 @@ interface BrandInterface extends LoggableEntityInterface
     public function getRecordingsLimitMB();
 
     /**
+     * @deprecated
      * Set recordingsLimitEmail
      *
      * @param string $recordingsLimitEmail
@@ -114,6 +118,7 @@ interface BrandInterface extends LoggableEntityInterface
     public function getRecordingsLimitEmail();
 
     /**
+     * @deprecated
      * Set maxCalls
      *
      * @param integer $maxCalls
@@ -479,6 +484,4 @@ interface BrandInterface extends LoggableEntityInterface
      * @return null | TempFile
      */
     public function getTempFileByFieldName($fldName);
-
 }
-

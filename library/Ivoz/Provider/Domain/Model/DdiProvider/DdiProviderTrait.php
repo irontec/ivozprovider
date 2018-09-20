@@ -104,8 +104,6 @@ trait DdiProviderTrait
             'id' => self::getId()
         ];
     }
-
-
     /**
      * Add ddiProviderRegistration
      *
@@ -249,7 +247,4 @@ trait DdiProviderTrait
 
         return $this->ddiProviderAddresses->toArray();
     }
-
-
 }
-

@@ -20,6 +20,7 @@ interface CallAclInterface extends LoggableEntityInterface
     public function dstIsCallable($dst);
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -36,6 +37,7 @@ interface CallAclInterface extends LoggableEntityInterface
     public function getName();
 
     /**
+     * @deprecated
      * Set defaultPolicy
      *
      * @param string $defaultPolicy
@@ -97,6 +99,4 @@ interface CallAclInterface extends LoggableEntityInterface
      * @return \Ivoz\Provider\Domain\Model\CallAclRelMatchList\CallAclRelMatchListInterface[]
      */
     public function getRelMatchLists(\Doctrine\Common\Collections\Criteria $criteria = null);
-
 }
-

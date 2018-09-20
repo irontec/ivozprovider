@@ -174,7 +174,8 @@ abstract class UsersLocationAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "UsersLocation",
             $this->getId()
         );
@@ -249,7 +250,8 @@ abstract class UsersLocationAbstract
             $dto->getServerId(),
             $dto->getConnectionId(),
             $dto->getKeepalive(),
-            $dto->getPartition());
+            $dto->getPartition()
+        );
 
         $self
             ->setDomain($dto->getDomain())
@@ -368,11 +370,10 @@ abstract class UsersLocationAbstract
             'partition' => self::getPartition()
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set ruid
      *
      * @param string $ruid
@@ -400,6 +401,7 @@ abstract class UsersLocationAbstract
     }
 
     /**
+     * @deprecated
      * Set username
      *
      * @param string $username
@@ -427,6 +429,7 @@ abstract class UsersLocationAbstract
     }
 
     /**
+     * @deprecated
      * Set domain
      *
      * @param string $domain
@@ -455,6 +458,7 @@ abstract class UsersLocationAbstract
     }
 
     /**
+     * @deprecated
      * Set contact
      *
      * @param string $contact
@@ -482,6 +486,7 @@ abstract class UsersLocationAbstract
     }
 
     /**
+     * @deprecated
      * Set received
      *
      * @param string $received
@@ -510,6 +515,7 @@ abstract class UsersLocationAbstract
     }
 
     /**
+     * @deprecated
      * Set path
      *
      * @param string $path
@@ -538,6 +544,7 @@ abstract class UsersLocationAbstract
     }
 
     /**
+     * @deprecated
      * Set expires
      *
      * @param \DateTime $expires
@@ -568,6 +575,7 @@ abstract class UsersLocationAbstract
     }
 
     /**
+     * @deprecated
      * Set q
      *
      * @param float $q
@@ -578,6 +586,7 @@ abstract class UsersLocationAbstract
     {
         Assertion::notNull($q, 'q value "%s" is null, but non null value was expected.');
         Assertion::numeric($q);
+        $q = (float) $q;
 
         $this->q = $q;
 
@@ -595,6 +604,7 @@ abstract class UsersLocationAbstract
     }
 
     /**
+     * @deprecated
      * Set callid
      *
      * @param string $callid
@@ -622,6 +632,7 @@ abstract class UsersLocationAbstract
     }
 
     /**
+     * @deprecated
      * Set cseq
      *
      * @param integer $cseq
@@ -649,6 +660,7 @@ abstract class UsersLocationAbstract
     }
 
     /**
+     * @deprecated
      * Set lastModified
      *
      * @param \DateTime $lastModified
@@ -679,6 +691,7 @@ abstract class UsersLocationAbstract
     }
 
     /**
+     * @deprecated
      * Set flags
      *
      * @param integer $flags
@@ -706,6 +719,7 @@ abstract class UsersLocationAbstract
     }
 
     /**
+     * @deprecated
      * Set cflags
      *
      * @param integer $cflags
@@ -733,6 +747,7 @@ abstract class UsersLocationAbstract
     }
 
     /**
+     * @deprecated
      * Set userAgent
      *
      * @param string $userAgent
@@ -760,6 +775,7 @@ abstract class UsersLocationAbstract
     }
 
     /**
+     * @deprecated
      * Set socket
      *
      * @param string $socket
@@ -788,6 +804,7 @@ abstract class UsersLocationAbstract
     }
 
     /**
+     * @deprecated
      * Set methods
      *
      * @param integer $methods
@@ -818,6 +835,7 @@ abstract class UsersLocationAbstract
     }
 
     /**
+     * @deprecated
      * Set instance
      *
      * @param string $instance
@@ -846,6 +864,7 @@ abstract class UsersLocationAbstract
     }
 
     /**
+     * @deprecated
      * Set regId
      *
      * @param integer $regId
@@ -873,6 +892,7 @@ abstract class UsersLocationAbstract
     }
 
     /**
+     * @deprecated
      * Set serverId
      *
      * @param integer $serverId
@@ -900,6 +920,7 @@ abstract class UsersLocationAbstract
     }
 
     /**
+     * @deprecated
      * Set connectionId
      *
      * @param integer $connectionId
@@ -927,6 +948,7 @@ abstract class UsersLocationAbstract
     }
 
     /**
+     * @deprecated
      * Set keepalive
      *
      * @param integer $keepalive
@@ -954,6 +976,7 @@ abstract class UsersLocationAbstract
     }
 
     /**
+     * @deprecated
      * Set partition
      *
      * @param integer $partition
@@ -980,8 +1003,5 @@ abstract class UsersLocationAbstract
         return $this->partition;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

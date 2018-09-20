@@ -13,6 +13,7 @@ interface UsersPuaInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
+     * @deprecated
      * Set presUri
      *
      * @param string $presUri
@@ -29,6 +30,7 @@ interface UsersPuaInterface extends LoggableEntityInterface
     public function getPresUri();
 
     /**
+     * @deprecated
      * Set presId
      *
      * @param string $presId
@@ -45,6 +47,7 @@ interface UsersPuaInterface extends LoggableEntityInterface
     public function getPresId();
 
     /**
+     * @deprecated
      * Set event
      *
      * @param integer $event
@@ -61,6 +64,7 @@ interface UsersPuaInterface extends LoggableEntityInterface
     public function getEvent();
 
     /**
+     * @deprecated
      * Set expires
      *
      * @param integer $expires
@@ -77,6 +81,7 @@ interface UsersPuaInterface extends LoggableEntityInterface
     public function getExpires();
 
     /**
+     * @deprecated
      * Set desiredExpires
      *
      * @param integer $desiredExpires
@@ -93,6 +98,7 @@ interface UsersPuaInterface extends LoggableEntityInterface
     public function getDesiredExpires();
 
     /**
+     * @deprecated
      * Set flag
      *
      * @param integer $flag
@@ -109,6 +115,7 @@ interface UsersPuaInterface extends LoggableEntityInterface
     public function getFlag();
 
     /**
+     * @deprecated
      * Set etag
      *
      * @param string $etag
@@ -125,6 +132,7 @@ interface UsersPuaInterface extends LoggableEntityInterface
     public function getEtag();
 
     /**
+     * @deprecated
      * Set tupleId
      *
      * @param string $tupleId
@@ -141,6 +149,7 @@ interface UsersPuaInterface extends LoggableEntityInterface
     public function getTupleId();
 
     /**
+     * @deprecated
      * Set watcherUri
      *
      * @param string $watcherUri
@@ -157,6 +166,7 @@ interface UsersPuaInterface extends LoggableEntityInterface
     public function getWatcherUri();
 
     /**
+     * @deprecated
      * Set callId
      *
      * @param string $callId
@@ -173,6 +183,7 @@ interface UsersPuaInterface extends LoggableEntityInterface
     public function getCallId();
 
     /**
+     * @deprecated
      * Set toTag
      *
      * @param string $toTag
@@ -189,6 +200,7 @@ interface UsersPuaInterface extends LoggableEntityInterface
     public function getToTag();
 
     /**
+     * @deprecated
      * Set fromTag
      *
      * @param string $fromTag
@@ -205,6 +217,7 @@ interface UsersPuaInterface extends LoggableEntityInterface
     public function getFromTag();
 
     /**
+     * @deprecated
      * Set cseq
      *
      * @param integer $cseq
@@ -221,6 +234,7 @@ interface UsersPuaInterface extends LoggableEntityInterface
     public function getCseq();
 
     /**
+     * @deprecated
      * Set recordRoute
      *
      * @param string $recordRoute
@@ -237,6 +251,7 @@ interface UsersPuaInterface extends LoggableEntityInterface
     public function getRecordRoute();
 
     /**
+     * @deprecated
      * Set contact
      *
      * @param string $contact
@@ -253,6 +268,7 @@ interface UsersPuaInterface extends LoggableEntityInterface
     public function getContact();
 
     /**
+     * @deprecated
      * Set remoteContact
      *
      * @param string $remoteContact
@@ -269,6 +285,7 @@ interface UsersPuaInterface extends LoggableEntityInterface
     public function getRemoteContact();
 
     /**
+     * @deprecated
      * Set version
      *
      * @param integer $version
@@ -285,6 +302,7 @@ interface UsersPuaInterface extends LoggableEntityInterface
     public function getVersion();
 
     /**
+     * @deprecated
      * Set extraHeaders
      *
      * @param string $extraHeaders
@@ -299,6 +317,4 @@ interface UsersPuaInterface extends LoggableEntityInterface
      * @return string
      */
     public function getExtraHeaders();
-
 }
-

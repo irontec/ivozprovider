@@ -113,7 +113,8 @@ abstract class CarrierServerAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "CarrierServer",
             $this->getId()
         );
@@ -173,7 +174,8 @@ abstract class CarrierServerAbstract
         Assertion::isInstanceOf($dto, CarrierServerDto::class);
 
         $self = new static(
-            $dto->getAuthNeeded());
+            $dto->getAuthNeeded()
+        );
 
         $self
             ->setIp($dto->getIp())
@@ -283,11 +285,10 @@ abstract class CarrierServerAbstract
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set ip
      *
      * @param string $ip
@@ -316,6 +317,7 @@ abstract class CarrierServerAbstract
     }
 
     /**
+     * @deprecated
      * Set hostname
      *
      * @param string $hostname
@@ -344,6 +346,7 @@ abstract class CarrierServerAbstract
     }
 
     /**
+     * @deprecated
      * Set port
      *
      * @param integer $port
@@ -375,6 +378,7 @@ abstract class CarrierServerAbstract
     }
 
     /**
+     * @deprecated
      * Set uriScheme
      *
      * @param integer $uriScheme
@@ -406,6 +410,7 @@ abstract class CarrierServerAbstract
     }
 
     /**
+     * @deprecated
      * Set transport
      *
      * @param integer $transport
@@ -437,6 +442,7 @@ abstract class CarrierServerAbstract
     }
 
     /**
+     * @deprecated
      * Set sendPAI
      *
      * @param boolean $sendPAI
@@ -465,6 +471,7 @@ abstract class CarrierServerAbstract
     }
 
     /**
+     * @deprecated
      * Set sendRPID
      *
      * @param boolean $sendRPID
@@ -493,6 +500,7 @@ abstract class CarrierServerAbstract
     }
 
     /**
+     * @deprecated
      * Set authNeeded
      *
      * @param string $authNeeded
@@ -519,6 +527,7 @@ abstract class CarrierServerAbstract
     }
 
     /**
+     * @deprecated
      * Set authUser
      *
      * @param string $authUser
@@ -547,6 +556,7 @@ abstract class CarrierServerAbstract
     }
 
     /**
+     * @deprecated
      * Set authPassword
      *
      * @param string $authPassword
@@ -575,6 +585,7 @@ abstract class CarrierServerAbstract
     }
 
     /**
+     * @deprecated
      * Set sipProxy
      *
      * @param string $sipProxy
@@ -603,6 +614,7 @@ abstract class CarrierServerAbstract
     }
 
     /**
+     * @deprecated
      * Set outboundProxy
      *
      * @param string $outboundProxy
@@ -631,6 +643,7 @@ abstract class CarrierServerAbstract
     }
 
     /**
+     * @deprecated
      * Set fromUser
      *
      * @param string $fromUser
@@ -659,6 +672,7 @@ abstract class CarrierServerAbstract
     }
 
     /**
+     * @deprecated
      * Set fromDomain
      *
      * @param string $fromDomain
@@ -758,8 +772,5 @@ abstract class CarrierServerAbstract
         return $this->brand;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

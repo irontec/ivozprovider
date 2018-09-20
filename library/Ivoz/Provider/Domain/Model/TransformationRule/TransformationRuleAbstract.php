@@ -60,7 +60,8 @@ abstract class TransformationRuleAbstract
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "TransformationRule",
             $this->getId()
         );
@@ -121,7 +122,8 @@ abstract class TransformationRuleAbstract
 
         $self = new static(
             $dto->getType(),
-            $dto->getDescription());
+            $dto->getDescription()
+        );
 
         $self
             ->setPriority($dto->getPriority())
@@ -190,11 +192,10 @@ abstract class TransformationRuleAbstract
             'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set type
      *
      * @param string $type
@@ -228,6 +229,7 @@ abstract class TransformationRuleAbstract
     }
 
     /**
+     * @deprecated
      * Set description
      *
      * @param string $description
@@ -255,6 +257,7 @@ abstract class TransformationRuleAbstract
     }
 
     /**
+     * @deprecated
      * Set priority
      *
      * @param integer $priority
@@ -286,6 +289,7 @@ abstract class TransformationRuleAbstract
     }
 
     /**
+     * @deprecated
      * Set matchExpr
      *
      * @param string $matchExpr
@@ -314,6 +318,7 @@ abstract class TransformationRuleAbstract
     }
 
     /**
+     * @deprecated
      * Set replaceExpr
      *
      * @param string $replaceExpr
@@ -365,8 +370,5 @@ abstract class TransformationRuleAbstract
         return $this->transformationRuleSet;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-

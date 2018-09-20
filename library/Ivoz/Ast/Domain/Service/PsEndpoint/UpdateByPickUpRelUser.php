@@ -2,21 +2,22 @@
 
 namespace Ivoz\Ast\Domain\Service\PsEndpoint;
 
-use Ivoz\Core\Domain\Service\EntityPersisterInterface;
+use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointDto;
+use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface;
 use Ivoz\Provider\Domain\Service\PickUpRelUser\PickUpRelUserLifecycleEventHandlerInterface;
 
 class UpdateByPickUpRelUser implements PickUpRelUserLifecycleEventHandlerInterface
 {
     /**
-     * @var EntityPersisterInterface
+     * @var EntityTools
      */
-    protected $entityPersister;
+    protected $entityTools;
 
     public function __construct(
-        EntityPersisterInterface $entityPersister
+        EntityTools $entityTools
     ) {
-        $this->entityPersister = $entityPersister;
+        $this->entityTools = $entityTools;
     }
 
     public static function getSubscribedEvents()
@@ -27,9 +28,9 @@ class UpdateByPickUpRelUser implements PickUpRelUserLifecycleEventHandlerInterfa
         ];
     }
 
-    public function execute(PickUpRelUserInterface $entity, $isNew)
+    public function execute(PickUpRelUserInterface $pickUpRelUser, $isNew)
     {
-        $user = $entity->getUser();
+        $user = $pickUpRelUser->getUser();
         if (!$user) {
             return;
         }
@@ -39,12 +40,21 @@ class UpdateByPickUpRelUser implements PickUpRelUserLifecycleEventHandlerInterfa
             return;
         }
 
-        $endpoint->setNamedPickupGroup(
+        /** @var PsEndpointDto $endpointDto */
+        $endpointDto = $this
+            ->entityTools
+            ->entityToDto($endpoint);
+
+        $endpointDto->setNamedPickupGroup(
             $user->getPickUpGroupsIds()
         );
 
         $this
-            ->entityPersister
-            ->persist($endpoint);
+            ->entityTools
+            ->persistDto(
+                $endpointDto,
+                $endpoint,
+                false
+            );
     }
 }

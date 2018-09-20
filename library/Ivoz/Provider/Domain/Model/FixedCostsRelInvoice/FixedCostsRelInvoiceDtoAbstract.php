@@ -84,7 +84,6 @@ abstract class FixedCostsRelInvoiceDtoAbstract implements DataTransferObjectInte
      */
     public function transformCollections(CollectionTransformerInterface $transformer)
     {
-
     }
 
     /**
@@ -219,5 +218,3 @@ abstract class FixedCostsRelInvoiceDtoAbstract implements DataTransferObjectInte
         return null;
     }
 }
-
-

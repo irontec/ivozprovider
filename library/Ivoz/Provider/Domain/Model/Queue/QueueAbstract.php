@@ -133,14 +133,14 @@ abstract class QueueAbstract
      */
     protected function __construct()
     {
-
     }
 
     abstract public function getId();
 
     public function __toString()
     {
-        return sprintf("%s#%s",
+        return sprintf(
+            "%s#%s",
             "Queue",
             $this->getId()
         );
@@ -334,11 +334,10 @@ abstract class QueueAbstract
             'fullNumberCountryId' => self::getFullNumberCountry() ? self::getFullNumberCountry()->getId() : null
         ];
     }
-
-
     // @codeCoverageIgnoreStart
 
     /**
+     * @deprecated
      * Set name
      *
      * @param string $name
@@ -367,6 +366,7 @@ abstract class QueueAbstract
     }
 
     /**
+     * @deprecated
      * Set maxWaitTime
      *
      * @param integer $maxWaitTime
@@ -397,6 +397,7 @@ abstract class QueueAbstract
     }
 
     /**
+     * @deprecated
      * Set timeoutTargetType
      *
      * @param string $timeoutTargetType
@@ -407,11 +408,11 @@ abstract class QueueAbstract
     {
         if (!is_null($timeoutTargetType)) {
             Assertion::maxLength($timeoutTargetType, 25, 'timeoutTargetType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        Assertion::choice($timeoutTargetType, array (
-          0 => 'number',
-          1 => 'extension',
-          2 => 'voicemail',
-        ), 'timeoutTargetTypevalue "%s" is not an element of the valid values: %s');
+            Assertion::choice($timeoutTargetType, array (
+              0 => 'number',
+              1 => 'extension',
+              2 => 'voicemail',
+            ), 'timeoutTargetTypevalue "%s" is not an element of the valid values: %s');
         }
 
         $this->timeoutTargetType = $timeoutTargetType;
@@ -430,6 +431,7 @@ abstract class QueueAbstract
     }
 
     /**
+     * @deprecated
      * Set timeoutNumberValue
      *
      * @param string $timeoutNumberValue
@@ -458,6 +460,7 @@ abstract class QueueAbstract
     }
 
     /**
+     * @deprecated
      * Set maxlen
      *
      * @param integer $maxlen
@@ -488,6 +491,7 @@ abstract class QueueAbstract
     }
 
     /**
+     * @deprecated
      * Set fullTargetType
      *
      * @param string $fullTargetType
@@ -498,11 +502,11 @@ abstract class QueueAbstract
     {
         if (!is_null($fullTargetType)) {
             Assertion::maxLength($fullTargetType, 25, 'fullTargetType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
-        Assertion::choice($fullTargetType, array (
-          0 => 'number',
-          1 => 'extension',
-          2 => 'voicemail',
-        ), 'fullTargetTypevalue "%s" is not an element of the valid values: %s');
+            Assertion::choice($fullTargetType, array (
+              0 => 'number',
+              1 => 'extension',
+              2 => 'voicemail',
+            ), 'fullTargetTypevalue "%s" is not an element of the valid values: %s');
         }
 
         $this->fullTargetType = $fullTargetType;
@@ -521,6 +525,7 @@ abstract class QueueAbstract
     }
 
     /**
+     * @deprecated
      * Set fullNumberValue
      *
      * @param string $fullNumberValue
@@ -549,6 +554,7 @@ abstract class QueueAbstract
     }
 
     /**
+     * @deprecated
      * Set periodicAnnounceFrequency
      *
      * @param integer $periodicAnnounceFrequency
@@ -579,6 +585,7 @@ abstract class QueueAbstract
     }
 
     /**
+     * @deprecated
      * Set memberCallRest
      *
      * @param integer $memberCallRest
@@ -609,6 +616,7 @@ abstract class QueueAbstract
     }
 
     /**
+     * @deprecated
      * Set memberCallTimeout
      *
      * @param integer $memberCallTimeout
@@ -639,6 +647,7 @@ abstract class QueueAbstract
     }
 
     /**
+     * @deprecated
      * Set strategy
      *
      * @param string $strategy
@@ -666,6 +675,7 @@ abstract class QueueAbstract
     }
 
     /**
+     * @deprecated
      * Set weight
      *
      * @param integer $weight
@@ -935,8 +945,5 @@ abstract class QueueAbstract
         return $this->fullNumberCountry;
     }
 
-
-
     // @codeCoverageIgnoreEnd
 }
-
