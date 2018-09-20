@@ -112,8 +112,6 @@ abstract class CodecAbstract
             $dto->getName()
         );
 
-        $self;
-
         $self->sanitizeValues();
         $self->initChangelog();
 

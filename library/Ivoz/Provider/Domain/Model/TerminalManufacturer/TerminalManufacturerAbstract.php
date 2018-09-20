@@ -111,8 +111,6 @@ abstract class TerminalManufacturerAbstract
             $dto->getDescription()
         );
 
-        $self;
-
         $self->sanitizeValues();
         $self->initChangelog();
 

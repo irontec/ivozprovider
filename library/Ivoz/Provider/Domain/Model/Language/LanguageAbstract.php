@@ -109,8 +109,6 @@ abstract class LanguageAbstract
             $name
         );
 
-        $self;
-
         $self->sanitizeValues();
         $self->initChangelog();
 

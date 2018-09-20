@@ -140,8 +140,6 @@ abstract class ServiceAbstract
             $description
         );
 
-        $self;
-
         $self->sanitizeValues();
         $self->initChangelog();
 

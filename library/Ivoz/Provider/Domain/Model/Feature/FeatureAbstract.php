@@ -109,8 +109,6 @@ abstract class FeatureAbstract
             $name
         );
 
-        $self;
-
         $self->sanitizeValues();
         $self->initChangelog();
 

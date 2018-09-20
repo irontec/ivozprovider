@@ -112,9 +112,7 @@ public static function fromDto(DataTransferObjectInterface $dto)
     Assertion::isInstanceOf($dto, <dtoClass>::class);
 <voContructor>
     $self = new static(<requiredFieldsGetters>);
-
-    $self<fromDTO>;
-
+<fromDTO>
     $self->sanitizeValues();
     $self->initChangelog();
 
@@ -593,6 +591,8 @@ public function <methodName>(<criteriaArgument>)
             if ($metadata->isMappedSuperclass) {
                 $fromDTO =  "\n" . $spaces . '->' . $fromDTO . "\n" . $this->spaces;
             }
+
+            $fromDTO = "\n" . $this->spaces . '$self' . $fromDTO . ';' . "\n";
         }
 
         if (!empty($selfGetters)) {
