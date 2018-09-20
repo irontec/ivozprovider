@@ -31,13 +31,6 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
     public function getLanguageCode();
 
     /**
-     * @param CompanyInterface $company
-     * @param null $destination
-     * @return bool
-     */
-    public function willUseExternallyRating(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company, $destination = null);
-
-    /**
      * Get the size in bytes used by the recordings on this brand
      *
      */
