@@ -1,6 +1,6 @@
 {
 	"general": {
-		"rounding_decimals": 4,
+		"rounding_decimals": 10,
 		"default_request_type": "*postpaid",
 		"default_timezone": "UTC"
 	},
