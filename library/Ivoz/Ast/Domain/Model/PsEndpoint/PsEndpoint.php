@@ -2,9 +2,6 @@
 
 namespace Ivoz\Ast\Domain\Model\PsEndpoint;
 
-use Ivoz\Ivoz\Core\Application\DataTransferObjectInterface;
-use Ivoz\Provider\Domain\Model\User\UserInterface;
-
 /**
  * PsEndpoint
  */

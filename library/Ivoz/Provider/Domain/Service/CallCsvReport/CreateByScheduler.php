@@ -5,8 +5,8 @@ namespace Ivoz\Provider\Domain\Service\CallCsvReport;
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReportDto;
 use Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReportInterface;
+use Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerDto;
 use Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface;
-use Ivoz\Core\Infrastructure\Service\Rest\Client as RestClient;
 use Psr\Log\LoggerInterface;
 
 class CreateByScheduler
@@ -37,7 +37,8 @@ class CreateByScheduler
     }
 
     /**
-     * @throws \DomainException
+     * @param CallCsvSchedulerInterface $scheduler
+     * @throws \Exception
      */
     public function execute(CallCsvSchedulerInterface $scheduler)
     {
@@ -118,6 +119,7 @@ class CreateByScheduler
      */
     private function updateLastExecutionDate(CallCsvSchedulerInterface $scheduler)
     {
+        /** @var CallCsvSchedulerDto $invoiceSchedulerDto */
         $invoiceSchedulerDto = $this
             ->entityTools
             ->entityToDto($scheduler);

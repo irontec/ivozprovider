@@ -75,9 +75,6 @@ class Brand extends BrandAbstract implements FileContainerInterface, BrandInterf
         // Get the sum of all the companies usages
         $total = 0;
 
-        /**
-         * @var $company CompanyInterface
-         */
         foreach ($this->getCompanies() as $company) {
             $total += $company->getRecordingsDiskUsage();
         }

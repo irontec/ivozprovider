@@ -53,10 +53,7 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getMusicClass();
 
     /**
-     * Ensures valid domain value
-     * @param string $data
-     * @return \Ivoz\Provider\Model\Raw\Companies
-     * @throws \Exception
+     * @inheritdoc
      */
     public function setDomainUsers($domainUsers = null);
 
@@ -72,6 +69,12 @@ interface CompanyInterface extends LoggableEntityInterface
      */
     public function getRecordingsLimit();
 
+    /**
+     * Check if a Company has a given Feature by id
+     *
+     * @param $featureId
+     * @return bool
+     */
     public function hasFeature($featureId);
 
     /**
@@ -79,6 +82,9 @@ interface CompanyInterface extends LoggableEntityInterface
      */
     public function getOnDemandRecordDTMFs();
 
+    /**
+     * @return FeatureInterface[]
+     */
     public function getFeatures();
 
     /**

@@ -2,7 +2,6 @@
 
 namespace Ivoz\Core\Domain\Service;
 
-use Ivoz\Core\Application\Service\StoragePathResolverInterace;
 use Ivoz\Core\Application\Service\StoragePathResolverInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
 

@@ -2,7 +2,6 @@
 
 namespace Ivoz\Provider\Domain\Model\Terminal;
 
-use Assert\Assert;
 use Assert\Assertion;
 use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpointInterface;
 
@@ -60,6 +59,7 @@ class Terminal extends TerminalAbstract implements TerminalInterface
 
     /**
      * {@inheritDoc}
+     * @throws \Assert\AssertionFailedException
      */
     public function setName($name = null)
     {
@@ -72,6 +72,7 @@ class Terminal extends TerminalAbstract implements TerminalInterface
 
     /**
      * {@inheritDoc}
+     * @throws \Assert\AssertionFailedException
      */
     public function setPassword($password)
     {

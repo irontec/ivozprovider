@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Model\CallForwardSetting;
 
 use Assert\Assertion;
+use Ivoz\Provider\Domain\Model\CallAcl\CallAcl;
 use Ivoz\Provider\Domain\Traits\RoutableTrait;
 
 /**
@@ -49,6 +50,8 @@ class CallForwardSetting extends CallForwardSettingAbstract implements CallForwa
 
     /**
      * {@inheritDoc}
+     *
+     * @throws \Assert\AssertionFailedException
      */
     public function setNumberValue($numberValue = null)
     {

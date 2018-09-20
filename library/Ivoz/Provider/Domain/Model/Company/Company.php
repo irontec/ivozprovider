@@ -5,7 +5,10 @@ namespace Ivoz\Provider\Domain\Model\Company;
 use Assert\Assertion;
 use Doctrine\Common\Collections\Criteria;
 use Ivoz\Provider\Domain\Model\Ddi\DdiInterface;
+use Ivoz\Provider\Domain\Model\Feature\FeatureInterface;
 use Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompany;
+use Ivoz\Provider\Domain\Model\Friend\Friend;
+use Ivoz\Provider\Domain\Model\Recording\Recording;
 
 /**
  * Company
@@ -258,10 +261,7 @@ class Company extends CompanyAbstract implements CompanyInterface
     }
 
     /**
-     * Ensures valid domain value
-     * @param string $data
-     * @return \Ivoz\Provider\Model\Raw\Companies
-     * @throws \Exception
+     * @inheritdoc
      */
     public function setDomainUsers($domainUsers = null)
     {
@@ -310,9 +310,6 @@ class Company extends CompanyAbstract implements CompanyInterface
         $recordings = $this->getRecordings();
 
         // Sum all recording size
-        /**
-         * @var Recording $recording
-         */
         foreach ($recordings as $recording) {
             $total += $recording->getRecordedFile()->getFileSize();
         }
@@ -330,12 +327,14 @@ class Company extends CompanyAbstract implements CompanyInterface
         return $this->getRecordingsLimitMB() * 1024 * 1024;
     }
 
+    /**
+     * Check if a Company has a given Feature by id
+     *
+     * @param $featureId
+     * @return bool
+     */
     public function hasFeature($featureId)
     {
-        /**
-         * @var Company $this
-         * @var Feature $feature
-         */
         foreach ($this->getFeatures() as $feature) {
             if ($feature->getId() == $featureId) {
                 return true;
@@ -355,6 +354,9 @@ class Company extends CompanyAbstract implements CompanyInterface
         return '*' . $this->getOnDemandRecordCode();
     }
 
+    /**
+     * @return FeatureInterface[]
+     */
     public function getFeatures()
     {
         /**
