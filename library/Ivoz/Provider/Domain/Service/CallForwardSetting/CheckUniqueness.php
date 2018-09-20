@@ -204,8 +204,6 @@ class CheckUniqueness implements CallForwardSettingLifecycleEventHandlerInterfac
             $callTypeFilterConditions,
             'userNotRegistered'
         );
-
-        return $criteria;
     }
 
     /**
