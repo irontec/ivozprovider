@@ -3,9 +3,11 @@
 #DEBHELPER#
 
 # This is a temporal migration script to automatize changes implemented in #633
-cd /opt/irontec/ivozprovider/library/
-
-# Remove existing vendor (will be replaced with new package contents)
-rm -fr vendor
+if [ -d /opt/irontec/ivozprovider/library/ ]; then
+    pushd /opt/irontec/ivozprovider/library/
+        # Remove existing vendor (will be replaced with new package contents)
+        rm -fr vendor
+    popd
+fi
 
 :
