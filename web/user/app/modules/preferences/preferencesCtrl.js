@@ -103,7 +103,8 @@ angular
             "doNotDisturb": $scope.user.doNotDisturb,
             "isBoss": $scope.user.isBoss,
             "maxCalls": $scope.user.maxCalls,
-            "bossAssistant": $scope.user.bossAssistant ? $scope.user.bossAssistant.id : null
+            "bossAssistant": $scope.user.bossAssistant ? $scope.user.bossAssistant.id : null,
+            "timezone": $scope.user.timezone ? $scope.user.timezone.id : null
         };
 
         $http.put(

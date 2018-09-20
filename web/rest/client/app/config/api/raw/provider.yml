@@ -525,7 +525,7 @@ Ivoz\Provider\Domain\Model\User\User:
     access_control: '("ROLE_COMPANY_ADMIN" in roles) or ("ROLE_COMPANY_USER" in roles)'
     read_access_control:
       ROLE_COMPANY_USER:
-        user:
+        id:
           eq: "user.getId()"
       ROLE_COMPANY_ADMIN:
         company:
