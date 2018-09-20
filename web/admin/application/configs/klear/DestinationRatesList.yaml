@@ -95,6 +95,7 @@ production:
             - name.${lang}
             - prefix
           template: "%name.${lang}% (%prefix%)"
+        fullTemplateMatch: true
         limit: 8
         order:
           Destination.name.${lang}: asc
