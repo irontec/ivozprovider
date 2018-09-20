@@ -13,11 +13,6 @@ interface PsEndpointInterface extends LoggableEntityInterface
     public function getChangeSet();
 
     /**
-     * Update this user endpoint with current model data
-     */
-    public function updateByUser(\Ivoz\Provider\Domain\Model\User\UserInterface $user);
-
-    /**
      * @deprecated
      * Set sorceryId
      *
