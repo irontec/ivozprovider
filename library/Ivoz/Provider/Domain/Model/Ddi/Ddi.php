@@ -96,7 +96,6 @@ class Ddi extends DdiAbstract implements DdiInterface
     {
         $language = $this->getLanguage();
         if (!$language) {
-
             $company = $this->getCompany();
 
             return $company->getLanguageCode();

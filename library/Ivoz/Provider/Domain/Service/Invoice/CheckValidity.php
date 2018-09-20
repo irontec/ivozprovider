@@ -49,6 +49,7 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
     }
 
     /**
+     * @param InvoiceInterface $invoice
      * @throws \Exception
      */
     public function execute(InvoiceInterface $invoice)
