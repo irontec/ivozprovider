@@ -1,0 +1,24 @@
+########################################
+## Custom models
+########################################
+
+Model\RatingPlanPrices:
+  itemOperations: []
+  collectionOperations:
+    get_my_rating_plan_prices:
+      access_control: '"ROLE_BRAND_ADMIN" in roles'
+      method: 'GET'
+      path: '/my/rating_plan_prices'
+      route_name: 'get_my_rating_plan_prices'
+      parameters: []
+      swagger_context:
+        produces:
+          - 'text/csv'
+        tags:
+          - My
+        parameters:
+          - name: id
+            in: query
+            type: integer
+            required: true
+            description: 'Rating plan group Id'

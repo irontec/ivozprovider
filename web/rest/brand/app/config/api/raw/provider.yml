@@ -203,6 +203,19 @@ Ivoz\Provider\Domain\Model\CarrierServer\CarrierServer:
       ROLE_BRAND_ADMIN:
         brand:
           eq: "user.getBrand().getId()"
+
+Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup:
+  attributes:
+    access_control: '"ROLE_BRAND_ADMIN" in roles'
+    read_access_control:
+      ROLE_BRAND_ADMIN:
+        brand:
+          eq: "user.getBrand().getId()"
+
+Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup:
+  itemOperations: []
+  collectionOperations: []
+
 Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup:
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'

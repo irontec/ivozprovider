@@ -15,3 +15,11 @@ services:
     arguments:
       $decoratedNormalizer:
         '@Service\AuthEndpointDecorator.inner'
+
+  #######################################
+  ## Controllers
+  #######################################
+  Controller\My\:
+    resource: '../../src/Controller/My/*'
+    tags: ['controller.service_arguments']
+

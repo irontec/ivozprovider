@@ -17,6 +17,8 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
 
     protected $_brandId;
 
+    protected $_companyId;
+
     public function init ()
     {
         /**
@@ -44,6 +46,7 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
         }
         $loggedUser = $auth->getIdentity();
         $this->_brandId = $loggedUser->brandId;
+        $this->_companyId = $loggedUser->companyId;
     }
 
     public function tarificateCallAction ()
@@ -134,7 +137,7 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
         /** @var \Ivoz\Provider\Domain\Model\Company\CompanyDto $companyDto */
         $companyDto = $dataGateway->find(
             Company::class,
-            $this->getParam("parentId")
+            $this->getParam("parentId", $this->_companyId)
         );
 
         $argumentsResolver = function() use($dataGateway, $companyDto) {
@@ -266,7 +269,7 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
 
             $ratingPlanGroupTag = $dataGateway->remoteProcedureCall(
                 RatingPlanGroup::class,
-                $this->getParam('parentId'),
+                $this->getParam('parentId', $this->_companyId),
                 'getCgrTag',
                 []
             );
@@ -411,7 +414,7 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
     {
         /** @var DataGateway $dataGateway */
         $dataGateway = \Zend_Registry::get('data_gateway');
-        $companyId = $this->getRequest()->getParam("parentId");
+        $companyId = $this->getRequest()->getParam("parentId", $this->_companyId);
         return $dataGateway->runNamedQuery(
             \Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface::class,
             'findByCompanyId',
