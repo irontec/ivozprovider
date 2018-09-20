@@ -134,8 +134,6 @@ abstract class TrunksHtableAbstract
             $dto->getExpires()
         );
 
-        $self;
-
         $self->sanitizeValues();
         $self->initChangelog();
 

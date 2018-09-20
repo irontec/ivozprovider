@@ -156,8 +156,6 @@ abstract class UsersXcapAbstract
             $dto->getPort()
         );
 
-        $self;
-
         $self->sanitizeValues();
         $self->initChangelog();
 

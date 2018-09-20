@@ -134,8 +134,6 @@ abstract class UsersHtableAbstract
             $dto->getExpires()
         );
 
-        $self;
-
         $self->sanitizeValues();
         $self->initChangelog();
 

@@ -163,8 +163,6 @@ abstract class UsersPresentityAbstract
             $dto->getPriority()
         );
 
-        $self;
-
         $self->sanitizeValues();
         $self->initChangelog();
 

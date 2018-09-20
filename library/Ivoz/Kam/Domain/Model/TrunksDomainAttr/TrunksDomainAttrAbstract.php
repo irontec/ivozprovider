@@ -131,8 +131,6 @@ abstract class TrunksDomainAttrAbstract
             $dto->getLastModified()
         );
 
-        $self;
-
         $self->sanitizeValues();
         $self->initChangelog();
 
