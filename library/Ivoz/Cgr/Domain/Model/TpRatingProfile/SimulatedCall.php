@@ -143,6 +143,9 @@ class SimulatedCall
 
         $instance->cost = $result->Cost;
 
+        $precision = $result->Rating->{$ratingId}->RoundingDecimals;
+        $instance->cost = ceil($instance->cost * pow(10, $precision)) / pow(10, $precision);
+
         $tag = $result->RatingFilters->{$ratingFilterId}->RatingPlanID;
         /** @var TpRatingPlan $tpRatingPlan */
         $tpRatingPlan = $tpRatingPlanRepository->findOneBy([
