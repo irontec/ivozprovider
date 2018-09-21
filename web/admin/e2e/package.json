@@ -20,7 +20,7 @@
     "updateDbSchema": "../../../scheme/bin/console doctrine:migrations:migrate --quiet -e test_e2e",
     "clearEnv": "npm run clearScreenshots; npm run cacheClear",
     "clearScreenshots": "rm -fr errors/*",
-    "cacheClear": "../../../web/rest/bin/console cache:clear -e test_e2e"
+    "cacheClear": "../../../web/rest/platform/bin/console cache:clear -e test_e2e"
   },
   "author": "Mikel Madariaga",
   "license": "MIT",
