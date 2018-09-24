@@ -10,11 +10,16 @@ class IvozProvider_Klear_Ghost_RecordingsType extends KlearMatrix_Model_Field_Gh
      */
     public function getData ($model)
     {
-        if ($model->getType() == 'ondemand') {
-            return 'On-demand (' . $model->getRecorder() . ')';
-        } else {
-            return 'DDI';
+        $type = $model->getType() == 'ondemand'
+            ? 'On-demand'
+            : 'DDI';
+
+        $recorder = $model->getRecorder();
+        if (!$recorder) {
+            return $type;
         }
+
+        return $type . ' (' . $recorder . ')';
     }
 }
 
