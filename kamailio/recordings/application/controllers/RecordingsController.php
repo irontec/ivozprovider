@@ -132,7 +132,9 @@ class RecordingsController extends Zend_Controller_Action
             // Convert .wav to .mp3
             $convert_wav = $this->_rawRecordingsDir . $callid . '.' . $recordcnt . ".wav";
             $convert_mp3 = $this->_rawRecordingsDir . $callid . '.' . $recordcnt . ".mp3";
-            $convert_cmd = "/usr/bin/avconv -i '$convert_wav' '$convert_mp3' 2>&1 >/dev/null";
+            $metadata = '-metadata artist="'. $callid .'"';
+
+            $convert_cmd = "/usr/bin/avconv -i '$convert_wav' $metadata '$convert_mp3' 2>&1 >/dev/null";
             $this->_logger->log(sprintf("[Recordings][%s] Encoding to %s\n", $hashid, basename($convert_mp3)), \Zend_Log::INFO);
             exec($convert_cmd, $output, $retval);
             if ($retval != 0) {
@@ -148,6 +150,7 @@ class RecordingsController extends Zend_Controller_Action
             // Create an entry in Recordings table with the file
             $recording = new Model\Recordings;
 
+            $recorder = '';
             if ($kamAccCdr->getProxy() == 'USER') {
                 $type = 'ondemand';
                 if ($kamAccCdr->getXcallid()) {
@@ -157,10 +160,18 @@ class RecordingsController extends Zend_Controller_Action
                     // If call first leg, caller is who activated the recording
                     $recorder = $kamAccCdr->getCaller();
                 }
-                $recording->setRecorder($recorder);
             } else {
                 $type = 'ddi';
+                if ($kamAccCdr->getXcallid()) {
+                    // If call first leg, caller is who activated the recording
+                    $recorder = $kamAccCdr->getCaller();
+                } else {
+                    // If call second leg, callee is who activated the recording
+                    $recorder = $kamAccCdr->getCallee();
+                }
             }
+
+            $recording->setRecorder($recorder);
 
             // Get company and brand for this recording
             $company = $kamAccCdr->getCompany();
@@ -180,14 +191,35 @@ class RecordingsController extends Zend_Controller_Action
                 $brandUsage = $brandUsed * 100 / $brandLimit;
             }
 
-            $recording->setCompanyId($kamAccCdr->getCompanyId())
+            /*
+             * 20180820111934_onDemand-109_202_109.mp3
+             * datetime_type_recorder_source_destination.mp3
+             */
+            $baseName =
+                preg_replace(
+                    '/[^\d]/',
+                    '',
+                    $kamAccCdr->getStartTimeUtc()
+                )
+                . '_'
+                . $type
+                . '-'
+                . $recorder
+                . '_'
+                . $kamAccCdr->getCaller()
+                . '_'
+                . $kamAccCdr->getCallee()
+                . '.mp3';
+
+            $recording
+                ->setCompanyId($kamAccCdr->getCompanyId())
                 ->setCalldate($kamAccCdr->getStartTimeUtc())
                 ->setType($type)
                 ->setCallid($kamAccCdr->getCallid())
                 ->setDuration($duration)
                 ->setCaller($kamAccCdr->getCaller())
                 ->setCallee($kamAccCdr->getCallee())
-                ->putRecordedFile($convert_mp3);
+                ->putRecordedFile($convert_mp3, $baseName);
 
             // Store this Recording
             $recordId = $recordingsMapper->save($recording);
