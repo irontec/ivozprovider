@@ -17,18 +17,12 @@ class CreateByScheduler
     private $entityTools;
 
     /**
-     * @var RestClient
-     */
-    protected $restClient;
-
-    /**
      * @var LoggerInterface
      */
     protected $logger;
 
     public function __construct(
         EntityTools $entityTools,
-        RestClient $restClient,
         LoggerInterface $logger
     ) {
         $this->entityTools = $entityTools;
