@@ -1,7 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
 
-
 production:
   main:
     module: klearMatrix
@@ -43,6 +42,8 @@ production:
         title: _("Options")
         dialogs:
           recordingsDel_dialog: true
+        commands:
+          recordingsRecordedFileMultiDownload_command: true
     recordingsEdit_screen: &recordingsEdit_screenLink
       <<: *Recordings
       controller: edit
@@ -91,6 +92,15 @@ production:
       controller: File
       action: preview
       mainColumn: recordedFile
+    recordingsRecordedFileMultiDownload_command: &recordingsRecordedFileMultiDownload_commandLink
+      <<: *Recordings
+      title: _("Download")
+      controller: File
+      action: zip-and-download
+      mainColumn: recordedFile
+      class: ui-silk-bullet-disk
+      label: true
+      multiItem: true
 staging:
   _extends: production
 testing:
