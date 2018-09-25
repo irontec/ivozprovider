@@ -27,3 +27,5 @@ doc/doctrees/
 
 kamailio/users/config/kamailio-selfsigned.key
 kamailio/trunks/config/kamailio-selfsigned.key
+
+library/CoreBundle/Resources/config/parameters.yml
