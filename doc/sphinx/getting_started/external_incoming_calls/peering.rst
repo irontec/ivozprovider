@@ -1,24 +1,15 @@
 *********************
-Peering configuartion
+Peering configuration
 *********************
 
-We understand a **Peering contract** the agreeming between a **Brand Operator**
+We understand a **Peering contract** the agreement between a **Brand Operator**
 and a VoIP Provider to make and receive calls.
 
-IvozProvider is ready to integrate with IP providers created on the secteion
-**Perring contracts**:
+We divide Peerings in two types:
 
-.. ifconfig:: language == 'en'
+- **Carriers** for outgoing calls (see :ref:`Carriers`).
 
-    .. image:: img/en/peeringcontract_section.png
-      :align: center
+- **DDI Providers** for incoming calls (see :ref:`DDI Providers`).
 
-.. ifconfig:: language == 'es'
-
-    .. image:: img/es/peeringcontract_section.png
-      :align: center
-
-.. toctree::
-
-    /brand/peering/ddi_providers
-    /brand/peering/ddi_provider_registrations
+In order to achieve our goal, we will need to create a new (an valid) DDI Provider assign our country's
+numeric transformation. See :ref:`DDI Providers` for further reference.
