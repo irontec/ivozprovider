@@ -239,6 +239,9 @@ msgid_plural "Billable calls"
 msgstr[0] "Billable call"
 msgstr[1] "Billable calls"
 
+msgid "Billing"
+msgstr "Billing"
+
 msgid "Billing Information"
 msgstr "Billing Information"
 
@@ -347,6 +350,11 @@ msgstr[1] "Call forward settings"
 msgid "Call forward type"
 msgstr "Call forward type"
 
+msgid "Call recording"
+msgid_plural "Call recordings"
+msgstr[0] "Call recording"
+msgstr[1] "Call recordings"
+
 msgid "Call registry"
 msgid_plural "Call registries"
 msgstr[0] "Call registry"
@@ -391,6 +399,9 @@ msgstr "CallidHash"
 msgid "Calling a number within the same Area can omit Area Code"
 msgstr "Calling a number within the same Area can omit Area Code"
 
+msgid "Calls"
+msgstr "Calls"
+
 msgid "Calls from non-granted IPs"
 msgstr "Calls from non-granted IPs"
 
@@ -418,6 +429,11 @@ msgstr "Check documentation for this section"
 
 msgid "Clid"
 msgstr "Clid"
+
+msgid "Client"
+msgid_plural "Clients"
+msgstr[0] "Client"
+msgstr[1] "Clients"
 
 msgid "Client Configuration"
 msgstr "Client Configuration"
@@ -953,6 +969,11 @@ msgid_plural "Generic Musics on Hold"
 msgstr[0] "Generic Music on Hold"
 msgstr[1] "Generic Musics on Hold"
 
+msgid "Generic Service"
+msgid_plural "Generic Services"
+msgstr[0] "Generic Service"
+msgstr[1] "Generic Services"
+
 msgid "Generic URL Pattern"
 msgstr "Generic URL Pattern"
 
@@ -1118,6 +1139,9 @@ msgstr "Inconditional"
 msgid "Increment"
 msgstr "Increment"
 
+msgid "Infrastructure"
+msgstr "Infrastructure"
+
 msgid "Insert your username"
 msgstr "Insert your username"
 
@@ -1186,6 +1210,9 @@ msgstr "Invoiced calls can't be metered again"
 msgid "Invoices have been enqueued. They will be generated as soon as posible."
 msgstr ""
 "Invoices have been enqueued. They will be generated as soon as posible."
+
+msgid "Invoicing"
+msgstr "Invoicing"
 
 msgid "Ip addr"
 msgstr "IP address"
@@ -1473,6 +1500,9 @@ msgstr "Month"
 
 msgid "Movement amount"
 msgstr "Movement amount"
+
+msgid "Multimedia"
+msgstr "Multimedia"
 
 msgid "Music on Hold"
 msgid_plural "Musics on Hold"
@@ -1828,6 +1858,9 @@ msgstr "Processing"
 msgid "Proto"
 msgstr "Proto"
 
+msgid "Providers"
+msgstr "Providers"
+
 msgid "Province"
 msgid_plural "Provinces"
 msgstr[0] "Province"
@@ -2028,6 +2061,9 @@ msgstr[1] "Route Locks"
 msgid "Route type"
 msgstr "Route type"
 
+msgid "Routing"
+msgstr "Routing"
+
 msgid "Routing Tag"
 msgid_plural "Routing Tags"
 msgstr[0] "Routing Tag"
@@ -2035,6 +2071,9 @@ msgstr[1] "Routing Tags"
 
 msgid "Routing configuration"
 msgstr "Routing configuration"
+
+msgid "Routing endpoints"
+msgstr "Routing endpoints"
 
 msgid "Routing pattern"
 msgid_plural "Routing patterns"
@@ -2050,6 +2089,9 @@ msgid "Routing pattern groups rel pattern"
 msgid_plural "Routing pattern groups rel patterns"
 msgstr[0] "Routing pattern groups rel pattern"
 msgstr[1] "Routing pattern groups rel patterns"
+
+msgid "Routing tools"
+msgstr "Routing tools"
 
 msgid ""
 "Rules to manipulate outgoingDDI when user directly calls to external numbers."
@@ -2160,6 +2202,9 @@ msgstr "Service has extra arguments"
 
 msgid "Set column configuration and continue."
 msgstr "Set column configuration and continue."
+
+msgid "Settings"
+msgstr "Settings"
 
 msgid "Simulate a call"
 msgstr "Simulate a call"
@@ -2514,6 +2559,9 @@ msgid_plural "Users"
 msgstr[0] "User"
 msgstr[1] "Users"
 
+msgid "User configuration"
+msgstr "User configuration"
+
 msgid "Username"
 msgstr "Username"
 
@@ -2534,6 +2582,9 @@ msgstr "View Incoming %s %s"
 #, python-format
 msgid "View Outgoing %s %s"
 msgstr "View Outgoing %s %s"
+
+msgid "Views"
+msgstr "Views"
 
 msgid "Virtual PBX"
 msgid_plural "Virtual PBXs"
