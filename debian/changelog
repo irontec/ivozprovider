@@ -1,4 +1,10 @@
-ivozprovider (1.7.0) UNRELEASED; urgency=medium
+ivozprovider (1.7.1) UNRELEASED; urgency=medium
+
+  * Version bump to 1.7.1
+
+ -- Irontec Package Team <packages@irontec.com>  Tue, 01 Oct 2018 11:57:00 +0100
+
+ivozprovider (1.7.0) stable; urgency=medium
 
   * Version bump to 1.7.0
 
