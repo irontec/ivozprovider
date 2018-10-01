@@ -243,6 +243,30 @@ Wed, 22 Nov 2017 18:58:49 +0100 IvozProvider Team <vozip+ivozprovider@irontec.co
         - More than of 200 unit tests of entity services
         - SIP BBS tests enhanced
 
+Mon, 01 Oct 2018 19:05:10 +0200 IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 1.7.1 released
+
+    * Portals
+        - Change name for new recordings
+        - Download several recording files in ZIP
+        - Make CDR sections faster
+        - Fix invoice timezone conversion
+
+    * User portal
+        - Fix terminal status information
+
+    * Virtual PBX
+        - Set generic email date format
+        - Fix queue retry setting
+
+    * Proxies
+        - Fix routing due to wrong Contact
+        - Avoid failover for 480 responses
+        - Skip carriers with non-resolvable domains
+        - Fix drop call on call limit retrieval error
+        - Decrease log volume
+
 Wed, 05 Mar 2018 18:52:49 +0100 IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 1.7 released
