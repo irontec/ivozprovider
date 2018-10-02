@@ -631,7 +631,33 @@ class KlearCustomTarificatorController extends Zend_Controller_Action
                 \Ivoz\Core\Infrastructure\Domain\Service\Cgrates\RerateCallService::class
             );
 
-            $rerateService->execute($pks);
+            try {
+                $rerateService->execute($pks);
+            } catch (\Exception $e) {
+
+                $close = $this->_helper->translate('Close');
+
+                $phpSettings = $this->getInvokeArg('bootstrap')->getOption("phpSettings");
+                $displayErrors = $phpSettings["display_errors"] ?? false;
+                $showErrors = ($e instanceof \DomainException) || $displayErrors;
+                $message = $showErrors
+                    ? $e->getMessage()
+                    : 'undefined error';
+
+                $data = array(
+                    'error' => true,
+                    'message'=> $this->_helper->translate($message),
+                    'buttons' => array(
+                        $close => array(
+                            "recall" => false,
+                            "reloadParent" => false
+                        )
+                    )
+                );
+
+                return $this->_dispatch($data);
+            }
+
             $message = "<p>" . $this->_helper->translate("Tarificator Job started") . "</p>";
             $title = $this->_helper->translate("Ok");
 
