@@ -51,6 +51,11 @@ class UpdateByIvozQueue implements IvozQueueLifecycleEventHandlerInterface
             $periodicAnnounceLocution = $this
                 ->storagePathResolver
                 ->getFilePath($periodicAnnounceLocution);
+
+            // Remove file extension
+            $periodicAnnounceLocution = pathinfo($periodicAnnounceLocution, PATHINFO_DIRNAME)
+                . DIRECTORY_SEPARATOR
+                . pathinfo($periodicAnnounceLocution, PATHINFO_FILENAME);
         }
 
         $astQueueName = $entity->getAstQueueName();
