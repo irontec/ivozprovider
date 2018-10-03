@@ -16,7 +16,7 @@ production:
       title: _("List of %s %2s", ngettext('Generic Match List', 'Generic Match Lists', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/brand/match_lists.html"
+        href: "/doc/${lang}/administration_portal/brand/settings/generic_match_lists.html"
       forcedValues:
         <<: *forcedBrand
       fields: &matchLists_fieldsLink

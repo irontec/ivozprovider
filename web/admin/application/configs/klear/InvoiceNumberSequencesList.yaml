@@ -16,7 +16,7 @@ production:
       title: _("List of %s %2s", ngettext('Invoice number sequence', 'Invoice number sequences', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/brand/invoices/number_sequences.html"
+        href: "/doc/${lang}/administration_portal/brand/invoicing/invoice_number_sequences.html"
       forcedValues:
         <<: *forcedBrand
       fields: &invoiceNumberSequences_fieldsLink

@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
 
 production:
   main:
@@ -13,6 +14,9 @@ production:
       <<: *BalanceNotifications
       class: ui-silk-email
       title: _("List of %s %2s", ngettext('Balance Notification', 'Balance Notifications', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/administration_portal/brand/billing/prepaid_balances.html#balance-notifications"
       fields: &balanceNotificationList_fieldsLink
         options:
           title: _("Options")

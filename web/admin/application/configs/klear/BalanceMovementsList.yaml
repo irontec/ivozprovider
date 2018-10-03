@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
 
 production:
   main:
@@ -15,6 +16,9 @@ production:
       <<: *BalanceMovements
       class: ui-silk-chart-curve
       title: _("List of %s %2s", ngettext('Balance Movement', 'Balance Movements', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/administration_portal/brand/billing/prepaid_balances.html#balance-movements-list"
       fields: &balanceMovementsList_fieldsLink
         order:
           createdOn: true

@@ -19,7 +19,7 @@ production:
       title: _("List of %s %2s", ngettext('Wholesale Client', 'Wholesale Clients', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/brand/wholesale.html"
+        href: "/doc/${lang}/administration_portal/brand/clients/wholesale.html"
       forcedValues:
         type: 'wholesale'
         <<: *forcedBrand

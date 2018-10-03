@@ -17,7 +17,7 @@ production:
       title: _("List of %s %2s", ngettext('Retail Account', 'Retail Accounts', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/retail/accounts.html"
+        href: "/doc/${lang}/administration_portal/client/retail/retail_accounts.html"
       forcedValues:
         <<: *forcedCompany
         <<: *forcedBrand

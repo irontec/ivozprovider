@@ -17,7 +17,7 @@ production:
       title: _("List of %s %2s", ngettext('Call ACL', 'Call ACLs', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/company/call_permissions.html"
+        href: "/doc/${lang}/administration_portal/client/vpbx/user_configuration/call_acls.html"
       forcedValues:
         <<: *forcedCompany
       fields:
