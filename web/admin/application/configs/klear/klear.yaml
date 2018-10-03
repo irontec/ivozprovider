@@ -112,6 +112,11 @@ production:
               class: ui-silk-building
               description: _("List of %s", ngettext('Virtual PBX', 'Virtual PBXs', 1))
               showOnlyIf: ${auth.brandFeatures.vpbx.enabled}
+            ResidentialClientsList:
+              title: ngettext('Residential', 'Residentials', 1)
+              class: ui-silk-house
+              description: _("List of %s", ngettext('Residential', 'Residentials', 0))
+              showOnlyIf: ${auth.brandFeatures.residential.enabled}
             RetailClientsList:
               title: ngettext('Retail', 'Retails', 1)
               class: ui-silk-basket
@@ -122,11 +127,6 @@ production:
               class: ui-silk-cart
               description: _("List of %s", ngettext('Wholesale', 'Wholesales', 0))
               showOnlyIf: ${auth.brandFeatures.wholesale.enabled}
-            ResidentialClientsList:
-              title: ngettext('Residential', 'Residentials', 1)
-              class: ui-silk-house
-              description: _("List of %s", ngettext('Residential', 'Residentials', 0))
-              showOnlyIf: ${auth.brandFeatures.residential.enabled}
         Providers:
           title: _("Providers")
           class: ui-silk-lorry
@@ -139,10 +139,6 @@ production:
               title: ngettext('DDI Provider', 'DDI Providers', 0)
               class: ui-silk-server-lightning
               description: _("List of %s", ngettext('DDI Provider', 'DDI Providers', 0))
-            TransformationRuleSetsList:
-              title: ngettext('Numeric transformation', 'Numeric transformations', 0)
-              class: ui-silk-application-side-expand
-              description: _("List of %s", ngettext('Numeric transformation', 'Numeric transformations', 0))
         Routing:
           title: _("Routing")
           class: ui-silk-arrow-divide
@@ -229,6 +225,10 @@ production:
               title: ngettext('Portal URL', 'Portal URLs', 0)
               class: ui-silk-world-link
               description: _("List of %s", ngettext('Portal URL', 'Portal URLs', 0))
+            TransformationRuleSetsList:
+              title: ngettext('Numeric transformation', 'Numeric transformations', 0)
+              class: ui-silk-application-side-expand
+              description: _("List of %s", ngettext('Numeric transformation', 'Numeric transformations', 0))
             NotificationTemplatesList:
               title: ngettext('Notification template', 'Notification templates', 0)
               class: ui-silk-email
@@ -341,17 +341,11 @@ production:
               title: ngettext('Conference room', 'Conference rooms', 0)
               class: ui-silk-transmit-blue
               description: _("List of %s", ngettext('Conference room', 'Conference rooms', 0))
-            FaxesList:
-              showOnlyIf: ${auth.companyFeatures.faxes.enabled}
-              title: ngettext('Fax', 'Faxes', 0)
-              class: ui-silk-printer
-              description: _("List of %s", ngettext('Fax', 'Faxes', 0))
         ExternalCallFiltersResidentialList:
           title: ngettext('External call filter', 'External call filters', 0)
           class: ui-silk-arrow-branch
           description: _("List of %s", ngettext('External call filter', 'External call filters', 0))
           showOnlyIf: ${auth.companyResidential}
-
         RoutingTools:
           title: _("Routing tools")
           class: ui-silk-wrench
@@ -407,6 +401,11 @@ production:
               title: ngettext('Music on Hold', 'Musics on Hold', 1)
               class: ui-silk-music
               description: _("List of %s", ngettext('Music on Hold', 'Musics on Hold', 1))
+        FaxesList:
+          showOnlyIf: ${auth.companyFeatures.faxes.enabled}
+          title: ngettext('Fax', 'Faxes', 0)
+          class: ui-silk-printer
+          description: _("List of %s", ngettext('Fax', 'Faxes', 0))
         CompanyServicesList:
           title: ngettext('Service', 'Services', 0)
           class: ui-silk-page-white-wrench

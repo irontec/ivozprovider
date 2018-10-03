@@ -145,7 +145,7 @@ production:
               show: [ relCarriers ]
               hide: [ carrier, prefix, forceClid, clidCountry, clid ]
     company:
-      title: ngettext('Company', 'Companies', 1)
+      title: ngettext('Client', 'Clients', 1)
       type: select
       source:
         data: mapper
@@ -158,7 +158,7 @@ production:
             template: '%name%'
           order:
             Company.name: asc
-        'null': _("Apply to all companies")
+        'null': _("Apply to all clients")
       default: true
     target:
       title: _('Destination')

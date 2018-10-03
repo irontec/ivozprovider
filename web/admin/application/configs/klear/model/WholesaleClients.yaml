@@ -88,6 +88,9 @@ production:
       trim: both
       required: true
       maxLength: 255
+    externallyExtraOpts:
+      title: _('Externally rater custom options')
+      type: textarea
     language:
       title: _('Language')
       type: select

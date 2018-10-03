@@ -18,7 +18,7 @@ production:
             Service.name.${lang}: asc
       default: true
     company:
-      title: ngettext('Company', 'Companies', 1)
+      title: ngettext('Client', 'Clients', 1)
       type: select
       required: true
       source:
