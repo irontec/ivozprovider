@@ -230,10 +230,14 @@ production:
       <<: *administratorsNew_screenLink
       title: _("Add %s", ngettext('Company admin', 'Company admins', 1), "[format| (%parent%)]")
       filterField: Company
+      forcedValues:
+        <<: *forcedBrand
     administratorsEdit_screen:
       <<: *administratorsEdit_screenLink
       title: _("Edit %s %2s", ngettext('Company admin', 'Company admins', 1), "[format| (%item%)]")
       filterField: Company
+      forcedValues:
+        <<: *forcedBrand
 
     # Rating Plan:
     <<: *ratingProfiles_screensLink
