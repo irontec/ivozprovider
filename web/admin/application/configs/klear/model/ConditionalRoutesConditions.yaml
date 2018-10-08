@@ -31,7 +31,7 @@ production:
         data: mapper
         config:
           relation: \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlist
-          relationProperty: matchlist
+          relationProperty: condition
           relatedProperty: matchlist
           related: \Ivoz\Provider\Domain\Model\MatchList\MatchList
           relatedFieldName: name
@@ -43,7 +43,7 @@ production:
         data: mapper
         config:
           relation: \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelSchedule\ConditionalRoutesConditionsRelSchedule
-          relationProperty: schedule
+          relationProperty: condition
           relatedProperty: schedule
           related: \Ivoz\Provider\Domain\Model\Schedule\Schedule
           relatedFieldName: name
@@ -55,7 +55,7 @@ production:
         data: mapper
         config:
           relation: \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelCalendar\ConditionalRoutesConditionsRelCalendar
-          relationProperty: calendar
+          relationProperty: condition
           relatedProperty: calendar
           related: \Ivoz\Provider\Domain\Model\Calendar\Calendar
           relatedFieldName: name
@@ -67,7 +67,7 @@ production:
         data: mapper
         config:
           relation: \Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLock
-          relationProperty: routeLock
+          relationProperty: condition
           relatedProperty: routeLock
           related: \Ivoz\Provider\Domain\Model\RouteLock\RouteLock
           relatedFieldName: name
