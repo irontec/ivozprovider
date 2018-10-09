@@ -309,6 +309,10 @@ class User extends UserAbstract implements UserInterface, AdvancedUserInterface,
         $pickUpRelUsers = $this->getPickUpRelUsers();
         if (!empty($pickUpRelUsers)) {
             foreach ($pickUpRelUsers as $pickUpRel) {
+                if ($pickUpRel->hasBeenDeleted()) {
+                    continue;
+                }
+
                 array_push($pickUpGroupIds, $pickUpRel->getPickUpGroup()->getId());
             }
         }

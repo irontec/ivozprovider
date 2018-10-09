@@ -14,7 +14,7 @@ class RoutingTagLifeCycleTest extends KernelTestCase
     use DbIntegrationTestHelperTrait;
 
     /**
-     * @return OutgoingRouting
+     * @return RoutingTagDto
      */
     protected function getRoutingTagDto()
     {
@@ -27,9 +27,6 @@ class RoutingTagLifeCycleTest extends KernelTestCase
         return $routingTagDto;
     }
 
-    /**
-     * @return OutgoingRouting
-     */
     protected function addRoutingTag()
     {
         return $this
@@ -37,30 +34,7 @@ class RoutingTagLifeCycleTest extends KernelTestCase
             ->persistDto($this->getRoutingTagDto(), null, true);
     }
 
-    /**
-     * @test
-     */
-    public function it_persists_routing_tags()
-    {
-        $routingTagRepository = $this->em
-            ->getRepository(RoutingTag::class);
-
-        $fixtureRoutingTag = $routingTagRepository->findAll();
-        $this->assertCount(1, $fixtureRoutingTag);
-
-        $this->addRoutingTag();
-
-        $routingTags = $routingTagRepository->findAll();
-        $this->assertCount(
-            count($fixtureRoutingTag) + 1,
-            $routingTags
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function updated_tag_updates_trunks_lcr_rule()
+    protected function updateRoutingTag()
     {
         $outgoingRoutingRepository = $this->em
             ->getRepository(OutgoingRouting::class);
@@ -79,11 +53,71 @@ class RoutingTagLifeCycleTest extends KernelTestCase
             $routingTag,
             true
         );
+    }
 
-        $lcrRules = $this->getChangelogByClass(
-            TrunksLcrRule::class
+    protected function removeRoutingTag()
+    {
+        $routingTagRepository = $this->em
+            ->getRepository(RoutingTag::class);
+
+        $routingTag = $routingTagRepository->find(1);
+
+        return $this
+            ->entityTools
+            ->remove($routingTag);
+    }
+
+    /**
+     * @test
+     */
+    public function it_persists_routing_tags()
+    {
+        $routingTagRepository = $this->em
+            ->getRepository(RoutingTag::class);
+
+        $fixtureRoutingTag = $routingTagRepository->findAll();
+
+        $this->addRoutingTag();
+
+        $routingTags = $routingTagRepository->findAll();
+        $this->assertCount(
+            count($fixtureRoutingTag) + 1,
+            $routingTags
         );
+    }
 
-        $this->assertGreaterThan(0, count($lcrRules));
+    /**
+     * @test
+     */
+    public function it_triggers_lifecycle_services()
+    {
+        $this->addRoutingTag();
+        $this->assetChangedEntities([
+            RoutingTag::class
+        ]);
+    }
+
+    /**
+     * @test
+     */
+    public function it_triggers_update_lifecycle_services()
+    {
+        $this->updateRoutingTag();
+        $this->assetChangedEntities([
+            RoutingTag::class,
+            TrunksLcrRule::class
+        ]);
+    }
+
+
+    /**
+     * @test
+     */
+    public function it_triggers_remove_lifecycle_services()
+    {
+        $this->removeRoutingTag();
+        $this->assetChangedEntities([
+            RoutingTag::class,
+        ]);
     }
 }

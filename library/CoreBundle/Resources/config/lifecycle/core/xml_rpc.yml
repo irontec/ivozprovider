@@ -3,6 +3,9 @@ services:
     autowire: true
     public: false
 
+  Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\FakeXmlRpcTrunksRequest: ~
+  Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\FakeXmlRpcUsersRequest: ~
+
   #########################################################
   ## Trunks XMLRPC Requests
   #########################################################
@@ -13,6 +16,8 @@ services:
         'dialplan.reload'
       $enabled:
         '@=service("kernel").getEnvironment() != "test"'
+    tags:
+      - { name: test_double, fake: 'Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\FakeXmlRpcTrunksRequest' }
 
   XmlRpc\XmlRpcTrunksRequest::DispatcherReload:
     class: Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\XmlRpcTrunksRequest
@@ -21,6 +26,9 @@ services:
         'dispatcher.reload'
       $enabled:
         '@=service("kernel").getEnvironment() != "test"'
+    tags:
+      - { name: test_double, fake: 'Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\FakeXmlRpcTrunksRequest' }
+
 
   XmlRpc\XmlRpcTrunksRequest::LcrReload:
     class: Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\XmlRpcTrunksRequest
@@ -29,6 +37,8 @@ services:
         'lcr.reload'
       $enabled:
         '@=service("kernel").getEnvironment() != "test"'
+    tags:
+      - { name: test_double, fake: 'Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\FakeXmlRpcTrunksRequest' }
 
   XmlRpc\XmlRpcTrunksRequest::PermissionsTrustedReload:
     class: Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\XmlRpcTrunksRequest
@@ -37,6 +47,8 @@ services:
         'permissions.trustedReload'
       $enabled:
         '@=service("kernel").getEnvironment() != "test"'
+    tags:
+      - { name: test_double, fake: 'Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\FakeXmlRpcTrunksRequest' }
 
   XmlRpc\XmlRpcTrunksRequest::PermissionsAddressReload:
     class: Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\XmlRpcTrunksRequest
@@ -45,6 +57,8 @@ services:
         'permissions.addressReload'
       $enabled:
         '@=service("kernel").getEnvironment() != "test"'
+    tags:
+      - { name: test_double, fake: 'Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\FakeXmlRpcTrunksRequest' }
 
   XmlRpc\XmlRpcTrunksRequest::UacRegReload:
     class: Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\XmlRpcTrunksRequest
@@ -55,6 +69,8 @@ services:
         'uac.reg_reload'
       $enabled:
         '@=service("kernel").getEnvironment() != "test"'
+    tags:
+      - { name: test_double, fake: 'Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\FakeXmlRpcTrunksRequest' }
 
   #########################################################
   ## Users XMLRPC Requests
@@ -68,6 +84,8 @@ services:
         'dispatcher.reload'
       $enabled:
         '@=service("kernel").getEnvironment() != "test"'
+    tags:
+      - { name: test_double, fake: 'Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\FakeXmlRpcUsersRequest' }
 
   XmlRpc\XmlRpcUsersRequest::DomainReload:
     class: Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\XmlRpcUsersRequest
@@ -76,6 +94,8 @@ services:
         'domain.reload'
       $enabled:
         '@=service("kernel").getEnvironment() != "test"'
+    tags:
+      - { name: test_double, fake: 'Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\FakeXmlRpcUsersRequest' }
 
   XmlRpc\XmlRpcUsersRequest::PermissionsTrustedReload:
     class: Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\XmlRpcUsersRequest
@@ -84,6 +104,8 @@ services:
         'permissions.trustedReload'
       $enabled:
         '@=service("kernel").getEnvironment() != "test"'
+    tags:
+      - { name: test_double, fake: 'Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\FakeXmlRpcUsersRequest' }
 
   XmlRpc\XmlRpcUsersRequest::PermissionsAddressReload:
     class: Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\XmlRpcUsersRequest
@@ -92,6 +114,8 @@ services:
         'permissions.addressReload'
       $enabled:
         '@=service("kernel").getEnvironment() != "test"'
+    tags:
+      - { name: test_double, fake: 'Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\FakeXmlRpcUsersRequest' }
 
   XmlRpc\XmlRpcUsersRequest::DialplanReload:
     class: Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\XmlRpcUsersRequest
@@ -100,3 +124,5 @@ services:
         'dialplan.reload'
       $enabled:
         '@=service("kernel").getEnvironment() != "test"'
+    tags:
+      - { name: test_double, fake: 'Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\FakeXmlRpcUsersRequest' }

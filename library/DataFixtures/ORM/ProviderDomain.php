@@ -18,7 +18,7 @@ class ProviderDomain extends Fixture
     {
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(Domain::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
-    
+
         $item1 = $this->createEntityInstanceWithPublicMethods(Domain::class);
         $item1->setDomain("users.ivozprovider.local");
         $item1->setDescription("Minimal proxyusers global domain");
@@ -54,7 +54,6 @@ class ProviderDomain extends Fixture
         $this->addReference('_reference_ProviderDomain5', $item5);
         $this->sanitizeEntityValues($item5);
         $manager->persist($item5);
-
 
         $item6 = $this->createEntityInstanceWithPublicMethods(Domain::class);
         $item6->setDomain("retail.irontec.com");

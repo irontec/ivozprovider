@@ -2,24 +2,20 @@
 
 namespace Ivoz\Provider\Domain\Service\CompanyService;
 
+use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Core\Domain\Service\EntityPersisterInterface;
-use Doctrine\ORM\EntityManagerInterface;
 use Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface;
 use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Company\CompanyRepository;
 use Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceRepository;
 use Ivoz\Provider\Domain\Service\BrandService\BrandServiceLifecycleEventHandlerInterface;
 
-/**
- * Class RemoveByBrandService
- * @lifecycle post_remove
- */
 class RemoveByBrandService implements BrandServiceLifecycleEventHandlerInterface
 {
     /**
-     * @var EntityManagerInterface
+     * @var EntityTools
      */
-    protected $em;
+    protected $entityTools;
 
     /**
      * @var EntityPersisterInterface
@@ -37,11 +33,11 @@ class RemoveByBrandService implements BrandServiceLifecycleEventHandlerInterface
     protected $companyServiceRepository;
 
     function __construct(
-        EntityManagerInterface $em,
+        EntityTools $entityTools,
         CompanyRepository $companyRepository,
         CompanyServiceRepository $companyServiceRepository
     ) {
-        $this->em = $em;
+        $this->entityTools = $entityTools;
         $this->companyRepository = $companyRepository;
         $this->companyServiceRepository = $companyServiceRepository;
     }
@@ -74,7 +70,7 @@ class RemoveByBrandService implements BrandServiceLifecycleEventHandlerInterface
 
             // Delete custom company service code
             if ($companyService) {
-                $this->em->remove($companyService);
+                $this->entityTools->remove($companyService);
             }
         }
     }

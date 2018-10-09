@@ -25,8 +25,15 @@ class ProviderRatingProfile extends Fixture implements DependentFixtureInterface
         /** @var RatingProfile $item1 */
         $item1 = $this->createEntityInstanceWithPublicMethods(RatingProfile::class);
 
-        $item1->setCompany($this->getReference('_reference_ProviderCompany1'));
-        $item1->setRatingPlanGroup($this->getReference('_reference_ProviderRatingPlanGroup1'));
+        $item1->setCompany(
+            $this->getReference('_reference_ProviderCompany1')
+        );
+        $item1->setRatingPlanGroup(
+            $this->getReference('_reference_ProviderRatingPlanGroup1')
+        );
+        $item1->setCarrier(
+            $this->getReference('_reference_ProviderCarrier1')
+        );
         $item1->setActivationTime(new \DateTime('2018-02-02 20:20:20'));
         $this->addReference('_reference_ProviderRatingProfile1', $item1);
         $this->sanitizeEntityValues($item1);
@@ -51,7 +58,8 @@ class ProviderRatingProfile extends Fixture implements DependentFixtureInterface
         return array(
             ProviderCompany::class,
             ProviderRatingPlanGroups::class,
-            ProviderRoutingTag::class
+            ProviderRoutingTag::class,
+            ProviderCarrier::class,
         );
     }
 }

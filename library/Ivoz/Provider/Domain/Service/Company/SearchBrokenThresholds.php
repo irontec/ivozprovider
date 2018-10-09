@@ -19,6 +19,11 @@ class SearchBrokenThresholds implements CompanyLifecycleEventHandlerInterface
      */
     protected $balanceNotificationRepository;
 
+    /**
+     * @var DomainEventPublisher
+     */
+    protected $domainEventPublisher;
+
     public function __construct(
         BalanceNotificationRepository $balanceNotificationRepository,
         DomainEventPublisher $domainEventPublisher

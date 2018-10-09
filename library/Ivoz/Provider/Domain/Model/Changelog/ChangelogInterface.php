@@ -2,9 +2,10 @@
 
 namespace Ivoz\Provider\Domain\Model\Changelog;
 
+use Ivoz\Core\Domain\Model\LoggerEntityInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
 
-interface ChangelogInterface extends EntityInterface
+interface ChangelogInterface extends LoggerEntityInterface, EntityInterface
 {
     /**
      * @param EntityEventInterface $event

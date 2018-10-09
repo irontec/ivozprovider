@@ -3,8 +3,8 @@
 namespace Ivoz\Ast\Domain\Service\Queue;
 
 use Ivoz\Ast\Domain\Model\Queue\Queue;
-use Ivoz\Core\Application\Service\CommonStoragePathResolver;
-use Ivoz\Core\Domain\Service\EntityPersisterInterface;
+use Ivoz\Core\Application\Service\EntityTools;
+use Ivoz\Provider\Domain\Model\Locution\LocutionDto;
 use Ivoz\Provider\Domain\Service\Queue\QueueLifecycleEventHandlerInterface
     as IvozQueueLifecycleEventHandlerInterface;
 use Ivoz\Provider\Domain\Model\Queue\QueueInterface as IvozQueueInterface;
@@ -13,28 +13,21 @@ use Ivoz\Ast\Domain\Model\Queue\QueueRepository as AstQueueRepository;
 class UpdateByIvozQueue implements IvozQueueLifecycleEventHandlerInterface
 {
     /**
-     * @var EntityPersisterInterface
+     * @var EntityTools
      */
-    protected $entityPersister;
+    protected $entityTools;
 
     /**
      * @var AstQueueRepository
      */
     protected $astQueueRepository;
 
-    /**
-     * @var CommonStoragePathResolver
-     */
-    protected $storagePathResolver;
-
     public function __construct(
-        EntityPersisterInterface $entityPersister,
-        AstQueueRepository $astQueueRepository,
-        CommonStoragePathResolver $storagePathResolver
+        EntityTools $entityTools,
+        AstQueueRepository $astQueueRepository
     ) {
-        $this->entityPersister = $entityPersister;
+        $this->entityTools = $entityTools;
         $this->astQueueRepository = $astQueueRepository;
-        $this->storagePathResolver = $storagePathResolver;
     }
 
     public static function getSubscribedEvents()
@@ -48,9 +41,12 @@ class UpdateByIvozQueue implements IvozQueueLifecycleEventHandlerInterface
     {
         $periodicAnnounceLocution = $entity->getPeriodicAnnounceLocution();
         if (!is_null($periodicAnnounceLocution)) {
-            $periodicAnnounceLocution = $this
-                ->storagePathResolver
-                ->getFilePath($periodicAnnounceLocution);
+
+            /** @var LocutionDto $periodicAnnounceLocutionDto */
+            $periodicAnnounceLocutionDto = $this->entityTools->entityToDto(
+                $periodicAnnounceLocution
+            );
+            $periodicAnnounceLocution = $periodicAnnounceLocutionDto->getEncodedFilePath();
 
             // Remove file extension
             $periodicAnnounceLocution = pathinfo($periodicAnnounceLocution, PATHINFO_DIRNAME)
@@ -69,7 +65,7 @@ class UpdateByIvozQueue implements IvozQueueLifecycleEventHandlerInterface
 
         $astQueueDto = is_null($astQueue)
             ? Queue::createDto()
-            : $astQueue->toDto();
+            : $this->entityTools->entityToDto($astQueue);
 
         $astQueueDto
             ->setQueueId($entity->getId())
@@ -82,6 +78,6 @@ class UpdateByIvozQueue implements IvozQueueLifecycleEventHandlerInterface
             ->setWeight($entity->getWeight())
             ->setMaxlen($entity->getMaxlen());
 
-        $this->entityPersister->persistDto($astQueueDto, $astQueue);
+        $this->entityTools->persistDto($astQueueDto, $astQueue);
     }
 }

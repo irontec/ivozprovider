@@ -15,7 +15,7 @@ services:
   Ivoz\Provider\Domain\Service\BalanceNotification\NotifyBrokenThreshold: ~
 
   Ivoz\Core\Domain\Service\DomainEventPublisher:
-     factory: ['Ivoz\Core\Domain\Service\DomainEventPublisher', getInstance]
+     shared: true
      calls:
       - [subscribe, ['@Ivoz\Core\Application\Service\CommandEventSubscriber']]
       - [subscribe, ['@Ivoz\Core\Domain\Service\EntityEventSubscriber']]

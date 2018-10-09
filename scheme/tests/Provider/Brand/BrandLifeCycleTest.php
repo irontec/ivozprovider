@@ -12,6 +12,22 @@ use Tests\DbIntegrationTestHelperTrait;
 use Ivoz\Provider\Domain\Model\Brand\Brand;
 use Ivoz\Provider\Domain\Model\Brand\BrandDto;
 use Ivoz\Provider\Domain\Model\Domain\Domain;
+use Ivoz\Provider\Domain\Model\BrandService\BrandService;
+use Ivoz\Cgr\Domain\Model\TpDerivedCharger\TpDerivedCharger;
+use Ivoz\Provider\Domain\Model\MusicOnHold\MusicOnHold;
+use Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoice;
+use Ivoz\Provider\Domain\Model\Invoice\Invoice;
+use Ivoz\Provider\Domain\Model\Locution\Locution;
+use Ivoz\Provider\Domain\Model\Recording\Recording;
+use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOut;
+use Ivoz\Provider\Domain\Model\Fax\Fax;
+use Ivoz\Cgr\Domain\Model\TpRatingProfile\TpRatingProfile;
+use Ivoz\Provider\Domain\Model\RatingProfile\RatingProfile;
+use Ivoz\Cgr\Domain\Model\TpAccountAction\TpAccountAction;
+use Ivoz\Provider\Domain\Model\FeaturesRelCompany\FeaturesRelCompany;
+use Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Provider\Domain\Model\FeaturesRelBrand\FeaturesRelBrand;
+use Ivoz\Provider\Domain\Model\BrandUrl\BrandUrl;
 
 class BrandLifeCycleTest extends KernelTestCase
 {
@@ -44,6 +60,35 @@ class BrandLifeCycleTest extends KernelTestCase
         return $brand;
     }
 
+    protected function updateBrand()
+    {
+        $brandRepository = $this->em
+            ->getRepository(Brand::class);
+
+        $brand = $brandRepository->find(1);
+
+        /** @var BrandDto $brandDto */
+        $brandDto = $this->entityTools->entityToDto($brand);
+        $brandDto
+            ->setName('updatedName');
+
+        return $this
+            ->entityTools
+            ->persistDto($brandDto, $brand, true);
+    }
+
+    protected function removeBrand()
+    {
+        $brandRepository = $this->em
+            ->getRepository(Brand::class);
+
+        $brand = $brandRepository->find(1);
+
+        $this
+            ->entityTools
+            ->remove($brand);
+    }
+
     /**
      * @test
      */
@@ -52,16 +97,73 @@ class BrandLifeCycleTest extends KernelTestCase
         $brandRepository = $this->em
             ->getRepository(Brand::class);
         $fixtureBrands = $brandRepository->findAll();
-        $this->assertCount(2, $fixtureBrands);
-
         $this->addBrand();
 
         $brands = $brandRepository->findAll();
-        $this->assertCount(3, $brands);
+        $this->assertCount(count($fixtureBrands) + 1, $brands);
     }
 
     /**
      * @test
+     */
+    public function it_triggers_lifecycle_services()
+    {
+        $this->addBrand();
+        $this->assetChangedEntities([
+            Brand::class,
+            Domain::class,
+            RoutingPattern::class,
+            RoutingPatternGroup::class,
+            BrandService::class,
+            TpDerivedCharger::class,
+            RoutingPatternGroupsRelPattern::class,
+        ]);
+    }
+
+    /**
+     * @test
+     */
+    public function it_triggers_update_lifecycle_services()
+    {
+        $this->updateBrand();
+        $this->assetChangedEntities([
+            Brand::class,
+        ]);
+    }
+
+    /**
+     * @test
+     */
+    public function it_triggers_remove_lifecycle_services()
+    {
+        $this->removeBrand();
+        $this->assetChangedEntities([
+            BrandUrl::class,
+            MusicOnHold::class,
+            FixedCostsRelInvoice::class,
+            Invoice::class,
+            Locution::class,
+            Recording::class,
+            FaxesInOut::class,
+            Fax::class,
+            TpRatingProfile::class,
+            RatingProfile::class,
+            TpAccountAction::class,
+            FeaturesRelCompany::class,
+            Company::class,
+            Domain::class,
+            FeaturesRelBrand::class,
+            Brand::class,
+        ]);
+    }
+
+    //////////////////////////////////////////
+    //
+    //////////////////////////////////////////
+
+    /**
+     * @test
+     * @deprecated
      */
     public function added_brand_has_domain()
     {
@@ -69,7 +171,7 @@ class BrandLifeCycleTest extends KernelTestCase
 
         /** @var Changelog[] $changelogEntries */
         $changelogEntries = $this->getChangelogByClass(
-            \Ivoz\Provider\Domain\Model\Domain\Domain::class
+            Domain::class
         );
 
         $this->assertCount(1, $changelogEntries);
@@ -88,6 +190,7 @@ class BrandLifeCycleTest extends KernelTestCase
 
     /**
      * @test
+     * @deprecated
      */
     public function empty_domain_users_removes_domain()
     {
@@ -127,6 +230,7 @@ class BrandLifeCycleTest extends KernelTestCase
 
     /**
      * @test
+     * @deprecated
      */
     public function removing_brand_removes_its_domain()
     {
@@ -158,6 +262,7 @@ class BrandLifeCycleTest extends KernelTestCase
 
     /**
      * @test
+     * @deprecated
      */
     public function new_brand_autogenerates_routingPatterns_by_country()
     {
@@ -204,6 +309,7 @@ class BrandLifeCycleTest extends KernelTestCase
 
     /**
      * @test
+     * @deprecated
      */
     public function new_brand_autogenerates_routingPatternGroups_by_country_zone()
     {
@@ -236,6 +342,7 @@ class BrandLifeCycleTest extends KernelTestCase
 
     /**
      * @test
+     * @deprecated
      */
     public function new_brand_autogenerates_brandServices()
     {

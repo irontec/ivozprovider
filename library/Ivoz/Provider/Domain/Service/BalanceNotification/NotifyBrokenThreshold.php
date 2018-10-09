@@ -6,12 +6,12 @@ use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Core\Domain\Event\DomainEventInterface;
 use Ivoz\Core\Domain\Service\DomainEventSubscriberInterface;
 use Ivoz\Core\Domain\Service\DomainEventSubscriberTrait;
+use Ivoz\Core\Domain\Service\MailerClientInterface;
 use Ivoz\Provider\Domain\Model\BalanceNotification\BalanceNotificationInterface;
 use Ivoz\Provider\Domain\Model\BalanceNotification\BalanceNotificationRepository;
 use Ivoz\Provider\Domain\Events\AbstractBalanceThresholdWasBroken;
 use Ivoz\Provider\Domain\Model\Language\LanguageInterface;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateRepository;
-use Ivoz\Core\Infrastructure\Domain\Service\Mailer\Client;
 use Ivoz\Core\Domain\Model\Mailer\Message;
 
 class NotifyBrokenThreshold implements DomainEventSubscriberInterface
@@ -34,7 +34,7 @@ class NotifyBrokenThreshold implements DomainEventSubscriberInterface
     protected $entityTools;
 
     /**
-     * @var Client
+     * @var MailerClientInterface
      */
     protected $mailer;
 
@@ -42,7 +42,7 @@ class NotifyBrokenThreshold implements DomainEventSubscriberInterface
         NotificationTemplateRepository $notificationTemplateRepository,
         BalanceNotificationRepository $balanceNotificationRepository,
         EntityTools $entityTools,
-        Client $mailer
+        MailerClientInterface $mailer
     ) {
         $this->notificationTemplateRepository = $notificationTemplateRepository;
         $this->balanceNotificationRepository = $balanceNotificationRepository;

@@ -2,7 +2,7 @@
 
 namespace Ivoz\Kam\Infrastructure\Domain\Service\TrunksAddress;
 
-use Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\XmlRpcTrunksRequest;
+use Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\XmlRpcTrunksRequestInterface;
 use Ivoz\Kam\Domain\Model\TrunksAddress\TrunksAddressInterface;
 use Ivoz\Kam\Domain\Service\TrunksAddress\TrunksAddressLifecycleEventHandlerInterface;
 
@@ -13,7 +13,7 @@ class SendTrunksPermissionsReloadRequest implements TrunksAddressLifecycleEventH
     protected $trunksPermissionsReload;
 
     public function __construct(
-        XmlRpcTrunksRequest $trunksPermissionsReload
+        XmlRpcTrunksRequestInterface $trunksPermissionsReload
     ) {
         $this->trunksPermissionsReload = $trunksPermissionsReload;
     }

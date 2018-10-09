@@ -6,6 +6,7 @@ use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpoint;
 use Ivoz\Ast\Domain\Model\Voicemail\Voicemail;
 use Ivoz\Provider\Domain\Model\Extension\Extension;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionDto;
+use Ivoz\Provider\Domain\Model\Ivr\Ivr;
 use Ivoz\Provider\Domain\Model\User\User;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Tests\DbIntegrationTestHelperTrait;
@@ -14,23 +15,50 @@ class ExtensionLifeCycleTest extends KernelTestCase
 {
     use DbIntegrationTestHelperTrait;
 
-    /**
-     * @return Extension
-     */
     protected function addExtension()
     {
         $extensionDto = new ExtensionDto();
         $extensionDto
-            ->setNumber("104")
-            ->setRouteType("user")
+            ->setNumber('104')
+            ->setRouteType('user')
             ->setCompanyId(1)
             ->setUserId(1)
             ->setNumberCountryId(1);
 
-        /** @var Extension $extension */
         return $this
             ->entityTools
             ->persistDto($extensionDto, null, true);
+    }
+
+    protected function updateExtension()
+    {
+        $extensionRepository = $this->em
+            ->getRepository(Extension::class);
+
+        $extension = $extensionRepository->find(1);
+
+        /** @var ExtensionDto $extensionDto */
+        $extensionDto = $this->entityTools->entityToDto($extension);
+
+        $extensionDto
+            ->setNumber('108')
+            ->setUserId(2);
+
+        return $this
+            ->entityTools
+            ->persistDto($extensionDto, $extension, true);
+    }
+
+    protected function removeExtension()
+    {
+        $extensionRepository = $this->em
+            ->getRepository(Extension::class);
+
+        $extension = $extensionRepository->find(1);
+
+        $this
+            ->entityTools
+            ->remove($extension);
     }
 
     /**
@@ -40,9 +68,7 @@ class ExtensionLifeCycleTest extends KernelTestCase
     {
         $extensionRepository = $this->em
             ->getRepository(Extension::class);
-
         $fixtureExtensions = $extensionRepository->findAll();
-        $this->assertCount(3, $fixtureExtensions);
 
         $this->addExtension();
 
@@ -55,6 +81,50 @@ class ExtensionLifeCycleTest extends KernelTestCase
 
     /**
      * @test
+     */
+    public function it_triggers_lifecycle_services()
+    {
+        $this->addExtension();
+        $this->assetChangedEntities([
+            Extension::class,
+            PsEndpoint::class,
+            User::class
+        ]);
+    }
+
+    /**
+     * @test
+     */
+    public function it_triggers_update_lifecycle_services()
+    {
+        $this->updateExtension();
+        $this->assetChangedEntities([
+            Extension::class,
+            PsEndpoint::class,
+            User::class,
+            Voicemail::class,
+        ]);
+    }
+
+    /**
+     * @test
+     */
+    public function it_triggers_remove_lifecycle_services()
+    {
+        $this->removeExtension();
+        $this->assetChangedEntities([
+            Extension::class,
+            Ivr::class,
+        ]);
+    }
+
+    /////////////////////////////////////////
+    ///
+    /////////////////////////////////////////
+
+    /**
+     * @test
+     * @deprecated
      */
     public function new_extension_userId_updates_users()
     {
@@ -109,6 +179,7 @@ class ExtensionLifeCycleTest extends KernelTestCase
 
     /**
      * @test
+     * @deprecated
      */
     public function new_user_screen_extension_updates_psEndpoint()
     {
@@ -160,6 +231,7 @@ class ExtensionLifeCycleTest extends KernelTestCase
 
     /**
      * @test
+     * @deprecated
      */
     public function updating_user_screen_extension_updates_prev_user_psEndpoint()
     {

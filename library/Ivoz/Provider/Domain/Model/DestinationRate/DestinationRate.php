@@ -65,7 +65,7 @@ class DestinationRate extends DestinationRateAbstract implements DestinationRate
      */
     public function setConnectFee($connectFee)
     {
-        Assertion::regex($connectFee, '/^[0-9]{1,6}[.]{0,1}[0-9]*$/');
+        Assertion::regex((string) $connectFee, '/^[0-9]{1,6}[.]{0,1}[0-9]*$/');
 
         return parent::setConnectFee($connectFee);
     }
@@ -77,7 +77,7 @@ class DestinationRate extends DestinationRateAbstract implements DestinationRate
      */
     public function setCost($cost)
     {
-        Assertion::regex($cost, '/^[0-9]{1,6}[.]{0,1}[0-9]*$/');
+        Assertion::regex((string) $cost, '/^[0-9]{1,6}[.]{0,1}[0-9]*$/');
 
         return parent::setCost($cost);
     }

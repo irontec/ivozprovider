@@ -19,7 +19,7 @@ class ProviderTerminal extends Fixture implements DependentFixtureInterface
     {
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(Terminal::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
-    
+
         $item1 = $this->createEntityInstanceWithPublicMethods(Terminal::class);
         $item1->setName("alice");
         $item1->setDirectMediaMethod("invite");

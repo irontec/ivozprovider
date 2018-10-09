@@ -60,14 +60,14 @@ Feature: Update queues
               "status": null,
               "id": 1,
               "encodedFile": {
-                  "fileSize": null,
-                  "mimeType": null,
-                  "baseName": null
+                  "fileSize": 1,
+                  "mimeType": "audio/x-wav; charset=binary",
+                  "baseName": "locution.wav"
               },
               "originalFile": {
-                  "fileSize": null,
-                  "mimeType": null,
-                  "baseName": null
+                  "fileSize": 1,
+                  "mimeType": "audio/mpeg; charset=binary",
+                  "baseName": "locution.mp3"
               },
               "company": 1
           },
@@ -76,14 +76,14 @@ Feature: Update queues
               "status": null,
               "id": 1,
               "encodedFile": {
-                  "fileSize": null,
-                  "mimeType": null,
-                  "baseName": null
+                  "fileSize": 1,
+                  "mimeType": "audio/x-wav; charset=binary",
+                  "baseName": "locution.wav"
               },
               "originalFile": {
-                  "fileSize": null,
-                  "mimeType": null,
-                  "baseName": null
+                  "fileSize": 1,
+                  "mimeType": "audio/mpeg; charset=binary",
+                  "baseName": "locution.mp3"
               },
               "company": 1
           },
@@ -94,14 +94,14 @@ Feature: Update queues
               "status": null,
               "id": 1,
               "encodedFile": {
-                  "fileSize": null,
-                  "mimeType": null,
-                  "baseName": null
+                  "fileSize": 1,
+                  "mimeType": "audio/x-wav; charset=binary",
+                  "baseName": "locution.wav"
               },
               "originalFile": {
-                  "fileSize": null,
-                  "mimeType": null,
-                  "baseName": null
+                  "fileSize": 1,
+                  "mimeType": "audio/mpeg; charset=binary",
+                  "baseName": "locution.mp3"
               },
               "company": 1
           },

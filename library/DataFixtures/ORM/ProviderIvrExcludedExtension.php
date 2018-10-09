@@ -23,7 +23,7 @@ class ProviderIvrExcludedExtension extends Fixture implements DependentFixtureIn
         /** @var IvrExcludedExtension $item1 */
         $item1 = $this->createEntityInstanceWithPublicMethods(IvrExcludedExtension::class);
         $item1->setIvr(
-            $this->getReference('_reference_ProviderIvrIvr1')
+            $this->getReference('_reference_ProviderIvr1')
         );
         $item1->setExtension(
             $this->getReference('_reference_ProviderExtension1')

@@ -2,7 +2,7 @@
 
 namespace Ivoz\Provider\Infrastructure\Domain\Service\CarrierServer;
 
-use Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\XmlRpcTrunksRequest;
+use Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\XmlRpcTrunksRequestInterface;
 use Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface;
 use Ivoz\Provider\Domain\Service\CarrierServer\CarrierServerLifecycleEventHandlerInterface;
 
@@ -11,7 +11,7 @@ class SendTrunksLcrReloadRequest implements CarrierServerLifecycleEventHandlerIn
     protected $trunksLcrReload;
 
     public function __construct(
-        XmlRpcTrunksRequest $trunksLcrReload
+        XmlRpcTrunksRequestInterface $trunksLcrReload
     ) {
         $this->trunksLcrReload = $trunksLcrReload;
     }

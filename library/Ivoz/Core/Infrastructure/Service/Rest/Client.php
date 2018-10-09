@@ -3,11 +3,12 @@
 namespace Ivoz\Core\Infrastructure\Service\Rest;
 
 use GuzzleHttp\ClientInterface;
+use Ivoz\Core\Domain\Service\ApiClientInterface;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorRepository;
 use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
 use Psr\Http\Message\ResponseInterface;
 
-class Client
+class Client implements ApiClientInterface
 {
     protected $httpClient;
     protected $jwtTokenManager;

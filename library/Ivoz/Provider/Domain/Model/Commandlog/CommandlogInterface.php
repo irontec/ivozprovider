@@ -2,9 +2,10 @@
 
 namespace Ivoz\Provider\Domain\Model\Commandlog;
 
+use Ivoz\Core\Domain\Model\LoggerEntityInterface;
 use Ivoz\Core\Domain\Model\EntityInterface;
 
-interface CommandlogInterface extends EntityInterface
+interface CommandlogInterface extends LoggerEntityInterface, EntityInterface
 {
     /**
      * @param CommandEventInterface $event

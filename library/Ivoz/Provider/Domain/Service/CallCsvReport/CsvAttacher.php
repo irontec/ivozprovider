@@ -3,7 +3,6 @@
 namespace Ivoz\Provider\Domain\Service\CallCsvReport;
 
 use Ivoz\Core\Application\Service\EntityTools;
-use Ivoz\Core\Domain\Service\LifecycleEventHandlerInterface;
 use Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReportDto;
 use Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReportInterface;
 use Ivoz\Provider\Domain\Service\BillableCall\CsvExporter;

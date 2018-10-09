@@ -2,7 +2,7 @@
 
 namespace Ivoz\Provider\Infrastructure\Domain\Service\OutgoingRouting;
 
-use Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\XmlRpcTrunksRequest;
+use Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\XmlRpcTrunksRequestInterface;
 use Ivoz\Provider\Domain\Model\OutgoingRouting\OutgoingRoutingInterface;
 use Ivoz\Provider\Domain\Service\OutgoingRouting\OutgoingRoutingLifecycleEventHandlerInterface;
 
@@ -11,7 +11,7 @@ class SendTrunksLcrReloadRequest implements OutgoingRoutingLifecycleEventHandler
     protected $trunksLcrReload;
 
     public function __construct(
-        XmlRpcTrunksRequest $trunksLcrReload
+        XmlRpcTrunksRequestInterface $trunksLcrReload
     ) {
         $this->trunksLcrReload = $trunksLcrReload;
     }
