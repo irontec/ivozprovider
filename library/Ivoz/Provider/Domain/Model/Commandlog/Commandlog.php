@@ -3,8 +3,9 @@
 namespace Ivoz\Provider\Domain\Model\Commandlog;
 
 use Ivoz\Core\Application\Event\CommandEventInterface;
+use Ivoz\Core\Domain\Model\LoggerEntityInterface;
 
-class Commandlog extends CommandlogAbstract implements CommandlogInterface
+class Commandlog extends CommandlogAbstract implements LoggerEntityInterface, CommandlogInterface
 {
     use CommandlogTrait;
 

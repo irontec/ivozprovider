@@ -28,8 +28,7 @@ class UpdateByUser implements UserLifecycleEventHandlerInterface
     public static function getSubscribedEvents()
     {
         return [
-            self::EVENT_POST_PERSIST => 40,
-            self::EVENT_PRE_REMOVE => 10
+            self::EVENT_POST_PERSIST => 40
         ];
     }
 

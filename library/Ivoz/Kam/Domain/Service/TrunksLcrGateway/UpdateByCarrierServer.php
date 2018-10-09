@@ -7,10 +7,6 @@ use Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface;
 use Ivoz\Provider\Domain\Service\CarrierServer\CarrierServerLifecycleEventHandlerInterface;
 use Ivoz\Kam\Domain\Model\TrunksLcrGateway\TrunksLcrGateway;
 
-/**
- * Class UpdateByCarrierServer
- * @package Ivoz\Kam\Domain\Service\TrunksLcrGateway
- */
 class UpdateByCarrierServer implements CarrierServerLifecycleEventHandlerInterface
 {
     const POST_PERSIST_PRIORITY = 10;
@@ -58,7 +54,6 @@ class UpdateByCarrierServer implements CarrierServerLifecycleEventHandlerInterfa
         );
 
         $carrierServer->setLcrGateway($lcrGateway);
-
         $this->entityTools->persist($carrierServer);
     }
 }
