@@ -41,6 +41,37 @@ class OutgoingRoutingLifeCycleTestLifeCycleTest extends KernelTestCase
             ->persistDto($this->getOutgoingRoutingDto(), null, true);
     }
 
+
+    protected function updateOutgoingRouting()
+    {
+        $outgoingRoutingRepository = $this->em
+            ->getRepository(OutgoingRouting::class);
+
+        $outgoingRouting = $outgoingRoutingRepository->find(1);
+
+        /** @var OutgoingRoutingDto $outgoingRoutingDto */
+        $outgoingRoutingDto = $this->entityTools->entityToDto($outgoingRouting);
+
+        $outgoingRoutingDto
+            ->setPriority(3);
+
+        return $this
+            ->entityTools
+            ->persistDto($outgoingRoutingDto, $outgoingRouting, true);
+    }
+
+    protected function removeOutgoingRouting()
+    {
+        $outgoingRoutingRepository = $this->em
+            ->getRepository(OutgoingRouting::class);
+
+        $outgoingRouting = $outgoingRoutingRepository->find(1);
+
+        $this
+            ->entityTools
+            ->remove($outgoingRouting);
+    }
+
     /**
      * @test
      */
@@ -64,6 +95,48 @@ class OutgoingRoutingLifeCycleTestLifeCycleTest extends KernelTestCase
     /**
      * @test
      */
+    public function it_triggers_lifecycle_services()
+    {
+        $this->addOutgoingRouting();
+        $this->assetChangedEntities([
+            OutgoingRouting::class,
+            TrunksLcrRule::class,
+            TrunksLcrRuleTarget::class,
+        ]);
+    }
+
+    /**
+     * @test
+     */
+    public function it_triggers_update_lifecycle_services()
+    {
+        $this->updateOutgoingRouting();
+        $this->assetChangedEntities([
+            OutgoingRouting::class,
+            TrunksLcrRule::class,
+            TrunksLcrRuleTarget::class,
+        ]);
+    }
+
+    /**
+     * @test
+     */
+    public function it_triggers_remove_lifecycle_services()
+    {
+        $this->removeOutgoingRouting();
+        $this->assetChangedEntities([
+            OutgoingRouting::class,
+        ]);
+    }
+
+    //////////////////////////////////////////////////////
+    ///
+    //////////////////////////////////////////////////////
+
+    /**
+     * @test
+     * @deprecated
+     */
     public function new_outgoing_routing_creates_lcr_rules()
     {
         $this->addOutgoingRouting();
@@ -77,6 +150,7 @@ class OutgoingRoutingLifeCycleTestLifeCycleTest extends KernelTestCase
 
     /**
      * @test
+     * @deprecated
      */
     public function new_outgoing_routing_creates_lcr_rule_targets()
     {

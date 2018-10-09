@@ -27,9 +27,6 @@ class InvoiceNumberSequenceLifeCycleTestLifeCycleTest extends KernelTestCase
         return $invoiceNumberSequenceDto;
     }
 
-    /**
-     * @return InvoiceNumberSequence
-     */
     protected function addInvoiceNumberSequence()
     {
         return $this
@@ -41,6 +38,36 @@ class InvoiceNumberSequenceLifeCycleTestLifeCycleTest extends KernelTestCase
             );
     }
 
+    protected function updateInvoiceNumberSequence()
+    {
+        $invoiceNumberSequenceRepository = $this->em
+            ->getRepository(InvoiceNumberSequence::class);
+
+        $invoiceNumberSequence = $invoiceNumberSequenceRepository->find(1);
+
+        /** @var InvoiceNumberSequenceDto $invoiceNumberSequenceDto */
+        $invoiceNumberSequenceDto = $this->entityTools->entityToDto($invoiceNumberSequence);
+
+        $invoiceNumberSequenceDto
+            ->setName('updatedName');
+
+        return $this
+            ->entityTools
+            ->persistDto($invoiceNumberSequenceDto, $invoiceNumberSequence, true);
+    }
+
+    protected function removeInvoiceNumberSequence()
+    {
+        $invoiceNumberSequenceRepository = $this->em
+            ->getRepository(InvoiceNumberSequence::class);
+
+        $invoiceNumberSequence = $invoiceNumberSequenceRepository->find(1);
+
+        $this
+            ->entityTools
+            ->remove($invoiceNumberSequence);
+    }
+
     /**
      * @test
      */
@@ -48,9 +75,7 @@ class InvoiceNumberSequenceLifeCycleTestLifeCycleTest extends KernelTestCase
     {
         $extensionRepository = $this->em
             ->getRepository(InvoiceNumberSequence::class);
-
         $fixtureInvoices = $extensionRepository->findAll();
-        $this->assertCount(1, $fixtureInvoices);
 
         $this->addInvoiceNumberSequence();
 
@@ -59,6 +84,39 @@ class InvoiceNumberSequenceLifeCycleTestLifeCycleTest extends KernelTestCase
             count($fixtureInvoices) + 1,
             $extensions
         );
+    }
+
+    /**
+     * @test
+     */
+    public function it_triggers_lifecycle_services()
+    {
+        $this->addInvoiceNumberSequence();
+        $this->assetChangedEntities([
+            InvoiceNumberSequence::class
+        ]);
+    }
+
+    /**
+     * @test
+     */
+    public function it_triggers_update_lifecycle_services()
+    {
+        $this->updateInvoiceNumberSequence();
+        $this->assetChangedEntities([
+            InvoiceNumberSequence::class
+        ]);
+    }
+
+    /**
+     * @test
+     */
+    public function it_triggers_remove_lifecycle_services()
+    {
+        $this->removeInvoiceNumberSequence();
+        $this->assetChangedEntities([
+            InvoiceNumberSequence::class
+        ]);
     }
 
     /**

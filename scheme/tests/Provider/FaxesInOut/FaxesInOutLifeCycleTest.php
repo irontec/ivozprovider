@@ -11,10 +11,7 @@ class FaxesInOutLifeCycleTest extends KernelTestCase
 {
     use DbIntegrationTestHelperTrait;
 
-    /**
-     * @return FaxesInOut
-     */
-    protected function addFaxInOut()
+    protected function addFaxesInOut()
     {
         $extensionDto = new FaxesInOutDto();
         $extensionDto
@@ -33,6 +30,36 @@ class FaxesInOutLifeCycleTest extends KernelTestCase
             ->persistDto($extensionDto, null, true);
     }
 
+    protected function updateFaxesInOut()
+    {
+        $faxesInOutRepository = $this->em
+            ->getRepository(FaxesInOut::class);
+
+        $faxesInOut = $faxesInOutRepository->find(1);
+
+        /** @var FaxesInOutDto $faxesInOutDto */
+        $faxesInOutDto = $this->entityTools->entityToDto($faxesInOut);
+
+        $faxesInOutDto
+            ->setSrc('34688888889');
+
+        return $this
+            ->entityTools
+            ->persistDto($faxesInOutDto, $faxesInOut, true);
+    }
+
+    protected function removeFaxesInOut()
+    {
+        $faxesInOutRepository = $this->em
+            ->getRepository(FaxesInOut::class);
+
+        $faxesInOut = $faxesInOutRepository->find(1);
+
+        $this
+            ->entityTools
+            ->remove($faxesInOut);
+    }
+
     /**
      * @test
      */
@@ -42,14 +69,45 @@ class FaxesInOutLifeCycleTest extends KernelTestCase
             ->getRepository(FaxesInOut::class);
 
         $fixtureFaxesInOuts = $extensionRepository->findAll();
-        $this->assertCount(1, $fixtureFaxesInOuts);
 
-        $this->addFaxInOut();
+        $this->addFaxesInOut();
 
         $extensions = $extensionRepository->findAll();
         $this->assertCount(
             count($fixtureFaxesInOuts) + 1,
             $extensions
         );
+    }
+    /**
+     * @test
+     */
+    public function it_triggers_lifecycle_services()
+    {
+        $this->addFaxesInOut();
+        $this->assetChangedEntities([
+            FaxesInOut::class
+        ]);
+    }
+
+    /**
+     * @test
+     */
+    public function it_triggers_update_lifecycle_services()
+    {
+        $this->updateFaxesInOut();
+        $this->assetChangedEntities([
+            FaxesInOut::class
+        ]);
+    }
+
+    /**
+     * @test
+     */
+    public function it_triggers_remove_lifecycle_services()
+    {
+        $this->removeFaxesInOut();
+        $this->assetChangedEntities([
+            FaxesInOut::class
+        ]);
     }
 }
