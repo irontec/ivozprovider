@@ -24,7 +24,7 @@ class ProviderIvrEntry extends Fixture implements DependentFixtureInterface
         $item1->setEntry("test");
         $item1->setRouteType("number");
         $item1->setNumberValue("946002050");
-        $item1->setIvr($this->getReference('_reference_ProviderIvrIvr1'));
+        $item1->setIvr($this->getReference('_reference_ProviderIvr1'));
         $item1->setWelcomeLocution($this->getReference('_reference_ProviderLocution1'));
         $item1->setNumberCountry($this->getReference('_reference_ProviderCountry70'));
         $this->addReference('_reference_ProviderIvrEntry1', $item1);

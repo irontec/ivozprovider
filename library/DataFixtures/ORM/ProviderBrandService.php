@@ -24,7 +24,7 @@ class ProviderBrandService extends Fixture implements DependentFixtureInterface
         $item1->setCode("94");
         $item1->setBrand($this->getReference('_reference_ProviderBrand1'));
         $item1->setService($this->getReference('_reference_ProviderService1'));
-        $this->addReference('_reference_ProviderBrandServiceBrandService1', $item1);
+        $this->addReference('_reference_ProviderBrandService1', $item1);
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
@@ -32,7 +32,7 @@ class ProviderBrandService extends Fixture implements DependentFixtureInterface
         $item2->setCode("95");
         $item2->setBrand($this->getReference('_reference_ProviderBrand1'));
         $item2->setService($this->getReference('_reference_ProviderService2'));
-        $this->addReference('_reference_ProviderBrandServiceBrandService2', $item2);
+        $this->addReference('_reference_ProviderBrandService2', $item2);
         $this->sanitizeEntityValues($item2);
         $manager->persist($item2);
 
@@ -40,7 +40,7 @@ class ProviderBrandService extends Fixture implements DependentFixtureInterface
         $item3->setCode("93");
         $item3->setBrand($this->getReference('_reference_ProviderBrand1'));
         $item3->setService($this->getReference('_reference_ProviderService3'));
-        $this->addReference('_reference_ProviderBrandServiceBrandService3', $item3);
+        $this->addReference('_reference_ProviderBrandService3', $item3);
         $this->sanitizeEntityValues($item3);
         $manager->persist($item3);
 

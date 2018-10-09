@@ -20,8 +20,6 @@ class ProviderPickUpRelUser extends Fixture implements DependentFixtureInterface
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(PickUpRelUser::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
-
-
         /** @var PickUpRelUser $item1 */
         $item1 = $this->createEntityInstanceWithPublicMethods(PickUpRelUser::class);
         $item1->setPickUpGroup(
