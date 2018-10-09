@@ -191,7 +191,11 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
             ['startTime', 'lt', $startTime],
             ['carrier', 'neq', null],
             ['carrier', 'neq', ''],
-            ['price', 'isNull']
+            'or' => [
+                ['price', 'isNull'],
+                ['price', 'lt', 0],
+            ]
+
         ];
 
         $qb
@@ -217,7 +221,6 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
             ['company', 'eq', $companyId],
             ['brand', 'eq', $brandId],
             ['startTime', 'gt', $startTime],
-            ['endTime', 'lt', $endTime],
             ['carrier', 'neq', null],
             ['carrier', 'neq', ''],
             ['price', 'isNull']
@@ -227,6 +230,11 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
             ->select('count(self)')
             ->addCriteria(
                 CriteriaHelper::fromArray($conditions)
+            )->andWhere(
+                $qb->expr()->lt(
+                    '(self.startTime + self.duration)',
+                    preg_replace('/[^0-9]+/', '', $endTime)
+                )
             );
 
         return (int) $qb->getQuery()->getSingleScalarResult();
