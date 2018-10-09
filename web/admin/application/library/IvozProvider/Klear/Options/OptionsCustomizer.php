@@ -49,16 +49,9 @@ class IvozProvider_Klear_Options_OptionsCustomizer implements \KlearMatrix_Model
             case "emulateCompany_dialog":
                 $show = $this->_checkEmulation("company");
                 break;
-
-            case 'generateInvoice_dialog':
-            case 'invoicesDel_dialog':
-            case 'invoicesEdit_screen':
-                $show = $parentModel->getStatus() !== 'created';
-                break;
             case 'invoicesView_screen':
                 $show = $parentModel->getStatus() === 'created';
                 break;
-
             case "pricingPlansEdit_screen":
                 $show = !$this->_pricingPlanHasStarted();
                 break;
@@ -70,11 +63,9 @@ class IvozProvider_Klear_Options_OptionsCustomizer implements \KlearMatrix_Model
                 break;
             case "pricingPlansRelTargetPatternsList_screen":
                 $show = !$this->_pricingPlanHasStarted();
-//                 $show = true;
                 break;
             case "pricingPlansRelTargetPatternsListView_screen":
                 $show = $this->_pricingPlanHasStarted();
-//                 $show = false;
                 break;
             case "mediaRelaySetsEdit_screen":
             case "mediaRelaySetsDel_dialog":
