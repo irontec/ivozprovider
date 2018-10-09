@@ -11,6 +11,7 @@ services:
   Ivoz\Core\Infrastructure\Domain\Service\Lifecycle\DoctrineEventSubscriber:
     arguments:
       $serviceContainer: '@service_container'
+      $forcedEntityChangeLog: '@=service("kernel").getEnvironment() == "test"'
     tags:
       - { name: doctrine.event_subscriber }
 

@@ -17,6 +17,16 @@ interface EntityInterface
     public function getId();
 
     /**
+     * @return bool
+     */
+    public function isNew();
+
+    /**
+     * @return bool
+     */
+    public function hasBeenDeleted();
+
+    /**
      * @return string
      */
     public function __toString();
@@ -33,6 +43,11 @@ interface EntityInterface
      * @throws \Exception
      */
     public function hasChanged($fieldName);
+
+    /**
+     * @return string[]
+     */
+    public function getChangedFields();
 
     /**
      * @param string $fieldName

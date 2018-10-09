@@ -23,9 +23,12 @@ use Ivoz\Core\Infrastructure\Persistence\Doctrine\Events as CustomEvents;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\OnCommitEventArgs;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\OnErrorEventArgs;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Ivoz\Core\Domain\Model\LoggerEntityInterface;
 
 class DoctrineEventSubscriber implements EventSubscriber
 {
+    const UnaccesibleChangeset = 'Unaccesible changeset';
+
     /**
      * @var EntityManagerInterface
      */
@@ -42,6 +45,11 @@ class DoctrineEventSubscriber implements EventSubscriber
     protected $eventPublisher;
 
     /**
+     * @var bool
+     */
+    protected $forcedEntityChangeLog;
+
+    /**
      * @var EntityInterface[]
      */
     protected $flushedEntities = [];
@@ -49,11 +57,13 @@ class DoctrineEventSubscriber implements EventSubscriber
     public function __construct(
         ContainerInterface $serviceContainer,
         EntityManagerInterface $em,
-        DomainEventPublisher $eventPublisher
+        DomainEventPublisher $eventPublisher,
+        bool $forcedEntityChangeLog = false
     ) {
         $this->serviceContainer = $serviceContainer;
         $this->em = $em;
         $this->eventPublisher = $eventPublisher;
+        $this->forcedEntityChangeLog = $forcedEntityChangeLog;
     }
 
     public function getSubscribedEvents()
@@ -189,7 +199,14 @@ class DoctrineEventSubscriber implements EventSubscriber
     private function triggerDomainEvents($eventName, LifecycleEventArgs $args, bool $isNew)
     {
         $entity = $args->getObject();
-        if (!$entity instanceof LoggableEntityInterface) {
+
+        if ($entity instanceof LoggerEntityInterface) {
+            return;
+        }
+
+        if (!$entity instanceof LoggableEntityInterface
+            && !$this->forcedEntityChangeLog
+        ) {
             return;
         }
 
@@ -206,7 +223,10 @@ class DoctrineEventSubscriber implements EventSubscriber
 
                 break;
             case 'post_persist':
-                $changeSet = $entity->getChangeSet();
+                $changeSet =  $entity instanceof LoggableEntityInterface
+                    ? $entity->getChangeSet()
+                    : [self::UnaccesibleChangeset];
+
                 if (empty($changeSet)) {
                     return;
                 }
@@ -218,7 +238,7 @@ class DoctrineEventSubscriber implements EventSubscriber
                 $event = new $eventClass(
                     EntityClassHelper::getEntityClass($entity),
                     $entity->getId(),
-                    $entity->getChangeSet()
+                    $changeSet
                 );
 
                 break;

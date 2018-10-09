@@ -7,32 +7,19 @@ use Ivoz\Core\Domain\Event\DomainEventInterface;
 class DomainEventPublisher
 {
     /**
-     * @var DomainEventPublisher
-     */
-    private static $instance = null;
-
-    /**
      * @var DomainEventSubscriberInterface[]
      */
     private $subscribers;
 
-    private function __construct()
+    public function __construct()
     {
         $this->subscribers = [];
     }
 
     public function subscribe(DomainEventSubscriberInterface $subscriber)
     {
-        $this->subscribers[] = $subscriber;
-    }
-
-    public static function getInstance()
-    {
-        if (null === static::$instance) {
-            static::$instance = new self();
-        }
-
-        return static::$instance;
+        $objectId = spl_object_hash($subscriber);
+        $this->subscribers[$objectId] = $subscriber;
     }
 
     public function publish(DomainEventInterface $aDomainEvent)

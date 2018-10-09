@@ -150,7 +150,7 @@ class EntityTools
 
     public function dispatchQueuedOperations()
     {
-        return $this
+        $this
             ->entityPersister
             ->dispatchQueued();
     }
