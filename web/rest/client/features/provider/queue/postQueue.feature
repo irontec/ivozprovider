@@ -70,20 +70,46 @@ Feature: Create queues
           "strategy": "rrmemory",
           "weight": 2,
           "id": 2,
-          "company": "~",
+          "company": {
+              "type": "vpbx",
+              "name": "Irontec Test Company",
+              "domainUsers": "test.irontec.com",
+              "nif": "12345678-Z",
+              "distributeMethod": "hash",
+              "maxCalls": 0,
+              "postalAddress": "Postal address",
+              "postalCode": "PC",
+              "town": "Town",
+              "province": "Province",
+              "countryName": "Country",
+              "ipfilter": true,
+              "onDemandRecord": 0,
+              "onDemandRecordCode": "",
+              "externallyextraopts": null,
+              "recordingsLimitMB": null,
+              "recordingsLimitEmail": null,
+              "billingMethod": "postpaid",
+              "balance": 0,
+              "id": 2,
+              "language": 1,
+              "defaultTimezone": 1,
+              "country": 1,
+              "outgoingDdi": null,
+              "outgoingDdiRule": null
+          },
           "periodicAnnounceLocution": {
               "name": "testLocution",
               "status": null,
               "id": 1,
               "encodedFile": {
-                  "fileSize": null,
-                  "mimeType": null,
-                  "baseName": null
+                  "fileSize": 1,
+                  "mimeType": "audio/x-wav; charset=binary",
+                  "baseName": "locution.wav"
               },
               "originalFile": {
-                  "fileSize": null,
-                  "mimeType": null,
-                  "baseName": null
+                  "fileSize": 1,
+                  "mimeType": "audio/mpeg; charset=binary",
+                  "baseName": "locution.mp3"
               },
               "company": 1
           },
@@ -92,14 +118,14 @@ Feature: Create queues
               "status": null,
               "id": 1,
               "encodedFile": {
-                  "fileSize": null,
-                  "mimeType": null,
-                  "baseName": null
+                  "fileSize": 1,
+                  "mimeType": "audio/x-wav; charset=binary",
+                  "baseName": "locution.wav"
               },
               "originalFile": {
-                  "fileSize": null,
-                  "mimeType": null,
-                  "baseName": null
+                  "fileSize": 1,
+                  "mimeType": "audio/mpeg; charset=binary",
+                  "baseName": "locution.mp3"
               },
               "company": 1
           },
@@ -110,14 +136,14 @@ Feature: Create queues
               "status": null,
               "id": 1,
               "encodedFile": {
-                  "fileSize": null,
-                  "mimeType": null,
-                  "baseName": null
+                  "fileSize": 1,
+                  "mimeType": "audio/x-wav; charset=binary",
+                  "baseName": "locution.wav"
               },
               "originalFile": {
-                  "fileSize": null,
-                  "mimeType": null,
-                  "baseName": null
+                  "fileSize": 1,
+                  "mimeType": "audio/mpeg; charset=binary",
+                  "baseName": "locution.mp3"
               },
               "company": 1
           },

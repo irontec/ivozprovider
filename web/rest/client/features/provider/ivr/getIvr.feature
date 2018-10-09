@@ -17,6 +17,10 @@ Feature: Retrieve IVRs
           {
               "name": "testIvrCustom",
               "id": 1
+          },
+          {
+              "name": "testIvrCustom2",
+              "id": 2
           }
       ]
     """
@@ -37,23 +41,49 @@ Feature: Retrieve IVRs
           "allowExtensions": false,
           "noInputRouteType": "number",
           "noInputNumberValue": "946002020",
-          "errorRouteType": "number",
-          "errorNumberValue": "946002021",
+          "errorRouteType": "voicemail",
+          "errorNumberValue": null,
           "id": 1,
-          "company": "~",
+          "company": {
+              "type": "vpbx",
+              "name": "DemoCompany",
+              "domainUsers": "127.0.0.1",
+              "nif": "12345678A",
+              "distributeMethod": "hash",
+              "maxCalls": 0,
+              "postalAddress": "Company Address",
+              "postalCode": "54321",
+              "town": "Company Town",
+              "province": "Company Province",
+              "countryName": "Company Country",
+              "ipfilter": false,
+              "onDemandRecord": 0,
+              "onDemandRecordCode": "",
+              "externallyextraopts": "",
+              "recordingsLimitMB": null,
+              "recordingsLimitEmail": "",
+              "billingMethod": "prepaid",
+              "balance": 1.2,
+              "id": 1,
+              "language": 1,
+              "defaultTimezone": 1,
+              "country": 1,
+              "outgoingDdi": null,
+              "outgoingDdiRule": null
+          },
           "welcomeLocution": {
               "name": "testLocution",
               "status": null,
               "id": 1,
               "encodedFile": {
-                  "fileSize": null,
-                  "mimeType": null,
-                  "baseName": null
+                  "fileSize": 1,
+                  "mimeType": "audio/x-wav; charset=binary",
+                  "baseName": "locution.wav"
               },
               "originalFile": {
-                  "fileSize": null,
-                  "mimeType": null,
-                  "baseName": null
+                  "fileSize": 1,
+                  "mimeType": "audio/mpeg; charset=binary",
+                  "baseName": "locution.mp3"
               },
               "company": 1
           },
@@ -64,21 +94,48 @@ Feature: Retrieve IVRs
               "status": null,
               "id": 1,
               "encodedFile": {
-                  "fileSize": null,
-                  "mimeType": null,
-                  "baseName": null
+                  "fileSize": 1,
+                  "mimeType": "audio/x-wav; charset=binary",
+                  "baseName": "locution.wav"
               },
               "originalFile": {
-                  "fileSize": null,
-                  "mimeType": null,
-                  "baseName": null
+                  "fileSize": 1,
+                  "mimeType": "audio/mpeg; charset=binary",
+                  "baseName": "locution.mp3"
               },
               "company": 1
           },
           "noInputExtension": null,
           "errorExtension": null,
           "noInputVoiceMailUser": null,
-          "errorVoiceMailUser": null,
+          "errorVoiceMailUser": {
+              "name": "Alice",
+              "lastname": "Allison",
+              "email": "alice@democompany.com",
+              "pass": "*****",
+              "doNotDisturb": false,
+              "isBoss": false,
+              "active": true,
+              "maxCalls": 1,
+              "externalIpCalls": "0",
+              "voicemailEnabled": true,
+              "voicemailSendMail": true,
+              "voicemailAttachSound": true,
+              "tokenKey": "ec6a6536ca304edf844d1d248a4f08dc",
+              "gsQRCode": false,
+              "id": 1,
+              "company": 1,
+              "callAcl": null,
+              "bossAssistant": null,
+              "bossAssistantWhiteList": null,
+              "language": null,
+              "terminal": 1,
+              "extension": null,
+              "timezone": 1,
+              "outgoingDdi": null,
+              "outgoingDdiRule": null,
+              "voicemailLocution": null
+          },
           "noInputNumberCountry": {
               "code": "ES",
               "countryCode": "+34",
@@ -92,18 +149,6 @@ Feature: Retrieve IVRs
                   "es": "Europa"
               }
           },
-          "errorNumberCountry": {
-              "code": "ES",
-              "countryCode": "+34",
-              "id": 1,
-              "name": {
-                  "en": "Spain",
-                  "es": "España"
-              },
-              "zone": {
-                  "en": "Europe",
-                  "es": "Europa"
-              }
-          }
+          "errorNumberCountry": null
       }
     """
