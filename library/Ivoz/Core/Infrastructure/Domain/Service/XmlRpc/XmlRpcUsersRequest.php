@@ -9,7 +9,7 @@ use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Xmlrpc;
  * Class XmlRpcUsersRequest
  * @package Ivoz\Core\Infrastructure\Service\XmlRpc
  */
-class XmlRpcUsersRequest extends AbstractXmlRpcRequest
+class XmlRpcUsersRequest extends AbstractXmlRpcRequest implements XmlRpcUsersRequestInterface
 {
     public function __construct(
         Xmlrpc $xmlrpc,

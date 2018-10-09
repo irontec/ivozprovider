@@ -2,7 +2,7 @@
 
 namespace Ivoz\Provider\Infrastructure\Domain\Service\TransformationRule;
 
-use Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\XmlRpcTrunksRequest;
+use Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\XmlRpcTrunksRequestInterface;
 use Ivoz\Provider\Domain\Model\TransformationRule\TransformationRuleInterface;
 use Ivoz\Provider\Domain\Service\TransformationRule\TransformationRuleLifecycleEventHandlerInterface;
 
@@ -11,7 +11,7 @@ class SendTrunksDialplanReloadRequest implements TransformationRuleLifecycleEven
     protected $trunksDialplanReload;
 
     public function __construct(
-        XmlRpcTrunksRequest $trunksDialplanReload
+        XmlRpcTrunksRequestInterface $trunksDialplanReload
     ) {
         $this->trunksDialplanReload = $trunksDialplanReload;
     }

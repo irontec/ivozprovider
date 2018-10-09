@@ -2,7 +2,7 @@
 
 namespace Ivoz\Provider\Infrastructure\Domain\Service\ApplicationServer;
 
-use Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\XmlRpcTrunksRequest;
+use Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\XmlRpcTrunksRequestInterface;
 use Ivoz\Provider\Domain\Model\ApplicationServer\ApplicationServerInterface;
 use Ivoz\Provider\Domain\Service\ApplicationServer\ApplicationServerLifecycleEventHandlerInterface;
 
@@ -11,7 +11,7 @@ class SendTrunksDispatcherReloadRequest implements ApplicationServerLifecycleEve
     protected $trunksDispatcherReload;
 
     public function __construct(
-        XmlRpcTrunksRequest $trunksDispatcherReload
+        XmlRpcTrunksRequestInterface $trunksDispatcherReload
     ) {
         $this->trunksDispatcherReload = $trunksDispatcherReload;
     }

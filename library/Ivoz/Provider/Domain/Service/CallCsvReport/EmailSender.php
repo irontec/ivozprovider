@@ -9,6 +9,7 @@ use Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReportInterface;
 use Ivoz\Core\Infrastructure\Domain\Service\Mailer\Client;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateRepository;
+use Ivoz\Core\Domain\Service\MailerClientInterface;
 use Psr\Log\LoggerInterface;
 
 class EmailSender implements CallCsvReportLifecycleEventHandlerInterface
@@ -26,7 +27,7 @@ class EmailSender implements CallCsvReportLifecycleEventHandlerInterface
     protected $notificationTemplateRepository;
 
     /**
-     * @var Client
+     * @var MailerClientInterface
      */
     protected $mailer;
 
@@ -38,7 +39,7 @@ class EmailSender implements CallCsvReportLifecycleEventHandlerInterface
     public function __construct(
         EntityTools $entityTools,
         NotificationTemplateRepository $notificationTemplateRepository,
-        Client $mailer,
+        MailerClientInterface $mailer,
         LoggerInterface $logger
     ) {
         $this->entityTools = $entityTools;

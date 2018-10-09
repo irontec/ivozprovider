@@ -4,8 +4,12 @@ services:
     autoconfigure: true
     public: false
 
+  Ivoz\Core\Infrastructure\Domain\Service\Mailer\FakeClient: ~
   Ivoz\Core\Infrastructure\Domain\Service\Mailer\Client:
     arguments:
       $mailer: '@mailer'
+    tags:
+    - { name: test_double, fake: 'Ivoz\Core\Infrastructure\Domain\Service\Mailer\FakeClient' }
 
-
+  Ivoz\Core\Domain\Service\MailerClientInterface:
+    '@Ivoz\Core\Infrastructure\Domain\Service\Mailer\Client'
