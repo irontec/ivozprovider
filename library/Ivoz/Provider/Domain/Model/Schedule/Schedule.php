@@ -68,11 +68,11 @@ class Schedule extends ScheduleAbstract implements ScheduleInterface
         // Check if time is between begining and end
         $timezone = $time->getTimezone();
         $timeIn = new \DateTime(
-            $this->getTimeIn(),
+            $this->getTimeIn()->format('H:i:s'),
             $timezone
         );
         $timeOut = new \DateTime(
-            $this->getTimeOut(),
+            $this->getTimeOut()->format('H:i:s'),
             $timezone
         );
         $isOnSchedule = ($time >= $timeIn && $time < $timeOut);
