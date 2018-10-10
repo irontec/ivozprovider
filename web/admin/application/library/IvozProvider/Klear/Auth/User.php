@@ -34,6 +34,16 @@ class User extends \Klear_Model_UserAdvanced
     public $token;
     public $refreshToken;
 
+    public $companyType;
+    public $companyVPBX = true;
+    public $companyNotVPBX = false;
+    public $companyResidential = false;
+    public $companyNotResidential = true;
+    public $companyWholesale = false;
+    public $companyNotWholesale = true;
+    public $companyRetail = false;
+    public $companyNotRetail = true;
+
     public function setToken(string $token, string $refreshToken)
     {
         $this->token = $token;

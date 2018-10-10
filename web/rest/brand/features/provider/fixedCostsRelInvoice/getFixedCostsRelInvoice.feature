@@ -27,11 +27,11 @@ Feature: Retrieve fixed costs rel invoices
               "invoice": {
                   "number": "1",
                   "inDate": "2018-01-01 01:00:00",
-                  "outDate": "2018-01-31 01:00:00",
-                  "total": 0.272,
+                  "outDate": "2018-01-31 23:59:59",
+                  "total": null,
                   "taxRate": 21,
-                  "totalWithTax": 0.33,
-                  "status": "processing",
+                  "totalWithTax": null,
+                  "status": null,
                   "statusMsg": null,
                   "id": 1,
                   "pdf": {
@@ -70,11 +70,11 @@ Feature: Retrieve fixed costs rel invoices
           "invoice": {
               "number": "1",
               "inDate": "2018-01-01 01:00:00",
-              "outDate": "2018-01-31 01:00:00",
-              "total": 0.272,
+              "outDate": "2018-01-31 23:59:59",
+              "total": null,
               "taxRate": 21,
-              "totalWithTax": 0.33,
-              "status": "processing",
+              "totalWithTax": null,
+              "status": null,
               "statusMsg": null,
               "id": 1,
               "pdf": {

@@ -8,11 +8,6 @@ use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceRepository;
 use Ivoz\Kam\Domain\Model\TrunksCdr\AccCdrRepository;
 
-/**
- * Class CheckValidity
- * @package Ivoz\Provider\Domain\Invoice\CompanyAdmin
- * @lifecycle pre_persist
- */
 class CheckValidity implements InvoiceLifecycleEventHandlerInterface
 {
     const PRE_PERSIST_PRIORITY = InvoiceLifecycleEventHandlerInterface::PRIORITY_HIGH;
@@ -71,17 +66,6 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
          * @var \Datetime $outDate
          */
         $outDate = clone $invoice->getOutDate();
-
-        if ($invoice->hasChanged('outDate')) {
-            $outDate
-                ->setTimezone($invoiceTz);
-            $outDate
-                ->modify('next day')
-                ->setTime(0, 0, 0)
-                ->modify('- 1 second');
-
-            $invoice->setOutDate($outDate);
-        }
         $utcOutDate = $outDate->setTimezone($utcTz);
 
         $now = (new \DateTime())->setTimezone($invoiceTz);
@@ -117,12 +101,12 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
             );
 
         if (!empty($invoices)) {
-            $invoice = $invoices[0];
-            $nextInvoiceInDate = $invoice->getInDate();
+            $firstInvoice = $invoices[0];
+            $nextInvoiceInDate = $firstInvoice->getInDate();
 
             $calls = $this->billableCallRepository->countUntarificattedCallsInRange(
-                $invoice->getCompany()->getId(),
-                $invoice->getBrand()->getId(),
+                $firstInvoice->getCompany()->getId(),
+                $firstInvoice->getBrand()->getId(),
                 $utcOutDate->format('Y-m-d H:i:s'),
                 $nextInvoiceInDate->setTimezone($utcTz)->format('Y-m-d H:i:s')
             );
