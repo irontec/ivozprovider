@@ -11,7 +11,7 @@ alias cp='cp -i'
 alias mv='mv -i'
 
 # Rename shells tabls with hostname ;-)
-[ "$TERM" = "xterm" ] && PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
+[ "$TERM" = "xterm" ] && PROMPT_COMMAND='echo -ne "\033]0;${HOSTNAME}\007"'
 
 # Get systemd environment variables
 export $(systemctl show-environment)

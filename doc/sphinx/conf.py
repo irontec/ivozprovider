@@ -65,7 +65,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'IvozProvider'
-copyright = '2016-2017, Irontec'
+copyright = '2016-2019, Irontec'
 author = 'Irontec'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -73,7 +73,7 @@ author = 'Irontec'
 # built documents.
 #
 # The short X.Y version.
-version = 2.7
+version = "2.7"
 # The full version, including alpha/beta/rc tags.
 release = 'Artemis'
 

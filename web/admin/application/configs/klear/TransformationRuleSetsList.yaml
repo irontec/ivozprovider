@@ -18,7 +18,7 @@ production:
       title: _("List of %s %2s", ngettext('Numeric transformation', 'Numeric transformations', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/brand/transformations/index.html"
+        href: "/doc/${lang}/administration_portal/brand/settings/numeric_transformations.html"
       rawCondition: "(TransformationRuleSet.brand IS NULL OR TransformationRuleSet.brand = '${auth.brandId}')"
       order:
         field:

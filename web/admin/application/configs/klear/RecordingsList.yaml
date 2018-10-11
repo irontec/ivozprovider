@@ -20,7 +20,7 @@ production:
       title: _("List of %s %2s", ngettext('Recording', 'Recordings', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
-        href: "/doc/${lang}//company/call_recording.html"
+        href: "/doc/${lang}/administration_portal/client/vpbx/calls/call_recordings.html"
       forcedValues:
         <<: *forcedCompany
       fields: &recordings_fieldsLink

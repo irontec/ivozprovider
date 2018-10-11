@@ -1,5 +1,6 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
 #include RatingProfilesList.yaml
 
 production:
@@ -11,6 +12,9 @@ production:
     <<: *ratingProfiles_screensLink
     ratingProfilesList_screen:
       <<: *ratingProfilesList_screenLink
+      info:
+        <<: *documentationLink
+        href: "/doc/${lang}/administration_portal/client/vpbx/rating_profiles.html"
       forcedValues:
         <<: *forcedCompany
       fields:

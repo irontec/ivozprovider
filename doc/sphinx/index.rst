@@ -8,32 +8,15 @@ IvozProvider Official Documentation
 ###################################
 
 .. toctree::
-    :maxdepth: 2
     :caption: Basic Concepts
-    :name: concepts
 
-    basics/intro/index
-
-.. toctree::
-    :maxdepth: 1
-
-    basics/architecture/index
+    basic_concepts/intro/index
+    basic_concepts/architecture/index
+    basic_concepts/installation/index
+    basic_concepts/operation_roles/index
 
 .. toctree::
-    :maxdepth: 2
-
-    basics/installation/index
-
-.. toctree::
-    :maxdepth: 2
-
-    basics/operation_roles/index
-
-
-.. toctree::
-    :maxdepth: 1
     :caption: Getting Started
-    :name: installation
 
     getting_started/internal_calls/index
     getting_started/external_incoming_calls/index
@@ -41,26 +24,27 @@ IvozProvider Official Documentation
 
 
 .. toctree::
-    :caption: Administation portal
-    :name: advanced
+    :caption: Administration portal
+    :titlesonly:
 
-    platform/index
-    brand/index
-    company/index
-    residential/index
-    retail/index
+    administration_portal/platform/index
+    administration_portal/brand/index
+    administration_portal/client/index
 
 .. toctree::
-    :maxdepth: 1
-    :caption: User portal
-    :name: user
+    :caption: Specific portals
 
-    userportal/index
+    user_portal/index
 
 .. toctree::
-    :maxdepth: 2
     :caption: Security and Maintenance
-    :name: security
 
-    security/index
-    maintenance/index
+    security_and_maintenance/security/index
+    security_and_maintenance/maintenance/index
+
+.. toctree::
+    :caption: Rest API
+
+    api_rest/introduction
+    api_rest/web_client
+    api_rest/integrations

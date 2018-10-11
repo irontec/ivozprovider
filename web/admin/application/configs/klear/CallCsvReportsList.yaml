@@ -1,6 +1,5 @@
 #include conf.d/mapperList.yaml
 #include conf.d/actions.yaml
-#include conf.d/documentationLink.yaml
 
 production:
   main:
@@ -14,9 +13,6 @@ production:
       <<: *CallCsvReports
       class: ui-silk-report-clock
       title: _("List of %s %2s", ngettext('Call CSV report', 'Call CSV reports', 0), "[format| (%parent%)]")
-      info:
-        <<: *documentationLink
-        href: "/doc/${lang}/brand/call_csv/reports.html"
       fields: &callCsvReports_fieldsLink
         blacklist:
           company: true

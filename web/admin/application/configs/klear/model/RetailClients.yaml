@@ -103,6 +103,25 @@ production:
             template: '%name${lang}%'
           order:
             Language.name.${lang}: asc
+    country:
+      title: _('Country code')
+      type: select
+      defaultValue: 70
+      required: true
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\Country\Country
+          fieldName:
+            fields:
+              - name${lang}
+              - countryCode
+            template: '%name${lang}% (%countryCode%)'
+          order:
+            Country.name.${lang}: asc
+    externallyExtraOpts:
+      title: _('Externally rater custom options')
+      type: textarea
     mediaRelaySets:
       title: _('Media relay Set')
       type: select

@@ -18,7 +18,7 @@ production:
       title: _("List of %s %2s", ngettext('Carrier server', 'Carrier servers', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/brand/peering/carrier_servers.html"
+        href: "/doc/${lang}/administration_portal/brand/providers/carriers.html#carrier-servers"
       fields:
         options:
           title: _("Options")

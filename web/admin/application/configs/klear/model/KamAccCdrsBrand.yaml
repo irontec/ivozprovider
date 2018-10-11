@@ -51,7 +51,7 @@ production:
       type: text
       maxLength: 128
     company:
-      title: ngettext('Company', 'Companies', 1)
+      title: ngettext('Client', 'Clients', 1)
       type: select
       source:
         data: mapper

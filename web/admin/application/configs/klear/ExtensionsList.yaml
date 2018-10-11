@@ -17,7 +17,7 @@ production:
       title: _("List of %s %2s", ngettext('Extension', 'Extensions', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/company/extensions.html"
+        href: "/doc/${lang}/administration_portal/client/vpbx/extensions.html"
       class: ui-silk-book-open
       forcedValues:
         <<: *forcedCompany

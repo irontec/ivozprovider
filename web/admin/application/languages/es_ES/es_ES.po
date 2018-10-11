@@ -160,8 +160,8 @@ msgid_plural "Application Servers"
 msgstr[0] "Servidor de Aplicación"
 msgstr[1] "Servidores de Aplicación"
 
-msgid "Apply to all companies"
-msgstr "Aplicar a todas las compañías"
+msgid "Apply to all clients"
+msgstr "Aplicar a todos los clientes"
 
 #, php-format
 msgid "Are you sure that you want to emulate the %s \"%2s\"?"
@@ -445,6 +445,11 @@ msgstr[1] "Clientes"
 msgid "Client Configuration"
 msgstr "Configuración de Cliente"
 
+msgid "Client admin"
+msgid_plural "Client admins"
+msgstr[0] "Administrador de cliente"
+msgstr[1] "Administradores de clientes"
+
 msgid "Client's default"
 msgstr "Usar configuración cliente"
 
@@ -463,20 +468,10 @@ msgstr "Código"
 msgid "Code used for internationals calls, usually 00."
 msgstr "Código para llamadas internacionales, típicamente 00."
 
-msgid "Company"
-msgid_plural "Companies"
-msgstr[0] "Empresa"
-msgstr[1] "Empresas"
-
 msgid "Company URL"
 msgid_plural "Company URLs"
 msgstr[0] "URL Empresa"
 msgstr[1] "URLs Empresa"
-
-msgid "Company admin"
-msgid_plural "Company admins"
-msgstr[0] "Administrador de empresa"
-msgstr[1] "Administradores de empresa"
 
 msgid "Company service"
 msgid_plural "Company services"
@@ -827,6 +822,9 @@ msgstr "Tarificación externa"
 
 msgid "Externally rater custom options"
 msgstr "Opciones adicionales tarificación externa"
+
+msgid "Externally rater options"
+msgstr "Opciones Tarificación externa"
 
 msgid "Extra Configuration"
 msgstr "Configuración adicional"
@@ -1809,6 +1807,9 @@ msgstr "Contraseña"
 msgid "Pin protected"
 msgstr "Con contraseña"
 
+msgid "Platform data"
+msgstr "Información de plataforma"
+
 msgid "Please select only uninvoiced calls"
 msgstr "Por favor, seleccione únicamente llamadas no facturadas"
 
@@ -1940,6 +1941,16 @@ msgstr "Aleatoriamente"
 msgid "Random Contact Username"
 msgstr "Nombre de usuario de contacto aleatorio"
 
+msgid "Rate"
+msgid_plural "Rates"
+msgstr[0] "Tarifa"
+msgstr[1] "Tarifas"
+
+msgid "Rating Plan"
+msgid_plural "Rating Plans"
+msgstr[0] "Plan de precios"
+msgstr[1] "Planes de precios"
+
 msgid "Rating Profile"
 msgid_plural "Rating Profiles"
 msgstr[0] "Perfil de precio"
@@ -1952,11 +1963,6 @@ msgid "Rating plan"
 msgid_plural "Rating plans"
 msgstr[0] "Plan de precio"
 msgstr[1] "Planes de precios"
-
-msgid "Rating plan group"
-msgid_plural "Rating plan groups"
-msgstr[0] "Grupo de planes de precio"
-msgstr[1] "Grupos de planes de precio"
 
 msgid "Re metering date"
 msgstr "Fecha de retarificación"
@@ -2065,6 +2071,9 @@ msgid "Retail admin"
 msgid_plural "Retail admins"
 msgstr[0] "Administrador Retail"
 msgstr[1] "Administradores Retail"
+
+msgid "Retail specific"
+msgstr "Específico de retail"
 
 msgid "Ring all"
 msgstr "A todos"
@@ -2699,6 +2708,9 @@ msgid "Wholesale admin"
 msgid_plural "Wholesale admins"
 msgstr[0] "Administrador Wholesale"
 msgstr[1] "Administradores Wholesale"
+
+msgid "Wholesale specific"
+msgstr "Específico de Wholesale"
 
 msgid "Will be shown on page footer"
 msgstr "Se mostrará en el pie de página"

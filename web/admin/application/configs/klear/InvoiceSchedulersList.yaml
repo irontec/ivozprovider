@@ -18,7 +18,7 @@ production:
       title: _("List of %s %2s", ngettext('Invoice scheduler', 'Invoice schedulers', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/brand/invoices/scheduler.html"
+        href: "/doc/${lang}/administration_portal/brand/invoicing/invoice_schedulers.html"
       forcedValues:
         <<: *forcedBrand
       fields: &invoiceSchedulers_fieldsLink

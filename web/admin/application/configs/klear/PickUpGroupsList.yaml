@@ -16,7 +16,7 @@ production:
       title: _("List of %s %2s", ngettext('Pick up group', 'Pick up groups', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/company/call_captures.html"
+        href: "/doc/${lang}/administration_portal/client/vpbx/user_configuration/pick_up_groups.html"
       forcedValues:
         <<: *forcedCompany
       fields:

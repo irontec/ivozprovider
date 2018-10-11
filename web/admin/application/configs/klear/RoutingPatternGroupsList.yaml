@@ -16,7 +16,7 @@ production:
       title: _("List of %s %2s", ngettext('Routing pattern group', 'Routing pattern groups', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/brand/routing/pattern_groups.html"
+        href: "/doc/${lang}/administration_portal/brand/routing/routing_patterns_groups.html"
       forcedValues:
         <<: *forcedBrand
       fields: &routingPatternGroups_fieldsLink

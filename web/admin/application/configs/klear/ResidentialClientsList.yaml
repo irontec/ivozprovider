@@ -20,7 +20,7 @@ production:
       title: _("List of %s %2s", ngettext('Residential Client', 'Residential Clients', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/brand/residential.html"
+        href: "/doc/${lang}/administration_portal/brand/clients/residential.html"
       forcedValues:
         type: 'residential'
         <<: *forcedBrand
@@ -58,9 +58,6 @@ production:
           language: true
           onDemandRecord: true
           onDemandRecordCode: true
-          recordingsLimitMB: true
-          recordingsLimitEmail: true
-          recordingsDiskUsage: true
           externallyExtraOpts: true
           type: true
           voicemailNotificationTemplate: true
@@ -116,17 +113,21 @@ production:
           outgoingDDI: true
           outgoingDdiRule: true
           externallyExtraOpts: true
-          recordingsLimitMB: true
-          recordingsLimitEmail: true
-          recordingsDiskUsage: true
           balance: true
+          voicemailNotificationTemplate: true
         order: &residentialClientsOrder_Link
           id: true
           name: true
           language: true
           maxCalls: true
+          nif: true
+          postalAddress: true
+          postalCode: true
+          town: true
+          province: true
+          countryName: true
+          registryData: true
           defaultTimezone: true
-          recordingsLimitMB: true
           externallyExtraOpts: true
       fixedPositions: &residentialClientsFixedPositions_Link
         group0:
@@ -134,7 +135,7 @@ production:
           label: _("Basic Configuration")
           fields:
             name: 3
-            FeaturesRelCompany: 3
+            relFeatures: 3
             billingMethod: 3
         group1:
           colsPerRow: 12
@@ -176,9 +177,6 @@ production:
           distributeMethod: ${auth.isNotMainOperator}
           applicationServer: ${auth.isNotMainOperator}
           mediaRelaySets: ${auth.isNotMainOperator}
-          recordingsLimitMB: ${auth.brandFeatures.recordings.disabled}
-          recordingsLimitEmail: ${auth.brandFeatures.recordings.disabled}
-          recordingsDiskUsage: ${auth.brandFeatures.recordings.disabled}
           onDemandRecord: ${auth.brandFeatures.recordings.disabled}
           onDemandRecordCode: ${auth.brandFeatures.recordings.disabled}
           nif: ${auth.brandFeatures.invoices.disabled}
@@ -195,13 +193,13 @@ production:
           <<: *residentialClientsOrder_Link
       fixedPositions:
         group0:
-          colsPerRow: 6
+          colsPerRow: 12
           label: _("Basic Configuration")
           fields:
-            name: 4
-            nif: 2
-            FeaturesRelCompany: 6
-            billingMethod: 3
+            name: 8
+            relFeatures: 4
+            billingMethod: 4
+            outgoingDDI: 6
         group1:
           colsPerRow: 12
           label: _("Geographic Configuration")
@@ -218,37 +216,33 @@ production:
             ipFilter: 1
         group3:
           colsPerRow: 12
-          label: _("Server data")
+          label: _("Platform data")
           fields:
-            outgoingDDI: 6
             mediaRelaySets: 4
             distributeMethod: 4
             applicationServer: 4
         group4:
-          colsPerRow: 2
+          colsPerRow: 12
           label: _("Invoice data")
           fields:
-            invoiceLanguage: 1
-            postalAddress: 2
-            postalCode: 1
-            town: 1
-            province: 1
-            countryName: 1
-            registryData: 2
+            nif: 4
+            __empty: 8
+            postalAddress: 8
+            postalCode: 4
+            town: 4
+            province: 4
+            countryName: 4
         group5:
           colsPerRow: 12
           label: ngettext('Recording', 'Recordings', 0)
           collapsed: true
           fields:
-            recordingsLimitMB: 6
-            recordingsDiskUsage: 6
-            recordingsLimitEmail: 6
             onDemandRecord: 6
             onDemandRecordCode: 6
         group6:
           colsPerRow: 1
           collapsed: true
-          label: _("Externally rated options")
+          label: _("Externally rater options")
           fields:
             externallyExtraOpts: 1
         group7:
@@ -269,19 +263,19 @@ production:
     administratorsList_screen:
       <<: *administratorsList_screenLink
       class: ui-silk-user-gray
-      title: _("List of %s %2s", ngettext('Company admin', 'Company admins', 0), "[format| (%parent%)]")
+      title: _("List of %s %2s", ngettext('Client admin', 'Client admins', 0), "[format| (%parent%)]")
       filterField: Company
       parentOptionCustomizer:
         - recordCount
     administratorsNew_screen:
       <<: *administratorsNew_screenLink
-      title: _("Add %s", ngettext('Company admin', 'Company admins', 1), "[format| (%parent%)]")
+      title: _("Add %s", ngettext('Client admin', 'Client admins', 1), "[format| (%parent%)]")
       filterField: Company
       forcedValues:
         <<: *forcedBrand
     administratorsEdit_screen:
       <<: *administratorsEdit_screenLink
-      title: _("Edit %s %2s", ngettext('Company admin', 'Company admins', 1), "[format| (%item%)]")
+      title: _("Edit %s %2s", ngettext('Client admin', 'Client admins', 1), "[format| (%item%)]")
       filterField: Company
       forcedValues:
         <<: *forcedBrand
@@ -367,9 +361,9 @@ production:
     <<: *administrators_dialogsLink
     administratorsDel_dialog:
       <<: *administratorsDel_dialogLink
-      title: _("Delete %s", ngettext('Company admin', 'Company admins', 1))
-      description: _("Do you want to delete this %s?", ngettext('Company admin', 'Company admins', 1))
-      message: _("%s successfully deleted.", ngettext('Company admin', 'Company admins', 1))
+      title: _("Delete %s", ngettext('Client admin', 'Client admins', 1))
+      description: _("Do you want to delete this %s?", ngettext('Client admin', 'Client admins', 1))
+      message: _("%s successfully deleted.", ngettext('Client admin', 'Client admins', 1))
 
     # outgoingRouting dialogs:
     <<: *outgoingRouting_dialogsLink
