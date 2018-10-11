@@ -2,7 +2,7 @@
 
 namespace Ivoz\Provider\Infrastructure\Domain\Service\TransformationRule;
 
-use Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\XmlRpcUsersRequest;
+use Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\XmlRpcUsersRequestInterface;
 use Ivoz\Provider\Domain\Model\TransformationRule\TransformationRuleInterface;
 use Ivoz\Provider\Domain\Service\TransformationRule\TransformationRuleLifecycleEventHandlerInterface;
 
@@ -11,7 +11,7 @@ class SendUsersDialplanReloadRequest implements TransformationRuleLifecycleEvent
     protected $usersDialplanReload;
 
     public function __construct(
-        XmlRpcUsersRequest $usersDialplanReload
+        XmlRpcUsersRequestInterface $usersDialplanReload
     ) {
         $this->usersDialplanReload = $usersDialplanReload;
     }

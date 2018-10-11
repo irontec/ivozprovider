@@ -259,34 +259,6 @@ production:
     externallyExtraOpts:
       title: _('Externally rater custom options')
       type: textarea
-    recordingsLimitMB:
-      title: _("Max disk usage (in MB)")
-      type: number
-      source:
-        control: Spinner
-        min: 0
-      info:
-        type: box
-        position: left
-        icon: help
-        text: _("Max disk usage in megabytes this company can use. When limit has been reached, oldest recordings will be removed. Leave empty to allow unlimited disk usage.")
-        label: _("Need help?")
-    recordingsDiskUsage:
-      title: _('Disk usage')
-      type: ghost
-      source:
-        class: IvozProvider_Klear_Ghost_Recordings
-        method: getCompanyDiskUsage
-    recordingsLimitEmail:
-      title: _('Disk usage notification email')
-      type: text
-      maxLength: 250
-      info:
-        type: box
-        position: left
-        icon: help
-        text: _("Email address that will be notified when 80% of the configured limit has been reached.")
-        label: _("Need help?")
     relFeatures:
       title: _('Features')
       type: multiselect

@@ -8,19 +8,20 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-01 12:51+0200\n"
+"POT-Creation-Date: 2018-10-11 16:24+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.4.0\n"
+"Generated-By: Babel 2.3.4\n"
 
 #: ../../getting_started/external_incoming_calls/configure_ddi.rst:1
+#, fuzzy
 msgid ""
-"Once we have an agreement with a VoIP provider and we have configured it "
-"in the *peering* section, only two task are pending:"
+"Once we have an agreement with a DDI provider and we have configured it "
+"in the previous section, only two task are pending:"
 msgstr ""
 "Una vez que hemos llegado a un acuerdo con un Operador VoIP y hemos "
 "configuradoesta relación de *peering*, solo faltan dos tareas:"
@@ -30,29 +31,32 @@ msgid "Configuring an external DDI"
 msgstr "Dar de alta un DDI externo"
 
 #: ../../getting_started/external_incoming_calls/configure_ddi.rst:10
+#, fuzzy
 msgid ""
-"The brand operator, responsible of this *peering* agreements with VoIP "
-"providers , has the task to create the DDIs for each provider."
+"The brand operator, responsible of these *peering* agreements with VoIP "
+"providers, has the task to create the DDIs for each client."
 msgstr ""
 "El operador de marca, como único responsable de llegar a acuerdos de "
 "*peering* con operadores IP, es el responsable de dar de alta los DDIs de"
 " cada operador."
 
 #: ../../getting_started/external_incoming_calls/configure_ddi.rst:13
+#, fuzzy
 msgid ""
 "Notice that in order to access this section, the brand operator (or "
-"*god*) must have emulated the proper company and access the menu section "
-"**Company Configuration**."
+"*god*) must have emulated the proper client and access the menu section "
+"**Client Configuration**."
 msgstr ""
 "Observar que para poder acceder a esta sección el operador de marca (o "
 "*god*) tiene que haber emulado una empresa concreta y acceder desde el "
 "bloque **Configuración de empresa**."
 
 #: ../../getting_started/external_incoming_calls/configure_ddi.rst:17
+#, fuzzy
 msgid ""
-"Section **Company configuration > DDIs** is different when the company "
+"Section **Client configuration > DDIs** is different when the client "
 "administrator access than the displayed data when a global or brand "
-"administrator does. Company administrator are unable to create or delete "
+"administrator does. Client administrator are unable to create or delete "
 "DDIs, just edit the one created by the brand or god administrator."
 msgstr ""
 "La sección **Configuración de empresa > DDIs** es distinta cuando accede "
@@ -62,41 +66,35 @@ msgstr ""
 "creado."
 
 #: ../../getting_started/external_incoming_calls/configure_ddi.rst:22
+#, fuzzy
 msgid ""
-"The section **Brand configuration > DDIs** is a *read-only* display of "
-"all the DDIs of the brand, associated with the different companies."
-msgstr ""
-"Por otra parte, la sección **Configuración de marca > DDIs** solo sirve "
-"para que el operador de marca pueda ver los DDIs asociados a sus "
-"distintas empresas, es un listado en *read-only*."
-
-#: ../../getting_started/external_incoming_calls/configure_ddi.rst:25
-msgid ""
-"Taking into account this concepts, we create a new DDI and fill the "
-"required fields:"
+"Taking into account these concepts, we create a new DDI and fill the "
+"required fields."
 msgstr ""
 "Una vez explicados estos conceptos, añadimos un nuevo DDI y rellenamos "
 "los campos necesarios:"
 
-#: ../../getting_started/external_incoming_calls/configure_ddi.rst:40
+#: ../../getting_started/external_incoming_calls/configure_ddi.rst:25
+#, fuzzy
 msgid ""
-"For detailed information about configuration fields, check :ref:`DDIs` "
-"section."
+"For detailed information about configuration fields, check :ref:`DDIs "
+"<pbx_ddis>` section."
 msgstr ""
 "Para más información sobre los campos de configuración, ver la sección "
 ":ref:`DDIs`"
 
-#: ../../getting_started/external_incoming_calls/configure_ddi.rst:44
+#: ../../getting_started/external_incoming_calls/configure_ddi.rst:28
 msgid "Configure incoming routes"
 msgstr "Configurar tratamiento en entrada"
 
-#: ../../getting_started/external_incoming_calls/configure_ddi.rst:46
+#: ../../getting_started/external_incoming_calls/configure_ddi.rst:29
+#, fuzzy
 msgid ""
-"In the previous section, we have created the DDI and configure it, but "
-"**the most common procedure** is that the brand operator just create it "
-"while the **company administator**, using the same saction **will "
-"configure** it choosing the correct route (user, huntgroup, etc.), its "
-"filters with calendars and so on."
+"In the previous section, we have created the DDI and configure it "
+"(pointing it to user Alice), but **the most common procedure** is that "
+"the brand operator just creates the DDI while the **client "
+"administrator**, using the same section, **configures** it choosing the "
+"correct route (user, hunt group, etc.), calendars filters and so on."
 msgstr ""
 "En la sección anterior hemos dado de alta el DDI y lo hemos configurado, "
 "pero conviene tener claro que **en un uso normal, el administrador de "
@@ -105,7 +103,7 @@ msgstr ""
 " al usuario / grupo de salto / etc. adecuado, configurando horarios, "
 "calendarios, etc."
 
-#: ../../getting_started/external_incoming_calls/configure_ddi.rst:51
+#: ../../getting_started/external_incoming_calls/configure_ddi.rst:34
 msgid ""
 "At this point, calling the number of the configured DDI will make the "
 "*Alice* phone ring."
@@ -114,7 +112,8 @@ msgstr ""
 " *Alice* consiguiendo, por tanto, el objetivo de este bloque :)"
 
 #: ../../getting_started/external_incoming_calls/index.rst:3
-msgid "Receive external calls"
+#, fuzzy
+msgid "Receiving external calls"
 msgstr "Recibir llamadas externas"
 
 #: ../../getting_started/external_incoming_calls/index.rst:5
@@ -126,16 +125,19 @@ msgstr ""
 "llamadas externas."
 
 #: ../../getting_started/external_incoming_calls/index.rst:8
-msgid "In order tho archive this, this steps will be followed:"
+#, fuzzy
+msgid "In order to achieve this, this steps will be followed:"
 msgstr "Para ello, seguiremos los siguientes pasos:"
 
 #: ../../getting_started/external_incoming_calls/peering.rst:3
-msgid "Peering configuartion"
+#, fuzzy
+msgid "Peering configuration"
 msgstr "Configuración de peering"
 
 #: ../../getting_started/external_incoming_calls/peering.rst:5
+#, fuzzy
 msgid ""
-"We understand a **Peering contract** the agreeming between a **Brand "
+"We understand a **Peering contract** the agreement between a **Brand "
 "Operator** and a VoIP Provider to make and receive calls."
 msgstr ""
 "En IvozProvider se entiende por **Contrato de Peering** el acuerdo entre "
@@ -143,12 +145,23 @@ msgstr ""
 "llamadas."
 
 #: ../../getting_started/external_incoming_calls/peering.rst:8
-msgid ""
-"IvozProvider is ready to integrate with IP providers created on the "
-"secteion **Perring contracts**:"
+msgid "We divide Peerings in two types:"
 msgstr ""
-"IvozProvider permite integrarse con Operadores IP por medio de la sección"
-" **Contratos de Peering** que pasamos a describir:"
+
+#: ../../getting_started/external_incoming_calls/peering.rst:10
+msgid "**Carriers** for outgoing calls (see :ref:`Carriers`)."
+msgstr ""
+
+#: ../../getting_started/external_incoming_calls/peering.rst:12
+msgid "**DDI Providers** for incoming calls (see :ref:`DDI Providers`)."
+msgstr ""
+
+#: ../../getting_started/external_incoming_calls/peering.rst:14
+msgid ""
+"In order to achieve our goal, we will need to create a new (an valid) DDI"
+" Provider assign our country's numeric transformation. See :ref:`DDI "
+"Providers` for further reference."
+msgstr ""
 
 #: ../../getting_started/external_incoming_calls/transformations.rst:3
 msgid "Transformations configuration"
@@ -164,10 +177,11 @@ msgstr ""
 "la solución."
 
 #: ../../getting_started/external_incoming_calls/transformations.rst:8
+#, fuzzy
 msgid ""
-"A very important contept to archive this goal is the numeric "
-"transformation, that **adapts the different number format systems of the "
-"countries of the world** defined in `E.164 "
+"A very important concept to achieve this goal are the numeric "
+"transformations, that **adapts the different number format systems of the"
+" countries of the world** defined in `E.164 "
 "<https://www.itu.int/rec/T-REC-E.164/es>`_ **to a neutral format**."
 msgstr ""
 "Un concepto muy importante para conseguir este objetivo es el de las "
@@ -177,14 +191,16 @@ msgstr ""
 "neutro**."
 
 #: ../../getting_started/external_incoming_calls/transformations.rst:13
+#, fuzzy
 msgid ""
 "The section that allows the brand operator to configure all the **numeric"
-" transformations** is:"
+" transformations** is **Brand Configuration / Providers / Numeric "
+"transformations**."
 msgstr ""
 "La sección que le permite configurar al operador de marca todo lo "
 "relativo a **Transformaciones numéricas** es:"
 
-#: ../../getting_started/external_incoming_calls/transformations.rst:27
+#: ../../getting_started/external_incoming_calls/transformations.rst:16
 msgid ""
 "You can find more information about transformations in :ref:`Numeric "
 "transformations` section."
@@ -192,14 +208,21 @@ msgstr ""
 "Para más información sobre transformaciones ver sección "
 ":ref:`Transformaciones numéricas`."
 
+#: ../../getting_started/external_incoming_calls/transformations.rst:18
+msgid ""
+"We already have a pre-created set for most of the countries of the world,"
+" so hopefully nothing needs to be done here."
+msgstr ""
+
 #: ../../getting_started/external_outgoing_calls/call_routing.rst:4
 msgid "Outgoing Routing configuration"
 msgstr "Configuración Rutas salientes"
 
 #: ../../getting_started/external_outgoing_calls/call_routing.rst:6
+#, fuzzy
 msgid ""
-"We already have our test call categorized as a call within the **Target "
-"pattern** 'Spain'. In addition, we also have a **Target pattern group** "
+"We already have our test call categorized as a call within the **Routing "
+"pattern** 'Spain'. In addition, we also have a **Routing pattern group** "
 "including 'Spain', called 'Europe'."
 msgstr ""
 "Ya tenemos nuestra llamada de pruebas categorizada dentro del **Patrón de"
@@ -207,85 +230,85 @@ msgstr ""
 "destino** que incluye 'España', 'Europa'."
 
 #: ../../getting_started/external_outgoing_calls/call_routing.rst:10
+#, fuzzy
 msgid ""
 "Now we have to tell IvozProvider that calls to 'Spain' or 'Europe' should"
-" be established through our **Contract Peering**."
+" be established through our new **Carrier**."
 msgstr ""
 "Ahora solo nos falta decir a IvozProvider que las llamadas de 'España' o "
 "de 'Europa' salgan por nuestro **Contrato de peering**."
 
 #: ../../getting_started/external_outgoing_calls/call_routing.rst:13
-msgid "To make this assignment, we use the section **Outgoing routing**:"
+#, fuzzy
+msgid ""
+"To make this assignment, we use the section **Brand Configuration > "
+"Routing > Outgoing routings**:"
 msgstr ""
 "Para realizar esta vinculación, accedemos a la sección **Rutas "
 "salientes**:"
 
 #: ../../getting_started/external_outgoing_calls/call_routing.rst:15
-msgid ""
-"If we choose routing 'Spain' calls only through our *Peering contract*, "
-"we will make this configuration:"
+msgid "Client: \"Apply to all clients\" (or just *democompany*)."
 msgstr ""
-"Si optamos por enrutar solamente las llamadas de España por nuestro "
-"Contrato de *peering*, tendremos que realizar la siguiente configuración:"
 
-#: ../../getting_started/external_outgoing_calls/call_routing.rst:28
-msgid ""
-"On the other hand, if we are more generous and we decide to place calls "
-"to all european countries, we would make this configuration:"
+#: ../../getting_started/external_outgoing_calls/call_routing.rst:17
+msgid "Type: pattern."
 msgstr ""
-"Por el contrario, si somos más generosos y decidimos permitir todas las "
-"llamadas a países europeos, la configuración a aplicar sería la "
-"siguiente:"
 
-#: ../../getting_started/external_outgoing_calls/call_routing.rst:42
+#: ../../getting_started/external_outgoing_calls/call_routing.rst:19
+msgid "Destination pattern: Spain."
+msgstr ""
+
+#: ../../getting_started/external_outgoing_calls/call_routing.rst:21
+msgid "Route type: static."
+msgstr ""
+
+#: ../../getting_started/external_outgoing_calls/call_routing.rst:23
+msgid "Carriers: our new carrier."
+msgstr ""
+
+#: ../../getting_started/external_outgoing_calls/call_routing.rst:25
+#: ../../getting_started/external_outgoing_calls/call_routing.rst:27
+msgid "Priority: 1"
+msgstr ""
+
+#: ../../getting_started/external_outgoing_calls/call_routing.rst:29
+#, fuzzy
 msgid ""
 "For more information about routing and load balancing check "
-":ref:`Outgoing Routing` section:"
+":ref:`Outgoing Routings` section."
 msgstr ""
 "Para más información sobre enrutado y balanceo de carga vea la sección "
 ":ref:`Enrutado saliente`:"
 
-#: ../../getting_started/external_outgoing_calls/destination_rate.rst:4
-msgid "Creating a destination rate"
-msgstr "Crear un precio destino"
+#: ../../getting_started/external_outgoing_calls/create_carrier.rst:3
+msgid "Create a new carrier"
+msgstr ""
 
-#: ../../getting_started/external_outgoing_calls/destination_rate.rst:6
+#: ../../getting_started/external_outgoing_calls/create_carrier.rst:5
+#, fuzzy
 msgid ""
-"Destination rates section is empty by default, as opposed to target "
-"patterns section, that has all the 254 countries of the world. The reason"
-" is that one destination rate will usually imply lots of pattern per "
-"country (GSM networks, especial numbers, mobile numbers, fixed lines, "
-"etc.)."
+"At this point of the configuration, we have to configure IvozProvider to "
+"receive calls using a DDI Provider, but we have not configured a Carrier "
+"to make external call."
 msgstr ""
-"A diferencia de los patrones de destino, que vienen precreados con los "
-"países del mundo, los patrones de precio no se crean ya que lo "
-"habitual es que un país se divida en muchos patrones de precio (redes GSM"
-" de un operador, numeraciones especiales, números fijos, números móviles,"
-" etc.)."
+"En este punto de la configuración, tenemos que configurar IvozProvider "
+"para que las llamadas a los destinos externos que vayamos a probar salgan"
+" por el Contrato de *peering* que hemos configurado en el bloque "
+"anterior."
 
-#: ../../getting_started/external_outgoing_calls/destination_rate.rst:11
+#: ../../getting_started/external_outgoing_calls/create_carrier.rst:8
 msgid ""
-"In most of the cases, this section data will be imported from CSV "
-"provided by your Peering Contracts, but for our test we will create it "
-"manually. Check section :ref:`Destination rates` for more information."
+"VoIP Providers will usually provide both services: making and receiving "
+"calls."
 msgstr ""
-"En la mayoríad e los casos, los datos de esta sección serán importado desde "
-"un CSV facilitado por los Contratos de Peering, pero para nuesto ejemplo lo "
-"crearemos manualmente. Vea la sección :ref:`Precios destino` para más información."
 
-#: ../../getting_started/external_outgoing_calls/destination_rate.rst:15
-msgid "Create a **destination rate**:"
-msgstr "Creamos un **precio destino**:"
-
-#: ../../getting_started/external_outgoing_calls/destination_rate.rst:26
-msgid "And we add a price for a given prefix in E.164 (with + sign)"
-msgstr "Y añadimos un precio con el prefijo en E.164 (con signo +)"
-
-#: ../../getting_started/external_outgoing_calls/destination_rate.rst:36
-msgid "Floating number must use the \".\" as decimal separator (e.g. 0.02)"
+#: ../../getting_started/external_outgoing_calls/create_carrier.rst:10
+msgid ""
+"Configure a Carrier in a similar way we configured the DDI Provider "
+"(further instructions :ref:`here <Carriers>`), assigning it the same "
+"numeric transformation set."
 msgstr ""
-"Los números decimales se tienen que introducir utilizando el \".\" como "
-"separador decimal (e.g. 0.02)"
 
 #: ../../getting_started/external_outgoing_calls/finish.rst:3
 msgid "Outgoing configuration complete!"
@@ -296,9 +319,10 @@ msgid "That's it!"
 msgstr "¡Listo!"
 
 #: ../../getting_started/external_outgoing_calls/finish.rst:7
+#, fuzzy
 msgid ""
 "At this point, *Alice* should be able to make outgoing calls to spanish "
-"destinations and this calls should be billed accordingly."
+"destinations and this calls should be routed and billed accordingly."
 msgstr ""
 "En este punto, *Alice* debería de ser capaz de realizar llamadas "
 "nacionales externas, que se tendrían que cursar y tarificar con "
@@ -319,7 +343,8 @@ msgstr ""
 "hasta este momento."
 
 #: ../../getting_started/external_outgoing_calls/index.rst:8
-msgid "We will follow this steps:"
+#, fuzzy
+msgid "We will follow these steps:"
 msgstr "Para ello, seguiremos los siguientes pasos:"
 
 #: ../../getting_started/external_outgoing_calls/noplan_nocall.rst:1
@@ -333,7 +358,8 @@ msgstr ""
 "pero..."
 
 #: ../../getting_started/external_outgoing_calls/noplan_nocall.rst:8
-msgid "No pricing plan, no call"
+#, fuzzy
+msgid "No rating plan, no call"
 msgstr "Sin plan de precio, no hay llamada"
 
 #: ../../getting_started/external_outgoing_calls/noplan_nocall.rst:10
@@ -373,6 +399,60 @@ msgstr ""
 "Si una llamada no se va a poder tarificar, IvozProvider no permitirá su "
 "establecimiento."
 
+#: ../../getting_started/external_outgoing_calls/noplan_nocall.rst:25
+#, fuzzy
+msgid "Creating a rating plan"
+msgstr "Crear un precio destino"
+
+#: ../../getting_started/external_outgoing_calls/noplan_nocall.rst:27
+#, fuzzy
+msgid ""
+"**Brand Configuration > Billing > Destination** section is empty by "
+"default, as opposed to routing patterns section, that has all the 254 "
+"countries of the world. The reason is that one destination rate will "
+"usually imply lots of pattern per country (GSM networks, especial "
+"numbers, mobile numbers, fixed lines, etc.)."
+msgstr ""
+"A diferencia de los patrones de destino, que vienen precreados con los "
+"países del mundo, los patrones de precio no se crean ya que lo habitual "
+"es que un país se divida en muchos patrones de precio (redes GSM de un "
+"operador, numeraciones especiales, números fijos, números móviles, etc.)."
+
+#: ../../getting_started/external_outgoing_calls/noplan_nocall.rst:32
+#, fuzzy
+msgid ""
+"In most of the cases, this section data will be imported from CSV "
+"provided by your VoIP provider, but for our test we will create it "
+"manually:"
+msgstr ""
+"En la mayoríad e los casos, los datos de esta sección serán importado "
+"desde un CSV facilitado por los Contratos de Peering, pero para nuesto "
+"ejemplo lo crearemos manualmente. Vea la sección :ref:`Precios destino` "
+"para más información."
+
+#: ../../getting_started/external_outgoing_calls/noplan_nocall.rst:35
+#, fuzzy
+msgid "Create a **destination** with '+34' for Spain."
+msgstr "Creamos un **precio destino**:"
+
+#: ../../getting_started/external_outgoing_calls/noplan_nocall.rst:37
+msgid "Create a **destination rate** and insert a price for Spain destination."
+msgstr ""
+
+#: ../../getting_started/external_outgoing_calls/noplan_nocall.rst:39
+msgid "Create a **rating plan** that includes that destination rate."
+msgstr ""
+
+#: ../../getting_started/external_outgoing_calls/noplan_nocall.rst:43
+msgid "Assign rating plan to client"
+msgstr ""
+
+#: ../../getting_started/external_outgoing_calls/noplan_nocall.rst:45
+msgid ""
+"The last step is **assigning that rating plan** to *democompany* "
+"following the indication :ref:`here <Assigning rating plans to clients>`."
+msgstr ""
+
 #: ../../getting_started/external_outgoing_calls/outgoing_ddi.rst:5
 msgid "Outgoing DDI configuration"
 msgstr "Configurar DDI saliente"
@@ -388,20 +468,22 @@ msgstr ""
 "llamado podría devolvernos la llamada cómodamente."
 
 #: ../../getting_started/external_outgoing_calls/outgoing_ddi.rst:11
+#, fuzzy
 msgid ""
 "To achieve this goal, we have to configure our DDI as *Alice's* "
 "**outbound DDI**, because she will be the chosen one to place our first "
-"outgoing call:"
+"outgoing call."
 msgstr ""
 "Para ello, basta con configurar dicho DDI como **DDI saliente** de "
 "*Alice*, que será la elegida para realizar la primera llamada saliente de"
 " nuestro recién instalado IvozProvider:"
 
-#: ../../getting_started/external_outgoing_calls/outgoing_ddi.rst:22
+#: ../../getting_started/external_outgoing_calls/outgoing_ddi.rst:14
+#, fuzzy
 msgid ""
-"We can set this up editing *Alice* in **Company Configuration** > "
+"We can set this up editing *Alice* in **Client Configuration** > "
 "**Users**. If this change is made by brand operator or global operator, "
-"he must :ref:`emulate the corresponding company <emulate_company>` "
+"he must :ref:`emulate the corresponding client <emulate_client>` "
 "previously."
 msgstr ""
 "Esta configuración se realiza desde **Configuración de empresa** > "
@@ -409,7 +491,13 @@ msgstr ""
 "el operador global el que realiza esta edición, tendrá que haber "
 ":ref:`emulado la empresa <emulate_company>` previamente."
 
-#: ../../getting_started/external_outgoing_calls/outgoing_ddi.rst:26
+#: ../../getting_started/external_outgoing_calls/outgoing_ddi.rst:18
+msgid ""
+"We could have set the same DDI as Default Outgoing DDI at client level, "
+"editing *democompany* client."
+msgstr ""
+
+#: ../../getting_started/external_outgoing_calls/outgoing_ddi.rst:20
 msgid "Calls from users without an outgoing DDI will be rejected by IvozProvider."
 msgstr ""
 "Sin configurar un DDI saliente para el usuario que realiza la llamada, "
@@ -420,10 +508,11 @@ msgid "Where do I call?"
 msgstr "¿A dónde llamo?"
 
 #: ../../getting_started/external_outgoing_calls/where_do_i_call.rst:5
+#, fuzzy
 msgid ""
 "At this point of the configuration, we have to configure IvozProvider to "
-"use the already configured *Contract Peering* to place the external calls"
-" we are making."
+"use the already configured *Carrier* to place the external calls we are "
+"making."
 msgstr ""
 "En este punto de la configuración, tenemos que configurar IvozProvider "
 "para que las llamadas a los destinos externos que vayamos a probar salgan"
@@ -431,32 +520,43 @@ msgstr ""
 "anterior."
 
 #: ../../getting_started/external_outgoing_calls/where_do_i_call.rst:8
+#, fuzzy
 msgid ""
 "To achieve this, in first place, we need that the dialed external numbers"
-" fall in an existing **target pattern**."
+" fall in an existing **target pattern**:"
 msgstr ""
 "Para ello, en primer lugar, necesitamos que los números externos recaigan"
 " en un **patrón de destino** dado de alta con anterioridad."
 
-#: ../../getting_started/external_outgoing_calls/where_do_i_call.rst:17
+#: ../../getting_started/external_outgoing_calls/where_do_i_call.rst:11
+msgid ":ref:`Routing patterns`"
+msgstr ""
+
+#: ../../getting_started/external_outgoing_calls/where_do_i_call.rst:12
+msgid ":ref:`Routing pattern groups`"
+msgstr ""
+
+#: ../../getting_started/external_outgoing_calls/where_do_i_call.rst:14
 msgid ""
 "To achieve our goal of making an external call to a spanish number, we "
-"didn't have to modify the initial contents of this two sections :)"
+"didn't have to modify the initial contents of this two sections as Spain "
+"pattern already exists :)"
 msgstr ""
 
 #: ../../getting_started/internal_calls/brand_portal.rst:3
-msgid "DemoBrand Configuration"
+#, fuzzy
+msgid "Brand Configuration"
 msgstr "Configuración DemoBrand"
 
 #: ../../getting_started/internal_calls/brand_portal.rst:5
+#, fuzzy
 msgid ""
-"We need that the default DemoBrand have a client with at least 2 users. "
-"In order to archive this we will require little configuration in this "
+"We need that the default DemoBrand has a client with at least 2 users. In"
+" order to achieve this we will require a little configuration in this "
 "section."
 msgstr ""
-"Para conseguir que esta DemoBrand tenga un cliente con 2 usuarios que "
-"se puedan llamar entre sí, vamos a tener que hacer muy poco en este "
-"bloque."
+"Para conseguir que esta DemoBrand tenga un cliente con 2 usuarios que se "
+"puedan llamar entre sí, vamos a tener que hacer muy poco en este bloque."
 
 #: ../../getting_started/internal_calls/brand_portal.rst:8
 msgid ""
@@ -464,33 +564,35 @@ msgid ""
 "that there is already an existing *DemoCompany* that we can use to "
 "fulfill our desired goal :)"
 msgstr ""
-"De hecho, al acceder a la sección **PBXs virtuales**, vemos que ya existe una "
-"compañía *DemoCompany* que podremos utilizar para cumplir nuestro ansiado"
-" objetivo :)"
+"De hecho, al acceder a la sección **PBXs virtuales**, vemos que ya existe"
+" una compañía *DemoCompany* que podremos utilizar para cumplir nuestro "
+"ansiado objetivo :)"
 
-#: ../../getting_started/internal_calls/brand_portal.rst:20
+#: ../../getting_started/internal_calls/brand_portal.rst:12
+#, fuzzy
 msgid ""
-"Only a thing is required to configure for this company, marked as edit in"
-" the previous image."
+"Only a thing is required to configure for this client, pressing **Edit "
+"client** option."
 msgstr ""
 "Solo le falta una cosa a esta empresa, marcado con **EDIT** en la captura"
 " anterior."
 
-#: ../../getting_started/internal_calls/brand_portal.rst:26
-msgid "Company SIP Domain"
-msgstr "Dominio SIP de la compañía"
+#: ../../getting_started/internal_calls/brand_portal.rst:17
+msgid "Client SIP Domain"
+msgstr ""
 
-#: ../../getting_started/internal_calls/brand_portal.rst:28
+#: ../../getting_started/internal_calls/brand_portal.rst:19
+#, fuzzy
 msgid ""
 "As mentioned in the previous section, is **required** that each of the "
-"companies have a public domain that resolves to the configured IP address"
-" for :ref:`proxyusers`."
+"vPBX clients has a public domain that resolves to the configured IP "
+"address for :ref:`proxyusers`."
 msgstr ""
 "Tal y como se introdujo en la sección anterior, es **imprescindible** que"
 " cada empresa tenga un dominio público que resuelva a la IP configurada "
 "para el :ref:`proxyusers`."
 
-#: ../../getting_started/internal_calls/brand_portal.rst:32
+#: ../../getting_started/internal_calls/brand_portal.rst:23
 msgid ""
 "DNS register can be type A (supported by all the hardphones/softphones ) "
 "or even NAPTR+SRV."
@@ -498,28 +600,31 @@ msgstr ""
 "El registro DNS puede ser de tipo A (soportado por todos los "
 "hardphones/softphones) o del tipo NAPTR+SRV."
 
-#: ../../getting_started/internal_calls/brand_portal.rst:35
+#: ../../getting_started/internal_calls/brand_portal.rst:26
+#, fuzzy
 msgid ""
 "Once the domain has been configured (by means that are out of scope of "
-"this document), it will be enought to write it in our company "
-"configuration:"
+"this document), it will be enough to write it in our client configuration"
+" **SIP Domain** field."
 msgstr ""
 "Una vez configurado el dominio (por medio de procedimientos que escapan "
 "al objetivo de este documento), bastará con escribir el parámetro en el "
 "campo adecuado de nuestra empresa:"
 
-#: ../../getting_started/internal_calls/brand_portal.rst:47
+#: ../../getting_started/internal_calls/brand_portal.rst:29
+#, fuzzy
 msgid ""
-"Once the company has been saved, the domain will be also displayed in the"
-" list :ref:`previously mentioned <god_sipdomains>`:"
+"Once the client has been saved, the domain will be also displayed in the "
+"list in the column **SIP domain**."
 msgstr ""
 "Una vez guardada la empresa, este dominio aparecerá en la sección "
 "descrita :ref:`en la sección anterior <god_sipdomains>`:"
 
-#: ../../getting_started/internal_calls/brand_portal.rst:58
+#: ../../getting_started/internal_calls/brand_portal.rst:31
+#, fuzzy
 msgid ""
 "It's important to understand this block. :ref:`Unless we've a single "
-"company registered <dnshack>`, wihout a DNS domain pointing to our users "
+"client registered <dnshack>`, without a DNS domain pointing to our users "
 "proxy IP address, everything will fail."
 msgstr ""
 "Es fundamental entender este bloque. :ref:`Salvo que tengamos una única "
@@ -527,147 +632,153 @@ msgstr ""
 "configurado apuntando a la IP del Proxy de Usuarios, ¡fracasaremos en "
 "nuestro objetivo!"
 
-#: ../../getting_started/internal_calls/brand_portal.rst:62
+#: ../../getting_started/internal_calls/brand_portal.rst:35
+#, fuzzy
 msgid ""
-"This is a good sign for the domain we have configured right now, "
-"replacing the 10.10.3.10 with the public address we have used to "
-"configure :ref:`proxyusers`."
-msgstr ""
-"Esta es una buena señal para el dominio que acabamos de configurar, "
-"siempre y cuando en lugar de 10.10.3.10 aparezca la IP pública "
-"configurada en :ref:`proxyusers`."
-
-#: ../../getting_started/internal_calls/brand_portal.rst:73
-msgid ""
-"Have we stressed enough that without a properly configured DNS pointing "
+"Have we repeated enough that without a properly configured DNS pointing "
 "to the Users proxy IP address nothing will work?"
 msgstr ""
 "¿Se ha insistido suficiente en que sin un registro DNS correctamente "
 "configurado apuntando a la IP del Proxy de Usuarios no funcionará nada?"
 
-#: ../../getting_started/internal_calls/brand_portal.rst:79
+#: ../../getting_started/internal_calls/brand_portal.rst:41
 msgid "I have no time for a DNS registry"
 msgstr "No tengo tiempo para crear registros DNS"
 
-#: ../../getting_started/internal_calls/brand_portal.rst:81
+#: ../../getting_started/internal_calls/brand_portal.rst:43
+#, fuzzy
 msgid ""
 "Everything we have said is true: as we create new brands and brands "
-"create new companies, each of them will need a DNS registry."
+"create new clients, each of them will need a DNS registry."
 msgstr ""
 "Todo lo contado hasta este punto es verídico: a medida que vayamos "
 "creando marcas y éstas vayan creando empresas, cada una de ellas "
 "necesitará un registro DNS."
 
-#: ../../getting_started/internal_calls/brand_portal.rst:84
+#: ../../getting_started/internal_calls/brand_portal.rst:46
+#, fuzzy
 msgid ""
-"But the first company of the platform is quite special and can take over "
-"the IP address of the proxy to use it as a domain:"
+"But the first client of the platform is quite special and can take over "
+"the IP address of the proxy to use it as a domain."
 msgstr ""
 "Pero la primera empresa de la plataforma es especial y puede apoderarse "
 "de laIP del Proxy de Usuarios y usarla como si de un DNS se tratara:"
 
-#: ../../getting_started/internal_calls/brand_portal.rst:95
+#: ../../getting_started/internal_calls/brand_portal.rst:49
+#, fuzzy
 msgid ""
 "Although it is not a domain, but being used like it was, it will be "
-"displayed in Domain section:"
+"displayed in :ref:`SIP Domains` section."
 msgstr ""
 "A pesar de no ser un dominio, al estar usándose como tal, aparecerá en la"
 " sección de **Dominios**:"
 
-#: ../../getting_started/internal_calls/brand_portal.rst:107
+#: ../../getting_started/internal_calls/brand_portal.rst:52
+#, fuzzy
 msgid ""
 "It’s important to understand the this trick is only valid for the first "
-"company of the platform ;)"
+"client of the platform ;)"
 msgstr ""
 "Es importante entender que este truco solo es válido para la primera   "
 "empresa de la plataforma ;)"
 
-#: ../../getting_started/internal_calls/brand_portal.rst:113
-msgid "Emulate Demo company"
+#: ../../getting_started/internal_calls/brand_portal.rst:58
+#, fuzzy
+msgid "Emulate Demo client"
 msgstr "Emular la empresa Demo"
 
-#: ../../getting_started/internal_calls/brand_portal.rst:115
+#: ../../getting_started/internal_calls/brand_portal.rst:60
+#, fuzzy
 msgid ""
-"The company emulation process is the same as the brand emulation, with "
-"the difference that it filters the block ‘Company Configuration’ instead "
-"of ‘Brand Configuration’."
+"The client emulation process is the same as the brand emulation, with the"
+" difference that it filters the block ‘Client Configuration’ instead of "
+"‘Brand Configuration’."
 msgstr ""
 "El proceso de emulación de empresa es idéntico al de emulación de marca, "
 "conla diferencia de que filtra el bloque 'Configuración de Empresa' en "
 "lugar delbloque 'Configuración de Marca'."
 
-#: ../../getting_started/internal_calls/brand_portal.rst:139
+#: ../../getting_started/internal_calls/brand_portal.rst:64
+#, fuzzy
 msgid ""
-"Once the company has been emulated, the top right corner of the portal "
+"Once the client has been emulated, the top right corner of the portal "
 "will show that we are in the right path :)"
 msgstr ""
 "Una vez emulada la empresa, la parte superior derecha de la pantalla "
 "mostraráque vamos por el buen camino :)"
 
-#: ../../getting_started/internal_calls/company_portal.rst:3
-msgid "DemoCompany Configuration"
-msgstr "Configuración DemoCompany"
+#: ../../getting_started/internal_calls/client_portal.rst:3
+#, fuzzy
+msgid "Client Configuration"
+msgstr "Configuración de peering"
 
-#: ../../getting_started/internal_calls/company_portal.rst:5
+#: ../../getting_started/internal_calls/client_portal.rst:5
+#, fuzzy
 msgid ""
 "We're close to make our fist call in our fresh installed IvozProvider, "
-"there are only 6 steps to configure in our DemoCompany virtual pbx."
+"there are only 6 steps to configure in our DemoClient virtual pbx."
 msgstr ""
 "Estamos cerca de hacer nuestra primera llamada en nuestro flamente nuevo "
 "IvozProvider, solo queda crear 6 cosas dentro de nuestra pbx virtuals "
 "DemoCompany:"
 
-#: ../../getting_started/internal_calls/company_portal.rst:8
+#: ../../getting_started/internal_calls/client_portal.rst:8
 msgid "2 terminals"
 msgstr "2 terminales"
 
-#: ../../getting_started/internal_calls/company_portal.rst:9
+#: ../../getting_started/internal_calls/client_portal.rst:9
 msgid "2 extensions"
 msgstr "2 extensiones"
 
-#: ../../getting_started/internal_calls/company_portal.rst:10
+#: ../../getting_started/internal_calls/client_portal.rst:10
 msgid "2 users"
 msgstr "2 usuarios"
 
-#: ../../getting_started/internal_calls/company_portal.rst:13
+#: ../../getting_started/internal_calls/client_portal.rst:13
 msgid "Creating Terminals"
 msgstr "Creando Terminales"
 
-#: ../../getting_started/internal_calls/company_portal.rst:15
+#: ../../getting_started/internal_calls/client_portal.rst:15
+#, fuzzy
 msgid ""
 "Go to the terminal section and... voilà! We already have 2 terminals "
-"created:"
+"created."
 msgstr ""
 "Vamos a la sección terminales y... voilà! Ya tenemos 2 terminales pre-"
 "creados:"
 
-#: ../../getting_started/internal_calls/company_portal.rst:26
+#: ../../getting_started/internal_calls/client_portal.rst:18
 msgid "Creating Extensions"
 msgstr "Creando Extensiones"
 
-#: ../../getting_started/internal_calls/company_portal.rst:28
+#: ../../getting_started/internal_calls/client_portal.rst:20
+#, fuzzy
 msgid ""
 "Then we go to extensions, just to check that we have 2 extensions already"
-" created for us:"
+" created for us."
 msgstr ""
 "Seguimos por tanto en la sección de extensiones, pero se nos han "
 "adelantado y ya tenemos 2 extensiones para nuestro uso:"
 
-#: ../../getting_started/internal_calls/company_portal.rst:39
+#: ../../getting_started/internal_calls/client_portal.rst:23
 msgid "Nothing more to do in this section, let's go the next one!"
 msgstr "Nada por hacer en esta sección tampoco, ¡vamos a la última!"
 
-#: ../../getting_started/internal_calls/company_portal.rst:42
+#: ../../getting_started/internal_calls/client_portal.rst:26
 msgid "Creating Users"
 msgstr "Creando usuarios"
 
-#: ../../getting_started/internal_calls/company_portal.rst:44
-msgid "As expected, we also have 2 created users:"
+#: ../../getting_started/internal_calls/client_portal.rst:28
+#, fuzzy
+msgid ""
+"As expected, we also have 2 created users with previous extensions and "
+"terminals assigned."
 msgstr "Como era de esperar, también tenemos 2 usuarios:"
 
-#: ../../getting_started/internal_calls/company_portal.rst:54
+#: ../../getting_started/internal_calls/client_portal.rst:30
+#, fuzzy
 msgid ""
-"At this point, we have everthing ready make a call between this two "
+"At this point, we have everything ready make a call between this two "
 "users: Alice and Bob."
 msgstr ""
 "Llegados a este punto y sin necesidad de tocar nada en este bloque, ya "
@@ -699,9 +810,10 @@ msgstr "**Contraseña**: alice"
 
 #: ../../getting_started/internal_calls/configure_sipuacs.rst:11
 #: ../../getting_started/internal_calls/configure_sipuacs.rst:18
+#, fuzzy
 msgid ""
-"**Domain**: users.democompany.com (or the IP if we are using :ref:`the "
-"DNS trick <dnshack>`)"
+"**Domain**: users.democlient.com (or the IP if we are using :ref:`the DNS"
+" trick <dnshack>`)"
 msgstr ""
 "**Dominio**: users.democompany.com (o la IP si hemos hecho :ref:`el truco"
 " <dnshack>`)"
@@ -719,10 +831,11 @@ msgid "**Password**: bob"
 msgstr "**Contraseña**: bob"
 
 #: ../../getting_started/internal_calls/configure_sipuacs.rst:21
+#, fuzzy
 msgid ""
 "Sometimes the user and domain is configured in a single option. In this "
-"case we should enter alice@users.democompany.com and "
-"bob@users.democompany.com (or the IP if we are using :ref:`the DNS trick "
+"case we should enter alice@users.democlient.com and "
+"bob@users.democlient.com (or the IP if we are using :ref:`the DNS trick "
 "<dnshack>`)"
 msgstr ""
 "Es posible que el usuario y el dominio se nos pida junto, tendremos que "
@@ -731,9 +844,10 @@ msgstr ""
 ":ref:`el truco <dnshack>`)."
 
 #: ../../getting_started/internal_calls/configure_sipuacs.rst:25
+#, fuzzy
 msgid ""
-"After configuring the terminals, Alices should be able to call Bob only "
-"by dialing 102 in her terminal."
+"After configuring the terminals, Alice should be able to call Bob only by"
+" dialing 102 in her terminal."
 msgstr ""
 "Tras configurar los terminales, Alice debería de poder llamar a Bob sin "
 "más quemarcar 102 en su terminal."
@@ -743,9 +857,10 @@ msgid "Global Configuration"
 msgstr "Configuración Global"
 
 #: ../../getting_started/internal_calls/god_portal.rst:5
+#, fuzzy
 msgid ""
 "Any of the 2 Public IP addresses configured during the installation will "
-"work to acces the web portal. Default credentials are **admin / "
+"work to access the web portal. Default credentials are **admin / "
 "changeme**."
 msgstr ""
 "Cualquiera de las 2 IPs públicas configuradas en la instalación servirá "
@@ -753,9 +868,10 @@ msgstr ""
 "changeme**."
 
 #: ../../getting_started/internal_calls/god_portal.rst:9
+#, fuzzy
 msgid ""
 "In this section will reference global administrator configuration "
-"options, avaible in the menu (**Main management**) of the web portal "
+"options, available in the menu (**Main management**) of the web portal "
 "(only visible to God Admins):"
 msgstr ""
 "En esta sección haremos referencia a todo lo relativo al rol operador "
@@ -786,51 +902,55 @@ msgstr ""
 " de **Emular una marca**:"
 
 #: ../../getting_started/internal_calls/god_portal.rst:23
+#, fuzzy
 msgid ""
-"As global operator, you have access to the menu **Main management** only "
-"visible to *God* administators."
+"As global operator, you have access to the menu **Global Configuration** "
+"only visible to *God* administrators."
 msgstr ""
 "Como operador global, tienes acceso al bloque **Gestión general**, que "
 "solo ve *God*."
 
 #: ../../getting_started/internal_calls/god_portal.rst:26
+#, fuzzy
 msgid ""
 "Apart from that menu, you will also have access to the **Brand "
-"configuration** and **Company configuration** that will look more or less"
-" like this:"
+"Configuration** and **Client configuration** blocks."
 msgstr ""
 "Aparte de ese bloque, también ves los bloques **Configuración de marca** "
 "y **Configuración de empresa** que tienen este aspecto:"
 
-#: ../../getting_started/internal_calls/god_portal.rst:39
-msgid "Check following button"
-msgstr "Atención especial al siguiente botón:"
+#: ../../getting_started/internal_calls/god_portal.rst:29
+msgid "Last two blocks have a red button in the right side."
+msgstr ""
 
-#: ../../getting_started/internal_calls/god_portal.rst:51
-msgid "When pressed, a popup will be displayed:"
+#: ../../getting_started/internal_calls/god_portal.rst:31
+#, fuzzy
+msgid ""
+"When pressed, a popup will be displayed that lists all existing brands / "
+"clients."
 msgstr "Una vez pulsado, muestra una ventana flotante tal que:"
 
-#: ../../getting_started/internal_calls/god_portal.rst:63
-msgid ""
-"After selecting the DemoBrand brand, the icon will change and shows the "
-"emulted brand:"
+#: ../../getting_started/internal_calls/god_portal.rst:33
+#, fuzzy
+msgid "After selecting the DemoBrand brand, the icon will change."
 msgstr ""
 "Al seleccionar la marca DemoBrand, el icono cambia y muestra la marca que"
 " se está emulando:"
 
-#: ../../getting_started/internal_calls/god_portal.rst:77
+#: ../../getting_started/internal_calls/god_portal.rst:35
+#, fuzzy
 msgid ""
 "The upper right corner of the portal will also display the brand that is "
-"being emulted:"
+"being emulated."
 msgstr ""
 "La parte superior derecha de la página también muestra la marca que se "
 "está emulando:"
 
-#: ../../getting_started/internal_calls/god_portal.rst:91
+#: ../../getting_started/internal_calls/god_portal.rst:39
 msgid "What emulation means"
 msgstr "¿Qué implica esta emulación?"
 
-#: ../../getting_started/internal_calls/god_portal.rst:93
+#: ../../getting_started/internal_calls/god_portal.rst:41
 msgid ""
 "Basically, that **everything in the menu 'Brand configuration' will be "
 "relative to the chosen brand** and is **exactly** the same menu entries "
@@ -840,11 +960,12 @@ msgstr ""
 " a esa marca** y es *exactamente* lo mismo que lo que ve el operador de "
 "marca cuando entra con sus credenciales de acceso."
 
-#: ../../getting_started/internal_calls/god_portal.rst:97
+#: ../../getting_started/internal_calls/god_portal.rst:45
+#, fuzzy
 msgid ""
-"Ok, ok. maybe exactly is not totally accurate. The global operator is "
-"able to see some fields in some screens that other admins cann't (i.e. On"
-" Company edit screen, fields like 'Media relays' or 'Application server' "
+"Ok, ok, maybe exactly is not totally accurate. The global operator is "
+"able to see some fields in some screens that other admins can't (i.e. On "
+"Client edit screen, fields like 'Media relays' or 'Application server' "
 "are only configurable by the global operator."
 msgstr ""
 "Decir exactamente es mucho decir, ya que el operador global ve campos en "
@@ -867,57 +988,31 @@ msgstr ""
 "sección anterior."
 
 #: ../../getting_started/internal_calls/index.rst:9
+#, fuzzy
 msgid ""
-"In order to archive a call between Alice and Bob, we have to do some task"
-" in the three configuration levels described in :ref:`operation_roles`, "
-"and that is why we have ordered the index in this blocks:"
+"In order to achieve making a call between Alice and Bob, we have to "
+"fulfill some tasks in the three configuration levels described in "
+":ref:`operation_roles`."
 msgstr ""
 "Para conseguir que Alice llame a Bob, tendremos que realizar labores de 3"
 " niveles descritos en :ref:`operation_roles`, de ahí la organización del "
 "siguiente índice en esos 3 bloques:"
 
+#: ../../getting_started/internal_calls/index.rst:12
+msgid "That's why we have ordered the index in these 3 blocks:"
+msgstr ""
+
 #~ msgid "To accomplish this, following section can be used:"
 #~ msgstr "Para ello, tiene que acceder a la siguiente sección:"
 
 #~ msgid ""
-#~ "Just the way :ref:`target patterns "
-#~ "<target_patterns>` exist, **pricing patterns** "
-#~ "exist and are configured in this "
-#~ "section:"
-#~ msgstr ""
-#~ "Del mismo modo que existen los "
-#~ ":ref:`patrones de destino <target_patterns>`, "
-#~ "existen los **patrones de precio** y "
-#~ "se configuran en esta sección:"
-
-#~ msgid ""
-#~ "A call is considered billable if "
-#~ "there is a pricing pattern that "
-#~ "matches this call."
-#~ msgstr ""
-#~ "Para que una llamada se considere "
-#~ "tarificable, tiene que *matchear* con "
-#~ "algún patrón de precio dado de "
-#~ "alta previamente."
+#~ msgstr "Y vemos que *matchea* con el **plan de precio** que acabamos de crear:"
 
 #~ msgid "We will create the pricing plan 'Spain' for our outgoing call:"
 #~ msgstr ""
-#~ "Creemos el patrón de precio *Spain* "
-#~ "para nuestra llamada saliente externa:"
 
 #~ msgid "Creating a pricing plan"
 #~ msgstr "Crear un plan de precio"
-
-#~ msgid ""
-#~ "A **Pricing plan** determines the price"
-#~ " of a type of call (of a "
-#~ "pricing pattern) and is configured in"
-#~ " this section:"
-#~ msgstr ""
-#~ "Un **Plan de precio** determina el "
-#~ "coste de un tipo de llamada (de"
-#~ " un patrón de precio) y se "
-#~ "configura en esta sección:"
 
 #~ msgid "We create a **pricing plan** for our goal:"
 #~ msgstr "Creamos un **plan de precio** para nuestro objetivo:"
@@ -928,123 +1023,96 @@ msgstr ""
 #~ msgid "Finding a pricing plan for a specific destination"
 #~ msgstr "Encontrar un plan de precios para un destino concreto"
 
-#~ msgid ""
-#~ "To check the configuration so far "
-#~ "we can **find a pricing plan** for"
-#~ " a call pressing:"
-#~ msgstr ""
-#~ "Para comprobar que hasta este punto "
-#~ "la configuración es correcta, podemos "
-#~ "**encontrar un plan de precio** para "
-#~ "una llamada concreta pulsando:"
-
 #~ msgid "We introduce the destination number in :ref:`E.164 format <e164>`:"
 #~ msgstr "Introducimos el número destino en :ref:`formato E.164 <e164>`:"
 
-#~ msgid ""
-#~ "And we can check that it matches"
-#~ " the **precing plan** we have just"
-#~ " created:"
-#~ msgstr "Y vemos que *matchea* con el **plan de precio** que acabamos de crear:"
-
 #~ msgid "Assigning a pricing plan to a company"
 #~ msgstr "Vincular plan de precio a empresa"
-
-#~ msgid ""
-#~ "A specific **pricing plan** can be "
-#~ "linked to 'n' companies and the "
-#~ "*brand operator* is responsible for this"
-#~ " task."
-#~ msgstr ""
-#~ "Un **plan de precios** concreto se "
-#~ "puede vincular a *n* empresas y "
-#~ "corresponde al *Operador de marca* "
-#~ "realizar esta vinculación."
-
-#~ msgid ""
-#~ "In the section **Brand configuration** >"
-#~ " **Companies** we select the *demo* "
-#~ "company:"
-#~ msgstr ""
-#~ "Para ello, desde la sección "
-#~ "**Configuración de Marca** > **Empresas**, "
-#~ "seleccionando la empresa *demo*:"
-
-#~ msgid ""
-#~ "The **Pricing plan** and **Companies** "
-#~ "relationship is set for a determined "
-#~ "period of time, that's why we have"
-#~ " to select *Start time* and *End "
-#~ "time*:"
-#~ msgstr ""
-#~ "La vinculación de **Planes de precio**"
-#~ " y **Empresas** es efectiva en un "
-#~ "período de tiempo concreto, de ahí "
-#~ "que haya que seleccionar *Fecha inicio*"
-#~ " y *Fecha fin*:"
-
-#~ msgid ""
-#~ "The **metric** of the link lets "
-#~ "you assign more than one *pricing "
-#~ "plan* for a company, even though "
-#~ "some destinations are included in more"
-#~ " than one of those pricing plans."
-#~ msgstr ""
-#~ "La **metrica** de la vinculación permite"
-#~ " vincular más de un *plan de "
-#~ "precios* a una empresa de forma "
-#~ "coincidente en el tiempo, aunque ciertos"
-#~ " destinos estén incluidos en más de"
-#~ " uno de esos planes de precio."
-
-#~ msgid ""
-#~ "If a given call can be billed "
-#~ "with more than one active pricing "
-#~ "plan, it will be billed using the"
-#~ " pricing plan with lower metric."
-#~ msgstr ""
-#~ "Una llamada que puede tarificarse en "
-#~ "base a más de un plan de    "
-#~ "precio vinculado a una empresa y "
-#~ "activo en un momento dado lo hará"
-#~ " en base al    plan de precio "
-#~ "con menor métrica."
-
-#~ msgid ""
-#~ "This allows having a general *Pricing"
-#~ " plan* and concrete the price of "
-#~ "a specific destination in another "
-#~ "*pricing plan* with lower metric (free"
-#~ " cell phone calls, for example)."
-#~ msgstr ""
-#~ "Esto permite tener un *Plan de "
-#~ "precios* general y matizar el coste "
-#~ "de algún tipo de llamada en otro"
-#~ " *Plan de precio* (móviles gratis, "
-#~ "por ejemplo)."
 
 #~ msgid "Simulating a call of a specific company"
 #~ msgstr "Simular una llamada desde una empresa concreta"
 
 #~ msgid ""
-#~ "We can simulate a call for a "
-#~ "given company and check the price "
-#~ "it will imply. This way, we can"
-#~ " be sure that the configuration is"
-#~ " ok and that calls to that "
-#~ "destination will be billed using a "
-#~ "specific *Pricing plan*:"
+#~ "The section **Brand configuration > "
+#~ "DDIs** is a *read-only* display of"
+#~ " all the DDIs of the brand, "
+#~ "associated with the different companies."
 #~ msgstr ""
-#~ "Del mismo modo que al crear un "
-#~ "*Plan de precios* hemos comprobado que"
-#~ " a nuestra llamada aplicaba dicho "
-#~ "plan, podemos simular una llamada "
-#~ "concreta en una empresa concreta y "
-#~ "saber qué coste se le aplicaría:"
+#~ "Por otra parte, la sección "
+#~ "**Configuración de marca > DDIs** solo"
+#~ " sirve para que el operador de "
+#~ "marca pueda ver los DDIs asociados "
+#~ "a sus distintas empresas, es un "
+#~ "listado en *read-only*."
 
 #~ msgid ""
-#~ "And we confirm that it will be "
-#~ "billed with the pricing plan that "
-#~ "we have just created and linked:"
-#~ msgstr "Y vemos que *matchea* con el **plan de precio** que acabamos de crear:"
+#~ "IvozProvider is ready to integrate with"
+#~ " IP providers created on the secteion"
+#~ " **Perring contracts**:"
+#~ msgstr ""
+#~ "IvozProvider permite integrarse con Operadores"
+#~ " IP por medio de la sección "
+#~ "**Contratos de Peering** que pasamos a"
+#~ " describir:"
+
+#~ msgid ""
+#~ "If we choose routing 'Spain' calls "
+#~ "only through our *Peering contract*, we"
+#~ " will make this configuration:"
+#~ msgstr ""
+#~ "Si optamos por enrutar solamente las "
+#~ "llamadas de España por nuestro Contrato"
+#~ " de *peering*, tendremos que realizar "
+#~ "la siguiente configuración:"
+
+#~ msgid ""
+#~ "On the other hand, if we are "
+#~ "more generous and we decide to "
+#~ "place calls to all european countries,"
+#~ " we would make this configuration:"
+#~ msgstr ""
+#~ "Por el contrario, si somos más "
+#~ "generosos y decidimos permitir todas las"
+#~ " llamadas a países europeos, la "
+#~ "configuración a aplicar sería la "
+#~ "siguiente:"
+
+#~ msgid "And we add a price for a given prefix in E.164 (with + sign)"
+#~ msgstr "Y añadimos un precio con el prefijo en E.164 (con signo +)"
+
+#~ msgid "Floating number must use the \".\" as decimal separator (e.g. 0.02)"
+#~ msgstr ""
+#~ "Los números decimales se tienen que "
+#~ "introducir utilizando el \".\" como "
+#~ "separador decimal (e.g. 0.02)"
+
+#~ msgid ""
+#~ "To achieve our goal of making an"
+#~ " external call to a spanish number,"
+#~ " we didn't have to modify the "
+#~ "initial contents of this two sections"
+#~ " :)"
+#~ msgstr ""
+
+#~ msgid "Company SIP Domain"
+#~ msgstr "Dominio SIP de la compañía"
+
+#~ msgid ""
+#~ "This is a good sign for the "
+#~ "domain we have configured right now, "
+#~ "replacing the 10.10.3.10 with the public"
+#~ " address we have used to configure"
+#~ " :ref:`proxyusers`."
+#~ msgstr ""
+#~ "Esta es una buena señal para el"
+#~ " dominio que acabamos de configurar, "
+#~ "siempre y cuando en lugar de "
+#~ "10.10.3.10 aparezca la IP pública "
+#~ "configurada en :ref:`proxyusers`."
+
+#~ msgid "DemoCompany Configuration"
+#~ msgstr "Configuración DemoCompany"
+
+#~ msgid "Check following button"
+#~ msgstr "Atención especial al siguiente botón:"
 

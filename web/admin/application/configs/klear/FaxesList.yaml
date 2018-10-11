@@ -20,7 +20,7 @@ production:
       title: _("List of %s %2s", ngettext('Fax', 'Faxes', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/company/faxing.html"
+        href: "/doc/en/administration_portal/client/vpbx/routing_endpoints/faxes.html"
       fields: &faxes_fieldsLink
         order: &faxes_orderLink
           name: true

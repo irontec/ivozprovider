@@ -19,7 +19,7 @@ class ProviderTerminalModel extends Fixture implements DependentFixtureInterface
     {
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(TerminalModel::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
-    
+
         $item1 = $this->createEntityInstanceWithPublicMethods(TerminalModel::class);
         $item1->setIden("Generic");
         $item1->setName("Generic SIP Model");

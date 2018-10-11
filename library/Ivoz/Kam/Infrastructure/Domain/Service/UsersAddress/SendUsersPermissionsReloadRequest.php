@@ -2,7 +2,7 @@
 
 namespace Ivoz\Kam\Infrastructure\Domain\Service\UsersAddress;
 
-use Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\XmlRpcUsersRequest;
+use Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\XmlRpcUsersRequestInterface;
 use Ivoz\Kam\Domain\Model\UsersAddress\UsersAddressInterface;
 use Ivoz\Kam\Domain\Service\UsersAddress\UsersAddressLifecycleEventHandlerInterface;
 
@@ -11,7 +11,7 @@ class SendUsersPermissionsReloadRequest implements UsersAddressLifecycleEventHan
     protected $usersPermissionsReload;
 
     public function __construct(
-        XmlRpcUsersRequest $usersPermissionsReload
+        XmlRpcUsersRequestInterface $usersPermissionsReload
     ) {
         $this->usersPermissionsReload = $usersPermissionsReload;
     }

@@ -1,3 +1,24 @@
+Thu, 11 Oct 2018 16:58:23 +0200 IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 2.7.1 released
+
+    * Web
+        - Organized administration portal sections into groups
+        - Download multiple recordings in ZIP file
+        - Changed new recordings file name
+        - Allowed invoice regeneration
+
+    * Billing
+        - Fixed prepaid duplicate rating
+
+    * vPBX
+        - Fixed queue periodic announcement
+        - Removed duplicate g dial option for hunt group
+
+    * Other
+        - Updated documentation (english version only)
+        - Updated ORM tests
+
 Tue, 18 Sep 2018 17:04:15 +0200 IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 2.7.0 released
@@ -242,6 +263,30 @@ Wed, 22 Nov 2017 18:58:49 +0100 IvozProvider Team <vozip+ivozprovider@irontec.co
         - Most of the entities are now tested through e2e test in admin portal
         - More than of 200 unit tests of entity services
         - SIP BBS tests enhanced
+
+Mon, 01 Oct 2018 19:05:10 +0200 IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 1.7.1 released
+
+    * Portals
+        - Change name for new recordings
+        - Download several recording files in ZIP
+        - Make CDR sections faster
+        - Fix invoice timezone conversion
+
+    * User portal
+        - Fix terminal status information
+
+    * Virtual PBX
+        - Set generic email date format
+        - Fix queue retry setting
+
+    * Proxies
+        - Fix routing due to wrong Contact
+        - Avoid failover for 480 responses
+        - Skip carriers with non-resolvable domains
+        - Fix drop call on call limit retrieval error
+        - Decrease log volume
 
 Wed, 05 Mar 2018 18:52:49 +0100 IvozProvider Team <vozip+ivozprovider@irontec.com>
 

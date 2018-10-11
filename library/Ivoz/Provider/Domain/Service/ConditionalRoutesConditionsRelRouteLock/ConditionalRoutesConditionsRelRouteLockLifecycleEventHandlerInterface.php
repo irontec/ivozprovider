@@ -1,0 +1,11 @@
+<?php
+
+namespace Ivoz\Provider\Domain\Service\ConditionalRoutesConditionsRelRouteLock;
+
+use Ivoz\Core\Domain\Service\LifecycleEventHandlerInterface;
+use Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelRouteLock\ConditionalRoutesConditionsRelRouteLockInterface;
+
+interface ConditionalRoutesConditionsRelRouteLockLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
+{
+    public function execute(ConditionalRoutesConditionsRelRouteLockInterface $entity);
+}

@@ -8,7 +8,7 @@ production:
       required: true
       default: true
     company:
-      title: ngettext('Company', 'Companies', 0)
+      title: ngettext('Client', 'Clients', 0)
       type: select
       required: true
       source:

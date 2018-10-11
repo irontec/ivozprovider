@@ -2,7 +2,7 @@ production:
   entity: \Ivoz\Provider\Domain\Model\ConferenceRoom\ConferenceRoom
   fields: 
     company:
-      title: ngettext('Company', 'Companies', 1)
+      title: ngettext('Client', 'Clients', 1)
       type: select
       required: true
       source:

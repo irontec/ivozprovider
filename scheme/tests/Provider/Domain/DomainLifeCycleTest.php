@@ -20,13 +20,43 @@ class DomainLifeCycleTest extends KernelTestCase
         $domainDto = new DomainDto();
         $domainDto
             ->setDomain('api.ivozprovider.local')
-            ->setDescription('127.7.7.7');
+            ->setDescription('desc');
 
         /** @var Domain $domain */
         $domain = $this->entityTools
             ->persistDto($domainDto, null, true);
 
         return $domain;
+    }
+
+    protected function updateDomain()
+    {
+        $domainRepository = $this->em
+            ->getRepository(Domain::class);
+
+        $domain = $domainRepository->find(3);
+
+        /** @var DomainDto $domainDto */
+        $domainDto = $this->entityTools->entityToDto($domain);
+
+        $domainDto
+            ->setDomain('update-domain.net');
+
+        return $this
+            ->entityTools
+            ->persistDto($domainDto, $domain, true);
+    }
+
+    protected function removeDomain()
+    {
+        $domainRepository = $this->em
+            ->getRepository(Domain::class);
+
+        $domain = $domainRepository->find(1);
+
+        $this
+            ->entityTools
+            ->remove($domain);
     }
 
     /**
@@ -36,62 +66,55 @@ class DomainLifeCycleTest extends KernelTestCase
     {
         $domainRepository = $this->em
             ->getRepository(Domain::class);
-
         $fixtureDomains = $domainRepository->findAll();
-        $this->assertCount(6, $fixtureDomains);
 
         $this->addDomain();
 
         $companies = $domainRepository->findAll();
-        $this->assertCount(7, $companies);
+        $this->assertCount(count($fixtureDomains) + 1, $companies);
     }
 
     /**
      * @test
      */
-    public function updating_domain_updates_friend_endpoints()
+    public function it_triggers_lifecycle_services()
     {
-        $domainRepository =  $this->em
-            ->getRepository(Domain::class);
-        /** @var Domain $domain */
-        $domain = $domainRepository->find(3);
-        $domain->setDomain('api-test.ivozprovider.local');
-        $domain->replaceResidentialDevices(
-            new \Doctrine\Common\Collections\ArrayCollection([])
-        );
-        $domain->replaceTerminals(
-            new \Doctrine\Common\Collections\ArrayCollection([])
-        );
-
-        $this->entityTools->persist($domain, true);
-
-        $friends = $domain->getFriends();
-        $this->assertCount(
-            1,
-            $friends
-        );
-
-        $changelogEntries = $this->getChangelogByClass(
-            PsEndpoint::class
-        );
-
-        $this->assertCount(
-            1,
-            $changelogEntries
-        );
-
-        foreach ($changelogEntries as $changelogEntry) {
-            $this->assertEquals(
-                $changelogEntry->getData(),
-                [
-                    'from_domain' => 'api-test.ivozprovider.local'
-                ]
-            );
-        }
+        $this->addDomain();
+        $this->assetChangedEntities([
+            Domain::class
+        ]);
     }
 
     /**
      * @test
+     */
+    public function it_triggers_update_lifecycle_services()
+    {
+        $this->updateDomain();
+        $this->assetChangedEntities([
+            Domain::class,
+            PsEndpoint::class
+        ]);
+    }
+
+    /**
+     * @test
+     */
+    public function it_triggers_remove_lifecycle_services()
+    {
+        $this->removeDomain();
+        $this->assetChangedEntities([
+            Domain::class
+        ]);
+    }
+
+    ///////////////////////////////////////////////////
+    ///
+    ///////////////////////////////////////////////////
+
+    /**
+     * @test
+     * @deprecated
      */
     public function updating_domain_updates_residentialDevices_endpoints()
     {
@@ -136,6 +159,7 @@ class DomainLifeCycleTest extends KernelTestCase
 
     /**
      * @test
+     * @deprecated
      */
     public function updating_domain_updates_terminal_endpoints()
     {

@@ -12,6 +12,9 @@ production:
     <<: *callCsvSchedulers_screensLink
     callCsvSchedulersList_screen:
       <<: *callCsvSchedulersList_screenLink
+      info:
+        <<: *documentationLink
+        href: "/doc/en/administration_portal/brand/calls/call_csv_schedulers.html"
       rawCondition: "CallCsvScheduler.brand is not null"
       forcedValues:
         <<: *forcedBrand

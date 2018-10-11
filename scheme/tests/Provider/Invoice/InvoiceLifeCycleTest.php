@@ -2,6 +2,7 @@
 
 namespace Tests\Provider\Invoice;
 
+use Ivoz\Provider\Domain\Model\FixedCostsRelInvoice\FixedCostsRelInvoice;
 use Ivoz\Provider\Domain\Model\Invoice\Invoice;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceDto;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
@@ -11,9 +12,8 @@ class InvoiceLifeCycleTestLifeCycleTest extends KernelTestCase
 {
     use DbIntegrationTestHelperTrait;
 
-
     /**
-     * @return Invoice
+     * @return InvoiceDto
      */
     protected function getInvoicePdo()
     {
@@ -37,14 +37,41 @@ class InvoiceLifeCycleTestLifeCycleTest extends KernelTestCase
         return $invoiceDto;
     }
 
-    /**
-     * @return Invoice
-     */
     protected function addInvoice()
     {
         return $this
             ->entityTools
             ->persistDto($this->getInvoicePdo(), null, true);
+    }
+
+    protected function updateInvoice()
+    {
+        $invoiceRepository = $this->em
+            ->getRepository(Invoice::class);
+
+        $invoice = $invoiceRepository->find(1);
+
+        /** @var InvoiceDto $invoiceDto */
+        $invoiceDto = $this->entityTools->entityToDto($invoice);
+
+        $invoiceDto
+            ->setStatus('error');
+
+        return $this
+            ->entityTools
+            ->persistDto($invoiceDto, $invoice, true);
+    }
+
+    protected function removeInvoice()
+    {
+        $invoiceRepository = $this->em
+            ->getRepository(Invoice::class);
+
+        $invoice = $invoiceRepository->find(1);
+
+        $this
+            ->entityTools
+            ->remove($invoice);
     }
 
     /**
@@ -54,9 +81,7 @@ class InvoiceLifeCycleTestLifeCycleTest extends KernelTestCase
     {
         $extensionRepository = $this->em
             ->getRepository(Invoice::class);
-
         $fixtureInvoices = $extensionRepository->findAll();
-        $this->assertCount(1, $fixtureInvoices);
 
         $this->addInvoice();
 
@@ -67,6 +92,40 @@ class InvoiceLifeCycleTestLifeCycleTest extends KernelTestCase
         );
     }
 
+    /**
+     * @test
+     */
+    public function it_triggers_lifecycle_services()
+    {
+        $this->addInvoice();
+        $this->assetChangedEntities([
+            Invoice::class
+        ]);
+    }
+
+    /**
+     * @test
+     */
+    public function it_triggers_update_lifecycle_services()
+    {
+        $this->updateInvoice();
+        $this->assetChangedEntities([
+            Invoice::class
+        ]);
+    }
+
+    /**
+     * @test
+     */
+    public function it_triggers_remove_lifecycle_services()
+    {
+        $this->removeInvoice();
+        $this->assetChangedEntities([
+            FixedCostsRelInvoice::class,
+            Invoice::class
+        ]);
+    }
+    
     /**
      * @test
      */

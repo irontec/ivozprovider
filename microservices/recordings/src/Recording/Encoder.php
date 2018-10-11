@@ -122,30 +122,23 @@ class Encoder
             $kamAccCdr = $this->trunksCdrRepository->findOneBy(['callid' => $callid]);
             if ($kamAccCdr) {
                 $type = 'ddi';
-                $recorder = "";
+                if ($kamAccCdr->getXcallid()) {
+                    // If call first leg, caller is who activated the recording
+                    $recorder = $kamAccCdr->getCaller();
+                } else {
+                    // If call second leg, callee is who activated the recording
+                    $recorder = $kamAccCdr->getCallee();
+                }
             } else {
                 $kamAccCdr = $this->usersCdrRepository->findOneBy(['callid' => $callid]);
                 if ($kamAccCdr) {
                     $type = 'ondemand';
-
-                    switch ($kamAccCdr->getCompany()->getType()) {
-                        case Company::RETAIL:
-                        case Company::RESIDENTIAL:
-                        case Company::WHOLESALE:
-                            $recorder = $kamAccCdr->getCallee();
-                            break;
-                        case Company::VPBX:
-                            if ($kamAccCdr->getXcallid()) {
-                                // If call second leg, callee is who activated the recording
-                                $recorder = $kamAccCdr->getCallee();
-                            } else {
-                                // If call first leg, caller is who activated the recording
-                                $recorder = $kamAccCdr->getCaller();
-                            }
-                            break;
-                        default:
-                            $recorder = $kamAccCdr->getCallee();
-                            break;
+                    if ($kamAccCdr->getXcallid()) {
+                        // If call second leg, callee is who activated the recording
+                        $recorder = $kamAccCdr->getCallee();
+                    } else {
+                        // If call first leg, caller is who activated the recording
+                        $recorder = $kamAccCdr->getCaller();
                     }
                 } else {
                     $stats['skipped']++;
@@ -157,6 +150,7 @@ class Encoder
             // Convert .wav to .mp3
             $convertWav = $this->rawRecordingsDir . $filename;
             $convertMp3 = $this->rawRecordingsDir . $callid . ".mp3";
+            $metadata = 'artist="'. $callid .'"';
             $this->logger->info(sprintf("[Recordings][%s] Encoding to %s\n", $hashid, basename($convertMp3)));
 
             $convertProcess = new Process([
@@ -164,6 +158,8 @@ class Encoder
                 "-y",
                 "-i",
                 $convertWav,
+                "-metadata",
+                $metadata,
                 $convertMp3
             ]);
             $convertProcess->mustRun();
@@ -190,15 +186,31 @@ class Encoder
             // Get company and brand for this recording
             $company = $kamAccCdr->getCompany();
 
+            $callDate = $kamAccCdr->getStartTime();
+            $caller = $kamAccCdr->getCaller();
+            $callee = $kamAccCdr->getCallee();
+
+            $baseName =
+                $callDate->format('YmdHis')
+                . '_'
+                . $type
+                . '-'
+                . $recorder
+                . '_'
+                . str_replace('+', '', $caller)
+                . '_'
+                . str_replace('+', '', $callee)
+                . '.mp3';
+
             $recordingDto->setCompanyId($company->getId())
-                ->setCalldate($kamAccCdr->getStartTime())
+                ->setCalldate($callDate)
                 ->setType($type)
                 ->setRecorder($recorder)
                 ->setCallid($kamAccCdr->getCallid())
                 ->setDuration($duration)
                 ->setCaller($kamAccCdr->getCaller())
                 ->setCallee($kamAccCdr->getCallee())
-                ->setRecordedFileBaseName($callid . '.mp3')
+                ->setRecordedFileBaseName($baseName)
                 ->setRecordedFilePath($convertMp3);
 
             // Store this Recording

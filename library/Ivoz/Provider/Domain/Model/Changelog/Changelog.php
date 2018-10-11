@@ -3,11 +3,12 @@
 namespace Ivoz\Provider\Domain\Model\Changelog;
 
 use Ivoz\Core\Domain\Event\EntityEventInterface;
+use Ivoz\Core\Domain\Model\LoggerEntityInterface;
 
 /**
  * Changelog
  */
-class Changelog extends ChangelogAbstract implements ChangelogInterface
+class Changelog extends ChangelogAbstract implements LoggerEntityInterface, ChangelogInterface
 {
     use ChangelogTrait;
 

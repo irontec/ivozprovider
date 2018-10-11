@@ -10,6 +10,8 @@ class CommandEventSubscriber implements DomainEventSubscriberInterface
 {
     protected $events = [];
 
+    protected $latest = null;
+
     /**
      * @param DomainEventInterface $domainEvent
      * @throws \Exception
@@ -22,6 +24,7 @@ class CommandEventSubscriber implements DomainEventSubscriberInterface
         }
 
         $this->events[] = $domainEvent;
+        $this->latest = $domainEvent;
     }
 
     /**
@@ -35,13 +38,21 @@ class CommandEventSubscriber implements DomainEventSubscriberInterface
     /**
      * @return CommandEventInterface
      */
+    public function getLatest()
+    {
+        return $this->latest;
+    }
+
+    /**
+     * @return CommandEventInterface
+     */
     public function shiftEvent()
     {
         return array_shift($this->events);
     }
 
     /**
-     * @return CommandEventInterface
+     * @return CommandEventInterface | null
      */
     public function popEvent()
     {

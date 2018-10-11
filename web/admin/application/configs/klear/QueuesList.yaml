@@ -18,7 +18,7 @@ production:
       title: _("List of %s %2s", ngettext('Queue', 'Queues', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/company/queues.html"
+        href: "/doc/en/administration_portal/client/vpbx/routing_endpoints/queues.html"
       forcedValues:
         <<: *forcedCompany
       fields: &queues_fieldsLink

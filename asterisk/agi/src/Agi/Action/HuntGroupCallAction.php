@@ -58,7 +58,7 @@ class HuntGroupCallAction
         $timeout = array_shift($huntGroupTimeouts);
 
         // Configure Dial options
-        $options = "ig";
+        $options = "i";
 
         // Cancelled calls may be marked as 'answered elsewhere'
         if ($huntGroup->getPreventMissedCalls()) {

@@ -14,7 +14,7 @@ production:
       title: _("List of %s %2s", ngettext('Generic Music on Hold', 'Generic Musics on Hold', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/brand/music_on_hold.html"
+        href: "/doc/en/administration_portal/brand/settings/generic_music_on_hold.html"
       forcedValues:
         <<: *forcedBrand
         "self::company": null

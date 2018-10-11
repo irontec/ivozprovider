@@ -1,0 +1,11 @@
+<?php
+
+namespace Ivoz\Provider\Domain\Service\ConditionalRoutesConditionsRelMatchlist;
+
+use Ivoz\Core\Domain\Service\LifecycleEventHandlerInterface;
+use Ivoz\Provider\Domain\Model\ConditionalRoutesConditionsRelMatchlist\ConditionalRoutesConditionsRelMatchlistInterface;
+
+interface ConditionalRoutesConditionsRelMatchlistLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
+{
+    public function execute(ConditionalRoutesConditionsRelMatchlistInterface $entity);
+}

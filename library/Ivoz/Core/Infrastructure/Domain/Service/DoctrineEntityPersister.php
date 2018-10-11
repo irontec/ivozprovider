@@ -84,6 +84,8 @@ class DoctrineEntityPersister implements EntityPersisterInterface
      */
     protected $softDeleteMap = [];
 
+    protected $latestCommandlog = null;
+
     public function __construct(
         EntityManagerInterface $em,
         CreateEntityFromDTO $createEntityFromDTO,
@@ -353,12 +355,26 @@ class DoctrineEntityPersister implements EntityPersisterInterface
             ->commandEventSubscriber
             ->popEvent();
 
-        if (!$command) {
+        if (!$command && !$this->latestCommandlog) {
             return;
         }
 
-        $commandlog = Commandlog::fromEvent($command);
-        $this->persist($commandlog);
+        if ($command) {
+            $commandlog = Commandlog::fromEvent($command);
+            $this->latestCommandlog = $commandlog;
+            $this->persist($commandlog);
+        } else {
+            /**
+             * Command is null when first persisted entity comes from pre_persist event:
+             * changelog will require to hit db twice
+             */
+            $command = $this
+                ->commandEventSubscriber
+                ->getLatest();
+
+            $commandlog = $this->latestCommandlog;
+        }
+
         $this->logger->info(
             sprintf(
                 '%s > %s::%s(%s)',

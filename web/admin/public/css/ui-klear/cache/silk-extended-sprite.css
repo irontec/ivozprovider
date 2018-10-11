@@ -4,17 +4,32 @@
 	background-image: url(./silk-extended-sprite.png);background-position: -0px -0px;
 }
 
-.ui-silk-destrate
+.ui-silk-application-view-list-money
 {
 	background-image: url(./silk-extended-sprite.png);background-position: -18px -0px;
 }
 
-.ui-silk-application-view-list-schedule
+.ui-silk-application-view-list-telephone
+{
+	background-image: url(./silk-extended-sprite.png);background-position: -36px -0px;
+}
+
+.ui-silk-application-view-list-record
 {
 	background-image: url(./silk-extended-sprite.png);background-position: -0px -18px;
 }
 
-.ui-silk-report-refresh
+.ui-silk-destrate
 {
 	background-image: url(./silk-extended-sprite.png);background-position: -18px -18px;
+}
+
+.ui-silk-application-view-list-schedule
+{
+	background-image: url(./silk-extended-sprite.png);background-position: -36px -18px;
+}
+
+.ui-silk-report-refresh
+{
+	background-image: url(./silk-extended-sprite.png);background-position: -0px -36px;
 }

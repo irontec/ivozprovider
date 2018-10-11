@@ -7,6 +7,7 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Ivoz\Provider\Domain\Model\Invoice\Invoice;
+use Ivoz\Provider\Domain\Model\Invoice\Pdf;
 
 class ProviderInvoice extends Fixture implements DependentFixtureInterface
 {
@@ -38,6 +39,7 @@ class ProviderInvoice extends Fixture implements DependentFixtureInterface
         $item1->setTaxRate(21.0);
         $item1->setTotalWithTax(0.330);
         $item1->setStatus('processing');
+        $item1->setPdf(new Pdf(null, null, null));
 
         $this->addReference('_reference_ProviderInvoice1', $item1);
         $this->sanitizeEntityValues($item1);

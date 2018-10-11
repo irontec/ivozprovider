@@ -2,6 +2,7 @@
 
 namespace Tests\Provider\Friend;
 
+use Ivoz\Ast\Domain\Model\PsEndpoint\PsEndpoint;
 use Ivoz\Provider\Domain\Model\Friend\Friend;
 use Ivoz\Provider\Domain\Model\Friend\FriendDto;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
@@ -11,9 +12,6 @@ class FriendLifeCycleTestLifeCycleTest extends KernelTestCase
 {
     use DbIntegrationTestHelperTrait;
 
-    /**
-     * @return Friend
-     */
     protected function addFriend()
     {
         $friendDto = new FriendDto();
@@ -33,6 +31,36 @@ class FriendLifeCycleTestLifeCycleTest extends KernelTestCase
             ->persistDto($friendDto, null, true);
     }
 
+    protected function updateFriend()
+    {
+        $friendRepository = $this->em
+            ->getRepository(Friend::class);
+
+        $friend = $friendRepository->find(1);
+
+        /** @var FriendDto $friendDto */
+        $friendDto = $this->entityTools->entityToDto($friend);
+
+        $friendDto
+            ->setName('updatedName');
+
+        return $this
+            ->entityTools
+            ->persistDto($friendDto, $friend, true);
+    }
+
+    protected function removeFriend()
+    {
+        $friendRepository = $this->em
+            ->getRepository(Friend::class);
+
+        $friend = $friendRepository->find(1);
+
+        $this
+            ->entityTools
+            ->remove($friend);
+    }
+
     /**
      * @test
      */
@@ -40,9 +68,7 @@ class FriendLifeCycleTestLifeCycleTest extends KernelTestCase
     {
         $extensionRepository = $this->em
             ->getRepository(Friend::class);
-
         $fixtureFriends = $extensionRepository->findAll();
-        $this->assertCount(1, $fixtureFriends);
 
         $this->addFriend();
 
@@ -52,6 +78,45 @@ class FriendLifeCycleTestLifeCycleTest extends KernelTestCase
             $extensions
         );
     }
+
+    /**
+     * @test
+     */
+    public function it_triggers_lifecycle_services()
+    {
+        $this->addFriend();
+        $this->assetChangedEntities([
+            Friend::class,
+            PsEndpoint::class,
+        ]);
+    }
+
+    /**
+     * @test
+     */
+    public function it_triggers_update_lifecycle_services()
+    {
+        $this->updateFriend();
+        $this->assetChangedEntities([
+            Friend::class,
+            PsEndpoint::class,
+        ]);
+    }
+
+    /**
+     * @test
+     */
+    public function it_triggers_remove_lifecycle_services()
+    {
+        $this->removeFriend();
+        $this->assetChangedEntities([
+            Friend::class
+        ]);
+    }
+
+    ////////////////////////////////////////////
+    ///
+    ////////////////////////////////////////////
 
     /**
      * @test

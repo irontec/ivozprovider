@@ -56,8 +56,8 @@ Feature: Create IVR entries
               "allowExtensions": false,
               "noInputRouteType": "number",
               "noInputNumberValue": "946002020",
-              "errorRouteType": "number",
-              "errorNumberValue": "946002021",
+              "errorRouteType": "voicemail",
+              "errorNumberValue": null,
               "id": 1,
               "company": 1,
               "welcomeLocution": 1,
@@ -67,23 +67,23 @@ Feature: Create IVR entries
               "noInputExtension": null,
               "errorExtension": null,
               "noInputVoiceMailUser": null,
-              "errorVoiceMailUser": null,
+              "errorVoiceMailUser": 1,
               "noInputNumberCountry": 1,
-              "errorNumberCountry": 1
+              "errorNumberCountry": null
           },
           "welcomeLocution": {
               "name": "testLocution",
               "status": null,
               "id": 1,
               "encodedFile": {
-                  "fileSize": null,
-                  "mimeType": null,
-                  "baseName": null
+                  "fileSize": 1,
+                  "mimeType": "audio/x-wav; charset=binary",
+                  "baseName": "locution.wav"
               },
               "originalFile": {
-                  "fileSize": null,
-                  "mimeType": null,
-                  "baseName": null
+                  "fileSize": 1,
+                  "mimeType": "audio/mpeg; charset=binary",
+                  "baseName": "locution.mp3"
               },
               "company": 1
           },

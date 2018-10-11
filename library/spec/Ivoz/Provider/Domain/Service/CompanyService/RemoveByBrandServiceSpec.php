@@ -2,8 +2,7 @@
 
 namespace spec\Ivoz\Provider\Domain\Service\CompanyService;
 
-use Doctrine\ORM\EntityManagerInterface;
-use Ivoz\Core\Domain\Service\EntityPersisterInterface;
+use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
@@ -17,14 +16,9 @@ use PhpSpec\ObjectBehavior;
 class RemoveByBrandServiceSpec extends ObjectBehavior
 {
     /**
-     * @var EntityManagerInterface
+     * @var EntityTools
      */
-    protected $em;
-
-    /**
-     * @var EntityPersisterInterface
-     */
-    protected $entityPersister;
+    protected $entityTools;
 
     /**
      * @var CompanyRepository
@@ -42,15 +36,13 @@ class RemoveByBrandServiceSpec extends ObjectBehavior
     protected $entity;
 
     function let(
-        EntityManagerInterface $em,
-        EntityPersisterInterface $entityPersister,
+        EntityTools $entityTools,
         CompanyRepository $companyRepository,
         CompanyServiceRepository $companyServiceRepository,
         BrandServiceInterface $entity,
         BrandInterface $brand
     ) {
-        $this->em = $em;
-        $this->entityPersister = $entityPersister;
+        $this->entityTools = $entityTools;
         $this->companyRepository = $companyRepository;
         $this->companyServiceRepository = $companyServiceRepository;
         $this->entity = $entity;
@@ -65,7 +57,7 @@ class RemoveByBrandServiceSpec extends ObjectBehavior
             ->willReturn($brand);
 
         $this->beConstructedWith(
-            $this->em,
+            $this->entityTools,
             $this->companyRepository,
             $this->companyServiceRepository
         );
@@ -92,7 +84,6 @@ class RemoveByBrandServiceSpec extends ObjectBehavior
         ServiceInterface $service,
         CompanyServiceInterface $companyService
     ) {
-
         $company
             ->getId()
             ->willReturn(1)
@@ -124,10 +115,13 @@ class RemoveByBrandServiceSpec extends ObjectBehavior
             ->willReturn($companyService);
 
         $this
-            ->em
+            ->entityTools
             ->remove($companyService)
             ->shouldBeCalled();
 
-        $this->execute($this->entity, false);
+        $this->execute(
+            $this->entity,
+            false
+        );
     }
 }

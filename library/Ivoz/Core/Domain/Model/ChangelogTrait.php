@@ -19,6 +19,32 @@ trait ChangelogTrait
     abstract protected function __toArray();
 
     /**
+     * @return bool
+     */
+    public function isNew()
+    {
+        $initialId = $this->getInitialValue('id');
+
+        return is_null($initialId);
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasBeenDeleted()
+    {
+        $id = $this->getId();
+        if ($id !== null) {
+            return false;
+        }
+
+        $initialId = $this->getInitialValue('id');
+        $hasInitialValue = !is_null($initialId);
+
+        return $hasInitialValue;
+    }
+
+    /**
      * @return void
      * @throws \Exception
      */
@@ -50,6 +76,11 @@ trait ChangelogTrait
         return $currentValues[$dbFieldName] != $this->_initialValues[$dbFieldName];
     }
 
+    /**
+     * @param $dbFieldName
+     * @return mixed
+     * @throws \Exception
+     */
     public function getInitialValue($dbFieldName)
     {
         if (!array_key_exists($dbFieldName, $this->_initialValues)) {
@@ -80,5 +111,17 @@ trait ChangelogTrait
         }
 
         return $changes;
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getChangedFields()
+    {
+        $changes = $this->getChangeSet();
+
+        return array_keys(
+            $changes
+        );
     }
 }

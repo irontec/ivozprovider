@@ -30,8 +30,8 @@ Feature: Update ivr excluded extensions
               "allowExtensions": false,
               "noInputRouteType": "number",
               "noInputNumberValue": "946002020",
-              "errorRouteType": "number",
-              "errorNumberValue": "946002021",
+              "errorRouteType": "voicemail",
+              "errorNumberValue": null,
               "id": 1,
               "company": 1,
               "welcomeLocution": 1,
@@ -41,9 +41,9 @@ Feature: Update ivr excluded extensions
               "noInputExtension": null,
               "errorExtension": null,
               "noInputVoiceMailUser": null,
-              "errorVoiceMailUser": null,
+              "errorVoiceMailUser": 1,
               "noInputNumberCountry": 1,
-              "errorNumberCountry": 1
+              "errorNumberCountry": null
           },
           "extension": {
               "number": "102",

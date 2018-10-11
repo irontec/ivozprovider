@@ -2,7 +2,7 @@
 
 namespace Ivoz\Provider\Domain\Service\BillableCall;
 
-use Ivoz\Core\Infrastructure\Service\Rest\Client as RestClient;
+use Ivoz\Core\Domain\Service\ApiClientInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 
 class CsvExporter
@@ -12,7 +12,7 @@ class CsvExporter
     protected $apiClient;
 
     public function __construct(
-        RestClient $apiClient
+        ApiClientInterface $apiClient
     ) {
         $this->apiClient = $apiClient;
     }

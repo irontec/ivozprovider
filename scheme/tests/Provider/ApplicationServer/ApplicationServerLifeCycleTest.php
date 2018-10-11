@@ -85,10 +85,41 @@ class ApplicationServerLifeCycleTest extends KernelTestCase
             ->setName('test002');
 
         /** @var ApplicationServer $as */
-        $as = $this->entityTools
+        $as = $this
+            ->entityTools
             ->persistDto($asDto, null, true);
 
         return $as;
+    }
+
+    protected function updateApplicationServer()
+    {
+        $applicationServerRepository = $this->em
+            ->getRepository(ApplicationServer::class);
+
+        $applicationServer = $applicationServerRepository->find(1);
+
+        /** @var ApplicationServerDto $applicationServerDto */
+        $applicationServerDto = $this->entityTools->entityToDto($applicationServer);
+
+        $applicationServerDto
+            ->setIp('127.3.3.3');
+
+        return $this
+            ->entityTools
+            ->persistDto($applicationServerDto, $applicationServer, true);
+    }
+
+    protected function removeApplicationServer()
+    {
+        $applicationServerRepository = $this->em
+            ->getRepository(ApplicationServer::class);
+
+        $applicationServer = $applicationServerRepository->find(1);
+
+        $this
+            ->entityTools
+            ->remove($applicationServer);
     }
 
     /**
@@ -99,17 +130,54 @@ class ApplicationServerLifeCycleTest extends KernelTestCase
         $asRepository = $this->em
             ->getRepository(ApplicationServer::class);
         $fixtureApplicationServers = $asRepository->findAll();
-        $this->assertCount(2, $fixtureApplicationServers);
-
-        $this
-            ->addApplicationServer();
+        $this->addApplicationServer();
 
         $brands = $asRepository->findAll();
-        $this->assertCount(3, $brands);
+        $this->assertCount(count($fixtureApplicationServers) + 1, $brands);
     }
 
     /**
      * @test
+     */
+    public function it_triggers_lifecycle_services()
+    {
+        $this->addApplicationServer();
+        $this->assetChangedEntities([
+            ApplicationServer::class,
+            Dispatcher::class,
+        ]);
+    }
+
+    /**
+     * @test
+     */
+    public function it_triggers_update_lifecycle_services()
+    {
+        $this->updateApplicationServer();
+        $this->assetChangedEntities([
+            ApplicationServer::class,
+            Dispatcher::class,
+        ]);
+    }
+
+    /**
+     * @test
+     */
+    public function it_triggers_remove_lifecycle_services()
+    {
+        $this->removeApplicationServer();
+        $this->assetChangedEntities([
+            ApplicationServer::class
+        ]);
+    }
+
+    //////////////////////////////////////////
+    //
+    //////////////////////////////////////////
+
+    /**
+     * @test
+     * @deprecated
      */
     public function added_applicationServer_has_kamDispatcher()
     {
@@ -139,6 +207,7 @@ class ApplicationServerLifeCycleTest extends KernelTestCase
 
     /**
      * @test
+     * @deprecated
      */
     public function updating_applicationServer_updates_kamDispatcher()
     {
@@ -173,9 +242,9 @@ class ApplicationServerLifeCycleTest extends KernelTestCase
         );
     }
 
-
     /**
      * @test
+     * @deprecated
      */
     public function creating_applicationServer_fires_dispatcherReloadRequest()
     {
@@ -199,6 +268,7 @@ class ApplicationServerLifeCycleTest extends KernelTestCase
 
     /**
      * @test
+     * @deprecated
      */
     public function updating_applicationServer_fires_dispatcherReloadRequest()
     {
@@ -214,6 +284,7 @@ class ApplicationServerLifeCycleTest extends KernelTestCase
 
     /**
      * @test
+     * @deprecated
      */
     public function deleting_applicationServer_fires_dispatcherReloadRequest()
     {

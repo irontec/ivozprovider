@@ -18,6 +18,66 @@ class Invoice extends InvoiceAbstract implements FileContainerInterface, Invoice
     use InvoiceTrait;
     use TempFileContainnerTrait;
 
+    protected function sanitizeValues()
+    {
+        if (empty($this->_initialValues)) {
+            $this->initChangelog();
+        }
+
+        if ($this->hasChanged('outDate')) {
+            $this->sanitizeOutDate();
+        }
+
+        $ignoredFields = [
+            'total',
+            'totalWithTax',
+            'status',
+            'setStatusMsg',
+            'pdfFileSize',
+            'pdfMimeType',
+            'pdfBaseName',
+        ];
+
+        $changedFields = array_diff(
+            $this->getChangedFields(),
+            $ignoredFields
+        );
+
+        if (count($changedFields) > 0) {
+            $this->reset();
+        }
+    }
+
+    private function reset()
+    {
+        $this
+            ->setTotal(null)
+            ->setTotalWithTax(null)
+            ->setStatus(null)
+            ->setStatusMsg(null)
+            ->setPdf(new Pdf(null, null, null));
+    }
+
+    private function sanitizeOutDate()
+    {
+        $tz = $this
+            ->getCompany()
+            ->getDefaultTimezone()
+            ->getTz();
+        $invoiceTz = new \DateTimeZone($tz);
+
+        $outDate = $this->getOutDate();
+
+        $outDate
+            ->setTimezone($invoiceTz);
+        $outDate
+            ->modify('next day')
+            ->setTime(0, 0, 0)
+            ->modify('- 1 second');
+
+        $this->setOutDate($outDate);
+    }
+
     /**
      * @codeCoverageIgnore
      * @return array

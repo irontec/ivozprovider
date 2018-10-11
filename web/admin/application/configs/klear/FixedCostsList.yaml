@@ -16,7 +16,7 @@ production:
       title: _("List of %s %2s", ngettext('Fixed cost', 'Fixed costs', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/brand/invoices/fixed_costs.html"
+        href: "/doc/en/administration_portal/brand/invoicing/fixed_costs.html"
       forcedValues:
         <<: *forcedBrand
       fields: &fixedCosts_fieldsLink

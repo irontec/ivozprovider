@@ -18,7 +18,7 @@ production:
       title: _("List of %s %2s", ngettext('Invoice', 'Invoices', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/brand/invoices/invoices.html"
+        href: "/doc/en/administration_portal/brand/invoicing/invoices.html"
       forcedValues:
         <<: *forcedBrand
       fields: &invoices_fieldsLink
@@ -26,12 +26,12 @@ production:
           title: _("Options")
           screens:
             invoicesEdit_screen: true
-            invoicesView_screen: true
             fixedCostsRelInvoicesList_screen: true
             billableCallsList_screen: true
           dialogs:
             generateInvoice_dialog: true
             invoicesDel_dialog: true
+          default: invoicesEdit_screen
         order: &invoicesOrder_Link
           company: true
           number: true
@@ -101,8 +101,6 @@ production:
     invoicesEdit_screen: &invoicesEdit_screenLink
       <<: *Invoices
       controller: edit
-      parentOptionCustomizer:
-        - IvozProvider_Klear_Options_OptionsCustomizer
       class: ui-silk-pencil
       label: false
       title: _("Edit %s %2s", ngettext('Invoice', 'Invoices', 1), "[format| (%item%)]")
@@ -111,18 +109,17 @@ production:
       fields:
         order:
           <<: *invoicesOrder_Link
+        blacklist:
+          FixedCostsRelInvoices: true
+          numberSequence: true
+          scheduler: true
         readOnly:
           total: true
           totalWithTax: true
           status: true
-          number: true
+          FixedCostsRelInvoices: true
       fixedPositions:
         <<: *invoicesFixedPositions_Link
-
-    invoicesView_screen: &invoicesView_screenLink
-      <<: *invoicesEdit_screenLink
-      disableSave: true
-      class: ui-silk-eye
 
     <<: *fixedCostsRelInvoices_screensLink
     fixedCostsRelInvoicesList_screen:
@@ -154,8 +151,6 @@ production:
     invoicesDel_dialog: &invoicesDel_dialogLink
       <<: *Invoices
       controller: delete
-      parentOptionCustomizer:
-        - IvozProvider_Klear_Options_OptionsCustomizer
       class: ui-silk-bin
       labelOption: false
       title: _("Delete %s",  ngettext('Invoice', 'Invoices', 1))
@@ -166,8 +161,6 @@ production:
     generateInvoice_dialog:
       <<: *Invoices
       module: default
-      parentOptionCustomizer:
-        - IvozProvider_Klear_Options_OptionsCustomizer
       title: _("Generate %s",  ngettext('Invoice', 'Invoices', 1))
       label: false
       labelOnEdit: true

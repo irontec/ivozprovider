@@ -48,20 +48,46 @@ Feature: Update IVRs
           "errorRouteType": "number",
           "errorNumberValue": "946002021",
           "id": 1,
-          "company": "~",
+          "company": {
+              "type": "vpbx",
+              "name": "DemoCompany",
+              "domainUsers": "127.0.0.1",
+              "nif": "12345678A",
+              "distributeMethod": "hash",
+              "maxCalls": 0,
+              "postalAddress": "Company Address",
+              "postalCode": "54321",
+              "town": "Company Town",
+              "province": "Company Province",
+              "countryName": "Company Country",
+              "ipfilter": false,
+              "onDemandRecord": 0,
+              "onDemandRecordCode": "",
+              "externallyextraopts": "",
+              "recordingsLimitMB": null,
+              "recordingsLimitEmail": "",
+              "billingMethod": "prepaid",
+              "balance": 1.2,
+              "id": 1,
+              "language": 1,
+              "defaultTimezone": 1,
+              "country": 1,
+              "outgoingDdi": null,
+              "outgoingDdiRule": null
+          },
           "welcomeLocution": {
               "name": "testLocution",
               "status": null,
               "id": 1,
               "encodedFile": {
-                  "fileSize": null,
-                  "mimeType": null,
-                  "baseName": null
+                  "fileSize": 1,
+                  "mimeType": "audio/x-wav; charset=binary",
+                  "baseName": "locution.wav"
               },
               "originalFile": {
-                  "fileSize": null,
-                  "mimeType": null,
-                  "baseName": null
+                  "fileSize": 1,
+                  "mimeType": "audio/mpeg; charset=binary",
+                  "baseName": "locution.mp3"
               },
               "company": 1
           },
@@ -72,14 +98,14 @@ Feature: Update IVRs
               "status": null,
               "id": 1,
               "encodedFile": {
-                  "fileSize": null,
-                  "mimeType": null,
-                  "baseName": null
+                  "fileSize": 1,
+                  "mimeType": "audio/x-wav; charset=binary",
+                  "baseName": "locution.wav"
               },
               "originalFile": {
-                  "fileSize": null,
-                  "mimeType": null,
-                  "baseName": null
+                  "fileSize": 1,
+                  "mimeType": "audio/mpeg; charset=binary",
+                  "baseName": "locution.mp3"
               },
               "company": 1
           },

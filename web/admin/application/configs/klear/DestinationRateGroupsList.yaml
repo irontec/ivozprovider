@@ -15,10 +15,10 @@ production:
         items: 25
       <<: *DestinationRateGroups
       class: ui-silk-page-find
-      title: _("List of %s %2s", ngettext('Destination rate group', 'Destination rate groups', 0), "[format| (%parent%)]")
+      title: _("List of %s %2s", ngettext('Destination rate', 'Destination rates', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/brand/billing/destination_rates.html"
+        href: "/doc/en/administration_portal/brand/billing/destination_rates.html"
       forcedValues:
         <<: *forcedBrand
       fields: &destinationRateGroups_fieldsLink
@@ -61,7 +61,7 @@ production:
       class: ui-silk-add
       label: true
       multiInstance: true
-      title: _("Add %s", ngettext('Destination rate group', 'Destination rate groups', 1), "[format| (%parent%)]")
+      title: _("Add %s", ngettext('Destination rate', 'Destination rates', 1), "[format| (%parent%)]")
       forcedValues:
         <<: *forcedBrand
       shortcutOption: N
@@ -86,7 +86,7 @@ production:
       controller: edit
       class: ui-silk-pencil
       label: false
-      title: _("Edit %s %2s", ngettext('Destination rate group', 'Destination rate groups', 1), "[format| (%item%)]")
+      title: _("Edit %s %2s", ngettext('Destination rate', 'Destination rates', 1), "[format| (%item%)]")
       forcedValues:
         <<: *forcedBrand
       fixedPositions:
@@ -112,16 +112,16 @@ production:
       controller: delete
       class: ui-silk-bin
       labelOption: false
-      title: _("Delete %s", ngettext('Destination rate group', 'Destination rate groups', 1))
-      description: _("Do you want to delete this %s?", ngettext('Destination rate group', 'Destination rate groups', 1))
-      message: _("%s successfully deleted.", ngettext('Destination rate group', 'Destination rate groups', 1))
+      title: _("Delete %s", ngettext('Destination rate', 'Destination rates', 1))
+      description: _("Do you want to delete this %s?", ngettext('Destination rate', 'Destination rates', 1))
+      message: _("%s successfully deleted.", ngettext('Destination rate', 'Destination rates', 1))
       multiItem: 1
       labelOnList: 1
 
     importDestinationRates_dialog: &importDestinationRates_dialogLink
       <<: *DestinationRateGroups
       module: default
-      title: _("Import %s", ngettext('Destination rate group', 'Destination rate groups', 0))
+      title: _("Import %s", ngettext('Rate', 'Rates', 0))
       label: false
       labelOnEdit: true
       labelOnList: true

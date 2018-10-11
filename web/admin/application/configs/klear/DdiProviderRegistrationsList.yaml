@@ -17,7 +17,7 @@ production:
       title: _("List of %s %2s", ngettext('DDI Provider Registration', 'DDI Provider Registrations', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/brand/peering/ddi_provider_registrations.html"
+        href: "/doc/en/administration_portal/brand/providers/ddi_providers.html#ddi-provider-registrations"
       fields:
         blacklist:
           contactUsername: true

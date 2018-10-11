@@ -2,7 +2,7 @@
 
 namespace Ivoz\Provider\Infrastructure\Domain\Service\RoutingTag;
 
-use Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\XmlRpcTrunksRequest;
+use Ivoz\Core\Infrastructure\Domain\Service\XmlRpc\XmlRpcTrunksRequestInterface;
 use Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface;
 use Ivoz\Provider\Domain\Service\RoutingTag\RoutingTagLifecycleEventHandlerInterface;
 
@@ -11,7 +11,7 @@ class SendTrunksLcrReloadRequest implements RoutingTagLifecycleEventHandlerInter
     protected $trunksLcrReload;
 
     public function __construct(
-        XmlRpcTrunksRequest $trunksLcrReload
+        XmlRpcTrunksRequestInterface $trunksLcrReload
     ) {
         $this->trunksLcrReload = $trunksLcrReload;
     }

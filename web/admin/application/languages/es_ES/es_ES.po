@@ -160,8 +160,8 @@ msgid_plural "Application Servers"
 msgstr[0] "Servidor de Aplicación"
 msgstr[1] "Servidores de Aplicación"
 
-msgid "Apply to all companies"
-msgstr "Aplicar a todas las compañías"
+msgid "Apply to all clients"
+msgstr "Aplicar a todos los clientes"
 
 #, php-format
 msgid "Are you sure that you want to emulate the %s \"%2s\"?"
@@ -243,6 +243,9 @@ msgid "Billable call"
 msgid_plural "Billable calls"
 msgstr[0] "Llamada facturable"
 msgstr[1] "Llamadas facturables"
+
+msgid "Billing"
+msgstr "Tarificación"
 
 msgid "Billing Information"
 msgstr "Información de tarificación"
@@ -354,6 +357,11 @@ msgstr[1] "Opciones de desvío"
 msgid "Call forward type"
 msgstr "Tipo desvío"
 
+msgid "Call recording"
+msgid_plural "Call recordings"
+msgstr[0] "Grabación de llamadas"
+msgstr[1] "Grabaciones de llamadas"
+
 msgid "Call registry"
 msgid_plural "Call registries"
 msgstr[0] "Registro de llamadas"
@@ -398,6 +406,9 @@ msgstr "CallidHash"
 msgid "Calling a number within the same Area can omit Area Code"
 msgstr "Las llamadas en la misma área pueden omitir este código"
 
+msgid "Calls"
+msgstr "Llamadas"
+
 msgid "Calls from non-granted IPs"
 msgstr "Llamadas desde IPs no autorizadas"
 
@@ -426,8 +437,18 @@ msgstr "Ver documentación de esta sección"
 msgid "Clid"
 msgstr "Origen"
 
+msgid "Client"
+msgid_plural "Clients"
+msgstr[0] "Cliente"
+msgstr[1] "Clientes"
+
 msgid "Client Configuration"
 msgstr "Configuración de Cliente"
+
+msgid "Client admin"
+msgid_plural "Client admins"
+msgstr[0] "Administrador de cliente"
+msgstr[1] "Administradores de clientes"
 
 msgid "Client's default"
 msgstr "Usar configuración cliente"
@@ -447,20 +468,10 @@ msgstr "Código"
 msgid "Code used for internationals calls, usually 00."
 msgstr "Código para llamadas internacionales, típicamente 00."
 
-msgid "Company"
-msgid_plural "Companies"
-msgstr[0] "Empresa"
-msgstr[1] "Empresas"
-
 msgid "Company URL"
 msgid_plural "Company URLs"
 msgstr[0] "URL Empresa"
 msgstr[1] "URLs Empresa"
-
-msgid "Company admin"
-msgid_plural "Company admins"
-msgstr[0] "Administrador de empresa"
-msgstr[1] "Administradores de empresa"
 
 msgid "Company service"
 msgid_plural "Company services"
@@ -812,6 +823,9 @@ msgstr "Tarificación externa"
 msgid "Externally rater custom options"
 msgstr "Opciones adicionales tarificación externa"
 
+msgid "Externally rater options"
+msgstr "Opciones Tarificación externa"
+
 msgid "Extra Configuration"
 msgstr "Configuración adicional"
 
@@ -967,6 +981,11 @@ msgid "Generic Music on Hold"
 msgid_plural "Generic Musics on Hold"
 msgstr[0] "Música en espera genérica"
 msgstr[1] "Músicas en espera genéricas"
+
+msgid "Generic Service"
+msgid_plural "Generic Services"
+msgstr[0] "Servicio Genérico"
+msgstr[1] "Servicios Genéricos"
 
 msgid "Generic URL Pattern"
 msgstr "Patrón de URL genérica"
@@ -1133,6 +1152,9 @@ msgstr "Incondicional"
 msgid "Increment"
 msgstr "Incremento"
 
+msgid "Infrastructure"
+msgstr "Infraestructura"
+
 msgid "Insert your username"
 msgstr "Introduce tu nombre de usuario"
 
@@ -1201,6 +1223,9 @@ msgstr "Las llamadas facturadas no pueden ser retarificadas"
 
 msgid "Invoices have been enqueued. They will be generated as soon as posible."
 msgstr "Facturas encoladas. Se generarán lo antes posible."
+
+msgid "Invoicing"
+msgstr "Facturación"
 
 msgid "Ip addr"
 msgstr "Dirección IP"
@@ -1495,6 +1520,9 @@ msgstr "Mes"
 msgid "Movement amount"
 msgstr "Cantidad"
 
+msgid "Multimedia"
+msgstr "Multimedia"
+
 msgid "Music on Hold"
 msgid_plural "Musics on Hold"
 msgstr[0] "Música en espera"
@@ -1779,6 +1807,9 @@ msgstr "Contraseña"
 msgid "Pin protected"
 msgstr "Con contraseña"
 
+msgid "Platform data"
+msgstr "Información de plataforma"
+
 msgid "Please select only uninvoiced calls"
 msgstr "Por favor, seleccione únicamente llamadas no facturadas"
 
@@ -1853,6 +1884,9 @@ msgstr "Procesando"
 msgid "Proto"
 msgstr "Protocolo"
 
+msgid "Providers"
+msgstr "Proveedores"
+
 msgid "Province"
 msgid_plural "Provinces"
 msgstr[0] "Provincia"
@@ -1907,6 +1941,16 @@ msgstr "Aleatoriamente"
 msgid "Random Contact Username"
 msgstr "Nombre de usuario de contacto aleatorio"
 
+msgid "Rate"
+msgid_plural "Rates"
+msgstr[0] "Tarifa"
+msgstr[1] "Tarifas"
+
+msgid "Rating Plan"
+msgid_plural "Rating Plans"
+msgstr[0] "Plan de precios"
+msgstr[1] "Planes de precios"
+
 msgid "Rating Profile"
 msgid_plural "Rating Profiles"
 msgstr[0] "Perfil de precio"
@@ -1919,11 +1963,6 @@ msgid "Rating plan"
 msgid_plural "Rating plans"
 msgstr[0] "Plan de precio"
 msgstr[1] "Planes de precios"
-
-msgid "Rating plan group"
-msgid_plural "Rating plan groups"
-msgstr[0] "Grupo de planes de precio"
-msgstr[1] "Grupos de planes de precio"
 
 msgid "Re metering date"
 msgstr "Fecha de retarificación"
@@ -2033,6 +2072,9 @@ msgid_plural "Retail admins"
 msgstr[0] "Administrador Retail"
 msgstr[1] "Administradores Retail"
 
+msgid "Retail specific"
+msgstr "Específico de retail"
+
 msgid "Ring all"
 msgstr "A todos"
 
@@ -2053,6 +2095,9 @@ msgstr[1] "Candados"
 msgid "Route type"
 msgstr "Enrutar"
 
+msgid "Routing"
+msgstr "Encaminamiento"
+
 msgid "Routing Tag"
 msgid_plural "Routing Tags"
 msgstr[0] "Etiqueta de ruta"
@@ -2060,6 +2105,9 @@ msgstr[1] "Etiquetas de ruta"
 
 msgid "Routing configuration"
 msgstr "Configuración de enrutado"
+
+msgid "Routing endpoints"
+msgstr "Items enrutables"
 
 msgid "Routing pattern"
 msgid_plural "Routing patterns"
@@ -2075,6 +2123,9 @@ msgid "Routing pattern groups rel pattern"
 msgid_plural "Routing pattern groups rel patterns"
 msgstr[0] "Patrón de destino"
 msgstr[1] "Patrones de destino"
+
+msgid "Routing tools"
+msgstr "Herramientas de encaminamiento"
 
 msgid ""
 "Rules to manipulate outgoingDDI when user directly calls to external numbers."
@@ -2187,6 +2238,9 @@ msgstr "El servicio emplea argumentos extra"
 
 msgid "Set column configuration and continue."
 msgstr "Seleccione la configuración de columna y continuar"
+
+msgid "Settings"
+msgstr "Configuraciones"
 
 msgid "Simulate a call"
 msgstr "Simular llamada"
@@ -2545,6 +2599,9 @@ msgid_plural "Users"
 msgstr[0] "Usuario"
 msgstr[1] "Usuarios"
 
+msgid "User configuration"
+msgstr "Configuración de usuario"
+
 msgid "Username"
 msgstr "Nombre de usuario"
 
@@ -2565,6 +2622,9 @@ msgstr "Ver entrantes %s %s"
 #, python-format
 msgid "View Outgoing %s %s"
 msgstr "Ver salientes %s %s"
+
+msgid "Views"
+msgstr "Vistas"
 
 msgid "Virtual PBX"
 msgid_plural "Virtual PBXs"
@@ -2648,6 +2708,9 @@ msgid "Wholesale admin"
 msgid_plural "Wholesale admins"
 msgstr[0] "Administrador Wholesale"
 msgstr[1] "Administradores Wholesale"
+
+msgid "Wholesale specific"
+msgstr "Específico de Wholesale"
 
 msgid "Will be shown on page footer"
 msgstr "Se mostrará en el pie de página"

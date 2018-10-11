@@ -39,9 +39,13 @@ class NextExecutionResolver implements CallCsvSchedulerLifecycleEventHandlerInte
         if (!$nextExecution) {
             $timeZone = $scheduler->getTimezone();
             $this->setFallbackNextExecution($scheduler, $timeZone);
+
             return;
         }
 
+        /**
+         * @todo this should be avoided when entity is new
+         */
         $this->updateNextExecution($scheduler);
     }
 }

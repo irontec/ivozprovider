@@ -24,8 +24,8 @@ class ProviderLocution extends Fixture implements DependentFixtureInterface
     
         $item1 = $this->createEntityInstanceWithPublicMethods(Locution::class);
         $item1->setName("testLocution");
-        $item1->setEncodedFile(new EncodedFile(null, null, null));
-        $item1->setOriginalFile(new OriginalFile(null, null, null));
+        $item1->setEncodedFile(new EncodedFile(1, 'audio/x-wav; charset=binary', 'locution.wav'));
+        $item1->setOriginalFile(new OriginalFile(1, 'audio/mpeg; charset=binary', 'locution.mp3'));
         $item1->setCompany($this->getReference('_reference_ProviderCompany1'));
         $this->addReference('_reference_ProviderLocution1', $item1);
         $this->sanitizeEntityValues($item1);

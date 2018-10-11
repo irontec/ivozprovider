@@ -16,7 +16,7 @@ production:
       title: _("List of %s %2s", ngettext('DDI Provider Address', 'DDI Provider Addresses', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/brand/peering/ddi_provider_addresses.html"
+        href: "/doc/en/administration_portal/brand/providers/ddi_providers.html#ddi-provider-addresses"
       fields:
         options:
           title: _("Options")

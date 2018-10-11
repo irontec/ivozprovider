@@ -16,7 +16,7 @@ production:
       title: _("List of %s %2s", ngettext('Domain', 'Domains', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/platform/domains.html"
+        href: "/doc/en/administration_portal/platform/sip_domains.html"
       fields:
         order: &domains_orderLink
           domain: true

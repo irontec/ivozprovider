@@ -17,7 +17,7 @@ production:
       rawCondition: "Trusted.company IS NULL"
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/platform/antiflood.html"
+        href: "/doc/en/administration_portal/platform/antiflood_trusted_ips.html"
       fields: &kamTrusted_fieldsLink
         options:
           title: _("Options")

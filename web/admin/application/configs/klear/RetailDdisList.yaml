@@ -16,7 +16,7 @@ production:
       class: ui-silk-lightning-go
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/company/ddis.html"
+        href: "/doc/en/administration_portal/client/retail/ddis.html"
       forcedValues:
         <<: *forcedCompany
         recordCalls: 'all'

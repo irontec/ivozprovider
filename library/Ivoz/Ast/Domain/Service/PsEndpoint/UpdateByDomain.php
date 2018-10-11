@@ -54,7 +54,10 @@ class UpdateByDomain implements DomainLifecycleEventHandlerInterface
         $terminals = $entity->getTerminals();
 
         foreach ($terminals as $terminal) {
-            $this->updateEndpoint($terminal->getAstPsEndpoint(), $entity->getDomain());
+            $this->updateEndpoint(
+                $terminal->getAstPsEndpoint(),
+                $entity->getDomain()
+            );
         }
 
         $this->entityPersister->dispatchQueued();

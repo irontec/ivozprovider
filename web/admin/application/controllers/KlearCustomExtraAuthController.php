@@ -212,6 +212,7 @@ class KlearCustomExtraAuthController extends Zend_Controller_Action
             case "ResidentialClientsList":
             case "CompaniesList":
             case "WholesaleClientsList":
+            case "RetailClientsList":
                 $type = "company";
                 $entity = Company::class;
                 break;

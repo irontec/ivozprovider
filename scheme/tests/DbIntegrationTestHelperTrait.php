@@ -6,7 +6,7 @@ use Doctrine\ORM\EntityManager;
 use Ivoz\Core\Application\Event\CommandWasExecuted;
 use Ivoz\Core\Application\RequestId;
 use Ivoz\Core\Domain\Service\DomainEventPublisher;
-use Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister;
+use Ivoz\Core\Domain\Service\EntityEventSubscriber;
 use Ivoz\Provider\Domain\Model\Changelog\Changelog;
 use Ivoz\Provider\Domain\Model\Changelog\ChangelogRepository;
 use Symfony\Component\Filesystem\Filesystem;
@@ -36,6 +36,11 @@ trait DbIntegrationTestHelperTrait
     protected $eventPublisher;
 
     /**
+     * @var EntityEventSubscriber
+     */
+    protected $entityEventSubscriber;
+
+    /**
      * @var string
      */
     protected $commandId;
@@ -62,6 +67,9 @@ trait DbIntegrationTestHelperTrait
 
         $this->entityTools = $serviceContainer
             ->get(EntityTools::class);
+
+        $this->entityEventSubscriber = $serviceContainer
+            ->get(EntityEventSubscriber::class);
 
         $this->resetDatabase();
         $this->enableChangelog();
@@ -103,6 +111,39 @@ trait DbIntegrationTestHelperTrait
             ->findBy(['command' => $this->commandId]);
     }
 
+    protected function resetChangelog()
+    {
+        //Reset changelog
+        $this->resetEvents();
+
+        // Register a new Command
+        $this->enableChangelog();
+    }
+
+    protected function getChangedEntities()
+    {
+        $entities = [];
+        $changelog = $this->getChangelog();
+
+        foreach ($changelog as $item) {
+            $entities[] = $item->getEntity();
+        }
+
+        return array_values(
+            array_unique($entities)
+        );
+    }
+
+    protected function assetChangedEntities(array $expected)
+    {
+        $changedEntities = $this->getChangedEntities();
+
+        $this->assertEquals(
+            $expected,
+            $changedEntities
+        );
+    }
+
     /**
      * @param string $entityClass
      * @return Changelog[]
@@ -131,6 +172,36 @@ trait DbIntegrationTestHelperTrait
         $fs->copy(
             $dbFile . '.back',
             $dbFile
+        );
+    }
+
+    protected function resetEvents()
+    {
+        $this->entityEventSubscriber->clearEvents();
+    }
+
+    protected function assertSubset(
+        Changelog $changelog,
+        array $expectedSubset,
+        array $excludedSubsetKeys = []
+    ) {
+        $diff = $changelog->getData();
+
+        $this->assertArraySubset(
+            $expectedSubset,
+            $diff
+        );
+
+        $this->assertEquals(
+            count(
+                array_keys($diff)
+            ),
+            count(
+                array_merge(
+                    array_keys($expectedSubset),
+                    $excludedSubsetKeys
+                )
+            )
         );
     }
 }

@@ -25,13 +25,13 @@ services:
         allow_redirects: true
         verify: false
 
+  Ivoz\Core\Infrastructure\Service\Rest\FakeClient: ~
   Ivoz\Core\Infrastructure\Service\Rest\Client:
     arguments:
       $platformHttpClient: '@ivoz.api_platform.http.client'
       $jwtTokenManager: '@lexik_jwt_authentication.jwt_manager'
     tags:
-      - { name: test_double, fake: 'Ivoz\Core\Infrastructure\Service\JsonRpc\FakeClient' }
+      - { name: test_double, fake: 'Ivoz\Core\Infrastructure\Service\Rest\FakeClient' }
 
-
-
-
+  Ivoz\Core\Domain\Service\ApiClientInterface:
+    '@Ivoz\Core\Infrastructure\Service\Rest\Client'

@@ -15,7 +15,7 @@ production:
       title: _("List of %s %2s", ngettext('Proxy Trunks', 'Proxies Trunks', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/platform/proxy_trunks.html"
+        href: "/doc/en/administration_portal/platform/infrastructure/proxy_trunks.html"
       fields:
         options:
           title: _("Options")

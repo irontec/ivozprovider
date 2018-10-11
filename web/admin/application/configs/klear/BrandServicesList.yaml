@@ -19,7 +19,7 @@ production:
       title: _("List of %s %2s", ngettext('Brand service', 'Brand services', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/brand/services.html"
+        href: "/doc/en/administration_portal/brand/settings/generic_services.html"
       fields: &brandServices_fieldsLink
         options:
           title: _("Options")

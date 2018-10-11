@@ -21,7 +21,7 @@ production:
       title: _("List of %s %2s", ngettext('Application Server', 'Application Servers', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/platform/application_servers.html"
+        href: "/doc/en/administration_portal/platform/infrastructure/application_servers.html"
       fields:
         blacklist:
           <<: *applicationServersBlacklist

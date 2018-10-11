@@ -21,7 +21,7 @@ production:
       title: _("List of %s %2s", ngettext('Carrier', 'Carriers', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/brand/peering/carriers.html"
+        href: "/doc/en/administration_portal/brand/providers/carriers.html"
       forcedValues:
         <<: *forcedBrand
       fields:

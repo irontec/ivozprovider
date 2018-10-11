@@ -27,7 +27,7 @@ production:
         <<: *forcedCompany
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/brand/billing/billable_calls.html"
+        href: "/doc/en/administration_portal/client/vpbx/calls/billable_calls.html"
       fields: &billableCalls_fieldsLink
         options:
           title: _("Options")

@@ -95,7 +95,7 @@ production:
               show: ["klearTheme"]
               hide: ["userTheme"]
           'admin':
-            title: ngettext('Company', 'Companies', 1)
+            title: ngettext('Client', 'Clients', 1)
             visualFilter:
               show: ["klearTheme"]
               hide: ["userTheme"]

@@ -24,7 +24,7 @@ production:
       title: _("List of %s %2s", ngettext('Billable call', 'Billable calls', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/brand/billing/billable_calls.html"
+        href: "/doc/en/administration_portal/platform/billable_calls.html"
       fields: &billableCalls_fieldsLink
         options:
           title: _("Options")

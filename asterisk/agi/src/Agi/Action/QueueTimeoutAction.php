@@ -61,7 +61,7 @@ class QueueTimeoutAction
         $this->agi->notice("Processing Timeout queue handler");
 
         // Play timeout locution
-        $this->agi->playbackLocution($queue->getFullLocution());
+        $this->agi->playbackLocution($queue->getTimeoutLocution());
 
         // Route to the timeout destination
         $this->routerAction
