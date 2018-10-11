@@ -1,3 +1,24 @@
+Thu, 11 Oct 2018 16:58:23 +0200 IvozProvider Team <vozip+ivozprovider@irontec.com>
+
+    * IvozProvider 2.7.1 released
+
+    * Web
+        - Organized administration portal sections into groups
+        - Download multiple recordings in ZIP file
+        - Changed new recordings file name
+        - Allowed invoice regeneration
+
+    * Billing
+        - Fixed prepaid duplicate rating
+
+    * vPBX
+        - Fixed queue periodic announcement
+        - Removed duplicate g dial option for hunt group
+
+    * Other
+        - Updated documentation (english version only)
+        - Updated ORM tests
+
 Tue, 18 Sep 2018 17:04:15 +0200 IvozProvider Team <vozip+ivozprovider@irontec.com>
 
     * IvozProvider 2.7.0 released
