@@ -18,7 +18,7 @@ production:
       title: _("List of %s %2s", ngettext('Conditional Route', 'Conditional Routes', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/administration_portal/client/vpbx/routing_endpoints/conditional_routes.html"
+        href: "/doc/en/administration_portal/client/vpbx/routing_endpoints/conditional_routes.html"
       forcedValues:
         <<: *forcedCompany
       fields: &conditionalRoutes_fieldsLink

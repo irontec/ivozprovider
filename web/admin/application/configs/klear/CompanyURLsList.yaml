@@ -25,7 +25,7 @@ production:
       title: _("List of %s %2s", ngettext('Company URL', 'Company URLs', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/administration_portal/brand/settings/portal_urls.html"
+        href: "/doc/en/administration_portal/brand/settings/portal_urls.html"
       fields: &companyURLs_fieldsLink
         options:
           title: _("Options")

@@ -16,7 +16,7 @@ production:
       class: ui-silk-lightning-go
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/administration_portal/client/vpbx/ddis.html"
+        href: "/doc/en/administration_portal/client/vpbx/ddis.html"
       forcedValues:
         <<: *forcedCompany
       order:

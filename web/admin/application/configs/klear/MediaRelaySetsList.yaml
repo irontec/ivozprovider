@@ -17,7 +17,7 @@ production:
       title: _("List of %s %2s", ngettext('Media relay set', 'Media relay sets', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/administration_portal/platform/infrastructure/media_relay_sets.html"
+        href: "/doc/en/administration_portal/platform/infrastructure/media_relay_sets.html"
       fields: &mediaRelaySets_fieldsLink
         options:
           title: _("Options")

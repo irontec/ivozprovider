@@ -17,7 +17,7 @@ production:
       title: _("List of %s %2s", ngettext('Calendar', 'Calendars', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/administration_portal/client/vpbx/routing_tools/calendars.html"
+        href: "/doc/en/administration_portal/client/vpbx/routing_tools/calendars.html"
       forcedValues:
         <<: *forcedCompany
       fields:

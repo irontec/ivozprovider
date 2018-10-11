@@ -19,7 +19,7 @@ production:
       title: _("List of %s %2s", ngettext('Prepaid Balance', 'Prepaid Balances', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/administration_portal/brand/billing/prepaid_balances.html"
+        href: "/doc/en/administration_portal/brand/billing/prepaid_balances.html"
       forcedValues:
         <<: *forcedBrand
       fields:

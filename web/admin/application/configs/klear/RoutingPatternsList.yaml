@@ -16,7 +16,7 @@ production:
       title: _("List of %s %2s", ngettext('Routing pattern', 'Routing patterns', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/administration_portal/brand/routing/routing_patterns.html"
+        href: "/doc/en/administration_portal/brand/routing/routing_patterns.html"
       forcedValues:
         <<: *forcedBrand
       fields: &routingPatterns_fieldsLink

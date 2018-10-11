@@ -14,7 +14,7 @@ production:
       <<: *ratingProfilesList_screenLink
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/administration_portal/client/vpbx/rating_profiles.html"
+        href: "/doc/en/administration_portal/client/vpbx/rating_profiles.html"
       forcedValues:
         <<: *forcedCompany
       fields:

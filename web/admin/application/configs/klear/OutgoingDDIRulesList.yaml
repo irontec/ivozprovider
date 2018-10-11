@@ -17,7 +17,7 @@ production:
       title: _("List of %s %2s", ngettext('Outgoing DDI Rule', 'Outgoing DDI Rules', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.html"
+        href: "/doc/en/administration_portal/client/vpbx/user_configuration/outgoing_ddi_rules.html"
       forcedValues:
         <<: *forcedCompany
       fields: &outgoingDDIRules_fieldsLink

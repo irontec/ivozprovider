@@ -16,7 +16,7 @@ production:
       title: _("List of %s %2s", ngettext('Main operator', 'Main operators', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/administration_portal/platform/main_operators.html"
+        href: "/doc/en/administration_portal/platform/main_operators.html"
       fields:
         options:
           title: _("Options")

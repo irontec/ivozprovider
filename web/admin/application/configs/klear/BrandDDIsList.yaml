@@ -17,7 +17,7 @@ production:
       class: ui-silk-lightning-go
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/administration_portal/brand/views/ddis.html"
+        href: "/doc/en/administration_portal/brand/views/ddis.html"
       forcedValues:
         <<: *forcedBrand
       order:

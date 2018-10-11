@@ -18,7 +18,7 @@ production:
       title: _("List of %s %2s", ngettext('Invoice template', 'Invoice templates', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/administration_portal/brand/invoicing/invoice_templates.html"
+        href: "/doc/en/administration_portal/brand/invoicing/invoice_templates.html"
       forcedValues:
         <<: *forcedBrand
       fields: &invoiceTemplates_fieldsLink

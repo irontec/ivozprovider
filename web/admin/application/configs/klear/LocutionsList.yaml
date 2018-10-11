@@ -16,7 +16,7 @@ production:
       title: _("List of %s %2s", ngettext('Locution', 'Locutions', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/administration_portal/client/vpbx/multimedia/locutions.html"
+        href: "/doc/en/administration_portal/client/vpbx/multimedia/locutions.html"
       forcedValues:
         <<: *forcedCompany
       fields:

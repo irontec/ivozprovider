@@ -20,7 +20,7 @@ production:
       title: _("List of %s %2s", ngettext('Call', 'Calls', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/administration_portal/client/vpbx/calls/call_registry.html"
+        href: "/doc/en/administration_portal/client/vpbx/calls/call_registry.html"
       forcedValues:
         <<: *forcedCompany
       fields: &kamUsersCdrs_fieldsLink

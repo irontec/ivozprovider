@@ -16,7 +16,7 @@ production:
       title: _("List of %s %2s", ngettext('Proxy Users', 'Proxies Users', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/administration_portal/platform/infrastructure/proxy_users.html"
+        href: "/doc/en/administration_portal/platform/infrastructure/proxy_users.html"
       fields: &proxyUsers_fieldsLink
         options:
           title: _("Options")

@@ -22,7 +22,7 @@ production:
       title: _("List of %s %2s", ngettext('Service', 'Services', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/administration_portal/platform/services.html"
+        href: "/doc/en/administration_portal/platform/services.html"
       fields: &services_fieldsLink
         options:
           title: _("Options")

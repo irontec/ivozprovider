@@ -22,7 +22,7 @@ production:
       title: _("List of %s %2s", ngettext('Match List', 'Match Lists', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/administration_portal/client/vpbx/routing_tools/match_lists.html"
+        href: "/doc/en/administration_portal/client/vpbx/routing_tools/match_lists.html"
       fields: &matchLists_fieldsLink
         blacklist:
           company: true

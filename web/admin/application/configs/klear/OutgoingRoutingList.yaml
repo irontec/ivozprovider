@@ -16,7 +16,7 @@ production:
       title: _("List of %s %2s", ngettext('Outgoing routing', 'Outgoing routings', 0), "[format| (%parent%)]")
       info:
         <<: *documentationLink
-        href: "/doc/${lang}/administration_portal/brand/routing/outgoing_routings.html"
+        href: "/doc/en/administration_portal/brand/routing/outgoing_routings.html"
       fields: &outgoingRouting_fieldsLink
         order: &outgoingRouting_fieldsOrder
           company: true
