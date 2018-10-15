@@ -88,14 +88,6 @@ production:
       source:
         control: Spinner
       required: true
-    ddiProvider:
-      title: ngettext('DDI Provider', 'DDI Providers', 0)
-      type: select
-      required: true
-      source:
-        data: mapper
-        config:
-          entity: \Ivoz\Provider\Domain\Model\DdiProvider\DdiProvider
 staging:
   _extends: production
 testing:
