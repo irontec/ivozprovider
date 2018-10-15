@@ -60,7 +60,7 @@ production:
             ip: 5
             description: 7
 
-  dialogs: &ddiProviderAddresses_dialosgLink
+  dialogs: &ddiProviderAddresses_dialogsLink
     ddiProviderAddressesDel_dialog: &ddiProviderAddressesDel_dialogLink
       <<: *DdiProviderAddresses
       controller: delete
