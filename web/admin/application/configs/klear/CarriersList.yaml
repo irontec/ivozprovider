@@ -211,7 +211,7 @@ production:
           company: true
           brand: true
 
-  dialogs: &carriers_dialosgLink
+  dialogs: &carriers_dialogsLink
     carriersDel_dialog: &carriersDel_dialogLink
       <<: *Carriers
       controller: delete
