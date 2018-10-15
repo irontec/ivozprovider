@@ -231,6 +231,10 @@ class MigrateFromTrunksCdr
             return $billableCallDto;
         }
 
+        if (!$defaultRunTpCdr->getCostDetailsFirstTimespan()) {
+            return $billableCallDto;
+        }
+
         $callee = $defaultRunTpCdr->getDestination()
             ? $defaultRunTpCdr->getDestination()
             : $billableCallDto->getCallee();
