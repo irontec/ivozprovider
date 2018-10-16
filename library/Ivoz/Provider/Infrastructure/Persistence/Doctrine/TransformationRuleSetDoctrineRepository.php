@@ -20,6 +20,14 @@ class TransformationRuleSetDoctrineRepository extends ServiceEntityRepository im
         parent::__construct($registry, TransformationRuleSet::class);
     }
 
+    /**
+     * @param array $criteria
+     * @return mixed
+     * @throws \Doctrine\ORM\NoResultException
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     *
+     * * @deprecated dead code
+     */
     public function countByCriteria(array $criteria)
     {
         $alias = 'TransformationRuleSet';

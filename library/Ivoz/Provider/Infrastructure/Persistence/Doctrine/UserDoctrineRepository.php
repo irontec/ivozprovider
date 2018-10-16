@@ -26,6 +26,8 @@ class UserDoctrineRepository extends ServiceEntityRepository implements UserRepo
     /**
      * @param AdministratorInterface $admin
      * @return array
+     *
+     * @deprecated dead code
      */
     public function getSupervisedUserIdsByAdmin(AdministratorInterface $admin)
     {

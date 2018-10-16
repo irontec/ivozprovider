@@ -24,6 +24,7 @@ class RoutingTagDoctrineRepository extends ServiceEntityRepository implements Ro
     /**
      * @param int $companyId
      * @return RoutingTagInterface[]
+     * @deprecated dead code
      */
     public function findByCompanyId(int $companyId)
     {

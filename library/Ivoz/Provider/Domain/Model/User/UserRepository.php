@@ -11,6 +11,8 @@ interface UserRepository extends ObjectRepository, Selectable
     /**
      * @param AdministratorInterface $admin
      * @return array
+     *
+     * @deprecated dead code
      */
     public function getSupervisedUserIdsByAdmin(AdministratorInterface $admin);
 
