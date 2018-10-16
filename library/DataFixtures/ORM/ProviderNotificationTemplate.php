@@ -30,7 +30,6 @@ class ProviderNotificationTemplate extends Fixture implements DependentFixtureIn
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
 
-    
         $manager->flush();
     }
 
