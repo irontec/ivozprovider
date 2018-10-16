@@ -26,6 +26,20 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
     }
 
     /**
+     * @param $id
+     * @return BillableCallInterface
+     */
+    public function findOneByTrunksCdrId($id)
+    {
+        /** @var BillableCallInterface $response */
+        $response = $this->findOneBy([
+            'trunksCdr' => $id
+        ]);
+
+        return $response;
+    }
+
+    /**
      * @inheritdoc
      * @see BillableCallRepository::areRetarificable
      */

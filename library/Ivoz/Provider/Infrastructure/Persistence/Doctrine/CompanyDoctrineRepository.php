@@ -6,6 +6,7 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyRepository;
 use Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -19,6 +20,17 @@ class CompanyDoctrineRepository extends ServiceEntityRepository implements Compa
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, Company::class);
+    }
+
+    /**
+     * @param $id
+     * @return CompanyInterface[]
+     */
+    public function findByBrandId($id)
+    {
+        return $this->findBy([
+            'brand' => $id
+        ]);
     }
 
     /**

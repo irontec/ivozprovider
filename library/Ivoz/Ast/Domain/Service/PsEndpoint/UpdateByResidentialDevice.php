@@ -44,9 +44,9 @@ class UpdateByResidentialDevice implements ResidentialDeviceLifecycleEventHandle
         /**
          * @var PsEndpointInterface $endpoint
          */
-        $endpoint = $this->psEndpointRepository->findOneBy([
-            'residentialDevice' => $entity->getId()
-        ]);
+        $endpoint = $this->psEndpointRepository->findOneByResidentialDeviceId(
+            $entity->getId()
+        );
 
         // If not found create a new one
         if (is_null($endpoint)) {

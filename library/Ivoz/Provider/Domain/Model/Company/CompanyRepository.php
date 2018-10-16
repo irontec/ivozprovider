@@ -9,6 +9,12 @@ use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 interface CompanyRepository extends ObjectRepository, Selectable
 {
     /**
+     * @param $id
+     * @return CompanyInterface[]
+     */
+    public function findByBrandId($id);
+
+    /**
      * @return array
      */
     public function getSupervisedCompanyIdsByAdmin(AdministratorInterface $admin);

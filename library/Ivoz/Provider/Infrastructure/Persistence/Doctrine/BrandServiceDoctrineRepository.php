@@ -3,10 +3,10 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Ivoz\Provider\Domain\Model\Brand\Brand;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
-use Ivoz\Provider\Domain\Model\BrandService\BrandServiceRepository;
 use Ivoz\Provider\Domain\Model\BrandService\BrandService;
+use Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface;
+use Ivoz\Provider\Domain\Model\BrandService\BrandServiceRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -22,6 +22,11 @@ class BrandServiceDoctrineRepository extends ServiceEntityRepository implements 
         parent::__construct($registry, BrandService::class);
     }
 
+    /**
+     * @param BrandInterface $brand
+     * @param string $iden
+     * @return BrandInterface
+     */
     public function findByIden(BrandInterface $brand, string $iden)
     {
         $qb = $this->createQueryBuilder('self');
@@ -38,5 +43,16 @@ class BrandServiceDoctrineRepository extends ServiceEntityRepository implements 
 
         $result = $query->getResult();
         return array_shift($result);
+    }
+
+    /**
+     * @param $id
+     * @return BrandServiceInterface[]
+     */
+    public function findByBrandId($id)
+    {
+        return $this->findBy([
+            'brand' => $id
+        ]);
     }
 }

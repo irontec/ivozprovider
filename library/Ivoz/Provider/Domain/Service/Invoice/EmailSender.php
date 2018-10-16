@@ -128,10 +128,8 @@ class EmailSender implements InvoiceLifecycleEventHandlerInterface
 
         // Get Company Notification Template for faxes
         $invoiceNotificationTemplate = $company->getInvoiceNotificationTemplate();
-        $genericInvoiceNotificationTemplate = $this->notificationTemplateRepository->findOneBy([
-            'brand' => null,
-            'type' => 'invoice'
-        ]);
+        $genericInvoiceNotificationTemplate = $this->notificationTemplateRepository
+            ->findGenericInvoiceTemplate();
 
         if (!$invoiceNotificationTemplate) {
             // Get Generic Notification Template

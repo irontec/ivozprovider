@@ -5,14 +5,10 @@ namespace Ivoz\Cgr\Domain\Model\TpRatingProfile;
 use Ivoz\Cgr\Domain\Model\TpDestination\TpDestination;
 use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface;
 use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationRepository;
-use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanDto;
-use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlan;
 use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanDto;
-use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanRepository;
 use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlan;
 use Ivoz\Cgr\Domain\Model\TpRatingPlan\TpRatingPlanRepository;
 use Ivoz\Core\Application\Service\EntityTools;
-use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup;
 use Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroupDto;
 
 /**
@@ -87,9 +83,9 @@ class SimulatedCall
 
     /**
      * @param string $response
+     * @param int $duration
      * @param EntityTools $entityTools
-     * @throws \RuntimeException | \DomainException
-     * @return static
+     * @return SimulatedCall
      */
     public static function fromCgRatesResponse(
         string $response,
@@ -148,9 +144,8 @@ class SimulatedCall
 
         $tag = $result->RatingFilters->{$ratingFilterId}->RatingPlanID;
         /** @var TpRatingPlan $tpRatingPlan */
-        $tpRatingPlan = $tpRatingPlanRepository->findOneBy([
-            'tag' => $tag
-        ]);
+        $tpRatingPlan = $tpRatingPlanRepository
+            ->findOneByTag($tag);
 
         if (!$tpRatingPlan) {
             throw new \DomainException(self::FALLBACK_ERROR_MSG);
@@ -160,13 +155,11 @@ class SimulatedCall
         $instance->ratingPlanGroupDto = $entityTools->entityToDto(
             $tpRatingPlan->getRatingPlan()->getRatingPlanGroup()
         );
-
         $destinationTag = $result->RatingFilters->{$ratingFilterId}->DestinationID;
 
         /** @var TpDestinationInterface $tpDestination */
-        $tpDestination = $tpDestinationRepository->findOneBy([
-            'tag' => $destinationTag
-        ]);
+        $tpDestination = $tpDestinationRepository
+            ->findOneByTag($destinationTag);
 
         if (!$tpDestination) {
             throw new \DomainException(self::FALLBACK_ERROR_MSG);
@@ -200,13 +193,11 @@ class SimulatedCall
 
         $instance->errorMessage = $errorMsg;
 
-        /** @var TpRatingPlanRepository $ratingPlansRepository */
+        /** @var TpRatingPlanRepository $tpRatingPlansRepository */
         $tpRatingPlansRepository = $entityTools->getRepository(TpRatingPlan::class);
 
         /** @var TpRatingPlan $tpRatingPlan */
-        $tpRatingPlan = $tpRatingPlansRepository->findOneBy([
-            'tag' => $ratingPlanTag
-        ]);
+        $tpRatingPlan = $tpRatingPlansRepository->findOneByTag($ratingPlanTag);
 
         $instance->tpRatingPlanDto = $entityTools->entityToDto($tpRatingPlan);
 

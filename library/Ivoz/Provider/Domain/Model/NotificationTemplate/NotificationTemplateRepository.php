@@ -9,6 +9,16 @@ use Ivoz\Provider\Domain\Model\BalanceNotification\BalanceNotificationInterface;
 interface NotificationTemplateRepository extends ObjectRepository, Selectable
 {
     /**
+     * @return null | NotificationTemplateInterface
+     */
+    public function findGenericCallCsvTemplate();
+
+    /**
+     * @return null | NotificationTemplateInterface
+     */
+    public function findGenericInvoiceTemplate();
+
+    /**
      * @param BalanceNotificationInterface $balanceNotification
      * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface|null|object
      */

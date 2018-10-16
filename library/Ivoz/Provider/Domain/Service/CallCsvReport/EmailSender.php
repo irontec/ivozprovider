@@ -6,7 +6,6 @@ use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Core\Domain\Model\Mailer\Message;
 use Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReportDto;
 use Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReportInterface;
-use Ivoz\Core\Infrastructure\Domain\Service\Mailer\Client;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateRepository;
 use Ivoz\Core\Domain\Service\MailerClientInterface;
@@ -124,10 +123,8 @@ class EmailSender implements CallCsvReportLifecycleEventHandlerInterface
 
         // Get Company Notification Template for faxes
         /** @var NotificationTemplateInterface $genericInvoiceNotificationTemplate */
-        $genericInvoiceNotificationTemplate = $this->notificationTemplateRepository->findOneBy([
-            'brand' => null,
-            'type' => 'callCsv'
-        ]);
+        $genericInvoiceNotificationTemplate = $this->notificationTemplateRepository
+            ->findGenericCallCsvTemplate();
 
         // Get Notification contents for required language
         $notificationTemplateContent = $genericInvoiceNotificationTemplate->getContentsByLanguage(

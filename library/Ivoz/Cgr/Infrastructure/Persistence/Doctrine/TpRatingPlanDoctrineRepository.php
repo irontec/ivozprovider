@@ -28,18 +28,11 @@ class TpRatingPlanDoctrineRepository extends ServiceEntityRepository implements 
      */
     public function findOneByTag(string $tag)
     {
-        $qb = $this
-            ->createQueryBuilder('self')
-            ->where('self.tag = :tag')
-            ->setParameter('tag', $tag);
+        /** @var RatingPlanInterface $response */
+        $response = $this->findOneBy([
+            'tag' => $tag
+        ]);
 
-        try {
-            return $qb
-                ->getQuery()
-                ->getSingleResult();
-        } catch (NoResultException $error) {
-        }
-
-        return null;
+        return $response;
     }
 }

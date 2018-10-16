@@ -6,6 +6,7 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Provider\Domain\Model\BalanceNotification\BalanceNotificationInterface;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateRepository;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate;
+use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -22,6 +23,34 @@ class NotificationTemplateDoctrineRepository extends ServiceEntityRepository imp
     }
 
     /**
+     * @return null | NotificationTemplateInterface
+     */
+    public function findGenericCallCsvTemplate()
+    {
+        /** @var NotificationTemplateInterface $response */
+        $response = $this->findOneBy([
+            'brand' => null,
+            'type' => 'callCsv'
+        ]);
+
+        return $response;
+    }
+
+    /**
+     * @return null | NotificationTemplateInterface
+     */
+    public function findGenericInvoiceTemplate()
+    {
+        /** @var NotificationTemplateInterface $response */
+        $response = $this->findOneBy([
+            'brand' => null,
+            'type' => 'invoice'
+        ]);
+
+        return $response;
+    }
+
+    /**
      * @inheritdoc
      * @see NotificationTemplateRepository::findTemplateByBalanceNotification
      */
@@ -33,8 +62,8 @@ class NotificationTemplateDoctrineRepository extends ServiceEntityRepository imp
         }
 
         return $this->findOneBy([
-            "brand" => null,
-            "type" => "lowbalance"
+            'brand' => null,
+            'type' => 'lowbalance'
         ]);
     }
 }

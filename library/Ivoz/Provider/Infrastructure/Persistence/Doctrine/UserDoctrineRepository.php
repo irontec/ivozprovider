@@ -24,6 +24,17 @@ class UserDoctrineRepository extends ServiceEntityRepository implements UserRepo
     }
 
     /**
+     * @param $id
+     * @return UserInterface[]
+     */
+    public function findByBossAssistantId($id)
+    {
+        return $this->findBy([
+            'bossAssistant' => $id
+        ]);
+    }
+
+    /**
      * @param AdministratorInterface $admin
      * @return array
      *
