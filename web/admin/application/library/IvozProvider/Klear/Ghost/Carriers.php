@@ -33,9 +33,13 @@ class IvozProvider_Klear_Ghost_Carriers extends KlearMatrix_Model_Field_Ghost_Ab
      */
     public function getAsr($carrierDto)
     {
-        $response = $this->fetchCallStats->getAsr(
-            $carrierDto->getId()
-        );
+        try {
+            $response = $this->fetchCallStats->getAsr(
+                $carrierDto->getId()
+            );
+        } catch (Exception $exception) {
+            return Klear_Model_Gettext::gettextCheck('_("Unavailable")');
+        }
 
         if (!$response || $response == -1) {
             return '';
@@ -50,9 +54,13 @@ class IvozProvider_Klear_Ghost_Carriers extends KlearMatrix_Model_Field_Ghost_Ab
      */
     public function getAcd($carrierDto)
     {
-        $response = $this->fetchCallStats->getAcd(
-            $carrierDto->getId()
-        );
+        try {
+            $response = $this->fetchCallStats->getAcd(
+                $carrierDto->getId()
+            );
+        } catch (Exception $exception) {
+            return Klear_Model_Gettext::gettextCheck('_("Unavailable")');
+        }
 
         if (!$response || $response == -1) {
             return '';
@@ -71,9 +79,13 @@ class IvozProvider_Klear_Ghost_Carriers extends KlearMatrix_Model_Field_Ghost_Ab
             return Klear_Model_Gettext::gettextCheck('_("Disabled")');
         }
 
-        return $this->fetchCarrierBalance->getBalance(
-            $carrierDto->getBrandId(),
-            $carrierDto->getId()
-        );
+        try {
+            return $this->fetchCarrierBalance->getBalance(
+                $carrierDto->getBrandId(),
+                $carrierDto->getId()
+            );
+        } catch (Exception $exception) {
+            return Klear_Model_Gettext::gettextCheck('_("Unavailable")');
+        }
     }
 }
