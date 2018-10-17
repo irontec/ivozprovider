@@ -4,6 +4,7 @@ namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Provider\Domain\Model\Extension\ExtensionRepository;
+use Ivoz\Provider\Domain\Model\Extension\ExtensionInterface;
 use Ivoz\Provider\Domain\Model\Extension\Extension;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -18,5 +19,19 @@ class ExtensionDoctrineRepository extends ServiceEntityRepository implements Ext
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, Extension::class);
+    }
+
+    /**
+     * @param $id
+     * @return ExtensionInterface | null
+     */
+    public function findByCompanyId($id)
+    {
+        /** @var ExtensionInterface $response */
+        $response = $this->findBy([
+            'company' => $id
+        ]);
+
+        return $response;
     }
 }

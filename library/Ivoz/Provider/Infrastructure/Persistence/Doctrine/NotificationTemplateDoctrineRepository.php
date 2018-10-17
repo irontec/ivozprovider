@@ -51,6 +51,34 @@ class NotificationTemplateDoctrineRepository extends ServiceEntityRepository imp
     }
 
     /**
+     * @return null | NotificationTemplateInterface
+     */
+    public function findGenericFaxTemplate()
+    {
+        /** @var NotificationTemplateInterface $response */
+        $response = $this->findOneBy([
+            'brand' => null,
+            'type' => 'fax'
+        ]);
+
+        return $response;
+    }
+
+    /**
+     * @return null | NotificationTemplateInterface
+     */
+    public function findGenericVoicemailTemplate()
+    {
+        /** @var NotificationTemplateInterface $response */
+        $response = $this->findOneBy([
+            'brand' => null,
+            'type' => 'voicemail'
+        ]);
+
+        return $response;
+    }
+
+    /**
      * @inheritdoc
      * @see NotificationTemplateRepository::findTemplateByBalanceNotification
      */

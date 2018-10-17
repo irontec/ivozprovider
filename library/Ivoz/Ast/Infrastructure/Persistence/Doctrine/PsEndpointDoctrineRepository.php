@@ -62,4 +62,18 @@ class PsEndpointDoctrineRepository extends ServiceEntityRepository implements Ps
 
         return $response;
     }
+
+    /**
+     * @inheritdoc
+     * @see PsEndpointRepository::findOneBySorceryId
+     */
+    public function findOneBySorceryId($sorceryId)
+    {
+        /** @var PsEndpointInterface $response */
+        $response = $this->findOneBy([
+            'sorceryId' => $sorceryId
+        ]);
+
+        return $response;
+    }
 }

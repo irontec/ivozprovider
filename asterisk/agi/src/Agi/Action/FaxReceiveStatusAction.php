@@ -7,6 +7,7 @@ use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutDTO;
 use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutInterface;
 use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate;
+use Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateRepository;
 
 
 class FaxReceiveStatusAction
@@ -148,17 +149,13 @@ class FaxReceiveStatusAction
                     '${FAX_PAGES}'      => $faxIn->getPages(),
             );
 
-
             // Get Company Notification Template for faxes
             $faxNotificationTemplate = $company->getFaxNotificationTemplate();
 
             // Get Generic Notification Template for faxes
+            /** @var NotificationTemplateRepository $notificationTemplateRepository */
             $notificationTemplateRepository = $this->em->getRepository(NotificationTemplate::class);
-            $genericFaxlNotificationTemplate = $notificationTemplateRepository->findOneBy([
-                "brand" => null,
-                "type" => "fax"
-            ]);
-
+            $genericFaxlNotificationTemplate = $notificationTemplateRepository->findGenericFaxTemplate();
 
             // If no template is associated, fallback to generic notification template for voicemails
             if (!$faxNotificationTemplate) {

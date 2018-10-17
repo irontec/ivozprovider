@@ -24,4 +24,10 @@ interface PsEndpointRepository extends ObjectRepository, Selectable
      * @return null|PsEndpointInterface
      */
     public function findOneByTerminalId($id);
+
+    /**
+     * @param $sorceryId
+     * @return PsEndpointInterface | null
+     */
+    public function findOneBySorceryId($sorceryId);
 }

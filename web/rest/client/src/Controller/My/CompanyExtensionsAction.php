@@ -42,6 +42,6 @@ class CompanyExtensionsAction
         $company = $token->getUser()->getCompany();
         return $this
             ->extensionRepository
-            ->findBy(['company' => $company->getId()]);
+            ->findByCompanyId($company->getId());
     }
 }

@@ -67,9 +67,7 @@ class Trunks extends RouteHandlerAbstract
         $ddiRepository = $this->em->getRepository(Ddi::class);
 
         /** @var \Ivoz\Provider\Domain\Model\Ddi\DdiInterface $ddi */
-        $ddi = $ddiRepository->findOneBy([
-            "ddie164" => $exten
-        ]);
+        $ddi = $ddiRepository->findOneByDdiE164($exten);
 
         // Check if incoming DDI is for us
         Assertion::notNull(

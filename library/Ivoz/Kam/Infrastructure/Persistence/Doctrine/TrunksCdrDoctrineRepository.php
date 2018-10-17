@@ -3,6 +3,7 @@
 namespace Ivoz\Kam\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrRepository;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdr;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
@@ -23,6 +24,20 @@ class TrunksCdrDoctrineRepository extends ServiceEntityRepository implements Tru
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, TrunksCdr::class);
+    }
+
+    /**
+     * @param $callid
+     * @return TrunksCdrInterface | null
+     */
+    public function findOneByCallid($callid)
+    {
+        /** @var TrunksCdrInterface $response */
+        $response = $this->findOneBy([
+            'callid' => $callid
+        ]);
+
+        return $response;
     }
 
     /**

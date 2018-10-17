@@ -6,12 +6,9 @@ use Ivoz\Core\Domain\Service\EntityPersisterInterface;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrInterface;
 use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrRepository;
 use Ivoz\Kam\Domain\Model\UsersCdr\UsersCdrRepository;
-use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Recording\RecordingDto;
 use Symfony\Bridge\Monolog\Logger;
 use Symfony\Component\Process\Process;
-use Zend_Media_Mpeg_Abs;
-
 
 class Encoder
 {
@@ -119,7 +116,7 @@ class Encoder
 
             // Look if the converstation with that id has ended
             /** @var TrunksCdrInterface $kamAccCdr */
-            $kamAccCdr = $this->trunksCdrRepository->findOneBy(['callid' => $callid]);
+            $kamAccCdr = $this->trunksCdrRepository->findOneByCallid($callid);
             if ($kamAccCdr) {
                 $type = 'ddi';
                 if ($kamAccCdr->getXcallid()) {
@@ -130,7 +127,7 @@ class Encoder
                     $recorder = $kamAccCdr->getCallee();
                 }
             } else {
-                $kamAccCdr = $this->usersCdrRepository->findOneBy(['callid' => $callid]);
+                $kamAccCdr = $this->usersCdrRepository->findOneByCallid($callid);
                 if ($kamAccCdr) {
                     $type = 'ondemand';
                     if ($kamAccCdr->getXcallid()) {

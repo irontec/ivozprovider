@@ -12,4 +12,11 @@ interface VoicemailRepository extends ObjectRepository, Selectable
      * @return VoicemailInterface
      */
     public function findOneByUserId($id);
+
+    /**
+     * @param $mailbox
+     * @param $context
+     * @return VoicemailInterface
+     */
+    public function findByMailboxAndContext($mailbox, $context);
 }
