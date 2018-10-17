@@ -33,7 +33,7 @@ Feature: Create pick up rel users
               "email": "bob@democompany.com",
               "pass": "*****",
               "doNotDisturb": false,
-              "isBoss": false,
+              "isBoss": true,
               "active": true,
               "maxCalls": 1,
               "externalIpCalls": "0",
@@ -45,7 +45,7 @@ Feature: Create pick up rel users
               "id": 2,
               "company": 1,
               "callAcl": null,
-              "bossAssistant": null,
+              "bossAssistant": 1,
               "bossAssistantWhiteList": null,
               "language": null,
               "terminal": 2,
@@ -68,39 +68,39 @@ Feature: Create pick up rel users
       And the JSON should be equal to:
     """
       {
-          "id": 2,
-          "pickUpGroup": {
-              "name": "pick up group",
-              "id": 1,
-              "company": 1
-          },
-          "user": {
-              "name": "Bob",
-              "lastname": "Bobson",
-              "email": "bob@democompany.com",
-              "pass": "*****",
-              "doNotDisturb": false,
-              "isBoss": false,
-              "active": true,
-              "maxCalls": 1,
-              "externalIpCalls": "0",
-              "voicemailEnabled": true,
-              "voicemailSendMail": true,
-              "voicemailAttachSound": true,
-              "tokenKey": "ec6a6536ca304edf844d1d248a4f08dc",
-              "gsQRCode": false,
-              "id": 2,
-              "company": 1,
-              "callAcl": null,
-              "bossAssistant": null,
-              "bossAssistantWhiteList": null,
-              "language": null,
-              "terminal": 2,
-              "extension": null,
-              "timezone": 1,
-              "outgoingDdi": null,
-              "outgoingDdiRule": null,
-              "voicemailLocution": null
-          }
+            "id": 2,
+            "pickUpGroup": {
+                "name": "pick up group",
+                "id": 1,
+                "company": 1
+            },
+            "user": {
+                "name": "Bob",
+                "lastname": "Bobson",
+                "email": "bob@democompany.com",
+                "pass": "*****",
+                "doNotDisturb": false,
+                "isBoss": true,
+                "active": true,
+                "maxCalls": 1,
+                "externalIpCalls": "0",
+                "voicemailEnabled": true,
+                "voicemailSendMail": true,
+                "voicemailAttachSound": true,
+                "tokenKey": "ec6a6536ca304edf844d1d248a4f08dc",
+                "gsQRCode": false,
+                "id": 2,
+                "company": 1,
+                "callAcl": null,
+                "bossAssistant": 1,
+                "bossAssistantWhiteList": null,
+                "language": null,
+                "terminal": 2,
+                "extension": null,
+                "timezone": 1,
+                "outgoingDdi": null,
+                "outgoingDdiRule": null,
+                "voicemailLocution": null
+            }
       }
     """

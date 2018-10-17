@@ -42,6 +42,11 @@ Feature: Retrieve balance notifications
           "lastSent": null,
           "id": 1,
           "company": "~",
-          "notificationTemplate": null
+          "notificationTemplate": {
+              "name": "Voicemail notification",
+              "type": "voicemail",
+              "id": 1,
+              "brand": 1
+          }
       }
     """
