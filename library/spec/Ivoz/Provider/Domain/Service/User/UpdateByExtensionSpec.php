@@ -74,9 +74,7 @@ class UpdateByExtensionSpec extends ObjectBehavior
 
         $this
             ->userRepository
-            ->findOneBy([
-                'id' => 2
-            ])
+            ->find(2)
             ->willReturn($oldUser)
             ->shouldBeCalled();
 
