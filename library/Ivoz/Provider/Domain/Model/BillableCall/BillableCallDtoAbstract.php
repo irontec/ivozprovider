@@ -68,6 +68,16 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     private $ratingPlanName;
 
     /**
+     * @var string
+     */
+    private $endpointType;
+
+    /**
+     * @var integer
+     */
+    private $endpointId;
+
+    /**
      * @var integer
      */
     private $id;
@@ -136,6 +146,8 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
             'carrierName' => 'carrierName',
             'destinationName' => 'destinationName',
             'ratingPlanName' => 'ratingPlanName',
+            'endpointType' => 'endpointType',
+            'endpointId' => 'endpointId',
             'id' => 'id',
             'brandId' => 'brand',
             'companyId' => 'company',
@@ -164,6 +176,8 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
             'carrierName' => $this->getCarrierName(),
             'destinationName' => $this->getDestinationName(),
             'ratingPlanName' => $this->getRatingPlanName(),
+            'endpointType' => $this->getEndpointType(),
+            'endpointId' => $this->getEndpointId(),
             'id' => $this->getId(),
             'brand' => $this->getBrand(),
             'company' => $this->getCompany(),
@@ -414,6 +428,46 @@ abstract class BillableCallDtoAbstract implements DataTransferObjectInterface
     public function getRatingPlanName()
     {
         return $this->ratingPlanName;
+    }
+
+    /**
+     * @param string $endpointType
+     *
+     * @return static
+     */
+    public function setEndpointType($endpointType = null)
+    {
+        $this->endpointType = $endpointType;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEndpointType()
+    {
+        return $this->endpointType;
+    }
+
+    /**
+     * @param integer $endpointId
+     *
+     * @return static
+     */
+    public function setEndpointId($endpointId = null)
+    {
+        $this->endpointId = $endpointId;
+
+        return $this;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getEndpointId()
+    {
+        return $this->endpointId;
     }
 
     /**

@@ -200,6 +200,40 @@ interface BillableCallInterface extends LoggableEntityInterface
     public function getRatingPlanName();
 
     /**
+     * @deprecated
+     * Set endpointType
+     *
+     * @param string $endpointType
+     *
+     * @return self
+     */
+    public function setEndpointType($endpointType = null);
+
+    /**
+     * Get endpointType
+     *
+     * @return string
+     */
+    public function getEndpointType();
+
+    /**
+     * @deprecated
+     * Set endpointId
+     *
+     * @param integer $endpointId
+     *
+     * @return self
+     */
+    public function setEndpointId($endpointId = null);
+
+    /**
+     * Get endpointId
+     *
+     * @return integer
+     */
+    public function getEndpointId();
+
+    /**
      * Set brand
      *
      * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand

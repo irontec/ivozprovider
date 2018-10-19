@@ -97,6 +97,11 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
      */
     private $carrier;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto | null
+     */
+    private $retailAccount;
+
 
     use DtoNormalizer;
 
@@ -131,7 +136,8 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
             'id' => 'id',
             'brandId' => 'brand',
             'companyId' => 'company',
-            'carrierId' => 'carrier'
+            'carrierId' => 'carrier',
+            'retailAccountId' => 'retailAccount'
         ];
     }
 
@@ -157,7 +163,8 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
             'id' => $this->getId(),
             'brand' => $this->getBrand(),
             'company' => $this->getCompany(),
-            'carrier' => $this->getCarrier()
+            'carrier' => $this->getCarrier(),
+            'retailAccount' => $this->getRetailAccount()
         ];
     }
 
@@ -169,6 +176,7 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
         $this->brand = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Brand\\Brand', $this->getBrandId());
         $this->company = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Company\\Company', $this->getCompanyId());
         $this->carrier = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\Carrier\\Carrier', $this->getCarrierId());
+        $this->retailAccount = $transformer->transform('Ivoz\\Provider\\Domain\\Model\\RetailAccount\\RetailAccount', $this->getRetailAccountId());
     }
 
     /**
@@ -590,6 +598,52 @@ abstract class TrunksCdrDtoAbstract implements DataTransferObjectInterface
     public function getCarrierId()
     {
         if ($dto = $this->getCarrier()) {
+            return $dto->getId();
+        }
+
+        return null;
+    }
+
+    /**
+     * @param \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto $retailAccount
+     *
+     * @return static
+     */
+    public function setRetailAccount(\Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto $retailAccount = null)
+    {
+        $this->retailAccount = $retailAccount;
+
+        return $this;
+    }
+
+    /**
+     * @return \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto
+     */
+    public function getRetailAccount()
+    {
+        return $this->retailAccount;
+    }
+
+    /**
+     * @param integer $id | null
+     *
+     * @return static
+     */
+    public function setRetailAccountId($id)
+    {
+        $value = !is_null($id)
+            ? new \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountDto($id)
+            : null;
+
+        return $this->setRetailAccount($value);
+    }
+
+    /**
+     * @return integer | null
+     */
+    public function getRetailAccountId()
+    {
+        if ($dto = $this->getRetailAccount()) {
             return $dto->getId();
         }
 
