@@ -56,7 +56,13 @@ Each entry shows this information:
         Shows if a call is already included in any :ref:`Invoice <invoices>`.
 
     Call ID
-        Visible for *god* and *brand operator*, shows the call ID of the call for troubleshooting.
+        Shows the call ID of the call for troubleshooting and CSV export.
+
+    Endpoint Type
+        For retail client calls, shows "RetailAccount". Empty for remaining client types.
+
+    Endpoint Id
+        For retail client calls, shows the retail account's id of the call. Empty for remaining client types.
 
 
 .. note:: An asynchronous process parses each billable call and adds it to this list a few minutes after call hangup.

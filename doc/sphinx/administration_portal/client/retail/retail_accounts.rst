@@ -71,6 +71,9 @@ These are the configurable settings of *Retail accounts*:
 
 .. warning:: All retail accounts within a retail client will have the transcoding capabilities configured at client level.
 
+.. tip:: On retail account edit screen **id** field shows internal identification number assigned to the retail account.
+         This id is transported to *Endpoint Id* field in *Billable Calls* section for CSV export.
+
 
 Voicemail settings
 ==================
