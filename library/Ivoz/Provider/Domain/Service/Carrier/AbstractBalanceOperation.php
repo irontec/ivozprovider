@@ -78,7 +78,7 @@ abstract class AbstractBalanceOperation
      */
     protected function handleResponse($amount, array $response, CarrierInterface $carrier)
     {
-        if ($response['error']) {
+        if (!empty($response['error'])) {
             $this->lastError = $response['error'];
             $this->logger->error('Could not modify balance: ' . $response['error']);
         }

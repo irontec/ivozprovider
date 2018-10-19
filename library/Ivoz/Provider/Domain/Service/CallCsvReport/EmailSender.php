@@ -56,7 +56,7 @@ class EmailSender implements CallCsvReportLifecycleEventHandlerInterface
 
     public function execute(CallCsvReportInterface $callCsvReport, $isNew)
     {
-        if (!$callCsvReport->hasChanged('id')) {
+        if (!$callCsvReport->isNew()) {
             return;
         }
 
