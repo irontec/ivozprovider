@@ -131,3 +131,14 @@ Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdrAbstract:
           referencedColumnName: id
           onDelete: set null
       orphanRemoval: false
+    retailAccount:
+      targetEntity: \Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        retailAccountId:
+          referencedColumnName: id
+          onDelete: set null
+      orphanRemoval: false

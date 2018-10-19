@@ -1,5 +1,12 @@
 Ivoz\Provider\Domain\Model\BillableCall\BillableCallAbstract:
   type: mappedSuperclass
+  indexes:
+    billableCall_endpointType_idx:
+      columns:
+        - endpointType
+    billableCall_endpointId_idx:
+      columns:
+        - endpointId
   fields:
     callid:
       type: string
@@ -65,6 +72,22 @@ Ivoz\Provider\Domain\Model\BillableCall\BillableCallAbstract:
       options:
         fixed: false
       column: ratingPlanName
+    endpointType:
+      type: string
+      nullable: true
+      length: 55
+      options:
+        fixed: false
+      column: endpointType
+    endpointId:
+      type: integer
+      nullable: true
+      options:
+        unsigned: true
+      type: integer
+      options:
+        fixed: false
+      column: endpointId
   manyToOne:
     brand:
       targetEntity: \Ivoz\Provider\Domain\Model\Brand\BrandInterface
