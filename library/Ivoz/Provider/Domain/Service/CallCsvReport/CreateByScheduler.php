@@ -26,7 +26,6 @@ class CreateByScheduler
         LoggerInterface $logger
     ) {
         $this->entityTools = $entityTools;
-        $this->restClient = $restClient;
         $this->logger = $logger;
     }
 
@@ -36,22 +35,17 @@ class CreateByScheduler
      */
     public function execute(CallCsvSchedulerInterface $scheduler)
     {
-
         $report = null;
 
         try {
-            $report = $this->createCallCsvReport($scheduler);
             $this->updateLastExecutionDate($scheduler);
+            $this->createCallCsvReport($scheduler);
         } catch (\Exception $e) {
             $name = $scheduler->getName();
             $this->logger->error(
-                "Call CSV scheduler #${$name} has failed: "
+                "Call CSV scheduler #${name} has failed: "
                 . $e->getMessage()
             );
-
-            if ($report && $report->getId()) {
-                $this->updateLastExecutionDate($scheduler);
-            }
 
             throw $e;
         }
