@@ -730,6 +730,12 @@ msgstr "Enabled"
 msgid "End time"
 msgstr "End time"
 
+msgid "Endpoint id"
+msgstr "Endpoint id"
+
+msgid "Endpoint type"
+msgstr "Endpoint type"
+
 msgid "Ensure the preview below is right before you proceed"
 msgstr "Ensure the preview below is right before you proceed"
 
