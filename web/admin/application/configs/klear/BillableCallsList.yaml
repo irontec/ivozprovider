@@ -36,6 +36,8 @@ production:
           ratingPlanName: true
           destinationName: true
           carrierName: true
+          endpointType: true
+          endpointId: true
         order:
           startTime: true
           brand: true
@@ -95,6 +97,8 @@ production:
           colsPerRow: 12
           fields:
             callid: 12
+            endpointType: 8
+            endpointId: 4
 
   dialogs:  &billableCalls_dialogsLink
     tarificateCall_dialog:
