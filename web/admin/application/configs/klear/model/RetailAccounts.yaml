@@ -4,6 +4,10 @@
 production:
   entity: Ivoz\Provider\Domain\Model\RetailAccount\RetailAccount
   fields:
+    id:
+      title: ngettext('Id', 'Ids', 1)
+      required: false
+      readonly: true
     company:
       title: ngettext('Client', 'Clients', 1)
       type: select
