@@ -1,6 +1,7 @@
 <?php
 
 use IvozProvider\Service\RestClient;
+use Ivoz\Provider\Domain\Service\BillableCall\CsvExporter;
 
 class KlearCustomBillableCallsController extends Zend_Controller_Action
 {
@@ -36,18 +37,12 @@ class KlearCustomBillableCallsController extends Zend_Controller_Action
             ? $criteria->toArray()
             : [];
 
-        $criteria['_properties'] = [
-            'startTime',
-            'caller',
-            'callee',
-            'duration',
-            'price'
-        ];
+        $criteria['_properties'] = CsvExporter::PROPERTIES;
 
         $requestParams = $this->_request->getParam('post', null);
-        if (isset($requestParams) && array_key_exists('searchFields', $requestParams)) {
-            $where = [];
+        $where = [];
 
+        if (isset($requestParams) && array_key_exists('searchFields', $requestParams)) {
             foreach($requestParams['searchFields'] as $field => $values) {
                 foreach ($values as $key => $value) {
                     $value = urldecode($value);
