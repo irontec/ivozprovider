@@ -11,6 +11,21 @@ class Service extends ServiceAbstract implements ServiceInterface
 {
     use ServiceTrait;
 
+    const DIRECT_PICKUP     = "DirectPickUp";
+
+    const GROUP_PICKUP      = "GroupPickUp";
+
+    const VOICEMAIL         = "Voicemail";
+
+    const RECORD_LOCUTION   = "RecordLocution";
+
+    const CLOSE_LOCK        = "CloseLock";
+
+    const OPEN_LOCK         = "OpenLock";
+
+    const TOGGLE_LOCK       = "ToggleLock";
+
+
     /**
      * @codeCoverageIgnore
      * @return array
