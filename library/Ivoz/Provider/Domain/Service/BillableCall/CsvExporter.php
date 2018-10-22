@@ -9,6 +9,17 @@ class CsvExporter
 {
     const API_ENDPOINT = 'billable_calls';
 
+    const PROPERTIES = [
+        'callid',
+        'startTime',
+        'caller',
+        'callee',
+        'duration',
+        'price',
+        'endpointType',
+        'endpointId'
+    ];
+
     protected $apiClient;
 
     public function __construct(
@@ -32,13 +43,7 @@ class CsvExporter
             'company' => $company->getId(),
             'startTime[after]' => $inDate->format('Y-m-d H:i:s'),
             'startTime[strictly_before]' => $outDate->format('Y-m-d H:i:s'),
-            '_properties' => [
-                'startTime',
-                'caller',
-                'callee',
-                'duration' => 'duration',
-                'price' => 'price'
-            ],
+            '_properties' => self::PROPERTIES,
             "_pagination" => 'false'
         ];
 
