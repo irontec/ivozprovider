@@ -311,7 +311,7 @@ class Wrapper
         return $this->getVariable("CONFBRIDGE($setting)");
     }
 
-    public function voicemail($mailbox, $opts)
+    public function voicemail($mailbox, $opts = "")
     {
         return $this->fastagi->exec('VoiceMail', "$mailbox,$opts");
     }
