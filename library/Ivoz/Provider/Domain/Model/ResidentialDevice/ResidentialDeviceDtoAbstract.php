@@ -127,6 +127,11 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
      */
     private $ddis = null;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\CallForwardSetting\CallForwardSettingDto[] | null
+     */
+    private $callForwardSettings = null;
+
 
     use DtoNormalizer;
 
@@ -197,7 +202,8 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
             'outgoingDdi' => $this->getOutgoingDdi(),
             'language' => $this->getLanguage(),
             'psEndpoints' => $this->getPsEndpoints(),
-            'ddis' => $this->getDdis()
+            'ddis' => $this->getDdis(),
+            'callForwardSettings' => $this->getCallForwardSettings()
         ];
     }
 
@@ -232,6 +238,16 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
                 );
             }
         }
+        if (!is_null($this->callForwardSettings)) {
+            $items = $this->getCallForwardSettings();
+            $this->callForwardSettings = [];
+            foreach ($items as $item) {
+                $this->callForwardSettings[] = $transformer->transform(
+                    'Ivoz\\Provider\\Domain\\Model\\CallForwardSetting\\CallForwardSetting',
+                    $item->getId() ?? $item
+                );
+            }
+        }
     }
 
     /**
@@ -246,6 +262,10 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
         $this->ddis = $transformer->transform(
             'Ivoz\\Provider\\Domain\\Model\\Ddi\\Ddi',
             $this->ddis
+        );
+        $this->callForwardSettings = $transformer->transform(
+            'Ivoz\\Provider\\Domain\\Model\\CallForwardSetting\\CallForwardSetting',
+            $this->callForwardSettings
         );
     }
 
@@ -863,5 +883,25 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     public function getDdis()
     {
         return $this->ddis;
+    }
+
+    /**
+     * @param array $callForwardSettings
+     *
+     * @return static
+     */
+    public function setCallForwardSettings($callForwardSettings = null)
+    {
+        $this->callForwardSettings = $callForwardSettings;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getCallForwardSettings()
+    {
+        return $this->callForwardSettings;
     }
 }
