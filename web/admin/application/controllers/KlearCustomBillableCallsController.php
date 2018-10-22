@@ -31,13 +31,23 @@ class KlearCustomBillableCallsController extends Zend_Controller_Action
         );
 
         $config = $this->_mainRouter->getCurrentItem()->getConfig();
-
         $criteria = $config->getProperty("forcedValues");
         $criteria = $criteria
             ? $criteria->toArray()
             : [];
 
         $criteria['_properties'] = CsvExporter::PROPERTIES;
+
+        $requestFile = $this->_request->getParam('file');
+        switch($requestFile) {
+            case 'BillableCallsList':
+                $criteria['_properties'][] = 'brand';
+                $criteria['_properties'][] = 'company';
+                break;
+            case 'BillableCallsBrandList':
+                $criteria['_properties'][] = 'company';
+                break;
+        }
 
         $requestParams = $this->_request->getParam('post', null);
         $where = [];
