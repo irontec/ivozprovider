@@ -17,6 +17,7 @@ use Ivoz\Provider\Domain\Model\BillableCall\BillableCallDto;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallInterface;
 use Ivoz\Provider\Domain\Model\BillableCall\BillableCallRepository;
 use Ivoz\Provider\Domain\Model\Carrier\CarrierInterface;
+use Ivoz\Provider\Domain\Model\Company\Company;
 use Ivoz\Provider\Domain\Model\Destination\DestinationInterface;
 use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanInterface;
 use Ivoz\Provider\Domain\Model\RatingPlan\RatingPlanRepository;
@@ -204,6 +205,12 @@ class MigrateFromTrunksCdr
             )->setDuration(
                 $trunksCdrDto->getDuration()
             );
+
+        if ($trunksCdrDto->getRetailAccountId()) {
+            $billableCallDto
+                ->setEndpointType('RetailAccount')
+                ->setEndpointId($trunksCdrDto->getRetailAccountId());
+        }
 
         return $billableCallDto;
     }

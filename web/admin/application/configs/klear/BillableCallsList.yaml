@@ -22,6 +22,9 @@ production:
       <<: *BillableCalls
       class: ui-silk-application-view-list
       title: _("List of %s %2s", ngettext('Billable call', 'Billable calls', 0), "[format| (%parent%)]")
+      options:
+        commands:
+          exportBillableCallsToCsv_command: true
       info:
         <<: *documentationLink
         href: "/doc/en/administration_portal/platform/billable_calls.html"
@@ -36,6 +39,8 @@ production:
           ratingPlanName: true
           destinationName: true
           carrierName: true
+          endpointType: true
+          endpointId: true
         order:
           startTime: true
           brand: true
@@ -95,6 +100,8 @@ production:
           colsPerRow: 12
           fields:
             callid: 12
+            endpointType: 8
+            endpointId: 4
 
   dialogs:  &billableCalls_dialogsLink
     tarificateCall_dialog:
@@ -108,6 +115,16 @@ production:
       multiItem: true
       alwaysEnabled: false
 
+  commands: &exportBillableCallsToCsv_commandsLink
+    exportBillableCallsToCsv_command: &exportBillableCallsToCsv_commandLink
+      <<: *BillableCalls
+      title: _("Export to CSV")
+      label: true
+      module: default
+      controller: klear-custom-billable-calls
+      action: export-to-csv
+      class:  ui-silk-page-white-database
+      forcedValues: []
 
 staging:
   _extends: production

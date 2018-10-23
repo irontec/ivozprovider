@@ -30,6 +30,8 @@ production:
         title: _("Options")
         dialogs:
           tarificateCall_dialog: true
+        commands:
+          exportBillableCallsToCsv_command: true
     billableCallsView_screen:
       <<: *billableCallsView_screenLink
       forcedValues:
@@ -37,6 +39,18 @@ production:
 
   dialogs:
     <<: *billableCalls_dialogsLink
+
+  commands: &exportBillableCallsToCsv_commandsLink
+    exportBillableCallsToCsv_command: &exportBillableCallsToCsv_commandLink
+      <<: *BillableCalls
+      title: _("Export to CSV")
+      label: true
+      module: default
+      controller: klear-custom-billable-calls
+      action: export-to-csv
+      class:  ui-silk-page-white-database
+      forcedValues:
+        "brand": ${auth.brandId}
 
 staging:
   _extends: production

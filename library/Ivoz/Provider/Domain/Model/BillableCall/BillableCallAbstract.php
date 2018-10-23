@@ -69,6 +69,16 @@ abstract class BillableCallAbstract
     protected $ratingPlanName;
 
     /**
+     * @var string
+     */
+    protected $endpointType;
+
+    /**
+     * @var integer
+     */
+    protected $endpointId;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
      */
     protected $brand;
@@ -193,6 +203,8 @@ abstract class BillableCallAbstract
             ->setCarrierName($dto->getCarrierName())
             ->setDestinationName($dto->getDestinationName())
             ->setRatingPlanName($dto->getRatingPlanName())
+            ->setEndpointType($dto->getEndpointType())
+            ->setEndpointId($dto->getEndpointId())
             ->setBrand($dto->getBrand())
             ->setCompany($dto->getCompany())
             ->setCarrier($dto->getCarrier())
@@ -231,6 +243,8 @@ abstract class BillableCallAbstract
             ->setCarrierName($dto->getCarrierName())
             ->setDestinationName($dto->getDestinationName())
             ->setRatingPlanName($dto->getRatingPlanName())
+            ->setEndpointType($dto->getEndpointType())
+            ->setEndpointId($dto->getEndpointId())
             ->setBrand($dto->getBrand())
             ->setCompany($dto->getCompany())
             ->setCarrier($dto->getCarrier())
@@ -263,6 +277,8 @@ abstract class BillableCallAbstract
             ->setCarrierName(self::getCarrierName())
             ->setDestinationName(self::getDestinationName())
             ->setRatingPlanName(self::getRatingPlanName())
+            ->setEndpointType(self::getEndpointType())
+            ->setEndpointId(self::getEndpointId())
             ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
             ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
             ->setCarrier(\Ivoz\Provider\Domain\Model\Carrier\Carrier::entityToDto(self::getCarrier(), $depth))
@@ -289,6 +305,8 @@ abstract class BillableCallAbstract
             'carrierName' => self::getCarrierName(),
             'destinationName' => self::getDestinationName(),
             'ratingPlanName' => self::getRatingPlanName(),
+            'endpointType' => self::getEndpointType(),
+            'endpointId' => self::getEndpointId(),
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
             'carrierId' => self::getCarrier() ? self::getCarrier()->getId() : null,
@@ -625,6 +643,67 @@ abstract class BillableCallAbstract
     public function getRatingPlanName()
     {
         return $this->ratingPlanName;
+    }
+
+    /**
+     * @deprecated
+     * Set endpointType
+     *
+     * @param string $endpointType
+     *
+     * @return self
+     */
+    public function setEndpointType($endpointType = null)
+    {
+        if (!is_null($endpointType)) {
+            Assertion::maxLength($endpointType, 55, 'endpointType value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        }
+
+        $this->endpointType = $endpointType;
+
+        return $this;
+    }
+
+    /**
+     * Get endpointType
+     *
+     * @return string
+     */
+    public function getEndpointType()
+    {
+        return $this->endpointType;
+    }
+
+    /**
+     * @deprecated
+     * Set endpointId
+     *
+     * @param integer $endpointId
+     *
+     * @return self
+     */
+    public function setEndpointId($endpointId = null)
+    {
+        if (!is_null($endpointId)) {
+            if (!is_null($endpointId)) {
+                Assertion::integerish($endpointId, 'endpointId value "%s" is not an integer or a number castable to integer.');
+                Assertion::greaterOrEqualThan($endpointId, 0, 'endpointId provided "%s" is not greater or equal than "%s".');
+            }
+        }
+
+        $this->endpointId = $endpointId;
+
+        return $this;
+    }
+
+    /**
+     * Get endpointId
+     *
+     * @return integer
+     */
+    public function getEndpointId()
+    {
+        return $this->endpointId;
     }
 
     /**

@@ -43,6 +43,8 @@ production:
           cost: true
           destinationName: true
           ratingPlanName: true
+          endpointType: true
+          endpointId: true
         order:
           startTime: true
           brand: true
@@ -70,7 +72,6 @@ production:
           company: true
           carrierName: true
           invoice: true
-          callid: true
           cost: true
         order:
           startTime: true
@@ -93,6 +94,13 @@ production:
             price: 4
             ratingPlanName: 6
             destinationName: 6
+        group2:
+          label: _("Extra Information")
+          colsPerRow: 12
+          fields:
+            callid: 12
+            endpointType: 8
+            endpointId: 4
   dialogs:
     <<: *billableCalls_dialogsLink
 

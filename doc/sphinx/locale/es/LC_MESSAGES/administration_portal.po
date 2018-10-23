@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 2.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-11 16:24+0200\n"
+"POT-Creation-Date: 2018-10-19 17:55+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -941,9 +941,16 @@ msgstr ""
 #: ../../administration_portal/client/vpbx/calls/billable_calls.rst:59
 #: ../../administration_portal/client/wholesale/calls/billable_calls.rst:59
 #: ../../administration_portal/platform/billable_calls.rst:59
-msgid ""
-"Visible for *god* and *brand operator*, shows the call ID of the call for"
-" troubleshooting."
+msgid "Shows the call ID of the call for troubleshooting and CSV export."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/billable_calls.rst:60
+#: ../../administration_portal/client/residential/calls/billable_calls.rst:60
+#: ../../administration_portal/client/retail/calls/billable_calls.rst:60
+#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:60
+#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:60
+#: ../../administration_portal/platform/billable_calls.rst:60
+msgid "Endpoint Type"
 msgstr ""
 
 #: ../../administration_portal/brand/calls/billable_calls.rst:62
@@ -953,8 +960,17 @@ msgstr ""
 #: ../../administration_portal/client/wholesale/calls/billable_calls.rst:62
 #: ../../administration_portal/platform/billable_calls.rst:62
 msgid ""
-"An asynchronous process parses each billable call and adds it to this "
-"list a few minutes after call hangup."
+"For retail client calls, shows \"RetailAccount\". Empty for remaining "
+"client types."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/billable_calls.rst:63
+#: ../../administration_portal/client/residential/calls/billable_calls.rst:63
+#: ../../administration_portal/client/retail/calls/billable_calls.rst:63
+#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:63
+#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:63
+#: ../../administration_portal/platform/billable_calls.rst:63
+msgid "Endpoint Id"
 msgstr ""
 
 #: ../../administration_portal/brand/calls/billable_calls.rst:65
@@ -963,70 +979,92 @@ msgstr ""
 #: ../../administration_portal/client/vpbx/calls/billable_calls.rst:65
 #: ../../administration_portal/client/wholesale/calls/billable_calls.rst:65
 #: ../../administration_portal/platform/billable_calls.rst:65
+msgid ""
+"For retail client calls, shows the retail account's id of the call. Empty"
+" for remaining client types."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/billable_calls.rst:68
+#: ../../administration_portal/client/residential/calls/billable_calls.rst:68
+#: ../../administration_portal/client/retail/calls/billable_calls.rst:68
+#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:68
+#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:68
+#: ../../administration_portal/platform/billable_calls.rst:68
+msgid ""
+"An asynchronous process parses each billable call and adds it to this "
+"list a few minutes after call hangup."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/billable_calls.rst:71
+#: ../../administration_portal/client/residential/calls/billable_calls.rst:71
+#: ../../administration_portal/client/retail/calls/billable_calls.rst:71
+#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:71
+#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:71
+#: ../../administration_portal/platform/billable_calls.rst:71
 msgid "Call rerating"
 msgstr ""
 
-#: ../../administration_portal/brand/calls/billable_calls.rst:67
-#: ../../administration_portal/client/residential/calls/billable_calls.rst:67
-#: ../../administration_portal/client/retail/calls/billable_calls.rst:67
-#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:67
-#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:67
-#: ../../administration_portal/platform/billable_calls.rst:67
+#: ../../administration_portal/brand/calls/billable_calls.rst:73
+#: ../../administration_portal/client/residential/calls/billable_calls.rst:73
+#: ../../administration_portal/client/retail/calls/billable_calls.rst:73
+#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:73
+#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:73
+#: ../../administration_portal/platform/billable_calls.rst:73
 msgid ""
 "At **brand level**, there is an additional available operation: **Rerate "
 "call**. This option allows calling rating engine again for a call or a "
 "bunch of calls."
 msgstr ""
 
-#: ../../administration_portal/brand/calls/billable_calls.rst:70
-#: ../../administration_portal/client/residential/calls/billable_calls.rst:70
-#: ../../administration_portal/client/retail/calls/billable_calls.rst:70
-#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:70
-#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:70
-#: ../../administration_portal/platform/billable_calls.rst:70
+#: ../../administration_portal/brand/calls/billable_calls.rst:76
+#: ../../administration_portal/client/residential/calls/billable_calls.rst:76
+#: ../../administration_portal/client/retail/calls/billable_calls.rst:76
+#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:76
+#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:76
+#: ../../administration_portal/platform/billable_calls.rst:76
 msgid "Notes about this rerating process:"
 msgstr ""
 
-#: ../../administration_portal/brand/calls/billable_calls.rst:72
-#: ../../administration_portal/client/residential/calls/billable_calls.rst:72
-#: ../../administration_portal/client/retail/calls/billable_calls.rst:72
-#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:72
-#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:72
-#: ../../administration_portal/platform/billable_calls.rst:72
+#: ../../administration_portal/brand/calls/billable_calls.rst:78
+#: ../../administration_portal/client/residential/calls/billable_calls.rst:78
+#: ../../administration_portal/client/retail/calls/billable_calls.rst:78
+#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:78
+#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:78
+#: ../../administration_portal/platform/billable_calls.rst:78
 msgid ""
 "If a call is in an invoice, it cannot be rerated. Invoice must be deleted"
 " first."
 msgstr ""
 
-#: ../../administration_portal/brand/calls/billable_calls.rst:74
-#: ../../administration_portal/client/residential/calls/billable_calls.rst:74
-#: ../../administration_portal/client/retail/calls/billable_calls.rst:74
-#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:74
-#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:74
-#: ../../administration_portal/platform/billable_calls.rst:74
+#: ../../administration_portal/brand/calls/billable_calls.rst:80
+#: ../../administration_portal/client/residential/calls/billable_calls.rst:80
+#: ../../administration_portal/client/retail/calls/billable_calls.rst:80
+#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:80
+#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:80
+#: ../../administration_portal/platform/billable_calls.rst:80
 msgid ""
 "Call will be rerated with the *Start time* of the call (no with current "
 "active rating plans, but with active rating plans on the moment of the "
 "call)."
 msgstr ""
 
-#: ../../administration_portal/brand/calls/billable_calls.rst:77
-#: ../../administration_portal/client/residential/calls/billable_calls.rst:77
-#: ../../administration_portal/client/retail/calls/billable_calls.rst:77
-#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:77
-#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:77
-#: ../../administration_portal/platform/billable_calls.rst:77
+#: ../../administration_portal/brand/calls/billable_calls.rst:83
+#: ../../administration_portal/client/residential/calls/billable_calls.rst:83
+#: ../../administration_portal/client/retail/calls/billable_calls.rst:83
+#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:83
+#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:83
+#: ../../administration_portal/platform/billable_calls.rst:83
 msgid ""
 "Both *Price* and *Cost* will be recalculated. This may imply updating "
 "*rating plan* and *destination* too."
 msgstr ""
 
-#: ../../administration_portal/brand/calls/billable_calls.rst:79
-#: ../../administration_portal/client/residential/calls/billable_calls.rst:79
-#: ../../administration_portal/client/retail/calls/billable_calls.rst:79
-#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:79
-#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:79
-#: ../../administration_portal/platform/billable_calls.rst:79
+#: ../../administration_portal/brand/calls/billable_calls.rst:85
+#: ../../administration_portal/client/residential/calls/billable_calls.rst:85
+#: ../../administration_portal/client/retail/calls/billable_calls.rst:85
+#: ../../administration_portal/client/vpbx/calls/billable_calls.rst:85
+#: ../../administration_portal/client/wholesale/calls/billable_calls.rst:85
+#: ../../administration_portal/platform/billable_calls.rst:85
 msgid ""
 "When a call is rerated, cost and price are emptied until the next "
 "iteration of the asynchronous task."
@@ -4555,7 +4593,7 @@ msgid ""
 msgstr ""
 
 #: ../../administration_portal/client/residential/residential_devices.rst:78
-#: ../../administration_portal/client/retail/retail_accounts.rst:76
+#: ../../administration_portal/client/retail/retail_accounts.rst:79
 msgid "Voicemail settings"
 msgstr ""
 
@@ -4566,7 +4604,7 @@ msgid ""
 msgstr ""
 
 #: ../../administration_portal/client/residential/residential_devices.rst:83
-#: ../../administration_portal/client/retail/retail_accounts.rst:81
+#: ../../administration_portal/client/retail/retail_accounts.rst:84
 msgid "Call forwarding settings"
 msgstr ""
 
@@ -4613,7 +4651,7 @@ msgid "Device register"
 msgstr ""
 
 #: ../../administration_portal/client/residential/residential_devices.rst:107
-#: ../../administration_portal/client/retail/retail_accounts.rst:95
+#: ../../administration_portal/client/retail/retail_accounts.rst:98
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:124
 msgid ""
 "If the system can not be directly access, Asterisk will have to register "
@@ -4621,7 +4659,7 @@ msgid ""
 msgstr ""
 
 #: ../../administration_portal/client/residential/residential_devices.rst:110
-#: ../../administration_portal/client/retail/retail_accounts.rst:98
+#: ../../administration_portal/client/retail/retail_accounts.rst:101
 #: ../../administration_portal/client/vpbx/routing_endpoints/friends.rst:127
 msgid "Configuration will be something like this:"
 msgstr ""
@@ -4808,34 +4846,41 @@ msgid ""
 "capabilities configured at client level."
 msgstr ""
 
-#: ../../administration_portal/client/retail/retail_accounts.rst:78
+#: ../../administration_portal/client/retail/retail_accounts.rst:74
+msgid ""
+"On retail account edit screen **id** field shows internal identification "
+"number assigned to the retail account. This id is transported to "
+"*Endpoint Id* field in *Billable Calls* section for CSV export."
+msgstr ""
+
+#: ../../administration_portal/client/retail/retail_accounts.rst:81
 msgid "There is no voicemail service for retail clients."
 msgstr ""
 
-#: ../../administration_portal/client/retail/retail_accounts.rst:83
+#: ../../administration_portal/client/retail/retail_accounts.rst:86
 msgid "There are no call forwarding settings for retail accounts."
 msgstr ""
 
-#: ../../administration_portal/client/retail/retail_accounts.rst:86
+#: ../../administration_portal/client/retail/retail_accounts.rst:89
 msgid "Asterisk as a retail account"
 msgstr ""
 
-#: ../../administration_portal/client/retail/retail_accounts.rst:88
+#: ../../administration_portal/client/retail/retail_accounts.rst:91
 msgid ""
 "At the other end of a account can be any kind of SIP entity. This section"
 " takes as example an Asterisk PBX system using SIP channel driver that "
 "wants to connect to IvozProvider."
 msgstr ""
 
-#: ../../administration_portal/client/retail/retail_accounts.rst:93
+#: ../../administration_portal/client/retail/retail_accounts.rst:96
 msgid "Account register"
 msgstr ""
 
-#: ../../administration_portal/client/retail/retail_accounts.rst:105
+#: ../../administration_portal/client/retail/retail_accounts.rst:108
 msgid "Account peer"
 msgstr ""
 
-#: ../../administration_portal/client/retail/retail_accounts.rst:120
+#: ../../administration_portal/client/retail/retail_accounts.rst:123
 msgid ""
 "*Retail accounts* MUST NOT challenge IvozProvider. That's why the "
 "*insecure* setting is used here."

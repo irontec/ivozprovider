@@ -73,6 +73,7 @@ production:
           status: true
           statusIcon: true
         order: &retailAccounts_orderLink
+          id: true
           name: true
           description: true
           password: true
@@ -132,6 +133,8 @@ production:
         blacklist:
           domain: true
           statusIcon: true
+        whitelist:
+          id: true
       fixedPositions:
           <<: *retailAccounts_FixedPositionsLink
       forcedValues:

@@ -742,6 +742,12 @@ msgstr "Activado"
 msgid "End time"
 msgstr "Fecha fin"
 
+msgid "Endpoint id"
+msgstr "Endpoint id"
+
+msgid "Endpoint type"
+msgstr "Endpoint type"
+
 msgid "Ensure the preview below is right before you proceed"
 msgstr "Compruebe que la previsualización es correcta antes de continuar."
 
