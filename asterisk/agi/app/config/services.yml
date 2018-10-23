@@ -64,6 +64,9 @@ services:
   Dialplan\UserStatus:
     arguments: ~
 
+  Dialplan\ResidentialStatus:
+    arguments: ~
+
   Dialplan\HuntGroups:
     arguments: ~
 
@@ -169,6 +172,10 @@ services:
     arguments: ~
 
   Agi\Action\ResidentialCallAction:
+    lazy: true
+    arguments: ~
+
+  Agi\Action\ResidentialStatusAction:
     lazy: true
     arguments: ~
 

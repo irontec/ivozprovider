@@ -59,6 +59,8 @@ interface BrandInterface extends FileContainerInterface, LoggableEntityInterface
      */
     public function getCgrTenant();
 
+    public function getServiceByIden(string $iden);
+
     /**
      * @deprecated
      * Set name

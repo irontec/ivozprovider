@@ -3,6 +3,7 @@
 namespace Agi\Action;
 
 use Agi\Wrapper;
+use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
 use Ivoz\Provider\Domain\Model\User\UserInterface;
 
 class VoiceMailAction
@@ -13,7 +14,7 @@ class VoiceMailAction
     protected $agi;
 
     /**
-     * @var UserInterface
+     * @var UserInterface|ResidentialDeviceInterface
      */
     protected $voicemail;
 
@@ -45,10 +46,10 @@ class VoiceMailAction
     }
 
     /**
-     * @param UserInterface|null $voicemail
+     * @param UserInterface|ResidentialDeviceInterface|null $voicemail
      * @return $this
      */
-    public function setVoiceMail(UserInterface $voicemail = null)
+    public function setVoiceMail($voicemail = null)
     {
         $this->voicemail = $voicemail;
         return $this;
@@ -56,9 +57,7 @@ class VoiceMailAction
 
     public function process()
     {
-        // Check extension is defined
         $voicemail = $this->voicemail;
-
         if (is_null($voicemail)) {
             $this->agi->error("Voicemail is not properly defined. Check configuration.");
         }
@@ -83,6 +82,15 @@ class VoiceMailAction
             $this->agi->error("User %s has voicemail disabled.", $voicemail->getFullName());
             $this->agi->busy();
         }
+    }
+
+    public function processResidential()
+    {
+        $voicemail = $this->voicemail;
+
+        $this->agi->voicemail(
+            $voicemail->getVoiceMail()
+        );
     }
 
 }
