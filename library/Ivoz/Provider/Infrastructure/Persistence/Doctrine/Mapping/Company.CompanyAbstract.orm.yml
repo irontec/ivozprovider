@@ -140,6 +140,12 @@ Ivoz\Provider\Domain\Model\Company\CompanyAbstract:
       scale: 4
       options:
         default: 0
+    showInvoices:
+      type: boolean
+      nullable: true
+      options:
+        default: '0'
+      column: showInvoices
   manyToOne:
     language:
       targetEntity: \Ivoz\Provider\Domain\Model\Language\LanguageInterface
