@@ -58,6 +58,7 @@ Feature: Create match lists
               "recordingsLimitEmail": "",
               "billingMethod": "prepaid",
               "balance": 1.2,
+              "showInvoices": false,
               "id": 1,
               "language": 1,
               "defaultTimezone": 1,

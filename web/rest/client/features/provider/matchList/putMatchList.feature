@@ -43,6 +43,7 @@ Feature: Update match lists
               "recordingsLimitEmail": null,
               "billingMethod": "postpaid",
               "balance": 0,
+              "showInvoices": false,
               "id": 2,
               "language": 1,
               "defaultTimezone": 1,

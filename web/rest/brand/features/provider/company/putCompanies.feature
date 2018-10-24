@@ -30,6 +30,7 @@ Feature: Update company
           "recordingsLimitEmail": "",
           "billingMethod": "postpaid",
           "balance": 0,
+          "showInvoices": false,
           "id": 1,
           "language": 1,
           "mediaRelaySets": 1,
@@ -70,6 +71,7 @@ Feature: Update company
           "recordingsLimitEmail": "",
           "billingMethod": "postpaid",
           "balance": 0,
+          "showInvoices": false,
           "id": 1,
           "language": {
               "iden": "es",
