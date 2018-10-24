@@ -114,6 +114,11 @@ abstract class CompanyAbstract
     protected $balance = 0;
 
     /**
+     * @var boolean
+     */
+    protected $showInvoices = '0';
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Language\LanguageInterface
      */
     protected $language;
@@ -297,6 +302,7 @@ abstract class CompanyAbstract
             ->setRecordingsLimitMB($dto->getRecordingsLimitMB())
             ->setRecordingsLimitEmail($dto->getRecordingsLimitEmail())
             ->setBalance($dto->getBalance())
+            ->setShowInvoices($dto->getShowInvoices())
             ->setLanguage($dto->getLanguage())
             ->setMediaRelaySets($dto->getMediaRelaySets())
             ->setDefaultTimezone($dto->getDefaultTimezone())
@@ -349,6 +355,7 @@ abstract class CompanyAbstract
             ->setRecordingsLimitEmail($dto->getRecordingsLimitEmail())
             ->setBillingMethod($dto->getBillingMethod())
             ->setBalance($dto->getBalance())
+            ->setShowInvoices($dto->getShowInvoices())
             ->setLanguage($dto->getLanguage())
             ->setMediaRelaySets($dto->getMediaRelaySets())
             ->setDefaultTimezone($dto->getDefaultTimezone())
@@ -395,6 +402,7 @@ abstract class CompanyAbstract
             ->setRecordingsLimitEmail(self::getRecordingsLimitEmail())
             ->setBillingMethod(self::getBillingMethod())
             ->setBalance(self::getBalance())
+            ->setShowInvoices(self::getShowInvoices())
             ->setLanguage(\Ivoz\Provider\Domain\Model\Language\Language::entityToDto(self::getLanguage(), $depth))
             ->setMediaRelaySets(\Ivoz\Provider\Domain\Model\MediaRelaySet\MediaRelaySet::entityToDto(self::getMediaRelaySets(), $depth))
             ->setDefaultTimezone(\Ivoz\Provider\Domain\Model\Timezone\Timezone::entityToDto(self::getDefaultTimezone(), $depth))
@@ -435,6 +443,7 @@ abstract class CompanyAbstract
             'recordingsLimitEmail' => self::getRecordingsLimitEmail(),
             'billingMethod' => self::getBillingMethod(),
             'balance' => self::getBalance(),
+            'showInvoices' => self::getShowInvoices(),
             'languageId' => self::getLanguage() ? self::getLanguage()->getId() : null,
             'mediaRelaySetsId' => self::getMediaRelaySets() ? self::getMediaRelaySets()->getId() : null,
             'defaultTimezoneId' => self::getDefaultTimezone() ? self::getDefaultTimezone()->getId() : null,
@@ -1014,6 +1023,35 @@ abstract class CompanyAbstract
     public function getBalance()
     {
         return $this->balance;
+    }
+
+    /**
+     * @deprecated
+     * Set showInvoices
+     *
+     * @param boolean $showInvoices
+     *
+     * @return self
+     */
+    public function setShowInvoices($showInvoices = null)
+    {
+        if (!is_null($showInvoices)) {
+            Assertion::between(intval($showInvoices), 0, 1, 'showInvoices provided "%s" is not a valid boolean value.');
+        }
+
+        $this->showInvoices = $showInvoices;
+
+        return $this;
+    }
+
+    /**
+     * Get showInvoices
+     *
+     * @return boolean
+     */
+    public function getShowInvoices()
+    {
+        return $this->showInvoices;
     }
 
     /**
