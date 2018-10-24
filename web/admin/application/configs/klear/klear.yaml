@@ -416,6 +416,11 @@ production:
           class: ui-silk-money
           description: _("List of %s", ngettext('Rating Profile', 'Rating Profiles', 0))
           showOnlyIf: ${auth.brandFeatures.billing.enabled}
+        CompanyInvoicesList:
+          title: ngettext('Invoice', 'Invoices', 0)
+          class: ui-silk-report
+          description: _("List of %s", ngettext('Invoice', 'Invoices', 0))
+          showOnlyIf: ${auth.companyInvoices}
         CallListsClient:
           title: _("Calls")
           class: ui-silk-application-view-list-telephone

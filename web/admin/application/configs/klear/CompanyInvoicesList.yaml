@@ -1,0 +1,57 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
+#include BillableCallsList.yaml
+#include FixedCostsRelInvoicesList.yaml
+
+production:
+  main:
+    module: klearMatrix
+    defaultScreen: invoicesList_screen
+  screens: &invoices_screensLink
+    invoicesList_screen: &invoicesList_screenLink
+      controller: list
+      pagination:
+        items: 25
+      <<: *Invoices
+      class: ui-silk-report
+      title: _("List of %s %2s", ngettext('Invoice', 'Invoices', 0), "[format| (%parent%)]")
+      info:
+        <<: *documentationLink
+        href: "/doc/en/administration_portal/brand/invoicing/invoices.html"
+      forcedValues:
+        <<: *forcedBrand
+        <<: *forcedCompany
+      fields: &invoices_fieldsLink
+        order: &invoicesOrder_Link
+          number: true
+          inDate: true
+          outDate: true
+          totalWithTax: true
+          pdf: true
+        blacklist:
+          FixedCostsRelInvoices: true
+          numberSequence: true
+          scheduler: true
+          invoiceTemplate: true
+          numberSequence: true
+          total: true
+          taxRate: true
+          status: true
+
+  commands: &invoices_commandsLink
+    invoicesPdfFileDownload_command: &invoicesPdfFileDownload_commandLink
+      <<: *Invoices
+      controller: File
+      action: force-download
+      mainColumn: pdf
+      class: ui-silk-bullet-disk
+
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production
