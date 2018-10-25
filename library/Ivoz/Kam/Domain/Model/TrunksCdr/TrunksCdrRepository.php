@@ -25,6 +25,12 @@ interface TrunksCdrRepository extends ObjectRepository, Selectable
 
     /**
      * @param $callid
+     * @return TrunksCdrInterface[]
+     */
+    public function findByCallid($callid);
+
+    /**
+     * @param $callid
      * @return TrunksCdrInterface | null
      */
     public function findOneByCallid($callid);

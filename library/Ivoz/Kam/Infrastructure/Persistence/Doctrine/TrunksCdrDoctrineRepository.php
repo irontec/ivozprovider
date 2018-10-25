@@ -9,7 +9,6 @@ use Ivoz\Kam\Domain\Model\TrunksCdr\TrunksCdr;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Traits\GetGeneratorByConditionsTrait;
 use Symfony\Bridge\Doctrine\RegistryInterface;
-use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * TrunksCdrDoctrineRepository
@@ -24,6 +23,20 @@ class TrunksCdrDoctrineRepository extends ServiceEntityRepository implements Tru
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, TrunksCdr::class);
+    }
+
+    /**
+     * @param $callid
+     * @return TrunksCdrInterface[]
+     */
+    public function findByCallid($callid)
+    {
+        /** @var TrunksCdrInterface[] $response */
+        $response = $this->findBy([
+            'callid' => $callid
+        ]);
+
+        return $response;
     }
 
     /**
