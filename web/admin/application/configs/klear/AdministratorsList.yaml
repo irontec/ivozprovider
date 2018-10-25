@@ -14,6 +14,7 @@ production:
       <<: *Administrators
       class: fa fa-users red
       title: _("List of %s %2s", ngettext('Main operator', 'Main operators', 0), "[format| (%parent%)]")
+      rawCondition: "Administrator.id != 0"
       info:
         <<: *documentationLink
         href: "/doc/en/administration_portal/platform/main_operators.html"
