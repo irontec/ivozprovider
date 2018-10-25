@@ -2394,6 +2394,12 @@ msgstr "Ya existe un desvío si ocupado con ese tipo de llamada."
 msgid "There is already a noAnswer call forward with that call type."
 msgstr "Ya existe un desvío si no contesta con ese tipo de llamada."
 
+msgid "There is already a residential device with that name."
+msgstr "Ya existe un dispositivo residencial con ese nombre."
+
+msgid "There is already a retail account with that name."
+msgstr "Ya existe una cuenta retail con ese nombre."
+
 msgid "There is already a userNotRegistered call forward with that call type."
 msgstr "Ya existe un desvío si usuario no registrado con ese tipo de llamada."
 
