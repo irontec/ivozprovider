@@ -60,7 +60,7 @@ class WebThemeAction
             . '/fso/brandUrl/'
             . $brandUrlDto->getId()
             . '-'
-            . $brandUrlDto->getLogoBaseName();
+            . urlencode($brandUrlDto->getLogoBaseName());
 
         return new WebTheme(
             $brandUrlDto->getName(),
