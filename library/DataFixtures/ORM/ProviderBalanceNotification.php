@@ -26,6 +26,9 @@ class ProviderBalanceNotification extends Fixture implements DependentFixtureInt
         $item1->setToAddress("balance@ivozprovider.com");
         $item1->setThreshold(4.5000);
         $item1->setCompany($this->getReference('_reference_ProviderCompany1'));
+        $item1->setNotificationTemplate(
+            $this->getReference('_reference_ProviderNotificationTemplate1')
+        );
         $this->addReference('_reference_ProviderBalanceNotification1', $item1);
         $this->sanitizeEntityValues($item1);
         $manager->persist($item1);
@@ -45,7 +48,8 @@ class ProviderBalanceNotification extends Fixture implements DependentFixtureInt
     public function getDependencies()
     {
         return array(
-            ProviderCompany::class
+            ProviderCompany::class,
+            ProviderNotificationTemplate::class,
         );
     }
 }

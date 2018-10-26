@@ -9,6 +9,16 @@ use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 
 interface BrandServiceRepository extends ObjectRepository, Selectable
 {
-
+    /**
+     * @param BrandInterface $brand
+     * @param string $iden
+     * @return BrandInterface
+     */
     public function findByIden(BrandInterface $brand, string $iden);
+
+    /**
+     * @param $id
+     * @return BrandServiceInterface[]
+     */
+    public function findByBrandId($id);
 }

@@ -6,6 +6,7 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Provider\Domain\Model\Administrator\AdministratorInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyRepository;
 use Ivoz\Provider\Domain\Model\Company\Company;
+use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -22,13 +23,29 @@ class CompanyDoctrineRepository extends ServiceEntityRepository implements Compa
     }
 
     /**
+     * @param $id
+     * @return CompanyInterface[]
+     */
+    public function findByBrandId($id)
+    {
+        return $this->findBy([
+            'brand' => $id
+        ]);
+    }
+
+    /**
      * @inheritdoc
-     * @see \Ivoz\Provider\Domain\Model\Company\CompanyRepository:getSupervisedCompanyIdsByAdmin
+     * @see \Ivoz\Provider\Domain\Model\Company\CompanyRepository::getSupervisedCompanyIdsByAdmin
+     * @deprecated dead code
      */
     public function getSupervisedCompanyIdsByAdmin(AdministratorInterface $admin)
     {
         if (!$admin->isBrandAdmin()) {
             throw new \DomainException('User must be brand admin at least');
+        }
+
+        if (!$admin->getBrand()) {
+            return [];
         }
 
         $qb = $this->createQueryBuilder('self');
@@ -47,7 +64,8 @@ class CompanyDoctrineRepository extends ServiceEntityRepository implements Compa
 
     /**
      * @inheritdoc
-     * @see \Ivoz\Provider\Domain\Model\Company\CompanyRepository:getPrepaidCompanies
+     * @see \Ivoz\Provider\Domain\Model\Company\CompanyRepository::getPrepaidCompanies
+     * @deprecated dead code
      */
     public function getPrepaidCompanies()
     {

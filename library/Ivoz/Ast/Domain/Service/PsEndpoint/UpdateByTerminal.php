@@ -47,9 +47,9 @@ class UpdateByTerminal implements TerminalLifecycleEventHandlerInterface
         /**
          * @var PsEndpointInterface $endpoint
          */
-        $endpoint = $this->psEndpointRepository->findOneBy([
-            'terminal' => $terminal->getId()
-        ]);
+        $endpoint = $this->psEndpointRepository->findOneByTerminalId(
+            $terminal->getId()
+        );
 
         if (is_null($endpoint)) {
             $endpointDto = new PsEndpointDto();

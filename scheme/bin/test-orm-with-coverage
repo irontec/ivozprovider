@@ -1,0 +1,2 @@
+#!/bin/bash
+/opt/irontec/ivozprovider/scheme/bin/test-orm  --coverage-html tests/coverage --coverage-php tests/coverage/coverage.php

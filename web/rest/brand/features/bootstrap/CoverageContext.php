@@ -20,7 +20,10 @@ class CoverageContext implements Context
     public static function setup()
     {
         $filter = new Filter();
-        $filter->addDirectoryToWhitelist(__DIR__.'/../../../../library/Ivoz');
+        $filter
+            ->addDirectoryToWhitelist('/opt/irontec/ivozprovider/library/Ivoz');
+        $filter
+            ->addDirectoryToWhitelist(__DIR__ . '/../../src');
         self::$coverage = new CodeCoverage(null, $filter);
     }
 
@@ -30,8 +33,8 @@ class CoverageContext implements Context
     public static function tearDown()
     {
         $feature = getenv('FEATURE') ?: 'behat';
-        (new Facade())->process(self::$coverage, __DIR__."/../../features/coverage/");
-        (new PHP())->process(self::$coverage, __DIR__."/../../features/coverage/coverage.php");
+        (new Facade())->process(self::$coverage, __DIR__ . "/../coverage/");
+        (new PHP())->process(self::$coverage, __DIR__ . "/../coverage/coverage.php");
     }
 
     /**
@@ -39,7 +42,10 @@ class CoverageContext implements Context
      */
     public function startCoverage(BeforeScenarioScope $scope)
     {
-        self::$coverage->start("{$scope->getFeature()->getTitle()}::{$scope->getScenario()->getTitle()}");
+        $feature = $scope->getFeature()->getTitle();
+        $title = $scope->getScenario()->getTitle();
+
+        self::$coverage->start("{$feature}::{$title}");
     }
 
     /**

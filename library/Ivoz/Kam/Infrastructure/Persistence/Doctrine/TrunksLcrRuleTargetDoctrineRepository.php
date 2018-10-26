@@ -36,11 +36,14 @@ class TrunksLcrRuleTargetDoctrineRepository extends ServiceEntityRepository impl
         TrunksLcrRuleInterface $lcrRule,
         TrunksLcrGatewayInterface $lcrGateway
     ) {
-        return $this->findOneBy([
+        /** @var TrunksLcrRuleTargetInterface $response */
+        $response = $this->findOneBy([
             'outgoingRouting' => $outgoingRouting->getId(),
             'rule' => $lcrRule->getId(),
             'gw' => $lcrGateway->getId()
         ]);
+
+        return $response;
     }
 
     /**

@@ -85,7 +85,7 @@ class PropagateBrandServicesSpec extends ObjectBehavior
     {
         $this
             ->brandServiceRepository
-            ->findBy(['brand' => 1])
+            ->findByBrandId(1)
             ->willReturn([])
             ->shouldBeCalled();
 
@@ -103,7 +103,7 @@ class PropagateBrandServicesSpec extends ObjectBehavior
 
         $this
             ->brandServiceRepository
-            ->findBy(['brand' => 1])
+            ->findByBrandId(1)
             ->willReturn([$brandService])
             ->shouldBeCalled();
 

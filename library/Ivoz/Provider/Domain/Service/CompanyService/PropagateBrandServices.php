@@ -49,9 +49,9 @@ class PropagateBrandServices implements CompanyLifecycleEventHandlerInterface
             return;
         }
 
-        $services = $this->brandServiceRepository->findBy([
-            'brand' => $company->getBrand()->getId()
-        ]);
+        $services = $this->brandServiceRepository->findByBrandId(
+            $company->getBrand()->getId()
+        );
 
         /**
          * @var BrandService $service

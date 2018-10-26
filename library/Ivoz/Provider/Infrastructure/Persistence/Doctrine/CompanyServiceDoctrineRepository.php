@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceInterface;
 use Ivoz\Provider\Domain\Model\CompanyService\CompanyServiceRepository;
 use Ivoz\Provider\Domain\Model\CompanyService\CompanyService;
 use Symfony\Bridge\Doctrine\RegistryInterface;
@@ -18,5 +19,21 @@ class CompanyServiceDoctrineRepository extends ServiceEntityRepository implement
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, CompanyService::class);
+    }
+
+    /**
+     * @param $companyId
+     * @param $serviceId
+     * @return CompanyServiceInterface
+     */
+    public function findCompanyService($companyId, $serviceId)
+    {
+        /** @var CompanyServiceInterface $response */
+        $response = $this->findOneBy([
+            'company' => $companyId,
+            'service' => $serviceId
+        ]);
+
+        return $response;
     }
 }

@@ -8,4 +8,9 @@ use Doctrine\Common\Collections\Selectable;
 interface DomainRepository extends ObjectRepository, Selectable
 {
 
+    /**
+     * @param $endpointDomain
+     * @return DomainInterface | null
+     */
+    public function findOneByDomain($endpointDomain);
 }

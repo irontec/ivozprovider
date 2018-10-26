@@ -49,9 +49,12 @@ class ProviderUser extends Fixture implements DependentFixtureInterface
         $item2->setEmail("bob@democompany.com");
         $item2->setPass("changeme");
         $item2->setDoNotDisturb(false);
-        $item2->setIsBoss(false);
+        $item2->setIsBoss(true);
         $item2->setActive(true);
         $item2->setMaxCalls(1);
+        $item2->setBossAssistant(
+            $this->getReference('_reference_ProviderUser1', $item1)
+        );
         $item2->setVoicemailEnabled(true);
         $item2->setVoicemailSendMail(true);
         $item2->setVoicemailAttachSound(true);

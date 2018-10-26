@@ -46,9 +46,9 @@ class UpdateByFriend implements FriendLifecycleEventHandlerInterface
         /**
          * @var PsEndpoint $endpoint
          */
-        $endpoint = $this->psEndpointRepository->findOneBy([
-            "friend" => $entity->getId()
-        ]);
+        $endpoint = $this->psEndpointRepository->findOneByFriendId(
+            $entity->getId()
+        );
 
         if (is_null($endpoint)) {
             $endPointDto = new PsEndpointDto();

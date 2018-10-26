@@ -115,7 +115,7 @@ class UnsetBossAssistantSpec extends ObjectBehavior
 
         $this
             ->userRepository
-            ->findBy(['bossAssistant' => 1])
+            ->findByBossAssistantId(1)
             ->willReturn([])
             ->shouldBeCalled();
         $this
@@ -144,13 +144,12 @@ class UnsetBossAssistantSpec extends ObjectBehavior
 
         $this
             ->userRepository
-            ->findBy(['bossAssistant' => 1])
+            ->findByBossAssistantId(1)
             ->willReturn([$boss])
             ->shouldBeCalled();
 
         $bossDto = new UserDto();
         $bossDto->setBossAssistantId(1);
-
 
         $this
             ->entityTools

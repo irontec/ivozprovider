@@ -5,6 +5,7 @@ namespace Ivoz\Cgr\Infrastructure\Persistence\Doctrine;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationRepository;
 use Ivoz\Cgr\Domain\Model\TpDestination\TpDestination;
+use Ivoz\Cgr\Domain\Model\TpDestination\TpDestinationInterface;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -18,5 +19,19 @@ class TpDestinationDoctrineRepository extends ServiceEntityRepository implements
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, TpDestination::class);
+    }
+
+    /**
+     * @inheritdoc
+     * @see TpDestinationRepository::findOneByTag
+     */
+    public function findOneByTag($destinationTag)
+    {
+        /** @var TpDestinationInterface $response */
+        $response = $this->findOneBy([
+            'tag' => $destinationTag
+        ]);
+
+        return $response;
     }
 }

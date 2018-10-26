@@ -20,15 +20,28 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
 {
     use GetGeneratorByConditionsTrait;
 
-
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, BillableCall::class);
     }
 
     /**
-     * @param array $pks
-     * @return bool
+     * @param $id
+     * @return BillableCallInterface
+     */
+    public function findOneByTrunksCdrId($id)
+    {
+        /** @var BillableCallInterface $response */
+        $response = $this->findOneBy([
+            'trunksCdr' => $id
+        ]);
+
+        return $response;
+    }
+
+    /**
+     * @inheritdoc
+     * @see BillableCallRepository::areRetarificable
      */
     public function areRetarificable(array $pks)
     {
@@ -52,8 +65,8 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
     }
 
     /**
-     * @param array $ids
-     * @return array
+     * @inheritdoc
+     * @see BillableCallRepository::idsToCgrid
      */
     public function idsToCgrid(array $ids)
     {
@@ -88,8 +101,8 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
     }
 
     /**
-     * @param array $ids
-     * @return array
+     * @inheritdoc
+     * @see BillableCallRepository::idsToTrunkCdrId
      */
     public function idsToTrunkCdrId(array $ids)
     {
@@ -108,6 +121,7 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
         $result = $qb
             ->getQuery()
             ->getScalarResult();
+
         $trunkCdrIds = array_map(
             function ($item) {
                 return $item['trunksCdr'];
@@ -123,8 +137,8 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
     }
 
     /**
-     * @param array $ids
-     * @return mixed
+     * @inheritdoc
+     * @see BillableCallRepository::resetPrices
      */
     public function resetPrices(array $ids)
     {
@@ -137,12 +151,12 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
             ->where('self.id in (:ids)')
             ->setParameter(':ids', $ids);
 
-        return $qb->getQuery()->execute();
+        $qb->getQuery()->execute();
     }
 
     /**
-     * @param int $invoiceId
-     * @return mixed
+     * @inheritdoc
+     * @see BillableCallRepository::resetInvoiceId
      */
     public function resetInvoiceId(int $invoiceId)
     {
@@ -154,13 +168,12 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
             ->where('self.invoice = :invoiceId')
             ->setParameter(':invoiceId', $invoiceId);
 
-        return $qb->getQuery()->execute();
+        $qb->getQuery()->execute();
     }
 
     /**
-     * @param array $conditions
-     * @param int $invoiceId
-     * @return mixed
+     * @inheritdoc
+     * @see BillableCallRepository::setInvoiceId
      */
     public function setInvoiceId(array $conditions, int $invoiceId)
     {
@@ -173,14 +186,12 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
                 CriteriaHelper::fromArray($conditions)
             );
 
-        return $qb->getQuery()->execute();
+        $qb->getQuery()->execute();
     }
 
     /**
-     * @param int $companyId
-     * @param int $brandId
-     * @param string $startTime
-     * @return mixed
+     * @inheritdoc
+     * @see BillableCallRepository::countUntarificattedCallsBeforeDate
      */
     public function countUntarificattedCallsBeforeDate(int $companyId, int $brandId, string $startTime)
     {
@@ -208,10 +219,8 @@ class BillableCallDoctrineRepository extends ServiceEntityRepository implements 
     }
 
     /**
-     * @param int $companyId
-     * @param int $brandId
-     * @param string $startTime
-     * @return mixed
+     * @inheritdoc
+     * @see BillableCallRepository::countUntarificattedCallsInRange
      */
     public function countUntarificattedCallsInRange(int $companyId, int $brandId, string $startTime, string $endTime)
     {

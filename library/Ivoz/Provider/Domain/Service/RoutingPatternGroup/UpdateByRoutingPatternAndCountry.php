@@ -54,10 +54,12 @@ class UpdateByRoutingPatternAndCountry
             ->getbrand()
             ->getId();
 
-        $routingPatternGroup = $this->routingPatternGroupRepository->findOneBy([
-            'brand' => $brandId,
-            'name' => $country->getZone()->getEn()
-        ]);
+        $routingPatternGroup = $this
+            ->routingPatternGroupRepository
+            ->findByBrandIdAndName(
+                $brandId,
+                $country->getZone()->getEn()
+            );
 
         if (empty($routingPatternGroup)) {
 

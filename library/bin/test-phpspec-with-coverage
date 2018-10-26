@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -e
+
+pushd /opt/irontec/ivozprovider/library
+    sed -i 's/^\#//' ./phpspec.yml
+    ./bin/test-phpspec
+    sed -i 's/^/\#/' ./phpspec.yml
+popd
+
+

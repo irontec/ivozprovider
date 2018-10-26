@@ -50,7 +50,7 @@ class UnsetBossAssistant implements UserLifecycleEventHandlerInterface
             /** @var UserInterface[] $bosses */
             $bosses = $this
                 ->userRepository
-                ->findBy(['bossAssistant' => $user->getId()]);
+                ->findByBossAssistantId($user->getId());
 
             foreach ($bosses as $boss) {
                 /**

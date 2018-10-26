@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -e
+
+pushd /opt/irontec/ivozprovider/web/rest/client
+    sed -i 's/\#\(.*CoverageContext.*\)/\1/' ./behat.yml
+    ./bin/test-api
+    sed -i 's/\([[:blank:]].*CoverageContext.*\)/#\1/' ./behat.yml
+popd

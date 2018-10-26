@@ -5,6 +5,7 @@ namespace Ivoz\Ast\Infrastructure\Persistence\Doctrine;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Ast\Domain\Model\Voicemail\VoicemailRepository;
 use Ivoz\Ast\Domain\Model\Voicemail\Voicemail;
+use Ivoz\Ast\Domain\Model\Voicemail\VoicemailInterface;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -18,5 +19,35 @@ class VoicemailDoctrineRepository extends ServiceEntityRepository implements Voi
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, Voicemail::class);
+    }
+
+    /**
+     * @param $id
+     * @return VoicemailInterface
+     */
+    public function findOneByUserId($id)
+    {
+        /** @var VoicemailInterface $response */
+        $response = $this->findOneBy([
+            'user' => $id
+        ]);
+
+        return $response;
+    }
+
+    /**
+     * @param $mailbox
+     * @param $context
+     * @return VoicemailInterface
+     */
+    public function findByMailboxAndContext($mailbox, $context)
+    {
+        /** @var VoicemailInterface $response */
+        $response = $this->findOneBy([
+            'mailbox' => $mailbox,
+            'context' => $context
+        ]);
+
+        return $response;
     }
 }

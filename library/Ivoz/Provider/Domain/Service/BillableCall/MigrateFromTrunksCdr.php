@@ -114,9 +114,9 @@ class MigrateFromTrunksCdr
         /**
          * @var BillableCallInterface $billableCall
          */
-        $billableCall = $this->billableCallRepository->findOneBy([
-            'trunksCdr' => $trunksCdr->getId()
-        ]);
+        $billableCall = $this->billableCallRepository->findOneByTrunksCdrId(
+            $trunksCdr->getId()
+        );
 
         $billableCallDto = $this->createOrUpdateBillableCallByTrunksCdr(
             $trunksCdr,

@@ -7,5 +7,10 @@ use Doctrine\Common\Collections\Selectable;
 
 interface CompanyServiceRepository extends ObjectRepository, Selectable
 {
-
+    /**
+     * @param $companyId
+     * @param $serviceId
+     * @return CompanyServiceInterface
+     */
+    public function findCompanyService($companyId, $serviceId);
 }

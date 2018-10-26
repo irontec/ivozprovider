@@ -64,9 +64,7 @@ class UpdateByExtension implements ExtensionLifecycleEventHandlerInterface
             /**
              * @var UserInterface $prevUser
              */
-            $prevUser = $this->userRepository->findOneBy([
-                'id' => $originalValue
-            ]);
+            $prevUser = $this->userRepository->find($originalValue);
 
             if (!$prevUser) {
                 // User has been removed

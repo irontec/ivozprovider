@@ -8,6 +8,12 @@ use Doctrine\Common\Collections\Selectable;
 interface BillableCallRepository extends ObjectRepository, Selectable
 {
     /**
+     * @param $id
+     * @return BillableCallInterface
+     */
+    public function findOneByTrunksCdrId($id);
+
+    /**
      * @param array $pks
      * @return bool
      */
@@ -27,20 +33,20 @@ interface BillableCallRepository extends ObjectRepository, Selectable
 
     /**
      * @param array $ids
-     * @return mixed
+     * @return void
      */
     public function resetPrices(array $ids);
 
     /**
      * @param int $invoiceId
-     * @return mixed
+     * @return void
      */
     public function resetInvoiceId(int $invoiceId);
 
     /**
      * @param array $conditions
      * @param int $invoiceId
-     * @return mixed
+     * @return void
      */
     public function setInvoiceId(array $conditions, int $invoiceId);
 
@@ -48,7 +54,10 @@ interface BillableCallRepository extends ObjectRepository, Selectable
      * @param int $companyId
      * @param int $brandId
      * @param string $startTime
-     * @return mixed
+     * @return int|mixed
+     * @throws \Doctrine\ORM\NoResultException
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     * @throws \Doctrine\ORM\Query\QueryException
      */
     public function countUntarificattedCallsBeforeDate(int $companyId, int $brandId, string $startTime);
 
@@ -56,7 +65,11 @@ interface BillableCallRepository extends ObjectRepository, Selectable
      * @param int $companyId
      * @param int $brandId
      * @param string $startTime
-     * @return mixed
+     * @param string $endTime
+     * @return int|mixed
+     * @throws \Doctrine\ORM\NoResultException
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     * @throws \Doctrine\ORM\Query\QueryException
      */
     public function countUntarificattedCallsInRange(int $companyId, int $brandId, string $startTime, string $endTime);
 
