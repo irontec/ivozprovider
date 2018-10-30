@@ -12,6 +12,8 @@ use Ivoz\Core\Infrastructure\Domain\Service\Gearman\Jobs\Recoder;
  */
 class SendRecodingOrder implements MusicOnHoldLifecycleEventHandlerInterface
 {
+    const ON_COMMIT_PRIORITY = self::PRIORITY_NORMAL;
+
     /**
      * @var Recoder
      */
@@ -26,7 +28,7 @@ class SendRecodingOrder implements MusicOnHoldLifecycleEventHandlerInterface
     public static function getSubscribedEvents()
     {
         return [
-            self::EVENT_POST_PERSIST => 10
+            self::EVENT_ON_COMMIT => self::ON_COMMIT_PRIORITY
         ];
     }
 
