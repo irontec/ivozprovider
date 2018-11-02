@@ -63,6 +63,7 @@ production:
           voicemailNotificationTemplate: true
           faxNotificationTemplate: true
           balance: true
+          showInvoices: true
         order:
           name: true
           nif: true
@@ -115,11 +116,13 @@ production:
           externallyExtraOpts: true
           balance: true
           voicemailNotificationTemplate: true
+          showInvoices: true
         order: &residentialClientsOrder_Link
           id: true
           name: true
           language: true
           maxCalls: true
+          showInvoices: true
           nif: true
           postalAddress: true
           postalCode: true
@@ -225,8 +228,8 @@ production:
           colsPerRow: 12
           label: _("Invoice data")
           fields:
-            nif: 4
-            __empty: 8
+            showInvoices: 6
+            nif: 6
             postalAddress: 8
             postalCode: 4
             town: 4

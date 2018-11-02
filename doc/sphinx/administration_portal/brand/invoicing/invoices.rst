@@ -5,6 +5,10 @@ Invoices
 **Invoices** section lets **brand operator** generate invoices to issue to its clients and lists all invoices of all
 clients, no matter if they were generated automatically or manually.
 
+.. tip:: Brand administrators can also enable view mode on this section to their clients. Check Client's Invoice data
+    configuration section for more information.
+
+
 Generating a new invoice
 ========================
 

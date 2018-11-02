@@ -108,6 +108,11 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     private $balance = 0;
 
     /**
+     * @var boolean
+     */
+    private $showInvoices = '0';
+
+    /**
      * @var integer
      */
     private $id;
@@ -269,6 +274,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'recordingsLimitEmail' => 'recordingsLimitEmail',
             'billingMethod' => 'billingMethod',
             'balance' => 'balance',
+            'showInvoices' => 'showInvoices',
             'id' => 'id',
             'languageId' => 'language',
             'mediaRelaySetsId' => 'mediaRelaySets',
@@ -311,6 +317,7 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
             'recordingsLimitEmail' => $this->getRecordingsLimitEmail(),
             'billingMethod' => $this->getBillingMethod(),
             'balance' => $this->getBalance(),
+            'showInvoices' => $this->getShowInvoices(),
             'id' => $this->getId(),
             'language' => $this->getLanguage(),
             'mediaRelaySets' => $this->getMediaRelaySets(),
@@ -898,6 +905,26 @@ abstract class CompanyDtoAbstract implements DataTransferObjectInterface
     public function getBalance()
     {
         return $this->balance;
+    }
+
+    /**
+     * @param boolean $showInvoices
+     *
+     * @return static
+     */
+    public function setShowInvoices($showInvoices = null)
+    {
+        $this->showInvoices = $showInvoices;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getShowInvoices()
+    {
+        return $this->showInvoices;
     }
 
     /**

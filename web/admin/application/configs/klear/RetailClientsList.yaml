@@ -52,6 +52,7 @@ production:
           recordingsDiskUsage: true
           country: true
           externallyExtraOpts: true
+          showInvoices: true
         order:
           name: true
           nif: true
@@ -97,11 +98,13 @@ production:
           relCodecs: true
           relRoutingTags: true
           externallyExtraOpts: true
+          showInvoices: true
         order: &retailClientsOrder_Link
           id: true
           name: true
           language: true
           maxCalls: true
+          showInvoices: true
           defaultTimezone: true
           relRoutingTags: true
       fixedPositions: &retailClientsFixedPositions_Link
@@ -195,8 +198,8 @@ production:
           colsPerRow: 12
           label: _("Invoice data")
           fields:
-            nif: 4
-            __empty: 8
+            showInvoices: 6
+            nif: 6
             postalAddress: 8
             postalCode: 4
             town: 4

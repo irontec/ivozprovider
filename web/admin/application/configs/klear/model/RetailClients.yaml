@@ -220,6 +220,23 @@ production:
           order:
             Ddi.ddie164: asc
         'null': _("Unassigned")
+    showInvoices:
+      title: _('Display Client Invoices section')
+      type: select
+      defaultValue: 0
+      source:
+        data: inline
+        values:
+          '0':
+            title: _("No")
+          '1':
+            title: _("Yes")
+      info:
+        type: box
+        position: left
+        icon: help
+        text: _("Enable this option to display a section in Client's portal to download generated invoices.")
+        label: _("Need help?")
 staging:
   _extends: production
 testing:

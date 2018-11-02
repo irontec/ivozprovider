@@ -66,6 +66,7 @@ production:
           invoiceNotificationTemplate: true
           balance: true
           country: true
+          showInvoices: true
         order:
           name: true
           nif: true
@@ -121,6 +122,7 @@ production:
           invoiceNotificationTemplate: true
           faxNotificationTemplate: true
           balance: true
+          showInvoices: true
         order: &companiesOrder_Link
           id: true
           name: true
@@ -237,16 +239,16 @@ production:
             distributeMethod: 4
             applicationServer: 4
         group4:
-          colsPerRow: 2
+          colsPerRow: 12
           label: _("Invoice data")
           fields:
-            postalAddress: 2
-            postalCode: 1
-            town: 1
-            province: 1
-            countryName: 1
-            registryData: 2
-            nif: 1
+            showInvoices: 6
+            nif: 6
+            postalAddress: 8
+            postalCode: 4
+            town: 4
+            province: 4
+            countryName: 4
         group5:
           colsPerRow: 12
           label: ngettext('Recording', 'Recordings', 0)

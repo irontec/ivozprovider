@@ -397,6 +397,23 @@ interface CompanyInterface extends LoggableEntityInterface
     public function getBalance();
 
     /**
+     * @deprecated
+     * Set showInvoices
+     *
+     * @param boolean $showInvoices
+     *
+     * @return self
+     */
+    public function setShowInvoices($showInvoices = null);
+
+    /**
+     * Get showInvoices
+     *
+     * @return boolean
+     */
+    public function getShowInvoices();
+
+    /**
      * Set language
      *
      * @param \Ivoz\Provider\Domain\Model\Language\LanguageInterface $language

@@ -637,6 +637,9 @@ msgstr "Uso de disco"
 msgid "Disk usage notification email"
 msgstr "Notificaciones de uso de disco"
 
+msgid "Display Client Invoices section"
+msgstr "Mostrar sección Facturas a cliente"
+
 msgid "Display name"
 msgstr "Texto en pantalla"
 
@@ -735,6 +738,13 @@ msgstr ""
 "de llamadas salientes para evitar fraude. Seleccionar 'Ninguna' permite un "
 "número ilimitado de llamadas siempre y cuando se cumpla la política de "
 "restricción de IPs de la empresa."
+
+msgid ""
+"Enable this option to display a section in Client's portal to download "
+"generated invoices."
+msgstr ""
+"Habilite esta opción para mostrar una sección el portal de cliente que "
+"permita descargar las facturas generadas"
 
 msgid "Enabled"
 msgstr "Activado"

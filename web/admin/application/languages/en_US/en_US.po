@@ -626,6 +626,9 @@ msgstr "Disk usage"
 msgid "Disk usage notification email"
 msgstr "Disk usage notification email"
 
+msgid "Display Client Invoices section"
+msgstr "Display Client Invoices section"
+
 msgid "Display name"
 msgstr "Display name"
 
@@ -723,6 +726,13 @@ msgstr ""
 "Enable calling from non-granted IP addresses for this user. It limits the "
 "number of outgoing calls to avoid toll-fraud. 'None' value makes outgoing "
 "calls unlimited as long as company IP policy is fulfilled."
+
+msgid ""
+"Enable this option to display a section in Client's portal to download "
+"generated invoices."
+msgstr ""
+"Enable this option to display a section in Client's portal to download "
+"generated invoices."
 
 msgid "Enabled"
 msgstr "Enabled"
