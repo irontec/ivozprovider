@@ -3,6 +3,8 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
+use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceInterface;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceRepository;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDevice;
 use Symfony\Bridge\Doctrine\RegistryInterface;
@@ -18,5 +20,18 @@ class ResidentialDeviceDoctrineRepository extends ServiceEntityRepository implem
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, ResidentialDevice::class);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function findOneByNameAndDomain(string $name, DomainInterface $domain)
+    {
+        /** @var ResidentialDeviceInterface $response */
+        $response = $this->findOneBy([
+            "name" => $name,
+            "domain" => $domain
+        ]);
+        return $response;
     }
 }

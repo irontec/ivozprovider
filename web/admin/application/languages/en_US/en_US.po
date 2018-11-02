@@ -2366,6 +2366,12 @@ msgstr "There is already a busy call forward with that call type."
 msgid "There is already a noAnswer call forward with that call type."
 msgstr "There is already a no answer call forward with that call type."
 
+msgid "There is already a residential device with that name."
+msgstr "There is already a residential device with that name."
+
+msgid "There is already a retail account with that name."
+msgstr "There is already a retail account with that name."
+
 msgid "There is already a userNotRegistered call forward with that call type."
 msgstr ""
 "There is already a user not registered call forward with that call type."
