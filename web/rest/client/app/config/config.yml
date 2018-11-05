@@ -9,7 +9,7 @@ imports:
 parameters:
   #required to generate valid urls from console
   #https://symfony.com/doc/current/console/request_context.html
-  router.request_context.base_url: /api/platform
+  router.request_context.base_url: /api/client
 
 framework:
   secret: '%secret%'
