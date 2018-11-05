@@ -83,6 +83,11 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     private $directConnectivity = 'yes';
 
     /**
+     * @var string
+     */
+    private $ddiIn = 'yes';
+
+    /**
      * @var integer
      */
     private $id;
@@ -164,6 +169,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
             'updateCallerid' => 'updateCallerid',
             'fromDomain' => 'fromDomain',
             'directConnectivity' => 'directConnectivity',
+            'ddiIn' => 'ddiIn',
             'id' => 'id',
             'brandId' => 'brand',
             'domainId' => 'domain',
@@ -194,6 +200,7 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
             'updateCallerid' => $this->getUpdateCallerid(),
             'fromDomain' => $this->getFromDomain(),
             'directConnectivity' => $this->getDirectConnectivity(),
+            'ddiIn' => $this->getDdiIn(),
             'id' => $this->getId(),
             'brand' => $this->getBrand(),
             'domain' => $this->getDomain(),
@@ -547,6 +554,26 @@ abstract class ResidentialDeviceDtoAbstract implements DataTransferObjectInterfa
     public function getDirectConnectivity()
     {
         return $this->directConnectivity;
+    }
+
+    /**
+     * @param string $ddiIn
+     *
+     * @return static
+     */
+    public function setDdiIn($ddiIn = null)
+    {
+        $this->ddiIn = $ddiIn;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDdiIn()
+    {
+        return $this->ddiIn;
     }
 
     /**

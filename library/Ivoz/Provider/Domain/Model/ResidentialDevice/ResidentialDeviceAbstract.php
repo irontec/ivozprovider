@@ -94,6 +94,12 @@ abstract class ResidentialDeviceAbstract
     protected $directConnectivity = 'yes';
 
     /**
+     * comment: enum:yes|no
+     * @var string
+     */
+    protected $ddiIn = 'yes';
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
      */
     protected $brand;
@@ -139,7 +145,8 @@ abstract class ResidentialDeviceAbstract
         $directMediaMethod,
         $calleridUpdateHeader,
         $updateCallerid,
-        $directConnectivity
+        $directConnectivity,
+        $ddiIn
     ) {
         $this->setName($name);
         $this->setDescription($description);
@@ -151,6 +158,7 @@ abstract class ResidentialDeviceAbstract
         $this->setCalleridUpdateHeader($calleridUpdateHeader);
         $this->setUpdateCallerid($updateCallerid);
         $this->setDirectConnectivity($directConnectivity);
+        $this->setDdiIn($ddiIn);
     }
 
     abstract public function getId();
@@ -229,7 +237,8 @@ abstract class ResidentialDeviceAbstract
             $dto->getDirectMediaMethod(),
             $dto->getCalleridUpdateHeader(),
             $dto->getUpdateCallerid(),
-            $dto->getDirectConnectivity()
+            $dto->getDirectConnectivity(),
+            $dto->getDdiIn()
         );
 
         $self
@@ -278,6 +287,7 @@ abstract class ResidentialDeviceAbstract
             ->setUpdateCallerid($dto->getUpdateCallerid())
             ->setFromDomain($dto->getFromDomain())
             ->setDirectConnectivity($dto->getDirectConnectivity())
+            ->setDdiIn($dto->getDdiIn())
             ->setBrand($dto->getBrand())
             ->setDomain($dto->getDomain())
             ->setCompany($dto->getCompany())
@@ -313,6 +323,7 @@ abstract class ResidentialDeviceAbstract
             ->setUpdateCallerid(self::getUpdateCallerid())
             ->setFromDomain(self::getFromDomain())
             ->setDirectConnectivity(self::getDirectConnectivity())
+            ->setDdiIn(self::getDdiIn())
             ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
             ->setDomain(\Ivoz\Provider\Domain\Model\Domain\Domain::entityToDto(self::getDomain(), $depth))
             ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
@@ -341,6 +352,7 @@ abstract class ResidentialDeviceAbstract
             'update_callerid' => self::getUpdateCallerid(),
             'from_domain' => self::getFromDomain(),
             'directConnectivity' => self::getDirectConnectivity(),
+            'ddiIn' => self::getDdiIn(),
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
             'domainId' => self::getDomain() ? self::getDomain()->getId() : null,
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
@@ -764,6 +776,37 @@ abstract class ResidentialDeviceAbstract
     public function getDirectConnectivity()
     {
         return $this->directConnectivity;
+    }
+
+    /**
+     * @deprecated
+     * Set ddiIn
+     *
+     * @param string $ddiIn
+     *
+     * @return self
+     */
+    public function setDdiIn($ddiIn)
+    {
+        Assertion::notNull($ddiIn, 'ddiIn value "%s" is null, but non null value was expected.');
+        Assertion::choice($ddiIn, array (
+          0 => 'yes',
+          1 => 'no',
+        ), 'ddiInvalue "%s" is not an element of the valid values: %s');
+
+        $this->ddiIn = $ddiIn;
+
+        return $this;
+    }
+
+    /**
+     * Get ddiIn
+     *
+     * @return string
+     */
+    public function getDdiIn()
+    {
+        return $this->ddiIn;
     }
 
     /**
