@@ -139,7 +139,6 @@ production:
           brand: true
           recordCalls: true
           displayName: true
-          billInboundCalls: true
           externalCallFilter: true
           language: true
           queue: true

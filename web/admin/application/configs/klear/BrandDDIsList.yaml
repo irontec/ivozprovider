@@ -43,7 +43,6 @@ production:
           brand: true
           conferenceRoom: true
           recordCalls: true
-          billInboundCalls: true
           friendValue: true
           queue: true
           residentialDevice: true

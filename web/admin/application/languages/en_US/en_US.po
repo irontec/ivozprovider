@@ -94,9 +94,6 @@ msgstr "Add of %s %2s"
 msgid "Add pattern to %2s"
 msgstr "Add pattern to %2s"
 
-msgid "Additional configuration"
-msgstr "Additional configuration"
-
 msgid "Admin"
 msgstr "Admin"
 
@@ -230,9 +227,6 @@ msgstr "Basic Info"
 
 msgid "Basic Information"
 msgstr "Basic Information"
-
-msgid "Bill inbound call"
-msgstr "Bill inbound call"
 
 msgid "Billable call"
 msgid_plural "Billable calls"
@@ -2420,9 +2414,6 @@ msgid ""
 msgstr ""
 "This prefix will be added to the callee after carrier's numeric "
 "transformations."
-
-msgid "This setting needs external tarification module"
-msgstr "This setting needs external tarification module"
 
 msgid "This template is going to be tested"
 msgstr "This template is going to be tested"

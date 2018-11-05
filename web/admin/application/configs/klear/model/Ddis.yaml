@@ -149,23 +149,6 @@ production:
         icon: help
         text: _("This value will be displayed in the called terminals")
         label: _("Need help?")
-    billInboundCalls:
-      title: _('Bill inbound call')
-      type: select
-      defaultValue: 0
-      source:
-        data: inline
-        values:
-          '0':
-            title: _("No")
-          '1':
-            title: _("Yes")
-      info:
-        type: box
-        position: left
-        icon: error
-        text: _("This setting needs external tarification module")
-        label: _("Need help?")
     user:
       title: ngettext('User', 'Users', 1)
       type: select

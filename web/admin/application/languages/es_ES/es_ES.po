@@ -98,9 +98,6 @@ msgstr "Añadir %s %2s"
 msgid "Add pattern to %2s"
 msgstr "Añadir patrón a %2s"
 
-msgid "Additional configuration"
-msgstr "Configuración Adicional"
-
 msgid "Admin"
 msgstr "Administrador"
 
@@ -235,9 +232,6 @@ msgstr "Configuración Básica"
 
 msgid "Basic Information"
 msgstr "Información Básica"
-
-msgid "Bill inbound call"
-msgstr "Tarificación llamadas entrantes"
 
 msgid "Billable call"
 msgid_plural "Billable calls"
@@ -2447,9 +2441,6 @@ msgid ""
 msgstr ""
 "Este prefijo se añadirá al destino de la llamada después de aplicar las "
 "transformaciones numéricas del operador."
-
-msgid "This setting needs external tarification module"
-msgstr "Esta opción requiere un módulo de tarificación externa"
 
 msgid "This template is going to be tested"
 msgstr "La siguiente plantilla será probada"
