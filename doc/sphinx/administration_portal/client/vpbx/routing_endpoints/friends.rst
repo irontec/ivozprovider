@@ -106,6 +106,9 @@ This are the configurable settings of *friends*:
         Request from IvozProvider to this friend will include this domain in
         the From header.
 
+    DDI In
+        If set to 'Yes', use endpoint username in R-URI when calling this friend. If set to 'No', use called
+        number instead.
 
 .. note:: Calls to *friends* are considered internal. That means that ACLs won't
           be checked when calling a friend, no matter if the origin of the call

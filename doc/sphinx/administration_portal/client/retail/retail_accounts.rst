@@ -68,6 +68,9 @@ These are the configurable settings of *Retail accounts*:
         Request from IvozProvider to this account will include this domain in
         the From header.
 
+    DDI In
+        If set to 'Yes', use endpoint username in R-URI when calling this retail account. If set to 'No', use called
+        number instead.
 
 .. warning:: All retail accounts within a retail client will have the transcoding capabilities configured at client level.
 
