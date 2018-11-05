@@ -537,6 +537,9 @@ msgid_plural "DDIs"
 msgstr[0] "DDI"
 msgstr[1] "DDIs"
 
+msgid "DDI In"
+msgstr "DDI In"
+
 msgid "DDI Provider"
 msgid_plural "DDI Providers"
 msgstr[0] "DDI Provider"
@@ -1070,6 +1073,13 @@ msgid "Iden"
 msgid_plural "Idens"
 msgstr[0] "Iden"
 msgstr[1] "Idens"
+
+msgid ""
+"If 'no', R-URI username will match endpoint's name. If 'yes', called number "
+"will be used instead."
+msgstr ""
+"If 'no', R-URI username will match endpoint's name. If 'yes', called number "
+"will be used instead."
 
 msgid ""
 "If no queue member answers before time this seconds, the timeout queue logic "
