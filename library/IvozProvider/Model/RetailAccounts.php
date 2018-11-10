@@ -66,6 +66,8 @@ class RetailAccounts extends Raw\RetailAccounts
     {
         // Remove company outbound prefix
         $prefnumber = $this->getCompany()->removeOutboundPrefix($prefnumber);
+        // Remove company anonymous prefix
+        $prefnumber = $this->getCompany()->removeAnonymousPrefix($prefnumber);
         // Get user country
         $country = $this->getCountry();
         // Return e164 number dialed by this user
@@ -83,6 +85,8 @@ class RetailAccounts extends Raw\RetailAccounts
         $country = $this->getCountry();
         // Convert from E164 to user country preferred format
         $prefnumber = $country->E164ToPreferred($e164number, $this->getAreaCode());
+        // Add Company anonymous prefix
+        $prefnumber = $this->getCompany()->addAnonymousPrefix($prefnumber);
         // Add Company outbound prefix
         return $this->getCompany()->addOutboundPrefix($prefnumber);
     }

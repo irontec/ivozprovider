@@ -230,6 +230,8 @@ class Companies extends Raw\Companies
     {
         // Remove company outbound prefix
         $prefnumber = $this->removeOutboundPrefix($prefnumber);
+        // Remove company anonymous prefix
+        $prefnumber = $this->removeAnonymousPrefix($prefnumber);
         // Get user country
         $country = $this->getCountries();
         // Return e164 number dialed by this user
@@ -247,6 +249,8 @@ class Companies extends Raw\Companies
         $country = $this->getCountries();
         // Convert from E164 to user country preferred format
         $prefnumber = $country->E164ToPreferred($e164number, $this->getAreaCodeValue());
+        // Add Company anonymous prefix
+        $prefnumber = $this->addAnonymousPrefix($prefnumber);
         // Add Company outbound prefix
         return $this->addOutboundPrefix($prefnumber);
     }
@@ -275,6 +279,19 @@ class Companies extends Raw\Companies
     {
         // Add Company outbound prefix
         return $this->getOutboundPrefix() . $number;
+    }
+
+    public function removeAnonymousPrefix($number)
+    {
+        // Remove company anonymous prefix
+        $anonymousPrefix = $this->getAnonymousPrefix();
+        return preg_replace("/^$anonymousPrefix/", "", $number);
+    }
+
+    public function addAnonymousPrefix($number)
+    {
+        // Add company anonymous prefix
+        return $this->getAnonymousPrefix() . $number;
     }
 
     public function getOutgoingRoutings() {

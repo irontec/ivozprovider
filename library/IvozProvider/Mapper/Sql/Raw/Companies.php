@@ -64,6 +64,7 @@ class Companies extends MapperAbstract
                 'province' => $model->getProvince(),
                 'country' => $model->getCountry(),
                 'outbound_prefix' => $model->getOutboundPrefix(),
+                'anonymous_prefix' => $model->getAnonymousPrefix(),
                 'countryId' => $model->getCountryId(),
                 'languageId' => $model->getLanguageId(),
                 'mediaRelaySetsId' => $model->getMediaRelaySetsId(),
@@ -1079,6 +1080,7 @@ class Companies extends MapperAbstract
                   ->setProvince($data['province'])
                   ->setCountry($data['country'])
                   ->setOutboundPrefix($data['outbound_prefix'])
+                  ->setAnonymousPrefix($data['anonymous_prefix'])
                   ->setCountryId($data['countryId'])
                   ->setLanguageId($data['languageId'])
                   ->setMediaRelaySetsId($data['mediaRelaySetsId'])
@@ -1108,6 +1110,7 @@ class Companies extends MapperAbstract
                   ->setProvince($data->{'province'})
                   ->setCountry($data->{'country'})
                   ->setOutboundPrefix($data->{'outbound_prefix'})
+                  ->setAnonymousPrefix($data->{'anonymous_prefix'})
                   ->setCountryId($data->{'countryId'})
                   ->setLanguageId($data->{'languageId'})
                   ->setMediaRelaySetsId($data->{'mediaRelaySetsId'})
@@ -1138,6 +1141,7 @@ class Companies extends MapperAbstract
                   ->setProvince($data->getProvince())
                   ->setCountry($data->getCountry())
                   ->setOutboundPrefix($data->getOutboundPrefix())
+                  ->setAnonymousPrefix($data->getAnonymousPrefix())
                   ->setCountryId($data->getCountryId())
                   ->setLanguageId($data->getLanguageId())
                   ->setMediaRelaySetsId($data->getMediaRelaySetsId())

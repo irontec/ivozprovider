@@ -147,6 +147,13 @@ class Companies extends ModelAbstract
     protected $_outboundPrefix;
 
     /**
+     * Database var type varchar
+     *
+     * @var string
+     */
+    protected $_anonymousPrefix;
+
+    /**
      * Database var type int
      *
      * @var int
@@ -585,6 +592,7 @@ class Companies extends ModelAbstract
         'province'=>'province',
         'country'=>'country',
         'outbound_prefix'=>'outboundPrefix',
+        'anonymous_prefix'=>'anonymousPrefix',
         'countryId'=>'countryId',
         'languageId'=>'languageId',
         'mediaRelaySetsId'=>'mediaRelaySetsId',
@@ -1409,6 +1417,39 @@ class Companies extends ModelAbstract
     public function getOutboundPrefix()
     {
         return $this->_outboundPrefix;
+    }
+
+    /**
+     * Sets column stored in ISO 8601 format.
+     * @param string $data
+     * @return \IvozProvider\Model\Raw\Companies
+     */
+    public function setAnonymousPrefix($data)
+    {
+        if ($this->_anonymousPrefix != $data) {
+            $this->_logChange('anonymousPrefix', $this->_anonymousPrefix, $data);
+        }
+
+        if ($data instanceof \Zend_Db_Expr) {
+            $this->_anonymousPrefix = $data;
+
+        } else if (!is_null($data)) {
+            $this->_anonymousPrefix = (string) $data;
+
+        } else {
+            $this->_anonymousPrefix = $data;
+        }
+        return $this;
+    }
+
+    /**
+     * Gets column anonymous_prefix
+     *
+     * @return string
+     */
+    public function getAnonymousPrefix()
+    {
+        return $this->_anonymousPrefix;
     }
 
     /**
