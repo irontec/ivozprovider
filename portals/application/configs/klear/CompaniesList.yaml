@@ -53,6 +53,7 @@ production:
           ipFilter: true
           languageId: true
           outbound_prefix: true
+          anonymous_prefix: true
           onDemandRecord: true
           onDemandRecordCode: true
           recordingsLimitMB: true
@@ -104,6 +105,7 @@ production:
           onDemandRecordCode: true
           mediaRelaySetsId: true
           outbound_prefix: true
+          anonymous_prefix: true
           distributeMethod: true
           applicationServerId: true
           countryId: true
@@ -204,6 +206,7 @@ production:
             outgoingDDIId: 6
             outgoingDDIRuleId: 6
             outbound_prefix: 4
+            anonymous_prefix: 4
             domain_users: 9
             countryId: 6
             areaCode: 6

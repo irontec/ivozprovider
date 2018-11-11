@@ -53,6 +53,7 @@ production:
           ipFilter: true
           languageId: true
           outbound_prefix: true
+          anonymous_prefix: true
           onDemandRecord: true
           onDemandRecordCode: true
           recordingsLimitMB: true
@@ -106,6 +107,7 @@ production:
           ipFilter: false
           mediaRelaySetsId: true
           outbound_prefix: true
+          anonymous_prefix: true
           distributeMethod: true
           applicationServerId: true
           maxCalls: false
@@ -200,7 +202,8 @@ production:
           label: _("Server data")
           fields:
             outbound_prefix: 6
-            outgoingDDIId: 6
+            anonymous_prefix: 6
+            outgoingDDIId: 8
             countryId: 6
             areaCode: 6
             mediaRelaySetsId: 4

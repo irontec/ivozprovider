@@ -141,6 +141,10 @@ production:
       title: _('Outbound prefix')
       type: text
       trim: both
+    anonymous_prefix:
+      title: _('Hide CallerId prefix')
+      type: text
+      trim: both
     countryId:
       title: _('Country code')
       type: select
