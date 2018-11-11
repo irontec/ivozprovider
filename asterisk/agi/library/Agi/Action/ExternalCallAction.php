@@ -38,6 +38,35 @@ class ExternalCallAction extends RouterAction
     }
 
     /**
+     * @brief Check if the dialed number includes company's anonymous prefix
+     *
+     * Company can configure anonymous prefix than CAN be present in an outgoing
+     * external call. If present the call will hide CallerId
+     *
+     * @param string $number Outgoing Dialed number
+     * @return false if prefix is not present or company has no prefix, true otherwise
+     */
+    protected function checkCompanyAnonymousPrefix($number)
+    {
+        // Get company Data
+        $caller = $this->agi->getChannelCaller();
+        $company = $caller->getCompany();
+        $anonymousPrefix = $company->getAnonymousPrefix();
+        $outboundPrefix = $company->getOutboundPrefix();
+
+        // If Company has no Anonymous Prefix, no anonymous
+        if (strlen($anonymousPrefix) == 0)
+            return false;
+
+        // Remove company's outbound prefix
+        if (substr($number, 0, strlen($outboundPrefix)) == $outboundPrefix)
+            $number = substr($number, strlen($outboundPrefix));
+
+        // Check if number starts with anonymous prefix
+        return (strpos($number, $anonymousPrefix) === 0);
+    }
+
+    /**
      * @brief Determine if the call can be tarificable
      *
      * Only calls that can be tarificated are allowed to be placed. There is an

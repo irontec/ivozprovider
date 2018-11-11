@@ -6,6 +6,8 @@ class ExternalDDICallAction extends ExternalCallAction
 {
     protected $_number;
 
+    protected $_anonymous =  false;
+
     public function setDestination($number)
     {
         $this->_number = $number;
@@ -32,6 +34,9 @@ class ExternalDDICallAction extends ExternalCallAction
             $this->agi->decline();
             return;
         }
+
+        // Check if dialed number has company's anonymous prefix
+        $this->_anonymous = $this->checkCompanyAnonymousPrefix($number);
 
         // Convert to E.164 format
         $e164number = $company->preferredToE164($number);
@@ -71,6 +76,10 @@ class ExternalDDICallAction extends ExternalCallAction
         $this->checkDDIRecording($ddi);
         // Check if DDI belong to platform
         $this->checkDDIBounced($e164number);
+
+        // Hide CallerId if anonymous prefix
+        if ($this->_anonymous)
+            $this->agi->setCallerIdNum('anonymous');
 
         // Call the PSJIP endpoint
         $this->agi->setVariable("DIAL_DST", "PJSIP/" . $e164number . '@proxytrunks');
