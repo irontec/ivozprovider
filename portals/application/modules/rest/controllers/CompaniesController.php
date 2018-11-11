@@ -48,6 +48,7 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
      *     'province': '', 
      *     'country': '', 
      *     'outbound_prefix': '', 
+     *     'anonymous_prefix': '',
      *     'countryId': '', 
      *     'languageId': '', 
      *     'mediaRelaySetsId': '', 
@@ -77,6 +78,7 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
      *     'province': '', 
      *     'country': '', 
      *     'outbound_prefix': '', 
+     *     'anonymous_prefix': '',
      *     'countryId': '', 
      *     'languageId': '', 
      *     'mediaRelaySetsId': '', 
@@ -122,6 +124,7 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
                 'province',
                 'country',
                 'outboundPrefix',
+                'anonymousPrefix',
                 'countryId',
                 'languageId',
                 'mediaRelaySetsId',
@@ -223,6 +226,7 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
      *     'province': '', 
      *     'country': '', 
      *     'outbound_prefix': '', 
+     *     'anonymous_prefix': '',
      *     'countryId': '', 
      *     'languageId': '', 
      *     'mediaRelaySetsId': '', 
@@ -267,6 +271,7 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
                 'province',
                 'country',
                 'outboundPrefix',
+                'anonymousPrefix',
                 'countryId',
                 'languageId',
                 'mediaRelaySetsId',
@@ -334,6 +339,7 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="province", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="country", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="outbound_prefix", nullable=true, type="varchar", sample="", description="")
+     * @ApiParams(name="anonymous_prefix", nullable=true, type="varchar", sample="", description="")
      * @ApiParams(name="countryId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="languageId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="mediaRelaySetsId", nullable=true, type="int", sample="", description="")
@@ -396,6 +402,7 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
      * @ApiParams(name="province", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="country", nullable=false, type="varchar", sample="", description="")
      * @ApiParams(name="outbound_prefix", nullable=true, type="varchar", sample="", description="")
+     * @AgiParams(name="anonymous_prefix", nullable=true, type="varchar", sample="", deescription="")
      * @ApiParams(name="countryId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="languageId", nullable=true, type="int", sample="", description="")
      * @ApiParams(name="mediaRelaySetsId", nullable=true, type="int", sample="", description="")
@@ -577,6 +584,11 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
                     'required' => false,
                     'comment' => '',
                 ),
+                'anonymous_prefix' => array(
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
                 'countryId' => array(
                     'type' => "int",
                     'required' => false,
@@ -719,6 +731,11 @@ class Rest_CompaniesController extends Iron_Controller_Rest_BaseController
                     'comment' => '',
                 ),
                 'outbound_prefix' => array(
+                    'type' => "varchar",
+                    'required' => false,
+                    'comment' => '',
+                ),
+                'anonymous_prefix' => array(
                     'type' => "varchar",
                     'required' => false,
                     'comment' => '',
