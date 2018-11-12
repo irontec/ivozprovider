@@ -6,11 +6,25 @@ Ivoz\Provider\Domain\Model\Administrator\Administrator:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
       ROLE_BRAND_ADMIN:
+        id:
+          neq: 0
         or:
           - company:
               in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
-          - brand:
-              eq: "user.getBrand().getId()"
+          - company:
+              isNull: ~
+        brand:
+          eq: "user.getBrand().getId()"
+    write_access_control:
+      ROLE_BRAND_ADMIN:
+        raw: "id > 0 or id === null"
+        or:
+          - company:
+              in: "companyRepository.getSupervisedCompanyIdsByAdmin(user)"
+          - company:
+              isNull: ~
+        brand:
+          eq: "user.getBrand().getId()"
 Ivoz\Provider\Domain\Model\BillableCall\BillableCall:
   collectionOperations:
     get:
@@ -26,6 +40,7 @@ Ivoz\Provider\Domain\Model\BillableCall\BillableCall:
         brand:
           eq: "user.getBrand().getId()"
 Ivoz\Provider\Domain\Model\Brand\Brand:
+  collectionOperations: []
   attributes:
     access_control: '"ROLE_BRAND_ADMIN" in roles'
     read_access_control:
@@ -204,14 +219,6 @@ Ivoz\Provider\Domain\Model\CarrierServer\CarrierServer:
         brand:
           eq: "user.getBrand().getId()"
 
-Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup:
-  attributes:
-    access_control: '"ROLE_BRAND_ADMIN" in roles'
-    read_access_control:
-      ROLE_BRAND_ADMIN:
-        brand:
-          eq: "user.getBrand().getId()"
-
 Ivoz\Provider\Domain\Model\RatingPlanGroup\RatingPlanGroup:
   itemOperations: []
   collectionOperations: []
@@ -223,6 +230,7 @@ Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroup:
       ROLE_BRAND_ADMIN:
         brand:
           eq: "user.getBrand().getId()"
+
 Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGroupsRelPattern:
   collectionOperations:
     get:
