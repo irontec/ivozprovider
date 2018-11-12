@@ -3,6 +3,8 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
+use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
 use Ivoz\Provider\Domain\Model\Friend\FriendRepository;
 use Ivoz\Provider\Domain\Model\Friend\Friend;
 use Symfony\Bridge\Doctrine\RegistryInterface;
@@ -18,5 +20,19 @@ class FriendDoctrineRepository extends ServiceEntityRepository implements Friend
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, Friend::class);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function findOneByNameAndDomain(string $name, DomainInterface $domain)
+    {
+        /** @var FriendInterface $response */
+        $response = $this->findOneBy([
+            "name" => $name,
+            "domain" => $domain
+        ]);
+
+        return $response;
     }
 }
