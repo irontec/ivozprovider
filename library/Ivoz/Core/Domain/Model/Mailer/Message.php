@@ -12,6 +12,11 @@ class Message
     /**
      * @var string
      */
+    protected $bodyType;
+
+    /**
+     * @var string
+     */
     protected $subject;
 
     /**
@@ -42,7 +47,7 @@ class Message
     {
         $message = new \Swift_Message();
         $message
-            ->setBody($this->getBody(), 'text/html')
+            ->setBody($this->getBody(), $this->getBodyType())
             ->setSubject($this->getSubject())
             ->setFrom($this->getFromAddress(), $this->getFromName())
             ->setTo($this->getToAddress());
@@ -63,12 +68,22 @@ class Message
     }
 
     /**
+     * @return string
+     */
+    public function getBodyType(): string
+    {
+        return $this->bodyType;
+    }
+
+    /**
      * @param string $body
+     * @param string $bodyType
      * @return Message
      */
-    public function setBody(string $body): Message
+    public function setBody(string $body, string $bodyType = 'text/plain'): Message
     {
         $this->body = $body;
+        $this->bodyType = $bodyType;
         return $this;
     }
 

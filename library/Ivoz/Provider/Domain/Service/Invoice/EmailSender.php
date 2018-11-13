@@ -60,6 +60,7 @@ class EmailSender implements InvoiceLifecycleEventHandlerInterface
         // Get data from template
         $fromName = $notificationTemplateContent->getFromName();
         $fromAddress = $notificationTemplateContent->getFromAddress();
+        $bodyType = $notificationTemplateContent->getBodyType();
         $body = $this->parseVariables(
             $invoice,
             $notificationTemplateContent->getBody()
@@ -81,7 +82,7 @@ class EmailSender implements InvoiceLifecycleEventHandlerInterface
 
         // Create a new mail and attach the PDF file
         $mail = new \Swift_Message();
-        $mail->setBody($body, 'text/html')
+        $mail->setBody($body, $bodyType)
             ->setSubject($subject)
             ->setFrom($fromAddress, $fromName)
             ->setTo($targetEmail)
