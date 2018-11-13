@@ -32,6 +32,15 @@ Ivoz\Provider\Domain\Model\NotificationTemplateContent\NotificationTemplateConte
       length: 65535
       options:
         fixed: false
+    bodyType:
+      type: string
+      nullable: false
+      length: 25
+      options:
+        fixed: false
+        default: 'text/plain'
+        comment: '[enum:text/plain|text/html]'
+      column: bodyType
   manyToOne:
     notificationTemplate:
       targetEntity: \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
