@@ -27,6 +27,7 @@ Feature: Update notification template contents
           "fromAddress": "no-reply@ivozprovider.com",
           "subject": "New Test subject",
           "body": "New Test body",
+          "bodyType": "text\/plain",
           "id": 1,
           "notificationTemplate": {
               "name": "Voicemail notification",

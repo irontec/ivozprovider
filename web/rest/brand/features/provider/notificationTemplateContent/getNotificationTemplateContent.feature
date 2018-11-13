@@ -36,6 +36,7 @@ Feature: Retrieve notification template contents
           "fromAddress": "no-reply@ivozprovider.com",
           "subject": "test subject",
           "body": "test body",
+          "bodyType": "text\/plain",
           "id": 1,
           "notificationTemplate": {
               "name": "Voicemail notification",
