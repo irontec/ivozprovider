@@ -5,7 +5,7 @@ Feature: Retrieve notification templates
 
   @createSchema
   Scenario: Retrieve the notification templates json list
-    Given I add Authorization header
+    Given I add Brand Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "notification_templates"
     Then the response status code should be 200
@@ -23,7 +23,7 @@ Feature: Retrieve notification templates
     """
 
   Scenario: Retrieve certain notification templates json
-    Given I add Authorization header
+    Given I add Brand Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "notification_templates/1"
     Then the response status code should be 200

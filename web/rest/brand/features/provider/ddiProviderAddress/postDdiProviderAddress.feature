@@ -5,7 +5,7 @@ Feature: Create ddi provider addresses
 
   @createSchema
   Scenario: Create a ddi provider addresses
-    Given I add Authorization header
+    Given I add Brand Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/ddi_provider_addresses" with body:
@@ -29,7 +29,7 @@ Feature: Create ddi provider addresses
     """
 
   Scenario: Retrieve created ddi provider address
-    Given I add Authorization header
+    Given I add Brand Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "/ddi_provider_addresses/2"
      Then the response status code should be 200

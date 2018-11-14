@@ -5,7 +5,7 @@ Feature: Create IVR excluded extensions
 
   @createSchema
   Scenario: Create a IVR excluded extension
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/ivr_excluded_extensions" with body:
@@ -64,7 +64,7 @@ Feature: Create IVR excluded extensions
     """
 
   Scenario: Retrieve created IVR excluded extensions
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "ivr_excluded_extensions/2"
      Then the response status code should be 200

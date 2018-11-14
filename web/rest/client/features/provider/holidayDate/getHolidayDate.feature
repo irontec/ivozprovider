@@ -5,7 +5,7 @@ Feature: Retrieve holiday dates
 
   @createSchema
   Scenario: Retrieve the holiday dates json list
-    Given I add Authorization header
+    Given I add Company Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "holiday_dates"
     Then the response status code should be 200
@@ -23,7 +23,7 @@ Feature: Retrieve holiday dates
     """
 
   Scenario: Retrieve certain holiday date json
-    Given I add Authorization header
+    Given I add Company Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "holiday_dates/1"
     Then the response status code should be 200

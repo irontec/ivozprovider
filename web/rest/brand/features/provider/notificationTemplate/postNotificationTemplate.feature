@@ -5,7 +5,7 @@ Feature: Create notification templates
 
   @createSchema
   Scenario: Create an notification template
-    Given I add Authorization header
+    Given I add Brand Authorization header
     When I add "Content-Type" header equal to "application/json"
     And I add "Accept" header equal to "application/json"
     And I send a "POST" request to "/notification_templates" with body:
@@ -29,7 +29,7 @@ Feature: Create notification templates
     """
 
   Scenario: Retrieve created notification template
-    Given I add Authorization header
+    Given I add Brand Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "notification_templates/2"
     Then the response status code should be 200

@@ -5,7 +5,7 @@ Feature: Retrieve external call filters
 
   @createSchema
   Scenario: Retrieve the external call filters json list
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "external_call_filters"
      Then the response status code should be 200
@@ -22,7 +22,7 @@ Feature: Retrieve external call filters
     """
 
   Scenario: Retrieve certain external call filter json
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "external_call_filters/1"
      Then the response status code should be 200

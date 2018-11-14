@@ -5,7 +5,7 @@ Feature: Create invoice templates
 
   @createSchema
   Scenario: Create an invoice template
-    Given I add Authorization header
+    Given I add Brand Authorization header
     When I add "Content-Type" header equal to "application/json"
     And I add "Accept" header equal to "application/json"
     And I send a "POST" request to "/invoice_templates" with body:
@@ -31,7 +31,7 @@ Feature: Create invoice templates
     """
 
   Scenario: Retrieve created invoice templates
-    Given I add Authorization header
+    Given I add Brand Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "invoice_templates/2"
     Then the response status code should be 200

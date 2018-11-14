@@ -5,7 +5,7 @@ Feature: Update queue members
 
   @createSchema
   Scenario: Update a queue member
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "PUT" request to "/queue_members/1" with body:

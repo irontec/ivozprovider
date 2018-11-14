@@ -5,7 +5,7 @@ Feature: Retrieve external call filter rel calendars
 
   @createSchema
   Scenario: Retrieve the external call filter rel calendars json list
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "external_call_filter_rel_calendars"
      Then the response status code should be 200
@@ -44,7 +44,7 @@ Feature: Retrieve external call filter rel calendars
     """
 
   Scenario: Retrieve certain external call filter rel calendars json
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "external_call_filter_rel_calendars/1"
      Then the response status code should be 200

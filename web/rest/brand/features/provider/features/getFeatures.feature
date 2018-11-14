@@ -5,7 +5,7 @@ Feature: Retrieve features
 
   @createSchema
   Scenario: Retrieve the features json list
-    Given I add Authorization header
+    Given I add Brand Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "features"
      Then the response status code should be 200
@@ -54,7 +54,7 @@ Feature: Retrieve features
     """
 
   Scenario: Retrieve certain feature json
-    Given I add Authorization header
+    Given I add Brand Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "features/1"
      Then the response status code should be 200

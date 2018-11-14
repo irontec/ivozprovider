@@ -5,7 +5,7 @@ Feature: Retrieve conditional routes
 
   @createSchema
   Scenario: Retrieve the conditional routes json list
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "conditional_routes"
      Then the response status code should be 200
@@ -28,7 +28,7 @@ Feature: Retrieve conditional routes
     """
 
   Scenario: Retrieve certain conditional route json
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "conditional_routes/1"
      Then the response status code should be 200

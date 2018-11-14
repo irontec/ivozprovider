@@ -5,7 +5,7 @@ Feature: Create transformation rule sets
 
   @createSchema
   Scenario: Create a transformation rule set
-    Given I add Authorization header
+    Given I add Brand Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/transformation_rule_sets" with body:
@@ -21,7 +21,8 @@ Feature: Create transformation rule sets
               "en": "usansolocity",
               "es": "usansolo"
           },
-          "country": 2
+          "country": 2,
+          "brand": 1
       }
     """
     Then the response status code should be 201
@@ -40,13 +41,13 @@ Feature: Create transformation rule sets
     """
 
   Scenario: Retrieve created transformation rule set
-    Given I add Authorization header
+    Given I add Brand Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "transformation_rule_sets/3"
      Then the response status code should be 200
       And the response should be in JSON
       And the header "Content-Type" should be equal to "application/json; charset=utf-8"
-      And the JSON should be equal to:
+      And the JSON should be like:
     """
       {
           "description": "New transformation for Usansolocity",
@@ -60,7 +61,7 @@ Feature: Create transformation rule sets
               "en": "usansolocity",
               "es": "usansolo"
           },
-          "brand": null,
+          "brand": "~",
           "country": {
               "code": "GB",
               "countryCode": "+44",

@@ -5,7 +5,7 @@ Feature: Create brand servers
 
   @createSchema
   Scenario: Create an brand services
-    Given I add Authorization header
+    Given I add Brand Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/brand_services" with body:
@@ -28,7 +28,7 @@ Feature: Create brand servers
     """
 
   Scenario: Retrieve created brand service
-    Given I add Authorization header
+    Given I add Brand Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "brand_services/4"
      Then the response status code should be 200

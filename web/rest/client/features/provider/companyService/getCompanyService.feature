@@ -5,7 +5,7 @@ Feature: Retrieve company services
 
   @createSchema
   Scenario: Retrieve the company services json list
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "company_services"
      Then the response status code should be 200
@@ -46,7 +46,7 @@ Feature: Retrieve company services
     """
 
   Scenario: Retrieve certain company service json
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "company_services/1"
      Then the response status code should be 200

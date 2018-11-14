@@ -5,7 +5,7 @@ Feature: Retrieve recordings
 
   @createSchema
   Scenario: Retrieve the recordings json list
-    Given I add Authorization header
+    Given I add Company Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "recordings"
     Then the response status code should be 200
@@ -27,7 +27,7 @@ Feature: Retrieve recordings
     """
 
   Scenario: Retrieve certain recording json
-    Given I add Authorization header
+    Given I add Company Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "recordings/1"
     Then the response status code should be 200

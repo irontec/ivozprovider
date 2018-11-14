@@ -5,7 +5,7 @@ Feature: Manage pick up rel users
 
   @createSchema
   Scenario: Remove a pick up rel user
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "DELETE" request to "/pick_up_rel_users/1"

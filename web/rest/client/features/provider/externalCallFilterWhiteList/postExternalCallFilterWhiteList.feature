@@ -5,7 +5,7 @@ Feature: Create external call filter white lists
 
   @createSchema
   Scenario: Create an external call filter white list
-    Given I add Authorization header
+    Given I add Company Authorization header
     When I add "Content-Type" header equal to "application/json"
     And I add "Accept" header equal to "application/json"
     And I send a "POST" request to "/external_call_filter_white_lists" with body:
@@ -49,7 +49,7 @@ Feature: Create external call filter white lists
     """
 
   Scenario: Retrieve created external call filter white list
-    Given I add Authorization header
+    Given I add Company Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "external_call_filter_white_lists/2"
     Then the response status code should be 200

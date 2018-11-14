@@ -5,7 +5,7 @@ Feature: Create match list patterns
 
   @createSchema
   Scenario: Create a match list pattern
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/match_list_patterns" with body:
@@ -34,7 +34,7 @@ Feature: Create match list patterns
     """
 
   Scenario: Retrieve created match list pattern
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "match_list_patterns/2"
      Then the response status code should be 200

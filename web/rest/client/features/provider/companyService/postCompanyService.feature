@@ -5,7 +5,7 @@ Feature: Create company services
 
   @createSchema
   Scenario: Create a company service
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "company_services" with body:
@@ -28,7 +28,7 @@ Feature: Create company services
     """
 
   Scenario: Retrieve created company service
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "company_services/8"
      Then the response status code should be 200

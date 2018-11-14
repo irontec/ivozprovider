@@ -5,7 +5,7 @@ Feature: Create calendars
 
   @createSchema
   Scenario: Create an calendars
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "calendars" with body:
@@ -27,7 +27,7 @@ Feature: Create calendars
     """
 
   Scenario: Retrieve created calendars
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "calendars/3"
      Then the response status code should be 200

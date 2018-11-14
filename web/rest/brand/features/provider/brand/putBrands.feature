@@ -5,28 +5,35 @@ Feature: Manage brands
 
   @createSchema
   Scenario: Update a brand
-    Given I add Authorization header
+    Given I add Brand Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
-      And I send a "PUT" request to "/brands/2" with body:
+      And I send a "PUT" request to "/brands/1" with body:
     """
       {
-        "name": "api_brand_modified",
-        "domainUsers": "sip-api.irontec.com",
-        "recordingsLimitMB": 0,
-        "recordingsLimitEmail": "",
-        "invoice": {
-          "nif": "1234",
-          "postalAddress": "",
-          "postalCode": "48960",
-          "town": "",
-          "province": "",
-          "country": "",
-          "registryData": ""
-        },
-        "domain": 1,
-        "language": 1,
-        "defaultTimezone": 1
+          "name": "UpdatedDemoBrand",
+          "domainUsers": "",
+          "recordingsLimitMB": null,
+          "recordingsLimitEmail": "",
+          "maxCalls": 1,
+          "id": 1,
+          "logo": {
+              "fileSize": null,
+              "mimeType": null,
+              "baseName": null
+          },
+          "invoice": {
+              "nif": "",
+              "postalAddress": "",
+              "postalCode": "",
+              "town": "",
+              "province": "",
+              "country": "",
+              "registryData": ""
+          },
+          "domain": 6,
+          "language": 1,
+          "defaultTimezone": 1
       }
     """
     Then the response status code should be 200
@@ -35,31 +42,31 @@ Feature: Manage brands
      And the JSON should be equal to:
     """
       {
-          "name": "api_brand_modified",
-          "domainUsers": "sip-api.irontec.com",
-          "recordingsLimitMB": 0,
+          "name": "UpdatedDemoBrand",
+          "domainUsers": "",
+          "recordingsLimitMB": null,
           "recordingsLimitEmail": "",
-          "maxCalls": 0,
-          "id": 2,
+          "maxCalls": 1,
+          "id": 1,
           "logo": {
               "fileSize": null,
               "mimeType": null,
               "baseName": null
           },
           "invoice": {
-              "nif": "1234",
+              "nif": "",
               "postalAddress": "",
-              "postalCode": "48960",
+              "postalCode": "",
               "town": "",
               "province": "",
               "country": "",
               "registryData": ""
           },
           "domain": {
-              "domain": "sip-api.irontec.com",
+              "domain": "retail.irontec.com",
               "pointsTo": "proxyusers",
-              "description": "api_brand_modified proxyusers domain",
-              "id": 1
+              "description": "Irontec Test Company retail domain",
+              "id": 6
           },
           "language": {
               "iden": "es",
@@ -81,3 +88,14 @@ Feature: Manage brands
           }
       }
     """
+
+  @createSchema
+  Scenario: Cannot update unmamaged brands
+    Given I add Brand Authorization header
+    When I add "Content-Type" header equal to "application/json"
+    And I add "Accept" header equal to "application/json"
+    And I send a "PUT" request to "/brands/2" with body:
+    """
+      {}
+    """
+    Then the response status code should be 404

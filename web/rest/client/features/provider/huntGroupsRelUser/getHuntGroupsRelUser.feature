@@ -5,7 +5,7 @@ Feature: Retrieve hunt groups rel users
 
   @createSchema
   Scenario: Retrieve the hunt groups rel users json list
-    Given I add Authorization header
+    Given I add Company Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "hunt_groups_rel_users"
     Then the response status code should be 200
@@ -39,7 +39,7 @@ Feature: Retrieve hunt groups rel users
     """
 
   Scenario: Retrieve certain hunt groups rel user json
-    Given I add Authorization header
+    Given I add Company Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "hunt_groups_rel_users/1"
     Then the response status code should be 200

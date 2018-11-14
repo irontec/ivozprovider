@@ -5,7 +5,7 @@ Feature: Create conference rooms
 
   @createSchema
   Scenario: Create a conference room
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/conference_rooms" with body:
@@ -32,7 +32,7 @@ Feature: Create conference rooms
     """
 
   Scenario: Retrieve created conference room
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "conference_rooms/2"
      Then the response status code should be 200

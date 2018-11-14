@@ -5,7 +5,7 @@ Feature: Retrieve friends
 
   @createSchema
   Scenario: Retrieve the friends json list
-    Given I add Authorization header
+    Given I add Company Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "friends"
     Then the response status code should be 200
@@ -22,7 +22,7 @@ Feature: Retrieve friends
     """
 
   Scenario: Retrieve certain friend json
-    Given I add Authorization header
+    Given I add Company Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "friends/1"
     Then the response status code should be 200

@@ -5,7 +5,7 @@ Feature: Retrieve conditional routes conditions rel schedules
 
   @createSchema
   Scenario: Retrieve the conditional routes conditions rel schedules json list
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "conditional_routes_conditions_rel_schedules"
      Then the response status code should be 200
@@ -52,7 +52,7 @@ Feature: Retrieve conditional routes conditions rel schedules
     """
 
   Scenario: Retrieve certain conditional routes conditions rel schedule json
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "conditional_routes_conditions_rel_schedules/1"
      Then the response status code should be 200

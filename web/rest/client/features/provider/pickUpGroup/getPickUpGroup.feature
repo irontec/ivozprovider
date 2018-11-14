@@ -5,7 +5,7 @@ Feature: Retrieve pick up groups
 
   @createSchema
   Scenario: Retrieve the pick up groups json list
-    Given I add Authorization header
+    Given I add Company Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "pick_up_groups"
     Then the response status code should be 200
@@ -22,7 +22,7 @@ Feature: Retrieve pick up groups
     """
 
   Scenario: Retrieve certain pick up group json
-    Given I add Authorization header
+    Given I add Company Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "pick_up_groups/1"
     Then the response status code should be 200

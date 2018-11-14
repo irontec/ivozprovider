@@ -5,7 +5,7 @@ Feature: Retrieve call acl rel match lists
 
   @createSchema
   Scenario: Retrieve the call acl rel matchlist json list
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "call_acl_rel_match_lists"
      Then the response status code should be 200
@@ -34,7 +34,7 @@ Feature: Retrieve call acl rel match lists
     """
 
   Scenario: Retrieve certain call acl rel match list json
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "call_acl_rel_match_lists/1"
      Then the response status code should be 200

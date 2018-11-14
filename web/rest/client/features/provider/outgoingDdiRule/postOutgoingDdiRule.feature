@@ -5,7 +5,7 @@ Feature: Create outgoing ddi rules
 
   @createSchema
   Scenario: Create an outgoing ddi rule
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/outgoing_ddi_rules" with body:
@@ -31,7 +31,7 @@ Feature: Create outgoing ddi rules
     """
 
   Scenario: Retrieve created outgoing ddi rule
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "outgoing_ddi_rules/2"
      Then the response status code should be 200

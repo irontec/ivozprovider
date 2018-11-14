@@ -6,13 +6,13 @@ Feature: Authorization checking
   @createSchema
   Scenario: An anonymous user retrieve a secured resource
     When I add "Accept" header equal to "application/ld+json"
-    And  I send a "GET" request to "brands"
+    And  I send a "GET" request to "companies"
     Then the response status code should be 401
 
   @dropSchema
   Scenario: An authenticated user retrieve a secured resource
-    When I add Authorization header
+    When I add Brand Authorization header
     And  I add "Accept" header equal to "application/ld+json"
-    And  I send a "GET" request to "brands"
+    And  I send a "GET" request to "companies"
     Then the response status code should be 200
     And  the response should be in JSON

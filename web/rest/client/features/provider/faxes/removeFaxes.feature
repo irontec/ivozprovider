@@ -5,7 +5,7 @@ Feature: Manage faxes
 
   @createSchema
   Scenario: Remove a faxes
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "DELETE" request to "/faxes/1"

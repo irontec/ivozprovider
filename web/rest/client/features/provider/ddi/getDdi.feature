@@ -5,7 +5,7 @@ Feature: Retrieve Ddis
 
   @createSchema
   Scenario: Retrieve the Ddis json list
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "ddis"
      Then the response status code should be 200
@@ -24,7 +24,7 @@ Feature: Retrieve Ddis
     """
 
   Scenario: Retrieve certain Ddi json
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "ddis/1"
      Then the response status code should be 200

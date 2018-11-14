@@ -5,7 +5,7 @@ Feature: Create music on holds
 
   @createSchema
   Scenario: Create a music on hold
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/music_on_holds" with body:
@@ -39,7 +39,7 @@ Feature: Create music on holds
     """
 
   Scenario: Retrieve created music on holds
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "music_on_holds/3"
      Then the response status code should be 200

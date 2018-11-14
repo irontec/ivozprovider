@@ -5,7 +5,7 @@ Feature: Create call acls
 
   @createSchema
   Scenario: Create an call acl
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "call_acls" with body:
@@ -29,7 +29,7 @@ Feature: Create call acls
     """
 
   Scenario: Retrieve created call acl
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "call_acls/3"
      Then the response status code should be 200
