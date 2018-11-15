@@ -96,9 +96,9 @@ class EndpointResolver
         /** @var \Ivoz\Provider\Domain\Model\Terminal\TerminalRepository $terminalRepository */
         $terminalRepository = $this->em->getRepository(Terminal::class);
         /** @var \Ivoz\Provider\Domain\Model\Terminal\TerminalInterface $terminal */
-        $terminal = $terminalRepository->findOneByNameAndDomainId(
+        $terminal = $terminalRepository->findOneByNameAndDomain(
             $endpointNum,
-            $domain->getId()
+            $domain
         );
 
         Assertion::notNull(

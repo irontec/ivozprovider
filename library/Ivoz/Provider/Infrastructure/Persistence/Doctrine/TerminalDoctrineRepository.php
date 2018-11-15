@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Ivoz\Provider\Domain\Model\Domain\DomainInterface;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalRepository;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalInterface;
 use Ivoz\Provider\Domain\Model\Terminal\Terminal;
@@ -23,15 +24,15 @@ class TerminalDoctrineRepository extends ServiceEntityRepository implements Term
 
     /**
      * @param string $name
-     * @param $domainId
+     * @param DomainInterface $domain
      * @return TerminalInterface | null
      */
-    public function findOneByNameAndDomainId(string $name, $domainId)
+    public function findOneByNameAndDomain(string $name, DomainInterface $domain)
     {
         /** @var TerminalInterface $response */
         $response = $this->findOneBy([
             'name' => $name,
-            'domain' => $domainId
+            'domain' => $domain
         ]);
 
         return $response;
