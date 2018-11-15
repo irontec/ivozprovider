@@ -172,6 +172,7 @@ class FaxReceiveStatusAction
             // Get data from template
             $fromName = $notificationTemplateContent->getFromName();
             $fromAddress = $notificationTemplateContent->getFromAddress();
+            $bodyType = $notificationTemplateContent->getBodyType();
             $body = $notificationTemplateContent->getBody();
             $subject = $notificationTemplateContent->getSubject();
 
@@ -183,7 +184,7 @@ class FaxReceiveStatusAction
 
             // Create a new mail and attach the PDF file
             $mail = new \Swift_Message();
-            $mail->setBody($body, 'text/html')
+            $mail->setBody($body, $bodyType)
                 ->setSubject($subject)
                 ->setFrom($fromAddress, $fromName)
                 ->setTo($fax->getEmail())

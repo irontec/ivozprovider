@@ -104,6 +104,14 @@ production:
             - html
           lineNumbers: true
           matchBrackets: true
+    bodyType:
+      title: ngettext('Body type', 'Body types', 1)
+      type: select
+      source:
+        data: inline
+        values:
+          text/plain: "text/plain"
+          text/html: "text/html"
 staging:
   _extends: production
 testing:

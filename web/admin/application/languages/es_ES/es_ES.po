@@ -253,6 +253,11 @@ msgstr "Listas negras"
 msgid "Body"
 msgstr "Cuerpo"
 
+msgid "Body type"
+msgid_plural "Body types"
+msgstr[0] "Tipo de cuerpo"
+msgstr[1] "Tipos de cuerpo"
+
 msgid "Boss Whitelist"
 msgstr "Listas blanca jefe"
 

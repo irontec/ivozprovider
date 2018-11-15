@@ -246,6 +246,7 @@ class EmailSenderSpec extends ObjectBehavior
                 'getFromName' => 'Name',
                 'getFromAddress' => 'Address',
                 'getBody' => 'Body',
+                'getBodyType' => 'BodyType',
                 'getSubject' => 'Subject'
             ],
             false

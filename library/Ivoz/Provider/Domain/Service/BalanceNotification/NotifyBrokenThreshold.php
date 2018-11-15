@@ -83,6 +83,7 @@ class NotifyBrokenThreshold implements DomainEventSubscriberInterface
             $name,
             $event->getCurrentBalance()
         );
+        $bodyType = $notificationContent->getBodyType();
 
         $body = $this->parseNotificationContent(
             $notificationContent->getBody(),
@@ -93,7 +94,7 @@ class NotifyBrokenThreshold implements DomainEventSubscriberInterface
         $email = new Message();
         $email
             ->setSubject($subject)
-            ->setBody($body)
+            ->setBody($body, $bodyType)
             ->setFromAddress(
                 $notificationContent->getFromAddress()
             )

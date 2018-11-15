@@ -248,6 +248,11 @@ msgstr "Black Lists"
 msgid "Body"
 msgstr "Body"
 
+msgid "Body type"
+msgid_plural "Body types"
+msgstr[0] "Body type"
+msgstr[1] "Body types"
+
 msgid "Boss Whitelist"
 msgstr "Boss Whitelist"
 

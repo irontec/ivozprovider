@@ -43,6 +43,7 @@ Feature: Create notification template contents
           "fromAddress": null,
           "subject": "Test subject",
           "body": "Test body",
+          "bodyType": "text\/plain",
           "id": 2,
           "notificationTemplate": {
               "name": "Voicemail notification",

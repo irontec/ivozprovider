@@ -18,6 +18,7 @@ production:
         blacklist:
           subject: true
           body: true
+          bodyType: true
           voicemailVariables: true
           faxVariables: true
           invoiceVariables: true
@@ -53,6 +54,7 @@ production:
           invoiceVariables: true
           lowBalanceVariables: true
           subject: true
+          bodyType: true
           body: true
       fixedPositions: &notificationTemplatesContentsFixedPositions_Link
         group0:
@@ -68,14 +70,15 @@ production:
             fromAddress: 1
         group2:
           label: _("Contents configuration")
-          colsPerRow: 1
+          colsPerRow: 12
           fields:
-            voicemailVariables: 1
-            faxVariables: 1
-            invoiceVariables: 1
-            lowBalanceVariables: 1
-            subject: 1
-            body: 1
+            voicemailVariables: 12
+            faxVariables: 12
+            invoiceVariables: 12
+            lowBalanceVariables: 12
+            bodyType: 3
+            subject: 9
+            body: 12
     notificationTemplatesContentsEdit_screen: &notificationTemplatesContentsEdit_screenLink
       <<: *NotificationTemplatesContents
       controller: edit
