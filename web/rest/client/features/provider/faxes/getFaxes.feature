@@ -5,7 +5,7 @@ Feature: Retrieve faxes
 
   @createSchema
   Scenario: Retrieve the faxes json list
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "faxes"
      Then the response status code should be 200
@@ -24,7 +24,7 @@ Feature: Retrieve faxes
     """
 
   Scenario: Retrieve certain fax json
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "faxes/1"
      Then the response status code should be 200

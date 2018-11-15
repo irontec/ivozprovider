@@ -17,12 +17,12 @@ Feature: Retrieve media relay sets
           {
               "name": "Default",
               "description": "Default media relay set",
-              "id": 1
+              "id": 0
           },
           {
               "name": "Test",
               "description": "Test media relay set",
-              "id": 2
+              "id": 1
           }
       ]
     """
@@ -30,7 +30,7 @@ Feature: Retrieve media relay sets
   Scenario: Retrieve certain media relay set json
     Given I add Authorization header
     When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "media_relay_sets/1"
+    And I send a "GET" request to "media_relay_sets/0"
     Then the response status code should be 200
     And the response should be in JSON
     And the header "Content-Type" should be equal to "application/json; charset=utf-8"
@@ -39,6 +39,6 @@ Feature: Retrieve media relay sets
       {
           "name": "Default",
           "description": "Default media relay set",
-          "id": 1
+          "id": 0
       }
     """

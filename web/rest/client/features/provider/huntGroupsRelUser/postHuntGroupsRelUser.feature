@@ -5,7 +5,7 @@ Feature: Create hunt groups rel users
 
   @createSchema
   Scenario: Create a hunt group rel user
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/hunt_groups_rel_users" with body:
@@ -47,7 +47,7 @@ Feature: Create hunt groups rel users
     """
 
   Scenario: Retrieve created hunt group rel user
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "hunt_groups_rel_users/2"
      Then the response status code should be 200

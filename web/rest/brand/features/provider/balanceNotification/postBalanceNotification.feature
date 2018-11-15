@@ -5,7 +5,7 @@ Feature: Create balance notifications
 
   @createSchema
   Scenario: Create an balance notification
-    Given I add Authorization header
+    Given I add Brand Authorization header
     When I add "Content-Type" header equal to "application/json"
     And I add "Accept" header equal to "application/json"
     And I send a "POST" request to "/balance_notifications" with body:
@@ -29,7 +29,7 @@ Feature: Create balance notifications
     """
 
   Scenario: Retrieve created balance notifications
-    Given I add Authorization header
+    Given I add Brand Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "balance_notifications/3"
     Then the response status code should be 200

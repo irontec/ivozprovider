@@ -13,7 +13,6 @@ class AdministratorRepositoryTest extends KernelTestCase
 
     /**
      * @test
-     * @expectedException \RuntimeException
      */
     public function it_throws_exception_on_no_results()
     {
@@ -21,6 +20,16 @@ class AdministratorRepositoryTest extends KernelTestCase
         $repository = $this->em
             ->getRepository(Administrator::class);
 
-        $repository->getInnerGlobalAdmin();
+        $innerAdmin = $repository->getInnerGlobalAdmin();
+
+        $this->assertInstanceOf(
+            Administrator::class,
+            $innerAdmin
+        );
+
+        $this->assertEquals(
+            $innerAdmin->getId(),
+            0
+        );
     }
 }

@@ -5,7 +5,7 @@ Feature: Create schedules
 
   @createSchema
   Scenario: Create a schedule
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/schedules" with body:
@@ -45,7 +45,7 @@ Feature: Create schedules
     """
 
   Scenario: Retrieve created schedule
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "/schedules/3"
      Then the response status code should be 200

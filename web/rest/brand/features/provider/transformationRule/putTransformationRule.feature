@@ -5,18 +5,17 @@ Feature: Update transformation rules
 
   @createSchema
   Scenario: Update a transformation rule
-    Given I add Authorization header
+    Given I add Brand Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
-      And I send a "PUT" request to "/transformation_rules/1" with body:
+      And I send a "PUT" request to "/transformation_rules/5" with body:
     """
       {
-          "type": "callerout",
-          "description": "updated From e164 to special national",
-          "priority": 4,
-          "matchExpr": "^\\+34([0-9]+)$",
-          "replaceExpr": "\u0001",
-          "id": 1,
+          "type": "callerin",
+          "description": "Updated",
+          "priority": 5,
+          "matchExpr": "^([0-9]+)$",
+          "replaceExpr": "+34\u0001",
           "transformationRuleSet": 2
       }
     """
@@ -26,12 +25,12 @@ Feature: Update transformation rules
      And the JSON should be equal to:
     """
        {
-          "type": "callerout",
-          "description": "updated From e164 to special national",
-          "priority": 4,
-          "matchExpr": "^\\+34([0-9]+)$",
-          "replaceExpr": "\u0001",
-          "id": 1,
+          "type": "callerin",
+          "description": "Updated",
+          "priority": 5,
+          "matchExpr": "^([0-9]+)$",
+          "replaceExpr": "+34\u0001",
+          "id": 5,
           "transformationRuleSet": {
               "description": "",
               "internationalCode": "00",

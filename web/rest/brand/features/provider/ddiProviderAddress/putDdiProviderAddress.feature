@@ -5,7 +5,7 @@ Feature: Update ddi provider addresses
 
   @createSchema
   Scenario: Update a ddi provider address
-    Given I add Authorization header
+    Given I add Brand Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "PUT" request to "/ddi_provider_addresses/1" with body:

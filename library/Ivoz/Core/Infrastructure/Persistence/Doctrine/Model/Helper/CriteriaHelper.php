@@ -52,6 +52,10 @@ class CriteriaHelper implements CriteriaHelperInterface
     {
         $expressions = [];
         foreach ($conditions as $key => $comparison) {
+            if (is_string($comparison)) {
+                throw new \RuntimeException("Raw (string) conditions cannot be converted into expressions");
+            }
+
             if (!in_array($key, ['or', 'and'], true)) {
                 list($field, $operator) = $comparison;
                 $value = $comparison[2] ?? null;

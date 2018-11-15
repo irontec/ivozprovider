@@ -5,7 +5,7 @@ Feature: Retrieve languages
 
   @createSchema
   Scenario: Retrieve the languages json list
-    Given I add Authorization header
+    Given I add Brand Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "languages"
     Then the response status code should be 200
@@ -26,7 +26,7 @@ Feature: Retrieve languages
     """
 
   Scenario: Retrieve certain language json
-    Given I add Authorization header
+    Given I add Brand Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "languages/1"
     Then the response status code should be 200

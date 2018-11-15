@@ -5,7 +5,7 @@ Feature: Update call forward settings
 
   @createSchema
   Scenario: Update a call forward setting
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "PUT" request to "/call_forward_settings/1" with body:

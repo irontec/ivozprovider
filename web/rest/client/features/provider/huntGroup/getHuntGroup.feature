@@ -5,7 +5,7 @@ Feature: Retrieve hunt groups
 
   @createSchema
   Scenario: Retrieve the hunt groups json list
-    Given I add Authorization header
+    Given I add Company Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "hunt_groups"
     Then the response status code should be 200
@@ -23,7 +23,7 @@ Feature: Retrieve hunt groups
     """
 
   Scenario: Retrieve certain hunt group json
-    Given I add Authorization header
+    Given I add Company Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "hunt_groups/1"
     Then the response status code should be 200

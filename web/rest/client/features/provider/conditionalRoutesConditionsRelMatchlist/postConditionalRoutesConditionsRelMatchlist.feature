@@ -5,7 +5,7 @@ Feature: Create conditional routes conditions rel matchlists
 
   @createSchema
   Scenario: Create an conditional routes conditions rel matchlists
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/conditional_routes_conditions_rel_matchlists" with body:
@@ -49,7 +49,7 @@ Feature: Create conditional routes conditions rel matchlists
     """
 
   Scenario: Retrieve created conditional routes conditions rel matchlists
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "conditional_routes_conditions_rel_matchlists/2"
      Then the response status code should be 200

@@ -5,7 +5,7 @@ Feature: Create routing pattern groups
 
   @createSchema
   Scenario: Create a routing pattern group
-    Given I add Authorization header
+    Given I add Brand Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/routing_pattern_groups" with body:
@@ -13,7 +13,7 @@ Feature: Create routing pattern groups
       {
           "name": "Usansolocity",
           "description": "Usansolocity",
-          "brand": 2
+          "brand": 1
       }
     """
     Then the response status code should be 201
@@ -29,7 +29,7 @@ Feature: Create routing pattern groups
     """
 
   Scenario: Retrieve created routing pattern group
-    Given I add Authorization header
+    Given I add Brand Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "/routing_pattern_groups/3"
      Then the response status code should be 200

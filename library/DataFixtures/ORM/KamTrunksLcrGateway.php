@@ -21,6 +21,10 @@ class KamTrunksLcrGateway extends Fixture implements DependentFixtureInterface
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(TrunksLcrGateway::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
 
+        $manager->getConnection()->exec(
+            "INSERT INTO kam_trunks_lcr_gateways (id, gw_name, hostname, carrierServerId) VALUES (0, 'LcrDummyGateway', 'dummy.ivozprovider.local', NULL)"
+        );
+
         /** @var TrunksLcrGatewayInterface $item1 */
         $item1 = $this->createEntityInstanceWithPublicMethods(TrunksLcrGateway::class);
         $item1->setLcrId(1);

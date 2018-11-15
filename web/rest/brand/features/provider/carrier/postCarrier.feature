@@ -5,7 +5,7 @@ Feature: Create carriers
 
   @createSchema
   Scenario: Create a carriers
-    Given I add Authorization header
+    Given I add Brand Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/carriers" with body:
@@ -32,7 +32,7 @@ Feature: Create carriers
     """
 
   Scenario: Retrieve created carrier
-    Given I add Authorization header
+    Given I add Brand Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "/carriers/2"
      Then the response status code should be 200

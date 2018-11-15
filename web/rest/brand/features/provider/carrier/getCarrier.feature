@@ -5,7 +5,7 @@ Feature: Retrieve carriers
 
   @createSchema
   Scenario: Retrieve the carriers json list
-    Given I add Authorization header
+    Given I add Brand Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "carriers"
     Then the response status code should be 200
@@ -24,7 +24,7 @@ Feature: Retrieve carriers
     """
 
   Scenario: Retrieve certain carrier json
-    Given I add Authorization header
+    Given I add Brand Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "carriers/1"
     Then the response status code should be 200

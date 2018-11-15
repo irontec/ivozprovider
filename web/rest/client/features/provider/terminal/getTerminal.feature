@@ -5,7 +5,7 @@ Feature: Retrieve terminals
 
   @createSchema
   Scenario: Retrieve the terminals json list
-    Given I add Authorization header
+    Given I add Company Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "terminals"
     Then the response status code should be 200
@@ -36,7 +36,7 @@ Feature: Retrieve terminals
     """
 
   Scenario: Retrieve certain terminals json
-    Given I add Authorization header
+    Given I add Company Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "terminals/1"
     Then the response status code should be 200

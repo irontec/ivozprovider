@@ -19,7 +19,11 @@ class ProviderAdministrator extends Fixture implements DependentFixtureInterface
     {
         $this->disableLifecycleEvents($manager);
         $manager->getClassMetadata(Administrator::class)->setIdGeneratorType(ClassMetadata::GENERATOR_TYPE_NONE);
-    
+
+        $manager->getConnection()->exec(
+            'INSERT INTO Administrators (id, username, pass, active) VALUES (0, "privateAdmin", "", 0)'
+        );
+
         $item1 = $this->createEntityInstanceWithPublicMethods(Administrator::class);
         $item1->setUsername("admin");
         $item1->setPass('changeme');
@@ -33,7 +37,7 @@ class ProviderAdministrator extends Fixture implements DependentFixtureInterface
         $manager->persist($item1);
 
         $item2 = $this->createEntityInstanceWithPublicMethods(Administrator::class);
-        $item2->setUsername("test admin");
+        $item2->setUsername("test_brand_admin");
         $item2->setPass("changeme");
         $item2->setEmail("nightwatch@irontec.com");
         $item2->setActive(true);
@@ -71,7 +75,6 @@ class ProviderAdministrator extends Fixture implements DependentFixtureInterface
         $this->sanitizeEntityValues($item4);
         $manager->persist($item4);
 
-    
         $manager->flush();
     }
 

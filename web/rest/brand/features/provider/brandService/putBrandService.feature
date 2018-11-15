@@ -5,14 +5,14 @@ Feature: Update brand services
 
   @createSchema
   Scenario: Update an brand service
-    Given I add Authorization header
+    Given I add Brand Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
-      And I send a "PUT" request to "/brand_services/1" with body:
+      And I send a "PUT" request to "/brand_services/2" with body:
     """
       {
         "code": "95",
-        "brand": 2,
+        "brand": 1,
         "service": 2
       }
     """
@@ -23,14 +23,14 @@ Feature: Update brand services
     """
       {
           "code": "95",
-          "id": 1,
+          "id": 2,
           "brand": {
-              "name": "Irontec_e2e",
-              "domainUsers": "sip.irontec.com",
+              "name": "DemoBrand",
+              "domainUsers": "",
               "recordingsLimitMB": null,
-              "recordingsLimitEmail": null,
+              "recordingsLimitEmail": "",
               "maxCalls": 0,
-              "id": 2,
+              "id": 1,
               "logo": {
                   "fileSize": null,
                   "mimeType": null,
@@ -45,7 +45,7 @@ Feature: Update brand services
                   "country": "",
                   "registryData": ""
               },
-              "domain": 4,
+              "domain": 6,
               "language": 1,
               "defaultTimezone": 1
           },

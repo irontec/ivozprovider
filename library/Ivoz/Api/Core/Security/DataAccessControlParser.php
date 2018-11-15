@@ -17,6 +17,8 @@ use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 
 class DataAccessControlParser
 {
+    const RAW_CONDITION_KEY = 'raw';
+
     const INHERITANCE_KEY = 'inherited';
 
     const READ_ACCESS_CONTROL_ATTRIBUTE = 'read_access_control';
@@ -232,7 +234,7 @@ class DataAccessControlParser
     {
         $arrayCriteria = [];
         foreach ($accessControl as $key => $value) {
-            if (in_array($key, ['and', 'or'])) {
+            if (in_array($key, ['and', 'or'], true)) {
                 $subCriteria = [];
                 foreach ($value as $v) {
                     $parsedValue = $this->accessControlToArrayCriteria($v);
@@ -241,6 +243,17 @@ class DataAccessControlParser
 
                 $arrayCriteria[$key] =  $subCriteria;
                 continue;
+            }
+
+            if ($key === self::RAW_CONDITION_KEY) {
+                $arrayCriteria[] = $value;
+                continue;
+            }
+
+            if (!is_array($value)) {
+                throw new \RuntimeException(
+                    "Array value excepted at " . __FILE__ . ":" . __LINE__
+                );
             }
 
             $arrayCriteria[] = [
@@ -259,6 +272,16 @@ class DataAccessControlParser
     {
         $response = [];
         foreach ($dataAccessControl as $key => $value) {
+            if ($key === self::RAW_CONDITION_KEY) {
+                $response[$key] = $value;
+                continue;
+            }
+
+            if (is_null($value)) {
+                $response[$key] = $value;
+                continue;
+            }
+
             $response[$key] = is_scalar($value)
                 ? $this->evaluateExpression($value)
                 : $this->parseDataAccessControl($value);

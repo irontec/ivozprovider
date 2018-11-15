@@ -5,7 +5,7 @@ Feature: Retrieve conditional routes conditions rel matchlists
 
   @createSchema
   Scenario: Retrieve the conditional routes conditions rel matchlists json list
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "conditional_routes_conditions_rel_matchlists"
      Then the response status code should be 200
@@ -43,7 +43,7 @@ Feature: Retrieve conditional routes conditions rel matchlists
     """
 
   Scenario: Retrieve certain conditional routes conditions rel matchlist json
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "conditional_routes_conditions_rel_matchlists/1"
      Then the response status code should be 200

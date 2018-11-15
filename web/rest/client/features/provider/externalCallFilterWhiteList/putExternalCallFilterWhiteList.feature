@@ -5,7 +5,7 @@ Feature: Update external call filter white lists
 
   @createSchema
   Scenario: Update an external call filter white list
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "PUT" request to "/external_call_filter_white_lists/1" with body:

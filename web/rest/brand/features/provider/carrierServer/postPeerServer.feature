@@ -5,7 +5,7 @@ Feature: Create carrier servers
 
   @createSchema
   Scenario: Create a carrier servers
-    Given I add Authorization header
+    Given I add Brand Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/carrier_servers" with body:
@@ -26,7 +26,7 @@ Feature: Create carrier servers
           "fromUser": "",
           "fromDomain": "",
           "carrier": 1,
-          "brand": 2
+          "brand": 1
       }
     """
     Then the response status code should be 201
@@ -44,7 +44,7 @@ Feature: Create carrier servers
     """
 
   Scenario: Retrieve created carrier server
-    Given I add Authorization header
+    Given I add Brand Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "carrier_servers/2"
      Then the response status code should be 200

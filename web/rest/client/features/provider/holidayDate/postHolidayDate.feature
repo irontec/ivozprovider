@@ -5,7 +5,7 @@ Feature: Create holiday dates
 
   @createSchema
   Scenario: Create a holiday date
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "POST" request to "/holiday_dates" with body:
@@ -30,7 +30,7 @@ Feature: Create holiday dates
     """
 
   Scenario: Retrieve created holiday date
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "holiday_dates/2"
      Then the response status code should be 200

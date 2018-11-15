@@ -5,7 +5,7 @@ Feature: Manage Ddis
 
   @createSchema
   Scenario: Remove a Ddi
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "DELETE" request to "/ddis/1"

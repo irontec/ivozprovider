@@ -5,7 +5,7 @@ Feature: Retrieve features rel companies
 
   @createSchema
   Scenario: Retrieve the features rel companies json list
-    Given I add Authorization header
+    Given I add Company Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "features_rel_companies"
     Then the response status code should be 200
@@ -78,7 +78,7 @@ Feature: Retrieve features rel companies
     """
 
   Scenario: Retrieve certain features rel company json
-    Given I add Authorization header
+    Given I add Company Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "features_rel_companies/1"
     Then the response status code should be 200

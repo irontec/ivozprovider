@@ -5,7 +5,7 @@ Feature: Retrieve call acls
 
   @createSchema
   Scenario: Retrieve the call acl json list
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "call_acls"
      Then the response status code should be 200
@@ -28,7 +28,7 @@ Feature: Retrieve call acls
     """
 
   Scenario: Retrieve certain call acl json
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "call_acls/1"
      Then the response status code should be 200

@@ -5,25 +5,25 @@ Feature: Update transformation rule sets
 
   @createSchema
   Scenario: Update a transformation rule set
-    Given I add Authorization header
+    Given I add Brand Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
-      And I send a "PUT" request to "/transformation_rule_sets/1" with body:
+      And I send a "PUT" request to "/transformation_rule_sets/2" with body:
     """
       {
-          "description": "Updated transformation for some country",
+          "description": "Desc",
           "internationalCode": "00",
           "trunkPrefix": "",
           "areaCode": "",
           "nationalLen": 9,
           "generateRules": false,
-          "id": 1,
+          "id": 2,
           "name": {
-              "en": "en1",
-              "es": "es1"
+              "en": "updated name",
+              "es": "nombre actualizado"
           },
           "brand": 1,
-          "country": 2
+          "country": 1
       }
     """
     Then the response status code should be 200
@@ -32,16 +32,16 @@ Feature: Update transformation rule sets
      And the JSON should be equal to:
     """
       {
-          "description": "Updated transformation for some country",
+          "description": "Desc",
           "internationalCode": "00",
           "trunkPrefix": "",
           "areaCode": "",
           "nationalLen": 9,
           "generateRules": false,
-          "id": 1,
+          "id": 2,
           "name": {
-              "en": "en1",
-              "es": "es1"
+              "en": "updated name",
+              "es": "nombre actualizado"
           },
           "brand": {
               "name": "DemoBrand",
@@ -69,12 +69,12 @@ Feature: Update transformation rule sets
               "defaultTimezone": 1
           },
           "country": {
-              "code": "GB",
-              "countryCode": "+44",
-              "id": 2,
+              "code": "ES",
+              "countryCode": "+34",
+              "id": 1,
               "name": {
-                  "en": "United Kingdom",
-                  "es": "Reino Unido"
+                  "en": "Spain",
+                  "es": "España"
               },
               "zone": {
                   "en": "Europe",

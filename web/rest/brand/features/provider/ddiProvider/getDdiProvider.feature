@@ -5,7 +5,7 @@ Feature: Retrieve ddi providers
 
   @createSchema
   Scenario: Retrieve the ddi providers json list
-    Given I add Authorization header
+    Given I add Brand Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "ddi_providers"
     Then the response status code should be 200
@@ -23,7 +23,7 @@ Feature: Retrieve ddi providers
     """
 
   Scenario: Retrieve certain ddi provider json
-    Given I add Authorization header
+    Given I add Brand Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "ddi_providers/1"
     Then the response status code should be 200

@@ -5,7 +5,7 @@ Feature: Update music on holds
 
   @createSchema
   Scenario: Update a music on hold
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Content-Type" header equal to "application/json"
       And I add "Accept" header equal to "application/json"
       And I send a "PUT" request to "/music_on_holds/1" with body:

@@ -5,7 +5,7 @@ Feature: Retrieve match lists
 
   @createSchema
   Scenario: Retrieve the match lists json list
-    Given I add Authorization header
+    Given I add Company Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "match_lists"
     Then the response status code should be 200
@@ -26,7 +26,7 @@ Feature: Retrieve match lists
     """
 
   Scenario: Retrieve certain match list json
-    Given I add Authorization header
+    Given I add Company Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "match_lists/1"
     Then the response status code should be 200

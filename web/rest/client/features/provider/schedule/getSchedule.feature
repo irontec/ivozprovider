@@ -5,7 +5,7 @@ Feature: Retrieve schedules
 
   @createSchema
   Scenario: Retrieve the schedules json list
-    Given I add Authorization header
+    Given I add Company Authorization header
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "schedules"
     Then the response status code should be 200
@@ -44,7 +44,7 @@ Feature: Retrieve schedules
     """
 
   Scenario: Retrieve certain schedule json
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "schedules/1"
      Then the response status code should be 200

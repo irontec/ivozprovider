@@ -37,7 +37,7 @@ class FeatureContext implements Context, SnippetAcceptingContext
     }
 
     /**
-     * @Given I add Authorization header
+     * @Given I add Company Authorization header
      */
     public function setAuthorizationHeader()
     {
@@ -45,7 +45,7 @@ class FeatureContext implements Context, SnippetAcceptingContext
             'POST',
             'admin_login',
             [
-                'username' => 'admin',
+                'username' => 'test_company_admin',
                 'password' => 'changeme'
             ]
         );

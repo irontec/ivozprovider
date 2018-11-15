@@ -5,7 +5,7 @@ Feature: Retrieve callForwardSetting
 
   @createSchema
   Scenario: Retrieve call forward settings json list
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "call_forward_settings"
      Then the response status code should be 200
@@ -46,7 +46,7 @@ Feature: Retrieve callForwardSetting
     """
 
   Scenario: Retrieve certain call forward setting json
-    Given I add Authorization header
+    Given I add Company Authorization header
      When I add "Accept" header equal to "application/json"
       And I send a "GET" request to "call_forward_settings/1"
      Then the response status code should be 200
