@@ -5,7 +5,6 @@ namespace Ivoz\Provider\Domain\Service\Friend;
 use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Friend\FriendInterface;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalRepository;
-use Zend\EventManager\Exception\DomainException;
 
 /**
  * Class CheckUniqueness
@@ -14,11 +13,6 @@ use Zend\EventManager\Exception\DomainException;
 class CheckUniqueness implements FriendLifecycleEventHandlerInterface
 {
     const PRE_PERSIST_PRIORITY = self::PRIORITY_NORMAL;
-
-    /**
-     * @var EntityTools
-     */
-    protected $entityTools;
 
     /**
      * @var TerminalRepository
@@ -53,7 +47,7 @@ class CheckUniqueness implements FriendLifecycleEventHandlerInterface
             );
 
         if ($terminal) {
-            throw new DomainException("There is already a terminal with that name.", 30008);
+            throw new \DomainException("There is already a terminal with that name.", 30008);
         }
     }
 }

@@ -42,6 +42,7 @@ class SearchBrokenThresholds implements CompanyLifecycleEventHandlerInterface
     public function execute(CompanyInterface $company, $isNew)
     {
         // Skip new created company
+        $isNew = $company->isNew();
         if ($isNew) {
             return;
         }

@@ -43,7 +43,7 @@ class CreateByScheduler
         } catch (\Exception $e) {
             $name = $scheduler->getName();
             $this->logger->error(
-                "Invoice scheduler #${$name} has failed: "
+                "Invoice scheduler #${name} has failed: "
                 . $e->getMessage()
             );
 
@@ -115,7 +115,7 @@ class CreateByScheduler
      */
     private function setFixedCosts(InvoiceSchedulerInterface $scheduler, $invoice)
     {
-        /** @var FixedCostsRelInvoiceSchedulerInterface $relFixedCosts */
+        /** @var FixedCostsRelInvoiceSchedulerInterface[] $relFixedCosts */
         $relFixedCosts = $scheduler->getRelFixedCosts();
         foreach ($relFixedCosts as $relFixedCost) {
             $fixedCostRelInvoice = FixedCostsRelInvoice::fromFixedCostsRelInvoiceScheduler(

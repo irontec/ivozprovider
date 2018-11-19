@@ -4,7 +4,6 @@ namespace Ivoz\Provider\Domain\Service\CallCsvScheduler;
 
 use Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface;
 use Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerRepository;
-use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 
 class CheckUniqueness implements CallCsvSchedulerLifecycleEventHandlerInterface
 {
@@ -37,15 +36,9 @@ class CheckUniqueness implements CallCsvSchedulerLifecycleEventHandlerInterface
             return;
         }
 
-        $criteria = CriteriaHelper::fromArray([
-            ['id', 'neq', $callCsvScheduler->getId()],
-            ['company', 'eq', $callCsvScheduler->getCompany()->getId()],
-            ['name', 'eq', $callCsvScheduler->getName()]
-        ]);
+        $unique = $this->callCsvSchedulerRepository->hasUniqueName($callCsvScheduler);
 
-        $result = $this->callCsvSchedulerRepository->countByCriteria($criteria);
-
-        if ($result > 0) {
+        if (!$unique) {
             throw new \DomainException('Name already in use');
         }
     }
