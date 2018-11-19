@@ -94,7 +94,7 @@ class EmailSenderSpec extends ObjectBehavior
             )
             ->shouldBeCalled();
 
-        $this->execute($callCsvReport, true);
+        $this->execute($callCsvReport);
     }
 
     public function it_logs_errors_and_throws_domain_exception(
@@ -144,7 +144,7 @@ class EmailSenderSpec extends ObjectBehavior
             ->willReturn(null)
             ->shouldNotBeCalled();
 
-        $this->execute($callCsvReport, true);
+        $this->execute($callCsvReport);
     }
 
     public function it_does_nothing_with_empty_scheduler(
@@ -164,7 +164,7 @@ class EmailSenderSpec extends ObjectBehavior
             ->getSentTo()
             ->shouldNotBeCalled();
 
-        $this->execute($callCsvReport, true);
+        $this->execute($callCsvReport);
     }
 
     public function it_does_nothing_with_empty_target_email(
@@ -190,7 +190,7 @@ class EmailSenderSpec extends ObjectBehavior
             ->getCompany()
             ->shouldNotBeCalled();
 
-        $this->execute($callCsvReport, true);
+        $this->execute($callCsvReport);
     }
 
     protected function prepareExecution(
@@ -246,7 +246,6 @@ class EmailSenderSpec extends ObjectBehavior
                 'getFromName' => 'Name',
                 'getFromAddress' => 'Address',
                 'getBody' => 'Body',
-                'getBodyType' => 'BodyType',
                 'getSubject' => 'Subject'
             ],
             false

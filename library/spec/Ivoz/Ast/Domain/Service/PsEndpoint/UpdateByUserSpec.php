@@ -71,6 +71,6 @@ class UpdateByUserSpec extends ObjectBehavior
             ->persistDto($psEndpointDto, $psEndpoint, false)
             ->shouldBeCalled();
 
-        $this->execute($user, false);
+        $this->execute($user);
     }
 }

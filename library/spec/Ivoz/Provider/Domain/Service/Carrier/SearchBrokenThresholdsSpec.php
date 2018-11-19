@@ -49,7 +49,7 @@ class SearchBrokenThresholdsSpec extends ObjectBehavior
     ) {
         $carrier->isNew()->willReturn(true);
 
-        $this->execute($carrier, true);
+        $this->execute($carrier);
     }
 
     function it_does_nothing_on_unchanged_balance(
@@ -66,7 +66,7 @@ class SearchBrokenThresholdsSpec extends ObjectBehavior
             true
         );
 
-        $this->execute($carrier, true);
+        $this->execute($carrier);
     }
 
     function it_does_nothing_on_balance_increments(
@@ -91,7 +91,7 @@ class SearchBrokenThresholdsSpec extends ObjectBehavior
             ->publish(Argument::any())
             ->shouldNotBeCalled();
 
-        $this->execute($carrier, true);
+        $this->execute($carrier);
     }
 
     function it_triggers_domain_events(
@@ -134,6 +134,6 @@ class SearchBrokenThresholdsSpec extends ObjectBehavior
             ->publish(Argument::type(CarrierBalanceThresholdWasBroken::class))
             ->shouldBeCalled();
 
-        $this->execute($carrier, true);
+        $this->execute($carrier);
     }
 }

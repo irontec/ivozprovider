@@ -67,6 +67,6 @@ class UpdateByPickUpRelUserSpec extends ObjectBehavior
                 false
             )->shouldBeCalled();
 
-        $this->execute($pickUpRelUser, true);
+        $this->execute($pickUpRelUser);
     }
 }

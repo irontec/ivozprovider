@@ -2,7 +2,7 @@
 
 namespace spec\Ivoz\Provider\Domain\Service\RoutingPattern;
 
-use Ivoz\Core\Domain\Service\EntityPersisterInterface;
+use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryInterface;
 use Ivoz\Provider\Domain\Model\Country\CountryRepository;
@@ -20,9 +20,9 @@ class UpdateByBrandSpec extends ObjectBehavior
     use HelperTrait;
 
     /**
-     * @var EntityPersisterInterface
+     * @var EntityTools
      */
-    protected $entityPersister;
+    protected $entityTools;
 
     /**
      * @var CountryRepository
@@ -35,16 +35,16 @@ class UpdateByBrandSpec extends ObjectBehavior
     protected $routingPatternGroupByRoutingPatternAndCountry;
 
     public function let(
-        EntityPersisterInterface $entityPersister,
+        EntityTools $entityTools,
         CountryRepository $countryRepository,
         UpdateByRoutingPatternAndCountry $routingPatternGroupByRoutingPatternAndCountry
     ) {
-        $this->entityPersister = $entityPersister;
+        $this->entityTools = $entityTools;
         $this->countryRepository = $countryRepository;
         $this->routingPatternGroupByRoutingPatternAndCountry = $routingPatternGroupByRoutingPatternAndCountry;
 
         $this->beConstructedWith(
-            $entityPersister,
+            $entityTools,
             $countryRepository,
             $routingPatternGroupByRoutingPatternAndCountry
         );
@@ -58,13 +58,16 @@ class UpdateByBrandSpec extends ObjectBehavior
     function it_does_nothing_if_not_new(
         BrandInterface $entity
     ) {
+        $entity
+            ->isNew()
+            ->willReturn(false);
 
         $this
             ->countryRepository
             ->findAll()
             ->shouldNotBeCalled();
 
-        $this->execute($entity, false);
+        $this->execute($entity);
     }
 
 
@@ -73,6 +76,13 @@ class UpdateByBrandSpec extends ObjectBehavior
         CountryInterface $country,
         RoutingPattern $routingPattern
     ) {
+        $entity
+            ->isNew()
+            ->willReturn(true);
+
+        $entity
+            ->getId()
+            ->willReturn(1);
 
         $this
             ->countryRepository
@@ -89,7 +99,7 @@ class UpdateByBrandSpec extends ObjectBehavior
         );
 
         $this
-            ->entityPersister
+            ->entityTools
             ->persistDto(
                 Argument::type(RoutingPatternDto::class),
                 null,
@@ -103,6 +113,6 @@ class UpdateByBrandSpec extends ObjectBehavior
                 $country
             )->shouldBeCalled();
 
-        $this->execute($entity, true);
+        $this->execute($entity);
     }
 }

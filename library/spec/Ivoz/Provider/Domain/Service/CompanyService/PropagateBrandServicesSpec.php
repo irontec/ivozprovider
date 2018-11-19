@@ -75,10 +75,12 @@ class PropagateBrandServicesSpec extends ObjectBehavior
             ->findBy(Argument::any())
             ->shouldNotBeCalled();
 
-        $this->execute(
-            $this->company,
-            false
-        );
+        $this
+            ->company
+            ->isNew()
+            ->willReturn(false);
+
+        $this->execute($this->company);
     }
 
     function it_searches_related_brand_services()
@@ -89,10 +91,12 @@ class PropagateBrandServicesSpec extends ObjectBehavior
             ->willReturn([])
             ->shouldBeCalled();
 
-        $this->execute(
-            $this->company,
-            true
-        );
+        $this
+            ->company
+            ->isNew()
+            ->willReturn(true);
+
+        $this->execute($this->company);
     }
 
     function it_creates_company_services_by_brand_Services(
@@ -147,9 +151,11 @@ class PropagateBrandServicesSpec extends ObjectBehavior
             ->persist($this->company)
             ->shouldBeCalled();
 
-        $this->execute(
-            $this->company,
-            true
-        );
+        $this
+            ->company
+            ->isNew()
+            ->willReturn(true);
+
+        $this->execute($this->company);
     }
 }

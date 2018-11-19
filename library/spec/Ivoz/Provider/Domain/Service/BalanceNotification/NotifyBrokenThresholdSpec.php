@@ -171,7 +171,8 @@ class NotifyBrokenThresholdSpec extends ObjectBehavior
                 'getSubject' => '',
                 'getBody' => '',
                 'getFromAddress' => '',
-                'getFromName' => ''
+                'getFromName' => '',
+                'getBodyType' => 'text/plain'
             ],
             false
         );

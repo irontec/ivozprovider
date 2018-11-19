@@ -2,7 +2,7 @@
 
 namespace spec\Ivoz\Provider\Domain\Service\Service;
 
-use Ivoz\Core\Domain\Service\EntityPersisterInterface;
+use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\BrandService\BrandServiceDto;
 use Ivoz\Provider\Domain\Model\BrandService\BrandServiceInterface;
@@ -15,9 +15,9 @@ use Prophecy\Argument;
 class UpdateByBrandSpec extends ObjectBehavior
 {
     /**
-     * @var EntityPersisterInterface
+     * @var EntityTools
      */
-    protected $entityPersister;
+    protected $entityTools;
 
     /**
      * @var ServiceRepository
@@ -25,13 +25,13 @@ class UpdateByBrandSpec extends ObjectBehavior
     protected $serviceRepository;
 
     public function let(
-        EntityPersisterInterface $entityPersister,
+        EntityTools $entityTools,
         ServiceRepository $serviceRepository
     ) {
-        $this->entityPersister = $entityPersister;
+        $this->entityTools = $entityTools;
         $this->serviceRepository = $serviceRepository;
 
-        $this->beConstructedWith($entityPersister, $serviceRepository);
+        $this->beConstructedWith($entityTools, $serviceRepository);
     }
 
     function it_is_initializable()
@@ -42,12 +42,16 @@ class UpdateByBrandSpec extends ObjectBehavior
     function it_does_nothing_if_not_new(
         BrandInterface $entity
     ) {
+        $entity
+            ->isNew()
+            ->willReturn(false);
+
         $this
             ->serviceRepository
             ->findAll()
             ->shouldNotBeCalled();
 
-        $this->execute($entity, false);
+        $this->execute($entity);
     }
 
     function it_creates_brand_services(
@@ -55,17 +59,29 @@ class UpdateByBrandSpec extends ObjectBehavior
         ServiceInterface $service,
         BrandServiceInterface $brandService
     ) {
+        $entity
+            ->isNew()
+            ->willReturn(true);
+
+        $entity
+            ->getId()
+            ->willReturn(1);
+
         $this
             ->serviceRepository
             ->findAll()
             ->willReturn([$service]);
 
         $this
-            ->entityPersister
+            ->entityTools
             ->persistDto(Argument::type(BrandServiceDto::class))
-            ->shouldBeCalled()
-            ->willReturn($brandService);
+            ->willReturn($brandService)
+            ->shouldBeCalled();
 
-        $this->execute($entity, true);
+        $entity
+            ->addService($brandService)
+            ->shouldBeCalled();
+
+        $this->execute($entity);
     }
 }
