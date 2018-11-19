@@ -166,9 +166,9 @@ class DoctrineEntityPersister implements EntityPersisterInterface
             $this->em->persist($entity);
         }
 
-        $transaction = function () use ($entity, $dispatchImmediately, $unitOfWork) {
+        $transaction = function ($forcePersist = false) use ($entity, $dispatchImmediately, $unitOfWork) {
 
-            $mustBePersisted = ($this->rootEntity === $entity) || $dispatchImmediately;
+            $mustBePersisted = $forcePersist || $dispatchImmediately;
             if (!$mustBePersisted) {
                 $oid = spl_object_hash($entity);
                 $this->pendingUpdates[$oid] = $entity;
@@ -273,14 +273,14 @@ class DoctrineEntityPersister implements EntityPersisterInterface
     private function runTransactional(EntityInterface $entity, callable $transaction)
     {
         if ($this->rootEntity instanceof EntityInterface) {
-            $transaction();
+            $transaction(false);
             return;
         }
 
         $this->rootEntity = $entity;
         $connection = $this->em->getConnection();
         $connection->transactional(function () use ($transaction) {
-            $transaction();
+            $transaction(true);
 
             /**
              * Run until every pending insert/update order is applied

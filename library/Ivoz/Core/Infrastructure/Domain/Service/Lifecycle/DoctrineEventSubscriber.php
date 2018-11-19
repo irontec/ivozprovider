@@ -269,6 +269,10 @@ class DoctrineEventSubscriber implements EventSubscriber
     private function runEntityServices($eventName, LifecycleEventArgs $args, bool $isNew)
     {
         $entity = $args->getObject();
+        if ($isNew === false && $entity instanceof EntityInterface) {
+            $entity->markAsPersisted();
+        }
+
         $serviceName = LifecycleServiceHelper::getServiceNameByEntity($entity, $eventName);
 
         if (!$this->serviceContainer->has($serviceName)) {

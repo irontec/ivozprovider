@@ -5,7 +5,7 @@ namespace Ivoz\Core\Domain\Model;
 trait ChangelogTrait
 {
     /**
-     * @return bool
+     * @var bool
      */
     public $__isInitialized__ = true;
 
@@ -15,6 +15,11 @@ trait ChangelogTrait
      */
     protected $_initialValues = [];
 
+    /**
+     * @var bool
+     */
+    protected $isPersisted = false;
+
     abstract public function getId();
     abstract protected function __toArray();
 
@@ -23,9 +28,23 @@ trait ChangelogTrait
      */
     public function isNew()
     {
-        $initialId = $this->getInitialValue('id');
+        return !$this->isPersisted();
+    }
 
-        return is_null($initialId);
+    /**
+     * @return bool
+     */
+    public function isPersisted()
+    {
+        return $this->isPersisted;
+    }
+
+    /**
+     * @return void
+     */
+    public function markAsPersisted()
+    {
+        $this->isPersisted = true;
     }
 
     /**
@@ -57,6 +76,10 @@ trait ChangelogTrait
                 $values[$key] = null;
             }
         }
+
+        $this->isPersisted = $this->getId() !== null
+            ? true
+            : false;
 
         $this->_initialValues = $values;
     }
