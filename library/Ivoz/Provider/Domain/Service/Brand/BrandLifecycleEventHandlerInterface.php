@@ -7,5 +7,5 @@ use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 
 interface BrandLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(BrandInterface $entity, $isNew);
+    public function execute(BrandInterface $entity);
 }

@@ -23,7 +23,7 @@ class SendTrunksDispatcherReloadRequest implements ApplicationServerLifecycleEve
         ];
     }
 
-    public function execute(ApplicationServerInterface $entity, $isNew)
+    public function execute(ApplicationServerInterface $entity)
     {
         $this->trunksDispatcherReload->send();
     }

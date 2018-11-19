@@ -19,7 +19,6 @@ class AvoidUpdates extends AvoidEntityUpdatesAbstract implements CallAclRelMatch
 
     /**
      * @param CallAclRelMatchListInterface $entity
-     * @param $isNew
      * @throws \DomainException
      */
     public function execute(CallAclRelMatchListInterface $entity)

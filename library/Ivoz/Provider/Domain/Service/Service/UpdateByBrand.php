@@ -35,8 +35,9 @@ class UpdateByBrand implements BrandLifecycleEventHandlerInterface
         ];
     }
 
-    public function execute(BrandInterface $entity, $isNew)
+    public function execute(BrandInterface $entity)
     {
+        $isNew = $entity->isNew();
         if (!$isNew) {
             return;
         }

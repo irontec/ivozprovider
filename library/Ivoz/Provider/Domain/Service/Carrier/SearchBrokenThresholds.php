@@ -43,13 +43,13 @@ class SearchBrokenThresholds implements CarrierLifecycleEventHandlerInterface
 
     /**
      * @param CarrierInterface $carrier
-     * @param $isNew
      * @throws \Exception
      */
-    public function execute(CarrierInterface $carrier, $isNew)
+    public function execute(CarrierInterface $carrier)
     {
-        // Skip new created company
-        if ($carrier->isNew()) {
+        // Skip new created carriers
+        $isNew = $carrier->isNew();
+        if ($isNew) {
             return;
         }
 

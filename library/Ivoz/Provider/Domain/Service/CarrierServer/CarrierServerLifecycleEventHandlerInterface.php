@@ -7,5 +7,5 @@ use Ivoz\Provider\Domain\Model\CarrierServer\CarrierServerInterface;
 
 interface CarrierServerLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(CarrierServerInterface $carrierServer, $isNew);
+    public function execute(CarrierServerInterface $carrierServer);
 }

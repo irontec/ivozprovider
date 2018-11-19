@@ -36,9 +36,8 @@ class CheckUniqueness implements FriendLifecycleEventHandlerInterface
      * Check username and domain is unique in the whole platform
      *
      * @param FriendInterface $friend
-     * @param $isNew
      */
-    public function execute(FriendInterface $friend, $isNew)
+    public function execute(FriendInterface $friend)
     {
         $terminal = $this->terminalRepository
             ->findOneByNameAndDomain(

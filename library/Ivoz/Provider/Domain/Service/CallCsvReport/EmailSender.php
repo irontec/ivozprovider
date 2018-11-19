@@ -54,9 +54,10 @@ class EmailSender implements CallCsvReportLifecycleEventHandlerInterface
         ];
     }
 
-    public function execute(CallCsvReportInterface $callCsvReport, $isNew)
+    public function execute(CallCsvReportInterface $callCsvReport)
     {
-        if (!$callCsvReport->isNew()) {
+        $isNew = $callCsvReport->isNew();
+        if (!$isNew) {
             return;
         }
 
@@ -73,7 +74,6 @@ class EmailSender implements CallCsvReportLifecycleEventHandlerInterface
         $notificationTemplateContent = $this->getNotificationTemplateContent($callCsvReport);
         $fromName = $notificationTemplateContent->getFromName();
         $fromAddress = $notificationTemplateContent->getFromAddress();
-        $bodyType = $notificationTemplateContent->getBodyType();
         $body = $this->parseVariables(
             $callCsvReport,
             $notificationTemplateContent->getBody()
@@ -89,7 +89,7 @@ class EmailSender implements CallCsvReportLifecycleEventHandlerInterface
         );
 
         $mail = new Message();
-        $mail->setBody($body, $bodyType)
+        $mail->setBody($body)
             ->setSubject($subject)
             ->setFromAddress($fromAddress)
             ->setFromName($fromName)

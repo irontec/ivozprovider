@@ -33,10 +33,10 @@ class CommonLifecycleServiceCollection implements LifecycleServiceCollectionInte
     /**
      * @param EntityInterface $entity
      */
-    public function execute(EntityInterface $entity, $isNew)
+    public function execute(EntityInterface $entity)
     {
         foreach ($this->services as $service) {
-            $service->handle($entity, $isNew);
+            $service->handle($entity);
         }
     }
 }

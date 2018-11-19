@@ -43,9 +43,8 @@ class UpdatedByDestinationRate implements DestinationRateLifecycleEventHandlerIn
      * Create a new TpDestinationRate when a DestinationRate is created
      *
      * @param DestinationRateInterface $destinationRate
-     * @param $isNew
      */
-    public function execute(DestinationRateInterface $destinationRate, $isNew)
+    public function execute(DestinationRateInterface $destinationRate)
     {
         $brand = $destinationRate->getDestinationRateGroup()->getBrand();
         $tpDestinationRate = $destinationRate->getTpDestinationRate();

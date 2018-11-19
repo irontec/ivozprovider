@@ -42,9 +42,8 @@ class CheckUniqueness implements ResidentialDeviceLifecycleEventHandlerInterface
      * Check username and domain is unique in the whole platform
      *
      * @param ResidentialDeviceInterface $residentialDevice
-     * @param $isNew
      */
-    public function execute(ResidentialDeviceInterface $residentialDevice, $isNew)
+    public function execute(ResidentialDeviceInterface $residentialDevice)
     {
         $retailAccount = $this->retailAccountRepository
             ->findOneByNameAndDomain(

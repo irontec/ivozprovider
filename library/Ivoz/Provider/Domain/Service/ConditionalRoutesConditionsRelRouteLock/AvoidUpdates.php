@@ -19,7 +19,6 @@ class AvoidUpdates extends AvoidEntityUpdatesAbstract implements ConditionalRout
 
     /**
      * @param ConditionalRoutesConditionsRelRouteLockInterface $entity
-     * @param $isNew
      * @throws \DomainException
      */
     public function execute(ConditionalRoutesConditionsRelRouteLockInterface $entity)

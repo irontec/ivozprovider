@@ -23,7 +23,7 @@ class SendTrunksLcrReloadRequest implements RoutingTagLifecycleEventHandlerInter
         ];
     }
 
-    public function execute(RoutingTagInterface $routingTag, $isNew)
+    public function execute(RoutingTagInterface $routingTag)
     {
         $this->trunksLcrReload->send();
     }

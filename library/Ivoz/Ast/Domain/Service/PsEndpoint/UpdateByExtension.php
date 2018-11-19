@@ -36,9 +36,8 @@ class UpdateByExtension implements ExtensionLifecycleEventHandlerInterface
 
     /**
      * @param ExtensionInterface $extension
-     * @param $isNew
      */
-    public function execute(ExtensionInterface $extension, $isNew)
+    public function execute(ExtensionInterface $extension)
     {
         // Ignore non-user extensions
         $user = $extension->getUser();

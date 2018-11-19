@@ -29,7 +29,7 @@ class CheckUniqueness implements CallCsvSchedulerLifecycleEventHandlerInterface
     /**
      * @throws \Exception
      */
-    public function execute(CallCsvSchedulerInterface $callCsvScheduler, bool $isNew)
+    public function execute(CallCsvSchedulerInterface $callCsvScheduler)
     {
         if ($callCsvScheduler->getBrand()) {
             //Checked through mysql unique key

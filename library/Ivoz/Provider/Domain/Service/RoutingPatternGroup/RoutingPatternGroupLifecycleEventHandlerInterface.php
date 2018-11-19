@@ -7,5 +7,5 @@ use Ivoz\Provider\Domain\Model\RoutingPatternGroup\RoutingPatternGroupInterface;
 
 interface RoutingPatternGroupLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(RoutingPatternGroupInterface $entity, $isNew);
+    public function execute(RoutingPatternGroupInterface $entity);
 }

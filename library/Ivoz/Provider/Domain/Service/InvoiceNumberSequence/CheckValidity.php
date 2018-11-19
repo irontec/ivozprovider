@@ -23,8 +23,9 @@ class CheckValidity implements InvoiceNumberSequenceLifecycleEventHandlerInterfa
     /**
      * @throws \DomainException
      */
-    public function execute(InvoiceNumberSequenceInterface $entity, bool $isNew)
+    public function execute(InvoiceNumberSequenceInterface $entity)
     {
+        $isNew = $entity->isNew();
         if ($isNew) {
             return;
         }

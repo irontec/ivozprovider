@@ -44,8 +44,9 @@ class CsvAttacher implements CallCsvReportLifecycleEventHandlerInterface
         ];
     }
 
-    public function execute(CallCsvReportInterface $callCsvReport, $isNew)
+    public function execute(CallCsvReportInterface $callCsvReport)
     {
+        $isNew = $callCsvReport->isNew();
         if (!$isNew) {
             return;
         }

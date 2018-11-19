@@ -42,9 +42,8 @@ class CheckUniqueness implements TerminalLifecycleEventHandlerInterface
      * Check username and domain is unique in the whole platform
      *
      * @param TerminalInterface $terminal
-     * @param $isNew
      */
-    public function execute(TerminalInterface $terminal, $isNew)
+    public function execute(TerminalInterface $terminal)
     {
         $friend = $this->friendRepository
             ->findOneByNameAndDomain(

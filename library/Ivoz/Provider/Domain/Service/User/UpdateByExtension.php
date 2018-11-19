@@ -45,7 +45,7 @@ class UpdateByExtension implements ExtensionLifecycleEventHandlerInterface
     /**
      * @throws \Exception
      */
-    public function execute(ExtensionInterface $extension, $isNew)
+    public function execute(ExtensionInterface $extension)
     {
         $changedUserId = $extension->hasChanged('userId');
 

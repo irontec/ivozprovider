@@ -7,5 +7,5 @@ use Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterf
 
 interface InvoiceNumberSequenceLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(InvoiceNumberSequenceInterface $entity, bool $isNew);
+    public function execute(InvoiceNumberSequenceInterface $entity);
 }

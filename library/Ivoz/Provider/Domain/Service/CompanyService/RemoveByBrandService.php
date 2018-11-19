@@ -49,7 +49,7 @@ class RemoveByBrandService implements BrandServiceLifecycleEventHandlerInterface
         ];
     }
 
-    public function execute(BrandServiceInterface $entity, $isNew)
+    public function execute(BrandServiceInterface $entity)
     {
         /**
          * @todo consider performance issues here

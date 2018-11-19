@@ -41,10 +41,10 @@ class UpdateByCarrierServer implements CarrierServerLifecycleEventHandlerInterfa
 
     /**
      * @param CarrierServerInterface $carrierServer
-     * @param $isNew
      */
-    public function execute(CarrierServerInterface $carrierServer, $isNew)
+    public function execute(CarrierServerInterface $carrierServer)
     {
+        $isNew = $carrierServer->isNew();
         if (!$isNew) {
             return;
         }

@@ -285,7 +285,7 @@ class DoctrineEventSubscriber implements EventSubscriber
         $service = $this->serviceContainer->get($serviceName);
 
         try {
-            $service->execute($entity, $isNew);
+            $service->execute($entity);
         } catch (\Exception $exception) {
             $this->handleError($entity, $exception);
         }
