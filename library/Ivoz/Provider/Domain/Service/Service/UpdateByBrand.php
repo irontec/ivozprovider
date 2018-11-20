@@ -1,7 +1,7 @@
 <?php
 namespace Ivoz\Provider\Domain\Service\Service;
 
-use Ivoz\Core\Domain\Service\EntityPersisterInterface;
+use Ivoz\Core\Application\Service\EntityTools;
 use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Service\Service;
 use Ivoz\Provider\Domain\Model\BrandService\BrandService;
@@ -11,9 +11,9 @@ use Ivoz\Provider\Domain\Service\Brand\BrandLifecycleEventHandlerInterface;
 class UpdateByBrand implements BrandLifecycleEventHandlerInterface
 {
     /**
-     * @var EntityPersisterInterface
+     * @var EntityTools
      */
-    protected $entityPersister;
+    protected $entityTools;
 
     /**
      * @var ServiceRepository
@@ -21,10 +21,10 @@ class UpdateByBrand implements BrandLifecycleEventHandlerInterface
     protected $serviceRepository;
 
     public function __construct(
-        EntityPersisterInterface $entityPersister,
+        EntityTools $entityTools,
         ServiceRepository $serviceRepository
     ) {
-        $this->entityPersister = $entityPersister;
+        $this->entityTools = $entityTools;
         $this->serviceRepository = $serviceRepository;
     }
 
@@ -35,8 +35,9 @@ class UpdateByBrand implements BrandLifecycleEventHandlerInterface
         ];
     }
 
-    public function execute(BrandInterface $entity, $isNew)
+    public function execute(BrandInterface $entity)
     {
+        $isNew = $entity->isNew();
         if (!$isNew) {
             return;
         }
@@ -53,7 +54,7 @@ class UpdateByBrand implements BrandLifecycleEventHandlerInterface
                 ->setCode($service->getDefaultCode())
                 ->setBrandId($entity->getId());
 
-            $brandService = $this->entityPersister->persistDto($brandServiceDto);
+            $brandService = $this->entityTools->persistDto($brandServiceDto);
             $entity->addService($brandService);
         }
     }

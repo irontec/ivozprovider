@@ -10,7 +10,7 @@ trait CountByCriteriaTrait
      * @param Criteria $criteria
      * @return int
      */
-    public function countByCriteria(Criteria $criteria)
+    protected function countByCriteria(Criteria $criteria)
     {
         $qb = $this
             ->createQueryBuilder('self')

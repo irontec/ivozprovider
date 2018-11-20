@@ -62,13 +62,12 @@ class SyncBalances
         try {
             $response = $this->client->getBalances($brandId, $carrierIds);
 
-            if ($response->error) {
+            if (isset($response->error) && $response->error) {
                 $this->logger->error(
                     'There was an error while retrieving brand#' . $brandId . ' carriers balances'
                 );
                 throw new \Exception($response->error);
             }
-
             $this->persistBalances($response->result);
 
             return true;
@@ -111,8 +110,10 @@ class SyncBalances
                 continue;
             }
 
-            $carrier->setBalance($balance);
-            $this->entityTools->persist($carrier);
+            /** @var CarrierDto $carrierDto */
+            $carrierDto = $this->entityTools->entityToDto($carrier);
+            $carrierDto->setBalance($balance);
+            $this->entityTools->persistDto($carrierDto, $carrier);
         }
 
         $this->entityTools->dispatchQueuedOperations();

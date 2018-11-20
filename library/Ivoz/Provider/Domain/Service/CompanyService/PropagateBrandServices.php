@@ -41,10 +41,10 @@ class PropagateBrandServices implements CompanyLifecycleEventHandlerInterface
 
     /**
      * @param CompanyInterface $company
-     * @param $isNew
      */
-    public function execute(CompanyInterface $company, $isNew)
+    public function execute(CompanyInterface $company)
     {
+        $isNew = $company->isNew();
         if (!$isNew) {
             return;
         }

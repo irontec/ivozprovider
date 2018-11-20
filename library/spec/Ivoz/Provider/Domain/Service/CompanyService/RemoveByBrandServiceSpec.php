@@ -120,8 +120,7 @@ class RemoveByBrandServiceSpec extends ObjectBehavior
             ->shouldBeCalled();
 
         $this->execute(
-            $this->entity,
-            false
+            $this->entity
         );
     }
 }

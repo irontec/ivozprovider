@@ -21,7 +21,7 @@ class AvoidUpdates extends AvoidEntityUpdatesAbstract implements PickUpRelUserLi
      * @param PickUpRelUserInterface $entity
      * @throws \DomainException
      */
-    public function execute(PickUpRelUserInterface $entity, $isNew)
+    public function execute(PickUpRelUserInterface $entity)
     {
         $this->assertUnchanged($entity);
     }

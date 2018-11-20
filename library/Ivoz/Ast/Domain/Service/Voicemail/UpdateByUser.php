@@ -35,7 +35,7 @@ class UpdateByUser implements UserLifecycleEventHandlerInterface
         ];
     }
 
-    public function execute(UserInterface $user, $isNew)
+    public function execute(UserInterface $user)
     {
         $voicemail = $this->voicemailRepository->findOneByUserId(
             $user->getId()

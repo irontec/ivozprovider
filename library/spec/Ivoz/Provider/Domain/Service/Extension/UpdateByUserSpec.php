@@ -54,7 +54,7 @@ class UpdateByUserSpec extends ObjectBehavior
             ->willReturn(false)
             ->shouldBeCalled();
 
-        $this->execute($entity, false);
+        $this->execute($entity);
     }
 
     function it_updates_extension_when_user_extension_has_changed(
@@ -103,7 +103,7 @@ class UpdateByUserSpec extends ObjectBehavior
                 false
             )->shouldBeCalled();
 
-        $this->execute($user, false);
+        $this->execute($user);
     }
 
     function it_does_nothing_when_extensionid_is_empty(
@@ -119,7 +119,7 @@ class UpdateByUserSpec extends ObjectBehavior
             ->entityToDto(Argument::any())
             ->shouldNotBeCalled();
 
-        $this->execute($user, false);
+        $this->execute($user);
     }
 
     function it_cleans_up_extension_on_remove(
@@ -165,6 +165,6 @@ class UpdateByUserSpec extends ObjectBehavior
                 false
             )->shouldBeCalled();
 
-        $this->execute($user, false);
+        $this->execute($user);
     }
 }

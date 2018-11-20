@@ -7,5 +7,5 @@ use Ivoz\Provider\Domain\Model\RoutingPatternGroupsRelPattern\RoutingPatternGrou
 
 interface RoutingPatternGroupsRelPatternLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(RoutingPatternGroupsRelPatternInterface $entity, $isNew);
+    public function execute(RoutingPatternGroupsRelPatternInterface $entity);
 }

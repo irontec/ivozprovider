@@ -40,8 +40,9 @@ class UnsetBossAssistant implements UserLifecycleEventHandlerInterface
         ];
     }
 
-    public function execute(UserInterface $user, $isNew)
+    public function execute(UserInterface $user)
     {
+        $isNew = $user->isNew();
         $isBoss = $user->getIsBoss() == 1;
         $hasChangedIsBoss = $user->hasChanged('isBoss');
 

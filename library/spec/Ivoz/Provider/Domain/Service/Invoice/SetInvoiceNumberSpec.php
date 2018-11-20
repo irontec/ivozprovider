@@ -92,7 +92,7 @@ class SetInvoiceNumberSpec extends ObjectBehavior
             ->setNumber(3)
             ->shouldBeCalled();
 
-        $this->execute($invoice, false);
+        $this->execute($invoice);
     }
 
     public function it_does_nothing_if_status_is_not_changed(
@@ -108,7 +108,7 @@ class SetInvoiceNumberSpec extends ObjectBehavior
             ->updateEntityByDto(Argument::any())
             ->shouldNotBeCalled();
 
-        $this->execute($invoice, false);
+        $this->execute($invoice);
     }
 
     public function it_does_nothing_if_not_processing(
@@ -127,7 +127,7 @@ class SetInvoiceNumberSpec extends ObjectBehavior
             ->updateEntityByDto(Argument::any())
             ->shouldNotBeCalled();
 
-        $this->execute($invoice, false);
+        $this->execute($invoice);
     }
 
     public function it_does_nothing_if_not_empty_number(
@@ -146,7 +146,7 @@ class SetInvoiceNumberSpec extends ObjectBehavior
             ->updateEntityByDto(Argument::any())
             ->shouldNotBeCalled();
 
-        $this->execute($invoice, false);
+        $this->execute($invoice);
     }
 
 
@@ -165,6 +165,6 @@ class SetInvoiceNumberSpec extends ObjectBehavior
             ->updateEntityByDto(Argument::any())
             ->shouldNotBeCalled();
 
-        $this->execute($invoice, false);
+        $this->execute($invoice);
     }
 }

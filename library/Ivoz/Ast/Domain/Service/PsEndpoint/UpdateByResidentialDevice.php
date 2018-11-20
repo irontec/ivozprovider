@@ -39,7 +39,7 @@ class UpdateByResidentialDevice implements ResidentialDeviceLifecycleEventHandle
     /**
      * @param ResidentialDeviceInterface $entity
      */
-    public function execute(ResidentialDeviceInterface $entity, $isNew)
+    public function execute(ResidentialDeviceInterface $entity)
     {
         /**
          * @var PsEndpointInterface $endpoint

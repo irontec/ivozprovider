@@ -7,5 +7,5 @@ use Ivoz\Core\Domain\Service\LifecycleEventHandlerInterface;
 
 interface DestinationLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(DestinationInterface $destination, $isNew);
+    public function execute(DestinationInterface $destination);
 }

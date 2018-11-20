@@ -20,22 +20,14 @@ class SendImporterOrder implements DestinationRateGroupLifecycleEventHandlerInte
     protected $importer;
 
     /**
-     * @var EntityPersisterInterface
-     */
-    protected $entityPersister;
-
-    /**
      * SendImporterOrder constructor.
      *
      * @param RatesImporter $importer
-     * @param EntityPersisterInterface $entityPersister
      */
     public function __construct(
-        RatesImporter $importer,
-        EntityPersisterInterface $entityPersister
+        RatesImporter $importer
     ) {
         $this->importer = $importer;
-        $this->entityPersister = $entityPersister;
     }
 
     /**

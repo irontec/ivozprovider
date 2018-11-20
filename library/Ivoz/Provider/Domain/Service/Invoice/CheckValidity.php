@@ -68,16 +68,40 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
         $outDate = clone $invoice->getOutDate();
         $utcOutDate = $outDate->setTimezone($utcTz);
 
-        $now = (new \DateTime())->setTimezone($invoiceTz);
-        $today = $now->setTime(0, 0, 0);
-        if ($today < $inDate || $today < $outDate) {
-            throw new \DomainException('Forbidden future dates', self::FORBIDDEN_FUTURE_DATES);
-        }
+        $this->assertNoFutureDates($invoiceTz, $inDate, $outDate);
 
         if ($inDate >= $outDate) {
             throw new \DomainException('In-Out date error', self::SENSELESS_IN_OUT_DATE);
         }
 
+        $this->assertNoUnmeteredCalls($invoice, $utcOutDate);
+        $this->assertNoUnbilledCallsAfterOutDate($invoice, $utcOutDate, $utcTz);
+        $this->assertNoInvoiceInDateRange($invoice, $utcInDate, $utcOutDate);
+    }
+
+    /**
+     * @param $invoiceTz
+     * @param $inDate
+     * @param $outDate
+     */
+    private function assertNoFutureDates($invoiceTz, $inDate, $outDate)
+    {
+        $now = (new \DateTime())->setTimezone($invoiceTz);
+        $today = $now->setTime(0, 0, 0);
+        if ($today < $inDate || $today < $outDate) {
+            throw new \DomainException('Forbidden future dates', self::FORBIDDEN_FUTURE_DATES);
+        }
+    }
+
+    /**
+     * @param InvoiceInterface $invoice
+     * @param $utcOutDate
+     * @throws \Doctrine\ORM\NoResultException
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     * @throws \Doctrine\ORM\Query\QueryException
+     */
+    private function assertNoUnmeteredCalls(InvoiceInterface $invoice, $utcOutDate)
+    {
         $untarificattedCallNum = $this->billableCallRepository->countUntarificattedCallsBeforeDate(
             $invoice->getCompany()->getId(),
             $invoice->getBrand()->getId(),
@@ -87,7 +111,18 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
         if ($untarificattedCallNum > 0) {
             throw new \DomainException('Unmetered calls', self::UNMETERED_CALLS);
         }
+    }
 
+    /**
+     * @param InvoiceInterface $invoice
+     * @param $utcOutDate
+     * @param $utcTz
+     * @throws \Doctrine\ORM\NoResultException
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     * @throws \Doctrine\ORM\Query\QueryException
+     */
+    private function assertNoUnbilledCallsAfterOutDate(InvoiceInterface $invoice, $utcOutDate, $utcTz)
+    {
         /**
          * @var Invoice[] $invoices
          */
@@ -115,7 +150,15 @@ class CheckValidity implements InvoiceLifecycleEventHandlerInterface
                 throw new \DomainException('Unbilled calls after out date', self::UNBILLED_CALLS_AFTER_OUT_DATE);
             }
         }
+    }
 
+    /**
+     * @param InvoiceInterface $invoice
+     * @param $utcInDate
+     * @param $utcOutDate
+     */
+    private function assertNoInvoiceInDateRange(InvoiceInterface $invoice, $utcInDate, $utcOutDate)
+    {
         $invoiceCount = $this->invoiveRepository->fetchInvoiceNumberInRange(
             $invoice->getCompany()->getId(),
             $invoice->getBrand()->getId(),

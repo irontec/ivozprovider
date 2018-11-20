@@ -7,5 +7,5 @@ use Ivoz\Provider\Domain\Model\RoutingTag\RoutingTagInterface;
 
 interface RoutingTagLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(RoutingTagInterface $entity, $isNew);
+    public function execute(RoutingTagInterface $entity);
 }

@@ -52,7 +52,7 @@ class NextExecutionResolverSpec extends ObjectBehavior
             )
             ->shouldBeCalled();
 
-        $this->execute($scheduler, false);
+        $this->execute($scheduler);
     }
 
 
@@ -71,7 +71,7 @@ class NextExecutionResolverSpec extends ObjectBehavior
             )
             ->shouldBeCalled();
 
-        $this->execute($scheduler, false);
+        $this->execute($scheduler);
     }
 
 

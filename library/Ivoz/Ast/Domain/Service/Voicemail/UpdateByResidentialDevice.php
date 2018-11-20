@@ -38,7 +38,7 @@ class UpdateByResidentialDevice implements ResidentialDeviceLifecycleEventHandle
         ];
     }
 
-    public function execute(ResidentialDeviceInterface $residentialDevice, $isNew)
+    public function execute(ResidentialDeviceInterface $residentialDevice)
     {
         /** @var Voicemail $voicemail */
         $voicemail = $this->voicemailRepository->findOneBy([

@@ -34,8 +34,9 @@ class CreateByCarrier implements CarrierLifecycleEventHandlerInterface
         ];
     }
 
-    public function execute(CarrierInterface $carrier, $isNew)
+    public function execute(CarrierInterface $carrier)
     {
+        $isNew = $carrier->isNew();
         if (!$isNew) {
             return;
         }

@@ -5,6 +5,7 @@ namespace Tests\Provider\CallCsvScheduler;
 use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
 use Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface;
 use Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerRepository;
+use Ivoz\Provider\Domain\Model\Company\Company;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Tests\DbIntegrationTestHelperTrait;
 use Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvScheduler;
@@ -54,25 +55,33 @@ class CallCsvSchedulerRepositoryTest extends KernelTestCase
     /**
      * @test
      */
-    public function it_counts_by_criteria()
+    public function it_tells_name_uniqueness()
     {
         /** @var CallCsvSchedulerRepository $callCsvSchedulerRepository */
         $callCsvSchedulerRepository = $this->em
             ->getRepository(CallCsvScheduler::class);
 
-        /** @var CallCsvSchedulerInterface[] $callCsvSchedulers */
-        $callCsvSchedulers = $callCsvSchedulerRepository
-            ->countByCriteria(
-                CriteriaHelper::fromArray(
-                    [
-                        ['id', 'neq', 1],
-                    ]
-                )
-            );
+        $callCsvSchedulerMock = $this
+            ->getMockBuilder(CallCsvScheduler::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $companyMock = $this
+            ->getMockBuilder(Company::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $callCsvSchedulerMock
+            ->method('getCompany')
+            ->willReturn($companyMock);
+
+        /** @var CallCsvSchedulerInterface[] $isUnique */
+        $isUnique = $callCsvSchedulerRepository
+            ->hasUniqueName($callCsvSchedulerMock);
 
         $this->assertInternalType(
-            'int',
-            $callCsvSchedulers
+            'bool',
+            $isUnique
         );
     }
 }

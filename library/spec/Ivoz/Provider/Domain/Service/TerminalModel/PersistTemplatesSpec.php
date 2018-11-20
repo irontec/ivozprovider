@@ -43,7 +43,7 @@ class PersistTemplatesSpec extends ObjectBehavior
             ->exists(Argument::any())
             ->shouldNotBeCalled();
 
-        $this->execute($entity, true);
+        $this->execute($entity);
     }
 
     private function prepareNoChangesExampleBase(TerminalModelInterface $entity)
@@ -105,7 +105,7 @@ class PersistTemplatesSpec extends ObjectBehavior
             ->willReturn(true);
 
 
-        $this->execute($entity, true);
+        $this->execute($entity);
     }
 
     function it_creates_storage_folder_when_it_doesnt_exist(
@@ -124,7 +124,7 @@ class PersistTemplatesSpec extends ObjectBehavior
             ->mkdir($this->templateStoragePath, 0777)
             ->shouldBeCalled();
 
-        $this->execute($entity, true);
+        $this->execute($entity);
     }
 
     function it_persist_generic_template_to_disk_when_changed(
@@ -141,7 +141,7 @@ class PersistTemplatesSpec extends ObjectBehavior
             )
             ->shouldBeCalled();
 
-        $this->execute($entity, true);
+        $this->execute($entity);
     }
 
     function it_backups_old_generic_template(
@@ -164,7 +164,7 @@ class PersistTemplatesSpec extends ObjectBehavior
             )
             ->shouldBeCalled();
 
-        $this->execute($entity, true);
+        $this->execute($entity);
     }
 
     function it_persist_specific_template_to_disk_when_changed(
@@ -181,7 +181,7 @@ class PersistTemplatesSpec extends ObjectBehavior
             )
             ->shouldBeCalled();
 
-        $this->execute($entity, true);
+        $this->execute($entity);
     }
 
     function it_backups_old_specific_template(
@@ -204,6 +204,6 @@ class PersistTemplatesSpec extends ObjectBehavior
             )
             ->shouldBeCalled();
 
-        $this->execute($entity, true);
+        $this->execute($entity);
     }
 }

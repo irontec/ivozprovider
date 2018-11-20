@@ -23,7 +23,7 @@ class SendUsersDispatcherReloadRequest implements ApplicationServerLifecycleEven
         ];
     }
 
-    public function execute(ApplicationServerInterface $entity, $isNew)
+    public function execute(ApplicationServerInterface $entity)
     {
         $this->usersDispatcherReload->send();
     }

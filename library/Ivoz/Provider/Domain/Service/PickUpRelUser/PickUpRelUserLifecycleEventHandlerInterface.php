@@ -7,5 +7,5 @@ use Ivoz\Provider\Domain\Model\PickUpRelUser\PickUpRelUserInterface;
 
 interface PickUpRelUserLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(PickUpRelUserInterface $entity, $isNew);
+    public function execute(PickUpRelUserInterface $entity);
 }

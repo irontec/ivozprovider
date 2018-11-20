@@ -3,6 +3,8 @@
 namespace Ivoz\Provider\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Ivoz\Core\Infrastructure\Persistence\Doctrine\Model\Helper\CriteriaHelper;
+use Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface;
 use Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerRepository;
 use Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvScheduler;
 use Ivoz\Provider\Infrastructure\Persistence\Doctrine\Traits\CountByCriteriaTrait;
@@ -81,5 +83,23 @@ class CallCsvSchedulerDoctrineRepository extends ServiceEntityRepository impleme
             ->getQuery();
 
         return $query->getResult();
+    }
+
+    /**
+     * @param CallCsvSchedulerInterface $callCsvScheduler
+     * @return bool
+     */
+    public function hasUniqueName(CallCsvSchedulerInterface $callCsvScheduler)
+    {
+
+        $criteria = CriteriaHelper::fromArray([
+            ['id', 'neq', $callCsvScheduler->getId()],
+            ['company', 'eq', $callCsvScheduler->getCompany()->getId()],
+            ['name', 'eq', $callCsvScheduler->getName()]
+        ]);
+
+        $result = $this->countByCriteria($criteria);
+
+        return $result === 0;
     }
 }

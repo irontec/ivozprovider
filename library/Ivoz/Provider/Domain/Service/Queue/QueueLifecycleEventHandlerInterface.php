@@ -7,5 +7,5 @@ use Ivoz\Provider\Domain\Model\Queue\QueueInterface;
 
 interface QueueLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(QueueInterface $entity, $isNew);
+    public function execute(QueueInterface $entity);
 }

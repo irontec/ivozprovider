@@ -41,7 +41,7 @@ class UpdateByTerminal implements TerminalLifecycleEventHandlerInterface
     /**
      * @param Friend $terminal
      */
-    public function execute(TerminalInterface $terminal, $isNew)
+    public function execute(TerminalInterface $terminal)
     {
         // Replicate Terminal into ast_ps_endpoint
         /**

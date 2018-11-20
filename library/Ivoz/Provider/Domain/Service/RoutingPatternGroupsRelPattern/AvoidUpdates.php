@@ -21,7 +21,7 @@ class AvoidUpdates extends AvoidEntityUpdatesAbstract implements RoutingPatternG
      * @param RoutingPatternGroupsRelPatternInterface $entity
      * @throws \DomainException
      */
-    public function execute(RoutingPatternGroupsRelPatternInterface $entity, $isNew)
+    public function execute(RoutingPatternGroupsRelPatternInterface $entity)
     {
         $this->assertUnchanged($entity);
     }

@@ -36,8 +36,10 @@ class UpdateByRoutingPatternGroupsRelPattern implements RoutingPatternGroupsRelP
         ];
     }
 
-    public function execute(RoutingPatternGroupsRelPatternInterface $routingPatternGroupsRelPattern, $isNew)
+    public function execute(RoutingPatternGroupsRelPatternInterface $routingPatternGroupsRelPattern)
     {
+        $isNew = $routingPatternGroupsRelPattern->isNew();
+
         // Get all OutgointRoutings that use this routingPattern
         $outgoingRoutings = $routingPatternGroupsRelPattern->getRoutingPatternGroup()->getOutgoingRoutings();
         $routingPattern = $routingPatternGroupsRelPattern->getRoutingPattern();

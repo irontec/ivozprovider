@@ -41,7 +41,7 @@ class CheckUniqueness implements CallForwardSettingLifecycleEventHandlerInterfac
     /**
      * @throws \Exception
      */
-    public function execute(CallForwardSettingInterface $entity, $isNew)
+    public function execute(CallForwardSettingInterface $entity)
     {
         // Skip checks for disabled call forward setting
         if ($entity->getEnabled() == 0) {

@@ -23,7 +23,7 @@ class ScheduleForRemove implements CommonLifecycleEventHandlerInterface
         $this->serviceContainer = $serviceContainer;
     }
 
-    public function handle(EntityInterface $entity, $isNew)
+    public function handle(EntityInterface $entity)
     {
         if (!$entity instanceof FileContainerInterface) {
             return;

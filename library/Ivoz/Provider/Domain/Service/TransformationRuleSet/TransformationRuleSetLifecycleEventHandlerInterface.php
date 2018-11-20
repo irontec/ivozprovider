@@ -7,5 +7,5 @@ use Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSetInterf
 
 interface TransformationRuleSetLifecycleEventHandlerInterface extends LifecycleEventHandlerInterface
 {
-    public function execute(TransformationRuleSetInterface $transformationRuleSet, $isNew);
+    public function execute(TransformationRuleSetInterface $transformationRuleSet);
 }

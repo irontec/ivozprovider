@@ -21,6 +21,11 @@ class SearchBrokenThresholds implements CarrierLifecycleEventHandlerInterface
      */
     protected $balanceNotificationRepository;
 
+    /**
+     * @var DomainEventPublisher
+     */
+    protected $domainEventPublisher;
+
     public function __construct(
         BalanceNotificationRepository $balanceNotificationRepository,
         DomainEventPublisher $domainEventPublisher
@@ -36,9 +41,14 @@ class SearchBrokenThresholds implements CarrierLifecycleEventHandlerInterface
         ];
     }
 
-    public function execute(CarrierInterface $carrier, $isNew)
+    /**
+     * @param CarrierInterface $carrier
+     * @throws \Exception
+     */
+    public function execute(CarrierInterface $carrier)
     {
-        // Skip new created company
+        // Skip new created carriers
+        $isNew = $carrier->isNew();
         if ($isNew) {
             return;
         }
@@ -56,6 +66,7 @@ class SearchBrokenThresholds implements CarrierLifecycleEventHandlerInterface
             return;
         }
 
+        /** @var BalanceNotificationInterface[] $brokenThresholds */
         $brokenThresholds = $this->balanceNotificationRepository->findBrokenThresholdsByCarrier(
             $carrier,
             $prevBalance,
