@@ -548,11 +548,11 @@
         },
         {
             "name": "doctrine/doctrine-cache-bundle",
-            "version": "1.3.3.0",
+            "version": "1.3.5.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/doctrine/doctrine-cache-bundle",
-                "reference": "4c8e363f96427924e7e519c5b5119b4f54512697",
+                "reference": "5514c90d9fb595e1095e6d66ebb98ce9ef049927",
                 "shasum": null
             },
             "require": {
@@ -565,7 +565,7 @@
                 "instaclick/coding-standard": "~1.1",
                 "instaclick/object-calisthenics-sniffs": "dev-master",
                 "instaclick/symfony2-coding-standard": "dev-remaster",
-                "phpunit/phpunit": "~4|~5",
+                "phpunit/phpunit": "~4.8.36|~5.6|~6.5|~7.0",
                 "predis/predis": "~0.8",
                 "satooshi/php-coveralls": "^1.0",
                 "squizlabs/php_codesniffer": "~1.5",
@@ -589,6 +589,14 @@
             "autoload": {
                 "psr-4": {
                     "Doctrine\\Bundle\\DoctrineCacheBundle\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Doctrine\\Bundle\\DoctrineCacheBundle\\Tests\\": "Tests"
                 }
             },
             "license": [
@@ -621,7 +629,7 @@
                 }
             ],
             "description": "Symfony Bundle for Doctrine Cache",
-            "homepage": "http://www.doctrine-project.org",
+            "homepage": "https://www.doctrine-project.org",
             "keywords": [
                 "cache",
                 "caching"
@@ -1031,11 +1039,11 @@
         },
         {
             "name": "egulias/email-validator",
-            "version": "2.1.5.0",
+            "version": "2.1.6.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/egulias/email-validator",
-                "reference": "54859fabea8b3beecbb1a282888d5c990036b9e3",
+                "reference": "0578b32b30b22de3e8664f797cf846fc9246f786",
                 "shasum": null
             },
             "require": {
@@ -1059,6 +1067,11 @@
             "autoload": {
                 "psr-4": {
                     "Egulias\\EmailValidator\\": "EmailValidator"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Egulias\\Tests\\": "test"
                 }
             },
             "license": [
@@ -1367,11 +1380,11 @@
         },
         {
             "name": "lcobucci/jwt",
-            "version": "3.2.4.0",
+            "version": "3.2.5.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/lcobucci/jwt",
-                "reference": "c9704b751315d21735dc98d78d4f37bd73596da7",
+                "reference": "82be04b4753f8b7693b62852b7eab30f97524f9b",
                 "shasum": null
             },
             "require": {
@@ -1429,14 +1442,15 @@
         },
         {
             "name": "lexik/jwt-authentication-bundle",
-            "version": "2.5.4.0",
+            "version": "2.6.1.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/lexik/jwt-authentication-bundle",
-                "reference": "f1c8c9a33c55eeb6105de5a2aedb9ba44a6efbed",
+                "reference": "ba179c2f876b96e5cffe5ee75cac883cfe3f8847",
                 "shasum": null
             },
             "require": {
+                "ext-openssl": "*",
                 "lcobucci/jwt": "^3.2",
                 "namshi/jose": "^7.2",
                 "php": "^5.5|^7.0",
@@ -1475,6 +1489,7 @@
                     "vendor/bin/simple-phpunit",
                     "ENCODER=lcobucci vendor/bin/simple-phpunit",
                     "ENCODER=lcobucci ALGORITHM=HS256 vendor/bin/simple-phpunit",
+                    "ENCODER=user_id_claim vendor/bin/simple-phpunit",
                     "PROVIDER=lexik_jwt vendor/bin/simple-phpunit"
                 ]
             },
@@ -1529,11 +1544,11 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "1.23.0.0",
+            "version": "1.24.0.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/monolog/monolog",
-                "reference": "fd8c787753b3a2ad11bc60c063cff1358a32a3b4",
+                "reference": "bfc9ebb28f97e7a24c45bdc3f0ff482e47bb0266",
                 "shasum": null
             },
             "require": {
@@ -2501,11 +2516,11 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "1.9.0.0",
+            "version": "1.10.0.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-mbstring",
-                "reference": "d0cd638f4634c16d8df4508e847f14e9e43168b8",
+                "reference": "c79c051f5b3a46be09205c73b80b346e4153e494",
                 "shasum": null
             },
             "require": {
@@ -2556,11 +2571,11 @@
         },
         {
             "name": "symfony/polyfill-php56",
-            "version": "1.9.0.0",
+            "version": "1.10.0.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-php56",
-                "reference": "7b4fc009172cc0196535b0328bd1226284a28000",
+                "reference": "ff208829fe1aa48ab9af356992bb7199fed551af",
                 "shasum": null
             },
             "require": {
@@ -2608,11 +2623,11 @@
         },
         {
             "name": "symfony/polyfill-php70",
-            "version": "1.9.0.0",
+            "version": "1.10.0.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-php70",
-                "reference": "1e24b0c4a56d55aaf368763a06c6d1c7d3194934",
+                "reference": "6b88000cdd431cd2e940caa2cb569201f3f84224",
                 "shasum": null
             },
             "require": {
@@ -2663,11 +2678,11 @@
         },
         {
             "name": "symfony/polyfill-util",
-            "version": "1.9.0.0",
+            "version": "1.10.0.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/polyfill-util",
-                "reference": "8e15d04ba3440984d23e7964b2ee1d25c8de1581",
+                "reference": "3b58903eae668d348a7126f999b0da0f2f93611c",
                 "shasum": null
             },
             "require": {
@@ -2711,11 +2726,11 @@
         },
         {
             "name": "symfony/swiftmailer-bundle",
-            "version": "3.2.3.0",
+            "version": "3.2.4.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/swiftmailer-bundle",
-                "reference": "7bd5de67552ee3f7e04df89d662d41eba346dc83",
+                "reference": "bd47db86d0b8415f6317c2be149bbacfab11a9cf",
                 "shasum": null
             },
             "require": {
@@ -2769,11 +2784,11 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "3.4.15.0",
+            "version": "3.4.18.0",
             "dist": {
                 "type": "path",
                 "url": "../../library/vendor/symfony/symfony",
-                "reference": "5bb5c2d4b0d5cf10672015b68519a199e6ac27c1",
+                "reference": "ee054aa62e535b7905c5b8e90cb49a1ad65dbfd8",
                 "shasum": null
             },
             "require": {
