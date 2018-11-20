@@ -1,4 +1,7 @@
 <?php
+
+use Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOut;
+
 class KlearCustomForwardFaxController extends Zend_Controller_Action
 {
     protected $_mainRouter;
@@ -20,11 +23,17 @@ class KlearCustomForwardFaxController extends Zend_Controller_Action
     {
         $pk = $this->getRequest()->getParam("pk");
 
-        $mapperFax = new IvozProvider\Mapper\Sql\FaxesInOut();
-        $modelFax = $mapperFax->find($pk);
+        /** @var DataGateway $dataGateway */
+        $dataGateway = \Zend_Registry::get('data_gateway');
+
+        /** @var \Ivoz\Provider\Domain\Model\FaxesInOut\FaxesInOutDto $modelFax */
+        $modelFax = $dataGateway->find(
+            FaxesInOut::class,
+            $pk
+        );
 
         if (!$modelFax) {
-            $modelFax = new IvozProvider\Model\FaxesInOut();
+            $modelFax = FaxesInOut::createDto();
         }
 
         $bodyMsg = '
@@ -34,7 +43,11 @@ class KlearCustomForwardFaxController extends Zend_Controller_Action
 
         if ($this->getRequest()->getParam("forward")) {
             $modelFax->setStatus('pending');
-            $modelFax->save();
+
+            $dataGateway->update(
+                FaxesInOut::class,
+                $modelFax
+            );
 
             $data = array(
                 'title' => $this->_helper->translate("Fax resent"),
