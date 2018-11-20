@@ -132,6 +132,38 @@ class CreateBySchedulerSpec extends ObjectBehavior
             ->during('execute', [$scheduler]);
     }
 
+
+    public function it_persists_errors(
+        CallCsvSchedulerInterface $scheduler,
+        CallCsvSchedulerDto $schedulerDto,
+        TimezoneInterface $timezone,
+        CompanyInterface $company,
+        CallCsvReportInterface $callCsvReport
+    ) {
+        $this->prepareExecution(
+            $scheduler,
+            $schedulerDto,
+            $timezone,
+            $company,
+            $callCsvReport
+        );
+
+        $errorMsg = 'Some error';
+
+        $scheduler
+            ->getNextExecution()
+            ->willThrow(new \Exception($errorMsg))
+            ->shouldBeCalled();
+
+        $schedulerDto
+            ->setLastExecutionError($errorMsg)
+            ->shouldBeCalled();
+
+        $this
+            ->shouldThrow(\Exception::class)
+            ->during('execute', [$scheduler]);
+    }
+
     protected function prepareExecution(
         CallCsvSchedulerInterface $scheduler,
         CallCsvSchedulerDto $schedulerDto,
@@ -173,6 +205,14 @@ class CreateBySchedulerSpec extends ObjectBehavior
         $this
             ->entityTools
             ->entityToDto($scheduler)
+            ->willReturn($schedulerDto);
+
+        $schedulerDto
+            ->setLastExecution(Argument::type(\DateTime::class))
+            ->willReturn($schedulerDto);
+
+        $schedulerDto
+            ->setLastExecutionError(Argument::type('string'))
             ->willReturn($schedulerDto);
 
         $this
