@@ -63,6 +63,7 @@ abstract class PickUpGroupAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return PickUpGroupDto|null
@@ -88,6 +89,7 @@ abstract class PickUpGroupAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -113,6 +115,7 @@ abstract class PickUpGroupAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -134,6 +137,7 @@ abstract class PickUpGroupAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return PickUpGroupDto
      */

@@ -41,6 +41,7 @@ trait DdiProviderTrait
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -66,6 +67,7 @@ trait DdiProviderTrait
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -85,6 +87,7 @@ trait DdiProviderTrait
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return DdiProviderDto
      */

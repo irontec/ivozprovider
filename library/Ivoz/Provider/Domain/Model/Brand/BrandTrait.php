@@ -77,6 +77,7 @@ trait BrandTrait
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -126,6 +127,7 @@ trait BrandTrait
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -163,6 +165,7 @@ trait BrandTrait
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return BrandDto
      */

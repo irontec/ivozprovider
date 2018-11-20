@@ -69,6 +69,7 @@ abstract class RatingPlanGroupAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return RatingPlanGroupDto|null
@@ -94,6 +95,7 @@ abstract class RatingPlanGroupAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -130,6 +132,7 @@ abstract class RatingPlanGroupAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -162,6 +165,7 @@ abstract class RatingPlanGroupAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return RatingPlanGroupDto
      */

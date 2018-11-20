@@ -167,6 +167,7 @@ abstract class DdiAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return DdiDto|null
@@ -192,6 +193,7 @@ abstract class DdiAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -237,6 +239,7 @@ abstract class DdiAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -278,6 +281,7 @@ abstract class DdiAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return DdiDto
      */

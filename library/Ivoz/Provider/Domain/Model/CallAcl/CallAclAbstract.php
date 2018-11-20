@@ -70,6 +70,7 @@ abstract class CallAclAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return CallAclDto|null
@@ -95,6 +96,7 @@ abstract class CallAclAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -121,6 +123,7 @@ abstract class CallAclAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -143,6 +146,7 @@ abstract class CallAclAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return CallAclDto
      */

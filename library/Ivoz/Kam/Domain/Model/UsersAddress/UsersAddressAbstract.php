@@ -92,6 +92,7 @@ abstract class UsersAddressAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return UsersAddressDto|null
@@ -117,6 +118,7 @@ abstract class UsersAddressAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -147,6 +149,7 @@ abstract class UsersAddressAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -173,6 +176,7 @@ abstract class UsersAddressAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return UsersAddressDto
      */

@@ -74,6 +74,7 @@ abstract class TimezoneAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return TimezoneDto|null
@@ -99,6 +100,7 @@ abstract class TimezoneAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -131,6 +133,7 @@ abstract class TimezoneAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -159,6 +162,7 @@ abstract class TimezoneAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return TimezoneDto
      */

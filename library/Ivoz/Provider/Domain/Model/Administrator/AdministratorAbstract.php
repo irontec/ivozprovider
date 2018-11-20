@@ -102,6 +102,7 @@ abstract class AdministratorAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return AdministratorDto|null
@@ -127,6 +128,7 @@ abstract class AdministratorAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -159,6 +161,7 @@ abstract class AdministratorAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -187,6 +190,7 @@ abstract class AdministratorAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return AdministratorDto
      */

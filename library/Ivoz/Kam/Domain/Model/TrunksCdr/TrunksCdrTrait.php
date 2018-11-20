@@ -26,6 +26,7 @@ trait TrunksCdrTrait
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -45,6 +46,7 @@ trait TrunksCdrTrait
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -59,6 +61,7 @@ trait TrunksCdrTrait
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return TrunksCdrDto
      */

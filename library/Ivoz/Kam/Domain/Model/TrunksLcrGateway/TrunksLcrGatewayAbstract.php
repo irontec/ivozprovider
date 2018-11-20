@@ -122,6 +122,7 @@ abstract class TrunksLcrGatewayAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return TrunksLcrGatewayDto|null
@@ -147,6 +148,7 @@ abstract class TrunksLcrGatewayAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -183,6 +185,7 @@ abstract class TrunksLcrGatewayAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -215,6 +218,7 @@ abstract class TrunksLcrGatewayAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return TrunksLcrGatewayDto
      */

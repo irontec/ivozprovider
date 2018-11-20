@@ -153,6 +153,7 @@ abstract class BillableCallAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return BillableCallDto|null
@@ -178,6 +179,7 @@ abstract class BillableCallAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -221,6 +223,7 @@ abstract class BillableCallAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -260,6 +263,7 @@ abstract class BillableCallAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return BillableCallDto
      */

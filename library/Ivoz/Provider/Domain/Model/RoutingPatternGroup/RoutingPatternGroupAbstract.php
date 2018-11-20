@@ -68,6 +68,7 @@ abstract class RoutingPatternGroupAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return RoutingPatternGroupDto|null
@@ -93,6 +94,7 @@ abstract class RoutingPatternGroupAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -119,6 +121,7 @@ abstract class RoutingPatternGroupAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -141,6 +144,7 @@ abstract class RoutingPatternGroupAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return RoutingPatternGroupDto
      */

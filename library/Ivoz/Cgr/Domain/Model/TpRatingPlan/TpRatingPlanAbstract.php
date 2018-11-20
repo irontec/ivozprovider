@@ -94,6 +94,7 @@ abstract class TpRatingPlanAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return TpRatingPlanDto|null
@@ -119,6 +120,7 @@ abstract class TpRatingPlanAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -149,6 +151,7 @@ abstract class TpRatingPlanAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -175,6 +178,7 @@ abstract class TpRatingPlanAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return TpRatingPlanDto
      */

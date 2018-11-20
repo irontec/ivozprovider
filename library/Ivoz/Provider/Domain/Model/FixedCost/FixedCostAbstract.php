@@ -73,6 +73,7 @@ abstract class FixedCostAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return FixedCostDto|null
@@ -98,6 +99,7 @@ abstract class FixedCostAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -125,6 +127,7 @@ abstract class FixedCostAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -148,6 +151,7 @@ abstract class FixedCostAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return FixedCostDto
      */

@@ -74,6 +74,7 @@ abstract class HolidayDateAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return HolidayDateDto|null
@@ -99,6 +100,7 @@ abstract class HolidayDateAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -126,6 +128,7 @@ abstract class HolidayDateAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -149,6 +152,7 @@ abstract class HolidayDateAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return HolidayDateDto
      */

@@ -125,6 +125,7 @@ abstract class OutgoingRoutingAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return OutgoingRoutingDto|null
@@ -150,6 +151,7 @@ abstract class OutgoingRoutingAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -187,6 +189,7 @@ abstract class OutgoingRoutingAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -220,6 +223,7 @@ abstract class OutgoingRoutingAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return OutgoingRoutingDto
      */

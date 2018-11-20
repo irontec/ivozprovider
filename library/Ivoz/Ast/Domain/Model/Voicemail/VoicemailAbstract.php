@@ -231,6 +231,7 @@ abstract class VoicemailAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return VoicemailDto|null
@@ -256,6 +257,7 @@ abstract class VoicemailAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -314,6 +316,7 @@ abstract class VoicemailAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -368,6 +371,7 @@ abstract class VoicemailAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return VoicemailDto
      */

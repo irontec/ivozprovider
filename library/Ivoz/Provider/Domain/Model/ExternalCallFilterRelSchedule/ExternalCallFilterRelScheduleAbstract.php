@@ -62,6 +62,7 @@ abstract class ExternalCallFilterRelScheduleAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return ExternalCallFilterRelScheduleDto|null
@@ -87,6 +88,7 @@ abstract class ExternalCallFilterRelScheduleAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -111,6 +113,7 @@ abstract class ExternalCallFilterRelScheduleAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -132,6 +135,7 @@ abstract class ExternalCallFilterRelScheduleAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return ExternalCallFilterRelScheduleDto
      */

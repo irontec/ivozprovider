@@ -53,6 +53,7 @@ trait ExternalCallFilterTrait
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -86,6 +87,7 @@ trait ExternalCallFilterTrait
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -111,6 +113,7 @@ trait ExternalCallFilterTrait
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return ExternalCallFilterDto
      */

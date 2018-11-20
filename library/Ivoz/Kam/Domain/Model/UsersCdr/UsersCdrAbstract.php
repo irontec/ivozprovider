@@ -147,6 +147,7 @@ abstract class UsersCdrAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return UsersCdrDto|null
@@ -172,6 +173,7 @@ abstract class UsersCdrAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -213,6 +215,7 @@ abstract class UsersCdrAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -250,6 +253,7 @@ abstract class UsersCdrAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return UsersCdrDto
      */

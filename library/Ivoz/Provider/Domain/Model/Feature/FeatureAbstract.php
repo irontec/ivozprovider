@@ -64,6 +64,7 @@ abstract class FeatureAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return FeatureDto|null
@@ -89,6 +90,7 @@ abstract class FeatureAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -116,6 +118,7 @@ abstract class FeatureAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -142,6 +145,7 @@ abstract class FeatureAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return FeatureDto
      */

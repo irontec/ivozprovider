@@ -253,6 +253,7 @@ abstract class TpDerivedChargerAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return TpDerivedChargerDto|null
@@ -278,6 +279,7 @@ abstract class TpDerivedChargerAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -328,6 +330,7 @@ abstract class TpDerivedChargerAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -374,6 +377,7 @@ abstract class TpDerivedChargerAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return TpDerivedChargerDto
      */

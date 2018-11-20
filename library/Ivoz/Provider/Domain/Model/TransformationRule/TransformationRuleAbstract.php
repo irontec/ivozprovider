@@ -85,6 +85,7 @@ abstract class TransformationRuleAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return TransformationRuleDto|null
@@ -110,6 +111,7 @@ abstract class TransformationRuleAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -139,6 +141,7 @@ abstract class TransformationRuleAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -164,6 +167,7 @@ abstract class TransformationRuleAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return TransformationRuleDto
      */

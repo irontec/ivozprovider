@@ -72,6 +72,7 @@ abstract class HuntGroupsRelUserAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return HuntGroupsRelUserDto|null
@@ -97,6 +98,7 @@ abstract class HuntGroupsRelUserAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -123,6 +125,7 @@ abstract class HuntGroupsRelUserAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -146,6 +149,7 @@ abstract class HuntGroupsRelUserAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return HuntGroupsRelUserDto
      */

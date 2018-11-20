@@ -121,6 +121,7 @@ abstract class TpDestinationRateAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return TpDestinationRateDto|null
@@ -146,6 +147,7 @@ abstract class TpDestinationRateAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -179,6 +181,7 @@ abstract class TpDestinationRateAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -208,6 +211,7 @@ abstract class TpDestinationRateAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return TpDestinationRateDto
      */

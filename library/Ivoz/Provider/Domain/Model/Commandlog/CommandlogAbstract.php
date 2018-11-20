@@ -90,6 +90,7 @@ abstract class CommandlogAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return CommandlogDto|null
@@ -115,6 +116,7 @@ abstract class CommandlogAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -144,6 +146,7 @@ abstract class CommandlogAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -169,6 +172,7 @@ abstract class CommandlogAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return CommandlogDto
      */

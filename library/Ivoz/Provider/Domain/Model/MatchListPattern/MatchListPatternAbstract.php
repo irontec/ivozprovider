@@ -84,6 +84,7 @@ abstract class MatchListPatternAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return MatchListPatternDto|null
@@ -109,6 +110,7 @@ abstract class MatchListPatternAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -138,6 +140,7 @@ abstract class MatchListPatternAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -163,6 +166,7 @@ abstract class MatchListPatternAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return MatchListPatternDto
      */

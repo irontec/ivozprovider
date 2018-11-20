@@ -124,6 +124,7 @@ abstract class HuntGroupAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return HuntGroupDto|null
@@ -149,6 +150,7 @@ abstract class HuntGroupAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -184,6 +186,7 @@ abstract class HuntGroupAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -215,6 +218,7 @@ abstract class HuntGroupAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return HuntGroupDto
      */
