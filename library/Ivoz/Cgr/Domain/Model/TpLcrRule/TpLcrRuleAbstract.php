@@ -147,6 +147,7 @@ abstract class TpLcrRuleAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return TpLcrRuleDto|null
@@ -172,6 +173,7 @@ abstract class TpLcrRuleAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -209,6 +211,7 @@ abstract class TpLcrRuleAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -242,6 +245,7 @@ abstract class TpLcrRuleAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return TpLcrRuleDto
      */

@@ -97,6 +97,7 @@ abstract class CallCsvReportAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return CallCsvReportDto|null
@@ -122,6 +123,7 @@ abstract class CallCsvReportAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -158,6 +160,7 @@ abstract class CallCsvReportAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -190,6 +193,7 @@ abstract class CallCsvReportAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return CallCsvReportDto
      */

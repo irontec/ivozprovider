@@ -130,6 +130,7 @@ abstract class ExternalCallFilterAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return ExternalCallFilterDto|null
@@ -155,6 +156,7 @@ abstract class ExternalCallFilterAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -193,6 +195,7 @@ abstract class ExternalCallFilterAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -227,6 +230,7 @@ abstract class ExternalCallFilterAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return ExternalCallFilterDto
      */

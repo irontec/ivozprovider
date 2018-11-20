@@ -103,6 +103,7 @@ abstract class UsersWatcherAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return UsersWatcherDto|null
@@ -128,6 +129,7 @@ abstract class UsersWatcherAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -158,6 +160,7 @@ abstract class UsersWatcherAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -184,6 +187,7 @@ abstract class UsersWatcherAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return UsersWatcherDto
      */

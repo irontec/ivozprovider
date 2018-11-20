@@ -123,6 +123,7 @@ abstract class DdiProviderRegistrationAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return DdiProviderRegistrationDto|null
@@ -148,6 +149,7 @@ abstract class DdiProviderRegistrationAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -181,6 +183,7 @@ abstract class DdiProviderRegistrationAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -210,6 +213,7 @@ abstract class DdiProviderRegistrationAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return DdiProviderRegistrationDto
      */

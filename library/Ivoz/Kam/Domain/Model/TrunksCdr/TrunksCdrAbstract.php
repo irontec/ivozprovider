@@ -142,6 +142,7 @@ abstract class TrunksCdrAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return TrunksCdrDto|null
@@ -167,6 +168,7 @@ abstract class TrunksCdrAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -207,6 +209,7 @@ abstract class TrunksCdrAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -243,6 +246,7 @@ abstract class TrunksCdrAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return TrunksCdrDto
      */

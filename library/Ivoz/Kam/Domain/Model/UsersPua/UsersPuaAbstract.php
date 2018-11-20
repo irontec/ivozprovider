@@ -185,6 +185,7 @@ abstract class UsersPuaAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return UsersPuaDto|null
@@ -210,6 +211,7 @@ abstract class UsersPuaAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -251,6 +253,7 @@ abstract class UsersPuaAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -288,6 +291,7 @@ abstract class UsersPuaAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return UsersPuaDto
      */

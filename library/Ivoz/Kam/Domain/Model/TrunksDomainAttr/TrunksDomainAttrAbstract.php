@@ -88,6 +88,7 @@ abstract class TrunksDomainAttrAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return TrunksDomainAttrDto|null
@@ -113,6 +114,7 @@ abstract class TrunksDomainAttrAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -138,6 +140,7 @@ abstract class TrunksDomainAttrAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -162,6 +165,7 @@ abstract class TrunksDomainAttrAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return TrunksDomainAttrDto
      */

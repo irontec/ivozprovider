@@ -78,6 +78,7 @@ abstract class RatingProfileAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return RatingProfileDto|null
@@ -103,6 +104,7 @@ abstract class RatingProfileAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -131,6 +133,7 @@ abstract class RatingProfileAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -155,6 +158,7 @@ abstract class RatingProfileAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return RatingProfileDto
      */

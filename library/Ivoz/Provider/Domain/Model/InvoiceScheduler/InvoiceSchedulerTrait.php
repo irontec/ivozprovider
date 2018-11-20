@@ -35,6 +35,7 @@ trait InvoiceSchedulerTrait
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -56,6 +57,7 @@ trait InvoiceSchedulerTrait
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -72,6 +74,7 @@ trait InvoiceSchedulerTrait
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return InvoiceSchedulerDto
      */

@@ -75,6 +75,7 @@ abstract class CountryAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return CountryDto|null
@@ -100,6 +101,7 @@ abstract class CountryAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -137,6 +139,7 @@ abstract class CountryAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -170,6 +173,7 @@ abstract class CountryAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return CountryDto
      */

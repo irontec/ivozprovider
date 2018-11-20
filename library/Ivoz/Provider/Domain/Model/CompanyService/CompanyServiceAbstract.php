@@ -68,6 +68,7 @@ abstract class CompanyServiceAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return CompanyServiceDto|null
@@ -93,6 +94,7 @@ abstract class CompanyServiceAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -119,6 +121,7 @@ abstract class CompanyServiceAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -141,6 +144,7 @@ abstract class CompanyServiceAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return CompanyServiceDto
      */

@@ -220,6 +220,7 @@ abstract class TpCdrAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return TpCdrDto|null
@@ -245,6 +246,7 @@ abstract class TpCdrAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -291,6 +293,7 @@ abstract class TpCdrAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -333,6 +336,7 @@ abstract class TpCdrAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return TpCdrDto
      */

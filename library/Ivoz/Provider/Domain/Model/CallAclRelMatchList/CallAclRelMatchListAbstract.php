@@ -75,6 +75,7 @@ abstract class CallAclRelMatchListAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return CallAclRelMatchListDto|null
@@ -100,6 +101,7 @@ abstract class CallAclRelMatchListAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -127,6 +129,7 @@ abstract class CallAclRelMatchListAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -150,6 +153,7 @@ abstract class CallAclRelMatchListAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return CallAclRelMatchListDto
      */

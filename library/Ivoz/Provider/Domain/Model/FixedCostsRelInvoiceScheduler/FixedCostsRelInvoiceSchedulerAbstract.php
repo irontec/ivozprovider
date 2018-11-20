@@ -67,6 +67,7 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return FixedCostsRelInvoiceSchedulerDto|null
@@ -92,6 +93,7 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -117,6 +119,7 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -139,6 +142,7 @@ abstract class FixedCostsRelInvoiceSchedulerAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return FixedCostsRelInvoiceSchedulerDto
      */

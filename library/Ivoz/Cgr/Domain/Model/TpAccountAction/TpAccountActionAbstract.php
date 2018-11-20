@@ -125,6 +125,7 @@ abstract class TpAccountActionAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return TpAccountActionDto|null
@@ -150,6 +151,7 @@ abstract class TpAccountActionAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -184,6 +186,7 @@ abstract class TpAccountActionAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -214,6 +217,7 @@ abstract class TpAccountActionAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return TpAccountActionDto
      */

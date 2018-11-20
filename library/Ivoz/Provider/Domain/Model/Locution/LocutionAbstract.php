@@ -84,6 +84,7 @@ abstract class LocutionAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return LocutionDto|null
@@ -109,6 +110,7 @@ abstract class LocutionAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -149,6 +151,7 @@ abstract class LocutionAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -185,6 +188,7 @@ abstract class LocutionAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return LocutionDto
      */

@@ -96,6 +96,7 @@ abstract class TrustedAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return TrustedDto|null
@@ -121,6 +122,7 @@ abstract class TrustedAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -152,6 +154,7 @@ abstract class TrustedAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -179,6 +182,7 @@ abstract class TrustedAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return TrustedDto
      */

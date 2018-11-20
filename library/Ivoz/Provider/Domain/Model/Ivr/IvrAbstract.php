@@ -157,6 +157,7 @@ abstract class IvrAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return IvrDto|null
@@ -182,6 +183,7 @@ abstract class IvrAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -224,6 +226,7 @@ abstract class IvrAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -262,6 +265,7 @@ abstract class IvrAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return IvrDto
      */

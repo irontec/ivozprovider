@@ -62,6 +62,7 @@ abstract class FeaturesRelBrandAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return FeaturesRelBrandDto|null
@@ -87,6 +88,7 @@ abstract class FeaturesRelBrandAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -111,6 +113,7 @@ abstract class FeaturesRelBrandAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -132,6 +135,7 @@ abstract class FeaturesRelBrandAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return FeaturesRelBrandDto
      */

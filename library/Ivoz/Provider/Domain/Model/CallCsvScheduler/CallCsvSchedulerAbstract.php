@@ -97,6 +97,7 @@ abstract class CallCsvSchedulerAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return CallCsvSchedulerDto|null
@@ -122,6 +123,7 @@ abstract class CallCsvSchedulerAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -153,6 +155,7 @@ abstract class CallCsvSchedulerAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -180,6 +183,7 @@ abstract class CallCsvSchedulerAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return CallCsvSchedulerDto
      */

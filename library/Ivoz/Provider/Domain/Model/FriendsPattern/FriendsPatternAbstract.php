@@ -69,6 +69,7 @@ abstract class FriendsPatternAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param EntityInterface|null $entity
      * @param int $depth
      * @return FriendsPatternDto|null
@@ -94,6 +95,7 @@ abstract class FriendsPatternAbstract
 
     /**
      * Factory method
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -120,6 +122,7 @@ abstract class FriendsPatternAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param DataTransferObjectInterface $dto
      * @return self
      */
@@ -142,6 +145,7 @@ abstract class FriendsPatternAbstract
     }
 
     /**
+     * @internal use EntityTools instead
      * @param int $depth
      * @return FriendsPatternDto
      */
