@@ -74,6 +74,10 @@ These are the configurable settings of *Residential devices*:
         Request from IvozProvider to this device will include this domain in
         the From header.
 
+    DDI In
+        If set to 'Yes', use endpoint username in R-URI when calling this residential device. If set to 'No', use called
+        number instead.
+
 Voicemail settings
 ==================
 

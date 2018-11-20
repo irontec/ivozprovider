@@ -51,6 +51,7 @@ Feature: Retrieve friends patterns
               "updateCallerid": "yes",
               "fromDomain": "",
               "directConnectivity": "yes",
+              "ddiIn": "yes",
               "id": 1,
               "company": 1,
               "callAcl": null,

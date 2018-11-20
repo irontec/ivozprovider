@@ -53,6 +53,11 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
     private $directConnectivity = 'yes';
 
     /**
+     * @var string
+     */
+    private $ddiIn = 'yes';
+
+    /**
      * @var integer
      */
     private $id;
@@ -113,6 +118,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
             'password' => 'password',
             'fromDomain' => 'fromDomain',
             'directConnectivity' => 'directConnectivity',
+            'ddiIn' => 'ddiIn',
             'id' => 'id',
             'brandId' => 'brand',
             'domainId' => 'domain',
@@ -136,6 +142,7 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
             'password' => $this->getPassword(),
             'fromDomain' => $this->getFromDomain(),
             'directConnectivity' => $this->getDirectConnectivity(),
+            'ddiIn' => $this->getDdiIn(),
             'id' => $this->getId(),
             'brand' => $this->getBrand(),
             'domain' => $this->getDomain(),
@@ -337,6 +344,26 @@ abstract class RetailAccountDtoAbstract implements DataTransferObjectInterface
     public function getDirectConnectivity()
     {
         return $this->directConnectivity;
+    }
+
+    /**
+     * @param string $ddiIn
+     *
+     * @return static
+     */
+    public function setDdiIn($ddiIn = null)
+    {
+        $this->ddiIn = $ddiIn;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDdiIn()
+    {
+        return $this->ddiIn;
     }
 
     /**

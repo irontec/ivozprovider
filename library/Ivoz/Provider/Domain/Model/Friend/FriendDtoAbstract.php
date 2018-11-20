@@ -88,6 +88,11 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     private $directConnectivity = 'yes';
 
     /**
+     * @var string
+     */
+    private $ddiIn = 'yes';
+
+    /**
      * @var integer
      */
     private $id;
@@ -165,6 +170,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
             'updateCallerid' => 'updateCallerid',
             'fromDomain' => 'fromDomain',
             'directConnectivity' => 'directConnectivity',
+            'ddiIn' => 'ddiIn',
             'id' => 'id',
             'companyId' => 'company',
             'domainId' => 'domain',
@@ -196,6 +202,7 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
             'updateCallerid' => $this->getUpdateCallerid(),
             'fromDomain' => $this->getFromDomain(),
             'directConnectivity' => $this->getDirectConnectivity(),
+            'ddiIn' => $this->getDdiIn(),
             'id' => $this->getId(),
             'company' => $this->getCompany(),
             'domain' => $this->getDomain(),
@@ -554,6 +561,26 @@ abstract class FriendDtoAbstract implements DataTransferObjectInterface
     public function getDirectConnectivity()
     {
         return $this->directConnectivity;
+    }
+
+    /**
+     * @param string $ddiIn
+     *
+     * @return static
+     */
+    public function setDdiIn($ddiIn = null)
+    {
+        $this->ddiIn = $ddiIn;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDdiIn()
+    {
+        return $this->ddiIn;
     }
 
     /**

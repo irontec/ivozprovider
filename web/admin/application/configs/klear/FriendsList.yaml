@@ -39,6 +39,7 @@ production:
           status: true
           updateCallerid: true
           callACL: true
+          ddiIn: true
         order:
           name: true
           domain: true
@@ -97,7 +98,9 @@ production:
           callACL: true
           outgoingDDI: true
           allow: true
+          transformationRuleSet: true
           fromDomain: true
+          ddiIn: true
           status: true
       fixedPositions: &friends_FixedPositionsLink
         group0:
@@ -131,6 +134,7 @@ production:
           fields:
             allow: 2
             fromDomain: 2
+            ddiIn: 2
       shortcutOption: N
 
     friendsEdit_screen: &friendsEdit_screenLink

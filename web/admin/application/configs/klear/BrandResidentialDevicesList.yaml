@@ -38,6 +38,7 @@ production:
           port: true
           language: true
           status: true
+          ddiIn: true
         order:
           company: true
           name: true

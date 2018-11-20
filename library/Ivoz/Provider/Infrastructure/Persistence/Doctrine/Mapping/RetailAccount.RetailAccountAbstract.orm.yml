@@ -59,6 +59,15 @@ Ivoz\Provider\Domain\Model\RetailAccount\RetailAccountAbstract:
         comment: '[enum:yes|no]'
         default: 'yes'
       column: directConnectivity
+    ddiIn:
+      type: string
+      nullable: false
+      length: null
+      options:
+        fixed: false
+        comment: '[enum:yes|no]'
+        default: 'yes'
+      column: ddiIn
   manyToOne:
     brand:
       targetEntity: Ivoz\Provider\Domain\Model\Brand\BrandInterface

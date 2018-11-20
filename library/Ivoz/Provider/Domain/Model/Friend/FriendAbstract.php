@@ -99,6 +99,12 @@ abstract class FriendAbstract
     protected $directConnectivity = 'yes';
 
     /**
+     * comment: enum:yes|no
+     * @var string
+     */
+    protected $ddiIn = 'yes';
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\Company\CompanyInterface
      */
     protected $company;
@@ -145,7 +151,8 @@ abstract class FriendAbstract
         $directMediaMethod,
         $calleridUpdateHeader,
         $updateCallerid,
-        $directConnectivity
+        $directConnectivity,
+        $ddiIn
     ) {
         $this->setName($name);
         $this->setDescription($description);
@@ -158,6 +165,7 @@ abstract class FriendAbstract
         $this->setCalleridUpdateHeader($calleridUpdateHeader);
         $this->setUpdateCallerid($updateCallerid);
         $this->setDirectConnectivity($directConnectivity);
+        $this->setDdiIn($ddiIn);
     }
 
     abstract public function getId();
@@ -237,7 +245,8 @@ abstract class FriendAbstract
             $dto->getDirectMediaMethod(),
             $dto->getCalleridUpdateHeader(),
             $dto->getUpdateCallerid(),
-            $dto->getDirectConnectivity()
+            $dto->getDirectConnectivity(),
+            $dto->getDdiIn()
         );
 
         $self
@@ -287,6 +296,7 @@ abstract class FriendAbstract
             ->setUpdateCallerid($dto->getUpdateCallerid())
             ->setFromDomain($dto->getFromDomain())
             ->setDirectConnectivity($dto->getDirectConnectivity())
+            ->setDdiIn($dto->getDdiIn())
             ->setCompany($dto->getCompany())
             ->setDomain($dto->getDomain())
             ->setTransformationRuleSet($dto->getTransformationRuleSet())
@@ -323,6 +333,7 @@ abstract class FriendAbstract
             ->setUpdateCallerid(self::getUpdateCallerid())
             ->setFromDomain(self::getFromDomain())
             ->setDirectConnectivity(self::getDirectConnectivity())
+            ->setDdiIn(self::getDdiIn())
             ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
             ->setDomain(\Ivoz\Provider\Domain\Model\Domain\Domain::entityToDto(self::getDomain(), $depth))
             ->setTransformationRuleSet(\Ivoz\Provider\Domain\Model\TransformationRuleSet\TransformationRuleSet::entityToDto(self::getTransformationRuleSet(), $depth))
@@ -352,6 +363,7 @@ abstract class FriendAbstract
             'update_callerid' => self::getUpdateCallerid(),
             'from_domain' => self::getFromDomain(),
             'directConnectivity' => self::getDirectConnectivity(),
+            'ddiIn' => self::getDdiIn(),
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
             'domainId' => self::getDomain() ? self::getDomain()->getId() : null,
             'transformationRuleSetId' => self::getTransformationRuleSet() ? self::getTransformationRuleSet()->getId() : null,
@@ -803,6 +815,37 @@ abstract class FriendAbstract
     public function getDirectConnectivity()
     {
         return $this->directConnectivity;
+    }
+
+    /**
+     * @deprecated
+     * Set ddiIn
+     *
+     * @param string $ddiIn
+     *
+     * @return self
+     */
+    public function setDdiIn($ddiIn)
+    {
+        Assertion::notNull($ddiIn, 'ddiIn value "%s" is null, but non null value was expected.');
+        Assertion::choice($ddiIn, array (
+          0 => 'yes',
+          1 => 'no',
+        ), 'ddiInvalue "%s" is not an element of the valid values: %s');
+
+        $this->ddiIn = $ddiIn;
+
+        return $this;
+    }
+
+    /**
+     * Get ddiIn
+     *
+     * @return string
+     */
+    public function getDdiIn()
+    {
+        return $this->ddiIn;
     }
 
     /**

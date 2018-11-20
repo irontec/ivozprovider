@@ -40,6 +40,7 @@ production:
           port: true
           language: true
           status: true
+          ddiIn: true
         order:
           name: true
           domain: true
@@ -97,7 +98,9 @@ production:
           language: true
           outgoingDdi: true
           allow: true
+          transformationRuleSet: true
           fromDomain: true
+          ddiIn: true
           status: true
       fixedPositions: &residentialDevices_FixedPositionsLink
         group0:
@@ -130,6 +133,7 @@ production:
           fields:
             allow: 2
             fromDomain: 2
+            ddiIn: 2
 
     residentialDevicesEdit_screen: &residentialDevicesEdit_screenLink
       <<: *ResidentialDevices
