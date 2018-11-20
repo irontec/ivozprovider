@@ -76,6 +76,7 @@ public static function createDto($id = null)
 }
 
 /**
+ * @internal use EntityTools instead
  * @param EntityInterface|null $entity
  * @param int $depth
  * @return <dtoClass>|null
@@ -101,6 +102,7 @@ public static function entityToDto(EntityInterface $entity = null, $depth = 0)
 
 /**
  * Factory method
+ * @internal use EntityTools instead
  * @param DataTransferObjectInterface $dto
  * @return self
  */
@@ -120,6 +122,7 @@ public static function fromDto(DataTransferObjectInterface $dto)
 }
 
 /**
+ * @internal use EntityTools instead
  * @param DataTransferObjectInterface $dto
  * @return self
  */
@@ -137,6 +140,7 @@ public function updateFromDto(DataTransferObjectInterface $dto)
 }
 
 /**
+ * @internal use EntityTools instead
  * @param int $depth
  * @return <dtoClass>
  */

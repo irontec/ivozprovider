@@ -33,6 +33,7 @@ protected function __construct(<requiredFields>)<lineBreak>{
 
 /**
  * Factory method
+ * @internal use EntityTools instead
  * @param DataTransferObjectInterface $dto
  * @return self
  */
@@ -52,6 +53,7 @@ public static function fromDto(DataTransferObjectInterface $dto)
 }
 
 /**
+ * @internal use EntityTools instead
  * @param DataTransferObjectInterface $dto
  * @return self
  */
@@ -66,6 +68,7 @@ public function updateFromDto(DataTransferObjectInterface $dto)
 }
 
 /**
+ * @internal use EntityTools instead
  * @param int $depth
  * @return <dtoClass>
  */
