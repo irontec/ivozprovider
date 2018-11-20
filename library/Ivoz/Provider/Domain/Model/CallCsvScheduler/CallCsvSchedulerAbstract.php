@@ -40,6 +40,11 @@ abstract class CallCsvSchedulerAbstract
     protected $lastExecution;
 
     /**
+     * @var string
+     */
+    protected $lastExecutionError;
+
+    /**
      * @var \DateTime
      */
     protected $nextExecution;
@@ -143,6 +148,7 @@ abstract class CallCsvSchedulerAbstract
 
         $self
             ->setLastExecution($dto->getLastExecution())
+            ->setLastExecutionError($dto->getLastExecutionError())
             ->setNextExecution($dto->getNextExecution())
             ->setBrand($dto->getBrand())
             ->setCompany($dto->getCompany())
@@ -172,6 +178,7 @@ abstract class CallCsvSchedulerAbstract
             ->setFrequency($dto->getFrequency())
             ->setEmail($dto->getEmail())
             ->setLastExecution($dto->getLastExecution())
+            ->setLastExecutionError($dto->getLastExecutionError())
             ->setNextExecution($dto->getNextExecution())
             ->setBrand($dto->getBrand())
             ->setCompany($dto->getCompany());
@@ -195,6 +202,7 @@ abstract class CallCsvSchedulerAbstract
             ->setFrequency(self::getFrequency())
             ->setEmail(self::getEmail())
             ->setLastExecution(self::getLastExecution())
+            ->setLastExecutionError(self::getLastExecutionError())
             ->setNextExecution(self::getNextExecution())
             ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
             ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth));
@@ -211,6 +219,7 @@ abstract class CallCsvSchedulerAbstract
             'frequency' => self::getFrequency(),
             'email' => self::getEmail(),
             'lastExecution' => self::getLastExecution(),
+            'lastExecutionError' => self::getLastExecutionError(),
             'nextExecution' => self::getNextExecution(),
             'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null
@@ -366,6 +375,35 @@ abstract class CallCsvSchedulerAbstract
     public function getLastExecution()
     {
         return $this->lastExecution;
+    }
+
+    /**
+     * @deprecated
+     * Set lastExecutionError
+     *
+     * @param string $lastExecutionError
+     *
+     * @return self
+     */
+    public function setLastExecutionError($lastExecutionError = null)
+    {
+        if (!is_null($lastExecutionError)) {
+            Assertion::maxLength($lastExecutionError, 300, 'lastExecutionError value "%s" is too long, it should have no more than %d characters, but has %d characters.');
+        }
+
+        $this->lastExecutionError = $lastExecutionError;
+
+        return $this;
+    }
+
+    /**
+     * Get lastExecutionError
+     *
+     * @return string
+     */
+    public function getLastExecutionError()
+    {
+        return $this->lastExecutionError;
     }
 
     /**

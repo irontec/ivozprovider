@@ -96,6 +96,23 @@ interface InvoiceSchedulerInterface extends SchedulerInterface, LoggableEntityIn
 
     /**
      * @deprecated
+     * Set lastExecutionError
+     *
+     * @param string $lastExecutionError
+     *
+     * @return self
+     */
+    public function setLastExecutionError($lastExecutionError = null);
+
+    /**
+     * Get lastExecutionError
+     *
+     * @return string
+     */
+    public function getLastExecutionError();
+
+    /**
+     * @deprecated
      * Set nextExecution
      *
      * @param \DateTime $nextExecution

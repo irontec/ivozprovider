@@ -38,6 +38,11 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     private $lastExecution;
 
     /**
+     * @var string
+     */
+    private $lastExecutionError;
+
+    /**
      * @var \DateTime
      */
     private $nextExecution;
@@ -80,6 +85,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
             'frequency' => 'frequency',
             'email' => 'email',
             'lastExecution' => 'lastExecution',
+            'lastExecutionError' => 'lastExecutionError',
             'nextExecution' => 'nextExecution',
             'id' => 'id',
             'brandId' => 'brand',
@@ -98,6 +104,7 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
             'frequency' => $this->getFrequency(),
             'email' => $this->getEmail(),
             'lastExecution' => $this->getLastExecution(),
+            'lastExecutionError' => $this->getLastExecutionError(),
             'nextExecution' => $this->getNextExecution(),
             'id' => $this->getId(),
             'brand' => $this->getBrand(),
@@ -219,6 +226,26 @@ abstract class CallCsvSchedulerDtoAbstract implements DataTransferObjectInterfac
     public function getLastExecution()
     {
         return $this->lastExecution;
+    }
+
+    /**
+     * @param string $lastExecutionError
+     *
+     * @return static
+     */
+    public function setLastExecutionError($lastExecutionError = null)
+    {
+        $this->lastExecutionError = $lastExecutionError;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLastExecutionError()
+    {
+        return $this->lastExecutionError;
     }
 
     /**
