@@ -329,6 +329,11 @@ msgid_plural "Call ACL Patterns"
 msgstr[0] "Patrón permisos llamada"
 msgstr[1] "Patrón permisos llamada"
 
+msgid "Call CSV"
+msgid_plural "Call CSVs"
+msgstr[0] "CSV de llamadas"
+msgstr[1] "CSVs de llamadas"
+
 msgid "Call CSV report"
 msgid_plural "Call CSV reports"
 msgstr[0] "CSV de llamadas"

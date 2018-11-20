@@ -322,6 +322,11 @@ msgid_plural "Call ACL Patterns"
 msgstr[0] "Call ACL Pattern"
 msgstr[1] "Call ACL Patterns"
 
+msgid "Call CSV"
+msgid_plural "Call CSVs"
+msgstr[0] "Call CSV"
+msgstr[1] "Call CSVs"
+
 msgid "Call CSV report"
 msgid_plural "Call CSV reports"
 msgstr[0] "Call CSV report"
