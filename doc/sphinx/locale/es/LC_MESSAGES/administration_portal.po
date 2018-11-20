@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 2.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-05 17:43+0100\n"
+"POT-Creation-Date: 2018-11-20 18:44+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3333,27 +3333,33 @@ msgid ""
 msgstr ""
 
 #: ../../administration_portal/brand/settings/notification_templates.rst:71
-msgid "Body"
+msgid "Body type"
 msgstr ""
 
 #: ../../administration_portal/brand/settings/notification_templates.rst:73
-msgid ""
-"HTML Body of the email to be sent. You can include Substitution variables"
-" here."
+msgid "Body of the mail can be both plaintext or html."
 msgstr ""
 
-#: ../../administration_portal/brand/settings/notification_templates.rst:75
+#: ../../administration_portal/brand/settings/notification_templates.rst:74
+msgid "Body"
+msgstr ""
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:76
+msgid "Body of the email to be sent. You can include Substitution variables here."
+msgstr ""
+
+#: ../../administration_portal/brand/settings/notification_templates.rst:78
 msgid ""
 "There is no need to create all content languages. If custom notification "
 "has some languages not defined the default contents will be used for that"
 " notification type."
 msgstr ""
 
-#: ../../administration_portal/brand/settings/notification_templates.rst:81
+#: ../../administration_portal/brand/settings/notification_templates.rst:84
 msgid "Assigning templates to clients"
 msgstr ""
 
-#: ../../administration_portal/brand/settings/notification_templates.rst:83
+#: ../../administration_portal/brand/settings/notification_templates.rst:86
 msgid ""
 "Once the notification has been configured for the desired languages, "
 "Brand administrator must assign it to the client that will use it. This "

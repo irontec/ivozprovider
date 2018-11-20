@@ -69,8 +69,11 @@ Configurable fields of each content:
     Subject
         Subject of the email to be sent. You can include Substitution variables here.
 
+    Body type
+        Body of the mail can be both plaintext or html.
+
     Body
-        HTML Body of the email to be sent. You can include Substitution variables here.
+        Body of the email to be sent. You can include Substitution variables here.
 
 .. hint:: There is no need to create all content languages. If custom notification has some languages not defined the
         default contents will be used for that notification type.
