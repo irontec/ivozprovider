@@ -41,13 +41,11 @@ production:
       sufix: "%"
     lastExecution:
       title: _('Last execution')
-      type: picker
-      required: true
+      type: ghost
+      dirty: true
       source:
-        control: datetime
-        settings:
-          disabled: 'false'
-      readonly: true
+        class: IvozProvider_Klear_Ghost_SchedulerSuccess
+        method: getInvoiceSchedulerLastExecutionReport
     nextExecution:
       title: _('Next execution')
       type: picker

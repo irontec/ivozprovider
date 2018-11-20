@@ -39,7 +39,6 @@ production:
         blacklist:
           email: true
           numberSequence: true
-          lastExecution: true
           taxRate: true
           invoiceTemplate: true
       options:
@@ -88,9 +87,6 @@ production:
       title: _("Edit %s %2s", ngettext('Invoice scheduler', 'Invoice schedulers', 1), "[format| (%item%)]")
       forcedValues:
         <<: *forcedBrand
-      fields:
-        readOnly:
-          nextExecutin: true
       fixedPositions:
         <<: *invoiceSchedulersFixedPositions_Link
 
