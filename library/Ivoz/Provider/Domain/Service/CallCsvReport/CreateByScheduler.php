@@ -41,12 +41,13 @@ class CreateByScheduler
             $this->updateLastExecutionDate($scheduler);
             $this->createCallCsvReport($scheduler);
         } catch (\Exception $e) {
+            $error = $e->getMessage();
             $name = $scheduler->getName();
             $this->logger->error(
-                "Call CSV scheduler #${name} has failed: "
-                . $e->getMessage()
+                "Call CSV scheduler #${name} has failed: " . $error
             );
 
+            $this->setExecutionError($scheduler, $error);
             throw $e;
         }
     }
@@ -107,17 +108,39 @@ class CreateByScheduler
      */
     private function updateLastExecutionDate(CallCsvSchedulerInterface $scheduler)
     {
-        /** @var CallCsvSchedulerDto $invoiceSchedulerDto */
-        $invoiceSchedulerDto = $this
+        /** @var CallCsvSchedulerDto $callCsvSchedulerDto */
+        $callCsvSchedulerDto = $this
             ->entityTools
             ->entityToDto($scheduler);
 
-        $invoiceSchedulerDto->setLastExecution(
-            new \DateTime()
-        );
+        $callCsvSchedulerDto
+            ->setLastExecution(
+                new \DateTime()
+            )->setLastExecutionError('');
 
         $this->entityTools->persistDto(
-            $invoiceSchedulerDto,
+            $callCsvSchedulerDto,
+            $scheduler,
+            true
+        );
+    }
+
+    /**
+     * @param CallCsvSchedulerInterface $scheduler
+     * @param $error
+     */
+    private function setExecutionError(CallCsvSchedulerInterface $scheduler, string $error)
+    {
+        /** @var CallCsvSchedulerDto $callCsvSchedulerDto */
+        $callCsvSchedulerDto = $this
+            ->entityTools
+            ->entityToDto($scheduler);
+
+        $callCsvSchedulerDto
+            ->setLastExecutionError($error);
+
+        $this->entityTools->persistDto(
+            $callCsvSchedulerDto,
             $scheduler,
             true
         );
