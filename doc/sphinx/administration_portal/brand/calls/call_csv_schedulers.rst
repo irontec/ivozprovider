@@ -12,3 +12,5 @@ Apart from the fields above, everything described in :ref:`Invoice schedulers` a
 - Frequency/Unit configuration.
 - Email send.
 - View generated CSVs in **List of Call CSV reports**.
+- Next execution date.
+- Last execution date and result (success/error).
