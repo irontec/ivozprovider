@@ -570,6 +570,11 @@ msgstr[1] "Registros Proveedor"
 msgid "Default Action"
 msgstr "Acción por defecto"
 
+msgid "Default notification template"
+msgid_plural "Default notification templates"
+msgstr[0] "Plantilla de notificación por defecto"
+msgstr[1] "Plantillas de notificación por defecto"
+
 msgid "Default outgoing DDI. This can be overriden in accounts's edit screen."
 msgstr ""
 "DDI saliente por defecto. Esta opción puede ser sobrescrita en la pantalla "

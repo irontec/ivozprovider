@@ -563,6 +563,11 @@ msgstr[1] "DDI Provider Registrations"
 msgid "Default Action"
 msgstr "Default Action"
 
+msgid "Default notification template"
+msgid_plural "Default notification templates"
+msgstr[0] "Default Notification template"
+msgstr[1] "Default Notification templates"
+
 msgid "Default outgoing DDI. This can be overriden in accounts's edit screen."
 msgstr "Default outgoing DDI. This can be overriden in accounts's edit screen."
 
