@@ -183,6 +183,11 @@ abstract class CompanyAbstract
      */
     protected $invoiceNotificationTemplate;
 
+    /**
+     * @var \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
+     */
+    protected $callCsvNotificationTemplate;
+
 
     use ChangelogTrait;
 
@@ -318,6 +323,7 @@ abstract class CompanyAbstract
             ->setVoicemailNotificationTemplate($dto->getVoicemailNotificationTemplate())
             ->setFaxNotificationTemplate($dto->getFaxNotificationTemplate())
             ->setInvoiceNotificationTemplate($dto->getInvoiceNotificationTemplate())
+            ->setCallCsvNotificationTemplate($dto->getCallCsvNotificationTemplate())
         ;
 
         $self->sanitizeValues();
@@ -371,7 +377,8 @@ abstract class CompanyAbstract
             ->setOutgoingDdiRule($dto->getOutgoingDdiRule())
             ->setVoicemailNotificationTemplate($dto->getVoicemailNotificationTemplate())
             ->setFaxNotificationTemplate($dto->getFaxNotificationTemplate())
-            ->setInvoiceNotificationTemplate($dto->getInvoiceNotificationTemplate());
+            ->setInvoiceNotificationTemplate($dto->getInvoiceNotificationTemplate())
+            ->setCallCsvNotificationTemplate($dto->getCallCsvNotificationTemplate());
 
 
 
@@ -419,7 +426,8 @@ abstract class CompanyAbstract
             ->setOutgoingDdiRule(\Ivoz\Provider\Domain\Model\OutgoingDdiRule\OutgoingDdiRule::entityToDto(self::getOutgoingDdiRule(), $depth))
             ->setVoicemailNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate::entityToDto(self::getVoicemailNotificationTemplate(), $depth))
             ->setFaxNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate::entityToDto(self::getFaxNotificationTemplate(), $depth))
-            ->setInvoiceNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate::entityToDto(self::getInvoiceNotificationTemplate(), $depth));
+            ->setInvoiceNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate::entityToDto(self::getInvoiceNotificationTemplate(), $depth))
+            ->setCallCsvNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate::entityToDto(self::getCallCsvNotificationTemplate(), $depth));
     }
 
     /**
@@ -460,7 +468,8 @@ abstract class CompanyAbstract
             'outgoingDdiRuleId' => self::getOutgoingDdiRule() ? self::getOutgoingDdiRule()->getId() : null,
             'voicemailNotificationTemplateId' => self::getVoicemailNotificationTemplate() ? self::getVoicemailNotificationTemplate()->getId() : null,
             'faxNotificationTemplateId' => self::getFaxNotificationTemplate() ? self::getFaxNotificationTemplate()->getId() : null,
-            'invoiceNotificationTemplateId' => self::getInvoiceNotificationTemplate() ? self::getInvoiceNotificationTemplate()->getId() : null
+            'invoiceNotificationTemplateId' => self::getInvoiceNotificationTemplate() ? self::getInvoiceNotificationTemplate()->getId() : null,
+            'callCsvNotificationTemplateId' => self::getCallCsvNotificationTemplate() ? self::getCallCsvNotificationTemplate()->getId() : null
         ];
     }
     // @codeCoverageIgnoreStart
@@ -1368,6 +1377,30 @@ abstract class CompanyAbstract
     public function getInvoiceNotificationTemplate()
     {
         return $this->invoiceNotificationTemplate;
+    }
+
+    /**
+     * Set callCsvNotificationTemplate
+     *
+     * @param \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $callCsvNotificationTemplate
+     *
+     * @return self
+     */
+    public function setCallCsvNotificationTemplate(\Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface $callCsvNotificationTemplate = null)
+    {
+        $this->callCsvNotificationTemplate = $callCsvNotificationTemplate;
+
+        return $this;
+    }
+
+    /**
+     * Get callCsvNotificationTemplate
+     *
+     * @return \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplateInterface
+     */
+    public function getCallCsvNotificationTemplate()
+    {
+        return $this->callCsvNotificationTemplate;
     }
 
     // @codeCoverageIgnoreEnd
