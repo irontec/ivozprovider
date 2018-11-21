@@ -365,10 +365,9 @@ class DataGateway
     private function walkArray(array $data)
     {
         foreach ($data as $key => $value) {
-
             if (is_array($value)) {
                 $data[$key] = $this->walkArray($value);
-            } else if ($value instanceof DataTransferObjectInterface) {
+            } elseif ($value instanceof DataTransferObjectInterface) {
                 $data[$key] = '#' .$value->getId();
             }
         }
