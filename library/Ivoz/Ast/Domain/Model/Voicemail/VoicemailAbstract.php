@@ -82,7 +82,7 @@ abstract class VoicemailAbstract
     /**
      * @var string
      */
-    protected $saycid;
+    protected $saycid = 'yes';
 
     /**
      * column: sendast_voicemail
