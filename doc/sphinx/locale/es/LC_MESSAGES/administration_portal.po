@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 2.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-20 18:44+0100\n"
+"POT-Creation-Date: 2018-11-21 13:21+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3202,26 +3202,32 @@ msgid "Notification Templates"
 msgstr ""
 
 #: ../../administration_portal/brand/settings/notification_templates.rst:7
+#: ../../administration_portal/platform/default_notification_templates.rst:7
 msgid "Brand administrators can configure the notifications sent by IvozProvider:"
 msgstr ""
 
 #: ../../administration_portal/brand/settings/notification_templates.rst:9
+#: ../../administration_portal/platform/default_notification_templates.rst:9
 msgid "Email sent when a new voicemail is received"
 msgstr ""
 
 #: ../../administration_portal/brand/settings/notification_templates.rst:11
+#: ../../administration_portal/platform/default_notification_templates.rst:11
 msgid "Email sent when a new fax is received"
 msgstr ""
 
 #: ../../administration_portal/brand/settings/notification_templates.rst:13
+#: ../../administration_portal/platform/default_notification_templates.rst:13
 msgid "Email sent when a balance is below configured threshold"
 msgstr ""
 
 #: ../../administration_portal/brand/settings/notification_templates.rst:15
+#: ../../administration_portal/platform/default_notification_templates.rst:15
 msgid "Email sent when an automatic invoice is generated"
 msgstr ""
 
 #: ../../administration_portal/brand/settings/notification_templates.rst:17
+#: ../../administration_portal/platform/default_notification_templates.rst:17
 msgid "Email sent when scheduled CDR CSVs are generated"
 msgstr ""
 
@@ -7560,6 +7566,20 @@ msgid ""
 "brand can be guessed, but not the client. As a result, username collision"
 " domain will be at brand level (there cannot exist to client "
 "administrators with the same username within a brand)."
+msgstr ""
+
+#: ../../administration_portal/platform/default_notification_templates.rst:5
+msgid "Default Notification Templates"
+msgstr ""
+
+#: ../../administration_portal/platform/default_notification_templates.rst:19
+msgid ""
+"This section allows **modifying default templates** that will be **used "
+"when no custom notification is configured**."
+msgstr ""
+
+#: ../../administration_portal/platform/default_notification_templates.rst:21
+msgid "See :ref:`notification_templates` for further reference."
 msgstr ""
 
 #: ../../administration_portal/platform/index.rst:3

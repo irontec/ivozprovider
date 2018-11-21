@@ -1,0 +1,202 @@
+#include conf.d/mapperList.yaml
+#include conf.d/actions.yaml
+#include conf.d/documentationLink.yaml
+#include NotificationTemplatesList.yaml
+#include NotificationTemplatesContentsList.yaml
+
+production:
+  main:
+    module: klearMatrix
+    defaultScreen: notificationTemplatesList_screen
+
+  screens:
+    <<: *notificationTemplates_screensLink
+    notificationTemplatesList_screen:
+      <<: *notificationTemplatesList_screenLink
+      info:
+        <<: *documentationLink
+        href: "/doc/en/administration_portal/platform/default_notification_templates.html"
+      forcedValues:
+        "self::brand": null
+      fields:
+        options:
+          title: _("Options")
+          screens:
+            notificationTemplatesEdit_screen: false
+            notificationTemplatesContentsVoicemailList_screen: true
+            notificationTemplatesContentsFaxList_screen: true
+            notificationTemplatesContentsLowBalanceList_screen: true
+            notificationTemplatesContentsInvoiceList_screen: true
+            notificationTemplatesContentsCallCsvList_screen: true
+          dialogs:
+            notificationTemplatesDel_dialog: false
+          default: notificationTemplatesContentsVoicemailList_screen
+      options:
+        title: _("Options")
+        screens:
+          notificationTemplatesNew_screen: false
+        dialogs:
+          notificationTemplatesDel_dialog: false
+
+    # notificationTemplatesVoicemailContents screens:
+    notificationTemplatesContentsVoicemailList_screen:
+      <<: *notificationTemplatesContentsVoicemailList_screenLink
+      fields:
+        <<: *notificationTemplatesContents_fieldsLink
+        options:
+          title: _("Options")
+          screens:
+            notificationTemplatesContentsVoicemailEdit_screen: true
+          default: notificationTemplatesContentsVoicemailEdit_screen
+      options:
+        title: _("Options")
+      filterField: notificationTemplate
+      parentOptionCustomizer:
+        - IvozProvider_Klear_Options_OptionsCustomizerFilterForNotificationVoicemail
+        - recordCount
+    notificationTemplatesContentsVoicemailEdit_screen: &notificationTemplatesContentsVoicemailEdit_screenLink
+      <<: *notificationTemplatesContentsEdit_screenLink
+      fields:
+        order:
+          <<: *notificationTemplatesContentsFieldsOrderPositions_Link
+        blacklist:
+          faxVariables: true
+          invoiceVariables: true
+          lowBalanceVariables: true
+          callCsvVariables: true
+        readOnly:
+          language: true
+      filterField: notificationTemplate
+
+    # notificationTemplatesFaxContents screens:
+    notificationTemplatesContentsFaxList_screen:
+      <<: *notificationTemplatesContentsFaxList_screenLink
+      fields:
+        <<: *notificationTemplatesContents_fieldsLink
+        options:
+          title: _("Options")
+          screens:
+            notificationTemplatesContentsFaxEdit_screen: true
+          default: notificationTemplatesContentsFaxEdit_screen
+      options:
+        title: _("Options")
+      filterField: notificationTemplate
+      parentOptionCustomizer:
+        - IvozProvider_Klear_Options_OptionsCustomizerFilterForNotificationFax
+        - recordCount
+    notificationTemplatesContentsFaxEdit_screen: &notificationTemplatesContentsFaxEdit_screenLink
+      <<: *notificationTemplatesContentsEdit_screenLink
+      fields:
+        order:
+          <<: *notificationTemplatesContentsFieldsOrderPositions_Link
+        blacklist:
+          voicemailVariables: true
+          invoiceVariables: true
+          lowBalanceVariables: true
+          callCsvVariables: true
+        readOnly:
+          language: true
+      filterField: notificationTemplate
+
+    # notificationTemplatesInvoiceContents screens:
+    notificationTemplatesContentsInvoiceList_screen:
+      <<: *notificationTemplatesContentsInvoiceList_screenLink
+      fields:
+        <<: *notificationTemplatesContents_fieldsLink
+        options:
+          title: _("Options")
+          screens:
+            notificationTemplatesContentsInvoiceEdit_screen: true
+          default: notificationTemplatesContentsInvoiceEdit_screen
+      options:
+        title: _("Options")
+      filterField: notificationTemplate
+      parentOptionCustomizer:
+        - IvozProvider_Klear_Options_OptionsCustomizerFilterForNotificationInvoice
+        - recordCount
+    notificationTemplatesContentsInvoiceEdit_screen: &notificationTemplatesContentsInvoiceEdit_screenLink
+      <<: *notificationTemplatesContentsEdit_screenLink
+      fields:
+        order:
+          <<: *notificationTemplatesContentsFieldsOrderPositions_Link
+        blacklist:
+          voicemailVariables: true
+          faxVariables: true
+          lowBalanceVariables: true
+          callCsvVariables: true
+        readOnly:
+          language: true
+      filterField: notificationTemplate
+
+    # notificationTemplatesLowBalanceContents screens:
+    notificationTemplatesContentsLowBalanceList_screen:
+      <<: *notificationTemplatesContentsLowBalanceList_screenLink
+      fields:
+        <<: *notificationTemplatesContents_fieldsLink
+        options:
+          title: _("Options")
+          screens:
+            notificationTemplatesContentsLowBalanceEdit_screen: true
+          default: notificationTemplatesContentsLowBalanceEdit_screen
+      options:
+        title: _("Options")
+      filterField: notificationTemplate
+      parentOptionCustomizer:
+        - IvozProvider_Klear_Options_OptionsCustomizerFilterForNotificationLowBalance
+        - recordCount
+    notificationTemplatesContentsLowBalanceEdit_screen: &notificationTemplatesContentsLowBalanceEdit_screenLink
+      <<: *notificationTemplatesContentsEdit_screenLink
+      fields:
+        order:
+          <<: *notificationTemplatesContentsFieldsOrderPositions_Link
+        blacklist:
+          voicemailVariables: true
+          faxVariables: true
+          invoiceVariables: true
+          callCsvVariables: true
+        readOnly:
+          language: true
+      filterField: notificationTemplate
+      
+    # notificationTemplatesCallCsvContents screens:
+    notificationTemplatesContentsCallCsvList_screen:
+      <<: *notificationTemplatesContentsCallCsvList_screenLink
+      fields:
+        <<: *notificationTemplatesContents_fieldsLink
+        options:
+          title: _("Options")
+          screens:
+            notificationTemplatesContentsCallCsvEdit_screen: true
+          default: notificationTemplatesContentsCallCsvEdit_screen
+      options:
+        title: _("Options")
+      filterField: notificationTemplate
+      parentOptionCustomizer:
+        - IvozProvider_Klear_Options_OptionsCustomizerFilterForNotificationCallCsv
+        - recordCount
+    notificationTemplatesContentsCallCsvEdit_screen: &notificationTemplatesContentsCallCsvEdit_screenLink
+      <<: *notificationTemplatesContentsEdit_screenLink
+      fields:
+        order:
+          <<: *notificationTemplatesContentsFieldsOrderPositions_Link
+        blacklist:
+          voicemailVariables: true
+          faxVariables: true
+          invoiceVariables: true
+          lowBalanceVariables: true
+        readOnly:
+          language: true
+      filterField: notificationTemplate      
+
+  dialogs:
+    # notificationTemplatesContents dialogs:
+    <<: *notificationTemplatesContents_dialogsLink
+
+staging:
+  _extends: production
+testing:
+  _extends: production
+development:
+  _extends: production
+localdev:
+  _extends: production

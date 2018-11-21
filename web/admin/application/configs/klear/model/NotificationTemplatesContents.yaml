@@ -19,6 +19,7 @@ production:
       title: _('Language')
       type: select
       required: true
+      default: true
       source:
         data: mapper
         config:
@@ -88,6 +89,15 @@ production:
         class: IvozProvider_Klear_Ghost_NotificationTemplate
         method: getVariables
       <<: *lowBalanceVariablesHelp
+    callCsvVariables:
+      title: _('Substitution variables')
+      type: ghost
+      maxLength: 255
+      readonly: true
+      source:
+        class: IvozProvider_Klear_Ghost_NotificationTemplate
+        method: getVariables
+      <<: *callCsvVariablesHelp
     subject:
       title: _('Subject')
       trim: both

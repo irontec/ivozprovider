@@ -322,6 +322,11 @@ msgid_plural "Call ACL Patterns"
 msgstr[0] "Call ACL Pattern"
 msgstr[1] "Call ACL Patterns"
 
+msgid "Call CSV"
+msgid_plural "Call CSVs"
+msgstr[0] "Call CSV"
+msgstr[1] "Call CSVs"
+
 msgid "Call CSV report"
 msgid_plural "Call CSV reports"
 msgstr[0] "Call CSV report"
@@ -557,6 +562,11 @@ msgstr[1] "DDI Provider Registrations"
 
 msgid "Default Action"
 msgstr "Default Action"
+
+msgid "Default notification template"
+msgid_plural "Default notification templates"
+msgstr[0] "Default Notification template"
+msgstr[1] "Default Notification templates"
 
 msgid "Default outgoing DDI. This can be overriden in accounts's edit screen."
 msgstr "Default outgoing DDI. This can be overriden in accounts's edit screen."

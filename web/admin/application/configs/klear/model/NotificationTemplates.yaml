@@ -30,6 +30,7 @@ production:
           'fax': ngettext('Fax', 'Faxes', 1)
           'lowbalance': _('Low balance')
           'invoice': ngettext('Invoice', 'Invoices', 1)
+          'callCsv': ngettext('Call CSV', 'Call CSVs', 1)
 staging:
   _extends: production
 testing:
