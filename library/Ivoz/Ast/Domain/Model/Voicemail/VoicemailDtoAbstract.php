@@ -80,7 +80,7 @@ abstract class VoicemailDtoAbstract implements DataTransferObjectInterface
     /**
      * @var string
      */
-    private $saycid;
+    private $saycid = 'yes';
 
     /**
      * @var string
