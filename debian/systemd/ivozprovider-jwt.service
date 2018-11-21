@@ -1,0 +1,6 @@
+[Unit]
+Description=Run Ivozprovider JWT tasks
+
+[Service]
+Type=oneshot
+ExecStart=/opt/irontec/ivozprovider/web/rest/platform/bin/console gesdinet:jwt:clear
