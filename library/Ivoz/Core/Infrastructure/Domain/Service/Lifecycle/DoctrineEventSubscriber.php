@@ -162,7 +162,8 @@ class DoctrineEventSubscriber implements EventSubscriber
         foreach ($this->flushedEntities as $entity) {
             $this->run(
                 'on_commit',
-                new LifecycleEventArgs($entity, $args->getEntityManager())
+                new LifecycleEventArgs($entity, $args->getEntityManager()),
+                $entity->isNew()
             );
         }
 
