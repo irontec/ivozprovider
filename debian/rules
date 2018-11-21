@@ -58,6 +58,7 @@ override_dh_systemd_enable:
 	dh_systemd_enable -p ivozprovider-asterisk-agi	  --name=fastagi@      fastagi@.service
 	dh_systemd_enable -p ivozprovider-asterisk-agi	  --name=fastagi       fastagi.socket
 	dh_systemd_enable -p ivozprovider-profile-proxy   --name=kamailio@     kamailio@.service --no-enable
+	dh_systemd_enable -p ivozprovider-web-rest        --name=ivozprovider-jwt                --no-enable
 	dh_systemd_enable -p ivozprovider-recordings      --name=ivozprovider-recordings         --no-enable
 	dh_systemd_enable -p ivozprovider-balances        --name=ivozprovider-balances           --no-enable
 	dh_systemd_enable -p ivozprovider-scheduler       --name=ivozprovider-scheduler          --no-enable
@@ -67,6 +68,7 @@ override_dh_systemd_start:
 	dh_systemd_start  -p ivozprovider-asterisk-agi     --name=fastagi@     fastagi@.service   --no-restart-on-upgrade --no-start
 	dh_systemd_start  -p ivozprovider-asterisk-agi     --name=fastagi      fastagi.socket     --no-restart-on-upgrade --no-start
 	dh_systemd_start  -p ivozprovider-profile-proxy    --name=kamailio@    kamailio@.service  --no-restart-on-upgrade --no-start
+	dh_systemd_start  -p ivozprovider-web-rest	       --name=ivozprovider-jwt                --no-restart-on-upgrade --no-start
 	dh_systemd_start  -p ivozprovider-recordings	   --name=ivozprovider-recordings         --no-restart-on-upgrade --no-start
 	dh_systemd_start  -p ivozprovider-balances	       --name=ivozprovider-balances           --no-restart-on-upgrade --no-start
 	dh_systemd_start  -p ivozprovider-scheduler	       --name=ivozprovider-scheduler          --no-restart-on-upgrade --no-start
