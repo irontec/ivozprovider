@@ -11,7 +11,6 @@ use Ivoz\Provider\Domain\Model\FixedCostsRelInvoiceScheduler\FixedCostsRelInvoic
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceDto;
 use Ivoz\Provider\Domain\Model\Invoice\InvoiceInterface;
 use Ivoz\Provider\Domain\Model\InvoiceNumberSequence\InvoiceNumberSequenceInterface;
-use Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceScheduler;
 use Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerDto;
 use Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerInterface;
 use Ivoz\Provider\Domain\Model\InvoiceTemplate\InvoiceTemplateInterface;
@@ -57,11 +56,37 @@ class CreateBySchedulerSpec extends ObjectBehavior
     }
 
     function it_logs_errors(
-        InvoiceSchedulerInterface $scheduler
+        InvoiceSchedulerInterface $scheduler,
+        InvoiceSchedulerDto $schedulerDto,
+        InvoiceInterface $invoice,
+        CompanyInterface $company,
+        BrandInterface $brand,
+        TimezoneInterface $timezone,
+        InvoiceTemplateInterface $invoiceTemplate,
+        FixedCostsRelInvoiceSchedulerInterface $fixedCostsRelInvoiceScheduler,
+        FixedCostInterface $fixedCost,
+        InvoiceNumberSequenceInterface $invoiceNumberSequence
     ) {
+        $this->prepareExecution(
+            $scheduler,
+            $schedulerDto,
+            $invoice,
+            $company,
+            $brand,
+            $timezone,
+            $invoiceTemplate,
+            $fixedCostsRelInvoiceScheduler,
+            $fixedCost,
+            $invoiceNumberSequence
+        );
+
         $exception = new \Exception(
             'Some error'
         );
+
+        $schedulerDto
+            ->setLastExecutionError('Some error')
+            ->willReturn($schedulerDto);
 
         $scheduler
             ->getName()
@@ -76,6 +101,49 @@ class CreateBySchedulerSpec extends ObjectBehavior
         $this
             ->logger
             ->error('Invoice scheduler #Name has failed: Some error')
+            ->shouldBeCalled();
+
+        $this
+            ->shouldThrow($exception)
+            ->during('execute', [$scheduler]);
+    }
+
+    function it_persists_errors(
+        InvoiceSchedulerInterface $scheduler,
+        InvoiceSchedulerDto $schedulerDto,
+        InvoiceInterface $invoice,
+        CompanyInterface $company,
+        BrandInterface $brand,
+        TimezoneInterface $timezone,
+        InvoiceTemplateInterface $invoiceTemplate,
+        FixedCostsRelInvoiceSchedulerInterface $fixedCostsRelInvoiceScheduler,
+        FixedCostInterface $fixedCost,
+        InvoiceNumberSequenceInterface $invoiceNumberSequence
+    ) {
+        $this->prepareExecution(
+            $scheduler,
+            $schedulerDto,
+            $invoice,
+            $company,
+            $brand,
+            $timezone,
+            $invoiceTemplate,
+            $fixedCostsRelInvoiceScheduler,
+            $fixedCost,
+            $invoiceNumberSequence
+        );
+
+        $exception = new \Exception(
+            'Some error'
+        );
+
+        $scheduler
+            ->getBrand()
+            ->willThrow($exception)
+            ->shouldBeCalled();
+
+        $schedulerDto
+            ->setLastExecutionError('Some error')
             ->shouldBeCalled();
 
         $this
@@ -112,6 +180,12 @@ class CreateBySchedulerSpec extends ObjectBehavior
             ->setLastExecution(
                 Argument::type(\DateTime::class)
             )
+            ->willReturn($schedulerDto)
+            ->shouldBeCalled();
+
+        $schedulerDto
+            ->setLastExecutionError('')
+            ->willReturn($schedulerDto)
             ->shouldBeCalled();
 
         $this
@@ -222,21 +296,18 @@ class CreateBySchedulerSpec extends ObjectBehavior
         //////////////////////////////////
         $timezone
             ->getTz()
-            ->willReturn('UTC')
-            ->shouldBeCalled();
+            ->willReturn('UTC');
 
         //////////////////////////////////
         /// $brand
         //////////////////////////////////
         $brand
             ->getId()
-            ->willReturn(1)
-            ->shouldBeCalled();
+            ->willReturn(1);
 
         $brand
             ->getDefaultTimezone()
-            ->willReturn($timezone)
-            ->shouldBeCalled();
+            ->willReturn($timezone);
 
         //////////////////////////////////
         /// $scheduler
@@ -271,10 +342,20 @@ class CreateBySchedulerSpec extends ObjectBehavior
             ->entityToDto($scheduler)
             ->willReturn($schedulerDto);
 
+        $schedulerDto
+            ->setLastExecution(
+                Argument::type(\DateTime::class)
+            )
+            ->willReturn($schedulerDto);
+
+        $schedulerDto
+            ->setLastExecutionError('')
+            ->willReturn($schedulerDto);
+
         $this
             ->entityTools
             ->persist(Argument::type(FixedCostsRelInvoice::class))
-            ->wilLReturn(null);
+            ->willReturn(null);
 
         $this
             ->entityTools

@@ -38,6 +38,13 @@ Ivoz\Provider\Domain\Model\InvoiceScheduler\InvoiceSchedulerAbstract:
       type: datetime
       nullable: true
       column: lastExecution
+    lastExecutionError:
+      type: string
+      nullable: true
+      length: 300
+      options:
+        fixed: false
+      column: lastExecutionError
     nextExecution:
       type: datetime
       nullable: true
