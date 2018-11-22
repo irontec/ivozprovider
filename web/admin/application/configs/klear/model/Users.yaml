@@ -104,6 +104,13 @@ production:
           order:
             Terminal.name: asc
         'null': _("Unassigned")
+    statusIcon:
+      title: _('Status')
+      type: ghost
+      dirty: true
+      source:
+        class: IvozProvider_Klear_Ghost_RegisterStatus
+        method: getUserTerminalStatusIcon
     extension:
       title: _('Screen Extension')
       type: select
