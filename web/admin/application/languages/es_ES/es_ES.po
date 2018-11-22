@@ -334,6 +334,11 @@ msgid_plural "Call CSVs"
 msgstr[0] "CSV de llamadas"
 msgstr[1] "CSVs de llamadas"
 
+msgid "Call CSV Notification"
+msgid_plural "Call CSV Notifications"
+msgstr[0] "Notificación CSV de llamadas"
+msgstr[1] "Notificaciones CSVs de llamadas"
+
 msgid "Call CSV report"
 msgid_plural "Call CSV reports"
 msgstr[0] "CSV de llamadas"

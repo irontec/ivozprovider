@@ -5,7 +5,7 @@
  *
  * Filter Extension Listbox to only display invoice notification templates belonging to brand
  */
-class NotificationTemplateCallsCsv extends IvozProvider_Klear_Filter_Brand
+class IvozProvider_Klear_Filter_NotificationTemplateCallCsv extends IvozProvider_Klear_Filter_Brand
 {
     protected $_condition = array();
 
