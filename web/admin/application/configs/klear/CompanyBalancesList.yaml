@@ -62,6 +62,7 @@ production:
           country: true
           domainUsers: true
           relFeatures: true
+          showInvoices: true
         order:
           typeIcon: true
           name: true
