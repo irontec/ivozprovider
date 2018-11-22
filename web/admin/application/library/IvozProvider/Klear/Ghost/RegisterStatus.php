@@ -7,6 +7,7 @@ use Ivoz\Provider\Domain\Model\Domain\Domain;
 use Ivoz\Provider\Domain\Model\Domain\DomainDto;
 use Ivoz\Provider\Domain\Model\Friend\FriendDto;
 use Ivoz\Provider\Domain\Model\ResidentialDevice\ResidentialDeviceDto;
+use Ivoz\Provider\Domain\Model\Terminal\Terminal;
 use Ivoz\Provider\Domain\Model\Terminal\TerminalDto;
 
 class IvozProvider_Klear_Ghost_RegisterStatus extends KlearMatrix_Model_Field_Ghost_Abstract
@@ -20,6 +21,30 @@ class IvozProvider_Klear_Ghost_RegisterStatus extends KlearMatrix_Model_Field_Gh
     public function getTerminalStatusIcon($model)
     {
         return $this->getLocationStatusIcon($model);
+    }
+
+    /**
+     * Get Register Status for Users Terminals
+     * @param UserDto $model
+     * @return string HTML code to display SIP register status
+     * @throws Zend_Exception
+     */
+    public function getUserTerminalStatusIcon($model)
+    {
+        if (!$model->getTerminalId()) {
+            return '<span class="ui-silk inline ui-silk-error" title="No terminal assigned"></span>';
+        }
+
+        /** @var DataGateway $dataGateway */
+        $dataGateway = \Zend_Registry::get('data_gateway');
+
+        /** @var TerminalDto $terminal */
+        $terminal = $dataGateway->find(
+            Terminal::class,
+            $model->getTerminalId()
+        );
+
+        return $this->getLocationStatusIcon($terminal);
     }
 
     /**
@@ -178,7 +203,7 @@ class IvozProvider_Klear_Ghost_RegisterStatus extends KlearMatrix_Model_Field_Gh
         }
 
         // Draw a red cross if not found
-        return '<span class="ui-silk inline ui-silk-exclamation"></span>';
+        return '<span class="ui-silk inline ui-silk-exclamation" title="Not registered"></span>';
     }
 
     /**
