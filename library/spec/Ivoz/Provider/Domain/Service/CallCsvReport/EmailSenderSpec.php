@@ -97,6 +97,71 @@ class EmailSenderSpec extends ObjectBehavior
         $this->execute($callCsvReport);
     }
 
+    public function it_prioritizes_company_notification_template(
+        CallCsvReportInterface $callCsvReport,
+        CallCsvSchedulerInterface $callCsvScheduler,
+        CompanyInterface $company,
+        TimezoneInterface $timezone,
+        LanguageInterface $language,
+        NotificationTemplateInterface $notificationTemplate,
+        NotificationTemplateContentInterface $notificationTemplateContent
+    ) {
+        $this->prepareExecution(
+            $callCsvReport,
+            $callCsvScheduler,
+            $company,
+            $timezone,
+            $language,
+            $notificationTemplate,
+            $notificationTemplateContent
+        );
+
+        $company
+            ->getCallCsvNotificationTemplate()
+            ->willReturn($notificationTemplate)
+            ->shouldBeCalled();
+
+        $this
+            ->notificationTemplateRepository
+            ->findGenericCallCsvTemplate()
+            ->shouldNotBeCalled();
+
+        $this->execute($callCsvReport);
+    }
+
+    public function it_uses_generic_notification_template_as_fallback(
+        CallCsvReportInterface $callCsvReport,
+        CallCsvSchedulerInterface $callCsvScheduler,
+        CompanyInterface $company,
+        TimezoneInterface $timezone,
+        LanguageInterface $language,
+        NotificationTemplateInterface $notificationTemplate,
+        NotificationTemplateContentInterface $notificationTemplateContent
+    ) {
+        $this->prepareExecution(
+            $callCsvReport,
+            $callCsvScheduler,
+            $company,
+            $timezone,
+            $language,
+            $notificationTemplate,
+            $notificationTemplateContent
+        );
+
+        $company
+            ->getCallCsvNotificationTemplate()
+            ->willReturn(null)
+            ->shouldBeCalled();
+
+        $this
+            ->notificationTemplateRepository
+            ->findGenericCallCsvTemplate()
+            ->willReturn($notificationTemplate)
+            ->shouldBeCalled();
+
+        $this->execute($callCsvReport);
+    }
+
     public function it_logs_errors_and_throws_domain_exception(
         CallCsvReportInterface $callCsvReport,
         CallCsvSchedulerInterface $callCsvScheduler,
@@ -231,7 +296,8 @@ class EmailSenderSpec extends ObjectBehavior
             [
                 'getDefaultTimezone' => $timezone,
                 'getName' => 'Mikel',
-                'getLanguage' => $language
+                'getLanguage' => $language,
+                'getCallCsvNotificationTemplate' => null,
             ],
             false
         );
