@@ -146,6 +146,7 @@ Feature: Retrieve companies
               "brand": 1
           },
           "faxNotificationTemplate": null,
-          "invoiceNotificationTemplate": null
+          "invoiceNotificationTemplate": null,
+          "callCsvNotificationTemplate": null
       }
     """
