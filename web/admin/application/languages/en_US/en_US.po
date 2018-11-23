@@ -837,9 +837,6 @@ msgid ""
 msgstr ""
 "Externally rated cannot be disabled as some DDIs wants to bill inbound calls."
 
-msgid "Externally rated options"
-msgstr "Externally rated options"
-
 msgid "Externally rater custom options"
 msgstr "Externally rater custom options"
 
@@ -2234,9 +2231,6 @@ msgstr "Sent to"
 
 msgid "Sequence length"
 msgstr "Sequence length"
-
-msgid "Server data"
-msgstr "Server data"
 
 msgid "Service"
 msgid_plural "Services"

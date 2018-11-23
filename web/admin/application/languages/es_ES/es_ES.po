@@ -850,9 +850,6 @@ msgstr ""
 "La tarificación externa no puede ser deshabilitada ya que hay DDIs con "
 "tarificacion entrante."
 
-msgid "Externally rated options"
-msgstr "Tarificación externa"
-
 msgid "Externally rater custom options"
 msgstr "Opciones adicionales tarificación externa"
 
@@ -2261,9 +2258,6 @@ msgstr "Dirección de envío"
 
 msgid "Sequence length"
 msgstr "Longitud de secuencia"
-
-msgid "Server data"
-msgstr "Configuración Servidor"
 
 msgid "Service"
 msgid_plural "Services"
