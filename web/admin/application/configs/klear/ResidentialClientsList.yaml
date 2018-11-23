@@ -111,7 +111,6 @@ production:
           distributeMethod: true
           applicationServer: true
           maxCalls: false
-          outgoingDDI: true
           outgoingDdiRule: true
           externallyExtraOpts: true
           balance: true
@@ -120,17 +119,12 @@ production:
         order: &residentialClientsOrder_Link
           id: true
           name: true
-          language: true
           maxCalls: true
+          language: true
           showInvoices: true
-          nif: true
-          postalAddress: true
-          postalCode: true
-          town: true
-          province: true
-          countryName: true
-          registryData: true
-          defaultTimezone: true
+          onDemandRecord: true
+          voicemailNotificationTemplate: true
+          mediaRelaySets: true
           externallyExtraOpts: true
       fixedPositions: &residentialClientsFixedPositions_Link
         group0:
@@ -140,6 +134,7 @@ production:
             name: 3
             relFeatures: 3
             billingMethod: 3
+            outgoingDDI: 3
         group1:
           colsPerRow: 12
           label: _("Geographic Configuration")
@@ -219,6 +214,7 @@ production:
             ipFilter: 1
         group3:
           colsPerRow: 12
+          collapsed: true
           label: _("Platform data")
           fields:
             mediaRelaySets: 4
@@ -226,6 +222,7 @@ production:
             applicationServer: 4
         group4:
           colsPerRow: 12
+          collapsed: true
           label: _("Invoice data")
           fields:
             showInvoices: 6

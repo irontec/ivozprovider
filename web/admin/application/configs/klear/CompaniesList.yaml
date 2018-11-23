@@ -128,13 +128,13 @@ production:
         order: &companiesOrder_Link
           id: true
           name: true
-          language: true
           maxCalls: true
-          contry: true
-          postalAddress: true
-          recordingsLimitMB: true
-          externallyExtraOpts: true
+          language: true
+          outgoingDDI: true
+          showInvoices: true
+          onDemandRecord: true
           voicemailNotificationTemplate: true
+          externallyExtraOpts: true
       fixedPositions:
         group0:
           colsPerRow: 6
@@ -232,7 +232,8 @@ production:
             transformationRuleSet: 3
         group3:
           colsPerRow: 12
-          label: _("Server data")
+          collapsed: true
+          label: _("Platform data")
           fields:
             outgoingDDI: 6
             outgoingDDIRule: 6
@@ -242,6 +243,7 @@ production:
             applicationServer: 4
         group4:
           colsPerRow: 12
+          collapsed: true
           label: _("Invoice data")
           fields:
             showInvoices: 6
@@ -261,7 +263,7 @@ production:
         group6:
           colsPerRow: 1
           collapsed: true
-          label: _("Externally rated options")
+          label: _("Externally rater options")
           fields:
             externallyExtraOpts: 1
         group7:
