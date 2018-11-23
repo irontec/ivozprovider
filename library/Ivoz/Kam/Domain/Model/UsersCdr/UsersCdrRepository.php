@@ -12,4 +12,16 @@ interface UsersCdrRepository extends ObjectRepository, Selectable
      * @return int
      */
     public function countByUserId($userId) :int;
+
+    /**
+     * @param $callid
+     * @return UsersCdrInterface[]
+     */
+    public function findByCallid($callid);
+
+    /**
+     * @param $callid
+     * @return UsersCdrInterface | null
+     */
+    public function findOneByCallid($callid);
 }

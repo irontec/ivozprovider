@@ -4,6 +4,7 @@ namespace Ivoz\Kam\Infrastructure\Persistence\Doctrine;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Ivoz\Kam\Domain\Model\UsersCdr\UsersCdr;
+use Ivoz\Kam\Domain\Model\UsersCdr\UsersCdrInterface;
 use Ivoz\Kam\Domain\Model\UsersCdr\UsersCdrRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -33,5 +34,33 @@ class UsersCdrDoctrineRepository extends ServiceEntityRepository implements User
             ->where($qb->expr()->eq('self.user', $userId))
             ->getQuery()
             ->getSingleScalarResult();
+    }
+
+    /**
+     * @param $callid
+     * @return UsersCdrInterface[]
+     */
+    public function findByCallid($callid)
+    {
+        /** @var UsersCdrInterface[] $response */
+        $response = $this->findBy([
+            'callid' => $callid
+        ]);
+
+        return $response;
+    }
+
+    /**
+     * @param $callid
+     * @return UsersCdrInterface | null
+     */
+    public function findOneByCallid($callid)
+    {
+        /** @var UsersCdrInterface $response */
+        $response = $this->findOneBy([
+            'callid' => $callid
+        ]);
+
+        return $response;
     }
 }
