@@ -15,6 +15,7 @@ parameters:
     jwt_public_key_path: '/opt/irontec/ivozprovider/web/rest/platform/var/jwt/public.pem' # ssh public key path
     jwt_key_pass_phrase: 'changeme' # ssh key pass phrase
     jwt_token_ttl: 3600
+    mailer_local_domain: localhost
     mailer_transport: smtp
     mailer_host: jobs.ivozprovider.local
     mailer_user: ~
