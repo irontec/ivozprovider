@@ -53,6 +53,8 @@ production:
           country: true
           externallyExtraOpts: true
           showInvoices: true
+          invoiceNotificationTemplate: true
+          callCsvNotificationTemplate: true
         order:
           name: true
           nif: true
@@ -97,6 +99,8 @@ production:
           maxCalls: false
           externallyExtraOpts: true
           showInvoices: true
+          invoiceNotificationTemplate: true
+          callCsvNotificationTemplate: true
         order: &retailClientsOrder_Link
           id: true
           name: true
@@ -105,8 +109,8 @@ production:
           relRoutingTags: true
           showInvoices: true
           onDemandRecord: true
+          invoiceNotificationTemplate: true
           mediaRelaySets: true
-          voicemailNotificationTemplate: true
           externallyExtraOpts: true
       fixedPositions: &retailClientsFixedPositions_Link
         group0:
@@ -208,6 +212,13 @@ production:
             town: 4
             province: 4
             countryName: 4
+        group7:
+          colsPerRow: 2
+          collapsed: true
+          label: _("Notification options")
+          fields:
+            invoiceNotificationTemplate: 1
+            callCsvNotificationTemplate: 1
         group5:
           colsPerRow: 12
           collapsed: true

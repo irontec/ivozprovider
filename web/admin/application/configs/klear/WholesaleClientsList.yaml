@@ -52,6 +52,8 @@ production:
           recordingsDiskUsage: true
           externallyExtraOpts: true
           showInvoices: true
+          invoiceNotificationTemplate: true
+          callCsvNotificationTemplate: true
         order:
           name: true
           nif: true
@@ -95,6 +97,8 @@ production:
           maxCalls: false
           externallyExtraOpts: true
           showInvoices: true
+          invoiceNotificationTemplate: true
+          callCsvNotificationTemplate: true
         order: &wholesaleClientsOrder_Link
           id: true
           name: true
@@ -103,8 +107,8 @@ production:
           relRoutingTags: true
           showInvoices: true
           onDemandRecord: true
+          invoiceNotificationTemplate: true
           mediaRelaySets: true
-          voicemailNotificationTemplate: true
           externallyExtraOpts: true
       fixedPositions: &wholesaleClientsFixedPositions_Link
         group0:
@@ -213,6 +217,13 @@ production:
           label: _("Externally rater options")
           fields:
             externallyExtraOpts: 1
+        group7:
+          colsPerRow: 2
+          collapsed: true
+          label: _("Notification options")
+          fields:
+            invoiceNotificationTemplate: 1
+            callCsvNotificationTemplate: 1
       class: ui-silk-pencil
       label: false
       title: _("Edit %s %2s", ngettext('Wholesale Client', 'Wholesale Clients', 1), "[format| (%item%)]")

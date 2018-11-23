@@ -62,6 +62,8 @@ production:
           type: true
           voicemailNotificationTemplate: true
           faxNotificationTemplate: true
+          invoiceNotificationTemplate: true
+          callCsvNotificationTemplate: true
           balance: true
           showInvoices: true
         order:
@@ -115,6 +117,9 @@ production:
           externallyExtraOpts: true
           balance: true
           voicemailNotificationTemplate: true
+          faxNotificationTemplate: true
+          invoiceNotificationTemplate: true
+          callCsvNotificationTemplate: true
           showInvoices: true
         order: &residentialClientsOrder_Link
           id: true
@@ -252,6 +257,8 @@ production:
           fields:
             voicemailNotificationTemplate: 1
             faxNotificationTemplate: 1
+            invoiceNotificationTemplate: 1
+            callCsvNotificationTemplate: 1
       class: ui-silk-pencil
       label: false
       title: _("Edit %s %2s", ngettext('Residential Client', 'Residential Clients', 1), "[format| (%item%)]")
