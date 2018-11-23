@@ -42,6 +42,7 @@ lexik_jwt_authentication:
 
 swiftmailer:
     transport: '%mailer_transport%'
+    local_domain: '%mailer_local_domain%'
     host:      '%mailer_host%'
     username:  '%mailer_user%'
     password:  '%mailer_password%'
