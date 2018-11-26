@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Move to current API bin dir
+pushd $(dirname $(realpath -s $0))
+    # export swagger definitions
+    ./console api:swagger:export > ../web/swagger.json
+popd
