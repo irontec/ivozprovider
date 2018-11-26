@@ -25,6 +25,7 @@ class CoverageContext implements Context
         $filter
             ->addDirectoryToWhitelist(__DIR__ . '/../../src');
         self::$coverage = new CodeCoverage(null, $filter);
+        self::$coverage->setProcessUncoveredFilesFromWhitelist(true);
     }
 
     /**
