@@ -334,6 +334,11 @@ msgid_plural "Call CSVs"
 msgstr[0] "CSV de llamadas"
 msgstr[1] "CSVs de llamadas"
 
+msgid "Call CSV Notification"
+msgid_plural "Call CSV Notifications"
+msgstr[0] "Notificación CSV de llamadas"
+msgstr[1] "Notificaciones CSVs de llamadas"
+
 msgid "Call CSV report"
 msgid_plural "Call CSV reports"
 msgstr[0] "CSV de llamadas"
@@ -844,9 +849,6 @@ msgid ""
 msgstr ""
 "La tarificación externa no puede ser deshabilitada ya que hay DDIs con "
 "tarificacion entrante."
-
-msgid "Externally rated options"
-msgstr "Tarificación externa"
 
 msgid "Externally rater custom options"
 msgstr "Opciones adicionales tarificación externa"
@@ -2256,9 +2258,6 @@ msgstr "Dirección de envío"
 
 msgid "Sequence length"
 msgstr "Longitud de secuencia"
-
-msgid "Server data"
-msgstr "Configuración Servidor"
 
 msgid "Service"
 msgid_plural "Services"

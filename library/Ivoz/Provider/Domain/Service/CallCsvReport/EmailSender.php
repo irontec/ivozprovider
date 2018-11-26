@@ -122,13 +122,16 @@ class EmailSender implements CallCsvReportLifecycleEventHandlerInterface
     {
         $company = $callCsvReport->getCompany();
 
-        // Get Company Notification Template for faxes
-        /** @var NotificationTemplateInterface $genericInvoiceNotificationTemplate */
-        $genericInvoiceNotificationTemplate = $this->notificationTemplateRepository
-            ->findGenericCallCsvTemplate();
+        /** @var NotificationTemplateInterface $genericCallCsvNotificationTemplate */
+        $callCsvNotificationTemplate = $company->getCallCsvNotificationTemplate();
+        if (!$callCsvNotificationTemplate) {
+            $callCsvNotificationTemplate = $this
+                ->notificationTemplateRepository
+                ->findGenericCallCsvTemplate();
+        }
 
         // Get Notification contents for required language
-        $notificationTemplateContent = $genericInvoiceNotificationTemplate->getContentsByLanguage(
+        $notificationTemplateContent = $callCsvNotificationTemplate->getContentsByLanguage(
             $company->getLanguage()
         );
 

@@ -327,6 +327,11 @@ msgid_plural "Call CSVs"
 msgstr[0] "Call CSV"
 msgstr[1] "Call CSVs"
 
+msgid "Call CSV Notification"
+msgid_plural "Call CSV Notifications"
+msgstr[0] "Call CSV Notification"
+msgstr[1] "Call CSV Notifications"
+
 msgid "Call CSV report"
 msgid_plural "Call CSV reports"
 msgstr[0] "Call CSV report"
@@ -831,9 +836,6 @@ msgid ""
 "Externally rated cannot be disabled as some DDIs wants to bill inbound calls."
 msgstr ""
 "Externally rated cannot be disabled as some DDIs wants to bill inbound calls."
-
-msgid "Externally rated options"
-msgstr "Externally rated options"
 
 msgid "Externally rater custom options"
 msgstr "Externally rater custom options"
@@ -2229,9 +2231,6 @@ msgstr "Sent to"
 
 msgid "Sequence length"
 msgstr "Sequence length"
-
-msgid "Server data"
-msgstr "Server data"
 
 msgid "Service"
 msgid_plural "Services"

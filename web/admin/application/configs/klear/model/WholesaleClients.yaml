@@ -195,6 +195,32 @@ production:
         icon: help
         text: _("Enable this option to display a section in Client's portal to download generated invoices.")
         label: _("Need help?")
+    invoiceNotificationTemplate:
+      title: ngettext('Invoice Notification', 'Invoice Notifications', 1)
+      type: select
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate
+          filterClass: IvozProvider_Klear_Filter_NotificationTemplateInvoice
+          fieldName:
+            fields:
+              - name
+            template: '%name%'
+        'null': _("Use generic template")
+    callCsvNotificationTemplate:
+      title: ngettext('Call CSV Notification', 'Call CSV Notifications', 1)
+      type: select
+      source:
+        data: mapper
+        config:
+          entity: \Ivoz\Provider\Domain\Model\NotificationTemplate\NotificationTemplate
+          filterClass: IvozProvider_Klear_Filter_NotificationTemplateCallCsv
+          fieldName:
+            fields:
+            - name
+            template: '%name%'
+        'null': _("Use generic template")
 staging:
   _extends: production
 testing:
