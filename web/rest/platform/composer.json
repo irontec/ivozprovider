@@ -101,7 +101,7 @@
         "http-interop/http-middleware": "^0.5",
         "mkraemer/react-pcntl": "^2.0|^3.0",
         "paragonie/random_compat": "^2.0",
-        "phpunit/phpunit": "^5.3",
+        "phpunit/phpunit": "^6.0",
         "ringcentral/psr7": "^1.2",
         "sensio/generator-bundle": "^3.0",
         "symfony/phpunit-bridge": "^3.0"
