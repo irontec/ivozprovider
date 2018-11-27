@@ -2,7 +2,7 @@
 Concurrent call limit
 #####################
 
-This mechanism **limits the number of external calls** of each client/brand.
+This mechanism **limits the number of concurrent calls** of each client/brand.
 
 It can be configured at two levels:
 
