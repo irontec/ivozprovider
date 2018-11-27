@@ -103,6 +103,22 @@ interface CallCsvReportInterface extends FileContainerInterface, LoggableEntityI
     public function getCompany();
 
     /**
+     * Set brand
+     *
+     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
+     *
+     * @return self
+     */
+    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null);
+
+    /**
+     * Get brand
+     *
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     */
+    public function getBrand();
+
+    /**
      * Set callCsvScheduler
      *
      * @param \Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface $callCsvScheduler
