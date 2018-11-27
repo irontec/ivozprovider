@@ -8,6 +8,10 @@ production:
   screens: &callCsvReports_screensLink
     callCsvReportsList_screen: &callCsvReportsList_screenLink
       controller: list
+      order:
+        field:
+          - CallCsvReport.createdOn
+        type: desc
       pagination:
         items: 25
       <<: *CallCsvReports
