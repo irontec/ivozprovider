@@ -3,6 +3,7 @@
 namespace spec\Ivoz\Provider\Domain\Service\BillableCall;
 
 use Ivoz\Core\Domain\Service\ApiClientInterface;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 use Ivoz\Provider\Domain\Service\BillableCall\CsvExporter;
 use PhpSpec\ObjectBehavior;
@@ -38,9 +39,9 @@ class CsvExporterSpec extends ObjectBehavior
         StreamInterface $responseBody
     ) {
         $this->prepareConditions(
-            $company,
             $response,
-            $responseBody
+            $responseBody,
+            $company
         );
 
         $this
@@ -54,7 +55,7 @@ class CsvExporterSpec extends ObjectBehavior
         $outDate = new \DateTime('2015-01-01 01:01:01');
 
         $this
-            ->execute($company, $inDate, $outDate);
+            ->execute($inDate, $outDate, $company);
     }
 
     function it_adds_filter_arguments_into_the_url(
@@ -63,9 +64,9 @@ class CsvExporterSpec extends ObjectBehavior
         StreamInterface $responseBody
     ) {
         $this->prepareConditions(
-            $company,
             $response,
-            $responseBody
+            $responseBody,
+            $company
         );
 
         $inDate = new \DateTime('2010-01-01 01:01:01');
@@ -74,14 +75,14 @@ class CsvExporterSpec extends ObjectBehavior
         $this
             ->apiClient
             ->get(
-                $this->getEncodedUrl($company, $inDate, $outDate),
+                $this->getEncodedUrl($inDate, $outDate, $company),
                 Argument::any()
             )
             ->willReturn($response)
             ->shouldBeCalled();
 
         $this
-            ->execute($company, $inDate, $outDate);
+            ->execute($inDate, $outDate, $company);
     }
 
     function it_request_csv_content_type(
@@ -90,9 +91,9 @@ class CsvExporterSpec extends ObjectBehavior
         StreamInterface $responseBody
     ) {
         $this->prepareConditions(
-            $company,
             $response,
-            $responseBody
+            $responseBody,
+            $company
         );
 
         $inDate = new \DateTime('2010-01-01 01:01:01');
@@ -110,17 +111,66 @@ class CsvExporterSpec extends ObjectBehavior
             )->willReturn($response);
 
         $this
-            ->execute($company, $inDate, $outDate);
+            ->execute($inDate, $outDate, $company);
     }
 
-    protected function prepareConditions(
-        CompanyInterface $company,
+    function company_is_nullable(
         ResponseInterface $response,
         StreamInterface $responseBody
     ) {
-        $company
-            ->getId()
-            ->willReturn(1);
+        $this->prepareConditions(
+            $response,
+            $responseBody
+        );
+
+        $inDate = new \DateTime('2010-01-01 01:01:01');
+        $outDate = new \DateTime('2015-01-01 01:01:01');
+
+        $this
+            ->execute($inDate, $outDate);
+    }
+
+    function it_accepts_brand(
+        BrandInterface $brand,
+        ResponseInterface $response,
+        StreamInterface $responseBody
+    ) {
+        $this->prepareConditions(
+            $response,
+            $responseBody,
+            null,
+            $brand
+        );
+
+        $inDate = new \DateTime('2010-01-01 01:01:01');
+        $outDate = new \DateTime('2015-01-01 01:01:01');
+
+
+        $this
+            ->apiClient
+            ->get(
+                $this->getEncodedUrl($inDate, $outDate, null, $brand),
+                Argument::any()
+            )
+            ->willReturn($response)
+            ->shouldBeCalled();
+
+        $this
+            ->execute($inDate, $outDate, null, $brand);
+    }
+
+    protected function prepareConditions(
+        ResponseInterface $response,
+        StreamInterface $responseBody,
+        CompanyInterface $company = null,
+        BrandInterface $brand = null
+    ) {
+
+        if ($company) {
+            $company
+                ->getId()
+                ->willReturn(1);
+        }
 
         $responseBody
             ->__toString()
@@ -134,17 +184,25 @@ class CsvExporterSpec extends ObjectBehavior
     }
 
     protected function getEncodedUrl(
-        CompanyInterface $company,
         \DateTime $inDate,
-        \DateTime $outDate
+        \DateTime $outDate,
+        CompanyInterface $company = null,
+        BrandInterface $brand = null
     ) {
         $criteria = [
-            'company' => $company->getWrappedObject()->getId(),
             'startTime[after]' => $inDate->format('Y-m-d H:i:s'),
             'startTime[strictly_before]' => $outDate->format('Y-m-d H:i:s'),
             '_properties' => CsvExporter::PROPERTIES,
             "_pagination" => 'false'
         ];
+
+        if ($company) {
+            $criteria['company'] = $company->getWrappedObject()->getId();
+        }
+
+        if ($brand) {
+            $criteria['brand'] = $brand->getWrappedObject()->getId();
+        }
 
         return
             CsvExporter::API_ENDPOINT

@@ -102,6 +102,30 @@ class CreateBySchedulerSpec extends ObjectBehavior
     }
 
 
+
+    public function it_accepts_no_company(
+        CallCsvSchedulerInterface $scheduler,
+        CallCsvSchedulerDto $schedulerDto,
+        TimezoneInterface $timezone,
+        CompanyInterface $company,
+        CallCsvReportInterface $callCsvReport
+    ) {
+        $this->prepareExecution(
+            $scheduler,
+            $schedulerDto,
+            $timezone,
+            $company,
+            $callCsvReport
+        );
+
+        $scheduler
+            ->getCompany()
+            ->willReturn(null)
+            ->shouldBeCalled();
+
+        $this->execute($scheduler);
+    }
+
     public function it_logs_exceptions(
         CallCsvSchedulerInterface $scheduler,
         CallCsvSchedulerDto $schedulerDto,
@@ -177,6 +201,7 @@ class CreateBySchedulerSpec extends ObjectBehavior
                 'getNextExecution' => new \DateTime('2015-01-01 01:01:01'),
                 'getTimezone' => $timezone,
                 'getCompany' => $company,
+                'getBrand' => null,
                 'getName' => 'Name',
                 'getId' => 1,
                 'getEmail' => 'mikel@nowhere.com',
