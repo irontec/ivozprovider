@@ -10,7 +10,16 @@ class CsvExporter
 {
     const API_ENDPOINT = 'billable_calls';
 
-    const PROPERTIES = [
+    const CLIENT_PROPERTIES = [
+        'callid',
+        'startTime',
+        'caller',
+        'callee',
+        'duration',
+        'price'
+    ];
+
+    const BRAND_PROPERTIES = [
         'callid',
         'startTime',
         'caller',
@@ -18,7 +27,12 @@ class CsvExporter
         'duration',
         'price',
         'endpointType',
-        'endpointId'
+        'endpointId',
+        'company',
+        'cost',
+        'carrierName',
+        'ratingPlanName',
+        'destinationName'
     ];
 
     protected $apiClient;
@@ -30,9 +44,10 @@ class CsvExporter
     }
 
     /**
-     * @param CompanyInterface $company
      * @param \DateTime $inDate
      * @param \DateTime $outDate
+     * @param CompanyInterface|null $company
+     * @param BrandInterface|null $brand
      * @return string
      */
     public function execute(
@@ -44,16 +59,17 @@ class CsvExporter
         $criteria = [
             'startTime[after]' => $inDate->format('Y-m-d H:i:s'),
             'startTime[strictly_before]' => $outDate->format('Y-m-d H:i:s'),
-            '_properties' => self::PROPERTIES,
             "_pagination" => 'false'
         ];
 
         if ($company) {
             $criteria['company'] = $company->getId();
+            $criteria['_properties'] = self::CLIENT_PROPERTIES;
         }
 
         if ($brand) {
             $criteria['brand'] = $brand->getId();
+            $criteria['_properties'] = self::BRAND_PROPERTIES;
         }
 
         $endpoint =

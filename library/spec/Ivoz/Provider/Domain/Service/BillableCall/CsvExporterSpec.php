@@ -192,16 +192,17 @@ class CsvExporterSpec extends ObjectBehavior
         $criteria = [
             'startTime[after]' => $inDate->format('Y-m-d H:i:s'),
             'startTime[strictly_before]' => $outDate->format('Y-m-d H:i:s'),
-            '_properties' => CsvExporter::PROPERTIES,
             "_pagination" => 'false'
         ];
 
         if ($company) {
             $criteria['company'] = $company->getWrappedObject()->getId();
+            $criteria['_properties'] = CsvExporter::CLIENT_PROPERTIES;
         }
 
         if ($brand) {
             $criteria['brand'] = $brand->getWrappedObject()->getId();
+            $criteria['_properties'] = CsvExporter::BRAND_PROPERTIES;
         }
 
         return
