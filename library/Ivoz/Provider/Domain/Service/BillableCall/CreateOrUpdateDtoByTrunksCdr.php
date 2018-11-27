@@ -80,6 +80,12 @@ class CreateOrUpdateDtoByTrunksCdr
                 $trunksCdrDto->getDuration()
             );
 
+        if ($trunksCdrDto->getRetailAccountId()) {
+            $billableCallDto
+                ->setEndpointType('RetailAccount')
+                ->setEndpointId($trunksCdrDto->getRetailAccountId());
+        }
+
         return $billableCallDto;
     }
 }
