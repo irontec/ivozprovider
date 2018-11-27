@@ -6,6 +6,7 @@ class PickUpRelUserDto extends PickUpRelUserDtoAbstract
 {
     /**
      * @inheritdoc
+     * @codeCoverageIgnore
      */
     public static function getPropertyMap(string $context = '')
     {

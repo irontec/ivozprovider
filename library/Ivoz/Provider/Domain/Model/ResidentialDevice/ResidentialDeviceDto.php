@@ -17,6 +17,7 @@ class ResidentialDeviceDto extends ResidentialDeviceDtoAbstract
 
     /**
      * @inheritdoc
+     * @codeCoverageIgnore
      */
     public static function getPropertyMap(string $context = '')
     {

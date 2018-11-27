@@ -6,6 +6,7 @@ class TerminalManufacturerDto extends TerminalManufacturerDtoAbstract
 {
     /**
      * @inheritdoc
+     * @codeCoverageIgnore
      */
     public static function getPropertyMap(string $context = '')
     {

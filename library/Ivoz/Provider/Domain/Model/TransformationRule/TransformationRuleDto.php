@@ -6,6 +6,7 @@ class TransformationRuleDto extends TransformationRuleDtoAbstract
 {
     /**
      * @inheritdoc
+     * @codeCoverageIgnore
      */
     public static function getPropertyMap(string $context = '')
     {

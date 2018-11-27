@@ -7,6 +7,7 @@ class DdiDto extends DdiDtoAbstract
 
     /**
      * @inheritdoc
+     * @codeCoverageIgnore
      */
     public static function getPropertyMap(string $context = '')
     {

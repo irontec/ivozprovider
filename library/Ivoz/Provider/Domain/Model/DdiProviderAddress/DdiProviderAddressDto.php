@@ -6,6 +6,7 @@ class DdiProviderAddressDto extends DdiProviderAddressDtoAbstract
 {
     /**
      * @inheritdoc
+     * @codeCoverageIgnore
      */
     public static function getPropertyMap(string $context = '')
     {

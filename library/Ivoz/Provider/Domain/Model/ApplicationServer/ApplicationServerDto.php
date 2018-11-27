@@ -6,6 +6,7 @@ class ApplicationServerDto extends ApplicationServerDtoAbstract
 {
     /**
      * @inheritdoc
+     * @codeCoverageIgnore
      */
     public static function getPropertyMap(string $context = '')
     {

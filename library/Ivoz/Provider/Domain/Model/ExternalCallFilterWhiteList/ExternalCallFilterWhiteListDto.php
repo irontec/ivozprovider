@@ -7,6 +7,7 @@ class ExternalCallFilterWhiteListDto extends ExternalCallFilterWhiteListDtoAbstr
 
     /**
      * @inheritdoc
+     * @codeCoverageIgnore
      */
     public static function getPropertyMap(string $context = '')
     {

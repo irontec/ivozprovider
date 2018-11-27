@@ -6,6 +6,7 @@ class ExternalCallFilterRelCalendarDto extends ExternalCallFilterRelCalendarDtoA
 {
     /**
      * @inheritdoc
+     * @codeCoverageIgnore
      */
     public static function getPropertyMap(string $context = '')
     {

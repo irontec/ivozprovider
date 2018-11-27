@@ -6,6 +6,7 @@ class CallAclDto extends CallAclDtoAbstract
 {
     /**
      * @inheritdoc
+     * @codeCoverageIgnore
      */
     public static function getPropertyMap(string $context = '')
     {

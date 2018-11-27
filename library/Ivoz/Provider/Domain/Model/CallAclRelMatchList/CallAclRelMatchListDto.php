@@ -6,6 +6,7 @@ class CallAclRelMatchListDto extends CallAclRelMatchListDtoAbstract
 {
     /**
      * @inheritdoc
+     * @codeCoverageIgnore
      */
     public static function getPropertyMap(string $context = '')
     {
