@@ -110,6 +110,9 @@ msgstr "Opciones avanzadas, leer cuidadosamente"
 msgid "All"
 msgstr "Todos"
 
+msgid "All clients"
+msgstr "Todos los clientes"
+
 msgid "Allow all outgoing calls"
 msgstr "Permitir todas las llamadas salientes"
 
@@ -571,6 +574,9 @@ msgid "DDI Provider Registration"
 msgid_plural "DDI Provider Registrations"
 msgstr[0] "Registro Proveedor"
 msgstr[1] "Registros Proveedor"
+
+msgid "Day"
+msgstr "Día"
 
 msgid "Default Action"
 msgstr "Acción por defecto"

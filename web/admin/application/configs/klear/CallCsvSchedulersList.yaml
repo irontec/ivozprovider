@@ -76,8 +76,8 @@ production:
           colsPerRow: 2
           fields:
             name: 1
-            email: 1
             company: 1
+            email: 1
         group1:
           label: _("Time Information")
           colsPerRow: 2
