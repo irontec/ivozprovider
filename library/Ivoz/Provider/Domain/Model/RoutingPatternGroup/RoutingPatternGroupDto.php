@@ -7,6 +7,7 @@ class RoutingPatternGroupDto extends RoutingPatternGroupDtoAbstract
 
     /**
      * @inheritdoc
+     * @codeCoverageIgnore
      */
     public static function getPropertyMap(string $context = '')
     {

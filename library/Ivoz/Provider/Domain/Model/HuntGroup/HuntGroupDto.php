@@ -6,6 +6,7 @@ class HuntGroupDto extends HuntGroupDtoAbstract
 {
     /**
      * @inheritdoc
+     * @codeCoverageIgnore
      */
     public static function getPropertyMap(string $context = '')
     {

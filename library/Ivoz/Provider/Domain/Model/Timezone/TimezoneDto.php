@@ -6,6 +6,7 @@ class TimezoneDto extends TimezoneDtoAbstract
 {
       /**
        * @inheritdoc
+       * @codeCoverageIgnore
        */
     public static function getPropertyMap(string $context = '')
     {

@@ -6,6 +6,7 @@ class CompanyServiceDto extends CompanyServiceDtoAbstract
 {
     /**
      * @inheritdoc
+     * @codeCoverageIgnore
      */
     public static function getPropertyMap(string $context = '')
     {

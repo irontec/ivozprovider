@@ -6,6 +6,7 @@ class CarrierDto extends CarrierDtoAbstract
 {
     /**
      * @inheritdoc
+     * @codeCoverageIgnore
      */
     public static function getPropertyMap(string $context = '')
     {

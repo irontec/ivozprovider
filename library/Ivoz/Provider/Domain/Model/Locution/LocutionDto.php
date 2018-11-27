@@ -10,6 +10,7 @@ class LocutionDto extends LocutionDtoAbstract
 
     /**
      * @inheritdoc
+     * @codeCoverageIgnore
      */
     public static function getPropertyMap(string $context = '')
     {

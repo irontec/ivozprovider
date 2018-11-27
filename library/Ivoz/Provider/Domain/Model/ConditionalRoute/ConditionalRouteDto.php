@@ -6,6 +6,7 @@ class ConditionalRouteDto extends ConditionalRouteDtoAbstract
 {
     /**
      * @inheritdoc
+     * @codeCoverageIgnore
      */
     public static function getPropertyMap(string $context = '')
     {

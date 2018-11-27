@@ -7,6 +7,7 @@ class TrunksLcrRuleDto extends TrunksLcrRuleDtoAbstract
 
     /**
      * @inheritdoc
+     * @codeCoverageIgnore
      */
     public static function getPropertyMap(string $context = '')
     {

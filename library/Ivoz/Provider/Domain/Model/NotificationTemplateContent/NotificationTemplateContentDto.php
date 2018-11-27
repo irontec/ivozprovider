@@ -7,6 +7,7 @@ class NotificationTemplateContentDto extends NotificationTemplateContentDtoAbstr
 
     /**
      * @inheritdoc
+     * @codeCoverageIgnore
      */
     public static function getPropertyMap(string $context = '')
     {
