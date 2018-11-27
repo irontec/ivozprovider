@@ -71,6 +71,10 @@ class EmailSender implements CallCsvReportLifecycleEventHandlerInterface
             return false;
         }
 
+        if (!$callCsvReport->getCompany()) {
+            throw new \DomainException('Brand email notification not implemented yet');
+        }
+
         $notificationTemplateContent = $this->getNotificationTemplateContent($callCsvReport);
         $fromName = $notificationTemplateContent->getFromName();
         $fromAddress = $notificationTemplateContent->getFromAddress();

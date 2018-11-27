@@ -106,6 +106,9 @@ msgstr "Advanced Setting, read carefully"
 msgid "All"
 msgstr "All"
 
+msgid "All clients"
+msgstr "All clients"
+
 msgid "Allow all outgoing calls"
 msgstr "Allow all outgoing calls"
 
@@ -564,6 +567,9 @@ msgid "DDI Provider Registration"
 msgid_plural "DDI Provider Registrations"
 msgstr[0] "DDI Provider Registration"
 msgstr[1] "DDI Provider Registrations"
+
+msgid "Day"
+msgstr "Day"
 
 msgid "Default Action"
 msgstr "Default Action"

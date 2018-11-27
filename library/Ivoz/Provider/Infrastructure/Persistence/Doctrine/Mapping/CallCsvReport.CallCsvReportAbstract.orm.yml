@@ -38,6 +38,18 @@ Ivoz\Provider\Domain\Model\CallCsvReport\CallCsvReportAbstract:
           nullable: true
           onDelete: set null
       orphanRemoval: false
+    brand:
+      targetEntity: \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        brandId:
+          referencedColumnName: id
+          nullable: true
+          onDelete: set null
+      orphanRemoval: false
     callCsvScheduler:
       targetEntity: \Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface
       cascade: {  }

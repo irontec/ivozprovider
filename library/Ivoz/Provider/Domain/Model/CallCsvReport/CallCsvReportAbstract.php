@@ -44,6 +44,11 @@ abstract class CallCsvReportAbstract
     protected $company;
 
     /**
+     * @var \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     */
+    protected $brand;
+
+    /**
      * @var \Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvSchedulerInterface
      */
     protected $callCsvScheduler;
@@ -150,6 +155,7 @@ abstract class CallCsvReportAbstract
 
         $self
             ->setCompany($dto->getCompany())
+            ->setBrand($dto->getBrand())
             ->setCallCsvScheduler($dto->getCallCsvScheduler())
         ;
 
@@ -184,6 +190,7 @@ abstract class CallCsvReportAbstract
             ->setCreatedOn($dto->getCreatedOn())
             ->setCsv($csv)
             ->setCompany($dto->getCompany())
+            ->setBrand($dto->getBrand())
             ->setCallCsvScheduler($dto->getCallCsvScheduler());
 
 
@@ -208,6 +215,7 @@ abstract class CallCsvReportAbstract
             ->setCsvMimeType(self::getCsv()->getMimeType())
             ->setCsvBaseName(self::getCsv()->getBaseName())
             ->setCompany(\Ivoz\Provider\Domain\Model\Company\Company::entityToDto(self::getCompany(), $depth))
+            ->setBrand(\Ivoz\Provider\Domain\Model\Brand\Brand::entityToDto(self::getBrand(), $depth))
             ->setCallCsvScheduler(\Ivoz\Provider\Domain\Model\CallCsvScheduler\CallCsvScheduler::entityToDto(self::getCallCsvScheduler(), $depth));
     }
 
@@ -225,6 +233,7 @@ abstract class CallCsvReportAbstract
             'csvMimeType' => self::getCsv()->getMimeType(),
             'csvBaseName' => self::getCsv()->getBaseName(),
             'companyId' => self::getCompany() ? self::getCompany()->getId() : null,
+            'brandId' => self::getBrand() ? self::getBrand()->getId() : null,
             'callCsvSchedulerId' => self::getCallCsvScheduler() ? self::getCallCsvScheduler()->getId() : null
         ];
     }
@@ -373,6 +382,30 @@ abstract class CallCsvReportAbstract
     public function getCompany()
     {
         return $this->company;
+    }
+
+    /**
+     * Set brand
+     *
+     * @param \Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand
+     *
+     * @return self
+     */
+    public function setBrand(\Ivoz\Provider\Domain\Model\Brand\BrandInterface $brand = null)
+    {
+        $this->brand = $brand;
+
+        return $this;
+    }
+
+    /**
+     * Get brand
+     *
+     * @return \Ivoz\Provider\Domain\Model\Brand\BrandInterface
+     */
+    public function getBrand()
+    {
+        return $this->brand;
     }
 
     /**

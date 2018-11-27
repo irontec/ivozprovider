@@ -36,7 +36,7 @@ class KlearCustomBillableCallsController extends Zend_Controller_Action
             ? $criteria->toArray()
             : [];
 
-        $criteria['_properties'] = CsvExporter::PROPERTIES;
+        $criteria['_properties'] = CsvExporter::BRAND_PROPERTIES;
 
         $requestFile = $this->_request->getParam('file');
         switch($requestFile) {
@@ -47,6 +47,8 @@ class KlearCustomBillableCallsController extends Zend_Controller_Action
             case 'BillableCallsBrandList':
                 $criteria['_properties'][] = 'company';
                 break;
+            default:
+                $criteria['_properties'] = CsvExporter::CLIENT_PROPERTIES;
         }
 
         $requestParams = $this->_request->getParam('post', null);

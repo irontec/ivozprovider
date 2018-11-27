@@ -19,7 +19,7 @@ abstract class CallCsvSchedulerAbstract
     protected $name;
 
     /**
-     * comment: enum:week|month|year
+     * comment: enum:day|week|month
      * @var string
      */
     protected $unit = 'month';
@@ -268,9 +268,9 @@ abstract class CallCsvSchedulerAbstract
         Assertion::notNull($unit, 'unit value "%s" is null, but non null value was expected.');
         Assertion::maxLength($unit, 30, 'unit value "%s" is too long, it should have no more than %d characters, but has %d characters.');
         Assertion::choice($unit, array (
-          0 => 'week',
-          1 => 'month',
-          2 => 'year',
+          0 => 'day',
+          1 => 'week',
+          2 => 'month',
         ), 'unitvalue "%s" is not an element of the valid values: %s');
 
         $this->unit = $unit;
@@ -469,7 +469,7 @@ abstract class CallCsvSchedulerAbstract
      *
      * @return self
      */
-    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company)
+    public function setCompany(\Ivoz\Provider\Domain\Model\Company\CompanyInterface $company = null)
     {
         $this->company = $company;
 

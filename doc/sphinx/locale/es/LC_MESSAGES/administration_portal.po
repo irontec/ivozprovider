@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: IvozProvider 2.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-21 17:20+0100\n"
+"POT-Creation-Date: 2018-11-27 18:43+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1085,7 +1085,7 @@ msgstr ""
 #: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:5
 msgid ""
 "This section allows programming the automatic periodical creation of CSV "
-"reports."
+"reports to:"
 msgstr ""
 
 #: ../../administration_portal/brand/calls/call_csv_schedulers.rst:7
@@ -1093,36 +1093,26 @@ msgstr ""
 #: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:7
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:7
 #: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:7
+msgid "Clients (no matter type)."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:9
+#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:9
+#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:9
+#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:9
+#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:9
+msgid "Brand operators."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:11
+#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:11
+#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:11
+#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:11
+#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:11
 msgid ""
 "This section is identical to :ref:`Invoice schedulers` except to the "
 "fields that do not apply to CSVs (Invoice number sequence, Template, Call"
 " discount, Tax rate)."
-msgstr ""
-
-#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:10
-#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:10
-#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:10
-#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:10
-#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:10
-msgid ""
-"Apart from the fields above, everything described in :ref:`Invoice "
-"schedulers` applies here:"
-msgstr ""
-
-#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:12
-#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:12
-#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:12
-#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:12
-#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:12
-msgid "Frequency/Unit configuration."
-msgstr ""
-
-#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:13
-#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:13
-#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:13
-#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:13
-#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:13
-msgid "Email send."
 msgstr ""
 
 #: ../../administration_portal/brand/calls/call_csv_schedulers.rst:14
@@ -1130,15 +1120,9 @@ msgstr ""
 #: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:14
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:14
 #: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:14
-msgid "View generated CSVs in **List of Call CSV reports**."
-msgstr ""
-
-#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:15
-#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:15
-#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:15
-#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:15
-#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:15
-msgid "Next execution date."
+msgid ""
+"Apart from the fields above, everything described in :ref:`Invoice "
+"schedulers` applies here:"
 msgstr ""
 
 #: ../../administration_portal/brand/calls/call_csv_schedulers.rst:16
@@ -1146,7 +1130,231 @@ msgstr ""
 #: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:16
 #: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:16
 #: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:16
+msgid "Frequency/Unit configuration."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:17
+#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:17
+#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:17
+#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:17
+#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:17
+msgid "Email send."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:18
+#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:18
+#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:18
+#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:18
+#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:18
+msgid "View generated CSVs in **List of Call CSV reports**."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:19
+#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:19
+#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:19
+#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:19
+#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:19
+msgid "Next execution date."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:20
+#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:20
+#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:20
+#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:20
+#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:20
 msgid "Last execution date and result (success/error)."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:22
+#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:22
+#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:22
+#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:22
+#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:22
+msgid "Brand operator can generate CSV containing calls of all clients."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:25
+#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:25
+#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:25
+#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:25
+#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:25
+msgid "CSV fields"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:27
+#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:27
+#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:27
+#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:27
+#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:27
+msgid "These are the fields of the generated CSV files:"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:30
+#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:30
+#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:30
+#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:30
+#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:30
+msgid "callid"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:32
+#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:32
+#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:32
+#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:32
+#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:32
+msgid "Call-ID of the SIP dialog"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:33
+#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:33
+#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:33
+#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:33
+#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:33
+msgid "startTime"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:35
+#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:35
+#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:35
+#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:35
+#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:35
+msgid "Time and date of the call establishment"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:36
+#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:36
+#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:36
+#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:36
+#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:36
+msgid "duration"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:38
+#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:38
+#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:38
+#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:38
+#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:38
+msgid "Call duration in seconds"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:39
+#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:39
+#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:39
+#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:39
+#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:39
+msgid "caller"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:41
+#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:41
+#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:41
+#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:41
+#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:41
+msgid "Caller number in E.164 format (with '+')"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:42
+#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:42
+#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:42
+#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:42
+#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:42
+msgid "callee"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:44
+#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:44
+#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:44
+#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:44
+#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:44
+msgid "Callee number in E.164 format (with '+')"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:45
+#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:45
+#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:45
+#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:45
+#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:45
+msgid "price"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:47
+#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:47
+#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:47
+#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:47
+#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:47
+msgid "Calculated price for the given call"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:49
+#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:49
+#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:49
+#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:49
+#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:49
+msgid "In Brand CSVs, these additional fields will be included too:"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:52
+#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:52
+#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:52
+#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:52
+#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:52
+msgid "endpointType"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:54
+#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:54
+#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:54
+#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:54
+#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:54
+msgid "'RetailAccount' for retail clients, empty for remaining types."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:55
+#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:55
+#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:55
+#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:55
+#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:55
+msgid "endpointId"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:57
+#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:57
+#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:57
+#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:57
+#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:57
+msgid "Retail Account ID for retail clients, empty for remaining types."
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:58
+#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:58
+#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:58
+#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:58
+#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:58
+msgid "cost"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:60
+#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:60
+#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:60
+#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:60
+#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:60
+msgid "Calculated cost for the given call"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:61
+#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:61
+#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:61
+#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:61
+#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:61
+msgid "companyId"
+msgstr ""
+
+#: ../../administration_portal/brand/calls/call_csv_schedulers.rst:63
+#: ../../administration_portal/client/residential/calls/call_csv_schedulers.rst:63
+#: ../../administration_portal/client/retail/calls/call_csv_schedulers.rst:63
+#: ../../administration_portal/client/vpbx/calls/call_csv_schedulers.rst:63
+#: ../../administration_portal/client/wholesale/calls/call_csv_schedulers.rst:63
+msgid "Client ID"
 msgstr ""
 
 #: ../../administration_portal/brand/calls/index.rst:3
@@ -8180,4 +8388,10 @@ msgstr ""
 #: ../../administration_portal/platform/terminal_manufacturers.rst:177
 msgid "This example is identical to 't23/yea-{mac}', as subpaths are ignored."
 msgstr ""
+
+#~ msgid ""
+#~ "This section allows programming the "
+#~ "automatic periodical creation of CSV "
+#~ "reports."
+#~ msgstr ""
 
