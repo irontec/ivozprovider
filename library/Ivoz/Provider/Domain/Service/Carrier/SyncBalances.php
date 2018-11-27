@@ -46,7 +46,7 @@ class SyncBalances
     {
         $this->logger->info('Companies balances are about to be synced');
 
-        $targetCarriers = $this->getCarrierIdsGroupByBrand();
+        $targetCarriers = $this->carrierRepository->getCarrierIdsGroupByBrand();
         foreach ($targetCarriers as $brandId => $carriers) {
             $this->updateCarriers($brandId, $carriers);
         }
@@ -76,25 +76,6 @@ class SyncBalances
 
             return false;
         }
-    }
-
-    /**
-     * @return array
-     */
-    private function getCarrierIdsGroupByBrand()
-    {
-        $carriers = $this->carrierRepository->findAll();
-        $response = [];
-
-        foreach ($carriers as $carrier) {
-            $brandId = $carrier->getBrand()->getId();
-            if (!array_key_exists($brandId, $response)) {
-                $response[$brandId] = [];
-            }
-            $response[$brandId][] = $carrier->getId();
-        }
-
-        return $response;
     }
 
     private function persistBalances(array $carriersBalance)

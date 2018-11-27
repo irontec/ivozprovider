@@ -7,5 +7,8 @@ use Doctrine\Common\Collections\Selectable;
 
 interface CarrierRepository extends ObjectRepository, Selectable
 {
-
+    /**
+     * @return array
+     */
+    public function getCarrierIdsGroupByBrand();
 }
