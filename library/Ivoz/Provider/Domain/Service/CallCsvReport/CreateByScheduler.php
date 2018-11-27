@@ -78,14 +78,22 @@ class CreateByScheduler
         $inDate->setTimezone($utc);
 
         $company = $scheduler->getCompany();
+        $companyId = $company
+            ? $company->getId()
+            : null;
+
+        $brand = $scheduler->getBrand();
+        $brandId = $brand
+            ? $brand->getId()
+            : null;
+
         $reportDto = new CallCsvReportDto();
         $reportDto
             ->setInDate($inDate)
             ->setOutDate($outDate)
             ->setCreatedOn(new \DateTime(null, $utc))
-            ->setCompanyId(
-                $company->getId()
-            )
+            ->setBrandId($brandId)
+            ->setCompanyId($companyId)
             ->setCallCsvSchedulerId(
                 $scheduler->getId()
             )->setSentTo(

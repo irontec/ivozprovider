@@ -3,6 +3,7 @@
 namespace Ivoz\Provider\Domain\Service\BillableCall;
 
 use Ivoz\Core\Domain\Service\ApiClientInterface;
+use Ivoz\Provider\Domain\Model\Brand\BrandInterface;
 use Ivoz\Provider\Domain\Model\Company\CompanyInterface;
 
 class CsvExporter
@@ -35,17 +36,25 @@ class CsvExporter
      * @return string
      */
     public function execute(
-        CompanyInterface $company,
         \DateTime $inDate,
-        \DateTime $outDate
+        \DateTime $outDate,
+        CompanyInterface $company = null,
+        BrandInterface $brand = null
     ) {
         $criteria = [
-            'company' => $company->getId(),
             'startTime[after]' => $inDate->format('Y-m-d H:i:s'),
             'startTime[strictly_before]' => $outDate->format('Y-m-d H:i:s'),
             '_properties' => self::PROPERTIES,
             "_pagination" => 'false'
         ];
+
+        if ($company) {
+            $criteria['company'] = $company->getId();
+        }
+
+        if ($brand) {
+            $criteria['brand'] = $brand->getId();
+        }
 
         $endpoint =
             self::API_ENDPOINT

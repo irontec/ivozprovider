@@ -55,10 +55,13 @@ class CsvAttacher implements CallCsvReportLifecycleEventHandlerInterface
         $outDate = $callCsvReport->getOutDate();
 
         $company = $callCsvReport->getCompany();
+        $brand = $callCsvReport->getBrand();
+
         $csvContent = $this->csvExporter->execute(
-            $company,
             $inDate,
-            $outDate
+            $outDate,
+            $company,
+            $brand
         );
 
         $tmpFilePath = tempnam(
@@ -84,8 +87,12 @@ class CsvAttacher implements CallCsvReportLifecycleEventHandlerInterface
             $outDate->setTimezone($timezone);
         }
 
+        $name = $brand
+            ? $brand->getName()
+            : $company->getName();
+
         $fileName =
-            $company->getName()
+            $name
             . '-'
             . $callCsvReport->getInDate()->format('Ymd')
             . '-'

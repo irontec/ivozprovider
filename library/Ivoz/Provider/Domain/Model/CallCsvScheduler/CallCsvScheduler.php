@@ -21,6 +21,19 @@ class CallCsvScheduler extends CallCsvSchedulerAbstract implements SchedulerInte
         return parent::getChangeSet();
     }
 
+    protected function sanitizeValues()
+    {
+        $company = $this->getCompany();
+        if (is_null($company)) {
+            $this->setEmail('');
+        }
+
+        $brand = $this->getBrand();
+        if (is_null($brand) && is_null($company)) {
+            throw new \DomainException('Either company or brand must have a value');
+        }
+    }
+
     /**
      * Get id
      * @codeCoverageIgnore
@@ -52,12 +65,12 @@ class CallCsvScheduler extends CallCsvSchedulerAbstract implements SchedulerInte
 
         switch ($this->getUnit()) {
             /** @see http://php.net/manual/es/dateinterval.createfromdatestring.php */
-            case 'year':
-                return new \DateInterval("P${frecuency}Y");
             case 'month':
                 return new \DateInterval("P${frecuency}M");
             case 'week':
                 return new \DateInterval("P${frecuency}W");
+            case 'day':
+                return \DateInterval::createFromDateString('1 day');
         }
     }
 }
