@@ -78,25 +78,22 @@ class CsvAttacher implements CallCsvReportLifecycleEventHandlerInterface
             $callCsvReport
         );
 
-        $scheduler = $callCsvReport->getCallCsvScheduler();
-        if ($scheduler) {
-            $timezone = new \DateTimeZone(
-                $scheduler->getTimezone()->getTz()
-            );
-            $inDate->setTimezone($timezone);
-            $outDate->setTimezone($timezone);
-        }
+        $timezone = new \DateTimeZone(
+            $callCsvReport->getTimezone()->getTz()
+        );
+        $inDate->setTimezone($timezone);
+        $outDate->setTimezone($timezone);
 
-        $name = $brand
-            ? $brand->getName()
-            : $company->getName();
+        $name = $company
+            ? $company->getName()
+            : $brand->getName();
 
         $fileName =
             $name
             . '-'
-            . $callCsvReport->getInDate()->format('Ymd')
+            . $inDate->format('Ymd')
             . '-'
-            . $callCsvReport->getOutDate()->format('Ymd')
+            . $outDate->format('Ymd')
             . '.csv';
 
         $callCsvReportDto
